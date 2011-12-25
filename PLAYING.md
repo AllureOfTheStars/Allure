@@ -144,3 +144,14 @@ If all heroes die, your score is halved and only the treasure carried
 by the last standing hero counts. You are free to start again
 from the first level of the dungeon, but all your wealth and items
 are gone and the dungeon and it's treasure look differently.
+
+
+Savegame directory
+------------------
+
+If you don't want Allure of the Stars to write to the current directory,
+create a personal savegame directory (on Linux it's ~/.Allure/).
+and copy the scores file there. You may also want to
+copy the configuration file config.default to
+~/.Allure/config and modify it, but be careful changing
+gameplay options --- they can easily unbalance or break the game.

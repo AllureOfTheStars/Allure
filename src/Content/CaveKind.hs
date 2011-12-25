@@ -1,52 +1,36 @@
-module Content.CaveKind (CaveKind(..), CaveLayout(..)) where
+module Content.CaveKind ( cdefs ) where
 
 import Data.Ratio
+import qualified Data.List as L
 
-import qualified Content.Content
-import Geometry
-import Random
+import qualified Game.LambdaHack.Content.Content as Content
+import Game.LambdaHack.Geometry
+import qualified Game.LambdaHack.Random as Random
+import Game.LambdaHack.Content.CaveKind
+import Game.LambdaHack.Content.TileKind
+import qualified Game.LambdaHack.Feature as F
+import Game.LambdaHack.Tile
 
-instance Content.Content.Content CaveKind where
-  getFreq = cfreq
-  content =
-    [rogue, empty, noise, largeNoise]
-
-rogue,      empty, noise, largeNoise:: CaveKind
-
-data CaveKind = CaveKind
-  { cxsize            :: X
-  , cysize            :: Y
-  , levelGrid         :: Rnd (X, Y)
-  , minRoomSize       :: Rnd (X ,Y)
-  , darkRoomChance    :: Int -> Rnd Bool  -- TODO: use RollQuad instead, etc.
-  , border            :: Int         -- must be at least 2!
-  , extraConnects     :: (X, Y) -> Int
-      -- relative to grid (in fact a range, because of duplicate connects)
-  , noRooms           :: (X, Y) -> Rnd Int
-      -- range, relative to grid
-  , minStairsDistance :: Int
-  , doorChance        :: Rnd Bool
-  , doorOpenChance    :: Rnd Bool
-  , doorSecretChance  :: Rnd Bool
-  , csecretStrength   :: RollDice
-  , citemNum          :: RollDice
-  , clayout           :: CaveLayout
-  , cfreq             :: Int
+cdefs :: Content.CDefs CaveKind
+cdefs = Content.CDefs
+  { getSymbol = csymbol
+  , getName = cname
+  , getFreq = cfreq
+  , validate = cvalidate
+  , content =
+      [rogue, arena, empty, noise, largeNoise]
   }
-
--- TODO: express those using many fine-graned parameters instead
-data CaveLayout = CaveRogue | CaveEmpty | CaveNoise deriving Eq
+rogue,        arena, empty, noise, largeNoise :: CaveKind
 
 rogue = CaveKind
-  { cxsize            = fst normalLevelBound + 1
+  { csymbol           = '$'
+  , cname             = "caveRogue"
+  , cfreq             = 80
+  , cxsize            = fst normalLevelBound + 1
   , cysize            = snd normalLevelBound + 1
-  , levelGrid         = do
-                          x <- Random.randomR (3, 5)
-                          y <- Random.randomR (2, 4)
-                          return (x, y)
-  , minRoomSize       = return (2, 2)
+  , levelGrid         = ((2, 4), (2, 2))
+  , minRoomSize       = ((2, 2), (2, 1))
   , darkRoomChance    = \ d -> Random.chance $ 1%((22 - (2 * fromIntegral d)) `max` 2)
-  , border            = 2
   , extraConnects     = \ (x, y) -> (x * y) `div` 3
   , noRooms           = \ (x, y) -> Random.randomR (0, (x * y) `div` 3)
   , minStairsDistance = 30
@@ -55,19 +39,53 @@ rogue = CaveKind
   , doorSecretChance  = Random.chance $ 1%4
   , csecretStrength   = (7, 2)
   , citemNum          = (5, 2)
-  , clayout           = CaveRogue
-  , cfreq             = 80
+  , defTile           = \ t -> tsymbol t == '#' && L.null (tfeature t)
+  , corTile           = \ t -> tsymbol t == '.'
+                               && kindHas [] [F.Lit, F.Special, F.Boring] t
+  }
+arena = rogue
+  { csymbol           = 'A'
+  , cname             = "caveArena"
+  , cfreq             = 20
+  , levelGrid         = ((2, 3), (2, 2))
+  , minRoomSize       = ((2, 3), (2, 1))
+  , noRooms           = \ (x, y) -> Random.randomR (0, (x * y) `div` 2)
+  , defTile           = \ t -> tsymbol t == '.'
+                               && kindHas [F.Lit] [F.Special, F.Boring] t
+  , corTile           = \ t -> tsymbol t == '.'
+                               && kindHas [F.Lit, F.Special] [F.Boring] t
   }
 empty = rogue
-  { clayout           = CaveEmpty
+  { csymbol           = '.'
+  , cname             = "caveEmpty"
   , cfreq             = 20
+  , levelGrid         = ((1, 3), (1, 2))
+  , minRoomSize       = ((2, 4), (2, 3))
+  , noRooms           = \ (x, y) -> Random.randomR (max 0 (x * y - 3),
+                                                    max 0 (x * y - 1))
+  , defTile           = \ t -> tsymbol t == '.'
+                               && kindHas [F.Lit, F.Boring] [F.Special] t
+  , corTile           = \ t -> tsymbol t == '.'
+                               && kindHas [F.Lit, F.Boring] [F.Special] t
   }
 noise = rogue
-  { clayout           = CaveNoise
-  , cfreq             = 0  -- stairs may be blocked, so only for the last level
+  { csymbol           = '!'
+  , cname             = "caveNoise"
+  , cfreq             = 20
+  , levelGrid         = ((2, 2), (1, 3))
+  , minRoomSize       = ((2, 2), (2, 2))
+  , darkRoomChance    = \ _ -> return True
+  , noRooms           = \ _ -> return 0
+  , defTile           = \ t -> tsymbol t == '#' && L.null (tfeature t)
+                               || (tsymbol t == '.'
+                                  && kindHas [F.Lit] [F.Special, F.Boring] t)
+  , corTile           = \ t -> tsymbol t == '.'
+                               && kindHas [F.Lit, F.Special] [F.Boring] t
   }
 largeNoise = noise
-  { cxsize            = 231
-  , cysize            = 77
+  { csymbol           = 'L'
+  , cname             = "caveLargeNoise"
   , cfreq             = 0  -- experimental
+  , cxsize            = 231
+  , cysize            = 77
   }

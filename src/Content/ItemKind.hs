@@ -1,36 +1,22 @@
-module Content.ItemKind (ItemKind(..)) where
+module Content.ItemKind ( cdefs ) where
 
-import Color
-import qualified Content.Content
-import Effect
-import Flavour
-import Random
+import Game.LambdaHack.Color
+import qualified Game.LambdaHack.Content.Content as Content
+import Game.LambdaHack.Effect
+import Game.LambdaHack.Flavour
+import Game.LambdaHack.Random
+import Game.LambdaHack.Content.ItemKind
 
--- TODO: jpower is out of place here. It doesn't make sense for all items,
--- and will mean different things for different items. Perhaps it should
--- be part of the Effect, but then we have to be careful to distinguish
--- parts of the Effect that are rolled on item creation and those rolled
--- at each use (e.g., sword magical +damage vs. sword damage dice).
--- Another thing to keep in minds is that jpower will heavily determine
--- the value of the item for shops, treasure chests, artifact set rebalancing,
--- etc., so if we make jpower complex, the value computation gets complex too.
-data ItemKind = ItemKind
-  { isymbol  :: !Char       -- ^ map symbol
-  , iflavour :: ![Flavour]  -- ^ possible flavours
-  , iname    :: !String     -- ^ group name
-  , ieffect  :: !Effect     -- ^ the effect when activated
-  , icount   :: !RollQuad   -- ^ created in that quantify
-  , ifreq    :: !Int        -- ^ created that often
-  , ipower   :: !RollQuad   -- ^ created with that power
+cdefs :: Content.CDefs ItemKind
+cdefs = Content.CDefs
+  { getSymbol = isymbol
+  , getName = iname
+  , getFreq = ifreq
+  , validate = ivalidate
+  , content =
+      [amulet, dart, gem1, gem2, gem3, gem4, gold, potion1, potion2, potion3, ring, scroll1, scroll2, sword, fist, wand]
   }
-  deriving (Show, Eq, Ord)
-
-instance Content.Content.Content ItemKind where
-  getFreq = ifreq
-  content =
-    [amulet, dart, gem1, gem2, gem3, gem4, gold, potion1, potion2, potion3, ring, scroll1, scroll2, sword, fist, wand]
-
-amulet,      dart, gem1, gem2, gem3, gem4, gold, potion1, potion2, potion3, ring, scroll1, scroll2, sword, fist, wand :: ItemKind
+amulet,        dart, gem1, gem2, gem3, gem4, gold, potion1, potion2, potion3, ring, scroll1, scroll2, sword, fist, wand :: ItemKind
 
 gem, potion, scroll :: ItemKind  -- generic templates
 
@@ -139,7 +125,8 @@ sword = ItemKind
   , ipower   = (1, 2, 4, 2)
   }
 fist = sword
-  { iname    = "fist"
+  { isymbol  = '@'
+  , iname    = "fist"
   , ifreq    = 0  -- Does not appear randomly in the dungeon.
   }
 wand = ItemKind

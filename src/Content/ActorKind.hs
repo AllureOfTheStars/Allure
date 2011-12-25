@@ -1,31 +1,19 @@
-module Content.ActorKind (ActorKind(..)) where
+module Content.ActorKind ( cdefs ) where
 
-import Color
-import qualified Content.Content
-import qualified Geometry
-import qualified Random
+import Game.LambdaHack.Color
+import qualified Game.LambdaHack.Content.Content as Content
+import Game.LambdaHack.Content.ActorKind
 
--- | Monster properties that are changing rarely and permanently.
-data ActorKind = ActorKind
-  { ahp     :: !Random.RollDice  -- ^ encodes initial and maximal hp
-  , aspeed  :: !Geometry.Time    -- ^ natural speed
-  , asymbol :: !Char             -- ^ map symbol
-  , acolor  :: !Color            -- ^ map color
-  , aname   :: !String           -- ^ name
-  , asight  :: !Bool             -- ^ can it see?
-  , asmell  :: !Bool             -- ^ can it smell?
-  , aiq     :: !Int              -- ^ intelligence
-  , aregen  :: !Int              -- ^ regeneration interval
-  , afreq   :: !Int              -- ^ dungeon frequency
+cdefs :: Content.CDefs ActorKind
+cdefs = Content.CDefs
+  { getSymbol = asymbol
+  , getName = aname
+  , getFreq = afreq
+  , validate = avalidate
+  , content =
+      [hero, eye, fastEye, nose]
   }
-  deriving (Show, Eq, Ord)
-
-instance Content.Content.Content ActorKind where
-  getFreq = afreq
-  content =
-    [hero, eye, fastEye, nose]
-
-hero,      eye, fastEye, nose :: ActorKind
+hero,        eye, fastEye, nose :: ActorKind
 
 hero = ActorKind
   { ahp     = (50, 1)

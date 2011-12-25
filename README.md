@@ -2,12 +2,11 @@ Allure of the Stars
 ===================
 
 This is an alpha pre-release of Allure of the Stars,
-a near-future Sci-Fi [roguelike] [1] and tactical squad game.
+a near-future Sci-Fi [roguelike] [2] and tactical squad game.
 Long-term goals are high replayability and auto-balancing
 through procedural content generation and persistent content
-modification based on player behaviour.
-The game is written in [Haskell] [2] and based
-on the [LambdaHack roguelike engine] [3].
+modification based on player behaviour. The game is written in [Haskell] [1]
+using the [LambdaHack roguelike game engine] [5].
 
 
 Compilation and installation
@@ -19,13 +18,14 @@ automatically by Cabal from [Hackage] [4] as follows
 
     cabal install Allure
 
-For a more current snapshot, download the source from [github] [5]
+For a more current snapshot, download the source from [github] [3]
 and run Cabal from the main directory
 
     cabal install
 
-The best frontend (keyboard support and colours) is gtk,
-but if needed, you may try one of the terminal frontends with, e.g,
+The best frontend (keyboard support and colours)
+is gtk, but if needed, you may compile the game binary with one
+of the terminal frontends using Cabal flags, e.g,
 
     cabal install -fvty
 
@@ -36,21 +36,10 @@ the standard input/output frontend, as follows
 
 and run the bot, for example, in the following way
 
-    BotAllure 42 20000000 | Allure > /tmp/log
+    DumbBot 42 20000000 | Allure > /tmp/log
 
 You may wish to tweak the game configuration file to let the bot play longer,
 e.g., by making the dungeon much deeper, as in the supplied config.bot.
-
-
-Savegame directory
-------------------
-
-If you don't want Allure of the Stars to write to the current directory,
-create a personal savegame directory (on Linux it's ~/.Allure/).
-and copy the scores file there. You may also want to
-copy the configuration file src/config.default to
-~/.Allure/config and modify it, but be careful changing
-gameplay options --- they can easily unbalance or break the game.
 
 
 Further information
@@ -63,8 +52,8 @@ Have fun!
 
 
 
-[1]: http://roguebasin.roguelikedevelopment.org/index.php?title=Berlin_Interpretation
-[2]: http://www.haskell.org/
-[3]: http://github.com/kosmikus/LambdaHack
+[1]: http://www.haskell.org/
+[2]: http://roguebasin.roguelikedevelopment.org/index.php?title=Berlin_Interpretation
+[3]: http://github.com/Mikolaj/Allure
 [4]: http://hackage.haskell.org/package/Allure
-[5]: http://github.com/Mikolaj/Allure
+[5]: http://github.com/kosmikus/LambdaHack

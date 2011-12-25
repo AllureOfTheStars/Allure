@@ -1,26 +1,21 @@
-module Content.TileKind (TileKind(..)) where
+module Content.TileKind ( cdefs ) where
 
-import Color
-import qualified Content.Content
-import qualified Effect
-import Feature
+import Game.LambdaHack.Color
+import qualified Game.LambdaHack.Content.Content as Content
+import qualified Game.LambdaHack.Effect as Effect
+import Game.LambdaHack.Feature
+import Game.LambdaHack.Content.TileKind
 
-data TileKind = TileKind
-  { tsymbol  :: !Char       -- ^ map symbol
-  , tname    :: !String     -- ^ name
-  , tcolor   :: !Color      -- ^ map color
-  , tcolor2  :: !Color      -- ^ map color when not in FOV
-  , tfreq    :: !Int        -- ^ created that often (within a group?)
-  , tfeature :: ![Feature]  -- ^ properties
+cdefs :: Content.CDefs TileKind
+cdefs = Content.CDefs
+  { getSymbol = tsymbol
+  , getName = tname
+  , getFreq = tfreq
+  , validate = tvalidate
+  , content =
+      [wall, doorOpen, doorClosed, doorSecret, stairsUp, stairsDown, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen, floorBrown]
   }
-  deriving (Show, Eq, Ord)
-
-instance Content.Content.Content TileKind where
-  getFreq = tfreq
-  content =
-    [wall, doorOpen, doorClosed, doorSecret, opening, floorLight, floorDark, stairsUp, stairsDown, unknown]
-
-wall,      doorOpen, doorClosed, doorSecret, opening, floorLight, floorDark, stairsUp, stairsDown, unknown :: TileKind
+wall,        doorOpen, doorClosed, doorSecret, stairsUp, stairsDown, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen, floorBrown :: TileKind
 
 wall = TileKind
   { tsymbol  = '#'
@@ -30,16 +25,14 @@ wall = TileKind
   , tfreq    = 100
   , tfeature = []
   }
-
 doorOpen = TileKind
   { tsymbol  = '\''
   , tname    = "An open door."
   , tcolor   = Yellow
   , tcolor2  = BrBlack
   , tfreq    = 100
-  , tfeature = [Walkable, Clear, Exit{-TODO:, Lit-}, Change '+', Closable]
+  , tfeature = [Walkable, Clear, Exit, Change '+', Closable]
   }
-
 doorClosed = TileKind
   { tsymbol  = '+'
   , tname    = "A closed door."
@@ -48,63 +41,70 @@ doorClosed = TileKind
   , tfreq    = 100
   , tfeature = [Exit, Change '\'', Openable]
   }
-
 doorSecret = wall
   { tfeature = [Hidden, Change '+', Secret (7, 2)]
   }
-
-opening = TileKind
-  { tsymbol  = '.'
-  , tname    = "An opening."
-  , tcolor   = BrWhite
-  , tcolor2  = defFG
-  , tfreq    = 100
-  , tfeature = [Walkable, Clear, Exit{-TODO: , Lit-}]
-  }
-
-floorLight = TileKind
-  { tsymbol  = '.'
-  , tname    = "Floor."
-  , tcolor   = BrWhite
-  , tcolor2  = defFG
-  , tfreq    = 100
-  , tfeature = [Walkable, Clear, Lit]
-  }
-
-floorDark = TileKind
-  { tsymbol  = '.'
-  , tname    = "Floor."
-  , tcolor   = BrYellow
-  , tcolor2  = BrBlack
-  , tfreq    = 100
-  , tfeature = [Walkable, Clear]
-  }
-
 stairsUp = TileKind
   { tsymbol  = '<'
   , tname    = "A staircase up."
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , tfreq    = 100
-  , tfeature = [Walkable, Clear, Exit, Lit,
-                Climbable, Cause Effect.Teleport]
+  , tfeature = [Walkable, Clear, Lit, Exit, Climbable, Cause Effect.Teleport]
   }
-
 stairsDown = TileKind
   { tsymbol  = '>'
   , tname    = "A staircase down."
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , tfreq    = 100
-  , tfeature = [Walkable, Clear, Exit, Lit,
-                Descendable, Cause Effect.Teleport]
+  , tfeature = [Walkable, Clear, Lit, Exit, Descendable, Cause Effect.Teleport]
   }
-
 unknown = TileKind
   { tsymbol  = ' '
-  , tname    = ""
+  , tname    = "An unknown space."
+  , tcolor   = BrWhite
+  , tcolor2  = defFG
+  , tfreq    = 0
+  , tfeature = []
+  }
+floorCorridorLit = TileKind
+  { tsymbol  = '.'
+  , tname    = "Dirt."
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , tfreq    = 100
-  , tfeature = []
+  , tfeature = [Walkable, Clear, Lit]
+  }
+floorCorridorDark = floorCorridorLit
+  { tcolor   = BrYellow
+  , tcolor2  = BrBlack
+  , tfeature = [Walkable, Clear]
+  }
+floorRoomLit = floorCorridorLit
+  { tfeature = Boring : tfeature floorCorridorLit
+  }
+floorRoomDark = floorCorridorDark
+  { tfeature = Boring : tfeature floorCorridorDark
+  }
+floorRed = floorCorridorLit
+  { tname    = "Brick pavement."
+  , tcolor   = BrRed
+  , tcolor2  = Red
+  , tfeature = Special : tfeature floorCorridorLit
+  }
+floorBlue = floorRed
+  { tname    = "Granite cobblestones."
+  , tcolor   = BrBlue
+  , tcolor2  = Blue
+  }
+floorGreen = floorRed
+  { tname    = "Mossy stone path."
+  , tcolor   = BrGreen
+  , tcolor2  = Green
+  }
+floorBrown = floorRed
+  { tname    = "Rotting mahogany deck."
+  , tcolor   = BrMagenta
+  , tcolor2  = Magenta
   }

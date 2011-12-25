@@ -13,18 +13,16 @@
 LambdaCave_1: caveRogue
 LambdaCave_2: caveRogue
 LambdaCave_3: caveEmpty
-; access to stairs may be blocked, so normally only suitable for the last level:
-LambdaCave_4: caveNoise
-depth: 1000
+LambdaCave_10: caveNoise
+depth: 10
 
 [engine]
 fovMode: digital
 ;fovMode: permissive
 ;fovMode: shadow
-fovRadius: 4
+fovRadius: 40
 ;startingRandomGenerator: 42
 ;dungeonRandomGenerator: 42
-;BotAllure 42 20000000 | Allure > /tmp/log
 
 ; paths to various game files; relative to ~/.Allure/
 ; (or analogous prefixes for other OSes, see getAppUserDataDirectory)
@@ -39,8 +37,8 @@ HeroName_2: Alonzo Barkley
 HeroName_3: Ernst Abraham
 HeroName_4: Samuel Saunders
 HeroName_5: Roger Robin
-baseHP: 1000000
-extraHeroes: 4
+baseHP: 50
+extraHeroes: 0
 firstDeathEnds: False
 
 [macros]
