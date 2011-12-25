@@ -1,7 +1,6 @@
 module Content.CaveKind ( cdefs ) where
 
 import Data.Ratio
-import qualified Data.List as L
 
 import qualified Game.LambdaHack.Content.Content as Content
 import Game.LambdaHack.Geometry
@@ -9,7 +8,7 @@ import qualified Game.LambdaHack.Random as Random
 import Game.LambdaHack.Content.CaveKind
 import Game.LambdaHack.Content.TileKind
 import qualified Game.LambdaHack.Feature as F
-import Game.LambdaHack.Tile
+import qualified Game.LambdaHack.Tile as Tile
 
 cdefs :: Content.CDefs CaveKind
 cdefs = Content.CDefs
@@ -39,9 +38,8 @@ rogue = CaveKind
   , doorSecretChance  = Random.chance $ 1%4
   , csecretStrength   = (7, 2)
   , citemNum          = (5, 2)
-  , defTile           = \ t -> tsymbol t == '#' && L.null (tfeature t)
-  , corTile           = \ t -> tsymbol t == '.'
-                               && kindHas [] [F.Lit, F.Special, F.Boring] t
+  , defTile           = Tile.wallP
+  , corTile           = Tile.floorCorridorDarkP
   }
 arena = rogue
   { csymbol           = 'A'
@@ -50,23 +48,19 @@ arena = rogue
   , levelGrid         = ((2, 3), (2, 2))
   , minRoomSize       = ((2, 3), (2, 1))
   , noRooms           = \ (x, y) -> Random.randomR (0, (x * y) `div` 2)
-  , defTile           = \ t -> tsymbol t == '.'
-                               && kindHas [F.Lit] [F.Special, F.Boring] t
-  , corTile           = \ t -> tsymbol t == '.'
-                               && kindHas [F.Lit, F.Special] [F.Boring] t
+  , defTile           = Tile.floorCorridorLitP
+  , corTile           = Tile.floorSpecialP
   }
 empty = rogue
   { csymbol           = '.'
   , cname             = "caveEmpty"
   , cfreq             = 20
-  , levelGrid         = ((1, 3), (1, 2))
+  , levelGrid         = ((2, 2), (1, 2))
   , minRoomSize       = ((2, 4), (2, 3))
   , noRooms           = \ (x, y) -> Random.randomR (max 0 (x * y - 3),
                                                     max 0 (x * y - 1))
-  , defTile           = \ t -> tsymbol t == '.'
-                               && kindHas [F.Lit, F.Boring] [F.Special] t
-  , corTile           = \ t -> tsymbol t == '.'
-                               && kindHas [F.Lit, F.Boring] [F.Special] t
+  , defTile           = Tile.floorRoomLitP
+  , corTile           = Tile.floorRoomLitP
   }
 noise = rogue
   { csymbol           = '!'
@@ -76,11 +70,9 @@ noise = rogue
   , minRoomSize       = ((2, 2), (2, 2))
   , darkRoomChance    = \ _ -> return True
   , noRooms           = \ _ -> return 0
-  , defTile           = \ t -> tsymbol t == '#' && L.null (tfeature t)
-                               || (tsymbol t == '.'
-                                  && kindHas [F.Lit] [F.Special, F.Boring] t)
-  , corTile           = \ t -> tsymbol t == '.'
-                               && kindHas [F.Lit, F.Special] [F.Boring] t
+  , defTile           = \ t -> Tile.wallP t ||
+                               Tile.floorCorridorLitP t
+  , corTile           = Tile.floorSpecialP
   }
 largeNoise = noise
   { csymbol           = 'L'
@@ -88,4 +80,6 @@ largeNoise = noise
   , cfreq             = 0  -- experimental
   , cxsize            = 231
   , cysize            = 77
+  , defTile           = \ t -> tfeature t == [F.Special] ||
+                               Tile.floorCorridorLitP t
   }
