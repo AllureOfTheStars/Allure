@@ -13,9 +13,9 @@ cdefs = Content.CDefs
   , getFreq = tfreq
   , validate = tvalidate
   , content =
-      [wall, pillar, doorOpen, doorClosed, doorSecret, stairsUp, stairsDown, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen, floorBrown]
+      [wall, pillar, doorOpen, doorClosed, doorSecret, stairsUp, stairsDown, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen]
   }
-wall,        pillar, doorOpen, doorClosed, doorSecret, stairsUp, stairsDown, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen, floorBrown :: TileKind
+wall,        pillar, doorOpen, doorClosed, doorSecret, stairsUp, stairsDown, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen :: TileKind
 
 wall = TileKind
   { tsymbol  = '#'
@@ -82,7 +82,7 @@ unknown = TileKind
   }
 floorCorridorLit = TileKind
   { tsymbol  = '.'
-  , tname    = "dirt"
+  , tname    = "floor"
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , tfreq    = 100
@@ -100,23 +100,21 @@ floorRoomDark = floorCorridorDark
   { tfeature = Boring : tfeature floorCorridorDark
   }
 floorRed = floorCorridorLit
-  { tname    = "brick pavement"
+  { tname    = "emergency walkway"
   , tcolor   = BrRed
   , tcolor2  = Red
+  , tfreq    = 20
   , tfeature = Special : tfeature floorCorridorLit
   }
 floorBlue = floorRed
-  { tname    = "granite cobblestones"
+  { tname    = "transport route"
   , tcolor   = BrBlue
   , tcolor2  = Blue
+  , tfreq    = 100
   }
 floorGreen = floorRed
-  { tname    = "mossy stone path"
+  { tname    = "greenery path"
   , tcolor   = BrGreen
   , tcolor2  = Green
-  }
-floorBrown = floorRed
-  { tname    = "rotting mahogany deck"
-  , tcolor   = BrMagenta
-  , tcolor2  = Magenta
+  , tfreq    = 100
   }

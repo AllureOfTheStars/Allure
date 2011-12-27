@@ -14,19 +14,19 @@ cdefs = Content.CDefs
   , getFreq = ifreq
   , validate = ivalidate
   , content =
-      [amulet, dart, gem1, gem2, gem3, gem4, gold, potion1, potion2, potion3, ring, scroll1, scroll2, sword, fist, wand]
+      [necklace, dart, gem1, gem2, gem3, gem4, gold, potion1, potion2, potion3, ring, scroll1, scroll2, sword, fist, wand]
   }
-amulet,        dart, gem1, gem2, gem3, gem4, gold, potion1, potion2, potion3, ring, scroll1, scroll2, sword, fist, wand :: ItemKind
+necklace,        dart, gem1, gem2, gem3, gem4, gold, potion1, potion2, potion3, ring, scroll1, scroll2, sword, fist, wand :: ItemKind
 
 gem, potion, scroll :: ItemKind  -- generic templates
 
 -- rollQuad (a, b, x, y) = a * roll b + (lvl * x * roll y) / 10
 
-amulet = ItemKind
+necklace = ItemKind
   { isymbol  = '"'
   , iflavour = [(BrGreen, True)]
-  , iname    = "amulet"
-  , ieffect  = Regneration
+  , iname    = "necklace"
+  , ieffect  = Regeneration
   , icount   = intToQuad 1
   , ifreq    = 10
   , ipower   = (2, 1, 2, 2)
@@ -43,7 +43,7 @@ dart = ItemKind
 gem = ItemKind
   { isymbol  = '*'
   , iflavour = zipPlain brightCol  -- natural, so not fancy
-  , iname    = "gem"
+  , iname    = "precious gem"
   , ieffect  = NoEffect
   , icount   = intToQuad 0
   , ifreq    = 20  -- x4, but rare on shallow levels
@@ -64,7 +64,7 @@ gem4 = gem
 gold = ItemKind
   { isymbol  = '$'
   , iflavour = [(BrYellow, False)]
-  , iname    = "gold piece"
+  , iname    = "gold coin"
   , ieffect  = NoEffect
   , icount   = (0, 0, 10, 10)
   , ifreq    = 80
@@ -73,7 +73,7 @@ gold = ItemKind
 potion = ItemKind
   { isymbol  = '!'
   , iflavour = zipFancy stdCol
-  , iname    = "potion"
+  , iname    = "potion" -- TODO: "concoction"
   , ieffect  = NoEffect
   , icount   = intToQuad 1
   , ifreq    = 10
@@ -102,7 +102,7 @@ ring = ItemKind
 scroll = ItemKind
   { isymbol  = '?'
   , iflavour = zipFancy darkCol  -- arcane and old
-  , iname    = "scroll"
+  , iname    = "scroll"  -- TODO: "comm tablet"
   , ieffect  = NoEffect
   , icount   = intToQuad 1
   , ifreq    = 10
@@ -118,7 +118,7 @@ scroll2 = scroll
 sword = ItemKind
   { isymbol  = ')'
   , iflavour = [(BrCyan, False)]
-  , iname    = "sword"
+  , iname    = "sword"  -- TODO: "spear"
   , ieffect  = Wound (3, 1)
   , icount   = intToQuad 1
   , ifreq    = 60
@@ -132,7 +132,7 @@ fist = sword
 wand = ItemKind
   { isymbol  = '/'
   , iflavour = [(BrRed, True)]
-  , iname    = "wand"
+  , iname    = "wand"  -- TODO: "transmitter"
   , ieffect  = Dominate
   , icount   = intToQuad 1
   , ifreq    = 10

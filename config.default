@@ -11,10 +11,10 @@
 [dungeon]
 ; fixed caves for the first levels, then randomly picked caves
 LambdaCave_1: caveRogue
-LambdaCave_2: caveRogue
-LambdaCave_3: caveEmpty
 LambdaCave_10: caveNoise
-depth: 10
+LambdaCave_20: caveArena
+LambdaCave_30: caveEmpty
+depth: 30
 
 [engine]
 fovMode: digital
@@ -38,7 +38,7 @@ HeroName_3: Ernst Abraham
 HeroName_4: Samuel Saunders
 HeroName_5: Roger Robin
 baseHP: 50
-extraHeroes: 0
+extraHeroes: 1
 firstDeathEnds: False
 
 [macros]
@@ -50,8 +50,6 @@ firstDeathEnds: False
 ;
 ; Handy with Vi keys:
 comma: g
-; Angband compatibility:
-v: t
 
 [monsters]
 smellTimeout: 1000

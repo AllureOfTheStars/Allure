@@ -24,7 +24,7 @@ rogue,        arena, empty, noise, largeNoise :: CaveKind
 rogue = CaveKind
   { csymbol           = '$'
   , cname             = "caveRogue"
-  , cfreq             = 80
+  , cfreq             = 100
   , cxsize            = fst normalLevelBound + 1
   , cysize            = snd normalLevelBound + 1
   , levelGrid         = ((2, 4), (2, 2))
@@ -64,7 +64,7 @@ empty = rogue
 noise = rogue
   { csymbol           = '!'
   , cname             = "caveNoise"
-  , cfreq             = 20
+  , cfreq             = 30
   , levelGrid         = ((2, 2), (1, 3))
   , minRoomSize       = ((2, 2), (2, 2))
   , darkRoomChance    = \ _ -> return True
