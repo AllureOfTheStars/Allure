@@ -41,7 +41,13 @@ baseHP: 50
 extraHeroes: 1
 firstDeathEnds: False
 
+[commands]
+; This sections can be empty, but has to be there.
+a: apply apply applicable !?
+p: project project projectable /|
+
 [macros]
+; This sections can be empty, but has to be there.
 ; TODO: the following does not work yet:
 ; ; throw a dart at the closest monster
 ; t: asterisk Return t Return
