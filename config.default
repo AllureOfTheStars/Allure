@@ -42,9 +42,35 @@ extraHeroes: 1
 firstDeathEnds: False
 
 [commands]
-; This sections can be empty, but has to be there.
-a: apply apply applicable !?
-p: project project projectable /|
+; interaction with the dungeon
+c: Trigger { verb = "close", object = "door", feature = Closable }
+less: Ascend
+greater: Descend
+slash: TgtFloor
+asterisk: TgtEnemy
+Tab: HeroCycle
+;
+; items
+g: Pickup
+d: Drop
+i: Inventory
+a: Apply { verb = "apply", object = "applicable", syms = "!?" }
+p: Project { verb = "project", object = "projectable", syms = "/|" }
+;
+; saving or ending the game
+X: GameSave
+Q: GameQuit
+;
+;information for the player
+P: History
+V: Version
+question: Help
+D: CfgDump
+;
+; general
+period: Wait
+Escape: Cancel
+Return: Accept
 
 [macros]
 ; This sections can be empty, but has to be there.
