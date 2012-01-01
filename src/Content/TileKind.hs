@@ -5,6 +5,7 @@ import qualified Game.LambdaHack.Content.Content as Content
 import qualified Game.LambdaHack.Effect as Effect
 import Game.LambdaHack.Feature
 import Game.LambdaHack.Content.TileKind
+import Game.LambdaHack.Random
 
 cdefs :: Content.CDefs TileKind
 cdefs = Content.CDefs
@@ -54,7 +55,7 @@ doorClosed = TileKind
                ]
   }
 doorSecret = wall
-  { tfeature = [Hidden, Secret (7, 2), ChangeTo "closed door"]
+  { tfeature = [Hidden, Secret (RollDice 7 2), ChangeTo "closed door"]
   }
 stairsUp = TileKind
   { tsymbol  = '<'
