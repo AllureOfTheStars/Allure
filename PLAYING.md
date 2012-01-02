@@ -26,6 +26,7 @@ terrain of the following basic kinds:
                terrain type                       on-screen symbol
                floor                              .
                wall                               #
+               pillar                             O
                stairs up                          <
                stairs down                        >
                open door                          '
@@ -67,14 +68,12 @@ Below are the basic default keys form common commands.
                ?      display help
                Q      quit without saving
                X      save and exit the game
+               a      apply an applicable
                c      close a door
                d      drop an object
                g      get an object
                i      display inventory
-               q      quaff a potion
-               r      read a scroll
-               a      aim a wand
-               t      throw a weapon
+               p      project a projectable
 
 Searching for secret doors and opening closed doors have no keys assigned.
 Instead, bump into a wall to search and bump into a door to open.
@@ -93,6 +92,10 @@ less used commands.
                D      dump current configuration
                P      display previous messages
                V      display game version
+               [      target next shallower level
+               ]      target next deeper level
+               {      target 10 levels shallower
+               }      target 10 levels deeper
 
 There are also some debug and cheat keys. Use at your peril!
 
