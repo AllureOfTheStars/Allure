@@ -29,8 +29,9 @@ fovRadius: 4
 ; paths to various game files; relative to ~/.Allure/
 ; (or analogous prefixes for other OSes, see getAppUserDataDirectory)
 [files]
-highScores: scores
-saveGame: save
+scoresFile: scores
+saveFile: save
+diaryFile : diary
 
 [heroes]
 HeroName_0: you
