@@ -1,5 +1,8 @@
 module Content.RuleKind ( cdefs ) where
 
+-- Cabal
+import qualified Paths_Allure as Self (getDataFileName, version)
+
 import Game.LambdaHack.Content.RuleKind
 import Game.LambdaHack.Content.TileKind
 import qualified Game.LambdaHack.Feature as F
@@ -26,4 +29,6 @@ standard = RuleKind
   , raccessible       = \ _lxsize _sloc _src _tloc tgt ->
       F.Walkable `elem` tfeature tgt
   , rtitle            = "Allure of the Stars"
+  , rpathsDataFile    = Self.getDataFileName
+  , rpathsVersion     = Self.version
   }
