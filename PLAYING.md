@@ -60,7 +60,7 @@ until anything of interest is spotted. '5' and '.' skip a turn.
 numerical keypad may not work correctly depending on the versions
 of curses, terminfo and terminal emulators. Vi keys should work regardless.)
 
-Below are the basic default keys form common commands.
+Below are the basic default keys for common commands.
 
                key    command
                <      ascend a level
@@ -86,7 +86,6 @@ less used commands.
                ESC    cancel action
                RET    accept choice
                TAB    cycle among heroes on level
-               0--9   select a hero anywhere in the spaceship (gtk only)
                *      target monster
                /      target location
                D      dump current configuration
@@ -96,6 +95,7 @@ less used commands.
                ]      target next deeper level
                {      target 10 levels shallower
                }      target 10 levels deeper
+               0--9   select a hero anywhere in the spaceship (gtk only)
 
 There are also some debug and cheat keys. Use at your peril!
 
