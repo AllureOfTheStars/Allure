@@ -23,7 +23,7 @@ wall = TileKind
   , tname    = "wall"
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfreq    = 100
+  , tfreq    = 60
   , tfeature = []
   }
 pillar = TileKind
