@@ -20,15 +20,15 @@ cdefs = Content.CDefs
 standard :: RuleKind
 
 standard = RuleKind
-  { rsymbol           = 's'
-  , rname             = "standard game ruleset"
-  , rfreq             = [("standard", 100)]
+  { rsymbol        = 's'
+  , rname          = "standard game ruleset"
+  , rfreq          = [("standard", 100)]
     -- Check whether one location is accessible from another.
     -- Precondition: the two locations are next to each other.
     -- TODO: in the future check flying for chasms, swimming for water, etc.
-  , raccessible       = \ _lxsize _sloc _src _tloc tgt ->
+  , raccessible    = \ _lxsize _sloc _src _tloc tgt ->
       F.Walkable `elem` tfeature tgt
-  , rtitle            = "Allure of the Stars"
-  , rpathsDataFile    = Self.getDataFileName
-  , rpathsVersion     = Self.version
+  , rtitle         = "Allure of the Stars"
+  , rpathsDataFile = Self.getDataFileName
+  , rpathsVersion  = Self.version
   }

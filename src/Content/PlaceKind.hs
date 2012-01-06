@@ -14,7 +14,7 @@ cdefs = Content.CDefs
   }
 rect,        oval, ovalFloor, ovalSquare, colonnade, colonnadeWide, maze,  maze2, maze3, mazeBig, mazeBig2, mazeBig3, cells :: PlaceKind
 
-rect = PlaceKind  -- room is valid for any nonempty area, hence low frequency
+rect = PlaceKind  -- valid for any nonempty area, hence low frequency
   { psymbol  = 'r'
   , pname    = "room"
   , pfreq    = [("rogue", 100)]
@@ -137,5 +137,5 @@ cells = PlaceKind
                , "##."
                ]
   }
--- TODO: obtain all the reet as rooms nested within rooms. 3 rooms are enough,
--- with 1 or 2 tiles between rooms, on all sides, only vertical, only horizontal,
+-- TODO: obtain all the reet as places nested within places. 3 places are enough,
+-- with 1 or 2 tiles between places, on all sides, only vertical, only horizontal,
