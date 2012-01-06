@@ -1,3 +1,4 @@
+-- | Cave layouts for Allure of the Stars.
 module Content.CaveKind ( cdefs ) where
 
 import Data.Ratio

@@ -1,3 +1,4 @@
+-- | Weapons and treasure for Allure of the Stars.
 module Content.ItemKind ( cdefs ) where
 
 import Game.LambdaHack.Color

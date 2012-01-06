@@ -1,7 +1,6 @@
+-- | The default configurations file included via CPP as a Haskell string.
 {-# LANGUAGE CPP, QuasiQuotes #-}
-module ConfigDefault
-  ( configDefault
-  ) where
+module ConfigDefault ( configDefault ) where
 
 import Multiline
 
@@ -9,7 +8,7 @@ import Multiline
 -- as soon as the config file grows very big.
 
 -- | The string containing the default configuration
--- included from file config.default (or config.bot).
+-- included from file config.default.
 -- Warning: cabal does not detect that the default config is changed,
 -- so touching this file is needed to reinclude config and recompile.
 configDefault :: String

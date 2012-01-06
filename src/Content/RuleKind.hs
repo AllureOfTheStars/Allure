@@ -1,3 +1,4 @@
+-- | Game rules and assorted data for Allure of the Stars.
 module Content.RuleKind ( cdefs ) where
 
 -- Cabal

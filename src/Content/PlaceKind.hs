@@ -1,3 +1,4 @@
+-- | Rooms, halls and passages for Allure of the Stars.
 module Content.PlaceKind ( cdefs ) where
 
 import qualified Game.LambdaHack.Content.Content as Content
@@ -14,7 +15,7 @@ cdefs = Content.CDefs
   }
 rect,        oval, ovalFloor, ovalSquare, colonnade, colonnadeWide, maze,  maze2, maze3, mazeBig, mazeBig2, mazeBig3, cells :: PlaceKind
 
-rect = PlaceKind  -- valid for any nonempty area, hence low frequency
+rect = PlaceKind  -- Valid for any nonempty area, hence low frequency.
   { psymbol  = 'r'
   , pname    = "room"
   , pfreq    = [("rogue", 100)]
@@ -22,7 +23,7 @@ rect = PlaceKind  -- valid for any nonempty area, hence low frequency
   , pfence   = FWall
   , ptopLeft = ["."]
   }
-oval = PlaceKind  -- needs a large area, hence high frequency
+oval = PlaceKind  -- Needs a large area, hence high frequency.
   { psymbol  = 'o'
   , pname    = "oval room"
   , pfreq    = [("rogue", 1000)]
@@ -36,7 +37,7 @@ oval = PlaceKind  -- needs a large area, hence high frequency
                , "......"
                ]
   }
-ovalFloor = oval  -- without outer solid fence, the pattern visible from outside
+ovalFloor = oval  -- Without outer solid fence, visible from outside.
   { pfence   = FFloor
   , ptopLeft = [ "....+#"
                , "..###."
@@ -137,5 +138,6 @@ cells = PlaceKind
                , "##."
                ]
   }
--- TODO: obtain all the reet as places nested within places. 3 places are enough,
--- with 1 or 2 tiles between places, on all sides, only vertical, only horizontal,
+-- TODO: obtain all the reet as places nested within places.
+-- 3 places are enough, with 1 or 2 tiles between places,
+-- on all sides, only vertical, only horizontal,

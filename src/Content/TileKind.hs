@@ -1,3 +1,4 @@
+-- | Terrain tiles for Allure of the Stars.
 module Content.TileKind ( cdefs ) where
 
 import Game.LambdaHack.Color
