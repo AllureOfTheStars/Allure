@@ -31,7 +31,7 @@ executable Allure
   other-modules:   Content.ActorKind,
                    Content.CaveKind,
                    Content.ItemKind,
-                   Content.RoomKind,
+                   Content.PlaceKind,
                    Content.RuleKind,
                    Content.TileKind,
                    Multiline,

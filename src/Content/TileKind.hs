@@ -14,108 +14,108 @@ cdefs = Content.CDefs
   , getFreq = tfreq
   , validate = tvalidate
   , content =
-      [wall, pillar, doorOpen, doorClosed, doorSecret, stairsUp, stairsDown, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen]
+      [wall, doorSecret, doorClosed, doorOpen, pillar, stairsUp, stairsDown, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen]
   }
-wall,        pillar, doorOpen, doorClosed, doorSecret, stairsUp, stairsDown, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen :: TileKind
+wall,        doorSecret, doorClosed, doorOpen, pillar, stairsUp, stairsDown, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen :: TileKind
 
 wall = TileKind
   { tsymbol  = '#'
   , tname    = "wall"
+  , tfreq    = [("legend", 100), ("fillerWall", 1), ("noiseSet", 60)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfreq    = 60
   , tfeature = []
   }
-pillar = TileKind
-  { tsymbol  = 'O'
-  , tname    = "pillar"
-  , tcolor   = BrWhite
-  , tcolor2  = defFG
-  , tfreq    = 100
-  , tfeature = [Special]
-  }
-doorOpen = TileKind
-  { tsymbol  = '\''
-  , tname    = "open door"
-  , tcolor   = Yellow
-  , tcolor2  = BrBlack
-  , tfreq    = 100
-  , tfeature = [ Walkable, Clear, Exit, Closable
-               , ChangeTo "closed door", ChangeFrom "open door"
-               ]
+doorSecret = wall
+  { tfreq    = [("hidden", 100)]
+  , tfeature = [Hidden, Secret (RollDice 7 2), ChangeTo "closed door"]
   }
 doorClosed = TileKind
   { tsymbol  = '+'
   , tname    = "closed door"
+  , tfreq    = [("legend", 100), ("closed door", 1)]
   , tcolor   = Yellow
   , tcolor2  = BrBlack
-  , tfreq    = 100
-  , tfeature = [ Exit, Openable
-               , ChangeTo "open door", ChangeFrom "closed door"
-               ]
+  , tfeature = [Exit, Openable, ChangeTo "open door"]
   }
-doorSecret = wall
-  { tfeature = [Hidden, Secret (RollDice 7 2), ChangeTo "closed door"]
+doorOpen = TileKind
+  { tsymbol  = '\''
+  , tname    = "open door"
+  , tfreq    = [("legend", 100), ("open door", 1)]
+  , tcolor   = Yellow
+  , tcolor2  = BrBlack
+  , tfeature = [Walkable, Clear, Exit, Closable, ChangeTo "closed door"]
+  }
+pillar = TileKind
+  { tsymbol  = 'O'
+  , tname    = "pillar"
+  , tfreq    = [("legend", 100)]
+  , tcolor   = BrWhite
+  , tcolor2  = defFG
+  , tfeature = []
   }
 stairsUp = TileKind
   { tsymbol  = '<'
   , tname    = "staircase up"
+  , tfreq    = [("legend", 100)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfreq    = 100
   , tfeature = [Walkable, Clear, Lit, Exit, Ascendable, Cause Effect.Ascend]
   }
 stairsDown = TileKind
   { tsymbol  = '>'
   , tname    = "staircase down"
+  , tfreq    = [("legend", 100)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfreq    = 100
   , tfeature = [Walkable, Clear, Lit, Exit, Descendable, Cause Effect.Descend]
   }
 unknown = TileKind
   { tsymbol  = ' '
   , tname    = "unknown space"
+  , tfreq    = [("unknown space", 1)]
   , tcolor   = defFG
   , tcolor2  = BrWhite
-  , tfreq    = 0
-  , tfeature = [Boring]
+  , tfeature = []
   }
 floorCorridorLit = TileKind
   { tsymbol  = '.'
   , tname    = "floor"
+  , tfreq    = [("noiseSet", 100), ("floorArenaLit", 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfreq    = 100
   , tfeature = [Walkable, Clear, Lit]
   }
 floorCorridorDark = floorCorridorLit
-  { tcolor   = BrYellow
+  { tfreq    = [("darkCorridor", 1)]
+  , tcolor   = BrYellow
   , tcolor2  = BrBlack
   , tfeature = [Walkable, Clear]
   }
 floorRoomLit = floorCorridorLit
-  { tfeature = Boring : tfeature floorCorridorLit
+  { tfreq    = [("legend", 100), ("floorRoomLit", 1)]
+  , tfeature = Boring : tfeature floorCorridorLit
   }
 floorRoomDark = floorCorridorDark
-  { tfeature = Boring : tfeature floorCorridorDark
+  { tfreq    = [("floorRoomDark", 1)]
+  , tfeature = Boring : tfeature floorCorridorDark
   }
 floorRed = floorCorridorLit
   { tname    = "emergency walkway"
+  , tfreq    = [("path", 20)]
   , tcolor   = BrRed
   , tcolor2  = Red
-  , tfreq    = 20
-  , tfeature = Special : tfeature floorCorridorLit
+  , tfeature = Path : tfeature floorCorridorLit
   }
 floorBlue = floorRed
   { tname    = "transport route"
+  , tfreq    = [("path", 100)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
-  , tfreq    = 100
   }
 floorGreen = floorRed
   { tname    = "greenery path"
+  , tfreq    = [("path", 100)]
   , tcolor   = BrGreen
   , tcolor2  = Green
-  , tfreq    = 100
   }

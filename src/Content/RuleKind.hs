@@ -22,7 +22,7 @@ standard :: RuleKind
 standard = RuleKind
   { rsymbol           = 's'
   , rname             = "standard game ruleset"
-  , rfreq             = 100
+  , rfreq             = [("standard", 100)]
     -- Check whether one location is accessible from another.
     -- Precondition: the two locations are next to each other.
     -- TODO: in the future check flying for chasms, swimming for water, etc.

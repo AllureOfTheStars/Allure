@@ -1,34 +1,34 @@
-module Content.RoomKind ( cdefs ) where
+module Content.PlaceKind ( cdefs ) where
 
 import qualified Game.LambdaHack.Content.Content as Content
-import Game.LambdaHack.Content.RoomKind
+import Game.LambdaHack.Content.PlaceKind
 
-cdefs :: Content.CDefs RoomKind
+cdefs :: Content.CDefs PlaceKind
 cdefs = Content.CDefs
-  { getSymbol = rsymbol
-  , getName = rname
-  , getFreq = rfreq
-  , validate = rvalidate
+  { getSymbol = psymbol
+  , getName = pname
+  , getFreq = pfreq
+  , validate = pvalidate
   , content =
       [rect, oval, ovalFloor, ovalSquare, colonnade, colonnadeWide, maze,  maze2, maze3, mazeBig, mazeBig2, mazeBig3, cells]
   }
-rect,        oval, ovalFloor, ovalSquare, colonnade, colonnadeWide, maze,  maze2, maze3, mazeBig, mazeBig2, mazeBig3, cells :: RoomKind
+rect,        oval, ovalFloor, ovalSquare, colonnade, colonnadeWide, maze,  maze2, maze3, mazeBig, mazeBig2, mazeBig3, cells :: PlaceKind
 
-rect = RoomKind  -- room is valid for any nonempty area, hence low frequency
-  { rsymbol  = 'r'
-  , rname    = "room"
-  , rfreq    = 100
-  , rcover   = CTile
-  , rfence   = FWall
-  , rtopLeft = ["."]
+rect = PlaceKind  -- room is valid for any nonempty area, hence low frequency
+  { psymbol  = 'r'
+  , pname    = "room"
+  , pfreq    = [("rogue", 100)]
+  , pcover   = CTile
+  , pfence   = FWall
+  , ptopLeft = ["."]
   }
-oval = RoomKind  -- needs a large area, hence high frequency
-  { rsymbol  = 'o'
-  , rname    = "oval room"
-  , rfreq    = 1000
-  , rcover   = CStretch
-  , rfence   = FWall
-  , rtopLeft = [ "####.."
+oval = PlaceKind  -- needs a large area, hence high frequency
+  { psymbol  = 'o'
+  , pname    = "oval room"
+  , pfreq    = [("rogue", 1000)]
+  , pcover   = CStretch
+  , pfence   = FWall
+  , ptopLeft = [ "####.."
                , "##...."
                , "#....."
                , "#....."
@@ -37,8 +37,8 @@ oval = RoomKind  -- needs a large area, hence high frequency
                ]
   }
 ovalFloor = oval  -- without outer solid fence, the pattern visible from outside
-  { rfence   = FFloor
-  , rtopLeft = [ "....+#"
+  { pfence   = FFloor
+  , ptopLeft = [ "....+#"
                , "..###."
                , ".##..."
                , ".#...."
@@ -47,60 +47,60 @@ ovalFloor = oval  -- without outer solid fence, the pattern visible from outside
                ]
   }
 ovalSquare = ovalFloor
-  { rtopLeft = [ ".###+"
+  { ptopLeft = [ ".###+"
                , "##..."
                , "#...."
                , "#...."
                , "+...."
                ]
   }
-colonnade = RoomKind
-  { rsymbol  = 'c'
-  , rname    = "colonnade"
-  , rfreq    = 50
-  , rcover   = CTile
-  , rfence   = FFloor
-  , rtopLeft = [ ".#"
+colonnade = PlaceKind
+  { psymbol  = 'c'
+  , pname    = "colonnade"
+  , pfreq    = [("rogue", 50)]
+  , pcover   = CTile
+  , pfence   = FFloor
+  , ptopLeft = [ ".#"
                , "#."
                ]
   }
 colonnadeWide = colonnade
-  { rfence   = FWall
-  , rtopLeft = [ "...."
+  { pfence   = FWall
+  , ptopLeft = [ "...."
                , ".#.#"
                , "...."
                , ".#.#"
                ]
   }
-maze = RoomKind
-  { rsymbol  = 'm'
-  , rname    = "maze"
-  , rfreq    = 50
-  , rcover   = CStretch
-  , rfence   = FNone
-  , rtopLeft = [ "#.#.##"
+maze = PlaceKind
+  { psymbol  = 'm'
+  , pname    = "maze"
+  , pfreq    = [("rogue", 50)]
+  , pcover   = CStretch
+  , pfence   = FNone
+  , ptopLeft = [ "#.#.##"
                , "##.#.."
                , "#.##.#"
                , "#.#.#."
                ]
   }
 maze2 = maze
-  { rtopLeft = [ "###.##"
+  { ptopLeft = [ "###.##"
                , ".###.."
                , "..#..#"
                , ".#..#."
                ]
   }
 maze3 = maze
-  { rtopLeft = [ "###.##"
+  { ptopLeft = [ "###.##"
                , ".##.#."
                , "..##.#"
                , ".#..#."
                ]
   }
 mazeBig = maze
-  { rfreq    = 1000
-  , rtopLeft = [ "#.#.##"
+  { pfreq    = [("rogue", 1000)]
+  , ptopLeft = [ "#.#.##"
                , ".#.#.."
                , "#.#.##"
                , ".#.#.."
@@ -109,7 +109,7 @@ mazeBig = maze
                ]
   }
 mazeBig2 = mazeBig
-  { rtopLeft = [ "##..##"
+  { ptopLeft = [ "##..##"
                , "#.##.."
                , ".#.###"
                , ".##.#."
@@ -118,7 +118,7 @@ mazeBig2 = mazeBig
                ]
   }
 mazeBig3 = mazeBig
-  { rtopLeft = [ "##..##"
+  { ptopLeft = [ "##..##"
                , "#.###."
                , ".#...#"
                , ".#.##."
@@ -126,13 +126,13 @@ mazeBig3 = mazeBig
                , "#.#.#."
                ]
   }
-cells = RoomKind
-  { rsymbol  = '#'
-  , rname    = "cells"
-  , rfreq    = 50
-  , rcover   = CReflect
-  , rfence   = FWall
-  , rtopLeft = [ "..#"
+cells = PlaceKind
+  { psymbol  = '#'
+  , pname    = "cells"
+  , pfreq    = [("rogue", 50)]
+  , pcover   = CReflect
+  , pfence   = FWall
+  , ptopLeft = [ "..#"
                , "..#"
                , "##."
                ]
