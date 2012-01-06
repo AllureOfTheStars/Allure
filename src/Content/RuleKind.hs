@@ -21,7 +21,7 @@ standard :: RuleKind
 
 standard = RuleKind
   { rsymbol        = 's'
-  , rname          = "standard game ruleset"
+  , rname          = "standard Allure of the Stars ruleset"
   , rfreq          = [("standard", 100)]
     -- Check whether one location is accessible from another.
     -- Precondition: the two locations are next to each other.

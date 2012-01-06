@@ -14,9 +14,9 @@ cdefs = Content.CDefs
   , getFreq = tfreq
   , validate = tvalidate
   , content =
-      [wall, doorSecret, doorClosed, doorOpen, pillar, stairsUp, stairsDown, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen]
+      [wall, doorHidden, doorClosed, doorOpen, pillar, stairsUp, stairsDown, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen]
   }
-wall,        doorSecret, doorClosed, doorOpen, pillar, stairsUp, stairsDown, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen :: TileKind
+wall,        doorHidden, doorClosed, doorOpen, pillar, stairsUp, stairsDown, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen :: TileKind
 
 wall = TileKind
   { tsymbol  = '#'
@@ -26,7 +26,7 @@ wall = TileKind
   , tcolor2  = defFG
   , tfeature = []
   }
-doorSecret = wall
+doorHidden = wall
   { tfreq    = [("hidden", 100)]
   , tfeature = [Hidden, Secret (RollDice 7 2), ChangeTo "closed door"]
   }
