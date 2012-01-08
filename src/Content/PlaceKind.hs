@@ -19,11 +19,11 @@ rect = PlaceKind  -- Valid for any nonempty area, hence low frequency.
   { psymbol  = 'r'
   , pname    = "room"
   , pfreq    = [("rogue", 100)]
-  , pcover   = CTile
+  , pcover   = CStretch
   , pfence   = FWall
   , ptopLeft = ["."]
   }
-oval = PlaceKind  -- Needs a large area, hence high frequency.
+oval = PlaceKind
   { psymbol  = 'o'
   , pname    = "oval room"
   , pfreq    = [("rogue", 1000)]
@@ -58,19 +58,18 @@ ovalSquare = ovalFloor
 colonnade = PlaceKind
   { psymbol  = 'c'
   , pname    = "colonnade"
-  , pfreq    = [("rogue", 50)]
-  , pcover   = CTile
+  , pfreq    = [("rogue", 1000)]
+  , pcover   = CAlternate
   , pfence   = FFloor
   , ptopLeft = [ ".#"
                , "#."
                ]
   }
 colonnadeWide = colonnade
-  { pfence   = FWall
-  , ptopLeft = [ "...."
-               , ".#.#"
-               , "...."
-               , ".#.#"
+  { pfreq    = [("rogue", 50)]
+  , pfence   = FWall
+  , ptopLeft = [ ".."
+               , ".#"
                ]
   }
 maze = PlaceKind
