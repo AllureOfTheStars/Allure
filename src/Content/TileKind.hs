@@ -36,7 +36,7 @@ doorClosed = TileKind
   { tsymbol  = '+'
   , tname    = "closed door"
   , tfreq    = [("litLegend", 100), ("darkLegend", 100), ("closed door", 1)]
-  , tcolor   = Yellow
+  , tcolor   = Brown
   , tcolor2  = BrBlack
   , tfeature = [Exit, Openable, ChangeTo "open door"]
   }
@@ -44,7 +44,7 @@ doorOpen = TileKind
   { tsymbol  = '\''
   , tname    = "open door"
   , tfreq    = [("litLegend", 100), ("darkLegend", 100), ("open door", 1)]
-  , tcolor   = Yellow
+  , tcolor   = Brown
   , tcolor2  = BrBlack
   , tfeature = [Walkable, Clear, Exit, Closable, ChangeTo "closed door"]
   }
