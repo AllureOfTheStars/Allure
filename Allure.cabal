@@ -1,6 +1,6 @@
 cabal-version: >= 1.10
 name:          Allure
-version:       0.4.2
+version:       0.4.3
 license:       BSD3
 license-file:  LICENSE
 tested-with:   GHC == 7.2.1, GHC == 7.3
@@ -38,7 +38,7 @@ executable Allure
                    ConfigDefault
   hs-source-dirs:  src
   other-modules:   Paths_Allure
-  build-depends:   LambdaHack, ConfigFile >= 1.1.1 && < 2,
+  build-depends:   LambdaHack == 0.2.0, ConfigFile >= 1.1.1 && < 2,
                    array >= 0.3.0.3 && < 1, base >= 4 && < 5,
                    binary >= 0.5.0.2 && < 1, bytestring >= 0.9.2 && < 1,
                    containers >= 0.4.1 && < 1, directory >= 1.1.0.1 && < 2,
