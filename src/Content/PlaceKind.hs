@@ -38,17 +38,18 @@ oval = PlaceKind
                ]
   }
 ovalFloor = oval  -- Without outer solid fence, visible from outside.
-  { pfence   = FFloor
-  , ptopLeft = [ "....+#"
-               , "..###."
-               , ".##..."
-               , ".#...."
+  { pfreq    = [("rogue", 10000)]
+  , pfence   = FFloor
+  , ptopLeft = [ "XXXX+#"
+               , "XX###."
+               , "X##..."
+               , "X#...."
                , "+#...."
                , "#....."
                ]
   }
 ovalSquare = ovalFloor
-  { ptopLeft = [ ".###+"
+  { ptopLeft = [ "X###+"
                , "##..."
                , "#...."
                , "#...."
