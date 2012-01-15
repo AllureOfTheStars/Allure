@@ -10,13 +10,11 @@ import Game.LambdaHack.Utils.Assert
 import Game.LambdaHack.FOV.Common
 
 -- | Calculates the list of tiles visible from (0, 0).
-scan :: Distance        -- ^ visiblity radius
-     -> (Bump -> Bool)  -- ^ clear tile predicate
-     -> [Bump]
-scan r isClear =
-  -- the scanned area is a square, which is a sphere in this metric; good
-  dscan 1 (((B(1, 0), B(-r, r)), [B(0, 0)]), ((B(0, 0), B(r+1, r)), [B(1, 0)]))
+scan :: (Bump -> Bool) -> [Bump]
+scan isClear =
+  dscan 1 (((B(1, 0), B(-r, r)), [B(0, 0)]), ((B(0, 0), B(r, r)), [B(1, 0)]))
  where
+  r = 10000
   dscan :: Distance -> EdgeInterval -> [Bump]
   dscan d (s0@(sl{-shallow line-}, sBumps0), e@(el{-steep line-}, eBumps)) =
     let ps0 = let (n, k) = intersect sl d  -- minimal progress to consider
@@ -29,10 +27,9 @@ scan r isClear =
              in -1 + n `divUp` k
         inside = [B(p, d) | p <- [ps0..pe]]
         outside
-          | d >= r = []
           | isClear (B(ps0, d)) = mscan (Just s0) (ps0+1) pe  -- start in light
           | otherwise = mscan Nothing (ps0+1) pe              -- start in shadow
-    in assert (r >= d && d >= 0 && pe >= ps0 `blame` (r,d,s0,e,ps0,pe)) $
+    in assert (d >= 0 && pe >= ps0 `blame` (d,s0,e,ps0,pe)) $
        inside ++ outside
    where
     -- The current state of a scan is kept in @Maybe Edge@.

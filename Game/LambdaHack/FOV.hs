@@ -16,25 +16,25 @@ import qualified Game.LambdaHack.Tile as Tile
 
 -- TODO: should Blind really be a FovMode, or a modifier? Let's decide
 -- when other similar modifiers are added.
-data FovMode = Shadow | Permissive Int | Digital Int | Blind
+data FovMode = Shadow | Permissive | Digital | Blind
 
 -- | Perform a full scan for a given location. Returns the locations
 -- that are currently in the field of view. The Field of View
 -- algorithm to use is set in the config file.
 -- Press a command key in the game to cycle among the algorithms
 -- and see a special visualization of their effects..
-fullscan :: FovMode -> Loc -> Kind.Ops TileKind -> Level -> [Loc]
-fullscan fovMode loc cops Level{lxsize, lmap} =
+fullscan :: FovMode -> Int -> Loc -> Kind.Ops TileKind -> Level -> [Loc]
+fullscan fovMode _radius loc cops Level{lxsize, lmap} =
   case fovMode of
     Shadow ->
       L.concatMap (\ tr -> map tr (Shadow.scan (isCl . tr) 1 (0, 1))) tr8
-    Permissive r  ->
-      L.concatMap (\ tr -> map tr (Permissive.scan r (isCl . tr))) tr4
-    Digital r ->
-      L.concatMap (\ tr -> map tr (Digital.scan r (isCl . tr))) tr4
+    Permissive ->
+      L.concatMap (\ tr -> map tr (Permissive.scan (isCl . tr))) tr4
+    Digital ->
+      L.concatMap (\ tr -> map tr (Digital.scan (isCl . tr))) tr4
     Blind ->  -- only feeling out adjacent tiles by touch
-      let radiusOne = 1
-      in L.concatMap (\ tr -> map tr (Digital.scan radiusOne (isCl . tr))) tr4
+      let _radiusOne = 1 :: Int
+      in L.concatMap (\ tr -> map tr (Digital.scan (isCl . tr))) tr4
  where
   isCl :: Loc -> Bool
   isCl = Tile.isClear cops . (lmap Kind.!)

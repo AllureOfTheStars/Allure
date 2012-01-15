@@ -17,17 +17,15 @@ import Game.LambdaHack.FOV.Common
 -- and this is necessary only for straight, thin, diagonal walls.
 
 -- | Calculates the list of tiles visible from (0, 0).
-scan :: Distance        -- ^ visiblity radius
-     -> (Bump -> Bool)  -- ^ clear tile predicate
-     -> [Bump]
-scan r isClear =
-  -- the area is diagonal, which is incorrect, but looks good enough
-  dscan 1 (((B(0, 1), B(r+1, 0)), [B(1, 0)]), ((B(1, 0), B(0, r+1)), [B(0, 1)]))
+scan :: (Bump -> Bool) -> [Bump]
+scan isClear =
+  dscan 1 (((B(0, 1), B(r, 0)), [B(1, 0)]), ((B(1, 0), B(0, r)), [B(0, 1)]))
  where
+  r = 10000
   dscan :: Distance -> EdgeInterval -> [Bump]
   dscan d (s0@(sl{-shallow line-}, sBumps0), e@(el{-steep line-}, eBumps)) =
-    assert (r >= d && d >= 0 && pe + 1 >= ps0 && ps0 >= 0
-            `blame` (r,d,s0,e,ps0,pe)) $
+    assert (d >= 0 && pe + 1 >= ps0 && ps0 >= 0
+            `blame` (d,s0,e,ps0,pe)) $
     if illegal then [] else inside ++ outside
    where
     (ns, ks) = intersect sl d
@@ -36,14 +34,13 @@ scan r isClear =
     -- is at a corner, choose pe that creates the smaller view.
     (ps0, pe) = (ns `div` ks, ne `divUp` ke - 1)  -- progress interval to check
     -- A single ray from an extremity produces non-permissive digital lines.
-    illegal  = let (n, k) = intersect sl 0
-               in ns*ke == ne*ks && (n `elem` [0, k])
+    illegal = let (n, k) = intersect sl 0
+              in ns*ke == ne*ks && (n `elem` [0, k])
     pd2bump     (p, di) = B(di - p    , p)
     bottomRight (p, di) = B(di - p + 1, p)
 
     inside = [pd2bump (p, d) | p <- [ps0..pe]]
     outside
-      | d >= r = []
       | isClear (pd2bump (ps0, d)) = mscan (Just s0) ps0  -- start in light
       | ps0 == ns `divUp` ks = mscan (Just s0) ps0        -- start in a corner
       | otherwise = mscan Nothing (ps0+1)                 -- start in mid-wall

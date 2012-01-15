@@ -132,16 +132,16 @@ computeReachable Kind.COps{cotile, coactor=Kind.Ops{okind}}
         else
           -- terrible, temporary hack
           case sensory of
-            Vision 3 -> Digital radius
-            Vision 2 -> Permissive radius
+            Vision 3 -> Digital
+            Vision 2 -> Permissive
             Vision 1 -> Shadow
             _        ->
               -- this is not a hack
               case mode of
-                "permissive" -> Permissive radius
-                "digital"    -> Digital radius
+                "permissive" -> Permissive
+                "digital"    -> Digital
                 "shadow"     -> Shadow
                 _            -> error $ "Unknown FOV mode: " ++ show mode
       ploc = bloc actor
-  in PerceptionReachable $
-       IS.insert ploc $ IS.fromList $ fullscan (fovMode actor) ploc cotile lvl
+  in PerceptionReachable $ IS.insert ploc $ IS.fromList $
+       fullscan (fovMode actor) radius ploc cotile lvl
