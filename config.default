@@ -43,9 +43,10 @@ Return: Accept
 [dungeon]
 LambdaCave_1: caveRogue
 LambdaCave_10: caveNoise
-LambdaCave_20: caveArena
-LambdaCave_30: caveEmpty
-depth: 30
+LambdaCave_20: caveEmpty
+LambdaCave_30: caveArena
+LambdaCave_40: caveNoise
+depth: 20
 
 [engine]
 fovMode: digital
