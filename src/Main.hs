@@ -32,11 +32,11 @@ cops = Kind.COps
   }
 
 -- | Wire together config, content and the definitions of game commands
--- to form the starting game session. Each of these is autonomously modifiable.
+-- to form the starting game session. Evaluate to check for errors.
 sess :: Config.CP -> FrontendSession -> Session
 sess config sfs =
   let !skeyb = BindingAction.stdBinding config cmdSemantics cmdDescription
-      !scops = Start.speedupCops cops
+      !scops = cops
   in Session{..}
 
 -- | Create the starting game config from the default config file
