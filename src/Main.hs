@@ -1,3 +1,8 @@
+-- Copyright (c) 2008--2011 Andres Loeh, 2010--2012 Mikolaj Konarski
+-- This file is a part of the computer game Allure of the Stars
+-- and is released under the terms of the GNU Affero General Public License.
+-- For license and copyright information, see the file LICENSE.
+--
 -- | The main code file of Allure of the Stairs. Here the knot of engine
 -- code pieces and the Allure-specific content defintions is tied,
 -- resulting in an executable game.

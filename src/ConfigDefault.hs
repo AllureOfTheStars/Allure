@@ -1,5 +1,10 @@
--- | The default configurations file included via CPP as a Haskell string.
 {-# LANGUAGE CPP, QuasiQuotes #-}
+-- Copyright (c) 2008--2011 Andres Loeh, 2010--2012 Mikolaj Konarski
+-- This file is a part of the computer game Allure of the Stars
+-- and is released under the terms of the GNU Affero General Public License.
+-- For license and copyright information, see the file LICENSE.
+--
+-- | The default configurations file included via CPP as a Haskell string.
 module ConfigDefault ( configDefault ) where
 
 import Multiline

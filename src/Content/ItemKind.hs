@@ -1,3 +1,8 @@
+-- Copyright (c) 2008--2011 Andres Loeh, 2010--2012 Mikolaj Konarski
+-- This file is a part of the computer game Allure of the Stars
+-- and is released under the terms of the GNU Affero General Public License.
+-- For license and copyright information, see the file LICENSE.
+--
 -- | Weapons and treasure for Allure of the Stars.
 module Content.ItemKind ( cdefs ) where
 

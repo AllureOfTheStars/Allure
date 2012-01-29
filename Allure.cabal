@@ -1,7 +1,7 @@
 cabal-version: >= 1.10
 name:          Allure
 version:       0.4.3
-license:       BSD3
+license:       OtherLicense
 license-file:  LICENSE
 tested-with:   GHC == 7.2, GHC == 7.4
 data-files:    LICENSE, CREDITS, PLAYING.md, README.md,
