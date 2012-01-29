@@ -7,7 +7,7 @@ import qualified Paths_Allure as Self (getDataFileName, version)
 import Game.LambdaHack.Content.RuleKind
 import Game.LambdaHack.Content.TileKind
 import qualified Game.LambdaHack.Feature as F
-import qualified Game.LambdaHack.Content.Content as Content
+import qualified Game.LambdaHack.Content as Content
 
 cdefs :: Content.CDefs RuleKind
 cdefs = Content.CDefs
