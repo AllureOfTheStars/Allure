@@ -26,7 +26,7 @@ and run 'cabal install' from the main directory.
 Further information
 -------------------
 
-For more information, visit the wiki at https://github.com/Mikolaj/Allure/wiki
+For more information, visit the [wiki] [6]
 and see the files PLAYING.md, CREDITS and LICENSE.
 
 Have fun!
@@ -59,3 +59,4 @@ If not, see <http://www.gnu.org/licenses/>.
 [3]: http://github.com/Mikolaj/Allure
 [4]: http://hackage.haskell.org/package/Allure
 [5]: http://github.com/kosmikus/LambdaHack
+[6]: https://github.com/Mikolaj/Allure/wiki
