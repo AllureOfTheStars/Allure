@@ -18,7 +18,5 @@ import Multiline
 -- so touching this file is needed to reinclude config and recompile.
 configDefault :: String
 configDefault = [multiline|
-
 #include "../config.default"
-
 |]
