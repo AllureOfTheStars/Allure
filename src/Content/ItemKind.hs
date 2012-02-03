@@ -20,9 +20,9 @@ cdefs = Content.CDefs
   , getFreq = ifreq
   , validate = ivalidate
   , content =
-      [necklace, dart, gem1, gem2, gem3, gem4, gold, javelin, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand, fist, foot, tentacle]
+      [necklace, dart, gem1, gem2, gem3, gold, javelin, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand, fist, foot, tentacle, weight]
   }
-necklace,        dart, gem1, gem2, gem3, gem4, gold, javelin, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand, fist, foot, tentacle:: ItemKind
+necklace,        dart, gem1, gem2, gem3, gold, javelin, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand, fist, foot, tentacle, weight :: ItemKind
 
 gem, potion, scroll :: ItemKind  -- generic templates
 
@@ -31,11 +31,11 @@ gem, potion, scroll :: ItemKind  -- generic templates
 necklace = ItemKind
   { isymbol  = '"'
   , iname    = "necklace"
-  , ifreq    = [("dng", 10)]
+  , ifreq    = [("dng", 5)]
   , iflavour = zipFancy [BrGreen]
   , ieffect  = Regeneration
   , icount   = intToDeep 1
-  , ipower   = (RollDice 2 1, RollDice 2 2)
+  , ipower   = (RollDice 2 3, RollDice 1 10)
   , iverbApply   = "tear down"
   , iverbProject = "throw"
   }
@@ -62,15 +62,12 @@ gem = ItemKind
   , iverbProject = "throw"
   }
 gem1 = gem
-  { icount   = (RollDice 1 1, RollDice 0 0)  -- appears on lvl 1
+  { icount   = (RollDice 1 1, RollDice 1 1)  -- appears on lvl 1
   }
 gem2 = gem
-  { icount   = (RollDice 0 0, RollDice 2 1)  -- appears halfway, doubled on max
+  { icount   = (RollDice 0 0, RollDice 1 2)  -- appears halfway, doubled on max
   }
 gem3 = gem
-  { icount   = (RollDice 0 0, RollDice 1 1)  -- appears on max depth
-  }
-gem4 = gem
   { icount   = (RollDice 0 0, RollDice 1 1)  -- appears on max depth
   }
 gold = ItemKind
@@ -89,9 +86,9 @@ javelin = ItemKind
   , iname    = "javelin"
   , ifreq    = [("dng", 30)]
   , iflavour = zipPlain [Brown]
-  , ieffect  = Wound (RollDice 1 1)
+  , ieffect  = Wound (RollDice 1 2)
   , icount   = (RollDice 0 0, RollDice 2 2)
-  , ipower   = (RollDice 1 7, RollDice 0 0)
+  , ipower   = (RollDice 1 1, RollDice 2 2)
   , iverbApply   = "break up"
   , iverbProject = "throw"
   }
@@ -191,4 +188,13 @@ tentacle = sword
   , ifreq    = [("monstrous", 100)]
   , iverbApply   = "hit"
   , iverbProject = "ERROR, please report: iverbProject tentacle"
+  }
+weight = sword
+  { isymbol  = '@'
+  , iname    = "jump from high up"
+  , ifreq    = [("weight", 100)]
+  , ieffect  = Wound (RollDice 99 99)
+  , ipower   = (RollDice 1 99, RollDice 0 0)
+  , iverbApply   = "squash"
+  , iverbProject = "ERROR, please report: iverbProject weight"
   }
