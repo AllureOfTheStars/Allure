@@ -28,7 +28,7 @@ wall = TileKind
   { tsymbol  = '#'
   , tname    = "wall"
   , tfreq    = [ ("litLegend", 100), ("darkLegend", 100)
-               , ("fillerWall", 1), ("noiseSet", 60) ]
+               , ("fillerWall", 1), ("noiseSet", 55) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , tfeature = []

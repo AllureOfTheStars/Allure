@@ -41,7 +41,7 @@ necklace = ItemKind
   }
 dart = ItemKind
   { isymbol  = '|'
-  , iname    = "dart"
+  , iname    = "billiard ball"
   , ifreq    = [("dng", 30)]
   , iflavour = zipPlain [Cyan]
   , ieffect  = Wound (RollDice 1 1)
@@ -83,7 +83,7 @@ gold = ItemKind
   }
 javelin = ItemKind
   { isymbol  = '|'
-  , iname    = "javelin"
+  , iname    = "kitchen knife"
   , ifreq    = [("dng", 30)]
   , iflavour = zipPlain [Brown]
   , ieffect  = Wound (RollDice 1 2)
@@ -117,18 +117,18 @@ potion3 = potion
 ring = ItemKind
   { isymbol  = '='
   , iname    = "ring"
-  , ifreq    = [("dng", 10)]
+  , ifreq    = [("dng", 7)]
   , iflavour = zipPlain [White]
   , ieffect  = Searching
   , icount   = intToDeep 1
-  , ipower   = (RollDice 1 1, RollDice 2 2)
+  , ipower   = (RollDice 1 2, RollDice 2 2)
   , iverbApply   = "squeeze down"
   , iverbProject = "throw"
   }
 scroll = ItemKind
   { isymbol  = '?'
   , iname    = "comm tablet"
-  , ifreq    = [("dng", 10)]
+  , ifreq    = [("dng", 7)]
   , iflavour = zipFancy darkCol  -- arcane and old
   , ieffect  = NoEffect
   , icount   = intToDeep 1
@@ -138,7 +138,6 @@ scroll = ItemKind
   }
 scroll1 = scroll
   { ieffect  = SummonFriend
-  , ifreq    = [("dng", 20)]
   }
 scroll2 = scroll
   { ieffect  = SummonEnemy
@@ -148,7 +147,7 @@ scroll3 = scroll
   }
 sword = ItemKind
   { isymbol  = ')'
-  , iname    = "kitchen blade"
+  , iname    = "sharpened pipe"
   , ifreq    = [("dng", 60)]
   , iflavour = zipPlain [BrCyan]
   , ieffect  = Wound (RollDice 3 1)
@@ -160,7 +159,7 @@ sword = ItemKind
 wand = ItemKind
   { isymbol  = '/'
   , iname    = "transmitter"
-  , ifreq    = [("dng", 10)]
+  , ifreq    = [("dng", 7)]
   , iflavour = zipFancy [BrRed]
   , ieffect  = Dominate
   , icount   = intToDeep 1
