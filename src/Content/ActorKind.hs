@@ -40,24 +40,24 @@ eye = ActorKind
   , aname   = "deranged household robot"
   , afreq   = [("monster", 60), ("summon", 50)]
   , acolor  = BrYellow
-  , ahp     = RollDice 3 4  -- Falls in 1--4 unarmed rounds.
+  , ahp     = RollDice 3 4
   , aspeed  = 10
   , asight  = True
   , asmell  = False
   , aiq     = 8
-  , aregen  = 1500
+  , aregen  = 1000
   }
 fastEye = ActorKind
   { asymbol = 'm'
   , aname   = "deformed monkey"
-  , afreq   = [("monster", 10)]
+  , afreq   = [("monster", 15)]
   , acolor  = BrMagenta
-  , ahp     = RollDice 1 4  -- Falls in 1--2 unarmed rounds.
-  , aspeed  = 4
+  , ahp     = RollDice 1 4
+  , aspeed  = 5
   , asight  = True
   , asmell  = False
   , aiq     = 12
-  , aregen  = 100
+  , aregen  = 50  -- Regenerates fast (at max HP most of the time!).
   }
 nose = ActorKind
   { asymbol = 'h'
@@ -69,5 +69,5 @@ nose = ActorKind
   , asight  = False
   , asmell  = True
   , aiq     = 0
-  , aregen  = 1500
+  , aregen  = 1000
   }
