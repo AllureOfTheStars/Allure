@@ -4,7 +4,7 @@
 ; For license and copyright information, see the file LICENSE.
 ;
 ; Overriding config file options to help the bot.
-; DumbBot 42 20000000 | LambdaHack > /tmp/log
+; DumbBot 42 20000000 | Allure > /tmp/log
 
 [commands]
 q: Apply { verb = "quaff", object = "potion", syms = "!" }
@@ -13,8 +13,8 @@ z: Project { verb = "zap", object = "wand", syms = "/" }
 t: Project { verb = "throw", object = "dart", syms = "|" }
 
 [dungeon]
-depth: 1000
+depth: 100
 
 [heroes]
-baseHP: 1000000
-extraHeroes: 4
+baseHP: 999999
+extraHeroes: 1
