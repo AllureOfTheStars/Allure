@@ -6,7 +6,7 @@ alone or in a party of trusted crew-members, gaining access to new levels,
 bumping into hostile intruders, doors and walls, gathering technical resources
 and making creative use of them. The bloodthirsty alien monsters do the same,
 intelligence allowing, while tirelessly chasing the noble heroes
-by smell and night-sight.
+by smell and sight.
 
 Once the few basic command keys and on-screen symbols are learned,
 mastery and enjoyment of the game is the matter of tactical skill
