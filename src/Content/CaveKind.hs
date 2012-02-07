@@ -64,9 +64,11 @@ empty = rogue
   , cgrid         = RollDiceXY (RollDice 2 2, RollDice 1 2)
   , cminPlaceSize = RollDiceXY (RollDice 4 3, RollDice 4 1)
   , cdarkChance   = (RollDice 1 80, RollDice 1 80)
-  , cvoidChance   = 1%2
-  , cnonVoidMin   = 0
-  , citemNum      = RollDice 6 2  -- all floor strewn with treasure
+  , cauxConnects  = 1
+  , cvoidChance   = 3%4
+  , cnonVoidMin   = 1
+  , cminStairDist = 50
+  , citemNum      = RollDice 6 2  -- whole floor strewn with treasure
   , cdefTile      = "floorRoomLit"
   , ccorTile      = "floorRoomLit"
   }

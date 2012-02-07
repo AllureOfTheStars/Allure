@@ -6,12 +6,6 @@
 ; Overriding config file options to help the bot.
 ; DumbBot 42 20000000 | Allure > /tmp/log
 
-[commands]
-q: Apply { verb = "quaff", object = "potion", syms = "!" }
-r: Apply { verb = "read", object = "scroll", syms = "?" }
-z: Project { verb = "zap", object = "wand", syms = "/" }
-t: Project { verb = "throw", object = "dart", syms = "|" }
-
 [dungeon]
 depth: 100
 

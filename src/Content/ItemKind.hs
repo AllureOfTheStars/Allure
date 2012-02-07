@@ -62,13 +62,13 @@ gem = ItemKind
   , iverbProject = "throw"
   }
 gem1 = gem
-  { icount   = (RollDice 1 1, RollDice 1 1)  -- appears on lvl 1
+  { icount   = (RollDice 0 0, RollDice 1 1)  -- appears on max depth
   }
 gem2 = gem
   { icount   = (RollDice 0 0, RollDice 1 2)  -- appears halfway, doubled on max
   }
 gem3 = gem
-  { icount   = (RollDice 0 0, RollDice 1 1)  -- appears on max depth
+  { icount   = (RollDice 0 0, RollDice 1 3)
   }
 gold = ItemKind
   { isymbol  = '$'

@@ -28,8 +28,12 @@
 ; g: Pickup
 ; d: Drop
 ; i: Inventory
-; a: Apply { verb = "apply", object = "applicable", syms = "!?" }
-; p: Project { verb = "project", object = "projectable", syms = "/|" }
+; a: Apply { verb = "apply", object = "consumable", syms = "!?" }
+; p: Project { verb = "project", object = "projectile", syms = "/|" }
+; q: Apply { verb = "quaff", object = "drink", syms = "!" }
+; r: Apply { verb = "read", object = "comm", syms = "?" }
+; z: Project { verb = "zap", object = "mechanism", syms = "/" }
+; t: Project { verb = "throw", object = "missile", syms = "|" }
 ; ;
 ; ; Saving or ending the game.
 ; X: GameSave
@@ -50,17 +54,14 @@
 ; [dungeon]
 ; ; Fixed caves for the first levels, then randomly picked caves.
 ; LambdaCave_1: caveRogue
-; LambdaCave_10: caveNoise
-; LambdaCave_20: caveEmpty
-; LambdaCave_30: caveArena
-; LambdaCave_40: caveNoise
-; depth: 20
+; LambdaCave_12: caveNoise
+; depth: 12
 
 ; [engine]
 ; fovMode: digital
 ; ;fovMode: permissive
 ; ;fovMode: shadow
-; fovRadius: 10
+; fovRadius: 12
 ; ;startingRandomGenerator: 42
 ; ;dungeonRandomGenerator: 42
 
