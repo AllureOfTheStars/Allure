@@ -18,8 +18,8 @@ automatically by Cabal from [Hackage] [4] as follows
 
     cabal install Allure
 
-For a more current snapshot, install a matching recent snapshot
-of the LambdaHack library, download the game source from [github] [3]
+For a newer version, install a matching LambdaHack library snapshot
+from a development branch, download the game source from [github] [3]
 and run 'cabal install' from the main directory.
 
 
