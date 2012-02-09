@@ -26,9 +26,9 @@ and run 'cabal install' from the main directory.
 Compatibility note
 ------------------
 
-The current code was tested with a few versions of GHC 7.2.*
-and a few pre-release versions of GHC 7.4.*. A [few tweaks] [7] are needed
-to compile with 7.0.* and some more are needed for 6.12.*.
+The current code was tested with GHC 7.2.2 and several pre-release versions
+of GHC 7.4. A [few tweaks] [7] are needed to compile with 7.0
+and some more are needed for 6.12.
 
 
 Further information
