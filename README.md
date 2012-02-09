@@ -23,6 +23,14 @@ from a development branch, download the game source from [github] [3]
 and run 'cabal install' from the main directory.
 
 
+Compatibility note
+------------------
+
+The current code was tested with a few versions of GHC 7.2.*
+and a few pre-release versions of GHC 7.4.*. A [few tweaks] [7] are needed
+to compile with 7.0.* and some more are needed for 6.12.*.
+
+
 Further information
 -------------------
 
@@ -53,10 +61,10 @@ If not, see <http://www.gnu.org/licenses/>.
 
 
 
-
 [1]: http://www.haskell.org/
 [2]: http://roguebasin.roguelikedevelopment.org/index.php?title=Berlin_Interpretation
 [3]: http://github.com/Mikolaj/Allure
 [4]: http://hackage.haskell.org/package/Allure
 [5]: http://github.com/kosmikus/LambdaHack
 [6]: https://github.com/Mikolaj/Allure/wiki
+[7]: https://github.com/Mikolaj/Allure/commit/3d0aa5bef7a0ef39e7611d4e12229224f4cead75
