@@ -41,7 +41,7 @@ executable Allure
                    ConfigDefault
   hs-source-dirs:  src
   other-modules:   Paths_Allure
-  build-depends:   LambdaHack == 0.2.0,
+  build-depends:   LambdaHack >= 0.2.0   && < 0.2.1,
                    template-haskell >= 2.6 && < 3,
                    ConfigFile >= 1.1.1   && < 2,
                    array      >= 0.3.0.3 && < 1,
