@@ -22,6 +22,8 @@
 ; braceright:   TgtAscend (-10)
 ; slash: TgtFloor
 ; asterisk: TgtEnemy
+; plus: EpsIncr True
+; minus: EpsIncr False
 ; Tab: HeroCycle
 ; ;
 ; ; Items.
