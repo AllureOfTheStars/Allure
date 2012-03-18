@@ -6,6 +6,8 @@
 -- | Weapons and treasure for Allure of the Stars.
 module Content.ItemKind ( cdefs ) where
 
+import qualified Data.List as L
+
 import Game.LambdaHack.Color
 import qualified Game.LambdaHack.Content as Content
 import Game.LambdaHack.Effect
@@ -20,13 +22,36 @@ cdefs = Content.CDefs
   , getFreq = ifreq
   , validate = ivalidate
   , content =
-      [necklace, dart, gem1, gem2, gem3, gold, javelin, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand, fist, foot, tentacle, weight]
+      [necklace, dart, gem1, gem2, gem3, gold, javelin, kitchenKnife, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand, fist, foot, tentacle, weight]
   }
-necklace,        dart, gem1, gem2, gem3, gold, javelin, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand, fist, foot, tentacle, weight :: ItemKind
+necklace,        dart, gem1, gem2, gem3, gold, javelin, kitchenKnife, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand, fist, foot, tentacle, weight :: ItemKind
 
 gem, potion, scroll :: ItemKind  -- generic templates
 
 -- rollDeep (aDb, xDy) = rollDice aDb + lvl * rollDice xDy / depth
+
+{- Item group symbols (from Angband, only as an informal convention for now):
+
+! potion, flask, concoction, bottle, jar, vial, canister
+? scroll, book, note, tablet, remote
+, food
+- magical wand, magical rod, transmitter, pistol, rifle
+_ magical staff, scanner
+= ring
+" necklace
+$ gold, gem
+~ light, tool
+/ polearm
+| edged weapon
+\ hafted weapon
+} launcher
+{ projectile
+( clothes
+[ torso armour
+] misc. armour
+) shield
+
+-}
 
 necklace = ItemKind
   { isymbol  = '"'
@@ -37,33 +62,33 @@ necklace = ItemKind
   , icount   = intToDeep 1
   , ipower   = (RollDice 2 3, RollDice 1 10)
   , iverbApply   = "tear down"
-  , iverbProject = "throw"
+  , iverbProject = "cast"
   , iweight  = 30
   , itoThrow = -50  -- not dense enough
   }
 dart = ItemKind
-  { isymbol  = '|'
+  { isymbol  = '{'
   , iname    = "billiard ball"
   , ifreq    = [("dng", 30)]
-  , iflavour = zipPlain [Cyan]
+  , iflavour = zipPlain [BrWhite]
   , ieffect  = Wound (RollDice 1 1)
   , icount   = (RollDice 3 3, RollDice 0 0)
   , ipower   = intToDeep 0
-  , iverbApply   = "snap"
-  , iverbProject = "throw"
+  , iverbApply   = "splinter"
+  , iverbProject = "hurl"
   , iweight  = 50
   , itoThrow = 0  -- a cheap dart
   }
 gem = ItemKind
-  { isymbol  = '*'
+  { isymbol  = '$'
   , iname    = "precious gem"
   , ifreq    = [("dng", 20)]       -- x3, but rare on shallow levels
-  , iflavour = zipPlain brightCol  -- natural, so not fancy
+  , iflavour = zipPlain $ L.delete BrYellow brightCol  -- natural, so not fancy
   , ieffect  = NoEffect
   , icount   = intToDeep 0
   , ipower   = intToDeep 0
   , iverbApply   = "crush"
-  , iverbProject = "throw"
+  , iverbProject = "toss"
   , iweight  = 50
   , itoThrow = 0
   }
@@ -85,26 +110,39 @@ gold = ItemKind
   , icount   = (RollDice 0 0, RollDice 10 10)
   , ipower   = intToDeep 0
   , iverbApply   = "grind"
-  , iverbProject = "throw"
+  , iverbProject = "toss"
   , iweight  = 31
   , itoThrow = 0
   }
 javelin = ItemKind
-  { isymbol  = '|'
-  , iname    = "kitchen knife"
+  { isymbol  = '{'
+  , iname    = "javelin"
   , ifreq    = [("dng", 30)]
   , iflavour = zipPlain [Brown]
   , ieffect  = Wound (RollDice 1 2)
-  , icount   = (RollDice 0 0, RollDice 2 2)
+  , icount   = (RollDice 0 0, RollDice 1 1)
   , ipower   = (RollDice 1 1, RollDice 2 2)
   , iverbApply   = "break up"
-  , iverbProject = "throw"
-  , iweight  = 3000
+  , iverbProject = "hurl"
+  , iweight  = 2000
   , itoThrow = 0  -- cheap but deadly
+  }
+kitchenKnife = ItemKind
+  { isymbol  = '{'
+  , iname    = "kitchen knife"
+  , ifreq    = [("dng", 30)]
+  , iflavour = zipPlain [BrCyan]
+  , ieffect  = Wound (RollDice 1 1)
+  , icount   = (RollDice 0 0, RollDice 1 2)
+  , ipower   = (RollDice 0 0, RollDice 1 2)
+  , iverbApply   = "bend"
+  , iverbProject = "throw"
+  , iweight  = 200
+  , itoThrow = -50  -- too flexible and the handle causes air resistance
   }
 potion = ItemKind
   { isymbol  = '!'
-  , iname    = "concoction"
+  , iname    = "vial"
   , ifreq    = [("dng", 15)]
   , iflavour = zipFancy stdCol
   , ieffect  = NoEffect
@@ -137,22 +175,22 @@ ring = ItemKind
   , icount   = intToDeep 1
   , ipower   = (RollDice 1 6, RollDice 3 2)
   , iverbApply   = "squeeze down"
-  , iverbProject = "throw"
+  , iverbProject = "toss"
   , iweight  = 15
   , itoThrow = 0
   }
 scroll = ItemKind
   { isymbol  = '?'
-  , iname    = "comm tablet"
+  , iname    = "tablet"
   , ifreq    = [("dng", 6)]
   , iflavour = zipFancy darkCol  -- arcane and old
   , ieffect  = NoEffect
   , icount   = intToDeep 1
   , ipower   = intToDeep 0
   , iverbApply   = "dial"
-  , iverbProject = "throw"
-  , iweight  = 50
-  , itoThrow = -75  -- bad shape, even rolled up
+  , iverbProject = "lob"
+  , iweight  = 700
+  , itoThrow = -25  -- bad grip
   }
 scroll1 = scroll
   { ieffect  = SummonFriend
@@ -165,21 +203,21 @@ scroll3 = scroll
   { ieffect  = Descend
   }
 sword = ItemKind
-  { isymbol  = ')'
+  { isymbol  = '/'
   , iname    = "sharpened pipe"
   , ifreq    = [("dng", 60)]
-  , iflavour = zipPlain [BrCyan]
+  , iflavour = zipPlain [Cyan]
   , ieffect  = Wound (RollDice 3 1)
   , icount   = intToDeep 1
   , ipower   = (RollDice 1 2, RollDice 4 2)
   , iverbApply   = "hit"
   , iverbProject = "heave"
-  , iweight  = 2000
-  , itoThrow = -50  -- ensuring it hits with the tip costs speed
+  , iweight  = 3000
+  , itoThrow = -25  -- bad grip
   }
 wand = ItemKind
-  { isymbol  = '/'
-  , iname    = "transmitter"
+  { isymbol  = '-'
+  , iname    = "injector"
   , ifreq    = [("dng", 15)]
   , iflavour = zipFancy [BrRed]
   , ieffect  = Dominate
@@ -188,7 +226,7 @@ wand = ItemKind
   , iverbApply   = "snap"
   , iverbProject = "zap"
   , iweight  = 300
-  , itoThrow = 25  -- magic
+  , itoThrow = 25  -- jet
   }
 fist = sword
   { isymbol  = '@'
