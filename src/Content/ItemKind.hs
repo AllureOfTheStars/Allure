@@ -38,6 +38,8 @@ necklace = ItemKind
   , ipower   = (RollDice 2 3, RollDice 1 10)
   , iverbApply   = "tear down"
   , iverbProject = "throw"
+  , iweight  = 30
+  , itoThrow = -50  -- not dense enough
   }
 dart = ItemKind
   { isymbol  = '|'
@@ -49,6 +51,8 @@ dart = ItemKind
   , ipower   = intToDeep 0
   , iverbApply   = "snap"
   , iverbProject = "throw"
+  , iweight  = 50
+  , itoThrow = 0  -- a cheap dart
   }
 gem = ItemKind
   { isymbol  = '*'
@@ -60,6 +64,8 @@ gem = ItemKind
   , ipower   = intToDeep 0
   , iverbApply   = "crush"
   , iverbProject = "throw"
+  , iweight  = 50
+  , itoThrow = 0
   }
 gem1 = gem
   { icount   = (RollDice 0 0, RollDice 1 1)  -- appears on max depth
@@ -80,6 +86,8 @@ gold = ItemKind
   , ipower   = intToDeep 0
   , iverbApply   = "grind"
   , iverbProject = "throw"
+  , iweight  = 31
+  , itoThrow = 0
   }
 javelin = ItemKind
   { isymbol  = '|'
@@ -91,6 +99,8 @@ javelin = ItemKind
   , ipower   = (RollDice 1 1, RollDice 2 2)
   , iverbApply   = "break up"
   , iverbProject = "throw"
+  , iweight  = 3000
+  , itoThrow = 0  -- cheap but deadly
   }
 potion = ItemKind
   { isymbol  = '!'
@@ -102,6 +112,8 @@ potion = ItemKind
   , ipower   = intToDeep 0
   , iverbApply   = "gulp down"
   , iverbProject = "lob"
+  , iweight  = 200
+  , itoThrow = -50  -- oily, bad grip
   }
 potion1 = potion
   { ifreq    = [("dng", 5)]
@@ -126,6 +138,8 @@ ring = ItemKind
   , ipower   = (RollDice 1 6, RollDice 3 2)
   , iverbApply   = "squeeze down"
   , iverbProject = "throw"
+  , iweight  = 15
+  , itoThrow = 0
   }
 scroll = ItemKind
   { isymbol  = '?'
@@ -137,6 +151,8 @@ scroll = ItemKind
   , ipower   = intToDeep 0
   , iverbApply   = "dial"
   , iverbProject = "throw"
+  , iweight  = 50
+  , itoThrow = -75  -- bad shape, even rolled up
   }
 scroll1 = scroll
   { ieffect  = SummonFriend
@@ -158,6 +174,8 @@ sword = ItemKind
   , ipower   = (RollDice 1 2, RollDice 4 2)
   , iverbApply   = "hit"
   , iverbProject = "heave"
+  , iweight  = 2000
+  , itoThrow = -50  -- ensuring it hits with the tip costs speed
   }
 wand = ItemKind
   { isymbol  = '/'
@@ -169,6 +187,8 @@ wand = ItemKind
   , ipower   = intToDeep 0
   , iverbApply   = "snap"
   , iverbProject = "zap"
+  , iweight  = 300
+  , itoThrow = 25  -- magic
   }
 fist = sword
   { isymbol  = '@'
