@@ -3,7 +3,7 @@ name:          Allure
 version:       0.4.4
 license:       OtherLicense
 license-file:  LICENSE
-tested-with:   GHC == 7.2.2, GHC == 7.4
+tested-with:   GHC == 7.2.2, GHC == 7.4.1
 data-files:    LICENSE, CREDITS, PLAYING.md, README.md,
                config.default, config.bot, scores
 author:        Andres Loeh, Mikolaj Konarski and others
@@ -13,6 +13,9 @@ description:   This is an alpha release of Allure of the Stars,
                The game is barely fun at this stage and not yet
                really Sci-Fi. See the wiki for design notes and contribute.
                .
+               New in this release are missiles flying for three turns
+               (by an old kosmikus' idea), visual feedback when targeting
+               and combat and individual monster moves animations.
                Long term goals are high replayability and auto-balancing
                through procedural content generation and persistent content
                modification based on player behaviour.
