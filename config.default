@@ -22,18 +22,20 @@
 ; braceright:   TgtAscend (-10)
 ; slash: TgtFloor
 ; asterisk: TgtEnemy
+; plus: EpsIncr True
+; minus: EpsIncr False
 ; Tab: HeroCycle
 ; ;
 ; ; Items.
 ; g: Pickup
 ; d: Drop
 ; i: Inventory
-; a: Apply { verb = "apply", object = "consumable", syms = "!?" }
-; p: Project { verb = "project", object = "projectile", syms = "/|" }
+; a: Apply { verb = "apply", object = "consumable", syms = "!?,_~" }
+; p: Project { verb = "project", object = "missile", syms = "-}{" }
 ; q: Apply { verb = "quaff", object = "drink", syms = "!" }
-; r: Apply { verb = "read", object = "comm", syms = "?" }
-; z: Project { verb = "zap", object = "mechanism", syms = "/" }
-; t: Project { verb = "throw", object = "missile", syms = "|" }
+; r: Apply { verb = "read", object = "tablet", syms = "?" }
+; z: Project { verb = "zap", object = "mechanism", syms = "-" }
+; t: Project { verb = "throw", object = "projectile", syms = "}{" }
 ; ;
 ; ; Saving or ending the game.
 ; X: GameSave
@@ -95,7 +97,7 @@
 ; period: KP_Begin
 
 ; [monsters]
-; smellTimeout: 1000
+; smellTimeout: 100
 
 ; [ui]
 ; font: Terminus,Monospace normal normal normal normal 12

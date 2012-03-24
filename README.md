@@ -23,12 +23,21 @@ from a development branch, download the game source from [github] [3]
 and run 'cabal install' from the main directory.
 
 
-Compatibility note
-------------------
+Compatibility notes
+-------------------
 
 The current code was tested with GHC 7.2.2 and several pre-release versions
 of GHC 7.4. A [few tweaks] [7] are needed to compile with 7.0
 and some more are needed for 6.12.
+
+If you are using the curses or vty frontends,
+numerical keypad may not work correctly depending on the versions
+of curses, terminfo and terminal emulators.
+Selecting heroes via number keys or SHIFT-keypad keys is disabled
+with curses, because CTRL-keypad for running does not work there,
+so the numbers produced by the keypad have to be used. With vty on xterm,
+CTRL-direction keys seem to work OK, but on rxvt they do not.
+Vi keys (ykuhlbjn) should work everywhere regardless. Gtk works fine, too.
 
 
 Further information

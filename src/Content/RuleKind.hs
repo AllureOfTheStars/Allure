@@ -37,4 +37,6 @@ standard = RuleKind
   , rtitle         = "Allure of the Stars"
   , rpathsDataFile = Self.getDataFileName
   , rpathsVersion  = Self.version
+  , ritemMelee     = "/|\\"
+  , ritemProject   = "!?,-~}{"
   }
