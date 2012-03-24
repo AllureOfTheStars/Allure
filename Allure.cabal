@@ -1,9 +1,9 @@
 cabal-version: >= 1.10
 name:          Allure
-version:       0.4.3
+version:       0.4.4
 license:       OtherLicense
 license-file:  LICENSE
-tested-with:   GHC == 7.2.2, GHC == 7.4
+tested-with:   GHC == 7.2.2, GHC == 7.4.1
 data-files:    LICENSE, CREDITS, PLAYING.md, README.md,
                config.default, config.bot, scores
 author:        Andres Loeh, Mikolaj Konarski and others
@@ -13,6 +13,9 @@ description:   This is an alpha release of Allure of the Stars,
                The game is barely fun at this stage and not yet
                really Sci-Fi. See the wiki for design notes and contribute.
                .
+               New in this release are missiles flying for three turns
+               (by an old kosmikus' idea), visual feedback for targeting
+               and animations of combat and individual monster moves.
                Long term goals are high replayability and auto-balancing
                through procedural content generation and persistent content
                modification based on player behaviour.
@@ -41,7 +44,7 @@ executable Allure
                    ConfigDefault
   hs-source-dirs:  src
   other-modules:   Paths_Allure
-  build-depends:   LambdaHack >= 0.2.0   && < 0.2.1,
+  build-depends:   LambdaHack >= 0.2.1   && < 0.2.2,
                    template-haskell >= 2.6 && < 3,
                    ConfigFile >= 1.1.1   && < 2,
                    array      >= 0.3.0.3 && < 1,
@@ -60,6 +63,6 @@ executable Allure
                       BangPatterns, RecordWildCards, NamedFieldPuns
   other-extensions: CPP, QuasiQuotes
   ghc-options:     -Wall -fwarn-orphans -fwarn-tabs -fwarn-incomplete-uni-patterns -fwarn-incomplete-record-updates -fwarn-monomorphism-restriction -fwarn-unrecognised-pragmas
-  ghc-options:     -fno-warn-auto-orphans -fno-warn-implicit-prelude -fno-warn-unused-do-bind
+  ghc-options:     -fno-warn-auto-orphans -fno-warn-implicit-prelude
   ghc-options:     -fno-ignore-asserts -funbox-strict-fields
-  ghc-options:     -threaded
+  ghc-options:     -threaded -with-rtsopts=-C0.005
