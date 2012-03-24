@@ -14,8 +14,8 @@ description:   This is an alpha release of Allure of the Stars,
                really Sci-Fi. See the wiki for design notes and contribute.
                .
                New in this release are missiles flying for three turns
-               (by an old kosmikus' idea), visual feedback when targeting
-               and combat and individual monster moves animations.
+               (by an old kosmikus' idea), visual feedback for targeting
+               and animations of combat and individual monster moves.
                Long term goals are high replayability and auto-balancing
                through procedural content generation and persistent content
                modification based on player behaviour.
