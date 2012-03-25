@@ -36,6 +36,7 @@ executable Allure
   main-is:         Main.hs
   other-modules:   Content.ActorKind,
                    Content.CaveKind,
+                   Content.FactionKind,
                    Content.ItemKind,
                    Content.PlaceKind,
                    Content.RuleKind,
