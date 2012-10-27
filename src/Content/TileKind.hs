@@ -7,14 +7,14 @@
 module Content.TileKind ( cdefs ) where
 
 import Game.LambdaHack.Color
-import qualified Game.LambdaHack.Content as Content
+import Game.LambdaHack.CDefs
 import qualified Game.LambdaHack.Effect as Effect
 import Game.LambdaHack.Feature
 import Game.LambdaHack.Content.TileKind
 import Game.LambdaHack.Random
 
-cdefs :: Content.CDefs TileKind
-cdefs = Content.CDefs
+cdefs :: CDefs TileKind
+cdefs = CDefs
   { getSymbol = tsymbol
   , getName = tname
   , getFreq = tfreq

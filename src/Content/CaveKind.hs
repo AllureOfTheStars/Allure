@@ -8,13 +8,13 @@ module Content.CaveKind ( cdefs ) where
 
 import Data.Ratio
 
-import qualified Game.LambdaHack.Content as Content
+import Game.LambdaHack.CDefs
 import Game.LambdaHack.Misc
 import Game.LambdaHack.Random as Random
 import Game.LambdaHack.Content.CaveKind
 
-cdefs :: Content.CDefs CaveKind
-cdefs = Content.CDefs
+cdefs :: CDefs CaveKind
+cdefs = CDefs
   { getSymbol = csymbol
   , getName = cname
   , getFreq = cfreq

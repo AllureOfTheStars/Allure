@@ -3,7 +3,7 @@ name:          Allure
 version:       0.4.5
 license:       OtherLicense
 license-file:  LICENSE
-tested-with:   GHC == 7.2.2, GHC == 7.4.1
+tested-with:   GHC == 7.2.2, GHC == 7.4.1, GHC == 7.6.1
 data-files:    LICENSE, CREDITS, PLAYING.md, README.md,
                config.default, config.bot, scores
 author:        Andres Loeh, Mikolaj Konarski and others
@@ -33,6 +33,7 @@ source-repository head
   location:          git://github.com/Mikolaj/Allure.git
 
 executable Allure
+  hs-source-dirs:  src
   main-is:         Main.hs
   other-modules:   Content.ActorKind,
                    Content.CaveKind,
@@ -42,11 +43,11 @@ executable Allure
                    Content.RuleKind,
                    Content.TileKind,
                    Multiline,
-                   ConfigDefault
-  hs-source-dirs:  src
-  other-modules:   Paths_Allure
-  build-depends:   LambdaHack >= 0.2.3   && < 0.2.4,
+                   ConfigDefault,
+                   Paths_Allure
+  build-depends:   LambdaHack >= 0.2.3 && < 0.2.4,
                    template-haskell >= 2.6 && < 3,
+
                    ConfigFile >= 1.1.1   && < 2,
                    array      >= 0.3.0.3 && < 1,
                    base       >= 4       && < 5,
