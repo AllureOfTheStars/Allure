@@ -41,6 +41,7 @@ executable Allure
                    Content.ItemKind,
                    Content.PlaceKind,
                    Content.RuleKind,
+                   Content.StrategyKind,
                    Content.TileKind,
                    Multiline,
                    Paths_Allure

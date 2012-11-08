@@ -4,7 +4,7 @@
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
--- | Game rules and assorted data for Allure of the Stars.
+-- | Game rules and assorted game setup data for Allure of the Stars.
 module Content.RuleKind ( cdefs ) where
 
 -- Cabal
