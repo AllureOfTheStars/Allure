@@ -20,7 +20,8 @@ Contributions welcome.
 Terrain
 -------
 
-The goal of the hero is to explore an old, once luxurious space liner,
+The heroes are marked on the map with symbol '@' and with '1', '2', ..., '9'.
+Their goal is to explore an old, gigantic, once luxurious space liner,
 battle the horrors within, gather as much gold coins and precious gems
 as possible, and escape to tell the tale. The spaceship consists
 of many levels covered with varying terrain of the following basic kinds:
@@ -55,7 +56,7 @@ the vi text editor keys (also known as "Rogue-like keys").
                 /|\       /|\
                1 2 3     b j n
 
-SHIFT (or CTRL) and a movement key make the hero run in the indicated
+SHIFT (or CTRL) and a movement key make the selected hero run in the indicated
 direction, until anything of interest is spotted. '5' and '.' skip a turn.
 Melee, searching for secret doors and opening closed doors can be done
 by bumping into a monster, a wall and a door, respectively.
@@ -68,8 +69,9 @@ The commands that take player time are marked with a *.
                <       ascend a level*
                >       descend a level*
                ?       display help
-               Q       quit without saving
-               X       save and exit the game
+               R       restart game*
+               S       save game
+               X       save and exit*
                a       apply a consumable*
                c       close a door*
                d       drop an object*
@@ -98,10 +100,11 @@ commands are listed below. None of them takes hero time.
                SPACE   clear messages
                TAB     cycle among heroes on level
                *       target monster
+               +       swerve targeting line
+               -       unswerve targeting line
                /       target location
                D       dump current configuration
                P       display previous messages
-               V       display game version
                [       target next shallower level
                ]       target next deeper level
                {       target 10 levels shallower
@@ -120,9 +123,9 @@ key modifier. Use at your own peril!
 Monsters
 --------
 
-The hero is not alone in the spaceship. Monsters roam the dark halls
+Heroes are not alone in the spaceship. Monsters roam the dark halls
 and crawl from damp air-ducts day and night. While heroes pay attention
-to all other party members and take moves sequentially, one after another,
+to all other party members and take care to move one at a time,
 monsters don't care about each other and all move at once,
 sometimes brutally colliding by accident.
 
