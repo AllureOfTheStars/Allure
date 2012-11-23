@@ -38,9 +38,9 @@
 ; t: Project { verb = "throw", object = "projectile", syms = "}{" }
 ; ;
 ; ; Saving, exiting and restarting the game.
-; S: GameSave
 ; X: GameExit
 ; R: GameRestart
+; S: GameSave
 ; ;
 ; ; Information for the player.
 ; P: History
@@ -83,6 +83,7 @@
 ; baseHP: 50
 ; extraHeroes: 2
 ; firstDeathEnds: False
+; faction: hero
 
 ; [macros]
 ; ; This sections can be empty, but has to be there.
