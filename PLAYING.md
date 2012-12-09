@@ -22,7 +22,7 @@ Terrain
 
 The heroes are marked on the map with symbol '@' and with '1', '2', ..., '9'.
 Their goal is to explore an old, gigantic, once luxurious space liner,
-battle the horrors within, gather as much gold coins and precious gems
+battle the horrors within, gather as much gold and precious gems
 as possible, and escape to tell the tale. The spaceship consists
 of many levels covered with varying terrain of the following basic kinds:
 
@@ -154,7 +154,7 @@ On Winning and Dying
 --------------------
 
 You win the game if you escape the spaceship alive. Your score is
-the sum of all gold coins you've plundered plus 100 gold for each gem.
+the sum of all gold you've plundered plus 100 gold grains for each gem.
 Only the loot in possession of the party members on the current level
 counts (the rest of the party is considered MIA).
 

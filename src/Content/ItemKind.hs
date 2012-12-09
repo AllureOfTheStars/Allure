@@ -23,9 +23,9 @@ cdefs = CDefs
   , getFreq = ifreq
   , validate = ivalidate
   , content =
-      [necklace, dart, gem1, gem2, gem3, gold, javelin, kitchenKnife, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand, fist, foot, tentacle, weight]
+      [necklace, dart, gem1, gem2, gem3, currency, javelin, kitchenKnife, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand, fist, foot, tentacle, weight]
   }
-necklace,        dart, gem1, gem2, gem3, gold, javelin, kitchenKnife, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand, fist, foot, tentacle, weight :: ItemKind
+necklace,        dart, gem1, gem2, gem3, currency, javelin, kitchenKnife, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand, fist, foot, tentacle, weight :: ItemKind
 
 gem, potion, scroll :: ItemKind  -- generic templates
 
@@ -40,7 +40,7 @@ gem, potion, scroll :: ItemKind  -- generic templates
 _ magical staff, scanner
 = ring
 " necklace
-$ gold, gem
+$ currency, gem
 ~ light, tool
 / polearm
 | edged weapon
@@ -102,17 +102,17 @@ gem2 = gem
 gem3 = gem
   { icount   = (RollDice 0 0, RollDice 1 3)
   }
-gold = ItemKind
+currency = ItemKind
   { isymbol  = '$'
-  , iname    = "gold coin"
-  , ifreq    = [("dng", 80)]
+  , iname    = "gold grain"
+  , ifreq    = [("dng", 80), ("currency", 1)]
   , iflavour = zipPlain [BrYellow]
   , ieffect  = NoEffect
   , icount   = (RollDice 0 0, RollDice 10 10)
   , ipower   = intToDeep 0
-  , iverbApply   = "grind"
-  , iverbProject = "toss"
-  , iweight  = 31
+  , iverbApply   = "smear"
+  , iverbProject = "blow away"
+  , iweight  = 1
   , itoThrow = 0
   }
 javelin = ItemKind
