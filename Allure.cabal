@@ -1,16 +1,12 @@
 name:          Allure
-version:       0.4.6.5
+version:       0.4.7
 synopsis:      Near-future roguelike game in very early and active development
 description:   This is an alpha release of Allure of the Stars,
                a near-future Sci-Fi roguelike and tactical squad game.
                The game is barely fun at this stage and not yet
                really Sci-Fi. See the wiki for design notes and contribute.
                .
-               New since 0.4.4 are the Main Menu and improved squad combat.
-               If you use GHC 7.6.1 and gtk2hs compiles for you,
-               please install the LambdaHack library manually,
-               with 'cabal install LambdaHack -fgtk --reinstall'.
-               .
+               New in this release are the Main Menu and improved squad combat.
                Long term goals are high replayability and auto-balancing
                through procedural content generation and persistent content
                modification based on player behaviour.
@@ -48,7 +44,7 @@ executable Allure
                       Content.TileKind,
                       Multiline,
                       Paths_Allure
-  build-depends:      LambdaHack >= 0.2.6.5 && < 0.2.7,
+  build-depends:      LambdaHack >= 0.2.7 && < 0.2.8,
                       template-haskell >= 2.6 && < 3,
 
                       ConfigFile >= 1.1.1   && < 2,
