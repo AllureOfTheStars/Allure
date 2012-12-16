@@ -8,7 +8,6 @@
 -- resulting in an executable game.
 module Main ( main ) where
 
-import qualified Game.LambdaHack.Kind as Kind
 import qualified Content.ActorKind
 import qualified Content.CaveKind
 import qualified Content.FactionKind
@@ -17,11 +16,14 @@ import qualified Content.PlaceKind
 import qualified Content.RuleKind
 import qualified Content.StrategyKind
 import qualified Content.TileKind
-import Game.LambdaHack.Turn
 import Game.LambdaHack.Action
-import Game.LambdaHack.BindingAction
+import qualified Game.LambdaHack.Kind as Kind
+import Game.LambdaHack.Turn
+import qualified Game.LambdaHack.TypeAction as TypeAction
 
 -- | Fire up the frontend with the engine fueled by content.
+-- The @Action@ type to be used is decided by the second argument
+-- to @startFrontend@. It neededn't be @TypeAction.Action@.
 -- Which of the frontends is run depends on the flags supplied
 -- when compiling the engine library.
 main :: IO ()
@@ -36,4 +38,4 @@ main =
         , costrat = Kind.createOps Content.StrategyKind.cdefs
         , cotile  = Kind.createOps Content.TileKind.cdefs
         }
-  in startFrontend cops stdBinding handleTurn
+  in startFrontend TypeAction.executor cops handleTurn

@@ -60,10 +60,12 @@ executable Allure
                       old-time   >= 1.0.0.7 && < 2,
                       random     >= 1.0.1   && < 2,
                       text       >= 0.11.2.3 && < 1,
+                      transformers >= 0.3   && < 1,
                       zlib       >= 0.5.3.1 && < 1
 
+
   default-language:   Haskell2010
-  default-extensions: MonoLocalBinds,
+  default-extensions: MonoLocalBinds, ScopedTypeVariables,
                       BangPatterns, RecordWildCards, NamedFieldPuns
   other-extensions:   CPP, QuasiQuotes, OverloadedStrings, ExtendedDefaultRules
   ghc-options:        -Wall -fwarn-orphans -fwarn-tabs -fwarn-incomplete-uni-patterns -fwarn-incomplete-record-updates -fwarn-monomorphism-restriction -fwarn-unrecognised-pragmas
