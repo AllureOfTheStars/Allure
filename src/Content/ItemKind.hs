@@ -23,11 +23,11 @@ cdefs = CDefs
   , getFreq = ifreq
   , validate = ivalidate
   , content =
-      [necklace, dart, gem1, gem2, gem3, currency, javelin, kitchenKnife, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand, fist, foot, tentacle, weight]
+      [necklace, dart, gem1, gem2, gem3, currency, javelin, kitchenKnife, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand1, wand2, fist, foot, tentacle, weight]
   }
-necklace,        dart, gem1, gem2, gem3, currency, javelin, kitchenKnife, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand, fist, foot, tentacle, weight :: ItemKind
+necklace,        dart, gem1, gem2, gem3, currency, javelin, kitchenKnife, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand1, wand2, fist, foot, tentacle, weight :: ItemKind
 
-gem, potion, scroll :: ItemKind  -- generic templates
+gem, potion, scroll, wand :: ItemKind  -- generic templates
 
 -- rollDeep (aDb, xDy) = rollDice aDb + lvl * rollDice xDy / depth
 
@@ -219,14 +219,22 @@ wand = ItemKind
   { isymbol  = '-'
   , iname    = "injector"
   , ifreq    = [("dng", 15)]
-  , iflavour = zipFancy [BrRed]
-  , ieffect  = Dominate
+  , iflavour = zipFancy brightCol
+  , ieffect  = NoEffect
   , icount   = intToDeep 1
   , ipower   = intToDeep 0
   , iverbApply   = "snap"
   , iverbProject = "zap"
   , iweight  = 300
   , itoThrow = 25  -- jet
+  }
+wand1 = wand
+  { ieffect  = Dominate
+  }
+wand2 = wand
+  { ifreq    = [("dng", 3)]
+  , ieffect  = Wound (RollDice 0 0)
+  , ipower   = intToDeep 25
   }
 fist = sword
   { isymbol  = '@'
