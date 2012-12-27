@@ -25,9 +25,9 @@ hero = FactionKind
   { fsymbol     = '@'
   , fname       = "hero"
   , ffreq       = [("hero", 1), ("playable", 50)]
-  , fAiSelected = "noAbility"  -- no AI, fully manual control
+  , fAiSelected = "fullAbility"
   , fAiIdle     = "meleeAdjacent"
-  , fenemy      = ["alien"]
+  , fenemy      = ["hero", "alien"]
   , fally       = []
   }
 
@@ -38,7 +38,7 @@ alien = FactionKind
   , ffreq       = [("alien", 1), ("playable", 50), ("spawn", 20)]
   , fAiSelected = "fullAbility"
   , fAiIdle     = "fullAbility"
-  , fenemy      = ["hero"]
+  , fenemy      = ["hero", "alien"]
   , fally       = []
   }
 
