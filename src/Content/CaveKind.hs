@@ -42,7 +42,7 @@ rogue = CaveKind
   , copenChance   = 1%10
   , chiddenChance = 1%5
   , citemNum      = RollDice 7 2
-  , cdefaultTile    = "fillerWall"
+  , cdefTile    = "fillerWall"
   , ccorridorTile   = "darkCorridor"
   , cfillerTile     = "fillerWall"
   , cdarkLegendTile = "darkLegend"
@@ -59,7 +59,7 @@ arena = rogue
   , cvoidChance   = 1%3
   , cnonVoidMin   = 2
   , citemNum      = RollDice 4 2  -- few rooms
-  , cdefaultTile  = "floorArenaLit"
+  , cdefTile  = "floorArenaLit"
   , ccorridorTile = "path"
   }
 empty = rogue
@@ -74,7 +74,7 @@ empty = rogue
   , cnonVoidMin   = 1
   , cminStairDist = 50
   , citemNum      = RollDice 8 2  -- whole floor strewn with treasure
-  , cdefaultTile  = "floorRoomLit"
+  , cdefTile  = "floorRoomLit"
   , ccorridorTile = "floorRoomLit"
   }
 noise = rogue
@@ -87,6 +87,6 @@ noise = rogue
   , cvoidChance   = 0
   , cnonVoidMin   = 0
   , citemNum      = RollDice 4 2  -- few rooms
-  , cdefaultTile  = "noiseSet"
+  , cdefTile  = "noiseSet"
   , ccorridorTile = "path"
   }

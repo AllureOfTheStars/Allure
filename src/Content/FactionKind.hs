@@ -27,38 +27,42 @@ hero = FactionKind
   , ffreq       = [("hero", 1), ("playable", 50)]
   , fAiSelected = "fullAbility"
   , fAiIdle     = "meleeAdjacent"
-  , fenemy      = ["hero", "alien"]
+  , fenemy      = ["alien"]
   , fally       = []
+  , fspawn      = 0
   }
 
 -- Includes alien-operated robots, alien-conditioned animals and hybrids.
 alien = FactionKind
   { fsymbol     = 'a'
   , fname       = "alien"
-  , ffreq       = [("alien", 1), ("playable", 50), ("spawn", 20)]
+  , ffreq       = [("alien", 1), ("playable", 50)]
   , fAiSelected = "fullAbility"
   , fAiIdle     = "fullAbility"
-  , fenemy      = ["hero", "alien"]
+  , fenemy      = ["hero"]
   , fally       = []
+  , fspawn      = 20
   }
 
 animal = FactionKind
   { fsymbol     = 'd'
   , fname       = "animal"
-  , ffreq       = [("animal", 1), ("spawn", 50)]
+  , ffreq       = [("animal", 1)]
   , fAiSelected = "fullAbility"
   , fAiIdle     = "fullAbility"
   , fenemy      = ["hero", "alien"]  -- animals hunt external intruders
   , fally       = []
+  , fspawn      = 50
   }
 
 -- Autonomous robots.
 robot = FactionKind
   { fsymbol     = 'r'
   , fname       = "robot"
-  , ffreq       = [("robot", 1), ("spawn", 30)]
+  , ffreq       = [("robot", 1)]
   , fAiSelected = "fullAbility"
   , fAiIdle     = "fullAbility"
-  , fenemy      = ["hero", "alien", "animal", "robot"]  -- hunt all that moves
+  , fenemy      = ["hero", "alien", "animal"]  -- hunt all organic
   , fally       = []
+  , fspawn      = 10
   }
