@@ -32,10 +32,10 @@ standard = RuleKind
   { rsymbol        = 's'
   , rname          = "standard Allure of the Stars ruleset"
   , rfreq          = [("standard", 100)]
-  -- Check whether one location is accessible from another.
-  -- Precondition: the two locations are next to each other.
+  -- Check whether one position is accessible from another.
+  -- Precondition: the two positions are next to each other.
   -- TODO: in the future check flying for chasms, swimming for water, etc.
-  , raccessible    = \ _lxsize _sloc _src _tloc tgt ->
+  , raccessible    = \ _lxsize _spos _src _tpos tgt ->
       F.Walkable `elem` tfeature tgt
   , rtitle         = "Allure of the Stars"
   , rpathsDataFile = Self.getDataFileName

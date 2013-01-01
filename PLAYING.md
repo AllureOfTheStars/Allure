@@ -104,7 +104,7 @@ commands are listed below. None of them takes hero time.
                *         target monster
                +         swerve targeting line
                -         unswerve targeting line
-               /         target location
+               /         target position
                D         dump current configuration
                P         display previous messages
                [         target next shallower level
