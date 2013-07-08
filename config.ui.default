@@ -12,60 +12,43 @@
 ; [commands]
 ; ; All commands are defined here, except movement, hero selection and debug.
 ; ;
-; ; Interaction with the dungeon.
+; KP_Begin: Wait
+; g: Pickup
+; d: Drop
+; p: Project { verb = "project", object = "missile", syms = "-}{" }
+; t: Project { verb = "throw", object = "projectile", syms = "}{" }
+; z: Project { verb = "zap", object = "mechanism", syms = "-" }
+; a: Apply { verb = "apply", object = "consumable", syms = "!?,_~" }
+; q: Apply { verb = "quaff", object = "drink", syms = "!" }
+; r: Apply { verb = "read", object = "tablet", syms = "?" }
 ; c: TriggerDir { verb = "close", object = "door", feature = Closable }
-; less:    TriggerTile { verb = "ascend", object = "level", feature = Cause Ascend }
-; greater: TriggerTile { verb = "descend", object = "level", feature = Cause Descend }
+; less:    TriggerTile { verb = "ascend", object = "level", feature = Cause (Ascend 1) }
+; greater: TriggerTile { verb = "descend", object = "level", feature = Cause (Descend 1) }
+; CTRL-r: GameRestart
+; CTRL-x: GameExit
+; CTRL-s: GameSave
+; CTRL-d: CfgDump
+; Tab: MemberCycle
+; ISO_Left_Tab: MemberBack
+; I: Inventory
+; slash: TgtFloor
+; asterisk: TgtEnemy
 ; bracketleft:  TgtAscend 1
 ; bracketright: TgtAscend (-1)
 ; braceleft:    TgtAscend 10
 ; braceright:   TgtAscend (-10)
-; slash: TgtFloor
-; asterisk: TgtEnemy
 ; plus: EpsIncr True
 ; minus: EpsIncr False
-; Tab: HeroCycle
-; ISO_Left_Tab: HeroBack
-; ;
-; ; Items.
-; g: Pickup
-; d: Drop
-; i: Inventory
-; a: Apply { verb = "apply", object = "consumable", syms = "!?,_~" }
-; p: Project { verb = "project", object = "missile", syms = "-}{" }
-; q: Apply { verb = "quaff", object = "drink", syms = "!" }
-; r: Apply { verb = "read", object = "tablet", syms = "?" }
-; z: Project { verb = "zap", object = "mechanism", syms = "-" }
-; t: Project { verb = "throw", object = "projectile", syms = "}{" }
-; ;
-; ; Saving, exiting and restarting the game.
-; X: GameExit
-; R: GameRestart
-; S: GameSave
-; ;
-; ; Information for the player.
-; P: History
-; question: Help
-; D: CfgDump
-; ;
-; ; General.
-; KP_Begin: Wait
 ; Escape: Cancel
 ; Return: Accept
 ; space: Clear
-
-; [files]
-; ; Names of various game files. They reside in ~/.LambdaHack or similar.
-; historyFile : history
+; P: History
+; V: MarkVision
+; S: MarkSmell
+; T: MarkSuspect
+; question: Help
 
 ; [macros]
-; ; This sections can be empty, but has to be there.
-; ; TODO: the following does not work yet:
-; ;; throw a dart at the closest monster
-; ;t: asterisk Return t Return
-; ; TODO: in gtk it could be implemented via unGetChan,
-; ; unless we prefer an explicit command queue, with flushing, etc.
-; ;
 ; ; Handy with Vi keys:
 ; comma: g
 ; period: KP_Begin

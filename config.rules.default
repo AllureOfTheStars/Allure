@@ -27,14 +27,9 @@
 ; [files]
 ; ; Names of various game files. They reside in ~/.LambdaHack or similar.
 ; scoresFile: scores
-; saveFile: save
-; historyFile : history
 
 ; [heroes]
-; baseHP: 50
 ; extraHeroes: 2
-; ; faction "playable" means a random choice
-; faction: hero
 ; firstDeathEnds: False
 
 ; [heroNames]
@@ -44,3 +39,8 @@
 ; HeroName_3: Ernst Abraham
 ; HeroName_4: Samuel Saunders
 ; HeroName_5: Roger Robin
+
+; [players]
+; ; faction "playable" means a random choice
+; computer : [("Computer_alien", "alien"), ("Computer_animal", "animal"), ("Computer_robot", "robot")]
+; human: [("Human_hero", "hero")]
