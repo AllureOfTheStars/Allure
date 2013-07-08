@@ -7,52 +7,39 @@
 -- | Terrain tiles for Allure of the Stars.
 module Content.TileKind ( cdefs ) where
 
-import Game.LambdaHack.Color
-import Game.LambdaHack.CDefs
-import qualified Game.LambdaHack.Effect as Effect
-import Game.LambdaHack.Feature
+import Game.LambdaHack.Common.Color
+import Game.LambdaHack.Common.ContentDef
+import qualified Game.LambdaHack.Common.Effect as Effect
+import Game.LambdaHack.Common.Feature
 import Game.LambdaHack.Content.TileKind
-import Game.LambdaHack.Random
 
-cdefs :: CDefs TileKind
-cdefs = CDefs
+cdefs :: ContentDef TileKind
+cdefs = ContentDef
   { getSymbol = tsymbol
   , getName = tname
   , getFreq = tfreq
   , validate = tvalidate
   , content =
-      [wall, doorHidden, doorClosed, doorOpen, pillar, stairsUp, stairsDown, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen]
+      [wall, hardRock, pillar, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen]
   }
-wall,        doorHidden, doorClosed, doorOpen, pillar, stairsUp, stairsDown, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen :: TileKind
+wall,        hardRock, pillar, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen :: TileKind
 
 wall = TileKind
   { tsymbol  = '#'
-  , tname    = "wall"
+  , tname    = "granite wall"
   , tfreq    = [ ("litLegend", 100), ("darkLegend", 100)
                , ("fillerWall", 1), ("noiseSet", 55) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfeature = []
+  , tfeature = [HiddenAs "suspect wall"]
   }
-doorHidden = wall
-  { tfreq    = [("hidden", 100)]
-  , tfeature = [Hidden, Secret (RollDice 7 2), ChangeTo "closed door"]
-  }
-doorClosed = TileKind
-  { tsymbol  = '+'
-  , tname    = "closed door"
-  , tfreq    = [("litLegend", 100), ("darkLegend", 100), ("closed door", 1)]
-  , tcolor   = Brown
+hardRock = TileKind
+  { tsymbol  = '#'
+  , tname    = "hard rock"
+  , tfreq    = [("hard rock", 1)]
+  , tcolor   = BrBlack
   , tcolor2  = BrBlack
-  , tfeature = [Exit, Openable, ChangeTo "open door"]
-  }
-doorOpen = TileKind
-  { tsymbol  = '\''
-  , tname    = "open door"
-  , tfreq    = [("litLegend", 100), ("darkLegend", 100), ("open door", 1)]
-  , tcolor   = Brown
-  , tcolor2  = BrBlack
-  , tfeature = [Walkable, Clear, Exit, Closable, ChangeTo "closed door"]
+  , tfeature = [Impenetrable]
   }
 pillar = TileKind
   { tsymbol  = 'O'
@@ -62,13 +49,43 @@ pillar = TileKind
   , tcolor2  = defFG
   , tfeature = []
   }
+wallSuspect = TileKind
+  { tsymbol  = '#'
+  , tname    = "moldy wall"
+  , tfreq    = [("suspect wall", 1)]
+  , tcolor   = BrWhite
+  , tcolor2  = defFG
+  , tfeature = [ Suspect
+               , ChangeTo "closed door"  -- never triggered, hack 47
+               ]
+  }
+doorClosed = TileKind
+  { tsymbol  = '+'
+  , tname    = "closed door"
+  , tfreq    = [("litLegend", 100), ("darkLegend", 100), ("closed door", 1)]
+  , tcolor   = Brown
+  , tcolor2  = BrBlack
+  , tfeature = [ Exit, Openable
+               , ChangeTo "open door"
+               , HiddenAs "suspect wall"
+               ]
+  }
+doorOpen = TileKind
+  { tsymbol  = '\''
+  , tname    = "open door"
+  , tfreq    = [("litLegend", 100), ("darkLegend", 100), ("open door", 1)]
+  , tcolor   = Brown
+  , tcolor2  = BrBlack
+  , tfeature = [Walkable, Clear, Exit, Closable, ChangeTo "closed door"]
+  }
 stairsUp = TileKind
   { tsymbol  = '<'
   , tname    = "staircase up"
   , tfreq    = [("litLegend", 100), ("darkLegend", 100)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfeature = [Walkable, Clear, Lit, Exit, Ascendable, Cause Effect.Ascend]
+  , tfeature = [ Walkable, Clear, Lit, Exit, Ascendable
+               , Cause $ Effect.Ascend 1 ]
   }
 stairsDown = TileKind
   { tsymbol  = '>'
@@ -76,7 +93,8 @@ stairsDown = TileKind
   , tfreq    = [("litLegend", 100), ("darkLegend", 100)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfeature = [Walkable, Clear, Lit, Exit, Descendable, Cause Effect.Descend]
+  , tfeature = [ Walkable, Clear, Lit, Exit, Descendable
+               , Cause $ Effect.Descend 1 ]
   }
 unknown = TileKind
   { tsymbol  = ' '

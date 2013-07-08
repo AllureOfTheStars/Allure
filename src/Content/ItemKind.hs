@@ -9,15 +9,15 @@ module Content.ItemKind ( cdefs ) where
 
 import qualified Data.List as L
 
-import Game.LambdaHack.Color
-import Game.LambdaHack.CDefs
-import Game.LambdaHack.Effect
-import Game.LambdaHack.Flavour
-import Game.LambdaHack.Random
+import Game.LambdaHack.Common.Color
+import Game.LambdaHack.Common.ContentDef
+import Game.LambdaHack.Common.Effect
+import Game.LambdaHack.Common.Flavour
+import Game.LambdaHack.Common.Random
 import Game.LambdaHack.Content.ItemKind
 
-cdefs :: CDefs ItemKind
-cdefs = CDefs
+cdefs :: ContentDef ItemKind
+cdefs = ContentDef
   { getSymbol = isymbol
   , getName = iname
   , getFreq = ifreq
@@ -59,9 +59,8 @@ necklace = ItemKind
   , iname    = "necklace"
   , ifreq    = [("dng", 6)]
   , iflavour = zipFancy [BrGreen]
-  , ieffect  = Regeneration
+  , ieffect  = Regeneration (RollDice 2 3, RollDice 1 10)
   , icount   = intToDeep 1
-  , ipower   = (RollDice 2 3, RollDice 1 10)
   , iverbApply   = "tear down"
   , iverbProject = "cast"
   , iweight  = 30
@@ -72,9 +71,8 @@ dart = ItemKind
   , iname    = "billiard ball"
   , ifreq    = [("dng", 30)]
   , iflavour = zipPlain [BrWhite]
-  , ieffect  = Wound (RollDice 1 1)
+  , ieffect  = Hurt (RollDice 1 1) (RollDice 1 2, RollDice 1 2)
   , icount   = (RollDice 3 3, RollDice 0 0)
-  , ipower   = (RollDice 1 2, RollDice 1 2)
   , iverbApply   = "splinter"
   , iverbProject = "hurl"
   , iweight  = 50
@@ -87,7 +85,6 @@ gem = ItemKind
   , iflavour = zipPlain $ L.delete BrYellow brightCol  -- natural, so not fancy
   , ieffect  = NoEffect
   , icount   = intToDeep 0
-  , ipower   = intToDeep 0
   , iverbApply   = "crush"
   , iverbProject = "toss"
   , iweight  = 50
@@ -109,7 +106,6 @@ currency = ItemKind
   , iflavour = zipPlain [BrYellow]
   , ieffect  = NoEffect
   , icount   = (RollDice 0 0, RollDice 10 10)
-  , ipower   = intToDeep 0
   , iverbApply   = "smear"
   , iverbProject = "blow away"
   , iweight  = 1
@@ -120,9 +116,8 @@ javelin = ItemKind
   , iname    = "javelin"
   , ifreq    = [("dng", 30)]
   , iflavour = zipPlain [Brown]
-  , ieffect  = Wound (RollDice 1 2)
+  , ieffect  = Hurt (RollDice 1 2) (RollDice 1 2, RollDice 2 2)
   , icount   = (RollDice 0 0, RollDice 1 1)
-  , ipower   = (RollDice 1 2, RollDice 2 2)
   , iverbApply   = "break up"
   , iverbProject = "hurl"
   , iweight  = 2000
@@ -133,9 +128,8 @@ kitchenKnife = ItemKind
   , iname    = "kitchen knife"
   , ifreq    = [("dng", 30)]
   , iflavour = zipPlain [BrCyan]
-  , ieffect  = Wound (RollDice 1 1)
+  , ieffect  = Hurt (RollDice 1 1) (RollDice 0 0, RollDice 1 2)
   , icount   = (RollDice 0 0, RollDice 1 2)
-  , ipower   = (RollDice 0 0, RollDice 1 2)
   , iverbApply   = "bend"
   , iverbProject = "throw"
   , iweight  = 200
@@ -148,7 +142,6 @@ potion = ItemKind
   , iflavour = zipFancy stdCol
   , ieffect  = NoEffect
   , icount   = intToDeep 1
-  , ipower   = intToDeep 0
   , iverbApply   = "gulp down"
   , iverbProject = "lob"
   , iweight  = 200
@@ -159,22 +152,19 @@ potion1 = potion
   , ieffect  = ApplyPerfume
   }
 potion2 = potion
-  { ieffect  = Heal
-  , ipower   = (RollDice 5 1, RollDice 0 0)
+  { ieffect  = Heal 5
   }
 potion3 = potion
   { ifreq    = [("dng", 5)]
-  , ieffect  = Wound (RollDice 0 0)
-  , ipower   = (RollDice 5 1, RollDice 0 0)
+  , ieffect  = Heal (-5)
   }
 ring = ItemKind
   { isymbol  = '='
   , iname    = "ring"
   , ifreq    = [("dng", 10)]
   , iflavour = zipPlain [White]
-  , ieffect  = Searching
+  , ieffect  = Searching (RollDice 1 6, RollDice 3 2)
   , icount   = intToDeep 1
-  , ipower   = (RollDice 1 6, RollDice 3 2)
   , iverbApply   = "squeeze down"
   , iverbProject = "toss"
   , iweight  = 15
@@ -187,29 +177,27 @@ scroll = ItemKind
   , iflavour = zipFancy darkCol  -- arcane and old
   , ieffect  = NoEffect
   , icount   = intToDeep 1
-  , ipower   = intToDeep 0
   , iverbApply   = "dial"
   , iverbProject = "lob"
   , iweight  = 700
   , itoThrow = -25  -- bad grip
   }
 scroll1 = scroll
-  { ieffect  = SummonFriend
+  { ieffect  = SummonFriend 1
   }
 scroll2 = scroll
-  { ieffect  = SummonEnemy
+  { ieffect  = SpawnMonster 1
   }
 scroll3 = scroll
-  { ieffect  = Descend
+  { ieffect  = Descend 1
   }
 sword = ItemKind
   { isymbol  = '/'
   , iname    = "sharpened pipe"
   , ifreq    = [("dng", 60)]
   , iflavour = zipPlain [Cyan]
-  , ieffect  = Wound (RollDice 3 1)
+  , ieffect  = Hurt (RollDice 3 1) (RollDice 1 2, RollDice 4 2)
   , icount   = intToDeep 1
-  , ipower   = (RollDice 1 2, RollDice 4 2)
   , iverbApply   = "hit"
   , iverbProject = "heave"
   , iweight  = 3000
@@ -222,7 +210,6 @@ wand = ItemKind
   , iflavour = zipFancy brightCol
   , ieffect  = NoEffect
   , icount   = intToDeep 1
-  , ipower   = intToDeep 0
   , iverbApply   = "snap"
   , iverbProject = "zap"
   , iweight  = 300
@@ -233,27 +220,29 @@ wand1 = wand
   }
 wand2 = wand
   { ifreq    = [("dng", 3)]
-  , ieffect  = Wound (RollDice 0 0)
-  , ipower   = intToDeep 25
+  , ieffect  = Heal (-25)
   }
 fist = sword
   { isymbol  = '@'
   , iname    = "fist"
-  , ifreq    = [("unarmed", 100)]
+  , ifreq    = [("hth", 1), ("unarmed", 100)]
+  , ieffect  = Hurt (RollDice 3 1) (intToDeep 0)
   , iverbApply   = "punch"
   , iverbProject = "ERROR, please report: iverbProject fist"
   }
 foot = sword
   { isymbol  = '@'
   , iname    = "foot"
-  , ifreq    = [("unarmed", 50)]
+  , ifreq    = [("hth", 1), ("unarmed", 50)]
+  , ieffect  = Hurt (RollDice 3 1) (intToDeep 0)
   , iverbApply   = "kick"
   , iverbProject = "ERROR, please report: iverbProject foot"
   }
 tentacle = sword
   { isymbol  = 'S'
   , iname    = "tentacle"
-  , ifreq    = [("monstrous", 100)]
+  , ifreq    = [("hth", 1), ("monstrous", 100)]
+  , ieffect  = Hurt (RollDice 3 1) (intToDeep 0)
   , iverbApply   = "hit"
   , iverbProject = "ERROR, please report: iverbProject tentacle"
   }
@@ -261,8 +250,7 @@ weight = sword
   { isymbol  = '@'
   , iname    = "power jump"
   , ifreq    = [("weight", 100)]
-  , ieffect  = Wound (RollDice 99 99)
-  , ipower   = (RollDice 1 99, RollDice 0 0)
+  , ieffect  = Hurt (RollDice 99 99) (intToDeep 999)
   , iverbApply   = "squash"
   , iverbProject = "ERROR, please report: iverbProject weight"
   }

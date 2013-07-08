@@ -70,10 +70,8 @@ The commands that take player time are marked with a *.
                <       ascend a level*
                >       descend a level*
                ?       display help
-               R       restart game*
-               S       save game
-               X       save and exit*
                a       apply a consumable*
+               I       display inventory
                c       close a door*
                d       drop an object*
                g       get an object*
@@ -83,6 +81,9 @@ The commands that take player time are marked with a *.
                r       read a comm*
                t       throw a missile*
                z       zap a mechanism*
+               CTRL-r  restart game
+               CTRL-s  save game
+               CTRL-x  save and exit
 
 To make a ranged attack, you need to set your target first, using
 targeting mode. Note that the target, for the few commands that require any,
@@ -99,28 +100,24 @@ commands are listed below. None of them takes hero time.
                ESC       cancel action
                RET       accept choice
                SPACE     clear messages
-               TAB       cycle among heroes on level
+               TAB       cycle among heroes on the level
                SHIFT-TAB cycle among heroes in the dungeon
                *         target monster
                +         swerve targeting line
                -         unswerve targeting line
                /         target position
-               D         dump current configuration
+               A         mark visible area
                P         display previous messages
+               S         mark smell
                [         target next shallower level
                ]         target next deeper level
                {         target 10 levels shallower
                }         target 10 levels deeper
                0--9      select a hero anywhere in the spaceship
+               CTRL-d    dump current configuration
 
-There are also some debug and cheat keys, all entered with the CTRL
-key modifier. Use at your own peril!
-
-               key     command
-               CTRL-a  toggle visible area display
-               CTRL-o  toggle "omniscience" (effective next turn)
-               CTRL-s  toggle smell display
-               CTRL-v  cycle vision modes (effective next turn)
+There are also some debug and cheat options that can be specified
+on the command line when starting the game server. Use at your own peril!
 
 
 Monsters

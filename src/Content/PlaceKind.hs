@@ -7,11 +7,11 @@
 -- | Rooms, halls and passages for Allure of the Stars.
 module Content.PlaceKind ( cdefs ) where
 
-import Game.LambdaHack.CDefs
+import Game.LambdaHack.Common.ContentDef
 import Game.LambdaHack.Content.PlaceKind
 
-cdefs :: CDefs PlaceKind
-cdefs = CDefs
+cdefs :: ContentDef PlaceKind
+cdefs = ContentDef
   { getSymbol = psymbol
   , getName = pname
   , getFreq = pfreq

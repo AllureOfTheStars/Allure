@@ -1,5 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE CPP, QuasiQuotes #-}
+{-# LANGUAGE CPP, OverloadedStrings, QuasiQuotes #-}
 -- Copyright (c) 2008--2011 Andres Loeh, 2010--2012 Mikolaj Konarski
 -- This file is a part of the computer game Allure of the Stars
 -- and is released under the terms of the GNU Affero General Public License.
@@ -11,14 +10,14 @@ module Content.RuleKind ( cdefs ) where
 -- Cabal
 import qualified Paths_Allure as Self (getDataFileName, version)
 
+import Game.LambdaHack.Common.ContentDef
+import qualified Game.LambdaHack.Common.Feature as F
 import Game.LambdaHack.Content.RuleKind
 import Game.LambdaHack.Content.TileKind
-import qualified Game.LambdaHack.Feature as F
-import Game.LambdaHack.CDefs
 import Multiline
 
-cdefs :: CDefs RuleKind
-cdefs = CDefs
+cdefs :: ContentDef RuleKind
+cdefs = ContentDef
   { getSymbol = rsymbol
   , getName = rname
   , getFreq = rfreq
@@ -26,8 +25,8 @@ cdefs = CDefs
   , content =
       [standard]
   }
-standard :: RuleKind
 
+standard :: RuleKind
 standard = RuleKind
   { rsymbol        = 's'
   , rname          = "standard Allure of the Stars ruleset"

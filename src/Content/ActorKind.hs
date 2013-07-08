@@ -7,15 +7,15 @@
 -- | Monsters and heroes for Allure of the Stars.
 module Content.ActorKind ( cdefs ) where
 
-import Game.LambdaHack.Ability
-import Game.LambdaHack.Color
-import Game.LambdaHack.CDefs
+import Game.LambdaHack.Common.Ability
+import Game.LambdaHack.Common.Color
+import Game.LambdaHack.Common.ContentDef
+import Game.LambdaHack.Common.Random
+import Game.LambdaHack.Common.Time
 import Game.LambdaHack.Content.ActorKind
-import Game.LambdaHack.Random
-import Game.LambdaHack.Time
 
-cdefs :: CDefs ActorKind
-cdefs = CDefs
+cdefs :: ContentDef ActorKind
+cdefs = ContentDef
   { getSymbol = asymbol
   , getName = aname
   , getFreq = afreq
@@ -28,13 +28,13 @@ hero,        projectile, eye, fastEye, nose :: ActorKind
 hero = ActorKind
   { asymbol = '@'
   , aname   = "hero"
-  , afreq   = [("hero", 1), ("summon", 50)]  -- Does not appear randomly.
-  , acolor  = BrWhite  -- Heroes white, monsters colorful.
-  , ahp     = RollDice 60 1
+  , afreq   = [("hero", 1)]
+  , acolor  = BrWhite  -- modified if many hero factions
+  , ahp     = RollDice 50 1
   , aspeed  = toSpeed 2
   , asight  = True
   , asmell  = False
-  , aiq     = 13  -- Can see hidden doors, when he is under alien control.
+  , aiq     = 13
   , aregen  = 500
   , acanDo  = [minBound..maxBound]
   }
@@ -56,7 +56,7 @@ projectile = ActorKind  -- includes homing missiles
 eye = ActorKind
   { asymbol = 'r'
   , aname   = "deranged household robot"
-  , afreq   = [("robot", 60), ("summon", 50)]
+  , afreq   = [("robot", 60)]
   , acolor  = BrYellow
   , ahp     = RollDice 7 4
   , aspeed  = toSpeed 2
@@ -82,7 +82,7 @@ fastEye = ActorKind
 nose = ActorKind
   { asymbol = 'h'
   , aname   = "tentacled horror"
-  , afreq   = [("alien", 20), ("summon", 100)]
+  , afreq   = [("alien", 20)]
   , acolor  = Green
   , ahp     = RollDice 17 2
   , aspeed  = toSpeed 1.8

@@ -1,3 +1,4 @@
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 -- Copyright (c) 2008--2011 Andres Loeh, 2010--2012 Mikolaj Konarski
 -- This file is a part of the computer game Allure of the Stars
 -- and is released under the terms of the GNU Affero General Public License.
@@ -16,19 +17,26 @@ import qualified Content.PlaceKind
 import qualified Content.RuleKind
 import qualified Content.StrategyKind
 import qualified Content.TileKind
-import Game.LambdaHack.Action
-import qualified Game.LambdaHack.Kind as Kind
-import Game.LambdaHack.Turn
-import qualified Game.LambdaHack.ActionType as ActionType
+import Game.LambdaHack.Client
+import Game.LambdaHack.Client.Action.ActionType
+import Game.LambdaHack.Common.Action (MonadAtomic (..))
+import Game.LambdaHack.Common.AtomicCmd
+import Game.LambdaHack.Common.AtomicSem
+import qualified Game.LambdaHack.Common.Kind as Kind
+import Game.LambdaHack.Server
+import Game.LambdaHack.Server.Action.ActionType
+import Game.LambdaHack.Server.AtomicSemSer
 
--- | Fire up the frontend with the engine fueled by content.
--- The @Action@ type to be used is decided by the second argument
--- to @startFrontend@. It neededn't be @ActionType.Action@.
--- Which of the frontends is run depends on the flags supplied
--- when compiling the engine library.
+instance MonadAtomic ActionSer where
+  execAtomic = atomicSendSem
+
+instance MonadAtomic (ActionCli c) where
+  execAtomic (CmdAtomic cmd) = cmdAtomicSem cmd
+  execAtomic (SfxAtomic _) = return ()
+
 main :: IO ()
 main =
-  let cops = Kind.COps
+  let copsSlow = Kind.COps
         { coactor = Kind.createOps Content.ActorKind.cdefs
         , cocave  = Kind.createOps Content.CaveKind.cdefs
         , cofact  = Kind.createOps Content.FactionKind.cdefs
@@ -38,4 +46,4 @@ main =
         , costrat = Kind.createOps Content.StrategyKind.cdefs
         , cotile  = Kind.createOps Content.TileKind.cdefs
         }
-  in startFrontend ActionType.executor cops handleTurn
+  in mainSer copsSlow executorSer $ exeFrontend executorCli executorCli

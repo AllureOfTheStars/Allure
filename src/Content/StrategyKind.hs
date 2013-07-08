@@ -7,12 +7,13 @@
 -- | AI strategies for Allure of the Stars.
 module Content.StrategyKind ( cdefs ) where
 
-import Game.LambdaHack.Ability
-import Game.LambdaHack.CDefs
+
+import Game.LambdaHack.Common.Ability
+import Game.LambdaHack.Common.ContentDef
 import Game.LambdaHack.Content.StrategyKind
 
-cdefs :: CDefs StrategyKind
-cdefs = CDefs
+cdefs :: ContentDef StrategyKind
+cdefs = ContentDef
   { getSymbol = ssymbol
   , getName = sname
   , getFreq = sfreq
