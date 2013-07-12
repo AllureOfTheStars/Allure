@@ -7,6 +7,7 @@
 -- | AI strategies for Allure of the Stars.
 module Content.StrategyKind ( cdefs ) where
 
+import Data.List
 
 import Game.LambdaHack.Common.Ability
 import Game.LambdaHack.Common.ContentDef
@@ -19,9 +20,9 @@ cdefs = ContentDef
   , getFreq = sfreq
   , validate = svalidate
   , content =
-      [noAbility, onlyFollowTrack, meleeAdjacent, meleeAndRanged, fullAbility]
+      [noAbility, onlyFollowTrack, meleeAdjacent, meleeAndRanged, animalAbility, robotAbility, fullAbility]
   }
-noAbility,        onlyFollowTrack, meleeAdjacent, meleeAndRanged, fullAbility :: StrategyKind
+noAbility,        onlyFollowTrack, meleeAdjacent, meleeAndRanged, animalAbility, robotAbility, fullAbility :: StrategyKind
 
 noAbility = StrategyKind  -- not even projectiles will fly
   { ssymbol    = '@'
@@ -41,14 +42,28 @@ meleeAdjacent = StrategyKind
   { ssymbol    = '@'
   , sname      = "meleeAdjacent"
   , sfreq      = [("meleeAdjacent", 1)]
-  , sabilities = [Melee, Track]
+  , sabilities = [Track, Melee]
   }
 
 meleeAndRanged = StrategyKind  -- melee and reaction fire
   { ssymbol    = '@'
   , sname      = "meleeAndRanged"
   , sfreq      = [("meleeAndRanged", 1)]
-  , sabilities = [Melee, Ranged, Track]
+  , sabilities = [Track, Melee, Ranged]
+  }
+
+animalAbility = StrategyKind
+  { ssymbol    = '@'
+  , sname      = "animalAbility"
+  , sfreq      = [("animalAbility", 1)]
+  , sabilities = [Track, Flee, Melee, Chase, Wander]
+  }
+
+robotAbility = StrategyKind
+  { ssymbol    = '@'
+  , sname      = "robotAbility"
+  , sfreq      = [("robotAbility", 1)]
+  , sabilities = delete Flee [minBound..maxBound]
   }
 
 fullAbility = StrategyKind
