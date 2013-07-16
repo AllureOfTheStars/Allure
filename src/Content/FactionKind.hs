@@ -28,8 +28,6 @@ hero = FactionKind
   , ffreq     = [("hero", 1), ("playable", 50)]
   , fAiLeader = "fullAbility"
   , fAiMember = "meleeAdjacent"
-  , fenemy    = ["monster"]
-  , fally     = []
   , fspawn    = 0
   , fentry    = toEnum 1
   }
@@ -41,8 +39,6 @@ alien = FactionKind
   , ffreq       = [("alien", 1), ("playable", 50)]
   , fAiLeader   = "fullAbility"
   , fAiMember   = "fullAbility"
-  , fenemy      = ["hero"]
-  , fally       = []
   , fspawn      = 20
   , fentry      = toEnum 5  -- doesn't matter
   }
@@ -53,8 +49,6 @@ animal = FactionKind
   , ffreq       = [("animal", 1)]
   , fAiLeader   = "animalAbility"
   , fAiMember   = "animalAbility"
-  , fenemy      = ["hero", "alien"]  -- animals hunt external intruders
-  , fally       = []
   , fspawn      = 50
   , fentry      = toEnum 1  -- doesn't matter
   }
@@ -66,8 +60,6 @@ robot = FactionKind
   , ffreq       = [("robot", 1)]
   , fAiLeader   = "robotAbility"
   , fAiMember   = "robotAbility"
-  , fenemy      = ["hero", "alien", "animal"]  -- hunt all organic
-  , fally       = []
   , fspawn      = 10
   , fentry      = toEnum 3  -- doesn't matter
   }
