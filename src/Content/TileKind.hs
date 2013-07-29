@@ -27,8 +27,8 @@ wall,        hardRock, pillar, wallSuspect, doorClosed, doorOpen, stairsUp, stai
 wall = TileKind
   { tsymbol  = '#'
   , tname    = "granite wall"
-  , tfreq    = [ ("litLegend", 100), ("darkLegend", 100)
-               , ("fillerWall", 1), ("noiseSet", 55) ]
+  , tfreq    = [ ("litLegend", 100), ("darkLegend", 100), ("fillerWall", 1)
+               , ("noiseSet", 55), ("combatSet", 5) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , tfeature = [HiddenAs "suspect wall"]
@@ -107,7 +107,7 @@ unknown = TileKind
 floorCorridorLit = TileKind
   { tsymbol  = '.'
   , tname    = "floor"
-  , tfreq    = [("noiseSet", 100), ("floorArenaLit", 1)]
+  , tfreq    = [("floorArenaLit", 1), ("noiseSet", 100)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , tfeature = [Walkable, Clear, Lit]
@@ -119,7 +119,8 @@ floorCorridorDark = floorCorridorLit
   , tfeature = [Walkable, Clear]
   }
 floorRoomLit = floorCorridorLit
-  { tfreq    = [("litLegend", 100), ("floorRoomLit", 1)]
+  { tfreq    = [ ("litLegend", 100), ("floorRoomLit", 1)
+               , ("combatSet", 100) ]
   , tfeature = Boring : tfeature floorCorridorLit
   }
 floorRoomDark = floorCorridorDark
