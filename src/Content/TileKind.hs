@@ -20,9 +20,9 @@ cdefs = ContentDef
   , getFreq = tfreq
   , validate = tvalidate
   , content =
-      [wall, hardRock, pillar, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen]
+      [wall, hardRock, pillar, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, quitUp, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen]
   }
-wall,        hardRock, pillar, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen :: TileKind
+wall,        hardRock, pillar, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, quitUp, unknown, floorCorridorLit, floorCorridorDark, floorRoomLit, floorRoomDark, floorRed, floorBlue, floorGreen :: TileKind
 
 wall = TileKind
   { tsymbol  = '#'
@@ -95,6 +95,14 @@ stairsDown = TileKind
   , tcolor2  = defFG
   , tfeature = [ Walkable, Clear, Lit, Exit, Descendable
                , Cause $ Effect.Descend 1 ]
+  }
+quitUp = TileKind
+  { tsymbol  = '<'
+  , tname    = "exit airlock up"
+  , tfreq    = [("litLegend", 100), ("darkLegend", 100)]
+  , tcolor   = BrYellow
+  , tcolor2  = BrYellow
+  , tfeature = [ Walkable, Clear, Lit, Exit, Cause Effect.Quit ]
   }
 unknown = TileKind
   { tsymbol  = ' '

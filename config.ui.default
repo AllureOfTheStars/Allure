@@ -15,15 +15,15 @@
 ; KP_Begin: Wait
 ; g: Pickup
 ; d: Drop
-; p: Project { verb = "project", object = "missile", syms = "-}{" }
-; t: Project { verb = "throw", object = "projectile", syms = "}{" }
-; z: Project { verb = "zap", object = "mechanism", syms = "-" }
-; a: Apply { verb = "apply", object = "consumable", syms = "!?,_~" }
-; q: Apply { verb = "quaff", object = "drink", syms = "!" }
-; r: Apply { verb = "read", object = "tablet", syms = "?" }
-; c: TriggerDir { verb = "close", object = "door", feature = Closable }
-; less:    TriggerTile { verb = "ascend", object = "level", feature = Cause (Ascend 1) }
-; greater: TriggerTile { verb = "descend", object = "level", feature = Cause (Descend 1) }
+; p: Project [ApplyItem {verb = "project", object = "missile", symbol = ' '}, ApplyItem {verb = "throw", object = "projectile", symbol = '}'}, ApplyItem {verb = "throw", object = "projectile", symbol = '{'}, ApplyItem {verb = "zap", object = "mechanism", symbol = '-'}]
+; t: Project [ApplyItem {verb = "throw", object = "projectile", symbol = '}'}, ApplyItem {verb = "throw", object = "projectile", symbol = '{'}]
+; z: Project [ApplyItem {verb = "zap", object = "mechanism", symbol = '-'}]
+; a: Apply [ApplyItem {verb = "apply", object = "consumable", symbol = ' '}, ApplyItem {verb = "eat", object = "food", symbol = ','}, ApplyItem {verb = "activate", object = "emitter", symbol = '_'}, ApplyItem {verb = "use", object = "tool", symbol = '~'}, ApplyItem {verb = "quaff", object = "drink", symbol = '!'}, ApplyItem {verb = "read", object = "tablet", symbol = '?'}]
+; q: Apply [ApplyItem {verb = "quaff", object = "drink", symbol = '!'}]
+; r: Apply [ApplyItem {verb = "read", object = "tablet", symbol = '?'}]
+; c: TriggerDir [BumpFeature {verb = "close", object = "door", feature = Closable}]
+; less: TriggerTile [BumpFeature {verb = "ascend", object = "level", feature = Cause (Ascend 1)}, BumpFeature {verb = "exit", object = "spaceship", feature = Cause Quit}]
+; greater: TriggerTile [BumpFeature {verb = "descend", object = "level", feature = Cause (Descend 1)}, BumpFeature {verb = "exit", object = "spaceship", feature = Cause Quit}]
 ; CTRL-r: GameRestart "campaign"
 ; ; TODO: pick game modes via arrow keys, not special keys
 ; CTRL-k: GameRestart "skirmish"
