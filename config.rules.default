@@ -44,9 +44,11 @@
 ; skirmish: Players { playersHuman = [("Human Player", "hero")], playersComputer = [("Computer Player", "hero")], playersEnemy = [("Human Player", "Computer Player")], playersAlly = [] }
 ; PvP: Players { playersHuman = [("Human Player 1", "hero"), ("Human Player 2", "hero")], playersComputer = [], playersEnemy = [("Human Player 1", "Human Player 2")], playersAlly = [] }
 ; Coop: Players { playersHuman = [("Human Player 1", "hero"), ("Human Player 2", "hero")], playersComputer = [("Computer Alien", "alien"), ("Computer Animal", "animal"), ("Computer Robot", "robot")], playersEnemy = [("Computer Alien", "Human Player 1"), ("Computer Alien", "Human Player 2"), ("Computer Animal", "Human Player 1"), ("Computer Animal", "Human Player 2"), ("Computer Animal", "Computer Alien"), ("Computer Robot", "Human Player 1"), ("Computer Robot", "Human Player 2"), ("Computer Robot", "Computer Alien"), ("Computer Robot", "Computer Animal")], playersAlly = [("Human Player 1", "Human Player 2")] }
+; defense: Players { playersHuman = [("Human Player", "alien")], playersComputer = [("Computer Animal", "animal"), ("Computer Robot", "robot"), ("Computer Player 1", "hero"), ("Computer Player 2", "hero"), ("Computer Player 3", "hero")], playersEnemy = [("Computer Animal", "Human Player"), ("Computer Animal", "Computer Player 1"), ("Computer Animal", "Computer Player 3"), ("Computer Animal", "Computer Player 3"), ("Computer Robot", "Human Player"), ("Computer Robot", "Computer Player 1"), ("Computer Robot", "Computer Player 3"), ("Computer Robot", "Computer Player 3"), ("Computer Robot", "Computer Animal"), ("Human Player", "Computer Player 1"), ("Human Player", "Computer Player 2"), ("Human Player", "Computer Player 3")], playersAlly = [("Computer Player 1", "Computer Player 2"), ("Computer Player 1", "Computer Player 3"), ("Computer Player 2", "Computer Player 3")] }
 
 ; [scenario]
 ; campaign: Scenario { scenarioPlayers = "campaign", scenarioDungeon = "campaign" }
 ; skirmish: Scenario { scenarioPlayers = "skirmish", scenarioDungeon = "combat" }
 ; PvP: Scenario { scenarioPlayers = "PvP", scenarioDungeon = "combat" }
 ; Coop: Scenario { scenarioPlayers = "Coop", scenarioDungeon = "campaign" }
+; defense: Scenario { scenarioPlayers = "defense", scenarioDungeon = "campaign" }
