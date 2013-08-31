@@ -1,1 +1,7 @@
 language: haskell
+
+install:
+  - cabal-dev install --enable-tests
+
+script:
+  - cabal-dev configure --enable-tests && cabal-dev build && cabal-dev test
