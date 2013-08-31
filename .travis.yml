@@ -3,7 +3,7 @@ language: haskell
 install:
   - cabal install cabal-dev
   - cabal install gtk2hs-buildtools
-  - cabal-dev install regex-compat containers-0.5.2.1 cairo --force-reinstalls --reinstall --constraint=template-haskell==2.7.0.0 --solver=modular
+  - cabal-dev install regex-posix regex-compat containers-0.5.2.1 gtk --force-reinstalls --reinstall --constraint=template-haskell==2.7.0.0 --solver=modular
   - cabal-dev install --enable-tests --reinstall --constraint=template-haskell==2.7.0.0 --solver=modular
 
 script:
