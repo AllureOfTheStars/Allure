@@ -3,8 +3,8 @@ language: haskell
 install:
   - cabal install cabal-dev
   - cabal install gtk2hs-buildtools
-  - cabal-dev install mtl-2.1.2 ConfigFile regex-posix regex-compat containers-0.5.2.1 gtk --force-reinstalls --reinstall --constraint=template-haskell==2.7.0.0 --solver=modular
-  - cabal-dev install --enable-tests --reinstall --constraint=template-haskell==2.7.0.0 --solver=modular
+  - cabal-dev install ConfigFile regex-posix regex-compat gtk --force-reinstalls --reinstall --constraint="mtl>=2.1.2" --constraint="containers>=0.5.2.1" --constraint="template-haskell>=2.7.0.0" --constraint="text>=0.11.2.3" --solver=modular
+  - cabal-dev install --enable-tests --reinstall --solver=modular
 
 script:
   - cabal-dev configure --enable-tests && cabal-dev build && cabal-dev test
