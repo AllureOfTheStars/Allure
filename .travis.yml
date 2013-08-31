@@ -2,6 +2,7 @@ language: haskell
 
 install:
   - cabal install cabal-dev
+  - cabal-dev install regex-posix containers-0.5.2.1 --force-reinstalls --reinstall --constraint=template-haskell==2.7.0.0 --solver=modular
   - cabal-dev install --enable-tests --reinstall --constraint=template-haskell==2.7.0.0 --solver=modular
 
 script:
