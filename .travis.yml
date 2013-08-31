@@ -2,7 +2,7 @@ language: haskell
 
 install:
   - cabal install cabal-dev
-  - cabal-dev install --enable-tests
+  - cabal-dev install --enable-tests --reinstall --constraint=template-haskell==2.7.0.0 --solver=modular
 
 script:
   - cabal-dev configure --enable-tests && cabal-dev build && cabal-dev test
