@@ -1,4 +1,4 @@
-Allure of the Stars
+Allure of the Stars [![Build Status](https://secure.travis-ci.org/Mikolaj/Allure.png)](http://travis-ci.org/Mikolaj/Allure)
 ===================
 
 This is an alpha release of Allure of the Stars,
