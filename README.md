@@ -26,8 +26,8 @@ and run 'cabal install' from the main directory.
 Compatibility notes
 -------------------
 
-The current code was tested with GHC 7.6.1, but probably works with GHC > 7.2.
-A [few tweaks] [7] are needed to compile with 7.0.
+The current code was tested with GHC 7.4.2, but should work with
+later GHC versions as well.
 
 If you are using the curses or vty frontends,
 numerical keypad may not work correctly depending on the versions
@@ -51,7 +51,7 @@ Have fun!
 Copyright
 ---------
 
-Copyright (c) 2008--2011 Andres Loeh, 2010--2012 Mikolaj Konarski
+Copyright (c) 2008--2011 Andres Loeh, 2010--2013 Mikolaj Konarski
 
 Allure of the Stars is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -75,4 +75,3 @@ If not, see <http://www.gnu.org/licenses/>.
 [4]: http://hackage.haskell.org/package/Allure
 [5]: http://github.com/kosmikus/LambdaHack
 [6]: https://github.com/Mikolaj/Allure/wiki
-[7]: https://github.com/Mikolaj/Allure/commit/3d0aa5bef7a0ef39e7611d4e12229224f4cead75
