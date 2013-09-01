@@ -14,6 +14,8 @@ Once the few basic command keys and on-screen symbols are learned,
 mastery and enjoyment of the game is the matter of tactical skill
 and literary imagination. To be honest, a lot of imagination is required
 at this stage, but the game is already playable and winnable.
+The game also features multiplayer cooperative and competitive game modes,
+though only the shared-screen interface is provided at this time.
 Contributions welcome.
 
 
@@ -23,8 +25,9 @@ Terrain
 The heroes are marked on the map with symbol '@' and with '1', '2', ..., '9'.
 Their goal is to explore an old, gigantic, once luxurious space liner,
 battle the horrors within, gather as much gold and precious gems
-as possible, and escape to tell the tale. The spaceship consists
-of many levels covered with varying terrain of the following basic kinds:
+as possible, and escape to tell the tale. The spaceship, in the campaign
+game mode, consists of many levels covered with varying terrain
+of the following basic kinds:
 
                terrain type                       on-screen symbol
                floor                              .
@@ -35,13 +38,7 @@ of many levels covered with varying terrain of the following basic kinds:
                closed door                        +
 
 The game world is persistent, i.e., every time the player visits a level
-during a single game, the level layout is the same. Some items
-aid in exploration, e.g., a ring of searching improves the speed
-of finding hidden doors by heroes and monsters. The higher the ability
-bonus displayed for this and other items, the more effective it is.
-Only the best item carried in a hero's or monster's inventory counts.
-You can throw the rest away, but beware that your adversaries may pick it up
-and use it against your party.
+during a single game, the level layout is the same.
 
 
 Keys
@@ -66,29 +63,26 @@ Below are the default keys for major commands. The last four commands
 are specialized versions of 'a' and 'p', offering narrower default item choice.
 The commands that take player time are marked with a *.
 
-               key     command
-               <       ascend a level*
-               >       descend a level*
-               ?       display help
-               a       apply a consumable*
-               I       display inventory
-               c       close a door*
-               d       drop an object*
-               g       get an object*
-               i       display inventory
-               p       project a projectile*
-               q       quaff a drink*
-               r       read a comm*
-               t       throw a missile*
-               z       zap a mechanism*
-               CTRL-r  restart game
-               CTRL-s  save game
-               CTRL-x  save and exit
+               key       command
+               <         ascend a level*
+               >         descend a level*
+               ?         display help
+               I         display inventory
+               a         apply a consumable*
+               c         close a door*
+               d         drop an object*
+               g         get an object*
+               o         open a door*
+               p         project a projectile*
+               q         quaff a drink*
+               r         read a tablet*
+               t         throw a missile*
+               z         zap a mechanism*
 
-To make a ranged attack, you need to set your target first, using
-targeting mode. Note that the target, for the few commands that require any,
-is indicated by the targeting cursor. The origin of a command
---- the  hero that performs it --- is unaffected by targeting. For example,
+To make a ranged attack, you need to set your target first, using targeting
+mode ('*' or '/' key). Note that the target, for the few commands that
+require any, is indicated by the targeting cursor. The origin of a command
+--- the hero that performs it --- is unaffected by targeting. For example,
 not the targeted door, but one adjacent to the selected hero is closed by him.
 
 To avoid confusion, commands that take time are blocked when targeting
@@ -97,24 +91,38 @@ than the selected hero). The targeting commands and all the less used
 commands are listed below. None of them takes hero time.
 
                key       command
-               ESC       cancel action
+               ESC       cancel action or bring up the Main Menu
                RET       accept choice
-               SPACE     clear messages
                TAB       cycle among heroes on the level
                SHIFT-TAB cycle among heroes in the dungeon
                *         target monster
                +         swerve targeting line
                -         unswerve targeting line
                /         target position
-               A         mark visible area
                P         display previous messages
                S         mark smell
+               T         mark suspect terrain
+               V         mark visible area
                [         target next shallower level
                ]         target next deeper level
                {         target 10 levels shallower
                }         target 10 levels deeper
-               0--9      select a hero anywhere in the spaceship
-               CTRL-d    dump current configuration
+               0--9      select a hero anywhere in the dungeon
+
+Commands for saving the current game, starting a new game, etc.,
+are listed in the Main Menu, brough up by the ESC key.
+Some of the game modes are multiplayer or feature multiple computer
+players (allied or not). The setup of the modes can be modified
+via a configuration file.
+
+               key       command
+               CTRL-s    save game
+               CTRL-x    save and exit
+               CTRL-r    new campaign game
+               CTRL-k    new skirmish game
+               CTRL-p    new PvP game
+               CTRL-o    new Coop game
+               CTRL-e    new defense game
 
 There are also some debug and cheat options that can be specified
 on the command line when starting the game server. Use at your own peril!
@@ -151,7 +159,8 @@ When the last hero dies, the game ends.
 On Winning and Dying
 --------------------
 
-You win the game if you escape the spaceship alive. Your score is
+You win the game if you escape the spaceship alive (or eliminate
+all opposition, in some game modes). Your score is
 the sum of all gold you've plundered plus 100 gold grains for each gem.
 Only the loot in possession of the party members on the current level
 counts (the rest of the party is considered MIA).
