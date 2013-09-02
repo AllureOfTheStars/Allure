@@ -14,15 +14,15 @@ Once the few basic command keys and on-screen symbols are learned,
 mastery and enjoyment of the game is the matter of tactical skill
 and literary imagination. To be honest, a lot of imagination is required
 at this stage, but the game is already playable and winnable.
-The game also features multiplayer cooperative and competitive game modes,
-though only the shared-screen interface is provided at this time.
+The game also features multiplayer cooperative and competitive modes,
+though only a shared-screen interface is provided at this time.
 Contributions welcome.
 
 
 Terrain
 -------
 
-The heroes are marked on the map with symbol '@' and with '1', '2', ..., '9'.
+The heroes are marked on the map with symbols '@' and '1' through '9'.
 Their goal is to explore an old, gigantic, once luxurious space liner,
 battle the horrors within, gather as much gold and precious gems
 as possible, and escape to tell the tale. The spaceship, in the campaign
@@ -54,14 +54,14 @@ the vi text editor keys (also known as "Rogue-like keys").
                1 2 3     b j n
 
 SHIFT (or CTRL) and a movement key make the selected hero run in the indicated
-direction, until anything of interest is spotted. '5' and '.' use a turn
-to brace for combat, which gives a chance to block blows next turn.
+direction, until anything of interest is spotted. The '5' and '.' keys take
+a turn to brace for combat, which gives a chance to block blows next turn.
 Melee, searching for secret doors and opening closed doors can be done
 by bumping into a monster, a wall and a door, respectively.
 
 Below are the default keys for major commands. The last four commands
 are specialized versions of 'a' and 'p', offering narrower default item choice.
-The commands that take player time are marked with a *.
+The commands that take player time are marked with a star.
 
                key       command
                <         ascend a level*
@@ -79,14 +79,11 @@ The commands that take player time are marked with a *.
                t         throw a missile*
                z         zap a mechanism*
 
-To make a ranged attack, you need to set your target first, using targeting
-mode ('*' or '/' key). Note that the target, for the few commands that
-require any, is indicated by the targeting cursor. The origin of a command
---- the hero that performs it --- is unaffected by targeting. For example,
-not the targeted door, but one adjacent to the selected hero is closed by him.
-
+To make a ranged attack, you need to set your target first,
+using targeting mode ('*' and '/' keys). The target, for the few
+commands that require any, is indicated by the targeting cursor.
 To avoid confusion, commands that take time are blocked when targeting
-at a remote level (when the cursor is on a different level
+at a remote level (when the cursor is displayed on a different level
 than the selected hero). The targeting commands and all the less used
 commands are listed below. None of them takes hero time.
 
@@ -142,8 +139,8 @@ melee combat occurs. The best weapon carried by each opponent
 is taken into account for calculating bonus damage. The total damage
 the current hero can potentially inflict is displayed at the bottom
 of the screen. The total damage potential of a monster may change
-as it finds and picks up new weapons. Heroes and monsters running
-into another (with the Shift key) do not inflict damage, but change places.
+as it finds and picks up new weapons. Heroes and monsters running into
+one another (with the Shift key) do not inflict damage, but change places.
 This gives the opponent a free blow, but can improve the tactical situation
 or aid escape.
 

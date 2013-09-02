@@ -26,8 +26,8 @@ and run 'cabal install' from the main directory.
 Compatibility notes
 -------------------
 
-The current code was tested with GHC 7.4.2, but should work with
-later GHC versions as well.
+The current code was tested with GHC 7.6, but should also work with
+other GHC versions (see file .travis.yml for GHC 7.4 commands).
 
 If you are using the curses or vty frontends,
 numerical keypad may not work correctly depending on the versions
