@@ -20,8 +20,7 @@ license:       OtherLicense
 license-file:  LICENSE
 tested-with:   GHC == 7.4.2, GHC == 7.6.1
 data-files:    LICENSE, CREDITS, PLAYING.md, README.md,
-               config.rules.default, config.ui.default, config.rules.bot,
-               scores
+               config.rules.default, config.ui.default, scores
 author:        Andres Loeh, Mikolaj Konarski and others
 maintainer:    Mikolaj Konarski <mikolaj.konarski@funktory.com>
 category:      Game
