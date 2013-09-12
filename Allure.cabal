@@ -44,7 +44,7 @@ executable Allure
                       Content.TileKind,
                       Multiline,
                       Paths_Allure
-  build-depends:      LambdaHack >= 0.2.7 && < 0.2.8,
+  build-depends:      LambdaHack >= 0.2.8 && < 0.2.9,
                       template-haskell >= 2.6 && < 3,
 
                       ConfigFile >= 1.1.1   && < 2,
