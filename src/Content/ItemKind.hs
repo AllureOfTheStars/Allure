@@ -23,9 +23,9 @@ cdefs = ContentDef
   , getFreq = ifreq
   , validate = ivalidate
   , content =
-      [necklace, dart, gem1, gem2, gem3, currency, javelin, kitchenKnife, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand1, wand2, fist, foot, tentacle, weight]
+      [necklace, dart, gem1, gem2, gem3, currency, javelin, kitchenKnife, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand1, wand2, fist, foot, tentacle]
   }
-necklace,        dart, gem1, gem2, gem3, currency, javelin, kitchenKnife, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand1, wand2, fist, foot, tentacle, weight :: ItemKind
+necklace,        dart, gem1, gem2, gem3, currency, javelin, kitchenKnife, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand1, wand2, fist, foot, tentacle :: ItemKind
 
 gem, potion, scroll, wand :: ItemKind  -- generic templates
 
@@ -102,7 +102,7 @@ gem3 = gem
 currency = ItemKind
   { isymbol  = '$'
   , iname    = "gold grain"
-  , ifreq    = [("dng", 80), ("currency", 1)]
+  , ifreq    = [("dng", 50), ("currency", 1)]
   , iflavour = zipPlain [BrYellow]
   , ieffect  = NoEffect
   , icount   = (RollDice 0 0, RollDice 10 10)
@@ -161,7 +161,7 @@ potion3 = potion
 ring = ItemKind
   { isymbol  = '='
   , iname    = "ring"
-  , ifreq    = [("dng", 10)]
+  , ifreq    = []  -- [("dng", 10)]  -- TODO: make it useful
   , iflavour = zipPlain [White]
   , ieffect  = Searching (RollDice 1 6, RollDice 3 2)
   , icount   = intToDeep 1
@@ -194,7 +194,7 @@ scroll3 = scroll
 sword = ItemKind
   { isymbol  = '/'
   , iname    = "sharpened pipe"
-  , ifreq    = [("dng", 60)]
+  , ifreq    = [("dng", 40)]
   , iflavour = zipPlain [Cyan]
   , ieffect  = Hurt (RollDice 3 1) (RollDice 1 2, RollDice 4 2)
   , icount   = intToDeep 1
@@ -245,12 +245,4 @@ tentacle = sword
   , ieffect  = Hurt (RollDice 3 1) (intToDeep 0)
   , iverbApply   = "hit"
   , iverbProject = "ERROR, please report: iverbProject tentacle"
-  }
-weight = sword
-  { isymbol  = '@'
-  , iname    = "power jump"
-  , ifreq    = [("weight", 100)]
-  , ieffect  = Hurt (RollDice 99 99) (intToDeep 999)
-  , iverbApply   = "squash"
-  , iverbProject = "ERROR, please report: iverbProject weight"
   }
