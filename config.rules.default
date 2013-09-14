@@ -37,11 +37,10 @@
 ; HeroName_4: Roger Robin
 
 ; [players]
-; ; Faction "playable" means a random choice from playable factions.
 ; ; Animals hunt external intruders; robots hunt all organic.
 ; campaign: Players { playersHuman = [("Spaceship Crew", "hero", 1)], playersComputer = [("Alien Hierarchy", "alien", 3), ("Animal Kingdom", "animal", 2), ("Robotic Anarchy", "robot", 1)], playersEnemy = [("Spaceship Crew", "Alien Hierarchy"), ("Spaceship Crew", "Animal Kingdom"), ("Spaceship Crew", "Robotic Anarchy"), ("Animal Kingdom", "Alien Hierarchy"), ("Robotic Anarchy", "Alien Hierarchy"), ("Robotic Anarchy", "Animal Kingdom")], playersAlly = [] }
-; skirmish: Players { playersHuman = [("White", "hero", 3)], playersComputer = [("Green", "hero", 3)], playersEnemy = [("White", "Green")], playersAlly = [] }
-; PvP: Players { playersHuman = [("Red", "hero", 3), ("Blue", "hero", 3)], playersComputer = [], playersEnemy = [("Red", "Blue")], playersAlly = [] }
+; skirmish: Players { playersHuman = [("White", "hero", 3)], playersComputer = [("Green", "hero", 3), ("Horror Den", "horror", 0)], playersEnemy = [("White", "Green"), ("White", "Horror Den"), ("Green", "Horror Den")], playersAlly = [] }
+; PvP: Players { playersHuman = [("Red", "hero", 3), ("Blue", "hero", 3)], playersComputer = [("Horror Den", "horror", 0)], playersEnemy = [("Red", "Blue"), ("Red", "Horror Den"), ("Blue", "Horror Den")], playersAlly = [] }
 ; Coop: Players { playersHuman = [("Coral", "hero", 1), ("Amber", "hero", 1)], playersComputer = [("Alien Hierarchy", "alien", 3), ("Animal Kingdom", "animal", 2), ("Robotic Anarchy", "robot", 1)], playersEnemy = [("Coral", "Alien Hierarchy"), ("Coral", "Animal Kingdom"), ("Coral", "Robotic Anarchy"), ("Amber", "Alien Hierarchy"), ("Amber", "Animal Kingdom"), ("Amber", "Robotic Anarchy"), ("Animal Kingdom", "Alien Hierarchy"), ("Robotic Anarchy", "Alien Hierarchy"), ("Robotic Anarchy", "Animal Kingdom")], playersAlly = [("Coral", "Amber")] }
 ; defense: Players { playersHuman = [("Alien Hierarchy", "alien", 1)], playersComputer = [("Green", "hero", 1), ("Yellow", "hero", 2), ("Cyan", "hero", 3)], playersEnemy = [("Green", "Alien Hierarchy"), ("Green", "Animal Kingdom"), ("Green", "Robotic Anarchy"), ("Yellow", "Alien Hierarchy"), ("Yellow", "Animal Kingdom"), ("Yellow", "Robotic Anarchy"), ("Cyan", "Alien Hierarchy"), ("Cyan", "Animal Kingdom"), ("Cyan", "Robotic Anarchy"), ("Animal Kingdom", "Alien Hierarchy"), ("Robotic Anarchy", "Alien Hierarchy"), ("Robotic Anarchy", "Animal Kingdom")], playersAlly = [("Green", "Yellow"), ("Green", "Cyan"), ("Yellow", "Cyan")] }
 

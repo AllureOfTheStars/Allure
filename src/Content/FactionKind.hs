@@ -18,17 +18,16 @@ cdefs = ContentDef
   , getFreq = ffreq
   , validate = fvalidate
   , content =
-      [hero, alien, animal, robot]
+      [hero, alien, animal, robot, horror]
   }
-hero,        alien, animal, robot :: FactionKind
+hero,        alien, animal, robot, horror :: FactionKind
 
 hero = FactionKind
   { fsymbol   = '@'
   , fname     = "hero"
-  , ffreq     = [("hero", 1), ("playable", 50)]
+  , ffreq     = [("hero", 1)]
   , fAiLeader = "fullAbility"
   , fAiMember = "meleeAdjacent"
-  , fspawn    = 0
   , fentry    = toEnum 1
   }
 
@@ -36,20 +35,18 @@ hero = FactionKind
 alien = FactionKind
   { fsymbol     = 'a'
   , fname       = "alien"
-  , ffreq       = [("alien", 1), ("playable", 50)]
+  , ffreq       = [("alien", 1), ("spawn", 20), ("summon", 20)]
   , fAiLeader   = "fullAbility"
   , fAiMember   = "fullAbility"
-  , fspawn      = 20
   , fentry      = toEnum 5  -- doesn't matter
   }
 
 animal = FactionKind
   { fsymbol     = 'd'
   , fname       = "animal"
-  , ffreq       = [("animal", 1)]
+  , ffreq       = [("animal", 1), ("spawn", 50), ("summon", 50)]
   , fAiLeader   = "animalAbility"
   , fAiMember   = "animalAbility"
-  , fspawn      = 50
   , fentry      = toEnum 1  -- doesn't matter
   }
 
@@ -57,9 +54,17 @@ animal = FactionKind
 robot = FactionKind
   { fsymbol     = 'r'
   , fname       = "robot"
-  , ffreq       = [("robot", 1)]
+  , ffreq       = [("robot", 1), ("spawn", 10), ("summon", 10)]
   , fAiLeader   = "robotAbility"
   , fAiMember   = "robotAbility"
-  , fspawn      = 10
   , fentry      = toEnum 3  -- doesn't matter
+  }
+
+horror = FactionKind
+  { fsymbol   = 'h'
+  , fname     = "horror"
+  , ffreq     = [("horror", 1), ("summon", 50)]
+  , fAiLeader = "fullAbility"
+  , fAiMember = "fullAbility"
+  , fentry    = toEnum 1
   }
