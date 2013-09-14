@@ -79,7 +79,7 @@ dart = ItemKind
   , itoThrow = 0  -- a cheap dart
   }
 gem = ItemKind
-  { isymbol  = '$'
+  { isymbol  = '*'
   , iname    = "precious gem"
   , ifreq    = [("dng", 20)]       -- x3, but rare on shallow levels
   , iflavour = zipPlain $ L.delete BrYellow brightCol  -- natural, so not fancy
