@@ -28,7 +28,6 @@ hero = FactionKind
   , ffreq     = [("hero", 1)]
   , fAiLeader = "fullAbility"
   , fAiMember = "meleeAdjacent"
-  , fentry    = toEnum 1
   }
 
 -- Includes alien-operated robots, alien-conditioned animals and hybrids.
@@ -38,7 +37,6 @@ alien = FactionKind
   , ffreq       = [("alien", 1), ("spawn", 20), ("summon", 20)]
   , fAiLeader   = "fullAbility"
   , fAiMember   = "fullAbility"
-  , fentry      = toEnum 5
   }
 
 animal = FactionKind
@@ -47,7 +45,6 @@ animal = FactionKind
   , ffreq       = [("animal", 1), ("spawn", 50), ("summon", 50)]
   , fAiLeader   = "animalAbility"
   , fAiMember   = "animalAbility"
-  , fentry      = toEnum 1
   }
 
 -- Autonomous robots.
@@ -57,7 +54,6 @@ robot = FactionKind
   , ffreq       = [("robot", 1), ("spawn", 10), ("summon", 10)]
   , fAiLeader   = "robotAbility"
   , fAiMember   = "robotAbility"
-  , fentry      = toEnum 3
   }
 
 horror = FactionKind
@@ -66,5 +62,4 @@ horror = FactionKind
   , ffreq     = [("horror", 1), ("summon", 50)]
   , fAiLeader = "fullAbility"
   , fAiMember = "fullAbility"
-  , fentry    = toEnum 1
   }
