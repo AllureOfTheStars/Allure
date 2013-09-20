@@ -33,9 +33,10 @@
 ; [heroName]
 ; HeroName_0: Haskell Alvin
 ; HeroName_1: Alonzo Barkley
-; HeroName_2: Ernst Abraham
-; HeroName_3: Samuel Saunders
-; HeroName_4: Roger Robin
+; HeroName_2: Ines Galenti
+; HeroName_3: Ernst Abraham
+; HeroName_4: Samuel Saunders
+; HeroName_5: Roger Robin
 
 ; [players]
 ; campaign: Players { playersHuman = [Player {playerName = "Spaceship Crew", playerKind = "hero", playerInitial = 1, playerEntry = LevelId 1}], playersComputer = [Player {playerName = "Alien Hierarchy", playerKind = "alien", playerInitial = 3, playerEntry = LevelId 5}, Player {playerName = "Animal Kingdom", playerKind = "animal", playerInitial = 3, playerEntry = LevelId 3}, Player {playerName = "Robotic Anarchy", playerKind = "robot", playerInitial = 3, playerEntry = LevelId 4}], playersEnemy = [("Spaceship Crew", "Alien Hierarchy"), ("Spaceship Crew", "Animal Kingdom"), ("Spaceship Crew", "Robotic Anarchy"), ("Animal Kingdom", "Alien Hierarchy"), ("Robotic Anarchy", "Alien Hierarchy"), ("Robotic Anarchy", "Animal Kingdom")], playersAlly = [] }
