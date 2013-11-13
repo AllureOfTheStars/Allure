@@ -13,9 +13,9 @@ import qualified Content.ActorKind
 import qualified Content.CaveKind
 import qualified Content.FactionKind
 import qualified Content.ItemKind
+import qualified Content.ModeKind
 import qualified Content.PlaceKind
 import qualified Content.RuleKind
-import qualified Content.StrategyKind
 import qualified Content.TileKind
 import Game.LambdaHack.Client
 import Game.LambdaHack.Client.Action.ActionType
@@ -30,7 +30,7 @@ import Game.LambdaHack.Server.AtomicSemSer
 instance MonadAtomic ActionSer where
   execAtomic = atomicSendSem
 
-instance MonadAtomic (ActionCli c) where
+instance MonadAtomic (ActionCli c d) where
   execAtomic (CmdAtomic cmd) = cmdAtomicSem cmd
   execAtomic (SfxAtomic _) = return ()
 
@@ -41,9 +41,9 @@ main =
         , cocave  = Kind.createOps Content.CaveKind.cdefs
         , cofact  = Kind.createOps Content.FactionKind.cdefs
         , coitem  = Kind.createOps Content.ItemKind.cdefs
+        , comode  = Kind.createOps Content.ModeKind.cdefs
         , coplace = Kind.createOps Content.PlaceKind.cdefs
         , corule  = Kind.createOps Content.RuleKind.cdefs
-        , costrat = Kind.createOps Content.StrategyKind.cdefs
         , cotile  = Kind.createOps Content.TileKind.cdefs
         }
   in mainSer copsSlow executorSer $ exeFrontend executorCli executorCli

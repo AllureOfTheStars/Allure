@@ -21,9 +21,9 @@
 ; a: Apply [ApplyItem {verb = "apply", object = "consumable", symbol = ' '}, ApplyItem {verb = "eat", object = "food", symbol = ','}, ApplyItem {verb = "activate", object = "emitter", symbol = '_'}, ApplyItem {verb = "use", object = "tool", symbol = '~'}, ApplyItem {verb = "quaff", object = "drink", symbol = '!'}, ApplyItem {verb = "read", object = "tablet", symbol = '?'}]
 ; q: Apply [ApplyItem {verb = "quaff", object = "drink", symbol = '!'}]
 ; r: Apply [ApplyItem {verb = "read", object = "tablet", symbol = '?'}]
-; c: TriggerDir [BumpFeature {verb = "close", object = "door", feature = Closable}]
-; less: TriggerTile [BumpFeature {verb = "ascend", object = "level", feature = Cause (Ascend 1)}, BumpFeature {verb = "exit", object = "spaceship", feature = Cause Escape}]
-; greater: TriggerTile [BumpFeature {verb = "descend", object = "level", feature = Cause (Descend 1)}, BumpFeature {verb = "exit", object = "spaceship", feature = Cause Escape}]
+; c: AlterDir [AlterFeature {verb = "close", object = "door", feature = CloseTo "closed door"}]
+; less: TriggerTile [TriggerFeature {verb = "ascend", object = "level", feature = Cause (Ascend 1)}, TriggerFeature {verb = "exit", object = "spaceship", feature = Cause Escape}]
+; greater: TriggerTile [TriggerFeature {verb = "descend", object = "level", feature = Cause (Descend 1)}, TriggerFeature {verb = "exit", object = "spaceship", feature = Cause Escape}]
 ; CTRL-r: GameRestart "campaign"
 ; ; TODO: pick game modes via arrow keys, not special keys
 ; CTRL-k: GameRestart "skirmish"
@@ -53,6 +53,11 @@
 ; T: MarkSuspect
 ; question: Help
 
+; [file]
+; ; Names (or prefixes) of various game files.
+; ; They reside in ~/.LambdaHack or similar.
+; savePrefix: save
+
 ; [macros]
 ; ; Handy with Vi keys:
 ; comma: g
@@ -61,3 +66,5 @@
 ; [ui]
 ; font: Terminus,Monospace normal normal normal normal 12
 ; historyMax: 5000
+; maxFps: 15
+; noAnim: False

@@ -20,7 +20,7 @@ license:       OtherLicense
 license-file:  LICENSE
 tested-with:   GHC == 7.4.2, GHC == 7.6.1
 data-files:    LICENSE, CREDITS, PLAYING.md, README.md,
-               config.rules.default, config.ui.default, scores
+               config.rules.default, config.ui.default, MainMenu.ascii, scores
 author:        Andres Loeh, Mikolaj Konarski and others
 maintainer:    Mikolaj Konarski <mikolaj.konarski@funktory.com>
 category:      Game
@@ -38,11 +38,10 @@ executable Allure
                       Content.CaveKind,
                       Content.FactionKind,
                       Content.ItemKind,
+                      Content.ModeKind,
                       Content.PlaceKind,
                       Content.RuleKind,
-                      Content.StrategyKind,
                       Content.TileKind,
-                      Multiline,
                       Paths_Allure
   build-depends:      LambdaHack >= 0.2.9 && < 0.2.11,
                       template-haskell >= 2.6 && < 3,

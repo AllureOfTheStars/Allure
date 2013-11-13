@@ -1,4 +1,4 @@
-{-# LANGUAGE CPP, OverloadedStrings, QuasiQuotes #-}
+{-# LANGUAGE OverloadedStrings, TemplateHaskell #-}
 -- Copyright (c) 2008--2011 Andres Loeh, 2010--2012 Mikolaj Konarski
 -- This file is a part of the computer game Allure of the Stars
 -- and is released under the terms of the GNU Affero General Public License.
@@ -7,6 +7,8 @@
 -- | Game rules and assorted game setup data for Allure of the Stars.
 module Content.RuleKind ( cdefs ) where
 
+import Language.Haskell.TH.Syntax
+
 -- Cabal
 import qualified Paths_Allure as Self (getDataFileName, version)
 
@@ -14,7 +16,6 @@ import Game.LambdaHack.Common.ContentDef
 import qualified Game.LambdaHack.Common.Feature as F
 import Game.LambdaHack.Content.RuleKind
 import Game.LambdaHack.Content.TileKind
-import Multiline
 
 cdefs :: ContentDef RuleKind
 cdefs = ContentDef
@@ -47,52 +48,31 @@ standard = RuleKind
   -- so touching them is needed to reinclude configs and recompile.
   -- Note: consider code.haskell.org/~dons/code/compiled-constants
   -- as soon as the config file grows very big.
-  , rcfgRulesDefault = [multiline|
-#include "../../config.rules.default"
-|]
-  , rcfgUIDefault = [multiline|
-#include "../../config.ui.default"
-|]
+  , rcfgRulesDefault = $(do
+      qAddDependentFile "config.rules.default"
+      x <- qRunIO (readFile "config.rules.default")
+      lift x)
+  , rcfgUIDefault = $(do
+      qAddDependentFile "config.ui.default"
+      x <- qRunIO (readFile "config.ui.default")
+      lift x)
   -- ASCII art for the Main Menu. Only pure 7-bit ASCII characters are
   -- allowed. The picture should be exactly 24 rows by 80 columns,
-  -- plus an extra frame of any charecters that is ignored for all purposes.
+  -- plus an extra frame (of any characters) that is ignored.
   -- For a different screen size, the picture is centered and the outermost
   -- rows and columns cloned. When displayed in the Main Menu screen,
   -- it's overwritten with the game version string and keybinding strings.
   -- The game version string begins and ends with a space and is placed
   -- in the very bottom right corner. The keybindings overwrite places
   -- marked with 25 left curly brace signs '{' in a row. The sign is forbidden
-  -- everywhere else. Exactly five such places with 25 left braces
+  -- everywhere else. A specific number of such places with 25 left braces
   -- are required, at most one per row, and all are overwritten
   -- with text that is flushed left and padded with spaces.
   -- The Main Menu is displayed dull white on black.
-  -- TODO: Highlighted keybinding is in inverse video or bright white on grey
+  -- TODO: Show highlighted keybinding in inverse video or bright white on grey
   -- background. The spaces that pad keybindings are not highlighted.
-  , rmainMenuArt = [multiline|
-----------------------------------------------------------------------------------
-|                                                                                |
-|                      >> Allure of the Stars <<                                 |
-|                                                                                |
-|                                                                                |
-|                                                                                |
-|                      {{{{{{{{{{{{{{{{{{{{{{{{{                                 |
-|                                                                                |
-|                      {{{{{{{{{{{{{{{{{{{{{{{{{                                 |
-|                                                                                |
-|                      {{{{{{{{{{{{{{{{{{{{{{{{{                                 |
-|                                                                                |
-|                      {{{{{{{{{{{{{{{{{{{{{{{{{                                 |
-|                                                                                |
-|                      {{{{{{{{{{{{{{{{{{{{{{{{{                                 |
-|                                                                                |
-|                      {{{{{{{{{{{{{{{{{{{{{{{{{                                 |
-|                                                                                |
-|                      {{{{{{{{{{{{{{{{{{{{{{{{{                                 |
-|                                                                                |
-|                      {{{{{{{{{{{{{{{{{{{{{{{{{                                 |
-|                                                                                |
-|                                                                                |
-|                                                                                |
-|                        Version X.X.X (frontend: gtk, engine: LambdaHack X.X.X) |
-----------------------------------------------------------------------------------
-|]}
+  , rmainMenuArt = $(do
+      qAddDependentFile "MainMenu.ascii"
+      x <- qRunIO (readFile "MainMenu.ascii")
+      lift x)
+  }

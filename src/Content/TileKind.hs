@@ -20,9 +20,9 @@ cdefs = ContentDef
   , getFreq = tfreq
   , validate = tvalidate
   , content =
-      [wall, hardRock, pillar, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRed, floorBlue, floorGreen]
+      [wall, hardRock, pillar, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRed, floorBlue, floorGreen]
   }
-wall,        hardRock, pillar, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRed, floorBlue, floorGreen :: TileKind
+wall,        hardRock, pillar, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRed, floorBlue, floorGreen :: TileKind
 
 wall = TileKind
   { tsymbol  = '#'
@@ -31,7 +31,7 @@ wall = TileKind
                , ("noiseSet", 55), ("combatSet", 5) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfeature = [HiddenAs "suspect wall"]
+  , tfeature = [HideAs "suspect wall"]
   }
 hardRock = TileKind
   { tsymbol  = '#'
@@ -56,7 +56,7 @@ wallSuspect = TileKind
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , tfeature = [ Suspect
-               , ChangeTo "closed door"  -- never triggered, hack 47
+               , RevealAs "closed door"
                ]
   }
 doorClosed = TileKind
@@ -65,10 +65,7 @@ doorClosed = TileKind
   , tfreq    = [("litLegend", 100), ("darkLegend", 100), ("closed door", 1)]
   , tcolor   = Brown
   , tcolor2  = BrBlack
-  , tfeature = [ Exit, Openable
-               , ChangeTo "open door"
-               , HiddenAs "suspect wall"
-               ]
+  , tfeature = [Exit, OpenTo "open door", HideAs "suspect wall"]
   }
 doorOpen = TileKind
   { tsymbol  = '\''
@@ -76,7 +73,7 @@ doorOpen = TileKind
   , tfreq    = [("litLegend", 100), ("darkLegend", 100), ("open door", 1)]
   , tcolor   = Brown
   , tcolor2  = BrBlack
-  , tfeature = [Walkable, Clear, Exit, Closable, ChangeTo "closed door"]
+  , tfeature = [Walkable, Clear, Exit, CloseTo "closed door"]
   }
 stairsUp = TileKind
   { tsymbol  = '<'
@@ -84,7 +81,7 @@ stairsUp = TileKind
   , tfreq    = [("litLegend", 100), ("darkLegend", 100)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfeature = [ Walkable, Clear, Lit, Exit, Ascendable
+  , tfeature = [ Walkable, Clear, Lit, Exit
                , Cause $ Effect.Ascend 1 ]
   }
 stairsDown = TileKind
@@ -93,7 +90,7 @@ stairsDown = TileKind
   , tfreq    = [("litLegend", 100), ("darkLegend", 100)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfeature = [ Walkable, Clear, Lit, Exit, Descendable
+  , tfeature = [ Walkable, Clear, Lit, Exit
                , Cause $ Effect.Descend 1 ]
   }
 escapeUp = TileKind
@@ -103,6 +100,14 @@ escapeUp = TileKind
   , tcolor   = BrYellow
   , tcolor2  = BrYellow
   , tfeature = [ Walkable, Clear, Lit, Exit, Cause Effect.Escape ]
+  }
+escapeDown = TileKind
+  { tsymbol  = '>'
+  , tname    = "exit trapdoor down"
+  , tfreq    = [("litLegend", 100), ("darkLegend", 100)]
+  , tcolor   = BrYellow
+  , tcolor2  = BrYellow
+  , tfeature = [Walkable, Clear, Lit, Exit, Cause Effect.Escape]
   }
 unknown = TileKind
   { tsymbol  = ' '

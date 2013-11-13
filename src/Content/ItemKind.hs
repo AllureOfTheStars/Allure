@@ -29,7 +29,7 @@ necklace,        dart, gem1, gem2, gem3, currency, javelin, kitchenKnife, potion
 
 gem, potion, scroll, wand :: ItemKind  -- generic templates
 
--- rollDeep (aDb, xDy) = rollDice aDb + lvl * rollDice xDy / depth
+-- castDeep (aDb, xDy) = castDice aDb + lvl * castDice xDy / depth
 
 {- Item group symbols (from Angband, only as an informal convention for now):
 
@@ -59,7 +59,7 @@ necklace = ItemKind
   , iname    = "necklace"
   , ifreq    = [("dng", 6)]
   , iflavour = zipFancy [BrGreen]
-  , ieffect  = Regeneration (RollDice 2 3, RollDice 1 10)
+  , ieffect  = Regeneration (rollDice 2 3, rollDice 1 10)
   , icount   = intToDeep 1
   , iverbApply   = "tear down"
   , iverbProject = "cast"
@@ -71,8 +71,8 @@ dart = ItemKind
   , iname    = "billiard ball"
   , ifreq    = [("dng", 30)]
   , iflavour = zipPlain [BrWhite]
-  , ieffect  = Hurt (RollDice 1 1) (RollDice 1 2, RollDice 1 2)
-  , icount   = (RollDice 3 3, RollDice 0 0)
+  , ieffect  = Hurt (rollDice 1 1) (rollDice 1 2, rollDice 1 2)
+  , icount   = (rollDice 3 3, rollDice 0 0)
   , iverbApply   = "splinter"
   , iverbProject = "hurl"
   , iweight  = 50
@@ -91,13 +91,13 @@ gem = ItemKind
   , itoThrow = 0
   }
 gem1 = gem
-  { icount   = (RollDice 0 0, RollDice 1 1)  -- appears on max depth
+  { icount   = (rollDice 0 0, rollDice 1 1)  -- appears on max depth
   }
 gem2 = gem
-  { icount   = (RollDice 0 0, RollDice 1 2)  -- appears halfway, doubled on max
+  { icount   = (rollDice 0 0, rollDice 1 2)  -- appears halfway, doubled on max
   }
 gem3 = gem
-  { icount   = (RollDice 0 0, RollDice 1 3)
+  { icount   = (rollDice 0 0, rollDice 1 3)
   }
 currency = ItemKind
   { isymbol  = '$'
@@ -105,7 +105,7 @@ currency = ItemKind
   , ifreq    = [("dng", 50), ("currency", 1)]
   , iflavour = zipPlain [BrYellow]
   , ieffect  = NoEffect
-  , icount   = (RollDice 0 0, RollDice 10 10)
+  , icount   = (rollDice 0 0, rollDice 10 10)
   , iverbApply   = "smear"
   , iverbProject = "blow away"
   , iweight  = 1
@@ -116,8 +116,8 @@ javelin = ItemKind
   , iname    = "javelin"
   , ifreq    = [("dng", 30)]
   , iflavour = zipPlain [Brown]
-  , ieffect  = Hurt (RollDice 1 2) (RollDice 1 2, RollDice 2 2)
-  , icount   = (RollDice 0 0, RollDice 1 1)
+  , ieffect  = Hurt (rollDice 1 2) (rollDice 1 2, rollDice 2 2)
+  , icount   = (rollDice 0 0, rollDice 1 1)
   , iverbApply   = "break up"
   , iverbProject = "hurl"
   , iweight  = 2000
@@ -128,8 +128,8 @@ kitchenKnife = ItemKind
   , iname    = "kitchen knife"
   , ifreq    = [("dng", 30)]
   , iflavour = zipPlain [BrCyan]
-  , ieffect  = Hurt (RollDice 1 1) (RollDice 0 0, RollDice 1 2)
-  , icount   = (RollDice 0 0, RollDice 1 2)
+  , ieffect  = Hurt (rollDice 1 1) (rollDice 0 0, rollDice 1 2)
+  , icount   = (rollDice 0 0, rollDice 1 2)
   , iverbApply   = "bend"
   , iverbProject = "throw"
   , iweight  = 200
@@ -163,7 +163,7 @@ ring = ItemKind
   , iname    = "ring"
   , ifreq    = []  -- [("dng", 10)]  -- TODO: make it useful
   , iflavour = zipPlain [White]
-  , ieffect  = Searching (RollDice 1 6, RollDice 3 2)
+  , ieffect  = Searching (rollDice 1 6, rollDice 3 2)
   , icount   = intToDeep 1
   , iverbApply   = "squeeze down"
   , iverbProject = "toss"
@@ -196,7 +196,7 @@ sword = ItemKind
   , iname    = "sharpened pipe"
   , ifreq    = [("dng", 40)]
   , iflavour = zipPlain [Cyan]
-  , ieffect  = Hurt (RollDice 3 1) (RollDice 1 2, RollDice 4 2)
+  , ieffect  = Hurt (rollDice 3 1) (rollDice 1 2, rollDice 4 2)
   , icount   = intToDeep 1
   , iverbApply   = "hit"
   , iverbProject = "heave"
@@ -226,7 +226,7 @@ fist = sword
   { isymbol  = '@'
   , iname    = "fist"
   , ifreq    = [("hth", 1), ("unarmed", 100)]
-  , ieffect  = Hurt (RollDice 3 1) (intToDeep 0)
+  , ieffect  = Hurt (rollDice 3 1) (intToDeep 0)
   , iverbApply   = "punch"
   , iverbProject = "ERROR, please report: iverbProject fist"
   }
@@ -234,7 +234,7 @@ foot = sword
   { isymbol  = '@'
   , iname    = "foot"
   , ifreq    = [("hth", 1), ("unarmed", 50)]
-  , ieffect  = Hurt (RollDice 3 1) (intToDeep 0)
+  , ieffect  = Hurt (rollDice 3 1) (intToDeep 0)
   , iverbApply   = "kick"
   , iverbProject = "ERROR, please report: iverbProject foot"
   }
@@ -242,7 +242,7 @@ tentacle = sword
   { isymbol  = 'S'
   , iname    = "tentacle"
   , ifreq    = [("hth", 1), ("monstrous", 100)]
-  , ieffect  = Hurt (RollDice 3 1) (intToDeep 0)
+  , ieffect  = Hurt (rollDice 3 1) (intToDeep 0)
   , iverbApply   = "hit"
   , iverbProject = "ERROR, please report: iverbProject tentacle"
   }

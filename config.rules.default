@@ -9,14 +9,6 @@
 ; ; ~/.LambdaHack/config.rules.ini (or a similar path, depending on the OS).
 ; ; Warning: options are case-sensitive and only ';' for comments is permitted.
 
-; [caves]
-; ; Cave "dng" means a random choice from caves that can randomly appear;
-; ; this is the default and the lack of the Escape feature is the default.
-; ; Fixed caves for the first levels, then randomly picked caves.
-; campaign: [(1, ("caveRogue", False)), (12, ("caveNoise", True))]
-; combat: [(3, ("caveCombat", False))]
-; defense: [(1, ("dng", False)), (6, ("caveEmpty", True))]
-
 ; [engine]
 ; ;dungeonRandomGenerator: 42
 ; firstDeathEnds: False
@@ -27,7 +19,9 @@
 ; saveBkpClips: 100
 
 ; [file]
-; ; Names of various game files. They reside in ~/.LambdaHack or similar.
+; ; Names (or prefixes) of various game files.
+; ; They reside in ~/.LambdaHack or similar.
+; savePrefix: save
 ; scoresFile: scores
 
 ; [heroName]
@@ -37,17 +31,3 @@
 ; HeroName_3: Ernst Abraham
 ; HeroName_4: Samuel Saunders
 ; HeroName_5: Roger Robin
-
-; [players]
-; campaign: Players { playersHuman = [Player {playerName = "Spaceship Crew", playerKind = "hero", playerInitial = 1, playerEntry = LevelId 1}], playersComputer = [Player {playerName = "Alien Hierarchy", playerKind = "alien", playerInitial = 3, playerEntry = LevelId 5}, Player {playerName = "Animal Kingdom", playerKind = "animal", playerInitial = 3, playerEntry = LevelId 3}, Player {playerName = "Robotic Anarchy", playerKind = "robot", playerInitial = 3, playerEntry = LevelId 4}], playersEnemy = [("Spaceship Crew", "Alien Hierarchy"), ("Spaceship Crew", "Animal Kingdom"), ("Spaceship Crew", "Robotic Anarchy"), ("Animal Kingdom", "Alien Hierarchy"), ("Robotic Anarchy", "Alien Hierarchy"), ("Robotic Anarchy", "Animal Kingdom")], playersAlly = [] }
-; skirmish: Players { playersHuman = [Player {playerName = "White", playerKind = "hero", playerInitial = 3, playerEntry = LevelId 1}], playersComputer = [Player {playerName = "Green", playerKind = "hero", playerInitial = 3, playerEntry = LevelId 1}, Player {playerName = "Horror Den", playerKind = "horror", playerInitial = 0, playerEntry = LevelId 1}], playersEnemy = [("White", "Green"), ("White", "Horror Den"), ("Green", "Horror Den")], playersAlly = [] }
-; PvP: Players { playersHuman = [Player {playerName = "Red", playerKind = "hero", playerInitial = 3, playerEntry = LevelId 1}, Player {playerName = "Blue", playerKind = "hero", playerInitial = 3, playerEntry = LevelId 1}], playersComputer = [Player {playerName = "Horror Den", playerKind = "horror", playerInitial = 0, playerEntry = LevelId 1}], playersEnemy = [("Red", "Blue"), ("Red", "Horror Den"), ("Blue", "Horror Den")], playersAlly = [] }
-; Coop: Players { playersHuman = [Player {playerName = "Coral", playerKind = "hero", playerInitial = 1, playerEntry = LevelId 1}, Player {playerName = "Amber", playerKind = "hero", playerInitial = 1, playerEntry = LevelId 1}], playersComputer = [Player {playerName = "Alien Hierarchy", playerKind = "alien", playerInitial = 3, playerEntry = LevelId 5}, Player {playerName = "Animal Kingdom", playerKind = "animal", playerInitial = 3, playerEntry = LevelId 3}, Player {playerName = "Robotic Anarchy", playerKind = "robot", playerInitial = 3, playerEntry = LevelId 4}], playersEnemy = [("Coral", "Alien Hierarchy"), ("Coral", "Animal Kingdom"), ("Coral", "Robotic Anarchy"), ("Amber", "Alien Hierarchy"), ("Amber", "Animal Kingdom"), ("Amber", "Robotic Anarchy"), ("Animal Kingdom", "Alien Hierarchy"), ("Robotic Anarchy", "Alien Hierarchy"), ("Robotic Anarchy", "Animal Kingdom")], playersAlly = [("Coral", "Amber")] }
-; defense: Players { playersHuman = [Player {playerName = "Alien Hierarchy", playerKind = "alien", playerInitial = 1, playerEntry = LevelId 1}], playersComputer = [Player {playerName = "Green", playerKind = "hero", playerInitial = 1, playerEntry = LevelId 1}, Player {playerName = "Yellow", playerKind = "hero", playerInitial = 2, playerEntry = LevelId 1}, Player {playerName = "Cyan", playerKind = "hero", playerInitial = 3, playerEntry = LevelId 1}, Player {playerName = "Animal Kingdom", playerKind = "animal", playerInitial = 0, playerEntry = LevelId 1}, Player {playerName = "Robotic Anarchy", playerKind = "robot", playerInitial = 0, playerEntry = LevelId 1}], playersEnemy = [("Green", "Alien Hierarchy"), ("Green", "Animal Kingdom"), ("Green", "Robotic Anarchy"), ("Yellow", "Alien Hierarchy"), ("Yellow", "Animal Kingdom"), ("Yellow", "Robotic Anarchy"), ("Cyan", "Alien Hierarchy"), ("Cyan", "Animal Kingdom"), ("Cyan", "Robotic Anarchy"), ("Animal Kingdom", "Alien Hierarchy"), ("Robotic Anarchy", "Alien Hierarchy"), ("Robotic Anarchy", "Animal Kingdom")], playersAlly = [("Green", "Yellow"), ("Green", "Cyan"), ("Yellow", "Cyan")] }
-
-; [scenario]
-; campaign: Scenario { scenarioPlayers = "campaign", scenarioDungeon = "campaign" }
-; skirmish: Scenario { scenarioPlayers = "skirmish", scenarioDungeon = "combat" }
-; PvP: Scenario { scenarioPlayers = "PvP", scenarioDungeon = "combat" }
-; Coop: Scenario { scenarioPlayers = "Coop", scenarioDungeon = "campaign" }
-; defense: Scenario { scenarioPlayers = "defense", scenarioDungeon = "defense" }
