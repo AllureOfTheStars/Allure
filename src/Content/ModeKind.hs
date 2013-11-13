@@ -19,9 +19,9 @@ cdefs = ContentDef
   , getFreq = mfreq
   , validate = mvalidate
   , content =
-      [campaign, skirmish, pvp, coop, defense, screensaver]
+      [campaign, skirmish, pvp, coop, defense, screensaver, testCoop, testDefense]
   }
-campaign,        skirmish, pvp, coop, defense, screensaver :: ModeKind
+campaign,        skirmish, pvp, coop, defense, screensaver, testCoop, testDefense :: ModeKind
 
 campaign = ModeKind
   { msymbol  = 'r'  -- matches the keypress (with C-)
@@ -71,8 +71,24 @@ screensaver = ModeKind
   , mcaves   = cavesScreensaver
   }
 
+testCoop = ModeKind
+  { msymbol  = 't'
+  , mname    = "testCoop"
+  , mfreq    = [("testCoop", 1)]
+  , mplayers = playersTestCoop
+  , mcaves   = cavesScreensaver
+  }
 
-playersCampaign, playersSkirmish, playersPvP, playersCoop, playersDefense, playersScreensaver :: Players
+testDefense = ModeKind
+  { msymbol  = 'u'
+  , mname    = "testDefense"
+  , mfreq    = [("testDefense", 1)]
+  , mplayers = playersTestDefense
+  , mcaves   = cavesDefense
+  }
+
+
+playersCampaign, playersSkirmish, playersPvP, playersCoop, playersDefense, playersScreensaver, playersTestCoop, playersTestDefense :: Players
 
 playersCampaign = Players
   { playersList = [ playerHero {playerInitial = 1}
@@ -153,6 +169,46 @@ playersScreensaver = Players
                    , ("Spaceship Crew", "Animal Kingdom")
                    , ("Spaceship Crew", "Robotic Anarchy") ]
   , playersAlly = [] }
+
+playersTestCoop = Players
+  { playersList = [ playerHero { playerName = "Coral"
+                               , playerAiLeader = True
+                               , playerHuman = False }
+                  , playerHero { playerName = "Amber"
+                               , playerAiLeader = True
+                               , playerHuman = False }
+                  , playerMonster
+                  , playerAnimal
+                  , playerRobot ]
+  , playersEnemy = [ ("Coral", "Alien Hierarchy")
+                   , ("Coral", "Animal Kingdom")
+                   , ("Coral", "Robotic Anarchy")
+                   , ("Amber", "Alien Hierarchy")
+                   , ("Amber", "Animal Kingdom")
+                   , ("Amber", "Robotic Anarchy") ]
+  , playersAlly = [("Coral", "Amber")] }
+
+playersTestDefense = Players
+  { playersList = [ playerMonster { playerInitial = 1
+                                  , playerEntry = toEnum 1
+                                  , playerUI = True }
+                  , playerAnimal
+                  , playerRobot
+                  , playerAntiHero {playerName = "Green"}
+                  , playerAntiHero {playerName = "Yellow"}
+                  , playerAntiHero {playerName = "Cyan"} ]
+  , playersEnemy = [ ("Green", "Alien Hierarchy")
+                   , ("Green", "Animal Kingdom")
+                   , ("Green", "Robotic Anarchy")
+                   , ("Yellow", "Alien Hierarchy")
+                   , ("Yellow", "Animal Kingdom")
+                   , ("Yellow", "Robotic Anarchy")
+                   , ("Cyan", "Alien Hierarchy")
+                   , ("Cyan", "Animal Kingdom")
+                   , ("Cyan", "Robotic Anarchy") ]
+  , playersAlly = [ ("Green", "Yellow")
+                  , ("Green", "Cyan")
+                  , ("Yellow", "Cyan") ] }
 
 
 playerHero, playerAntiHero, playerMonster, playerAnimal, playerRobot, playerHorror :: Player
