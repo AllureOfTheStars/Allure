@@ -23,13 +23,13 @@ testCoop-travis:
 	dist/build/Allure/Allure --noMore --noDelay --noAnim --maxFps 100000 --savePrefix testCoop --gameMode testCoop --frontendStd --stopAfter 60 > /dev/null
 
 testDefense:
-	dist/build/Allure/Allure --noMore --noDelay --noAnim --maxFps 100000 --savePrefix testDefense --gameMode testDefense --frontendStd --stopAfter 500 > /tmp/stdtest.log
+	dist/build/Allure/Allure --noMore --maxFps 100000 --savePrefix testDefense --gameMode testDefense --frontendStd --stopAfter 500 > /tmp/stdtest.log
 
 testDefense-frontend:
 	dist/build/Allure/Allure --noMore --maxFps 45 --savePrefix testDefense --gameMode testDefense
 
 testDefense-travis:
-	dist/build/Allure/Allure --noMore --noDelay --noAnim --maxFps 100000 --savePrefix testDefense --gameMode testDefense --frontendStd --stopAfter 60 > /dev/null
+	dist/build/Allure/Allure --noMore --maxFps 100000 --savePrefix testDefense --gameMode testDefense --frontendStd --stopAfter 60 > /dev/null
 
 
 # The rest of the makefile is unmaintained at the moment.
