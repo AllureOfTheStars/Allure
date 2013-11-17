@@ -19,9 +19,9 @@ cdefs = ContentDef
   , getFreq = tfreq
   , validate = tvalidate
   , content =
-      [wall, hardRock, pillar, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRed, floorBlue, floorGreen]
+      [wall, hardRock, pillar, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRed, floorBlue, floorGreen]
   }
-wall,        hardRock, pillar, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRed, floorBlue, floorGreen :: TileKind
+wall,        hardRock, pillar, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRed, floorBlue, floorGreen :: TileKind
 
 wall = TileKind
   { tsymbol  = '#'
@@ -77,20 +77,18 @@ doorOpen = TileKind
 stairsUp = TileKind
   { tsymbol  = '<'
   , tname    = "staircase up"
-  , tfreq    = [("litLegend", 100), ("darkLegend", 100)]
+  , tfreq    = []  -- TODO: [("litLegend", 100), ("darkLegend", 100)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfeature = [ Walkable, Clear, Lit, Exit
-               , Cause $ Effect.Ascend 1 ]
+  , tfeature = [Walkable, Clear, Lit, Exit, Cause $ Effect.Ascend 1]
   }
 stairsDown = TileKind
   { tsymbol  = '>'
   , tname    = "staircase down"
-  , tfreq    = [("litLegend", 100), ("darkLegend", 100)]
+  , tfreq    = []  -- TODO: [("litLegend", 100), ("darkLegend", 100)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfeature = [ Walkable, Clear, Lit, Exit
-               , Cause $ Effect.Descend 1 ]
+  , tfeature = [Walkable, Clear, Lit, Exit, Cause $ Effect.Descend 1]
   }
 escapeUp = TileKind
   { tsymbol  = '<'
@@ -98,7 +96,7 @@ escapeUp = TileKind
   , tfreq    = [("litLegend", 100), ("darkLegend", 100)]
   , tcolor   = BrYellow
   , tcolor2  = BrYellow
-  , tfeature = [ Walkable, Clear, Lit, Exit, Cause Effect.Escape ]
+  , tfeature = [Walkable, Clear, Lit, Exit, Cause Effect.Escape]
   }
 escapeDown = TileKind
   { tsymbol  = '>'
@@ -107,6 +105,32 @@ escapeDown = TileKind
   , tcolor   = BrYellow
   , tcolor2  = BrYellow
   , tfeature = [Walkable, Clear, Lit, Exit, Cause Effect.Escape]
+  }
+liftUp = TileKind
+  { tsymbol  = '<'
+  , tname    = "lift up"
+  , tfreq    = [("litLegend", 100), ("darkLegend", 100)]
+  , tcolor   = BrCyan
+  , tcolor2  = BrCyan
+  , tfeature = [Walkable, Clear, Lit, Exit, Cause $ Effect.Ascend 1]
+  }
+lift = TileKind
+  { tsymbol  = '>'
+  , tname    = "lift"
+  , tfreq    = [("litLegend", 100), ("darkLegend", 100)]
+  , tcolor   = BrBlue
+  , tcolor2  = BrBlue
+  , tfeature = [ Walkable, Clear, Lit, Exit
+               , Cause $ Effect.Ascend 1
+               , Cause $ Effect.Descend 1 ]
+  }
+liftDown = TileKind
+  { tsymbol  = '>'
+  , tname    = "lift down"
+  , tfreq    = [("litLegend", 100), ("darkLegend", 100)]
+  , tcolor   = BrCyan
+  , tcolor2  = BrCyan
+  , tfeature = [Walkable, Clear, Lit, Exit, Cause $ Effect.Descend 1]
   }
 unknown = TileKind
   { tsymbol  = ' '
