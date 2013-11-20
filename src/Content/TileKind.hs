@@ -88,7 +88,7 @@ stairsDown = TileKind
   , tfreq    = []  -- TODO: [("litLegend", 100), ("darkLegend", 100)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfeature = [Walkable, Clear, Lit, Exit, Cause $ Effect.Descend 1]
+  , tfeature = [Walkable, Clear, Lit, Exit, Cause $ Effect.Ascend (-1)]
   }
 escapeUp = TileKind
   { tsymbol  = '<'
@@ -122,7 +122,7 @@ lift = TileKind
   , tcolor2  = BrBlue
   , tfeature = [ Walkable, Clear, Lit, Exit
                , Cause $ Effect.Ascend 1
-               , Cause $ Effect.Descend 1 ]
+               , Cause $ Effect.Ascend (-1) ]
   }
 liftDown = TileKind
   { tsymbol  = '>'
@@ -130,7 +130,7 @@ liftDown = TileKind
   , tfreq    = [("litLegend", 100), ("darkLegend", 100)]
   , tcolor   = BrCyan
   , tcolor2  = BrCyan
-  , tfeature = [Walkable, Clear, Lit, Exit, Cause $ Effect.Descend 1]
+  , tfeature = [Walkable, Clear, Lit, Exit, Cause $ Effect.Ascend (-1)]
   }
 unknown = TileKind
   { tsymbol  = ' '
