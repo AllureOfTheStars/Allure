@@ -279,13 +279,13 @@ cavesCampaign, cavesCombat, cavesDefense, cavesScreensaver :: Caves
 -- Cave "dng" means a random choice from caves that can randomly appear;
 -- this is the default and the lack of the Escape feature is the default.
 
-cavesCampaign = EM.fromList [ (toEnum 1, ("caveRogue", Just True))
-                            , (toEnum 12, ("caveNoise", Nothing))]
+cavesCampaign = EM.fromList [ (toEnum 1, ("caveRogue", Nothing))
+                            , (toEnum 12, ("caveNoise", Just True))]
 
 cavesCombat = EM.fromList [(toEnum 3, ("caveCombat", Nothing))]
 
 cavesDefense = EM.fromList [ (toEnum 1, ("dng", Nothing))
-                           , (toEnum 5, ("caveEmpty", Just False))]
+                           , (toEnum 5, ("caveEmpty", Just True))]
 
 cavesScreensaver = EM.fromList [ (toEnum 1, ("caveRogue", Nothing))
-                               , (toEnum 12, ("caveNoise", Just False))]
+                               , (toEnum 12, ("caveNoise", Just True))]
