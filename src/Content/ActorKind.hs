@@ -33,7 +33,7 @@ hero = ActorKind
   , aspeed  = toSpeed 2
   , asight  = True
   , asmell  = False
-  , aiq     = 16
+  , aiq     = 15  -- higher that that leads to looping movement
   , aregen  = 500
   , acanDo  = [minBound..maxBound]
   }
@@ -61,7 +61,7 @@ eye = ActorKind
   , aspeed  = toSpeed 2
   , asight  = True
   , asmell  = False
-  , aiq     = 8
+  , aiq     = 16  -- leads to robotic, repetitious, looping movement
   , aregen  = 100
   , acanDo  = [minBound..maxBound]
   }
