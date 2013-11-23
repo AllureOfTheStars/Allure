@@ -31,6 +31,8 @@ testDefense-frontend:
 testDefense-travis:
 	dist/build/Allure/Allure --noMore --maxFps 100000 --savePrefix testDefense --gameMode testDefense --frontendStd --stopAfter 60 > /dev/null
 
+travisTests: test-travis testCoop-travis testDefense-travis
+
 
 # The rest of the makefile is unmaintained at the moment.
 
