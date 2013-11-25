@@ -188,7 +188,7 @@ scroll2 = scroll
   { ieffect  = Summon 1
   }
 scroll3 = scroll
-  { ieffect  = Ascend (-1)
+  { ieffect  = Ascend 1
   }
 sword = ItemKind
   { isymbol  = '/'

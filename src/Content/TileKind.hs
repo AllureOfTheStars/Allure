@@ -115,7 +115,7 @@ liftUp = TileKind
   , tfeature = [Walkable, Clear, Lit, Exit, Cause $ Effect.Ascend 1]
   }
 lift = TileKind
-  { tsymbol  = '>'
+  { tsymbol  = '<'
   , tname    = "lift"
   , tfreq    = [("litLegend", 100), ("darkLegend", 100)]
   , tcolor   = BrBlue
