@@ -9,7 +9,7 @@ description:   This is an alpha release of Allure of the Stars,
                New in this release are screensaver game modes (AI vs AI),
                improved AI (can now climbs stairs, etc.), multiple,
                multi-floor staircases, multiple savefiles, configurable
-               framerate, combat animations and more.
+               framerate and combat animations and more.
                Long term goals are high replayability and auto-balancing
                through procedural content generation and persistent content
                modification based on player behaviour.

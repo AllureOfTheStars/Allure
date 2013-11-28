@@ -6,7 +6,7 @@
 ; ; This is a commented out copy of the default UI settings config file
 ; ; that is embedded in the binary.
 ; ; A user config file can overrides these options. The game looks for it at
-; ; ~/.LambdaHack/config.ui.ini (or a similar path, depending on the OS).
+; ; ~/.Allure/config.ui.ini (or a similar path, depending on the OS).
 ; ; Warning: options are case-sensitive and only ';' for comments is permitted.
 
 ; [commands]
@@ -55,7 +55,7 @@
 
 ; [file]
 ; ; Names (or prefixes) of various game files.
-; ; They reside in ~/.LambdaHack or similar.
+; ; They reside in ~/.Allure or similar.
 ; savePrefix: save
 
 ; [macros]
