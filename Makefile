@@ -4,34 +4,58 @@
 # For license and copyright information, see the file LICENSE.
 #
 
-test:
-	dist/build/Allure/Allure --noMore --noDelay --noAnim --maxFps 100000 --dbgMsgSer --savePrefix screensaver --gameMode screensaver --frontendStd --stopAfter 500 > /tmp/stdtest.log
+test: test-short test-medium test-long
 
-test-frontend:
-	dist/build/Allure/Allure --noMore --maxFps 45 --dbgMsgSer --savePrefix screensaver --gameMode screensaver
+test-long: testCampaign testCoop testDefense
 
-test-travis:
-	dist/build/Allure/Allure --noMore --noDelay --noAnim --maxFps 100000 --savePrefix screensaver --gameMode screensaver --frontendStd --stopAfter 60 > /dev/null
+test-medium: testCampaign-medium testCoop-medium testDefense-medium
+
+testCampaign:
+	dist/build/Allure/Allure --dbgMsgSer --newGame --noMore --noDelay --noAnim --maxFps 100000 --savePrefix test --gameMode screensaver --frontendStd --stopAfter 500 > /tmp/stdtest.log
+
+testCampaign-medium:
+	dist/build/Allure/Allure --dbgMsgSer --newGame --noMore --noDelay --noAnim --maxFps 100000 --savePrefix test --gameMode screensaver --frontendStd --stopAfter 60 > /tmp/stdtest.log
+
+testCampaign-frontend:
+	dist/build/Allure/Allure --dbgMsgSer --newGame --noMore --maxFps 45 --savePrefix test --gameMode screensaver
 
 testCoop:
-	dist/build/Allure/Allure --noMore --noDelay --noAnim --maxFps 100000 --fovMode Permissive --dbgMsgSer --savePrefix testCoop --gameMode testCoop --frontendStd --stopAfter 500 > /tmp/stdtest.log
+	dist/build/Allure/Allure --dbgMsgSer --newGame --noMore --noDelay --noAnim --maxFps 100000 --fovMode Permissive --savePrefix test --gameMode testCoop --frontendStd --stopAfter 500 > /tmp/stdtest.log
+
+testCoop-medium:
+	dist/build/Allure/Allure --dbgMsgSer --newGame --noMore --noDelay --noAnim --maxFps 100000 --fovMode Shadow --savePrefix test --gameMode testCoop --frontendStd --stopAfter 60 > /tmp/stdtest.log
 
 testCoop-frontend:
-	dist/build/Allure/Allure --noMore --maxFps 180 --dbgMsgSer --fovMode Permissive --savePrefix testCoop --gameMode testCoop
-
-testCoop-travis:
-	dist/build/Allure/Allure --noMore --noDelay --noAnim --maxFps 100000 --fovMode Permissive --savePrefix testCoop --gameMode testCoop --frontendStd --stopAfter 60 > /dev/null
+	dist/build/Allure/Allure --dbgMsgSer --newGame --noMore --maxFps 180 --fovMode Permissive --savePrefix test --gameMode testCoop
 
 testDefense:
-	dist/build/Allure/Allure --noMore --maxFps 100000 --dbgMsgSer --savePrefix testDefense --gameMode testDefense --frontendStd --stopAfter 500 > /tmp/stdtest.log
+	dist/build/Allure/Allure --dbgMsgSer --newGame --noMore --noAnim --maxFps 100000 --savePrefix test --gameMode testDefense --frontendStd --stopAfter 500 > /tmp/stdtest.log
+
+testDefense-medium:
+	dist/build/Allure/Allure --dbgMsgSer --newGame --noMore --maxFps 100000 --savePrefix test --gameMode testDefense --frontendStd --stopAfter 60 > /tmp/stdtest.log
 
 testDefense-frontend:
-	dist/build/Allure/Allure --noMore --maxFps 45 --dbgMsgSer --savePrefix testDefense --gameMode testDefense
+	dist/build/Allure/Allure --dbgMsgSer --newGame --noMore --maxFps 45 --savePrefix test --gameMode testDefense
 
-testDefense-travis:
-	dist/build/Allure/Allure --noMore --maxFps 100000 --savePrefix testDefense --gameMode testDefense --frontendStd --stopAfter 60 > /dev/null
+test-short: test-short-new test-short-load
 
-travisTests: test-travis testCoop-travis testDefense-travis
+test-short-new:
+	yes . | dist/build/Allure/Allure --dbgMsgSer --newGame --savePrefix campaign --gameMode campaign --frontendStd --stopAfter 0 > /tmp/stdtest.log
+	yes . | dist/build/Allure/Allure --dbgMsgSer --newGame --savePrefix skirmish --gameMode skirmish --frontendStd --stopAfter 0 > /tmp/stdtest.log
+	yes . | dist/build/Allure/Allure --dbgMsgSer --newGame --savePrefix PvP --gameMode PvP --frontendStd --stopAfter 0 > /tmp/stdtest.log
+	yes . | dist/build/Allure/Allure --dbgMsgSer --newGame --savePrefix Coop --gameMode Coop --frontendStd --stopAfter 0 > /tmp/stdtest.log
+	yes . | dist/build/Allure/Allure --dbgMsgSer --newGame --savePrefix defense --gameMode defense --frontendStd --stopAfter 0 > /tmp/stdtest.log
+	yes . | dist/build/Allure/Allure --dbgMsgSer --newGame --savePrefix peek --gameMode peek --frontendStd --stopAfter 0 > /tmp/stdtest.log
+
+test-short-load:
+	yes . | dist/build/Allure/Allure --dbgMsgSer --savePrefix campaign --gameMode campaign --frontendStd --stopAfter 0 > /tmp/stdtest.log
+	yes . | dist/build/Allure/Allure --dbgMsgSer --savePrefix skirmish --gameMode skirmish --frontendStd --stopAfter 0 > /tmp/stdtest.log
+	yes . | dist/build/Allure/Allure --dbgMsgSer --savePrefix PvP --gameMode PvP --frontendStd --stopAfter 0 > /tmp/stdtest.log
+	yes . | dist/build/Allure/Allure --dbgMsgSer --savePrefix Coop --gameMode Coop --frontendStd --stopAfter 0 > /tmp/stdtest.log
+	yes . | dist/build/Allure/Allure --dbgMsgSer --savePrefix defense --gameMode defense --frontendStd --stopAfter 0 > /tmp/stdtest.log
+	yes . | dist/build/Allure/Allure --dbgMsgSer --savePrefix peek --gameMode peek --frontendStd --stopAfter 0 > /tmp/stdtest.log
+
+test-travis: test-short test-medium
 
 testPeek-play:
 	dist/build/Allure/Allure --dbgMsgSer --savePrefix peek --gameMode peek
