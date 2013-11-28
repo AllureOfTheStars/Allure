@@ -1,13 +1,15 @@
 name:          Allure
-version:       0.4.9
+version:       0.4.10
 synopsis:      Near-future roguelike game in very early and active development
 description:   This is an alpha release of Allure of the Stars,
                a near-future Sci-Fi roguelike and tactical squad game.
                The game is barely fun at this stage and not yet
                really Sci-Fi. See the wiki for design notes and contribute.
                .
-               New in this release are experimental multiplayer modes
-               and a lot of gameplay changes induced by the engine overhaul.
+               New in this release are screensaver game modes (AI vs AI),
+               improved AI (can now climbs stairs, etc.), multiple,
+               multi-floor staircases, multiple savefiles, configurable
+               framerate, combat animations and more.
                Long term goals are high replayability and auto-balancing
                through procedural content generation and persistent content
                modification based on player behaviour.
@@ -43,7 +45,7 @@ executable Allure
                       Content.RuleKind,
                       Content.TileKind,
                       Paths_Allure
-  build-depends:      LambdaHack >= 0.2.9 && < 0.2.11,
+  build-depends:      LambdaHack >= 0.2.10 && < 0.2.11,
                       template-haskell >= 2.6 && < 3,
 
                       ConfigFile >= 1.1.1   && < 2,
