@@ -56,19 +56,6 @@ and the server. Some options in config files may turn out useful too,
 though they mostly overlap with commandline options (and will be totally
 merged at some point).
 
-You can use HPC with the game as follows
-
-    cabal clean
-    cabal install --enable-library-coverage
-    make test
-    hpc report --hpcdir=dist/hpc/mix/Allure-0.4.10/ Allure
-    hpc markup --hpcdir=dist/hpc/mix/Allure-0.4.10/ Allure
-
-The debug option `--stopAfter` is required for any screensaver mode
-game invocations that gather HPC info, because HPC needs a clean exit
-(to save data files) and screensaver modes can't be cleanly stopped
-in any other way.
-
 
 Further information
 -------------------
