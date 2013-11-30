@@ -3,7 +3,7 @@
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
--- | The type of kinds of game modes for LambdaHack.
+-- | The type of kinds of game modes for Allure of the Stars.
 module Content.ModeKind ( cdefs ) where
 
 import qualified Data.EnumMap.Strict as EM
@@ -23,7 +23,7 @@ cdefs = ContentDef
 campaign,        skirmish, pvp, coop, defense, screensaver, testCoop, testDefense, peekCampaign, peekSkirmish :: ModeKind
 
 campaign = ModeKind
-  { msymbol  = 'r'  -- matches the keypress (with C-)
+  { msymbol  = 'r'
   , mname    = "campaign"
   , mfreq    = [("campaign", 1)]
   , mplayers = playersCampaign
@@ -311,9 +311,6 @@ playerHorror = Player
 
 
 cavesCampaign, cavesCombat, cavesDefense :: Caves
-
--- Cave "dng" means a random choice from caves that can randomly appear;
--- this is the default and the lack of the Escape feature is the default.
 
 cavesCampaign = EM.fromList [ (toEnum 1, ("caveRogue", Nothing))
                             , (toEnum 12, ("caveNoise", Just True))]

@@ -4,7 +4,7 @@
 -- For license and copyright information, see the file LICENSE.
 --
 -- | The type of kinds of game factions (heroes, enemies, NPCs, etc.)
--- for LambdaHack.
+-- for Allure of the Stars.
 module Content.FactionKind ( cdefs ) where
 
 import Data.List

@@ -4,7 +4,7 @@
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
--- | The main code file of Allure of the Stairs. Here the knot of engine
+-- | The main source code file of Allure of the Stars. Here the knot of engine
 -- code pieces and the Allure-specific content defintions is tied,
 -- resulting in an executable game.
 module Main ( main ) where
@@ -34,6 +34,8 @@ instance MonadAtomic (ActionCli c d) where
   execAtomic (CmdAtomic cmd) = cmdAtomicSem cmd
   execAtomic (SfxAtomic _) = return ()
 
+-- | Tie the LambdaHack engine clients and server code
+-- with the Allure-specific content defintions and run the game.
 main :: IO ()
 main =
   let copsSlow = Kind.COps
