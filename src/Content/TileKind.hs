@@ -161,13 +161,15 @@ unknown = TileKind
 floorCorridorLit = TileKind
   { tsymbol  = '.'
   , tname    = "floor"
-  , tfreq    = [("arenaSet", 1), ("noiseSet", 100), ("combatSet", 100)]
+  , tfreq    = [ ("floorCorridorLit", 1), ("floorArenaLit", 1)
+               , ("arenaSet", 1), ("noiseSet", 100), ("combatSet", 100) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , tfeature = [Walkable, Clear, Lit]
   }
 floorCorridorDark = floorCorridorLit
-  { tfreq    = [("darkCorridor", 1)]
+  { tfreq    = [ ("floorCorridorDark", 1)
+               , ("arenaSet", 1), ("noiseSet", 100), ("combatSet", 100) ]
   , tcolor   = BrYellow
   , tcolor2  = BrBlack
   , tfeature = [Walkable, Clear]
@@ -177,7 +179,7 @@ floorItemLit = floorCorridorLit
   , tfeature = CanItem : tfeature floorCorridorLit
   }
 floorItemDark = floorCorridorDark
-  { tfreq    = []
+  { tfreq    = [("combatSet", 20)]
   , tfeature = CanItem : tfeature floorCorridorDark
   }
 floorActorItemLit = floorItemLit
@@ -185,7 +187,7 @@ floorActorItemLit = floorItemLit
   , tfeature = CanActor : tfeature floorItemLit
   }
 floorActorItemDark = floorItemDark
-  { tfreq    = [("darkLegend", 100)]
+  { tfreq    = [("darkLegend", 100), ("emptySet", 1)]
   , tfeature = CanActor : tfeature floorItemDark
   }
 floorRed = floorCorridorLit
