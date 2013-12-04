@@ -99,7 +99,6 @@ combat = rogue
   , cminPlaceSize = rollDiceXY [(3, 1)] [(3, 1)]
   , cmaxPlaceSize = rollDiceXY [(5, 1)] [(5, 1)]
   , cdarkChance   = intToDeep 100
-  , cmaxVoid      = 1%10
   , chidden       = 2
   , cauxConnects  = 0
   , cdoorChance   = 1

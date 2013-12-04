@@ -19,16 +19,16 @@ cdefs = ContentDef
   , getFreq = tfreq
   , validate = tvalidate
   , content =
-      [wall, wallCache, hardRock, pillar, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRed, floorBlue, floorGreen]
+      [wall, wallCache, hardRock, pillar, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRed, floorBlue, floorGreen]
   }
-wall,        wallCache, hardRock, pillar, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRed, floorBlue, floorGreen :: TileKind
+wall,        wallCache, hardRock, pillar, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRed, floorBlue, floorGreen :: TileKind
 
 wall = TileKind
   { tsymbol  = '#'
   , tname    = "granite wall"
   , tfreq    = [ ("fillerWall", 1), ("cachable", 70)
                , ("litLegend", 100), ("darkLegend", 100)
-               , ("noiseSet", 55), ("combatSet", 10) ]
+               , ("noiseSet", 55), ("combatSet", 3) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , tfeature = [HideAs "suspect wall"]
@@ -56,6 +56,14 @@ pillar = TileKind
   , tfreq    = [("litLegend", 100), ("darkLegend", 100)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
+  , tfeature = []
+  }
+tree = TileKind
+  { tsymbol  = 'O'
+  , tname    = "tree"
+  , tfreq    = [("combatSet", 8)]
+  , tcolor   = BrGreen
+  , tcolor2  = Green
   , tfeature = []
   }
 wallSuspect = TileKind
