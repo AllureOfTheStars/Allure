@@ -67,7 +67,7 @@ executable Allure
                       old-time   >= 1.0.0.7 && < 2,
                       random     >= 1.0.1   && < 2,
                       stm        >= 2.4     && < 3,
-                      text       >= 0.11.2.3 && < 1,
+                      text       >= 0.11.2.3 && < 2,
                       transformers >= 0.3   && < 1,
                       unordered-containers >= 0.2.3 && < 1,
                       zlib       >= 0.5.3.1 && < 1
