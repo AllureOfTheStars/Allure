@@ -19,9 +19,9 @@ cdefs = ContentDef
   , getFreq = tfreq
   , validate = tvalidate
   , content =
-      [wall, wallCache, hardRock, pillar, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRed, floorBlue, floorGreen]
+      [wall, wallCache, hardRock, pillar, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRedDark, floorBlueDark, floorGreenDark, floorRedLit, floorBlueLit, floorGreenLit]
   }
-wall,        wallCache, hardRock, pillar, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRed, floorBlue, floorGreen :: TileKind
+wall,        wallCache, hardRock, pillar, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRedDark, floorBlueDark, floorGreenDark, floorRedLit, floorBlueLit, floorGreenLit :: TileKind
 
 wall = TileKind
   { tsymbol  = '#'
@@ -190,22 +190,34 @@ floorActorItemDark = floorItemDark
   { tfreq    = [("darkLegend", 100), ("emptySet", 1)]
   , tfeature = CanActor : tfeature floorItemDark
   }
-floorRed = floorCorridorLit
+floorRedDark = floorCorridorDark
   { tname    = "emergency walkway"
-  , tfreq    = [("path", 20)]
+  , tfreq    = [("pathDark", 20)]
   , tcolor   = BrRed
   , tcolor2  = Red
-  , tfeature = Path : tfeature floorCorridorLit
+  , tfeature = Path : tfeature floorCorridorDark
   }
-floorBlue = floorRed
+floorRedLit  = floorRedDark
+  { tfreq    = [("pathLit", 20)]
+  , tfeature = Lit : tfeature floorRedDark
+  }
+floorBlueDark = floorRedDark
   { tname    = "transport route"
-  , tfreq    = [("path", 100)]
+  , tfreq    = [("pathDark", 100)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   }
-floorGreen = floorRed
+floorBlueLit = floorBlueDark
+  { tfreq    = [("pathLit", 100)]
+  , tfeature = Lit : tfeature floorBlueDark
+  }
+floorGreenDark = floorRedDark
   { tname    = "greenery path"
-  , tfreq    = [("path", 100)]
+  , tfreq    = [("pathDark", 100)]
   , tcolor   = BrGreen
   , tcolor2  = Green
+  }
+floorGreenLit = floorGreenDark
+  { tfreq    = [("pathLit", 100)]
+  , tfeature = Lit : tfeature floorGreenDark
   }
