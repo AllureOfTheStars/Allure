@@ -175,11 +175,11 @@ floorCorridorDark = floorCorridorLit
   , tfeature = [Walkable, Clear]
   }
 floorItemLit = floorCorridorLit
-  { tfreq    = [("combatSet", 20)]
+  { tfreq    = []
   , tfeature = CanItem : tfeature floorCorridorLit
   }
 floorItemDark = floorCorridorDark
-  { tfreq    = [("combatSet", 20)]
+  { tfreq    = []
   , tfeature = CanItem : tfeature floorCorridorDark
   }
 floorActorItemLit = floorItemLit
