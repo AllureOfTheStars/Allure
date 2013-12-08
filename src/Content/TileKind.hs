@@ -35,7 +35,7 @@ wall = TileKind
   }
 wallCache = TileKind
   { tsymbol  = '&'
-  , tname    = "wall cache"
+  , tname    = "cache"
   , tfreq    = [ ("cachable", 30)
                , ("litLegend", 100), ("darkLegend", 100) ]
   , tcolor   = BrWhite
@@ -44,15 +44,15 @@ wallCache = TileKind
   }
 hardRock = TileKind
   { tsymbol  = '#'
-  , tname    = "hard rock"
-  , tfreq    = [("hard rock", 1)]
+  , tname    = "outer hull"
+  , tfreq    = [("outer fence", 1)]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
   , tfeature = [Impenetrable]
   }
 pillar = TileKind
   { tsymbol  = 'O'
-  , tname    = "pillar"
+  , tname    = "rock"
   , tfreq    = [("litLegend", 100), ("darkLegend", 100)]
   , tcolor   = BrWhite
   , tcolor2  = defFG

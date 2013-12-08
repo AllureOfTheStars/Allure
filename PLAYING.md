@@ -32,7 +32,8 @@ of the following basic kinds:
                terrain type                       on-screen symbol
                floor                              .
                wall                               #
-               wall cache                         &
+               rock or tree                       O
+               cache                              &
                stairs up                          <
                stairs down                        >
                open door                          '
