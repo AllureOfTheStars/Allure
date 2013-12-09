@@ -28,7 +28,7 @@ necklace,        dart, gem1, gem2, gem3, currency, javelin, kitchenKnife, potion
 
 gem, potion, scroll, wand :: ItemKind  -- generic templates
 
--- castDeep (aDb, xDy) = castDice aDb + lvl * castDice xDy / depth
+-- castDeep (aDb, xDy) = castDice aDb + (lvl - 1) * castDice xDy / (depth - 1)
 
 {- Item group symbols (from Angband, only as an informal convention for now):
 
@@ -56,7 +56,7 @@ $ currency, gem
 necklace = ItemKind
   { isymbol  = '"'
   , iname    = "necklace"
-  , ifreq    = [("dng", 6)]
+  , ifreq    = [("useful", 6)]
   , iflavour = zipFancy [BrGreen]
   , ieffect  = Regeneration (rollDeep (2, 3) (1, 10))
   , icount   = intToDeep 1
@@ -68,7 +68,7 @@ necklace = ItemKind
 dart = ItemKind
   { isymbol  = '{'
   , iname    = "billiard ball"
-  , ifreq    = [("dng", 30)]
+  , ifreq    = [("useful", 20)]
   , iflavour = zipPlain [BrWhite]
   , ieffect  = Hurt (rollDice 1 1) (rollDeep (1, 2) (1, 2))
   , icount   = rollDeep (3, 3) (0, 0)
@@ -80,7 +80,7 @@ dart = ItemKind
 gem = ItemKind
   { isymbol  = '*'
   , iname    = "precious gem"
-  , ifreq    = [("dng", 20)]       -- x3, but rare on shallow levels
+  , ifreq    = [("treasure", 20)]  -- x3, but rare on shallow levels
   , iflavour = zipPlain $ L.delete BrYellow brightCol  -- natural, so not fancy
   , ieffect  = NoEffect
   , icount   = intToDeep 0
@@ -90,21 +90,21 @@ gem = ItemKind
   , itoThrow = 0
   }
 gem1 = gem
-  { icount   = rollDeep (0, 0) (1, 1)  -- appears on lvl 1
+  { icount   = rollDeep (0, 0) (1, 1)  -- appears on max depth
   }
 gem2 = gem
   { icount   = rollDeep (0, 0) (1, 2)  -- appears halfway
   }
 gem3 = gem
-  { icount   = rollDeep (0, 0) (1, 3)  -- appears on max depth
+  { icount   = rollDeep (0, 0) (1, 3)  -- appears early
   }
 currency = ItemKind
   { isymbol  = '$'
   , iname    = "gold grain"
-  , ifreq    = [("dng", 50), ("currency", 1)]
+  , ifreq    = [("treasure", 20), ("currency", 1)]
   , iflavour = zipPlain [BrYellow]
   , ieffect  = NoEffect
-  , icount   = rollDeep (0, 0) (10, 10)
+  , icount   = rollDeep (0, 0) (10, 10)  -- appears on lvl 2
   , iverbApply   = "smear"
   , iverbProject = "blow away"
   , iweight  = 1
@@ -113,7 +113,7 @@ currency = ItemKind
 javelin = ItemKind
   { isymbol  = '{'
   , iname    = "javelin"
-  , ifreq    = [("dng", 30)]
+  , ifreq    = [("useful", 30)]
   , iflavour = zipPlain [Brown]
   , ieffect  = Hurt (rollDice 1 2) (rollDeep (1, 2) (2, 2))
   , icount   = rollDeep (0, 0) (1, 1)
@@ -125,7 +125,7 @@ javelin = ItemKind
 kitchenKnife = ItemKind
   { isymbol  = '{'
   , iname    = "kitchen knife"
-  , ifreq    = [("dng", 30)]
+  , ifreq    = [("useful", 25)]
   , iflavour = zipPlain [BrCyan]
   , ieffect  = Hurt (rollDice 1 1) (rollDeep (0, 0) (1, 2))
   , icount   = rollDeep (0, 0) (1, 2)
@@ -137,7 +137,7 @@ kitchenKnife = ItemKind
 potion = ItemKind
   { isymbol  = '!'
   , iname    = "vial"
-  , ifreq    = [("dng", 15)]
+  , ifreq    = [("useful", 15)]
   , iflavour = zipFancy stdCol
   , ieffect  = NoEffect
   , icount   = intToDeep 1
@@ -147,20 +147,20 @@ potion = ItemKind
   , itoThrow = -50  -- oily, bad grip
   }
 potion1 = potion
-  { ifreq    = [("dng", 5)]
+  { ifreq    = [("useful", 5)]
   , ieffect  = ApplyPerfume
   }
 potion2 = potion
   { ieffect  = Heal 5
   }
 potion3 = potion
-  { ifreq    = [("dng", 5)]
+  { ifreq    = [("useful", 5)]
   , ieffect  = Heal (-5)
   }
 ring = ItemKind
   { isymbol  = '='
   , iname    = "ring"
-  , ifreq    = []  -- [("dng", 10)]  -- TODO: make it useful
+  , ifreq    = []  -- [("useful", 10)]  -- TODO: make it useful
   , iflavour = zipPlain [White]
   , ieffect  = Searching (rollDeep (1, 6) (3, 2))
   , icount   = intToDeep 1
@@ -172,7 +172,7 @@ ring = ItemKind
 scroll = ItemKind
   { isymbol  = '?'
   , iname    = "tablet"
-  , ifreq    = [("dng", 4)]
+  , ifreq    = [("useful", 4)]
   , iflavour = zipFancy darkCol  -- arcane and old
   , ieffect  = NoEffect
   , icount   = intToDeep 1
@@ -193,7 +193,7 @@ scroll3 = scroll
 sword = ItemKind
   { isymbol  = '/'
   , iname    = "sharpened pipe"
-  , ifreq    = [("dng", 40)]
+  , ifreq    = [("useful", 40)]
   , iflavour = zipPlain [Cyan]
   , ieffect  = Hurt (rollDice 3 1) (rollDeep (1, 2) (4, 2))
   , icount   = intToDeep 1
@@ -205,7 +205,7 @@ sword = ItemKind
 wand = ItemKind
   { isymbol  = '-'
   , iname    = "injector"
-  , ifreq    = [("dng", 15)]
+  , ifreq    = [("useful", 15)]
   , iflavour = zipFancy brightCol
   , ieffect  = NoEffect
   , icount   = intToDeep 1
@@ -218,7 +218,7 @@ wand1 = wand
   { ieffect  = Dominate
   }
 wand2 = wand
-  { ifreq    = [("dng", 3)]
+  { ifreq    = [("useful", 3)]
   , ieffect  = Heal (-25)
   }
 fist = sword
