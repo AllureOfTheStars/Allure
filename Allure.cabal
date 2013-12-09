@@ -20,7 +20,7 @@ homepage:      http://github.com/Mikolaj/Allure
 bug-reports:   http://github.com/Mikolaj/Allure/issues
 license:       OtherLicense
 license-file:  LICENSE
-tested-with:   GHC == 7.4.2, GHC == 7.6.1
+tested-with:   GHC == 7.4.2, GHC == 7.6.3
 data-files:    config.rules.default, config.ui.default, scores
 extra-source-files: LICENSE, CREDITS, changelog, PLAYING.md, README.md,
                     Makefile, MainMenu.ascii, .travis.yml
@@ -57,7 +57,7 @@ executable Allure
                       containers >= 0.5     && < 1,
                       deepseq    >= 1.3     && < 2,
                       directory  >= 1.1.0.1 && < 2,
-                      enummapset >= 0.5.2   && < 1,
+                      enummapset-th >= 0.6.0.0 && < 1,
                       filepath   >= 1.2.0.1 && < 2,
                       ghc-prim   >= 0.2,
                       hashable   >= 1.2     && < 2,
