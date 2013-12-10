@@ -28,7 +28,7 @@ wall = TileKind
   , tname    = "granite wall"
   , tfreq    = [ ("fillerWall", 1), ("cachable", 70)
                , ("litLegend", 100), ("darkLegend", 100)
-               , ("noiseSet", 55), ("combatSet", 3) ]
+               , ("noiseSet", 55) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , tfeature = [HideAs "suspect wall"]
@@ -53,7 +53,7 @@ hardRock = TileKind
 pillar = TileKind
   { tsymbol  = 'O'
   , tname    = "rock"
-  , tfreq    = [("litLegend", 100), ("darkLegend", 100)]
+  , tfreq    = [("litLegend", 100), ("darkLegend", 100), ("combatSet", 3)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , tfeature = []
