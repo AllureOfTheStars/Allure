@@ -2,7 +2,7 @@ language: haskell
 
 install:
   - cd ..
-  - git clone --depth=50 --branch=mikolaj git@github.com:kosmikus/LambdaHack.git
+  - git clone --depth=50 --branch=mikolaj git://github.com/kosmikus/LambdaHack.git
   - cd LambdaHack
   - cabal install gtk2hs-buildtools
   - cabal install
