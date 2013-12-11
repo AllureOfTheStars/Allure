@@ -1,7 +1,12 @@
 language: haskell
 
 install:
+  - cd ..
+  - git clone --depth=50 --branch=mikolaj git@github.com:kosmikus/LambdaHack.git
+  - cd LambdaHack
   - cabal install gtk2hs-buildtools
+  - cabal install
+  - cd ../Allure
   - cabal install --enable-tests
 
 script:
