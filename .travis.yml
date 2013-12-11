@@ -7,7 +7,8 @@ install:
   - cabal install gtk2hs-buildtools
   - cabal install
   - cd ../Allure
-  - cabal install --enable-tests
+  - cabal install --only-dependencies
 
 script:
-  - make test-travis || (tail -n 200 /tmp/stdtest.log ; exit 77)
+  - cabal install
+  - make test-travis || (cat ~/.Allure/config.rules.dump ; tail -n 200 /tmp/stdtest.log ; exit 77)
