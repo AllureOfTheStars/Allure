@@ -48,6 +48,7 @@ rogue = CaveKind
   , cdarkCorTile    = "floorCorridorDark"
   , clitCorTile     = "floorCorridorLit"
   , cfillerTile     = "fillerWall"
+  , couterFenceTile = "basic outer fence"
   , cdarkLegendTile = "darkLegend"
   , clitLegendTile  = "litLegend"
   }
@@ -55,7 +56,7 @@ arena = rogue
   { csymbol       = 'A'
   , cname         = "Recreational deck"
   , cfreq         = [("dng", 100), ("caveArena", 1)]
-  , cgrid         = rollDiceXY [(2, 2)] [(2, 2)]
+  , cgrid         = rollDiceXY [(2, 2)] [(1, 2), (1, 1)]
   , cminPlaceSize = rollDiceXY [(2, 2), (3, 1)] [(4, 1)]
   , cdarkChance   = rollDeep (1, 80) (1, 60)
   , cnightChance  = intToDeep 0
@@ -65,6 +66,7 @@ arena = rogue
   , cdefTile      = "arenaSet"
   , cdarkCorTile  = "pathDark"
   , clitCorTile   = "pathLit"
+  , couterFenceTile = "oriels fence"
   }
 empty = rogue
   { csymbol       = '.'
@@ -84,6 +86,7 @@ empty = rogue
   , cdefTile      = "emptySet"
   , cdarkCorTile  = "pathDark"
   , clitCorTile   = "floorArenaLit"
+  , couterFenceTile = "oriels fence"
   }
 noise = rogue
   { csymbol       = '!'

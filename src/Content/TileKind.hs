@@ -19,9 +19,9 @@ cdefs = ContentDef
   , getFreq = tfreq
   , validate = tvalidate
   , content =
-      [wall, wallCache, hardRock, pillar, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRedDark, floorBlueDark, floorGreenDark, floorRedLit, floorBlueLit, floorGreenLit]
+      [wall, wallCache, hardRock, oriel, pillar, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRedDark, floorBlueDark, floorGreenDark, floorRedLit, floorBlueLit, floorGreenLit]
   }
-wall,        wallCache, hardRock, pillar, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRedDark, floorBlueDark, floorGreenDark, floorRedLit, floorBlueLit, floorGreenLit :: TileKind
+wall,        wallCache, hardRock, oriel, pillar, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRedDark, floorBlueDark, floorGreenDark, floorRedLit, floorBlueLit, floorGreenLit :: TileKind
 
 wall = TileKind
   { tsymbol  = '#'
@@ -45,10 +45,18 @@ wallCache = TileKind
 hardRock = TileKind
   { tsymbol  = '#'
   , tname    = "outer hull"
-  , tfreq    = [("outer fence", 100)]
+  , tfreq    = [("basic outer fence", 100), ("oriels fence", 98)]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
   , tfeature = [Lit, Impenetrable]
+  }
+oriel = TileKind
+  { tsymbol  = '\''
+  , tname    = "oriel"
+  , tfreq    = [("oriels fence", 2)]
+  , tcolor   = White
+  , tcolor2  = Black
+  , tfeature = [Impenetrable]  -- not Lit
   }
 pillar = TileKind
   { tsymbol  = 'O'
