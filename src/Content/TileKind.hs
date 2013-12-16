@@ -6,10 +6,15 @@
 -- | Terrain tiles for Allure of the Stars.
 module Content.TileKind ( cdefs ) where
 
+import Control.Arrow (first)
+import Data.Text (Text)
+import qualified Data.Text as T
+
 import Game.LambdaHack.Common.Color
 import Game.LambdaHack.Common.ContentDef
 import qualified Game.LambdaHack.Common.Effect as Effect
 import Game.LambdaHack.Common.Feature
+import Game.LambdaHack.Common.Msg
 import Game.LambdaHack.Content.TileKind
 
 cdefs :: ContentDef TileKind
@@ -19,9 +24,11 @@ cdefs = ContentDef
   , getFreq = tfreq
   , validate = tvalidate
   , content =
-      [wall, wallCache, hardRock, oriel, pillar, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRedDark, floorBlueDark, floorGreenDark, floorRedLit, floorBlueLit, floorGreenLit]
+      [wall, wallCache, hardRock, oriel, pillar, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorDark, floorItemDark, floorActorItemDark, floorRedDark, floorBlueDark, floorGreenDark]
+      ++ map makeLit [floorRedDark, floorBlueDark, floorGreenDark]
+      ++ map makeLitDefFG [floorCorridorDark, floorItemDark, floorActorItemDark]
   }
-wall,        wallCache, hardRock, oriel, pillar, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorCorridorDark, floorItemLit, floorItemDark, floorActorItemLit, floorActorItemDark, floorRedDark, floorBlueDark, floorGreenDark, floorRedLit, floorBlueLit, floorGreenLit :: TileKind
+wall,        wallCache, hardRock, oriel, pillar, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorDark, floorItemDark, floorActorItemDark, floorRedDark, floorBlueDark, floorGreenDark :: TileKind
 
 wall = TileKind
   { tsymbol  = '#'
@@ -164,33 +171,18 @@ unknown = TileKind
   , tcolor2  = BrWhite
   , tfeature = []
   }
-floorCorridorLit = TileKind
+floorCorridorDark = TileKind
   { tsymbol  = '.'
   , tname    = "floor"
-  , tfreq    = [ ("floorCorridorLit", 1), ("floorArenaLit", 1)
-               , ("arenaSet", 1), ("noiseSet", 100), ("combatSet", 100) ]
-  , tcolor   = BrWhite
-  , tcolor2  = defFG
-  , tfeature = [Walkable, Clear, Lit]
-  }
-floorCorridorDark = floorCorridorLit
-  { tfreq    = [ ("floorCorridorDark", 1)
+  , tfreq    = [ ("floorCorridorDark", 1), ("floorArenaDark", 1)
                , ("arenaSet", 1), ("noiseSet", 100), ("combatSet", 100) ]
   , tcolor   = BrYellow
   , tcolor2  = BrBlack
   , tfeature = [Walkable, Clear]
   }
-floorItemLit = floorCorridorLit
-  { tfreq    = []
-  , tfeature = CanItem : tfeature floorCorridorLit
-  }
 floorItemDark = floorCorridorDark
   { tfreq    = []
   , tfeature = CanItem : tfeature floorCorridorDark
-  }
-floorActorItemLit = floorItemLit
-  { tfreq    = [("legendLit", 100), ("emptySet", 1)]
-  , tfeature = CanActor : tfeature floorItemLit
   }
 floorActorItemDark = floorItemDark
   { tfreq    = [("legendDark", 100), ("emptySet", 1)]
@@ -203,19 +195,11 @@ floorRedDark = floorCorridorDark
   , tcolor2  = Red
   , tfeature = Path : tfeature floorCorridorDark
   }
-floorRedLit  = floorRedDark
-  { tfreq    = [("pathLit", 20)]
-  , tfeature = Lit : tfeature floorRedDark
-  }
 floorBlueDark = floorRedDark
   { tname    = "transport route"
   , tfreq    = [("pathDark", 100)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
-  }
-floorBlueLit = floorBlueDark
-  { tfreq    = [("pathLit", 100)]
-  , tfeature = Lit : tfeature floorBlueDark
   }
 floorGreenDark = floorRedDark
   { tname    = "greenery path"
@@ -223,7 +207,17 @@ floorGreenDark = floorRedDark
   , tcolor   = BrGreen
   , tcolor2  = Green
   }
-floorGreenLit = floorGreenDark
-  { tfreq    = [("pathLit", 100)]
-  , tfeature = Lit : tfeature floorGreenDark
-  }
+
+
+makeLit :: TileKind -> TileKind
+makeLit k = let textLit :: Text -> Text
+                textLit t = maybe t (<> "Lit") $ T.stripSuffix "Dark" t
+                litFreq = map (first textLit) $ tfreq k
+            in k { tfreq    = litFreq
+                 , tfeature = Lit : tfeature k
+                 }
+
+makeLitDefFG :: TileKind -> TileKind
+makeLitDefFG k = (makeLit k) { tcolor  = BrWhite
+                             , tcolor2 = defFG
+                             }
