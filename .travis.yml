@@ -12,3 +12,4 @@ install:
 script:
   - cabal install
   - make test-travis || (cat ~/.Allure/config.rules.dump ; tail -n 200 /tmp/stdtest.log ; exit 77)
+  - cabal install Allure --reinstall
