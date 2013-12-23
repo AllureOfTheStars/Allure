@@ -55,7 +55,7 @@ the vi text editor keys (also known as "Rogue-like keys").
                 /|\       /|\
                1 2 3     b j n
 
-SHIFT (or CTRL) and a movement key make the selected hero run in the indicated
+SHIFT (or CTRL) and a movement key make the party leader run in the indicated
 direction, until anything of interest is spotted. The '5' and '.' keys take
 a turn to brace for combat, which gives a chance to block blows
 for the remainder of the turn. Melee, searching for secret doors
@@ -67,6 +67,8 @@ are specialized versions of 'a' and 'p', offering narrower default item choice.
 The commands that take player time are marked with a star.
 
                key       command
+               ESC       cancel action or bring up the Main Menu
+               RET       accept choice
                <         ascend a level*
                >         descend a level*
                ?         display help
@@ -87,27 +89,27 @@ using targeting mode ('*' and '/' keys). The target, for the few
 commands that require any, is indicated by the targeting cursor.
 To avoid confusion, commands that take time are blocked when targeting
 at a remote level (when the cursor is displayed on a different level
-than the selected hero). The targeting commands and all the less used
+than the party leader). The targeting commands and all the less used
 commands are listed below. None of them takes hero time.
 
                key       command
-               ESC       cancel action or bring up the Main Menu
-               RET       accept choice
-               TAB       cycle among heroes on the level
-               SHIFT-TAB cycle among heroes in the dungeon
+               TAB       cycle among party members on the level
+               SHIFT-TAB cycle among party members in the dungeon
                *         target monster
                +         swerve targeting line
                -         unswerve targeting line
                /         target position
+               =         select (or deselect) a party member
                P         display previous messages
                S         mark smell
                T         mark suspect terrain
                V         mark visible area
                [         target next shallower level
                ]         target next deeper level
+               _         deselect (or select) all on the level
                {         target 10 levels shallower
                }         target 10 levels deeper
-               0--9      select a hero anywhere in the dungeon
+               0--9      pick a new leader anywhere in the dungeon
 
 Commands for saving and exiting the current game, starting a new game, etc.,
 are listed in the Main Menu, brough up by the ESC key.
