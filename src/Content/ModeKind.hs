@@ -110,9 +110,9 @@ playersCampaign = Players
                   , playerMonster
                   , playerAnimal
                   , playerRobot ]
-  , playersEnemy = [ ("Spaceship Crew", "Alien Hierarchy")
-                   , ("Spaceship Crew", "Animal Kingdom")
-                   , ("Spaceship Crew", "Robotic Anarchy") ]
+  , playersEnemy = [ ("Spacefarer Crew", "Alien Hierarchy")
+                   , ("Spacefarer Crew", "Animal Kingdom")
+                   , ("Spacefarer Crew", "Robot Anarchy") ]
   , playersAlly = [] }
 
 playersSkirmish = Players
@@ -143,10 +143,10 @@ playersCoop = Players
                   , playerRobot ]
   , playersEnemy = [ ("Coral", "Alien Hierarchy")
                    , ("Coral", "Animal Kingdom")
-                   , ("Coral", "Robotic Anarchy")
+                   , ("Coral", "Robot Anarchy")
                    , ("Amber", "Alien Hierarchy")
                    , ("Amber", "Animal Kingdom")
-                   , ("Amber", "Robotic Anarchy") ]
+                   , ("Amber", "Robot Anarchy") ]
   , playersAlly = [("Coral", "Amber")] }
 
 playersDefense = Players
@@ -162,13 +162,13 @@ playersDefense = Players
                   , playerAntiHero {playerName = "Cyan"} ]
   , playersEnemy = [ ("Green", "Alien Hierarchy")
                    , ("Green", "Animal Kingdom")
-                   , ("Green", "Robotic Anarchy")
+                   , ("Green", "Robot Anarchy")
                    , ("Yellow", "Alien Hierarchy")
                    , ("Yellow", "Animal Kingdom")
-                   , ("Yellow", "Robotic Anarchy")
+                   , ("Yellow", "Robot Anarchy")
                    , ("Cyan", "Alien Hierarchy")
                    , ("Cyan", "Animal Kingdom")
-                   , ("Cyan", "Robotic Anarchy") ]
+                   , ("Cyan", "Robot Anarchy") ]
   , playersAlly = [ ("Green", "Yellow")
                   , ("Green", "Cyan")
                   , ("Yellow", "Cyan") ] }
@@ -180,9 +180,9 @@ playersScreensaver = Players
                   , playerMonster
                   , playerAnimal
                   , playerRobot ]
-  , playersEnemy = [ ("Spaceship Crew", "Alien Hierarchy")
-                   , ("Spaceship Crew", "Animal Kingdom")
-                   , ("Spaceship Crew", "Robotic Anarchy") ]
+  , playersEnemy = [ ("Spacefarer Crew", "Alien Hierarchy")
+                   , ("Spacefarer Crew", "Animal Kingdom")
+                   , ("Spacefarer Crew", "Robot Anarchy") ]
   , playersAlly = [] }
 
 playersTestCoop = Players
@@ -197,10 +197,10 @@ playersTestCoop = Players
                   , playerRobot ]
   , playersEnemy = [ ("Coral", "Alien Hierarchy")
                    , ("Coral", "Animal Kingdom")
-                   , ("Coral", "Robotic Anarchy")
+                   , ("Coral", "Robot Anarchy")
                    , ("Amber", "Alien Hierarchy")
                    , ("Amber", "Animal Kingdom")
-                   , ("Amber", "Robotic Anarchy") ]
+                   , ("Amber", "Robot Anarchy") ]
   , playersAlly = [("Coral", "Amber")] }
 
 playersTestDefense = Players
@@ -214,13 +214,13 @@ playersTestDefense = Players
                   , playerAntiHero {playerName = "Cyan"} ]
   , playersEnemy = [ ("Green", "Alien Hierarchy")
                    , ("Green", "Animal Kingdom")
-                   , ("Green", "Robotic Anarchy")
+                   , ("Green", "Robot Anarchy")
                    , ("Yellow", "Alien Hierarchy")
                    , ("Yellow", "Animal Kingdom")
-                   , ("Yellow", "Robotic Anarchy")
+                   , ("Yellow", "Robot Anarchy")
                    , ("Cyan", "Alien Hierarchy")
                    , ("Cyan", "Animal Kingdom")
-                   , ("Cyan", "Robotic Anarchy") ]
+                   , ("Cyan", "Robot Anarchy") ]
   , playersAlly = [ ("Green", "Yellow")
                   , ("Green", "Cyan")
                   , ("Yellow", "Cyan") ] }
@@ -230,9 +230,9 @@ playersPeekCampaign = Players
                   , playerMonster {playerUI = True}
                   , playerAnimal
                   , playerRobot ]
-  , playersEnemy = [ ("Spaceship Crew", "Alien Hierarchy")
-                   , ("Spaceship Crew", "Animal Kingdom")
-                   , ("Spaceship Crew", "Robotic Anarchy") ]
+  , playersEnemy = [ ("Spacefarer Crew", "Alien Hierarchy")
+                   , ("Spacefarer Crew", "Animal Kingdom")
+                   , ("Spacefarer Crew", "Robot Anarchy") ]
   , playersAlly = [] }
 
 playersPeekSkirmish = Players
@@ -249,7 +249,7 @@ playersPeekSkirmish = Players
 playerHero, playerAntiHero, playerMonster, playerAnimal, playerRobot, playerHorror :: Player
 
 playerHero = Player
-  { playerName = "Spaceship Crew"
+  { playerName = "Spacefarer Crew"
   , playerFaction = "hero"
   , playerEntry = toEnum 1
   , playerInitial = 3
@@ -288,7 +288,7 @@ playerAnimal = Player
   }
 
 playerRobot = Player
-  { playerName = "Robotic Anarchy"
+  { playerName = "Robot Anarchy"
   , playerFaction = "robot"
   , playerEntry = toEnum 4
   , playerInitial = 3
