@@ -64,8 +64,8 @@ arena = rogue
   , chidden       = 1000
   , citemNum      = rollDice 5 2  -- few rooms
   , cdefTile      = "arenaSet"
-  , cdarkCorTile  = "pathLit"  -- let paths around rooms be lit
-  , clitCorTile   = "pathLit"
+  , cdarkCorTile  = "trailLit"  -- let paths around rooms be lit
+  , clitCorTile   = "trailLit"
   , couterFenceTile = "oriels fence"
   }
 empty = rogue
@@ -84,7 +84,7 @@ empty = rogue
   , chidden       = 1000
   , citemNum      = rollDice 8 2  -- whole floor strewn with treasure
   , cdefTile      = "emptySet"
-  , cdarkCorTile  = "pathLit"  -- let paths around rooms be lit
+  , cdarkCorTile  = "trailLit"  -- let paths around rooms be lit
   , clitCorTile   = "floorArenaLit"
   , couterFenceTile = "oriels fence"
   }
@@ -100,8 +100,8 @@ noise = rogue
   , chidden       = 1000
   , citemNum      = rollDice 4 2  -- fewer rooms
   , cdefTile      = "noiseSet"
-  , cdarkCorTile  = "pathLit"  -- let paths give off light
-  , clitCorTile   = "pathLit"
+  , cdarkCorTile  = "trailLit"  -- let trails give off light
+  , clitCorTile   = "trailLit"
   }
 combat = rogue
   { csymbol       = 'C'
@@ -119,6 +119,6 @@ combat = rogue
   , citemNum      = rollDice 12 2
   , citemFreq     = [(100, "useful")]
   , cdefTile      = "combatSet"
-  , cdarkCorTile  = "pathLit"  -- let paths give off light
+  , cdarkCorTile  = "trailLit"  -- let trails give off light
   , clitCorTile   = "floorArenaLit"
   }

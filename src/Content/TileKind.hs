@@ -189,20 +189,20 @@ floorActorItemLit = floorItemLit
   }
 floorRedLit = floorCorridorLit
   { tname    = "emergency walkway"
-  , tfreq    = [("pathLit", 20)]
+  , tfreq    = [("trailLit", 20)]
   , tcolor   = BrRed
   , tcolor2  = Red
-  , tfeature = Path : tfeature floorCorridorLit
+  , tfeature = Trail : tfeature floorCorridorLit
   }
 floorBlueLit = floorRedLit
   { tname    = "transport route"
-  , tfreq    = [("pathLit", 100)]
+  , tfreq    = [("trailLit", 100)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   }
 floorGreenLit = floorRedLit
-  { tname    = "greenery path"
-  , tfreq    = [("pathLit", 100)]
+  { tname    = "greenery trail"
+  , tfreq    = [("trailLit", 100)]
   , tcolor   = BrGreen
   , tcolor2  = Green
   }
