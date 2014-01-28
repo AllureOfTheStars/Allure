@@ -1,4 +1,4 @@
-Allure of the Stars [![Build Status](https://secure.travis-ci.org/Mikolaj/Allure.png)](http://travis-ci.org/Mikolaj/Allure)
+Allure of the Stars [![Build Status](https://secure.travis-ci.org/Mikolaj/Allure.png)](http://travis-ci.org/Mikolaj/Allure)[![Build Status](https://drone.io/github.com/Mikolaj/Allure/status.png)](https://drone.io/github.com/Mikolaj/Allure/latest)
 ===================
 
 This is an alpha release of Allure of the Stars,
