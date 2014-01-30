@@ -18,7 +18,7 @@ cdefs = ContentDef
   { getSymbol = asymbol
   , getName = aname
   , getFreq = afreq
-  , validate = avalidate
+  , validate = validateActorKind
   , content =
       [hero, projectile, eye, fastEye, nose]
   }

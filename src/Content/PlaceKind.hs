@@ -14,7 +14,7 @@ cdefs = ContentDef
   { getSymbol = psymbol
   , getName = pname
   , getFreq = pfreq
-  , validate = pvalidate
+  , validate = validatePlaceKind
   , content =
       [rect, oval, ovalFloor, ovalSquare, colonnade, colonnadeWide, maze,  maze2, maze3, mazeBig, mazeBig2, mazeBig3, cells]
   }

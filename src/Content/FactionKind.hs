@@ -18,7 +18,7 @@ cdefs = ContentDef
   { getSymbol = fsymbol
   , getName = fname
   , getFreq = ffreq
-  , validate = fvalidate
+  , validate = validateFactionKind
   , content =
       [hero, alien, animal, robot, horror]
   }

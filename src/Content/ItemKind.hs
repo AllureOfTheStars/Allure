@@ -20,7 +20,7 @@ cdefs = ContentDef
   { getSymbol = isymbol
   , getName = iname
   , getFreq = ifreq
-  , validate = ivalidate
+  , validate = validateItemKind
   , content =
       [necklace, dart, gem1, gem2, gem3, currency, javelin, kitchenKnife, potion1, potion2, potion3, ring, scroll1, scroll2, scroll3, sword, wand1, wand2, fist, foot, tentacle]
   }
