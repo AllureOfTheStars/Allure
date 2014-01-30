@@ -13,9 +13,7 @@ import Language.Haskell.TH.Syntax
 import qualified Paths_Allure as Self (getDataFileName, version)
 
 import Game.LambdaHack.Common.ContentDef
-import qualified Game.LambdaHack.Common.Feature as F
 import Game.LambdaHack.Content.RuleKind
-import Game.LambdaHack.Content.TileKind
 
 cdefs :: ContentDef RuleKind
 cdefs = ContentDef
@@ -35,8 +33,8 @@ standard = RuleKind
   -- Check whether one position is accessible from another.
   -- Precondition: the two positions are next to each other.
   -- TODO: in the future check flying for chasms, swimming for water, etc.
-  , raccessible    = \ _lxsize _spos _src _tpos tgt ->
-      F.Walkable `elem` tfeature tgt
+  , raccessible    = Nothing
+  , raccessibleDoor = Nothing
   , rtitle         = "Allure of the Stars"
   , rpathsDataFile = Self.getDataFileName
   , rpathsVersion  = Self.version
