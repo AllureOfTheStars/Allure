@@ -73,16 +73,18 @@ The commands that take player time are marked with a star.
                >         descend a level*
                ?         display help
                I         display inventory
+               P         play back last keys 100 times
                a         apply a consumable*
                c         close a door*
                d         drop an object*
                g         get an object*
                o         open a door*
-               p         project a projectile*
+               p         play back last keys
                q         quaff a drink*
                r         read a tablet*
                t         throw a missile*
                z         zap a mechanism*
+               CTRL-p    play back last keys 1000 times
 
 To make a ranged attack, you need to set your target first,
 using targeting mode ('*' and '/' keys). The target, for the few
@@ -100,7 +102,7 @@ commands are listed below. None of them takes hero time.
                -         unswerve targeting line
                /         target position
                =         select (or deselect) a party member
-               P         display previous messages
+               D         display player diary
                S         mark smell
                T         mark suspect terrain
                V         mark visible area
@@ -115,7 +117,8 @@ Commands for saving and exiting the current game, starting a new game, etc.,
 are listed in the Main Menu, brough up by the ESC key.
 Some of the game modes are multiplayer or feature multiple computer
 players (allied or not). The setup of the modes can be modified
-via a configuration file.
+via a configuration file. Game difficulty setting affects only
+the starting hitpoints for the players that use the UI.
 
                key       command
                CTRL-x    save and exit
@@ -124,6 +127,7 @@ via a configuration file.
                CTRL-p    new PvP game
                CTRL-o    new Coop game
                CTRL-e    new defense game
+               CTRL-d    cycle next game difficulty
 
 There are also some debug, testing and cheat options and game modes
 that can be specified on the command line when starting the game server.
