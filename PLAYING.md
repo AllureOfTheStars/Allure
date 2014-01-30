@@ -77,6 +77,7 @@ The commands that take player time are marked with a star.
                a         apply a consumable*
                c         close a door*
                d         drop an object*
+               f         fling a missile*
                g         get an object*
                o         open a door*
                p         play back last keys
