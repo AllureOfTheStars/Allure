@@ -162,4 +162,4 @@ clean :
 	runghc Setup clean
 
 ghci :
-	ghci -XCPP -idist/build/autogen:src
+	ghci -XCPP -idist/build/autogen:GameDefinition

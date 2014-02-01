@@ -35,7 +35,7 @@ source-repository head
   location:           git://github.com/Mikolaj/Allure.git
 
 executable Allure
-  hs-source-dirs:     src
+  hs-source-dirs:     GameDefinition
   main-is:            Main.hs
   other-modules:      Content.ActorKind,
                       Content.CaveKind,

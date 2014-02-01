@@ -72,7 +72,7 @@ standard = RuleKind
   -- TODO: Show highlighted keybinding in inverse video or bright white on grey
   -- background. The spaces that pad keybindings are not highlighted.
   , rmainMenuArt = $(do
-      qAddDependentFile "src/MainMenu.ascii"
-      x <- qRunIO (readFile "src/MainMenu.ascii")
+      qAddDependentFile "GameDefinition/MainMenu.ascii"
+      x <- qRunIO (readFile "GameDefinition/MainMenu.ascii")
       lift x)
   }
