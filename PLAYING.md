@@ -64,36 +64,32 @@ a wall and a door, respectively.
 
 Below are the default keys for major commands. The last four commands
 are specialized versions of 'a' and 'p', offering narrower default item choice.
-The commands that take player time are marked with a star.
 
                key       command
                ESC       cancel action or bring up the Main Menu
                RET       accept choice
-               <         ascend a level*
-               >         descend a level*
+               <         ascend a level
+               >         descend a level
                ?         display help
                I         display inventory
                P         play back last keys 100 times
-               a         apply a consumable*
-               c         close a door*
-               d         drop an object*
-               f         fling a missile*
-               g         get an object*
-               o         open a door*
+               a         apply a consumable
+               c         close a door
+               d         drop an object
+               f         fling a missile
+               g         get an object
+               o         open a door
                p         play back last keys
-               q         quaff a drink*
-               r         read a tablet*
-               t         throw a missile*
-               z         zap a mechanism*
+               q         quaff a drink
+               r         read a tablet
+               t         throw a missile
+               z         zap a mechanism
                CTRL-p    play back last keys 1000 times
 
 To make a ranged attack, you need to set your target first,
 using targeting mode ('*' and '/' keys). The target, for the few
 commands that require any, is indicated by the targeting cursor.
-To avoid confusion, commands that take time are blocked when targeting
-at a remote level (when the cursor is displayed on a different level
-than the party leader). The targeting commands and all the less used
-commands are listed below. None of them takes hero time.
+The targeting commands and all the less used commands are listed below.
 
                key       command
                TAB       cycle among party members on the level
