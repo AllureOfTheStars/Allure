@@ -18,7 +18,6 @@ import qualified Game.LambdaHack.Common.Effect as Effect
 import qualified Game.LambdaHack.Common.Feature as F
 import Game.LambdaHack.Common.HumanCmd
 import qualified Game.LambdaHack.Common.Key as K
-import Game.LambdaHack.Common.Vector
 import Game.LambdaHack.Content.RuleKind
 
 cdefs :: ContentDef RuleKind
