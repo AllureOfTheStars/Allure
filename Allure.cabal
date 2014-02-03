@@ -21,8 +21,7 @@ bug-reports:   http://github.com/Mikolaj/Allure/issues
 license:       OtherLicense
 license-file:  LICENSE
 tested-with:   GHC == 7.6.3, GHC == 7.7
-data-files:    GameDefinition/config.rules.default,
-               GameDefinition/config.ui.default,
+data-files:    GameDefinition/config.ui.default,
                GameDefinition/scores
 extra-source-files: GameDefinition/PLAYING.md, GameDefinition/MainMenu.ascii,
                     README.md, LICENSE, CREDITS, changelog, Makefile

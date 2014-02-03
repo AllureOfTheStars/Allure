@@ -9,6 +9,7 @@ module Content.RuleKind ( cdefs ) where
 
 import Control.Arrow (first)
 import Language.Haskell.TH.Syntax
+import System.FilePath
 
 -- Cabal
 import qualified Paths_Allure as Self (getDataFileName, version)
@@ -47,19 +48,11 @@ standard = RuleKind
   , ritemRanged    = "}{"
   -- Wasting weapons and armour would be too cruel to the player.
   , ritemProject   = "!?,-~}{"
-  -- The strings containing the default configuration files,
-  -- included from files config.game.default and config.ui.default.
-  -- Warning: cabal does not detect that the config files are changed,
-  -- so touching them is needed to reinclude configs and recompile.
-  -- Note: consider code.haskell.org/~dons/code/compiled-constants
-  -- as soon as the config file grows very big.
-  , rcfgRulesDefault = $(do
-      let path = "GameDefinition/config.rules.default"
-      qAddDependentFile path
-      x <- qRunIO (readFile path)
-      lift x)
+  -- The strings containing the default configuration file
+  -- included from config.ui.default.
+  , rcfgUIName = "config.ui"
   , rcfgUIDefault = $(do
-      let path = "GameDefinition/config.ui.default"
+      let path = "GameDefinition" </> "config.ui" ++ ".default"
       qAddDependentFile path
       x <- qRunIO (readFile path)
       lift x)
@@ -198,4 +191,12 @@ standard = RuleKind
       , ("CTRL-s", (CmdDebug, GameSave))
       , ("CTRL-y", (CmdDebug, Resend))
       ]
+  , rfirstDeathEnds = False
+  , rfovMode = Digital 12
+  , rsaveBkpClips = 500
+  , rscoresFile = "scores"
+  , rsavePrefix = "save"
+  , rinitRngs = RNGs { dungeonRandomGenerator = Nothing  -- Just (read "42")
+                     , startingRandomGenerator = Nothing  -- Just (read "42")
+                     }
   }
