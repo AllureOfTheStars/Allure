@@ -70,12 +70,12 @@ fastEye = ActorKind
   , aname   = "deformed monkey"
   , afreq   = [("animal", 15), ("horror", 15)]
   , acolor  = BrMagenta
-  , ahp     = rollDice 1 4
+  , ahp     = rollDice 1 6
   , aspeed  = toSpeed 4
   , asight  = True
   , asmell  = False
   , aiq     = 12
-  , aregen  = 5  -- Regenerates fast (at max HP most of the time!).
+  , aregen  = 10  -- Regenerates fast (at max HP most of the time!).
   , acanDo  = [minBound..maxBound]
   }
 nose = ActorKind
