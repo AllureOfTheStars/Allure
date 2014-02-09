@@ -114,8 +114,8 @@ Commands for saving and exiting the current game, starting a new game, etc.,
 are listed in the Main Menu, brough up by the ESC key.
 Some of the game modes are multiplayer or feature multiple computer
 players (allied or not). The setup of the modes can be modified
-via a configuration file. Game difficulty setting affects only
-the starting hitpoints for the players that use the UI.
+via a configuration file. Game difficulty setting affects hitpoints
+at birth for any actors of any UI-using player.
 
                key       command
                CTRL-x    save and exit
@@ -131,7 +131,7 @@ that can be specified on the command line when starting the game server.
 Use at your own peril! :) Of these, you may find the screensaver modes
 the least spoilery and the most fun, e.g.:
 
-    Allure --newGame --noMore --maxFps 45 --savePrefix screensaver --gameMode screensaver
+    Allure --newGame --noMore --maxFps 45 --savePrefix testCampaign --gameMode testCampaign
 
 
 Monsters
