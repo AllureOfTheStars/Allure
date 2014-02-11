@@ -36,7 +36,7 @@ hero = FactionKind
 alien = FactionKind
   { fsymbol        = 'a'
   , fname          = "alien"
-  , ffreq          = [("alien", 1), ("spawn", 20), ("summon", 20)]
+  , ffreq          = [("alien", 1), ("summon", 20)]
   , fAbilityLeader = allAbilities
   , fAbilityOther  = allAbilities
   }
@@ -44,7 +44,7 @@ alien = FactionKind
 animal = FactionKind
   { fsymbol        = 'd'
   , fname          = "animal"
-  , ffreq          = [("animal", 1), ("spawn", 50), ("summon", 50)]
+  , ffreq          = [("animal", 1), ("summon", 50)]
   , fAbilityLeader = animalAbility
   , fAbilityOther  = animalAbility
   }
@@ -53,7 +53,7 @@ animal = FactionKind
 robot = FactionKind
   { fsymbol        = 'r'
   , fname          = "robot"
-  , ffreq          = [("robot", 1), ("spawn", 10), ("summon", 10)]
+  , ffreq          = [("robot", 1), ("summon", 10)]
   , fAbilityLeader = robotAbility
   , fAbilityOther  = robotAbility
   }
