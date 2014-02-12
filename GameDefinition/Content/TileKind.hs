@@ -24,10 +24,10 @@ cdefs = ContentDef
   , getFreq = tfreq
   , validate = validateTileKind
   , content =
-      [wall, wallCache, hardRock, oriel, pillar, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorItemLit, floorActorItemLit, floorRedLit, floorBlueLit, floorGreenLit]
-      ++ map makeDarkColor [floorCorridorLit, floorItemLit, floorActorItemLit]
+      [wall, wallCache, hardRock, oriel, pillar, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorActorLit, floorItemLit, floorActorItemLit, floorRedLit, floorBlueLit, floorGreenLit]
+      ++ map makeDarkColor [floorCorridorLit, floorActorLit, floorItemLit, floorActorItemLit]
   }
-wall,        wallCache, hardRock, oriel, pillar, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorItemLit, floorActorItemLit, floorRedLit, floorBlueLit, floorGreenLit :: TileKind
+wall,        wallCache, hardRock, oriel, pillar, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorActorLit, floorItemLit, floorActorItemLit, floorRedLit, floorBlueLit, floorGreenLit :: TileKind
 
 wall = TileKind
   { tsymbol  = '#'
@@ -178,6 +178,10 @@ floorCorridorLit = TileKind
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , tfeature = [Walkable, Clear]
+  }
+floorActorLit = floorCorridorLit
+  { tfreq    = [("floorActorLit", 1)]
+  , tfeature = CanActor : tfeature floorCorridorLit
   }
 floorItemLit = floorCorridorLit
   { tfreq    = []

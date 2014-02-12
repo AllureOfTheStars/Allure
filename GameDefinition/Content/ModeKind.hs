@@ -18,9 +18,9 @@ cdefs = ContentDef
   , getFreq = mfreq
   , validate = validateModeKind
   , content =
-      [campaign, skirmish, pvp, coop, defense, testCampaign, testSkirmish, testPvP, testCoop, testDefense, peekCampaign, peekSkirmish]
+      [campaign, skirmish, battle, pvp, coop, defense, testCampaign, testSkirmish, testBattle, testPvP, testCoop, testDefense, peekCampaign, peekSkirmish]
   }
-campaign,        skirmish, pvp, coop, defense, testCampaign, testSkirmish, testPvP, testCoop, testDefense, peekCampaign, peekSkirmish :: ModeKind
+campaign,        skirmish, battle, pvp, coop, defense, testCampaign, testSkirmish, testBattle, testPvP, testCoop, testDefense, peekCampaign, peekSkirmish :: ModeKind
 
 campaign = ModeKind
   { msymbol  = 'r'
@@ -36,6 +36,14 @@ skirmish = ModeKind
   , mfreq    = [("skirmish", 1)]
   , mplayers = playersSkirmish
   , mcaves   = cavesCombat
+  }
+
+battle = ModeKind
+  { msymbol  = 'b'
+  , mname    = "battle"
+  , mfreq    = [("battle", 1)]
+  , mplayers = playersBattle
+  , mcaves   = cavesBattle
   }
 
 pvp = ModeKind
@@ -76,6 +84,14 @@ testSkirmish = ModeKind
   , mfreq    = [("testSkirmish", 1)]
   , mplayers = playersTestSkirmish
   , mcaves   = cavesCombat
+  }
+
+testBattle = ModeKind
+  { msymbol  = 't'
+  , mname    = "testBattle"
+  , mfreq    = [("testBattle", 1)]
+  , mplayers = playersTestBattle
+  , mcaves   = cavesBattle
   }
 
 testPvP = ModeKind
@@ -119,7 +135,7 @@ peekSkirmish = ModeKind
   }
 
 
-playersCampaign, playersSkirmish, playersPvP, playersCoop, playersDefense, playersTestCampaign, playersTestSkirmish, playersTestPvP, playersTestCoop, playersTestDefense, playersPeekCampaign, playersPeekSkirmish :: Players
+playersCampaign, playersSkirmish, playersBattle, playersPvP, playersCoop, playersDefense, playersTestCampaign, playersTestSkirmish, playersTestBattle, playersTestPvP, playersTestCoop, playersTestDefense, playersPeekCampaign, playersPeekSkirmish :: Players
 
 playersCampaign = Players
   { playersList = [ playerHero {playerInitial = 1}
@@ -138,6 +154,19 @@ playersSkirmish = Players
   , playersEnemy = [ ("White", "Purple")
                    , ("White", "Horror Den")
                    , ("Purple", "Horror Den") ]
+  , playersAlly = [] }
+
+playersBattle = Players
+  { playersList = [ playerHero {playerInitial = 5}
+                  , playerMonster { playerInitial = 10
+                                  , playerSpawn = 0 }
+                  , playerAnimal { playerInitial = 10
+                                 , playerSpawn = 0 }
+                  , playerRobot { playerInitial = 10
+                                , playerSpawn = 0 } ]
+  , playersEnemy = [ ("Spacefarer Crew", "Alien Hierarchy")
+                   , ("Spacefarer Crew", "Animal Kingdom")
+                   , ("Spacefarer Crew", "Robot Anarchy") ]
   , playersAlly = [] }
 
 playersPvP = Players
@@ -202,6 +231,17 @@ playersTestSkirmish = playersSkirmish
                                , playerHuman = False }
                   , playerAntiHero { playerName = "Purple" }
                   , playerHorror ] }
+
+playersTestBattle = playersBattle
+  { playersList = [ playerHero { playerInitial = 5
+                               , playerAiLeader = True
+                               , playerHuman = False }
+                  , playerMonster { playerInitial = 10
+                                  , playerSpawn = 0 }
+                  , playerAnimal { playerInitial = 10
+                                 , playerSpawn = 0 }
+                  , playerRobot { playerInitial = 10
+                                , playerSpawn = 0 } ] }
 
 playersTestPvP = playersPvP
   { playersList = [ playerHero { playerName = "Red"
@@ -314,9 +354,11 @@ playerHorror = Player
   }
 
 
-cavesCampaign, cavesCombat :: Caves
+cavesCampaign, cavesCombat, cavesBattle :: Caves
 
 cavesCampaign = EM.fromList [ (toEnum 1, ("caveRogue", Nothing))
                             , (toEnum 12, ("caveNoise", Just False))]
 
 cavesCombat = EM.fromList [(toEnum 3, ("caveCombat", Nothing))]
+
+cavesBattle = EM.fromList [(toEnum (-3), ("caveBattle", Nothing))]
