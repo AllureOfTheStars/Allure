@@ -126,5 +126,5 @@ battle = combat  -- TODO: actors can get stuck forever among trees
   { csymbol       = 'B'
   , cname         = "Battle arena"
   , cfreq         = [("caveBattle", 1)]
-  , clitCorTile   = "floorActorLit"
+  , cdefTile      = "battleSet"
   }

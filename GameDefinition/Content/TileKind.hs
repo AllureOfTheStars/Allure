@@ -67,7 +67,8 @@ oriel = TileKind
 pillar = TileKind
   { tsymbol  = 'O'
   , tname    = "rock"
-  , tfreq    = [("legendLit", 100), ("legendDark", 100), ("combatSet", 3)]
+  , tfreq    = [ ("legendLit", 100), ("legendDark", 100)
+               , ("combatSet", 3), ("battleSet", 9) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , tfeature = []
@@ -180,7 +181,7 @@ floorCorridorLit = TileKind
   , tfeature = [Walkable, Clear]
   }
 floorActorLit = floorCorridorLit
-  { tfreq    = [("floorActorLit", 1)]
+  { tfreq    = [("floorActorLit", 1), ("battleSet", 100)]
   , tfeature = CanActor : tfeature floorCorridorLit
   }
 floorItemLit = floorCorridorLit
