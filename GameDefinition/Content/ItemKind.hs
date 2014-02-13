@@ -190,7 +190,7 @@ scroll2 = scroll
   { ifeature = [Cause $ Summon 1]
   }
 scroll3 = scroll
-  { ifeature = [Cause $ Ascend (-1)]
+  { ifeature = [Cause $ Ascend 1]
   }
 sword = ItemKind
   { isymbol  = '/'
