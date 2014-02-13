@@ -197,7 +197,4 @@ standard = RuleKind
   , rleadLevelClips = 100
   , rscoresFile = "scores"
   , rsavePrefix = "save"
-  , rinitRngs = RNGs { dungeonRandomGenerator = Nothing  -- Just (read "42")
-                     , startingRandomGenerator = Nothing  -- Just (read "42")
-                     }
   }
