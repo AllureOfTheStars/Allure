@@ -77,7 +77,7 @@ meleeAdjacent = [Track, Melee]
 
 _meleeAndRanged = [Track, Melee, Ranged]  -- melee and reaction fire
 
-animalAbility = [Track, Flee, Melee, Chase, Wander]
+animalAbility = [Track, Flee, Melee, Displace, Chase, Wander]
 
 robotAbility = delete Flee [minBound..maxBound]
 
