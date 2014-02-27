@@ -207,7 +207,7 @@ sword = ItemKind
 wand = ItemKind
   { isymbol  = '-'
   , iname    = "injector"
-  , ifreq    = [("useful", 15)]
+  , ifreq    = [("useful", 5)]
   , iflavour = zipFancy brightCol
   , icount   = intToDeep 1
   , iverbApply   = "snap"
@@ -220,7 +220,7 @@ wand1 = wand
   { ifeature = ifeature wand ++ [Cause Dominate]
   }
 wand2 = wand
-  { ifreq    = [("useful", 3)]
+  { ifreq    = [("useful", 2)]
   , ifeature = ifeature wand ++ [Cause $ Heal (-25)]
   }
 fist = sword
