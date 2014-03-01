@@ -27,7 +27,7 @@ Compatibility notes
 -------------------
 
 The current code was tested with GHC 7.6 and 7.8, but should also work with
-other GHC versions (see file .travis.yml.7.4.2 for GHC 7.4 commands).
+other GHC versions (see file `.travis.yml.7.4.2` for GHC 7.4 commands).
 
 If you are using the terminal frontends, numerical keypad may not work
 correctly depending on versions of the libraries, terminfo and terminal
@@ -40,17 +40,17 @@ Vi keys (ykuhlbjn) should work everywhere regardless. Gtk works fine, too.
 Testing and debugging
 ---------------------
 
-The Makefile contains many sample test commands. All that use the screensaver
+The `Makefile` contains many sample test commands. All that use the screensaver
 game modes (AI vs. AI) and the simplest stdout frontend are gathered
 in `make test`. Of these, travis runs one of the sets prefixed
-'test-travis` on each push to the repo. Commands with prefix
+`test-travis` on each push to the repo. Commands with prefix
 `frontend` run AI vs. AI games with the standard, user-friendly frontend.
 Commands with prefix `peek` set up a game mode where the player peeks
 into AI moves each time an AI actor dies or autosave kicks in.
 Run `Allure --help` to see a brief description of all debug options.
 Of these, `--sniffIn` and `--sniffOut` are very useful (though verbose
 and initially cryptic), for monitoring the traffic between clients
-and the server. Some options in config files may turn out useful too,
+and the server. Some options in the config file may turn out useful too,
 though they mostly overlap with commandline options (and will be totally
 merged at some point).
 
@@ -59,7 +59,7 @@ Further information
 -------------------
 
 For more information, visit the [wiki] [6]
-and see GameDefinition/PLAYING.md, CREDITS and LICENSE.
+and see `GameDefinition/PLAYING.md`, `CREDITS` and `LICENSE`.
 
 Have fun!
 
