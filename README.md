@@ -26,8 +26,8 @@ and run `cabal install` from the main directory.
 Compatibility notes
 -------------------
 
-The current code was tested with GHC 7.6.3, but should also work with
-other GHC versions (see file .travis.yml.7.4.2 for GHC 7.4.2 commands).
+The current code was tested with GHC 7.6 and 7.8, but should also work with
+other GHC versions (see file .travis.yml.7.4.2 for GHC 7.4 commands).
 
 If you are using the terminal frontends, numerical keypad may not work
 correctly depending on versions of the libraries, terminfo and terminal
@@ -36,13 +36,14 @@ of the curses library. With the vty frontend run in an xterm,
 CTRL-keypad keys for running seem to work OK, but on rxvt they do not.
 Vi keys (ykuhlbjn) should work everywhere regardless. Gtk works fine, too.
 
+
 Testing and debugging
 ---------------------
 
 The Makefile contains many sample test commands. All that use the screensaver
 game modes (AI vs. AI) and the simplest stdout frontend are gathered
-in `make test`. Of these, travis runs the set contained in
-`make test-travis` on each push to the repo. Commands with prefix
+in `make test`. Of these, travis runs one of the sets prefixed
+'test-travis` on each push to the repo. Commands with prefix
 `frontend` run AI vs. AI games with the standard, user-friendly frontend.
 Commands with prefix `peek` set up a game mode where the player peeks
 into AI moves each time an AI actor dies or autosave kicks in.

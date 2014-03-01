@@ -1,18 +1,16 @@
 name:          Allure
-version:       0.4.11
+version:       0.4.12
 synopsis:      Near-future roguelike game in very early and active development
 description:   This is an alpha release of Allure of the Stars,
                a near-future Sci-Fi roguelike and tactical squad game.
                The game is barely fun at this stage and not yet
                really Sci-Fi. See the wiki for design notes and contribute.
                .
-               New since 0.4.8 are screensaver game modes (AI vs AI),
-               improved AI (can now climbs stairs, etc.), multiple,
-               multi-floor staircases, multiple savefiles, configurable
-               framerate and combat animations and more.
-               Long term goals are high replayability and auto-balancing
-               through procedural content generation and persistent content
-               modification based on player behaviour.
+               Please see the changelog file for recent improvements
+               and the issue tracker for short-term plans. Long term goals
+               are high replayability and auto-balancing through procedural
+               content generation and persistent content modification
+               based on player behaviour.
                .
                The game is written using the LambdaHack roguelike game engine
                available at <http://hackage.haskell.org/package/LambdaHack>.
@@ -20,7 +18,7 @@ homepage:      http://github.com/Mikolaj/Allure
 bug-reports:   http://github.com/Mikolaj/Allure/issues
 license:       OtherLicense
 license-file:  LICENSE
-tested-with:   GHC == 7.6.3, GHC == 7.7
+tested-with:   GHC == 7.6.3, GHC == 7.8
 data-files:    GameDefinition/config.ui.default,
                GameDefinition/scores
 extra-source-files: GameDefinition/PLAYING.md, GameDefinition/MainMenu.ascii,
@@ -47,7 +45,7 @@ executable Allure
                       Content.RuleKind,
                       Content.TileKind,
                       Paths_Allure
-  build-depends:      LambdaHack >= 0.2.10.5 && <= 0.2.12,
+  build-depends:      LambdaHack >= 0.2.12 && < 0.2.13,
                       template-haskell >= 2.6 && < 3,
 
                       array      >= 0.3.0.3 && < 1,
