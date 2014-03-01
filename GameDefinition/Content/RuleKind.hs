@@ -161,8 +161,8 @@ standard = RuleKind
 -- f: Project [ApplyItem {verb = "fling", object = "missile", symbol = ' '}, ApplyItem {verb = "throw", object = "projectile", symbol = '}'}, ApplyItem {verb = "throw", object = "projectile", symbol = '{'}, ApplyItem {verb = "zap", object = "mechanism", symbol = '-'}]
 
       -- Targeting
-      , ("slash", (CmdTgt, TgtFloor))
       , ("asterisk", (CmdTgt, TgtEnemy))
+      , ("slash", (CmdTgt, TgtFloor))
       , ("plus", (CmdTgt, EpsIncr True))
       , ("minus", (CmdTgt, EpsIncr False))
       , ("BackSpace", (CmdTgt, TgtClear))
