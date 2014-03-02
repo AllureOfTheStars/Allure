@@ -131,7 +131,7 @@ escapeUp = TileKind
   }
 escapeDown = TileKind
   { tsymbol  = '>'
-  , tname    = "exit trapdoor down"
+  , tname    = "exit airlock down"
   , tfreq    = [("legendLit", 100), ("legendDark", 100)]
   , tcolor   = BrYellow
   , tcolor2  = BrYellow

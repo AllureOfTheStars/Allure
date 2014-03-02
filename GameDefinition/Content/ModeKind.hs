@@ -357,7 +357,7 @@ playerHorror = Player
 cavesCampaign, cavesCombat, cavesBattle :: Caves
 
 cavesCampaign = EM.fromList [ (toEnum 1, ("caveRogue", Nothing))
-                            , (toEnum 12, ("caveNoise", Just False))]
+                            , (toEnum 12, ("caveNoise", Just True))]
 
 cavesCombat = EM.fromList [(toEnum 3, ("caveCombat", Nothing))]
 
