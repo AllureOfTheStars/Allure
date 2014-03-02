@@ -12,15 +12,18 @@ using the [LambdaHack] [5] roguelike game engine.
 Compilation and installation
 ----------------------------
 
-The game is best compiled and installed via Cabal, which also takes care
-of all dependencies. The latest official version of the game can be downloaded
-automatically by Cabal from [Hackage] [4] as follows
+The game is best compiled and installed via Cabal (already a part
+of your OS distribution, or available within [The Haskell Platform] [7]),
+which also takes care of all the dependencies. The latest official
+version of the game can be downloaded automatically by Cabal
+from [Hackage] [4] as follows
 
     cabal install Allure
 
 For a newer version, install a matching LambdaHack library snapshot
 from a development branch, download the game source from [github] [3]
-and run `cabal install` from the main directory.
+and run `cabal install` from the main directory (for sample commands
+see file `.travis.yml`).
 
 
 Compatibility notes
@@ -91,3 +94,4 @@ If not, see <http://www.gnu.org/licenses/>.
 [4]: http://hackage.haskell.org/package/Allure
 [5]: http://github.com/kosmikus/LambdaHack
 [6]: https://github.com/Mikolaj/Allure/wiki
+[7]: http://www.haskell.org/platform
