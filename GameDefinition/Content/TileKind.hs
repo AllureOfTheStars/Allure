@@ -103,7 +103,7 @@ doorOpen = TileKind
   , tfreq    = [("legendLit", 100), ("legendDark", 100), ("open door", 1)]
   , tcolor   = Brown
   , tcolor2  = BrBlack
-  , tfeature = [Dark, Walkable, Clear, CloseTo "closed door"]
+  , tfeature = [Walkable, Clear, CloseTo "closed door"]
   }
 stairsUp = TileKind
   { tsymbol  = '<'
