@@ -11,4 +11,4 @@ install:
 
 script:
   - cabal install
-  - make test-travis-long || (cat ~/.Allure/rngs.dump ; tail -n 200 /tmp/stdtest.log ; exit 77)
+  - make test-travis-long || (tail -n 200 /tmp/stdtest.log ; exit 77)
