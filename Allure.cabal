@@ -14,7 +14,7 @@ description:   This is an alpha release of Allure of the Stars,
                .
                The game is written using the LambdaHack roguelike game engine
                available at <http://hackage.haskell.org/package/LambdaHack>.
-homepage:      http://github.com/Mikolaj/Allure
+homepage:      http://allureofthestars.com
 bug-reports:   http://github.com/Mikolaj/Allure/issues
 license:       OtherLicense
 license-file:  LICENSE

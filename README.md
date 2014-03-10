@@ -1,7 +1,7 @@
 Allure of the Stars [![Build Status](https://secure.travis-ci.org/Mikolaj/Allure.png)](http://travis-ci.org/Mikolaj/Allure)[![Build Status](https://drone.io/github.com/Mikolaj/Allure/status.png)](https://drone.io/github.com/Mikolaj/Allure/latest)
 ===================
 
-This is an alpha release of Allure of the Stars,
+This is an alpha release of Allure of the Stars [8],
 a near-future Sci-Fi [roguelike] [2] and tactical squad game.
 Long-term goals are high replayability and auto-balancing
 through procedural content generation and persistent content
@@ -95,3 +95,4 @@ If not, see <http://www.gnu.org/licenses/>.
 [5]: http://github.com/kosmikus/LambdaHack
 [6]: https://github.com/Mikolaj/Allure/wiki
 [7]: http://www.haskell.org/platform
+[8]: http://allureofthestars.com
