@@ -7,7 +7,6 @@
 -- | Game rules and assorted game setup data for Allure of the Stars.
 module Content.RuleKind ( cdefs ) where
 
-import Control.Arrow (first)
 import Language.Haskell.TH.Syntax
 import System.FilePath
 
@@ -15,10 +14,6 @@ import System.FilePath
 import qualified Paths_Allure as Self (getDataFileName, version)
 
 import Game.LambdaHack.Common.ContentDef
-import qualified Game.LambdaHack.Common.Effect as Effect
-import qualified Game.LambdaHack.Common.Feature as F
-import Game.LambdaHack.Common.HumanCmd
-import qualified Game.LambdaHack.Common.Key as K
 import Game.LambdaHack.Content.RuleKind
 
 cdefs :: ContentDef RuleKind
@@ -44,10 +39,12 @@ standard = RuleKind
   , rtitle         = "Allure of the Stars"
   , rpathsDataFile = Self.getDataFileName
   , rpathsVersion  = Self.version
-  , ritemMelee     = "/|\\"
+  , ritemMelee     = "/|\\%"
   , ritemRanged    = "}{"
+  , ritemEqp       = "/|\\\"=~["
   -- Wasting weapons and armour would be too cruel to the player.
   , ritemProject   = "!?,-~}{"
+  , ritemNeedId    = "!?,-}{"
   -- The strings containing the default configuration file
   -- included from config.ui.default.
   , rcfgUIName = "config.ui"
@@ -76,125 +73,11 @@ standard = RuleKind
       qAddDependentFile path
       x <- qRunIO (readFile path)
       lift x)
-  , rhumanCommands = map (first K.mkKM)
-      -- All commands are defined here, except some movement and leader picking
-      -- commands. All commands are shown on help screens except debug commands
-      -- and macros with empty descriptions.
-      -- The order below determines the order on the help screens.
-      -- Remember to put commands that show information (e.g., enter targeting
-      -- mode) first.
-
-      -- Main Menu, which apart of these includes a few extra commands
-      [ ("CTRL-x", (CmdMenu, GameExit))
-      , ("CTRL-r", (CmdMenu, GameRestart "campaign"))
-      , ("CTRL-k", (CmdMenu, GameRestart "skirmish"))
-      , ("CTRL-v", (CmdMenu, GameRestart "PvP"))
-      , ("CTRL-o", (CmdMenu, GameRestart "Coop"))
-      , ("CTRL-e", (CmdMenu, GameRestart "defense"))
-      , ("CTRL-d", (CmdMenu, GameDifficultyCycle))
-
-      -- Movement and terrain alteration
-      , ("less", (CmdMove, TriggerTile
-           [ TriggerFeature { verb = "ascend"
-                            , object = "a level"
-                            , feature = F.Cause (Effect.Ascend 1) }
-           , TriggerFeature { verb = "exit"
-                            , object = "spaceship"
-                            , feature = F.Cause (Effect.Escape 1) } ]))
-      , ("CTRL-less", (CmdMove, TriggerTile
-           [ TriggerFeature { verb = "ascend"
-                            , object = "10 levels"
-                            , feature = F.Cause (Effect.Ascend 10) } ]))
-      , ("greater", (CmdMove, TriggerTile
-           [ TriggerFeature { verb = "descend"
-                            , object = "a level"
-                            , feature = F.Cause (Effect.Ascend (-1)) }
-           , TriggerFeature { verb = "exit"
-                            , object = "spaceship"
-                            , feature = F.Cause (Effect.Escape (-1)) } ]))
-      , ("CTRL-greater", (CmdMove, TriggerTile
-           [ TriggerFeature { verb = "descend"
-                            , object = "10 levels"
-                            , feature = F.Cause (Effect.Ascend (-10)) } ]))
-      , ("CTRL-semicolon", (CmdMove, StepToTarget))
-      , ("semicolon", (CmdMove, Macro "go to target for 100 steps"
-                                      ["CTRL-semicolon", "P"]))
-      , ("x", (CmdMove, Macro "explore the closest unknown spot"
-                              [ "BackSpace"
-                              , "CTRL-question", "CTRL-semicolon", "P" ]))
-      , ("X", (CmdMove, Macro "autoexplore 100 times"
-                              [ "BackSpace"
-                              , "'", "CTRL-question", "CTRL-semicolon", "'"
-                              , "P" ]))
-      , ("R", (CmdMove, Macro "rest (wait 100 times)" ["KP_Begin", "P"]))
-      , ("c", (CmdMove, AlterDir
-           [ AlterFeature { verb = "close"
-                          , object = "door"
-                          , feature = F.CloseTo "closed door" } ]))
-
-      -- Inventory and items
-      , ("I", (CmdItem, Inventory))
-      , ("g", (CmdItem, Pickup))
-      , ("d", (CmdItem, Drop))
-      , ("q", (CmdItem, Apply [ApplyItem { verb = "quaff"
-                                         , object = "drink"
-                                         , symbol = '!' }]))
-      , ("r", (CmdItem, Apply [ApplyItem { verb = "read"
-                                         , object = "tablet"
-                                         , symbol = '?' }]))
-      , ("a", (CmdItem, Apply [ApplyItem { verb = "apply"
-                                         , object = "consumable"
-                                         , symbol = ' ' }]))
-      , ("t", (CmdItem, Project [ ApplyItem { verb = "throw"
-                                            , object = "projectile"
-                                            , symbol = '}' }
-                                , ApplyItem { verb = "throw"
-                                            , object = "projectile"
-                                            , symbol = '{' } ]))
-      , ("z", (CmdItem, Project [ ApplyItem { verb = "zap"
-                                            , object = "mechanism"
-                                            , symbol = '-' } ]))
-      , ("f", (CmdItem, Project [ ApplyItem { verb = "fling"
-                                            , object = "missile"
-                                            , symbol = ' ' } ]))
-
-      -- Targeting
-      , ("asterisk", (CmdTgt, TgtEnemy))
-      , ("slash", (CmdTgt, TgtFloor))
-      , ("plus", (CmdTgt, EpsIncr True))
-      , ("minus", (CmdTgt, EpsIncr False))
-      , ("BackSpace", (CmdTgt, TgtClear))
-      , ("CTRL-question", (CmdTgt, TgtUnknown))
-      , ("CTRL-I", (CmdTgt, TgtItem))
-      , ("CTRL-braceleft", (CmdTgt, TgtStair True))
-      , ("CTRL-braceright", (CmdTgt, TgtStair False))
-
-      -- Assorted
-      , ("question", (CmdMeta, Help))
-      , ("D", (CmdMeta, History))
-      , ("T", (CmdMeta, MarkSuspect))
-      , ("V", (CmdMeta, MarkVision))
-      , ("S", (CmdMeta, MarkSmell))
-      , ("Tab", (CmdMeta, MemberCycle))
-      , ("ISO_Left_Tab", (CmdMeta, MemberBack))
-      , ("equal", (CmdMeta, SelectActor))
-      , ("underscore", (CmdMeta, SelectNone))
-      , ("p", (CmdMeta, Repeat 1))
-      , ("P", (CmdMeta, Repeat 100))
-      , ("CTRL-p", (CmdMeta, Repeat 1000))
-      , ("apostrophe", (CmdMeta, Record))
-      , ("space", (CmdMeta, Clear))
-      , ("Escape", (CmdMeta, Cancel))
-      , ("Return", (CmdMeta, Accept))
-
-      -- Debug and others not to display in help screens
-      , ("CTRL-s", (CmdDebug, GameSave))
-      , ("CTRL-y", (CmdDebug, Resend))
-      ]
   , rfirstDeathEnds = False
-  , rfovMode = Digital 12
+  , rfovMode = Digital
   , rsaveBkpClips = 500
   , rleadLevelClips = 100
   , rscoresFile = "scores"
   , rsavePrefix = "save"
+  , rsharedInventory = True
   }

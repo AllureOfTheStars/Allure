@@ -67,18 +67,16 @@ horror = FactionKind
   }
 
 
-_noAbility, _onlyFollowTrack, meleeAdjacent, _meleeAndRanged, animalAbility, robotAbility, allAbilities :: [Ability]
+_noAbility, meleeAdjacent, _meleeAndRanged, animalAbility, robotAbility, allAbilities :: [Ability]
 
-_noAbility = []  -- not even projectiles will fly
+_noAbility = []
 
-_onlyFollowTrack = [Track]  -- projectiles enabled
+meleeAdjacent = [AbWait, AbMelee]
 
-meleeAdjacent = [Track, Melee]
+_meleeAndRanged = [AbWait, AbMelee, AbProject]  -- melee and reaction fire
 
-_meleeAndRanged = [Track, Melee, Ranged]  -- melee and reaction fire
+animalAbility = [AbMove, AbMelee, AbWait, AbTrigger]
 
-animalAbility = [Track, Flee, Melee, Displace, Chase, Wander]
-
-robotAbility = delete Flee [minBound..maxBound]
+robotAbility = delete AbApply [minBound..maxBound]
 
 allAbilities = [minBound..maxBound]

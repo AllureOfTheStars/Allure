@@ -7,6 +7,7 @@
 module Content.TileKind ( cdefs ) where
 
 import Control.Arrow (first)
+import Data.Maybe
 import Data.Text (Text)
 import qualified Data.Text as T
 
@@ -182,15 +183,15 @@ floorCorridorLit = TileKind
   }
 floorActorLit = floorCorridorLit
   { tfreq    = [("floorActorLit", 1), ("battleSet", 100)]
-  , tfeature = CanActor : tfeature floorCorridorLit
+  , tfeature = OftenActor : tfeature floorCorridorLit
   }
 floorItemLit = floorCorridorLit
   { tfreq    = []
-  , tfeature = CanItem : tfeature floorCorridorLit
+  , tfeature = OftenItem : tfeature floorCorridorLit
   }
 floorActorItemLit = floorItemLit
   { tfreq    = [("legendLit", 100), ("emptySet", 1)]
-  , tfeature = CanActor : tfeature floorItemLit
+  , tfeature = OftenActor : tfeature floorItemLit
   }
 floorRedLit = floorCorridorLit
   { tname    = "emergency walkway"

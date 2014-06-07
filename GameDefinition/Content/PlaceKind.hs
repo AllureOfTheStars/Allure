@@ -27,6 +27,7 @@ rect = PlaceKind  -- Valid for any nonempty area, hence low frequency.
   , pcover   = CStretch
   , pfence   = FWall
   , ptopLeft = ["."]
+  , poverride = []
   }
 oval = PlaceKind
   { psymbol  = 'o'
@@ -41,6 +42,7 @@ oval = PlaceKind
                , "......"
                , "......"
                ]
+  , poverride = []
   }
 ovalFloor = oval  -- Without outer solid fence, visible from outside.
   { pfreq    = [("rogue", 10000)]
@@ -70,6 +72,7 @@ colonnade = PlaceKind
   , ptopLeft = [ ".#"
                , "#."
                ]
+  , poverride = []
   }
 colonnadeWide = colonnade
   { pfreq    = [("rogue", 50)]
@@ -89,6 +92,7 @@ maze = PlaceKind
                , "#.##.#"
                , "#.#.#."
                ]
+  , poverride = []
   }
 maze2 = maze
   { ptopLeft = [ "###.##"
@@ -142,6 +146,7 @@ cells = PlaceKind
                , "..#"
                , "##."
                ]
+  , poverride = []
   }
 -- TODO: obtain all the reet as places nested within places.
 -- 3 places are enough, with 1 or 2 tiles between places,

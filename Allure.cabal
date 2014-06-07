@@ -36,7 +36,8 @@ source-repository head
 executable Allure
   hs-source-dirs:     GameDefinition
   main-is:            Main.hs
-  other-modules:      Content.ActorKind,
+  other-modules:      Client.UI.Content.KeyKind,
+                      Content.ActorKind,
                       Content.CaveKind,
                       Content.FactionKind,
                       Content.ItemKind,

@@ -196,8 +196,7 @@ playersCoop = Players
 
 playersDefense = Players
   { playersList = [ playerMonster { playerInitial = 1
-                                  , playerAiLeader = False
-                                  , playerHuman = True
+                                  , playerAI = False
                                   , playerUI = True }
                   , playerAnimal
                   , playerRobot
@@ -219,23 +218,20 @@ playersDefense = Players
 
 playersTestCampaign = playersCampaign
   { playersList = [ playerHero { playerInitial = 5
-                               , playerAiLeader = True
-                               , playerHuman = False }
+                               , playerAI = True }
                   , playerMonster
                   , playerAnimal
                   , playerRobot ] }
 
 playersTestSkirmish = playersSkirmish
   { playersList = [ playerHero { playerName = "White"
-                               , playerAiLeader = True
-                               , playerHuman = False }
+                               , playerAI = True }
                   , playerAntiHero { playerName = "Purple" }
                   , playerHorror ] }
 
 playersTestBattle = playersBattle
   { playersList = [ playerHero { playerInitial = 5
-                               , playerAiLeader = True
-                               , playerHuman = False }
+                               , playerAI = True }
                   , playerMonster { playerInitial = 10
                                   , playerSpawn = 0 }
                   , playerAnimal { playerInitial = 10
@@ -245,20 +241,16 @@ playersTestBattle = playersBattle
 
 playersTestPvP = playersPvP
   { playersList = [ playerHero { playerName = "Red"
-                               , playerAiLeader = True
-                               , playerHuman = False }
+                               , playerAI = True }
                   , playerHero { playerName = "Blue"
-                               , playerAiLeader = True
-                               , playerHuman = False }
+                               , playerAI = True }
                   , playerHorror ] }
 
 playersTestCoop = playersCoop
   { playersList = [ playerHero { playerName = "Coral"
-                               , playerAiLeader = True
-                               , playerHuman = False }
+                               , playerAI = True }
                   , playerHero { playerName = "Amber"
-                               , playerAiLeader = True
-                               , playerHuman = False }
+                               , playerAI = True }
                   , playerMonster
                   , playerAnimal
                   , playerRobot ] }
@@ -293,15 +285,13 @@ playerHero = Player
   , playerSpawn = 0
   , playerEntry = toEnum 1
   , playerInitial = 3
-  , playerAiLeader = False
-  , playerAiOther = True
-  , playerHuman = True
+  , playerLeader = True
+  , playerAI = False
   , playerUI = True
   }
 
 playerAntiHero = playerHero
-  { playerAiLeader = True
-  , playerHuman = False
+  { playerAI = True
   , playerUI = False
   }
 
@@ -311,9 +301,8 @@ playerMonster = Player
   , playerSpawn = 20
   , playerEntry = toEnum 5
   , playerInitial = 3
-  , playerAiLeader = True
-  , playerAiOther = True
-  , playerHuman = False
+  , playerLeader = True
+  , playerAI = True
   , playerUI = False
   }
 
@@ -323,9 +312,8 @@ playerAnimal = Player
   , playerSpawn = 50
   , playerEntry = toEnum 3
   , playerInitial = 3
-  , playerAiLeader = True
-  , playerAiOther = True
-  , playerHuman = False
+  , playerLeader = False
+  , playerAI = True
   , playerUI = False
   }
 
@@ -335,9 +323,8 @@ playerRobot = Player
   , playerSpawn = 10
   , playerEntry = toEnum 4
   , playerInitial = 3
-  , playerAiLeader = True
-  , playerAiOther = True
-  , playerHuman = False
+  , playerLeader = False
+  , playerAI = True
   , playerUI = False
   }
 
@@ -347,9 +334,8 @@ playerHorror = Player
   , playerSpawn = 0
   , playerEntry = toEnum 1
   , playerInitial = 0
-  , playerAiLeader = True
-  , playerAiOther = True
-  , playerHuman = False
+  , playerLeader = False
+  , playerAI = True
   , playerUI = False
   }
 

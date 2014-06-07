@@ -6,10 +6,10 @@
 -- | Monsters and heroes for Allure of the Stars.
 module Content.ActorKind ( cdefs ) where
 
-import Game.LambdaHack.Common.Ability
 import Game.LambdaHack.Common.Color
 import Game.LambdaHack.Common.ContentDef
-import Game.LambdaHack.Common.Random
+import Game.LambdaHack.Common.Dice
+import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Common.Time
 import Game.LambdaHack.Content.ActorKind
 
@@ -29,13 +29,15 @@ hero = ActorKind
   , aname   = "hero"
   , afreq   = [("hero", 1)]
   , acolor  = BrWhite  -- modified if many hero factions
-  , ahp     = rollDice 50 1
+  , ahp     = 50
+  , acalm   = 50
   , aspeed  = toSpeed 2
   , asight  = True
   , asmell  = False
   , aiq     = 15  -- higher that that leads to looping movement
   , aregen  = 500
   , acanDo  = [minBound..maxBound]
+  , aitems  = [("fist", CBody), ("foot", CBody)]
   }
 
 projectile = ActorKind  -- includes homing missiles
@@ -43,51 +45,59 @@ projectile = ActorKind  -- includes homing missiles
   , aname   = "projectile"
   , afreq   = [("projectile", 1)]  -- Does not appear randomly in the dungeon.
   , acolor  = BrWhite
-  , ahp     = rollDice 0 0
+  , ahp     = 0
+  , acalm   = 50
   , aspeed  = toSpeed 0
   , asight  = False
   , asmell  = False
   , aiq     = 0
   , aregen  = maxBound
-  , acanDo  = [Track]
+  , acanDo  = []
+  , aitems  = []
   }
 
 eye = ActorKind
   { asymbol = 'r'
-  , aname   = "deranged household robot"
+  , aname   = "deranged home robot"
   , afreq   = [("robot", 60), ("horror", 60)]
   , acolor  = BrYellow
-  , ahp     = rollDice 7 4
+  , ahp     = 7 * d 4
+  , acalm   = 50
   , aspeed  = toSpeed 2
   , asight  = True
   , asmell  = False
   , aiq     = 16  -- leads to robotic, repetitious, looping movement
   , aregen  = 100
   , acanDo  = [minBound..maxBound]
+  , aitems  = [("fist", CBody), ("foot", CBody)]
   }
 fastEye = ActorKind
   { asymbol = 'm'
   , aname   = "deformed monkey"
   , afreq   = [("animal", 15), ("horror", 15)]
   , acolor  = BrMagenta
-  , ahp     = rollDice 1 6
+  , ahp     = d 6
+  , acalm   = 50
   , aspeed  = toSpeed 4
   , asight  = True
   , asmell  = False
   , aiq     = 12
   , aregen  = 10  -- Regenerates fast (at max HP most of the time!).
   , acanDo  = [minBound..maxBound]
+  , aitems  = [("fist", CBody), ("foot", CBody)]
   }
 nose = ActorKind
   { asymbol = 'h'
   , aname   = "tentacled horror"
   , afreq   = [("alien", 20), ("horror", 20)]
   , acolor  = Green
-  , ahp     = rollDice 17 2
+  , ahp     = 17 * d 2
+  , acalm   = 50
   , aspeed  = toSpeed 1.8
   , asight  = False
   , asmell  = True
   , aiq     = 0
   , aregen  = 100
   , acanDo  = [minBound..maxBound]
+  , aitems  = [("fist", CBody), ("foot", CBody)]
   }

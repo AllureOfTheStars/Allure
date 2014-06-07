@@ -10,19 +10,21 @@
 ; ; Warning: options are case-sensitive and only ';' for comments is permitted.
 
 ; [extra_commands]
-; ; Handy shorthands with Vi keys:
-; Macro_1 = ("comma", (CmdItem, Macro "" ["g"]))
-; Macro_2 = ("period", (CmdMove, Macro "" ["KP_Begin"]))
+; ; A handy shorthand with Vi keys:
+; Macro_1 = ("comma", ([CmdItem], Macro "" ["g"]))
 
 ; [hero_names]
-; HeroName_0 = Haskell Alvin
-; HeroName_1 = Alonzo Barkley
-; HeroName_2 = Ines Galenti
-; HeroName_3 = Ernst Abraham
-; HeroName_4 = Samuel Saunders
-; HeroName_5 = Roger Robin
+; HeroName_0 = ("Haskell Alvin", "he")
+; HeroName_1 = ("Alonzo Barkley", "he")
+; HeroName_2 = ("Ines Galenti", "she")
+; HeroName_3 = ("Ernst Abraham", "he")
+; HeroName_4 = ("Samuel Saunders", "he")
+; HeroName_5 = ("Roger Robin", "he")
+; HeroName_6 = ("Christopher Flatt", "he")
 
 ; [ui]
+; movementViKeys_hjklyubn = False
+; movementLaptopKeys_uk8o79jl = True
 ; font = "Terminus,Monospace normal normal normal normal 12"
 ; historyMax = 5000
 ; maxFps = 15
