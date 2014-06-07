@@ -145,7 +145,6 @@ standard = RuleKind
       , ("a", (CmdItem, Apply [ApplyItem { verb = "apply"
                                          , object = "consumable"
                                          , symbol = ' ' }]))
--- a: Apply [ApplyItem {verb = "apply", object = "consumable", symbol = ' '}, ApplyItem {verb = "eat", object = "food", symbol = ','}, ApplyItem {verb = "activate", object = "emitter", symbol = '_'}, ApplyItem {verb = "use", object = "tool", symbol = '~'}, ApplyItem {verb = "quaff", object = "drink", symbol = '!'}, ApplyItem {verb = "read", object = "tablet", symbol = '?'}]
       , ("t", (CmdItem, Project [ ApplyItem { verb = "throw"
                                             , object = "projectile"
                                             , symbol = '}' }
@@ -158,7 +157,6 @@ standard = RuleKind
       , ("f", (CmdItem, Project [ ApplyItem { verb = "fling"
                                             , object = "missile"
                                             , symbol = ' ' } ]))
--- f: Project [ApplyItem {verb = "fling", object = "missile", symbol = ' '}, ApplyItem {verb = "throw", object = "projectile", symbol = '}'}, ApplyItem {verb = "throw", object = "projectile", symbol = '{'}, ApplyItem {verb = "zap", object = "mechanism", symbol = '-'}]
 
       -- Targeting
       , ("asterisk", (CmdTgt, TgtEnemy))

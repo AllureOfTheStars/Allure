@@ -1,6 +1,6 @@
 name:          Allure
 version:       0.4.13
-synopsis:      Near-future roguelike game in very early and active development
+synopsis:      Near-future roguelike game in early development
 description:   This is an alpha release of Allure of the Stars,
                a near-future Sci-Fi roguelike and tactical squad game.
                The game is barely fun at this stage and not yet
@@ -15,7 +15,7 @@ description:   This is an alpha release of Allure of the Stars,
                The game is written using the LambdaHack roguelike game engine
                available at <http://hackage.haskell.org/package/LambdaHack>.
 homepage:      http://allureofthestars.com
-bug-reports:   http://github.com/Mikolaj/Allure/issues
+bug-reports:   http://github.com/AllureOfTheStars/Allure/issues
 license:       OtherLicense
 license-file:  LICENSE
 tested-with:   GHC == 7.6.3, GHC == 7.8
@@ -31,7 +31,7 @@ cabal-version: >= 1.10
 
 source-repository head
   type:               git
-  location:           git://github.com/Mikolaj/Allure.git
+  location:           git://github.com/AllureOfTheStars/Allure.git
 
 executable Allure
   hs-source-dirs:     GameDefinition

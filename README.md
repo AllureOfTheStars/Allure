@@ -1,4 +1,4 @@
-Allure of the Stars [![Build Status](https://secure.travis-ci.org/Mikolaj/Allure.png)](http://travis-ci.org/Mikolaj/Allure)[![Build Status](https://drone.io/github.com/Mikolaj/Allure/status.png)](https://drone.io/github.com/Mikolaj/Allure/latest)
+Allure of the Stars [![Build Status](https://secure.travis-ci.org/AllureOfTheStars/Allure.png)](http://travis-ci.org/AllureOfTheStars/Allure)[![Build Status](https://drone.io/github.com/AllureOfTheStars/Allure/status.png)](https://drone.io/github.com/AllureOfTheStars/Allure/latest)
 ===================
 
 This is an alpha release of Allure of the Stars [8],
@@ -90,9 +90,9 @@ If not, see <http://www.gnu.org/licenses/>.
 
 [1]: http://www.haskell.org/
 [2]: http://roguebasin.roguelikedevelopment.org/index.php?title=Berlin_Interpretation
-[3]: http://github.com/Mikolaj/Allure
+[3]: http://github.com/AllureOfTheStars/Allure
 [4]: http://hackage.haskell.org/package/Allure
 [5]: http://github.com/kosmikus/LambdaHack
-[6]: https://github.com/Mikolaj/Allure/wiki
+[6]: https://github.com/AllureOfTheStars/Allure/wiki
 [7]: http://www.haskell.org/platform
 [8]: http://allureofthestars.com
