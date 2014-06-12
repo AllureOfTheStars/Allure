@@ -92,7 +92,7 @@ If not, see <http://www.gnu.org/licenses/>.
 [2]: http://roguebasin.roguelikedevelopment.org/index.php?title=Berlin_Interpretation
 [3]: http://github.com/AllureOfTheStars/Allure
 [4]: http://hackage.haskell.org/package/Allure
-[5]: http://github.com/kosmikus/LambdaHack
+[5]: http://github.com/LambdaHack/LambdaHack
 [6]: https://github.com/AllureOfTheStars/Allure/wiki
 [7]: http://www.haskell.org/platform
 [8]: http://allureofthestars.com
