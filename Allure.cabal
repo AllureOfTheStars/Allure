@@ -37,20 +37,24 @@ executable Allure
   hs-source-dirs:     GameDefinition
   main-is:            Main.hs
   other-modules:      Client.UI.Content.KeyKind,
-                      Content.ActorKind,
                       Content.CaveKind,
                       Content.FactionKind,
                       Content.ItemKind,
+                      Content.ItemKindActor,
+                      Content.ItemKindOrgan,
+                      Content.ItemKindShrapnel,
                       Content.ModeKind,
                       Content.PlaceKind,
                       Content.RuleKind,
                       Content.TileKind,
+                      TieKnot,
                       Paths_Allure
   build-depends:      LambdaHack >= 0.2.12 && <= 0.2.14,
                       template-haskell >= 2.6 && < 3,
 
                       array      >= 0.3.0.3 && < 1,
                       assert-failure >= 0.1 && < 1,
+                      async      >= 2       && < 3,
                       base       >= 4       && < 5,
                       binary     >= 0.7     && < 1,
                       bytestring >= 0.9.2   && < 1,
@@ -83,5 +87,5 @@ executable Allure
   ghc-options:        -Wall -fwarn-orphans -fwarn-tabs -fwarn-incomplete-uni-patterns -fwarn-incomplete-record-updates -fwarn-monomorphism-restriction -fwarn-unrecognised-pragmas
   ghc-options:        -fno-warn-auto-orphans -fno-warn-implicit-prelude
   ghc-options:        -fno-ignore-asserts -funbox-strict-fields
-  ghc-options:        -threaded -with-rtsopts=-C0.005
+  ghc-options:        -threaded -with-rtsopts=-C0.005 -rtsopts
 -- ghc-options:       -with-rtsopts=-N  -- eats all cores

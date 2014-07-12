@@ -20,9 +20,9 @@ cdefs = ContentDef
   , getFreq = cfreq
   , validate = validateCaveKind
   , content =
-      [rogue, arena, empty, noise, combat, battle]
+      [rogue, arena, empty, noise, battle, skirmish, ambush]
   }
-rogue,        arena, empty, noise, combat, battle :: CaveKind
+rogue,        arena, empty, noise, battle, skirmish, ambush :: CaveKind
 
 rogue = CaveKind
   { csymbol       = 'R'
@@ -66,9 +66,9 @@ arena = rogue
   , citemNum      = 6 * d 2  -- few rooms
   , cpassable     = True
   , cdefTile      = "arenaSet"
-  , cdarkCorTile  = "trailLit"  -- let paths around rooms be lit
+--  , cdarkCorTile  = "trailLit"  -- let paths around rooms be lit
   , clitCorTile   = "trailLit"
---  , couterFenceTile = "oriels fence"
+-- TODO: re-add when less rooms , couterFenceTile = "oriels fence"
   }
 empty = rogue
   { csymbol       = 'E'
@@ -86,7 +86,7 @@ empty = rogue
   , citemNum      = 4 * d 2  -- few rooms
   , cpassable     = True
   , cdefTile      = "emptySet"
-  , cdarkCorTile  = "trailLit"  -- let paths around rooms be lit
+--  , cdarkCorTile  = "trailLit"  -- let paths around rooms be lit
   , clitCorTile   = "floorArenaLit"
   , couterFenceTile = "oriels fence"
   }
@@ -103,15 +103,35 @@ noise = rogue
   , chidden       = 1000
   , citemNum      = 10 * d 2  -- an incentive to explore the labyrinth
   , cpassable     = True
---  , cplaceFreq    = [(50, "noise"), (50, "rogue")]
+  , cplaceFreq    = [(50, "noise"), (50, "rogue")]
   , cdefTile      = "noiseSet"
   , cdarkCorTile  = "floorArenaDark"
   , clitCorTile   = "floorArenaLit"
   }
-combat = rogue
-  { csymbol       = 'C'
-  , cname         = "Combat arena"
-  , cfreq         = [("caveCombat", 1)]
+battle = rogue  -- few lights and many solids, to help the less numerous heroes
+  { csymbol       = 'B'
+  , cname         = "Battle field"
+  , cfreq         = [("caveBattle", 1)]
+  , cgrid         = DiceXY (2 * d 2 + 1) 3
+  , cminPlaceSize = DiceXY 3 3
+  , cmaxPlaceSize = DiceXY 9 7
+  , cdarkChance   = 0
+  , cnightChance  = 100
+  , cdoorChance   = 2%10
+  , copenChance   = 9%10
+  , chidden       = 1000
+  , citemNum      = 12 * d 2
+  , citemFreq     = [(100, "useful")]
+  , cplaceFreq    = [(50, "battle"), (50, "rogue")]
+  , cpassable     = True
+  , cdefTile      = "battleSet"
+  , cdarkCorTile  = "trailLit"  -- let trails give off light
+  , clitCorTile   = "trailLit"
+  }
+skirmish = rogue  -- many random solid tiles, to break LOS, since it's a day
+  { csymbol       = 'S'
+  , cname         = "Skirmish arena"
+  , cfreq         = [("caveSkirmish", 1)]
   , cgrid         = DiceXY (2 * d 2 + 2) (d 2 + 2)
   , cminPlaceSize = DiceXY 3 3
   , cmaxPlaceSize = DiceXY 7 5
@@ -122,15 +142,30 @@ combat = rogue
   , chidden       = 1000
   , citemNum      = 12 * d 2
   , citemFreq     = [(100, "useful")]
---  , cplaceFreq    = [(60, "skirmish"), (40, "rogue")]
+  , cplaceFreq    = [(60, "skirmish"), (40, "rogue")]
   , cpassable     = True
-  , cdefTile      = "noiseSet"
+  , cdefTile      = "skirmishSet"
   , cdarkCorTile  = "floorArenaLit"
   , clitCorTile   = "floorArenaLit"
   }
-battle = combat  -- TODO: actors can get stuck forever among trees
-  { csymbol       = 'B'
-  , cname         = "Battle arena"
-  , cfreq         = [("caveBattle", 1)]
-  , cdefTile      = "noiseSet"
+ambush = rogue  -- lots of lights, to give a chance to snipe
+  { csymbol       = 'M'
+  , cname         = "Ambush scene"
+  , cfreq         = [("caveAmbush", 1)]
+  , cgrid         = DiceXY (2 * d 2 + 3) (d 2 + 2)
+  , cminPlaceSize = DiceXY 3 3
+  , cmaxPlaceSize = DiceXY 5 5
+  , cdarkChance   = 0
+  , cnightChance  = 100
+  , cauxConnects  = 1
+  , cdoorChance   = 1%10
+  , copenChance   = 9%10
+  , chidden       = 1000
+  , citemNum      = 12 * d 2
+  , citemFreq     = [(100, "useful")]
+  , cplaceFreq    = [(100, "ambush")]
+  , cpassable     = True
+  , cdefTile      = "ambushSet"
+  , cdarkCorTile  = "trailLit"  -- let trails give off light
+  , clitCorTile   = "trailLit"
   }

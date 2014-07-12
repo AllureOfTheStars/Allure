@@ -29,15 +29,16 @@ see file `.travis.yml`).
 Compatibility notes
 -------------------
 
-The current code was tested with GHC 7.6 and 7.8, but should also work with
-other GHC versions (see file `.travis.yml.7.4.2` for GHC 7.4 commands).
+The current code was tested with GHC 7.6 and 7.8,
+but should also work with other GHC versions.
 
 If you are using the terminal frontends, numerical keypad may not work
 correctly depending on versions of the libraries, terminfo and terminal
 emulators. The curses frontend is not fully supported due to the limitations
 of the curses library. With the vty frontend run in an xterm,
 CTRL-keypad keys for running seem to work OK, but on rxvt they do not.
-Vi keys (ykuhlbjn) should work everywhere regardless. GTK works fine, too.
+laptop (uk8o79jl) and Vi keys (hjklyubn, if enabled in config.ui.ini)
+should work everywhere regardless. GTK works fine, too.
 
 
 Testing and debugging

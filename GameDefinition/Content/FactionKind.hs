@@ -7,7 +7,7 @@
 -- for Allure of the Stars.
 module Content.FactionKind ( cdefs ) where
 
-import Data.List
+import qualified Data.EnumMap.Strict as EM
 
 import Game.LambdaHack.Common.Ability
 import Game.LambdaHack.Common.ContentDef
@@ -20,63 +20,71 @@ cdefs = ContentDef
   , getFreq = ffreq
   , validate = validateFactionKind
   , content =
-      [hero, alien, animal, robot, horror]
+      [hero, civilian, alien, animal, robot, horror]
   }
-hero,        alien, animal, robot, horror :: FactionKind
+hero,        civilian, alien, animal, robot, horror :: FactionKind
 
 hero = FactionKind
-  { fsymbol        = '@'
-  , fname          = "hero"
-  , ffreq          = [("hero", 1)]
-  , fAbilityLeader = allAbilities
-  , fAbilityOther  = meleeAdjacent
+  { fsymbol       = '1'
+  , fname         = "hero"
+  , ffreq         = [("hero", 1)]
+  , fSkillsLeader = allSkills
+  , fSkillsOther  = meleeAdjacent
+  }
+
+civilian = FactionKind
+  { fsymbol       = '@'
+  , fname         = "civilian"
+  , ffreq         = [("civilian", 1)]
+  , fSkillsLeader = allSkills
+  , fSkillsOther  = allSkills  -- not coordinated by any leadership
   }
 
 -- Includes alien-operated robots, alien-conditioned animals and hybrids.
 alien = FactionKind
-  { fsymbol        = 'a'
-  , fname          = "alien"
-  , ffreq          = [("alien", 1), ("summon", 20)]
-  , fAbilityLeader = allAbilities
-  , fAbilityOther  = allAbilities
+  { fsymbol       = 'a'
+  , fname         = "alien"
+  , ffreq         = [("alien", 1), ("summon", 20)]
+  , fSkillsLeader = allSkills
+  , fSkillsOther  = allSkills
   }
 
 animal = FactionKind
-  { fsymbol        = 'd'
-  , fname          = "animal"
-  , ffreq          = [("animal", 1), ("summon", 50)]
-  , fAbilityLeader = animalAbility
-  , fAbilityOther  = animalAbility
+  { fsymbol       = 'd'
+  , fname         = "animal"
+  , ffreq         = [("animal", 1), ("summon", 50)]
+  , fSkillsLeader = animalSkills
+  , fSkillsOther  = animalSkills
   }
 
 -- Autonomous robots.
 robot = FactionKind
-  { fsymbol        = 'r'
-  , fname          = "robot"
-  , ffreq          = [("robot", 1), ("summon", 10)]
-  , fAbilityLeader = robotAbility
-  , fAbilityOther  = robotAbility
+  { fsymbol       = 'r'
+  , fname         = "robot"
+  , ffreq         = [("robot", 1)]
+  , fSkillsLeader = robotSkills
+  , fSkillsOther  = robotSkills
   }
 
 horror = FactionKind
-  { fsymbol        = 'h'
-  , fname          = "horror"
-  , ffreq          = [("horror", 1), ("summon", 50)]
-  , fAbilityLeader = allAbilities
-  , fAbilityOther  = allAbilities
+  { fsymbol       = 'h'
+  , fname         = "horror"
+  , ffreq         = [("horror", 1), ("summon", 100)]
+  , fSkillsLeader = allSkills
+  , fSkillsOther  = allSkills
   }
 
 
-_noAbility, meleeAdjacent, _meleeAndRanged, animalAbility, robotAbility, allAbilities :: [Ability]
+meleeAdjacent, _meleeAndRanged, animalSkills, robotSkills, allSkills :: Skills
 
-_noAbility = []
+meleeAdjacent = EM.fromList $ zip [AbWait, AbMelee] [1, 1..]
 
-meleeAdjacent = [AbWait, AbMelee]
+-- Melee and reaction fire.
+_meleeAndRanged = EM.fromList $ zip [AbWait, AbMelee, AbProject] [1, 1..]
 
-_meleeAndRanged = [AbWait, AbMelee, AbProject]  -- melee and reaction fire
+animalSkills =
+  EM.fromList $ zip [AbMove, AbMelee, AbAlter, AbWait, AbTrigger] [1, 1..]
 
-animalAbility = [AbMove, AbMelee, AbWait, AbTrigger]
+robotSkills = EM.delete AbApply unitSkills
 
-robotAbility = delete AbApply [minBound..maxBound]
-
-allAbilities = [minBound..maxBound]
+allSkills = unitSkills

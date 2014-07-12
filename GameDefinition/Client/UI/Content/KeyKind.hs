@@ -60,24 +60,24 @@ standardKeys = KeyKind
                             , feature = F.Cause (Effect.Ascend (-10)) } ]))
       , ("semicolon", ([CmdMove], StepToTarget))
       , ("colon", ([CmdMove], Macro "go to target for 100 steps"
-                                  ["semicolon", "P"]))
+                                    ["semicolon", "V"]))
       , ("CTRL-colon", ([CmdMove], Macro "go to target for 10 steps"
-                                       ["semicolon", "CTRL-P"]))
+                                         ["semicolon", "CTRL-V"]))
       , ("x", ([CmdMove], Macro "explore the closest unknown spot"
-                              [ "BackSpace"
-                              , "CTRL-question", "semicolon", "P" ]))
+                                [ "BackSpace"
+                                , "CTRL-question", "semicolon", "V" ]))
       , ("X", ([CmdMove], Macro "autoexplore 100 times"
-                              [ "BackSpace"
-                              , "'", "CTRL-question", "semicolon", "'"
-                              , "P" ]))
+                                [ "BackSpace"
+                                , "'", "CTRL-question", "semicolon", "'"
+                                , "V" ]))
       , ("CTRL-X", ([CmdMove], Macro "autoexplore 10 times"
-                                   [ "BackSpace"
-                                   , "'", "CTRL-question", "semicolon", "'"
-                                   , "CTRL-P" ]))
+                                      [ "BackSpace"
+                                      , "'", "CTRL-question", "semicolon", "'"
+                                      , "CTRL-V" ]))
       , ("R", ([CmdMove], Macro "rest (wait 100 times)"
-                              ["KP_Begin", "P"]))
+                                ["KP_Begin", "V"]))
       , ("CTRL-R", ([CmdMove], Macro "rest (wait 10 times)"
-                                   ["KP_Begin", "CTRL-P"]))
+                                     ["KP_Begin", "CTRL-V"]))
       , ("c", ([CmdMove], AlterDir
            [ AlterFeature { verb = "close"
                           , object = "door"
@@ -96,33 +96,48 @@ standardKeys = KeyKind
       , ("i", ([CmdMove], Macro "" ["KP_Begin"]))
 
       -- Item use
+      --
+      -- For later:
+      -- ApplyItem {verb = "eat", object = "food", symbol = ','}
+      -- ApplyItem {verb = "activate", object = "emitter", symbol = '_'}
+      -- ApplyItem {verb = "use", object = "tool", symbol = '~'}
+      --
       , ("E", ([CmdItem], DescribeItem CEqp))
-      , ("I", ([CmdItem], DescribeItem CInv))
+      , ("P", ([CmdItem], DescribeItem CInv))
+      , ("S", ([CmdItem], DescribeItem CSha))
       , ("G", ([CmdItem], DescribeItem CGround))
       , ("A", ([CmdItem], AllOwned))
       , ("g", ([CmdItem, CmdMinimal],
                MoveItem [CGround] CEqp "get" "an item" True))
-      , ("d", ([CmdItem], MoveItem [CEqp, CInv] CGround "drop" "an item" False))
-      , ("e", ([CmdItem], MoveItem [CInv, CGround] CEqp
+      , ("d", ([CmdItem], MoveItem [CEqp, CInv, CSha] CGround
+                                   "drop" "an item" False))
+      , ("e", ([CmdItem], MoveItem [CInv, CSha] CEqp
                                    "equip" "an item" False))
-      , ("s", ([CmdItem], MoveItem [CEqp] CInv
+      , ("p", ([CmdItem], MoveItem [CEqp, CSha] CInv
+                                   "pack" "an item into inventory backpack"
+                                   False))
+      , ("s", ([CmdItem], MoveItem [CEqp, CInv] CSha
                                    "stash" "and share an item" False))
       , ("a", ([CmdItem, CmdMinimal], Apply
-           [ApplyItem { verb = "activate/deactivate"
-                      , object = "item"
-                      , symbol = ' ' }]))
+           [ ApplyItem { verb = "activate"
+                       , object = "applicable item"
+                       , symbol = ' ' }
+           , ApplyItem { verb = "quaff"
+                       , object = "drink"
+                       , symbol = '!' }
+           , ApplyItem { verb = "read"
+                       , object = "tablet"
+                       , symbol = '?' }
+           ]))
       , ("q", ([CmdItem], Apply [ApplyItem { verb = "quaff"
                                            , object = "drink"
                                            , symbol = '!' }]))
       , ("r", ([CmdItem], Apply [ApplyItem { verb = "read"
                                            , object = "tablet"
                                            , symbol = '?' }]))
-      , ("CTRL-q", ([CmdItem], Apply [ApplyItem { verb = "activate/deactivate"
-                                                , object = "tool"
-                                                , symbol = '~' }]))
       , ("f", ([CmdItem, CmdMinimal], Project
            [ApplyItem { verb = "fling"
-                      , object = "item"
+                      , object = "projectable item"
                       , symbol = ' ' }]))
       , ("t", ([CmdItem], Project [ ApplyItem { verb = "throw"
                                               , object = "missile"
@@ -149,10 +164,10 @@ standardKeys = KeyKind
       -- Automation
       , ("equal", ([CmdAuto], SelectActor))
       , ("underscore", ([CmdAuto], SelectNone))
-      , ("p", ([CmdAuto], Repeat 1))
-      , ("P", ([CmdAuto], Repeat 100))
-      , ("CTRL-p", ([CmdAuto], Repeat 1000))
-      , ("CTRL-P", ([CmdAuto], Repeat 10))
+      , ("v", ([CmdAuto], Repeat 1))
+      , ("V", ([CmdAuto], Repeat 100))
+      , ("CTRL-v", ([CmdAuto], Repeat 1000))
+      , ("CTRL-V", ([CmdAuto], Repeat 10))
       , ("apostrophe", ([CmdAuto], Record))
       , ("CTRL-A", ([CmdAuto], Automate))
 
@@ -160,8 +175,8 @@ standardKeys = KeyKind
       , ("question", ([CmdMeta], Help))
       , ("D", ([CmdMeta], History))
       , ("T", ([CmdMeta], MarkSuspect))
-      , ("V", ([CmdMeta], MarkVision))
-      , ("S", ([CmdMeta], MarkSmell))
+      , ("Z", ([CmdMeta], MarkVision))
+      , ("C", ([CmdMeta], MarkSmell))
       , ("Tab", ([CmdMeta], MemberCycle))
       , ("ISO_Left_Tab", ([CmdMeta], MemberBack))
       , ("space", ([CmdMeta], Clear))

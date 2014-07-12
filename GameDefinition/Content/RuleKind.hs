@@ -32,24 +32,19 @@ standard = RuleKind
   , rname          = "standard Allure of the Stars ruleset"
   , rfreq          = [("standard", 100)]
   -- Check whether one position is accessible from another.
-  -- Precondition: the two positions are next to each other.
+  -- Precondition: the two positions are next to each other
+  -- and the target tile is walkable. 
   -- TODO: in the future check flying for chasms, swimming for water, etc.
   , raccessible    = Nothing
   , raccessibleDoor = Nothing
   , rtitle         = "Allure of the Stars"
   , rpathsDataFile = Self.getDataFileName
   , rpathsVersion  = Self.version
-  , ritemMelee     = "/|\\%"
-  , ritemRanged    = "}{"
-  , ritemEqp       = "/|\\\"=~["
-  -- Wasting weapons and armour would be too cruel to the player.
-  , ritemProject   = "!?,-~}{"
-  , ritemNeedId    = "!?,-}{"
   -- The strings containing the default configuration file
   -- included from config.ui.default.
   , rcfgUIName = "config.ui"
   , rcfgUIDefault = $(do
-      let path = "GameDefinition" </> "config.ui" ++ ".default"
+      let path = "GameDefinition" </> "config.ui" <.> "default"
       qAddDependentFile path
       x <- qRunIO (readFile path)
       lift x)
@@ -79,5 +74,5 @@ standard = RuleKind
   , rleadLevelClips = 100
   , rscoresFile = "scores"
   , rsavePrefix = "save"
-  , rsharedInventory = True
+  , rsharedStash = True
   }

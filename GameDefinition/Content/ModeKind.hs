@@ -18,16 +18,24 @@ cdefs = ContentDef
   , getFreq = mfreq
   , validate = validateModeKind
   , content =
-      [campaign, skirmish, battle, pvp, coop, defense, testCampaign, testSkirmish, testBattle, testPvP, testCoop, testDefense, peekCampaign, peekSkirmish]
+      [campaign, duel, skirmish, ambush, battle, safari, pvp, coop, defense]
   }
-campaign,        skirmish, battle, pvp, coop, defense, testCampaign, testSkirmish, testBattle, testPvP, testCoop, testDefense, peekCampaign, peekSkirmish :: ModeKind
+campaign,        duel, skirmish, ambush, battle, safari, pvp, coop, defense :: ModeKind
 
 campaign = ModeKind
-  { msymbol  = 'r'
+  { msymbol  = 'a'
   , mname    = "campaign"
   , mfreq    = [("campaign", 1)]
   , mplayers = playersCampaign
   , mcaves   = cavesCampaign
+  }
+
+duel = ModeKind
+  { msymbol  = 'u'
+  , mname    = "duel"
+  , mfreq    = [("duel", 1)]
+  , mplayers = playersDuel
+  , mcaves   = cavesSkirmish
   }
 
 skirmish = ModeKind
@@ -35,7 +43,15 @@ skirmish = ModeKind
   , mname    = "skirmish"
   , mfreq    = [("skirmish", 1)]
   , mplayers = playersSkirmish
-  , mcaves   = cavesCombat
+  , mcaves   = cavesSkirmish
+  }
+
+ambush = ModeKind
+  { msymbol  = 'm'
+  , mname    = "ambush"
+  , mfreq    = [("ambush", 1)]
+  , mplayers = playersSkirmish
+  , mcaves   = cavesAmbush
   }
 
 battle = ModeKind
@@ -46,12 +62,20 @@ battle = ModeKind
   , mcaves   = cavesBattle
   }
 
+safari = ModeKind
+  { msymbol  = 'f'
+  , mname    = "safari"
+  , mfreq    = [("safari", 1)]
+  , mplayers = playersSafari
+  , mcaves   = cavesSafari
+  }
+
 pvp = ModeKind
   { msymbol  = 'v'
   , mname    = "PvP"
   , mfreq    = [("PvP", 1)]
   , mplayers = playersPvP
-  , mcaves   = cavesCombat
+  , mcaves   = cavesSkirmish
   }
 
 coop = ModeKind
@@ -70,104 +94,78 @@ defense = ModeKind
   , mcaves   = cavesCampaign
   }
 
-testCampaign = ModeKind
-  { msymbol  = 't'
-  , mname    = "testCampaign"
-  , mfreq    = [("testCampaign", 1)]
-  , mplayers = playersTestCampaign
-  , mcaves   = cavesCampaign
-  }
 
-testSkirmish = ModeKind
-  { msymbol  = 't'
-  , mname    = "testSkirmish"
-  , mfreq    = [("testSkirmish", 1)]
-  , mplayers = playersTestSkirmish
-  , mcaves   = cavesCombat
-  }
-
-testBattle = ModeKind
-  { msymbol  = 't'
-  , mname    = "testBattle"
-  , mfreq    = [("testBattle", 1)]
-  , mplayers = playersTestBattle
-  , mcaves   = cavesBattle
-  }
-
-testPvP = ModeKind
-  { msymbol  = 't'
-  , mname    = "testPvP"
-  , mfreq    = [("testPvP", 1)]
-  , mplayers = playersTestPvP
-  , mcaves   = cavesCombat
-  }
-
-testCoop = ModeKind
-  { msymbol  = 't'
-  , mname    = "testCoop"
-  , mfreq    = [("testCoop", 1)]
-  , mplayers = playersTestCoop
-  , mcaves   = cavesCampaign
-  }
-
-testDefense = ModeKind
-  { msymbol  = 't'
-  , mname    = "testDefense"
-  , mfreq    = [("testDefense", 1)]
-  , mplayers = playersTestDefense
-  , mcaves   = cavesCampaign
-  }
-
-peekCampaign = ModeKind
-  { msymbol  = 'p'
-  , mname    = "peekCampaign"
-  , mfreq    = [("peekCampaign", 1)]
-  , mplayers = playersPeekCampaign
-  , mcaves   = cavesCampaign
-  }
-
-peekSkirmish = ModeKind
-  { msymbol  = 'p'
-  , mname    = "peekSkirmish"
-  , mfreq    = [("peekSkirmish", 1)]
-  , mplayers = playersPeekSkirmish
-  , mcaves   = cavesCombat
-  }
-
-
-playersCampaign, playersSkirmish, playersBattle, playersPvP, playersCoop, playersDefense, playersTestCampaign, playersTestSkirmish, playersTestBattle, playersTestPvP, playersTestCoop, playersTestDefense, playersPeekCampaign, playersPeekSkirmish :: Players
+playersCampaign, playersDuel, playersSkirmish, playersBattle, playersSafari, playersPvP, playersCoop, playersDefense :: Players
 
 playersCampaign = Players
-  { playersList = [ playerHero {playerInitial = 1}
-                  , playerMonster
+  { playersList = [ playerHero
+                  , playerAlien
                   , playerAnimal
                   , playerRobot ]
   , playersEnemy = [ ("Spacefarer Crew", "Alien Hierarchy")
                    , ("Spacefarer Crew", "Animal Kingdom")
                    , ("Spacefarer Crew", "Robot Anarchy") ]
-  , playersAlly = [] }
+ , playersAlly = [ ("Alien Hierarchy", "Animal Kingdom")
+                 , ("Alien Hierarchy", "Robot Anarchy")
+                 , ("Robot Anarchy", "Animal Kingdom") ] }
 
-playersSkirmish = Players
-  { playersList = [ playerHero {playerName = "White"}
-                  , playerAntiHero {playerName = "Purple"}
+playersDuel = Players
+  { playersList = [ playerHero { playerName = "White"
+                               , playerInitial = 1 }
+                  , playerAntiHero { playerName = "Purple"
+                                   , playerInitial = 1 }
                   , playerHorror ]
   , playersEnemy = [ ("White", "Purple")
                    , ("White", "Horror Den")
                    , ("Purple", "Horror Den") ]
   , playersAlly = [] }
 
+playersSkirmish = playersDuel
+  { playersList = [ playerHero {playerName = "White"}
+                  , playerAntiHero {playerName = "Purple"}
+                  , playerHorror ] }
+
 playersBattle = Players
   { playersList = [ playerHero {playerInitial = 5}
-                  , playerMonster { playerInitial = 10
-                                  , playerSpawn = 0 }
-                  , playerAnimal { playerInitial = 10
+                  , playerAlien { playerInitial = 10
+                                , playerSpawn = 0 }
+                  , playerAnimal { playerInitial = 5
                                  , playerSpawn = 0 }
-                  , playerRobot { playerInitial = 10
-                                , playerSpawn = 0 } ]
+                  , playerRobot { playerInitial = 5
+                                 , playerSpawn = 0 } ]
   , playersEnemy = [ ("Spacefarer Crew", "Alien Hierarchy")
                    , ("Spacefarer Crew", "Animal Kingdom")
                    , ("Spacefarer Crew", "Robot Anarchy") ]
-  , playersAlly = [] }
+ , playersAlly = [ ("Alien Hierarchy", "Animal Kingdom")
+                 , ("Alien Hierarchy", "Robot Anarchy")
+                 , ("Robot Anarchy", "Animal Kingdom") ] }
+
+playersSafari = Players
+  { playersList = [ playerAlien { playerName = "Alien Tourist Office"
+                                , playerSpawn = 0
+                                , playerEntry = -8
+                                , playerInitial = 10
+                                , playerAI = False
+                                , playerUI = True }
+                  , playerCivilian { playerName = "Hunam Convict Pack"
+                                   , playerEntry = -8 }
+                  , playerAnimal { playerName =
+                                     "Animal Magnificent Specimen Variety"
+                                 , playerSpawn = 0
+                                 , playerEntry = -9
+                                 , playerInitial = 7 }
+                  , playerAnimal { playerName =
+                                     "Animal Exquisite Herds and Packs"
+                                 , playerSpawn = 0
+                                 , playerEntry = -10
+                                 , playerInitial = 20 } ]
+  , playersEnemy = [ ("Alien Tourist Office", "Hunam Convict Pack")
+                   , ("Alien Tourist Office",
+                      "Animal Magnificent Specimen Variety")
+                   , ("Alien Tourist Office",
+                      "Animal Exquisite Herds and Packs") ]
+  , playersAlly = [( "Animal Magnificent Specimen Variety"
+                   , "Animal Exquisite Herds and Packs" )] }
 
 playersPvP = Players
   { playersList = [ playerHero {playerName = "Red"}
@@ -179,11 +177,19 @@ playersPvP = Players
   , playersAlly = [] }
 
 playersCoop = Players
-  { playersList = [ playerHero { playerName = "Coral"
-                               , playerInitial = 1 }
-                  , playerHero { playerName = "Amber"
-                               , playerInitial = 1 }
-                  , playerMonster
+  { playersList = [ playerAntiHero { playerName = "Coral" }
+                  , playerAntiHero { playerName = "Amber" }
+                  , playerAntiHero { playerName = "Green" }
+                  , playerAntiHero { playerName = "Yellow" }
+                  , playerAntiHero { playerName = "Cyan" }
+                  , playerAntiHero { playerName = "Red"
+                                   , playerLeader = False }
+                  , playerAntiHero { playerName = "Blue"
+                                   , playerLeader = False }
+                  , playerAnimal { playerUI = True }
+                  , playerAlien
+                  , playerAlien { playerName = "Leaderless Alien Hierarchy"
+                                  , playerLeader = False }
                   , playerAnimal
                   , playerRobot ]
   , playersEnemy = [ ("Coral", "Alien Hierarchy")
@@ -191,99 +197,40 @@ playersCoop = Players
                    , ("Coral", "Robot Anarchy")
                    , ("Amber", "Alien Hierarchy")
                    , ("Amber", "Animal Kingdom")
-                   , ("Amber", "Robot Anarchy") ]
-  , playersAlly = [("Coral", "Amber")] }
-
-playersDefense = Players
-  { playersList = [ playerMonster { playerInitial = 1
-                                  , playerAI = False
-                                  , playerUI = True }
-                  , playerAnimal
-                  , playerRobot
-                  , playerAntiHero {playerName = "Green"}
-                  , playerAntiHero {playerName = "Yellow"}
-                  , playerAntiHero {playerName = "Cyan"} ]
-  , playersEnemy = [ ("Green", "Alien Hierarchy")
-                   , ("Green", "Animal Kingdom")
-                   , ("Green", "Robot Anarchy")
+                   , ("Amber", "Robot Anarchy")
+                   , ("Green", "Alien Hierarchy")
                    , ("Yellow", "Alien Hierarchy")
-                   , ("Yellow", "Animal Kingdom")
-                   , ("Yellow", "Robot Anarchy")
                    , ("Cyan", "Alien Hierarchy")
-                   , ("Cyan", "Animal Kingdom")
-                   , ("Cyan", "Robot Anarchy") ]
-  , playersAlly = [ ("Green", "Yellow")
+                   , ("Red", "Alien Hierarchy")
+                   , ("Blue", "Alien Hierarchy")
+                   , ("Animal Kingdom", "Leaderless Alien Hierarchy") ]
+  , playersAlly = [ ("Coral", "Amber")
+                  , ("Green", "Yellow")
                   , ("Green", "Cyan")
                   , ("Yellow", "Cyan") ] }
 
-playersTestCampaign = playersCampaign
-  { playersList = [ playerHero { playerInitial = 5
-                               , playerAI = True }
-                  , playerMonster
+playersDefense = Players
+  { playersList = [ playerAlien { playerInitial = 1
+                                , playerAI = False
+                                , playerUI = True }
+                  , playerAntiHero { playerName = "Yellow"
+                                   , playerInitial = 10 }
                   , playerAnimal
-                  , playerRobot ] }
+                  , playerRobot ]
+  , playersEnemy = [ ("Yellow", "Alien Hierarchy")
+                   , ("Yellow", "Animal Kingdom")
+                   , ("Yellow", "Robot Anarchy") ]
+  , playersAlly = [ ("Alien Hierarchy", "Animal Kingdom")
+                  , ("Alien Hierarchy", "Robot Anarchy")
+                  , ("Robot Anarchy", "Animal Kingdom") ] }
 
-playersTestSkirmish = playersSkirmish
-  { playersList = [ playerHero { playerName = "White"
-                               , playerAI = True }
-                  , playerAntiHero { playerName = "Purple" }
-                  , playerHorror ] }
-
-playersTestBattle = playersBattle
-  { playersList = [ playerHero { playerInitial = 5
-                               , playerAI = True }
-                  , playerMonster { playerInitial = 10
-                                  , playerSpawn = 0 }
-                  , playerAnimal { playerInitial = 10
-                                 , playerSpawn = 0 }
-                  , playerRobot { playerInitial = 10
-                                , playerSpawn = 0 } ] }
-
-playersTestPvP = playersPvP
-  { playersList = [ playerHero { playerName = "Red"
-                               , playerAI = True }
-                  , playerHero { playerName = "Blue"
-                               , playerAI = True }
-                  , playerHorror ] }
-
-playersTestCoop = playersCoop
-  { playersList = [ playerHero { playerName = "Coral"
-                               , playerAI = True }
-                  , playerHero { playerName = "Amber"
-                               , playerAI = True }
-                  , playerMonster
-                  , playerAnimal
-                  , playerRobot ] }
-
-playersTestDefense = playersDefense
-  { playersList = [ playerMonster { playerInitial = 1
-                                  , playerUI = True }
-                  , playerAnimal
-                  , playerRobot
-                  , playerAntiHero {playerName = "Green"}
-                  , playerAntiHero {playerName = "Yellow"}
-                  , playerAntiHero {playerName = "Cyan"} ] }
-
-playersPeekCampaign = playersCampaign
-  { playersList = [ playerHero {playerInitial = 1}
-                  , playerMonster {playerUI = True}
-                  , playerAnimal
-                  , playerRobot ] }
-
-playersPeekSkirmish = playersSkirmish
-  { playersList = [ playerHero {playerName = "White"}
-                  , playerAntiHero { playerName = "Purple"
-                                   , playerUI = True }
-                  , playerHorror ] }
-
-
-playerHero, playerAntiHero, playerMonster, playerAnimal, playerRobot, playerHorror :: Player
+playerHero, playerAntiHero, playerCivilian, playerAlien, playerAnimal, playerRobot, playerHorror :: Player
 
 playerHero = Player
   { playerName = "Spacefarer Crew"
   , playerFaction = "hero"
   , playerSpawn = 0
-  , playerEntry = toEnum 1
+  , playerEntry = 1
   , playerInitial = 3
   , playerLeader = True
   , playerAI = False
@@ -295,11 +242,22 @@ playerAntiHero = playerHero
   , playerUI = False
   }
 
-playerMonster = Player
+playerCivilian = Player
+  { playerName = "Civilian Crowd"
+  , playerFaction = "civilian"
+  , playerSpawn = 0
+  , playerEntry = 1
+  , playerInitial = 3
+  , playerLeader = False  -- unorganized
+  , playerAI = True
+  , playerUI = False
+  }
+
+playerAlien = Player
   { playerName = "Alien Hierarchy"
   , playerFaction = "alien"
-  , playerSpawn = 20
-  , playerEntry = toEnum 5
+  , playerSpawn = 50
+  , playerEntry = 4
   , playerInitial = 3
   , playerLeader = True
   , playerAI = True
@@ -309,8 +267,8 @@ playerMonster = Player
 playerAnimal = Player
   { playerName = "Animal Kingdom"
   , playerFaction = "animal"
-  , playerSpawn = 50
-  , playerEntry = toEnum 3
+  , playerSpawn = 30
+  , playerEntry = 2
   , playerInitial = 3
   , playerLeader = False
   , playerAI = True
@@ -320,8 +278,8 @@ playerAnimal = Player
 playerRobot = Player
   { playerName = "Robot Anarchy"
   , playerFaction = "robot"
-  , playerSpawn = 10
-  , playerEntry = toEnum 4
+  , playerSpawn = 20
+  , playerEntry = 3
   , playerInitial = 3
   , playerLeader = False
   , playerAI = True
@@ -332,7 +290,7 @@ playerHorror = Player
   { playerName = "Horror Den"
   , playerFaction = "horror"
   , playerSpawn = 0
-  , playerEntry = toEnum 1
+  , playerEntry = 1
   , playerInitial = 0
   , playerLeader = False
   , playerAI = True
@@ -340,11 +298,17 @@ playerHorror = Player
   }
 
 
-cavesCampaign, cavesCombat, cavesBattle :: Caves
+cavesCampaign, cavesSkirmish, cavesAmbush, cavesBattle, cavesSafari :: Caves
 
-cavesCampaign = EM.fromList [ (toEnum 1, ("caveRogue", Nothing))
-                            , (toEnum 12, ("caveNoise", Just True))]
+cavesCampaign = EM.fromList [ (1, ("caveRogue", Nothing))
+                            , (12, ("caveNoise", Just True))]
 
-cavesCombat = EM.fromList [(toEnum 3, ("caveCombat", Nothing))]
+cavesSkirmish = EM.fromList [(3, ("caveSkirmish", Nothing))]
 
-cavesBattle = EM.fromList [(toEnum (-3), ("caveBattle", Nothing))]
+cavesAmbush = EM.fromList [(5, ("caveAmbush", Nothing))]
+
+cavesBattle = EM.fromList [(3, ("caveBattle", Nothing))]
+
+cavesSafari = EM.fromList [ (8, ("caveAmbush", Nothing))
+                          , (9, ("caveBattle", Nothing))
+                          , (10, ("caveSkirmish", Just False)) ]
