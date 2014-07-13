@@ -30,9 +30,9 @@ cdefs = ContentDef
 
 items :: [ItemKind]
 items =
-  [bolas, brassLantern, buckler, dart, dart200, gem1, gem2, gem3, gloveFencing, gloveGauntlet, gloveJousting, currency, gorget, harpoon, jumpingPole, monocle, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, net, oilLamp, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, ring1, ring2, ring3, ring4, ring5, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, shield, dagger, hammer, sword, halberd, wand1, wand2, woodenTorch, armorLeather, armorMail]
+  [canOfGlue, crankSpotlight, buckler, dart, dart200, gem1, gem2, gem3, gloveFencing, gloveGauntlet, gloveJousting, currency, gorget, harpoon, jumpingPole, contactLens, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, net, oilLamp, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, ring1, ring2, ring3, ring4, ring5, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, shield, dagger, hammer, sword, halberd, wand1, wand2, candle, armorLeather, armorMail]
 
-bolas,    brassLantern, buckler, dart, dart200, gem1, gem2, gem3, gloveFencing, gloveGauntlet, gloveJousting, currency, gorget, harpoon, jumpingPole, monocle, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, net, oilLamp, potion1, potion2, potion3, potion4, potion5, potion6, potion7, ring1, potion8, potion9, ring2, ring3, ring4, ring5, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, shield, dagger, hammer, sword, halberd, wand1, wand2, woodenTorch, armorLeather, armorMail :: ItemKind
+canOfGlue,    crankSpotlight, buckler, dart, dart200, gem1, gem2, gem3, gloveFencing, gloveGauntlet, gloveJousting, currency, gorget, harpoon, jumpingPole, contactLens, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, net, oilLamp, potion1, potion2, potion3, potion4, potion5, potion6, potion7, ring1, potion8, potion9, ring2, ring3, ring4, ring5, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, shield, dagger, hammer, sword, halberd, wand1, wand2, candle, armorLeather, armorMail :: ItemKind
 
 gem, necklace, potion, ring, scroll, wand :: ItemKind  -- generic templates
 
@@ -63,17 +63,17 @@ $ currency, gem
 
 dart = ItemKind
   { isymbol  = '{'
-  , iname    = "kitchen knife"
+  , iname    = "steak knife"
   , ifreq    = [("useful", 100), ("any arrow", 100)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 3 * d 3
   , irarity  = [(1, 20)]
   , iverbHit = "prick"
-  , iweight  = 200
+  , iweight  = 100
   , iaspects = [AddHurtRanged ((d 6 + dl 6) * 10)]
   , ieffects = [Hurt (3 * d 1)]
-  , ifeature = [toVelocity 75]  -- too flexible and the handle causes air drag
-  , idesc    = "Little, but sharp and sturdy."
+  , ifeature = [toVelocity 75]  -- no fins no special balance
+  , idesc    = "Not particularly well balanced, but with a laser-sharpened titanium tip and blade."
   , ikit     = []
   }
 dart200 = ItemKind
@@ -87,26 +87,26 @@ dart200 = ItemKind
   , iweight  = 300
   , iaspects = [AddHurtRanged ((d 6 + dl 6) * 10)]
   , ieffects = [Hurt (2 * d 1)]
-  , ifeature = [toVelocity 150]  -- ideal shape
-  , idesc    = "Finely balanced for throws of great speed."
+  , ifeature = [toVelocity 150]
+  , idesc    = "Ideal shape, size and weight for throwing."
   , ikit     = []
   }
 
 -- * Exotic thrown weapons
 
-bolas = ItemKind
+canOfGlue = ItemKind
   { isymbol  = '{'
-  , iname    = "bolas set"
+  , iname    = "can of glue"
   , ifreq    = [("useful", 100)]
-  , iflavour = zipPlain [BrYellow]
+  , iflavour = zipPlain [Magenta]
   , icount   = dl 4
-  , irarity  = [(5, 5), (10, 5)]
-  , iverbHit = "entangle"
-  , iweight  = 500
+  , irarity  = [(5, 5), (10, 20)]
+  , iverbHit = "glue"
+  , iweight  = 1500
   , iaspects = []
-  , ieffects = [Hurt (2 * d 1), Paralyze (5 + d 5), ActivateInv '!']
-  , ifeature = []
-  , idesc    = "Wood balls tied with hemp rope for tripping, entangling and bringing down crashing."
+  , ieffects = [Paralyze (5 + d 10)]
+  , ifeature = [toVelocity 50]  -- unwieldy
+  , idesc    = "A can of liquid, fast-setting, construction glue. Take the lid off before throwing."
   , ikit     = []
   }
 harpoon = ItemKind
@@ -115,13 +115,13 @@ harpoon = ItemKind
   , ifreq    = [("useful", 100)]
   , iflavour = zipPlain [Brown]
   , icount   = dl 5
-  , irarity  = [(5, 5), (10, 20)]
+  , irarity  = [(5, 3), (10, 5)]
   , iverbHit = "hook"
   , iweight  = 4000
   , iaspects = [AddHurtRanged ((d 2 + 2 * dl 5) * 10)]
   , ieffects = [Hurt (4 * d 1), PullActor (ThrowMod 200 50)]
   , ifeature = []
-  , idesc    = "The cruel, barbed head lodges in its victim so painfully that the weakest tug of the thin line sends the victim flying."
+  , idesc    = "A display piece harking back to the Earth's oceanic tourism hayday. The cruel, barbed head lodges in its victim so painfully that the weakest tug of the thin line sends the victim flying."
   , ikit     = []
   }
 net = ItemKind
@@ -135,28 +135,29 @@ net = ItemKind
   , iweight  = 1000
   , iaspects = []
   , ieffects = [ Paralyze (5 + d 5)
-               , DropBestWeapon, DropEqp ']' False ]
+               , DropBestWeapon, DropEqp ')' False ]
   , ifeature = []
-  , idesc    = "A wide net with weights along the edges. Entangles weapon and armor alike."  -- TODO: shield instead of armor if a separate symbol for shields
+  , idesc    = "A large synthetic fibre net with weights affixed along the edges. Entangles weapon and shields alike."
   , ikit     = []
   }
 
 -- * Lights
 
-woodenTorch = ItemKind
+candle = ItemKind
   { isymbol  = '~'
-  , iname    = "wooden torch"
+  , iname    = "candle"
   , ifreq    = [("useful", 100)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
   , irarity  = [(1, 10)]
   , iverbHit = "scorch"
-  , iweight  = 1200
+  , iweight  = 500
   , iaspects = [ AddLight 3
-               , AddSight (-2) ]  -- not only flashes, but also sparks
+               , AddSight (-2) ]
   , ieffects = [Burn 3]
-  , ifeature = [EqpSlot EqpSlotAddLight "", Identified]
-  , idesc    = "A smoking, heavy wooden torch, burning in an unsteady fire."
+  , ifeature = [ toVelocity 50  -- easy to break when throwing
+               , Fragile, EqpSlot EqpSlotAddLight "", Identified ]
+  , idesc    = "A smoking, thick candle with an unsteady fire."
   , ikit     = []
   }
 oilLamp = ItemKind
@@ -172,23 +173,22 @@ oilLamp = ItemKind
   , ieffects = [Burn 3, Paralyze 3, OnSmash (Explode "burning oil 3")]
   , ifeature = [ toVelocity 70  -- hard not to spill the oil while throwing
                , Fragile, EqpSlot EqpSlotAddLight "", Identified ]
-  , idesc    = "A clay lamp filled with plant oil feeding a tiny wick."
+  , idesc    = "A sizable glass lamp filled with plant oil feeding a wick."
   , ikit     = []
   }
-brassLantern = ItemKind
+crankSpotlight = ItemKind
   { isymbol  = '~'
-  , iname    = "brass lantern"
+  , iname    = "crank spotlight"
   , ifreq    = [("useful", 100)]
   , iflavour = zipPlain [BrWhite]
   , icount   = 1
-  , irarity  = [(10, 3)]
-  , iverbHit = "burn"
+  , irarity  = [(10, 2)]
+  , iverbHit = "snag"
   , iweight  = 2400
-  , iaspects = [AddLight 4, AddSight (-1)]
-  , ieffects = [Burn 4, Paralyze 4, OnSmash (Explode "burning oil 4")]
-  , ifeature = [ toVelocity 70  -- hard to throw so that it opens and burns
-               , Fragile, EqpSlot EqpSlotAddLight "", Identified ]
-  , idesc    = "Very bright and very heavy brass lantern."
+  , iaspects = [AddLight 4, AddArmorRanged $ - d 3]  -- noise and busy hands
+  , ieffects = []
+  , ifeature = [ EqpSlot EqpSlotAddLight "", Identified ]
+  , idesc    = "Powerful, wide-beam spotlight, powered by a hand-crank. Requires noisy two-handed recharging every few minutes."
   , ikit     = []
   }
 
@@ -207,7 +207,7 @@ gem = ItemKind
   , ieffects = []
   , ifeature = [ Durable  -- prevent destruction by evil monsters
                , Precious ]
-  , idesc    = "Precious, though useless. Worth around 100 gold."
+  , idesc    = "Precious, though useless. Worth around 100 gold grains."
   , ikit     = []
   }
 gem1 = gem
@@ -250,7 +250,7 @@ gorget = ItemKind
   , ieffects = [RefillCalm 1]
   , ifeature = [ Precious, EqpSlot EqpSlotPeriodic "", Identified
                , toVelocity 50 ]  -- not dense enough
-  , idesc    = "Highly ornamental, cold, large, steel mediallion on a chain. Unlikely to offer much protection as an armor piece, but the old, worn engraving reassures you."
+  , idesc    = "Highly ornamental, cold, large, steel medallion on a chain. Unlikely to offer much protection as an armor piece, but the old, worn engraving reassures you."
   , ikit     = []
   }
 necklace = ItemKind
@@ -266,13 +266,12 @@ necklace = ItemKind
   , ieffects = []
   , ifeature = [ Precious, EqpSlot EqpSlotPeriodic ""
                , toVelocity 50 ]  -- not dense enough
-  , idesc    = "Tingling, rattling chain of flat encrusted links."
+  , idesc    = "Tingling, rattling chain of flat encrusted links. Eccentric millionaires are known to hide their highly personalized body augmentation packs in such large jewelry pieces."
   , ikit     = []
   }
 necklace1 = necklace
   { iaspects = [Periodic $ d 2 + dl 2]
   , ieffects = [RefillHP 1]
-  , idesc    = "A cord of dried herbs and healing berries."
   }
 necklace2 = necklace
   { irarity  = [(2, 0), (10, 1)]
@@ -307,9 +306,9 @@ necklace7 = necklace
 
 -- * Non-periodic jewelry
 
-monocle = ItemKind
+contactLens = ItemKind
   { isymbol  = '='
-  , iname    = "monocle"
+  , iname    = "contact lens"
   , ifreq    = [("useful", 100)]
   , iflavour = zipPlain [White]
   , icount   = 1
@@ -319,7 +318,7 @@ monocle = ItemKind
   , iaspects = [AddSight $ dl 3]
   , ieffects = []
   , ifeature = [Precious, Identified, Durable, EqpSlot EqpSlotAddSight ""]
-  , idesc    = "Let's you better focus your weaker eye."
+  , idesc    = "Advanced design. Never needs to be taken off."
   , ikit     = []
   }
 ring = ItemKind
@@ -334,7 +333,7 @@ ring = ItemKind
   , iaspects = []
   , ieffects = []
   , ifeature = [Precious, Identified]
-  , idesc    = "A sturdy ring with a strangely shining eye."
+  , idesc    = "A sturdy ring with a softly shining eye. If it contains a body booster unit, beware of the side-effects."
   , ikit     = []
   }
 ring1 = ring
@@ -442,7 +441,7 @@ scroll = ItemKind
   , ieffects = []
   , ifeature = [ toVelocity 25  -- bad grip
                , Applicable ]
-  , idesc    = "A haphazardly scribbled piece of parchment. May contain directions or a secret call sign."
+  , idesc    = "A standard issue spaceship crew tablet displaying a fixed infographic and a big button. Some of these still contain a one-time password authoriziing a particular spaceship's infrastructure transition. How would the infrastructure respond after so many years is unknown."
   , ikit     = []
   }
 scroll1 = scroll
@@ -488,7 +487,7 @@ scroll9 = scroll
 
 armorLeather = ItemKind
   { isymbol  = '['
-  , iname    = "leather armor"
+  , iname    = "spacesuit breastplate"
   , ifreq    = [("useful", 100)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
@@ -501,22 +500,22 @@ armorLeather = ItemKind
   , ieffects = []
   , ifeature = [ toVelocity 30  -- unwieldy to throw and blunt
                , Durable, EqpSlot EqpSlotAddArmorMelee "", Identified ]
-  , idesc    = "A stiff jacket formed from leather boiled in bee wax. Smells much better than the rest of your garment."
+  , idesc    = "A hard-shell torso segment cut from a disposed off spacesuit."
   , ikit     = []
   }
 armorMail = armorLeather
-  { iname    = "mail armor"
+  { iname    = "bulletproof vest"
   , iflavour = zipPlain [Cyan]
   , irarity  = [(7, 9)]
   , iweight  = 12000
   , iaspects = [ AddHurtMelee (-3)
                , AddArmorMelee $ (2 + dl 3) * 5
                , AddArmorRanged $ (2 + dl 3) * 5 ]
-  , idesc    = "A long shirt woven from iron rings. Discourages foes from attacking your torso, making it harder for them to land a blow."
+  , idesc    = "A civilian bulletproof vest. Discourages foes from attacking your torso, making it harder for them to land a blow."
   }
 gloveFencing = ItemKind
   { isymbol  = ']'
-  , iname    = "leather gauntlet"
+  , iname    = "construction glove"
   , ifreq    = [("useful", 100)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
@@ -528,27 +527,27 @@ gloveFencing = ItemKind
   , ieffects = []
   , ifeature = [ toVelocity 30  -- flaps and flutters
                , Durable, EqpSlot EqpSlotAddArmorRanged "", Identified ]
-  , idesc    = "A fencing glove from rough leather ensuring a good grip. Also, quite effective in deflecting or even catching slow projectiles."
+  , idesc    = "A flexible construction glove from rough leather ensuring a good grip. Also, quite effective in deflecting or even catching slow projectiles."
   , ikit     = []
   }
 gloveGauntlet = gloveFencing
-  { iname    = "steel gauntlet"
+  { iname    = "spacesuit glove"
   , irarity  = [(6, 12)]
   , iflavour = zipPlain [BrCyan]
   , iweight  = 300
   , iaspects = [ AddArmorMelee $ 2 * (d 2 + dl 2)
                , AddArmorRanged $ 2 * (d 2 + dl 2) ]
-  , idesc    = "Long leather gauntlet covered in overlapping steel plates."
+  , idesc    = "A piece of a hull maintenance spacesuit, padded and reinforced with carbon fibre."
   }
 gloveJousting = gloveFencing
-  { iname    = "jousting gauntlet"
+  { iname    = "welding handgear"
   , irarity  = [(6, 6)]
   , iflavour = zipFancy [BrRed]
   , iweight  = 500
   , iaspects = [ AddHurtMelee $ - 10 - d 5 + dl 5
                , AddArmorMelee $ 2 * (d 2 + dl 3)
                , AddArmorRanged $ 2 * (d 2 + dl 3) ]
-  , idesc    = "Rigid, steel jousting handgear. If only you had a lance. And a horse."
+  , idesc    = "Rigid, bulky handgear embedding a welding equipment, complete with an affixed small shield and a darkened visor. Awe-inspiring."
   }
 -- Shield doesn't protect against ranged attacks to prevent
 -- micromanagement: walking with shield, melee without.
@@ -565,7 +564,7 @@ buckler = ItemKind
   , ieffects = []
   , ifeature = [ toVelocity 30  -- unwieldy to throw and blunt
                , Durable, EqpSlot EqpSlotAddArmorMelee "", Identified ]
-  , idesc    = "Heavy and unwieldy. Absorbs a precentage of melee damage, both dealt and sustained. Too small to intercept projectiles with."
+  , idesc    = "Heavy and unwieldy arm protection made from an outer airlock panel. Absorbs a precentage of melee damage, both dealt and sustained. Too small to intercept projectiles with."
   , ikit     = []
   }
 shield = buckler
@@ -576,14 +575,14 @@ shield = buckler
   , iaspects = [AddArmorMelee 80, AddHurtMelee (-70)]
   , ifeature = [ toVelocity 20  -- unwieldy to throw and blunt
                , Durable, EqpSlot EqpSlotAddArmorMelee "", Identified ]
-  , idesc    = "Large and unwieldy. Absorbs a precentage of melee damage, both dealt and sustained. Too heavy to intercept projectiles with."
+  , idesc    = "Large and unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a precentage of melee damage, both dealt and sustained. Too heavy to intercept projectiles with."
   }
 
 -- * Weapons
 
 dagger = ItemKind
   { isymbol  = '|'
-  , iname    = "dagger"
+  , iname    = "kitchen knife"
   , ifreq    = [("useful", 100)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
@@ -594,12 +593,12 @@ dagger = ItemKind
   , ieffects = [Hurt (4 * d 1)]
   , ifeature = [ toVelocity 40  -- ensuring it hits with the tip costs speed
                , Durable, EqpSlot EqpSlotWeapon "", Identified ]
-  , idesc    = "A short dagger for thrusting and parrying blows. Does not penetrate deeply, but is hard to block. Especially useful in conjunction with a larger weapon."
+  , idesc    = "A heavy professional kitchen blade. Will do fine cutting any kind of meat and also thrusting and parrying blows. Does not penetrate deeply, but is hard to block. Especially useful in conjunction with a larger weapon."
   , ikit     = []
   }
 hammer = ItemKind
   { isymbol  = '\\'
-  , iname    = "war hammer"
+  , iname    = "demolition hammer"
   , ifreq    = [("useful", 100)]
   , iflavour = zipPlain [BrMagenta]
   , icount   = 1
@@ -610,7 +609,7 @@ hammer = ItemKind
   , ieffects = [Hurt (6 * d 1)]
   , ifeature = [ toVelocity 20  -- ensuring it hits with the sharp tip costs
                , Durable, EqpSlot EqpSlotWeapon "", Identified ]
-  , idesc    = "It may not cause grave wounds, but neither does it glance off nor ricochet. Great sidearm for opportinistic blows against armored foes."
+  , idesc    = "A hammer on a long handle used for construction work. It may not cause grave wounds, but neither does it ricochet or glance off armor. Great sidearm for opportinistic blows against armored foes."
   , ikit     = []
   }
 sword = ItemKind
@@ -626,7 +625,7 @@ sword = ItemKind
   , ieffects = [Hurt (9 * d 1)]
   , ifeature = [ toVelocity 20  -- ensuring it hits with the tip costs speed
                , Durable, EqpSlot EqpSlotWeapon "", Identified ]
-  , idesc    = "Hard to master, but chops limbs when used effectively."
+  , idesc    = "A makeshift weapon of simple design, but great potential. Hard to master, though."
   , ikit     = []
   }
 halberd = ItemKind
@@ -642,7 +641,7 @@ halberd = ItemKind
   , ieffects = [Hurt (12 * d 1)]
   , ifeature = [ toVelocity 20  -- not balanced
                , Durable, EqpSlot EqpSlotWeapon "", Identified ]
-  , idesc    = "Versatile, with great reach and leverage. Foes are held at a distance."
+  , idesc    = "A perfect replica made for a reenactor troupe, missing only some sharpening. Versatile, with great reach and leverage. Foes are held at a distance."
   , ikit     = []
   }
 
@@ -659,7 +658,7 @@ wand = ItemKind
   , iweight  = 300
   , iaspects = [AddLight 1, AddSpeed (-1)]  -- pulsing with power, distracts
   , ieffects = []
-  , ifeature = [ toVelocity 125  -- magic
+  , ifeature = [ toVelocity 125  -- sufficiently advanced tech
                , Applicable, Durable ]
   , idesc    = "Buzzing with dazzling light that shines even through appendages that handle it."
   , ikit     = []
