@@ -68,7 +68,7 @@ arena = rogue
   , citemNum      = 6 * d 2  -- few rooms
   , cpassable     = True
   , cdefTile      = "arenaSet"
---  , cdarkCorTile  = "trailLit"  -- let paths around rooms be lit
+  , cdarkCorTile  = "trailLit"  -- let trails give off light
   , clitCorTile   = "trailLit"
 -- TODO: re-add when less rooms , couterFenceTile = "oriels fence"
   }
@@ -89,7 +89,7 @@ empty = rogue
   , citemNum      = 4 * d 2  -- few rooms
   , cpassable     = True
   , cdefTile      = "emptySet"
---  , cdarkCorTile  = "trailLit"  -- let paths around rooms be lit
+  , cdarkCorTile  = "floorArenaDark"
   , clitCorTile   = "floorArenaLit"
   , couterFenceTile = "oriels fence"
   }
