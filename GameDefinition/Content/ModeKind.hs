@@ -128,11 +128,11 @@ playersSkirmish = playersDuel
 playersBattle = Players
   { playersList = [ playerHero {playerInitial = 5}
                   , playerAlien { playerInitial = 10
-                                , playerSpawn = 0 }
+                                , playerIsSpawn = False }
                   , playerAnimal { playerInitial = 5
-                                 , playerSpawn = 0 }
+                                 , playerIsSpawn = False }
                   , playerRobot { playerInitial = 5
-                                 , playerSpawn = 0 } ]
+                                 , playerIsSpawn = False } ]
   , playersEnemy = [ ("Spacefarer Crew", "Alien Hierarchy")
                    , ("Spacefarer Crew", "Animal Kingdom")
                    , ("Spacefarer Crew", "Robot Anarchy") ]
@@ -142,7 +142,7 @@ playersBattle = Players
 
 playersSafari = Players
   { playersList = [ playerAlien { playerName = "Alien Tourist Office"
-                                , playerSpawn = 0
+                                , playerIsSpawn = False
                                 , playerEntry = -8
                                 , playerInitial = 10
                                 , playerAI = False
@@ -151,12 +151,12 @@ playersSafari = Players
                                    , playerEntry = -8 }
                   , playerAnimal { playerName =
                                      "Animal Magnificent Specimen Variety"
-                                 , playerSpawn = 0
+                                 , playerIsSpawn = False
                                  , playerEntry = -9
                                  , playerInitial = 7 }
                   , playerAnimal { playerName =
                                      "Animal Exquisite Herds and Packs"
-                                 , playerSpawn = 0
+                                 , playerIsSpawn = False
                                  , playerEntry = -10
                                  , playerInitial = 20 } ]
   , playersEnemy = [ ("Alien Tourist Office", "Hunam Convict Pack")
@@ -229,7 +229,8 @@ playerHero, playerAntiHero, playerCivilian, playerAlien, playerAnimal, playerRob
 playerHero = Player
   { playerName = "Spacefarer Crew"
   , playerFaction = "hero"
-  , playerSpawn = 0
+  , playerIsSpawn = False
+  , playerIsHero = True
   , playerEntry = 1
   , playerInitial = 3
   , playerLeader = True
@@ -245,7 +246,8 @@ playerAntiHero = playerHero
 playerCivilian = Player
   { playerName = "Civilian Crowd"
   , playerFaction = "civilian"
-  , playerSpawn = 0
+  , playerIsSpawn = False
+  , playerIsHero = False
   , playerEntry = 1
   , playerInitial = 3
   , playerLeader = False  -- unorganized
@@ -256,7 +258,8 @@ playerCivilian = Player
 playerAlien = Player
   { playerName = "Alien Hierarchy"
   , playerFaction = "alien"
-  , playerSpawn = 50
+  , playerIsSpawn = True
+  , playerIsHero = False
   , playerEntry = 4
   , playerInitial = 3
   , playerLeader = True
@@ -267,7 +270,8 @@ playerAlien = Player
 playerAnimal = Player
   { playerName = "Animal Kingdom"
   , playerFaction = "animal"
-  , playerSpawn = 30
+  , playerIsSpawn = True
+  , playerIsHero = False
   , playerEntry = 2
   , playerInitial = 3
   , playerLeader = False
@@ -278,7 +282,8 @@ playerAnimal = Player
 playerRobot = Player
   { playerName = "Robot Anarchy"
   , playerFaction = "robot"
-  , playerSpawn = 20
+  , playerIsSpawn = True
+  , playerIsHero = False
   , playerEntry = 3
   , playerInitial = 3
   , playerLeader = False
@@ -289,7 +294,8 @@ playerRobot = Player
 playerHorror = Player
   { playerName = "Horror Den"
   , playerFaction = "horror"
-  , playerSpawn = 0
+  , playerIsSpawn = True  -- doesn't spawn, but a dungeon dweller, summoned, etc
+  , playerIsHero = False
   , playerEntry = 1
   , playerInitial = 0
   , playerLeader = False
@@ -309,6 +315,6 @@ cavesAmbush = EM.fromList [(5, ("caveAmbush", Nothing))]
 
 cavesBattle = EM.fromList [(3, ("caveBattle", Nothing))]
 
-cavesSafari = EM.fromList [ (8, ("caveAmbush", Nothing))
-                          , (9, ("caveBattle", Nothing))
-                          , (10, ("caveSkirmish", Just False)) ]
+cavesSafari = EM.fromList [ (8, ("caveSafari1", Nothing))
+                          , (9, ("caveSafari2", Nothing))
+                          , (10, ("caveSafari3", Just False)) ]
