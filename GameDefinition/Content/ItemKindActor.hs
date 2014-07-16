@@ -17,15 +17,15 @@ import Game.LambdaHack.Content.ItemKind
 
 actors :: [ItemKind]
 actors =
-  [warrior, adventurer, blacksmith, forester, clerk, hairdresser, lawyer, peddler, taxCollector, eye, fastEye, nose, elbow, armadillo, gilaMonster, komodoDragon, hyena, alligator, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot]
+  [warrior, pilot, engineer, doctor, clerk, hairdresser, lawyer, peddler, taxCollector, eye, fastEye, nose, elbow, armadillo, gilaMonster, komodoDragon, hyena, alligator, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot]
 
-warrior,    adventurer, blacksmith, forester, clerk, hairdresser, lawyer, peddler, taxCollector, eye, fastEye, nose, elbow, armadillo, gilaMonster, komodoDragon, hyena, alligator, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot :: ItemKind
+warrior,    pilot, engineer, doctor, clerk, hairdresser, lawyer, peddler, taxCollector, eye, fastEye, nose, elbow, armadillo, gilaMonster, komodoDragon, hyena, alligator, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot :: ItemKind
 
 -- * Hunams
 
 warrior = ItemKind
   { isymbol  = '@'
-  , iname    = "warrior"  -- modified if in hero faction
+  , iname    = "mercenary"  -- modified if in hero faction
   , ifreq    = [("hero", 100), ("civilian", 100)]
   , iflavour = zipPlain [BrBlack]  -- modified if in hero faction
   , icount   = 1
@@ -39,12 +39,12 @@ warrior = ItemKind
   , idesc    = ""
   , ikit     = [("fist", COrgan), ("foot", COrgan), ("eye 4", COrgan)]
   }
-adventurer = warrior
-  { iname    = "adventurer" }
-blacksmith = warrior
-  { iname    = "blacksmith" }
-forester = warrior
-  { iname    = "forester" }
+pilot = warrior
+  { iname    = "pilot" }
+engineer = warrior
+  { iname    = "engineer" }
+doctor = warrior
+  { iname    = "doctor" }
 
 clerk = warrior
   { iname    = "clerk"
