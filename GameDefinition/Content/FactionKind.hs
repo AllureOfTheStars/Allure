@@ -44,7 +44,7 @@ civilian = FactionKind
 alien = FactionKind
   { fsymbol       = 'a'
   , fname         = "alien"
-  , ffreq         = [("alien", 1), ("summon", 20)]
+  , ffreq         = [("alien", 1)]
   , fSkillsLeader = allSkills
   , fSkillsOther  = allSkills
   }
@@ -52,7 +52,7 @@ alien = FactionKind
 animal = FactionKind
   { fsymbol       = 'd'
   , fname         = "animal"
-  , ffreq         = [("animal", 1), ("summon", 50)]
+  , ffreq         = [("animal", 1)]
   , fSkillsLeader = animalSkills
   , fSkillsOther  = animalSkills
   }
@@ -69,7 +69,7 @@ robot = FactionKind
 horror = FactionKind
   { fsymbol       = 'h'
   , fname         = "horror"
-  , ffreq         = [("horror", 1), ("summon", 100)]
+  , ffreq         = [("horror", 1)]
   , fSkillsLeader = allSkills
   , fSkillsOther  = allSkills
   }

@@ -252,6 +252,6 @@ wasteContainer = fist
   , icount   = 1
   , iverbHit = "spill over"
   , iaspects = [Periodic 1]
-  , ieffects = [Summon $ 1 + dl 2, Explode "waste"]
+  , ieffects = [Summon [("summonable animal", 1)] $ 1 + dl 2, Explode "waste"]
   , idesc    = ""
   }

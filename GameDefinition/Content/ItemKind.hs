@@ -16,7 +16,7 @@ import Game.LambdaHack.Common.ContentDef
 import Game.LambdaHack.Common.Dice
 import Game.LambdaHack.Common.Effect
 import Game.LambdaHack.Common.Flavour
-import Game.LambdaHack.Common.Misc (CStore (..))
+import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.ItemKind
 
 cdefs :: ContentDef ItemKind
@@ -291,7 +291,7 @@ necklace1 = necklace
 necklace2 = necklace
   { irarity  = [(2, 0), (10, 1)]
   , iaspects = [Periodic $ d 4 + dl 2]
-  , ieffects = [Summon $ 1 + dl 2, Explode "waste"]
+  , ieffects = [Summon [("summonable animal", 1)] $ 1 + dl 2, Explode "waste"]
   }
 necklace3 = necklace
   { iaspects = [Periodic $ d 4 + dl 2]
@@ -422,7 +422,8 @@ potion6 = potion
   }
 potion7 = potion
   { ieffects = [ NoEffect "bait cocktail"
-               , OnSmash (Summon $ 1 + dl 2), OnSmash (Explode "waste") ]
+               , OnSmash (Summon [("summonable animal", 1)] $ 1 + dl 2)
+               , OnSmash (Explode "waste") ]
   }
 potion8 = potion
   { ieffects = [ OneOf [Impress, DropBestWeapon, RefillHP 5, Burn 3]
@@ -456,7 +457,7 @@ constructionHooter = scroll
   , iflavour = zipPlain [BrRed]
   , irarity  = [(1, 1)]
   , iaspects = []
-  , ieffects = [Summon $ 1 + dl 2]
+  , ieffects = [Summon [("construction robot", 1)] $ 1 + dl 2]
   , ifeature = ifeature scroll ++ [Identified]
   , idesc    = "The single-use electronic overdrive hooter that construction robots use to warn about danger and call help in extreme emergency."
   , ikit     = []
@@ -495,7 +496,8 @@ scroll4 = scroll
   }
 scroll5 = scroll
   { irarity  = [(1, 4), (10, 6)]
-  , ieffects = [ OneOf [ CallFriend 1, Summon $ d 2, Ascend (-1), Ascend 1
+  , ieffects = [ OneOf [ Summon standardSummon $ d 2
+                       , CallFriend 1, Ascend (-1), Ascend 1
                        , RefillCalm 30, RefillCalm (-30), CreateItem $ d 2 ]
                        , PolyItem CGround ]
                -- TODO: ask player: Escape 1
@@ -515,6 +517,9 @@ scroll9 = scroll
   { irarity  = [(3, 3), (10, 9)]
   , ieffects = [PolyItem CGround]
   }
+
+standardSummon :: Freqs
+standardSummon = [("alien", 20), ("summonable animal", 50), ("summonable robot", 30), ("horror", 100)]
 
 -- * Armor
 
