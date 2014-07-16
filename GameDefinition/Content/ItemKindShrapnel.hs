@@ -15,9 +15,9 @@ import Game.LambdaHack.Content.ItemKind
 
 shrapnels :: [ItemKind]
 shrapnels =
-  [fragrance, pheromone, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, mistHealing, mistWounding, distortion, waste, burningOil2, burningOil3, burningOil4, explosionBlast10, explosionBlast20, glassPiece, smoke, bolingWater]
+  [fragrance, pheromone, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, mistHealing, mistWounding, distortion, waste, burningOil2, burningOil3, burningOil4, explosionBlast10, explosionBlast20, glassPiece, smoke, boilingWater, glue]
 
-fragrance,    pheromone, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, mistHealing, mistWounding, distortion, waste, burningOil2, burningOil3, burningOil4, explosionBlast10, explosionBlast20, glassPiece, smoke, bolingWater :: ItemKind
+fragrance,    pheromone, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, mistHealing, mistWounding, distortion, waste, burningOil2, burningOil3, burningOil4, explosionBlast10, explosionBlast20, glassPiece, smoke, boilingWater, glue :: ItemKind
 
 -- * Parameterized shrapnel
 
@@ -212,7 +212,7 @@ smoke = ItemKind  -- when stuff burns out
   , idesc    = ""
   , ikit     = []
   }
-bolingWater = ItemKind
+boilingWater = ItemKind
   { isymbol  = '*'
   , iname    = "boiling water"
   , ifreq    = [("boiling water", 1)]
@@ -224,6 +224,21 @@ bolingWater = ItemKind
   , iaspects = []
   , ieffects = [Burn 1]
   , ifeature = [toVelocity 50, Fragile, Identified]
+  , idesc    = ""
+  , ikit     = []
+  }
+glue = ItemKind
+  { isymbol  = '*'
+  , iname    = "sticky foam"
+  , ifreq    = [("glue", 1)]
+  , iflavour = zipPlain [BrYellow]
+  , icount   = 14
+  , irarity  = [(1, 1)]
+  , iverbHit = "glue"
+  , iweight  = 20
+  , iaspects = []
+  , ieffects = [Paralyze (3 + d 3)]
+  , ifeature = [toVelocity 40, Fragile, Identified]
   , idesc    = ""
   , ikit     = []
   }

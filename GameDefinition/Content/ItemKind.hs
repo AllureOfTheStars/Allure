@@ -30,9 +30,9 @@ cdefs = ContentDef
 
 items :: [ItemKind]
 items =
-  [canOfGlue, crankSpotlight, buckler, dart, dart200, gem1, gem2, gem3, gloveFencing, gloveGauntlet, gloveJousting, currency, gorget, harpoon, jumpingPole, contactLens, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, net, oilLamp, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, ring1, ring2, ring3, ring4, ring5, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, shield, dagger, hammer, sword, halberd, wand1, wand2, candle, armorLeather, armorMail, honingSteel]
+  [canOfGlue, crankSpotlight, buckler, dart, dart200, gem1, gem2, gem3, gloveFencing, gloveGauntlet, gloveJousting, currency, gorget, harpoon, jumpingPole, contactLens, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, net, needle, oilLamp, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, ring1, ring2, ring3, ring4, ring5, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, shield, dagger, hammer, sword, halberd, wand1, wand2, candle, armorLeather, armorMail, honingSteel, constructionHooter]
 
-canOfGlue,    crankSpotlight, buckler, dart, dart200, gem1, gem2, gem3, gloveFencing, gloveGauntlet, gloveJousting, currency, gorget, harpoon, jumpingPole, contactLens, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, net, oilLamp, potion1, potion2, potion3, potion4, potion5, potion6, potion7, ring1, potion8, potion9, ring2, ring3, ring4, ring5, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, shield, dagger, hammer, sword, halberd, wand1, wand2, candle, armorLeather, armorMail, honingSteel :: ItemKind
+canOfGlue,    crankSpotlight, buckler, dart, dart200, gem1, gem2, gem3, gloveFencing, gloveGauntlet, gloveJousting, currency, gorget, harpoon, jumpingPole, contactLens, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, net, needle, oilLamp, potion1, potion2, potion3, potion4, potion5, potion6, potion7, ring1, potion8, potion9, potion10, ring2, ring3, ring4, ring5, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, shield, dagger, hammer, sword, halberd, wand1, wand2, candle, armorLeather, armorMail, honingSteel, constructionHooter :: ItemKind
 
 gem, necklace, potion, ring, scroll, wand :: ItemKind  -- generic templates
 
@@ -138,6 +138,21 @@ net = ItemKind
                , DropBestWeapon, DropEqp ')' False ]
   , ifeature = []
   , idesc    = "A large synthetic fibre net with weights affixed along the edges. Entangles weapon and shields alike."
+  , ikit     = []
+  }
+needle = ItemKind
+  { isymbol  = '{'
+  , iname    = "needle"
+  , ifreq    = []
+  , iflavour = zipPlain [BrBlue]
+  , icount   = 9 * d 3
+  , irarity  = []
+  , iverbHit = "prick"
+  , iweight  = 1
+  , iaspects = [AddHurtRanged ((d 3 + dl 3) * 10)]
+  , ieffects = [Hurt (1 * d 1)]
+  , ifeature = [toVelocity 200, Fragile]
+  , idesc    = "The hypodermic needle part of a micro-syringe. Without the payload, it flies far and penetrates deeply, causing intense pain on movement."
   , ikit     = []
   }
 
@@ -425,9 +440,27 @@ potion9 = potion
                                 , Explode "distortion"
                                 , Explode "explosion blast 20" ]) ]
   }
+potion10 = potion
+  { ifreq    = [("useful", 100), ("potion of glue", 1)]
+  , irarity  = [(1, 1)]
+  , icount   = 1 + d 2
+  , ieffects = [ NoEffect "sticky foam", Paralyze (5 + d 5)
+               , OnSmash (Explode "glue")]
+  }
 
 -- * Non-exploding consumables, not specifically designed for throwing
 
+constructionHooter = scroll
+  { iname    = "construction hooter"
+  , ifreq    = [("useful", 1), ("construction hooter", 1)]  -- extremely rare
+  , iflavour = zipPlain [BrRed]
+  , irarity  = [(1, 1)]
+  , iaspects = []
+  , ieffects = [Summon $ 1 + dl 2]
+  , ifeature = ifeature scroll ++ [Identified]
+  , idesc    = "The single-use electronic overdrive hooter that construction robots use to warn about danger and call help in extreme emergency."
+  , ikit     = []
+  }
 scroll = ItemKind
   { isymbol  = '?'
   , iname    = "tablet"
@@ -689,7 +722,6 @@ jumpingPole = ItemKind
   , idesc    = "Makes you vulnerable at take-off, but then you are free like a bird."
   , ikit     = []
   }
-
 honingSteel = ItemKind
   { isymbol  = '~'
   , iname    = "honing steel"

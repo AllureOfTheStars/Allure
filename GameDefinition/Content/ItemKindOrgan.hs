@@ -15,9 +15,9 @@ import Game.LambdaHack.Content.ItemKind
 
 organs :: [ItemKind]
 organs =
-  [fist, foot, tentacle, lash, noseTip, lip, claw, smallClaw, snout, venomTooth, venomFang, largeTail, jaw, largeJaw, pupil, armoredSkin, speedGland1, speedGland2, speedGland3, speedGland4, speedGland5, eye2, eye3, eye4, eye5, nostril, thorn, vent, fissure]
+  [fist, foot, tentacle, claw, smallClaw, snout, sting, venomTooth, venomFang, largeTail, jaw, largeJaw, armoredSkin, speedGland1, speedGland2, speedGland3, speedGland4, speedGland5, eye2, eye3, eye4, eye5, nostril, thorn, razor, liveWire, boilingVent, explosionVent, fissure, wasteContainer]
 
-fist,    foot, tentacle, lash, noseTip, lip, claw, smallClaw, snout, venomTooth, venomFang, largeTail, jaw, largeJaw, pupil, armoredSkin, speedGland1, speedGland2, speedGland3, speedGland4, speedGland5, eye2, eye3, eye4, eye5, nostril, thorn, vent, fissure :: ItemKind
+fist,    foot, tentacle, claw, smallClaw, snout, sting, venomTooth, venomFang, largeTail, jaw, largeJaw, armoredSkin, speedGland1, speedGland2, speedGland3, speedGland4, speedGland5, eye2, eye3, eye4, eye5, nostril, thorn, razor, liveWire, boilingVent, explosionVent, fissure, wasteContainer :: ItemKind
 
 -- * Parameterized organs
 
@@ -86,7 +86,7 @@ claw = fist
   , ifreq    = [("claw", 50)]
   , icount   = 2  -- even if more, only the fore claws used for fighting
   , iverbHit = "slash"
-  , ieffects = [Hurt (7 * d 1)]
+  , ieffects = [Hurt (6 * d 1)]
   , idesc    = ""
   }
 smallClaw = fist
@@ -117,7 +117,7 @@ largeJaw = fist
   , ifreq    = [("large jaw", 100)]
   , icount   = 1
   , iverbHit = "crush"
-  , ieffects = [Hurt (15 * d 1)]
+  , ieffects = [Hurt (12 * d 1)]
   , idesc    = ""
   }
 
@@ -131,30 +131,6 @@ tentacle = fist
   , ieffects = [Hurt (4 * d 1)]
   , idesc    = ""
   }
-lash = fist
-  { iname    = "lash"
-  , ifreq    = [("lash", 100)]
-  , icount   = 1
-  , iverbHit = "lash"
-  , ieffects = [Hurt (4 * d 1)]
-  , idesc    = ""
-  }
-noseTip = fist
-  { iname    = "nose tip"
-  , ifreq    = [("nose tip", 50)]
-  , icount   = 1
-  , iverbHit = "poke"
-  , ieffects = [Hurt (2 * d 1)]
-  , idesc    = ""
-  }
-lip = fist
-  { iname    = "lip"
-  , ifreq    = [("lip", 10)]
-  , icount   = 2
-  , iverbHit = "lap"
-  , ieffects = [Hurt (2 * d 1)]  -- TODO: decrease Hurt, but use
-  , idesc    = ""
-  }
 
 -- * Special weapon organs
 
@@ -163,7 +139,15 @@ thorn = fist
   , ifreq    = [("thorn", 100)]
   , icount   = 7
   , iverbHit = "impale"
-  , ieffects = [Hurt (4 * d 1)]
+  , ieffects = [Hurt (1 * d 1)]
+  , idesc    = ""
+  }
+razor = fist
+  { iname    = "razor"
+  , ifreq    = [("razor", 100)]
+  , icount   = 7
+  , iverbHit = "slice"
+  , ieffects = [Hurt (2 * d 1)]
   , idesc    = ""
   }
 fissure = fist
@@ -172,6 +156,14 @@ fissure = fist
   , icount   = 2
   , iverbHit = "hiss at"
   , ieffects = [Burn 1]
+  , idesc    = ""
+  }
+sting = fist
+  { iname    = "sting"
+  , ifreq    = [("sting", 100)]
+  , icount   = 1
+  , iverbHit = "sting"
+  , ieffects = [Burn 1, Paralyze 2]
   , idesc    = ""
   }
 venomTooth = fist
@@ -195,16 +187,16 @@ largeTail = fist
   , ifreq    = [("large tail", 50)]
   , icount   = 1
   , iverbHit = "knock"
-  , ieffects = [Hurt (9 * d 1), PushActor (ThrowMod 400 25)]
+  , ieffects = [Hurt (8 * d 1), PushActor (ThrowMod 400 25)]
   , idesc    = ""
   }
-pupil = fist
-  { iname    = "pupil"
-  , ifreq    = [("pupil", 100)]
-  , icount   = 1
-  , iverbHit = "gaze at"
-  , iaspects = [AddSight 7]
-  , ieffects = [Hurt (4 * d 1), Paralyze 1]  -- TODO: decrease Hurt, but use
+liveWire = fist
+  { iname    = "live wire"
+  , ifreq    = [("live wire", 100)]
+  , icount   = 4
+  , iverbHit = "shock"
+  , iaspects = []
+  , ieffects = [Hurt (1 * d 1), Paralyze 1]
   , idesc    = ""
   }
 
@@ -215,7 +207,7 @@ armoredSkin = fist
   , ifreq    = [("armored skin", 100)]
   , icount   = 1
   , iverbHit = "bash"
-  , iaspects = [AddArmorMelee 40, AddArmorRanged 40]
+  , iaspects = [AddArmorMelee 33, AddArmorRanged 33]
   , ieffects = []
   , ifeature = [Identified]
   , idesc    = ""
@@ -236,12 +228,30 @@ nostril = fist
 
 -- * Assorted
 
-vent = fist
+boilingVent = fist
   { iname    = "vent"
-  , ifreq    = [("vent", 100)]
+  , ifreq    = [("boiling vent", 100)]
   , icount   = 1
   , iverbHit = "menace"
   , iaspects = [Periodic $ 1 + d 2]
   , ieffects = [Explode "boiling water"]
+  , idesc    = ""
+  }
+explosionVent = fist
+  { iname    = "vent"
+  , ifreq    = [("explosion vent", 100)]
+  , icount   = 1
+  , iverbHit = "menace"
+  , iaspects = [Periodic $ 2 + d 2]
+  , ieffects = [Explode "explosion blast 20"]
+  , idesc    = ""
+  }
+wasteContainer = fist
+  { iname    = "waste container"
+  , ifreq    = [("waste container", 100)]
+  , icount   = 1
+  , iverbHit = "spill over"
+  , iaspects = [Periodic 1]
+  , ieffects = [Summon $ 1 + dl 2, Explode "waste"]
   , idesc    = ""
   }
