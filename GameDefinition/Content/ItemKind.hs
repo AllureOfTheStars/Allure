@@ -137,7 +137,7 @@ net = ItemKind
   , ieffects = [ Paralyze (5 + d 5)
                , DropBestWeapon, DropEqp ')' False ]
   , ifeature = []
-  , idesc    = "A large synthetic fibre net with weights affixed along the edges. Entangles weapon and shields alike."
+  , idesc    = "A large synthetic fibre net with weights affixed along the edges. Entangles weapon and appendages alike."
   , ikit     = []
   }
 needle = ItemKind

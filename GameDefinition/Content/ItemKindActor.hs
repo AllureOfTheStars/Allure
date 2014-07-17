@@ -61,12 +61,12 @@ taxCollector = clerk
 -- * Aliens
 
 eye = ItemKind
-  { isymbol  = 'e'
-  , iname    = "reducible eye"
+  { isymbol  = 'w'
+  , iname    = "walker"
   , ifreq    = [("alien", 100), ("horror", 100)]
   , iflavour = zipPlain [BrRed]
   , icount   = 1
-  , irarity  = [(1, 10), (10, 6)]
+  , irarity  = [(3, 1), (10, 9)]
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 20
@@ -74,15 +74,17 @@ eye = ItemKind
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
-  , ikit     = [("lash", COrgan), ("pupil", COrgan)]
+  , ikit     = [ ("foot", COrgan)
+               , ("tentacle", COrgan), ("tentacle", COrgan)
+               , ("eye 4", COrgan) ]
   }
 fastEye = ItemKind
-  { isymbol  = 'e'
-  , iname    = "super-fast eye"
+  { isymbol  = 'b'
+  , iname    = "biter"
   , ifreq    = [("alien", 100), ("horror", 100)]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
-  , irarity  = [(10, 5)]
+  , irarity  = [(6, 1), (10, 7)]
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 6, AddMaxCalm 60, AddSpeed 30
@@ -90,8 +92,10 @@ fastEye = ItemKind
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
-  , ikit     = [ ("lash", COrgan), ("tentacle", COrgan), ("tentacle", COrgan)
-               , ("speed gland 5", COrgan), ("pupil", COrgan) ]
+  , ikit     = [ ("tentacle", COrgan), ("tentacle", COrgan)
+               , ("tentacle", COrgan), ("tentacle", COrgan)
+               , ("jaw", COrgan)
+               , ("eye 4", COrgan), ("speed gland 10", COrgan) ]
   }
 nose = ItemKind
   { isymbol  = 'h'
@@ -99,7 +103,7 @@ nose = ItemKind
   , ifreq    = [("alien", 100), ("horror", 100)]
   , iflavour = zipPlain [BrGreen]
   , icount   = 1
-  , irarity  = [(1, 6), (10, 4)]
+  , irarity  = [(3, 1), (10, 9)]
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 40, AddMaxCalm 30, AddSpeed 18
@@ -107,25 +111,27 @@ nose = ItemKind
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
-  , ikit     = [ ("tentacle", COrgan), ("tentacle", COrgan)
-               , ("nose tip", COrgan), ("lip", COrgan) ]
+  , ikit     = [ ("smallClaw", COrgan)
+               , ("tentacle", COrgan), ("tentacle", COrgan)
+               , ("tentacle", COrgan), ("tentacle", COrgan)
+               , ("thorn", COrgan), ("sting", COrgan) ]
   }
 elbow = ItemKind
-  { isymbol  = 'e'
-  , iname    = "ground elbow"
+  { isymbol  = 's'
+  , iname    = "shooter"
   , ifreq    = [("alien", 100), ("horror", 100)]
   , iflavour = zipPlain [BrMagenta]
   , icount   = 1
-  , irarity  = [(3, 5), (10, 5)]
+  , irarity  = [(6, 1), (10, 5)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 30, AddMaxCalm 80, AddSpeed 10
+  , iaspects = [ AddMaxHP 15, AddMaxCalm 80, AddSpeed 26
                , AddSkills $ EM.singleton AbMelee (-1)
                , AddSight 15 ]  -- can shoot for as long as lives
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
-  , ikit     = [ ("armored skin", COrgan), ("speed gland 2", COrgan)
+  , ikit     = [ ("speed gland 4", COrgan)
                , ("any arrow", CInv), ("any arrow", CInv)
                , ("any arrow", CInv), ("any arrow", CInv) ]
   }
@@ -177,13 +183,13 @@ komodoDragon = ItemKind  -- bad hearing
   , irarity  = [(5, 5), (10, 7)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 40, AddMaxCalm 60, AddSpeed 20
+  , iaspects = [ AddMaxHP 40, AddMaxCalm 60, AddSpeed 18
                , AddSight 3 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
   , ikit     = [ ("large tail", COrgan), ("jaw", COrgan), ("small claw", COrgan)
-               , ("speed gland 2", COrgan), ("armored skin", COrgan)
+               , ("speed gland 4", COrgan), ("armored skin", COrgan)
                , ("eye 2", COrgan), ("nostril", COrgan) ]
   }
 hyena = ItemKind
@@ -421,11 +427,11 @@ wasteRobot = ItemKind
   , irarity  = [(1, 10), (10, 6)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 20
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 15
                , AddSmell 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = "You are not in its database, so you are considered waste."
+  , idesc    = "You are not in its database, hence you are waste."
   , ikit     = [ ("jaw", COrgan), ("tentacle", COrgan)
                , ("waste container", COrgan)
                , ("armored skin", COrgan), ("eye3", COrgan) ]

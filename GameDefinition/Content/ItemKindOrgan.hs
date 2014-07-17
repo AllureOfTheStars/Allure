@@ -15,9 +15,9 @@ import Game.LambdaHack.Content.ItemKind
 
 organs :: [ItemKind]
 organs =
-  [fist, foot, tentacle, claw, smallClaw, snout, sting, venomTooth, venomFang, largeTail, jaw, largeJaw, armoredSkin, speedGland1, speedGland2, speedGland3, speedGland4, speedGland5, eye2, eye3, eye4, eye5, nostril, thorn, razor, liveWire, boilingVent, explosionVent, fissure, wasteContainer]
+  [fist, foot, tentacle, claw, smallClaw, snout, sting, venomTooth, venomFang, largeTail, jaw, largeJaw, armoredSkin, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, eye2, eye3, eye4, eye5, nostril, thorn, razor, liveWire, boilingVent, explosionVent, fissure, wasteContainer]
 
-fist,    foot, tentacle, claw, smallClaw, snout, sting, venomTooth, venomFang, largeTail, jaw, largeJaw, armoredSkin, speedGland1, speedGland2, speedGland3, speedGland4, speedGland5, eye2, eye3, eye4, eye5, nostril, thorn, razor, liveWire, boilingVent, explosionVent, fissure, wasteContainer :: ItemKind
+fist,    foot, tentacle, claw, smallClaw, snout, sting, venomTooth, venomFang, largeTail, jaw, largeJaw, armoredSkin, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, eye2, eye3, eye4, eye5, nostril, thorn, razor, liveWire, boilingVent, explosionVent, fissure, wasteContainer :: ItemKind
 
 -- * Parameterized organs
 
@@ -27,16 +27,16 @@ speedGland n = fist
   , ifreq    = [("speed gland" <+> tshow n, 100)]
   , icount   = 1
   , iverbHit = "spit at"
-  , iaspects = [AddSpeed 2, Periodic (intToDice $ 2 * n)]
+  , iaspects = [AddSpeed $ intToDice n, Periodic $ intToDice n]
   , ieffects = [RefillHP 1]
   , ifeature = [Identified]
   , idesc    = ""
   }
-speedGland1 = speedGland 1
 speedGland2 = speedGland 2
-speedGland3 = speedGland 3
 speedGland4 = speedGland 4
-speedGland5 = speedGland 5
+speedGland6 = speedGland 6
+speedGland8 = speedGland 8
+speedGland10 = speedGland 10
 eye :: Int -> ItemKind
 eye n = fist
   { iname    = "eye"
@@ -120,9 +120,6 @@ largeJaw = fist
   , ieffects = [Hurt (12 * d 1)]
   , idesc    = ""
   }
-
--- * Monster weapon organs
-
 tentacle = fist
   { iname    = "tentacle"
   , ifreq    = [("tentacle", 50)]
@@ -252,6 +249,7 @@ wasteContainer = fist
   , icount   = 1
   , iverbHit = "spill over"
   , iaspects = [Periodic 1]
-  , ieffects = [Summon [("summonable animal", 1)] $ 1 + dl 2, Explode "waste"]
+  , ieffects = [ Summon [("summonable animal", 1)] $ 1 + dl 2, RefillHP 1
+               , Explode "waste" ]
   , idesc    = ""
   }
