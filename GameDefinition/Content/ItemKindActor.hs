@@ -303,7 +303,7 @@ electricFence = ItemKind
                , AddArmorMelee 50, AddArmorRanged 50 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = "Marginally intelligent electric shepherd. Originally used in the spaceship's dairy farm or on the zoo level."
+  , idesc    = "Marginally intelligent electric shepherd. Originally used in the spaceship's dairy farm and the zoo level."
   , ikit     = [("live wire", COrgan)]
   }
 activeFence = ItemKind
@@ -342,7 +342,7 @@ steamFaucet = ItemKind
                    `addSkills` EM.fromList (zip [AbWait, AbMelee] [1, 1..]) ]
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "A cracked valve on one of the superheated water pipes spreading radially outward from the tokamak level."
   , ikit     = [("boiling vent", COrgan), ("fissure", COrgan)]
   }
 biogasFaucet = ItemKind
@@ -360,7 +360,7 @@ biogasFaucet = ItemKind
                    `addSkills` EM.fromList (zip [AbWait] [1, 1..]) ]
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "An emergency pressure-release vent on a liquified biogas pipe."
   , ikit     = [("explosion vent", COrgan)]
   }
 shepherdDrone = ItemKind
@@ -379,7 +379,7 @@ shepherdDrone = ItemKind
                , AddArmorMelee 90, AddArmorRanged 90 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "A shabby drone for bringing cows home."
   , ikit     = [("eye2", COrgan), ("live wire", COrgan)]
   }
 huntingDrone = ItemKind
@@ -403,7 +403,8 @@ huntingDrone = ItemKind
   }
 homeRobot = ItemKind
   { isymbol  = 'r'
-  , iname    = "deranged home robot"
+  , iname    = "feral home robot"
+               -- TODO: name another 'deranged', tertiary imperative: survival
   , ifreq    = [("robot", 100), ("horror", 100), ("summonable robot", 100)]
   , iflavour = zipPlain [Magenta]
   , icount   = 1
@@ -414,7 +415,7 @@ homeRobot = ItemKind
                , AddSmell 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "Once a timid household robot, it magificently adapted to the deadly environment."
   , ikit     = [("fist", COrgan), ("eye2", COrgan)]
   }
 wasteRobot = ItemKind
@@ -450,7 +451,7 @@ lightRobot = ItemKind
                , AddSight 3, AddLight 3 ]  -- light can't be turned off
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "Exterior and interior decoration robot. Strongly fancies deep reds recently."
   , ikit     = [ ("claw", COrgan), ("tentacle", COrgan)
                , ("armored skin", COrgan), ("eye4", COrgan) ]
   }
@@ -468,7 +469,7 @@ heavyRobot = ItemKind
                , AddSight 3, AddLight 4 ]  -- light can't be turned off
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "Heavy multi-purpose construction robot. Excels at discharging, dismantling and demolition."
   , ikit     = [ ("largeJaw", COrgan), ("claw", COrgan)
                , ("construction hooter", CInv)
                , ("armored skin", COrgan), ("eye3", COrgan) ]
