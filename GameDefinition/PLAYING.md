@@ -1,20 +1,20 @@
 Playing Allure of the Stars
 ===========================
 
-Playing Allure of the Stars involves walking around an abandoned
+Gameplay of Allure of the Stars centers around exploring an abandoned
 Solar System spaceship, alone or in a party of trusted crew-members,
-setting up ambushes, hiding in shadow, covering tracks,
-breaking through to deeper spaceship decks, bumping into
-hostile intruders, doors and walls, gathering technical resources
-and making creative use of them. The bloodthirsty alien monsters
-and their horrible minions do the same, intelligence allowing,
-while tirelessly chasing the stranded heroes by smell and sight.
+setting up ambushes for it's feral denizens, hiding in shadows,
+covering tracks, bumping into unspeakable horrors, hidden mechanisms
+and astounding technical treasures and making creative use of it all.
+The mysterious inhabitants of the ship perform the same feats,
+intelligence allowing, while tirelessly chasing the stranded heroes
+by sight, sound and smell.
 
 Once the few basic command keys and on-screen symbols are learned,
 mastery and enjoyment of the game is the matter of tactical skill
 and literary imagination. To be honest, a lot of imagination is required
 at this stage, but the game is already playable and winnable.
-Contributions welcome.
+Contributions are welcome.
 
 
 Heroes
@@ -57,8 +57,9 @@ to the cursor position and the straight-line distance between the points.
 Spaceship
 ---------
 
-The spaceship of the campaign mode game consists of many levels and each level
-consists of a large number of tiles. The basic tile kinds are as follows.
+The spaceship of the campaign mode game consists of decks on many levels
+and each deck consists of a large number of tiles. The basic tile kinds
+are as follows.
 
                terrain type                       on-screen symbol
                floor                              .
@@ -70,8 +71,8 @@ consists of a large number of tiles. The basic tile kinds are as follows.
                open door                          '
                closed door                        +
 
-The game world is persistent, i.e., every time the player visits a level
-during a single game, the level layout is the same.
+The game world is persistent, i.e., every time the player visits a deck
+during a single game, its layout is the same.
 
 
 Commands
@@ -219,11 +220,11 @@ but most of the debug options have no corresponding commands.
 Monsters
 --------
 
-Heroes are not alone in the spaceship. Monsters roam the dark halls
-and crawl from damp air-ducts day and night. While heroes pay attention
-to all other party members and take care to move one at a time,
-monsters don't care about each other and all move at once,
-sometimes brutally colliding by accident.
+Heroes are not alone in the spaceship. Monstrosities, natural
+and out of this world, roam the dark halls and crawl from damp air-ducts
+day and night. While heroes pay attention to all other party members
+and take care to move one at a time, monsters don't care about each other
+and all move at once, sometimes brutally colliding by accident.
 
 When the hero bumps into a monster or a monster attacks the hero,
 melee combat occurs. The best weapon equipped by each opponent
@@ -246,13 +247,13 @@ When the last hero dies, the game ends.
 On Winning and Dying
 --------------------
 
-You win the game if you escape the spaceship alive or eliminate all opposition.
-If you escape the spaceship, your score is based on the gold and precious gems
-you've plundered, plus a bonus based on the number of heroes you lost.
-If the game mode offers you no escape and so your goal is to eliminate
-your foes completely, your score is based on the number of turns
-you spent and, as a bonus, the number of enemies you killed.
+You win the game if you escape the spaceship alive or eliminate all opposition,
+if there is no way out. In the former case, your score is based on the gold
+and precious gems you've plundered, plus a bonus based on the number
+of heroes you lost. In the latter case, your score is based on the number
+of turns you spent overcoming your foes and, as a bonus, the number
+of enemies you've beaten.
 
-If all heroes die, you don't get any bonus. You are free to start again
+If all heroes fall, you don't get any bonus. You are free to start again
 from a different entrance to the spaceship, but all your previous wealth
 is gone and fresh, undaunted enemies bar your way.

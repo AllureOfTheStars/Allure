@@ -28,6 +28,7 @@ campaign = ModeKind
   , mfreq    = [("campaign", 1)]
   , mplayers = playersCampaign
   , mcaves   = cavesCampaign
+  , mdesc    = "Explore the once luxurious cruise liner and bring your spoils through to the spacehip's bridge at the other end."
   }
 
 duel = ModeKind
@@ -36,6 +37,7 @@ duel = ModeKind
   , mfreq    = [("duel", 1)]
   , mplayers = playersDuel
   , mcaves   = cavesSkirmish
+  , mdesc    = "Let's settle the argument about the lady in the woody biosphere behind the saloon."
   }
 
 skirmish = ModeKind
@@ -44,6 +46,7 @@ skirmish = ModeKind
   , mfreq    = [("skirmish", 1)]
   , mplayers = playersSkirmish
   , mcaves   = cavesSkirmish
+  , mdesc    = "You owe restorative surgery to one of our crew: if we win, we take your little spaceship; if you win, you take ours (if you still want it)."
   }
 
 ambush = ModeKind
@@ -52,6 +55,7 @@ ambush = ModeKind
   , mfreq    = [("ambush", 1)]
   , mplayers = playersSkirmish
   , mcaves   = cavesAmbush
+  , mdesc    = "Conveniently, on the path to the Triton's spaceport, passengers can relax in a shady park."
   }
 
 battle = ModeKind
@@ -60,6 +64,7 @@ battle = ModeKind
   , mfreq    = [("battle", 1)]
   , mplayers = playersBattle
   , mcaves   = cavesBattle
+  , mdesc    = "Not even the unexplained ruin of the largest and tightest security Neptune's moon spaceport will prevent you from claiming your prize."
   }
 
 safari = ModeKind
@@ -68,6 +73,7 @@ safari = ModeKind
   , mfreq    = [("safari", 1)]
   , mplayers = playersSafari
   , mcaves   = cavesSafari
+  , mdesc    = "In this simulation you'll discover the joys of hunting the most exquisite of Earth's fauna, both animal and semi-intelligent (exit at the opposite level)."
   }
 
 pvp = ModeKind
@@ -76,6 +82,7 @@ pvp = ModeKind
   , mfreq    = [("PvP", 1)]
   , mplayers = playersPvP
   , mcaves   = cavesSkirmish
+  , mdesc    = "(Not usable right now.) This is a fight to the death between two human-controlled teams."
   }
 
 coop = ModeKind
@@ -84,6 +91,7 @@ coop = ModeKind
   , mfreq    = [("Coop", 1)]
   , mplayers = playersCoop
   , mcaves   = cavesCampaign
+  , mdesc    = "(This mode is intended solely for automated testing.)"
   }
 
 defense = ModeKind
@@ -92,6 +100,7 @@ defense = ModeKind
   , mfreq    = [("defense", 1)]
   , mplayers = playersDefense
   , mcaves   = cavesCampaign
+  , mdesc    = "Don't let the puny humans steal you secrets and flee, like dirty scoundrels that they are, to the exit!"
   }
 
 
@@ -110,19 +119,19 @@ playersCampaign = Players
                  , ("Robot Anarchy", "Animal Kingdom") ] }
 
 playersDuel = Players
-  { playersList = [ playerHero { playerName = "White"
+  { playersList = [ playerHero { playerName = "Spacefarer Crew"
                                , playerInitial = 1 }
-                  , playerAntiHero { playerName = "Purple"
+                  , playerAntiHero { playerName = "Purple Collars"
                                    , playerInitial = 1 }
                   , playerHorror ]
-  , playersEnemy = [ ("White", "Purple")
-                   , ("White", "Horror Den")
-                   , ("Purple", "Horror Den") ]
+  , playersEnemy = [ ("Spacefarer Crew", "Purple Collars")
+                   , ("Spacefarer Crew", "Horror Den")
+                   , ("Purple Collars", "Horror Den") ]
   , playersAlly = [] }
 
 playersSkirmish = playersDuel
-  { playersList = [ playerHero {playerName = "White"}
-                  , playerAntiHero {playerName = "Purple"}
+  { playersList = [ playerHero {playerName = "Spacefarer Crew"}
+                  , playerAntiHero {playerName = "Purple Collars"}
                   , playerHorror ] }
 
 playersBattle = Players

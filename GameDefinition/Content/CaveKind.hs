@@ -114,7 +114,7 @@ noise = rogue
   }
 battle = rogue  -- few lights and many solids, to help the less numerous heroes
   { csymbol       = 'B'
-  , cname         = "Battle field"
+  , cname         = "Ravaged spaceport"
   , cfreq         = [("caveBattle", 1)]
   , cgrid         = DiceXY (2 * d 2 + 1) 3
   , cminPlaceSize = DiceXY 3 3
@@ -135,7 +135,7 @@ battle = rogue  -- few lights and many solids, to help the less numerous heroes
   }
 skirmish = rogue  -- many random solid tiles, to break LOS, since it's a day
   { csymbol       = 'S'
-  , cname         = "Skirmish arena"
+  , cname         = "Woodland"
   , cfreq         = [("caveSkirmish", 1)]
   , cgrid         = DiceXY (2 * d 2 + 2) (d 2 + 2)
   , cminPlaceSize = DiceXY 3 3
@@ -156,7 +156,7 @@ skirmish = rogue  -- many random solid tiles, to break LOS, since it's a day
   }
 ambush = rogue  -- lots of lights, to give a chance to snipe
   { csymbol       = 'M'
-  , cname         = "Ambush scene"
+  , cname         = "Public garden"
   , cfreq         = [("caveAmbush", 1)]
   , cgrid         = DiceXY (2 * d 2 + 3) (d 2 + 2)
   , cminPlaceSize = DiceXY 3 3
