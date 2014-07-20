@@ -73,9 +73,10 @@ eye = ItemKind
                , AddSight 4 ]  -- can shoot for as long as lives
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "Walks with a stately dignity. You read death in the slow beckoning gestures of its revolting upper appendages."
   , ikit     = [ ("foot", COrgan)
                , ("tentacle", COrgan), ("tentacle", COrgan)
+               , ("tentacle", COrgan)
                , ("eye 4", COrgan) ]
   }
 fastEye = ItemKind
@@ -91,7 +92,7 @@ fastEye = ItemKind
                , AddSight 4 ]  -- can shoot for as long as lives
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "It bites as blindigly fast as it runs. Or rolls? Or crawls? Also, cuts and pierces."
   , ikit     = [ ("tentacle", COrgan), ("tentacle", COrgan)
                , ("tentacle", COrgan), ("tentacle", COrgan)
                , ("jaw", COrgan)
@@ -110,7 +111,7 @@ nose = ItemKind
                , AddSmell 3 ]  -- depends solely on smell
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "A blind, slimy mass of clawing, stinging and burning. You'd think it's mindless, but as soon as it touches your trembling body, it's always one step ahead."
   , ikit     = [ ("smallClaw", COrgan)
                , ("tentacle", COrgan), ("tentacle", COrgan)
                , ("tentacle", COrgan), ("tentacle", COrgan)
@@ -130,7 +131,7 @@ elbow = ItemKind
                , AddSight 15 ]  -- can shoot for as long as lives
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "It moves rarely and never makes a noise. Speaks in hard objects hurled at deadly speeds."
   , ikit     = [ ("speed gland 4", COrgan)
                , ("any arrow", CInv), ("any arrow", CInv)
                , ("any arrow", CInv), ("any arrow", CInv) ]
@@ -451,7 +452,7 @@ lightRobot = ItemKind
                , AddSight 3, AddLight 3 ]  -- light can't be turned off
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = "Exterior and interior decoration robot. Strongly fancies deep reds recently."
+  , idesc    = "Interior and exterior decoration robot. Strongly fancies deep reds recently."
   , ikit     = [ ("claw", COrgan), ("tentacle", COrgan)
                , ("armored skin", COrgan), ("eye4", COrgan) ]
   }

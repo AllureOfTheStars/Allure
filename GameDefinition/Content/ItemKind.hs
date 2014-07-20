@@ -106,7 +106,7 @@ canOfGlue = ItemKind
   , iaspects = []
   , ieffects = [Paralyze (5 + d 10)]
   , ifeature = [toVelocity 50]  -- unwieldy
-  , idesc    = "A can of liquid, fast-setting, construction glue. Take the lid off before throwing."
+  , idesc    = "A can of liquid, fast-setting, construction glue."
   , ikit     = []
   }
 harpoon = ItemKind
@@ -391,7 +391,7 @@ potion = ItemKind
   , ieffects = []
   , ifeature = [ toVelocity 50  -- oily, bad grip
                , Applicable, Fragile ]
-  , idesc    = "A flask of bubbly, slightly oily liquid of a suspect color."
+  , idesc    = "A flask of bubbly, slightly oily liquid of a suspect color."  -- purelay natural; no nano, no alien tech  -- TODO: move distortion to a special flask item or trigger when some precious high tech item is destroyed (jewlery?)?
   , ikit     = []
   }
 potion1 = potion
@@ -475,7 +475,7 @@ scroll = ItemKind
   , ieffects = []
   , ifeature = [ toVelocity 25  -- bad grip
                , Applicable ]
-  , idesc    = "A standard issue spaceship crew tablet displaying a fixed infographic and a big button. Some of these still contain a one-time password authoriziing a particular spaceship's infrastructure transition. How would the infrastructure respond after so many years is unknown."
+  , idesc    = "A standard issue spaceship crew tablet displaying a fixed infographic and a big button. Some of these still contain a one-time password authoriziing a particular spaceship's infrastructure transition. It is unknown how the infrastructure might respond after so many years."
   , ikit     = []
   }
 scroll1 = scroll
