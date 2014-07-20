@@ -121,17 +121,17 @@ playersCampaign = Players
 playersDuel = Players
   { playersList = [ playerHero { playerName = "Spacefarer Crew"
                                , playerInitial = 1 }
-                  , playerAntiHero { playerName = "Purple Collars"
+                  , playerAntiHero { playerName = "Red Collars"
                                    , playerInitial = 1 }
                   , playerHorror ]
-  , playersEnemy = [ ("Spacefarer Crew", "Purple Collars")
+  , playersEnemy = [ ("Spacefarer Crew", "Red Collars")
                    , ("Spacefarer Crew", "Horror Den")
-                   , ("Purple Collars", "Horror Den") ]
+                   , ("Red Collars", "Horror Den") ]
   , playersAlly = [] }
 
 playersSkirmish = playersDuel
   { playersList = [ playerHero {playerName = "Spacefarer Crew"}
-                  , playerAntiHero {playerName = "Purple Collars"}
+                  , playerAntiHero {playerName = "Red Collars"}
                   , playerHorror ] }
 
 playersBattle = Players
@@ -303,7 +303,7 @@ playerRobot = Player
 playerHorror = Player
   { playerName = "Horror Den"
   , playerFaction = "horror"
-  , playerIsSpawn = True  -- doesn't spawn, but a dungeon dweller, summoned, etc
+  , playerIsSpawn = False
   , playerIsHero = False
   , playerEntry = 1
   , playerInitial = 0
