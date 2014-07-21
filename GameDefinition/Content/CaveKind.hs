@@ -135,7 +135,7 @@ battle = rogue  -- few lights and many solids, to help the less numerous heroes
   }
 skirmish = rogue  -- many random solid tiles, to break LOS, since it's a day
   { csymbol       = 'S'
-  , cname         = "Woodland"
+  , cname         = "Woodland biosphere"
   , cfreq         = [("caveSkirmish", 1)]
   , cgrid         = DiceXY (2 * d 2 + 2) (d 2 + 2)
   , cminPlaceSize = DiceXY 3 3

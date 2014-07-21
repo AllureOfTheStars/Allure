@@ -28,7 +28,7 @@ campaign = ModeKind
   , mfreq    = [("campaign", 1)]
   , mplayers = playersCampaign
   , mcaves   = cavesCampaign
-  , mdesc    = "Explore the once luxurious cruise liner and bring your spoils through to the spacehip's bridge at the other end."
+  , mdesc    = "You are stranded on a once luxurious cruise liner and your plan is to fight through to the bridge at the spacehip's opposite end, gathering spoils along the way."
   }
 
 duel = ModeKind
