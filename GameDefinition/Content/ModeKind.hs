@@ -6,7 +6,7 @@
 -- | The type of kinds of game modes for Allure of the Stars.
 module Content.ModeKind ( cdefs ) where
 
-import qualified Data.EnumMap.Strict as EM
+import qualified Data.IntMap.Strict as IM
 
 import Game.LambdaHack.Common.ContentDef
 import Game.LambdaHack.Content.ModeKind
@@ -28,7 +28,7 @@ campaign = ModeKind
   , mfreq    = [("campaign", 1)]
   , mplayers = playersCampaign
   , mcaves   = cavesCampaign
-  , mdesc    = "You are stranded on a once luxurious cruise liner and your plan is to fight through to the bridge at the spacehip's opposite end, gathering spoils along the way."
+  , mdesc    = "You are stranded on a once luxurious cruise liner and your plan is to fight through to the bridge at the spacehip's opposite end, acquiring spoils along the way."
   }
 
 duel = ModeKind
@@ -152,21 +152,21 @@ playersBattle = Players
 playersSafari = Players
   { playersList = [ playerAlien { playerName = "Alien Tourist Office"
                                 , playerIsSpawn = False
-                                , playerEntry = -8
+                                , playerEntry = 4
                                 , playerInitial = 10
                                 , playerAI = False
                                 , playerUI = True }
                   , playerCivilian { playerName = "Hunam Convict Pack"
-                                   , playerEntry = -8 }
+                                   , playerEntry = 4 }
                   , playerAnimal { playerName =
                                      "Animal Magnificent Specimen Variety"
                                  , playerIsSpawn = False
-                                 , playerEntry = -9
+                                 , playerEntry = 7
                                  , playerInitial = 7 }
                   , playerAnimal { playerName =
                                      "Animal Exquisite Herds and Packs"
                                  , playerIsSpawn = False
-                                 , playerEntry = -10
+                                 , playerEntry = 10
                                  , playerInitial = 20 } ]
   , playersEnemy = [ ("Alien Tourist Office", "Hunam Convict Pack")
                    , ("Alien Tourist Office",
@@ -315,15 +315,16 @@ playerHorror = Player
 
 cavesCampaign, cavesSkirmish, cavesAmbush, cavesBattle, cavesSafari :: Caves
 
-cavesCampaign = EM.fromList [ (1, ("caveRogue", Nothing))
-                            , (12, ("caveNoise", Just True))]
+cavesCampaign = IM.fromList $ [(1, ("caveRogue", Nothing))]
+                              ++ zip [2..11] (repeat ("dng", Nothing))
+                              ++ [(12, ("caveNoise", Just True))]
 
-cavesSkirmish = EM.fromList [(3, ("caveSkirmish", Nothing))]
+cavesSkirmish = IM.fromList [(3, ("caveSkirmish", Nothing))]
 
-cavesAmbush = EM.fromList [(5, ("caveAmbush", Nothing))]
+cavesAmbush = IM.fromList [(5, ("caveAmbush", Nothing))]
 
-cavesBattle = EM.fromList [(3, ("caveBattle", Nothing))]
+cavesBattle = IM.fromList [(3, ("caveBattle", Nothing))]
 
-cavesSafari = EM.fromList [ (4, ("caveSafari1", Nothing))
+cavesSafari = IM.fromList [ (4, ("caveSafari1", Nothing))
                           , (7, ("caveSafari2", Nothing))
                           , (10, ("caveSafari3", Just False)) ]
