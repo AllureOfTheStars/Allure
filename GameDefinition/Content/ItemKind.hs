@@ -70,7 +70,7 @@ dart = ItemKind
   , irarity  = [(1, 20)]
   , iverbHit = "prick"
   , iweight  = 100
-  , iaspects = [AddHurtRanged ((d 6 + dl 6) * 10)]
+  , iaspects = [AddHurtRanged ((d 6 + dl 6) |*| 10)]
   , ieffects = [Hurt (3 * d 1)]
   , ifeature = [toVelocity 75]  -- no fins no special balance
   , idesc    = "Not particularly well balanced, but with a laser-sharpened titanium tip and blade."
@@ -83,9 +83,9 @@ dart200 = ItemKind
   , iflavour = zipPlain [BrWhite]
   , icount   = 3 * d 3
   , irarity  = [(4, 20)]
-  , iverbHit = "prick"
+  , iverbHit = "strike"
   , iweight  = 300
-  , iaspects = [AddHurtRanged ((d 6 + dl 6) * 10)]
+  , iaspects = [AddHurtRanged ((d 6 + dl 6) |*| 10)]
   , ieffects = [Hurt (2 * d 1)]
   , ifeature = [toVelocity 150]
   , idesc    = "Ideal shape, size and weight for throwing."
@@ -118,7 +118,7 @@ harpoon = ItemKind
   , irarity  = [(5, 3), (10, 5)]
   , iverbHit = "hook"
   , iweight  = 4000
-  , iaspects = [AddHurtRanged ((d 2 + 2 * dl 5) * 10)]
+  , iaspects = [AddHurtRanged ((d 2 + 2 * dl 5) |*| 10)]
   , ieffects = [Hurt (4 * d 1), PullActor (ThrowMod 200 50)]
   , ifeature = []
   , idesc    = "A display piece harking back to the Earth's oceanic tourism hayday. The cruel, barbed head lodges in its victim so painfully that the weakest tug of the thin line sends the victim flying."
@@ -149,7 +149,7 @@ needle = ItemKind
   , irarity  = []
   , iverbHit = "prick"
   , iweight  = 1
-  , iaspects = [AddHurtRanged ((d 3 + dl 3) * 10)]
+  , iaspects = [AddHurtRanged ((d 3 + dl 3) |*| 10)]
   , ieffects = [Hurt (1 * d 1)]
   , ifeature = [toVelocity 200, Fragile]
   , idesc    = "The hypodermic needle part of a micro-syringe. Without the payload, it flies far and penetrates deeply, causing intense pain on movement."
@@ -535,8 +535,8 @@ armorLeather = ItemKind
   , iverbHit = "thud"
   , iweight  = 7000
   , iaspects = [ AddHurtMelee (-3)
-               , AddArmorMelee $ (1 + dl 3) * 5
-               , AddArmorRanged $ (1 + dl 3) * 5 ]
+               , AddArmorMelee $ (1 + dl 3) |*| 5
+               , AddArmorRanged $ (1 + dl 3) |*| 5 ]
   , ieffects = []
   , ifeature = [ toVelocity 30  -- unwieldy to throw and blunt
                , Durable, EqpSlot EqpSlotAddArmorMelee "", Identified ]
@@ -549,8 +549,8 @@ armorMail = armorLeather
   , irarity  = [(7, 9)]
   , iweight  = 12000
   , iaspects = [ AddHurtMelee (-3)
-               , AddArmorMelee $ (2 + dl 3) * 5
-               , AddArmorRanged $ (2 + dl 3) * 5 ]
+               , AddArmorMelee $ (2 + dl 3) |*| 5
+               , AddArmorRanged $ (2 + dl 3) |*| 5 ]
   , idesc    = "A civilian bulletproof vest. Discourages foes from attacking your torso, making it harder for them to land a blow."
   }
 gloveFencing = ItemKind
