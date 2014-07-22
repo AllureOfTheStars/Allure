@@ -1,3 +1,12 @@
+## [v0.4.14](https://github.com/AllureOfTheStars/Allure/compare/v0.4.12...v0.4.14)
+
+- add a simple cabal test in addition to make-test and travis-test
+- add items of Wonder and of Marvel
+- add game mechanics, items and places to enable stealthy tactics
+- add tons of new items, actors and descriptions
+- add lots of shrapnel (explosions) and organs (body parts)
+- expose a bit of the plot via new game modes and their order
+
 ## [v0.4.12](https://github.com/AllureOfTheStars/Allure/compare/v0.4.10...v0.4.12)
 
 - make walls lit by default to simplify exploration

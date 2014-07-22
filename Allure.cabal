@@ -1,5 +1,5 @@
 name:          Allure
-version:       0.4.13
+version:       0.4.14
 synopsis:      Near-future roguelike game in early development
 description:   This is an alpha release of Allure of the Stars,
                a near-future Sci-Fi roguelike and tactical squad game.
@@ -49,7 +49,7 @@ executable Allure
                       Content.TileKind,
                       TieKnot,
                       Paths_Allure
-  build-depends:      LambdaHack >= 0.2.12 && <= 0.2.14,
+  build-depends:      LambdaHack >= 0.2.14 && <= 0.2.15,
                       template-haskell >= 2.6 && < 3,
 
                       array      >= 0.3.0.3 && < 1,
