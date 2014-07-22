@@ -37,7 +37,7 @@ duel = ModeKind
   , mfreq    = [("duel", 1)]
   , mplayers = playersDuel
   , mcaves   = cavesSkirmish
-  , mdesc    = "Let's settle the argument about the lady in the woody biosphere behind the saloon."
+  , mdesc    = "Let's settle the argument about the lady outside, in the woody biosphere behind the saloon."
   }
 
 skirmish = ModeKind

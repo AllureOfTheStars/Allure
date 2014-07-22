@@ -436,7 +436,8 @@ potion9 = potion
   { irarity  = [(4, 1), (10, 2)]
   , ieffects = [ OneOf [ Dominate, DropBestWeapon, RefillHP 15, Burn 9
                        , InsertMove 2]
-               , OnSmash (OneOf [ Explode "healing mist"  -- TODO: make stronger
+               , OnSmash (OneOf [ Explode "healing mist"
+                                , Explode "healing mist"
                                 , Explode "pheromone"
                                 , Explode "distortion"
                                 , Explode "explosion blast 20" ]) ]
@@ -488,7 +489,7 @@ scroll2 = scroll
   }
 scroll3 = scroll
   { irarity  = [(1, 4), (10, 2)]
-  , ieffects = [Ascend (-1)]
+  , ieffects = [Ascend 1]
   }
 scroll4 = scroll
   { ieffects = [ OneOf [ Teleport $ 2 + d 5, RefillCalm 10, RefillCalm (-10)
@@ -498,8 +499,8 @@ scroll5 = scroll
   { irarity  = [(1, 4), (10, 6)]
   , ieffects = [ OneOf [ Summon standardSummon $ d 2
                        , CallFriend 1, Ascend (-1), Ascend 1
-                       , RefillCalm 30, RefillCalm (-30), CreateItem $ d 2 ]
-                       , PolyItem CGround ]
+                       , RefillCalm 30, RefillCalm (-30), CreateItem $ d 2
+                       , PolyItem CGround ] ]
                -- TODO: ask player: Escape 1
   }
 scroll6 = scroll
