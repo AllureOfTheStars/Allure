@@ -3,8 +3,7 @@ version:       0.4.14
 synopsis:      Near-future roguelike game in early development
 description:   This is an alpha release of Allure of the Stars,
                a near-future Sci-Fi roguelike and tactical squad game.
-               The game is barely fun at this stage and not yet
-               really Sci-Fi. See the wiki for design notes and contribute.
+               See the wiki for design notes and contribute.
                .
                Please see the changelog file for recent improvements
                and the issue tracker for short-term plans. Long term goals
