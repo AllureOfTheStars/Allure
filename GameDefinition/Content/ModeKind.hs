@@ -28,7 +28,7 @@ campaign = ModeKind
   , mfreq    = [("campaign", 1)]
   , mplayers = playersCampaign
   , mcaves   = cavesCampaign
-  , mdesc    = "You got stranded looting a once luxurious cruise liner and your current plan is to fight through, gathering your spoils, to the bridge at the spacehip's opposite end."
+  , mdesc    = "You got stranded looting a once luxurious cruise liner and your current plan is to fight through, gathering your spoils, to the bridge at the giant spaceship's opposite end."
   }
 
 duel = ModeKind
@@ -46,7 +46,7 @@ skirmish = ModeKind
   , mfreq    = [("skirmish", 1)]
   , mplayers = playersSkirmish
   , mcaves   = cavesSkirmish
-  , mdesc    = "You owe restorative surgery to one of our crew: if we win, we take your little spaceship; if you win, you take ours (if you still want it)."
+  , mdesc    = "You owe restorative surgery to one of our crew: if we win, we take all you have; if you win, you take ours old giant spaceship (if you still want it when you see it)."
   }
 
 ambush = ModeKind
@@ -73,7 +73,7 @@ safari = ModeKind
   , mfreq    = [("safari", 1)]
   , mplayers = playersSafari
   , mcaves   = cavesSafari
-  , mdesc    = "In this simulation you'll discover the joys of hunting the most exquisite of Earth's fauna, both animal and semi-intelligent (exit at the opposite level)."
+  , mdesc    = "In this simulation you'll discover the joys of hunting the most exquisite of Earth's flora and fauna, both animal and semi-intelligent (exit at the bottommost level)."
   }
 
 pvp = ModeKind
@@ -100,7 +100,7 @@ defense = ModeKind
   , mfreq    = [("defense", 1)]
   , mplayers = playersDefense
   , mcaves   = cavesCampaign
-  , mdesc    = "Don't let the puny humans steal you secrets and flee, like dirty scoundrels that they are, to the exit!"
+  , mdesc    = "Don't let the half-witted humans derail your operation and flee, like the puny, naked, tentacled-less beasts that they are!"
   }
 
 

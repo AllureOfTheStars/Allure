@@ -391,7 +391,7 @@ potion = ItemKind
   , ieffects = []
   , ifeature = [ toVelocity 50  -- oily, bad grip
                , Applicable, Fragile ]
-  , idesc    = "A flask of bubbly, slightly oily liquid of a suspect color."  -- purelay natural; no nano, no alien tech  -- TODO: move distortion to a special flask item or trigger when some precious high tech item is destroyed (jewlery?)?
+  , idesc    = "A flask of bubbly, slightly oily liquid of a suspect color."  -- purely natural; no nano, no alien tech  -- TODO: move distortion to a special flask item or trigger when some precious high tech item is destroyed (jewelry?)?
   , ikit     = []
   }
 potion1 = potion
@@ -476,7 +476,7 @@ scroll = ItemKind
   , ieffects = []
   , ifeature = [ toVelocity 25  -- bad grip
                , Applicable ]
-  , idesc    = "A standard issue spaceship crew tablet displaying a fixed infographic and a big button. Some of these still contain a one-time password authoriziing a particular spaceship's infrastructure transition. It is unknown how the infrastructure might respond after so many years."
+  , idesc    = "A standard issue spaceship crew tablet displaying a fixed infographic and a big button. Some of these still contain a one-time password authorizing a particular spaceship's infrastructure transition. It is unknown how the infrastructure might respond after so many years."
   , ikit     = []
   }
 scroll1 = scroll
@@ -605,7 +605,7 @@ buckler = ItemKind
   , ieffects = []
   , ifeature = [ toVelocity 30  -- unwieldy to throw and blunt
                , Durable, EqpSlot EqpSlotAddArmorMelee "", Identified ]
-  , idesc    = "Heavy and unwieldy arm protection made from an outer airlock panel. Absorbs a precentage of melee damage, both dealt and sustained. Too small to intercept projectiles with."
+  , idesc    = "Heavy and unwieldy arm protection made from an outer airlock panel. Absorbs a percentage of melee damage, both dealt and sustained. Too small to intercept projectiles with."
   , ikit     = []
   }
 shield = buckler
@@ -616,7 +616,7 @@ shield = buckler
   , iaspects = [AddArmorMelee 80, AddHurtMelee (-70)]
   , ifeature = [ toVelocity 20  -- unwieldy to throw and blunt
                , Durable, EqpSlot EqpSlotAddArmorMelee "", Identified ]
-  , idesc    = "Large and unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a precentage of melee damage, both dealt and sustained. Too heavy to intercept projectiles with."
+  , idesc    = "Large and unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Too heavy to intercept projectiles with."
   }
 
 -- * Weapons
@@ -650,7 +650,7 @@ hammer = ItemKind
   , ieffects = [Hurt (6 * d 1)]
   , ifeature = [ toVelocity 20  -- ensuring it hits with the sharp tip costs
                , Durable, EqpSlot EqpSlotWeapon "", Identified ]
-  , idesc    = "A hammer on a long handle used for construction work. It may not cause grave wounds, but neither does it ricochet or glance off armor. Great sidearm for opportinistic blows against armored foes."
+  , idesc    = "A hammer on a long handle used for construction work. It may not cause grave wounds, but neither does it ricochet or glance off armor. Great sidearm for opportunistic blows against armored foes."
   , ikit     = []
   }
 sword = ItemKind

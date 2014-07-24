@@ -92,7 +92,7 @@ fastEye = ItemKind
                , AddSight 4 ]  -- can shoot for as long as lives
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = "It bites as blindigly fast as it runs. Or rolls? Or crawls? Also, cuts and pierces."
+  , idesc    = "It bites as blindingly fast as it runs. Or rolls? Or crawls? Also, cuts and pierces."
   , ikit     = [ ("tentacle", COrgan), ("tentacle", COrgan)
                , ("tentacle", COrgan), ("tentacle", COrgan)
                , ("jaw", COrgan)
@@ -361,7 +361,7 @@ biogasFaucet = ItemKind
                    `addSkills` EM.fromList (zip [AbWait] [1, 1..]) ]
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = "An emergency pressure-release vent on a liquified biogas pipe."
+  , idesc    = "An emergency pressure-release vent on a liquefied biogas pipe."
   , ikit     = [("explosion vent", COrgan)]
   }
 shepherdDrone = ItemKind
@@ -416,7 +416,7 @@ homeRobot = ItemKind
                , AddSmell 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = "Once a timid household robot, it magificently adapted to the deadly environment."
+  , idesc    = "Once a timid household robot, it magnificently adapted to the deadly environment."
   , ikit     = [("fist", COrgan), ("eye2", COrgan)]
   }
 wasteRobot = ItemKind

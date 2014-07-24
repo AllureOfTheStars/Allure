@@ -1,9 +1,9 @@
-## [v0.4.14](https://github.com/AllureOfTheStars/Allure/compare/v0.4.12...v0.4.14)
+## [v0.4.14, aka 'Out of cosmic balance'](https://github.com/AllureOfTheStars/Allure/compare/v0.4.12...v0.4.14)
 
+- add tons of new (unbalanced) items, actors and descriptions
 - add a simple cabal test in addition to make-test and travis-test
 - add items of Wonder and of Marvel
 - add game mechanics, items and places to enable stealthy tactics
-- add tons of new items, actors and descriptions
 - add lots of shrapnel (explosions) and organs (body parts)
 - expose a bit of the plot via new game modes and their order
 

@@ -1,7 +1,7 @@
 Allure of the Stars [![Build Status](https://secure.travis-ci.org/AllureOfTheStars/Allure.png)](http://travis-ci.org/AllureOfTheStars/Allure)[![Build Status](https://drone.io/github.com/AllureOfTheStars/Allure/status.png)](https://drone.io/github.com/AllureOfTheStars/Allure/latest)
 ===================
 
-This is an alpha release of Allure of the Stars [8],
+This is an alpha release of [Allure of the Stars] [8],
 a near-future Sci-Fi [roguelike] [2] and tactical squad game.
 Long-term goals are high replayability and auto-balancing
 through procedural content generation and persistent content
@@ -22,8 +22,7 @@ from [Hackage] [4] as follows
 
 For a newer version, install a matching LambdaHack library snapshot
 from a development branch, download the game source from [github] [3]
-and run `cabal install` from the main directory (for sample commands
-see file `.travis.yml`).
+and run `cabal install` from the main directory.
 
 
 Compatibility notes
@@ -37,24 +36,23 @@ correctly depending on versions of the libraries, terminfo and terminal
 emulators. The curses frontend is not fully supported due to the limitations
 of the curses library. With the vty frontend run in an xterm,
 CTRL-keypad keys for running seem to work OK, but on rxvt they do not.
-laptop (uk8o79jl) and Vi keys (hjklyubn, if enabled in config.ui.ini)
+Laptop (uk8o79jl) and Vi keys (hjklyubn, if enabled in config.ui.ini)
 should work everywhere regardless. GTK works fine, too.
 
 
 Testing and debugging
 ---------------------
 
-The `Makefile` contains many sample test commands. All that use the screensaver
-game modes (AI vs. AI) and the simplest stdout frontend are gathered
-in `make test`. Of these, travis runs one of the sets prefixed
-`test-travis` on each push to the repo. Commands with prefix
-`frontend` run AI vs. AI games with the standard, user-friendly frontend.
-Commands with prefix `peek` set up a game mode where the player peeks
-into AI moves each time an AI actor dies or autosave kicks in.
+The `Makefile` contains many sample test commands. All commands that use
+the screensaver game modes (AI vs. AI) and the dumb `stdout` frontend
+are gathered in `make test`. Of these, travis runs `test-travis-*`
+on each push to the repo. Test commands with prefix `frontend` start
+AI vs. AI games with the standard, user-friendly frontend.
+
 Run `Allure --help` to see a brief description of all debug options.
 Of these, `--sniffIn` and `--sniffOut` are very useful (though verbose
 and initially cryptic), for monitoring the traffic between clients
-and the server. Some options in the config file may turn out useful too,
+and the server. Some options in the config file may prove useful too,
 though they mostly overlap with commandline options (and will be totally
 merged at some point).
 
