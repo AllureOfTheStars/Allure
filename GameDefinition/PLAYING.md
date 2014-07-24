@@ -1,14 +1,15 @@
 Playing Allure of the Stars
 ===========================
 
-Gameplay of Allure of the Stars centers around exploring an abandoned
-Solar System spaceship, alone or in a party of trusted crew-members,
-setting up ambushes for it's feral denizens, hiding in shadows,
-covering tracks, bumping into unspeakable horrors, hidden mechanisms
-and astounding technical treasures and making creative use of it all.
-The mysterious inhabitants of the ship perform the same feats,
-intelligence allowing, while tirelessly chasing the stranded heroes
-by sight, sound and smell.
+Your party of trusted crew-members is set to test their fortune
+by exploring an abandoned Solar System passenger cruiser.
+You are going to set up ambushes for it's feral denizens, hide in shadows,
+cover tracks, bump into unspeakable horrors, hidden mechanisms
+and astounding technical treasures and make creative use of it all.
+The mysterious inhabitants of the gigantic spaceship are bound
+to welcome intruders with bloody surprises of their own.
+As soon as you turn your back in fear, expect to be chased tirelessly
+throughout all the decks, by sight, sound and smell.
 
 Once the few basic command keys and on-screen symbols are learned,
 mastery and enjoyment of the game is the matter of tactical skill
@@ -21,7 +22,7 @@ Heroes
 ------
 
 The heroes are marked on the map with symbols `@` and `1` through `9`.
-Their goal is to explore an old, gigantic, once luxurious space liner,
+Their goal is to explore an old, warped, once luxurious, space liner,
 battle the horrors within, gather as much gold and precious gems
 as possible, and escape to tell the tale.
 
@@ -39,16 +40,16 @@ Calm (composure, focus, attentiveness), then his current and maximum
 HP (hit points, health). At the end, the personal target of the leader
 is described, in this case a basilisk monster, with hit points drawn as a bar.
 
-The other status line describes the current location.
+The other status line describes the current location in relation to the party.
 
-    5  Tall cavern   [33% seen] Cursor: exact spot (71,12)  p15 l10
+    5  Lofty hall   [33% seen] Cursor: exact spot (71,12)  p15 l10
 
 First comes the depth of the current level and its name.
 Then the percentage of its explorable tiles already seen by the heroes.
 The 'cursor' is the common target of the whole party,
 directly manipulated with movement keys in the targeting mode.
 At the end comes the length of the shortest path from the leader
-to the cursor position and the straight-line distance between the points.
+to the cursor position and the straight-line distance between the two points.
 
 
 Spaceship
@@ -240,21 +241,21 @@ You may propel any item in your equipment, inventory and on the ground
 (press `?` to choose an item and press it again for a non-standard choice).
 Only items of a few kinds inflict any damage, but some have other effects.
 Whenever the monster's or hero's hit points reach zero, the combatant dies.
-When the last hero dies, the game ends.
+When the last hero dies, the game ends in defeat.
 
 
 On Winning and Dying
 --------------------
 
-You win the game if you escape the spaceship alive or, if there is no easy
-way out, if you eliminate all opposition. In the former case, your score
-is based on the gold and precious gems you've plundered, plus a bonus
-based on the number of heroes you lost. In the latter case, your score
-is based on the number of turns you spent overcoming your foes and,
-as a bonus, the number of enemies you've subdued.
+You win the game if you escape the spaceship alive or, in game modes with
+no exit opportunity, if you eliminate all opposition. In the former case,
+your score is based on the gold and precious gems you've plundered,
+plus a bonus based on the number of heroes you lost. In the latter case,
+your score is based on the number of turns you spent overcoming your foes
+and, as a bonus, the number of enemies you've subdued.
 
 If all your heroes fall, you are awarded a score for your valiant deeds,
 but no winning bonus. When, invariably, a new overconfident party
-of adventurers storms the spaceship, they start from a different entrance,
-with no experience and no equipment, and fresh, undaunted enemies
+of adventurers storms the spaceship, they start from a new entrance,
+with no experience and no equipment, and new, undaunted enemies
 bar their way.

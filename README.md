@@ -3,7 +3,10 @@ Allure of the Stars [![Build Status](https://secure.travis-ci.org/AllureOfTheSta
 
 This is an alpha release of [Allure of the Stars] [8],
 a near-future Sci-Fi [roguelike] [2] and tactical squad game.
-Long-term goals are high replayability and auto-balancing
+Have a look at [PLAYING.md](GameDefinition/PLAYING.md) or jump straight
+into the fray.
+
+Long-term goals of the project are high replayability and auto-balancing
 through procedural content generation and persistent content
 modification based on player behaviour. The game is written in [Haskell] [1]
 using the [LambdaHack] [5] roguelike game engine.
@@ -43,11 +46,12 @@ should work everywhere regardless. GTK works fine, too.
 Testing and debugging
 ---------------------
 
-The `Makefile` contains many sample test commands. All commands that use
-the screensaver game modes (AI vs. AI) and the dumb `stdout` frontend
-are gathered in `make test`. Of these, travis runs `test-travis-*`
-on each push to the repo. Test commands with prefix `frontend` start
-AI vs. AI games with the standard, user-friendly frontend.
+The [Makefile](Makefile) contains many sample test commands.
+All commands that use the screensaver game modes (AI vs. AI)
+ and the dumb `stdout` frontend are gathered in `make test`.
+Of these, travis runs `test-travis-*` on each push to the repo.
+Test commands with prefix `frontend` start AI vs. AI games
+with the standard, user-friendly frontend.
 
 Run `Allure --help` to see a brief description of all debug options.
 Of these, `--sniffIn` and `--sniffOut` are very useful (though verbose
@@ -61,7 +65,8 @@ Further information
 -------------------
 
 For more information, visit the [wiki] [6]
-and see `GameDefinition/PLAYING.md`, `CREDITS` and `LICENSE`.
+and see [PLAYING.md](GameDefinition/PLAYING.md), [CREDITS](CREDITS)
+and [LICENSE](LICENSE).
 
 Have fun!
 
