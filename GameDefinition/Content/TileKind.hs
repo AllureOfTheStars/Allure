@@ -156,7 +156,7 @@ stairsDown = TileKind
   }
 escapeUp = TileKind
   { tsymbol  = '<'
-  , tname    = "exit airlock up"
+  , tname    = "airlock to the shuttle"
   , tfreq    = [("legendLit", 100), ("legendDark", 100)]
   , tcolor   = BrYellow
   , tcolor2  = BrYellow
@@ -164,7 +164,7 @@ escapeUp = TileKind
   }
 escapeDown = TileKind
   { tsymbol  = '>'
-  , tname    = "exit airlock down"
+  , tname    = "airlock to the shuttle"
   , tfreq    = [("legendLit", 100), ("legendDark", 100)]
   , tcolor   = BrYellow
   , tcolor2  = BrYellow

@@ -28,7 +28,7 @@ campaign = ModeKind
   , mfreq    = [("campaign", 1)]
   , mplayers = playersCampaign
   , mcaves   = cavesCampaign
-  , mdesc    = "You are stranded on a once luxurious cruise liner and your plan is to fight through to the bridge at the spacehip's opposite end, acquiring spoils along the way."
+  , mdesc    = "You got stranded looting a once luxurious cruise liner and your current plan is to fight through, gathering your spoils, to the bridge at the spacehip's opposite end."
   }
 
 duel = ModeKind
@@ -37,7 +37,7 @@ duel = ModeKind
   , mfreq    = [("duel", 1)]
   , mplayers = playersDuel
   , mcaves   = cavesSkirmish
-  , mdesc    = "Let's settle the argument about the lady outside, in the woody biosphere behind the saloon."
+  , mdesc    = "Let's settle the argument about this noble lady outside, in the woody biosphere behind the saloon."
   }
 
 skirmish = ModeKind
