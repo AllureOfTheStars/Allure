@@ -187,36 +187,24 @@ playersPvP = Players
 
 playersCoop = Players
   { playersList = [ playerAntiHero { playerName = "Coral" }
-                  , playerAntiHero { playerName = "Amber" }
+                  , playerAntiHero { playerName = "Amber"
+                                   , playerLeader = False }
                   , playerAntiHero { playerName = "Green" }
-                  , playerAntiHero { playerName = "Yellow" }
-                  , playerAntiHero { playerName = "Cyan" }
-                  , playerAntiHero { playerName = "Red"
-                                   , playerLeader = False }
-                  , playerAntiHero { playerName = "Blue"
-                                   , playerLeader = False }
                   , playerAnimal { playerUI = True }
-                  , playerAlien
+                  , playerAlien { playerName = "Alien Hierarchy" }
                   , playerAlien { playerName = "Leaderless Alien Hierarchy"
                                   , playerLeader = False }
-                  , playerAnimal
                   , playerRobot ]
   , playersEnemy = [ ("Coral", "Alien Hierarchy")
-                   , ("Coral", "Animal Kingdom")
-                   , ("Coral", "Robot Anarchy")
                    , ("Amber", "Alien Hierarchy")
-                   , ("Amber", "Animal Kingdom")
-                   , ("Amber", "Robot Anarchy")
-                   , ("Green", "Alien Hierarchy")
-                   , ("Yellow", "Alien Hierarchy")
-                   , ("Cyan", "Alien Hierarchy")
-                   , ("Red", "Alien Hierarchy")
-                   , ("Blue", "Alien Hierarchy")
                    , ("Animal Kingdom", "Leaderless Alien Hierarchy") ]
   , playersAlly = [ ("Coral", "Amber")
-                  , ("Green", "Yellow")
-                  , ("Green", "Cyan")
-                  , ("Yellow", "Cyan") ] }
+                  , ("Coral", "Green")
+                  , ("Amber", "Green")
+                  , ("Green", "Animal Kingdom")
+                  , ("Green", "Robot Anarchy")
+                  , ("Green", "Alien Hierarchy")
+                  , ("Green", "Leaderless Alien Hierarchy") ] }
 
 playersDefense = Players
   { playersList = [ playerAlien { playerInitial = 1
