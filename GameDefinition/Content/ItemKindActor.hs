@@ -62,7 +62,7 @@ taxCollector = clerk
 
 eye = ItemKind
   { isymbol  = 'w'
-  , iname    = "walker"
+  , iname    = "beckoning walker"
   , ifreq    = [("alien", 100), ("horror", 100)]
   , iflavour = zipPlain [BrRed]
   , icount   = 1
@@ -81,7 +81,7 @@ eye = ItemKind
   }
 fastEye = ItemKind
   { isymbol  = 'b'
-  , iname    = "biter"
+  , iname    = "crawling biter"
   , ifreq    = [("alien", 100), ("horror", 100)]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
@@ -119,7 +119,7 @@ nose = ItemKind
   }
 elbow = ItemKind
   { isymbol  = 's'
-  , iname    = "shooter"
+  , iname    = "creepy shooter"
   , ifreq    = [("alien", 100), ("horror", 100)]
   , iflavour = zipPlain [BrMagenta]
   , icount   = 1
@@ -131,7 +131,7 @@ elbow = ItemKind
                , AddSight 15 ]  -- can shoot for as long as lives
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = "It moves rarely and never makes a noise. Speaks in hard objects hurled at deadly speeds."
+  , idesc    = "It moves in sudden jerks and never makes a noise. Speaks in hard objects hurled at deadly speeds."
   , ikit     = [ ("speed gland 4", COrgan)
                , ("any arrow", CInv), ("any arrow", CInv)
                , ("any arrow", CInv), ("any arrow", CInv) ]
