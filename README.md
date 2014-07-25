@@ -6,6 +6,8 @@ a near-future Sci-Fi [roguelike] [2] and tactical squad game.
 Have a look at [PLAYING.md](GameDefinition/PLAYING.md) or jump straight
 into the fray.
 
+![gameplay screenshot](GameDefinition/screenshot.png?raw=true)
+
 Long-term goals of the project are high replayability and auto-balancing
 through procedural content generation and persistent content
 modification based on player behaviour. The game is written in [Haskell] [1]
