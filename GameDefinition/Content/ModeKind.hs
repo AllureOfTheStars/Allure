@@ -136,7 +136,7 @@ playersSkirmish = playersDuel
 
 playersBattle = Players
   { playersList = [ playerHero {playerInitial = 5}
-                  , playerAlien { playerInitial = 10
+                  , playerAlien { playerInitial = 15
                                 , playerIsSpawn = False }
                   , playerAnimal { playerInitial = 5
                                  , playerIsSpawn = False }
