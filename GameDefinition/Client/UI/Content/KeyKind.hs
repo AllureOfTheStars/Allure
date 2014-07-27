@@ -81,16 +81,7 @@ standardKeys = KeyKind
       , ("c", ([CmdMove], AlterDir
            [ AlterFeature { verb = "close"
                           , object = "door"
-                          , feature = F.CloseTo "vertical closed door Lit" }
-           , AlterFeature { verb = "close"
-                          , object = "door"
-                          , feature = F.CloseTo "horizontal closed door Lit" }
-           , AlterFeature { verb = "close"
-                          , object = "door"
-                          , feature = F.CloseTo "vertical closed door Dark" }
-           , AlterFeature { verb = "close"
-                          , object = "door"
-                          , feature = F.CloseTo "horizontal closed door Dark" }
+                          , feature = F.CloseTo "closed door" }
            ]))
       , ("period", ([CmdMove], Macro "" ["KP_Begin"]))
       , ("i", ([CmdMove], Macro "" ["KP_Begin"]))
