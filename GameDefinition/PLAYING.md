@@ -1,7 +1,7 @@
 Playing Allure of the Stars
 ===========================
 
-Your party of trusted crew-members is set to test their fortune
+Your party of trusted crew-members is about to test their fortune
 by exploring an abandoned Solar System passenger cruiser.
 You are going to set up ambushes for it's feral denizens, hide in shadows,
 cover tracks, bump into unspeakable horrors, hidden mechanisms
