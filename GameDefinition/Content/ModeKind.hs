@@ -121,9 +121,9 @@ rosterCampaign = Roster
 
 rosterDuel = Roster
   { rosterList = [ playerHero { fname = "Spacefarer Crew"
-                              , finitial = 1 }
+                              , finitialActors = 1 }
                  , playerAntiHero { fname = "Red Collars"
-                                  , finitial = 1 }
+                                  , finitialActors = 1 }
                  , playerHorror ]
   , rosterEnemy = [ ("Spacefarer Crew", "Red Collars")
                   , ("Spacefarer Crew", "Horror Den")
@@ -136,12 +136,12 @@ rosterSkirmish = rosterDuel
                  , playerHorror ] }
 
 rosterBattle = Roster
-  { rosterList = [ playerHero {finitial = 5}
-                 , playerAlien { finitial = 15
+  { rosterList = [ playerHero {finitialActors = 5}
+                 , playerAlien { finitialActors = 15
                                , fisSpawn = False }
-                 , playerAnimal { finitial = 5
+                 , playerAnimal { finitialActors = 5
                                 , fisSpawn = False }
-                 , playerRobot { finitial = 5
+                 , playerRobot { finitialActors = 5
                                 , fisSpawn = False } ]
   , rosterEnemy = [ ("Spacefarer Crew", "Alien Hierarchy")
                   , ("Spacefarer Crew", "Animal Kingdom")
@@ -153,22 +153,22 @@ rosterBattle = Roster
 rosterSafari = Roster
   { rosterList = [ playerAlien { fname = "Alien Tourist Office"
                                , fisSpawn = False
-                               , fentry = 4
-                               , finitial = 10
+                               , fentryLevel = 4
+                               , finitialActors = 10
                                , fisAI = False
-                               , fisUI = True }
+                               , fhasUI = True }
                  , playerCivilian { fname = "Hunam Convict Pack"
-                                  , fentry = 4 }
+                                  , fentryLevel = 4 }
                  , playerAnimal { fname =
                                     "Animal Magnificent Specimen Variety"
                                 , fisSpawn = False
-                                , fentry = 7
-                                , finitial = 7 }
+                                , fentryLevel = 7
+                                , finitialActors = 7 }
                  , playerAnimal { fname =
                                     "Animal Exquisite Herds and Packs"
                                 , fisSpawn = False
-                                , fentry = 10
-                                , finitial = 20 } ]
+                                , fentryLevel = 10
+                                , finitialActors = 20 } ]
   , rosterEnemy = [ ("Alien Tourist Office", "Hunam Convict Pack")
                   , ("Alien Tourist Office",
                      "Animal Magnificent Specimen Variety")
@@ -189,12 +189,12 @@ rosterPvP = Roster
 rosterCoop = Roster
   { rosterList = [ playerAntiHero { fname = "Coral" }
                  , playerAntiHero { fname = "Amber"
-                                  , fleader = False }
+                                  , fhasLeader = False }
                  , playerAntiHero { fname = "Green" }
-                 , playerAnimal { fisUI = True }
+                 , playerAnimal { fhasUI = True }
                  , playerAlien { fname = "Alien Hierarchy" }
                  , playerAlien { fname = "Leaderless Alien Hierarchy"
-                               , fleader = False }
+                               , fhasLeader = False }
                  , playerRobot ]
   , rosterEnemy = [ ("Coral", "Alien Hierarchy")
                   , ("Amber", "Alien Hierarchy")
@@ -208,11 +208,11 @@ rosterCoop = Roster
                  , ("Green", "Leaderless Alien Hierarchy") ] }
 
 rosterDefense = Roster
-  { rosterList = [ playerAlien { finitial = 1
+  { rosterList = [ playerAlien { finitialActors = 1
                                , fisAI = False
-                               , fisUI = True }
+                               , fhasUI = True }
                  , playerAntiHero { fname = "Yellow"
-                                  , finitial = 10 }
+                                  , finitialActors = 10 }
                  , playerAnimal
                  , playerRobot ]
   , rosterEnemy = [ ("Yellow", "Alien Hierarchy")
