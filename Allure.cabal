@@ -1,11 +1,11 @@
 name:          Allure
 version:       0.4.15
-synopsis:      Near-future roguelike game in early development
+synopsis:      Near-future Sci-Fi roguelike and tactical squad game
 description:   This is an alpha release of Allure of the Stars,
                a near-future Sci-Fi roguelike and tactical squad game.
                See the wiki for design notes and contribute.
                .
-               <<GameDefinition/screenshot.png>>
+               <<https://raw.githubusercontent.com/AllureOfTheStars/media/master/screenshot/safari1.png>>
                .
                Please see the changelog file for recent improvements
                and the issue tracker for short-term plans. Long term goals
