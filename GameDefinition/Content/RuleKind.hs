@@ -33,7 +33,7 @@ standard = RuleKind
   , rfreq          = [("standard", 100)]
   -- Check whether one position is accessible from another.
   -- Precondition: the two positions are next to each other
-  -- and the target tile is walkable. 
+  -- and the target tile is walkable.
   -- TODO: in the future check flying for chasms, swimming for water, etc.
   , raccessible    = Nothing
   , raccessibleDoor = Nothing
@@ -75,4 +75,5 @@ standard = RuleKind
   , rscoresFile = "scores"
   , rsavePrefix = "save"
   , rsharedStash = True
+  , rnearby = 10
   }

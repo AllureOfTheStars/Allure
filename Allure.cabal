@@ -40,12 +40,12 @@ executable Allure
   main-is:            Main.hs
   other-modules:      Client.UI.Content.KeyKind,
                       Content.CaveKind,
-                      Content.FactionKind,
                       Content.ItemKind,
                       Content.ItemKindActor,
                       Content.ItemKindOrgan,
                       Content.ItemKindShrapnel,
                       Content.ModeKind,
+                      Content.ModeKindPlayer,
                       Content.PlaceKind,
                       Content.RuleKind,
                       Content.TileKind,
