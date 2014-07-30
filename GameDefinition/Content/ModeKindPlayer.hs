@@ -5,8 +5,8 @@
 --
 -- | Definition of basic players for Allure of the Stars.
 module Content.ModeKindPlayer
-  ( playerHero, playerAntiHero, playerCivilian, playerAlien, playerAnimal
-  , playerRobot, playerHorror
+  ( playerHero, playerAntiHero, playerCivilian, playerMonster
+  , playerAntiMonster, playerAnimal, playerRobot, playerHorror
   ) where
 
 import qualified Data.EnumMap.Strict as EM
@@ -14,18 +14,21 @@ import qualified Data.EnumMap.Strict as EM
 import Game.LambdaHack.Common.Ability
 import Game.LambdaHack.Content.ModeKind
 
-playerHero, playerAntiHero, playerCivilian, playerAlien, playerAnimal, playerRobot, playerHorror :: Player
+playerHero, playerAntiHero, playerCivilian, playerMonster, playerAnimal, playerAntiMonster, playerRobot, playerHorror :: Player
 
 playerHero = Player
   { fname = "Spacefarer Crew"
   , fgroup = "hero"
   , fskillsLeader = allSkills
   , fskillsOther  = meleeAdjacent
-  , fisSpawn = False
-  , fisHero = True
+  , fcanEscape = True
+  , fneverEmpty = True
+  , fhasNumbers = True
+  , fhasGender = True
+  , foverrideAI = Nothing
   , fentryLevel = 1
   , finitialActors = 3
-  , fhasLeader = True
+  , fhasLeader = LeaderMode False False
   , fisAI = False
   , fhasUI = True
   }
@@ -40,27 +43,38 @@ playerCivilian = Player
   , fgroup = "civilian"
   , fskillsLeader = allSkills
   , fskillsOther  = allSkills  -- not coordinated by any leadership
-  , fisSpawn = False
-  , fisHero = False
+  , fcanEscape = False
+  , fneverEmpty = True
+  , fhasNumbers = False
+  , fhasGender = True
+  , foverrideAI = Nothing
   , fentryLevel = 1
   , finitialActors = 3
-  , fhasLeader = False  -- unorganized
+  , fhasLeader = LeaderNull  -- unorganized
   , fisAI = True
   , fhasUI = False
   }
 
-playerAlien = Player
+playerMonster = Player
   { fname = "Alien Hierarchy"
   , fgroup = "alien"
   , fskillsLeader = allSkills
   , fskillsOther  = allSkills
-  , fisSpawn = True
-  , fisHero = False
+  , fcanEscape = False
+  , fneverEmpty = False
+  , fhasNumbers = False
+  , fhasGender = False
+  , foverrideAI = Nothing
   , fentryLevel = 4
   , finitialActors = 3
-  , fhasLeader = True
+  , fhasLeader = LeaderMode True False
   , fisAI = True
   , fhasUI = False
+  }
+
+playerAntiMonster = playerMonster
+  { fisAI = False
+  , fhasUI = True
   }
 
 playerAnimal = Player
@@ -68,11 +82,14 @@ playerAnimal = Player
   , fgroup = "animal"
   , fskillsLeader = animalSkills
   , fskillsOther  = animalSkills
-  , fisSpawn = True
-  , fisHero = False
+  , fcanEscape = False
+  , fneverEmpty = False
+  , fhasNumbers = False
+  , fhasGender = False
+  , foverrideAI = Nothing
   , fentryLevel = 2
   , finitialActors = 3
-  , fhasLeader = False
+  , fhasLeader = LeaderNull
   , fisAI = True
   , fhasUI = False
   }
@@ -82,11 +99,14 @@ playerRobot = Player
   , fgroup = "robot"
   , fskillsLeader = robotSkills
   , fskillsOther  = robotSkills
-  , fisSpawn = True
-  , fisHero = False
+  , fcanEscape = False
+  , fneverEmpty = False
+  , fhasNumbers = False
+  , fhasGender = False
+  , foverrideAI = Nothing
   , fentryLevel = 3
   , finitialActors = 3
-  , fhasLeader = False
+  , fhasLeader = LeaderNull
   , fisAI = True
   , fhasUI = False
   }
@@ -96,11 +116,14 @@ playerHorror = Player
   , fgroup = "horror"
   , fskillsLeader = allSkills
   , fskillsOther  = allSkills
-  , fisSpawn = False
-  , fisHero = False
+  , fcanEscape = False
+  , fneverEmpty = False
+  , fhasNumbers = False
+  , fhasGender = False
+  , foverrideAI = Nothing
   , fentryLevel = 1
   , finitialActors = 0
-  , fhasLeader = False
+  , fhasLeader = LeaderNull
   , fisAI = True
   , fhasUI = False
   }

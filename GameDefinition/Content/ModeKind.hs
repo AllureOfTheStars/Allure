@@ -109,7 +109,7 @@ rosterCampaign, rosterDuel, rosterSkirmish, rosterBattle, rosterSafari, rosterPv
 
 rosterCampaign = Roster
   { rosterList = [ playerHero
-                 , playerAlien
+                 , playerMonster
                  , playerAnimal
                  , playerRobot ]
   , rosterEnemy = [ ("Spacefarer Crew", "Alien Hierarchy")
@@ -137,12 +137,12 @@ rosterSkirmish = rosterDuel
 
 rosterBattle = Roster
   { rosterList = [ playerHero {finitialActors = 5}
-                 , playerAlien { finitialActors = 15
-                               , fisSpawn = False }
+                 , playerMonster { finitialActors = 15
+                                 , fneverEmpty = True }
                  , playerAnimal { finitialActors = 5
-                                , fisSpawn = False }
+                                , fneverEmpty = True }
                  , playerRobot { finitialActors = 5
-                                , fisSpawn = False } ]
+                               , fneverEmpty = True } ]
   , rosterEnemy = [ ("Spacefarer Crew", "Alien Hierarchy")
                   , ("Spacefarer Crew", "Animal Kingdom")
                   , ("Spacefarer Crew", "Robot Anarchy") ]
@@ -151,22 +151,24 @@ rosterBattle = Roster
                 , ("Robot Anarchy", "Animal Kingdom") ] }
 
 rosterSafari = Roster
-  { rosterList = [ playerAlien { fname = "Alien Tourist Office"
-                               , fisSpawn = False
-                               , fentryLevel = 4
-                               , finitialActors = 10
-                               , fisAI = False
-                               , fhasUI = True }
+  { rosterList = [ playerAntiMonster { fname = "Alien Tourist Office"
+                                     , fcanEscape = True
+                                     , fneverEmpty = True
+                                     -- Follow-the-leader, as tourists do.
+                                     , foverrideAI = Just ()
+                                     , fentryLevel = 4
+                                     , finitialActors = 15
+                                     , fhasLeader = LeaderMode False False }
                  , playerCivilian { fname = "Hunam Convict Pack"
                                   , fentryLevel = 4 }
                  , playerAnimal { fname =
                                     "Animal Magnificent Specimen Variety"
-                                , fisSpawn = False
+                                , fneverEmpty = True
                                 , fentryLevel = 7
                                 , finitialActors = 7 }
                  , playerAnimal { fname =
                                     "Animal Exquisite Herds and Packs"
-                                , fisSpawn = False
+                                , fneverEmpty = True
                                 , fentryLevel = 10
                                 , finitialActors = 20 } ]
   , rosterEnemy = [ ("Alien Tourist Office", "Hunam Convict Pack")
@@ -189,12 +191,12 @@ rosterPvP = Roster
 rosterCoop = Roster
   { rosterList = [ playerAntiHero { fname = "Coral" }
                  , playerAntiHero { fname = "Amber"
-                                  , fhasLeader = False }
+                                  , fhasLeader = LeaderNull }
                  , playerAntiHero { fname = "Green" }
                  , playerAnimal { fhasUI = True }
-                 , playerAlien { fname = "Alien Hierarchy" }
-                 , playerAlien { fname = "Leaderless Alien Hierarchy"
-                               , fhasLeader = False }
+                 , playerMonster { fname = "Alien Hierarchy" }
+                 , playerMonster { fname = "Leaderless Alien Hierarchy"
+                                 , fhasLeader = LeaderNull }
                  , playerRobot ]
   , rosterEnemy = [ ("Coral", "Alien Hierarchy")
                   , ("Amber", "Alien Hierarchy")
@@ -208,9 +210,7 @@ rosterCoop = Roster
                  , ("Green", "Leaderless Alien Hierarchy") ] }
 
 rosterDefense = Roster
-  { rosterList = [ playerAlien { finitialActors = 1
-                               , fisAI = False
-                               , fhasUI = True }
+  { rosterList = [ playerAntiMonster { finitialActors = 1 }
                  , playerAntiHero { fname = "Yellow"
                                   , finitialActors = 10 }
                  , playerAnimal
