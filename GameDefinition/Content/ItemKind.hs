@@ -24,7 +24,8 @@ cdefs = ContentDef
   { getSymbol = isymbol
   , getName = iname
   , getFreq = ifreq
-  , validate = validateItemKind
+  , validateSingle = validateSingleItemKind
+  , validateAll = validateAllItemKind
   , content = items ++ organs ++ shrapnels ++ actors
   }
 

@@ -17,7 +17,8 @@ cdefs = ContentDef
   { getSymbol = msymbol
   , getName = mname
   , getFreq = mfreq
-  , validate = validateModeKind
+  , validateSingle = validateSingleModeKind
+  , validateAll = validateAllModeKind
   , content =
       [campaign, duel, skirmish, ambush, battle, safari, pvp, coop, defense]
   }
@@ -54,7 +55,7 @@ ambush = ModeKind
   { msymbol = 'm'
   , mname   = "ambush"
   , mfreq   = [("ambush", 1)]
-  , mroster = rosterSkirmish
+  , mroster = rosterAmbush
   , mcaves  = cavesAmbush
   , mdesc   = "Conveniently, on the path to the Triton's spaceport, passengers can relax in a shady park."
   }
@@ -105,7 +106,7 @@ defense = ModeKind
   }
 
 
-rosterCampaign, rosterDuel, rosterSkirmish, rosterBattle, rosterSafari, rosterPvP, rosterCoop, rosterDefense :: Roster
+rosterCampaign, rosterDuel, rosterSkirmish, rosterAmbush, rosterBattle, rosterSafari, rosterPvP, rosterCoop, rosterDefense :: Roster
 
 rosterCampaign = Roster
   { rosterList = [ playerHero
@@ -121,8 +122,10 @@ rosterCampaign = Roster
 
 rosterDuel = Roster
   { rosterList = [ playerHero { fname = "Spacefarer Crew"
+                              , fentryLevel = 3
                               , finitialActors = 1 }
                  , playerAntiHero { fname = "Red Collars"
+                                  , fentryLevel = 3
                                   , finitialActors = 1 }
                  , playerHorror ]
   , rosterEnemy = [ ("Spacefarer Crew", "Red Collars")
@@ -131,15 +134,27 @@ rosterDuel = Roster
   , rosterAlly = [] }
 
 rosterSkirmish = rosterDuel
-  { rosterList = [ playerHero {fname = "Spacefarer Crew"}
-                 , playerAntiHero {fname = "Red Collars"}
+  { rosterList = [ playerHero { fname = "Spacefarer Crew"
+                              , fentryLevel = 3 }
+                 , playerAntiHero { fname = "Red Collars"
+                                  , fentryLevel = 3 }
                  , playerHorror ] }
 
+rosterAmbush = rosterDuel
+  { rosterList = [ playerHero { fname = "Spacefarer Crew"
+                              , fentryLevel = 5 }
+                 , playerAntiHero { fname = "Red Collars"
+                                  , fentryLevel = 5 }
+                 , playerHorror {fentryLevel = 5} ] }
+
 rosterBattle = Roster
-  { rosterList = [ playerHero {finitialActors = 5}
+  { rosterList = [ playerHero { finitialActors = 5
+                              , fentryLevel = 3 }
                  , playerMonster { finitialActors = 15
+                                 , fentryLevel = 3
                                  , fneverEmpty = True }
                  , playerAnimal { finitialActors = 5
+                                , fentryLevel = 3
                                 , fneverEmpty = True }
                  , playerRobot { finitialActors = 5
                                , fneverEmpty = True } ]
@@ -180,8 +195,10 @@ rosterSafari = Roster
                   , "Animal Exquisite Herds and Packs" )] }
 
 rosterPvP = Roster
-  { rosterList = [ playerHero {fname = "Red"}
-                 , playerHero {fname = "Blue"}
+  { rosterList = [ playerHero { fname = "Red"
+                              , fentryLevel = 3 }
+                 , playerHero { fname = "Blue"
+                              , fentryLevel = 3 }
                  , playerHorror ]
   , rosterEnemy = [ ("Red", "Blue")
                   , ("Red", "Horror Den")

@@ -14,7 +14,8 @@ cdefs = ContentDef
   { getSymbol = psymbol
   , getName = pname
   , getFreq = pfreq
-  , validate = validatePlaceKind
+  , validateSingle = validateSinglePlaceKind
+  , validateAll = validateAllPlaceKind
   , content =
       [rect, ruin, collapsed, collapsed2, collapsed3, collapsed4, pillar, pillarC, pillar3, lampPost, lampPost2, lampPost3, lampPost4, treeShade, treeShade2, treeShade3, oval, ovalFloor, ovalSquare, colonnade, colonnadeWide, maze,  maze2, maze3, mazeBig, mazeBig2, mazeBig3, cells]
   }

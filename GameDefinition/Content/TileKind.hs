@@ -23,7 +23,8 @@ cdefs = ContentDef
   { getSymbol = tsymbol
   , getName = tname
   , getFreq = tfreq
-  , validate = validateTileKind
+  , validateSingle = validateSingleTileKind
+  , validateAll = validateAllTileKind
   , content =
       [wall, wallCache, hardRock, doorlessWall, oriel, pillar, lampPost, burningBush, bush, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorActorLit, floorItemLit, floorActorItemLit, floorArenaShade, floorRedLit, floorBlueLit, floorGreenLit]
       ++ map makeDarkColor [floorCorridorLit, floorActorLit, floorItemLit, floorActorItemLit]
