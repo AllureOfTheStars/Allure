@@ -3,7 +3,7 @@
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
--- | Weapon and treasure definitions.
+-- | Item and treasure definitions.
 module Content.ItemKind ( cdefs ) where
 
 import Data.List

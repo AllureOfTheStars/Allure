@@ -3,7 +3,7 @@
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
--- | Definition of basic players for Allure of the Stars.
+-- | Basic players definitions.
 module Content.ModeKindPlayer
   ( playerHero, playerAntiHero, playerCivilian, playerMonster
   , playerAntiMonster, playerAnimal, playerRobot, playerHorror

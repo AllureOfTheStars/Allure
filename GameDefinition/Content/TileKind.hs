@@ -3,7 +3,7 @@
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
--- | Terrain tiles for Allure of the Stars.
+-- | Terrain tile definitions.
 module Content.TileKind ( cdefs ) where
 
 import Control.Arrow (first)

@@ -3,7 +3,7 @@
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
--- | The type of kinds of game modes for Allure of the Stars.
+-- | Game mode definitions.
 module Content.ModeKind ( cdefs ) where
 
 import qualified Data.IntMap.Strict as IM

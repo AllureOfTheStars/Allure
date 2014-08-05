@@ -3,7 +3,7 @@
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
--- | Rooms, halls and passages for Allure of the Stars.
+-- | Room, hall and passage definitions.
 module Content.PlaceKind ( cdefs ) where
 
 import Game.LambdaHack.Common.ContentDef
