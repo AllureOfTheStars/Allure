@@ -1,3 +1,11 @@
+## [v0.4.9.0, aka 'Player escapes through airlock'](https://github.com/LambdaHack/LambdaHack/compare/v0.4.14...v0.4.9.0)
+
+- balance game content a bit (still wildly unbalanced)
+- fix a bug where doors can't be closed
+- assign AI tactics to players, in particular use follow-the-leader in safari
+- specify monster spawn rate per-cave
+- generally update content to the new v0.5.0.0 of LambdaHack content API
+
 ## [v0.4.14, aka 'Out of cosmic balance'](https://github.com/AllureOfTheStars/Allure/compare/v0.4.12...v0.4.14)
 
 - add tons of new (unbalanced) items, actors and descriptions
