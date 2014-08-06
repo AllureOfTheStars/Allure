@@ -19,95 +19,84 @@ playerHero, playerAntiHero, playerCivilian, playerMonster, playerAnimal, playerA
 playerHero = Player
   { fname = "Spacefarer Crew"
   , fgroup = "hero"
-  , fskillsLeader = allSkills
   , fskillsOther  = meleeAdjacent
   , fcanEscape = True
   , fneverEmpty = True
   , fhasNumbers = True
   , fhasGender = True
-  , foverrideAI = Nothing
+  , ftactic = TExplore
   , fentryLevel = 1
   , finitialActors = 3
-  , fhasLeader = LeaderMode False False
-  , fisAI = False
+  , fleaderMode = LeaderUI $ AutoLeader False False
   , fhasUI = True
   }
 
 playerAntiHero = playerHero
-  { fisAI = True
+  { fleaderMode = LeaderAI $ AutoLeader False False
   , fhasUI = False
   }
 
 playerCivilian = Player
   { fname = "Civilian Crowd"
   , fgroup = "civilian"
-  , fskillsLeader = allSkills
-  , fskillsOther  = allSkills  -- not coordinated by any leadership
+  , fskillsOther  = unitSkills  -- not coordinated by any leadership
   , fcanEscape = False
   , fneverEmpty = True
   , fhasNumbers = False
   , fhasGender = True
-  , foverrideAI = Nothing
+  , ftactic = TPatrol
   , fentryLevel = 1
   , finitialActors = 3
-  , fhasLeader = LeaderNull  -- unorganized
-  , fisAI = True
+  , fleaderMode = LeaderNull  -- unorganized
   , fhasUI = False
   }
 
 playerMonster = Player
   { fname = "Alien Hierarchy"
   , fgroup = "alien"
-  , fskillsLeader = allSkills
-  , fskillsOther  = allSkills
+  , fskillsOther  = unitSkills
   , fcanEscape = False
   , fneverEmpty = False
   , fhasNumbers = False
   , fhasGender = False
-  , foverrideAI = Nothing
+  , ftactic = TExplore
   , fentryLevel = 4
   , finitialActors = 3
-  , fhasLeader = LeaderMode True False
-  , fisAI = True
+  , fleaderMode = LeaderAI $ AutoLeader True False
   , fhasUI = False
   }
 
 playerAntiMonster = playerMonster
-  { fisAI = False
-  , fhasUI = True
+  { fhasUI = True
   }
 
 playerAnimal = Player
   { fname = "Animal Kingdom"
   , fgroup = "animal"
-  , fskillsLeader = animalSkills
   , fskillsOther  = animalSkills
   , fcanEscape = False
   , fneverEmpty = False
   , fhasNumbers = False
   , fhasGender = False
-  , foverrideAI = Nothing
+  , ftactic = TRoam
   , fentryLevel = 2
   , finitialActors = 3
-  , fhasLeader = LeaderNull
-  , fisAI = True
+  , fleaderMode = LeaderNull
   , fhasUI = False
   }
 
 playerRobot = Player
   { fname = "Robot Anarchy"
   , fgroup = "robot"
-  , fskillsLeader = robotSkills
   , fskillsOther  = robotSkills
   , fcanEscape = False
   , fneverEmpty = False
   , fhasNumbers = False
   , fhasGender = False
-  , foverrideAI = Nothing
+  , ftactic = TExplore
   , fentryLevel = 3
   , finitialActors = 3
-  , fhasLeader = LeaderNull
-  , fisAI = True
+  , fleaderMode = LeaderNull
   , fhasUI = False
   }
 
@@ -120,22 +109,20 @@ playerRobot = Player
 playerHorror = Player
   { fname = "Horror Den"
   , fgroup = "horror"
-  , fskillsLeader = allSkills
-  , fskillsOther  = allSkills
+  , fskillsOther  = unitSkills
   , fcanEscape = False
   , fneverEmpty = False
   , fhasNumbers = False
   , fhasGender = False
-  , foverrideAI = Nothing
+  , ftactic = TPatrol  -- disoriented
   , fentryLevel = 3
   , finitialActors = 0
-  , fhasLeader = LeaderNull
-  , fisAI = True
+  , fleaderMode = LeaderNull
   , fhasUI = False
   }
 
 
-meleeAdjacent, _meleeAndRanged, animalSkills, robotSkills, allSkills :: Skills
+meleeAdjacent, _meleeAndRanged, animalSkills, robotSkills :: Skills
 
 meleeAdjacent = EM.fromList $ zip [AbWait, AbMelee] [1, 1..]
 
@@ -146,5 +133,3 @@ animalSkills =
   EM.fromList $ zip [AbMove, AbMelee, AbAlter, AbWait, AbTrigger] [1, 1..]
 
 robotSkills = EM.delete AbApply unitSkills
-
-allSkills = unitSkills

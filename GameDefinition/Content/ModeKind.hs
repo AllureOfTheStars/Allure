@@ -169,11 +169,12 @@ rosterSafari = Roster
   { rosterList = [ playerAntiMonster { fname = "Alien Tourist Office"
                                      , fcanEscape = True
                                      , fneverEmpty = True
-                                     -- Follow-the-leader, as tourists do.
-                                     , foverrideAI = Just ()
+                                     -- Follow-the-guide, as tourists do.
+                                     , ftactic = TFollow
                                      , fentryLevel = 4
                                      , finitialActors = 15
-                                     , fhasLeader = LeaderMode False False }
+                                     , fleaderMode =
+                                         LeaderUI $ AutoLeader False False }
                  , playerCivilian { fname = "Hunam Convict Pack"
                                   , fentryLevel = 4 }
                  , playerAnimal { fname =
@@ -208,12 +209,12 @@ rosterPvP = Roster
 rosterCoop = Roster
   { rosterList = [ playerAntiHero { fname = "Coral" }
                  , playerAntiHero { fname = "Amber"
-                                  , fhasLeader = LeaderNull }
+                                  , fleaderMode = LeaderNull }
                  , playerAntiHero { fname = "Green" }
                  , playerAnimal { fhasUI = True }
                  , playerMonster { fname = "Alien Hierarchy" }
                  , playerMonster { fname = "Leaderless Alien Hierarchy"
-                                 , fhasLeader = LeaderNull }
+                                 , fleaderMode = LeaderNull }
                  , playerRobot ]
   , rosterEnemy = [ ("Coral", "Alien Hierarchy")
                   , ("Amber", "Alien Hierarchy")
