@@ -256,6 +256,14 @@ test-short-load:
 	dist/build/Allure/Allure --dbgMsgSer --noMore --savePrefix defense --dumpInitRngs --automateAll --gameMode defense --frontendStd --stopAfter 2 > /tmp/stdtest.log
 
 
+build-binary:
+	cabal configure --prefix=/usr/local
+	cabal build Allure
+	rm -rf /tmp/Allure
+	cabal copy --destdir=/tmp/Allure
+	tar -czf /tmp/Allure.tar.gz -C /tmp --exclude=Allure/usr/local/lib --exclude=Allure/usr/local/share/doc Allure
+
+
 # The rest of the makefile is unmaintained at the moment.
 
 default : dist/setup-config
