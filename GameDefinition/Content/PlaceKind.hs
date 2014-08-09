@@ -213,12 +213,11 @@ oval = PlaceKind
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CStretch
   , pfence   = FWall
-  , ptopLeft = [ "####.."
-               , "##...."
-               , "#....."
-               , "#....."
-               , "......"
-               , "......"
+  , ptopLeft = [ "####."
+               , "##..."
+               , "#...."
+               , "#...."
+               , "....."
                ]
   , poverride = []
   }
@@ -234,7 +233,8 @@ ovalFloor = oval  -- Without outer solid fence, visible from outside.
                ]
   }
 ovalSquare = ovalFloor
-  { ptopLeft = [ "X###+"
+  { pfreq    = [("rogue", 3000)]
+  , ptopLeft = [ "X###+"
                , "##..."
                , "#...."
                , "#...."
