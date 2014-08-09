@@ -629,7 +629,7 @@ shield = buckler
 
 dagger = ItemKind
   { isymbol  = '|'
-  , iname    = "kitchen knife"
+  , iname    = "cleaver"
   , ifreq    = [("useful", 100)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
@@ -640,7 +640,7 @@ dagger = ItemKind
   , ieffects = [Hurt (4 * d 1)]
   , ifeature = [ toVelocity 40  -- ensuring it hits with the tip costs speed
                , Durable, EqpSlot EqpSlotWeapon "", Identified ]
-  , idesc    = "A heavy professional kitchen blade. Will do fine cutting any kind of meat and also thrusting and parrying blows. Does not penetrate deeply, but is hard to block. Especially useful in conjunction with a larger weapon."
+  , idesc    = "A heavy professional kitchen blade. Will do fine cutting any kind of meat and bone, as well as parrying blows. Does not penetrate deeply, but is hard to block. Especially useful in conjunction with a larger weapon."
   , ikit     = []
   }
 hammer = ItemKind
