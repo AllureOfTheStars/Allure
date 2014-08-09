@@ -17,15 +17,15 @@ cdefs = ContentDef
   , validateSingle = validateSinglePlaceKind
   , validateAll = validateAllPlaceKind
   , content =
-      [rect, ruin, collapsed, collapsed2, collapsed3, collapsed4, pillar, pillarC, pillar3, lampPost, lampPost2, lampPost3, lampPost4, treeShade, treeShade2, treeShade3, oval, ovalFloor, ovalSquare, colonnade, colonnadeWide, maze,  maze2, maze3, mazeBig, mazeBig2, mazeBig3, cells]
+      [rect, ruin, collapsed, collapsed2, collapsed3, collapsed4, pillar, pillar2, pillar3, pillar4, colonnade, colonnade2, colonnade3, colonnade4, colonnadeWide, lampPost, lampPost2, lampPost3, lampPost4, treeShade, treeShade2, treeShade3, oval, ovalFloor, ovalSquare, maze,  maze2, maze3, mazeBig, mazeBig2, mazeBig3, cells]
   }
-rect,        ruin, collapsed, collapsed2, collapsed3, collapsed4, pillar, pillarC, pillar3, lampPost, lampPost2, lampPost3, lampPost4, treeShade, treeShade2, treeShade3, oval, ovalFloor, ovalSquare, colonnade, colonnadeWide, maze,  maze2, maze3, mazeBig, mazeBig2, mazeBig3, cells :: PlaceKind
+rect,        ruin, collapsed, collapsed2, collapsed3, collapsed4, pillar, pillar2, pillar3, pillar4, colonnade, colonnade2, colonnade3, colonnade4, colonnadeWide, lampPost, lampPost2, lampPost3, lampPost4, treeShade, treeShade2, treeShade3, oval, ovalFloor, ovalSquare, maze,  maze2, maze3, mazeBig, mazeBig2, mazeBig3, cells :: PlaceKind
 
 rect = PlaceKind  -- Valid for any nonempty area, hence low frequency.
   { psymbol  = 'r'
   , pname    = "room"
-  , pfreq    = [("rogue", 100), ("ambush", 8)]
-  , prarity  = [(1, 1)]
+  , pfreq    = [("rogue", 70), ("ambush", 8), ("noise", 40)]
+  , prarity  = [(1, 10), (10, 8)]
   , pcover   = CStretch
   , pfence   = FWall
   , ptopLeft = ["."]
@@ -34,8 +34,8 @@ rect = PlaceKind  -- Valid for any nonempty area, hence low frequency.
 ruin = PlaceKind
   { psymbol  = 'R'
   , pname    = "ruin"
-  , pfreq    = [("ambush", 17), ("battle", 100)]
-  , prarity  = [(1, 1)]
+  , pfreq    = [("ambush", 17), ("battle", 100), ("noise", 20)]
+  , prarity  = [(1, 10), (10, 20)]
   , pcover   = CStretch
   , pfence   = FWall
   , ptopLeft = ["X"]
@@ -45,7 +45,7 @@ collapsed = PlaceKind
   { psymbol  = 'c'
   , pname    = "collapsed cavern"
   , pfreq    = [("noise", 1)]
-  , prarity  = [(1, 1)]
+  , prarity  = [(1, 10), (10, 10)]
   , pcover   = CStretch
   , pfence   = FNone
   , ptopLeft = ["#"]
@@ -73,26 +73,37 @@ collapsed4 = collapsed
 pillar = PlaceKind
   { psymbol  = 'p'
   , pname    = "pillar room"
-  , pfreq    = [("rogue", 1000)]  -- larger rooms require support pillars
-  , prarity  = [(1, 1)]
+  , pfreq    = [("rogue", 1000), ("noise", 50)]
+  , prarity  = [(1, 10), (10, 10)]
   , pcover   = CStretch
   , pfence   = FWall
+  -- Larger rooms require support pillars.
   , ptopLeft = [ "...."
-               , ".#.."
+               , ".O.."
                , "...."
                , "...."
                ]
   , poverride = []
   }
-pillarC = pillar
-  { ptopLeft = [ ".#.."
+pillar2 = pillar
+  { prarity  = [(1, 5), (10, 5)]
+  , ptopLeft = [ ".#.."
                , "#..."
                , "...."
                , "...."
                ]
   }
 pillar3 = pillar
-  { ptopLeft = [ "&.#."
+  { prarity  = [(1, 5), (10, 5)]
+  , ptopLeft = [ "#..."
+               , "..#."
+               , ".#.."
+               , "...."
+               ]
+  }
+pillar4 = pillar
+  { prarity  = [(10, 7)]
+  , ptopLeft = [ "&.#."
                , "...."
                , "#..."
                , "...."
@@ -101,8 +112,8 @@ pillar3 = pillar
 colonnade = PlaceKind
   { psymbol  = 'c'
   , pname    = "colonnade"
-  , pfreq    = [("rogue", 60)]
-  , prarity  = [(1, 1)]
+  , pfreq    = [("rogue", 70), ("noise", 2000)]
+  , prarity  = [(1, 10), (10, 10)]
   , pcover   = CAlternate
   , pfence   = FFloor
   , ptopLeft = [ ".#"
@@ -110,8 +121,27 @@ colonnade = PlaceKind
                ]
   , poverride = []
   }
+colonnade2 = colonnade
+  { prarity  = [(1, 2), (10, 4)]
+  , ptopLeft = [ ".."
+               , ".O"
+               ]
+  }
+colonnade3 = colonnade
+  { prarity  = [(1, 4), (10, 6)]
+  , ptopLeft = [ "#.."
+               , "..#"
+               ]
+  }
+colonnade4 = colonnade
+  { ptopLeft = [ "#."
+               , ".."
+               , ".#"
+               ]
+  }
 colonnadeWide = colonnade
-  { pfence   = FWall
+  { prarity  = [(1, 3), (10, 3)]
+  , pfence   = FWall
   , ptopLeft = [ ".."
                , ".#"
                ]
@@ -120,7 +150,7 @@ lampPost = PlaceKind
   { psymbol  = 'l'
   , pname    = "lamp post"
   , pfreq    = [("ambush", 30), ("battle", 10)]
-  , prarity  = [(1, 1)]
+  , prarity  = [(1, 10), (10, 10)]
   , pcover   = CVerbatim
   , pfence   = FNone
   , ptopLeft = [ "X.X"
@@ -155,7 +185,7 @@ treeShade = PlaceKind
   { psymbol  = 't'
   , pname    = "tree shade"
   , pfreq    = [("skirmish", 100)]
-  , prarity  = [(1, 1)]
+  , prarity  = [(1, 10), (10, 10)]
   , pcover   = CVerbatim
   , pfence   = FNone
   , ptopLeft = [ "sss"
@@ -180,7 +210,7 @@ oval = PlaceKind
   { psymbol  = 'o'
   , pname    = "oval room"
   , pfreq    = [("rogue", 1000)]
-  , prarity  = [(1, 1)]
+  , prarity  = [(1, 10), (10, 10)]
   , pcover   = CStretch
   , pfence   = FWall
   , ptopLeft = [ "####.."
@@ -215,7 +245,7 @@ maze = PlaceKind
   { psymbol  = 'm'
   , pname    = "maze"
   , pfreq    = [("rogue", 20)]
-  , prarity  = [(1, 1)]
+  , prarity  = [(1, 10), (10, 10)]
   , pcover   = CStretch
   , pfence   = FNone
   , ptopLeft = [ "#.#.##"
@@ -270,8 +300,8 @@ mazeBig3 = mazeBig
 cells = PlaceKind
   { psymbol  = '#'
   , pname    = "cells"
-  , pfreq    = [("rogue", 30)]
-  , prarity  = [(1, 1)]
+  , pfreq    = [("rogue", 100), ("noise", 100)]
+  , prarity  = [(1, 10), (10, 10)]
   , pcover   = CReflect
   , pfence   = FWall
   , ptopLeft = [ "..#"
