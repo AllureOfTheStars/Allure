@@ -5,7 +5,7 @@
 --
 -- | Basic players definitions.
 module Content.ModeKindPlayer
-  ( playerHero, playerAntiHero, playerCivilian, playerMonster
+  ( playerHero, playerSoldier, playerAntiHero, playerCivilian, playerMonster
   , playerAntiMonster, playerAnimal, playerRobot, playerHorror
   ) where
 
@@ -14,7 +14,7 @@ import qualified Data.EnumMap.Strict as EM
 import Game.LambdaHack.Common.Ability
 import Game.LambdaHack.Content.ModeKind
 
-playerHero, playerAntiHero, playerCivilian, playerMonster, playerAnimal, playerAntiMonster, playerRobot, playerHorror :: Player
+playerHero, playerSoldier, playerAntiHero, playerCivilian, playerMonster, playerAnimal, playerAntiMonster, playerRobot, playerHorror :: Player
 
 playerHero = Player
   { fname = "Spacefarer Crew"
@@ -29,6 +29,11 @@ playerHero = Player
   , finitialActors = 3
   , fleaderMode = LeaderUI $ AutoLeader False False
   , fhasUI = True
+  }
+
+playerSoldier = playerHero
+  { fname = "Armed Spacefarer Crew"
+  , fgroup = "soldier"
   }
 
 playerAntiHero = playerHero

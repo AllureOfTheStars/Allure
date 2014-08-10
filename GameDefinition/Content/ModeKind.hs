@@ -148,19 +148,20 @@ rosterAmbush = rosterDuel
                  , playerHorror {fentryLevel = 5} ] }
 
 rosterBattle = Roster
-  { rosterList = [ playerHero { finitialActors = 5
-                              , fentryLevel = 3 }
+  { rosterList = [ playerSoldier { finitialActors = 5
+                                 , fentryLevel = 5 }
                  , playerMonster { finitialActors = 15
-                                 , fentryLevel = 3
+                                 , fentryLevel = 5
                                  , fneverEmpty = True }
                  , playerAnimal { finitialActors = 5
-                                , fentryLevel = 3
+                                , fentryLevel = 5
                                 , fneverEmpty = True }
                  , playerRobot { finitialActors = 5
+                               , fentryLevel = 5
                                , fneverEmpty = True } ]
-  , rosterEnemy = [ ("Spacefarer Crew", "Alien Hierarchy")
-                  , ("Spacefarer Crew", "Animal Kingdom")
-                  , ("Spacefarer Crew", "Robot Anarchy") ]
+  , rosterEnemy = [ ("Armed Spacefarer Crew", "Alien Hierarchy")
+                  , ("Armed Spacefarer Crew", "Animal Kingdom")
+                  , ("Armed Spacefarer Crew", "Robot Anarchy") ]
   , rosterAlly = [ ("Alien Hierarchy", "Animal Kingdom")
                 , ("Alien Hierarchy", "Robot Anarchy")
                 , ("Robot Anarchy", "Animal Kingdom") ] }
@@ -252,7 +253,7 @@ cavesSkirmish = IM.fromList [(3, ("caveSkirmish", Nothing))]
 
 cavesAmbush = IM.fromList [(5, ("caveAmbush", Nothing))]
 
-cavesBattle = IM.fromList [(3, ("caveBattle", Nothing))]
+cavesBattle = IM.fromList [(5, ("caveBattle", Nothing))]
 
 cavesSafari = IM.fromList [ (4, ("caveSafari1", Nothing))
                           , (7, ("caveSafari2", Nothing))
