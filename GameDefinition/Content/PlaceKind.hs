@@ -123,6 +123,7 @@ colonnade = PlaceKind
   }
 colonnade2 = colonnade
   { prarity  = [(1, 2), (10, 4)]
+  , pfence   = FGround
   , ptopLeft = [ ".."
                , ".O"
                ]
@@ -223,7 +224,7 @@ oval = PlaceKind
   }
 ovalFloor = oval  -- Without outer solid fence, visible from outside.
   { pfreq    = [("rogue", 10000)]
-  , pfence   = FFloor
+  , pfence   = FGround
   , ptopLeft = [ "XXXX+#"
                , "XX###."
                , "X##..."
