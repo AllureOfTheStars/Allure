@@ -329,10 +329,10 @@ contactLens = ItemKind
   , ifreq    = [("useful", 100)]
   , iflavour = zipPlain [White]
   , icount   = 1
-  , irarity  = [(6, 0), (10, 1)]
+  , irarity  = [(5, 0), (10, 1)]
   , iverbHit = "rap"
   , iweight  = 50
-  , iaspects = [AddSight $ dl 3]
+  , iaspects = [AddSight $ d 2, AddHurtMelee $ d 2 |*| 3]
   , ieffects = []
   , ifeature = [Precious, Identified, Durable, EqpSlot EqpSlotAddSight ""]
   , idesc    = "Advanced design. Never needs to be taken off."
@@ -355,7 +355,7 @@ ring = ItemKind
   }
 ring1 = ring
   { irarity  = [(2, 0), (10, 2)]
-  , iaspects = [AddSpeed 1, AddMaxHP $ dl 3 - 5 - d 3]
+  , iaspects = [AddSpeed $ d 2, AddMaxHP $ dl 3 - 5 - d 3]
   , ifeature = ifeature ring ++ [Durable, EqpSlot EqpSlotAddSpeed ""]
   }
 ring2 = ring
@@ -636,11 +636,11 @@ dagger = ItemKind
   , ifreq    = [("useful", 100), ("starting weapon", 100)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(1, 20), (10, 4)]
+  , irarity  = [(1, 12), (10, 4)]
   , iverbHit = "stab"
   , iweight  = 1000
   , iaspects = [AddHurtMelee $ (d 3 + dl 3) |*| 3, AddArmorMelee $ d 2 |*| 5]
-  , ieffects = [Hurt (4 * d 1)]
+  , ieffects = [Hurt (6 * d 1)]
   , ifeature = [ toVelocity 40  -- ensuring it hits with the tip costs speed
                , Durable, EqpSlot EqpSlotWeapon "", Identified ]
   , idesc    = "A heavy professional kitchen blade. Will do fine cutting any kind of meat and bone, as well as parrying blows. Does not penetrate deeply, but is hard to block. Especially useful in conjunction with a larger weapon."
@@ -656,7 +656,7 @@ hammer = ItemKind
   , iverbHit = "club"
   , iweight  = 1500
   , iaspects = [AddHurtMelee $ (d 2 + dl 2) |*| 3]
-  , ieffects = [Hurt (6 * d 1)]
+  , ieffects = [Hurt (8 * d 1)]
   , ifeature = [ toVelocity 20  -- ensuring it hits with the sharp tip costs
                , Durable, EqpSlot EqpSlotWeapon "", Identified ]
   , idesc    = "A hammer on a long handle used for construction work. It may not cause grave wounds, but neither does it ricochet or glance off armor. Great sidearm for opportunistic blows against armored foes."
@@ -668,11 +668,11 @@ sword = ItemKind
   , ifreq    = [("useful", 100), ("starting weapon", 100)]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
-  , irarity  = [(3, 1), (6, 20), (10, 10)]
+  , irarity  = [(3, 1), (6, 16), (10, 8)]
   , iverbHit = "slash"
   , iweight  = 2000
   , iaspects = []
-  , ieffects = [Hurt (9 * d 1)]
+  , ieffects = [Hurt (10 * d 1)]
   , ifeature = [ toVelocity 20  -- ensuring it hits with the tip costs speed
                , Durable, EqpSlot EqpSlotWeapon "", Identified ]
   , idesc    = "A makeshift weapon of simple design, but great potential. Hard to master, though."
@@ -688,7 +688,7 @@ halberd = ItemKind
   , iverbHit = "impale"
   , iweight  = 3000
   , iaspects = [AddArmorMelee $ (1 + dl 3) |*| 5]
-  , ieffects = [Hurt (12 * d 1)]
+  , ieffects = [Hurt (14 * d 1)]
   , ifeature = [ toVelocity 20  -- not balanced
                , Durable, EqpSlot EqpSlotWeapon "", Identified ]
   , idesc    = "A perfect replica made for a reenactor troupe, missing only some sharpening. Versatile, with great reach and leverage. Foes are held at a distance."
