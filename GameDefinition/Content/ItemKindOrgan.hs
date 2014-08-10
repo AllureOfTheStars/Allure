@@ -252,7 +252,7 @@ wasteContainer = fist
   , icount   = 1
   , iverbHit = "spill over"
   , iaspects = [Periodic 1]
-  , ieffects = [ Summon [("summonable animal", 1)] $ 1 + dl 2, RefillHP 1
+  , ieffects = [ Summon [("mobile animal", 1)] $ 1 + dl 2, RefillHP 1
                , Explode "waste" ]
   , ifeature = [Durable, Identified]
   , idesc    = ""

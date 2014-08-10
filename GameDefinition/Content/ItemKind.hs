@@ -293,7 +293,7 @@ necklace2 = necklace
   { irarity  = [(2, 0), (10, 1)]
   , iaspects = [Periodic $ d 4 + dl 2]
   , ieffects = [ Impress
-               , Summon [("summonable animal", 1)] $ 1 + dl 2, Explode "waste" ]
+               , Summon [("mobile animal", 1)] $ 1 + dl 2, Explode "waste" ]
   }
 necklace3 = necklace
   { iaspects = [Periodic $ d 4 + dl 2]
@@ -424,7 +424,7 @@ potion6 = potion
   }
 potion7 = potion
   { ieffects = [ NoEffect "bait cocktail", Impress
-               , OnSmash (Summon [("summonable animal", 1)] $ 1 + dl 2)
+               , OnSmash (Summon [("mobile animal", 1)] $ 1 + dl 2)
                , OnSmash (Explode "waste") ]
   }
 potion8 = potion
@@ -527,8 +527,8 @@ scroll9 = scroll
 
 standardSummon :: Freqs
 standardSummon = [ ("alien", 20)
-                 , ("summonable animal", 50)
-                 , ("summonable robot", 30) ]
+                 , ("mobile animal", 50)
+                 , ("mobile robot", 30) ]
 
 -- * Armor
 
