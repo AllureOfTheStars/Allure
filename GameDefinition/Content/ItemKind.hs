@@ -316,7 +316,7 @@ necklace7 = necklace
   , iaspects = [Periodic $ 2 * d 5 + dl 15]
   , ieffects = [InsertMove 1, RefillHP (-1)]
   , ifeature = ifeature necklace ++ [Durable]
-                 -- evil players would throw before death, to destroy
+      -- evil players would throw before death, to destroy
       -- TODO: teach AI to wear only for fight; prevent players from meleeing
       -- allies with that (Durable)
   }
@@ -368,14 +368,15 @@ ring3 = ring
   , idesc    = "Cold, solid to the touch, perfectly round, engraved with solemn, strangely comforting, worn out words."
   }
 ring4 = ring  -- TODO: move to level-ups and to timed effects
-  { irarity  = [(3, 5), (10, 10)]
-  , iaspects = [AddHurtMelee $ 3 * d 4 + dl 15, AddMaxHP $ dl 3 - 4 - d 2]
+  { irarity  = [(3, 12), (10, 12)]
+  , iaspects = [AddHurtMelee $ (d 5 + dl 5) |*| 3, AddMaxHP $ dl 3 - 4 - d 2]
   , ifeature = ifeature ring ++ [Durable, EqpSlot EqpSlotAddHurtMelee ""]
   }
 ring5 = ring  -- by the time it's found, probably no space in eqp
   { irarity  = [(5, 0)]
   , iaspects = [AddLight $ d 2]
   , ifeature = ifeature ring ++ [EqpSlot EqpSlotAddLight ""]
+  , idesc    = "A sturdy ring with a large, shining stone."
   }
 
 -- * Exploding consumables, often intended to be thrown
@@ -397,12 +398,13 @@ potion = ItemKind
   , ikit     = []
   }
 potion1 = potion
-  { ieffects = [ NoEffect "rose water", Impress
+  { ieffects = [ NoEffect "of rose water", Impress
                , OnSmash (ApplyPerfume), OnSmash (Explode "fragrance") ]
   }
 potion2 = potion
-  { irarity  = [(1, 1)]
-  , ieffects = [ NoEffect "musky concoction", Impress, DropBestWeapon
+  { ifreq    = [("useful", 1)]  -- extremely rare
+  , irarity  = [(1, 1)]
+  , ieffects = [ NoEffect "of musky concoction", Impress, DropBestWeapon
                , OnSmash (Explode "pheromone")]
   }
 potion3 = potion
@@ -413,17 +415,17 @@ potion4 = potion  -- TODO: a bit boring
   , ieffects = [RefillHP (-5), OnSmash (Explode "wounding mist")]
   }
 potion5 = potion
-  { ieffects = [ Explode "explosion blast 10"
+  { ieffects = [ Explode "explosion blast 10", Impress
                , PushActor (ThrowMod 200 75)
                , OnSmash (Explode "explosion blast 10") ]
   }
 potion6 = potion
   { irarity  = [(10, 2)]
-  , ieffects = [ NoEffect "distortion", Impress
+  , ieffects = [ NoEffect "of distortion", Impress
                , OnSmash (Explode "distortion")]
   }
 potion7 = potion
-  { ieffects = [ NoEffect "bait cocktail", Impress
+  { ieffects = [ NoEffect "of bait cocktail", Impress
                , OnSmash (Summon [("mobile animal", 1)] $ 1 + dl 2)
                , OnSmash (Explode "waste") ]
   }
@@ -448,7 +450,7 @@ potion10 = potion  -- used only as initial equipmnt; count betray identity
   { ifreq    = [("useful", 100), ("potion of glue", 1)]
   , irarity  = [(1, 1)]
   , icount   = 1 + d 2
-  , ieffects = [ NoEffect "sticky foam", Paralyze (5 + d 5)
+  , ieffects = [ NoEffect "of sticky foam", Paralyze (5 + d 5)
                , OnSmash (Explode "glue")]
   , ifeature = [Identified]
   }
@@ -557,8 +559,8 @@ armorMail = armorLeather
   , irarity  = [(6, 6), (10, 6)]
   , iweight  = 12000
   , iaspects = [ AddHurtMelee (-3)
-               , AddArmorMelee $ (2 + dl 3) |*| 5
-               , AddArmorRanged $ (2 + dl 3) |*| 5 ]
+               , AddArmorMelee $ (2 + dl 4) |*| 5
+               , AddArmorRanged $ (2 + dl 4) |*| 5 ]
   , idesc    = "A civilian bulletproof vest. Discourages foes from attacking your torso, making it harder for them to land a blow."
   }
 gloveFencing = ItemKind
@@ -567,11 +569,11 @@ gloveFencing = ItemKind
   , ifreq    = [("useful", 100)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
-  , irarity  = [(4, 6), (10, 12)]
+  , irarity  = [(5, 8), (10, 8)]
   , iverbHit = "flap"
   , iweight  = 100
-  , iaspects = [ AddHurtMelee $ 2 * (d 3 + 2 * dl 5)
-               , AddArmorRanged $ d 2 + dl 2 ]
+  , iaspects = [ AddHurtMelee $ (d 2 + dl 10) * 3
+               , AddArmorRanged $ d 2 |*| 5 ]
   , ieffects = []
   , ifeature = [ toVelocity 30  -- flaps and flutters
                , Durable, EqpSlot EqpSlotAddArmorRanged "", Identified ]
@@ -583,8 +585,8 @@ gloveGauntlet = gloveFencing
   , irarity  = [(6, 12)]
   , iflavour = zipPlain [BrCyan]
   , iweight  = 300
-  , iaspects = [ AddArmorMelee $ 2 * (d 2 + dl 2)
-               , AddArmorRanged $ 2 * (d 2 + dl 2) ]
+  , iaspects = [ AddArmorMelee $ (1 + dl 2) |*| 5
+               , AddArmorRanged $ (1 + dl 2) |*| 5 ]
   , idesc    = "A piece of a hull maintenance spacesuit, padded and reinforced with carbon fibre."
   }
 gloveJousting = gloveFencing
@@ -592,9 +594,9 @@ gloveJousting = gloveFencing
   , irarity  = [(6, 6)]
   , iflavour = zipFancy [BrRed]
   , iweight  = 500
-  , iaspects = [ AddHurtMelee $ - 10 - d 5 + dl 5
-               , AddArmorMelee $ 2 * (d 2 + dl 3)
-               , AddArmorRanged $ 2 * (d 2 + dl 3) ]
+  , iaspects = [ AddHurtMelee $ (dl 4 - 6) |*| 3
+               , AddArmorMelee $ (2 + dl 2) |*| 5
+               , AddArmorRanged $ (2 + dl 2) |*| 5 ]
   , idesc    = "Rigid, bulky handgear embedding a welding equipment, complete with an affixed small shield and a darkened visor. Awe-inspiring."
   }
 -- Shield doesn't protect against ranged attacks to prevent
@@ -637,7 +639,7 @@ dagger = ItemKind
   , irarity  = [(1, 20), (10, 4)]
   , iverbHit = "stab"
   , iweight  = 1000
-  , iaspects = [AddHurtMelee $ 2 * (d 3 + 2 * dl 5), AddArmorMelee $ d 4 + dl 4]
+  , iaspects = [AddHurtMelee $ (d 3 + dl 3) |*| 3, AddArmorMelee $ d 2 |*| 5]
   , ieffects = [Hurt (4 * d 1)]
   , ifeature = [ toVelocity 40  -- ensuring it hits with the tip costs speed
                , Durable, EqpSlot EqpSlotWeapon "", Identified ]
@@ -653,7 +655,7 @@ hammer = ItemKind
   , irarity  = [(4, 12), (10, 2)]
   , iverbHit = "club"
   , iweight  = 1500
-  , iaspects = [AddHurtMelee $ d 3 + 2 * dl 5]
+  , iaspects = [AddHurtMelee $ (d 2 + dl 2) |*| 3]
   , ieffects = [Hurt (6 * d 1)]
   , ifeature = [ toVelocity 20  -- ensuring it hits with the sharp tip costs
                , Durable, EqpSlot EqpSlotWeapon "", Identified ]
@@ -685,7 +687,7 @@ halberd = ItemKind
   , irarity  = [(7, 1), (10, 10)]
   , iverbHit = "impale"
   , iweight  = 3000
-  , iaspects = [AddArmorMelee $ 2 * (d 4 + dl 4)]
+  , iaspects = [AddArmorMelee $ (1 + dl 3) |*| 5]
   , ieffects = [Hurt (12 * d 1)]
   , ifeature = [ toVelocity 20  -- not balanced
                , Durable, EqpSlot EqpSlotWeapon "", Identified ]
@@ -743,10 +745,10 @@ honingSteel = ItemKind
   , ifreq    = [("useful", 100)]
   , iflavour = zipPlain [Blue]
   , icount   = 1
-  , irarity  = [(5, 7)]
-  , iverbHit = "prod"
+  , irarity  = [(10, 10)]
+  , iverbHit = "smack"
   , iweight  = 400
-  , iaspects = [AddHurtMelee $ 2 * (d 3 + 2 * dl 5)]
+  , iaspects = [AddHurtMelee $ d 10 |*| 3]
   , ieffects = []
   , ifeature = [EqpSlot EqpSlotAddHurtMelee "", Identified]
   , idesc    = "Originally used for realigning the bent or buckled edges of kitchen knives in the local bars. Now it saves lives by letting you fix your weapons between or even during fights, without the need to set up camp, fish out tools and assemble a proper sharpening workshop."
