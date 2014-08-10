@@ -150,15 +150,15 @@ rosterAmbush = rosterDuel
 rosterBattle = Roster
   { rosterList = [ playerSoldier { finitialActors = 5
                                  , fentryLevel = 5 }
-                 , playerMonster { finitialActors = 30
-                                 , fentryLevel = 5
-                                 , fneverEmpty = True }
-                 , playerAnimal { finitialActors = 10
-                                , fentryLevel = 5
-                                , fneverEmpty = True }
-                 , playerRobot { finitialActors = 10
-                               , fentryLevel = 5
-                               , fneverEmpty = True } ]
+                 , playerMobileMonster { finitialActors = 30
+                                       , fentryLevel = 5
+                                       , fneverEmpty = True }
+                 , playerMobileAnimal { finitialActors = 10
+                                      , fentryLevel = 5
+                                      , fneverEmpty = True }
+                 , playerMobileRobot { finitialActors = 10
+                                     , fentryLevel = 5
+                                     , fneverEmpty = True } ]
   , rosterEnemy = [ ("Armed Spacefarer Crew", "Alien Hierarchy")
                   , ("Armed Spacefarer Crew", "Animal Kingdom")
                   , ("Armed Spacefarer Crew", "Robot Anarchy") ]
@@ -178,16 +178,16 @@ rosterSafari = Roster
                                          LeaderUI $ AutoLeader False False }
                  , playerCivilian { fname = "Hunam Convict Pack"
                                   , fentryLevel = 4 }
-                 , playerAnimal { fname =
-                                    "Animal Magnificent Specimen Variety"
-                                , fneverEmpty = True
-                                , fentryLevel = 7
-                                , finitialActors = 7 }
-                 , playerAnimal { fname =
-                                    "Animal Exquisite Herds and Packs"
-                                , fneverEmpty = True
-                                , fentryLevel = 10
-                                , finitialActors = 20 } ]
+                 , playerMobileAnimal { fname =
+                                          "Animal Magnificent Specimen Variety"
+                                      , fneverEmpty = True
+                                      , fentryLevel = 7
+                                      , finitialActors = 7 }
+                 , playerMobileAnimal { fname =
+                                          "Animal Exquisite Herds and Packs"
+                                      , fneverEmpty = True
+                                      , fentryLevel = 10
+                                      , finitialActors = 20 } ]
   , rosterEnemy = [ ("Alien Tourist Office", "Hunam Convict Pack")
                   , ("Alien Tourist Office",
                      "Animal Magnificent Specimen Variety")
