@@ -150,13 +150,13 @@ rosterAmbush = rosterDuel
 rosterBattle = Roster
   { rosterList = [ playerSoldier { finitialActors = 5
                                  , fentryLevel = 5 }
-                 , playerMonster { finitialActors = 15
+                 , playerMonster { finitialActors = 30
                                  , fentryLevel = 5
                                  , fneverEmpty = True }
-                 , playerAnimal { finitialActors = 5
+                 , playerAnimal { finitialActors = 10
                                 , fentryLevel = 5
                                 , fneverEmpty = True }
-                 , playerRobot { finitialActors = 5
+                 , playerRobot { finitialActors = 10
                                , fentryLevel = 5
                                , fneverEmpty = True } ]
   , rosterEnemy = [ ("Armed Spacefarer Crew", "Alien Hierarchy")
