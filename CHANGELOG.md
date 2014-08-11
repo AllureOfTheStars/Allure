@@ -1,4 +1,4 @@
-## [v0.4.9.0, aka 'Player escapes through airlock'](https://github.com/LambdaHack/LambdaHack/compare/v0.4.14...v0.4.9.0)
+## [v0.4.99.0, aka 'Player escapes through airlock'](https://github.com/LambdaHack/LambdaHack/compare/v0.4.14...v0.4.99.0)
 
 - balance game content a bit (campaign still unbalanced)
 - fix a bug where doors can't be closed
