@@ -23,6 +23,7 @@ which also takes care of all the dependencies. The latest official
 version of the game can be downloaded automatically by Cabal
 from [Hackage] [4] as follows
 
+    cabal install gtk2hs-buildtools
     cabal install Allure
 
 For a newer version, install a matching LambdaHack library snapshot
