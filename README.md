@@ -1,10 +1,9 @@
 Allure of the Stars [![Build Status](https://travis-ci.org/AllureOfTheStars/Allure.svg?branch=master)](https://travis-ci.org/AllureOfTheStars/Allure)[![Build Status](https://drone.io/github.com/AllureOfTheStars/Allure/status.png)](https://drone.io/github.com/AllureOfTheStars/Allure/latest)
 ===================
 
-This is an alpha release of [Allure of the Stars] [8],
-a near-future Sci-Fi [roguelike] [2] and tactical squad game.
-Have a look at [PLAYING.md](GameDefinition/PLAYING.md) or jump straight
-into the fray.
+[Allure of the Stars] [8] is a near-future Sci-Fi [roguelike] [2]
+and tactical squad game. Have a look at [PLAYING.md](GameDefinition/PLAYING.md)
+or jump straight into the fray.
 
 ![gameplay screenshot](GameDefinition/screenshot.png?raw=true)
 
