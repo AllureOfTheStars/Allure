@@ -23,7 +23,7 @@ description:   Allure of the Stars
                available at <http://hackage.haskell.org/package/LambdaHack>.
 homepage:      http://allureofthestars.com
 bug-reports:   http://github.com/AllureOfTheStars/Allure/issues
-license:       OtherLicense
+license:       AGPL
 license-file:  LICENSE
 tested-with:   GHC == 7.6.3, GHC == 7.8
 data-files:    GameDefinition/config.ui.default, GameDefinition/scores,
