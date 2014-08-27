@@ -16,6 +16,9 @@ and persistent content modification based on player behaviour.
 Compilation and installation
 ----------------------------
 
+Some pre-compiled game binaries are available through the [release page] [9]
+and from the Nix Packages Collection [10].
+
 The game is best compiled and installed via Cabal (already a part
 of your OS distribution, or available within [The Haskell Platform] [7]),
 which also takes care of all the dependencies. The latest official
@@ -28,8 +31,6 @@ automatically by Cabal from [Hackage] [4] as follows
 For a newer version, install a matching LambdaHack library snapshot
 from a development branch, download the game source from [github] [3]
 and run `cabal install` from the main directory.
-
-Some pre-compiled game binaries may be available from the [releases] [9] page.
 
 Compatibility notes
 -------------------
@@ -103,4 +104,5 @@ If not, see <http://www.gnu.org/licenses/>.
 [6]: https://github.com/AllureOfTheStars/Allure/wiki
 [7]: http://www.haskell.org/platform
 [8]: http://allureofthestars.com
-[9]: https://github.com/AllureOfTheStars/Allure/releases
+[9]: https://github.com/AllureOfTheStars/Allure/releases/latest
+[10]: http://hydra.cryp.to/search?query=Allure
