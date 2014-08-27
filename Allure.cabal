@@ -5,7 +5,7 @@ name:           Allure
 -- PVP summary: +-+------- breaking API changes
 --              | | +----- non-breaking API additions
 --              | | |  +--- code changes with no API change
-version:        0.4.99.0
+version:        0.4.99.1
 synopsis:       Near-future Sci-Fi roguelike and tactical squad game
 description:   Allure of the Stars
                is a near-future Sci-Fi roguelike and tactical squad game.
