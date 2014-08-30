@@ -261,7 +261,14 @@ build-binary:
 	cabal build Allure
 	rm -rf /tmp/Allure
 	cabal copy --destdir=/tmp/Allure
-	tar -czf /tmp/Allure.tar.gz -C /tmp --exclude=Allure/usr/local/lib --exclude=Allure/usr/local/share/doc Allure
+	tar -czf /tmp/Allure_x_ubuntu-12.04-amd64.tar.gz -C /tmp --exclude=Allure/usr/local/lib --exclude=Allure/usr/local/share/doc Allure
+
+build-binary-i386:
+	cabal configure --prefix=/usr/local --ghc-option="-optc-m32" --ghc-option="-opta-m32" --ghc-option="-optl-m32" --ld-option="-melf_i386"
+	cabal build exe:Allure
+	rm -rf /tmp/Allure
+	cabal copy --destdir=/tmp/Allure
+	tar -czf /tmp/Allure_x_ubuntu-12.04-i386.tar.gz -C /tmp --exclude=Allure/usr/local/lib --exclude=Allure/usr/local/share/doc Allure
 
 
 # The rest of the makefile is unmaintained at the moment.
