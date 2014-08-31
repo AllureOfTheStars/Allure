@@ -38,7 +38,7 @@ playerSoldier = playerHero
   }
 
 playerAntiHero = playerHero
-  { fleaderMode = LeaderAI $ AutoLeader False False
+  { fleaderMode = LeaderAI $ AutoLeader True False
   , fhasUI = False
   }
 
@@ -68,7 +68,7 @@ playerMonster = Player
   , ftactic = TExplore
   , fentryLevel = 4
   , finitialActors = 3
-  , fleaderMode = LeaderAI $ AutoLeader True False
+  , fleaderMode = LeaderAI $ AutoLeader True True
   , fhasUI = False
   }
 
