@@ -13,9 +13,10 @@ module Content.ModeKindPlayer
 import qualified Data.EnumMap.Strict as EM
 
 import Game.LambdaHack.Common.Ability
+import Game.LambdaHack.Common.Dice
 import Game.LambdaHack.Content.ModeKind
 
-playerHero, playerSoldier, playerAntiHero, playerCivilian, playerMonster, playerMobileMonster, playerAntiMonster, playerAnimal, playerMobileAnimal, playerRobot, playerMobileRobot, playerHorror :: Player
+playerHero, playerSoldier, playerAntiHero, playerCivilian, playerMonster, playerMobileMonster, playerAntiMonster, playerAnimal, playerMobileAnimal, playerRobot, playerMobileRobot, playerHorror :: Player Dice
 
 playerHero = Player
   { fname = "Spacefarer Crew"
@@ -52,7 +53,7 @@ playerCivilian = Player
   , fhasGender = True
   , ftactic = TPatrol
   , fentryLevel = 1
-  , finitialActors = 3
+  , finitialActors = d 2 + 2
   , fleaderMode = LeaderNull  -- unorganized
   , fhasUI = False
   }
@@ -88,7 +89,7 @@ playerAnimal = Player
   , fhasGender = False
   , ftactic = TRoam  -- can't pick up, so no point exploring
   , fentryLevel = 3
-  , finitialActors = 2
+  , finitialActors = d 3
   , fleaderMode = LeaderNull
   , fhasUI = False
   }
@@ -106,7 +107,7 @@ playerRobot = Player
   , fhasGender = False
   , ftactic = TFollow  -- coordinated via net, follow alien leader (TODO)
   , fentryLevel = 3
-  , finitialActors = 3
+  , finitialActors = 1 + d 3
   , fleaderMode = LeaderNull
   , fhasUI = False
   }
