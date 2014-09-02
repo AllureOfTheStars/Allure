@@ -227,7 +227,7 @@ gem = ItemKind
   , ikit     = []
   }
 gem1 = gem
-  { irarity  = [(2, 0), (10, 10)]
+  { irarity  = [(1, 0), (10, 10)]
   }
 gem2 = gem
   { irarity  = [(5, 0), (10, 10)]
@@ -241,7 +241,7 @@ currency = ItemKind
   , ifreq    = [("treasure", 100), ("currency", 1)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 10 + d 20 + dl 20
-  , irarity  = [(1, 0), (2, 15), (5, 25), (10, 10)]
+  , irarity  = [(1, 10), (6, 25), (10, 10)]
   , iverbHit = "tap"
   , iweight  = 1
   , iaspects = []
