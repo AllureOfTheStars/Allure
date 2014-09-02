@@ -30,7 +30,7 @@ campaign = ModeKind
   , mfreq   = [("campaign", 1)]
   , mroster = rosterCampaign
   , mcaves  = cavesCampaign
-  , mdesc   = "You got stranded looting a once luxurious cruise liner and your current plan is to fight through, gathering your spoils, to the bridge at the giant spaceship's opposite end."
+  , mdesc   = "You got stranded looting the blasted bridge of a once luxurious cruise liner. Your current plan is to fight through, gathering your spoils, to the shuttle airlock at the giant spaceship's uppermost deck. There are animal cries down below and ominous silence up above."
   }
 
 duel = ModeKind
@@ -213,8 +213,10 @@ rosterCoop = Roster
                                   , fleaderMode = LeaderNull }
                  , playerAntiHero { fname = "Green" }
                  , playerAnimal { fhasUI = True }
-                 , playerMonster { fname = "Alien Hierarchy" }
+                 , playerMonster { fname = "Alien Hierarchy"
+                                 , finitialActors = 3 }
                  , playerMonster { fname = "Leaderless Alien Hierarchy"
+                                 , finitialActors = 1
                                  , fleaderMode = LeaderNull }
                  , playerRobot ]
   , rosterEnemy = [ ("Coral", "Alien Hierarchy")
@@ -229,7 +231,7 @@ rosterCoop = Roster
                  , ("Green", "Leaderless Alien Hierarchy") ] }
 
 rosterDefense = Roster
-  { rosterList = [ playerAntiMonster { finitialActors = 1 }
+  { rosterList = [ playerAntiMonster { finitialActors = 1 }  -- avoid boredom
                  , playerAntiHero { fname = "Yellow"
                                   , finitialActors = 10 }
                  , playerAnimal
@@ -245,8 +247,10 @@ rosterDefense = Roster
 cavesCampaign, cavesSkirmish, cavesAmbush, cavesBattle, cavesSafari :: Caves
 
 cavesCampaign = IM.fromList
-                $ [(1, ("caveRogue", Nothing))]
-                  ++ zip [2..11] (repeat ("campaign random", Nothing))
+                $ zip [1, 2] (repeat ("shallow random", Nothing))
+                  ++ [(3, ("caveBridge", Nothing))]
+                  ++ [(4, ("caveNoise", Nothing))]
+                  ++ zip [5..11] (repeat ("campaign random", Nothing))
                   ++ [(12, ("caveNoise", Just True))]
 
 cavesSkirmish = IM.fromList [(3, ("caveSkirmish", Nothing))]

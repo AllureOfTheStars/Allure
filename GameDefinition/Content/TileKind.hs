@@ -236,7 +236,7 @@ floorArenaShade = floorActorLit
   }
 floorRedLit = floorCorridorLit
   { tname    = "emergency walkway"
-  , tfreq    = [("trailLit", 20)]
+  , tfreq    = [("emergency walkway", 1), ("trailLit", 20)]
   , tcolor   = BrRed
   , tcolor2  = Red
   , tfeature = Trail : tfeature floorCorridorLit

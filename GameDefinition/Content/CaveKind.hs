@@ -21,9 +21,9 @@ cdefs = ContentDef
   , validateSingle = validateSingleCaveKind
   , validateAll = validateAllCaveKind
   , content =
-      [rogue, arena, empty, noise, battle, skirmish, ambush, safari1, safari2, safari3]
+      [rogue, arena, empty, noise, battle, skirmish, ambush, safari1, safari2, safari3, bridge, shallow1, shallow2, shallow3, shallow4]
   }
-rogue,        arena, empty, noise, battle, skirmish, ambush, safari1, safari2, safari3 :: CaveKind
+rogue,        arena, empty, noise, battle, skirmish, ambush, safari1, safari2, safari3, bridge, shallow1, shallow2, shallow3, shallow4 :: CaveKind
 
 rogue = CaveKind
   { csymbol       = 'R'
@@ -100,7 +100,7 @@ empty = rogue
 noise = rogue
   { csymbol       = 'N'
   , cname         = "Machine rooms"
-  , cfreq         = [("campaign random", 50), ("caveNoise", 1)]
+  , cfreq         = [("caveNoise", 1)]
   , cgrid         = DiceXY (2 + d 2) 3
   , cminPlaceSize = DiceXY 12 5
   , cmaxPlaceSize = DiceXY 24 15
@@ -185,3 +185,38 @@ ambush = rogue  -- lots of lights, to give a chance to snipe
 safari1 = ambush {cfreq = [("caveSafari1", 1)]}
 safari2 = battle {cfreq = [("caveSafari2", 1)]}
 safari3 = skirmish {cfreq = [("caveSafari3", 1)]}
+bridge = rogue
+  { csymbol       = 'B'
+  , cname         = "Captain's bridge"
+  , cfreq         = [("caveBridge", 1)]
+  , cgrid         = DiceXY (d 2 + 1) 2
+  , cminPlaceSize = DiceXY 10 7
+  , cmaxPlaceSize = DiceXY 40 14
+  , cdarkChance   = 0
+  , cmaxVoid      = 1%10
+  , cactorFreq    = []  -- safe, nothing spawns
+  , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq arena
+  , cdarkCorTile  = "emergency walkway"
+  , clitCorTile   = "emergency walkway"
+  }
+shallow1 = rogue
+  { cfreq         = [("shallow random", 100)]
+  , cactorFreq    = filter ((/= "alien") . fst) $ cactorFreq rogue
+  , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq rogue
+  }
+shallow2 = arena
+  { cfreq         = [("shallow random", 100)]
+  , cactorFreq    = filter ((/= "alien") . fst) $ cactorFreq empty
+  , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
+  }
+shallow3 = empty
+  { cfreq         = [("shallow random", 100)]
+  , cactorFreq    = filter ((/= "alien") . fst) $ cactorFreq empty
+  , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
+  }
+shallow4 = noise
+  { cfreq         = [("shallow random", 50)]
+  , cnightChance  = 0
+  , cactorFreq    = filter ((/= "alien") . fst) $ cactorFreq noise
+  , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq noise
+  }
