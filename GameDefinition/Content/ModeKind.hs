@@ -75,7 +75,7 @@ safari = ModeKind
   , mfreq   = [("safari", 1)]
   , mroster = rosterSafari
   , mcaves  = cavesSafari
-  , mdesc   = "In this simulation you'll discover the joys of hunting the most exquisite of Earth's flora and fauna, both animal and semi-intelligent (exit at the bottommost level)."
+  , mdesc   = "In this simulation you'll discover the joys of hunting the most exquisite of Earth's flora and fauna, both animal and semi-intelligent (exit at the uppermost level)."
   }
 
 pvp = ModeKind
@@ -173,9 +173,7 @@ rosterSafari = Roster
                                      -- Follow-the-guide, as tourists do.
                                      , ftactic = TFollow
                                      , fentryLevel = 4
-                                     , finitialActors = 15
-                                     , fleaderMode =
-                                         LeaderUI $ AutoLeader False False }
+                                     , finitialActors = 15 }
                  , playerCivilian { fname = "Hunam Convict Pack"
                                   , fentryLevel = 4 }
                  , playerMobileAnimal { fname =
