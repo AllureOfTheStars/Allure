@@ -16,14 +16,19 @@ and persistent content modification based on player behaviour.
 Compilation and installation
 ----------------------------
 
-Some pre-compiled game binaries are available through the [release page] [9]
+Some pre-compiled game binaries are available through the [release page] [11]
 and from the Nix Packages Collection [10].
 
 The game is best compiled and installed via Cabal (already a part
 of your OS distribution, or available within [The Haskell Platform] [7]),
-which also takes care of all the dependencies. The latest official
-version of the game can be downloaded, compiled and installed
-automatically by Cabal from [Hackage] [4] as follows
+which also takes care of all the dependencies. You also need
+the GTK libraries for your OS. On Linux, remember to install the -dev
+versions as well. On Windows follow [the same steps as for Wine] [13].
+On OSX, if you encounter problems, you may want to
+[compile the GTK libraries from sources] [14].
+
+The latest official version of the game can be downloaded,
+compiled and installed automatically by Cabal from [Hackage] [4] as follows
 
     cabal install gtk2hs-buildtools
     cabal install Allure
@@ -104,5 +109,7 @@ If not, see <http://www.gnu.org/licenses/>.
 [6]: https://github.com/AllureOfTheStars/Allure/wiki
 [7]: http://www.haskell.org/platform
 [8]: http://allureofthestars.com
-[9]: https://github.com/AllureOfTheStars/Allure/releases/latest
-[10]: http://hydra.cryp.to/search?query=Allure
+[11]: https://github.com/AllureOfTheStars/Allure/releases/latest
+[12]: http://hydra.cryp.to/search?query=Allure
+[13]: http://www.haskell.org/haskellwiki/GHC_under_Wine#Code_that_uses_gtk2hs
+[14]: http://www.edsko.net/2014/04/27/haskell-including-gtk-on-mavericks
