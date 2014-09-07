@@ -270,26 +270,25 @@ build-binary-i386:
 	cabal copy --destdir=/tmp/Allure
 	tar -czf /tmp/Allure_x_ubuntu-12.04-i386.tar.gz -C /tmp --exclude=Allure/usr/local/lib --exclude=Allure/usr/local/share/doc Allure
 
-# TODO: make it saner and don't go crazy yourself
-# wine ~/.local/share/wineprefixes/mingw/drive_c/MinGW/msys/1.0/bin/make.exe build-binary-windows-i386
+# TODO: figure out, whey this must be so different from Linux
 build-binary-windows-i386:
-	cabal configure
-	cabal build exe:Allure
-	Z:/home/mikolaj/.local/share/wineprefixes/mingw/drive_c/MinGW/msys/1.0/bin/rm.exe -r -f Z:/tmp/Allure
-	Z:/home/mikolaj/.local/share/wineprefixes/mingw/drive_c/MinGW/msys/1.0/bin/rm.exe -r -f Z:/tmp/allureofthestars
-	Z:/home/mikolaj/.local/share/wineprefixes/mingw/drive_c/MinGW/msys/1.0/bin/rm.exe -r -f Z:/tmp/Allure_x_windows-i386.zip
-	cabal copy --destdir=Z:/tmp/Allure
-	Z:/home/mikolaj/.local/share/wineprefixes/mingw/drive_c/MinGW/msys/1.0/bin/mkdir.exe Z:/tmp/allureofthestars
-	Z:/home/mikolaj/.local/share/wineprefixes/mingw/drive_c/MinGW/msys/1.0/bin/cp.exe Z:/tmp/Allure\users\mikolaj\Application\ Data\cabal\bin\Allure.exe Z:/tmp/allureofthestars
-	Z:/home/mikolaj/.local/share/wineprefixes/mingw/drive_c/MinGW/msys/1.0/bin/cp.exe C:/users/mikolaj/gtk/bin/zlib1.dll Z:/tmp/allureofthestars
-	Z:/home/mikolaj/.local/share/wineprefixes/mingw/drive_c/MinGW/msys/1.0/bin/cp.exe Z:/home/mikolaj/r/Allure/GameDefinition/PLAYING.md Z:/tmp/allureofthestars
-	Z:/home/mikolaj/.local/share/wineprefixes/mingw/drive_c/MinGW/msys/1.0/bin/cp.exe Z:/home/mikolaj/r/Allure/GameDefinition/scores Z:/tmp/allureofthestars
-	Z:/home/mikolaj/.local/share/wineprefixes/mingw/drive_c/MinGW/msys/1.0/bin/cp.exe Z:/home/mikolaj/r/Allure/GameDefinition/config.ui.default Z:/tmp/allureofthestars
-	Z:/home/mikolaj/.local/share/wineprefixes/mingw/drive_c/MinGW/msys/1.0/bin/cp.exe Z:/home/mikolaj/r/Allure/CHANGELOG.md Z:/tmp/allureofthestars
-	Z:/home/mikolaj/.local/share/wineprefixes/mingw/drive_c/MinGW/msys/1.0/bin/cp.exe Z:/home/mikolaj/r/Allure/CREDITS Z:/tmp/allureofthestars
-	Z:/home/mikolaj/.local/share/wineprefixes/mingw/drive_c/MinGW/msys/1.0/bin/cp.exe Z:/home/mikolaj/r/Allure/LICENSE Z:/tmp/allureofthestars
-	Z:/home/mikolaj/.local/share/wineprefixes/mingw/drive_c/MinGW/msys/1.0/bin/cp.exe Z:/home/mikolaj/r/Allure/README.md Z:/tmp/allureofthestars
-	Z:/home/mikolaj/.local/share/wineprefixes/7zip/drive_c/Program\ Files/7-Zip/7z.exe a -ssc -sfx Z:/tmp/Allure_x_windows-i386.exe Z:/tmp/allureofthestars
+	wine cabal configure
+	wine cabal build exe:Allure
+	rm -rf /tmp/AllureOfTheStarsInstall
+	rm -rf /tmp/AllureOfTheStars
+	rm -rf /tmp/Allure_x_windows-i386.zip
+	wine cabal copy --destdir=Z:/tmp/AllureOfTheStarsInstall
+	mkdir -p /tmp/AllureOfTheStars/GameDefinition
+	cp /tmp/AllureOfTheStarsInstall/users/mikolaj/Application\ Data/cabal/bin/Allure.exe /tmp/AllureOfTheStars
+	cp /home/mikolaj/.wine/drive_c/users/mikolaj/gtk/bin/zlib1.dll /tmp/AllureOfTheStars
+	cp GameDefinition/PLAYING.md /tmp/AllureOfTheStars/GameDefinition
+	cp GameDefinition/scores /tmp/AllureOfTheStars/GameDefinition
+	cp GameDefinition/config.ui.default /tmp/AllureOfTheStars/GameDefinition
+	cp CHANGELOG.md /tmp/AllureOfTheStars
+	cp CREDITS /tmp/AllureOfTheStars
+	cp LICENSE /tmp/AllureOfTheStars
+	cp README.md /tmp/AllureOfTheStars
+	wine Z:/home/mikolaj/.local/share/wineprefixes/7zip/drive_c/Program\ Files/7-Zip/7z.exe a -ssc -sfx Z:/tmp/Allure_x_windows-i386.exe Z:/tmp/AllureOfTheStars
 
 
 # The rest of the makefile is unmaintained at the moment.
