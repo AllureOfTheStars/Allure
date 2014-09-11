@@ -63,7 +63,7 @@ install:
  - if [ -f Allure/cabal.config ]; then cp Allure/cabal.config LambdaHack; fi
  - cd LambdaHack
  - cabal-1.18 install -frelease gtk2hs-buildtools
- - cabal-1.18 install -frelease
+ - cabal-1.18 install -frelease --force-reinstalls
  - cd ../Allure
  - cabal-1.18 install -frelease --only-dependencies
  - cabal-1.18 install -frelease --enable-tests
