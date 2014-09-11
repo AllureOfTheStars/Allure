@@ -257,14 +257,14 @@ test-short-load:
 
 
 build-binary:
-	cabal configure --prefix=/usr/local
+	cabal configure -frelease --prefix=/usr/local
 	cabal build Allure
 	rm -rf /tmp/Allure
 	cabal copy --destdir=/tmp/Allure
 	tar -czf /tmp/Allure_x_ubuntu-12.04-amd64.tar.gz -C /tmp --exclude=Allure/usr/local/lib --exclude=Allure/usr/local/share/doc Allure
 
 build-binary-i386:
-	cabal configure --prefix=/usr/local --ghc-option="-optc-m32" --ghc-option="-opta-m32" --ghc-option="-optl-m32" --ld-option="-melf_i386"
+	cabal configure -frelease --prefix=/usr/local --ghc-option="-optc-m32" --ghc-option="-opta-m32" --ghc-option="-optl-m32" --ld-option="-melf_i386"
 	cabal build exe:Allure
 	rm -rf /tmp/Allure
 	cabal copy --destdir=/tmp/Allure
@@ -272,7 +272,7 @@ build-binary-i386:
 
 # TODO: figure out, whey this must be so different from Linux
 build-binary-windows-i386:
-	wine cabal configure
+	wine cabal -frelease configure
 	wine cabal build exe:Allure
 	rm -rf /tmp/AllureOfTheStarsInstall
 	rm -rf /tmp/AllureOfTheStars

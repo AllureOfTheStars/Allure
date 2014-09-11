@@ -41,6 +41,11 @@ source-repository head
   type:               git
   location:           git://github.com/AllureOfTheStars/Allure.git
 
+flag release
+  description:        prepare for a release (optimize)
+  default:            False
+  manual:             True
+
 executable Allure
   hs-source-dirs:     GameDefinition
   main-is:            Main.hs
@@ -76,6 +81,9 @@ executable Allure
   ghc-options:        -threaded -with-rtsopts=-C0.005 -rtsopts
 -- ghc-options:       -with-rtsopts=-N  -- eats all cores
 
+  if flag(release)
+    ghc-options:      -O2
+
 test-suite test
   type:               exitcode-stdio-1.0
   hs-source-dirs:     GameDefinition, test
@@ -97,3 +105,6 @@ test-suite test
   ghc-options:        -fno-warn-auto-orphans -fno-warn-implicit-prelude
   ghc-options:        -fno-ignore-asserts -funbox-strict-fields
   ghc-options:        -threaded -with-rtsopts=-C0.005 -rtsopts
+
+  if flag(release)
+    ghc-options:      -O2
