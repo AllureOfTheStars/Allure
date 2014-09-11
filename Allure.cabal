@@ -62,7 +62,7 @@ executable Allure
                       Content.TileKind,
                       TieKnot,
                       Paths_Allure
-  build-depends:      LambdaHack >= 0.4.99.0 && < 0.5.1.0,
+  build-depends:      LambdaHack >= 0.4.99.1 && < 0.5.1.0,
                       template-haskell >= 2.6 && < 3,
 
                       base       >= 4       && < 5,
