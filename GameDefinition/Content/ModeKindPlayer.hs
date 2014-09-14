@@ -77,6 +77,7 @@ playerMobileMonster = playerMonster
 
 playerAntiMonster = playerMonster
   { fhasUI = True
+  , fleaderMode = LeaderUI $ AutoLeader True True
   }
 
 playerAnimal = Player
