@@ -28,7 +28,9 @@ speedGland n = fist
   , ifreq    = [(toGroupName $ "speed gland" <+> tshow n, 100)]
   , icount   = 1
   , iverbHit = "spit at"
-  , iaspects = [AddSpeed $ intToDice n, Periodic $ intToDice n]
+  , iaspects = [ AddSpeed $ intToDice n
+               , Periodic
+               , Timeout $ intToDice $ 100 `div` n ]
   , ieffects = [RefillHP 1]
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -231,7 +233,7 @@ boilingVent = fist
   , ifreq    = [("boiling vent", 100)]
   , icount   = 1
   , iverbHit = "menace"
-  , iaspects = [Periodic $ 1 + d 2]
+  , iaspects = [Periodic, Timeout $ (3 + d 4) |*| 10]
   , ieffects = [Explode "boiling water"]
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -241,7 +243,7 @@ explosionVent = fist
   , ifreq    = [("explosion vent", 100)]
   , icount   = 1
   , iverbHit = "menace"
-  , iaspects = [Periodic $ 2 + d 2]
+  , iaspects = [Periodic, Timeout $ (1 + d 4) |*| 10]
   , ieffects = [Explode "explosion blast 20"]
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -251,7 +253,7 @@ wasteContainer = fist
   , ifreq    = [("waste container", 100)]
   , icount   = 1
   , iverbHit = "spill over"
-  , iaspects = [Periodic 1]
+  , iaspects = [Periodic, Timeout $ (7 + d 5) |*| 10]
   , ieffects = [ Summon [("mobile animal", 1)] $ 1 + dl 2, RefillHP 1
                , Explode "waste" ]
   , ifeature = [Durable, Identified]
