@@ -31,7 +31,7 @@ speedGland n = fist
   , iaspects = [ AddSpeed $ intToDice n
                , Periodic
                , Timeout $ intToDice $ 100 `div` n ]
-  , ieffects = [RefillHP 1]
+  , ieffects = [Recharging (RefillHP 1)]
   , ifeature = [Durable, Identified]
   , idesc    = ""
   }
@@ -187,7 +187,8 @@ largeTail = fist
   , ifreq    = [("large tail", 50)]
   , icount   = 1
   , iverbHit = "knock"
-  , ieffects = [Hurt (8 * d 1), PushActor (ThrowMod 400 25)]
+  , iaspects = [Timeout $ 1 + d 3]
+  , ieffects = [Hurt (8 * d 1), Recharging (PushActor (ThrowMod 400 25))]
   , idesc    = ""
   }
 liveWire = fist
@@ -234,7 +235,7 @@ boilingVent = fist
   , icount   = 1
   , iverbHit = "menace"
   , iaspects = [Periodic, Timeout $ (3 + d 4) |*| 10]
-  , ieffects = [Explode "boiling water"]
+  , ieffects = [Recharging (Explode "boiling water")]
   , ifeature = [Durable, Identified]
   , idesc    = ""
   }
@@ -244,7 +245,7 @@ explosionVent = fist
   , icount   = 1
   , iverbHit = "menace"
   , iaspects = [Periodic, Timeout $ (1 + d 4) |*| 10]
-  , ieffects = [Explode "explosion blast 20"]
+  , ieffects = [Recharging (Explode "explosion blast 20")]
   , ifeature = [Durable, Identified]
   , idesc    = ""
   }
@@ -254,8 +255,9 @@ wasteContainer = fist
   , icount   = 1
   , iverbHit = "spill over"
   , iaspects = [Periodic, Timeout $ (7 + d 5) |*| 10]
-  , ieffects = [ Summon [("mobile animal", 1)] $ 1 + dl 2, RefillHP 1
-               , Explode "waste" ]
+  , ieffects = [ Recharging (Summon [("mobile animal", 1)] $ 1 + dl 2)
+               , Recharging (RefillHP 1)
+               , Recharging (Explode "waste") ]
   , ifeature = [Durable, Identified]
   , idesc    = ""
   }
