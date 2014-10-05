@@ -31,9 +31,9 @@ cdefs = ContentDef
 
 items :: [ItemKind]
 items =
-  [canOfGlue, crankSpotlight, buckler, dart, dart200, gem1, gem2, gem3, gloveFencing, gloveGauntlet, gloveJousting, currency, gorget, harpoon, jumpingPole, contactLens, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, net, needle, oilLamp, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, ring1, ring2, ring3, ring4, ring5, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, shield, dagger, hammer, sword, halberd, wand1, wand2, candle, armorLeather, armorMail, honingSteel, constructionHooter]
+  [canOfGlue, crankSpotlight, buckler, dart, dart200, gem1, gem2, gem3, gloveFencing, gloveGauntlet, gloveJousting, currency, gorget, harpoon, jumpingPole, contactLens, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, net, needle, oilLamp, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, ring1, ring2, ring3, ring4, ring5, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, shield, dagger, daggerDropBestWeapon, hammer, hammerParalyze, hammerSpark, sword, swordImpress, halberd, halberdPushActor, wand1, wand2, candle, armorLeather, armorMail, honingSteel, constructionHooter]
 
-canOfGlue,    crankSpotlight, buckler, dart, dart200, gem1, gem2, gem3, gloveFencing, gloveGauntlet, gloveJousting, currency, gorget, harpoon, jumpingPole, contactLens, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, net, needle, oilLamp, potion1, potion2, potion3, potion4, potion5, potion6, potion7, ring1, potion8, potion9, potion10, potion11, ring2, ring3, ring4, ring5, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, shield, dagger, hammer, sword, halberd, wand1, wand2, candle, armorLeather, armorMail, honingSteel, constructionHooter :: ItemKind
+canOfGlue,    crankSpotlight, buckler, dart, dart200, gem1, gem2, gem3, gloveFencing, gloveGauntlet, gloveJousting, currency, gorget, harpoon, jumpingPole, contactLens, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, net, needle, oilLamp, potion1, potion2, potion3, potion4, potion5, potion6, potion7, ring1, potion8, potion9, potion10, potion11, ring2, ring3, ring4, ring5, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, shield, dagger, daggerDropBestWeapon, hammer, hammerParalyze, hammerSpark, sword, swordImpress, halberd, halberdPushActor, wand1, wand2, candle, armorLeather, armorMail, honingSteel, constructionHooter :: ItemKind
 
 gem, necklace, potion, ring, scroll, wand :: ItemKind  -- generic templates
 
@@ -667,6 +667,21 @@ dagger = ItemKind
   , idesc    = "A heavy professional kitchen blade. Will do fine cutting any kind of meat and bone, as well as parrying blows. Does not penetrate deeply, but is hard to block. Especially useful in conjunction with a larger weapon."
   , ikit     = []
   }
+daggerDropBestWeapon = dagger
+  { ifreq    = [("useful", 100)]
+  , irarity  = [(1, 1), (10, 2)]
+  -- The timeout has to be small, so that the player can count on the effect
+  -- occuring consistently in any longer fight. Otherwise, the effect will be
+  -- absent in some important fights, leading to the feeling of bad luck,
+  -- but will manifest sometimes in fights where it doesn't matter,
+  -- leading to the feeling of wasted power.
+  -- If the effect is very powerful and so the timeout has to be significant,
+  -- let's make it really large, for the effect to occur only once in a fight:
+  -- as soon as the item is equipped, or just on the first strike.
+  , iaspects = iaspects dagger ++ [Timeout $ (d 3 + 4 - dl 3) |*| 2]
+  , ieffects = ieffects dagger ++ [Recharging DropBestWeapon]
+  , idesc    = "A knife with a forked blade that a focused fencer can use to catch and twist an opponent's weapon occasionally."
+  }
 hammer = ItemKind
   { isymbol  = '\\'
   , iname    = "demolition hammer"
@@ -682,6 +697,19 @@ hammer = ItemKind
                , Durable, EqpSlot EqpSlotWeapon "", Identified ]
   , idesc    = "A hammer on a long handle used for construction work. It may not cause grave wounds, but neither does it ricochet or glance off armor. Great sidearm for opportunistic blows against armored foes."
   , ikit     = []
+  }
+hammerParalyze = hammer
+  { ifreq    = [("useful", 100)]
+  , irarity  = [(4, 1), (10, 2)]
+  , iaspects = iaspects hammer ++ [Timeout $ (d 2 + 3 - dl 2) |*| 2]
+  , ieffects = ieffects hammer ++ [Recharging $ Paralyze 5]
+  }
+hammerSpark = hammer
+  { iname    = "smithhammer"
+  , ifreq    = [("useful", 100)]
+  , irarity  = [(4, 1), (10, 2)]
+  , iaspects = iaspects hammer ++ [Timeout $ (d 4 + 4 - dl 4) |*| 2]
+  , ieffects = ieffects hammer ++ [Recharging $ Explode "spark"]
   }
 sword = ItemKind
   { isymbol  = '/'
@@ -699,9 +727,18 @@ sword = ItemKind
   , idesc    = "A makeshift weapon of simple design, but great potential. Hard to master, though."
   , ikit     = []
   }
+swordImpress = sword
+  { isymbol  = '|'
+  , iname    = "an antique sword"
+  , ifreq    = [("useful", 100)]
+  , irarity  = [(3, 1), (10, 2)]
+  , iaspects = iaspects sword ++ [Timeout $ (d 4 + 5 - dl 4) |*| 2]
+  , ieffects = ieffects sword ++ [Recharging Impress]
+  , idesc    = "An old, dull, but well-balance blade, lending itself to impressive shows of fencing skill."
+  }
 halberd = ItemKind
   { isymbol  = '/'
-  , iname    = "halberd"
+  , iname    = "pole cleaver"
   , ifreq    = [("useful", 100), ("starting weapon", 1)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
@@ -709,11 +746,19 @@ halberd = ItemKind
   , iverbHit = "impale"
   , iweight  = 3000
   , iaspects = [AddArmorMelee $ (1 + dl 3) |*| 5]
-  , ieffects = [Hurt (14 * d 1)]
+  , ieffects = [Hurt (12 * d 1)]
   , ifeature = [ toVelocity 20  -- not balanced
                , Durable, EqpSlot EqpSlotWeapon "", Identified ]
-  , idesc    = "A perfect replica made for a reenactor troupe, missing only some sharpening. Versatile, with great reach and leverage. Foes are held at a distance."
+  , idesc    = "An improvised but deadly weapon made of a long, sharp kitchen knife glued and bound to a long pole."
   , ikit     = []
+  }
+halberdPushActor = halberd
+  { iname    = "halberd"
+  , ifreq    = [("useful", 100)]
+  , irarity  = [(7, 1), (10, 2)]
+  , iaspects = iaspects halberd ++ [Timeout $ (d 5 + 5 - dl 5) |*| 2]
+  , ieffects = ieffects halberd ++ [Recharging (PushActor (ThrowMod 400 25))]
+  , idesc    = "A perfect replica made for a reenactor troupe, missing only some sharpening. Versatile, with great reach and leverage. Foes are held at a distance."
   }
 
 -- * Wands
