@@ -63,7 +63,13 @@ install:
  - if [ -f Allure/cabal.config ]; then cp Allure/cabal.config LambdaHack; fi
  - cd LambdaHack
  - cabal-1.18 install gtk2hs-buildtools
- - cabal-1.18 install -O2 -frelease --force-reinstalls
+# 7.6.3 has broken -O2, apparently
+ - |
+   if [ $GHCVER = "head" ] || [ ${GHCVER%.*} = "7.8" ]; then
+     cabal-1.18 install -O2 -frelease --force-reinstalls
+   else
+     cabal-1.18 install -f-release --force-reinstalls
+   fi
  - cd ../Allure
  - cabal-1.18 install -O2 -frelease --only-dependencies
  - cabal-1.18 install -frelease --enable-tests
