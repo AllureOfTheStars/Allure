@@ -145,6 +145,10 @@ elbow = ItemKind
 
 -- * Animals
 
+animalSkillMalus :: Skills
+animalSkillMalus =
+  EM.fromList $ zip [AbDisplace, AbMoveItem, AbProject, AbApply] [-1, -1..]
+
 armadillo = ItemKind
   { isymbol  = 'a'
   , iname    = "giant armadillo"
@@ -155,7 +159,7 @@ armadillo = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 30, AddMaxCalm 30, AddSpeed 18
-               , AddSkills $ EM.singleton AbAlter (-1)
+               , AddSkills $ EM.insert AbAlter (-1) animalSkillMalus
                , AddSight 3 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -173,7 +177,7 @@ gilaMonster = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 15, AddMaxCalm 60, AddSpeed 15
-               , AddSkills $ EM.singleton AbAlter (-1)
+               , AddSkills $ EM.insert AbAlter (-1) animalSkillMalus
                , AddSight 3 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -191,7 +195,7 @@ komodoDragon = ItemKind  -- bad hearing
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 40, AddMaxCalm 60, AddSpeed 18
-               , AddSight 3 ]
+               , AddSkills animalSkillMalus, AddSight 3 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -209,7 +213,7 @@ hyena = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 30, AddMaxCalm 60, AddSpeed 35
-               , AddSight 3 ]
+               , AddSkills animalSkillMalus, AddSight 3 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -226,7 +230,7 @@ alligator = ItemKind
   , iweight  = 80000
   , iaspects = [ AddMaxHP 30, AddMaxCalm 60, AddSpeed 17
                , AddArmorMelee 30, AddArmorRanged 30
-               , AddSight 3 ]
+               , AddSkills animalSkillMalus, AddSight 3 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -246,7 +250,7 @@ hornetSwarm = ItemKind
   , iverbHit = "thud"
   , iweight  = 1000
   , iaspects = [ AddMaxHP 5, AddMaxCalm 60, AddSpeed 30, AddSight 2
-               , AddSkills $ EM.singleton AbAlter (-1)
+               , AddSkills $ EM.insert AbAlter (-1) animalSkillMalus
                , AddArmorMelee 90, AddArmorRanged 90 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -274,6 +278,9 @@ thornbush = ItemKind
   }
 
 -- * Robots
+
+robotSkillMalus :: Skills
+robotSkillMalus = EM.fromList $ zip [AbApply] [-1]
 
 razorwireFence = ItemKind
   { isymbol  = 'f'
@@ -381,8 +388,8 @@ shepherdDrone = ItemKind
   , iweight  = 1000
   , iaspects = [ AddMaxHP 2, AddMaxCalm 60, AddSpeed 30, AddSight 4
                , AddSkills
-                 $ EM.fromDistinctAscList
-                 $ zip [AbDisplace, AbMoveItem, AbProject] [-1, -1..]
+                 $ EM.fromList
+                 $ zip [AbApply, AbDisplace, AbMoveItem, AbProject] [-1, -1..]
                , AddArmorMelee 90, AddArmorRanged 90 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -400,8 +407,8 @@ huntingDrone = ItemKind
   , iweight  = 500
   , iaspects = [ AddMaxHP 2, AddMaxCalm 60, AddSpeed 40, AddSight 4
                , AddSkills
-                 $ EM.fromDistinctAscList
-                 $ zip [AbDisplace, AbMoveItem, AbMelee] [-1, -1..]
+                 $ EM.fromList
+                 $ zip [AbApply, AbDisplace, AbMoveItem, AbMelee] [-1, -1..]
                , AddArmorMelee 90, AddArmorRanged 90 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -419,6 +426,7 @@ homeRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 10, AddMaxCalm 60, AddSpeed 20
+               , AddSkills robotSkillMalus
                , AddSmell 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -436,6 +444,7 @@ wasteRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 15
+               , AddSkills robotSkillMalus
                , AddSmell 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -455,6 +464,7 @@ lightRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 30
+               , AddSkills robotSkillMalus
                , AddSight 3, AddLight 3 ]  -- light can't be turned off
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -473,6 +483,7 @@ heavyRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 800000
   , iaspects = [ AddMaxHP 80, AddMaxCalm 60, AddSpeed 20
+               , AddSkills robotSkillMalus
                , AddSight 3, AddLight 4 ]  -- light can't be turned off
   , ieffects = []
   , ifeature = [Durable, Identified]

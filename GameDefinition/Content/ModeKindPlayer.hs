@@ -83,7 +83,7 @@ playerAntiMonster = playerMonster
 playerAnimal = Player
   { fname = "Animal Kingdom"
   , fgroup = "animal"
-  , fskillsOther = animalSkills
+  , fskillsOther = unitSkills
   , fcanEscape = False
   , fneverEmpty = False
   , fhasNumbers = False
@@ -101,7 +101,7 @@ playerMobileAnimal = playerAnimal
 playerRobot = Player
   { fname = "Robot Anarchy"
   , fgroup = "robot"
-  , fskillsOther = robotSkills
+  , fskillsOther = unitSkills
   , fcanEscape = False
   , fneverEmpty = False
   , fhasNumbers = False
@@ -137,15 +137,9 @@ playerHorror = Player
   , fhasUI = False
   }
 
-
-meleeAdjacent, _meleeAndRanged, animalSkills, robotSkills :: Skills
+meleeAdjacent, _meleeAndRanged :: Skills
 
 meleeAdjacent = EM.fromList $ zip [AbWait, AbMelee] [1, 1..]
 
 -- Melee and reaction fire.
 _meleeAndRanged = EM.fromList $ zip [AbWait, AbMelee, AbProject] [1, 1..]
-
-animalSkills =
-  EM.fromList $ zip [AbMove, AbMelee, AbAlter, AbWait, AbTrigger] [1, 1..]
-
-robotSkills = EM.delete AbApply unitSkills
