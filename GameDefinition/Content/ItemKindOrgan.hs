@@ -163,7 +163,8 @@ sting = fist
   , ifreq    = [("sting", 100)]
   , icount   = 1
   , iverbHit = "sting"
-  , ieffects = [Burn 1, Paralyze 2]
+  , iaspects = [Timeout $ 1 + d 5]
+  , ieffects = [Burn 1, Paralyze 3]
   , idesc    = ""
   }
 venomTooth = fist
@@ -171,7 +172,8 @@ venomTooth = fist
   , ifreq    = [("venom tooth", 100)]
   , icount   = 2
   , iverbHit = "bite"
-  , ieffects = [Hurt (3 * d 1), Paralyze 3]
+  , iaspects = [Timeout $ 2 + d 8]
+  , ieffects = [Hurt (3 * d 1), Paralyze 5]
   , idesc    = ""
   }
 venomFang = fist
@@ -196,8 +198,8 @@ liveWire = fist
   , ifreq    = [("live wire", 100)]
   , icount   = 4
   , iverbHit = "shock"
-  , iaspects = []
-  , ieffects = [Hurt (1 * d 1), Paralyze 1]
+  , iaspects = [Timeout $ 2 + d 2]
+  , ieffects = [Hurt (1 * d 1), Paralyze 2]
   , idesc    = ""
   }
 
