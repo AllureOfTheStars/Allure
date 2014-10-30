@@ -32,11 +32,11 @@ cdefs = ContentDef
 
 items :: [ItemKind]
 items =
-  [canOfGlue, crankSpotlight, buckler, dart, dart200, gem1, gem2, gem3, gloveFencing, gloveGauntlet, gloveJousting, currency, gorget, harpoon, jumpingPole, contactLens, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, net, needle, oilLamp, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, ring1, ring2, ring3, ring4, ring5, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, shield, dagger, daggerDropBestWeapon, hammer, hammerParalyze, hammerSpark, sword, swordImpress, halberd, halberdPushActor, wand1, wand2, candle, armorLeather, armorMail, honingSteel, constructionHooter]
+  [canOfGlue, crankSpotlight, buckler, dart, dart200, gem1, gem2, gem3, gloveFencing, gloveGauntlet, gloveJousting, currency, gorget, harpoon, jumpingPole, contactLens, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, net, needle, oilLamp, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, ring1, ring2, ring3, ring4, ring5, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, shield, dagger, daggerDropBestWeapon, hammer, hammerParalyze, hammerSpark, sword, swordImpress, halberd, halberdPushActor, wand1, wand2, candle, armorLeather, armorMail, honingSteel, constructionHooter]
 
-canOfGlue,    crankSpotlight, buckler, dart, dart200, gem1, gem2, gem3, gloveFencing, gloveGauntlet, gloveJousting, currency, gorget, harpoon, jumpingPole, contactLens, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, net, needle, oilLamp, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, ring1, ring2, ring3, ring4, ring5, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, shield, dagger, daggerDropBestWeapon, hammer, hammerParalyze, hammerSpark, sword, swordImpress, halberd, halberdPushActor, wand1, wand2, candle, armorLeather, armorMail, honingSteel, constructionHooter :: ItemKind
+canOfGlue,    crankSpotlight, buckler, dart, dart200, gem1, gem2, gem3, gloveFencing, gloveGauntlet, gloveJousting, currency, gorget, harpoon, jumpingPole, contactLens, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, net, needle, oilLamp, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, ring1, ring2, ring3, ring4, ring5, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, shield, dagger, daggerDropBestWeapon, hammer, hammerParalyze, hammerSpark, sword, swordImpress, halberd, halberdPushActor, wand1, wand2, candle, armorLeather, armorMail, honingSteel, constructionHooter :: ItemKind
 
-gem, necklace, potion, ring, scroll, wand :: ItemKind  -- generic templates
+gem, necklace, potion, flask, ring, scroll, wand :: ItemKind  -- generic templates
 
 {- Item group symbols (from Angband, only as an informal convention for now):
 
@@ -259,8 +259,8 @@ gorget = ItemKind
   , iname    = "gorget"
   , ifreq    = [("useful", 100)]
   , iflavour = zipFancy [BrCyan]
-  , irarity  = [(4, 1), (10, 2)]
   , icount   = 1
+  , irarity  = [(4, 1), (10, 2)]
   , iverbHit = "whip"
   , iweight  = 30
   , iaspects = [ Periodic
@@ -278,8 +278,8 @@ necklace = ItemKind
   , iname    = "necklace"
   , ifreq    = [("useful", 100)]
   , iflavour = zipFancy stdCol ++ zipPlain brightCol
-  , irarity  = [(10, 3)]
   , icount   = 1
+  , irarity  = [(10, 3)]
   , iverbHit = "whip"
   , iweight  = 30
   , iaspects = [Periodic]
@@ -290,7 +290,8 @@ necklace = ItemKind
   , ikit     = []
   }
 necklace1 = necklace
-  { iaspects = (Timeout $ (d 3 + 4 - dl 3) |*| 10) : iaspects necklace
+  { irarity  = [(1, 1), (10, 2)]
+  , iaspects = (Timeout $ (d 3 + 4 - dl 3) |*| 10) : iaspects necklace
   , ieffects = [ Recharging (RefillHP 1)
                , Burn 1 ]  -- only beneficial if activation is periodic
   }
@@ -354,6 +355,9 @@ contactLens = ItemKind
   , idesc    = "Advanced design. Never needs to be taken off."
   , ikit     = []
   }
+-- Don't add standard effects to rings, because they go in and out
+-- of eqp and so activating them would require UI tedium: looking for
+-- them in eqp and inv or even activating a wrong item via letter by mistake.
 ring = ItemKind
   { isymbol  = '='
   , iname    = "ring"
@@ -401,16 +405,16 @@ potion = ItemKind
   { isymbol  = '!'
   , iname    = "vial"
   , ifreq    = [("useful", 100)]
-  , iflavour = zipPlain stdCol ++ zipFancy brightCol
+  , iflavour = zipPlain brightCol ++ zipFancy brightCol
   , icount   = 1
-  , irarity  = [(1, 15), (10, 12)]
+  , irarity  = [(1, 13), (10, 10)]
   , iverbHit = "splash"
   , iweight  = 200
   , iaspects = []
   , ieffects = []
   , ifeature = [ toVelocity 50  -- oily, bad grip
                , Applicable, Fragile ]
-  , idesc    = "A flask of bubbly, slightly oily liquid of a suspect color."  -- purely natural; no nano, no alien tech  -- TODO: move distortion to a special flask item or trigger when some precious high tech item is destroyed (jewelry?)?
+  , idesc    = "A vial of bright, frothing concoction."  -- purely natural; no nano, no alien tech  -- TODO: move distortion to a special flask item or trigger when some precious high tech item is destroyed (jewelry?)?
   , ikit     = []
   }
 potion1 = potion
@@ -420,65 +424,132 @@ potion1 = potion
 potion2 = potion
   { ifreq    = [("useful", 1)]  -- extremely rare
   , irarity  = [(1, 1)]
-  , ieffects = [ NoEffect "of musky concoction", Impress, DropBestWeapon
-               , OnSmash (Explode "pheromone")]
+  , ieffects = [ NoEffect "of attraction", Impress, DropBestWeapon
+               , PullActor (ThrowMod 200 50), OnSmash (Explode "pheromone")]
   }
 potion3 = potion
-  { ieffects = [RefillHP 5, OnSmash (Explode "healing mist")]
+  { irarity  = [(1, 5), (10, 5)]
+  , ieffects = [RefillHP 5, OnSmash (Explode "healing mist")]
   }
-potion4 = potion  -- TODO: a bit boring
-  { irarity  = [(1, 7)]
-  , ieffects = [RefillHP (-5), OnSmash (Explode "wounding mist")]
-  }
-potion5 = potion
-  { ieffects = [ Explode "explosion blast 10", Impress
-               , PushActor (ThrowMod 200 75)
-               , OnSmash (Explode "explosion blast 10") ]
-  }
-potion6 = potion
+potion4 = potion
   { irarity  = [(10, 2)]
   , ieffects = [ NoEffect "of distortion", Impress
                , OnSmash (Explode "distortion")]
   }
-potion7 = potion
-  { ieffects = [ NoEffect "of bait cocktail", CreateOrgan (5 + d 5) "drunk"
-               , OnSmash (Summon [("mobile animal", 1)] $ 1 + dl 2)
-               , OnSmash (Explode "waste") ]
-  }
-potion8 = potion
-  { ieffects = [ OneOf [ Impress, DropBestWeapon, RefillHP 5, Burn 3
-                       , CreateOrgan (7 + d 3) "drunk" ]
+potion5 = potion
+  { ieffects = [ OneOf [Impress, DropBestWeapon, RefillHP 5, Burn 3]
                , OnSmash (OneOf [ Explode "healing mist"
                                 , Explode "wounding mist"
                                 , Explode "fragrance"
-                                , Explode "explosion blast 10"
-                                , Explode "whiskey spray" ]) ]
+                                , Explode "explosion blast 10" ]) ]
   }
-potion9 = potion
+potion6 = potion
   { irarity  = [(3, 3), (10, 6)]
   , ieffects = [ OneOf [ Dominate, DropBestWeapon, RefillHP 20, Burn 9
-                       , InsertMove 2, CreateOrgan (4 + d 3) "fast 20" ]
+                       , InsertMove 2 ]
                , OnSmash (OneOf [ Explode "healing mist 2"
                                 , Explode "healing mist 2"
                                 , Explode "pheromone"
                                 , Explode "distortion"
                                 , Explode "explosion blast 20" ]) ]
   }
-potion10 = potion  -- used only as initial equipmnt; count betray identity
+potion7 = potion  -- used only as initial equipment; count betrays identity
   { ifreq    = [("useful", 100), ("potion of glue", 1)]
-  , irarity  = [(1, 1)]
   , icount   = 1 + d 2
+  , irarity  = [(1, 1)]
   , ieffects = [ NoEffect "of sticky foam", Paralyze (5 + d 5)
                , OnSmash (Explode "glue")]
   , ifeature = [Identified]
   }
-potion11 = potion
-  { irarity  = [(10, 5)]
+potion8 = potion
+  { irarity  = [(10, 3)]
   , ieffects = [RefillHP 10, OnSmash (Explode "healing mist 2")]
   }
-potion12 = potion
-  { ieffects = [ NoEffect "whiskey", CreateOrgan (20 + d 5) "drunk"
+
+-- * Exploding consumables, with temporary aspects
+-- TODO: dip projectiles in those
+-- TODO: add flavour and realisn in the same as, e.g., "flask of whiskey"
+-- is more flavourful and believable than "flask of strength"
+
+flask = ItemKind
+  { isymbol  = '!'
+  , iname    = "flask"
+  , ifreq    = [("useful", 100)]
+  , iflavour = zipPlain darkCol ++ zipFancy darkCol
+  , icount   = 1
+  , irarity  = [(1, 11), (10, 9)]
+  , iverbHit = "splash"
+  , iweight  = 500
+  , iaspects = []
+  , ieffects = []
+  , ifeature = [ toVelocity 50  -- oily, bad grip
+               , Applicable, Fragile ]
+  , idesc    = "A flask of oily liquid of a suspect color."
+  , ikit     = []
+  }
+flask1 = flask
+  { irarity  = [(10, 5)]
+  , ieffects = [ NoEffect "of strength brew"
+               , CreateOrgan (20 + d 5) "strengthened"
+               , OnSmash (Explode "strength mist") ]
+  }
+flask2 = flask
+  { irarity  = [(10, 7)]
+  , ieffects = [ NoEffect "of weakness brew"
+               , CreateOrgan (20 + d 5) "weakened"
+               , OnSmash (Explode "weakness mist") ]
+  }
+flask3 = flask
+  { ieffects = [ NoEffect "of protecting balm"
+               , CreateOrgan (20 + d 5) "protected"
+               , OnSmash (Explode "protecting balm") ]
+  }
+flask4 = flask
+  { ieffects = [ NoEffect "of red paint"
+               , CreateOrgan (20 + d 5) "painted red"
+               , OnSmash (Explode "red paint") ]
+  }
+flask5 = flask
+  { irarity  = [(10, 5)]
+  , ieffects = [ NoEffect "of haste brew"
+               , CreateOrgan (20 + d 5) "fast 20"
+               , OnSmash (Explode "haste spray") ]
+  }
+flask6 = flask
+  { ieffects = [ NoEffect "of slowness brew"
+               , CreateOrgan (20 + d 5) "slow 10"
+               , OnSmash (Explode "slowness spray") ]
+  }
+flask7 = flask  -- sight can be reduced from Calm, drunk, etc.
+  { irarity  = [(10, 7)]
+  , ieffects = [ NoEffect "of eye drops"
+               , CreateOrgan (20 + d 5) "far-sighted"
+               , OnSmash (Explode "eye drop") ]
+  }
+flask8 = flask
+  { irarity  = [(10, 3)]
+  , ieffects = [ NoEffect "of smelly concoction"
+               , CreateOrgan (20 + d 5) "keen-smelling"
+               , OnSmash (Explode "smelly droplet") ]
+  }
+flask9 = flask
+  { ieffects = [ NoEffect "of bait cocktail", CreateOrgan (5 + d 5) "drunk"
+               , OnSmash (Summon [("mobile animal", 1)] $ 1 + dl 2)
+               , OnSmash (Explode "waste") ]
+  }
+flask10 = flask
+  { ieffects = [ NoEffect "of whiskey", CreateOrgan (20 + d 5) "drunk"
                , Burn 3, RefillHP 4, OnSmash (Explode "whiskey spray") ]
+  }
+flask11 = flask
+  { ieffects = [ NoEffect "of regeneration brew"
+               , CreateOrgan 0 "regenerating"
+               , OnSmash (Explode "healing mist") ]
+  }
+flask12 = flask  -- but not flask of Calm depletion, since Calm reduced often
+  { ieffects = [ NoEffect "of poison"
+               , CreateOrgan 0 "poisoned"
+               , OnSmash (Explode "wounding mist") ]
   }
 
 -- * Non-exploding consumables, not specifically designed for throwing
