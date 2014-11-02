@@ -284,7 +284,7 @@ necklace = ItemKind
   , iweight  = 30
   , iaspects = [Periodic]
   , ieffects = []
-  , ifeature = [ Durable, Precious, EqpSlot EqpSlotPeriodic ""
+  , ifeature = [ Precious, EqpSlot EqpSlotPeriodic ""
                , toVelocity 50 ]  -- not dense enough
   , idesc    = "Tingling, rattling chain of flat encrusted links. Eccentric millionaires are known to hide their highly personalized body augmentation packs in such large jewelry pieces."
   , ikit     = []
@@ -292,8 +292,7 @@ necklace = ItemKind
 necklace1 = necklace
   { irarity  = [(1, 1), (10, 2)]
   , iaspects = (Timeout $ (d 3 + 4 - dl 3) |*| 10) : iaspects necklace
-  , ieffects = [ Recharging (RefillHP 1)
-               , Burn 1 ]  -- only beneficial if activation is periodic
+  , ieffects = [Recharging (RefillHP 1)]
   }
 necklace2 = necklace
   { irarity  = [(2, 0), (10, 1)]
@@ -305,31 +304,19 @@ necklace2 = necklace
 necklace3 = necklace
   { iaspects = (Timeout $ (d 3 + 3 - dl 3) |*| 10) : iaspects necklace
   , ieffects = [ Recharging (Paralyze $ 5 + d 5 + dl 5)
-               , Recharging (RefillCalm 999)
-               , Paralyze $ 15 + d 15  -- extra pain without periodic
-               , OnSmash (Explode "explosion blast 2") ]
-  , ifeature = Fragile : ifeature necklace  -- too powerful projection
+               , Recharging (RefillCalm 999) ]
   }
 necklace4 = necklace
   { iaspects = (Timeout $ (d 4 + 4 - dl 4) |*| 2) : iaspects necklace
-  , ieffects = [ Recharging (Teleport $ d 3 |*| 3)
-               , RefillHP (-2)  -- price to pay if activation not periodic
-               , OnSmash (Explode "explosion blast 2") ]
-  , ifeature = Fragile : ifeature necklace  -- too powerful projection
+  , ieffects = [Recharging (Teleport $ d 3 |*| 3)]
   }
 necklace5 = necklace
   { iaspects = (Timeout $ (d 3 + 4 - dl 3) |*| 10) : iaspects necklace
-  , ieffects = [ Recharging (Teleport $ 12 + d 3 |*| 3)
-               , RefillHP (-3)  -- price to pay if activation not periodic
-               , OnSmash (Explode "explosion blast 2") ]
-  , ifeature = Fragile : ifeature necklace  -- too powerful projection
+  , ieffects = [Recharging (Teleport $ 12 + d 3 |*| 3)]
   }
 necklace6 = necklace
   { iaspects = (Timeout $ d 4 |*| 10) : iaspects necklace
-  , ieffects = [ Recharging (PushActor (ThrowMod 100 50))
-               , RefillHP (-1)  -- price to pay if activation not periodic
-               , OnSmash (Explode "explosion blast 2") ]
-  , ifeature = Fragile : ifeature necklace  -- quite powerful projection
+  , ieffects = [Recharging (PushActor (ThrowMod 100 50))]
   }
 necklace7 = necklace  -- TODO: teach AI to wear only for fight
   { irarity  = [(4, 0), (10, 2)]
@@ -368,7 +355,7 @@ ring = ItemKind
   , iverbHit = "knock"
   , iweight  = 15
   , iaspects = []
-  , ieffects = []
+  , ieffects = [Explode "explosion blast 2"]
   , ifeature = [Precious, Identified]
   , idesc    = "A sturdy ring with a softly shining eye. If it contains a body booster unit, beware of the side-effects."
   , ikit     = []
@@ -376,7 +363,7 @@ ring = ItemKind
 ring1 = ring
   { irarity  = [(2, 0), (10, 2)]
   , iaspects = [AddSpeed $ d 2, AddMaxHP $ dl 3 - 5 - d 3]
-  , ifeature = ifeature ring ++ [Durable, EqpSlot EqpSlotAddSpeed ""]
+  , ifeature = ifeature ring ++ [EqpSlot EqpSlotAddSpeed ""]
   }
 ring2 = ring
   { iaspects = [AddMaxHP $ 3 + dl 5, AddMaxCalm $ dl 6 - 15 - d 6]
@@ -390,7 +377,7 @@ ring3 = ring
 ring4 = ring  -- TODO: move to level-ups and to timed effects
   { irarity  = [(3, 12), (10, 12)]
   , iaspects = [AddHurtMelee $ (d 5 + dl 5) |*| 3, AddMaxHP $ dl 3 - 4 - d 2]
-  , ifeature = ifeature ring ++ [Durable, EqpSlot EqpSlotAddHurtMelee ""]
+  , ifeature = ifeature ring ++ [EqpSlot EqpSlotAddHurtMelee ""]
   }
 ring5 = ring  -- by the time it's found, probably no space in eqp
   { irarity  = [(5, 0)]
