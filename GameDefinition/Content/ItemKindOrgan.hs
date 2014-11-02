@@ -172,8 +172,8 @@ venomTooth = fist
   , ifreq    = [("venom tooth", 100)]
   , icount   = 2
   , iverbHit = "bite"
-  , iaspects = [Timeout $ 2 + d 8]
-  , ieffects = [Hurt (3 * d 1), Recharging (Paralyze 5)]
+  , iaspects = [Timeout $ 3 + d 3]
+  , ieffects = [Hurt (3 * d 1), Recharging (CreateOrgan (3 + d 3) "slow 10")]
   , idesc    = ""
   }
 venomFang = fist
@@ -181,7 +181,8 @@ venomFang = fist
   , ifreq    = [("venom fang", 100)]
   , icount   = 2
   , iverbHit = "bite"
-  , ieffects = [Hurt (3 * d 1)]  -- TODO: +12 damage or poison effect
+  , iaspects = [Timeout $ 10 + d 5]
+  , ieffects = [Hurt (3 * d 1), Recharging (CreateOrgan 0 "poisoned")]
   , idesc    = ""
   }
 largeTail = fist
