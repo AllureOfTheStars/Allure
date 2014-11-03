@@ -120,14 +120,14 @@ standardKeys = KeyKind
                        , object = "drink"
                        , symbol = '!' }
            , ApplyItem { verb = "read"
-                       , object = "tablet"
+                       , object = "chip"
                        , symbol = '?' }
            ]))
       , ("q", ([CmdItem], Apply [ApplyItem { verb = "quaff"
                                            , object = "drink"
                                            , symbol = '!' }]))
       , ("r", ([CmdItem], Apply [ApplyItem { verb = "read"
-                                           , object = "tablet"
+                                           , object = "chip"
                                            , symbol = '?' }]))
       , ("f", ([CmdItem, CmdMinimal], Project
            [ApplyItem { verb = "fling"
