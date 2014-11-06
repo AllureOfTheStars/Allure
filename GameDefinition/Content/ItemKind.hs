@@ -216,7 +216,7 @@ crankSpotlight = ItemKind
 gem = ItemKind
   { isymbol  = symbolGem
   , iname    = "gem"
-  , ifreq    = [("treasure", 100)]  -- x3, but rare on shallow levels
+  , ifreq    = [("treasure", 100)]
   , iflavour = zipPlain $ delete BrYellow brightCol  -- natural, so not fancy
   , icount   = 1
   , irarity  = []
@@ -224,8 +224,7 @@ gem = ItemKind
   , iweight  = 50
   , iaspects = [AddLight 1, AddSpeed (-1)]  -- reflects strongly, distracts
   , ieffects = []
-  , ifeature = [ Durable  -- prevent destruction by evil monsters
-               , Precious ]
+  , ifeature = [Precious]
   , idesc    = "Precious, though useless. Worth around 100 gold grains."
   , ikit     = []
   }
@@ -249,7 +248,7 @@ currency = ItemKind
   , iweight  = 1
   , iaspects = []
   , ieffects = []
-  , ifeature = [Durable, Identified, Precious]
+  , ifeature = [Identified, Precious]
   , idesc    = "Reliably valuable in every civilized place."
   , ikit     = []
   }
