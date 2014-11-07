@@ -10,6 +10,7 @@ import qualified Data.IntMap.Strict as IM
 
 import Content.ModeKindPlayer
 import Game.LambdaHack.Common.ContentDef
+import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.ModeKind
 
 cdefs :: ContentDef ModeKind

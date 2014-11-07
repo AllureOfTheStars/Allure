@@ -12,10 +12,9 @@ import qualified Data.Text as T
 
 import Game.LambdaHack.Common.Color
 import Game.LambdaHack.Common.ContentDef
-import qualified Game.LambdaHack.Common.Effect as Effect
-import Game.LambdaHack.Common.Feature
 import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Common.Msg
+import qualified Game.LambdaHack.Content.ItemKind as IK
 import Game.LambdaHack.Content.TileKind
 
 cdefs :: ContentDef TileKind
@@ -48,7 +47,7 @@ wallCache = TileKind
                , ("legendLit", 100), ("legendDark", 100) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfeature = [Cause $ Effect.CreateItem 1, ChangeTo "cachable"]
+  , tfeature = [Cause $ IK.CreateItem 1, ChangeTo "cachable"]
   }
 hardRock = TileKind
   { tsymbol  = '#'
@@ -145,7 +144,7 @@ stairsUp = TileKind
   , tfreq    = []  -- TODO: [("legendLit", 100), ("legendDark", 100)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfeature = [Walkable, Clear, NoItem, NoActor, Cause $ Effect.Ascend 1]
+  , tfeature = [Walkable, Clear, NoItem, NoActor, Cause $ IK.Ascend 1]
   }
 stairsDown = TileKind
   { tsymbol  = '>'
@@ -153,7 +152,7 @@ stairsDown = TileKind
   , tfreq    = []  -- TODO: [("legendLit", 100), ("legendDark", 100)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfeature = [Walkable, Clear, NoItem, NoActor, Cause $ Effect.Ascend (-1)]
+  , tfeature = [Walkable, Clear, NoItem, NoActor, Cause $ IK.Ascend (-1)]
   }
 escapeUp = TileKind
   { tsymbol  = '<'
@@ -161,7 +160,7 @@ escapeUp = TileKind
   , tfreq    = [("legendLit", 100), ("legendDark", 100)]
   , tcolor   = BrYellow
   , tcolor2  = BrYellow
-  , tfeature = [Walkable, Clear, NoItem, NoActor, Cause $ Effect.Escape 1]
+  , tfeature = [Walkable, Clear, NoItem, NoActor, Cause $ IK.Escape 1]
   }
 escapeDown = TileKind
   { tsymbol  = '>'
@@ -169,7 +168,7 @@ escapeDown = TileKind
   , tfreq    = [("legendLit", 100), ("legendDark", 100)]
   , tcolor   = BrYellow
   , tcolor2  = BrYellow
-  , tfeature = [Walkable, Clear, NoItem, NoActor, Cause $ Effect.Escape (-1)]
+  , tfeature = [Walkable, Clear, NoItem, NoActor, Cause $ IK.Escape (-1)]
   }
 liftUp = TileKind
   { tsymbol  = '<'
@@ -177,7 +176,7 @@ liftUp = TileKind
   , tfreq    = [("legendLit", 100), ("legendDark", 100)]
   , tcolor   = BrCyan
   , tcolor2  = BrCyan
-  , tfeature = [Walkable, Clear, NoItem, NoActor, Cause $ Effect.Ascend 1]
+  , tfeature = [Walkable, Clear, NoItem, NoActor, Cause $ IK.Ascend 1]
   }
 lift = TileKind
   { tsymbol  = '<'
@@ -186,8 +185,8 @@ lift = TileKind
   , tcolor   = BrBlue
   , tcolor2  = BrBlue
   , tfeature = [ Walkable, Clear, NoItem, NoActor
-               , Cause $ Effect.Ascend 1
-               , Cause $ Effect.Ascend (-1) ]
+               , Cause $ IK.Ascend 1
+               , Cause $ IK.Ascend (-1) ]
   }
 liftDown = TileKind
   { tsymbol  = '>'
@@ -195,7 +194,7 @@ liftDown = TileKind
   , tfreq    = [("legendLit", 100), ("legendDark", 100)]
   , tcolor   = BrCyan
   , tcolor2  = BrCyan
-  , tfeature = [Walkable, Clear, NoItem, NoActor, Cause $ Effect.Ascend (-1)]
+  , tfeature = [Walkable, Clear, NoItem, NoActor, Cause $ IK.Ascend (-1)]
   }
 unknown = TileKind
   { tsymbol  = ' '
@@ -256,7 +255,7 @@ floorGreenLit = floorRedLit
 
 
 makeDark :: TileKind -> TileKind
-makeDark k = let darkText :: GroupName -> GroupName
+makeDark k = let darkText :: GroupName TileKind -> GroupName TileKind
                  darkText t = maybe t (toGroupName . (<> "Dark"))
                               $ T.stripSuffix "Lit" $ tshow t
                  darkFrequency = map (first darkText) $ tfreq k

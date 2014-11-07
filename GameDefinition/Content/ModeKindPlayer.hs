@@ -14,6 +14,7 @@ import qualified Data.EnumMap.Strict as EM
 
 import Game.LambdaHack.Common.Ability
 import Game.LambdaHack.Common.Dice
+import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.ModeKind
 
 playerHero, playerSoldier, playerAntiHero, playerCivilian, playerMonster, playerMobileMonster, playerAntiMonster, playerAnimal, playerMobileAnimal, playerRobot, playerMobileRobot, playerHorror :: Player Dice

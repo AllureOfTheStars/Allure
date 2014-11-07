@@ -15,7 +15,6 @@ import Content.ItemKindTempAspect
 import Game.LambdaHack.Common.Color
 import Game.LambdaHack.Common.ContentDef
 import Game.LambdaHack.Common.Dice
-import Game.LambdaHack.Common.Effect
 import Game.LambdaHack.Common.Flavour
 import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.ItemKind
@@ -605,7 +604,7 @@ scroll9 = scroll
   , ieffects = [PolyItem CGround]
   }
 
-standardSummon :: Freqs
+standardSummon :: Freqs ItemKind
 standardSummon = [ ("alien", 20)
                  , ("mobile animal", 50)
                  , ("mobile robot", 30) ]
