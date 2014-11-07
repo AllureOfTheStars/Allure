@@ -15,9 +15,9 @@ import Game.LambdaHack.Content.ItemKind
 
 organs :: [ItemKind]
 organs =
-  [fist, foot, tentacle, claw, smallClaw, snout, sting, venomTooth, venomFang, largeTail, jaw, largeJaw, armoredSkin, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, eye2, eye3, eye4, eye5, nostril, thorn, razor, liveWire, boilingVent, explosionVent, fissure, wasteContainer]
+  [fist, foot, tentacle, claw, smallClaw, snout, sting, venomTooth, venomFang, largeTail, jaw, largeJaw, armoredSkin, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, eye2, eye3, eye4, eye5, nostril, thorn, razor, liveWire, boilingVent, explosionVent, bonusHP, fissure, wasteContainer]
 
-fist,    foot, tentacle, claw, smallClaw, snout, sting, venomTooth, venomFang, largeTail, jaw, largeJaw, armoredSkin, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, eye2, eye3, eye4, eye5, nostril, thorn, razor, liveWire, boilingVent, explosionVent, fissure, wasteContainer :: ItemKind
+fist,    foot, tentacle, claw, smallClaw, snout, sting, venomTooth, venomFang, largeTail, jaw, largeJaw, armoredSkin, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, eye2, eye3, eye4, eye5, nostril, thorn, razor, liveWire, boilingVent, explosionVent, bonusHP, fissure, wasteContainer :: ItemKind
 
 -- * Parameterized organs
 
@@ -247,7 +247,7 @@ explosionVent = fist
   , icount   = 1
   , iverbHit = "menace"
   , iaspects = [Periodic, Timeout $ (1 + d 4) |*| 10]
-  , ieffects = [Recharging (Explode "explosion blast 20")]
+  , ieffects = [Recharging (Explode "blast 20")]
   , ifeature = [Durable, Identified]
   , idesc    = ""
   }
@@ -260,6 +260,16 @@ wasteContainer = fist
   , ieffects = [ Recharging (Summon [("mobile animal", 1)] $ 1 + dl 2)
                , Recharging (RefillHP 1)
                , Recharging (Explode "waste") ]
+  , ifeature = [Durable, Identified]
+  , idesc    = ""
+  }
+bonusHP = fist
+  { iname    = "bonus HP"
+  , ifreq    = [("bonus HP", 100)]
+  , icount   = 1
+  , iverbHit = "intimidate"
+  , iaspects = [AddMaxHP 1]
+  , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
   }

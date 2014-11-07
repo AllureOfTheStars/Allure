@@ -354,7 +354,7 @@ ring = ItemKind
   , iverbHit = "knock"
   , iweight  = 15
   , iaspects = []
-  , ieffects = [Explode "explosion blast 2"]
+  , ieffects = [Explode "blast 2"]
   , ifeature = [Precious, Identified]
   , idesc    = "A sturdy ring with a softly shining eye. If it contains a body booster unit, beware of the side-effects."
   , ikit     = []
@@ -402,7 +402,7 @@ potion = ItemKind
   , ieffects = []
   , ifeature = [ toVelocity 50  -- oily, bad grip
                , Applicable, Fragile ]
-  , idesc    = "A vial of bright, frothing concoction."  -- purely natural; no nano, no alien tech  -- TODO: move distortion to a special flask item or trigger when some precious high tech item is destroyed (jewelry?)?
+  , idesc    = "A vial of bright, frothing concoction."  -- purely natural; no nano, no alien tech
   , ikit     = []
   }
 potion1 = potion
@@ -428,7 +428,7 @@ potion5 = potion
                , OnSmash (OneOf [ Explode "healing mist"
                                 , Explode "wounding mist"
                                 , Explode "fragrance"
-                                , Explode "explosion blast 10" ]) ]
+                                , Explode "blast 10" ]) ]
   }
 potion6 = potion
   { irarity  = [(3, 3), (10, 6)]
@@ -438,7 +438,7 @@ potion6 = potion
                                 , Explode "healing mist 2"
                                 , Explode "pheromone"
                                 , Explode "distortion"  -- outlier, OK
-                                , Explode "explosion blast 20" ]) ]
+                                , Explode "blast 20" ]) ]
   }
 potion7 = potion  -- used only as initial equipment; count betrays identity
   { ifreq    = [("useful", 100), ("potion of glue", 1)]
