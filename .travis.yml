@@ -62,17 +62,17 @@ install:
  - git clone --depth=50 --branch=mikolaj git://github.com/LambdaHack/LambdaHack.git
  - if [ -f Allure/cabal.config ]; then cp Allure/cabal.config LambdaHack; fi
  - cd LambdaHack
- - cabal-1.18 install gtk2hs-buildtools
+ - cabal-1.18 install -j2 gtk2hs-buildtools
 # 7.6.3 has broken -O2, apparently
  - |
    if [ $GHCVER = "head" ] || [ ${GHCVER%.*} = "7.8" ]; then
-     cabal-1.18 install -O2 -frelease --force-reinstalls
+     cabal-1.18 install -j2 -O2 -frelease --force-reinstalls
    else
-     cabal-1.18 install -f-release --force-reinstalls
+     cabal-1.18 install -j2 -f-release --force-reinstalls
    fi
  - cd ../Allure
- - cabal-1.18 install -O2 -frelease --only-dependencies
- - cabal-1.18 install -frelease --enable-tests
+ - cabal-1.18 install -j2 -O2 -frelease --only-dependencies
+ - cabal-1.18 install -j2 -frelease --enable-tests
 
 # Here starts the actual work to be performed for the package under
 # test; any command which exits with a non-zero exit code causes the
@@ -88,7 +88,7 @@ script:
  - export SRC_TGZ=$(cabal-1.18 info . | awk '{print $2 ".tar.gz";exit}');
    cd dist/;
    if [ -f "$SRC_TGZ" ]; then
-      cabal-1.18 install "$SRC_TGZ";
+      cabal-1.18 install -j2 "$SRC_TGZ";
    else
       echo "expected '$SRC_TGZ' not found";
       exit 1;
