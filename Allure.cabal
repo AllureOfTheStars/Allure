@@ -55,7 +55,7 @@ executable Allure
                       Content.ItemKindActor,
                       Content.ItemKindOrgan,
                       Content.ItemKindShrapnel,
-                      Content.ItemKindTempAspect,
+                      Content.ItemKindTemporary,
                       Content.ModeKind,
                       Content.ModeKindPlayer,
                       Content.PlaceKind,
