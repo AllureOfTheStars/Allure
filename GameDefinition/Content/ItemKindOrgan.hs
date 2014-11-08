@@ -171,16 +171,18 @@ venomTooth = fist
   , ifreq    = [("venom tooth", 100)]
   , icount   = 2
   , iverbHit = "bite"
-  , iaspects = [Timeout $ 3 + d 3]
+  , iaspects = [Timeout $ 5 + d 3]
   , ieffects = [Hurt (3 * d 1), Recharging (CreateOrgan (3 + d 3) "slow 10")]
   , idesc    = ""
   }
+-- TODO: should also confer poison resistance, but current implementation
+-- is too costly (poison removal each turn)
 venomFang = fist
   { iname    = "venom fang"
   , ifreq    = [("venom fang", 100)]
   , icount   = 2
   , iverbHit = "bite"
-  , iaspects = [Timeout $ 10 + d 5]
+  , iaspects = [Timeout $ 7 + d 5]
   , ieffects = [Hurt (3 * d 1), Recharging (CreateOrgan 0 "poisoned")]
   , idesc    = ""
   }
@@ -199,7 +201,7 @@ liveWire = fist
   , icount   = 4
   , iverbHit = "shock"
   , iaspects = [Timeout $ 2 + d 2]
-  , ieffects = [Hurt (1 * d 1), Recharging (Paralyze 2)]
+  , ieffects = [Hurt (1 * d 1), Recharging (DropOrgan "temporary conditions")]
   , idesc    = ""
   }
 
