@@ -36,16 +36,16 @@ xcfrontendDefense:
 	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --maxFps 60 --dumpInitRngs --automateAll --gameMode defense --difficulty 9
 
 xcbenchCampaign:
-	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfter 60 --automateAll --gameMode campaign --difficulty 1 --setDungeonRng 42 --setMainRng 42
+	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfter 60 --automateAll --gameMode campaign --difficulty 1 --setDungeonRng 42 --setMainRng 42 +RTS -N1 -RTS
 
 xcbenchBattle:
-	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfter 60 --automateAll --gameMode battle --difficulty 1 --setDungeonRng 42 --setMainRng 42
+	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfter 60 --automateAll --gameMode battle --difficulty 1 --setDungeonRng 42 --setMainRng 42 +RTS -N1 -RTS
 
 xcbenchFrontendCampaign:
-	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --maxFps 100000 --benchmark --stopAfter 60 --automateAll --gameMode campaign --difficulty 1 --setDungeonRng 42 --setMainRng 42
+	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --maxFps 100000 --benchmark --stopAfter 60 --automateAll --gameMode campaign --difficulty 1 --setDungeonRng 42 --setMainRng 42 +RTS -N1 -RTS
 
 xcbenchFrontendBattle:
-	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --maxFps 100000 --benchmark --stopAfter 60 --automateAll --gameMode battle --difficulty 1 --setDungeonRng 42 --setMainRng 42
+	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --maxFps 100000 --benchmark --stopAfter 60 --automateAll --gameMode battle --difficulty 1 --setDungeonRng 42 --setMainRng 42 +RTS -N1 -RTS
 
 xcbenchNull: xcbenchCampaign xcbenchBattle
 
@@ -157,16 +157,16 @@ frontendDefense:
 	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --maxFps 60 --dumpInitRngs --automateAll --gameMode defense --difficulty 9
 
 benchCampaign:
-	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfter 60 --automateAll --gameMode campaign --difficulty 1 --setDungeonRng 42 --setMainRng 42
+	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfter 60 --automateAll --gameMode campaign --difficulty 1 --setDungeonRng 42 --setMainRng 42 +RTS -N1 -RTS
 
 benchBattle:
-	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfter 60 --automateAll --gameMode battle --difficulty 1 --setDungeonRng 42 --setMainRng 42
+	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfter 60 --automateAll --gameMode battle --difficulty 1 --setDungeonRng 42 --setMainRng 42 +RTS -N1 -RTS
 
 benchFrontendCampaign:
-	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --maxFps 100000 --benchmark --stopAfter 60 --automateAll --gameMode campaign --difficulty 1 --setDungeonRng 42 --setMainRng 42
+	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --maxFps 100000 --benchmark --stopAfter 60 --automateAll --gameMode campaign --difficulty 1 --setDungeonRng 42 --setMainRng 42 +RTS -N1 -RTS
 
 benchFrontendBattle:
-	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --maxFps 100000 --benchmark --stopAfter 60 --automateAll --gameMode battle --difficulty 1 --setDungeonRng 42 --setMainRng 42
+	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --maxFps 100000 --benchmark --stopAfter 60 --automateAll --gameMode battle --difficulty 1 --setDungeonRng 42 --setMainRng 42 +RTS -N1 -RTS
 
 benchNull: benchCampaign benchBattle
 

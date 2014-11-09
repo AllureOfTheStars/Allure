@@ -68,7 +68,7 @@ install:
    if [ $GHCVER = "head" ] || [ ${GHCVER%.*} = "7.8" ]; then
      cabal-1.18 install -j2 -O2 -frelease --force-reinstalls
    else
-     cabal-1.18 install -j2 -f-release --force-reinstalls
+     cabal-1.18 install -j2 -frelease -O1 --force-reinstalls
    fi
  - cd ../Allure
  - cabal-1.18 install -j2 -O2 -frelease --only-dependencies
