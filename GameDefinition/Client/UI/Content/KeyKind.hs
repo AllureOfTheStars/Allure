@@ -182,5 +182,6 @@ standardKeys = KeyKind
       , ("CTRL-s", ([CmdDebug], GameSave))
       , ("CTRL-f", ([CmdDebug], GameRestart "safari"))
       , ("CTRL-e", ([CmdDebug], GameRestart "defense"))
+      , ("CTRL-O", ([CmdDebug], DescribeItem COrgan))
       ]
   }
