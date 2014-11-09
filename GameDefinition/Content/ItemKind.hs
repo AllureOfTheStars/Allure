@@ -815,7 +815,7 @@ swordNullify = sword
   , irarity  = [(3, 0), (10, 1)]
   , iaspects = iaspects sword ++ [Timeout $ (d 4 + 5 - dl 4) |*| 2]
   , ieffects = ieffects sword ++ [Recharging $ DropOrgan "temporary conditions"]
-  , idesc    = "Cold, thin blade that pierces deeply and sends its victim into abrupt, sobering shock."
+  , idesc    = "Cold, thin, ancient blade that pierces deeply and sends its victim into abrupt, sobering shock."
   }
 halberd = ItemKind
   { isymbol  = symbolPolearm
