@@ -15,45 +15,11 @@ import Game.LambdaHack.Content.ItemKind
 
 organs :: [ItemKind]
 organs =
-  [fist, foot, tentacle, claw, smallClaw, snout, sting, venomTooth, venomFang, largeTail, jaw, largeJaw, armoredSkin, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, eye2, eye3, eye4, eye5, nostril, thorn, razor, liveWire, boilingVent, explosionVent, bonusHP, fissure, wasteContainer]
+  [fist, foot, claw, smallClaw, snout, jaw, largeJaw, tentacle, thorn, razor, fissure, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, nostril, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, wasteContainer, bonusHP]
 
-fist,    foot, tentacle, claw, smallClaw, snout, sting, venomTooth, venomFang, largeTail, jaw, largeJaw, armoredSkin, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, eye2, eye3, eye4, eye5, nostril, thorn, razor, liveWire, boilingVent, explosionVent, bonusHP, fissure, wasteContainer :: ItemKind
+fist,    foot, claw, smallClaw, snout, jaw, largeJaw, tentacle, thorn, razor, fissure, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, nostril, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, wasteContainer, bonusHP :: ItemKind
 
--- * Parameterized organs
-
-speedGland :: Int -> ItemKind
-speedGland n = fist
-  { iname    = "speed gland"
-  , ifreq    = [(toGroupName $ "speed gland" <+> tshow n, 100)]
-  , icount   = 1
-  , iverbHit = "spit at"
-  , iaspects = [ AddSpeed $ intToDice n
-               , Periodic
-               , Timeout $ intToDice $ 100 `div` n ]
-  , ieffects = [Recharging (RefillHP 1)]
-  , ifeature = [Durable, Identified]
-  , idesc    = ""
-  }
-speedGland2 = speedGland 2
-speedGland4 = speedGland 4
-speedGland6 = speedGland 6
-speedGland8 = speedGland 8
-speedGland10 = speedGland 10
-eye :: Int -> ItemKind
-eye n = fist
-  { iname    = "eye"
-  , ifreq    = [(toGroupName $ "eye" <+> tshow n, 100)]
-  , icount   = 2
-  , iverbHit = "glare at"
-  , iaspects = [AddSight (intToDice n)]
-  , ieffects = []
-  , ifeature = [Durable, Identified]
-  , idesc    = ""
-  }
-eye2 = eye 2
-eye3 = eye 3
-eye4 = eye 4
-eye5 = eye 5
+-- Weapons
 
 -- * Human weapon organs
 
@@ -122,6 +88,9 @@ largeJaw = fist
   , ieffects = [Hurt (12 * d 1)]
   , idesc    = ""
   }
+
+-- * Monster weapon organs
+
 tentacle = fist
   { iname    = "tentacle"
   , ifreq    = [("tentacle", 50)]
@@ -205,55 +174,88 @@ liveWire = fist
   , idesc    = ""
   }
 
+-- Non-weapons
+
 -- * Armor organs
 
-armoredSkin = fist
-  { iname    = "armored skin"
+armoredSkin = ItemKind
+  { isymbol  = '%'
+  , iname    = "armored skin"
   , ifreq    = [("armored skin", 100)]
+  , iflavour = zipPlain [BrRed]
   , icount   = 1
+  , irarity  = [(1, 1)]
   , iverbHit = "bash"
+  , iweight  = 2000
   , iaspects = [AddArmorMelee 30, AddArmorRanged 30]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
+  , ikit     = []
   }
 
 -- * Sense organs
 
-nostril = fist
+eye :: Int -> ItemKind
+eye n = armoredSkin
+  { iname    = "eye"
+  , ifreq    = [(toGroupName $ "eye" <+> tshow n, 100)]
+  , icount   = 2
+  , iverbHit = "glare at"
+  , iaspects = [AddSight (intToDice n)]
+  , idesc    = ""
+  }
+eye2 = eye 2
+eye3 = eye 3
+eye4 = eye 4
+eye5 = eye 5
+nostril = armoredSkin
   { iname    = "nostril"
   , ifreq    = [("nostril", 100)]
   , icount   = 2
   , iverbHit = "snuff"
   , iaspects = [AddSmell 1]
-  , ieffects = []
-  , ifeature = [Durable, Identified]
   , idesc    = ""
   }
 
 -- * Assorted
 
-boilingVent = fist
+speedGland :: Int -> ItemKind
+speedGland n = armoredSkin
+  { iname    = "speed gland"
+  , ifreq    = [(toGroupName $ "speed gland" <+> tshow n, 100)]
+  , icount   = 1
+  , iverbHit = "spit at"
+  , iaspects = [ AddSpeed $ intToDice n
+               , Periodic
+               , Timeout $ intToDice $ 100 `div` n ]
+  , ieffects = [Recharging (RefillHP 1)]
+  , idesc    = ""
+  }
+speedGland2 = speedGland 2
+speedGland4 = speedGland 4
+speedGland6 = speedGland 6
+speedGland8 = speedGland 8
+speedGland10 = speedGland 10
+boilingVent = armoredSkin
   { iname    = "vent"
   , ifreq    = [("boiling vent", 100)]
   , icount   = 1
   , iverbHit = "menace"
   , iaspects = [Periodic, Timeout $ (3 + d 4) |*| 10]
   , ieffects = [Recharging (Explode "boiling water")]
-  , ifeature = [Durable, Identified]
   , idesc    = ""
   }
-explosionVent = fist
+explosionVent = armoredSkin
   { iname    = "vent"
   , ifreq    = [("explosion vent", 100)]
   , icount   = 1
   , iverbHit = "menace"
   , iaspects = [Periodic, Timeout $ (1 + d 4) |*| 10]
   , ieffects = [Recharging (Explode "blast 20")]
-  , ifeature = [Durable, Identified]
   , idesc    = ""
   }
-wasteContainer = fist
+wasteContainer = armoredSkin
   { iname    = "waste container"
   , ifreq    = [("waste container", 100)]
   , icount   = 1
@@ -262,16 +264,13 @@ wasteContainer = fist
   , ieffects = [ Recharging (Summon [("mobile animal", 1)] $ 1 + dl 2)
                , Recharging (RefillHP 1)
                , Recharging (Explode "waste") ]
-  , ifeature = [Durable, Identified]
   , idesc    = ""
   }
-bonusHP = fist
+bonusHP = armoredSkin
   { iname    = "bonus HP"
   , ifreq    = [("bonus HP", 100)]
   , icount   = 1
   , iverbHit = "intimidate"
   , iaspects = [AddMaxHP 1]
-  , ieffects = []
-  , ifeature = [Durable, Identified]
   , idesc    = ""
   }
