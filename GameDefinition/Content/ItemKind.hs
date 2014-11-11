@@ -138,7 +138,8 @@ net = ItemKind
   , iverbHit = "entangle"
   , iweight  = 1000
   , iaspects = []
-  , ieffects = [CreateOrgan (3 + d 3) "slow 10", DropEqp symbolTorsoArmor False]
+  , ieffects = [ toOrganGameTurn "slow 10" (3 + d 3)
+               , DropItem CEqp "torso armor" False ]
   , ifeature = []
   , idesc    = "A large synthetic fibre net with weights affixed along the edges. Entangles armor and restricts movement."
   , ikit     = []
@@ -164,14 +165,14 @@ needle = ItemKind
 jumpingPole = ItemKind
   { isymbol  = symbolTool
   , iname    = "jumping pole"
-  , ifreq    = [] -- TODO, lasts game- not player-turn  [("useful", 100)]
+  , ifreq    = [("useful", 100)]
   , iflavour = zipPlain [White]
   , icount   = 1
   , irarity  = [(1, 2), (10, 1)]
   , iverbHit = "prod"
   , iweight  = 10000
   , iaspects = []
-  , ieffects = [CreateOrgan 1 "fast 20"]
+  , ieffects = [toOrganActorTurn "fast 20" 1]
   , ifeature = [Durable, Applicable, Identified]
   , idesc    = "Makes you vulnerable at take-off, but then you are free like a bird."
   , ikit     = []
@@ -289,7 +290,7 @@ necklace2 = necklace
   { irarity  = [(2, 0), (10, 1)]
   , iaspects = (Timeout $ (d 3 + 3 - dl 3) |*| 10) : iaspects necklace
   , ieffects = [ Recharging (Impress)
-               , Recharging (DropOrgan "temporary conditions")
+               , Recharging (DropItem COrgan "temporary conditions" True)
                , Recharging (Summon [("mobile animal", 1)] $ 1 + dl 2)
                , Recharging (Explode "waste") ]
   }
@@ -441,10 +442,12 @@ potion7 = potion  -- used only as initial equipment; count betrays identity
   , ifeature = [Identified]
   }
 potion8 = potion
-  { ieffects = [DropOrgan "poisoned", OnSmash (Explode "antidote mist")]
+  { ieffects = [ DropItem COrgan "poisoned" True
+               , OnSmash (Explode "antidote mist") ]
   }
 potion9 = potion
-  { ieffects = [ NoEffect "of nullification", DropOrgan "temporary conditions"
+  { ieffects = [ NoEffect "of nullification"
+               , DropItem COrgan "temporary conditions" True
                , OnSmash (Explode "blast 10") ]
   }
 
@@ -472,77 +475,77 @@ flask = ItemKind
 flask1 = flask
   { irarity  = [(10, 5)]
   , ieffects = [ NoEffect "of strength brew"
-               , CreateOrgan (20 + d 5) "strengthened"
+               , toOrganActorTurn "strengthened" (20 + d 5)
                , OnSmash (Explode "strength mist") ]
   }
 flask2 = flask
   { irarity  = [(10, 7)]
   , ieffects = [ NoEffect "of weakness brew"
-               , CreateOrgan (20 + d 5) "weakened"
+               , toOrganGameTurn "weakened" (20 + d 5)
                , OnSmash (Explode "weakness mist") ]
   }
 flask3 = flask
   { ieffects = [ NoEffect "of protecting balm"
-               , CreateOrgan (20 + d 5) "protected"
+               , toOrganActorTurn "protected" (20 + d 5)
                , OnSmash (Explode "protecting balm") ]
   }
 flask4 = flask
   { ieffects = [ NoEffect "of red paint"
-               , CreateOrgan (20 + d 5) "painted red"
+               , toOrganGameTurn "painted red" (20 + d 5)
                , OnSmash (Explode "red paint") ]
   }
 flask5 = flask
   { irarity  = [(10, 5)]
   , ieffects = [ NoEffect "of haste brew"
-               , CreateOrgan (20 + d 5) "fast 20"
+               , toOrganActorTurn "fast 20" (20 + d 5)
                , OnSmash (Explode "haste spray") ]
   }
 flask6 = flask
   { ieffects = [ NoEffect "of slowness brew"
-               , CreateOrgan (20 + d 5) "slow 10"
+               , toOrganGameTurn "slow 10" (20 + d 5)
                , OnSmash (Explode "slowness spray") ]
   }
 flask7 = flask  -- sight can be reduced from Calm, drunk, etc.
   { irarity  = [(10, 7)]
   , ieffects = [ NoEffect "of eye drops"
-               , CreateOrgan (20 + d 5) "far-sighted"
+               , toOrganActorTurn "far-sighted" (20 + d 5)
                , OnSmash (Explode "eye drop") ]
   }
 flask8 = flask
   { irarity  = [(10, 3)]
   , ieffects = [ NoEffect "of smelly concoction"
-               , CreateOrgan (20 + d 5) "keen-smelling"
+               , toOrganActorTurn "keen-smelling" (20 + d 5)
                , OnSmash (Explode "smelly droplet") ]
   }
 flask9 = flask
-  { ieffects = [ NoEffect "of bait cocktail", CreateOrgan (5 + d 5) "drunk"
+  { ieffects = [ NoEffect "of bait cocktail", toOrganActorTurn "drunk" (5 + d 5)
                , OnSmash (Summon [("mobile animal", 1)] $ 1 + dl 2)
                , OnSmash (Explode "waste") ]
   }
 flask10 = flask
-  { ieffects = [ NoEffect "of whiskey", CreateOrgan (20 + d 5) "drunk"
+  { ieffects = [ NoEffect "of whiskey", toOrganActorTurn "drunk" (20 + d 5)
                , Burn 2, RefillHP 4, OnSmash (Explode "whiskey spray") ]
   }
 flask11 = flask
   { ieffects = [ NoEffect "of regeneration brew"
-               , CreateOrgan 0 "regenerating"
+               , toOrganNone "regenerating"
                , OnSmash (Explode "healing mist") ]
   }
 flask12 = flask  -- but not flask of Calm depletion, since Calm reduced often
   { ieffects = [ NoEffect "of poison"
-               , CreateOrgan 0 "poisoned"
+               , toOrganNone "poisoned"
                , OnSmash (Explode "wounding mist") ]
   }
 flask13 = flask
   { irarity  = [(10, 5)]
   , ieffects = [ NoEffect "of slow resistance"
-               , CreateOrgan 0 "slow resistant"
+               , toOrganNone "slow resistant"
                , OnSmash (Explode "anti-slow mist") ]
   }
 flask14 = flask  -- but not flask of Calm depletion, since Calm reduced often
   { irarity  = [(10, 5)]
   , ieffects = [ NoEffect "of poison resistance"
-               , CreateOrgan 0 "poison resistant"
+               , toOrganNone "poison resistant"
                , OnSmash (Explode "antidote mist") ]
   }
 
@@ -595,7 +598,8 @@ scroll5 = scroll
   { irarity  = [(3, 3), (10, 6)]
   , ieffects = [ OneOf [ Summon standardSummon $ d 2
                        , CallFriend 1, Ascend (-1), Ascend 1
-                       , RefillCalm 30, RefillCalm (-30), CreateItem $ d 2
+                      , RefillCalm 30, RefillCalm (-30)
+                      , CreateItem CGround "useful" TimerNone
                        , PolyItem CGround ] ]
                -- TODO: ask player: Escape 1
   }
@@ -814,7 +818,7 @@ swordNullify = sword
   { ifreq    = [("useful", 100)]
   , irarity  = [(3, 0), (10, 1)]
   , iaspects = iaspects sword ++ [Timeout $ (d 4 + 5 - dl 4) |*| 2]
-  , ieffects = ieffects sword ++ [Recharging $ DropOrgan "temporary conditions"]
+  , ieffects = ieffects sword ++ [Recharging $ DropItem COrgan "temporary conditions" True]
   , idesc    = "Cold, thin, ancient blade that pierces deeply and sends its victim into abrupt, sobering shock."
   }
 halberd = ItemKind

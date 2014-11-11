@@ -141,7 +141,8 @@ venomTooth = fist
   , icount   = 2
   , iverbHit = "bite"
   , iaspects = [Timeout $ 5 + d 3]
-  , ieffects = [Hurt (3 * d 1), Recharging (CreateOrgan (3 + d 3) "slow 10")]
+  , ieffects = [ Hurt (3 * d 1)
+               , Recharging (toOrganGameTurn "slow 10" (3 + d 3)) ]
   , idesc    = ""
   }
 -- TODO: should also confer poison resistance, but current implementation
@@ -152,7 +153,8 @@ venomFang = fist
   , icount   = 2
   , iverbHit = "bite"
   , iaspects = [Timeout $ 7 + d 5]
-  , ieffects = [Hurt (3 * d 1), Recharging (CreateOrgan 0 "poisoned")]
+  , ieffects = [ Hurt (3 * d 1)
+               , Recharging (toOrganNone "poisoned") ]
   , idesc    = ""
   }
 largeTail = fist
@@ -170,7 +172,7 @@ liveWire = fist
   , icount   = 4
   , iverbHit = "shock"
   , iaspects = [Timeout $ 2 + d 2]
-  , ieffects = [Hurt (1 * d 1), Recharging (DropOrgan "temporary conditions")]
+  , ieffects = [Hurt (1 * d 1), Recharging (DropItem COrgan "temporary conditions" True)]
   , idesc    = ""
   }
 
