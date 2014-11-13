@@ -21,9 +21,9 @@ cdefs = ContentDef
   , validateSingle = validateSingleCaveKind
   , validateAll = validateAllCaveKind
   , content =
-      [rogue, arena, empty, noise, battle, skirmish, ambush, safari1, safari2, safari3, bridge, shallow1, shallow2, shallow3, shallow4]
+      [rogue, arena, empty, noise, battle, skirmish, ambush, safari1, safari2, safari3, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow2noise, shallow1arena, shallow1empty]
   }
-rogue,        arena, empty, noise, battle, skirmish, ambush, safari1, safari2, safari3, bridge, shallow1, shallow2, shallow3, shallow4 :: CaveKind
+rogue,        arena, empty, noise, battle, skirmish, ambush, safari1, safari2, safari3, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow2noise, shallow1arena, shallow1empty :: CaveKind
 
 rogue = CaveKind
   { csymbol       = 'R'
@@ -73,7 +73,6 @@ arena = rogue
   , cdefTile      = "arenaSet"
   , cdarkCorTile  = "trailLit"  -- let trails give off light
   , clitCorTile   = "trailLit"
--- TODO: re-add when less rooms , couterFenceTile = "oriels fence"
   }
 empty = rogue
   { csymbol       = 'E'
@@ -95,7 +94,6 @@ empty = rogue
   , cdefTile      = "emptySet"
   , cdarkCorTile  = "floorArenaDark"
   , clitCorTile   = "floorArenaLit"
-  , couterFenceTile = "oriels fence"
   }
 noise = rogue
   { csymbol       = 'N'
@@ -199,24 +197,34 @@ bridge = rogue
   , cdarkCorTile  = "emergency walkway"
   , clitCorTile   = "emergency walkway"
   }
-shallow1 = rogue
-  { cfreq         = [("shallow random", 100)]
+shallow2rogue= rogue
+  { cfreq         = [("shallow random 2", 100)]
   , cactorFreq    = filter ((/= "alien") . fst) $ cactorFreq rogue
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq rogue
   }
-shallow2 = arena
-  { cfreq         = [("shallow random", 100)]
+shallow2arena = arena
+  { cfreq         = [("shallow random 2", 100)]
   , cactorFreq    = filter ((/= "alien") . fst) $ cactorFreq empty
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
   }
-shallow3 = empty
-  { cfreq         = [("shallow random", 100)]
+shallow2empty = empty
+  { cfreq         = [("shallow random 2", 100)]
   , cactorFreq    = filter ((/= "alien") . fst) $ cactorFreq empty
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
   }
-shallow4 = noise
-  { cfreq         = [("shallow random", 50)]
+shallow2noise = noise
+  { cfreq         = [("shallow random 2", 50)]
   , cnightChance  = 0
   , cactorFreq    = filter ((/= "alien") . fst) $ cactorFreq noise
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq noise
+  }
+shallow1arena = shallow2arena  -- TODO: replace some rooms with oriels?
+  { cname         = "Outermost deck"
+  , cfreq         = [("shallow random 1", 100)]
+  , couterFenceTile = "oriels fence"
+  }
+shallow1empty = shallow2empty  -- TODO: add oriel areas or glass on floor
+  { cname         = "Outermost deck"
+  , cfreq         = [("shallow random 1", 100)]
+  , couterFenceTile = "oriels fence"
   }
