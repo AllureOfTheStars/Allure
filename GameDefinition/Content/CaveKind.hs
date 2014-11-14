@@ -221,6 +221,7 @@ shallow2noise = noise
 shallow1arena = shallow2arena  -- TODO: replace some rooms with oriels?
   { cname         = "Outermost deck"
   , cfreq         = [("shallow random 1", 100)]
+  , cminPlaceSize = DiceXY (2 * d 2 + 3) 3
   , couterFenceTile = "oriels fence"
   }
 shallow1empty = shallow2empty  -- TODO: add oriel areas or glass on floor
