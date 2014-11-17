@@ -21,9 +21,9 @@ cdefs = ContentDef
   , validateSingle = validateSingleCaveKind
   , validateAll = validateAllCaveKind
   , content =
-      [rogue, arena, empty, noise, battle, skirmish, ambush, safari1, safari2, safari3, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow2noise, shallow1arena, shallow1empty]
+      [rogue, arena, empty, noise, battle, skirmish, ambush, safari1, safari2, safari3, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1arena, shallow1empty]
   }
-rogue,        arena, empty, noise, battle, skirmish, ambush, safari1, safari2, safari3, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow2noise, shallow1arena, shallow1empty :: CaveKind
+rogue,        arena, empty, noise, battle, skirmish, ambush, safari1, safari2, safari3, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1arena, shallow1empty :: CaveKind
 
 rogue = CaveKind
   { csymbol       = 'R'
@@ -197,7 +197,7 @@ bridge = rogue
   , cdarkCorTile  = "emergency walkway"
   , clitCorTile   = "emergency walkway"
   }
-shallow2rogue= rogue
+shallow2rogue = rogue
   { cfreq         = [("shallow random 2", 100)]
   , cactorFreq    = filter ((/= "alien") . fst) $ cactorFreq rogue
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq rogue
@@ -211,12 +211,6 @@ shallow2empty = empty
   { cfreq         = [("shallow random 2", 100)]
   , cactorFreq    = filter ((/= "alien") . fst) $ cactorFreq empty
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
-  }
-shallow2noise = noise
-  { cfreq         = [("shallow random 2", 50)]
-  , cnightChance  = 0
-  , cactorFreq    = filter ((/= "alien") . fst) $ cactorFreq noise
-  , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq noise
   }
 shallow1arena = shallow2arena  -- TODO: replace some rooms with oriels?
   { cname         = "Outermost deck"
