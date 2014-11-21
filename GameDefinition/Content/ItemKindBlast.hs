@@ -3,8 +3,8 @@
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
--- | Shrapnel definitions.
-module Content.ItemKindShrapnel ( shrapnels ) where
+-- | Blast definitions.
+module Content.ItemKindBlast ( blasts ) where
 
 import Game.LambdaHack.Common.Color
 import Game.LambdaHack.Common.Dice
@@ -13,13 +13,13 @@ import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Common.Msg
 import Game.LambdaHack.Content.ItemKind
 
-shrapnels :: [ItemKind]
-shrapnels =
+blasts :: [ItemKind]
+blasts =
   [burningOil2, burningOil3, burningOil4, explosionBlast2, explosionBlast10, explosionBlast20, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, fragrance, pheromone, mistHealing, mistHealing2, mistWounding, distortion, waste, glassPiece, smoke, boilingWater, glue, spark, mistAntiSlow, mistAntidote, mistStrength, mistWeakness, protectingBalm, redPaint, hasteSpray, slownessSpray, eyeDrop, smellyDroplet, whiskeySpray]
 
 burningOil2,    burningOil3, burningOil4, explosionBlast2, explosionBlast10, explosionBlast20, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, fragrance, pheromone, mistHealing, mistHealing2, mistWounding, distortion, waste, glassPiece, smoke, boilingWater, glue, spark, mistAntiSlow, mistAntidote, mistStrength, mistWeakness, protectingBalm, redPaint, hasteSpray, slownessSpray, eyeDrop, smellyDroplet, whiskeySpray :: ItemKind
 
--- * Parameterized immediate effect shrapnel
+-- * Parameterized immediate effect blasts
 
 burningOil :: Int -> ItemKind
 burningOil n = ItemKind
@@ -90,7 +90,7 @@ firecracker4 = firecracker 4
 firecracker3 = firecracker 3
 firecracker2 = firecracker 2
 
--- * Assorted immediate effect shrapnel
+-- * Assorted immediate effect blasts
 
 fragrance = ItemKind
   { isymbol  = '\''
@@ -312,7 +312,7 @@ mistAntidote = ItemKind
   , ikit     = []
   }
 
--- * Assorted temporary condition shrapnel
+-- * Assorted temporary condition blasts
 
 mistStrength = ItemKind
   { isymbol  = '\''
