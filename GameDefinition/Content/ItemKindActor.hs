@@ -32,6 +32,7 @@ warrior = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 50, AddMaxCalm 60, AddSpeed 20
+               , AddSkills $ EM.fromList [(AbProject, 1)]  -- TODO: on a ring?
                , AddSight 3 ]  -- no via eyes, but feel, hearing, etc.
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -75,6 +76,7 @@ eye = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 20
+               , AddSkills $ EM.fromList [(AbProject, 1)]
                , AddSight 4 ]  -- can shoot for as long as lives
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -113,6 +115,7 @@ nose = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 40, AddMaxCalm 30, AddSpeed 18
+               , AddSkills $ EM.fromList [(AbProject, -1)]
                , AddSmell 3 ]  -- depends solely on smell
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -132,7 +135,7 @@ elbow = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 15, AddMaxCalm 80, AddSpeed 26
-               , AddSkills $ EM.singleton AbMelee (-1)
+               , AddSkills $ EM.fromList [(AbProject, 1), (AbMelee, -1)]
                , AddSight 15 ]  -- can shoot for as long as lives
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -349,8 +352,7 @@ activeFence = ItemKind
   , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 20, AddSight 6
                , AddSkills
                  $ EM.fromDistinctAscList (zip [minBound..maxBound] [-1, -1..])
-                   `addSkills` EM.fromList (zip [AbWait, AbProject]
-                                                [1, 1..])
+                   `addSkills` EM.fromList [(AbWait, 1), (AbProject, 2)]
                , AddArmorMelee 50, AddArmorRanged 50 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -443,7 +445,7 @@ homeRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 10, AddMaxCalm 60, AddSpeed 20
-               , AddSkills robotSkillMalus
+               , AddSkills $ EM.insert AbProject (-1) robotSkillMalus
                , AddSmell 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -461,7 +463,6 @@ wasteRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 15
-               , AddSkills robotSkillMalus
                , AddSmell 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -481,6 +482,7 @@ lightRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 30
+               , AddSkills $ EM.fromList [(AbProject, 1)]
                , AddSkills robotSkillMalus
                , AddSight 3, AddLight 3 ]  -- light can't be turned off
   , ieffects = []
@@ -500,6 +502,7 @@ heavyRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 800000
   , iaspects = [ AddMaxHP 80, AddMaxCalm 60, AddSpeed 20
+               , AddSkills $ EM.fromList [(AbProject, 1)]
                , AddSkills robotSkillMalus
                , AddSight 3, AddLight 4 ]  -- light can't be turned off
   , ieffects = []
