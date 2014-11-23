@@ -91,7 +91,7 @@ playerAnimal = Player
   , fhasGender = False
   , ftactic = TRoam  -- can't pick up, so no point exploring
   , fentryLevel = 3
-  , finitialActors = d 3
+  , finitialActors = 1 + d 2
   , fleaderMode = LeaderNull
   , fhasUI = False
   }
@@ -109,7 +109,7 @@ playerRobot = Player
   , fhasGender = False
   , ftactic = TFollow  -- coordinated via net, follow alien leader (TODO)
   , fentryLevel = 3
-  , finitialActors = 1 + d 3
+  , finitialActors = 1 + d 2
   , fleaderMode = LeaderNull
   , fhasUI = False
   }

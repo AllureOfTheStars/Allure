@@ -73,10 +73,10 @@ eye = ItemKind
   , ifreq    = [("alien", 100), ("horror", 100)]
   , iflavour = zipPlain [BrRed]
   , icount   = 1
-  , irarity  = [(3, 1), (10, 9)]
+  , irarity  = [(3, 4), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 20
+  , iaspects = [ AddMaxHP 10, AddMaxCalm 60, AddSpeed 20
                , AddSkills $ EM.fromList [(AbProject, 1), (AbApply, 1)]
                , AddSight 4 ]
   , ieffects = []
@@ -93,10 +93,10 @@ fastEye = ItemKind
   , ifreq    = [("alien", 100), ("horror", 100)]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
-  , irarity  = [(6, 1), (10, 7)]
+  , irarity  = [(3, 2), (10, 8)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 6, AddMaxCalm 60, AddSpeed 30
+  , iaspects = [ AddMaxHP 5, AddMaxCalm 60, AddSpeed 30
                , AddSight 4 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -112,10 +112,10 @@ nose = ItemKind
   , ifreq    = [("alien", 100), ("horror", 100)]
   , iflavour = zipPlain [BrGreen]
   , icount   = 1
-  , irarity  = [(3, 1), (10, 9)]
+  , irarity  = [(3, 4), (10, 6)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 40, AddMaxCalm 30, AddSpeed 18
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 30, AddSpeed 18
                , AddSkills $ EM.fromList [(AbProject, -1), (AbApply, -1)]
                , AddSmell 3 ]  -- depends solely on smell
   , ieffects = []
@@ -135,7 +135,7 @@ elbow = ItemKind
   , irarity  = [(6, 1), (10, 5)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 15, AddMaxCalm 80, AddSpeed 26
+  , iaspects = [ AddMaxHP 12, AddMaxCalm 80, AddSpeed 24
                , AddSkills
                  $ EM.fromList [(AbProject, 1), (AbApply, 1), (AbMelee, -1)]
                , AddSight 15 ]
@@ -148,6 +148,9 @@ elbow = ItemKind
   }
 
 -- * Animals
+
+-- They need rather strong melee, because they don't use items.
+-- Unless/until they level up.
 
 animalSkillMalus :: Skills
 animalSkillMalus =

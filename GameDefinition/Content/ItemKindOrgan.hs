@@ -77,7 +77,7 @@ jaw = fist
   , ifreq    = [("jaw", 20)]
   , icount   = 1
   , iverbHit = "rip"
-  , ieffects = [Hurt (5 * d 1)]
+  , ieffects = [Hurt (4 * d 1)]
   , idesc    = ""
   }
 largeJaw = fist
