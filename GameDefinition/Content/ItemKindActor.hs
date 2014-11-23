@@ -32,8 +32,9 @@ warrior = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 50, AddMaxCalm 60, AddSpeed 20
-               , AddSkills $ EM.fromList [(AbProject, 1)]  -- TODO: on a ring?
-               , AddSight 3 ]  -- no via eyes, but feel, hearing, etc.
+               , AddSkills $ EM.fromList [(AbProject, 1), (AbApply, 1)]
+                   -- TODO: on a ring?
+               , AddSight 3 ]  -- not via eyes, but feel, hearing, etc.
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -76,8 +77,8 @@ eye = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 20
-               , AddSkills $ EM.fromList [(AbProject, 1)]
-               , AddSight 4 ]  -- can shoot for as long as lives
+               , AddSkills $ EM.fromList [(AbProject, 1), (AbApply, 1)]
+               , AddSight 4 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Walks with a stately dignity. You read death in the slow beckoning gestures of its revolting upper appendages."
@@ -96,7 +97,7 @@ fastEye = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 6, AddMaxCalm 60, AddSpeed 30
-               , AddSight 4 ]  -- can shoot for as long as lives
+               , AddSight 4 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "It bites as blindingly fast as it runs. Or rolls? Or crawls? Also, cuts and pierces."
@@ -115,7 +116,7 @@ nose = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 40, AddMaxCalm 30, AddSpeed 18
-               , AddSkills $ EM.fromList [(AbProject, -1)]
+               , AddSkills $ EM.fromList [(AbProject, -1), (AbApply, -1)]
                , AddSmell 3 ]  -- depends solely on smell
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -135,8 +136,9 @@ elbow = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 15, AddMaxCalm 80, AddSpeed 26
-               , AddSkills $ EM.fromList [(AbProject, 1), (AbMelee, -1)]
-               , AddSight 15 ]  -- can shoot for as long as lives
+               , AddSkills
+                 $ EM.fromList [(AbProject, 1), (AbApply, 1), (AbMelee, -1)]
+               , AddSight 15 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "It moves in sudden jerks and never makes a noise. Speaks in hard objects hurled at deadly speeds."
