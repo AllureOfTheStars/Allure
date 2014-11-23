@@ -76,7 +76,7 @@ dart = ItemKind
   , iweight  = 100
   , iaspects = [AddHurtRanged ((d 6 + dl 6) |*| 10)]
   , ieffects = [Hurt (3 * d 1)]
-  , ifeature = [toVelocity 75]  -- no fins no special balance
+  , ifeature = [toVelocity 75, Identified]  -- no fins, no special balance
   , idesc    = "Not particularly well balanced, but with a laser-sharpened titanium tip and blade."
   , ikit     = []
   }
@@ -91,7 +91,7 @@ dart200 = ItemKind
   , iweight  = 300
   , iaspects = [AddHurtRanged ((d 6 + dl 6) |*| 10)]
   , ieffects = [Hurt (2 * d 1)]
-  , ifeature = [toVelocity 150]
+  , ifeature = [toVelocity 150, Identified]
   , idesc    = "Ideal shape, size and weight for throwing."
   , ikit     = []
   }
