@@ -488,8 +488,7 @@ lightRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 30
-               , AddSkills $ EM.fromList [(AbProject, 1)]
-               , AddSkills robotSkillMalus
+               , AddSkills $ EM.insert AbProject 1 robotSkillMalus
                , AddSight 3, AddLight 3 ]  -- light can't be turned off
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -508,8 +507,7 @@ heavyRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 800000
   , iaspects = [ AddMaxHP 80, AddMaxCalm 60, AddSpeed 20
-               , AddSkills $ EM.fromList [(AbProject, 1)]
-               , AddSkills robotSkillMalus
+               , AddSkills $ EM.insert AbProject 1 robotSkillMalus
                , AddSight 3, AddLight 4 ]  -- light can't be turned off
   , ieffects = []
   , ifeature = [Durable, Identified]
