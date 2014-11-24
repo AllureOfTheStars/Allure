@@ -243,9 +243,8 @@ rosterCoop = Roster
                  , ("Green", "Leaderless Alien Hierarchy") ] }
 
 rosterDefense = Roster
-  { rosterList = [ playerAntiMonster { finitialActors = 1 }  -- avoid boredom
-                 , playerAntiHero { fname = "Yellow"
-                                  , finitialActors = 10 }
+  { rosterList = [ playerAntiMonster
+                 , playerAntiHero {fname = "Yellow"}
                  , playerAnimal
                  , playerRobot ]
   , rosterEnemy = [ ("Yellow", "Alien Hierarchy")
