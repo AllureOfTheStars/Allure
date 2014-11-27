@@ -609,7 +609,7 @@ scroll7 = scroll
   , ieffects = [InsertMove $ 1 + d 2 + dl 2]
   }
 scroll8 = scroll
-  { irarity  = [(1, 15), (10, 4)]
+  { irarity  = [(1, 15)]
   , ieffects = [Identify CGround]  -- TODO: ask player: AskPlayer cstore eff?
   }
 scroll9 = scroll
@@ -630,12 +630,12 @@ armorLeather = ItemKind
   , ifreq    = [("useful", 100)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
-  , irarity  = [(3, 6), (10, 3)]
+  , irarity  = [(1, 9), (10, 3)]
   , iverbHit = "thud"
   , iweight  = 7000
   , iaspects = [ AddHurtMelee (-3)
-               , AddArmorMelee $ (1 + dl 3) |*| 5
-               , AddArmorRanged $ (1 + dl 3) |*| 5 ]
+               , AddArmorMelee $ (d 2 + dl 3) |*| 5
+               , AddArmorRanged $ (d 2 + dl 3) |*| 5 ]
   , ieffects = []
   , ifeature = [ toVelocity 30  -- unwieldy to throw and blunt
                , Durable, EqpSlot EqpSlotAddArmorMelee "", Identified ]
@@ -645,11 +645,11 @@ armorLeather = ItemKind
 armorMail = armorLeather
   { iname    = "bulletproof vest"
   , iflavour = zipPlain [Cyan]
-  , irarity  = [(6, 6), (10, 6)]
+  , irarity  = [(6, 9), (10, 3]
   , iweight  = 12000
   , iaspects = [ AddHurtMelee (-3)
-               , AddArmorMelee $ (2 + dl 4) |*| 5
-               , AddArmorRanged $ (2 + dl 4) |*| 5 ]
+               , AddArmorMelee $ (1 + d 2 + dl 4) |*| 5
+               , AddArmorRanged $ (1 + d 2 + dl 4) |*| 5 ]
   , idesc    = "A civilian bulletproof vest. Discourages foes from attacking your torso, making it harder for them to land a blow."
   }
 gloveFencing = ItemKind
@@ -658,7 +658,7 @@ gloveFencing = ItemKind
   , ifreq    = [("useful", 100)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
-  , irarity  = [(5, 8), (10, 8)]
+  , irarity  = [(5, 9), (10, 9)]
   , iverbHit = "flap"
   , iweight  = 100
   , iaspects = [ AddHurtMelee $ (d 2 + dl 10) * 3
@@ -671,8 +671,8 @@ gloveFencing = ItemKind
   }
 gloveGauntlet = gloveFencing
   { iname    = "spacesuit glove"
-  , irarity  = [(6, 12)]
   , iflavour = zipPlain [BrCyan]
+  , irarity  = [(1, 9), (10, 3)]
   , iweight  = 300
   , iaspects = [ AddArmorMelee $ (1 + dl 2) |*| 5
                , AddArmorRanged $ (1 + dl 2) |*| 5 ]
@@ -680,8 +680,8 @@ gloveGauntlet = gloveFencing
   }
 gloveJousting = gloveFencing
   { iname    = "welding handgear"
-  , irarity  = [(6, 6)]
   , iflavour = zipFancy [BrRed]
+  , irarity  = [(1, 3), (10, 3)]
   , iweight  = 500
   , iaspects = [ AddHurtMelee $ (dl 4 - 6) |*| 3
                , AddArmorMelee $ (2 + dl 2) |*| 5
