@@ -355,7 +355,7 @@ activeFence = ItemKind
   , irarity  = [(4, 0), (5, 1)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 20, AddSight 6
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20, AddSight 6
                , AddSkills
                  $ EM.fromDistinctAscList (zip [minBound..maxBound] [-1, -1..])
                    `addSkills` EM.fromList [(AbWait, 1), (AbProject, 2)]
@@ -375,10 +375,11 @@ steamFaucet = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 100, AddMaxCalm 999, AddSpeed 5
+  , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 5
                , AddSkills
                  $ EM.fromDistinctAscList (zip [minBound..maxBound] [-1, -1..])
                    `addSkills` EM.fromList (zip [AbWait, AbMelee] [1, 1..]) ]
+               , AddArmorMelee 80, AddArmorRanged 80 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "A cracked valve on one of the superheated water pipes spreading radially outward from the tokamak level."
@@ -393,10 +394,11 @@ biogasFaucet = ItemKind
   , irarity  = [(3, 0), (4, 1)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 100, AddMaxCalm 999, AddSpeed 5
+  , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 5
                , AddSkills
                  $ EM.fromDistinctAscList (zip [minBound..maxBound] [-1, -1..])
                    `addSkills` EM.fromList (zip [AbWait] [1, 1..]) ]
+               , AddArmorMelee 80, AddArmorRanged 80 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "An emergency pressure-release vent on a liquefied biogas pipe."

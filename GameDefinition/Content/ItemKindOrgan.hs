@@ -108,6 +108,7 @@ thorn = fist
   , icount   = 7
   , iverbHit = "impale"
   , ieffects = [Hurt (1 * d 1)]
+  , ifeature = [EqpSlot EqpSlotWeapon "", Identified]  -- not Durable
   , idesc    = ""
   }
 razor = fist
@@ -244,7 +245,7 @@ boilingVent = armoredSkin
   , ifreq    = [("boiling vent", 100)]
   , icount   = 1
   , iverbHit = "menace"
-  , iaspects = [Periodic, Timeout $ (3 + d 4) |*| 10]
+  , iaspects = [Periodic, Timeout $ (3 + d 4) |*| 5]
   , ieffects = [Recharging (Explode "boiling water")]
   , idesc    = ""
   }
@@ -253,7 +254,7 @@ explosionVent = armoredSkin
   , ifreq    = [("explosion vent", 100)]
   , icount   = 1
   , iverbHit = "menace"
-  , iaspects = [Periodic, Timeout $ (1 + d 4) |*| 10]
+  , iaspects = [Periodic, Timeout $ (2 + d 4) |*| 5]
   , ieffects = [Recharging (Explode "blast 20")]
   , idesc    = ""
   }
@@ -262,7 +263,7 @@ wasteContainer = armoredSkin
   , ifreq    = [("waste container", 100)]
   , icount   = 1
   , iverbHit = "spill over"
-  , iaspects = [Periodic, Timeout $ (7 + d 5) |*| 10]
+  , iaspects = [Periodic, Timeout $ (5 + d 5) |*| 10]
   , ieffects = [ Recharging (Summon [("mobile animal", 1)] $ 1 + dl 2)
                , Recharging (RefillHP 1)
                , Recharging (Explode "waste") ]
