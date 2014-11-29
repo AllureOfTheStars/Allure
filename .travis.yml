@@ -7,8 +7,10 @@
 # release of a major GHC version. Setting HPVER implictly sets
 # GHCVER. Omit lines with versions you don't need/want testing for.
 env:
- - GHCVER=7.6.3
- - GHCVER=7.8.3
+ - HPVER=7.6.3.gtk
+ - HPVER=7.6.3.vty
+ - HPVER=7.8.3.gtk
+ - HPVER=7.8.3.vty
  - HPVER=2013.2.0.0
  - HPVER=2012.4.0.0
 
@@ -17,6 +19,22 @@ env:
 before_install:
  - case "$HPVER" in
     "") ;;
+
+    "7.6.3.gtk")
+      export GHCVER=7.6.3 ;
+      export GTKVTY=gtk ;;
+
+    "7.6.3.vty")
+      export GHCVER=7.6.3 ;
+      export GTKVTY=vty ;;
+
+    "7.8.3.gtk")
+      export GHCVER=7.8.3 ;
+      export GTKVTY=gtk ;;
+
+    "7.8.3.vty")
+      export GHCVER=7.8.3 ;
+      export GTKVTY=vty ;;
 
     "2013.2.0.0")
       export GHCVER=7.6.3 ;
@@ -62,11 +80,18 @@ install:
  - git clone --depth=50 --branch=mikolaj git://github.com/LambdaHack/LambdaHack.git
  - if [ -f Allure/cabal.config ]; then cp Allure/cabal.config LambdaHack; fi
  - cd LambdaHack
- - cabal-1.18 install -j2 gtk2hs-buildtools
- - cabal-1.18 install -j2 -O2 -frelease --only-dependencies --force-reinstalls
- - cabal-1.18 install -j2 -frelease
+ - |
+   if [ $GTKVTY = "gtk" ]; then
+     cabal-1.18 install -j2 gtk2hs-buildtools
+     cabal-1.18 install -j2 -frelease -O2 --only-dependencies --force-reinstalls
+     cabal-1.18 install -j2 -frelease -O2
+   else
+     cabal-1.18 install -fvty -j2 -f-release -O2 --only-dependencies --force-reinstalls
+     cabal-1.18 configure -fvty -f-release
+     cabal-1.18 build -j2
+   fi
  - cd ../Allure
- - cabal-1.18 install -j2 -O2 -frelease --only-dependencies
+ - cabal-1.18 install -j2 -frelease -O2 --only-dependencies
  - cabal-1.18 install -j2 -frelease --enable-tests
 
 # Here starts the actual work to be performed for the package under
@@ -92,10 +117,6 @@ script:
 
 # mine:
  - touch /tmp/stdtest.log;
-   if [ $GHCVER = "head" ] || [ ${GHCVER%.*} = "7.8" ]; then
-     (make test-travis-short || (tail -n 200 /tmp/stdtest.log ; exit 77));
-   else
-     (make test-travis-long || (tail -n 200 /tmp/stdtest.log ; exit 77));
-   fi
+   (make test-travis-long || (tail -n 200 /tmp/stdtest.log ; exit 77));
 
 # EOF
