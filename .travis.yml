@@ -69,13 +69,13 @@ install:
 
  - |
    if [ $GHCVER = "head" ] || [ ${GHCVER%.*} = "7.8" ]; then
-     travis_retry sudo apt-get install happy-1.19.4 alex-3.1.3
-     export PATH=/opt/alex/3.1.3/bin:/opt/happy/1.19.4/bin:$PATH
+     travis_retry sudo apt-get install happy-1.19.4 alex-3.1.3;
+     export PATH=/opt/alex/3.1.3/bin:/opt/happy/1.19.4/bin:$PATH;
    else
-     travis_retry sudo apt-get install happy alex
+     travis_retry sudo apt-get install happy alex;
      if [ $GTKVTY = "vty" ]; then
-       cabal-1.18 install -j2 Cabal-1.18.0
-     fi
+       cabal-1.18 install -j2 Cabal-1.18.0;
+     fi;
    fi
 
 # mine:
@@ -85,20 +85,24 @@ install:
  - cd LambdaHack
  - |
    if [ $GTKVTY = "gtk" ]; then
-     cabal-1.18 install -j2 gtk2hs-buildtools
-     cabal-1.18 install -j2 -frelease -O2 --only-dependencies --force-reinstalls
-     cabal-1.18 configure -frelease
-     cabal-1.18 build -j2
-     cabal-1.18 install -frelease
+     cabal-1.18 install -j2 gtk2hs-buildtools;
+     cabal-1.18 install -j2 -frelease -O2 --only-dependencies;
+     cabal-1.18 configure -frelease;
+     cabal-1.18 build -j2;
    else
-     cabal-1.18 install -fvty -j2 -f-release -O2 --only-dependencies --force-reinstalls
-     cabal-1.18 configure -fvty -f-release -O2
-     cabal-1.18 build -j2
-     cabal-1.18 install -frelease
+     cabal-1.18 install -fvty -j2 -f-release -O2 --only-dependencies;
+     cabal-1.18 configure -fvty -f-release -O2;
+     cabal-1.18 build -j2;
+   fi
+ - |
+   if [ $GTKVTY = "gtk" ]; then
+     cabal-1.18 install -frelease;
+   else
+     cabal-1.18 install -fvty -f-release -O2;
    fi
  - cd ../Allure
  - cabal-1.18 install -j2 -frelease -O2 --only-dependencies
- - cabal-1.18 configure -j2 -frelease --enable-tests
+ - cabal-1.18 configure -frelease --enable-tests
  - cabal-1.18 build -j2
  - cabal-1.18 test
 
