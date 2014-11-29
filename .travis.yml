@@ -86,10 +86,12 @@ install:
      cabal-1.18 install -j2 -frelease -O2 --only-dependencies --force-reinstalls
      cabal-1.18 configure -frelease
      cabal-1.18 build -j2
+     cabal-1.18 install -frelease
    else
      cabal-1.18 install -fvty -j2 -f-release -O2 --only-dependencies --force-reinstalls
      cabal-1.18 configure -fvty -f-release -O2
      cabal-1.18 build -j2
+     cabal-1.18 install -frelease
    fi
  - cd ../Allure
  - cabal-1.18 install -j2 -frelease -O2 --only-dependencies
