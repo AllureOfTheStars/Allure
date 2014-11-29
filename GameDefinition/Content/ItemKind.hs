@@ -31,9 +31,9 @@ cdefs = ContentDef
 
 items :: [ItemKind]
 items =
-  [dart, dart200, canOfGlue, harpoon, net, needle, jumpingPole, honingSteel, candle, oilLamp, crankSpotlight, gorget, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, contactLens, ring1, ring2, ring3, ring4, ring5, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, constructionHooter, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, buckler, shield, dagger, daggerDropBestWeapon, hammer, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberdPushActor, wand1, wand2, gem1, gem2, gem3, currency]
+  [dart, dart200, canOfGlue, harpoon, net, needle, jumpingPole, honingSteel, candle, oilLamp, crankSpotlight, gorget, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, contactLens, ring1, ring2, ring3, ring4, ring5, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask10, flask11, flask12, flask13, flask14, constructionHooter, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, buckler, shield, dagger, daggerDropBestWeapon, hammer, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberdPushActor, wand1, wand2, gem1, gem2, gem3, currency]
 
-dart,    dart200, canOfGlue, harpoon, net, needle, jumpingPole, honingSteel, candle, oilLamp, crankSpotlight, gorget, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, contactLens, ring1, ring2, ring3, ring4, ring5, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, constructionHooter, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, buckler, shield, dagger, daggerDropBestWeapon, hammer, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberdPushActor, wand1, wand2, gem1, gem2, gem3, currency :: ItemKind
+dart,    dart200, canOfGlue, harpoon, net, needle, jumpingPole, honingSteel, candle, oilLamp, crankSpotlight, gorget, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, contactLens, ring1, ring2, ring3, ring4, ring5, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask10, flask11, flask12, flask13, flask14, constructionHooter, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, buckler, shield, dagger, daggerDropBestWeapon, hammer, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberdPushActor, wand1, wand2, gem1, gem2, gem3, currency :: ItemKind
 
 necklace, ring, potion, flask, scroll, wand, gem :: ItemKind  -- generic templates
 
@@ -100,17 +100,18 @@ dart200 = ItemKind
 
 canOfGlue = ItemKind
   { isymbol  = symbolProjectile
-  , iname    = "can of glue"
-  , ifreq    = [("useful", 100)]
+  , iname    = "can"
+  , ifreq    = [("useful", 100), ("can of sticky foam", 1)]
   , iflavour = zipPlain [Magenta]
   , icount   = dl 4
   , irarity  = [(5, 5), (10, 20)]
   , iverbHit = "glue"
   , iweight  = 1500
   , iaspects = []
-  , ieffects = [Paralyze (5 + d 10)]
+  , ieffects = [ NoEffect "of sticky foam", Paralyze (5 + d 7)
+               , OnSmash (Explode "glue")]
   , ifeature = [toVelocity 50]  -- unwieldy
-  , idesc    = "A can of liquid, fast-setting, construction glue."
+  , idesc    = "A can of liquid, fast-setting, construction foam."
   , ikit     = []
   }
 harpoon = ItemKind
@@ -431,19 +432,11 @@ potion6 = potion
                                 , Explode "distortion"  -- outlier, OK
                                 , Explode "blast 20" ]) ]
   }
-potion7 = potion  -- used only as initial equipment; count betrays identity
-  { ifreq    = [("useful", 30), ("potion of glue", 1)]
-  , icount   = 1 + d 2
-  , irarity  = [(1, 1)]
-  , ieffects = [ NoEffect "of sticky foam", Paralyze (5 + d 5)
-               , OnSmash (Explode "glue")]
-  , ifeature = [Identified]
-  }
-potion8 = potion
+potion7 = potion
   { ieffects = [ DropItem COrgan "poisoned" True, RefillHP 1
                , OnSmash (Explode "antidote mist") ]
   }
-potion9 = potion
+potion8 = potion
   { ieffects = [ DropItem COrgan "temporary conditions" True, RefillHP 2
                , OnSmash (Explode "blast 10") ]
   }

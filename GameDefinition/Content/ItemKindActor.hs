@@ -363,8 +363,8 @@ activeFence = ItemKind
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Makeshift, mostly non-lethal, autonomous perimeter defense outpost."
-  , ikit     = [ ("needle", CInv), ("potion of glue", CInv)
-               , ("potion of glue", CInv), ("potion of glue", CInv) ]
+  , ikit     = [ ("needle", CInv), ("can of sticky foam", CInv)
+               , ("can of sticky foam", CInv), ("can of sticky foam", CInv) ]
   }
 steamFaucet = ItemKind
   { isymbol  = 'f'
