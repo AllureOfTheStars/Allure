@@ -84,15 +84,18 @@ install:
    if [ $GTKVTY = "gtk" ]; then
      cabal-1.18 install -j2 gtk2hs-buildtools
      cabal-1.18 install -j2 -frelease -O2 --only-dependencies --force-reinstalls
-     cabal-1.18 install -j2 -frelease -O2
+     cabal-1.18 configure -frelease
+     cabal-1.18 build -j2
    else
      cabal-1.18 install -fvty -j2 -f-release -O2 --only-dependencies --force-reinstalls
-     cabal-1.18 configure -fvty -f-release
+     cabal-1.18 configure -fvty -f-release -O2
      cabal-1.18 build -j2
    fi
  - cd ../Allure
  - cabal-1.18 install -j2 -frelease -O2 --only-dependencies
- - cabal-1.18 install -j2 -frelease --enable-tests
+ - cabal-1.18 configure -j2 -frelease --enable-tests
+ - cabal-1.18 build -j2
+ - cabal-1.18 test
 
 # Here starts the actual work to be performed for the package under
 # test; any command which exits with a non-zero exit code causes the
@@ -108,7 +111,11 @@ script:
  - export SRC_TGZ=$(cabal-1.18 info . | awk '{print $2 ".tar.gz";exit}');
    cd dist/;
    if [ -f "$SRC_TGZ" ]; then
-      cabal-1.18 install -j2 "$SRC_TGZ";
+      if [ $GTKVTY = "gtk" ]; then
+        cabal-1.18 install -j2 "$SRC_TGZ";
+      else
+        cabal-1.18 install -vty -j2 "$SRC_TGZ";
+      fi
    else
       echo "expected '$SRC_TGZ' not found";
       exit 1;
