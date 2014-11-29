@@ -378,7 +378,7 @@ steamFaucet = ItemKind
   , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 5
                , AddSkills
                  $ EM.fromDistinctAscList (zip [minBound..maxBound] [-1, -1..])
-                   `addSkills` EM.fromList (zip [AbWait, AbMelee] [1, 1..]) ]
+                   `addSkills` EM.fromList (zip [AbWait, AbMelee] [1, 1..])
                , AddArmorMelee 80, AddArmorRanged 80 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -397,7 +397,7 @@ biogasFaucet = ItemKind
   , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 5
                , AddSkills
                  $ EM.fromDistinctAscList (zip [minBound..maxBound] [-1, -1..])
-                   `addSkills` EM.fromList (zip [AbWait] [1, 1..]) ]
+                   `addSkills` EM.fromList (zip [AbWait] [1, 1..])
                , AddArmorMelee 80, AddArmorRanged 80 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
