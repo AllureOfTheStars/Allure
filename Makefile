@@ -67,10 +67,10 @@ xctest-medium: xctestCampaign-medium xctestSkirmish-medium xctestAmbush-medium x
 xctest-long: xctestCampaign-long xctestSkirmish-medium xctestAmbush-medium xctestBattle-long xctestSafari-long xctestPvP-medium xctestDefense-long
 
 xctestCampaign-long:
-	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 400 --dumpInitRngs --automateAll --gameMode campaign --difficulty 2 > /tmp/stdtest.log
+	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 600 --dumpInitRngs --automateAll --gameMode campaign --difficulty 2 > /tmp/stdtest.log
 
 xctestCampaign-medium:
-	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 200 --dumpInitRngs --automateAll --gameMode campaign --difficulty 2 > /tmp/stdtest.log
+	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 300 --dumpInitRngs --automateAll --gameMode campaign --difficulty 2 > /tmp/stdtest.log
 
 xctestSkirmish-long:
 	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --maxFps 100000 --frontendStd --benchmark --stopAfter 60 --dumpInitRngs --automateAll --gameMode skirmish > /tmp/stdtest.log
@@ -91,10 +91,10 @@ xctestBattle-medium:
 	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 100 --dumpInitRngs --automateAll --gameMode battle --difficulty 2 > /tmp/stdtest.log
 
 xctestSafari-long:
-	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 400 --dumpInitRngs --automateAll --gameMode safari --difficulty 2 > /tmp/stdtest.log
+	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 600 --dumpInitRngs --automateAll --gameMode safari --difficulty 2 > /tmp/stdtest.log
 
 xctestSafari-medium:
-	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 200 --dumpInitRngs --automateAll --gameMode safari --difficulty 2 > /tmp/stdtest.log
+	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 300 --dumpInitRngs --automateAll --gameMode safari --difficulty 2 > /tmp/stdtest.log
 
 xctestPvP-long:
 	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 60 --dumpInitRngs --automateAll --gameMode PvP > /tmp/stdtest.log
@@ -103,16 +103,16 @@ xctestPvP-medium:
 	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 30 --dumpInitRngs --automateAll --gameMode PvP > /tmp/stdtest.log
 
 xctestCoop-long:
-	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 400 --dumpInitRngs --automateAll --gameMode Coop --difficulty 2 > /tmp/stdtest.log
+	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 600 --dumpInitRngs --automateAll --gameMode Coop --difficulty 2 > /tmp/stdtest.log
 
 xctestCoop-medium:
-	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 200 --dumpInitRngs --automateAll --gameMode Coop --difficulty 2 > /tmp/stdtest.log
+	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 300 --dumpInitRngs --automateAll --gameMode Coop --difficulty 2 > /tmp/stdtest.log
 
 xctestDefense-long:
-	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 400 --dumpInitRngs --automateAll --gameMode defense --difficulty 8 > /tmp/stdtest.log
+	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 600 --dumpInitRngs --automateAll --gameMode defense --difficulty 8 > /tmp/stdtest.log
 
 xctestDefense-medium:
-	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 200 --dumpInitRngs --automateAll --gameMode defense --difficulty 8 > /tmp/stdtest.log
+	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 300 --dumpInitRngs --automateAll --gameMode defense --difficulty 8 > /tmp/stdtest.log
 
 xctest-short-new:
 	dist/build/Allure/Allure +RTS -xc -RTS --dbgMsgSer --newGame --savePrefix campaign --dumpInitRngs --automateAll --gameMode campaign --frontendStd --stopAfter 2 > /tmp/stdtest.log
@@ -188,10 +188,10 @@ test-medium: testCampaign-medium testSkirmish-medium testAmbush-medium testBattl
 test-long: testCampaign-long testSkirmish-medium testAmbush-medium testBattle-long testSafari-long testPvP-medium testDefense-long
 
 testCampaign-long:
-	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 400 --dumpInitRngs --automateAll --gameMode campaign --difficulty 2 > /tmp/stdtest.log
+	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 600 --dumpInitRngs --automateAll --gameMode campaign --difficulty 2 > /tmp/stdtest.log
 
 testCampaign-medium:
-	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 200 --dumpInitRngs --automateAll --gameMode campaign --difficulty 2 > /tmp/stdtest.log
+	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 300 --dumpInitRngs --automateAll --gameMode campaign --difficulty 2 > /tmp/stdtest.log
 
 testSkirmish-long:
 	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --maxFps 100000 --frontendStd --benchmark --stopAfter 60 --dumpInitRngs --automateAll --gameMode skirmish > /tmp/stdtest.log
@@ -212,10 +212,10 @@ testBattle-medium:
 	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 100 --dumpInitRngs --automateAll --gameMode battle --difficulty 2 > /tmp/stdtest.log
 
 testSafari-long:
-	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 400 --dumpInitRngs --automateAll --gameMode safari --difficulty 2 > /tmp/stdtest.log
+	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 600 --dumpInitRngs --automateAll --gameMode safari --difficulty 2 > /tmp/stdtest.log
 
 testSafari-medium:
-	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 200 --dumpInitRngs --automateAll --gameMode safari --difficulty 2 > /tmp/stdtest.log
+	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 300 --dumpInitRngs --automateAll --gameMode safari --difficulty 2 > /tmp/stdtest.log
 
 testPvP-long:
 	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 60 --dumpInitRngs --automateAll --gameMode PvP > /tmp/stdtest.log
@@ -224,16 +224,16 @@ testPvP-medium:
 	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 30 --dumpInitRngs --automateAll --gameMode PvP > /tmp/stdtest.log
 
 testCoop-long:
-	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 400 --dumpInitRngs --automateAll --gameMode Coop --difficulty 2 > /tmp/stdtest.log
+	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 600 --dumpInitRngs --automateAll --gameMode Coop --difficulty 2 > /tmp/stdtest.log
 
 testCoop-medium:
-	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 200 --dumpInitRngs --automateAll --gameMode Coop --difficulty 2 > /tmp/stdtest.log
+	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 300 --dumpInitRngs --automateAll --gameMode Coop --difficulty 2 > /tmp/stdtest.log
 
 testDefense-long:
-	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 400 --dumpInitRngs --automateAll --gameMode defense --difficulty 8 > /tmp/stdtest.log
+	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 600 --dumpInitRngs --automateAll --gameMode defense --difficulty 8 > /tmp/stdtest.log
 
 testDefense-medium:
-	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 200 --dumpInitRngs --automateAll --gameMode defense --difficulty 8 > /tmp/stdtest.log
+	dist/build/Allure/Allure --dbgMsgSer --savePrefix test --newGame --noDelay --noAnim --maxFps 100000 --frontendStd --benchmark --stopAfter 300 --dumpInitRngs --automateAll --gameMode defense --difficulty 8 > /tmp/stdtest.log
 
 test-short-new:
 	dist/build/Allure/Allure --dbgMsgSer --newGame --savePrefix campaign --dumpInitRngs --automateAll --gameMode campaign --frontendStd --stopAfter 2 > /tmp/stdtest.log
