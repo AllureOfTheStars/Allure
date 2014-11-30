@@ -140,10 +140,6 @@ script:
 
 # mine:
  - touch /tmp/stdtest.log;
-   if [ $GHCVER = "head" ] || [ ${GHCVER%.*} = "7.8" ]; then
-     (make test-travis-long-no-safari || (tail -n 200 /tmp/stdtest.log ; exit 77));
-   else
-     (make test-travis-long || (tail -n 200 /tmp/stdtest.log ; exit 77));
-   fi;
+   (make test-travis-long || (tail -n 200 /tmp/stdtest.log ; exit 77));
 
 # EOF
