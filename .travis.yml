@@ -7,8 +7,8 @@
 # release of a major GHC version. Setting HPVER implictly sets
 # GHCVER. Omit lines with versions you don't need/want testing for.
 env:
- - HPVER=7.6.3.gtk
-# - HPVER=7.6.3.vty
+# - HPVER=7.6.3.gtk
+ - HPVER=7.6.3.vty
  - HPVER=7.8.3.gtk
  - HPVER=7.8.3.vty
  - HPVER=2013.2.0.0
@@ -80,7 +80,7 @@ install:
      fi;
    fi
 
-# mine:
+# mine (7.6 struggles with -O2):
  - cd ..
  - git clone --depth=50 --branch=mikolaj git://github.com/LambdaHack/LambdaHack.git
  - if [ -f Allure/cabal.config ]; then cp Allure/cabal.config LambdaHack; fi
@@ -88,11 +88,21 @@ install:
  - |
    if [ $GTKVTY = "gtk" ]; then
      cabal-1.18 install -j2 gtk2hs-buildtools;
-     cabal-1.18 install -j2 -frelease -O2 --only-dependencies;
-     cabal-1.18 configure -frelease;
+     if [ ${GHCVER%.*} = "7.6" ]; then
+       cabal-1.18 install -j2 -frelease -O1 --only-dependencies;
+       cabal-1.18 configure -frelease -O1;
+     else
+       cabal-1.18 install -j2 -frelease -O2 --only-dependencies;
+       cabal-1.18 configure -frelease -O2;
+     fi;
    else
-     cabal-1.18 install -fvty -j2 -f-release -O2 --only-dependencies;
-     cabal-1.18 configure -fvty -f-release -O2;
+     if [ ${GHCVER%.*} = "7.6" ]; then
+       cabal-1.18 install -fvty -j2 -f-release -O1 --only-dependencies;
+       cabal-1.18 configure -fvty -f-release -O1;
+     else
+       cabal-1.18 install -fvty -j2 -f-release -O2 --only-dependencies;
+       cabal-1.18 configure -fvty -f-release -O2;
+     fi;
    fi
  - cabal-1.18 build -j2
  - cabal-1.18 copy
