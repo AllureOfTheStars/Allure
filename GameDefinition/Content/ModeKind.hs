@@ -194,7 +194,7 @@ rosterSafari = Roster
                                           "Animal Magnificent Specimen Variety"
                                       , fneverEmpty = True
                                       , fentryLevel = 7
-                                      , finitialActors = 15 }
+                                      , finitialActors = 10 }
                  , playerMobileAnimal { fname =
                                           "Animal Exquisite Herds and Packs"
                                       , fneverEmpty = True
