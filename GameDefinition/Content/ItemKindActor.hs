@@ -136,7 +136,7 @@ elbow = ItemKind
   , irarity  = [(6, 1), (10, 5)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 12, AddMaxCalm 80, AddSpeed 24
+  , iaspects = [ AddMaxHP 12, AddMaxCalm 90, AddSpeed 26
                , AddSkills
                  $ EM.fromList [(AbProject, 1), (AbApply, 1), (AbMelee, -1)]
                , AddSight 15 ]
