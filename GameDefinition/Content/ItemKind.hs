@@ -110,7 +110,7 @@ canOfGlue = ItemKind
   , iaspects = []
   , ieffects = [ NoEffect "of sticky foam", Paralyze (5 + d 7)
                , OnSmash (Explode "glue")]
-  , ifeature = [toVelocity 50]  -- unwieldy
+  , ifeature = [toVelocity 50, Identified]  -- unwieldy
   , idesc    = "A can of liquid, fast-setting, construction foam."
   , ikit     = []
   }
@@ -141,7 +141,7 @@ net = ItemKind
   , iaspects = []
   , ieffects = [ toOrganGameTurn "slow 10" (3 + d 3)
                , DropItem CEqp "torso armor" False ]
-  , ifeature = []
+  , ifeature = [Identified]
   , idesc    = "A large synthetic fibre net with weights affixed along the edges. Entangles armor and restricts movement."
   , ikit     = []
   }
