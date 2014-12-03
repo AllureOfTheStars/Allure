@@ -19,8 +19,8 @@ Installation from binary archives
 Pre-compiled game binaries for some platforms are available through
 the [release page] [11] and from the [Nix Packages Collection] [12].
 To manually install a binary archive, make sure you have the GTK
-libraries suite on your system, unpack the archive and run the executable
-in the unpacked directory, which will copy the required game data files.
+libraries suite on your system, unpack the LambdaHack archive
+and run the executable in the unpacked directory.
 
 On Windows, if you don't already have GTK installed (e.g., for the GIMP
 picture editor) please download and run (with default settings)
@@ -48,12 +48,12 @@ on the game window.
 If you use the numeric keypad, use the NumLock key on your keyboard
 to toggle the game keyboard mode. With NumLock off, you walk with the numeric
 keys and run with Shift (or Control) and the keys. When you turn NumLock on,
-the special key setup instills good playing habits by setting the run
-command (which automatically stops at threats) as the default
-and requiring Shift for walking step by step (which is error-prone).
+the reversed key setup enforces good playing habits by setting as the default
+the run command (which automatically stops at threats, keeping you safe)
+and requiring Shift for the error-prone step by step walking.
 
 If you don't have a numeric keypad, you can use laptop keys (uk8o79jl)
-or you can enable in the config file the Vi keys (aka roguelike keys).
+or you can enable the Vi keys (aka roguelike keys) in the config file.
 
 
 Compilation from source
@@ -96,11 +96,11 @@ Testing and debugging
 ---------------------
 
 The [Makefile](Makefile) contains many sample test commands.
-All commands that use the screensaver game modes (AI vs. AI)
-or the dumb `stdout` frontend are gathered in `make test`.
+Many tests that use the screensaver game modes (AI vs. AI)
+and the dumb `stdout` frontend are gathered in `make test`.
 Of these, travis runs `test-travis-*` on each push to the repo.
 Test commands with prefix `frontend` start AI vs. AI games
-with the standard, user-friendly frontend.
+with the standard, user-friendly gtk frontend.
 
 Run `Allure --help` to see a brief description of all debug options.
 Of these, `--sniffIn` and `--sniffOut` are very useful (though verbose
