@@ -1,4 +1,16 @@
-## [v0.4.99.0, aka 'Player escapes through airlock'](https://github.com/LambdaHack/LambdaHack/compare/v0.4.14...v0.4.99.0)
+## [v0.4.100.0, aka 'The last interstellar thaw'](https://github.com/AllureOfTheStars/Allure/compare/v0.4.99.0..v0.4.100.0)
+
+- update vs the unexpectedly thawed v0.5.0.0 of LambdaHack content API
+- unexpectedly add items with timeouts and temporary effects
+- start campaign on level 3 and don't spawn aliens until level 4
+- rebalance campaign (probably still too hard)
+- tweak skills of some factions and actors
+- rename tablets to chips to make their vanishing easier to understand
+- start the game with a screensaver safari mode
+- improve keyboard handling on Windows
+- add i386 Linux and Windows compilation targets to Makefile
+
+## [v0.4.99.0, aka 'Player escapes through airlock'](https://github.com/AllureOfTheStars/Allure/compare/v0.4.14...v0.4.99.0)
 
 - balance game content a bit (campaign still unbalanced)
 - fix a bug where doors can't be closed
