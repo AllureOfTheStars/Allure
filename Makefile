@@ -280,15 +280,14 @@ build-binary-i386:
 
 # TODO: figure out, whey this must be so different from Linux
 build-binary-windows-i386:
-	wine cabal -frelease configure
+	wine cabal configure -frelease
 	wine cabal build exe:Allure
+	rm -rf /tmp/Allure_x_windows-i386.zip
 	rm -rf /tmp/AllureOfTheStarsInstall
 	rm -rf /tmp/AllureOfTheStars
-	rm -rf /tmp/Allure_x_windows-i386.zip
-	wine cabal copy --destdir=Z:/tmp/AllureOfTheStarsInstall
 	mkdir -p /tmp/AllureOfTheStars/GameDefinition
+	wine cabal copy --destdir=Z:/tmp/AllureOfTheStarsInstall
 	cp /tmp/AllureOfTheStarsInstall/users/mikolaj/Application\ Data/cabal/bin/Allure.exe /tmp/AllureOfTheStars
-	cp /home/mikolaj/.wine/drive_c/users/mikolaj/gtk/bin/zlib1.dll /tmp/AllureOfTheStars
 	cp GameDefinition/PLAYING.md /tmp/AllureOfTheStars/GameDefinition
 	cp GameDefinition/scores /tmp/AllureOfTheStars/GameDefinition
 	cp GameDefinition/config.ui.default /tmp/AllureOfTheStars/GameDefinition
@@ -296,6 +295,7 @@ build-binary-windows-i386:
 	cp CREDITS /tmp/AllureOfTheStars
 	cp LICENSE /tmp/AllureOfTheStars
 	cp README.md /tmp/AllureOfTheStars
+	cp /home/mikolaj/.wine/drive_c/users/mikolaj/gtk/bin/zlib1.dll /tmp/AllureOfTheStars
 	wine Z:/home/mikolaj/.local/share/wineprefixes/7zip/drive_c/Program\ Files/7-Zip/7z.exe a -ssc -sfx Z:/tmp/Allure_x_windows-i386.exe Z:/tmp/AllureOfTheStars
 
 
