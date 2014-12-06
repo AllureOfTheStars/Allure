@@ -42,8 +42,8 @@ source-repository head
   location:           git://github.com/AllureOfTheStars/Allure.git
 
 flag release
-  description:        prepare for a release (optimize)
-  default:            False
+  description:        prepare for a release (expose, optimize, etc.)
+  default:            True
   manual:             True
 
 executable Allure
