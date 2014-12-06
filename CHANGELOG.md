@@ -6,6 +6,7 @@
 - rebalance campaign (probably still too hard)
 - tweak skills of some factions and actors
 - rename tablets to chips to make their vanishing easier to understand
+- make colorful characters bold (if it resizes your fonts, turn off via colorIsBold = False in config file or --noColorIsBold on commandline)
 - start the game with a screensaver safari mode
 - improve keyboard handling on Windows
 - add i386 Linux and Windows compilation targets to Makefile
