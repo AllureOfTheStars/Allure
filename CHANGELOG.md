@@ -1,4 +1,4 @@
-## [v0.4.100.0, aka 'The last interstellar thaw'](https://github.com/AllureOfTheStars/Allure/compare/v0.4.99.0..v0.4.100.0)
+## [v0.4.100.0, aka 'The last interstellar thaw'](https://github.com/AllureOfTheStars/Allure/compare/v0.4.99.0...v0.4.100.0)
 
 - update vs the unexpectedly thawed v0.5.0.0 of LambdaHack content API
 - unexpectedly add items with timeouts and temporary effects
