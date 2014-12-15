@@ -82,7 +82,7 @@ executable Allure
   ghc-options:        -threaded "-with-rtsopts=-C0.005" -rtsopts
 
   if flag(release)
-    ghc-options:      -O2 "-with-rtsopts=-N1"
+    ghc-options:      -O2 -fno-ignore-asserts "-with-rtsopts=-N1"
 -- TODO: -N
 
 test-suite test
@@ -108,5 +108,5 @@ test-suite test
   ghc-options:        -threaded "-with-rtsopts=-C0.005" -rtsopts
 
   if flag(release)
-    ghc-options:      -O2 "-with-rtsopts=-N1"
+    ghc-options:      -O2 -fno-ignore-asserts "-with-rtsopts=-N1"
 -- TODO: -N
