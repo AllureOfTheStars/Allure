@@ -262,7 +262,9 @@ cavesCampaign = IM.fromList
                   ++ [(2, ("shallow random 2", Nothing))]
                   ++ [(3, ("caveBridge", Nothing))]
                   ++ [(4, ("caveNoise", Nothing))]
-                  ++ zip [5..11] (repeat ("campaign random", Nothing))
+                  ++ zip [5..9] (repeat ("campaign random", Nothing))
+                  ++ [(10, ("caveEmpty", Nothing))]
+                  ++ [(11, ("campaign random", Nothing))]
                   ++ [(12, ("caveNoise", Just True))]
 
 cavesSkirmish = IM.fromList [(3, ("caveSkirmish", Nothing))]

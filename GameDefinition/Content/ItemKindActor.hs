@@ -16,9 +16,9 @@ import Game.LambdaHack.Content.ItemKind
 
 actors :: [ItemKind]
 actors =
-  [warrior, pilot, engineer, doctor, soldier, clerk, hairdresser, lawyer, peddler, taxCollector, eye, fastEye, nose, elbow, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot]
+  [warrior, pilot, engineer, doctor, soldier, clerk, hairdresser, lawyer, peddler, taxCollector, eye, fastEye, nose, elbow, torsor, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot]
 
-warrior,    pilot, engineer, doctor, soldier, clerk, hairdresser, lawyer, peddler, taxCollector, eye, fastEye, nose, elbow, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot :: ItemKind
+warrior,    pilot, engineer, doctor, soldier, clerk, hairdresser, lawyer, peddler, taxCollector, eye, fastEye, nose, elbow, torsor, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot :: ItemKind
 
 -- * Hunams
 
@@ -72,7 +72,7 @@ eye = ItemKind
   { isymbol  = 'w'
   , iname    = "beckoning walker"
   , ifreq    = [("alien", 100), ("horror", 100)]
-  , iflavour = zipPlain [BrRed]
+  , iflavour = zipFancy [BrRed]
   , icount   = 1
   , irarity  = [(3, 4), (10, 10)]
   , iverbHit = "thud"
@@ -92,7 +92,7 @@ fastEye = ItemKind
   { isymbol  = 'b'
   , iname    = "crawling biter"
   , ifreq    = [("alien", 100), ("horror", 100)]
-  , iflavour = zipPlain [BrBlue]
+  , iflavour = zipFancy [BrBlue]
   , icount   = 1
   , irarity  = [(3, 2), (10, 8)]
   , iverbHit = "thud"
@@ -111,7 +111,7 @@ nose = ItemKind
   { isymbol  = 'h'
   , iname    = "tentacled horror"
   , ifreq    = [("alien", 100), ("horror", 100)]
-  , iflavour = zipPlain [BrGreen]
+  , iflavour = zipFancy [BrGreen]
   , icount   = 1
   , irarity  = [(3, 4), (10, 6)]
   , iverbHit = "thud"
@@ -122,7 +122,7 @@ nose = ItemKind
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "A blind, slimy mass of clawing, stinging and burning. You'd think it's mindless, but as soon as it touches your trembling body, it's always one step ahead."
-  , ikit     = [ ("smallClaw", COrgan)
+  , ikit     = [ ("small claw", COrgan)
                , ("tentacle", COrgan), ("tentacle", COrgan)
                , ("tentacle", COrgan), ("tentacle", COrgan)
                , ("thorn", COrgan), ("sting", COrgan) ]
@@ -131,7 +131,7 @@ elbow = ItemKind
   { isymbol  = 's'
   , iname    = "creepy shooter"
   , ifreq    = [("alien", 100), ("horror", 100)]
-  , iflavour = zipPlain [BrMagenta]
+  , iflavour = zipFancy [BrMagenta]
   , icount   = 1
   , irarity  = [(6, 1), (10, 5)]
   , iverbHit = "thud"
@@ -146,6 +146,27 @@ elbow = ItemKind
   , ikit     = [ ("speed gland 4", COrgan)
                , ("any arrow", CInv), ("any arrow", CInv)
                , ("any arrow", CInv), ("any arrow", CInv) ]
+  }
+torsor = ItemKind
+  { isymbol  = 'M'
+  , iname    = "The Maker of Contact"
+  , ifreq    = [("alien", 100), ("horror", 100)]
+  , iflavour = zipFancy [BrCyan]
+  , icount   = 1
+  , irarity  = [(9, 0), (10, 1000)]  -- unique
+  , iverbHit = "thud"
+  , iweight  = 80000
+  , iaspects = [ AddMaxHP 100, AddMaxCalm 100, AddSpeed 10
+               , AddSkills $ EM.fromList
+                   [(AbProject, 1), (AbApply, 1), (AbTrigger, -1)] ]
+                   -- can't switch levels, a miniboss
+  , ieffects = []
+  , ifeature = [Unique, Durable, Identified]
+  , idesc    = "The mind, the heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw, grinding teeth and tensing fangs."
+  , ikit     = [ ("tentacle", COrgan), ("claw", COrgan), ("large jaw", COrgan)
+               , ("venom tooth", COrgan), ("venom fang", COrgan)
+               , ("eye 4", COrgan)
+               , ("gem", CInv), ("gem", CInv), ("gem", CInv), ("gem", CInv) ]
   }
 
 -- * Animals
@@ -262,6 +283,24 @@ alligator = ItemKind
   , idesc    = ""
   , ikit     = [ ("large jaw", COrgan), ("large tail", COrgan), ("claw", COrgan)
                , ("armored skin", COrgan), ("eye 4", COrgan) ]
+  }
+rhinoceros = ItemKind
+  { isymbol  = 'R'
+  , iname    = "The Maddened Rhinoceros"
+  , ifreq    = [("animal", 100), ("horror", 100)]
+  , iflavour = zipPlain [Brown]
+  , icount   = 1
+  , irarity  = [(1, 1000), (2, 0)]  -- unique
+  , iverbHit = "thud"
+  , iweight  = 80000
+  , iaspects = [ AddMaxHP 60, AddMaxCalm 60, AddSpeed 25
+               , AddSkills $ EM.insert AbTrigger (-1) animalSkillMalus ]
+                   -- can't switch levels, a miniboss
+  , ieffects = []
+  , ifeature = [Unique, Durable, Identified]
+  , idesc    = "The last of its kind. Blind with rage. Charges at deadly speed."
+  , ikit     = [ ("armored skin", COrgan), ("eye 2", COrgan)
+               , ("horn", COrgan), ("snout", COrgan) ]
   }
 
 -- * Non-animal animals
@@ -421,7 +460,7 @@ shepherdDrone = ItemKind
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "A shabby drone for bringing cows home."
-  , ikit     = [("eye2", COrgan), ("live wire", COrgan)]
+  , ikit     = [("eye 2", COrgan), ("live wire", COrgan)]
   }
 huntingDrone = ItemKind
   { isymbol  = 'd'
@@ -440,7 +479,7 @@ huntingDrone = ItemKind
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Originally designed for hunting down and putting to sleep stray animals. The sleeping agent has long since dried up."
-  , ikit     = [("eye2", COrgan), ("needle", CInv)]
+  , ikit     = [("eye 2", COrgan), ("needle", CInv)]
   }
 homeRobot = ItemKind
   { isymbol  = 'r'
@@ -458,7 +497,7 @@ homeRobot = ItemKind
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Once a timid household robot, it magnificently adapted to the deadly environment."
-  , ikit     = [("fist", COrgan), ("eye2", COrgan)]
+  , ikit     = [("fist", COrgan), ("eye 2", COrgan)]
   }
 wasteRobot = ItemKind
   { isymbol  = 'r'
@@ -477,7 +516,7 @@ wasteRobot = ItemKind
   , idesc    = "You are not in its database, hence you are waste."
   , ikit     = [ ("jaw", COrgan), ("tentacle", COrgan)
                , ("waste container", COrgan)
-               , ("armored skin", COrgan), ("eye3", COrgan) ]
+               , ("armored skin", COrgan), ("eye 3", COrgan) ]
   }
 lightRobot = ItemKind
   { isymbol  = 'r'
@@ -496,7 +535,7 @@ lightRobot = ItemKind
   , ifeature = [Durable, Identified]
   , idesc    = "Interior and exterior decoration robot. Strongly fancies deep reds recently."
   , ikit     = [ ("claw", COrgan), ("tentacle", COrgan)
-               , ("armored skin", COrgan), ("eye4", COrgan) ]
+               , ("armored skin", COrgan), ("eye 4", COrgan) ]
   }
 heavyRobot = ItemKind
   { isymbol  = 'r'
@@ -508,13 +547,35 @@ heavyRobot = ItemKind
   , irarity  = [(1, 4), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 800000
-  , iaspects = [ AddMaxHP 80, AddMaxCalm 60, AddSpeed 20
+  , iaspects = [ AddMaxHP 40, AddMaxCalm 60, AddSpeed 20
                , AddSkills $ EM.insert AbProject 1 robotSkillMalus
                , AddSight 3, AddLight 4 ]  -- light can't be turned off
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Heavy multi-purpose construction robot. Excels at discharging, dismantling and demolition."
-  , ikit     = [ ("largeJaw", COrgan), ("claw", COrgan)
+  , ikit     = [ ("large jaw", COrgan), ("claw", COrgan)
                , ("construction hooter", CInv)
-               , ("armored skin", COrgan), ("eye3", COrgan) ]
+               , ("armored skin", COrgan), ("eye 3", COrgan) ]
+  }
+cleanerRobot = ItemKind
+  { isymbol  = 'C'
+  , iname    = "The Void Cleaner Robot"
+  , ifreq    = [("robot", 100), ("horror", 100)]
+  , iflavour = zipPlain [BrGreen]
+  , icount   = 1
+  , irarity  = [(7, 0), (8, 1000), (9, 0)]  -- unique, appears at 10 of 12
+  , iverbHit = "thud"
+  , iweight  = 80000
+  , iaspects = [ AddMaxHP 80, AddMaxCalm 60, AddSpeed 18
+               , AddSkills $ EM.insert AbTrigger (-1) robotSkillMalus
+                   -- can't switch levels, a miniboss
+               , AddSmell 2, AddLight 4 ]  -- light can't be turned off
+  , ieffects = []
+  , ifeature = [Unique, Durable, Identified]
+  , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."
+  , ikit     = [ ("waste container", COrgan), ("boiling vent", COrgan)
+               , ("armored skin", COrgan), ("live wire", COrgan)
+               , ("jaw", COrgan), ("claw", COrgan)
+               , ("armored skin", COrgan), ("eye 3", COrgan)
+               , ("currency", CInv), ("currency", CInv), ("currency", CInv) ]
   }

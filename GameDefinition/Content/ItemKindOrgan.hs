@@ -15,9 +15,9 @@ import Game.LambdaHack.Content.ItemKind
 
 organs :: [ItemKind]
 organs =
-  [fist, foot, claw, smallClaw, snout, jaw, largeJaw, tentacle, thorn, razor, fissure, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, nostril, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, wasteContainer, bonusHP]
+  [fist, foot, claw, smallClaw, snout, jaw, largeJaw, horn, tentacle, thorn, razor, fissure, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, nostril, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, wasteContainer, bonusHP]
 
-fist,    foot, claw, smallClaw, snout, jaw, largeJaw, tentacle, thorn, razor, fissure, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, nostril, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, wasteContainer, bonusHP :: ItemKind
+fist,    foot, claw, smallClaw, snout, jaw, largeJaw, horn, tentacle, thorn, razor, fissure, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, nostril, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, wasteContainer, bonusHP :: ItemKind
 
 -- Weapons
 
@@ -86,6 +86,14 @@ largeJaw = fist
   , icount   = 1
   , iverbHit = "crush"
   , ieffects = [Hurt (12 * d 1)]
+  , idesc    = ""
+  }
+horn = fist
+  { iname    = "horn"
+  , ifreq    = [("horn", 20)]
+  , icount   = 2
+  , iverbHit = "impale"
+  , ieffects = [Hurt (8 * d 1)]
   , idesc    = ""
   }
 
