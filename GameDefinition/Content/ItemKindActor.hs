@@ -156,12 +156,12 @@ torsor = ItemKind
   , irarity  = [(9, 0), (10, 1000)]  -- unique
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 100, AddMaxCalm 100, AddSpeed 10
+  , iaspects = [ Unique, AddMaxHP 100, AddMaxCalm 100, AddSpeed 10
                , AddSkills $ EM.fromList
                    [(AbProject, 1), (AbApply, 1), (AbTrigger, -1)] ]
                    -- can't switch levels, a miniboss
   , ieffects = []
-  , ifeature = [Unique, Durable, Identified]
+  , ifeature = [Durable, Identified]
   , idesc    = "The mind, the heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw, grinding teeth and tensing fangs."
   , ikit     = [ ("tentacle", COrgan), ("claw", COrgan), ("large jaw", COrgan)
                , ("venom tooth", COrgan), ("venom fang", COrgan)
@@ -293,11 +293,11 @@ rhinoceros = ItemKind
   , irarity  = [(1, 1000), (2, 0)]  -- unique
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 60, AddMaxCalm 60, AddSpeed 25
+  , iaspects = [ Unique, AddMaxHP 60, AddMaxCalm 60, AddSpeed 25
                , AddSkills $ EM.insert AbTrigger (-1) animalSkillMalus ]
                    -- can't switch levels, a miniboss
   , ieffects = []
-  , ifeature = [Unique, Durable, Identified]
+  , ifeature = [Durable, Identified]
   , idesc    = "The last of its kind. Blind with rage. Charges at deadly speed."
   , ikit     = [ ("armored skin", COrgan), ("eye 2", COrgan)
                , ("horn", COrgan), ("snout", COrgan) ]
@@ -566,12 +566,12 @@ cleanerRobot = ItemKind
   , irarity  = [(7, 0), (8, 1000), (9, 0)]  -- unique, appears at 10 of 12
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 80, AddMaxCalm 60, AddSpeed 18
+  , iaspects = [ Unique, AddMaxHP 80, AddMaxCalm 60, AddSpeed 18
                , AddSkills $ EM.insert AbTrigger (-1) robotSkillMalus
                    -- can't switch levels, a miniboss
                , AddSmell 2, AddLight 4 ]  -- light can't be turned off
   , ieffects = []
-  , ifeature = [Unique, Durable, Identified]
+  , ifeature = [Durable, Identified]
   , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."
   , ikit     = [ ("waste container", COrgan), ("boiling vent", COrgan)
                , ("armored skin", COrgan), ("live wire", COrgan)
