@@ -187,7 +187,7 @@ armadillo = ItemKind
   , irarity  = [(1, 5)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 30, AddMaxCalm 30, AddSpeed 18
+  , iaspects = [ AddMaxHP 35, AddMaxCalm 30, AddSpeed 18
                , AddSkills $ EM.insert AbAlter (-1) animalSkillMalus
                , AddSight 3 ]
   , ieffects = []
@@ -275,7 +275,7 @@ alligator = ItemKind
   , irarity  = [(10, 8)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 30, AddMaxCalm 60, AddSpeed 17
+  , iaspects = [ AddMaxHP 35, AddMaxCalm 60, AddSpeed 17
                , AddArmorMelee 30, AddArmorRanged 30
                , AddSkills animalSkillMalus, AddSight 3 ]
   , ieffects = []
@@ -293,7 +293,7 @@ rhinoceros = ItemKind
   , irarity  = [(1, 1000), (2, 0)]  -- unique
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ Unique, AddMaxHP 60, AddMaxCalm 60, AddSpeed 25
+  , iaspects = [ Unique, AddMaxHP 70, AddMaxCalm 60, AddSpeed 25
                , AddSkills $ EM.insert AbTrigger (-1) animalSkillMalus ]
                    -- can't switch levels, a miniboss
   , ieffects = []
