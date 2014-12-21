@@ -5,9 +5,12 @@
 --
 -- | Basic players definitions.
 module Content.ModeKindPlayer
-  ( playerHero, playerSoldier, playerAntiHero, playerCivilian, playerMonster
-  , playerMobileMonster, playerAntiMonster, playerAnimal, playerMobileAnimal
-  , playerRobot, playerMobileRobot, playerHorror
+  ( playerHero, playerSoldier, playerSniper
+  , playerAntiHero, playerAntiSniper, playerCivilian
+  , playerMonster, playerMobileMonster, playerAntiMonster
+  , playerAnimal, playerMobileAnimal
+  , playerRobot, playerMobileRobot
+  , playerHorror
   ) where
 
 import qualified Data.EnumMap.Strict as EM
@@ -17,7 +20,7 @@ import Game.LambdaHack.Common.Dice
 import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.ModeKind
 
-playerHero, playerSoldier, playerAntiHero, playerCivilian, playerMonster, playerMobileMonster, playerAntiMonster, playerAnimal, playerMobileAnimal, playerRobot, playerMobileRobot, playerHorror :: Player Dice
+playerHero, playerSoldier, playerSniper, playerAntiHero, playerAntiSniper, playerCivilian, playerMonster, playerMobileMonster, playerAntiMonster, playerAnimal, playerMobileAnimal, playerRobot, playerMobileRobot, playerHorror :: Player Dice
 
 playerHero = Player
   { fname = "Spacefarer Crew"
@@ -39,7 +42,17 @@ playerSoldier = playerHero
   , fgroup = "soldier"
   }
 
+playerSniper = playerHero
+  { fname = "Sniper Adventurer Party"
+  , fgroup = "sniper"
+  }
+
 playerAntiHero = playerHero
+  { fleaderMode = LeaderAI $ AutoLeader True False
+  , fhasUI = False
+  }
+
+playerAntiSniper = playerSniper
   { fleaderMode = LeaderAI $ AutoLeader True False
   , fhasUI = False
   }
