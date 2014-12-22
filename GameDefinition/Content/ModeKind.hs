@@ -154,8 +154,9 @@ rosterSkirmish = rosterDuel
 rosterAmbush = rosterDuel
   { rosterList = [ playerSniper { fname = "Spacefarer Crew"
                                 , finitialActors = 4
-                                , fentryLevel = -5 }
+                                , fentryLevel = 5 }
                  , playerAntiSniper { fname = "Red Collars"
+                                    , finitialActors = 4
                                     , fentryLevel = 5 }
                  , playerHorror {fentryLevel = 5} ] }
 
