@@ -141,7 +141,7 @@ net = ItemKind
   , iverbHit = "entangle"
   , iweight  = 1000
   , iaspects = []
-  , ieffects = [ toOrganGameTurn "slow 10" (3 + d 3)
+  , ieffects = [ Impress, toOrganGameTurn "slow 10" (3 + d 3)
                , DropItem CEqp "torso armor" False ]
   , ifeature = [Identified]
   , idesc    = "A large synthetic fibre net with weights affixed along the edges. Entangles armor and restricts movement."
@@ -440,6 +440,8 @@ potion1 = potion
 potion2 = potion
   { irarity  = [(6, 10), (10, 10)]
   , iaspects = [Unique]
+    -- No effect, always explodes, which is fine, because effects if other
+    -- potions sometimes don't get triggered either.
   , ieffects = [NoEffect "of Attraction", OnSmash (Explode "pheromone")]
   }
 potion3 = potion
@@ -549,13 +551,17 @@ flask8 = flask
                , OnSmash (Explode "smelly droplet") ]
   }
 flask9 = flask
-  { ieffects = [ NoEffect "of bait cocktail", toOrganActorTurn "drunk" (5 + d 5)
+  { ieffects = [ NoEffect "of bait cocktail"
+               , toOrganActorTurn "drunk" (5 + d 5)
+               , Impress
                , OnSmash (Summon [("mobile animal", 1)] $ 1 + dl 2)
                , OnSmash (Explode "waste") ]
   }
 flask10 = flask
-  { ieffects = [ NoEffect "of whiskey", toOrganActorTurn "drunk" (20 + d 5)
-               , Burn 2, RefillHP 4, OnSmash (Explode "whiskey spray") ]
+  { ieffects = [ NoEffect "of whiskey"
+               , toOrganActorTurn "drunk" (20 + d 5)
+               , Impress, Burn 2, RefillHP 4
+               , OnSmash (Explode "whiskey spray") ]
   }
 flask11 = flask
   { irarity  = [(1, 20), (10, 6)]
