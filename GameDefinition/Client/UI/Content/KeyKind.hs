@@ -58,25 +58,27 @@ standardKeys = KeyKind
            [ TriggerFeature { verb = "descend"
                             , object = "10 levels"
                             , feature = TK.Cause (IK.Ascend (-10)) } ]))
-      , ("semicolon", ([CmdMove], StepToTarget))
-      , ("colon", ([CmdMove], Macro "go to target for 100 steps"
-                                    ["semicolon", "V"]))
-      , ("CTRL-colon", ([CmdMove], Macro "go to target for 10 steps"
-                                         ["semicolon", "CTRL-V"]))
-      , ("x", ([CmdMove], Macro "explore the closest unknown spot"
-                                [ "BackSpace"
-                                , "CTRL-question", "semicolon", "V" ]))
-      , ("X", ([CmdMove], Macro "autoexplore 100 times"
-                                [ "BackSpace"
-                                , "'", "CTRL-question", "semicolon", "'"
-                                , "V" ]))
-      , ("CTRL-X", ([CmdMove], Macro "autoexplore 10 times"
-                                      [ "BackSpace"
-                                      , "'", "CTRL-question", "semicolon", "'"
-                                      , "CTRL-V" ]))
+      , ("semicolon", ([CmdMove], MoveOnceToCursor))
+      , ("colon",
+         ( [CmdMove]
+         , Macro "go to cursor for 100 steps"
+                 ["semicolon", "CTRL-colon", "V"] ))
+      , ("x",
+         ( [CmdMove]
+         , Macro "explore the closest unknown spot"
+                 [ "CTRL-question"  -- no semicolon
+                 , "CTRL-colon", "V" ] ))
+      , ("X",
+         ( [CmdMove]
+         , Macro "autoexplore 100 times"
+                 ["'", "CTRL-question", "CTRL-colon", "'", "V"] ))
+      , ("CTRL-X",
+         ( [CmdMove]
+         , Macro "autoexplore 25 times"
+                 ["'", "CTRL-question", "CTRL-colon", "'", "CTRL-V"] ))
       , ("R", ([CmdMove], Macro "rest (wait 100 times)"
                                 ["KP_Begin", "V"]))
-      , ("CTRL-R", ([CmdMove], Macro "rest (wait 10 times)"
+      , ("CTRL-R", ([CmdMove], Macro "rest (wait 25 times)"
                                      ["KP_Begin", "CTRL-V"]))
       , ("c", ([CmdMove], AlterDir
            [ AlterFeature { verb = "close"
@@ -150,10 +152,10 @@ standardKeys = KeyKind
       , ("plus", ([CmdTgt], EpsIncr True))
       , ("minus", ([CmdTgt], EpsIncr False))
       , ("BackSpace", ([CmdTgt], TgtClear))
-      , ("CTRL-question", ([CmdTgt], TgtUnknown))
-      , ("CTRL-I", ([CmdTgt], TgtItem))
-      , ("CTRL-braceleft", ([CmdTgt], TgtStair True))
-      , ("CTRL-braceright", ([CmdTgt], TgtStair False))
+      , ("CTRL-question", ([CmdTgt], CursorUnknown))
+      , ("CTRL-I", ([CmdTgt], CursorItem))
+      , ("CTRL-braceleft", ([CmdTgt], CursorStair True))
+      , ("CTRL-braceright", ([CmdTgt], CursorStair False))
 
       -- Automation
       , ("equal", ([CmdAuto], SelectActor))
@@ -161,7 +163,7 @@ standardKeys = KeyKind
       , ("v", ([CmdAuto], Repeat 1))
       , ("V", ([CmdAuto], Repeat 100))
       , ("CTRL-v", ([CmdAuto], Repeat 1000))
-      , ("CTRL-V", ([CmdAuto], Repeat 10))
+      , ("CTRL-V", ([CmdAuto], Repeat 25))
       , ("apostrophe", ([CmdAuto], Record))
       , ("CTRL-T", ([CmdAuto], Tactic))
       , ("CTRL-A", ([CmdAuto], Automate))
@@ -183,5 +185,25 @@ standardKeys = KeyKind
       , ("CTRL-f", ([CmdDebug], GameRestart "safari"))
       , ("CTRL-e", ([CmdDebug], GameRestart "defense"))
       , ("CTRL-O", ([CmdDebug], DescribeItem COrgan))
+      , ("CTRL-period", ([CmdInternal], RunOnceAhead))
+      , ("CTRL-semicolon", ([CmdInternal], RunOnceToCursor))
+      , ("CTRL-colon", ([CmdInternal], ContinueToCursor))
+      , ("LeftButtonPress",
+         ( [CmdMouse]
+         , Macro "go to pointer for 100 steps"
+                 [ "SHIFT-MiddleButtonPress", "semicolon"
+                 , "CTRL-colon", "V" ] ))
+      , ("SHIFT-LeftButtonPress",
+         ( [CmdMouse]
+         , Macro "run collectively to pointer for 100 steps"
+                 [ "SHIFT-MiddleButtonPress", "CTRL-semicolon"
+                 , "CTRL-colon", "V" ] ))
+      , ("CTRL-LeftButtonPress",
+         ([CmdMouse], Macro "" ["SHIFT-LeftButtonPress"]))
+      , ("MiddleButtonPress", ([CmdMouse], CursorPointerEnemy))
+      , ("SHIFT-MiddleButtonPress", ([CmdMouse], CursorPointerFloor))
+      , ("CTRL-MiddleButtonPress",
+         ([CmdMouse], Macro "" ["SHIFT-MiddleButtonPress"]))
+      , ("RightButtonPress", ([CmdMouse], TgtPointerEnemy))
       ]
   }
