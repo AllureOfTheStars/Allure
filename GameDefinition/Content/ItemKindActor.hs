@@ -130,7 +130,7 @@ nose = ItemKind
                , AddSmell 3 ]  -- depends solely on smell
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = "A blind, slimy mass of clawing, stinging and burning. You'd think it's mindless, but as soon as it touches your trembling body, it's always one step ahead."
+  , idesc    = "A blind, slimy mass of clawing, stinging and burning. You'd think it's powerless, but as soon as it touches your trembling body, it's always one step ahead."
   , ikit     = [ ("small claw", COrgan)
                , ("tentacle", COrgan), ("tentacle", COrgan)
                , ("tentacle", COrgan), ("tentacle", COrgan)
