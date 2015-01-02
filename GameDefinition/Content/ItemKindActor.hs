@@ -113,7 +113,7 @@ fastEye = ItemKind
                , ("jaw", COrgan)
                , ("eye 4", COrgan), ("speed gland 10", COrgan) ]
   }
-nose = ItemKind
+nose = ItemKind  -- depends solely on smell
   { isymbol  = 'h'
   , iname    = "tentacled horror"
   , ifreq    = [("alien", 100), ("horror", 100)]
@@ -123,12 +123,11 @@ nose = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 20, AddMaxCalm 30, AddSpeed 18
-               , AddSkills $ EM.fromList [(AbProject, -1), (AbApply, -1)]
-               , AddSmell 3 ]  -- depends solely on smell
+               , AddSkills $ EM.fromList [(AbProject, -1), (AbApply, -1)] ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "A blind, slimy mass of clawing, stinging and burning. You'd think it's powerless, but as soon as it touches your trembling body, it's always one step ahead."
-  , ikit     = [ ("small claw", COrgan)
+  , ikit     = [ ("nostril", COrgan), ("small claw", COrgan)
                , ("tentacle", COrgan), ("tentacle", COrgan)
                , ("tentacle", COrgan), ("tentacle", COrgan)
                , ("thorn", COrgan), ("sting", COrgan) ]
@@ -279,7 +278,6 @@ alligator = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 35, AddMaxCalm 60, AddSpeed 17
-               , AddArmorMelee 30, AddArmorRanged 30
                , AddSkills animalSkillMalus ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -337,12 +335,11 @@ thornbush = ItemKind
   , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20
                , AddSkills
                  $ EM.fromDistinctAscList (zip [minBound..maxBound] [-1, -1..])
-                   `addSkills` EM.fromList (zip [AbWait, AbMelee] [1, 1..])
-               , AddArmorMelee 30, AddArmorRanged 30 ]
+                   `addSkills` EM.fromList (zip [AbWait, AbMelee] [1, 1..]) ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
-  , ikit     = [("thorn", COrgan)]
+  , ikit     = [("thorn", COrgan), ("armored skin", COrgan)]
   }
 
 -- * Robots
@@ -496,12 +493,11 @@ homeRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 10, AddMaxCalm 60, AddSpeed 20
-               , AddSkills $ EM.insert AbProject (-1) robotSkillMalus
-               , AddSmell 2 ]
+               , AddSkills $ EM.insert AbProject (-1) robotSkillMalus ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Once a timid household robot, it magnificently adapted to the deadly environment."
-  , ikit     = [("fist", COrgan), ("eye 2", COrgan)]
+  , ikit     = [("fist", COrgan), ("eye 2", COrgan), ("nostril", COrgan)]
   }
 wasteRobot = ItemKind
   { isymbol  = 'r'
@@ -513,14 +509,13 @@ wasteRobot = ItemKind
   , irarity  = [(1, 10), (10, 6)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 15
-               , AddSmell 2 ]
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 15 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "You are not in its database, hence you are waste."
   , ikit     = [ ("jaw", COrgan), ("tentacle", COrgan)
-               , ("waste container", COrgan)
-               , ("armored skin", COrgan), ("eye 2", COrgan) ]
+               , ("waste container", COrgan), ("armored skin", COrgan)
+               , ("eye 2", COrgan), ("nostril", COrgan) ]
   }
 lightRobot = ItemKind
   { isymbol  = 'r'
@@ -533,12 +528,11 @@ lightRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 30
-               , AddSkills $ EM.insert AbProject 1 robotSkillMalus
-               , AddLight 3 ]  -- light can't be turned off
+               , AddSkills $ EM.insert AbProject 1 robotSkillMalus ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Interior and exterior decoration robot. Strongly fancies deep reds recently."
-  , ikit     = [ ("claw", COrgan), ("tentacle", COrgan)
+  , ikit     = [ ("claw", COrgan), ("tentacle", COrgan), ("spotlight", COrgan)
                , ("armored skin", COrgan), ("eye 5", COrgan) ]
   }
 heavyRobot = ItemKind
@@ -552,12 +546,11 @@ heavyRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 800000
   , iaspects = [ AddMaxHP 40, AddMaxCalm 60, AddSpeed 20
-               , AddSkills $ EM.insert AbProject 1 robotSkillMalus
-               , AddLight 4 ]  -- light can't be turned off
+               , AddSkills $ EM.insert AbProject 1 robotSkillMalus ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Heavy multi-purpose construction robot. Excels at discharging, dismantling and demolition."
-  , ikit     = [ ("large jaw", COrgan), ("claw", COrgan)
+  , ikit     = [ ("large jaw", COrgan), ("claw", COrgan), ("spotlight", COrgan)
                , ("construction hooter", CInv)
                , ("armored skin", COrgan), ("eye 5", COrgan) ]
   }
@@ -572,15 +565,14 @@ cleanerRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ Unique, AddMaxHP 80, AddMaxCalm 60, AddSpeed 18
-               , AddSkills $ EM.insert AbTrigger (-1) robotSkillMalus
+               , AddSkills $ EM.insert AbTrigger (-1) robotSkillMalus ]
                    -- can't switch levels, a miniboss
-               , AddSmell 2, AddLight 4 ]  -- light can't be turned off
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."
   , ikit     = [ ("waste container", COrgan), ("boiling vent", COrgan)
                , ("armored skin", COrgan), ("live wire", COrgan)
-               , ("jaw", COrgan), ("claw", COrgan)
-               , ("armored skin", COrgan), ("eye 2", COrgan)
+               , ("jaw", COrgan), ("claw", COrgan), ("armored skin", COrgan)
+               , ("eye 2", COrgan), ("nostril", COrgan), ("spotlight", COrgan)
                , ("currency", CInv), ("currency", CInv), ("currency", CInv) ]
   }
