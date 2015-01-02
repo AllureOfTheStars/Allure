@@ -15,9 +15,9 @@ import Game.LambdaHack.Content.ItemKind
 
 organs :: [ItemKind]
 organs =
-  [fist, foot, claw, smallClaw, snout, jaw, largeJaw, horn, tentacle, thorn, razor, fissure, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, nostril, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, wasteContainer, bonusHP]
+  [fist, foot, claw, smallClaw, snout, jaw, largeJaw, horn, tentacle, thorn, razor, fissure, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, wasteContainer, bonusHP]
 
-fist,    foot, claw, smallClaw, snout, jaw, largeJaw, horn, tentacle, thorn, razor, fissure, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, nostril, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, wasteContainer, bonusHP :: ItemKind
+fist,    foot, claw, smallClaw, snout, jaw, largeJaw, horn, tentacle, thorn, razor, fissure, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, wasteContainer, bonusHP :: ItemKind
 
 -- Weapons
 
@@ -220,6 +220,25 @@ eye2 = eye 2
 eye3 = eye 3
 eye4 = eye 4
 eye5 = eye 5
+eye6 = eye 6
+eye7 = eye 7
+eye8 = eye 8
+vision :: Int -> ItemKind
+vision n = armoredSkin
+  { iname    = "vision"
+  , ifreq    = [(toGroupName $ "vision" <+> tshow n, 100)]
+  , icount   = 1
+  , iverbHit = "visualize"
+  , iaspects = [AddSight (intToDice n)]
+  , idesc    = ""
+  }
+vision4 = vision 4
+vision6 = vision 6
+vision8 = vision 8
+vision10 = vision 10
+vision12 = vision 12
+vision14 = vision 14
+vision16 = vision 16
 nostril = armoredSkin
   { iname    = "nostril"
   , ifreq    = [("nostril", 100)]
