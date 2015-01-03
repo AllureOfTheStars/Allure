@@ -150,7 +150,7 @@ venomTooth = fist
   , icount   = 2
   , iverbHit = "bite"
   , iaspects = [Timeout $ 5 + d 3]
-  , ieffects = [ Hurt (3 * d 1)
+  , ieffects = [ Hurt (2 * d 1)
                , Recharging (toOrganGameTurn "slow 10" (3 + d 3)) ]
   , idesc    = ""
   }
@@ -162,7 +162,7 @@ venomFang = fist
   , icount   = 2
   , iverbHit = "bite"
   , iaspects = [Timeout $ 7 + d 5]
-  , ieffects = [ Hurt (3 * d 1)
+  , ieffects = [ Hurt (2 * d 1)
                , Recharging (toOrganNone "poisoned") ]
   , idesc    = ""
   }

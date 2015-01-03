@@ -806,7 +806,7 @@ daggerDropBestWeapon = dagger
   -- If the effect is very powerful and so the timeout has to be significant,
   -- let's make it really large, for the effect to occur only once in a fight:
   -- as soon as the item is equipped, or just on the first strike.
-  , iaspects = iaspects dagger ++ [Unique, Timeout $ d 3 + 4 - dl 3 |*| 2]
+  , iaspects = [Unique, Timeout $ d 3 + 4 - dl 3 |*| 2]
   , ieffects = ieffects dagger ++ [Recharging DropBestWeapon]
   , idesc    = "A knife with a forked blade that a focused fencer can use to catch and twist an opponent's weapon occasionally."
   }
@@ -830,14 +830,14 @@ hammerParalyze = hammer
   { iname    = "Concussion Hammer"
   , ifreq    = [("useful", 30)]
   , irarity  = [(4, 2), (10, 4)]
-  , iaspects = iaspects hammer ++ [Unique, Timeout $ d 2 + 3 - dl 2 |*| 2]
+  , iaspects = [Unique, Timeout $ d 2 + 3 - dl 2 |*| 2]
   , ieffects = ieffects hammer ++ [Recharging $ Paralyze 5]
   }
 hammerSpark = hammer
   { iname    = "Grand Smithhammer"
   , ifreq    = [("useful", 30)]
   , irarity  = [(4, 2), (10, 4)]
-  , iaspects = iaspects hammer ++ [Unique, Timeout $ d 4 + 4 - dl 4 |*| 2]
+  , iaspects = [Unique, Timeout $ d 4 + 4 - dl 4 |*| 2]
   , ieffects = ieffects hammer ++ [Recharging $ Explode "spark"]
   }
 sword = ItemKind
@@ -861,7 +861,7 @@ swordImpress = sword
   , iname    = "Master's Sword"
   , ifreq    = [("useful", 30)]
   , irarity  = [(3, 1), (10, 4)]
-  , iaspects = iaspects sword ++ [Unique, Timeout $ d 4 + 5 - dl 4 |*| 2]
+  , iaspects = [Unique, Timeout $ d 4 + 5 - dl 4 |*| 2]
   , ieffects = ieffects sword ++ [Recharging Impress]
   , idesc    = "An old, dull, but well-balance blade, lending itself to impressive shows of fencing skill."
   }
@@ -870,7 +870,7 @@ swordNullify = sword
   , iname    = "Gutting Sword"
   , ifreq    = [("useful", 30)]
   , irarity  = [(5, 1), (10, 4)]
-  , iaspects = iaspects sword ++ [Unique, Timeout $ d 4 + 5 - dl 4 |*| 2]
+  , iaspects = [Unique, Timeout $ d 4 + 5 - dl 4 |*| 2]
   , ieffects = ieffects sword ++ [Recharging $ DropItem COrgan "temporary conditions" True]
   , idesc    = "Cold, thin, ancient blade that pierces deeply and sends its victim into abrupt, sobering shock."
   }
@@ -894,7 +894,7 @@ halberdPushActor = halberd
   { iname    = "Swiss Halberd"
   , ifreq    = [("useful", 30)]
   , irarity  = [(7, 1), (10, 4)]
-  , iaspects = iaspects halberd ++ [Unique, Timeout $ d 5 + 5 - dl 5 |*| 2]
+  , iaspects = [Unique, Timeout $ d 5 + 5 - dl 5 |*| 2]
   , ieffects = ieffects halberd ++ [Recharging (PushActor (ThrowMod 400 25))]
   , idesc    = "A perfect replica made for a reenactor troupe, missing only some sharpening. Versatile, with great reach and leverage. Foes are held at a distance."
   }
