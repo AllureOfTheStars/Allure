@@ -790,7 +790,7 @@ dagger = ItemKind
   , iaspects = [AddHurtMelee $ d 3 + dl 3 |*| 3, AddArmorMelee $ d 2 |*| 5]
   , ieffects = [Hurt (6 * d 1)]
   , ifeature = [ toVelocity 40  -- ensuring it hits with the tip costs speed
-               , Durable, EqpSlot EqpSlotWeapon "", Identified ]
+               , Durable, Identified ]
   , idesc    = "A heavy professional kitchen blade. Will do fine cutting any kind of meat and bone, as well as parrying blows. Does not penetrate deeply, but is hard to block. Especially useful in conjunction with a larger weapon."
   , ikit     = []
   }
@@ -822,7 +822,7 @@ hammer = ItemKind
   , iaspects = [AddHurtMelee $ d 2 + dl 2 |*| 3]
   , ieffects = [Hurt (8 * d 1)]
   , ifeature = [ toVelocity 20  -- ensuring it hits with the sharp tip costs
-               , Durable, EqpSlot EqpSlotWeapon "", Identified ]
+               , Durable, Identified ]
   , idesc    = "A hammer on a long handle used for construction work. It may not cause grave wounds, but neither does it ricochet or glance off armor. Great sidearm for opportunistic blows against armored foes."
   , ikit     = []
   }
@@ -852,7 +852,7 @@ sword = ItemKind
   , iaspects = []
   , ieffects = [Hurt (10 * d 1)]
   , ifeature = [ toVelocity 20  -- ensuring it hits with the tip costs speed
-               , Durable, EqpSlot EqpSlotWeapon "", Identified ]
+               , Durable, Identified ]
   , idesc    = "A makeshift weapon of simple design, but great potential. Hard to master, though."
   , ikit     = []
   }
@@ -886,7 +886,7 @@ halberd = ItemKind
   , iaspects = [AddArmorMelee $ 1 + dl 3 |*| 5]
   , ieffects = [Hurt (12 * d 1)]
   , ifeature = [ toVelocity 20  -- not balanced
-               , Durable, EqpSlot EqpSlotWeapon "", Identified ]
+               , Durable, Identified ]
   , idesc    = "An improvised but deadly weapon made of a long, sharp kitchen knife glued and bound to a long pole."
   , ikit     = []
   }

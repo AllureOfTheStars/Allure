@@ -34,7 +34,7 @@ fist = ItemKind
   , iweight  = 2000
   , iaspects = []
   , ieffects = [Hurt (4 * d 1)]
-  , ifeature = [Durable, EqpSlot EqpSlotWeapon "", Identified]
+  , ifeature = [Durable, Identified]
   , idesc    = ""
   , ikit     = []
   }
@@ -116,7 +116,7 @@ thorn = fist
   , icount   = 7
   , iverbHit = "impale"
   , ieffects = [Hurt (1 * d 1)]
-  , ifeature = [EqpSlot EqpSlotWeapon "", Identified]  -- not Durable
+  , ifeature = [Identified]  -- not Durable
   , idesc    = ""
   }
 razor = fist
