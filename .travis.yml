@@ -125,18 +125,18 @@ install:
    if [ $GTKVTY = "gtk" ]; then
      cabal install -j2 gtk2hs-buildtools;
      if [ ${GHCVER%.*} = "7.6" ]; then
-       cabal install -j2 -frelease -O1 --only-dependencies;
+       cabal install -j2 -frelease -O1 --only-dependencies --force-reinstalls;
        cabal configure -frelease -O1;
      else
-       cabal install -j2 -frelease -O2 -fno-ignore-asserts --only-dependencies;
+       cabal install -j2 -frelease -O2 -fno-ignore-asserts --only-dependencies --force-reinstalls;
        cabal configure -frelease -O2 -fno-ignore-asserts;
      fi;
    else
      if [ ${GHCVER%.*} = "7.6" ]; then
-       cabal install -fvty -j2 -f-release -O1 --only-dependencies;
+       cabal install -fvty -j2 -f-release -O1 --only-dependencies --force-reinstalls;
        cabal configure -fvty -f-release -O1;
      else
-       cabal install -fvty -j2 -f-release -O2 -fno-ignore-asserts --only-dependencies;
+       cabal install -fvty -j2 -f-release -O2 -fno-ignore-asserts --only-dependencies --force-reinstalls;
        cabal configure -fvty -f-release -O2 -fno-ignore-asserts;
      fi;
    fi
@@ -144,7 +144,7 @@ install:
  - cabal copy
  - cabal register
  - cd ../Allure
- - cabal install -j2 -frelease -O2 -fno-ignore-asserts --only-dependencies
+ - cabal install -j2 -frelease -O2 -fno-ignore-asserts --only-dependencies --force-reinstalls
  - cabal configure -frelease --enable-tests
  - cabal build -j2
  - cabal test
