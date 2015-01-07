@@ -6,6 +6,9 @@
 -- | Organ definitions.
 module Content.ItemKindOrgan ( organs ) where
 
+import qualified Data.EnumMap.Strict as EM
+
+import Game.LambdaHack.Common.Ability
 import Game.LambdaHack.Common.Color
 import Game.LambdaHack.Common.Dice
 import Game.LambdaHack.Common.Flavour
@@ -15,9 +18,9 @@ import Game.LambdaHack.Content.ItemKind
 
 organs :: [ItemKind]
 organs =
-  [fist, foot, claw, smallClaw, snout, jaw, largeJaw, horn, tentacle, thorn, razor, fissure, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, wasteContainer, spotlight, bonusHP]
+  [fist, foot, claw, smallClaw, snout, jaw, largeJaw, horn, tentacle, thorn, razor, fissure, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, sapientBrain, animalBrain, robotBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, wasteContainer, spotlight, bonusHP]
 
-fist,    foot, claw, smallClaw, snout, jaw, largeJaw, horn, tentacle, thorn, razor, fissure, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, wasteContainer, spotlight, bonusHP :: ItemKind
+fist,    foot, claw, smallClaw, snout, jaw, largeJaw, horn, tentacle, thorn, razor, fissure, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, sapientBrain, animalBrain, robotBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, wasteContainer, spotlight, bonusHP :: ItemKind
 
 -- Weapons
 
@@ -250,6 +253,34 @@ nostril = armoredSkin
 
 -- * Assorted
 
+sapientBrain = armoredSkin
+  { iname    = "sapient brain"
+  , ifreq    = [("sapient brain", 100)]
+  , icount   = 1
+  , iverbHit = "outbrain"
+  , iaspects = [AddSkills unitSkills]
+  , idesc    = ""
+  }
+animalBrain = armoredSkin
+  { iname    = "animal brain"
+  , ifreq    = [("animal brain", 100)]
+  , icount   = 1
+  , iverbHit = "blank"
+  , iaspects = [let absNo = [AbDisplace, AbMoveItem, AbProject, AbApply]
+                    sk = EM.fromList $ zip absNo [-1, -1..]
+                in AddSkills $ addSkills unitSkills sk]
+  , idesc    = ""
+  }
+robotBrain = armoredSkin
+  { iname    = "robot brain"
+  , ifreq    = [("robot brain", 100)]
+  , icount   = 1
+  , iverbHit = "outcompute"
+  , iaspects = [let absNo = [AbApply]
+                    sk = EM.fromList $ zip absNo [-1, -1..]
+                in AddSkills $ addSkills unitSkills sk]
+  , idesc    = ""
+  }
 speedGland :: Int -> ItemKind
 speedGland n = armoredSkin
   { iname    = "speed gland"
