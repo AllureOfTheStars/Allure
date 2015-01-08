@@ -96,7 +96,7 @@ standardKeys = KeyKind
       --
       -- For later:
       -- ApplyItem {verb = "eat", object = "food", symbol = ','}
-      -- ApplyItem {verb = "activate", object = "emitter", symbol = '_'}
+      -- ApplyItem {verb = "apply", object = "emitter", symbol = '_'}
       -- ApplyItem {verb = "use", object = "tool", symbol = '~'}
       --
       , ("E", ([CmdItem, CmdMinimal], DescribeItem CEqp))
@@ -118,7 +118,7 @@ standardKeys = KeyKind
       , ("s", ([CmdItem], MoveItem [CGround, CInv, CEqp] CSha
                                    Nothing "and share an item" False))
       , ("a", ([CmdItem, CmdMinimal], Apply
-           [ ApplyItem { verb = "activate"
+           [ ApplyItem { verb = "apply"
                        , object = "item"
                        , symbol = ' ' }
            , ApplyItem { verb = "quaff"
