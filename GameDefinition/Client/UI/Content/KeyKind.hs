@@ -80,7 +80,7 @@ standardKeys = KeyKind
                                 ["KP_Begin", "V"]))
       , ("CTRL-R", ([CmdMove], Macro "rest (wait 25 times)"
                                      ["KP_Begin", "CTRL-V"]))
-      , ("c", ([CmdMove], AlterDir
+      , ("c", ([CmdMove, CmdMinimal], AlterDir
            [ AlterFeature { verb = "close"
                           , object = "door"
                           , feature = TK.CloseTo "closed door" }
@@ -90,6 +90,7 @@ standardKeys = KeyKind
       , ("KP_5", ([CmdMove], Macro "" ["KP_Begin"]))
       , ("CTRL-KP_5", ([CmdMove], Macro "" ["KP_Begin"]))
       , ("i", ([CmdMove], Macro "" ["KP_Begin"]))
+      , ("I", ([CmdMove], Macro "" ["KP_Begin"]))
 
       -- Item use
       --
@@ -98,7 +99,7 @@ standardKeys = KeyKind
       -- ApplyItem {verb = "activate", object = "emitter", symbol = '_'}
       -- ApplyItem {verb = "use", object = "tool", symbol = '~'}
       --
-      , ("E", ([CmdItem], DescribeItem CEqp))
+      , ("E", ([CmdItem, CmdMinimal], DescribeItem CEqp))
       , ("P", ([CmdItem], DescribeItem CInv))
       , ("S", ([CmdItem], DescribeItem CSha))
       , ("A", ([CmdItem], AllOwned))
@@ -148,11 +149,11 @@ standardKeys = KeyKind
                                              , symbol = '-' }]))
 
       -- Targeting
-      , ("KP_Multiply", ([CmdTgt, CmdMinimal], TgtEnemy))
+      , ("KP_Multiply", ([CmdTgt], TgtEnemy))
       , ("backslash", ([CmdTgt], Macro "" ["KP_Multiply"]))
       , ("KP_Divide", ([CmdTgt], TgtFloor))
       , ("bar", ([CmdTgt], Macro "" ["KP_Divide"]))
-      , ("plus", ([CmdTgt], EpsIncr True))
+      , ("plus", ([CmdTgt, CmdMinimal], EpsIncr True))
       , ("minus", ([CmdTgt], EpsIncr False))
       , ("BackSpace", ([CmdTgt], TgtClear))
       , ("CTRL-question", ([CmdTgt], CursorUnknown))
@@ -173,12 +174,12 @@ standardKeys = KeyKind
 
       -- Assorted
       , ("question", ([CmdMeta], Help))
-      , ("D", ([CmdMeta], History))
-      , ("T", ([CmdMeta], MarkSuspect))
+      , ("D", ([CmdMeta, CmdMinimal], History))
+      , ("T", ([CmdMeta, CmdMinimal], MarkSuspect))
       , ("Z", ([CmdMeta], MarkVision))
       , ("C", ([CmdMeta], MarkSmell))
       , ("Tab", ([CmdMeta], MemberCycle))
-      , ("ISO_Left_Tab", ([CmdMeta], MemberBack))
+      , ("ISO_Left_Tab", ([CmdMeta, CmdMinimal], MemberBack))
       , ("space", ([CmdMeta], Clear))
       , ("Escape", ([CmdMeta, CmdMinimal], Cancel))
       , ("Return", ([CmdMeta], Accept))
