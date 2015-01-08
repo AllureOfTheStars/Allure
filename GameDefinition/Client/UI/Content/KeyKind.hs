@@ -99,13 +99,13 @@ standardKeys = KeyKind
       -- ApplyItem {verb = "apply", object = "emitter", symbol = '_'}
       -- ApplyItem {verb = "use", object = "tool", symbol = '~'}
       --
-      , ("E", ([CmdItem, CmdMinimal], DescribeItem CEqp))
-      , ("P", ([CmdItem], DescribeItem CInv))
-      , ("S", ([CmdItem], DescribeItem CSha))
-      , ("A", ([CmdItem], AllOwned))
-      , ("G", ([CmdItem], DescribeItem CGround))
-      , ("@", ([CmdItem], DescribeItem COrgan))
-      , ("exclam", ([CmdItem], StatsSummary))
+      , ("E", ([CmdItem, CmdMinimal], DescribeItem $ MStore CEqp))
+      , ("P", ([CmdItem], DescribeItem $ MStore CInv))
+      , ("S", ([CmdItem], DescribeItem $ MStore CSha))
+      , ("A", ([CmdItem], DescribeItem MOwned))
+      , ("G", ([CmdItem], DescribeItem $ MStore CGround))
+      , ("@", ([CmdItem], DescribeItem $ MStore COrgan))
+      , ("exclam", ([CmdItem], DescribeItem MStats))
       , ("g", ([CmdItem, CmdMinimal],
                MoveItem [CGround] CEqp (Just "get") "an item" True))
       , ("d", ([CmdItem], MoveItem [CEqp, CInv, CSha] CGround
