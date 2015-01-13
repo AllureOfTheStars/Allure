@@ -128,23 +128,23 @@ install:
        cabal install -j2 -frelease -O1 --only-dependencies --force-reinstalls;
        cabal configure -frelease -O1;
      else
-       cabal install -j2 -frelease -O2 -fno-ignore-asserts --only-dependencies --force-reinstalls;
-       cabal configure -frelease -O2 -fno-ignore-asserts;
+       cabal install -j2 -frelease --only-dependencies --force-reinstalls;
+       cabal configure -frelease;
      fi;
    else
      if [ ${GHCVER%.*} = "7.6" ]; then
        cabal install -fvty -j2 -f-release -O1 --only-dependencies --force-reinstalls;
        cabal configure -fvty -f-release -O1;
      else
-       cabal install -fvty -j2 -f-release -O2 -fno-ignore-asserts --only-dependencies --force-reinstalls;
-       cabal configure -fvty -f-release -O2 -fno-ignore-asserts;
+       cabal install -fvty -j2 -f-release --only-dependencies --force-reinstalls;
+       cabal configure -fvty -f-release;
      fi;
    fi
  - cabal build -j2
  - cabal copy
  - cabal register
  - cd ../Allure
- - cabal install -j2 -frelease -O2 -fno-ignore-asserts --only-dependencies --force-reinstalls
+ - cabal install -j2 -frelease --only-dependencies --force-reinstalls
  - cabal configure -frelease --enable-tests
  - cabal build -j2
  - cabal test
