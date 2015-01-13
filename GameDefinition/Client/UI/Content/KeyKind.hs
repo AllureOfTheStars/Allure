@@ -61,7 +61,7 @@ standardKeys = KeyKind
       , ("semicolon", ([CmdMove], MoveOnceToCursor))
       , ("colon",
          ( [CmdMove]
-         , Macro "go to cursor for 100 steps"
+         , Macro "go to crosshair for 100 steps"
                  ["semicolon", "CTRL-colon", "V"] ))
       , ("x",
          ( [CmdMove]
@@ -101,19 +101,19 @@ standardKeys = KeyKind
       , ("@", ([CmdItem], DescribeItem $ MStore COrgan))
       , ("exclam", ([CmdItem], DescribeItem MStats))
       , ("g", ([CmdItem, CmdMinimal],
-               MoveItem [CGround] CEqp (Just "get") "an item" True))
+               MoveItem [CGround] CEqp (Just "get") "items" True))
       , ("d", ([CmdItem], MoveItem [CEqp, CInv, CSha] CGround
-                                   Nothing "an item" False))
+                                   Nothing "items" False))
       , ("e", ([CmdItem], MoveItem [CGround, CInv, CSha] CEqp
-                                   Nothing "an item" False))
+                                   Nothing "items" False))
       , ("p", ([CmdItem], MoveItem [CGround, CEqp, CSha] CInv
-                                   Nothing "an item into inventory"
+                                   Nothing "items into inventory"
                                    False))
       , ("s", ([CmdItem], MoveItem [CGround, CInv, CEqp] CSha
-                                   Nothing "and share an item" False))
+                                   Nothing "and share items" False))
       , ("a", ([CmdItem, CmdMinimal], Apply
            [ ApplyItem { verb = "apply"
-                       , object = "item"
+                       , object = "consumable"
                        , symbol = ' ' }
            , ApplyItem { verb = "quaff"
                        , object = "drink"
@@ -130,7 +130,7 @@ standardKeys = KeyKind
                                            , symbol = '?' }]))
       , ("f", ([CmdItem, CmdMinimal], Project
            [ApplyItem { verb = "fling"
-                      , object = "item"
+                      , object = "projectile"
                       , symbol = ' ' }]))
       , ("t", ([CmdItem], Project [ ApplyItem { verb = "throw"
                                               , object = "missile"
@@ -149,11 +149,11 @@ standardKeys = KeyKind
       , ("bar", ([CmdTgt], Macro "" ["KP_Divide"]))
       , ("plus", ([CmdTgt, CmdMinimal], EpsIncr True))
       , ("minus", ([CmdTgt], EpsIncr False))
-      , ("BackSpace", ([CmdTgt], TgtClear))
       , ("CTRL-question", ([CmdTgt], CursorUnknown))
       , ("CTRL-I", ([CmdTgt], CursorItem))
       , ("CTRL-braceleft", ([CmdTgt], CursorStair True))
       , ("CTRL-braceright", ([CmdTgt], CursorStair False))
+      , ("BackSpace", ([CmdTgt], TgtClear))
 
       -- Automation
       , ("equal", ([CmdAuto], SelectActor))
@@ -176,7 +176,7 @@ standardKeys = KeyKind
       , ("ISO_Left_Tab", ([CmdMeta, CmdMinimal], MemberBack))
       , ("space", ([CmdMeta], Clear))
       , ("Escape", ([CmdMeta, CmdMinimal], Cancel))
-      , ("Return", ([CmdMeta], Accept))
+      , ("Return", ([CmdMeta, CmdTgt], Accept))
 
       -- Mouse
       , ("LeftButtonPress",
