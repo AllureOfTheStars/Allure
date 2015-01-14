@@ -245,17 +245,16 @@ rosterCoop = Roster
                  , ("Green", "Leaderless Alien Hierarchy") ] }
 
 rosterDefense = Roster
-  { rosterList = [ playerAntiMonster
-                 , playerAntiHero {fname = "Yellow"}
+  { rosterList = [ playerAntiHero
+                 , playerAntiMonster
                  , playerAnimal
                  , playerRobot ]
-  , rosterEnemy = [ ("Yellow", "Alien Hierarchy")
-                  , ("Yellow", "Animal Kingdom")
-                  , ("Yellow", "Robot Anarchy") ]
+  , rosterEnemy = [ ("Spacefarer Crew", "Alien Hierarchy")
+                  , ("Spacefarer Crew", "Animal Kingdom")
+                  , ("Spacefarer Crew", "Robot Anarchy") ]
   , rosterAlly = [ ("Alien Hierarchy", "Animal Kingdom")
                  , ("Alien Hierarchy", "Robot Anarchy")
                  , ("Robot Anarchy", "Animal Kingdom") ] }
-
 
 cavesCampaign, cavesSkirmish, cavesAmbush, cavesBattle, cavesSafari :: Caves
 
