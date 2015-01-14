@@ -15,9 +15,9 @@ import Game.LambdaHack.Content.ItemKind
 
 blasts :: [ItemKind]
 blasts =
-  [burningOil2, burningOil3, burningOil4, explosionBlast2, explosionBlast10, explosionBlast20, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, fragrance, pheromone, mistHealing, mistHealing2, mistWounding, distortion, waste, glassPiece, smoke, boilingWater, glue, spark, mistAntiSlow, mistAntidote, mistStrength, mistWeakness, protectingBalm, redPaint, hasteSpray, slownessSpray, eyeDrop, smellyDroplet, whiskeySpray]
+  [burningOil2, burningOil3, burningOil4, explosionBlast2, explosionBlast10, explosionBlast20, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, waste, glassPiece, smoke, boilingWater, glue, spark, mistAntiSlow, mistAntidote, mistStrength, mistWeakness, protectingBalm, redPaint, hasteSpray, slownessSpray, eyeDrop, smellyDroplet, whiskeySpray]
 
-burningOil2,    burningOil3, burningOil4, explosionBlast2, explosionBlast10, explosionBlast20, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, fragrance, pheromone, mistHealing, mistHealing2, mistWounding, distortion, waste, glassPiece, smoke, boilingWater, glue, spark, mistAntiSlow, mistAntidote, mistStrength, mistWeakness, protectingBalm, redPaint, hasteSpray, slownessSpray, eyeDrop, smellyDroplet, whiskeySpray :: ItemKind
+burningOil2,    burningOil3, burningOil4, explosionBlast2, explosionBlast10, explosionBlast20, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, waste, glassPiece, smoke, boilingWater, glue, spark, mistAntiSlow, mistAntidote, mistStrength, mistWeakness, protectingBalm, redPaint, hasteSpray, slownessSpray, eyeDrop, smellyDroplet, whiskeySpray :: ItemKind
 
 -- * Parameterized immediate effect blasts
 
@@ -119,7 +119,39 @@ pheromone = ItemKind
   , iverbHit = "tempt"
   , iweight  = 1
   , iaspects = []
-  , ieffects = [Dominate]
+  , ieffects = [Impress, OverfillCalm (-20)]
+  , ifeature = [ toVelocity 13  -- the slowest that travels at least 2 steps
+               , Fragile, Identified ]
+  , idesc    = ""
+  , ikit     = []
+  }
+mistCalming = ItemKind
+  { isymbol  = '\''
+  , iname    = "mist"
+  , ifreq    = [("calming mist", 1)]
+  , iflavour = zipFancy [White]
+  , icount   = 9
+  , irarity  = [(1, 1)]
+  , iverbHit = "sooth"
+  , iweight  = 1
+  , iaspects = []
+  , ieffects = [RefillCalm 2]
+  , ifeature = [ toVelocity 13  -- the slowest that travels at least 2 steps
+               , Fragile, Identified ]
+  , idesc    = ""
+  , ikit     = []
+  }
+odorDistressing = ItemKind
+  { isymbol  = '\''
+  , iname    = "distressing whiff"
+  , ifreq    = [("distressing odor", 1)]
+  , iflavour = zipFancy [BrRed]
+  , icount   = 10
+  , irarity  = [(1, 1)]
+  , iverbHit = "distress"
+  , iweight  = 1
+  , iaspects = []
+  , ieffects = [OverfillCalm (-20)]
   , ifeature = [ toVelocity 13  -- the slowest that travels at least 2 steps
                , Fragile, Identified ]
   , idesc    = ""
