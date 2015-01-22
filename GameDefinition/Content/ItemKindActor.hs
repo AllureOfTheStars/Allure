@@ -16,9 +16,9 @@ import Game.LambdaHack.Content.ItemKind
 
 actors :: [ItemKind]
 actors =
-  [warrior, pilot, engineer, doctor, soldier, sniper, clerk, hairdresser, lawyer, peddler, taxCollector, eye, fastEye, nose, elbow, torsor, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot]
+  [warrior, pilot, engineer, doctor, soldier, sniper, clerk, hairdresser, lawyer, peddler, taxCollector, eye, fastEye, nose, elbow, torsor, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot]
 
-warrior,    pilot, engineer, doctor, soldier, sniper, clerk, hairdresser, lawyer, peddler, taxCollector, eye, fastEye, nose, elbow, torsor, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot :: ItemKind
+warrior,    pilot, engineer, doctor, soldier, sniper, clerk, hairdresser, lawyer, peddler, taxCollector, eye, fastEye, nose, elbow, torsor, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot :: ItemKind
 
 -- * Hunams
 
@@ -312,6 +312,24 @@ rhinoceros = ItemKind
 
 -- * Non-animal animals
 
+beeSwarm = ItemKind
+  { isymbol  = 'b'
+  , iname    = "bee swarm"
+  , ifreq    = [("animal", 100), ("horror", 100), ("mobile animal", 100)]
+  , iflavour = zipPlain [Brown]
+  , icount   = 1
+  , irarity  = [(5, 2), (10, 3)]
+  , iverbHit = "thud"
+  , iweight  = 1000
+  , iaspects = [ AddMaxHP 5, AddMaxCalm 60, AddSpeed 30
+               , AddSkills $ EM.singleton AbAlter (-1)
+               , AddArmorMelee 90, AddArmorRanged 90 ]
+  , ieffects = []
+  , ifeature = [Durable, Identified]
+  , idesc    = ""
+  , ikit     = [ ("bee sting", COrgan), ("vision 4", COrgan)
+               , ("insect mortality", COrgan), ("animal brain", COrgan) ]
+  }
 hornetSwarm = ItemKind
   { isymbol  = 'h'
   , iname    = "hornet swarm"
@@ -328,11 +346,11 @@ hornetSwarm = ItemKind
   , ifeature = [Durable, Identified]
   , idesc    = ""
   , ikit     = [ ("sting", COrgan), ("vision 4", COrgan)
-               , ("animal brain", COrgan) ]
+               , ("insect mortality", COrgan), ("animal brain", COrgan) ]
   }
 thornbush = ItemKind
-  { isymbol  = 'b'
-  , iname    = "rose bush"
+  { isymbol  = 't'
+  , iname    = "thornbush"
   , ifreq    = [("animal", 100)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
@@ -434,7 +452,23 @@ biogasFaucet = ItemKind
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "An emergency pressure-release vent on a liquefied biogas pipe."
-  , ikit     = [("explosion vent", COrgan)]
+  , ikit     = [("explosion vent", COrgan), ("fissure", COrgan)]
+  }
+medbotFaucet = ItemKind
+  { isymbol  = 'f'
+  , iname    = "nano medbot faucet"
+  , ifreq    = [("robot", 100)]
+  , iflavour = zipPlain [BrYellow]
+  , icount   = 1
+  , irarity  = [(1, 2), (10, 4)]
+  , iverbHit = "thud"
+  , iweight  = 80000
+  , iaspects = [ AddMaxHP 50, AddMaxCalm 999, AddSpeed 5
+               , AddSkills $ EM.fromList (zip [AbWait] [1, 1..]) ]
+  , ieffects = []
+  , ifeature = [Durable, Identified]
+  , idesc    = "A faucet of a malfunctioning nano medical robot dispenser. Let's hope the medbots are still effective."
+  , ikit     = [("nano medbot vent", COrgan), ("fissure", COrgan)]
   }
 shepherdDrone = ItemKind
   { isymbol  = 'd'

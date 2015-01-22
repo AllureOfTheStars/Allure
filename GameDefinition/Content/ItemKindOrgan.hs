@@ -18,9 +18,9 @@ import Game.LambdaHack.Content.ItemKind
 
 organs :: [ItemKind]
 organs =
-  [fist, foot, claw, smallClaw, snout, jaw, largeJaw, horn, tentacle, thorn, razor, fissure, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, sapientBrain, animalBrain, robotBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, wasteContainer, spotlight, bonusHP]
+  [fist, foot, claw, smallClaw, snout, jaw, largeJaw, horn, tentacle, thorn, razor, fissure, insectMortality, beeSting, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, sapientBrain, animalBrain, robotBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, medbotVent, wasteContainer, spotlight, bonusHP]
 
-fist,    foot, claw, smallClaw, snout, jaw, largeJaw, horn, tentacle, thorn, razor, fissure, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, sapientBrain, animalBrain, robotBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, wasteContainer, spotlight, bonusHP :: ItemKind
+fist,    foot, claw, smallClaw, snout, jaw, largeJaw, horn, tentacle, thorn, razor, fissure, insectMortality, beeSting, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, sapientBrain, animalBrain, robotBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, medbotVent, wasteContainer, spotlight, bonusHP :: ItemKind
 
 -- Weapons
 
@@ -138,6 +138,24 @@ fissure = fist
   , ieffects = [Burn 1]
   , idesc    = ""
   }
+insectMortality = fist
+  { iname    = "insect mortality"
+  , ifreq    = [("insect mortality", 100)]
+  , icount   = 1
+  , iverbHit = "age"
+  , iaspects = [Periodic, Timeout $ 40 + d 10]
+  , ieffects = [Recharging (RefillHP (-1))]
+  , idesc    = ""
+  }
+beeSting = fist
+  { iname    = "bee sting"
+  , ifreq    = [("bee sting", 100)]
+  , icount   = 1
+  , iverbHit = "sting"
+  , iaspects = [Timeout $ 1 + d 5]
+  , ieffects = [Burn 1, Recharging (Paralyze 3), RefillHP 2]
+  , idesc    = "Painful, but beneficial."
+  }
 sting = fist
   { iname    = "sting"
   , ifreq    = [("sting", 100)]
@@ -145,7 +163,7 @@ sting = fist
   , iverbHit = "sting"
   , iaspects = [Timeout $ 1 + d 5]
   , ieffects = [Burn 1, Recharging (Paralyze 3)]
-  , idesc    = ""
+  , idesc    = "Painful, debilitating and harmful."
   }
 venomTooth = fist
   { iname    = "venom tooth"
@@ -301,6 +319,7 @@ speedGland10 = speedGland 10
 boilingVent = armoredSkin
   { iname    = "vent"
   , ifreq    = [("boiling vent", 100)]
+  , iflavour = zipPlain [BrBlue]
   , icount   = 1
   , iverbHit = "menace"
   , iaspects = [Periodic, Timeout $ 3 + d 4 |*| 5]
@@ -310,10 +329,22 @@ boilingVent = armoredSkin
 explosionVent = armoredSkin
   { iname    = "vent"
   , ifreq    = [("explosion vent", 100)]
+  , iflavour = zipPlain [BrGreen]
   , icount   = 1
   , iverbHit = "menace"
   , iaspects = [Periodic, Timeout $ 2 + d 4 |*| 5]
   , ieffects = [Recharging (Explode "blast 20")]
+  , idesc    = ""
+  }
+medbotVent = armoredSkin
+  { iname    = "vent"
+  , ifreq    = [("nano medbot vent", 100)]
+  , iflavour = zipPlain [BrYellow]
+  , icount   = 1
+  , iverbHit = "menace"
+  , iaspects = [Periodic, Timeout $ d 3 + 2]
+  , ieffects = [ Recharging (Explode "healing mist")
+               , Recharging (RefillHP (-1)) ]
   , idesc    = ""
   }
 wasteContainer = armoredSkin
