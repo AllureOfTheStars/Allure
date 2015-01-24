@@ -962,18 +962,18 @@ gem = ItemKind
   , ikit     = []
   }
 gem1 = gem
-  { irarity  = [(3/12, 0), (10, 10)]
+  { irarity  = [(3 * 10/12, 0), (10, 10)]
   }
 gem2 = gem
-  { irarity  = [(5/12, 0), (10, 15)]
+  { irarity  = [(5 * 10/12, 0), (10, 15)]
   }
 gem3 = gem
-  { irarity  = [(7/12, 0), (10, 20)]
+  { irarity  = [(7 * 10/12, 0), (10, 20)]
   }
 gem4 = gem
   { iname    = "stimpack"
   , iflavour = zipPlain [BrYellow]
-  , irarity  = [(1, 10), (3/12, 0), (5/12, 20), (10, 20)]
+  , irarity  = [(1, 10), (3 * 10/12, 0), (5 * 10/12, 20), (10, 20)]
   , ieffects = [OverfillCalm 5, OverfillHP 15]
   , ifeature = [Identified, Precious]  -- TODO: only for humans
   , idesc    = "Calms, heals, invigorates and rejuvenates at the same time. No side-effects. As valuable as precious gems, at 100 gold grains each."
@@ -984,7 +984,7 @@ currency = ItemKind
   , ifreq    = [("treasure", 100), ("currency", 1)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 10 + d 20 + dl 20
-  , irarity  = [(1, 10), (3/12, 0), (5, 25), (10, 10)]
+  , irarity  = [(1, 10), (3 * 10/12, 0), (5, 25), (10, 10)]
   , iverbHit = "tap"
   , iweight  = 1
   , iaspects = []
