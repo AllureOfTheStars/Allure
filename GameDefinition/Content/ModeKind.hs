@@ -133,10 +133,10 @@ rosterCampaign = Roster
 
 rosterDuel = Roster
   { rosterList = [ playerHero { fname = "Spacefarer Crew"
-                              , fentryLevel = 3
+                              , fentryLevel = 4
                               , finitialActors = 1 }
                  , playerAntiHero { fname = "Red Collars"
-                                  , fentryLevel = 3
+                                  , fentryLevel = 4
                                   , finitialActors = 1 }
                  , playerHorror ]
   , rosterEnemy = [ ("Spacefarer Crew", "Red Collars")
@@ -146,31 +146,31 @@ rosterDuel = Roster
 
 rosterSkirmish = rosterDuel
   { rosterList = [ playerHero { fname = "Spacefarer Crew"
-                              , fentryLevel = 3 }
+                              , fentryLevel = 4 }
                  , playerAntiHero { fname = "Red Collars"
-                                  , fentryLevel = 3 }
+                                  , fentryLevel = 4 }
                  , playerHorror ] }
 
 rosterAmbush = rosterDuel
   { rosterList = [ playerSniper { fname = "Spacefarer Crew"
                                 , finitialActors = 4
-                                , fentryLevel = 5 }
+                                , fentryLevel = 7 }
                  , playerAntiSniper { fname = "Red Collars"
                                     , finitialActors = 4
-                                    , fentryLevel = 5 }
-                 , playerHorror {fentryLevel = 5} ] }
+                                    , fentryLevel = 7 }
+                 , playerHorror ] }
 
 rosterBattle = Roster
   { rosterList = [ playerSoldier { finitialActors = 5
-                                 , fentryLevel = 5 }
+                                 , fentryLevel = 7 }
                  , playerMobileMonster { finitialActors = 35
-                                       , fentryLevel = 5
+                                       , fentryLevel = 7
                                        , fneverEmpty = True }
                  , playerMobileAnimal { finitialActors = 20
-                                      , fentryLevel = 5
+                                      , fentryLevel = 7
                                       , fneverEmpty = True }
                  , playerMobileRobot { finitialActors = 15
-                                     , fentryLevel = 5
+                                     , fentryLevel = 7
                                      , fneverEmpty = True } ]
   , rosterEnemy = [ ("Armed Spacefarer Crew", "Alien Hierarchy")
                   , ("Armed Spacefarer Crew", "Animal Kingdom")
@@ -268,11 +268,11 @@ cavesCampaign = IM.fromList
                   ++ [(11, ("campaign random", Nothing))]
                   ++ [(12, ("caveNoise", Just True))]
 
-cavesSkirmish = IM.fromList [(3, ("caveSkirmish", Nothing))]
+cavesSkirmish = IM.fromList [(4, ("caveSkirmish", Nothing))]
 
-cavesAmbush = IM.fromList [(5, ("caveAmbush", Nothing))]
+cavesAmbush = IM.fromList [(7, ("caveAmbush", Nothing))]
 
-cavesBattle = IM.fromList [(5, ("caveBattle", Nothing))]
+cavesBattle = IM.fromList [(7, ("caveBattle", Nothing))]
 
 cavesSafari = IM.fromList [ (4, ("caveSafari1", Nothing))
                           , (7, ("caveSafari2", Nothing))
