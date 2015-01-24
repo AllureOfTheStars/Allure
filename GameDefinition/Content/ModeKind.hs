@@ -158,7 +158,7 @@ rosterAmbush = rosterDuel
                  , playerAntiSniper { fname = "Red Collars"
                                     , finitialActors = 4
                                     , fentryLevel = 7 }
-                 , playerHorror ] }
+                 , playerHorror {fentryLevel = 7} ] }
 
 rosterBattle = Roster
   { rosterList = [ playerSoldier { finitialActors = 5
@@ -212,9 +212,9 @@ rosterSafari = Roster
 
 rosterPvP = Roster
   { rosterList = [ playerHero { fname = "Red"
-                              , fentryLevel = 3 }
+                              , fentryLevel = 4 }
                  , playerHero { fname = "Blue"
-                              , fentryLevel = 3 }
+                              , fentryLevel = 4 }
                  , playerHorror ]
   , rosterEnemy = [ ("Red", "Blue")
                   , ("Red", "Horror Den")
