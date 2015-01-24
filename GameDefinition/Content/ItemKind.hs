@@ -33,9 +33,9 @@ cdefs = ContentDef
 
 items :: [ItemKind]
 items =
-  [dart, dart200, canOfGlue, harpoon, net, needle, jumpingPole, honingSteel, pupilItem, candle, oilLamp, crankSpotlight, gorget, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, contactLens, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, constructionHooter, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, buckler, shield, dagger, daggerDropBestWeapon, hammer, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberdPushActor, wand1, wand2, gem1, gem2, gem3, currency]
+  [dart, dart200, canOfGlue, harpoon, net, needle, jumpingPole, honingSteel, pupilItem, candle, oilLamp, crankSpotlight, gorget, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, contactLens, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, constructionHooter, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, buckler, shield, dagger, daggerDropBestWeapon, hammer, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberdPushActor, wand1, wand2, gem1, gem2, gem3, gem4, currency]
 
-dart,    dart200, canOfGlue, harpoon, net, needle, jumpingPole, honingSteel, pupilItem, candle, oilLamp, crankSpotlight, gorget, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, contactLens, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, constructionHooter, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, buckler, shield, dagger, daggerDropBestWeapon, hammer, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberdPushActor, wand1, wand2, gem1, gem2, gem3, currency :: ItemKind
+dart,    dart200, canOfGlue, harpoon, net, needle, jumpingPole, honingSteel, pupilItem, candle, oilLamp, crankSpotlight, gorget, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, contactLens, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, constructionHooter, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, buckler, shield, dagger, daggerDropBestWeapon, hammer, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberdPushActor, wand1, wand2, gem1, gem2, gem3, gem4, currency :: ItemKind
 
 necklace, ring, potion, flask, scroll, wand, gem :: ItemKind  -- generic templates
 
@@ -63,7 +63,7 @@ symbolEdged      = '|'
 symbolHafted     = '\\'
 symbolWand       = '-'  -- magical rod, transmitter, pistol, rifle
 _symbolStaff     = '_'  -- scanner
-_symbolFood      = ','
+_symbolFood      = ','  -- too easy to miss?
 
 -- * Thrown weapons
 
@@ -962,13 +962,21 @@ gem = ItemKind
   , ikit     = []
   }
 gem1 = gem
-  { irarity  = [(2, 0), (10, 10)]
+  { irarity  = [(3/12, 0), (10, 10)]
   }
 gem2 = gem
-  { irarity  = [(4, 0), (10, 15)]
+  { irarity  = [(5/12, 0), (10, 15)]
   }
 gem3 = gem
-  { irarity  = [(6, 0), (10, 20)]
+  { irarity  = [(7/12, 0), (10, 20)]
+  }
+gem4 = gem
+  { iname    = "stimpack"
+  , iflavour = zipPlain [BrYellow]
+  , irarity  = [(1, 10), (3/12, 0), (5/12, 20), (10, 20)]
+  , ieffects = [OverfillCalm 5, OverfillHP 15]
+  , ifeature = [Identified, Precious]  -- TODO: only for humans
+  , idesc    = "Calms, heals, invigorates and rejuvenates at the same time. No side-effects. As valuable as precious gems, at 100 gold grains each."
   }
 currency = ItemKind
   { isymbol  = symbolGold
@@ -976,7 +984,7 @@ currency = ItemKind
   , ifreq    = [("treasure", 100), ("currency", 1)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 10 + d 20 + dl 20
-  , irarity  = [(1, 10), (6, 25), (10, 10)]
+  , irarity  = [(1, 10), (3/12, 0), (5, 25), (10, 10)]
   , iverbHit = "tap"
   , iweight  = 1
   , iaspects = []
