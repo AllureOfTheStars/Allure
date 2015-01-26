@@ -16,9 +16,9 @@ import Game.LambdaHack.Content.ItemKind
 
 actors :: [ItemKind]
 actors =
-  [warrior, pilot, engineer, doctor, soldier, sniper, clerk, hairdresser, lawyer, peddler, taxCollector, eye, fastEye, nose, elbow, torsor, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot]
+  [warrior, warrior2, warrior3, warrior4, soldier, sniper, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot]
 
-warrior,    pilot, engineer, doctor, soldier, sniper, clerk, hairdresser, lawyer, peddler, taxCollector, eye, fastEye, nose, elbow, torsor, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot :: ItemKind
+warrior,    warrior2, warrior3, warrior4, soldier, sniper, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot :: ItemKind
 
 -- * Hunams
 
@@ -40,11 +40,11 @@ warrior = ItemKind
   , ikit     = [ ("fist", COrgan), ("foot", COrgan), ("eye 5", COrgan)
                , ("sapient brain", COrgan) ]
   }
-pilot = warrior
+warrior2 = warrior
   { iname    = "pilot" }
-engineer = warrior
+warrior3 = warrior
   { iname    = "engineer" }
-doctor = warrior
+warrior4 = warrior
   { iname    = "doctor" }
 
 soldier = warrior
@@ -63,16 +63,16 @@ sniper = warrior
                   , ("light source", CInv), ("light source", CInv) ]
   }
 
-clerk = warrior
+civilian = warrior
   { iname    = "clerk"
   , ifreq    = [("civilian", 100)] }
-hairdresser = clerk
+civilian2 = civilian
   { iname    = "hairdresser" }
-lawyer = clerk
+civilian3 = civilian
   { iname    = "lawyer" }
-peddler = clerk
+civilian4 = civilian
   { iname    = "peddler" }
-taxCollector = clerk
+civilian5 = civilian
   { iname    = "tax collector" }
 
 -- * Aliens

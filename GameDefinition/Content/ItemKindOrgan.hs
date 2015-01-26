@@ -18,9 +18,9 @@ import Game.LambdaHack.Content.ItemKind
 
 organs :: [ItemKind]
 organs =
-  [fist, foot, claw, smallClaw, snout, jaw, largeJaw, horn, tentacle, thorn, razor, fissure, insectMortality, beeSting, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, sapientBrain, animalBrain, robotBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, medbotVent, wasteContainer, spotlight, bonusHP]
+  [fist, foot, claw, smallClaw, snout, jaw, largeJaw, horn, tentacle, razor, thorn, fissure, insectMortality, beeSting, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, sapientBrain, animalBrain, robotBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, medbotVent, wasteContainer, spotlight, bonusHP]
 
-fist,    foot, claw, smallClaw, snout, jaw, largeJaw, horn, tentacle, thorn, razor, fissure, insectMortality, beeSting, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, sapientBrain, animalBrain, robotBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, medbotVent, wasteContainer, spotlight, bonusHP :: ItemKind
+fist,    foot, claw, smallClaw, snout, jaw, largeJaw, horn, tentacle, razor, thorn, fissure, insectMortality, beeSting, sting, venomTooth, venomFang, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, sapientBrain, animalBrain, robotBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, boilingVent, explosionVent, medbotVent, wasteContainer, spotlight, bonusHP :: ItemKind
 
 -- Weapons
 
@@ -113,21 +113,21 @@ tentacle = fist
 
 -- * Special weapon organs
 
-thorn = fist
-  { iname    = "thorn"
-  , ifreq    = [("thorn", 100)]
-  , icount   = 7
-  , iverbHit = "impale"
-  , ieffects = [Hurt (1 * d 1)]
-  , ifeature = [Identified]  -- not Durable
-  , idesc    = ""
-  }
 razor = fist
   { iname    = "razor"
   , ifreq    = [("razor", 100)]
   , icount   = 7
   , iverbHit = "slice"
   , ieffects = [Hurt (2 * d 1)]
+  , idesc    = ""
+  }
+thorn = fist
+  { iname    = "thorn"
+  , ifreq    = [("thorn", 100)]
+  , icount   = 7
+  , iverbHit = "impale"
+  , ieffects = [Hurt (2 * d 1)]
+  , ifeature = [Identified]  -- not Durable
   , idesc    = ""
   }
 fissure = fist
