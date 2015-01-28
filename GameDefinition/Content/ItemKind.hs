@@ -667,10 +667,10 @@ scroll5 = scroll
   { irarity  = [(10, 15)]
   , ieffects = [ Impress
                , OneOf [ Summon standardSummon 1
-                      , CallFriend 1, Ascend (-1), Ascend 1
+                       , CallFriend 1, Ascend (-1), Ascend 1
                        , OverfillCalm 5, OverfillCalm (-60)
-                      , CreateItem CGround "useful" TimerNone
-                      , PolyItem CGround ]]
+                       , CreateItem CGround "useful" TimerNone
+                       , PolyItem CGround ]]
   }
 scroll6 = scroll
   { ieffects = [Teleport 5]
@@ -986,6 +986,7 @@ gem4 = gem
   { iname    = "stimpack"
   , iflavour = zipPlain [BrYellow]
   , irarity  = [(1, 10), (3 * 10/12, 0), (5 * 10/12, 20), (10, 20)]
+  , iaspects = []
   , ieffects = [OverfillCalm 5, OverfillHP 15]
   , ifeature = [Identified, Precious]  -- TODO: only for humans
   , idesc    = "Calms, heals, invigorates and rejuvenates at the same time. No side-effects. As valuable as precious gems, at 100 gold grains each."
