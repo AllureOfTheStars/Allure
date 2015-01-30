@@ -652,8 +652,8 @@ scroll1 = scroll
                , CallFriend (1 + d 2), Summon standardSummon (1 + d 2) ]
   }
 scroll2 = scroll
-  { irarity  = [(1, 7), (10, 5)]
-  , ieffects = [NoEffect "of fireworks", Explode "firecracker 7"]
+  { irarity  = []
+  , ieffects = []
   }
 scroll3 = scroll
   { irarity  = [(1, 5), (10, 3)]
@@ -689,8 +689,8 @@ scroll9 = scroll
   }
 scroll10 = scroll
   { irarity  = [(10, 10)]
-  , ieffects = [ NoEffect "nano tweaking"
-               , PolyItem CGround, OverfillCalm (-1) ]  -- nanobot poisoning
+  , ieffects = [ NoEffect "molecular reconfiguration"
+               , PolyItem CGround, Explode "firecracker 7" ]
   }
 scroll11 = scroll
   { ifreq    = [("treasure", 100)]
