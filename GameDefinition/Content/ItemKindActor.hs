@@ -447,7 +447,7 @@ biogasFaucet = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 5
-               , AddSkills $ EM.fromList (zip [AbWait] [1, 1..])
+               , AddSkills $ EM.fromList (zip [AbWait, AbMelee] [1, 1..])
                , AddArmorMelee 80, AddArmorRanged 80 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -464,7 +464,7 @@ medbotFaucet = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 50, AddMaxCalm 999, AddSpeed 5
-               , AddSkills $ EM.fromList (zip [AbWait] [1, 1..]) ]
+               , AddSkills $ EM.fromList (zip [AbWait, AbMelee] [1, 1..]) ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "A faucet of a malfunctioning nano medical robot dispenser. Let's hope the medbots are still effective."
