@@ -123,7 +123,7 @@ Have fun!
 Copyright
 ---------
 
-Copyright (c) 2008--2011 Andres Loeh, 2010--2014 Mikolaj Konarski
+Copyright (c) 2008--2011 Andres Loeh, 2010--2015 Mikolaj Konarski
 
 Allure of the Stars is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
