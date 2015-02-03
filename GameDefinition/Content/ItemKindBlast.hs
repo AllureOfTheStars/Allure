@@ -119,7 +119,7 @@ pheromone = ItemKind
   , iverbHit = "tempt"
   , iweight  = 1
   , iaspects = []
-  , ieffects = [Impress, OverfillCalm (-20)]
+  , ieffects = [Impress, RefillCalm (-20)]
   , ifeature = [ toVelocity 13  -- the slowest that travels at least 2 steps
                , Fragile, Identified ]
   , idesc    = ""
@@ -151,7 +151,7 @@ odorDistressing = ItemKind
   , iverbHit = "distress"
   , iweight  = 1
   , iaspects = []
-  , ieffects = [OverfillCalm (-20)]
+  , ieffects = [RefillCalm (-20)]
   , ifeature = [ toVelocity 13  -- the slowest that travels at least 2 steps
                , Fragile, Identified ]
   , idesc    = ""
