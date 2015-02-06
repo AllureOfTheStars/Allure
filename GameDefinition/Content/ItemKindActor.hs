@@ -16,9 +16,9 @@ import Game.LambdaHack.Content.ItemKind
 
 actors :: [ItemKind]
 actors =
-  [warrior, warrior2, warrior3, warrior4, soldier, sniper, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot]
+  [warrior, warrior2, warrior3, warrior4, soldier, sniper, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot]
 
-warrior,    warrior2, warrior3, warrior4, soldier, sniper, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot :: ItemKind
+warrior,    warrior2, warrior3, warrior4, soldier, sniper, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot :: ItemKind
 
 -- * Hunams
 
@@ -185,6 +185,59 @@ torsor = ItemKind
 -- They need rather strong melee, because they don't use items.
 -- Unless/until they level up.
 
+goldenJackal = ItemKind  -- basically a much smaller and slower hyena
+  { isymbol  = 'j'
+  , iname    = "golden jackal"
+  , ifreq    = [("animal", 100), ("horror", 100), ("mobile animal", 100), ("scavenger", 50)]
+  , iflavour = zipPlain [BrYellow]
+  , icount   = 1
+  , irarity  = [(1, 5)]
+  , iverbHit = "thud"
+  , iweight  = 13000
+  , iaspects = [ AddMaxHP 12, AddMaxCalm 60, AddSpeed 22 ]
+  , ieffects = []
+  , ifeature = [Durable, Identified]
+  , idesc    = ""
+  , ikit     = [ ("small jaw", COrgan), ("eye 5", COrgan), ("nostril", COrgan)
+               , ("animal brain", COrgan) ]
+  }
+griffonVulture = ItemKind
+  { isymbol  = 'v'
+  , iname    = "griffon vulture"
+  , ifreq    = [("animal", 100), ("horror", 100), ("mobile animal", 100), ("scavenger", 30)]
+  , iflavour = zipPlain [BrYellow]
+  , icount   = 1
+  , irarity  = [(1, 5)]
+  , iverbHit = "thud"
+  , iweight  = 13000
+  , iaspects = [ AddMaxHP 12, AddMaxCalm 30, AddSpeed 20
+               , AddSkills $ EM.singleton AbAlter (-1) ]
+  , ieffects = []
+  , ifeature = [Durable, Identified]
+  , idesc    = ""
+  , ikit     = [ ("screeching beak", COrgan)  -- in reality it grunts and hisses
+               , ("small claw", COrgan), ("eye 6", COrgan)
+               , ("animal brain", COrgan) ]
+  }
+skunk = ItemKind
+  { isymbol  = 's'
+  , iname    = "hog-nosed skunk"
+  , ifreq    = [("animal", 100), ("horror", 100), ("mobile animal", 100)]
+  , iflavour = zipPlain [White]
+  , icount   = 1
+  , irarity  = [(1, 5), (10, 3)]
+  , iverbHit = "thud"
+  , iweight  = 4000
+  , iaspects = [ AddMaxHP 10, AddMaxCalm 30, AddSpeed 20
+               , AddSkills $ EM.singleton AbAlter (-1) ]
+  , ieffects = []
+  , ifeature = [Durable, Identified]
+  , idesc    = ""
+  , ikit     = [ ("scent gland", COrgan)
+               , ("small claw", COrgan), ("snout", COrgan)
+               , ("nostril", COrgan), ("eye 2", COrgan)
+               , ("animal brain", COrgan) ]
+  }
 armadillo = ItemKind
   { isymbol  = 'a'
   , iname    = "giant armadillo"
@@ -212,7 +265,7 @@ gilaMonster = ItemKind
   , irarity  = [(2, 5), (10, 3)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 15, AddMaxCalm 60, AddSpeed 15
+  , iaspects = [ AddMaxHP 12, AddMaxCalm 60, AddSpeed 15
                , AddSkills $ EM.singleton AbAlter (-1) ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -239,7 +292,7 @@ rattlesnake = ItemKind
                , ("eye 5", COrgan), ("nostril", COrgan)
                , ("animal brain", COrgan) ]
   }
-komodoDragon = ItemKind  -- bad hearing
+komodoDragon = ItemKind  -- bad hearing; regeneration makes it very powerful
   { isymbol  = 'k'
   , iname    = "Komodo dragon"
   , ifreq    = [("animal", 100), ("horror", 100), ("mobile animal", 100)]
@@ -260,12 +313,12 @@ komodoDragon = ItemKind  -- bad hearing
 hyena = ItemKind
   { isymbol  = 'h'
   , iname    = "spotted hyena"
-  , ifreq    = [("animal", 100), ("horror", 100), ("mobile animal", 100)]
-  , iflavour = zipPlain [Red]
+  , ifreq    = [("animal", 100), ("horror", 100), ("mobile animal", 100), ("scavenger", 20)]
+  , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , irarity  = [(4, 1), (10, 8)]
   , iverbHit = "thud"
-  , iweight  = 80000
+  , iweight  = 60000
   , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 30 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -318,7 +371,7 @@ beeSwarm = ItemKind
   , ifreq    = [("animal", 100), ("horror", 100), ("mobile animal", 100)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
-  , irarity  = [(5, 2), (10, 3)]
+  , irarity  = [(1, 3), (10, 6)]
   , iverbHit = "thud"
   , iweight  = 1000
   , iaspects = [ AddMaxHP 5, AddMaxCalm 60, AddSpeed 30
@@ -336,7 +389,7 @@ hornetSwarm = ItemKind
   , ifreq    = [("animal", 100), ("horror", 100), ("mobile animal", 100)]
   , iflavour = zipPlain [Magenta]
   , icount   = 1
-  , irarity  = [(5, 1), (10, 5)]
+  , irarity  = [(5, 1), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 1000
   , iaspects = [ AddMaxHP 5, AddMaxCalm 60, AddSpeed 30
@@ -354,7 +407,7 @@ thornbush = ItemKind
   , ifreq    = [("animal", 100)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
-  , irarity  = [(1, 1)]
+  , irarity  = [(1, 3), (10, 1)]
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20
@@ -373,7 +426,7 @@ razorwireFence = ItemKind
   , ifreq    = [("robot", 100)]
   , iflavour = zipPlain [Cyan]
   , icount   = 1
-  , irarity  = [(1, 2), (10, 2)]
+  , irarity  = [(1, 4), (10, 2)]
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 20
@@ -390,7 +443,7 @@ electricFence = ItemKind
   , ifreq    = [("robot", 100)]
   , iflavour = zipPlain [Blue]
   , icount   = 1
-  , irarity  = [(1, 2), (10, 2)]
+  , irarity  = [(1, 4), (10, 2)]
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 50
@@ -407,7 +460,7 @@ activeFence = ItemKind
   , ifreq    = [("robot", 100)]
   , iflavour = zipPlain [Red]
   , icount   = 1
-  , irarity  = [(4, 0), (5, 2), (10, 4)]
+  , irarity  = [(3, 0), (5, 2), (10, 4)]
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20
@@ -426,7 +479,7 @@ steamFaucet = ItemKind
   , ifreq    = [("robot", 100)]
   , iflavour = zipPlain [BrWhite]
   , icount   = 1
-  , irarity  = [(1, 2), (10, 2)]
+  , irarity  = [(1, 4), (10, 2)]
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 5
@@ -443,7 +496,7 @@ biogasFaucet = ItemKind
   , ifreq    = [("robot", 33)]  -- very rare
   , iflavour = zipPlain [BrGreen]
   , icount   = 1
-  , irarity  = [(3, 0), (4, 2), (10, 4)]
+  , irarity  = [(3, 0), (5, 2), (10, 4)]
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 5
@@ -470,13 +523,32 @@ medbotFaucet = ItemKind
   , idesc    = "A faucet of a malfunctioning nano medical robot dispenser. Let's hope the medbots are still effective."
   , ikit     = [("nano medbot vent", COrgan), ("fissure", COrgan)]
   }
+surveillanceDrone = ItemKind
+  { isymbol  = 'd'
+  , iname    = "surveillance drone"
+  , ifreq    = [("robot", 100), ("horror", 100), ("mobile robot", 100)]
+  , iflavour = zipPlain [Blue]
+  , icount   = 1
+  , irarity  = [(1, 10)]
+  , iverbHit = "thud"
+  , iweight  = 1000
+  , iaspects = [ AddMaxHP 2, AddMaxCalm 60, AddSpeed 30
+               , AddSkills
+                 $ EM.fromList
+                 $ zip [AbDisplace, AbMoveItem, AbProject, AbMelee] [-1, -1..]
+               , AddArmorMelee 90, AddArmorRanged 90 ]
+  , ieffects = []
+  , ifeature = [Durable, Identified]
+  , idesc    = "A video camera in each room would violate privacy of passengers, hence surveillance drones. Programmed to be easy to fend off, they keep a respectful distance."
+  , ikit     = [ ("vision14", COrgan), ("robot brain", COrgan) ]
+  }
 shepherdDrone = ItemKind
   { isymbol  = 'd'
   , iname    = "shepherd drone"
   , ifreq    = [("robot", 100), ("horror", 100), ("mobile robot", 100)]
   , iflavour = zipPlain [BrRed]
   , icount   = 1
-  , irarity  = [(1, 8)]
+  , irarity  = [(1, 7)]
   , iverbHit = "thud"
   , iweight  = 1000
   , iaspects = [ AddMaxHP 2, AddMaxCalm 60, AddSpeed 30
@@ -496,7 +568,7 @@ huntingDrone = ItemKind
   , ifreq    = [("robot", 100), ("horror", 100), ("mobile robot", 100)]
   , iflavour = zipPlain [Green]
   , icount   = 1
-  , irarity  = [(4, 0), (5, 2), (10, 4)]
+  , irarity  = [(3, 0), (5, 2), (10, 4)]
   , iverbHit = "thud"
   , iweight  = 500
   , iaspects = [ AddMaxHP 2, AddMaxCalm 60, AddSpeed 40
@@ -554,7 +626,7 @@ lightRobot = ItemKind
                , ("construction robot", 1) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
-  , irarity  = [(4, 1), (10, 10)]
+  , irarity  = [(3, 1), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 15, AddMaxCalm 60, AddSpeed 30
@@ -573,7 +645,7 @@ heavyRobot = ItemKind
                , ("construction robot", 100) ]
   , iflavour = zipPlain [BrRed]
   , icount   = 1
-  , irarity  = [(1, 1), (10, 10)]
+  , irarity  = [(5, 1), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 800000
   , iaspects = [ AddMaxHP 40, AddMaxCalm 60, AddSpeed 20

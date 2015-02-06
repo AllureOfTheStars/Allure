@@ -694,7 +694,7 @@ scroll8 = scroll
 scroll9 = scroll
   { irarity  = [(1, 15)]
   , ieffects = [ NoEffect "of scientific explanation"
-               , Identify CGround, OverfillCalm 3 ]  -- TODO: ask player: AskPlayer cstore eff?
+               , Identify CGround, OverfillCalm 3 ]
   }
 scroll10 = scroll
   { irarity  = [(10, 10)]
