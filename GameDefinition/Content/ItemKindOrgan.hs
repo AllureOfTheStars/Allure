@@ -146,15 +146,6 @@ fissure = fist
   , ieffects = [Burn 1]
   , idesc    = ""
   }
-insectMortality = fist
-  { iname    = "insect mortality"
-  , ifreq    = [("insect mortality", 100)]
-  , icount   = 1
-  , iverbHit = "age"
-  , iaspects = [Periodic, Timeout $ 40 + d 10]
-  , ieffects = [Recharging (RefillHP (-1))]
-  , idesc    = ""
-  }
 beeSting = fist
   { iname    = "bee sting"
   , ifreq    = [("bee sting", 100)]
@@ -289,6 +280,15 @@ nostril = armoredSkin
 
 -- * Assorted
 
+insectMortality = fist
+  { iname    = "insect mortality"
+  , ifreq    = [("insect mortality", 100)]
+  , icount   = 1
+  , iverbHit = "age"
+  , iaspects = [Periodic, Timeout $ 40 + d 10]
+  , ieffects = [Recharging (RefillHP (-1))]
+  , idesc    = ""
+  }
 sapientBrain = armoredSkin
   { iname    = "sapient brain"
   , ifreq    = [("sapient brain", 100)]
@@ -334,12 +334,12 @@ speedGland4 = speedGland 4
 speedGland6 = speedGland 6
 speedGland8 = speedGland 8
 speedGland10 = speedGland 10
-scentGland = armoredSkin  -- TODO: cone attack, 3m away
+scentGland = armoredSkin  -- TODO: cone attack, 3m away, project? apply?
   { iname    = "scent gland"
   , ifreq    = [("scent gland", 100)]
   , icount   = 2
   , iverbHit = "spray at"
-  , iaspects = [Timeout $ d 3 |*| 5 ]
+  , iaspects = [Periodic, Timeout $ d 3 |*| 5 ]
   , ieffects = [ Recharging (Explode "distressing odor")
                , Recharging ApplyPerfume ]
   , idesc    = ""
