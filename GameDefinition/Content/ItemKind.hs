@@ -420,8 +420,7 @@ ring6 = ring
   { ifreq    = [("treasure", 100)]
   , irarity  = [(10, 2)]
   , iaspects = [Unique, AddSpeed $ 10 + d 10, AddMaxCalm $ - 20 - d 20]
-  , ieffects = [ NoEffect "of Rush"
-               , Explode "distortion" ]  -- strong magic
+  , ieffects = [NoEffect "of Rush"]  -- no explosion, because Durable
   , ifeature = ifeature ring ++ [Durable, EqpSlot EqpSlotAddSpeed ""]
   }
 ring7 = ring
@@ -441,11 +440,7 @@ ring8 = ring
   , ifeature = ifeature ring ++ [EqpSlot (EqpSlotAddSkills AbProject) ""]
   }
 
--- * Consumables. Of these, let only the @OneOf@ items have effects
--- that sometimes don't get triggered (but in this case,
--- repetition suffices to ID them anyway).
-
--- * Exploding consumables, often intended to be thrown
+-- * Ordinary exploding consumables, often intended to be thrown
 
 potion = ItemKind
   { isymbol  = symbolPotion
@@ -471,8 +466,6 @@ potion2 = potion
   { ifreq    = [("treasure", 100)]
   , irarity  = [(6, 10), (10, 10)]
   , iaspects = [Unique]
-    -- No effect, always explodes, which is fine, because effects if other
-    -- potions sometimes don't get triggered either.
   , ieffects = [ NoEffect "of Attraction", Impress, OverfillCalm (-20)
                , OnSmash (Explode "pheromone") ]
   }
@@ -485,7 +478,8 @@ potion4 = potion
   , ieffects = [RefillHP 10, OnSmash (Explode "healing mist 2")]
   }
 potion5 = potion
-  { ieffects = [ OneOf [Impress, DropBestWeapon, RefillHP 10, Burn 5]
+  { ieffects = [ OneOf [ Impress, OverfillHP 10, Burn 5
+                       , DropItem COrgan "poisoned" True ]
                , OnSmash (OneOf [ Explode "healing mist"
                                 , Explode "wounding mist"
                                 , Explode "fragrance"
@@ -494,8 +488,10 @@ potion5 = potion
 potion6 = potion
   { irarity  = [(3, 3), (10, 6)]
   , ieffects = [ Impress
-               , OneOf [ RefillCalm (-60), DropBestWeapon
-                       , RefillHP 20, Burn 9, InsertMove 4 ]
+               , OneOf [ OverfillCalm (-60)
+                       , toOrganActorTurn "fast 20" (20 + d 5)
+                       , OverfillHP 20, Burn 10
+                       , DropItem COrgan "temporary conditions" True ]
                , OnSmash (OneOf [ Explode "healing mist 2"
                                 , Explode "calming mist"
                                 , Explode "distressing odor"
@@ -503,11 +499,11 @@ potion6 = potion
                                 , Explode "blast 20" ]) ]
   }
 potion7 = potion
-  { ieffects = [ DropItem COrgan "poisoned" True, OverfillCalm 3
+  { ieffects = [ DropItem COrgan "poisoned" True
                , OnSmash (Explode "antidote mist") ]
   }
 potion8 = potion
-  { ieffects = [ DropItem COrgan "temporary conditions" True, OverfillCalm 5
+  { ieffects = [ DropItem COrgan "temporary conditions" True
                , OnSmash (Explode "blast 10") ]
   }
 potion9 = potion
@@ -520,7 +516,7 @@ potion9 = potion
                , OnSmash (Explode "pheromone") ]
   }
 
--- * Exploding consumables, with temporary aspects
+-- * Exploding consumables with temporary aspects, can be thrown
 -- TODO: dip projectiles in those
 -- TODO: add flavour and realism as in, e.g., "flask of whiskey",
 -- which is more flavourful and believable than "flask of strength"
@@ -669,17 +665,16 @@ scroll3 = scroll
   , ieffects = [Ascend 1]
   }
 scroll4 = scroll
-  { ieffects = [OneOf [ Teleport $ d 3 * 3, RefillCalm 5, RefillCalm (-5)
-                       , InsertMove 3, Paralyze 5, Identify CGround ] ]
+  { ieffects = [OneOf [ Teleport 5, RefillCalm 5, RefillCalm (-5)
+                      , InsertMove 5, Paralyze 10 ]]
   }
 scroll5 = scroll
   { irarity  = [(10, 15)]
   , ieffects = [ Impress
-               , OneOf [ Summon standardSummon 1
-                       , CallFriend 1, Ascend (-1), Ascend 1
-                       , RefillCalm 5, RefillCalm (-60)
-                       , CreateItem CGround "useful" TimerNone
-                       , PolyItem CGround ]]
+               , OneOf [ Teleport 20, Ascend (-1), Ascend 1
+                       , Summon standardSummon 2, CallFriend 1
+                       , RefillCalm 5, OverfillCalm (-60)
+                       , CreateItem CGround "useful" TimerNone ] ]
   }
 scroll6 = scroll
   { ieffects = [Teleport 5]
@@ -691,15 +686,15 @@ scroll8 = scroll
   { irarity  = [(10, 3)]
   , ieffects = [InsertMove $ 1 + d 2 + dl 2]
   }
-scroll9 = scroll
+scroll9 = scroll  -- TODO: remove Calm when server can tell if anything IDed
   { irarity  = [(1, 15)]
   , ieffects = [ NoEffect "of scientific explanation"
-               , Identify CGround, OverfillCalm 3 ]
+               , Identify, OverfillCalm 3 ]
   }
-scroll10 = scroll
+scroll10 = scroll  -- TODO: firecracker only if an item really polymorphed?
   { irarity  = [(10, 10)]
   , ieffects = [ NoEffect "molecular reconfiguration"
-               , PolyItem CGround, Explode "firecracker 7" ]
+               , PolyItem, Explode "firecracker 7" ]
   }
 scroll11 = scroll
   { ifreq    = [("treasure", 100)]

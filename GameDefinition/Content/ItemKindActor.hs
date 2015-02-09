@@ -540,7 +540,7 @@ surveillanceDrone = ItemKind
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "A video camera in each room would violate privacy of passengers, hence surveillance drones. Programmed to be easy to fend off, they keep a respectful distance."
-  , ikit     = [ ("vision14", COrgan), ("robot brain", COrgan) ]
+  , ikit     = [ ("vision 14", COrgan), ("robot brain", COrgan) ]
   }
 shepherdDrone = ItemKind
   { isymbol  = 'd'
