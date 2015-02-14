@@ -210,7 +210,7 @@ griffonVulture = ItemKind
   , irarity  = [(1, 5)]
   , iverbHit = "thud"
   , iweight  = 13000
-  , iaspects = [ AddMaxHP 12, AddMaxCalm 30, AddSpeed 20
+  , iaspects = [ AddMaxHP 12, AddMaxCalm 60, AddSpeed 20
                , AddSkills $ EM.singleton AbAlter (-1) ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -532,7 +532,7 @@ surveillanceDrone = ItemKind
   , irarity  = [(1, 10)]
   , iverbHit = "thud"
   , iweight  = 1000
-  , iaspects = [ AddMaxHP 2, AddMaxCalm 60, AddSpeed 30
+  , iaspects = [ AddMaxHP 2, AddMaxCalm 90, AddSpeed 30
                , AddSkills
                  $ EM.fromList
                  $ zip [AbDisplace, AbMoveItem, AbProject, AbMelee] [-1, -1..]
@@ -592,7 +592,7 @@ homeRobot = ItemKind
   , irarity  = [(1, 20), (10, 6)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 10, AddMaxCalm 60, AddSpeed 20
+  , iaspects = [ AddMaxHP 10, AddMaxCalm 30, AddSpeed 20
                , AddSkills $ EM.singleton AbProject (-1) ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -610,7 +610,7 @@ wasteRobot = ItemKind
   , irarity  = [(1, 10), (10, 6)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 15, AddMaxCalm 60, AddSpeed 15 ]
+  , iaspects = [ AddMaxHP 15, AddMaxCalm 30, AddSpeed 15 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "You are not in its database, hence you are waste."
