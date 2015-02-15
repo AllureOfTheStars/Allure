@@ -654,7 +654,7 @@ scroll1 = scroll
   , irarity  = [(5, 10), (10, 10)]  -- mixed blessing, so available early
   , iaspects = [Unique]
   , ieffects = [ NoEffect "of Reckless Beacon"
-               , CallFriend (d 2), Summon standardSummon (2 + d 2) ]
+               , CallFriend 1, Summon standardSummon (2 + d 2) ]
   }
 scroll2 = scroll
   { irarity  = []
@@ -701,7 +701,7 @@ scroll11 = scroll
   { ifreq    = [("treasure", 100)]
   , irarity  = [(6, 10), (10, 10)]
   , iaspects = [Unique]
-  , ieffects = [NoEffect "of Prisoner Release", CallFriend (d 2)]
+  , ieffects = [NoEffect "of Prisoner Release", CallFriend 1]
   }
 
 standardSummon :: Freqs ItemKind
