@@ -86,7 +86,7 @@ eye = ItemKind
   , irarity  = [(4, 6), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 10, AddMaxCalm 60, AddSpeed 20
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 20
                , AddSkills $ EM.fromList [(AbProject, 1), (AbApply, 1)] ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -125,7 +125,7 @@ nose = ItemKind  -- depends solely on smell
   , irarity  = [(4, 5), (10, 9)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 30, AddSpeed 18
+  , iaspects = [ AddMaxHP 30, AddMaxCalm 30, AddSpeed 18
                , AddSkills $ EM.fromList [(AbProject, -1), (AbApply, -1)] ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -145,7 +145,7 @@ elbow = ItemKind
   , irarity  = [(6, 1), (10, 9)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 12, AddMaxCalm 90, AddSpeed 26
+  , iaspects = [ AddMaxHP 12, AddMaxCalm 90, AddSpeed 21
                , AddSkills
                  $ EM.fromList [(AbProject, 1), (AbApply, 1), (AbMelee, -1)] ]
   , ieffects = []
