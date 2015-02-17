@@ -75,5 +75,5 @@ standard = RuleKind
   , rleadLevelClips = 100
   , rscoresFile = "scores"
   , rsavePrefix = "save"
-  , rnearby = 10
+  , rnearby = 20
   }
