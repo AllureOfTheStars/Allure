@@ -193,7 +193,8 @@ screechingBeak = armoredSkin
   , iverbHit = "peck"
   , iaspects = [Timeout $ 5 + d 5]
   , ieffects = [ Recharging (Summon [("scavenger", 1)] $ 1 + dl 2)
-               , Hurt (1 * d 2) ]
+               , Hurt (2 * d 1)
+               ]
   , idesc    = ""
   }
 largeTail = fist
@@ -208,10 +209,13 @@ largeTail = fist
 liveWire = fist
   { iname    = "live wire"
   , ifreq    = [("live wire", 100)]
-  , icount   = 4
+  , icount   = 2
   , iverbHit = "shock"
-  , iaspects = [Timeout $ 2 + d 2]
-  , ieffects = [Hurt (1 * d 1), Recharging (DropItem COrgan "temporary conditions" True)]
+  , iaspects = [Timeout $ 5 + d 5]
+  , ieffects = [ Hurt (1 * d 1)
+               , Recharging (DropItem COrgan "temporary conditions" True)
+               , Recharging $ RefillHP (-2)
+               ]
   , idesc    = ""
   }
 
