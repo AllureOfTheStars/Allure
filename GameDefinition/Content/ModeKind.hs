@@ -133,9 +133,11 @@ rosterCampaign = Roster
 
 rosterDuel = Roster
   { rosterList = [ playerHero { fname = "Spacefarer Crew"
+                              , fhiCondPoly = hiDweller
                               , fentryLevel = 4
                               , finitialActors = 1 }
                  , playerAntiHero { fname = "Red Collars"
+                                  , fhiCondPoly = hiDweller
                                   , fentryLevel = 4
                                   , finitialActors = 1 }
                  , playerHorror ]
@@ -146,31 +148,36 @@ rosterDuel = Roster
 
 rosterSkirmish = rosterDuel
   { rosterList = [ playerHero { fname = "Spacefarer Crew"
+                              , fhiCondPoly = hiDweller
                               , fentryLevel = 4 }
                  , playerAntiHero { fname = "Red Collars"
+                                  , fhiCondPoly = hiDweller
                                   , fentryLevel = 4 }
                  , playerHorror ] }
 
 rosterAmbush = rosterDuel
   { rosterList = [ playerSniper { fname = "Spacefarer Crew"
-                                , finitialActors = 4
-                                , fentryLevel = 7 }
+                                , fhiCondPoly = hiDweller
+                                , fentryLevel = 7
+                                , finitialActors = 4 }
                  , playerAntiSniper { fname = "Red Collars"
-                                    , finitialActors = 4
-                                    , fentryLevel = 7 }
+                                    , fhiCondPoly = hiDweller
+                                    , fentryLevel = 7
+                                    , finitialActors = 4 }
                  , playerHorror {fentryLevel = 7} ] }
 
 rosterBattle = Roster
-  { rosterList = [ playerSoldier { finitialActors = 5
-                                 , fentryLevel = 7 }
-                 , playerMobileMonster { finitialActors = 35
-                                       , fentryLevel = 7
+  { rosterList = [ playerSoldier { fhiCondPoly = hiDweller
+                                 , fentryLevel = 7
+                                 , finitialActors = 5 }
+                 , playerMobileMonster { fentryLevel = 7
+                                       , finitialActors = 35
                                        , fneverEmpty = True }
-                 , playerMobileAnimal { finitialActors = 20
-                                      , fentryLevel = 7
+                 , playerMobileAnimal { fentryLevel = 7
+                                      , finitialActors = 20
                                       , fneverEmpty = True }
-                 , playerMobileRobot { finitialActors = 15
-                                     , fentryLevel = 7
+                 , playerMobileRobot { fentryLevel = 7
+                                     , finitialActors = 15
                                      , fneverEmpty = True } ]
   , rosterEnemy = [ ("Armed Spacefarer Crew", "Alien Hierarchy")
                   , ("Armed Spacefarer Crew", "Animal Kingdom")
@@ -212,8 +219,10 @@ rosterSafari = Roster
 
 rosterPvP = Roster
   { rosterList = [ playerHero { fname = "Red"
+                              , fhiCondPoly = hiDweller
                               , fentryLevel = 4 }
                  , playerHero { fname = "Blue"
+                              , fhiCondPoly = hiDweller
                               , fentryLevel = 4 }
                  , playerHorror ]
   , rosterEnemy = [ ("Red", "Blue")
