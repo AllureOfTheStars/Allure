@@ -201,5 +201,6 @@ standardKeys = KeyKind
       , ("CTRL-MiddleButtonPress",
          ([CmdInternal], Macro "" ["SHIFT-MiddleButtonPress"]))
       , ("ALT-space", ([CmdInternal], StopIfTgtMode))
+      , ("ALT-minus", ([CmdInternal], SelectWithPointer))
      ]
   }
