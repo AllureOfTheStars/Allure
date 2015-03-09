@@ -104,7 +104,9 @@ fragrance = ItemKind
   , iweight  = 1
   , iaspects = []
   , ieffects = [Impress]
-  , ifeature = [ ToThrow $ ThrowMod 28 20  -- 2 steps, one turn
+  -- Linger 10, because sometimes it takes 2 turns due to starting just
+  -- before actor turn's end (e.g., via a necklace).
+  , ifeature = [ ToThrow $ ThrowMod 28 10  -- 2 steps, one turn
                , Fragile, Identified ]
   , idesc    = ""
   , ikit     = []
@@ -232,7 +234,7 @@ waste = ItemKind
   , iweight  = 50
   , iaspects = []
   , ieffects = [RefillHP (-1)]
-  , ifeature = [ ToThrow $ ThrowMod 28 20  -- 2 steps, one turn
+  , ifeature = [ ToThrow $ ThrowMod 28 10  -- 2 steps, one turn
                , Fragile, Identified ]
   , idesc    = ""
   , ikit     = []
