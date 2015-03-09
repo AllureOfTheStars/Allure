@@ -987,18 +987,18 @@ gem = ItemKind
   , ikit     = []
   }
 gem1 = gem
-  { irarity  = [(3 * 10/12, 0), (10, 10)]
+  { irarity  = [(3 * 10/12, 0), (10, 12)]
   }
 gem2 = gem
-  { irarity  = [(5 * 10/12, 0), (10, 15)]
+  { irarity  = [(5 * 10/12, 0), (10, 14)]
   }
 gem3 = gem
-  { irarity  = [(7 * 10/12, 0), (10, 20)]
+  { irarity  = [(7 * 10/12, 0), (10, 16)]
   }
 gem4 = gem
   { iname    = "stimpack"
   , iflavour = zipPlain [BrYellow]
-  , irarity  = [(1, 15), (10, 15)]
+  , irarity  = [(1, 25), (10, 25)]
   , iaspects = []
   , ieffects = [NoEffect "of youth", OverfillCalm 5, OverfillHP 15]
   , ifeature = [Identified, Precious]  -- TODO: only for humans
