@@ -49,7 +49,7 @@ skirmish = ModeKind
   , mfreq   = [("skirmish", 1)]
   , mroster = rosterSkirmish
   , mcaves  = cavesSkirmish
-  , mdesc   = "You owe restorative surgery to one of our crew: if we win, we take all you have; if you win, you take ours old giant spaceship (if you still want it when you see it)."
+  , mdesc   = "You owe restorative surgery to one of our crew: if we win, we take all you have; if you win, you take our old giant spaceship (if you still want it when you see it)."
   }
 
 ambush = ModeKind
