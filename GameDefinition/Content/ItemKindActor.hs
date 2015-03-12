@@ -247,7 +247,7 @@ armadillo = ItemKind
   , irarity  = [(1, 5)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 35, AddMaxCalm 30, AddSpeed 18
+  , iaspects = [ AddMaxHP 25, AddMaxCalm 30, AddSpeed 18
                , AddSkills $ EM.singleton AbAlter (-1) ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -596,7 +596,7 @@ homeRobot = ItemKind
                , AddSkills $ EM.singleton AbProject (-1) ]
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = "Once a timid household robot, it magnificently adapted to the deadly environment."
+  , idesc    = "Once a timid household robot, now sufficiently adapted to survive in the deadly environment."
   , ikit     = [ ("fist", COrgan), ("eye 2", COrgan), ("nostril", COrgan)
                , ("robot brain", COrgan) ]
   }
