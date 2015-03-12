@@ -193,13 +193,13 @@ bridge = rogue
   , cdarkChance   = 0
   , cmaxVoid      = 1%10
   , cactorCoeff   = 0  -- safe, nothing spawns
-  , citemNum      = 9 * d 2  -- few rooms
+  , citemNum      = 15 * d 2  -- lure them in with loot
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq arena
   , cdarkCorTile  = "emergency walkway"
   , clitCorTile   = "emergency walkway"
   }
 shallow2rogue = rogue
-  { cfreq         = [("shallow random 2", 100)]
+  { cfreq         = [("shallow random 2", 50)]
   , cactorFreq    = filter ((/= "alien") . fst) $ cactorFreq rogue
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq rogue
   }
@@ -209,11 +209,11 @@ shallow2arena = arena
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
   }
 shallow2empty = empty
-  { cfreq         = [("shallow random 2", 100)]
+  { cfreq         = [("shallow random 2", 20)]
   , cactorFreq    = filter ((/= "alien") . fst) $ cactorFreq empty
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
   }
-shallow1arena = shallow2arena  -- TODO: replace some rooms with oriels?
+shallow1arena = shallow2empty  -- TODO: replace some rooms with oriels?
   { cname         = "Outermost deck"
   , cfreq         = [("shallow random 1", 100)]
   , cminPlaceSize = DiceXY (2 * d 2 + 3) 3
