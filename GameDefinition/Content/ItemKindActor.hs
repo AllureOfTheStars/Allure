@@ -33,7 +33,7 @@ warrior = ItemKind
   , iweight  = 80000
   , iaspects = [ AddMaxHP 60  -- partially from clothes and assumed first aid
                , AddMaxCalm 60, AddSpeed 20
-               , AddSkills $ EM.fromList [(AbProject, 1), (AbApply, 1)] ]
+               , AddSkills $ EM.fromList [(AbProject, 2), (AbApply, 1)] ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -87,7 +87,7 @@ eye = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 20
-               , AddSkills $ EM.fromList [(AbProject, 1), (AbApply, 1)] ]
+               , AddSkills $ EM.fromList [(AbProject, 2), (AbApply, 1)] ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Walks with a stately dignity. You read death in the slow beckoning gestures of its revolting upper appendages."
@@ -147,7 +147,7 @@ elbow = ItemKind
   , iweight  = 80000
   , iaspects = [ AddMaxHP 12, AddMaxCalm 90, AddSpeed 21
                , AddSkills
-                 $ EM.fromList [(AbProject, 1), (AbApply, 1), (AbMelee, -1)] ]
+                 $ EM.fromList [(AbProject, 2), (AbApply, 1), (AbMelee, -1)] ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "It moves in sudden jerks and never makes a noise. Speaks in hard objects hurled at deadly speeds."
@@ -168,7 +168,7 @@ torsor = ItemKind
   , iweight  = 80000
   , iaspects = [ Unique, AddMaxHP 100, AddMaxCalm 100, AddSpeed 10
                , AddSkills $ EM.fromList
-                   [(AbProject, 1), (AbApply, 1), (AbTrigger, -1)] ]
+                   [(AbProject, 2), (AbApply, 1), (AbTrigger, -1)] ]
                    -- can't switch levels, a miniboss
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -464,7 +464,7 @@ activeFence = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20
-               , AddSkills $ EM.fromList [(AbWait, 1), (AbProject, 2)]
+               , AddSkills $ EM.fromList [(AbWait, 1), (AbProject, 3)]
                , AddArmorMelee 50, AddArmorRanged 50 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -630,7 +630,7 @@ lightRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , iaspects = [ AddMaxHP 15, AddMaxCalm 60, AddSpeed 30
-               , AddSkills $ EM.singleton AbProject 1 ]
+               , AddSkills $ EM.singleton AbProject 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Interior and exterior decoration robot. Strongly fancies deep reds recently."
@@ -649,7 +649,7 @@ heavyRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 800000
   , iaspects = [ AddMaxHP 40, AddMaxCalm 60, AddSpeed 20
-               , AddSkills $ EM.singleton AbProject 1 ]
+               , AddSkills $ EM.singleton AbProject 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Heavy multi-purpose construction robot. Excels at discharging, dismantling and demolition."
