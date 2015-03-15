@@ -676,7 +676,7 @@ cleanerRobot = ItemKind
   , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."
   , ikit     = [ ("waste container", COrgan), ("boiling vent", COrgan)
                , ("armored skin", COrgan), ("live wire", COrgan)
-               , ("jaw", COrgan), ("claw", COrgan), ("armored skin", COrgan)
+               , ("jaw", COrgan), ("claw", COrgan)
                , ("eye 2", COrgan), ("nostril", COrgan), ("spotlight", COrgan)
                , ("currency", CInv), ("currency", CInv), ("currency", CInv)
                , ("robot brain", COrgan) ]
