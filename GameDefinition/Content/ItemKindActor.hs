@@ -166,7 +166,7 @@ torsor = ItemKind
   , irarity  = [(11 * 10/12, 0), (10, 1000)]  -- unique
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ Unique, AddMaxHP 100, AddMaxCalm 100, AddSpeed 10
+  , iaspects = [ Unique, AddMaxHP 200, AddMaxCalm 100, AddSpeed 6
                , AddSkills $ EM.fromList
                    [(AbProject, 2), (AbApply, 1), (AbTrigger, -1)] ]
                    -- can't switch levels, a miniboss
@@ -175,7 +175,7 @@ torsor = ItemKind
   , idesc    = "The mind, the heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw, grinding teeth and tensing fangs."
   , ikit     = [ ("tentacle", COrgan), ("claw", COrgan), ("large jaw", COrgan)
                , ("venom tooth", COrgan), ("venom fang", COrgan)
-               , ("eye 5", COrgan)
+               , ("eye 5", COrgan), ("speed gland 4", COrgan)
                , ("gem", CInv), ("gem", CInv), ("gem", CInv), ("gem", CInv)
                , ("sapient brain", COrgan) ]
   }
