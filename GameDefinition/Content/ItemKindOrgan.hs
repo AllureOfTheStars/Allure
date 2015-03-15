@@ -18,9 +18,9 @@ import Game.LambdaHack.Content.ItemKind
 
 organs :: [ItemKind]
 organs =
-  [fist, foot, claw, smallClaw, snout, smallJaw, jaw, largeJaw, horn, tentacle, razor, thorn, fissure, insectMortality, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, sapientBrain, animalBrain, robotBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, explosionVent, medbotVent, wasteContainer, spotlight, bonusHP]
+  [fist, foot, claw, smallClaw, snout, smallJaw, jaw, largeJaw, horn, tentacle, razor, thorn, boilingFissure, biogasFissure, medbotFissure, insectMortality, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, sapientBrain, animalBrain, robotBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, explosionVent, medbotVent, wasteContainer, spotlight, bonusHP]
 
-fist,    foot, claw, smallClaw, snout, smallJaw, jaw, largeJaw, horn, tentacle, razor, thorn, fissure, insectMortality, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, sapientBrain, animalBrain, robotBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, explosionVent, medbotVent, wasteContainer, spotlight, bonusHP :: ItemKind
+fist,    foot, claw, smallClaw, snout, smallJaw, jaw, largeJaw, horn, tentacle, razor, thorn, boilingFissure, biogasFissure, medbotFissure, insectMortality, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, sapientBrain, animalBrain, robotBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, explosionVent, medbotVent, wasteContainer, spotlight, bonusHP :: ItemKind
 
 -- Weapons
 
@@ -138,13 +138,26 @@ thorn = fist
   , ifeature = [Identified]  -- not Durable
   , idesc    = ""
   }
-fissure = fist
+boilingFissure = fist
   { iname    = "fissure"
-  , ifreq    = [("fissure", 100)]
-  , icount   = 2
+  , ifreq    = [("boiling fissure", 100)]
+  , icount   = 5 + d 5
   , iverbHit = "hiss at"
   , ieffects = [Burn 1]
+  , ifeature = [Identified]  -- not Durable
   , idesc    = ""
+  }
+biogasFissure = boilingFissure
+  { iname    = "fissure"
+  , ifreq    = [("biogas fissure", 100)]
+  , icount   = 2 + d 2
+  , ieffects = [Hurt 1]
+  }
+medbotFissure = boilingFissure
+  { iname    = "fissure"
+  , ifreq    = [("medbot fissure", 100)]
+  , icount   = 2 + d 2
+  , ieffects = [Hurt 1, RefillHP 5]
   }
 beeSting = fist
   { iname    = "bee sting"
@@ -355,29 +368,28 @@ boilingVent = armoredSkin
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
   , iverbHit = "menace"
-  , iaspects = [Periodic, Timeout $ 3 + d 4 |*| 5]
+  , iaspects = [Periodic, Timeout $ d 4 |*| 5]
   , ieffects = [Recharging (Explode "boiling water")]
   , idesc    = ""
   }
 explosionVent = armoredSkin
   { iname    = "vent"
-  , ifreq    = [("explosion vent", 100)]
+  , ifreq    = [("explosion vent", 100), ("biogas vent", 100)]
   , iflavour = zipPlain [BrGreen]
   , icount   = 1
   , iverbHit = "menace"
-  , iaspects = [Periodic, Timeout $ 2 + d 4 |*| 5]
+  , iaspects = [Periodic, Timeout $ d 2 |*| 5]
   , ieffects = [Recharging (Explode "blast 20")]
   , idesc    = ""
   }
 medbotVent = armoredSkin
   { iname    = "vent"
-  , ifreq    = [("nano medbot vent", 100)]
+  , ifreq    = [("medbot vent", 100)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , iverbHit = "menace"
-  , iaspects = [Periodic, Timeout $ d 3 + 2]
-  , ieffects = [ Recharging (Explode "healing mist")
-               , Recharging (RefillHP (-1)) ]
+  , iaspects = [Periodic, Timeout $ d 2 |*| 5]
+  , ieffects = [Recharging (Explode "protecting balm")]
   , idesc    = ""
   }
 wasteContainer = armoredSkin

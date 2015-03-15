@@ -488,7 +488,7 @@ steamFaucet = ItemKind
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "A cracked valve on one of the superheated water pipes spreading radially outward from the tokamak level."
-  , ikit     = [("boiling vent", COrgan), ("fissure", COrgan)]
+  , ikit     = [("boiling vent", COrgan), ("boiling fissure", COrgan)]
   }
 biogasFaucet = ItemKind
   { isymbol  = 'f'
@@ -505,7 +505,7 @@ biogasFaucet = ItemKind
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "An emergency pressure-release vent on a liquefied biogas pipe."
-  , ikit     = [("explosion vent", COrgan), ("fissure", COrgan)]
+  , ikit     = [("biogas vent", COrgan), ("biogas fissure", COrgan)]
   }
 medbotFaucet = ItemKind
   { isymbol  = 'f'
@@ -521,7 +521,7 @@ medbotFaucet = ItemKind
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "A faucet of a malfunctioning nano medical robot dispenser. Let's hope the medbots are still effective."
-  , ikit     = [("nano medbot vent", COrgan), ("fissure", COrgan)]
+  , ikit     = [("medbot vent", COrgan), ("medbot fissure", COrgan)]
   }
 surveillanceDrone = ItemKind
   { isymbol  = 'd'
