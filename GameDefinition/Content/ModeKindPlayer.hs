@@ -88,7 +88,8 @@ playerMonster = Player
   , ftactic = TExplore
   , fentryLevel = 4
   , finitialActors = 0
-  , fleaderMode = LeaderAI $ AutoLeader True True
+  , fleaderMode =  -- no point changing leader on level, since all move
+      LeaderAI $ AutoLeader True True
   , fhasUI = False
   }
 
