@@ -62,8 +62,8 @@ arena = rogue
   , cfreq         = [("campaign random", 100), ("caveArena", 1)]
   , cgrid         = DiceXY (2 * d 2) (2 * d 2)
   , cminPlaceSize = DiceXY (2 * d 2 + 3) 4
-  , cdarkChance   = d 80 + dl 60
-  , cnightChance  = 0
+  , cdarkChance   = d 60 + dl 60
+  , cnightChance  = d 60 + dl 60 -- trails provide enough light for fun stealth
   , cmaxVoid      = 1%4
   , chidden       = 1000
   , cactorCoeff   = 10
@@ -205,6 +205,7 @@ shallow2rogue = rogue
   }
 shallow2arena = arena
   { cfreq         = [("shallow random 2", 100)]
+  , cnightChance  = 0  -- safe and easy
   , cactorFreq    = filter ((/= "alien") . fst) $ cactorFreq empty
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
   }
