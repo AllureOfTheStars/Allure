@@ -499,9 +499,8 @@ biogasFaucet = ItemKind
   , irarity  = [(3, 0), (5, 2), (10, 4)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 5
-               , AddSkills $ EM.fromList (zip [AbWait, AbMelee] [1, 1..])
-               , AddArmorMelee 80, AddArmorRanged 80 ]
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20
+               , AddSkills $ EM.fromList (zip [AbWait, AbMelee] [1, 1..]) ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "An emergency pressure-release vent on a liquefied biogas pipe."
@@ -516,7 +515,7 @@ medbotFaucet = ItemKind
   , irarity  = [(1, 2), (10, 4)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 50, AddMaxCalm 999, AddSpeed 5
+  , iaspects = [ AddMaxHP 50, AddMaxCalm 999, AddSpeed 20
                , AddSkills $ EM.fromList (zip [AbWait, AbMelee] [1, 1..]) ]
   , ieffects = []
   , ifeature = [Durable, Identified]
