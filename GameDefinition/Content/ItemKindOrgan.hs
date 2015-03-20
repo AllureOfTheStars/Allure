@@ -143,7 +143,7 @@ boilingFissure = fist
   , ifreq    = [("boiling fissure", 100)]
   , icount   = 5 + d 5
   , iverbHit = "hiss at"
-  , ieffects = [Burn 1]
+  , ieffects = [Burn $ 1 * d 1]
   , ifeature = [Identified]  -- not Durable
   , idesc    = ""
   }
@@ -151,13 +151,13 @@ biogasFissure = boilingFissure
   { iname    = "fissure"
   , ifreq    = [("biogas fissure", 100)]
   , icount   = 2 + d 2
-  , ieffects = [Hurt 1]
+  , ieffects = [Hurt (1 * d 1)]
   }
 medbotFissure = boilingFissure
   { iname    = "fissure"
   , ifreq    = [("medbot fissure", 100)]
   , icount   = 2 + d 2
-  , ieffects = [Hurt 1, RefillHP 5]
+  , ieffects = [Hurt (1 * d 1), RefillHP 5]
   }
 beeSting = fist
   { iname    = "bee sting"
@@ -165,7 +165,7 @@ beeSting = fist
   , icount   = 1
   , iverbHit = "sting"
   , iaspects = [AddMaxHP 10]
-  , ieffects = [Burn 2, Paralyze 10, RefillHP 5]
+  , ieffects = [Burn $ 2 * d 1, Paralyze 10, RefillHP 5]
   , ifeature = [Identified]  -- not Durable
   , idesc    = "Painful, but beneficial."
   }
@@ -175,7 +175,7 @@ sting = fist
   , icount   = 1
   , iverbHit = "sting"
   , iaspects = [Timeout $ 1 + d 5]
-  , ieffects = [Burn 1, Recharging (Paralyze 3)]
+  , ieffects = [Burn $ 1 * d 1, Recharging (Paralyze 3)]
   , idesc    = "Painful, debilitating and harmful."
   }
 venomTooth = fist
