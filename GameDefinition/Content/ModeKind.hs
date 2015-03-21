@@ -10,6 +10,7 @@ import qualified Data.IntMap.Strict as IM
 
 import Content.ModeKindPlayer
 import Game.LambdaHack.Common.ContentDef
+import Game.LambdaHack.Common.Dice
 import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.ModeKind
 
@@ -21,9 +22,9 @@ cdefs = ContentDef
   , validateSingle = validateSingleModeKind
   , validateAll = validateAllModeKind
   , content =
-      [campaign, duel, skirmish, ambush, battle, safari, pvp, coop, defense, screensaver]
+      [campaign, duel, skirmish, ambush, battle, safari, safariSurvival, pvp, coop, defense, screensaver]
   }
-campaign,        duel, skirmish, ambush, battle, safari, pvp, coop, defense, screensaver :: ModeKind
+campaign,        duel, skirmish, ambush, battle, safari, safariSurvival, pvp, coop, defense, screensaver :: ModeKind
 
 campaign = ModeKind
   { msymbol = 'a'
@@ -79,6 +80,15 @@ safari = ModeKind
   , mdesc   = "In this simulation you'll discover the joys of hunting the most exquisite of Earth's flora and fauna, both animal and semi-intelligent (exit at the uppermost level)."
   }
 
+safariSurvival = ModeKind
+  { msymbol = 'n'
+  , mname   = "safari survival"
+  , mfreq   = [("safari survival", 1)]
+  , mroster = rosterSafariSurvival
+  , mcaves  = cavesSafari
+  , mdesc   = "In this simulation you'll discover the joys of being hunted among the most exquisite of Earth's flora and fauna, both animal and semi-intelligent."
+  }
+
 pvp = ModeKind
   { msymbol = 'v'
   , mname   = "PvP"
@@ -118,7 +128,7 @@ screensaver = safari
   }
 
 
-rosterCampaign, rosterDuel, rosterSkirmish, rosterAmbush, rosterBattle, rosterSafari, rosterPvP, rosterCoop, rosterDefense :: Roster
+rosterCampaign, rosterDuel, rosterSkirmish, rosterAmbush, rosterBattle, rosterSafari, rosterSafariSurvival, rosterPvP, rosterCoop, rosterDefense :: Roster
 
 rosterCampaign = Roster
   { rosterList = [ playerHero
@@ -187,8 +197,10 @@ rosterBattle = Roster
                 , ("Alien Hierarchy", "Robot Anarchy")
                 , ("Robot Anarchy", "Animal Kingdom") ] }
 
-rosterSafari = Roster
-  { rosterList = [ playerAntiMonster { fname = "Alien Tourist Office"
+playerMonsterTourist, playerHunamConvict, playerAnimalMagnificent, playerAnimalExquisite :: Player Dice
+
+playerMonsterTourist =
+  playerAntiMonster { fname = "Alien Tourist Office"
                                      , fcanEscape = True
                                      , fneverEmpty = True  -- no spawning
                                      -- Follow-the-guide, as tourists do.
@@ -197,20 +209,32 @@ rosterSafari = Roster
                                      , finitialActors = 15
                                      , fleaderMode =
                                          LeaderUI $ AutoLeader False False }
-                 , playerCivilian { fname = "Hunam Convict Pack"
-                                  , fentryLevel = 4 }
-                 , playerMobileAnimal { fname =
+
+playerHunamConvict =
+  playerCivilian { fname = "Hunam Convict Pack"
+                 , fentryLevel = 4 }
+
+playerAnimalMagnificent =
+  playerMobileAnimal { fname =
                                           "Animal Magnificent Specimen Variety"
                                       , fneverEmpty = True
                                       , fentryLevel = 7
                                       , finitialActors = 10
                                       , fleaderMode =  -- move away from stairs
                                           LeaderAI $ AutoLeader True True }
-                 , playerMobileAnimal { fname =
+
+playerAnimalExquisite =
+  playerMobileAnimal { fname =
                                           "Animal Exquisite Herds and Packs"
                                       , fneverEmpty = True
                                       , fentryLevel = 10
                                       , finitialActors = 30 }
+
+rosterSafari = Roster
+  { rosterList = [ playerMonsterTourist
+                 , playerHunamConvict
+                 , playerAnimalMagnificent
+                 , playerAnimalExquisite
                  ]
   , rosterEnemy = [ ("Alien Tourist Office", "Hunam Convict Pack")
                   , ("Alien Tourist Office",
@@ -219,6 +243,17 @@ rosterSafari = Roster
                      "Animal Exquisite Herds and Packs") ]
   , rosterAlly = [( "Animal Magnificent Specimen Variety"
                   , "Animal Exquisite Herds and Packs" )] }
+
+rosterSafariSurvival = rosterSafari
+  { rosterList = [ playerMonsterTourist
+                     { fleaderMode = LeaderAI $ AutoLeader True True
+                     , fhasUI = False }
+                 , playerHunamConvict
+                 , playerAnimalMagnificent
+                     { fleaderMode = LeaderUI $ AutoLeader False False
+                     , fhasUI = True }
+                 , playerAnimalExquisite
+                 ] }
 
 rosterPvP = Roster
   { rosterList = [ playerHero { fname = "Red"

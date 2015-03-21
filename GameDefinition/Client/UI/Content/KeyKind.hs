@@ -192,6 +192,7 @@ standardKeys = KeyKind
       -- Debug and others not to display in help screens
       , ("CTRL-s", ([CmdDebug], GameSave))
       , ("CTRL-f", ([CmdDebug], GameRestart "safari"))
+      , ("CTRL-r", ([CmdDebug], GameRestart "safari survival"))
       , ("CTRL-e", ([CmdDebug], GameRestart "defense"))
       , ("CTRL-period", ([CmdInternal], RunOnceAhead))
       , ("CTRL-semicolon", ([CmdInternal], RunOnceToCursor))
