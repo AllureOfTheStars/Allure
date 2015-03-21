@@ -22,9 +22,9 @@ cdefs = ContentDef
   , validateSingle = validateSingleModeKind
   , validateAll = validateAllModeKind
   , content =
-      [campaign, duel, skirmish, ambush, battle, safari, safariSurvival, pvp, coop, defense, screensaver]
+      [campaign, duel, skirmish, ambush, battle, battleSurvival, safari, safariSurvival, pvp, coop, defense, screensaver]
   }
-campaign,        duel, skirmish, ambush, battle, safari, safariSurvival, pvp, coop, defense, screensaver :: ModeKind
+campaign,        duel, skirmish, ambush, battle, battleSurvival, safari, safariSurvival, pvp, coop, defense, screensaver :: ModeKind
 
 campaign = ModeKind
   { msymbol = 'a'
@@ -69,6 +69,15 @@ battle = ModeKind
   , mroster = rosterBattle
   , mcaves  = cavesBattle
   , mdesc   = "Not even the unexplained ruin of the largest and tightest security Neptune's moon spaceport will prevent you from claiming your prize."
+  }
+
+battleSurvival = ModeKind
+  { msymbol = 'i'
+  , mname   = "battle survival"
+  , mfreq   = [("battle survival", 1)]
+  , mroster = rosterBattleSurvival
+  , mcaves  = cavesBattle
+  , mdesc   = "Odds are stacked for those that breathe mathematics."
   }
 
 safari = ModeKind
@@ -128,7 +137,7 @@ screensaver = safari
   }
 
 
-rosterCampaign, rosterDuel, rosterSkirmish, rosterAmbush, rosterBattle, rosterSafari, rosterSafariSurvival, rosterPvP, rosterCoop, rosterDefense :: Roster
+rosterCampaign, rosterDuel, rosterSkirmish, rosterAmbush, rosterBattle, rosterBattleSurvival, rosterSafari, rosterSafariSurvival, rosterPvP, rosterCoop, rosterDefense :: Roster
 
 rosterCampaign = Roster
   { rosterList = [ playerHero
@@ -196,6 +205,25 @@ rosterBattle = Roster
   , rosterAlly = [ ("Alien Hierarchy", "Animal Kingdom")
                 , ("Alien Hierarchy", "Robot Anarchy")
                 , ("Robot Anarchy", "Animal Kingdom") ] }
+
+rosterBattleSurvival = rosterBattle
+  { rosterList = [ playerSoldier { fhiCondPoly = hiDweller
+                                 , fentryLevel = -5
+                                 , finitialActors = 5
+                                 , fleaderMode = LeaderAI $ AutoLeader True True
+                                 , fhasUI = False }
+                 , playerMobileMonster { fentryLevel = 7
+                                       , finitialActors = 35
+                                       , fneverEmpty = True }
+                 , playerMobileAnimal { fentryLevel = 7
+                                      , finitialActors = 20
+                                      , fneverEmpty = True }
+                 , playerMobileRobot { fentryLevel = 7
+                                     , finitialActors = 15
+                                     , fneverEmpty = True
+--                                     , fleaderMode =
+--                                         LeaderUI $ AutoLeader False False
+                                     , fhasUI = True } ] }
 
 playerMonsterTourist, playerHunamConvict, playerAnimalMagnificent, playerAnimalExquisite :: Player Dice
 
