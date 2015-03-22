@@ -208,7 +208,7 @@ rosterBattle = Roster
 
 rosterBattleSurvival = rosterBattle
   { rosterList = [ playerSoldier { fhiCondPoly = hiDweller
-                                 , fentryLevel = -5
+                                 , fentryLevel = 7
                                  , finitialActors = 5
                                  , fleaderMode = LeaderAI $ AutoLeader True True
                                  , fhasUI = False }
@@ -229,34 +229,32 @@ playerMonsterTourist, playerHunamConvict, playerAnimalMagnificent, playerAnimalE
 
 playerMonsterTourist =
   playerAntiMonster { fname = "Alien Tourist Office"
-                                     , fcanEscape = True
-                                     , fneverEmpty = True  -- no spawning
-                                     -- Follow-the-guide, as tourists do.
-                                     , ftactic = TFollow
-                                     , fentryLevel = 4
-                                     , finitialActors = 15
-                                     , fleaderMode =
-                                         LeaderUI $ AutoLeader False False }
+                    , fcanEscape = True
+                    , fneverEmpty = True  -- no spawning
+                      -- Follow-the-guide, as tourists do.
+                    , ftactic = TFollow
+                    , fentryLevel = 4
+                    , finitialActors = 15
+                    , fleaderMode =
+                        LeaderUI $ AutoLeader False False }
 
 playerHunamConvict =
   playerCivilian { fname = "Hunam Convict Pack"
                  , fentryLevel = 4 }
 
 playerAnimalMagnificent =
-  playerMobileAnimal { fname =
-                                          "Animal Magnificent Specimen Variety"
-                                      , fneverEmpty = True
-                                      , fentryLevel = 7
-                                      , finitialActors = 10
-                                      , fleaderMode =  -- move away from stairs
-                                          LeaderAI $ AutoLeader True True }
+  playerMobileAnimal { fname = "Animal Magnificent Specimen Variety"
+                     , fneverEmpty = True
+                     , fentryLevel = 7
+                     , finitialActors = 10
+                     , fleaderMode =  -- move away from stairs
+                         LeaderAI $ AutoLeader True True }
 
 playerAnimalExquisite =
-  playerMobileAnimal { fname =
-                                          "Animal Exquisite Herds and Packs"
-                                      , fneverEmpty = True
-                                      , fentryLevel = 10
-                                      , finitialActors = 30 }
+  playerMobileAnimal { fname = "Animal Exquisite Herds and Packs"
+                     , fneverEmpty = True
+                     , fentryLevel = 10
+                     , finitialActors = 30 }
 
 rosterSafari = Roster
   { rosterList = [ playerMonsterTourist
