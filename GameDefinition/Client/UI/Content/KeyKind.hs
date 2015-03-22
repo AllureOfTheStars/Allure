@@ -138,9 +138,9 @@ standardKeys = KeyKind
                                   , ApplyItem { verb = "throw"
                                               , object = "missile"
                                               , symbol = '{' } ]))
-      , ("z", ([CmdItem], Project [ApplyItem { verb = "zap"
-                                             , object = "mechanism"
-                                             , symbol = '-' }]))
+--      , ("z", ([CmdItem], Project [ApplyItem { verb = "zap"
+--                                             , object = "mechanism"
+--                                             , symbol = '-' }]))
 
       -- Targeting
       , ("KP_Multiply", ([CmdTgt], TgtEnemy))
