@@ -88,7 +88,9 @@ playerMonster = Player
   , ftactic = TExplore
   , fentryLevel = 4
   , finitialActors = 0
-  , fleaderMode =  -- no point changing leader on level, since all move
+  , fleaderMode =
+      -- No point changing leader on level, since all move and they
+      -- don't follow the leader.
       LeaderAI $ AutoLeader True True
   , fhasUI = False
   }

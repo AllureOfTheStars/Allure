@@ -210,7 +210,8 @@ rosterBattleSurvival = rosterBattle
   { rosterList = [ playerSoldier { fhiCondPoly = hiDweller
                                  , fentryLevel = 7
                                  , finitialActors = 5
-                                 , fleaderMode = LeaderAI $ AutoLeader True True
+                                 , fleaderMode =
+                                     LeaderAI $ AutoLeader True False
                                  , fhasUI = False }
                  , playerMobileMonster { fentryLevel = 7
                                        , finitialActors = 35
@@ -221,8 +222,6 @@ rosterBattleSurvival = rosterBattle
                  , playerMobileRobot { fentryLevel = 7
                                      , finitialActors = 15
                                      , fneverEmpty = True
---                                     , fleaderMode =
---                                         LeaderUI $ AutoLeader False False
                                      , fhasUI = True } ] }
 
 playerMonsterTourist, playerHunamConvict, playerAnimalMagnificent, playerAnimalExquisite :: Player Dice
@@ -248,7 +247,7 @@ playerAnimalMagnificent =
                      , fentryLevel = 7
                      , finitialActors = 10
                      , fleaderMode =  -- move away from stairs
-                         LeaderAI $ AutoLeader True True }
+                         LeaderAI $ AutoLeader True False }
 
 playerAnimalExquisite =
   playerMobileAnimal { fname = "Animal Exquisite Herds and Packs"
@@ -272,7 +271,7 @@ rosterSafari = Roster
 
 rosterSafariSurvival = rosterSafari
   { rosterList = [ playerMonsterTourist
-                     { fleaderMode = LeaderAI $ AutoLeader True True
+                     { fleaderMode = LeaderAI $ AutoLeader True False
                      , fhasUI = False }
                  , playerHunamConvict
                  , playerAnimalMagnificent
