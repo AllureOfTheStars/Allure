@@ -303,6 +303,7 @@ necklace = ItemKind
   }
 necklace1 = necklace
   { ifreq    = [("treasure", 100)]
+  , irarity  = [(3, 0), (4, 1), (10, 2)]  -- prevents camping on lvl 3
   , iaspects = [Unique, Timeout $ d 3 + 4 - dl 3 |*| 10]
                ++ iaspects necklace
   , ieffects = [NoEffect "of Trickle Life", Recharging (RefillHP 1)]
