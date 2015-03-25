@@ -200,18 +200,21 @@ bridge = rogue
   }
 shallow2rogue = rogue
   { cfreq         = [("shallow random 2", 50)]
+  , cactorCoeff   = cactorCoeff rogue `div` 2
   , cactorFreq    = filter ((/= "alien") . fst) $ cactorFreq rogue
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq rogue
   }
 shallow2arena = arena
   { cfreq         = [("shallow random 2", 100)]
   , cnightChance  = 0  -- safe and easy
+  , cactorCoeff   = cactorCoeff arena `div` 2
   , cactorFreq    = filter ((/= "alien") . fst) $ cactorFreq empty
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
   }
 shallow2empty = empty
   { cfreq         = [("shallow random 2", 20)]
   , cactorFreq    = filter ((/= "alien") . fst) $ cactorFreq empty
+  , cactorCoeff   = cactorCoeff empty `div` 2
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
   }
 shallow1arena = shallow2empty  -- TODO: replace some rooms with oriels?
