@@ -27,7 +27,7 @@ cdefs = ContentDef
 campaign,        duel, skirmish, ambush, battle, battleSurvival, safari, safariSurvival, pvp, coop, defense, screensaver :: ModeKind
 
 campaign = ModeKind
-  { msymbol = 'a'
+  { msymbol = 'n'
   , mname   = "campaign"
   , mfreq   = [("campaign", 1)]
   , mroster = rosterCampaign
