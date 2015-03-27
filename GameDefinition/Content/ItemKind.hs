@@ -219,13 +219,13 @@ light1 = ItemKind
   , iname    = "candle"
   , ifreq    = [("useful", 100), ("light source", 100)]
   , iflavour = zipPlain [Brown]
-  , icount   = 1
-  , irarity  = [(1, 8), (5, 1)]
+  , icount   = 1 + d 3
+  , irarity  = [(1, 8)]
   , iverbHit = "scorch"
   , iweight  = 500
   , iaspects = [ AddLight 3
                , AddSight (-2) ]
-  , ieffects = [Burn 3]
+  , ieffects = [Burn 2]
   , ifeature = [ toVelocity 50  -- easy to break when throwing
                , Fragile, EqpSlot EqpSlotAddLight "", Identified ]
   , idesc    = "A smoking, thick candle with an unsteady fire."
