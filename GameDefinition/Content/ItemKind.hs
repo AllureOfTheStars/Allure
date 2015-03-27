@@ -473,7 +473,7 @@ potion2 = potion
                , OnSmash (Explode "pheromone") ]
   }
 potion3 = potion
-  { irarity  = [(1, 10), (10, 5)]
+  { irarity  = [(1, 10)]
   , ieffects = [ RefillHP 5, DropItem COrgan "poisoned" True
                , OnSmash (Explode "healing mist") ]
   }
@@ -546,6 +546,7 @@ flask1 = flask
   { irarity  = [(10, 5)]
   , ieffects = [ NoEffect "of strength brew"
                , toOrganActorTurn "strengthened" (20 + d 5)
+               , toOrganNone "regenerating"
                , OnSmash (Explode "strength mist") ]
   }
 flask2 = flask
@@ -602,7 +603,7 @@ flask10 = flask
                , OnSmash (Explode "whiskey spray") ]
   }
 flask11 = flask
-  { irarity  = [(1, 20), (10, 6)]
+  { irarity  = [(1, 20), (10, 10)]
   , ieffects = [ NoEffect "of regeneration brew"
                , toOrganNone "regenerating"
                , OnSmash (Explode "healing mist") ]
