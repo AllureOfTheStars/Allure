@@ -207,7 +207,7 @@ seeingItem = ItemKind
   , iaspects = [ AddSight 10, AddMaxCalm 60, AddLight 2
                , Periodic, Timeout $ 1 + d 2 ]
   , ieffects = [ Recharging (toOrganNone "poisoned")
-               , Recharging (Summon [("robot", 1)] 1) ]
+               , Recharging (Summon [("mobile robot", 1)] 1) ]
   , ifeature = [Identified]
   , idesc    = "A functioning visual sensor torn out from some giant robot. The circuitry is too big to serve just the basic signal processing. Watch out for the sharp edges and the seeping coolant liquid."
   , ikit     = []
@@ -711,7 +711,7 @@ scroll11 = scroll
   }
 
 standardSummon :: Freqs ItemKind
-standardSummon = [ ("alien", 20)
+standardSummon = [ ("mobile alien", 20)
                  , ("mobile animal", 50)
                  , ("mobile robot", 30) ]
 
