@@ -221,7 +221,7 @@ shallow1arena = shallow2empty  -- TODO: replace some rooms with oriels?
   { cname         = "Outermost deck"
   , cfreq         = [("shallow random 1", 100)]
   , cminPlaceSize = DiceXY (2 * d 2 + 3) 3
-  , cactorCoeff   = 2  -- mostly immobile actors anyway
+  , cactorCoeff   = 5  -- mostly immobile actors anyway
   , cactorFreq    = [("animal", 4), ("robot", 2), ("immobile robot", 94)]
   , couterFenceTile = "oriels fence"
   }
