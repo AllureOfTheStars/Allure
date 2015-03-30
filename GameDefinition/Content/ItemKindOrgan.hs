@@ -159,7 +159,7 @@ medbotFissure = boilingFissure
   { iname    = "fissure"
   , ifreq    = [("medbot fissure", 100)]
   , icount   = 2 + d 2
-  , ieffects = [Hurt (1 * d 1), RefillHP 5]
+  , ieffects = [Hurt (1 * d 1), RefillHP 6]
   }
 beeSting = fist
   { iname    = "bee sting"
@@ -370,7 +370,7 @@ boilingVent = armoredSkin
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
   , iverbHit = "menace"
-  , iaspects = [Periodic, Timeout $ d 4 |*| 5]
+  , iaspects = [Periodic, Timeout $ 2 + d 2 |*| 5]
   , ieffects = [Recharging (Explode "boiling water")]
   , idesc    = ""
   }
@@ -380,7 +380,7 @@ explosionVent = armoredSkin
   , iflavour = zipPlain [BrGreen]
   , icount   = 1
   , iverbHit = "menace"
-  , iaspects = [Periodic, Timeout $ d 2 |*| 5]
+  , iaspects = [Periodic, Timeout $ 2 + d 2 |*| 5]
   , ieffects = [Recharging (Explode "blast 20")]
   , idesc    = ""
   }
@@ -390,7 +390,7 @@ medbotVent = armoredSkin
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , iverbHit = "menace"
-  , iaspects = [Periodic, Timeout $ d 2 |*| 5]
+  , iaspects = [Periodic, Timeout $ 2 + d 2 |*| 5]
   , ieffects = [Recharging (Explode "protecting balm")]
   , idesc    = ""
   }
