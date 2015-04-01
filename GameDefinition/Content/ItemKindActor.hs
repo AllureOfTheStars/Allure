@@ -130,7 +130,7 @@ nose = ItemKind  -- depends solely on smell
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "A blind, slimy mass of clawing, stinging and burning. You'd think it's powerless, but as soon as it touches your trembling body, it's always one step ahead."
-  , ikit     = [ ("nostril", COrgan), ("small claw", COrgan)
+  , ikit     = [ ("nostril", COrgan), ("claw", COrgan)
                , ("tentacle", COrgan), ("tentacle", COrgan)
                , ("tentacle", COrgan), ("tentacle", COrgan)
                , ("thorn", COrgan), ("sting", COrgan)
@@ -216,7 +216,7 @@ griffonVulture = ItemKind
   , ifeature = [Durable, Identified]
   , idesc    = ""
   , ikit     = [ ("screeching beak", COrgan)  -- in reality it grunts and hisses
-               , ("small claw", COrgan), ("eye 6", COrgan)
+               , ("claw", COrgan), ("eye 6", COrgan)
                , ("animal brain", COrgan) ]
   }
 skunk = ItemKind
@@ -247,7 +247,7 @@ armadillo = ItemKind
   , irarity  = [(1, 5)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 25, AddMaxCalm 30, AddSpeed 18
+  , iaspects = [ AddMaxHP 30, AddMaxCalm 30, AddSpeed 18
                , AddSkills $ EM.singleton AbAlter (-1) ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -305,7 +305,7 @@ komodoDragon = ItemKind  -- bad hearing; regeneration makes it very powerful
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
-  , ikit     = [ ("large tail", COrgan), ("jaw", COrgan), ("small claw", COrgan)
+  , ikit     = [ ("large tail", COrgan), ("jaw", COrgan), ("claw", COrgan)
                , ("speed gland 4", COrgan), ("armored skin", COrgan)
                , ("eye 2", COrgan), ("nostril", COrgan)
                , ("animal brain", COrgan) ]
@@ -339,7 +339,8 @@ alligator = ItemKind
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
-  , ikit     = [ ("large jaw", COrgan), ("large tail", COrgan), ("claw", COrgan)
+  , ikit     = [ ("large jaw", COrgan), ("large tail", COrgan)
+               , ("small claw", COrgan)
                , ("armored skin", COrgan), ("eye 5", COrgan)
                , ("animal brain", COrgan) ]
   }
@@ -650,7 +651,7 @@ heavyRobot = ItemKind
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Heavy multi-purpose construction robot. Excels at discharging, dismantling and demolition."
-  , ikit     = [ ("large jaw", COrgan), ("claw", COrgan), ("spotlight", COrgan)
+  , ikit     = [ ("large jaw", COrgan), ("small claw", COrgan), ("spotlight", COrgan)
                , ("construction hooter", CInv)
                , ("armored skin", COrgan), ("eye 5", COrgan)
                , ("robot brain", COrgan) ]
