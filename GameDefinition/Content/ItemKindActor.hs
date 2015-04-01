@@ -498,7 +498,7 @@ biogasFaucet = ItemKind
   , irarity  = [(5, 2), (10, 4)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20, AddLight 3
                , AddSkills $ EM.fromList (zip [AbWait, AbMelee] [1, 1..]) ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -514,7 +514,7 @@ medbotFaucet = ItemKind
   , irarity  = [(1, 2), (10, 4)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20, AddLight 3
                , AddSkills $ EM.fromList (zip [AbWait, AbMelee] [1, 1..]) ]
   , ieffects = []
   , ifeature = [Durable, Identified]
