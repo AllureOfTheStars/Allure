@@ -366,7 +366,7 @@ sightSharpening = ItemKind
   , irarity  = [(7, 3), (10, 3)]  -- medium weak, medium shallow
   , iverbHit = "rap"
   , iweight  = 50
-  , iaspects = [Unique, AddSight $ d 2, AddHurtMelee $ d 2 |*| 3]
+  , iaspects = [Unique, AddSight $ 1 + d 2, AddHurtMelee $ d 2 |*| 3]
   , ieffects = []
   , ifeature = [ Precious, Identified, Durable
                , EqpSlot EqpSlotAddSight "" ]

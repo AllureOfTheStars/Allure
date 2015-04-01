@@ -152,13 +152,13 @@ biogasFissure = boilingFissure
   { iname    = "fissure"
   , ifreq    = [("biogas fissure", 100)]
   , icount   = 2 + d 2
-  , ieffects = [Hurt (1 * d 1), toOrganGameTurn "weakened" (2 + d 2)]
+  , ieffects = [Burn $ 1 * d 1, toOrganGameTurn "weakened" (2 + d 2)]
   }
 medbotFissure = boilingFissure
   { iname    = "fissure"
   , ifreq    = [("medbot fissure", 100)]
   , icount   = 2 + d 2
-  , ieffects = [Hurt (1 * d 1), RefillHP 6]
+  , ieffects = [Burn $ 1 * d 1, RefillHP 6]
   }
 beeSting = fist
   { iname    = "bee sting"
