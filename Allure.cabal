@@ -5,7 +5,7 @@ name:           Allure
 -- PVP summary: +-+------- breaking API changes
 --              | | +----- non-breaking API additions
 --              | | |   +--- code changes with no API change
-version:        0.4.100.1
+version:        0.4.101.0
 synopsis:       Near-future Sci-Fi roguelike and tactical squad game
 description:   Allure of the Stars
                is a near-future Sci-Fi roguelike and tactical squad game.
@@ -63,7 +63,7 @@ executable Allure
                       Content.TileKind,
                       TieKnot,
                       Paths_Allure
-  build-depends:      LambdaHack >= 0.4.100.1 && < 0.5.1.0,
+  build-depends:      LambdaHack >= 0.4.101.0 && < 0.5.1.0,
                       template-haskell >= 2.6 && < 3,
 
                       base       >= 4       && < 5,
