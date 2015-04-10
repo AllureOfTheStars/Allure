@@ -32,7 +32,7 @@ campaign = ModeKind
   , mfreq   = [("campaign", 1)]
   , mroster = rosterCampaign
   , mcaves  = cavesCampaign
-  , mdesc   = "You got stranded looting the blasted bridge of a once luxurious cruise liner. Your current plan is to fight through, gathering your spoils, to the shuttle airlock at the giant spaceship's uppermost deck. There are animal cries down below and ominous silence up above."
+  , mdesc   = "You got stranded looting the blasted bridge of a once luxurious cruise liner. Your current plan is to fight through, gathering your spoils, to the shuttle airlock somewhere among the giant spaceship's uppermost decks. There are animal cries down below and ominous silence up above."
   }
 
 duel = ModeKind
