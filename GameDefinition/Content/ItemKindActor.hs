@@ -31,7 +31,8 @@ warrior = ItemKind
   , irarity  = [(1, 5)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 60  -- partially from clothes and assumed first aid
+  , iaspects = [ AddMaxHP 80  -- partially from clothes and assumed first aid
+                              -- also possibly from artificial skin
                , AddMaxCalm 60, AddSpeed 20
                , AddSkills $ EM.fromList [(AbProject, 2), (AbApply, 1)] ]
   , ieffects = []
