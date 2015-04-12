@@ -302,7 +302,7 @@ komodoDragon = ItemKind  -- bad hearing; regeneration makes it very powerful
   , irarity  = [(7, 0), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 40, AddMaxCalm 60, AddSpeed 16 ]
+  , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 16 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -336,7 +336,7 @@ alligator = ItemKind
   , irarity  = [(6, 1), (10, 9)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 40, AddMaxCalm 60, AddSpeed 17 ]
+  , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 17 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -354,7 +354,7 @@ rhinoceros = ItemKind
   , irarity  = [(1 * 10/12, 1000), (2 * 10/12, 0)]  -- unique
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ Unique, AddMaxHP 70, AddMaxCalm 60, AddSpeed 25
+  , iaspects = [ Unique, AddMaxHP 82, AddMaxCalm 60, AddSpeed 25
                , AddSkills $ EM.singleton AbTrigger (-1) ]
                    -- can't switch levels, a miniboss
   , ieffects = []
@@ -647,7 +647,7 @@ heavyRobot = ItemKind
   , irarity  = [(5, 1), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 800000
-  , iaspects = [ AddMaxHP 40, AddMaxCalm 60, AddSpeed 20
+  , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 20
                , AddSkills $ EM.singleton AbProject 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -667,7 +667,7 @@ cleanerRobot = ItemKind
                  -- unique, appears at 10 of 12
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ Unique, AddMaxHP 80, AddMaxCalm 60, AddSpeed 18
+  , iaspects = [ Unique, AddMaxHP 90, AddMaxCalm 60, AddSpeed 18
                , AddSkills $ EM.singleton AbTrigger (-1) ]
                    -- can't switch levels, a miniboss
   , ieffects = []
