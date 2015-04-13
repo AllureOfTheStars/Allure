@@ -528,14 +528,14 @@ surveillanceDrone = ItemKind
   , ifreq    = [("robot", 100), ("horror", 100), ("mobile robot", 100)]
   , iflavour = zipPlain [Blue]
   , icount   = 1
-  , irarity  = [(1, 10)]
+  , irarity  = []  -- TODO: too boring
   , iverbHit = "thud"
   , iweight  = 1000
-  , iaspects = [ AddMaxHP 2, AddMaxCalm 90, AddSpeed 30
+  , iaspects = [ AddMaxHP 3, AddMaxCalm 90, AddSpeed 30
                , AddSkills
                  $ EM.fromList
                  $ zip [AbDisplace, AbMoveItem, AbProject, AbMelee] [-1, -1..]
-               , AddArmorMelee 90, AddArmorRanged 90 ]
+               , AddArmorMelee 80, AddArmorRanged 80 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "A video camera in each room would violate privacy of passengers, hence surveillance drones. Programmed to be easy to fend off, they keep a respectful distance."
@@ -550,11 +550,11 @@ shepherdDrone = ItemKind
   , irarity  = [(1, 7)]
   , iverbHit = "thud"
   , iweight  = 1000
-  , iaspects = [ AddMaxHP 2, AddMaxCalm 60, AddSpeed 30
+  , iaspects = [ AddMaxHP 3, AddMaxCalm 60, AddSpeed 30
                , AddSkills
                  $ EM.fromList
                  $ zip [AbDisplace, AbMoveItem, AbProject] [-1, -1..]
-               , AddArmorMelee 90, AddArmorRanged 90 ]
+               , AddArmorMelee 80, AddArmorRanged 80 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "A shabby drone for bringing cows home."
@@ -570,11 +570,11 @@ huntingDrone = ItemKind
   , irarity  = [(3, 0), (5, 2), (10, 4)]
   , iverbHit = "thud"
   , iweight  = 500
-  , iaspects = [ AddMaxHP 2, AddMaxCalm 60, AddSpeed 40
+  , iaspects = [ AddMaxHP 3, AddMaxCalm 60, AddSpeed 40
                , AddSkills
                  $ EM.fromList
                  $ zip [AbDisplace, AbMoveItem, AbMelee] [-1, -1..]
-               , AddArmorMelee 90, AddArmorRanged 90 ]
+               , AddArmorMelee 80, AddArmorRanged 80 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Originally designed for hunting down and putting to sleep stray animals. The sleeping agent has long since dried up."
