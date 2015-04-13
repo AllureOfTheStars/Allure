@@ -503,7 +503,7 @@ biogasFaucet = ItemKind
                , AddSkills $ EM.fromList (zip [AbWait, AbMelee] [1, 1..]) ]
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = "An emergency pressure-release vent on a liquefied biogas pipe."
+  , idesc    = "An emergency pressure-release vent on a smelly biogas pipe."
   , ikit     = [("biogas vent", COrgan), ("biogas fissure", COrgan)]
   }
 medbotFaucet = ItemKind

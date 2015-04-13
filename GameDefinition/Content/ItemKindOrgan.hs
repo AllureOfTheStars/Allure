@@ -18,9 +18,9 @@ import Game.LambdaHack.Content.ItemKind
 
 organs :: [ItemKind]
 organs =
-  [fist, foot, claw, smallClaw, snout, smallJaw, jaw, largeJaw, horn, tentacle, razor, thorn, boilingFissure, biogasFissure, medbotFissure, insectMortality, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, sapientBrain, animalBrain, robotBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, explosionVent, medbotVent, wasteContainer, spotlight, bonusHP]
+  [fist, foot, claw, smallClaw, snout, smallJaw, jaw, largeJaw, horn, tentacle, razor, thorn, boilingFissure, biogasFissure, medbotFissure, insectMortality, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, sapientBrain, animalBrain, robotBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, biogasVent, medbotVent, wasteContainer, spotlight, bonusHP]
 
-fist,    foot, claw, smallClaw, snout, smallJaw, jaw, largeJaw, horn, tentacle, razor, thorn, boilingFissure, biogasFissure, medbotFissure, insectMortality, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, sapientBrain, animalBrain, robotBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, explosionVent, medbotVent, wasteContainer, spotlight, bonusHP :: ItemKind
+fist,    foot, claw, smallClaw, snout, smallJaw, jaw, largeJaw, horn, tentacle, razor, thorn, boilingFissure, biogasFissure, medbotFissure, insectMortality, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, sapientBrain, animalBrain, robotBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, biogasVent, medbotVent, wasteContainer, spotlight, bonusHP :: ItemKind
 
 -- Weapons
 
@@ -372,14 +372,14 @@ boilingVent = armoredSkin
   , ieffects = [Recharging (Explode "boiling water")]
   , idesc    = ""
   }
-explosionVent = armoredSkin
+biogasVent = armoredSkin
   { iname    = "vent"
-  , ifreq    = [("explosion vent", 100), ("biogas vent", 100)]
+  , ifreq    = [("biogas vent", 100)]
   , iflavour = zipPlain [BrGreen]
   , icount   = 1
   , iverbHit = "menace"
   , iaspects = [Periodic, Timeout $ 2 + d 2 |*| 5]
-  , ieffects = [Recharging (Explode "blast 20")]
+  , ieffects = [Recharging (Explode "weakness mist")]
   , idesc    = ""
   }
 medbotVent = armoredSkin
