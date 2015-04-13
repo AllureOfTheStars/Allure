@@ -354,7 +354,7 @@ rhinoceros = ItemKind
   , irarity  = [(1 * 10/12, 1000), (2 * 10/12, 0)]  -- unique
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ Unique, AddMaxHP 82, AddMaxCalm 60, AddSpeed 25
+  , iaspects = [ Unique, AddMaxHP 90, AddMaxCalm 60, AddSpeed 25
                , AddSkills $ EM.singleton AbTrigger (-1) ]
                    -- can't switch levels, a miniboss
   , ieffects = []
@@ -667,7 +667,7 @@ cleanerRobot = ItemKind
                  -- unique, appears at 10 of 12
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ Unique, AddMaxHP 90, AddMaxCalm 60, AddSpeed 18
+  , iaspects = [ Unique, AddMaxHP 120, AddMaxCalm 60, AddSpeed 18
                , AddSkills $ EM.singleton AbTrigger (-1) ]
                    -- can't switch levels, a miniboss
   , ieffects = []
