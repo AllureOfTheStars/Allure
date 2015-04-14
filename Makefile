@@ -249,18 +249,3 @@ build-binary-windows-i386:
 	cp README.md /tmp/AllureOfTheStars
 	cp /home/mikolaj/.wine/drive_c/users/mikolaj/gtk/bin/zlib1.dll /tmp/AllureOfTheStars
 	wine Z:/home/mikolaj/.local/share/wineprefixes/7zip/drive_c/Program\ Files/7-Zip/7z.exe a -ssc -sfx Z:/tmp/Allure_x_windows-i386.exe Z:/tmp/AllureOfTheStars
-
-
-# The rest of the makefile is unmaintained at the moment.
-
-default : dist/setup-config
-	runghc Setup build
-
-dist/setup-config : Allure.cabal
-	runghc Setup configure --user
-
-clean :
-	runghc Setup clean
-
-ghci :
-	ghci -XCPP -idist/build/autogen:GameDefinition
