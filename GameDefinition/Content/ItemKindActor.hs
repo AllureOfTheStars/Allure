@@ -92,9 +92,7 @@ eye = ItemKind
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Walks with a stately dignity. You read death in the slow beckoning gestures of its revolting upper appendages."
-  , ikit     = [ ("foot", COrgan)
-               , ("tentacle", COrgan), ("tentacle", COrgan)
-               , ("tentacle", COrgan)
+  , ikit     = [ ("foot", COrgan), ("tentacle", COrgan)
                , ("eye 5", COrgan)
                , ("sapient brain", COrgan) ]
   }
@@ -111,9 +109,7 @@ fastEye = ItemKind
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "It bites as blindingly fast as it runs. Or rolls? Or crawls? Also, cuts and pierces."
-  , ikit     = [ ("tentacle", COrgan), ("tentacle", COrgan)
-               , ("tentacle", COrgan), ("tentacle", COrgan)
-               , ("jaw", COrgan)
+  , ikit     = [ ("tentacle", COrgan), ("jaw", COrgan)
                , ("eye 4", COrgan), ("speed gland 10", COrgan)
                , ("sapient brain", COrgan) ]
   }
@@ -132,7 +128,6 @@ nose = ItemKind  -- depends solely on smell
   , ifeature = [Durable, Identified]
   , idesc    = "A blind, slimy mass of clawing, stinging and burning. You'd think it's powerless, but as soon as it touches your trembling body, it's always one step ahead."
   , ikit     = [ ("nostril", COrgan), ("claw", COrgan)
-               , ("tentacle", COrgan), ("tentacle", COrgan)
                , ("tentacle", COrgan), ("tentacle", COrgan)
                , ("thorn", COrgan), ("sting", COrgan)
                , ("sapient brain", COrgan) ]
