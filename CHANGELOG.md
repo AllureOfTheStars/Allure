@@ -1,15 +1,17 @@
-## [v0.4.101.0, aka 'Officially fun'](https://github.com/AllureOfTheStars/Allure/compare/v0.4.100.0...v0.4.101.0)
+## [v0.4.101.1, aka 'Officially fun'](https://github.com/AllureOfTheStars/Allure/compare/v0.4.100.0...v0.4.101.1)
 
 - the game is now officially fun to play, with a seal of the Galactic Council
 - introduce unique boss monsters and unique artifact items
-- add animals that heal the player
+- add animals that heal the player, in particular as a mid-game reset for HP
+- move spaceship airlock to level 10 and beef up spaceship crew
 - let AI gang up, attempt stealth and react to player aggressiveness
-- spawn actors fast and close to the enemy
+- spawn actors fast, close to the enemy and in large numbers
 - spawn actors less and less often on a given level, but with growing depth
 - prefer weapons with effects, if recharged
 - make the bracing melee bonus additive, not multiplicative
 - let explosions buffet actors around
 - make braced actors immune to translocation effects
+- make actor domination yet less common and deadly
 - use mouse for movement, actor selection, aiming
 - don't run straight with selected actors, but go-to cross-hair with them
 - speed up default frame rate, slow down projectiles visually
