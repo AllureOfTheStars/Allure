@@ -1008,7 +1008,7 @@ gem4 = gem
   , irarity  = [(1, 40), (10, 40)]
   , iaspects = []
   , ieffects = [NoEffect "of youth", OverfillCalm 5, OverfillHP 15]
-  , ifeature = [Identified, Precious]  -- TODO: only for humans
+  , ifeature = [Identified, Applicable, Precious]  -- TODO: only for humans
   , idesc    = "Calms, heals, invigorates and rejuvenates at the same time. No side-effects. As valuable as precious gems, at 100 gold grains each."
   }
 currency = ItemKind
