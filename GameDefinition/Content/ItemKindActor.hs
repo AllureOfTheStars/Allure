@@ -513,7 +513,7 @@ medbotFaucet = ItemKind
   , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 20, AddLight 3
                , AddSkills $ EM.fromList (zip [AbWait, AbMelee] [1, 1..]) ]
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable, Identified]  -- TODO: only heal humans
   , idesc    = "A faucet of a malfunctioning nano medical robot dispenser. Let's hope the medbots are still effective."
   , ikit     = [("medbot vent", COrgan), ("medbot fissure", COrgan)]
   }
