@@ -261,13 +261,17 @@ rosterSafari = Roster
                  , playerAnimalMagnificent
                  , playerAnimalExquisite
                  ]
-  , rosterEnemy = [ ("Alien Tourist Office", "Hunam Convict Pack")
-                  , ("Alien Tourist Office",
-                     "Animal Magnificent Specimen Variety")
-                  , ("Alien Tourist Office",
-                     "Animal Exquisite Herds and Packs") ]
-  , rosterAlly = [( "Animal Magnificent Specimen Variety"
-                  , "Animal Exquisite Herds and Packs" )] }
+  , rosterEnemy = [ ( "Alien Tourist Office", "Hunam Convict Pack")
+                  , ( "Alien Tourist Office"
+                    , "Animal Magnificent Specimen Variety" )
+                  , ( "Alien Tourist Office"
+                    , "Animal Exquisite Herds and Packs" ) ]
+  , rosterAlly = [ ( "Animal Magnificent Specimen Variety"
+                   , "Animal Exquisite Herds and Packs" )
+                 , ( "Animal Magnificent Specimen Variety"
+                   , "Hunam Convict Pack" )
+                 , ( "Hunam Convict Pack"
+                   , "Animal Exquisite Herds and Packs" ) ] }
 
 rosterSafariSurvival = rosterSafari
   { rosterList = [ playerMonsterTourist
@@ -316,17 +320,11 @@ rosterCoop = Roster
                  , ("Green", "Alien Hierarchy")
                  , ("Green", "Leaderless Alien Hierarchy") ] }
 
-rosterDefense = Roster
+rosterDefense = rosterCampaign
   { rosterList = [ playerAntiHero
                  , playerAntiMonster
                  , playerAnimal
-                 , playerRobot ]
-  , rosterEnemy = [ ("Spacefarer Crew", "Alien Hierarchy")
-                  , ("Spacefarer Crew", "Animal Kingdom")
-                  , ("Spacefarer Crew", "Robot Anarchy") ]
-  , rosterAlly = [ ("Alien Hierarchy", "Animal Kingdom")
-                 , ("Alien Hierarchy", "Robot Anarchy")
-                 , ("Robot Anarchy", "Animal Kingdom") ] }
+                 , playerRobot ] }
 
 cavesCampaign, cavesSkirmish, cavesAmbush, cavesBattle, cavesSafari :: Caves
 
