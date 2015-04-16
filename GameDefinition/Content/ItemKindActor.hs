@@ -25,7 +25,7 @@ warrior,    warrior2, warrior3, warrior4, soldier, sniper, civilian, civilian2, 
 warrior = ItemKind
   { isymbol  = '@'
   , iname    = "mercenary"  -- modified if in hero faction
-  , ifreq    = [("hero", 100), ("civilian", 100)]
+  , ifreq    = [("hero", 100), ("civilian", 100), ("mobile", 1)]
   , iflavour = zipPlain [BrBlack]  -- modified if in hero faction
   , icount   = 1
   , irarity  = [(1, 5)]
@@ -50,12 +50,12 @@ warrior4 = warrior
 
 soldier = warrior
   { iname    = "soldier"
-  , ifreq    = [("soldier", 100)]
+  , ifreq    = [("soldier", 100), ("mobile", 1)]
   , ikit     = ikit warrior ++ [("starting weapon", CEqp)]
   }
 sniper = warrior
   { iname    = "sniper"
-  , ifreq    = [("sniper", 100)]
+  , ifreq    = [("sniper", 100), ("mobile", 1)]
   , ikit     = ikit warrior
                ++ [ ("ring of opportunity sniper", CEqp)
                   , ("any arrow", CInv), ("any arrow", CInv)
@@ -66,7 +66,7 @@ sniper = warrior
 
 civilian = warrior
   { iname    = "clerk"
-  , ifreq    = [("civilian", 100)] }
+  , ifreq    = [("civilian", 100), ("mobile", 1)] }
 civilian2 = civilian
   { iname    = "hairdresser" }
 civilian3 = civilian
@@ -156,7 +156,7 @@ elbow = ItemKind
 torsor = ItemKind
   { isymbol  = 'M'
   , iname    = "The Maker of Contact"
-  , ifreq    = [("alien", 100)]
+  , ifreq    = [("alien", 100), ("mobile", 1)]
   , iflavour = zipFancy [BrCyan]
   , icount   = 1
   , irarity  = [(11 * 10/12, 0), (10, 1000)]  -- unique
@@ -343,7 +343,7 @@ alligator = ItemKind
 rhinoceros = ItemKind
   { isymbol  = 'R'
   , iname    = "The Maddened Rhinoceros"
-  , ifreq    = [("animal", 100)]
+  , ifreq    = [("animal", 100), ("mobile", 1)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
   , irarity  = [(1 * 10/12, 1000), (2 * 10/12, 0)]  -- unique
@@ -655,7 +655,7 @@ heavyRobot = ItemKind
 cleanerRobot = ItemKind
   { isymbol  = 'C'
   , iname    = "The Void Cleaner Robot"
-  , ifreq    = [("robot", 100)]
+  , ifreq    = [("robot", 100), ("mobile", 1)]
   , iflavour = zipPlain [BrGreen]
   , icount   = 1
   , irarity  = [(9 * 10/12, 0), (10 * 10/12, 1000), (11 * 10/12, 0)]
