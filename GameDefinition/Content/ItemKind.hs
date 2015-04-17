@@ -987,7 +987,9 @@ gem = ItemKind
   , irarity  = []
   , iverbHit = "tap"
   , iweight  = 50
-  , iaspects = [AddLight 1, AddSpeed (-1)]  -- reflects strongly, distracts
+  , iaspects = [AddLight 1, AddSpeed (-1)]
+                 -- reflects strongly, distracts; so it glows in the dark,
+                 -- is visible on dark floor, but not too tempting to wear
   , ieffects = []
   , ifeature = [Precious]
   , idesc    = "Precious, though useless. Worth around 100 gold grains."
