@@ -2,7 +2,7 @@
 
 - the game is now officially fun to play, with a seal of the Galactic Council
 - introduce unique boss monsters and unique artifact items
-- add animals that heal the player, in particular as a mid-game reset for HP
+- add robots that heal the player, in particular as a mid-game reset for HP
 - move spaceship airlock to level 10 and beef up spaceship crew
 - let AI gang up, attempt stealth and react to player aggressiveness
 - spawn actors fast, close to the enemy and in large numbers
