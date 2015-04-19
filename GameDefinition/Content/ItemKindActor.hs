@@ -58,9 +58,9 @@ sniper = warrior
   , ifreq    = [("sniper", 100), ("mobile", 1)]
   , ikit     = ikit warrior
                ++ [ ("ring of opportunity sniper", CEqp)
+                  , ("any arrow", CSha), ("any arrow", CInv)
                   , ("any arrow", CInv), ("any arrow", CInv)
-                  , ("any arrow", CInv), ("any arrow", CInv)
-                  , ("flask", CInv), ("light source", CInv)
+                  , ("flask", CInv), ("light source", CSha)
                   , ("light source", CInv), ("light source", CInv) ]
   }
 
@@ -149,7 +149,7 @@ elbow = ItemKind
   , idesc    = "It moves in sudden jerks and never makes a noise. Speaks in hard objects hurled at deadly speeds."
   , ikit     = [ ("speed gland 4", COrgan)
                , ("eye 7", COrgan)
-               , ("any arrow", CInv), ("any arrow", CInv)
+               , ("any arrow", CSha), ("any arrow", CInv)
                , ("any arrow", CInv), ("any arrow", CInv)
                , ("sapient brain", COrgan) ]
   }
