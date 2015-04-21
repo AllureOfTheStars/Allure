@@ -639,7 +639,7 @@ heavyRobot = ItemKind
                , ("construction robot", 100) ]
   , iflavour = zipPlain [BrRed]
   , icount   = 1
-  , irarity  = [(5, 1), (10, 10)]
+  , irarity  = [(6, 0), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 800000
   , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 20
