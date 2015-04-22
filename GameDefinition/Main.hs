@@ -4,6 +4,7 @@
 -- For license and copyright information, see the file LICENSE.
 --
 -- | The main source code file of Allure of the Stars.
+-- Module "TieKnot" is separated to make it usable in tests.
 module Main ( main ) where
 
 import System.Environment (getArgs)
