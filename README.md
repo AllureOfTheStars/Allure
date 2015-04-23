@@ -70,6 +70,7 @@ On OSX, if you encounter problems, you may want to
 The latest official version of the game can be downloaded,
 compiled and installed automatically by Cabal from [Hackage] [3] as follows
 
+    cabal update
     cabal install gtk2hs-buildtools
     cabal install Allure --force-reinstalls
 
