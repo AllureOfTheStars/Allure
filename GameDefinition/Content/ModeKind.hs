@@ -303,6 +303,7 @@ rosterCoop = Roster
                                   , fleaderMode = LeaderNull }
                  , playerAntiHero { fname = "Green" }
                  , playerAnimal { fhasUI = True }
+                 , playerAnimal
                  , playerMonster { fname = "Alien Hierarchy"
                                  , finitialActors = 3 }
                  , playerMonster { fname = "Leaderless Alien Hierarchy"
@@ -310,15 +311,8 @@ rosterCoop = Roster
                                  , fleaderMode = LeaderNull }
                  , playerRobot ]
   , rosterEnemy = [ ("Coral", "Alien Hierarchy")
-                  , ("Amber", "Alien Hierarchy")
-                  , ("Animal Kingdom", "Leaderless Alien Hierarchy") ]
-  , rosterAlly = [ ("Coral", "Amber")
-                 , ("Coral", "Green")
-                 , ("Amber", "Green")
-                 , ("Green", "Animal Kingdom")
-                 , ("Green", "Robot Anarchy")
-                 , ("Green", "Alien Hierarchy")
-                 , ("Green", "Leaderless Alien Hierarchy") ] }
+                  , ("Amber", "Alien Hierarchy") ]
+  , rosterAlly = [ ("Coral", "Amber") ] }
 
 rosterDefense = rosterCampaign
   { rosterList = [ playerAntiHero
