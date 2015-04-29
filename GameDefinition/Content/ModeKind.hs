@@ -147,9 +147,9 @@ rosterCampaign = Roster
   , rosterEnemy = [ ("Spacefarer Crew", "Alien Hierarchy")
                   , ("Spacefarer Crew", "Animal Kingdom")
                   , ("Spacefarer Crew", "Robot Anarchy") ]
- , rosterAlly = [ ("Alien Hierarchy", "Animal Kingdom")
-                , ("Alien Hierarchy", "Robot Anarchy")
-                , ("Robot Anarchy", "Animal Kingdom") ] }
+  , rosterAlly = [ ("Alien Hierarchy", "Animal Kingdom")
+                 , ("Alien Hierarchy", "Robot Anarchy")
+                 , ("Robot Anarchy", "Animal Kingdom") ] }
 
 rosterDuel = Roster
   { rosterList = [ playerHero { fname = "Spacefarer Crew"
@@ -301,7 +301,6 @@ rosterCoop = Roster
   { rosterList = [ playerAntiHero { fname = "Coral" }
                  , playerAntiHero { fname = "Amber"
                                   , fleaderMode = LeaderNull }
-                 , playerAntiHero { fname = "Green" }
                  , playerAnimal { fhasUI = True }
                  , playerAnimal
                  , playerMonster { fname = "Alien Hierarchy"

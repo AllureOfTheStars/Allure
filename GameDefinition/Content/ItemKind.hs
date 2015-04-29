@@ -500,8 +500,7 @@ potion6 = potion
                , OnSmash (OneOf [ Explode "healing mist 2"
                                 , Explode "calming mist"
                                 , Explode "distressing odor"
-                                , Explode "distortion"  -- outlier, OK
-                                , Explode "smelly droplet"
+                                , Explode "eye drop"
                                 , Explode "blast 20" ]) ]
   }
 potion7 = potion

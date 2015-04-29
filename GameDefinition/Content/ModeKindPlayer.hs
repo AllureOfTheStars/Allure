@@ -113,7 +113,7 @@ playerAnimal = Player
   , fhasGender = False
   , ftactic = TRoam  -- can't pick up, so no point exploring
   , fentryLevel = 3
-  , finitialActors = 2 + d 2
+  , finitialActors = 2 + d 2  -- many, because no spawning
   , fleaderMode = LeaderNull
   , fhasUI = False
   }
@@ -133,7 +133,7 @@ playerRobot = Player
   , ftactic = TRoam  -- TODO: TFollow
                         -- coordinated via net, follow alien leader
   , fentryLevel = 3
-  , finitialActors = 2 + d 2
+  , finitialActors = 2 + d 2  -- many, because no spawning
   , fleaderMode = LeaderNull
   , fhasUI = False
   }
@@ -195,4 +195,4 @@ minusTen = EM.fromList $ zip [minBound..maxBound] [-10, -10..]
 meleeAdjacent = EM.delete AbWait $ EM.delete AbMelee minusTen
 
 -- Melee and reaction fire.
-_meleeAndRanged = EM.delete AbProject $ meleeAdjacent
+_meleeAndRanged = EM.delete AbProject meleeAdjacent

@@ -30,25 +30,23 @@ cdefs = ContentDef
   }
 wall,        wallCache, hardRock, doorlessWall, oriel, pillar, lampPost, burningBush, bush, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorActorLit, floorItemLit, floorActorItemLit, floorArenaShade, floorRedLit, floorBlueLit, floorGreenLit :: TileKind
 
+oriel = TileKind
+  { tsymbol  = '\''
+  , tname    = "oriel"
+  , tfreq    = [("oriels fence", 4)]
+  , tcolor   = White
+  , tcolor2  = Black
+  , tfeature = [Dark, Impenetrable]
+  }
 wall = TileKind
   { tsymbol  = '#'
   , tname    = "granite wall"
-  , tfreq    = [ ("fillerWall", 1), ("cachable", 70)
-               , ("legendLit", 100), ("legendDark", 100)
+  , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
+               , ("cachable", 70)
                , ("noiseSet", 100), ("battleSet", 250) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , tfeature = [HideAs "suspect wall"]
-  }
-wallCache = TileKind
-  { tsymbol  = '&'
-  , tname    = "cache"
-  , tfreq    = [ ("cachable", 30)
-               , ("legendLit", 100), ("legendDark", 100) ]
-  , tcolor   = BrWhite
-  , tcolor2  = defFG
-  , tfeature = [ Cause $ IK.CreateItem CGround "useful" IK.TimerNone
-               , ChangeTo "cachable" ]
   }
 hardRock = TileKind
   { tsymbol  = '#'
@@ -66,14 +64,6 @@ doorlessWall = TileKind
   , tcolor2  = defFG
   , tfeature = []
   }
-oriel = TileKind
-  { tsymbol  = '\''
-  , tname    = "oriel"
-  , tfreq    = [("oriels fence", 4)]
-  , tcolor   = White
-  , tcolor2  = Black
-  , tfeature = [Dark, Impenetrable]
-  }
 pillar = TileKind
   { tsymbol  = 'O'
   , tname    = "rock"
@@ -82,6 +72,16 @@ pillar = TileKind
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , tfeature = []
+  }
+wallCache = TileKind
+  { tsymbol  = '&'
+  , tname    = "cache"
+  , tfreq    = [ ("cachable", 30)
+               , ("legendLit", 100), ("legendDark", 100) ]
+  , tcolor   = BrWhite
+  , tcolor2  = defFG
+  , tfeature = [ Cause $ IK.CreateItem CGround "useful" IK.TimerNone
+               , ChangeTo "cachable" ]
   }
 lampPost = TileKind
   { tsymbol  = 'O'

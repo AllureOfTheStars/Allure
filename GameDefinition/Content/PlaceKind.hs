@@ -24,7 +24,7 @@ rect,        ruin, collapsed, collapsed2, collapsed3, collapsed4, pillar, pillar
 rect = PlaceKind  -- Valid for any nonempty area, hence low frequency.
   { psymbol  = 'r'
   , pname    = "room"
-  , pfreq    = [("rogue", 70), ("ambush", 8), ("noise", 40)]
+  , pfreq    = [("rogue", 70), ("ambush", 8), ("noise", 80)]
   , prarity  = [(1, 10), (10, 8)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -34,7 +34,7 @@ rect = PlaceKind  -- Valid for any nonempty area, hence low frequency.
 ruin = PlaceKind
   { psymbol  = 'R'
   , pname    = "ruin"
-  , pfreq    = [("ambush", 17), ("battle", 100), ("noise", 20)]
+  , pfreq    = [("ambush", 17), ("battle", 100), ("noise", 40)]
   , prarity  = [(1, 10), (10, 20)]
   , pcover   = CStretch
   , pfence   = FWall

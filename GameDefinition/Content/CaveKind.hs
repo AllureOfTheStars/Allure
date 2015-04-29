@@ -111,7 +111,7 @@ noise = rogue
   , cauxConnects  = 0
   , cmaxVoid      = 0
   , chidden       = 1000
-  , cactorCoeff   = 150  -- the maze requires time to explore
+  , cactorCoeff   = 160  -- the maze requires time to explore
   , cactorFreq    = [("alien", 70), ("animal", 15), ("robot", 15)]
   , citemNum      = 12 * d 2  -- an incentive to explore the labyrinth
   , cpassable     = True
@@ -228,5 +228,11 @@ shallow1arena = shallow2empty  -- TODO: replace some rooms with oriels?
   , cminPlaceSize = DiceXY (2 * d 2 + 3) 3
   , cactorCoeff   = 3  -- mostly immobile actors anyway
   , cactorFreq    = [("animal", 8), ("robot", 2), ("immobile robot", 90)]
+      -- The medbot faucets on lvl 1 act like HP resets. They are needed to avoid
+      -- cascading failure, if the particular starting conditions were
+      -- very hard. The items are not reset, even if the are bad, which provides
+      -- enough of a continuity. The faucets on lvl 1 are not OP and can't be
+      -- abused, because they spawn less and less often and they don't heal over
+      -- max HP.
   , couterFenceTile = "oriels fence"
   }
