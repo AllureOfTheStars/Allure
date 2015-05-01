@@ -22,7 +22,7 @@ Heroes
 ------
 
 The heroes are marked on the map with symbols `@` and `1` through `9`.
-Their goal is to explore an old, warped, once luxurious, space liner,
+Their goal is to explore a warped, old, once luxurious space liner,
 battle the horrors within, gather as much gold and precious gems
 as possible, and escape to tell the tale.
 
@@ -30,7 +30,7 @@ The currently chosen party leader is highlighted on the screen
 and his attributes are displayed at the bottommost status line,
 which in its most complex form may look as follows.
 
-    *@12 Adventurer  4d1+5% Calm: 20/60 HP: 33/50 Target: basilisk  [**___]
+    *@12 Adventurer  4d1+5% Calm: 20/60 HP: 33/50 Target: basilisk  [**__]
 
 The line starts with the list of party members (unless there's only one member)
 and the shortened name of the team. Clicking on the list selects heroes and
@@ -95,7 +95,7 @@ which have to be enabled in config.ui.ini).
                  /|\            /|\            /|\
                 1 2 3          j k l          b j n
 
-In aiming mode (KEYPAD_* or \) the same keys (or the middle and right
+In aiming mode (`KEYPAD_*` or `\`) the same keys (or the middle and right
 mouse buttons) move the crosshair (the white box). In normal mode,
 `SHIFT` (or `CTRL`) and a movement key make the current party leader
 run in the indicated direction, until anything of interest is spotted.
@@ -109,8 +109,8 @@ can be done by bumping into a monster, a wall and a door, respectively.
 Few commands other than movement, 'g'etting an item from the floor,
 'a'pplying an item and 'f'linging an item are necessary for casual play.
 Some are provided only as specialized versions of the more general
-commands or as building blocks for more complex convenience macros,
-e.g., the autoexplore command (key `X`) could be defined
+commands or as building blocks for more complex convenience macros.
+E.g., the autoexplore command (key `X`) could be defined
 by the player as a macro using `CTRL-?`, `CTRL-.` and `V`.
 
 The following minimal command set lets you accomplish almost anything
@@ -133,12 +133,11 @@ from the Main Menu.
         ESC             cancel action, open Main Menu
 
 The only activity not possible with the commands above is the management
-of non-leader party members. The defaults should usually suffice,
-especially if your non-leader heroes can only melee or wait
-and none have found the equipment that enables opportunity fire.
-If there's a need, you can manually set party tactics with `CTRL-T`
-and you can assign individual targets to party members
-using the aiming and targeting commands listed below.
+of non-leader party members. You don't need it, unless your non-leader actors
+can move or fire opportunistically (via innate skills or rare equipment).
+If really needed, you can manually set party tactics with `CTRL-T`
+and you can assign individual targets to party members using the aiming
+and targeting commands listed below.
 
         keys            command
         KEYPAD_* or \   aim at an enemy
@@ -222,10 +221,11 @@ no exit locations, if you eliminate all opposition. In the former case,
 your score is based on the gold and precious gems you've plundered.
 In the latter case, your score is based on the number of turns you spent
 overcoming your foes (the quicker the victory, the better; the slower
-the demise, the better). Bonus points, based on the number of heroes
-that were lost, are awarded if you win.
+the demise, the better). Bonus points, based on the number of heroes lost,
+are awarded if you win.
 
-If all your heroes fall, you will invariably see a new foolhardy party
-of adventurers clamoring to be led into the spaceship. They start
+When all your heroes fall, you are going to invariably see a new foolhardy
+party of adventurers clamoring to be led into the spaceship. They start
 their conquest from a new entrance, with no experience and no equipment,
-and new, undaunted enemies bar their way. Lead them to fame, wealth and glory!
+and new, undaunted enemies bar their way. Lead the new hopeful explorers
+to fame, wealth and glory!

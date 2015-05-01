@@ -19,7 +19,7 @@ Installation from binary archives
 Pre-compiled game binaries for some platforms are available through
 the [release page] [11] and from the [Nix Packages Collection] [12].
 To manually install a binary archive, make sure you have the GTK
-libraries suite on your system, unpack the LambdaHack archive
+libraries suite on your system, unpack the Allure archive
 and run the executable in the unpacked directory.
 
 On Windows, if you don't already have GTK installed (e.g., for the GIMP
