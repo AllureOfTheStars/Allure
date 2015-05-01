@@ -3,7 +3,7 @@
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
--- | The default game key-command mapping to be used for UI. Can be overriden
+-- | The default game key-command mapping to be used for UI. Can be overridden
 -- via macros in the config file.
 module Client.UI.Content.KeyKind ( standardKeys ) where
 
