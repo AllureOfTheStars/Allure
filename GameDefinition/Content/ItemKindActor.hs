@@ -267,7 +267,7 @@ gilaMonster = ItemKind
   , ifeature = [Durable, Identified]
   , idesc    = ""
   , ikit     = [ ("venom tooth", COrgan), ("small claw", COrgan)
-               , ("eye 5", COrgan), ("nostril", COrgan)
+               , ("eye 2", COrgan), ("nostril", COrgan)
                , ("animal brain", COrgan) ]
   }
 rattlesnake = ItemKind
@@ -649,7 +649,7 @@ heavyRobot = ItemKind
   , idesc    = "Heavy multi-purpose construction robot. Excels at discharging, dismantling and demolition."
   , ikit     = [ ("large jaw", COrgan), ("small claw", COrgan), ("spotlight", COrgan)
                , ("construction hooter", CInv)
-               , ("armored skin", COrgan), ("eye 5", COrgan)
+               , ("armored skin", COrgan), ("eye 4", COrgan)
                , ("robot brain", COrgan) ]
   }
 cleanerRobot = ItemKind
