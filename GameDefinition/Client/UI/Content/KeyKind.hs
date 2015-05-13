@@ -28,7 +28,7 @@ standardKeys = KeyKind
 
       -- Main Menu, which apart of these includes a few extra commands
       [ ("CTRL-x", ([CmdMenu], GameExit))
-      , ("CTRL-u", ([CmdMenu], GameRestart "duel"))
+      , ("CTRL-r", ([CmdMenu], GameRestart "raid"))
       , ("CTRL-k", ([CmdMenu], GameRestart "skirmish"))
       , ("CTRL-m", ([CmdMenu], GameRestart "ambush"))
       , ("CTRL-b", ([CmdMenu], GameRestart "battle"))
@@ -193,10 +193,10 @@ standardKeys = KeyKind
       , ("RightButtonPress", ([CmdMouse], TgtPointerEnemy))
 
       -- Debug and others not to display in help screens
-      , ("CTRL-s", ([CmdDebug], GameSave))
+      , ("CTRL-S", ([CmdDebug], GameSave))
       , ("CTRL-i", ([CmdDebug], GameRestart "battle survival"))
       , ("CTRL-f", ([CmdDebug], GameRestart "safari"))
-      , ("CTRL-r", ([CmdDebug], GameRestart "safari survival"))
+      , ("CTRL-u", ([CmdDebug], GameRestart "safari survival"))
       , ("CTRL-e", ([CmdDebug], GameRestart "defense"))
       , ("CTRL-semicolon", ([CmdInternal], MoveOnceToCursor))
       , ("CTRL-colon", ([CmdInternal], RunOnceToCursor))

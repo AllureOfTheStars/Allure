@@ -22,9 +22,9 @@ cdefs = ContentDef
   , validateSingle = validateSingleModeKind
   , validateAll = validateAllModeKind
   , content =
-      [campaign, duel, skirmish, ambush, battle, battleSurvival, safari, safariSurvival, pvp, coop, defense, screensaver]
+      [campaign, raid, skirmish, ambush, battle, battleSurvival, safari, safariSurvival, pvp, coop, defense, screensaver]
   }
-campaign,        duel, skirmish, ambush, battle, battleSurvival, safari, safariSurvival, pvp, coop, defense, screensaver :: ModeKind
+campaign,        raid, skirmish, ambush, battle, battleSurvival, safari, safariSurvival, pvp, coop, defense, screensaver :: ModeKind
 
 campaign = ModeKind
   { msymbol = 'c'
@@ -35,13 +35,13 @@ campaign = ModeKind
   , mdesc   = "You got stranded looting the blasted bridge of a once luxurious cruise liner. Your current plan is to fight through, gathering your spoils, to the shuttle airlock somewhere among the giant spaceship's uppermost decks. There are animal cries down below and ominous silence up above."
   }
 
-duel = ModeKind
-  { msymbol = 'u'
-  , mname   = "duel"
-  , mfreq   = [("duel", 1)]
-  , mroster = rosterDuel
+raid = ModeKind
+  { msymbol = 'r'
+  , mname   = "raid"
+  , mfreq   = [("raid", 1)]
+  , mroster = rosterRaid
   , mcaves  = cavesSkirmish
-  , mdesc   = "Let's settle the argument about this noble lady outside, in the woody biosphere behind the saloon."
+  , mdesc   = "The Triton City sewers need purging. The first person to break through to the other end will be paid 100 gold grains. Please don't fight."
   }
 
 skirmish = ModeKind
@@ -50,7 +50,7 @@ skirmish = ModeKind
   , mfreq   = [("skirmish", 1)]
   , mroster = rosterSkirmish
   , mcaves  = cavesSkirmish
-  , mdesc   = "You owe restorative surgery to one of our crew: if we win, we take all you have; if you win, you take our old giant spaceship (if you still want it when you see it)."
+  , mdesc   = "You cheated. Come alone to the woody biosphere behind the saloon at noon, if you dare. The winner takes all the spoils, including the keys and the papers of the decrepit giant spaceship."
   }
 
 ambush = ModeKind
@@ -90,7 +90,7 @@ safari = ModeKind
   }
 
 safariSurvival = ModeKind
-  { msymbol = 'r'
+  { msymbol = 'u'
   , mname   = "safari survival"
   , mfreq   = [("safari survival", 1)]
   , mroster = rosterSafariSurvival
@@ -137,7 +137,7 @@ screensaver = safari
   }
 
 
-rosterCampaign, rosterDuel, rosterSkirmish, rosterAmbush, rosterBattle, rosterBattleSurvival, rosterSafari, rosterSafariSurvival, rosterPvP, rosterCoop, rosterDefense :: Roster
+rosterCampaign, rosterRaid, rosterSkirmish, rosterAmbush, rosterBattle, rosterBattleSurvival, rosterSafari, rosterSafariSurvival, rosterPvP, rosterCoop, rosterDefense :: Roster
 
 rosterCampaign = Roster
   { rosterList = [ playerHero
@@ -151,7 +151,7 @@ rosterCampaign = Roster
                  , ("Alien Hierarchy", "Robot Anarchy")
                  , ("Robot Anarchy", "Animal Kingdom") ] }
 
-rosterDuel = Roster
+rosterRaid = Roster
   { rosterList = [ playerHero { fname = "Spacefarer Crew"
                               , fhiCondPoly = hiDweller
                               , fentryLevel = 4
@@ -166,7 +166,7 @@ rosterDuel = Roster
                   , ("Red Collars", "Horror Den") ]
   , rosterAlly = [] }
 
-rosterSkirmish = rosterDuel
+rosterSkirmish = rosterRaid
   { rosterList = [ playerHero { fname = "Spacefarer Crew"
                               , fhiCondPoly = hiDweller
                               , fentryLevel = 4 }
@@ -175,7 +175,7 @@ rosterSkirmish = rosterDuel
                                   , fentryLevel = 4 }
                  , playerHorror ] }
 
-rosterAmbush = rosterDuel
+rosterAmbush = rosterRaid
   { rosterList = [ playerSniper { fname = "Spacefarer Crew"
                                 , fhiCondPoly = hiDweller
                                 , fentryLevel = 7
