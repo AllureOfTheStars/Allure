@@ -130,8 +130,7 @@ playerRobot = Player
   , fhiCondPoly = hiDweller
   , fhasNumbers = False
   , fhasGender = False
-  , ftactic = TRoam  -- TODO: TFollow
-                        -- coordinated via net, follow alien leader
+  , ftactic = TRoam  -- TODO:TFollow -- coordinated via net, follow alien leader
   , fentryLevel = 3
   , finitialActors = 2 + d 2  -- many, because no spawning
   , fleaderMode = LeaderNull

@@ -21,9 +21,9 @@ cdefs = ContentDef
   , validateSingle = validateSingleCaveKind
   , validateAll = validateAllCaveKind
   , content =
-      [rogue, arena, empty, noise, battle, skirmish, ambush, safari1, safari2, safari3, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1arena]
+      [rogue, arena, empty, noise, battle, skirmish, ambush, safari1, safari2, safari3, rogueLit, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1arena]
   }
-rogue,        arena, empty, noise, battle, skirmish, ambush, safari1, safari2, safari3, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1arena :: CaveKind
+rogue,        arena, empty, noise, battle, skirmish, ambush, safari1, safari2, safari3, rogueLit, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1arena :: CaveKind
 
 rogue = CaveKind
   { csymbol       = 'R'
@@ -188,20 +188,29 @@ ambush = rogue  -- lots of lights, to give a chance to snipe
 safari1 = ambush {cfreq = [("caveSafari1", 1)]}
 safari2 = battle {cfreq = [("caveSafari2", 1)]}
 safari3 = skirmish {cfreq = [("caveSafari3", 1)]}
-bridge = rogue
+rogueLit = rogue
+  { csymbol       = 'S'
+  , cname         = "Triton City Sewers"
+  , cfreq         = [("caveRogueLit", 1)]
+  , cdarkChance   = 0
+  , cmaxVoid      = 1%10
+  , cactorCoeff   = 1000  -- deep level with no eqp, so slow spawning
+  , cactorFreq    = [("animal", 50), ("robot", 50)]
+  , citemNum      = 30 * d 2  -- just one level, hard enemies, treasure
+  , citemFreq     = [("useful", 33), ("gem", 33), ("currency", 33)]
+  , cdarkCorTile  = "emergency walkway"
+  , clitCorTile   = "emergency walkway"
+  }
+bridge = rogueLit
   { csymbol       = 'B'
   , cname         = "Captain's bridge"
   , cfreq         = [("caveBridge", 1)]
   , cgrid         = DiceXY (d 2 + 1) 2
   , cminPlaceSize = DiceXY 10 7
   , cmaxPlaceSize = DiceXY 40 14
-  , cdarkChance   = 0
-  , cmaxVoid      = 1%10
   , cactorFreq    = []  -- safe, nothing spawns
   , citemNum      = 15 * d 2  -- lure them in with loot
-  , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq arena
-  , cdarkCorTile  = "emergency walkway"
-  , clitCorTile   = "emergency walkway"
+  , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq rogue
   }
 shallow2rogue = rogue
   { cfreq         = [("shallow random 2", 50)]

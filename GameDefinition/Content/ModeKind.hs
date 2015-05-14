@@ -40,7 +40,7 @@ raid = ModeKind
   , mname   = "raid"
   , mfreq   = [("raid", 1)]
   , mroster = rosterRaid
-  , mcaves  = cavesSkirmish
+  , mcaves  = cavesRaid
   , mdesc   = "The Triton City sewers need purging. The first person to break through to the other end will be paid 100 gold grains. Please don't fight."
   }
 
@@ -160,22 +160,30 @@ rosterRaid = Roster
                                   , fhiCondPoly = hiDweller
                                   , fentryLevel = 4
                                   , finitialActors = 1 }
-                 , playerHorror ]
-  , rosterEnemy = [ ("Spacefarer Crew", "Red Collars")
-                  , ("Spacefarer Crew", "Horror Den")
-                  , ("Red Collars", "Horror Den") ]
+                 , playerAnimal { fentryLevel = 4
+                                , finitialActors = 1 }
+                 , playerRobot { fentryLevel = 4
+                               , finitialActors = 1 } ]
+  , rosterEnemy = [ ("Spacefarer Crew", "Animal Kingdom")
+                  , ("Spacefarer Crew", "Robot Anarchy")
+                  , ("Red Collars", "Animal Kingdom")
+                  , ("Red Collars", "Robot Anarchy") ]
   , rosterAlly = [] }
 
-rosterSkirmish = rosterRaid
+rosterSkirmish = Roster
   { rosterList = [ playerHero { fname = "Spacefarer Crew"
                               , fhiCondPoly = hiDweller
                               , fentryLevel = 4 }
                  , playerAntiHero { fname = "Red Collars"
                                   , fhiCondPoly = hiDweller
                                   , fentryLevel = 4 }
-                 , playerHorror ] }
+                 , playerHorror ]
+  , rosterEnemy = [ ("Spacefarer Crew", "Red Collars")
+                  , ("Spacefarer Crew", "Horror Den")
+                  , ("Red Collars", "Horror Den") ]
+  , rosterAlly = [] }
 
-rosterAmbush = rosterRaid
+rosterAmbush = rosterSkirmish
   { rosterList = [ playerSniper { fname = "Spacefarer Crew"
                                 , fhiCondPoly = hiDweller
                                 , fentryLevel = 7
@@ -319,7 +327,7 @@ rosterDefense = rosterCampaign
                  , playerAnimal
                  , playerRobot ] }
 
-cavesCampaign, cavesSkirmish, cavesAmbush, cavesBattle, cavesSafari :: Caves
+cavesCampaign, cavesRaid, cavesSkirmish, cavesAmbush, cavesBattle, cavesSafari :: Caves
 
 cavesCampaign = IM.fromList
                 $ [(1, ("shallow random 1", Nothing))]
@@ -330,6 +338,8 @@ cavesCampaign = IM.fromList
                   ++ [(10, ("caveEmpty", Just False))]
                   ++ [(11, ("campaign random", Nothing))]
                   ++ [(12, ("caveNoise", Nothing))]
+
+cavesRaid = IM.fromList [(4, ("caveRogueLit", Just True))]
 
 cavesSkirmish = IM.fromList [(4, ("caveSkirmish", Nothing))]
 
