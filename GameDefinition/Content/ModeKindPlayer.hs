@@ -11,7 +11,7 @@ module Content.ModeKindPlayer
   , playerAnimal, playerMobileAnimal
   , playerRobot, playerMobileRobot
   , playerHorror
-  , hiHero, hiDweller
+  , hiHero, hiDweller, hiRaid
   ) where
 
 import qualified Data.EnumMap.Strict as EM
@@ -165,7 +165,7 @@ playerHorror = Player
 victoryOutcomes :: [Outcome]
 victoryOutcomes = [Conquer, Escape]
 
-hiHero, hiDweller :: HiCondPoly
+hiHero, hiDweller, hiRaid :: HiCondPoly
 
 -- Heroes rejoice in loot.
 hiHero = [ ( [(HiLoot, 1)]
@@ -185,6 +185,12 @@ hiDweller = [ ( [(HiConst, 1000)]  -- no loot
             , ( [(HiSurvival, 100)]
               , [minBound..maxBound] \\ victoryOutcomes )
             ]
+
+hiRaid = [ ( [(HiLoot, 1)]
+           , [minBound..maxBound] )
+         , ( [(HiConst, 100), (HiKill, -50)]
+           , victoryOutcomes )
+         ]
 
 minusTen, meleeAdjacent, _meleeAndRanged :: Skills
 

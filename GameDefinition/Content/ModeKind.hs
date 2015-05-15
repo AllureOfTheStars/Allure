@@ -153,11 +153,11 @@ rosterCampaign = Roster
 
 rosterRaid = Roster
   { rosterList = [ playerHero { fname = "Spacefarer Crew"
-                              , fhiCondPoly = hiDweller
+                              , fhiCondPoly = hiRaid
                               , fentryLevel = 4
                               , finitialActors = 1 }
                  , playerAntiHero { fname = "Red Collars"
-                                  , fhiCondPoly = hiDweller
+                                  , fhiCondPoly = hiRaid
                                   , fentryLevel = 4
                                   , finitialActors = 1 }
                  , playerAnimal { fentryLevel = 4
