@@ -33,6 +33,10 @@ standardKeys = KeyKind
       , ("CTRL-m", ([CmdMenu], GameRestart "ambush"))
       , ("CTRL-b", ([CmdMenu], GameRestart "battle"))
       , ("CTRL-c", ([CmdMenu], GameRestart "campaign"))
+      , ("CTRL-i", ([CmdDebug], GameRestart "battle survival"))
+      , ("CTRL-f", ([CmdDebug], GameRestart "safari"))
+      , ("CTRL-u", ([CmdDebug], GameRestart "safari survival"))
+      , ("CTRL-e", ([CmdDebug], GameRestart "defense"))
       , ("CTRL-d", ([CmdMenu], GameDifficultyCycle))
 
       -- Movement and terrain alteration
@@ -194,10 +198,6 @@ standardKeys = KeyKind
 
       -- Debug and others not to display in help screens
       , ("CTRL-S", ([CmdDebug], GameSave))
-      , ("CTRL-i", ([CmdDebug], GameRestart "battle survival"))
-      , ("CTRL-f", ([CmdDebug], GameRestart "safari"))
-      , ("CTRL-u", ([CmdDebug], GameRestart "safari survival"))
-      , ("CTRL-e", ([CmdDebug], GameRestart "defense"))
       , ("CTRL-semicolon", ([CmdInternal], MoveOnceToCursor))
       , ("CTRL-colon", ([CmdInternal], RunOnceToCursor))
       , ("CTRL-period", ([CmdInternal], ContinueToCursor))
