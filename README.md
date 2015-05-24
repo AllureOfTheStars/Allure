@@ -5,7 +5,7 @@ Allure of the Stars [![Build Status](https://travis-ci.org/AllureOfTheStars/Allu
 and tactical squad game. Have a look at [PLAYING.md](GameDefinition/PLAYING.md)
 or jump straight into the fray.
 
-![gameplay screenshot](GameDefinition/screenshot.png?raw=true)
+![gameplay screenshot](https://raw.githubusercontent.com/AllureOfTheStars/media/master/screenshot/campaign2.png)
 
 The game is written in [Haskell] [1] using the [LambdaHack] [10]
 roguelike game engine. Long-term goals of the project are high
