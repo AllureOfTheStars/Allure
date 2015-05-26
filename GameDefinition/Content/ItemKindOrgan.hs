@@ -166,7 +166,7 @@ beeSting = fist
   , icount   = 1
   , iverbHit = "sting"
   , iaspects = [AddArmorMelee 90, AddArmorRanged 90]
-  , ieffects = [Burn $ 2 * d 1, Paralyze 10, RefillHP 5]
+  , ieffects = [Burn $ 2 * d 1, Paralyze 3, RefillHP 5]
   , ifeature = [Identified]  -- not Durable
   , idesc    = "Painful, but beneficial."
   }
@@ -176,7 +176,7 @@ sting = fist
   , icount   = 1
   , iverbHit = "sting"
   , iaspects = [Timeout $ 1 + d 5]
-  , ieffects = [Burn $ 1 * d 1, Recharging (Paralyze 3)]
+  , ieffects = [Burn $ 2 * d 1, Recharging (Paralyze 2)]
   , idesc    = "Painful, debilitating and harmful."
   }
 venomTooth = fist
