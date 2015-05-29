@@ -127,7 +127,7 @@ nose = ItemKind  -- depends solely on smell
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "A blind, slimy mass of clawing, stinging and burning. You'd think it's powerless, but as soon as it touches your trembling body, it's always one step ahead."
-  , ikit     = [ ("nostril", COrgan), ("claw", COrgan)
+  , ikit     = [ ("nostril", COrgan), ("small claw", COrgan)
                , ("tentacle", COrgan), ("tentacle", COrgan)
                , ("thorn", COrgan), ("sting", COrgan)
                , ("sapient brain", COrgan) ]
@@ -212,7 +212,7 @@ griffonVulture = ItemKind
   , ifeature = [Durable, Identified]
   , idesc    = ""
   , ikit     = [ ("screeching beak", COrgan)  -- in reality it grunts and hisses
-               , ("claw", COrgan), ("eye 6", COrgan)
+               , ("small claw", COrgan), ("eye 6", COrgan)
                , ("animal brain", COrgan) ]
   }
 skunk = ItemKind
@@ -243,7 +243,7 @@ armadillo = ItemKind
   , irarity  = [(1, 5)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 30, AddMaxCalm 30, AddSpeed 18
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 30, AddSpeed 17
                , AddSkills $ EM.singleton AbAlter (-1) ]
   , ieffects = []
   , ifeature = [Durable, Identified]
