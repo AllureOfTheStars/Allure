@@ -169,7 +169,7 @@ rosterRaid = Roster
                   , ("Spacefarer Crew", "Robot Anarchy")
                   , ("Red Collars", "Animal Kingdom")
                   , ("Red Collars", "Robot Anarchy") ]
-  , rosterAlly = [] }
+  , rosterAlly = [("Robot Anarchy", "Animal Kingdom")] }
 
 rosterSkirmish = Roster
   { rosterList = [ playerHero { fname = "Spacefarer Crew"
