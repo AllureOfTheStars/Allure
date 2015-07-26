@@ -14,7 +14,6 @@ module Content.ModeKindPlayer
   , hiHero, hiDweller, hiRaid
   ) where
 
-import qualified Data.EnumMap.Strict as EM
 import Data.List
 
 import Game.LambdaHack.Common.Ability
