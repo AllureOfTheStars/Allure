@@ -118,7 +118,7 @@ install:
 
 # mine (7.6 struggles with -O2):
  - cd ..
- - git clone --depth=50 --branch=mikolaj git://github.com/LambdaHack/LambdaHack.git
+ - git clone --depth=50 --branch=master git://github.com/LambdaHack/LambdaHack.git
  - if [ -f Allure/cabal.config ]; then cp Allure/cabal.config LambdaHack; fi
  - cd LambdaHack
  - |
