@@ -109,8 +109,8 @@ paralizingProj = ItemKind
   , irarity  = [(5, 5), (10, 20)]
   , iverbHit = "glue"
   , iweight  = 1500
-  , iaspects = []
-  , ieffects = [ NoEffect "of sticky foam", Paralyze (5 + d 7)
+  , iaspects = [AddHurtRanged (dl 2 |*| 20)]
+  , ieffects = [ Hurt (d 1), NoEffect "of sticky foam", Paralyze (5 + d 7)
                , OnSmash (Explode "glue")]
   , ifeature = [toVelocity 50, Identified, Fragile]  -- unwieldy
   , idesc    = "A can of liquid, fast-setting, construction foam."
@@ -140,8 +140,8 @@ net = ItemKind
   , irarity  = [(3, 5), (10, 4)]
   , iverbHit = "entangle"
   , iweight  = 1000
-  , iaspects = []
-  , ieffects = [ toOrganGameTurn "slow 10" (3 + d 3)
+  , iaspects = [AddHurtRanged (dl 2 |*| 20)]
+  , ieffects = [ Hurt (d 1), toOrganGameTurn "slow 10" (3 + d 3)
                , DropItem CEqp "torso armor" False ]
   , ifeature = [Identified]
   , idesc    = "A large synthetic fibre net with weights affixed along the edges. Entangles armor and restricts movement."
