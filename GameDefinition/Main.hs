@@ -1,12 +1,19 @@
--- Copyright (c) 2008--2011 Andres Loeh, 2010--2015 Mikolaj Konarski
+-- Copyright (c) 2008--2011 Andres Loeh, 2010--2017 Mikolaj Konarski
 -- This file is a part of the computer game Allure of the Stars
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
 -- | The main source code file of Allure of the Stars.
 -- Module "TieKnot" is separated to make it usable in tests.
-module Main ( main ) where
+module Main
+  ( main
+  ) where
 
+import Prelude ()
+
+import Game.LambdaHack.Common.Prelude
+
+import Control.Concurrent.Async
 import System.Environment (getArgs)
 
 import TieKnot
@@ -16,4 +23,6 @@ import TieKnot
 main :: IO ()
 main = do
   args <- getArgs
-  tieKnot args
+  -- Avoid the bound thread that would slow down the communication.
+  a <- async $ tieKnot args
+  wait a

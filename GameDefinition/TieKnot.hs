@@ -1,11 +1,22 @@
--- Copyright (c) 2008--2011 Andres Loeh, 2010--2015 Mikolaj Konarski
+-- Copyright (c) 2008--2011 Andres Loeh, 2010--2017 Mikolaj Konarski
 -- This file is a part of the computer game Allure of the Stars
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
 -- | Here the knot of engine code pieces and the game-specific
 -- content definitions is tied, resulting in an executable game.
-module TieKnot ( tieKnot ) where
+module TieKnot
+  ( tieKnot
+  ) where
+
+import Prelude ()
+
+import Game.LambdaHack.Common.Prelude
+
+import qualified Game.LambdaHack.Common.Kind as Kind
+import qualified Game.LambdaHack.Common.Tile as Tile
+import Game.LambdaHack.SampleImplementation.SampleMonadServer (executorSer)
+import Game.LambdaHack.Server
 
 import qualified Client.UI.Content.KeyKind as Content.KeyKind
 import qualified Content.CaveKind
@@ -14,40 +25,35 @@ import qualified Content.ModeKind
 import qualified Content.PlaceKind
 import qualified Content.RuleKind
 import qualified Content.TileKind
-import Game.LambdaHack.Client
-import qualified Game.LambdaHack.Common.Kind as Kind
-import Game.LambdaHack.SampleImplementation.SampleMonadClient (executorCli)
-import Game.LambdaHack.SampleImplementation.SampleMonadServer (executorSer)
-import Game.LambdaHack.Server
 
 -- | Tie the LambdaHack engine client, server and frontend code
 -- with the game-specific content definitions, and run the game.
+--
+-- The action monad types to be used are determined by the 'executorSer'
+-- and 'executorCli' calls. If other functions are used in their place
+-- the types are different and so the whole pattern of computation
+-- is different. Which of the frontends is run inside the UI client
+-- depends on the flags supplied when compiling the engine library.
 tieKnot :: [String] -> IO ()
 tieKnot args = do
+  -- Options for the next game taken from the commandline.
+  sdebugNxt@DebugModeSer{sallClear} <- debugArgs args
   let -- Common content operations, created from content definitions.
-      -- Evaluated fully to discover errors ASAP and free memory.
-      !copsSlow = Kind.COps
+      -- Evaluated fully to discover errors ASAP and to free memory.
+      cotile = Kind.createOps Content.TileKind.cdefs
+      !cops = Kind.COps
         { cocave  = Kind.createOps Content.CaveKind.cdefs
         , coitem  = Kind.createOps Content.ItemKind.cdefs
         , comode  = Kind.createOps Content.ModeKind.cdefs
         , coplace = Kind.createOps Content.PlaceKind.cdefs
         , corule  = Kind.createOps Content.RuleKind.cdefs
-        , cotile  = Kind.createOps Content.TileKind.cdefs
+        , cotile
+        , coClear = sallClear
+        , coTileSpeedup = Tile.speedup sallClear cotile
         }
-      !copsShared = speedupCOps False copsSlow
-      -- Client content operations.
-      copsClient = Content.KeyKind.standardKeys
-  sdebugNxt <- debugArgs args
-  -- Fire up the frontend with the engine fueled by content.
-  -- The action monad types to be used are determined by the 'exeSer'
-  -- and 'executorCli' calls. If other functions are used in their place
-  -- the types are different and so the whole pattern of computation
-  -- is different. Which of the frontends is run depends on the flags supplied
-  -- when compiling the engine library.
-  let exeServer executorUI executorAI =
-        executorSer $ loopSer copsShared sdebugNxt executorUI executorAI
-  -- Currently a single frontend is started by the server,
-  -- instead of each client starting it's own.
-  srtFrontend (executorCli . loopUI)
-              (executorCli . loopAI)
-              copsClient copsShared (sdebugCli sdebugNxt) exeServer
+      -- Client content operations containing default keypresses
+      -- and command descriptions.
+      !copsClient = Content.KeyKind.standardKeys
+  -- Wire together game content, the main loops of game clients
+  -- and the game server loop.
+  executorSer cops copsClient sdebugNxt

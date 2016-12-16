@@ -1,4 +1,4 @@
-; Copyright (c) 2008--2011 Andres Loeh, 2010--2015 Mikolaj Konarski
+; Copyright (c) 2008--2011 Andres Loeh, 2010--2017 Mikolaj Konarski
 ; This file is a part of the computer game Allure of the Stars
 ; and is released under the terms of the GNU Affero General Public License.
 ; For license and copyright information, see the file LICENSE.
@@ -18,10 +18,8 @@
 ; or elsewhere.
 
 [extra_commands]
-; A handy shorthand with Vi keys
-Macro_1 = ("comma", ([CmdItem], Macro "" ["g"]))
 ; Angband compatibility (accept target)
-Macro_2 = ("KP_Insert", ([CmdMeta], Macro "" ["Return"]))
+Cmd_2 = ("KP_Insert", ([CmdAim], "", ByAimMode {exploration = Help, aiming = Accept}))
 
 [hero_names]
 HeroName_0 = ("Haskell Alvin", "he")
@@ -35,12 +33,13 @@ HeroName_6 = ("Christopher Flatt", "he")
 [ui]
 movementViKeys_hjklyubn = False
 movementLaptopKeys_uk8o79jl = True
-; Monospace fonts that have fixed size regardless of boldness (on some OSes)
-font = "Terminus,DejaVu Sans Mono,Consolas,Courier New,Liberation Mono,Courier,FreeMono,Monospace normal normal normal normal 14"
-;font = "Terminus,DejaVu Sans Mono,Consolas,Courier New,Liberation Mono,Courier,FreeMono,Monospace normal normal normal normal 18"
+; Monospace fonts that have fixed size regardless of boldness (on some OSes at least)
+fontFamily = "DejaVu Sans Mono,Consolas,Courier New,Liberation Mono,Courier,FreeMono,Monospace"
+fontSize = "18px"
 colorIsBold = True
 ; New historyMax takes effect after removal of savefiles.
 historyMax = 5000
 maxFps = 30
 noAnim = False
 runStopMsgs = False
+overrideCmdline = ""
