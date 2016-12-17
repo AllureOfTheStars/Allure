@@ -1,4 +1,4 @@
--- Copyright (c) 2008--2011 Andres Loeh, 2010--2015 Mikolaj Konarski
+-- Copyright (c) 2008--2011 Andres Loeh, 2010--2017 Mikolaj Konarski
 -- This file is a part of the computer game Allure of the Stars
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
@@ -14,7 +14,9 @@ module Content.ModeKindPlayer
   , hiHero, hiDweller, hiRaid
   ) where
 
-import Data.List
+import Prelude ()
+
+import Game.LambdaHack.Common.Prelude
 
 import Game.LambdaHack.Common.Ability
 import Game.LambdaHack.Common.Dice
@@ -40,13 +42,11 @@ playerHero = Player
   }
 
 playerSoldier = playerHero
-  { fname = "Armed Spacefarer Crew"
-  , fgroup = "soldier"
+  { fgroup = "soldier"
   }
 
 playerSniper = playerHero
-  { fname = "Sniper Adventurer Party"
-  , fgroup = "sniper"
+  { fgroup = "sniper"
   }
 
 playerAntiHero = playerHero
@@ -141,7 +141,7 @@ playerMobileRobot = playerRobot
 
 -- | A special player, for summoned actors that don't belong to any
 -- of the main players of a given game. E.g., animals summoned during
--- a duel game between two hero players land in the horror faction.
+-- a brawl game between two hero factions land in the horror faction.
 -- In every game, either all factions for which summoning items exist
 -- should be present or a horror player should be added to host them.
 -- Actors that can be summoned should have "horror" in their @ifreq@ set.

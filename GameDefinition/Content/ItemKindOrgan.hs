@@ -4,16 +4,19 @@
 -- For license and copyright information, see the file LICENSE.
 --
 -- | Organ definitions.
-module Content.ItemKindOrgan ( organs ) where
+module Content.ItemKindOrgan
+  ( organs
+  ) where
 
-import qualified Data.EnumMap.Strict as EM
+import Prelude ()
+
+import Game.LambdaHack.Common.Prelude
 
 import Game.LambdaHack.Common.Ability
 import Game.LambdaHack.Common.Color
 import Game.LambdaHack.Common.Dice
 import Game.LambdaHack.Common.Flavour
 import Game.LambdaHack.Common.Misc
-import Game.LambdaHack.Common.Msg
 import Game.LambdaHack.Content.ItemKind
 
 organs :: [ItemKind]
@@ -37,14 +40,13 @@ fist = ItemKind
   , iweight  = 2000
   , iaspects = []
   , ieffects = [Hurt (4 * d 1)]
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable, Identified, Meleeable]
   , idesc    = ""
   , ikit     = []
   }
 foot = fist
   { iname    = "foot"
   , ifreq    = [("foot", 50)]
-  , icount   = 2
   , iverbHit = "kick"
   , ieffects = [Hurt (4 * d 1)]
   , idesc    = ""
@@ -64,7 +66,6 @@ claw = fist
 smallClaw = fist
   { iname    = "small claw"
   , ifreq    = [("small claw", 50)]
-  , icount   = 2
   , iverbHit = "slash"
   , ieffects = [Hurt (2 * d 1)]
   , idesc    = ""
@@ -72,6 +73,7 @@ smallClaw = fist
 snout = fist
   { iname    = "snout"
   , ifreq    = [("snout", 10)]
+  , icount   = 1
   , iverbHit = "bite"
   , ieffects = [Hurt (2 * d 1)]
   , idesc    = ""
@@ -125,7 +127,7 @@ tentacle = fist
 razor = fist
   { iname    = "razor"
   , ifreq    = [("razor", 100)]
-  , icount   = 7
+  , icount   = 2 + d 5
   , iverbHit = "slice"
   , ieffects = [Hurt (2 * d 1)]
   , idesc    = ""
@@ -136,7 +138,7 @@ thorn = fist
   , icount   = 2 + d 3
   , iverbHit = "impale"
   , ieffects = [Hurt (2 * d 1)]
-  , ifeature = [Identified]  -- not Durable
+  , ifeature = [Identified, Meleeable]  -- not Durable
   , idesc    = ""
   }
 boilingFissure = fist
@@ -145,7 +147,7 @@ boilingFissure = fist
   , icount   = 5 + d 5
   , iverbHit = "hiss at"
   , ieffects = [Burn $ 1 * d 1]
-  , ifeature = [Identified]  -- not Durable
+  , ifeature = [Identified, Meleeable]  -- not Durable
   , idesc    = ""
   }
 biogasFissure = boilingFissure
@@ -166,8 +168,8 @@ beeSting = fist
   , icount   = 1
   , iverbHit = "sting"
   , iaspects = [AddArmorMelee 90, AddArmorRanged 90]
-  , ieffects = [Burn $ 2 * d 1, Paralyze 3, RefillHP 5]
-  , ifeature = [Identified]  -- not Durable
+  , ieffects = [Burn $ 2 * d 1, Paralyze 6, RefillHP 5]
+  , ifeature = [Identified, Meleeable]  -- not Durable
   , idesc    = "Painful, but beneficial."
   }
 sting = fist
@@ -176,7 +178,7 @@ sting = fist
   , icount   = 1
   , iverbHit = "sting"
   , iaspects = [Timeout $ 1 + d 5]
-  , ieffects = [Burn $ 2 * d 1, Recharging (Paralyze 2)]
+  , ieffects = [Burn $ 2 * d 1, Recharging (Paralyze 4)]
   , idesc    = "Painful, debilitating and harmful."
   }
 venomTooth = fist
@@ -201,7 +203,7 @@ venomFang = fist
                , Recharging (toOrganNone "poisoned") ]
   , idesc    = ""
   }
-screechingBeak = armoredSkin
+screechingBeak = fist
   { iname    = "screeching beak"
   , ifreq    = [("screeching beak", 100)]
   , icount   = 1
@@ -227,7 +229,7 @@ liveWire = fist
   , iverbHit = "shock"
   , iaspects = [Timeout $ 3 + d 3]
   , ieffects = [ Hurt (1 * d 1)
-               , Recharging (DropItem COrgan "temporary conditions" True)
+               , Recharging (DropItem COrgan "temporary conditions")
                , Recharging $ RefillHP (-2)
                ]
   , idesc    = ""
@@ -275,7 +277,6 @@ vision :: Int -> ItemKind
 vision n = armoredSkin
   { iname    = "vision"
   , ifreq    = [(toGroupName $ "vision" <+> tshow n, 100)]
-  , icount   = 1
   , iverbHit = "visualize"
   , iaspects = [AddSight (intToDice n)]
   , idesc    = ""
@@ -298,53 +299,48 @@ nostril = armoredSkin
 
 -- * Assorted
 
-insectMortality = fist
+insectMortality = armoredSkin
   { iname    = "insect mortality"
   , ifreq    = [("insect mortality", 100)]
-  , icount   = 1
   , iverbHit = "age"
-  , iaspects = [Periodic, Timeout $ 40 + d 10]
-  , ieffects = [Recharging (RefillHP (-1))]
+  , iaspects = [Timeout $ 40 + d 10]
+  , ieffects = [Periodic, Recharging (RefillHP (-1))]
   , idesc    = ""
   }
 sapientBrain = armoredSkin
   { iname    = "sapient brain"
   , ifreq    = [("sapient brain", 100)]
-  , icount   = 1
   , iverbHit = "outbrain"
-  , iaspects = [AddSkills unitSkills]
+  , iaspects = [AddAbility ab 1 | ab <- [minBound..maxBound]]
+               ++ [AddAbility AbAlter 2]  -- can use stairs
   , idesc    = ""
   }
 animalBrain = armoredSkin
   { iname    = "animal brain"
   , ifreq    = [("animal brain", 100)]
-  , icount   = 1
   , iverbHit = "blank"
-  , iaspects = [let absNo = [AbDisplace, AbMoveItem, AbProject, AbApply]
-                    sk = EM.fromList $ zip absNo [-1, -1..]
-                in AddSkills $ addSkills unitSkills sk]
+  , iaspects = [AddAbility ab 1 | ab <- [minBound..maxBound]]
+               ++ [AddAbility AbAlter 2]  -- can use stairs
+               ++ [ AddAbility ab (-1)
+                  | ab <- [AbDisplace, AbMoveItem, AbProject, AbApply] ]
   , idesc    = ""
   }
 robotBrain = armoredSkin
   { iname    = "robot brain"
   , ifreq    = [("robot brain", 100)]
-  , icount   = 1
   , iverbHit = "outcompute"
-  , iaspects = [let absNo = [AbApply]
-                    sk = EM.fromList $ zip absNo [-1, -1..]
-                in AddSkills $ addSkills unitSkills sk]
+  , iaspects = [AddAbility ab 1 | ab <- [minBound..maxBound]]
+               ++ [AddAbility AbApply (-1)]
   , idesc    = ""
   }
 speedGland :: Int -> ItemKind
 speedGland n = armoredSkin
   { iname    = "speed gland"
   , ifreq    = [(toGroupName $ "speed gland" <+> tshow n, 100)]
-  , icount   = 1
   , iverbHit = "spit at"
   , iaspects = [ AddSpeed $ intToDice n
-               , Periodic
                , Timeout $ intToDice $ 100 `div` n ]
-  , ieffects = [Recharging (RefillHP 1)]
+  , ieffects = [Periodic, Recharging (RefillHP 1)]
   , idesc    = ""
   }
 speedGland2 = speedGland 2
@@ -355,10 +351,9 @@ speedGland10 = speedGland 10
 scentGland = armoredSkin  -- TODO: cone attack, 3m away, project? apply?
   { iname    = "scent gland"
   , ifreq    = [("scent gland", 100)]
-  , icount   = 1
   , iverbHit = "spray at"
-  , iaspects = [Periodic, Timeout $ 10 + d 2 |*| 5 ]
-  , ieffects = [ Recharging (Explode "distressing odor")
+  , iaspects = [Timeout $ 10 + d 2 |*| 5 ]
+  , ieffects = [ Periodic, Recharging (Explode "distressing odor")
                , Recharging ApplyPerfume ]
   , idesc    = ""
   }
@@ -366,39 +361,36 @@ boilingVent = armoredSkin
   { iname    = "vent"
   , ifreq    = [("boiling vent", 100)]
   , iflavour = zipPlain [BrBlue]
-  , icount   = 1
   , iverbHit = "menace"
-  , iaspects = [Periodic, Timeout $ 2 + d 2 |*| 5]
-  , ieffects = [Recharging (Explode "boiling water")]
+  , iaspects = [Timeout $ 2 + d 2 |*| 5]
+  , ieffects = [Periodic, Recharging (Explode "boiling water")]
   , idesc    = ""
   }
 biogasVent = armoredSkin
   { iname    = "vent"
   , ifreq    = [("biogas vent", 100)]
   , iflavour = zipPlain [BrGreen]
-  , icount   = 1
   , iverbHit = "menace"
-  , iaspects = [Periodic, Timeout $ 2 + d 2 |*| 5]
-  , ieffects = [Recharging (Explode "weakness mist")]
+  , iaspects = [Timeout $ 2 + d 2 |*| 5]
+  , ieffects = [Periodic, Recharging (Explode "weakness mist")]
   , idesc    = ""
   }
 medbotVent = armoredSkin
   { iname    = "vent"
   , ifreq    = [("medbot vent", 100)]
   , iflavour = zipPlain [BrYellow]
-  , icount   = 1
   , iverbHit = "menace"
-  , iaspects = [Periodic, Timeout $ 2 + d 2 |*| 5]
-  , ieffects = [Recharging (Explode "protecting balm")]
+  , iaspects = [Timeout $ 2 + d 2 |*| 5]
+  , ieffects = [Periodic, Recharging (Explode "protecting balm")]
   , idesc    = ""
   }
 wasteContainer = armoredSkin
   { iname    = "waste container"
   , ifreq    = [("waste container", 100)]
-  , icount   = 1
   , iverbHit = "spill over"
-  , iaspects = [Periodic, Timeout $ 5 + d 5 |*| 10]
-  , ieffects = [ Recharging (Summon [("mobile animal", 1)] $ 1 + dl 2)
+  , iaspects = [Timeout $ 5 + d 5 |*| 10]
+  , ieffects = [ Periodic
+               , Recharging (Summon [("mobile animal", 1)] $ 1 + dl 2)
                , Recharging (RefillHP 1)
                , Recharging (Explode "waste") ]
   , idesc    = ""
@@ -406,15 +398,14 @@ wasteContainer = armoredSkin
 spotlight = armoredSkin
   { iname    = "spotlight"
   , ifreq    = [("spotlight", 100)]
-  , icount   = 1
   , iverbHit = "blind"
-  , iaspects = [AddLight 3]
+  , iaspects = [AddShine 3]
   , idesc    = ""
   }
 bonusHP = armoredSkin
-  { iname    = "bonus HP"
+  { isymbol  = '+'
+  , iname    = "bonus HP"
   , ifreq    = [("bonus HP", 100)]
-  , icount   = 1
   , iverbHit = "intimidate"
   , iweight  = 0
   , iaspects = [AddMaxHP 1]

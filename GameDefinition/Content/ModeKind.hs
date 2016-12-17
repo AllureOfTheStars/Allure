@@ -1,10 +1,16 @@
--- Copyright (c) 2008--2011 Andres Loeh, 2010--2015 Mikolaj Konarski
+-- Copyright (c) 2008--2011 Andres Loeh, 2010--2017 Mikolaj Konarski
 -- This file is a part of the computer game Allure of the Stars
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
 -- | Game mode definitions.
-module Content.ModeKind ( cdefs ) where
+module Content.ModeKind
+  ( cdefs
+  ) where
+
+import Prelude ()
+
+import Game.LambdaHack.Common.Prelude
 
 import qualified Data.IntMap.Strict as IM
 
@@ -21,17 +27,17 @@ cdefs = ContentDef
   , getFreq = mfreq
   , validateSingle = validateSingleModeKind
   , validateAll = validateAllModeKind
-  , content =
-      [campaign, raid, skirmish, ambush, battle, battleSurvival, safari, safariSurvival, pvp, coop, defense, screensaver]
+  , content = contentFromList
+      [exploration, raid, brawl, ambush, battle, battleSurvival, safari, safariSurvival, pvp, coop, defense, screensaverSafari, screensaverRaid, screensaverBrawl, screensaverAmbush]
   }
-campaign,        raid, skirmish, ambush, battle, battleSurvival, safari, safariSurvival, pvp, coop, defense, screensaver :: ModeKind
+exploration,        raid, brawl, ambush, battle, battleSurvival, safari, safariSurvival, pvp, coop, defense, screensaverSafari, screensaverRaid, screensaverBrawl, screensaverAmbush :: ModeKind
 
-campaign = ModeKind
+exploration = ModeKind
   { msymbol = 'c'
-  , mname   = "campaign"
-  , mfreq   = [("campaign", 1)]
-  , mroster = rosterCampaign
-  , mcaves  = cavesCampaign
+  , mname   = "exploration"
+  , mfreq   = [("exploration", 1)]
+  , mroster = rosterExploration
+  , mcaves  = cavesExploration
   , mdesc   = "You got stranded looting the blasted bridge of a once luxurious cruise liner. Your current plan is to fight through, gathering your spoils, to the shuttle airlock somewhere among the giant spaceship's uppermost decks. There are animal cries down below and ominous silence up above."
   }
 
@@ -41,16 +47,16 @@ raid = ModeKind
   , mfreq   = [("raid", 1)]
   , mroster = rosterRaid
   , mcaves  = cavesRaid
-  , mdesc   = "The Triton City sewers need purging. The first person to break through to the other end will be paid 100 gold grains. Please don't fight."
+  , mdesc   = "The Triton City sewers need purging. The first person to break through to the other end will be paid 100 gold grains. Please don't fight each other."
   }
 
-skirmish = ModeKind
+brawl = ModeKind
   { msymbol = 'k'
-  , mname   = "skirmish"
-  , mfreq   = [("skirmish", 1)]
-  , mroster = rosterSkirmish
-  , mcaves  = cavesSkirmish
-  , mdesc   = "You cheated. Come alone to the woody biosphere behind the saloon at noon, if you dare. The winner takes all the spoils, including the keys and the papers of the decrepit giant spaceship."
+  , mname   = "brawl"
+  , mfreq   = [("brawl", 1)]
+  , mroster = rosterBrawl
+  , mcaves  = cavesBrawl
+  , mdesc   = "\"You cheated. Come alone to the woody biosphere behind the saloon at noon, if you dare. The winner takes all the spoils, including the keys and the papers of the decrepit giant spaceship.\""
   }
 
 ambush = ModeKind
@@ -86,7 +92,7 @@ safari = ModeKind
   , mfreq   = [("safari", 1)]
   , mroster = rosterSafari
   , mcaves  = cavesSafari
-  , mdesc   = "In this simulation you'll discover the joys of hunting the most exquisite of Earth's flora and fauna, both animal and semi-intelligent (exit at the uppermost level)."
+  , mdesc   = "In this simulation you'll discover the joys of hunting the most exquisite of Earth's flora and fauna, both animal and semi-intelligent. Exit at the topmost level. (VR recording recovered from an alien nest debris)"
   }
 
 safariSurvival = ModeKind
@@ -103,8 +109,8 @@ pvp = ModeKind
   , mname   = "PvP"
   , mfreq   = [("PvP", 1)]
   , mroster = rosterPvP
-  , mcaves  = cavesSkirmish
-  , mdesc   = "(Not usable right now.) This is a fight to the death between two human-controlled teams."
+  , mcaves  = cavesBrawl
+  , mdesc   = "(Not really a multiplayer in this game version.) This is a fight to the death between two human-controlled teams."
   }
 
 coop = ModeKind
@@ -112,7 +118,7 @@ coop = ModeKind
   , mname   = "Coop"
   , mfreq   = [("Coop", 1)]
   , mroster = rosterCoop
-  , mcaves  = cavesCampaign
+  , mcaves  = cavesExploration
   , mdesc   = "(This mode is intended solely for automated testing.)"
   }
 
@@ -121,26 +127,55 @@ defense = ModeKind
   , mname   = "defense"
   , mfreq   = [("defense", 1)]
   , mroster = rosterDefense
-  , mcaves  = cavesCampaign
+  , mcaves  = cavesExploration
   , mdesc   = "Don't let the half-witted humans derail your operation and flee, like the puny, naked, tentacle-less beasts that they are!"
   }
 
-screensaver = safari
-  { mname   = "safari screensaver"
-  , mfreq   = [("starting", 1)]
+screensaverSafari = safari
+  { mname   = "Auto-Safari"
+  , mfreq   = [("starting", 1), ("no confirms", 1)]
   , mroster = rosterSafari
       { rosterList = (head (rosterList rosterSafari))
                        -- changing leader by client needed, because of TFollow
-                       -- changing level by client enabled for UI
-                       {fleaderMode = LeaderAI $ AutoLeader False False}
+                       {fleaderMode = LeaderAI $ AutoLeader False True}
                      : tail (rosterList rosterSafari)
       }
   }
 
+screensaverRaid = raid
+  { mname   = "Auto-Raid"
+  , mfreq   = [("starting", 1), ("starting JS", 1), ("no confirms", 1)]
+  , mroster = rosterRaid
+      { rosterList = (head (rosterList rosterRaid))
+                       {fleaderMode = LeaderAI $ AutoLeader False False}
+                     : tail (rosterList rosterRaid)
+      }
+  }
 
-rosterCampaign, rosterRaid, rosterSkirmish, rosterAmbush, rosterBattle, rosterBattleSurvival, rosterSafari, rosterSafariSurvival, rosterPvP, rosterCoop, rosterDefense :: Roster
+screensaverBrawl = brawl
+  { mname   = "Auto-Brawl"
+  , mfreq   = [("starting", 1), ("starting JS", 1), ("no confirms", 1)]
+  , mroster = rosterBrawl
+      { rosterList = (head (rosterList rosterBrawl))
+                       {fleaderMode = LeaderAI $ AutoLeader False False}
+                     : tail (rosterList rosterBrawl)
+      }
+  }
 
-rosterCampaign = Roster
+screensaverAmbush = ambush
+  { mname   = "Auto-Ambush"
+  , mfreq   = [("starting", 1), ("starting JS", 1), ("no confirms", 1)]
+  , mroster = rosterAmbush
+      { rosterList = (head (rosterList rosterAmbush))
+                       {fleaderMode = LeaderAI $ AutoLeader False False}
+                     : tail (rosterList rosterAmbush)
+      }
+  }
+
+
+rosterExploration, rosterRaid, rosterBrawl, rosterAmbush, rosterBattle, rosterBattleSurvival, rosterSafari, rosterSafariSurvival, rosterPvP, rosterCoop, rosterDefense :: Roster
+
+rosterExploration = Roster
   { rosterList = [ playerHero
                  , playerMonster
                  , playerAnimal
@@ -153,8 +188,7 @@ rosterCampaign = Roster
                  , ("Robot Anarchy", "Animal Kingdom") ] }
 
 rosterRaid = Roster
-  { rosterList = [ playerHero { fname = "Spacefarer Crew"
-                              , fhiCondPoly = hiRaid
+  { rosterList = [ playerHero { fhiCondPoly = hiRaid
                               , fentryLevel = 4
                               , finitialActors = 1 }
                  , playerAntiHero { fname = "Red Collars"
@@ -171,11 +205,12 @@ rosterRaid = Roster
                   , ("Red Collars", "Robot Anarchy") ]
   , rosterAlly = [("Robot Anarchy", "Animal Kingdom")] }
 
-rosterSkirmish = Roster
-  { rosterList = [ playerHero { fname = "Spacefarer Crew"
+rosterBrawl = Roster
+  { rosterList = [ playerHero { fcanEscape = False
                               , fhiCondPoly = hiDweller
                               , fentryLevel = 4 }
                  , playerAntiHero { fname = "Red Collars"
+                                  , fcanEscape = False
                                   , fhiCondPoly = hiDweller
                                   , fentryLevel = 4 }
                  , playerHorror ]
@@ -184,19 +219,25 @@ rosterSkirmish = Roster
                   , ("Red Collars", "Horror Den") ]
   , rosterAlly = [] }
 
-rosterAmbush = rosterSkirmish
-  { rosterList = [ playerSniper { fname = "Spacefarer Crew"
+rosterAmbush = Roster
+  { rosterList = [ playerSniper { fcanEscape = False
                                 , fhiCondPoly = hiDweller
                                 , fentryLevel = 7
                                 , finitialActors = 4 }
                  , playerAntiSniper { fname = "Red Collars"
+                                    , fcanEscape = False
                                     , fhiCondPoly = hiDweller
                                     , fentryLevel = 7
                                     , finitialActors = 4 }
-                 , playerHorror {fentryLevel = 7} ] }
+                 , playerHorror {fentryLevel = 7} ]
+  , rosterEnemy = [ ("Spacefarer Crew", "Red Collars")
+                  , ("Spacefarer Crew", "Horror Den")
+                  , ("Red Collars", "Horror Den") ]
+  , rosterAlly = [] }
 
 rosterBattle = Roster
-  { rosterList = [ playerSoldier { fhiCondPoly = hiDweller
+  { rosterList = [ playerSoldier { fcanEscape = False
+                                 , fhiCondPoly = hiDweller
                                  , fentryLevel = 7
                                  , finitialActors = 5 }
                  , playerMobileMonster { fentryLevel = 7
@@ -208,19 +249,20 @@ rosterBattle = Roster
                  , playerMobileRobot { fentryLevel = 7
                                      , finitialActors = 15
                                      , fneverEmpty = True } ]
-  , rosterEnemy = [ ("Armed Spacefarer Crew", "Alien Hierarchy")
-                  , ("Armed Spacefarer Crew", "Animal Kingdom")
-                  , ("Armed Spacefarer Crew", "Robot Anarchy") ]
+  , rosterEnemy = [ ("Spacefarer Crew", "Alien Hierarchy")
+                  , ("Spacefarer Crew", "Animal Kingdom")
+                  , ("Spacefarer Crew", "Robot Anarchy") ]
   , rosterAlly = [ ("Alien Hierarchy", "Animal Kingdom")
                 , ("Alien Hierarchy", "Robot Anarchy")
                 , ("Robot Anarchy", "Animal Kingdom") ] }
 
 rosterBattleSurvival = rosterBattle
-  { rosterList = [ playerSoldier { fhiCondPoly = hiDweller
+  { rosterList = [ playerSoldier { fcanEscape = False
+                                 , fhiCondPoly = hiDweller
                                  , fentryLevel = 7
                                  , finitialActors = 5
                                  , fleaderMode =
-                                     LeaderAI $ AutoLeader True False
+                                     LeaderAI $ AutoLeader False False
                                  , fhasUI = False }
                  , playerMobileMonster { fentryLevel = 7
                                        , finitialActors = 35
@@ -255,7 +297,7 @@ playerAnimalMagnificent =
                      , fneverEmpty = True
                      , fentryLevel = 7
                      , finitialActors = 10
-                     , fleaderMode =  -- move away from stairs
+                     , fleaderMode =  -- False to move away from stairs
                          LeaderAI $ AutoLeader True False }
 
 playerAnimalExquisite =
@@ -284,20 +326,22 @@ rosterSafari = Roster
 
 rosterSafariSurvival = rosterSafari
   { rosterList = [ playerMonsterTourist
-                     { fleaderMode = LeaderAI $ AutoLeader True False
+                     { fleaderMode = LeaderAI $ AutoLeader True True
                      , fhasUI = False }
                  , playerHunamConvict
                  , playerAnimalMagnificent
-                     { fleaderMode = LeaderUI $ AutoLeader False False
+                     { fleaderMode = LeaderUI $ AutoLeader True False
                      , fhasUI = True }
                  , playerAnimalExquisite
                  ] }
 
 rosterPvP = Roster
-  { rosterList = [ playerHero { fname = "Red"
-                              , fhiCondPoly = hiDweller
-                              , fentryLevel = 4 }
+  { rosterList = [ playerAntiHero { fname = "Red"
+                                  , fcanEscape = False
+                                  , fhiCondPoly = hiDweller
+                                  , fentryLevel = 4 }
                  , playerHero { fname = "Blue"
+                              , fcanEscape = False
                               , fhiCondPoly = hiDweller
                               , fentryLevel = 4 }
                  , playerHorror ]
@@ -310,7 +354,9 @@ rosterCoop = Roster
   { rosterList = [ playerAntiHero { fname = "Coral" }
                  , playerAntiHero { fname = "Amber"
                                   , fleaderMode = LeaderNull }
-                 , playerAnimal { fhasUI = True }
+                 , playerAnimal { fleaderMode =
+                                     LeaderUI $ AutoLeader True True
+                                , fhasUI = True }
                  , playerAnimal
                  , playerMonster { fname = "Alien Hierarchy"
                                  , finitialActors = 3 }
@@ -322,32 +368,32 @@ rosterCoop = Roster
                   , ("Amber", "Alien Hierarchy") ]
   , rosterAlly = [ ("Coral", "Amber") ] }
 
-rosterDefense = rosterCampaign
+rosterDefense = rosterExploration
   { rosterList = [ playerAntiHero
                  , playerAntiMonster
                  , playerAnimal
                  , playerRobot ] }
 
-cavesCampaign, cavesRaid, cavesSkirmish, cavesAmbush, cavesBattle, cavesSafari :: Caves
+cavesExploration, cavesRaid, cavesBrawl, cavesAmbush, cavesBattle, cavesSafari :: Caves
 
-cavesCampaign = IM.fromList
-                $ [(1, ("shallow random 1", Nothing))]
-                  ++ [(2, ("shallow random 2", Nothing))]
-                  ++ [(3, ("caveBridge", Nothing))]
-                  ++ [(4, ("caveNoise", Nothing))]
-                  ++ zip [5..9] (repeat ("campaign random", Nothing))
-                  ++ [(10, ("caveEmpty", Just False))]
-                  ++ [(11, ("campaign random", Nothing))]
-                  ++ [(12, ("caveNoise", Nothing))]
+cavesExploration = IM.fromList $
+  [(1, "shallow random 1")]
+  ++ [(2, "shallow random 2")]
+  ++ [(3, "caveBridge")]
+  ++ [(4, "caveNoise")]
+  ++ zip [5..9] (repeat "default random")
+  ++ [(10, "caveEmptyExit")]
+  ++ [(11, "default random")]
+  ++ [(12, "caveNoise")]
 
-cavesRaid = IM.fromList [(4, ("caveRogueLit", Just True))]
+cavesRaid = IM.fromList [(4, "caveRogueLit")]
 
-cavesSkirmish = IM.fromList [(4, ("caveSkirmish", Nothing))]
+cavesBrawl = IM.fromList [(4, "caveBrawl")]
 
-cavesAmbush = IM.fromList [(7, ("caveAmbush", Nothing))]
+cavesAmbush = IM.fromList [(7, "caveAmbush")]
 
-cavesBattle = IM.fromList [(7, ("caveBattle", Nothing))]
+cavesBattle = IM.fromList [(7, "caveBattle")]
 
-cavesSafari = IM.fromList [ (4, ("caveSafari1", Nothing))
-                          , (7, ("caveSafari2", Nothing))
-                          , (10, ("caveSafari3", Just False)) ]
+cavesSafari = IM.fromList [ (4, "caveSafari1")
+                          , (7, "caveSafari2")
+                          , (10, "caveSafari3") ]

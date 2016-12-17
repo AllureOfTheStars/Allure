@@ -1,19 +1,22 @@
--- Copyright (c) 2008--2011 Andres Loeh, 2010--2015 Mikolaj Konarski
+-- Copyright (c) 2008--2011 Andres Loeh, 2010--2017 Mikolaj Konarski
 -- This file is a part of the computer game Allure of the Stars
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
 -- | Terrain tile definitions.
-module Content.TileKind ( cdefs ) where
+module Content.TileKind
+  ( cdefs
+  ) where
 
-import Control.Arrow (first)
-import Data.Maybe
+import Prelude ()
+
+import Game.LambdaHack.Common.Prelude
+
 import qualified Data.Text as T
 
 import Game.LambdaHack.Common.Color
 import Game.LambdaHack.Common.ContentDef
 import Game.LambdaHack.Common.Misc
-import Game.LambdaHack.Common.Msg
 import qualified Game.LambdaHack.Content.ItemKind as IK
 import Game.LambdaHack.Content.TileKind
 
@@ -24,29 +27,50 @@ cdefs = ContentDef
   , getFreq = tfreq
   , validateSingle = validateSingleTileKind
   , validateAll = validateAllTileKind
-  , content =
-      [wall, wallCache, hardRock, doorlessWall, oriel, pillar, lampPost, burningBush, bush, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorActorLit, floorItemLit, floorActorItemLit, floorArenaShade, floorRedLit, floorBlueLit, floorGreenLit]
-      ++ map makeDarkColor [floorCorridorLit, floorActorLit, floorItemLit, floorActorItemLit]
+  , content = contentFromList $
+      [unknown, wall, wallGlass, wallCache, hardRock, doorlessWall, oriel, pillar, pillarIce, lampPost, burningBush, bush, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorActorLit, floorItemLit, floorActorItemLit, floorArenaShade, floorRedLit, floorBlueLit, floorGreenLit, floorFog, floorSmoke]
+      ++ map makeDarkColor [floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorActorLit, floorItemLit, floorActorItemLit]
   }
-wall,        wallCache, hardRock, doorlessWall, oriel, pillar, lampPost, burningBush, bush, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, liftUp, lift, liftDown, unknown, floorCorridorLit, floorActorLit, floorItemLit, floorActorItemLit, floorArenaShade, floorRedLit, floorBlueLit, floorGreenLit :: TileKind
+unknown,        wall, wallGlass, wallCache, hardRock, doorlessWall, oriel, pillar, pillarIce, lampPost, burningBush, bush, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorActorLit, floorItemLit, floorActorItemLit, floorArenaShade, floorRedLit, floorBlueLit, floorGreenLit, floorFog, floorSmoke :: TileKind
 
+unknown = TileKind  -- needs to have index 0 and alter 1
+  { tsymbol  = ' '
+  , tname    = "unknown space"
+  , tfreq    = [("unknown space", 1)]
+  , tcolor   = defFG
+  , tcolor2  = defFG
+  , talter   = 1
+  , tfeature = [Dark]
+  }
 oriel = TileKind
   { tsymbol  = '\''
   , tname    = "oriel"
   , tfreq    = [("oriels fence", 4)]
   , tcolor   = White
   , tcolor2  = Black
+  , talter   = maxBound
   , tfeature = [Dark, Impenetrable]
   }
 wall = TileKind
   { tsymbol  = '#'
   , tname    = "granite wall"
   , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
-               , ("cachable", 70)
-               , ("noiseSet", 100), ("battleSet", 250) ]
+               , ("cachable", 70), ("stair terminal", 90)
+               , ("noiseSet", 95), ("battleSet", 250)
+               , ("wallOrGlassOver_%_Lit", 90)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfeature = [HideAs "suspect wall"]
+  , talter   = 100
+  , tfeature = [HideAs "suspect wall", Indistinct]
+  }
+wallGlass = TileKind
+  { tsymbol  = '#'
+  , tname    = "polished crystal wall"
+  , tfreq    = [("wallOrGlassOver_%_Lit", 10)]
+  , tcolor   = BrBlue
+  , tcolor2  = Blue
+  , talter   = 10
+  , tfeature = [Clear]
   }
 hardRock = TileKind
   { tsymbol  = '#'
@@ -54,6 +78,7 @@ hardRock = TileKind
   , tfreq    = [("basic outer fence", 100), ("oriels fence", 96)]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
+  , talter   = maxBound
   , tfeature = [Impenetrable]
   }
 doorlessWall = TileKind
@@ -62,24 +87,36 @@ doorlessWall = TileKind
   , tfreq    = [("doorlessWallOver_#", 100)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
+  , talter   = 100
   , tfeature = []
   }
 pillar = TileKind
   { tsymbol  = 'O'
   , tname    = "rock"
-  , tfreq    = [ ("legendLit", 100), ("legendDark", 100)
-               , ("skirmishSet", 5) ]
-  , tcolor   = BrWhite
-  , tcolor2  = defFG
+  , tfreq    = [ ("stair terminal", 10)
+               , ("legendLit", 100), ("legendDark", 100)
+               , ("brawlSet", 50) ]
+  , tcolor   = BrCyan  -- not BrWhite, to tell from heroes
+  , tcolor2  = Cyan
+  , talter   = 100
   , tfeature = []
+  }
+pillarIce = pillar
+  { tname    = "ice"
+  , tfreq    = [("brawlSet", 2)]
+  , tcolor   = BrBlue
+  , tcolor2  = Blue
+  , talter   = 10
+  , tfeature = [Clear]
   }
 wallCache = TileKind
   { tsymbol  = '&'
   , tname    = "cache"
-  , tfreq    = [ ("cachable", 30)
+  , tfreq    = [ ("cachable", 30), ("stair terminal", 1)
                , ("legendLit", 100), ("legendDark", 100) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
+  , talter   = 5
   , tfeature = [ Cause $ IK.CreateItem CGround "useful" IK.TimerNone
                , ChangeTo "cachable" ]
   }
@@ -89,30 +126,34 @@ lampPost = TileKind
   , tfreq    = [("lampPostOver_O", 90)]
   , tcolor   = BrYellow
   , tcolor2  = Brown
+  , talter   = 100
   , tfeature = []
   }
 burningBush = TileKind
   { tsymbol  = 'O'
   , tname    = "burning bush"
-  , tfreq    = [("lampPostOver_O", 10), ("ambushSet", 3), ("battleSet", 2)]
+  , tfreq    = [("lampPostOver_O", 10), ("ambushSet", 3)]
   , tcolor   = BrRed
   , tcolor2  = Red
+  , talter   = 10
   , tfeature = []
   }
 bush = TileKind
   { tsymbol  = 'O'
   , tname    = "bush"
-  , tfreq    = [("ambushSet", 100) ]
+  , tfreq    = [("ambushSet", 100), ("battleSet", 30)]
   , tcolor   = Green
   , tcolor2  = BrBlack
+  , talter   = 10
   , tfeature = [Dark]
   }
 tree = TileKind
   { tsymbol  = 'O'
   , tname    = "tree"
-  , tfreq    = [("skirmishSet", 14), ("battleSet", 20), ("treeShadeOver_O", 1)]
+  , tfreq    = [("brawlSet", 140), ("treeShadeOver_O", 1)]
   , tcolor   = BrGreen
   , tcolor2  = Green
+  , talter   = 50
   , tfeature = []
   }
 wallSuspect = TileKind
@@ -121,7 +162,8 @@ wallSuspect = TileKind
   , tfreq    = [("suspect wall", 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfeature = [Suspect, RevealAs "closed door"]
+  , talter   = 2
+  , tfeature = [Suspect, RevealAs "closed door", Indistinct]
   }
 doorClosed = TileKind
   { tsymbol  = '+'
@@ -129,6 +171,7 @@ doorClosed = TileKind
   , tfreq    = [("legendLit", 100), ("legendDark", 100), ("closed door", 1)]
   , tcolor   = Brown
   , tcolor2  = BrBlack
+  , talter   = 2
   , tfeature = [OpenTo "open door", HideAs "suspect wall"]
   }
 doorOpen = TileKind
@@ -137,100 +180,81 @@ doorOpen = TileKind
   , tfreq    = [("legendLit", 100), ("legendDark", 100), ("open door", 1)]
   , tcolor   = Brown
   , tcolor2  = BrBlack
+  , talter   = 4
   , tfeature = [Walkable, Clear, NoItem, NoActor, CloseTo "closed door"]
   }
 stairsUp = TileKind
   { tsymbol  = '<'
   , tname    = "staircase up"
-  , tfreq    = []  -- TODO: [("legendLit", 100), ("legendDark", 100)]
+  , tfreq    = [("staircase up", 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfeature = [Walkable, Clear, NoItem, NoActor, Cause $ IK.Ascend 1]
+  , talter   = talterForStairs
+  , tfeature = [Cause $ IK.Ascend 1]
   }
 stairsDown = TileKind
   { tsymbol  = '>'
   , tname    = "staircase down"
-  , tfreq    = []  -- TODO: [("legendLit", 100), ("legendDark", 100)]
+  , tfreq    = [("staircase down", 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfeature = [Walkable, Clear, NoItem, NoActor, Cause $ IK.Ascend (-1)]
+  , talter   = talterForStairs
+  , tfeature = [Cause $ IK.Ascend (-1)]
   }
 escapeUp = TileKind
   { tsymbol  = '<'
   , tname    = "airlock to the shuttle"
-  , tfreq    = [("legendLit", 100), ("legendDark", 100)]
+  , tfreq    = [("legendLit", 1), ("legendDark", 1)]
   , tcolor   = BrYellow
   , tcolor2  = BrYellow
-  , tfeature = [Walkable, Clear, NoItem, NoActor, Cause $ IK.Escape 1]
+  , talter   = talterForStairs
+  , tfeature = [Cause $ IK.Escape 1]
   }
 escapeDown = TileKind
   { tsymbol  = '>'
   , tname    = "airlock to the shuttle"
-  , tfreq    = [("legendLit", 100), ("legendDark", 100)]
+  , tfreq    = [("legendLit", 1), ("legendDark", 1)]
   , tcolor   = BrYellow
   , tcolor2  = BrYellow
-  , tfeature = [Walkable, Clear, NoItem, NoActor, Cause $ IK.Escape (-1)]
-  }
-liftUp = TileKind
-  { tsymbol  = '<'
-  , tname    = "lift up"
-  , tfreq    = [("legendLit", 100), ("legendDark", 100)]
-  , tcolor   = BrCyan
-  , tcolor2  = BrCyan
-  , tfeature = [Walkable, Clear, NoItem, NoActor, Cause $ IK.Ascend 1]
-  }
-lift = TileKind
-  { tsymbol  = '<'
-  , tname    = "lift"
-  , tfreq    = [("legendLit", 100), ("legendDark", 100)]
-  , tcolor   = BrBlue
-  , tcolor2  = BrBlue
-  , tfeature = [ Walkable, Clear, NoItem, NoActor
-               , Cause $ IK.Ascend 1
-               , Cause $ IK.Ascend (-1) ]
-  }
-liftDown = TileKind
-  { tsymbol  = '>'
-  , tname    = "lift down"
-  , tfreq    = [("legendLit", 100), ("legendDark", 100)]
-  , tcolor   = BrCyan
-  , tcolor2  = BrCyan
-  , tfeature = [Walkable, Clear, NoItem, NoActor, Cause $ IK.Ascend (-1)]
-  }
-unknown = TileKind
-  { tsymbol  = ' '
-  , tname    = "unknown space"
-  , tfreq    = [("unknown space", 1)]
-  , tcolor   = defFG
-  , tcolor2  = defFG
-  , tfeature = [Dark]
+  , talter   = talterForStairs
+  , tfeature = [Cause $ IK.Escape (-1)]
   }
 floorCorridorLit = TileKind
   { tsymbol  = '.'
-  , tname    = "floor"
-  , tfreq    = [ ("floorCorridorLit", 1), ("floorArenaLit", 1)
-               , ("arenaSet", 1), ("emptySet", 1), ("noiseSet", 50)
-               , ("battleSet", 1000), ("skirmishSet", 100)
-               , ("ambushSet", 1000) ]
+  , tname    = "corridor floor"
+  , tfreq    = [("floorCorridorLit", 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , tfeature = [Walkable, Clear]
+  , talter   = maxBound
+  , tfeature = [Walkable, Clear, Indistinct]
   }
-floorActorLit = floorCorridorLit
-  { tfreq    = [("floorActorLit", 1)]
-  , tfeature = OftenActor : tfeature floorCorridorLit
+floorArenaLit = floorCorridorLit
+  { tname    = "floor"
+  , tfreq    = [("floorArenaLit", 1), ("arenaSet", 1), ("emptySet", 99)]
   }
-floorItemLit = floorCorridorLit
+floorNoiseLit = floorArenaLit
+  { tname    = "oily stone floor"
+  , tfreq    = [("noiseSet", 50)]
+  }
+floorDirtLit = floorArenaLit
+  { tname    = "dirt"
+  , tfreq    = [("battleSet", 1000), ("brawlSet", 1000), ("ambushSet", 1000)]
+  }
+floorActorLit = floorArenaLit
   { tfreq    = []
-  , tfeature = OftenItem : tfeature floorCorridorLit
+  , tfeature = OftenActor : tfeature floorArenaLit
+  }
+floorItemLit = floorArenaLit
+  { tfreq    = []
+  , tfeature = OftenItem : tfeature floorArenaLit
   }
 floorActorItemLit = floorItemLit
-  { tfreq    = [("legendLit", 100)]
+  { tfreq    = [("legendLit", 100)]  -- no OftenItem in legendDark
   , tfeature = OftenActor : tfeature floorItemLit
   }
 floorArenaShade = floorActorLit
-  { tname    = "floor"  -- TODO: "shaded ground"
-  , tfreq    = [("treeShadeOver_s", 1)]
+  { tname    = "shaded ground"
+  , tfreq    = [("treeShadeOrFogOver_s", 95)]
   , tcolor2  = BrBlack
   , tfeature = Dark : tfeature floorActorLit  -- no OftenItem
   }
@@ -239,7 +263,7 @@ floorRedLit = floorCorridorLit
   , tfreq    = [("emergency walkway", 1), ("trailLit", 20)]
   , tcolor   = BrRed
   , tcolor2  = Red
-  , tfeature = Trail : tfeature floorCorridorLit
+  , tfeature = Trail : tfeature floorCorridorLit  -- no Indistinct
   }
 floorBlueLit = floorRedLit
   { tname    = "transport route"
@@ -253,7 +277,23 @@ floorGreenLit = floorRedLit
   , tcolor   = BrGreen
   , tcolor2  = Green
   }
-
+floorFog = TileKind
+  { tsymbol  = ';'
+  , tname    = "dense fog"
+  , tfreq    = [("emptySet", 1), ("labTrail", 30), ("treeShadeOrFogOver_s", 5)]
+  , tcolor   = BrCyan
+  , tcolor2  = Cyan
+  , talter   = maxBound
+  , tfeature = [Walkable, Dark, NoItem]
+  }
+floorSmoke = floorFog
+  { tname    = "billowing smoke"
+  , tfreq    = [("battleSet", 5), ("labTrail", 70), ("stair terminal", 2)]
+  , tcolor   = Brown
+  , tcolor2  = BrBlack
+  , talter   = maxBound
+  , tfeature = [Walkable, NoItem]  -- not dark, embers
+  }
 
 makeDark :: TileKind -> TileKind
 makeDark k = let darkText :: GroupName TileKind -> GroupName TileKind

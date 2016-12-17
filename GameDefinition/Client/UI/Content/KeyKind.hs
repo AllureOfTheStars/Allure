@@ -1,212 +1,251 @@
--- Copyright (c) 2008--2011 Andres Loeh, 2010--2015 Mikolaj Konarski
+-- Copyright (c) 2008--2011 Andres Loeh, 2010--2017 Mikolaj Konarski
 -- This file is a part of the computer game Allure of the Stars
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
 -- | The default game key-command mapping to be used for UI. Can be overridden
 -- via macros in the config file.
-module Client.UI.Content.KeyKind ( standardKeys ) where
+module Client.UI.Content.KeyKind
+  ( standardKeys
+  ) where
 
-import Control.Arrow (first)
+import Prelude ()
 
-import qualified Game.LambdaHack.Client.Key as K
+import Game.LambdaHack.Common.Prelude
+
 import Game.LambdaHack.Client.UI.Content.KeyKind
 import Game.LambdaHack.Client.UI.HumanCmd
 import Game.LambdaHack.Common.Misc
-import qualified Game.LambdaHack.Content.ItemKind as IK
 import qualified Game.LambdaHack.Content.TileKind as TK
 
+-- | Description of default key-command bindings.
+--
+-- In addition to these commands, mouse and keys have a standard meaning
+-- when navigating various menus.
 standardKeys :: KeyKind
 standardKeys = KeyKind
-  { rhumanCommands = map (first K.mkKM)
+  { rhumanCommands = map evalKeyDef $
       -- All commands are defined here, except some movement and leader picking
       -- commands. All commands are shown on help screens except debug commands
       -- and macros with empty descriptions.
       -- The order below determines the order on the help screens.
-      -- Remember to put commands that show information (e.g., enter targeting
+      -- Remember to put commands that show information (e.g., enter aiming
       -- mode) first.
 
-      -- Main Menu, which apart of these includes a few extra commands
-      [ ("CTRL-x", ([CmdMenu], GameExit))
-      , ("CTRL-r", ([CmdMenu], GameRestart "raid"))
-      , ("CTRL-k", ([CmdMenu], GameRestart "skirmish"))
-      , ("CTRL-m", ([CmdMenu], GameRestart "ambush"))
-      , ("CTRL-b", ([CmdMenu], GameRestart "battle"))
-      , ("CTRL-c", ([CmdMenu], GameRestart "campaign"))
-      , ("CTRL-i", ([CmdDebug], GameRestart "battle survival"))
-      , ("CTRL-f", ([CmdDebug], GameRestart "safari"))
-      , ("CTRL-u", ([CmdDebug], GameRestart "safari survival"))
-      , ("CTRL-e", ([CmdDebug], GameRestart "defense"))
-      , ("CTRL-d", ([CmdMenu], GameDifficultyCycle))
+      -- Main Menu
+      [ ("Escape", ([CmdMainMenu], "back to playing", Cancel))
+      , ("?", ([CmdMainMenu], "see command Help", Help))
+      , ("S", ([CmdMainMenu], "enter settings menu", SettingsMenu))
+      , ("X", ([CmdMainMenu], "save and exit", GameExit))
+      , ("r", gameRestartTriple "raid")
+      , ("b", gameRestartTriple "brawl")
+      , ("a", gameRestartTriple "ambush")
+      , ("t", gameRestartTriple "battle")
+      , ("e", gameRestartTriple "exploration")
+      , ("D", ([CmdMainMenu], "cycle next difficulty", GameDifficultyIncr))
+      , ("A", ([CmdMainMenu], "automate faction", Automate))
 
-      -- Movement and terrain alteration
-      , ("less", ([CmdMove, CmdMinimal], TriggerTile
-           [ TriggerFeature { verb = "ascend"
-                            , object = "a level"
-                            , feature = TK.Cause (IK.Ascend 1) }
-           , TriggerFeature { verb = "escape"
-                            , object = "spaceship"
-                            , feature = TK.Cause (IK.Escape 1) } ]))
-      , ("CTRL-less", ([CmdMove], TriggerTile
-           [ TriggerFeature { verb = "ascend"
-                            , object = "10 levels"
-                            , feature = TK.Cause (IK.Ascend 10) } ]))
-      , ("greater", ([CmdMove, CmdMinimal], TriggerTile
-           [ TriggerFeature { verb = "descend"
-                            , object = "a level"
-                            , feature = TK.Cause (IK.Ascend (-1)) }
-           , TriggerFeature { verb = "escape"
-                            , object = "spaceship"
-                            , feature = TK.Cause (IK.Escape (-1)) } ]))
-      , ("CTRL-greater", ([CmdMove], TriggerTile
-           [ TriggerFeature { verb = "descend"
-                            , object = "10 levels"
-                            , feature = TK.Cause (IK.Ascend (-10)) } ]))
-      , ("semicolon",
-         ( [CmdMove]
-         , Macro "go to crosshair for 100 steps"
-                 ["CTRL-semicolon", "CTRL-period", "V"] ))
-      , ("colon",
-         ( [CmdMove]
-         , Macro "run selected to crosshair for 100 steps"
-                 ["CTRL-colon", "CTRL-period", "V"] ))
-      , ("x",
-         ( [CmdMove]
-         , Macro "explore the closest unknown spot"
-                 [ "CTRL-question"  -- no semicolon
-                 , "CTRL-period", "V" ] ))
-      , ("X",
-         ( [CmdMove]
-         , Macro "autoexplore 100 times"
-                 ["'", "CTRL-question", "CTRL-period", "'", "V"] ))
-      , ("CTRL-X",
-         ( [CmdMove]
-         , Macro "autoexplore 25 times"
-                 ["'", "CTRL-question", "CTRL-period", "'", "CTRL-V"] ))
-      , ("R", ([CmdMove], Macro "rest (wait 100 times)"
-                                ["KP_Begin", "V"]))
-      , ("CTRL-R", ([CmdMove], Macro "rest (wait 25 times)"
-                                     ["KP_Begin", "CTRL-V"]))
-      , ("c", ([CmdMove, CmdMinimal], AlterDir
-           [ AlterFeature { verb = "close"
-                          , object = "door"
-                          , feature = TK.CloseTo "closed door" }
-           ]))
+      -- Settings Menu  -- TODO: add some from ClientOptions
+      , ("Escape", ([CmdSettingsMenu], "back to Main Menu", MainMenu))
+      , ("T", ([CmdSettingsMenu], "cycle henchmen tactic", Tactic))
+      , ("S", ([CmdSettingsMenu], "toggle suspect terrain", MarkSuspect))
+      , ("V", ([CmdSettingsMenu], "toggle visible zone", MarkVision))
+      , ("C", ([CmdSettingsMenu], "toggle smell clues", MarkSmell))
 
-      -- Item use
-      --
-      -- For later:
-      -- ApplyItem {verb = "eat", object = "food", symbol = ','}
-      -- ApplyItem {verb = "apply", object = "emitter", symbol = '_'}
-      -- ApplyItem {verb = "use", object = "tool", symbol = '~'}
-      --
-      , ("E", ([CmdItem, CmdMinimal], DescribeItem $ MStore CEqp))
-      , ("P", ([CmdItem], DescribeItem $ MStore CInv))
-      , ("S", ([CmdItem], DescribeItem $ MStore CSha))
-      , ("A", ([CmdItem], DescribeItem MOwned))
-      , ("G", ([CmdItem], DescribeItem $ MStore CGround))
-      , ("@", ([CmdItem], DescribeItem $ MStore COrgan))
-      , ("exclam", ([CmdItem], DescribeItem MStats))
-      , ("g", ([CmdItem, CmdMinimal],
-               MoveItem [CGround] CEqp (Just "get") "items" True))
-      , ("d", ([CmdItem], MoveItem [CEqp, CInv, CSha] CGround
-                                   Nothing "items" False))
-      , ("e", ([CmdItem], MoveItem [CGround, CInv, CSha] CEqp
-                                   Nothing "items" False))
-      , ("p", ([CmdItem], MoveItem [CGround, CEqp, CSha] CInv
-                                   Nothing "items into inventory"
-                                   False))
-      , ("s", ([CmdItem], MoveItem [CGround, CInv, CEqp] CSha
-                                   Nothing "and share items" False))
-      , ("a", ([CmdItem, CmdMinimal], Apply
-           [ ApplyItem { verb = "apply"
-                       , object = "consumable"
-                       , symbol = ' ' }
-           , ApplyItem { verb = "quaff"
-                       , object = "drink"
-                       , symbol = '!' }
-           , ApplyItem { verb = "read"
-                       , object = "chip"
-                       , symbol = '?' }
-           ]))
-      , ("q", ([CmdItem], Apply [ApplyItem { verb = "quaff"
-                                           , object = "drink"
-                                           , symbol = '!' }]))
-      , ("r", ([CmdItem], Apply [ApplyItem { verb = "read"
-                                           , object = "chip"
-                                           , symbol = '?' }]))
-      , ("f", ([CmdItem, CmdMinimal], Project
-           [ApplyItem { verb = "fling"
-                      , object = "projectile"
-                      , symbol = ' ' }]))
-      , ("t", ([CmdItem], Project [ ApplyItem { verb = "throw"
-                                              , object = "missile"
-                                              , symbol = '}' }
-                                  , ApplyItem { verb = "throw"
-                                              , object = "missile"
-                                              , symbol = '{' } ]))
---      , ("z", ([CmdItem], Project [ApplyItem { verb = "zap"
---                                             , object = "mechanism"
---                                             , symbol = '-' }]))
+      -- Item use, 1st part
+      , ("g", addCmdCategory CmdItemMenu $ addCmdCategory CmdMinimal
+              $ grabItems "grab items")
+      , ("comma", addCmdCategory CmdNoHelp $ grabItems "")
+      , ("d", addCmdCategory CmdItemMenu $ addCmdCategory CmdMinimal
+              $ dropItems "drop items")
+      , ("period", addCmdCategory CmdNoHelp $ dropItems "")
+      , ("f", addCmdCategory CmdItemMenu $ projectA flingTs)
+      , ("CTRL-f", addCmdCategory CmdItemMenu
+                   $ replaceDesc "fling without aiming" $ projectI flingTs)
+      , ("a", addCmdCategory CmdItemMenu $ applyI [ApplyItem
+                { verb = "apply"
+                , object = "consumable"
+                , symbol = ' ' }])
 
-      -- Targeting
-      , ("KP_Multiply", ([CmdTgt], TgtEnemy))
-      , ("backslash", ([CmdTgt], Macro "" ["KP_Multiply"]))
-      , ("KP_Divide", ([CmdTgt], TgtFloor))
-      , ("bar", ([CmdTgt], Macro "" ["KP_Divide"]))
-      , ("plus", ([CmdTgt, CmdMinimal], EpsIncr True))
-      , ("minus", ([CmdTgt], EpsIncr False))
-      , ("CTRL-question", ([CmdTgt], CursorUnknown))
-      , ("CTRL-I", ([CmdTgt], CursorItem))
-      , ("CTRL-braceleft", ([CmdTgt], CursorStair True))
-      , ("CTRL-braceright", ([CmdTgt], CursorStair False))
-      , ("BackSpace", ([CmdTgt], TgtClear))
+      -- Terrain exploration and alteration
+      , ("semicolon", ( [CmdMove]
+                      , "go to crosshair for 100 steps"
+                      , Macro ["CTRL-semicolon", "CTRL-period", "V"] ))
+      , ("colon", ( [CmdMove]
+                  , "run to crosshair collectively for 100 steps"
+                  , Macro ["CTRL-colon", "CTRL-period", "V"] ))
+      , ("x", ( [CmdMove]
+              , "explore nearest unknown spot"
+              , autoexploreCmd ))
+      , ("X", ( [CmdMove]
+              , "autoexplore 100 times"
+              , autoexplore100Cmd ))
+      , ("R", ([CmdMove], "rest (wait 100 times)", Macro ["KP_5", "V"]))
+      , let triggerClose =
+              [ AlterFeature { verb = "close"
+                             , object = "door"
+                             , feature = TK.CloseTo "closed door" } ]
+        in ("c", ( [CmdMove, CmdMinimal]
+                 , descTs triggerClose
+                 , AlterDir triggerClose ))
 
-      -- Automation
-      , ("equal", ([CmdAuto], SelectActor))
-      , ("underscore", ([CmdAuto], SelectNone))
-      , ("v", ([CmdAuto], Repeat 1))
-      , ("V", ([CmdAuto], Repeat 100))
-      , ("CTRL-v", ([CmdAuto], Repeat 1000))
-      , ("CTRL-V", ([CmdAuto], Repeat 25))
-      , ("apostrophe", ([CmdAuto], Record))
-      , ("CTRL-T", ([CmdAuto], Tactic))
-      , ("CTRL-A", ([CmdAuto], Automate))
+      -- Item use, continued
+      , ("e", addCmdCategory CmdItemMenu
+              $ moveItemTriple [CGround, CInv, CSha] CEqp Nothing
+                               "item" False)
+      , ("p", addCmdCategory CmdItemMenu
+              $ moveItemTriple [CGround, CEqp, CSha] CInv Nothing
+                               "item into inventory" False)
+      , ("s", addCmdCategory CmdItemMenu
+              $ moveItemTriple [CGround, CInv, CEqp] CSha Nothing
+                               "and share item" False)
+      , ("E", ( [CmdItem]
+              , "manage equipment of the leader"
+              , ChooseItemMenu (MStore CEqp) ))
+      , ("P", ( [CmdMinimal, CmdItem]
+              , "manage inventory pack of leader"
+              , ChooseItemMenu (MStore CInv) ))
+      , ("S", ( [CmdItem]
+              , "manage the shared party stash"
+              , ChooseItemMenu (MStore CSha) ))
+      , ("A", ( [CmdItem]
+              , "manage all owned items"
+              , ChooseItemMenu MOwned ))
+      , ("G", ( [CmdItem]
+              , "manage items on the ground"
+              , ChooseItemMenu (MStore CGround) ))
+      , ("@", ( [CmdItem]
+              , "describe organs of the leader"
+              , ChooseItemMenu (MStore COrgan) ))
+      , ("#", ( [CmdItem]
+              , "show stat summary of the leader"
+              , ChooseItemMenu MStats ))
+      , ("q", applyI [ApplyItem { verb = "quaff"
+                                , object = "drink"
+                                , symbol = '!' }])
+      , ("r", applyI [ApplyItem { verb = "read"
+                                , object = "chip"
+                                , symbol = '?' }])
+      , ("t", projectA [ ApplyItem { verb = "throw"
+                                   , object = "missile"
+                                   , symbol = '}' }
+                       , ApplyItem { verb = "throw"
+                                   , object = "missile"
+                                   , symbol = '{' } ])
+--      , ("z", projectA [ApplyItem { verb = "zap"
+--                                  , object = "wand"
+--                                  , symbol = '-' }])
+
+      -- Aiming
+      , ("KP_Multiply", ([CmdAim], "cycle x-hair among enemies", AimEnemy))
+      , ("!", ([CmdAim], "", AimEnemy))
+      , ("KP_Divide", ([CmdAim], "cycle aiming styles", AimFloor))
+      , ("/", ([CmdAim], "", AimFloor))
+      , ("+", ([CmdAim, CmdMinimal], "swerve the aiming line", EpsIncr True))
+      , ("-", ([CmdAim], "unswerve the aiming line", EpsIncr False))
+      , ("CTRL-?", ( [CmdAim]
+                   , "set crosshair to nearest unknown spot"
+                   , XhairUnknown ))
+      , ("CTRL-I", ( [CmdAim]
+                   , "set crosshair to nearest item"
+                   , XhairItem ))
+      , ("CTRL-{", ( [CmdAim]
+                   , "set x-hair to nearest upstairs"
+                   , XhairStair True ))
+      , ("CTRL-}", ( [CmdAim]
+                   , "set x-hair to nearest downstairs"
+                   , XhairStair False ))
+      , ("<", ([CmdAim], "ascend aim" , AimAscend 1))
+      , ("CTRL-<", ([CmdNoHelp], "ascend aim 10 times" , AimAscend 10))
+      , (">", ([CmdAim], "descend aim", AimAscend (-1)))
+      , ("CTRL->", ([CmdNoHelp], "descend aim 10 times", AimAscend (-10)))
+      , ( "BackSpace"
+        , ([CmdAim], "clear target or chosen item", TgtClear) )
+      , ("Escape", ( [CmdAim, CmdMinimal]
+                   , "cancel aiming/open Main Menu"
+                   , ByAimMode {exploration = MainMenu, aiming = Cancel} ))
+      , ("Return", ( [CmdAim, CmdMinimal]
+                   , "accept target/open Help"
+                   , ByAimMode {exploration = Help, aiming = Accept} ))
 
       -- Assorted
-      , ("question", ([CmdMeta], Help))
-      , ("D", ([CmdMeta, CmdMinimal], History))
-      , ("T", ([CmdMeta, CmdMinimal], MarkSuspect))
-      , ("Z", ([CmdMeta], MarkVision))
-      , ("C", ([CmdMeta], MarkSmell))
-      , ("Tab", ([CmdMeta], MemberCycle))
-      , ("ISO_Left_Tab", ([CmdMeta, CmdMinimal], MemberBack))
-      , ("space", ([CmdMeta], Clear))
-      , ("Escape", ([CmdMeta, CmdMinimal], Cancel))
-      , ("Return", ([CmdMeta, CmdTgt], Accept))
+      , ("space", ([CmdMeta], "clear messages, display history", Clear))
+      , ("?", ([CmdMeta], "display Help", Help))
+      , ("F1", ([CmdNoHelp], "", Help))
+      , ("Tab", ( [CmdMeta]
+                , "cycle among party members on the level"
+                , MemberCycle ))
+      , ("ISO_Left_Tab", ( [CmdMeta, CmdMinimal]
+                         , "cycle among all party members"
+                         , MemberBack ))
+      , ("=", ([CmdMeta], "select (or deselect) party member", SelectActor))
+      , ("_", ([CmdMeta], "deselect (or select) all on the level", SelectNone))
+      , ("v", ([CmdMeta], "voice again the recorded commands", Repeat 1))
+      , ("V", repeatTriple 100)
+      , ("CTRL-v", repeatTriple 1000)
+      , ("CTRL-V", repeatTriple 25)
+      , ("'", ([CmdMeta], "start recording commands", Record))
 
       -- Mouse
-      , ("LeftButtonPress",
-         ([CmdMouse], macroLeftButtonPress))
-      , ("SHIFT-LeftButtonPress",
-         ([CmdMouse], macroShiftLeftButtonPress))
-      , ("MiddleButtonPress", ([CmdMouse], CursorPointerEnemy))
-      , ("SHIFT-MiddleButtonPress", ([CmdMouse], CursorPointerFloor))
-      , ("CTRL-MiddleButtonPress",
-         ([CmdInternal], Macro "" ["SHIFT-MiddleButtonPress"]))
-      , ("RightButtonPress", ([CmdMouse], TgtPointerEnemy))
+      , ("LeftButtonRelease", mouseLMB)
+      , ("RightButtonRelease", mouseRMB)
+      , ("MiddleButtonRelease", mouseMMB)
+      , ("WheelNorth", ([CmdMouse], "swerve the aiming line", Macro ["+"]))
+      , ("WheelSouth", ([CmdMouse], "unswerve the aiming line", Macro ["-"]))
+      , ( "LeftDblClick"
+        , replaceDesc "" $ addCmdCategory CmdNoHelp mouseRMB )
 
       -- Debug and others not to display in help screens
-      , ("CTRL-S", ([CmdDebug], GameSave))
-      , ("CTRL-semicolon", ([CmdInternal], MoveOnceToCursor))
-      , ("CTRL-colon", ([CmdInternal], RunOnceToCursor))
-      , ("CTRL-period", ([CmdInternal], ContinueToCursor))
-      , ("CTRL-comma", ([CmdInternal], RunOnceAhead))
-      , ("CTRL-LeftButtonPress",
-         ([CmdInternal], Macro "" ["SHIFT-LeftButtonPress"]))
-      , ("CTRL-MiddleButtonPress",
-         ([CmdInternal], Macro "" ["SHIFT-MiddleButtonPress"]))
-      , ("ALT-space", ([CmdInternal], StopIfTgtMode))
-      , ("ALT-minus", ([CmdInternal], SelectWithPointer))
-     ]
+      , ("CTRL-S", ([CmdDebug], "save game", GameSave))
+      , ("CTRL-semicolon", ( [CmdNoHelp]
+                           , "move one step towards the crosshair"
+                           , MoveOnceToXhair ))
+      , ("CTRL-colon", ( [CmdNoHelp]
+                       , "run collectively one step towards the crosshair"
+                       , RunOnceToXhair ))
+      , ("CTRL-period", ( [CmdNoHelp]
+                        , "continue towards the crosshair"
+                        , ContinueToXhair ))
+      , ("CTRL-comma", ([CmdNoHelp], "run once ahead", RunOnceAhead))
+      , ("safe1", ( [CmdInternal]
+                  , "go to pointer for 100 steps"
+                  , goToCmd ))
+      , ("safe2", ( [CmdInternal]
+                  , "run to pointer collectively"
+                  , runToAllCmd ))
+      , ("safe3", ( [CmdInternal]
+                  , "pick new leader on screen"
+                  , PickLeaderWithPointer ))
+      , ("safe4", ( [CmdInternal]
+                  , "select party member on screen"
+                  , SelectWithPointer ))
+      , ("safe5", ( [CmdInternal]
+                  , "set crosshair to enemy"
+                  , AimPointerEnemy ))
+      , ("safe6", ( [CmdInternal]
+                  , "fling at enemy under pointer"
+                  , aimFlingCmd ))
+      , ("safe7", ( [CmdInternal]
+                  , "open Main Menu"
+                  , MainMenu ))
+      , ("safe8", ( [CmdInternal]
+                  , "cancel aiming"
+                  , Cancel ))
+      , ("safe9", ( [CmdInternal]
+                  , "accept target"
+                  , Accept ))
+      , ("safe11", ( [CmdInternal]
+                   , "grab items"
+                   , exploreGrabCmd ))
+      , ("safe12", ( [CmdInternal]
+                   , "switch view to one level higher"
+                   , AimAscend 1 ))
+      , ("safe13", ( [CmdInternal]
+                   , "drop items"
+                   , exploreDropCmd ))
+      , ("safe14", ( [CmdInternal]
+                   , "switch view to one level lower"
+                   , AimAscend (-1) ))
+      ]
+      ++ map defaultHeroSelect [0..6]
   }

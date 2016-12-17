@@ -1,17 +1,24 @@
 {-# LANGUAGE TemplateHaskell #-}
--- Copyright (c) 2008--2011 Andres Loeh, 2010--2015 Mikolaj Konarski
+-- Copyright (c) 2008--2011 Andres Loeh, 2010--2017 Mikolaj Konarski
 -- This file is a part of the computer game Allure of the Stars
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
 -- | Game rules and assorted game setup data.
-module Content.RuleKind ( cdefs ) where
+module Content.RuleKind
+  ( cdefs
+  ) where
+
+import Prelude ()
+
+import Game.LambdaHack.Common.Prelude
 
 import Language.Haskell.TH.Syntax
 import System.FilePath
+import System.IO (readFile)
 
 -- Cabal
-import qualified Paths_Allure as Self (getDataFileName, version)
+import qualified Paths_Allure as Self (version)
 
 import Game.LambdaHack.Common.ContentDef
 import Game.LambdaHack.Content.RuleKind
@@ -23,7 +30,7 @@ cdefs = ContentDef
   , getFreq = rfreq
   , validateSingle = validateSingleRuleKind
   , validateAll = validateAllRuleKind
-  , content =
+  , content = contentFromList
       [standard]
   }
 
@@ -32,18 +39,12 @@ standard = RuleKind
   { rsymbol        = 's'
   , rname          = "standard Allure of the Stars ruleset"
   , rfreq          = [("standard", 100)]
-  -- Check whether one position is accessible from another.
-  -- Precondition: the two positions are next to each other
-  -- and the target tile is walkable.
-  -- TODO: in the future check flying for chasms, swimming for water, etc.
-  , raccessible    = Nothing
-  , raccessibleDoor = Nothing
   , rtitle         = "Allure of the Stars"
-  , rpathsDataFile = Self.getDataFileName
+  , raddress       = "http://github.com/AllureOfTheStars/Allure"
   , rpathsVersion  = Self.version
   -- The strings containing the default configuration file
   -- included from config.ui.default.
-  , rcfgUIName = "config.ui"
+  , rcfgUIName = "config.ui" <.> "ini"
   , rcfgUIDefault = $(do
       let path = "GameDefinition" </> "config.ui" <.> "default"
       qAddDependentFile path
@@ -62,18 +63,14 @@ standard = RuleKind
   -- are required, at most one per row, and all are overwritten
   -- with text that is flushed left and padded with spaces.
   -- The Main Menu is displayed dull white on black.
-  -- TODO: Show highlighted keybinding in inverse video or bright white on grey
-  -- background. The spaces that pad keybindings are not highlighted.
   , rmainMenuArt = $(do
       let path = "GameDefinition/MainMenu.ascii"
       qAddDependentFile path
       x <- qRunIO (readFile path)
       lift x)
   , rfirstDeathEnds = False
-  , rfovMode = Digital
-  , rwriteSaveClips = 500
-  , rleadLevelClips = 100
+  , rwriteSaveClips = 1000
+  , rleadLevelClips = 200
   , rscoresFile = "scores"
-  , rsavePrefix = "save"
   , rnearby = 20
   }

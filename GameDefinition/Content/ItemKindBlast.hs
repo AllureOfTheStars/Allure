@@ -1,23 +1,28 @@
--- Copyright (c) 2008--2011 Andres Loeh, 2010--2015 Mikolaj Konarski
+-- Copyright (c) 2008--2011 Andres Loeh, 2010--2017 Mikolaj Konarski
 -- This file is a part of the computer game Allure of the Stars
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
 -- | Blast definitions.
-module Content.ItemKindBlast ( blasts ) where
+module Content.ItemKindBlast
+  ( blasts
+  ) where
+
+import Prelude ()
+
+import Game.LambdaHack.Common.Prelude
 
 import Game.LambdaHack.Common.Color
 import Game.LambdaHack.Common.Dice
 import Game.LambdaHack.Common.Flavour
 import Game.LambdaHack.Common.Misc
-import Game.LambdaHack.Common.Msg
 import Game.LambdaHack.Content.ItemKind
 
 blasts :: [ItemKind]
 blasts =
-  [burningOil2, burningOil3, burningOil4, explosionBlast2, explosionBlast10, explosionBlast20, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, waste, glassPiece, smoke, boilingWater, glue, spark, mistAntiSlow, mistAntidote, mistStrength, mistWeakness, protectingBalm, vulnerabilityBalm, hasteSpray, slownessSpray, eyeDrop, smellyDroplet, whiskeySpray]
+  [burningOil2, burningOil3, burningOil4, explosionBlast2, explosionBlast10, explosionBlast20, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, waste, glassPiece, smoke, boilingWater, glue, spark, mistAntiSlow, mistAntidote, mistStrength, mistWeakness, protectingBalm, vulnerabilityBalm, hasteSpray, slownessSpray, eyeDrop, eyeShine, smellyDroplet, whiskeySpray]
 
-burningOil2,    burningOil3, burningOil4, explosionBlast2, explosionBlast10, explosionBlast20, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, waste, glassPiece, smoke, boilingWater, glue, spark, mistAntiSlow, mistAntidote, mistStrength, mistWeakness, protectingBalm, vulnerabilityBalm, hasteSpray, slownessSpray, eyeDrop, smellyDroplet, whiskeySpray :: ItemKind
+burningOil2,    burningOil3, burningOil4, explosionBlast2, explosionBlast10, explosionBlast20, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, waste, glassPiece, smoke, boilingWater, glue, spark, mistAntiSlow, mistAntidote, mistStrength, mistWeakness, protectingBalm, vulnerabilityBalm, hasteSpray, slownessSpray, eyeDrop, eyeShine, smellyDroplet, whiskeySpray :: ItemKind
 
 -- * Parameterized immediate effect blasts
 
@@ -31,8 +36,8 @@ burningOil n = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "burn"
   , iweight  = 1
-  , iaspects = [AddLight 2]
-  , ieffects = [Burn 1, Paralyze 1]  -- tripping on oil
+  , iaspects = [AddShine 2]
+  , ieffects = [Burn 1, Paralyze 2]  -- tripping on oil
   , ifeature = [ toVelocity (min 100 $ n * 7)
                , Fragile, Identified ]
   , idesc    = "Sticky oil, burning brightly."
@@ -51,10 +56,10 @@ explosionBlast n = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "tear apart"
   , iweight  = 1
-  , iaspects = [AddLight $ intToDice n]
+  , iaspects = [AddShine $ intToDice n]
   , ieffects = [RefillHP (- n `div` 2)]
                ++ [PushActor (ThrowMod (100 * (n `div` 5)) 50)]
-               ++ [DropItem COrgan "temporary conditions" True | n >= 10]
+               ++ [DropItem COrgan "temporary conditions" | n >= 10]
   , ifeature = [Fragile, toLinger 20, Identified]
   , idesc    = ""
   , ikit     = []
@@ -72,7 +77,7 @@ firecracker n = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "crack"
   , iweight  = 1
-  , iaspects = [AddLight $ intToDice $ n `div` 2]
+  , iaspects = [AddShine $ intToDice $ n `div` 2]
   , ieffects = [ RefillCalm (-1) | n >= 5 ]
                ++ [ DropBestWeapon | n >= 5]
                ++ [ OnSmash (Explode $ toGroupName
@@ -167,7 +172,7 @@ mistHealing = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "revitalize"
   , iweight  = 1
-  , iaspects = [AddLight 1]
+  , iaspects = [AddShine 1]
   , ieffects = [RefillHP 2]
   , ifeature = [ toVelocity 7  -- the slowest that gets anywhere (1 step only)
                , Fragile, Identified ]
@@ -183,7 +188,7 @@ mistHealing2 = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "revitalize"
   , iweight  = 1
-  , iaspects = [AddLight 2]
+  , iaspects = [AddShine 2]
   , ieffects = [RefillHP 4]
   , ifeature = [ toVelocity 7  -- the slowest that gets anywhere (1 step only)
                , Fragile, Identified ]
@@ -293,7 +298,7 @@ glue = ItemKind
   , iverbHit = "glue"
   , iweight  = 20
   , iaspects = []
-  , ieffects = [Paralyze (3 + d 3)]
+  , ieffects = [Paralyze (6 + 2 * d 3)]
   , ifeature = [toVelocity 40, Fragile, Identified]
   , idesc    = ""
   , ikit     = []
@@ -307,7 +312,7 @@ spark = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "burn"
   , iweight  = 1
-  , iaspects = [AddLight 4]
+  , iaspects = [AddShine 4]
   , ieffects = [Burn 1]
   , ifeature = [Fragile, toLinger 10, Identified]
   , idesc    = ""
@@ -323,7 +328,7 @@ mistAntiSlow = ItemKind
   , iverbHit = "propel"
   , iweight  = 1
   , iaspects = []
-  , ieffects = [DropItem COrgan "slow 10" True]
+  , ieffects = [DropItem COrgan "slow 10"]
   , ifeature = [ toVelocity 7  -- the slowest that gets anywhere (1 step only)
                , Fragile, Identified ]
   , idesc    = ""
@@ -339,7 +344,7 @@ mistAntidote = ItemKind
   , iverbHit = "cure"
   , iweight  = 1
   , iaspects = []
-  , ieffects = [DropItem COrgan "poisoned" True]
+  , ieffects = [DropItem COrgan "poisoned"]
   , ifeature = [ toVelocity 7  -- the slowest that gets anywhere (1 step only)
                , Fragile, Identified ]
   , idesc    = ""
@@ -455,6 +460,22 @@ eyeDrop = ItemKind
   , iweight  = 1
   , iaspects = []
   , ieffects = [toOrganActorTurn "far-sighted" (3 + d 3)]
+  , ifeature = [ toVelocity 13  -- the slowest that travels at least 2 steps
+               , Fragile, Identified ]
+  , idesc    = ""
+  , ikit     = []
+  }
+eyeShine = ItemKind
+  { isymbol  = '\''
+  , iname    = "eye shine"
+  , ifreq    = [("eye shine", 1)]
+  , iflavour = zipPlain [BrRed]
+  , icount   = 12
+  , irarity  = [(1, 1)]
+  , iverbHit = "smear"
+  , iweight  = 1
+  , iaspects = []
+  , ieffects = [toOrganActorTurn "shiny-eyed" (3 + d 3)]
   , ifeature = [ toVelocity 13  -- the slowest that travels at least 2 steps
                , Fragile, Identified ]
   , idesc    = ""

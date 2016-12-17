@@ -1,10 +1,16 @@
--- Copyright (c) 2008--2011 Andres Loeh, 2010--2015 Mikolaj Konarski
+-- Copyright (c) 2008--2011 Andres Loeh, 2010--2017 Mikolaj Konarski
 -- This file is a part of the computer game Allure of the Stars
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
 -- | Cave layouts.
-module Content.CaveKind ( cdefs ) where
+module Content.CaveKind
+  ( cdefs
+  ) where
+
+import Prelude ()
+
+import Game.LambdaHack.Common.Prelude
 
 import Data.Ratio
 
@@ -20,29 +26,30 @@ cdefs = ContentDef
   , getFreq = cfreq
   , validateSingle = validateSingleCaveKind
   , validateAll = validateAllCaveKind
-  , content =
-      [rogue, arena, empty, noise, battle, skirmish, ambush, safari1, safari2, safari3, rogueLit, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1arena]
+  , content = contentFromList
+      [rogue, arena, laboratory, empty, noise, battle, brawl, ambush, safari1, safari2, safari3, rogueLit, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1arena, emptyExit]
   }
-rogue,        arena, empty, noise, battle, skirmish, ambush, safari1, safari2, safari3, rogueLit, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1arena :: CaveKind
+rogue,        arena, laboratory, empty, noise, battle, brawl, ambush, safari1, safari2, safari3, rogueLit, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1arena, emptyExit :: CaveKind
 
 rogue = CaveKind
   { csymbol       = 'R'
   , cname         = "Storage area"
-  , cfreq         = [("campaign random", 100), ("caveRogue", 1)]
+  , cfreq         = [("default random", 100), ("caveRogue", 1)]
   , cxsize        = fst normalLevelBound + 1
   , cysize        = snd normalLevelBound + 1
-  , cgrid         = DiceXY (3 * d 2) (d 2 + 2)
-  , cminPlaceSize = DiceXY (2 * d 2 + 2) 4
+  , cgrid         = DiceXY (3 * d 2) 4
+  , cminPlaceSize = DiceXY (2 * d 2 + 4) 5
   , cmaxPlaceSize = DiceXY 15 10
   , cdarkChance   = d 54 + dl 20
   , cnightChance  = 51  -- always night
-  , cauxConnects  = 1%3
+  , cauxConnects  = 3%4
   , cmaxVoid      = 1%6
-  , cminStairDist = 30
-  , cdoorChance   = 1%2
-  , copenChance   = 1%10
-  , chidden       = 8
-  , cactorCoeff   = 150  -- the maze requires time to explore
+  , cminStairDist = 15
+  , cextraStairs  = 1 + d 2
+  , cdoorChance   = 3%4
+  , copenChance   = 1%5
+  , chidden       = 7
+  , cactorCoeff   = 130  -- the maze requires time to explore
   , cactorFreq    = [("alien", 50), ("animal", 25), ("robot", 25)]
   , citemNum      = 10 * d 2
   , citemFreq     = [("useful", 50), ("treasure", 50)]
@@ -55,43 +62,73 @@ rogue = CaveKind
   , couterFenceTile = "basic outer fence"
   , clegendDarkTile = "legendDark"
   , clegendLitTile  = "legendLit"
+  , cescape         = Nothing
   }
 arena = rogue
   { csymbol       = 'A'
   , cname         = "Recreational deck"
-  , cfreq         = [("campaign random", 50), ("caveArena", 1)]
-  , cgrid         = DiceXY (2 * d 2) (2 * d 2)
-  , cminPlaceSize = DiceXY (2 * d 2 + 3) 4
+  , cfreq         = [("default random", 50), ("caveArena", 1)]
+  , cgrid         = DiceXY (2 * d 2) (d 3)
+  , cminPlaceSize = DiceXY (2 * d 2 + 4) 6
   , cdarkChance   = d 100 - dl 50
   -- Trails provide enough light for fun stealth. Light is not too deadly,
   -- because not many obstructions, so foes visible from far away.
   , cnightChance  = d 50 + dl 50
-  , cmaxVoid      = 1%4
-  , chidden       = 1000
+  , cmaxVoid      = 1%5
+  , cextraStairs  = d 3
+  , chidden       = 0
   , cactorCoeff   = 100
   , cactorFreq    = [("alien", 25), ("animal", 70), ("robot", 5)]
   , citemNum      = 9 * d 2  -- few rooms
+  , citemFreq     = [("useful", 20), ("treasure", 30), ("any scroll", 50)]
+  , cplaceFreq    = [("arena", 100)]
   , cpassable     = True
   , cdefTile      = "arenaSet"
   , cdarkCorTile  = "trailLit"  -- let trails give off light
   , clitCorTile   = "trailLit"
   }
+laboratory = arena
+  { csymbol       = 'L'
+  , cname         = "Burnt laboratory"
+  , cfreq         = [("default random", 20), ("caveLaboratory", 1)]
+  , cgrid         = DiceXY 10 3
+  , cminPlaceSize = DiceXY 11 4
+  , cdarkChance   = 51  -- always dark, burnt
+  , cnightChance  = 51  -- always night
+  , cauxConnects  = 1%10
+  , cmaxVoid      = 1%10
+  , cextraStairs  = d 2
+  , cdoorChance   = 1
+  , copenChance   = 1%2
+  , chidden       = 7
+  , cactorCoeff   = 160  -- deadly enough due to unclear corridors
+  , citemNum      = 11 * d 2  -- reward difficulty
+  , citemFreq     = [("useful", 20), ("treasure", 30), ("any vial", 50)]
+  , cpassable     = False
+  , cdefTile      = "fillerWall"
+  , cdarkCorTile  = "labTrail"
+  , clitCorTile   = "labTrail"
+  }
 empty = rogue
   { csymbol       = 'E'
   , cname         = "Construction site"
-  , cfreq         = [("campaign random", 50), ("caveEmpty", 1)]
-  , cgrid         = DiceXY (d 2 + 1) 1
-  , cminPlaceSize = DiceXY 10 10
-  , cmaxPlaceSize = DiceXY 24 15
+  , cfreq         = [("default random", 20), ("caveEmpty", 1)]
+  , cgrid         = DiceXY (d 2) 1
+  , cminPlaceSize = DiceXY 12 12
+  , cmaxPlaceSize = DiceXY 24 16
   , cdarkChance   = d 80 + dl 80
   , cnightChance  = 0  -- always day
-  , cauxConnects  = 1
-  , cmaxVoid      = 1%2
-  , cminStairDist = 50
-  , chidden       = 1000
+  , cauxConnects  = 3%2
+  , cmaxVoid      = 3%4
+  , cminStairDist = 30
+  , cextraStairs  = d 2
+  , cdoorChance   = 0
+  , copenChance   = 0
+  , chidden       = 0
   , cactorCoeff   = 80
   , cactorFreq    = [("alien", 25), ("animal", 5), ("robot", 70)]
   , citemNum      = 7 * d 2  -- few rooms
+  , cplaceFreq    = [("empty", 100)]
   , cpassable     = True
   , cdefTile      = "emptySet"
   , cdarkCorTile  = "floorArenaDark"
@@ -100,17 +137,18 @@ empty = rogue
 noise = rogue
   { csymbol       = 'N'
   , cname         = "Machine rooms"
-  , cfreq         = [("caveNoise", 1)]
+  , cfreq         = [("default random", 10), ("caveNoise", 1)]
   , cgrid         = DiceXY (2 + d 2) 3
-  , cminPlaceSize = DiceXY 12 5
-  , cmaxPlaceSize = DiceXY 24 15
+  , cminPlaceSize = DiceXY 10 6
+  , cmaxPlaceSize = DiceXY 20 10
   , cdarkChance   = 0  -- few rooms, so all lit
   -- Light is deadly, because nowhere to hide and pillars enable spawning
   -- very close to heroes, so deep down light should be rare.
   , cnightChance  = dl 300
-  , cauxConnects  = 0
-  , cmaxVoid      = 0
-  , chidden       = 1000
+  , cauxConnects  = 1%10
+  , cmaxVoid      = 1%100
+  , cextraStairs  = d 4
+  , chidden       = 0
   , cactorCoeff   = 160  -- the maze requires time to explore
   , cactorFreq    = [("alien", 70), ("animal", 15), ("robot", 15)]
   , citemNum      = 12 * d 2  -- an incentive to explore the labyrinth
@@ -129,10 +167,12 @@ battle = rogue  -- few lights and many solids, to help the less numerous heroes
   , cmaxPlaceSize = DiceXY 9 7
   , cdarkChance   = 0
   , cnightChance  = 51  -- always night
-  , cmaxVoid      = 0
+  , cauxConnects  = 1%4
+  , cmaxVoid      = 1%20
   , cdoorChance   = 2%10
   , copenChance   = 9%10
-  , chidden       = 1000
+  , cextraStairs  = 1
+  , chidden       = 0
   , cactorFreq    = []
   , citemNum      = 20 * d 2
   , citemFreq     = [("useful", 100), ("light source", 200)]
@@ -142,10 +182,10 @@ battle = rogue  -- few lights and many solids, to help the less numerous heroes
   , cdarkCorTile  = "trailLit"  -- let trails give off light
   , clitCorTile   = "trailLit"
   }
-skirmish = rogue  -- many random solid tiles, to break LOS, since it's a day
+brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
   { csymbol       = 'S'
   , cname         = "Woodland biosphere"
-  , cfreq         = [("caveSkirmish", 1)]
+  , cfreq         = [("caveBrawl", 1)]
   , cgrid         = DiceXY (2 * d 2 + 2) (d 2 + 2)
   , cminPlaceSize = DiceXY 3 3
   , cmaxPlaceSize = DiceXY 7 5
@@ -153,13 +193,14 @@ skirmish = rogue  -- many random solid tiles, to break LOS, since it's a day
   , cnightChance  = 0
   , cdoorChance   = 1
   , copenChance   = 0
-  , chidden       = 1000
+  , cextraStairs  = 1
+  , chidden       = 0
   , cactorFreq    = []
   , citemNum      = 20 * d 2
   , citemFreq     = [("useful", 100)]
-  , cplaceFreq    = [("skirmish", 60), ("rogue", 40)]
+  , cplaceFreq    = [("brawl", 60), ("rogue", 40)]
   , cpassable     = True
-  , cdefTile      = "skirmishSet"
+  , cdefTile      = "brawlSet"
   , cdarkCorTile  = "floorArenaLit"
   , clitCorTile   = "floorArenaLit"
   }
@@ -172,10 +213,11 @@ ambush = rogue  -- lots of lights, to give a chance to snipe
   , cmaxPlaceSize = DiceXY 5 5
   , cdarkChance   = 0
   , cnightChance  = 51  -- always night
-  , cauxConnects  = 1
+  , cauxConnects  = 3%2
   , cdoorChance   = 1%10
   , copenChance   = 9%10
-  , chidden       = 1000
+  , cextraStairs  = 1
+  , chidden       = 0
   , cactorFreq    = []
   , citemNum      = 22 * d 2
   , citemFreq     = [("useful", 100)]
@@ -187,7 +229,10 @@ ambush = rogue  -- lots of lights, to give a chance to snipe
   }
 safari1 = ambush {cfreq = [("caveSafari1", 1)]}
 safari2 = battle {cfreq = [("caveSafari2", 1)]}
-safari3 = skirmish {cfreq = [("caveSafari3", 1)]}
+safari3 = brawl
+  { cfreq = [("caveSafari3", 1)]
+  , cescape       = Just False
+  }
 rogueLit = rogue
   { csymbol       = 'S'
   , cname         = "Triton City Sewers"
@@ -200,6 +245,7 @@ rogueLit = rogue
   , citemFreq     = [("useful", 33), ("gem", 33), ("currency", 33)]
   , cdarkCorTile  = "emergency walkway"
   , clitCorTile   = "emergency walkway"
+  , cescape       = Just True
   }
 bridge = rogueLit
   { csymbol       = 'B'
@@ -211,6 +257,7 @@ bridge = rogueLit
   , cactorFreq    = []  -- safe, nothing spawns
   , citemNum      = 15 * d 2  -- lure them in with loot
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq rogue
+  , cextraStairs  = 1
   }
 shallow2rogue = rogue
   { cfreq         = [("shallow random 2", 50)]
@@ -244,4 +291,8 @@ shallow1arena = shallow2empty  -- TODO: replace some rooms with oriels?
       -- abused, because they spawn less and less often and they don't heal over
       -- max HP.
   , couterFenceTile = "oriels fence"
+  }
+emptyExit = empty
+  { cfreq = [("caveEmptyExit", 1)]
+  , cescape = Just False
   }

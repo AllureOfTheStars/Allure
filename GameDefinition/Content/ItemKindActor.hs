@@ -4,9 +4,13 @@
 -- For license and copyright information, see the file LICENSE.
 --
 -- | Actor (or rather actor body trunk) definitions.
-module Content.ItemKindActor ( actors ) where
+module Content.ItemKindActor
+  ( actors
+  ) where
 
-import qualified Data.EnumMap.Strict as EM
+import Prelude ()
+
+import Game.LambdaHack.Common.Prelude
 
 import Game.LambdaHack.Common.Ability
 import Game.LambdaHack.Common.Color
@@ -33,8 +37,9 @@ warrior = ItemKind
   , iweight  = 80000
   , iaspects = [ AddMaxHP 80  -- partially from clothes and assumed first aid
                               -- also possibly from artificial skin
-               , AddMaxCalm 60, AddSpeed 20
-               , AddSkills $ EM.fromList [(AbProject, 2), (AbApply, 1)] ]
+               , AddMaxCalm 60, AddSpeed 20, AddNocto 2
+               , AddAbility AbProject 2, AddAbility AbApply 1
+               , AddAbility AbAlter 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -87,8 +92,9 @@ eye = ItemKind
   , irarity  = [(4, 6), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 20
-               , AddSkills $ EM.fromList [(AbProject, 2), (AbApply, 1)] ]
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 20, AddNocto 2
+               , AddAbility AbProject 2, AddAbility AbApply 1
+               , AddAbility AbAlter 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Walks with a stately dignity. You read death in the slow beckoning gestures of its revolting upper appendages."
@@ -105,7 +111,8 @@ fastEye = ItemKind
   , irarity  = [(4, 3), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 5, AddMaxCalm 60, AddSpeed 30 ]
+  , iaspects = [ AddMaxHP 5, AddMaxCalm 60, AddSpeed 30, AddNocto 2
+               , AddAbility AbAlter 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "It bites as blindingly fast as it runs. Or rolls? Or crawls? Also, cuts and pierces."
@@ -122,8 +129,8 @@ nose = ItemKind  -- depends solely on smell
   , irarity  = [(4, 5), (10, 9)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 30, AddMaxCalm 30, AddSpeed 18
-               , AddSkills $ EM.fromList [(AbProject, -1)] ]
+  , iaspects = [ AddMaxHP 30, AddMaxCalm 30, AddSpeed 18, AddNocto 2
+               , AddAbility AbProject (-1), AddAbility AbAlter 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "A blind, slimy mass of clawing, stinging and burning. You'd think it's powerless, but as soon as it touches your trembling body, it's always one step ahead."
@@ -141,9 +148,9 @@ elbow = ItemKind
   , irarity  = [(6, 1), (10, 9)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 12, AddMaxCalm 90, AddSpeed 21
-               , AddSkills
-                 $ EM.fromList [(AbProject, 2), (AbApply, 1), (AbMelee, -1)] ]
+  , iaspects = [ AddMaxHP 12, AddMaxCalm 90, AddSpeed 21, AddNocto 2
+               , AddAbility AbProject 2, AddAbility AbApply 1
+               , AddAbility AbAlter 2, AddAbility AbMelee (-1) ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "It moves in sudden jerks and never makes a noise. Speaks in hard objects hurled at deadly speeds."
@@ -162,11 +169,10 @@ torsor = ItemKind
   , irarity  = [(11 * 10/12, 0), (10, 1000)]  -- unique
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ Unique, AddMaxHP 300, AddMaxCalm 100, AddSpeed 6
-               , AddSkills $ EM.fromList
-                   [(AbProject, 2), (AbApply, 1), (AbTrigger, -1)] ]
-                   -- can't switch levels, a miniboss
-  , ieffects = []
+  , iaspects = [ AddMaxHP 300, AddMaxCalm 100, AddSpeed 6, AddNocto 2
+               , AddAbility AbProject 2, AddAbility AbApply 1
+               , AddAbility AbAlter (-1) ]  -- can't switch levels, a miniboss
+  , ieffects = [Unique]
   , ifeature = [Durable, Identified]
   , idesc    = "The mind, the heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw, grinding teeth and tensing fangs."
   , ikit     = [ ("tentacle", COrgan), ("claw", COrgan), ("large jaw", COrgan)
@@ -190,7 +196,7 @@ goldenJackal = ItemKind  -- basically a much smaller and slower hyena
   , irarity  = [(1, 5)]
   , iverbHit = "thud"
   , iweight  = 13000
-  , iaspects = [ AddMaxHP 12, AddMaxCalm 60, AddSpeed 22 ]
+  , iaspects = [ AddMaxHP 12, AddMaxCalm 60, AddSpeed 22, AddNocto 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -206,8 +212,8 @@ griffonVulture = ItemKind
   , irarity  = [(1, 5)]
   , iverbHit = "thud"
   , iweight  = 13000
-  , iaspects = [ AddMaxHP 12, AddMaxCalm 60, AddSpeed 20
-               , AddSkills $ EM.singleton AbAlter (-1) ]
+  , iaspects = [ AddMaxHP 12, AddMaxCalm 60, AddSpeed 20, AddNocto 2
+               , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -224,8 +230,8 @@ skunk = ItemKind
   , irarity  = [(1, 5), (10, 3)]
   , iverbHit = "thud"
   , iweight  = 4000
-  , iaspects = [ AddMaxHP 10, AddMaxCalm 30, AddSpeed 20
-               , AddSkills $ EM.singleton AbAlter (-1) ]
+  , iaspects = [ AddMaxHP 10, AddMaxCalm 30, AddSpeed 20, AddNocto 2
+               , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -243,8 +249,8 @@ armadillo = ItemKind
   , irarity  = [(1, 5)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 30, AddSpeed 17
-               , AddSkills $ EM.singleton AbAlter (-1) ]
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 30, AddSpeed 17, AddNocto 2
+               , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -261,8 +267,8 @@ gilaMonster = ItemKind
   , irarity  = [(2, 5), (10, 3)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 12, AddMaxCalm 60, AddSpeed 15
-               , AddSkills $ EM.singleton AbAlter (-1) ]
+  , iaspects = [ AddMaxHP 12, AddMaxCalm 60, AddSpeed 15, AddNocto 2
+               , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -279,8 +285,8 @@ rattlesnake = ItemKind
   , irarity  = [(4, 1), (10, 7)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 25, AddMaxCalm 60, AddSpeed 15
-               , AddSkills $ EM.singleton AbAlter (-1) ]
+  , iaspects = [ AddMaxHP 25, AddMaxCalm 60, AddSpeed 15, AddNocto 2
+               , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -297,7 +303,7 @@ komodoDragon = ItemKind  -- bad hearing; regeneration makes it very powerful
   , irarity  = [(7, 0), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 16 ]
+  , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 16, AddNocto 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -315,7 +321,7 @@ hyena = ItemKind
   , irarity  = [(4, 1), (10, 8)]
   , iverbHit = "thud"
   , iweight  = 60000
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 30 ]
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 30, AddNocto 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -331,7 +337,7 @@ alligator = ItemKind
   , irarity  = [(6, 1), (10, 9)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 15 ]
+  , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 15, AddNocto 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -349,10 +355,9 @@ rhinoceros = ItemKind
   , irarity  = [(1 * 10/12, 1000000), (2 * 10/12, 0)]  -- unique
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ Unique, AddMaxHP 90, AddMaxCalm 60, AddSpeed 25
-               , AddSkills $ EM.singleton AbTrigger (-1) ]
-                   -- can't switch levels, a miniboss
-  , ieffects = []
+  , iaspects = [ AddMaxHP 90, AddMaxCalm 60, AddSpeed 25, AddNocto 2
+               , AddAbility AbAlter (-1) ]  -- can't switch levels, a miniboss
+  , ieffects = [Unique]
   , ifeature = [Durable, Identified]
   , idesc    = "The last of its kind. Blind with rage. Charges at deadly speed."
   , ikit     = [ ("armored skin", COrgan), ("eye 2", COrgan)
@@ -371,8 +376,9 @@ beeSwarm = ItemKind
   , irarity  = [(1, 2), (10, 4)]
   , iverbHit = "thud"
   , iweight  = 1000
-  , iaspects = [ AddMaxHP 8, AddMaxCalm 60, AddSpeed 30
-               , AddSkills $ EM.singleton AbAlter (-1) ]  -- armor in sting
+  , iaspects = [ AddMaxHP 8, AddMaxCalm 60
+               , AddSpeed 30, AddNocto 2  -- armor in sting
+               , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -388,8 +394,8 @@ hornetSwarm = ItemKind
   , irarity  = [(5, 1), (10, 8)]
   , iverbHit = "thud"
   , iweight  = 1000
-  , iaspects = [ AddMaxHP 8, AddMaxCalm 60, AddSpeed 30
-               , AddSkills $ EM.singleton AbAlter (-1)
+  , iaspects = [ AddMaxHP 8, AddMaxCalm 60, AddSpeed 30, AddNocto 2
+               , AddAbility AbAlter (-2)  -- can't use stairs nor doors
                , AddArmorMelee 80, AddArmorRanged 80 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -406,8 +412,8 @@ thornbush = ItemKind
   , irarity  = [(1, 3)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20
-               , AddSkills $ EM.fromList (zip [AbWait, AbMelee] [1, 1..]) ]
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20, AddNocto 2
+               , AddAbility AbWait 1, AddAbility AbMelee 1 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -425,8 +431,8 @@ razorwireFence = ItemKind
   , irarity  = [(3 * 10/12, 0), (4, 2)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 20
-               , AddSkills $ EM.fromList (zip [AbWait, AbMelee] [1, 1..])
+  , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 20, AddNocto 2
+               , AddAbility AbWait 1, AddAbility AbMelee 1
                , AddArmorMelee 50, AddArmorRanged 50 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -442,8 +448,8 @@ electricFence = ItemKind
   , irarity  = [(3 * 10/12, 0), (4, 2)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 40
-               , AddSkills $ EM.fromList (zip [AbWait, AbMelee] [1, 1..])
+  , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 40, AddNocto 2
+               , AddAbility AbWait 1, AddAbility AbMelee 1
                , AddArmorMelee 50, AddArmorRanged 50 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -459,8 +465,8 @@ activeFence = ItemKind
   , irarity  = [(3 * 10/12, 0), (4, 1)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20
-               , AddSkills $ EM.fromList [(AbWait, 1), (AbProject, 3)]
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20, AddNocto 2
+               , AddAbility AbWait 1, AddAbility AbProject 3
                , AddArmorMelee 50, AddArmorRanged 50 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -477,8 +483,8 @@ steamFaucet = ItemKind
   , irarity  = [(5, 2)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 10
-               , AddSkills $ EM.fromList (zip [AbWait, AbMelee] [1, 1..])
+  , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 10, AddNocto 2
+               , AddAbility AbWait 1, AddAbility AbMelee 1
                , AddArmorMelee 80, AddArmorRanged 80 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -494,8 +500,9 @@ biogasFaucet = ItemKind
   , irarity  = [(5, 2)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 20, AddLight 3
-               , AddSkills $ EM.fromList (zip [AbWait, AbMelee] [1, 1..]) ]
+  , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 20
+               , AddShine 3, AddNocto 2
+               , AddAbility AbWait 1, AddAbility AbMelee 1 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "An emergency pressure-release vent on a smelly biogas pipe."
@@ -510,8 +517,9 @@ medbotFaucet = ItemKind
   , irarity  = [(5, 2)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 20, AddLight 3
-               , AddSkills $ EM.fromList (zip [AbWait, AbMelee] [1, 1..]) ]
+  , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 20
+               , AddShine 3, AddNocto 2
+               , AddAbility AbWait 1, AddAbility AbMelee 1 ]
   , ieffects = []
   , ifeature = [Durable, Identified]  -- TODO: only heal humans
   , idesc    = "A faucet of a malfunctioning nano medical robot dispenser. Let's hope the medbots are still effective."
@@ -526,10 +534,9 @@ surveillanceDrone = ItemKind
   , irarity  = []  -- TODO: too boring
   , iverbHit = "thud"
   , iweight  = 1000
-  , iaspects = [ AddMaxHP 3, AddMaxCalm 90, AddSpeed 30
-               , AddSkills
-                 $ EM.fromList
-                 $ zip [AbDisplace, AbMoveItem, AbProject, AbMelee] [-1, -1..]
+  , iaspects = [ AddMaxHP 3, AddMaxCalm 90, AddSpeed 30, AddNocto 2
+               , AddAbility AbDisplace (-1), AddAbility AbMoveItem (-1)
+               , AddAbility AbProject (-1), AddAbility AbMelee (-1)
                , AddArmorMelee 80, AddArmorRanged 80 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -545,10 +552,9 @@ shepherdDrone = ItemKind
   , irarity  = [(1, 7)]
   , iverbHit = "thud"
   , iweight  = 1000
-  , iaspects = [ AddMaxHP 3, AddMaxCalm 60, AddSpeed 30
-               , AddSkills
-                 $ EM.fromList
-                 $ zip [AbDisplace, AbMoveItem, AbProject] [-1, -1..]
+  , iaspects = [ AddMaxHP 3, AddMaxCalm 60, AddSpeed 30, AddNocto 2
+               , AddAbility AbDisplace (-1), AddAbility AbMoveItem (-1)
+               , AddAbility AbProject (-1)
                , AddArmorMelee 80, AddArmorRanged 80 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -565,10 +571,9 @@ huntingDrone = ItemKind
   , irarity  = [(3, 0), (5, 2), (10, 4)]
   , iverbHit = "thud"
   , iweight  = 500
-  , iaspects = [ AddMaxHP 3, AddMaxCalm 60, AddSpeed 40
-               , AddSkills
-                 $ EM.fromList
-                 $ zip [AbDisplace, AbMoveItem, AbMelee] [-1, -1..]
+  , iaspects = [ AddMaxHP 3, AddMaxCalm 60, AddSpeed 40, AddNocto 2
+               , AddAbility AbDisplace (-1), AddAbility AbMoveItem (-1)
+               , AddAbility AbMelee (-1)
                , AddArmorMelee 80, AddArmorRanged 80 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -586,8 +591,8 @@ homeRobot = ItemKind
   , irarity  = [(1, 20), (10, 6)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 10, AddMaxCalm 30, AddSpeed 20
-               , AddSkills $ EM.singleton AbProject (-1) ]
+  , iaspects = [ AddMaxHP 10, AddMaxCalm 30, AddSpeed 20, AddNocto 2
+               , AddAbility AbProject (-1) ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Once a timid household robot, now sufficiently adapted to survive in the deadly environment."
@@ -604,7 +609,7 @@ wasteRobot = ItemKind
   , irarity  = [(1, 10), (10, 6)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 15, AddMaxCalm 30, AddSpeed 15 ]
+  , iaspects = [ AddMaxHP 15, AddMaxCalm 30, AddSpeed 15, AddNocto 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "You are not in its database, hence you are waste."
@@ -623,8 +628,8 @@ lightRobot = ItemKind
   , irarity  = [(3, 1), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ AddMaxHP 15, AddMaxCalm 60, AddSpeed 30
-               , AddSkills $ EM.singleton AbProject 2 ]
+  , iaspects = [ AddMaxHP 15, AddMaxCalm 60, AddSpeed 30, AddNocto 2
+               , AddAbility AbProject 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Interior and exterior decoration robot. Strongly fancies deep reds recently."
@@ -642,8 +647,8 @@ heavyRobot = ItemKind
   , irarity  = [(6, 0), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 800000
-  , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 20
-               , AddSkills $ EM.singleton AbProject 2 ]
+  , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 20, AddNocto 2
+               , AddAbility AbProject 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Heavy multi-purpose construction robot. Excels at discharging, dismantling and demolition."
@@ -662,10 +667,10 @@ cleanerRobot = ItemKind
                  -- unique, appears at 10 of 12
   , iverbHit = "thud"
   , iweight  = 80000
-  , iaspects = [ Unique, AddMaxHP 120, AddMaxCalm 60, AddSpeed 18
-               , AddSkills $ EM.singleton AbTrigger (-1) ]
+  , iaspects = [ AddMaxHP 120, AddMaxCalm 60, AddSpeed 18, AddNocto 2
+               , AddAbility AbAlter (-1) ]
                    -- can't switch levels, a miniboss
-  , ieffects = []
+  , ieffects = [Unique]
   , ifeature = [Durable, Identified]
   , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."
   , ikit     = [ ("waste container", COrgan), ("boiling vent", COrgan)
