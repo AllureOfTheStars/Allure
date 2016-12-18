@@ -62,7 +62,7 @@ rogue = CaveKind
   , couterFenceTile = "basic outer fence"
   , clegendDarkTile = "legendDark"
   , clegendLitTile  = "legendLit"
-  , cescape         = Nothing
+  , cescapeGroup    = Nothing
   }
 arena = rogue
   { csymbol       = 'A'
@@ -231,7 +231,7 @@ safari1 = ambush {cfreq = [("caveSafari1", 1)]}
 safari2 = battle {cfreq = [("caveSafari2", 1)]}
 safari3 = brawl
   { cfreq = [("caveSafari3", 1)]
-  , cescape       = Just False
+  , cescapeGroup  = Just "escape outdoor down"
   }
 rogueLit = rogue
   { csymbol       = 'S'
@@ -245,7 +245,7 @@ rogueLit = rogue
   , citemFreq     = [("useful", 33), ("gem", 33), ("currency", 33)]
   , cdarkCorTile  = "emergency walkway"
   , clitCorTile   = "emergency walkway"
-  , cescape       = Just True
+  , cescapeGroup  = Just "escape up"
   }
 bridge = rogueLit
   { csymbol       = 'B'
@@ -258,6 +258,7 @@ bridge = rogueLit
   , citemNum      = 15 * d 2  -- lure them in with loot
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq rogue
   , cextraStairs  = 1
+  , cescapeGroup    = Nothing
   }
 shallow2rogue = rogue
   { cfreq         = [("shallow random 2", 50)]
@@ -294,5 +295,5 @@ shallow1arena = shallow2empty  -- TODO: replace some rooms with oriels?
   }
 emptyExit = empty
   { cfreq = [("caveEmptyExit", 1)]
-  , cescape = Just False
+  , cescapeGroup = Just "escape spaceship down"
   }

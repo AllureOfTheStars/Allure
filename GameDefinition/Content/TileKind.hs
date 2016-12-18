@@ -28,10 +28,10 @@ cdefs = ContentDef
   , validateSingle = validateSingleTileKind
   , validateAll = validateAllTileKind
   , content = contentFromList $
-      [unknown, wall, wallGlass, wallCache, hardRock, doorlessWall, oriel, pillar, pillarIce, lampPost, burningBush, bush, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorActorLit, floorItemLit, floorActorItemLit, floorArenaShade, floorRedLit, floorBlueLit, floorGreenLit, floorFog, floorSmoke]
+      [unknown, wall, wallGlass, wallCache, hardRock, doorlessWall, oriel, pillar, pillarIce, lampPost, burningBush, bush, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, escapeOutdoorDown, escapeSpaceshipDown, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorActorLit, floorItemLit, floorActorItemLit, floorArenaShade, floorRedLit, floorBlueLit, floorGreenLit, floorFog, floorSmoke]
       ++ map makeDarkColor [floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorActorLit, floorItemLit, floorActorItemLit]
   }
-unknown,        wall, wallGlass, wallCache, hardRock, doorlessWall, oriel, pillar, pillarIce, lampPost, burningBush, bush, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorActorLit, floorItemLit, floorActorItemLit, floorArenaShade, floorRedLit, floorBlueLit, floorGreenLit, floorFog, floorSmoke :: TileKind
+unknown,        wall, wallGlass, wallCache, hardRock, doorlessWall, oriel, pillar, pillarIce, lampPost, burningBush, bush, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsDown, escapeUp, escapeDown, escapeOutdoorDown, escapeSpaceshipDown, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorActorLit, floorItemLit, floorActorItemLit, floorArenaShade, floorRedLit, floorBlueLit, floorGreenLit, floorFog, floorSmoke :: TileKind
 
 unknown = TileKind  -- needs to have index 0 and alter 1
   { tsymbol  = ' '
@@ -203,7 +203,7 @@ stairsDown = TileKind
   }
 escapeUp = TileKind
   { tsymbol  = '<'
-  , tname    = "airlock to the shuttle"
+  , tname    = "exit hatch up"
   , tfreq    = [("legendLit", 1), ("legendDark", 1)]
   , tcolor   = BrYellow
   , tcolor2  = BrYellow
@@ -212,12 +212,20 @@ escapeUp = TileKind
   }
 escapeDown = TileKind
   { tsymbol  = '>'
-  , tname    = "airlock to the shuttle"
+  , tname    = "exit trapdoor down"
   , tfreq    = [("legendLit", 1), ("legendDark", 1)]
   , tcolor   = BrYellow
   , tcolor2  = BrYellow
   , talter   = talterForStairs
   , tfeature = [Cause $ IK.Escape (-1)]
+  }
+escapeOutdoorDown = escapeDown
+  { tname    = "exit back to town"
+  , tfreq    = [("escape outdoor down", 1)]
+  }
+escapeSpaceshipDown = escapeDown
+  { tname    = "airlock to the shuttle"
+  , tfreq    = [("escape spaceship down", 1)]
   }
 floorCorridorLit = TileKind
   { tsymbol  = '.'
