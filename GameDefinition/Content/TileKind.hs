@@ -89,7 +89,7 @@ doorlessWall = TileKind
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 100
-  , tfeature = []
+  , tfeature = [HideAs "fillerWall"]
   }
 pillar = TileKind
   { tsymbol  = 'O'
