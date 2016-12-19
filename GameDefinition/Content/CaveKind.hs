@@ -136,7 +136,7 @@ empty = rogue
   , cdefTile      = "emptySet"
   , cdarkCorTile  = "floorArenaDark"
   , clitCorTile   = "floorArenaLit"
-  , cstairFreq    = [("staircase", 100)]
+  , cstairFreq    = [("staircase", 100), ("staircase lift", 100)]
   }
 noise = rogue
   { csymbol       = 'N'

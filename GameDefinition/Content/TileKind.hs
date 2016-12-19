@@ -55,7 +55,8 @@ wall = TileKind
   { tsymbol  = '#'
   , tname    = "granite wall"
   , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
-               , ("cachable", 70), ("stair terminal", 100)
+               , ("cachable", 70)
+               , ("staircase terminal", 100), ("staircase lift terminal", 100)
                , ("noiseSet", 95), ("battleSet", 250)
                , ("wallOrGlassOver_%_Lit", 90)]
   , tcolor   = BrWhite
@@ -111,7 +112,7 @@ pillarIce = pillar
 wallCache = TileKind
   { tsymbol  = '&'
   , tname    = "cache"
-  , tfreq    = [ ("cachable", 30), ("stair terminal", 1)
+  , tfreq    = [ ("cachable", 30), ("staircase lift terminal", 5)  -- only lifts
                , ("legendLit", 100), ("legendDark", 100) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
@@ -311,7 +312,7 @@ floorFog = TileKind
   }
 floorSmoke = floorFog
   { tname    = "billowing smoke"
-  , tfreq    = [("battleSet", 5), ("labTrail", 70), ("stair terminal", 2)]
+  , tfreq    = [("battleSet", 5), ("labTrail", 70), ("staircase terminal", 5)]
   , tcolor   = Brown
   , tcolor2  = BrBlack
   , talter   = maxBound
