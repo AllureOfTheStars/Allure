@@ -63,7 +63,7 @@ rogue = CaveKind
   , clegendDarkTile = "legendDark"
   , clegendLitTile  = "legendLit"
   , cescapeGroup    = Nothing
-  , cstairFreq      = [("staircase", 100)]
+  , cstairFreq      = [("staircase lift", 100)]
   }
 arena = rogue
   { csymbol       = 'A'
@@ -87,6 +87,7 @@ arena = rogue
   , cdefTile      = "arenaSet"
   , cdarkCorTile  = "trailLit"  -- let trails give off light
   , clitCorTile   = "trailLit"
+  , cstairFreq    = [("staircase", 100)]
   }
 laboratory = arena
   { csymbol       = 'L'
@@ -109,6 +110,7 @@ laboratory = arena
   , cdefTile      = "fillerWall"
   , cdarkCorTile  = "labTrail"
   , clitCorTile   = "labTrail"
+  , cstairFreq    = [("staircase lift", 100)]
   }
 empty = rogue
   { csymbol       = 'E'
@@ -134,6 +136,7 @@ empty = rogue
   , cdefTile      = "emptySet"
   , cdarkCorTile  = "floorArenaDark"
   , clitCorTile   = "floorArenaLit"
+  , cstairFreq    = [("staircase", 100)]
   }
 noise = rogue
   { csymbol       = 'N'
@@ -158,6 +161,7 @@ noise = rogue
   , cdefTile      = "noiseSet"
   , cdarkCorTile  = "floorArenaDark"
   , clitCorTile   = "floorArenaLit"
+  , cstairFreq    = [("staircase", 100)]
   }
 battle = rogue  -- few lights and many solids, to help the less numerous heroes
   { csymbol       = 'B'

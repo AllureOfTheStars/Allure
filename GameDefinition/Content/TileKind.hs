@@ -28,10 +28,10 @@ cdefs = ContentDef
   , validateSingle = validateSingleTileKind
   , validateAll = validateAllTileKind
   , content = contentFromList $
-      [unknown, wall, wallGlass, wallCache, hardRock, doorlessWall, oriel, pillar, pillarIce, lampPost, burningBush, bush, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsOutdoorUp, stairsDown, stairsOutdoorDown, escapeUp, escapeDown, escapeOutdoorDown, escapeSpaceshipDown, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorActorLit, floorItemLit, floorActorItemLit, floorArenaShade, floorRedLit, floorBlueLit, floorGreenLit, floorFog, floorSmoke]
+      [unknown, wall, wallGlass, wallCache, hardRock, doorlessWall, oriel, pillar, pillarIce, lampPost, burningBush, bush, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsOutdoorUp, stairsLiftUp, stairsDown, stairsOutdoorDown, stairsLiftDown, escapeUp, escapeDown, escapeOutdoorDown, escapeSpaceshipDown, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorActorLit, floorItemLit, floorActorItemLit, floorArenaShade, floorRedLit, floorBlueLit, floorGreenLit, floorFog, floorSmoke]
       ++ map makeDarkColor [floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorActorLit, floorItemLit, floorActorItemLit]
   }
-unknown,        wall, wallGlass, wallCache, hardRock, doorlessWall, oriel, pillar, pillarIce, lampPost, burningBush, bush, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsOutdoorUp, stairsDown, stairsOutdoorDown, escapeUp, escapeDown, escapeOutdoorDown, escapeSpaceshipDown, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorActorLit, floorItemLit, floorActorItemLit, floorArenaShade, floorRedLit, floorBlueLit, floorGreenLit, floorFog, floorSmoke :: TileKind
+unknown,        wall, wallGlass, wallCache, hardRock, doorlessWall, oriel, pillar, pillarIce, lampPost, burningBush, bush, tree, wallSuspect, doorClosed, doorOpen, stairsUp, stairsOutdoorUp, stairsLiftUp, stairsDown, stairsOutdoorDown, stairsLiftDown, escapeUp, escapeDown, escapeOutdoorDown, escapeSpaceshipDown, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorActorLit, floorItemLit, floorActorItemLit, floorArenaShade, floorRedLit, floorBlueLit, floorGreenLit, floorFog, floorSmoke :: TileKind
 
 unknown = TileKind  -- needs to have index 0 and alter 1
   { tsymbol  = ' '
@@ -195,6 +195,10 @@ stairsOutdoorUp = stairsUp
   { tname    = "signpost pointing backward"
   , tfreq    = [("staircase outdoor up", 1)]
   }
+stairsLiftUp = stairsUp
+  { tname    = "lift up"
+  , tfreq    = [("staircase lift up", 1)]
+  }
 stairsDown = TileKind
   { tsymbol  = '>'
   , tname    = "staircase down"
@@ -207,6 +211,10 @@ stairsDown = TileKind
 stairsOutdoorDown = stairsDown
   { tname    = "signpost pointing forward"
   , tfreq    = [("staircase outdoor down", 1)]
+  }
+stairsLiftDown = stairsDown
+  { tname    = "lift down"
+  , tfreq    = [("staircase lift down", 1)]
   }
 escapeUp = TileKind
   { tsymbol  = '<'
