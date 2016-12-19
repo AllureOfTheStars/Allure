@@ -208,11 +208,11 @@ rosterRaid = Roster
 rosterBrawl = Roster
   { rosterList = [ playerHero { fcanEscape = False
                               , fhiCondPoly = hiDweller
-                              , fentryLevel = 4 }
+                              , fentryLevel = -4 }
                  , playerAntiHero { fname = "Red Collars"
                                   , fcanEscape = False
                                   , fhiCondPoly = hiDweller
-                                  , fentryLevel = 4 }
+                                  , fentryLevel = -4 }
                  , playerHorror ]
   , rosterEnemy = [ ("Spacefarer Crew", "Red Collars")
                   , ("Spacefarer Crew", "Horror Den")
@@ -222,14 +222,14 @@ rosterBrawl = Roster
 rosterAmbush = Roster
   { rosterList = [ playerSniper { fcanEscape = False
                                 , fhiCondPoly = hiDweller
-                                , fentryLevel = 7
+                                , fentryLevel = -7
                                 , finitialActors = 4 }
                  , playerAntiSniper { fname = "Red Collars"
                                     , fcanEscape = False
                                     , fhiCondPoly = hiDweller
-                                    , fentryLevel = 7
+                                    , fentryLevel = -7
                                     , finitialActors = 4 }
-                 , playerHorror {fentryLevel = 7} ]
+                 , playerHorror {fentryLevel = -7} ]
   , rosterEnemy = [ ("Spacefarer Crew", "Red Collars")
                   , ("Spacefarer Crew", "Horror Den")
                   , ("Red Collars", "Horror Den") ]
@@ -238,15 +238,15 @@ rosterAmbush = Roster
 rosterBattle = Roster
   { rosterList = [ playerSoldier { fcanEscape = False
                                  , fhiCondPoly = hiDweller
-                                 , fentryLevel = 7
+                                 , fentryLevel = -7
                                  , finitialActors = 5 }
-                 , playerMobileMonster { fentryLevel = 7
+                 , playerMobileMonster { fentryLevel = -7
                                        , finitialActors = 35
                                        , fneverEmpty = True }
-                 , playerMobileAnimal { fentryLevel = 7
+                 , playerMobileAnimal { fentryLevel = -7
                                       , finitialActors = 20
                                       , fneverEmpty = True }
-                 , playerMobileRobot { fentryLevel = 7
+                 , playerMobileRobot { fentryLevel = -7
                                      , finitialActors = 15
                                      , fneverEmpty = True } ]
   , rosterEnemy = [ ("Spacefarer Crew", "Alien Hierarchy")
@@ -259,18 +259,18 @@ rosterBattle = Roster
 rosterBattleSurvival = rosterBattle
   { rosterList = [ playerSoldier { fcanEscape = False
                                  , fhiCondPoly = hiDweller
-                                 , fentryLevel = 7
+                                 , fentryLevel = -7
                                  , finitialActors = 5
                                  , fleaderMode =
                                      LeaderAI $ AutoLeader False False
                                  , fhasUI = False }
-                 , playerMobileMonster { fentryLevel = 7
+                 , playerMobileMonster { fentryLevel = -7
                                        , finitialActors = 35
                                        , fneverEmpty = True }
-                 , playerMobileAnimal { fentryLevel = 7
+                 , playerMobileAnimal { fentryLevel = -7
                                       , finitialActors = 20
                                       , fneverEmpty = True }
-                 , playerMobileRobot { fentryLevel = 7
+                 , playerMobileRobot { fentryLevel = -7
                                      , finitialActors = 15
                                      , fneverEmpty = True
                                      , fhasUI = True } ] }
@@ -283,19 +283,19 @@ playerMonsterTourist =
                     , fneverEmpty = True  -- no spawning
                       -- Follow-the-guide, as tourists do.
                     , ftactic = TFollow
-                    , fentryLevel = 4
+                    , fentryLevel = -4
                     , finitialActors = 15
                     , fleaderMode =
                         LeaderUI $ AutoLeader False False }
 
 playerHunamConvict =
   playerCivilian { fname = "Hunam Convict Pack"
-                 , fentryLevel = 4 }
+                 , fentryLevel = -4 }
 
 playerAnimalMagnificent =
   playerMobileAnimal { fname = "Animal Magnificent Specimen Variety"
                      , fneverEmpty = True
-                     , fentryLevel = 7
+                     , fentryLevel = -7
                      , finitialActors = 10
                      , fleaderMode =  -- False to move away from stairs
                          LeaderAI $ AutoLeader True False }
@@ -303,7 +303,7 @@ playerAnimalMagnificent =
 playerAnimalExquisite =
   playerMobileAnimal { fname = "Animal Exquisite Herds and Packs"
                      , fneverEmpty = True
-                     , fentryLevel = 10
+                     , fentryLevel = -10
                      , finitialActors = 30 }
 
 rosterSafari = Roster
@@ -339,11 +339,11 @@ rosterPvP = Roster
   { rosterList = [ playerAntiHero { fname = "Red"
                                   , fcanEscape = False
                                   , fhiCondPoly = hiDweller
-                                  , fentryLevel = 4 }
+                                  , fentryLevel = -4 }
                  , playerHero { fname = "Blue"
                               , fcanEscape = False
                               , fhiCondPoly = hiDweller
-                              , fentryLevel = 4 }
+                              , fentryLevel = -4 }
                  , playerHorror ]
   , rosterEnemy = [ ("Red", "Blue")
                   , ("Red", "Horror Den")
@@ -388,12 +388,12 @@ cavesExploration = IM.fromList $
 
 cavesRaid = IM.fromList [(4, "caveRogueLit")]
 
-cavesBrawl = IM.fromList [(4, "caveBrawl")]
+cavesBrawl = IM.fromList [(-4, "caveBrawl")]
 
-cavesAmbush = IM.fromList [(7, "caveAmbush")]
+cavesAmbush = IM.fromList [(-7, "caveAmbush")]
 
-cavesBattle = IM.fromList [(7, "caveBattle")]
+cavesBattle = IM.fromList [(-7, "caveBattle")]
 
-cavesSafari = IM.fromList [ (4, "caveSafari1")
-                          , (7, "caveSafari2")
-                          , (10, "caveSafari3") ]
+cavesSafari = IM.fromList [ (-4, "caveSafari1")
+                          , (-7, "caveSafari2")
+                          , (-10, "caveSafari3") ]
