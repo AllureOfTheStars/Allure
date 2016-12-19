@@ -63,13 +63,14 @@ rogue = CaveKind
   , clegendDarkTile = "legendDark"
   , clegendLitTile  = "legendLit"
   , cescapeGroup    = Nothing
+  , cstairFreq      = [("staircase", 100)]
   }
 arena = rogue
   { csymbol       = 'A'
   , cname         = "Recreational deck"
   , cfreq         = [("default random", 50), ("caveArena", 1)]
   , cgrid         = DiceXY (2 * d 2) (d 3)
-  , cminPlaceSize = DiceXY (2 * d 2 + 4) 6
+  , cminPlaceSize = DiceXY (2 * d 2 + 4) 5
   , cdarkChance   = d 100 - dl 50
   -- Trails provide enough light for fun stealth. Light is not too deadly,
   -- because not many obstructions, so foes visible from far away.
@@ -114,7 +115,7 @@ empty = rogue
   , cname         = "Construction site"
   , cfreq         = [("default random", 20), ("caveEmpty", 1)]
   , cgrid         = DiceXY (d 2) 1
-  , cminPlaceSize = DiceXY 12 12
+  , cminPlaceSize = DiceXY 12 7
   , cmaxPlaceSize = DiceXY 24 16
   , cdarkChance   = d 80 + dl 80
   , cnightChance  = 0  -- always day
@@ -137,7 +138,7 @@ empty = rogue
 noise = rogue
   { csymbol       = 'N'
   , cname         = "Machine rooms"
-  , cfreq         = [("default random", 10), ("caveNoise", 1)]
+  , cfreq         = [("default random", 5), ("caveNoise", 1)]
   , cgrid         = DiceXY (2 + d 2) 3
   , cminPlaceSize = DiceXY 10 6
   , cmaxPlaceSize = DiceXY 20 10
@@ -227,11 +228,18 @@ ambush = rogue  -- lots of lights, to give a chance to snipe
   , cdarkCorTile  = "trailLit"  -- let trails give off light
   , clitCorTile   = "trailLit"
   }
-safari1 = ambush {cfreq = [("caveSafari1", 1)]}
-safari2 = battle {cfreq = [("caveSafari2", 1)]}
+safari1 = ambush
+  { cfreq = [("caveSafari1", 1)]
+  , cstairFreq = [("staircase outdoor", 1)]
+  }
+safari2 = battle
+  { cfreq = [("caveSafari2", 1)]
+  , cstairFreq = [("staircase outdoor", 1)]
+  }
 safari3 = brawl
   { cfreq = [("caveSafari3", 1)]
   , cescapeGroup  = Just "escape outdoor down"
+  , cstairFreq = [("staircase outdoor", 1)]
   }
 rogueLit = rogue
   { csymbol       = 'S'
@@ -257,8 +265,7 @@ bridge = rogueLit
   , cactorFreq    = []  -- safe, nothing spawns
   , citemNum      = 15 * d 2  -- lure them in with loot
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq rogue
-  , cextraStairs  = 1
-  , cescapeGroup    = Nothing
+  , cescapeGroup  = Nothing
   }
 shallow2rogue = rogue
   { cfreq         = [("shallow random 2", 50)]
@@ -282,7 +289,7 @@ shallow2empty = empty
 shallow1arena = shallow2empty  -- TODO: replace some rooms with oriels?
   { cname         = "Outermost deck"
   , cfreq         = [("shallow random 1", 100)]
-  , cminPlaceSize = DiceXY (2 * d 2 + 3) 3
+  , cminPlaceSize = DiceXY (2 * d 2 + 3) 4
   , cactorCoeff   = 3  -- mostly immobile actors anyway
   , cactorFreq    = [("animal", 8), ("robot", 2), ("immobile robot", 90)]
       -- The medbot faucets on lvl 1 act like HP resets. They are needed to avoid
