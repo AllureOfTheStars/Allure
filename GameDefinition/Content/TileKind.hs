@@ -245,7 +245,7 @@ escapeSpaceshipDown = escapeDown
   }
 floorCorridorLit = TileKind
   { tsymbol  = '.'
-  , tname    = "corridor floor"
+  , tname    = "floor"
   , tfreq    = [("floorCorridorLit", 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
@@ -253,8 +253,7 @@ floorCorridorLit = TileKind
   , tfeature = [Walkable, Clear, Indistinct]
   }
 floorArenaLit = floorCorridorLit
-  { tname    = "floor"
-  , tfreq    = [("floorArenaLit", 1), ("arenaSet", 1), ("emptySet", 99)]
+  {  tfreq    = [("floorArenaLit", 1), ("arenaSet", 1), ("emptySet", 99)]
   }
 floorNoiseLit = floorArenaLit
   { tname    = "oily stone floor"
