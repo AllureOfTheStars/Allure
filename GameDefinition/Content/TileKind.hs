@@ -95,7 +95,7 @@ pillar = TileKind
   { tsymbol  = 'O'
   , tname    = "rock"
   , tfreq    = [ ("legendLit", 100), ("legendDark", 100)
-               , ("brawlSet", 50) ]
+               , ("brawlSet", 50), ("staircase outdoor terminal", 1) ]
   , tcolor   = BrCyan  -- not BrWhite, to tell from heroes
   , tcolor2  = Cyan
   , talter   = 100
