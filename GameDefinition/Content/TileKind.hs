@@ -58,7 +58,7 @@ wall = TileKind
                , ("cachable", 70)
                , ("staircase terminal", 100), ("staircase lift terminal", 100)
                , ("noiseSet", 95), ("battleSet", 250)
-               , ("wallOrGlassOver_%_Lit", 90)]
+               , ("rectWindowsOver_%_Lit", 90)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 100
@@ -67,11 +67,11 @@ wall = TileKind
 wallGlass = TileKind
   { tsymbol  = '#'
   , tname    = "polished crystal wall"
-  , tfreq    = [("wallOrGlassOver_%_Lit", 10)]
+  , tfreq    = [("rectWindowsOver_%_Lit", 10)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 10
-  , tfeature = [Clear]
+  , tfeature = [Spice, Clear]
   }
 hardRock = TileKind
   { tsymbol  = '#'
@@ -277,7 +277,7 @@ floorActorItemLit = floorItemLit
   }
 floorArenaShade = floorActorLit
   { tname    = "shaded ground"
-  , tfreq    = [("treeShadeOrFogOver_s", 95)]
+  , tfreq    = [("treeShadeOver_s", 95)]
   , tcolor2  = BrBlack
   , tfeature = Dark : tfeature floorActorLit  -- no OftenItem
   }
@@ -303,15 +303,15 @@ floorGreenLit = floorRedLit
 floorFog = TileKind
   { tsymbol  = ';'
   , tname    = "dense fog"
-  , tfreq    = [("emptySet", 1), ("labTrail", 30), ("treeShadeOrFogOver_s", 5)]
+  , tfreq    = [("emptySet", 1), ("treeShadeOver_s", 5)]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = maxBound
-  , tfeature = [Walkable, Dark, NoItem]
+  , tfeature = [Spice, Walkable, Dark, NoItem]
   }
 floorSmoke = floorFog
   { tname    = "billowing smoke"
-  , tfreq    = [("battleSet", 5), ("labTrail", 70), ("staircase terminal", 5)]
+  , tfreq    = [("battleSet", 5), ("labTrail", 1), ("staircase terminal", 5)]
   , tcolor   = Brown
   , tcolor2  = BrBlack
   , talter   = maxBound

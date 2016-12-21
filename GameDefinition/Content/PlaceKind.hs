@@ -36,7 +36,7 @@ lstaircase = [staircase, staircaseLift, staircase2, staircase3, staircase4, stai
 rect = PlaceKind  -- Valid for any nonempty area, hence low frequency.
   { psymbol  = 'r'
   , pname    = "room"
-  , pfreq    = [("rogue", 50), ("arena", 20), ("empty", 1)]
+  , pfreq    = [("rogue", 50), ("arena", 20)]
   , prarity  = [(1, 10), (10, 8)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -46,19 +46,19 @@ rect = PlaceKind  -- Valid for any nonempty area, hence low frequency.
 rectWindows = PlaceKind
   { psymbol  = 'w'
   , pname    = "room"
-  , pfreq    = [("ambush", 8), ("noise", 80)]
+  , pfreq    = [("ambush", 15), ("noise", 200), ("empty", 1)]
   , prarity  = [(1, 10), (10, 8)]
   , pcover   = CStretch
   , pfence   = FNone
   , ptopLeft = [ "#%"
                , "%."
                ]
-  , poverride = [('%', "wallOrGlassOver_%_Lit")]
+  , poverride = [('%', "rectWindowsOver_%_Lit")]
   }
 ruin = PlaceKind
   { psymbol  = 'R'
   , pname    = "ruin"
-  , pfreq    = [("ambush", 17), ("battle", 33), ("noise", 40)]
+  , pfreq    = [("ambush", 15), ("battle", 33), ("noise", 50)]
   , prarity  = [(1, 10), (10, 20)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -249,7 +249,7 @@ treeShade = PlaceKind
                , "XOs"
                , "XXs"
                ]
-  , poverride = [('O', "treeShadeOver_O"), ('s', "treeShadeOrFogOver_s")]
+  , poverride = [('O', "treeShadeOver_O"), ('s', "treeShadeOver_s")]
   }
 treeShade2 = treeShade
   { ptopLeft = [ "sss"
