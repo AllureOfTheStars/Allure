@@ -319,7 +319,7 @@ rosterSafariSurvival = rosterSafari
 
 rosterDefense = rosterExploration
   { rosterList = [ playerAntiHero
-                 , playerAntiMonster
+                 , playerAntiMonster {finitialActors = 1}  -- hack, for travis
                  , playerAnimal
                  , playerRobot ] }
 
