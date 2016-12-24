@@ -35,6 +35,7 @@ warrior = ItemKind
   , irarity  = [(1, 5)]
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 80  -- partially from clothes and assumed first aid
                               -- also possibly from artificial skin
                , AddMaxCalm 60, AddSpeed 20, AddNocto 2
@@ -92,6 +93,7 @@ eye = ItemKind
   , irarity  = [(4, 6), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 20, AddNocto 2
                , AddAbility AbProject 2, AddAbility AbApply 1
                , AddAbility AbAlter 2 ]
@@ -111,6 +113,7 @@ fastEye = ItemKind
   , irarity  = [(4, 3), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 5, AddMaxCalm 60, AddSpeed 30, AddNocto 2
                , AddAbility AbAlter 2 ]
   , ieffects = []
@@ -129,6 +132,7 @@ nose = ItemKind  -- depends solely on smell
   , irarity  = [(4, 5), (10, 9)]
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 30, AddMaxCalm 30, AddSpeed 18, AddNocto 2
                , AddAbility AbProject (-1), AddAbility AbAlter 2 ]
   , ieffects = []
@@ -148,6 +152,7 @@ elbow = ItemKind
   , irarity  = [(6, 1), (10, 9)]
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 12, AddMaxCalm 90, AddSpeed 21, AddNocto 2
                , AddAbility AbProject 2, AddAbility AbApply 1
                , AddAbility AbAlter 2, AddAbility AbMelee (-1) ]
@@ -169,6 +174,7 @@ torsor = ItemKind
   , irarity  = [(11 * 10/12, 0), (10, 1000)]  -- unique
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 300, AddMaxCalm 100, AddSpeed 6, AddNocto 2
                , AddAbility AbProject 2, AddAbility AbApply 1
                , AddAbility AbAlter (-1) ]  -- can't switch levels, a miniboss
@@ -196,6 +202,7 @@ goldenJackal = ItemKind  -- basically a much smaller and slower hyena
   , irarity  = [(1, 5)]
   , iverbHit = "thud"
   , iweight  = 13000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 12, AddMaxCalm 60, AddSpeed 22, AddNocto 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -212,6 +219,7 @@ griffonVulture = ItemKind
   , irarity  = [(1, 5)]
   , iverbHit = "thud"
   , iweight  = 13000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 12, AddMaxCalm 60, AddSpeed 20, AddNocto 2
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
@@ -230,6 +238,7 @@ skunk = ItemKind
   , irarity  = [(1, 5), (10, 3)]
   , iverbHit = "thud"
   , iweight  = 4000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 10, AddMaxCalm 30, AddSpeed 20, AddNocto 2
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
@@ -249,6 +258,7 @@ armadillo = ItemKind
   , irarity  = [(1, 5)]
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 20, AddMaxCalm 30, AddSpeed 17, AddNocto 2
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
@@ -267,6 +277,7 @@ gilaMonster = ItemKind
   , irarity  = [(2, 5), (10, 3)]
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 12, AddMaxCalm 60, AddSpeed 15, AddNocto 2
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
@@ -285,6 +296,7 @@ rattlesnake = ItemKind
   , irarity  = [(4, 1), (10, 7)]
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 25, AddMaxCalm 60, AddSpeed 15, AddNocto 2
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
@@ -303,6 +315,7 @@ komodoDragon = ItemKind  -- bad hearing; regeneration makes it very powerful
   , irarity  = [(7, 0), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 16, AddNocto 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -321,6 +334,7 @@ hyena = ItemKind
   , irarity  = [(4, 1), (10, 8)]
   , iverbHit = "thud"
   , iweight  = 60000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 30, AddNocto 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -337,6 +351,7 @@ alligator = ItemKind
   , irarity  = [(6, 1), (10, 9)]
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 15, AddNocto 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -355,6 +370,7 @@ rhinoceros = ItemKind
   , irarity  = [(1 * 10/12, 1000000), (2 * 10/12, 0)]  -- unique
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 90, AddMaxCalm 60, AddSpeed 25, AddNocto 2
                , AddAbility AbAlter (-1) ]  -- can't switch levels, a miniboss
   , ieffects = [Unique]
@@ -376,6 +392,7 @@ beeSwarm = ItemKind
   , irarity  = [(1, 2), (10, 4)]
   , iverbHit = "thud"
   , iweight  = 1000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 8, AddMaxCalm 60
                , AddSpeed 30, AddNocto 2  -- armor in sting
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
@@ -394,6 +411,7 @@ hornetSwarm = ItemKind
   , irarity  = [(5, 1), (10, 8)]
   , iverbHit = "thud"
   , iweight  = 1000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 8, AddMaxCalm 60, AddSpeed 30, AddNocto 2
                , AddAbility AbAlter (-2)  -- can't use stairs nor doors
                , AddArmorMelee 80, AddArmorRanged 80 ]
@@ -412,6 +430,7 @@ thornbush = ItemKind
   , irarity  = [(1, 3)]
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1 ]
   , ieffects = []
@@ -431,6 +450,7 @@ razorwireFence = ItemKind
   , irarity  = [(3 * 10/12, 0), (4, 2)]
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 20, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1
                , AddArmorMelee 50, AddArmorRanged 50 ]
@@ -448,6 +468,7 @@ electricFence = ItemKind
   , irarity  = [(3 * 10/12, 0), (4, 2)]
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 40, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1
                , AddArmorMelee 50, AddArmorRanged 50 ]
@@ -465,6 +486,7 @@ activeFence = ItemKind
   , irarity  = [(3 * 10/12, 0), (4, 1)]
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbProject 3
                , AddArmorMelee 50, AddArmorRanged 50 ]
@@ -483,6 +505,7 @@ steamFaucet = ItemKind
   , irarity  = [(5, 2)]
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 10, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1
                , AddArmorMelee 80, AddArmorRanged 80 ]
@@ -500,6 +523,7 @@ biogasFaucet = ItemKind
   , irarity  = [(5, 2)]
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 20
                , AddShine 3, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1 ]
@@ -517,6 +541,7 @@ medbotFaucet = ItemKind
   , irarity  = [(5, 2)]
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 20
                , AddShine 3, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1 ]
@@ -534,6 +559,7 @@ surveillanceDrone = ItemKind
   , irarity  = []  -- TODO: too boring
   , iverbHit = "thud"
   , iweight  = 1000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 3, AddMaxCalm 90, AddSpeed 30, AddNocto 2
                , AddAbility AbDisplace (-1), AddAbility AbMoveItem (-1)
                , AddAbility AbProject (-1), AddAbility AbMelee (-1)
@@ -552,6 +578,7 @@ shepherdDrone = ItemKind
   , irarity  = [(1, 7)]
   , iverbHit = "thud"
   , iweight  = 1000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 3, AddMaxCalm 60, AddSpeed 30, AddNocto 2
                , AddAbility AbDisplace (-1), AddAbility AbMoveItem (-1)
                , AddAbility AbProject (-1)
@@ -571,6 +598,7 @@ huntingDrone = ItemKind
   , irarity  = [(3, 0), (5, 2), (10, 4)]
   , iverbHit = "thud"
   , iweight  = 500
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 3, AddMaxCalm 60, AddSpeed 40, AddNocto 2
                , AddAbility AbDisplace (-1), AddAbility AbMoveItem (-1)
                , AddAbility AbMelee (-1)
@@ -591,6 +619,7 @@ homeRobot = ItemKind
   , irarity  = [(1, 20), (10, 6)]
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 10, AddMaxCalm 30, AddSpeed 20, AddNocto 2
                , AddAbility AbProject (-1) ]
   , ieffects = []
@@ -609,6 +638,7 @@ wasteRobot = ItemKind
   , irarity  = [(1, 10), (10, 6)]
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 15, AddMaxCalm 30, AddSpeed 15, AddNocto 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -628,6 +658,7 @@ lightRobot = ItemKind
   , irarity  = [(3, 1), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 15, AddMaxCalm 60, AddSpeed 30, AddNocto 2
                , AddAbility AbProject 2 ]
   , ieffects = []
@@ -647,6 +678,7 @@ heavyRobot = ItemKind
   , irarity  = [(6, 0), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 800000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 20, AddNocto 2
                , AddAbility AbProject 2 ]
   , ieffects = []
@@ -667,6 +699,7 @@ cleanerRobot = ItemKind
                  -- unique, appears at 10 of 12
   , iverbHit = "thud"
   , iweight  = 80000
+  , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 120, AddMaxCalm 60, AddSpeed 18, AddNocto 2
                , AddAbility AbAlter (-1) ]
                    -- can't switch levels, a miniboss

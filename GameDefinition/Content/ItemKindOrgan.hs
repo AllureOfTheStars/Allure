@@ -38,8 +38,9 @@ fist = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "punch"
   , iweight  = 2000
+  , idamage  = toDmg $ 4 * d 1
   , iaspects = []
-  , ieffects = [Hurt (4 * d 1)]
+  , ieffects = []
   , ifeature = [Durable, Identified, Meleeable]
   , idesc    = ""
   , ikit     = []
@@ -48,7 +49,7 @@ foot = fist
   { iname    = "foot"
   , ifreq    = [("foot", 50)]
   , iverbHit = "kick"
-  , ieffects = [Hurt (4 * d 1)]
+  , idamage  = toDmg $ 4 * d 1
   , idesc    = ""
   }
 
@@ -59,15 +60,16 @@ claw = fist
   , ifreq    = [("claw", 50)]
   , icount   = 2  -- even if more, only the fore claws used for fighting
   , iverbHit = "hook"
+  , idamage  = toDmg $ 2 * d 1
   , iaspects = [Timeout $ 4 + d 4]
-  , ieffects = [Hurt (2 * d 1), Recharging (toOrganGameTurn "slow 10" 2)]
+  , ieffects = [Recharging (toOrganGameTurn "slow 10" 2)]
   , idesc    = ""
   }
 smallClaw = fist
   { iname    = "small claw"
   , ifreq    = [("small claw", 50)]
   , iverbHit = "slash"
-  , ieffects = [Hurt (2 * d 1)]
+  , idamage  = toDmg $ 2 * d 1
   , idesc    = ""
   }
 snout = fist
@@ -75,7 +77,7 @@ snout = fist
   , ifreq    = [("snout", 10)]
   , icount   = 1
   , iverbHit = "bite"
-  , ieffects = [Hurt (2 * d 1)]
+  , idamage  = toDmg $ 2 * d 1
   , idesc    = ""
   }
 smallJaw = fist
@@ -83,7 +85,7 @@ smallJaw = fist
   , ifreq    = [("small jaw", 20)]
   , icount   = 1
   , iverbHit = "rip"
-  , ieffects = [Hurt (3 * d 1)]
+  , idamage  = toDmg $ 3 * d 1
   , idesc    = ""
   }
 jaw = fist
@@ -91,7 +93,7 @@ jaw = fist
   , ifreq    = [("jaw", 20)]
   , icount   = 1
   , iverbHit = "rip"
-  , ieffects = [Hurt (5 * d 1)]
+  , idamage  = toDmg $ 5 * d 1
   , idesc    = ""
   }
 largeJaw = fist
@@ -99,7 +101,7 @@ largeJaw = fist
   , ifreq    = [("large jaw", 100)]
   , icount   = 1
   , iverbHit = "crush"
-  , ieffects = [Hurt (12 * d 1)]
+  , idamage  = toDmg $ 12 * d 1
   , idesc    = ""
   }
 horn = fist
@@ -107,7 +109,7 @@ horn = fist
   , ifreq    = [("horn", 20)]
   , icount   = 2
   , iverbHit = "impale"
-  , ieffects = [Hurt (8 * d 1)]
+  , idamage  = toDmg $ 8 * d 1
   , idesc    = ""
   }
 
@@ -118,7 +120,7 @@ tentacle = fist
   , ifreq    = [("tentacle", 50)]
   , icount   = 4
   , iverbHit = "slap"
-  , ieffects = [Hurt (4 * d 1)]
+  , idamage  = toDmg $ 4 * d 1
   , idesc    = ""
   }
 
@@ -129,7 +131,7 @@ razor = fist
   , ifreq    = [("razor", 100)]
   , icount   = 2 + d 5
   , iverbHit = "slice"
-  , ieffects = [Hurt (2 * d 1)]
+  , idamage  = toDmg $ 2 * d 1
   , idesc    = ""
   }
 thorn = fist
@@ -137,7 +139,7 @@ thorn = fist
   , ifreq    = [("thorn", 100)]
   , icount   = 2 + d 3
   , iverbHit = "impale"
-  , ieffects = [Hurt (2 * d 1)]
+  , idamage  = toDmg $ 2 * d 1
   , ifeature = [Identified, Meleeable]  -- not Durable
   , idesc    = ""
   }
@@ -146,6 +148,7 @@ boilingFissure = fist
   , ifreq    = [("boiling fissure", 100)]
   , icount   = 5 + d 5
   , iverbHit = "hiss at"
+  , idamage  = toDmg 0
   , ieffects = [Burn $ 1 * d 1]
   , ifeature = [Identified, Meleeable]  -- not Durable
   , idesc    = ""
@@ -167,6 +170,7 @@ beeSting = fist
   , ifreq    = [("bee sting", 100)]
   , icount   = 1
   , iverbHit = "sting"
+  , idamage  = toDmg 0
   , iaspects = [AddArmorMelee 90, AddArmorRanged 90]
   , ieffects = [Burn $ 2 * d 1, Paralyze 6, RefillHP 5]
   , ifeature = [Identified, Meleeable]  -- not Durable
@@ -177,6 +181,7 @@ sting = fist
   , ifreq    = [("sting", 100)]
   , icount   = 1
   , iverbHit = "sting"
+  , idamage  = toDmg 0
   , iaspects = [Timeout $ 1 + d 5]
   , ieffects = [Burn $ 2 * d 1, Recharging (Paralyze 4)]
   , idesc    = "Painful, debilitating and harmful."
@@ -186,9 +191,9 @@ venomTooth = fist
   , ifreq    = [("venom tooth", 100)]
   , icount   = 2
   , iverbHit = "bite"
+  , idamage  = toDmg $ 2 * d 1
   , iaspects = [Timeout $ 5 + d 3]
-  , ieffects = [ Hurt (2 * d 1)
-               , Recharging (toOrganGameTurn "slow 10" (3 + d 3)) ]
+  , ieffects = [Recharging (toOrganGameTurn "slow 10" (3 + d 3))]
   , idesc    = ""
   }
 -- TODO: should also confer poison resistance, but current implementation
@@ -198,9 +203,9 @@ venomFang = fist
   , ifreq    = [("venom fang", 100)]
   , icount   = 2
   , iverbHit = "bite"
+  , idamage  = toDmg $ 2 * d 1
   , iaspects = [Timeout $ 7 + d 5]
-  , ieffects = [ Hurt (2 * d 1)
-               , Recharging (toOrganNone "poisoned") ]
+  , ieffects = [Recharging (toOrganNone "poisoned")]
   , idesc    = ""
   }
 screechingBeak = fist
@@ -208,9 +213,9 @@ screechingBeak = fist
   , ifreq    = [("screeching beak", 100)]
   , icount   = 1
   , iverbHit = "peck"
+  , idamage  = toDmg $ 2 * d 1
   , iaspects = [Timeout $ 5 + d 5]
-  , ieffects = [ Recharging (Summon [("scavenger", 1)] $ 1 + dl 2)
-               , Hurt (2 * d 1) ]
+  , ieffects = [Recharging (Summon [("scavenger", 1)] $ 1 + dl 2)]
   , idesc    = ""
   }
 largeTail = fist
@@ -218,8 +223,9 @@ largeTail = fist
   , ifreq    = [("large tail", 50)]
   , icount   = 1
   , iverbHit = "knock"
+  , idamage  = toDmg $ 8 * d 1
   , iaspects = [Timeout $ 1 + d 3]
-  , ieffects = [Hurt (8 * d 1), Recharging (PushActor (ThrowMod 400 25))]
+  , ieffects = [Recharging (PushActor (ThrowMod 400 25))]
   , idesc    = ""
   }
 liveWire = fist
@@ -227,9 +233,9 @@ liveWire = fist
   , ifreq    = [("live wire", 100)]
   , icount   = 1
   , iverbHit = "shock"
+  , idamage  = toDmg $ 1 * d 1
   , iaspects = [Timeout $ 3 + d 3]
-  , ieffects = [ Hurt (1 * d 1)
-               , Recharging (DropItem COrgan "temporary conditions")
+  , ieffects = [ Recharging (DropItem COrgan "temporary conditions")
                , Recharging $ RefillHP (-2)
                ]
   , idesc    = ""
@@ -248,6 +254,7 @@ armoredSkin = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "bash"
   , iweight  = 2000
+  , idamage  = toDmg 0
   , iaspects = [AddArmorMelee 30, AddArmorRanged 30]
   , ieffects = []
   , ifeature = [Durable, Identified]
