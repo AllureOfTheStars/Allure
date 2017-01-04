@@ -332,7 +332,7 @@ necklace = ItemKind
   , iweight  = 30
   , idamage  = toDmg 0
   , iaspects = []
-  , ieffects = [Periodic, EqpSlot EqpSlotMiscBonus]
+  , ieffects = [Periodic]
   , ifeature = [Precious, toVelocity 50, Equipable]  -- not dense enough
   , idesc    = "Tingling, rattling chain of flat encrusted links. Eccentric millionaires are known to hide their highly personalized body augmentation packs in such large jewelry pieces."
   , ikit     = []
@@ -341,7 +341,8 @@ necklace1 = necklace
   { ifreq    = [("treasure", 100)]
   , irarity  = [(3, 0), (4, 1), (10, 2)]  -- prevents camping on lvl 3
   , iaspects = [Timeout $ d 3 + 4 - dl 3 |*| 10]
-  , ieffects = [Unique, ELabel "of Trickle Life", Recharging (RefillHP 1)]
+  , ieffects = [ Unique, ELabel "of Trickle Life", EqpSlot EqpSlotMiscBonus
+               , Recharging (RefillHP 1) ]
                ++ ieffects necklace
   , ifeature = Durable : ifeature necklace
   }
@@ -380,7 +381,7 @@ necklace7 = necklace  -- TODO: teach AI to wear only for fight
   , iaspects = [ AddMaxHP $ 10 + d 10
                , AddArmorMelee 20, AddArmorRanged 20
                , Timeout $ d 2 + 5 - dl 3 ]
-  , ieffects = [ Unique, ELabel "of Overdrive"
+  , ieffects = [ Unique, ELabel "of Overdrive", EqpSlot EqpSlotAddSpeed
                , Recharging (InsertMove $ 1 + d 2)
                , Recharging (RefillHP (-1))
                , Recharging (RefillCalm (-1)) ]
@@ -793,7 +794,7 @@ armorLeather = ItemKind
   , idamage  = toDmg 0
   , iaspects = [ AddHurtMelee (-3)
                , AddArmorMelee $ 1 + d 2 + dl 2 |*| 5
-               , AddArmorRanged $ d 2 + dl 2 |*| 5 ]
+               , AddArmorRanged $ 1 + dl 2 |*| 5 ]
   , ieffects = [EqpSlot EqpSlotAddArmorMelee]
   , ifeature = [ toVelocity 30  -- unwieldy to throw and blunt
                , Durable, Identified, Equipable ]
@@ -808,7 +809,7 @@ armorMail = armorLeather
   , idamage  = toDmg 0
   , iaspects = [ AddHurtMelee (-3)
                , AddArmorMelee $ 1 + d 2 + dl 3 |*| 5
-               , AddArmorRanged $ 2 + d 2 + dl 3 |*| 5 ]
+               , AddArmorRanged $ 3 + d 2 + dl 3 |*| 5 ]
   , ieffects = [EqpSlot EqpSlotAddArmorRanged]
   , ifeature = [ toVelocity 40  -- unwieldy to throw and blunt
                , Durable, Identified, Equipable ]
@@ -838,7 +839,7 @@ gloveGauntlet = gloveFencing
   , irarity  = [(1, 9), (10, 3)]
   , iweight  = 300
   , idamage  = toDmg $ 1 * d 1
-  , iaspects = [ AddArmorMelee $ 1 + dl 2 |*| 5
+  , iaspects = [ AddArmorMelee $ 2 + dl 2 |*| 5
                , AddArmorRanged $ dl 2 |*| 5 ]
   , ieffects = [EqpSlot EqpSlotAddArmorMelee]
   , idesc    = "A piece of a hull maintenance spacesuit, padded and reinforced with carbon fibre."
@@ -850,8 +851,8 @@ gloveJousting = gloveFencing
   , iweight  = 500
   , idamage  = toDmg $ 2 * d 1
   , iaspects = [ AddHurtMelee $ dl 4 - 6 |*| 3
-               , AddArmorMelee $ 2 + dl 2 |*| 5
-               , AddArmorRanged $ 1 + dl 2 |*| 5 ]
+               , AddArmorMelee $ 2 + d 2 + dl 2 |*| 5
+               , AddArmorRanged $ dl 2 |*| 5 ]
   , ieffects = [Unique, EqpSlot EqpSlotAddArmorMelee]
   , idesc    = "Rigid, bulky handgear embedding a welding equipment, complete with an affixed small shield and a darkened visor. Awe-inspiring."
   }
