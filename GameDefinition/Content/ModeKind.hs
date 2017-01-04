@@ -28,23 +28,14 @@ cdefs = ContentDef
   , validateSingle = validateSingleModeKind
   , validateAll = validateAllModeKind
   , content = contentFromList
-      [exploration, raid, brawl, ambush, battle, battleSurvival, safari, safariSurvival, defense, screensaverSafari, screensaverRaid, screensaverBrawl, screensaverAmbush]
+      [raid, brawl, ambush, battle, exploration, battleSurvival, safari, safariSurvival, defense, screensaverSafari, screensaverRaid, screensaverBrawl, screensaverAmbush]
   }
-exploration,        raid, brawl, ambush, battle, battleSurvival, safari, safariSurvival, defense, screensaverSafari, screensaverRaid, screensaverBrawl, screensaverAmbush :: ModeKind
-
-exploration = ModeKind
-  { msymbol = 'c'
-  , mname   = "exploration"
-  , mfreq   = [("exploration", 1)]
-  , mroster = rosterExploration
-  , mcaves  = cavesExploration
-  , mdesc   = "You got stranded looting the blasted bridge of a once luxurious cruise liner. Your current plan is to fight through, gathering your spoils, to the shuttle airlock somewhere among the giant spaceship's uppermost decks. There are animal cries down below and ominous silence up above."
-  }
+raid,        brawl, ambush, battle, exploration, battleSurvival, safari, safariSurvival, defense, screensaverSafari, screensaverRaid, screensaverBrawl, screensaverAmbush :: ModeKind
 
 raid = ModeKind
   { msymbol = 'r'
   , mname   = "raid"
-  , mfreq   = [("raid", 1)]
+  , mfreq   = [("raid", 1), ("campaign scenario", 1)]
   , mroster = rosterRaid
   , mcaves  = cavesRaid
   , mdesc   = "The Triton City sewers need purging. The first person to break through to the other end will be paid 100 gold grains. Please don't fight each other."
@@ -53,7 +44,7 @@ raid = ModeKind
 brawl = ModeKind
   { msymbol = 'k'
   , mname   = "brawl"
-  , mfreq   = [("brawl", 1)]
+  , mfreq   = [("brawl", 1), ("campaign scenario", 1)]
   , mroster = rosterBrawl
   , mcaves  = cavesBrawl
   , mdesc   = "\"You cheated. Come alone to the woody biosphere behind the saloon at noon, if you dare. The winner takes all the spoils, including the keys and the papers of the decrepit giant spaceship.\""
@@ -62,7 +53,7 @@ brawl = ModeKind
 ambush = ModeKind
   { msymbol = 'm'
   , mname   = "ambush"
-  , mfreq   = [("ambush", 1)]
+  , mfreq   = [("ambush", 1), ("campaign scenario", 1)]
   , mroster = rosterAmbush
   , mcaves  = cavesAmbush
   , mdesc   = "Conveniently, on the path to the Triton's spaceport, passengers can relax in a shady park."
@@ -71,10 +62,19 @@ ambush = ModeKind
 battle = ModeKind
   { msymbol = 'b'
   , mname   = "battle"
-  , mfreq   = [("battle", 1)]
+  , mfreq   = [("battle", 1), ("campaign scenario", 1)]
   , mroster = rosterBattle
   , mcaves  = cavesBattle
   , mdesc   = "Not even the unexplained ruin of the largest and tightest security Neptune's moon spaceport will prevent you from claiming your prize."
+  }
+
+exploration = ModeKind
+  { msymbol = 'c'
+  , mname   = "exploration"
+  , mfreq   = [("exploration", 1), ("campaign scenario", 1)]
+  , mroster = rosterExploration
+  , mcaves  = cavesExploration
+  , mdesc   = "You got stranded looting the blasted bridge of a once luxurious cruise liner. Your current plan is to fight through, gathering your spoils, to the shuttle airlock somewhere among the giant spaceship's uppermost decks. There are animal cries down below and ominous silence up above."
   }
 
 battleSurvival = ModeKind
@@ -92,7 +92,7 @@ safari = ModeKind
   , mfreq   = [("safari", 1)]
   , mroster = rosterSafari
   , mcaves  = cavesSafari
-  , mdesc   = "In this simulation you'll discover the joys of hunting the most exquisite of Earth's flora and fauna, both animal and semi-intelligent. Exit at the topmost level. (VR recording recovered from an alien nest debris)"
+  , mdesc   = "\"In this simulation you'll discover the joys of hunting the most exquisite of Earth's flora and fauna, both animal and semi-intelligent. Exit at the topmost level.\" This is VR recording recovered from an alien nest debris."
   }
 
 safariSurvival = ModeKind
@@ -114,7 +114,7 @@ defense = ModeKind
   }
 
 screensaverSafari = safari
-  { mname   = "Auto-Safari"
+  { mname   = "auto-safari"
   , mfreq   = [("starting", 1), ("no confirms", 1)]
   , mroster = rosterSafari
       { rosterList = (head (rosterList rosterSafari))
@@ -125,7 +125,7 @@ screensaverSafari = safari
   }
 
 screensaverRaid = raid
-  { mname   = "Auto-Raid"
+  { mname   = "auto-raid"
   , mfreq   = [("starting", 1), ("starting JS", 1), ("no confirms", 1)]
   , mroster = rosterRaid
       { rosterList = (head (rosterList rosterRaid))
@@ -135,7 +135,7 @@ screensaverRaid = raid
   }
 
 screensaverBrawl = brawl
-  { mname   = "Auto-Brawl"
+  { mname   = "auto-brawl"
   , mfreq   = [("starting", 1), ("starting JS", 1), ("no confirms", 1)]
   , mroster = rosterBrawl
       { rosterList = (head (rosterList rosterBrawl))
@@ -145,7 +145,7 @@ screensaverBrawl = brawl
   }
 
 screensaverAmbush = ambush
-  { mname   = "Auto-Ambush"
+  { mname   = "auto-ambush"
   , mfreq   = [("starting", 1), ("starting JS", 1), ("no confirms", 1)]
   , mroster = rosterAmbush
       { rosterList = (head (rosterList rosterAmbush))
@@ -155,19 +155,7 @@ screensaverAmbush = ambush
   }
 
 
-rosterExploration, rosterRaid, rosterBrawl, rosterAmbush, rosterBattle, rosterBattleSurvival, rosterSafari, rosterSafariSurvival, rosterDefense :: Roster
-
-rosterExploration = Roster
-  { rosterList = [ playerHero
-                 , playerMonster
-                 , playerAnimal
-                 , playerRobot ]
-  , rosterEnemy = [ ("Spacefarer Crew", "Alien Hierarchy")
-                  , ("Spacefarer Crew", "Animal Kingdom")
-                  , ("Spacefarer Crew", "Robot Anarchy") ]
-  , rosterAlly = [ ("Alien Hierarchy", "Animal Kingdom")
-                 , ("Alien Hierarchy", "Robot Anarchy")
-                 , ("Robot Anarchy", "Animal Kingdom") ] }
+rosterRaid, rosterBrawl, rosterAmbush, rosterBattle, rosterExploration, rosterBattleSurvival, rosterSafari, rosterSafariSurvival, rosterDefense :: Roster
 
 rosterRaid = Roster
   { rosterList = [ playerHero { fhiCondPoly = hiRaid
@@ -237,6 +225,18 @@ rosterBattle = Roster
   , rosterAlly = [ ("Alien Hierarchy", "Animal Kingdom")
                 , ("Alien Hierarchy", "Robot Anarchy")
                 , ("Robot Anarchy", "Animal Kingdom") ] }
+
+rosterExploration = Roster
+  { rosterList = [ playerHero
+                 , playerMonster
+                 , playerAnimal
+                 , playerRobot ]
+  , rosterEnemy = [ ("Spacefarer Crew", "Alien Hierarchy")
+                  , ("Spacefarer Crew", "Animal Kingdom")
+                  , ("Spacefarer Crew", "Robot Anarchy") ]
+  , rosterAlly = [ ("Alien Hierarchy", "Animal Kingdom")
+                 , ("Alien Hierarchy", "Robot Anarchy")
+                 , ("Robot Anarchy", "Animal Kingdom") ] }
 
 rosterBattleSurvival = rosterBattle
   { rosterList = [ playerSoldier { fcanEscape = False
@@ -323,7 +323,15 @@ rosterDefense = rosterExploration
                  , playerAnimal
                  , playerRobot ] }
 
-cavesExploration, cavesRaid, cavesBrawl, cavesAmbush, cavesBattle, cavesSafari :: Caves
+cavesRaid, cavesBrawl, cavesAmbush, cavesBattle, cavesExploration, cavesSafari :: Caves
+
+cavesRaid = IM.fromList [(4, "caveRogueLit")]
+
+cavesBrawl = IM.fromList [(-4, "caveBrawl")]
+
+cavesAmbush = IM.fromList [(-7, "caveAmbush")]
+
+cavesBattle = IM.fromList [(-7, "caveBattle")]
 
 cavesExploration = IM.fromList $
   [(1, "shallow random 1")]
@@ -334,14 +342,6 @@ cavesExploration = IM.fromList $
   ++ [(10, "caveEmptyExit")]
   ++ [(11, "default random")]
   ++ [(12, "caveNoise")]
-
-cavesRaid = IM.fromList [(4, "caveRogueLit")]
-
-cavesBrawl = IM.fromList [(-4, "caveBrawl")]
-
-cavesAmbush = IM.fromList [(-7, "caveAmbush")]
-
-cavesBattle = IM.fromList [(-7, "caveBattle")]
 
 cavesSafari = IM.fromList [ (-4, "caveSafari1")
                           , (-7, "caveSafari2")

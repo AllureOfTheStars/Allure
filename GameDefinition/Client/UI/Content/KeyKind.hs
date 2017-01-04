@@ -33,24 +33,12 @@ standardKeys = KeyKind
       -- mode) first.
 
       -- Main Menu
-      [ ("Escape", ([CmdMainMenu], "back to playing", Cancel))
+      [ ("n", ([CmdMainMenu], "start new game", GameRestart))
+      , ("x", ([CmdMainMenu], "save and exit", GameExit))
+      , ("m", ([CmdMainMenu], "enter settings menu", SettingsMenu))
+      , ("a", ([CmdMainMenu], "automate faction", Automate))
       , ("?", ([CmdMainMenu], "see command Help", Help))
-      , ("S", ([CmdMainMenu], "enter settings menu", SettingsMenu))
-      , ("X", ([CmdMainMenu], "save and exit", GameExit))
-      , ("r", gameRestartTriple "raid")
-      , ("b", gameRestartTriple "brawl")
-      , ("a", gameRestartTriple "ambush")
-      , ("t", gameRestartTriple "battle")
-      , ("e", gameRestartTriple "exploration")
-      , ("D", ([CmdMainMenu], "cycle next difficulty", GameDifficultyIncr))
-      , ("A", ([CmdMainMenu], "automate faction", Automate))
-
-      -- Settings Menu  -- TODO: add some from ClientOptions
-      , ("Escape", ([CmdSettingsMenu], "back to Main Menu", MainMenu))
-      , ("T", ([CmdSettingsMenu], "cycle henchmen tactic", Tactic))
-      , ("S", ([CmdSettingsMenu], "toggle suspect terrain", MarkSuspect))
-      , ("V", ([CmdSettingsMenu], "toggle visible zone", MarkVision))
-      , ("C", ([CmdSettingsMenu], "toggle smell clues", MarkSmell))
+      , ("Escape", ([CmdMainMenu], "back to playing", Cancel))
 
       -- Item use, 1st part
       , ("g", addCmdCategory CmdItemMenu $ addCmdCategory CmdMinimal
