@@ -41,11 +41,10 @@ standardKeys = KeyKind
       , ("Escape", ([CmdMainMenu], "back to playing", Cancel))
 
       -- Item use, 1st part
-      , ("g", addCmdCategory CmdItemMenu $ addCmdCategory CmdMinimal
-              $ grabItems "grab items")
+      , ("g", addCmdCategory CmdMinimal
+              $ addCmdCategory CmdItemMenu $ grabItems "grab items")
       , ("comma", addCmdCategory CmdNoHelp $ grabItems "")
-      , ("d", addCmdCategory CmdItemMenu $ addCmdCategory CmdMinimal
-              $ dropItems "drop items")
+      , ("d", addCmdCategory CmdItemMenu $ dropItems "drop items")
       , ("period", addCmdCategory CmdNoHelp $ dropItems "")
       , ("f", addCmdCategory CmdItemMenu $ projectA flingTs)
       , ("CTRL-f", addCmdCategory CmdItemMenu
@@ -78,30 +77,30 @@ standardKeys = KeyKind
                  , AlterDir triggerClose ))
 
       -- Item use, continued
-      , ("e", addCmdCategory CmdItemMenu
-              $ moveItemTriple [CGround, CInv, CSha] CEqp Nothing
-                               "item" False)
       , ("p", addCmdCategory CmdItemMenu
-              $ moveItemTriple [CGround, CEqp, CSha] CInv Nothing
+              $ moveItemTriple [CGround, CEqp, CSha] CInv
                                "item into inventory" False)
+      , ("e", addCmdCategory CmdItemMenu
+              $ moveItemTriple [CGround, CInv, CSha] CEqp
+                               "item" False)
       , ("s", addCmdCategory CmdItemMenu
-              $ moveItemTriple [CGround, CInv, CEqp] CSha Nothing
+              $ moveItemTriple [CGround, CInv, CEqp] CSha
                                "and share item" False)
-      , ("E", ( [CmdItem]
-              , "manage equipment of the leader"
-              , ChooseItemMenu (MStore CEqp) ))
       , ("P", ( [CmdMinimal, CmdItem]
               , "manage inventory pack of leader"
               , ChooseItemMenu (MStore CInv) ))
+      , ("G", ( [CmdItem]
+              , "manage items on the ground"
+              , ChooseItemMenu (MStore CGround) ))
+      , ("E", ( [CmdItem]
+              , "manage equipment of the leader"
+              , ChooseItemMenu (MStore CEqp) ))
       , ("S", ( [CmdItem]
               , "manage the shared party stash"
               , ChooseItemMenu (MStore CSha) ))
       , ("A", ( [CmdItem]
               , "manage all owned items"
               , ChooseItemMenu MOwned ))
-      , ("G", ( [CmdItem]
-              , "manage items on the ground"
-              , ChooseItemMenu (MStore CGround) ))
       , ("@", ( [CmdItem]
               , "describe organs of the leader"
               , ChooseItemMenu (MStore COrgan) ))
@@ -143,10 +142,12 @@ standardKeys = KeyKind
       , ("CTRL-}", ( [CmdAim]
                    , "set x-hair to nearest downstairs"
                    , XhairStair False ))
-      , ("<", ([CmdAim], "ascend aim" , AimAscend 1))
-      , ("CTRL-<", ([CmdNoHelp], "ascend aim 10 times" , AimAscend 10))
-      , (">", ([CmdAim], "descend aim", AimAscend (-1)))
-      , ("CTRL->", ([CmdNoHelp], "descend aim 10 times", AimAscend (-10)))
+      , ("<", ([CmdAim], "switch view to one level higher" , AimAscend 1))
+      , ("CTRL-<", ( [CmdNoHelp], "switch view to 10 levels higher"
+                   , AimAscend 10) )
+      , (">", ([CmdAim], "switch view to one level lower", AimAscend (-1)))
+      , ("CTRL->", ( [CmdNoHelp], "switch view to 10 levels lower"
+                   , AimAscend (-10)) )
       , ( "BackSpace"
         , ([CmdAim], "clear target or chosen item", TgtClear) )
       , ("Escape", ( [CmdAim, CmdMinimal]
@@ -157,7 +158,8 @@ standardKeys = KeyKind
                    , ByAimMode {exploration = Help, aiming = Accept} ))
 
       -- Assorted
-      , ("space", ([CmdMeta], "clear messages, display history", Clear))
+      , ("space", ( [CmdMinimal, CmdMeta]
+                  , "clear messages/display history", Clear) )
       , ("?", ([CmdMeta], "display Help", Help))
       , ("F1", ([CmdNoHelp], "", Help))
       , ("Tab", ( [CmdMeta]
@@ -166,7 +168,8 @@ standardKeys = KeyKind
       , ("ISO_Left_Tab", ( [CmdMeta, CmdMinimal]
                          , "cycle among all party members"
                          , MemberBack ))
-      , ("=", ([CmdMeta], "select (or deselect) party member", SelectActor))
+      , ("=", ( [CmdMinimal, CmdMeta]
+              , "select (or deselect) party member", SelectActor) )
       , ("_", ([CmdMeta], "deselect (or select) all on the level", SelectNone))
       , ("v", ([CmdMeta], "voice again the recorded commands", Repeat 1))
       , ("V", repeatTriple 100)
@@ -222,18 +225,6 @@ standardKeys = KeyKind
       , ("safe9", ( [CmdInternal]
                   , "accept target"
                   , Accept ))
-      , ("safe11", ( [CmdInternal]
-                   , "grab items"
-                   , exploreGrabCmd ))
-      , ("safe12", ( [CmdInternal]
-                   , "switch view to one level higher"
-                   , AimAscend 1 ))
-      , ("safe13", ( [CmdInternal]
-                   , "drop items"
-                   , exploreDropCmd ))
-      , ("safe14", ( [CmdInternal]
-                   , "switch view to one level lower"
-                   , AimAscend (-1) ))
       ]
       ++ map defaultHeroSelect [0..6]
   }
