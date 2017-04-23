@@ -1,4 +1,4 @@
--- Copyright (c) 2008--2011 Andres Loeh, 2010--2015 Mikolaj Konarski
+-- Copyright (c) 2008--2011 Andres Loeh, 2010--2017 Mikolaj Konarski
 -- This file is a part of the computer game Allure of the Stars
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
@@ -20,31 +20,32 @@ import Game.LambdaHack.Content.ItemKind
 
 actors :: [ItemKind]
 actors =
-  [warrior, warrior2, warrior3, warrior4, soldier, sniper, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot]
+  [warrior, warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, soldier, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush,
+   razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot]
 
-warrior,    warrior2, warrior3, warrior4, soldier, sniper, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot :: ItemKind
+warrior,    warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, soldier, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush,
+   razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot :: ItemKind
 
 -- * Hunams
 
 warrior = ItemKind
   { isymbol  = '@'
-  , iname    = "mercenary"  -- modified if in hero faction
-  , ifreq    = [("hero", 100), ("civilian", 100), ("mobile", 1)]
-  , iflavour = zipPlain [BrBlack]  -- modified if in hero faction
+  , iname    = "mercenary"  -- modified if initial actors in hero faction
+  , ifreq    = [("hero", 100), ("mobile", 1)]
+  , iflavour = zipPlain [BrWhite]
   , icount   = 1
   , irarity  = [(1, 5)]
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 80  -- partially from clothes and assumed first aid
-                              -- also possibly from artificial skin
-               , AddMaxCalm 60, AddSpeed 20, AddNocto 2
+               , AddMaxCalm 70, AddSpeed 20, AddNocto 2
                , AddAbility AbProject 2, AddAbility AbApply 1
                , AddAbility AbAlter 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
-  , ikit     = [ ("fist", COrgan), ("foot", COrgan), ("eye 5", COrgan)
+  , ikit     = [ ("fist", COrgan), ("foot", COrgan), ("eye 6", COrgan)
                , ("sapient brain", COrgan) ]
   }
 warrior2 = warrior
@@ -53,26 +54,51 @@ warrior3 = warrior
   { iname    = "engineer" }
 warrior4 = warrior
   { iname    = "doctor" }
+warrior5 = warrior
+  { iname    = "scientist" }
 
+scout = warrior
+  { iname    = "scout"
+  , ifreq    = [("scout hero", 100), ("mobile", 1)]
+  , ikit     = ikit warrior
+               ++ [ ("add sight", CEqp)
+                  , ("armor ranged", CEqp)
+                  , ("add nocto 1", CInv) ]
+  }
+ranger = warrior
+  { iname    = "ranger"
+  , ifreq    = [("ranger hero", 100), ("mobile", 1)]
+  , ikit     = ikit warrior ++ [("weak arrow", CInv), ("armor ranged", CEqp)]
+  }
+escapist = warrior
+  { iname    = "escapist"
+  , ifreq    = [("escapist hero", 100), ("mobile", 1)]
+  , ikit     = ikit warrior
+               ++ [ ("add sight", CEqp)
+                  , ("weak arrow", CInv)  -- mostly for probing
+                  , ("armor ranged", CEqp)
+                  , ("flask", CInv)
+                  , ("light source", CInv)
+                  , ("blanket", CInv) ]
+  }
+ambusher = warrior
+  { iname    = "ambusher"
+  , ifreq    = [("ambusher hero", 100), ("mobile", 1)]
+  , ikit     = ikit warrior  -- dark and numerous, so more kit without exploring
+               ++ [ ("ring of opportunity sniper", CEqp)
+                  , ("light source", CEqp), ("wooden torch", CInv)
+                  , ("weak arrow", CInv), ("any arrow", CSha), ("flask", CSha) ]
+  }
 soldier = warrior
   { iname    = "soldier"
-  , ifreq    = [("soldier", 100), ("mobile", 1)]
+  , ifreq    = [("soldier hero", 100), ("mobile", 1)]
   , ikit     = ikit warrior ++ [("starting weapon", CEqp)]
-  }
-sniper = warrior
-  { iname    = "sniper"
-  , ifreq    = [("sniper", 100), ("mobile", 1)]
-  , ikit     = ikit warrior
-               ++ [ ("ring of opportunity sniper", CEqp)
-                  , ("any arrow", CSha), ("any arrow", CInv)
-                  , ("any arrow", CInv), ("any arrow", CInv)
-                  , ("flask", CInv), ("light source", CSha)
-                  , ("light source", CInv), ("light source", CInv) ]
   }
 
 civilian = warrior
   { iname    = "clerk"
-  , ifreq    = [("civilian", 100), ("mobile", 1)] }
+  , ifreq    = [("civilian", 100), ("mobile", 1)]
+  , iflavour = zipPlain [BrBlack] }
 civilian2 = civilian
   { iname    = "hairdresser" }
 civilian3 = civilian
@@ -84,10 +110,13 @@ civilian5 = civilian
 
 -- * Aliens
 
+-- They have bright colours, because they are not natural.
+
 eye = ItemKind
   { isymbol  = 'w'
   , iname    = "beckoning walker"
-  , ifreq    = [("alien", 100), ("horror", 100), ("mobile alien", 100)]
+  , ifreq    = [ ("alien", 100), ("mobile", 1)
+               , ("mobile alien", 100), ("scout alien", 10) ]]
   , iflavour = zipFancy [BrRed]
   , icount   = 1
   , irarity  = [(4, 6), (10, 10)]
@@ -192,6 +221,8 @@ torsor = ItemKind
 
 -- They need rather strong melee, because they don't use items.
 -- Unless/until they level up.
+
+-- They have dull colors, except for yellow, because there is no dull variant.
 
 goldenJackal = ItemKind  -- basically a much smaller and slower hyena
   { isymbol  = 'j'
@@ -440,6 +471,9 @@ thornbush = ItemKind
   }
 
 -- * Robots
+
+-- Robots have any colors but only f, d and r letters. Avoid these letters
+-- for other factions.
 
 razorwireFence = ItemKind
   { isymbol  = 'f'
