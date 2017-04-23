@@ -50,7 +50,7 @@ rogue = CaveKind
   , copenChance   = 1%5
   , chidden       = 7
   , cactorCoeff   = 130  -- the maze requires time to explore
-  , cactorFreq    = [("alien", 50), ("animal", 25), ("robot", 25)]
+  , cactorFreq    = [("monster", 50), ("animal", 25), ("robot", 25)]
   , citemNum      = 4 * d 4
   , citemFreq     = [("useful", 50), ("treasure", 50)]
   , cplaceFreq    = [("rogue", 100)]
@@ -79,7 +79,7 @@ arena = rogue
   , cextraStairs  = d 3
   , chidden       = 0
   , cactorCoeff   = 100
-  , cactorFreq    = [("alien", 25), ("animal", 70), ("robot", 5)]
+  , cactorFreq    = [("monster", 25), ("animal", 70), ("robot", 5)]
   , citemNum      = 3 * d 4  -- few rooms
   , citemFreq     = [("useful", 20), ("treasure", 30), ("any scroll", 50)]
   , cplaceFreq    = [("arena", 100)]
@@ -127,7 +127,7 @@ empty = rogue
   , copenChance   = 0
   , chidden       = 0
   , cactorCoeff   = 80
-  , cactorFreq    = [("alien", 25), ("animal", 5), ("robot", 70)]
+  , cactorFreq    = [("monster", 25), ("animal", 5), ("robot", 70)]
   , citemNum      = 3 * d 4  -- few rooms
   , cplaceFreq    = [("empty", 100)]
   , cpassable     = True
@@ -151,7 +151,7 @@ noise = rogue
   , cextraStairs  = d 4
   , chidden       = 0
   , cactorCoeff   = 160  -- the maze requires time to explore
-  , cactorFreq    = [("alien", 70), ("animal", 15), ("robot", 15)]
+  , cactorFreq    = [("monster", 70), ("animal", 15), ("robot", 15)]
   , citemNum      = 5 * d 4  -- an incentive to explore the labyrinth
   , cpassable     = True
   , cplaceFreq    = [("noise", 100)]
@@ -175,19 +175,19 @@ bridge = rogue
 shallow2rogue = rogue
   { cfreq         = [("shallow random 2", 50)]
   , cactorCoeff   = cactorCoeff rogue `div` 2
-  , cactorFreq    = filter ((/= "alien") . fst) $ cactorFreq rogue
+  , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq rogue
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq rogue
   }
 shallow2arena = arena
   { cfreq         = [("shallow random 2", 100)]
   , cnightChance  = 0  -- safe and easy
   , cactorCoeff   = cactorCoeff arena `div` 2
-  , cactorFreq    = filter ((/= "alien") . fst) $ cactorFreq empty
+  , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq empty
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
   }
 shallow2empty = empty
   { cfreq         = [("shallow random 2", 20)]
-  , cactorFreq    = filter ((/= "alien") . fst) $ cactorFreq empty
+  , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq empty
   , cactorCoeff   = cactorCoeff empty `div` 2
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
   }

@@ -779,7 +779,7 @@ scroll11 = scroll
   }
 
 standardSummon :: Freqs ItemKind
-standardSummon = [ ("mobile alien", 20)
+standardSummon = [ ("mobile monster", 20)
                  , ("mobile animal", 50)
                  , ("mobile robot", 30) ]
 

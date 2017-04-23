@@ -77,7 +77,7 @@ playerCivilian = Player
 
 playerMonster = Player
   { fname = "Alien Hierarchy"
-  , fgroup = "alien"
+  , fgroup = "monster"
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False
