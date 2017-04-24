@@ -63,7 +63,7 @@ rogue = CaveKind
   , clegendDarkTile = "legendDark"
   , clegendLitTile  = "legendLit"
   , cescapeGroup    = Nothing
-  , cstairFreq      = [("staircase", 100)]
+  , cstairFreq      = [("staircase lift", 100)]
   }
 arena = rogue
   { csymbol       = 'A'
@@ -110,6 +110,7 @@ laboratory = arena
   , cdefTile      = "fillerWall"
   , cdarkCorTile  = "labTrailLit"
   , clitCorTile   = "labTrailLit"
+  , cstairFreq    = [("staircase lift", 100)]
   }
 empty = rogue
   { csymbol       = 'E'
@@ -134,6 +135,7 @@ empty = rogue
   , cdefTile      = "emptySet"
   , cdarkCorTile  = "floorArenaDark"
   , clitCorTile   = "floorArenaLit"
+  , cstairFreq    = [("staircase", 50), ("staircase lift", 50)]
   }
 noise = rogue
   { csymbol       = 'N'

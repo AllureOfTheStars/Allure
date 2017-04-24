@@ -126,7 +126,7 @@ fireBig = fireSmall
   , ikit     = []
   }
 frost = ItemKind
-  { isymbol  = 'O'
+  { isymbol  = '%'
   , iname    = "frost"
   , ifreq    = [("frost", 1)]
   , iflavour = zipPlain [BrBlue]
@@ -144,7 +144,7 @@ frost = ItemKind
   , ikit     = []
   }
 rubble = ItemKind
-  { isymbol  = ';'
+  { isymbol  = ':'
   , iname    = "rubble"
   , ifreq    = [("rubble", 1)]
   , iflavour = zipPlain [BrWhite]
@@ -207,7 +207,7 @@ doorwayTrap = ItemKind
   , ikit     = []
   }
 obscenePictograms = ItemKind
-  { isymbol  = '|'
+  { isymbol  = '*'
   , iname    = "obscene graffiti"
   , ifreq    = [("obscene pictograms", 1)]
   , iflavour = zipPlain [BrRed]
@@ -227,8 +227,8 @@ obscenePictograms = ItemKind
   , ikit     = []
   }
 subtleFresco = ItemKind
-  { isymbol  = '|'
-  , iname    = "subtle fresco"
+  { isymbol  = '*'
+  , iname    = "subtle mural"
   , ifreq    = [("subtle fresco", 1)]
   , iflavour = zipPlain [BrGreen]
   , icount   = 1
@@ -237,7 +237,7 @@ subtleFresco = ItemKind
   , iweight  = 1000
   , idamage  = toDmg 0
   , iaspects = [Timeout 7]
-  , ieffects = [ Temporary "feel refreshed by the subtle fresco"
+  , ieffects = [ Temporary "feel refreshed by the subtle mural"
                , RefillCalm 2
                , Recharging $ toOrganActorTurn "far-sighted" (3 + d 3)
                , Recharging $ toOrganActorTurn "keen-smelling" (3 + d 3) ]
@@ -246,7 +246,7 @@ subtleFresco = ItemKind
   , ikit     = []
   }
 scratchOnWall = ItemKind
-  { isymbol  = '|'
+  { isymbol  = '*'
   , iname    = "scratch on wall"
   , ifreq    = [("scratch on wall", 1)]
   , iflavour = zipPlain [BrBlue]
@@ -263,7 +263,7 @@ scratchOnWall = ItemKind
   }
 pulpit = ItemKind
   { isymbol  = 'O'
-  , iname    = "pulpit"
+  , iname    = "VR harness"
   , ifreq    = [("pulpit", 1)]
   , iflavour = zipFancy [BrBlue]
   , icount   = 1
@@ -273,8 +273,9 @@ pulpit = ItemKind
   , idamage  = toDmg 0
   , iaspects = []
   , ieffects = [ CreateItem CGround "any scroll" TimerNone
-               , toOrganGameTurn "defenseless" (20 + d 5)
-               , Explode "PhD defense question" ]
+               , Detect 20
+               , Paralyze 20
+               , toOrganActorTurn "drunk" (20 + d 5) ]
   , ifeature = [Identified]  -- not Durable, springs at most once
   , idesc    = ""
   , ikit     = []
