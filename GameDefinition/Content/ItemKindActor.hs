@@ -21,9 +21,11 @@ import Game.LambdaHack.Content.ItemKind
 actors :: [ItemKind]
 actors =
   [warrior, warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, soldier, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush,
+   -- Allure-specific
    razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot]
 
 warrior,    warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, soldier, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush,
+   -- Allure-specific
    razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot :: ItemKind
 
 -- * Hunams
@@ -55,7 +57,7 @@ warrior3 = warrior
 warrior4 = warrior
   { iname    = "doctor" }
 warrior5 = warrior
-  { iname    = "scientist" }
+  { iname    = "hacker" }
 
 scout = warrior
   { iname    = "scout"
@@ -116,46 +118,49 @@ eye = ItemKind
   { isymbol  = 'w'
   , iname    = "beckoning walker"
   , ifreq    = [ ("monster", 100), ("mobile", 1)
-               , ("mobile monster", 100), ("scout monster", 10) ]]
+               , ("mobile monster", 100), ("scout monster", 10) ]
   , iflavour = zipFancy [BrRed]
   , icount   = 1
   , irarity  = [(4, 6), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 20, AddNocto 2
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 70, AddSpeed 20, AddNocto 2
+               , AddAggression 1
                , AddAbility AbProject 2, AddAbility AbApply 1
                , AddAbility AbAlter 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Walks with a stately dignity. You read death in the slow beckoning gestures of its revolting upper appendages."
   , ikit     = [ ("foot", COrgan), ("tentacle", COrgan)
-               , ("eye 5", COrgan)
+               , ("eye 6", COrgan)
                , ("sapient brain", COrgan) ]
   }
 fastEye = ItemKind
   { isymbol  = 'b'
   , iname    = "crawling biter"
-  , ifreq    = [("monster", 100), ("horror", 100), ("mobile monster", 100)]
+  , ifreq    = [ ("monster", 100), ("mobile", 1)
+               , ("mobile monster", 100), ("scout monster", 60) ]
   , iflavour = zipFancy [BrBlue]
   , icount   = 1
   , irarity  = [(4, 3), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 5, AddMaxCalm 60, AddSpeed 30, AddNocto 2
+  , iaspects = [ AddMaxHP 5, AddMaxCalm 70, AddSpeed 30, AddNocto 2
+               , AddAggression 1
                , AddAbility AbAlter 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "It bites as blindingly fast as it runs. Or rolls? Or crawls? Also, cuts and pierces."
   , ikit     = [ ("tentacle", COrgan), ("jaw", COrgan)
-               , ("eye 4", COrgan), ("speed gland 10", COrgan)
+               , ("eye 3", COrgan), ("speed gland 10", COrgan)
                , ("sapient brain", COrgan) ]
   }
 nose = ItemKind  -- depends solely on smell
   { isymbol  = 'h'
   , iname    = "tentacled horror"
-  , ifreq    = [("monster", 100), ("horror", 100), ("mobile monster", 100)]
+  , ifreq    = [("monster", 100), ("mobile", 1), ("mobile monster", 100)]
   , iflavour = zipFancy [BrGreen]
   , icount   = 1
   , irarity  = [(4, 5), (10, 9)]
@@ -163,6 +168,7 @@ nose = ItemKind  -- depends solely on smell
   , iweight  = 80000
   , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 30, AddMaxCalm 30, AddSpeed 18, AddNocto 2
+               , AddAggression 1
                , AddAbility AbProject (-1), AddAbility AbAlter 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -175,21 +181,22 @@ nose = ItemKind  -- depends solely on smell
 elbow = ItemKind
   { isymbol  = 's'
   , iname    = "creepy shooter"
-  , ifreq    = [("monster", 100), ("horror", 100), ("mobile monster", 100)]
+  , ifreq    = [ ("monster", 100), ("mobile", 1)
+               , ("mobile monster", 100), ("scout monster", 30) ]
   , iflavour = zipFancy [BrMagenta]
   , icount   = 1
   , irarity  = [(6, 1), (10, 9)]
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 12, AddMaxCalm 90, AddSpeed 21, AddNocto 2
+  , iaspects = [ AddMaxHP 12, AddMaxCalm 80, AddSpeed 21, AddNocto 2
                , AddAbility AbProject 2, AddAbility AbApply 1
                , AddAbility AbAlter 2, AddAbility AbMelee (-1) ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "It moves in sudden jerks and never makes a noise. Speaks in hard objects hurled at deadly speeds."
   , ikit     = [ ("speed gland 4", COrgan)
-               , ("eye 7", COrgan)
+               , ("eye 8", COrgan)
                , ("any arrow", CSha), ("any arrow", CInv)
                , ("any arrow", CInv), ("any arrow", CInv)
                , ("sapient brain", COrgan) ]
@@ -200,19 +207,19 @@ torsor = ItemKind
   , ifreq    = [("monster", 100), ("mobile", 1)]
   , iflavour = zipFancy [BrCyan]
   , icount   = 1
-  , irarity  = [(11 * 10/12, 0), (10, 1000)]  -- unique
+  , irarity  = [(9 * 10/12, 0), (10 * 10/12, 1000)]  -- unique
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 300, AddMaxCalm 100, AddSpeed 6, AddNocto 2
-               , AddAbility AbProject 2, AddAbility AbApply 1
-               , AddAbility AbAlter (-1) ]  -- can't switch levels, a miniboss
+               , AddAggression 3
+               , AddAbility AbProject 2, AddAbility AbApply 1 ]
   , ieffects = [Unique]
   , ifeature = [Durable, Identified]
   , idesc    = "The mind, the heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw, grinding teeth and tensing fangs."
   , ikit     = [ ("tentacle", COrgan), ("claw", COrgan), ("large jaw", COrgan)
                , ("venom tooth", COrgan), ("venom fang", COrgan)
-               , ("eye 5", COrgan), ("speed gland 4", COrgan)
+               , ("eye 6", COrgan), ("speed gland 4", COrgan)
                , ("gem", CInv), ("gem", CInv), ("gem", CInv), ("gem", CInv)
                , ("sapient brain", COrgan) ]
   }
@@ -227,169 +234,176 @@ torsor = ItemKind
 goldenJackal = ItemKind  -- basically a much smaller and slower hyena
   { isymbol  = 'j'
   , iname    = "golden jackal"
-  , ifreq    = [("animal", 100), ("horror", 100), ("mobile animal", 100), ("scavenger", 50)]
+  , ifreq    = [ ("animal", 100), ("mobile", 1), ("mobile animal", 100)
+               , ("scavenger", 50) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
-  , irarity  = [(1, 5)]
+  , irarity  = [(1, 3)]
   , iverbHit = "thud"
   , iweight  = 13000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 12, AddMaxCalm 60, AddSpeed 22, AddNocto 2 ]
+  , iaspects = [ AddMaxHP 12, AddMaxCalm 70, AddSpeed 24, AddNocto 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
-  , ikit     = [ ("small jaw", COrgan), ("eye 5", COrgan), ("nostril", COrgan)
+  , ikit     = [ ("small jaw", COrgan), ("eye 6", COrgan), ("nostril", COrgan)
                , ("animal brain", COrgan) ]
   }
 griffonVulture = ItemKind
   { isymbol  = 'v'
   , iname    = "griffon vulture"
-  , ifreq    = [("animal", 100), ("horror", 100), ("mobile animal", 100), ("scavenger", 30)]
+  , ifreq    = [ ("animal", 100), ("mobile", 1), ("mobile animal", 100)
+               , ("scavenger", 30) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , irarity  = [(1, 5)]
   , iverbHit = "thud"
   , iweight  = 13000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 12, AddMaxCalm 60, AddSpeed 20, AddNocto 2
+  , iaspects = [ AddMaxHP 12, AddMaxCalm 80, AddSpeed 22, AddNocto 2
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
+      -- Animals don't have leader, usually, so even if only one of level,
+      -- it pays the communication overhead, so the speed is higher to get
+      -- them on par with human leaders moving solo. Random double moves,
+      -- on either side, are just too frustrating.
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
   , ikit     = [ ("screeching beak", COrgan)  -- in reality it grunts and hisses
-               , ("small claw", COrgan), ("eye 6", COrgan)
+               , ("small claw", COrgan), ("eye 7", COrgan)
                , ("animal brain", COrgan) ]
   }
 skunk = ItemKind
   { isymbol  = 's'
   , iname    = "hog-nosed skunk"
-  , ifreq    = [("animal", 100), ("horror", 100), ("mobile animal", 100)]
+  , ifreq    = [("animal", 100), ("mobile", 1), ("mobile animal", 100)]
   , iflavour = zipPlain [White]
   , icount   = 1
   , irarity  = [(1, 5), (10, 3)]
   , iverbHit = "thud"
   , iweight  = 4000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 10, AddMaxCalm 30, AddSpeed 20, AddNocto 2
+  , iaspects = [ AddMaxHP 10, AddMaxCalm 30, AddSpeed 22, AddNocto 2
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
   , ikit     = [ ("scent gland", COrgan)
                , ("small claw", COrgan), ("snout", COrgan)
-               , ("nostril", COrgan), ("eye 2", COrgan)
+               , ("nostril", COrgan), ("eye 3", COrgan)
                , ("animal brain", COrgan) ]
   }
 armadillo = ItemKind
   { isymbol  = 'a'
   , iname    = "giant armadillo"
-  , ifreq    = [("animal", 100), ("horror", 100), ("mobile animal", 100)]
+  , ifreq    = [("animal", 100), ("mobile", 1), ("mobile animal", 100)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
   , irarity  = [(1, 5)]
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 30, AddSpeed 17, AddNocto 2
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 30, AddSpeed 20, AddNocto 2
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
   , ikit     = [ ("claw", COrgan), ("snout", COrgan), ("armored skin", COrgan)
-               , ("nostril", COrgan), ("eye 2", COrgan)
+               , ("nostril", COrgan), ("eye 3", COrgan)
                , ("animal brain", COrgan) ]
   }
 gilaMonster = ItemKind
   { isymbol  = 'g'
   , iname    = "Gila monster"
-  , ifreq    = [("animal", 100), ("horror", 100), ("mobile animal", 100)]
+  , ifreq    = [("animal", 100), ("mobile", 1), ("mobile animal", 100)]
   , iflavour = zipPlain [Magenta]
   , icount   = 1
   , irarity  = [(2, 5), (10, 3)]
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 12, AddMaxCalm 60, AddSpeed 15, AddNocto 2
+  , iaspects = [ AddMaxHP 12, AddMaxCalm 50, AddSpeed 18, AddNocto 2
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
   , ikit     = [ ("venom tooth", COrgan), ("small claw", COrgan)
-               , ("eye 2", COrgan), ("nostril", COrgan)
+               , ("eye 3", COrgan), ("nostril", COrgan)
                , ("animal brain", COrgan) ]
   }
 rattlesnake = ItemKind
   { isymbol  = 's'
   , iname    = "rattlesnake"
-  , ifreq    = [("animal", 100), ("horror", 100), ("mobile animal", 100)]
+  , ifreq    = [("animal", 100), ("mobile", 1), ("mobile animal", 100)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
   , irarity  = [(4, 1), (10, 7)]
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 25, AddMaxCalm 60, AddSpeed 15, AddNocto 2
+  , iaspects = [ AddMaxHP 25, AddMaxCalm 60, AddSpeed 16, AddNocto 2
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
   , ikit     = [ ("venom fang", COrgan)
-               , ("eye 3", COrgan), ("nostril", COrgan)
+               , ("eye 4", COrgan), ("nostril", COrgan)
                , ("animal brain", COrgan) ]
   }
 komodoDragon = ItemKind  -- bad hearing; regeneration makes it very powerful
   { isymbol  = 'k'
   , iname    = "Komodo dragon"
-  , ifreq    = [("animal", 100), ("horror", 100), ("mobile animal", 100)]
+  , ifreq    = [("animal", 100), ("mobile", 1), ("mobile animal", 100)]
   , iflavour = zipPlain [Blue]
   , icount   = 1
   , irarity  = [(7, 0), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 16, AddNocto 2 ]
+  , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 18, AddNocto 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
   , ikit     = [ ("large tail", COrgan), ("jaw", COrgan), ("claw", COrgan)
                , ("speed gland 4", COrgan), ("armored skin", COrgan)
-               , ("eye 2", COrgan), ("nostril", COrgan)
+               , ("eye 3", COrgan), ("nostril", COrgan)
                , ("animal brain", COrgan) ]
   }
 hyena = ItemKind
   { isymbol  = 'h'
   , iname    = "spotted hyena"
-  , ifreq    = [("animal", 100), ("horror", 100), ("mobile animal", 100), ("scavenger", 20)]
+  , ifreq    = [ ("animal", 100), ("mobile", 1), ("mobile animal", 100)
+               , ("scavenger", 20) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , irarity  = [(4, 1), (10, 8)]
   , iverbHit = "thud"
   , iweight  = 60000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 60, AddSpeed 30, AddNocto 2 ]
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 70, AddSpeed 32, AddNocto 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
-  , ikit     = [ ("jaw", COrgan), ("eye 5", COrgan), ("nostril", COrgan)
+  , ikit     = [ ("jaw", COrgan), ("eye 6", COrgan), ("nostril", COrgan)
                , ("animal brain", COrgan) ]
   }
 alligator = ItemKind
   { isymbol  = 'a'
   , iname    = "alligator"
-  , ifreq    = [("animal", 100), ("horror", 100), ("mobile animal", 100)]
+  , ifreq    = [("animal", 100), ("mobile", 1), ("mobile animal", 100)]
   , iflavour = zipPlain [Blue]
   , icount   = 1
   , irarity  = [(6, 1), (10, 9)]
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 15, AddNocto 2 ]
+  , iaspects = [ AddMaxHP 41, AddMaxCalm 70, AddSpeed 18, AddNocto 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
   , ikit     = [ ("large jaw", COrgan), ("large tail", COrgan)
                , ("small claw", COrgan)
-               , ("armored skin", COrgan), ("eye 5", COrgan)
+               , ("armored skin", COrgan), ("eye 6", COrgan)
                , ("animal brain", COrgan) ]
   }
 rhinoceros = ItemKind
@@ -402,7 +416,8 @@ rhinoceros = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 90, AddMaxCalm 60, AddSpeed 25, AddNocto 2
+  , iaspects = [ AddMaxHP 90, AddMaxCalm 60, AddSpeed 27, AddNocto 2
+               , AddAggression 2
                , AddAbility AbAlter (-1) ]  -- can't switch levels, a miniboss
   , ieffects = [Unique]
   , ifeature = [Durable, Identified]
@@ -417,7 +432,7 @@ rhinoceros = ItemKind
 beeSwarm = ItemKind
   { isymbol  = 'b'
   , iname    = "bee swarm"
-  , ifreq    = [("animal", 100), ("horror", 100)]
+  , ifreq    = [("animal", 100), ("mobile", 1)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
   , irarity  = [(1, 2), (10, 4)]
@@ -430,26 +445,26 @@ beeSwarm = ItemKind
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
-  , ikit     = [ ("bee sting", COrgan), ("vision 4", COrgan)
+  , ikit     = [ ("bee sting", COrgan), ("vision 6", COrgan)
                , ("insect mortality", COrgan), ("animal brain", COrgan) ]
   }
 hornetSwarm = ItemKind
   { isymbol  = 'h'
   , iname    = "hornet swarm"
-  , ifreq    = [("animal", 100), ("horror", 100), ("mobile animal", 100)]
+  , ifreq    = [("animal", 100), ("mobile", 1), ("mobile animal", 100)]
   , iflavour = zipPlain [Magenta]
   , icount   = 1
   , irarity  = [(5, 1), (10, 8)]
   , iverbHit = "thud"
   , iweight  = 1000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 8, AddMaxCalm 60, AddSpeed 30, AddNocto 2
+  , iaspects = [ AddMaxHP 8, AddMaxCalm 70, AddSpeed 30, AddNocto 2
                , AddAbility AbAlter (-2)  -- can't use stairs nor doors
-               , AddArmorMelee 80, AddArmorRanged 80 ]
+               , AddArmorMelee 80, AddArmorRanged 40 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
-  , ikit     = [ ("sting", COrgan), ("vision 4", COrgan)
+  , ikit     = [ ("sting", COrgan), ("vision 8", COrgan)
                , ("insect mortality", COrgan), ("animal brain", COrgan) ]
   }
 thornbush = ItemKind
@@ -458,11 +473,11 @@ thornbush = ItemKind
   , ifreq    = [("animal", 50)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
-  , irarity  = [(1, 3)]
+  , irarity  = [(1, 2)]
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20, AddNocto 2
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 22, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -470,7 +485,7 @@ thornbush = ItemKind
   , ikit     = [("thorn", COrgan), ("armored skin", COrgan)]
   }
 
--- * Robots
+-- * Robots, Allure-specific
 
 -- Robots have any colors but only f, d and r letters. Avoid these letters
 -- for other factions.
@@ -508,7 +523,7 @@ electricFence = ItemKind
                , AddArmorMelee 50, AddArmorRanged 50 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = "Marginally intelligent electric shepherd. Originally used in the spaceship's dairy farm and the zoo level."
+  , idesc    = "Marginally intelligent electric shepherd. Originally used in orbital dairy farms and planetary zoos."
   , ikit     = [("live wire", COrgan)]
   }
 activeFence = ItemKind
@@ -540,9 +555,9 @@ steamFaucet = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 10, AddNocto 2
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 10, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1
-               , AddArmorMelee 80, AddArmorRanged 80 ]
+               , AddArmorMelee 40, AddArmorRanged 40 ]  -- hard material
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "A cracked valve on one of the superheated water pipes spreading radially outward from the tokamak level."
@@ -558,8 +573,8 @@ biogasFaucet = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 20
-               , AddShine 3, AddNocto 2
+  , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 22
+               , AddNocto 2, AddShine 3
                , AddAbility AbWait 1, AddAbility AbMelee 1 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
@@ -569,15 +584,15 @@ biogasFaucet = ItemKind
 medbotFaucet = ItemKind
   { isymbol  = 'f'
   , iname    = "nano medbot faucet"
-  , ifreq    = [("robot", 50), ("immobile robot", 400)]
+  , ifreq    = [("robot", 50), ("immobile robot", 300)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , irarity  = [(5, 2)]
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 20
-               , AddShine 3, AddNocto 2
+  , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 22
+               , AddNocto 2, AddShine 3
                , AddAbility AbWait 1, AddAbility AbMelee 1 ]
   , ieffects = []
   , ifeature = [Durable, Identified]  -- TODO: only heal humans
@@ -587,7 +602,7 @@ medbotFaucet = ItemKind
 surveillanceDrone = ItemKind
   { isymbol  = 'd'
   , iname    = "surveillance drone"
-  , ifreq    = [("robot", 100), ("horror", 100), ("mobile robot", 100)]
+  , ifreq    = [("robot", 100), ("mobile", 100), ("mobile robot", 100)]
   , iflavour = zipPlain [Blue]
   , icount   = 1
   , irarity  = []  -- TODO: too boring
@@ -606,7 +621,7 @@ surveillanceDrone = ItemKind
 shepherdDrone = ItemKind
   { isymbol  = 'd'
   , iname    = "shepherd drone"
-  , ifreq    = [("robot", 100), ("horror", 100), ("mobile robot", 100)]
+  , ifreq    = [("robot", 100), ("mobile", 100), ("mobile robot", 100)]
   , iflavour = zipPlain [BrRed]
   , icount   = 1
   , irarity  = [(1, 7)]
@@ -626,7 +641,7 @@ shepherdDrone = ItemKind
 huntingDrone = ItemKind
   { isymbol  = 'd'
   , iname    = "hunting drone"
-  , ifreq    = [("robot", 100), ("horror", 100), ("mobile robot", 100)]
+  , ifreq    = [("robot", 100), ("mobile", 100), ("mobile robot", 100)]
   , iflavour = zipPlain [Green]
   , icount   = 1
   , irarity  = [(3, 0), (5, 2), (10, 4)]
@@ -647,7 +662,7 @@ homeRobot = ItemKind
   { isymbol  = 'r'
   , iname    = "feral home robot"
                -- TODO: name another 'deranged', tertiary imperative: survival
-  , ifreq    = [("robot", 100), ("horror", 100), ("mobile robot", 100)]
+  , ifreq    = [("robot", 100), ("mobile", 100), ("mobile robot", 100)]
   , iflavour = zipPlain [Magenta]
   , icount   = 1
   , irarity  = [(1, 20), (10, 6)]
@@ -665,7 +680,7 @@ homeRobot = ItemKind
 wasteRobot = ItemKind
   { isymbol  = 'r'
   , iname    = "waste disposal robot"
-  , ifreq    = [ ("robot", 100), ("horror", 100), ("mobile robot", 100)
+  , ifreq    = [ ("robot", 100), ("mobile", 100), ("mobile robot", 100)
                , ("construction robot", 1) ]
   , iflavour = zipPlain [Green]
   , icount   = 1
@@ -685,7 +700,7 @@ wasteRobot = ItemKind
 lightRobot = ItemKind
   { isymbol  = 'r'
   , iname    = "decoration robot"
-  , ifreq    = [ ("robot", 100), ("horror", 100), ("mobile robot", 100)
+  , ifreq    = [ ("robot", 100), ("mobile", 100), ("mobile robot", 100)
                , ("construction robot", 1) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
@@ -705,7 +720,7 @@ lightRobot = ItemKind
 heavyRobot = ItemKind
   { isymbol  = 'r'
   , iname    = "construction robot"
-  , ifreq    = [ ("robot", 100), ("horror", 100), ("mobile robot", 100)
+  , ifreq    = [ ("robot", 100), ("mobile", 100), ("mobile robot", 100)
                , ("construction robot", 100) ]
   , iflavour = zipPlain [BrRed]
   , icount   = 1
