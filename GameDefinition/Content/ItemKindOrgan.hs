@@ -1,4 +1,4 @@
--- Copyright (c) 2008--2011 Andres Loeh, 2010--2015 Mikolaj Konarski
+-- Copyright (c) 2008--2011 Andres Loeh, 2010--2017 Mikolaj Konarski
 -- This file is a part of the computer game Allure of the Stars
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
@@ -21,9 +21,11 @@ import Game.LambdaHack.Content.ItemKind
 
 organs :: [ItemKind]
 organs =
-  [fist, foot, claw, smallClaw, snout, smallJaw, jaw, largeJaw, horn, tentacle, razor, thorn, boilingFissure, biogasFissure, medbotFissure, insectMortality, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, sapientBrain, animalBrain, robotBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, biogasVent, medbotVent, wasteContainer, spotlight, bonusHP]
+  [fist, foot, claw, smallClaw, snout, smallJaw, jaw, largeJaw, horn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision5, vision6, vision7, vision8, vision10, vision12, vision14, vision16, nostril, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP
+   razor, liveWire, robotBrain, wasteContainer, spotlight]
 
-fist,    foot, claw, smallClaw, snout, smallJaw, jaw, largeJaw, horn, tentacle, razor, thorn, boilingFissure, biogasFissure, medbotFissure, insectMortality, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, liveWire, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision6, vision8, vision10, vision12, vision14, vision16, nostril, sapientBrain, animalBrain, robotBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, biogasVent, medbotVent, wasteContainer, spotlight, bonusHP :: ItemKind
+fist,    foot, claw, smallClaw, snout, smallJaw, jaw, largeJaw, horn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision5, vision6, vision7, vision8, vision10, vision12, vision14, vision16, nostril, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP
+   razor, liveWire, robotBrain, wasteContainer, spotlight :: ItemKind
 
 -- Weapons
 
@@ -126,14 +128,6 @@ tentacle = fist
 
 -- * Special weapon organs
 
-razor = fist
-  { iname    = "razor"
-  , ifreq    = [("razor", 100)]
-  , icount   = 2 + d 5
-  , iverbHit = "slice"
-  , idamage  = toDmg $ 2 * d 1
-  , idesc    = ""
-  }
 thorn = fist
   { iname    = "thorn"
   , ifreq    = [("thorn", 100)]
@@ -154,14 +148,14 @@ boilingFissure = fist
   , ifeature = [Identified, Meleeable]  -- not Durable
   , idesc    = ""
   }
-biogasFissure = boilingFissure
+arsenicFissure = boilingFissure
   { iname    = "fissure"
   , ifreq    = [("biogas fissure", 100)]
   , icount   = 3 + d 3
   , idamage  = toDmg $ 2 * d 1
   , ieffects = [toOrganGameTurn "weakened" (2 + d 2)]
   }
-medbotFissure = boilingFissure
+sulfurFissure = boilingFissure
   { iname    = "fissure"
   , ifreq    = [("medbot fissure", 100)]
   , icount   = 2 + d 2
@@ -173,7 +167,7 @@ beeSting = fist
   , icount   = 1
   , iverbHit = "sting"
   , idamage  = toDmg $ 1 * d 1
-  , iaspects = [AddArmorMelee 90, AddArmorRanged 90]
+  , iaspects = [AddArmorMelee 90, AddArmorRanged 45]
   , ieffects = [Paralyze 6, RefillHP 5]
   , ifeature = [Identified, Meleeable]  -- not Durable
   , idesc    = "Painful, but beneficial."
@@ -198,8 +192,6 @@ venomTooth = fist
   , ieffects = [Recharging (toOrganGameTurn "slow 10" (3 + d 3))]
   , idesc    = ""
   }
--- TODO: should also confer poison resistance, but current implementation
--- is too costly (poison removal each turn)
 venomFang = fist
   { iname    = "venom fang"
   , ifreq    = [("venom fang", 100)]
@@ -217,7 +209,7 @@ screechingBeak = fist
   , iverbHit = "peck"
   , idamage  = toDmg $ 2 * d 1
   , iaspects = [Timeout $ 5 + d 5]
-  , ieffects = [Recharging (Summon [("scavenger", 1)] $ 1 + dl 2)]
+  , ieffects = [Recharging $ Summon "scavenger" $ 1 + dl 2]
   , idesc    = ""
   }
 largeTail = fist
@@ -228,18 +220,6 @@ largeTail = fist
   , idamage  = toDmg $ 8 * d 1
   , iaspects = [Timeout $ 1 + d 3]
   , ieffects = [Recharging (PushActor (ThrowMod 400 25))]
-  , idesc    = ""
-  }
-liveWire = fist
-  { iname    = "live wire"
-  , ifreq    = [("live wire", 100)]
-  , icount   = 1
-  , iverbHit = "shock"
-  , idamage  = toDmg $ 1 * d 1
-  , iaspects = [Timeout $ 3 + d 3]
-  , ieffects = [ Recharging (DropItem COrgan "temporary conditions")
-               , Recharging $ RefillHP (-2)
-               ]
   , idesc    = ""
   }
 
@@ -257,7 +237,7 @@ armoredSkin = ItemKind
   , iverbHit = "bash"
   , iweight  = 2000
   , idamage  = toDmg 0
-  , iaspects = [AddArmorMelee 30, AddArmorRanged 30]
+  , iaspects = [AddArmorMelee 30, AddArmorRanged 15]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
@@ -291,7 +271,9 @@ vision n = armoredSkin
   , idesc    = ""
   }
 vision4 = vision 4
+vision5 = vision 5
 vision6 = vision 6
+vision7 = vision 7
 vision8 = vision 8
 vision10 = vision 10
 vision12 = vision 12
@@ -334,14 +316,6 @@ animalBrain = armoredSkin
                   | ab <- [AbDisplace, AbMoveItem, AbProject, AbApply] ]
   , idesc    = ""
   }
-robotBrain = armoredSkin
-  { iname    = "robot brain"
-  , ifreq    = [("robot brain", 100)]
-  , iverbHit = "outcompute"
-  , iaspects = [AddAbility ab 1 | ab <- [minBound..maxBound]]
-               ++ [AddAbility AbApply (-1)]
-  , idesc    = ""
-  }
 speedGland :: Int -> ItemKind
 speedGland n = armoredSkin
   { iname    = "speed gland"
@@ -357,7 +331,7 @@ speedGland4 = speedGland 4
 speedGland6 = speedGland 6
 speedGland8 = speedGland 8
 speedGland10 = speedGland 10
-scentGland = armoredSkin  -- TODO: cone attack, 3m away, project? apply?
+scentGland = armoredSkin
   { iname    = "scent gland"
   , ifreq    = [("scent gland", 100)]
   , iverbHit = "spray at"
@@ -372,25 +346,72 @@ boilingVent = armoredSkin
   , iflavour = zipPlain [BrBlue]
   , iverbHit = "menace"
   , iaspects = [Timeout $ 2 + d 2 |*| 5]
-  , ieffects = [Periodic, Recharging (Explode "boiling water")]
+  , ieffects = [Periodic
+               , Recharging (Explode "boiling water")
+               , Recharging (RefillHP 2) ]
   , idesc    = ""
   }
-biogasVent = armoredSkin
+arsenicVent = armoredSkin
   { iname    = "vent"
   , ifreq    = [("biogas vent", 100)]
   , iflavour = zipPlain [BrGreen]
   , iverbHit = "menace"
   , iaspects = [Timeout $ 2 + d 2 |*| 5]
-  , ieffects = [Periodic, Recharging (Explode "weakness mist")]
+  , ieffects = [ Periodic
+               , Recharging (Explode "sparse shower")
+               , Recharging (RefillHP 2) ]
   , idesc    = ""
   }
-medbotVent = armoredSkin
+sulfurVent = armoredSkin
   { iname    = "vent"
   , ifreq    = [("medbot vent", 100)]
   , iflavour = zipPlain [BrYellow]
   , iverbHit = "menace"
   , iaspects = [Timeout $ 2 + d 2 |*| 5]
-  , ieffects = [Periodic, Recharging (Explode "protecting balm")]
+  , ieffects = [ Periodic
+               , Recharging (Explode "dense shower")
+               , Recharging (RefillHP 2) ]
+  , idesc    = ""
+  }
+bonusHP = armoredSkin
+  { isymbol  = '+'
+  , iname    = "bonus HP"
+  , iflavour = zipPlain [BrBlue]
+  , ifreq    = [("bonus HP", 1)]
+  , iverbHit = "intimidate"
+  , iweight  = 1  -- weight 0 reserved for tmp organs
+  , iaspects = [AddMaxHP 1]
+  , idesc    = ""
+  }
+
+-- * Allure-specific
+
+razor = fist
+  { iname    = "razor"
+  , ifreq    = [("razor", 100)]
+  , icount   = 2 + d 5
+  , iverbHit = "slice"
+  , idamage  = toDmg $ 2 * d 1
+  , idesc    = ""
+  }
+liveWire = fist
+  { iname    = "live wire"
+  , ifreq    = [("live wire", 100)]
+  , icount   = 1
+  , iverbHit = "shock"
+  , idamage  = toDmg $ 1 * d 1
+  , iaspects = [Timeout $ 3 + d 3]
+  , ieffects = [ Recharging (DropItem COrgan "temporary conditions")
+               , Recharging $ RefillHP (-2)
+               ]
+  , idesc    = ""
+  }
+robotBrain = armoredSkin
+  { iname    = "robot brain"
+  , ifreq    = [("robot brain", 100)]
+  , iverbHit = "outcompute"
+  , iaspects = [AddAbility ab 1 | ab <- [minBound..maxBound]]
+               ++ [AddAbility AbApply (-1)]
   , idesc    = ""
   }
 wasteContainer = armoredSkin
@@ -409,14 +430,5 @@ spotlight = armoredSkin
   , ifreq    = [("spotlight", 100)]
   , iverbHit = "blind"
   , iaspects = [AddShine 3]
-  , idesc    = ""
-  }
-bonusHP = armoredSkin
-  { isymbol  = '+'
-  , iname    = "bonus HP"
-  , ifreq    = [("bonus HP", 100)]
-  , iverbHit = "intimidate"
-  , iweight  = 0
-  , iaspects = [AddMaxHP 1]
   , idesc    = ""
   }
