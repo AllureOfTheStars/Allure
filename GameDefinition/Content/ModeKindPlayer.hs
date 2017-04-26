@@ -5,13 +5,12 @@
 --
 -- | Basic players definitions.
 module Content.ModeKindPlayer
-  ( playerHero, playerSoldier, playerSniper
-  , playerAntiHero, playerAntiSniper, playerCivilian
-  , playerMonster, playerMobileMonster, playerAntiMonster
-  , playerAnimal, playerMobileAnimal
-  , playerHorror
-  , hiHero, hiDweller, hiRaid
-  , playerRobot, playerMobileRobot
+  ( playerHero, playerAntiHero, playerCivilian
+  , playerMonster, playerAntiMonster, playerAnimal
+  , playerHorror, playerMonsterTourist, playerHunamConvict
+  , playerAnimalMagnificent, playerAnimalExquisite
+  , hiHero, hiDweller, hiRaid, hiEscapist
+ , playerRobot, playerMobileRobot
   ) where
 
 import Prelude ()
@@ -19,35 +18,24 @@ import Prelude ()
 import Game.LambdaHack.Common.Prelude
 
 import Game.LambdaHack.Common.Ability
-import Game.LambdaHack.Common.Dice
+import Game.LambdaHack.Common.Faction
 import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.ModeKind
 
-playerHero, playerSoldier, playerSniper, playerAntiHero, playerAntiSniper, playerCivilian, playerMonster, playerMobileMonster, playerAntiMonster, playerAnimal, playerMobileAnimal, playerHorror :: Player Dice
+playerHero, playerAntiHero, playerCivilian, playerMonster, playerAntiMonster, playerAnimal, playerHorror, playerMonsterTourist, playerHunamConvict, playerAnimalMagnificent, playerAnimalExquisite :: Player
 playerRobot, playerMobileRobot :: Player Dice
 
 playerHero = Player
   { fname = "Spacefarer Crew"
-  , fgroup = "hero"
+  , fgroups = ["hero"]
   , fskillsOther = meleeAdjacent
   , fcanEscape = True
   , fneverEmpty = True
   , fhiCondPoly = hiHero
-  , fhasNumbers = True
   , fhasGender = True
   , ftactic = TExplore
-  , fentryLevel = 3
-  , finitialActors = 3
   , fleaderMode = LeaderUI $ AutoLeader False False
   , fhasUI = True
-  }
-
-playerSoldier = playerHero
-  { fgroup = "soldier"
-  }
-
-playerSniper = playerHero
-  { fgroup = "sniper"
   }
 
 playerAntiHero = playerHero
@@ -55,47 +43,34 @@ playerAntiHero = playerHero
   , fhasUI = False
   }
 
-playerAntiSniper = playerSniper
-  { fleaderMode = LeaderAI $ AutoLeader True False
-  , fhasUI = False
-  }
-
 playerCivilian = Player
   { fname = "Civilian Crowd"
-  , fgroup = "civilian"
+  , fgroups = ["hero", "civilian"]
   , fskillsOther = zeroSkills  -- not coordinated by any leadership
   , fcanEscape = False
   , fneverEmpty = True
   , fhiCondPoly = hiDweller
-  , fhasNumbers = False
   , fhasGender = True
   , ftactic = TPatrol
-  , fentryLevel = 1
-  , finitialActors = d 2 + 1
   , fleaderMode = LeaderNull  -- unorganized
   , fhasUI = False
   }
 
 playerMonster = Player
   { fname = "Alien Hierarchy"
-  , fgroup = "monster"
+  , fgroups = ["monster", "mobile monster", "immobile monster"]
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False
   , fhiCondPoly = hiDweller
-  , fhasNumbers = False
   , fhasGender = False
   , ftactic = TExplore
-  , fentryLevel = 4
-  , finitialActors = 0
   , fleaderMode =
       -- No point changing leader on level, since all move and they
       -- don't follow the leader.
       LeaderAI $ AutoLeader True True
   , fhasUI = False
   }
-
-playerMobileMonster = playerMonster
 
 playerAntiMonster = playerMonster
   { fhasUI = True
@@ -104,68 +79,67 @@ playerAntiMonster = playerMonster
 
 playerAnimal = Player
   { fname = "Animal Kingdom"
-  , fgroup = "animal"
+  , fgroups = ["animal", "mobile animal", "immobile animal", "scavenger"]
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False
   , fhiCondPoly = hiDweller
-  , fhasNumbers = False
   , fhasGender = False
   , ftactic = TRoam  -- can't pick up, so no point exploring
-  , fentryLevel = 3
-  , finitialActors = 2 + d 2  -- many, because no spawning
   , fleaderMode = LeaderNull
   , fhasUI = False
   }
-
-playerMobileAnimal = playerAnimal
-  { fgroup = "mobile animal" }
 
 -- | A special player, for summoned actors that don't belong to any
 -- of the main players of a given game. E.g., animals summoned during
 -- a brawl game between two hero factions land in the horror faction.
 -- In every game, either all factions for which summoning items exist
 -- should be present or a horror player should be added to host them.
--- Actors that can be summoned should have "horror" in their @ifreq@ set.
 playerHorror = Player
   { fname = "Horror Den"
-  , fgroup = "horror"
+  , fgroups = [nameOfHorrorFact]
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False
   , fhiCondPoly = []
-  , fhasNumbers = False
   , fhasGender = False
   , ftactic = TPatrol  -- disoriented
-  , fentryLevel = -4
-  , finitialActors = 0
   , fleaderMode = LeaderNull
   , fhasUI = False
   }
 
+playerMonsterTourist =
+  playerAntiMonster { fname = "Alien Tourist Office"
+                    , fcanEscape = True
+                    , fneverEmpty = True  -- no spawning
+                    , fhiCondPoly = hiEscapist
+                    , ftactic = TFollow  -- follow-the-guide, as tourists do
+                    , fleaderMode = LeaderUI $ AutoLeader False False }
+
+playerHunamConvict =
+  playerCivilian {fname = "Hunam Convict Pack"}
+
+playerAnimalMagnificent =
+  playerAnimal { fname = "Animal Magnificent Specimen Variety"
+               , fneverEmpty = True
+               , fleaderMode = -- False to move away from stairs
+                               LeaderAI $ AutoLeader True False }
+
+playerAnimalExquisite =
+  playerAnimal { fname = "Animal Exquisite Herds and Packs"
+               , fneverEmpty = True }
+
 victoryOutcomes :: [Outcome]
 victoryOutcomes = [Conquer, Escape]
 
-hiHero, hiDweller, hiRaid :: HiCondPoly
+hiHero, hiRaid, hiDweller, hiEscapist :: HiCondPoly
 
 -- Heroes rejoice in loot.
 hiHero = [ ( [(HiLoot, 1)]
            , [minBound..maxBound] )
-         , ( [(HiConst, 1000), (HiLoss, -100)]
+         , ( [(HiConst, 1000), (HiLoss, -1)]
            , victoryOutcomes )
          ]
-
--- Spawners or skirmishers get no points from loot, but try to kill
--- all opponents fast or at least hold up for long.
-hiDweller = [ ( [(HiConst, 1000)]  -- no loot
-              , victoryOutcomes )
-            , ( [(HiConst, 1000), (HiLoss, -10)]
-              , victoryOutcomes )
-            , ( [(HiBlitz, -100)]
-              , victoryOutcomes )
-            , ( [(HiSurvival, 100)]
-              , [minBound..maxBound] \\ victoryOutcomes )
-            ]
 
 hiRaid = [ ( [(HiLoot, 1)]
            , [minBound..maxBound] )
@@ -173,6 +147,21 @@ hiRaid = [ ( [(HiLoot, 1)]
            , victoryOutcomes )
          ]
 
+-- Spawners or skirmishers get no points from loot, but try to kill
+-- all opponents fast or at least hold up for long.
+hiDweller = [ ( [(HiConst, 1000)]  -- no loot, so big win reward
+              , victoryOutcomes )
+            , ( [(HiConst, 1000), (HiLoss, -10)]
+              , victoryOutcomes )
+            , ( [(HiBlitz, -100)]  -- speed matters
+              , victoryOutcomes )
+            , ( [(HiSurvival, 100)]
+              , [minBound..maxBound] \\ victoryOutcomes )
+            ]
+
+hiEscapist = ( [(HiLoot, 1)]  -- loot matters a little bit
+             , [minBound..maxBound] )
+             : hiDweller
 playerRobot = Player
   { fname = "Robot Anarchy"
   , fgroup = "robot"
@@ -180,11 +169,8 @@ playerRobot = Player
   , fcanEscape = False
   , fneverEmpty = False
   , fhiCondPoly = hiDweller
-  , fhasNumbers = False
   , fhasGender = False
   , ftactic = TRoam  -- TODO:TFollow -- coordinated via net, follow alien leader
-  , fentryLevel = 3
-  , finitialActors = 2 + d 2  -- many, because no spawning
   , fleaderMode = LeaderNull
   , fhasUI = False
   }
