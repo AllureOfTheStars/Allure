@@ -9,9 +9,9 @@ module Content.ModeKindPlayer
   , playerAntiHero, playerAntiSniper, playerCivilian
   , playerMonster, playerMobileMonster, playerAntiMonster
   , playerAnimal, playerMobileAnimal
-  , playerRobot, playerMobileRobot
   , playerHorror
   , hiHero, hiDweller, hiRaid
+  , playerRobot, playerMobileRobot
   ) where
 
 import Prelude ()
@@ -23,7 +23,8 @@ import Game.LambdaHack.Common.Dice
 import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.ModeKind
 
-playerHero, playerSoldier, playerSniper, playerAntiHero, playerAntiSniper, playerCivilian, playerMonster, playerMobileMonster, playerAntiMonster, playerAnimal, playerMobileAnimal, playerRobot, playerMobileRobot, playerHorror :: Player Dice
+playerHero, playerSoldier, playerSniper, playerAntiHero, playerAntiSniper, playerCivilian, playerMonster, playerMobileMonster, playerAntiMonster, playerAnimal, playerMobileAnimal, playerHorror :: Player Dice
+playerRobot, playerMobileRobot :: Player Dice
 
 playerHero = Player
   { fname = "Spacefarer Crew"
@@ -120,25 +121,6 @@ playerAnimal = Player
 playerMobileAnimal = playerAnimal
   { fgroup = "mobile animal" }
 
-playerRobot = Player
-  { fname = "Robot Anarchy"
-  , fgroup = "robot"
-  , fskillsOther = zeroSkills
-  , fcanEscape = False
-  , fneverEmpty = False
-  , fhiCondPoly = hiDweller
-  , fhasNumbers = False
-  , fhasGender = False
-  , ftactic = TRoam  -- TODO:TFollow -- coordinated via net, follow alien leader
-  , fentryLevel = 3
-  , finitialActors = 2 + d 2  -- many, because no spawning
-  , fleaderMode = LeaderNull
-  , fhasUI = False
-  }
-
-playerMobileRobot = playerRobot
-  { fgroup = "mobile robot" }
-
 -- | A special player, for summoned actors that don't belong to any
 -- of the main players of a given game. E.g., animals summoned during
 -- a brawl game between two hero factions land in the horror faction.
@@ -190,3 +172,22 @@ hiRaid = [ ( [(HiLoot, 1)]
          , ( [(HiConst, 100)]
            , victoryOutcomes )
          ]
+
+playerRobot = Player
+  { fname = "Robot Anarchy"
+  , fgroup = "robot"
+  , fskillsOther = zeroSkills
+  , fcanEscape = False
+  , fneverEmpty = False
+  , fhiCondPoly = hiDweller
+  , fhasNumbers = False
+  , fhasGender = False
+  , ftactic = TRoam  -- TODO:TFollow -- coordinated via net, follow alien leader
+  , fentryLevel = 3
+  , finitialActors = 2 + d 2  -- many, because no spawning
+  , fleaderMode = LeaderNull
+  , fhasUI = False
+  }
+
+playerMobileRobot = playerRobot
+  { fgroup = "mobile robot" }
