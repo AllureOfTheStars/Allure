@@ -104,7 +104,7 @@ pulpit = TileKind
 pillarCache = TileKind
   { tsymbol  = 'O'
   , tname    = "cache"
-  , tfreq    = [ ("cachable", 30), ("staircase lift terminal", 5)]  -- only lifts
+  , tfreq    = [ ("cachable", 30), ("stair terminal", 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 5
@@ -205,8 +205,7 @@ wall = TileKind
   { tsymbol  = '#'
   , tname    = "wall"
   , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
-               , ("cachable", 70)
-               , ("stair terminal", 100), ("stair lift terminal", 100)
+               , ("cachable", 70), ("stair terminal", 100)
                , ("noiseSet", 95), ("shootoutSet", 10)
                , ("zooSet", 30), ("battleSet", 250)
                , ("rectWindowsOver_%_Lit", 90)]
@@ -504,7 +503,7 @@ oriel = TileKind
   }
 rock = pillar
   { tname    = "rock"
-  , tfreq    = [ ("brawlSet", 50), ("stair outdoor terminal", 1) ]
+  , tfreq    = [("brawlSet", 50)]
   }
 doorlessWall = TileKind
   { tsymbol  = '#'
