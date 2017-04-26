@@ -36,12 +36,11 @@ cdefs = ContentDef
 
 standard :: RuleKind
 standard = RuleKind
-  { rsymbol        = 's'
-  , rname          = "standard Allure of the Stars ruleset"
-  , rfreq          = [("standard", 100)]
-  , rtitle         = "Allure of the Stars"
-  , raddress       = "http://github.com/AllureOfTheStars/Allure"
-  , rpathsVersion  = Self.version
+  { rsymbol = 's'
+  , rname = "standard Allure of the Stars ruleset"
+  , rfreq = [("standard", 100)]
+  , rtitle = "Allure of the Stars"
+  , rexeVersion = Self.version
   -- The strings containing the default configuration file
   -- included from config.ui.default.
   , rcfgUIName = "config.ui" <.> "ini"
@@ -70,7 +69,7 @@ standard = RuleKind
       lift x)
   , rfirstDeathEnds = False
   , rwriteSaveClips = 1000
-  , rleadLevelClips = 200
+  , rleadLevelClips = 50
   , rscoresFile = "scores"
   , rnearby = 20
   }
