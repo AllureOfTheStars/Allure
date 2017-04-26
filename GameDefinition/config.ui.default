@@ -34,8 +34,12 @@ HeroName_6 = ("Christopher Flatt", "he")
 movementViKeys_hjklyubn = False
 movementLaptopKeys_uk8o79jl = True
 ; Monospace fonts that have fixed size regardless of boldness (on some OSes at least)
-fontFamily = "DejaVu Sans Mono,Consolas,Courier New,Liberation Mono,Courier,FreeMono,Monospace"
-fontSize = "18px"
+gtkFontFamily = "DejaVu Sans Mono,Consolas,Courier New,Liberation Mono,Courier,FreeMono,Monospace"
+;sdlFontFile = "Fix15Mono-Bold.woff"
+sdlFontFile = "16x16x.fon"
+sdlTtfSizeAdd = -2
+sdlFonSizeAdd = 1
+fontSize = 16
 colorIsBold = True
 ; New historyMax takes effect after removal of savefiles.
 historyMax = 5000
