@@ -140,28 +140,28 @@ install:
    git clone --depth=50 --branch=master git://github.com/LambdaHack/LambdaHack.git
    cd LambdaHack
    if [ $GTKVTY = "gtk" ]; then
-     cabal install --only-dependencies --dry -v --constraint="binary>=0.8" --force-reinstalls gtk2hs-buildtools > installplan.txt
-     cabal install -fgtk --only-dependencies --enable-tests --enable-benchmarks --dry -v --force-reinstalls >> installplan.txt
+     cabal install --dry -v --constraint="binary>=0.8" --force-reinstalls gtk2hs-buildtools > installplan.txt
+     cabal install -fgtk --enable-tests --enable-benchmarks --dry -v --force-reinstalls >> installplan.txt
    elif [ $GTKVTY = "gtk-v2" ]; then
-     cabal install --only-dependencies --dry -v gtk2hs-buildtools > installplan.txt
-     cabal install -fgtk --only-dependencies --enable-tests --enable-benchmarks --dry -v >> installplan.txt
+     cabal install --dry -v gtk2hs-buildtools > installplan.txt
+     cabal install -fgtk --enable-tests --enable-benchmarks --dry -v >> installplan.txt
    elif [ $GTKVTY = "sdl" ]; then
-     cabal install -fsdl --only-dependencies --enable-tests --enable-benchmarks --dry -v >> installplan.txt
+     cabal install -fsdl --enable-tests --enable-benchmarks --dry -v >> installplan.txt
    elif [ $GTKVTY = "sdl-v2" ]; then
-     cabal install -fsdl --only-dependencies --enable-tests --enable-benchmarks --dry -v >> installplan.txt
+     cabal install -fsdl --enable-tests --enable-benchmarks --dry -v >> installplan.txt
    elif [ $GTKVTY = "vty" ]; then
-     cabal install -fvty --only-dependencies --enable-tests --enable-benchmarks --dry -v > installplan.txt
+     cabal install -fvty --enable-tests --enable-benchmarks --dry -v > installplan.txt
    elif [ $GTKVTY = "curses" ]; then
-     cabal install -fcurses -frelease --only-dependencies --enable-tests --enable-benchmarks --dry -v > installplan.txt # test -frelease together with the curses frontend
+     cabal install -fcurses -frelease --enable-tests --enable-benchmarks --dry -v > installplan.txt # test -frelease together with the curses frontend
    elif [ $GTKVTY = "noopt" ]; then
-     cabal install --only-dependencies --dry -v gtk2hs-buildtools > installplan.txt
-     cabal install -fgtk --only-dependencies --enable-tests --enable-benchmarks --dry -v >> installplan.txt
+     cabal install --dry -v gtk2hs-buildtools > installplan.txt
+     cabal install -fgtk --enable-tests --enable-benchmarks --dry -v >> installplan.txt
    elif [ $GTKVTY = "opt2" ]; then
-     cabal install --only-dependencies --dry -v gtk2hs-buildtools > installplan.txt
-     cabal install -fgtk --only-dependencies --enable-tests --enable-benchmarks --dry -v >> installplan.txt
+     cabal install --dry -v gtk2hs-buildtools > installplan.txt
+     cabal install -fgtk --enable-tests --enable-benchmarks --dry -v >> installplan.txt
    elif [ $GTKVTY = "asserts" ]; then
-     cabal install --only-dependencies --dry -v gtk2hs-buildtools > installplan.txt
-     cabal install -fgtk --only-dependencies --enable-tests --enable-benchmarks --dry -v >> installplan.txt
+     cabal install --dry -v gtk2hs-buildtools > installplan.txt
+     cabal install -fgtk --enable-tests --enable-benchmarks --dry -v >> installplan.txt
    else exit 7
    fi
 
