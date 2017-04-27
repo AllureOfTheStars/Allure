@@ -138,7 +138,8 @@ slingStone = ItemKind
   , iweight  = 200
   , idamage  = toDmg $ 1 * d 1
   , iaspects = [AddHurtMelee (-10 + d 2 + dl 4 |*| 5)]  -- heavy vs armor
-  , ieffects = []
+  , ieffects = [ Explode "single spark"  -- when hitting enemy
+               , OnSmash (Explode "single spark") ]  -- at wall hit
   , ifeature = [toVelocity 150, Identified]
   , idesc    = "A large hexagonal fastening nut, securely lodging in the pouch of a makeshift string and cloth sling due to its angular shape."
   , ikit     = []
