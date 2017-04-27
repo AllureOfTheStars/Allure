@@ -43,10 +43,8 @@ rect = PlaceKind  -- Valid for any nonempty area, hence low frequency.
   , pfreq    = [("rogue", 100), ("arena", 40), ("laboratory", 40), ("zoo", 10)]
   , prarity  = [(1, 10), (10, 8)]
   , pcover   = CStretch
-  , pfence   = FNone
-  , ptopLeft = [ "--"
-               , "|·"
-               ]
+  , pfence   = FWall
+  , ptopLeft = ["·"]
   , poverride = []
   }
 rectWindows = PlaceKind
@@ -584,7 +582,8 @@ escapeOutdoorDown = escapeDown
 staircaseLift = staircase
   { pname    = "staircase lift"
   , pfreq    = [("staircase lift", 1)]
-  , poverride = [('<', "staircase lift up"), ('>', "staircase lift down")]
+  , poverride = [ ('<', "staircase lift up"), ('>', "staircase lift down")
+                , ('I', "signboard") ]
   }
 escapeSpaceshipDown = escapeDown
   { pfreq     = [("escape spaceship down", 1)]
@@ -660,7 +659,7 @@ maze = PlaceKind
                , "##··#"
                , "#··#·"
                ]
-  , poverride = []
+  , poverride = [('&', "cachable")]
   }
 maze2 = maze
   { pfreq    = [("rogue", 50), ("arena", 50), ("empty", 50)]

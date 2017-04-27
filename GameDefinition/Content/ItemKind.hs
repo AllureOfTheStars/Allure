@@ -437,7 +437,7 @@ flask20 = flask
   { ieffects = [ ELabel "of calamity"
                , toOrganNone "weakly poisoned"
                , toOrganGameTurn "weakened" (20 + d 5)
-               , toOrganGameTurn "defenseless" (20 + d 5)
+               , toOrganGameTurn "painted red" (20 + d 5)
                , OnSmash (Explode "poison cloud") ]
   }
 

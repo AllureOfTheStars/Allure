@@ -401,7 +401,7 @@ liveWire = fist
   , iverbHit = "shock"
   , idamage  = toDmg $ 1 * d 1
   , iaspects = [Timeout $ 3 + d 3]
-  , ieffects = [ Recharging (DropItem 1 maxBound COrgan "temporary conditions")
+  , ieffects = [ Recharging (DropItem 1 maxBound COrgan "temporary condition")
                , Recharging $ RefillHP (-2)
                ]
   , idesc    = ""

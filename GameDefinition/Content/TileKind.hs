@@ -65,7 +65,8 @@ unknown = TileKind  -- needs to have index 0 and alter 1
 hardRock = TileKind
   { tsymbol  = '#'
   , tname    = "outer hull"
-  , tfreq    = [("basic outer fence", 100), ("oriels fence", 96)]
+  , tfreq    = [ ("basic outer fence", 1), ("noise fence", 1)
+               , ("oriels fence", 96)]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
   , talter   = maxBound
@@ -513,7 +514,7 @@ doorlessWall = TileKind
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 100
-  , tfeature = [HideAs "fillerWall"]
+  , tfeature = [HideAs "fillerWall", Indistinct]
   }
 wallObscuredDefaced = TileKind
   { tsymbol  = '#'
