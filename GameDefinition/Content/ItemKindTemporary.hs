@@ -55,7 +55,7 @@ tmpStrengthened = tmpAs "strengthened" [AddHurtMelee 20]
 tmpWeakened = tmpAs "weakened" [AddHurtMelee (-20)]
 tmpProtectedMelee = tmpAs "protected from melee" [AddArmorMelee 50]
 tmpProtectedRanged = tmpAs "protected from ranged" [AddArmorRanged 25]
-tmpVulnerable = tmpAs "painted red" [ AddArmorMelee (-25)
+tmpVulnerable = tmpAs "painted red" [ AddArmorMelee (-50)
                                     , AddArmorRanged (-25) ]
 tmpResolute = tmpAs "resolute" [AddMaxCalm 60]
 tmpFast20 = tmpAs "fast 20" [AddSpeed 20]

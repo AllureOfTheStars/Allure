@@ -21,11 +21,11 @@ import Game.LambdaHack.Content.ItemKind
 
 organs :: [ItemKind]
 organs =
-  [fist, foot, claw, smallClaw, snout, smallJaw, jaw, largeJaw, horn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision5, vision6, vision7, vision8, vision10, vision12, vision14, vision16, nostril, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP
+  [fist, foot, claw, smallClaw, snout, smallJaw, jaw, largeJaw, horn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision5, vision6, vision7, vision8, vision10, vision12, vision14, vision16, nostril, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP,
    razor, liveWire, robotBrain, wasteContainer, spotlight]
 
-fist,    foot, claw, smallClaw, snout, smallJaw, jaw, largeJaw, horn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision5, vision6, vision7, vision8, vision10, vision12, vision14, vision16, nostril, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP
-   razor, liveWire, robotBrain, wasteContainer, spotlight :: ItemKind
+fist,    foot, claw, smallClaw, snout, smallJaw, jaw, largeJaw, horn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision5, vision6, vision7, vision8, vision10, vision12, vision14, vision16, nostril, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP :: ItemKind
+razor, liveWire, robotBrain, wasteContainer, spotlight :: ItemKind
 
 -- Weapons
 
@@ -401,7 +401,7 @@ liveWire = fist
   , iverbHit = "shock"
   , idamage  = toDmg $ 1 * d 1
   , iaspects = [Timeout $ 3 + d 3]
-  , ieffects = [ Recharging (DropItem COrgan "temporary conditions")
+  , ieffects = [ Recharging (DropItem 1 maxBound COrgan "temporary conditions")
                , Recharging $ RefillHP (-2)
                ]
   , idesc    = ""
@@ -420,7 +420,7 @@ wasteContainer = armoredSkin
   , iverbHit = "spill over"
   , iaspects = [Timeout $ 5 + d 5 |*| 10]
   , ieffects = [ Periodic
-               , Recharging (Summon [("mobile animal", 1)] $ 1 + dl 2)
+               , Recharging (Summon "mobile animal" $ 1 + dl 2)
                , Recharging (RefillHP 1)
                , Recharging (Explode "waste") ]
   , idesc    = ""

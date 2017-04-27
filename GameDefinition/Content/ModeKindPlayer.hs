@@ -10,7 +10,7 @@ module Content.ModeKindPlayer
   , playerHorror, playerMonsterTourist, playerHunamConvict
   , playerAnimalMagnificent, playerAnimalExquisite
   , hiHero, hiDweller, hiRaid, hiEscapist
- , playerRobot, playerMobileRobot
+  , playerRobot
   ) where
 
 import Prelude ()
@@ -23,7 +23,7 @@ import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.ModeKind
 
 playerHero, playerAntiHero, playerCivilian, playerMonster, playerAntiMonster, playerAnimal, playerHorror, playerMonsterTourist, playerHunamConvict, playerAnimalMagnificent, playerAnimalExquisite :: Player
-playerRobot, playerMobileRobot :: Player Dice
+playerRobot :: Player
 
 playerHero = Player
   { fname = "Spacefarer Crew"
@@ -162,9 +162,10 @@ hiDweller = [ ( [(HiConst, 1000)]  -- no loot, so big win reward
 hiEscapist = ( [(HiLoot, 1)]  -- loot matters a little bit
              , [minBound..maxBound] )
              : hiDweller
+
 playerRobot = Player
   { fname = "Robot Anarchy"
-  , fgroup = "robot"
+  , fgroups = ["robot", "mobile monster", "immobile monster"]
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False
@@ -174,6 +175,3 @@ playerRobot = Player
   , fleaderMode = LeaderNull
   , fhasUI = False
   }
-
-playerMobileRobot = playerRobot
-  { fgroup = "mobile robot" }

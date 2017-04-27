@@ -31,8 +31,8 @@ cdefs = ContentDef
       ++ map makeDarkColor ldarkColorable
       ++ [oriel, rock, doorlessWall, wallObscuredDefaced, wallObscuredFrescoed, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown]
   }
-unknown,        hardRock, pillar, pillarIce, pulpit, pillarCache, lampPost, signboardUnread, signboardRead, bush, bushDark, bushBurnt, bushBurning, tree, treeDark, treeBurnt, treeBurning, wall, wallGlass, wallGlassSpice, wallSuspect, wallObscured, doorTrapped, doorClosed, doorOpen, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, rubble, rubblePlace, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorDirtSpiceLit, floorArenaShade, floorActorLit, floorItemLit, floorActorItemLit, floorRedLit, floorBlueLit, floorGreenLit, floorFog, floorFogDark, floorSmoke, floorSmokeDark,
-       oriel, rock, doorlessWall, wallObscuredDefaced, wallObscuredFrescoed, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown :: TileKind
+unknown,        hardRock, pillar, pillarIce, pulpit, pillarCache, lampPost, signboardUnread, signboardRead, bush, bushDark, bushBurnt, bushBurning, tree, treeDark, treeBurnt, treeBurning, wall, wallGlass, wallGlassSpice, wallSuspect, wallObscured, doorTrapped, doorClosed, doorOpen, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, rubble, rubblePlace, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorDirtSpiceLit, floorArenaShade, floorActorLit, floorItemLit, floorActorItemLit, floorRedLit, floorBlueLit, floorGreenLit, floorFog, floorFogDark, floorSmoke, floorSmokeDark :: TileKind
+oriel, rock, doorlessWall, wallObscuredDefaced, wallObscuredFrescoed, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown :: TileKind
 
 ldarkColorable :: [TileKind]
 ldarkColorable = [floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorActorLit, floorItemLit, floorActorItemLit]
@@ -489,6 +489,7 @@ floorSmokeDark = floorSmoke
   { tname    = "lingering smoke"
   , tfreq    = [("ambushSet", 30)]
   , tfeature = Dark : tfeature floorSmoke
+  }
 
 -- * Allure-specific
 

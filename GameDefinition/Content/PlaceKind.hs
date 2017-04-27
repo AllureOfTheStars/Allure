@@ -200,7 +200,7 @@ colonnade = PlaceKind
   }
 colonnade2 = colonnade
   { prarity  = [(1, 4), (10, 4)]
-  { ptopLeft = [ "#·"
+  , ptopLeft = [ "#·"
                , "··"
                ]
   }

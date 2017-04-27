@@ -255,18 +255,18 @@ closeDoorTriggers :: [Trigger]
 closeDoorTriggers =
   [ AlterFeature { verb = "close"
                  , object = "door"
-                 , feature = TK.CloseTo "closed door Lit" }
+                 , feature = TK.CloseTo "closed door" }
   , AlterFeature { verb = "close"
                  , object = "door"
-                 , feature = TK.CloseTo "closed door Dark" }
+                 , feature = TK.CloseTo "closed door" }
   ]
 
 openDoorTriggers :: [Trigger]
 openDoorTriggers =
   [ AlterFeature { verb = "open"
                  , object = "door"
-                 , feature = TK.OpenTo "open door Lit" }
+                 , feature = TK.OpenTo "open door" }
   , AlterFeature { verb = "open"
                  , object = "door"
-                 , feature = TK.OpenTo "open door Dark" }
+                 , feature = TK.OpenTo "open door" }
   ]
