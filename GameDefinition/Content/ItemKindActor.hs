@@ -207,13 +207,14 @@ torsor = ItemKind
   , ifreq    = [("monster", 100), ("mobile", 1)]
   , iflavour = zipFancy [BrCyan]
   , icount   = 1
-  , irarity  = [(9 * 10/12, 0), (10 * 10/12, 1000)]  -- unique
+  , irarity  = [(11 * 10/12, 0), (12 * 10/12, 1000)]  -- unique
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 300, AddMaxCalm 100, AddSpeed 6, AddNocto 2
                , AddAggression 3
-               , AddAbility AbProject 2, AddAbility AbApply 1 ]
+               , AddAbility AbProject 2, AddAbility AbApply 1
+               , AddAbility AbAlter (-1) ]  -- can't switch levels, the boss
   , ieffects = [Unique]
   , ifeature = [Durable, Identified]
   , idesc    = "The mind, the heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw, grinding teeth and tensing fangs."
@@ -749,9 +750,8 @@ cleanerRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 120, AddMaxCalm 60, AddSpeed 18, AddNocto 2
-               , AddAbility AbAlter (-1) ]
-                   -- can't switch levels, a miniboss
+  , iaspects = [AddMaxHP 120, AddMaxCalm 60, AddSpeed 18, AddNocto 2]
+                 -- can't exit the gated level, a miniboss
   , ieffects = [Unique]
   , ifeature = [Durable, Identified]
   , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."
