@@ -151,6 +151,7 @@ noise = rogue
   , cauxConnects  = 1%10
   , cmaxVoid      = 1%100
   , cextraStairs  = d 4
+  , cdoorChance   = 1  -- to enable the doorlessWall hack and have no lit tiles
   , chidden       = 0
   , cactorCoeff   = 160  -- the maze requires time to explore
   , cactorFreq    = [("monster", 70), ("animal", 15), ("robot", 15)]
