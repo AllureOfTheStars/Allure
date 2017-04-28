@@ -37,15 +37,18 @@ oriel, rock, doorlessWall, wallObscuredDefaced, wallObscuredFrescoed, stairsLift
 ldarkColorable :: [TileKind]
 ldarkColorable = [floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorActorLit, floorItemLit, floorActorItemLit]
 
--- Symbols used:
+-- Symbols to be used:
 --         LOS    noLOS
--- Walk    .'     ~
--- noWalk  %&^    #O:<>+
+-- Walk    .'     :;
+-- noWalk  &^     #O%<>+
 --
--- can be opened %:+^
+-- can be opened ^%+
 -- can be closed '
 -- some noWalk can be changed without opening, regardless of symbol
--- not used yet `;^
+-- not used yet:
+-- ~ (water, acid, ect.)
+-- : (curtain, etc., not flowing, but solid and static)
+-- ` (not visible enough, would need font modification)
 
 -- Note that for AI hints and UI comfort, most multiple-use @Embed@ tiles
 -- should have a variant, which after first use transforms into a different
@@ -82,7 +85,7 @@ pillar = TileKind
   , tfeature = [Indistinct]
   }
 pillarIce = TileKind
-  { tsymbol  = '%'
+  { tsymbol  = '^'
   , tname    = "ice"
   , tfreq    = [("brawlSet", 2), ("ice", 1)]
   , tcolor   = BrBlue
@@ -363,7 +366,7 @@ escapeOutdoorDown = escapeDown
   , tfreq    = [("escape outdoor down", 1)]
   }
 rubble = TileKind
-  { tsymbol  = ':'
+  { tsymbol  = '%'
   , tname    = "rubble"
   , tfreq    = []  -- [("floorCorridorLit", 1)]
                    -- disabled while it's all or nothing per cave and per room;
@@ -379,7 +382,7 @@ rubble = TileKind
                  -- AI doesn't go out of its way to clear the way for heroes
   }
 rubblePlace = TileKind
-  { tsymbol  = ':'
+  { tsymbol  = '%'
   , tname    = "rubble"
   , tfreq    = [("smokeClumpOver_f_Lit", 1), ("noiseSet", 5), ("zooSet", 100)]
   , tcolor   = BrWhite
@@ -457,7 +460,7 @@ floorGreenLit = floorRedLit
   , tcolor2  = Green
   }
 floorFog = TileKind
-  { tsymbol  = '~'
+  { tsymbol  = ';'
   , tname    = "faint fog"
   , tfreq    = [ ("lit fog", 1), ("emptySet", 3), ("shootoutSet", 20)
                , ("fogClumpOver_f_Lit", 2) ]
@@ -475,7 +478,7 @@ floorFogDark = floorFog
   , tfeature = Dark : tfeature floorFog
   }
 floorSmoke = TileKind
-  { tsymbol  = '~'
+  { tsymbol  = ';'
   , tname    = "billowing smoke"
   , tfreq    = [ ("lit smoke", 1)
                , ("ambushSet", 30), ("zooSet", 15), ("battleSet", 5)
