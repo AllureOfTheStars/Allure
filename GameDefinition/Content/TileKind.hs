@@ -212,9 +212,8 @@ wall = TileKind
   , tname    = "wall"
   , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
                , ("cachable", 70), ("stair terminal", 100)
-               , ("noiseSet", 95), ("shootoutSet", 10)
-               , ("zooSet", 30), ("battleSet", 250)
-               , ("rectWindowsOver_%_Lit", 90)]
+               , ("noiseSet", 95), ("shootoutSet", 10), ("battleSet", 250)
+               , ("rectWindowsOver_%_Lit", 90) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 100
@@ -507,7 +506,7 @@ oriel = TileKind
   }
 rock = pillar
   { tname    = "rock"
-  , tfreq    = [("brawlSet", 50)]
+  , tfreq    = [("brawlSet", 50), ("zooSet", 30)]
   }
 doorlessWall = TileKind
   { tsymbol  = '#'
