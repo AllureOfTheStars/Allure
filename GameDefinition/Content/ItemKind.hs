@@ -1267,7 +1267,7 @@ constructionHooter = scroll
   , irarity  = [(1, 1)]
   , iaspects = []
   , ieffects = [Summon "construction robot" $ 1 + dl 2]
-  , ifeature = ifeature scroll ++ [Applicable, Identified]
+  , ifeature = Identified : ifeature scroll
   , idesc    = "The single-use electronic overdrive hooter that construction robots use to warn about danger and call help in extreme emergency."
   , ikit     = []
   }

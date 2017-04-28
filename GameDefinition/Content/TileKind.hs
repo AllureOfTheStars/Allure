@@ -73,7 +73,7 @@ hardRock = TileKind
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
   , talter   = maxBound  -- impenetrable
-  , tfeature = [Impenetrable]
+  , tfeature = []
   }
 pillar = TileKind
   { tsymbol  = 'O'
@@ -503,7 +503,7 @@ oriel = TileKind
   , tcolor   = White
   , tcolor2  = Black
   , talter   = maxBound  -- impenetrable
-  , tfeature = [Dark, Impenetrable]
+  , tfeature = [Dark]
   }
 rock = pillar
   { tname    = "rock"
