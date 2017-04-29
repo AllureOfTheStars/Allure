@@ -50,7 +50,7 @@ raid = ModeKind  -- mini-crawl
   , mfreq   = [("raid", 1), ("campaign scenario", 1)]
   , mroster = rosterRaid
   , mcaves  = cavesRaid
-  , mdesc   = "The Neptune Orbit Residency Administration confirms isolated spottings of many kinds of vermin in non-residential areas of the Triton moon capital. In other words, Triton City sewers need purging. The first person to break through to the other exit will be paid 100 gold grains. The Administration urges participants not to fight each other."
+  , mdesc   = "The Neptune Area Administration confirms isolated spottings of many kinds of vermin in non-residential areas of the Triton moon largest city. In other words, Triton City sewers need purging. The first person to break through to the other exit will be paid 100 gold grains. The Administration urges participants not to fight each other."
   }
 
 brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
@@ -76,7 +76,7 @@ shootout = ModeKind  -- sparse ranged in daylight
   , mfreq   = [("shootout", 1), ("campaign scenario", 1)]
   , mroster = rosterShootout
   , mcaves  = cavesShootout
-  , mdesc   = "The fight crashes over to a nearby mechanized farm. Law enforcement, crippled by the ban on firearms, won't show up until only wounded and dying remain. Farm supplies, scattered around, just beg to be flung at foes as improvised missiles. Intense light makes it easy to aim and also to discern trajectory of soaring items (point at projectiles with the crosshair in aiming mode)."
+  , mdesc   = "The fight crashes over to a nearby mechanized farm. Law enforcement, crippled by the ban on firearms, won't show up until only wounded and dying remain to be revived and locked up. Farm supplies, scattered around, just beg to be flung at foes as improvised missiles. Intense light makes it easy to aim and also to discern trajectory of soaring items (point at projectiles with the crosshair in aiming mode)."
   }
 
 escape = ModeKind  -- asymmetric ranged and stealth race at night
@@ -85,8 +85,8 @@ escape = ModeKind  -- asymmetric ranged and stealth race at night
   , mfreq   = [("escape", 1), ("campaign scenario", 1)]
   , mroster = rosterEscape
   , mcaves  = cavesEscape
-  , mdesc   = "Bloodied spaceship deed in hand nonwithstanding, one can take possesion of the the spaceliner only via a shuttle from the Triton Spaceport across the city. After hours of being chased in the opposite direction, towards the border wall, you sneak back and make a desperate dash through the very HQ of the enemy. Any valuables you find will be a just compensation for their wrongdoing, but you need to reach the exit before they find you."
-  }n
+  , mdesc   = "Bloodied spaceship deed in hand nonwithstanding, one can take possesion of the derelict spaceliner only via a shuttle from the Triton Spaceport across the city. After hours of being chased in the opposite direction towards the border wall, you sneak back and make a desperate dash through the very HQ of the enemy. Any valuables you find will be a just compensation for their wrongdoing, but you need to reach the exit before they find you."
+  }
 
 zoo = ModeKind  -- asymmetric crowd melee at night
   { msymbol = 'b'
@@ -94,7 +94,7 @@ zoo = ModeKind  -- asymmetric crowd melee at night
   , mfreq   = [("zoo", 1), ("campaign scenario", 1)]
   , mroster = rosterZoo
   , mcaves  = cavesZoo
-  , mdesc   = "As justified and satisfying as setting enemy lair on fire was, it backfired by plunging you in the mist of the public zoo engulfed in flames. Crazed animals mill around while the flames ignite greenery and consume nets and cages. Whether that's a good sign or bad: certainly nobody is willing to pursue you any more."
+  , mdesc   = "As justified and satisfying as setting enemy lair on fire was, it backfired by immediatelly spreading to the public zoo on your path. Crazed animals mill around while the flames ignite greenery and consume nets and cages. Certainly nobody is willing to pursue you any more, whether that's a good sign or bad."
   }
 
 -- The tactic is to sneak in the dark, highlight enemy with thrown torches
@@ -111,7 +111,7 @@ ambush = ModeKind  -- dense ranged with reaction fire at night
   , mfreq   = [("ambush", 1), ("campaign scenario", 1)]
   , mroster = rosterAmbush
   , mcaves  = cavesAmbush
-  , mdesc   = "Not even the unexplained ruin of the largest and tightest security Neptune's moon spaceport will prevent you from claiming your prize."
+  , mdesc   = "Not even the unexplained ruin of the largest and tightest security of Neptune's spaceports will prevent you from claiming your prize. You didn't take to the space to let others decide your fate. Onward!"
   }
 
 exploration = ModeKind
@@ -121,7 +121,7 @@ exploration = ModeKind
               , ("campaign scenario", 1) ]
   , mroster = rosterExploration
   , mcaves  = cavesExploration
-  , mdesc   = "You got stranded looting the blasted bridge of a once luxurious cruise liner. Your current plan is to fight through, gathering your spoils, to the shuttle airlock somewhere among the giant spaceship's uppermost decks. There are animal cries down below and ominous silence up above."
+  , mdesc   = "You got stranded happily looting the blasted bridge of an extravagantly luxurious, old, inert cruise liner. The spaceship, supposedly long deserted and barely sustaining life support, suddenly disengaged the shuttle you came in, manoeuvred off Triton orbit and now heads away from Neptune. Your current plan is to break through, exploring and gathering spoils, to the auxiliary engineering hub and shuttle bay somewhere among the giant spaceship's uppermost decks. This will yet turn your biggest victory. There are animal cries down below and ominous silence up above."
   }
 
 safari = ModeKind  -- easter egg available only via screensaver
