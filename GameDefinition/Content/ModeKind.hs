@@ -50,7 +50,7 @@ raid = ModeKind  -- mini-crawl
   , mfreq   = [("raid", 1), ("campaign scenario", 1)]
   , mroster = rosterRaid
   , mcaves  = cavesRaid
-  , mdesc   = "The Triton City sewers need purging. The first person to break through to the other end will be paid 100 gold grains. Please don't fight each other."
+  , mdesc   = "The Neptune Orbit Residency Administration confirms isolated spottings of many kinds of vermin in non-residential areas of the Triton moon capital. In other words, Triton City sewers need purging. The first person to break through to the other exit will be paid 100 gold grains. The Administration urges participants not to fight each other."
   }
 
 brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
@@ -59,7 +59,7 @@ brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
   , mfreq   = [("brawl", 1), ("campaign scenario", 1)]
   , mroster = rosterBrawl
   , mcaves  = cavesBrawl
-  , mdesc   = "\"You cheated. Come alone to the woody biosphere behind the saloon at noon, if you dare. The winner takes all the spoils, including the keys and the papers of the decrepit giant spaceship.\""
+  , mdesc   = "\"You scoundrel! You cheated in the sewers. Come alone to the woody biosphere behind the saloon at noon, if you dare. Given that I win, I take back the gold. Otherwise, you get the scrapping rights for the giant spaceliner's hull in orbit. Yes, it's mine, you tramp; here are the papers.\""
   }
 
 -- The trajectory tip is important because of tactics of scout looking from
@@ -76,7 +76,7 @@ shootout = ModeKind  -- sparse ranged in daylight
   , mfreq   = [("shootout", 1), ("campaign scenario", 1)]
   , mroster = rosterShootout
   , mcaves  = cavesShootout
-  , mdesc   = "Whose arguments are most striking and whose ideas fly fastest? Let's scatter up, attack the problems from different angles and find out. To display the trajectory of any soaring entity, point it with the crosshair in aiming mode."
+  , mdesc   = "The fight crashes over to a nearby mechanized farm. Farm supplies, scattered around, just beg to be flung at foes. Intense light makes it easy to aim and also to discern trajectory of soaring items (point at projectiles with the crosshair in aiming mode)."
   }
 
 escape = ModeKind  -- asymmetric ranged and stealth race at night
@@ -276,6 +276,7 @@ rosterShootout = Roster
                                     , fcanEscape = False
                                     , fhiCondPoly = hiDweller }
                    , [(5, 1, "scout hero"), (5, 2, "ranger hero")] )
+                 , (playerRobot, [])  -- neutral
                  , (playerHorror, []) ]
   , rosterEnemy = [ ("Spacefarer Crew", "Red Collars")
                   , ("Spacefarer Crew", "Horror Den")

@@ -264,7 +264,8 @@ shootout = rogue  -- a scenario with strong missiles;
   , copenChance   = 0
   , cextraStairs  = 1
   , chidden       = 0
-  , cactorFreq    = []
+  , cactorCoeff   = 1000  -- just a distraction
+  , cactorFreq    = [("mobile robot", 100)]
   , citemNum      = 5 * d 16
                       -- less items in inventory, more to be picked up,
                       -- to reward explorer and aggressor and punish camper

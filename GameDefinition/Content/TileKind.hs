@@ -429,7 +429,7 @@ floorItemLit = floorArenaLit
   , tfeature = OftenItem : tfeature floorArenaLit
   }
 floorActorItemLit = floorItemLit
-  { tfreq    = [("legendLit", 100)]  -- no OftenItem in legendDark
+  { tfreq    = [("legendLit", 100)]  -- no OftenActor in legendDark
   , tfeature = OftenActor : tfeature floorItemLit
   }
 floorArenaShade = floorActorLit
@@ -468,7 +468,7 @@ floorFog = TileKind
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 0
-  , tfeature = [Walkable, NoItem, Indistinct]
+  , tfeature = [Walkable, NoItem, Indistinct, OftenActor]
   }
 floorFogDark = floorFog
   { tname    = "thick fog"
