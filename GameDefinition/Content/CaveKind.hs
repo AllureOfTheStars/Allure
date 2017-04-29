@@ -213,7 +213,7 @@ emptyExit = empty
   }
 raid = rogue
   { csymbol       = 'S'
-  , cname         = "Triton City Sewers"
+  , cname         = "Triton City sewers"
   , cfreq         = [("caveRaid", 1)]
   , cdarkChance   = 0
   , cmaxVoid      = 1%10
@@ -286,7 +286,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
                 -- not view; obstacles are not lit, to frustrate the AI;
                 -- lots of small lights to cross, to have some risks
   { csymbol       = 'E'
-  , cname         = "Public park at night"
+  , cname         = "Red Collars den"
   , cfreq         = [("caveEscape", 1)]
   , cgrid         = DiceXY -- (2 * d 2 + 3) 4  -- park, so lamps in lines
                            (2 * d 2 + 6) 3   -- for now, to fit larger places
@@ -343,7 +343,7 @@ ambush = rogue  -- a scenario with strong missiles;
                 -- camping doesn't pay off, because enemies can sneak and only
                 -- active scouting, throwing flares and shooting discovers them
   { csymbol       = 'M'
-  , cname         = "Burning public park"
+  , cname         = "Ravaged spaceport"
   , cfreq         = [("caveAmbush", 1)]
   , cgrid         = DiceXY -- (2 * d 2 + 3) 4  -- park, so lamps in lines
                            (2 * d 2 + 6) 3   -- for now, to fit larger places
@@ -366,7 +366,7 @@ ambush = rogue  -- a scenario with strong missiles;
   }
 battle = rogue  -- few lights and many solids, to help the less numerous heroes
   { csymbol       = 'B'
-  , cname         = "Ravaged spaceport"
+  , cname         = "Burning public park"
   , cfreq         = [("caveBattle", 1)]
   , cgrid         = DiceXY (2 * d 2 + 1) 3
   , cminPlaceSize = DiceXY 4 4

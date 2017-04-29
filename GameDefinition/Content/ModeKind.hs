@@ -76,7 +76,7 @@ shootout = ModeKind  -- sparse ranged in daylight
   , mfreq   = [("shootout", 1), ("campaign scenario", 1)]
   , mroster = rosterShootout
   , mcaves  = cavesShootout
-  , mdesc   = "The fight crashes over to a nearby mechanized farm. Farm supplies, scattered around, just beg to be flung at foes. Intense light makes it easy to aim and also to discern trajectory of soaring items (point at projectiles with the crosshair in aiming mode)."
+  , mdesc   = "The fight crashes over to a nearby mechanized farm. Law enforcement, crippled by the ban on firearms, won't show up until only wounded and dying remain. Farm supplies, scattered around, just beg to be flung at foes as improvised missiles. Intense light makes it easy to aim and also to discern trajectory of soaring items (point at projectiles with the crosshair in aiming mode)."
   }
 
 escape = ModeKind  -- asymmetric ranged and stealth race at night
@@ -85,8 +85,8 @@ escape = ModeKind  -- asymmetric ranged and stealth race at night
   , mfreq   = [("escape", 1), ("campaign scenario", 1)]
   , mroster = rosterEscape
   , mcaves  = cavesEscape
-  , mdesc   = "Conveniently, on the path to the Triton's spaceport, passengers can relax in a shady park." -- "Dwelling into dark matters is dangerous. Avoid the crowd of firebrand disputants, catch any gems of thought, find a way out and bring back a larger team to shed new light on the field."
-  }
+  , mdesc   = "Bloodied spaceship deed in hand nonwithstanding, one can take possesion of the the spaceliner only via a shuttle from the Triton Spaceport across the city. After hours of being chased in the opposite direction, towards the border wall, you sneak back and make a desperate dash through the very HQ of the enemy. Any valuables you find will be a just compensation for their wrongdoing, but you need to reach the exit before they find you."
+  }n
 
 zoo = ModeKind  -- asymmetric crowd melee at night
   { msymbol = 'b'
@@ -94,7 +94,7 @@ zoo = ModeKind  -- asymmetric crowd melee at night
   , mfreq   = [("zoo", 1), ("campaign scenario", 1)]
   , mroster = rosterZoo
   , mcaves  = cavesZoo
-  , mdesc   = "The heat of the dispute reached the nearby Wonders of Science and Nature exhibition, igniting greenery, nets and cages. Crazed animals must be prevented from ruining precious scentific equipment and setting back the fruitful exchange of ideas."
+  , mdesc   = "As justified and satisfying as setting enemy lair on fire was, it backfired by plunging you in the mist of the public zoo engulfed in flames. Crazed animals mill around while the flames ignite greenery and consume nets and cages. Whether that's a good sign or bad: certainly nobody is willing to pursue you any more."
   }
 
 -- The tactic is to sneak in the dark, highlight enemy with thrown torches
