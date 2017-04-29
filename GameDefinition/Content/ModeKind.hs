@@ -234,7 +234,7 @@ rosterRaid, rosterBrawl, rosterShootout, rosterEscape, rosterZoo, rosterAmbush, 
 rosterRaid = Roster
   { rosterList = [ ( playerHero {fhiCondPoly = hiRaid}
                    , [(2, 1, "hero")] )
-                 , ( playerAntiHero { fname = "Red Collars"
+                 , ( playerAntiHero { fname = "Red Collar Bro"
                                     , fhiCondPoly = hiRaid }
                    , [(2, 1, "hero")] )
                  , ( playerAnimal  -- starting over escape
@@ -242,27 +242,27 @@ rosterRaid = Roster
                  , ( playerRobot
                    , [(2, 1, "robot")] )
                  , (playerHorror, []) ]  -- for summoned monsters
-  , rosterEnemy = [ ("Spacefarer Crew", "Animal Kingdom")
-                  , ("Spacefarer Crew", "Robot Anarchy")
-                  , ("Spacefarer Crew", "Horror Den")
-                  , ("Spacefarer Crew", "Red Collars")
-                  , ("Red Collars", "Animal Kingdom")
-                  , ("Red Collars", "Robot Anarchy")
-                  , ("Red Collars", "Horror Den") ]
+  , rosterEnemy = [ ("Spacefarer", "Animal Kingdom")
+                  , ("Spacefarer", "Robot Anarchy")
+                  , ("Spacefarer", "Horror Den")
+                  , ("Spacefarer", "Red Collar Bro")
+                  , ("Red Collar Bro", "Animal Kingdom")
+                  , ("Red Collar Bro", "Robot Anarchy")
+                  , ("Red Collar Bro", "Horror Den") ]
   , rosterAlly = [("Robot Anarchy", "Animal Kingdom")] }
 
 rosterBrawl = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
                                 , fhiCondPoly = hiDweller }
                    , [(3, 3, "hero")] )
-                 , ( playerAntiHero { fname = "Red Collars"
+                 , ( playerAntiHero { fname = "Red Collar Bro"
                                     , fcanEscape = False
                                     , fhiCondPoly = hiDweller }
                    , [(3, 3, "hero")] )
                  , (playerHorror, []) ]
-  , rosterEnemy = [ ("Spacefarer Crew", "Red Collars")
-                  , ("Spacefarer Crew", "Horror Den")
-                  , ("Red Collars", "Horror Den") ]
+  , rosterEnemy = [ ("Spacefarer", "Red Collar Bro")
+                  , ("Spacefarer", "Horror Den")
+                  , ("Red Collar Bro", "Horror Den") ]
   , rosterAlly = [] }
 
 -- Exactly one scout gets a sight boost, to help the aggressor, because he uses
@@ -273,28 +273,28 @@ rosterShootout = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
                                 , fhiCondPoly = hiDweller }
                    , [(5, 1, "scout hero"), (5, 2, "ranger hero")] )
-                 , ( playerAntiHero { fname = "Red Collars"
+                 , ( playerAntiHero { fname = "Red Collar Bro"
                                     , fcanEscape = False
                                     , fhiCondPoly = hiDweller }
                    , [(5, 1, "scout hero"), (5, 2, "ranger hero")] )
                  , (playerRobot, [])  -- neutral
                  , (playerHorror, []) ]
-  , rosterEnemy = [ ("Spacefarer Crew", "Red Collars")
-                  , ("Spacefarer Crew", "Horror Den")
-                  , ("Red Collars", "Horror Den") ]
+  , rosterEnemy = [ ("Spacefarer", "Red Collar Bro")
+                  , ("Spacefarer", "Horror Den")
+                  , ("Red Collar Bro", "Horror Den") ]
   , rosterAlly = [] }
 
 rosterEscape = Roster
   { rosterList = [ ( playerHero {fhiCondPoly = hiEscapist}
                    , [(7, 1, "scout hero"), (7, 2, "escapist hero")] )
-                 , ( playerAntiHero { fname = "Red Collars"
+                 , ( playerAntiHero { fname = "Red Collar Bro"
                                     , fcanEscape = False  -- start on escape
                                     , fhiCondPoly = hiDweller }
                    , [(7, 1, "scout hero"), (7, 7, "ambusher hero")] )
                  , (playerHorror, []) ]
-  , rosterEnemy = [ ("Spacefarer Crew", "Red Collars")
-                  , ("Spacefarer Crew", "Horror Den")
-                  , ("Red Collars", "Horror Den") ]
+  , rosterEnemy = [ ("Spacefarer", "Red Collar Bro")
+                  , ("Spacefarer", "Horror Den")
+                  , ("Red Collar Bro", "Horror Den") ]
   , rosterAlly = [] }
 
 rosterZoo = Roster
@@ -304,22 +304,22 @@ rosterZoo = Roster
                  , ( playerAnimal {fneverEmpty = True}
                    , [(8, 100, "mobile animal")] )
                  , (playerHorror, []) ]  -- for summoned monsters
-  , rosterEnemy = [ ("Spacefarer Crew", "Animal Kingdom")
-                  , ("Spacefarer Crew", "Horror Den") ]
+  , rosterEnemy = [ ("Spacefarer", "Animal Kingdom")
+                  , ("Spacefarer", "Horror Den") ]
   , rosterAlly = [] }
 
 rosterAmbush = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
                                 , fhiCondPoly = hiDweller }
                    , [(9, 1, "scout hero"), (9, 5, "ambusher hero")] )
-                 , ( playerAntiHero { fname = "Gray Off-world Mercenaries"
+                 , ( playerAntiHero { fname = "Gray Off-world Mercenary"
                                     , fcanEscape = False
                                     , fhiCondPoly = hiDweller }
                    , [(9, 1, "scout hero"), (9, 5, "ambusher hero")] )
                  , (playerHorror, []) ]
-  , rosterEnemy = [ ("Spacefarer Crew", "Gray Off-world Mercenaries")
-                  , ("Spacefarer Crew", "Horror Den")
-                  , ("Gray Off-world Mercenaries", "Horror Den") ]
+  , rosterEnemy = [ ("Spacefarer", "Gray Off-world Mercenary")
+                  , ("Spacefarer", "Horror Den")
+                  , ("Gray Off-world Mercenary", "Horror Den") ]
   , rosterAlly = [] }
 
 rosterExploration = Roster
@@ -334,9 +334,9 @@ rosterExploration = Roster
                      , (12, 100, "mobile animal") ] )
                  , ( playerRobot
                    , [(3, 2 + d 2, "robot")] ) ]  -- many, because no spawning
-  , rosterEnemy = [ ("Spacefarer Crew", "Alien Hierarchy")
-                  , ("Spacefarer Crew", "Animal Kingdom")
-                  , ("Spacefarer Crew", "Robot Anarchy") ]
+  , rosterEnemy = [ ("Spacefarer", "Alien Hierarchy")
+                  , ("Spacefarer", "Animal Kingdom")
+                  , ("Spacefarer", "Robot Anarchy") ]
   , rosterAlly = [ ("Alien Hierarchy", "Animal Kingdom")
                  , ("Alien Hierarchy", "Robot Anarchy")
                  , ("Robot Anarchy", "Animal Kingdom") ] }
@@ -351,7 +351,7 @@ rosterSafari = Roster
                    , [(7, 20, "mobile animal")] )
                  , ( playerAnimalExquisite  -- start on escape
                    , [(10, 30, "mobile animal")] ) ]
-  , rosterEnemy = [ ("Alien Tourist Office", "Hunam Convict Pack")
+  , rosterEnemy = [ ("Alien Tourist Office", "Hunam Convict")
                   , ( "Alien Tourist Office"
                     , "Animal Magnificent Specimen Variety" )
                   , ( "Alien Tourist Office"
@@ -359,8 +359,8 @@ rosterSafari = Roster
   , rosterAlly = [ ( "Animal Magnificent Specimen Variety"
                    , "Animal Exquisite Herds and Packs" )
                  , ( "Animal Magnificent Specimen Variety"
-                   , "Hunam Convict Pack" )
-                 , ( "Hunam Convict Pack"
+                   , "Hunam Convict" )
+                 , ( "Hunam Convict"
                    , "Animal Exquisite Herds and Packs" ) ] }
 
 rosterSafariSurvival = rosterSafari
@@ -387,9 +387,9 @@ rosterBattle = Roster
                    , [(5, 20, "mobile animal")] )
                  , ( playerRobot
                    , [(5, 15, "mobile robot")] ) ]
-  , rosterEnemy = [ ("Spacefarer Crew", "Alien Hierarchy")
-                  , ("Spacefarer Crew", "Animal Kingdom")
-                  , ("Spacefarer Crew", "Robot Anarchy") ]
+  , rosterEnemy = [ ("Spacefarer", "Alien Hierarchy")
+                  , ("Spacefarer", "Animal Kingdom")
+                  , ("Spacefarer", "Robot Anarchy") ]
   , rosterAlly = [ ("Alien Hierarchy", "Animal Kingdom")
                  , ("Alien Hierarchy", "Robot Anarchy")
                  , ("Robot Anarchy", "Animal Kingdom") ] }
