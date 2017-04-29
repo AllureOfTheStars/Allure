@@ -312,14 +312,14 @@ rosterAmbush = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
                                 , fhiCondPoly = hiDweller }
                    , [(9, 1, "scout hero"), (9, 5, "ambusher hero")] )
-                 , ( playerAntiHero { fname = "Red Collars"
+                 , ( playerAntiHero { fname = "Gray Off-world Mercenaries"
                                     , fcanEscape = False
                                     , fhiCondPoly = hiDweller }
                    , [(9, 1, "scout hero"), (9, 5, "ambusher hero")] )
                  , (playerHorror, []) ]
-  , rosterEnemy = [ ("Spacefarer Crew", "Red Collars")
+  , rosterEnemy = [ ("Spacefarer Crew", "Gray Off-world Mercenaries")
                   , ("Spacefarer Crew", "Horror Den")
-                  , ("Red Collars", "Horror Den") ]
+                  , ("Gray Off-world Mercenaries", "Horror Den") ]
   , rosterAlly = [] }
 
 rosterExploration = Roster
