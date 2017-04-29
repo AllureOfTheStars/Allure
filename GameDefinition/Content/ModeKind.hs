@@ -244,9 +244,10 @@ rosterRaid = Roster
                  , (playerHorror, []) ]  -- for summoned monsters
   , rosterEnemy = [ ("Spacefarer Crew", "Animal Kingdom")
                   , ("Spacefarer Crew", "Robot Anarchy")
+                  , ("Spacefarer Crew", "Horror Den")
+                  , ("Spacefarer Crew", "Red Collars")
                   , ("Red Collars", "Animal Kingdom")
                   , ("Red Collars", "Robot Anarchy")
-                  , ("Spacefarer Crew", "Horror Den")
                   , ("Red Collars", "Horror Den") ]
   , rosterAlly = [("Robot Anarchy", "Animal Kingdom")] }
 
