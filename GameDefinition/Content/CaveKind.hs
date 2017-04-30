@@ -390,7 +390,8 @@ battle = rogue  -- few lights and many solids, to help the less numerous heroes
   , couterFenceTile = "noise fence"  -- ensures no cut-off parts from collapsed
   }
 safari1 = escape
-  { cfreq = [("caveSafari1", 1)]
+  { cname = "Dark valley"
+  , cfreq = [("caveSafari1", 1)]
   , cescapeGroup = Nothing
   , cstairFreq = [("staircase outdoor", 1)]
   }
