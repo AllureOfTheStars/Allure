@@ -443,10 +443,14 @@ cavesExploration = IM.fromList $
   ++ [(2, "shallow random 2")]
   ++ [(3, "caveBridge")]
   ++ [(4, "caveNoise")]
-  ++ zip [5..9] (repeat "default random")
+  ++ [(5, "default random")]
+  ++ [(6, "default random")]
+  ++ [(7, "deep random")]
+  ++ [(8, "deep random")]
+  ++ [(9, "deep random")]
   ++ [(10, "caveEmptyExit")]
-  ++ [(11, "default random")]
-  ++ [(12, "caveNoise")]
+  ++ [(11, "deep random")]
+  ++ [(12, "caveNoise2")]
 
 cavesSafari = IM.fromList [ (4, "caveSafari1")
                           , (7, "caveSafari2")

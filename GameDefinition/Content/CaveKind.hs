@@ -27,14 +27,15 @@ cdefs = ContentDef
   , validateSingle = validateSingleCaveKind
   , validateAll = validateAllCaveKind
   , content = contentFromList
-      [rogue, arena, laboratory, empty, noise, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1arena, emptyExit, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3]
+      [rogue, rogue2, arena, arena2, laboratory, empty, noise, noise2, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1arena, emptyExit, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3]
   }
-rogue,        arena, laboratory, empty, noise, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1arena, emptyExit, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
+rogue,        rogue2, arena, arena2, laboratory, empty, noise, noise2, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1arena, emptyExit, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
 
 rogue = CaveKind
   { csymbol       = 'R'
   , cname         = "Storage area"
-  , cfreq         = [("default random", 100), ("caveRogue", 1)]
+  , cfreq         = [ ("default random", 100), ("deep random", 80)
+                    , ("caveRogue", 1) ]
   , cxsize        = fst normalLevelBound + 1
   , cysize        = snd normalLevelBound + 1
   , cgrid         = DiceXY (3 * d 2) 4
@@ -65,17 +66,23 @@ rogue = CaveKind
   , cescapeGroup    = Nothing
   , cstairFreq      = [("staircase lift", 100)]
   }
+rogue2 = rogue
+  { cfreq         = [("deep random", 20)]
+  , cdarkChance   = 51  -- all rooms dark
+  , cnightChance  = 0  -- always day
+  }
 arena = rogue
   { csymbol       = 'A'
   , cname         = "Recreational deck"
-  , cfreq         = [("default random", 40), ("caveArena", 1)]
+  , cfreq         = [ ("default random", 40), ("deep random", 30)
+                    , ("caveArena", 1) ]
   , cgrid         = DiceXY (2 * d 2) (d 3)
   , cminPlaceSize = DiceXY (2 * d 2 + 4) 6
   , cmaxPlaceSize = DiceXY 12 8
-  , cdarkChance   = d 100 - dl 50
-  -- Trails provide enough light for fun stealth. Light is not too deadly,
-  -- because not many obstructions, so foes visible from far away.
-  , cnightChance  = d 50 + dl 50
+  , cdarkChance   = 49 + d 10  -- almost all rooms dark (1 in 10 lit)
+  -- Light is not too deadly, because not many obstructions and so
+  -- foes visible from far away and few foes have ranged combat.
+  , cnightChance  = 0  -- always day
   , cextraStairs  = d 3
   , chidden       = 0
   , cactorCoeff   = 100
@@ -85,41 +92,45 @@ arena = rogue
   , cplaceFreq    = [("arena", 100)]
   , cpassable     = True
   , cdefTile      = "arenaSet"
-  , cdarkCorTile  = "trailLit"  -- let trails give off light
   , clitCorTile   = "trailLit"
   }
-laboratory = arena
+arena2 = arena
+  { cfreq         = [("deep random", 10)]
+  , cdarkChance   = 41 + d 10  -- almost all rooms lit (1 in 10 dark)
+  -- Trails provide enough light for fun stealth.
+  , cnightChance  = 51  -- always night
+  , cdarkCorTile  = "trailLit"  -- let trails give off light
+  }
+laboratory = arena2
   { csymbol       = 'L'
   , cname         = "Burnt laboratory"
-  , cfreq         = [("default random", 40), ("caveLaboratory", 1)]
+  , cfreq         = [("deep random", 20), ("caveLaboratory", 1)]
   , cgrid         = DiceXY (2 * d 2 + 7) 3
   , cminPlaceSize = DiceXY (3 * d 2 + 4) 5
-  , cdarkChance   = 51  -- always dark, burnt
-  , cnightChance  = 51  -- always night
+  , cdarkChance   = d 54 + dl 20  -- most rooms lit, to compensate for corridors
+  , cnightChance  = 0  -- always day
   , cauxConnects  = 1%10
   , cmaxVoid      = 1%10
   , cextraStairs  = d 2
   , cdoorChance   = 1
   , copenChance   = 1%2
   , chidden       = 7
-  , cactorCoeff   = 160  -- deadly enough due to unclear corridors
   , citemNum      = 5 * d 4  -- reward difficulty
   , citemFreq     = [("useful", 20), ("treasure", 30), ("any vial", 50)]
   , cplaceFreq    = [("laboratory", 100)]
   , cpassable     = False
   , cdefTile      = "fillerWall"
-  , cdarkCorTile  = "labTrailLit"
   , clitCorTile   = "labTrailLit"
   , cstairFreq    = [("staircase lift", 100)]
   }
 empty = rogue
   { csymbol       = 'E'
   , cname         = "Construction site"
-  , cfreq         = [("default random", 20), ("caveEmpty", 1)]
+  , cfreq         = [("deep random", 10), ("caveEmpty", 1)]
   , cgrid         = DiceXY 1 1
   , cminPlaceSize = DiceXY 12 12
   , cmaxPlaceSize = DiceXY 48 32  -- favour large rooms
-  , cdarkChance   = d 80 + dl 80
+  , cdarkChance   = d 100 + dl 100
   , cnightChance  = 0  -- always day
   , cauxConnects  = 3%2
   , cminStairDist = 30
@@ -144,10 +155,10 @@ noise = rogue
   , cgrid         = DiceXY (2 + d 3) 3
   , cminPlaceSize = DiceXY 10 6
   , cmaxPlaceSize = DiceXY 20 10
-  , cdarkChance   = 0  -- few rooms, so all lit
+  , cdarkChance   = 51
   -- Light is deadly, because nowhere to hide and pillars enable spawning
-  -- very close to heroes, so deep down light should be rare.
-  , cnightChance  = dl 300
+  -- very close to heroes.
+  , cnightChance  = 0  -- harder variant, but looks cheerful
   , cauxConnects  = 1%10
   , cmaxVoid      = 1%100
   , cextraStairs  = d 4
@@ -164,6 +175,13 @@ noise = rogue
   , clitCorTile   = "floorArenaLit"
   , cstairFreq    = [("gated staircase", 100)]
   }
+noise2 = noise
+  { cfreq         = [("caveNoise2", 1)]
+  , cdarkChance   = 0
+  -- Light is deadly, because nowhere to hide and pillars enable spawning
+  -- very close to heroes.
+  , cnightChance  = 51  -- easier variant, but looks sinister
+  }
 bridge = rogue
   { csymbol       = 'B'
   , cname         = "Captain's bridge"
@@ -173,25 +191,23 @@ bridge = rogue
   , cactorFreq    = []  -- safe, nothing spawns
   , citemNum      = 7 * d 4  -- lure them in with loot
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq rogue
-  , cescapeGroup  = Nothing
   }
 shallow2rogue = rogue
   { cfreq         = [("shallow random 2", 50)]
-  , cactorCoeff   = cactorCoeff rogue `div` 2
+  , cactorCoeff   = cactorCoeff rogue `div` 2  -- more difficult
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq rogue
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq rogue
   }
 shallow2arena = arena
   { cfreq         = [("shallow random 2", 100)]
-  , cnightChance  = 0  -- safe and easy
   , cactorCoeff   = cactorCoeff arena `div` 2
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq empty
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
   }
 shallow2empty = empty
-  { cfreq         = [("shallow random 2", 20)]
-  , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq empty
+  { cfreq         = [("shallow random 2", 10)]
   , cactorCoeff   = cactorCoeff empty `div` 2
+  , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq empty
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
   }
 shallow1arena = shallow2empty  -- TODO: replace some rooms with oriels?
@@ -209,13 +225,14 @@ shallow1arena = shallow2empty  -- TODO: replace some rooms with oriels?
   }
 emptyExit = empty
   { cfreq = [("caveEmptyExit", 1)]
+  , cdarkCorTile  = "trailLit"  -- flavour
   , cescapeGroup = Just "escape spaceship down"
   }
 raid = rogue
   { csymbol       = 'S'
   , cname         = "Triton City sewers"
   , cfreq         = [("caveRaid", 1)]
-  , cdarkChance   = 0
+  , cdarkChance   = 0  -- all rooms lit, for a gentle start
   , cmaxVoid      = 1%10
   , cactorCoeff   = 1000  -- deep level with no kit, so slow spawning
   , cactorFreq    = [("animal", 50), ("robot", 50)]
@@ -232,7 +249,7 @@ brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
   , cgrid         = DiceXY (2 * d 2 + 2) 3
   , cminPlaceSize = DiceXY 3 3
   , cmaxPlaceSize = DiceXY 7 5
-  , cdarkChance   = 100
+  , cdarkChance   = 51
   , cnightChance  = 0
   , cdoorChance   = 1
   , copenChance   = 0
@@ -258,7 +275,7 @@ shootout = rogue  -- a scenario with strong missiles;
   , cgrid         = DiceXY (d 2 + 7) 3
   , cminPlaceSize = DiceXY 3 3
   , cmaxPlaceSize = DiceXY 3 4
-  , cdarkChance   = 100
+  , cdarkChance   = 51
   , cnightChance  = 0
   , cdoorChance   = 1
   , copenChance   = 0
@@ -292,7 +309,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
                            (2 * d 2 + 6) 3   -- for now, to fit larger places
   , cminPlaceSize = DiceXY 3 3
   , cmaxPlaceSize = DiceXY 7 7  -- bias towards larger lamp areas
-  , cdarkChance   = 51  -- colonnade floors always dark
+  , cdarkChance   = 51  -- colonnade rooms should always be dark
   , cnightChance  = 51  -- always night
   , cauxConnects  = 3%2
   , cmaxVoid      = 1%20
@@ -349,7 +366,7 @@ ambush = rogue  -- a scenario with strong missiles;
                            (2 * d 2 + 6) 3   -- for now, to fit larger places
   , cminPlaceSize = DiceXY 3 3
   , cmaxPlaceSize = DiceXY 7 7  -- bias towards larger lamp areas
-  , cdarkChance   = 51  -- colonnade floors always dark
+  , cdarkChance   = 51  -- colonnade rooms should always be dark
   , cnightChance  = 51  -- always night
   , cauxConnects  = 3%2
   , cmaxVoid      = 1%20
