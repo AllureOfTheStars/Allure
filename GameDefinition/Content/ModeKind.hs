@@ -350,7 +350,8 @@ rosterSafari = Roster
                  , ( playerAnimalMagnificent
                    , [(7, 20, "mobile animal")] )
                  , ( playerAnimalExquisite  -- start on escape
-                   , [(10, 30, "mobile animal")] ) ]
+                   , [(10, 30, "mobile animal")] )
+                 , (playerHorror, []) ]  -- construction hooter; neutral
   , rosterEnemy = [ ("Alien Tourist Office", "Hunam Convict")
                   , ( "Alien Tourist Office"
                     , "Animal Magnificent Specimen Variety" )
@@ -375,7 +376,8 @@ rosterSafariSurvival = rosterSafari
                      , fhasUI = True }
                    , [(7, 20, "mobile animal")] )
                  , ( playerAnimalExquisite
-                   , [(10, 30, "mobile animal")] ) ] }
+                   , [(10, 30, "mobile animal")] )
+                 , (playerHorror, []) ] }
 
 rosterBattle = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
