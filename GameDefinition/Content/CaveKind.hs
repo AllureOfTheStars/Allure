@@ -27,13 +27,13 @@ cdefs = ContentDef
   , validateSingle = validateSingleCaveKind
   , validateAll = validateAllCaveKind
   , content = contentFromList
-      [rogue, rogue2, arena, arena2, laboratory, empty, noise, noise2, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1arena, emptyExit, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3]
+      [rogue, rogue2, arena, arena2, laboratory, empty, noise, noise2, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1empty, emptyExit, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3]
   }
-rogue,        rogue2, arena, arena2, laboratory, empty, noise, noise2, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1arena, emptyExit, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
+rogue,        rogue2, arena, arena2, laboratory, empty, noise, noise2, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1empty, emptyExit, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
 
 rogue = CaveKind
   { csymbol       = 'R'
-  , cname         = "Storage area"
+  , cname         = "Insulated storage area"
   , cfreq         = [ ("default random", 100), ("deep random", 80)
                     , ("caveRogue", 1) ]
   , cxsize        = fst normalLevelBound + 1
@@ -68,6 +68,7 @@ rogue = CaveKind
   }
 rogue2 = rogue
   { cfreq         = [("deep random", 20)]
+  , cname         = "Dark storage area"
   , cdarkChance   = 51  -- all rooms dark
   , cnightChance  = 0  -- always day
   }
@@ -76,13 +77,15 @@ arena = rogue
   , cname         = "Recreational deck"
   , cfreq         = [ ("default random", 40), ("deep random", 30)
                     , ("caveArena", 1) ]
-  , cgrid         = DiceXY (2 * d 2) (d 3)
+  , cgrid         = DiceXY (2 + d 2) (d 3)
   , cminPlaceSize = DiceXY (2 * d 2 + 4) 6
-  , cmaxPlaceSize = DiceXY 12 8
+  , cmaxPlaceSize = DiceXY 16 12
   , cdarkChance   = 49 + d 10  -- almost all rooms dark (1 in 10 lit)
   -- Light is not too deadly, because not many obstructions and so
   -- foes visible from far away and few foes have ranged combat.
   , cnightChance  = 0  -- always day
+  , cauxConnects  = 1
+  , cmaxVoid      = 1%8
   , cextraStairs  = d 3
   , chidden       = 0
   , cactorCoeff   = 100
@@ -103,7 +106,7 @@ arena2 = arena
   }
 laboratory = arena2
   { csymbol       = 'L'
-  , cname         = "Burnt laboratory"
+  , cname         = "Laboratory"
   , cfreq         = [("deep random", 20), ("caveLaboratory", 1)]
   , cgrid         = DiceXY (2 * d 2 + 7) 3
   , cminPlaceSize = DiceXY (3 * d 2 + 4) 5
@@ -134,6 +137,7 @@ empty = rogue
   , cnightChance  = 0  -- always day
   , cauxConnects  = 3%2
   , cminStairDist = 30
+  , cmaxVoid      = 0  -- too few rooms to have void and fog common anyway
   , cextraStairs  = d 2
   , cdoorChance   = 0
   , copenChance   = 0
@@ -150,7 +154,7 @@ empty = rogue
   }
 noise = rogue
   { csymbol       = 'N'
-  , cname         = "Machine rooms"
+  , cname         = "Flight hardware hub"
   , cfreq         = [("caveNoise", 1)]
   , cgrid         = DiceXY (2 + d 3) 3
   , cminPlaceSize = DiceXY 10 6
@@ -176,7 +180,8 @@ noise = rogue
   , cstairFreq    = [("gated staircase", 100)]
   }
 noise2 = noise
-  { cfreq         = [("caveNoise2", 1)]
+  { cname         = "Power distribution hub"
+  , cfreq         = [("caveNoise2", 1)]
   , cdarkChance   = 0
   -- Light is deadly, because nowhere to hide and pillars enable spawning
   -- very close to heroes.
@@ -210,9 +215,9 @@ shallow2empty = empty
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq empty
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
   }
-shallow1arena = shallow2empty  -- TODO: replace some rooms with oriels?
+shallow1empty = shallow2empty  -- TODO: replace some rooms with oriels?
   { cname         = "Outermost deck"
-  , cfreq         = [("shallow random 1", 100)]
+  , cfreq         = [("outermost", 100)]
   , cactorCoeff   = 20
   , cactorFreq    = [("animal", 8), ("robot", 2), ("immobile robot", 90)]
       -- The medbot faucets on lvl 1 act like HP resets. Needed to avoid
@@ -224,7 +229,8 @@ shallow1arena = shallow2empty  -- TODO: replace some rooms with oriels?
   , couterFenceTile = "oriels fence"
   }
 emptyExit = empty
-  { cfreq = [("caveEmptyExit", 1)]
+  { cname         = "Small craft service area"
+  , cfreq = [("caveEmptyExit", 1)]
   , cdarkCorTile  = "trailLit"  -- flavour
   , cescapeGroup = Just "escape spaceship down"
   }

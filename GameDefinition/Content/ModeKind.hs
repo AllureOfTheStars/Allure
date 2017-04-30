@@ -439,7 +439,7 @@ cavesZoo = IM.fromList [(8, "caveZoo")]
 cavesAmbush = IM.fromList [(9, "caveAmbush")]
 
 cavesExploration = IM.fromList $
-  [(1, "shallow random 1")]
+  [(1, "outermost")]
   ++ [(2, "shallow random 2")]
   ++ [(3, "caveBridge")]
   ++ [(4, "caveNoise")]

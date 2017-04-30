@@ -157,7 +157,7 @@ bush = TileKind
   , tfeature = [Clear]
   }
 bushDark = bush
-  { tfreq    = [("escapeSet", 30)]
+  { tfreq    = [("escapeSet", 30), ("arenaSet", 3)]
   , tcolor2  = BrBlack
   , tfeature = Dark : tfeature bush
   }
@@ -375,17 +375,18 @@ rubble = TileKind
                    -- we don't want multicolor trailLit corridors
       -- ("rubbleOrNot", 70)
       -- until we can sync change of tile and activation, it always takes 1 turn
-  , tcolor   = BrWhite
-  , tcolor2  = defFG
+  , tcolor   = BrYellow
+  , tcolor2  = Brown
   , talter   = 5
   , tfeature = [OpenTo "rubbleOrNot", Embed "rubble", Indistinct]
   }
 rubblePlace = TileKind
   { tsymbol  = '%'
   , tname    = "rubble"
-  , tfreq    = [("smokeClumpOver_f_Lit", 1), ("noiseSet", 5), ("zooSet", 100)]
-  , tcolor   = BrWhite
-  , tcolor2  = defFG
+  , tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("emptySet", 1), ("noiseSet", 5)
+               , ("zooSet", 100) ]
+  , tcolor   = BrYellow
+  , tcolor2  = Brown
   , talter   = 5
   , tfeature = [Spice, OpenTo "rubblePlaceOrNot", Embed "rubble", Indistinct]
       -- It's not explorable, due to not being walkable nor clear and due
@@ -404,7 +405,7 @@ floorCorridorLit = TileKind
   }
 floorArenaLit = floorCorridorLit
   { tfreq    = [ ("floorArenaLit", 1), ("rubblePlaceOrNot", 30)
-               , ("arenaSet", 1), ("emptySet", 97), ("zooSet", 1000) ]
+               , ("arenaSet", 97), ("emptySet", 94), ("zooSet", 1000) ]
   }
 floorNoiseLit = floorArenaLit
   { tname    = "oily floor"
@@ -416,7 +417,7 @@ floorDirtLit = floorArenaLit
                , ("ambushSet", 1000), ("escapeSet", 1000) ]
   }
 floorDirtSpiceLit = floorDirtLit
-  { tfreq    = [ ("treeShadeOver_s_Lit", 1), ("fogClumpOver_f_Lit", 1)
+  { tfreq    = [ ("treeShadeOver_s_Lit", 1), ("fogClumpOver_f_Lit", 40)
                , ("smokeClumpOver_f_Lit", 1), ("bushClumpOver_f_Lit", 1) ]
   , tfeature = Spice : tfeature floorDirtLit
   }
@@ -460,8 +461,8 @@ floorGreenLit = floorRedLit
 floorFog = TileKind
   { tsymbol  = ';'
   , tname    = "faint fog"
-  , tfreq    = [ ("lit fog", 1), ("emptySet", 3), ("shootoutSet", 20)
-               , ("fogClumpOver_f_Lit", 2) ]
+  , tfreq    = [ ("lit fog", 1), ("emptySet", 5), ("shootoutSet", 20)
+               , ("fogClumpOver_f_Lit", 60) ]
       -- lit fog is OK for shootout, because LOS is mutual, as opposed
       -- to dark fog, and so camper has little advantage, especially
       -- on big maps, where he doesn't know on which side of fog patch to hide

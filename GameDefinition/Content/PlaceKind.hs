@@ -286,19 +286,19 @@ fogClump = PlaceKind
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
-  , ptopLeft = [ "ff"
-               , "#f"
-               , "#f"
+  , ptopLeft = [ "f;"
+               , ";;"
+               , ";f"
                ]
-  , poverride = [('f', "fogClumpOver_f_Lit"), ('#', "lit fog")]
+  , poverride = [('f', "fogClumpOver_f_Lit"), (';', "lit fog")]
   }
 fogClump2 = fogClump
   { pfreq    = [("shootout", 400), ("empty", 2000)]
   , prarity  = [(1, 1)]
   , pcover   = CVerbatim
-  , ptopLeft = [ "XfX"
-               , "f#f"
-               , "f#f"
+  , ptopLeft = [ "Xff"
+               , "f;f"
+               , ";;f"
                , "XfX"
                ]
   }
@@ -309,12 +309,12 @@ smokeClumpFGround = PlaceKind
   , prarity  = [(1, 1)]
   , pcover   = CVerbatim
   , pfence   = FGround
-  , ptopLeft = [ "#f#"
+  , ptopLeft = [ ";f;"
                , "f·f"
-               , "f·f"
-               , "#f#"
+               , ";·f"
+               , ";f;"
                ]
-  , poverride = [ ('f', "smokeClumpOver_f_Lit"), ('#', "lit smoke")
+  , poverride = [ ('f', "smokeClumpOver_f_Lit"), (';', "lit smoke")
                 , ('·', "floorActorLit") ]
   }
 bushClump = PlaceKind
@@ -324,11 +324,11 @@ bushClump = PlaceKind
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
-  , ptopLeft = [ "ff"
-               , "#f"
-               , "#f"
+  , ptopLeft = [ "f;"
+               , ";;"
+               , ";f"
                ]
-  , poverride = [('f', "bushClumpOver_f_Lit"), ('#', "lit bush")]
+  , poverride = [('f', "bushClumpOver_f_Lit"), (';', "lit bush")]
   }
 staircase = PlaceKind
   { psymbol  = '|'
@@ -662,7 +662,7 @@ maze = PlaceKind
   , poverride = [('&', "cachable")]
   }
 maze2 = maze
-  { pfreq    = [("rogue", 50), ("arena", 50), ("empty", 50)]
+  { pfreq    = [("rogue", 40), ("arena", 40), ("empty", 40)]
   , ptopLeft = [ "··####"
                , "##·##·"
                , "#·#··#"
@@ -706,7 +706,8 @@ mazeBig3 = mazeBig
 cells = PlaceKind
   { psymbol  = '#'
   , pname    = "cells"
-  , pfreq    = [("rogue", 50), ("arena", 50), ("empty", 50), ("noise", 50)]
+  , pfreq    = [ ("rogue", 50), ("arena", 50), (" laboratory", 50)
+               , ("empty", 50), ("noise", 50) ]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CReflect
   , pfence   = FWall
@@ -741,13 +742,15 @@ cells5 = cells
                ]
   }
 cells6 = cells
-  { pfreq    = [("rogue", 1), ("arena", 2), ("empty", 10), ("noise", 1)]
+  { pfreq    = [ ("rogue", 1), ("arena", 2), ("laboratory", 2)
+               , ("empty", 2), ("noise", 1) ]
   , ptopLeft = [ "··#"
                , "##·"
                ]
   }
 cells7 = cells
-  { pfreq    = [("rogue", 1), ("arena", 2), ("empty", 10), ("noise", 1)]
+  { pfreq    = [ ("rogue", 1), ("arena", 2), (" laboratory", 2)
+               , ("empty", 2), ("noise", 1) ]
   , pfence   = FFloor
   , ptopLeft = [ "#·#"
                , "·#·"
