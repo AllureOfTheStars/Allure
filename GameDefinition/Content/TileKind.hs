@@ -40,9 +40,9 @@ ldarkColorable = [floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, 
 -- Symbols to be used:
 --         LOS    noLOS
 -- Walk    .'     :;
--- noWalk  &^     #O%<>+
+-- noWalk  %^     #O&<>+
 --
--- can be opened ^%+
+-- can be opened ^&+
 -- can be closed '
 -- some noWalk can be changed without opening, regardless of symbol
 -- not used yet:
@@ -96,7 +96,7 @@ pillarIce = TileKind
       -- get each ice pillar into sight range when exploring level.
   }
 pulpit = TileKind
-  { tsymbol  = 'O'
+  { tsymbol  = '%'
   , tname    = "VR harness"
   , tfreq    = [("pulpit", 1), ("zooSet", 2)]
   , tcolor   = BrBlue
@@ -147,7 +147,7 @@ signboardRead = TileKind  -- after first use revealed to be this one
   , tfeature = [Embed "signboard", HideAs "signboard unread", Indistinct]
   }
 bush = TileKind
-  { tsymbol  = '&'
+  { tsymbol  = '%'
   , tname    = "bush"
   , tfreq    = [ ("lit bush", 1), ("shootoutSet", 30)
                , ("bushClumpOver_f_Lit", 1) ]
@@ -221,7 +221,7 @@ wall = TileKind
   , tfeature = [BuildAs "suspect wall", Indistinct]
   }
 wallGlass = TileKind
-  { tsymbol  = '#'
+  { tsymbol  = '%'
   , tname    = "transparent polymer wall"
   , tfreq    = [("wallGlass", 1), ("rectWindowsOver_%_Lit", 20)]
   , tcolor   = BrBlue
@@ -368,7 +368,7 @@ escapeOutdoorDown = escapeDown
   , tfreq    = [("escape outdoor down", 1)]
   }
 rubble = TileKind
-  { tsymbol  = '%'
+  { tsymbol  = '&'
   , tname    = "rubble"
   , tfreq    = []  -- [("floorCorridorLit", 1)]
                    -- disabled while it's all or nothing per cave and per room;
@@ -382,7 +382,7 @@ rubble = TileKind
   , tfeature = [OpenTo "rubbleOrNot", Embed "rubble", Indistinct]
   }
 rubblePlace = TileKind
-  { tsymbol  = '%'
+  { tsymbol  = '&'
   , tname    = "rubble"
   , tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("emptySet", 1), ("noiseSet", 10)
                , ("zooSet", 100), ("ambushSet", 20) ]
@@ -498,7 +498,7 @@ floorSmokeDark = floorSmoke
 -- * Allure-specific
 
 oriel = TileKind
-  { tsymbol  = '&'  -- story-wise it's transparent, hence the symbol
+  { tsymbol  = '%'  -- story-wise it's transparent, hence the symbol
   , tname    = "oriel"
   , tfreq    = [("oriels fence", 4)]
   , tcolor   = White
