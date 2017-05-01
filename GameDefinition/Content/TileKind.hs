@@ -27,12 +27,12 @@ cdefs = ContentDef
   , validateSingle = validateSingleTileKind
   , validateAll = validateAllTileKind
   , content = contentFromList $
-      [unknown, hardRock, pillar, pillarIce, pulpit, pillarCache, lampPost, signboardUnread, signboardRead, bush, bushDark, bushBurnt, bushBurning, tree, treeDark, treeBurnt, treeBurning, wall, wallGlass, wallGlassSpice, wallSuspect, wallObscured, doorTrapped, doorClosed, doorOpen, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, rubble, rubblePlace, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorDirtSpiceLit, floorArenaShade, floorActorLit, floorItemLit, floorActorItemLit, floorRedLit, floorBlueLit, floorGreenLit, floorFog, floorFogDark, floorSmoke, floorSmokeDark]
+      [unknown, hardRock, wall, wallSuspect, wallObscured, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeDark, treeBurnt, treeBurning, rubble, rubblePlace, doorTrapped, doorClosed, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushDark, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorDirtSpiceLit, floorArenaShade, floorActorLit, floorItemLit, floorActorItemLit, floorRedLit, floorBlueLit, floorGreenLit ]
       ++ map makeDarkColor ldarkColorable
-      ++ [oriel, rock, outerHullWall, doorlessWall, wallObscuredDefaced, wallObscuredFrescoed, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown]
+      ++ [oriel, outerHullWall, doorlessWall, wallObscuredDefaced, wallObscuredFrescoed, rock, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown]
   }
-unknown,        hardRock, pillar, pillarIce, pulpit, pillarCache, lampPost, signboardUnread, signboardRead, bush, bushDark, bushBurnt, bushBurning, tree, treeDark, treeBurnt, treeBurning, wall, wallGlass, wallGlassSpice, wallSuspect, wallObscured, doorTrapped, doorClosed, doorOpen, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, rubble, rubblePlace, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorDirtSpiceLit, floorArenaShade, floorActorLit, floorItemLit, floorActorItemLit, floorRedLit, floorBlueLit, floorGreenLit, floorFog, floorFogDark, floorSmoke, floorSmokeDark :: TileKind
-oriel, rock, outerHullWall, doorlessWall, wallObscuredDefaced, wallObscuredFrescoed, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown :: TileKind
+unknown,        hardRock, wall, wallSuspect, wallObscured, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeDark, treeBurnt, treeBurning, rubble, rubblePlace, doorTrapped, doorClosed, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushDark, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorDirtSpiceLit, floorArenaShade, floorActorLit, floorItemLit, floorActorItemLit, floorRedLit, floorBlueLit, floorGreenLit :: TileKind
+oriel, outerHullWall, doorlessWall, wallObscuredDefaced, wallObscuredFrescoed, rock, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown :: TileKind
 
 ldarkColorable :: [TileKind]
 ldarkColorable = [floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorActorLit, floorItemLit, floorActorItemLit]
@@ -56,6 +56,12 @@ ldarkColorable = [floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, 
 -- If a tile is supposed to be repeatedly activated by AI (e.g., cache),
 -- it should keep @ChangeTo@ for the whole time.
 
+-- * Main tiles, modified for Allure; some removed
+
+-- ** Not walkable
+
+-- *** Not clear
+
 unknown = TileKind  -- needs to have index 0 and alter 1
   { tsymbol  = ' '
   , tname    = "unknown space"
@@ -74,6 +80,41 @@ hardRock = TileKind
   , talter   = maxBound  -- impenetrable
   , tfeature = []
   }
+wall = TileKind
+  { tsymbol  = '#'
+  , tname    = "wall"
+  , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
+               , ("cachable", 70), ("stair terminal", 100)
+               , ("noiseSet", 95), ("battleSet", 250)
+               , ("rectWindowsOver_%_Lit", 80) ]
+  , tcolor   = BrWhite
+  , tcolor2  = defFG
+  , talter   = 100
+  , tfeature = [BuildAs "suspect wall", Indistinct]
+  }
+wallSuspect = TileKind  -- only on client
+  { tsymbol  = '#'
+  , tname    = "suspect uneven wall"
+  , tfreq    = [("suspect wall", 1)]
+  , tcolor   = BrWhite
+  , tcolor2  = defFG
+  , talter   = 2
+  , tfeature = [ RevealAs "trapped door"
+               , ObscureAs "obscured wall"
+               , Indistinct ]
+  }
+wallObscured = TileKind
+  { tsymbol  = '#'
+  , tname    = "scratched wall"
+  , tfreq    = [("obscured wall", 100)]
+  , tcolor   = BrWhite
+  , tcolor2  = defFG
+  , talter   = 5
+  , tfeature = [ Embed "scratch on wall"
+               , HideAs "suspect wall"
+               , Indistinct
+               ]
+  }
 pillar = TileKind
   { tsymbol  = 'O'
   , tname    = "pillar"
@@ -82,28 +123,6 @@ pillar = TileKind
   , tcolor2  = Cyan
   , talter   = 100
   , tfeature = [Indistinct]
-  }
-pillarIce = TileKind
-  { tsymbol  = '^'
-  , tname    = "ice"
-  , tfreq    = [("brawlSet", 20), ("ice", 1)]
-  , tcolor   = BrBlue
-  , tcolor2  = Blue
-  , talter   = 5
-  , tfeature = [Clear, Embed "frost", OpenTo "damp stone floor"]
-      -- Is door, due to @OpenTo@, so is not explorable, but it's OK, because
-      -- it doesn't generate items nor clues. This saves on the need to
-      -- get each ice pillar into sight range when exploring level.
-  }
-pulpit = TileKind
-  { tsymbol  = '%'
-  , tname    = "VR harness"
-  , tfreq    = [("pulpit", 1), ("zooSet", 2)]
-  , tcolor   = BrBlue
-  , tcolor2  = Blue
-  , talter   = 5
-  , tfeature = [Clear, Embed "pulpit", Indistinct]
-                 -- mixed blessing, so AI ignores, saved for player fun
   }
 pillarCache = TileKind
   { tsymbol  = 'O'
@@ -146,36 +165,6 @@ signboardRead = TileKind  -- after first use revealed to be this one
   , talter   = 5
   , tfeature = [Embed "signboard", HideAs "signboard unread", Indistinct]
   }
-bush = TileKind
-  { tsymbol  = '%'
-  , tname    = "bush"
-  , tfreq    = [ ("lit bush", 1), ("shootoutSet", 30)
-               , ("bushClumpOver_f_Lit", 1) ]
-  , tcolor   = BrGreen
-  , tcolor2  = Green
-  , talter   = 10
-  , tfeature = [Clear]
-  }
-bushDark = bush
-  { tfreq    = [("escapeSet", 30), ("arenaSet", 3)]
-  , tcolor2  = BrBlack
-  , tfeature = Dark : tfeature bush
-  }
-bushBurnt = bush
-  { tname    = "burnt bush"
-  , tfreq    = [("battleSet", 30), ("bush with fire", 70)]
-  , tcolor   = BrBlack
-  , tcolor2  = BrBlack
-  , tfeature = Dark : tfeature bush
-  }
-bushBurning = bush
-  { tname    = "burning bush"
-  , tfreq    = [("ambushSet", 40), ("zooSet", 300), ("bush with fire", 30)]
-  , tcolor   = BrRed
-  , tcolor2  = Red
-  , talter   = 5
-  , tfeature = Embed "small fire" : ChangeTo "bush with fire" : tfeature bush
-  }
 tree = TileKind
   { tsymbol  = 'O'
   , tname    = "tree"
@@ -208,53 +197,33 @@ treeBurning = tree
       -- dousing off the tree will have more sense when it periodically
       -- explodes, hitting and lighting up the team and so betraying it
   }
-wall = TileKind
-  { tsymbol  = '#'
-  , tname    = "wall"
-  , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
-               , ("cachable", 70), ("stair terminal", 100)
-               , ("noiseSet", 95), ("battleSet", 250)
-               , ("rectWindowsOver_%_Lit", 80) ]
-  , tcolor   = BrWhite
-  , tcolor2  = defFG
-  , talter   = 100
-  , tfeature = [BuildAs "suspect wall", Indistinct]
-  }
-wallGlass = TileKind
-  { tsymbol  = '%'
-  , tname    = "transparent polymer wall"
-  , tfreq    = [("wallGlass", 1), ("rectWindowsOver_%_Lit", 20)]
-  , tcolor   = BrBlue
-  , tcolor2  = Blue
-  , talter   = 10
-  , tfeature = [BuildAs "suspect wall", Clear]
-  }
-wallGlassSpice = wallGlass
-  { tfreq    = [("rectWindowsOver_%_Lit", 20)]
-  , tfeature = Spice : tfeature wallGlass
-  }
-wallSuspect = TileKind  -- only on client
-  { tsymbol  = '#'
-  , tname    = "suspect uneven wall"
-  , tfreq    = [("suspect wall", 1)]
-  , tcolor   = BrWhite
-  , tcolor2  = defFG
-  , talter   = 2
-  , tfeature = [ RevealAs "trapped door"
-               , ObscureAs "obscured wall"
-               , Indistinct ]
-  }
-wallObscured = TileKind
-  { tsymbol  = '#'
-  , tname    = "scratched wall"
-  , tfreq    = [("obscured wall", 100)]
-  , tcolor   = BrWhite
-  , tcolor2  = defFG
+rubble = TileKind
+  { tsymbol  = '&'
+  , tname    = "rubble"
+  , tfreq    = []  -- [("floorCorridorLit", 1)]
+                   -- disabled while it's all or nothing per cave and per room;
+                   -- we need a new mechanism, Spice is not enough, because
+                   -- we don't want multicolor trailLit corridors
+      -- ("rubbleOrNot", 70)
+      -- until we can sync change of tile and activation, it always takes 1 turn
+  , tcolor   = BrYellow
+  , tcolor2  = Brown
   , talter   = 5
-  , tfeature = [ Embed "scratch on wall"
-               , HideAs "suspect wall"
-               , Indistinct
-               ]
+  , tfeature = [OpenTo "rubbleOrNot", Embed "rubble", Indistinct]
+  }
+rubblePlace = TileKind
+  { tsymbol  = '&'
+  , tname    = "rubble"
+  , tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("emptySet", 1), ("noiseSet", 10)
+               , ("zooSet", 100), ("ambushSet", 20) ]
+  , tcolor   = BrYellow
+  , tcolor2  = Brown
+  , talter   = 5
+  , tfeature = [Spice, OpenTo "rubblePlaceOrNot", Embed "rubble", Indistinct]
+      -- It's not explorable, due to not being walkable nor clear and due
+      -- to being a door (@OpenTo@), which is kind of OK, because getting
+      -- the item is risky and, e.g., AI doesn't attempt it.
+      -- Also, AI doesn't go out of its way to clear the way for heroes.
   }
 doorTrapped = TileKind
   { tsymbol  = '+'
@@ -276,17 +245,6 @@ doorClosed = TileKind
   , tcolor2  = BrBlack
   , talter   = 2
   , tfeature = [OpenTo "open door"]  -- never hidden
-  }
-doorOpen = TileKind
-  { tsymbol  = '\''
-  , tname    = "open door"
-  , tfreq    = [("legendLit", 100), ("legendDark", 100), ("open door", 1)]
-  , tcolor   = Brown
-  , tcolor2  = BrBlack
-  , talter   = 4
-  , tfeature = [ Walkable, Clear, NoItem, NoActor
-               , CloseTo "closed door"
-               ]
   }
 stairsUp = TileKind
   { tsymbol  = '<'
@@ -367,33 +325,127 @@ escapeOutdoorDown = escapeDown
   { tname    = "exit back to town"
   , tfreq    = [("escape outdoor down", 1)]
   }
-rubble = TileKind
-  { tsymbol  = '&'
-  , tname    = "rubble"
-  , tfreq    = []  -- [("floorCorridorLit", 1)]
-                   -- disabled while it's all or nothing per cave and per room;
-                   -- we need a new mechanism, Spice is not enough, because
-                   -- we don't want multicolor trailLit corridors
-      -- ("rubbleOrNot", 70)
-      -- until we can sync change of tile and activation, it always takes 1 turn
-  , tcolor   = BrYellow
-  , tcolor2  = Brown
-  , talter   = 5
-  , tfeature = [OpenTo "rubbleOrNot", Embed "rubble", Indistinct]
+
+-- *** Clear
+
+wallGlass = TileKind
+  { tsymbol  = '%'
+  , tname    = "transparent polymer wall"
+  , tfreq    = [("wallGlass", 1), ("rectWindowsOver_%_Lit", 20)]
+  , tcolor   = BrBlue
+  , tcolor2  = Blue
+  , talter   = 10
+  , tfeature = [BuildAs "suspect wall", Clear]
   }
-rubblePlace = TileKind
-  { tsymbol  = '&'
-  , tname    = "rubble"
-  , tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("emptySet", 1), ("noiseSet", 10)
-               , ("zooSet", 100), ("ambushSet", 20) ]
-  , tcolor   = BrYellow
-  , tcolor2  = Brown
+wallGlassSpice = wallGlass
+  { tfreq    = [("rectWindowsOver_%_Lit", 20)]
+  , tfeature = Spice : tfeature wallGlass
+  }
+pillarIce = TileKind
+  { tsymbol  = '^'
+  , tname    = "ice"
+  , tfreq    = [("brawlSet", 20), ("ice", 1)]
+  , tcolor   = BrBlue
+  , tcolor2  = Blue
   , talter   = 5
-  , tfeature = [Spice, OpenTo "rubblePlaceOrNot", Embed "rubble", Indistinct]
-      -- It's not explorable, due to not being walkable nor clear and due
-      -- to being a door (@OpenTo@), which is kind of OK, because getting
-      -- the item is risky and, e.g., AI doesn't attempt it.
-      -- Also, AI doesn't go out of its way to clear the way for heroes.
+  , tfeature = [Clear, Embed "frost", OpenTo "damp stone floor"]
+      -- Is door, due to @OpenTo@, so is not explorable, but it's OK, because
+      -- it doesn't generate items nor clues. This saves on the need to
+      -- get each ice pillar into sight range when exploring level.
+  }
+pulpit = TileKind
+  { tsymbol  = '%'
+  , tname    = "VR harness"
+  , tfreq    = [("pulpit", 1), ("zooSet", 2)]
+  , tcolor   = BrBlue
+  , tcolor2  = Blue
+  , talter   = 5
+  , tfeature = [Clear, Embed "pulpit", Indistinct]
+                 -- mixed blessing, so AI ignores, saved for player fun
+  }
+bush = TileKind
+  { tsymbol  = '%'
+  , tname    = "bush"
+  , tfreq    = [ ("lit bush", 1), ("shootoutSet", 30)
+               , ("bushClumpOver_f_Lit", 1) ]
+  , tcolor   = BrGreen
+  , tcolor2  = Green
+  , talter   = 10
+  , tfeature = [Clear]
+  }
+bushDark = bush
+  { tfreq    = [("escapeSet", 30), ("arenaSet", 3)]
+  , tcolor2  = BrBlack
+  , tfeature = Dark : tfeature bush
+  }
+bushBurnt = bush
+  { tname    = "burnt bush"
+  , tfreq    = [("battleSet", 30), ("bush with fire", 70)]
+  , tcolor   = BrBlack
+  , tcolor2  = BrBlack
+  , tfeature = Dark : tfeature bush
+  }
+bushBurning = bush
+  { tname    = "burning bush"
+  , tfreq    = [("ambushSet", 40), ("zooSet", 300), ("bush with fire", 30)]
+  , tcolor   = BrRed
+  , tcolor2  = Red
+  , talter   = 5
+  , tfeature = Embed "small fire" : ChangeTo "bush with fire" : tfeature bush
+  }
+
+-- ** Walkable
+
+-- *** Not clear
+
+floorFog = TileKind
+  { tsymbol  = ';'
+  , tname    = "faint fog"
+  , tfreq    = [ ("lit fog", 1), ("emptySet", 5), ("shootoutSet", 20)
+               , ("fogClumpOver_f_Lit", 60) ]
+      -- lit fog is OK for shootout, because LOS is mutual, as opposed
+      -- to dark fog, and so camper has little advantage, especially
+      -- on big maps, where he doesn't know on which side of fog patch to hide
+  , tcolor   = BrCyan
+  , tcolor2  = Cyan
+  , talter   = 0
+  , tfeature = [Walkable, NoItem, Indistinct, OftenActor]
+  }
+floorFogDark = floorFog
+  { tname    = "thick fog"
+  , tfreq    = [("noiseSet", 10), ("escapeSet", 60)]
+  , tfeature = Dark : tfeature floorFog
+  }
+floorSmoke = TileKind
+  { tsymbol  = ';'
+  , tname    = "billowing smoke"
+  , tfreq    = [ ("lit smoke", 1)
+               , ("ambushSet", 30), ("zooSet", 30), ("battleSet", 5)
+               , ("labTrailLit", 1), ("stair terminal", 2)
+               , ("smokeClumpOver_f_Lit", 1) ]
+  , tcolor   = Brown
+  , tcolor2  = BrBlack
+  , talter   = 0
+  , tfeature = [Walkable, NoItem, Indistinct]  -- not dark, embers
+  }
+floorSmokeDark = floorSmoke
+  { tname    = "lingering smoke"
+  , tfreq    = [("ambushSet", 30)]
+  , tfeature = Dark : tfeature floorSmoke
+  }
+
+-- *** Clear
+
+doorOpen = TileKind
+  { tsymbol  = '\''
+  , tname    = "open door"
+  , tfreq    = [("legendLit", 100), ("legendDark", 100), ("open door", 1)]
+  , tcolor   = Brown
+  , tcolor2  = BrBlack
+  , talter   = 4
+  , tfeature = [ Walkable, Clear, NoItem, NoActor
+               , CloseTo "closed door"
+               ]
   }
 floorCorridorLit = TileKind
   { tsymbol  = floorSymbol
@@ -459,43 +511,10 @@ floorGreenLit = floorRedLit
   , tcolor   = BrGreen
   , tcolor2  = Green
   }
-floorFog = TileKind
-  { tsymbol  = ';'
-  , tname    = "faint fog"
-  , tfreq    = [ ("lit fog", 1), ("emptySet", 5), ("shootoutSet", 20)
-               , ("fogClumpOver_f_Lit", 60) ]
-      -- lit fog is OK for shootout, because LOS is mutual, as opposed
-      -- to dark fog, and so camper has little advantage, especially
-      -- on big maps, where he doesn't know on which side of fog patch to hide
-  , tcolor   = BrCyan
-  , tcolor2  = Cyan
-  , talter   = 0
-  , tfeature = [Walkable, NoItem, Indistinct, OftenActor]
-  }
-floorFogDark = floorFog
-  { tname    = "thick fog"
-  , tfreq    = [("noiseSet", 10), ("escapeSet", 60)]
-  , tfeature = Dark : tfeature floorFog
-  }
-floorSmoke = TileKind
-  { tsymbol  = ';'
-  , tname    = "billowing smoke"
-  , tfreq    = [ ("lit smoke", 1)
-               , ("ambushSet", 30), ("zooSet", 30), ("battleSet", 5)
-               , ("labTrailLit", 1), ("stair terminal", 2)
-               , ("smokeClumpOver_f_Lit", 1) ]
-  , tcolor   = Brown
-  , tcolor2  = BrBlack
-  , talter   = 0
-  , tfeature = [Walkable, NoItem, Indistinct]  -- not dark, embers
-  }
-floorSmokeDark = floorSmoke
-  { tname    = "lingering smoke"
-  , tfreq    = [("ambushSet", 30)]
-  , tfeature = Dark : tfeature floorSmoke
-  }
 
 -- * Allure-specific
+
+-- ** Not walkable
 
 oriel = TileKind
   { tsymbol  = '%'  -- story-wise it's transparent, hence the symbol
@@ -505,10 +524,6 @@ oriel = TileKind
   , tcolor2  = Black
   , talter   = maxBound  -- impenetrable
   , tfeature = [Dark]
-  }
-rock = pillar
-  { tname    = "rock"
-  , tfreq    = [("brawlSet", 30), ("arenaSet", 1)]
   }
 outerHullWall = hardRock
   { tname    = "outer hull wall"
@@ -547,6 +562,10 @@ wallObscuredFrescoed = TileKind
                , Indistinct
                ]
   }
+rock = pillar
+  { tname    = "rock"
+  , tfreq    = [("brawlSet", 30), ("arenaSet", 1)]
+  }
 stairsLiftUp = stairsUp
   { tname    = "lift up"
   , tfreq    = [("staircase lift up", 1)]
@@ -559,6 +578,10 @@ escapeSpaceshipDown = escapeDown
   { tname    = "airlock to the shuttle"
   , tfreq    = [("escape spaceship down", 1)]
   }
+
+-- ** Walkable
+
+-- none
 
 -- * Helper functions
 
