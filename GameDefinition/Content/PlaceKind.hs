@@ -50,7 +50,7 @@ rect = PlaceKind  -- Valid for any nonempty area, hence low frequency.
 rectWindows = PlaceKind
   { psymbol  = 'w'
   , pname    = "room"
-  , pfreq    = [("empty", 10), ("escape", 7)]
+  , pfreq    = [("empty", 10), ("park", 7)]
   , prarity  = [(1, 10), (10, 8)]
   , pcover   = CStretch
   , pfence   = FNone
@@ -74,7 +74,7 @@ glasshouse = PlaceKind
 pulpit = PlaceKind
   { psymbol  = 'p'
   , pname    = "pulpit"
-  , pfreq    = [("arena", 5), ("zoo", 30)]
+  , pfreq    = [("arena", 10), ("zoo", 30)]
   , prarity  = [(1, 10), (10, 8)]
   , pcover   = CMirror
   , pfence   = FGround
@@ -148,7 +148,7 @@ pillar = PlaceKind
   { psymbol  = 'p'
   , pname    = "pillar room"
   , pfreq    = [ ("rogue", 500), ("arena", 1000), ("laboratory", 1000)
-               , ("empty", 1000) , ("noise", 1000) ]
+               , ("empty", 700) , ("noise", 1000) ]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -168,7 +168,7 @@ pillar2 = pillar
                ]
   }
 pillar3 = pillar
-  { prarity  = [(10, 3)]
+  { prarity  = [(10, 5)]
   , ptopLeft = [ "&·#·"
                , "··#·"
                , "##··"
@@ -176,7 +176,7 @@ pillar3 = pillar
                ]
   }
 pillar4 = pillar
-  { prarity  = [(10, 3)]
+  { prarity  = [(10, 5)]
   , ptopLeft = [ "&#··"
                , "#·#·"
                , "·##·"
@@ -186,8 +186,8 @@ pillar4 = pillar
 colonnade = PlaceKind
   { psymbol  = 'c'
   , pname    = "colonnade"
-  , pfreq    = [ ("rogue", 30), ("arena", 70), ("laboratory", 70)
-               , ("empty", 70), ("noise", 4000), ("escape", 3000) ]
+  , pfreq    = [ ("rogue", 30), ("arena", 70), ("laboratory", 40)
+               , ("empty", 100), ("noise", 4000), ("park", 3000) ]
   , prarity  = [(1, 3), (10, 3)]
   , pcover   = CAlternate
   , pfence   = FFloor
@@ -231,7 +231,7 @@ colonnade6 = colonnade
 lampPost = PlaceKind
   { psymbol  = 'l'
   , pname    = "lamp post"
-  , pfreq    = [("escape", 20), ("ambush", 20), ("zoo", 10), ("battle", 10)]
+  , pfreq    = [("park", 20), ("ambush", 20), ("zoo", 10), ("battle", 10)]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CVerbatim
   , pfence   = FNone
@@ -248,7 +248,7 @@ lampPost2 = lampPost
                ]
   }
 lampPost3 = lampPost
-  { pfreq    = [("escape", 3000), ("zoo", 50), ("battle", 110)]
+  { pfreq    = [("park", 3000), ("zoo", 50), ("battle", 110)]
   , ptopLeft = [ "XX·XX"
                , "X···X"
                , "··O··"
@@ -257,7 +257,7 @@ lampPost3 = lampPost
                ]
   }
 lampPost4 = lampPost
-  { pfreq    = [("escape", 3000), ("zoo", 50), ("battle", 60)]
+  { pfreq    = [("park", 3000), ("zoo", 50), ("battle", 60)]
   , ptopLeft = [ "X···X"
                , "·····"
                , "··O··"
@@ -295,7 +295,8 @@ fogClump = PlaceKind
 fogClump2 = fogClump
   { pfreq    = [("shootout", 400), ("empty", 2000)]
   , prarity  = [(1, 1)]
-  , pcover   = CVerbatim
+  , pcover   = CMirror
+  , pfence   = FNone
   , ptopLeft = [ "Xff"
                , "f;f"
                , ";;f"
@@ -319,7 +320,7 @@ smokeClump = PlaceKind
 smokeClump2FGround = smokeClump
   { pfreq    = [("laboratory", 100), ("zoo", 1000), ("ambush", 1000)]
   , prarity  = [(1, 1)]
-  , pcover   = CVerbatim
+  , pcover   = CMirror
   , pfence   = FGround
   , ptopLeft = [ ";f;"
                , "f·f"

@@ -86,7 +86,7 @@ pillar = TileKind
 pillarIce = TileKind
   { tsymbol  = '^'
   , tname    = "ice"
-  , tfreq    = [("brawlSet", 30), ("ice", 1)]
+  , tfreq    = [("brawlSet", 20), ("ice", 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 5
@@ -103,11 +103,12 @@ pulpit = TileKind
   , tcolor2  = Blue
   , talter   = 5
   , tfeature = [Clear, Embed "pulpit", Indistinct]
+                 -- mixed blessing, so AI ignores, saved for player fun
   }
 pillarCache = TileKind
   { tsymbol  = 'O'
   , tname    = "cache"
-  , tfreq    = [ ("cachable", 30), ("stair terminal", 1), ("escapeSet", 1)]
+  , tfreq    = [("cachable", 30), ("stair terminal", 1), ("escapeSet", 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 5
@@ -383,7 +384,7 @@ rubble = TileKind
 rubblePlace = TileKind
   { tsymbol  = '%'
   , tname    = "rubble"
-  , tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("emptySet", 1), ("noiseSet", 5)
+  , tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("emptySet", 1), ("noiseSet", 10)
                , ("zooSet", 100), ("ambushSet", 20) ]
   , tcolor   = BrYellow
   , tcolor2  = Brown
@@ -507,7 +508,7 @@ oriel = TileKind
   }
 rock = pillar
   { tname    = "rock"
-  , tfreq    = [("brawlSet", 40), ("arenaSet", 1)]
+  , tfreq    = [("brawlSet", 30), ("arenaSet", 1)]
   }
 outerHullWall = hardRock
   { tname    = "outer hull wall"

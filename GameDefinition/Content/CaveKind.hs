@@ -177,15 +177,12 @@ noise = rogue
   , couterFenceTile = "noise fence"  -- ensures no cut-off parts from collapsed
   , cdarkCorTile  = "floorArenaDark"
   , clitCorTile   = "floorArenaLit"
-  , cstairFreq    = [("gated staircase", 100)]
   }
 noise2 = noise
   { cname         = "Power distribution hub"
   , cfreq         = [("caveNoise2", 1)]
-  , cdarkChance   = 0
-  -- Light is deadly, because nowhere to hide and pillars enable spawning
-  -- very close to heroes.
   , cnightChance  = 51  -- easier variant, but looks sinister
+  , cstairFreq    = [("gated staircase", 100)]
   }
 bridge = rogue
   { csymbol       = 'B'
@@ -229,7 +226,7 @@ shallow1empty = shallow2empty  -- TODO: replace some rooms with oriels?
   , couterFenceTile = "oriels fence"
   }
 emptyExit = empty
-  { cname         = "Small craft service area"
+  { cname         = "Shuttle servicing area"
   , cfreq = [("caveEmptyExit", 1)]
   , cdarkCorTile  = "trailLit"  -- flavour
   , couterFenceTile = "noise fence"  -- for flavour
@@ -277,7 +274,7 @@ shootout = rogue  -- a scenario with strong missiles;
                   -- and to avoid obstructing view too much, since this
                   -- scenario is about ranged combat at long range
   { csymbol       = 'S'
-  , cname         = "Misty hydroponic farm"
+  , cname         = "Hydroponic farm"  -- still a neutral, offcial wording
   , cfreq         = [("caveShootout", 1)]
   , cgrid         = DiceXY (d 2 + 7) 3
   , cminPlaceSize = DiceXY 3 3
@@ -310,7 +307,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
                 -- not view; obstacles are not lit, to frustrate the AI;
                 -- lots of small lights to cross, to have some risks
   { csymbol       = 'E'
-  , cname         = "Red Collar Bros den"
+  , cname         = "Red Collar Bros den"  -- tension rises; non-official name
   , cfreq         = [("caveEscape", 1)]
   , cgrid         = DiceXY -- (2 * d 2 + 3) 4  -- park, so lamps in lines
                            (2 * d 2 + 6) 3   -- for now, to fit larger places
@@ -326,7 +323,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , citemNum      = 5 * d 8
   , citemFreq     = [ ("useful", 30), ("treasure", 30), ("gem", 100)
                     , ("weak arrow", 500), ("harpoon", 400) ]
-  , cplaceFreq    = [("escape", 100)]
+  , cplaceFreq    = [("park", 100)]
   , cpassable     = True
   , cdefTile      = "escapeSet"  -- different tiles, not burning yet
   , cdarkCorTile  = "trailLit"  -- let trails give off light
@@ -335,7 +332,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   }
 zoo = rogue  -- few lights and many solids, to help the less numerous heroes
   { csymbol       = 'Z'
-  , cname         = "Zoo in flames"
+  , cname         = "Municipal zoo in flames"  -- non-official adjective
   , cfreq         = [("caveZoo", 1)]
   , cgrid         = DiceXY (2 * d 2 + 6) 3
   , cminPlaceSize = DiceXY 4 4
@@ -367,7 +364,7 @@ ambush = rogue  -- a scenario with strong missiles;
                 -- camping doesn't pay off, because enemies can sneak and only
                 -- active scouting, throwing flares and shooting discovers them
   { csymbol       = 'M'
-  , cname         = "Ravaged spaceport"
+  , cname         = "Ravaged spaceport"  -- non-official adjective
   , cfreq         = [("caveAmbush", 1)]
   , cgrid         = DiceXY -- (2 * d 2 + 3) 4  -- spaceport, so lamps in lines
                            (2 * d 2 + 5) 3   -- for now, to fit larger places

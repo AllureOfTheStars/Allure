@@ -422,7 +422,7 @@ rosterDefense = rosterExploration
                      -- Optional huge battle at the end:
                      , (12, 100, "mobile animal") ] )
                  , ( playerRobot
-                   , [(3, 2 + d 2, "robot")] ) ] } -- many, because no spawning
+                   , [(3, 2 + d 2, "robot")] ) ] }
 
 cavesRaid, cavesBrawl, cavesShootout, cavesEscape, cavesZoo, cavesAmbush, cavesExploration, cavesSafari, cavesBattle :: Caves
 
