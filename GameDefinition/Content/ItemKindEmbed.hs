@@ -208,7 +208,7 @@ doorwayTrap = ItemKind
   }
 obscenePictograms = ItemKind
   { isymbol  = '*'
-  , iname    = "obscene graffiti"
+  , iname    = "repulsing graffiti"
   , ifreq    = [("obscene pictograms", 1)]
   , iflavour = zipPlain [BrRed]
   , icount   = 1
@@ -217,7 +217,7 @@ obscenePictograms = ItemKind
   , iweight  = 1000
   , idamage  = toDmg 0
   , iaspects = [Timeout 7]
-  , ieffects = [ Temporary "enter destructive rage at the sight of obscene graffiti"
+  , ieffects = [ Temporary "enter irrational rage at a glimpse of the inscrutable graffiti"
                , RefillCalm (-20)
                , Recharging $ OneOf
                    [ toOrganActorTurn "strengthened" (3 + d 3)
@@ -237,7 +237,7 @@ subtleFresco = ItemKind
   , iweight  = 1000
   , idamage  = toDmg 0
   , iaspects = [Timeout 7]
-  , ieffects = [ Temporary "feel refreshed by the subtle mural"
+  , ieffects = [ Temporary "be entranced by the subtle mural"
                , RefillCalm 2
                , Recharging $ toOrganActorTurn "far-sighted" (3 + d 3)
                , Recharging $ toOrganActorTurn "keen-smelling" (3 + d 3) ]

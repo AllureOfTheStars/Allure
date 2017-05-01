@@ -29,10 +29,10 @@ cdefs = ContentDef
   , content = contentFromList $
       [unknown, hardRock, pillar, pillarIce, pulpit, pillarCache, lampPost, signboardUnread, signboardRead, bush, bushDark, bushBurnt, bushBurning, tree, treeDark, treeBurnt, treeBurning, wall, wallGlass, wallGlassSpice, wallSuspect, wallObscured, doorTrapped, doorClosed, doorOpen, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, rubble, rubblePlace, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorDirtSpiceLit, floorArenaShade, floorActorLit, floorItemLit, floorActorItemLit, floorRedLit, floorBlueLit, floorGreenLit, floorFog, floorFogDark, floorSmoke, floorSmokeDark]
       ++ map makeDarkColor ldarkColorable
-      ++ [oriel, rock, doorlessWall, wallObscuredDefaced, wallObscuredFrescoed, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown]
+      ++ [oriel, rock, outerHullWall, doorlessWall, wallObscuredDefaced, wallObscuredFrescoed, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown]
   }
 unknown,        hardRock, pillar, pillarIce, pulpit, pillarCache, lampPost, signboardUnread, signboardRead, bush, bushDark, bushBurnt, bushBurning, tree, treeDark, treeBurnt, treeBurning, wall, wallGlass, wallGlassSpice, wallSuspect, wallObscured, doorTrapped, doorClosed, doorOpen, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, rubble, rubblePlace, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorDirtSpiceLit, floorArenaShade, floorActorLit, floorItemLit, floorActorItemLit, floorRedLit, floorBlueLit, floorGreenLit, floorFog, floorFogDark, floorSmoke, floorSmokeDark :: TileKind
-oriel, rock, doorlessWall, wallObscuredDefaced, wallObscuredFrescoed, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown :: TileKind
+oriel, rock, outerHullWall, doorlessWall, wallObscuredDefaced, wallObscuredFrescoed, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown :: TileKind
 
 ldarkColorable :: [TileKind]
 ldarkColorable = [floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorActorLit, floorItemLit, floorActorItemLit]
@@ -67,9 +67,8 @@ unknown = TileKind  -- needs to have index 0 and alter 1
   }
 hardRock = TileKind
   { tsymbol  = '#'
-  , tname    = "outer hull"
-  , tfreq    = [ ("basic outer fence", 1), ("noise fence", 1)
-               , ("oriels fence", 96)]
+  , tname    = "habitat containment wall"
+  , tfreq    = [("basic outer fence", 1)]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
   , talter   = maxBound  -- impenetrable
@@ -87,7 +86,7 @@ pillar = TileKind
 pillarIce = TileKind
   { tsymbol  = '^'
   , tname    = "ice"
-  , tfreq    = [("brawlSet", 2), ("ice", 1)]
+  , tfreq    = [("brawlSet", 30), ("ice", 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 5
@@ -99,7 +98,7 @@ pillarIce = TileKind
 pulpit = TileKind
   { tsymbol  = 'O'
   , tname    = "VR harness"
-  , tfreq    = [("pulpit", 1), ("zooSet", 5)]
+  , tfreq    = [("pulpit", 1), ("zooSet", 2)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 5
@@ -108,7 +107,7 @@ pulpit = TileKind
 pillarCache = TileKind
   { tsymbol  = 'O'
   , tname    = "cache"
-  , tfreq    = [ ("cachable", 30), ("stair terminal", 1)]
+  , tfreq    = [ ("cachable", 30), ("stair terminal", 1), ("escapeSet", 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 5
@@ -140,7 +139,7 @@ signboardUnread = TileKind  -- client only, indicates never used by this faction
 signboardRead = TileKind  -- after first use revealed to be this one
   { tsymbol  = 'O'
   , tname    = "signboard"
-  , tfreq    = [("signboard", 1)]
+  , tfreq    = [("signboard", 1), ("zooSet", 2), ("ambushSet", 1)]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 5
@@ -170,7 +169,7 @@ bushBurnt = bush
   }
 bushBurning = bush
   { tname    = "burning bush"
-  , tfreq    = [("ambushSet", 30), ("zooSet", 300), ("bush with fire", 30)]
+  , tfreq    = [("ambushSet", 40), ("zooSet", 300), ("bush with fire", 30)]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 5
@@ -179,7 +178,8 @@ bushBurning = bush
 tree = TileKind
   { tsymbol  = 'O'
   , tname    = "tree"
-  , tfreq    = [("brawlSet", 140), ("treeShadeOver_O_Lit", 1)]
+  , tfreq    = [ ("brawlSet", 140), ("shootoutSet", 10)
+               , ("treeShadeOver_O_Lit", 1) ]
   , tcolor   = BrGreen
   , tcolor2  = Green
   , talter   = 50
@@ -199,7 +199,7 @@ treeBurnt = tree
   }
 treeBurning = tree
   { tname    = "burning tree"
-  , tfreq    = [("ambushSet", 30), ("zooSet", 30), ("tree with fire", 70)]
+  , tfreq    = [("zooSet", 30), ("tree with fire", 70)]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 5
@@ -212,8 +212,8 @@ wall = TileKind
   , tname    = "wall"
   , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
                , ("cachable", 70), ("stair terminal", 100)
-               , ("noiseSet", 95), ("shootoutSet", 10), ("battleSet", 250)
-               , ("rectWindowsOver_%_Lit", 90) ]
+               , ("noiseSet", 95), ("battleSet", 250)
+               , ("rectWindowsOver_%_Lit", 80) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 100
@@ -222,14 +222,14 @@ wall = TileKind
 wallGlass = TileKind
   { tsymbol  = '#'
   , tname    = "transparent polymer wall"
-  , tfreq    = [("wallGlass", 1), ("rectWindowsOver_%_Lit", 10)]
+  , tfreq    = [("wallGlass", 1), ("rectWindowsOver_%_Lit", 20)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 10
   , tfeature = [BuildAs "suspect wall", Clear]
   }
 wallGlassSpice = wallGlass
-  { tfreq    = [("rectWindowsOver_%_Lit", 10)]
+  { tfreq    = [("rectWindowsOver_%_Lit", 20)]
   , tfeature = Spice : tfeature wallGlass
   }
 wallSuspect = TileKind  -- only on client
@@ -246,7 +246,7 @@ wallSuspect = TileKind  -- only on client
 wallObscured = TileKind
   { tsymbol  = '#'
   , tname    = "scratched wall"
-  , tfreq    = [("obscured wall", 1)]
+  , tfreq    = [("obscured wall", 100)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 5
@@ -384,7 +384,7 @@ rubblePlace = TileKind
   { tsymbol  = '%'
   , tname    = "rubble"
   , tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("emptySet", 1), ("noiseSet", 5)
-               , ("zooSet", 100) ]
+               , ("zooSet", 100), ("ambushSet", 20) ]
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 5
@@ -405,7 +405,7 @@ floorCorridorLit = TileKind
   }
 floorArenaLit = floorCorridorLit
   { tfreq    = [ ("floorArenaLit", 1), ("rubblePlaceOrNot", 30)
-               , ("arenaSet", 97), ("emptySet", 94), ("zooSet", 1000) ]
+               , ("arenaSet", 96), ("emptySet", 94), ("zooSet", 1000) ]
   }
 floorNoiseLit = floorArenaLit
   { tname    = "oily floor"
@@ -480,7 +480,7 @@ floorSmoke = TileKind
   { tsymbol  = ';'
   , tname    = "billowing smoke"
   , tfreq    = [ ("lit smoke", 1)
-               , ("ambushSet", 30), ("zooSet", 15), ("battleSet", 5)
+               , ("ambushSet", 30), ("zooSet", 30), ("battleSet", 5)
                , ("labTrailLit", 1), ("stair terminal", 2)
                , ("smokeClumpOver_f_Lit", 1) ]
   , tcolor   = Brown
@@ -507,7 +507,11 @@ oriel = TileKind
   }
 rock = pillar
   { tname    = "rock"
-  , tfreq    = [("brawlSet", 50), ("zooSet", 30)]
+  , tfreq    = [("brawlSet", 40), ("arenaSet", 1)]
+  }
+outerHullWall = hardRock
+  { tname    = "outer hull wall"
+  , tfreq    = [("oriels fence", 96), ("noise fence", 1)]
   }
 doorlessWall = TileKind
   { tsymbol  = '#'
@@ -521,7 +525,7 @@ doorlessWall = TileKind
 wallObscuredDefaced = TileKind
   { tsymbol  = '#'
   , tname    = "defaced wall"
-  , tfreq    = [("obscured wall", 90)]
+  , tfreq    = [("obscured wall", 45), ("escapeSet", 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 5
@@ -533,7 +537,7 @@ wallObscuredDefaced = TileKind
 wallObscuredFrescoed = TileKind
   { tsymbol  = '#'
   , tname    = "subtle mural"
-  , tfreq    = [("obscured wall", 10)]
+  , tfreq    = [("obscured wall", 5), ("brawlSet", 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 5

@@ -85,7 +85,7 @@ escape = ModeKind  -- asymmetric ranged and stealth race at night
   , mfreq   = [("escape", 1), ("campaign scenario", 1)]
   , mroster = rosterEscape
   , mcaves  = cavesEscape
-  , mdesc   = "Bloodied spaceship deed in hand nonwithstanding, one can take possesion of the derelict spaceliner only via a shuttle from the Triton Spaceport across the city. After hours of being chased in the opposite direction towards the border wall, you sneak back and make a desperate dash through the very HQ of the enemy. Any valuables you find will be a just compensation for their wrongdoing, but you need to reach the exit before they find you."
+  , mdesc   = "Bloodied spaceship deed in hand nonwithstanding, one can take possesion of the derelict spaceliner only via a shuttle from the Triton Spaceport across the city. After hours of being chased in the opposite direction towards the border wall, you sneak back and make a desperate dash through the very HQ of the enemy. Any valuables you find in this public park turned miscreant lair will be fair compensation for your losses, but you need to reach the exit before the foes find you."
   }
 
 zoo = ModeKind  -- asymmetric crowd melee at night
@@ -94,7 +94,7 @@ zoo = ModeKind  -- asymmetric crowd melee at night
   , mfreq   = [("zoo", 1), ("campaign scenario", 1)]
   , mroster = rosterZoo
   , mcaves  = cavesZoo
-  , mdesc   = "As justified and satisfying as setting enemy lair on fire was, it backfired by immediatelly spreading to the public zoo on your path. Crazed animals mill around while the flames ignite greenery and consume nets and cages. Certainly nobody is willing to pursue you any more, whether that's a good sign or bad."
+  , mdesc   = "As justified and satisfying as setting enemy lair on fire was, it backfired by immediatelly spreading to the public zoo on your path. Crazed animals mill around while the flames ignite greenery and consume nets, cages and didactic equipment. Certainly nobody is willing to pursue you any more, whether that's a good sign or bad."
   }
 
 -- The tactic is to sneak in the dark, highlight enemy with thrown torches
@@ -111,7 +111,7 @@ ambush = ModeKind  -- dense ranged with reaction fire at night
   , mfreq   = [("ambush", 1), ("campaign scenario", 1)]
   , mroster = rosterAmbush
   , mcaves  = cavesAmbush
-  , mdesc   = "Not even the unexplained ruin of the largest and tightest security of Neptune's spaceports will prevent you from claiming your prize. You didn't take to the space to let others decide your fate. Onward!"
+  , mdesc   = "Not even the unexplained ruin of the largest and tightest security of Neptune's spaceports will prevent you from claiming your prize. After all, you didn't take to the space to let others decide your fate. Onward!"
   }
 
 exploration = ModeKind
