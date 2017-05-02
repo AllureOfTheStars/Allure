@@ -29,10 +29,10 @@ cdefs = ContentDef
   , content = contentFromList $
       [unknown, hardRock, wall, wallSuspect, wallObscured, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorArenaShade ]
       ++ map makeDarkColor ldarkColorable
-      ++ [oriel, outerHullWall, doorlessWall, wallObscuredDefaced, wallObscuredFrescoed, rock, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown]
+      ++ [oriel, outerHullWall, doorlessWall, machineWall, wallObscuredDefaced, wallObscuredFrescoed, rock, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown]
   }
 unknown,        hardRock, wall, wallSuspect, wallObscured, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorArenaShade :: TileKind
-oriel, outerHullWall, doorlessWall, wallObscuredDefaced, wallObscuredFrescoed, rock, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown :: TileKind
+oriel, outerHullWall, doorlessWall, machineWall, wallObscuredDefaced, wallObscuredFrescoed, rock, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown :: TileKind
 
 ldarkColorable :: [TileKind]
 ldarkColorable = [tree, bush, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem]
@@ -85,8 +85,7 @@ wall = TileKind
   , tname    = "wall"
   , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
                , ("cachable", 70), ("stair terminal", 100)
-               , ("noiseSet", 95), ("battleSet", 250)
-               , ("rectWindowsOver_%_Lit", 80) ]
+               , ("battleSet", 250), ("rectWindowsOver_%_Lit", 80) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 100
@@ -511,7 +510,7 @@ oriel = TileKind
   , tcolor   = White
   , tcolor2  = Black
   , talter   = maxBound  -- impenetrable
-  , tfeature = [Dark]
+  , tfeature = [Dark, Indistinct]
   }
 outerHullWall = hardRock
   { tname    = "outer hull wall"
@@ -520,11 +519,20 @@ outerHullWall = hardRock
 doorlessWall = TileKind
   { tsymbol  = '#'
   , tname    = "wall"
-  , tfreq    = [("doorlessWallOver_#", 100)]
+  , tfreq    = [("noiseSet", 60), ("doorlessWallOver_#", 20)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 100
   , tfeature = [HideAs "fillerWall", Indistinct]
+  }
+machineWall = TileKind
+  { tsymbol  = '%'
+  , tname    = "hardware rack"
+  , tfreq    = [("noiseSet", 35), ("doorlessWallOver_#", 80)]
+  , tcolor   = White
+  , tcolor2  = BrBlack
+  , talter   = 100
+  , tfeature = [Spice, Clear, Indistinct]
   }
 wallObscuredDefaced = TileKind
   { tsymbol  = '#'
