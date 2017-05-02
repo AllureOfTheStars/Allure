@@ -27,11 +27,11 @@ cdefs = ContentDef
   , validateSingle = validateSingleTileKind
   , validateAll = validateAllTileKind
   , content = contentFromList $
-      [unknown, hardRock, wall, wallSuspect, wallObscured, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubblePlace, doorTrapped, doorClosed, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorDirtSpiceLit, floorActorLit, floorItemLit, floorActorItemLit, floorRedLit, floorBlueLit, floorGreenLit, floorArenaShade ]
+      [unknown, hardRock, wall, wallSuspect, wallObscured, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorDirtSpiceLit, floorActorLit, floorItemLit, floorActorItemLit, floorRedLit, floorBlueLit, floorGreenLit, floorArenaShade ]
       ++ map makeDarkColor ldarkColorable
       ++ [oriel, outerHullWall, doorlessWall, wallObscuredDefaced, wallObscuredFrescoed, rock, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown]
   }
-unknown,        hardRock, wall, wallSuspect, wallObscured, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubblePlace, doorTrapped, doorClosed, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorDirtSpiceLit, floorActorLit, floorItemLit, floorActorItemLit, floorRedLit, floorBlueLit, floorGreenLit, floorArenaShade :: TileKind
+unknown,        hardRock, wall, wallSuspect, wallObscured, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridorLit, floorArenaLit, floorNoiseLit, floorDirtLit, floorDirtSpiceLit, floorActorLit, floorItemLit, floorActorItemLit, floorRedLit, floorBlueLit, floorGreenLit, floorArenaShade :: TileKind
 oriel, outerHullWall, doorlessWall, wallObscuredDefaced, wallObscuredFrescoed, rock, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown :: TileKind
 
 ldarkColorable :: [TileKind]
@@ -206,7 +206,7 @@ rubble = TileKind
   , talter   = 5
   , tfeature = [OpenTo "rubbleOrNot", Embed "rubble", Indistinct]
   }
-rubblePlace = TileKind
+rubbleSpice = TileKind
   { tsymbol  = '&'
   , tname    = "rubble"
   , tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("emptySet", 1), ("noiseSet", 10)
@@ -214,7 +214,7 @@ rubblePlace = TileKind
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 5
-  , tfeature = [Spice, OpenTo "rubblePlaceOrNot", Embed "rubble", Indistinct]
+  , tfeature = [Spice, OpenTo "rubbleSpiceOrNot", Embed "rubble", Indistinct]
       -- It's not explorable, due to not being walkable nor clear and due
       -- to being a door (@OpenTo@), which is kind of OK, because getting
       -- the item is risky and, e.g., AI doesn't attempt it.
@@ -326,7 +326,7 @@ escapeOutdoorDown = escapeDown
 wallGlass = TileKind
   { tsymbol  = '%'
   , tname    = "transparent polymer wall"
-  , tfreq    = [("wallGlass", 1), ("rectWindowsOver_%_Lit", 20)]
+  , tfreq    = [("glasshouseOver_%_Lit", 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 10
@@ -339,7 +339,7 @@ wallGlassSpice = wallGlass
 pillarIce = TileKind
   { tsymbol  = '^'
   , tname    = "ice"
-  , tfreq    = [("brawlSet", 20), ("ice", 1)]
+  , tfreq    = [("brawlSet", 20)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 5
@@ -352,8 +352,8 @@ pulpit = TileKind
   { tsymbol  = '%'
   , tname    = "VR harness"
   , tfreq    = [("pulpit", 1), ("zooSet", 2)]
-  , tcolor   = BrBlue
-  , tcolor2  = Blue
+  , tcolor   = BrYellow
+  , tcolor2  = Brown
   , talter   = 5
   , tfeature = [Clear, Embed "pulpit", Indistinct]
                  -- mixed blessing, so AI ignores, saved for player fun
@@ -447,7 +447,7 @@ floorCorridorLit = TileKind
   , tfeature = [Walkable, Clear, Indistinct]
   }
 floorArenaLit = floorCorridorLit
-  { tfreq    = [ ("floorArenaLit", 1), ("rubblePlaceOrNot", 30)
+  { tfreq    = [ ("floorArenaLit", 1), ("rubbleSpiceOrNot", 30)
                , ("arenaSet", 96), ("emptySet", 94), ("zooSet", 1000) ]
   }
 floorNoiseLit = floorArenaLit
@@ -473,7 +473,7 @@ floorItemLit = floorArenaLit
   , tfeature = OftenItem : tfeature floorArenaLit
   }
 floorActorItemLit = floorItemLit
-  { tfreq    = [("legendLit", 100)]  -- no OftenActor in legendDark
+  { tfreq    = [("legendLit", 100)]
   , tfeature = OftenActor : tfeature floorItemLit
   }
 floorRedLit = floorCorridorLit
