@@ -29,9 +29,11 @@ cdefs = ContentDef
   , content = contentFromList $
       [unknown, hardRock, wall, wallSuspect, wallObscured, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorArenaShade ]
       ++ map makeDarkColor ldarkColorable
+      -- Allure-specific
       ++ [oriel, outerHullWall, doorlessWall, machineWall, wallObscuredDefaced, wallObscuredFrescoed, rock, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown]
   }
 unknown,        hardRock, wall, wallSuspect, wallObscured, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorArenaShade :: TileKind
+-- Allure-specific
 oriel, outerHullWall, doorlessWall, machineWall, wallObscuredDefaced, wallObscuredFrescoed, rock, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown :: TileKind
 
 ldarkColorable :: [TileKind]

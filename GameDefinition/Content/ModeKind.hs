@@ -121,7 +121,7 @@ exploration = ModeKind
               , ("campaign scenario", 1) ]
   , mroster = rosterExploration
   , mcaves  = cavesExploration
-  , mdesc   = "You got stranded happily looting the blasted bridge of an extravagantly luxurious, old, inert cruise liner. The spaceship, supposedly long deserted and barely sustaining life support, suddenly disengaged the shuttle you came in, manoeuvred off Triton orbit and now heads away from Neptune. Your current plan is to break through, exploring and gathering spoils, to the auxiliary engineering hub and shuttle bay somewhere among the giant spaceship's uppermost decks. This will yet turn your biggest victory. There are animal cries down below and ominous silence up above."
+  , mdesc   = "You got stranded while happily looting the blasted bridge of an extravagantly luxurious, old, inert cruise liner. The spaceship, supposedly long deserted and barely sustaining life support, suddenly disengaged the shuttle you came in, manoeuvred off Triton orbit and now heads away from Neptune. Your current plan is to break through, exploring and gathering spoils, to the auxiliary engineering hub and shuttle bay somewhere among the giant spaceship's uppermost decks. This will yet turn your biggest victory. There are animal cries down below and ominous silence up above."
   }
 
 safari = ModeKind  -- easter egg available only via screensaver

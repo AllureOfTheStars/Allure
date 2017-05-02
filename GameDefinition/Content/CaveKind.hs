@@ -98,10 +98,13 @@ arena = rogue
   , clitCorTile   = "trailLit"
   }
 arena2 = arena
-  { cfreq         = [("deep random", 10)]
+  { cname         = "Casino"
+  , cfreq         = [("deep random", 10)]
   , cdarkChance   = 41 + d 10  -- almost all rooms lit (1 in 10 dark)
   -- Trails provide enough light for fun stealth.
   , cnightChance  = 51  -- always night
+  , citemNum      = 5 * d 4  -- rare, so make it exciting
+  , citemFreq     = [("useful", 30), ("treasure", 70)] -- lives up to the name
   , cdefTile      = "arenaSetDark"
   , cdarkCorTile  = "trailLit"  -- let trails give off light
   }
@@ -158,7 +161,7 @@ noise = rogue
   , cname         = "Flight hardware hub"
   , cfreq         = [("caveNoise", 1)]
   , cgrid         = DiceXY (2 + d 3) 3
-  , cminPlaceSize = DiceXY 10 6
+  , cminPlaceSize = DiceXY 8 5
   , cmaxPlaceSize = DiceXY 20 10
   , cdarkChance   = 51
   -- Light is deadly, because nowhere to hide and pillars enable spawning
@@ -183,6 +186,7 @@ noise2 = noise
   { cname         = "Power distribution hub"
   , cfreq         = [("caveNoise2", 1)]
   , cnightChance  = 51  -- easier variant, but looks sinister
+  , cplaceFreq    = [("noise", 1), ("mine", 99)]
   , cstairFreq    = [("gated staircase", 100)]
   }
 bridge = rogue

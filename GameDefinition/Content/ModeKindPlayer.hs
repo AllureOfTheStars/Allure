@@ -163,6 +163,8 @@ hiEscapist = ( [(HiLoot, 1)]  -- loot matters a little bit
              , [minBound..maxBound] )
              : hiDweller
 
+-- Allure-specific
+
 playerRobot = Player
   { fname = "Robot Anarchy"
   , fgroups = ["robot", "mobile monster", "immobile monster"]
