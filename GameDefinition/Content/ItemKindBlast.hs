@@ -106,7 +106,7 @@ firecracker2 = firecracker 2
 -- * Assorted immediate effect blasts
 
 fragrance = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "fragrance"  -- instant, fast fragrance
   , ifreq    = [("fragrance", 1)]
   , iflavour = zipFancy [Magenta]
@@ -124,7 +124,7 @@ fragrance = ItemKind
   , ikit     = []
   }
 pheromone = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "musky whiff"  -- a kind of mist rather than fragrance
   , ifreq    = [("pheromone", 1)]
   , iflavour = zipFancy [BrMagenta]
@@ -140,7 +140,7 @@ pheromone = ItemKind
   , ikit     = []
   }
 mistCalming = ItemKind  -- unused
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "mist"
   , ifreq    = [("calming mist", 1)]
   , iflavour = zipFancy [White]
@@ -156,7 +156,7 @@ mistCalming = ItemKind  -- unused
   , ikit     = []
   }
 odorDistressing = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "distressing whiff"
   , ifreq    = [("distressing odor", 1)]
   , iflavour = zipFancy [BrRed]
@@ -172,7 +172,7 @@ odorDistressing = ItemKind
   , ikit     = []
   }
 mistHealing = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "mist"  -- powerful, so slow and narrow
   , ifreq    = [("healing mist", 1)]
   , iflavour = zipFancy [White]
@@ -188,7 +188,7 @@ mistHealing = ItemKind
   , ikit     = []
   }
 mistHealing2 = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "mist"
   , ifreq    = [("healing mist 2", 1)]
   , iflavour = zipFancy [White]
@@ -204,7 +204,7 @@ mistHealing2 = ItemKind
   , ikit     = []
   }
 mistWounding = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "mist"
   , ifreq    = [("wounding mist", 1)]
   , iflavour = zipFancy [White]
@@ -252,7 +252,7 @@ glassPiece = ItemKind  -- when blowing up windows
   , ikit     = []
   }
 smoke = ItemKind  -- when stuff burns out  -- unused
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "smoke"
   , ifreq    = [("smoke", 1)]
   , iflavour = zipPlain [BrBlack]
@@ -300,7 +300,7 @@ glue = ItemKind
   , ikit     = []
   }
 singleSpark = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "single spark"
   , ifreq    = [("single spark", 1)]
   , iflavour = zipPlain [BrYellow]
@@ -316,7 +316,7 @@ singleSpark = ItemKind
   , ikit     = []
   }
 spark = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "spark"
   , ifreq    = [("spark", 1)]
   , iflavour = zipPlain [BrYellow]
@@ -339,7 +339,7 @@ spark = ItemKind
 -- actors and not burdening the engine for long.
 
 denseShower = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "dense shower"
   , ifreq    = [("dense shower", 1)]
   , iflavour = zipFancy [Red]
@@ -355,7 +355,7 @@ denseShower = ItemKind
   , ikit     = []
   }
 sparseShower = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "sparse shower"
   , ifreq    = [("sparse shower", 1)]
   , iflavour = zipFancy [Blue]
@@ -371,7 +371,7 @@ sparseShower = ItemKind
   , ikit     = []
   }
 protectingBalmMelee = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "balm droplet"
   , ifreq    = [("melee protective balm", 1)]
   , iflavour = zipPlain [Brown]
@@ -387,7 +387,7 @@ protectingBalmMelee = ItemKind
   , ikit     = []
   }
 protectingBalmRanged = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "balm droplet"
   , ifreq    = [("ranged protective balm", 1)]
   , iflavour = zipPlain [BrYellow]
@@ -403,7 +403,7 @@ protectingBalmRanged = ItemKind
   , ikit     = []
   }
 vulnerabilityBalm = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "red paint"
   , ifreq    = [("red paint", 1)]
   , iflavour = zipPlain [BrRed]
@@ -419,7 +419,7 @@ vulnerabilityBalm = ItemKind
   , ikit     = []
   }
 resolutionDust = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "resolution dust"
   , ifreq    = [("resolution dust", 1)]
   , iflavour = zipPlain [Brown]
@@ -435,7 +435,7 @@ resolutionDust = ItemKind
   , ikit     = []
   }
 hasteSpray = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "haste spray"
   , ifreq    = [("haste spray", 1)]
   , iflavour = zipPlain [BrRed]
@@ -451,7 +451,7 @@ hasteSpray = ItemKind
   , ikit     = []
   }
 slownessMist = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "slowness mist"
   , ifreq    = [("slowness mist", 1)]
   , iflavour = zipPlain [BrBlue]
@@ -467,7 +467,7 @@ slownessMist = ItemKind
   , ikit     = []
   }
 eyeDrop = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "eye drop"
   , ifreq    = [("eye drop", 1)]
   , iflavour = zipPlain [BrGreen]
@@ -483,7 +483,7 @@ eyeDrop = ItemKind
   , ikit     = []
   }
 ironFiling = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "iron filing"
   , ifreq    = [("iron filing", 1)]
   , iflavour = zipPlain [Brown]
@@ -499,7 +499,7 @@ ironFiling = ItemKind
   , ikit     = []
   }
 smellyDroplet = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "smelly droplet"
   , ifreq    = [("smelly droplet", 1)]
   , iflavour = zipPlain [Blue]
@@ -515,7 +515,7 @@ smellyDroplet = ItemKind
   , ikit     = []
   }
 eyeShine = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "eye shine"
   , ifreq    = [("eye shine", 1)]
   , iflavour = zipPlain [BrRed]
@@ -534,7 +534,7 @@ eyeShine = ItemKind
 -- * Assorted temporary condition blasts or related (also, matching flasks)
 
 whiskeySpray = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "whiskey spray"
   , ifreq    = [("whiskey spray", 1)]
   , iflavour = zipPlain [Brown]
@@ -566,7 +566,7 @@ waste = ItemKind
   , ikit     = []
   }
 youthSprinkle = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "youth sprinkle"
   , ifreq    = [("youth sprinkle", 1)]
   , iflavour = zipPlain [BrGreen]
@@ -582,7 +582,7 @@ youthSprinkle = ItemKind
   , ikit     = []
   }
 poisonCloud = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "poison cloud"
   , ifreq    = [("poison cloud", 1)]
   , iflavour = zipPlain [Green]
@@ -598,7 +598,7 @@ poisonCloud = ItemKind
   , ikit     = []
   }
 mistAntiSlow = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "mist"
   , ifreq    = [("anti-slow mist", 1)]
   , iflavour = zipPlain [BrRed]
@@ -614,7 +614,7 @@ mistAntiSlow = ItemKind
   , ikit     = []
   }
 mistAntidote = ItemKind
-  { isymbol  = '\''
+  { isymbol  = '`'
   , iname    = "mist"
   , ifreq    = [("antidote mist", 1)]
   , iflavour = zipPlain [BrBlue]
