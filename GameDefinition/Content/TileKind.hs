@@ -594,6 +594,8 @@ makeDark k = let darkText :: GroupName TileKind -> GroupName TileKind
                   }
 
 makeDarkColor :: TileKind -> TileKind
-makeDarkColor k = (makeDark k) { tcolor  = BrYellow
+makeDarkColor k = (makeDark k) { tcolor  = if tsymbol k == floorSymbol
+                                           then BrYellow
+                                           else tcolor k
                                , tcolor2 = BrBlack
                                }
