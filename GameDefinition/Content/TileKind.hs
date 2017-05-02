@@ -127,7 +127,7 @@ pillar = TileKind
 pillarCache = TileKind
   { tsymbol  = 'O'
   , tname    = "cache"
-  , tfreq    = [("cachable", 30), ("stair terminal", 1), ("escapeSet", 1)]
+  , tfreq    = [("cachable", 30), ("stair terminal", 1), ("escapeSetDark", 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 5
@@ -168,8 +168,8 @@ signboardRead = TileKind  -- after first use revealed to be this one
 tree = TileKind
   { tsymbol  = 'O'
   , tname    = "tree"
-  , tfreq    = [ ("brawlSet", 140), ("shootoutSet", 10), ("escapeSet", 30)
-               , ("treeShadeOver_O_Lit", 1) ]
+  , tfreq    = [ ("brawlSetLit", 140), ("shootoutSetLit", 10)
+               , ("escapeSetLit", 30), ("treeShadeOver_O_Lit", 1) ]
   , tcolor   = BrGreen
   , tcolor2  = Green
   , talter   = 50
@@ -339,7 +339,7 @@ wallGlassSpice = wallGlass
 pillarIce = TileKind
   { tsymbol  = '^'
   , tname    = "ice"
-  , tfreq    = [("brawlSet", 20)]
+  , tfreq    = [("brawlSetLit", 20)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 5
@@ -361,8 +361,8 @@ pulpit = TileKind
 bush = TileKind
   { tsymbol  = '%'
   , tname    = "bush"
-  , tfreq    = [ ("lit bush", 1), ("shootoutSet", 30), ("escapeSet", 30)
-               , ("arenaSet", 3), ("bushClumpOver_f_Lit", 1) ]
+  , tfreq    = [ ("bush Lit", 1), ("shootoutSetLit", 30), ("escapeSetLit", 30)
+               , ("arenaSetLit", 3), ("bushClumpOver_f_Lit", 1) ]
   , tcolor   = BrGreen
   , tcolor2  = Green
   , talter   = 10
@@ -392,7 +392,7 @@ bushBurning = bush
 floorFog = TileKind
   { tsymbol  = ';'
   , tname    = "faint fog"
-  , tfreq    = [ ("lit fog", 1), ("emptySet", 5), ("shootoutSet", 20)
+  , tfreq    = [ ("lit fog", 1), ("emptySet", 5), ("shootoutSetLit", 20)
                , ("noiseSet", 10), ("fogClumpOver_f_Lit", 60) ]
       -- lit fog is OK for shootout, because LOS is mutual, as opposed
       -- to dark fog, and so camper has little advantage, especially
@@ -404,7 +404,7 @@ floorFog = TileKind
   }
 floorFogDark = floorFog
   { tname    = "thick fog"
-  , tfreq    = [("noiseSet", 10), ("escapeSet", 60)]
+  , tfreq    = [("noiseSet", 10), ("escapeSetDark", 60)]
   , tfeature = Dark : tfeature floorFog
   }
 floorSmoke = TileKind
@@ -449,7 +449,7 @@ floorCorridor = TileKind
   }
 floorArena = floorCorridor
   { tfreq    = [ ("floorArenaLit", 1), ("rubbleSpiceOrNot", 30)
-               , ("arenaSet", 96), ("emptySet", 94), ("zooSet", 1000) ]
+               , ("arenaSetLit", 96), ("emptySet", 94), ("zooSet", 1000) ]
   }
 floorNoise = floorArena
   { tname    = "oily floor"
@@ -457,8 +457,9 @@ floorNoise = floorArena
   }
 floorDirt = floorArena
   { tname    = "dirt"
-  , tfreq    = [ ("battleSet", 1000), ("brawlSet", 1000), ("shootoutSet", 1000)
-               , ("escapeSet", 1000), ("ambushSet", 1000) ]
+  , tfreq    = [ ("battleSet", 1000), ("brawlSetLit", 1000)
+               , ("shootoutSetLit", 1000), ("escapeSetLit", 1000)
+               , ("ambushSet", 1000) ]
   }
 floorDirtSpice = floorDirt
   { tfreq    = [ ("treeShadeOver_s_Lit", 1), ("fogClumpOver_f_Lit", 40)
@@ -528,7 +529,7 @@ doorlessWall = TileKind
 wallObscuredDefaced = TileKind
   { tsymbol  = '#'
   , tname    = "defaced wall"
-  , tfreq    = [("obscured wall", 45), ("escapeSet", 1)]
+  , tfreq    = [("obscured wall", 45), ("escapeSetDark", 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 5
@@ -540,7 +541,7 @@ wallObscuredDefaced = TileKind
 wallObscuredFrescoed = TileKind
   { tsymbol  = '#'
   , tname    = "subtle mural"
-  , tfreq    = [("obscured wall", 5), ("brawlSet", 1)]
+  , tfreq    = [("obscured wall", 5), ("brawlSetLit", 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 5
@@ -551,7 +552,7 @@ wallObscuredFrescoed = TileKind
   }
 rock = pillar
   { tname    = "rock"
-  , tfreq    = [("brawlSet", 30), ("arenaSet", 1)]
+  , tfreq    = [("brawlSetLit", 30), ("arenaSetLit", 1), ("arenaSetDark", 1)]
   }
 stairsLiftUp = stairsUp
   { tname    = "lift up"

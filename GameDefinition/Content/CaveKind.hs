@@ -94,7 +94,7 @@ arena = rogue
   , citemFreq     = [("useful", 20), ("treasure", 30), ("any scroll", 50)]
   , cplaceFreq    = [("arena", 100)]
   , cpassable     = True
-  , cdefTile      = "arenaSet"
+  , cdefTile      = "arenaSetLit"
   , clitCorTile   = "trailLit"
   }
 arena2 = arena
@@ -102,6 +102,7 @@ arena2 = arena
   , cdarkChance   = 41 + d 10  -- almost all rooms lit (1 in 10 dark)
   -- Trails provide enough light for fun stealth.
   , cnightChance  = 51  -- always night
+  , cdefTile      = "arenaSetDark"
   , cdarkCorTile  = "trailLit"  -- let trails give off light
   }
 laboratory = arena2
@@ -264,7 +265,7 @@ brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
   , citemFreq     = [("useful", 100)]
   , cplaceFreq    = [("brawl", 60), ("rogue", 40)]
   , cpassable     = True
-  , cdefTile      = "brawlSet"
+  , cdefTile      = "brawlSetLit"
   , cdarkCorTile  = "floorArenaLit"
   , clitCorTile   = "floorArenaLit"
   }
@@ -298,7 +299,7 @@ shootout = rogue  -- a scenario with strong missiles;
                       -- needs to waste initial turns to buff for the defence.
   , cplaceFreq    = [("shootout", 100)]
   , cpassable     = True
-  , cdefTile      = "shootoutSet"
+  , cdefTile      = "shootoutSetLit"
   , cdarkCorTile  = "floorArenaLit"
   , clitCorTile   = "floorArenaLit"
   }
@@ -325,7 +326,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
                     , ("weak arrow", 500), ("harpoon", 400) ]
   , cplaceFreq    = [("park", 100)]
   , cpassable     = True
-  , cdefTile      = "escapeSet"  -- different tiles, not burning yet
+  , cdefTile      = "escapeSetDark"  -- different tiles, not burning yet
   , cdarkCorTile  = "trailLit"  -- let trails give off light
   , clitCorTile   = "trailLit"
   , cescapeGroup  = Just "escape outdoor down"
