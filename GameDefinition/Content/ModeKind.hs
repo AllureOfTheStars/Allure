@@ -188,7 +188,7 @@ screensaverRaid = raid
 
 screensaverBrawl = brawl
   { mname   = "auto-brawl"
-  , mfreq   = [("starting", 1), ("starting JS", 1), ("no confirms", 1)]
+  , mfreq   = [("no confirms", 1)]
   , mroster = screensave (AutoLeader False False) rosterBrawl
   }
 
