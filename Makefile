@@ -23,8 +23,7 @@ chrome-prof:
 	google-chrome --no-sandbox --js-flags="--logfile=%t.log --prof" dist/build/Allure/Allure.jsexe/index.html
 
 minific:
-	java -jar ~/Downloads/closure-compiler.jar dist/build/Allure/Allure.jsexe/all.js --compilation_level=ADVANCED_OPTIMIZATIONS > ~/Downloads/all.js
-
+	ccjs dist/build/Allure/Allure.jsexe/all.js --compilation_level=ADVANCED_OPTIMIZATIONS --isolation_mode=IIFE --assume_function_wrapper --jscomp_off="*" --externs=node > ../allureofthestars.github.io/allure.all.js
 
 frontendRaid:
 	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode raid
