@@ -27,9 +27,9 @@ cdefs = ContentDef
   , validateSingle = validateSingleModeKind
   , validateAll = validateAllModeKind
   , content = contentFromList
-      [raid, brawl, shootout, escape, zoo, ambush, exploration, safari, safariSurvival, battle, battleSurvival, defense, screensaverRaid, screensaverBrawl, screensaverShootout, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverExploration, screensaverSafari]
+      [raid, brawl, shootout, escape, zoo, ambush, exploration, explorationSurvival, safari, safariSurvival, battle, battleSurvival, defense, screensaverRaid, screensaverBrawl, screensaverShootout, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverExploration, screensaverSafari]
   }
-raid,        brawl, shootout, escape, zoo, ambush, exploration, safari, safariSurvival, battle, battleSurvival, defense, screensaverRaid, screensaverBrawl, screensaverShootout, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverExploration, screensaverSafari :: ModeKind
+raid,        brawl, shootout, escape, zoo, ambush, exploration, explorationSurvival, safari, safariSurvival, battle, battleSurvival, defense, screensaverRaid, screensaverBrawl, screensaverShootout, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverExploration, screensaverSafari :: ModeKind
 
 -- What other symmetric (two only-one-moves factions) and asymmetric vs crowd
 -- scenarios make sense (e.g., are good for a tutorial or for standalone
@@ -135,7 +135,16 @@ safari = ModeKind  -- easter egg available only via screensaver
 
 -- * Testing modes
 
-safariSurvival = ModeKind  -- testing scenario
+explorationSurvival = ModeKind
+  { msymbol = 'd'
+  , mname   = "crawl survival"
+  , mfreq   = [("crawl survival", 1)]
+  , mroster = rosterExplorationSurvival
+  , mcaves  = cavesExploration
+  , mdesc   = "Lure the human intruders deeper and deeper."
+  }
+
+safariSurvival = ModeKind
   { msymbol = 'u'
   , mname   = "safari survival"
   , mfreq   = [("safari survival", 1)]
@@ -144,7 +153,7 @@ safariSurvival = ModeKind  -- testing scenario
   , mdesc   = "In this simulation you'll discover the joys of being hunted among the most exquisite of Earth's flora and fauna, both animal and semi-intelligent."
   }
 
-battle = ModeKind  -- testing scenario
+battle = ModeKind
   { msymbol = 'b'
   , mname   = "battle"
   , mfreq   = [("battle", 1)]
@@ -153,7 +162,7 @@ battle = ModeKind  -- testing scenario
   , mdesc   = "Odds are stacked against those that unleash the horrors of abstraction."
   }
 
-battleSurvival = ModeKind  -- testing scenario
+battleSurvival = ModeKind
   { msymbol = 'i'
   , mname   = "battle survival"
   , mfreq   = [("battle survival", 1)]
@@ -162,7 +171,7 @@ battleSurvival = ModeKind  -- testing scenario
   , mdesc   = "Odds are stacked for those that breathe mathematics."
   }
 
-defense = ModeKind  -- testing scenario; perhaps real scenario in the future
+defense = ModeKind  -- perhaps a real scenario in the future
   { msymbol = 'e'
   , mname   = "defense"
   , mfreq   = [("defense", 1)]
@@ -229,7 +238,7 @@ screensaverSafari = safari
               screensave (AutoLeader False True) rosterSafari
   }
 
-rosterRaid, rosterBrawl, rosterShootout, rosterEscape, rosterZoo, rosterAmbush, rosterExploration, rosterSafari, rosterSafariSurvival, rosterBattle, rosterBattleSurvival, rosterDefense :: Roster
+rosterRaid, rosterBrawl, rosterShootout, rosterEscape, rosterZoo, rosterAmbush, rosterExploration, rosterExplorationSurvival, rosterSafari, rosterSafariSurvival, rosterBattle, rosterBattleSurvival, rosterDefense :: Roster
 
 rosterRaid = Roster
   { rosterList = [ ( playerHero {fhiCondPoly = hiRaid}
@@ -340,6 +349,21 @@ rosterExploration = Roster
   , rosterAlly = [ ("Alien Hierarchy", "Animal Kingdom")
                  , ("Alien Hierarchy", "Robot Anarchy")
                  , ("Robot Anarchy", "Animal Kingdom") ] }
+
+rosterExplorationSurvival = rosterExploration
+  { rosterList = [ ( playerHero { fleaderMode =
+                                    LeaderAI $ AutoLeader True False
+                                , fhasUI = False }
+                   , [(3, 3, "hero")] )
+                 , ( playerMonster
+                   , [] )
+                 , ( playerAnimal {fhasUI = True}
+                   , -- Fun from the start to avoid empty initial level:
+                     [ (3, 2 + d 2, "animal")  -- many, because no spawning
+                     -- Optional huge battle at the end:
+                     , (12, 100, "mobile animal") ] )
+                 , ( playerRobot
+                   , [(3, 2 + d 2, "robot")] ) ] } -- many, because no spawning
 
 -- No horrors faction needed, because spawned heroes land in civilian faction.
 rosterSafari = Roster
