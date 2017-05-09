@@ -286,7 +286,7 @@ rosterShootout = Roster
                                     , fcanEscape = False
                                     , fhiCondPoly = hiDweller }
                    , [(5, 1, "scout hero"), (5, 2, "ranger hero")] )
-                 , (playerRobot, [])  -- neutral
+                 , (playerRobot {fneverEmpty = True}, [])  -- neutral
                  , (playerHorror, []) ]
   , rosterEnemy = [ ("Spacefarer", "Red Collar Bro")
                   , ("Spacefarer", "Horror Den")
@@ -411,7 +411,7 @@ rosterBattle = Roster
                    , [(5, 35, "mobile monster")] )
                  , ( playerAnimal {fneverEmpty = True}
                    , [(5, 20, "mobile animal")] )
-                 , ( playerRobot
+                 , ( playerRobot {fneverEmpty = True}
                    , [(5, 15, "mobile robot")] ) ]
   , rosterEnemy = [ ("Spacefarer", "Alien Hierarchy")
                   , ("Spacefarer", "Animal Kingdom")
@@ -432,7 +432,7 @@ rosterBattleSurvival = rosterBattle
                  , ( playerAnimal { fneverEmpty = True
                                   , fhasUI = True }
                    , [(5, 20, "mobile animal")] )
-                 , ( playerRobot
+                 , ( playerRobot {fneverEmpty = True}
                    , [(5, 15, "mobile robot")] ) ] }
 
 rosterDefense = rosterExploration
