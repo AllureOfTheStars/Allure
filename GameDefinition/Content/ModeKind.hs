@@ -50,7 +50,7 @@ raid = ModeKind  -- mini-crawl
   , mfreq   = [("raid", 1), ("campaign scenario", 1)]
   , mroster = rosterRaid
   , mcaves  = cavesRaid
-  , mdesc   = "The Neptune Area Administration confirms isolated spottings of many kinds of vermin in non-residential areas of the Triton moon largest city. In other words, Triton City sewers need purging. The first person to break through to the other exit will be paid 100 gold grains. The Administration urges participants not to fight each other."
+  , mdesc   = "Neptune Area Administration confirms isolated oversize vermin spottings in non-residential zones of the Triton moon's largest city. In other words, Triton City sewers need purging. The first person to break through to the other exit will be paid 100 gold grains. The Administration urges participants not to fight each other."
   }
 
 brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
@@ -59,7 +59,7 @@ brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
   , mfreq   = [("brawl", 1), ("campaign scenario", 1)]
   , mroster = rosterBrawl
   , mcaves  = cavesBrawl
-  , mdesc   = "\"You scoundrel! You cheated in the sewers. Come alone to the woody biosphere behind the saloon at noon, if you dare. Given that I win, I take back the gold. Otherwise, you get the scrapping rights for the giant spaceliner's hull in orbit. Yes, it's mine, you tramp; here are the papers.\""
+  , mdesc   = "\"You scoundrel! You cheated in the sewers. Come alone to the woody biosphere behind the saloon at noon, if you dare. Given that I win, I take back all your gold. Otherwise, you get the scrapping rights for the giant spaceliner's hull in orbit. Yes, it's mine, you tramp; here's the docking transmitter and the paperwork.\""
   }
 
 -- The trajectory tip is important because of tactics of scout looking from
@@ -76,7 +76,7 @@ shootout = ModeKind  -- sparse ranged in daylight
   , mfreq   = [("shootout", 1), ("campaign scenario", 1)]
   , mroster = rosterShootout
   , mcaves  = cavesShootout
-  , mdesc   = "The fight crashes over to a nearby mechanized farm. Law enforcement, crippled by the ban on firearms, won't show up until only wounded and dying remain to be revived and locked up. Farm supplies, scattered around, just beg to be flung at foes as improvised missiles. Intense light makes it easy to aim and also to discern trajectory of soaring items (point at projectiles with the crosshair in aiming mode)."
+  , mdesc   = "The fight crashes over to a nearby mechanized farm. Law enforcement, crippled by the ban on firearms, won't show up until only wounded and dying remain to be revived and locked up. Farm supplies, scattered around, beg to be flung at foes as improvised missiles. Intense light makes it easy to aim and to discern trajectory of soaring items (point at projectiles with the crosshair in aiming mode)."
   }
 
 escape = ModeKind  -- asymmetric ranged and stealth race at night
@@ -85,7 +85,7 @@ escape = ModeKind  -- asymmetric ranged and stealth race at night
   , mfreq   = [("escape", 1), ("campaign scenario", 1)]
   , mroster = rosterEscape
   , mcaves  = cavesEscape
-  , mdesc   = "Bloodied spaceship deed in hand nonwithstanding, one can take possesion of the derelict spaceliner only via a shuttle from the Triton Spaceport across the city. After hours of being chased in the opposite direction towards the border wall, you sneak back and make a desperate dash through the very HQ of the enemy. Any valuables you find in this public park turned miscreant lair will be fair compensation for your losses, but you need to reach the exit before the foes find you."
+  , mdesc   = "Bloodied spaceship deed in hand nonwithstanding, one can take possesion of the derelict spaceliner only via a shuttle from the Triton Spaceport across the city. After hours of being chased in the opposite direction towards the border wall, you sneak back and make a desperate dash through the very territory of the gang. Any valuables you come upon in this public park turned miscreant lair will be fair compensation for your personal losses, but you need to find the exit before the foes find you."
   }
 
 zoo = ModeKind  -- asymmetric crowd melee at night
@@ -94,7 +94,7 @@ zoo = ModeKind  -- asymmetric crowd melee at night
   , mfreq   = [("zoo", 1), ("campaign scenario", 1)]
   , mroster = rosterZoo
   , mcaves  = cavesZoo
-  , mdesc   = "As justified and satisfying as setting enemy lair on fire was, it backfired by immediatelly spreading to the public zoo on your path. Crazed animals mill around while the flames ignite greenery and consume nets, cages and didactic equipment. Certainly nobody is willing to pursue you any more, whether that's a good sign or bad."
+  , mdesc   = "As justified and satisfying as setting the enemy headquarters on fire has been, it backfires by immediatelly spreading to the public zoo on the only path to the spaceport. Crazed animals mill around while the flames ignite greenery and consume nets, cages and security equipment. Whether that's a good sign or bad, apparently nobody is willing to pursue you any more."
   }
 
 -- The tactic is to sneak in the dark, highlight enemy with thrown torches
@@ -121,7 +121,7 @@ exploration = ModeKind
               , ("campaign scenario", 1) ]
   , mroster = rosterExploration
   , mcaves  = cavesExploration
-  , mdesc   = "You got stranded while happily looting the blasted bridge of an extravagantly luxurious, old, inert cruise liner. The spaceship, supposedly long deserted and barely sustaining life support, suddenly disengaged the shuttle you came in, manoeuvred off Triton orbit and now heads away from Neptune. Your current plan is to break through, exploring and gathering spoils, to the auxiliary engineering hub and shuttle bay somewhere among the giant spaceship's uppermost decks. This will yet turn your biggest victory. There are animal cries down below and ominous silence up above."
+  , mdesc   = "You get stranded while looting, with utmost satisfaction, the blasted bridge of an old and extravagantly luxurious cruise liner. The inert spaceship, supposedly long deserted and barely able to sustain life support, suddenly releases the shuttle you came in, lights up its ion engine, manoeuvres off Triton orbit and heads away from Neptune. Your current plan is to break through to the auxiliary engineering and docking hub somewhere among the giant spaceship's uppermost decks. You are ready to explore and determined to use the opportunity to increase your spoils. There are animal cries down below and ominous silence up above."
   }
 
 safari = ModeKind  -- easter egg available only via screensaver
