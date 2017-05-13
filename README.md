@@ -36,10 +36,11 @@ The game UI can be configured via a config file.
 A file with the default settings, the same as built into the binary, is in
 [GameDefinition/config.ui.default](GameDefinition/config.ui.default).
 When the game is run for the first time, the file is copied to the official
-location, which is `~/.Allure/config.ui.ini` on Linux and
+location, which is `~/.Allure/config.ui.ini` on Linux,
 `C:\Users\<username>\AppData\Roaming\Allure\config.ui.ini`
 (or `C:\Documents And Settings\user\Application Data\Allure\config.ui.ini`
-or something else altogether) on Windows.
+or something else altogether) on Windows, and in RMB menu, under
+`Inspect/Application/Local Storage` when run inside the Chrome browser.
 
 Screen font can be changed and enlarged by editing the config file
  at its official location or by CTRL-right-clicking on the game window.
