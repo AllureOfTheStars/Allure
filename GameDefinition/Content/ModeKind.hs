@@ -85,7 +85,7 @@ escape = ModeKind  -- asymmetric ranged and stealth race at night
   , mfreq   = [("escape", 1), ("campaign scenario", 1)]
   , mroster = rosterEscape
   , mcaves  = cavesEscape
-  , mdesc   = "Bloodied spaceship deed in hand nonwithstanding, one can take possesion of the derelict spaceliner only via a shuttle from the Triton Spaceport across the city. After hours of being chased in the opposite direction towards the border wall, you sneak back and make a desperate dash through the very territory of the gang. Any valuables you come upon in this public park turned miscreant lair will be fair compensation for your personal losses, but you need to find the exit before the foes find you."
+  , mdesc   = "Bloodied spaceship deed in hand notwithstanding, one can take possession of the derelict spaceliner only via a shuttle from the Triton Spaceport across the city. After hours of being chased in the opposite direction towards the border wall, you sneak back and make a desperate dash through the very territory of the gang. Any valuables you come upon in this public park turned miscreant lair will be fair compensation for your personal losses, but you need to find the exit before the foes find you."
   }
 
 zoo = ModeKind  -- asymmetric crowd melee at night
@@ -94,7 +94,7 @@ zoo = ModeKind  -- asymmetric crowd melee at night
   , mfreq   = [("zoo", 1), ("campaign scenario", 1)]
   , mroster = rosterZoo
   , mcaves  = cavesZoo
-  , mdesc   = "As justified and satisfying as setting the enemy headquarters on fire has been, it backfires by immediatelly spreading to the public zoo on the only path to the spaceport. Crazed animals mill around while the flames ignite greenery and consume nets, cages and security equipment. Whether that's a good sign or bad, apparently nobody is willing to pursue you any more."
+  , mdesc   = "As justified and satisfying as setting the enemy headquarters on fire has been, it backfires by immediately spreading to the public zoo on the only path to the spaceport. Crazed animals mill around while the flames ignite greenery and consume nets, cages and security equipment. Whether that's a good sign or bad, apparently nobody is willing to pursue you any more."
   }
 
 -- The tactic is to sneak in the dark, highlight enemy with thrown torches
