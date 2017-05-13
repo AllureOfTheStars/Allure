@@ -66,7 +66,7 @@ claw = fist
   , iverbHit = "hook"
   , idamage  = toDmg $ 2 * d 1
   , iaspects = [Timeout $ 4 + d 4]
-  , ieffects = [Recharging (toOrganGameTurn "slow 10" 2)]
+  , ieffects = [Recharging (toOrganGameTurn "slowed" 2)]
   , idesc    = ""
   }
 smallClaw = fist
@@ -191,7 +191,7 @@ venomTooth = fist
   , iverbHit = "bite"
   , idamage  = toDmg $ 2 * d 1
   , iaspects = [Timeout $ 5 + d 3]
-  , ieffects = [Recharging (toOrganGameTurn "slow 10" (3 + d 3))]
+  , ieffects = [Recharging (toOrganGameTurn "slowed" (3 + d 3))]
   , idesc    = ""
   }
 venomFang = fist
