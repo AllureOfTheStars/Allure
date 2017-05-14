@@ -305,7 +305,7 @@ flask = ItemKind
   , iflavour = zipLiquid darkCol ++ zipPlain darkCol ++ zipFancy darkCol
                ++ zipLiquid brightCol
   , icount   = 1
-  , irarity  = [(1, 8), (10, 5)]
+  , irarity  = [(1, 7), (10, 4)]
   , iverbHit = "splash"
   , iweight  = 500
   , idamage  = toDmg 0
@@ -316,7 +316,7 @@ flask = ItemKind
   , ikit     = []
   }
 flask1 = flask
-  { irarity  = [(10, 5)]
+  { irarity  = [(10, 4)]
   , ieffects = [ ELabel "of strength brew"
                , toOrganActorTurn "strengthened" (20 + d 5)
                , toOrganNone "regenerating"
@@ -343,14 +343,14 @@ flask5 = flask
                , OnSmash (Explode "red paint") ]
   }
 flask6 = flask
-  { irarity  = [(10, 10)]
+  { irarity  = [(10, 9)]
   , ieffects = [ ELabel "of resolution"
                , toOrganActorTurn "resolute" (200 + d 50)
                    -- long, for scouting and has to recharge
                , OnSmash (Explode "resolution dust") ]
   }
 flask7 = flask
-  { irarity  = [(10, 5)]
+  { irarity  = [(10, 4)]
   , ieffects = [ ELabel "of haste brew"
                , toOrganActorTurn "hasted" (20 + d 5)
                , OnSmash (Explode "blast 20")
@@ -364,20 +364,20 @@ flask8 = flask
                , OnSmash (Explode "slowness mist") ]
   }
 flask9 = flask
-  { irarity  = [(10, 5)]
+  { irarity  = [(10, 4)]
   , ieffects = [ ELabel "of eye drops"
                , toOrganActorTurn "far-sighted" (40 + d 10)
                , OnSmash (Explode "eye drop") ]
   }
 flask10 = flask
-  { irarity  = [(10, 3)]
+  { irarity  = [(10, 2)]
   , ieffects = [ ELabel "of smelly concoction"
                , toOrganActorTurn "keen-smelling" (40 + d 10)
                , DetectActor 5
                , OnSmash (Explode "smelly droplet") ]
   }
 flask11 = flask
-  { irarity  = [(10, 5)]
+  { irarity  = [(10, 4)]
   , ieffects = [ ELabel "of cat tears"
                , toOrganActorTurn "shiny-eyed" (40 + d 10)
                , OnSmash (Explode "eye shine") ]
@@ -400,7 +400,7 @@ flask13 = flask
 -- healing effect is enough. OTOH, throwing a harmful flask at many enemies
 -- at once is not easy to arrange, so these explostions can stay powerful.
 flask14 = flask
-  { irarity  = [(1, 15), (10, 5)]
+  { irarity  = [(1, 14), (10, 4)]
   , ieffects = [ ELabel "of regeneration brew"
                , toOrganNone "regenerating"
                , OnSmash (Explode "healing mist") ]
@@ -411,20 +411,20 @@ flask15 = flask
                , OnSmash (Explode "poison cloud") ]
   }
 flask16 = flask
-  { irarity  = [(1, 15), (10, 5)]
+  { irarity  = [(1, 14), (10, 4)]
   , ieffects = [ ELabel "of weak poison"
                , toOrganNone "weakly poisoned"
                , OnSmash (Explode "poison cloud") ]
   }
 flask17 = flask
-  { irarity  = [(10, 5)]
+  { irarity  = [(10, 4)]
   , ieffects = [ ELabel "of slow resistance"
                , toOrganNone "slow resistant"
                , OnSmash (Explode "blast 10")
                , OnSmash (Explode "anti-slow mist") ]
   }
 flask18 = flask
-  { irarity  = [(10, 5)]
+  { irarity  = [(10, 4)]
   , ieffects = [ ELabel "of poison resistance"
                , toOrganNone "poison resistant"
                , OnSmash (Explode "antidote mist") ]
@@ -452,7 +452,7 @@ potion = ItemKind
   , ifreq    = [("useful", 100), ("potion", 100), ("any vial", 100)]
   , iflavour = zipLiquid brightCol ++ zipPlain brightCol ++ zipFancy brightCol
   , icount   = 1
-  , irarity  = [(1, 11), (10, 8)]
+  , irarity  = [(1, 10), (10, 7)]
   , iverbHit = "splash"
   , iweight  = 200
   , idamage  = toDmg 0
@@ -468,17 +468,17 @@ potion1 = potion
   }
 potion2 = potion
   { ifreq    = [("treasure", 100)]
-  , irarity  = [(6, 10), (10, 10)]
+  , irarity  = [(6, 9), (10, 9)]
   , ieffects = [ Unique, ELabel "of Attraction", Impress, RefillCalm (-20)
                , OnSmash (Explode "pheromone") ]
   }
 potion3 = potion
-  { irarity  = [(1, 10)]
+  { irarity  = [(1, 9)]
   , ieffects = [ RefillHP 5, DropItem 1 maxBound COrgan "poisoned"
                , OnSmash (Explode "healing mist") ]
   }
 potion4 = potion
-  { irarity  = [(10, 10)]
+  { irarity  = [(10, 9)]
   , ieffects = [ RefillHP 10, DropItem 1 maxBound COrgan "poisoned"
                , OnSmash (Explode "healing mist 2") ]
   }
@@ -493,7 +493,7 @@ potion5 = potion
                                 , Explode "blast 10" ]) ]
   }
 potion6 = potion
-  { irarity  = [(3, 3), (10, 6)]
+  { irarity  = [(3, 2), (10, 5)]
   , ieffects = [ Impress
                , OneOf [ RefillCalm (-60)
                        , RefillHP 20, RefillHP 10, Burn 10
@@ -507,23 +507,23 @@ potion6 = potion
                                 , Explode "blast 20" ]) ]
   }
 potion7 = potion
-  { irarity  = [(1, 12), (10, 5)]
+  { irarity  = [(1, 11), (10, 4)]
   , ieffects = [ DropItem 1 maxBound COrgan "poisoned"
                , OnSmash (Explode "antidote mist") ]
   }
 potion8 = potion
-  { irarity  = [(1, 10)]
+  { irarity  = [(1, 9)]
   , ieffects = [ DropItem 1 maxBound COrgan "temporary condition"
                , OnSmash (Explode "blast 10") ]
   }
 potion9 = potion
-  { irarity  = [(10, 10)]
+  { irarity  = [(10, 9)]
   , ieffects = [ DropItem maxBound maxBound COrgan "temporary condition"
                , OnSmash (Explode "blast 20") ]
   }
 potion10 = potion
   { ifreq    = [("treasure", 100)]
-  , irarity  = [(10, 5)]
+  , irarity  = [(10, 4)]
   , ieffects = [ Unique, ELabel "of Love", RefillHP 60
                , Impress, RefillCalm (-60)
                , OnSmash (Explode "healing mist 2")
@@ -538,7 +538,7 @@ scroll = ItemKind
   , ifreq    = [("useful", 100), ("any scroll", 100)]
   , iflavour = zipFancy stdCol ++ zipPlain darkCol  -- arcane and old
   , icount   = 1
-  , irarity  = [(1, 15), (10, 12)]
+  , irarity  = [(1, 14), (10, 11)]
   , iverbHit = "thump"
   , iweight  = 20
   , idamage  = toDmg 0
@@ -551,17 +551,17 @@ scroll = ItemKind
   }
 scroll1 = scroll
   { ifreq    = [("treasure", 100)]
-  , irarity  = [(5, 10), (10, 10)]  -- mixed blessing, so available early
+  , irarity  = [(5, 9), (10, 9)]  -- mixed blessing, so available early
   , ieffects = [ Unique, ELabel "of Reckless Beacon"
                , Summon "hero" 1, Summon "mobile animal" (2 + d 2) ]
   }
 scroll2 = scroll
-  { irarity  = [(1, 3)]
+  { irarity  = [(1, 2)]
   , ieffects = [ ELabel "of greed", Teleport 20, DetectItem 10
                , RefillCalm (-100) ]
   }
 scroll3 = scroll
-  { irarity  = [(1, 5), (10, 3)]
+  { irarity  = [(1, 4), (10, 2)]
   , ieffects = [Ascend True]
   }
 scroll4 = scroll
@@ -569,7 +569,7 @@ scroll4 = scroll
                       , DetectActor 10, DetectItem 10 ]]
   }
 scroll5 = scroll
-  { irarity  = [(10, 15)]
+  { irarity  = [(10, 14)]
   , ieffects = [ Impress
                , OneOf [ Teleport 20, Ascend False, Ascend True
                        , Summon "hero" 1, Summon "mobile animal" 2
@@ -583,24 +583,24 @@ scroll7 = scroll
   { ieffects = [Teleport 20]
   }
 scroll8 = scroll
-  { irarity  = [(10, 3)]
+  { irarity  = [(10, 2)]
   , ieffects = [InsertMove $ 1 + d 2 + dl 2]
   }
 scroll9 = scroll
   { ieffects = [ELabel "of scientific explanation", Identify]
   }
 scroll10 = scroll
-  { irarity  = [(10, 10)]
+  { irarity  = [(10, 9)]
   , ieffects = [ ELabel "molecular reconfiguration"
                , PolyItem, Explode "firecracker 7" ]
   }
 scroll11 = scroll
   { ifreq    = [("treasure", 100)]
-  , irarity  = [(6, 10), (10, 10)]
+  , irarity  = [(6, 9), (10, 9)]
   , ieffects = [Unique, ELabel "of Prisoner Release", Summon "hero" 1]
   }
 scroll12 = scroll
-  { irarity  = [(1, 10), (10, 5)]
+  { irarity  = [(1, 9), (10, 4)]
   , ieffects = [DetectHidden 10]
   }
 scroll13 = scroll
