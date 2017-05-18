@@ -220,7 +220,7 @@ shallow2empty = empty
 shallow1empty = shallow2empty  -- TODO: replace some rooms with oriels?
   { cname         = "Outermost deck"
   , cfreq         = [("outermost", 100)]
-  , cactorCoeff   = 20
+  , cactorCoeff   = 10
   , cactorFreq    = [("animal", 8), ("robot", 2), ("immobile robot", 90)]
       -- The medbot faucets on lvl 1 act like HP resets. Needed to avoid
       -- cascading failure, if the particular starting conditions were
