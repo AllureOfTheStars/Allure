@@ -245,7 +245,7 @@ raid = rogue
   , cmaxVoid      = 1%10
   , cactorCoeff   = 1000  -- deep level with no kit, so slow spawning
   , cactorFreq    = [("animal", 50), ("robot", 50)]
-  , citemNum      = 5 * d 8  -- just one level, hard enemies, treasure
+  , citemNum      = 6 * d 8  -- just one level, hard enemies, treasure
   , citemFreq     = [("useful", 33), ("gem", 33), ("currency", 33)]
   , cescapeGroup  = Just "escape up"
   }

@@ -117,7 +117,7 @@ horn = fist
   , idesc    = ""
   }
 
--- * Monster weapon organs
+-- * Special weapon organs
 
 tentacle = fist
   { iname    = "tentacle"
@@ -127,9 +127,6 @@ tentacle = fist
   , idamage  = toDmg $ 4 * d 1
   , idesc    = ""
   }
-
--- * Special weapon organs
-
 thorn = fist
   { iname    = "thorn"
   , ifreq    = [("thorn", 100)]

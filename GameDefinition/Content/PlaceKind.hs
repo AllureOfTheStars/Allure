@@ -377,7 +377,7 @@ staircase3 = staircaseLift
                , "·····"
                , "·<·>·"
                , "·····"
-               , "#·O·#"
+               , "#·I·#"
                ]
   }
 staircase4 = staircaseLift
@@ -405,7 +405,7 @@ staircase6 = staircase
 staircase7 = staircase
   { pfreq    = [("staircase", 100)]
   , pfence   = FGround
-  , ptopLeft = [ "#·I·<·>·O·#"
+  , ptopLeft = [ "#·I·<·>·I·#"
                ]
   }
 staircase8 = staircase
@@ -470,7 +470,7 @@ staircase15 = staircaseLift
   { pfreq    = [("staircase lift", 1000)]
   , pfence   = FWall
   , ptopLeft = [ "···········"
-               , "#·O·<·>·I·#"
+               , "#·I·<·>·I·#"
                , "···········"
                ]
   }
