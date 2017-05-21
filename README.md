@@ -1,78 +1,96 @@
-Allure of the Stars [![Build Status](https://travis-ci.org/AllureOfTheStars/Allure.svg?branch=master)](https://travis-ci.org/AllureOfTheStars/Allure)[![Build Status](https://drone.io/github.com/AllureOfTheStars/Allure/status.png)](https://drone.io/github.com/AllureOfTheStars/Allure/latest)
+Allure of the Stars
 ===================
 
-[Allure of the Stars] [6] is a near-future Sci-Fi [roguelike] [2]
-and tactical squad game. Have a look at [PLAYING.md](GameDefinition/PLAYING.md)
-or jump straight into the fray.
+[![Build Status](https://travis-ci.org/AllureOfTheStars/Allure.svg?branch=master)](https://travis-ci.org/AllureOfTheStars/Allure)
+[![Hackage](https://img.shields.io/hackage/v/Allure.svg)](https://hackage.haskell.org/package/Allure)
+[![Join the chat at https://gitter.im/LambdaHack/LambdaHack](https://badges.gitter.im/LambdaHack/LambdaHack.svg)](https://gitter.im/LambdaHack/LambdaHack?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+Allure of the Stars[6] is a near-future Sci-Fi roguelike[2]
+and tactical squad game.
+Try out the browser version of the game
+[here](http://allureofthestars.com/play)!
 
 ![gameplay screenshot](https://raw.githubusercontent.com/AllureOfTheStars/media/master/screenshot/campaign3.png)
 
-The game is written in [Haskell] [1] using the [LambdaHack] [10]
+Please see the changelog file for recent improvements
+and the issue tracker for short-term plans. Long term goals
+are high replayability and auto-balancing through procedural
+content generation and persistent content modification
+based on player behaviour. Contributions are welcome.
+
+The game is written in Haskell[1] using the LambdaHack [10]
 roguelike game engine. Long-term goals of the project are high
 replayability and auto-balancing through procedural content generation
 and persistent content modification based on player behaviour.
 
 
-Installation from binary archives
----------------------------------
+Game installation from binary archives
+--------------------------------------
+
+The game runs rather slowly in the browser and you are limited to only
+one font, though it's scalable, so after trying out the game, you may
+prefer to use a native binary for your architecture, if it exists.
 
 Pre-compiled game binaries for some platforms are available through
-the [release page] [11] and from the [Nix Packages Collection] [12].
-To manually install a binary archive, make sure you have the GTK
-libraries suite on your system, unpack the Allure archive
-and run the executable in the unpacked directory.
+the release page[11] and from the Nix Packages Collection[12].
+To use a pre-compiled binary archive, unpack it and run the executable
+in the unpacked directory.
 
-On Windows, if you don't already have GTK installed (e.g., for the GIMP
-picture editor) please download and run (with default settings)
-the GTK installer from
-
-http://sourceforge.net/projects/gtk-win/
+On Linux, make sure you have the SDL2 libraries suite installed on your system
+(e.g., libsdl2, libsdl2-ttf). For Windows, the SDL2 library is already
+contained in the game's binary archive.
 
 
 Screen and keyboard configuration
 ---------------------------------
 
 The game UI can be configured via a config file.
-A file with the default settings, the same as built into the binary, is in
-[GameDefinition/config.ui.default](GameDefinition/config.ui.default).
-When the game is run for the first time, the file is copied to the official
-location, which is `~/.Allure/config.ui.ini` on Linux,
-`C:\Users\<username>\AppData\Roaming\Allure\config.ui.ini`
-(or `C:\Documents And Settings\user\Application Data\Allure\config.ui.ini`
+A file with the default settings, the same that is built into the binary,
+is in [GameDefinition/config.ui.default](GameDefinition/config.ui.default).
+When the game is run for the first time, the file is copied to the default
+user data folder, which is `~/.Allure/` on Linux,
+`C:\Users\<username>\AppData\Roaming\Allure\`
+(or `C:\Documents And Settings\user\Application Data\Allure\`
 or something else altogether) on Windows, and in RMB menu, under
 `Inspect/Application/Local Storage` when run inside the Chrome browser.
 
-Screen font can be changed and enlarged by editing the config file
- at its official location or by CTRL-right-clicking on the game window.
+Screen font can be changed by editing the config file in the user
+data folder. For a small game window, the highly optimized
+bitmap fonts 16x16x.fon, 8x8x.fon and 8x8xb.fon are the best,
+but for larger window sizes or if you require international characters
+(e.g. to give custom names to player characters), a scalable font
+is the only option. The game window automatically scales according
+to the specified font size.
 
-If you use the numeric keypad, use the NumLock key on your keyboard
-to toggle the game keyboard mode. With NumLock off, you walk with the numeric
-keys and run with SHIFT (or CONTROL) and the keys. This mode is probably
-the best if you use mouse for running. When you turn NumLock on,
-the reversed key setup enforces good playing habits by setting as the default
-the run command (which automatically stops at threats, keeping you safe)
-and requiring SHIFT (or CONTROL) for the error-prone step by step walking.
-
-If you don't have the numeric keypad, you can use laptop keys (uk8o79jl)
-or you can enable the Vi keys (aka roguelike keys) in the config file.
+If you don't have a numeric keypad, you can use mouse or laptop keys
+(uk8o79jl) for movement or you can enable the Vi keys (aka roguelike keys)
+in the config file. If numeric keypad doesn't work, toggling
+the Num Lock key sometimes helps. If running with the Shift key
+and keypad keys doesn't work, try Control key instead.
+The game is fully playable with mouse only, as well as with keyboard only,
+but the most efficient combination for some players is mouse for go-to,
+inspecting, and aiming at distant positions and keyboard for everything else.
 
 
 Compilation from source
 -----------------------
 
-If you want to compile your own binaries from the source code,
+If you want to compile native binaries from the source code,
 use Cabal (already a part of your OS distribution, or available within
-[The Haskell Platform] [7]), which also takes care of all the dependencies.
-You also need the GTK libraries for your OS. On Linux, remember to install
-the -dev versions as well. On Windows follow [the same steps as for Wine] [13].
-On OSX, if you encounter problems, you may want to
-[compile the GTK libraries from sources] [14].
+The Haskell Platform[7]), which also takes care of all the dependencies.
+
+The recommended frontend is based on SDL2, so you need the SDL2 libraries
+for your OS. On Linux, remember to install the -dev versions as well,
+e.g., libsdl2-dev and libsdl2-ttf-dev on Ubuntu Linux 16.04.
+(Compilation to Javascript for the browser is more complicated
+and requires the ghcjs[15] compiler and optionally the Google Closure
+Compiler[16] as well. See the [Makefile](Makefile) for more details.)
 
 The latest official version of the game can be downloaded,
-compiled and installed automatically by Cabal from [Hackage] [3] as follows
+compiled for SDL2 and installed automatically by Cabal from Hackage[3]
+as follows
 
     cabal update
-    cabal install gtk2hs-buildtools
     cabal install Allure --force-reinstalls
 
 For a newer version, install a matching LambdaHack library snapshot
@@ -84,14 +102,21 @@ Compatibility notes
 
 If you are using a terminal frontend, numeric keypad may not work
 correctly depending on versions of the libraries, terminfo and terminal
-emulators. The curses frontend is not fully supported due to the limitations
+emulators. Toggling the Num Lock key may help.
+
+The curses frontend is not fully supported due to the limitations
 of the curses library. With the vty frontend started in an xterm,
-CTRL-keypad keys for running seem to work OK, but on rxvt they do not.
-The commands that require pressing CTRL and SHIFT together won't
+Control-keypad keys for running seem to work OK, but on rxvt they do not.
+The commands that require pressing Control and Shift together won't
 work either, but fortunately they are not crucial to gameplay.
+
 For movement, laptop (uk8o79jl) and Vi keys (hjklyubn, if enabled
-in config.ui.ini) should work everywhere. GTK works fine, too, both
-with numeric keypad and with mouse.
+in config.ui.ini) should work everywhere. GTK and SDL2 work fine, too,
+both regarding numeric keypad and mouse. Display on SDL2 and in the browser
+is superior to all the other frontends, due to custom square font
+and less intrusive ways of highlighting interesting squares.
+When running on browser, leave the program enough time to save game progress
+properly before killing the browser, or the savefiles may get corrupted.
 
 
 Testing and debugging
@@ -99,10 +124,10 @@ Testing and debugging
 
 The [Makefile](Makefile) contains many sample test commands.
 Numerous tests that use the screensaver game modes (AI vs. AI)
-and the dumb `stdout` frontend are gathered in `make test`.
-Of these, travis runs `test-travis-*` on each push to the repo.
+and the teletype frontend are gathered in `make test`.
+Of these, travis runs `test-travis` on each push to github.
 Test commands with prefix `frontend` start AI vs. AI games
-with the standard, user-friendly gtk frontend.
+with the standard, user-friendly frontend.
 
 Run `Allure --help` to see a brief description of all debug options.
 Of these, `--sniffIn` and `--sniffOut` are very useful (though verbose
@@ -115,7 +140,7 @@ merged at some point).
 Further information
 -------------------
 
-For more information, visit the [wiki] [4]
+For more information, visit the wiki[4]
 and see [PLAYING.md](GameDefinition/PLAYING.md), [CREDITS](CREDITS)
 and [LICENSE](LICENSE).
 
@@ -151,8 +176,11 @@ If not, see <http://www.gnu.org/licenses/>.
 [6]: http://allureofthestars.com
 [7]: http://www.haskell.org/platform
 
+
 [10]: http://github.com/LambdaHack/LambdaHack
 [11]: https://github.com/AllureOfTheStars/Allure/releases/latest
-[12]: http://hydra.cryp.to/search?query=Allure
+[12]: http://hydra.nixos.org/search?query=Allure
 [13]: http://www.haskell.org/haskellwiki/GHC_under_Wine#Code_that_uses_gtk2hs
 [14]: http://www.edsko.net/2014/04/27/haskell-including-gtk-on-mavericks
+[15]: https://github.com/ghcjs/ghcjs
+[16]: https://www.npmjs.com/package/google-closure-compiler
