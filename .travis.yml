@@ -180,27 +180,27 @@ install:
      mkdir -p $HOME/.ghc $HOME/.cabal/lib $HOME/.cabal/share $HOME/.cabal/bin;
      if [ $GTKVTY = "gtk" ]; then
        cabal install --constraint="binary>=0.8" --force-reinstalls gtk2hs-buildtools;
-       cabal install -fgtk --enable-tests --enable-benchmarks --force-reinstalls;
+       travis_wait cabal install -fgtk --enable-tests --enable-benchmarks --force-reinstalls;
      elif [ $GTKVTY = "gtk-v2" ]; then
        cabal install -v2 gtk2hs-buildtools;
-       cabal install -v2 -fgtk --enable-tests --enable-benchmarks;
+       travis_wait cabal install -v2 -fgtk --enable-tests --enable-benchmarks;
      elif [ $GTKVTY = "sdl" ]; then
-       cabal install -fsdl --enable-tests --enable-benchmarks;
+       travis_wait cabal install -fsdl --enable-tests --enable-benchmarks;
      elif [ $GTKVTY = "sdl-v2" ]; then
-       cabal install -v2 -fsdl --enable-tests --enable-benchmarks;
+       travis_wait cabal install -v2 -fsdl --enable-tests --enable-benchmarks;
      elif [ $GTKVTY = "vty" ]; then
-       cabal install -fvty --enable-tests --enable-benchmarks;
+       travis_wait cabal install -fvty --enable-tests --enable-benchmarks;
      elif [ $GTKVTY = "curses" ]; then
-       cabal install -fcurses -frelease --enable-tests --enable-benchmarks;
+       travis_wait cabal install -fcurses -frelease --enable-tests --enable-benchmarks;
      elif [ $GTKVTY = "noopt" ]; then
        cabal install gtk2hs-buildtools;
-       cabal install -fgtk --enable-tests --enable-benchmarks;
+       travis_wait cabal install -fgtk --enable-tests --enable-benchmarks;
      elif [ $GTKVTY = "opt2" ]; then
        cabal install gtk2hs-buildtools;
-       cabal install -fgtk --enable-tests --enable-benchmarks;
+       travis_wait cabal install -fgtk --enable-tests --enable-benchmarks;
      elif [ $GTKVTY = "asserts" ]; then
        cabal install gtk2hs-buildtools;
-       cabal install -fgtk --enable-tests --enable-benchmarks;
+       travis_wait cabal install -fgtk --enable-tests --enable-benchmarks;
      else exit 7;
      fi
    fi
