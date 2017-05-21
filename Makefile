@@ -100,7 +100,7 @@ nodeBench: nodeBenchBattle nodeBenchExploration
 
 test-travis-short: test-short
 
-test-travis-medium: test-short test-medium benchNull
+test-travis: test-short test-medium benchNull
 
 test: test-short test-medium benchNull
 
