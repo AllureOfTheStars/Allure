@@ -286,7 +286,6 @@ rosterShootout = Roster
                                     , fcanEscape = False
                                     , fhiCondPoly = hiDweller }
                    , [(5, 1, "scout hero"), (5, 2, "ranger hero")] )
-                 , (playerRobot {fneverEmpty = True}, [])  -- neutral
                  , (playerHorror, []) ]
   , rosterEnemy = [ ("Spacefarer", "Red Collar Bro")
                   , ("Spacefarer", "Horror Den")
