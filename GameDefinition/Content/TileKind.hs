@@ -126,7 +126,7 @@ pillar = TileKind
   , tfeature = [Indistinct]
   }
 pillarCache = TileKind
-  { tsymbol  = 'O'
+  { tsymbol  = '#'
   , tname    = "cache"
   , tfreq    = [("cachable", 30), ("stair terminal", 1), ("escapeSetDark", 1)]
   , tcolor   = BrBlue
