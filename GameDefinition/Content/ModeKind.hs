@@ -50,7 +50,7 @@ raid = ModeKind  -- mini-crawl
   , mfreq   = [("raid", 1), ("campaign scenario", 1)]
   , mroster = rosterRaid
   , mcaves  = cavesRaid
-  , mdesc   = "Neptune Area Administration confirms isolated oversize vermin spottings in non-residential zones of the Triton moon's largest city. In other words, Triton City sewers need purging. The first person to break through to the other exit will be paid 100 gold grains. The Administration urges participants not to fight each other."
+  , mdesc   = "Neptune Area Administration confirms isolated spottings of various oversize vermin in non-residential zones of the Triton moon's largest city. To put it plainly: Triton City sewers need purging. The first person to break through to the other exit will be paid 100 gold grains. The Administration strongly urges participants not to resort to violence against each other."
   }
 
 brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
