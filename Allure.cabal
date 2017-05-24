@@ -11,6 +11,9 @@ description:   Allure of the Stars
                is a near-future Sci-Fi roguelike and tactical squad game.
                Try out the browser version of Allure of the Stars at
                <http://allureofthestars.com/play>
+               (It runs fastest on Chrome. Keyboard commands and savefiles
+               are supported only on recent enough versions of browsers.
+               Mouse should work everywhere.)
                .
                <<https://raw.githubusercontent.com/AllureOfTheStars/media/master/screenshot/campaign2.png>>
                .

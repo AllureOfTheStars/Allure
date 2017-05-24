@@ -7,8 +7,11 @@ Allure of the Stars
 
 Allure of the Stars[6] is a near-future Sci-Fi roguelike[2]
 and tactical squad game.
-Try out the browser version of the game
-[here](http://allureofthestars.com/play)!
+Try out the browser version of the LambdaHack sample game at
+[http://allureofthestars.com/play](http://allureofthestars.com/play)!
+(It runs fastest on Chrome. Keyboard commands and savefiles
+are supported only on recent enough versions of browsers.
+Mouse should work everywhere.)
 
 ![gameplay screenshot](https://raw.githubusercontent.com/AllureOfTheStars/media/master/screenshot/campaign3.png)
 
@@ -27,9 +30,13 @@ and persistent content modification based on player behaviour.
 Game installation from binary archives
 --------------------------------------
 
-The game runs rather slowly in the browser and you are limited to only
-one font, though it's scalable, so after trying out the game, you may
-prefer to use a native binary for your architecture, if it exists.
+The game runs rather slowly in the browser (fastest on Chrome) and you are
+limited to only one font, though it's scalable. Saving game progress
+and keyboard input require recent enough versions of browsers.
+Also, savefiles are prone to corruption on the browser,
+e.g., when it's closed while the game is still saving progress
+(which takes a long time). Hence, after trying out the game,
+you may prefer to use a native binary for your architecture, if it exists.
 
 Pre-compiled game binaries for some platforms are available through
 the release page[11] and from the Nix Packages Collection[12].
@@ -58,9 +65,12 @@ Screen font can be changed by editing the config file in the user
 data folder. For a small game window, the highly optimized
 bitmap fonts 16x16x.fon, 8x8x.fon and 8x8xb.fon are the best,
 but for larger window sizes or if you require international characters
-(e.g. to give custom names to player characters), a scalable font
-is the only option. The game window automatically scales according
-to the specified font size.
+(e.g. to give custom names to player characters), a modern scalable font
+supplied with the game is the only option. The game window automatically
+scales according to the specified font size. Display on SDL2
+and in the browser is superior to all the other frontends,
+due to custom square font and less intrusive ways of highlighting
+interesting squares.
 
 If you don't have a numeric keypad, you can use mouse or laptop keys
 (uk8o79jl) for movement or you can enable the Vi keys (aka roguelike keys)
@@ -70,6 +80,15 @@ and keypad keys doesn't work, try Control key instead.
 The game is fully playable with mouse only, as well as with keyboard only,
 but the most efficient combination for some players is mouse for go-to,
 inspecting, and aiming at distant positions and keyboard for everything else.
+
+If you are using a terminal frontend, numeric keypad may not work
+correctly depending on versions of the libraries, terminfo and terminal
+emulators. Toggling the Num Lock key may help.
+The curses frontend is not fully supported due to the limitations
+of the curses library. With the vty frontend started in an xterm,
+Control-keypad keys for running seem to work OK, but on rxvt they do not.
+The commands that require pressing Control and Shift together won't
+work either, but fortunately they are not crucial to gameplay.
 
 
 Compilation from source
@@ -96,27 +115,6 @@ as follows
 For a newer version, install a matching LambdaHack library snapshot
 from a development branch, download the game source from [github] [5]
 and run `cabal install` from the main directory.
-
-Compatibility notes
--------------------
-
-If you are using a terminal frontend, numeric keypad may not work
-correctly depending on versions of the libraries, terminfo and terminal
-emulators. Toggling the Num Lock key may help.
-
-The curses frontend is not fully supported due to the limitations
-of the curses library. With the vty frontend started in an xterm,
-Control-keypad keys for running seem to work OK, but on rxvt they do not.
-The commands that require pressing Control and Shift together won't
-work either, but fortunately they are not crucial to gameplay.
-
-For movement, laptop (uk8o79jl) and Vi keys (hjklyubn, if enabled
-in config.ui.ini) should work everywhere. GTK and SDL2 work fine, too,
-both regarding numeric keypad and mouse. Display on SDL2 and in the browser
-is superior to all the other frontends, due to custom square font
-and less intrusive ways of highlighting interesting squares.
-When running on browser, leave the program enough time to save game progress
-properly before killing the browser, or the savefiles may get corrupted.
 
 
 Testing and debugging
