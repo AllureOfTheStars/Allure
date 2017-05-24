@@ -593,7 +593,7 @@ scroll9 = scroll
   { ieffects = [ELabel "of scientific explanation", Identify]
   }
 scroll10 = scroll
-  { irarity  = [(10, 9)]
+  { irarity  = [(10, 20)]
   , ieffects = [ ELabel "molecular reconfiguration"
                , PolyItem, Explode "firecracker 7" ]
   }
