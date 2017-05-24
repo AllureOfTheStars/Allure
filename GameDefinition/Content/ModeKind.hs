@@ -94,7 +94,7 @@ zoo = ModeKind  -- asymmetric crowd melee at night
   , mfreq   = [("zoo", 1), ("campaign scenario", 1)]
   , mroster = rosterZoo
   , mcaves  = cavesZoo
-  , mdesc   = "As justified and satisfying as setting the enemy headquarters on fire has been, it backfires by immediately spreading to the public zoo on the only path to the spaceport. Crazed animals mill around while the flames ignite greenery and consume nets, cages and security equipment. Whether that's a good sign or bad, apparently nobody is willing to pursue you any more."
+  , mdesc   = "As justified and satisfying as setting the enemy headquarters on fire has been, it backfires when the blaze immediately spreads to the public zoo on the path to the spaceport. Crazed animals mill around while the flames ignite greenery and consume nets, cages and security equipment. Whether that's a good sign or bad, apparently nobody is willing to pursue you any more."
   }
 
 -- The tactic is to sneak in the dark, highlight enemy with thrown torches
@@ -121,7 +121,7 @@ exploration = ModeKind
               , ("campaign scenario", 1) ]
   , mroster = rosterExploration
   , mcaves  = cavesExploration
-  , mdesc   = "You get stranded while looting, with utmost satisfaction, the blasted bridge of an old and extravagantly luxurious cruise liner. The inert spaceship, supposedly long deserted and barely able to sustain life support, suddenly releases the shuttle you came in, lights up its ion engine, manoeuvres off Triton orbit and heads away from Neptune. Your current plan is to break through to the auxiliary engineering and docking hub somewhere among the giant spaceship's uppermost decks. You are ready to explore and determined to use the opportunity to increase your spoils. There are animal cries down below and ominous silence up above."
+  , mdesc   = "You get stranded while looting, with utmost satisfaction, the blasted bridge of an old and extravagantly luxurious cruise liner. The inert spaceship, supposedly long deserted and barely able to sustain life support, suddenly releases the shuttle you came in, lights up its ion engines, manoeuvres deftly off Triton orbit and heads purposefully away from Neptune. Your plan of battle is to break through the dilapidated decks to the auxiliary engineering and docking hub somewhere among the giant spaceship's uppermost levels. You are ready to fight and determined not to leave the ship without taking of its wealth what is rightfully yours. There are animal cries down below and ominous silence up above."
   }
 
 safari = ModeKind  -- easter egg available only via screensaver
