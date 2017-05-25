@@ -86,7 +86,7 @@ wall = TileKind
   { tsymbol  = '#'
   , tname    = "wall"
   , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
-               , ("cachable", 70), ("stair terminal", 100)
+               , ("cachable", 80), ("stair terminal", 100)
                , ("battleSet", 250), ("rectWindowsOver_%_Lit", 80) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
@@ -128,7 +128,7 @@ pillar = TileKind
 pillarCache = TileKind
   { tsymbol  = '#'
   , tname    = "cache"
-  , tfreq    = [("cachable", 30), ("stair terminal", 1), ("escapeSetDark", 1)]
+  , tfreq    = [("cachable", 20), ("stair terminal", 1), ("escapeSetDark", 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 5
