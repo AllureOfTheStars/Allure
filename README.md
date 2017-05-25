@@ -13,7 +13,7 @@ Try out the browser version of the LambdaHack sample game at
 are supported only on recent enough versions of browsers.
 Mouse should work everywhere.)
 
-![gameplay screenshot](https://raw.githubusercontent.com/AllureOfTheStars/media/master/screenshot/campaign3.png)
+![gameplay screenshot](https://raw.githubusercontent.com/AllureOfTheStars/media/master/screenshot/crawl-0.6.0.0-8x8xb.png)
 
 Please see the changelog file for recent improvements
 and the issue tracker for short-term plans. Long term goals
