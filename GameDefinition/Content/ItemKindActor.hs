@@ -503,7 +503,7 @@ razorwireFence = ItemKind
   , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 20, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1
-               , AddArmorMelee 50, AddArmorRanged 50 ]
+               , AddArmorMelee 40, AddArmorRanged 40 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Must have been bought by previous ship owners to contain the wild animal infestation."
@@ -521,7 +521,7 @@ electricFence = ItemKind
   , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 40, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1
-               , AddArmorMelee 50, AddArmorRanged 50 ]
+               , AddArmorMelee 40, AddArmorRanged 40 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Marginally intelligent electric shepherd. Originally used in orbital dairy farms and planetary zoos."
@@ -539,7 +539,7 @@ activeFence = ItemKind
   , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbProject 3
-               , AddArmorMelee 50, AddArmorRanged 50 ]
+               , AddArmorMelee 40, AddArmorRanged 40 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Makeshift, mostly non-lethal, autonomous perimeter defense outpost."
@@ -610,10 +610,10 @@ surveillanceDrone = ItemKind
   , iverbHit = "thud"
   , iweight  = 1000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 3, AddMaxCalm 90, AddSpeed 30, AddNocto 2
+  , iaspects = [ AddMaxHP 6, AddMaxCalm 90, AddSpeed 30, AddNocto 2
                , AddAbility AbDisplace (-1), AddAbility AbMoveItem (-1)
                , AddAbility AbProject (-1), AddAbility AbMelee (-1)
-               , AddArmorMelee 80, AddArmorRanged 80 ]
+               , AddArmorMelee 40, AddArmorRanged 40 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "A video camera in each room would violate privacy of passengers, hence surveillance drones. Programmed to be easy to fend off, they keep a respectful distance."
@@ -632,7 +632,7 @@ shepherdDrone = ItemKind
   , iaspects = [ AddMaxHP 3, AddMaxCalm 60, AddSpeed 30, AddNocto 2
                , AddAbility AbDisplace (-1), AddAbility AbMoveItem (-1)
                , AddAbility AbProject (-1)
-               , AddArmorMelee 80, AddArmorRanged 80 ]
+               , AddArmorMelee 80, AddArmorRanged 40 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "A shabby drone for bringing cows home."
@@ -649,10 +649,10 @@ huntingDrone = ItemKind
   , iverbHit = "thud"
   , iweight  = 500
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 3, AddMaxCalm 60, AddSpeed 40, AddNocto 2
+  , iaspects = [ AddMaxHP 6, AddMaxCalm 60, AddSpeed 40, AddNocto 2
                , AddAbility AbDisplace (-1), AddAbility AbMoveItem (-1)
                , AddAbility AbMelee (-1)
-               , AddArmorMelee 80, AddArmorRanged 80 ]
+               , AddArmorMelee 40, AddArmorRanged 40 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Originally designed for hunting down and putting to sleep stray animals. The sleeping agent has long since dried up."
