@@ -337,11 +337,11 @@ rosterExploration = Roster
                    , [] )
                  , ( playerAnimal
                    , -- Fun from the start to avoid empty initial level:
-                     [ (3, 2 + d 2, "animal")  -- many, because no spawning
+                     [ (3, 5 + d 2, "animal")  -- many, because no spawning
                      -- Optional huge battle at the end:
                      , (12, 100, "mobile animal") ] )
                  , ( playerRobot
-                   , [(3, 2 + d 2, "robot")] ) ]  -- many, because no spawning
+                   , [] ) ]  -- gentle introduction
   , rosterEnemy = [ ("Spacefarer", "Alien Hierarchy")
                   , ("Spacefarer", "Animal Kingdom")
                   , ("Spacefarer", "Robot Anarchy") ]
@@ -358,11 +358,11 @@ rosterExplorationSurvival = rosterExploration
                    , [] )
                  , ( playerAnimal {fhasUI = True}
                    , -- Fun from the start to avoid empty initial level:
-                     [ (3, 2 + d 2, "animal")  -- many, because no spawning
+                     [ (3, 5 + d 2, "animal")  -- many, because no spawning
                      -- Optional huge battle at the end:
                      , (12, 100, "mobile animal") ] )
                  , ( playerRobot
-                   , [(3, 2 + d 2, "robot")] ) ] } -- many, because no spawning
+                   , [] ) ] }  -- gentle introduction
 
 -- No horrors faction needed, because spawned heroes land in civilian faction.
 rosterSafari = Roster
@@ -441,11 +441,11 @@ rosterDefense = rosterExploration
                    , [] )
                  , ( playerAnimal
                    , -- Fun from the start to avoid empty initial level:
-                     [ (3, 2 + d 2, "animal")  -- many, because no spawning
+                     [ (3, 5 + d 2, "animal")  -- many, because no spawning
                      -- Optional huge battle at the end:
                      , (12, 100, "mobile animal") ] )
                  , ( playerRobot
-                   , [(3, 2 + d 2, "robot")] ) ] }
+                   , [] ) ] }  -- gentle introduction
 
 cavesRaid, cavesBrawl, cavesShootout, cavesEscape, cavesZoo, cavesAmbush, cavesExploration, cavesSafari, cavesBattle :: Caves
 
