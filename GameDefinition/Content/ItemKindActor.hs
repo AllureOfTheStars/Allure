@@ -682,7 +682,7 @@ wasteRobot = ItemKind
   { isymbol  = 'r'
   , iname    = "waste disposal robot"
   , ifreq    = [ ("robot", 100), ("mobile", 100), ("mobile robot", 100)
-               , ("construction robot", 1) ]
+               , ("construction robot", 50) ]
   , iflavour = zipPlain [Green]
   , icount   = 1
   , irarity  = [(1, 10), (10, 6)]
@@ -702,7 +702,7 @@ lightRobot = ItemKind
   { isymbol  = 'r'
   , iname    = "decoration robot"
   , ifreq    = [ ("robot", 100), ("mobile", 100), ("mobile robot", 100)
-               , ("construction robot", 1) ]
+               , ("construction robot", 100) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , irarity  = [(3, 1), (10, 10)]
