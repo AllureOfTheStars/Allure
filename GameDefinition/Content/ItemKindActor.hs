@@ -167,7 +167,7 @@ nose = ItemKind  -- depends solely on smell
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = toDmg 0
-  , iaspects = [ AddMaxHP 30, AddMaxCalm 30, AddSpeed 18, AddNocto 2
+  , iaspects = [ AddMaxHP 30, AddMaxCalm 30, AddSpeed 16, AddNocto 2
                , AddAggression 1
                , AddAbility AbProject (-1), AddAbility AbAlter 2 ]
   , ieffects = []
@@ -175,7 +175,7 @@ nose = ItemKind  -- depends solely on smell
   , idesc    = "A blind, slimy mass of clawing, stinging and burning. You'd think it's powerless, but as soon as it touches your trembling body, it's always one step ahead."
   , ikit     = [ ("nostril", COrgan), ("small claw", COrgan)
                , ("tentacle", COrgan), ("tentacle", COrgan)
-               , ("thorn", COrgan), ("sting", COrgan)
+               , ("thorn", COrgan), ("venom tooth", COrgan)
                , ("sapient brain", COrgan) ]
   }
 elbow = ItemKind
@@ -219,7 +219,7 @@ torsor = ItemKind
   , ifeature = [Durable, Identified]
   , idesc    = "The mind, the heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw, grinding teeth and tensing fangs."
   , ikit     = [ ("tentacle", COrgan), ("claw", COrgan), ("large jaw", COrgan)
-               , ("venom tooth", COrgan), ("venom fang", COrgan)
+               , ("sting", COrgan), ("venom fang", COrgan)
                , ("eye 6", COrgan), ("speed gland 4", COrgan)
                , ("gem", CInv), ("gem", CInv), ("gem", CInv), ("gem", CInv)
                , ("sapient brain", COrgan) ]
