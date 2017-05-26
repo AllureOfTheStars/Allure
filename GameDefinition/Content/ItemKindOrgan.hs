@@ -419,7 +419,7 @@ wasteContainer = armoredSkin
   , iverbHit = "spill over"
   , iaspects = [Timeout $ 5 + d 5 |*| 10]
   , ieffects = [ Periodic
-               , Recharging (Summon "mobile animal" $ 1 + dl 2)
+               , Recharging (Summon "mobile animal" 1)
                , Recharging (RefillHP 1)
                , Recharging (Explode "waste") ]
   , idesc    = ""
