@@ -176,7 +176,7 @@ test-short-load:
 build-binary:
 	cabal configure -frelease --prefix=/
 	cabal build Allure
-	rm -rf /tmp/Allure_x_ubuntu-12.04-amd64.tar.gz
+	rm -rf /tmp/Allure_x_ubuntu-16.04-amd64.tar.gz
 	rm -rf /tmp/AllureOfTheStarsInstall
 	rm -rf /tmp/AllureOfTheStars
 	mkdir -p /tmp/AllureOfTheStars/GameDefinition
@@ -189,25 +189,7 @@ build-binary:
 	cp CREDITS /tmp/AllureOfTheStars
 	cp LICENSE /tmp/AllureOfTheStars
 	cp README.md /tmp/AllureOfTheStars
-	tar -czf /tmp/Allure_x_ubuntu-12.04-amd64.tar.gz -C /tmp AllureOfTheStars
-
-build-binary-i386:
-	cabal configure -frelease --prefix=/ --ghc-option="-optc-m32" --ghc-option="-opta-m32" --ghc-option="-optl-m32" --ld-option="-melf_i386"
-	cabal build Allure
-	rm -rf /tmp/Allure_x_ubuntu-12.04-i386.tar.gz
-	rm -rf /tmp/AllureOfTheStarsInstall
-	rm -rf /tmp/AllureOfTheStars
-	mkdir -p /tmp/AllureOfTheStars/GameDefinition
-	cabal copy --destdir=/tmp/AllureOfTheStarsInstall
-	cp /tmp/AllureOfTheStarsInstall/bin/Allure /tmp/AllureOfTheStars
-	cp GameDefinition/PLAYING.md /tmp/AllureOfTheStars/GameDefinition
-	cp GameDefinition/scores /tmp/AllureOfTheStars/GameDefinition
-	cp GameDefinition/config.ui.default /tmp/AllureOfTheStars/GameDefinition
-	cp CHANGELOG.md /tmp/AllureOfTheStars
-	cp CREDITS /tmp/AllureOfTheStars
-	cp LICENSE /tmp/AllureOfTheStars
-	cp README.md /tmp/AllureOfTheStars
-	tar -czf /tmp/Allure_x_ubuntu-12.04-i386.tar.gz -C /tmp AllureOfTheStars
+	tar -czf /tmp/Allure_x_ubuntu-16.04-amd64.tar.gz -C /tmp AllureOfTheStars
 
 # TODO: figure out why this must be so different from Linux
 build-binary-windows-i386:
