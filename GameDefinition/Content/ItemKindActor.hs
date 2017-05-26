@@ -218,7 +218,8 @@ torsor = ItemKind
   , ieffects = [Unique]
   , ifeature = [Durable, Identified]
   , idesc    = "The mind, the heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw, grinding teeth and tensing fangs."
-  , ikit     = [ ("tentacle", COrgan), ("claw", COrgan), ("large jaw", COrgan)
+  , ikit     = [ ("tentacle", COrgan), ("hooked claw", COrgan)
+               , ("large jaw", COrgan)
                , ("sting", COrgan), ("venom fang", COrgan)
                , ("eye 6", COrgan), ("speed gland 4", COrgan)
                , ("gem", CInv), ("gem", CInv), ("gem", CInv), ("gem", CInv)
@@ -309,9 +310,9 @@ armadillo = ItemKind
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
-  , ikit     = [ ("claw", COrgan), ("snout", COrgan), ("armored skin", COrgan)
-               , ("nostril", COrgan), ("eye 3", COrgan)
-               , ("animal brain", COrgan) ]
+  , ikit     = [ ("hooked claw", COrgan), ("snout", COrgan)
+               , ("armored skin", COrgan), ("nostril", COrgan)
+               , ("eye 3", COrgan), ("animal brain", COrgan) ]
   }
 gilaMonster = ItemKind
   { isymbol  = 'g'
@@ -365,10 +366,10 @@ komodoDragon = ItemKind  -- bad hearing; regeneration makes it very powerful
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = ""
-  , ikit     = [ ("large tail", COrgan), ("jaw", COrgan), ("claw", COrgan)
-               , ("speed gland 4", COrgan), ("armored skin", COrgan)
-               , ("eye 3", COrgan), ("nostril", COrgan)
-               , ("animal brain", COrgan) ]
+  , ikit     = [ ("large tail", COrgan), ("jaw", COrgan)
+               , ("hooked claw", COrgan), ("speed gland 4", COrgan)
+               , ("armored skin", COrgan), ("eye 3", COrgan)
+               , ("nostril", COrgan), ("animal brain", COrgan) ]
   }
 hyena = ItemKind
   { isymbol  = 'h'
@@ -714,9 +715,9 @@ lightRobot = ItemKind
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Interior and exterior decoration robot. Strongly fancies deep reds recently."
-  , ikit     = [ ("claw", COrgan), ("tentacle", COrgan), ("spotlight", COrgan)
-               , ("armored skin", COrgan), ("eye 5", COrgan)
-               , ("robot brain", COrgan) ]
+  , ikit     = [ ("hooked claw", COrgan), ("tentacle", COrgan)
+               , ("spotlight", COrgan), ("armored skin", COrgan)
+               , ("eye 5", COrgan), ("robot brain", COrgan) ]
   }
 heavyRobot = ItemKind
   { isymbol  = 'r'
@@ -757,7 +758,7 @@ cleanerRobot = ItemKind
   , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."
   , ikit     = [ ("waste container", COrgan), ("boiling vent", COrgan)
                , ("armored skin", COrgan), ("live wire", COrgan)
-               , ("jaw", COrgan), ("claw", COrgan)
+               , ("jaw", COrgan), ("hooked claw", COrgan)
                , ("eye 2", COrgan), ("nostril", COrgan), ("spotlight", COrgan)
                , ("currency", CInv), ("currency", CInv), ("currency", CInv)
                , ("robot brain", COrgan) ]
