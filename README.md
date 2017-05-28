@@ -186,5 +186,5 @@ If not, see <http://www.gnu.org/licenses/>.
 [14]: http://www.edsko.net/2014/04/27/haskell-including-gtk-on-mavericks
 [15]: https://github.com/ghcjs/ghcjs
 [16]: https://www.npmjs.com/package/google-closure-compiler
-[17]: https://ci.appveyor.com/project/Mikolaj/lambdahack-4hh0j/build/artifacts
-[18]: https://ci.appveyor.com/project/Mikolaj/lambdahack/build/artifacts
+[17]: https://ci.appveyor.com/project/Mikolaj/allure-hpt6r/build/artifacts
+[18]: https://ci.appveyor.com/project/Mikolaj/allure/build/artifacts
