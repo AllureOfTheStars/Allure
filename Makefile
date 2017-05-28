@@ -79,13 +79,13 @@ benchFrontendExploration:
 
 benchNull: benchBattle benchAnimBattle benchExploration
 
-bench:  benchBattle benchAnimBattle benchFrontendBattle benchExploration benchFrontendExploration
+bench: benchBattle benchAnimBattle benchFrontendBattle benchExploration benchFrontendExploration
 
 nativeBenchExploration:
-	dist/build/Allure/Allure                   --dbgMsgSer --newGame 2 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 2000 --automateAll --keepAutomated --gameMode exploration --setDungeonRng 0 --setMainRng 0
+	dist/build/Allure/Allure		   --dbgMsgSer --newGame 2 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 2000 --automateAll --keepAutomated --gameMode exploration --setDungeonRng 0 --setMainRng 0
 
 nativeBenchBattle:
-	dist/build/Allure/Allure                   --dbgMsgSer --newGame 3 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 1000 --automateAll --keepAutomated --gameMode battle --setDungeonRng 0 --setMainRng 0
+	dist/build/Allure/Allure		   --dbgMsgSer --newGame 3 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 1000 --automateAll --keepAutomated --gameMode battle --setDungeonRng 0 --setMainRng 0
 
 nativeBench: nativeBenchBattle nativeBenchExploration
 
@@ -173,40 +173,25 @@ test-short-load:
 	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix battleSurvival --dumpInitRngs --automateAll --keepAutomated --gameMode "battle survival" --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
 
 
-build-binary:
-	cabal configure -frelease --prefix=/
-	cabal build Allure
-	rm -rf /tmp/Allure_x_ubuntu-16.04-amd64.tar.gz
-	rm -rf /tmp/AllureOfTheStarsInstall
-	rm -rf /tmp/AllureOfTheStars
-	mkdir -p /tmp/AllureOfTheStars/GameDefinition
-	cabal copy --destdir=/tmp/AllureOfTheStarsInstall
-	cp /tmp/AllureOfTheStarsInstall/bin/Allure /tmp/AllureOfTheStars
-	cp GameDefinition/PLAYING.md /tmp/AllureOfTheStars/GameDefinition
-	cp GameDefinition/scores /tmp/AllureOfTheStars/GameDefinition
-	cp GameDefinition/config.ui.default /tmp/AllureOfTheStars/GameDefinition
-	cp CHANGELOG.md /tmp/AllureOfTheStars
-	cp CREDITS /tmp/AllureOfTheStars
-	cp LICENSE /tmp/AllureOfTheStars
-	cp README.md /tmp/AllureOfTheStars
-	tar -czf /tmp/Allure_x_ubuntu-16.04-amd64.tar.gz -C /tmp AllureOfTheStars
+build-binary-common:
+	cabal configure --disable-library-profiling --disable-profiling -f-release --prefix=/ --datadir=. --datasubdir=.
+	cabal build exe:Allure
+	mkdir -p AllureOfTheStars/GameDefinition/fonts
+	cabal copy --destdir=AllureOfTheStarsInstall
+	cp GameDefinition/config.ui.default AllureOfTheStars/GameDefinition
+	cp GameDefinition/fonts/16x16x.fon AllureOfTheStars/GameDefinition/fonts
+	cp GameDefinition/fonts/8x8xb.fon AllureOfTheStars/GameDefinition/fonts
+	cp GameDefinition/fonts/8x8x.fon AllureOfTheStars/GameDefinition/fonts
+	cp GameDefinition/fonts/LICENSE.16x16x AllureOfTheStars/GameDefinition/fonts
+	cp GameDefinition/fonts/Fix15Mono-Bold.woff AllureOfTheStars/GameDefinition/fonts
+	cp GameDefinition/fonts/LICENSE.Fix15Mono-Bold AllureOfTheStars/GameDefinition/fonts
+	cp GameDefinition/PLAYING.md AllureOfTheStars/GameDefinition
+	cp GameDefinition/InGameHelp.txt AllureOfTheStars/GameDefinition
+	cp README.md AllureOfTheStars
+	cp CHANGELOG.md AllureOfTheStars
+	cp LICENSE AllureOfTheStars
+	cp CREDITS AllureOfTheStars
 
-# TODO: figure out why this must be so different from Linux
-build-binary-windows-i386:
-	wine cabal configure -frelease
-	wine cabal build exe:Allure
-	rm -rf /tmp/Allure_x_windows-i386.zip
-	rm -rf /tmp/AllureOfTheStarsInstall
-	rm -rf /tmp/AllureOfTheStars
-	mkdir -p /tmp/AllureOfTheStars/GameDefinition
-	wine cabal copy --destdir=Z:/tmp/AllureOfTheStarsInstall
-	cp /tmp/AllureOfTheStarsInstall/users/mikolaj/Application\ Data/cabal/bin/Allure.exe /tmp/AllureOfTheStars
-	cp GameDefinition/PLAYING.md /tmp/AllureOfTheStars/GameDefinition
-	cp GameDefinition/scores /tmp/AllureOfTheStars/GameDefinition
-	cp GameDefinition/config.ui.default /tmp/AllureOfTheStars/GameDefinition
-	cp CHANGELOG.md /tmp/AllureOfTheStars
-	cp CREDITS /tmp/AllureOfTheStars
-	cp LICENSE /tmp/AllureOfTheStars
-	cp README.md /tmp/AllureOfTheStars
-	cp /home/mikolaj/.wine/drive_c/users/mikolaj/gtk/bin/zlib1.dll /tmp/AllureOfTheStars
-	wine Z:/home/mikolaj/.local/share/wineprefixes/7zip/drive_c/Program\ Files/7-Zip/7z.exe a -ssc -sfx Z:/tmp/Allure_x_windows-i386.exe Z:/tmp/AllureOfTheStars
+build-binary: build-binary-common
+	cp AllureOfTheStarsInstall/bin/Allure AllureOfTheStars
+	tar -czf Allure_x_ubuntu-16.04-amd64.tar.gz AllureOfTheStars
