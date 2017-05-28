@@ -19,7 +19,7 @@ install:
   - cd ..
   - git clone -q --branch=master https://github.com/LambdaHack/LambdaHack.git
   - cd LambdaHack
-  - cabal install -f-release
+  - cabal install -f-release --datadir=. --datasubdir=.
   - cd ..
 
 build_script:
