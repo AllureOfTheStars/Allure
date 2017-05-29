@@ -174,6 +174,10 @@ test-short-load:
 
 
 build-binary-common:
+# LH should be installed with that:
+#	cabal configure --disable-library-profiling --disable-profiling -f-release --datadir=. --datasubdir=.
+#	cabal build
+#	cabal register --inplace
 	cabal configure --disable-library-profiling --disable-profiling -f-release --prefix=/ --datadir=. --datasubdir=.
 	cabal build exe:Allure
 	mkdir -p AllureOfTheStars/GameDefinition/fonts
