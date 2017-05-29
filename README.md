@@ -41,7 +41,7 @@ you may prefer to use a native binary for your architecture, if it exists.
 
 Pre-compiled game binaries for some platforms are available through
 the release page[11] and from the Nix Packages Collection[12] (Linux)
-and AppVeyor (Windows 32bit[17] and Windows 64bit[18], not that these
+and AppVeyor (Windows 32bit[17] and Windows 64bit[18]; note that these
 no longer work on Windows XP, since Cygwin and MSYS2 dropped support for XP;
 they may also be broken in other ways; feedback and help appreciated).
 To use a pre-compiled binary archive, unpack it and run the executable
@@ -57,7 +57,7 @@ Screen and keyboard configuration
 
 The game UI can be configured via a config file.
 A file with the default settings, the same that is built into the binary,
-is in [GameDefinition/config.ui.default](GameDefinition/config.ui.default).
+is in [GameDefinition/config.ui.default](https://github.com/AllureOfTheStars/Allure/blob/master/GameDefinition/config.ui.default).
 When the game is run for the first time, the file is copied to the default
 user data folder, which is `~/.Allure/` on Linux,
 `C:\Users\<username>\AppData\Roaming\Allure\`
@@ -107,7 +107,9 @@ for your OS. On Linux, remember to install the -dev versions as well,
 e.g., libsdl2-dev and libsdl2-ttf-dev on Ubuntu Linux 16.04.
 (Compilation to Javascript for the browser is more complicated
 and requires the ghcjs[15] compiler and optionally the Google Closure
-Compiler[16] as well. See the [Makefile](Makefile) for more details.)
+Compiler[16] as well. See the
+[Makefile](https://github.com/AllureOfTheStars/Allure/blob/master/Makefile)
+for more details.)
 
 The latest official version of the game can be downloaded,
 compiled for SDL2 and installed automatically by Cabal from Hackage[3]
@@ -117,14 +119,15 @@ as follows
     cabal install Allure --force-reinstalls
 
 For a newer version, install a matching LambdaHack library snapshot
-from a development branch, download the game source from [github] [5]
+from a development branch, download the game source from github[5]
 and run `cabal install` from the main directory.
 
 
 Testing and debugging
 ---------------------
 
-The [Makefile](Makefile) contains many sample test commands.
+The [Makefile](https://github.com/AllureOfTheStars/Allure/blob/master/Makefile)
+contains many sample test commands.
 Numerous tests that use the screensaver game modes (AI vs. AI)
 and the teletype frontend are gathered in `make test`.
 Of these, travis runs `test-travis` on each push to github.
@@ -143,8 +146,9 @@ Further information
 -------------------
 
 For more information, visit the wiki[4]
-and see [PLAYING.md](GameDefinition/PLAYING.md), [CREDITS](CREDITS)
-and [LICENSE](LICENSE).
+and see [PLAYING.md](https://github.com/AllureOfTheStars/Allure/blob/master/GameDefinition/PLAYING.md),
+[CREDITS](https://github.com/AllureOfTheStars/Allure/blob/master/CREDITS)
+and [LICENSE](https://github.com/AllureOfTheStars/Allure/blob/master/LICENSE).
 
 Have fun!
 
