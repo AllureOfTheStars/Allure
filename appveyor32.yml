@@ -18,7 +18,7 @@ install:
   - cd sdl2-ttf-1
   - cabal install
   - cd ..
-  - git clone -q --branch=master https://github.com/LambdaHack/LambdaHack.git
+  - git clone -q --branch=sdl-ttf-1 https://github.com/LambdaHack/LambdaHack.git
   - cd LambdaHack
   - cabal install --disable-library-profiling --disable-profiling --disable-documentation -f-release --only-dependencies
   - cabal configure --disable-library-profiling --disable-profiling -f-release --datadir=. --datasubdir=.
