@@ -120,7 +120,7 @@ fireBig = fireSmall
   , iname    = "big fire"
   , ifreq    = [("big fire", 1)]
   , ieffects = [ Burn 2, Explode "spark"
-               , CreateItem CGround "wooden torch" TimerNone ]
+               , CreateItem CInv "wooden torch" TimerNone ]
   , ifeature = [Identified, Durable]
   , idesc    = ""
   , ikit     = []
@@ -271,7 +271,7 @@ pulpit = ItemKind
   , iweight  = 10000
   , idamage  = toDmg 0
   , iaspects = []
-  , ieffects = [ CreateItem CGround "any scroll" TimerNone
+  , ieffects = [ CreateItem CInv "any scroll" TimerNone
                , Detect 20
                , Paralyze 20
                , toOrganActorTurn "drunk" (20 + d 5) ]
