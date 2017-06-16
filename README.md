@@ -40,12 +40,10 @@ e.g., when it's closed while the game is still saving progress
 you may prefer to use a native binary for your architecture, if it exists.
 
 Pre-compiled game binaries for some platforms are available through
-the release page[11] and from the Nix Packages Collection[12] (Linux)
-and AppVeyor (Windows 32bit[17] and Windows 64bit[18]; note that these
-no longer work on Windows XP, since Cygwin and MSYS2 dropped support for XP;
-they may also be broken in other ways; feedback and help appreciated).
-To use a pre-compiled binary archive, unpack it and run the executable
-in the unpacked directory.
+the release page[11] and from AppVeyor (Windows 32bit[17] and Windows 64bit[18];
+note that these no longer work on Windows XP, since Cygwin and MSYS2
+dropped support for XP). To use a pre-compiled binary archive,
+unpack it and run the executable in the unpacked directory.
 
 On Linux, make sure you have the SDL2 libraries suite installed on your system
 (e.g., libsdl2, libsdl2-ttf). For Windows, the SDL2 and all other needed
@@ -185,7 +183,6 @@ If not, see <http://www.gnu.org/licenses/>.
 
 [10]: http://github.com/LambdaHack/LambdaHack
 [11]: https://github.com/AllureOfTheStars/Allure/releases/latest
-[12]: http://hydra.nixos.org/search?query=Allure
 [13]: http://www.haskell.org/haskellwiki/GHC_under_Wine#Code_that_uses_gtk2hs
 [14]: http://www.edsko.net/2014/04/27/haskell-including-gtk-on-mavericks
 [15]: https://github.com/ghcjs/ghcjs
