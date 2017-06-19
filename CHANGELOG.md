@@ -1,3 +1,13 @@
+## [v0.6.1.0, aka 'Breaking one rule at a time'](https://github.com/LambdaHack/LambdaHack/compare/v0.6.0.0...v0.6.1.0)
+
+- update wrt the only breaking API change: specify font dir in game rules content
+- let the game use its own fonts, not fonts from the sample game in library
+- tweak some item creation to occur in character's pack, not on the ground
+- make sure the 'resolution' effect is not a drawback
+- make artifact weapon rarities more regular
+- avoid creating lit, open dungeon at the bottom, where foes have ranged weapons
+- number scenarios in user descriptions
+
 ## [v0.6.0.0, aka 'Too much to tell'](https://github.com/AllureOfTheStars/Allure/compare/v0.5.0.0...v0.6.0.0)
 
 - add and modify a lot of content: items, tiles, embedded items, scenarios
