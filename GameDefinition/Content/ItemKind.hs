@@ -40,11 +40,11 @@ otherItemContent = embeds ++ actors ++ organs ++ blasts ++ temporaries
 
 items :: [ItemKind]
 items =
-  [sandstoneRock, dart, spike, slingStone, slingBullet, paralizingProj, harpoon, net, light1, light2, light3, blanket, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, imageItensifier, sightSharpening, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, buckler, shield, dagger, daggerDropBestWeapon, hammer, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberdPushActor, wand1, wand2, gem1, gem2, gem3, gem4, currency]
+  [sandstoneRock, dart, spike, slingStone, slingBullet, paralizingProj, harpoon, net, light1, light2, light3, blanket, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, imageItensifier, sightSharpening, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, buckler, shield, dagger, daggerDropBestWeapon, hammer, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberdPushActor, wand1, wand2, gem1, gem2, gem3, gem4, gem5, currency]
   -- Allure-specific
   ++ [needle, constructionHooter]
 
-sandstoneRock,    dart, spike, slingStone, slingBullet, paralizingProj, harpoon, net, light1, light2, light3, blanket, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, imageItensifier, sightSharpening, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, buckler, shield, dagger, daggerDropBestWeapon, hammer, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberdPushActor, wand1, wand2, gem1, gem2, gem3, gem4, currency :: ItemKind
+sandstoneRock,    dart, spike, slingStone, slingBullet, paralizingProj, harpoon, net, light1, light2, light3, blanket, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, imageItensifier, sightSharpening, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, buckler, shield, dagger, daggerDropBestWeapon, hammer, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberdPushActor, wand1, wand2, gem1, gem2, gem3, gem4, gem5, currency :: ItemKind
 -- Allure-specific
 needle, constructionHooter :: ItemKind
 
@@ -1223,6 +1223,9 @@ gem3 = gem
   { irarity  = [(7 * 10/12, 0), (10, 16)]
   }
 gem4 = gem
+  { irarity  = [(9 * 10/12, 0), (10, 50)]
+  }
+gem5 = gem
   { iname    = "stimpack"
   , iflavour = zipPlain [BrYellow]
   , irarity  = [(1, 40), (10, 40)]
