@@ -3,6 +3,7 @@
 - update wrt the only breaking API change: specify font dir in game rules content
 - let the game use its own fonts, not fonts from the sample game in library
 - tweak some item creation to occur in character's pack, not on the ground
+- slightly balance various content
 - make sure the 'resolution' effect is not a drawback
 - make artifact weapon rarities more regular
 - avoid creating lit, open dungeon at the bottom, where foes have ranged weapons
