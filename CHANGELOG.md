@@ -1,8 +1,8 @@
 ## [v0.6.1.0, aka 'Breaking one rule at a time'](https://github.com/LambdaHack/LambdaHack/compare/v0.6.0.0...v0.6.1.0)
 
-- engine: fix redrawing after window minimized and restored
-- engine: hack around vanishing texture on Windows
-- engine: hack around SDL backends not thread-safe on Windows
+- major engine bugfix: fix redrawing after window minimized and restored
+- major engine bugfix: hack around vanishing texture on Windows
+- major engine bugfix: hack around SDL backends not thread-safe on Windows
 - update wrt the only breaking API change: specify font dir in game rules content
 - let the game use its own fonts, not fonts from the sample game in library
 - tweak some item creation to occur in character's pack, not on the ground
