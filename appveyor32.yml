@@ -14,7 +14,7 @@ install:
   - cd ..
   - git clone -q --branch=master https://github.com/LambdaHack/LambdaHack.git
   - cd LambdaHack
-  - cabal install --disable-library-profiling --disable-profiling --disable-documentation -f-release --only-dependencies
+  - cabal install --disable-library-profiling --disable-profiling --disable-documentation --only-dependencies
   - cabal configure --disable-library-profiling --disable-profiling -f-release
   - appveyor-retry cabal build
   - cabal register --inplace
