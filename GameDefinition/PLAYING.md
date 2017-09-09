@@ -17,6 +17,11 @@ and literary imagination. To be honest, a lot of imagination is required
 at this stage of game development, but the game is already playable
 and winnable. Contributions are welcome.
 
+If the game window is too large for your screen or you experience
+other technical issues, please consult
+[README.md](https://github.com/AllureOfTheStars/Allure/blob/master/README.md)
+or describe your problem on gitter or the issue tracker.
+
 
 Heroes
 ------
@@ -211,7 +216,6 @@ takes place in a multi-floor setting, giving player the choice
 of exploration of a single level at a time or portions of many levels
 along a single staircase and also of guarding staircases against
 enemies from other levels or, inversely, avoiding the staircases.
-
 
 Monsters
 --------
