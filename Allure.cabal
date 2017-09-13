@@ -29,7 +29,7 @@ homepage:      http://allureofthestars.com
 bug-reports:   http://github.com/AllureOfTheStars/Allure/issues
 license:       AGPL-3
 license-file:  LICENSE
-tested-with:   GHC >= 7.10 && <= 8.2
+tested-with:   GHC >= 8.0 && <= 8.2
 data-files:    GameDefinition/config.ui.default,
                GameDefinition/fonts/16x16x.fon,
                GameDefinition/fonts/8x8xb.fon,
@@ -76,7 +76,7 @@ executable Allure
                       template-haskell >= 2.6,
 
                       async      >= 2,
-                      base       >= 4 && < 99,
+                      base       >= 4.9 && < 99,
                       containers >= 0.5.3.0,
                       enummapset-th >= 0.6.0.0,
                       filepath   >= 1.2.0.1,
@@ -128,7 +128,7 @@ test-suite test
   build-depends:      LambdaHack,
                       template-haskell >= 2.6,
 
-                      base       >= 4 && < 99,
+                      base       >= 4.9 && < 99,
                       containers >= 0.5.3.0,
                       enummapset-th >= 0.6.0.0,
                       filepath   >= 1.2.0.1,
