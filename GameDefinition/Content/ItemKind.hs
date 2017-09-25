@@ -52,14 +52,14 @@ necklace, ring, potion, flask, scroll, wand, gem :: ItemKind  -- generic templat
 
 -- * Item group symbols, from Angband and variants
 
-symbolProjectile, _symbolLauncher, symbolLight, symbolTool, symbolGem, symbolGold, symbolNecklace, symbolRing, symbolPotion, symbolFlask, symbolScroll, symbolTorsoArmor, symbolMiscArmor, _symbolClothes, symbolShield, symbolPolearm, symbolEdged, symbolHafted, symbolWand, _symbolStaff, symbolFood :: Char
+symbolProjectile, _symbolLauncher, symbolLight, symbolTool, symbolSpecial, symbolGold, symbolNecklace, symbolRing, symbolPotion, symbolFlask, symbolScroll, symbolTorsoArmor, symbolMiscArmor, _symbolClothes, symbolShield, symbolPolearm, symbolEdged, symbolHafted, symbolWand, _symbolStaff, symbolFood :: Char
 
 symbolProjectile = '{'
 _symbolLauncher  = '}'
 symbolLight      = '('
 symbolTool       = ')'
-symbolGem        = '*'
-symbolGold       = '$'
+symbolSpecial    = '*'  -- don't overuse, because it clashes with projectiles
+symbolGold       = '$'  -- also gems
 symbolNecklace   = '"'
 symbolRing       = '='
 symbolPotion     = '!'  -- concoction, bottle, jar, vial, canister
@@ -1196,7 +1196,7 @@ wand2 = wand
 -- * Treasure
 
 gem = ItemKind
-  { isymbol  = symbolGem
+  { isymbol  = symbolGold
   , iname    = "gem"
   , ifreq    = [("treasure", 100), ("gem", 100)]
   , iflavour = zipPlain $ delete BrYellow brightCol  -- natural, so not fancy
@@ -1226,7 +1226,8 @@ gem4 = gem
   { irarity  = [(9, 0), (10, 50)]
   }
 gem5 = gem
-  { iname    = "stimpack"
+  { isymbol  = symbolSpecial
+  , iname    = "stimpack"
   , iflavour = zipPlain [BrYellow]
   , irarity  = [(1, 40), (10, 40)]
   , iaspects = []
