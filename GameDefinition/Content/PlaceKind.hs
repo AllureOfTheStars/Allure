@@ -727,8 +727,8 @@ mazeBig3 = mazeBig
 cells = PlaceKind
   { psymbol  = '#'
   , pname    = "cells"
-  , pfreq    = [ ("rogue", 50), ("arena", 50), (" laboratory", 50)
-               , ("empty", 50), ("noise", 50) ]
+  , pfreq    = [ ("rogue", 20), ("arena", 20), (" laboratory", 20)
+               , ("empty", 20), ("noise", 20), ("zoo", 200) ]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CReflect
   , pfence   = FWall
@@ -738,8 +738,9 @@ cells = PlaceKind
                ]
   , poverride = []
   }
-cells2 = cells
-  { pfreq = ("zoo", 400) : pfreq cells
+cells2 = cells  -- this one is distinct enough from others
+  { pfreq    = [ ("rogue", 50), ("arena", 50), (" laboratory", 50)
+               , ("empty", 50), ("noise", 50), ("zoo", 500) ]
   , ptopLeft = [ "··#"
                , "··#"
                , "##·"
@@ -752,15 +753,13 @@ cells3 = cells
                ]
   }
 cells4 = cells
-  { pfreq = ("zoo", 400) : pfreq cells
-  , ptopLeft = [ "··#"
+  { ptopLeft = [ "··#"
                , "·##"
                , "#··"
                ]
   }
 cells5 = cells
-  { pfreq = ("zoo", 400) : pfreq cells
-  , ptopLeft = [ "··#"
+  { ptopLeft = [ "··#"
                , "·#·"
                , "##·"
                ]
