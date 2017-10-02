@@ -221,8 +221,8 @@ shallow2empty = empty
 shallow1empty = shallow2empty  -- TODO: replace some rooms with oriels?
   { cname         = "Outermost deck"
   , cfreq         = [("outermost", 100)]
-  , cactorCoeff   = 5  -- shallower than LH, so less immediate actors, so boost
-  , cactorFreq    = [("animal", 4), ("robot", 1), ("immobile robot", 95)]
+  , cactorCoeff   = 4  -- shallower than LH, so less immediate actors, so boost
+  , cactorFreq    = [("animal", 8), ("robot", 2), ("immobile robot", 90)]
       -- The medbot faucets on lvl 1 act like HP resets. Needed to avoid
       -- cascading failure, if the particular starting conditions were
       -- very hard. Items are not reset, even if they are bad, which provides
@@ -244,7 +244,7 @@ raid = rogue
   , cfreq         = [("caveRaid", 1)]
   , cdarkChance   = 0  -- all rooms lit, for a gentle start
   , cmaxVoid      = 1%10
-  , cactorCoeff   = 1000  -- deep level with no kit, so slow spawning
+  , cactorCoeff   = 500  -- deep level with no kit, so slow spawning
   , cactorFreq    = [("animal", 50), ("robot", 50)]
   , citemNum      = 6 * d 8  -- just one level, hard enemies, treasure
   , citemFreq     = [("useful", 33), ("gem", 33), ("currency", 33)]
