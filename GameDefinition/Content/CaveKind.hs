@@ -196,7 +196,6 @@ bridge = rogue
   , cfreq         = [("caveBridge", 1)]
   , cdarkChance   = 0  -- all rooms lit, for a gentle start
   , cextraStairs  = 1
-  , cactorFreq    = []  -- safe, nothing spawns
   , citemNum      = 9 * d 5  -- lure them in with loot
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq rogue
   }
