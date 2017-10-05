@@ -133,8 +133,7 @@ thorn = fist
   , ifreq    = [("thorn", 100)]
   , icount   = 2 + d 3
   , iverbHit = "impale"
-  , idamage  = toDmg $ 1 * d 1
-  , ieffects = [RefillHP (-2)]
+  , idamage  = toDmg $ 1 * d 3
   , ifeature = [Identified, Meleeable]  -- not Durable
   , idesc    = ""
   }
