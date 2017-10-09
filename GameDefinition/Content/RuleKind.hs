@@ -68,6 +68,6 @@ standard = RuleKind
   , rfirstDeathEnds = False
   , rwriteSaveClips = 1000
   , rleadLevelClips = 50
-  , rscoresFile = "scores"
+  , rscoresFile = "Allure.scores"
   , rnearby = 20
   }
