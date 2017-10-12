@@ -196,3 +196,6 @@ build-binary-common:
 build-binary: build-binary-common
 	cp AllureOfTheStarsInstall/bin/Allure AllureOfTheStars
 	tar -czf Allure_x_ubuntu-16.04-amd64.tar.gz AllureOfTheStars
+
+new-build-dev:
+	cabal new-build --datadir=. --disable-optimization -j1 all

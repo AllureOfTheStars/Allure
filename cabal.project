@@ -1,0 +1,5 @@
+packages: ./
+          ../LambdaHack
+
+package sdl2
+    flags: +no-linear
