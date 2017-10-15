@@ -80,6 +80,7 @@ executable Allure
                       containers >= 0.5.3.0,
                       enummapset-th >= 0.6.0.0,
                       filepath   >= 1.2.0.1,
+                      optparse-applicative >= 0.13,
                       random     >= 1.1,
                       text       >= 0.11.2.3
 
@@ -133,6 +134,7 @@ test-suite test
                       containers >= 0.5.3.0,
                       enummapset-th >= 0.6.0.0,
                       filepath   >= 1.2.0.1,
+                      optparse-applicative >= 0.13,
                       random     >= 1.1,
                       text       >= 0.11.2.3
 
