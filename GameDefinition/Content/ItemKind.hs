@@ -88,7 +88,7 @@ sandstoneRock = ItemKind
   , iverbHit = "hit"
   , iweight  = 300
   , idamage  = toDmg $ 1 `d` 1
-  , iaspects = [AddHurtMelee (-16 |*| 5)]
+  , iaspects = [AddHurtMelee $ -16 * 5]
   , ieffects = []
   , ifeature = [toVelocity 70, Fragile, Identified]  -- not dense, irregular
   , idesc    = "A light, irregular lump of ceramic foam used in construction."
@@ -104,7 +104,8 @@ dart = ItemKind
   , iverbHit = "strike"
   , iweight  = 170
   , idamage  = toDmg $ 1 `d` 1
-  , iaspects = [AddHurtMelee (-14 + 1 `d` 2 + 1 `dl` 4 |*| 5)]  -- only leather-piercing
+  , iaspects = [AddHurtMelee $ (-14 + 1 `d` 2 + 1 `dl` 4) * 5]
+                 -- only leather-piercing
   , ieffects = []
   , ifeature = [Identified]
   , idesc    = "Ideal shape, size and weight for throwing."
@@ -120,7 +121,8 @@ spike = ItemKind
   , iverbHit = "nick"
   , iweight  = 100
   , idamage  = toDmg $ 2 `d` 1
-  , iaspects = [AddHurtMelee (-10 + 1 `d` 2 + 1 `dl` 4 |*| 5)]  -- heavy vs armor
+  , iaspects = [AddHurtMelee $ (-10 + 1 `d` 2 + 1 `dl` 4) * 5]
+                 -- heavy vs armor
   , ieffects = [ Explode "single spark"  -- when hitting enemy
                , OnSmash (Explode "single spark") ]  -- at wall hit
   , ifeature = [toVelocity 70, Identified]  -- hitting with tip costs speed
@@ -137,7 +139,8 @@ slingStone = ItemKind
   , iverbHit = "hit"
   , iweight  = 200
   , idamage  = toDmg $ 1 `d` 1
-  , iaspects = [AddHurtMelee (-10 + 1 `d` 2 + 1 `dl` 4 |*| 5)]  -- heavy vs armor
+  , iaspects = [AddHurtMelee $ (-10 + 1 `d` 2 + 1 `dl` 4) * 5]
+                 -- heavy vs armor
   , ieffects = [ Explode "single spark"  -- when hitting enemy
                , OnSmash (Explode "single spark") ]  -- at wall hit
   , ifeature = [toVelocity 150, Identified]
@@ -154,7 +157,8 @@ slingBullet = ItemKind
   , iverbHit = "hit"
   , iweight  = 28
   , idamage  = toDmg $ 1 `d` 1
-  , iaspects = [AddHurtMelee (-17 + 1 `d` 2 + 1 `dl` 4 |*| 5)]  -- not armor-piercing
+  , iaspects = [AddHurtMelee $ (-17 + 1 `d` 2 + 1 `dl` 4) * 5]
+                 -- not armor-piercing
   , ieffects = []
   , ifeature = [toVelocity 200, Identified]
   , idesc    = "Small but heavy bearing ball. Due to its size and shape, it securely fits in the makeshift sling's pouch and doesn't snag when released."
@@ -174,7 +178,7 @@ paralizingProj = ItemKind
   , iverbHit = "glue"
   , iweight  = 1000
   , idamage  = toDmg $ 1 `d` 1
-  , iaspects = [AddHurtMelee (-14 |*| 5)]
+  , iaspects = [AddHurtMelee $ -14 * 5]
   , ieffects = [ ELabel "of sticky foam", Paralyze (10 + 1 `d` 12)
                , OnSmash (Explode "glue") ]
   , ifeature = [toVelocity 70, Identified, Lobable, Fragile]  -- unwieldy
@@ -191,7 +195,7 @@ harpoon = ItemKind
   , iverbHit = "hook"
   , iweight  = 750
   , idamage  = [(99, 5 `d` 1), (1, 10 `d` 1)]
-  , iaspects = [AddHurtMelee (-10 + 1 `d` 2 + 1 `dl` 4 |*| 5)]
+  , iaspects = [AddHurtMelee $ (-10 + 1 `d` 2 + 1 `dl` 4) * 5]
   , ieffects = [PullActor (ThrowMod 200 50)]
   , ifeature = [Identified]
   , idesc    = "A display piece harking back to the Earth's oceanic tourism hayday. The cruel, barbed head lodges in its victim so painfully that the weakest tug of the thin line sends the victim flying."
@@ -207,7 +211,7 @@ net = ItemKind
   , iverbHit = "entangle"
   , iweight  = 1000
   , idamage  = toDmg $ 2 `d` 1
-  , iaspects = [AddHurtMelee (-14 |*| 5)]
+  , iaspects = [AddHurtMelee $ -14 * 5]
   , ieffects = [ toOrganGameTurn "slowed" (3 + 1 `d` 3)
                , DropItem maxBound 1 CEqp "torso armor" ]
   , ifeature = [Identified]
@@ -626,7 +630,7 @@ jumpingPole = ItemKind
   , iverbHit = "prod"
   , iweight  = 10000
   , idamage  = toDmg 0
-  , iaspects = [Timeout $ 1 `d` 2 + 2 - 1 `dl` 2 |*| 10]
+  , iaspects = [Timeout $ (1 `d` 2 + 2 - 1 `dl` 2) * 10]
   , ieffects = [Recharging (toOrganActorTurn "hasted" 1)]
   , ifeature = [Durable, Applicable, Identified]
   , idesc    = "Makes you vulnerable at take-off, but then you are free like a bird."
@@ -642,7 +646,7 @@ sharpeningTool = ItemKind
   , iverbHit = "smack"
   , iweight  = 400
   , idamage  = toDmg 0
-  , iaspects = [AddHurtMelee $ 1 `d` 10 |*| 3]
+  , iaspects = [AddHurtMelee $ (1 `d` 10) * 3]
   , ieffects = [EqpSlot EqpSlotAddHurtMelee]
   , ifeature = [Identified, Equipable]
   , idesc    = "Originally used for realigning the bent or buckled edges of kitchen knives in the local bars. Now it saves lives by letting you fix your weapons between or even during fights, without the need to set up camp, fish out tools and assemble a proper sharpening workshop."
@@ -726,7 +730,7 @@ necklace = ItemKind
 necklace1 = necklace
   { ifreq    = [("treasure", 100)]
   , irarity  = [(3, 0), (4, 1), (10, 2)]  -- prevents camping on lvl 3
-  , iaspects = [Timeout $ 1 `d` 3 + 4 - 1 `dl` 3 |*| 10]
+  , iaspects = [Timeout $ (1 `d` 3 + 4 - 1 `dl` 3) * 10]
   , ieffects = [ Unique, ELabel "of Trickle Life", EqpSlot EqpSlotMiscBonus
                , Recharging (RefillHP 1) ]
                ++ ieffects necklace
@@ -735,7 +739,7 @@ necklace1 = necklace
 necklace2 = necklace
   { ifreq    = [("treasure", 100)]  -- just too nasty to call it useful
   , irarity  = [(1, 1)]
-  , iaspects = [Timeout $ 1 `d` 3 + 3 - 1 `dl` 3 |*| 10]
+  , iaspects = [Timeout $ (1 `d` 3 + 3 - 1 `dl` 3) * 10]
   , ieffects = [ Recharging (Summon "mobile animal" $ 1 + 1 `dl` 2)
                , Recharging (Explode "waste")
                , Recharging Impress
@@ -743,19 +747,19 @@ necklace2 = necklace
                ++ ieffects necklace
   }
 necklace3 = necklace
-  { iaspects = [Timeout $ 1 `d` 3 + 4 - 1 `dl` 3 |*| 5]
+  { iaspects = [Timeout $ (1 `d` 3 + 4 - 1 `dl` 3) * 5]
   , ieffects = [ ELabel "of fearful listening"
                , Recharging (DetectActor 20)
                , Recharging (RefillCalm (-20)) ]
                ++ ieffects necklace
   }
 necklace4 = necklace
-  { iaspects = [Timeout $ 1 `d` 4 + 4 - 1 `dl` 4 |*| 2]
+  { iaspects = [Timeout $ (1 `d` 4 + 4 - 1 `dl` 4) * 2]
   , ieffects = [Recharging (Teleport $ 3 `d` 2)]
                ++ ieffects necklace
   }
 necklace5 = necklace
-  { iaspects = [Timeout $ 1 `d` 3 + 4 - 1 `dl` 3 |*| 10]
+  { iaspects = [Timeout $ (1 `d` 3 + 4 - 1 `dl` 3) * 10]
   , ieffects = [ ELabel "of escape"
                , Recharging (Teleport $ 14 + 3 `d` 3)
                , Recharging (DetectExit 20)
@@ -763,7 +767,7 @@ necklace5 = necklace
                ++ ieffects necklace
   }
 necklace6 = necklace
-  { iaspects = [Timeout $ 1 `d` 3 + 1 |*| 2]
+  { iaspects = [Timeout $ (1 `d` 3 + 1) * 2]
   , ieffects = [Recharging (PushActor (ThrowMod 100 50))]
                ++ ieffects necklace
   }
@@ -780,12 +784,12 @@ necklace7 = necklace
   , ifeature = Durable : ifeature necklace
   }
 necklace8 = necklace
-  { iaspects = [Timeout $ 1 `d` 3 + 3 - 1 `dl` 3 |*| 5]
+  { iaspects = [Timeout $ (1 `d` 3 + 3 - 1 `dl` 3) * 5]
   , ieffects = [Recharging $ Explode "spark"]
                ++ ieffects necklace
   }
 necklace9 = necklace
-  { iaspects = [Timeout $ 1 `d` 3 + 3 - 1 `dl` 3 |*| 5]
+  { iaspects = [Timeout $ (1 `d` 3 + 3 - 1 `dl` 3) * 5]
   , ieffects = [Recharging $ Explode "fragrance"]
                ++ ieffects necklace
   }
@@ -802,7 +806,7 @@ imageItensifier = ItemKind
   , iverbHit = "rattle"
   , iweight  = 700
   , idamage  = toDmg 0
-  , iaspects = [AddNocto 1, AddSight (-1), AddArmorMelee $ 1 + 1 `dl` 3 |*| 3]
+  , iaspects = [AddNocto 1, AddSight (-1), AddArmorMelee $ (1 + 1 `dl` 3) * 3]
   , ieffects = [EqpSlot EqpSlotMiscBonus]
   , ifeature = [Precious, Identified, Durable, Equipable]
   , idesc    = "Sturdy antique night vision goggles of unknown origin. Wired to run on modern micro-cells."
@@ -818,7 +822,7 @@ sightSharpening = ItemKind
   , iverbHit = "rap"
   , iweight  = 50
   , idamage  = toDmg 0
-  , iaspects = [AddSight $ 1 + 1 `d` 2, AddHurtMelee $ 1 `d` 2 |*| 3]
+  , iaspects = [AddSight $ 1 + 1 `d` 2, AddHurtMelee $ (1 `d` 2) * 3]
   , ieffects = [EqpSlot EqpSlotAddSight]
   , ifeature = [Precious, Identified, Durable, Equipable]
   , idesc    = "Zooms on any movement, distant or close. Requires some getting used to. Never needs to be taken off."
@@ -873,7 +877,8 @@ ring3 = ring
   }
 ring4 = ring
   { irarity  = [(3, 3), (10, 5)]
-  , iaspects = [AddHurtMelee $ 1 `d` 5 + 1 `dl` 5 |*| 3, AddMaxHP $ 1 `dl` 3 - 5 - 1 `d` 3]
+  , iaspects = [ AddHurtMelee $ (1 `d` 5 + 1 `dl` 5) * 3
+               , AddMaxHP $ 1 `dl` 3 - 5 - 1 `d` 3 ]
   , ieffects = [Explode "blast 20", EqpSlot EqpSlotAddHurtMelee]
   }
 ring5 = ring  -- by the time it's found, probably no space in eqp
@@ -922,8 +927,8 @@ armorLeather = ItemKind
   , iweight  = 7000
   , idamage  = toDmg 0
   , iaspects = [ AddHurtMelee (-2)
-               , AddArmorMelee $ 1 + 1 `d` 2 + 1 `dl` 2 |*| 5
-               , AddArmorRanged $ 1 `dl` 3 |*| 3 ]
+               , AddArmorMelee $ (1 + 1 `d` 2 + 1 `dl` 2) * 5
+               , AddArmorRanged $ (1 `dl` 3) * 3 ]
   , ieffects = [EqpSlot EqpSlotAddArmorMelee]
   , ifeature = [Durable, Identified, Equipable]
   , idesc    = "A hard-shell torso segment cut from a disposed off spacesuit."
@@ -937,8 +942,8 @@ armorMail = armorLeather
   , iweight  = 12000
   , idamage  = toDmg 0
   , iaspects = [ AddHurtMelee (-3)
-               , AddArmorMelee $ 1 + 1 `d` 2 + 1 `dl` 2 |*| 5
-               , AddArmorRanged $ 2 + 1 `d` 2 + 1 `dl` 3 |*| 3 ]
+               , AddArmorMelee $ (1 + 1 `d` 2 + 1 `dl` 2) * 5
+               , AddArmorRanged $ (2 + 1 `d` 2 + 1 `dl` 3) * 3 ]
   , ieffects = [EqpSlot EqpSlotAddArmorRanged]
   , ifeature = [Durable, Identified, Equipable]
   , idesc    = "A civilian bulletproof vest. Discourages foes from attacking your torso, making it harder for them to land a blow."
@@ -953,8 +958,8 @@ gloveFencing = ItemKind
   , iverbHit = "flap"
   , iweight  = 100
   , idamage  = toDmg $ 1 `d` 1
-  , iaspects = [ AddHurtMelee $ 1 `d` 2 + 1 `dl` 7 |*| 3
-               , AddArmorRanged $ 1 `dl` 2 |*| 3 ]
+  , iaspects = [ AddHurtMelee $ (1 `d` 2 + 1 `dl` 7) * 3
+               , AddArmorRanged $ (1 `dl` 2) * 3 ]
   , ieffects = [EqpSlot EqpSlotAddHurtMelee]
   , ifeature = [ toVelocity 50  -- flaps and flutters
                , Durable, Identified, Equipable ]
@@ -968,8 +973,8 @@ gloveGauntlet = gloveFencing
   , irarity  = [(1, 9), (10, 3)]
   , iweight  = 300
   , idamage  = toDmg $ 2 `d` 1
-  , iaspects = [ AddArmorMelee $ 2 + 1 `dl` 2 |*| 5
-               , AddArmorRanged $ 1 `dl` 1 |*| 3 ]
+  , iaspects = [ AddArmorMelee $ (2 + 1 `dl` 2) * 5
+               , AddArmorRanged $ (1 `dl` 1) * 3 ]
   , ieffects = [EqpSlot EqpSlotAddArmorMelee]
   , idesc    = "A piece of a hull maintenance spacesuit, padded and reinforced with carbon fibre."
   }
@@ -980,9 +985,9 @@ gloveJousting = gloveFencing
   , irarity  = [(1, 3), (10, 3)]
   , iweight  = 1000
   , idamage  = toDmg $ 3 `d` 1
-  , iaspects = [ AddHurtMelee $ 1 `dl` 4 - 6 |*| 3
-               , AddArmorMelee $ 2 + 1 `d` 2 + 1 `dl` 2 |*| 5
-               , AddArmorRanged $ 1 `dl` 2 |*| 3 ]
+  , iaspects = [ AddHurtMelee $ (1 `dl` 4 - 6) * 3
+               , AddArmorMelee $ (2 + 1 `d` 2 + 1 `dl` 2) * 5
+               , AddArmorRanged $ (1 `dl` 2) * 3 ]
   , ieffects = [Unique, EqpSlot EqpSlotAddArmorMelee]
   , idesc    = "Rigid, bulky handgear embedding a welding equipment, complete with an affixed small shield and a darkened visor. Awe-inspiring."
   }
@@ -1007,7 +1012,7 @@ buckler = ItemKind
   , idamage  = [(96, 2 `d` 1), (3, 4 `d` 1), (1, 8 `d` 1)]
   , iaspects = [ AddArmorMelee 40  -- not enough to compensate; won't be in eqp
                , AddHurtMelee (-30)  -- too harmful; won't be wielded as weapon
-               , Timeout $ 1 `d` 3 + 3 - 1 `dl` 3 |*| 2 ]
+               , Timeout $ (1 `d` 3 + 3 - 1 `dl` 3) * 2 ]
   , ieffects = [ Recharging (PushActor (ThrowMod 200 50))
                , EqpSlot EqpSlotAddArmorMelee ]
   , ifeature = [ toVelocity 50  -- unwieldy to throw
@@ -1023,7 +1028,7 @@ shield = buckler
   , idamage  = [(96, 4 `d` 1), (3, 8 `d` 1), (1, 16 `d` 1)]
   , iaspects = [ AddArmorMelee 80  -- not enough to compensate; won't be in eqp
                , AddHurtMelee (-70)  -- too harmful; won't be wielded as weapon
-               , Timeout $ 1 `d` 6 + 6 - 1 `dl` 6 |*| 2 ]
+               , Timeout $ (1 `d` 6 + 6 - 1 `dl` 6) * 2 ]
   , ieffects = [ Recharging (PushActor (ThrowMod 400 50))
                , EqpSlot EqpSlotAddArmorMelee ]
   , ifeature = [ toVelocity 50  -- unwieldy to throw
@@ -1043,8 +1048,8 @@ dagger = ItemKind
   , iverbHit = "stab"
   , iweight  = 1000
   , idamage  = toDmg $ 6 `d` 1
-  , iaspects = [ AddHurtMelee $ 1 `d` 3 + 1 `dl` 3 |*| 3
-               , AddArmorMelee $ 1 `d` 2 |*| 5 ]
+  , iaspects = [ AddHurtMelee $ (1 `d` 3 + 1 `dl` 3) * 3
+               , AddArmorMelee $ (1 `d` 2) * 5 ]
   , ieffects = [EqpSlot EqpSlotWeapon]
   , ifeature = [ toVelocity 40  -- ensuring it hits with the tip costs speed
                , Durable, Identified, Meleeable ]
@@ -1063,7 +1068,7 @@ daggerDropBestWeapon = dagger
   -- If the effect is very powerful and so the timeout has to be significant,
   -- let's make it really large, for the effect to occur only once in a fight:
   -- as soon as the item is equipped, or just on the first strike.
-  , iaspects = iaspects dagger ++ [Timeout $ 1 `d` 3 + 4 - 1 `dl` 3 |*| 2]
+  , iaspects = iaspects dagger ++ [Timeout $ (1 `d` 3 + 4 - 1 `dl` 3) * 2]
   , ieffects = ieffects dagger
                ++ [ Unique
                   , Recharging DropBestWeapon, Recharging $ RefillCalm (-3) ]
@@ -1080,7 +1085,7 @@ hammer = ItemKind
   , iverbHit = "club"
   , iweight  = 1600
   , idamage  = [(96, 8 `d` 1), (3, 12 `d` 1), (1, 16 `d` 1)]
-  , iaspects = [AddHurtMelee $ 1 `d` 2 + 1 `dl` 2 |*| 3]
+  , iaspects = [AddHurtMelee $ (1 `d` 2 + 1 `dl` 2) * 3]
   , ieffects = [EqpSlot EqpSlotWeapon]
   , ifeature = [ toVelocity 40  -- ensuring it hits with the tip costs speed
                , Durable, Identified, Meleeable ]
@@ -1092,7 +1097,7 @@ hammerParalyze = hammer
   , ifreq    = [("treasure", 20)]
   , irarity  = [(5, 1), (10, 6)]
   , idamage  = toDmg $ 8 `d` 1
-  , iaspects = iaspects hammer ++ [Timeout $ 1 `d` 2 + 3 - 1 `dl` 2 |*| 2]
+  , iaspects = iaspects hammer ++ [Timeout $ (1 `d` 2 + 3 - 1 `dl` 2) * 2]
   , ieffects = ieffects hammer ++ [Unique, Recharging $ Paralyze 10]
   }
 hammerSpark = hammer
@@ -1100,7 +1105,8 @@ hammerSpark = hammer
   , ifreq    = [("treasure", 20)]
   , irarity  = [(5, 1), (10, 6)]
   , idamage  = toDmg $ 8 `d` 1
-  , iaspects = iaspects hammer ++ [AddShine 3, Timeout $ 1 `d` 4 + 4 - 1 `dl` 4 |*| 2]
+  , iaspects = iaspects hammer
+               ++ [AddShine 3, Timeout $ (1 `d` 4 + 4 - 1 `dl` 4) * 2]
   , ieffects = ieffects hammer ++ [Unique, Recharging $ Explode "spark"]
   }
 sword = ItemKind
@@ -1125,7 +1131,7 @@ swordImpress = sword
   , iname    = "Master's Sword"
   , ifreq    = [("treasure", 20)]
   , irarity  = [(5, 1), (10, 6)]
-  , iaspects = [Timeout $ 1 `d` 4 + 5 - 1 `dl` 4 |*| 2]
+  , iaspects = [Timeout $ (1 `d` 4 + 5 - 1 `dl` 4) * 2]
   , ieffects = ieffects sword
                ++ [Unique, Recharging Impress, Recharging (DetectActor 5)]
   }
@@ -1134,7 +1140,7 @@ swordNullify = sword
   , iname    = "Gutting Sword"
   , ifreq    = [("treasure", 20)]
   , irarity  = [(5, 1), (10, 6)]
-  , iaspects = [Timeout $ 1 `d` 4 + 5 - 1 `dl` 4 |*| 2]
+  , iaspects = [Timeout $ (1 `d` 4 + 5 - 1 `dl` 4) * 2]
   , ieffects = ieffects sword
                ++ [ Unique
                   , Recharging $ DropItem 1 maxBound COrgan
@@ -1152,7 +1158,7 @@ halberd = ItemKind
   , iweight  = 3000
   , idamage  = [(96, 12 `d` 1), (3, 18 `d` 1), (1, 24 `d` 1)]
   , iaspects = [ AddHurtMelee (-20)  -- just benign enough to be used
-               , AddArmorMelee $ 1 + 1 `dl` 3 |*| 5 ]
+               , AddArmorMelee $ (1 + 1 `dl` 3) * 5 ]
   , ieffects = [EqpSlot EqpSlotWeapon]
   , ifeature = [ toVelocity 20  -- not balanced
                , Durable, Identified, Meleeable ]
@@ -1164,7 +1170,7 @@ halberdPushActor = halberd
   , ifreq    = [("treasure", 20)]
   , irarity  = [(8, 1), (9, 20)]
   , idamage  = toDmg $ 12 `d` 1
-  , iaspects = iaspects halberd ++ [Timeout $ 1 `d` 5 + 5 - 1 `dl` 5 |*| 2]
+  , iaspects = iaspects halberd ++ [Timeout $ (1 `d` 5 + 5 - 1 `dl` 5) * 2]
   , ieffects = ieffects halberd
                ++ [Unique, Recharging (PushActor (ThrowMod 400 25))]
   , idesc    = "A perfect replica made for a reenactor troupe, missing only some sharpening. Versatile, with great reach and leverage. Foes are held at a distance."
@@ -1267,7 +1273,7 @@ needle = ItemKind
   , iverbHit = "prick"
   , iweight  = 3
   , idamage  = toDmg $ 1 `d` 1
-  , iaspects = [AddHurtMelee (-10 |*| 5)]
+  , iaspects = [AddHurtMelee $ -10 * 5]
   , ieffects = []
   , ifeature = [toVelocity 70, Fragile]
   , idesc    = "A long hypodermic needle ending in a dried out micro-syringe. It's too light to throw hard, but it penetrates deeply, causing intense pain on movement."

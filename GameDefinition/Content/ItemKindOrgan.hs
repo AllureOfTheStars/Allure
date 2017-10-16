@@ -336,7 +336,7 @@ scentGland = armoredSkin
   { iname    = "scent gland"
   , ifreq    = [("scent gland", 100)]
   , iverbHit = "spray at"
-  , iaspects = [Timeout $ 10 + 1 `d` 2 |*| 5 ]
+  , iaspects = [Timeout $ (10 + 1 `d` 2) * 5 ]
   , ieffects = [ Periodic, Recharging (Explode "distressing odor")
                , Recharging ApplyPerfume ]
   , idesc    = ""
@@ -346,7 +346,7 @@ boilingVent = armoredSkin
   , ifreq    = [("boiling vent", 100)]
   , iflavour = zipPlain [BrBlue]
   , iverbHit = "menace"
-  , iaspects = [Timeout $ 2 + 1 `d` 2 |*| 5]
+  , iaspects = [Timeout $ (2 + 1 `d` 2) * 5]
   , ieffects = [Periodic
                , Recharging (Explode "boiling water")
                , Recharging (RefillHP 2) ]
@@ -357,7 +357,7 @@ arsenicVent = armoredSkin
   , ifreq    = [("biogas vent", 100)]
   , iflavour = zipPlain [BrGreen]
   , iverbHit = "menace"
-  , iaspects = [Timeout $ 2 + 1 `d` 2 |*| 5]
+  , iaspects = [Timeout $ (2 + 1 `d` 2) * 5]
   , ieffects = [ Periodic
                , Recharging (Explode "sparse shower")
                , Recharging (RefillHP 2) ]
@@ -368,7 +368,7 @@ sulfurVent = armoredSkin
   , ifreq    = [("medbot vent", 100)]
   , iflavour = zipPlain [BrYellow]
   , iverbHit = "menace"
-  , iaspects = [Timeout $ 2 + 1 `d` 2 |*| 5]
+  , iaspects = [Timeout $ (2 + 1 `d` 2) * 5]
   , ieffects = [ Periodic
                , Recharging (Explode "dense shower")
                , Recharging (RefillHP 2) ]
@@ -419,7 +419,7 @@ wasteContainer = armoredSkin
   { iname    = "waste container"
   , ifreq    = [("waste container", 100)]
   , iverbHit = "spill over"
-  , iaspects = [Timeout $ 5 + 1 `d` 5 |*| 10]
+  , iaspects = [Timeout $ (5 + 1 `d` 5) * 10]
   , ieffects = [ Periodic
                , Recharging (Summon "mobile animal" 1)
                , Recharging (RefillHP 1)
