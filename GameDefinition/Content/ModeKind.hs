@@ -355,7 +355,7 @@ rosterExplorationSurvival = rosterExploration
                    , [] )
                  , ( playerAnimal {fhasUI = True}
                    , -- Fun from the start to avoid empty initial level:
-                     [ (3, 5 + d 2, "animal")  -- many, because no spawning
+                     [ (3, 5 + 1 `d` 2, "animal")  -- many, because no spawning
                      -- Optional huge battle at the end:
                      , (12, 100, "mobile animal") ] )
                  , ( playerRobot
@@ -438,7 +438,7 @@ rosterDefense = rosterExploration
                    , [] )
                  , ( playerAnimal
                    , -- Fun from the start to avoid empty initial level:
-                     [ (3, 5 + d 2, "animal")  -- many, because no spawning
+                     [ (3, 5 + 1 `d` 2, "animal")  -- many, because no spawning
                      -- Optional huge battle at the end:
                      , (12, 100, "mobile animal") ] )
                  , ( playerRobot

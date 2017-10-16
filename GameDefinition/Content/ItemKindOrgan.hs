@@ -42,7 +42,7 @@ fist = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "punch"
   , iweight  = 2000
-  , idamage  = toDmg $ 4 * d 1
+  , idamage  = toDmg $ 4 `d` 1
   , iaspects = []
   , ieffects = []
   , ifeature = [Durable, Identified, Meleeable]
@@ -53,7 +53,7 @@ foot = fist
   { iname    = "foot"
   , ifreq    = [("foot", 50)]
   , iverbHit = "kick"
-  , idamage  = toDmg $ 4 * d 1
+  , idamage  = toDmg $ 4 `d` 1
   , idesc    = ""
   }
 
@@ -64,8 +64,8 @@ hookedClaw = fist
   , ifreq    = [("hooked claw", 50)]
   , icount   = 2  -- even if more, only the fore claws used for fighting
   , iverbHit = "hook"
-  , idamage  = toDmg $ 2 * d 1
-  , iaspects = [Timeout $ 4 + d 4]
+  , idamage  = toDmg $ 2 `d` 1
+  , iaspects = [Timeout $ 4 + 1 `d` 4]
   , ieffects = [Recharging (toOrganGameTurn "slowed" 2)]
   , idesc    = ""
   }
@@ -73,7 +73,7 @@ smallClaw = fist
   { iname    = "small claw"
   , ifreq    = [("small claw", 50)]
   , iverbHit = "slash"
-  , idamage  = toDmg $ 2 * d 1
+  , idamage  = toDmg $ 2 `d` 1
   , idesc    = ""
   }
 snout = fist
@@ -81,7 +81,7 @@ snout = fist
   , ifreq    = [("snout", 10)]
   , icount   = 1
   , iverbHit = "bite"
-  , idamage  = toDmg $ 2 * d 1
+  , idamage  = toDmg $ 2 `d` 1
   , idesc    = ""
   }
 smallJaw = fist
@@ -89,7 +89,7 @@ smallJaw = fist
   , ifreq    = [("small jaw", 20)]
   , icount   = 1
   , iverbHit = "rip"
-  , idamage  = toDmg $ 3 * d 1
+  , idamage  = toDmg $ 3 `d` 1
   , idesc    = ""
   }
 jaw = fist
@@ -97,7 +97,7 @@ jaw = fist
   , ifreq    = [("jaw", 20)]
   , icount   = 1
   , iverbHit = "rip"
-  , idamage  = toDmg $ 5 * d 1
+  , idamage  = toDmg $ 5 `d` 1
   , idesc    = ""
   }
 largeJaw = fist
@@ -105,7 +105,7 @@ largeJaw = fist
   , ifreq    = [("large jaw", 100)]
   , icount   = 1
   , iverbHit = "crush"
-  , idamage  = toDmg $ 10 * d 1
+  , idamage  = toDmg $ 10 `d` 1
   , idesc    = ""
   }
 horn = fist
@@ -113,7 +113,7 @@ horn = fist
   , ifreq    = [("horn", 20)]
   , icount   = 2
   , iverbHit = "impale"
-  , idamage  = toDmg $ 6 * d 1
+  , idamage  = toDmg $ 6 `d` 1
   , iaspects = [AddHurtMelee 20]
   , idesc    = ""
   }
@@ -125,40 +125,40 @@ tentacle = fist
   , ifreq    = [("tentacle", 50)]
   , icount   = 4
   , iverbHit = "slap"
-  , idamage  = toDmg $ 4 * d 1
+  , idamage  = toDmg $ 4 `d` 1
   , idesc    = ""
   }
 thorn = fist
   { iname    = "thorn"
   , ifreq    = [("thorn", 100)]
-  , icount   = 2 + d 3
+  , icount   = 2 + 1 `d` 3
   , iverbHit = "impale"
-  , idamage  = toDmg $ 1 * d 3
+  , idamage  = toDmg $ 1 `d` 3
   , ifeature = [Identified, Meleeable]  -- not Durable
   , idesc    = ""
   }
 boilingFissure = fist
   { iname    = "fissure"
   , ifreq    = [("boiling fissure", 100)]
-  , icount   = 5 + d 5
+  , icount   = 5 + 1 `d` 5
   , iverbHit = "hiss at"
-  , idamage  = toDmg $ 1 * d 1
+  , idamage  = toDmg $ 1 `d` 1
   , iaspects = [AddHurtMelee 20]  -- decreasing as count decreases
-  , ieffects = [InsertMove $ 1 * d 3]
+  , ieffects = [InsertMove $ 1 `d` 3]
   , ifeature = [Identified, Meleeable]  -- not Durable
   , idesc    = ""
   }
 arsenicFissure = boilingFissure
   { iname    = "fissure"
   , ifreq    = [("biogas fissure", 100)]
-  , icount   = 3 + d 3
-  , idamage  = toDmg $ 2 * d 1
-  , ieffects = [toOrganGameTurn "weakened" (2 + d 2)]
+  , icount   = 3 + 1 `d` 3
+  , idamage  = toDmg $ 2 `d` 1
+  , ieffects = [toOrganGameTurn "weakened" (2 + 1 `d` 2)]
   }
 sulfurFissure = boilingFissure
   { iname    = "fissure"
   , ifreq    = [("medbot fissure", 100)]
-  , icount   = 2 + d 2
+  , icount   = 2 + 1 `d` 2
   , idamage  = toDmg 0
   , ieffects = [RefillHP 5]
   }
@@ -178,8 +178,8 @@ sting = fist
   , ifreq    = [("sting", 100)]
   , icount   = 1
   , iverbHit = "sting"
-  , idamage  = toDmg $ 1 * d 1
-  , iaspects = [Timeout $ 1 + d 5, AddHurtMelee 40]
+  , idamage  = toDmg $ 1 `d` 1
+  , iaspects = [Timeout $ 1 + 1 `d` 5, AddHurtMelee 40]
   , ieffects = [Recharging (Paralyze 4)]
   , idesc    = "Painful, debilitating and harmful."
   }
@@ -188,9 +188,9 @@ venomTooth = fist
   , ifreq    = [("venom tooth", 100)]
   , icount   = 2
   , iverbHit = "bite"
-  , idamage  = toDmg $ 2 * d 1
-  , iaspects = [Timeout $ 5 + d 3]
-  , ieffects = [Recharging (toOrganGameTurn "slowed" (3 + d 3))]
+  , idamage  = toDmg $ 2 `d` 1
+  , iaspects = [Timeout $ 5 + 1 `d` 3]
+  , ieffects = [Recharging (toOrganGameTurn "slowed" (3 + 1 `d` 3))]
   , idesc    = ""
   }
 venomFang = fist
@@ -198,8 +198,8 @@ venomFang = fist
   , ifreq    = [("venom fang", 100)]
   , icount   = 2
   , iverbHit = "bite"
-  , idamage  = toDmg $ 2 * d 1
-  , iaspects = [Timeout $ 7 + d 5]
+  , idamage  = toDmg $ 2 `d` 1
+  , iaspects = [Timeout $ 7 + 1 `d` 5]
   , ieffects = [Recharging (toOrganNone "poisoned")]
   , idesc    = ""
   }
@@ -208,9 +208,9 @@ screechingBeak = fist
   , ifreq    = [("screeching beak", 100)]
   , icount   = 1
   , iverbHit = "peck"
-  , idamage  = toDmg $ 2 * d 1
-  , iaspects = [Timeout $ 5 + d 5]
-  , ieffects = [Recharging $ Summon "scavenger" $ 1 + dl 2]
+  , idamage  = toDmg $ 2 `d` 1
+  , iaspects = [Timeout $ 5 + 1 `d` 5]
+  , ieffects = [Recharging $ Summon "scavenger" $ 1 + 1 `dl` 2]
   , idesc    = ""
   }
 largeTail = fist
@@ -218,8 +218,8 @@ largeTail = fist
   , ifreq    = [("large tail", 50)]
   , icount   = 1
   , iverbHit = "knock"
-  , idamage  = toDmg $ 6 * d 1
-  , iaspects = [Timeout $ 1 + d 3, AddHurtMelee 20]
+  , idamage  = toDmg $ 6 `d` 1
+  , iaspects = [Timeout $ 1 + 1 `d` 3, AddHurtMelee 20]
   , ieffects = [Recharging (PushActor (ThrowMod 400 25))]
   , idesc    = ""
   }
@@ -295,7 +295,7 @@ insectMortality = armoredSkin
   { iname    = "insect mortality"
   , ifreq    = [("insect mortality", 100)]
   , iverbHit = "age"
-  , iaspects = [Timeout $ 40 + d 10]
+  , iaspects = [Timeout $ 40 + 1 `d` 10]
   , ieffects = [Periodic, Recharging (RefillHP (-1))]
   , idesc    = ""
   }
@@ -336,7 +336,7 @@ scentGland = armoredSkin
   { iname    = "scent gland"
   , ifreq    = [("scent gland", 100)]
   , iverbHit = "spray at"
-  , iaspects = [Timeout $ 10 + d 2 |*| 5 ]
+  , iaspects = [Timeout $ 10 + 1 `d` 2 |*| 5 ]
   , ieffects = [ Periodic, Recharging (Explode "distressing odor")
                , Recharging ApplyPerfume ]
   , idesc    = ""
@@ -346,7 +346,7 @@ boilingVent = armoredSkin
   , ifreq    = [("boiling vent", 100)]
   , iflavour = zipPlain [BrBlue]
   , iverbHit = "menace"
-  , iaspects = [Timeout $ 2 + d 2 |*| 5]
+  , iaspects = [Timeout $ 2 + 1 `d` 2 |*| 5]
   , ieffects = [Periodic
                , Recharging (Explode "boiling water")
                , Recharging (RefillHP 2) ]
@@ -357,7 +357,7 @@ arsenicVent = armoredSkin
   , ifreq    = [("biogas vent", 100)]
   , iflavour = zipPlain [BrGreen]
   , iverbHit = "menace"
-  , iaspects = [Timeout $ 2 + d 2 |*| 5]
+  , iaspects = [Timeout $ 2 + 1 `d` 2 |*| 5]
   , ieffects = [ Periodic
                , Recharging (Explode "sparse shower")
                , Recharging (RefillHP 2) ]
@@ -368,7 +368,7 @@ sulfurVent = armoredSkin
   , ifreq    = [("medbot vent", 100)]
   , iflavour = zipPlain [BrYellow]
   , iverbHit = "menace"
-  , iaspects = [Timeout $ 2 + d 2 |*| 5]
+  , iaspects = [Timeout $ 2 + 1 `d` 2 |*| 5]
   , ieffects = [ Periodic
                , Recharging (Explode "dense shower")
                , Recharging (RefillHP 2) ]
@@ -390,9 +390,9 @@ bonusHP = armoredSkin
 razor = fist
   { iname    = "razor"
   , ifreq    = [("razor", 100)]
-  , icount   = 2 + d 5
+  , icount   = 2 + 1 `d` 5
   , iverbHit = "slice"
-  , idamage  = toDmg $ 2 * d 1
+  , idamage  = toDmg $ 2 `d` 1
   , idesc    = ""
   }
 liveWire = fist
@@ -400,8 +400,8 @@ liveWire = fist
   , ifreq    = [("live wire", 100)]
   , icount   = 1
   , iverbHit = "shock"
-  , idamage  = toDmg $ 1 * d 1
-  , iaspects = [Timeout $ 3 + d 3, AddHurtMelee 20]
+  , idamage  = toDmg $ 1 `d` 1
+  , iaspects = [Timeout $ 3 + 1 `d` 3, AddHurtMelee 20]
   , ieffects = [ Recharging (DropItem 1 maxBound COrgan "temporary condition")
                , Recharging $ RefillHP (-2)
                ]
@@ -419,7 +419,7 @@ wasteContainer = armoredSkin
   { iname    = "waste container"
   , ifreq    = [("waste container", 100)]
   , iverbHit = "spill over"
-  , iaspects = [Timeout $ 5 + d 5 |*| 10]
+  , iaspects = [Timeout $ 5 + 1 `d` 5 |*| 10]
   , ieffects = [ Periodic
                , Recharging (Summon "mobile animal" 1)
                , Recharging (RefillHP 1)
