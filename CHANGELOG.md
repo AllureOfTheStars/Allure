@@ -1,4 +1,4 @@
-## [v0.6.2.0, aka 'Zoom out'](https://github.com/LambdaHack/LambdaHack/compare/v0.6.1.0...v0.6.2.0)
+## [v0.6.2.0, aka 'Zoom out'](https://github.com/AllureOfTheStars/Allure/compare/v0.6.1.0...v0.6.2.0)
 
 - make fireworks slower and so easier to spot
 - make rattlesnake deeper but more common
@@ -18,7 +18,7 @@
 - help players find the info about changing the font size
 - depend on GHC >= 8.0 and new vector
 
-## [v0.6.1.0, aka 'Breaking one rule at a time'](https://github.com/LambdaHack/LambdaHack/compare/v0.6.0.0...v0.6.1.0)
+## [v0.6.1.0, aka 'Breaking one rule at a time'](https://github.com/AllureOfTheStars/Allure/compare/v0.6.0.0...v0.6.1.0)
 
 - major engine bugfix: fix redrawing after window minimized and restored
 - major engine bugfix: hack around vanishing texture on Windows
