@@ -566,7 +566,7 @@ scroll1 = scroll
   }
 scroll2 = scroll
   { irarity  = [(1, 2)]
-  , ieffects = [ ELabel "of greed", Teleport 20, DetectItem 20
+  , ieffects = [ ELabel "of greed", DetectItem 20, Teleport 20
                , RefillCalm (-100) ]
   }
 scroll3 = scroll
@@ -598,12 +598,15 @@ scroll8 = scroll
   }
 scroll9 = scroll
   { irarity  = [(1, 30)]
-  , ieffects = [ELabel "of scientific explanation", Identify]
+  , ieffects = [ ELabel "of scientific explanation"
+               , Composite [Identify, RefillCalm 10] ]
+      -- your most pressing existential concerns are answered scientifitically,
+      -- hence the calming effect
   }
 scroll10 = scroll
   { irarity  = [(10, 20)]
   , ieffects = [ ELabel "molecular reconfiguration"
-               , PolyItem, Explode "firecracker 7" ]
+               , Composite [PolyItem, Explode "firecracker 7"] ]
   }
 scroll11 = scroll
   { ifreq    = [("treasure", 100)]
