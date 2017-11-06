@@ -153,11 +153,12 @@ signboardUnread = TileKind  -- client only, indicates never used by this faction
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 5
-  , tfeature = [ Embed "signboard", Indistinct
-               , ConsideredByAI  -- changes after use, so safe for AI
-               , RevealAs "signboard" ]  -- to display as hidden
+  , tfeature = [ ConsideredByAI  -- changes after use, so safe for AI
+               , RevealAs "signboard"  -- to display as hidden
+               , Indistinct
+               ]
   }
-signboardRead = TileKind  -- after first use revealed to be this one
+signboardRead = TileKind
   { tsymbol  = 'O'
   , tname    = "signboard"
   , tfreq    = [("signboard", 1), ("zooSet", 2), ("ambushSet", 1)]
