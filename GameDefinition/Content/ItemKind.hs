@@ -3,7 +3,7 @@
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
--- | Item and treasure definitions.
+-- | Item definitions.
 module Content.ItemKind
   ( cdefs, items, otherItemContent
   ) where

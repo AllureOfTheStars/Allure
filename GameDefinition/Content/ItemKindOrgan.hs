@@ -3,7 +3,7 @@
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
--- | Organ definitions.
+-- | Actor organ definitions.
 module Content.ItemKindOrgan
   ( organs
   ) where
