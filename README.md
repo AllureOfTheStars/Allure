@@ -114,7 +114,7 @@ compiled for SDL2 and installed automatically by Cabal from Hackage[3]
 as follows
 
     cabal update
-    cabal install Allure --force-reinstalls
+    cabal install Allure
 
 For a newer version, install a matching LambdaHack library snapshot
 from a development branch, download the game source from github[5]
@@ -138,6 +138,26 @@ and initially cryptic), for displaying the traffic between clients
 and the server. Some options in the config file may prove useful too,
 though they mostly overlap with commandline options (and will be totally
 merged at some point).
+
+
+Coding style
+------------
+
+Stylish Haskell is used for slight auto-formatting at buffer save; see
+[.stylish-haskell.yaml](https://github.com/LambdaHack/LambdaHack/blob/master/.stylish-haskell.yaml).
+As defined in the file, indentation is 2 spaces wide and screen is
+80-columns wide. Spaces, not tabs. Spurious whitespace avoided.
+Spaces around arithmetic operators encouraged.
+Generally, relax and try to stick to the style apparent in a file
+you are editing. Put big formatting changes in separate commits.
+
+Haddocks are provided for all module headers and for all functions and types
+from major modules, in particular the modules that are interfaces
+for a whole directory of modules. Apart of that only very important
+functions and types are distinguished by having a haddock.
+If minor ones have comments, they should not be haddocks
+and they are permitted to describe implementation details and be out of date.
+If not too verbose, use assertions instead of comments.
 
 
 Further information
