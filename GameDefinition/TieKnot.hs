@@ -15,12 +15,12 @@ import Game.LambdaHack.Common.Prelude
 
 import qualified System.Random as R
 
-import Game.LambdaHack.Common.ContentDef
-import qualified Game.LambdaHack.Common.Item as Item
+import           Game.LambdaHack.Common.ContentDef
 import qualified Game.LambdaHack.Common.Kind as Kind
 import qualified Game.LambdaHack.Common.Tile as Tile
-import Game.LambdaHack.SampleImplementation.SampleMonadServer (executorSer)
-import Game.LambdaHack.Server
+import qualified Game.LambdaHack.Content.ItemKind as IK
+import           Game.LambdaHack.SampleImplementation.SampleMonadServer (executorSer)
+import           Game.LambdaHack.Server
 
 import qualified Client.UI.Content.KeyKind as Content.KeyKind
 import qualified Content.CaveKind
@@ -33,20 +33,21 @@ import qualified Content.TileKind
 -- | Tie the LambdaHack engine client, server and frontend code
 -- with the game-specific content definitions, and run the game.
 --
--- The action monad types to be used are determined by the 'executorSer'
--- and 'executorCli' calls. If other functions are used in their place
--- the types are different and so the whole pattern of computation
--- is different. Which of the frontends is run inside the UI client
+-- The custom monad types to be used are determined by the 'executorSer'
+-- call, which in turn calls 'executorCli'. If other functions are used
+-- in their place- the types are different and so the whole pattern
+-- of computation differs. Which of the frontends is run inside the UI client
 -- depends on the flags supplied when compiling the engine library.
-tieKnot :: DebugModeSer -> IO ()
-tieKnot sdebug@DebugModeSer{sallClear, sboostRandomItem, sdungeonRng} = do
+-- Similarly for the choice of native vs JS builds.
+tieKnot :: ServerOptions -> IO ()
+tieKnot options@ServerOptions{sallClear, sboostRandomItem, sdungeonRng} = do
   -- This setup ensures the boosting option doesn't affect generating initial
   -- RNG for dungeon, etc., and also, that setting dungeon RNG on commandline
   -- equal to what was generated last time, ensures the same item boost.
   initialGen <- maybe R.getStdGen return sdungeonRng
-  let sdebugNxt = sdebug {sdungeonRng = Just initialGen}
+  let soptionsNxt = options {sdungeonRng = Just initialGen}
       cotile = Kind.createOps Content.TileKind.cdefs
-      boostedItems = Item.boostItemKindList initialGen Content.ItemKind.items
+      boostedItems = IK.boostItemKindList initialGen Content.ItemKind.items
       coitem = Kind.createOps $
         if sboostRandomItem
         then Content.ItemKind.cdefs
@@ -69,4 +70,4 @@ tieKnot sdebug@DebugModeSer{sallClear, sboostRandomItem, sdungeonRng} = do
       !copsClient = Content.KeyKind.standardKeys
   -- Wire together game content, the main loops of game clients
   -- and the game server loop.
-  executorSer cops copsClient sdebugNxt
+  executorSer cops copsClient soptionsNxt

@@ -16,22 +16,22 @@ import Game.LambdaHack.Common.Prelude
 import Control.Concurrent.Async
 import qualified Control.Exception as Ex
 import qualified Options.Applicative as OA
-import System.Exit
+import           System.Exit
 
-import Game.LambdaHack.Server (debugModeSerPI)
+import Game.LambdaHack.Server (serverOptionsPI)
 import TieKnot
 
--- | Tie the LambdaHack engine client, server and frontend code
--- with the game-specific content definitions, and run the game.
+-- | Parse commandline options, tie the engine, content and clients knot,
+-- run the game and handle exit.
 main :: IO ()
 main = do
-  debugModeSer <- OA.execParser debugModeSerPI
+  serverOptions <- OA.execParser serverOptionsPI
   -- Avoid the bound thread that would slow down the communication.
-  a <- async $ tieKnot debugModeSer
+  a <- async $ tieKnot serverOptions
   ex <- waitCatch a
   case ex of
     Right () -> return ()
     Left e -> case Ex.fromException e of
       Just ExitSuccess ->
-        exitSuccess  -- we are in the main thread, so it really exits
+        exitSuccess  -- we are in the main thread, so here it really exits
       _ -> Ex.throwIO e
