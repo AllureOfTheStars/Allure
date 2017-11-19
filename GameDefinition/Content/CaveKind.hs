@@ -134,7 +134,7 @@ laboratory = arena2
   , cdarkCorTile  = "labTrailLit"  -- let lab smoke give off light always
   , clitCorTile   = "labTrailLit"
   , cstairFreq    = [("staircase lift", 100)]
-  , cdesc         = "An experiment (or was it manufacturing?) had gone wrong."
+  , cdesc         = "An experiment (or was it manufacturing?) had gone wrong here."
   }
 empty = rogue
   { csymbol       = 'E'
