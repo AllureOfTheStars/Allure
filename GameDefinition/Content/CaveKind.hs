@@ -65,12 +65,14 @@ rogue = CaveKind
   , clegendLitTile  = "legendLit"
   , cescapeGroup    = Nothing
   , cstairFreq      = [("staircase lift", 100)]
+  , cdesc         = ""
   }
 rogue2 = rogue
   { cfreq         = [("deep random", 20)]
   , cname         = "Dark storage area"
   , cdarkChance   = 51  -- all rooms dark
   , cnightChance  = 0  -- always day
+  , cdesc         = "The lights had gone out."
   }
 arena = rogue
   { csymbol       = 'A'
@@ -97,6 +99,7 @@ arena = rogue
   , cdefTile      = "arenaSetLit"
   , cdarkCorTile  = "trailLit"  -- let trails give off light
   , clitCorTile   = "trailLit"
+  , cdesc         = ""
   }
 arena2 = arena
   { cname         = "Casino"
@@ -107,6 +110,7 @@ arena2 = arena
   , citemNum      = 7 `d` 5  -- rare, so make it exciting
   , citemFreq     = [("useful", 20), ("treasure", 80)] -- lives up to the name
   , cdefTile      = "arenaSetDark"
+  , cdesc         = ""
   }
 laboratory = arena2
   { csymbol       = 'L'
@@ -130,6 +134,7 @@ laboratory = arena2
   , cdarkCorTile  = "labTrailLit"  -- let lab smoke give off light always
   , clitCorTile   = "labTrailLit"
   , cstairFreq    = [("staircase lift", 100)]
+  , cdesc         = "An experiment (or was it manufacturing?) had gone wrong."
   }
 empty = rogue
   { csymbol       = 'E'
@@ -156,6 +161,7 @@ empty = rogue
   , cdarkCorTile  = "floorArenaDark"
   , clitCorTile   = "floorArenaLit"
   , cstairFreq    = [("staircase", 50), ("staircase lift", 50)]
+  , cdesc         = "Not much to see here yet."
   }
 noise = rogue
   { csymbol       = 'N'
@@ -182,6 +188,7 @@ noise = rogue
   , couterFenceTile = "noise fence"  -- ensures no cut-off parts from collapsed
   , cdarkCorTile  = "floorArenaDark"
   , clitCorTile   = "floorArenaLit"
+  , cdesc         = ""
   }
 noise2 = noise
   { cname         = "Power distribution hub"
@@ -190,6 +197,7 @@ noise2 = noise
   , citemNum      = 13 `d` 5  -- an incentive to explore the final labyrinth
   , cplaceFreq    = [("noise", 1), ("mine", 99)]
   , cstairFreq    = [("gated staircase", 100)]
+  , cdesc         = ""
   }
 bridge = rogue
   { csymbol       = 'B'
@@ -201,24 +209,28 @@ bridge = rogue
   , cactorFreq    = [("animal", 100)]
   , citemNum      = 9 `d` 5  -- lure them in with loot
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq rogue
+  , cdesc         = "The bridge is gutted out and deserted. There are animal cries down below and ominous silence up above."
   }
 shallow2rogue = rogue
   { cfreq         = [("shallow random 2", 50)]
   , cactorCoeff   = cactorCoeff rogue `div` 2  -- more difficult
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq rogue
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq rogue
+  , cdesc         = ""
   }
 shallow2arena = arena
   { cfreq         = [("shallow random 2", 100)]
   , cactorCoeff   = cactorCoeff arena `div` 2
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq empty
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
+  , cdesc         = ""
   }
 shallow2empty = empty
   { cfreq         = [("shallow random 2", 10)]
   , cactorCoeff   = cactorCoeff empty `div` 2
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq empty
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
+  , cdesc         = ""
   }
 shallow1empty = shallow2empty  -- TODO: replace some rooms with oriels?
   { cname         = "Outermost deck"
@@ -232,13 +244,15 @@ shallow1empty = shallow2empty  -- TODO: replace some rooms with oriels?
       -- abused, because they spawn less and less often and also HP doesn't
       -- effectively accumulate over max.
   , couterFenceTile = "oriels fence"
+  , cdesc         = "The black sky outside can be seen through the oriels."
   }
 emptyExit = empty
   { cname         = "Shuttle servicing area"
-  , cfreq = [("caveEmptyExit", 1)]
+  , cfreq         = [("caveEmptyExit", 1)]
   , cdarkCorTile  = "trailLit"  -- flavour
   , couterFenceTile = "noise fence"  -- for flavour
-  , cescapeGroup = Just "escape spaceship down"
+  , cescapeGroup  = Just "escape spaceship down"
+  , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among neglected cranes and airlocks."
   }
 raid = rogue
   { csymbol       = 'S'
@@ -251,6 +265,7 @@ raid = rogue
   , citemNum      = 6 `d` 8  -- just one level, hard enemies, treasure
   , citemFreq     = [("useful", 33), ("gem", 33), ("currency", 33)]
   , cescapeGroup  = Just "escape up"
+  , cdesc         = ""
   }
 brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
                -- and this scenario is not focused on ranged combat;
@@ -275,6 +290,7 @@ brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
   , cdefTile      = "brawlSetLit"
   , cdarkCorTile  = "floorArenaLit"
   , clitCorTile   = "floorArenaLit"
+  , cdesc         = ""
   }
 shootout = rogue  -- a scenario with strong missiles;
                   -- few solid tiles, but only translucent tiles or walkable
@@ -336,6 +352,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , cdarkCorTile  = "trailLit"  -- let trails give off light
   , clitCorTile   = "trailLit"
   , cescapeGroup  = Just "escape outdoor down"
+  , cdesc         = ""
   }
 zoo = rogue  -- few lights and many solids, to help the less numerous heroes
   { csymbol       = 'Z'
@@ -360,6 +377,7 @@ zoo = rogue  -- few lights and many solids, to help the less numerous heroes
   , cdefTile      = "zooSet"
   , cdarkCorTile  = "trailLit"  -- let trails give off light
   , clitCorTile   = "trailLit"
+  , cdesc         = ""
   }
 ambush = rogue  -- a scenario with strong missiles;
                 -- dark, so solid obstacles are to hide from missiles,
@@ -391,6 +409,7 @@ ambush = rogue  -- a scenario with strong missiles;
   , cdefTile      = "ambushSet"
   , cdarkCorTile  = "trailLit"  -- let trails give off light
   , clitCorTile   = "trailLit"
+  , cdesc         = ""
   }
 battle = rogue  -- few lights and many solids, to help the less numerous heroes
   { csymbol       = 'B'
@@ -416,20 +435,25 @@ battle = rogue  -- few lights and many solids, to help the less numerous heroes
   , cdarkCorTile  = "trailLit"  -- let trails give off light
   , clitCorTile   = "trailLit"
   , couterFenceTile = "noise fence"  -- ensures no cut-off parts from collapsed
+  , cdesc         = ""
   }
 safari1 = brawl
-  { cname = "Hunam habitat"
-  , cfreq = [("caveSafari1", 1)]
-  , cescapeGroup = Nothing
-  , cstairFreq = [("staircase outdoor", 1)]
+  { cname         = "Hunam habitat"
+  , cfreq         = [("caveSafari1", 1)]
+  , cescapeGroup  = Nothing
+  , cstairFreq    = [("staircase outdoor", 1)]
+  , cdesc         = "\"DLC 1. Hunams scavenge in a forest in their usual disgusting way.\""
   }
 safari2 = ambush
-  { cname = "Hunting grounds"
-  , cfreq = [("caveSafari2", 1)]
-  , cstairFreq = [("staircase outdoor", 1)]
+  { cname         = "Deep into the jungle"
+  , cfreq         = [("caveSafari2", 1)]
+  , cstairFreq    = [("staircase outdoor", 1)]
+  , cdesc         = "\"DLC 2. In the dark pure heart of the jungle noble animals roam freely.\""
   }
 safari3 = zoo
-  { cfreq = [("caveSafari3", 1)]
-  , cescapeGroup = Just "escape outdoor down"
-  , cstairFreq = [("staircase outdoor", 1)]
+  { cname         = "Jungle in flames"
+  , cfreq         = [("caveSafari3", 1)]
+  , cescapeGroup  = Just "escape outdoor down"
+  , cstairFreq    = [("staircase outdoor", 1)]
+  , cdesc         = "\"DLC 3. Jealous hunams set jungle on fire and flee.\""
   }
