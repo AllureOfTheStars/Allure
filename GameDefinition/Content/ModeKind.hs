@@ -27,9 +27,9 @@ cdefs = ContentDef
   , validateSingle = validateSingleModeKind
   , validateAll = validateAllModeKind
   , content = contentFromList
-      [raid, brawl, shootout, escape, zoo, ambush, exploration, explorationSurvival, safari, safariSurvival, battle, battleSurvival, defense, screensaverRaid, screensaverBrawl, screensaverShootout, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverExploration, screensaverSafari]
+      [raid, brawl, shootout, escape, zoo, ambush, crawl, crawlSurvival, safari, safariSurvival, battle, battleSurvival, defense, screensaverRaid, screensaverBrawl, screensaverShootout, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverCrawl, screensaverSafari]
   }
-raid,        brawl, shootout, escape, zoo, ambush, exploration, explorationSurvival, safari, safariSurvival, battle, battleSurvival, defense, screensaverRaid, screensaverBrawl, screensaverShootout, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverExploration, screensaverSafari :: ModeKind
+raid,        brawl, shootout, escape, zoo, ambush, crawl, crawlSurvival, safari, safariSurvival, battle, battleSurvival, defense, screensaverRaid, screensaverBrawl, screensaverShootout, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverCrawl, screensaverSafari :: ModeKind
 
 -- What other symmetric (two only-one-moves factions) and asymmetric vs crowd
 -- scenarios make sense (e.g., are good for a tutorial or for standalone
@@ -114,12 +114,12 @@ ambush = ModeKind  -- dense ranged with reaction fire at night
   , mdesc   = "Not even the unexplained ruin of the largest and tightest security of Neptune's spaceports will prevent you from claiming your prize. After all, you didn't take to the space to let others decide your fate. Onward!"
   }
 
-exploration = ModeKind
+crawl = ModeKind
   { msymbol = 'c'
   , mname   = "crawl (long)"
-  , mfreq   = [("crawl", 1), ("exploration", 1), ("campaign scenario", 1)]
-  , mroster = rosterExploration
-  , mcaves  = cavesExploration
+  , mfreq   = [("crawl", 1), ("campaign scenario", 1)]
+  , mroster = rosterCrawl
+  , mcaves  = cavesCrawl
   , mdesc   = "You get stranded while looting, with utmost satisfaction, the blasted bridge of an old and extravagantly luxurious cruise liner. The inert spaceship, supposedly long deserted and barely able to sustain life support, suddenly releases the shuttle you came in, lights up its ion engines, manoeuvres deftly off Triton orbit and heads purposefully away from Neptune. Your plan of battle is to break through the dilapidated decks to the auxiliary engineering and docking hub somewhere among the giant spaceship's uppermost levels. You are ready to fight and determined not to leave the ship without taking of its wealth what is rightfully yours."
   }
 
@@ -134,12 +134,12 @@ safari = ModeKind  -- easter egg available only via screensaver
 
 -- * Testing modes
 
-explorationSurvival = ModeKind
+crawlSurvival = ModeKind
   { msymbol = 'd'
   , mname   = "crawl survival"
   , mfreq   = [("crawl survival", 1)]
-  , mroster = rosterExplorationSurvival
-  , mcaves  = cavesExploration
+  , mroster = rosterCrawlSurvival
+  , mcaves  = cavesCrawl
   , mdesc   = "Lure the human intruders deeper and deeper."
   }
 
@@ -175,7 +175,7 @@ defense = ModeKind  -- perhaps a real scenario in the future
   , mname   = "defense"
   , mfreq   = [("defense", 1)]
   , mroster = rosterDefense
-  , mcaves  = cavesExploration
+  , mcaves  = cavesCrawl
   , mdesc   = "Don't let the half-witted humans derail your operation and flee, like the puny, naked, tentacle-less beasts that they are!"
   }
 
@@ -224,10 +224,10 @@ screensaverAmbush = ambush
   , mroster = screensave (AutoLeader False False) rosterAmbush
   }
 
-screensaverExploration = exploration
+screensaverCrawl = crawl
   { mname   = "auto-crawl (long)"
   , mfreq   = [("no confirms", 1)]
-  , mroster = screensave (AutoLeader False False) rosterExploration
+  , mroster = screensave (AutoLeader False False) rosterCrawl
   }
 
 screensaverSafari = safari
@@ -237,7 +237,7 @@ screensaverSafari = safari
               screensave (AutoLeader False True) rosterSafari
   }
 
-rosterRaid, rosterBrawl, rosterShootout, rosterEscape, rosterZoo, rosterAmbush, rosterExploration, rosterExplorationSurvival, rosterSafari, rosterSafariSurvival, rosterBattle, rosterBattleSurvival, rosterDefense :: Roster
+rosterRaid, rosterBrawl, rosterShootout, rosterEscape, rosterZoo, rosterAmbush, rosterCrawl, rosterCrawlSurvival, rosterSafari, rosterSafariSurvival, rosterBattle, rosterBattleSurvival, rosterDefense :: Roster
 
 rosterRaid = Roster
   { rosterList = [ ( playerHero {fhiCondPoly = hiRaid}
@@ -329,7 +329,7 @@ rosterAmbush = Roster
                   , ("Gray Off-world Mercenary", "Horror Den") ]
   , rosterAlly = [] }
 
-rosterExploration = Roster
+rosterCrawl = Roster
   { rosterList = [ ( playerHero
                    , [(3, 3, "hero")] )
                  , ( playerMonster
@@ -346,7 +346,7 @@ rosterExploration = Roster
                  , ("Alien Hierarchy", "Robot Anarchy")
                  , ("Robot Anarchy", "Animal Kingdom") ] }
 
-rosterExplorationSurvival = rosterExploration
+rosterCrawlSurvival = rosterCrawl
   { rosterList = [ ( playerHero { fleaderMode =
                                     LeaderAI $ AutoLeader True False
                                 , fhasUI = False }
@@ -431,7 +431,7 @@ rosterBattleSurvival = rosterBattle
                  , ( playerRobot {fneverEmpty = True}
                    , [(5, 15, "mobile robot")] ) ] }
 
-rosterDefense = rosterExploration
+rosterDefense = rosterCrawl
   { rosterList = [ ( playerAntiHero
                    , [(3, 3, "hero")] )
                  , ( playerAntiMonster
@@ -444,7 +444,7 @@ rosterDefense = rosterExploration
                  , ( playerRobot
                    , [] ) ] }  -- gentle introduction
 
-cavesRaid, cavesBrawl, cavesShootout, cavesEscape, cavesZoo, cavesAmbush, cavesExploration, cavesSafari, cavesBattle :: Caves
+cavesRaid, cavesBrawl, cavesShootout, cavesEscape, cavesZoo, cavesAmbush, cavesCrawl, cavesSafari, cavesBattle :: Caves
 
 cavesRaid = IM.fromList [(2, "caveRaid")]
 
@@ -458,7 +458,7 @@ cavesZoo = IM.fromList [(8, "caveZoo")]
 
 cavesAmbush = IM.fromList [(9, "caveAmbush")]
 
-cavesExploration = IM.fromList $
+cavesCrawl = IM.fromList $
   [(1, "outermost")]
   ++ [(2, "shallow random 2")]
   ++ [(3, "caveBridge")]
