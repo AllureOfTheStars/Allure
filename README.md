@@ -203,8 +203,6 @@ If not, see <http://www.gnu.org/licenses/>.
 
 [10]: http://github.com/LambdaHack/LambdaHack
 [11]: https://github.com/AllureOfTheStars/Allure/releases/latest
-[13]: http://www.haskell.org/haskellwiki/GHC_under_Wine#Code_that_uses_gtk2hs
-[14]: http://www.edsko.net/2014/04/27/haskell-including-gtk-on-mavericks
 [15]: https://github.com/ghcjs/ghcjs
 [16]: https://www.npmjs.com/package/google-closure-compiler
 [17]: https://ci.appveyor.com/project/Mikolaj/allure-hpt6r/build/artifacts
