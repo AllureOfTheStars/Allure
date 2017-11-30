@@ -1221,7 +1221,7 @@ gem = ItemKind
                  -- reflects strongly, distracts; so it glows in the dark,
                  -- is visible on dark floor, but not too tempting to wear
   , ieffects = [RefillCalm (-1)]  -- minor effect to ensure no id-on-pickup
-  , ifeature = [Durable, Precious]  -- no @Identified@, so kind not known
+  , ifeature = [Precious]  -- no @Identified@, so kind not known
   , idesc    = "Precious, though useless. Worth around 100 gold grains."
   , ikit     = []
   }
