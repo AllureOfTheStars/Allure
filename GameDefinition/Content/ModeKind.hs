@@ -120,7 +120,7 @@ crawl = ModeKind
   , mfreq   = [("crawl", 1), ("campaign scenario", 1)]
   , mroster = rosterCrawl
   , mcaves  = cavesCrawl
-  , mdesc   = "You get stranded while looting, with utmost satisfaction, the blasted bridge of an old and extravagantly luxurious cruise liner. The inert spaceship, supposedly long deserted and barely able to sustain life support, suddenly releases the shuttle you came in, lights up its ion engines, manoeuvres deftly off Triton orbit and heads purposefully away from Neptune. Your plan of battle is to break through the dilapidated decks to the auxiliary engineering and docking hub somewhere among the giant spaceship's uppermost levels. You are ready to fight and determined not to leave the ship without taking of its wealth what is rightfully yours."
+  , mdesc   = "You get stranded while looting, with utmost satisfaction, the blasted bridge of an old and extravagantly luxurious cruise liner. The inert spaceship, supposedly long deserted and barely able to sustain life support, suddenly releases the shuttle you came in, lights up ion engines, manoeuvres deftly off Triton orbit and heads purposefully away from Neptune. There is static on all communication channels. Your plan of battle is to scour the dilapidated decks, gather all missing squad members and break through to the auxiliary engineering and docking hub somewhere among the giant spaceship's uppermost levels. You are determined to fight for the lives and freedom of your crew and not to leave the ship without taking of its wealth what is rightfully yours."
   }
 
 safari = ModeKind  -- easter egg available only via screensaver

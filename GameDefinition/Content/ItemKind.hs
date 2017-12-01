@@ -563,6 +563,7 @@ scroll1 = scroll
   , irarity  = [(5, 9), (10, 9)]  -- mixed blessing, so available early
   , ieffects = [ Unique, ELabel "of Reckless Beacon"
                , Summon "hero" 1, Summon "mobile animal" (2 + 1 `d` 2) ]
+  , idesc    = "This ihdustrial wide-spectrum alarm broadcaster, if over-amped for a single powerful blast, should be able to cut through the interference and reach any lost crew members, giving them enough positional information to locate us."
   }
 scroll2 = scroll
   { irarity  = [(1, 2)]
@@ -612,6 +613,7 @@ scroll11 = scroll
   { ifreq    = [("treasure", 100)]
   , irarity  = [(6, 9), (10, 9)]
   , ieffects = [Unique, ELabel "of Prisoner Release", Summon "hero" 1]
+  , idesc    = "This lock chip opens a nearby closet containing one of our lost crew members."
   }
 scroll12 = scroll
   { irarity  = [(1, 9), (10, 4)]
