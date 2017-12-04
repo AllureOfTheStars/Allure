@@ -103,7 +103,7 @@ dart = ItemKind
   , irarity  = [(1, 20), (10, 10)]
   , iverbHit = "strike"
   , iweight  = 170
-  , idamage  = toDmg $ 1 `d` 1
+  , idamage  = [(98, 1 `d` 1), (2, 2 `d` 1)]
   , iaspects = [AddHurtMelee $ (-14 + 1 `d` 2 + 1 `dl` 4) * 5]
                  -- only leather-piercing
   , ieffects = []
@@ -120,7 +120,7 @@ spike = ItemKind
   , irarity  = [(1, 10), (10, 20)]
   , iverbHit = "nick"
   , iweight  = 100
-  , idamage  = toDmg $ 2 `d` 1
+  , idamage  = [(98, 2 `d` 1), (2, 4 `d` 1)]
   , iaspects = [AddHurtMelee $ (-10 + 1 `d` 2 + 1 `dl` 4) * 5]
                  -- heavy vs armor
   , ieffects = [ Explode "single spark"  -- when hitting enemy
