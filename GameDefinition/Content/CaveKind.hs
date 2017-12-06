@@ -235,8 +235,8 @@ shallow2empty = empty
 shallow1empty = shallow2empty  -- TODO: replace some rooms with oriels?
   { cname         = "Outermost deck"
   , cfreq         = [("outermost", 100)]
-  , cactorCoeff   = 4  -- shallower than LH, so less immediate actors, so boost
-  , cactorFreq    = [("animal", 5), ("robot", 5), ("immobile robot", 90)]
+  , cactorCoeff   = 4  -- shallower than LH, so fewer immediate actors, so boost
+  , cactorFreq    = [("animal", 3), ("robot", 2), ("immobile robot", 95)]
       -- The medbot faucets on lvl 1 act like HP resets. Needed to avoid
       -- cascading failure, if the particular starting conditions were
       -- very hard. Items are not reset, even if they are bad, which provides
