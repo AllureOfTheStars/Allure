@@ -172,6 +172,8 @@ test-short-load:
 	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix battle --dumpInitRngs --automateAll --keepAutomated --gameMode battle --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
 	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix battleSurvival --dumpInitRngs --automateAll --keepAutomated --gameMode "battle survival" --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
 
+#in LambdaHack/
+# cabal install --disable-library-profiling --disable-profiling --disable-documentation -f-release
 
 build-binary-common:
 	cabal install --disable-library-profiling --disable-profiling --disable-documentation -f-release --only-dependencies
