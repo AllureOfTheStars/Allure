@@ -5,7 +5,7 @@
 #
 
 play:
-	dist/build/Allure/Allure --dbgMsgSer --dumpInitRngs
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --dumpInitRngs
 
 configure-debug:
 	cabal configure --enable-profiling --profiling-detail=all-functions -fwith_expensive_assertions --disable-optimization
@@ -23,77 +23,77 @@ minific:
 	ccjs dist/build/Allure/Allure.jsexe/all.js --compilation_level=ADVANCED_OPTIMIZATIONS --isolation_mode=IIFE --assume_function_wrapper --jscomp_off="*" --externs=node > ../allureofthestars.github.io/play/allure.all.js
 
 frontendRaid:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode raid
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode raid
 
 frontendBrawl:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode brawl
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode brawl
 
 frontendShootout:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode shootout
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode shootout
 
 frontendEscape:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix test --newGame 3 --dumpInitRngs --automateAll --gameMode escape
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 3 --dumpInitRngs --automateAll --gameMode escape
 
 frontendZoo:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix test --newGame 2 --dumpInitRngs --automateAll --gameMode zoo
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 2 --dumpInitRngs --automateAll --gameMode zoo
 
 frontendAmbush:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode ambush
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode ambush
 
 frontendCrawl:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix test --newGame 1 --dumpInitRngs --automateAll --gameMode crawl
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 1 --dumpInitRngs --automateAll --gameMode crawl
 
 frontendSafari:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix test --newGame 2 --dumpInitRngs --automateAll --gameMode safari
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 2 --dumpInitRngs --automateAll --gameMode safari
 
 frontendSafariSurvival:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode "safari survival"
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode "safari survival"
 
 frontendBattle:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode battle
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode battle
 
 frontendBattleSurvival:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode "battle survival"
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode "battle survival"
 
 frontendDefense:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix test --newGame 9 --dumpInitRngs --automateAll --gameMode defense
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 9 --dumpInitRngs --automateAll --gameMode defense
 
 
 benchMemoryAnim:
-	dist/build/Allure/Allure --dbgMsgSer --newGame 1 --maxFps 100000 --benchmark --stopAfterFrames 33000 --automateAll --keepAutomated --gameMode crawl --setDungeonRng 120 --setMainRng 47 --frontendNull --noAnim +RTS -s -A1M -RTS
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --newGame 1 --maxFps 100000 --benchmark --stopAfterFrames 33000 --automateAll --keepAutomated --gameMode crawl --setDungeonRng 120 --setMainRng 47 --frontendNull --noAnim +RTS -s -A1M -RTS
 
 benchBattle:
-	dist/build/Allure/Allure --dbgMsgSer --newGame 3 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 1500 --automateAll --keepAutomated --gameMode battle --setDungeonRng 7 --setMainRng 7
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --newGame 3 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 1500 --automateAll --keepAutomated --gameMode battle --setDungeonRng 7 --setMainRng 7
 
 benchAnimBattle:
-	dist/build/Allure/Allure --dbgMsgSer --newGame 3 --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 7000 --automateAll --keepAutomated --gameMode battle --setDungeonRng 7 --setMainRng 7
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --newGame 3 --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 7000 --automateAll --keepAutomated --gameMode battle --setDungeonRng 7 --setMainRng 7
 
 benchFrontendBattle:
-	dist/build/Allure/Allure --dbgMsgSer --newGame 3 --noAnim --maxFps 100000 --benchmark --stopAfterFrames 1500 --automateAll --keepAutomated --gameMode battle --setDungeonRng 7 --setMainRng 7
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --newGame 3 --noAnim --maxFps 100000 --benchmark --stopAfterFrames 1500 --automateAll --keepAutomated --gameMode battle --setDungeonRng 7 --setMainRng 7
 
 benchCrawl:
-	dist/build/Allure/Allure --dbgMsgSer --newGame 1 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 7000 --automateAll --keepAutomated --gameMode crawl --setDungeonRng 0 --setMainRng 0
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --newGame 1 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 7000 --automateAll --keepAutomated --gameMode crawl --setDungeonRng 0 --setMainRng 0
 
 benchFrontendCrawl:
-	dist/build/Allure/Allure --dbgMsgSer --newGame 1 --noAnim --maxFps 100000 --benchmark --stopAfterFrames 7000 --automateAll --keepAutomated --gameMode crawl --setDungeonRng 0 --setMainRng 0
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --newGame 1 --noAnim --maxFps 100000 --benchmark --stopAfterFrames 7000 --automateAll --keepAutomated --gameMode crawl --setDungeonRng 0 --setMainRng 0
 
 benchNull: benchBattle benchAnimBattle benchCrawl
 
 bench: benchBattle benchAnimBattle benchFrontendBattle benchCrawl benchFrontendCrawl
 
 nativeBenchCrawl:
-	dist/build/Allure/Allure		   --dbgMsgSer --newGame 2 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 2000 --automateAll --keepAutomated --gameMode crawl --setDungeonRng 0 --setMainRng 0
+	dist/build/Allure/Allure		   --dbgMsgSer --logPriority 4 --newGame 2 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 2000 --automateAll --keepAutomated --gameMode crawl --setDungeonRng 0 --setMainRng 0
 
 nativeBenchBattle:
-	dist/build/Allure/Allure		   --dbgMsgSer --newGame 3 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 1000 --automateAll --keepAutomated --gameMode battle --setDungeonRng 0 --setMainRng 0
+	dist/build/Allure/Allure		   --dbgMsgSer --logPriority 4 --newGame 3 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 1000 --automateAll --keepAutomated --gameMode battle --setDungeonRng 0 --setMainRng 0
 
 nativeBench: nativeBenchBattle nativeBenchCrawl
 
 nodeBenchCrawl:
-	node dist/build/Allure/Allure.jsexe/all.js --dbgMsgSer --newGame 2 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 2000 --automateAll --keepAutomated --gameMode crawl --setDungeonRng 0 --setMainRng 0
+	node dist/build/Allure/Allure.jsexe/all.js --dbgMsgSer --logPriority 4 --newGame 2 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 2000 --automateAll --keepAutomated --gameMode crawl --setDungeonRng 0 --setMainRng 0
 
 nodeBenchBattle:
-	node dist/build/Allure/Allure.jsexe/all.js --dbgMsgSer --newGame 3 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 1000 --automateAll --keepAutomated --gameMode battle --setDungeonRng 0 --setMainRng 0
+	node dist/build/Allure/Allure.jsexe/all.js --dbgMsgSer --logPriority 4 --newGame 3 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 1000 --automateAll --keepAutomated --gameMode battle --setDungeonRng 0 --setMainRng 0
 
 nodeBench: nodeBenchBattle nodeBenchCrawl
 
@@ -109,68 +109,68 @@ test-short: test-short-new test-short-load
 test-medium: testRaid-medium testBrawl-medium testShootout-medium testEscape-medium testZoo-medium testAmbush-medium testCrawl-medium testSafari-medium testSafariSurvival-medium testBattle-medium testBattleSurvival-medium
 
 testRaid-medium:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 5 --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 20 --dumpInitRngs --automateAll --keepAutomated --gameMode raid 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 20 --dumpInitRngs --automateAll --keepAutomated --gameMode raid 2> /tmp/teletypetest.log
 
 testBrawl-medium:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 5 --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 20 --dumpInitRngs --automateAll --keepAutomated --gameMode brawl 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 20 --dumpInitRngs --automateAll --keepAutomated --gameMode brawl 2> /tmp/teletypetest.log
 
 testShootout-medium:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 5 --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 20 --dumpInitRngs --automateAll --keepAutomated --gameMode shootout 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 20 --dumpInitRngs --automateAll --keepAutomated --gameMode shootout 2> /tmp/teletypetest.log
 
 testEscape-medium:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 3 --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 40 --dumpInitRngs --automateAll --keepAutomated --gameMode escape 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 3 --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 40 --dumpInitRngs --automateAll --keepAutomated --gameMode escape 2> /tmp/teletypetest.log
 
 testZoo-medium:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 2 --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 100 --dumpInitRngs --automateAll --keepAutomated --gameMode zoo 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 2 --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 100 --dumpInitRngs --automateAll --keepAutomated --gameMode zoo 2> /tmp/teletypetest.log
 
 testAmbush-medium:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 5 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 20 --dumpInitRngs --automateAll --keepAutomated --gameMode ambush 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 20 --dumpInitRngs --automateAll --keepAutomated --gameMode ambush 2> /tmp/teletypetest.log
 
 testCrawl-medium:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 1 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 200 --dumpInitRngs --automateAll --keepAutomated --gameMode crawl 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 1 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 200 --dumpInitRngs --automateAll --keepAutomated --gameMode crawl 2> /tmp/teletypetest.log
 
 testSafari-medium:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 2 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 100 --dumpInitRngs --automateAll --keepAutomated --gameMode safari 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 2 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 100 --dumpInitRngs --automateAll --keepAutomated --gameMode safari 2> /tmp/teletypetest.log
 
 testSafariSurvival-medium:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 8 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 60 --dumpInitRngs --automateAll --keepAutomated --gameMode "safari survival" 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 8 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 60 --dumpInitRngs --automateAll --keepAutomated --gameMode "safari survival" 2> /tmp/teletypetest.log
 
 testBattle-medium:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 3 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 20 --dumpInitRngs --automateAll --keepAutomated --gameMode battle 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 3 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 20 --dumpInitRngs --automateAll --keepAutomated --gameMode battle 2> /tmp/teletypetest.log
 
 testBattleSurvival-medium:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 7 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 60 --dumpInitRngs --automateAll --keepAutomated --gameMode "battle survival" 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 7 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 60 --dumpInitRngs --automateAll --keepAutomated --gameMode "battle survival" 2> /tmp/teletypetest.log
 
 testDefense-medium:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 9 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 300 --dumpInitRngs --automateAll --keepAutomated --gameMode defense 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 9 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 300 --dumpInitRngs --automateAll --keepAutomated --gameMode defense 2> /tmp/teletypetest.log
 
 test-short-new:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 5 --savePrefix raid --dumpInitRngs --automateAll --keepAutomated --gameMode raid --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 5 --savePrefix brawl --dumpInitRngs --automateAll --keepAutomated --gameMode brawl --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 5 --savePrefix shootout --dumpInitRngs --automateAll --keepAutomated --gameMode shootout --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 5 --savePrefix escape --dumpInitRngs --automateAll --keepAutomated --gameMode escape --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 5 --savePrefix zoo --dumpInitRngs --automateAll --keepAutomated --gameMode zoo --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 5 --savePrefix ambush --dumpInitRngs --automateAll --keepAutomated --gameMode ambush --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 5 --savePrefix crawl --dumpInitRngs --automateAll --keepAutomated --gameMode crawl --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 5 --savePrefix safari --dumpInitRngs --automateAll --keepAutomated --gameMode safari --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 5 --savePrefix safariSurvival --dumpInitRngs --automateAll --keepAutomated --gameMode "safari survival" --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 5 --savePrefix battle --dumpInitRngs --automateAll --keepAutomated --gameMode battle --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --newGame 5 --savePrefix battleSurvival --dumpInitRngs --automateAll --keepAutomated --gameMode "battle survival" --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --savePrefix raid --dumpInitRngs --automateAll --keepAutomated --gameMode raid --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --savePrefix brawl --dumpInitRngs --automateAll --keepAutomated --gameMode brawl --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --savePrefix shootout --dumpInitRngs --automateAll --keepAutomated --gameMode shootout --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --savePrefix escape --dumpInitRngs --automateAll --keepAutomated --gameMode escape --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --savePrefix zoo --dumpInitRngs --automateAll --keepAutomated --gameMode zoo --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --savePrefix ambush --dumpInitRngs --automateAll --keepAutomated --gameMode ambush --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --savePrefix crawl --dumpInitRngs --automateAll --keepAutomated --gameMode crawl --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --savePrefix safari --dumpInitRngs --automateAll --keepAutomated --gameMode safari --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --savePrefix safariSurvival --dumpInitRngs --automateAll --keepAutomated --gameMode "safari survival" --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --savePrefix battle --dumpInitRngs --automateAll --keepAutomated --gameMode battle --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --savePrefix battleSurvival --dumpInitRngs --automateAll --keepAutomated --gameMode "battle survival" --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
 
 # "--setDungeonRng 0 --setMainRng 0" is needed for determinism relative to seed
 # generated before game save
 test-short-load:
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix raid --dumpInitRngs --automateAll --keepAutomated --gameMode raid --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix brawl --dumpInitRngs --automateAll --keepAutomated --gameMode brawl --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix shootout --dumpInitRngs --automateAll --keepAutomated --gameMode shootouti --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix escape --dumpInitRngs --automateAll --keepAutomated --gameMode escape --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix zoo --dumpInitRngs --automateAll --keepAutomated --gameMode zoo --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix ambush --dumpInitRngs --automateAll --keepAutomated --gameMode ambush --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix crawl --dumpInitRngs --automateAll --keepAutomated --gameMode crawl --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix safari --dumpInitRngs --automateAll --keepAutomated --gameMode safari --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix safariSurvival --dumpInitRngs --automateAll --keepAutomated --gameMode "safari survival" --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix battle --dumpInitRngs --automateAll --keepAutomated --gameMode battle --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
-	dist/build/Allure/Allure --dbgMsgSer --boostRandomItem --savePrefix battleSurvival --dumpInitRngs --automateAll --keepAutomated --gameMode "battle survival" --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix raid --dumpInitRngs --automateAll --keepAutomated --gameMode raid --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix brawl --dumpInitRngs --automateAll --keepAutomated --gameMode brawl --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix shootout --dumpInitRngs --automateAll --keepAutomated --gameMode shootouti --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix escape --dumpInitRngs --automateAll --keepAutomated --gameMode escape --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix zoo --dumpInitRngs --automateAll --keepAutomated --gameMode zoo --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix ambush --dumpInitRngs --automateAll --keepAutomated --gameMode ambush --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix crawl --dumpInitRngs --automateAll --keepAutomated --gameMode crawl --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix safari --dumpInitRngs --automateAll --keepAutomated --gameMode safari --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix safariSurvival --dumpInitRngs --automateAll --keepAutomated --gameMode "safari survival" --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix battle --dumpInitRngs --automateAll --keepAutomated --gameMode battle --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix battleSurvival --dumpInitRngs --automateAll --keepAutomated --gameMode "battle survival" --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
 
 #in LambdaHack/
 # cabal install --disable-library-profiling --disable-profiling --disable-documentation -f-release
