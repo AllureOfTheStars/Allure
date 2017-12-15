@@ -98,8 +98,6 @@ nodeBenchBattle:
 nodeBench: nodeBenchBattle nodeBenchCrawl
 
 
-test-travis-short: test-short
-
 test-travis: test-short test-medium benchNull
 
 test: test-short test-medium benchNull
@@ -171,6 +169,10 @@ test-short-load:
 	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix safariSurvival --dumpInitRngs --automateAll --keepAutomated --gameMode "safari survival" --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
 	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix battle --dumpInitRngs --automateAll --keepAutomated --gameMode battle --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
 	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix battleSurvival --dumpInitRngs --automateAll --keepAutomated --gameMode "battle survival" --frontendTeletype --stopAfterSeconds 2 --setDungeonRng 0 --setMainRng 0 2> /tmp/teletypetest.log
+
+
+version:
+	dist/build/Allure/Allure --version
 
 #in LambdaHack/
 # cabal install --disable-library-profiling --disable-profiling --disable-documentation -f-release

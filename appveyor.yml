@@ -15,12 +15,11 @@ install:
   - git clone -q --branch=master https://github.com/LambdaHack/LambdaHack.git
   - cd LambdaHack
   - cabal install --disable-library-profiling --disable-profiling --disable-documentation --only-dependencies
-  - cabal configure --disable-library-profiling --disable-profiling -f-release
+  - cabal configure --disable-library-profiling --disable-profiling --disable-documentation -f-release
   - appveyor-retry cabal build
   - cabal register --inplace
   - cd ..
 
-build_script:
   - pwd
   - make build-binary-common
   - cp /c/msys64/mingw64/bin/zlib1.dll AllureOfTheStars
@@ -39,9 +38,72 @@ build_script:
   - cp /c/msys64/mingw64/bin/libstdc++-6.dll AllureOfTheStars
   - cp /c/msys64/mingw64/bin/libiconv-2.dll AllureOfTheStars
   - cp AllureOfTheStarsInstall/msys64/bin/Allure.exe AllureOfTheStars
-  - 7z a -ssc -sfx Allure_windows-x86_64.exe AllureOfTheStars
-  - make test
+  - make version
+  - SET /p LH_VERSION=<stdout.txt
+  - 7z a -ssc -sfx Allure_%LH_VERSION%-dev_windows-x86_64.exe AllureOfTheStars
+
+  - make test-short
+  - make benchNull
+  - cat stdout.txt
+  - cat stderr.txt
+  - rm -rf AllureOfTheStars AllureOfTheStarsInstall
+  - cabal clean
+  - cd sdl2
+  - cabal clean
+  - cd ..
+  - cd LambdaHack
+  - cabal clean
+  - cd ..
+
+  - SET PATH=%APPDATA%\cabal\bin;C:\msys64\mingw32\bin;C:\msys64\usr\bin;C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.2.2\bin;C:\ProgramData\chocolatey\lib\cabal\tools;%PATH%
+  - SET PKG_CONFIG_PATH=C:\msys64\mingw32\lib\pkgconfig
+  - SET XDG_DATA_DIRS=C:\msys64\mingw32\share
+  - pacman --version
+  - appveyor-retry choco install --force --forcex86 ghc --version 8.2.2 | grep -v '^Extracting '
+  - cabal --version
+  - appveyor-retry pacman -S -q --noconfirm mingw-w64-i686-SDL2 mingw-w64-i686-SDL2_ttf
+  - echo "no cabal update"
+  - echo "no cabal install happy"
+  - echo "no git clone -q --branch=master https://github.com/haskell-game/sdl2"
+  - cd sdl2
+  - cabal install -fno-linear
+  - cd ..
+  - echo "no git clone -q --branch=master https://github.com/LambdaHack/LambdaHack.git"
+  - cd LambdaHack
+  - cabal install --disable-library-profiling --disable-profiling --disable-documentation --only-dependencies
+  - cabal configure --disable-library-profiling --disable-profiling --disable-documentation -f-release
+  - appveyor-retry cabal build
+  - cabal register --inplace
+  - cd ..
+
+  - pwd
+  - make build-binary-common
+  - cp /c/msys64/mingw32/bin/zlib1.dll AllureOfTheStars
+  - cp /c/msys64/mingw32/bin/SDL2.dll AllureOfTheStars
+  - cp /c/msys64/mingw32/bin/SDL2_ttf.dll AllureOfTheStars
+  - cp /c/msys64/mingw32/bin/libfreetype-6.dll AllureOfTheStars
+  - cp /c/msys64/mingw32/bin/libgcc_s_dw2-1.dll AllureOfTheStars
+  - cp /c/msys64/mingw32/bin/libbz2-1.dll AllureOfTheStars
+  - cp /c/msys64/mingw32/bin/libpng16-16.dll AllureOfTheStars
+  - cp /c/msys64/mingw32/bin/libwinpthread-1.dll AllureOfTheStars
+  - cp /c/msys64/mingw32/bin/libharfbuzz-0.dll AllureOfTheStars
+  - cp /c/msys64/mingw32/bin/libglib-2.0-0.dll AllureOfTheStars
+  - cp /c/msys64/mingw32/bin/libgraphite2.dll AllureOfTheStars
+  - cp /c/msys64/mingw32/bin/libintl-8.dll AllureOfTheStars
+  - cp /c/msys64/mingw32/bin/libpcre-1.dll AllureOfTheStars
+  - cp /c/msys64/mingw32/bin/libstdc++-6.dll AllureOfTheStars
+  - cp /c/msys64/mingw32/bin/libiconv-2.dll AllureOfTheStars
+  - cp AllureOfTheStarsInstall/msys64/bin/Allure.exe AllureOfTheStars
+  - 7z a -ssc -sfx Allure_%LH_VERSION%-dev_windows-i686.exe AllureOfTheStars
+
+build_script:
+  - make test-medium
+  - make nativeBench
+  - cat stdout.txt
+  - cat stderr.txt
 
 artifacts:
-  - path: Allure_windows-x86_64.exe
-    name: win64 binaries
+  - path: Allure_*-dev_windows-i686.exe
+    name: Allure win32 binaries
+  - path: Allure_*-dev_windows-x86_64.exe
+    name: Allure win64 binaries
