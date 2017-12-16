@@ -159,27 +159,45 @@ install:
      mkdir -p $HOME/.ghc $HOME/.cabal/lib $HOME/.cabal/share $HOME/.cabal/bin;
      if [ $GTKVTY = "gtk" ]; then
        cabal install --constraint="binary>=0.8" --force-reinstalls gtk2hs-buildtools;
-       travis_retry travis_wait 40 cabal install -fgtk --enable-tests --enable-benchmarks --force-reinstalls;
+       cabal configure -fgtk --enable-tests --enable-benchmarks --force-reinstalls;
+       travis_retry travis_wait 40 cabal build lib:LambdaHack;
+       cabal register --inplace;
      elif [ $GTKVTY = "gtk-v2" ]; then
        cabal install -v2 gtk2hs-buildtools;
-       travis_retry travis_wait 40 cabal install -v2 -fgtk --enable-tests --enable-benchmarks;
+       cabal configure -v2 -fgtk --enable-tests --enable-benchmarks;
+       travis_retry travis_wait 40 cabal build lib:LambdaHack;
+       cabal register --inplace;
      elif [ $GTKVTY = "sdl" ]; then
-       travis_retry travis_wait 40 cabal install -fsdl --enable-tests --enable-benchmarks;
+       cabal configure -fsdl --enable-tests --enable-benchmarks;
+       travis_retry travis_wait 40 cabal build lib:LambdaHack;
+       cabal register --inplace;
      elif [ $GTKVTY = "sdl-v2" ]; then
-       travis_retry travis_wait 40 cabal install -v2 -fsdl --enable-tests --enable-benchmarks;
+       cabal configure -v2 -fsdl --enable-tests --enable-benchmarks;
+       travis_retry travis_wait 40 cabal build lib:LambdaHack;
+       cabal register --inplace;
      elif [ $GTKVTY = "vty" ]; then
-       travis_retry travis_wait 40 cabal install -fvty --enable-tests --enable-benchmarks;
+       cabal configure -fvty --enable-tests --enable-benchmarks;
+       travis_retry travis_wait 40 cabal build lib:LambdaHack;
+       cabal register --inplace;
      elif [ $GTKVTY = "curses" ]; then
-       travis_retry travis_wait 40 cabal install -fcurses -f-release --enable-tests --enable-benchmarks;
+       cabal configure -fcurses -f-release --enable-tests --enable-benchmarks;
+       travis_retry travis_wait 40 cabal build lib:LambdaHack;
+       cabal register --inplace;
      elif [ $GTKVTY = "noopt" ]; then
        cabal install gtk2hs-buildtools;
-       travis_retry travis_wait 40 cabal install -fgtk --enable-tests --enable-benchmarks;
+       cabal configure -fgtk --enable-tests --enable-benchmarks;
+       travis_retry travis_wait 40 cabal build lib:LambdaHack;
+       cabal register --inplace;
      elif [ $GTKVTY = "opt2" ]; then
        cabal install gtk2hs-buildtools;
-       travis_retry travis_wait 40 cabal install -fgtk --enable-tests --enable-benchmarks;
+       cabal configure -fgtk --enable-tests --enable-benchmarks;
+       travis_retry travis_wait 40 cabal build lib:LambdaHack;
+       cabal register --inplace;
      elif [ $GTKVTY = "asserts" ]; then
        cabal install gtk2hs-buildtools;
-       travis_retry travis_wait 40 cabal install -fgtk --enable-tests --enable-benchmarks;
+       cabal configure -fgtk --enable-tests --enable-benchmarks;
+       travis_retry travis_wait 40 cabal build lib:LambdaHack;
+       cabal register --inplace;
      else exit 7;
      fi
    fi

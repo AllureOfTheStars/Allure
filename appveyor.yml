@@ -16,7 +16,7 @@ install:
   - cd LambdaHack
   - cabal install --disable-library-profiling --disable-profiling --disable-documentation --only-dependencies
   - cabal configure --disable-library-profiling --disable-profiling -f-release
-  - appveyor-retry cabal build
+  - appveyor-retry cabal build lib:LambdaHack
   - cabal register --inplace
   - cd ..
 
@@ -76,7 +76,7 @@ install:
   - cd LambdaHack
   - cabal install --disable-library-profiling --disable-profiling --disable-documentation --only-dependencies
   - cabal configure --disable-library-profiling --disable-profiling -f-release
-  - appveyor-retry cabal build
+  - appveyor-retry cabal build lib:LambdaHack
   - cabal register --inplace
   - cd ..
 
