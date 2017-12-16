@@ -39,14 +39,18 @@ install:
   - cp /c/msys64/mingw64/bin/libiconv-2.dll AllureOfTheStars
   - cp AllureOfTheStarsInstall/msys64/bin/Allure.exe AllureOfTheStars
   - make version
-  - SET /p LH_VERSION=<stdout.txt
-  - 7z a -ssc -sfx Allure_%LH_VERSION%-dev_windows-x86_64.exe AllureOfTheStars
+  - SET /p LH_VERSION=<%APPDATA%\Allure\stdout.txt
+  - 7z a -ssc -tzip Allure_dev_windows-x86_64.zip AllureOfTheStars
+  - ps: $env:TIME_STRING=(get-date -UFormat "%Y-%m-%d").ToString()
+  - ps: Push-AppveyorArtifact Allure_dev_windows-x86_64.zip -FileName "Allure_$($env:LH_VERSION)-dev-$($env:TIME_STRING)_windows-x86_64.zip" -DeploymentName "win64 binaries archive"
 
   - make test-short
   - make benchNull
-  - cat stdout.txt
-  - cat stderr.txt
-  - rm -rf AllureOfTheStars AllureOfTheStarsInstall
+  - cat %APPDATA%\Allure\stdout.txt
+  - cat %APPDATA%\Allure\stderr.txt
+
+  - mv AllureOfTheStars AllureOfTheStars64
+  - rm -rf AllureOfTheStarsInstall
   - cabal clean
   - cd sdl2
   - cabal clean
@@ -94,16 +98,16 @@ install:
   - cp /c/msys64/mingw32/bin/libstdc++-6.dll AllureOfTheStars
   - cp /c/msys64/mingw32/bin/libiconv-2.dll AllureOfTheStars
   - cp AllureOfTheStarsInstall/msys64/bin/Allure.exe AllureOfTheStars
-  - 7z a -ssc -sfx Allure_%LH_VERSION%-dev_windows-i686.exe AllureOfTheStars
+  - 7z a -ssc -tzip Allure_dev_windows-i686.zip AllureOfTheStars
+  - ps: Push-AppveyorArtifact Allure_dev_windows-i686.zip -FileName "Allure_$($env:LH_VERSION)-dev-$($env:TIME_STRING)_windows-i686.zip" -DeploymentName "win32 binaries archive"
 
-build_script:
   - make test-medium
   - make nativeBench
-  - cat stdout.txt
-  - cat stderr.txt
+  - cat %APPDATA%\Allure\stdout.txt
+  - cat %APPDATA%\Allure\stderr.txt
 
-artifacts:
-  - path: Allure_*-dev_windows-i686.exe
-    name: Allure win32 binaries
-  - path: Allure_*-dev_windows-x86_64.exe
-    name: Allure win64 binaries
+  - mv AllureOfTheStars AllureOfTheStars32
+  - ps: '& "C:\Program Files (x86)\NSIS\makensis.exe" .windows.installer.nsi'
+  - ps: Push-AppveyorArtifact Allure_dev_windows-installer.exe -FileName "Allure_$($env:LH_VERSION)-dev-$($env:TIME_STRING)_windows-installer.exe" -DeploymentName "win64 and win32 installer"
+
+build: off
