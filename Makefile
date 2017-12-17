@@ -1,4 +1,5 @@
-# Copyright (c) 2008--2011 Andres Loeh, 2010--2017 Mikolaj Konarski
+# Copyright (c) 2008--2011 Andres Loeh
+# Copyright (c) 2010--2017 Mikolaj Konarski and others (see git history)
 # This file is a part of the computer game Allure of the Stars
 # and is released under the terms of the GNU Affero General Public License.
 # For license and copyright information, see the file LICENSE.
