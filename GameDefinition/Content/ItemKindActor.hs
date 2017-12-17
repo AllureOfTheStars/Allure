@@ -46,18 +46,26 @@ warrior = ItemKind
                , AddAbility AbAlter 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "A hardened veteran of combat."
   , ikit     = [ ("fist", COrgan), ("foot", COrgan), ("eye 6", COrgan)
                , ("sapient brain", COrgan) ]
   }
 warrior2 = warrior
-  { iname    = "pilot" }
+  { iname    = "pilot"
+  -- , idesc    = ""
+  }
 warrior3 = warrior
-  { iname    = "engineer" }
+  { iname    = "engineer"
+  -- , idesc    = ""
+   }
 warrior4 = warrior
-  { iname    = "doctor" }
+  { iname    = "doctor"
+  -- , idesc    = ""
+  }
 warrior5 = warrior
-  { iname    = "hacker" }
+  { iname    = "hacker"
+  -- , idesc    = ""
+  }
 
 scout = warrior
   { iname    = "scout"
@@ -66,11 +74,13 @@ scout = warrior
                ++ [ ("add sight", CEqp)
                   , ("armor ranged", CEqp)
                   , ("add nocto 1", CInv) ]
+  -- , idesc    = ""
   }
 ranger = warrior
   { iname    = "ranger"
   , ifreq    = [("ranger hero", 100), ("mobile", 1)]
   , ikit     = ikit warrior ++ [("weak arrow", CInv), ("armor ranged", CEqp)]
+  -- , idesc    = ""
   }
 escapist = warrior
   { iname    = "escapist"
@@ -82,6 +92,7 @@ escapist = warrior
                   , ("flask", CInv)
                   , ("light source", CInv)
                   , ("blanket", CInv) ]
+  -- , idesc    = ""
   }
 ambusher = warrior
   { iname    = "ambusher"
@@ -90,25 +101,37 @@ ambusher = warrior
                ++ [ ("ring of opportunity sniper", CEqp)
                   , ("light source", CEqp), ("wooden torch", CInv)
                   , ("weak arrow", CInv), ("any arrow", CSha), ("flask", CSha) ]
+  -- , idesc    = ""
   }
 soldier = warrior
   { iname    = "soldier"
   , ifreq    = [("soldier hero", 100), ("mobile", 1)]
   , ikit     = ikit warrior ++ [("starting weapon", CEqp)]
+  -- , idesc    = ""
   }
 
 civilian = warrior
   { iname    = "clerk"
   , ifreq    = [("civilian", 100), ("mobile", 1)]
-  , iflavour = zipPlain [BrBlack] }
+  , iflavour = zipPlain [BrBlack]
+  -- , idesc    = ""
+  }
 civilian2 = civilian
-  { iname    = "hairdresser" }
+  { iname    = "hairdresser"
+  -- , idesc    = ""
+  }
 civilian3 = civilian
-  { iname    = "lawyer" }
+  { iname    = "lawyer"
+  -- , idesc    = ""
+  }
 civilian4 = civilian
-  { iname    = "peddler" }
+  { iname    = "peddler"
+  -- , idesc    = ""
+  }
 civilian5 = civilian
-  { iname    = "tax collector" }
+  { iname    = "tax collector"
+  -- , idesc    = ""
+  }
 
 -- * Aliens
 
@@ -247,7 +270,7 @@ goldenJackal = ItemKind  -- basically a much smaller and slower hyena
   , iaspects = [ AddMaxHP 12, AddMaxCalm 70, AddSpeed 24, AddNocto 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "An opportunistic predator, feeding on carrion and the weak."
   , ikit     = [ ("small jaw", COrgan), ("eye 6", COrgan), ("nostril", COrgan)
                , ("animal brain", COrgan) ]
   }
@@ -270,7 +293,7 @@ griffonVulture = ItemKind
       -- on either side, are just too frustrating.
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "It soars high above, searching for vulnerable prey."
   , ikit     = [ ("screeching beak", COrgan)  -- in reality it grunts and hisses
                , ("small claw", COrgan), ("eye 7", COrgan)
                , ("animal brain", COrgan) ]
@@ -289,7 +312,7 @@ skunk = ItemKind
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "Its only defence is the terrible stench."
   , ikit     = [ ("scent gland", COrgan)
                , ("small claw", COrgan), ("snout", COrgan)
                , ("nostril", COrgan), ("eye 3", COrgan)
@@ -309,7 +332,7 @@ armadillo = ItemKind
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "When threatened, it rolls into a ball."
   , ikit     = [ ("hooked claw", COrgan), ("snout", COrgan)
                , ("armored skin", COrgan), ("armored skin", COrgan)
                , ("nostril", COrgan), ("eye 3", COrgan)
@@ -329,7 +352,7 @@ gilaMonster = ItemKind
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "Numbing venom ensures that even the fastest prey has no escape."
   , ikit     = [ ("venom tooth", COrgan), ("small claw", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan)
                , ("animal brain", COrgan) ]
@@ -348,7 +371,7 @@ rattlesnake = ItemKind
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "Beware its rattle - it serves as a warning of an agonising death."
   , ikit     = [ ("venom fang", COrgan)
                , ("eye 4", COrgan), ("nostril", COrgan)
                , ("animal brain", COrgan) ]
@@ -366,7 +389,7 @@ komodoDragon = ItemKind  -- bad hearing; regeneration makes it very powerful
   , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 18, AddNocto 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "Larger and more aggressive than any other lizard."
   , ikit     = [ ("large tail", COrgan), ("jaw", COrgan)
                , ("hooked claw", COrgan), ("speed gland 4", COrgan)
                , ("armored skin", COrgan), ("eye 3", COrgan)
@@ -386,7 +409,7 @@ hyena = ItemKind
   , iaspects = [ AddMaxHP 20, AddMaxCalm 70, AddSpeed 32, AddNocto 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "Skulking in the shadows, waiting for easy prey."
   , ikit     = [ ("jaw", COrgan), ("eye 6", COrgan), ("nostril", COrgan)
                , ("animal brain", COrgan) ]
   }
@@ -403,7 +426,7 @@ alligator = ItemKind
   , iaspects = [ AddMaxHP 41, AddMaxCalm 70, AddSpeed 18, AddNocto 2 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "An armored predator from the dawn of time."
   , ikit     = [ ("large jaw", COrgan), ("large tail", COrgan)
                , ("small claw", COrgan)
                , ("armored skin", COrgan), ("eye 6", COrgan)
@@ -447,7 +470,7 @@ beeSwarm = ItemKind
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "Every bee would die for the queen."
   , ikit     = [ ("bee sting", COrgan), ("vision 6", COrgan)
                , ("insect mortality", COrgan), ("animal brain", COrgan) ]
   }
@@ -466,7 +489,7 @@ hornetSwarm = ItemKind
                , AddArmorMelee 80, AddArmorRanged 40 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "A vicious cloud of stings and hate."
   , ikit     = [ ("sting", COrgan), ("vision 8", COrgan)
                , ("insect mortality", COrgan), ("animal brain", COrgan) ]
   }
@@ -484,7 +507,7 @@ thornbush = ItemKind
                , AddAbility AbWait 1, AddAbility AbMelee 1 ]
   , ieffects = []
   , ifeature = [Durable, Identified]
-  , idesc    = ""
+  , idesc    = "Each branch bears long, curved thorns."
   , ikit     = [("thorn", COrgan), ("armored skin", COrgan)]
   }
 
