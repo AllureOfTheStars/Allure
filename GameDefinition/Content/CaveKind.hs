@@ -66,7 +66,7 @@ rogue = CaveKind
   , clegendLitTile  = "legendLit"
   , cescapeGroup    = Nothing
   , cstairFreq      = [("staircase lift", 100)]
-  , cdesc         = ""
+  , cdesc         = "Winding tunnels stretch into the dark."
   }
 rogue2 = rogue
   { cfreq         = [("deep random", 20)]
@@ -135,7 +135,7 @@ laboratory = arena2
   , cdarkCorTile  = "labTrailLit"  -- let lab smoke give off light always
   , clitCorTile   = "labTrailLit"
   , cstairFreq    = [("staircase lift", 100)]
-  , cdesc         = "An experiment (or was it manufacturing?) had gone wrong here."
+  , cdesc         = "Shattered glassware and the sharp scent of spilt chemicals show that something terrible happened here."
   }
 empty = rogue
   { csymbol       = 'E'
