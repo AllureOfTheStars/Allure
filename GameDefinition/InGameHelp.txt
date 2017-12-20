@@ -1,5 +1,6 @@
 This is a snapshot of in-game help, rendered with default config file.
-For more general gameplay information see PLAYING.md.
+For more general gameplay information see
+https://github.com/AllureOfTheStars/Allure/blob/master/GameDefinition/PLAYING.md
 
 
 Minimal cheat sheet for casual play (1/2).
@@ -46,6 +47,10 @@ Minimal cheat sheet for casual play (2/2).
  S-TAB        cycle among all party members
  =            select (or deselect) party member
 
+
+Here is the complete list of commands from the snapshot of in-game help.
+For more general gameplay information see
+https://github.com/AllureOfTheStars/Allure/blob/master/GameDefinition/PLAYING.md
 
 All terrain exploration and alteration commands.
 
