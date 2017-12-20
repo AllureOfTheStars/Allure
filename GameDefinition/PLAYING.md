@@ -1,15 +1,27 @@
 Playing Allure of the Stars
 ===========================
 
-Your party of trusted crew-members is about to test their fortune
-by plundering an abandoned Solar System passenger cruiser.
-You are going to set up ambushes for it's feral denizens, hide in shadows,
-cover tracks, bump into unspeakable horrors, hidden mechanisms
-and astounding technical treasures and make creative use of it all.
-The mysterious inhabitants of the Solar System's outer frontier
-are bound to welcome intruders with bloody surprises of their own.
-As soon as you turn your back in fear, expect to be chased tirelessly
-by sight, sound and smell.
+The following blurb is a copy of the game intro screen.
+
+Your party of trusted adventurers is about to test their fortune
+by plundering a vast derelict passenger cruiser that was long lost
+after an accident at the Solar System's outer frontier and then
+unexpectedly rediscovered. The ship was abandoned by its crew during
+the accident, but reportedly safes and luxury shop inventories
+were not emptied. And neither were the zoo deck nor the robot holds.
+Up to this day, dozens of autonomous life support subsystems
+with redundant power sources strive to mitigate any ongoing damage
+and they seem successful, because there are puzzling hints of teeming
+life and restless activity throughout the ship.
+
+Your veteran crew is not the only Neptune Area group claiming the wreck,
+so you shouldn't count on reaching it unopposed. Even once you get there,
+expect danger and be ready to set up ambushes for the ship's feral denizens,
+to hide in shadows, cover tracks, bump into unspeakable horrors, hidden
+mechanisms and astounding technical treasures and make creative use of it all.
+The emergent hostile ecosystem of the giant vessel is bound to welcome
+intruders with bloody surprises of its own. As soon as you turn your back
+in fear, expect to be chased tirelessly by sight, sound and smell.
 
 Once the few basic command keys and on-screen symbols are learned,
 mastery and enjoyment of the game is the matter of tactical skill
