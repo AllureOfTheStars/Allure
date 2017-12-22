@@ -3,25 +3,25 @@ Playing Allure of the Stars
 
 The following blurb is a copy of the game intro screen.
 
-Your party of trusted adventurers is about to test their fortune
-by plundering a vast derelict passenger cruiser that was long lost
-after an accident at the Solar System's outer frontier and then
-unexpectedly rediscovered. The ship was abandoned by its crew during
-the accident, but reportedly safes and luxury shop inventories
-were not emptied. And neither were the zoo deck nor the robot holds.
-Up to this day, dozens of autonomous life support subsystems
-with redundant power sources strive to mitigate any ongoing damage
-and they seem successful, because there are puzzling hints of teeming
-life and restless activity throughout the ship.
+Your party of trusted adventurers is about to test its fortune by plundering
+a vast derelict passenger cruiser. The spaceship was abandoned and lost
+after an accident at the Solar System's outer frontier, but recently
+unexpectedly reappeared. Reportedly, deposit safes and jewelry inventories
+were never salvaged. Neither were emptied the robot holds, the arboretum
+nor the extravagant whole-deck habitat of natural and enhanced wild animals.
+Up to this day, countless autonomous life support and damage mitigation
+subsystems with redundant power sources busy themselves throughout dozens
+of decks. They seem successful, because there are abundant traces of ongoing
+metabolism all over the ship. That should make exploration so much easier.
 
-Your veteran crew is not the only Neptune Area group claiming the wreck,
-so you shouldn't count on reaching it unopposed. Even once you get there,
-expect danger and be ready to set up ambushes for the ship's feral denizens,
-to hide in shadows, cover tracks, bump into unspeakable horrors, hidden
-mechanisms and astounding technical treasures and make creative use of it all.
-The emergent hostile ecosystem of the giant vessel is bound to welcome
-intruders with bloody surprises of its own. As soon as you turn your back
-in fear, expect to be chased tirelessly by sight, sound and smell.
+Yours can't be the only shady Neptune Area crew interested in the giant wreck,
+so you shouldn't count on reaching it unopposed. The feral outer frontier
+denizens are not famed for scruples nor for restraint when using hazardous
+nano, cyber or bio technologies, Always look out for danger and be ready
+to hide in shadows, cover your tracks, set up ambushes, bump headlong into
+unspeakable horrors, obscure mechanisms and astounding technical treasures and
+make creative use of all you find, because you are on our own. If ever you turn
+your back in fear, expect to be chased tirelessly by sight, sound and smell.
 
 Once the few basic command keys and on-screen symbols are learned,
 mastery and enjoyment of the game is the matter of tactical skill
