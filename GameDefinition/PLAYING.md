@@ -17,10 +17,10 @@ metabolism all over the ship. That should make exploration so much easier.
 Yours can't be the only shady Neptune Area crew interested in the giant wreck,
 so you shouldn't count on reaching it unopposed. The feral outer frontier
 denizens are not famed for scruples nor for restraint when using hazardous
-nano, cyber or bio technologies, Always look out for danger and be ready
-to hide in shadows, cover your tracks, set up ambushes, bump headlong into
-unspeakable horrors, obscure mechanisms and astounding technical treasures and
-make creative use of all you find, because you are on our own. If ever you turn
+nano, cyber and bio technologies, so never assume you are safe. Be ready
+to hide in shadows, create distractions, set up ambushes, bump into
+unspeakable horrors, puzzling machinery and astounding treasures and make
+creative use of all you find, because you are on your own. If ever you turn
 your back in fear, expect to be chased tirelessly by sight, sound and smell.
 
 Once the few basic command keys and on-screen symbols are learned,
