@@ -7,7 +7,7 @@ Allure of the Stars
 
 Allure of the Stars[6] is a near-future Sci-Fi roguelike[2]
 and tactical squad game.
-Try out the browser version of the LambdaHack sample game at
+Try out the browser version of the game at
 [http://allureofthestars.com/play](http://allureofthestars.com/play)!
 (It runs fastest on Chrome. Keyboard commands and savefiles
 are supported only on recent enough versions of browsers.
