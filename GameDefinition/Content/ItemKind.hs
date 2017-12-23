@@ -189,7 +189,7 @@ paralizingProj = ItemKind
 harpoon = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "harpoon"
-  , ifreq    = [("useful", 100), ("harpoon", 100)]
+  , ifreq    = [("ship", 100), ("harpoon", 100)]
   , iflavour = zipPlain [Brown]
   , icount   = 1 `dl` 5
   , irarity  = [(5, 5), (10, 5)]
@@ -477,7 +477,7 @@ potion1 = potion
                , OnSmash ApplyPerfume, OnSmash (Explode "fragrance") ]
   }
 potion2 = potion
-  { ifreq    = [("treasure", 100)]
+  { ifreq    = [("ship", 100)]
   , irarity  = [(6, 9), (10, 9)]
   , ieffects = [ Unique, ELabel "of Attraction", Impress, RefillCalm (-20)
                , OnSmash (Explode "pheromone") ]
@@ -535,7 +535,7 @@ potion9 = potion
                , OnSmash (Explode "blast 20") ]
   }
 potion10 = potion
-  { ifreq    = [("treasure", 100)]
+  { ifreq    = [("ship", 100)]
   , irarity  = [(10, 4)]
   , ieffects = [ Unique, ELabel "of Love", RefillHP 60
                , Impress, RefillCalm (-60)
@@ -564,7 +564,7 @@ scroll = ItemKind
   , ikit     = []
   }
 scroll1 = scroll
-  { ifreq    = [("treasure", 100)]
+  { ifreq    = [("ship", 100)]
   , irarity  = [(5, 9), (10, 9)]  -- mixed blessing, so available early
   , ieffects = [ Unique, ELabel "of Reckless Beacon"
                , Summon "hero" 1, Summon "mobile animal" (2 + 1 `d` 2) ]
@@ -576,7 +576,8 @@ scroll2 = scroll
                , RefillCalm (-100) ]
   }
 scroll3 = scroll
-  { irarity  = [(1, 4), (10, 2)]
+  { ifreq    = [("ship", 100)]
+  , irarity  = [(1, 8), (10, 4)]
   , ieffects = [Ascend True]
   }
 scroll4 = scroll  -- needs to be common to show at least a portion of effects
@@ -615,7 +616,7 @@ scroll10 = scroll
                , Composite [PolyItem, Explode "firecracker 7"] ]
   }
 scroll11 = scroll
-  { ifreq    = [("treasure", 100)]
+  { ifreq    = [("ship", 100)]
   , irarity  = [(6, 9), (10, 9)]
   , ieffects = [Unique, ELabel "of Prisoner Release", Summon "hero" 1]
   , idesc    = "This lock chip opens a nearby closet containing one of our lost crew members."
@@ -704,7 +705,7 @@ motionScanner = ItemKind
 gorget = ItemKind
   { isymbol  = symbolNecklace
   , iname    = "Old Gorget"
-  , ifreq    = [("useful", 25), ("treasure", 25)]
+  , ifreq    = [("ship", 50)]
   , iflavour = zipFancy [BrCyan]
   , icount   = 1
   , irarity  = [(4, 3), (10, 3)]  -- weak, shallow
@@ -738,7 +739,7 @@ necklace = ItemKind
   , ikit     = []
   }
 necklace1 = necklace
-  { ifreq    = [("treasure", 100)]
+  { ifreq    = [("ship", 100)]
   , irarity  = [(3, 0), (4, 1), (10, 2)]  -- prevents camping on lvl 3
   , iaspects = [Timeout $ (1 `d` 3 + 4 - 1 `dl` 3) * 10]
   , ieffects = [ Unique, ELabel "of Trickle Life", EqpSlot EqpSlotMiscBonus
@@ -783,7 +784,7 @@ necklace6 = necklace
                ++ ieffects necklace
   }
 necklace7 = necklace
-  { ifreq    = [("treasure", 100)]
+  { ifreq    = [("ship", 100)]
   , iaspects = [ AddMaxHP $ 10 + 1 `d` 10
                , AddArmorMelee 20, AddArmorRanged 10
                , Timeout $ 1 `d` 2 + 5 - 1 `dl` 3 ]
@@ -901,7 +902,7 @@ ring5 = ring  -- by the time it's found, probably no space in eqp
   , idesc    = "A sturdy ring with a large, shining stone."
   }
 ring6 = ring
-  { ifreq    = [("treasure", 100)]
+  { ifreq    = [("ship", 100)]
   , irarity  = [(10, 2)]
   , iaspects = [ AddSpeed $ 3 + 1 `d` 4
                , AddMaxCalm $ - 20 - 1 `d` 20, AddMaxHP $ - 20 - 1 `d` 20 ]
@@ -1181,7 +1182,7 @@ halberd = ItemKind
   }
 halberdPushActor = halberd
   { iname    = "Swiss Halberd"
-  , ifreq    = [("treasure", 20)]
+  , ifreq    = [("ship", 20)]
   , irarity  = [(8, 1), (9, 20)]
   , idamage  = toDmg $ 12 `d` 1
   , iaspects = iaspects halberd ++ [Timeout $ (1 `d` 5 + 5 - 1 `dl` 5) * 2]
