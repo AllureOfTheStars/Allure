@@ -9,9 +9,10 @@ Allure of the Stars is a near-future Sci-Fi roguelike[2]
 and tactical squad game. Binaries and the game manual
 are available at the homepage[6], where you can also
 try the game out in the browser.
-(http://allureofthestars.com/play --- It runs fastest on Chrome.
-Keyboard commands and savefiles are supported only on recent
-enough versions of browsers. Mouse should work everywhere.)
+(http://allureofthestars.com/play --- It runs fastest
+on Chrome. Keyboard commands and savefiles are supported
+only on recent enough versions of browsers.
+Mouse should work everywhere.)
 
 ![gameplay screenshot](https://raw.githubusercontent.com/AllureOfTheStars/media/master/screenshot/crawl-0.6.0.0-8x8xb.png)
 
@@ -20,7 +21,7 @@ yourself, like with a book (a grown-up book, without pictures).
 Once you learn to imagine things, though, you can keep exploring
 and mastering the world and making up stories for a long time.
 
-The game is written in Haskell[1] using the LambdaHack [10]
+The game is written in Haskell[1] using the LambdaHack[10]
 roguelike game engine.
 Please see the changelog file for recent improvements
 and the issue tracker for short-term plans. Long term goals
