@@ -7,24 +7,28 @@ name:           Allure
 --             | | | +--- code changes with no API change
 version:       0.7.2.0
 synopsis:      Near-future Sci-Fi roguelike and tactical squad game
-description:   Allure of the Stars
-               is a near-future Sci-Fi roguelike and tactical squad game.
-               Try out the browser version of Allure of the Stars at
-               <http://allureofthestars.com/play>
-               (It runs fastest on Chrome. Keyboard commands and savefiles
-               are supported only on recent enough versions of browsers.
-               Mouse should work everywhere.)
+description:   Allure of the Stars is a near-future Sci-Fi roguelike
+               and tactical squad game. Binaries and the game manual
+               are available at the homepage, where you can also
+               try the game out in the browser.
+               (http://allureofthestars.com/play --- It runs fastest on Chrome.
+               Keyboard commands and savefiles are supported only on recent
+               enough versions of browsers. Mouse should work everywhere.)
                .
                <<https://raw.githubusercontent.com/AllureOfTheStars/media/master/screenshot/crawl-0.6.0.0-8x8xb.png>>
                .
+               Not a single picture in this game. You have to imagine everything
+               yourself, like with a book (a grown-up book, without pictures).
+               Once you learn to imagine things, though, you can keep exploring
+               and mastering the world and making up stories for a long time.
+               .
+               The game is written in Haskell using the LambdaHack roguelike
+               game engine <http://hackage.haskell.org/package/LambdaHack>.
                Please see the changelog file for recent improvements
                and the issue tracker for short-term plans. Long term goals
                are high replayability and auto-balancing through procedural
                content generation and persistent content modification
                based on player behaviour. Contributions are welcome.
-               .
-               The game is written using the LambdaHack roguelike game engine
-               available at <http://hackage.haskell.org/package/LambdaHack>.
 homepage:      http://allureofthestars.com
 bug-reports:   http://github.com/AllureOfTheStars/Allure/issues
 license:       AGPL-3

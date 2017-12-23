@@ -5,26 +5,28 @@ Allure of the Stars
 [![Hackage](https://img.shields.io/hackage/v/Allure.svg)](https://hackage.haskell.org/package/Allure)
 [![Join the chat at https://gitter.im/AllureOfTheStars/Allure](https://badges.gitter.im/AllureOfTheStars/Allure.svg)](https://gitter.im/AllureOfTheStars/Allure?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Allure of the Stars[6] is a near-future Sci-Fi roguelike[2]
-and tactical squad game.
-Try out the browser version of the game at
-[http://allureofthestars.com/play](http://allureofthestars.com/play)!
-(It runs fastest on Chrome. Keyboard commands and savefiles
-are supported only on recent enough versions of browsers.
-Mouse should work everywhere.)
+Allure of the Stars is a near-future Sci-Fi roguelike[2]
+and tactical squad game. Binaries and the game manual
+are available at the homepage[6], where you can also
+try the game out in the browser.
+(http://allureofthestars.com/play --- It runs fastest on Chrome.
+Keyboard commands and savefiles are supported only on recent
+enough versions of browsers. Mouse should work everywhere.)
 
 ![gameplay screenshot](https://raw.githubusercontent.com/AllureOfTheStars/media/master/screenshot/crawl-0.6.0.0-8x8xb.png)
 
+Not a single picture in this game. You have to imagine everything
+yourself, like with a book (a grown-up book, without pictures).
+Once you learn to imagine things, though, you can keep exploring
+and mastering the world and making up stories for a long time.
+
+The game is written in Haskell[1] using the LambdaHack [10]
+roguelike game engine.
 Please see the changelog file for recent improvements
 and the issue tracker for short-term plans. Long term goals
 are high replayability and auto-balancing through procedural
 content generation and persistent content modification
 based on player behaviour. Contributions are welcome.
-
-The game is written in Haskell[1] using the LambdaHack [10]
-roguelike game engine. Long-term goals of the project are high
-replayability and auto-balancing through procedural content generation
-and persistent content modification based on player behaviour.
 
 
 Game installation from binary archives
