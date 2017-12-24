@@ -43,11 +43,11 @@ items :: [ItemKind]
 items =
   [sandstoneRock, dart, spike, slingStone, slingBullet, paralizingProj, harpoon, net, light1, light2, light3, blanket, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, imageItensifier, sightSharpening, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, buckler, shield, dagger, daggerDropBestWeapon, hammer, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberdPushActor, wand1, wand2, gem1, gem2, gem3, gem4, gem5, currency]
   -- Allure-specific
-  ++ [needle, constructionHooter]
+  ++ [needle, constructionHooter, scroll14]
 
 sandstoneRock,    dart, spike, slingStone, slingBullet, paralizingProj, harpoon, net, light1, light2, light3, blanket, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, imageItensifier, sightSharpening, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, buckler, shield, dagger, daggerDropBestWeapon, hammer, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberdPushActor, wand1, wand2, gem1, gem2, gem3, gem4, gem5, currency :: ItemKind
 -- Allure-specific
-needle, constructionHooter :: ItemKind
+needle, constructionHooter, scroll14 :: ItemKind
 
 necklace, ring, potion, flask, scroll, wand, gem :: ItemKind  -- generic templates
 
@@ -348,12 +348,7 @@ flask5 = flask
                , OnSmash (Explode "red paint") ]
   }
 flask6 = flask
-  { irarity  = [(10, 9)]
-  , ieffects = [ ELabel "of resolution"
-               , toOrganActorTurn "resolute" (200 + 1 `d` 50)
-                   -- long, for scouting and has to recharge
-               , RefillCalm 60  -- not to make it a drawback, via @calmEnough@
-               , OnSmash (Explode "resolution dust") ]
+  { irarity  = []
   }
 flask7 = flask
   { irarity  = [(10, 4)]
@@ -1304,4 +1299,12 @@ constructionHooter = scroll
   , ifeature = Identified : ifeature scroll
   , idesc    = "The single-use electronic overdrive hooter that construction robots use to warn about danger and call help in extreme emergency."
   , ikit     = []
+  }
+scroll14 = scroll
+  { irarity  = [(1, 2), (10, 2)]  -- not every playthrough needs it
+  , ieffects = [ Unique, ELabel "Displaying a Happy Couple"
+               , toOrganActorTurn "resolute" (500 + 1 `d` 200)
+                   -- a drawback (at least initially) due to @calmEnough@
+               , Explode "cruise ad hologram" ]
+  , idesc    = "Biodegrable self-powered mini-projector displaying a holographic ad for an inteplanetary cruise."
   }

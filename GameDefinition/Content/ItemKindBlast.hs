@@ -22,8 +22,12 @@ import Game.LambdaHack.Content.ItemKind
 blasts :: [ItemKind]
 blasts =
   [burningOil2, burningOil3, burningOil4, explosionBlast2, explosionBlast10, explosionBlast20, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, glassPiece, smoke, boilingWater, glue, singleSpark, spark, denseShower, sparseShower, protectingBalmMelee, protectingBalmRanged, vulnerabilityBalm, resolutionDust, hasteSpray, slownessMist, eyeDrop, ironFiling, smellyDroplet, eyeShine, whiskeySpray, waste, youthSprinkle, poisonCloud, mistAntiSlow, mistAntidote]
+  -- Allure-specific
+  ++ [cruiseAdHologram]
 
 burningOil2,    burningOil3, burningOil4, explosionBlast2, explosionBlast10, explosionBlast20, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, glassPiece, smoke, boilingWater, glue, singleSpark, spark, denseShower, sparseShower, protectingBalmMelee, protectingBalmRanged, vulnerabilityBalm, resolutionDust, hasteSpray, slownessMist, eyeDrop, ironFiling, smellyDroplet, eyeShine, whiskeySpray, waste, youthSprinkle, poisonCloud, mistAntiSlow, mistAntidote :: ItemKind
+-- Allure-specific
+cruiseAdHologram :: ItemKind
 
 -- We take care (e.g., in burningOil below) that blasts are not faster
 -- than 100% fastest natural speed, or some frames would be skipped,
@@ -628,5 +632,26 @@ mistAntidote = ItemKind
   , ieffects = [DropItem 1 maxBound COrgan "poisoned"]
   , ifeature = [toVelocity 5, Fragile, Identified]  -- 1 step, 1 turn
   , idesc    = "Washes away death's dew."
+  , ikit     = []
+  }
+
+-- * Allure-specific
+
+cruiseAdHologram = ItemKind
+  { isymbol  = '`'
+  , iname    = "cruise ad hologram"
+  , ifreq    = [("cruise ad hologram", 1)]
+  , iflavour = zipFancy [BrRed]
+  , icount   = 8
+  , irarity  = [(1, 1)]
+  , iverbHit = "excite"
+  , iweight  = 0  -- delay of 1 turn at the start, to read the text
+  , idamage  = toDmg 0
+  , iaspects = []
+  , ieffects = [toOrganActorTurn "resolute" (5 + 1 `d` 2), DropBestWeapon]
+  , ifeature = [toVelocity 5, Fragile, Identified]  -- 1 step, 1 turn
+  , idesc    = "The holographic clip shows a couple that laughs, watches in silence Saturn's rings through a huge window, throws treats to a little rhino frolicking in reduced gravity, runs through corridors wearing alien masks in a mock chase. An exited female voice proclaims: \"...safety and security, comfort, imagination...for each of your senses...robot servants...personalized life support zones...\""
+      -- long text, so the holo lingers for 2 turns, to make it easy to read;
+      -- if it was very important text, that method would still not be enough
   , ikit     = []
   }
