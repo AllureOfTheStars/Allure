@@ -154,7 +154,7 @@ arsenicFissure = boilingFissure
   , ifreq    = [("biogas fissure", 100)]
   , icount   = 3 + 1 `d` 3
   , idamage  = toDmg $ 2 `d` 1
-  , ieffects = [toOrganGameTurn "weakened" (2 + 1 `d` 2)]
+  , ieffects = [toOrganGameTurn "weakened" (2 + 1 `dl` 3)]
   , idesc    = ""
   }
 sulfurFissure = boilingFissure
