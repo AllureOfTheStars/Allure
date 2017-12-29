@@ -758,7 +758,7 @@ necklace2 = necklace
   { ifreq    = [("treasure", 100)]  -- just too nasty to call it useful
   , irarity  = [(1, 1)]
   , iaspects = [Timeout 30]
-  , ieffects = [ Recharging (Summon "mobile animal" $ 1 `dL` 3)
+  , ieffects = [ Recharging (Summon "mobile animal" 2)
                , Recharging (Explode "waste")
                , Recharging Impress
                , Recharging (DropItem 1 maxBound COrgan "temporary condition") ]
@@ -1309,7 +1309,7 @@ constructionHooter = scroll
   , iflavour = zipPlain [BrRed]
   , irarity  = [(1, 1)]
   , iaspects = []
-  , ieffects = [Summon "construction robot" $ 1 + 1 `dL` 2]
+  , ieffects = [Summon "construction robot" 1]  -- beware of chain summon
   , ifeature = Identified : ifeature scroll
   , idesc    = "The single-use electronic overdrive hooter that construction robots use to warn about danger and call help in extreme emergency."
   , ikit     = []
