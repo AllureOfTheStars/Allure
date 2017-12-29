@@ -66,7 +66,7 @@ hookedClaw = fist
   , icount   = 2  -- even if more, only the fore claws used for fighting
   , iverbHit = "hook"
   , idamage  = toDmg $ 2 `d` 1
-  , iaspects = [Timeout $ 4 + 1 `d` 4]
+  , iaspects = [Timeout $ 8 - 1 `dl` 3]
   , ieffects = [Recharging (toOrganGameTurn "slowed" 2)]
   , idesc    = "A curved talon."
   }
@@ -182,7 +182,7 @@ sting = fist
   , icount   = 1
   , iverbHit = "sting"
   , idamage  = toDmg $ 1 `d` 1
-  , iaspects = [Timeout $ 1 + 1 `d` 5, AddHurtMelee 40]
+  , iaspects = [Timeout $ 8 - 1 `dl` 3, AddHurtMelee 40]
   , ieffects = [Recharging (Paralyze 4)]
   , idesc    = "Painful, debilitating and harmful."
   }
@@ -192,7 +192,7 @@ venomTooth = fist
   , icount   = 2
   , iverbHit = "bite"
   , idamage  = toDmg $ 2 `d` 1
-  , iaspects = [Timeout $ 5 + 1 `d` 3]
+  , iaspects = [Timeout $ 6 - 1 `dl` 3]
   , ieffects = [Recharging (toOrganGameTurn "slowed" (3 + 1 `d` 3))]
   , idesc    = "A chilling numbness spreads from its bite."
   }
@@ -202,7 +202,7 @@ venomFang = fist
   , icount   = 2
   , iverbHit = "bite"
   , idamage  = toDmg $ 2 `d` 1
-  , iaspects = [Timeout $ 7 + 1 `d` 5]
+  , iaspects = [Timeout $ 8 - 1 `dl` 3]
   , ieffects = [Recharging (toOrganNone "poisoned")]
   , idesc    = "Dripping with deadly venom."
   }
@@ -212,7 +212,7 @@ screechingBeak = fist
   , icount   = 1
   , iverbHit = "peck"
   , idamage  = toDmg $ 2 `d` 1
-  , iaspects = [Timeout $ 5 + 1 `d` 5]
+  , iaspects = [Timeout $ 6 - 1 `dl` 3]
   , ieffects = [Recharging $ Summon "scavenger" $ 1 + 1 `dl` 2]
   , idesc    = "Both a weapon and a beacon, calling more scavengers to the meal."
   }
@@ -298,7 +298,7 @@ insectMortality = armoredSkin
   { iname    = "insect mortality"
   , ifreq    = [("insect mortality", 100)]
   , iverbHit = "age"
-  , iaspects = [Timeout $ 40 + 1 `d` 10]
+  , iaspects = [Timeout $ 30 + (1 `d` 2) * 10]
   , ieffects = [Periodic, Recharging (RefillHP (-1))]
   , idesc    = ""
   }
@@ -338,10 +338,13 @@ speedGland10 = speedGland 10
 scentGland = armoredSkin
   { iname    = "scent gland"
   , ifreq    = [("scent gland", 100)]
+  , icount   = 2 + 1 `d` 3  -- runs out
   , iverbHit = "spray at"
-  , iaspects = [Timeout $ (10 + 1 `d` 2) * 5 ]
-  , ieffects = [ Periodic, Recharging (Explode "distressing odor")
+  , iaspects = [Timeout $ (1 `d` 3) * 10]
+  , ieffects = [ Periodic
+               , Recharging (Explode "distressing odor")
                , Recharging ApplyPerfume ]
+  , ifeature = [Identified]  -- not Durable
   , idesc    = ""
   }
 boilingVent = armoredSkin
@@ -350,7 +353,7 @@ boilingVent = armoredSkin
   , iflavour = zipPlain [BrBlue]
   , iverbHit = "menace"
   , iaspects = [Timeout $ (2 + 1 `d` 2) * 5]
-  , ieffects = [Periodic
+  , ieffects = [ Periodic
                , Recharging (Explode "boiling water")
                , Recharging (RefillHP 2) ]
   , idesc    = ""
@@ -419,7 +422,7 @@ liveWire = fist
   , icount   = 1
   , iverbHit = "shock"
   , idamage  = toDmg $ 1 `d` 1
-  , iaspects = [Timeout $ 3 + 1 `d` 3, AddHurtMelee 20]
+  , iaspects = [Timeout $ 3 + 1 `d` 2, AddHurtMelee 20]
   , ieffects = [ Recharging (DropItem 1 maxBound COrgan "temporary condition")
                , Recharging $ RefillHP (-2)
                ]
@@ -437,7 +440,7 @@ wasteContainer = armoredSkin
   { iname    = "waste container"
   , ifreq    = [("waste container", 100)]
   , iverbHit = "spill over"
-  , iaspects = [Timeout $ (5 + 1 `d` 5) * 10]
+  , iaspects = [Timeout $ (1 + 1 `d` 2) * 30]
   , ieffects = [ Periodic
                , Recharging (Summon "mobile animal" 1)
                , Recharging (RefillHP 1)
