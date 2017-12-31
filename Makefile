@@ -9,7 +9,7 @@ play:
 	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --dumpInitRngs
 
 expose-lore:
-	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --dumpInitRngs --newGame 2 --gameMode crawl --knowItems --benchmark --noAnim --maxFps 1000
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --dumpInitRngs --savePrefix know --newGame 2 --gameMode crawl --knowItems --benchmark --noAnim --maxFps 1000
 
 configure-debug:
 	cabal configure --enable-profiling --profiling-detail=all-functions -fwith_expensive_assertions --disable-optimization
@@ -129,10 +129,10 @@ testAmbush-medium:
 	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 20 --dumpInitRngs --automateAll --keepAutomated --gameMode ambush 2> /tmp/teletypetest.log
 
 testCrawl-medium:
-	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 1 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 100 --dumpInitRngs --automateAll --keepAutomated --gameMode crawl 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --newGame 1 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 100 --dumpInitRngs --automateAll --keepAutomated --gameMode crawl 2> /tmp/teletypetest.log
 
 testCrawl-medium-know:
-	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 1 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 100 --dumpInitRngs --automateAll --keepAutomated --gameMode crawl --knowItems 2> /tmp/teletypetest.log
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix know --newGame 1 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 100 --dumpInitRngs --automateAll --keepAutomated --gameMode crawl --knowItems 2> /tmp/teletypetest.log
 
 testSafari-medium:
 	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 2 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 100 --dumpInitRngs --automateAll --keepAutomated --gameMode safari 2> /tmp/teletypetest.log
