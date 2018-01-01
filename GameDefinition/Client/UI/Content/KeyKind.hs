@@ -43,6 +43,7 @@ standardKeys = KeyKind $ map evalKeyDef $
 
   -- Item use, 1st part
   , ("g", addCmdCategory CmdMinimal $ grabItems "grab item(s)")
+      -- actually it's not necessary, ground items menu suffices
   , ("comma", grabItems "")
   , ("d", dropItems "drop item(s)")
   , ("period", dropItems "")
