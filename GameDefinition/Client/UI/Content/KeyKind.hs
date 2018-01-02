@@ -15,6 +15,7 @@ import Prelude ()
 import Game.LambdaHack.Common.Prelude
 
 import           Game.LambdaHack.Client.UI.Content.KeyKind
+import           Game.LambdaHack.Client.UI.HandleHelperM (ppSLore)
 import           Game.LambdaHack.Client.UI.HumanCmd
 import           Game.LambdaHack.Common.Misc
 import qualified Game.LambdaHack.Content.TileKind as TK
@@ -38,7 +39,7 @@ standardKeys = KeyKind $ map evalKeyDef $
   , ("x", ([CmdMainMenu], "exit to desktop", GameExit))
   , ("v", ([CmdMainMenu], "visit settings menu>", SettingsMenu))
   , ("a", ([CmdMainMenu], "automate faction", Automate))
-  , ("`", ([CmdMainMenu], "open Dashboard", Dashboard))
+  , ("`", ([CmdMainMenu], "go to Dashboard", Dashboard))
   , ("?", ([CmdMainMenu], "see command Help", Help))
   , ("Escape", ([CmdMainMenu], "back to playing", Cancel))
 
@@ -89,25 +90,25 @@ standardKeys = KeyKind $ map evalKeyDef $
                          "item" False)
   , ("s", moveItemTriple [CGround, CInv, CEqp] CSha
                          "and share item" False)
-  , ("P", ( [CmdMinimal, CmdItem]
+  , ("P", ( [CmdMinimal, CmdItem, CmdDashboard]
           , "manage item pack of the leader"
           , ChooseItemMenu (MStore CInv) ))
-  , ("G", ( [CmdItem]
+  , ("G", ( [CmdItem, CmdDashboard]
           , "manage items on the ground"
           , ChooseItemMenu (MStore CGround) ))
-  , ("E", ( [CmdItem]
+  , ("E", ( [CmdItem, CmdDashboard]
           , "manage equipment of the leader"
           , ChooseItemMenu (MStore CEqp) ))
-  , ("S", ( [CmdItem]
+  , ("S", ( [CmdItem, CmdDashboard]
           , "manage the shared party stash"
           , ChooseItemMenu (MStore CSha) ))
-  , ("A", ( [CmdItem]
+  , ("A", ( [CmdItem, CmdDashboard]
           , "manage all owned items"
           , ChooseItemMenu MOwned ))
-  , ("@", ( [CmdItem]
+  , ("@", ( [CmdItem, CmdDashboard]
           , "describe organs of the leader"
           , ChooseItemMenu (MOrgans) ))
-  , ("#", ( [CmdItem]
+  , ("#", ( [CmdItem, CmdDashboard]
           , "show stat summary of the leader"
           , ChooseItemMenu MStats ))
   , ("~", ( [CmdItem]
@@ -132,6 +133,18 @@ standardKeys = KeyKind $ map evalKeyDef $
 --  , ("z", projectA [ApplyItem { verb = "zap"
 --                              , object = "wand"
 --                              , symbol = '-' }])
+
+  -- Dashboard, in addition to commands marked above
+  , ("safeD0", ([CmdInternal, CmdDashboard], " ", Dashboard))  -- blank line
+  ]
+  ++
+  map (\(k,  slore) -> ("safeD" ++ show (k :: Int)
+                       , ( [CmdInternal, CmdDashboard]
+                         , "display" <+> ppSLore slore <+> "lore"
+                         , ChooseItemMenu (MLore slore) )))
+      (zip [1..] [minBound..maxBound])
+  ++
+  [ ("safeD99", ([CmdInternal, CmdDashboard], " ", Dashboard))  -- blank line
 
   -- Aiming
   , ("KP_Multiply", ( [CmdAim, CmdMinimal]
@@ -176,7 +189,7 @@ standardKeys = KeyKind $ map evalKeyDef $
   , ("`", ([CmdMeta], "open Dashboard", Dashboard))
   , ("space", ( [CmdMinimal, CmdMeta]
               , "clear messages/display history", Clear ))
-  , ("?", ([CmdMeta], "display Help", Help))
+  , ("?", ([CmdMeta, CmdDashboard], "display Help", Help))
   , ("F1", ([CmdMeta], "", Help))
   , ("Tab", ( [CmdMeta]
             , "cycle among party members on the level"
@@ -192,6 +205,9 @@ standardKeys = KeyKind $ map evalKeyDef $
   , ("C-v", repeatTriple 1000)
   , ("C-V", repeatTriple 25)
   , ("'", ([CmdMeta], "start recording commands", Record))
+
+  -- Dashboard, in addition to commands marked above
+  , ("safeD100", ([CmdInternal, CmdDashboard], "display history", History))
 
   -- Mouse
   , ("LeftButtonRelease", mouseLMB)
@@ -235,7 +251,7 @@ standardKeys = KeyKind $ map evalKeyDef $
   , ("safe6", ( [CmdInternal]
               , "fling at enemy under pointer"
               , aimFlingCmd ))
-  , ("safe7", ( [CmdInternal]
+  , ("safe7", ( [CmdInternal, CmdDashboard]
               , "open Main Menu"
               , MainMenu ))
   , ("safe8", ( [CmdInternal]
