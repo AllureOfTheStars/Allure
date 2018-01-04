@@ -21,9 +21,9 @@ import Game.LambdaHack.Content.ItemKind
 
 embeds :: [ItemKind]
 embeds =
-  [stairsUp, stairsDown, escape, terrainCache, terrainCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, staircaseTrapUp, staircaseTrapDown, doorwayTrap, obscenePictograms, subtleFresco, scratchOnWall, pulpit]
+  [stairsUp, liftUp, stairsDown, liftDown, escape, terrainCache, jewelryDisplay, terrainCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, staircaseTrapUp, staircaseTrapDown, doorwayTrap, obscenePictograms, subtleFresco, scratchOnWall, pulpit]
 
-stairsUp,    stairsDown, escape, terrainCache, terrainCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, staircaseTrapUp, staircaseTrapDown, doorwayTrap, obscenePictograms, subtleFresco, scratchOnWall, pulpit :: ItemKind
+stairsUp,    liftUp, stairsDown, liftDown, escape, terrainCache, jewelryDisplay, terrainCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, staircaseTrapUp, staircaseTrapDown, doorwayTrap, obscenePictograms, subtleFresco, scratchOnWall, pulpit :: ItemKind
 
 stairsUp = ItemKind
   { isymbol  = '<'
@@ -41,11 +41,21 @@ stairsUp = ItemKind
   , idesc    = "Stairs that rise towards escape."
   , ikit     = []
   }
+liftUp = stairsUp
+  { iname    = "lift up"
+  , ifreq    = [("lift up", 1)]
+  , idesc    = ""
+  }
 stairsDown = stairsUp
   { isymbol  = '>'
   , iname    = "staircase down"
   , ifreq    = [("staircase down", 1)]
   , ieffects = [Ascend False]
+  , idesc    = ""
+  }
+liftDown = stairsDown
+  { iname    = "lift down"
+  , ifreq    = [("lift down", 1)]
   , idesc    = ""
   }
 escape = stairsUp
@@ -54,7 +64,7 @@ escape = stairsUp
   , ifreq    = [("escape", 1)]
   , iflavour = zipPlain [BrYellow]
   , ieffects = [Escape]
-  , idesc    = ""
+  , idesc    = ""  -- generic: outdoors, in spaceship, etc.
   }
 terrainCache = stairsUp
   { isymbol  = 'O'
@@ -62,7 +72,13 @@ terrainCache = stairsUp
   , ifreq    = [("treasure cache", 1)]
   , iflavour = zipPlain [BrBlue]
   , ieffects = [CreateItem CGround "useful" TimerNone]
-  , idesc    = "Glittering gold, just waiting to be taken."
+  , idesc    = ""
+  }
+jewelryDisplay = terrainCache
+  { iname    = "jewelry display"
+  , ifreq    = [("jewelry display", 1)]
+  , ieffects = [CreateItem CGround "any jewelry" TimerNone]
+  , idesc    = ""
   }
 terrainCacheTrap = ItemKind
   { isymbol  = '^'

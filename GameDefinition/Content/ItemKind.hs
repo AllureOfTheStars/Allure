@@ -569,7 +569,7 @@ scroll = ItemKind
   , ikit     = []
   }
 scroll1 = scroll
-  { ifreq    = [("ship", 100)]
+  { ifreq    = [("ship", 100), ("any scroll", 100)]
   , irarity  = [(5, 9), (10, 9)]  -- mixed blessing, so available early
   , ieffects = [ Unique, ELabel "of Reckless Beacon"
                , Summon "hero" 1, Summon "mobile animal" (2 + 1 `d` 2) ]
@@ -581,7 +581,7 @@ scroll2 = scroll
                , RefillCalm (-100) ]
   }
 scroll3 = scroll
-  { ifreq    = [("ship", 100)]
+  { ifreq    = [("ship", 100), ("any scroll", 100)]
   , irarity  = [(1, 8), (10, 4)]
   , ieffects = [Ascend True]
   }
@@ -621,7 +621,7 @@ scroll10 = scroll
                , Composite [PolyItem, Explode "firecracker 7"] ]
   }
 scroll11 = scroll
-  { ifreq    = [("ship", 100)]
+  { ifreq    = [("ship", 100), ("any scroll", 100)]
   , irarity  = [(6, 9), (10, 9)]
   , ieffects = [Unique, ELabel "of Prisoner Release", Summon "hero" 1]
   , idesc    = "This lock chip opens a nearby closet containing one of our lost crew members."
@@ -731,7 +731,7 @@ gorget = ItemKind
 necklace = ItemKind
   { isymbol  = symbolNecklace
   , iname    = "necklace"
-  , ifreq    = [("useful", 100)]
+  , ifreq    = [("useful", 100), ("any jewelry", 100)]
   , iflavour = zipFancy stdCol ++ zipPlain brightCol
   , icount   = 1
   , irarity  = [(10, 2)]
@@ -745,7 +745,7 @@ necklace = ItemKind
   , ikit     = []
   }
 necklace1 = necklace
-  { ifreq    = [("ship", 100)]
+  { ifreq    = [("ship", 100), ("any jewelry", 100)]
   , irarity  = [(3, 0), (4, 1), (10, 2)]  -- prevents camping on lvl 3
   , iaspects = [Timeout $ (1 `d` 2) * 20]
   , ieffects = [ Unique, ELabel "of Trickle Life", EqpSlot EqpSlotMiscBonus
@@ -755,7 +755,8 @@ necklace1 = necklace
   -- , idesc    = ""
   }
 necklace2 = necklace
-  { ifreq    = [("treasure", 100)]  -- just too nasty to call it useful
+  { ifreq    = [("treasure", 100), ("any jewelry", 100)]
+      -- just too nasty to call it useful
   , irarity  = [(1, 1)]
   , iaspects = [Timeout 30]
   , ieffects = [ Recharging (Summon "mobile animal" 2)
@@ -790,7 +791,7 @@ necklace6 = necklace
                ++ ieffects necklace
   }
 necklace7 = necklace
-  { ifreq    = [("ship", 100)]
+  { ifreq    = [("ship", 100), ("any jewelry", 100)]
   , iaspects = [AddMaxHP 15, AddArmorMelee 20, AddArmorRanged 10, Timeout 4]
   , ieffects = [ Unique, ELabel "of Overdrive", EqpSlot EqpSlotAddSpeed
                , Recharging (InsertMove $ 1 `d` 3)  -- unpredictable
@@ -862,7 +863,7 @@ sightSharpening = ItemKind
 ring = ItemKind
   { isymbol  = symbolRing
   , iname    = "ring"
-  , ifreq    = [("useful", 100)]
+  , ifreq    = [("useful", 100), ("any jewelry", 100)]
   , iflavour = zipPlain stdCol ++ zipFancy darkCol
   , icount   = 1
   , irarity  = [(10, 3)]
@@ -882,7 +883,7 @@ ring1 = ring
                , EqpSlot EqpSlotAddSpeed ]
   }
 ring2 = ring
-  { ifreq    = [("ship", 100)]
+  { ifreq    = [("ship", 100), ("any jewelry", 100)]
   , irarity  = [(10, 2)]
   , iaspects = [AddSpeed $ (1 `d` 2) * 3, AddMaxCalm (-40), AddMaxHP (-20)]
   , ieffects = [ Unique, ELabel "of Rush"  -- no explosion, because Durable
@@ -1230,7 +1231,7 @@ wand2 = wand
 gem = ItemKind
   { isymbol  = symbolGold
   , iname    = "gem"
-  , ifreq    = [("treasure", 100), ("gem", 100)]
+  , ifreq    = [("treasure", 100), ("gem", 100), ("any jewelry", 100)]
   , iflavour = zipPlain $ delete BrYellow brightCol  -- natural, so not fancy
   , icount   = 1
   , irarity  = []
