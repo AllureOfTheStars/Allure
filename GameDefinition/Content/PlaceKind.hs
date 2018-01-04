@@ -355,7 +355,7 @@ staircase = PlaceKind
   , prarity  = [(1, 1)]
   , pcover   = CVerbatim
   , pfence   = FGround
-  , ptopLeft = [ "<·>"
+  , ptopLeft = [ "<#>"
                ]
   , poverride = [ ('<', "staircase up"), ('>', "staircase down")
                 , ('I', "signboard") ]
@@ -365,7 +365,7 @@ staircase2 = staircase
   , pfence   = FFloor
   , ptopLeft = [ "#·#"
                , "···"
-               , "<·>"
+               , "<#>"
                , "···"
                , "#·#"
                ]
@@ -373,11 +373,11 @@ staircase2 = staircase
 staircase3 = staircaseLift
   { pfreq    = [("staircase lift", 1000)]
   , pfence   = FWall
-  , ptopLeft = [ "#·I·#"
+  , ptopLeft = [ "#···#"
                , "·····"
-               , "·<·>·"
+               , "·<I>·"
                , "·····"
-               , "#·I·#"
+               , "#···#"
                ]
   }
 staircase4 = staircaseLift
@@ -385,7 +385,7 @@ staircase4 = staircaseLift
   , pfence   = FWall
   , ptopLeft = [ "#·#·#·#"
                , "·······"
-               , "#·<·>·#"
+               , "#·<#>·#"
                , "·······"
                , "#·#·#·#"
                ]
@@ -393,26 +393,26 @@ staircase4 = staircaseLift
 staircase5 = staircase
   { pfreq    = [("staircase", 100)]
   , pfence   = FGround
-  , ptopLeft = [ "#·<·>·#"
+  , ptopLeft = [ "#·<#>·#"
                ]
   }
 staircase6 = staircase
   { pfreq    = [("staircase", 100)]
   , pfence   = FGround
-  , ptopLeft = [ "#··<·>··#"
+  , ptopLeft = [ "#··<#>··#"
                ]
   }
 staircase7 = staircase
   { pfreq    = [("staircase", 100)]
   , pfence   = FGround
-  , ptopLeft = [ "#·I·<·>·I·#"
+  , ptopLeft = [ "#·I·<#>·I·#"
                ]
   }
 staircase8 = staircase
   { pfreq    = [("staircase", 1000)]
   , pfence   = FFloor
   , ptopLeft = [ "#·····#"
-               , "··<·>··"
+               , "··<#>··"
                , "#·····#"
                ]
   }
@@ -420,7 +420,7 @@ staircase9 = staircaseLift
   { pfreq    = [("staircase lift", 1000)]
   , pfence   = FWall
   , ptopLeft = [ "#·······#"
-               , "·#·<·>·#·"
+               , "·#·<#>·#·"
                , "#·······#"
                ]
   }
@@ -428,7 +428,7 @@ staircase10 = staircase
   { pfreq    = [("staircase", 1000)]
   , pfence   = FFloor
   , ptopLeft = [ "·#·····#·"
-               , "#··<·>··#"
+               , "#··<#>··#"
                , "·#·····#·"
                ]
   }
@@ -437,7 +437,7 @@ staircase11 = staircase
   , pfence   = FGround
   , ptopLeft = [ "··#·#··"
                , "#·····#"
-               , "··<·>··"
+               , "··<#>··"
                , "#·····#"
                , "··#·#··"
                ]
@@ -446,7 +446,7 @@ staircase12 = staircaseLift
   { pfreq    = [("staircase lift", 1000)]
   , pfence   = FWall
   , ptopLeft = [ "·····"
-               , "·<·>·"
+               , "·<#>·"
                , "·····"
                ]
   }
@@ -454,7 +454,7 @@ staircase13 = staircaseLift
   { pfreq    = [("staircase lift", 1000)]
   , pfence   = FWall
   , ptopLeft = [ "·······"
-               , "#·<·>·#"
+               , "#·<#>·#"
                , "·······"
                ]
   }
@@ -462,7 +462,7 @@ staircase14 = staircaseLift
   { pfreq    = [("staircase lift", 1000)]
   , pfence   = FWall
   , ptopLeft = [ "·········"
-               , "·#·<·>·#·"
+               , "·#·<#>·#·"
                , "·········"
                ]
   }
@@ -470,7 +470,7 @@ staircase15 = staircaseLift
   { pfreq    = [("staircase lift", 1000)]
   , pfence   = FWall
   , ptopLeft = [ "···········"
-               , "#·I·<·>·I·#"
+               , "#···<I>···#"
                , "···········"
                ]
   }
@@ -478,7 +478,7 @@ staircase16 = staircaseLift
   { pfreq    = [("staircase lift", 1000)]
   , pfence   = FWall
   , ptopLeft = [ "#·····#"
-               , "··<·>··"
+               , "··<#>··"
                , "#·····#"
                ]
   }
@@ -486,7 +486,7 @@ staircase17 = staircaseLift
   { pfreq    = [("staircase lift", 1000)]
   , pfence   = FWall
   , ptopLeft = [ "·#·····#·"
-               , "#··<·>··#"
+               , "#··<#>··#"
                , "·#·····#·"
                ]
   }
