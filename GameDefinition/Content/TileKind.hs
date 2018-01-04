@@ -31,11 +31,11 @@ cdefs = ContentDef
       [unknown, hardRock, wall, wallSuspect, wallObscured, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorArenaShade ]
       ++ map makeDarkColor ldarkColorable
       -- Allure-specific
-      ++ [oriel, outerHullWall, doorlessWall, machineWall, wallObscuredDefaced, wallObscuredFrescoed, rock, pillarCache2, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown]
+      ++ [oriel, outerHullWall, doorlessWall, machineWall, wallObscuredDefaced, wallObscuredFrescoed, rock, pillarCache2, stairsLiftUp, stairsLiftTaintedUp, stairsLiftDown, stairsLiftTaintedDown, escapeSpaceshipDown]
   }
 unknown,        hardRock, wall, wallSuspect, wallObscured, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorArenaShade :: TileKind
 -- Allure-specific
-oriel, outerHullWall, doorlessWall, machineWall, wallObscuredDefaced, wallObscuredFrescoed, rock, pillarCache2, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown :: TileKind
+oriel, outerHullWall, doorlessWall, machineWall, wallObscuredDefaced, wallObscuredFrescoed, rock, pillarCache2, stairsLiftUp, stairsLiftTaintedUp, stairsLiftDown, stairsLiftTaintedDown, escapeSpaceshipDown :: TileKind
 
 ldarkColorable :: [TileKind]
 ldarkColorable = [tree, bush, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem]
@@ -574,17 +574,34 @@ pillarCache2 = pillarCache
   }
 stairsLiftUp = stairsUp
   { tname    = "lift up"
+  , tfreq    = [("staircase lift up", 9), ("ordinary lift up", 1)]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
-  , tfreq    = [("staircase lift up", 1)]
   , tfeature = [Embed "lift up", ConsideredByAI]
+  }
+stairsLiftTaintedUp = stairsTaintedUp
+  { tname    = "tainted lift up"
+  , tfreq    = [("staircase lift up", 1)]
+  , tcolor   = BrBlue
+  , tcolor2  = Blue
+  , tfeature = [ Embed "lift up", Embed "lift trap"
+               , ConsideredByAI, ChangeTo "ordinary lift up" ]
+                 -- AI uses despite the trap; exploration more important
   }
 stairsLiftDown = stairsDown
   { tname    = "lift down"
+  , tfreq    = [("staircase lift down", 9), ("ordinary lift down", 1)]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
-  , tfreq    = [("staircase lift down", 1)]
   , tfeature = [Embed "lift down", ConsideredByAI]
+  }
+stairsLiftTaintedDown = stairsTaintedDown
+  { tname    = "tainted lift down"
+  , tfreq    = [("staircase lift down", 1)]
+  , tcolor   = BrBlue
+  , tcolor2  = Blue
+  , tfeature = [ Embed "lift down", Embed "lift trap"
+               , ConsideredByAI, ChangeTo "ordinary lift down" ]
   }
 escapeSpaceshipDown = escapeDown
   { tname    = "airlock to the shuttle"

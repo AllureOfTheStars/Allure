@@ -23,10 +23,10 @@ embeds :: [ItemKind]
 embeds =
   [stairsUp, stairsDown, escape, terrainCache, terrainCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, staircaseTrapUp, staircaseTrapDown, doorwayTrap, obscenePictograms, subtleFresco, scratchOnWall, pulpit]
       -- Allure-specific
-      ++ [liftUp, liftDown, jewelryDisplay]
+      ++ [liftUp, liftDown, jewelryDisplay, liftTrap, liftTrap2]
 stairsUp,    stairsDown, escape, terrainCache, terrainCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, staircaseTrapUp, staircaseTrapDown, doorwayTrap, obscenePictograms, subtleFresco, scratchOnWall, pulpit :: ItemKind
 -- Allure-specific
-liftUp, liftDown, jewelryDisplay :: ItemKind
+liftUp, liftDown, jewelryDisplay, liftTrap, liftTrap2 :: ItemKind
 
 stairsUp = ItemKind
   { isymbol  = '<'
@@ -308,5 +308,20 @@ jewelryDisplay = terrainCache
   { iname    = "jewelry display"
   , ifreq    = [("jewelry display", 1)]
   , ieffects = [CreateItem CGround "any jewelry" TimerNone]
+  , idesc    = ""
+  }
+liftTrap = staircaseTrapUp
+  { iname    = "elevator trap"  -- hat tip to US heroes
+  , ifreq    = [("lift trap", 100)]
+  , iverbHit = "squeeze"
+  , ieffects = [ Temporary "be crushed by the sliding doors"
+               , DropBestWeapon, Paralyze 10 ]
+  , idesc    = ""
+  }
+liftTrap2 = liftTrap
+  { ifreq    = [("lift trap", 50)]
+  , iverbHit = "choke"
+  , ieffects = [ Temporary "inhale the gas lingering inside the cab"
+               , toOrganActorTurn "slowed" $ (2 + 1 `dL` 3) * 10 ]
   , idesc    = ""
   }
