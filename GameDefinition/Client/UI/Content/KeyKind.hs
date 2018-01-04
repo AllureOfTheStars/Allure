@@ -33,14 +33,14 @@ standardKeys = KeyKind $ map evalKeyDef $
   -- Remember to put commands that show information (e.g., enter aiming
   -- mode) first.
 
-  -- Main Menu
+  -- main menu
   [ ("e", ([CmdMainMenu], "enter challenges menu>", ChallengesMenu))
   , ("s", ([CmdMainMenu], "start new game", GameRestart))
   , ("x", ([CmdMainMenu], "exit to desktop", GameExit))
   , ("v", ([CmdMainMenu], "visit settings menu>", SettingsMenu))
   , ("a", ([CmdMainMenu], "automate faction", Automate))
-  , ("`", ([CmdMainMenu], "go to dashboard", Dashboard))
   , ("?", ([CmdMainMenu], "see command help", Help))
+  , ("F12", ([CmdMainMenu], "go to dashboard", Dashboard))
   , ("Escape", ([CmdMainMenu], "back to playing", Cancel))
 
   -- Item use, 1st part
@@ -149,7 +149,7 @@ standardKeys = KeyKind $ map evalKeyDef $
   -- Aiming
   , ("KP_Multiply", ( [CmdAim, CmdMinimal]
                     , "cycle x-hair among enemies", AimEnemy ))
-      -- not really minimal, because flinging from Item Menu enters aiming
+      -- not really minimal, because flinging from item menu enters aiming
       -- mode, first screen mentions aiming mode not in fling context
   , ("!", ([CmdAim], "", AimEnemy))
   , ("KP_Divide", ([CmdAim], "cycle x-hair among items", AimItem))
@@ -180,17 +180,19 @@ standardKeys = KeyKind $ map evalKeyDef $
                  , ComposeUnlessError ItemClear TgtClear ))
   , ("Escape", ( [CmdAim, CmdMinimal]
                , "cancel aiming/open main menu"
-               , ByAimMode {exploration = MainMenu, aiming = Cancel} ))
+               , ByAimMode { exploration = ExecuteIfClear MainMenu
+                           , aiming = Cancel } ))
   , ("Return", ( [CmdAim, CmdMinimal]
                , "accept target/open help"
-               , ByAimMode {exploration = Help, aiming = Accept} ))
+               , ByAimMode { exploration = ExecuteIfClear Hint
+                           , aiming = Accept } ))
 
   -- Assorted
-  , ("`", ([CmdMeta], "open dashboard", Dashboard))
+  , ("F12", ([CmdMeta], "open dashboard", Dashboard))
   , ("space", ( [CmdMinimal, CmdMeta]
-              , "clear messages/display history", Clear ))
-  , ("?", ([CmdMeta, CmdDashboard], "display help", Help))
-  , ("F1", ([CmdMeta], "", Help))
+              , "clear messages/display history", ExecuteIfClear History ))
+  , ("?", ([CmdMeta], "display help", Hint))
+  , ("F1", ([CmdMeta], "", Hint))
   , ("Tab", ( [CmdMeta]
             , "cycle among party members on the level"
             , MemberCycle ))
@@ -207,7 +209,8 @@ standardKeys = KeyKind $ map evalKeyDef $
   , ("'", ([CmdMeta], "start recording commands", Record))
 
   -- Dashboard, in addition to commands marked above
-  , ("safeD100", ([CmdInternal, CmdDashboard], "display history", History))
+  , ("safeD100", ([CmdInternal, CmdDashboard], "display help", Help))
+  , ("safeD101", ([CmdInternal, CmdDashboard], "display history", History))
 
   -- Mouse
   , ("LeftButtonRelease", mouseLMB)
