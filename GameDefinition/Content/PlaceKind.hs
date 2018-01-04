@@ -103,7 +103,7 @@ ruin = PlaceKind
   }
 collapsed = PlaceKind  -- in a dark cave, they have little lights --- that's OK
   { psymbol  = 'c'
-  , pname    = "collapsed cavern"
+  , pname    = "hardware stack"
   , pfreq    = [("noise", 1)]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CStretch
@@ -153,7 +153,7 @@ collapsed7 = collapsed
   }
 pillar = PlaceKind
   { psymbol  = 'p'
-  , pname    = "pillar room"
+  , pname    = "commercial space"
   , pfreq    = [ ("rogue", 500), ("arena", 1000), ("laboratory", 1000)
                , ("empty", 300), ("noise", 1000) ]
   , prarity  = [(1, 10), (10, 10)]
@@ -502,7 +502,7 @@ staircaseGated = staircase
   }
 escapeUp = PlaceKind
   { psymbol  = '<'
-  , pname    = "escape up"
+  , pname    = "escape airlock up"
   , pfreq    = [("escape up", 1)]
   , prarity  = [(1, 1)]
   , pcover   = CVerbatim
@@ -547,7 +547,7 @@ escapeUp5 = escapeUp
   }
 escapeDown = PlaceKind
   { psymbol  = '>'
-  , pname    = "escape down"
+  , pname    = "escape airlock down"
   , pfreq    = [("escape down", 1)]
   , prarity  = [(1, 1)]
   , pcover   = CVerbatim
@@ -598,7 +598,7 @@ escapeOutdoorDown = escapeDown
 -- * Allure-specific
 
 staircaseLift = staircase
-  { pname    = "staircase lift"
+  { pname    = "lift"
   , pfreq    = [("staircase lift", 1)]
   , poverride = [ ('<', "staircase lift up"), ('>', "staircase lift down")
                 , ('I', "signboard") ]
@@ -670,7 +670,7 @@ ovalSquare = ovalFloor
   }
 maze = PlaceKind
   { psymbol  = 'm'
-  , pname    = "maze"
+  , pname    = "mysterious maze"
   , pfreq    = [("rogue", 20), ("arena", 20), ("empty", 20)]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CStretch
@@ -726,7 +726,7 @@ mazeBig3 = mazeBig
   }
 cells = PlaceKind
   { psymbol  = '#'
-  , pname    = "cells"
+  , pname    = "broken holding pens"
   , pfreq    = [ ("rogue", 20), ("arena", 20), (" laboratory", 20)
                , ("empty", 20), ("noise", 20), ("zoo", 200) ]
   , prarity  = [(1, 10), (10, 10)]
@@ -787,9 +787,7 @@ makeStaircaseUp s = s
  { psymbol   = '<'
  , pname     = pname s <+> "up"
  , pfreq     = map (\(t, k) -> (toGroupName $ tshow t <+> "up", k)) $ pfreq s
- , poverride = [ ('>', "stair terminal")
-               , ('<', toGroupName $ pname s <+> "up")
-               , ('I', "signboard") ]
+ , poverride = ('>', "stair terminal") : filter ((/= '>') . fst) (poverride s)
  }
 
 makeStaircaseDown :: PlaceKind -> PlaceKind
@@ -797,7 +795,5 @@ makeStaircaseDown s = s
  { psymbol   = '>'
  , pname     = pname s <+> "down"
  , pfreq     = map (\(t, k) -> (toGroupName $ tshow t <+> "down", k)) $ pfreq s
- , poverride = [ ('<', "stair terminal")
-               , ('>', toGroupName $ pname s <+> "down")
-               , ('I', "signboard") ]
+ , poverride = ('<', "stair terminal") : filter ((/= '<') . fst) (poverride s)
  }
