@@ -28,14 +28,14 @@ cdefs = ContentDef
   , validateSingle = validateSingleTileKind
   , validateAll = validateAllTileKind
   , content = contentFromList $
-      [unknown, hardRock, wall, wallSuspect, wallObscured, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorArenaShade ]
+      [unknown, hardRock, wall, wallSuspect, wallObscured, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorArenaShade ]
       ++ map makeDarkColor ldarkColorable
       -- Allure-specific
-      ++ [oriel, outerHullWall, doorlessWall, machineWall, wallObscuredDefaced, wallObscuredFrescoed, rock, pillarCache2, stairsLiftUp, stairsLiftTaintedUp, stairsLiftDown, stairsLiftTaintedDown, escapeSpaceshipDown]
+      ++ [oriel, outerHullWall, doorlessWall, machineWall, wallObscuredDefaced, wallObscuredFrescoed, rock, pillarCache2, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown]
   }
-unknown,        hardRock, wall, wallSuspect, wallObscured, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorArenaShade :: TileKind
+unknown,        hardRock, wall, wallSuspect, wallObscured, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorArenaShade :: TileKind
 -- Allure-specific
-oriel, outerHullWall, doorlessWall, machineWall, wallObscuredDefaced, wallObscuredFrescoed, rock, pillarCache2, stairsLiftUp, stairsLiftTaintedUp, stairsLiftDown, stairsLiftTaintedDown, escapeSpaceshipDown :: TileKind
+oriel, outerHullWall, doorlessWall, machineWall, wallObscuredDefaced, wallObscuredFrescoed, rock, pillarCache2, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown :: TileKind
 
 ldarkColorable :: [TileKind]
 ldarkColorable = [tree, bush, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem]
@@ -253,9 +253,9 @@ stairsUp = TileKind
   , talter   = talterForStairs
   , tfeature = [Embed "staircase up", ConsideredByAI]
   }
-stairsTaintedUp = TileKind
+stairsTrappedUp = TileKind
   { tsymbol  = '<'
-  , tname    = "tainted staircase up"
+  , tname    = "windy staircase up"
   , tfreq    = [("staircase up", 1)]
   , tcolor   = BrRed
   , tcolor2  = Red
@@ -282,9 +282,9 @@ stairsDown = TileKind
   , talter   = talterForStairs
   , tfeature = [Embed "staircase down", ConsideredByAI]
   }
-stairsTaintedDown = TileKind
+stairsTrappedDown = TileKind
   { tsymbol  = '>'
-  , tname    = "tainted staircase down"
+  , tname    = "crooked staircase down"
   , tfreq    = [("staircase down", 1)]
   , tcolor   = BrRed
   , tcolor2  = Red
@@ -579,8 +579,8 @@ stairsLiftUp = stairsUp
   , tcolor2  = Cyan
   , tfeature = [Embed "lift up", ConsideredByAI]
   }
-stairsLiftTaintedUp = stairsTaintedUp
-  { tname    = "tainted lift up"
+stairsLiftTrappedUp = stairsTrappedUp
+  { tname    = "corroded lift up"
   , tfreq    = [("staircase lift up", 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
@@ -595,8 +595,8 @@ stairsLiftDown = stairsDown
   , tcolor2  = Cyan
   , tfeature = [Embed "lift down", ConsideredByAI]
   }
-stairsLiftTaintedDown = stairsTaintedDown
-  { tname    = "tainted lift down"
+stairsLiftTrappedDown = stairsTrappedDown
+  { tname    = "corroded lift down"
   , tfreq    = [("staircase lift down", 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
