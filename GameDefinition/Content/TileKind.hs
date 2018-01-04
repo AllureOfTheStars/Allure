@@ -28,14 +28,14 @@ cdefs = ContentDef
   , validateSingle = validateSingleTileKind
   , validateAll = validateAllTileKind
   , content = contentFromList $
-      [unknown, hardRock, wall, wallSuspect, wallObscured, pillar, pillarCache, pillarCache2, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorArenaShade ]
+      [unknown, hardRock, wall, wallSuspect, wallObscured, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorArenaShade ]
       ++ map makeDarkColor ldarkColorable
       -- Allure-specific
-      ++ [oriel, outerHullWall, doorlessWall, machineWall, wallObscuredDefaced, wallObscuredFrescoed, rock, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown]
+      ++ [oriel, outerHullWall, doorlessWall, machineWall, wallObscuredDefaced, wallObscuredFrescoed, rock, pillarCache2, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown]
   }
-unknown,        hardRock, wall, wallSuspect, wallObscured, pillar, pillarCache, pillarCache2, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorArenaShade :: TileKind
+unknown,        hardRock, wall, wallSuspect, wallObscured, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTaintedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTaintedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorArenaShade :: TileKind
 -- Allure-specific
-oriel, outerHullWall, doorlessWall, machineWall, wallObscuredDefaced, wallObscuredFrescoed, rock, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown :: TileKind
+oriel, outerHullWall, doorlessWall, machineWall, wallObscuredDefaced, wallObscuredFrescoed, rock, pillarCache2, stairsLiftUp, stairsLiftDown, escapeSpaceshipDown :: TileKind
 
 ldarkColorable :: [TileKind]
 ldarkColorable = [tree, bush, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem]
@@ -137,12 +137,6 @@ pillarCache = TileKind
                , ChangeTo "cachable", ConsideredByAI, Indistinct ]
       -- Not explorable, but prominently placed, so hard to miss.
       -- Very beneficial, so AI eager to trigger.
-  }
-pillarCache2 = pillarCache
-  { tname    = "jewelry display"
-  , tfreq    = [("cachable", 10), ("escapeSetDark", 1)]
-  , tfeature = [ Embed "jewelry display", Embed "treasure cache trap"
-               , ChangeTo "cachable", ConsideredByAI, Indistinct ]
   }
 lampPost = TileKind
   { tsymbol  = 'O'
@@ -571,6 +565,12 @@ wallObscuredFrescoed = TileKind
 rock = pillar
   { tname    = "rock"
   , tfreq    = [("brawlSetLit", 30), ("arenaSetLit", 1), ("arenaSetDark", 1)]
+  }
+pillarCache2 = pillarCache
+  { tname    = "jewelry display"
+  , tfreq    = [("cachable", 10), ("escapeSetDark", 1)]
+  , tfeature = [ Embed "jewelry display", Embed "treasure cache trap"
+               , ChangeTo "cachable", ConsideredByAI, Indistinct ]
   }
 stairsLiftUp = stairsUp
   { tname    = "lift up"
