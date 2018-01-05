@@ -23,10 +23,10 @@ embeds :: [ItemKind]
 embeds =
   [stairsUp, stairsDown, escape, terrainCache, terrainCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, staircaseTrapUp, staircaseTrapDown, doorwayTrap, obscenePictograms, subtleFresco, scratchOnWall, pulpit]
       -- Allure-specific
-      ++ [liftUp, liftDown, jewelryDisplay, liftTrap, liftTrap2]
+      ++ [liftUp, liftDown, jewelryDisplay, liftTrap, liftTrap2, ruinedFirstAidKit, wall3dBillboard]
 stairsUp,    stairsDown, escape, terrainCache, terrainCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, staircaseTrapUp, staircaseTrapDown, doorwayTrap, obscenePictograms, subtleFresco, scratchOnWall, pulpit :: ItemKind
 -- Allure-specific
-liftUp, liftDown, jewelryDisplay, liftTrap, liftTrap2 :: ItemKind
+liftUp,           liftDown, jewelryDisplay, liftTrap, liftTrap2, ruinedFirstAidKit, wall3dBillboard :: ItemKind
 
 stairsUp = ItemKind
   { isymbol  = '<'
@@ -325,4 +325,40 @@ liftTrap2 = liftTrap
   , ieffects = [ Temporary "inhale the gas lingering inside the cab"
                , toOrganActorTurn "slowed" $ (2 + 1 `dL` 3) * 10 ]
   , idesc    = ""
+  }
+ruinedFirstAidKit = ItemKind
+  { isymbol  = '*'
+  , iname    = "ruined first aid kit"
+  , ifreq    = [("ruined first aid kit", 1)]
+  , iflavour = zipPlain [BrGreen]
+  , icount   = 1
+  , irarity  = [(1, 1)]
+  , iverbHit = "prick"
+  , iweight  = 1000
+  , idamage  = toDmg 0
+  , iaspects = []
+  , ieffects = [ Temporary "inhale the last whiff of chemicals from ruined first aid kit"
+               , OneOf [ toOrganNone "poison resistant"
+                       , toOrganNone "slow resistant"
+                       , toOrganActorTurn "drunk" (20 + 1 `d` 5) ]
+               , CreateItem CInv "needle" TimerNone ]
+  , ifeature = [Identified]  -- not Durable, springs at most once
+  , idesc    = ""
+  , ikit     = []
+  }
+wall3dBillboard = ItemKind
+  { isymbol  = '*'
+  , iname    = "3D billboard"
+  , ifreq    = [("3D billboard", 1)]
+  , iflavour = zipPlain [BrGreen]
+  , icount   = 1
+  , irarity  = [(1, 1)]
+  , iverbHit = "push"
+  , iweight  = 1000
+  , idamage  = toDmg 0
+  , iaspects = []
+  , ieffects = [Temporary "make out excited moves of bleached shapes"]
+  , ifeature = [Identified, Durable]
+  , idesc    = ""
+  , ikit     = []
   }

@@ -31,11 +31,11 @@ cdefs = ContentDef
       [unknown, hardRock, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorArenaShade ]
       ++ map makeDarkColor ldarkColorable
       -- Allure-specific
-      ++ [oriel, outerHullWall, doorlessWall, machineWall, rock, pillarCache2, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown]
+      ++ [oriel, outerHullWall, doorlessWall, machineWall, wallObscuredSafety, wallObscured3dBillboard, rock, pillarCache2, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown]
   }
 unknown,        hardRock, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorArenaShade :: TileKind
 -- Allure-specific
-oriel, outerHullWall, doorlessWall, machineWall, rock, pillarCache2, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown :: TileKind
+oriel,           outerHullWall, doorlessWall, machineWall, wallObscuredSafety, wallObscured3dBillboard, rock, pillarCache2, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown :: TileKind
 
 ldarkColorable :: [TileKind]
 ldarkColorable = [tree, bush, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem]
@@ -96,7 +96,7 @@ wall = TileKind
   }
 wallSuspect = TileKind  -- only on client
   { tsymbol  = '#'
-  , tname    = "suspect uneven wall"
+  , tname    = "suspect wall"
   , tfreq    = [("suspect wall", 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
@@ -561,6 +561,30 @@ machineWall = TileKind
   , tcolor2  = BrBlack
   , talter   = 100
   , tfeature = [Spice, Clear, Indistinct]
+  }
+wallObscuredSafety = TileKind
+  { tsymbol  = '#'
+  , tname    = "safety procedures wall"
+  , tfreq    = [("obscured wall", 10)]
+  , tcolor   = BrWhite
+  , tcolor2  = defFG
+  , talter   = 5
+  , tfeature = [ Embed "ruined first aid kit"
+               , HideAs "suspect wall"
+               , Indistinct
+               ]
+  }
+wallObscured3dBillboard = TileKind
+  { tsymbol  = '#'
+  , tname    = "3D billboard"
+  , tfreq    = [("obscured wall", 40)]
+  , tcolor   = BrWhite
+  , tcolor2  = defFG
+  , talter   = 5
+  , tfeature = [ Embed "3D billboard"
+               , HideAs "suspect wall"
+               , Indistinct
+               ]
   }
 rock = pillar
   { tname    = "rock"
