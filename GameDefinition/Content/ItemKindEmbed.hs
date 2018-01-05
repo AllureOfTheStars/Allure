@@ -70,7 +70,7 @@ terrainCache = stairsUp
   }
 terrainCacheTrap = ItemKind
   { isymbol  = '^'
-  , iname    = "anti-burglary protection"
+  , iname    = "anti-theft protection"
   , ifreq    = [("treasure cache trap", 1)]
   , iflavour = zipPlain [Red]
   , icount   = 1
@@ -287,7 +287,8 @@ pulpit = ItemKind
   , ieffects = [ CreateItem CGround "any scroll" TimerNone
                , Detect 20
                , Paralyze $ (2 + 1 `dL` 3) * 10
-               , toOrganActorTurn "drunk" (20 + 1 `d` 5) ]
+               , toOrganActorTurn "drunk" (20 + 1 `d` 5)
+               , Explode "allure lore" ]
   , ifeature = [Identified]  -- not Durable, springs at most once
   , idesc    = ""
   , ikit     = []
@@ -356,9 +357,11 @@ wall3dBillboard = ItemKind
   , iverbHit = "push"
   , iweight  = 1000
   , idamage  = toDmg 0
-  , iaspects = []
-  , ieffects = [Temporary "make out excited moves of bleached shapes"]
+  , iaspects = [Timeout 3]
+  , ieffects = [ Recharging $ Temporary "make it cough up a wobbly standalone hologram once more"
+               , Recharging $ OneOf [ Explode "ad lore"
+                                    , Explode "allure lore" ] ]
   , ifeature = [Identified, Durable]
-  , idesc    = ""
+  , idesc    = "One can still make out excited moves of bleached shapes."
   , ikit     = []
   }

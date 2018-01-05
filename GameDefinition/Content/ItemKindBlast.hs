@@ -23,11 +23,11 @@ blasts :: [ItemKind]
 blasts =
   [burningOil2, burningOil3, burningOil4, explosionBlast2, explosionBlast10, explosionBlast20, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, glassPiece, smoke, boilingWater, glue, singleSpark, spark, denseShower, sparseShower, protectingBalmMelee, protectingBalmRanged, vulnerabilityBalm, resolutionDust, hasteSpray, slownessMist, eyeDrop, ironFiling, smellyDroplet, eyeShine, whiskeySpray, waste, youthSprinkle, poisonCloud, mistAntiSlow, mistAntidote]
   -- Allure-specific
-  ++ [cruiseAdHologram]
+  ++ [cruiseAdHologram, outerAdHologram, victoriaClassHologram, allureIntroHologram]
 
 burningOil2,    burningOil3, burningOil4, explosionBlast2, explosionBlast10, explosionBlast20, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, glassPiece, smoke, boilingWater, glue, singleSpark, spark, denseShower, sparseShower, protectingBalmMelee, protectingBalmRanged, vulnerabilityBalm, resolutionDust, hasteSpray, slownessMist, eyeDrop, ironFiling, smellyDroplet, eyeShine, whiskeySpray, waste, youthSprinkle, poisonCloud, mistAntiSlow, mistAntidote :: ItemKind
 -- Allure-specific
-cruiseAdHologram :: ItemKind
+cruiseAdHologram,       outerAdHologram, victoriaClassHologram, allureIntroHologram :: ItemKind
 
 -- We take care (e.g., in burningOil below) that blasts are not faster
 -- than 100% fastest natural speed, or some frames would be skipped,
@@ -638,21 +638,49 @@ mistAntidote = ItemKind
 
 -- * Allure-specific
 
+-- ** Lore basts
+
+-- They exist for a short time only, but the lore can be read
+-- from the lore menu. Only optional story bits should go there,
+-- becuase some players may not even notice them (at first, at least).
+-- This is designed not to spam gameplay with story. Gameplay first.
+-- Generally, 3 to 5 blasts of each kind should suffice for variety.
+-- More would induce long repetition to see all (they are shown at random).
+-- With mild exceptions, they should have no effects.
+
 cruiseAdHologram = ItemKind
   { isymbol  = '`'
   , iname    = "cruise ad hologram"
-  , ifreq    = [("cruise ad hologram", 1)]
-  , iflavour = zipFancy [BrBlue]
+  , ifreq    = [("cruise ad hologram", 1), ("ad lore", 20)]
+  , iflavour = zipFancy [BrMagenta]
   , icount   = 8
   , irarity  = [(1, 1)]
   , iverbHit = "excite"
-  , iweight  = 0  -- delay of 1 turn at the start, to read the text
+  , iweight  = 0  -- delay of 1 turn at the start, to easily read the text
   , idamage  = toDmg 0
   , iaspects = []
   , ieffects = [toOrganActorTurn "resolute" (5 + 1 `d` 2), DropBestWeapon]
   , ifeature = [toVelocity 5, Fragile, Identified, Blast]  -- 1 step, 1 turn
-  , idesc    = "The holographic clip shows a couple that laughs, watches in silence Saturn's rings through a huge window, throws treats to a little rhino frolicking in reduced gravity, runs through corridors wearing alien masks in a mock chase. An exited female voice proclaims: \"...safety and security, comfort, imagination...for each of your senses...robot servants...personalized life support zones...\""
-      -- long text, so the holo lingers for 2 turns, to make it easy to read;
-      -- if it was very important text, that method would still not be enough
+  , idesc    = "The fitful holographic clip shows a couple that laughs, watches in silence Saturn's rings through a huge window, throws treats to a little rhino frolicking in reduced gravity, runs through corridors wearing alien masks in a mock chase. An exited female voice proclaims: \"...safety and security, comfort, imagination...for each of your senses...robot servants...personalized life support zones...\""
   , ikit     = []
+  }
+outerAdHologram = cruiseAdHologram
+  {  iname    = "cruise ad hologram"
+  , ifreq    = [("ad lore", 10)]
+  , icount   = 4
+  , ieffects = []  -- weak, 4 particles, no effect
+  , idesc    = "A composed young man in a hat looks straight into your eyes with unwavering stare and extols the opportunities, freedom and excitement of the outer Solar System frontier life with unshakable conviction. Names of Neptune-area realtors scroll at the bottom in small font with oversize serifs."
+  }
+victoriaClassHologram = outerAdHologram
+  { iname    = "space fleet hologram"
+  , ifreq    = [("allure lore", 20)]
+  , iflavour = zipFancy [BrBlue]
+  , icount   = 1
+  , iverbHit = "bore"
+  , idesc    = "A series of huge spaceships zoom in and out of view in a solemn procession. Male voice drones over crackling static: Victoria-class cruise liners are the largest passenger ships ever serially manufactured and the third largest in general, including transport vessel series. Bigger ships are sometimes cobbled ad-hoc, by wiring together cheap modules and primitive cargo hulls welded in space, but they are rarely certified for public commercial operation. Victoria-class passenger cruisers are produced for over three decades now, in slowly evolving configurations, one per two years on average. The design is as conservative, as possible. A disc large enough for comfortable artificial gravity through constant spinning. Fusion reactor in the middle of the axle powering engines protruding far back from the rear plane. Meteor shield at the front. Numerous redundant rechargeable power sources and autonomous life support areas, eliminating the \"all locked in a single can, breathing the same air\" space travel grievance. Actually, everything is redundant twice over, due to strict regulations. To sum it up, these are the most boring spaceships in the galaxy."
+  }
+allureIntroHologram = victoriaClassHologram
+  { iname    = "spaceship hologram"
+  , ifreq    = [("allure lore", 10)]
+  , idesc    = "A wavy 3D wireframe of a spaceship rotates ponderously. Male voice drones: Allure of the Stars belongs to a long line of luxurious orbit-to-orbit cruise liners, the Victoria-class. It was named after the largest passenger sea vessel of the early 21st century and it shares the grandeur and the extravagance. This particular Victoria-class specimen was designed for long cruises to gas giants, their moons and the moon cities (and their notorious saloons). It has a meteor shield in the form of a flat, multi-layer. unpressurized cargo bay covering the front plane. Such extra cargo capacity enables long space journeys with no limits on resource usage. On shorter legs of the journeys it also enables opportunistic mass cargo transport (in accordance to strictest regulations and completely isolated from the airflow on passenger decks), which is always in demand at the profusely productive, but scarcely populated Solar System frontier. It also makes the unit much thicker than usual: the length from the tip of the cargo bay to the end of the engines is almost two thirds of the diameter of the disk. All in all, it is a particularly sturdy and self-sufficient member of a class famed for exceptional resilience and safety."
   }
