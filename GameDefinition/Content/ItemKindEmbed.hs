@@ -42,7 +42,7 @@ stairsUp = ItemKind
   , iaspects = []
   , ieffects = [Ascend True]
   , ifeature = [Identified, Durable]
-  , idesc    = "Stairs that rise towards escape."
+  , idesc    = "Stairs that rise towards the spaceship core."
   , ikit     = []
   }
 stairsDown = stairsUp
@@ -50,7 +50,7 @@ stairsDown = stairsUp
   , iname    = "staircase down"
   , ifreq    = [("staircase down", 1)]
   , ieffects = [Ascend False]
-  , idesc    = ""
+  , idesc    = "Stairs that decend towards the outer ring."
   }
 escape = stairsUp
   { isymbol  = 'E'
@@ -58,11 +58,11 @@ escape = stairsUp
   , ifreq    = [("escape", 1)]
   , iflavour = zipPlain [BrYellow]
   , ieffects = [Escape]
-  , idesc    = ""  -- generic: outdoors, in spaceship, etc.
+  , idesc    = ""  -- generic: moon outdoors, in spaceship, everywhere
   }
 terrainCache = stairsUp
   { isymbol  = 'O'
-  , iname    = "treasure cache"
+  , iname    = "intact deposit box"
   , ifreq    = [("treasure cache", 1)]
   , iflavour = zipPlain [BrBlue]
   , ieffects = [CreateItem CGround "useful" TimerNone]
@@ -70,7 +70,7 @@ terrainCache = stairsUp
   }
 terrainCacheTrap = ItemKind
   { isymbol  = '^'
-  , iname    = "treasure cache trap"
+  , iname    = "anti-burglary protection"
   , ifreq    = [("treasure cache trap", 1)]
   , iflavour = zipPlain [Red]
   , icount   = 1
@@ -84,7 +84,7 @@ terrainCacheTrap = ItemKind
                       , ELabel "", ELabel "", ELabel ""
                       , ELabel "", ELabel "" ]]
   , ifeature = [Identified]  -- not Durable, springs at most once
-  , idesc    = "It's a trap!"
+  , idesc    = ""
   , ikit     = []
   }
 signboardExit = ItemKind
@@ -98,16 +98,16 @@ signboardExit = ItemKind
   , iweight  = 10000
   , idamage  = toDmg 0
   , iaspects = []
-  , ieffects = [DetectExit 100]
+  , ieffects = [DetectExit 100]  -- low tech, hence fully operational
   , ifeature = [Identified, Durable]
-  , idesc    = "A battered sign, carved by unknown hands."
+  , idesc    = "Mandatory emergency exit information in low-tech form."
   , ikit     = []
   }
 signboardMap = signboardExit
   { iname    = "signboard with a map"
   , ifreq    = [("signboard", 20)]
-  , ieffects = [Detect 10]
-  , idesc    = ""
+  , ieffects = [Detect 10]  -- low tech, hence fully operational
+  , idesc    = "Detailed schematics for the maintenance crew."
   }
 fireSmall = ItemKind
   { isymbol  = '%'
@@ -170,7 +170,7 @@ rubble = ItemKind
                       , ELabel "", ELabel "", ELabel ""
                       , ELabel "", ELabel "", ELabel "" ]]
   , ifeature = [Identified, Durable]
-  , idesc    = "Broken chunks of rock and glass."
+  , idesc    = "Broken chunks of foam concrete and glass."
   , ikit     = []
   }
 staircaseTrapUp = ItemKind
@@ -343,7 +343,7 @@ ruinedFirstAidKit = ItemKind
                        , toOrganActorTurn "drunk" (20 + 1 `d` 5) ]
                , CreateItem CInv "needle" TimerNone ]
   , ifeature = [Identified]  -- not Durable, springs at most once
-  , idesc    = ""
+  , idesc    = ""  -- regulations require
   , ikit     = []
   }
 wall3dBillboard = ItemKind
