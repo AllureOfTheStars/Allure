@@ -35,7 +35,7 @@ ruinedFirstAidKit,           wall3dBillboard, jewelryDisplay, liftUp, liftDown, 
 -- and foregoing the fun of guessing how to find entrance to a disjoint part
 -- of the level by bumping the least number of secret walls.
 scratchOnWall = ItemKind
-  { isymbol  = '*'
+  { isymbol  = '?'
   , iname    = "scratch on wall"
   , ifreq    = [("scratch on wall", 1)]
   , iflavour = zipPlain [BrBlack]
@@ -117,7 +117,7 @@ treasureCacheTrap = ItemKind
   , ikit     = []
   }
 signboardExit = ItemKind
-  { isymbol  = 'O'
+  { isymbol  = '?'
   , iname    = "signboard with exits"
   , ifreq    = [("signboard", 80)]
   , iflavour = zipPlain [BrMagenta]
@@ -280,7 +280,7 @@ staircaseTrapDown = staircaseTrapUp
   , idesc    = "A treacherous slab, to teach those who are too proud."
   }
 pulpit = ItemKind
-  { isymbol  = '%'
+  { isymbol  = '?'
   , iname    = "VR harness"
   , ifreq    = [("pulpit", 1)]
   , iflavour = zipFancy [BrYellow]
@@ -303,7 +303,7 @@ pulpit = ItemKind
 -- * Allure-specific
 
 ruinedFirstAidKit = ItemKind
-  { isymbol  = '*'
+  { isymbol  = '?'
   , iname    = "ruined first aid kit"
   , ifreq    = [("ruined first aid kit", 1)]
   , iflavour = zipPlain [BrGreen]
@@ -313,7 +313,7 @@ ruinedFirstAidKit = ItemKind
   , iweight  = 1000
   , idamage  = toDmg 0
   , iaspects = []
-  , ieffects = [ Temporary "inhale the last whiff of chemicals from ruined first aid kit"
+  , ieffects = [ Temporary "inspect a tattered CPR instruction soaked in a residue of oily drugs"
                , OneOf [ toOrganNone "poison resistant"
                        , toOrganNone "slow resistant"
                        , toOrganActorTurn "drunk" (20 + 1 `d` 5) ]
