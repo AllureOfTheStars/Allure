@@ -21,10 +21,10 @@ import Game.LambdaHack.Content.ItemKind
 
 embeds :: [ItemKind]
 embeds =
-  [scratchOnWall, obscenePictograms, subtleFresco, terrainCache, terrainCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, doorwayTrap,  stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit]
+  [scratchOnWall, obscenePictograms, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, doorwayTrap,  stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit]
       -- Allure-specific
       ++ [ruinedFirstAidKit, wall3dBillboard, jewelryDisplay, liftUp, liftDown, liftTrap, liftTrap2]
-scratchOnWall,    obscenePictograms, subtleFresco, terrainCache, terrainCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, doorwayTrap,  stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit :: ItemKind
+scratchOnWall,    obscenePictograms, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, doorwayTrap,  stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit :: ItemKind
 -- Allure-specific
 ruinedFirstAidKit,           wall3dBillboard, jewelryDisplay, liftUp, liftDown, liftTrap, liftTrap2 :: ItemKind
 
@@ -89,7 +89,7 @@ subtleFresco = ItemKind
   , idesc    = "Expensive yet tasteful."
   , ikit     = []
   }
-terrainCache = stairsUp
+treasureCache = stairsUp
   { isymbol  = 'O'
   , iname    = "intact deposit box"
   , ifreq    = [("treasure cache", 1)]
@@ -97,7 +97,7 @@ terrainCache = stairsUp
   , ieffects = [CreateItem CGround "useful" TimerNone]
   , idesc    = ""
   }
-terrainCacheTrap = ItemKind
+treasureCacheTrap = ItemKind
   { isymbol  = '^'
   , iname    = "anti-theft protection"
   , ifreq    = [("treasure cache trap", 1)]
@@ -340,7 +340,7 @@ wall3dBillboard = ItemKind
   , idesc    = "One can still make out excited moves of bleached shapes."
   , ikit     = []
   }
-jewelryDisplay = terrainCache
+jewelryDisplay = treasureCache
   { iname    = "jewelry display"
   , ifreq    = [("jewelry display", 1)]
   , ieffects = [CreateItem CGround "any jewelry" TimerNone]
