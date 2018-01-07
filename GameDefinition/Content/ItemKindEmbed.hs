@@ -62,7 +62,7 @@ obscenePictogram = ItemKind
   , idamage  = toDmg 0
   , iaspects = [Timeout 7]
   , ieffects = [ Temporary "enter unexplainable rage at a glimpse of the inscrutable graffiti"
-               , RefillCalm (-20)
+               , Recharging $ RefillCalm (-20)
                , Recharging $ OneOf
                    [ toOrganActorTurn "strengthened" (3 + 1 `d` 3)
                    , CreateItem CInv "sandstone rock" TimerNone ] ]
