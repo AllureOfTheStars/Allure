@@ -21,10 +21,10 @@ import Game.LambdaHack.Content.ItemKind
 
 embeds :: [ItemKind]
 embeds =
-  [scratchOnWall, obscenePictograms, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, doorwayTrap,  stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit]
+  [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, doorwayTrap,  stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit]
       -- Allure-specific
       ++ [ruinedFirstAidKit, wall3dBillboard, jewelryDisplay, liftUp, liftDown, liftTrap, liftTrap2]
-scratchOnWall,    obscenePictograms, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, doorwayTrap,  stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit :: ItemKind
+scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, doorwayTrap,  stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit :: ItemKind
 -- Allure-specific
 ruinedFirstAidKit,           wall3dBillboard, jewelryDisplay, liftUp, liftDown, liftTrap, liftTrap2 :: ItemKind
 
@@ -50,10 +50,10 @@ scratchOnWall = ItemKind
   , idesc    = "A seemingly random series of scratches, carved deep into the wall."
   , ikit     = []
   }
-obscenePictograms = ItemKind
+obscenePictogram = ItemKind
   { isymbol  = '*'
   , iname    = "repulsing graffiti"
-  , ifreq    = [("obscene pictograms", 1)]
+  , ifreq    = [("obscene pictogram", 1)]
   , iflavour = zipPlain [BrMagenta]
   , icount   = 1
   , irarity  = [(1, 1)]
