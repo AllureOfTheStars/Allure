@@ -220,9 +220,7 @@ standardKeys = KeyKind $ map evalKeyDef $
   , ("RightButtonRelease", mouseRMB)
   , ("C-LeftButtonRelease", replaceDesc "" mouseRMB)  -- Mac convention
   , ( "C-RightButtonRelease"
-    , ( [CmdMouse]
-      , "open or close door"
-      , AlterWithPointer $ closeDoorTriggers ++ openDoorTriggers ) )
+    , ([CmdMouse], "open or close or alter at pointer", AlterWithPointer []) )
   , ("MiddleButtonRelease", mouseMMB)
   , ("WheelNorth", ([CmdMouse], "swerve the aiming line", Macro ["+"]))
   , ("WheelSouth", ([CmdMouse], "unswerve the aiming line", Macro ["-"]))
@@ -283,14 +281,4 @@ closeDoorTriggers =
   , AlterFeature { verb = "close"
                  , object = "door"
                  , feature = TK.CloseTo "closed door" }
-  ]
-
-openDoorTriggers :: [Trigger]
-openDoorTriggers =
-  [ AlterFeature { verb = "open"
-                 , object = "door"
-                 , feature = TK.OpenTo "open door" }
-  , AlterFeature { verb = "open"
-                 , object = "door"
-                 , feature = TK.OpenTo "open door" }
   ]
