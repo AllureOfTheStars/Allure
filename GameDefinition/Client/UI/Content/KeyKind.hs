@@ -65,9 +65,7 @@ standardKeys = KeyKind $ map evalKeyDef $
                     , "cycle x-hair among enemies"
                     , AimEnemy ))
       -- not necessary, because flinging from item menu enters aiming mode
-  , ("c", ( [CmdMinimal, CmdMove]
-          , descTs closeDoorTriggers
-          , AlterDir closeDoorTriggers ))
+  , ("C-c", ([CmdMinimal, CmdMove], "open or close or alter", AlterDir []))
   , ("+", ([CmdMinimal, CmdAim], "swerve the aiming line", EpsIncr True))
 
   -- Item menu, first part of item use commands
@@ -77,15 +75,15 @@ standardKeys = KeyKind $ map evalKeyDef $
   , ("f", addCmdCategory CmdItemMenu $ projectA flingTs)
   , ("C-f", addCmdCategory CmdItemMenu
             $ replaceDesc "fling without aiming" $ projectI flingTs)
-  , ("a", addCmdCategory CmdItemMenu $ applyI [ApplyItem
-            { verb = "apply"
-            , object = "consumable"
-            , symbol = ' ' }])
+  , ("a", addCmdCategory CmdItemMenu $ applyI [TriggerItem
+            { tiverb = "apply"
+            , tiobject = "consumable"
+            , tisymbol = ' ' }])
   , ("C-a", addCmdCategory CmdItemMenu
-            $ replaceDesc "apply and keep choice" $ applyIK [ApplyItem
-              { verb = "apply"
-              , object = "consumable"
-              , symbol = ' ' }])
+            $ replaceDesc "apply and keep choice" $ applyIK [TriggerItem
+              { tiverb = "apply"
+              , tiobject = "consumable"
+              , tisymbol = ' ' }])
   , ("p", moveItemTriple [CGround, CEqp, CSha] CInv
                          "item" False)
   , ("e", moveItemTriple [CGround, CInv, CSha] CEqp
@@ -97,6 +95,7 @@ standardKeys = KeyKind $ map evalKeyDef $
   , ("Tab", ( [CmdMove]
             , "cycle among party members on the level"
             , MemberCycle ))
+  , ("c", ([CmdMove], descTs closeDoorTriggers, AlterDir closeDoorTriggers))
   , ("=", ( [CmdMove], "select (or deselect) party member", SelectActor) )
   , ("_", ([CmdMove], "deselect (or select) all on the level", SelectNone))
   , ("semicolon", ( [CmdMove]
@@ -141,25 +140,25 @@ standardKeys = KeyKind $ map evalKeyDef $
   , ("~", ( [CmdItem]
           , "display known lore"
           , ChooseItemMenu (MLore SItem) ))
-  , ("q", addCmdCategory CmdItem $ applyI [ApplyItem
-            { verb = "quaff"
-            , object = "drink"
-            , symbol = '!' }])
-  , ("r", addCmdCategory CmdItem $ applyI [ApplyItem
-            { verb = "read"
-            , object = "chip"
-            , symbol = '?' }])
+  , ("q", addCmdCategory CmdItem $ applyI [TriggerItem
+            { tiverb = "quaff"
+            , tiobject = "dring"
+            , tisymbol = '!' }])
+  , ("r", addCmdCategory CmdItem $ applyI [TriggerItem
+            { tiverb = "read"
+            , tiobject = "chip"
+            , tisymbol = '?' }])
 
   , ("t", addCmdCategory CmdItem $ projectA
-            [ ApplyItem { verb = "throw"
-                        , object = "missile"
-                        , symbol = '{' }
-            , ApplyItem { verb = "throw"
-                        , object = "missile"
-                        , symbol = '}' } ])
---  , ("z", projectA [ApplyItem { verb = "zap"
---                              , object = "wand"
---                              , symbol = '-' }])
+            [ TriggerItem { tiverb = "throw"
+                          , tiobject = "missile"
+                          , tisymbol = '{' }
+            , TriggerItem { tiverb = "throw"
+                          , tiobject = "missile"
+                          , tisymbol = '}' } ])
+--  , ("z", projectA [TriggerItem { tiverb = "zap"
+--                                , tiobject = "wand"
+--                                , tisymbol = '-' }])
 
   -- Dashboard, in addition to commands marked above
   , ("safeD0", ([CmdInternal, CmdDashboard], "", Cancel))  -- blank line
@@ -273,12 +272,12 @@ standardKeys = KeyKind $ map evalKeyDef $
   ]
   ++ map defaultHeroSelect [0..6]
 
-closeDoorTriggers :: [Trigger]
+closeDoorTriggers :: [TriggerTile]
 closeDoorTriggers =
-  [ AlterFeature { verb = "close"
-                 , object = "door"
-                 , feature = TK.CloseTo "closed door" }
-  , AlterFeature { verb = "close"
-                 , object = "door"
-                 , feature = TK.CloseTo "closed door" }
+  [ TriggerTile { ttverb = "close"
+                , ttobject = "door"
+                , ttfeature = TK.CloseTo "closed door" }
+  , TriggerTile { ttverb = "close"
+                , ttobject = "door"
+                , ttfeature = TK.CloseTo "closed door" }
   ]
