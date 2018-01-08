@@ -31,14 +31,14 @@ cdefs = ContentDef
       [unknown, hardRock, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorArenaShade ]
       ++ map makeDarkColor ldarkColorable
       -- Allure-specific
-      ++ [oriel, outerHullWall, doorlessWall, machineWall, wallObscuredSafety, wallObscured3dBillboard, rock, pillarCache2, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown]
+      ++ [oriel, outerHullWall, doorlessWall, machineWall, wallObscuredSafety, wallObscured3dBillboard, rock, pillarCache2, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown, floorWindow]
   }
 unknown,        hardRock, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorArenaShade :: TileKind
 -- Allure-specific
-oriel,           outerHullWall, doorlessWall, machineWall, wallObscuredSafety, wallObscured3dBillboard, rock, pillarCache2, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown :: TileKind
+oriel,           outerHullWall, doorlessWall, machineWall, wallObscuredSafety, wallObscured3dBillboard, rock, pillarCache2, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown, floorWindow :: TileKind
 
 ldarkColorable :: [TileKind]
-ldarkColorable = [tree, bush, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem]
+ldarkColorable = [tree, bush, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorWindow]
 
 -- Symbols to be used:
 --         LOS    noLOS
@@ -72,7 +72,7 @@ unknown = TileKind  -- needs to have index 0 and alter 1
   , tcolor   = defFG
   , tcolor2  = defFG
   , talter   = 1
-  , tfeature = [Dark]
+  , tfeature = [Dark, Indistinct]
   }
 hardRock = TileKind
   { tsymbol  = '#'
@@ -478,7 +478,7 @@ floorCorridor = TileKind
   }
 floorArena = floorCorridor
   { tfreq    = [ ("floorArenaLit", 1), ("rubbleSpiceOrNot", 30)
-               , ("arenaSetLit", 96), ("emptySet", 94), ("zooSet", 1000) ]
+               , ("arenaSetLit", 96), ("emptySet", 90), ("zooSet", 1000) ]
   }
 floorNoise = floorArena
   { tname    = "oily floor"
@@ -508,7 +508,7 @@ floorRed = floorCorridor
   , tfreq    = [("emergency walkway", 1), ("trailLit", 20)]
   , tcolor   = BrRed
   , tcolor2  = Red
-  , tfeature = Trail : tfeature floorCorridor  -- no Indistinct
+  , tfeature = [Trail, Walkable, Clear]
   }
 floorBlue = floorRed
   { tname    = "transport route"
@@ -634,6 +634,14 @@ stairsLiftTrappedDown = stairsTrappedDown
 escapeSpaceshipDown = escapeDown
   { tname    = "airlock to the shuttle"
   , tfreq    = [("escape spaceship down", 1)]
+  }
+floorWindow = floorArena
+  { tsymbol  = ' '  -- story-wise it's transparent, hence the symbol
+  , tname    = "floor window"
+  , tfreq    = [("emptySet", 4)]
+  , tcolor   = defFG
+  , tcolor2  = defFG
+  , tfeature = Embed "black starry sky" : tfeature floorCorridor
   }
 
 -- ** Walkable
