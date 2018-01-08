@@ -540,7 +540,7 @@ oriel = TileKind
   , tcolor   = White
   , tcolor2  = Black
   , talter   = maxBound  -- impenetrable
-  , tfeature = [Dark, Indistinct]
+  , tfeature = [Embed "black starry sky", Dark, Indistinct]
   }
 outerHullWall = hardRock
   { tname    = "outer hull wall"

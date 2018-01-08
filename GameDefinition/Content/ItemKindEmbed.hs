@@ -23,10 +23,10 @@ embeds :: [ItemKind]
 embeds =
   [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, doorwayTrap,  stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit]
       -- Allure-specific
-      ++ [ruinedFirstAidKit, wall3dBillboard, jewelryDisplay, liftUp, liftDown, liftTrap, liftTrap2]
+      ++ [blackStarrySky, ruinedFirstAidKit, wall3dBillboard, jewelryDisplay, liftUp, liftDown, liftTrap, liftTrap2]
 scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, doorwayTrap,  stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit :: ItemKind
 -- Allure-specific
-ruinedFirstAidKit,           wall3dBillboard, jewelryDisplay, liftUp, liftDown, liftTrap, liftTrap2 :: ItemKind
+blackStarrySky,           ruinedFirstAidKit, wall3dBillboard, jewelryDisplay, liftUp, liftDown, liftTrap, liftTrap2 :: ItemKind
 
 -- Make sure very few walls are substantially useful, e.g., caches,
 -- and none that are secret. Otherwise the player will spend a lot of time
@@ -302,6 +302,23 @@ pulpit = ItemKind
 
 -- * Allure-specific
 
+blackStarrySky = ItemKind
+  { isymbol  = ' '
+  , iname    = "black starry sky"
+  , ifreq    = [("black starry sky", 1)]
+  , iflavour = zipPlain [Black]
+  , icount   = 1
+  , irarity  = [(1, 1)]
+  , iverbHit = "awe"
+  , iweight  = 1000
+  , idamage  = toDmg 0
+  , iaspects = []
+  , ieffects = [ Temporary "look into the void and it looks back"
+               , OneOf [RefillCalm 5, RefillCalm (-5)] ]
+  , ifeature = [Identified, Durable]
+  , idesc    = ""
+  , ikit     = []
+  }
 ruinedFirstAidKit = ItemKind
   { isymbol  = '?'
   , iname    = "ruined first aid kit"
