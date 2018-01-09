@@ -169,7 +169,7 @@ hiEscapist = ( [(HiLoot, 1)]  -- loot matters a little bit
 
 playerRobot = Player
   { fname = "Robot Anarchy"
-  , fgroups = ["robot", "mobile robot", "immobile robot"]
+  , fgroups = ["robot", "mobile robot", "immobile robot", "construction robot"]
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False
