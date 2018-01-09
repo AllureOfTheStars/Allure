@@ -45,7 +45,7 @@ rogue = CaveKind
   , cdarkChance   = 1 `d` 54 + 1 `dL` 20
   , cnightChance  = 51  -- always night
   , cauxConnects  = 1%2
-  , cmaxVoid      = 1%6
+  , cmaxVoid      = 1%8
   , cminStairDist = 15
   , cextraStairs  = 1 + 1 `d` 2
   , cdoorChance   = 3%4
@@ -144,7 +144,7 @@ empty = rogue
   { csymbol       = 'E'
   , cname         = "Construction site"
   , cfreq         = [("caveEmpty", 1)]
-  , cgrid         = DiceXY 1 1
+  , cgrid         = DiceXY 2 1
   , cminPlaceSize = DiceXY 12 12
   , cmaxPlaceSize = DiceXY 48 32  -- favour large rooms
   , cdarkChance   = 1 `d` 100 + 1 `dL` 100
@@ -226,8 +226,8 @@ shallow2rogue = rogue
 shallow2arena = arena
   { cfreq         = [("shallow random 2", 100)]
   , cactorCoeff   = cactorCoeff arena `div` 2
-  , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq empty
-  , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
+  , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq arena
+  , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq arena
   , cdesc         = ""
   }
 shallow2empty = empty
@@ -235,9 +235,10 @@ shallow2empty = empty
   , cactorCoeff   = cactorCoeff empty `div` 2
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq empty
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
+  , cdefTile      = "emptyExitSet"  -- avoid floor windows
   , cdesc         = ""
   }
-shallow1empty = shallow2empty  -- TODO: replace some rooms with oriels?
+shallow1empty = empty
   { cname         = "Outermost deck"
   , cfreq         = [("outermost", 100)]
   , cactorCoeff   = 4  -- shallower than LH, so fewer immediate actors, so boost
@@ -248,13 +249,16 @@ shallow1empty = shallow2empty  -- TODO: replace some rooms with oriels?
       -- enough of a continuity. The faucets on lvl 1 are not OP and can't be
       -- abused, because they spawn less and less often and also HP doesn't
       -- effectively accumulate over max.
+  , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
   , couterFenceTile = "oriels fence"
-  , cdesc         = "The black sky outside can be seen through the oriels."
+  , cdesc         = "The black sky outside sucks light through the oriels."
   }
 emptyExit = empty
   { cname         = "Shuttle servicing area"
   , cfreq         = [("caveEmptyExit", 1)]
-  , cdarkCorTile  = "trailLit"  -- flavour
+  , cdefTile      = "emptyExitSet"
+  , cdarkCorTile  = "transport route"
+  , clitCorTile   = "transport route"
   , couterFenceTile = "noise fence"  -- for flavour
   , cescapeGroup  = Just "escape spaceship down"
   , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among neglected cranes and airlocks."
