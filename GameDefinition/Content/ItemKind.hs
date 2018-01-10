@@ -594,7 +594,7 @@ scroll5 = scroll  -- needs to be common to show at least a portion of effects
   { irarity  = [(10, 30)]
   , ieffects = [ Impress
                , OneOf [ Teleport 20, Ascend False, Ascend True
-                       , Summon "hero" 1, Summon "mobile animal" 2
+                       , Summon "hero" 1, Summon "mobile animal" $ 1 `d` 2
                        , Detect 40, RefillCalm (-100)
                        , CreateItem CGround "useful" TimerNone ] ]
   }
@@ -759,7 +759,7 @@ necklace2 = necklace
       -- just too nasty to call it useful
   , irarity  = [(1, 1)]
   , iaspects = [Timeout 30]
-  , ieffects = [ Recharging (Summon "mobile animal" 2)
+  , ieffects = [ Recharging (Summon "mobile animal" $ 1 `d` 2)
                , Recharging (Explode "waste")
                , Recharging Impress
                , Recharging (DropItem 1 maxBound COrgan "temporary condition") ]
@@ -1309,7 +1309,7 @@ constructionHooter = scroll
   , iflavour = zipPlain [BrRed]
   , irarity  = [(1, 1)]
   , iaspects = []
-  , ieffects = [Summon "construction robot" 1]  -- beware of chain summon
+  , ieffects = [Summon "construction robot" $ 1 `dL` 2]
   , ifeature = Identified : ifeature scroll
   , idesc    = "The single-use electronic overdrive hooter that construction robots use to warn about danger and call help in extreme emergency."
   , ikit     = []

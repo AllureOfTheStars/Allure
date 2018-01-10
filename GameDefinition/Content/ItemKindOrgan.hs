@@ -213,7 +213,7 @@ screechingBeak = fist
   , iverbHit = "peck"
   , idamage  = toDmg $ 2 `d` 1
   , iaspects = [Timeout $ 6 - 1 `dL` 3]
-  , ieffects = [Recharging $ Summon "scavenger" 1]
+  , ieffects = [Recharging $ Summon "scavenger" $ 1 `dL` 3]
   , idesc    = "Both a weapon and a beacon, calling more scavengers to the meal."
   }
 largeTail = fist
@@ -443,7 +443,7 @@ wasteContainer = armoredSkin
   , iverbHit = "spill over"
   , iaspects = [Timeout $ (1 + 1 `d` 2) * 30]
   , ieffects = [ Periodic
-               , Recharging (Summon "mobile animal" 1)
+               , Recharging (Summon "mobile animal" $ 1 `dL` 2)
                , Recharging (RefillHP 1)
                , Recharging (Explode "waste") ]
   , idesc    = ""
