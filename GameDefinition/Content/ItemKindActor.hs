@@ -238,7 +238,7 @@ torsor = ItemKind
   , iaspects = [ AddMaxHP 300, AddMaxCalm 100, AddSpeed 6, AddNocto 2
                , AddAggression 3
                , AddAbility AbProject 2, AddAbility AbApply 1
-               , AddAbility AbAlter (-1) ]  -- can't switch levels, the boss
+               , AddAbility AbAlter 1]  -- can't exit the gated level, the boss
   , ieffects = [Unique]
   , ifeature = [Durable, Identified]
   , idesc    = "The mind, the heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw, grinding teeth and tensing fangs."
@@ -697,7 +697,7 @@ homeRobot = ItemKind
   , iweight  = 80000
   , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 10, AddMaxCalm 30, AddSpeed 20, AddNocto 2
-               , AddAbility AbProject (-1) ]
+               , AddAbility AbProject (-1), AddAbility AbAlter 1 ]  -- doors
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Once a timid household robot, now sufficiently adapted to survive in the deadly environment."
@@ -736,7 +736,7 @@ lightRobot = ItemKind
   , iweight  = 80000
   , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 15, AddMaxCalm 60, AddSpeed 30, AddNocto 2
-               , AddAbility AbProject 2 ]
+               , AddAbility AbProject 2, AddAbility AbAlter 2 ]  -- uses stairs
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Interior and exterior decoration robot. Strongly fancies deep reds recently."
@@ -756,7 +756,7 @@ heavyRobot = ItemKind
   , iweight  = 800000
   , idamage  = toDmg 0
   , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 20, AddNocto 2
-               , AddAbility AbProject 2 ]
+               , AddAbility AbProject 2, AddAbility AbAlter 2 ]  -- uses stairs
   , ieffects = []
   , ifeature = [Durable, Identified]
   , idesc    = "Heavy multi-purpose construction robot. Excels at discharging, dismantling and demolition."
@@ -776,8 +776,10 @@ cleanerRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = toDmg 0
-  , iaspects = [AddMaxHP 120, AddMaxCalm 60, AddSpeed 18, AddNocto 2]
-                 -- can't exit the gated level, a miniboss
+  , iaspects = [ AddMaxHP 120, AddMaxCalm 60, AddSpeed 18, AddNocto 2
+               , AddAbility AbAlter 3 ]
+                   -- a miniboss; can remove rubble and ice,
+                   -- but can't exit the gated level
   , ieffects = [Unique]
   , ifeature = [Durable, Identified]
   , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."
