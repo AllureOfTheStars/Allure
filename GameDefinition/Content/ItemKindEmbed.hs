@@ -65,7 +65,7 @@ obscenePictogram = ItemKind
                , Recharging $ RefillCalm (-20)
                , Recharging $ OneOf
                    [ toOrganActorTurn "strengthened" (3 + 1 `d` 3)
-                   , CreateItem CInv "sandstone rock" TimerNone ] ]
+                   , CreateItem CInv "sandstone rock" timerNone ] ]
   , ifeature = [Identified, Durable]
   , idesc    = ""
   , ikit     = []
@@ -94,7 +94,7 @@ treasureCache = stairsUp
   , iname    = "intact deposit box"
   , ifreq    = [("treasure cache", 1)]
   , iflavour = zipPlain [BrBlue]
-  , ieffects = [CreateItem CGround "useful" TimerNone]
+  , ieffects = [CreateItem CGround "useful" timerNone]
   , idesc    = ""
   }
 treasureCacheTrap = ItemKind
@@ -159,7 +159,7 @@ fireBig = fireSmall
   , iname    = "big fire"
   , ifreq    = [("big fire", 1)]
   , ieffects = [ Burn 2, Explode "spark"
-               , CreateItem CInv "wooden torch" TimerNone ]
+               , CreateItem CInv "wooden torch" timerNone ]
   , ifeature = [Identified, Durable]
   , idesc    = "Glowing with light and warmth."
   , ikit     = []
@@ -195,7 +195,7 @@ rubble = ItemKind
   , iaspects = []
   , ieffects = [OneOf [ Explode "glass piece", Explode "waste"
                       , Summon "animal" $ 1 `dL` 2, toOrganNone "poisoned"
-                      , CreateItem CGround "useful" TimerNone
+                      , CreateItem CGround "useful" timerNone
                       , ELabel "", ELabel "", ELabel ""
                       , ELabel "", ELabel "", ELabel "" ]]
   , ifeature = [Identified, Durable]
@@ -290,7 +290,7 @@ pulpit = ItemKind
   , iweight  = 10000
   , idamage  = toDmg 0
   , iaspects = []
-  , ieffects = [ CreateItem CGround "any scroll" TimerNone
+  , ieffects = [ CreateItem CGround "any scroll" timerNone
                , Detect 20
                , Paralyze $ (2 + 1 `dL` 3) * 10
                , toOrganActorTurn "drunk" (20 + 1 `d` 5)
@@ -334,7 +334,7 @@ ruinedFirstAidKit = ItemKind
                , OneOf [ toOrganNone "poison resistant"
                        , toOrganNone "slow resistant"
                        , toOrganActorTurn "drunk" (20 + 1 `d` 5) ]
-               , CreateItem CInv "needle" TimerNone ]
+               , CreateItem CInv "needle" timerNone ]
   , ifeature = [Identified]  -- not Durable, springs at most once
   , idesc    = ""  -- regulations require
   , ikit     = []
@@ -360,7 +360,7 @@ wall3dBillboard = ItemKind
 jewelryDisplay = treasureCache
   { iname    = "jewelry display"
   , ifreq    = [("jewelry display", 1)]
-  , ieffects = [CreateItem CGround "any jewelry" TimerNone]
+  , ieffects = [CreateItem CGround "any jewelry" timerNone]
   , idesc    = ""
   }
 liftUp = stairsUp
