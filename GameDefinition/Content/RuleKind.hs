@@ -7,7 +7,7 @@
 --
 -- | Game rules and assorted game setup data.
 module Content.RuleKind
-  ( cdefs
+  ( content
   ) where
 
 import Prelude ()
@@ -21,19 +21,10 @@ import System.IO (readFile)
 -- Cabal
 import qualified Paths_Allure as Self (getDataFileName, version)
 
-import Game.LambdaHack.Common.ContentDef
 import Game.LambdaHack.Content.RuleKind
 
-cdefs :: ContentDef RuleKind
-cdefs = ContentDef
-  { getSymbol = rsymbol
-  , getName = rname
-  , getFreq = rfreq
-  , validateSingle = validateSingleRuleKind
-  , validateAll = validateAllRuleKind
-  , content = contentFromList
-      [standard]
-  }
+content :: [RuleKind]
+content = [standard]
 
 standard :: RuleKind
 standard = RuleKind

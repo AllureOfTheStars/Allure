@@ -6,7 +6,7 @@
 --
 -- | Game mode definitions.
 module Content.ModeKind
-  ( cdefs
+  ( content
   ) where
 
 import Prelude ()
@@ -16,20 +16,13 @@ import Game.LambdaHack.Common.Prelude
 import qualified Data.IntMap.Strict as IM
 
 import Content.ModeKindPlayer
-import Game.LambdaHack.Common.ContentDef
 import Game.LambdaHack.Common.Dice
 import Game.LambdaHack.Content.ModeKind
 
-cdefs :: ContentDef ModeKind
-cdefs = ContentDef
-  { getSymbol = msymbol
-  , getName = mname
-  , getFreq = mfreq
-  , validateSingle = validateSingleModeKind
-  , validateAll = validateAllModeKind
-  , content = contentFromList
+content :: [ModeKind]
+content =
       [raid, brawl, shootout, escape, zoo, ambush, crawl, crawlSurvival, safari, safariSurvival, battle, battleSurvival, defense, screensaverRaid, screensaverBrawl, screensaverShootout, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverCrawl, screensaverSafari]
-  }
+
 raid,        brawl, shootout, escape, zoo, ambush, crawl, crawlSurvival, safari, safariSurvival, battle, battleSurvival, defense, screensaverRaid, screensaverBrawl, screensaverShootout, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverCrawl, screensaverSafari :: ModeKind
 
 -- What other symmetric (two only-one-moves factions) and asymmetric vs crowd

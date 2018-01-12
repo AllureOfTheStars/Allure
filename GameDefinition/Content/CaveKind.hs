@@ -6,7 +6,7 @@
 --
 -- | Cave properties.
 module Content.CaveKind
-  ( cdefs
+  ( content
   ) where
 
 import Prelude ()
@@ -15,21 +15,14 @@ import Game.LambdaHack.Common.Prelude
 
 import Data.Ratio
 
-import Game.LambdaHack.Common.ContentDef
 import Game.LambdaHack.Common.Dice
 import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.CaveKind
 
-cdefs :: ContentDef CaveKind
-cdefs = ContentDef
-  { getSymbol = csymbol
-  , getName = cname
-  , getFreq = cfreq
-  , validateSingle = validateSingleCaveKind
-  , validateAll = validateAllCaveKind
-  , content = contentFromList
-      [rogue, rogue2, arena, arena2, laboratory, empty, noise, noise2, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1empty, emptyExit, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3]
-  }
+content :: [CaveKind]
+content =
+  [rogue, rogue2, arena, arena2, laboratory, empty, noise, noise2, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1empty, emptyExit, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3]
+
 rogue,        rogue2, arena, arena2, laboratory, empty, noise, noise2, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1empty, emptyExit, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
 
 rogue = CaveKind
