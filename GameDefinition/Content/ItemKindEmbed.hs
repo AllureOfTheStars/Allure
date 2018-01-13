@@ -61,7 +61,7 @@ obscenePictogram = ItemKind
   , iweight  = 1000
   , idamage  = toDmg 0
   , iaspects = [Timeout 7]
-  , ieffects = [ Temporary "enter unexplainable rage at a glimpse of the inscrutable graffiti"
+  , ieffects = [ Recharging $ Temporary "enter unexplainable rage at a glimpse of the inscrutable graffiti"
                , Recharging $ RefillCalm (-20)
                , Recharging $ OneOf
                    [ toOrganActorTurn "strengthened" (3 + 1 `d` 3)
