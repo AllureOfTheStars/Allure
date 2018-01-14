@@ -132,7 +132,8 @@ wallObscuredFrescoed = TileKind
   , tfeature = [ Embed "subtle fresco"
                , HideAs "suspect wall"
                , Indistinct
-               ]
+               ]  -- a bit beneficial, but AI would loop if allowed to trigger
+                  -- so no @ConsideredByAI@
   }
 pillar = TileKind
   { tsymbol  = 'O'
