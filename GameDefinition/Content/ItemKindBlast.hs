@@ -21,11 +21,11 @@ import Game.LambdaHack.Content.ItemKind
 
 blasts :: [ItemKind]
 blasts =
-  [burningOil2, burningOil3, burningOil4, explosionBlast2, explosionBlast10, explosionBlast20, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, glassPiece, smoke, boilingWater, glue, singleSpark, spark, denseShower, sparseShower, protectingBalmMelee, protectingBalmRanged, vulnerabilityBalm, resolutionDust, hasteSpray, slownessMist, eyeDrop, ironFiling, smellyDroplet, eyeShine, whiskeySpray, waste, youthSprinkle, poisonCloud, mistAntiSlow, mistAntidote]
+  [burningOil2, burningOil3, burningOil4, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, violentChemical, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, glassPiece, smoke, boilingWater, glue, singleSpark, spark, denseShower, sparseShower, protectingBalmMelee, protectingBalmRanged, vulnerabilityBalm, resolutionDust, hasteSpray, slownessMist, eyeDrop, ironFiling, smellyDroplet, eyeShine, whiskeySpray, waste, youthSprinkle, poisonCloud, mistAntiSlow, mistAntidote]
   -- Allure-specific
   ++ [cruiseAdHologram, outerAdHologram, victoriaClassHologram, allureIntroHologram]
 
-burningOil2,    burningOil3, burningOil4, explosionBlast2, explosionBlast10, explosionBlast20, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, glassPiece, smoke, boilingWater, glue, singleSpark, spark, denseShower, sparseShower, protectingBalmMelee, protectingBalmRanged, vulnerabilityBalm, resolutionDust, hasteSpray, slownessMist, eyeDrop, ironFiling, smellyDroplet, eyeShine, whiskeySpray, waste, youthSprinkle, poisonCloud, mistAntiSlow, mistAntidote :: ItemKind
+burningOil2,    burningOil3, burningOil4, firecracker2, firecracker3, firecracker4, firecracker5, firecracker6, firecracker7, violentChemical, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, glassPiece, smoke, boilingWater, glue, singleSpark, spark, denseShower, sparseShower, protectingBalmMelee, protectingBalmRanged, vulnerabilityBalm, resolutionDust, hasteSpray, slownessMist, eyeDrop, ironFiling, smellyDroplet, eyeShine, whiskeySpray, waste, youthSprinkle, poisonCloud, mistAntiSlow, mistAntidote :: ItemKind
 -- Allure-specific
 cruiseAdHologram,       outerAdHologram, victoriaClassHologram, allureIntroHologram :: ItemKind
 
@@ -56,29 +56,6 @@ burningOil n = ItemKind
 burningOil2 = burningOil 2  -- 2 steps, 2 turns
 burningOil3 = burningOil 3  -- 3 steps, 2 turns
 burningOil4 = burningOil 4  -- 4 steps, 2 turns
-explosionBlast :: Int -> ItemKind
-explosionBlast n = ItemKind
-  { isymbol  = '*'
-  , iname    = "blast"
-  , ifreq    = [(toGroupName $ "blast" <+> tshow n, 1)]
-  , iflavour = zipPlain [BrBlack]
-  , icount   = 16  -- strong and wide, but few, so not always hits target
-  , irarity  = [(1, 1)]
-  , iverbHit = "tear apart"
-  , iweight  = 1
-  , idamage  = toDmg 0
-  , iaspects = [AddShine $ intToDice $ min 10 n]
-  , ieffects = [RefillHP (- n `div` 2)]
-               ++ [PushActor (ThrowMod (100 * (n `div` 5)) 50)| n >= 10]
-               ++ [DropItem 1 maxBound COrgan "temporary condition" | n >= 10]
-               ++ [DropItem 1 maxBound COrgan "impressed" | n >= 10]  -- shock
-  , ifeature = [toLinger 20, Fragile, Identified, Blast]  -- 4 steps, 1 turn
-  , idesc    = ""
-  , ikit     = []
-  }
-explosionBlast2 = explosionBlast 2
-explosionBlast10 = explosionBlast 10
-explosionBlast20 = explosionBlast 20
 firecracker :: Int -> ItemKind
 firecracker n = ItemKind
   { isymbol  = '*'
@@ -109,6 +86,25 @@ firecracker2 = firecracker 2
 
 -- * Assorted immediate effect blasts
 
+violentChemical = ItemKind
+  { isymbol  = '*'
+  , iname    = "detonation blast"
+  , ifreq    = [("violent chemical", 1)]
+  , iflavour = zipPlain [BrBlack]
+  , icount   = 16  -- strong and wide, but few, so not always hits target
+  , irarity  = [(1, 1)]
+  , iverbHit = "tear apart"
+  , iweight  = 1
+  , idamage  = toDmg 0
+  , iaspects = [AddShine 10]
+  , ieffects = [ RefillHP (-5)  -- deadly
+               , PushActor (ThrowMod 200 50)
+               , DropItem 1 maxBound COrgan "temporary condition"
+               , DropItem 1 maxBound COrgan "impressed" ]  -- shocking
+  , ifeature = [toLinger 20, Fragile, Identified, Blast]  -- 4 steps, 1 turn
+  , idesc    = ""
+  , ikit     = []
+  }
 fragrance = ItemKind
   { isymbol  = '`'
   , iname    = "fragrance"  -- instant, fast fragrance
@@ -651,7 +647,7 @@ mistAntidote = ItemKind
 cruiseAdHologram = ItemKind
   { isymbol  = '`'
   , iname    = "cruise ad hologram"
-  , ifreq    = [("cruise ad hologram", 1), ("ad lore", 20)]
+  , ifreq    = [("cruise ad hologram", 1), ("advertisement", 20)]
   , iflavour = zipFancy [BrMagenta]
   , icount   = 8
   , irarity  = [(1, 1)]
@@ -666,14 +662,14 @@ cruiseAdHologram = ItemKind
   }
 outerAdHologram = cruiseAdHologram
   {  iname    = "cruise ad hologram"
-  , ifreq    = [("ad lore", 10)]
+  , ifreq    = [("advertisement", 10)]
   , icount   = 4
   , ieffects = []  -- weak, 4 particles, no effect
   , idesc    = "A composed young man in a hat looks straight into your eyes with unwavering stare and extols the opportunities, freedom and excitement of the outer Solar System frontier life with unshakable conviction. Names of Neptune-area realtors scroll at the bottom in small font with oversize serifs."
   }
 victoriaClassHologram = outerAdHologram
   { iname    = "space fleet hologram"
-  , ifreq    = [("allure lore", 20)]
+  , ifreq    = [("story-telling", 20)]
   , iflavour = zipFancy [BrBlue]
   , icount   = 1
   , iverbHit = "bore"
@@ -681,6 +677,6 @@ victoriaClassHologram = outerAdHologram
   }
 allureIntroHologram = victoriaClassHologram
   { iname    = "spaceship hologram"
-  , ifreq    = [("allure lore", 10)]
+  , ifreq    = [("story-telling", 10)]
   , idesc    = "A wavy 3D wireframe of a spaceship rotates ponderously. Male voice drones: Allure of the Stars belongs to a long line of luxurious orbit-to-orbit cruise liners, the Victoria-class. It was named after the largest passenger sea vessel of the early 21st century and it shares the grandeur and the extravagance. This particular Victoria-class specimen was designed for long cruises to gas giants, their moons and the moon cities (and their notorious saloons). It has a meteor shield in the form of a flat, multi-layer. unpressurized cargo bay covering the front plane. Such extra cargo capacity enables long space journeys with no limits on resource usage. On shorter legs of the journeys it also enables opportunistic mass cargo transport (in accordance to strictest regulations and completely isolated from the airflow on passenger decks), which is always in demand at the profusely productive, but scarcely populated Solar System frontier. It also makes the unit much thicker than usual: the length from the tip of the cargo bay to the end of the engines is almost two thirds of the diameter of the disk. All in all, it is a particularly sturdy and self-sufficient member of a class famed for exceptional resilience and safety."
   }

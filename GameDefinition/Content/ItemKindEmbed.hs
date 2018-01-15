@@ -294,7 +294,7 @@ pulpit = ItemKind
                , Detect 20
                , Paralyze $ (2 + 1 `dL` 3) * 10
                , toOrganActorTurn "drunk" (20 + 1 `d` 5)
-               , Explode "allure lore" ]
+               , Explode "story-telling" ]
   , ifeature = [Identified]  -- not Durable, springs at most once
   , idesc    = ""
   , ikit     = []
@@ -351,8 +351,8 @@ wall3dBillboard = ItemKind
   , idamage  = toDmg 0
   , iaspects = [Timeout 3]
   , ieffects = [ Recharging $ Temporary "make it cough up a wobbly standalone hologram once more"
-               , Recharging $ OneOf [ Explode "ad lore"
-                                    , Explode "allure lore" ] ]
+               , Recharging $ OneOf [ Explode "advertisement"
+                                    , Explode "story-telling" ] ]
   , ifeature = [Identified, Durable]
   , idesc    = "One can still make out excited moves of bleached shapes."
   , ikit     = []
