@@ -390,7 +390,7 @@ flask11 = flask
                , OnSmash (Explode "eye shine") ]
   }
 flask12 = flask
-  { irarity  = [(1, 14), (10, 10)]
+  { icount   = 1 `d` 3
   , ieffects = [ ELabel "of whiskey"
                , toOrganActorTurn "drunk" (20 + 1 `d` 5)
                , Burn 1, RefillHP 3
@@ -421,7 +421,7 @@ flask15 = flask
                , OnSmash (Explode "poison cloud") ]
   }
 flask16 = flask
-  { irarity  = [(1, 14), (10, 4)]
+  { icount   = 1 `d` 3
   , ieffects = [ ELabel "of weak poison"
                , toOrganNone "poisoned"
                , OnSmash (Explode "poison cloud") ]
@@ -434,7 +434,8 @@ flask17 = flask
                , OnSmash (Explode "anti-slow mist") ]
   }
 flask18 = flask
-  { irarity  = [(10, 4)]
+  { icount   = 1 `d` 2
+  , irarity  = [(10, 4)]
   , ieffects = [ ELabel "of poison resistance"
                , toOrganNone "poison resistant"
                , OnSmash (Explode "antidote mist") ]
@@ -493,7 +494,7 @@ potion4 = potion
                , OnSmash (Explode "healing mist 2") ]
   }
 potion5 = potion  -- needs to be common to show at least a portion of effects
-  { irarity  = [(1, 30), (10, 15)]
+  { icount   = 1 `d` 4
   , ieffects = [ OneOf [ RefillHP 10, RefillHP 5, Burn 5
                        , DropItem 1 maxBound COrgan "poisoned"
                        , toOrganActorTurn "strengthened" (20 + 1 `d` 5) ]
@@ -505,7 +506,8 @@ potion5 = potion  -- needs to be common to show at least a portion of effects
                                 , Explode "blast 10" ]) ]
   }
 potion6 = potion  -- needs to be common to show at least a portion of effects
-  { irarity  = [(1, 5), (10, 20)]
+  { icount   = 1 `d` 3
+  , irarity  = [(1, 3), (10, 10)]
   , ieffects = [ Impress
                , OneOf [ RefillCalm (-60)
                        , RefillHP 20, RefillHP 10, Burn 10
@@ -525,12 +527,14 @@ potion7 = potion
                , OnSmash (Explode "antidote mist") ]
   }
 potion8 = potion
-  { irarity  = [(1, 9)]
+  { icount   = 1 `d` 4
+  , irarity  = [(1, 7)]
   , ieffects = [ DropItem 1 maxBound COrgan "temporary condition"
                , OnSmash (Explode "blast 10") ]
   }
 potion9 = potion
-  { irarity  = [(10, 9)]
+  { icount   = 1 `d` 3
+  , irarity  = [(10, 7)]
   , ieffects = [ DropItem maxBound maxBound COrgan "temporary condition"
                , OnSmash (Explode "blast 20") ]
   }
@@ -581,12 +585,13 @@ scroll3 = scroll
   , ieffects = [Ascend True]
   }
 scroll4 = scroll  -- needs to be common to show at least a portion of effects
-  { irarity  = [(1, 40), (10, 20)]
+  { icount   = 1 `d` 4
   , ieffects = [OneOf [ Teleport 5, RefillCalm 5, InsertMove 5
                       , DetectActor 20, DetectItem 20 ]]
   }
 scroll5 = scroll  -- needs to be common to show at least a portion of effects
-  { irarity  = [(10, 30)]
+  { icount   = 1 `d` 3
+  , irarity  = [(10, 15)]
   , ieffects = [ Impress
                , OneOf [ Teleport 20, Ascend False, Ascend True
                        , Summon "hero" 1, Summon "mobile animal" $ 1 `d` 2
@@ -604,7 +609,8 @@ scroll8 = scroll
   , ieffects = [InsertMove $ 1 + 1 `d` 2 + 1 `dL` 2]
   }
 scroll9 = scroll
-  { irarity  = [(1, 30)]
+  { icount   = 1 `d` 4
+  , irarity  = [(1, 10)]
   , ieffects = [ ELabel "of scientific explanation"
                , Composite [Identify, RefillCalm 10] ]
       -- your most pressing existential concerns are answered scientifically,
