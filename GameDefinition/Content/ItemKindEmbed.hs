@@ -109,9 +109,9 @@ treasureCacheTrap = ItemKind
   , idamage  = toDmg 0
   , iaspects = []
   , ieffects = [OneOf [ toOrganNone "poisoned", Explode "glue"
-                      , ELabel "", ELabel "", ELabel ""
-                      , ELabel "", ELabel "", ELabel ""
-                      , ELabel "", ELabel "" ]]
+                      , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1)
+                      , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1)
+                      , RefillCalm (-1), RefillCalm (-1) ]]
   , ifeature = [Identified]  -- not Durable, springs at most once
   , idesc    = ""
   , ikit     = []
@@ -196,8 +196,8 @@ rubble = ItemKind
   , ieffects = [OneOf [ Explode "glass piece", Explode "waste"
                       , Summon "animal" $ 1 `dL` 2, toOrganNone "poisoned"
                       , CreateItem CGround "useful" timerNone
-                      , ELabel "", ELabel "", ELabel ""
-                      , ELabel "", ELabel "", ELabel "" ]]
+                      , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1)
+                      , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1) ]]
   , ifeature = [Identified, Durable]
   , idesc    = "Broken chunks of foam concrete and glass."
   , ikit     = []
