@@ -621,7 +621,7 @@ scroll9 = scroll
 scroll10 = scroll
   { irarity  = [(10, 20)]
   , ieffects = [ ELabel "of molecular reconfiguration"
-               , Composite [PolyItem, Explode "firecracker 7"] ]
+               , Composite [PolyItem, Explode "firecracker"] ]
   }
 scroll11 = scroll
   { ifreq    = [("ship", 100), ("any scroll", 100)]
