@@ -8,6 +8,9 @@
 play:
 	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --dumpInitRngs
 
+shot:
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --dumpInitRngs --printEachScreen
+
 expose-lore:
 	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --dumpInitRngs --savePrefix know --newGame 2 --gameMode crawl --knowItems --benchmark --noAnim --maxFps 1000
 
@@ -25,6 +28,13 @@ chrome-prof:
 
 minific:
 	ccjs dist/build/Allure/Allure.jsexe/all.js --compilation_level=ADVANCED_OPTIMIZATIONS --isolation_mode=IIFE --assume_function_wrapper --jscomp_off="*" --externs=node > ../allureofthestars.github.io/play/allure.all.js
+
+# Low delay to display animations swiftly and not bore the public too much.
+# Delay can't be lower than 2, because browsers sometimes treat delay 1
+# specially and add their extra delay.
+create-gif :
+	find ~/.Allure/screenshots/ -name 'prtscn*.bmp' -print0 | xargs -0 -r mogrify -format gif
+	gifsicle -O3 --careful -d2 -l ~/.Allure/screenshots/prtscn*.gif -o ~/.Allure/screenshots/screenshot.gif
 
 frontendRaid:
 	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode raid

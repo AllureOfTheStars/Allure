@@ -130,6 +130,8 @@ spike = ItemKind
                  -- heavy vs armor
   , ieffects = [ Explode "single spark"  -- when hitting enemy
                , OnSmash (Explode "single spark") ]  -- at wall hit
+      -- this results in a wordy item synopsis, but it's OK, the spark really
+      -- is useful in some situations, not just a flavour
   , ifeature = [toVelocity 70, Identified]  -- hitting with tip costs speed
   , idesc    = "Not particularly well balanced, but with a laser-sharpened titanium tip and blade."
   , ikit     = []
@@ -315,7 +317,7 @@ flask = ItemKind
   , iflavour = zipLiquid darkCol ++ zipPlain darkCol ++ zipFancy darkCol
                ++ zipLiquid brightCol
   , icount   = 1
-  , irarity  = [(1, 7), (10, 4)]
+  , irarity  = [(1, 7), (10, 5)]
   , iverbHit = "splash"
   , iweight  = 500
   , idamage  = toDmg 0
@@ -463,7 +465,7 @@ potion = ItemKind
   , ifreq    = [("useful", 100), ("potion", 100), ("any vial", 100)]
   , iflavour = zipLiquid brightCol ++ zipPlain brightCol ++ zipFancy brightCol
   , icount   = 1
-  , irarity  = [(1, 10), (10, 7)]
+  , irarity  = [(1, 10), (10, 8)]
   , iverbHit = "splash"
   , iweight  = 200
   , idamage  = toDmg 0
@@ -588,12 +590,13 @@ scroll3 = scroll
   }
 scroll4 = scroll  -- needs to be common to show at least a portion of effects
   { icount   = 1 `d` 4
-  , ieffects = [OneOf [ Teleport 5, RefillCalm 5, InsertMove 5
+  , irarity  = [(1, 14)]
+  , ieffects = [OneOf [ Teleport 5, Paralyze 10, InsertMove 10
                       , DetectActor 20, DetectItem 20 ]]
   }
 scroll5 = scroll  -- needs to be common to show at least a portion of effects
   { icount   = 1 `d` 3
-  , irarity  = [(10, 15)]
+  , irarity  = [(10, 14)]
   , ieffects = [ Impress
                , OneOf [ Teleport 20, Ascend False, Ascend True
                        , Summon "hero" 1, Summon "mobile animal" $ 1 `d` 2
@@ -611,12 +614,11 @@ scroll8 = scroll
   , ieffects = [InsertMove $ 1 + 1 `d` 2 + 1 `dL` 2]
   }
 scroll9 = scroll
-  { icount   = 1 `d` 4
-  , irarity  = [(1, 10)]
+  { icount   = 1 `d` 2
+  , irarity  = [(1, 10)]  -- not too common, because experimenting is fun
   , ieffects = [ ELabel "of scientific explanation"
                , Composite [Identify, RefillCalm 10] ]
-      -- your most pressing existential concerns are answered scientifically,
-      -- hence the calming effect
+  , idesc    = "The most pressing existential concerns are met with a deeply satisfying scientific answer."
   }
 scroll10 = scroll
   { irarity  = [(10, 20)]
@@ -765,13 +767,15 @@ necklace1 = necklace
 necklace2 = necklace
   { ifreq    = [("treasure", 100), ("any jewelry", 100)]
       -- just too nasty to call it useful
-  , irarity  = [(1, 1)]
   , iaspects = [Timeout 30]
-  , ieffects = [ Recharging (Summon "mobile animal" $ 1 `d` 2)
+  , ieffects = [ Unique, ELabel "of Live Bait"
+               , Recharging (Summon "mobile animal" $ 1 `d` 2)
                , Recharging (Explode "waste")
                , Recharging Impress
                , Recharging (DropItem 1 maxBound COrgan "temporary condition") ]
                ++ ieffects necklace
+  , ifeature = Durable : ifeature necklace
+  -- , idesc    = ""
   }
 necklace3 = necklace
   { iaspects = [Timeout $ (1 `d` 2) * 20]
@@ -794,8 +798,9 @@ necklace5 = necklace
                ++ ieffects necklace
   }
 necklace6 = necklace
-  { iaspects = [Timeout $ (1 + 1 `d` 3) * 2]
-  , ieffects = [Recharging (PushActor (ThrowMod 100 50))]
+  { iaspects = [Timeout $ (1 `d` 3) * 2]
+  , ieffects = [Recharging (PushActor (ThrowMod 100 50))]  -- 1 step, slow
+                  -- the @50@ is only for the case of very light actor, etc.
                ++ ieffects necklace
   }
 necklace7 = necklace
@@ -1040,7 +1045,7 @@ buckler = ItemKind
   , iaspects = [ AddArmorMelee 40  -- not enough to compensate; won't be in eqp
                , AddHurtMelee (-30)  -- too harmful; won't be wielded as weapon
                , Timeout $ (3 + 1 `d` 3 - 1 `dL` 3) * 2 ]
-  , ieffects = [ Recharging (PushActor (ThrowMod 200 50))
+  , ieffects = [ Recharging (PushActor (ThrowMod 100 50))  -- 1 step, slow
                , EqpSlot EqpSlotAddArmorMelee ]
   , ifeature = [ toVelocity 50  -- unwieldy to throw
                , Durable, Identified, Meleeable ]
@@ -1056,7 +1061,7 @@ shield = buckler
   , iaspects = [ AddArmorMelee 80  -- not enough to compensate; won't be in eqp
                , AddHurtMelee (-70)  -- too harmful; won't be wielded as weapon
                , Timeout $ (3 + 1 `d` 3 - 1 `dL` 3) * 4 ]
-  , ieffects = [ Recharging (PushActor (ThrowMod 400 50))
+  , ieffects = [ Recharging (PushActor (ThrowMod 400 25))  -- 1 step, fast
                , EqpSlot EqpSlotAddArmorMelee ]
   , ifeature = [ toVelocity 50  -- unwieldy to throw
                , Durable, Identified, Meleeable ]
@@ -1076,7 +1081,7 @@ dagger = ItemKind
   , iverbHit = "stab"
   , iweight  = 1000
   , idamage  = toDmg $ 6 `d` 1
-  , iaspects = [ AddHurtMelee $ (1 `d` 2 + 1 `dL` 2) * 3
+  , iaspects = [ AddHurtMelee $ (-1 + 1 `d` 2 + 1 `dL` 2) * 3
                , AddArmorMelee $ (1 `d` 2) * 5 ]
                    -- very common, so don't make too random
   , ieffects = [EqpSlot EqpSlotWeapon]
@@ -1117,7 +1122,7 @@ hammer = ItemKind
   , iverbHit = "club"
   , iweight  = 1600
   , idamage  = [(96, 8 `d` 1), (3, 12 `d` 1), (1, 16 `d` 1)]
-  , iaspects = [AddHurtMelee $ (1 `d` 2 + 1 `dL` 2) * 3]
+  , iaspects = [AddHurtMelee $ (-1 + 1 `d` 2 + 1 `dL` 2) * 3]
   , ieffects = [EqpSlot EqpSlotWeapon]
   , ifeature = [ toVelocity 40  -- ensuring it hits with the tip costs speed
                , Durable, Identified, Meleeable ]
@@ -1204,7 +1209,7 @@ halberdPushActor = halberd
   , idamage  = toDmg $ 12 `d` 1
   , iaspects = iaspects halberd ++ [Timeout $ (1 `d` 2) * 10]
   , ieffects = ieffects halberd
-               ++ [Unique, Recharging (PushActor (ThrowMod 400 25))]
+               ++ [Unique, Recharging (PushActor (ThrowMod 400 25))]  -- 1 step
   , idesc    = "A perfect replica made for a reenactor troupe, missing only some sharpening. Versatile, with great reach and leverage. Foes are held at a distance."
   }
 

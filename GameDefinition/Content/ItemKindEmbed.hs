@@ -64,7 +64,7 @@ obscenePictogram = ItemKind
   , ieffects = [ Recharging $ Temporary "enter unexplainable rage at a glimpse of the inscrutable graffiti"
                , Recharging $ RefillCalm (-20)
                , Recharging $ OneOf
-                   [ toOrganActorTurn "strengthened" (3 + 1 `d` 3)
+                   [ toOrganActorTurn "strengthened" (3 + 1 `d` 2)
                    , CreateItem CInv "sandstone rock" timerNone ] ]
   , ifeature = [Identified, Durable]
   , idesc    = ""
@@ -83,8 +83,8 @@ subtleFresco = ItemKind
   , iaspects = [Timeout 7]
   , ieffects = [ Temporary "be entranced by the subtle mural"
                , RefillCalm 2
-               , Recharging $ toOrganActorTurn "far-sighted" (3 + 1 `d` 3)
-               , Recharging $ toOrganActorTurn "keen-smelling" (3 + 1 `d` 3) ]
+               , Recharging $ toOrganActorTurn "far-sighted" (3 + 1 `d` 2)
+               , Recharging $ toOrganActorTurn "keen-smelling" (3 + 1 `d` 2) ]
   , ifeature = [Identified, Durable]
   , idesc    = "Expensive yet tasteful."
   , ikit     = []
@@ -177,7 +177,7 @@ frost = ItemKind
   , iaspects = []
   , ieffects = [ Burn 1  -- sensory ambiguity between hot and cold
                , RefillCalm 20  -- cold reason
-               , PushActor (ThrowMod 200 50) ]  -- slippery ice
+               , PushActor (ThrowMod 100 50) ]  -- slippery ice, 1 step, slow
   , ifeature = [Identified, Durable]
   , idesc    = "Intricate patterns of shining ice."
   , ikit     = []
@@ -213,9 +213,9 @@ doorwayTrap = ItemKind
   , iweight  = 10000
   , idamage  = toDmg 0
   , iaspects = []
-  , ieffects = [OneOf [ toOrganActorTurn "blind" $ (2 + 1 `dL` 3) * 10
-                      , toOrganActorTurn "slowed" $ (2 + 1 `dL` 3) * 10
-                      , toOrganActorTurn "weakened" $ (2 + 1 `dL` 3) * 10 ]]
+  , ieffects = [OneOf [ toOrganActorTurn "blind" $ (1 `dL` 4) * 10
+                      , toOrganActorTurn "slowed" $ (1 `dL` 4) * 10
+                      , toOrganActorTurn "weakened" $ (1 `dL` 4) * 10 ]]
   , ifeature = [Identified]  -- not Durable, springs at most once
   , idesc    = "Just turn the handle..."
   , ikit     = []
@@ -292,7 +292,7 @@ pulpit = ItemKind
   , iaspects = []
   , ieffects = [ CreateItem CGround "any scroll" timerNone
                , Detect 20
-               , Paralyze $ (2 + 1 `dL` 3) * 10
+               , Paralyze $ (1 `dL` 6) * 10
                , toOrganActorTurn "drunk" (20 + 1 `d` 5)
                , Explode "story-telling" ]
   , ifeature = [Identified]  -- not Durable, springs at most once
@@ -385,6 +385,6 @@ liftTrap2 = liftTrap
   { ifreq    = [("lift trap", 50)]
   , iverbHit = "choke"
   , ieffects = [ Temporary "inhale the gas lingering inside the cab"
-               , toOrganActorTurn "slowed" $ (2 + 1 `dL` 3) * 10 ]
+               , toOrganActorTurn "slowed" $ (1 `dL` 4) * 10 ]
   , idesc    = ""
   }

@@ -60,7 +60,7 @@ tmpEffects name icount effects =
          }
 
 tmpStrengthened = tmpAspects "strengthened" [AddHurtMelee 20]
-tmpWeakened = tmpAspects "weakened" [AddHurtMelee (-20)]
+tmpWeakened = tmpAspects "weakened" [AddHurtMelee (-30)]  -- don't cancel out ^
 tmpProtectedMelee = tmpAspects "protected from melee" [AddArmorMelee 50]
 tmpProtectedRanged = tmpAspects "protected from ranged" [AddArmorRanged 25]
 tmpVulnerable = tmpAspects "painted red" [ AddArmorMelee (-50)

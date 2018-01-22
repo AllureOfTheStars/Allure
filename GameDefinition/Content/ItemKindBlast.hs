@@ -70,7 +70,7 @@ firecracker n = ItemKind
   , iweight  = 1
   , idamage  = toDmg 0
   , iaspects = [AddShine $ intToDice $ 1 + n `div` 2]
-  , ieffects = [RefillCalm 2]
+  , ieffects = [if n >= 4 then Burn 1 else RefillCalm (-2)]
                ++ [DropBestWeapon | n >= 4]
                ++ [ OnSmash $ Explode
                     $ toGroupName $ "firecracker" <+> tshow (n - 1)
@@ -98,8 +98,8 @@ violentChemical = ItemKind
   , iweight  = 1
   , idamage  = toDmg 0
   , iaspects = [AddShine 10]
-  , ieffects = [ RefillHP (-5)  -- deadly
-               , PushActor (ThrowMod 200 50)
+  , ieffects = [ RefillHP (-5)  -- deadly; adjacent actor hit by 2 on average
+               , PushActor (ThrowMod 400 25)  -- 1 step, fast
                , DropItem 1 maxBound COrgan "temporary condition"
                , DropItem 1 maxBound COrgan "impressed" ]  -- shocking
   , ifeature = [toLinger 20, Fragile, Identified, Blast]  -- 4 steps, 1 turn
