@@ -43,10 +43,10 @@ scratchOnWall = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "scratch"
   , iweight  = 1000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = []
   , ieffects = [Temporary "start making sense of the scratches", DetectHidden 3]
-  , ifeature = [Identified, Durable]
+  , ifeature = [Durable]
   , idesc    = "A seemingly random series of scratches, carved deep into the wall."
   , ikit     = []
   }
@@ -59,14 +59,14 @@ obscenePictogram = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "infuriate"
   , iweight  = 1000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [Timeout 7]
   , ieffects = [ Recharging $ Temporary "enter unexplainable rage at a glimpse of the inscrutable graffiti"
                , Recharging $ RefillCalm (-20)
                , Recharging $ OneOf
                    [ toOrganActorTurn "strengthened" (3 + 1 `d` 2)
                    , CreateItem CInv "sandstone rock" timerNone ] ]
-  , ifeature = [Identified, Durable]
+  , ifeature = [Durable]
   , idesc    = ""
   , ikit     = []
   }
@@ -79,13 +79,13 @@ subtleFresco = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "sooth"
   , iweight  = 1000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [Timeout 7]
   , ieffects = [ Temporary "be entranced by the subtle mural"
                , RefillCalm 2
                , Recharging $ toOrganActorTurn "far-sighted" (3 + 1 `d` 2)
                , Recharging $ toOrganActorTurn "keen-smelling" (3 + 1 `d` 2) ]
-  , ifeature = [Identified, Durable]
+  , ifeature = [Durable]
   , idesc    = "Expensive yet tasteful."
   , ikit     = []
   }
@@ -106,13 +106,13 @@ treasureCacheTrap = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "taint"
   , iweight  = 1000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = []
   , ieffects = [OneOf [ toOrganNone "poisoned", Explode "glue"
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1)
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1)
                       , RefillCalm (-1), RefillCalm (-1) ]]
-  , ifeature = [Identified]  -- not Durable, springs at most once
+  , ifeature = []  -- not Durable, springs at most once
   , idesc    = ""
   , ikit     = []
   }
@@ -125,10 +125,10 @@ signboardExit = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "whack"
   , iweight  = 10000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = []
   , ieffects = [DetectExit 100]  -- low tech, hence fully operational
-  , ifeature = [Identified, Durable]
+  , ifeature = [Durable]
   , idesc    = "Mandatory emergency exit information in low-tech form."
   , ikit     = []
   }
@@ -147,10 +147,10 @@ fireSmall = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "burn"
   , iweight  = 10000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = []
   , ieffects = [Burn 1, Explode "single spark"]
-  , ifeature = [Identified, Durable]
+  , ifeature = [Durable]
   , idesc    = "A few small logs, burning brightly."
   , ikit     = []
   }
@@ -160,7 +160,7 @@ fireBig = fireSmall
   , ifreq    = [("big fire", 1)]
   , ieffects = [ Burn 2, Explode "spark"
                , CreateItem CInv "wooden torch" timerNone ]
-  , ifeature = [Identified, Durable]
+  , ifeature = [Durable]
   , idesc    = "Glowing with light and warmth."
   , ikit     = []
   }
@@ -173,12 +173,12 @@ frost = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "burn"
   , iweight  = 10000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = []
   , ieffects = [ Burn 1  -- sensory ambiguity between hot and cold
                , RefillCalm 20  -- cold reason
                , PushActor (ThrowMod 100 50) ]  -- slippery ice, 1 step, slow
-  , ifeature = [Identified, Durable]
+  , ifeature = [Durable]
   , idesc    = "Intricate patterns of shining ice."
   , ikit     = []
   }
@@ -191,14 +191,14 @@ rubble = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "bury"
   , iweight  = 100000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = []
   , ieffects = [OneOf [ Explode "glass piece", Explode "waste"
                       , Summon "animal" $ 1 `dL` 2, toOrganNone "poisoned"
                       , CreateItem CGround "useful" timerNone
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1)
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1) ]]
-  , ifeature = [Identified, Durable]
+  , ifeature = [Durable]
   , idesc    = "Broken chunks of foam concrete and glass."
   , ikit     = []
   }
@@ -211,12 +211,12 @@ doorwayTrap = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "cripple"
   , iweight  = 10000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = []
   , ieffects = [OneOf [ toOrganActorTurn "blind" $ (1 `dL` 4) * 10
                       , toOrganActorTurn "slowed" $ (1 `dL` 4) * 10
                       , toOrganActorTurn "weakened" $ (1 `dL` 4) * 10 ]]
-  , ifeature = [Identified]  -- not Durable, springs at most once
+  , ifeature = []  -- not Durable, springs at most once
   , idesc    = "Just turn the handle..."
   , ikit     = []
   }
@@ -230,10 +230,10 @@ stairsUp = ItemKind
   , iverbHit = "crash"  -- the verb is only used when the item hits,
                         -- not when it's applied otherwise, e.g., from tile
   , iweight  = 100000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = []
   , ieffects = [Ascend True]
-  , ifeature = [Identified, Durable]
+  , ifeature = [Durable]
   , idesc    = "Stairs that rise towards the spaceship core."
   , ikit     = []
   }
@@ -261,11 +261,11 @@ staircaseTrapUp = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "buffet"
   , iweight  = 10000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = []
   , ieffects = [ Temporary "be caught in an updraft"
                , Teleport $ 3 + 1 `dL` 10 ]
-  , ifeature = [Identified]  -- not Durable, springs at most once
+  , ifeature = []  -- not Durable, springs at most once
   , idesc    = "A hidden spring, to help the unwary soar."
   , ikit     = []
   }
@@ -288,14 +288,14 @@ pulpit = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "immerse"
   , iweight  = 10000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = []
   , ieffects = [ CreateItem CGround "any scroll" timerNone
                , Detect 20
                , Paralyze $ (1 `dL` 6) * 10
                , toOrganActorTurn "drunk" (20 + 1 `d` 5)
                , Explode "story-telling" ]
-  , ifeature = [Identified]  -- not Durable, springs at most once
+  , ifeature = []  -- not Durable, springs at most once
   , idesc    = ""
   , ikit     = []
   }
@@ -311,11 +311,11 @@ blackStarrySky = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "awe"
   , iweight  = 1000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = []
   , ieffects = [ Temporary "look into the void and it looks back"
                , OneOf [RefillCalm 5, RefillCalm (-5)] ]
-  , ifeature = [Identified, Durable]
+  , ifeature = [Durable]
   , idesc    = "The black starscape is constantly rotating. Occasionally a planet zips by, but is unable to disperse the blackness. The frantic dance is completely silent, muted, indifferent. There is not even a hint of vibration, just the sense of heaviness and dizziness. At the outermost deck, the curvature of the floor is unnoticeable, but artificial gravity apparently stronger than on Earth."  -- appears only on 100% flavour tiles, useless and trivial to notice, so the writeup can be longer
   , ikit     = []
   }
@@ -328,14 +328,14 @@ ruinedFirstAidKit = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "prick"
   , iweight  = 1000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = []
   , ieffects = [ Temporary "inspect a tattered CPR instruction soaked in a residue of oily drugs"
                , OneOf [ toOrganNone "poison resistant"
                        , toOrganNone "slow resistant"
                        , toOrganActorTurn "drunk" (20 + 1 `d` 5) ]
                , CreateItem CInv "needle" timerNone ]
-  , ifeature = [Identified]  -- not Durable, springs at most once
+  , ifeature = []  -- not Durable, springs at most once
   , idesc    = ""  -- regulations require
   , ikit     = []
   }
@@ -348,12 +348,12 @@ wall3dBillboard = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "push"
   , iweight  = 1000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [Timeout 3]
   , ieffects = [ Recharging $ Temporary "make it cough up a wobbly standalone hologram once more"
                , Recharging $ OneOf [ Explode "advertisement"
                                     , Explode "story-telling" ] ]
-  , ifeature = [Identified, Durable]
+  , ifeature = [Durable]
   , idesc    = "One can still make out excited moves of bleached shapes."
   , ikit     = []
   }

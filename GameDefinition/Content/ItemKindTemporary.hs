@@ -37,14 +37,14 @@ tmpAspects name aspects = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "affect"
   , iweight  = 0
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = -- timeout is 0; activates and vanishes soon,
                -- depending on initial timer setting
                aspects
   , ieffects = [ Periodic
                , Recharging $ tmpLess name
                , OnSmash $ tmpLess name ]
-  , ifeature = [Identified, Fragile, Durable]  -- hack: destroy on drop
+  , ifeature = [Fragile, Durable]  -- hack: destroy on drop
   , idesc    = ""  -- no description needed; stats are enough
   , ikit     = []
   }

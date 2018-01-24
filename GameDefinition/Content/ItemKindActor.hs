@@ -40,13 +40,13 @@ warrior = ItemKind
   , irarity  = [(1, 5)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 80  -- partially from clothes and assumed first aid
                , AddMaxCalm 70, AddSpeed 20, AddNocto 2
                , AddAbility AbProject 2, AddAbility AbApply 1
                , AddAbility AbAlter 2 ]
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "A hardened veteran of combat."
   , ikit     = [ ("fist", COrgan), ("foot", COrgan), ("eye 6", COrgan)
                , ("sapient brain", COrgan) ]
@@ -148,13 +148,13 @@ eye = ItemKind
   , irarity  = [(4, 6), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 20, AddMaxCalm 70, AddSpeed 20, AddNocto 2
                , AddAggression 1
                , AddAbility AbProject 2, AddAbility AbApply 1
                , AddAbility AbAlter 2 ]
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "Walks with a stately dignity. You read death in the slow beckoning gestures of its revolting upper appendages."
   , ikit     = [ ("foot", COrgan), ("tentacle", COrgan)
                , ("eye 6", COrgan)
@@ -170,12 +170,12 @@ fastEye = ItemKind
   , irarity  = [(4, 3), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 5, AddMaxCalm 70, AddSpeed 30, AddNocto 2
                , AddAggression 1
                , AddAbility AbAlter 2 ]
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "It bites as blindingly fast as it runs. Or rolls? Or crawls? Also, cuts and pierces."
   , ikit     = [ ("tentacle", COrgan), ("jaw", COrgan)
                , ("eye 3", COrgan), ("speed gland 10", COrgan)
@@ -190,12 +190,12 @@ nose = ItemKind  -- depends solely on smell
   , irarity  = [(4, 5), (10, 9)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 30, AddMaxCalm 30, AddSpeed 16, AddNocto 2
                , AddAggression 1
                , AddAbility AbProject (-1), AddAbility AbAlter 2 ]
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "A blind, slimy mass of clawing, stinging and burning. You'd think it's powerless, but as soon as it touches your trembling body, it's always one step ahead."
   , ikit     = [ ("nostril", COrgan), ("small claw", COrgan)
                , ("tentacle", COrgan), ("tentacle", COrgan)
@@ -212,12 +212,12 @@ elbow = ItemKind
   , irarity  = [(6, 1), (10, 9)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 12, AddMaxCalm 80, AddSpeed 21, AddNocto 2
                , AddAbility AbProject 2, AddAbility AbApply 1
                , AddAbility AbAlter 2, AddAbility AbMelee (-1) ]
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "It moves in sudden jerks and never makes a noise. Speaks in hard objects hurled at deadly speeds."
   , ikit     = [ ("speed gland 4", COrgan)
                , ("eye 8", COrgan)
@@ -234,13 +234,13 @@ torsor = ItemKind
   , irarity  = [(11 * 10/12, 0), (12 * 10/12, 1000)]  -- unique
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 300, AddMaxCalm 100, AddSpeed 6, AddNocto 2
                , AddAggression 3
                , AddAbility AbProject 2, AddAbility AbApply 1
                , AddAbility AbAlter 1]  -- can't exit the gated level, the boss
   , ieffects = [Unique]
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "The mind, the heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw, grinding teeth and tensing fangs."
   , ikit     = [ ("tentacle", COrgan), ("hooked claw", COrgan)
                , ("large jaw", COrgan)
@@ -267,10 +267,10 @@ goldenJackal = ItemKind  -- basically a much smaller and slower hyena
   , irarity  = [(1, 3)]
   , iverbHit = "thud"
   , iweight  = 13000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 12, AddMaxCalm 70, AddSpeed 24, AddNocto 2 ]
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "An opportunistic predator, feeding on carrion and the weak."
   , ikit     = [ ("small jaw", COrgan), ("eye 6", COrgan), ("nostril", COrgan)
                , ("animal brain", COrgan) ]
@@ -285,7 +285,7 @@ griffonVulture = ItemKind
   , irarity  = [(1, 5)]
   , iverbHit = "thud"
   , iweight  = 13000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 12, AddMaxCalm 80, AddSpeed 22, AddNocto 2
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
       -- Animals don't have leader, usually, so even if only one of level,
@@ -293,7 +293,7 @@ griffonVulture = ItemKind
       -- them on par with human leaders moving solo. Random double moves,
       -- on either side, are just too frustrating.
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "It soars high above, searching for vulnerable prey."
   , ikit     = [ ("screeching beak", COrgan)  -- in reality it grunts and hisses
                , ("small claw", COrgan), ("eye 7", COrgan)
@@ -308,11 +308,11 @@ skunk = ItemKind
   , irarity  = [(1, 5), (10, 3)]
   , iverbHit = "thud"
   , iweight  = 4000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 10, AddMaxCalm 30, AddSpeed 22, AddNocto 2
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "Its only defence is the terrible stench."
   , ikit     = [ ("scent gland", COrgan)
                , ("small claw", COrgan), ("snout", COrgan)
@@ -328,11 +328,11 @@ armadillo = ItemKind
   , irarity  = [(1, 5)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 10, AddMaxCalm 30, AddSpeed 20, AddNocto 2
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "When threatened, it rolls into a ball."
   , ikit     = [ ("hooked claw", COrgan), ("snout", COrgan)
                , ("armored skin", COrgan), ("armored skin", COrgan)
@@ -348,11 +348,11 @@ gilaMonster = ItemKind
   , irarity  = [(2, 5), (10, 3)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 12, AddMaxCalm 50, AddSpeed 18, AddNocto 2
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "Numbing venom ensures that even the fastest prey has no escape."
   , ikit     = [ ("venom tooth", COrgan), ("small claw", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan)
@@ -367,11 +367,11 @@ rattlesnake = ItemKind
   , irarity  = [(5, 1), (10, 12)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 25, AddMaxCalm 60, AddSpeed 16, AddNocto 2
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "Beware its rattle - it serves as a warning of an agonising death."
   , ikit     = [ ("venom fang", COrgan)
                , ("eye 4", COrgan), ("nostril", COrgan)
@@ -386,10 +386,10 @@ komodoDragon = ItemKind  -- bad hearing; regeneration makes it very powerful
   , irarity  = [(9, 0), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 18, AddNocto 2 ]
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "Larger and more aggressive than any other lizard."
   , ikit     = [ ("large tail", COrgan), ("jaw", COrgan)
                , ("hooked claw", COrgan), ("speed gland 4", COrgan)
@@ -406,10 +406,10 @@ hyena = ItemKind
   , irarity  = [(4, 1), (10, 8)]
   , iverbHit = "thud"
   , iweight  = 60000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 20, AddMaxCalm 70, AddSpeed 32, AddNocto 2 ]
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "Skulking in the shadows, waiting for easy prey."
   , ikit     = [ ("jaw", COrgan), ("eye 6", COrgan), ("nostril", COrgan)
                , ("animal brain", COrgan) ]
@@ -423,10 +423,10 @@ alligator = ItemKind
   , irarity  = [(8, 1), (10, 9)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 41, AddMaxCalm 70, AddSpeed 18, AddNocto 2 ]
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "An armored predator from the dawn of time."
   , ikit     = [ ("large jaw", COrgan), ("large tail", COrgan)
                , ("small claw", COrgan)
@@ -442,12 +442,12 @@ rhinoceros = ItemKind
   , irarity  = [(1 * 10/12, 1000000), (2 * 10/12, 0)]  -- unique
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 90, AddMaxCalm 60, AddSpeed 27, AddNocto 2
                , AddAggression 2
                , AddAbility AbAlter (-1) ]  -- can't switch levels, a miniboss
   , ieffects = [Unique]
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "The last of its kind. Blind with rage. Charges at deadly speed."
   , ikit     = [ ("armored skin", COrgan), ("eye 2", COrgan)
                , ("horn", COrgan), ("snout", COrgan)
@@ -465,12 +465,12 @@ beeSwarm = ItemKind
   , irarity  = [(1, 2), (10, 4)]
   , iverbHit = "thud"
   , iweight  = 1000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 8, AddMaxCalm 60
                , AddSpeed 30, AddNocto 2  -- armor in sting
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "Every bee would die for the queen."
   , ikit     = [ ("bee sting", COrgan), ("vision 6", COrgan)
                , ("insect mortality", COrgan), ("animal brain", COrgan) ]
@@ -484,12 +484,12 @@ hornetSwarm = ItemKind
   , irarity  = [(5, 1), (10, 8)]
   , iverbHit = "thud"
   , iweight  = 1000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 8, AddMaxCalm 70, AddSpeed 30, AddNocto 2
                , AddAbility AbAlter (-2)  -- can't use stairs nor doors
                , AddArmorMelee 80, AddArmorRanged 40 ]
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "A vicious cloud of stings and hate."
   , ikit     = [ ("sting", COrgan), ("vision 8", COrgan)
                , ("insect mortality", COrgan), ("animal brain", COrgan) ]
@@ -503,11 +503,11 @@ thornbush = ItemKind
   , irarity  = [(1, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 22, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1 ]
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "Each branch bears long, curved thorns."
   , ikit     = [("thorn", COrgan), ("armored skin", COrgan)]
   }
@@ -526,12 +526,12 @@ razorwireFence = ItemKind
   , irarity  = [(3 * 10/12, 0), (4 * 10/12, 10)]  -- quickly vanishes at depth
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 20, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1
                , AddArmorMelee 40, AddArmorRanged 20 ]
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "Must have been bought by previous ship owners to contain the wild animal infestation."
   , ikit     = [("razor", COrgan)]
   }
@@ -544,12 +544,12 @@ electricFence = ItemKind
   , irarity  = [(3 * 10/12, 0), (4 * 10/12, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 40, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1
                , AddArmorMelee 40, AddArmorRanged 20 ]
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "Marginally intelligent electric shepherd. Originally used in orbital dairy farms and planetary zoos."
   , ikit     = [("live wire", COrgan)]
   }
@@ -562,12 +562,12 @@ activeFence = ItemKind
   , irarity  = [(5 * 10/12, 0), (6 * 10/12, 3)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbProject 3
                , AddArmorMelee 40, AddArmorRanged 20 ]
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "Makeshift, mostly non-lethal, autonomous perimeter defense outpost."
   , ikit     = [ ("vision 6", COrgan)
                , ("needle", CInv), ("can of sticky foam", CInv) ]
@@ -581,12 +581,12 @@ steamFaucet = ItemKind
   , irarity  = [(1, 3), (5 * 10/12, 3)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 10, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1
                , AddArmorMelee 40, AddArmorRanged 20 ]  -- hard material
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "A cracked valve on one of the superheated water pipes spreading radially outward from the tokamak level."
   , ikit     = [("boiling vent", COrgan), ("boiling fissure", COrgan)]
   }
@@ -599,12 +599,12 @@ biogasFaucet = ItemKind
   , irarity  = [(1, 10), (5 * 10/12, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 22
                , AddNocto 2, AddShine 3
                , AddAbility AbWait 1, AddAbility AbMelee 1 ]
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "An emergency pressure-release vent on a smelly biogas pipe."
   , ikit     = [("biogas vent", COrgan), ("biogas fissure", COrgan)]
   }
@@ -617,12 +617,12 @@ medbotFaucet = ItemKind
   , irarity  = [(1, 10), (5 * 10/12, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 22
                , AddNocto 2, AddShine 3
                , AddAbility AbWait 1, AddAbility AbMelee 1 ]
   , ieffects = []
-  , ifeature = [Durable, Identified]  -- TODO: only heal humans
+  , ifeature = [Durable]  -- TODO: only heal humans
   , idesc    = "A faucet of a malfunctioning nano medical robot dispenser. Let's hope the medbots are still effective."
   , ikit     = [("medbot vent", COrgan), ("medbot fissure", COrgan)]
   }
@@ -635,13 +635,13 @@ surveillanceDrone = ItemKind
   , irarity  = []  -- TODO: too boring
   , iverbHit = "thud"
   , iweight  = 1000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 6, AddMaxCalm 90, AddSpeed 30, AddNocto 2
                , AddAbility AbDisplace (-1), AddAbility AbMoveItem (-1)
                , AddAbility AbProject (-1), AddAbility AbMelee (-1)
                , AddArmorMelee 40, AddArmorRanged 20 ]
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "A video camera in each room would violate privacy of passengers, hence surveillance drones. Programmed to be easy to fend off, they keep a respectful distance."
   , ikit     = [ ("vision 14", COrgan), ("robot brain", COrgan) ]
   }
@@ -654,13 +654,13 @@ shepherdDrone = ItemKind
   , irarity  = [(1, 7)]
   , iverbHit = "thud"
   , iweight  = 1000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 3, AddMaxCalm 60, AddSpeed 30, AddNocto 2
                , AddAbility AbDisplace (-1), AddAbility AbMoveItem (-1)
                , AddAbility AbProject (-1)
                , AddArmorMelee 80, AddArmorRanged 40 ]
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "A shabby drone for bringing cows home."
   , ikit     = [ ("eye 4", COrgan), ("live wire", COrgan)
                , ("robot brain", COrgan) ]
@@ -674,13 +674,13 @@ huntingDrone = ItemKind
   , irarity  = [(3, 0), (5, 2), (10, 4)]
   , iverbHit = "thud"
   , iweight  = 500
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 6, AddMaxCalm 60, AddSpeed 40, AddNocto 2
                , AddAbility AbDisplace (-1), AddAbility AbMoveItem (-1)
                , AddAbility AbMelee (-1)
                , AddArmorMelee 40, AddArmorRanged 20 ]
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "Originally designed for hunting down and putting to sleep stray animals. The sleeping agent has long since dried up."
   , ikit     = [ ("eye 5", COrgan), ("needle", CInv)
                , ("robot brain", COrgan) ]
@@ -695,11 +695,11 @@ homeRobot = ItemKind
   , irarity  = [(1, 20), (10, 6)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 10, AddMaxCalm 30, AddSpeed 20, AddNocto 2
                , AddAbility AbProject (-1), AddAbility AbAlter 1 ]  -- doors
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "Once a timid household robot, now sufficiently adapted to survive in the deadly environment."
   , ikit     = [ ("fist", COrgan), ("eye 2", COrgan), ("nostril", COrgan)
                , ("robot brain", COrgan) ]
@@ -714,10 +714,10 @@ wasteRobot = ItemKind
   , irarity  = [(1, 10), (10, 6)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 15, AddMaxCalm 30, AddSpeed 15, AddNocto 2 ]
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "You are not in its database, hence you are waste."
   , ikit     = [ ("jaw", COrgan), ("tentacle", COrgan)
                , ("waste container", COrgan), ("armored skin", COrgan)
@@ -734,11 +734,11 @@ lightRobot = ItemKind
   , irarity  = [(3, 1), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 15, AddMaxCalm 60, AddSpeed 30, AddNocto 2
                , AddAbility AbProject 2, AddAbility AbAlter 2 ]  -- uses stairs
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "Interior and exterior decoration robot. Strongly fancies deep reds recently."
   , ikit     = [ ("hooked claw", COrgan), ("tentacle", COrgan)
                , ("spotlight", COrgan), ("armored skin", COrgan)
@@ -754,11 +754,11 @@ heavyRobot = ItemKind
   , irarity  = [(8, 0), (10, 10)]
   , iverbHit = "thud"
   , iweight  = 800000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 20, AddNocto 2
                , AddAbility AbProject 2, AddAbility AbAlter 2 ]  -- uses stairs
   , ieffects = []
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "Heavy multi-purpose construction robot. Excels at discharging, dismantling and demolition."
   , ikit     = [ ("large jaw", COrgan), ("small claw", COrgan), ("spotlight", COrgan)
                , ("construction hooter", CInv)
@@ -775,13 +775,13 @@ cleanerRobot = ItemKind
                  -- unique, appears at 10 of 12
   , iverbHit = "thud"
   , iweight  = 80000
-  , idamage  = toDmg 0
+  , idamage  = 0
   , iaspects = [ AddMaxHP 120, AddMaxCalm 60, AddSpeed 18, AddNocto 2
                , AddAbility AbAlter 3 ]
                    -- a miniboss; can remove rubble and ice,
                    -- but can't exit the gated level
   , ieffects = [Unique]
-  , ifeature = [Durable, Identified]
+  , ifeature = [Durable]
   , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."
   , ikit     = [ ("waste container", COrgan), ("boiling vent", COrgan)
                , ("armored skin", COrgan), ("live wire", COrgan)
