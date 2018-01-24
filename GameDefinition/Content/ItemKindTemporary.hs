@@ -16,6 +16,7 @@ import Game.LambdaHack.Common.Prelude
 import Game.LambdaHack.Common.Color
 import Game.LambdaHack.Common.Dice
 import Game.LambdaHack.Common.Flavour
+import Game.LambdaHack.Common.ItemAspect (Aspect (..))
 import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.ItemKind
 
@@ -41,10 +42,9 @@ tmpAspects name aspects = ItemKind
   , iaspects = -- timeout is 0; activates and vanishes soon,
                -- depending on initial timer setting
                aspects
-  , ieffects = [ Periodic
-               , Recharging $ tmpLess name
+  , ieffects = [ Recharging $ tmpLess name
                , OnSmash $ tmpLess name ]
-  , ifeature = [Fragile, Durable]  -- hack: destroy on drop
+  , ifeature = [Periodic, Fragile, Durable]  -- hack: destroy on drop
   , idesc    = ""  -- no description needed; stats are enough
   , ikit     = []
   }
@@ -54,8 +54,7 @@ tmpEffects name icount effects =
   let tmp = tmpAspects name []
   in tmp { icount
          , ieffects = effects
-                      ++ [ Periodic
-                         , Recharging $ tmpNoLonger name
+                      ++ [ Recharging $ tmpNoLonger name
                          , OnSmash $ tmpNoLonger name ]
          }
 

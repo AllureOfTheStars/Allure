@@ -16,6 +16,7 @@ import Game.LambdaHack.Common.Prelude
 import Game.LambdaHack.Common.Color
 import Game.LambdaHack.Common.Dice
 import Game.LambdaHack.Common.Flavour
+import Game.LambdaHack.Common.ItemAspect (Aspect (..))
 import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.ItemKind
 
@@ -635,7 +636,7 @@ mistAntidote = ItemKind
 
 -- * Allure-specific
 
--- ** Lore basts
+-- ** Lore blasts
 
 -- They exist for a short time only, but the lore can be read
 -- from the lore menu. Only optional story bits should go there,

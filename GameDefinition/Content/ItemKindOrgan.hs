@@ -17,6 +17,7 @@ import Game.LambdaHack.Common.Ability
 import Game.LambdaHack.Common.Color
 import Game.LambdaHack.Common.Dice
 import Game.LambdaHack.Common.Flavour
+import Game.LambdaHack.Common.ItemAspect (Aspect (..))
 import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.ItemKind
 
@@ -299,7 +300,8 @@ insectMortality = armoredSkin
   , ifreq    = [("insect mortality", 100)]
   , iverbHit = "age"
   , iaspects = [Timeout $ 30 + (1 `d` 2) * 10]
-  , ieffects = [Periodic, Recharging (RefillHP (-1))]
+  , ieffects = [Recharging (RefillHP (-1))]
+  , ifeature = [Periodic] ++ ifeature armoredSkin
   , idesc    = ""
   }
 sapientBrain = armoredSkin
@@ -327,7 +329,8 @@ speedGland n = armoredSkin
   , iverbHit = "spit at"
   , iaspects = [ AddSpeed $ intToDice n
                , Timeout $ intToDice $ 100 `div` n ]
-  , ieffects = [Periodic, Recharging (RefillHP 1)]
+  , ieffects = [Recharging (RefillHP 1)]
+  , ifeature = [Periodic] ++ ifeature armoredSkin
   , idesc    = ""
   }
 speedGland2 = speedGland 2
@@ -341,11 +344,10 @@ scentGland = armoredSkin
   , icount   = 2 + 1 `d` 3  -- runs out
   , iverbHit = "spray at"
   , iaspects = [Timeout $ (1 `d` 3) * 10]
-  , ieffects = [ Periodic
-               , Recharging (Temporary "look spent")
+  , ieffects = [ Recharging (Temporary "look spent")
                , Recharging (Explode "distressing odor")
                , Recharging ApplyPerfume ]
-  , ifeature = []  -- not Durable
+  , ifeature = [Periodic]  -- not Durable
   , idesc    = ""
   }
 boilingVent = armoredSkin
@@ -354,9 +356,9 @@ boilingVent = armoredSkin
   , iflavour = zipPlain [BrBlue]
   , iverbHit = "menace"
   , iaspects = [Timeout $ (2 + 1 `d` 2) * 5]
-  , ieffects = [ Periodic
-               , Recharging (Explode "boiling water")
+  , ieffects = [ Recharging (Explode "boiling water")
                , Recharging (RefillHP 2) ]
+  , ifeature = [Periodic] ++ ifeature armoredSkin
   , idesc    = ""
   }
 arsenicVent = armoredSkin
@@ -365,9 +367,9 @@ arsenicVent = armoredSkin
   , iflavour = zipPlain [BrGreen]
   , iverbHit = "menace"
   , iaspects = [Timeout $ (2 + 1 `d` 2) * 5]
-  , ieffects = [ Periodic
-               , Recharging (Explode "sparse shower")
+  , ieffects = [ Recharging (Explode "sparse shower")
                , Recharging (RefillHP 2) ]
+  , ifeature = [Periodic] ++ ifeature armoredSkin
   , idesc    = ""
   }
 sulfurVent = armoredSkin
@@ -376,9 +378,9 @@ sulfurVent = armoredSkin
   , iflavour = zipPlain [BrYellow]
   , iverbHit = "menace"
   , iaspects = [Timeout $ (2 + 1 `d` 2) * 5]
-  , ieffects = [ Periodic
-               , Recharging (Explode "dense shower")
+  , ieffects = [ Recharging (Explode "dense shower")
                , Recharging (RefillHP 2) ]
+  , ifeature = [Periodic] ++ ifeature armoredSkin
   , idesc    = ""
   }
 
@@ -442,10 +444,10 @@ wasteContainer = armoredSkin
   , ifreq    = [("waste container", 100)]
   , iverbHit = "spill over"
   , iaspects = [Timeout $ (1 + 1 `d` 2) * 30]
-  , ieffects = [ Periodic
-               , Recharging (Summon "mobile animal" $ 1 `dL` 2)
+  , ieffects = [ Recharging (Summon "mobile animal" $ 1 `dL` 2)
                , Recharging (RefillHP 1)
                , Recharging (Explode "waste") ]
+  , ifeature = [Periodic] ++ ifeature armoredSkin
   , idesc    = ""
   }
 spotlight = armoredSkin

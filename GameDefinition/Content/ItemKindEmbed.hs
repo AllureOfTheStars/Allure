@@ -16,17 +16,18 @@ import Game.LambdaHack.Common.Prelude
 import Game.LambdaHack.Common.Color
 import Game.LambdaHack.Common.Dice
 import Game.LambdaHack.Common.Flavour
+import Game.LambdaHack.Common.ItemAspect (Aspect (..))
 import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.ItemKind
 
 embeds :: [ItemKind]
 embeds =
-  [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, doorwayTrap,  stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit]
-      -- Allure-specific
-      ++ [blackStarrySky, ruinedFirstAidKit, wall3dBillboard, jewelryDisplay, liftUp, liftDown, liftTrap, liftTrap2]
-scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, doorwayTrap,  stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit :: ItemKind
+  [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit]
+  -- Allure-specific
+  ++ [blackStarrySky, ruinedFirstAidKit, wall3dBillboard, jewelryDisplay, liftUp, liftDown, liftTrap, liftTrap2]
+scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit :: ItemKind
 -- Allure-specific
-blackStarrySky,           ruinedFirstAidKit, wall3dBillboard, jewelryDisplay, liftUp, liftDown, liftTrap, liftTrap2 :: ItemKind
+blackStarrySky,       ruinedFirstAidKit, wall3dBillboard, jewelryDisplay, liftUp, liftDown, liftTrap, liftTrap2 :: ItemKind
 
 -- Make sure very few walls are substantially useful, e.g., caches,
 -- and none that are secret. Otherwise the player will spend a lot of time
@@ -202,23 +203,37 @@ rubble = ItemKind
   , idesc    = "Broken chunks of foam concrete and glass."
   , ikit     = []
   }
-doorwayTrap = ItemKind
-  { isymbol  = '^'
+doorwayTrapTemplate = ItemKind
+  { isymbol  = '+'
   , iname    = "doorway trap"
-  , ifreq    = [("doorway trap", 1)]
-  , iflavour = zipPlain [Red]
+  , ifreq    = [("doorway trap unknown", 1)]
+  , iflavour = zipPlain brightCol
   , icount   = 1
   , irarity  = [(1, 1)]
   , iverbHit = "cripple"
   , iweight  = 10000
   , idamage  = 0
   , iaspects = []
-  , ieffects = [OneOf [ toOrganActorTurn "blind" $ (1 `dL` 4) * 10
-                      , toOrganActorTurn "slowed" $ (1 `dL` 4) * 10
-                      , toOrganActorTurn "weakened" $ (1 `dL` 4) * 10 ]]
-  , ifeature = []  -- not Durable, springs at most once
+  , ieffects = []
+  , ifeature = [HideAs "doorway trap unknown"]
+      -- not Durable, springs at most once
   , idesc    = "Just turn the handle..."
   , ikit     = []
+  }
+doorwayTrap1 = doorwayTrapTemplate
+  { ifreq    = [("doorway trap", 50)]
+  , ieffects = [toOrganActorTurn "blind" $ (1 `dL` 4) * 10]
+  -- , idesc    = ""
+  }
+doorwayTrap2 = doorwayTrapTemplate
+  { ifreq    = [("doorway trap", 25)]
+  , ieffects = [toOrganActorTurn "slowed" $ (1 `dL` 4) * 10]
+  -- , idesc    = ""
+  }
+doorwayTrap3 = doorwayTrapTemplate
+  { ifreq    = [("doorway trap", 25)]
+  , ieffects = [toOrganActorTurn "weakened" $ (1 `dL` 4) * 10 ]
+  -- , idesc    = ""
   }
 stairsUp = ItemKind
   { isymbol  = '<'
@@ -263,10 +278,10 @@ staircaseTrapUp = ItemKind
   , iweight  = 10000
   , idamage  = 0
   , iaspects = []
-  , ieffects = [ Temporary "be caught in an updraft"
+  , ieffects = [ Temporary "be caught in decompression blast"
                , Teleport $ 3 + 1 `dL` 10 ]
   , ifeature = []  -- not Durable, springs at most once
-  , idesc    = "A hidden spring, to help the unwary soar."
+  , idesc    = ""
   , ikit     = []
   }
 -- Needs to be separate from staircaseTrapUp, to make sure the item is

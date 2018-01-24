@@ -16,6 +16,7 @@ import Game.LambdaHack.Common.Prelude
 import Game.LambdaHack.Common.Ability
 import Game.LambdaHack.Common.Color
 import Game.LambdaHack.Common.Flavour
+import Game.LambdaHack.Common.ItemAspect (Aspect (..))
 import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.ItemKind
 
@@ -239,8 +240,8 @@ torsor = ItemKind
                , AddAggression 3
                , AddAbility AbProject 2, AddAbility AbApply 1
                , AddAbility AbAlter 1]  -- can't exit the gated level, the boss
-  , ieffects = [Unique]
-  , ifeature = [Durable]
+  , ieffects = []
+  , ifeature = [Unique, Durable]
   , idesc    = "The mind, the heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw, grinding teeth and tensing fangs."
   , ikit     = [ ("tentacle", COrgan), ("hooked claw", COrgan)
                , ("large jaw", COrgan)
@@ -446,8 +447,8 @@ rhinoceros = ItemKind
   , iaspects = [ AddMaxHP 90, AddMaxCalm 60, AddSpeed 27, AddNocto 2
                , AddAggression 2
                , AddAbility AbAlter (-1) ]  -- can't switch levels, a miniboss
-  , ieffects = [Unique]
-  , ifeature = [Durable]
+  , ieffects = []
+  , ifeature = [Unique, Durable]
   , idesc    = "The last of its kind. Blind with rage. Charges at deadly speed."
   , ikit     = [ ("armored skin", COrgan), ("eye 2", COrgan)
                , ("horn", COrgan), ("snout", COrgan)
@@ -780,8 +781,8 @@ cleanerRobot = ItemKind
                , AddAbility AbAlter 3 ]
                    -- a miniboss; can remove rubble and ice,
                    -- but can't exit the gated level
-  , ieffects = [Unique]
-  , ifeature = [Durable]
+  , ieffects = []
+  , ifeature = [Unique, Durable]
   , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."
   , ikit     = [ ("waste container", COrgan), ("boiling vent", COrgan)
                , ("armored skin", COrgan), ("live wire", COrgan)
