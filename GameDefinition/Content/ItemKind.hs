@@ -34,11 +34,11 @@ otherItemContent = embeds ++ actors ++ organs ++ blasts ++ temporaries
 
 items :: [ItemKind]
 items =
-  [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammer, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberd3, halberdPushActor, wandTemplate, wand1, gem1, gem2, gem3, gem4, gem5, currency]
+  [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammer, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberd3, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currency]
   -- Allure-specific
   ++ [needle, constructionHooter, scroll14]
 
-sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammer, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberd3, halberdPushActor, wandTemplate, wand1, gem1, gem2, gem3, gem4, gem5, currency :: ItemKind
+sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammer, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberd3, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currency :: ItemKind
 -- Allure-specific
 needle, constructionHooter, scroll14 :: ItemKind
 
@@ -131,7 +131,7 @@ spike = ItemKind
                , OnSmash (Explode "single spark") ]  -- at wall hit
       -- this results in a wordy item synopsis, but it's OK, the spark really
       -- is useful in some situations, not just a flavour
-  , ifeature = [toVelocity 70]  -- hitting with tip costs speed
+  , ifeature = [MinorEffects, toVelocity 70]  -- hitting with tip costs speed
   , idesc    = "Not particularly well balanced, but with a laser-sharpened titanium tip and blade."
   , ikit     = []
   }
@@ -155,7 +155,7 @@ slingStone = ItemKind
                  -- heavy vs armor
   , ieffects = [ Explode "single spark"  -- when hitting enemy
                , OnSmash (Explode "single spark") ]  -- at wall hit
-  , ifeature = [toVelocity 150]
+  , ifeature = [MinorEffects, toVelocity 150]
   , idesc    = "A large hexagonal fastening nut, securely lodging in the pouch of a makeshift string and cloth sling due to its angular shape."
   , ikit     = []
   }
@@ -806,7 +806,7 @@ necklaceTemplate = ItemKind
   , iverbHit = "whip"
   , iweight  = 30
   , idamage  = 0
-  , iaspects = []
+  , iaspects = [Timeout 1]  -- fake, but won't be displayed
   , ieffects = []
   , ifeature = [ Periodic, HideAs "necklace unknown", Precious, Equipable
                , toVelocity 50 ]  -- not dense enough
@@ -1106,7 +1106,8 @@ buckler = ItemKind
                , Timeout $ (3 + 1 `d` 3 - 1 `dL` 3) * 2 ]
   , ieffects = [Recharging (PushActor (ThrowMod 100 50))]  -- 1 step, slow
   , ifeature = [ toVelocity 50  -- unwieldy to throw
-               , Durable, Meleeable, EqpSlot EqpSlotAddArmorMelee ]
+               , MinorEffects, Durable, Meleeable
+               , EqpSlot EqpSlotAddArmorMelee ]
   , idesc    = "Heavy and unwieldy arm protection made from an outer airlock panel. Absorbs a percentage of melee damage, both dealt and sustained. Too small to intercept projectiles with."
   , ikit     = []
   }
@@ -1121,7 +1122,8 @@ shield = buckler
                , Timeout $ (3 + 1 `d` 3 - 1 `dL` 3) * 4 ]
   , ieffects = [Recharging (PushActor (ThrowMod 400 25))]  -- 1 step, fast
   , ifeature = [ toVelocity 50  -- unwieldy to throw
-               , Durable, Meleeable, EqpSlot EqpSlotAddArmorMelee ]
+               , MinorEffects, Durable, Meleeable
+               , EqpSlot EqpSlotAddArmorMelee ]
   , idesc    = "Large and unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Too heavy to intercept projectiles with."
   }
 shield2 = shield
@@ -1343,24 +1345,29 @@ wand1 = wandTemplate
 
 -- * Treasure
 
-gem1 = ItemKind
+gemTemplate = ItemKind
   { isymbol  = symbolGold
   , iname    = "gem"
-  , ifreq    =  [("treasure", 100), ("gem", 100), ("any jewelry", 100)
-               , ("gem unknown", 1) ]
-  , iflavour = zipPlain brightCol  -- natural, so not fancy
+  , ifreq    = [("gem unknown", 1)]
+  , iflavour = zipPlain $ delete BrYellow brightCol  -- natural, so not fancy
   , icount   = 1
   , irarity  = [(3, 0), (10, 24)]
   , iverbHit = "tap"
   , iweight  = 50
   , idamage  = 0
+  , iaspects = []
+  , ieffects = []
+  , ifeature = [HideAs "gem unknown", Precious]
+  , idesc    = "Precious, though useless. Worth around 100 gold grains."
+  , ikit     = []
+  }
+gem1 = gemTemplate
+  { ifreq    = [("treasure", 100), ("gem", 100), ("any jewelry", 100)]
+  , irarity  = [(3, 0), (10, 24)]
   , iaspects = [AddShine 1, AddSpeed (-1)]
                  -- reflects strongly, distracts; so it glows in the dark,
                  -- is visible on dark floor, but not too tempting to wear
   , ieffects = [RefillCalm (-1)]  -- minor effect to ensure no id-on-pickup
-  , ifeature = [HideAs "gem unknown", Precious]
-  , idesc    = "Precious, though useless. Worth around 100 gold grains."
-  , ikit     = []
   }
 gem2 = gem1
   { ifreq    = [("treasure", 100), ("gem", 100), ("any jewelry", 100)]
@@ -1375,13 +1382,13 @@ gem4 = gem1
   , irarity  = [(9, 0), (10, 100)]
   }
 gem5 = gem1
-  { isymbol  = symbolSpecial  -- looks differently upon closer inspection
+  { isymbol  = symbolSpecial
   , iname    = "stimpack"
   , ifreq    = [("treasure", 100), ("gem", 100), ("any jewelry", 100)]
-  , iflavour = zipPlain [BrYellow]  -- same colour as one of gems; symbol unique
+  , iflavour = zipPlain [BrYellow]
   , irarity  = [(1, 40), (10, 40)]
   , ieffects = [RefillCalm 5, RefillHP 15]
-  , ifeature = [ELabel "of youth", Applicable] ++ ifeature gem1
+  , ifeature = [ELabel "of youth", Applicable, Precious]  -- not hidden
   , idesc    = "Calms, heals, invigorates and rejuvenates at the same time. No side-effects. As valuable as precious gems, at 100 gold grains each."
   }
 currency = ItemKind

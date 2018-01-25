@@ -142,7 +142,7 @@ standardKeys = KeyKind $ map evalKeyDef $
           , ChooseItemMenu (MLore SItem) ))
   , ("q", addCmdCategory CmdItem $ applyI [TriggerItem
             { tiverb = "quaff"
-            , tiobject = "dring"
+            , tiobject = "liquid"
             , tisymbol = '!' }])
   , ("r", addCmdCategory CmdItem $ applyI [TriggerItem
             { tiverb = "read"
