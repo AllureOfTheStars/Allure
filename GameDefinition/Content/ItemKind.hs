@@ -1445,5 +1445,5 @@ scroll14 = scrollTemplate
                , Explode "cruise ad hologram" ]
   , ifeature = [Unique, ELabel "Displaying a Happy Couple"]
                ++ ifeature scrollTemplate
-  , idesc    = "Biodegrable self-powered mini-projector displaying a holographic ad for an inteplanetary cruise."
+  , idesc    = "Biodegradable self-powered mini-projector displaying a holographic ad for an interplanetary cruise."
   }
