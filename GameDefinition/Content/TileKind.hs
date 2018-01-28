@@ -65,7 +65,7 @@ unknown = TileKind  -- needs to have index 0 and alter 1
   , tcolor   = defFG
   , tcolor2  = defFG
   , talter   = 1
-  , tfeature = [Dark, Indistinct]
+  , tfeature = [Dark]
   }
 hardRock = TileKind
   { tsymbol  = '#'
@@ -85,7 +85,7 @@ wall = TileKind
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 100
-  , tfeature = [BuildAs "suspect wall", Indistinct]
+  , tfeature = [BuildAs "suspect wall"]
   }
 wallSuspect = TileKind  -- only on client
   { tsymbol  = '#'
@@ -96,7 +96,7 @@ wallSuspect = TileKind  -- only on client
   , talter   = 2
   , tfeature = [ RevealAs "trapped door"
                , ObscureAs "obscured wall"
-               , Indistinct ]
+                ]
   }
 wallObscured = TileKind
   { tsymbol  = '#'
@@ -107,7 +107,7 @@ wallObscured = TileKind
   , talter   = 5
   , tfeature = [ Embed "scratch on wall"
                , HideAs "suspect wall"
-               , Indistinct
+
                ]
   }
 wallObscuredDefaced = TileKind
@@ -119,7 +119,7 @@ wallObscuredDefaced = TileKind
   , talter   = 5
   , tfeature = [ Embed "obscene pictogram"
                , HideAs "suspect wall"
-               , Indistinct
+
                ]
   }
 wallObscuredFrescoed = TileKind
@@ -131,7 +131,7 @@ wallObscuredFrescoed = TileKind
   , talter   = 5
   , tfeature = [ Embed "subtle fresco"
                , HideAs "suspect wall"
-               , Indistinct
+
                ]  -- a bit beneficial, but AI would loop if allowed to trigger
                   -- so no @ConsideredByAI@
   }
@@ -142,7 +142,7 @@ pillar = TileKind
   , tcolor   = BrCyan  -- not BrWhite, to tell from heroes
   , tcolor2  = Cyan
   , talter   = 100
-  , tfeature = [Indistinct]
+  , tfeature = []
   }
 pillarCache = TileKind
   { tsymbol  = '#'
@@ -152,7 +152,7 @@ pillarCache = TileKind
   , tcolor2  = Blue
   , talter   = 5
   , tfeature = [ Embed "treasure cache", Embed "treasure cache trap"
-               , ChangeTo "cachable", ConsideredByAI, Indistinct ]
+               , ChangeTo "cachable", ConsideredByAI ]
       -- Not explorable, but prominently placed, so hard to miss.
       -- Very beneficial, so AI eager to trigger, unless wary of traps.
   }
@@ -174,7 +174,7 @@ signboardUnread = TileKind  -- client only, indicates never used by this faction
   , talter   = 5
   , tfeature = [ ConsideredByAI  -- changes after use, so safe for AI
                , RevealAs "signboard"  -- to display as hidden
-               , Indistinct
+
                ]
   }
 signboardRead = TileKind
@@ -184,7 +184,7 @@ signboardRead = TileKind
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 5
-  , tfeature = [Embed "signboard", HideAs "signboard unread", Indistinct]
+  , tfeature = [Embed "signboard", HideAs "signboard unread"]
   }
 tree = TileKind
   { tsymbol  = 'O'
@@ -225,7 +225,7 @@ rubble = TileKind
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 4  -- boss can dig through
-  , tfeature = [OpenTo "rubbleOrNot", Embed "rubble", Indistinct]
+  , tfeature = [OpenTo "rubbleOrNot", Embed "rubble"]
   }
 rubbleSpice = TileKind
   { tsymbol  = '&'
@@ -236,7 +236,7 @@ rubbleSpice = TileKind
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 4  -- boss can dig through
-  , tfeature = [Spice, OpenTo "rubbleSpiceOrNot", Embed "rubble", Indistinct]
+  , tfeature = [Spice, OpenTo "rubbleSpiceOrNot", Embed "rubble"]
       -- It's not explorable, due to not being walkable nor clear and due
       -- to being a door (@OpenTo@), which is kind of OK, because getting
       -- the item is risky and, e.g., AI doesn't attempt it.
@@ -379,7 +379,7 @@ pulpit = TileKind
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 5
-  , tfeature = [Clear, Embed "pulpit", Indistinct]
+  , tfeature = [Clear, Embed "pulpit"]
                  -- mixed blessing, so AI ignores, saved for player fun
   }
 bush = TileKind
@@ -424,7 +424,7 @@ floorFog = TileKind
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 0
-  , tfeature = [Walkable, NoItem, Indistinct, OftenActor]
+  , tfeature = [Walkable, NoItem, OftenActor]
   }
 floorFogDark = floorFog
   { tname    = "thick fog"
@@ -441,7 +441,7 @@ floorSmoke = TileKind
   , tcolor   = Brown
   , tcolor2  = BrBlack
   , talter   = 0
-  , tfeature = [Walkable, NoItem, Indistinct]  -- not dark, embers
+  , tfeature = [Walkable, NoItem]  -- not dark, embers
   }
 floorSmokeDark = floorSmoke
   { tname    = "lingering smoke"
@@ -469,7 +469,7 @@ floorCorridor = TileKind
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 0
-  , tfeature = [Walkable, Clear, Indistinct]
+  , tfeature = [Walkable, Clear]
   }
 floorArena = floorCorridor
   { tfreq    = [ ("floorArenaLit", 1), ("rubbleSpiceOrNot", 30)
@@ -535,7 +535,7 @@ oriel = TileKind
   , tcolor   = White
   , tcolor2  = Black
   , talter   = maxBound  -- impenetrable
-  , tfeature = [Embed "black starry sky", Dark, Indistinct]
+  , tfeature = [Embed "black starry sky", Dark]
   }
 outerHullWall = hardRock
   { tname    = "outer hull wall"
@@ -548,7 +548,7 @@ doorlessWall = TileKind
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 100
-  , tfeature = [HideAs "fillerWall", Indistinct]
+  , tfeature = [HideAs "fillerWall"]
   }
 machineWall = TileKind
   { tsymbol  = '%'
@@ -558,7 +558,7 @@ machineWall = TileKind
   , tcolor   = White
   , tcolor2  = BrBlack
   , talter   = 100
-  , tfeature = [Spice, Clear, Indistinct]
+  , tfeature = [Spice, Clear]
   }
 wallObscuredSafety = TileKind
   { tsymbol  = '#'
@@ -569,7 +569,7 @@ wallObscuredSafety = TileKind
   , talter   = 5
   , tfeature = [ Embed "ruined first aid kit"
                , HideAs "suspect wall"
-               , Indistinct
+
                ]
   }
 wallObscured3dBillboard = TileKind
@@ -581,7 +581,7 @@ wallObscured3dBillboard = TileKind
   , talter   = 5
   , tfeature = [ Embed "3D billboard"
                , HideAs "suspect wall"
-               , Indistinct
+
                ]
   }
 rock = pillar
@@ -592,7 +592,7 @@ pillarCache2 = pillarCache
   { tname    = "jewelry display"
   , tfreq    = [("cachable", 10), ("escapeSetDark", 1)]
   , tfeature = [ Embed "jewelry display", Embed "treasure cache trap"
-               , ChangeTo "cachable", ConsideredByAI, Indistinct ]
+               , ChangeTo "cachable", ConsideredByAI ]
   }
 stairsLiftUp = stairsUp
   { tname    = "lift up"
