@@ -47,7 +47,7 @@ rogue = CaveKind
   , cactorCoeff   = 130  -- the maze requires time to explore
   , cactorFreq    = [("monster", 50), ("animal", 25), ("robot", 25)]
   , citemNum      = 6 `d` 5
-  , citemFreq     = [("common item", 40), ("treasure", 60), ("ship", 1)]
+  , citemFreq     = [("common item", 40), ("treasure", 60), ("curious item", 1)]
   , cplaceFreq    = [("rogue", 100)]
   , cpassable     = False
   , cdefTile        = "fillerWall"
@@ -88,7 +88,7 @@ arena = rogue
   , cactorFreq    = [("monster", 25), ("animal", 70), ("robot", 5)]
   , citemNum      = 5 `d` 5  -- few rooms
   , citemFreq     = [ ("common item", 20), ("treasure", 40), ("any scroll", 40)
-                    , ("ship", 1) ]
+                    , ("curious item", 1) ]
   , cplaceFreq    = [("arena", 100)]
   , cpassable     = True
   , cdefTile      = "arenaSetLit"
@@ -104,7 +104,7 @@ arena2 = arena
   , cnightChance  = 51  -- always night
   , citemNum      = 7 `d` 5  -- rare, so make it exciting
   , citemFreq     = [ ("common item", 20), ("treasure", 80)  -- lives up to the name
-                    , ("ship", 1) ]
+                    , ("curious item", 1) ]
   , cdefTile      = "arenaSetDark"
   , cdesc         = ""
   }
@@ -124,7 +124,7 @@ laboratory = arena2
   , chidden       = 7
   , citemNum      = 7 `d` 5  -- reward difficulty
   , citemFreq     = [ ("common item", 20), ("treasure", 40), ("any vial", 40)
-                    , ("ship", 1) ]
+                    , ("curious item", 1) ]
   , cplaceFreq    = [("laboratory", 100)]
   , cpassable     = False
   , cdefTile      = "fillerWall"
@@ -205,7 +205,7 @@ bridge = rogue
   , cactorCoeff   = 200  -- it's quite deep already, so spawn slowly
   , cactorFreq    = [("animal", 100)]
   , citemNum      = 9 `d` 5  -- lure them in with loot
-  , citemFreq     = filter ((`notElem` ["treasure", "ship"]) . fst)
+  , citemFreq     = filter ((`notElem` ["treasure", "curious item"]) . fst)
                     $ citemFreq rogue
   , cdesc         = "The bridge is gutted out and deserted. There are animal cries down below and ominous silence up above."
   }

@@ -200,7 +200,7 @@ paralizingProj = ItemKind
 harpoon = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "harpoon"
-  , ifreq    = [("ship", 100), ("harpoon", 100)]
+  , ifreq    = [("curious item", 100), ("harpoon", 100)]
   , iflavour = zipPlain [Brown]
   , icount   = 1 `dL` 5
   , irarity  = [(5, 5), (10, 5)]
@@ -214,7 +214,7 @@ harpoon = ItemKind
   , ikit     = []
   }
 harpoon2 = harpoon
-  { ifreq    = [("ship", 2), ("harpoon", 2)]
+  { ifreq    = [("curious item", 2), ("harpoon", 2)]
   , iweight  = 1000
   , idamage  = 10 `d` 1
   -- , idesc    = ""  -- perhaps something modern for a change? some sharpened cargo hook?
@@ -517,7 +517,7 @@ potion1 = potionTemplate
   , ifeature = [ELabel "of rose water"] ++ ifeature potionTemplate
   }
 potion2 = potionTemplate
-  { ifreq    = [("ship", 100)]
+  { ifreq    = [("curious item", 100)]
   , irarity  = [(6, 9), (10, 9)]
   , ieffects = [ Impress, RefillCalm (-20)
                , OnSmash (Explode "pheromone") ]
@@ -589,7 +589,7 @@ potion9 = potionTemplate
   , ifeature = [ELabel "of Shock and Awe"] ++ ifeature potionTemplate
   }
 potion10 = potionTemplate
-  { ifreq    = [("ship", 100)]
+  { ifreq    = [("curious item", 100)]
   , irarity  = [(10, 4)]
   , ieffects = [ RefillHP 60, Impress, RefillCalm (-60)
                , OnSmash (Explode "healing mist 2")
@@ -619,7 +619,7 @@ scrollTemplate = ItemKind
   , ikit     = []
   }
 scroll1 = scrollTemplate
-  { ifreq    = [("ship", 100), ("any scroll", 100)]
+  { ifreq    = [("curious item", 100), ("any scroll", 100)]
   , irarity  = [(5, 9), (10, 9)]  -- mixed blessing, so available early
   , ieffects = [Summon "hero" 1, Summon "mobile animal" (2 + 1 `d` 2)]
   , ifeature = [Unique, ELabel "of Reckless Beacon"] ++ ifeature scrollTemplate
@@ -632,7 +632,7 @@ scroll2 = scrollTemplate
   , ifeature = [ELabel "of greed"] ++ ifeature scrollTemplate
   }
 scroll3 = scrollTemplate
-  { ifreq    = [("ship", 100), ("any scroll", 100)]
+  { ifreq    = [("curious item", 100), ("any scroll", 100)]
   , irarity  = [(1, 4), (10, 2)]
   , ieffects = [Ascend True]
   }
@@ -683,7 +683,7 @@ scroll10 = scrollTemplate
   , ifeature = [ELabel "of molecular reconfiguration"] ++ ifeature scrollTemplate
   }
 scroll11 = scrollTemplate
-  { ifreq    = [("ship", 100), ("any scroll", 100)]
+  { ifreq    = [("curious item", 100), ("any scroll", 100)]
   , irarity  = [(6, 9), (10, 9)]
   , ieffects = [Summon "hero" 1]
   , ifeature = [Unique, ELabel "of Rescue Proclamation"]
@@ -812,7 +812,7 @@ necklaceTemplate = ItemKind
   , ikit     = []
   }
 necklace1 = necklaceTemplate
-  { ifreq    = [("ship", 100), ("any jewelry", 100)]
+  { ifreq    = [("curious item", 100), ("any jewelry", 100)]
   , irarity  = [(3, 0), (4, 1), (10, 2)]  -- prevents camping on lvl 3
   , iaspects = [Timeout $ (1 `d` 2) * 20]
   , ieffects = [Recharging (RefillHP 1)] ++ ieffects necklaceTemplate
@@ -864,7 +864,7 @@ necklace6 = necklaceTemplate
                ++ ieffects necklaceTemplate
   }
 necklace7 = necklaceTemplate
-  { ifreq    = [("ship", 100), ("any jewelry", 100)]
+  { ifreq    = [("curious item", 100), ("any jewelry", 100)]
   , iaspects = [AddMaxHP 15, AddArmorMelee 20, AddArmorRanged 10, Timeout 4]
   , ieffects = [ Recharging (InsertMove $ 1 `d` 3)  -- unpredictable
                , Recharging (RefillHP (-1))
@@ -949,7 +949,7 @@ ring1 = ringTemplate
   , ifeature = [EqpSlot EqpSlotAddSpeed] ++ ifeature ringTemplate
   }
 ring2 = ringTemplate
-  { ifreq    = [("ship", 100), ("any jewelry", 100)]
+  { ifreq    = [("curious item", 100), ("any jewelry", 100)]
   , irarity  = [(10, 2)]
   , iaspects = [AddSpeed $ (1 `d` 2) * 3, AddMaxCalm (-40), AddMaxHP (-20)]
   , ieffects = [OnSmash (Explode "distortion")]  -- high power
@@ -1306,7 +1306,7 @@ halberd3 = halberd
   }
 halberdPushActor = halberd
   { iname    = "Swiss Halberd"
-  , ifreq    = [("ship", 20)]
+  , ifreq    = [("curious item", 20)]
   , irarity  = [(8, 1), (9, 20)]
   , idamage  = 12 `d` 1
   , iaspects = iaspects halberd ++ [Timeout $ (1 `d` 2) * 10]
