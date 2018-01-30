@@ -103,7 +103,8 @@ arena2 = arena
   -- Trails provide enough light for fun stealth.
   , cnightChance  = 51  -- always night
   , citemNum      = 7 `d` 5  -- rare, so make it exciting
-  , citemFreq     = [ ("common item", 20), ("treasure", 80)  -- lives up to the name
+  , citemFreq     = [ ("common item", 20)
+                    , ("treasure", 80)  -- lives up to the name
                     , ("curious item", 1) ]
   , cdefTile      = "arenaSetDark"
   , cdesc         = ""
@@ -114,7 +115,8 @@ laboratory = arena2
   , cfreq         = [("deep random", 20), ("caveLaboratory", 1)]
   , cgrid         = DiceXY (2 `d` 2 + 7) 3
   , cminPlaceSize = DiceXY (3 `d` 2 + 4) 5
-  , cdarkChance   = 1 `d` 54 + 1 `dL` 20  -- most rooms lit, to compensate for corridors
+  , cdarkChance   = 1 `d` 54 + 1 `dL` 20
+      -- most rooms lit, to compensate for corridors
   , cnightChance  = 0  -- always day
   , cauxConnects  = 1%10
   , cmaxVoid      = 1%10

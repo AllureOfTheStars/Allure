@@ -232,6 +232,7 @@ net = ItemKind
   , iaspects = [AddHurtMelee $ -14 * 5]
   , ieffects = [ toOrganGameTurn "slowed" (3 + 1 `d` 3)
                , DropItem maxBound 1 CEqp "torso armor" ]
+      -- only one of each kind is dropped, because no rubbish in this group
   , ifeature = []
   , idesc    = "A large synthetic fibre net with weights affixed along the edges. Entangles armor and restricts movement."
   , ikit     = []
@@ -242,7 +243,8 @@ net = ItemKind
 light1 = ItemKind
   { isymbol  = symbolLight
   , iname    = "torch"
-  , ifreq    = [("common item", 100), ("light source", 100), ("wooden torch", 1)]
+  , ifreq    = [ ("common item", 100), ("light source", 100)
+               , ("wooden torch", 1) ]
   , iflavour = zipPlain [Brown]
   , icount   = 1 `d` 2
   , irarity  = [(1, 15)]
@@ -680,7 +682,8 @@ scroll10 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
   , irarity  = [(10, 20)]
   , ieffects = [Composite [PolyItem, Explode "firecracker"]]
-  , ifeature = [ELabel "of molecular reconfiguration"] ++ ifeature scrollTemplate
+  , ifeature = [ELabel "of molecular reconfiguration"]
+               ++ ifeature scrollTemplate
   }
 scroll11 = scrollTemplate
   { ifreq    = [("curious item", 100), ("any scroll", 100)]
@@ -816,7 +819,8 @@ necklace1 = necklaceTemplate
   , irarity  = [(3, 0), (4, 1), (10, 2)]  -- prevents camping on lvl 3
   , iaspects = [Timeout $ (1 `d` 2) * 20]
   , ieffects = [Recharging (RefillHP 1)] ++ ieffects necklaceTemplate
-  , ifeature = [Unique, ELabel "of Trickle Life", Durable, EqpSlot EqpSlotMiscBonus]
+  , ifeature = [ Unique, ELabel "of Trickle Life", Durable
+               , EqpSlot EqpSlotMiscBonus ]
                ++ ifeature necklaceTemplate
   -- , idesc    = ""
   }
