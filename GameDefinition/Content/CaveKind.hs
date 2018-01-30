@@ -47,7 +47,7 @@ rogue = CaveKind
   , cactorCoeff   = 130  -- the maze requires time to explore
   , cactorFreq    = [("monster", 50), ("animal", 25), ("robot", 25)]
   , citemNum      = 6 `d` 5
-  , citemFreq     = [("useful", 40), ("treasure", 60), ("ship", 1)]
+  , citemFreq     = [("common item", 40), ("treasure", 60), ("ship", 1)]
   , cplaceFreq    = [("rogue", 100)]
   , cpassable     = False
   , cdefTile        = "fillerWall"
@@ -87,7 +87,7 @@ arena = rogue
   , cactorCoeff   = 100
   , cactorFreq    = [("monster", 25), ("animal", 70), ("robot", 5)]
   , citemNum      = 5 `d` 5  -- few rooms
-  , citemFreq     = [ ("useful", 20), ("treasure", 40), ("any scroll", 40)
+  , citemFreq     = [ ("common item", 20), ("treasure", 40), ("any scroll", 40)
                     , ("ship", 1) ]
   , cplaceFreq    = [("arena", 100)]
   , cpassable     = True
@@ -103,7 +103,7 @@ arena2 = arena
   -- Trails provide enough light for fun stealth.
   , cnightChance  = 51  -- always night
   , citemNum      = 7 `d` 5  -- rare, so make it exciting
-  , citemFreq     = [ ("useful", 20), ("treasure", 80)  -- lives up to the name
+  , citemFreq     = [ ("common item", 20), ("treasure", 80)  -- lives up to the name
                     , ("ship", 1) ]
   , cdefTile      = "arenaSetDark"
   , cdesc         = ""
@@ -123,7 +123,7 @@ laboratory = arena2
   , copenChance   = 1%2
   , chidden       = 7
   , citemNum      = 7 `d` 5  -- reward difficulty
-  , citemFreq     = [ ("useful", 20), ("treasure", 40), ("any vial", 40)
+  , citemFreq     = [ ("common item", 20), ("treasure", 40), ("any vial", 40)
                     , ("ship", 1) ]
   , cplaceFreq    = [("laboratory", 100)]
   , cpassable     = False
@@ -266,7 +266,7 @@ raid = rogue
   , cactorCoeff   = 500  -- deep level with no kit, so slow spawning
   , cactorFreq    = [("animal", 50), ("robot", 50)]
   , citemNum      = 6 `d` 8  -- just one level, hard enemies, treasure
-  , citemFreq     = [("useful", 33), ("gem", 33), ("currency", 33)]
+  , citemFreq     = [("common item", 33), ("gem", 33), ("currency", 33)]
   , cescapeGroup  = Just "escape up"
   , cdesc         = ""
   }
@@ -287,7 +287,7 @@ brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
   , chidden       = 0
   , cactorFreq    = []
   , citemNum      = 5 `d` 8
-  , citemFreq     = [("useful", 100)]
+  , citemFreq     = [("common item", 100)]
   , cplaceFreq    = [("brawl", 60), ("rogue", 40)]
   , cpassable     = True
   , cdefTile      = "brawlSetLit"
@@ -316,7 +316,7 @@ shootout = rogue  -- a scenario with strong missiles;
   , citemNum      = 5 `d` 16
                       -- less items in inventory, more to be picked up,
                       -- to reward explorer and aggressor and punish camper
-  , citemFreq     = [ ("useful", 30)
+  , citemFreq     = [ ("common item", 30)
                     , ("any arrow", 400), ("harpoon", 300)
                     , ("any vial", 60) ]
                       -- Many consumable buffs are needed in symmetric maps
@@ -347,7 +347,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , chidden       = 0
   , cactorFreq    = []
   , citemNum      = 5 `d` 8
-  , citemFreq     = [ ("useful", 30), ("treasure", 30), ("gem", 100)
+  , citemFreq     = [ ("common item", 30), ("treasure", 30), ("gem", 100)
                     , ("weak arrow", 500), ("harpoon", 400) ]
   , cplaceFreq    = [("park", 100)]
   , cpassable     = True
@@ -374,7 +374,7 @@ zoo = rogue  -- few lights and many solids, to help the less numerous heroes
   , chidden       = 0
   , cactorFreq    = []
   , citemNum      = 7 `d` 8
-  , citemFreq     = [("useful", 100), ("light source", 1000)]
+  , citemFreq     = [("common item", 100), ("light source", 1000)]
   , cplaceFreq    = [("zoo", 50)]
   , cpassable     = True
   , cdefTile      = "zooSet"
@@ -406,7 +406,7 @@ ambush = rogue  -- a scenario with strong missiles;
   , chidden       = 0
   , cactorFreq    = []
   , citemNum      = 5 `d` 8
-  , citemFreq     = [("useful", 30), ("any arrow", 400), ("harpoon", 300)]
+  , citemFreq     = [("common item", 30), ("any arrow", 400), ("harpoon", 300)]
   , cplaceFreq    = [("ambush", 100)]
   , cpassable     = True
   , cdefTile      = "ambushSet"
@@ -431,7 +431,7 @@ battle = rogue  -- few lights and many solids, to help the less numerous heroes
   , chidden       = 0
   , cactorFreq    = []
   , citemNum      = 5 `d` 8
-  , citemFreq     = [("useful", 100), ("light source", 200)]
+  , citemFreq     = [("common item", 100), ("light source", 200)]
   , cplaceFreq    = [("battle", 50), ("rogue", 50)]
   , cpassable     = True
   , cdefTile      = "battleSet"
