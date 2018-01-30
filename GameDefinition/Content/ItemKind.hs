@@ -379,7 +379,6 @@ flask7 = flaskTemplate
   { ifreq    = [("useful", 100), ("flask", 100), ("any vial", 100)]
   , irarity  = [(10, 4)]
   , ieffects = [ toOrganActorTurn "hasted" (20 + 1 `d` 5)
-               , OnSmash (Explode "violent chemical")
                , OnSmash (Explode "haste spray") ]
   , ifeature = [ELabel "of haste brew"] ++ ifeature flaskTemplate
   }
@@ -389,7 +388,8 @@ flask8 = flaskTemplate
   , ieffects = [ toOrganGameTurn "slowed" (20 + 1 `d` 5)
                , toOrganNone "regenerating", toOrganNone "regenerating"  -- x2
                , RefillCalm 5
-               , OnSmash (Explode "slowness mist") ]
+               , OnSmash (Explode "slowness mist")
+               , OnSmash (Explode "youth sprinkle") ]
   , ifeature = [ELabel "of lethargy brew"] ++ ifeature flaskTemplate
   }
 flask9 = flaskTemplate
@@ -441,7 +441,7 @@ flask14 = flaskTemplate
   { ifreq    = [("useful", 100), ("flask", 100), ("any vial", 100)]
   , irarity  = [(1, 4), (10, 14)]
   , ieffects = [ toOrganNone "regenerating", toOrganNone "regenerating"  -- x2
-               , OnSmash (Explode "healing mist") ]
+               , OnSmash (Explode "youth sprinkle") ]
   , ifeature = [ELabel "of regeneration brew"] ++ ifeature flaskTemplate
   }
 flask15 = flaskTemplate
@@ -461,7 +461,6 @@ flask17 = flaskTemplate
   { ifreq    = [("useful", 100), ("flask", 100), ("any vial", 100)]
   , irarity  = [(10, 4)]
   , ieffects = [ toOrganNone "slow resistant"
-               , OnSmash (Explode "violent chemical")
                , OnSmash (Explode "anti-slow mist") ]
   , ifeature = [ELabel "of slow resistance"] ++ ifeature flaskTemplate
   }
@@ -547,8 +546,7 @@ potion5 = potionTemplate
                                 , Explode "sparse shower"
                                 , Explode "melee protective balm"
                                 , Explode "ranged protective balm"
-                                , Explode "red paint"
-                                , Explode "violent chemical" ]) ]
+                                , Explode "red paint" ]) ]
   }
 potion6 = potionTemplate
   -- needs to be common to show at least a portion of effects
