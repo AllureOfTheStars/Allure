@@ -19,7 +19,6 @@ import Prelude ()
 import Game.LambdaHack.Common.Prelude
 
 import Game.LambdaHack.Common.Ability
-import Game.LambdaHack.Common.Faction
 import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.ModeKind
 
@@ -59,7 +58,7 @@ playerCivilian = Player
 
 playerMonster = Player
   { fname = "Alien Hierarchy"
-  , fgroups = ["monster", "mobile monster", "immobile monster"]
+  , fgroups = ["monster", "mobile monster"]
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False
