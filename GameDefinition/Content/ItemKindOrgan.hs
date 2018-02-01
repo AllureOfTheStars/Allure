@@ -162,7 +162,7 @@ sulfurFissure = boilingFissure
   { iname    = "fissure"
   , ifreq    = [("medbot fissure", 100)]
   , icount   = 2 + 1 `d` 2
-  , idamage  = 0
+  , idamage  = 0  -- heal not via (negative) idamage, for armour would block it
   , ieffects = [RefillHP 5]
   , idesc    = ""
   }
