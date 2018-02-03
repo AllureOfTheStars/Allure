@@ -37,40 +37,40 @@ create-gif :
 	gifsicle -O3 --careful -d2 -l ~/.Allure/screenshots/prtscn*.gif -o ~/.Allure/screenshots/screenshot.gif
 
 frontendRaid:
-	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode raid
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode raid
 
 frontendBrawl:
-	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode brawl
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode brawl
 
 frontendShootout:
-	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode shootout
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode shootout
 
 frontendEscape:
-	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 3 --dumpInitRngs --automateAll --gameMode escape
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --savePrefix test --newGame 3 --dumpInitRngs --automateAll --gameMode escape
 
 frontendZoo:
-	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 2 --dumpInitRngs --automateAll --gameMode zoo
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --savePrefix test --newGame 2 --dumpInitRngs --automateAll --gameMode zoo
 
 frontendAmbush:
-	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode ambush
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode ambush
 
 frontendCrawl:
-	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 1 --dumpInitRngs --automateAll --gameMode crawl
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --savePrefix test --newGame 1 --dumpInitRngs --automateAll --gameMode crawl
 
 frontendSafari:
-	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 2 --dumpInitRngs --automateAll --gameMode safari
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --savePrefix test --newGame 2 --dumpInitRngs --automateAll --gameMode safari
 
 frontendSafariSurvival:
-	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode "safari survival"
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode "safari survival"
 
 frontendBattle:
-	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode battle
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode battle
 
 frontendBattleSurvival:
-	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode "battle survival"
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode "battle survival"
 
 frontendDefense:
-	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix test --newGame 9 --dumpInitRngs --automateAll --gameMode defense
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --savePrefix test --newGame 9 --dumpInitRngs --automateAll --gameMode defense
 
 
 benchMemoryAnim:
