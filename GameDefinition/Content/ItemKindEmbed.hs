@@ -136,7 +136,7 @@ signboardExit = ItemKind
 signboardMap = signboardExit
   { iname    = "signboard with a map"
   , ifreq    = [("signboard", 20)]
-  , ieffects = [Detect 10]  -- low tech, hence fully operational
+  , ieffects = [DetectEmbed 12]  -- low tech, hence fully operational
   , idesc    = "Detailed schematics for the maintenance crew."
   }
 fireSmall = ItemKind
