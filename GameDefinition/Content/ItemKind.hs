@@ -1074,7 +1074,7 @@ gloveJousting = gloveFencing
   , ifreq    = [("common item", 100)]
   , iflavour = zipFancy [BrRed]
   , irarity  = [(1, 3), (10, 3)]
-  , iweight  = 1000
+  , iweight  = 3000
   , idamage  = 3 `d` 1
   , iaspects = [ AddHurtMelee $ (-7 + 1 `dL` 5) * 3
                , AddArmorMelee $ (2 + 1 `d` 2 + 1 `dL` 2) * 5
@@ -1117,7 +1117,7 @@ shield = buckler
   { iname    = "shield"
   , irarity  = [(8, 4)]  -- the stronger variants add to total probability
   , iflavour = zipPlain [Green]
-  , iweight  = 3000
+  , iweight  = 4000
   , idamage  = 4 `d` 1
   , iaspects = [ AddArmorMelee 80  -- not enough to compensate; won't be in eqp
                , AddHurtMelee (-70)  -- too harmful; won't be wielded as weapon
@@ -1130,13 +1130,13 @@ shield = buckler
   }
 shield2 = shield
   { ifreq    = [("common item", 3 * 3)]  -- very low base rarity
-  , iweight  = 4000
+  , iweight  = 5000
   , idamage  = 8 `d` 1
   -- , idesc    = ""
   }
 shield3 = shield
   { ifreq    = [("common item", 1 * 3)]  -- very low base rarity
-  , iweight  = 5000
+  , iweight  = 6000
   , idamage  = 12 `d` 1
   -- , idesc    = ""
   }
