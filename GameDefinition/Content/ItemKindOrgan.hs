@@ -23,11 +23,11 @@ import Game.LambdaHack.Content.ItemKind
 
 organs :: [ItemKind]
 organs =
-  [fist, foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, horn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision5, vision6, vision7, vision8, vision10, vision12, vision14, vision16, nostril, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, impressed]
+  [fist, foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision5, vision6, vision7, vision8, vision10, vision12, vision14, vision16, nostril, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, impressed]
   -- Allure-specific
   ++ [razor, liveWire, robotBrain, wasteContainer, spotlight]
 
-fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, horn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision5, vision6, vision7, vision8, vision10, vision12, vision14, vision16, nostril, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, impressed :: ItemKind
+fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision5, vision6, vision7, vision8, vision10, vision12, vision14, vision16, nostril, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, impressed :: ItemKind
 -- Allure-specific
 razor, liveWire, robotBrain, wasteContainer, spotlight :: ItemKind
 
@@ -110,14 +110,34 @@ largeJaw = fist
   , idamage  = 10 `d` 1
   , idesc    = "Enough to swallow anything in a single gulp."
   }
+antler = fist
+  { iname    = "antler"
+  , ifreq    = [("antler", 100)]
+  , icount   = 2
+  , iverbHit = "ram"
+  , idamage  = 4 `d` 1
+  , iaspects = [Timeout $ 3 + (1 `d` 3) * 3, AddArmorMelee 10]  -- bonus doubled
+  , ieffects = [Recharging (PushActor (ThrowMod 100 50))]  -- 1 step, slow
+  , idesc    = ""
+  }
 horn = fist
   { iname    = "horn"
-  , ifreq    = [("horn", 20)]
+  , ifreq    = [("horn", 100)]
   , icount   = 2
   , iverbHit = "impale"
-  , idamage  = 6 `d` 1
-  , iaspects = [AddHurtMelee 20]
-  , idesc    = "Sharp and solid, for defence or attack."
+  , idamage  = 5 `d` 1
+  , iaspects = [AddHurtMelee 10, AddArmorMelee 10]  -- bonus doubled
+  , idesc    = "Sharp and long, for defence or attack."
+  }
+rhinoHorn = fist
+  { iname    = "ugly horn"  -- made of keratin, unlike real horns
+  , ifreq    = [("rhino horn", 20)]
+  , icount   = 1  -- single, unlike real horns
+  , iverbHit = "impale"
+  , idamage  = 5 `d` 1
+  , iaspects = [Timeout 7, AddHurtMelee 20]
+  , ieffects = [Recharging Impress]  -- the owner is a mid-boss, after all
+  , idesc    = "Very solid, considering it has the same composition as fingernails."
   }
 
 -- * Special weapon organs
@@ -404,6 +424,7 @@ impressed = armoredSkin
   , iverbHit = "confuse"
   , iweight  = 0
   , iaspects = [AddMaxCalm (-1)]  -- to help player notice on main screen
+                                  -- and to count as bad tmp condition
   , ieffects = [OnSmash $ tmpNoLonger "impressed"]  -- not @Periodic@
   , ifeature = [Fragile, Durable]  -- hack: destroy on drop
   , idesc    = ""
