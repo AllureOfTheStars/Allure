@@ -1166,7 +1166,7 @@ dagger = ItemKind
 daggerDropBestWeapon = dagger
   { iname    = "Double Dagger"
   , ifreq    = [("treasure", 20)]
-  , irarity  = [(1, 1), (10, 4)]
+  , irarity  = [(1, 3), (10, 3)]
   -- Here timeout has to be small, if the player is to count on the effect
   -- occuring consistently in any longer fight. Otherwise, the effect will be
   -- absent in some important fights, leading to the feeling of bad luck,
@@ -1284,7 +1284,7 @@ halberd = ItemKind
   , ifreq    = [("common item", 100), ("starting weapon", 20)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
-  , irarity  = [(7, 1), (9, 20)]
+  , irarity  = [(7, 1), (9, 15)]
   , iverbHit = "impale"
   , iweight  = 3000
   , idamage  = 12 `d` 1
@@ -1297,13 +1297,13 @@ halberd = ItemKind
   , ikit     = []
   }
 halberd2 = halberd
-  { ifreq    = [("common item", 3), ("starting weapon", 1)]
+  { ifreq    = [("common item", 3 * 1), ("starting weapon", 1)]
   , iweight  = 4000
   , idamage  = 18 `d` 1
   -- , idesc    = ""
   }
 halberd3 = halberd
-  { ifreq    = [("common item", 1)]
+  { ifreq    = [("common item", 1 * 2)]  -- compensating for low base rarity
   , iweight  = 5000
   , idamage  = 24 `d` 1
   -- , idesc    = ""
@@ -1311,7 +1311,7 @@ halberd3 = halberd
 halberdPushActor = halberd
   { iname    = "Swiss Halberd"
   , ifreq    = [("curious item", 20)]
-  , irarity  = [(8, 1), (10, 20)]
+  , irarity  = [(8, 1), (10, 15)]
   , idamage  = 12 `d` 1
   , iaspects = iaspects halberd ++ [Timeout $ (1 `d` 2) * 10]
   , ieffects = ieffects halberd
