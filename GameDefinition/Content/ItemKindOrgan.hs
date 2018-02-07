@@ -155,7 +155,7 @@ thorn = fist
   , ifreq    = [("thorn", 100)]
   , icount   = 2 + 1 `d` 3
   , iverbHit = "impale"
-  , idamage  = 1 `d` 3
+  , idamage  = 2 `d` 1
   , ifeature = [Meleeable]  -- not Durable
   , idesc    = "Sharp yet brittle."
   }
@@ -166,7 +166,7 @@ boilingFissure = fist
   , iverbHit = "hiss at"
   , idamage  = 1 `d` 1
   , iaspects = [AddHurtMelee 20]  -- decreasing as count decreases
-  , ieffects = [InsertMove $ 1 `d` 3]
+  , ieffects = [DropItem 1 1 COrgan "temporary condition"]  -- useful; limited
   , ifeature = [Meleeable]  -- not Durable
   , idesc    = ""
   }
@@ -175,7 +175,7 @@ arsenicFissure = boilingFissure
   , ifreq    = [("biogas fissure", 100)]
   , icount   = 3 + 1 `d` 3
   , idamage  = 2 `d` 1
-  , ieffects = [toOrganGameTurn "weakened" (2 + 1 `dL` 3)]
+  , ieffects = []  -- nothing interesting fits the weaken/poison biological data
   , idesc    = ""
   }
 sulfurFissure = boilingFissure
@@ -445,9 +445,9 @@ liveWire = fist
   , ifreq    = [("live wire", 100)]
   , icount   = 1
   , iverbHit = "shock"
-  , idamage  = 1 `d` 1
+  , idamage  = 0
   , iaspects = [Timeout $ 3 + 1 `d` 2, AddHurtMelee 20]
-  , ieffects = [ Recharging (DropItem 1 maxBound COrgan "temporary condition")
+  , ieffects = [ Recharging $ Paralyze 6
                , Recharging $ RefillHP (-2)
                ]
   , idesc    = ""
