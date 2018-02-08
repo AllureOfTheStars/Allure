@@ -6,10 +6,10 @@
 #
 
 play:
-	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --dumpInitRngs
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --savePrefix play --dumpInitRngs
 
 shot:
-	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --dumpInitRngs --printEachScreen
+	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --savePrefix play --dumpInitRngs --printEachScreen
 
 expose-lore:
 	dist/build/Allure/Allure --dbgMsgSer --logPriority 4 --dumpInitRngs --savePrefix know --newGame 2 --gameMode crawl --knowItems --benchmark --noAnim --maxFps 1000
