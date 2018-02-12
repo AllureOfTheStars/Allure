@@ -354,8 +354,8 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , cplaceFreq    = [("park", 100)]
   , cpassable     = True
   , cdefTile      = "escapeSetDark"  -- different tiles, not burning yet
-  , cdarkCorTile  = "trailLit"  -- let trails give off light
-  , clitCorTile   = "trailLit"
+  , cdarkCorTile  = "alarmingTrailLit"  -- let trails give off light
+  , clitCorTile   = "alarmingTrailLit"
   , cescapeGroup  = Just "escape outdoor down"
   , cdesc         = ""
   }
