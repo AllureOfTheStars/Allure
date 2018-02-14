@@ -290,6 +290,7 @@ rosterEscape = Roster
                    , [(7, 1, "scout hero"), (7, 2, "escapist hero")] )
                  , ( playerAntiHero { fname = "Red Collar Bro"
                                     , fcanEscape = False  -- start on escape
+                                    , fneverEmpty = False  -- loot after killing
                                     , fhiCondPoly = hiDweller }
                    , [(7, 1, "scout hero"), (7, 7, "ambusher hero")] )
                  , (playerHorror, []) ]

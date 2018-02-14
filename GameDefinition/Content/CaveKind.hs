@@ -445,7 +445,6 @@ battle = rogue  -- few lights and many solids, to help the less numerous heroes
 safari1 = brawl
   { cname         = "Hunam habitat"
   , cfreq         = [("caveSafari1", 1)]
-  , cescapeGroup  = Nothing
   , cstairFreq    = [("staircase outdoor", 1)]
   , cdesc         = "\"DLC 1. Hunams scavenge in a forest in their usual disgusting way.\""
   }
