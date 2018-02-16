@@ -1350,7 +1350,7 @@ wand1 = wandTemplate
 gemTemplate = ItemKind
   { isymbol  = symbolGold
   , iname    = "gem"
-  , ifreq    = [("gem unknown", 1)]
+  , ifreq    = [("gem unknown", 1), ("valuable", 100)]
   , iflavour = zipPlain $ delete BrYellow brightCol  -- natural, so not fancy
   , icount   = 1
   , irarity  = [(3, 0), (10, 24)]
@@ -1364,7 +1364,8 @@ gemTemplate = ItemKind
   , ikit     = []
   }
 gem1 = gemTemplate
-  { ifreq    = [("treasure", 100), ("gem", 100), ("any jewelry", 100)]
+  { ifreq    = [ ("treasure", 100), ("gem", 100), ("any jewelry", 100)
+               , ("valuable", 100) ]
   , irarity  = [(3, 0), (10, 24)]
   , iaspects = [AddShine 1, AddSpeed (-1)]
                  -- reflects strongly, distracts; so it glows in the dark,
@@ -1372,21 +1373,25 @@ gem1 = gemTemplate
   , ieffects = [RefillCalm (-1)]  -- minor effect to ensure no id-on-pickup
   }
 gem2 = gem1
-  { ifreq    = [("treasure", 100), ("gem", 100), ("any jewelry", 100)]
+  { ifreq    = [ ("treasure", 100), ("gem", 100), ("any jewelry", 100)
+               , ("valuable", 100) ]
   , irarity  = [(5, 0), (10, 28)]
   }
 gem3 = gem1
-  { ifreq    = [("treasure", 100), ("gem", 100), ("any jewelry", 100)]
+  { ifreq    = [ ("treasure", 100), ("gem", 100), ("any jewelry", 100)
+               , ("valuable", 100) ]
   , irarity  = [(7, 0), (10, 32)]
   }
 gem4 = gem1
-  { ifreq    = [("treasure", 100), ("gem", 100), ("any jewelry", 100)]
+  { ifreq    = [ ("treasure", 100), ("gem", 100), ("any jewelry", 100)
+               , ("valuable", 100) ]
   , irarity  = [(9, 0), (10, 100)]
   }
 gem5 = gem1
   { isymbol  = symbolSpecial
   , iname    = "stimpack"
-  , ifreq    = [("treasure", 100), ("gem", 100), ("any jewelry", 100)]
+  , ifreq    = [ ("treasure", 100), ("gem", 100), ("any jewelry", 100)
+               , ("valuable", 100) ]
   , iflavour = zipPlain [BrYellow]
   , irarity  = [(1, 40), (10, 40)]
   , ieffects = [RefillCalm 5, RefillHP 15]
@@ -1396,7 +1401,7 @@ gem5 = gem1
 currencyTemplate = ItemKind
   { isymbol  = symbolGold
   , iname    = "gold grain"
-  , ifreq    = [("currency unknown", 100)]
+  , ifreq    = [("currency unknown", 100), ("valuable", 1)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 10 + 1 `d` 20 + 1 `dL` 20
   , irarity  = [(1, 25), (10, 10)]
@@ -1410,7 +1415,7 @@ currencyTemplate = ItemKind
   , ikit     = []
   }
 currency = currencyTemplate
-  { ifreq    = [("treasure", 100), ("currency", 100)]
+  { ifreq    = [("treasure", 100), ("currency", 100), ("valuable", 1)]
   , iaspects = [AddShine 1, AddSpeed (-1)]
   , ieffects = [RefillCalm (-1)]
   }
