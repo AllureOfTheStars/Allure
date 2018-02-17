@@ -230,7 +230,7 @@ net = ItemKind
   , iweight  = 1000
   , idamage  = 2 `d` 1
   , iaspects = [AddHurtMelee $ -14 * 5]
-  , ieffects = [ toOrganGameTurn "slowed" (3 + 1 `d` 3)
+  , ieffects = [ toOrganBad "slowed" (3 + 1 `d` 3)
                , DropItem maxBound 1 CEqp "torso armor" ]
       -- only one of each kind is dropped, because no rubbish in this group
   , ifeature = []
@@ -345,32 +345,32 @@ flaskTemplate = ItemKind
 flask1 = flaskTemplate
   { ifreq    = [("common item", 100), ("flask", 100), ("any vial", 100)]
   , irarity  = [(10, 4)]
-  , ieffects = [ toOrganActorTurn "strengthened" (20 + 1 `d` 5)
-               , toOrganNone "regenerating"
+  , ieffects = [ toOrganGood "strengthened" (20 + 1 `d` 5)
+               , toOrganNoTimer "regenerating"
                , OnSmash (Explode "dense shower") ]
   , ifeature = [ELabel "of strength renewal brew"] ++ ifeature flaskTemplate
   }
 flask2 = flaskTemplate
   { ifreq    = [("common item", 100), ("flask", 100), ("any vial", 100)]
-  , ieffects = [ toOrganGameTurn "weakened" (20 + 1 `d` 5)
+  , ieffects = [ toOrganBad "weakened" (20 + 1 `d` 5)
                , OnSmash (Explode "sparse shower") ]
   , ifeature = [ELabel "of weakness brew"] ++ ifeature flaskTemplate
   }
 flask3 = flaskTemplate
   { ifreq    = [("common item", 100), ("flask", 100), ("any vial", 100)]
-  , ieffects = [ toOrganActorTurn "protected from melee" (20 + 1 `d` 5)
+  , ieffects = [ toOrganGood "protected from melee" (20 + 1 `d` 5)
                , OnSmash (Explode "melee protective balm") ]
   , ifeature = [ELabel "of melee protective balm"] ++ ifeature flaskTemplate
   }
 flask4 = flaskTemplate
   { ifreq    = [("common item", 100), ("flask", 100), ("any vial", 100)]
-  , ieffects = [ toOrganActorTurn "protected from ranged" (20 + 1 `d` 5)
+  , ieffects = [ toOrganGood "protected from ranged" (20 + 1 `d` 5)
                , OnSmash (Explode "ranged protective balm") ]
   , ifeature = [ELabel "of ranged protective balm"] ++ ifeature flaskTemplate
   }
 flask5 = flaskTemplate
   { ifreq    = [("common item", 100), ("flask", 100), ("any vial", 100)]
-  , ieffects = [ toOrganGameTurn "painted red" (20 + 1 `d` 5)
+  , ieffects = [ toOrganBad "painted red" (20 + 1 `d` 5)
                , OnSmash (Explode "red paint") ]
   , ifeature = [ELabel "of red paint"] ++ ifeature flaskTemplate
   }
@@ -380,15 +380,15 @@ flask6 = flaskTemplate
 flask7 = flaskTemplate
   { ifreq    = [("common item", 100), ("flask", 100), ("any vial", 100)]
   , irarity  = [(10, 4)]
-  , ieffects = [ toOrganActorTurn "hasted" (20 + 1 `d` 5)
+  , ieffects = [ toOrganGood "hasted" (20 + 1 `d` 5)
                , OnSmash (Explode "haste spray") ]
   , ifeature = [ELabel "of haste brew"] ++ ifeature flaskTemplate
   }
 flask8 = flaskTemplate
   { ifreq    = [("common item", 100), ("flask", 100), ("any vial", 100)]
   , irarity  = [(1, 14), (10, 4)]
-  , ieffects = [ toOrganGameTurn "slowed" (20 + 1 `d` 5)
-               , toOrganNone "regenerating", toOrganNone "regenerating"  -- x2
+  , ieffects = [ toOrganBad "slowed" (20 + 1 `d` 5)
+               , toOrganNoTimer "regenerating", toOrganNoTimer "regenerating"  -- x2
                , RefillCalm 5
                , OnSmash (Explode "slowness mist")
                , OnSmash (Explode "youth sprinkle") ]
@@ -397,14 +397,14 @@ flask8 = flaskTemplate
 flask9 = flaskTemplate
   { ifreq    = [("common item", 100), ("flask", 100), ("any vial", 100)]
   , irarity  = [(10, 4)]
-  , ieffects = [ toOrganActorTurn "far-sighted" (40 + 1 `d` 10)
+  , ieffects = [ toOrganGood "far-sighted" (40 + 1 `d` 10)
                , OnSmash (Explode "eye drop") ]
   , ifeature = [ELabel "of eye drops"] ++ ifeature flaskTemplate
   }
 flask10 = flaskTemplate
   { ifreq    = [("common item", 100), ("flask", 100), ("any vial", 100)]
   , irarity  = [(10, 2)]
-  , ieffects = [ toOrganActorTurn "keen-smelling" (40 + 1 `d` 10)
+  , ieffects = [ toOrganGood "keen-smelling" (40 + 1 `d` 10)
                , DetectActor 10
                , OnSmash (Explode "smelly droplet") ]
   , ifeature = [ELabel "of smelly concoction"] ++ ifeature flaskTemplate
@@ -412,7 +412,7 @@ flask10 = flaskTemplate
 flask11 = flaskTemplate
   { ifreq    = [("common item", 100), ("flask", 100), ("any vial", 100)]
   , irarity  = [(10, 4)]
-  , ieffects = [ toOrganActorTurn "shiny-eyed" (40 + 1 `d` 10)
+  , ieffects = [ toOrganGood "shiny-eyed" (40 + 1 `d` 10)
                , OnSmash (Explode "eye shine") ]
   , ifeature = [ELabel "of cat tears"] ++ ifeature flaskTemplate
   }
@@ -420,14 +420,14 @@ flask12 = flaskTemplate
   { iname    = "bottle"
   , ifreq    = [("common item", 100), ("flask", 100), ("any vial", 100)]
   , icount   = 1 `d` 3
-  , ieffects = [ toOrganActorTurn "drunk" (20 + 1 `d` 5)
+  , ieffects = [ toOrganGood "drunk" (20 + 1 `d` 5)
                , Burn 1, RefillHP 3
                , OnSmash (Explode "whiskey spray") ]
   , ifeature = [ELabel "of whiskey"] ++ ifeature flaskTemplate
   }
 flask13 = flaskTemplate
   { ifreq    = [("common item", 100), ("flask", 100), ("any vial", 100)]
-  , ieffects = [ toOrganActorTurn "drunk" (20 + 1 `d` 5)
+  , ieffects = [ toOrganGood "drunk" (20 + 1 `d` 5)
                , Burn 1, RefillHP 3
                , Summon "mobile animal" 1
                , OnSmash (Summon "mobile animal" 1)
@@ -442,27 +442,27 @@ flask13 = flaskTemplate
 flask14 = flaskTemplate
   { ifreq    = [("common item", 100), ("flask", 100), ("any vial", 100)]
   , irarity  = [(1, 4), (10, 14)]
-  , ieffects = [ toOrganNone "regenerating", toOrganNone "regenerating"  -- x2
+  , ieffects = [ toOrganNoTimer "regenerating", toOrganNoTimer "regenerating"  -- x2
                , OnSmash (Explode "youth sprinkle") ]
   , ifeature = [ELabel "of regeneration brew"] ++ ifeature flaskTemplate
   }
 flask15 = flaskTemplate
   { ifreq    = [("common item", 100), ("flask", 100), ("any vial", 100)]
-  , ieffects = [ toOrganNone "poisoned", toOrganNone "poisoned"  -- x2
+  , ieffects = [ toOrganNoTimer "poisoned", toOrganNoTimer "poisoned"  -- x2
                , OnSmash (Explode "poison cloud") ]
   , ifeature = [ELabel "of poison"] ++ ifeature flaskTemplate
   }
 flask16 = flaskTemplate
   { ifreq    = [("common item", 100), ("flask", 100), ("any vial", 100)]
   , icount   = 1 `d` 3
-  , ieffects = [ toOrganNone "poisoned"
+  , ieffects = [ toOrganNoTimer "poisoned"
                , OnSmash (Explode "poison cloud") ]
   , ifeature = [ELabel "of weak poison"] ++ ifeature flaskTemplate
   }
 flask17 = flaskTemplate
   { ifreq    = [("common item", 100), ("flask", 100), ("any vial", 100)]
   , irarity  = [(10, 4)]
-  , ieffects = [ toOrganNone "slow resistant"
+  , ieffects = [ toOrganNoTimer "slow resistant"
                , OnSmash (Explode "anti-slow mist") ]
   , ifeature = [ELabel "of slow resistance"] ++ ifeature flaskTemplate
   }
@@ -470,21 +470,21 @@ flask18 = flaskTemplate
   { ifreq    = [("common item", 100), ("flask", 100), ("any vial", 100)]
   , icount   = 1 `d` 2
   , irarity  = [(10, 4)]
-  , ieffects = [ toOrganNone "poison resistant"
+  , ieffects = [ toOrganNoTimer "poison resistant"
                , OnSmash (Explode "antidote mist") ]
   , ifeature = [ELabel "of poison resistance"] ++ ifeature flaskTemplate
   }
 flask19 = flaskTemplate
   { ifreq    = [("common item", 100), ("flask", 100), ("any vial", 100)]
-  , ieffects = [ toOrganGameTurn "blind" (40 + 1 `d` 10)
+  , ieffects = [ toOrganBad "blind" (40 + 1 `d` 10)
                , OnSmash (Explode "iron filing") ]
   , ifeature = [ELabel "of blindness"] ++ ifeature flaskTemplate
   }
 flask20 = flaskTemplate
   { ifreq    = [("common item", 100), ("flask", 100), ("any vial", 100)]
-  , ieffects = [ toOrganNone "poisoned"
-               , toOrganGameTurn "weakened" (20 + 1 `d` 5)
-               , toOrganGameTurn "painted red" (20 + 1 `d` 5)
+  , ieffects = [ toOrganNoTimer "poisoned"
+               , toOrganBad "weakened" (20 + 1 `d` 5)
+               , toOrganBad "painted red" (20 + 1 `d` 5)
                , OnSmash (Explode "poison cloud") ]
   , ifeature = [ELabel "of calamity"] ++ ifeature flaskTemplate
   }
@@ -543,7 +543,7 @@ potion5 = potionTemplate
   , icount   = 1 `d` 4
   , ieffects = [ OneOf [ RefillHP 10, RefillHP 5, Burn 5
                        , DropItem 1 maxBound COrgan "poisoned"
-                       , toOrganActorTurn "strengthened" (20 + 1 `d` 5) ]
+                       , toOrganGood "strengthened" (20 + 1 `d` 5) ]
                , OnSmash (OneOf [ Explode "dense shower"
                                 , Explode "sparse shower"
                                 , Explode "melee protective balm"
@@ -559,7 +559,7 @@ potion6 = potionTemplate
                , OneOf [ RefillCalm (-60)
                        , RefillHP 20, RefillHP 10, Burn 10
                        , DropItem 1 maxBound COrgan "poisoned"
-                       , toOrganActorTurn "hasted" (20 + 1 `d` 5) ]
+                       , toOrganGood "hasted" (20 + 1 `d` 5) ]
                , OnSmash (OneOf [ Explode "healing mist 2"
                                 , Explode "wounding mist"
                                 , Explode "distressing odor"
@@ -717,7 +717,7 @@ jumpingPole = ItemKind
   , iweight  = 10000
   , idamage  = 0
   , iaspects = [Timeout $ (2 + 1 `d` 2 - 1 `dL` 2) * 5]
-  , ieffects = [Recharging (toOrganActorTurn "hasted" 1)]
+  , ieffects = [Recharging (toOrganGood "hasted" 1)]
                  -- safe for AI, because it speeds up, so when AI applies it
                  -- again and again, it gets its time back and is not stuck;
                  -- in total, the explorations speed is unchanged,
@@ -755,7 +755,7 @@ seeingItem = ItemKind
   , idamage  = 0
   , iaspects = [ AddSight 10, AddMaxCalm 30, AddShine 2
                , Timeout $ 1 + 1 `d` 2 ]
-  , ieffects = [ Recharging (toOrganNone "poisoned")
+  , ieffects = [ Recharging (toOrganNoTimer "poisoned")
                , Recharging (Summon "mobile robot" 1) ]
   , ifeature = [Periodic]
   , idesc    = "A functioning visual sensor torn out from some sizable robot. The circuitry seem too large for basic signal processing alone. Watch out for the sharp edges and the seeping coolant liquid."
@@ -1453,7 +1453,7 @@ constructionHooter = scrollTemplate
 scroll14 = scrollTemplate
   { ifreq    = [("treasure", 100)]
   , irarity  = [(1, 2), (10, 2)]  -- not every playthrough needs it
-  , ieffects = [ toOrganActorTurn "resolute" (500 + 1 `d` 200)
+  , ieffects = [ toOrganGood "resolute" (500 + 1 `d` 200)
                    -- a drawback (at least initially) due to @calmEnough@
                , Explode "cruise ad hologram" ]
   , ifeature = [Unique, ELabel "Displaying a Happy Couple"]

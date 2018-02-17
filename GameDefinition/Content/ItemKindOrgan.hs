@@ -68,7 +68,7 @@ hookedClaw = fist
   , iverbHit = "hook"
   , idamage  = 2 `d` 1
   , iaspects = [Timeout $ 12 - 1 `dL` 3]
-  , ieffects = [Recharging (toOrganGameTurn "slowed" 2)]
+  , ieffects = [Recharging (toOrganBad "slowed" 2)]
   , idesc    = "A curved talon."
   }
 smallClaw = fist
@@ -214,7 +214,7 @@ venomTooth = fist
   , iverbHit = "bite"
   , idamage  = 2 `d` 1
   , iaspects = [Timeout $ 7 - 1 `dL` 3]
-  , ieffects = [Recharging (toOrganGameTurn "slowed" (3 + 1 `d` 3))]
+  , ieffects = [Recharging (toOrganBad "slowed" (3 + 1 `d` 3))]
   , idesc    = "A chilling numbness spreads from its bite."
   }
 venomFang = fist
@@ -224,7 +224,7 @@ venomFang = fist
   , iverbHit = "bite"
   , idamage  = 2 `d` 1
   , iaspects = [Timeout $ 10 - 1 `dL` 4]
-  , ieffects = [Recharging (toOrganNone "poisoned")]
+  , ieffects = [Recharging (toOrganNoTimer "poisoned")]
   , idesc    = "Dripping with deadly venom."
   }
 screechingBeak = fist

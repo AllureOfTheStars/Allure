@@ -65,7 +65,7 @@ obscenePictogram = ItemKind
   , ieffects = [ Recharging $ Temporary "enter unexplainable rage at a glimpse of the inscrutable graffiti"
                , Recharging $ RefillCalm (-20)
                , Recharging $ OneOf
-                   [ toOrganActorTurn "strengthened" (3 + 1 `d` 2)
+                   [ toOrganGood "strengthened" (3 + 1 `d` 2)
                    , CreateItem CInv "sandstone rock" timerNone ] ]
   , ifeature = [Durable]
   , idesc    = ""
@@ -84,8 +84,8 @@ subtleFresco = ItemKind
   , iaspects = [Timeout 7]
   , ieffects = [ Temporary "be entranced by the subtle mural"
                , RefillCalm 2
-               , Recharging $ toOrganActorTurn "far-sighted" (3 + 1 `d` 2)
-               , Recharging $ toOrganActorTurn "keen-smelling" (3 + 1 `d` 2) ]
+               , Recharging $ toOrganGood "far-sighted" (3 + 1 `d` 2)
+               , Recharging $ toOrganGood "keen-smelling" (3 + 1 `d` 2) ]
   , ifeature = [Durable]
   , idesc    = "Expensive yet tasteful."
   , ikit     = []
@@ -109,7 +109,7 @@ treasureCacheTrap = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = []
-  , ieffects = [OneOf [ toOrganNone "poisoned", Explode "glue"
+  , ieffects = [OneOf [ toOrganNoTimer "poisoned", Explode "glue"
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1)
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1)
                       , RefillCalm (-1), RefillCalm (-1) ]]
@@ -195,7 +195,7 @@ rubble = ItemKind
   , idamage  = 0
   , iaspects = []
   , ieffects = [OneOf [ Explode "glass piece", Explode "waste"
-                      , Summon "animal" $ 1 `dL` 2, toOrganNone "poisoned"
+                      , Summon "animal" $ 1 `dL` 2, toOrganNoTimer "poisoned"
                       , CreateItem CGround "common item" timerNone
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1)
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1) ]]
@@ -222,17 +222,17 @@ doorwayTrapTemplate = ItemKind
   }
 doorwayTrap1 = doorwayTrapTemplate
   { ifreq    = [("doorway trap", 50)]
-  , ieffects = [toOrganGameTurn "blind" $ (1 `dL` 4) * 10]
+  , ieffects = [toOrganBad "blind" $ (1 `dL` 4) * 10]
   -- , idesc    = ""
   }
 doorwayTrap2 = doorwayTrapTemplate
   { ifreq    = [("doorway trap", 25)]
-  , ieffects = [toOrganGameTurn "slowed" $ (1 `dL` 4) * 10]
+  , ieffects = [toOrganBad "slowed" $ (1 `dL` 4) * 10]
   -- , idesc    = ""
   }
 doorwayTrap3 = doorwayTrapTemplate
   { ifreq    = [("doorway trap", 25)]
-  , ieffects = [toOrganGameTurn "weakened" $ (1 `dL` 4) * 10 ]
+  , ieffects = [toOrganBad "weakened" $ (1 `dL` 4) * 10 ]
   -- , idesc    = ""
   }
 stairsUp = ItemKind
@@ -291,7 +291,7 @@ staircaseTrapDown = staircaseTrapUp
   { ifreq    = [("staircase trap down", 1)]
   , iverbHit = "open up under"
   , ieffects = [ Temporary "tumble down the stairwell"
-               , toOrganActorTurn "drunk" (20 + 1 `d` 5) ]
+               , toOrganGood "drunk" (20 + 1 `d` 5) ]
   , idesc    = "A treacherous slab, to teach those who are too proud."
   }
 pulpit = ItemKind
@@ -308,7 +308,7 @@ pulpit = ItemKind
   , ieffects = [ CreateItem CGround "any scroll" timerNone
                , Detect 20
                , Paralyze $ (1 `dL` 6) * 10
-               , toOrganActorTurn "drunk" (20 + 1 `d` 5)
+               , toOrganGood "drunk" (20 + 1 `d` 5)
                , Explode "story-telling" ]
   , ifeature = []  -- not Durable, springs at most once
   , idesc    = ""
@@ -346,9 +346,9 @@ ruinedFirstAidKit = ItemKind
   , idamage  = 0
   , iaspects = []
   , ieffects = [ Temporary "inspect a tattered CPR instruction soaked in a residue of oily drugs"
-               , OneOf [ toOrganNone "poison resistant"
-                       , toOrganNone "slow resistant"
-                       , toOrganActorTurn "drunk" (20 + 1 `d` 5) ]
+               , OneOf [ toOrganNoTimer "poison resistant"
+                       , toOrganNoTimer "slow resistant"
+                       , toOrganGood "drunk" (20 + 1 `d` 5) ]
                , CreateItem CInv "needle" timerNone ]
   , ifeature = []  -- not Durable, springs at most once
   , idesc    = ""  -- regulations require
@@ -400,6 +400,6 @@ liftTrap2 = liftTrap
   { ifreq    = [("lift trap", 50)]
   , iverbHit = "choke"
   , ieffects = [ Temporary "inhale the gas lingering inside the cab"
-               , toOrganGameTurn "slowed" $ (1 `dL` 4) * 10 ]
+               , toOrganBad "slowed" $ (1 `dL` 4) * 10 ]
   , idesc    = ""
   }
