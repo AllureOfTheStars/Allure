@@ -109,10 +109,12 @@ treasureCacheTrap = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = []
-  , ieffects = [OneOf [ toOrganNoTimer "poisoned", Explode "glue"
+  , ieffects = [OneOf [ toOrganBad "blind" (40 + 1 `d` 10)
+                      , RefillCalm (-99)
+                      , Explode "focused concussion"
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1)
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1)
-                      , RefillCalm (-1), RefillCalm (-1) ]]
+                      , RefillCalm (-1) ]]
   , ifeature = []  -- not Durable, springs at most once
   , idesc    = ""
   , ikit     = []
@@ -194,8 +196,9 @@ rubble = ItemKind
   , iweight  = 100000
   , idamage  = 0
   , iaspects = []
-  , ieffects = [OneOf [ Explode "glass piece", Explode "waste"
-                      , Summon "animal" $ 1 `dL` 2, toOrganNoTimer "poisoned"
+  , ieffects = [OneOf [ Explode "focused glass hail"
+                      , Summon "animal" $ 1 `dL` 2
+                      , toOrganNoTimer "poisoned"
                       , CreateItem CGround "common item" timerNone
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1)
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1) ]]

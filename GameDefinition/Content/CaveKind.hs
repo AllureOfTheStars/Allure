@@ -28,7 +28,7 @@ rogue,        rogue2, arena, arena2, laboratory, empty, noise, noise2, bridge, s
 rogue = CaveKind
   { csymbol       = 'R'
   , cname         = "Insulated storage area"
-  , cfreq         = [ ("default random", 100), ("deep random", 80)
+  , cfreq         = [ ("default random", 100), ("deep random", 70)
                     , ("caveRogue", 1) ]
   , cxsize        = fst normalLevelBound + 1
   , cysize        = snd normalLevelBound + 1
@@ -38,7 +38,7 @@ rogue = CaveKind
   , cdarkChance   = 1 `d` 54 + 1 `dL` 20
   , cnightChance  = 51  -- always night
   , cauxConnects  = 1%2
-  , cmaxVoid      = 1%8
+  , cmaxVoid      = 1%6
   , cminStairDist = 15
   , cextraStairs  = 1 + 1 `d` 2
   , cdoorChance   = 3%4
@@ -46,7 +46,7 @@ rogue = CaveKind
   , chidden       = 7
   , cactorCoeff   = 130  -- the maze requires time to explore
   , cactorFreq    = [("monster", 50), ("animal", 25), ("robot", 25)]
-  , citemNum      = 6 `d` 5
+  , citemNum      = 6 `d` 5 - 4 `dL` 1  -- deeper down quality over quantity
   , citemFreq     = [("common item", 40), ("treasure", 60), ("curious item", 1)]
   , cplaceFreq    = [("rogue", 100)]
   , cpassable     = False
@@ -62,7 +62,7 @@ rogue = CaveKind
   , cdesc         = "Winding tunnels stretch into the dark."
   }
 rogue2 = rogue
-  { cfreq         = [("deep random", 20)]
+  { cfreq         = [("deep random", 30)]
   , cname         = "Dark storage area"
   , cdarkChance   = 51  -- all rooms dark
   , cnightChance  = 0  -- always day
@@ -86,7 +86,7 @@ arena = rogue
   , chidden       = 0
   , cactorCoeff   = 100
   , cactorFreq    = [("monster", 25), ("animal", 70), ("robot", 5)]
-  , citemNum      = 5 `d` 5  -- few rooms
+  , citemNum      = 4 `d` 5  -- few rooms
   , citemFreq     = [ ("common item", 20), ("treasure", 40), ("any scroll", 40)
                     , ("curious item", 1) ]
   , cplaceFreq    = [("arena", 100)]
@@ -102,7 +102,7 @@ arena2 = arena
   , cdarkChance   = 41 + 1 `d` 10  -- almost all rooms lit (1 in 10 dark)
   -- Trails provide enough light for fun stealth.
   , cnightChance  = 51  -- always night
-  , citemNum      = 7 `d` 5  -- rare, so make it exciting
+  , citemNum      = 6 `d` 5  -- rare, so make it exciting
   , citemFreq     = [ ("common item", 20)
                     , ("treasure", 80)  -- lives up to the name
                     , ("curious item", 1) ]
@@ -124,8 +124,9 @@ laboratory = arena2
   , cdoorChance   = 1
   , copenChance   = 1%2
   , chidden       = 7
-  , citemNum      = 7 `d` 5  -- reward difficulty
-  , citemFreq     = [ ("common item", 20), ("treasure", 40), ("any vial", 40)
+  , citemNum      = 6 `d` 5  -- reward difficulty
+  , citemFreq     = [ ("common item", 20), ("treasure", 40)
+                    , ("explosive", 40 * 2)  -- few items in that group
                     , ("curious item", 1) ]
   , cplaceFreq    = [("laboratory", 100)]
   , cpassable     = False
@@ -139,7 +140,7 @@ empty = rogue
   { csymbol       = 'E'
   , cname         = "Construction site"
   , cfreq         = [("caveEmpty", 1)]
-  , cgrid         = DiceXY 2 1
+  , cgrid         = DiceXY 1 1
   , cminPlaceSize = DiceXY 12 12
   , cmaxPlaceSize = DiceXY 48 32  -- favour large rooms
   , cdarkChance   = 1 `d` 100 + 1 `dL` 100
@@ -180,7 +181,10 @@ noise = rogue
   , chidden       = 0
   , cactorCoeff   = 160  -- the maze requires time to explore
   , cactorFreq    = [("monster", 70), ("animal", 15), ("robot", 15)]
-  , citemNum      = 7 `d` 5  -- an incentive to explore the labyrinth
+  , citemNum      = 6 `d` 5  -- an incentive to explore the labyrinth
+  , citemFreq     = [ ("common item", 20), ("treasure", 60)
+                    , ("explosive", 20 * 2)
+                    , ("curious item", 1) ]
   , cpassable     = True
   , cplaceFreq    = [("noise", 100)]
   , cdefTile      = "noiseSet"
@@ -193,7 +197,8 @@ noise2 = noise
   { cname         = "Power distribution hub"
   , cfreq         = [("caveNoise2", 1)]
   , cnightChance  = 51  -- easier variant, but looks sinister
-  , citemNum      = 13 `d` 5  -- an incentive to explore the final labyrinth
+  , citemNum      = 11 `d` 5  -- an incentive to explore the final labyrinth
+  , citemFreq     = [("common item", 40), ("treasure", 60), ("curious item", 1)]
   , cplaceFreq    = [("noise", 1), ("mine", 99)]
   , cstairFreq    = [("gated staircase", 100)]
   , cdesc         = ""
@@ -206,7 +211,7 @@ bridge = rogue
   , cextraStairs  = 1
   , cactorCoeff   = 200  -- it's quite deep already, so spawn slowly
   , cactorFreq    = [("animal", 100)]
-  , citemNum      = 9 `d` 5  -- lure them in with loot
+  , citemNum      = 8 `d` 5  -- lure them in with loot
   , citemFreq     = filter ((`notElem` ["treasure", "curious item"]) . fst)
                     $ citemFreq rogue
   , cdesc         = "The bridge is gutted out and deserted. There are animal cries down below and ominous silence up above."
@@ -319,8 +324,7 @@ shootout = rogue  -- a scenario with strong missiles;
                       -- less items in inventory, more to be picked up,
                       -- to reward explorer and aggressor and punish camper
   , citemFreq     = [ ("common item", 30)
-                    , ("any arrow", 400), ("harpoon", 300)
-                    , ("any vial", 60) ]
+                    , ("any arrow", 400), ("harpoon", 300), ("explosive", 100) ]
                       -- Many consumable buffs are needed in symmetric maps
                       -- so that aggressor prepares them in advance and camper
                       -- needs to waste initial turns to buff for the defence.
@@ -348,9 +352,10 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , cextraStairs  = 1
   , chidden       = 0
   , cactorFreq    = []
-  , citemNum      = 5 `d` 8
+  , citemNum      = 6 `d` 8
   , citemFreq     = [ ("common item", 30), ("treasure", 30), ("gem", 100)
-                    , ("weak arrow", 500), ("harpoon", 400) ]
+                    , ("weak arrow", 500), ("harpoon", 400)
+                    , ("explosive", 200) ]
   , cplaceFreq    = [("park", 100)]
   , cpassable     = True
   , cdefTile      = "escapeSetDark"  -- different tiles, not burning yet
@@ -400,7 +405,7 @@ ambush = rogue  -- a scenario with strong missiles;
                            (2 `d` 2 + 5) 3   -- for now, to fit larger places
   , cminPlaceSize = DiceXY 3 3
   , cmaxPlaceSize = DiceXY 15 15  -- allow hangars
-  , cdarkChance   = 51
+  , cdarkChance   = 51  -- colonnade rooms should always be dark
   , cnightChance  = 51  -- always night
   , cauxConnects  = 3%2
   , cmaxVoid      = 1%20
@@ -408,7 +413,8 @@ ambush = rogue  -- a scenario with strong missiles;
   , chidden       = 0
   , cactorFreq    = []
   , citemNum      = 5 `d` 8
-  , citemFreq     = [("common item", 30), ("any arrow", 400), ("harpoon", 300)]
+  , citemFreq     = [ ("common item", 30)
+                    , ("any arrow", 400), ("harpoon", 300), ("any vial", 50) ]
   , cplaceFreq    = [("ambush", 100)]
   , cpassable     = True
   , cdefTile      = "ambushSet"
