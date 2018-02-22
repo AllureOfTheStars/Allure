@@ -578,8 +578,7 @@ potion7 = potionTemplate
                , OnSmash (Explode "antidote mist") ]
   }
 potion8 = potionTemplate
-  { iname    = "ampoule"  -- probably filled with nitroglycerine, but let's
-                          -- not mix fantasy with too much technical jargon
+  { iname    = "ampoule"  -- filled with semi-stabilized high explosive liquid
   , ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
   , icount   = 3 `dL` 1
   , ieffects = [ DropItem 1 maxBound COrgan "temporary condition"
@@ -601,11 +600,11 @@ potion9 = potionTemplate
 
 fragmentationBomb = ItemKind
   { isymbol  = symbolProjectile
-  , iname    = "clay pot"
-      -- clay pot filled with black powder; fragmentation comes from the clay
-      -- shards, so it's not obvious if it's a weapon or just storage method;
+  , iname    = "hand bomb"
+      -- improvised bomb filled with iron pellets, nuts, cut nails;
       -- deflagration, not detonation, so large mass and hard container
-      -- required not to burn harmlessly; improvised short fuze
+      -- required not to burn harmlessly; improvised short fuze;
+      -- can't be more powerful or would fracture the spaceship's hull
   , ifreq    = [("common item", 100), ("explosive", 100)]
   , iflavour = zipPlain [Red]
   , icount   = 1 `dL` 4  -- many, because not very intricate
@@ -616,25 +615,27 @@ fragmentationBomb = ItemKind
   , iaspects = []
   , ieffects = [ Explode "focused fragmentation"
                , OnSmash (Explode "violent fragmentation") ]
-  , ifeature = [ELabel "of black powder", Lobable, Fragile]
+  , ifeature = [Lobable, Fragile]
   , idesc    = "The practical application of science."
       -- given that we now have several kinds of explosives, tell something
-      -- related to 'fragmentation', e.g., mention flying shards
+      -- related to 'fragmentation', e.g., mention flying metal bits
   , ikit     = []
   }
 concussionBomb = fragmentationBomb
-  { iname    = "satchel"
-      -- slightly stabilized nitroglycerine in a soft satchel, hence
+  { iname    = "canister"
+      -- slightly stabilized liquid explosive in a soft container, hence
       -- no fragmentation, but huge shock wave despite small size and lack
       -- of strong container to build up pressure; indoors help the shock wave;
-      -- unstable enough that no fuze required
+      -- unstable enough that no fuze required (or simple electric fuse?);
+      -- that's the most potent explosive (a detonating one) to be found
+      -- and only in small quantities, due to depressurization hazard
   , iflavour = zipPlain [Magenta]
   , iverbHit = "flap"
   , iweight  = 400
   , idamage  = 0
   , ieffects = [ Explode "focused concussion"
                , OnSmash (Explode "violent concussion") ]
-  , ifeature = [ ELabel "of mining charges", Lobable, Fragile
+  , ifeature = [ Lobable, Fragile
                , toVelocity 70 ]  -- flappy and so slow
   , idesc    = ""
   }
@@ -643,7 +644,7 @@ concussionBomb = fragmentationBomb
 -- and because we don't model hearing adequately yet. The bang would also
 -- paralyze and/or lower the movement skill (out of balance due to ear trauma).
 flashBomb = fragmentationBomb
-  { iname    = "magnesium ribbon"  -- filled with magnesium flash powder
+  { iname    = "powder tube"  -- filled with magnesium flash powder
   , iflavour = zipPlain [BrWhite]
   , iverbHit = "flash"
   , iweight  = 400

@@ -115,7 +115,7 @@ spreadFragmentation8 = spreadFragmentation
   }
 focusedFragmentation = ItemKind
   { isymbol  = '`'
-  , iname    = "deflagration ignition"  -- black powder
+  , iname    = "deflagration ignition"  -- improvised fertilizer, etc.
   , ifreq    = [("focused fragmentation", 1)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 4  -- 32 in total vs 16; on average 4 hits
@@ -162,7 +162,7 @@ spreadConcussion8 = spreadConcussion
   }
 focusedConcussion = ItemKind
   { isymbol  = '`'
-  , iname    = "detonation ignition"  -- nitroglycerine
+  , iname    = "detonation ignition"  -- stabilized high explosive liquid
   , ifreq    = [("focused concussion", 1)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 4
@@ -178,7 +178,7 @@ focusedConcussion = ItemKind
   }
 spreadFlash = ItemKind
   { isymbol  = '`'
-  , iname    = "magnesium flash"
+  , iname    = "magnesium flash"  -- or aluminum, but let's stick to one
   , ifreq    = [("violent flash", 1)]
   , iflavour = zipPlain [BrWhite]  -- very brigh flash
   , icount   = 16
