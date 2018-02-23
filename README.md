@@ -132,7 +132,7 @@ Coding style
 ------------
 
 Stylish Haskell is used for slight auto-formatting at buffer save; see
-[.stylish-haskell.yaml](https://github.com/LambdaHack/LambdaHack/blob/master/.stylish-haskell.yaml).
+[.stylish-haskell.yaml](https://github.com/AllureOfTheStars/Allure/blob/master/.stylish-haskell.yaml).
 As defined in the file, indentation is 2 spaces wide and screen is
 80-columns wide. Spaces are used, not tabs. Spurious whitespace avoided.
 Spaces around arithmetic operators encouraged.
