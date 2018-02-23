@@ -1217,7 +1217,7 @@ dagger = ItemKind
   , ifreq    = [("common item", 100), ("starting weapon", 100)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(3 * 10/12, 50), (4 * 10/12, 1)]
+  , irarity  = [(3 * 10/12, 40), (4 * 10/12, 1)]
                  -- no weapons brought by aliens, initially, so cleaver common
   , iverbHit = "stab"
   , iweight  = 1000
