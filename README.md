@@ -82,15 +82,6 @@ The game is fully playable with mouse only, as well as with keyboard only,
 but the most efficient combination for some players is mouse for go-to,
 inspecting, and aiming at distant positions and keyboard for everything else.
 
-If you are using a terminal frontend, numeric keypad may not work
-correctly depending on versions of the libraries, terminfo and terminal
-emulators. Toggling the Num Lock key may help.
-The curses frontend is not fully supported due to the limitations
-of the curses library. With the vty frontend started in an xterm,
-Control-keypad keys for running seem to work OK, but on rxvt they do not.
-The commands that require pressing Control and Shift together won't
-work either, but fortunately they are not crucial to gameplay.
-
 
 Compilation from source
 -----------------------
@@ -104,9 +95,7 @@ for your OS. On Linux, remember to install the -dev versions as well,
 e.g., libsdl2-dev and libsdl2-ttf-dev on Ubuntu Linux 16.04.
 (Compilation to JavaScript for the browser is more complicated
 and requires the ghcjs[15] compiler and optionally the Google Closure
-Compiler[16] as well. See the
-[Makefile](https://github.com/AllureOfTheStars/Allure/blob/master/Makefile)
-for more details.)
+Compiler[16] as well.)
 
 The latest official version of the game can be downloaded,
 compiled for SDL2 and installed automatically by Cabal from Hackage[3]
