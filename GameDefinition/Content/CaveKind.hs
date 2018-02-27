@@ -47,7 +47,7 @@ rogue = CaveKind
   , cactorCoeff   = 130  -- the maze requires time to explore
   , cactorFreq    = [("monster", 50), ("animal", 25), ("robot", 25)]
   , citemNum      = 6 `d` 5 - 4 `dL` 1  -- deeper down quality over quantity
-  , citemFreq     = [("common item", 40), ("treasure", 60), ("curious item", 1)]
+  , citemFreq     = [("common item", 40), ("treasure", 60), ("curious item", 5)]
   , cplaceFreq    = [("rogue", 100)]
   , cpassable     = False
   , cdefTile        = "fillerWall"
@@ -88,7 +88,7 @@ arena = rogue
   , cactorFreq    = [("monster", 25), ("animal", 70), ("robot", 5)]
   , citemNum      = 4 `d` 5  -- few rooms
   , citemFreq     = [ ("common item", 20), ("treasure", 40), ("any scroll", 40)
-                    , ("curious item", 1) ]
+                    , ("curious item", 5) ]
   , cplaceFreq    = [("arena", 100)]
   , cpassable     = True
   , cdefTile      = "arenaSetLit"
@@ -105,7 +105,7 @@ arena2 = arena
   , citemNum      = 6 `d` 5  -- rare, so make it exciting
   , citemFreq     = [ ("common item", 20)
                     , ("treasure", 80)  -- lives up to the name
-                    , ("curious item", 1) ]
+                    , ("curious item", 10) ]
   , cdefTile      = "arenaSetDark"
   , cdesc         = ""
   }
@@ -127,7 +127,7 @@ laboratory = arena2
   , citemNum      = 6 `d` 5  -- reward difficulty
   , citemFreq     = [ ("common item", 20), ("treasure", 40)
                     , ("explosive", 40 * 2)  -- few items in that group
-                    , ("curious item", 1) ]
+                    , ("curious item", 10) ]
   , cplaceFreq    = [("laboratory", 100)]
   , cpassable     = False
   , cdefTile      = "fillerWall"
@@ -184,7 +184,7 @@ noise = rogue
   , citemNum      = 6 `d` 5  -- an incentive to explore the labyrinth
   , citemFreq     = [ ("common item", 20), ("treasure", 60)
                     , ("explosive", 20 * 2)
-                    , ("curious item", 1) ]
+                    , ("curious item", 10) ]
   , cpassable     = True
   , cplaceFreq    = [("noise", 100)]
   , cdefTile      = "noiseSet"
@@ -198,7 +198,8 @@ noise2 = noise
   , cfreq         = [("caveNoise2", 1)]
   , cnightChance  = 51  -- easier variant, but looks sinister
   , citemNum      = 11 `d` 5  -- an incentive to explore the final labyrinth
-  , citemFreq     = [("common item", 40), ("treasure", 60), ("curious item", 1)]
+  , citemFreq     = [ ("common item", 40), ("treasure", 60)
+                    , ("curious item", 10) ]
   , cplaceFreq    = [("noise", 1), ("mine", 99)]
   , cstairFreq    = [("gated staircase", 100)]
   , cdesc         = ""
