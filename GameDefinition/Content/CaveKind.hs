@@ -262,7 +262,7 @@ emptyExit = empty
   , couterFenceTile = "noise fence"  -- for flavour
   , cescapeGroup  = Just "escape spaceship down"
   , cstairFreq    = [("gated staircase", 100)]
-  , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among neglected cranes and airlocks."
+  , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among neglected cranes and airlocks welded shut."
   }
 raid = rogue
   { csymbol       = 'S'

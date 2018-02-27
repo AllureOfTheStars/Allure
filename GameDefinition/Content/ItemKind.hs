@@ -156,7 +156,7 @@ slingStone = ItemKind
   , ieffects = [ Explode "single spark"  -- when hitting enemy
                , OnSmash (Explode "single spark") ]  -- at wall hit
   , ifeature = [MinorEffects, toVelocity 150]
-  , idesc    = "A large hexagonal fastening nut, securely lodging in the pouch of a makeshift string and cloth sling due to its angular shape."
+  , idesc    = "A large hexagonal fastening nut; due to its angular shape, securely lodging in the pouch of a makeshift string and cloth sling."
   , ikit     = []
   }
 slingBullet = ItemKind
@@ -173,7 +173,7 @@ slingBullet = ItemKind
                  -- not armor-piercing
   , ieffects = []
   , ifeature = [toVelocity 200]
-  , idesc    = "Small but heavy bearing ball. Due to its size and shape, it securely fits in the makeshift sling's pouch and doesn't snag when released."
+  , idesc    = "Small but heavy bearing ball. Thanks to its size and shape, it doesn't snag when released from the makeshift sling's pouch."
   , ikit     = []
   }
 
@@ -210,7 +210,7 @@ harpoon = ItemKind
   , iaspects = [AddHurtMelee $ (-10 + 1 `d` 2 + 1 `dL` 3) * 5]
   , ieffects = [PullActor (ThrowMod 200 50)]
   , ifeature = []
-  , idesc    = "A display piece harking back to the Earth's oceanic tourism hayday. The cruel, barbed head lodges in its victim so painfully that the weakest tug of the thin line sends the victim flying."
+  , idesc    = "A display piece harking back to the Earth's oceanic tourism heyday. The cruel, barbed head lodges in its victim so painfully that the weakest tug of the thin line sends the victim flying."
   , ikit     = []
   }
 harpoon2 = harpoon
@@ -616,7 +616,7 @@ fragmentationBomb = ItemKind
   , ieffects = [ Explode "focused fragmentation"
                , OnSmash (Explode "violent fragmentation") ]
   , ifeature = [Lobable, Fragile]
-  , idesc    = "The practical application of science."
+  , idesc    = ""
       -- given that we now have several kinds of explosives, tell something
       -- related to 'fragmentation', e.g., mention flying metal bits
   , ikit     = []
@@ -682,7 +682,7 @@ scrollTemplate = ItemKind
   , ifeature = [ HideAs "scroll unknown"
                , Applicable
                , toVelocity 30 ]  -- too small
-  , idesc    = "A generic, diposable chip, capable of a one-time holo-display. Some of these also contain a one-time password authorizing a particular spaceship's infrastructure transition. It is unknown how the infrastructure might respond after so many years."
+  , idesc    = "A generic, disposable chip, capable of a one-time holo-display. Some of these also contain a one-time password authorizing a particular spaceship's infrastructure transition. It is unknown how the infrastructure might respond after so many years."
   , ikit     = []
   }
 scroll1 = scrollTemplate
@@ -691,7 +691,7 @@ scroll1 = scrollTemplate
   , irarity  = [(5, 9), (10, 9)]  -- mixed blessing, so available early, often
   , ieffects = [Summon "hero" 1, Summon "mobile animal" (2 + 1 `d` 2)]
   , ifeature = [Unique, ELabel "of Reckless Beacon"] ++ ifeature scrollTemplate
-  , idesc    = "This ihdustrial wide-spectrum alarm broadcaster, if over-amped for a single powerful blast, should be able to cut through the interference and reach any lost crew members, giving them enough positional information to locate us."
+  , idesc    = "This industrial, wide-spectrum alarm broadcaster, if over-amped for a single powerful blast, should be able to cut through the interference and reach any lost crew members, giving them enough positional information to locate us."
   }
 scroll2 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
@@ -808,7 +808,7 @@ sharpeningTool = ItemKind
   , iaspects = [AddHurtMelee $ (1 `dL` 5) * 5]
   , ieffects = []
   , ifeature = [Equipable, EqpSlot EqpSlotAddHurtMelee]
-  , idesc    = "Originally used for realigning the bent or buckled edges of kitchen knives in the local bars. Now it saves lives by letting you fix your weapons between or even during fights, without the need to set up camp, fish out tools and assemble a proper sharpening workshop."
+  , idesc    = "Originally used for realigning the chipped or buckled edges of kitchen knives in the local bars. Now it saves lives by letting you fix your weapons between or even during fights, without the need to set up camp, fish out tools and assemble a proper sharpening workshop."
   , ikit     = []
   }
 seeingItem = ItemKind
@@ -1271,20 +1271,20 @@ hammer = ItemKind
   , ifeature = [ HideAs "hammer unknown"
                , toVelocity 40  -- ensuring it hits with the tip costs speed
                , Durable, Meleeable, EqpSlot EqpSlotWeapon ]
-  , idesc    = "One of many kinds of hammers employed in construction work. The ones with completely blunt heads don't cause grave wounds, but any fitted with a long enough handle can shake and bruise even most armored foes. This one looks rather average at a quick glance."  -- if it's really the average, the weak kind, the description stays; if not, it's replaced with one of the descriptions below at identification time
+  , idesc    = "One of many kinds of hammers employed in construction work. The ones with completely blunt heads don't cause grave wounds, but any fitted with a long enough handle can shake and bruise even most armored foes. This one looks average at a quick glance."  -- if it's really the average, the weak kind, the description stays; if not, it's replaced with one of the descriptions below at identification time
   , ikit     = []
   }
 hammer2 = hammer
   { ifreq    = [("common item", 3), ("starting weapon", 1)]
   , iweight  = 2000
   , idamage  = 12 `d` 1
-  -- , idesc    = ""
+  , idesc    = "Upon closer inspection, this hammer tuns out particularly deadly, with a narrowing, sharpened head and a long handle."
   }
 hammer3 = hammer
   { ifreq    = [("common item", 1)]
   , iweight  = 2400
   , idamage  = 16 `d` 1
-  -- , idesc    = ""
+  , idesc    = "This hammer sports a sharp point instead of a head. No armor can withstand a full strength swing."
   }
 hammerParalyze = hammer
   { iname    = "Concussion Hammer"
@@ -1294,7 +1294,7 @@ hammerParalyze = hammer
   , iaspects = iaspects hammer ++ [Timeout 7]
   , ieffects = ieffects hammer ++ [Recharging $ Paralyze 10]
   , ifeature = [Unique] ++ ifeature hammer
-  -- , idesc    = ""
+  , idesc    = "This exceptionally large demolition hammer leaves no wall and no body standing."
   }
 hammerSpark = hammer
   { iname    = "Grand Smithhammer"
@@ -1304,7 +1304,7 @@ hammerSpark = hammer
   , iaspects = iaspects hammer ++ [AddShine 3, Timeout 10]
   , ieffects = ieffects hammer ++ [Recharging $ Explode "spark"]
   , ifeature = [Unique] ++ ifeature hammer
-  -- , idesc    = ""
+  , idesc    = "High carbon steel of this old hammer doesn't yield even to the newest alloys and produces fountains of sparks in defiance."
   }
 sword = ItemKind
   { isymbol  = symbolPolearm
@@ -1385,7 +1385,7 @@ halberdPushActor = halberd
   , ieffects = ieffects halberd
                ++ [Recharging (PushActor (ThrowMod 400 25))]  -- 1 step
   , ifeature = [Unique] ++ ifeature halberd
-  , idesc    = "A perfect replica made for a reenactor troupe, missing only some sharpening. Versatile, with great reach and leverage. Foes are held at a distance."
+  , idesc    = "A perfect replica made for a reenactor troupe, hardened, missing only some final sharpening. Versatile, with great reach and leverage. Foes are held at a distance."
   }
 
 -- * Wands

@@ -260,7 +260,7 @@ stairsDown = stairsUp
   , iname    = "staircase down"
   , ifreq    = [("staircase down", 1)]
   , ieffects = [Ascend False]
-  , idesc    = "Stairs that decend towards the outer ring."
+  , idesc    = "Stairs that descend towards the outer ring."
   }
 escape = stairsUp
   { isymbol  = 'E'
