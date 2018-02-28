@@ -515,7 +515,7 @@ escapeUp2 = escapeUp
 escapeUp3 = escapeUp
   { pfreq    = [("escape down", 2000)]
   , pcover   = CMirror
-  , pfence   = FFloor
+  , pfence   = FWall
   , ptopLeft = [ "#··"
                , "·<·"
                , "#·#"
@@ -523,7 +523,7 @@ escapeUp3 = escapeUp
   }
 escapeUp4 = escapeUp
   { pfreq    = [("escape up", 1000)]
-  , pfence   = FWall
+  , pfence   = FFloor
   , ptopLeft = [ "·#·"
                , "#<#"
                , "·#·"
@@ -560,7 +560,7 @@ escapeDown2 = escapeDown
 escapeDown3 = escapeDown
   { pfreq    = [("escape down", 2000)]
   , pcover   = CMirror
-  , pfence   = FFloor
+  , pfence   = FWall
   , ptopLeft = [ "#··"
                , "·>·"
                , "#·#"
@@ -568,7 +568,7 @@ escapeDown3 = escapeDown
   }
 escapeDown4 = escapeDown
   { pfreq    = [("escape down", 1000)]
-  , pfence   = FWall
+  , pfence   = FFloor
   , ptopLeft = [ "·#·"
                , "#>#"
                , "·#·"
