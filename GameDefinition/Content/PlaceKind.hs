@@ -158,7 +158,7 @@ pillar = PlaceKind
                , "····"
                , "····"
                ]
-  , poverride = [('&', "cachable")]
+  , poverride = [('&', "cache deposit")]
   }
 pillar2 = pillar
   { ptopLeft = [ "··#·"
@@ -673,7 +673,7 @@ maze = PlaceKind
                , "##··#"
                , "#··#·"
                ]
-  , poverride = [('&', "cachable")]
+  , poverride = [('&', "cache jewelry")]
   }
 maze2 = maze
   { pfreq    = [("rogue", 40), ("arena", 40), ("empty", 40)]

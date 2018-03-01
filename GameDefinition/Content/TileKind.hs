@@ -89,7 +89,8 @@ wall = TileKind
   { tsymbol  = '#'
   , tname    = "wall"
   , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
-               , ("cachable", 80), ("stair terminal", 100)
+               , ("cachable deposit", 80), ("cachable jewelry", 80)
+               , ("stair terminal", 100)
                , ("battleSet", 250), ("rectWindowsOver_%_Lit", 80) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
@@ -156,12 +157,13 @@ pillar = TileKind
 pillarCache = TileKind
   { tsymbol  = '#'
   , tname    = "rack of deposit boxes"
-  , tfreq    = [("cachable", 10), ("stair terminal", 1)]
+  , tfreq    = [ ("cachable deposit", 20), ("cache deposit", 1)
+               , ("stair terminal", 1) ]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 5
   , tfeature = [ Embed "treasure cache", Embed "treasure cache trap"
-               , ChangeTo "cachable", ConsideredByAI ]
+               , ChangeTo "cachable deposit", ConsideredByAI ]
       -- Not explorable, but prominently placed, so hard to miss.
       -- Very beneficial, so AI eager to trigger, unless wary of traps.
   }
@@ -606,9 +608,10 @@ rock = pillar
   }
 pillarCache2 = pillarCache
   { tname    = "jewelry display"
-  , tfreq    = [("cachable", 10), ("escapeSetDark", 1)]
+  , tfreq    = [ ("cachable jewelry", 20), ("cache jewelry", 1)
+               , ("escapeSetDark", 1) ]
   , tfeature = [ Embed "jewelry display", Embed "treasure cache trap"
-               , ChangeTo "cachable", ConsideredByAI ]
+               , ChangeTo "cachable jewelry", ConsideredByAI ]
   }
 stairsLiftUp = stairsUp
   { tname    = "lift up"
