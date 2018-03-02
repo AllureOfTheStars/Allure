@@ -588,7 +588,7 @@ steamFaucet = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 10, AddNocto 2
+  , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 11, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1
                , AddArmorMelee 40, AddArmorRanged 20 ]  -- hard material
   , ieffects = []
@@ -606,7 +606,7 @@ biogasFaucet = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 22
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 22
                , AddNocto 2, AddShine 3
                , AddAbility AbWait 1, AddAbility AbMelee 1 ]
   , ieffects = []
@@ -624,7 +624,7 @@ medbotFaucet = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 22
+  , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 22
                , AddNocto 2, AddShine 3
                , AddAbility AbWait 1, AddAbility AbMelee 1 ]
   , ieffects = []
