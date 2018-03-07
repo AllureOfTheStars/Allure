@@ -125,8 +125,7 @@ laboratory = arena2
   , copenChance   = 1%2
   , chidden       = 7
   , citemNum      = 6 `d` 5  -- reward difficulty
-  , citemFreq     = [ ("common item", 20), ("treasure", 40)
-                    , ("explosive", 40 * 2)  -- few items in that group
+  , citemFreq     = [ ("common item", 20), ("treasure", 40), ("explosive", 40)
                     , ("curious item", 10) ]
   , cplaceFreq    = [("laboratory", 100)]
   , cpassable     = False
@@ -182,8 +181,7 @@ noise = rogue
   , cactorCoeff   = 160  -- the maze requires time to explore
   , cactorFreq    = [("monster", 70), ("animal", 15), ("robot", 15)]
   , citemNum      = 6 `d` 5  -- an incentive to explore the labyrinth
-  , citemFreq     = [ ("common item", 20), ("treasure", 60)
-                    , ("explosive", 20 * 2)
+  , citemFreq     = [ ("common item", 20), ("treasure", 60), ("explosive", 20)
                     , ("curious item", 10) ]
   , cpassable     = True
   , cplaceFreq    = [("noise", 100)]
@@ -325,7 +323,7 @@ shootout = rogue  -- a scenario with strong missiles;
                       -- less items in inventory, more to be picked up,
                       -- to reward explorer and aggressor and punish camper
   , citemFreq     = [ ("common item", 30)
-                    , ("any arrow", 400), ("harpoon", 300), ("explosive", 100) ]
+                    , ("any arrow", 400), ("harpoon", 300), ("explosive", 50) ]
                       -- Many consumable buffs are needed in symmetric maps
                       -- so that aggressor prepares them in advance and camper
                       -- needs to waste initial turns to buff for the defence.
@@ -356,7 +354,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , citemNum      = 6 `d` 8
   , citemFreq     = [ ("common item", 30), ("treasure", 30), ("gem", 100)
                     , ("weak arrow", 500), ("harpoon", 400)
-                    , ("explosive", 200) ]
+                    , ("explosive", 100) ]
   , cplaceFreq    = [("park", 100)]
   , cpassable     = True
   , cdefTile      = "escapeSetDark"  -- different tiles, not burning yet
@@ -415,7 +413,7 @@ ambush = rogue  -- a scenario with strong missiles;
   , cactorFreq    = []
   , citemNum      = 5 `d` 8
   , citemFreq     = [ ("common item", 30)
-                    , ("any arrow", 400), ("harpoon", 300), ("any vial", 50) ]
+                    , ("any arrow", 400), ("harpoon", 300), ("explosive", 50) ]
   , cplaceFreq    = [("ambush", 100)]
   , cpassable     = True
   , cdefTile      = "ambushSet"
