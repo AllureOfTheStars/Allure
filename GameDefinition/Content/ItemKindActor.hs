@@ -171,7 +171,7 @@ eye = ItemKind
   }
 fastEye = ItemKind
   { isymbol  = 'b'
-  , iname    = "crawling biter"
+  , iname    = "rolling biter"
   , ifreq    = [ ("monster", 100), ("mobile", 1)
                , ("mobile monster", 100), ("scout monster", 60) ]
   , iflavour = zipFancy [BrBlue]
