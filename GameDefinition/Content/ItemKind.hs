@@ -1462,7 +1462,7 @@ gem5 = gem1
                , ("valuable", 100) ]
   , iflavour = zipPlain [BrYellow]
   , irarity  = [(1, 40), (10, 40)]
-  , ieffects = [RefillCalm 5, RefillHP 15]
+  , ieffects = [RefillCalm 10, RefillHP 40]
   , ifeature = [ELabel "of youth", Applicable, Precious]  -- not hidden
   , idesc    = "Calms, heals, invigorates and rejuvenates at the same time. No side-effects. As valuable as precious gems, at 100 gold grains each."
   }
