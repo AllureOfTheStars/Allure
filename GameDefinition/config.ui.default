@@ -49,4 +49,5 @@ historyMax = 5000
 maxFps = 30
 noAnim = False
 runStopMsgs = False
+hpWarningPercent = 20
 overrideCmdline = ""
