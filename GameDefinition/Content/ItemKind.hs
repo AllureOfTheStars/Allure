@@ -406,7 +406,7 @@ flask10 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , irarity  = [(10, 2)]  -- not very useful right now
   , ieffects = [ toOrganGood "keen-smelling" (40 + 1 `d` 10)
-               , DetectActor 10
+               , Detect DetectActor 10
                , OnSmash (Explode "smelly droplet") ]
   , ifeature = [ELabel "of smelly concoction"] ++ ifeature flaskTemplate
   }
@@ -696,7 +696,7 @@ scroll1 = scrollTemplate
 scroll2 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
   , irarity  = [(1, 2)]  -- mixed blessing
-  , ieffects = [DetectItem 20, Teleport 20, RefillCalm (-100)]
+  , ieffects = [Detect DetectItem 20, Teleport 20, RefillCalm (-100)]
   , ifeature = [ELabel "of greed"] ++ ifeature scrollTemplate
   }
 scroll3 = scrollTemplate
@@ -710,7 +710,7 @@ scroll4 = scrollTemplate
   , icount   = 3 `dL` 1
   , irarity  = [(1, 14)]
   , ieffects = [OneOf [ Teleport 5, Paralyze 10, InsertMove 10
-                      , DetectEmbed 12, DetectItem 20 ]]
+                      , Detect DetectEmbed 12, Detect DetectItem 20 ]]
   }
 scroll5 = scrollTemplate
   -- needs to be common to show at least a portion of effects
@@ -720,7 +720,7 @@ scroll5 = scrollTemplate
   , ieffects = [ Impress
                , OneOf [ Teleport 20, Ascend False, Ascend True
                        , Summon "hero" 1, Summon "mobile animal" $ 1 `d` 2
-                       , Detect 40, RefillCalm (-100)
+                       , Detect DetectAll 40, RefillCalm (-100)
                        , CreateItem CGround "common item" timerNone ] ]
   }
 scroll6 = scrollTemplate
@@ -764,11 +764,11 @@ scroll11 = scrollTemplate
 scroll12 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
   , irarity  = [(1, 9), (10, 4)]
-  , ieffects = [DetectHidden 20]
+  , ieffects = [Detect DetectHidden 20]
   }
 scroll13 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
-  , ieffects = [DetectActor 20]
+  , ieffects = [Detect DetectActor 20]
   , ifeature = [ELabel "of acute hearing"] ++ ifeature scrollTemplate
   }
 
@@ -908,7 +908,7 @@ necklace2 = necklaceTemplate
 necklace3 = necklaceTemplate
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
   , iaspects = [Timeout $ (1 `d` 2) * 20]
-  , ieffects = [ Recharging (DetectActor 10)
+  , ieffects = [ Recharging (Detect DetectActor 10)
                , Recharging (RefillCalm (-20)) ]
                ++ ieffects necklaceTemplate
   , ifeature = [ELabel "of fearful listening"] ++ ifeature necklaceTemplate
@@ -923,7 +923,7 @@ necklace5 = necklaceTemplate
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
   , iaspects = [Timeout $ (7 - 1 `dL` 5) * 10]
   , ieffects = [ Recharging (Teleport $ 14 + 3 `d` 3)
-               , Recharging (DetectExit 20)
+               , Recharging (Detect DetectExit 20)
                , Recharging (RefillHP (-2)) ]  -- prevent micromanagement
                ++ ieffects necklaceTemplate
   , ifeature = [ELabel "of escape"] ++ ifeature necklaceTemplate
