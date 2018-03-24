@@ -427,8 +427,9 @@ bushBurning = bush
 floorFog = TileKind
   { tsymbol  = ';'
   , tname    = "faint fog"
-  , tfreq    = [ ("lit fog", 1), ("emptySet", 5), ("emptyExitSet", 2)
-               , ("shootoutSetLit", 20), ("fogClumpOver_f_Lit", 60) ]
+  , tfreq    = [ ("lit fog", 1), ("emptySet", 5), ("shootoutSetLit", 20)
+               , ("emptyExitSet", 2)
+               , ("noiseSet", 10), ("fogClumpOver_f_Lit", 60) ]
       -- lit fog is OK for shootout, because LOS is mutual, as opposed
       -- to dark fog, and so camper has little advantage, especially
       -- on big maps, where he doesn't know on which side of fog patch to hide
@@ -445,10 +446,8 @@ floorFogDark = floorFog
 floorSmoke = TileKind
   { tsymbol  = ';'
   , tname    = "billowing smoke"
-  , tfreq    = [ ("lit smoke", 1)
-               , ("ambushSet", 30), ("zooSet", 30), ("emptyExitSet", 2)
-               , ("battleSet", 5), ("labTrailLit", 1), ("stair terminal", 2)
-               , ("smokeClumpOver_f_Lit", 1) ]
+  , tfreq    = [ ("lit smoke", 1), ("labTrailLit", 1), ("stair terminal", 2)
+               , ("smokeClumpOver_f_Lit", 1), ("emptyExitSet", 2) ]
   , tcolor   = Brown
   , tcolor2  = BrBlack
   , talter   = 0
@@ -456,7 +455,7 @@ floorSmoke = TileKind
   }
 floorSmokeDark = floorSmoke
   { tname    = "lingering smoke"
-  , tfreq    = [("ambushSet", 30)]
+  , tfreq    = [("ambushSet", 60), ("zooSet", 30), ("battleSet", 5)]
   , tfeature = Dark : tfeature floorSmoke
   }
 
