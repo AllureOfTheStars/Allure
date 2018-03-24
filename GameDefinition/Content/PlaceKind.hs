@@ -306,7 +306,7 @@ fogClump2 = fogClump
 smokeClump = PlaceKind
   { psymbol  = 's'
   , pname    = "smoky patch"
-  , pfreq    = [("zoo", 100), ("ambush", 50)]
+  , pfreq    = [("zoo", 50), ("ambush", 50)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -318,7 +318,7 @@ smokeClump = PlaceKind
                 , ('·', "floorActorLit") ]
   }
 smokeClump2FGround = smokeClump
-  { pfreq    = [("laboratory", 100), ("zoo", 1000), ("ambush", 500)]
+  { pfreq    = [("laboratory", 100), ("zoo", 500), ("ambush", 500)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FGround
@@ -759,7 +759,7 @@ cells5 = cells
   }
 cells6 = cells
   { pfreq    = [ ("rogue", 1), ("arena", 2), ("laboratory", 2)
-               , ("empty", 2), ("noise", 1), ("zoo", 100) ]
+               , ("empty", 2), ("noise", 1), ("zoo", 10) ]
   , ptopLeft = [ "··#"
                , "##·"
                ]
