@@ -76,7 +76,7 @@ symbolShield     = ']'
 symbolPolearm    = '/'
 symbolEdged      = '|'
 symbolHafted     = '\\'
-symbolWand       = '-'  -- magical rod, transmitter, pistol, rifle
+symbolWand       = '-'  -- magical rod, transmitter, pistol, rifle, instrument
 _symbolStaff     = '_'  -- scanner
 symbolFood       = ','  -- also body part; distinct from floor: not middle dot
 
@@ -775,7 +775,7 @@ scroll13 = scrollTemplate
 -- * Assorted tools
 
 jumpingPole = ItemKind
-  { isymbol  = symbolTool
+  { isymbol  = symbolWand
   , iname    = "jumping pole"
   , ifreq    = [("common item", 100)]
   , iflavour = zipPlain [White]

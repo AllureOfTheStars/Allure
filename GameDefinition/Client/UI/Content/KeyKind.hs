@@ -78,12 +78,12 @@ standardKeys = KeyKind $ map evalKeyDef $
   , ("a", addCmdCategory CmdItemMenu $ applyI [TriggerItem
             { tiverb = "apply"
             , tiobject = "consumable"
-            , tisymbol = ' ' }])
+            , tisymbols = "!?-" }])
   , ("C-a", addCmdCategory CmdItemMenu
             $ replaceDesc "apply and keep choice" $ applyIK [TriggerItem
               { tiverb = "apply"
               , tiobject = "consumable"
-              , tisymbol = ' ' }])
+              , tisymbols = "!?-" }])
   , ("p", moveItemTriple [CGround, CEqp, CSha] CInv
                          "item" False)
   , ("e", moveItemTriple [CGround, CInv, CSha] CEqp
@@ -143,22 +143,22 @@ standardKeys = KeyKind $ map evalKeyDef $
   , ("q", addCmdCategory CmdItem $ applyI [TriggerItem
             { tiverb = "quaff"
             , tiobject = "liquid"
-            , tisymbol = '!' }])
+            , tisymbols = "!" }])
   , ("r", addCmdCategory CmdItem $ applyI [TriggerItem
             { tiverb = "read"
             , tiobject = "chip"
-            , tisymbol = '?' }])
+            , tisymbols = "?" }])
 
   , ("t", addCmdCategory CmdItem $ projectA
             [ TriggerItem { tiverb = "throw"
                           , tiobject = "missile"
-                          , tisymbol = '{' }
+                          , tisymbols = "{" }
             , TriggerItem { tiverb = "throw"
                           , tiobject = "missile"
-                          , tisymbol = '}' } ])
+                          , tisymbols = "}" } ])
 --  , ("z", projectA [TriggerItem { tiverb = "zap"
 --                                , tiobject = "wand"
---                                , tisymbol = '-' }])
+--                                , tisymbols = "-" }])
 
   -- Dashboard, in addition to commands marked above
   , ("safeD0", ([CmdInternal, CmdDashboard], "", Cancel))  -- blank line
