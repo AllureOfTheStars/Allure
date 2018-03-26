@@ -338,8 +338,7 @@ flaskTemplate = ItemKind
   , idamage  = 0
   , iaspects = []
   , ieffects = []
-  , ifeature = [ HideAs "flask unknown"
-               , Applicable, Lobable, Fragile
+  , ifeature = [ HideAs "flask unknown", Lobable, Fragile
                , toVelocity 50 ]  -- oily, bad grip
   , idesc    = "A flask of oily liquid of a suspect color. Something seems to be moving inside."
   , ikit     = []
@@ -505,8 +504,7 @@ potionTemplate = ItemKind
   , idamage  = 0
   , iaspects = []
   , ieffects = []
-  , ifeature = [ HideAs "potion unknown"
-               , Applicable, Lobable, Fragile
+  , ifeature = [ HideAs "potion unknown", Lobable, Fragile
                , toVelocity 50 ]  -- oily, bad grip
   , idesc    = "A vial of bright, frothing concoction. The best that nature has to offer."
   , ikit     = []
@@ -680,7 +678,6 @@ scrollTemplate = ItemKind
   , iaspects = []
   , ieffects = []
   , ifeature = [ HideAs "scroll unknown"
-               , Applicable
                , toVelocity 30 ]  -- too small
   , idesc    = "A generic, disposable chip, capable of a one-time holo-display. Some of these also contain a one-time password authorizing a particular spaceship's infrastructure transition. It is unknown how the infrastructure might respond after so many years."
   , ikit     = []
@@ -791,7 +788,7 @@ jumpingPole = ItemKind
                  -- in total, the explorations speed is unchanged,
                  -- but it's useful when fleeing in the dark to make distance
                  -- and when initiating combat, so it's OK that AI uses it
-  , ifeature = [Durable, Applicable]
+  , ifeature = [Durable]
   , idesc    = "Makes you vulnerable at take-off, but then you are free like a bird."
   , ikit     = []
   }
@@ -1402,8 +1399,7 @@ wandTemplate = ItemKind
   , idamage  = 0
   , iaspects = [AddShine 1, AddSpeed (-1)]  -- pulsing with power, distracts
   , ieffects = []
-  , ifeature = [ HideAs "wand unknown"
-               , Applicable, Durable
+  , ifeature = [ HideAs "wand unknown", Durable
                , toVelocity 125 ]  -- sufficiently advanced tech
   , idesc    = "Buzzing with dazzling light that shines even through appendages that handle it."
   , ikit     = []
@@ -1463,7 +1459,7 @@ gem5 = gem1
   , iflavour = zipPlain [BrYellow]
   , irarity  = [(1, 40), (10, 40)]
   , ieffects = [RefillCalm 10, RefillHP 40]
-  , ifeature = [ELabel "of youth", Applicable, Precious]  -- not hidden
+  , ifeature = [ELabel "of youth", Precious]  -- not hidden
   , idesc    = "Calms, heals, invigorates and rejuvenates at the same time. No side-effects. As valuable as precious gems, at 100 gold grains each."
   }
 currencyTemplate = ItemKind
@@ -1514,7 +1510,7 @@ constructionHooter = scrollTemplate
   , irarity  = [(1, 1)]
   , iaspects = []
   , ieffects = [Summon "construction robot" $ 1 `dL` 2]
-  , ifeature = [Applicable]  -- not hidden
+  , ifeature = []  -- not hidden
   , idesc    = "The single-use electronic overdrive hooter that construction robots use to warn about danger and call help in extreme emergency."
   , ikit     = []
   }
