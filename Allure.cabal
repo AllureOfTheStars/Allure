@@ -108,6 +108,8 @@ executable Allure
     cpp-options:      -DGHCJS_BUSY_YIELD=50
   } else {
     build-depends:    zlib >= 0.5.3.1
+    if os(windows)
+      ghc-options: -optl-Wl,--enable-stdcall-fixup
   }
 
 test-suite test
@@ -159,4 +161,6 @@ test-suite test
     cpp-options:      -DGHCJS_BUSY_YIELD=50
   } else {
     build-depends:    zlib >= 0.5.3.1
+    if os(windows)
+      ghc-options: -optl-Wl,--enable-stdcall-fixup
   }
