@@ -3,7 +3,6 @@ install:
   - SET PKG_CONFIG_PATH=C:\msys64\mingw64\lib\pkgconfig
   - SET XDG_DATA_DIRS=C:\msys64\mingw64\share
   - pacman --version
-  - appveyor-retry choco install cabal --version 2.0.0.1 | grep -v '^Extracting '
   - appveyor-retry choco install ghc --version 8.2.2 | grep -v '^Extracting '
   - cabal --version
   - appveyor-retry pacman -S -q --noconfirm mingw64/mingw-w64-x86_64-SDL2 mingw64/mingw-w64-x86_64-SDL2_ttf
@@ -62,7 +61,6 @@ install:
   - SET PKG_CONFIG_PATH=C:\msys64\mingw32\lib\pkgconfig
   - SET XDG_DATA_DIRS=C:\msys64\mingw32\share
   - pacman --version
-  - appveyor-retry choco install --force --forcex86 cabal --version 2.0.0.1 | grep -v '^Extracting '
   - appveyor-retry choco install --force --forcex86 ghc --version 8.2.2 | grep -v '^Extracting '
   - cabal --version
   - appveyor-retry pacman -S -q --noconfirm mingw-w64-i686-SDL2 mingw-w64-i686-SDL2_ttf
