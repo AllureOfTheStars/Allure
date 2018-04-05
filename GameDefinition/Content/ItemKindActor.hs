@@ -538,7 +538,7 @@ razorwireFence = ItemKind
   , idamage  = 0
   , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 20, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1
-               , AddArmorMelee 40, AddArmorRanged 20 ]
+               , AddArmorMelee 30, AddArmorRanged 15 ]
   , ieffects = []
   , ifeature = [Durable]
   , idesc    = "Must have been bought by previous ship owners to contain the wild animal infestation."
@@ -556,7 +556,7 @@ electricFence = ItemKind
   , idamage  = 0
   , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 40, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1
-               , AddArmorMelee 40, AddArmorRanged 20 ]
+               , AddArmorMelee 30, AddArmorRanged 15 ]
   , ieffects = []
   , ifeature = [Durable]
   , idesc    = "Marginally intelligent electric shepherd. Originally used in orbital dairy farms and planetary zoos."
@@ -574,7 +574,7 @@ activeFence = ItemKind
   , idamage  = 0
   , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20, AddNocto 2
                , AddAbility AbWait 1, AddAbility AbProject 3
-               , AddArmorMelee 40, AddArmorRanged 20 ]
+               , AddArmorMelee 30, AddArmorRanged 15 ]
   , ieffects = []
   , ifeature = [Durable]
   , idesc    = "Makeshift, mostly non-lethal, autonomous perimeter defense outpost."
@@ -592,8 +592,7 @@ steamFaucet = ItemKind
   , iweight  = 80000
   , idamage  = 0
   , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 11, AddNocto 2
-               , AddAbility AbWait 1, AddAbility AbMelee 1
-               , AddArmorMelee 40, AddArmorRanged 20 ]  -- hard material
+               , AddAbility AbWait 1, AddAbility AbMelee 1 ]
   , ieffects = []
   , ifeature = [Durable]
   , idesc    = "A cracked valve on one of the superheated water pipes spreading radially outward from the tokamak level."
@@ -648,7 +647,7 @@ surveillanceDrone = ItemKind
   , iaspects = [ AddMaxHP 6, AddMaxCalm 90, AddSpeed 30, AddNocto 2
                , AddAbility AbDisplace (-1), AddAbility AbMoveItem (-1)
                , AddAbility AbProject (-1), AddAbility AbMelee (-1)
-               , AddArmorMelee 40, AddArmorRanged 20 ]
+               , AddArmorMelee 30, AddArmorRanged 15 ]
   , ieffects = []
   , ifeature = [Durable]
   , idesc    = "A video camera in each room would violate privacy of passengers, hence surveillance drones. Programmed to be easy to fend off, they keep a respectful distance."
@@ -687,7 +686,7 @@ huntingDrone = ItemKind
   , iaspects = [ AddMaxHP 6, AddMaxCalm 60, AddSpeed 40, AddNocto 2
                , AddAbility AbDisplace (-1), AddAbility AbMoveItem (-1)
                , AddAbility AbMelee (-1)
-               , AddArmorMelee 40, AddArmorRanged 20 ]
+               , AddArmorMelee 30, AddArmorRanged 15 ]
   , ieffects = []
   , ifeature = [Durable]
   , idesc    = "Originally designed for hunting down and putting to sleep stray animals. The sleeping agent has long since dried up."
