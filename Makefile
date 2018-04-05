@@ -212,9 +212,11 @@ build-binary-common:
 	which ld
 	which ld.gold
 	which ld.bfd
+	which gcc
 	ld --version
 	ld.gold --version
 	ld.bfd --version
+	gcc --version
 	cabal build -v2 exe:Allure
 	mkdir -p AllureOfTheStars/GameDefinition/fonts
 	cabal copy --destdir=AllureOfTheStarsInstall
