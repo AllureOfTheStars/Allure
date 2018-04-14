@@ -551,7 +551,7 @@ oriel = TileKind
   , tfreq    = [("oriels fence", 5)]
   , tcolor   = White
   , tcolor2  = Black
-  , talter   = maxBound  -- impenetrable
+  , talter   = 5
   , tfeature = [Embed "black starry sky", Dark]
   }
 outerHullWall = basicOuterFence
