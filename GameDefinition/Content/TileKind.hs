@@ -226,7 +226,7 @@ treeBurning = tree
   }
 rubble = TileKind
   { tsymbol  = '&'
-  , tname    = "rubble"
+  , tname    = "rubble pile"
   , tfreq    = []  -- [("floorCorridorLit", 1)]
                    -- disabled while it's all or nothing per cave and per room;
                    -- we need a new mechanism, Spice is not enough, because
@@ -240,7 +240,7 @@ rubble = TileKind
   }
 rubbleSpice = TileKind
   { tsymbol  = '&'
-  , tname    = "rubble"
+  , tname    = "rubble pile"
   , tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("emptySet", 1)
                , ("emptyExitSet", 1), ("noiseSet", 10), ("zooSet", 100)
                , ("ambushSet", 20) ]
@@ -385,7 +385,7 @@ pillarIce = TileKind
   }
 pulpit = TileKind
   { tsymbol  = '%'
-  , tname    = "VR harness"
+  , tname    = "VR booth"
   , tfreq    = [("pulpit", 1)]
   , tcolor   = BrYellow
   , tcolor2  = Brown
@@ -596,7 +596,7 @@ wallObscured3dBillboard = TileKind
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 5
-  , tfeature = [ Embed "3D billboard"
+  , tfeature = [ Embed "3D display"
                , HideAs "suspect wall"
 
                ]
@@ -609,7 +609,7 @@ pillarCache2 = pillarCache
   { tname    = "jewelry display"
   , tfreq    = [ ("cachable jewelry", 20), ("cache jewelry", 1)
                , ("escapeSetDark", 1) ]
-  , tfeature = [ Embed "jewelry display", Embed "treasure cache trap"
+  , tfeature = [ Embed "jewelry case", Embed "treasure cache trap"
                , ChangeTo "cachable jewelry", ConsideredByAI ]
   }
 stairsLiftUp = stairsUp

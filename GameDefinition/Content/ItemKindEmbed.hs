@@ -22,10 +22,10 @@ import Game.LambdaHack.Content.ItemKind
 
 embeds :: [ItemKind]
 embeds =
-  [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit]
+  [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit]
   -- Allure-specific
   ++ [blackStarrySky, ruinedFirstAidKit, wall3dBillboard, jewelryDisplay, liftUp, liftDown, liftTrap, liftTrap2]
-scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardMap, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit :: ItemKind
+scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit :: ItemKind
 -- Allure-specific
 blackStarrySky,       ruinedFirstAidKit, wall3dBillboard, jewelryDisplay, liftUp, liftDown, liftTrap, liftTrap2 :: ItemKind
 
@@ -37,7 +37,7 @@ blackStarrySky,       ruinedFirstAidKit, wall3dBillboard, jewelryDisplay, liftUp
 -- of the level by bumping the least number of secret walls.
 scratchOnWall = ItemKind
   { isymbol  = '?'
-  , iname    = "scratch on wall"
+  , iname    = "claw mark"
   , ifreq    = [("scratch on wall", 1)]
   , iflavour = zipPlain [BrBlack]
   , icount   = 1
@@ -122,7 +122,7 @@ treasureCacheTrap = ItemKind
   }
 signboardExit = ItemKind
   { isymbol  = '?'
-  , iname    = "signboard with exits"
+  , iname    = "sticker"
   , ifreq    = [("signboard", 80)]
   , iflavour = zipPlain [BrMagenta]
   , icount   = 1
@@ -136,8 +136,8 @@ signboardExit = ItemKind
   , idesc    = "Mandatory emergency exit information in low-tech form."
   , ikit     = []
   }
-signboardMap = signboardExit
-  { iname    = "signboard with a map"
+signboardEmbed = signboardExit
+  { iname    = "notice"
   , ifreq    = [("signboard", 20)]
   , ieffects = [Detect DetectEmbed 12]  -- low tech, hence fully operational
   , idesc    = "Detailed schematics for the maintenance crew."
@@ -241,7 +241,7 @@ doorwayTrap3 = doorwayTrapTemplate
   }
 stairsUp = ItemKind
   { isymbol  = '<'
-  , iname    = "staircase up"
+  , iname    = "flight of steps"
   , ifreq    = [("staircase up", 1)]
   , iflavour = zipPlain [BrWhite]
   , icount   = 1
@@ -258,14 +258,14 @@ stairsUp = ItemKind
   }
 stairsDown = stairsUp
   { isymbol  = '>'
-  , iname    = "staircase down"
+  , iname    = "flight of steps"
   , ifreq    = [("staircase down", 1)]
   , ieffects = [Ascend False]
   , idesc    = "Stairs that descend towards the outer ring."
   }
 escape = stairsUp
   { isymbol  = 'E'
-  , iname    = "escape"
+  , iname    = "way"
   , ifreq    = [("escape", 1)]
   , iflavour = zipPlain [BrYellow]
   , ieffects = [Escape]
@@ -360,8 +360,8 @@ ruinedFirstAidKit = ItemKind
   }
 wall3dBillboard = ItemKind
   { isymbol  = '*'
-  , iname    = "3D billboard"
-  , ifreq    = [("3D billboard", 1)]
+  , iname    = "3D display"
+  , ifreq    = [("3D display", 1)]
   , iflavour = zipPlain [BrGreen]
   , icount   = 1
   , irarity  = [(1, 1)]
@@ -377,18 +377,18 @@ wall3dBillboard = ItemKind
   , ikit     = []
   }
 jewelryDisplay = treasureCache
-  { iname    = "jewelry display"
-  , ifreq    = [("jewelry display", 1)]
+  { iname    = "jewelry case"
+  , ifreq    = [("jewelry case", 1)]
   , ieffects = [CreateItem CGround "any jewelry" timerNone]
   , idesc    = ""
   }
 liftUp = stairsUp
-  { iname    = "lift up"
+  { iname    = "carriage"
   , ifreq    = [("lift up", 1)]
   , idesc    = ""
   }
 liftDown = stairsDown
-  { iname    = "lift down"
+  { iname    = "carriage"
   , ifreq    = [("lift down", 1)]
   , idesc    = ""
   }
