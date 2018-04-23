@@ -32,7 +32,7 @@ homepage:      http://allureofthestars.com
 bug-reports:   http://github.com/AllureOfTheStars/Allure/issues
 license:       AGPL-3
 license-file:  LICENSE
-tested-with:   GHC==8.0.2, GHC==8.2.1, GHC==8.2.2
+tested-with:   GHC==8.0.2, GHC==8.2.2, GHC==8.4.2
 data-files:    GameDefinition/config.ui.default,
                GameDefinition/fonts/16x16x.fon,
                GameDefinition/fonts/8x8xb.fon,
