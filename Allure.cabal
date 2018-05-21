@@ -91,7 +91,7 @@ executable Allure
   default-language:   Haskell2010
   default-extensions: MonoLocalBinds, ScopedTypeVariables, OverloadedStrings
                       BangPatterns, RecordWildCards, NamedFieldPuns, MultiWayIf,
-                      LambdaCase, StrictData
+                      LambdaCase, StrictData, CPP
   other-extensions:   TemplateHaskell
   ghc-options:        -Wall -Wcompat -Worphans -Wincomplete-uni-patterns -Wincomplete-record-updates -Wimplicit-prelude -Wmissing-home-modules -Widentities -Wredundant-constraints
   ghc-options:        -Wall-missed-specialisations
@@ -106,6 +106,7 @@ executable Allure
 -- This is the largest GHCJS_BUSY_YIELD value that does not cause dropped frames
 -- on my machine with default --maxFps.
     cpp-options:      -DGHCJS_BUSY_YIELD=50
+    cpp-options:      -DUSE_JSFILE
   } else {
     build-depends:    zlib >= 0.5.3.1
   }
