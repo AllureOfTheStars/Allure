@@ -27,7 +27,7 @@ chrome-prof:
 	google-chrome --no-sandbox --js-flags="--logfile=%t.log --prof" ../allureofthestars.github.io/play/index.html
 
 minific:
-	ccjs dist/build/Allure/Allure.jsexe/all.js --compilation_level=ADVANCED_OPTIMIZATIONS --isolation_mode=IIFE --assume_function_wrapper --jscomp_off="*" --externs=node > ../allureofthestars.github.io/play/allure.all.js
+	ccjs dist/build/Allure/Allure.jsexe/all.js --compilation_level=ADVANCED_OPTIMIZATIONS --isolation_mode=IIFE --assume_function_wrapper --jscomp_off="*" --externs=node --externs=dist/build/Allure/Allure.jsexe/all.js.externs > ../allureofthestars.github.io/play/allure.all.js
 
 # Low delay to display animations swiftly and not bore the public too much.
 # Delay can't be lower than 2, because browsers sometimes treat delay 1

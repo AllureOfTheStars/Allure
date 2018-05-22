@@ -97,9 +97,8 @@ executable Allure
   ghc-options:        -Wall-missed-specialisations
   ghc-options:        -fno-ignore-asserts -fexpose-all-unfoldings -fspecialise-aggressively
   ghc-options:        -threaded -rtsopts
--- Minimize median lag at the cost of occasional huge (JS) lag when GC kicks in
--- (and some of the GCs fit into idle time, while the player ponders
--- or game is being saved):
+-- Minimize median lag at the cost of occasional bigger GC lag,
+-- which fortunately sometimes fits into idle time between turns):
   ghc-options:        -with-rtsopts=-A99m
 
   if impl(ghcjs) {
@@ -149,9 +148,8 @@ test-suite test
   ghc-options:        -Wall -Wcompat -Worphans -Wincomplete-uni-patterns -Wincomplete-record-updates -Wimplicit-prelude -Wmissing-home-modules -Widentities -Wredundant-constraints
   ghc-options:        -fno-ignore-asserts -fexpose-all-unfoldings -fspecialise-aggressively
   ghc-options:        -threaded -rtsopts
--- Minimize median lag at the cost of occasional huge (JS) lag when GC kicks in
--- (and some of the GCs fit into idle time, while the player ponders
--- or game is being saved):
+-- Minimize median lag at the cost of occasional bigger GC lag,
+-- which fortunately sometimes fits into idle time between turns):
   ghc-options:        -with-rtsopts=-A99m
 
   if impl(ghcjs) {
