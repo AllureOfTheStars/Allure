@@ -768,10 +768,10 @@ heavyRobot = ItemKind
   , ieffects = []
   , ifeature = [Durable]
   , idesc    = "Heavy multi-purpose construction robot. Excels at discharging, dismantling and demolition."
-  , ikit     = [ ("large jaw", COrgan), ("small claw", COrgan), ("spotlight", COrgan)
-               , ("construction hooter", CInv)
-               , ("armored skin", COrgan), ("eye 4", COrgan)
-               , ("robot brain", COrgan) ]
+  , ikit     = [ ("large jaw", COrgan), ("small claw", COrgan)
+               , ("spotlight", COrgan), ("armored skin", COrgan)
+               , ("eye 4", COrgan), ("robot brain", COrgan)
+               , ("construction hooter", CInv) ]
   }
 cleanerRobot = ItemKind
   { isymbol  = 'C'
@@ -785,6 +785,7 @@ cleanerRobot = ItemKind
   , iweight  = 80000
   , idamage  = 0
   , iaspects = [ AddMaxHP 120, AddMaxCalm 60, AddSpeed 18, AddNocto 2
+               , AddAggression 1
                , AddAbility AbAlter 3 ]
                    -- a miniboss; can remove rubble and ice,
                    -- but can't exit the gated level
@@ -793,8 +794,9 @@ cleanerRobot = ItemKind
   , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."
   , ikit     = [ ("waste container", COrgan), ("boiling vent", COrgan)
                , ("armored skin", COrgan), ("live wire", COrgan)
-               , ("jaw", COrgan), ("hooked claw", COrgan)
-               , ("eye 2", COrgan), ("nostril", COrgan), ("spotlight", COrgan)
+               , ("jaw", COrgan), ("hooked claw", COrgan), ("nostril", COrgan)
+               , ("spotlight", COrgan), ("eye 2", COrgan)
+               , ("robot brain", COrgan)
                , ("currency", CInv), ("currency", CInv), ("currency", CInv)
-               , ("robot brain", COrgan) ]
+               , ("construction hooter", CInv) ]
   }
