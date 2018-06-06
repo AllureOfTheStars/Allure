@@ -5,7 +5,7 @@ name:           Allure
 -- PVP summary:+-+------- breaking API changes
 --             | | +----- minor or non-breaking API additions
 --             | | | +--- code changes with no API change
-version:       0.8.0.1
+version:       0.8.1.0
 synopsis:      Near-future Sci-Fi roguelike and tactical squad game
 description:   Allure of the Stars is a near-future Sci-Fi roguelike
                and tactical squad game. Binaries and the game manual
@@ -74,9 +74,11 @@ executable Allure
                       Content.PlaceKind,
                       Content.RuleKind,
                       Content.TileKind,
-                      TieKnot,
+                      Implementation.MonadClientImplementation,
+                      Implementation.MonadServerImplementation,
+                      Implementation.TieKnot,
                       Paths_Allure
-  build-depends:      LambdaHack >= 0.8.0.0 && < 0.8.1.0,
+  build-depends:      LambdaHack >= 0.8.1.0 && < 0.8.2.0,
                       template-haskell >= 2.6,
 
                       async      >= 2.2.1,
@@ -86,7 +88,8 @@ executable Allure
                       filepath   >= 1.2.0.1,
                       optparse-applicative >= 0.13,
                       random     >= 1.1,
-                      text       >= 0.11.2.3
+                      text       >= 0.11.2.3,
+                      transformers >= 0.4
 
   default-language:   Haskell2010
   default-extensions: MonoLocalBinds, ScopedTypeVariables, OverloadedStrings
@@ -127,7 +130,9 @@ test-suite test
                       Content.PlaceKind,
                       Content.RuleKind,
                       Content.TileKind,
-                      TieKnot,
+                      Implementation.MonadClientImplementation,
+                      Implementation.MonadServerImplementation,
+                      Implementation.TieKnot,
                       Paths_Allure
   build-depends:      LambdaHack,
                       template-haskell >= 2.6,
@@ -138,7 +143,8 @@ test-suite test
                       filepath   >= 1.2.0.1,
                       optparse-applicative >= 0.13,
                       random     >= 1.1,
-                      text       >= 0.11.2.3
+                      text       >= 0.11.2.3,
+                      transformers >= 0.4
 
   default-language:   Haskell2010
   default-extensions: MonoLocalBinds, ScopedTypeVariables, OverloadedStrings

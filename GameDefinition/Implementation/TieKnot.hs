@@ -4,9 +4,9 @@
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
--- | Here the knot of engine code pieces and the game-specific
+-- | Here the knot of engine code pieces, frontend and the game-specific
 -- content definitions is tied, resulting in an executable game.
-module TieKnot
+module Implementation.TieKnot
   ( tieKnot
   ) where
 
@@ -24,7 +24,6 @@ import qualified Game.LambdaHack.Content.ModeKind as MK
 import qualified Game.LambdaHack.Content.PlaceKind as PK
 import qualified Game.LambdaHack.Content.RuleKind as RK
 import qualified Game.LambdaHack.Content.TileKind as TK
-import           Game.LambdaHack.SampleImplementation.SampleMonadServer (executorSer)
 import           Game.LambdaHack.Server
 
 import qualified Client.UI.Content.KeyKind as Content.KeyKind
@@ -34,6 +33,7 @@ import qualified Content.ModeKind
 import qualified Content.PlaceKind
 import qualified Content.RuleKind
 import qualified Content.TileKind
+import           Implementation.MonadServerImplementation (executorSer)
 
 -- | Tie the LambdaHack engine client, server and frontend code
 -- with the game-specific content definitions, and run the game.
