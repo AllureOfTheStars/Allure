@@ -209,13 +209,7 @@ version:
 build-binary-common:
 	cabal install --disable-library-profiling --disable-profiling --disable-documentation -f-release --only-dependencies
 	cabal configure --disable-library-profiling --disable-profiling -f-release --prefix=/ --datadir=. --datasubdir=.
-	which ld
-	which ld.gold
-	which ld.bfd
-	ld --version
-	ld.gold --version
-	ld.bfd --version
-	cabal build -v2 exe:Allure
+	cabal build exe:Allure
 	mkdir -p AllureOfTheStars/GameDefinition/fonts
 	cabal copy --destdir=AllureOfTheStarsInstall
 	cp GameDefinition/config.ui.default AllureOfTheStars/GameDefinition
