@@ -1,3 +1,9 @@
+## [v0.8.1.0](https://github.com/AllureOfTheStars/Allure/v0.8.0.0...v0.8.1.0)
+
+- no player-visible changes
+- significantly reduce RAM usage when compiling library
+- update and extend CI
+
 ## [v0.8.0.0, aka 'Explosive dashboard'](https://github.com/AllureOfTheStars/Allure/compare/v0.7.1.0...v0.8.0.0)
 
 - display initial bits of backstory as a help screen and in-game
