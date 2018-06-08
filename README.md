@@ -154,7 +154,7 @@ Further information
 For more information, visit the wiki[4]
 and see [PLAYING.md](https://github.com/AllureOfTheStars/Allure/blob/master/GameDefinition/PLAYING.md),
 [CREDITS](https://github.com/AllureOfTheStars/Allure/blob/master/CREDITS)
-and [LICENSE](https://github.com/AllureOfTheStars/Allure/blob/master/LICENSE).
+and [COPYLEFT](https://github.com/AllureOfTheStars/Allure/blob/master/COPYLEFT).
 
 Have fun!
 
@@ -179,6 +179,7 @@ You should have received a copy of the GNU Affero General Public License
 along with this program in file LICENSE.
 If not, see <http://www.gnu.org/licenses/>.
 
+Exceptions and detailed copyright information is contained in file COPYLEFT.
 
 
 [1]: http://www.haskell.org/

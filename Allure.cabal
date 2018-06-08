@@ -30,8 +30,8 @@ description:   Allure of the Stars is a near-future Sci-Fi roguelike
                based on player behaviour. Contributions are welcome.
 homepage:      http://allureofthestars.com
 bug-reports:   http://github.com/AllureOfTheStars/Allure/issues
-license:       AGPL-3
-license-file:  LICENSE
+license:       OtherLicense
+license-file:  COPYLEFT
 tested-with:   GHC==8.0.2, GHC==8.2.2, GHC==8.4.3
 data-files:    GameDefinition/config.ui.default,
                GameDefinition/fonts/16x16x.fon,
@@ -44,6 +44,7 @@ data-files:    GameDefinition/config.ui.default,
                README.md,
                CHANGELOG.md,
                LICENSE,
+               COPYLEFT,
                CREDITS
 extra-source-files: GameDefinition/MainMenu.ascii,
                     GameDefinition/PLAYING.md,

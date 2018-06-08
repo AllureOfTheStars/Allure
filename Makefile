@@ -224,6 +224,7 @@ build-binary-common:
 	cp README.md AllureOfTheStars
 	cp CHANGELOG.md AllureOfTheStars
 	cp LICENSE AllureOfTheStars
+	cp COPYLEFT AllureOfTheStars
 	cp CREDITS AllureOfTheStars
 
 build-binary: build-binary-common
