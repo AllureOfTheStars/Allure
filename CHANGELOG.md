@@ -1,3 +1,10 @@
+## [v0.8.1.1](https://github.com/AllureOfTheStars/Allure/v0.8.1.0...v0.8.1.1)
+
+- no player-visible changes
+- make it possible to compile with old async package
+- rewrite copyright information according to Debian format
+- make github display the correct main license
+
 ## [v0.8.1.0](https://github.com/AllureOfTheStars/Allure/v0.8.0.0...v0.8.1.0)
 
 - no player-visible changes
