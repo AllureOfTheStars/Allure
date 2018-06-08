@@ -82,7 +82,7 @@ executable Allure
   build-depends:      LambdaHack >= 0.8.1.0 && < 0.8.2.0,
                       template-haskell >= 2.6,
 
-                      async      >= 2.2.1,
+                      async      >= 2,
                       base       >= 4.9 && < 99,
                       containers >= 0.5.3.0,
                       enummapset >= 0.5.2.2,
