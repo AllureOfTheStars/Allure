@@ -83,7 +83,7 @@ instance MonadServer SerImplementation where
   chanSaveServer = SerImplementation $ gets serToSave
   liftIO         = SerImplementation . IO.liftIO
 
-instance MonadServerReadRequest SerImplementation where
+instance MonadServerComm SerImplementation where
   {-# INLINE getsDict #-}
   getsDict   f = SerImplementation $ gets $ f . serDict
   {-# INLINE modifyDict #-}
