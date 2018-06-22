@@ -1458,7 +1458,7 @@ gem4 = gem1
 gem5 = gem1
   { isymbol  = symbolSpecial
   , iname    = "stimpack"
-  , ifreq    = [ ("treasure", 100), ("gem", 25), ("any jewelry", 25)
+  , ifreq    = [ ("treasure", 100), ("gem", 25), ("any jewelry", 10)
                , ("valuable", 100) ]
   , iflavour = zipPlain [BrYellow]
   , irarity  = [(1, 40), (10, 40)]
