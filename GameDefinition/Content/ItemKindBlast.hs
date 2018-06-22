@@ -755,7 +755,7 @@ cruiseAdHologram = ItemKind
   , iaspects = []
   , ieffects = [toOrganGood "resolute" (5 + 1 `d` 2), DropBestWeapon]
   , ifeature = [toVelocity 5, Fragile, Blast]  -- 1 step, 1 turn
-  , idesc    = "The fitful holographic clip shows a couple that laughs, watches in silence Saturn's rings through a huge window, throws treats to a little rhino frolicking in reduced gravity, runs through corridors wearing alien masks in a mock chase. An exited female voice proclaims: \"...safety and security, comfort, imagination...for each of your senses...robot servants...personalized life support zones...\""
+  , idesc    = "The fitful holographic clip shows a couple that laughs, watches in silence Saturn's rings through a huge window, throws treats to a little rhino frolicking in reduced gravity, runs through corridors wearing alien masks in a mock chase. An exited female voice proclaims: \"...safety, security and comfort...for each of your senses...personalized life support zones...robot servants...guessing your every wish...\""
   , ikit     = []
   }
 outerAdHologram = cruiseAdHologram
