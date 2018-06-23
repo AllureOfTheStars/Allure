@@ -541,6 +541,8 @@ floorArenaShade = floorActor
 
 -- ** Not walkable
 
+-- *** Not clear
+
 oriel = TileKind
   { tsymbol  = '%'  -- story-wise it's transparent, hence the symbol
   , tname    = "oriel"
@@ -562,16 +564,6 @@ doorlessWall = TileKind
   , tcolor2  = defFG
   , talter   = 100
   , tfeature = [HideAs "fillerWall"]
-  }
-machineWall = TileKind
-  { tsymbol  = '%'
-  , tname    = "hardware rack"
-  , tfreq    = [ ("noiseSet", 35), ("emptyExitSet", 6)
-               , ("doorlessWallOver_#", 80) ]
-  , tcolor   = White
-  , tcolor2  = BrBlack
-  , talter   = 100
-  , tfeature = [Spice, Clear]
   }
 rubbleSpiceBurning = TileKind
   { tsymbol  = '&'
@@ -661,6 +653,19 @@ floorWindow = floorArena
   , tcolor   = defFG
   , tcolor2  = defFG
   , tfeature = Embed "black starry sky" : tfeature floorCorridor
+  }
+
+-- *** Clear
+
+machineWall = TileKind
+  { tsymbol  = '%'
+  , tname    = "hardware rack"
+  , tfreq    = [ ("noiseSet", 35), ("emptyExitSet", 6)
+               , ("doorlessWallOver_#", 80) ]
+  , tcolor   = White
+  , tcolor2  = BrBlack
+  , talter   = 100
+  , tfeature = [Spice, Clear]
   }
 
 -- ** Walkable
