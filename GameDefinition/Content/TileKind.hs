@@ -212,7 +212,7 @@ treeBurnt = tree
   }
 treeBurning = tree
   { tname    = "burning tree"
-  , tfreq    = [("zooSet", 70), ("tree with fire", 70)]
+  , tfreq    = [("zooSet", 40), ("tree with fire", 70)]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 5
@@ -238,8 +238,8 @@ rubbleSpice = TileKind
   { tsymbol  = '&'
   , tname    = "rubble pile"
   , tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("emptySet", 1)
-               , ("emptyExitSet", 1), ("noiseSet", 10), ("zooSet", 100)
-               , ("ambushSet", 20), ("stair terminal", 30) ]
+               , ("emptyExitSet", 1), ("noiseSet", 9), ("zooSet", 100)
+               , ("ambushSet", 18), ("stair terminal", 30) ]
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 4  -- boss can dig through
@@ -409,7 +409,7 @@ bushBurnt = bush
   }
 bushBurning = bush
   { tname    = "burning bush"
-  , tfreq    = [("ambushSet", 40), ("zooSet", 300), ("bush with fire", 30)]
+  , tfreq    = [("ambushSet", 40), ("zooSet", 290), ("bush with fire", 30)]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 5
@@ -566,7 +566,7 @@ doorlessWall = TileKind
 machineWall = TileKind
   { tsymbol  = '%'
   , tname    = "hardware rack"
-  , tfreq    = [ ("noiseSet", 35), ("emptyExitSet", 7)
+  , tfreq    = [ ("noiseSet", 35), ("emptyExitSet", 6)
                , ("doorlessWallOver_#", 80) ]
   , tcolor   = White
   , tcolor2  = BrBlack
@@ -575,8 +575,10 @@ machineWall = TileKind
   }
 rubbleSpiceBurning = TileKind
   { tsymbol  = '&'
-  , tname    = "burning pipes"
-  , tfreq    = [("stair terminal", 40)]
+  , tname    = "burning installation"
+  , tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("emptySet", 1)
+               , ("emptyExitSet", 1), ("noiseSet", 1)
+               , ("ambushSet", 2), ("zooSet", 40), ("stair terminal", 40) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 4  -- boss can dig through
