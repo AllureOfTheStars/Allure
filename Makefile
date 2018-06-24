@@ -237,7 +237,8 @@ build-binary-macosx: build-binary-common
 	cp AllureOfTheStarsInstall/bin/Allure AllureOfTheStars
 	dist/build/Allure/Allure --version > /dev/null; \
 	LH_VERSION=$$(cat ~/.Allure/stdout.txt); \
-	tar -czf Allure_$${LH_VERSION}_macosx-amd64.tar.gz AllureOfTheStars
+	OS_VERSION=$$(sw_vers -productVersion); \
+	tar -czf Allure_$${LH_VERSION}_macosx-$${OS_VERSION}-amd64.tar.gz AllureOfTheStars
 
 new-build-dev:
 	cabal new-build --datadir=. --disable-optimization -j1 all
