@@ -237,9 +237,9 @@ rubble = TileKind
 rubbleSpice = TileKind
   { tsymbol  = '&'
   , tname    = "rubble pile"
-  , tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("emptySet", 1)
-               , ("emptyExitSet", 1), ("noiseSet", 9), ("zooSet", 100)
-               , ("ambushSet", 18), ("stair terminal", 30) ]
+  , tfreq    = [ ("rubbleSpice", 1), ("smokeClumpOver_f_Lit", 1)
+               , ("emptySet", 1), ("emptyExitSet", 1), ("noiseSet", 9)
+               , ("zooSet", 100), ("ambushSet", 18), ("stair terminal", 30) ]
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 4  -- boss can dig through
@@ -574,7 +574,7 @@ rubbleSpiceBurning = TileKind
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 4  -- boss can dig through
-  , tfeature = [Spice, OpenTo "rubbleSpiceOrNot", Embed "big fire"]
+  , tfeature = [Spice, OpenTo "rubbleSpice", Embed "big fire"]
   }
 wallObscuredSafety = TileKind
   { tsymbol  = '#'
