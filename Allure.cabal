@@ -9,9 +9,9 @@ version:       0.8.3.0
 synopsis:      Near-future Sci-Fi roguelike and tactical squad game
 description:   Allure of the Stars is a near-future Sci-Fi roguelike
                and tactical squad game. Binaries and the game manual
-               are available at the homepage, where you can also
-               try the game out in the browser:
-               <http://allureofthestars.com/play>
+               are available at homepage, where you can also
+               try the game out in the browser at
+               <http://allureofthestars.com/play>.
                (It runs fastest on Chrome. Keyboard commands and savefiles
                are supported only on recent enough versions of browsers.
                Mouse should work everywhere.)

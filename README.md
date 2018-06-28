@@ -7,8 +7,8 @@ Allure of the Stars
 
 Allure of the Stars is a near-future Sci-Fi roguelike[2]
 and tactical squad game. Binaries and the game manual
-are available at the homepage[6], where you can also
-try the game out in the browser: http://allureofthestars.com/play
+are available at homepage[6], where you can also
+try the game out in the browser at http://allureofthestars.com/play.
 (It runs fastest on Chrome. Keyboard commands and savefiles
 are supported only on recent enough versions of browsers.
 Mouse should work everywhere.)
@@ -47,8 +47,8 @@ if available.
 
 On Linux, make sure you have the SDL2 libraries installed on your system
 (e.g., libsdl2-2.0-0, libsdl2-ttf-2.0-0 on Ubuntu).
-On Mac OS X, you need SDL2 installed, as well, e.g.,
-from [libsdlorg](https://www.libsdl.org/download-2.0.php)
+On Mac OS X, you need SDL2 installed, e.g.,
+from [libsdlorg](https://www.libsdl.org/download-2.0.php).
 For Windows, the SDL2 and all other needed libraries are already
 contained in the game's binary archive.
 Note that Windows binaries no longer work on Windows XP, since Cygwin
@@ -107,9 +107,9 @@ as follows
     cabal update
     cabal install Allure
 
-For a newer version, install a matching LambdaHack library snapshot
-from a development branch, download the game source from github[5]
-and run `cabal install` from the main directory.
+For a newer version, install a matching LambdaHack library snapshot,
+clone the game source from github[5] and run `cabal install`
+from the main directory.
 
 
 Testing and debugging
