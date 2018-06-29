@@ -254,7 +254,7 @@ shallow1empty = empty
   , cdesc         = "The black sky outside sucks light through the oriels."
   }
 emptyExit = empty
-  { cname         = "Shuttle servicing area"
+  { cname         = "Shuttle servicing level"
   , cfreq         = [("caveEmptyExit", 1)]
   , cdefTile      = "emptyExitSet"
   , cdarkCorTile  = "transport route"
