@@ -62,7 +62,7 @@ source-repository head
 executable Allure
   hs-source-dirs:     GameDefinition
   main-is:            Main.hs
-  other-modules:      Client.UI.Content.KeyKind,
+  other-modules:      Client.UI.Content.Input,
                       Content.CaveKind,
                       Content.ItemKind,
                       Content.ItemKindEmbed,
@@ -119,7 +119,7 @@ test-suite test
   type:               exitcode-stdio-1.0
   hs-source-dirs:     GameDefinition, test
   main-is:            test.hs
-  other-modules:      Client.UI.Content.KeyKind,
+  other-modules:      Client.UI.Content.Input,
                       Content.CaveKind,
                       Content.ItemKind,
                       Content.ItemKindEmbed,
