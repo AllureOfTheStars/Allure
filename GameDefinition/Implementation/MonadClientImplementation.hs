@@ -83,7 +83,7 @@ instance MonadClientSetup CliImplementation where
       Just sess ->
         let !newSess = (emptySessionUI (sUIOptions sess))
                          { schanF = schanF sess
-                         , sbinding = sbinding sess
+                         , sccui = sccui sess
                          , shistory = shistory sess
                          , sstart = sstart sess
                          , sgstart = sgstart sess
@@ -128,13 +128,13 @@ instance MonadClientAtomic CliImplementation where
 
 -- | Run the main client loop, with the given arguments and empty
 -- initial states, in the @IO@ monad.
-executorCli :: InputContentData -> UIOptions -> ClientOptions
+executorCli :: CCUI -> UIOptions -> ClientOptions
             -> COps
             -> Bool
             -> FactionId
             -> ChanServer
             -> IO ()
-executorCli copsClient sUIOptions clientOptions cops isUI fid cliDict =
+executorCli ccui sUIOptions clientOptions cops isUI fid cliDict =
   let cliSession | isUI = Just $ emptySessionUI sUIOptions
                  | otherwise = Nothing
       stateToFileName (cli, _) =
@@ -147,6 +147,6 @@ executorCli copsClient sUIOptions clientOptions cops isUI fid cliDict =
         , cliToSave
         , cliSession
         }
-      m = loopCli copsClient sUIOptions clientOptions
+      m = loopCli ccui sUIOptions clientOptions
       exe = evalStateT (runCliImplementation m) . totalState
   in Save.wrapInSaves cops stateToFileName exe

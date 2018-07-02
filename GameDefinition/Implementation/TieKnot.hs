@@ -16,6 +16,10 @@ import Game.LambdaHack.Common.Prelude
 
 import qualified System.Random as R
 
+import           Game.LambdaHack.Client
+import qualified Game.LambdaHack.Client.UI.Content.Input as IC
+import qualified Game.LambdaHack.Client.UI.Content.Screen as SC
+import           Game.LambdaHack.Client.UI.ContentClientUI
 import           Game.LambdaHack.Common.Kind
 import qualified Game.LambdaHack.Common.Tile as Tile
 import qualified Game.LambdaHack.Content.CaveKind as CK
@@ -27,6 +31,7 @@ import qualified Game.LambdaHack.Content.TileKind as TK
 import           Game.LambdaHack.Server
 
 import qualified Client.UI.Content.Input as Content.Input
+import qualified Client.UI.Content.Screen as Content.Screen
 import qualified Content.CaveKind
 import qualified Content.ItemKind
 import qualified Content.ModeKind
@@ -75,9 +80,18 @@ tieKnot options@ServerOptions{sallClear, sboostRandomItem, sdungeonRng} = do
         , coItemSpeedup
         , coTileSpeedup
         }
-      -- Client content operations containing default keypresses
-      -- and command descriptions.
-      !copsClient = Content.Input.standardKeysAndMouse
+      benchmark = sbenchmark $ sclientOptions soptionsNxt
+  -- Parse UI client configuration file.
+  -- It is reparsed at each start of the game executable.
+  -- Fail here, not inside client code, so that savefiles are not removed,
+  -- because they are not the source of the failure.
+  sUIOptions <- mkUIOptions cops benchmark
+  -- Client content operations containing default keypresses
+  -- and command descriptions.
+  let !ccui = CCUI
+        { coinput = IC.makeData sUIOptions Content.Input.standardKeysAndMouse
+        , coscreen = SC.makeData Content.Screen.standardLayoutAndFeatures
+        }
   -- Wire together game content, the main loops of game clients
   -- and the game server loop.
-  executorSer cops copsClient soptionsNxt
+  executorSer cops ccui soptionsNxt sUIOptions
