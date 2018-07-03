@@ -30,7 +30,7 @@ rogue = CaveKind
   , cfreq         = [ ("default random", 100), ("deep random", 70)
                     , ("caveRogue", 1) ]
   , cxsize        = 80
-  , cysize        = 21
+  , cysize        = 42
   , cgrid         = DiceXY (3 `d` 2) 4
   , cminPlaceSize = DiceXY (2 `d` 2 + 4) 5
   , cmaxPlaceSize = DiceXY 16 20

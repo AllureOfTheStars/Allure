@@ -17,7 +17,7 @@ import Game.LambdaHack.Client.UI.Content.Screen
 standardLayoutAndFeatures :: ScreenContent
 standardLayoutAndFeatures = ScreenContent
   { rwidth = 80
-  , rheight = 24
+  , rheight = 45
   -- ASCII art for the main menu. Only pure 7-bit ASCII characters are allowed.
   -- When displayed in the main menu screen, the picture is overwritten
   -- with game and engine version strings and keybindings.
