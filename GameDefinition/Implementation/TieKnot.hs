@@ -14,6 +14,9 @@ import Prelude ()
 
 import Game.LambdaHack.Common.Prelude
 
+import           Control.Concurrent
+import           Control.Concurrent.Async
+import qualified Control.Exception as Ex
 import qualified System.Random as R
 
 import           Game.LambdaHack.Client
@@ -21,6 +24,7 @@ import qualified Game.LambdaHack.Client.UI.Content.Input as IC
 import qualified Game.LambdaHack.Client.UI.Content.Screen as SC
 import           Game.LambdaHack.Client.UI.ContentClientUI
 import           Game.LambdaHack.Common.Kind
+import           Game.LambdaHack.Common.Misc
 import qualified Game.LambdaHack.Common.Tile as Tile
 import qualified Game.LambdaHack.Content.CaveKind as CK
 import qualified Game.LambdaHack.Content.ItemKind as IK
@@ -49,8 +53,10 @@ import           Implementation.MonadServerImplementation (executorSer)
 -- of computation differs. Which of the frontends is run inside the UI client
 -- depends on the flags supplied when compiling the engine library.
 -- Similarly for the choice of native vs JS builds.
-tieKnot :: ServerOptions -> IO ()
-tieKnot options@ServerOptions{sallClear, sboostRandomItem, sdungeonRng} = do
+tieKnotForAsync :: ServerOptions -> IO ()
+tieKnotForAsync options@ServerOptions{ sallClear
+                                     , sboostRandomItem
+                                     , sdungeonRng } = do
   -- This setup ensures the boosting option doesn't affect generating initial
   -- RNG for dungeon, etc., and also, that setting dungeon RNG on commandline
   -- equal to what was generated last time, ensures the same item boost.
@@ -95,3 +101,24 @@ tieKnot options@ServerOptions{sallClear, sboostRandomItem, sdungeonRng} = do
   -- Wire together game content, the main loops of game clients
   -- and the game server loop.
   executorSer cops ccui soptionsNxt sUIOptions
+
+-- | Runs tieKnotForAsync in an async and applies the main thread workaround.
+tieKnot :: ServerOptions -> IO ()
+tieKnot serverOptions = do
+#ifndef USE_JSFILE
+  let fillWorkaround =
+        -- Set up void workaround if nothing specific required.
+        void $ tryPutMVar workaroundOnMainThreadMVar $ return ()
+#endif
+  -- Avoid the bound thread that would slow down the communication.
+  a <- async $ tieKnotForAsync serverOptions
+#ifndef USE_JSFILE
+               `Ex.finally` fillWorkaround
+  link a
+  -- Run a (possibly void) workaround. It's needed for OSes/frontends
+  -- that need to perform some actions on the main thread
+  -- (not just any bound thread), e.g., newer OS X drawing with SDL2.
+  workaround <- takeMVar workaroundOnMainThreadMVar
+  workaround
+#endif
+  wait a
