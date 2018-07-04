@@ -7,7 +7,7 @@
 --
 -- | Game rules and assorted game setup data.
 module Content.RuleKind
-  ( content
+  ( standardRules
   ) where
 
 import Prelude ()
@@ -23,15 +23,11 @@ import qualified Paths_Allure as Self (getDataFileName, version)
 
 import Game.LambdaHack.Content.RuleKind
 
-content :: [RuleKind]
-content = [standard]
-
-standard :: RuleKind
-standard = RuleKind
-  { rsymbol = 's'
-  , rname = "standard Allure of the Stars ruleset"
-  , rfreq = [("standard", 100)]
-  , rtitle = "Allure of the Stars"
+standardRules :: RuleContent
+standardRules = RuleContent
+  { rtitle = "Allure of the Stars"
+  , rXmax = 80
+  , rYmax = 42
   , rfontDir = $(do
       x <- qRunIO (Self.getDataFileName "GameDefinition/fonts")
       lift x)
