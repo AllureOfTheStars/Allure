@@ -1,3 +1,9 @@
+-- Copyright (c) 2008--2011 Andres Loeh
+-- Copyright (c) 2010--2018 Mikolaj Konarski and others (see git history)
+-- This file is a part of the computer game Allure of the Stars
+-- and is released under the terms of the GNU Affero General Public License.
+-- For license and copyright information, see the file LICENSE.
+--
 {-# LANGUAGE TemplateHaskell #-}
 -- | The default screen layout and features definition.
 module Client.UI.Content.Screen
@@ -41,7 +47,8 @@ standardLayoutAndFeatures = ScreenContent
                                      then reverse rows : paragraphs ls []
                                      else paragraphs ls (l : rows)
           intro = case paragraphs (lines x) [] of
-            _title : _blurb : par1 : par2 : _rest -> par1 ++ [""] ++ par2
+            _title : _blurb : par1 : par2 : _rest ->
+              ["", ""] ++ par1 ++ [""] ++ par2 ++ ["", "", ""]
             _ -> error "not enough paragraphs in intro screen text"
       lift intro)
   }
