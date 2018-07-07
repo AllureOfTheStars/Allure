@@ -72,6 +72,8 @@ arena = rogue
   { csymbol       = 'A'
   , cname         = "Recreational deck"
   , cfreq         = [("default random", 40), ("caveArena", 1)]
+  , cXminSize     = 60
+  , cYminSize     = 30
   , cgrid         = DiceXY (2 + 1 `d` 2) (1 + 1 `d` 2)
   , cminPlaceSize = DiceXY (2 `d` 2 + 4) 6
   , cmaxPlaceSize = DiceXY 16 12
@@ -113,6 +115,8 @@ laboratory = arena2
   { csymbol       = 'L'
   , cname         = "Laboratory"
   , cfreq         = [("deep random", 20), ("caveLaboratory", 1)]
+  , cXminSize     = 80
+  , cYminSize     = 42
   , cgrid         = DiceXY (2 `d` 2 + 7) 3
   , cminPlaceSize = DiceXY (3 `d` 2 + 4) 5
   , cdarkChance   = 1 `d` 54 + 1 `dL` 20
@@ -166,6 +170,8 @@ noise = rogue
   { csymbol       = 'N'
   , cname         = "Flight hardware hub"
   , cfreq         = [("caveNoise", 1)]
+  , cXminSize     = 60
+  , cYminSize     = 30
   , cgrid         = DiceXY (2 + 1 `d` 3) 3
   , cminPlaceSize = DiceXY 8 6
   , cmaxPlaceSize = DiceXY 20 10
@@ -194,6 +200,8 @@ noise = rogue
 noise2 = noise
   { cname         = "Power distribution hub"
   , cfreq         = [("caveNoise2", 1)]
+  , cXminSize     = 50
+  , cYminSize     = 21
   , cnightChance  = 51  -- easier variant, but looks sinister
   , citemNum      = 11 `d` 5  -- an incentive to explore the final labyrinth
   , citemFreq     = [ ("common item", 40), ("treasure", 60)
@@ -206,6 +214,8 @@ bridge = rogue
   { csymbol       = 'B'
   , cname         = "Captain's bridge"
   , cfreq         = [("caveBridge", 1)]
+  , cXminSize     = 40
+  , cYminSize     = 21
   , cdarkChance   = 0  -- all rooms lit, for a gentle start
   , cextraStairs  = 1
   , cactorCoeff   = 200  -- it's quite deep already, so spawn slowly
@@ -217,6 +227,8 @@ bridge = rogue
   }
 shallow2rogue = rogue
   { cfreq         = [("shallow random 2", 50)]
+  , cXminSize     = 60
+  , cYminSize     = 30
   , cactorCoeff   = cactorCoeff rogue `div` 2  -- more difficult
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq rogue
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq rogue
@@ -224,6 +236,8 @@ shallow2rogue = rogue
   }
 shallow2arena = arena
   { cfreq         = [("shallow random 2", 100)]
+  , cXminSize     = 60
+  , cYminSize     = 30
   , cactorCoeff   = cactorCoeff arena `div` 2
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq arena
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq arena
@@ -231,6 +245,8 @@ shallow2arena = arena
   }
 shallow2empty = empty
   { cfreq         = [("shallow random 2", 10)]
+  , cXminSize     = 60
+  , cYminSize     = 30
   , cactorCoeff   = cactorCoeff empty `div` 2
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq empty
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
@@ -267,6 +283,8 @@ raid = rogue
   { csymbol       = 'S'
   , cname         = "Triton City sewers"
   , cfreq         = [("caveRaid", 1)]
+  , cXminSize     = 50
+  , cYminSize     = 21
   , cdarkChance   = 0  -- all rooms lit, for a gentle start
   , cmaxVoid      = 1%10
   , cactorCoeff   = 250  -- deep level with no kit, so slow spawning
@@ -283,6 +301,8 @@ brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
   , cname         = "Woodland biosphere"
   , cfreq         = [("caveBrawl", 1)]
   , cgrid         = DiceXY (2 `d` 2 + 2) 3
+  , cXminSize     = 60
+  , cYminSize     = 30
   , cminPlaceSize = DiceXY 3 3
   , cmaxPlaceSize = DiceXY 7 5
   , cdarkChance   = 51
