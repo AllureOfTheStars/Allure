@@ -238,7 +238,7 @@ rubbleSpice = TileKind
   { tsymbol  = '&'
   , tname    = "rubble pile"
   , tfreq    = [ ("rubbleSpice", 1), ("smokeClumpOver_f_Lit", 1)
-               , ("emptySet", 1), ("emptyExitSet", 1), ("noiseSet", 9)
+               , ("emptySet", 7), ("emptyExitSet", 7), ("noiseSet", 80)
                , ("zooSet", 100), ("ambushSet", 18), ("stair terminal", 30) ]
   , tcolor   = BrYellow
   , tcolor2  = Brown
@@ -423,9 +423,9 @@ bushBurning = bush
 floorFog = TileKind
   { tsymbol  = ';'
   , tname    = "faint fog"
-  , tfreq    = [ ("lit fog", 1), ("emptySet", 5), ("shootoutSetLit", 20)
-               , ("emptyExitSet", 2)
-               , ("noiseSet", 10), ("fogClumpOver_f_Lit", 60) ]
+  , tfreq    = [ ("lit fog", 1), ("emptySet", 50), ("shootoutSetLit", 20)
+               , ("emptyExitSet", 20)
+               , ("noiseSet", 100), ("fogClumpOver_f_Lit", 60) ]
       -- lit fog is OK for shootout, because LOS is mutual, as opposed
       -- to dark fog, and so camper has little advantage, especially
       -- on big maps, where he doesn't know on which side of fog patch to hide
@@ -436,14 +436,14 @@ floorFog = TileKind
   }
 floorFogDark = floorFog
   { tname    = "thick fog"
-  , tfreq    = [("noiseSet", 10), ("escapeSetDark", 50)]
+  , tfreq    = [("noiseSet", 100), ("escapeSetDark", 50)]
   , tfeature = Dark : tfeature floorFog
   }
 floorSmoke = TileKind
   { tsymbol  = ';'
   , tname    = "billowing smoke"
   , tfreq    = [ ("lit smoke", 1), ("labTrailLit", 1), ("stair terminal", 2)
-               , ("smokeClumpOver_f_Lit", 1), ("emptyExitSet", 2) ]
+               , ("smokeClumpOver_f_Lit", 1), ("emptyExitSet", 20) ]
   , tcolor   = Brown
   , tcolor2  = BrBlack
   , talter   = 0
@@ -479,11 +479,12 @@ floorCorridor = TileKind
   }
 floorArena = floorCorridor
   { tfreq    = [ ("floorArenaLit", 1), ("rubbleSpiceOrNot", 30)
-               , ("arenaSetLit", 96), ("emptySet", 91), ("zooSet", 600) ]
+               , ("arenaSetLit", 96), ("emptySet", 910), ("zooSet", 600) ]
   }
 floorNoise = floorArena
   { tname    = "oily floor"
-  , tfreq    = [("noiseSet", 60), ("emptyExitSet", 88), ("damp stone floor", 1)]
+  , tfreq    = [ ("noiseSet", 600), ("emptyExitSet", 880)
+               , ("damp stone floor", 1) ]
   }
 floorDirt = floorArena
   { tname    = "dirt"
@@ -559,7 +560,7 @@ outerHullWall = basicOuterFence
 doorlessWall = TileKind
   { tsymbol  = '#'
   , tname    = "wall"
-  , tfreq    = [("noiseSet", 60), ("doorlessWallOver_#", 20)]
+  , tfreq    = [("noiseSet", 600), ("doorlessWallOver_#", 20)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 100
@@ -568,8 +569,8 @@ doorlessWall = TileKind
 rubbleSpiceBurning = TileKind
   { tsymbol  = '&'
   , tname    = "burning installation"
-  , tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("emptySet", 1)
-               , ("emptyExitSet", 1), ("noiseSet", 1)
+  , tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("emptySet", 4)
+               , ("emptyExitSet", 6), ("noiseSet", 7)
                , ("ambushSet", 2), ("zooSet", 40), ("stair terminal", 40) ]
   , tcolor   = BrRed
   , tcolor2  = Red
@@ -649,7 +650,7 @@ escapeSpaceshipDown = escapeDown
 floorWindow = floorArena
   { tsymbol  = ' '  -- story-wise it's transparent, hence the symbol
   , tname    = "floor window"
-  , tfreq    = [("emptySet", 3)]
+  , tfreq    = [("emptySet", 30)]
   , tcolor   = defFG
   , tcolor2  = defFG
   , tfeature = Embed "black starry sky" : tfeature floorCorridor
@@ -660,7 +661,7 @@ floorWindow = floorArena
 machineWall = TileKind
   { tsymbol  = '%'
   , tname    = "hardware rack"
-  , tfreq    = [ ("noiseSet", 35), ("emptyExitSet", 6)
+  , tfreq    = [ ("noiseSet", 350), ("emptyExitSet", 60)
                , ("doorlessWallOver_#", 80) ]
   , tcolor   = White
   , tcolor2  = BrBlack

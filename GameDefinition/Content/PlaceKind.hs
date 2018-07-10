@@ -282,7 +282,7 @@ treeShade = PlaceKind
 fogClump = PlaceKind
   { psymbol  = 'f'
   , pname    = "foggy patch"
-  , pfreq    = [("shootout", 170)]
+  , pfreq    = [("shootout", 170), ("empty", 2000)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -293,7 +293,7 @@ fogClump = PlaceKind
   , poverride = [('f', "fogClumpOver_f_Lit"), (';', "lit fog")]
   }
 fogClump2 = fogClump
-  { pfreq    = [("shootout", 400), ("empty", 7000)]
+  { pfreq    = [("shootout", 400), ("empty", 5000)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -306,7 +306,7 @@ fogClump2 = fogClump
 smokeClump = PlaceKind
   { psymbol  = 's'
   , pname    = "smoky patch"
-  , pfreq    = [("zoo", 50), ("ambush", 50)]
+  , pfreq    = [("zoo", 50), ("ambush", 50), ("empty", 1000)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -318,7 +318,8 @@ smokeClump = PlaceKind
                 , ('·', "floorActorLit") ]
   }
 smokeClump2FGround = smokeClump
-  { pfreq    = [("laboratory", 100), ("zoo", 500), ("ambush", 500)]
+  { pfreq    = [ ("laboratory", 100), ("zoo", 500), ("ambush", 500)
+               , ("empty", 2000) ]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FGround
