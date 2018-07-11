@@ -168,7 +168,7 @@ pillar2 = pillar
                ]
   }
 pillar3 = pillar
-  { prarity  = [(10, 5)]
+  { prarity  = [(10, 3)]
   , ptopLeft = [ "&·#·"
                , "··#·"
                , "##··"
@@ -176,7 +176,7 @@ pillar3 = pillar
                ]
   }
 pillar4 = pillar
-  { prarity  = [(10, 5)]
+  { prarity  = [(10, 3)]
   , ptopLeft = [ "&#··"
                , "#·#·"
                , "·##·"
@@ -669,7 +669,7 @@ maze = PlaceKind
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CStretch
   , pfence   = FNone
-  , ptopLeft = [ "·####"
+  , ptopLeft = [ "X####"
                , "#·#··"
                , "##··#"
                , "#··#·"
@@ -677,32 +677,32 @@ maze = PlaceKind
   , poverride = [('&', "cache jewelry")]
   }
 maze2 = maze
-  { pfreq    = [("rogue", 40), ("arena", 40), ("empty", 40)]
-  , ptopLeft = [ "··####"
+  { pfreq    = [("rogue", 20), ("arena", 40), ("empty", 20)]
+  , ptopLeft = [ "XX####"
                , "##·##·"
                , "#·#··#"
                , "#···#·"
                ]
   }
 maze3 = maze
-  { pfreq    = [("rogue", 70), ("arena", 70), ("empty", 70)]
-  , ptopLeft = [ "·######"
-               , "·##·##·"
+  { pfreq    = [("rogue", 40), ("arena", 70), ("empty", 40)]
+  , ptopLeft = [ "X######"
+               , "X##·##·"
                , "#··#···"
                , "#··#··#"
                ]
   }
 mazeBig = maze
-  { pfreq    = [("rogue", 500), ("arena", 500), ("empty", 500)]
-  , ptopLeft = [ "··####"
-               , "·#·#··"
+  { pfreq    = [("rogue", 200), ("arena", 500), ("empty", 200)]
+  , ptopLeft = [ "XX####"
+               , "X#·#··"
                , "##&·##"
-               , "##·##·"
+               , "#··##·"
                , "#·#··#"
                ]
   }
 mazeBig2 = mazeBig
-  { ptopLeft = [ "··####"
+  { ptopLeft = [ "XX####"
                , "##·##·"
                , "#·#&··"
                , "#·#··#"
@@ -710,8 +710,8 @@ mazeBig2 = mazeBig
                ]
   }
 mazeBig3 = mazeBig
-  { pfreq    = [("rogue", 800), ("arena", 800), ("empty", 800)]
-  , ptopLeft = [ "·######"
+  { pfreq    = [("rogue", 500), ("arena", 800), ("empty", 500)]
+  , ptopLeft = [ "X######"
                , "#·##·#·"
                , "#·#·#··"
                , "##·##·#"

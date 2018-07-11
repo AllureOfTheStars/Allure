@@ -26,19 +26,19 @@ rogue,        rogue2, arena, arena2, laboratory, empty, noise, noise2, bridge, s
 
 rogue = CaveKind
   { csymbol       = 'R'
-  , cname         = "Insulated storage area"
-  , cfreq         = [ ("default random", 100), ("deep random", 70)
+  , cname         = "Maintenance and storage"
+  , cfreq         = [ ("default random", 100), ("deep random", 40)
                     , ("caveRogue", 1) ]
   , cXminSize     = 80
   , cYminSize     = 42
 --  , cgrid         = DiceXY (3 `d` 2) 4
-  , ccellSize     = DiceXY (2 `d` 8 + 10) (1 `d` 6 + 6)
+  , ccellSize     = DiceXY (2 `d` 4 + 10) (1 `d` 3 + 6)
   , cminPlaceSize = DiceXY (2 `d` 2 + 4) (1 `d` 2 + 5)
   , cmaxPlaceSize = DiceXY 16 30
   , cdarkChance   = 1 `d` 54 + 1 `dL` 20
   , cnightChance  = 51  -- always night
   , cauxConnects  = 1%2
-  , cmaxVoid      = 1%6
+  , cmaxVoid      = 1%8
   , cminStairDist = 15
   , cextraStairs  = 2 + 1 `d` 2
   , cdoorChance   = 3%4
@@ -60,14 +60,15 @@ rogue = CaveKind
   , clegendLitTile  = "legendLit"
   , cescapeGroup    = Nothing
   , cstairFreq      = [("staircase lift", 100)]
-  , cdesc         = "Winding tunnels stretch into the dark."
+  , cdesc         = "Winding tunnels stretch into the dark. Most of the area is crammed with tanks and cells of raw materials and machinery."
   }
 rogue2 = rogue
-  { cfreq         = [("deep random", 30)]
-  , cname         = "Dark storage area"
+  { cfreq         = [("deep random", 60)]
+  , cname         = "Residential area"
   , cdarkChance   = 51  -- all rooms dark
   , cnightChance  = 0  -- always day
-  , cdesc         = "The lights had gone out."
+  , cmaxVoid      = 1%4
+  , cdesc         = "It's been powered down, except for emergency corridors, and many suites are depressurized and sealed."
   }
 arena = rogue
   { csymbol       = 'A'
@@ -118,16 +119,17 @@ arena2 = arena
 laboratory = arena2
   { csymbol       = 'L'
   , cname         = "Laboratory"
-  , cfreq         = [("deep random", 20), ("caveLaboratory", 1)]
+  , cfreq         = [("deep random", 30), ("caveLaboratory", 1)]
   , cXminSize     = 60
   , cYminSize     = 42
 --  , cgrid         = DiceXY (2 `d` 2 + 7) 3
-  , ccellSize     = DiceXY (1 `d` 2 + 5) 7
-  , cminPlaceSize = DiceXY (3 `d` 2 + 4) 5
+  , ccellSize     = DiceXY (1 `d` 2 + 4) (1 `d` 2 + 6)
+  , cminPlaceSize = DiceXY (1 `d` 2 + 4) (1 `d` 2 + 4)
+  , cmaxPlaceSize = DiceXY 6 40
   , cdarkChance   = 1 `d` 54 + 1 `dL` 20
       -- most rooms lit, to compensate for corridors
   , cnightChance  = 0  -- always day
-  , cauxConnects  = 1%10
+  , cauxConnects  = 1%5
   , cmaxVoid      = 1%10
   , cdoorChance   = 1
   , copenChance   = 1%2
@@ -240,7 +242,7 @@ shallow2rogue = rogue
   , cactorCoeff   = cactorCoeff rogue `div` 2  -- more difficult
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq rogue
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq rogue
-  , cdesc         = ""
+--  , cdesc         = ""
   }
 shallow2arena = arena
   { cfreq         = [("shallow random 2", 100)]
@@ -249,7 +251,7 @@ shallow2arena = arena
   , cactorCoeff   = cactorCoeff arena `div` 2
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq arena
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq arena
-  , cdesc         = ""
+--  , cdesc         = ""
   }
 shallow2empty = empty
   { cfreq         = [("shallow random 2", 10)]
@@ -259,7 +261,7 @@ shallow2empty = empty
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq empty
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
   , cdefTile      = "emptyExitSet"  -- avoid floor windows
-  , cdesc         = ""
+--  , cdesc         = ""
   }
 shallow1empty = empty
   { cname         = "Outermost deck"
