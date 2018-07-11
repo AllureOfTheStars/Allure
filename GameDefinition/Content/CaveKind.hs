@@ -1,3 +1,4 @@
+
 -- Copyright (c) 2008--2011 Andres Loeh
 -- Copyright (c) 2010--2018 Mikolaj Konarski and others (see git history)
 -- This file is a part of the computer game Allure of the Stars
