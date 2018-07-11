@@ -1,4 +1,3 @@
-
 -- Copyright (c) 2008--2011 Andres Loeh
 -- Copyright (c) 2010--2018 Mikolaj Konarski and others (see git history)
 -- This file is a part of the computer game Allure of the Stars
@@ -21,9 +20,9 @@ import Game.LambdaHack.Content.CaveKind
 
 content :: [CaveKind]
 content =
-  [rogue, rogue2, arena, arena2, laboratory, empty, noise, noise2, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1empty, emptyExit, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3]
+  [rogue, rogue2, arena, arena2, laboratory, empty, noise, noise2, bridge, shallow2rogue, shallow2arena, shallow1empty, emptyExit, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3]
 
-rogue,        rogue2, arena, arena2, laboratory, empty, noise, noise2, bridge, shallow2rogue, shallow2arena, shallow2empty, shallow1empty, emptyExit, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
+rogue,        rogue2, arena, arena2, laboratory, empty, noise, noise2, bridge, shallow2rogue, shallow2arena, shallow1empty, emptyExit, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
 
 rogue = CaveKind
   { csymbol       = 'R'
@@ -252,16 +251,6 @@ shallow2arena = arena
   , cactorCoeff   = cactorCoeff arena `div` 2
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq arena
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq arena
---  , cdesc         = ""
-  }
-shallow2empty = empty
-  { cfreq         = [("shallow random 2", 10)]
-  , cXminSize     = 60
-  , cYminSize     = 37
-  , cactorCoeff   = cactorCoeff empty `div` 2
-  , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq empty
-  , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
-  , cdefTile      = "emptyExitSet"  -- avoid floor windows
 --  , cdesc         = ""
   }
 shallow1empty = empty
