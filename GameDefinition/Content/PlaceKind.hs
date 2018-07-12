@@ -22,11 +22,11 @@ content =
   ++ map makeStaircaseUp lstaircase
   ++ map makeStaircaseDown lstaircase
   -- Allure-specific
-  ++ [staircaseLift, escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, colonnadeWide, oval, ovalFloor, ovalSquare, maze,  maze2, maze3, mazeBig, mazeBig2, mazeBig3, cells, cells2, cells3, cells4, cells5, cells6, cells7]
+  ++ [staircaseLift, escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, colonnadeWide, oval, ovalFloor, ovalSquare, maze,  maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7]
 
 rect,    rectWindows, glasshouse, pulpit, ruin, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2FGround, bushClump, staircase, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircaseOutdoor, staircaseGated, escapeUp, escapeUp2, escapeUp3, escapeUp4, escapeUp5, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeOutdoorDown :: PlaceKind
 -- Allure-specific
-staircaseLift, escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, colonnadeWide, oval, ovalFloor, ovalSquare, maze,  maze2, maze3, mazeBig, mazeBig2, mazeBig3, cells, cells2, cells3, cells4, cells5, cells6, cells7 :: PlaceKind
+staircaseLift, escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, colonnadeWide, oval, ovalFloor, ovalSquare, maze,  maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7 :: PlaceKind
 
 lstaircase :: [PlaceKind]
 lstaircase = [staircase, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircaseOutdoor, staircaseGated]
@@ -627,7 +627,7 @@ colonnadeWide = colonnade
 oval = PlaceKind
   { psymbol  = 'o'
   , pname    = "oval room"
-  , pfreq    = [ ("rogue", 1000), ("arena", 1000), ("empty", 1000)
+  , pfreq    = [ ("rogue", 1000), ("arena", 500), ("empty", 250)
                , ("zoo", 1000), ("ambush", 1000) ]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CStretch
@@ -641,7 +641,7 @@ oval = PlaceKind
   , poverride = []
   }
 ovalFloor = oval  -- Without outer solid fence, visible from outside·
-  { pfreq    = [ ("rogue", 10000), ("arena", 10000), ("empty", 10000)
+  { pfreq    = [ ("rogue", 3000), ("arena", 10000), ("empty", 5000)
                , ("zoo", 10000), ("ambush", 10000) ]
   , pfence   = FGround
   , ptopLeft = [ "XXXX+#"
@@ -653,7 +653,7 @@ ovalFloor = oval  -- Without outer solid fence, visible from outside·
                ]
   }
 ovalSquare = ovalFloor
-  { pfreq    = [ ("rogue", 3000), ("arena", 3000), ("empty", 3000)
+  { pfreq    = [ ("rogue", 1000), ("arena", 3000), ("empty", 1000)
                , ("zoo", 3000) , ("ambush", 3000) ]
   , ptopLeft = [ "X###+"
                , "##···"
@@ -665,57 +665,48 @@ ovalSquare = ovalFloor
 maze = PlaceKind
   { psymbol  = 'm'
   , pname    = "mysterious maze"
-  , pfreq    = [("rogue", 20), ("arena", 20), ("empty", 20)]
+  , pfreq    = [("rogue", 20), ("arena", 40), ("empty", 20)]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CStretch
-  , pfence   = FNone
-  , ptopLeft = [ "X####"
-               , "#·#··"
-               , "##··#"
-               , "#··#·"
+  , pfence   = FWall
+  , ptopLeft = [ "##··"
+               , "#··#"
+               , "··#·"
                ]
   , poverride = [('&', "cache jewelry")]
   }
 maze2 = maze
-  { pfreq    = [("rogue", 20), ("arena", 40), ("empty", 20)]
-  , ptopLeft = [ "XX####"
-               , "##·##·"
-               , "#·#··#"
-               , "#···#·"
+  { pfreq    = [("rogue", 25), ("arena", 50), ("empty", 30)]
+  , ptopLeft = [ "#·##·"
+               , "·#··#"
+               , "···#·"
                ]
   }
 maze3 = maze
-  { pfreq    = [("rogue", 40), ("arena", 70), ("empty", 40)]
-  , ptopLeft = [ "X######"
-               , "X##·##·"
-               , "#··#···"
-               , "#··#··#"
+  { pfreq    = [("rogue", 30), ("arena", 60), ("empty", 40)]
+  , ptopLeft = [ "##·##·"
+               , "#·#··#"
+               , "··#···"
                ]
   }
 mazeBig = maze
-  { pfreq    = [("rogue", 200), ("arena", 500), ("empty", 200)]
-  , ptopLeft = [ "XX####"
-               , "X#·#··"
-               , "##&·##"
-               , "#··##·"
-               , "#·#··#"
+  { pfreq    = [("rogue", 200), ("arena", 400), ("empty", 300)]
+  , pfence   = FNone
+  , ptopLeft = [ "X####"
+               , "#·##·"
+               , "##···"
+               , "##··#"
+               , "#··#·"
                ]
   }
-mazeBig2 = mazeBig
-  { ptopLeft = [ "XX####"
+mazeBig2 = maze
+  { pfreq    = [("rogue", 250), ("arena", 500), ("empty", 500)]
+  , pfence   = FNone
+  , ptopLeft = [ "X#####"
+               , "#·##··"
+               , "##··&#"
                , "##·##·"
-               , "#·#&··"
-               , "#·#··#"
-               , "#···#·"
-               ]
-  }
-mazeBig3 = mazeBig
-  { pfreq    = [("rogue", 500), ("arena", 800), ("empty", 500)]
-  , ptopLeft = [ "X######"
-               , "#·##·#·"
-               , "#·#·#··"
-               , "##·##·#"
-               , "#··#···"
+               , "#·#···"
                ]
   }
 cells = PlaceKind

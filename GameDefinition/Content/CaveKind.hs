@@ -65,6 +65,7 @@ rogue = CaveKind
 rogue2 = rogue
   { cfreq         = [("deep random", 60)]
   , cname         = "Residential area"
+  , cmaxPlaceSize = DiceXY 10 20  -- fewer big rooms
   , cdarkChance   = 51  -- all rooms dark
   , cnightChance  = 0  -- always day
   , cmaxVoid      = 1%4
@@ -124,7 +125,7 @@ laboratory = arena2
   , cYminSize     = 42
 --  , cgrid         = DiceXY (2 `d` 2 + 7) 3
   , ccellSize     = DiceXY (1 `d` 2 + 5) (1 `d` 2 + 6)
-  , cminPlaceSize = DiceXY 5 (1 `d` 2 + 4)
+  , cminPlaceSize = DiceXY 5 6
   , cmaxPlaceSize = DiceXY 5 40
   , cdarkChance   = 1 `d` 54 + 1 `dL` 20
       -- most rooms lit, to compensate for corridors
