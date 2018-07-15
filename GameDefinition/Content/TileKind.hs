@@ -409,7 +409,7 @@ bushBurnt = bush
   }
 bushBurning = bush
   { tname    = "burning bush"
-  , tfreq    = [("ambushSet", 40), ("zooSet", 290), ("bush with fire", 30)]
+  , tfreq    = [("ambushSet", 40), ("zooSet", 300), ("bush with fire", 30)]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 5
@@ -479,7 +479,7 @@ floorCorridor = TileKind
   }
 floorArena = floorCorridor
   { tfreq    = [ ("floorArenaLit", 1), ("rubbleSpiceOrNot", 30)
-               , ("arenaSetLit", 96), ("emptySet", 910), ("zooSet", 600) ]
+               , ("arenaSetLit", 96), ("emptySet", 900), ("zooSet", 600) ]
   }
 floorNoise = floorArena
   { tname    = "oily floor"
@@ -555,7 +555,7 @@ oriel = TileKind
   }
 outerHullWall = basicOuterFence
   { tname    = "outer hull wall"
-  , tfreq    = [("oriels fence", 95), ("noise fence", 1)]
+  , tfreq    = [("oriels fence", 95)]
   }
 doorlessWall = TileKind
   { tsymbol  = '#'

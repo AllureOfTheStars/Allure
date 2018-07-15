@@ -18,13 +18,13 @@ import Game.LambdaHack.Content.PlaceKind
 
 content :: [PlaceKind]
 content =
-  [rect, rectWindows, glasshouse, pulpit, ruin, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2FGround, bushClump, staircase, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircaseOutdoor, staircaseGated, escapeUp, escapeUp2, escapeUp3, escapeUp4, escapeUp5, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeOutdoorDown]
+  [rect, rectWindows, glasshouse, pulpit, ruin, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2FGround, bushClump, staircase, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircaseOutdoor, staircaseGated, escapeUp, escapeUp2, escapeUp3, escapeUp4, escapeUp5, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeOutdoorDown]
   ++ map makeStaircaseUp lstaircase
   ++ map makeStaircaseDown lstaircase
   -- Allure-specific
   ++ [staircaseLift, escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, colonnadeWide, oval, ovalFloor, ovalSquare, maze,  maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7]
 
-rect,    rectWindows, glasshouse, pulpit, ruin, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2FGround, bushClump, staircase, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircaseOutdoor, staircaseGated, escapeUp, escapeUp2, escapeUp3, escapeUp4, escapeUp5, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeOutdoorDown :: PlaceKind
+rect,    rectWindows, glasshouse, pulpit, ruin, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2FGround, bushClump, staircase, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircaseOutdoor, staircaseGated, escapeUp, escapeUp2, escapeUp3, escapeUp4, escapeUp5, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeOutdoorDown :: PlaceKind
 -- Allure-specific
 staircaseLift, escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, colonnadeWide, oval, ovalFloor, ovalSquare, maze,  maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7 :: PlaceKind
 
@@ -61,7 +61,7 @@ rectWindows = PlaceKind
 glasshouse = PlaceKind
   { psymbol  = 'g'
   , pname    = "glasshouse"
-  , pfreq    = [("arena", 40), ("shootout", 8), ("zoo", 9), ("ambush", 7)]
+  , pfreq    = [("arena", 40), ("shootout", 6), ("zoo", 9), ("ambush", 7)]
   , prarity  = [(1, 10), (10, 8)]
   , pcover   = CStretch
   , pfence   = FNone
@@ -161,13 +161,20 @@ pillar = PlaceKind
   , poverride = [('&', "cache deposit")]
   }
 pillar2 = pillar
-  { ptopLeft = [ "··#·"
-               , "··#·"
-               , "##··"
+  { ptopLeft = [ "#···"
+               , "····"
+               , "····"
                , "····"
                ]
   }
 pillar3 = pillar
+  { ptopLeft = [ "#·#·"
+               , "····"
+               , "#···"
+               , "····"
+               ]
+  }
+pillar4 = pillar
   { prarity  = [(10, 3)]
   , ptopLeft = [ "&·#·"
                , "··#·"
@@ -175,7 +182,7 @@ pillar3 = pillar
                , "····"
                ]
   }
-pillar4 = pillar
+pillar5 = pillar
   { prarity  = [(10, 3)]
   , ptopLeft = [ "&#··"
                , "#·#·"
@@ -268,7 +275,7 @@ lampPost4 = lampPost
 treeShade = PlaceKind
   { psymbol  = 't'
   , pname    = "tree shade"
-  , pfreq    = [("brawl", 300)]
+  , pfreq    = [("brawl", 100)]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -282,7 +289,7 @@ treeShade = PlaceKind
 fogClump = PlaceKind
   { psymbol  = 'f'
   , pname    = "foggy patch"
-  , pfreq    = [("shootout", 170), ("empty", 2000)]
+  , pfreq    = [("park", 100), ("shootout", 150), ("empty", 2000)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -293,7 +300,7 @@ fogClump = PlaceKind
   , poverride = [('f', "fogClumpOver_f_Lit"), (';', "lit fog")]
   }
 fogClump2 = fogClump
-  { pfreq    = [("shootout", 400), ("empty", 5000)]
+  { pfreq    = [("park", 100), ("shootout", 500), ("empty", 5000)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -332,7 +339,7 @@ smokeClump2FGround = smokeClump
 bushClump = PlaceKind
   { psymbol  = 'b'
   , pname    = "bushy patch"
-  , pfreq    = [("shootout", 120)]
+  , pfreq    = [("shootout", 100)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
