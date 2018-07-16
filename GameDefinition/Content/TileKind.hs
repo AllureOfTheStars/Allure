@@ -24,11 +24,11 @@ content =
   [unknown, unknownOuterFence, basicOuterFence, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade ]
   ++ map makeDarkColor ldarkColorable
   -- Allure-specific
-  ++ [oriel, outerHullWall, doorlessWall, machineWall, rubbleSpiceBurning, wallObscuredSafety, wallObscured3dBillboard, rock, pillarCache2, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown, floorWindow]
+  ++ [oriel, outerHullWall, doorlessWall, machineWall, rubbleBurning, rubbleSpiceBurning, wallObscuredSafety, wallObscured3dBillboard, rock, pillarCache2, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown, floorWindow]
 
 unknown,    unknownOuterFence, basicOuterFence, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade :: TileKind
 -- Allure-specific
-oriel,       outerHullWall, doorlessWall, machineWall, rubbleSpiceBurning, wallObscuredSafety, wallObscured3dBillboard, rock, pillarCache2, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown, floorWindow :: TileKind
+oriel,       outerHullWall, doorlessWall, machineWall, rubbleBurning, rubbleSpiceBurning, wallObscuredSafety, wallObscured3dBillboard, rock, pillarCache2, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown, floorWindow :: TileKind
 
 ldarkColorable :: [TileKind]
 ldarkColorable = [tree, bush, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorWindow]
@@ -223,31 +223,21 @@ treeBurning = tree
 rubble = TileKind
   { tsymbol  = '&'
   , tname    = "rubble pile"
-  , tfreq    = []  -- [("floorCorridorLit", 1)]
-                   -- disabled while it's all or nothing per cave and per room;
-                   -- we need a new mechanism, Spice is not enough, because
-                   -- we don't want multicolor trailLit corridors
-      -- ("rubbleOrNot", 70)
-      -- until we can sync change of tile and activation, it always takes 1 turn
-  , tcolor   = BrYellow
-  , tcolor2  = Brown
-  , talter   = 4  -- boss can dig through
-  , tfeature = [OpenTo "rubbleOrNot", Embed "rubble"]
-  }
-rubbleSpice = TileKind
-  { tsymbol  = '&'
-  , tname    = "rubble pile"
-  , tfreq    = [ ("rubbleSpice", 1), ("smokeClumpOver_f_Lit", 1)
+  , tfreq    = [ ("rubble", 1), ("stair terminal", 30)
                , ("emptySet", 7), ("emptyExitSet", 7), ("noiseSet", 80)
-               , ("zooSet", 100), ("ambushSet", 18), ("stair terminal", 30) ]
+               , ("zooSet", 100), ("ambushSet", 18) ]
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 4  -- boss can dig through
-  , tfeature = [Spice, OpenTo "rubbleSpiceOrNot", Embed "rubble"]
+  , tfeature = [OpenTo "floorArenaLit", Embed "rubble"]
       -- It's not explorable, due to not being walkable nor clear and due
       -- to being a door (@OpenTo@), which is kind of OK, because getting
       -- the item is risky and, e.g., AI doesn't attempt it.
       -- Also, AI doesn't go out of its way to clear the way for heroes.
+  }
+rubbleSpice = rubble
+  { tfreq    = [("smokeClumpOver_f_Lit", 1)]
+  , tfeature = Spice : tfeature rubble
   }
 doorTrapped = TileKind
   { tsymbol  = '+'
@@ -471,15 +461,15 @@ doorOpen = TileKind
 floorCorridor = TileKind
   { tsymbol  = floorSymbol
   , tname    = "floor"
-  , tfreq    = [("floorCorridorLit", 99), ("rubbleOrNot", 30)]
+  , tfreq    = [("floorCorridorLit", 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 0
   , tfeature = [Walkable, Clear]
   }
 floorArena = floorCorridor
-  { tfreq    = [ ("floorArenaLit", 1), ("rubbleSpiceOrNot", 30)
-               , ("arenaSetLit", 96), ("emptySet", 900), ("zooSet", 600) ]
+  { tfreq    = [ ("floorArenaLit", 1), ("arenaSetLit", 96), ("emptySet", 900)
+               , ("zooSet", 600) ]
   }
 floorNoise = floorArena
   { tname    = "oily floor"
@@ -566,16 +556,19 @@ doorlessWall = TileKind
   , talter   = 100
   , tfeature = [HideAs "fillerWall"]
   }
-rubbleSpiceBurning = TileKind
+rubbleBurning = TileKind
   { tsymbol  = '&'
   , tname    = "burning installation"
-  , tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("emptySet", 4)
-               , ("emptyExitSet", 6), ("noiseSet", 7)
+  , tfreq    = [ ("emptySet", 4), ("emptyExitSet", 6), ("noiseSet", 7)
                , ("ambushSet", 2), ("zooSet", 40), ("stair terminal", 40) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 4  -- boss can dig through
-  , tfeature = [Spice, OpenTo "rubbleSpice", Embed "big fire"]
+  , tfeature = [OpenTo "rubble", Embed "big fire"]
+  }
+rubbleSpiceBurning = rubbleBurning
+  { tfreq    = [("smokeClumpOver_f_Lit", 1)]
+  , tfeature = Spice : tfeature rubbleBurning
   }
 wallObscuredSafety = TileKind
   { tsymbol  = '#'
