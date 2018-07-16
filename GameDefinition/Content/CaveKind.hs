@@ -46,7 +46,7 @@ rogue = CaveKind
   , chidden       = 7
   , cactorCoeff   = 65  -- the maze requires time to explore
   , cactorFreq    = [("monster", 50), ("animal", 25), ("robot", 25)]
-  , citemNum      = 6 `d` 5 - 4 `dL` 1  -- deeper down quality over quantity
+  , citemNum      = 8 `d` 4 + 10 - 10 `dL` 1  -- deep down quality over quantity
   , citemFreq     = [ ("common item", 40), ("treasure", 60)
                     , ("curious item", 10) ]
   , cplaceFreq    = [("rogue", 100)]
@@ -93,7 +93,7 @@ arena = rogue
   , chidden       = 0
   , cactorCoeff   = 50
   , cactorFreq    = [("monster", 25), ("animal", 70), ("robot", 5)]
-  , citemNum      = 4 `d` 5  -- few rooms
+  , citemNum      = 7 `d` 3  -- few rooms
   , citemFreq     = [ ("common item", 20), ("treasure", 40), ("any scroll", 40)
                     , ("curious item", 10) ]
   , cplaceFreq    = [("arena", 100)]
@@ -111,7 +111,7 @@ arena2 = arena
   , cdarkChance   = 41 + 1 `d` 10  -- almost all rooms lit (1 in 10 dark)
   -- Trails provide enough light for fun stealth.
   , cnightChance  = 51  -- always night
-  , citemNum      = 6 `d` 5  -- rare, so make it exciting
+  , citemNum      = 7 `d` 3  -- rare, so make it exciting, by keeping items
   , citemFreq     = [ ("common item", 20)
                     , ("treasure", 80)  -- lives up to the name
                     , ("curious item", 20) ]
@@ -136,7 +136,7 @@ laboratory = arena2
   , cdoorChance   = 1
   , copenChance   = 1%2
   , chidden       = 7
-  , citemNum      = 6 `d` 5  -- reward difficulty
+  , citemNum      = 7 `d` 4  -- reward difficulty
   , citemFreq     = [ ("common item", 20), ("treasure", 40), ("explosive", 40)
                     , ("curious item", 20) ]
   , cplaceFreq    = [("laboratory", 100)]
@@ -166,7 +166,7 @@ empty = rogue
   , chidden       = 0
   , cactorCoeff   = 40
   , cactorFreq    = [("monster", 25), ("animal", 5), ("robot", 70)]
-  , citemNum      = 5 `d` 5  -- few rooms
+  , citemNum      = 7 `d` 4  -- few rooms
   , cplaceFreq    = [("empty", 100)]
   , cpassable     = True
   , cdefTile      = "emptySet"
@@ -195,7 +195,7 @@ noise = rogue
   , chidden       = 0
   , cactorCoeff   = 80  -- the maze requires time to explore
   , cactorFreq    = [("monster", 70), ("animal", 15), ("robot", 15)]
-  , citemNum      = 6 `d` 5  -- an incentive to explore the labyrinth
+  , citemNum      = 6 `d` 4  -- an incentive to explore the labyrinth
   , citemFreq     = [ ("common item", 20), ("treasure", 60), ("explosive", 20)
                     , ("curious item", 20) ]
   , cpassable     = True
@@ -212,7 +212,7 @@ noise2 = noise
   , cXminSize     = 32
   , cYminSize     = 42
   , cnightChance  = 51  -- easier variant, but looks sinister
-  , citemNum      = 11 `d` 5  -- an incentive to explore the final labyrinth
+  , citemNum      = 10 `d` 4  -- an incentive to explore the final labyrinth
   , citemFreq     = [ ("common item", 40), ("treasure", 60)
                     , ("curious item", 20) ]
   , cplaceFreq    = [("noise", 1), ("mine", 99)]
@@ -232,7 +232,7 @@ bridge = rogue
   , cextraStairs  = 1
   , cactorCoeff   = 200  -- it's quite deep already, so spawn slowly
   , cactorFreq    = [("animal", 100)]
-  , citemNum      = 8 `d` 5  -- lure them in with loot
+  , citemNum      = 8 `d` 3  -- lure them in with loot
   , citemFreq     = filter ((`notElem` ["treasure", "curious item"]) . fst)
                     $ citemFreq rogue
   , cdesc         = "The bridge is gutted out and deserted. There are animal cries down below and ominous silence up above."
