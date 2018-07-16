@@ -503,7 +503,7 @@ floorActor = floorArena
   }
 floorActorItem = floorActor
   { tfreq    = [("legendLit", 100)]
-  , tfeature = OftenItem : tfeature floorActor
+  , tfeature = VeryOftenItem : tfeature floorActor
   }
 floorRed = floorCorridor
   { tname    = "emergency walkway"
@@ -687,6 +687,7 @@ makeDark k = let darkText :: GroupName TileKind -> GroupName TileKind
                  darkFeat (BuildAs t) = Just $ BuildAs $ darkText t
                  darkFeat (RevealAs t) = Just $ RevealAs $ darkText t
                  darkFeat (ObscureAs t) = Just $ ObscureAs $ darkText t
+                 darkFeat VeryOftenItem = Just OftenItem
                  darkFeat OftenItem = Nothing  -- items not common in the dark
                  darkFeat feat = Just feat
              in k { tfreq    = darkFrequency
