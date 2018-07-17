@@ -564,7 +564,7 @@ rubbleBurning = TileKind
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 4  -- boss can dig through
-  , tfeature = [OpenTo "rubble", Embed "big fire"]
+  , tfeature = [ChangeTo "rubble", Embed "big fire"]
   }
 rubbleSpiceBurning = rubbleBurning
   { tfreq    = [("smokeClumpOver_f_Lit", 1)]
