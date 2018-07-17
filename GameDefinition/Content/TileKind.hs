@@ -24,11 +24,11 @@ content =
   [unknown, unknownOuterFence, basicOuterFence, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade ]
   ++ map makeDarkColor ldarkColorable
   -- Allure-specific
-  ++ [oriel, outerHullWall, doorlessWall, machineWall, rubbleBurning, rubbleSpiceBurning, wallObscuredSafety, wallObscured3dBillboard, rock, pillarCache2, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown, floorWindow]
+  ++ [oriel, outerHullWall, doorlessWall, machineWall, rubbleBurning, rubbleSpiceBurning, wallObscuredSafety, wallObscured3dBillboard, rock, pillarCache2, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown, emptyAirlock, floorWindow]
 
 unknown,    unknownOuterFence, basicOuterFence, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade :: TileKind
 -- Allure-specific
-oriel,       outerHullWall, doorlessWall, machineWall, rubbleBurning, rubbleSpiceBurning, wallObscuredSafety, wallObscured3dBillboard, rock, pillarCache2, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown, floorWindow :: TileKind
+oriel,       outerHullWall, doorlessWall, machineWall, rubbleBurning, rubbleSpiceBurning, wallObscuredSafety, wallObscured3dBillboard, rock, pillarCache2, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown, emptyAirlock, floorWindow :: TileKind
 
 ldarkColorable :: [TileKind]
 ldarkColorable = [tree, bush, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorWindow]
@@ -537,7 +537,8 @@ floorArenaShade = floorActor
 oriel = TileKind
   { tsymbol  = '%'  -- story-wise it's transparent, hence the symbol
   , tname    = "oriel"
-  , tfreq    = [("oriels fence", 5)]
+  , tfreq    = [ ("oriels fence", 5), ("airlock fence", 5)
+               , ("empty airlock fence", 5) ]
   , tcolor   = White
   , tcolor2  = Black
   , talter   = 5
@@ -545,7 +546,8 @@ oriel = TileKind
   }
 outerHullWall = basicOuterFence
   { tname    = "outer hull wall"
-  , tfreq    = [("oriels fence", 95)]
+  , tfreq    = [ ("oriels fence", 95), ("airlock fence", 40)
+               , ("empty airlock fence", 40) ]
   }
 doorlessWall = TileKind
   { tsymbol  = '#'
@@ -637,8 +639,16 @@ stairsLiftTrappedDown = stairsTrappedDown
                , ConsideredByAI, ChangeTo "ordinary lift down" ]
   }
 escapeSpaceshipDown = escapeDown
-  { tname    = "airlock to the shuttle"
-  , tfreq    = [("escape spaceship down", 1)]
+  { tname    = "airlock to a shuttle"
+  , tfreq    = [("escape spaceship down", 1), ("airlock fence", 3)]
+  }
+emptyAirlock = escapeUp
+  { tname    = "disengaged airlock"
+  , tcolor   = BrBlack
+  , tcolor2  = BrBlack
+  , talter   = maxBound  -- suicide forbidden
+  , tfeature = [Embed "black starry sky"]  -- but can look at the airlock
+  , tfreq    = [("airlock fence", 2), ("empty airlock fence", 5)]
   }
 floorWindow = floorArena
   { tsymbol  = ' '  -- story-wise it's transparent, hence the symbol

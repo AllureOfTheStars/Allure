@@ -274,10 +274,12 @@ shallow1empty = empty
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
   , cfenceTileN     = "oriels fence"
   , cfenceTileE     = "basic outer fence"
-  , cfenceTileS     = "oriels fence"
+  , cfenceTileS     = "empty airlock fence"
   , cfenceTileW     = "basic outer fence"
-  , cdesc         = "The black sky outside sucks light through the oriels."
+  , cdesc         = "The black sky outside sucks light through the oriels. All airlocks are disengaged."
       -- E and W sides are borders with other level sections, so no oriels.
+      -- TODO: water-filled wall-less rooms, as soon as there are water tiles
+      -- TODO: exclusively water-liking animals, when there is enough.
   }
 emptyExit = empty
   { cname         = "Shuttle servicing level"
@@ -287,14 +289,14 @@ emptyExit = empty
   , clitCorTile   = "transport route"
   , cfenceTileN     = "basic outer fence"
   , cfenceTileE     = "basic outer fence"
-  , cfenceTileS     = "oriels fence"
+  , cfenceTileS     = "airlock fence"
   , cfenceTileW     = "basic outer fence"
   , cescapeGroup  = Just "escape spaceship down"
   , cstairFreq    = [("gated staircase", 100)]
-  , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among cranes and welding machines. Distant engines can be seen to the rear of the spaceship through the oriels and airlocks of all sizes."
+  , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among cranes and welding machines. Distant engines can be seen to the rear of the spaceship through oriels and airlocks of all sizes."
       -- E and W sides are borders with other level sections, so no oriels.
       -- The meteor shield towards N is not punctured here, because
-      -- the cargo bay and is too thick here, near the axis of the ship.
+      -- the cargo bay is too thick here, near the axis of the ship.
   }
 raid = rogue
   { csymbol       = 'S'
