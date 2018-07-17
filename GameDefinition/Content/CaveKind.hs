@@ -55,7 +55,10 @@ rogue = CaveKind
   , cdarkCorTile    = "floorCorridorDark"
   , clitCorTile     = "floorCorridorLit"
   , cfillerTile     = "fillerWall"
-  , couterFenceTile = "basic outer fence"
+  , cfenceTileN     = "basic outer fence"
+  , cfenceTileE     = "basic outer fence"
+  , cfenceTileS     = "basic outer fence"
+  , cfenceTileW     = "basic outer fence"
   , cfenceApart     = False
   , clegendDarkTile = "legendDark"
   , clegendLitTile  = "legendLit"
@@ -269,8 +272,12 @@ shallow1empty = empty
       -- abused, because they spawn less and less often and also HP doesn't
       -- effectively accumulate over max.
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
-  , couterFenceTile = "oriels fence"
+  , cfenceTileN     = "oriels fence"
+  , cfenceTileE     = "basic outer fence"
+  , cfenceTileS     = "oriels fence"
+  , cfenceTileW     = "basic outer fence"
   , cdesc         = "The black sky outside sucks light through the oriels."
+      -- E and W sides are borders with other level sections, so no oriels.
   }
 emptyExit = empty
   { cname         = "Shuttle servicing level"
@@ -278,10 +285,16 @@ emptyExit = empty
   , cdefTile      = "emptyExitSet"
   , cdarkCorTile  = "transport route"
   , clitCorTile   = "transport route"
-  , couterFenceTile = "oriels fence"
+  , cfenceTileN     = "basic outer fence"
+  , cfenceTileE     = "basic outer fence"
+  , cfenceTileS     = "oriels fence"
+  , cfenceTileW     = "basic outer fence"
   , cescapeGroup  = Just "escape spaceship down"
   , cstairFreq    = [("gated staircase", 100)]
-  , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among neglected cranes and airlocks welded shut."
+  , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among cranes and welding machines. Distant engines can be seen to the rear of the spaceship through the oriels and airlocks of all sizes."
+      -- E and W sides are borders with other level sections, so no oriels.
+      -- The meteor shield towards N is not punctured here, because
+      -- the cargo bay and is too thick here, near the axis of the ship.
   }
 raid = rogue
   { csymbol       = 'S'
