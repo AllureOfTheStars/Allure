@@ -56,9 +56,9 @@ rogue = CaveKind
   , clitCorTile     = "floorCorridorLit"
   , cfillerTile     = "fillerWall"
   , cfenceTileN     = "basic outer fence"
-  , cfenceTileE     = "basic outer fence"
+  , cfenceTileE     = "habitat containment wall"
   , cfenceTileS     = "basic outer fence"
-  , cfenceTileW     = "basic outer fence"
+  , cfenceTileW     = "habitat containment wall"
   , cfenceApart     = False
   , clegendDarkTile = "legendDark"
   , clegendLitTile  = "legendLit"
@@ -120,6 +120,10 @@ arena2 = arena
                     , ("treasure", 80)  -- lives up to the name
                     , ("curious item", 20) ]
   , cdefTile      = "arenaSetDark"
+  , cfenceTileN     = "habitat containment wall"  -- small cave
+  , cfenceTileE     = "habitat containment wall"
+  , cfenceTileS     = "habitat containment wall"
+  , cfenceTileW     = "habitat containment wall"
   , cdesc         = ""
   }
 laboratory = arena2
@@ -240,6 +244,10 @@ bridge = rogue
   , citemNum      = 8 `d` 3  -- lure them in with loot
   , citemFreq     = filter ((`notElem` ["treasure", "curious item"]) . fst)
                     $ citemFreq rogue
+  , cfenceTileN     = "habitat containment wall"  -- cave isolated for safety
+  , cfenceTileE     = "habitat containment wall"
+  , cfenceTileS     = "habitat containment wall"
+  , cfenceTileW     = "habitat containment wall"
   , cdesc         = "The bridge is gutted out and deserted. There are animal cries down below and ominous silence up above."
   }
 shallow2rogue = rogue
@@ -272,10 +280,11 @@ shallow1empty = empty
       -- abused, because they spawn less and less often and also HP doesn't
       -- effectively accumulate over max.
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
-  , cfenceTileN     = "oriels fence"
-  , cfenceTileE     = "basic outer fence"
-  , cfenceTileS     = "empty airlock fence"
-  , cfenceTileW     = "basic outer fence"
+  , cfenceTileN   = "oriels fence"
+  , cfenceTileE   = "habitat containment wall"
+  , cfenceTileS   = "empty airlock fence"
+  , cfenceTileW   = "habitat containment wall"
+  , cfenceApart   = True  -- ensures no cut-off airlocks
   , cdesc         = "The black sky outside sucks light through the oriels. All airlocks are disengaged."
       -- E and W sides are borders with other level sections, so no oriels.
       -- TODO: water-filled wall-less rooms, as soon as there are water tiles
@@ -287,10 +296,11 @@ emptyExit = empty
   , cdefTile      = "emptyExitSet"
   , cdarkCorTile  = "transport route"
   , clitCorTile   = "transport route"
-  , cfenceTileN     = "basic outer fence"
-  , cfenceTileE     = "basic outer fence"
-  , cfenceTileS     = "airlock fence"
-  , cfenceTileW     = "basic outer fence"
+  , cfenceTileN   = "basic outer fence"
+  , cfenceTileE   = "habitat containment wall"
+  , cfenceTileS   = "airlock fence"
+  , cfenceTileW   = "habitat containment wall"
+  , cfenceApart   = True  -- ensures no cut-off airlocks
   , cescapeGroup  = Just "escape spaceship down"
   , cstairFreq    = [("gated staircase", 100)]
   , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among cranes and welding machines. Distant engines can be seen to the rear of the spaceship through oriels and airlocks of all sizes."

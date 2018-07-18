@@ -79,7 +79,7 @@ unknownOuterFence = TileKind
 basicOuterFence = TileKind
   { tsymbol  = '#'
   , tname    = "habitat containment wall"
-  , tfreq    = [("basic outer fence", 1)]
+  , tfreq    = [("habitat containment wall", 1)]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
   , talter   = maxBound  -- impenetrable
@@ -537,8 +537,8 @@ floorArenaShade = floorActor
 oriel = TileKind
   { tsymbol  = '%'  -- story-wise it's transparent, hence the symbol
   , tname    = "oriel"
-  , tfreq    = [ ("oriels fence", 5), ("airlock fence", 5)
-               , ("empty airlock fence", 5) ]
+  , tfreq    = [ ("oriels fence", 5)
+               , ("airlock fence", 5), ("empty airlock fence", 5) ]
   , tcolor   = White
   , tcolor2  = Black
   , talter   = 5
@@ -546,8 +546,8 @@ oriel = TileKind
   }
 outerHullWall = basicOuterFence
   { tname    = "outer hull wall"
-  , tfreq    = [ ("oriels fence", 95), ("airlock fence", 40)
-               , ("empty airlock fence", 40) ]
+  , tfreq    = [ ("basic outer fence", 1), ("oriels fence", 95)
+               , ("airlock fence", 40), ("empty airlock fence", 40) ]
   }
 doorlessWall = TileKind
   { tsymbol  = '#'
@@ -648,7 +648,7 @@ emptyAirlock = escapeUp
   , tcolor2  = BrBlack
   , talter   = maxBound  -- suicide forbidden
   , tfeature = [Embed "black starry sky"]  -- but can look at the airlock
-  , tfreq    = [("airlock fence", 2), ("empty airlock fence", 5)]
+  , tfreq    = [("airlock fence", 2), ("empty airlock fence", 7)]
   }
 floorWindow = floorArena
   { tsymbol  = ' '  -- story-wise it's transparent, hence the symbol
