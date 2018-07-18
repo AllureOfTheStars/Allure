@@ -353,7 +353,7 @@ rosterAmbush = Roster
 
 rosterCrawl = Roster
   { rosterList = [ ( playerHero
-                   , [(3, 3, "hero")] )
+                   , [(3, 3, "crawl hero")] )
                  , ( playerMonster
                    , [] )
                  , ( playerAnimal
@@ -370,7 +370,7 @@ rosterCrawl = Roster
 
 rosterCrawlEmpty = Roster
   { rosterList = [ ( playerHero
-                   , [(1, 1, "hero")] )
+                   , [(1, 1, "crawl hero")] )
                  , (playerHorror, []) ]  -- for summoned monsters
   , rosterEnemy = []
   , rosterAlly = [] }
@@ -379,7 +379,7 @@ rosterCrawlSurvival = rosterCrawl
   { rosterList = [ ( playerHero { fleaderMode =
                                     LeaderAI $ AutoLeader True False
                                 , fhasUI = False }
-                   , [(3, 3, "hero")] )
+                   , [(3, 3, "crawl hero")] )
                  , ( playerMonster
                    , [] )
                  , ( playerAnimal {fhasUI = True}
@@ -462,7 +462,7 @@ rosterBattleSurvival = rosterBattle
 
 rosterDefense = rosterCrawl
   { rosterList = [ ( playerAntiHero
-                   , [(3, 3, "hero")] )
+                   , [(3, 3, "crawl hero")] )
                  , ( playerAntiMonster
                    , [] )
                  , ( playerAnimal

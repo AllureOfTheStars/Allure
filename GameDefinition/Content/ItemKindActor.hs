@@ -35,7 +35,7 @@ razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFau
 warrior = ItemKind
   { isymbol  = '@'
   , iname    = "mercenary"  -- modified if initial actors in hero faction
-  , ifreq    = [("hero", 100), ("mobile", 1)]
+  , ifreq    = [("hero", 100), ("crawl hero", 100), ("mobile", 1)]
   , iflavour = zipPlain [BrWhite]
   , icount   = 1
   , irarity  = [(1, 5)]
@@ -59,14 +59,20 @@ warrior2 = warrior
   }
 warrior3 = warrior
   { iname    = "engineer"
+  , ifreq    = [("crawl hero", 100), ("mobile", 1)]
+  , ikit     = ikit warrior ++ [("currency", CSha)]
   -- , idesc    = ""
    }
 warrior4 = warrior
   { iname    = "doctor"
+  , ifreq    = [("crawl hero", 100), ("mobile", 1)]
+  , ikit     = ikit warrior ++ [("currency", CSha)]
   -- , idesc    = ""
   }
 warrior5 = warrior
   { iname    = "hacker"
+  , ifreq    = [("crawl hero", 100), ("mobile", 1)]
+  , ikit     = ikit warrior ++ [("currency", CSha)]
   -- , idesc    = ""
   }
 
