@@ -248,7 +248,7 @@ bridge = rogue
   , cfenceTileE     = "habitat containment wall"
   , cfenceTileS     = "habitat containment wall"
   , cfenceTileW     = "habitat containment wall"
-  , cdesc         = "The bridge is gutted out and deserted. There are animal cries down below and ominous silence up above."
+  , cdesc         = "The bridge is gutted out and nonoperational. There are animal cries down below and ominous silence up above."
   }
 shallow2rogue = rogue
   { cfreq         = [("shallow random 2", 50)]
@@ -285,7 +285,7 @@ shallow1empty = empty
   , cfenceTileS   = "empty airlock fence"
   , cfenceTileW   = "habitat containment wall"
   , cfenceApart   = True  -- ensures no cut-off airlocks
-  , cdesc         = "The black sky outside sucks light through the oriels. All airlocks are disengaged."
+  , cdesc         = "The black sky outside sucks light through the oriels and airlock glass. This is the main pressurized cargo bay and storage. Another docking and servicing hub for small craft is somewhere among the giant spaceship's uppermost levels. You can't see from afar the shuttle you left engaged to one of the few free airlocks."
       -- E and W sides are borders with other level sections, so no oriels.
       -- TODO: water-filled wall-less rooms, as soon as there are water tiles
       -- TODO: exclusively water-liking animals, when there is enough.
