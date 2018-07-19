@@ -335,7 +335,7 @@ blackStarrySky = ItemKind
   , ieffects = [ Temporary "look into the void and it looks back"
                , OneOf [RefillCalm 5, RefillCalm (-5)] ]
   , ifeature = [Durable]
-  , idesc    = "Occasionally a planet zips by, but is unable to disperse the blackness. The black starscape is constantly rotating. The frantic dance is silent, muted, indifferent. There is not even a hint of vibration, just the sense of heaviness and dizziness. At the outermost deck, the curvature of the floor is unnoticeable, but artificial gravity apparently stronger than on Earth."  -- appears only on 100% flavour tiles, useless and trivial to notice, so the writeup can be longer
+  , idesc    = "Occasionally a planet zips by, but is unable to disperse the blackness. The black starscape is constantly rotating. The frantic dance is silent, muted, indifferent. There is not even a hint of vibration, just the sense of heaviness and dizziness."  -- appears only on 100% flavour tiles, useless and trivial to notice, so the writeup can be longer
   , ikit     = []
   }
 ruinedFirstAidKit = ItemKind
