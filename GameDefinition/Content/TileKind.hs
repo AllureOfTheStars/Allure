@@ -648,7 +648,6 @@ emptyAirlock = escapeUp
                , ("emptySet", 2) ]  -- not in emptyExitSet; space can't be seen
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
-  , talter   = maxBound  -- suicide forbidden
   , tfeature = [Embed "black starry sky"]  -- but can look at the airlock
   }
 floorWindow = floorArena
