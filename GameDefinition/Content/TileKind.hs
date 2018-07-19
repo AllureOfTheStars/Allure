@@ -644,11 +644,12 @@ escapeSpaceshipDown = escapeDown
   }
 emptyAirlock = escapeUp
   { tname    = "disengaged airlock"
+  , tfreq    = [ ("airlock fence", 2), ("empty airlock fence", 7)
+               , ("emptySet", 2) ]  -- not in emptyExitSet; space can't be seen
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
   , talter   = maxBound  -- suicide forbidden
   , tfeature = [Embed "black starry sky"]  -- but can look at the airlock
-  , tfreq    = [("airlock fence", 2), ("empty airlock fence", 7)]
   }
 floorWindow = floorArena
   { tsymbol  = ' '  -- story-wise it's transparent, hence the symbol

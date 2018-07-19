@@ -509,13 +509,19 @@ cavesCrawl = IM.fromList $
   ++ [(12, "caveNoise2")]
 
 cavesDig = IM.fromList $
-  [ (1, "outermost")
-  , (2, "shallow random 2")
-  , (3, "caveEmpty") ]
-  ++ zip [4, 5] (repeat "default random")
-  ++ zip [6, 7, 8, 9] (repeat "deep random")
-  ++ [(10, "caveNoise2")]
-  ++ zip [11 .. 1000] (repeat "deep random")
+  [(1, "outermost")]
+  ++ [(2, "shallow random 2")]
+  ++ [(3, "caveBridge")]
+  ++ [(4, "caveNoise")]
+  ++ [(5, "default random")]
+  ++ [(6, "default random")]
+  ++ [(7, "deep random")]
+  ++ [(8, "deep random")]
+  ++ [(9, "deep random")]
+  ++ [(10, "caveEmptyExit")]
+  ++ [(11, "deep random")]
+  ++ [(12, "caveNoise2")]
+  ++ zip [13 .. 1000] (repeat "deep random")
   ++ zip [1001 .. 2000] (repeat "default random")
 
 cavesSafari = IM.fromList [ (4, "caveSafari1")
