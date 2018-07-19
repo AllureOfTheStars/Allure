@@ -250,6 +250,8 @@ bridge = rogue
   , cfenceTileW     = "habitat containment wall"
   , cdesc         = "The bridge is gutted out and nonoperational. There are animal cries down below and ominous silence up above."
   }
+shallow2blurb :: Text
+shallow2blurb = "This close to the outer level, residence is not permitted and doors are sturdier, to contain a possible micro-meteorite breach. The area is not closed, though, because some passengers can't live without regularly looking at the void and the light of distant suns and planets through a glass window, as opposed to electronic display and glass. Animals appear to share the fascination, or perhaps they crave the increased gravity, nearly Earth-like, unlike elsewhere on the ship."
 shallow2rogue = rogue
   { cfreq         = [("shallow random 2", 50)]
   , cXminSize     = 60
@@ -257,16 +259,16 @@ shallow2rogue = rogue
   , cactorCoeff   = cactorCoeff rogue `div` 2  -- more difficult
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq rogue
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq rogue
---  , cdesc         = ""
+  , cdesc         = shallow2blurb
   }
 shallow2arena = arena
   { cfreq         = [("shallow random 2", 100)]
   , cXminSize     = 80
   , cYminSize     = 30
-  , cactorCoeff   = cactorCoeff arena `div` 2
+  , cactorCoeff   = cactorCoeff arena `div` 2  -- more difficult
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq arena
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq arena
---  , cdesc         = ""
+  , cdesc         = shallow2blurb
   }
 shallow1empty = empty
   { cname         = "Outermost deck"
@@ -285,10 +287,10 @@ shallow1empty = empty
   , cfenceTileS   = "empty airlock fence"
   , cfenceTileW   = "habitat containment wall"
   , cfenceApart   = True  -- ensures no cut-off airlocks
-  , cdesc         = "The black sky outside sucks light through the oriels and airlock glass. This is the main pressurized cargo bay and storage. Another docking and servicing hub for small craft is somewhere among the giant spaceship's uppermost levels. You can't see from afar the shuttle you left engaged to one of the few free airlocks."
+  , cdesc         = "The black sky outside sucks light through the oriels and airlock glass. This is the main pressurized cargo bay and storage, with the only other docking hub for small craft somewhere among the giant spaceship's uppermost levels. You can't see from afar the shuttle you left engaged to one of the few free airlocks covered in guano. Water treatment basins and series of hanging and stacked tanks double as radiation shields. Hoses writhe on the floor and dangle in thick knots from the ceiling."
       -- E and W sides are borders with other level sections, so no oriels.
       -- TODO: water-filled wall-less rooms, as soon as there are water tiles
-      -- TODO: exclusively water-liking animals, when there is enough.
+      -- TODO: exclusively water-liking animals, when there is enough; plants
   }
 emptyExit = empty
   { cname         = "Shuttle servicing level"
