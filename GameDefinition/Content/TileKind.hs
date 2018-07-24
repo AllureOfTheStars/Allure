@@ -90,7 +90,7 @@ wall = TileKind
   , tname    = "wall"
   , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
                , ("cachable deposit", 80), ("cachable jewelry", 80)
-               , ("stair terminal", 30)
+               , ("cachable", 80), ("stair terminal", 30)
                , ("battleSet", 250), ("rectWindowsOver_%_Lit", 80) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
