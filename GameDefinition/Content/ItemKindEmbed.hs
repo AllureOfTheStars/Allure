@@ -24,10 +24,10 @@ embeds :: [ItemKind]
 embeds =
   [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit]
   -- Allure-specific
-  ++ [blackStarrySky, ruinedFirstAidKit, wall3dBillboard, jewelryDisplay, liftUp, liftDown, liftTrap, liftTrap2]
+  ++ [blackStarrySky, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2]
 scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit :: ItemKind
 -- Allure-specific
-blackStarrySky,       ruinedFirstAidKit, wall3dBillboard, jewelryDisplay, liftUp, liftDown, liftTrap, liftTrap2 :: ItemKind
+blackStarrySky,       ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2 :: ItemKind
 
 -- Make sure very few walls are substantially useful, e.g., caches,
 -- and none that are secret. Otherwise the player will spend a lot of time
@@ -93,7 +93,7 @@ subtleFresco = ItemKind
   }
 treasureCache = stairsUp
   { isymbol  = 'O'
-  , iname    = "intact deposit box"
+  , iname    = "treasure cache"
   , ifreq    = [("treasure cache", 1)]
   , iflavour = zipPlain [BrBlue]
   , ieffects = [CreateItem CGround "common item" timerNone]
@@ -376,7 +376,13 @@ wall3dBillboard = ItemKind
   , idesc    = "One can still make out excited moves of bleached shapes."
   , ikit     = []
   }
-jewelryDisplay = treasureCache
+depositBox = treasureCache
+  { iname    = "intact deposit box"
+  , ifreq    = [("deposit box", 1)]
+  , ieffects = [CreateItem CGround "valuable" timerNone]
+  , idesc    = "Glittering gems and gold, just waiting to be taken."
+  }
+jewelryCase = treasureCache
   { iname    = "jewelry case"
   , ifreq    = [("jewelry case", 1)]
   , ieffects = [CreateItem CGround "any jewelry" timerNone]

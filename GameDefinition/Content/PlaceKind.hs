@@ -18,13 +18,13 @@ import Game.LambdaHack.Content.PlaceKind
 
 content :: [PlaceKind]
 content =
-  [deadEnd, rect, rectWindows, glasshouse, pulpit, ruin, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2FGround, bushClump, staircase, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircaseOutdoor, staircaseGated, escapeUp, escapeUp2, escapeUp3, escapeUp4, escapeUp5, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeOutdoorDown]
+  [deadEnd, rect, rect2, rectWindows, glasshouse, glasshouse2, glasshouse3, pulpit, ruin, ruin2, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2FGround, bushClump, staircase, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircaseOutdoor, staircaseGated, escapeUp, escapeUp2, escapeUp3, escapeUp4, escapeUp5, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeOutdoorDown]
   ++ map makeStaircaseUp lstaircase
   ++ map makeStaircaseDown lstaircase
   -- Allure-specific
   ++ [staircaseLift, escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, colonnadeWide, oval, ovalFloor, ovalSquare, maze,  maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7]
 
-deadEnd,    rect, rectWindows, glasshouse, pulpit, ruin, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2FGround, bushClump, staircase, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircaseOutdoor, staircaseGated, escapeUp, escapeUp2, escapeUp3, escapeUp4, escapeUp5, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeOutdoorDown :: PlaceKind
+deadEnd,    rect, rect2, rectWindows, glasshouse, glasshouse2, glasshouse3, pulpit, ruin, ruin2, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2FGround, bushClump, staircase, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircaseOutdoor, staircaseGated, escapeUp, escapeUp2, escapeUp3, escapeUp4, escapeUp5, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeOutdoorDown :: PlaceKind
 -- Allure-specific
 staircaseLift, escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, colonnadeWide, oval, ovalFloor, ovalSquare, maze,  maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7 :: PlaceKind
 
@@ -35,7 +35,7 @@ lstaircase = [staircase, staircase2, staircase3, staircase4, staircase5, stairca
 
 deadEnd = PlaceKind  -- needs to have index 0
   { psymbol  = 'd'
-  , pname    = "dead end"
+  , pname    = "a dead end"
   , pfreq    = []
   , prarity  = []
   , pcover   = CStretch
@@ -46,17 +46,21 @@ deadEnd = PlaceKind  -- needs to have index 0
 -- The dots below are @Char.chr 183@, as defined in @TileKind.floorSymbol@.
 rect = PlaceKind  -- Valid for any nonempty area, hence low frequency.
   { psymbol  = 'r'
-  , pname    = "room"
-  , pfreq    = [("rogue", 100), ("arena", 40), ("laboratory", 40), ("zoo", 10)]
+  , pname    = "a room"
+  , pfreq    = [("rogue", 100), ("arena", 40), ("laboratory", 40)]
   , prarity  = [(1, 10), (10, 8)]
   , pcover   = CStretch
   , pfence   = FWall
   , ptopLeft = ["·"]
   , poverride = []
   }
+rect2 = rect
+  { pname    = "a pen"
+  , pfreq    = [("zoo", 10)]
+  }
 rectWindows = PlaceKind
   { psymbol  = 'w'
-  , pname    = "room"
+  , pname    = "a shed"
   , pfreq    = [("empty", 10), ("park", 10)]
   , prarity  = [(1, 10), (10, 8)]
   , pcover   = CStretch
@@ -70,8 +74,8 @@ rectWindows = PlaceKind
   }
 glasshouse = PlaceKind
   { psymbol  = 'g'
-  , pname    = "glasshouse"
-  , pfreq    = [("arena", 40), ("shootout", 6), ("zoo", 10), ("ambush", 7)]
+  , pname    = "a glasshouse"
+  , pfreq    = [("shootout", 6)]
   , prarity  = [(1, 10), (10, 8)]
   , pcover   = CStretch
   , pfence   = FNone
@@ -80,9 +84,17 @@ glasshouse = PlaceKind
                ]
   , poverride = [('%', "glasshouseOver_%_Lit")]
   }
+glasshouse2 = glasshouse
+  { pname    = "a glass cage"
+  , pfreq    = [("zoo", 10)]
+  }
+glasshouse3 = glasshouse
+  { pname    = "a display platform"
+  , pfreq    = [("arena", 40), ("ambush", 7)]
+  }
 pulpit = PlaceKind
   { psymbol  = 'p'
-  , pname    = "pulpit"
+  , pname    = "a stand"
   , pfreq    = [("arena", 10), ("zoo", 20)]
   , prarity  = [(1, 10), (10, 8)]
   , pcover   = CMirror
@@ -96,17 +108,21 @@ pulpit = PlaceKind
   }
 ruin = PlaceKind
   { psymbol  = 'R'
-  , pname    = "ruin"
-  , pfreq    = [("battle", 33), ("noise", 50)]
+  , pname    = "ruins"
+  , pfreq    = [("battle", 33)]
   , prarity  = [(1, 10), (10, 20)]
   , pcover   = CStretch
   , pfence   = FWall
   , ptopLeft = ["X"]
   , poverride = []
   }
+ruin2 = ruin
+  { pname    = "a scaffolding"
+  , pfreq    = [("noise", 50)]
+  }
 collapsed = PlaceKind  -- in a dark cave, they have little lights --- that's OK
   { psymbol  = 'c'
-  , pname    = "hardware stack"
+  , pname    = "a hardware stack"
   , pfreq    = [("noise", 1)]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CStretch
@@ -156,7 +172,7 @@ collapsed7 = collapsed
   }
 pillar = PlaceKind
   { psymbol  = 'p'
-  , pname    = "commercial space"
+  , pname    = "a commercial space"
   , pfreq    = [ ("rogue", 500), ("arena", 1000), ("laboratory", 1000)
                , ("empty", 300), ("noise", 1000) ]
   , prarity  = [(1, 5), (10, 5)]
@@ -168,7 +184,7 @@ pillar = PlaceKind
                , "····"
                , "····"
                ]
-  , poverride = [('&', "cache deposit")]
+  , poverride = []
   }
 pillar2 = pillar
   { ptopLeft = [ "#···"
@@ -185,24 +201,28 @@ pillar3 = pillar
                ]
   }
 pillar4 = pillar
-  { prarity  = [(10, 3)]
+  { pname    = "a bank outlet"
+  , prarity  = [(10, 3)]
   , ptopLeft = [ "&·#·"
                , "··#·"
-               , "##··"
+               , "##+·"
                , "····"
                ]
+  , poverride = [('&', "cache deposit")]
   }
 pillar5 = pillar
-  { prarity  = [(10, 3)]
+  { pname    = "a jewelry store"
+  , prarity  = [(10, 3)]
   , ptopLeft = [ "&#··"
                , "#·#·"
                , "·##·"
                , "····"
                ]
+  , poverride = [('&', "cache jewelry")]
   }
 colonnade = PlaceKind
   { psymbol  = 'c'
-  , pname    = "colonnade"
+  , pname    = "a colonnade"
   , pfreq    = [ ("rogue", 30), ("arena", 70), ("laboratory", 40)
                , ("empty", 100), ("mine", 10000), ("park", 4000) ]
   , prarity  = [(1, 3), (10, 3)]
@@ -247,7 +267,7 @@ colonnade6 = colonnade
   }
 lampPost = PlaceKind
   { psymbol  = 'l'
-  , pname    = "lamp post"
+  , pname    = "a lamp post"
   , pfreq    = [("park", 20), ("ambush", 20), ("zoo", 10), ("battle", 10)]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CVerbatim
@@ -284,7 +304,7 @@ lampPost4 = lampPost
   }
 treeShade = PlaceKind
   { psymbol  = 't'
-  , pname    = "tree shade"
+  , pname    = "a tree shade"
   , pfreq    = [("brawl", 100)]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CMirror
@@ -298,7 +318,7 @@ treeShade = PlaceKind
   }
 fogClump = PlaceKind
   { psymbol  = 'f'
-  , pname    = "foggy patch"
+  , pname    = "a foggy patch"
   , pfreq    = [("park", 100), ("shootout", 150), ("empty", 2000)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
@@ -322,7 +342,7 @@ fogClump2 = fogClump
   }
 smokeClump = PlaceKind
   { psymbol  = 's'
-  , pname    = "smoky patch"
+  , pname    = "a smoky patch"
   , pfreq    = [("zoo", 50), ("ambush", 50), ("empty", 1000)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
@@ -335,7 +355,8 @@ smokeClump = PlaceKind
                 , ('·', "floorActorLit") ]
   }
 smokeClump2FGround = smokeClump
-  { pfreq    = [ ("laboratory", 100), ("zoo", 500), ("ambush", 500)
+  { pname    = "a burned out area"
+  , pfreq    = [ ("laboratory", 100), ("zoo", 500), ("ambush", 500)
                , ("empty", 2000) ]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
@@ -348,7 +369,7 @@ smokeClump2FGround = smokeClump
   }
 bushClump = PlaceKind
   { psymbol  = 'b'
-  , pname    = "bushy patch"
+  , pname    = "a bushy patch"
   , pfreq    = [("shootout", 100)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
@@ -361,7 +382,7 @@ bushClump = PlaceKind
   }
 staircase = PlaceKind
   { psymbol  = '|'
-  , pname    = "staircase"
+  , pname    = "a staircase"
   , pfreq    = [("staircase", 1)]
   , prarity  = [(1, 1)]
   , pcover   = CVerbatim
@@ -502,18 +523,18 @@ staircase17 = staircaseLift
                ]
   }
 staircaseOutdoor = staircase
-  { pname     = "staircase outdoor"
+  { pname     = "an outdoor area exit"
   , pfreq     = [("staircase outdoor", 1)]
   , poverride = [('<', "staircase outdoor up"), ('>', "staircase outdoor down")]
   }
 staircaseGated = staircase
-  { pname     = "gated staircase"
+  { pname     = "a gated staircase"
   , pfreq     = [("gated staircase", 1)]
   , poverride = [('<', "gated staircase up"), ('>', "gated staircase down")]
   }
 escapeUp = PlaceKind
   { psymbol  = '<'
-  , pname    = "escape airlock up"
+  , pname    = "an escape airlock up"
   , pfreq    = [("escape up", 1)]
   , prarity  = [(1, 1)]
   , pcover   = CVerbatim
@@ -558,7 +579,7 @@ escapeUp5 = escapeUp
   }
 escapeDown = PlaceKind
   { psymbol  = '>'
-  , pname    = "escape airlock down"
+  , pname    = "an escape airlock down"
   , pfreq    = [("escape down", 1)]
   , prarity  = [(1, 1)]
   , pcover   = CVerbatim
@@ -609,7 +630,7 @@ escapeOutdoorDown = escapeDown
 -- * Allure-specific
 
 staircaseLift = staircase
-  { pname    = "lift"
+  { pname    = "a lift"
   , pfreq    = [("staircase lift", 1)]
   , poverride = [ ('<', "staircase lift up"), ('>', "staircase lift down")
                 , ('I', "signboard") ]
@@ -635,7 +656,8 @@ escapeSpaceshipDown5 = escapeDown5
   , poverride = [('>', "escape spaceship down")]
   }
 colonnadeWide = colonnade
-  { prarity  = [(1, 2), (10, 2)]
+  { pname    = "water pumps"
+  , prarity  = [(1, 2), (10, 2)]
   , pfence   = FWall
   , ptopLeft = [ "··"
                , "#·"
@@ -643,7 +665,7 @@ colonnadeWide = colonnade
   }
 oval = PlaceKind
   { psymbol  = 'o'
-  , pname    = "oval room"
+  , pname    = "a dome"
   , pfreq    = [ ("rogue", 1000), ("arena", 500), ("empty", 250)
                , ("zoo", 1000), ("ambush", 1000) ]
   , prarity  = [(1, 10), (10, 10)]
@@ -681,7 +703,7 @@ ovalSquare = ovalFloor
   }
 maze = PlaceKind
   { psymbol  = 'm'
-  , pname    = "mysterious maze"
+  , pname    = "an intricate maze"
   , pfreq    = [("rogue", 20), ("arena", 40), ("empty", 20)]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CStretch
@@ -690,7 +712,7 @@ maze = PlaceKind
                , "#··#"
                , "··#·"
                ]
-  , poverride = [('&', "cache jewelry")]
+  , poverride = [('&', "cache")]
   }
 maze2 = maze
   { pfreq    = [("rogue", 25), ("arena", 50), ("empty", 30)]
@@ -712,12 +734,12 @@ mazeBig = maze
   , ptopLeft = [ "X####"
                , "#·##·"
                , "##···"
-               , "##··#"
+               , "##·+#"
                , "#··#·"
                ]
   }
 mazeBig2 = maze
-  { pfreq    = [("rogue", 250), ("arena", 500), ("empty", 500)]
+  { pfreq    = [("rogue", 200), ("arena", 500), ("empty", 500)]
   , pfence   = FNone
   , ptopLeft = [ "X#####"
                , "#·##··"
@@ -728,7 +750,7 @@ mazeBig2 = maze
   }
 cells = PlaceKind
   { psymbol  = '#'
-  , pname    = "broken holding pens"
+  , pname    = "air filters"
   , pfreq    = [ ("rogue", 20), ("arena", 20), (" laboratory", 20)
                , ("empty", 20), ("noise", 20), ("zoo", 200) ]
   , prarity  = [(1, 10), (10, 10)]
@@ -738,47 +760,53 @@ cells = PlaceKind
                , "·#·"
                , "#··"
                ]
-  , poverride = []
+  , poverride = [('%', "doorlessWallOver_#")]
   }
-cells2 = cells  -- this one is distinct enough from others
-  { pfreq    = [ ("rogue", 50), ("arena", 50), (" laboratory", 50)
-               , ("empty", 50), ("noise", 50), ("zoo", 500) ]
-  , ptopLeft = [ "··#"
+cells2 = cells
+  { pname    = "humidity equalizers"
+  , ptopLeft = [ "#··"
+               , "·#·"
                , "··#"
-               , "##·"
                ]
   }
 cells3 = cells
-  { ptopLeft = [ "#··"
-               , "·#·"
-               , "··#"
-               ]
-  }
-cells4 = cells
-  { ptopLeft = [ "··#"
-               , "·##"
+  { pname    = "thermostat units"
+  , ptopLeft = [ "··#"
+               , "·#%"
                , "#··"
                ]
   }
-cells5 = cells
-  { ptopLeft = [ "··#"
+cells4 = cells
+  { pname    = "a power node"
+  , ptopLeft = [ "··#"
                , "·#·"
+               , "#%·"
+               ]
+  }
+cells5 = cells  -- this one is distinct enough from others, so needs a boost
+  { pname    = "broken robot holds"
+  , pfreq    = [ ("rogue", 50), ("arena", 50), (" laboratory", 50)
+               , ("empty", 50), ("noise", 50) ]
+  , ptopLeft = [ "··#"
+               , "··#"
                , "##·"
                ]
   }
 cells6 = cells
-  { pfreq    = [ ("rogue", 1), ("arena", 2), ("laboratory", 2)
+  { pname    = "animal holding pens"
+  , pfreq    = [ ("rogue", 1), ("arena", 2), ("laboratory", 2)
                , ("empty", 2), ("noise", 1), ("zoo", 10) ]
   , ptopLeft = [ "··#"
-               , "##·"
+               , "##'"
                ]
   }
 cells7 = cells
-  { pfreq    = [ ("rogue", 1), ("arena", 2), (" laboratory", 2)
+  { pname    = "a defunct control room"
+  , pfreq    = [ ("rogue", 1), ("arena", 2), (" laboratory", 2)
                , ("empty", 2), ("noise", 1) ]
   , pfence   = FFloor
   , ptopLeft = [ "#·#"
-               , "·#·"
+               , "·%·"
                ]
   }
 

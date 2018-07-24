@@ -24,11 +24,11 @@ content =
   [unknown, unknownOuterFence, basicOuterFence, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade ]
   ++ map makeDarkColor ldarkColorable
   -- Allure-specific
-  ++ [oriel, outerHullWall, doorlessWall, machineWall, rubbleBurning, rubbleSpiceBurning, wallObscuredSafety, wallObscured3dBillboard, rock, pillarCache2, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown, emptyAirlock, floorWindow]
+  ++ [oriel, outerHullWall, doorlessWall, machineWall, rubbleBurning, rubbleSpiceBurning, wallObscuredSafety, wallObscured3dBillboard, rock, pillarCache2, pillarCache3, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown, emptyAirlock, floorWindow]
 
 unknown,    unknownOuterFence, basicOuterFence, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade :: TileKind
 -- Allure-specific
-oriel,       outerHullWall, doorlessWall, machineWall, rubbleBurning, rubbleSpiceBurning, wallObscuredSafety, wallObscured3dBillboard, rock, pillarCache2, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown, emptyAirlock, floorWindow :: TileKind
+oriel,       outerHullWall, doorlessWall, machineWall, rubbleBurning, rubbleSpiceBurning, wallObscuredSafety, wallObscured3dBillboard, rock, pillarCache2, pillarCache3, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown, emptyAirlock, floorWindow :: TileKind
 
 ldarkColorable :: [TileKind]
 ldarkColorable = [tree, bush, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorWindow]
@@ -153,14 +153,13 @@ pillar = TileKind
   }
 pillarCache = TileKind
   { tsymbol  = '#'
-  , tname    = "rack of deposit boxes"
-  , tfreq    = [ ("cachable deposit", 20), ("cache deposit", 1)
-               , ("stair terminal", 1) ]
+  , tname    = "abandoned stash"
+  , tfreq    = [("cachable", 20), ("cache", 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 5
   , tfeature = [ Embed "treasure cache", Embed "treasure cache trap"
-               , ChangeTo "cachable deposit", ConsideredByAI ]
+               , ChangeTo "cachable", ConsideredByAI ]
       -- Not explorable, but prominently placed, so hard to miss.
       -- Very beneficial, so AI eager to trigger, unless wary of traps.
   }
@@ -599,6 +598,13 @@ rock = pillar
   , tfreq    = [("brawlSetLit", 30), ("arenaSetLit", 1), ("arenaSetDark", 1)]
   }
 pillarCache2 = pillarCache
+  { tname    = "rack of deposit boxes"
+  , tfreq    = [ ("cachable deposit", 20), ("cache deposit", 1)
+               , ("stair terminal", 1) ]
+  , tfeature = [ Embed "deposit box", Embed "treasure cache trap"
+               , ChangeTo "cachable deposit", ConsideredByAI ]
+  }
+pillarCache3 = pillarCache
   { tname    = "jewelry display"
   , tfreq    = [ ("cachable jewelry", 20), ("cache jewelry", 1)
                , ("escapeSetDark", 1) ]
