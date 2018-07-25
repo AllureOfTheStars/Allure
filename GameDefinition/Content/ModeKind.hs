@@ -17,6 +17,8 @@ import qualified Data.IntMap.Strict as IM
 
 import Content.ModeKindPlayer
 import Game.LambdaHack.Common.Dice
+import Game.LambdaHack.Common.Misc
+import Game.LambdaHack.Content.CaveKind (CaveKind)
 import Game.LambdaHack.Content.ModeKind
 
 content :: [ModeKind]
@@ -494,7 +496,8 @@ cavesZoo = IM.fromList [(8, "caveZoo")]
 
 cavesAmbush = IM.fromList [(9, "caveAmbush")]
 
-cavesCrawl = IM.fromList $
+listCrawl :: [(Int, GroupName CaveKind)]
+listCrawl =
   [(1, "outermost")]
   ++ [(2, "shallow random 2")]
   ++ [(3, "caveBridge")]
@@ -508,21 +511,10 @@ cavesCrawl = IM.fromList $
   ++ [(11, "deep random")]
   ++ [(12, "caveNoise2")]
 
-cavesDig = IM.fromList $
-  [(1, "outermost")]
-  ++ [(2, "shallow random 2")]
-  ++ [(3, "caveBridge")]
-  ++ [(4, "caveNoise")]
-  ++ [(5, "default random")]
-  ++ [(6, "default random")]
-  ++ [(7, "deep random")]
-  ++ [(8, "deep random")]
-  ++ [(9, "deep random")]
-  ++ [(10, "caveEmptyExit")]
-  ++ [(11, "deep random")]
-  ++ [(12, "caveNoise2")]
-  ++ zip [13 .. 1000] (repeat "deep random")
-  ++ zip [1001 .. 2000] (repeat "default random")
+cavesCrawl = IM.fromList listCrawl
+
+cavesDig = IM.fromList $ zip [1 ..] $ map snd $ concat
+                       $ replicate 100 listCrawl
 
 cavesSafari = IM.fromList [ (4, "caveSafari1")
                           , (7, "caveSafari2")
