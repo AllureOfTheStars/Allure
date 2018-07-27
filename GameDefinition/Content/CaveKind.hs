@@ -139,8 +139,8 @@ laboratory = arena2
   , cXminSize     = 60
   , cYminSize     = 42
 --  , cgrid         = DiceXY (2 `d` 2 + 7) 3
-  , ccellSize     = DiceXY (1 `d` 2 + 5) (1 `d` 2 + 6)
-  , cminPlaceSize = DiceXY 7 6
+  , ccellSize     = DiceXY (1 `d` 2 + 5) (1 `d` 2 + 7)
+  , cminPlaceSize = DiceXY 6 8
   , cmaxPlaceSize = DiceXY 10 40
   , cdarkChance   = 1 `d` 54 + 1 `dL` 20
       -- most rooms lit, to compensate for corridors

@@ -56,8 +56,8 @@ deadEnd = PlaceKind  -- needs to have index 0
 rect = PlaceKind  -- Valid for any nonempty area, hence low frequency.
   { psymbol  = 'r'
   , pname    = "a room"
-  , pfreq    = [("rogue", 100), ("arena", 40), ("laboratory", 40)]
-  , prarity  = [(1, 10), (10, 8)]
+  , pfreq    = [("rogue", 100), ("arena", 35), ("laboratory", 30)]
+  , prarity  = [(1, 10), (10, 7)]
   , pcover   = CStretch
   , pfence   = FWall
   , ptopLeft = ["·"]
@@ -71,7 +71,7 @@ rectWindows = PlaceKind
   { psymbol  = 'w'
   , pname    = "a shed"
   , pfreq    = [("park", 10)]
-  , prarity  = [(1, 10), (10, 8)]
+  , prarity  = [(1, 10), (10, 7)]
   , pcover   = CStretch
   , pfence   = FNone
   , ptopLeft = [ "#%"
@@ -85,7 +85,7 @@ glasshouse = PlaceKind
   { psymbol  = 'g'
   , pname    = "a glasshouse"
   , pfreq    = [("shootout", 6)]
-  , prarity  = [(1, 10), (10, 8)]
+  , prarity  = [(1, 10), (10, 7)]
   , pcover   = CStretch
   , pfence   = FNone
   , ptopLeft = [ "%%"
@@ -127,13 +127,13 @@ ruin = PlaceKind
   }
 ruin2 = ruin
   { pname    = "a scaffolding"
-  , pfreq    = [("noise", 100)]
+  , pfreq    = [("noise", 120)]
   }
 collapsed = PlaceKind  -- in a dark cave, they have little lights --- that's OK
   { psymbol  = 'c'
   , pname    = "a hardware stack"
   , pfreq    = [("noise", 1)]
-  , prarity  = [(1, 10), (10, 10)]
+  , prarity  = [(1, 11), (10, 11)]
   , pcover   = CStretch
   , pfence   = FNone
   , ptopLeft = [ "#"
@@ -182,8 +182,8 @@ collapsed7 = collapsed
 pillar = PlaceKind
   { psymbol  = 'p'
   , pname    = "a commercial space"
-  , pfreq    = [ ("rogue", 500), ("arena", 1000), ("laboratory", 1000)
-               , ("empty", 300), ("noise", 1000) ]
+  , pfreq    = [ ("rogue", 600), ("arena", 1200), ("laboratory", 1200)
+               , ("empty", 300), ("noise", 1200) ]
   , prarity  = [(1, 5), (10, 5)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -205,12 +205,11 @@ pillar2 = pillar
                ]
   }
 pillar3 = pillar
-  { pfreq    = [ ("rogue", 300), ("arena", 1000), ("laboratory", 1000)
-               , ("empty", 300), ("noise", 1000) ]
-  , ptopLeft = [ "#···"
-               , "····"
-               , "····"
-               , "····"
+  { pfreq    = [ ("rogue", 50), ("arena", 100), ("laboratory", 100)
+               , ("empty", 30), ("noise", 300) ]
+  , ptopLeft = [ "#··"
+               , "···"
+               , "···"
                ]
   }
 pillar4 = pillar
@@ -222,7 +221,7 @@ pillar4 = pillar
   }
 pillar5 = pillar
   { pname    = "a bank outlet"
-  , pfreq    = [ ("rogue", 500), ("arena", 1000), ("empty", 300) ]
+  , pfreq    = [ ("rogue", 300), ("arena", 1000), ("empty", 300) ]
   , prarity  = [(10, 3)]
   , ptopLeft = [ "&·#·"
                , "··#·"
@@ -233,7 +232,7 @@ pillar5 = pillar
   }
 pillar6 = pillar
   { pname    = "a jewelry store"
-  , pfreq    = [ ("rogue", 500), ("arena", 1000), ("empty", 300) ]
+  , pfreq    = [ ("rogue", 300), ("arena", 1000), ("empty", 300) ]
   , prarity  = [(10, 3)]
   , ptopLeft = [ "&#··"
                , "#·%·"
@@ -245,8 +244,8 @@ pillar6 = pillar
 colonnade = PlaceKind
   { psymbol  = 'c'
   , pname    = "a colonnade"
-  , pfreq    = [ ("rogue", 3), ("arena", 7), ("laboratory", 4)
-               , ("empty", 10), ("mine", 1000), ("park", 40) ]
+  , pfreq    = [ ("rogue", 4), ("arena", 9), ("laboratory", 5)
+               , ("empty", 12), ("mine", 1200), ("park", 40) ]
   , prarity  = [(1, 20), (10, 20)]
   , pcover   = CAlternate
   , pfence   = FFloor
@@ -281,7 +280,8 @@ colonnade5 = colonnade
                ]
   }
 colonnade6 = colonnade
-  {  ptopLeft = [ "#·"
+  { prarity  = [(1, 12), (10, 12)]
+  , ptopLeft = [ "#·"
                , "··"
                , "·#"
                ]
@@ -340,7 +340,7 @@ treeShade = PlaceKind
 fogClump = PlaceKind
   { psymbol  = 'f'
   , pname    = "a foggy patch"
-  , pfreq    = [("park", 100), ("shootout", 150), ("empty", 1500)]
+  , pfreq    = [("park", 100), ("shootout", 150), ("empty", 1000)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -377,7 +377,7 @@ smokeClump = PlaceKind
   }
 smokeClump2FGround = smokeClump
   { pname    = "a burned out area"
-  , pfreq    = [ ("laboratory", 30), ("zoo", 500), ("ambush", 500)
+  , pfreq    = [ ("laboratory", 80), ("zoo", 500), ("ambush", 500)
                , ("empty", 200) ]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
@@ -1142,16 +1142,16 @@ oval = PlaceKind
   , pname    = "a dome"
   , pfreq    = [ ("rogue", 2000), ("arena", 1000), ("empty", 500)
                , ("zoo", 2000), ("ambush", 2000) ]
-  , prarity  = [(1, 10), (10, 10)]
+  , prarity  = [(1, 13), (10, 13)]
   , pcover   = CStretch
   , pfence   = FWall
   , ptopLeft = [ "####·"
                , "##···"
-               , "#····"
-               , "#····"
-               , "·····"
+               , "#··tt"
+               , "#·t··"
+               , "··t··"
                ]
-  , poverride = [('t', "alarmingTrailLit")]
+  , poverride = [('t', "trailLit"), ('a', "alarmingTrailLit")]
   }
 ovalFloor = oval  -- Without outer solid fence, visible from outside·
   { pfreq    = [ ("rogue", 3000), ("arena", 10000), ("empty", 5000)
@@ -1160,9 +1160,9 @@ ovalFloor = oval  -- Without outer solid fence, visible from outside·
   , ptopLeft = [ "XXXX+#"
                , "XX###·"
                , "X##···"
-               , "X#···t"
-               , "+#··t·"
-               , "#··t··"
+               , "X#···a"
+               , "+#··a·"
+               , "#··a··"
                ]
   }
 ovalSquare = oval
@@ -1178,7 +1178,7 @@ maze = PlaceKind
   { psymbol  = 'm'
   , pname    = "an intricate maze"
   , pfreq    = [("rogue", 10), ("arena", 20), ("empty", 10)]
-  , prarity  = [(1, 10), (10, 10)]
+  , prarity  = [(1, 12), (10, 12)]
   , pcover   = CStretch
   , pfence   = FWall
   , ptopLeft = [ "##··"
@@ -1188,14 +1188,14 @@ maze = PlaceKind
   , poverride = [('&', "cache")]
   }
 maze2 = maze
-  { pfreq    = [("rogue", 20), ("arena", 40), ("empty", 25)]
+  { pfreq    = [("rogue", 20), ("arena", 40), ("empty", 20)]
   , ptopLeft = [ "#·##·"
                , "·#··#"
                , "···#·"
                ]
   }
 maze3 = maze
-  { pfreq    = [("rogue", 30), ("arena", 60), ("empty", 40)]
+  { pfreq    = [("rogue", 30), ("arena", 60), ("empty", 30)]
   , ptopLeft = [ "##·##·"
                , "#·#··#"
                , "··#···"
@@ -1225,8 +1225,8 @@ mazeBig2 = maze
 cells = PlaceKind
   { psymbol  = '#'
   , pname    = "air filters"
-  , pfreq    = [ ("rogue", 20), ("arena", 20), (" laboratory", 20)
-               , ("empty", 20), ("noise", 20), ("zoo", 200) ]
+  , pfreq    = [ ("rogue", 12), ("arena", 12), (" laboratory", 12)
+               , ("empty", 12), ("noise", 12), ("zoo", 120) ]
   , prarity  = [(1, 4), (10, 4)]
   , pcover   = CReflect
   , pfence   = FWall
