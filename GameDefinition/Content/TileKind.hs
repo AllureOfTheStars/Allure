@@ -352,7 +352,7 @@ wallGlass = TileKind
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 10
-  , tfeature = [BuildAs "suspect wall", Clear]
+  , tfeature = [BuildAs "closed door", Clear]
   }
 wallGlassSpice = wallGlass
   { tfreq    = [("rectWindowsOver_%_Lit", 20)]
@@ -360,7 +360,7 @@ wallGlassSpice = wallGlass
   }
 pillarIce = TileKind
   { tsymbol  = '^'
-  , tname    = "ice"
+  , tname    = "ice buildup"
   , tfreq    = [ ("legendLit", 1), ("legendDark", 1)
                , ("brawlSetLit", 20), ("lift terminal", 2) ]
   , tcolor   = BrBlue
