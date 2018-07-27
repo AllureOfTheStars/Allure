@@ -40,7 +40,7 @@ rogue = CaveKind
   , cauxConnects  = 1%2
   , cmaxVoid      = 1%8
   , cminStairDist = 15
-  , cextraStairs  = 2 + 1 `d` 2
+  , cextraStairs  = 1 + 1 `d` 2
   , cdoorChance   = 3%4
   , copenChance   = 1%5
   , chidden       = 7
@@ -63,7 +63,7 @@ rogue = CaveKind
   , clegendDarkTile = "legendDark"
   , clegendLitTile  = "legendLit"
   , cescapeGroup    = Nothing
-  , cstairFreq      = [("staircase lift", 100)]
+  , cstairFreq    = [("walled lift", 50), ("open lift", 50)]
   , cdesc         = "Winding tunnels stretch into the dark. Most of the area is crammed with tanks and cells of raw materials and machinery."
   }
 rogue2 = rogue
@@ -73,6 +73,7 @@ rogue2 = rogue
   , cdarkChance   = 51  -- all rooms dark
   , cnightChance  = 0  -- always day
   , cmaxVoid      = 1%4
+  , cstairFreq    = [("walled staircase", 50), ("open staircase", 50)]
   , cdesc         = "It's been powered down, except for emergency corridors, and many suites are depressurized and sealed."
   }
 arena = rogue
@@ -82,9 +83,9 @@ arena = rogue
   , cXminSize     = 80
   , cYminSize     = 25
 --  , cgrid         = DiceXY (2 + 1 `d` 2) (1 + 1 `d` 2)
-  , ccellSize     = DiceXY (3 `d` 3 + 17) (1 `d` 3 + 4)
+  , ccellSize     = DiceXY (3 `d` 3 + 17) (1 `d` 6 + 4)
   , cminPlaceSize = DiceXY (2 `d` 2 + 4) 6
-  , cmaxPlaceSize = DiceXY 16 12
+  , cmaxPlaceSize = DiceXY 16 16
   , cdarkChance   = 49 + 1 `d` 10  -- almost all rooms dark (1 in 10 lit)
   -- Light is not too deadly, because not many obstructions and so
   -- foes visible from far away and few foes have ranged combat
@@ -104,6 +105,7 @@ arena = rogue
   , cdefTile      = "arenaSetLit"
   , cdarkCorTile  = "trailLit"  -- let trails give off light
   , clitCorTile   = "trailLit"
+  , cstairFreq    = [("walled staircase", 20), ("closed staircase", 80)]
   , cdesc         = ""
   }
 arena2 = arena
@@ -111,6 +113,10 @@ arena2 = arena
   , cfreq         = [("deep random", 30)]
   , cXminSize     = 21
   , cYminSize     = 21
+--  , cgrid         = DiceXY (2 + 1 `d` 2) (1 + 1 `d` 2)
+  , ccellSize     = DiceXY (3 `d` 3 + 17) (1 `d` 3 + 4)
+  , cminPlaceSize = DiceXY (2 `d` 2 + 4) 6
+  , cmaxPlaceSize = DiceXY 16 12
   , cdarkChance   = 41 + 1 `d` 10  -- almost all rooms lit (1 in 10 dark)
   -- Trails provide enough light for fun stealth.
   , cnightChance  = 51  -- always night
@@ -120,10 +126,10 @@ arena2 = arena
                     , ("treasure", 80)  -- lives up to the name
                     , ("curious item", 20) ]
   , cdefTile      = "arenaSetDark"
-  , cfenceTileN     = "habitat containment wall"  -- small cave
-  , cfenceTileE     = "habitat containment wall"
-  , cfenceTileS     = "habitat containment wall"
-  , cfenceTileW     = "habitat containment wall"
+  , cfenceTileN   = "habitat containment wall"  -- small cave
+  , cfenceTileE   = "habitat containment wall"
+  , cfenceTileS   = "habitat containment wall"
+  , cfenceTileW   = "habitat containment wall"
   , cdesc         = ""
   }
 laboratory = arena2
@@ -153,7 +159,7 @@ laboratory = arena2
   , cdefTile      = "fillerWall"
   , cdarkCorTile  = "labTrailLit"  -- let lab smoke give off light always
   , clitCorTile   = "labTrailLit"
-  , cstairFreq    = [("staircase lift", 100)]
+  , cstairFreq    = [("walled staircase", 50), ("open staircase", 50)]
   , cdesc         = "Shattered glassware and the sharp scent of spilt chemicals show that something terrible happened here."
   }
 empty = rogue
@@ -181,7 +187,7 @@ empty = rogue
   , cdefTile      = "emptySet"
   , cdarkCorTile  = "floorArenaDark"
   , clitCorTile   = "floorArenaLit"
-  , cstairFreq    = [("staircase", 50), ("staircase lift", 50)]
+  , cstairFreq    = [("walled lift", 20), ("closed lift", 80)]
   , cdesc         = "Not much to see here yet."
   }
 noise = rogue
@@ -213,6 +219,7 @@ noise = rogue
   , cfenceApart   = True  -- ensures no cut-off parts from collapsed
   , cdarkCorTile  = "floorArenaDark"
   , clitCorTile   = "floorArenaLit"
+  , cstairFreq    = [("closed lift", 50), ("open lift", 50)]
   , cdesc         = ""
   }
 noise2 = noise
@@ -244,10 +251,10 @@ bridge = rogue
   , citemNum      = 8 `d` 3  -- lure them in with loot
   , citemFreq     = filter ((`notElem` ["treasure", "curious item"]) . fst)
                     $ citemFreq rogue
-  , cfenceTileN     = "habitat containment wall"  -- cave isolated for safety
-  , cfenceTileE     = "habitat containment wall"
-  , cfenceTileS     = "habitat containment wall"
-  , cfenceTileW     = "habitat containment wall"
+  , cfenceTileN   = "habitat containment wall"  -- cave isolated for safety
+  , cfenceTileE   = "habitat containment wall"
+  , cfenceTileS   = "habitat containment wall"
+  , cfenceTileW   = "habitat containment wall"
   , cdesc         = "The bridge is gutted out and nonoperational. There are animal cries down below and ominous silence up above."
   }
 shallow2blurb :: Text

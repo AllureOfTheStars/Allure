@@ -24,11 +24,11 @@ content =
   [unknown, unknownOuterFence, basicOuterFence, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade ]
   ++ map makeDarkColor ldarkColorable
   -- Allure-specific
-  ++ [oriel, outerHullWall, doorlessWall, machineWall, rubbleBurning, rubbleSpiceBurning, wallObscuredSafety, wallObscured3dBillboard, rock, pillarCache2, pillarCache3, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown, emptyAirlock, floorWindow]
+  ++ [oriel, outerHullWall, doorlessWall, machineWall, rubbleBurning, rubbleSpiceBurning, wallObscuredSafety, wallObscured3dBillboard, liftShaft, rock, pillarCache2, pillarCache3, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown, emptyAirlock, floorWindow]
 
 unknown,    unknownOuterFence, basicOuterFence, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade :: TileKind
 -- Allure-specific
-oriel,       outerHullWall, doorlessWall, machineWall, rubbleBurning, rubbleSpiceBurning, wallObscuredSafety, wallObscured3dBillboard, rock, pillarCache2, pillarCache3, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown, emptyAirlock, floorWindow :: TileKind
+oriel,       outerHullWall, doorlessWall, machineWall, rubbleBurning, rubbleSpiceBurning, wallObscuredSafety, wallObscured3dBillboard, liftShaft, rock, pillarCache2, pillarCache3, stairsLiftUp, stairsLiftTrappedUp, stairsLiftDown, stairsLiftTrappedDown, escapeSpaceshipDown, emptyAirlock, floorWindow :: TileKind
 
 ldarkColorable :: [TileKind]
 ldarkColorable = [tree, bush, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorWindow]
@@ -90,7 +90,7 @@ wall = TileKind
   , tname    = "wall"
   , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
                , ("cachable deposit", 80), ("cachable jewelry", 80)
-               , ("cachable", 80), ("stair terminal", 30)
+               , ("cachable", 80), ("stair terminal", 100)
                , ("battleSet", 250), ("rectWindowsOver_%_Lit", 80) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
@@ -186,7 +186,8 @@ signboardUnread = TileKind  -- client only, indicates never used by this faction
 signboardRead = TileKind
   { tsymbol  = 'O'
   , tname    = "signboard"
-  , tfreq    = [("signboard", 1), ("escapeSetDark", 1)]
+  , tfreq    = [ ("signboard", 1)
+               , ("emptySet", 1), ("arenaSetLit", 1), ("escapeSetDark", 1) ]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 5
@@ -222,7 +223,7 @@ treeBurning = tree
 rubble = TileKind
   { tsymbol  = '&'
   , tname    = "rubble pile"
-  , tfreq    = [ ("rubble", 1), ("stair terminal", 30)
+  , tfreq    = [ ("rubble", 1), ("stair terminal", 6), ("lift terminal", 6)
                , ("emptySet", 7), ("emptyExitSet", 7), ("noiseSet", 80)
                , ("zooSet", 100), ("ambushSet", 18) ]
   , tcolor   = BrYellow
@@ -346,7 +347,8 @@ escapeOutdoorDown = escapeDown
 wallGlass = TileKind
   { tsymbol  = '%'
   , tname    = "transparent polymer wall"
-  , tfreq    = [("glasshouseOver_%_Lit", 1)]
+  , tfreq    = [ ("glasshouseOver_%_Lit", 1)
+               , ("legendLit", 1), ("legendDark", 1) ]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 10
@@ -359,7 +361,8 @@ wallGlassSpice = wallGlass
 pillarIce = TileKind
   { tsymbol  = '^'
   , tname    = "ice"
-  , tfreq    = [("brawlSetLit", 20)]
+  , tfreq    = [ ("legendLit", 1), ("legendDark", 1)
+               , ("brawlSetLit", 20), ("lift terminal", 2) ]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 4  -- boss can dig through
@@ -382,7 +385,8 @@ bush = TileKind
   { tsymbol  = '%'
   , tname    = "bush"
   , tfreq    = [ ("bush Lit", 1), ("shootoutSetLit", 30), ("escapeSetLit", 40)
-               , ("arenaSetLit", 3), ("bushClumpOver_f_Lit", 1) ]
+               , ("arenaSetLit", 3)
+               , ("bushClumpOver_f_Lit", 1), ("lift terminal", 6) ]
   , tcolor   = BrGreen
   , tcolor2  = Green
   , talter   = 10
@@ -412,9 +416,9 @@ bushBurning = bush
 floorFog = TileKind
   { tsymbol  = ';'
   , tname    = "faint fog"
-  , tfreq    = [ ("lit fog", 1), ("emptySet", 50), ("shootoutSetLit", 20)
-               , ("emptyExitSet", 20)
-               , ("noiseSet", 100), ("fogClumpOver_f_Lit", 60) ]
+  , tfreq    = [ ("lit fog", 1), ("emptySet", 50), ("emptyExitSet", 20)
+               , ("noiseSet", 100), ("shootoutSetLit", 20)
+               , ("fogClumpOver_f_Lit", 60), ("lift terminal", 40) ]
       -- lit fog is OK for shootout, because LOS is mutual, as opposed
       -- to dark fog, and so camper has little advantage, especially
       -- on big maps, where he doesn't know on which side of fog patch to hide
@@ -431,8 +435,9 @@ floorFogDark = floorFog
 floorSmoke = TileKind
   { tsymbol  = ';'
   , tname    = "billowing smoke"
-  , tfreq    = [ ("lit smoke", 1), ("labTrailLit", 1), ("stair terminal", 2)
-               , ("smokeClumpOver_f_Lit", 1), ("emptyExitSet", 20) ]
+  , tfreq    = [ ("lit smoke", 1), ("labTrailLit", 1)
+               , ("stair terminal", 2), ("lift terminal", 6)
+               , ("smokeClumpOver_f_Lit", 1), ("emptyExitSet", 10) ]
   , tcolor   = Brown
   , tcolor2  = BrBlack
   , talter   = 0
@@ -496,8 +501,8 @@ floorActorItem = floorActor
   }
 floorRed = floorCorridor
   { tname    = "emergency walkway"
-  , tfreq    = [ ("emergency walkway", 1)
-               , ("trailLit", 20), ("alarmingTrailLit", 70) ]
+  , tfreq    = [ ("emergency walkway", 1), ("trailLit", 20)
+               , ("alarmingTrailLit", 70), ("lift terminal", 6) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , tfeature = [Trail, Walkable, Clear]
@@ -560,8 +565,9 @@ doorlessWall = TileKind
 rubbleBurning = TileKind
   { tsymbol  = '&'
   , tname    = "burning installation"
-  , tfreq    = [ ("emptySet", 4), ("emptyExitSet", 6), ("noiseSet", 7)
-               , ("ambushSet", 2), ("zooSet", 40), ("stair terminal", 40) ]
+  , tfreq    = [ ("emptySet", 1), ("emptyExitSet", 2), ("noiseSet", 2)
+               , ("ambushSet", 2), ("zooSet", 40)
+               , ("stair terminal", 4), ("lift terminal", 4) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 4  -- boss can dig through
@@ -592,6 +598,10 @@ wallObscured3dBillboard = TileKind
   , tfeature = [ Embed "3D display"
                , HideAs "suspect wall"
                ]
+  }
+liftShaft = pillar
+  { tname    = "lift shaft"
+  , tfreq    = [("lift shaft", 1)]
   }
 rock = pillar
   { tname    = "rock"
@@ -671,7 +681,7 @@ machineWall = TileKind
   { tsymbol  = '%'
   , tname    = "hardware rack"
   , tfreq    = [ ("noiseSet", 350), ("emptyExitSet", 60)
-               , ("doorlessWallOver_#", 80) ]
+               , ("doorlessWallOver_#", 80), ("lift terminal", 40) ]
   , tcolor   = White
   , tcolor2  = BrBlack
   , talter   = 100
