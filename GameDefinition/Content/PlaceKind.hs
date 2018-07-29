@@ -70,7 +70,7 @@ rect2 = rect
 rectWindows = PlaceKind
   { psymbol  = 'w'
   , pname    = "a shed"
-  , pfreq    = [("park", 10)]
+  , pfreq    = [("escape", 10)]
   , prarity  = [(1, 10), (10, 7)]
   , pcover   = CStretch
   , pfence   = FNone
@@ -245,7 +245,7 @@ colonnade = PlaceKind
   { psymbol  = 'c'
   , pname    = "a colonnade"
   , pfreq    = [ ("rogue", 4), ("arena", 9), ("laboratory", 5)
-               , ("empty", 12), ("mine", 1200), ("park", 40) ]
+               , ("empty", 12), ("mine", 1200), ("escape", 40) ]
   , prarity  = [(1, 20), (10, 20)]
   , pcover   = CAlternate
   , pfence   = FFloor
@@ -289,7 +289,7 @@ colonnade6 = colonnade
 lampPost = PlaceKind
   { psymbol  = 'l'
   , pname    = "a lamp post"
-  , pfreq    = [("park", 20), ("ambush", 20), ("zoo", 10), ("battle", 10)]
+  , pfreq    = [("escape", 20), ("ambush", 20), ("zoo", 10), ("battle", 10)]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CVerbatim
   , pfence   = FNone
@@ -306,7 +306,7 @@ lampPost2 = lampPost
                ]
   }
 lampPost3 = lampPost
-  { pfreq    = [("park", 3000), ("zoo", 50), ("battle", 110)]
+  { pfreq    = [("escape", 3000), ("zoo", 50), ("battle", 110)]
   , ptopLeft = [ "XX·XX"
                , "X···X"
                , "··O··"
@@ -315,7 +315,7 @@ lampPost3 = lampPost
                ]
   }
 lampPost4 = lampPost
-  { pfreq    = [("park", 3000), ("zoo", 50), ("battle", 60)]
+  { pfreq    = [("escape", 3000), ("zoo", 50), ("battle", 60)]
   , ptopLeft = [ "X···X"
                , "·····"
                , "··O··"
@@ -340,7 +340,7 @@ treeShade = PlaceKind
 fogClump = PlaceKind
   { psymbol  = 'f'
   , pname    = "a foggy patch"
-  , pfreq    = [("park", 100), ("shootout", 150), ("empty", 1000)]
+  , pfreq    = [("escape", 100), ("shootout", 150), ("empty", 1000)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -351,7 +351,7 @@ fogClump = PlaceKind
   , poverride = [('f', "fogClumpOver_f_Lit"), (';', "lit fog")]
   }
 fogClump2 = fogClump
-  { pfreq    = [("park", 100), ("shootout", 500), ("empty", 5000)]
+  { pfreq    = [("escape", 100), ("shootout", 500), ("empty", 5000)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
