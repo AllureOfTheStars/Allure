@@ -190,6 +190,7 @@ empty = rogue
   , cdefTile      = "emptySet"
   , cdarkCorTile  = "floorArenaDark"
   , clitCorTile   = "floorArenaLit"
+  , cfenceApart   = True  -- ensures no cut-off border airlocks and collapsed
   , cstairFreq    = [("walled lift", 20), ("closed lift", 80)]
   , cdesc         = "Not much to see here yet."
   }
@@ -298,7 +299,6 @@ shallow1empty = empty
   , cfenceTileE   = "habitat containment wall"
   , cfenceTileS   = "empty airlock fence"
   , cfenceTileW   = "habitat containment wall"
-  , cfenceApart   = True  -- ensures no cut-off airlocks
   , cdesc         = "The black sky outside sucks light through the oriels and airlock glass. This is the main pressurized cargo bay and storage, with the only other docking hub for small craft somewhere among the giant spaceship's uppermost levels. You can't see from afar the shuttle you left engaged to one of the few free airlocks covered in guano. Water treatment basins and series of hanging and stacked tanks double as radiation shields. Hoses writhe on the floor and dangle in thick knots from the ceiling."
       -- E and W sides are borders with other level sections, so no oriels.
       -- TODO: water-filled wall-less rooms, as soon as there are water tiles
@@ -314,7 +314,6 @@ emptyExit = empty
   , cfenceTileE   = "habitat containment wall"
   , cfenceTileS   = "airlock fence"
   , cfenceTileW   = "habitat containment wall"
-  , cfenceApart   = True  -- ensures no cut-off airlocks
   , cescapeGroup  = Just "escape spaceship down"
   , cstairFreq    = [("gated staircase", 100)]
   , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among cranes and welding machines. Distant engines can be seen to the rear of the spaceship through oriels and airlocks of all sizes."

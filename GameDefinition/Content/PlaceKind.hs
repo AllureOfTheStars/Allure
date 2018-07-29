@@ -42,6 +42,7 @@ lstaircase = [staircase, staircase2, staircaseLift, staircase4, staircase5, stai
 stairsAndLifts :: ([PlaceKind], [PlaceKind])
 stairsAndLifts = partition ((/= "a lift") . pname) lstaircase
 
+-- The dots below are @Char.chr 183@, as defined in @TileKind.floorSymbol@.
 deadEnd = PlaceKind  -- needs to have index 0
   { psymbol  = 'd'
   , pname    = "a dead end"
@@ -52,7 +53,6 @@ deadEnd = PlaceKind  -- needs to have index 0
   , ptopLeft = ["·"]
   , poverride = []
   }
--- The dots below are @Char.chr 183@, as defined in @TileKind.floorSymbol@.
 rect = PlaceKind  -- Valid for any nonempty area, hence low frequency.
   { psymbol  = 'r'
   , pname    = "a room"
@@ -84,7 +84,7 @@ rectWindows = PlaceKind
 glasshouse = PlaceKind
   { psymbol  = 'g'
   , pname    = "a glasshouse"
-  , pfreq    = [("shootout", 6)]
+  , pfreq    = [("shootout", 3)]
   , prarity  = [(1, 10), (10, 7)]
   , pcover   = CStretch
   , pfence   = FNone
@@ -98,8 +98,8 @@ glasshouse2 = glasshouse
   , pfreq    = [("zoo", 10)]
   }
 glasshouse3 = glasshouse
-  { pname    = "a display platform"
-  , pfreq    = [("arena", 40), ("ambush", 7)]
+  { pname    = "an entertainment center"
+  , pfreq    = [("arena", 40), ("ambush", 3)]
   }
 pulpit = PlaceKind
   { psymbol  = 'p'
@@ -118,7 +118,7 @@ pulpit = PlaceKind
 ruin = PlaceKind
   { psymbol  = 'R'
   , pname    = "ruins"
-  , pfreq    = [("battle", 33)]
+  , pfreq    = [("battle", 33), ("ambush", 5)]
   , prarity  = [(1, 10), (10, 20)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -181,8 +181,8 @@ collapsed7 = collapsed
   }
 pillar = PlaceKind
   { psymbol  = 'p'
-  , pname    = "a commercial space"
-  , pfreq    = [ ("rogue", 600), ("arena", 1200), ("laboratory", 1200)
+  , pname    = "a market"
+  , pfreq    = [ ("rogue", 600), ("arena", 1200)
                , ("empty", 300), ("noise", 1200) ]
   , prarity  = [(1, 5), (10, 5)]
   , pcover   = CStretch
@@ -205,7 +205,8 @@ pillar2 = pillar
                ]
   }
 pillar3 = pillar
-  { pfreq    = [ ("rogue", 50), ("arena", 100), ("laboratory", 100)
+  { pname    = "a plaza"
+  , pfreq    = [ ("rogue", 50), ("arena", 100), ("laboratory", 100)
                , ("empty", 30), ("noise", 300) ]
   , ptopLeft = [ "#··"
                , "···"
@@ -213,7 +214,8 @@ pillar3 = pillar
                ]
   }
 pillar4 = pillar
-  { ptopLeft = [ "#·#·"
+  { pname    = "a mall"
+  , ptopLeft = [ "#·#·"
                , "····"
                , "#···"
                , "····"
@@ -244,8 +246,8 @@ pillar6 = pillar
 colonnade = PlaceKind
   { psymbol  = 'c'
   , pname    = "a colonnade"
-  , pfreq    = [ ("rogue", 4), ("arena", 9), ("laboratory", 5)
-               , ("empty", 12), ("mine", 1200), ("escape", 40) ]
+  , pfreq    = [ ("rogue", 4), ("arena", 9), ("empty", 12), ("mine", 1200)
+               , ("escape", 40) ]
   , prarity  = [(1, 20), (10, 20)]
   , pcover   = CAlternate
   , pfence   = FFloor
@@ -971,7 +973,6 @@ staircase25down = staircase
 overrideLift :: [(Char, GroupName TileKind)]
 overrideLift = [ ('<', "staircase lift up"), ('>', "staircase lift down")
                , ('I', "signboard"), ('S', "lift shaft") ]
-
 staircaseLift11 = staircase11
   { pname     = "a lift"
   , pfreq     = [("closed lift", 2000)]  -- weak cover, low freq
@@ -1128,9 +1129,13 @@ escapeSpaceshipDown5 = escapeDown5
   { pfreq     = [("escape spaceship down", 1000)]
   , poverride = [('>', "escape spaceship down")]
   }
-colonnadeWide = colonnade
-  { pname    = "water pumps"
+colonnadeWide = PlaceKind
+  { psymbol  = 'w'
+  , pname    = "water pumps"
+  , pfreq    = [ ("rogue", 4), ("laboratory", 5), ("empty", 12), ("mine", 1200)
+               , ("shootout", 3), ("escape", 40) ]
   , prarity  = [(1, 10), (10, 10)]
+  , pcover   = CAlternate
   , pfence   = FWall
   , ptopLeft = [ "··"
                , "%·"
@@ -1140,8 +1145,8 @@ colonnadeWide = colonnade
 oval = PlaceKind
   { psymbol  = 'o'
   , pname    = "a dome"
-  , pfreq    = [ ("rogue", 2000), ("arena", 1000), ("empty", 500)
-               , ("zoo", 2000), ("ambush", 2000) ]
+  , pfreq    = [ ("rogue", 2000), ("arena", 1000), ("laboratory", 1200)
+               , ("empty", 500), ("zoo", 2000), ("ambush", 2000) ]
   , prarity  = [(1, 13), (10, 13)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -1154,8 +1159,8 @@ oval = PlaceKind
   , poverride = [('t', "trailLit"), ('a', "alarmingTrailLit")]
   }
 ovalFloor = oval  -- Without outer solid fence, visible from outside·
-  { pfreq    = [ ("rogue", 3000), ("arena", 10000), ("empty", 5000)
-               , ("zoo", 10000), ("ambush", 10000) ]
+  { pfreq    = [ ("rogue", 3000), ("arena", 10000), ("laboratory", 1200)
+               , ("empty", 5000), ("zoo", 10000), ("ambush", 10000) ]
   , pfence   = FGround
   , ptopLeft = [ "XXXX+#"
                , "XX###·"
@@ -1225,8 +1230,8 @@ mazeBig2 = maze
 cells = PlaceKind
   { psymbol  = '#'
   , pname    = "air filters"
-  , pfreq    = [ ("rogue", 12), ("arena", 12), (" laboratory", 12)
-               , ("empty", 12), ("noise", 12), ("zoo", 120) ]
+  , pfreq    = [ ("rogue", 12), (" laboratory", 12), ("empty", 12)
+               , ("noise", 12), ("zoo", 120), ("shootout", 3), ("ambush", 4) ]
   , prarity  = [(1, 4), (10, 4)]
   , pcover   = CReflect
   , pfence   = FWall
@@ -1259,8 +1264,8 @@ cells4 = cells
   }
 cells5 = cells  -- this one is distinct enough from others, so needs a boost
   { pname    = "broken robot holds"
-  , pfreq    = [ ("rogue", 15), ("arena", 20), (" laboratory", 20)
-               , ("empty", 20), ("noise", 20) ]
+  , pfreq    = [ ("rogue", 15), (" laboratory", 20), ("empty", 20)
+               , ("noise", 20) ]
   , ptopLeft = [ "··#"
                , "··#"
                , "##·"
@@ -1268,16 +1273,15 @@ cells5 = cells  -- this one is distinct enough from others, so needs a boost
   }
 cells6 = cells
   { pname    = "animal holding pens"
-  , pfreq    = [ ("rogue", 3), ("arena", 5), ("laboratory", 5)
-               , ("empty", 5), ("noise", 3), ("zoo", 30) ]
+  , pfreq    = [("laboratory", 5), ("empty", 5), ("noise", 3), ("zoo", 30)]
   , ptopLeft = [ "··#"
                , "##'"
                ]
   }
 cells7 = cells
   { pname    = "a defunct control room"
-  , pfreq    = [ ("rogue", 3), ("arena", 5), (" laboratory", 5)
-               , ("empty", 5), ("noise", 3) ]
+  , pfreq    = [ ("rogue", 3), (" laboratory", 5), ("empty", 5)
+               , ("noise", 3) ]
   , pfence   = FFloor
   , ptopLeft = [ "#·#"
                , "·%·"
