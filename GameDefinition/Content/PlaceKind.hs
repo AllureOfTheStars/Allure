@@ -21,17 +21,17 @@ import Game.LambdaHack.Content.TileKind (TileKind)
 
 content :: [PlaceKind]
 content =
-  [deadEnd, rect, rect2, rectWindows, glasshouse, glasshouse2, glasshouse3, pulpit, ruin, ruin2, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, pillar6, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2FGround, bushClump, escapeUp, escapeUp2, escapeUp3, escapeUp4, escapeUp5, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeOutdoorDown, staircase1, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircase18, staircase19, staircase20, staircase21, staircase22, staircase23, staircase24, staircase25, staircase26, staircase27, staircase28, staircase29, staircase30, staircase31, staircase32, staircase33, staircase34, staircase35, staircase36, staircase37, staircase15up, staircase16down, staircase21up, staircase21down, staircase25up, staircase25down]
+  [deadEnd, rect, rect2, rectWindows, glasshouse, glasshouse2, glasshouse3, pulpit, ruin, ruin2, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, pillar6, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2FGround, bushClump, escapeUp, escapeUp2, escapeUp3, escapeUp4, escapeUp5, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeOutdoorDown, staircase1, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircase18, staircase19, staircase20, staircase21, staircase22, staircase23, staircase24, staircase25, staircase26, staircase27, staircase28, staircase29, staircase30, staircase31, staircase32, staircase33, staircase34, staircase35, staircase36, staircase37]
   -- Allure-specific
-  ++ [staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25, staircaseLift15up, staircaseLift16down, staircaseLift21up, staircaseLift21down, staircaseLift25up, staircaseLift25down]
+  ++ [staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25]
   -- automatically generated
   ++ generatedStairs
   -- Allure-specific, continued
   ++ [escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, colonnadeWide, oval, ovalFloor, ovalSquare, maze,  maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7]
 
-deadEnd,    rect, rect2, rectWindows, glasshouse, glasshouse2, glasshouse3, pulpit, ruin, ruin2, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, pillar6, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2FGround, bushClump, escapeUp, escapeUp2, escapeUp3, escapeUp4, escapeUp5, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeOutdoorDown, staircase1, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircase18, staircase19, staircase20, staircase21, staircase22, staircase23, staircase24, staircase25, staircase26, staircase27, staircase28, staircase29, staircase30, staircase31, staircase32, staircase33, staircase34, staircase35, staircase36, staircase37, staircase15up, staircase16down, staircase21up, staircase21down, staircase25up, staircase25down :: PlaceKind
+deadEnd,    rect, rect2, rectWindows, glasshouse, glasshouse2, glasshouse3, pulpit, ruin, ruin2, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, pillar6, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2FGround, bushClump, escapeUp, escapeUp2, escapeUp3, escapeUp4, escapeUp5, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeOutdoorDown, staircase1, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircase18, staircase19, staircase20, staircase21, staircase22, staircase23, staircase24, staircase25, staircase26, staircase27, staircase28, staircase29, staircase30, staircase31, staircase32, staircase33, staircase34, staircase35, staircase36, staircase37 :: PlaceKind
 -- Allure-specific
-staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25, staircaseLift15up, staircaseLift16down, staircaseLift21up, staircaseLift21down, staircaseLift25up, staircaseLift25down, escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, colonnadeWide, oval, ovalFloor, ovalSquare, maze,  maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7 :: PlaceKind
+staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25, escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, colonnadeWide, oval, ovalFloor, ovalSquare, maze,  maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7 :: PlaceKind
 
 staircase, staircaseLift :: PlaceKind  -- templates
 
@@ -878,73 +878,6 @@ staircase37 = staircase
                , "#·······#"
                ]
   }
-staircase15up = staircase
-  { pname    = "a staircase up"
-  , pfreq    = [("closed staircase up", 20000)]
-  , pfence   = FFloor
-  , ptopLeft = [ "·#·#·#·"
-               , "#·#·#·#"
-               , "·#···#·"
-               , "#··<··#"
-               , "·#···#·"
-               , "#·#·#·#"
-               , "·#·#·#·"
-               ]
-  }
-staircase16down = staircase
-  { pname    = "a staircase down"
-  , pfreq    = [("closed staircase down", 20000)]
-  , pfence   = FFloor
-  , ptopLeft = [ "#·#·#·#"
-               , "·#·#·#·"
-               , "#·····#"
-               , "·#·>·#·"
-               , "#·····#"
-               , "·#·#·#·"
-               , "#·#·#·#"
-               ]
-  }
-staircase21up = staircase
-  { pname    = "a staircase up"
-  , pfreq    = [("closed staircase up", 2000), ("open staircase up", 2000)]
-  , pfence   = FFloor
-  , ptopLeft = [ "#·#·#·#"
-               , "·#···#·"
-               , "#··<··#"
-               , "·#···#·"
-               , "#·#·#·#"
-               ]
-  }
-staircase21down = staircase
-  { pname    = "a staircase down"
-  , pfreq    = [ ("closed staircase down", 2000)
-               , ("open staircase down", 2000) ]
-  , pfence   = FFloor
-  , ptopLeft = [ "#·#·#·#"
-               , "·#···#·"
-               , "#··>··#"
-               , "·#···#·"
-               , "#·#·#·#"
-               ]
-  }
-staircase25up = staircase
-  { pname    = "a staircase up"
-  , pfreq    = [("walled staircase up", 100)]
-  , pfence   = FWall
-  , ptopLeft = [ "···"
-               , "·<·"
-               , "···"
-               ]
-  }
-staircase25down = staircase
-  { pname    = "a staircase down"
-  , pfreq    = [("walled staircase down", 100)]
-  , pfence   = FWall
-  , ptopLeft = [ "···"
-               , "·>·"
-               , "···"
-               ]
-  }
 
 -- * Allure-specific
 
@@ -1024,68 +957,6 @@ staircaseLift25 = staircase25
   { pname     = "a lift"
   , pfreq     = [("walled lift", 100)]
   , poverride = overrideLift
-  }
-staircaseLift15up = staircaseLift
-  { pname    = "a lift up"
-  , pfreq    = [("closed lift up", 20000)]
-  , ptopLeft = [ "·#·##·#·"
-               , "#·#··#·#"
-               , "·#····#·"
-               , "#··<I··#"
-               , "·#····#·"
-               , "#·#··#·#"
-               , "·#·##·#·"
-               ]
-  }
-staircaseLift16down = staircaseLift
-  { pname    = "a lift down"
-  , pfreq    = [("closed lift down", 20000)]
-  , ptopLeft = [ "#·#··#·#"
-               , "·#·##·#·"
-               , "#······#"
-               , "·#·I>·#·"
-               , "#······#"
-               , "·#·##·#·"
-               , "#·#··#·#"
-               ]
- }
-staircaseLift21up = staircaseLift
-  { pname    = "a lift up"
-  , pfreq    = [("closed lift up", 2000), ("open lift up", 2000)]
-  , ptopLeft = [ "#·#··#·#"
-               , "·#····#·"
-               , "#··<S··#"
-               , "·#····#·"
-               , "#·#··#·#"
-               ]
-  }
-staircaseLift21down = staircaseLift
-  { pname    = "a lift down"
-  , pfreq    = [("closed lift down", 2000), ("open lift down", 2000)]
-  , ptopLeft = [ "·#·##·#·"
-               , "#······#"
-               , "·#·S>·#·"
-               , "#······#"
-               , "·#·##·#·"
-               ]
-  }
-staircaseLift25up = staircaseLift
-  { pname    = "a lift up"
-  , pfreq    = [("walled lift up", 200)]
-  , pfence   = FWall
-  , ptopLeft = [ "····"
-               , "·<S·"
-               , "····"
-               ]
-  }
-staircaseLift25down = staircaseLift
-  { pname    = "a lift down"
-  , pfreq    = [("walled lift down", 200)]
-  , pfence   = FWall
-  , ptopLeft = [ "····"
-               , "·S>·"
-               , "····"
-               ]
   }
 escapeSpaceshipDown = escapeDown
   { pfreq     = [("escape spaceship down", 1)]
