@@ -61,7 +61,7 @@ rogue = CaveKind
   , cfenceApart     = False
   , clegendDarkTile = "legendDark"
   , clegendLitTile  = "legendLit"
-  , cescapeGroup    = Nothing
+  , cescapeFreq   = []
   , cstairFreq    = [ ("walled lift", 50), ("open lift", 50)
                     , ("tiny lift", 1) ]
   , cdesc         = "Winding tunnels stretch into the dark. Most of the area is crammed with tanks and cells of raw materials and machinery."
@@ -314,7 +314,7 @@ emptyExit = empty
   , cfenceTileE   = "habitat containment wall"
   , cfenceTileS   = "airlock fence"
   , cfenceTileW   = "habitat containment wall"
-  , cescapeGroup  = Just "escape spaceship down"
+  , cescapeFreq   = [("escape spaceship down", 1)]
   , cstairFreq    = [("gated staircase", 100)]
   , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among cranes and welding machines. Distant engines can be seen to the rear of the spaceship through oriels and airlocks of all sizes."
       -- E and W sides are borders with other level sections, so no oriels.
@@ -337,7 +337,7 @@ raid = rogue
   , cactorFreq    = [("animal", 50), ("robot", 50)]
   , citemNum      = 6 `d` 6  -- just one level, hard enemies, treasure
   , citemFreq     = [("common item", 100), ("currency", 500)]
-  , cescapeGroup  = Just "escape up"
+  , cescapeFreq   = [("escape up", 1)]
   , cstairFreq    = []
   , cdesc         = ""
   }
@@ -430,7 +430,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , cdefTile      = "escapeSetDark"  -- different tiles, not burning yet
   , cdarkCorTile  = "alarmingTrailLit"  -- let trails give off light
   , clitCorTile   = "alarmingTrailLit"
-  , cescapeGroup  = Just "escape outdoor down"
+  , cescapeFreq   = [("escape outdoor down", 1)]
   , cstairFreq    = []
   , cdesc         = ""
   }
@@ -540,7 +540,7 @@ safari3 = zoo  -- glass rooms, but ok, it's only a simulation
   { cname         = "Jungle in flames"
   , cfreq         = [("caveSafari3", 1)]
   , cminPlaceSize = DiceXY 5 4
-  , cescapeGroup  = Just "escape outdoor down"
+  , cescapeFreq   = [("escape outdoor down", 1)]
   , cextraStairs  = 1
   , cstairFreq    = [("staircase outdoor", 1)]
   , cdesc         = "\"DLC 3. Jealous hunams set jungle on fire and flee.\""
