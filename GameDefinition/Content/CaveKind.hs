@@ -237,7 +237,9 @@ noise2 = noise
   , citemFreq     = [ ("common item", 40), ("treasure", 60)
                     , ("curious item", 20) ]
   , cplaceFreq    = [("noise", 1), ("mine", 99)]
-  , cstairFreq    = [("gated staircase", 100)]
+  , cstairFreq    = [ ("gated closed staircase", 50)
+                    , ("gated open staircase", 50)
+                    , ("gated tiny staircase", 1) ]
   , cdesc         = ""
   }
 bridge = rogue
@@ -315,7 +317,8 @@ emptyExit = empty
   , cfenceTileS   = "airlock fence"
   , cfenceTileW   = "habitat containment wall"
   , cescapeFreq   = [("escape spaceship down", 1)]
-  , cstairFreq    = [("gated staircase", 100)]
+  , cstairFreq    = [ ("gated walled lift", 20), ("gated closed lift", 80)
+                    , ("gated tiny lift", 1) ]
   , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among cranes and welding machines. Distant engines can be seen to the rear of the spaceship through oriels and airlocks of all sizes."
       -- E and W sides are borders with other level sections, so no oriels.
       -- The meteor shield towards N is not punctured here, because
@@ -525,7 +528,9 @@ safari1 = brawl
   , cfreq         = [("caveSafari1", 1)]
   , cminPlaceSize = DiceXY 5 3
   , cextraStairs  = 1
-  , cstairFreq    = [("staircase outdoor", 1)]
+  , cstairFreq    = [ ("outdoor walled staircase", 20)
+                    , ("outdoor closed staircase", 80)
+                    , ("outdoor tiny staircase", 1) ]
   , cdesc         = "\"DLC 1. Hunams scavenge in a forest in their usual disgusting way.\""
   }
 safari2 = ambush  -- lamps instead of trees, but ok, it's only a simulation
@@ -533,7 +538,9 @@ safari2 = ambush  -- lamps instead of trees, but ok, it's only a simulation
   , cfreq         = [("caveSafari2", 1)]
   , cminPlaceSize = DiceXY 5 3
   , cextraStairs  = 1
-  , cstairFreq    = [("staircase outdoor", 1)]
+  , cstairFreq    = [ ("outdoor walled staircase", 20)
+                    , ("outdoor closed staircase", 80)
+                    , ("outdoor tiny staircase", 1) ]
   , cdesc         = "\"DLC 2. In the dark pure heart of the jungle noble animals roam freely.\""
   }
 safari3 = zoo  -- glass rooms, but ok, it's only a simulation
@@ -542,6 +549,8 @@ safari3 = zoo  -- glass rooms, but ok, it's only a simulation
   , cminPlaceSize = DiceXY 5 4
   , cescapeFreq   = [("escape outdoor down", 1)]
   , cextraStairs  = 1
-  , cstairFreq    = [("staircase outdoor", 1)]
+  , cstairFreq    = [ ("outdoor walled staircase", 20)
+                    , ("outdoor closed staircase", 80)
+                    , ("outdoor tiny staircase", 1) ]
   , cdesc         = "\"DLC 3. Jealous hunams set jungle on fire and flee.\""
   }
