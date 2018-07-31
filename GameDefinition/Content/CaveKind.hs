@@ -75,7 +75,7 @@ rogue2 = rogue
   , cmaxVoid      = 1%4
   , cstairFreq    = [ ("walled staircase", 50), ("open staircase", 50)
                     , ("tiny staircase", 1) ]
-  , cdesc         = "It's been powered down, except for emergency corridors, and many suites are depressurized and sealed."
+  , cdesc         = "The area has been powered down, except for emergency corridors. Many suites are depressurized and sealed."
   }
 arena = rogue
   { csymbol       = 'A'
