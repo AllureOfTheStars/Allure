@@ -62,7 +62,8 @@ rogue = CaveKind
   , clegendDarkTile = "legendDark"
   , clegendLitTile  = "legendLit"
   , cescapeGroup    = Nothing
-  , cstairFreq    = [("walled lift", 50), ("open lift", 50)]
+  , cstairFreq    = [ ("walled lift", 50), ("open lift", 50)
+                    , ("tiny lift", 1) ]
   , cdesc         = "Winding tunnels stretch into the dark. Most of the area is crammed with tanks and cells of raw materials and machinery."
   }
 rogue2 = rogue
@@ -72,7 +73,8 @@ rogue2 = rogue
   , cdarkChance   = 51  -- all rooms dark
   , cnightChance  = 0  -- always day
   , cmaxVoid      = 1%4
-  , cstairFreq    = [("walled staircase", 50), ("open staircase", 50)]
+  , cstairFreq    = [ ("walled staircase", 50), ("open staircase", 50)
+                    , ("tiny staircase", 1) ]
   , cdesc         = "It's been powered down, except for emergency corridors, and many suites are depressurized and sealed."
   }
 arena = rogue
@@ -104,7 +106,8 @@ arena = rogue
   , cdefTile      = "arenaSetLit"
   , cdarkCorTile  = "trailLit"  -- let trails give off light
   , clitCorTile   = "trailLit"
-  , cstairFreq    = [("walled staircase", 20), ("closed staircase", 80)]
+  , cstairFreq    = [ ("walled staircase", 20), ("closed staircase", 80)
+                    , ("tiny staircase", 1) ]
   , cdesc         = ""
   }
 arena2 = arena
@@ -158,7 +161,8 @@ laboratory = arena2
   , cdefTile      = "fillerWall"
   , cdarkCorTile  = "labTrailLit"  -- let lab smoke give off light always
   , clitCorTile   = "labTrailLit"
-  , cstairFreq    = [("walled staircase", 50), ("open staircase", 50)]
+  , cstairFreq    = [ ("walled staircase", 50), ("open staircase", 50)
+                    , ("tiny staircase", 1) ]
   , cdesc         = "Shattered glassware and the sharp scent of spilt chemicals show that something terrible happened here."
   }
 empty = rogue
@@ -186,7 +190,8 @@ empty = rogue
   , cdarkCorTile  = "floorArenaDark"
   , clitCorTile   = "floorArenaLit"
   , cfenceApart   = True  -- ensures no cut-off border airlocks and collapsed
-  , cstairFreq    = [("walled lift", 20), ("closed lift", 80)]
+  , cstairFreq    = [ ("walled lift", 20), ("closed lift", 80)
+                    , ("tiny lift", 1) ]
   , cdesc         = "Not much to see here yet."
   }
 noise = rogue
@@ -218,7 +223,8 @@ noise = rogue
   , cfenceApart   = True  -- ensures no cut-off parts from collapsed
   , cdarkCorTile  = "floorArenaDark"
   , clitCorTile   = "floorArenaLit"
-  , cstairFreq    = [("closed lift", 50), ("open lift", 50)]
+  , cstairFreq    = [ ("closed lift", 50), ("open lift", 50)
+                    , ("tiny lift", 1) ]
   , cdesc         = ""
   }
 noise2 = noise
