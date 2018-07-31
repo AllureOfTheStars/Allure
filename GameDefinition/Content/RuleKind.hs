@@ -45,4 +45,5 @@ standardRules = RuleContent
   , rleadLevelClips = 50
   , rscoresFile = "Allure.scores"
   , rnearby = 20
+  , rstairWordCarried = ["staircase", "lift"]
   }

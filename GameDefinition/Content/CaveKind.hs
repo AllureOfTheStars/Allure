@@ -64,6 +64,8 @@ rogue = CaveKind
   , cescapeFreq   = []
   , cstairFreq    = [ ("walled lift", 50), ("open lift", 50)
                     , ("tiny lift", 1) ]
+  , cstairAllowed = [ ("walled staircase", 50), ("open staircase", 50)
+                    , ("tiny staircase", 1) ]
   , cdesc         = "Winding tunnels stretch into the dark. Most of the area is crammed with tanks and cells of raw materials and machinery."
   }
 rogue2 = rogue
@@ -75,6 +77,8 @@ rogue2 = rogue
   , cmaxVoid      = 1%4
   , cstairFreq    = [ ("walled staircase", 50), ("open staircase", 50)
                     , ("tiny staircase", 1) ]
+  , cstairAllowed = [ ("walled lift", 50), ("open lift", 50)
+                    , ("tiny lift", 1) ]
   , cdesc         = "The area has been powered down, except for emergency corridors. Many suites are depressurized and sealed."
   }
 arena = rogue
@@ -108,6 +112,8 @@ arena = rogue
   , clitCorTile   = "trailLit"
   , cstairFreq    = [ ("walled staircase", 20), ("closed staircase", 80)
                     , ("tiny staircase", 1) ]
+  , cstairAllowed = [ ("walled lift", 20), ("closed lift", 80)
+                    , ("tiny lift", 1) ]
   , cdesc         = ""
   }
 arena2 = arena
@@ -163,6 +169,8 @@ laboratory = arena2
   , clitCorTile   = "labTrailLit"
   , cstairFreq    = [ ("walled staircase", 50), ("open staircase", 50)
                     , ("tiny staircase", 1) ]
+  , cstairAllowed = [ ("walled lift", 50), ("open lift", 50)
+                    , ("tiny lift", 1) ]
   , cdesc         = "Shattered glassware and the sharp scent of spilt chemicals show that something terrible happened here."
   }
 empty = rogue
@@ -192,6 +200,8 @@ empty = rogue
   , cfenceApart   = True  -- ensures no cut-off border airlocks and collapsed
   , cstairFreq    = [ ("walled lift", 20), ("closed lift", 80)
                     , ("tiny lift", 1) ]
+  , cstairAllowed = [ ("walled staircase", 20), ("closed staircase", 80)
+                    , ("tiny staircase", 1) ]
   , cdesc         = "Not much to see here yet."
   }
 noise = rogue
@@ -225,6 +235,8 @@ noise = rogue
   , clitCorTile   = "floorArenaLit"
   , cstairFreq    = [ ("closed lift", 50), ("open lift", 50)
                     , ("tiny lift", 1) ]
+  , cstairAllowed = [ ("closed staircase", 50), ("open staircase", 50)
+                    , ("tiny staircase", 1) ]
   , cdesc         = ""
   }
 noise2 = noise
@@ -240,6 +252,9 @@ noise2 = noise
   , cstairFreq    = [ ("gated closed staircase", 50)
                     , ("gated open staircase", 50)
                     , ("gated tiny staircase", 1) ]
+  , cstairAllowed = [ ("gated closed lift", 50)
+                    , ("gated open lift", 50)
+                    , ("gated tiny lift", 1) ]
   , cdesc         = ""
   }
 bridge = rogue
@@ -317,8 +332,12 @@ emptyExit = empty
   , cfenceTileS   = "airlock fence"
   , cfenceTileW   = "habitat containment wall"
   , cescapeFreq   = [("escape spaceship down", 1)]
-  , cstairFreq    = [ ("gated walled lift", 20), ("gated closed lift", 80)
+  , cstairFreq    = [ ("gated walled lift", 20)
+                    , ("gated closed lift", 80)
                     , ("gated tiny lift", 1) ]
+  , cstairAllowed = [ ("gated walled staircase", 20)
+                    , ("gated closed staircase", 80)
+                    , ("gated tiny staircase", 1) ]
   , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among cranes and welding machines. Distant engines can be seen to the rear of the spaceship through oriels and airlocks of all sizes."
       -- E and W sides are borders with other level sections, so no oriels.
       -- The meteor shield towards N is not punctured here, because
@@ -342,6 +361,7 @@ raid = rogue
   , citemFreq     = [("common item", 100), ("currency", 500)]
   , cescapeFreq   = [("escape up", 1)]
   , cstairFreq    = []
+  , cstairAllowed = []
   , cdesc         = ""
   }
 brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
@@ -370,6 +390,7 @@ brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
   , cdarkCorTile  = "floorArenaLit"
   , clitCorTile   = "floorArenaLit"
   , cstairFreq    = []
+  , cstairAllowed = []
   , cdesc         = ""
   }
 shootout = rogue  -- a scenario with strong missiles;
@@ -405,6 +426,7 @@ shootout = rogue  -- a scenario with strong missiles;
   , cdarkCorTile  = "floorArenaLit"
   , clitCorTile   = "floorArenaLit"
   , cstairFreq    = []
+  , cstairAllowed = []
   , cdesc         = ""
   }
 escape = rogue  -- a scenario with weak missiles, because heroes don't depend
@@ -435,6 +457,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , clitCorTile   = "alarmingTrailLit"
   , cescapeFreq   = [("escape outdoor down", 1)]
   , cstairFreq    = []
+  , cstairAllowed = []
   , cdesc         = ""
   }
 zoo = rogue  -- few lights and many solids, to help the less numerous heroes
@@ -461,6 +484,7 @@ zoo = rogue  -- few lights and many solids, to help the less numerous heroes
   , cdarkCorTile  = "trailLit"  -- let trails give off light
   , clitCorTile   = "trailLit"
   , cstairFreq    = []
+  , cstairAllowed = []
   , cdesc         = ""
   }
 ambush = rogue  -- a scenario with strong missiles;
@@ -494,6 +518,7 @@ ambush = rogue  -- a scenario with strong missiles;
   , cdarkCorTile  = "trailLit"  -- let trails give off light
   , clitCorTile   = "trailLit"
   , cstairFreq    = []
+  , cstairAllowed = []
   , cdesc         = ""
   }
 battle = rogue  -- few lights and many solids, to help the less numerous heroes
@@ -521,6 +546,7 @@ battle = rogue  -- few lights and many solids, to help the less numerous heroes
   , clitCorTile   = "trailLit"
   , cfenceApart   = True  -- ensures no cut-off parts from collapsed
   , cstairFreq    = []
+  , cstairAllowed = []
   , cdesc         = ""
   }
 safari1 = brawl
@@ -531,6 +557,7 @@ safari1 = brawl
   , cstairFreq    = [ ("outdoor walled staircase", 20)
                     , ("outdoor closed staircase", 80)
                     , ("outdoor tiny staircase", 1) ]
+  , cstairAllowed = []
   , cdesc         = "\"DLC 1. Hunams scavenge in a forest in their usual disgusting way.\""
   }
 safari2 = ambush  -- lamps instead of trees, but ok, it's only a simulation
@@ -541,6 +568,7 @@ safari2 = ambush  -- lamps instead of trees, but ok, it's only a simulation
   , cstairFreq    = [ ("outdoor walled staircase", 20)
                     , ("outdoor closed staircase", 80)
                     , ("outdoor tiny staircase", 1) ]
+  , cstairAllowed = []
   , cdesc         = "\"DLC 2. In the dark pure heart of the jungle noble animals roam freely.\""
   }
 safari3 = zoo  -- glass rooms, but ok, it's only a simulation
@@ -552,5 +580,6 @@ safari3 = zoo  -- glass rooms, but ok, it's only a simulation
   , cstairFreq    = [ ("outdoor walled staircase", 20)
                     , ("outdoor closed staircase", 80)
                     , ("outdoor tiny staircase", 1) ]
+  , cstairAllowed = []
   , cdesc         = "\"DLC 3. Jealous hunams set jungle on fire and flee.\""
   }
