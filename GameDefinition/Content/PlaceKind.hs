@@ -27,11 +27,11 @@ content =
   -- automatically generated
   ++ generatedStairs
   -- Allure-specific, continued
-  ++ [escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, colonnadeWide, oval, ovalFloor, ovalSquare, maze,  maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7]
+  ++ [escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, pumps, oval, ovalFloor, ovalSquare, maze,  maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7]
 
 deadEnd,    rect, rect2, rectWindows, glasshouse, glasshouse2, glasshouse3, pulpit, ruin, ruin2, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, pillar6, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2FGround, bushClump, escapeUp, escapeUp2, escapeUp3, escapeUp4, escapeUp5, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeOutdoorDown, staircase1, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircase18, staircase19, staircase20, staircase21, staircase22, staircase23, staircase24, staircase25, staircase26, staircase27, staircase28, staircase29, staircase30, staircase31, staircase32, staircase33, staircase34, staircase35, staircase36, staircase37 :: PlaceKind
 -- Allure-specific
-staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25, escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, colonnadeWide, oval, ovalFloor, ovalSquare, maze,  maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7 :: PlaceKind
+staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25, escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, pumps, oval, ovalFloor, ovalSquare, maze,  maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7 :: PlaceKind
 
 staircase, staircaseLift :: PlaceKind  -- templates
 
@@ -103,7 +103,7 @@ glasshouse = PlaceKind
   , ptopLeft = [ "%%"
                , "%·"
                ]
-  , poverride = [('%', "glasshouseOver_%_Lit")]
+  , poverride = []
   }
 glasshouse2 = glasshouse
   { pname    = "a glass cage"
@@ -124,7 +124,7 @@ pulpit = PlaceKind
                , "%··"
                , "··O"
                ]
-  , poverride = [('%', "glasshouseOver_%_Lit"), ('O', "pulpit")]
+  , poverride = [('O', "pulpit")]
       -- except for floor, this will all be lit, regardless of night/dark; OK
   }
 ruin = PlaceKind
@@ -208,7 +208,7 @@ pillar = PlaceKind
   , poverride = []
   }
 pillar2 = pillar
-  { prarity  = [(1, 10), (10, 10)]
+  { prarity  = [(1, 15), (10, 15)]
   , ptopLeft = [ "O····"
                , "·····"
                , "·····"
@@ -227,6 +227,8 @@ pillar3 = pillar
   }
 pillar4 = pillar
   { pname    = "a mall"
+  , pfreq    = [ ("rogue", 300), ("arena", 600)
+               , ("empty", 300), ("noise", 1200) ]
   , ptopLeft = [ "#·#·"
                , "····"
                , "#···"
@@ -237,12 +239,12 @@ pillar5 = pillar
   { pname    = "a bank outlet"
   , pfreq    = [ ("rogue", 300), ("arena", 1000), ("empty", 300) ]
   , prarity  = [(10, 3)]
-  , ptopLeft = [ "&·#·"
+  , ptopLeft = [ "&·%·"
                , "··#·"
-               , "##+·"
+               , "%#+·"
                , "····"
                ]
-  , poverride = [('&', "cache deposit")]
+  , poverride = [('&', "cache deposit"), ('+', "trapped door")]
   }
 pillar6 = pillar
   { pname    = "a jewelry store"
@@ -250,10 +252,10 @@ pillar6 = pillar
   , prarity  = [(10, 3)]
   , ptopLeft = [ "&#··"
                , "#·%·"
-               , "·%%·"
+               , "·%h·"
                , "····"
                ]
-  , poverride = [('&', "cache jewelry")]
+  , poverride = [('&', "cache jewelry"), ('h', "hardware rack")]
   }
 colonnade = PlaceKind
   { psymbol  = 'c'
@@ -417,7 +419,7 @@ bushClump = PlaceKind
   }
 escapeUp = PlaceKind
   { psymbol  = '<'
-  , pname    = "an escape airlock up"
+  , pname    = "an escape up"
   , pfreq    = [("escape up", 1)]
   , prarity  = [(1, 1)]
   , pcover   = CVerbatim
@@ -436,19 +438,18 @@ escapeUp2 = escapeUp
   }
 escapeUp3 = escapeUp
   { pfreq    = [("escape up", 2000)]
-  , pcover   = CMirror
   , pfence   = FWall
-  , ptopLeft = [ "#··"
-               , "·<·"
-               , "#·#"
+  , ptopLeft = [ "·#·"
+               , "#<#"
+               , "·#·"
                ]
   }
 escapeUp4 = escapeUp
   { pfreq    = [("escape up", 1000)]
   , pfence   = FFloor
-  , ptopLeft = [ "·#·"
-               , "#<#"
-               , "·#·"
+  , ptopLeft = [ "·^·"
+               , "^<^"
+               , "·^·"
                ]
   }
 escapeUp5 = escapeUp
@@ -462,7 +463,7 @@ escapeUp5 = escapeUp
   }
 escapeDown = PlaceKind
   { psymbol  = '>'
-  , pname    = "an escape airlock down"
+  , pname    = "an escape down"
   , pfreq    = [("escape down", 1)]
   , prarity  = [(1, 1)]
   , pcover   = CVerbatim
@@ -481,19 +482,18 @@ escapeDown2 = escapeDown
   }
 escapeDown3 = escapeDown
   { pfreq    = [("escape down", 2000)]
-  , pcover   = CMirror
   , pfence   = FWall
-  , ptopLeft = [ "#··"
-               , "·>·"
-               , "#·#"
+  , ptopLeft = [ "·#·"
+               , "#>#"
+               , "·#·"
                ]
   }
 escapeDown4 = escapeDown
   { pfreq    = [("escape down", 1000)]
   , pfence   = FFloor
-  , ptopLeft = [ "·#·"
-               , "#>#"
-               , "·#·"
+  , ptopLeft = [ "·^·"
+               , "^>^"
+               , "·^·"
                ]
   }
 escapeDown5 = escapeDown
@@ -638,7 +638,7 @@ staircase13 = staircase
   , ptopLeft = [ "·#·#·#·"
                , "#·#·#·#"
                , "·······"
-               , "#·<S>·#"
+               , "O·<S>·O"
                , "·······"
                , "#·#·#·#"
                , "·#·#·#·"
@@ -807,11 +807,11 @@ staircase29 = staircase
 staircase30 = staircaseLift
   { pfreq    = [("walled lift", 1000)]
   , pfence   = FWall
-  , ptopLeft = [ "O···O"
+  , ptopLeft = [ "#···#"
                , "·····"
                , "·<S>·"
                , "·····"
-               , "O···O"
+               , "#···#"
                ]
   }
 staircase31 = staircase
@@ -873,9 +873,9 @@ staircase36 = staircaseLift
 staircase37 = staircase
   { pfreq    = [("walled staircase", 1000)]
   , pfence   = FWall
-  , ptopLeft = [ "#·······#"
-               , "·#·<S>·#·"
-               , "#·······#"
+  , ptopLeft = [ "·········"
+               , "·O·<S>·O·"
+               , "·········"
                ]
   }
 
@@ -979,7 +979,7 @@ escapeSpaceshipDown5 = escapeDown5
   { pfreq     = [("escape spaceship down", 1000)]
   , poverride = [('>', "escape spaceship down")]
   }
-colonnadeWide = PlaceKind
+pumps = PlaceKind
   { psymbol  = 'w'
   , pname    = "water pumps"
   , pfreq    = [ ("rogue", 4), ("laboratory", 5), ("empty", 12), ("mine", 1200)
@@ -987,10 +987,10 @@ colonnadeWide = PlaceKind
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CAlternate
   , pfence   = FWall
-  , ptopLeft = [ "··"
+  , ptopLeft = [ "·f"
                , "%·"
                ]
-  , poverride = [('%', "doorlessWallOver_#")]
+  , poverride = [('%', "doorlessWallOver_#"), ('f', "bushClumpOver_f_Lit")]
   }
 oval = PlaceKind
   { psymbol  = 'o'
@@ -1040,7 +1040,7 @@ maze = PlaceKind
                , "#··#"
                , "··#·"
                ]
-  , poverride = [('&', "cache")]
+  , poverride = [('&', "cache"), ('+', "trapped door"), ('i', "floorActorItem")]
   }
 maze2 = maze
   { pfreq    = [("rogue", 20), ("arena", 40), ("empty", 20)]
@@ -1053,7 +1053,7 @@ maze3 = maze
   { pfreq    = [("rogue", 30), ("arena", 60), ("empty", 30)]
   , ptopLeft = [ "##·##·"
                , "#·#··#"
-               , "··#···"
+               , "··%···"
                ]
   }
 mazeBig = maze
@@ -1062,8 +1062,8 @@ mazeBig = maze
   , ptopLeft = [ "X####"
                , "#·##·"
                , "##···"
-               , "##·+#"
-               , "#··#·"
+               , "##·+%"
+               , "#··%i"
                ]
   }
 mazeBig2 = maze
@@ -1072,9 +1072,9 @@ mazeBig2 = maze
   , pfence   = FNone
   , ptopLeft = [ "X#####"
                , "#·##··"
-               , "##··&#"
-               , "##·##·"
-               , "#·#···"
+               , "##···#"
+               , "##··&·"
+               , "#··#··"
                ]
   }
 cells = PlaceKind
@@ -1089,13 +1089,13 @@ cells = PlaceKind
                , "·#·"
                , "#··"
                ]
-  , poverride = [('%', "doorlessWallOver_#")]
+  , poverride = [('%', "doorlessWallOver_#"), ('f', "bushClumpOver_f_Lit")]
   }
 cells2 = cells
   { pname    = "humidity equalizers"
   , ptopLeft = [ "#··"
                , "·#·"
-               , "··#"
+               , "f·#"
                ]
   }
 cells3 = cells
@@ -1123,17 +1123,17 @@ cells5 = cells  -- this one is distinct enough from others, so needs a boost
   }
 cells6 = cells
   { pname    = "animal holding pens"
-  , pfreq    = [("laboratory", 5), ("empty", 5), ("noise", 3), ("zoo", 30)]
+  , pfreq    = [("laboratory", 20), ("empty", 20), ("noise", 20), ("zoo", 30)]
   , ptopLeft = [ "··#"
                , "##'"
                ]
   }
 cells7 = cells
   { pname    = "a defunct control room"
-  , pfreq    = [ ("rogue", 3), (" laboratory", 5), ("empty", 5)
-               , ("noise", 3) ]
+  , pfreq    = [ ("rogue", 5), (" laboratory", 10), ("empty", 8)
+               , ("noise", 5) ]
   , pfence   = FFloor
-  , ptopLeft = [ "#·#"
+  , ptopLeft = [ "#··"
                , "·%·"
                ]
   }
