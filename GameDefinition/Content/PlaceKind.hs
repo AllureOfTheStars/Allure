@@ -43,8 +43,8 @@ staircaseBasic = [staircase1, staircase2, staircase3, staircase4, staircase5, st
 generatedStairs :: [PlaceKind]
 generatedStairs =
   let (stairs, lifts) = partition ((/= "a lift") . pname) staircaseBasic
-      gatedStairs = map makeGated stairs
-      gatedLifts = map makeGated lifts
+      gatedStairs = map makeGatedStaircase stairs
+      gatedLifts = map makeGatedLift lifts
       outdoorStairs = map makeOutdoor stairs
       stairsAll = stairs ++ gatedStairs ++ outdoorStairs
       liftsAll = lifts ++ gatedLifts
@@ -892,6 +892,7 @@ staircaseLift11 = staircase11
 staircaseLift12 = staircase12
   { pname     = "a lift"
   , pfreq     = [("closed lift", 4000)]
+  , poverride = overrideLift
   }
 staircaseLift13 = staircase13
   { pname     = "a lift"
@@ -945,8 +946,8 @@ staircaseLift22 = staircase22
   }
 staircaseLift23 = staircase23
   { pname     = "a lift"
-  , poverride = overrideLift
   , pfreq     = [("closed lift", 1000)]
+  , poverride = overrideLift
   }
 staircaseLift24 = staircase24
   { pname     = "a lift"
@@ -1155,17 +1156,30 @@ makeStaircaseDown terminal s = s
  , poverride = ('<', terminal) : filter ((/= '<') . fst) (poverride s)
  }
 
-overrideGated :: [(Char, GroupName TileKind)]
-overrideGated =
+overrideGatedStaircase :: [(Char, GroupName TileKind)]
+overrideGatedStaircase =
   [ ('<', "gated staircase up"), ('>', "gated staircase down")
   , ('I', "signboard"), ('S', "fillerWall") ]
 
-makeGated :: PlaceKind -> PlaceKind
-makeGated s = s
+makeGatedStaircase :: PlaceKind -> PlaceKind
+makeGatedStaircase s = s
  { psymbol   = 'g'
  , pname     = T.unwords $ "a gated" : tail (T.words (pname s))
  , pfreq     = map (first (\t -> toGroupName $ "gated" <+> tshow t)) $ pfreq s
- , poverride = overrideGated
+ , poverride = overrideGatedStaircase
+ }
+
+overrideGatedLift :: [(Char, GroupName TileKind)]
+overrideGatedLift =
+  [ ('<', "gated lift up"), ('>', "gated lift down")
+  , ('I', "signboard"), ('S', "lift shaft") ]
+
+makeGatedLift :: PlaceKind -> PlaceKind
+makeGatedLift s = s
+ { psymbol   = 'g'
+ , pname     = T.unwords $ "a gated" : tail (T.words (pname s))
+ , pfreq     = map (first (\t -> toGroupName $ "gated" <+> tshow t)) $ pfreq s
+ , poverride = overrideGatedLift
  }
 
 overrideOutdoor :: [(Char, GroupName TileKind)]
