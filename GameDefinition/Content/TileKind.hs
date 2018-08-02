@@ -91,7 +91,8 @@ wall = TileKind
   , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
                , ("cachable deposit", 80), ("cachable jewelry", 80)
                , ("cachable", 80), ("stair terminal", 100)
-               , ("battleSet", 250), ("rectWindowsOver_%_Lit", 80) ]
+               , ("battleSet", 250), ("escapeSetDark", 4)
+               , ("rectWindowsOver_%_Lit", 80) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 100
@@ -122,7 +123,7 @@ wallObscured = TileKind
 wallObscuredDefaced = TileKind
   { tsymbol  = '#'
   , tname    = "defaced wall"
-  , tfreq    = [("obscured wall", 45), ("escapeSetDark", 1)]
+  , tfreq    = [("obscured wall", 45), ("escapeSetDark", 2)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 5
@@ -133,7 +134,7 @@ wallObscuredDefaced = TileKind
 wallObscuredFrescoed = TileKind
   { tsymbol  = '#'
   , tname    = "subtle mural"
-  , tfreq    = [("obscured wall", 5), ("brawlSetLit", 1)]
+  , tfreq    = [("obscured wall", 5)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 5
@@ -416,7 +417,7 @@ floorFog = TileKind
   { tsymbol  = ';'
   , tname    = "faint fog"
   , tfreq    = [ ("lit fog", 1), ("emptySet", 50), ("emptyExitSet", 20)
-               , ("noiseSet", 100), ("shootoutSetLit", 20)
+               , ("noiseSet", 100), ("shootoutSetLit", 30)
                , ("fogClumpOver_f_Lit", 60), ("lift terminal", 40) ]
       -- lit fog is OK for shootout, because LOS is mutual, as opposed
       -- to dark fog, and so camper has little advantage, especially

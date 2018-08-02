@@ -82,7 +82,7 @@ rect2 = rect
 rectWindows = PlaceKind
   { psymbol  = 'w'
   , pname    = "a shed"
-  , pfreq    = [("escape", 10)]
+  , pfreq    = [("escape", 20)]
   , prarity  = [(1, 10), (10, 7)]
   , pcover   = CStretch
   , pfence   = FNone
@@ -96,7 +96,7 @@ rectWindows = PlaceKind
 glasshouse = PlaceKind
   { psymbol  = 'g'
   , pname    = "a glasshouse"
-  , pfreq    = [("shootout", 3)]
+  , pfreq    = [("shootout", 6)]
   , prarity  = [(1, 10), (10, 7)]
   , pcover   = CStretch
   , pfence   = FNone
@@ -107,7 +107,7 @@ glasshouse = PlaceKind
   }
 glasshouse2 = glasshouse
   { pname    = "a glass cage"
-  , pfreq    = [("zoo", 10)]
+  , pfreq    = [("zoo", 15)]
   }
 glasshouse3 = glasshouse
   { pname    = "an entertainment center"
@@ -116,7 +116,7 @@ glasshouse3 = glasshouse
 pulpit = PlaceKind
   { psymbol  = 'p'
   , pname    = "a stand"
-  , pfreq    = [("arena", 23), ("zoo", 15)]
+  , pfreq    = [("arena", 23), ("zoo", 20)]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CMirror
   , pfence   = FGround
@@ -305,7 +305,7 @@ colonnade6 = colonnade
 lampPost = PlaceKind
   { psymbol  = 'l'
   , pname    = "a lamp post"
-  , pfreq    = [("escape", 20), ("ambush", 20), ("zoo", 10), ("battle", 10)]
+  , pfreq    = [("escape", 20), ("ambush", 40), ("zoo", 10), ("battle", 10)]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CVerbatim
   , pfence   = FNone
@@ -322,7 +322,7 @@ lampPost2 = lampPost
                ]
   }
 lampPost3 = lampPost
-  { pfreq    = [("escape", 3000), ("zoo", 50), ("battle", 110)]
+  { pfreq    = [("escape", 300), ("zoo", 50), ("battle", 110)]
   , ptopLeft = [ "XX·XX"
                , "X···X"
                , "··O··"
@@ -331,7 +331,7 @@ lampPost3 = lampPost
                ]
   }
 lampPost4 = lampPost
-  { pfreq    = [("escape", 3000), ("zoo", 50), ("battle", 60)]
+  { pfreq    = [("escape", 300), ("zoo", 50), ("battle", 60)]
   , ptopLeft = [ "X···X"
                , "·····"
                , "··O··"
@@ -356,7 +356,7 @@ treeShade = PlaceKind
 fogClump = PlaceKind
   { psymbol  = 'f'
   , pname    = "a foggy patch"
-  , pfreq    = [("escape", 100), ("shootout", 150), ("empty", 1000)]
+  , pfreq    = [("escape", 80), ("shootout", 50), ("empty", 1000)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -367,7 +367,7 @@ fogClump = PlaceKind
   , poverride = [('f', "fogClumpOver_f_Lit"), (';', "lit fog")]
   }
 fogClump2 = fogClump
-  { pfreq    = [("escape", 100), ("shootout", 500), ("empty", 5000)]
+  { pfreq    = [("escape", 80), ("shootout", 400), ("empty", 5000)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -393,7 +393,7 @@ smokeClump = PlaceKind
   }
 smokeClump2FGround = smokeClump
   { pname    = "a burned out area"
-  , pfreq    = [ ("laboratory", 80), ("zoo", 500), ("ambush", 500)
+  , pfreq    = [ ("laboratory", 80), ("zoo", 500), ("ambush", 100)
                , ("empty", 200) ]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
@@ -983,7 +983,7 @@ pumps = PlaceKind
   { psymbol  = 'w'
   , pname    = "water pumps"
   , pfreq    = [ ("rogue", 4), ("laboratory", 5), ("empty", 12), ("mine", 1200)
-               , ("shootout", 3), ("escape", 40) ]
+               , ("shootout", 25) ]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CAlternate
   , pfence   = FWall
@@ -996,7 +996,7 @@ oval = PlaceKind
   { psymbol  = 'o'
   , pname    = "a dome"
   , pfreq    = [ ("rogue", 2000), ("arena", 1000), ("laboratory", 1200)
-               , ("empty", 500), ("zoo", 2000), ("ambush", 2000) ]
+               , ("empty", 500), ("zoo", 2000), ("ambush", 20) ]
   , prarity  = [(1, 13), (10, 13)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -1010,7 +1010,7 @@ oval = PlaceKind
   }
 ovalFloor = oval  -- Without outer solid fence, visible from outside·
   { pfreq    = [ ("rogue", 3000), ("arena", 10000), ("laboratory", 1200)
-               , ("empty", 5000), ("zoo", 10000), ("ambush", 10000) ]
+               , ("empty", 5000), ("zoo", 10000), ("ambush", 100) ]
   , pfence   = FGround
   , ptopLeft = [ "XXXX+#"
                , "XX###·"
@@ -1081,7 +1081,7 @@ cells = PlaceKind
   { psymbol  = '#'
   , pname    = "air filters"
   , pfreq    = [ ("rogue", 12), (" laboratory", 12), ("empty", 12)
-               , ("noise", 12), ("zoo", 120), ("shootout", 3), ("ambush", 4) ]
+               , ("noise", 12), ("zoo", 150), ("ambush", 7) ]
   , prarity  = [(1, 4), (10, 4)]
   , pcover   = CReflect
   , pfence   = FWall
@@ -1123,7 +1123,7 @@ cells5 = cells  -- this one is distinct enough from others, so needs a boost
   }
 cells6 = cells
   { pname    = "animal holding pens"
-  , pfreq    = [("laboratory", 20), ("empty", 20), ("noise", 20), ("zoo", 30)]
+  , pfreq    = [("laboratory", 20), ("empty", 20), ("noise", 20), ("zoo", 50)]
   , ptopLeft = [ "··#"
                , "##'"
                ]
