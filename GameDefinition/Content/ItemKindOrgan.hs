@@ -116,7 +116,8 @@ antler = fist
   , icount   = 2
   , iverbHit = "ram"
   , idamage  = 4 `d` 1
-  , iaspects = [Timeout $ 3 + (1 `d` 3) * 3, AddArmorMelee 10]  -- bonus doubled
+  , iaspects = [ Timeout $ 3 + (1 `d` 3) * 3
+               , AddAbility AbArmorMelee 10 ]  -- bonus doubled
   , ieffects = [Recharging (PushActor (ThrowMod 100 50))]  -- 1 step, slow
   , idesc    = ""
   }
@@ -126,7 +127,8 @@ horn = fist
   , icount   = 2
   , iverbHit = "impale"
   , idamage  = 5 `d` 1
-  , iaspects = [AddHurtMelee 10, AddArmorMelee 10]  -- bonus doubled
+  , iaspects = [ AddAbility AbHurtMelee 10
+               , AddAbility AbArmorMelee 10 ]  -- bonus doubled
   , idesc    = "Sharp and long, for defence or attack."
   }
 rhinoHorn = fist
@@ -135,7 +137,7 @@ rhinoHorn = fist
   , icount   = 1  -- single, unlike real horns
   , iverbHit = "impale"
   , idamage  = 5 `d` 1
-  , iaspects = [Timeout 7, AddHurtMelee 20]
+  , iaspects = [Timeout 7, AddAbility AbHurtMelee 20]
   , ieffects = [Recharging Impress]  -- the owner is a mid-boss, after all
   , idesc    = "Very solid, considering it has the same composition as fingernails."
   }
@@ -162,7 +164,7 @@ boilingFissure = fist
   , icount   = 5 + 1 `d` 5
   , iverbHit = "hiss at"
   , idamage  = 1 `d` 1
-  , iaspects = [AddHurtMelee 20]  -- decreasing as count decreases
+  , iaspects = [AddAbility AbHurtMelee 20]  -- decreasing as count decreases
   , ieffects = [DropItem 1 1 COrgan "condition"]  -- useful; limited
   , ifeature = [Meleeable]  -- not Durable
   , idesc    = ""
@@ -189,7 +191,7 @@ beeSting = fist
   , icount   = 1
   , iverbHit = "sting"
   , idamage  = 0
-  , iaspects = [AddArmorMelee 200, AddArmorRanged 45]
+  , iaspects = [AddAbility AbArmorMelee 200, AddAbility AbArmorRanged 45]
   , ieffects = [Paralyze 6, RefillHP 4]
   , ifeature = [Meleeable]  -- not Durable
   , idesc    = "Painful, but beneficial."
@@ -200,7 +202,7 @@ sting = fist
   , icount   = 1
   , iverbHit = "sting"
   , idamage  = 1 `d` 1
-  , iaspects = [Timeout $ 10 - 1 `dL` 4, AddHurtMelee 40]
+  , iaspects = [Timeout $ 10 - 1 `dL` 4, AddAbility AbHurtMelee 40]
   , ieffects = [Recharging (Paralyze 4)]
   , idesc    = "Painful, debilitating and harmful."
   }
@@ -240,7 +242,7 @@ largeTail = fist
   , icount   = 1
   , iverbHit = "knock"
   , idamage  = 7 `d` 1
-  , iaspects = [Timeout $ 1 + 1 `d` 3, AddHurtMelee 20]
+  , iaspects = [Timeout $ 1 + 1 `d` 3, AddAbility AbHurtMelee 20]
   , ieffects = [Recharging (PushActor (ThrowMod 400 50))]  -- 2 steps
   , idesc    = "Slow but heavy."
   }
@@ -259,7 +261,7 @@ armoredSkin = ItemKind
   , iverbHit = "bash"
   , iweight  = 2000
   , idamage  = 0
-  , iaspects = [AddArmorMelee 30, AddArmorRanged 15]
+  , iaspects = [AddAbility AbArmorMelee 30, AddAbility AbArmorRanged 15]
   , ieffects = []
   , ifeature = [Durable]
   , idesc    = "Homemade armour is just as good."
@@ -274,7 +276,7 @@ eye n = armoredSkin
   , ifreq    = [(toGroupName $ "eye" <+> tshow n, 100)]
   , icount   = 2
   , iverbHit = "glare at"
-  , iaspects = [AddSight (intToDice n)]
+  , iaspects = [AddAbility AbSight (intToDice n)]
   , idesc    = "A piercing stare."
   }
 eye2 = eye 2
@@ -289,7 +291,7 @@ vision n = armoredSkin
   { iname    = "vision"
   , ifreq    = [(toGroupName $ "vision" <+> tshow n, 100)]
   , iverbHit = "visualize"
-  , iaspects = [AddSight (intToDice n)]
+  , iaspects = [AddAbility AbSight (intToDice n)]
   , idesc    = ""
   }
 vision4 = vision 4
@@ -306,7 +308,7 @@ nostril = armoredSkin
   , ifreq    = [("nostril", 100)]
   , icount   = 2
   , iverbHit = "snuff"
-  , iaspects = [AddSmell 1]  -- times 2, from icount
+  , iaspects = [AddAbility AbSmell 1]  -- times 2, from icount
   , idesc    = ""
   }
 
@@ -325,7 +327,7 @@ sapientBrain = armoredSkin
   { iname    = "sapient brain"
   , ifreq    = [("sapient brain", 100)]
   , iverbHit = "outbrain"
-  , iaspects = [AddAbility ab 1 | ab <- [minBound..maxBound]]
+  , iaspects = [AddAbility ab 1 | ab <- [AbMove .. AbApply]]
                ++ [AddAbility AbAlter 2]  -- can use stairs
   , idesc    = ""
   }
@@ -333,7 +335,7 @@ animalBrain = armoredSkin
   { iname    = "animal brain"
   , ifreq    = [("animal brain", 100)]
   , iverbHit = "blank"
-  , iaspects = [AddAbility ab 1 | ab <- [minBound..maxBound]]
+  , iaspects = [AddAbility ab 1 | ab <- [AbMove .. AbApply]]
                ++ [AddAbility AbAlter 2]  -- can use stairs
                ++ [ AddAbility ab (-1)
                   | ab <- [AbDisplace, AbMoveItem, AbProject, AbApply] ]
@@ -344,7 +346,7 @@ speedGland n = armoredSkin
   { iname    = "speed gland"
   , ifreq    = [(toGroupName $ "speed gland" <+> tshow n, 100)]
   , iverbHit = "spit at"
-  , iaspects = [ AddSpeed $ intToDice n
+  , iaspects = [ AddAbility AbSpeed $ intToDice n
                , Timeout $ intToDice $ 100 `div` n ]
   , ieffects = [Recharging (RefillHP 1)]
   , ifeature = [Periodic] ++ ifeature armoredSkin
@@ -410,7 +412,7 @@ bonusHP = armoredSkin
   , ifreq    = [("bonus HP", 1)]
   , iverbHit = "intimidate"
   , iweight  = 0
-  , iaspects = [AddMaxHP 1]
+  , iaspects = [AddAbility AbMaxHP 1]
   , idesc    = ""
   }
 impressed = armoredSkin
@@ -420,7 +422,8 @@ impressed = armoredSkin
   , ifreq    = [("impressed", 1), ("condition", 1)]
   , iverbHit = "confuse"
   , iweight  = 0
-  , iaspects = [AddMaxCalm (-1)]  -- to help player notice on main screen
+  , iaspects = [AddAbility AbMaxCalm (-1)]
+                 -- to help player notice on main screen
                                   -- and to count as bad condition
   , ieffects = [OnSmash $ tmpNoLonger "impressed"]  -- not @Periodic@
   , ifeature = [Fragile, Durable]  -- hack: destroy on drop
@@ -443,7 +446,7 @@ liveWire = fist
   , icount   = 1
   , iverbHit = "shock"
   , idamage  = 0
-  , iaspects = [Timeout $ 3 + 1 `d` 2, AddHurtMelee 20]
+  , iaspects = [Timeout $ 3 + 1 `d` 2, AddAbility AbHurtMelee 20]
   , ieffects = [ Recharging $ Paralyze 6
                , Recharging $ RefillHP (-2)
                ]
@@ -453,7 +456,7 @@ robotBrain = armoredSkin
   { iname    = "robot brain"
   , ifreq    = [("robot brain", 100)]
   , iverbHit = "outcompute"
-  , iaspects = [AddAbility ab 1 | ab <- [minBound..maxBound]]
+  , iaspects = [AddAbility ab 1 | ab <- [AbMove .. AbApply]]
                ++ [AddAbility AbApply (-1)]
   , idesc    = ""
   }
@@ -472,6 +475,6 @@ spotlight = armoredSkin
   { iname    = "spotlight"
   , ifreq    = [("spotlight", 100)]
   , iverbHit = "illuminate"
-  , iaspects = [AddShine 3]
+  , iaspects = [AddAbility AbShine 3]
   , idesc    = ""
   }

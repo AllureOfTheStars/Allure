@@ -42,8 +42,10 @@ warrior = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 80  -- partially from clothes and assumed first aid
-               , AddMaxCalm 70, AddSpeed 20, AddNocto 2
+  , iaspects = [ AddAbility AbMaxHP 80
+                   -- partially from clothes and assumed first aid
+               , AddAbility AbMaxCalm 70, AddAbility AbSpeed 20
+               , AddAbility AbNocto 2
                , AddAbility AbProject 2, AddAbility AbApply 1
                , AddAbility AbAlter 2 ]
   , ieffects = []
@@ -164,8 +166,9 @@ eye = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 70, AddSpeed 20, AddNocto 2
-               , AddAggression 1
+  , iaspects = [ AddAbility AbMaxHP 20, AddAbility AbMaxCalm 70
+               , AddAbility AbSpeed 20, AddAbility AbNocto 2
+               , AddAbility AbAggression 1
                , AddAbility AbProject 2, AddAbility AbApply 1
                , AddAbility AbAlter 2 ]
   , ieffects = []
@@ -186,8 +189,9 @@ fastEye = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 5, AddMaxCalm 70, AddSpeed 30, AddNocto 2
-               , AddAggression 1
+  , iaspects = [ AddAbility AbMaxHP 5, AddAbility AbMaxCalm 70
+               , AddAbility AbSpeed 30, AddAbility AbNocto 2
+               , AddAbility AbAggression 1
                , AddAbility AbAlter 2 ]
   , ieffects = []
   , ifeature = [Durable]
@@ -206,8 +210,9 @@ nose = ItemKind  -- depends solely on smell
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 30, AddMaxCalm 30, AddSpeed 16, AddNocto 2
-               , AddAggression 1
+  , iaspects = [ AddAbility AbMaxHP 30, AddAbility AbMaxCalm 30
+               , AddAbility AbSpeed 16, AddAbility AbNocto 2
+               , AddAbility AbAggression 1
                , AddAbility AbProject (-1), AddAbility AbAlter 2 ]
   , ieffects = []
   , ifeature = [Durable]
@@ -228,7 +233,8 @@ elbow = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 12, AddMaxCalm 80, AddSpeed 21, AddNocto 2
+  , iaspects = [ AddAbility AbMaxHP 12, AddAbility AbMaxCalm 80
+               , AddAbility AbSpeed 21, AddAbility AbNocto 2
                , AddAbility AbProject 2, AddAbility AbApply 1
                , AddAbility AbAlter 2, AddAbility AbMelee (-1) ]
   , ieffects = []
@@ -250,8 +256,9 @@ torsor = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 300, AddMaxCalm 100, AddSpeed 6, AddNocto 2
-               , AddAggression 3
+  , iaspects = [ AddAbility AbMaxHP 300, AddAbility AbMaxCalm 100
+               , AddAbility AbSpeed 6, AddAbility AbNocto 2
+               , AddAbility AbAggression 3
                , AddAbility AbProject 2, AddAbility AbApply 1
                , AddAbility AbAlter 1]  -- can't exit the gated level, the boss
   , ieffects = []
@@ -283,7 +290,8 @@ goldenJackal = ItemKind  -- basically a much smaller and slower hyena
   , iverbHit = "thud"
   , iweight  = 13000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 12, AddMaxCalm 70, AddSpeed 24, AddNocto 2 ]
+  , iaspects = [ AddAbility AbMaxHP 12, AddAbility AbMaxCalm 70
+               , AddAbility AbSpeed 24, AddAbility AbNocto 2 ]
   , ieffects = []
   , ifeature = [Durable]
   , idesc    = "An opportunistic predator, feeding on carrion and the weak."
@@ -301,7 +309,8 @@ griffonVulture = ItemKind
   , iverbHit = "thud"
   , iweight  = 13000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 12, AddMaxCalm 80, AddSpeed 22, AddNocto 2
+  , iaspects = [ AddAbility AbMaxHP 12, AddAbility AbMaxCalm 80
+               , AddAbility AbSpeed 22, AddAbility AbNocto 2
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
       -- Animals don't have leader, usually, so even if only one of level,
       -- it pays the communication overhead, so the speed is higher to get
@@ -324,7 +333,8 @@ skunk = ItemKind
   , iverbHit = "thud"
   , iweight  = 4000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 10, AddMaxCalm 30, AddSpeed 22, AddNocto 2
+  , iaspects = [ AddAbility AbMaxHP 10, AddAbility AbMaxCalm 30
+               , AddAbility AbSpeed 22, AddAbility AbNocto 2
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
   , ifeature = [Durable]
@@ -344,7 +354,8 @@ armadillo = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 10, AddMaxCalm 30, AddSpeed 20, AddNocto 2
+  , iaspects = [ AddAbility AbMaxHP 10, AddAbility AbMaxCalm 30
+               , AddAbility AbSpeed 20, AddAbility AbNocto 2
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
   , ifeature = [Durable]
@@ -364,7 +375,8 @@ gilaMonster = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 12, AddMaxCalm 50, AddSpeed 18, AddNocto 2
+  , iaspects = [ AddAbility AbMaxHP 12, AddAbility AbMaxCalm 50
+               , AddAbility AbSpeed 18, AddAbility AbNocto 2
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
   , ifeature = [Durable]
@@ -383,7 +395,8 @@ rattlesnake = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 25, AddMaxCalm 60, AddSpeed 16, AddNocto 2
+  , iaspects = [ AddAbility AbMaxHP 25, AddAbility AbMaxCalm 60
+               , AddAbility AbSpeed 16, AddAbility AbNocto 2
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
   , ifeature = [Durable]
@@ -402,7 +415,8 @@ komodoDragon = ItemKind  -- bad hearing; regeneration makes it very powerful
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 18, AddNocto 2 ]
+  , iaspects = [ AddAbility AbMaxHP 41, AddAbility AbMaxCalm 60
+               , AddAbility AbSpeed 18, AddAbility AbNocto 2 ]
   , ieffects = []
   , ifeature = [Durable]
   , idesc    = "Larger and more aggressive than any other lizard."
@@ -422,7 +436,8 @@ hyena = ItemKind
   , iverbHit = "thud"
   , iweight  = 60000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 70, AddSpeed 32, AddNocto 2 ]
+  , iaspects = [ AddAbility AbMaxHP 20, AddAbility AbMaxCalm 70
+               , AddAbility AbSpeed 32, AddAbility AbNocto 2 ]
   , ieffects = []
   , ifeature = [Durable]
   , idesc    = "Skulking in the shadows, waiting for easy prey."
@@ -439,7 +454,8 @@ alligator = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 41, AddMaxCalm 70, AddSpeed 18, AddNocto 2 ]
+  , iaspects = [ AddAbility AbMaxHP 41, AddAbility AbMaxCalm 70
+               , AddAbility AbSpeed 18, AddAbility AbNocto 2 ]
   , ieffects = []
   , ifeature = [Durable]
   , idesc    = "An armored predator from the dawn of time."
@@ -458,8 +474,9 @@ rhinoceros = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 90, AddMaxCalm 60, AddSpeed 27, AddNocto 2
-               , AddAggression 2
+  , iaspects = [ AddAbility AbMaxHP 90, AddAbility AbMaxCalm 60
+               , AddAbility AbSpeed 27, AddAbility AbNocto 2
+               , AddAbility AbAggression 2
                , AddAbility AbAlter (-1) ]  -- can't switch levels, a miniboss
   , ieffects = []
   , ifeature = [Unique, Durable]
@@ -481,8 +498,8 @@ beeSwarm = ItemKind
   , iverbHit = "thud"
   , iweight  = 1000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 8, AddMaxCalm 60
-               , AddSpeed 30, AddNocto 2  -- armor in sting
+  , iaspects = [ AddAbility AbMaxHP 8, AddAbility AbMaxCalm 60
+               , AddAbility AbSpeed 30, AddAbility AbNocto 2  -- armor in sting
                , AddAbility AbAlter (-2) ]  -- can't use stairs nor doors
   , ieffects = []
   , ifeature = [Durable]
@@ -500,9 +517,10 @@ hornetSwarm = ItemKind
   , iverbHit = "thud"
   , iweight  = 1000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 8, AddMaxCalm 70, AddSpeed 30, AddNocto 2
+  , iaspects = [ AddAbility AbMaxHP 8, AddAbility AbMaxCalm 70
+               , AddAbility AbSpeed 30, AddAbility AbNocto 2
                , AddAbility AbAlter (-2)  -- can't use stairs nor doors
-               , AddArmorMelee 80, AddArmorRanged 40 ]
+               , AddAbility AbArmorMelee 80, AddAbility AbArmorRanged 40 ]
   , ieffects = []
   , ifeature = [Durable]
   , idesc    = "A vicious cloud of stings and hate."
@@ -519,7 +537,8 @@ thornbush = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 22, AddNocto 2
+  , iaspects = [ AddAbility AbMaxHP 20, AddAbility AbMaxCalm 999
+               , AddAbility AbSpeed 22, AddAbility AbNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1 ]
   , ieffects = []
   , ifeature = [Durable]
@@ -542,9 +561,10 @@ razorwireFence = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 30, AddMaxCalm 999, AddSpeed 20, AddNocto 2
+  , iaspects = [ AddAbility AbMaxHP 30, AddAbility AbMaxCalm 999
+               , AddAbility AbSpeed 20, AddAbility AbNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1
-               , AddArmorMelee 30, AddArmorRanged 15 ]
+               , AddAbility AbArmorMelee 30, AddAbility AbArmorRanged 15 ]
   , ieffects = []
   , ifeature = [Durable]
   , idesc    = "Must have been bought by previous ship owners to contain the wild animal infestation."
@@ -560,9 +580,10 @@ electricFence = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 40, AddNocto 2
+  , iaspects = [ AddAbility AbMaxHP 10, AddAbility AbMaxCalm 999
+               , AddAbility AbSpeed 40, AddAbility AbNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1
-               , AddArmorMelee 30, AddArmorRanged 15 ]
+               , AddAbility AbArmorMelee 30, AddAbility AbArmorRanged 15 ]
   , ieffects = []
   , ifeature = [Durable]
   , idesc    = "Marginally intelligent electric shepherd. Originally used in orbital dairy farms and planetary zoos."
@@ -578,9 +599,10 @@ activeFence = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 20, AddNocto 2
+  , iaspects = [ AddAbility AbMaxHP 20, AddAbility AbMaxCalm 999
+               , AddAbility AbSpeed 20, AddAbility AbNocto 2
                , AddAbility AbWait 1, AddAbility AbProject 3
-               , AddArmorMelee 30, AddArmorRanged 15 ]
+               , AddAbility AbArmorMelee 30, AddAbility AbArmorRanged 15 ]
   , ieffects = []
   , ifeature = [Durable]
   , idesc    = "Makeshift, mostly non-lethal, autonomous perimeter defense outpost."
@@ -597,7 +619,8 @@ steamFaucet = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 10, AddMaxCalm 999, AddSpeed 11, AddNocto 2
+  , iaspects = [ AddAbility AbMaxHP 10, AddAbility AbMaxCalm 999
+               , AddAbility AbSpeed 11, AddAbility AbNocto 2
                , AddAbility AbWait 1, AddAbility AbMelee 1 ]
   , ieffects = []
   , ifeature = [Durable]
@@ -614,8 +637,9 @@ biogasFaucet = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 22
-               , AddNocto 2, AddShine 3
+  , iaspects = [ AddAbility AbMaxHP 20, AddAbility AbMaxCalm 999
+               , AddAbility AbSpeed 22
+               , AddAbility AbNocto 2, AddAbility AbShine 3
                , AddAbility AbWait 1, AddAbility AbMelee 1 ]
   , ieffects = []
   , ifeature = [Durable]
@@ -632,8 +656,9 @@ medbotFaucet = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 20, AddMaxCalm 999, AddSpeed 22
-               , AddNocto 2, AddShine 3
+  , iaspects = [ AddAbility AbMaxHP 20, AddAbility AbMaxCalm 999
+               , AddAbility AbSpeed 22
+               , AddAbility AbNocto 2, AddAbility AbShine 3
                , AddAbility AbWait 1, AddAbility AbMelee 1 ]
   , ieffects = []
   , ifeature = [Durable]  -- TODO: only heal humans
@@ -650,10 +675,11 @@ surveillanceDrone = ItemKind
   , iverbHit = "thud"
   , iweight  = 1000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 6, AddMaxCalm 90, AddSpeed 30, AddNocto 2
+  , iaspects = [ AddAbility AbMaxHP 6, AddAbility AbMaxCalm 90
+               , AddAbility AbSpeed 30, AddAbility AbNocto 2
                , AddAbility AbDisplace (-1), AddAbility AbMoveItem (-1)
                , AddAbility AbProject (-1), AddAbility AbMelee (-1)
-               , AddArmorMelee 30, AddArmorRanged 15 ]
+               , AddAbility AbArmorMelee 30, AddAbility AbArmorRanged 15 ]
   , ieffects = []
   , ifeature = [Durable]
   , idesc    = "A video camera in each room would violate privacy of passengers, hence surveillance drones. Programmed to be easy to fend off, they keep a respectful distance."
@@ -669,10 +695,11 @@ shepherdDrone = ItemKind
   , iverbHit = "thud"
   , iweight  = 1000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 3, AddMaxCalm 60, AddSpeed 30, AddNocto 2
+  , iaspects = [ AddAbility AbMaxHP 3, AddAbility AbMaxCalm 60
+               , AddAbility AbSpeed 30, AddAbility AbNocto 2
                , AddAbility AbDisplace (-1), AddAbility AbMoveItem (-1)
                , AddAbility AbProject (-1)
-               , AddArmorMelee 80, AddArmorRanged 40 ]
+               , AddAbility AbArmorMelee 80, AddAbility AbArmorRanged 40 ]
   , ieffects = []
   , ifeature = [Durable]
   , idesc    = "A shabby drone for bringing cows home."
@@ -689,10 +716,11 @@ huntingDrone = ItemKind
   , iverbHit = "thud"
   , iweight  = 500
   , idamage  = 0
-  , iaspects = [ AddMaxHP 6, AddMaxCalm 60, AddSpeed 40, AddNocto 2
+  , iaspects = [ AddAbility AbMaxHP 6, AddAbility AbMaxCalm 60
+               , AddAbility AbSpeed 40, AddAbility AbNocto 2
                , AddAbility AbDisplace (-1), AddAbility AbMoveItem (-1)
                , AddAbility AbMelee (-1)
-               , AddArmorMelee 30, AddArmorRanged 15 ]
+               , AddAbility AbArmorMelee 30, AddAbility AbArmorRanged 15 ]
   , ieffects = []
   , ifeature = [Durable]
   , idesc    = "Originally designed for hunting down and putting to sleep stray animals. The sleeping agent has long since dried up."
@@ -710,7 +738,8 @@ homeRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 10, AddMaxCalm 30, AddSpeed 20, AddNocto 2
+  , iaspects = [ AddAbility AbMaxHP 10, AddAbility AbMaxCalm 30
+               , AddAbility AbSpeed 20, AddAbility AbNocto 2
                , AddAbility AbProject (-1), AddAbility AbAlter 1 ]  -- doors
   , ieffects = []
   , ifeature = [Durable]
@@ -729,7 +758,8 @@ wasteRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 15, AddMaxCalm 30, AddSpeed 15, AddNocto 2 ]
+  , iaspects = [ AddAbility AbMaxHP 15, AddAbility AbMaxCalm 30
+               , AddAbility AbSpeed 15, AddAbility AbNocto 2 ]
   , ieffects = []
   , ifeature = [Durable]
   , idesc    = "You are not in its database, hence you are waste."
@@ -749,7 +779,8 @@ lightRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 15, AddMaxCalm 60, AddSpeed 30, AddNocto 2
+  , iaspects = [ AddAbility AbMaxHP 15, AddAbility AbMaxCalm 60
+               , AddAbility AbSpeed 30, AddAbility AbNocto 2
                , AddAbility AbProject 2, AddAbility AbAlter 2 ]  -- uses stairs
   , ieffects = []
   , ifeature = [Durable]
@@ -769,7 +800,8 @@ heavyRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 800000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 41, AddMaxCalm 60, AddSpeed 20, AddNocto 2
+  , iaspects = [ AddAbility AbMaxHP 41, AddAbility AbMaxCalm 60
+               , AddAbility AbSpeed 20, AddAbility AbNocto 2
                , AddAbility AbProject 2, AddAbility AbAlter 2 ]  -- uses stairs
   , ieffects = []
   , ifeature = [Durable]
@@ -790,8 +822,9 @@ cleanerRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddMaxHP 120, AddMaxCalm 60, AddSpeed 18, AddNocto 2
-               , AddAggression 1
+  , iaspects = [ AddAbility AbMaxHP 120, AddAbility AbMaxCalm 60
+               , AddAbility AbSpeed 18, AddAbility AbNocto 2
+               , AddAbility AbAggression 1
                , AddAbility AbAlter 3 ]
                    -- a miniboss; can remove rubble and ice,
                    -- but can't exit the gated level
