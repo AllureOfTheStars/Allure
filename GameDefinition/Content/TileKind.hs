@@ -639,7 +639,7 @@ stairsLiftTrappedUp = stairsTrappedUp
                  -- AI uses despite the trap; exploration more important
   }
 stairsLiftGatedUp = stairsLiftUp
-  { tname    = "gated lift up"
+  { tname    = "manually opened lift up"
   , tfreq    = [("gated lift up", 1)]
   , talter   = talterForStairs + 2  -- animals and bosses can't use
   }
@@ -660,7 +660,7 @@ stairsLiftTrappedDown = stairsTrappedDown
                , ConsideredByAI, ChangeTo "ordinary lift down" ]
   }
 stairsLiftGatedDown = stairsLiftDown
-  { tname    = "gated lift down"
+  { tname    = "manually opened lift down"
   , tfreq    = [("gated lift down", 1)]
   , talter   = talterForStairs + 2  -- animals and bosses can't use
   }
