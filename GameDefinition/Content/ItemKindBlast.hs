@@ -48,7 +48,7 @@ burningOil n = ItemKind
   , iverbHit = "sear"
   , iweight  = 1
   , idamage  = 0
-  , iaspects = [AddAbility AbShine 2]
+  , iaspects = [AddSkill SkShine 2]
   , ieffects = [ Burn 1
                , toOrganBad "slowed" (2 + 1 `d` 2) ]  -- tripping on oil
   , ifeature = [ toVelocity (min 100 $ n `div` 2 * 10)
@@ -72,7 +72,7 @@ firecracker n = ItemKind
   , iverbHit = if n >= 4 then "singe" else "crack"
   , iweight  = 1
   , idamage  = 0
-  , iaspects = [AddAbility AbShine $ intToDice $ 1 + n `div` 2]
+  , iaspects = [AddSkill SkShine $ intToDice $ 1 + n `div` 2]
   , ieffects = [if n >= 4 then Burn 1 else RefillCalm (-2)]
                ++ [DropBestWeapon | n >= 4]
                ++ [ OnSmash $ Explode
@@ -101,7 +101,7 @@ spreadFragmentation = ItemKind
   , iweight  = 1
   , idamage  = 3 `d` 1  -- deadly and adjacent actor hit by 2 on average;
                         -- however, moderate armour blocks completely
-  , iaspects = [AddAbility AbShine 3, AddAbility AbHurtMelee $ -12 * 5]
+  , iaspects = [AddSkill SkShine 3, AddSkill SkHurtMelee $ -12 * 5]
   , ieffects = [DropItem 1 maxBound COrgan "condition"]
   , ifeature = [toLinger 20, Lobable, Fragile, Blast]  -- 4 steps, 1 turn
   , idesc    = ""
@@ -143,7 +143,7 @@ spreadConcussion = ItemKind
   , iweight  = 1
   , idamage  = 1 `d` 1  -- only air pressure, so not as deadly as fragmentation,
                         -- but armour can't block completely that easily
-  , iaspects = [AddAbility AbShine 3, AddAbility AbHurtMelee $ -8 * 5]
+  , iaspects = [AddSkill SkShine 3, AddSkill SkHurtMelee $ -8 * 5]
   , ieffects = [ DropItem maxBound 1 CEqp "misc armor"
                , PushActor (ThrowMod 400 25)  -- 1 step, fast; after DropItem
                    -- this produces spam for braced actors; too bad
@@ -187,7 +187,7 @@ spreadFlash = ItemKind
   , iverbHit = "dazzle"
   , iweight  = 1
   , idamage  = 0
-  , iaspects = [AddAbility AbShine 5]
+  , iaspects = [AddSkill SkShine 5]
   , ieffects = [toOrganBad "blind" 10, toOrganBad "weakened" 30]
                  -- Wikipedia says: blind for five seconds and afterimage
                  -- for much longer, harming aim
@@ -223,7 +223,7 @@ singleSpark = spreadFlash
   , ifreq    = [("single spark", 1)]
   , icount   = 1
   , iverbHit = "spark"
-  , iaspects = [AddAbility AbShine 3]
+  , iaspects = [AddSkill SkShine 3]
   , ieffects = []
   , ifeature = [toLinger 5, Fragile, Blast]  -- 1 step, 1 turn
   , idesc    = "A glowing ember."
@@ -239,7 +239,7 @@ glassPiece = ItemKind
   , iverbHit = "cut"
   , iweight  = 1
   , idamage  = 1 `d` 1
-  , iaspects = [AddAbility AbHurtMelee $ -15 * 5]  -- brittle, not too dense; armor blocks
+  , iaspects = [AddSkill SkHurtMelee $ -15 * 5]  -- brittle, not too dense; armor blocks
   , ieffects = [RefillHP (-1)]
   , ifeature = [toLinger 20, Fragile, Blast]  -- 4 steps, 1 turn
   , idesc    = "Swift, sharp edges."
@@ -330,7 +330,7 @@ mistHealing = ItemKind
   , iverbHit = "revitalize"
   , iweight  = 1
   , idamage  = 0
-  , iaspects = [AddAbility AbShine 1]
+  , iaspects = [AddSkill SkShine 1]
   , ieffects = [RefillHP 2]
   , ifeature = [toVelocity 5, Fragile, Blast]  -- 1 step, 1 turn
   , idesc    = "It fills the air with light and life."
@@ -346,7 +346,7 @@ mistHealing2 = ItemKind
   , iverbHit = "revitalize"
   , iweight  = 1
   , idamage  = 0
-  , iaspects = [AddAbility AbShine 2]
+  , iaspects = [AddSkill SkShine 2]
   , ieffects = [RefillHP 4]
   , ifeature = [toVelocity 5, Fragile, Blast]  -- 1 step, 1 turn
   , idesc    = "At its touch, wounds close and bruises fade."

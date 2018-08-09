@@ -59,26 +59,26 @@ tmpEffects name icount effects =
                          , OnSmash $ tmpNoLonger name ]
          }
 
-tmpStrengthened = tmpAspects "strengthened" [AddAbility AbHurtMelee 20]
+tmpStrengthened = tmpAspects "strengthened" [AddSkill SkHurtMelee 20]
 tmpWeakened = tmpAspects "weakened"
-                         [AddAbility AbHurtMelee (-30)]  -- don't cancel out ^
+                         [AddSkill SkHurtMelee (-30)]  -- don't cancel out ^
 tmpProtectedMelee = tmpAspects "protected from melee"
-                               [AddAbility AbArmorMelee 50]
+                               [AddSkill SkArmorMelee 50]
 tmpProtectedRanged = tmpAspects "protected from ranged"
-                                [AddAbility AbArmorRanged 25]
-tmpVulnerable = tmpAspects "painted red" [ AddAbility AbArmorMelee (-50)
-                                         , AddAbility AbArmorRanged (-25) ]
-tmpResolute = tmpAspects "resolute" [AddAbility AbMaxCalm 60]
-tmpFast20 = tmpAspects "hasted" [AddAbility AbSpeed 20]
-tmpSlow10 = tmpAspects "slowed" [AddAbility AbSpeed (-10)]
-tmpFarSighted = tmpAspects "far-sighted" [AddAbility AbSight 5]
-tmpBlind = tmpAspects "blind" [AddAbility AbSight (-99)]
-tmpKeenSmelling = tmpAspects "keen-smelling" [AddAbility AbSmell 2]
-tmpNoctovision = tmpAspects "shiny-eyed" [AddAbility AbNocto 2]
-tmpDrunk = tmpAspects "drunk" [ AddAbility AbHurtMelee 30  -- fury
-                              , AddAbility AbArmorMelee (-20)
-                              , AddAbility AbArmorRanged (-20)
-                              , AddAbility AbSight (-8)
+                                [AddSkill SkArmorRanged 25]
+tmpVulnerable = tmpAspects "painted red" [ AddSkill SkArmorMelee (-50)
+                                         , AddSkill SkArmorRanged (-25) ]
+tmpResolute = tmpAspects "resolute" [AddSkill SkMaxCalm 60]
+tmpFast20 = tmpAspects "hasted" [AddSkill SkSpeed 20]
+tmpSlow10 = tmpAspects "slowed" [AddSkill SkSpeed (-10)]
+tmpFarSighted = tmpAspects "far-sighted" [AddSkill SkSight 5]
+tmpBlind = tmpAspects "blind" [AddSkill SkSight (-99)]
+tmpKeenSmelling = tmpAspects "keen-smelling" [AddSkill SkSmell 2]
+tmpNoctovision = tmpAspects "shiny-eyed" [AddSkill SkNocto 2]
+tmpDrunk = tmpAspects "drunk" [ AddSkill SkHurtMelee 30  -- fury
+                              , AddSkill SkArmorMelee (-20)
+                              , AddSkill SkArmorRanged (-20)
+                              , AddSkill SkSight (-8)
                               ]
 
 tmpRegenerating =
