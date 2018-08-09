@@ -813,7 +813,7 @@ sharpeningTool = ItemKind
   , idamage  = 0
   , iaspects = [AddAbility AbHurtMelee $ (1 `dL` 5) * 5]
   , ieffects = []
-  , ifeature = [Equipable, EqpSlot EqpSlotAddHurtMelee]
+  , ifeature = [Equipable, EqpSlot EqpSlotHurtMelee]
   , idesc    = "Originally used for realigning the chipped or buckled edges of kitchen knives in the local bars. Now it saves lives by letting you fix your weapons between or even during fights, without the need to set up camp, fish out tools and assemble a proper sharpening workshop."
   , ikit     = []
   }
@@ -950,7 +950,7 @@ necklace7 = necklaceTemplate
                , Recharging (RefillCalm (-1))  -- fake "hears something" :)
                , Recharging (RefillHP (-1)) ]
                ++ ieffects necklaceTemplate
-  , ifeature = [Unique, ELabel "of Overdrive", Durable, EqpSlot EqpSlotAddSpeed]
+  , ifeature = [Unique, ELabel "of Overdrive", Durable, EqpSlot EqpSlotSpeed]
                ++ ifeature necklaceTemplate
   -- , idesc    = ""
   }
@@ -996,7 +996,7 @@ sightSharpening = ringTemplate  -- small and round, so mistaken for a ring
   , iweight  = 50  -- heavier that it looks, due to glass
   , iaspects = [ AddAbility AbSight $ 1 + 1 `d` 2
                , AddAbility AbHurtMelee $ (1 `d` 2) * 3 ]
-  , ifeature = [EqpSlot EqpSlotAddSight] ++ ifeature ringTemplate
+  , ifeature = [EqpSlot EqpSlotSight] ++ ifeature ringTemplate
   , idesc    = "Zooms on any movement, distant or close. Requires some getting used to. Never needs to be taken off."
   }
 -- Don't add standard effects to rings, because they go in and out
@@ -1028,7 +1028,7 @@ ring1 = ringTemplate
   , irarity  = [(10, 4)]
   , iaspects = [AddAbility AbSpeed $ 1 `d` 3, AddAbility AbMaxHP (-15)]
   , ieffects = [OnSmash (Explode "distortion")]  -- high power
-  , ifeature = [EqpSlot EqpSlotAddSpeed] ++ ifeature ringTemplate
+  , ifeature = [EqpSlot EqpSlotSpeed] ++ ifeature ringTemplate
   }
 ring2 = ringTemplate
   { ifreq    = [("curious item", 100), ("any jewelry", 100)]
@@ -1036,7 +1036,7 @@ ring2 = ringTemplate
   , iaspects = [ AddAbility AbSpeed $ (1 `d` 2) * 3, AddAbility AbMaxCalm (-40)
                , AddAbility AbMaxHP (-20) ]
   , ieffects = [OnSmash (Explode "distortion")]  -- high power
-  , ifeature = [Unique, ELabel "of Rush", Durable, EqpSlot EqpSlotAddSpeed]
+  , ifeature = [Unique, ELabel "of Rush", Durable, EqpSlot EqpSlotSpeed]
                ++ ifeature ringTemplate
   -- , idesc    = ""
   }
@@ -1045,7 +1045,7 @@ ring3 = ringTemplate
   , irarity  = [(10, 11)]
   , iaspects = [ AddAbility AbMaxHP $ 10 + (1 `dL` 5) * 2
                , AddAbility AbMaxCalm $ -20 + (1 `dL` 5) * 2 ]
-  , ifeature = [EqpSlot EqpSlotAddMaxHP] ++ ifeature ringTemplate
+  , ifeature = [EqpSlot EqpSlotMaxHP] ++ ifeature ringTemplate
   }
 ring4 = ringTemplate
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
@@ -1060,7 +1060,7 @@ ring5 = ringTemplate
   , iaspects = [ AddAbility AbHurtMelee $ (2 + 1 `d` 2 + (1 `dL` 2) * 2 ) * 3
                , AddAbility AbMaxHP $ (-2 - (1 `d` 2) + (1 `dL` 2) * 2) * 3 ]
                    -- !!!
-  , ifeature = [EqpSlot EqpSlotAddHurtMelee] ++ ifeature ringTemplate
+  , ifeature = [EqpSlot EqpSlotHurtMelee] ++ ifeature ringTemplate
   }
 ring6 = ringTemplate  -- by the time it's found, probably no space in eqp
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
@@ -1074,7 +1074,7 @@ ring7 = ringTemplate
   , irarity  = [(10, 5)]  -- low @ifreq@
   , iaspects = [AddAbility AbProject 8]
   , ieffects = [OnSmash (Explode "distortion")]  -- high power
-  , ifeature = [ELabel "of opportunity sniper", EqpSlot EqpSlotAbProject]
+  , ifeature = [ELabel "of opportunity sniper", EqpSlot EqpSlotProject]
                ++ ifeature ringTemplate
   }
 ring8 = ringTemplate
@@ -1082,7 +1082,7 @@ ring8 = ringTemplate
   , irarity  = [(1, 1)]
   , iaspects = [AddAbility AbProject 11]
   , ieffects = [OnSmash (Explode "distortion")]  -- high power
-  , ifeature = [ELabel "of opportunity grenadier", EqpSlot EqpSlotAbProject]
+  , ifeature = [ELabel "of opportunity grenadier", EqpSlot EqpSlotProject]
                ++ ifeature ringTemplate
   }
 
@@ -1102,7 +1102,7 @@ armorLeather = ItemKind
                , AddAbility AbArmorMelee $ (2 + 1 `dL` 4) * 5
                , AddAbility AbArmorRanged $ (1 + 1 `dL` 2) * 3 ]
   , ieffects = []
-  , ifeature = [Durable, Equipable, EqpSlot EqpSlotAddArmorMelee]
+  , ifeature = [Durable, Equipable, EqpSlot EqpSlotArmorMelee]
   , idesc    = "A hard-shell torso segment cut from a disposed off spacesuit."
   , ikit     = []
   }
@@ -1117,7 +1117,7 @@ armorMail = armorLeather
                , AddAbility AbArmorMelee $ (2 + 1 `dL` 4) * 5
                , AddAbility AbArmorRanged $ (4 + 1 `dL` 2) * 3 ]
   , ieffects = []
-  , ifeature = [Durable, Equipable, EqpSlot EqpSlotAddArmorRanged]
+  , ifeature = [Durable, Equipable, EqpSlot EqpSlotArmorRanged]
   , idesc    = "A civilian bulletproof vest. Discourages foes from attacking your torso, making it harder for them to land a blow."
   }
 gloveFencing = ItemKind
@@ -1134,7 +1134,7 @@ gloveFencing = ItemKind
                , AddAbility AbArmorRanged $ (1 `dL` 2) * 3 ]
   , ieffects = []
   , ifeature = [ toVelocity 50  -- flaps and flutters
-               , Durable, Equipable, EqpSlot EqpSlotAddHurtMelee ]
+               , Durable, Equipable, EqpSlot EqpSlotHurtMelee ]
   , idesc    = "A flexible construction glove from rough leather ensuring a good grip. Also, quite effective in deflecting or even catching slow projectiles."
   , ikit     = []
   }
@@ -1146,7 +1146,7 @@ gloveGauntlet = gloveFencing
   , iweight  = 300
   , idamage  = 2 `d` 1
   , iaspects = [AddAbility AbArmorMelee $ (1 + 1 `dL` 4) * 5]
-  , ifeature = [Durable, Equipable, EqpSlot EqpSlotAddArmorMelee]
+  , ifeature = [Durable, Equipable, EqpSlot EqpSlotArmorMelee]
   , idesc    = "A piece of a hull maintenance spacesuit, padded and reinforced with carbon fibre."
   }
 gloveJousting = gloveFencing
@@ -1161,7 +1161,7 @@ gloveJousting = gloveFencing
                , AddAbility AbArmorRanged $ (1 + 1 `dL` 2) * 3 ]
                  -- very random on purpose and can even be good on occasion
   , ifeature = [ toVelocity 50  -- flaps and flutters
-               , Unique, Durable, Equipable, EqpSlot EqpSlotAddArmorMelee ]
+               , Unique, Durable, Equipable, EqpSlot EqpSlotArmorMelee ]
   , idesc    = "Rigid, bulky handgear embedding a welding equipment, complete with an affixed small shield and a darkened visor. Awe-inspiring."
   }
 
@@ -1189,7 +1189,7 @@ buckler = ItemKind
   , ieffects = [Recharging (PushActor (ThrowMod 100 50))]  -- 1 step, slow
   , ifeature = [ toVelocity 50  -- unwieldy to throw
                , MinorEffects, Durable, Meleeable
-               , EqpSlot EqpSlotAddArmorMelee ]
+               , EqpSlot EqpSlotArmorMelee ]
   , idesc    = "Heavy and unwieldy arm protection made from an outer airlock panel. Absorbs a percentage of melee damage, both dealt and sustained. Too small to intercept projectiles with."
   , ikit     = []
   }
@@ -1207,7 +1207,7 @@ shield = buckler
   , ieffects = [Recharging (PushActor (ThrowMod 400 25))]  -- 1 step, fast
   , ifeature = [ toVelocity 50  -- unwieldy to throw
                , MinorEffects, Durable, Meleeable
-               , EqpSlot EqpSlotAddArmorMelee ]
+               , EqpSlot EqpSlotArmorMelee ]
   , idesc    = "Large and unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Too heavy to intercept projectiles with."
   }
 shield2 = shield
