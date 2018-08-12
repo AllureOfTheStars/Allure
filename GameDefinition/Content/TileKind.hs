@@ -385,7 +385,7 @@ bush = TileKind
   , tname    = "bush"
   , tfreq    = [ ("bush Lit", 1), ("shootoutSetLit", 30), ("escapeSetLit", 40)
                , ("arenaSetLit", 3)
-               , ("bushClumpOver_f_Lit", 1), ("lift terminal", 6) ]
+               , ("bushClumpOver_f_Lit", 1), ("lift terminal", 4) ]
   , tcolor   = BrGreen
   , tcolor2  = Green
   , talter   = 10
@@ -502,7 +502,8 @@ shallowWater = TileKind
   { tsymbol  = '~'
   , tname    = "shallow water"
   , tfreq    = [ ("shallow water", 1), ("legendLit", 100)
-               , ("emptySet", 5), ("noiseSet", 20), ("shootoutSetLit", 5) ]
+               , ("emptySet", 5), ("noiseSet", 20), ("shootoutSetLit", 5)
+               , ("lift terminal", 4) ]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 0
