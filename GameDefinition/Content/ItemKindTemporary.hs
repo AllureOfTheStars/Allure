@@ -17,7 +17,6 @@ import Game.LambdaHack.Common.Ability
 import Game.LambdaHack.Common.Color
 import Game.LambdaHack.Common.Dice
 import Game.LambdaHack.Common.Flavour
-import Game.LambdaHack.Common.ItemAspect (Aspect (..))
 import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.ItemKind
 
@@ -43,9 +42,10 @@ tmpAspects name aspects = ItemKind
   , iaspects = -- timeout is 0; activates and vanishes soon,
                -- depending on initial timer setting
                aspects
+               ++ [SetFlag Periodic, SetFlag Fragile, SetFlag Durable]
+                    -- hack: destroy on drop
   , ieffects = [ Recharging $ tmpLess name
                , OnSmash $ tmpLess name ]
-  , ifeature = [Periodic, Fragile, Durable]  -- hack: destroy on drop
   , idesc    = ""  -- no description needed; stats are enough
   , ikit     = []
   }

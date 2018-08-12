@@ -17,7 +17,6 @@ import Game.LambdaHack.Common.Ability
 import Game.LambdaHack.Common.Color
 import Game.LambdaHack.Common.Dice
 import Game.LambdaHack.Common.Flavour
-import Game.LambdaHack.Common.ItemAspect (Aspect (..))
 import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.ItemKind
 
@@ -45,9 +44,8 @@ fist = ItemKind
   , iverbHit = "punch"
   , iweight  = 2000
   , idamage  = 4 `d` 1
-  , iaspects = []
+  , iaspects = [SetFlag Durable, SetFlag Meleeable]
   , ieffects = []
-  , ifeature = [Durable, Meleeable]
   , idesc    = "Simple but effective."
   , ikit     = []
   }
@@ -68,6 +66,7 @@ hookedClaw = fist
   , iverbHit = "hook"
   , idamage  = 2 `d` 1
   , iaspects = [Timeout $ 12 - 1 `dL` 3]
+               ++ iaspects fist
   , ieffects = [Recharging (toOrganBad "slowed" 2)]
   , idesc    = "A curved talon."
   }
@@ -118,6 +117,7 @@ antler = fist
   , idamage  = 4 `d` 1
   , iaspects = [ Timeout $ 3 + (1 `d` 3) * 3
                , AddSkill SkArmorMelee 10 ]  -- bonus doubled
+               ++ iaspects fist
   , ieffects = [Recharging (PushActor (ThrowMod 100 50))]  -- 1 step, slow
   , idesc    = ""
   }
@@ -129,6 +129,7 @@ horn = fist
   , idamage  = 5 `d` 1
   , iaspects = [ AddSkill SkHurtMelee 10
                , AddSkill SkArmorMelee 10 ]  -- bonus doubled
+               ++ iaspects fist
   , idesc    = "Sharp and long, for defence or attack."
   }
 rhinoHorn = fist
@@ -138,6 +139,7 @@ rhinoHorn = fist
   , iverbHit = "impale"
   , idamage  = 5 `d` 1
   , iaspects = [Timeout 7, AddSkill SkHurtMelee 20]
+               ++ iaspects fist
   , ieffects = [Recharging Impress]  -- the owner is a mid-boss, after all
   , idesc    = "Very solid, considering it has the same composition as fingernails."
   }
@@ -155,7 +157,7 @@ thorn = fist
   , icount   = 2 + 1 `d` 3
   , iverbHit = "impale"
   , idamage  = 2 `d` 1
-  , ifeature = [Meleeable]  -- not Durable
+  , iaspects = [SetFlag Meleeable]  -- not Durable
   , idesc    = "Sharp yet brittle."
   }
 boilingFissure = fist
@@ -164,9 +166,9 @@ boilingFissure = fist
   , icount   = 5 + 1 `d` 5
   , iverbHit = "hiss at"
   , idamage  = 1 `d` 1
-  , iaspects = [AddSkill SkHurtMelee 20]  -- decreasing as count decreases
+  , iaspects = [ AddSkill SkHurtMelee 20  -- decreasing as count decreases
+               , SetFlag Meleeable ]  -- not Durable
   , ieffects = [DropItem 1 1 COrgan "condition"]  -- useful; limited
-  , ifeature = [Meleeable]  -- not Durable
   , idesc    = ""
   }
 arsenicFissure = boilingFissure
@@ -191,9 +193,9 @@ beeSting = fist
   , icount   = 1
   , iverbHit = "sting"
   , idamage  = 0
-  , iaspects = [AddSkill SkArmorMelee 200, AddSkill SkArmorRanged 45]
+  , iaspects = [ AddSkill SkArmorMelee 200, AddSkill SkArmorRanged 45
+               , SetFlag Meleeable ]  -- not Durable
   , ieffects = [Paralyze 6, RefillHP 4]
-  , ifeature = [Meleeable]  -- not Durable
   , idesc    = "Painful, but beneficial."
   }
 sting = fist
@@ -203,6 +205,7 @@ sting = fist
   , iverbHit = "sting"
   , idamage  = 1 `d` 1
   , iaspects = [Timeout $ 10 - 1 `dL` 4, AddSkill SkHurtMelee 40]
+               ++ iaspects fist
   , ieffects = [Recharging (Paralyze 4)]
   , idesc    = "Painful, debilitating and harmful."
   }
@@ -213,6 +216,7 @@ venomTooth = fist
   , iverbHit = "bite"
   , idamage  = 2 `d` 1
   , iaspects = [Timeout $ 7 - 1 `dL` 3]
+               ++ iaspects fist
   , ieffects = [Recharging (toOrganBad "slowed" (3 + 1 `d` 3))]
   , idesc    = "A chilling numbness spreads from its bite."
   }
@@ -223,6 +227,7 @@ venomFang = fist
   , iverbHit = "bite"
   , idamage  = 2 `d` 1
   , iaspects = [Timeout $ 10 - 1 `dL` 4]
+               ++ iaspects fist
   , ieffects = [Recharging (toOrganNoTimer "poisoned")]
   , idesc    = "Dripping with deadly venom."
   }
@@ -233,6 +238,7 @@ screechingBeak = fist
   , iverbHit = "peck"
   , idamage  = 2 `d` 1
   , iaspects = [Timeout $ 7 - 1 `dL` 3]
+               ++ iaspects fist
   , ieffects = [Recharging $ Summon "scavenger" $ 1 `dL` 3]
   , idesc    = "Both a weapon and a beacon, calling more scavengers to the meal."
   }
@@ -243,6 +249,7 @@ largeTail = fist
   , iverbHit = "knock"
   , idamage  = 7 `d` 1
   , iaspects = [Timeout $ 1 + 1 `d` 3, AddSkill SkHurtMelee 20]
+               ++ iaspects fist
   , ieffects = [Recharging (PushActor (ThrowMod 400 50))]  -- 2 steps
   , idesc    = "Slow but heavy."
   }
@@ -261,9 +268,9 @@ armoredSkin = ItemKind
   , iverbHit = "bash"
   , iweight  = 2000
   , idamage  = 0
-  , iaspects = [AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15]
+  , iaspects = [ AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "Homemade armour is just as good."
   , ikit     = []
   }
@@ -276,7 +283,8 @@ eye n = armoredSkin
   , ifreq    = [(toGroupName $ "eye" <+> tshow n, 100)]
   , icount   = 2
   , iverbHit = "glare at"
-  , iaspects = [AddSkill SkSight (intToDice n)]
+  , iaspects = [ AddSkill SkSight (intToDice n)
+               , SetFlag Durable ]
   , idesc    = "A piercing stare."
   }
 eye2 = eye 2
@@ -291,7 +299,8 @@ vision n = armoredSkin
   { iname    = "vision"
   , ifreq    = [(toGroupName $ "vision" <+> tshow n, 100)]
   , iverbHit = "visualize"
-  , iaspects = [AddSkill SkSight (intToDice n)]
+  , iaspects = [ AddSkill SkSight (intToDice n)
+               , SetFlag Durable ]
   , idesc    = ""
   }
 vision4 = vision 4
@@ -308,7 +317,8 @@ nostril = armoredSkin
   , ifreq    = [("nostril", 100)]
   , icount   = 2
   , iverbHit = "snuff"
-  , iaspects = [AddSkill SkSmell 1]  -- times 2, from icount
+  , iaspects = [ AddSkill SkSmell 1  -- times 2, from icount
+               , SetFlag Durable ]
   , idesc    = ""
   }
 
@@ -318,27 +328,29 @@ insectMortality = armoredSkin
   { iname    = "insect mortality"
   , ifreq    = [("insect mortality", 100)]
   , iverbHit = "age"
-  , iaspects = [Timeout $ 30 + (1 `d` 2) * 10]
+  , iaspects = [ Timeout $ 30 + (1 `d` 2) * 10
+               , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [Recharging (RefillHP (-1))]
-  , ifeature = [Periodic] ++ ifeature armoredSkin
   , idesc    = ""
   }
 sapientBrain = armoredSkin
   { iname    = "sapient brain"
   , ifreq    = [("sapient brain", 100)]
   , iverbHit = "outbrain"
-  , iaspects = [AddSkill ab 1 | ab <- [AbMove .. AbApply]]
+  , iaspects = [AddSkill sk 1 | sk <- [SkMove .. SkApply]]
                ++ [AddSkill SkAlter 2]  -- can use stairs
+               ++ [SetFlag Durable]
   , idesc    = ""
   }
 animalBrain = armoredSkin
   { iname    = "animal brain"
   , ifreq    = [("animal brain", 100)]
   , iverbHit = "blank"
-  , iaspects = [AddSkill ab 1 | ab <- [AbMove .. AbApply]]
+  , iaspects = [AddSkill sk 1 | sk <- [SkMove .. SkApply]]
                ++ [AddSkill SkAlter 2]  -- can use stairs
-               ++ [ AddSkill ab (-1)
-                  | ab <- [AbDisplace, AbMoveItem, AbProject, AbApply] ]
+               ++ [ AddSkill sk (-1)
+                  | sk <- [SkDisplace, SkMoveItem, SkProject, SkApply] ]
+               ++ [SetFlag Durable]
   , idesc    = ""
   }
 speedGland :: Int -> ItemKind
@@ -347,9 +359,9 @@ speedGland n = armoredSkin
   , ifreq    = [(toGroupName $ "speed gland" <+> tshow n, 100)]
   , iverbHit = "spit at"
   , iaspects = [ AddSkill SkSpeed $ intToDice n
-               , Timeout $ intToDice $ 100 `div` n ]
+               , Timeout $ intToDice $ 100 `div` n
+               , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [Recharging (RefillHP 1)]
-  , ifeature = [Periodic] ++ ifeature armoredSkin
   , idesc    = ""
   }
 speedGland2 = speedGland 2
@@ -362,11 +374,11 @@ scentGland = armoredSkin
   , ifreq    = [("scent gland", 100)]
   , icount   = 2 + 1 `d` 3  -- runs out
   , iverbHit = "spray at"
-  , iaspects = [Timeout $ (1 `d` 3) * 10]
+  , iaspects = [ Timeout $ (1 `d` 3) * 10
+               , SetFlag Periodic ]  -- not Durable
   , ieffects = [ Recharging (Temporary "look spent")
                , Recharging (Explode "distressing odor")
                , Recharging ApplyPerfume ]
-  , ifeature = [Periodic]  -- not Durable
   , idesc    = ""
   }
 boilingVent = armoredSkin
@@ -374,10 +386,10 @@ boilingVent = armoredSkin
   , ifreq    = [("boiling vent", 100)]
   , iflavour = zipPlain [BrBlue]
   , iverbHit = "menace"
-  , iaspects = [Timeout $ (2 + 1 `d` 2) * 5]
+  , iaspects = [ Timeout $ (2 + 1 `d` 2) * 5
+               , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [ Recharging (Explode "boiling water")
                , Recharging (RefillHP 2) ]
-  , ifeature = [Periodic] ++ ifeature armoredSkin
   , idesc    = ""
   }
 arsenicVent = armoredSkin
@@ -385,10 +397,10 @@ arsenicVent = armoredSkin
   , ifreq    = [("biogas vent", 100)]
   , iflavour = zipPlain [BrGreen]
   , iverbHit = "menace"
-  , iaspects = [Timeout $ (2 + 1 `d` 2) * 5]
+  , iaspects = [ Timeout $ (2 + 1 `d` 2) * 5
+               , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [ Recharging (Explode "sparse shower")
                , Recharging (RefillHP 2) ]
-  , ifeature = [Periodic] ++ ifeature armoredSkin
   , idesc    = ""
   }
 sulfurVent = armoredSkin
@@ -396,10 +408,10 @@ sulfurVent = armoredSkin
   , ifreq    = [("medbot vent", 100)]
   , iflavour = zipPlain [BrYellow]
   , iverbHit = "menace"
-  , iaspects = [Timeout $ (2 + 1 `d` 2) * 5]
+  , iaspects = [ Timeout $ (2 + 1 `d` 2) * 5
+               , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [ Recharging (Explode "dense shower")
                , Recharging (RefillHP 2) ]
-  , ifeature = [Periodic] ++ ifeature armoredSkin
   , idesc    = ""
   }
 
@@ -412,7 +424,8 @@ bonusHP = armoredSkin
   , ifreq    = [("bonus HP", 1)]
   , iverbHit = "intimidate"
   , iweight  = 0
-  , iaspects = [AddSkill SkMaxHP 1]
+  , iaspects = [ AddSkill SkMaxHP 1
+               , SetFlag Durable ]
   , idesc    = ""
   }
 impressed = armoredSkin
@@ -422,11 +435,12 @@ impressed = armoredSkin
   , ifreq    = [("impressed", 1), ("condition", 1)]
   , iverbHit = "confuse"
   , iweight  = 0
-  , iaspects = [AddSkill SkMaxCalm (-1)]
+  , iaspects = [ AddSkill SkMaxCalm (-1)
                  -- to help player notice on main screen
-                                  -- and to count as bad condition
-  , ieffects = [OnSmash $ tmpNoLonger "impressed"]  -- not @Periodic@
-  , ifeature = [Fragile, Durable]  -- hack: destroy on drop
+                 -- and to count as bad condition
+               , SetFlag Fragile, SetFlag Durable ]
+                   -- hack: destroy on drop
+  , ieffects = [OnSmash $ tmpNoLonger "impressed"]  -- not Periodic
   , idesc    = ""
   }
 
@@ -446,7 +460,9 @@ liveWire = fist
   , icount   = 1
   , iverbHit = "shock"
   , idamage  = 0
-  , iaspects = [Timeout $ 3 + 1 `d` 2, AddSkill SkHurtMelee 20]
+  , iaspects = [ Timeout $ 3 + 1 `d` 2
+               , AddSkill SkHurtMelee 20 ]
+               ++ iaspects fist
   , ieffects = [ Recharging $ Paralyze 6
                , Recharging $ RefillHP (-2)
                ]
@@ -456,25 +472,27 @@ robotBrain = armoredSkin
   { iname    = "robot brain"
   , ifreq    = [("robot brain", 100)]
   , iverbHit = "outcompute"
-  , iaspects = [AddSkill ab 1 | ab <- [AbMove .. AbApply]]
+  , iaspects = [AddSkill sk 1 | sk <- [SkMove .. SkApply]]
                ++ [AddSkill SkApply (-1)]
+               ++ [SetFlag Durable]
   , idesc    = ""
   }
 wasteContainer = armoredSkin
   { iname    = "waste container"
   , ifreq    = [("waste container", 100)]
   , iverbHit = "spill over"
-  , iaspects = [Timeout $ (1 + 1 `d` 2) * 30]
+  , iaspects = [ Timeout $ (1 + 1 `d` 2) * 30
+               , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [ Recharging (Summon "mobile animal" $ 1 `dL` 2)
                , Recharging (RefillHP 1)
                , Recharging (Explode "waste") ]
-  , ifeature = [Periodic] ++ ifeature armoredSkin
   , idesc    = ""
   }
 spotlight = armoredSkin
   { iname    = "spotlight"
   , ifreq    = [("spotlight", 100)]
   , iverbHit = "illuminate"
-  , iaspects = [AddSkill SkShine 3]
+  , iaspects = [ AddSkill SkShine 3
+               , SetFlag Durable ]
   , idesc    = ""
   }

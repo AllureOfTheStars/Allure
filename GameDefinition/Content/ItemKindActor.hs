@@ -16,7 +16,6 @@ import Game.LambdaHack.Common.Prelude
 import Game.LambdaHack.Common.Ability
 import Game.LambdaHack.Common.Color
 import Game.LambdaHack.Common.Flavour
-import Game.LambdaHack.Common.ItemAspect (Aspect (..))
 import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.ItemKind
 
@@ -42,14 +41,15 @@ warrior = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 80
-                   -- partially from clothes and assumed first aid
-               , AddSkill SkMaxCalm 70, AddSkill SkSpeed 20
+  , iaspects = [ AddSkill SkMaxHP 80  -- partially from clothes and first aid
+               , AddSkill SkMaxCalm 70
+               , AddSkill SkSpeed 20
                , AddSkill SkNocto 2
-               , AddSkill SkProject 2, AddSkill SkApply 1
-               , AddSkill SkAlter 2 ]
+               , AddSkill SkProject 2
+               , AddSkill SkApply 1
+               , AddSkill SkAlter 2
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = ""
   -- , idesc    = "A hardened veteran of combat."
   , ikit     = [ ("fist", COrgan), ("foot", COrgan), ("eye 6", COrgan)
@@ -169,10 +169,9 @@ eye = ItemKind
   , iaspects = [ AddSkill SkMaxHP 20, AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
                , AddSkill SkAggression 1
-               , AddSkill SkProject 2, AddSkill SkApply 1
-               , AddSkill SkAlter 2 ]
+               , AddSkill SkProject 2, AddSkill SkApply 1, AddSkill SkAlter 2
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "Walks with a stately dignity. You read death in the slow beckoning gestures of its revolting upper appendages."
   , ikit     = [ ("foot", COrgan), ("tentacle", COrgan)
                , ("eye 6", COrgan)
@@ -192,9 +191,9 @@ fastEye = ItemKind
   , iaspects = [ AddSkill SkMaxHP 5, AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
                , AddSkill SkAggression 1
-               , AddSkill SkAlter 2 ]
+               , AddSkill SkAlter 2
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "It bites as blindingly fast as it runs. Or rolls? Or crawls? Also, cuts and pierces."
   , ikit     = [ ("tentacle", COrgan), ("jaw", COrgan)
                , ("eye 3", COrgan), ("speed gland 10", COrgan)
@@ -213,9 +212,9 @@ nose = ItemKind  -- depends solely on smell
   , iaspects = [ AddSkill SkMaxHP 30, AddSkill SkMaxCalm 30
                , AddSkill SkSpeed 16, AddSkill SkNocto 2
                , AddSkill SkAggression 1
-               , AddSkill SkProject (-1), AddSkill SkAlter 2 ]
+               , AddSkill SkProject (-1), AddSkill SkAlter 2
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "A blind, slimy mass of clawing, stinging and burning. You'd think it's powerless, but as soon as it touches your trembling body, it's always one step ahead."
   , ikit     = [ ("nostril", COrgan), ("small claw", COrgan)
                , ("tentacle", COrgan), ("tentacle", COrgan)
@@ -236,9 +235,9 @@ elbow = ItemKind
   , iaspects = [ AddSkill SkMaxHP 12, AddSkill SkMaxCalm 80
                , AddSkill SkSpeed 21, AddSkill SkNocto 2
                , AddSkill SkProject 2, AddSkill SkApply 1
-               , AddSkill SkAlter 2, AddSkill SkMelee (-1) ]
+               , AddSkill SkAlter 2, AddSkill SkMelee (-1)
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "It moves in sudden jerks and never makes a noise. Speaks in hard objects hurled at deadly speeds."
   , ikit     = [ ("speed gland 4", COrgan)
                , ("eye 8", COrgan)
@@ -256,13 +255,14 @@ torsor = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 300, AddSkill SkMaxCalm 100
+  , iaspects = [ SetFlag Unique
+               , AddSkill SkMaxHP 300, AddSkill SkMaxCalm 100
                , AddSkill SkSpeed 6, AddSkill SkNocto 2
                , AddSkill SkAggression 3
                , AddSkill SkProject 2, AddSkill SkApply 1
-               , AddSkill SkAlter 1]  -- can't exit the gated level, the boss
+               , AddSkill SkAlter 1  -- can't exit the gated level, the boss
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Unique, Durable]
   , idesc    = "The mind, the heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw, grinding teeth and tensing fangs."
   , ikit     = [ ("tentacle", COrgan), ("hooked claw", COrgan)
                , ("large jaw", COrgan)
@@ -291,9 +291,9 @@ goldenJackal = ItemKind  -- basically a much smaller and slower hyena
   , iweight  = 13000
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 12, AddSkill SkMaxCalm 70
-               , AddSkill SkSpeed 24, AddSkill SkNocto 2 ]
+               , AddSkill SkSpeed 24, AddSkill SkNocto 2
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "An opportunistic predator, feeding on carrion and the weak."
   , ikit     = [ ("small jaw", COrgan), ("eye 6", COrgan), ("nostril", COrgan)
                , ("animal brain", COrgan) ]
@@ -311,13 +311,14 @@ griffonVulture = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 12, AddSkill SkMaxCalm 80
                , AddSkill SkSpeed 22, AddSkill SkNocto 2
-               , AddSkill SkAlter (-2) ]  -- can't use stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use stairs nor doors
+               , AddSkill SkFlying 10  -- flies slowly, but far
+               , SetFlag Durable ]
       -- Animals don't have leader, usually, so even if only one of level,
       -- it pays the communication overhead, so the speed is higher to get
       -- them on par with human leaders moving solo. Random double moves,
       -- on either side, are just too frustrating.
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "It soars high above, searching for vulnerable prey."
   , ikit     = [ ("screeching beak", COrgan)  -- in reality it grunts and hisses
                , ("small claw", COrgan), ("eye 7", COrgan)
@@ -335,9 +336,9 @@ skunk = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 10, AddSkill SkMaxCalm 30
                , AddSkill SkSpeed 22, AddSkill SkNocto 2
-               , AddSkill SkAlter (-2) ]  -- can't use stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use stairs nor doors
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "Its only defence is the terrible stench."
   , ikit     = [ ("scent gland", COrgan)
                , ("small claw", COrgan), ("snout", COrgan)
@@ -356,9 +357,9 @@ armadillo = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 10, AddSkill SkMaxCalm 30
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
-               , AddSkill SkAlter (-2) ]  -- can't use stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use stairs nor doors
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "When threatened, it rolls into a ball."
   , ikit     = [ ("hooked claw", COrgan), ("snout", COrgan)
                , ("armored skin", COrgan), ("armored skin", COrgan)
@@ -377,9 +378,9 @@ gilaMonster = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 12, AddSkill SkMaxCalm 50
                , AddSkill SkSpeed 18, AddSkill SkNocto 2
-               , AddSkill SkAlter (-2) ]  -- can't use stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use stairs nor doors
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "Numbing venom ensures that even the fastest prey has no escape."
   , ikit     = [ ("venom tooth", COrgan), ("small claw", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan)
@@ -397,9 +398,9 @@ rattlesnake = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 25, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 16, AddSkill SkNocto 2
-               , AddSkill SkAlter (-2) ]  -- can't use stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use stairs nor doors
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "Beware its rattle - it serves as a warning of an agonising death."
   , ikit     = [ ("venom fang", COrgan)
                , ("eye 4", COrgan), ("nostril", COrgan)
@@ -416,9 +417,9 @@ komodoDragon = ItemKind  -- bad hearing; regeneration makes it very powerful
   , iweight  = 80000
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 41, AddSkill SkMaxCalm 60
-               , AddSkill SkSpeed 18, AddSkill SkNocto 2 ]
+               , AddSkill SkSpeed 18, AddSkill SkNocto 2
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "Larger and more aggressive than any other lizard."
   , ikit     = [ ("large tail", COrgan), ("jaw", COrgan)
                , ("hooked claw", COrgan), ("speed gland 4", COrgan)
@@ -437,9 +438,9 @@ hyena = ItemKind
   , iweight  = 60000
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 20, AddSkill SkMaxCalm 70
-               , AddSkill SkSpeed 32, AddSkill SkNocto 2 ]
+               , AddSkill SkSpeed 32, AddSkill SkNocto 2
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "Skulking in the shadows, waiting for easy prey."
   , ikit     = [ ("jaw", COrgan), ("eye 6", COrgan), ("nostril", COrgan)
                , ("animal brain", COrgan) ]
@@ -455,9 +456,10 @@ alligator = ItemKind
   , iweight  = 80000
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 41, AddSkill SkMaxCalm 70
-               , AddSkill SkSpeed 18, AddSkill SkNocto 2 ]
+               , AddSkill SkSpeed 18, AddSkill SkNocto 2
+               , AddSkill SkSwimming 100  -- swims better than walks
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "An armored predator from the dawn of time."
   , ikit     = [ ("large jaw", COrgan), ("large tail", COrgan)
                , ("small claw", COrgan)
@@ -474,12 +476,13 @@ rhinoceros = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 90, AddSkill SkMaxCalm 60
+  , iaspects = [ SetFlag Unique
+               , AddSkill SkMaxHP 90, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 27, AddSkill SkNocto 2
                , AddSkill SkAggression 2
-               , AddSkill SkAlter (-1) ]  -- can't switch levels, a miniboss
+               , AddSkill SkAlter (-1)  -- can't switch levels, a miniboss
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Unique, Durable]
   , idesc    = "The last of its kind. Blind with rage. Charges at deadly speed."
   , ikit     = [ ("armored skin", COrgan), ("eye 2", COrgan)
                , ("rhino horn", COrgan), ("snout", COrgan)
@@ -500,9 +503,10 @@ beeSwarm = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 8, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 30, AddSkill SkNocto 2  -- armor in sting
-               , AddSkill SkAlter (-2) ]  -- can't use stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use stairs nor doors
+               , AddSkill SkFlying 10  -- flies slowly, but far
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "Every bee would die for the queen."
   , ikit     = [ ("bee sting", COrgan), ("vision 6", COrgan)
                , ("insect mortality", COrgan), ("animal brain", COrgan) ]
@@ -517,12 +521,13 @@ hornetSwarm = ItemKind
   , iverbHit = "thud"
   , iweight  = 1000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 8, AddSkill SkMaxCalm 70
+  , iaspects = [ AddSkill SkArmorMelee 80, AddSkill SkArmorRanged 40
+               , AddSkill SkMaxHP 8, AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
                , AddSkill SkAlter (-2)  -- can't use stairs nor doors
-               , AddSkill SkArmorMelee 80, AddSkill SkArmorRanged 40 ]
+               , AddSkill SkFlying 10  -- flies slowly, but far
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "A vicious cloud of stings and hate."
   , ikit     = [ ("sting", COrgan), ("vision 8", COrgan)
                , ("insect mortality", COrgan), ("animal brain", COrgan) ]
@@ -539,9 +544,9 @@ thornbush = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 20, AddSkill SkMaxCalm 999
                , AddSkill SkSpeed 22, AddSkill SkNocto 2
-               , AddSkill SkWait 1, AddSkill SkMelee 1 ]
+               , AddSkill SkWait 1, AddSkill SkMelee 1  -- no brain
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "Each branch bears long, curved thorns."
   , ikit     = [("thorn", COrgan), ("armored skin", COrgan)]
   }
@@ -561,12 +566,12 @@ razorwireFence = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 30, AddSkill SkMaxCalm 999
+  , iaspects = [ AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15
+               , AddSkill SkMaxHP 30, AddSkill SkMaxCalm 999
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
-               , AddSkill SkWait 1, AddSkill SkMelee 1
-               , AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15 ]
+               , AddSkill SkWait 1, AddSkill SkMelee 1  -- no brain
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "Must have been bought by previous ship owners to contain the wild animal infestation."
   , ikit     = [("razor", COrgan)]
   }
@@ -580,12 +585,12 @@ electricFence = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 10, AddSkill SkMaxCalm 999
+  , iaspects = [ AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15
+               , AddSkill SkMaxHP 10, AddSkill SkMaxCalm 999
                , AddSkill SkSpeed 40, AddSkill SkNocto 2
-               , AddSkill SkWait 1, AddSkill SkMelee 1
-               , AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15 ]
+               , AddSkill SkWait 1, AddSkill SkMelee 1  -- no brain
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "Marginally intelligent electric shepherd. Originally used in orbital dairy farms and planetary zoos."
   , ikit     = [("live wire", COrgan)]
   }
@@ -599,12 +604,12 @@ activeFence = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 20, AddSkill SkMaxCalm 999
+  , iaspects = [ AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15
+               , AddSkill SkMaxHP 20, AddSkill SkMaxCalm 999
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
-               , AddSkill SkWait 1, AddSkill SkProject 3
-               , AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15 ]
+               , AddSkill SkWait 1, AddSkill SkProject 3  -- no brain
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "Makeshift, mostly non-lethal, autonomous perimeter defense outpost."
   , ikit     = [ ("vision 6", COrgan)
                , ("needle", CInv), ("can of sticky foam", CInv) ]
@@ -621,9 +626,9 @@ steamFaucet = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 10, AddSkill SkMaxCalm 999
                , AddSkill SkSpeed 11, AddSkill SkNocto 2
-               , AddSkill SkWait 1, AddSkill SkMelee 1 ]
+               , AddSkill SkWait 1, AddSkill SkMelee 1  -- no brain
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "A cracked valve on one of the superheated water pipes spreading radially outward from the tokamak level."
   , ikit     = [("boiling vent", COrgan), ("boiling fissure", COrgan)]
   }
@@ -638,11 +643,10 @@ biogasFaucet = ItemKind
   , iweight  = 80000
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 20, AddSkill SkMaxCalm 999
-               , AddSkill SkSpeed 22
-               , AddSkill SkNocto 2, AddSkill SkShine 3
-               , AddSkill SkWait 1, AddSkill SkMelee 1 ]
+               , AddSkill SkSpeed 22, AddSkill SkNocto 2, AddSkill SkShine 3
+               , AddSkill SkWait 1, AddSkill SkMelee 1  -- no brain
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "An emergency pressure-release vent on a smelly biogas pipe."
   , ikit     = [("biogas vent", COrgan), ("biogas fissure", COrgan)]
   }
@@ -657,11 +661,10 @@ medbotFaucet = ItemKind
   , iweight  = 80000
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 20, AddSkill SkMaxCalm 999
-               , AddSkill SkSpeed 22
-               , AddSkill SkNocto 2, AddSkill SkShine 3
-               , AddSkill SkWait 1, AddSkill SkMelee 1 ]
+               , AddSkill SkSpeed 22, AddSkill SkNocto 2, AddSkill SkShine 3
+               , AddSkill SkWait 1, AddSkill SkMelee 1  -- no brain
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]  -- TODO: only heal humans
   , idesc    = "A faucet of a malfunctioning nano medical robot dispenser. Let's hope the medbots are still effective."
   , ikit     = [("medbot vent", COrgan), ("medbot fissure", COrgan)]
   }
@@ -675,13 +678,13 @@ surveillanceDrone = ItemKind
   , iverbHit = "thud"
   , iweight  = 1000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 6, AddSkill SkMaxCalm 90
+  , iaspects = [ AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15
+               , AddSkill SkMaxHP 6, AddSkill SkMaxCalm 90
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
                , AddSkill SkDisplace (-1), AddSkill SkMoveItem (-1)
                , AddSkill SkProject (-1), AddSkill SkMelee (-1)
-               , AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15 ]
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "A video camera in each room would violate privacy of passengers, hence surveillance drones. Programmed to be easy to fend off, they keep a respectful distance."
   , ikit     = [ ("vision 14", COrgan), ("robot brain", COrgan) ]
   }
@@ -695,13 +698,13 @@ shepherdDrone = ItemKind
   , iverbHit = "thud"
   , iweight  = 1000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 3, AddSkill SkMaxCalm 60
+  , iaspects = [ AddSkill SkArmorMelee 80, AddSkill SkArmorRanged 40
+               , AddSkill SkMaxHP 3, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
                , AddSkill SkDisplace (-1), AddSkill SkMoveItem (-1)
                , AddSkill SkProject (-1)
-               , AddSkill SkArmorMelee 80, AddSkill SkArmorRanged 40 ]
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "A shabby drone for bringing cows home."
   , ikit     = [ ("eye 4", COrgan), ("live wire", COrgan)
                , ("robot brain", COrgan) ]
@@ -716,13 +719,13 @@ huntingDrone = ItemKind
   , iverbHit = "thud"
   , iweight  = 500
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 6, AddSkill SkMaxCalm 60
+  , iaspects = [ AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15
+               , AddSkill SkMaxHP 6, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 40, AddSkill SkNocto 2
                , AddSkill SkDisplace (-1), AddSkill SkMoveItem (-1)
                , AddSkill SkMelee (-1)
-               , AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15 ]
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "Originally designed for hunting down and putting to sleep stray animals. The sleeping agent has long since dried up."
   , ikit     = [ ("eye 5", COrgan), ("needle", CInv)
                , ("robot brain", COrgan) ]
@@ -740,9 +743,9 @@ homeRobot = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 10, AddSkill SkMaxCalm 30
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
-               , AddSkill SkProject (-1), AddSkill SkAlter 1 ]  -- doors
+               , AddSkill SkProject (-1), AddSkill SkAlter 1  -- doors
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "Once a timid household robot, now sufficiently adapted to survive in the deadly environment."
   , ikit     = [ ("fist", COrgan), ("eye 2", COrgan), ("nostril", COrgan)
                , ("robot brain", COrgan) ]
@@ -759,9 +762,9 @@ wasteRobot = ItemKind
   , iweight  = 80000
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 15, AddSkill SkMaxCalm 30
-               , AddSkill SkSpeed 15, AddSkill SkNocto 2 ]
+               , AddSkill SkSpeed 15, AddSkill SkNocto 2
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "You are not in its database, hence you are waste."
   , ikit     = [ ("jaw", COrgan), ("tentacle", COrgan)
                , ("waste container", COrgan), ("armored skin", COrgan)
@@ -781,9 +784,9 @@ lightRobot = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 15, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
-               , AddSkill SkProject 2, AddSkill SkAlter 2 ]  -- uses stairs
+               , AddSkill SkProject 2, AddSkill SkAlter 2  -- uses stairs
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "Interior and exterior decoration robot. Strongly fancies deep reds recently."
   , ikit     = [ ("hooked claw", COrgan), ("tentacle", COrgan)
                , ("spotlight", COrgan), ("armored skin", COrgan)
@@ -802,9 +805,9 @@ heavyRobot = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 41, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
-               , AddSkill SkProject 2, AddSkill SkAlter 2 ]  -- uses stairs
+               , AddSkill SkProject 2, AddSkill SkAlter 2  -- uses stairs
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Durable]
   , idesc    = "Heavy multi-purpose construction robot. Excels at discharging, dismantling and demolition."
   , ikit     = [ ("large jaw", COrgan), ("small claw", COrgan)
                , ("spotlight", COrgan), ("armored skin", COrgan)
@@ -822,14 +825,15 @@ cleanerRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 120, AddSkill SkMaxCalm 60
+  , iaspects = [ SetFlag Unique
+               , AddSkill SkMaxHP 120, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 18, AddSkill SkNocto 2
                , AddSkill SkAggression 1
-               , AddSkill SkAlter 3 ]
+               , AddSkill SkAlter 3
                    -- a miniboss; can remove rubble and ice,
                    -- but can't exit the gated level
+               , SetFlag Durable ]
   , ieffects = []
-  , ifeature = [Unique, Durable]
   , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."
   , ikit     = [ ("waste container", COrgan), ("boiling vent", COrgan)
                , ("armored skin", COrgan), ("live wire", COrgan)

@@ -7,7 +7,7 @@
 -- | Here the knot of engine code pieces, frontend and the game-specific
 -- content definitions is tied, resulting in an executable game.
 module Implementation.TieKnot
-  ( tieKnot
+  ( tieKnotForAsync, tieKnot
   ) where
 
 import Prelude ()
@@ -23,6 +23,7 @@ import           Game.LambdaHack.Client
 import qualified Game.LambdaHack.Client.UI.Content.Input as IC
 import qualified Game.LambdaHack.Client.UI.Content.Screen as SC
 import           Game.LambdaHack.Client.UI.ContentClientUI
+import qualified Game.LambdaHack.Common.ItemAspect as IA
 import           Game.LambdaHack.Common.Kind
 import           Game.LambdaHack.Common.Misc
 import qualified Game.LambdaHack.Common.Tile as Tile
@@ -67,7 +68,7 @@ tieKnotForAsync options@ServerOptions{ sallClear
         if sboostRandomItem
         then boostedItems ++ Content.ItemKind.otherItemContent
         else Content.ItemKind.content
-      coItemSpeedup = IK.speedupItem coitem
+      coItemSpeedup = IA.speedupItem coitem
       cotile = TK.makeData coitem Content.TileKind.content
       coTileSpeedup = Tile.speedupTile sallClear cotile
       coplace = PK.makeData cotile Content.PlaceKind.content
