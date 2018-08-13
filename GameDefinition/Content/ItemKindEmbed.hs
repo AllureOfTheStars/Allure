@@ -91,7 +91,7 @@ subtleFresco = ItemKind
   }
 treasureCache = stairsUp
   { isymbol  = 'O'
-  , iname    = "treasure cache"
+  , iname    = "odds and ends"
   , ifreq    = [("treasure cache", 1)]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
