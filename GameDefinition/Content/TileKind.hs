@@ -385,7 +385,8 @@ bush = TileKind
   , tname    = "bush"
   , tfreq    = [ ("bush Lit", 1), ("shootoutSetLit", 30), ("escapeSetLit", 40)
                , ("arenaSetLit", 3)
-               , ("bushClumpOver_f_Lit", 1), ("lift terminal", 4) ]
+               , ("bushClumpOver_f_Lit", 1), ("pumpsOver_f_Lit", 1)
+               , ("lift terminal", 4) ]
   , tcolor   = BrGreen
   , tcolor2  = Green
   , talter   = 10
@@ -487,7 +488,8 @@ floorDirt = floorArena
   }
 floorDirtSpice = floorDirt
   { tfreq    = [ ("treeShadeOver_s_Lit", 1), ("fogClumpOver_f_Lit", 40)
-               , ("smokeClumpOver_f_Lit", 1), ("bushClumpOver_f_Lit", 1) ]
+               , ("smokeClumpOver_f_Lit", 1), ("bushClumpOver_f_Lit", 1)
+               , ("pumpsOver_f_Lit", 1) ]
   , tfeature = Spice : tfeature floorDirt
   }
 floorActor = floorArena
@@ -502,20 +504,20 @@ shallowWater = TileKind
   { tsymbol  = '~'
   , tname    = "puddle"
   , tfreq    = [ ("shallow water", 1), ("legendLit", 100)
-               , ("emptySet", 5), ("noiseSet", 20), ("shootoutSetLit", 5)
-               , ("lift terminal", 4) ]
+               , ("emptySet", 5), ("emptyExitSet", 2), ("noiseSet", 20)
+               , ("shootoutSetLit", 5), ("lift terminal", 4) ]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 0
   , tfeature = Embed "shallow water" : tfeature floorActor
   }
 shallowWaterSpice = shallowWater
-  { tfreq    = [("fogClumpOver_f_Lit", 20)]
+  { tfreq    = [("fogClumpOver_f_Lit", 20), ("pumpsOver_f_Lit", 1)]
   , tfeature = Spice : tfeature shallowWater
   }
 shallowWater2 = shallowWater
-  { tname    = "basin"
-  , tfreq    = []
+  { tname    = "pool"
+  , tfreq    = [("poolOver_~_Lit", 1)]
   }
 floorRed = floorCorridor
   { tname    = "emergency walkway"
