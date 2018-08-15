@@ -24,11 +24,11 @@ content =
   [unknown, unknownOuterFence, basicOuterFence, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade ]
   ++ map makeDarkColor ldarkColorable
   -- Allure-specific
-  ++ [oriel, outerHullWall, doorlessWall, rubbleBurning, rubbleBurningSpice, wallObscuredSafety, wallObscured3dBillboard, liftShaft, rock, pillarCache2, pillarCache3, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, escapeSpaceshipDown, emptyAirlock, machineWall, machineWallSpice, floorWindow]
+  ++ [oriel, outerHullWall, doorlessWall, rubbleBurning, rubbleBurningSpice, wallObscuredSafety, wallObscured3dBillboard, liftShaft, rock, pillarCache2, pillarCache3, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, machineWall, machineWallSpice, floorWindow]
 
 unknown,    unknownOuterFence, basicOuterFence, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade :: TileKind
 -- Allure-specific
-oriel,       outerHullWall, doorlessWall, rubbleBurning, rubbleBurningSpice, wallObscuredSafety, wallObscured3dBillboard, liftShaft, rock, pillarCache2, pillarCache3, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, escapeSpaceshipDown, emptyAirlock, machineWall, machineWallSpice, floorWindow :: TileKind
+oriel,       outerHullWall, doorlessWall, rubbleBurning, rubbleBurningSpice, wallObscuredSafety, wallObscured3dBillboard, liftShaft, rock, pillarCache2, pillarCache3, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, machineWall, machineWallSpice, floorWindow :: TileKind
 
 ldarkColorable :: [TileKind]
 ldarkColorable = [tree, bush, floorCorridor, floorArena, floorNoise, floorDirt, floorDirtSpice, floorActor, floorActorItem, shallowWater, shallowWaterSpice, shallowWater2, floorWindow]
@@ -575,8 +575,9 @@ outerHullWall = basicOuterFence
   }
 doorlessWall = TileKind
   { tsymbol  = '#'
-  , tname    = "wall"
-  , tfreq    = [("noiseSet", 600), ("doorlessWallOver_#", 20)]
+  , tname    = "infrastructure wall"
+  , tfreq    = [ ("noiseSet", 600), ("doorlessWallOver_#", 80)
+               , ("doorlessMachineryOver_#", 20) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 100
@@ -696,6 +697,19 @@ emptyAirlock = escapeUp
   , tcolor2  = BrBlack
   , tfeature = [Embed "black starry sky"]  -- but can look at the airlock
   }
+reinforcedWall = TileKind
+  { tsymbol  = '#'
+  , tname    = "reinforced wall"
+  , tfreq    = [("reinforced wall", 1)]
+  , tcolor   = White
+  , tcolor2  = BrBlack
+  , talter   = 100
+  , tfeature = []
+  }
+reinforcedWallSpice = reinforcedWall
+  { tfreq    = [("doorlessWallOver_#", 20)]
+  , tfeature = Spice : tfeature reinforcedWall
+  }
 
 -- *** Clear
 
@@ -710,7 +724,7 @@ machineWall = TileKind
   , tfeature = [Clear]
   }
 machineWallSpice = machineWall
-  { tfreq    = [("doorlessWallOver_#", 80)]
+  { tfreq    = [("doorlessMachineryOver_#", 80)]
   , tfeature = Spice : tfeature machineWall
   }
 

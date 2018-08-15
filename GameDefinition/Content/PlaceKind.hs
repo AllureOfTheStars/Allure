@@ -27,11 +27,11 @@ content =
   -- automatically generated
   ++ generatedStairs
   -- Allure-specific, continued
-  ++ [escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, maze, maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7]
+  ++ [escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5]
 
 deadEnd,    rect, rect2, rectWindows, glasshouse, glasshouse2, glasshouse3, pulpit, ruin, ruin2, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, pillar6, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2FGround, bushClump, escapeUp, escapeUp2, escapeUp3, escapeUp4, escapeUp5, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeOutdoorDown, staircase1, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircase18, staircase19, staircase20, staircase21, staircase22, staircase23, staircase24, staircase25, staircase26, staircase27, staircase28, staircase29, staircase30, staircase31, staircase32, staircase33, staircase34, staircase35, staircase36, staircase37 :: PlaceKind
 -- Allure-specific
-staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25, escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, maze, maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7 :: PlaceKind
+staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25, escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5 :: PlaceKind
 
 staircase, staircaseLift :: PlaceKind  -- templates
 
@@ -145,47 +145,49 @@ collapsed = PlaceKind  -- in a dark cave, they have little lights --- that's OK
   { psymbol  = 'c'
   , pname    = "a hardware stack"
   , pfreq    = [("noise", 1)]
-  , prarity  = [(1, 11), (10, 11)]
+      -- no point taking up space if very little space taken,
+      -- but if no other place can be generated, a failsafe is useful
+  , prarity  = [(1, 1), (10, 1)]
   , pcover   = CStretch
   , pfence   = FNone
   , ptopLeft = [ "#"
                ]
-  , poverride = [('#', "doorlessWallOver_#")]
+  , poverride = [('#', "doorlessMachineryOver_#")]
   }
 collapsed2 = collapsed
-  { pfreq    = [("noise", 100), ("battle", 20)]
+  { pfreq    = [("noise", 1000), ("battle", 200)]
   , ptopLeft = [ "X#"
                , "##"
                ]
   }
 collapsed3 = collapsed
-  { pfreq    = [("noise", 200), ("battle", 20)]
+  { pfreq    = [("noise", 2000), ("battle", 200)]
   , ptopLeft = [ "XX#"
                , "###"
                ]
   }
 collapsed4 = collapsed
-  { pfreq    = [("noise", 200), ("battle", 20)]
+  { pfreq    = [("noise", 2000), ("battle", 200)]
   , ptopLeft = [ "XXX#"
                , "####"
                ]
   }
 collapsed5 = collapsed
-  { pfreq    = [("noise", 300), ("battle", 50)]
+  { pfreq    = [("noise", 3000), ("battle", 500)]
   , ptopLeft = [ "XX#"
                , "X##"
                , "###"
                ]
   }
 collapsed6 = collapsed
-  { pfreq    = [("noise", 400), ("battle", 100)]
+  { pfreq    = [("noise", 4000), ("battle", 1000)]
   , ptopLeft = [ "XXX#"
                , "X###"
                , "####"
                ]
   }
 collapsed7 = collapsed
-  { pfreq    = [("noise", 400), ("battle", 100)]
+  { pfreq    = [("noise", 4000), ("battle", 1000)]
   , ptopLeft = [ "XXX#"
                , "XX##"
                , "####"
@@ -195,7 +197,7 @@ pillar = PlaceKind
   { psymbol  = 'p'
   , pname    = "a market"
   , pfreq    = [ ("rogue", 600), ("arena", 1200)
-               , ("empty", 300), ("noise", 1200) ]
+               , ("empty", 300), ("emptyExit", 300), ("noise", 1200) ]
   , prarity  = [(1, 5), (10, 5)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -221,7 +223,7 @@ pillar2 = pillar
 pillar3 = pillar
   { pname    = "a court"
   , pfreq    = [ ("rogue", 50), ("arena", 100), ("laboratory", 100)
-               , ("empty", 30), ("noise", 300) ]
+               , ("empty", 30), ("emptyExit", 30), ("noise", 300) ]
   , ptopLeft = [ "#··"
                , "···"
                , "···"
@@ -239,7 +241,8 @@ pillar4 = pillar
   }
 pillar5 = pillar
   { pname    = "a bank outlet"
-  , pfreq    = [ ("rogue", 300), ("arena", 1000), ("empty", 300) ]
+  , pfreq    = [ ("rogue", 300), ("arena", 1000)
+               , ("empty", 300), ("emptyExit", 200) ]
   , prarity  = [(10, 3)]
   , ptopLeft = [ "&·%·"
                , "··#·"
@@ -250,7 +253,7 @@ pillar5 = pillar
   }
 pillar6 = pillar
   { pname    = "a jewelry store"
-  , pfreq    = [ ("rogue", 300), ("arena", 1000), ("empty", 300) ]
+  , pfreq    = [ ("rogue", 300), ("arena", 1000), ("empty", 200) ]
   , prarity  = [(10, 3)]
   , ptopLeft = [ "&#··"
                , "#·%·"
@@ -262,8 +265,8 @@ pillar6 = pillar
 colonnade = PlaceKind
   { psymbol  = 'c'
   , pname    = "a colonnade"
-  , pfreq    = [ ("rogue", 4), ("arena", 9), ("empty", 12), ("mine", 1200)
-               , ("escape", 40) ]
+  , pfreq    = [ ("rogue", 4), ("arena", 9), ("empty", 12), ("emptyExit", 12)
+               , ("mine", 1200), ("escape", 40) ]
   , prarity  = [(1, 20), (10, 20)]
   , pcover   = CAlternate
   , pfence   = FFloor
@@ -293,7 +296,8 @@ colonnade4 = colonnade
                ]
   }
 colonnade5 = colonnade
-  { ptopLeft = [ "#··"
+  { prarity  = [(1, 25), (10, 25)]
+  , ptopLeft = [ "#··"
                , "··#"
                ]
   }
@@ -358,7 +362,8 @@ treeShade = PlaceKind
 fogClump = PlaceKind
   { psymbol  = 'f'
   , pname    = "a foggy patch"
-  , pfreq    = [("escape", 80), ("shootout", 50), ("empty", 1000)]
+  , pfreq    = [ ("escape", 80), ("shootout", 50)
+               , ("empty", 1000), ("emptyExit", 700) ]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -369,7 +374,8 @@ fogClump = PlaceKind
   , poverride = [('f', "fogClumpOver_f_Lit"), (';', "lit fog")]
   }
 fogClump2 = fogClump
-  { pfreq    = [("escape", 80), ("shootout", 400), ("empty", 5000)]
+  { pfreq    = [("escape", 80), ("shootout", 400)
+               , ("empty", 5000), ("emptyExit", 3000)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -382,7 +388,7 @@ fogClump2 = fogClump
 smokeClump = PlaceKind
   { psymbol  = 's'
   , pname    = "a smoky patch"
-  , pfreq    = [("zoo", 50), ("ambush", 50), ("empty", 100)]
+  , pfreq    = [("zoo", 50), ("ambush", 50), ("emptyExit", 100)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -396,7 +402,7 @@ smokeClump = PlaceKind
 smokeClump2FGround = smokeClump
   { pname    = "a burned out area"
   , pfreq    = [ ("laboratory", 80), ("zoo", 500), ("ambush", 100)
-               , ("empty", 200) ]
+               , ("emptyExit", 300) ]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FGround
@@ -984,7 +990,7 @@ escapeSpaceshipDown5 = escapeDown5
 pumps = PlaceKind
   { psymbol  = 'w'
   , pname    = "water pumps"
-  , pfreq    = [ ("rogue", 4), ("laboratory", 5), ("empty", 12), ("mine", 1200)
+  , pfreq    = [ ("rogue", 5), ("laboratory", 7), ("empty", 20), ("mine", 1200)
                , ("shootout", 25) ]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CAlternate
@@ -992,13 +998,14 @@ pumps = PlaceKind
   , ptopLeft = [ "·f"
                , "%·"
                ]
-  , poverride = [('%', "doorlessWallOver_#"), ('f', "pumpsOver_f_Lit")]
+  , poverride = [('%', "doorlessMachineryOver_#"), ('f', "pumpsOver_f_Lit")]
   }
 oval = PlaceKind
   { psymbol  = 'o'
   , pname    = "a dome"
   , pfreq    = [ ("rogue", 2000), ("arena", 1000), ("laboratory", 1000)
-               , ("empty", 500), ("zoo", 2000), ("ambush", 20) ]
+               , ("empty", 500), ("emptyExit", 500)
+               , ("zoo", 2000), ("ambush", 20) ]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -1013,7 +1020,8 @@ oval = PlaceKind
   }
 ovalFloor = oval  -- Without outer solid fence, visible from outside·
   { pfreq    = [ ("rogue", 3000), ("arena", 10000), ("laboratory", 2000)
-               , ("empty", 5000), ("zoo", 10000), ("ambush", 100) ]
+               , ("empty", 5000), ("emptyExit", 5000)
+               , ("zoo", 10000), ("ambush", 100) ]
   , pfence   = FGround
   , ptopLeft = [ "XXXX+#"
                , "XX###·"
@@ -1034,8 +1042,8 @@ ovalSquare = oval
   }
 ovalBasin = oval
   { pname    = "a water basin"
-  , pfreq    = [ ("rogue", 1000), ("arena", 500), ("laboratory", 500)
-               , ("empty", 300), ("zoo", 1000) ]
+  , pfreq    = [ ("rogue", 200), ("zoo", 500)
+               , ("arena", 250), ("laboratory", 250), ("empty", 200) ]
   , pfence   = FNone
   , ptopLeft = [ "XXX##"
                , "X###·"
@@ -1046,8 +1054,8 @@ ovalBasin = oval
   }
 ovalBasin2 = oval
   { pname    = "a water basin"
-  , pfreq    = [ ("rogue", 1000), ("arena", 500), ("laboratory", 500)
-               , ("empty", 300), ("zoo", 1000) ]
+  , pfreq    = [ ("rogue", 200), ("zoo", 500)
+               , ("arena", 250), ("laboratory", 250), ("empty", 200) ]
   , pfence   = FNone
   , ptopLeft = [ "X####"
                , "##···"
@@ -1058,8 +1066,8 @@ ovalBasin2 = oval
   }
 squareBasin = oval
   { pname    = "a water basin"
-  , pfreq    = [ ("arena", 500), ("laboratory", 500)
-               , ("empty", 500), ("zoo", 1000) ]
+  , pfreq    = [ ("zoo", 400)
+               , ("arena", 400), ("laboratory", 400), ("empty", 400) ]
   , pfence   = FNone
   , ptopLeft = [ "OttOt"
                , "t~~~~"
@@ -1070,8 +1078,8 @@ squareBasin = oval
   }
 squareBasin2 = oval
   { pname    = "a water basin"
-  , pfreq    = [ ("arena", 1000), ("laboratory", 1000)
-               , ("empty", 1000), ("zoo", 2000) ]
+  , pfreq    = [ ("zoo", 1500)
+               , ("arena", 1500), ("laboratory", 1500), ("empty", 1500) ]
   , pfence   = FNone
   , ptopLeft = [ "OtOttt"
                , "t~~~~~"
@@ -1081,10 +1089,20 @@ squareBasin2 = oval
                , "t~~~~~"
                ]
   }
+floodedRoom = PlaceKind  -- Valid for any nonempty area, hence low frequency.
+  { psymbol  = 'f'
+  , pname    = "a flooded room"
+  , pfreq    = [("rogue", 10), ("laboratory", 5)]
+  , prarity  = [(1, 1), (10, 2)]
+  , pcover   = CStretch
+  , pfence   = FWall
+  , ptopLeft = ["~"]
+  , poverride = []
+  }
 maze = PlaceKind
   { psymbol  = 'm'
   , pname    = "an intricate maze"
-  , pfreq    = [("rogue", 10), ("arena", 20), ("empty", 10)]
+  , pfreq    = [("rogue", 10), ("arena", 20), ("empty", 10), ("emptyExit", 10)]
   , prarity  = [(1, 12), (10, 12)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -1095,21 +1113,22 @@ maze = PlaceKind
   , poverride = [('&', "cache"), ('+', "trapped door"), ('i', "floorActorItem")]
   }
 maze2 = maze
-  { pfreq    = [("rogue", 20), ("arena", 40), ("empty", 20)]
+  { pfreq    = [("rogue", 20), ("arena", 40), ("empty", 20), ("emptyExit", 20)]
   , ptopLeft = [ "#·##·"
                , "·#··#"
                , "···#·"
                ]
   }
 maze3 = maze
-  { pfreq    = [("rogue", 30), ("arena", 60), ("empty", 30)]
+  { pfreq    = [("rogue", 30), ("arena", 60), ("empty", 30), ("emptyExit", 30)]
   , ptopLeft = [ "##·##~"
                , "#·#··#"
                , "~·%···"
                ]
   }
 mazeBig = maze
-  { pfreq    = [("rogue", 50), ("arena", 150), ("empty", 150)]
+  { pfreq    = [ ("rogue", 50), ("arena", 150)
+               , ("empty", 150), ("emptyExit", 150) ]
   , pfence   = FNone
   , ptopLeft = [ "X####"
                , "#·##·"
@@ -1119,7 +1138,8 @@ mazeBig = maze
                ]
   }
 mazeBig2 = maze
-  { pfreq    = [("rogue", 50), ("arena", 150), ("empty", 150)]
+  { pfreq    = [ ("rogue", 50), ("arena", 150)
+               , ("empty", 150), ("emptyExit", 150) ]
   , prarity  = [(1, 10), (10, 20)]
   , pfence   = FNone
   , ptopLeft = [ "X#####"
@@ -1132,8 +1152,9 @@ mazeBig2 = maze
 cells = PlaceKind
   { psymbol  = '#'
   , pname    = "air filters"
-  , pfreq    = [ ("rogue", 12), ("laboratory", 12), ("empty", 12)
-               , ("noise", 12), ("zoo", 150), ("ambush", 7) ]
+  , pfreq    = [ ("rogue", 12), ("laboratory", 12)
+               , ("empty", 12), ("emptyExit", 12), ("noise", 12)
+               , ("zoo", 150), ("ambush", 7) ]
   , prarity  = [(1, 4), (10, 4)]
   , pcover   = CReflect
   , pfence   = FWall
@@ -1141,7 +1162,7 @@ cells = PlaceKind
                , "·#·"
                , "#··"
                ]
-  , poverride = [('%', "doorlessWallOver_#"), ('f', "pumpsOver_f_Lit")]
+  , poverride = [('%', "doorlessMachineryOver_#"), ('f', "pumpsOver_f_Lit")]
   }
 cells2 = cells
   { pname    = "humidity equalizers"
@@ -1166,8 +1187,8 @@ cells4 = cells
   }
 cells5 = cells  -- this one is distinct enough from others, so needs a boost
   { pname    = "broken robot holds"
-  , pfreq    = [ ("rogue", 15), ("laboratory", 20), ("empty", 20)
-               , ("noise", 20) ]
+  , pfreq    = [ ("rogue", 15), ("laboratory", 20)
+               , ("empty", 20), ("emptyExit", 20), ("noise", 20) ]
   , ptopLeft = [ "··#"
                , "··#"
                , "##·"
@@ -1175,18 +1196,61 @@ cells5 = cells  -- this one is distinct enough from others, so needs a boost
   }
 cells6 = cells
   { pname    = "animal holding pens"
-  , pfreq    = [("laboratory", 20), ("empty", 20), ("noise", 20), ("zoo", 50)]
+  , pfreq    = [("laboratory", 60), ("noise", 60), ("zoo", 50)]
   , ptopLeft = [ "··#"
                , "##'"
                ]
   }
 cells7 = cells
   { pname    = "a defunct control room"
-  , pfreq    = [ ("rogue", 5), ("laboratory", 10), ("empty", 8)
-               , ("noise", 5) ]
+  , pfreq    = [ ("rogue", 5), ("laboratory", 10)
+               , ("empty", 8), ("emptyExit", 8), ("noise", 5) ]
   , pfence   = FFloor
   , ptopLeft = [ "#··"
                , "·%·"
+               ]
+  }
+tank = PlaceKind  -- in a dark cave, they have little lights --- that's OK
+  { psymbol  = 'c'
+  , pname    = "a tank"
+  , pfreq    = [("empty", 1), ("emptyExit", 1)]
+      -- no point taking up space if very little space taken,
+      -- but if no other place can be generated, a failsafe is useful
+  , prarity  = [(1, 1), (10, 1)]
+  , pcover   = CStretch
+  , pfence   = FNone
+  , ptopLeft = [ "#"
+               ]
+  , poverride = [('#', "doorlessWallOver_#"), ('r', "reinforced wall")]
+  }
+tank2 = tank
+  { pfreq    = [("empty", 800), ("noise", 100), ("battle", 100)]
+  , ptopLeft = [ "O#"
+               , "##"
+               ]
+  }
+tank3 = tank
+  { pfreq    = [("empty", 1000), ("noise", 200), ("battle", 200)]
+  , ptopLeft = [ "rr#"
+               , "r##"
+               , "###"
+               ]
+  }
+tank4 = tank
+  { pfreq    = [("empty", 1500), ("noise", 300), ("battle", 300)]
+  , ptopLeft = [ "XXO#"
+               , "Xrr#"
+               , "Or##"
+               , "####"
+               ]
+  }
+tank5 = tank
+  { pname    = "a cistern"
+  , pfreq    = [("empty", 1500), ("noise", 300), ("battle", 300)]
+  , ptopLeft = [ "XXr#"
+               , "Xr##"
+               , "r###"
+               , "####"
                ]
   }
 
