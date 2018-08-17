@@ -90,7 +90,7 @@ wall = TileKind
   , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
                , ("cachable deposit", 80), ("cachable jewelry", 80)
                , ("cachable", 80), ("stair terminal", 100)
-               , ("battleSet", 250), ("escapeSetDark", 4)
+               , ("battleSetDark", 250), ("escapeSetDark", 4)
                , ("rectWindowsOver_%", 80) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
@@ -186,8 +186,9 @@ signboardUnread = TileKind  -- client only, indicates never used by this faction
 signboardRead = TileKind
   { tsymbol  = 'O'
   , tname    = "signboard"
-  , tfreq    = [ ("signboard", 1)
-               , ("emptySet", 1), ("arenaSetLit", 1), ("escapeSetDark", 1) ]
+  , tfreq    = [ ("signboard", 1), ("emptySetLit", 1)
+               , ("arenaSetLit", 1), ("arenaSetDark", 1)
+               , ("escapeSetDark", 1) ]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 5
@@ -205,14 +206,14 @@ tree = TileKind
   }
 treeBurnt = tree
   { tname    = "burnt tree"
-  , tfreq    = [("zooSet", 7), ("tree with fire", 30)]
+  , tfreq    = [("zooSetDark", 7), ("tree with fire", 30)]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
   , tfeature = Dark : tfeature tree
   }
 treeBurning = tree
   { tname    = "burning tree"
-  , tfreq    = [("zooSet", 40), ("tree with fire", 70)]
+  , tfreq    = [("zooSetDark", 40), ("tree with fire", 70)]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 5
@@ -224,8 +225,9 @@ rubble = TileKind
   { tsymbol  = '&'
   , tname    = "rubble pile"
   , tfreq    = [ ("rubble", 1), ("stair terminal", 6), ("lift terminal", 6)
-               , ("emptySet", 7), ("emptyExitSet", 7), ("noiseSet", 80)
-               , ("zooSet", 100), ("ambushSet", 18) ]
+               , ("emptySetLit", 7), ("emptyExitSetLit", 7)
+               , ("noiseSetLit", 80), ("noiseSetDark", 80)
+               , ("zooSetDark", 100), ("ambushSetDark", 18) ]
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 4  -- boss can dig through
@@ -394,7 +396,7 @@ bush = TileKind
   }
 bushBurnt = bush
   { tname    = "burnt bush"
-  , tfreq    = [ ("battleSet", 30), ("ambushSet", 4), ("zooSet", 30)
+  , tfreq    = [ ("battleSetDark", 30), ("ambushSetDark", 4), ("zooSetDark", 30)
                , ("bush with fire", 70) ]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
@@ -402,7 +404,8 @@ bushBurnt = bush
   }
 bushBurning = bush
   { tname    = "burning bush"
-  , tfreq    = [("ambushSet", 40), ("zooSet", 300), ("bush with fire", 30)]
+  , tfreq    = [ ("ambushSetDark", 40), ("zooSetDark", 300)
+               , ("bush with fire", 30) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 5
@@ -416,8 +419,8 @@ bushBurning = bush
 floorFog = TileKind
   { tsymbol  = ';'
   , tname    = "faint fog"
-  , tfreq    = [ ("lit fog", 1), ("emptySet", 50), ("emptyExitSet", 20)
-               , ("noiseSet", 100), ("shootoutSetLit", 30)
+  , tfreq    = [ ("lit fog", 1), ("emptySetLit", 50), ("emptyExitSetLit", 20)
+               , ("noiseSetLit", 100), ("shootoutSetLit", 30)
                , ("fogClumpOver_f_Lit", 60), ("fogClumpOver_f_Dark", 60)
                , ("lift terminal", 40) ]
       -- lit fog is OK for shootout, because LOS is mutual, as opposed
@@ -430,7 +433,7 @@ floorFog = TileKind
   }
 floorFogDark = floorFog
   { tname    = "thick fog"
-  , tfreq    = [("noiseSet", 100), ("escapeSetDark", 50)]
+  , tfreq    = [("noiseSetDark", 100), ("escapeSetDark", 50)]
   , tfeature = Dark : tfeature floorFog
   }
 floorSmoke = TileKind
@@ -439,7 +442,7 @@ floorSmoke = TileKind
   , tfreq    = [ ("lit smoke", 1), ("labTrailLit", 1)
                , ("stair terminal", 2), ("lift terminal", 6)
                , ("smokeClumpOver_f_Lit", 1), ("smokeClumpOver_f_Dark", 1)
-               , ("emptyExitSet", 10) ]
+               , ("emptyExitSetLit", 10) ]
   , tcolor   = Brown
   , tcolor2  = BrBlack
   , talter   = 0
@@ -447,7 +450,7 @@ floorSmoke = TileKind
   }
 floorSmokeDark = floorSmoke
   { tname    = "lingering smoke"
-  , tfreq    = [("ambushSet", 60), ("zooSet", 20), ("battleSet", 5)]
+  , tfreq    = [("ambushSetDark", 60), ("zooSetDark", 20), ("battleSetDark", 5)]
   , tfeature = Dark : tfeature floorSmoke
   }
 
@@ -474,19 +477,19 @@ floorCorridor = TileKind
   , tfeature = [Walkable, Clear]
   }
 floorArena = floorCorridor
-  { tfreq    = [ ("floorArenaLit", 1), ("arenaSetLit", 96), ("emptySet", 900)
-               , ("zooSet", 600) ]
+  { tfreq    = [ ("floorArenaLit", 1), ("arenaSetLit", 96), ("emptySetLit", 900)
+               , ("zooSetLit", 600) ]
   }
 floorNoise = floorArena
   { tname    = "oily floor"
-  , tfreq    = [ ("noiseSet", 600), ("emptyExitSet", 880)
+  , tfreq    = [ ("noiseSetLit", 600), ("emptyExitSetLit", 880)
                , ("damp stone floor", 1) ]
   }
 floorDirt = floorArena
   { tname    = "dirt"
-  , tfreq    = [ ("battleSet", 1000), ("brawlSetLit", 1000)
+  , tfreq    = [ ("battleSetLit", 1000), ("brawlSetLit", 1000)
                , ("shootoutSetLit", 1000), ("escapeSetLit", 1000)
-               , ("ambushSet", 1000) ]
+               , ("ambushSetLit", 1000) ]
   }
 floorDirtSpice = floorDirt
   { tfreq    = [ ("treeShadeOver_s_Lit", 1), ("fogClumpOver_f_Lit", 40)
@@ -506,7 +509,7 @@ shallowWater = TileKind
   { tsymbol  = '~'
   , tname    = "puddle"
   , tfreq    = [ ("shallow water", 1), ("legendLit", 100)
-               , ("emptySet", 5), ("emptyExitSet", 2), ("noiseSet", 20)
+               , ("emptySetLit", 5), ("emptyExitSetLit", 2), ("noiseSetLit", 20)
                , ("shootoutSetLit", 5), ("lift terminal", 4) ]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
@@ -578,8 +581,8 @@ outerHullWall = basicOuterFence
 doorlessWall = TileKind
   { tsymbol  = '#'
   , tname    = "infrastructure wall"
-  , tfreq    = [ ("noiseSet", 600), ("doorlessWallOver_#", 80)
-               , ("doorlessMachineryOver_#", 20) ]
+  , tfreq    = [ ("noiseSetLit", 600), ("noiseSetDark", 600)
+               , ("doorlessWallOver_#", 80), ("doorlessMachineryOver_#", 20) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 100
@@ -588,8 +591,9 @@ doorlessWall = TileKind
 rubbleBurning = TileKind
   { tsymbol  = '&'
   , tname    = "burning installation"
-  , tfreq    = [ ("emptySet", 1), ("emptyExitSet", 2), ("noiseSet", 2)
-               , ("ambushSet", 2), ("zooSet", 40)
+  , tfreq    = [ ("emptySetLit", 1), ("emptyExitSetLit", 2)
+               , ("noiseSetLit", 2), ("noiseSetDark", 2)
+               , ("ambushSetDark", 2), ("zooSetDark", 40)
                , ("stair terminal", 4), ("lift terminal", 4) ]
   , tcolor   = BrRed
   , tcolor2  = Red
@@ -694,7 +698,8 @@ escapeSpaceshipDown = escapeDown
 emptyAirlock = escapeUp
   { tname    = "disengaged airlock"
   , tfreq    = [ ("airlock fence", 2), ("empty airlock fence", 7)
-               , ("emptySet", 2) ]  -- not in emptyExitSet; space can't be seen
+               , ("emptySetLit", 2) ]
+                   -- not in emptyExitSetLit; space can't be seen
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
   , tfeature = [Embed "black starry sky"]  -- but can look at the airlock
@@ -718,8 +723,9 @@ reinforcedWallSpice = reinforcedWall
 machineWall = TileKind
   { tsymbol  = '%'
   , tname    = "hardware rack"
-  , tfreq    = [ ("hardware rack", 1), ("noiseSet", 350), ("emptyExitSet", 60)
-               , ("lift terminal", 40) ]
+  , tfreq    = [ ("hardware rack", 1)
+               , ("noiseSetLit", 350), ("noiseSetDark", 350)
+               , ("emptyExitSet", 60), ("lift terminal", 40) ]
   , tcolor   = White
   , tcolor2  = BrBlack
   , talter   = 100
@@ -737,7 +743,7 @@ machineWallSpice = machineWall
 floorWindow = floorArena
   { tsymbol  = ' '  -- story-wise it's transparent, hence the symbol
   , tname    = "floor window"
-  , tfreq    = [("emptySet", 30)]
+  , tfreq    = [("emptySetLit", 30)]
   , tcolor   = defFG
   , tcolor2  = defFG
   , tfeature = Embed "black starry sky" : tfeature floorCorridor
