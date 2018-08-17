@@ -388,8 +388,8 @@ fogClump = PlaceKind
   , poverrideLit = [('f', "fogClumpOver_f_Lit"), (';', "fog Lit")]
   }
 fogClump2 = fogClump
-  { pfreq    = [("escape", 80), ("shootout", 400)
-               , ("empty", 5000), ("emptyExit", 3000)]
+  { pfreq    = [ ("escape", 80), ("shootout", 400)
+               , ("empty", 5000), ("emptyExit", 3000) ]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
