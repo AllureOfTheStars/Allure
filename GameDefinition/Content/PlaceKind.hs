@@ -63,7 +63,8 @@ deadEnd = PlaceKind  -- needs to have index 0
   , pcover   = CStretch
   , pfence   = FNone
   , ptopLeft = ["·"]
-  , poverride = []
+  , poverrideDark = []
+  , poverrideLit = []
   }
 rect = PlaceKind  -- Valid for any nonempty area, hence low frequency.
   { psymbol  = 'r'
@@ -73,7 +74,8 @@ rect = PlaceKind  -- Valid for any nonempty area, hence low frequency.
   , pcover   = CStretch
   , pfence   = FWall
   , ptopLeft = ["·"]
-  , poverride = []
+  , poverrideDark = []
+  , poverrideLit = []
   }
 rect2 = rect
   { pname    = "a pen"
@@ -89,9 +91,8 @@ rectWindows = PlaceKind
   , ptopLeft = [ "#%"
                , "%·"
                ]
-  , poverride = [('%', "rectWindowsOver_%_Lit")]
-      -- for now I need to specify 'Lit' or I'd be randomly getting lit and dark
-      -- tiles, until ooverride is extended to take night/dark into account
+  , poverrideDark = [('%', "rectWindowsOver_%")]
+  , poverrideLit = [('%', "rectWindowsOver_%")]
   }
 glasshouse = PlaceKind
   { psymbol  = 'g'
@@ -103,7 +104,8 @@ glasshouse = PlaceKind
   , ptopLeft = [ "%%"
                , "%·"
                ]
-  , poverride = []
+  , poverrideDark = []
+  , poverrideLit = []
   }
 glasshouse2 = glasshouse
   { pname    = "a glass cage"
@@ -124,7 +126,8 @@ pulpit = PlaceKind
                , "%··"
                , "··O"
                ]
-  , poverride = [('O', "pulpit")]
+  , poverrideDark = [('O', "pulpit")]
+  , poverrideLit = [('O', "pulpit")]
       -- except for floor, this will all be lit, regardless of night/dark; OK
   }
 ruin = PlaceKind
@@ -135,7 +138,8 @@ ruin = PlaceKind
   , pcover   = CStretch
   , pfence   = FWall
   , ptopLeft = ["X"]
-  , poverride = []
+  , poverrideDark = []
+  , poverrideLit = []
   }
 ruin2 = ruin
   { pname    = "a scaffolding"
@@ -152,7 +156,8 @@ collapsed = PlaceKind  -- in a dark cave, they have little lights --- that's OK
   , pfence   = FNone
   , ptopLeft = [ "#"
                ]
-  , poverride = [('#', "doorlessMachineryOver_#")]
+  , poverrideDark = [('#', "doorlessMachineryOver_#")]
+  , poverrideLit = [('#', "doorlessMachineryOver_#")]
   }
 collapsed2 = collapsed
   { pfreq    = [("noise", 1000), ("battle", 200)]
@@ -207,7 +212,8 @@ pillar = PlaceKind
                , "····"
                , "····"
                ]
-  , poverride = []
+  , poverrideDark = []
+  , poverrideLit = []
   }
 pillar2 = pillar
   { pname    = "a plaza"
@@ -218,7 +224,8 @@ pillar2 = pillar
                , "···O·"
                , "····~"
                ]
-  , poverride = [('~', "poolOver_~_Lit")]
+  , poverrideDark = [('~', "poolOver_~_Dark")]
+  , poverrideLit = [('~', "poolOver_~_Lit")]
   }
 pillar3 = pillar
   { pname    = "a court"
@@ -249,7 +256,8 @@ pillar5 = pillar
                , "%#+·"
                , "····"
                ]
-  , poverride = [('&', "cache deposit"), ('+', "trapped door")]
+  , poverrideDark = [('&', "cache deposit"), ('+', "trapped door")]
+  , poverrideLit = [('&', "cache deposit"), ('+', "trapped door")]
   }
 pillar6 = pillar
   { pname    = "a jewelry store"
@@ -260,7 +268,8 @@ pillar6 = pillar
                , "·%h·"
                , "····"
                ]
-  , poverride = [('&', "cache jewelry"), ('h', "hardware rack")]
+  , poverrideDark = [('&', "cache jewelry"), ('h', "hardware rack")]
+  , poverrideLit = [('&', "cache jewelry"), ('h', "hardware rack")]
   }
 colonnade = PlaceKind
   { psymbol  = 'c'
@@ -273,7 +282,8 @@ colonnade = PlaceKind
   , ptopLeft = [ "#·"
                , "·#"
                ]
-  , poverride = []
+  , poverrideDark = []
+  , poverrideLit = []
   }
 colonnade2 = colonnade
   { prarity  = [(1, 12), (10, 12)]
@@ -319,7 +329,8 @@ lampPost = PlaceKind
                , "·O·"
                , "X·X"
                ]
-  , poverride = [('O', "lampPostOver_O"), ('·', "floorActorLit")]
+  , poverrideDark = [('O', "lampPostOver_O"), ('·', "floorActorLit")]
+  , poverrideLit = [('O', "lampPostOver_O"), ('·', "floorActorLit")]
   }
 lampPost2 = lampPost
   { ptopLeft = [ "···"
@@ -356,8 +367,10 @@ treeShade = PlaceKind
                , "sO·"
                , "Xs·"
                ]
-  , poverride = [ ('O', "treeShadeOver_O_Lit"), ('s', "treeShadeOver_s_Lit")
-                , ('·', "shaded ground") ]
+  , poverrideDark = [ ('O', "treeShadeOver_O_Lit"), ('s', "treeShadeOver_s_Lit")
+                    , ('·', "shaded ground") ]
+  , poverrideLit = [ ('O', "treeShadeOver_O_Lit"), ('s', "treeShadeOver_s_Lit")
+                   , ('·', "shaded ground") ]
   }
 fogClump = PlaceKind
   { psymbol  = 'f'
@@ -371,7 +384,8 @@ fogClump = PlaceKind
                , ";f"
                , ";f"
                ]
-  , poverride = [('f', "fogClumpOver_f_Lit"), (';', "lit fog")]
+  , poverrideDark = [('f', "fogClumpOver_f_Dark"), (';', "lit fog")]
+  , poverrideLit = [('f', "fogClumpOver_f_Lit"), (';', "lit fog")]
   }
 fogClump2 = fogClump
   { pfreq    = [("escape", 80), ("shootout", 400)
@@ -396,8 +410,10 @@ smokeClump = PlaceKind
                , ";f"
                , ";f"
                ]
-  , poverride = [ ('f', "smokeClumpOver_f_Lit"), (';', "lit smoke")
-                , ('·', "floorActorLit") ]
+  , poverrideDark = [ ('f', "smokeClumpOver_f_Dark"), (';', "lit smoke")
+                    , ('·', "floorActorDark") ]
+  , poverrideLit = [ ('f', "smokeClumpOver_f_Lit"), (';', "lit smoke")
+                   , ('·', "floorActorLit") ]
   }
 smokeClump2FGround = smokeClump
   { pname    = "a burned out area"
@@ -423,7 +439,8 @@ bushClump = PlaceKind
                , ";f"
                , ";f"
                ]
-  , poverride = [('f', "bushClumpOver_f_Lit"), (';', "bush Lit")]
+  , poverrideDark = [('f', "bushClumpOver_f_Lit"), (';', "bush Lit")]
+  , poverrideLit = [('f', "bushClumpOver_f_Lit"), (';', "bush Lit")]
   }
 escapeUp = PlaceKind
   { psymbol  = '<'
@@ -434,7 +451,8 @@ escapeUp = PlaceKind
   , pfence   = FGround
   , ptopLeft = [ "<"
                ]
-  , poverride = []
+  , poverrideDark = []
+  , poverrideLit = []
   }
 escapeUp2 = escapeUp
   { pfreq    = [("escape up", 1000)]
@@ -478,7 +496,8 @@ escapeDown = PlaceKind
   , pfence   = FGround
   , ptopLeft = [ ">"
                ]
-  , poverride = []
+  , poverrideDark = []
+  , poverrideLit = []
   }
 escapeDown2 = escapeDown
   { pfreq    = [("escape down", 1000)]
@@ -515,7 +534,8 @@ escapeDown5 = escapeDown
   }
 escapeOutdoorDown = escapeDown
   { pfreq     = [("escape outdoor down", 1)]
-  , poverride = [('>', "escape outdoor down")]
+  , poverrideDark = [('>', "escape outdoor down")]
+  , poverrideLit = [('>', "escape outdoor down")]
   }
 staircase = PlaceKind
   { psymbol  = '/'
@@ -526,8 +546,10 @@ staircase = PlaceKind
   , pfence   = FGround
   , ptopLeft = [ "<S>"
                ]
-  , poverride = [ ('<', "staircase up"), ('>', "staircase down")
-                , ('I', "signboard"), ('S', "fillerWall") ]
+  , poverrideDark = [ ('<', "staircase up"), ('>', "staircase down")
+                    , ('I', "signboard"), ('S', "fillerWall") ]
+  , poverrideLit = [ ('<', "staircase up"), ('>', "staircase down")
+                   , ('I', "signboard"), ('S', "fillerWall") ]
   }
 staircase1 = staircase
   { prarity  = [(1, 1)]  -- no cover when arriving; so low rarity
@@ -549,7 +571,8 @@ staircaseLift = PlaceKind
   , pfence   = FFloor
   , ptopLeft = [ "<S>"
                ]
-  , poverride = overrideLift
+  , poverrideDark = overrideLift
+  , poverrideLit = overrideLift
   }
 staircase3 = staircaseLift
   { prarity  = [(1, 1)]
@@ -895,97 +918,117 @@ overrideLift = [ ('<', "staircase lift up"), ('>', "staircase lift down")
 staircaseLift11 = staircase11
   { pname     = "a lift"
   , pfreq     = [("closed lift", 2000)]  -- weak cover, low freq
-  , poverride = overrideLift
+  , poverrideDark = overrideLift
+  , poverrideLit = overrideLift
   }
 staircaseLift12 = staircase12
   { pname     = "a lift"
   , pfreq     = [("closed lift", 4000)]
-  , poverride = overrideLift
+  , poverrideDark = overrideLift
+  , poverrideLit = overrideLift
   }
 staircaseLift13 = staircase13
   { pname     = "a lift"
   , pfreq     = [("closed lift", 6000)]
-  , poverride = overrideLift
+  , poverrideDark = overrideLift
+  , poverrideLit = overrideLift
   }
 staircaseLift14 = staircase14
   { pname     = "a lift"
   , pfreq     = [("closed lift", 10000)]
-  , poverride = overrideLift
+  , poverrideDark = overrideLift
+  , poverrideLit = overrideLift
   }
 staircaseLift15 = staircase15
   { pname     = "a lift"
   , pfreq     = [("closed lift", 20000)]
-  , poverride = overrideLift
+  , poverrideDark = overrideLift
+  , poverrideLit = overrideLift
   }
 staircaseLift16 = staircase16
   { pname     = "a lift"
   , pfreq     = [("closed lift", 20000)]
-  , poverride = overrideLift
+  , poverrideDark = overrideLift
+  , poverrideLit = overrideLift
   }
 staircaseLift17 = staircase17
   { pname     = "a lift"
   , pfreq     = [("closed lift", 20000)]
-  , poverride = overrideLift
+  , poverrideDark = overrideLift
+  , poverrideLit = overrideLift
   }
 staircaseLift18 = staircase18
   { pname     = "a lift"
   , pfreq     = [("closed lift", 80000)]
-  , poverride = overrideLift
+  , poverrideDark = overrideLift
+  , poverrideLit = overrideLift
   }
 staircaseLift19 = staircase19
   { pname     = "a lift"
   , pfreq     = [("closed lift", 20000)]
-  , poverride = overrideLift
+  , poverrideDark = overrideLift
+  , poverrideLit = overrideLift
   }
 staircaseLift20 = staircase20
   { pname     = "a lift"
   , pfreq     = [("closed lift", 5000)]
-  , poverride = overrideLift
+  , poverrideDark = overrideLift
+  , poverrideLit = overrideLift
   }
 staircaseLift21 = staircase21
   { pname     = "a lift"
   , pfreq     = [("closed lift", 5000)]
-  , poverride = overrideLift
+  , poverrideDark = overrideLift
+  , poverrideLit = overrideLift
   }
 staircaseLift22 = staircase22
   { pname     = "a lift"
   , pfreq     = [("closed lift", 2000)]
-  , poverride = overrideLift
+  , poverrideDark = overrideLift
+  , poverrideLit = overrideLift
   }
 staircaseLift23 = staircase23
   { pname     = "a lift"
   , pfreq     = [("closed lift", 1000)]
-  , poverride = overrideLift
+  , poverrideDark = overrideLift
+  , poverrideLit = overrideLift
   }
 staircaseLift24 = staircase24
   { pname     = "a lift"
   , pfreq     = [("closed lift", 1000)]
-  , poverride = overrideLift
+  , poverrideDark = overrideLift
+  , poverrideLit = overrideLift
   }
 staircaseLift25 = staircase25
   { pname     = "a lift"
   , pfreq     = [("walled lift", 100)]
-  , poverride = overrideLift
+  , poverrideDark = overrideLift
+  , poverrideLit = overrideLift
   }
 escapeSpaceshipDown = escapeDown
   { pfreq     = [("escape spaceship down", 1)]
-  , poverride = [('>', "escape spaceship down")]
+  , poverrideDark = [('>', "escape spaceship down")]
+  , poverrideLit = [('>', "escape spaceship down")]
   }
 escapeSpaceshipDown2 = escapeDown2
   { pfreq     = [("escape spaceship down", 1000)]
-  , poverride = [('>', "escape spaceship down")]
+  , poverrideDark = [('>', "escape spaceship down")]
+  , poverrideLit = [('>', "escape spaceship down")]
   }
 escapeSpaceshipDown3 = escapeDown3
   { pfreq     = [("escape spaceship down", 2000)]
-  , poverride = [('>', "escape spaceship down")]
+  , poverrideDark = [('>', "escape spaceship down")]
+  , poverrideLit = [('>', "escape spaceship down")]
   }
 escapeSpaceshipDown4 = escapeDown4
   { pfreq     = [("escape spaceship down", 1000)]
-  , poverride = [('>', "escape spaceship down")]
+  , poverrideDark = [('>', "escape spaceship down")]
+  , poverrideLit = [('>', "escape spaceship down")]
   }
 escapeSpaceshipDown5 = escapeDown5
   { pfreq     = [("escape spaceship down", 1000)]
-  , poverride = [('>', "escape spaceship down")]
+  , poverrideDark = [('>', "escape spaceship down")]
+  , poverrideLit = [('>', "escape spaceship down")]
   }
 pumps = PlaceKind
   { psymbol  = 'w'
@@ -998,7 +1041,10 @@ pumps = PlaceKind
   , ptopLeft = [ "·f"
                , "%·"
                ]
-  , poverride = [('%', "doorlessMachineryOver_#"), ('f', "pumpsOver_f_Lit")]
+  , poverrideDark = [ ('%', "doorlessMachineryOver_#")
+                    , ('f', "pumpsOver_f_Dark") ]
+  , poverrideLit = [ ('%', "doorlessMachineryOver_#")
+                   , ('f', "pumpsOver_f_Lit") ]
   }
 oval = PlaceKind
   { psymbol  = 'o'
@@ -1015,8 +1061,10 @@ oval = PlaceKind
                , "#·t··"
                , "··t··"
                ]
-  , poverride = [ ('t', "trailLit"), ('a', "alarmingTrailLit")
-                , ('~', "poolOver_~_Lit") ]
+  , poverrideDark = [ ('t', "trailLit"), ('a', "alarmingTrailLit")
+                    , ('~', "poolOver_~_Dark") ]
+  , poverrideLit = [ ('t', "trailLit"), ('a', "alarmingTrailLit")
+                   , ('~', "poolOver_~_Lit") ]
   }
 ovalFloor = oval  -- Without outer solid fence, visible from outside·
   { pfreq    = [ ("rogue", 3000), ("arena", 10000), ("laboratory", 2000)
@@ -1097,7 +1145,8 @@ floodedRoom = PlaceKind  -- Valid for any nonempty area, hence low frequency.
   , pcover   = CStretch
   , pfence   = FWall
   , ptopLeft = ["~"]
-  , poverride = []
+  , poverrideDark = []
+  , poverrideLit = []
   }
 maze = PlaceKind
   { psymbol  = 'm'
@@ -1110,7 +1159,10 @@ maze = PlaceKind
                , "#··#"
                , "··#·"
                ]
-  , poverride = [('&', "cache"), ('+', "trapped door"), ('i', "floorActorItem")]
+  , poverrideDark = [ ('&', "cache"), ('+', "trapped door")
+                    , ('i', "floorActorItem") ]  -- lit or not, randomly
+  , poverrideLit = [ ('&', "cache"), ('+', "trapped door")
+                   , ('i', "floorActorItem") ]  -- lit or not, randomly
   }
 maze2 = maze
   { pfreq    = [("rogue", 20), ("arena", 40), ("empty", 20), ("emptyExit", 20)]
@@ -1162,7 +1214,10 @@ cells = PlaceKind
                , "·#·"
                , "#··"
                ]
-  , poverride = [('%', "doorlessMachineryOver_#"), ('f', "pumpsOver_f_Lit")]
+  , poverrideDark = [ ('%', "doorlessMachineryOver_#")
+                    , ('f', "pumpsOver_f_Dark") ]
+  , poverrideLit = [ ('%', "doorlessMachineryOver_#")
+                   , ('f', "pumpsOver_f_Lit") ]
   }
 cells2 = cells
   { pname    = "humidity equalizers"
@@ -1221,7 +1276,8 @@ tank = PlaceKind  -- in a dark cave, they have little lights --- that's OK
   , pfence   = FNone
   , ptopLeft = [ "#"
                ]
-  , poverride = [('#', "doorlessWallOver_#"), ('r', "reinforced wall")]
+  , poverrideDark = [('#', "doorlessWallOver_#"), ('r', "reinforced wall")]
+  , poverrideLit = [('#', "doorlessWallOver_#"), ('r', "reinforced wall")]
   }
 tank2 = tank
   { pfreq    = [("empty", 800), ("noise", 100), ("battle", 100)]
@@ -1261,7 +1317,8 @@ makeStaircaseUp terminal s = s
  { psymbol   = '<'
  , pname     = pname s <+> "up"
  , pfreq     = map (\(t, k) -> (toGroupName $ tshow t <+> "up", k)) $ pfreq s
- , poverride = ('>', terminal) : filter ((/= '>') . fst) (poverride s)
+ , poverrideDark = ('>', terminal) : filter ((/= '>') . fst) (poverrideDark s)
+ , poverrideLit = ('>', terminal) : filter ((/= '>') . fst) (poverrideLit s)
  }
 
 makeStaircaseDown :: GroupName TileKind -> PlaceKind -> PlaceKind
@@ -1269,7 +1326,8 @@ makeStaircaseDown terminal s = s
  { psymbol   = '>'
  , pname     = pname s <+> "down"
  , pfreq     = map (\(t, k) -> (toGroupName $ tshow t <+> "down", k)) $ pfreq s
- , poverride = ('<', terminal) : filter ((/= '<') . fst) (poverride s)
+ , poverrideDark = ('<', terminal) : filter ((/= '<') . fst) (poverrideDark s)
+ , poverrideLit = ('<', terminal) : filter ((/= '<') . fst) (poverrideLit s)
  }
 
 overrideGatedStaircase :: [(Char, GroupName TileKind)]
@@ -1282,7 +1340,8 @@ makeGatedStaircase s = s
  { psymbol   = 'g'
  , pname     = T.unwords $ "a gated" : tail (T.words (pname s))
  , pfreq     = map (first (\t -> toGroupName $ "gated" <+> tshow t)) $ pfreq s
- , poverride = overrideGatedStaircase
+ , poverrideDark = overrideGatedStaircase
+ , poverrideLit = overrideGatedStaircase
  }
 
 overrideGatedLift :: [(Char, GroupName TileKind)]
@@ -1295,7 +1354,8 @@ makeGatedLift s = s
  { psymbol   = 'g'
  , pname     = T.unwords $ "a gated" : tail (T.words (pname s))
  , pfreq     = map (first (\t -> toGroupName $ "gated" <+> tshow t)) $ pfreq s
- , poverride = overrideGatedLift
+ , poverrideDark = overrideGatedLift
+ , poverrideLit = overrideGatedLift
  }
 
 overrideOutdoor :: [(Char, GroupName TileKind)]
@@ -1308,5 +1368,6 @@ makeOutdoor s = s
  { psymbol   = 'o'
  , pname     = "an outdoor area exit"
  , pfreq     = map (first (\t -> toGroupName $ "outdoor" <+> tshow t)) $ pfreq s
- , poverride = overrideOutdoor
+ , poverrideDark = overrideOutdoor
+ , poverrideLit = overrideOutdoor
  }
