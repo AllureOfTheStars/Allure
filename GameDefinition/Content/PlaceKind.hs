@@ -145,7 +145,7 @@ ruin2 = ruin
   { pname    = "a scaffolding"
   , pfreq    = [("noise", 120)]
   }
-collapsed = PlaceKind  -- in a dark cave, they have little lights --- that's OK
+collapsed = PlaceKind
   { psymbol  = 'c'
   , pname    = "a hardware stack"
   , pfreq    = [("noise", 1)]
@@ -367,9 +367,11 @@ treeShade = PlaceKind
                , "sO·"
                , "Xs·"
                ]
-  , poverrideDark = [ ('O', "treeShadeOver_O_Lit"), ('s', "treeShadeOver_s_Lit")
+  , poverrideDark = [ ('O', "treeShadeOver_O_Dark")
+                    , ('s', "treeShadeOver_s_Dark")
                     , ('·', "shaded ground") ]
-  , poverrideLit = [ ('O', "treeShadeOver_O_Lit"), ('s', "treeShadeOver_s_Lit")
+  , poverrideLit = [ ('O', "treeShadeOver_O_Lit")
+                   , ('s', "treeShadeOver_s_Lit")
                    , ('·', "shaded ground") ]
   }
 fogClump = PlaceKind
@@ -445,10 +447,10 @@ bushClump = PlaceKind
                , ";X"
                , ";f"
                ]
-  , poverrideDark = [('f', "bushClumpOver_f_Lit"), (';', "bush Lit")]
+  , poverrideDark = [('f', "bushClumpOver_f_Dark"), (';', "bush Lit")]
   , poverrideLit = [('f', "bushClumpOver_f_Lit"), (';', "bush Lit")]
-      -- should not be used in caves with trails, because bushes should
-      -- not grow over such artificial trails
+      -- should not be used in caves with trails, because bushes can't
+      -- grow over such artificial trails
   }
 escapeUp = PlaceKind
   { psymbol  = '<'
@@ -1074,7 +1076,7 @@ oval = PlaceKind
   , poverrideLit = [ ('t', "trailLit"), ('a', "alarmingTrailLit")
                    , ('~', "poolOver_~_Lit") ]
   }
-ovalFloor = oval  -- Without outer solid fence, visible from outside·
+ovalFloor = oval
   { pfreq    = [ ("rogue", 3000), ("arena", 10000), ("laboratory", 2000)
                , ("empty", 5000), ("emptyExit", 5000)
                , ("zoo", 10000), ("ambush", 100) ]
@@ -1273,7 +1275,7 @@ cells7 = cells
                , "·%·"
                ]
   }
-tank = PlaceKind  -- in a dark cave, they have little lights --- that's OK
+tank = PlaceKind
   { psymbol  = 'c'
   , pname    = "a tank"
   , pfreq    = [("empty", 1), ("emptyExit", 1)]

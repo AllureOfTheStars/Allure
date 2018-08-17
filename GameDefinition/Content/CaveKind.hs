@@ -125,7 +125,7 @@ arena2 = arena
   , cminPlaceSize = DiceXY (2 `d` 2 + 4) 6
   , cmaxPlaceSize = DiceXY 16 12
   , cdarkOdds     = 41 + 1 `d` 10  -- almost all rooms lit (1 in 10 dark)
-  -- Trails provide enough light for fun stealth.
+  -- Trails provide enough light for fun stealth, though level too small.
   , cnightOdds    = 51  -- always night
   , cminStairDist = 10
   , cactorCoeff   = 80  -- cramped, don't overcrowd
@@ -318,7 +318,6 @@ shallow1empty = empty
   , cfenceTileW   = "habitat containment wall"
   , cdesc         = "The black sky outside sucks light through the oriels and airlock glass. This is the main pressurized cargo bay and storage, with the only other docking hub for small craft somewhere among the giant spaceship's uppermost levels. You can't see from afar the shuttle you left engaged to one of the few free airlocks covered in guano. Water treatment basins and series of hanging and stacked tanks double as radiation shields. Hoses writhe on the floor and dangle in thick knots from the ceiling."
       -- E and W sides are borders with other level sections, so no oriels.
-      -- TODO: water-filled wall-less rooms, as soon as there are water tiles
       -- TODO: exclusively water-liking animals, when there is enough; plants
   }
 emptyExit = empty
@@ -440,7 +439,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , ccellSize     = DiceXY (1 `d` 3 + 6) 7
   , cminPlaceSize = DiceXY 5 4
   , cmaxPlaceSize = DiceXY 9 9  -- bias towards larger lamp areas
-  , cdarkOdds     = 51  -- colonnade rooms should always be dark
+  , cdarkOdds     = 0
   , cnightOdds    = 51  -- always night
   , cauxConnects  = 2
   , cmaxVoid      = 1%100
@@ -453,7 +452,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
                     , ("explosive", 100) ]
   , cplaceFreq    = [("escape", 100)]
   , cpassable     = True
-  , cdefTile      = "escapeSetDark"  -- different tiles, not burning yet
+  , cdefTile      = "escapeSetDark"
   , cdarkCorTile  = "alarmingTrailLit"  -- let trails give off light
   , clitCorTile   = "alarmingTrailLit"
   , cescapeFreq   = [("escape outdoor down", 1)]
@@ -468,7 +467,7 @@ zoo = rogue  -- few lights and many solids, to help the less numerous heroes
   , ccellSize     = DiceXY (1 `d` 3 + 7) 6
   , cminPlaceSize = DiceXY 4 4
   , cmaxPlaceSize = DiceXY 12 5
-  , cdarkOdds     = 51  -- always dark rooms
+  , cdarkOdds     = 0
   , cnightOdds    = 51  -- always night
   , cauxConnects  = 1%4
   , cmaxVoid      = 1%20
@@ -497,13 +496,14 @@ ambush = rogue  -- a scenario with strong missiles;
                 -- of missiles are usually not seen, so enemy can't be guessed;
                 -- camping doesn't pay off, because enemies can sneak and only
                 -- active scouting, throwing flares and shooting discovers them
+                -- and the level is big enough for all that
   { csymbol       = 'M'
   , cname         = "Ravaged spaceport"  -- non-official adjective
   , cfreq         = [("caveAmbush", 1)]
   , ccellSize     = DiceXY 12 5
   , cminPlaceSize = DiceXY 8 12
   , cmaxPlaceSize = DiceXY 40 40  -- allow hangars
-  , cdarkOdds     = 51  -- colonnade rooms should always be dark
+  , cdarkOdds     = 0
   , cnightOdds    = 51  -- always night
   , cauxConnects  = 3%2
   , cmaxVoid      = 1%20
