@@ -384,8 +384,8 @@ fogClump = PlaceKind
                , ";f"
                , ";f"
                ]
-  , poverrideDark = [('f', "fogClumpOver_f_Dark"), (';', "lit fog")]
-  , poverrideLit = [('f', "fogClumpOver_f_Lit"), (';', "lit fog")]
+  , poverrideDark = [('f', "fogClumpOver_f_Dark"), (';', "fog Lit")]
+  , poverrideLit = [('f', "fogClumpOver_f_Lit"), (';', "fog Lit")]
   }
 fogClump2 = fogClump
   { pfreq    = [("escape", 80), ("shootout", 400)
@@ -410,9 +410,9 @@ smokeClump = PlaceKind
                , ";f"
                , ";f"
                ]
-  , poverrideDark = [ ('f', "smokeClumpOver_f_Dark"), (';', "lit smoke")
+  , poverrideDark = [ ('f', "smokeClumpOver_f_Dark"), (';', "smoke Lit")
                     , ('·', "floorActorDark") ]
-  , poverrideLit = [ ('f', "smokeClumpOver_f_Lit"), (';', "lit smoke")
+  , poverrideLit = [ ('f', "smokeClumpOver_f_Lit"), (';', "smoke Lit")
                    , ('·', "floorActorLit") ]
   }
 smokeClump2FGround = smokeClump
@@ -1312,22 +1312,26 @@ tank5 = tank
 
 -- * Helper functions
 
-makeStaircaseUp :: GroupName TileKind -> PlaceKind -> PlaceKind
+makeStaircaseUp :: Text -> PlaceKind -> PlaceKind
 makeStaircaseUp terminal s = s
  { psymbol   = '<'
  , pname     = pname s <+> "up"
  , pfreq     = map (\(t, k) -> (toGroupName $ tshow t <+> "up", k)) $ pfreq s
- , poverrideDark = ('>', terminal) : filter ((/= '>') . fst) (poverrideDark s)
- , poverrideLit = ('>', terminal) : filter ((/= '>') . fst) (poverrideLit s)
+ , poverrideDark = ('>', toGroupName $ terminal <+> "Dark")
+                   : filter ((/= '>') . fst) (poverrideDark s)
+ , poverrideLit = ('>', toGroupName $ terminal <+> "Lit")
+                  : filter ((/= '>') . fst) (poverrideLit s)
  }
 
-makeStaircaseDown :: GroupName TileKind -> PlaceKind -> PlaceKind
+makeStaircaseDown :: Text -> PlaceKind -> PlaceKind
 makeStaircaseDown terminal s = s
  { psymbol   = '>'
  , pname     = pname s <+> "down"
  , pfreq     = map (\(t, k) -> (toGroupName $ tshow t <+> "down", k)) $ pfreq s
- , poverrideDark = ('<', terminal) : filter ((/= '<') . fst) (poverrideDark s)
- , poverrideLit = ('<', terminal) : filter ((/= '<') . fst) (poverrideLit s)
+ , poverrideDark = ('<', toGroupName $ terminal <+> "Dark")
+                   : filter ((/= '<') . fst) (poverrideDark s)
+ , poverrideLit = ('<', toGroupName $ terminal <+> "Lit")
+                  : filter ((/= '<') . fst) (poverrideLit s)
  }
 
 overrideGatedStaircase :: [(Char, GroupName TileKind)]
