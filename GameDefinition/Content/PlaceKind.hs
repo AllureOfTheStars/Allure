@@ -21,7 +21,7 @@ import Game.LambdaHack.Content.TileKind (TileKind)
 
 content :: [PlaceKind]
 content =
-  [deadEnd, rect, rect2, rectWindows, glasshouse, glasshouse2, glasshouse3, pulpit, ruin, ruin2, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, pillar6, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2FGround, bushClump, escapeUp, escapeUp2, escapeUp3, escapeUp4, escapeUp5, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeOutdoorDown, staircase1, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircase18, staircase19, staircase20, staircase21, staircase22, staircase23, staircase24, staircase25, staircase26, staircase27, staircase28, staircase29, staircase30, staircase31, staircase32, staircase33, staircase34, staircase35, staircase36, staircase37]
+  [deadEnd, rect, rect2, rectWindows, glasshouse, glasshouse2, glasshouse3, pulpit, ruin, ruin2, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, pillar6, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2, smokeClump3FGround, bushClump, escapeUp, escapeUp2, escapeUp3, escapeUp4, escapeUp5, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeOutdoorDown, staircase1, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircase18, staircase19, staircase20, staircase21, staircase22, staircase23, staircase24, staircase25, staircase26, staircase27, staircase28, staircase29, staircase30, staircase31, staircase32, staircase33, staircase34, staircase35, staircase36, staircase37]
   -- Allure-specific
   ++ [staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25]
   -- automatically generated
@@ -29,7 +29,7 @@ content =
   -- Allure-specific, continued
   ++ [escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5]
 
-deadEnd,    rect, rect2, rectWindows, glasshouse, glasshouse2, glasshouse3, pulpit, ruin, ruin2, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, pillar6, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2FGround, bushClump, escapeUp, escapeUp2, escapeUp3, escapeUp4, escapeUp5, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeOutdoorDown, staircase1, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircase18, staircase19, staircase20, staircase21, staircase22, staircase23, staircase24, staircase25, staircase26, staircase27, staircase28, staircase29, staircase30, staircase31, staircase32, staircase33, staircase34, staircase35, staircase36, staircase37 :: PlaceKind
+deadEnd,    rect, rect2, rectWindows, glasshouse, glasshouse2, glasshouse3, pulpit, ruin, ruin2, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, pillar6, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2, smokeClump3FGround, bushClump, escapeUp, escapeUp2, escapeUp3, escapeUp4, escapeUp5, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeOutdoorDown, staircase1, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircase18, staircase19, staircase20, staircase21, staircase22, staircase23, staircase24, staircase25, staircase26, staircase27, staircase28, staircase29, staircase30, staircase31, staircase32, staircase33, staircase34, staircase35, staircase36, staircase37 :: PlaceKind
 -- Allure-specific
 staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25, escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5 :: PlaceKind
 
@@ -382,7 +382,7 @@ fogClump = PlaceKind
   , pfence   = FNone
   , ptopLeft = [ "f;"
                , ";f"
-               , ";f"
+               , ";X"
                ]
   , poverrideDark = [('f', "fogClumpOver_f_Dark"), (';', "fog Lit")]
   , poverrideLit = [('f', "fogClumpOver_f_Lit"), (';', "fog Lit")]
@@ -390,13 +390,10 @@ fogClump = PlaceKind
 fogClump2 = fogClump
   { pfreq    = [ ("escape", 80), ("shootout", 400)
                , ("empty", 5000), ("emptyExit", 3000) ]
-  , prarity  = [(1, 1)]
-  , pcover   = CMirror
-  , pfence   = FNone
-  , ptopLeft = [ "Xff"
+  , ptopLeft = [ "X;f"
                , "f;f"
-               , ";;f"
-               , "XfX"
+               , ";;X"
+               , "Xff"
                ]
   }
 smokeClump = PlaceKind
@@ -408,25 +405,34 @@ smokeClump = PlaceKind
   , pfence   = FNone
   , ptopLeft = [ "f;"
                , ";f"
-               , ";f"
+               , ";X"
                ]
   , poverrideDark = [ ('f', "smokeClumpOver_f_Dark"), (';', "smoke Lit")
                     , ('·', "floorActorDark") ]
   , poverrideLit = [ ('f', "smokeClumpOver_f_Lit"), (';', "smoke Lit")
                    , ('·', "floorActorLit") ]
   }
-smokeClump2FGround = smokeClump
+smokeClump2 = smokeClump
+  { pfreq    = [("zoo", 500), ("ambush", 100), ("emptyExit", 300)]
+  , ptopLeft = [ "X;f"
+               , "f;f"
+               , ";;X"
+               , "Xff"
+               ]
+  }
+smokeClump3FGround = smokeClump
   { pname    = "a burned out area"
-  , pfreq    = [ ("laboratory", 80), ("zoo", 500), ("ambush", 100)
-               , ("emptyExit", 300) ]
+  , pfreq    = [("laboratory", 80)]
   , prarity  = [(1, 1)]
-  , pcover   = CMirror
+  , pcover   = CVerbatim
   , pfence   = FGround
   , ptopLeft = [ ";f;"
                , "f·f"
-               , ";·f"
+               , "f·f"
                , ";f;"
                ]
+      -- should not be used in caves with trails, because bushes should
+      -- not grow over such artificial trails
   }
 bushClump = PlaceKind
   { psymbol  = 'b'
@@ -436,11 +442,13 @@ bushClump = PlaceKind
   , pcover   = CMirror
   , pfence   = FNone
   , ptopLeft = [ "f;"
-               , ";f"
+               , ";X"
                , ";f"
                ]
   , poverrideDark = [('f', "bushClumpOver_f_Lit"), (';', "bush Lit")]
   , poverrideLit = [('f', "bushClumpOver_f_Lit"), (';', "bush Lit")]
+      -- should not be used in caves with trails, because bushes should
+      -- not grow over such artificial trails
   }
 escapeUp = PlaceKind
   { psymbol  = '<'

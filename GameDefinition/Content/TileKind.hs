@@ -21,12 +21,12 @@ import Game.LambdaHack.Content.TileKind
 
 content :: [TileKind]
 content =
-  [unknown, unknownOuterFence, basicOuterFence, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade ]
+  [unknown, unknownOuterFence, basicOuterFence, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade ]
   ++ map makeDarkColor ldarkColorable
   -- Allure-specific
   ++ [oriel, outerHullWall, doorlessWall, rubbleBurning, rubbleBurningSpice, wallObscuredSafety, wallObscured3dBillboard, liftShaft, rock, pillarCache2, pillarCache3, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, machineWall, machineWallSpice, floorWindow]
 
-unknown,    unknownOuterFence, basicOuterFence, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade :: TileKind
+unknown,    unknownOuterFence, basicOuterFence, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade :: TileKind
 -- Allure-specific
 oriel,       outerHullWall, doorlessWall, rubbleBurning, rubbleBurningSpice, wallObscuredSafety, wallObscured3dBillboard, liftShaft, rock, pillarCache2, pillarCache3, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, machineWall, machineWallSpice, floorWindow :: TileKind
 
@@ -499,7 +499,7 @@ floorDirt = floorArena
                , ("ambushSetLit", 1000) ]
   }
 floorDirtSpice = floorDirt
-  { tfreq    = [ ("treeShadeOver_s_Lit", 1), ("fogClumpOver_f_Lit", 40)
+  { tfreq    = [ ("treeShadeOver_s_Lit", 1), ("fogClumpOver_f_Lit", 20)
                , ("smokeClumpOver_f_Lit", 1), ("bushClumpOver_f_Lit", 1)
                , ("pumpsOver_f_Lit", 1) ]
   , tfeature = Spice : tfeature floorDirt
@@ -511,6 +511,12 @@ floorActor = floorArena
 floorActorItem = floorActor
   { tfreq    = [("floorActorItem", 1), ("legendLit", 100)]
   , tfeature = VeryOftenItem : tfeature floorActor
+  }
+floorAshes = floorActor
+  { tfreq    = [("smokeClumpOver_f_Lit", 1), ("smokeClumpOver_f_Dark", 1)]
+  , tname    = "ashes"
+  , tcolor   = Brown
+  , tcolor2  = BrBlack
   }
 shallowWater = TileKind
   { tsymbol  = '~'
@@ -524,7 +530,7 @@ shallowWater = TileKind
   , tfeature = Embed "shallow water" : tfeature floorActor
   }
 shallowWaterSpice = shallowWater
-  { tfreq    = [("fogClumpOver_f_Lit", 20), ("pumpsOver_f_Lit", 1)]
+  { tfreq    = [("fogClumpOver_f_Lit", 40), ("pumpsOver_f_Lit", 1)]
   , tfeature = Spice : tfeature shallowWater
   }
 shallowWater2 = shallowWater
