@@ -1290,20 +1290,23 @@ tank = PlaceKind
   , poverrideLit = [('#', "doorlessWallOver_#"), ('r', "reinforced wall")]
   }
 tank2 = tank
-  { pfreq    = [("empty", 800), ("noise", 100), ("battle", 100)]
+  { pfreq    = [ ("empty", 800), ("emptyExit", 80), ("noise", 100)
+               , ("battle", 100) ]
   , ptopLeft = [ "O#"
                , "##"
                ]
   }
 tank3 = tank
-  { pfreq    = [("empty", 1000), ("noise", 200), ("battle", 200)]
+  { pfreq    = [ ("empty", 1000), ("emptyExit", 100), ("noise", 200)
+               , ("battle", 200) ]
   , ptopLeft = [ "rr#"
                , "r##"
                , "###"
                ]
   }
 tank4 = tank
-  { pfreq    = [("empty", 1500), ("noise", 300), ("battle", 300)]
+  { pfreq    = [ ("empty", 1500), ("emptyExit", 150), ("noise", 300)
+               , ("battle", 300) ]
   , ptopLeft = [ "XXO#"
                , "Xrr#"
                , "Or##"
@@ -1312,7 +1315,8 @@ tank4 = tank
   }
 tank5 = tank
   { pname    = "a cistern"
-  , pfreq    = [("empty", 1500), ("noise", 300), ("battle", 300)]
+  , pfreq    = [ ("empty", 1500), ("emptyExit", 150), ("noise", 300)
+               , ("battle", 300) ]
   , ptopLeft = [ "XXr#"
                , "Xr##"
                , "r###"
