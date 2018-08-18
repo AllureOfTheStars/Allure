@@ -106,16 +106,17 @@ The basic tile kinds are as follows.
     open door                              '
     smoke or fog                           ;
     ground, corridor                       .
+    water                                  ~
     stairs or exit up                      <
     stairs or exit down                    >
 
 So, for example, the following map shows a room with a closed door
 connected by a corridor with a room with an open door, a pillar,
-staircase down and rubble that obscures one of the corners.
+staircase up and rubble that obscures one of the corners.
 
     ####       ####
     #..#########..&&
-    #..+.......'.O.>&#
+    #..+.......'.O.<&#
     #..#########.....#
     ####       #######
 
@@ -123,9 +124,8 @@ staircase down and rubble that obscures one of the corners.
 Basic Commands
 --------------
 
-This section is a copy of the first two screens of in-game help
-and a screen introducing mouse commands. The help pages are
-automatically generated based on a game's keybinding content and
+This section is a copy of the basic few screens of in-game help. The help
+pages are automatically generated based on a game's keybinding content and
 on overrides in the player's config file. The remaining in-game help screens,
 not shown here, list all game commands grouped by categories, in detail.
 A text snapshot of the complete in-game help is in
