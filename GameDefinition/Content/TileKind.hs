@@ -155,7 +155,7 @@ pillar = TileKind
 pillarCache = TileKind
   { tsymbol  = '#'
   , tname    = "abandoned stash"
-  , tfreq    = [("cachable", 20), ("cache", 1)]
+  , tfreq    = [("cache", 1), ("cachable", 20), ("cachable spice", 10)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 5
@@ -225,7 +225,7 @@ treeBurning = tree
 rubble = TileKind
   { tsymbol  = '&'
   , tname    = "rubble pile"
-  , tfreq    = [ ("rubble", 1)
+  , tfreq    = [ ("rubble", 1), ("legendLit", 1), ("legendDark", 1)
                , ("stair terminal Lit", 6), ("stair terminal Dark", 6)
                , ("lift terminal Lit", 6), ("lift terminal Dark", 6)
                , ("emptySetLit", 7), ("emptyExitSetLit", 7)
@@ -241,7 +241,8 @@ rubble = TileKind
       -- Also, AI doesn't go out of its way to clear the way for heroes.
   }
 rubbleSpice = rubble
-  { tfreq    = [("smokeClumpOver_f_Lit", 1), ("smokeClumpOver_f_Dark", 1)]
+  { tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("smokeClumpOver_f_Dark", 1)
+               , ("rubbleOrWaste_Lit", 1), ("rubbleOrWaste_Dark", 1) ]
   , tfeature = Spice : tfeature rubble
   }
 doorTrapped = TileKind
@@ -359,7 +360,7 @@ wallGlass = TileKind
   , tfeature = [BuildAs "closed door", Clear]
   }
 wallGlassSpice = wallGlass
-  { tfreq    = [("rectWindowsOver_%", 20)]
+  { tfreq    = [("rectWindowsOver_%", 20), ("cachable spice", 90)]
   , tfeature = Spice : tfeature wallGlass
   }
 pillarIce = TileKind
@@ -490,7 +491,8 @@ floorDamp = floorArena
   { tname    = "oily floor"
   , tfreq    = [ ("noiseSetLit", 600), ("emptyExitSetLit", 880)
                , ("damp stone floor Lit", 1)
-               , ("stair terminal Lit", 20), ("lift terminal Lit", 6) ]
+               , ("stair terminal Lit", 20), ("lift terminal Lit", 6)
+               , ("rubbleOrWaste_Lit", 1) ]
   }
 floorDirt = floorArena
   { tname    = "dirt"
@@ -530,7 +532,8 @@ shallowWater = TileKind
   , tfeature = Embed "shallow water" : tfeature floorActor
   }
 shallowWaterSpice = shallowWater
-  { tfreq    = [("fogClumpOver_f_Lit", 40), ("pumpsOver_f_Lit", 1)]
+  { tfreq    = [ ("fogClumpOver_f_Lit", 40), ("pumpsOver_f_Lit", 1)
+               , ("rubbleOrWaste_Lit", 1) ]
   , tfeature = Spice : tfeature shallowWater
   }
 shallowWater2 = shallowWater
