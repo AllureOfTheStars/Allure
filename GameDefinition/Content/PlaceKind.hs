@@ -1169,9 +1169,9 @@ maze = PlaceKind
                , "#··#"
                , "··#·"
                ]
-  , poverrideDark = [ ('&', "cache"), ('+', "trapped door")
+  , poverrideDark = [ ('&', "cache maze"), ('+', "trapped door")
                     , ('i', "floorActorItem") ]  -- lit or not, randomly
-  , poverrideLit = [ ('&', "cache"), ('+', "trapped door")
+  , poverrideLit = [ ('&', "cache maze"), ('+', "trapped door")
                    , ('i', "floorActorItem") ]  -- lit or not, randomly
   }
 maze2 = maze
@@ -1204,11 +1204,11 @@ mazeBig2 = maze
                , ("empty", 150), ("emptyExit", 70) ]
   , prarity  = [(1, 10), (10, 20)]
   , pfence   = FNone
-  , ptopLeft = [ "X#####"
-               , "#·##··"
-               , "##···#"
-               , "##··&·"
-               , "#··#··"
+  , ptopLeft = [ "XX###~"
+               , "X#···%"
+               , "#·###·"
+               , "#·+&%%"
+               , "#·#iii"
                ]
   }
 cells = PlaceKind
@@ -1343,13 +1343,13 @@ shuttleHusk = PlaceKind
   , poverrideDark = [ ('·', "damp stone floor Dark")
                     , ('r', "rubbleOrWaste_Dark")
                     , ('#', "shuttle hull")
-                    , ('c', "cachable spice")
+                    , ('c', "cache shuttle")
                     , ('h', "hardware rack")
                     , ('w', "reinforced wall") ]
   , poverrideLit = [ ('·', "damp stone floor Lit")
                    , ('r', "rubbleOrWaste_Lit")
                    , ('#', "shuttle hull")
-                   , ('c', "cachable spice")
+                   , ('c', "cache shuttle")
                    , ('h', "hardware rack")
                    , ('w', "reinforced wall") ]
   }
