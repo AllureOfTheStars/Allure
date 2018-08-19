@@ -24,11 +24,11 @@ embeds :: [ItemKind]
 embeds =
   [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater]
   -- Allure-specific
-  ++ [blackStarrySky, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2]
+  ++ [blackStarrySky, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware]
 
 scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater :: ItemKind
 -- Allure-specific
-blackStarrySky,       ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2 :: ItemKind
+blackStarrySky,       ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware :: ItemKind
 
 -- Make sure very few walls are substantially useful, e.g., caches,
 -- and none that are secret. Otherwise the player will spend a lot of time
@@ -91,7 +91,7 @@ subtleFresco = ItemKind
   }
 treasureCache = stairsUp
   { isymbol  = 'O'
-  , iname    = "odds and ends"
+  , iname    = "set of odds and ends"
   , ifreq    = [("treasure cache", 1)]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
@@ -419,4 +419,19 @@ liftTrap2 = liftTrap
   , ieffects = [ Temporary "inhale the gas lingering inside the cab"
                , toOrganBad "slowed" $ (1 `dL` 4) * 10 ]
   , idesc    = ""
+  }
+shuttleHardware = ItemKind
+  { isymbol  = '#'
+  , iname    = "shuttle hardware"
+  , ifreq    = [("shuttle hardware", 1)]
+  , iflavour = zipPlain [BrWhite]
+  , icount   = 1
+  , irarity  = [(1, 1)]
+  , iverbHit = "resist"
+  , iweight  = 10000
+  , idamage  = 0
+  , iaspects = [SetFlag Durable]
+  , ieffects = []
+  , idesc    = "While the hull of the spacecraft is intact, the flight hardware that normally lines the walls seems broken, worn out and often missing. This shuttle was probably scavenged for spare parts to repair other craft and it's unlikely that anything of use remains. This was a tiny shuttle to being with, designed for lunar and orbital courier duties and single family trips. This kind is relatively cheap to operate, because no permanent airlock needs to be assigned for it to dock with, but it can be brought through a large airlock into the mothership and stored and serviced inside. This is a compact and efficient design, but even if repaired, the craft doesn't have enough fuel capacity for inter-planetary flights."
+  , ikit     = []
   }

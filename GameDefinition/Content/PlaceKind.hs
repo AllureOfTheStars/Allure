@@ -1342,11 +1342,13 @@ shuttleHusk = PlaceKind
                ]
   , poverrideDark = [ ('·', "damp stone floor Dark")
                     , ('r', "rubbleOrWaste_Dark")
+                    , ('#', "shuttle hull")
                     , ('c', "cachable spice")
                     , ('h', "hardware rack")
                     , ('w', "reinforced wall") ]
   , poverrideLit = [ ('·', "damp stone floor Lit")
                    , ('r', "rubbleOrWaste_Lit")
+                   , ('#', "shuttle hull")
                    , ('c', "cachable spice")
                    , ('h', "hardware rack")
                    , ('w', "reinforced wall") ]
