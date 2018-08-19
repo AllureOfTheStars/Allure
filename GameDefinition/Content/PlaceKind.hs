@@ -394,7 +394,7 @@ fogClump2 = fogClump
                , ("empty", 5000), ("emptyExit", 3000) ]
   , ptopLeft = [ "X;f"
                , "f;f"
-               , ";;X"
+               , ";;f"
                , "Xff"
                ]
   }
@@ -418,7 +418,7 @@ smokeClump2 = smokeClump
   { pfreq    = [("zoo", 500), ("ambush", 100), ("emptyExit", 300)]
   , ptopLeft = [ "X;f"
                , "f;f"
-               , ";;X"
+               , ";;f"
                , "Xff"
                ]
   }
