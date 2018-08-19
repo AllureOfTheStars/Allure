@@ -316,7 +316,7 @@ shallow1empty = empty
   , cfenceTileE   = "habitat containment wall"
   , cfenceTileS   = "empty airlock fence"
   , cfenceTileW   = "habitat containment wall"
-  , cdesc         = "The black sky outside sucks light through the oriel and airlock glass. This is the main pressurized cargo bay and storage, with the only other docking hub for small craft somewhere among the giant spaceship's uppermost levels. You can't see from afar the shuttle you left engaged to one of the few free airlocks covered in guano. Water treatment basins and series of hanging and stacked tanks double as radiation shields. Hoses writhe on the floor and dangle in thick knots from the ceiling."
+  , cdesc         = "The black sky outside sucks light through the oriel and airlock glass. At this outermost deck, the curvature of the floor is unnoticeable and artificial gravity as strong as on Earth. Here is the main pressurized cargo bay and storage, with the only other docking hub for small craft somewhere among the giant spaceship's uppermost levels. You can't see from afar the shuttle you left engaged to one of the few free airlocks covered in guano. Water treatment basins and series of hanging and stacked tanks double as radiation shields. Hoses writhe on the floor and dangle in thick knots from the ceiling."
       -- E and W sides are borders with other level sections, so no oriels.
       -- TODO: exclusively water-liking animals, when there is enough; plants
   }

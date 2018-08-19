@@ -88,8 +88,6 @@ wall = TileKind
   { tsymbol  = '#'
   , tname    = "wall"
   , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
-               , ("cachable deposit", 80), ("cachable jewelry", 80)
-               , ("cachable", 80)
                , ("stair terminal Lit", 100), ("stair terminal Dark", 100)
                , ("battleSetDark", 250), ("escapeSetDark", 4)
                , ("rectWindowsOver_%", 80) ]
@@ -155,12 +153,13 @@ pillar = TileKind
 pillarCache = TileKind
   { tsymbol  = '#'
   , tname    = "abandoned stash"
-  , tfreq    = [("cachable", 20), ("cache maze", 25), ("cache shuttle", 15)]
+  , tfreq    = [ ("cachable abandoned", 20)
+               , ("cache maze", 25), ("cache shuttle", 15) ]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 5
-  , tfeature = [ Embed "treasure cache", Embed "treasure cache trap"
-               , ChangeTo "cachable", ConsideredByAI ]
+  , tfeature = [ Embed "abandoned cache"
+               , ChangeTo "cachable abandoned", ConsideredByAI ]
       -- Not explorable, but prominently placed, so hard to miss.
       -- Very beneficial, so AI eager to trigger, unless wary of traps.
   }
@@ -171,7 +170,13 @@ lampPost = TileKind
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 100
-  , tfeature = []
+  , tfeature = []  -- embed something and explain how there's often
+                   -- artificial ambient light in the habitats, but not in all
+                   -- of them and in both cases lamps are used to provide fancy
+                   -- (extra) lighting; say how low energy drain, such as
+                   -- permanent ambient light, is not a problem due to tech
+                   -- and also because it's a tiny fraction of what is needed
+                   -- for the ecosystem/life support
   }
 signboardUnread = TileKind  -- client only, indicates never used by this faction
   { tsymbol  = 'O'
@@ -243,7 +248,7 @@ rubble = TileKind
 rubbleSpice = rubble
   { tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("smokeClumpOver_f_Dark", 1)
                , ("rubbleOrWaste_Lit", 1), ("rubbleOrWaste_Dark", 1)
-               , ("cache deposit", 80) ]
+               , ("cache deposit", 80), ("cachable deposit", 80) ]
   , tfeature = Spice : tfeature rubble
   }
 doorTrapped = TileKind
@@ -361,7 +366,8 @@ wallGlass = TileKind
   , tfeature = [BuildAs "closed door", Clear]
   }
 wallGlassSpice = wallGlass
-  { tfreq    = [("rectWindowsOver_%", 20), ("cache jewelry", 75)]
+  { tfreq    = [ ("rectWindowsOver_%", 20)
+               , ("cache jewelry", 75), ("cachable jewelry", 80) ]
   , tfeature = Spice : tfeature wallGlass
   }
 pillarIce = TileKind
@@ -534,7 +540,7 @@ shallowWater = TileKind
   , tfeature = Embed "shallow water" : tfeature floorActor
   }
 shallowWaterSpice = shallowWater
-  { tfreq    = [ ("fogClumpOver_f_Lit", 40), ("pumpsOver_f_Lit", 3)
+  { tfreq    = [ ("fogClumpOver_f_Lit", 40), ("pumpsOver_f_Lit", 2)
                , ("rubbleOrWaste_Lit", 1) ]
   , tfeature = Spice : tfeature shallowWater
   }
@@ -665,7 +671,7 @@ pillarCache3 = pillarCache
   { tname    = "jewelry display"
   , tfreq    = [ ("cachable jewelry", 20), ("cache jewelry", 25)
                , ("escapeSetDark", 1) ]
-  , tfeature = [ Embed "jewelry case", Embed "treasure cache trap"
+  , tfeature = [ Embed "jewelry case", Embed "jewelry display trap"
                , ChangeTo "cachable jewelry", ConsideredByAI ]
   }
 stairsLiftUp = stairsUp
@@ -734,7 +740,8 @@ reinforcedWall = TileKind
   , tfeature = []
   }
 reinforcedWallSpice = reinforcedWall
-  { tfreq    = [("doorlessWallOver_#", 20), ("cache maze", 75)]
+  { tfreq    = [ ("doorlessWallOver_#", 20)
+               , ("cache maze", 75), ("cachable abandoned", 80) ]
   , tfeature = Spice : tfeature reinforcedWall
   }
 wallShuttle = wall

@@ -89,10 +89,10 @@ subtleFresco = ItemKind
   , idesc    = "Expensive yet tasteful."
   , ikit     = []
   }
-treasureCache = stairsUp
+treasureCache = ItemKind
   { isymbol  = 'O'
   , iname    = "set of odds and ends"
-  , ifreq    = [("treasure cache", 1)]
+  , ifreq    = [("abandoned cache", 1)]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
   , irarity  = [(1, 1)]
@@ -101,13 +101,13 @@ treasureCache = stairsUp
   , idamage  = 0
   , iaspects = [SetFlag Durable]
   , ieffects = [CreateItem CGround "common item" timerNone]
-  , idesc    = ""
+  , idesc    = "If this stash is hidden, it's in plain sight. Or, more probably, it's just tucked aside so that it doesn't get lost. There are clear signs that many artisans shaped and reshaped these halls over the yeats. They needed to store their tools and personal belongings between shifts and, apparently, not in every case were able to return and retrive them."
   , ikit     = []
   }
 treasureCacheTrap = ItemKind
   { isymbol  = '^'
   , iname    = "anti-theft protection"
-  , ifreq    = [("treasure cache trap", 1)]
+  , ifreq    = [("jewelry display trap", 1)]
   , iflavour = zipPlain [Red]
   , icount   = 1
   , irarity  = [(1, 1)]
@@ -118,10 +118,8 @@ treasureCacheTrap = ItemKind
   , ieffects = [OneOf [ toOrganBad "blind" (40 + 1 `d` 10)
                       , RefillCalm (-99)
                       , Explode "focused concussion"
-                      , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1)
-                      , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1)
-                      , RefillCalm (-1) ]]
-  , idesc    = ""
+                      , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1) ]]
+  , idesc    = "You didn't think such kingly trinkets are on display without any protection, did you? Especially that some of the goods let you fry video monitoring equipment at the other side of the hall."
   , ikit     = []
   }
 signboardExit = ItemKind
@@ -203,7 +201,7 @@ rubble = ItemKind
                       , CreateItem CGround "common item" timerNone
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1)
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1) ]]
-  , idesc    = "Broken chunks of foam concrete and glass."
+  , idesc    = "Broken chunks of foam concrete, glass and torn and burned equipment."
   , ikit     = []
   }
 doorwayTrapTemplate = ItemKind
@@ -363,7 +361,7 @@ ruinedFirstAidKit = ItemKind
                        , toOrganNoTimer "slow resistant"
                        , toOrganGood "drunk" (20 + 1 `d` 5) ]
                , CreateItem CInv "needle" timerNone ]
-  , idesc    = ""  -- regulations require
+  , idesc    = ""  -- regulations require; say HP not regenerated; how to regain
   , ikit     = []
   }
 wall3dBillboard = ItemKind
@@ -387,23 +385,23 @@ depositBox = treasureCache
   { iname    = "intact deposit box"
   , ifreq    = [("deposit box", 1)]
   , ieffects = [CreateItem CGround "valuable" timerNone]
-  , idesc    = "Glittering gems and gold, just waiting to be taken."
+  , idesc    = "The reports of intact deposit boxes in the ship's safes have been greatly exaggerated, but there are still a few with glittering gems and gold, just waiting to be taken. Whomever looted these halls wasn't thorough or, judging from the damage to some of the boxes, was in a hurry."
   }
 jewelryCase = treasureCache
   { iname    = "jewelry case"
   , ifreq    = [("jewelry case", 1)]
   , ieffects = [CreateItem CGround "any jewelry" timerNone]
-  , idesc    = ""
+  , idesc    = "The customers of these shops must have been extremely well off, judging from abundance and quality of the jewelry, often extremely valuable in each of the artistic, material and nanotechnology aspects. Outer Solar System trips are expensive, but even more importantly, they offer unique trade and investment opportunities, often of the kind that can't be negotiated outside a fully electronically isolated room screened by both parties. Some of the jewelry are precisely portable versions of such screening hardware --- in a breathtaking package, no less."
   }
 liftUp = stairsUp
   { iname    = "carriage"
   , ifreq    = [("lift up", 1)]
-  , idesc    = ""
+  , idesc    = ""  -- describe inner levels of the ship
   }
 liftDown = stairsDown
   { iname    = "carriage"
   , ifreq    = [("lift down", 1)]
-  , idesc    = ""
+  , idesc    = ""  -- describe outer levels of the ship
   }
 liftTrap = staircaseTrapUp
   { iname    = "elevator trap"  -- hat tip to US heroes
@@ -432,6 +430,6 @@ shuttleHardware = ItemKind
   , idamage  = 0
   , iaspects = [SetFlag Durable]
   , ieffects = []
-  , idesc    = "While the hull of the spacecraft is intact, the flight hardware that normally lines the walls seems broken, worn out and often missing. This shuttle was probably scavenged for spare parts to repair other craft and it's unlikely that anything of use remains. This was a tiny shuttle to being with, designed for lunar and orbital courier duties and single family trips. This kind is relatively cheap to operate, because no permanent airlock needs to be assigned for it to dock with, but it can be brought through a large airlock into the mothership and stored and serviced inside. This is a compact and efficient design, but even if repaired, the craft doesn't have enough fuel capacity for inter-planetary flights."
+  , idesc    = "While the hull of the spacecraft is intact, the flight hardware that normally lines the walls seems broken, worn out and often missing. This shuttle was probably scavenged for spare parts to repair other craft and it's unlikely that anything of use remains. This was a tiny shuttle to being with, designed for lunar and orbital courier duties and single family trips. The kind is relatively cheap to operate, because no permanent airlock needs to be leased. Instead, the craft can be brought through a large airlock into the mothership and stored and serviced inside. The design is compact, efficient and space-worthy, but even if repaired, the craft doesn't have enough fuel capacity for an inter-planetary flight."
   , ikit     = []
   }

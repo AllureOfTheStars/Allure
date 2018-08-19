@@ -251,25 +251,29 @@ pillar5 = pillar
   , pfreq    = [ ("rogue", 300), ("arena", 1000)
                , ("empty", 300), ("emptyExit", 150) ]
   , prarity  = [(10, 3)]
-  , ptopLeft = [ "&·%·"
-               , "··#·"
+  , ptopLeft = [ "&i%·"
+               , "ii#·"
                , "%#+·"
                , "····"
                ]
-  , poverrideDark = [('&', "cache deposit"), ('+', "trapped door")]
-  , poverrideLit = [('&', "cache deposit"), ('+', "trapped door")]
+  , poverrideDark = [ ('&', "cache deposit"), ('+', "trapped door")
+                    , ('i', "floorActorItem") ]  -- lit or not, randomly
+  , poverrideLit = [ ('&', "cache deposit"), ('+', "trapped door")
+                   , ('i', "floorActorItem") ]  -- lit or not, randomly
   }
 pillar6 = pillar
   { pname    = "a jewelry store"
   , pfreq    = [ ("rogue", 300), ("arena", 1000), ("empty", 200) ]
   , prarity  = [(10, 3)]
-  , ptopLeft = [ "&#··"
-               , "#·%·"
-               , "·%h·"
+  , ptopLeft = [ "Of··"
+               , "ff%·"
+               , "·%&·"
                , "····"
                ]
-  , poverrideDark = [('&', "cache jewelry"), ('h', "hardware rack")]
-  , poverrideLit = [('&', "cache jewelry"), ('h', "hardware rack")]
+  , poverrideDark = [ ('&', "cache jewelry"), ('O', "lampPostOver_O")
+                    , ('f', "floorActorLit"), ('#', "reinforced wall") ]
+  , poverrideLit = [ ('&', "cache jewelry"), ('O', "lampPostOver_O")
+                   , ('f', "floorActorLit"), ('#', "reinforced wall") ]
   }
 colonnade = PlaceKind
   { psymbol  = 'c'
@@ -1182,8 +1186,8 @@ maze2 = maze
                ]
   }
 maze3 = maze
-  { pfreq    = [("rogue", 30), ("arena", 60), ("empty", 30), ("emptyExit", 25)]
-  , ptopLeft = [ "##·##~"
+  { pfreq    = [("rogue", 20), ("arena", 60), ("empty", 30), ("emptyExit", 25)]
+  , ptopLeft = [ "##·##·"
                , "#·#··#"
                , "~·%···"
                ]
