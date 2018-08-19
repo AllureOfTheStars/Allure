@@ -598,7 +598,7 @@ doorlessWall = TileKind
   { tsymbol  = '#'
   , tname    = "infrastructure wall"
   , tfreq    = [ ("noiseSetLit", 600), ("noiseSetDark", 600)
-               , ("doorlessWallOver_#", 80), ("doorlessMachineryOver_#", 20) ]
+               , ("doorlessWallOver_#", 80), ("doorlessMachineryOver_#", 1) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 100
@@ -759,7 +759,7 @@ machineWall = TileKind
   , tfeature = [Clear]
   }
 machineWallSpice = machineWall
-  { tfreq    = [("doorlessMachineryOver_#", 80)]
+  { tfreq    = [("doorlessMachineryOver_#", 1)]
   , tfeature = Spice : tfeature machineWall
   }
 
