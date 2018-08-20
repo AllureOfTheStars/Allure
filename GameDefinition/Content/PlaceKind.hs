@@ -70,7 +70,7 @@ rect = PlaceKind  -- Valid for any nonempty area, hence low frequency.
   { psymbol  = 'r'
   , pname    = "a room"
   , pfreq    = [("rogue", 100), ("arena", 35), ("laboratory", 30)]
-  , prarity  = [(1, 10), (10, 7)]
+  , prarity  = [(1, 10), (10, 6)]
   , pcover   = CStretch
   , pfence   = FWall
   , ptopLeft = ["·"]
@@ -217,6 +217,8 @@ pillar = PlaceKind
   }
 pillar2 = pillar
   { pname    = "a plaza"
+  , pfreq    = [ ("rogue", 600), ("arena", 1500)
+               , ("empty", 600), ("emptyExit", 400), ("noise", 1200) ]
   , prarity  = [(1, 15), (10, 15)]
   , ptopLeft = [ "O····"
                , "·····"
@@ -231,6 +233,7 @@ pillar3 = pillar
   { pname    = "a court"
   , pfreq    = [ ("rogue", 50), ("arena", 100), ("laboratory", 100)
                , ("empty", 30), ("emptyExit", 20), ("noise", 300) ]
+  , prarity  = [(1, 5), (10, 4)]
   , ptopLeft = [ "#··"
                , "···"
                , "···"
@@ -248,7 +251,7 @@ pillar4 = pillar
   }
 pillar5 = pillar
   { pname    = "a bank outlet"
-  , pfreq    = [ ("rogue", 300), ("arena", 1000)
+  , pfreq    = [ ("rogue", 400), ("arena", 1200)
                , ("empty", 300), ("emptyExit", 150) ]
   , prarity  = [(10, 3)]
   , ptopLeft = [ "&i%·"
@@ -263,7 +266,7 @@ pillar5 = pillar
   }
 pillar6 = pillar
   { pname    = "a jewelry store"
-  , pfreq    = [ ("rogue", 300), ("arena", 1000), ("empty", 200) ]
+  , pfreq    = [ ("rogue", 400), ("arena", 1200), ("empty", 200) ]
   , prarity  = [(10, 3)]
   , ptopLeft = [ "Of··"
                , "ff%·"
@@ -428,7 +431,7 @@ smokeClump2 = smokeClump
   }
 smokeClump3FGround = smokeClump
   { pname    = "a burned out area"
-  , pfreq    = [("laboratory", 80)]
+  , pfreq    = [("laboratory", 100)]
   , prarity  = [(1, 1)]
   , pcover   = CVerbatim
   , pfence   = FGround
@@ -555,7 +558,7 @@ staircase = PlaceKind
   { psymbol  = '/'
   , pname    = "a staircase"
   , pfreq    = [("tiny staircase", 1)]  -- no cover when arriving; low freq
-  , prarity  = [(1, 100)]
+  , prarity  = [(1, 100), (10, 100)]
   , pcover   = CVerbatim
   , pfence   = FGround
   , ptopLeft = [ "<S>"
@@ -580,7 +583,7 @@ staircaseLift = PlaceKind
   { psymbol  = '|'
   , pname    = "a lift"
   , pfreq    = [("tiny lift", 1)]
-  , prarity  = [(1, 100)]
+  , prarity  = [(1, 100), (10, 100)]
   , pcover   = CVerbatim
   , pfence   = FFloor
   , ptopLeft = [ "<S>"
@@ -1047,7 +1050,7 @@ escapeSpaceshipDown5 = escapeDown5
 pumps = PlaceKind
   { psymbol  = 'w'
   , pname    = "water pumps"
-  , pfreq    = [ ("rogue", 5), ("laboratory", 7), ("empty", 20), ("mine", 1200)
+  , pfreq    = [ ("rogue", 8), ("laboratory", 12), ("empty", 20), ("mine", 2000)
                , ("shootout", 25) ]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CAlternate
@@ -1081,8 +1084,8 @@ oval = PlaceKind
                    , ('~', "poolOver_~_Lit") ]
   }
 ovalFloor = oval
-  { pfreq    = [ ("rogue", 3000), ("arena", 10000), ("laboratory", 2000)
-               , ("empty", 4000), ("emptyExit", 3000)
+  { pfreq    = [ ("rogue", 4000), ("arena", 20000), ("laboratory", 4000)
+               , ("empty", 6000), ("emptyExit", 4000)
                , ("zoo", 10000), ("ambush", 100) ]
   , pfence   = FGround
   , ptopLeft = [ "XXXX+#"
@@ -1104,8 +1107,8 @@ ovalSquare = oval
   }
 ovalBasin = oval
   { pname    = "a water basin"
-  , pfreq    = [ ("rogue", 200), ("zoo", 500)
-               , ("arena", 250), ("laboratory", 250), ("empty", 150) ]
+  , pfreq    = [ ("rogue", 150), ("zoo", 500)
+               , ("arena", 250), ("laboratory", 200), ("empty", 150) ]
   , pfence   = FNone
   , ptopLeft = [ "XXX##"
                , "X###·"
@@ -1116,8 +1119,8 @@ ovalBasin = oval
   }
 ovalBasin2 = oval
   { pname    = "a water basin"
-  , pfreq    = [ ("rogue", 200), ("zoo", 500)
-               , ("arena", 250), ("laboratory", 250), ("empty", 200) ]
+  , pfreq    = [ ("rogue", 150), ("zoo", 500)
+               , ("arena", 250), ("laboratory", 200), ("empty", 150) ]
   , pfence   = FNone
   , ptopLeft = [ "X####"
                , "##···"
@@ -1141,7 +1144,7 @@ squareBasin = oval
 squareBasin2 = oval
   { pname    = "a water basin"
   , pfreq    = [ ("zoo", 1500)
-               , ("arena", 1500), ("laboratory", 1500), ("empty", 1500) ]
+               , ("arena", 1700), ("laboratory", 1500), ("empty", 2000) ]
   , pfence   = FNone
   , ptopLeft = [ "OtOttt"
                , "t~~~~~"
@@ -1204,9 +1207,8 @@ mazeBig = maze
                ]
   }
 mazeBig2 = maze
-  { pfreq    = [ ("rogue", 50), ("arena", 150)
-               , ("empty", 150), ("emptyExit", 70) ]
-  , prarity  = [(1, 10), (10, 20)]
+  { pfreq    = [ ("rogue", 100), ("arena", 200)
+               , ("empty", 200), ("emptyExit", 120) ]
   , pfence   = FNone
   , ptopLeft = [ "XX###~"
                , "X#···%"
@@ -1265,15 +1267,15 @@ cells5 = cells  -- this one is distinct enough from others, so needs a boost
   }
 cells6 = cells
   { pname    = "animal holding pens"
-  , pfreq    = [("laboratory", 60), ("noise", 60), ("zoo", 50)]
+  , pfreq    = [("laboratory", 80), ("noise", 70), ("zoo", 50)]
   , ptopLeft = [ "··#"
                , "##'"
                ]
   }
 cells7 = cells
   { pname    = "a defunct control room"
-  , pfreq    = [ ("rogue", 5), ("laboratory", 10)
-               , ("empty", 8), ("emptyExit", 8), ("noise", 5) ]
+  , pfreq    = [ ("rogue", 5), ("laboratory", 12)
+               , ("empty", 8), ("emptyExit", 8), ("noise", 10) ]
   , pfence   = FFloor
   , ptopLeft = [ "#··"
                , "·%·"
