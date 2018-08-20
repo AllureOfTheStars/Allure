@@ -20,9 +20,9 @@ import Game.LambdaHack.Content.CaveKind
 
 content :: [CaveKind]
 content =
-  [rogue, rogue2, arena, arena2, laboratory, empty, noise, noise2, bridge, shallow2rogue, shallow2arena, shallow1empty, emptyExit, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3]
+  [rogue, rogue2, arena, arena2, laboratory, noise, noise2, empty, emptyExit, shallow1empty, bridge, shallow2rogue, shallow2arena, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3]
 
-rogue,        rogue2, arena, arena2, laboratory, empty, noise, noise2, bridge, shallow2rogue, shallow2arena, shallow1empty, emptyExit, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
+rogue,    rogue2, arena, arena2, laboratory, noise, noise2, empty, emptyExit, shallow1empty, bridge, shallow2rogue, shallow2arena, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
 
 rogue = CaveKind
   { csymbol       = 'R'
@@ -173,36 +173,6 @@ laboratory = arena2
                     , ("tiny lift", 1) ]
   , cdesc         = "Shattered glassware and the sharp scent of spilt chemicals show that something terrible happened here."
   }
-empty = rogue
-  { csymbol       = 'E'
-  , cname         = "Construction site"
-  , cfreq         = []
-  , ccellSize     = DiceXY (2 `d` 10 + 30) (3 `d` 2 + 13)
-  , cminPlaceSize = DiceXY (2 `d` 2 + 8) (1 `d` 2 + 10)
-  , cmaxPlaceSize = DiceXY 48 32  -- favour large rooms
-  , cdarkOdds     = 1 `d` 100 + 1 `dL` 100
-  , cnightOdds    = 0  -- always day
-  , cauxConnects  = 3%2
-  , cmaxVoid      = 0  -- too few rooms to have void and fog common anyway
-  , cminStairDist = 40
-  , cextraStairs  = 1
-  , cdoorChance   = 1  -- to enable the doorlessWall hack
-  , chidden       = 0
-  , cactorCoeff   = 40  -- easy to view and plan
-  , cactorFreq    = [("monster", 25), ("animal", 5), ("robot", 70)]
-  , citemNum      = 7 `d` 4  -- few rooms
-  , cplaceFreq    = [("empty", 100)]
-  , cpassable     = True
-  , cdefTile      = "emptySetLit"
-  , cdarkCorTile  = "floorArenaDark"
-  , clitCorTile   = "floorArenaLit"
-  , cfenceApart   = True  -- ensures no cut-off border airlocks and collapsed
-  , cstairFreq    = [ ("walled lift", 20), ("closed lift", 80)
-                    , ("tiny lift", 1) ]
-  , cstairAllowed = [ ("walled staircase", 20), ("closed staircase", 80)
-                    , ("tiny staircase", 1) ]
-  , cdesc         = "Not much to see here yet."
-  }
 noise = rogue
   { csymbol       = 'N'
   , cname         = "Flight hardware hub"
@@ -257,6 +227,81 @@ noise2 = noise
                     , ("gated tiny lift", 1) ]
   , cdesc         = ""
   }
+empty = rogue
+  { csymbol       = 'E'
+  , cname         = "Construction site"
+  , cfreq         = []
+  , ccellSize     = DiceXY (2 `d` 10 + 30) (3 `d` 2 + 13)
+  , cminPlaceSize = DiceXY (2 `d` 2 + 8) (1 `d` 2 + 10)
+  , cmaxPlaceSize = DiceXY 48 32  -- favour large rooms
+  , cdarkOdds     = 1 `d` 100 + 1 `dL` 100
+  , cnightOdds    = 0  -- always day
+  , cauxConnects  = 3%2
+  , cmaxVoid      = 0  -- too few rooms to have void and fog common anyway
+  , cminStairDist = 40
+  , cextraStairs  = 1
+  , cdoorChance   = 1  -- to enable the doorlessWall hack
+  , chidden       = 0
+  , cactorCoeff   = 40  -- easy to view and plan
+  , cactorFreq    = [("monster", 25), ("animal", 5), ("robot", 70)]
+  , citemNum      = 7 `d` 4  -- few rooms
+  , cplaceFreq    = [("empty", 100)]
+  , cpassable     = True
+  , cdefTile      = "emptySetLit"
+  , cdarkCorTile  = "floorArenaDark"
+  , clitCorTile   = "floorArenaLit"
+  , cfenceApart   = True  -- ensures no cut-off border airlocks and collapsed
+  , cstairFreq    = [ ("walled lift", 20), ("closed lift", 80)
+                    , ("tiny lift", 1) ]
+  , cstairAllowed = [ ("walled staircase", 20), ("closed staircase", 80)
+                    , ("tiny staircase", 1) ]
+  , cdesc         = "Not much to see here yet."
+  }
+emptyExit = empty
+  { cname         = "Shuttle servicing level"
+  , cfreq         = [("caveEmptyExit", 1)]
+  , ccellSize     = DiceXY (1 `d` 2 + 15) (1 `d` 2 + 15)
+  , cmaxPlaceSize = DiceXY 20 15
+  , cplaceFreq    = [("emptyExit", 100)]
+  , cdefTile      = "emptyExitSetLit"
+  , cdarkCorTile  = "transport route"
+  , clitCorTile   = "transport route"
+  , cfenceTileN   = "basic outer fence"
+  , cfenceTileE   = "habitat containment wall"
+  , cfenceTileS   = "airlock fence"
+  , cfenceTileW   = "habitat containment wall"
+  , cescapeFreq   = [("escape spaceship down", 1)]
+  , cstairFreq    = [ ("gated walled lift", 20)
+                    , ("gated closed lift", 80)
+                    , ("gated tiny lift", 1) ]
+  , cstairAllowed = [ ("gated walled staircase", 20)
+                    , ("gated closed staircase", 80)
+                    , ("gated tiny staircase", 1) ]
+  , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among cranes and welding machines. Distant engines can be seen to the rear of the spaceship through oriels and airlocks of all sizes."
+      -- E and W sides are borders with other level sections, so no oriels.
+      -- The meteor shield towards N is not punctured here, because
+      -- the cargo bay is too thick here, near the axis of the ship.
+  }
+shallow1empty = empty
+  { cname         = "Outermost deck"
+  , cfreq         = [("outermost", 100)]
+  , cactorCoeff   = 4  -- shallower than LH, so fewer immediate actors, so boost
+  , cactorFreq    = [("animal", 3), ("robot", 2), ("immobile robot", 95)]
+      -- The medbot faucets on lvl 1 act like HP resets. Needed to avoid
+      -- cascading failure, if the particular starting conditions were
+      -- very hard. Items are not reset, even if they are bad, which provides
+      -- enough of a continuity. The faucets on lvl 1 are not OP and can't be
+      -- abused, because they spawn less and less often and also HP doesn't
+      -- effectively accumulate over max.
+  , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
+  , cfenceTileN   = "oriels fence"
+  , cfenceTileE   = "habitat containment wall"
+  , cfenceTileS   = "empty airlock fence"
+  , cfenceTileW   = "habitat containment wall"
+  , cdesc         = "The black sky outside sucks light through the oriel and airlock glass. At this outermost deck, the curvature of the floor is unnoticeable and artificial gravity as strong as on Earth. Here is the main pressurized cargo bay and storage, with the only other docking hub for small craft somewhere among the giant spaceship's uppermost levels. You can't see from afar the shuttle you left engaged to one of the few free airlocks covered in guano. Water treatment basins and series of hanging and stacked tanks double as radiation shields. Hoses writhe on the floor and dangle in thick knots from the ceiling."
+      -- E and W sides are borders with other level sections, so no oriels.
+      -- TODO: exclusively water-liking animals, when there is enough; plants
+  }
 bridge = rogue
   { csymbol       = 'B'
   , cname         = "Captain's bridge"
@@ -299,51 +344,6 @@ shallow2arena = arena
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq arena
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq arena
   , cdesc         = shallow2blurb
-  }
-shallow1empty = empty
-  { cname         = "Outermost deck"
-  , cfreq         = [("outermost", 100)]
-  , cactorCoeff   = 4  -- shallower than LH, so fewer immediate actors, so boost
-  , cactorFreq    = [("animal", 3), ("robot", 2), ("immobile robot", 95)]
-      -- The medbot faucets on lvl 1 act like HP resets. Needed to avoid
-      -- cascading failure, if the particular starting conditions were
-      -- very hard. Items are not reset, even if they are bad, which provides
-      -- enough of a continuity. The faucets on lvl 1 are not OP and can't be
-      -- abused, because they spawn less and less often and also HP doesn't
-      -- effectively accumulate over max.
-  , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
-  , cfenceTileN   = "oriels fence"
-  , cfenceTileE   = "habitat containment wall"
-  , cfenceTileS   = "empty airlock fence"
-  , cfenceTileW   = "habitat containment wall"
-  , cdesc         = "The black sky outside sucks light through the oriel and airlock glass. At this outermost deck, the curvature of the floor is unnoticeable and artificial gravity as strong as on Earth. Here is the main pressurized cargo bay and storage, with the only other docking hub for small craft somewhere among the giant spaceship's uppermost levels. You can't see from afar the shuttle you left engaged to one of the few free airlocks covered in guano. Water treatment basins and series of hanging and stacked tanks double as radiation shields. Hoses writhe on the floor and dangle in thick knots from the ceiling."
-      -- E and W sides are borders with other level sections, so no oriels.
-      -- TODO: exclusively water-liking animals, when there is enough; plants
-  }
-emptyExit = empty
-  { cname         = "Shuttle servicing level"
-  , cfreq         = [("caveEmptyExit", 1)]
-  , ccellSize     = DiceXY (1 `d` 2 + 15) (1 `d` 2 + 15)
-  , cmaxPlaceSize = DiceXY 20 15
-  , cplaceFreq    = [("emptyExit", 100)]
-  , cdefTile      = "emptyExitSetLit"
-  , cdarkCorTile  = "transport route"
-  , clitCorTile   = "transport route"
-  , cfenceTileN   = "basic outer fence"
-  , cfenceTileE   = "habitat containment wall"
-  , cfenceTileS   = "airlock fence"
-  , cfenceTileW   = "habitat containment wall"
-  , cescapeFreq   = [("escape spaceship down", 1)]
-  , cstairFreq    = [ ("gated walled lift", 20)
-                    , ("gated closed lift", 80)
-                    , ("gated tiny lift", 1) ]
-  , cstairAllowed = [ ("gated walled staircase", 20)
-                    , ("gated closed staircase", 80)
-                    , ("gated tiny staircase", 1) ]
-  , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among cranes and welding machines. Distant engines can be seen to the rear of the spaceship through oriels and airlocks of all sizes."
-      -- E and W sides are borders with other level sections, so no oriels.
-      -- The meteor shield towards N is not punctured here, because
-      -- the cargo bay is too thick here, near the axis of the ship.
   }
 raid = rogue
   { csymbol       = 'S'
