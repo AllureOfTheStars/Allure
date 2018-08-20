@@ -722,13 +722,13 @@ escapeSpaceshipDown = escapeDown
   , tfreq    = [("escape spaceship down", 1), ("airlock fence", 3)]
   }
 emptyAirlock = escapeUp
-  { tname    = "disengaged airlock"
+  { tname    = "empty airlock"
   , tfreq    = [ ("airlock fence", 2), ("empty airlock fence", 7)
                , ("emptySetLit", 2) ]
                    -- not in emptyExitSetLit; space can't be seen
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
-  , tfeature = [Embed "black starry sky"]  -- but can look at the airlock
+  , tfeature = [Embed "disengaged docking"]
   }
 reinforcedWall = TileKind
   { tsymbol  = '#'

@@ -24,11 +24,11 @@ embeds :: [ItemKind]
 embeds =
   [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater]
   -- Allure-specific
-  ++ [blackStarrySky, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware]
+  ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware]
 
 scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater :: ItemKind
 -- Allure-specific
-blackStarrySky,       ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware :: ItemKind
+blackStarrySky,       disengagedDocking, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware :: ItemKind
 
 -- Make sure very few walls are substantially useful, e.g., caches,
 -- and none that are secret. Otherwise the player will spend a lot of time
@@ -135,6 +135,7 @@ signboardExit = ItemKind
   , iaspects = [SetFlag Durable]
   , ieffects = [Detect DetectExit 100]  -- low tech, hence fully operational
   , idesc    = "Mandatory emergency exit information in low-tech form."
+                 -- This is a rare tile so use it to convey some more backstory.
   , ikit     = []
   }
 signboardEmbed = signboardExit
@@ -142,6 +143,7 @@ signboardEmbed = signboardExit
   , ifreq    = [("signboard", 20)]
   , ieffects = [Detect DetectEmbed 12]  -- low tech, hence fully operational
   , idesc    = "Detailed schematics for the maintenance crew."
+                 -- This is a rare tile so use it to convey some more backstory.
   }
 fireSmall = ItemKind
   { isymbol  = '%'
@@ -343,6 +345,21 @@ blackStarrySky = ItemKind
   , ieffects = [ Temporary "look into the void and it looks back"
                , OneOf [RefillCalm 5, RefillCalm (-5)] ]
   , idesc    = "Occasionally a planet zips by, but is unable to disperse the blackness. The black starscape is constantly rotating. The frantic dance is silent, muted, indifferent. There is not even a hint of vibration, just the sense of heaviness and dizziness."  -- appears only on 100% flavour tiles, useless and trivial to notice, so the writeup can be longer
+  , ikit     = []
+  }
+disengagedDocking = ItemKind
+  { isymbol  = '<'
+  , iname    = "disengaged docking gear"
+  , ifreq    = [("disengaged docking", 1)]
+  , iflavour = zipPlain [BrBlack]
+  , icount   = 1
+  , irarity  = [(1, 1)]
+  , iverbHit = "disappoint"
+  , iweight  = 10000
+  , idamage  = 0
+  , iaspects = [SetFlag Durable]
+  , ieffects = [RefillCalm (-10)]
+  , idesc    = "Unfortunately this airlock is disengaged. Many small craft were originally docked with such sockets and clamps as these, but just after the spaceship commenced spontanously leaving its Triton orbit, a lot of them has been spotted jettisoned and drifting astern. What a waste."
   , ikit     = []
   }
 ruinedFirstAidKit = ItemKind
