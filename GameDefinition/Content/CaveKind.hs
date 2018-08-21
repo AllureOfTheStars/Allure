@@ -219,6 +219,8 @@ noise2 = noise
                     , ("curious item", 20) ]
   , cplaceFreq    = [("noise", 100)]
   , cdefTile      = "noisePowerSetDark"
+  , cdarkCorTile  = "oily floor Dark"
+  , clitCorTile   = "oily floor Lit"
   , cstairFreq    = [ ("gated closed staircase", 50)
                     , ("gated open staircase", 50)
                     , ("gated tiny staircase", 1) ]
