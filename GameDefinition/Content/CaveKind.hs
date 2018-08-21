@@ -200,8 +200,8 @@ noise = rogue
   , cplaceFreq    = [("noise", 100)]
   , cdefTile      = "noiseSetLit"
   , cfenceApart   = True  -- ensures no cut-off parts from collapsed
-  , cdarkCorTile  = "damp stone floor Dark"
-  , clitCorTile   = "damp stone floor Lit"
+  , cdarkCorTile  = "damp floor Dark"
+  , clitCorTile   = "damp floor Lit"
   , cstairFreq    = [ ("closed staircase", 50), ("open staircase", 50)
                     , ("tiny staircase", 1) ]
   , cstairAllowed = [ ("closed lift", 50), ("open lift", 50)

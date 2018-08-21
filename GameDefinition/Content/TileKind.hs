@@ -21,12 +21,12 @@ import Game.LambdaHack.Content.TileKind
 
 content :: [TileKind]
 content =
-  [unknown, unknownOuterFence, basicOuterFence, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade ]
+  [unknown, unknownOuterFence, basicOuterFence, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, fog, fogDark, smoke, smokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade ]
   ++ map makeDarkColor ldarkColorable
   -- Allure-specific
   ++ [oriel, outerHullWall, doorlessWall, rubbleBurning, rubbleBurningSpice, wallObscuredSafety, wallObscured3dBillboard, liftShaft, rock, pillarCache2, pillarCache3, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, machineWall, machineWallSpice, floorWindow]
 
-unknown,    unknownOuterFence, basicOuterFence, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, floorFog, floorFogDark, floorSmoke, floorSmokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade :: TileKind
+unknown,    unknownOuterFence, basicOuterFence, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, fog, fogDark, smoke, smokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade :: TileKind
 -- Allure-specific
 oriel,       outerHullWall, doorlessWall, rubbleBurning, rubbleBurningSpice, wallObscuredSafety, wallObscured3dBillboard, liftShaft, rock, pillarCache2, pillarCache3, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, machineWall, machineWallSpice, floorWindow :: TileKind
 
@@ -427,7 +427,7 @@ bushBurning = bush
 
 -- *** Not clear
 
-floorFog = TileKind
+fog = TileKind
   { tsymbol  = ';'
   , tname    = "faint fog"
   , tfreq    = [ ("fog Lit", 1), ("emptySetLit", 50)
@@ -442,12 +442,12 @@ floorFog = TileKind
   , talter   = 0
   , tfeature = [Walkable, NoItem, OftenActor]
   }
-floorFogDark = floorFog
+fogDark = fog
   { tname    = "thick fog"
   , tfreq    = [("escapeSetDark", 50), ("lift terminal Dark", 40)]
-  , tfeature = Dark : tfeature floorFog
+  , tfeature = Dark : tfeature fog
   }
-floorSmoke = TileKind
+smoke = TileKind
   { tsymbol  = ';'
   , tname    = "billowing smoke"
   , tfreq    = [ ("smoke Lit", 1), ("labTrailLit", 1)
@@ -459,12 +459,12 @@ floorSmoke = TileKind
   , talter   = 0
   , tfeature = [Walkable, NoItem]  -- not dark, embers
   }
-floorSmokeDark = floorSmoke
+smokeDark = smoke
   { tname    = "lingering smoke"
   , tfreq    = [ ("noisePowerSetDark", 100), ("ambushSetDark", 60)
                , ("zooSetDark", 20), ("battleSetDark", 5)
                , ("stair terminal Dark", 2), ("lift terminal Dark", 6) ]
-  , tfeature = Dark : tfeature floorSmoke
+  , tfeature = Dark : tfeature smoke
   }
 
 -- *** Clear
@@ -496,7 +496,7 @@ floorArena = floorCorridor
 floorDamp = floorArena
   { tname    = "oily floor"
   , tfreq    = [ ("noiseSetLit", 600), ("noisePowerSetLit", 600)
-               , ("emptyExitSetLit", 900), ("damp stone floor Lit", 1)
+               , ("emptyExitSetLit", 900), ("damp floor Lit", 1)
                , ("stair terminal Lit", 20), ("lift terminal Lit", 6)
                , ("rubbleOrWaste_Lit", 1) ]
   }
