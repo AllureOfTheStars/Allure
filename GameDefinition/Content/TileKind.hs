@@ -233,7 +233,7 @@ rubble = TileKind
                , ("stair terminal Lit", 6), ("stair terminal Dark", 6)
                , ("lift terminal Lit", 6), ("lift terminal Dark", 6)
                , ("emptySetLit", 5), ("emptyExitSetLit", 7)
-               , ("noiseSetLit", 80), ("noiseSetDark", 80)
+               , ("noiseSetLit", 50), ("noisePowerSetDark", 50)
                , ("zooSetDark", 100), ("ambushSetDark", 18) ]
   , tcolor   = BrYellow
   , tcolor2  = Brown
@@ -372,7 +372,7 @@ wallGlassSpice = wallGlass
 pillarIce = TileKind
   { tsymbol  = '^'
   , tname    = "ice buildup"
-  , tfreq    = [ ("legendLit", 1), ("legendDark", 1)
+  , tfreq    = [ ("legendLit", 1), ("legendDark", 1), ("noiseSetLit", 300)
                , ("brawlSetLit", 20), ("lift terminal Dark", 4) ]
                  -- ice only in dark staircases
   , tcolor   = BrBlue
@@ -444,8 +444,7 @@ floorFog = TileKind
   }
 floorFogDark = floorFog
   { tname    = "thick fog"
-  , tfreq    = [ ("noiseSetDark", 100), ("escapeSetDark", 50)
-               , ("lift terminal Dark", 40) ]
+  , tfreq    = [("escapeSetDark", 50), ("lift terminal Dark", 40)]
   , tfeature = Dark : tfeature floorFog
   }
 floorSmoke = TileKind
@@ -462,7 +461,8 @@ floorSmoke = TileKind
   }
 floorSmokeDark = floorSmoke
   { tname    = "lingering smoke"
-  , tfreq    = [ ("ambushSetDark", 60), ("zooSetDark", 20), ("battleSetDark", 5)
+  , tfreq    = [ ("noisePowerSetDark", 100), ("ambushSetDark", 60)
+               , ("zooSetDark", 20), ("battleSetDark", 5)
                , ("stair terminal Dark", 2), ("lift terminal Dark", 6) ]
   , tfeature = Dark : tfeature floorSmoke
   }
@@ -495,8 +495,8 @@ floorArena = floorCorridor
   }
 floorDamp = floorArena
   { tname    = "oily floor"
-  , tfreq    = [ ("noiseSetLit", 600), ("emptyExitSetLit", 900)
-               , ("damp stone floor Lit", 1)
+  , tfreq    = [ ("noiseSetLit", 600), ("noisePowerSetLit", 600)
+               , ("emptyExitSetLit", 900), ("damp stone floor Lit", 1)
                , ("stair terminal Lit", 20), ("lift terminal Lit", 6)
                , ("rubbleOrWaste_Lit", 1) ]
   }
@@ -530,8 +530,7 @@ shallowWater = TileKind
   { tsymbol  = '~'
   , tname    = "puddle"
   , tfreq    = [ ("shallow water Lit", 1), ("legendLit", 100)
-               , ("emptySetLit", 5), ("emptyExitSetLit", 3)
-               , ("noiseSetLit", 20), ("shootoutSetLit", 5)
+               , ("emptySetLit", 5), ("noiseSetLit", 20), ("shootoutSetLit", 5)
                , ("lift terminal Lit", 4) ]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
@@ -605,7 +604,7 @@ doorlessWall = TileKind
   { tsymbol  = '#'
   , tname    = "infrastructure wall"
   , tfreq    = [ ("doorlessWall", 1)
-               , ("noiseSetLit", 600), ("noiseSetDark", 600)
+               , ("noiseSetLit", 450), ("noisePowerSetDark", 450)
                , ("stair terminal Lit", 100), ("stair terminal Dark", 100)
                , ("doorlessWallOver_#", 80), ("doorlessMachineryOver_#", 1) ]
   , tcolor   = BrWhite
@@ -616,8 +615,7 @@ doorlessWall = TileKind
 rubbleBurning = TileKind
   { tsymbol  = '&'
   , tname    = "burning installation"
-  , tfreq    = [ ("emptySetLit", 1), ("emptyExitSetLit", 2)
-               , ("noiseSetLit", 2), ("noiseSetDark", 2)
+  , tfreq    = [ ("emptySetLit", 1), ("noisePowerSetDark", 2)
                , ("ambushSetDark", 2), ("zooSetDark", 40)
                , ("stair terminal Lit", 4), ("stair terminal Dark", 4)
                , ("lift terminal Lit", 4), ("lift terminal Dark", 4) ]
@@ -761,7 +759,7 @@ machineWall = TileKind
   { tsymbol  = '%'
   , tname    = "hardware rack"
   , tfreq    = [ ("hardware rack", 1)
-               , ("noiseSetLit", 350), ("noiseSetDark", 350)
+               , ("noiseSetLit", 250), ("noisePowerSetDark", 250)
                , ("emptyExitSetLit", 30)
                , ("lift terminal Lit", 40), ("lift terminal Dark", 40) ]
   , tcolor   = White

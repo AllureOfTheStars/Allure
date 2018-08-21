@@ -201,8 +201,7 @@ collapsed7 = collapsed
 pillar = PlaceKind
   { psymbol  = 'p'
   , pname    = "a market"
-  , pfreq    = [ ("rogue", 600), ("arena", 1200)
-               , ("empty", 70), ("noise", 1200) ]
+  , pfreq    = [("rogue", 600), ("arena", 1200), ("empty", 70)]
   , prarity  = [(1, 5), (10, 5)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -217,8 +216,7 @@ pillar = PlaceKind
   }
 pillar2 = pillar
   { pname    = "a plaza"
-  , pfreq    = [ ("rogue", 600), ("arena", 1500)
-               , ("empty", 200), ("noise", 1200) ]
+  , pfreq    = [("rogue", 600), ("arena", 1500), ("empty", 200)]
   , prarity  = [(1, 15), (10, 15)]
   , ptopLeft = [ "O····"
                , "·····"
@@ -231,8 +229,7 @@ pillar2 = pillar
   }
 pillar3 = pillar
   { pname    = "a court"
-  , pfreq    = [ ("rogue", 50), ("arena", 100), ("laboratory", 100)
-               , ("noise", 300) ]
+  , pfreq    = [("rogue", 50), ("arena", 100), ("laboratory", 100)]
   , prarity  = [(1, 5), (10, 5)]
   , ptopLeft = [ "#··"
                , "···"
@@ -241,7 +238,7 @@ pillar3 = pillar
   }
 pillar4 = pillar
   { pname    = "a mall"
-  , pfreq    = [("rogue", 300), ("arena", 600), ("noise", 1200)]
+  , pfreq    = [("rogue", 300), ("arena", 600)]
   , ptopLeft = [ "#·#·"
                , "····"
                , "#···"
@@ -1079,7 +1076,7 @@ pumps = PlaceKind
   { psymbol  = 'w'
   , pname    = "water pumps"
   , pfreq    = [ ("rogue", 8), ("laboratory", 12), ("empty", 200)
-               , ("noise", 2000), ("shootout", 25) ]
+               , ("shootout", 25) ]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CAlternate
   , pfence   = FWall
@@ -1293,7 +1290,7 @@ cells5 = cells  -- this one is distinct enough from others, so needs a boost
   }
 cells6 = cells
   { pname    = "animal holding pens"
-  , pfreq    = [("laboratory", 80), ("noise", 70), ("zoo", 50)]
+  , pfreq    = [("laboratory", 80), ("zoo", 50)]
   , ptopLeft = [ "··#"
                , "##'"
                ]
@@ -1310,7 +1307,7 @@ cells7 = cells
 tank = PlaceKind
   { psymbol  = 'c'
   , pname    = "a tank"
-  , pfreq    = [("empty", 1), ("emptyExit", 1)]
+  , pfreq    = [("empty", 1)]
       -- no point taking up space if very little space taken,
       -- but if no other place can be generated, a failsafe is useful
   , prarity  = [(1, 1)]

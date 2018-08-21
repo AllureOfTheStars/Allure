@@ -175,7 +175,7 @@ laboratory = arena2
   }
 noise = rogue
   { csymbol       = 'N'
-  , cname         = "Flight hardware hub"
+  , cname         = "Computing hardware hub"
   , cfreq         = [("caveNoise", 1)]
   , cXminSize     = 21
   , cYminSize     = 42
@@ -202,10 +202,10 @@ noise = rogue
   , cfenceApart   = True  -- ensures no cut-off parts from collapsed
   , cdarkCorTile  = "damp stone floor Dark"
   , clitCorTile   = "damp stone floor Lit"
-  , cstairFreq    = [ ("closed lift", 50), ("open lift", 50)
-                    , ("tiny lift", 1) ]
-  , cstairAllowed = [ ("closed staircase", 50), ("open staircase", 50)
+  , cstairFreq    = [ ("closed staircase", 50), ("open staircase", 50)
                     , ("tiny staircase", 1) ]
+  , cstairAllowed = [ ("closed lift", 50), ("open lift", 50)
+                    , ("tiny lift", 1) ]
   , cdesc         = ""
   }
 noise2 = noise
@@ -218,7 +218,7 @@ noise2 = noise
   , citemFreq     = [ ("common item", 40), ("treasure", 60)
                     , ("curious item", 20) ]
   , cplaceFreq    = [("noise", 100)]
-  , cdefTile      = "noiseSetDark"
+  , cdefTile      = "noisePowerSetDark"
   , cstairFreq    = [ ("gated closed staircase", 50)
                     , ("gated open staircase", 50)
                     , ("gated tiny staircase", 1) ]
