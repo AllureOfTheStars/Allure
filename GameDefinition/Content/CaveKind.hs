@@ -217,7 +217,7 @@ noise2 = noise
   , citemNum      = 10 `d` 4  -- an incentive to explore the final labyrinth
   , citemFreq     = [ ("common item", 40), ("treasure", 60)
                     , ("curious item", 20) ]
-  , cplaceFreq    = [("noise", 1), ("mine", 99)]
+  , cplaceFreq    = [("noise", 100)]
   , cdefTile      = "noiseSetDark"
   , cstairFreq    = [ ("gated closed staircase", 50)
                     , ("gated open staircase", 50)
@@ -231,9 +231,9 @@ empty = rogue
   { csymbol       = 'E'
   , cname         = "Construction site"
   , cfreq         = []
-  , ccellSize     = DiceXY (2 `d` 10 + 30) (3 `d` 2 + 13)
-  , cminPlaceSize = DiceXY (2 `d` 2 + 8) (1 `d` 2 + 10)
-  , cmaxPlaceSize = DiceXY 48 32  -- favour large rooms
+  , ccellSize     = DiceXY (2 `d` 8 + 14) 16
+  , cminPlaceSize = DiceXY 9 9
+  , cmaxPlaceSize = DiceXY 50 20
   , cdarkOdds     = 1 `d` 100 + 1 `dL` 100
   , cnightOdds    = 0  -- always day
   , cauxConnects  = 3%2
@@ -271,12 +271,12 @@ emptyExit = empty
   , cfenceTileS   = "airlock fence"
   , cfenceTileW   = "habitat containment wall"
   , cescapeFreq   = [("escape spaceship down", 1)]
-  , cstairFreq    = [ ("gated walled lift", 20)
-                    , ("gated closed lift", 80)
-                    , ("gated tiny lift", 1) ]
-  , cstairAllowed = [ ("gated walled staircase", 20)
+  , cstairFreq    = [ ("gated walled staircase", 20)
                     , ("gated closed staircase", 80)
                     , ("gated tiny staircase", 1) ]
+  , cstairAllowed = [ ("gated walled lift", 20)
+                    , ("gated closed lift", 80)
+                    , ("gated tiny lift", 1) ]
   , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among cranes and welding machines. Distant engines can be seen to the rear of the spaceship through oriels and airlocks of all sizes."
       -- E and W sides are borders with other level sections, so no oriels.
       -- The meteor shield towards N is not punctured here, because

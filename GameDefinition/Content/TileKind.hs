@@ -88,7 +88,6 @@ wall = TileKind
   { tsymbol  = '#'
   , tname    = "wall"
   , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
-               , ("stair terminal Lit", 100), ("stair terminal Dark", 100)
                , ("battleSetDark", 250), ("escapeSetDark", 4)
                , ("rectWindowsOver_%", 80) ]
   , tcolor   = BrWhite
@@ -144,7 +143,7 @@ wallObscuredFrescoed = TileKind
 pillar = TileKind
   { tsymbol  = 'O'
   , tname    = "construction beam"
-  , tfreq    = [("legendLit", 100), ("legendDark", 100)]
+  , tfreq    = [("legendLit", 100), ("legendDark", 100), ("emptySetLit", 10)]
   , tcolor   = BrCyan  -- not BrWhite, to tell from heroes
   , tcolor2  = Cyan
   , talter   = 100
@@ -233,7 +232,7 @@ rubble = TileKind
   , tfreq    = [ ("rubble", 1), ("legendLit", 1), ("legendDark", 1)
                , ("stair terminal Lit", 6), ("stair terminal Dark", 6)
                , ("lift terminal Lit", 6), ("lift terminal Dark", 6)
-               , ("emptySetLit", 7), ("emptyExitSetLit", 7)
+               , ("emptySetLit", 5), ("emptyExitSetLit", 7)
                , ("noiseSetLit", 80), ("noiseSetDark", 80)
                , ("zooSetDark", 100), ("ambushSetDark", 18) ]
   , tcolor   = BrYellow
@@ -431,7 +430,7 @@ bushBurning = bush
 floorFog = TileKind
   { tsymbol  = ';'
   , tname    = "faint fog"
-  , tfreq    = [ ("fog Lit", 1), ("emptySetLit", 50), ("emptyExitSetLit", 20)
+  , tfreq    = [ ("fog Lit", 1), ("emptySetLit", 50)
                , ("noiseSetLit", 100), ("shootoutSetLit", 30)
                , ("fogClumpOver_f_Lit", 60), ("fogClumpOver_f_Dark", 60)
                , ("lift terminal Lit", 40) ]
@@ -455,7 +454,7 @@ floorSmoke = TileKind
   , tfreq    = [ ("smoke Lit", 1), ("labTrailLit", 1)
                , ("stair terminal Lit", 2), ("lift terminal Lit", 6)
                , ("smokeClumpOver_f_Lit", 3), ("smokeClumpOver_f_Dark", 3)
-               , ("emptyExitSetLit", 10) ]
+               , ("emptyExitSetLit", 20) ]
   , tcolor   = Brown
   , tcolor2  = BrBlack
   , talter   = 0
@@ -496,7 +495,7 @@ floorArena = floorCorridor
   }
 floorDamp = floorArena
   { tname    = "oily floor"
-  , tfreq    = [ ("noiseSetLit", 600), ("emptyExitSetLit", 880)
+  , tfreq    = [ ("noiseSetLit", 600), ("emptyExitSetLit", 900)
                , ("damp stone floor Lit", 1)
                , ("stair terminal Lit", 20), ("lift terminal Lit", 6)
                , ("rubbleOrWaste_Lit", 1) ]
@@ -531,7 +530,7 @@ shallowWater = TileKind
   { tsymbol  = '~'
   , tname    = "puddle"
   , tfreq    = [ ("shallow water Lit", 1), ("legendLit", 100)
-               , ("emptySetLit", 5), ("emptyExitSetLit", 2)
+               , ("emptySetLit", 5), ("emptyExitSetLit", 3)
                , ("noiseSetLit", 20), ("shootoutSetLit", 5)
                , ("lift terminal Lit", 4) ]
   , tcolor   = BrCyan
@@ -605,7 +604,9 @@ outerHullWall = basicOuterFence
 doorlessWall = TileKind
   { tsymbol  = '#'
   , tname    = "infrastructure wall"
-  , tfreq    = [ ("noiseSetLit", 600), ("noiseSetDark", 600)
+  , tfreq    = [ ("doorlessWall", 1)
+               , ("noiseSetLit", 600), ("noiseSetDark", 600)
+               , ("stair terminal Lit", 100), ("stair terminal Dark", 100)
                , ("doorlessWallOver_#", 80), ("doorlessMachineryOver_#", 1) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
@@ -633,7 +634,7 @@ rubbleBurningSpice = rubbleBurning
 wallObscuredSafety = TileKind
   { tsymbol  = '#'
   , tname    = "safety procedures wall"
-  , tfreq    = [("obscured wall", 5)]
+  , tfreq    = [("obscured wall", 5), ("emptyExitSetLit", 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 5
@@ -733,7 +734,7 @@ emptyAirlock = escapeUp
 reinforcedWall = TileKind
   { tsymbol  = '#'
   , tname    = "reinforced wall"
-  , tfreq    = [("reinforced wall", 1)]
+  , tfreq    = [("reinforced wall", 1), ("emptyExitSetLit", 20)]
   , tcolor   = White
   , tcolor2  = BrBlack
   , talter   = 100
@@ -761,7 +762,7 @@ machineWall = TileKind
   , tname    = "hardware rack"
   , tfreq    = [ ("hardware rack", 1)
                , ("noiseSetLit", 350), ("noiseSetDark", 350)
-               , ("emptyExitSet", 60)
+               , ("emptyExitSetLit", 30)
                , ("lift terminal Lit", 40), ("lift terminal Dark", 40) ]
   , tcolor   = White
   , tcolor2  = BrBlack
@@ -780,7 +781,7 @@ machineWallSpice = machineWall
 floorWindow = floorArena
   { tsymbol  = ' '  -- story-wise it's transparent, hence the symbol
   , tname    = "floor window"
-  , tfreq    = [("emptySetLit", 30)]
+  , tfreq    = [("emptySetLit", 20)]
   , tcolor   = defFG
   , tcolor2  = defFG
   , tfeature = Embed "black starry sky" : tfeature floorCorridor
