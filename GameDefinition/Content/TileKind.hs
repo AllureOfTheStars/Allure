@@ -153,7 +153,7 @@ pillarCache = TileKind
   { tsymbol  = '#'
   , tname    = "abandoned stash"
   , tfreq    = [ ("cachable abandoned", 20)
-               , ("cache maze", 25), ("cache shuttle", 15) ]
+               , ("cache maze", 25), ("cache shuttle", 20) ]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 5
@@ -751,7 +751,7 @@ wallShuttle = wall
   , tfeature = [Embed "shuttle hardware"]
   }
 wallShuttleSpice = wallShuttle
-  { tfreq    = [("cache shuttle", 85)]
+  { tfreq    = [("cache shuttle", 80)]
   , tfeature = Spice : tfeature wallShuttle
   }
 
