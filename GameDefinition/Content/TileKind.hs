@@ -143,7 +143,7 @@ wallObscuredFrescoed = TileKind
 pillar = TileKind
   { tsymbol  = 'O'
   , tname    = "construction beam"
-  , tfreq    = [("legendLit", 100), ("legendDark", 100), ("emptySetLit", 10)]
+  , tfreq    = [("legendLit", 100), ("legendDark", 100), ("emptySetLit", 20)]
   , tcolor   = BrCyan  -- not BrWhite, to tell from heroes
   , tcolor2  = Cyan
   , talter   = 100
@@ -232,7 +232,7 @@ rubble = TileKind
   , tfreq    = [ ("rubble", 1), ("legendLit", 1), ("legendDark", 1)
                , ("stair terminal Lit", 6), ("stair terminal Dark", 6)
                , ("lift terminal Lit", 6), ("lift terminal Dark", 6)
-               , ("emptySetLit", 5), ("emptyExitSetLit", 7)
+               , ("emptySetLit", 4), ("emptyExitSetLit", 8)
                , ("noiseSetLit", 50), ("noisePowerSetDark", 150)
                , ("zooSetDark", 100), ("ambushSetDark", 18) ]
   , tcolor   = BrYellow
@@ -610,10 +610,10 @@ doorlessWall = TileKind
   , talter   = 100
   , tfeature = [HideAs "fillerWall"]
   }
-rubbleBurning = TileKind
+rubbleBurning = TileKind  -- present in "emptySetLit" for early light source
   { tsymbol  = '&'
   , tname    = "burning installation"
-  , tfreq    = [ ("emptySetLit", 1), ("noisePowerSetDark", 20)
+  , tfreq    = [ ("emptySetLit", 2), ("noisePowerSetDark", 20)
                , ("ambushSetDark", 2), ("zooSetDark", 40)
                , ("stair terminal Lit", 4), ("stair terminal Dark", 4)
                , ("lift terminal Lit", 4), ("lift terminal Dark", 4) ]
@@ -783,7 +783,7 @@ floorOily = floorArena
 oilSpill = TileKind
   { tsymbol  = '~'
   , tname    = "oil spill"
-  , tfreq    = [ ("noisePowerSetDark", 35), ("emptyExitSetLit", 5)
+  , tfreq    = [ ("noisePowerSetDark", 35), ("emptyExitSetLit", 1)
                , ("oil spill", 1) ]
   , tcolor   = BrYellow
   , tcolor2  = BrGreen
