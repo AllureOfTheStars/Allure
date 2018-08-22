@@ -24,11 +24,11 @@ content =
   [unknown, unknownOuterFence, basicOuterFence, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, fog, fogDark, smoke, smokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade ]
   ++ map makeDarkColor ldarkColorable
   -- Allure-specific
-  ++ [oriel, outerHullWall, doorlessWall, rubbleBurning, rubbleBurningSpice, wallObscuredSafety, wallObscured3dBillboard, liftShaft, rock, pillarCache2, pillarCache3, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, machineWall, machineWallSpice, floorOily, floorWindow]
+  ++ [oriel, outerHullWall, doorlessWall, rubbleBurning, rubbleBurningSpice, wallObscuredSafety, wallObscured3dBillboard, liftShaft, rock, pillarCache2, pillarCache3, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, machineWall, machineWallSpice, floorOily, oilSpill, oilSpillSpice, floorWindow]
 
 unknown,    unknownOuterFence, basicOuterFence, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, fog, fogDark, smoke, smokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade :: TileKind
 -- Allure-specific
-oriel,       outerHullWall, doorlessWall, rubbleBurning, rubbleBurningSpice, wallObscuredSafety, wallObscured3dBillboard, liftShaft, rock, pillarCache2, pillarCache3, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, machineWall, machineWallSpice, floorOily, floorWindow :: TileKind
+oriel,       outerHullWall, doorlessWall, rubbleBurning, rubbleBurningSpice, wallObscuredSafety, wallObscured3dBillboard, liftShaft, rock, pillarCache2, pillarCache3, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, machineWall, machineWallSpice, floorOily, oilSpill, oilSpillSpice, floorWindow :: TileKind
 
 ldarkColorable :: [TileKind]
 ldarkColorable = [tree, bush, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, shallowWater, shallowWaterSpice, shallowWater2, floorOily]
@@ -233,7 +233,7 @@ rubble = TileKind
                , ("stair terminal Lit", 6), ("stair terminal Dark", 6)
                , ("lift terminal Lit", 6), ("lift terminal Dark", 6)
                , ("emptySetLit", 5), ("emptyExitSetLit", 7)
-               , ("noiseSetLit", 50), ("noisePowerSetDark", 50)
+               , ("noiseSetLit", 50), ("noisePowerSetDark", 150)
                , ("zooSetDark", 100), ("ambushSetDark", 18) ]
   , tcolor   = BrYellow
   , tcolor2  = Brown
@@ -431,7 +431,7 @@ fog = TileKind
   { tsymbol  = ';'
   , tname    = "faint fog"
   , tfreq    = [ ("fog Lit", 1), ("emptySetLit", 50)
-               , ("noiseSetLit", 100), ("shootoutSetLit", 30)
+               , ("noiseSetLit", 120), ("shootoutSetLit", 30)
                , ("fogClumpOver_f_Lit", 60), ("fogClumpOver_f_Dark", 60)
                , ("lift terminal Lit", 40) ]
       -- lit fog is OK for shootout, because LOS is mutual, as opposed
@@ -528,7 +528,7 @@ shallowWater = TileKind
   { tsymbol  = '~'
   , tname    = "puddle"
   , tfreq    = [ ("shallow water Lit", 1), ("legendLit", 100)
-               , ("emptySetLit", 5), ("noiseSetLit", 20), ("shootoutSetLit", 5)
+               , ("emptySetLit", 5), ("noiseSetLit", 30), ("shootoutSetLit", 5)
                , ("lift terminal Lit", 4) ]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
@@ -613,7 +613,7 @@ doorlessWall = TileKind
 rubbleBurning = TileKind
   { tsymbol  = '&'
   , tname    = "burning installation"
-  , tfreq    = [ ("emptySetLit", 1), ("noisePowerSetDark", 2)
+  , tfreq    = [ ("emptySetLit", 1), ("noisePowerSetDark", 20)
                , ("ambushSetDark", 2), ("zooSetDark", 40)
                , ("stair terminal Lit", 4), ("stair terminal Dark", 4)
                , ("lift terminal Lit", 4), ("lift terminal Dark", 4) ]
@@ -777,7 +777,23 @@ machineWallSpice = machineWall
 floorOily = floorArena
   { tname    = "oily floor"
   , tfreq    = [ ("noisePowerSetLit", 600), ("emptyExitSetLit", 900)
-               , ("oily floor Lit", 1), ("rubbleOrWaste_Lit", 1) ]
+               , ("oily floor Lit", 1), ("rubbleOrWaste_Lit", 1)
+               , ("oil_over_o_Lit", 4) ]
+  }
+oilSpill = TileKind
+  { tsymbol  = '~'
+  , tname    = "oil spill"
+  , tfreq    = [ ("noisePowerSetDark", 35), ("emptyExitSetLit", 5)
+               , ("oil spill", 1) ]
+  , tcolor   = BrYellow
+  , tcolor2  = BrGreen
+  , talter   = 0
+  , tfeature = Embed "machine oil" : tfeature floorActor
+  }
+oilSpillSpice = oilSpill
+  { tfreq    = [ ("rubbleOrWaste_Lit", 1)
+               , ("oil_over_o_Lit", 1), ("oil_over_o_Dark", 1) ]
+  , tfeature = Spice : tfeature oilSpill
   }
 floorWindow = floorArena
   { tsymbol  = ' '  -- story-wise it's transparent, hence the symbol

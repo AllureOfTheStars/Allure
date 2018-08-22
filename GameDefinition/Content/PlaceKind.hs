@@ -1254,14 +1254,14 @@ cells = PlaceKind
                , "#··"
                ]
   , poverrideDark = [ ('%', "doorlessMachineryOver_#")
-                    , ('f', "pumpsOver_f_Dark") ]
+                    , ('f', "pumpsOver_f_Dark"), ('o', "oil_over_o_Dark") ]
   , poverrideLit = [ ('%', "doorlessMachineryOver_#")
-                   , ('f', "pumpsOver_f_Lit") ]
+                   , ('f', "pumpsOver_f_Lit"), ('o', "oil_over_o_Lit") ]
   }
 cells2 = cells
   { pname    = "humidity equalizers"
   , ptopLeft = [ "#··"
-               , "·#·"
+               , "·%·"
                , "f·#"
                ]
   }
@@ -1275,8 +1275,8 @@ cells3 = cells
 cells4 = cells
   { pname    = "a power node"
   , ptopLeft = [ "··#"
-               , "·#·"
-               , "#%·"
+               , "·#o"
+               , "#o·"
                ]
   }
 cells5 = cells  -- this one is distinct enough from others, so needs a boost
@@ -1285,7 +1285,7 @@ cells5 = cells  -- this one is distinct enough from others, so needs a boost
                , ("empty", 80), ("emptyExit", 90), ("noise", 20) ]
   , ptopLeft = [ "··#"
                , "··#"
-               , "##·"
+               , "##o"
                ]
   }
 cells6 = cells
@@ -1300,8 +1300,8 @@ cells7 = cells
   , pfreq    = [ ("rogue", 5), ("laboratory", 12)
                , ("empty", 80), ("emptyExit", 25), ("noise", 10) ]
   , pfence   = FFloor
-  , ptopLeft = [ "#··"
-               , "·%·"
+  , ptopLeft = [ "#·o"
+               , "·%o"
                ]
   }
 tank = PlaceKind

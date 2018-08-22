@@ -24,11 +24,11 @@ embeds :: [ItemKind]
 embeds =
   [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater]
   -- Allure-specific
-  ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware]
+  ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil]
 
 scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater :: ItemKind
 -- Allure-specific
-blackStarrySky,       disengagedDocking, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware :: ItemKind
+blackStarrySky,       disengagedDocking, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil :: ItemKind
 
 -- Make sure very few walls are substantially useful, e.g., caches,
 -- and none that are secret. Otherwise the player will spend a lot of time
@@ -448,5 +448,20 @@ shuttleHardware = ItemKind
   , iaspects = [SetFlag Durable]
   , ieffects = []
   , idesc    = "While the hull of the spacecraft is intact, the flight hardware that normally lines the walls seems broken, worn out and often missing. This shuttle was probably scavenged for spare parts to repair other craft and it's unlikely that anything of use remains. This was a tiny shuttle to being with, designed for lunar and orbital courier duties and single family trips. The kind is relatively cheap to operate, because no permanent airlock needs to be leased. Instead, the craft can be brought through a large airlock into the mothership and stored and serviced inside. The design is compact, efficient and space-worthy, but even if repaired, the craft doesn't have enough fuel capacity for an inter-planetary flight."
+  , ikit     = []
+  }
+machineOil = ItemKind
+  { isymbol  = '!'
+  , iname    = "oil"
+  , ifreq    = [("machine oil", 1)]
+  , iflavour = zipPlain [BrYellow]
+  , icount   = 1
+  , irarity  = [(1, 1)]
+  , iverbHit = "oil"
+  , iweight  = 1000
+  , idamage  = 0
+  , iaspects = [SetFlag Durable]
+  , ieffects = [PushActor (ThrowMod 100 50)]  -- 1 step, slow
+  , idesc    = "Slippery run out, probably from a life support equipment or vehicle engine. Surprisingly uncommon given so many years of neglect."
   , ikit     = []
   }
