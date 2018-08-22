@@ -1092,7 +1092,7 @@ oval = PlaceKind
   { psymbol  = 'o'
   , pname    = "a dome"
   , pfreq    = [ ("rogue", 2000), ("arena", 1000), ("laboratory", 1000)
-               , ("empty", 160), ("emptyExit", 500)
+               , ("empty", 180), ("emptyExit", 500)
                , ("zoo", 2000), ("ambush", 20) ]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CStretch
@@ -1110,14 +1110,14 @@ oval = PlaceKind
   }
 ovalFloor = oval
   { pfreq    = [ ("rogue", 4000), ("arena", 20000), ("laboratory", 4000)
-               , ("empty", 500), ("emptyExit", 3000)
+               , ("empty", 1000), ("emptyExit", 3000)
                , ("zoo", 10000), ("ambush", 100) ]
   , pfence   = FGround
-  , ptopLeft = [ "XXXX+#"
-               , "XX###·"
-               , "X##···"
-               , "X#···a"
-               , "+#··a·"
+  , ptopLeft = [ "aXXX##"
+               , "X+###·"
+               , "X#a···"
+               , "X#·a·a"
+               , "##··a·"
                , "#··a··"
                ]
   }
@@ -1132,26 +1132,26 @@ ovalSquare = oval
   }
 ovalBasin = oval
   { pname    = "a water basin"
-  , pfreq    = [ ("rogue", 150), ("zoo", 500)
-               , ("arena", 250), ("laboratory", 200), ("empty", 180) ]
-  , pfence   = FNone
-  , ptopLeft = [ "XXX##"
-               , "X###·"
-               , "X#···"
-               , "##··~"
-               , "#··~~"
+  , pfreq    = [ ("rogue", 4000), ("zoo", 10000)
+               , ("arena", 20000), ("laboratory", 4000), ("empty", 2000) ]
+  , pfence   = FGround
+  , ptopLeft = [ "XXX+##"
+               , "X###··"
+               , "X#····"
+               , "+#··~~"
+               , "#··~~~"
+               , "#··~~~"
                ]
   }
 ovalBasin2 = oval
   { pname    = "a water basin"
   , pfreq    = [ ("rogue", 150), ("zoo", 500)
                , ("arena", 250), ("laboratory", 200), ("empty", 180) ]
-  , pfence   = FNone
-  , ptopLeft = [ "X####"
-               , "##···"
-               , "#···~"
-               , "#··~~"
-               , "#·~~~"
+  , pfence   = FWall
+  , ptopLeft = [ "#···"
+               , "··~~"
+               , "·~~~"
+               , "·~~~"
                ]
   }
 squareBasin = oval
@@ -1319,14 +1319,14 @@ tank = PlaceKind
   , poverrideLit = [('#', "doorlessWallOver_#"), ('r', "reinforced wall")]
   }
 tank2 = tank
-  { pfreq    = [ ("empty", 500), ("emptyExit", 20), ("noise", 100)
+  { pfreq    = [ ("empty", 500), ("emptyExit", 10), ("noise", 100)
                , ("battle", 50) ]
   , ptopLeft = [ "O#"
                , "##"
                ]
   }
 tank3 = tank
-  { pfreq    = [ ("empty", 600), ("emptyExit", 50), ("noise", 200)
+  { pfreq    = [ ("empty", 600), ("emptyExit", 40), ("noise", 200)
                , ("battle", 100) ]
   , ptopLeft = [ "rr#"
                , "r##"
@@ -1334,7 +1334,7 @@ tank3 = tank
                ]
   }
 tank4 = tank
-  { pfreq    = [ ("empty", 1000), ("emptyExit", 130), ("noise", 300)
+  { pfreq    = [ ("empty", 1000), ("emptyExit", 100), ("noise", 300)
                , ("battle", 300) ]
   , ptopLeft = [ "XXO#"
                , "Xrr#"
@@ -1344,7 +1344,7 @@ tank4 = tank
   }
 tank5 = tank
   { pname    = "a cistern"
-  , pfreq    = [ ("empty", 1000), ("emptyExit", 130), ("noise", 300)
+  , pfreq    = [ ("empty", 1000), ("emptyExit", 100), ("noise", 300)
                , ("battle", 300) ]
   , ptopLeft = [ "XXr#"
                , "Xr##"
