@@ -143,7 +143,7 @@ ruin = PlaceKind
   }
 ruin2 = ruin
   { pname    = "a scaffolding"
-  , pfreq    = [("noise", 2400), ("emptyExit", 5)]
+  , pfreq    = [("noise", 2000), ("emptyExit", 5)]
   }
 collapsed = PlaceKind
   { psymbol  = 'c'
@@ -172,7 +172,7 @@ collapsed3 = collapsed
                ]
   }
 collapsed4 = collapsed
-  { pfreq    = [("noise", 2000), ("battle", 200)]
+  { pfreq    = [("noise", 2200), ("battle", 200)]
   , ptopLeft = [ "XXX#"
                , "####"
                ]
@@ -277,7 +277,7 @@ pillar6 = pillar
 colonnade = PlaceKind
   { psymbol  = 'c'
   , pname    = "a colonnade"
-  , pfreq    = [ ("rogue", 4), ("noise", 1200), ("escape", 40)
+  , pfreq    = [ ("rogue", 4), ("noise", 1000), ("escape", 40)
                , ("emptyExit", 250) ]
   , prarity  = [(1, 12), (10, 12)]
   , pcover   = CAlternate
@@ -1244,7 +1244,7 @@ cells = PlaceKind
   { psymbol  = '#'
   , pname    = "air filters"
   , pfreq    = [ ("rogue", 12), ("laboratory", 12)
-               , ("emptyExit", 70), ("noise", 12)
+               , ("emptyExit", 70), ("noise", 120)
                , ("zoo", 150), ("ambush", 7) ]
   , prarity  = [(1, 4), (10, 4)]
   , pcover   = CReflect
@@ -1282,7 +1282,7 @@ cells4 = cells
 cells5 = cells  -- this one is distinct enough from others, so needs a boost
   { pname    = "broken robot holds"
   , pfreq    = [ ("rogue", 15), ("laboratory", 20)
-               , ("empty", 80), ("emptyExit", 90), ("noise", 20) ]
+               , ("empty", 80), ("emptyExit", 90), ("noise", 150) ]
   , ptopLeft = [ "··#"
                , "··#"
                , "##o"
@@ -1298,7 +1298,7 @@ cells6 = cells
 cells7 = cells
   { pname    = "a defunct control room"
   , pfreq    = [ ("rogue", 5), ("laboratory", 12)
-               , ("empty", 80), ("emptyExit", 25), ("noise", 10) ]
+               , ("empty", 80), ("emptyExit", 25), ("noise", 80) ]
   , pfence   = FFloor
   , ptopLeft = [ "#·o"
                , "·%o"
