@@ -1250,7 +1250,7 @@ cells = PlaceKind
   , pcover   = CReflect
   , pfence   = FWall
   , ptopLeft = [ "··#"
-               , "·#·"
+               , "·%·"
                , "#··"
                ]
   , poverrideDark = [ ('%', "doorlessMachineryOver_#")
@@ -1261,7 +1261,7 @@ cells = PlaceKind
 cells2 = cells
   { pname    = "humidity equalizers"
   , ptopLeft = [ "#··"
-               , "·%·"
+               , "·#·"
                , "f·#"
                ]
   }
@@ -1300,8 +1300,8 @@ cells7 = cells
   , pfreq    = [ ("rogue", 5), ("laboratory", 12)
                , ("empty", 80), ("emptyExit", 25), ("noise", 80) ]
   , pfence   = FFloor
-  , ptopLeft = [ "#·o"
-               , "·%o"
+  , ptopLeft = [ "%·o"
+               , "·#o"
                ]
   }
 tank = PlaceKind
