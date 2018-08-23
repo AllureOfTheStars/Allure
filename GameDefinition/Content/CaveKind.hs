@@ -87,16 +87,16 @@ arena = rogue
   , cfreq         = [("default random", 40), ("caveArena", 1)]
   , cXminSize     = 80
   , cYminSize     = 25
-  , ccellSize     = DiceXY (3 `d` 3 + 17) (1 `d` 6 + 4)
-  , cminPlaceSize = DiceXY (2 `d` 2 + 4) 6
-  , cmaxPlaceSize = DiceXY 16 16
+  , ccellSize     = DiceXY (3 `d` 3 + 17) (1 `d` 3 + 5)
+  , cminPlaceSize = DiceXY 10 15  -- merge vertically
+  , cmaxPlaceSize = DiceXY 25 40
   , cdarkOdds     = 49 + 1 `d` 10  -- almost all rooms dark (1 in 10 lit)
   -- Light is not too deadly, because not many obstructions and so
   -- foes visible from far away and few foes have ranged combat
   -- at shallow depth.
   , cnightOdds    = 0  -- always day
   , cauxConnects  = 1
-  , cmaxVoid      = 1%8
+  , cmaxVoid      = 1%20
   , cminStairDist = 20
   , cextraStairs  = 1 `d` 2
   , chidden       = 0
@@ -118,12 +118,9 @@ arena = rogue
   }
 arena2 = arena
   { cname         = "Casino"
-  , cfreq         = [("deep random", 30)]
+  , cfreq         = [("deep random", 30), ("caveArena2", 1)]
   , cXminSize     = 21
   , cYminSize     = 21
-  , ccellSize     = DiceXY (3 `d` 3 + 17) (1 `d` 3 + 4)
-  , cminPlaceSize = DiceXY (2 `d` 2 + 4) 6
-  , cmaxPlaceSize = DiceXY 16 12
   , cdarkOdds     = 41 + 1 `d` 10  -- almost all rooms lit (1 in 10 dark)
   -- Trails provide enough light for fun stealth, though level too small.
   , cnightOdds    = 51  -- always night
@@ -180,7 +177,7 @@ noise = rogue
   , cXminSize     = 21
   , cYminSize     = 42
   , ccellSize     = DiceXY (3 `d` 5 + 12) 8
-  , cminPlaceSize = DiceXY 8 7
+  , cminPlaceSize = DiceXY 8 7  -- often merge vertically
   , cmaxPlaceSize = DiceXY 20 20
   , cdarkOdds     = 51
   -- Light is deadly, because nowhere to hide and pillars enable spawning
@@ -234,7 +231,7 @@ empty = rogue
   , cname         = "Construction site"
   , cfreq         = []
   , ccellSize     = DiceXY (2 `d` 8 + 14) 16
-  , cminPlaceSize = DiceXY 9 9
+  , cminPlaceSize = DiceXY 9 9  -- don't merge
   , cmaxPlaceSize = DiceXY 50 20
   , cdarkOdds     = 1 `d` 100 + 1 `dL` 100
   , cnightOdds    = 0  -- always day
@@ -263,7 +260,7 @@ emptyExit = empty
   { cname         = "Shuttle servicing level"
   , cfreq         = [("caveEmptyExit", 1)]
   , ccellSize     = DiceXY (1 `d` 2 + 20) 16
-  , cminPlaceSize = DiceXY 12 9
+  , cminPlaceSize = DiceXY 12 9  -- don't merge
   , cmaxPlaceSize = DiceXY 25 20
   , cplaceFreq    = [("emptyExit", 100)]
   , cdefTile      = "emptyExitSetLit"

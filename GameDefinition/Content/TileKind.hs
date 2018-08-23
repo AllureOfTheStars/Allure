@@ -397,7 +397,7 @@ bush = TileKind
   { tsymbol  = '%'
   , tname    = "bush"
   , tfreq    = [ ("bush Lit", 1), ("shootoutSetLit", 30), ("escapeSetLit", 40)
-               , ("arenaSetLit", 3)
+               , ("arenaSetLit", 5)
                , ("bushClumpOver_f_Lit", 1), ("pumpsOver_f_Lit", 1)
                , ("lift terminal Lit", 4) ]
   , tcolor   = BrGreen
@@ -490,7 +490,7 @@ floorCorridor = TileKind
   , tfeature = [Walkable, Clear]
   }
 floorArena = floorCorridor
-  { tfreq    = [("floorArenaLit", 1), ("arenaSetLit", 96), ("zooSetLit", 600)]
+  { tfreq    = [("floorArenaLit", 1), ("arenaSetLit", 90), ("zooSetLit", 600)]
   }
 floorDamp = floorArena
   { tname    = "damp floor"
@@ -655,7 +655,7 @@ liftShaft = pillar
   }
 rock = pillar
   { tname    = "rock"
-  , tfreq    = [("brawlSetLit", 30), ("arenaSetLit", 1), ("arenaSetDark", 1)]
+  , tfreq    = [("brawlSetLit", 30), ("arenaSetLit", 2), ("arenaSetDark", 2)]
   }
 pillarCache2 = pillarCache
   { tname    = "rack of deposit boxes"
