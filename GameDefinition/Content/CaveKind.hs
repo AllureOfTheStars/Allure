@@ -35,6 +35,7 @@ rogue = CaveKind
   , cminPlaceSize = DiceXY (2 `d` 2 + 4) (1 `d` 2 + 5)
   , cmaxPlaceSize = DiceXY 16 40
   , cdarkOdds     = 1 `d` 54 + 1 `dL` 20
+      -- most rooms lit, to compensate for dark corridors
   , cnightOdds    = 51  -- always night
   , cauxConnects  = 1%2
   , cmaxVoid      = 1%8
@@ -137,7 +138,7 @@ arena2 = arena
   , cfenceTileW   = "habitat containment wall"
   , cdesc         = ""
   }
-laboratory = arena2
+laboratory = rogue
   { csymbol       = 'L'
   , cname         = "Laboratory"
   , cfreq         = [("deep random", 30), ("caveLaboratory", 1)]
@@ -146,22 +147,18 @@ laboratory = arena2
   , ccellSize     = DiceXY (1 `d` 2 + 5) (1 `d` 2 + 7)
   , cminPlaceSize = DiceXY 6 8
   , cmaxPlaceSize = DiceXY 10 40
-  , cdarkOdds     = 1 `d` 54 + 1 `dL` 20
-      -- most rooms lit, to compensate for corridors
-  , cnightOdds    = 0  -- always day
+  , cnightOdds    = 0  -- always day so that the corridor smoke is lit
   , cauxConnects  = 1%5
   , cmaxVoid      = 1%10
   , cminStairDist = 25
+  , cextraStairs  = 1 `d` 2
   , cdoorChance   = 1
   , copenChance   = 1%2
-  , chidden       = 7
-  , cactorCoeff   = 65  -- the maze requires time to explore
+  , cactorFreq    = [("monster", 25), ("animal", 70), ("robot", 5)]
   , citemNum      = 7 `d` 4  -- reward difficulty
   , citemFreq     = [ ("common item", 20), ("treasure", 40), ("explosive", 40)
                     , ("curious item", 20) ]
   , cplaceFreq    = [("laboratory", 100)]
-  , cpassable     = False
-  , cdefTile      = "fillerWall"
   , cdarkCorTile  = "labTrailLit"  -- let lab smoke give off light always
   , clitCorTile   = "labTrailLit"
   , cstairFreq    = [ ("walled staircase", 50), ("open staircase", 50)
