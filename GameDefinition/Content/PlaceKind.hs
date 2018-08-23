@@ -589,9 +589,9 @@ staircase = PlaceKind
   , ptopLeft = [ "<S>"
                ]
   , poverrideDark = [ ('<', "staircase up"), ('>', "staircase down")
-                    , ('I', "signboard"), ('S', "doorlessWall") ]
+                    , ('I', "signboard"), ('S', "fillerWall") ]
   , poverrideLit = [ ('<', "staircase up"), ('>', "staircase down")
-                   , ('I', "signboard"), ('S', "doorlessWall") ]
+                   , ('I', "signboard"), ('S', "fillerWall") ]
   }
 staircase1 = staircase
   { prarity  = [(1, 1)]  -- no cover when arriving; so low rarity
@@ -1410,7 +1410,7 @@ makeStaircaseDown terminal s = s
 overrideGatedStaircase :: [(Char, GroupName TileKind)]
 overrideGatedStaircase =
   [ ('<', "gated staircase up"), ('>', "gated staircase down")
-  , ('I', "signboard"), ('S', "doorlessWall") ]
+  , ('I', "signboard"), ('S', "fillerWall") ]
 
 makeGatedStaircase :: PlaceKind -> PlaceKind
 makeGatedStaircase s = s
@@ -1438,7 +1438,7 @@ makeGatedLift s = s
 overrideOutdoor :: [(Char, GroupName TileKind)]
 overrideOutdoor =
   [ ('<', "staircase outdoor up"), ('>', "staircase outdoor down")
-  , ('I', "signboard"), ('S', "doorlessWall") ]
+  , ('I', "signboard"), ('S', "fillerWall") ]
 
 makeOutdoor :: PlaceKind -> PlaceKind
 makeOutdoor s = s
