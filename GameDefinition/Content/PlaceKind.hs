@@ -1202,9 +1202,11 @@ maze = PlaceKind
                , "··#·"
                ]
   , poverrideDark = [ ('&', "cache maze"), ('+', "trapped door")
-                    , ('i', "floorActorItem") ]  -- lit or not, randomly
+                    , ('i', "floorActorItem")  -- lit or not, randomly
+                    , ('$', "trappableWall") ]
   , poverrideLit = [ ('&', "cache maze"), ('+', "trapped door")
-                   , ('i', "floorActorItem") ]  -- lit or not, randomly
+                   , ('i', "floorActorItem")  -- lit or not, randomly
+                   , ('$', "trappableWall") ]
   }
 maze2 = maze
   { pfreq    = [("rogue", 80), ("arena", 2), ("emptyExit", 120)]
@@ -1223,21 +1225,21 @@ maze3 = maze
 mazeBig = maze
   { pfreq    = [ ("rogue", 200), ("arena", 2000), ("emptyExit", 200) ]
   , pfence   = FNone
-  , ptopLeft = [ "X####"
-               , "#·##·"
-               , "##···"
-               , "##·+%"
-               , "#··%i"
+  , ptopLeft = [ "X$$$$"
+               , "$·##·"
+               , "$#···"
+               , "$#·+%"
+               , "$··%i"
                ]
   }
 mazeBig2 = maze
   { pfreq    = [ ("rogue", 400), ("arena", 4000), ("emptyExit", 280) ]
   , pfence   = FNone
-  , ptopLeft = [ "XX###~"
+  , ptopLeft = [ "XX$$$~"
                , "X#···%"
-               , "#·###·"
-               , "#·+&%%"
-               , "#·#iii"
+               , "$·###·"
+               , "$·+&%%"
+               , "$·#iii"
                ]
   }
 cells = PlaceKind
