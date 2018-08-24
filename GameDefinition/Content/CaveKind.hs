@@ -340,7 +340,7 @@ shallow2rogue = rogue
 shallow2arena = arena
   { cfreq         = [("shallow random 2", 100)]
   , cXminSize     = 80
-  , cYminSize     = 30
+  , cYminSize     = 25
   , cactorCoeff   = cactorCoeff arena `div` 2  -- more difficult
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq arena
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq arena
