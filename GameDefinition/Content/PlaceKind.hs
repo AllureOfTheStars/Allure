@@ -27,11 +27,11 @@ content =
   -- automatically generated
   ++ generatedStairs
   -- Allure-specific, continued
-  ++ [escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5, shuttleHusk]
+  ++ [escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5, shuttleHusk, shuttleHusk2, shuttleHusk3, shuttleHusk4, shuttleHusk5, shuttleHusk6]
 
 deadEnd,    rect, rect2, rectWindows, glasshouse, glasshouse2, glasshouse3, pulpit, ruin, ruin2, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, pillar6, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, colonnade7, colonnade8, colonnade9, colonnade10, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2, smokeClump3FGround, bushClump, escapeUp, escapeUp2, escapeUp3, escapeUp4, escapeUp5, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeOutdoorDown, staircase1, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircase18, staircase19, staircase20, staircase21, staircase22, staircase23, staircase24, staircase25, staircase26, staircase27, staircase28, staircase29, staircase30, staircase31, staircase32, staircase33, staircase34, staircase35, staircase36, staircase37 :: PlaceKind
 -- Allure-specific
-staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25, escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5, shuttleHusk :: PlaceKind
+staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25, escapeSpaceshipDown, escapeSpaceshipDown2, escapeSpaceshipDown3, escapeSpaceshipDown4, escapeSpaceshipDown5, pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5, shuttleHusk, shuttleHusk2, shuttleHusk3, shuttleHusk4, shuttleHusk5, shuttleHusk6 :: PlaceKind
 
 staircase, staircaseLift :: PlaceKind  -- templates
 
@@ -278,7 +278,7 @@ colonnade = PlaceKind
   { psymbol  = 'c'
   , pname    = "a colonnade"
   , pfreq    = [ ("rogue", 12), ("noise", 1000), ("escape", 40)
-               , ("emptyExit", 250) ]
+               , ("emptyExit", 200) ]
   , prarity  = [(1, 12), (10, 12)]
   , pcover   = CAlternate
   , pfence   = FFloor
@@ -1110,7 +1110,7 @@ oval = PlaceKind
   }
 ovalFloor = oval
   { pfreq    = [ ("rogue", 5000), ("arena", 6000), ("laboratory", 10000)
-               , ("empty", 1000), ("emptyExit", 3000)
+               , ("empty", 1000), ("emptyExit", 500)
                , ("zoo", 10000), ("ambush", 100) ]
   , pfence   = FGround
   , ptopLeft = [ "aXXX##"
@@ -1305,7 +1305,7 @@ cells6 = cells
 cells7 = cells
   { pname    = "a defunct control room"
   , pfreq    = [ ("rogue", 5), ("laboratory", 10)
-               , ("empty", 80), ("emptyExit", 25), ("noise", 80) ]
+               , ("empty", 80), ("emptyExit", 20), ("noise", 80) ]
   , pfence   = FFloor
   , ptopLeft = [ "%·o"
                , "·#o"
@@ -1326,14 +1326,14 @@ tank = PlaceKind
   , poverrideLit = [('#', "doorlessWallOver_#"), ('r', "reinforced wall")]
   }
 tank2 = tank
-  { pfreq    = [ ("empty", 500), ("emptyExit", 10), ("noise", 100)
+  { pfreq    = [ ("empty", 500), ("emptyExit", 15), ("noise", 100)
                , ("battle", 50) ]
   , ptopLeft = [ "O#"
                , "##"
                ]
   }
 tank3 = tank
-  { pfreq    = [ ("empty", 600), ("emptyExit", 40), ("noise", 200)
+  { pfreq    = [ ("empty", 600), ("emptyExit", 30), ("noise", 200)
                , ("battle", 100) ]
   , ptopLeft = [ "rr#"
                , "r##"
@@ -1341,7 +1341,7 @@ tank3 = tank
                ]
   }
 tank4 = tank
-  { pfreq    = [ ("empty", 1000), ("emptyExit", 100), ("noise", 300)
+  { pfreq    = [ ("empty", 800), ("emptyExit", 120), ("noise", 300)
                , ("battle", 300) ]
   , ptopLeft = [ "XXO#"
                , "Xrr#"
@@ -1351,7 +1351,7 @@ tank4 = tank
   }
 tank5 = tank
   { pname    = "a cistern"
-  , pfreq    = [ ("empty", 1000), ("emptyExit", 100), ("noise", 300)
+  , pfreq    = [ ("empty", 1000), ("emptyExit", 150), ("noise", 300)
                , ("battle", 300) ]
   , ptopLeft = [ "XXr#"
                , "Xr##"
@@ -1362,11 +1362,11 @@ tank5 = tank
 shuttleHusk = PlaceKind
   { psymbol  = 's'
   , pname    = "a shuttle husk"
-  , pfreq    = [("empty", 1500), ("emptyExit", 60000), ("ambush", 100)]
+  , pfreq    = [("empty", 1000), ("emptyExit", 15000), ("ambush", 100)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FGround
-  , ptopLeft = [ "XX###XX"
+  , ptopLeft = [ "X·###·X"  -- 7 x 9
                , "X%#w#%X"
                , "#%···%#"
                , "#··h··#"
@@ -1388,6 +1388,57 @@ shuttleHusk = PlaceKind
                    , ('c', "cache shuttle")
                    , ('h', "hardware rack")
                    , ('w', "reinforced wall") ]
+  }
+shuttleHusk2 = shuttleHusk
+  { pfreq    = [("empty", 1000), ("emptyExit", 15000), ("ambush", 100)]
+  , ptopLeft = map (T.cons 'X' . flip T.snoc 'X')
+               $ ptopLeft shuttleHusk  -- 9 x 9
+  }
+shuttleHusk3 = shuttleHusk
+  { pfreq    = [("empty", 300), ("emptyExit", 5000), ("ambush", 100)]
+  , ptopLeft = [ "X··##··X"  -- 8 x 8
+               , "X#%ww%#X"
+               , "#w····w#"
+               , "····h·r#"
+               , "#·rrrrr#"
+               , "###&&###"
+               , "XhhcchhX"
+               , "hh#ww#hh"
+               ]
+  }
+shuttleHusk4 = shuttleHusk3
+  { pfreq    = [("empty", 300), ("emptyExit", 5000), ("ambush", 100)]
+  , ptopLeft = map (T.cons 'X' . flip T.snoc 'X')
+               $ ptopLeft shuttleHusk3  -- 10 x 8
+  }
+shuttleHusk5 = shuttleHusk
+  { pfreq    = [("empty", 1600), ("emptyExit", 80000), ("ambush", 100)]
+  , pfence   = FGround
+  , ptopLeft = [ "···##···"  -- 8 x 10
+               , "w#%ww%#w"
+               , "X#····#X"
+               , "X···h·#X"
+               , "#w····w#"
+               , "%rr····%"
+               , "##rrrr##"
+               , "X##&&##X"
+               , "XhhcchhX"
+               , "hh#ww#hh"
+               ]
+  }
+shuttleHusk6 = shuttleHusk
+  { pfreq    = [("empty", 2000), ("emptyExit", 120000), ("ambush", 100)]
+  , ptopLeft = [ "X··###··X"  -- 9 x 10
+               , "X#%#w#%#X"
+               , "##·h·h·##"
+               , "········%"
+               , "#w·····w#"
+               , "%·····rr%"
+               , "##·rrrr##"
+               , "X###&###X"
+               , "XXhhchhXX"
+               , "Xhh#w#hhX"
+               ]
   }
 
 -- * Helper functions
