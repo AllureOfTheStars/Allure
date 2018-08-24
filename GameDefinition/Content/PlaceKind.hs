@@ -290,7 +290,7 @@ colonnade = PlaceKind
   }
 colonnade2 = colonnade
   { prarity  = [(1, 20), (10, 20)]
-  , pfreq    = [("rogue", 6)]
+  , pfreq    = [("rogue", 15)]
   , pfence   = FWall
   , ptopLeft = [ "#·"
                , "·#"
@@ -305,7 +305,7 @@ colonnade3 = colonnade
   }
 colonnade4 = colonnade
   { prarity  = [(1, 50), (10, 50)]
-  , pfreq    = [("rogue", 4)]
+  , pfreq    = [("rogue", 10)]
   , pfence   = FWall
   , ptopLeft = [ "#··"
                , "·#·"
@@ -411,7 +411,7 @@ treeShade = PlaceKind
 fogClump = PlaceKind
   { psymbol  = 'f'
   , pname    = "a foggy patch"
-  , pfreq    = [("escape", 80), ("shootout", 50), ("empty", 400)]
+  , pfreq    = [("empty", 400), ("escape", 80), ("shootout", 50)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -423,7 +423,7 @@ fogClump = PlaceKind
   , poverrideLit = [('f', "fogClumpOver_f_Lit"), (';', "fog Lit")]
   }
 fogClump2 = fogClump
-  { pfreq    = [("escape", 80), ("shootout", 400), ("empty", 3000)]
+  { pfreq    = [("empty", 3000), ("escape", 80), ("shootout", 400)]
   , ptopLeft = [ "X;f"
                , "f;f"
                , ";;f"
@@ -433,7 +433,7 @@ fogClump2 = fogClump
 smokeClump = PlaceKind
   { psymbol  = 's'
   , pname    = "a smoky patch"
-  , pfreq    = [("zoo", 50), ("ambush", 50), ("emptyExit", 50)]
+  , pfreq    = [("emptyExit", 50), ("zoo", 50), ("ambush", 50)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -447,7 +447,7 @@ smokeClump = PlaceKind
                    , ('·', "floorActorLit") ]
   }
 smokeClump2 = smokeClump
-  { pfreq    = [("zoo", 500), ("ambush", 100), ("emptyExit", 300)]
+  { pfreq    = [("emptyExit", 300), ("zoo", 500), ("ambush", 100)]
   , ptopLeft = [ "X;f"
                , "f;f"
                , ";;f"
@@ -1362,7 +1362,7 @@ tank5 = tank
 shuttleHusk = PlaceKind
   { psymbol  = 's'
   , pname    = "a shuttle husk"
-  , pfreq    = [("empty", 1500), ("emptyExit", 40000), ("ambush", 100)]
+  , pfreq    = [("empty", 1500), ("emptyExit", 60000), ("ambush", 100)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FGround
