@@ -653,7 +653,7 @@ liftShaft = pillar
   }
 rock = pillar
   { tname    = "rock"
-  , tfreq    = [("brawlSetLit", 30), ("arenaSetLit", 2), ("arenaSetDark", 2)]
+  , tfreq    = [("arenaSetLit", 2), ("arenaSetDark", 2), ("brawlSetLit", 30)]
   }
 pillarCache2 = pillarCache
   { tname    = "rack of deposit boxes"

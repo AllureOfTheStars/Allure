@@ -71,7 +71,7 @@ rogue = CaveKind
   , cdesc         = "Winding tunnels stretch into the dark. The rest of the area is packed with tanks and cells of raw materials and machinery."
   }
 rogue2 = rogue
-  { cfreq         = [("deep random", 60)]
+  { cfreq         = [("deep random", 60), ("caveRogue2", 1)]
   , cname         = "Residential area"
   , cmaxPlaceSize = DiceXY 10 20  -- fewer big rooms
   , cdarkOdds     = 51  -- all rooms dark
@@ -113,10 +113,10 @@ arena = rogue
   , cdarkCorTile  = "trailLit"  -- let trails give off light
   , clitCorTile   = "trailLit"
   , cwallTile     = "openableWall"
-  , cstairFreq    = [ ("walled staircase", 20), ("closed staircase", 80)
-                    , ("tiny staircase", 1) ]
-  , cstairAllowed = [ ("walled lift", 20), ("closed lift", 80)
+  , cstairFreq    = [ ("walled lift", 20), ("closed lift", 80)
                     , ("tiny lift", 1) ]
+  , cstairAllowed = [ ("walled staircase", 20), ("closed staircase", 80)
+                    , ("tiny staircase", 1) ]
   , cdesc         = ""
   }
 arena2 = arena
