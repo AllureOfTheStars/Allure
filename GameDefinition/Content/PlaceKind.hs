@@ -118,8 +118,8 @@ glasshouse3 = glasshouse
 pulpit = PlaceKind
   { psymbol  = 'p'
   , pname    = "a stand"
-  , pfreq    = [("arena", 2), ("zoo", 20)]
-  , prarity  = [(1, 10), (10, 10)]
+  , pfreq    = [("arena", 20), ("zoo", 200)]
+  , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FGround
   , ptopLeft = [ "%%·"
@@ -201,8 +201,8 @@ collapsed7 = collapsed
 pillar = PlaceKind
   { psymbol  = 'p'
   , pname    = "a market"
-  , pfreq    = [("rogue", 50), ("arena", 2000), ("empty", 70)]
-  , prarity  = [(1, 5), (10, 5)]
+  , pfreq    = [("rogue", 250), ("arena", 10000), ("empty", 350)]
+  , prarity  = [(1, 1)]
   , pcover   = CStretch
   , pfence   = FWall
   -- Larger rooms require support pillars.
@@ -216,8 +216,7 @@ pillar = PlaceKind
   }
 pillar2 = pillar
   { pname    = "a plaza"
-  , pfreq    = [("rogue", 500), ("arena", 5000), ("empty", 200)]
-  , prarity  = [(1, 15), (10, 15)]
+  , pfreq    = [("rogue", 7500), ("arena", 75000), ("empty", 3000)]
   , ptopLeft = [ "O····"
                , "·····"
                , "·····"
@@ -229,8 +228,7 @@ pillar2 = pillar
   }
 pillar3 = pillar
   { pname    = "a court"
-  , pfreq    = [("rogue", 50), ("arena", 3), ("laboratory", 30)]
-  , prarity  = [(1, 5), (10, 5)]
+  , pfreq    = [("rogue", 250), ("arena", 15), ("laboratory", 150)]
   , ptopLeft = [ "#··"
                , "···"
                , "···"
@@ -238,7 +236,7 @@ pillar3 = pillar
   }
 pillar4 = pillar
   { pname    = "a mall"
-  , pfreq    = [("rogue", 300), ("arena", 1000)]
+  , pfreq    = [("rogue", 1500), ("arena", 5000)]
   , ptopLeft = [ "#·#·"
                , "····"
                , "#···"
@@ -247,9 +245,8 @@ pillar4 = pillar
   }
 pillar5 = pillar
   { pname    = "a bank outlet"
-  , pfreq    = [ ("rogue", 400), ("arena", 2000)
-               , ("empty", 200), ("emptyExit", 200) ]
-  , prarity  = [(1, 3), (10, 3)]
+  , pfreq    = [ ("rogue", 1200), ("arena", 6000)
+               , ("empty", 600), ("emptyExit", 600) ]
   , ptopLeft = [ "&i%·"
                , "ii#·"
                , "%#+·"
@@ -262,8 +259,7 @@ pillar5 = pillar
   }
 pillar6 = pillar
   { pname    = "a jewelry store"
-  , pfreq    = [ ("rogue", 400), ("arena", 2000), ("empty", 150) ]
-  , prarity  = [(1, 3), (10, 3)]
+  , pfreq    = [("rogue", 1200), ("arena", 6000), ("empty", 450)]
   , ptopLeft = [ "Of··"
                , "ff%·"
                , "·%&·"
@@ -289,8 +285,8 @@ colonnade = PlaceKind
   , poverrideLit = []
   }
 colonnade2 = colonnade
-  { prarity  = [(1, 20), (10, 20)]
-  , pfreq    = [("rogue", 15)]
+  { pfreq    = [("rogue", 300)]
+  , prarity  = [(1, 1)]
   , pfence   = FWall
   , ptopLeft = [ "#·"
                , "·#"
@@ -304,8 +300,8 @@ colonnade3 = colonnade
                ]
   }
 colonnade4 = colonnade
-  { prarity  = [(1, 50), (10, 50)]
-  , pfreq    = [("rogue", 10)]
+  { prarity  = [(1, 1)]
+  , pfreq    = [("rogue", 500)]
   , pfence   = FWall
   , ptopLeft = [ "#··"
                , "·#·"
@@ -355,8 +351,8 @@ colonnade10 = colonnade7
 lampPost = PlaceKind
   { psymbol  = 'l'
   , pname    = "a lamp post"
-  , pfreq    = [("escape", 20), ("ambush", 40), ("zoo", 10), ("battle", 10)]
-  , prarity  = [(1, 10), (10, 10)]
+  , pfreq    = [("escape", 200), ("ambush", 400), ("zoo", 100), ("battle", 100)]
+  , prarity  = [(1, 1)]
   , pcover   = CVerbatim
   , pfence   = FNone
   , ptopLeft = [ "X·X"
@@ -373,7 +369,7 @@ lampPost2 = lampPost
                ]
   }
 lampPost3 = lampPost
-  { pfreq    = [("escape", 300), ("zoo", 50), ("battle", 110)]
+  { pfreq    = [("escape", 3000), ("zoo", 500), ("battle", 1100)]
   , ptopLeft = [ "XX·XX"
                , "X···X"
                , "··O··"
@@ -382,7 +378,7 @@ lampPost3 = lampPost
                ]
   }
 lampPost4 = lampPost
-  { pfreq    = [("escape", 300), ("zoo", 50), ("battle", 60)]
+  { pfreq    = [("escape", 3000), ("zoo", 500), ("battle", 600)]
   , ptopLeft = [ "X···X"
                , "·····"
                , "··O··"
@@ -1091,10 +1087,10 @@ pumps = PlaceKind
 oval = PlaceKind
   { psymbol  = 'o'
   , pname    = "a dome"
-  , pfreq    = [ ("rogue", 2000), ("arena", 3000), ("laboratory", 5000)
-               , ("empty", 500), ("emptyExit", 500)
-               , ("zoo", 2000), ("ambush", 20) ]
-  , prarity  = [(1, 10), (10, 10)]
+  , pfreq    = [ ("rogue", 20000), ("arena", 30000), ("laboratory", 50000)
+               , ("empty", 5000), ("emptyExit", 5000)
+               , ("zoo", 20000), ("ambush", 200) ]
+  , prarity  = [(1, 1)]
   , pcover   = CStretch
   , pfence   = FWall
   , ptopLeft = [ "####·"
@@ -1109,9 +1105,9 @@ oval = PlaceKind
                    , ('~', "poolOver_~_Lit") ]
   }
 ovalFloor = oval
-  { pfreq    = [ ("rogue", 5000), ("arena", 6000), ("laboratory", 10000)
-               , ("empty", 1000), ("emptyExit", 500)
-               , ("zoo", 10000), ("ambush", 100) ]
+  { pfreq    = [ ("rogue", 50000), ("arena", 60000), ("laboratory", 100000)
+               , ("empty", 10000), ("emptyExit", 5000)
+               , ("zoo", 100000), ("ambush", 1000) ]
   , pfence   = FGround
   , ptopLeft = [ "aXXX##"
                , "X+###·"
@@ -1132,8 +1128,8 @@ ovalSquare = oval
   }
 ovalBasin = oval
   { pname    = "a water basin"
-  , pfreq    = [ ("rogue", 4000), ("zoo", 10000)
-               , ("arena", 20000), ("laboratory", 20000), ("empty", 2000) ]
+  , pfreq    = [ ("rogue", 40000), ("zoo", 100000)
+               , ("arena", 200000), ("laboratory", 200000), ("empty", 20000) ]
   , pfence   = FGround
   , ptopLeft = [ "XXX+##"
                , "X###··"
@@ -1145,8 +1141,8 @@ ovalBasin = oval
   }
 ovalBasin2 = oval
   { pname    = "a water basin"
-  , pfreq    = [ ("rogue", 60), ("zoo", 500)
-               , ("arena", 1000), ("laboratory", 300), ("empty", 180) ]
+  , pfreq    = [ ("rogue", 600), ("zoo", 5000)
+               , ("arena", 10000), ("laboratory", 3000), ("empty", 1800) ]
   , pfence   = FWall
   , ptopLeft = [ "#···"
                , "··~~"
@@ -1156,8 +1152,8 @@ ovalBasin2 = oval
   }
 squareBasin = oval
   { pname    = "a water basin"
-  , pfreq    = [ ("zoo", 400)
-               , ("arena", 1500), ("laboratory", 300), ("empty", 400) ]
+  , pfreq    = [ ("zoo", 4000)
+               , ("arena", 15000), ("laboratory", 3000), ("empty", 4000) ]
   , pfence   = FNone
   , ptopLeft = [ "OttOt"
                , "t~~~~"
@@ -1168,8 +1164,8 @@ squareBasin = oval
   }
 squareBasin2 = oval
   { pname    = "a water basin"
-  , pfreq    = [ ("zoo", 1500)
-               , ("arena", 10000), ("laboratory", 5000), ("empty", 1500) ]
+  , pfreq    = [ ("zoo", 15000)
+               , ("arena", 100000), ("laboratory", 50000), ("empty", 15000) ]
   , pfence   = FNone
   , ptopLeft = [ "OtOttt"
                , "t~~~~~"
@@ -1193,9 +1189,9 @@ floodedRoom = PlaceKind  -- Valid for any nonempty area, hence low frequency.
 maze = PlaceKind
   { psymbol  = 'm'
   , pname    = "an intricate maze"
-  , pfreq    = [ ("rogue", 20), ("laboratory", 500), ("arena", 1)
-               , ("emptyExit", 100) ]
-  , prarity  = [(1, 3), (10, 3)]
+  , pfreq    = [ ("rogue", 60), ("laboratory", 1500), ("arena", 3)
+               , ("emptyExit", 300) ]
+  , prarity  = [(1, 1)]
   , pcover   = CStretch
   , pfence   = FWall
   , ptopLeft = [ "##··"
@@ -1210,24 +1206,24 @@ maze = PlaceKind
                    , ('$', "trappableWall") ]
   }
 maze2 = maze
-  { pfreq    = [ ("rogue", 60), ("laboratory", 4000), ("arena", 2)
-               , ("emptyExit", 120) ]
+  { pfreq    = [ ("rogue", 180), ("laboratory", 12000), ("arena", 6)
+               , ("emptyExit", 360) ]
   , ptopLeft = [ "#·##·"
                , "·#··#"
                , "···#·"
                ]
   }
 maze3 = maze
-  { pfreq    = [ ("rogue", 100), ("laboratory", 5000), ("arena", 3)
-               , ("emptyExit", 160) ]
+  { pfreq    = [ ("rogue", 300), ("laboratory", 15000), ("arena", 9)
+               , ("emptyExit", 480) ]
   , ptopLeft = [ "##·##·"
                , "#·#··#"
                , "~·%···"
                ]
   }
 mazeBig = maze
-  { pfreq    = [ ("rogue", 200), ("laboratory", 1200), ("arena", 2000)
-               , ("emptyExit", 200) ]
+  { pfreq    = [ ("rogue", 600), ("laboratory", 3600), ("arena", 6000)
+               , ("emptyExit", 600) ]
   , pfence   = FNone
   , ptopLeft = [ "X$$$$"
                , "$·##·"
@@ -1237,8 +1233,8 @@ mazeBig = maze
                ]
   }
 mazeBig2 = maze
-  { pfreq    = [ ("rogue", 500), ("laboratory", 3000), ("arena", 4000)
-               , ("emptyExit", 280) ]
+  { pfreq    = [ ("rogue", 1500), ("laboratory", 9000), ("arena", 12000)
+               , ("emptyExit", 840) ]
   , pfence   = FNone
   , ptopLeft = [ "XX$$$~"
                , "X#···%"
@@ -1250,10 +1246,10 @@ mazeBig2 = maze
 cells = PlaceKind
   { psymbol  = '#'
   , pname    = "air filters"
-  , pfreq    = [ ("rogue", 12), ("laboratory", 12)
-               , ("emptyExit", 70), ("noise", 120)
-               , ("zoo", 150), ("ambush", 7) ]
-  , prarity  = [(1, 4), (10, 4)]
+  , pfreq    = [ ("rogue", 48), ("laboratory", 48)
+               , ("emptyExit", 280), ("noise", 480)
+               , ("zoo", 600), ("ambush", 28) ]
+  , prarity  = [(1, 1)]
   , pcover   = CReflect
   , pfence   = FWall
   , ptopLeft = [ "··#"
