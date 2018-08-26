@@ -532,7 +532,7 @@ floorAshes = floorActor
   }
 shallowWater = TileKind
   { tsymbol  = '~'
-  , tname    = "puddle"
+  , tname    = "water puddle"
   , tfreq    = [ ("shallow water Lit", 1), ("legendLit", 100)
                , ("emptySetLit", 5), ("noiseSetLit", 30), ("shootoutSetLit", 5)
                , ("lift terminal Lit", 4) ]
@@ -547,7 +547,7 @@ shallowWaterSpice = shallowWater
   , tfeature = Spice : tfeature shallowWater
   }
 shallowWater2 = shallowWater
-  { tname    = "pool"
+  { tname    = "water pool"
   , tfreq    = [("poolOver_~_Lit", 1)]
   }
 floorRed = floorCorridor
