@@ -79,7 +79,7 @@ rect = PlaceKind  -- Valid for any nonempty area, hence low frequency.
   }
 rect2 = rect
   { pname    = "a pen"
-  , pfreq    = [("zoo", 10)]
+  , pfreq    = [("shootout", 1), ("zoo", 10)]
   }
 rectWindows = PlaceKind
   { psymbol  = 'w'
@@ -97,7 +97,7 @@ rectWindows = PlaceKind
 glasshouse = PlaceKind
   { psymbol  = 'g'
   , pname    = "a glasshouse"
-  , pfreq    = [("shootout", 6)]
+  , pfreq    = [("shootout", 8)]
   , prarity  = [(1, 10), (10, 7)]
   , pcover   = CStretch
   , pfence   = FNone
@@ -411,7 +411,7 @@ treeShade = PlaceKind
 fogClump = PlaceKind
   { psymbol  = 'f'
   , pname    = "a foggy patch"
-  , pfreq    = [("empty", 400), ("escape", 80), ("shootout", 50)]
+  , pfreq    = [("empty", 400), ("escape", 60), ("shootout", 70)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -423,7 +423,7 @@ fogClump = PlaceKind
   , poverrideLit = [('f', "fogClumpOver_f_Lit"), (';', "fog Lit")]
   }
 fogClump2 = fogClump
-  { pfreq    = [("empty", 3000), ("escape", 80), ("shootout", 400)]
+  { pfreq    = [("empty", 3000), ("escape", 100), ("shootout", 400)]
   , ptopLeft = [ "X;f"
                , "f;f"
                , ";;f"
@@ -1076,7 +1076,7 @@ pumps = PlaceKind
   { psymbol  = 'w'
   , pname    = "water pumps"
   , pfreq    = [ ("rogue", 200), ("laboratory", 100), ("empty", 2000)
-               , ("brawl", 80), ("shootout", 250) ]
+               , ("brawl", 80), ("shootout", 50) ]
   , prarity  = [(1, 1)]
   , pcover   = CAlternate
   , pfence   = FWall
