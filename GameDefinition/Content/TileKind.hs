@@ -437,8 +437,8 @@ bushBurning = bush
 fog = TileKind
   { tsymbol  = ';'
   , tname    = "faint fog"
-  , tfreq    = [ ("fog Lit", 1), ("emptySetLit", 50)
-               , ("noiseSetLit", 120), ("shootoutSetLit", 30)
+  , tfreq    = [ ("fog Lit", 1), ("emptySetLit", 50), ("noiseSetLit", 120)
+               , ("shootoutSetLit", 30)
                , ("fogClumpOver_f_Lit", 60), ("fogClumpOver_f_Dark", 60)
                , ("lift terminal Lit", 40) ]
       -- lit fog is OK for shootout, because LOS is mutual, as opposed
@@ -507,9 +507,9 @@ floorDamp = floorArena
   }
 floorDirt = floorArena
   { tname    = "dirt"
-  , tfreq    = [ ("battleSetLit", 1000), ("brawlSetLit", 1000)
-               , ("shootoutSetLit", 1000), ("escapeSetLit", 1000)
-               , ("ambushSetLit", 1000), ("dirt Lit", 1) ]
+  , tfreq    = [ ("brawlSetLit", 1000), ("shootoutSetLit", 1000)
+               , ("escapeSetLit", 1000), ("ambushSetLit", 1000)
+               , ("battleSetLit", 1000), ("dirt Lit", 1) ]
   }
 floorDirtSpice = floorDirt
   { tfreq    = [ ("treeShadeOver_s_Lit", 1), ("bushClumpOver_f_Lit", 1)

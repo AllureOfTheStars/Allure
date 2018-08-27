@@ -408,7 +408,7 @@ treeShade = PlaceKind
 fogClump = PlaceKind
   { psymbol  = 'f'
   , pname    = "a foggy patch"
-  , pfreq    = [("empty", 400), ("escape", 60), ("shootout", 70)]
+  , pfreq    = [("empty", 400), ("shootout", 70), ("escape", 60)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -420,7 +420,7 @@ fogClump = PlaceKind
   , poverrideLit = [('f', "fogClumpOver_f_Lit"), (';', "fog Lit")]
   }
 fogClump2 = fogClump
-  { pfreq    = [("empty", 3000), ("escape", 100), ("shootout", 400)]
+  { pfreq    = [("empty", 3000), ("shootout", 400), ("escape", 100)]
   , ptopLeft = [ "X;f"
                , "f;f"
                , ";;f"
