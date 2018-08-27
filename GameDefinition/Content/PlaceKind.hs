@@ -43,16 +43,16 @@ staircaseBasic = [staircase1, staircase2, staircase3, staircase4, staircase5, st
 generatedStairs :: [PlaceKind]
 generatedStairs =
   let (stairs, lifts) = partition ((/= "a lift") . pname) staircaseBasic
-      gatedStairs = map makeGatedStaircase stairs
-      gatedLifts = map makeGatedLift lifts
-      outdoorStairs = map makeOutdoor stairs
+      gatedStairs = map switchStaircaseToGated stairs
+      gatedLifts = map switchLiftToGated lifts
+      outdoorStairs = map switchStaircaseToOutdoor stairs
       stairsAll = stairs ++ gatedStairs ++ outdoorStairs
       liftsAll = lifts ++ gatedLifts
   in gatedStairs ++ gatedLifts ++ outdoorStairs
-     ++ map (makeStaircaseUp "stair terminal") stairsAll
-     ++ map (makeStaircaseUp "lift terminal") liftsAll
-     ++ map (makeStaircaseDown "stair terminal") stairsAll
-     ++ map (makeStaircaseDown "lift terminal") liftsAll
+     ++ map (switchExitToUp "stair terminal") stairsAll
+     ++ map (switchExitToUp "lift terminal") liftsAll
+     ++ map (switchExitToDown "stair terminal") stairsAll
+     ++ map (switchExitToDown "lift terminal") liftsAll
 
 -- The dots below are @Char.chr 183@, as defined in @TileKind.floorSymbol@.
 deadEnd = PlaceKind  -- needs to have index 0
@@ -1436,8 +1436,8 @@ shuttleHusk6 = shuttleHusk
 
 -- * Helper functions
 
-makeStaircaseUp :: Text -> PlaceKind -> PlaceKind
-makeStaircaseUp terminal s = s
+switchExitToUp :: Text -> PlaceKind -> PlaceKind
+switchExitToUp terminal s = s
  { psymbol   = '<'
  , pname     = pname s <+> "up"
  , pfreq     = map (\(t, k) -> (toGroupName $ tshow t <+> "up", k)) $ pfreq s
@@ -1447,8 +1447,8 @@ makeStaircaseUp terminal s = s
                   : filter ((/= '>') . fst) (poverrideLit s)
  }
 
-makeStaircaseDown :: Text -> PlaceKind -> PlaceKind
-makeStaircaseDown terminal s = s
+switchExitToDown :: Text -> PlaceKind -> PlaceKind
+switchExitToDown terminal s = s
  { psymbol   = '>'
  , pname     = pname s <+> "down"
  , pfreq     = map (\(t, k) -> (toGroupName $ tshow t <+> "down", k)) $ pfreq s
@@ -1463,8 +1463,8 @@ overrideGatedStaircase =
   [ ('<', "gated staircase up"), ('>', "gated staircase down")
   , ('I', "signboard"), ('S', "fillerWall") ]
 
-makeGatedStaircase :: PlaceKind -> PlaceKind
-makeGatedStaircase s = s
+switchStaircaseToGated :: PlaceKind -> PlaceKind
+switchStaircaseToGated s = s
  { psymbol   = 'g'
  , pname     = T.unwords $ "a gated" : tail (T.words (pname s))
  , pfreq     = map (first (\t -> toGroupName $ "gated" <+> tshow t)) $ pfreq s
@@ -1477,8 +1477,8 @@ overrideGatedLift =
   [ ('<', "gated lift up"), ('>', "gated lift down")
   , ('I', "signboard"), ('S', "lift shaft") ]
 
-makeGatedLift :: PlaceKind -> PlaceKind
-makeGatedLift s = s
+switchLiftToGated :: PlaceKind -> PlaceKind
+switchLiftToGated s = s
  { psymbol   = 'g'
  , pname     = T.unwords $ "a gated" : tail (T.words (pname s))
  , pfreq     = map (first (\t -> toGroupName $ "gated" <+> tshow t)) $ pfreq s
@@ -1491,8 +1491,8 @@ overrideOutdoor =
   [ ('<', "staircase outdoor up"), ('>', "staircase outdoor down")
   , ('I', "signboard"), ('S', "fillerWall") ]
 
-makeOutdoor :: PlaceKind -> PlaceKind
-makeOutdoor s = s
+switchStaircaseToOutdoor :: PlaceKind -> PlaceKind
+switchStaircaseToOutdoor s = s
  { psymbol   = 'o'
  , pname     = "an outdoor area exit"
  , pfreq     = map (first (\t -> toGroupName $ "outdoor" <+> tshow t)) $ pfreq s
