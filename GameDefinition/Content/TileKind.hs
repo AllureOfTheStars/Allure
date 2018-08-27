@@ -513,7 +513,7 @@ floorDirt = floorArena
   }
 floorDirtSpice = floorDirt
   { tfreq    = [ ("treeShadeOver_s_Lit", 1), ("bushClumpOver_f_Lit", 1)
-               , ("pumpsOver_f_Lit", 2) ]
+               , ("pumpsOver_f_Lit", 3) ]
   , tfeature = Spice : tfeature floorDirt
   }
 floorActor = floorArena
@@ -543,7 +543,7 @@ shallowWater = TileKind
   , tfeature = Embed "shallow water" : tfeature floorActor
   }
 shallowWaterSpice = shallowWater
-  { tfreq    = [ ("fogClumpOver_f_Lit", 40), ("pumpsOver_f_Lit", 2)
+  { tfreq    = [ ("fogClumpOver_f_Lit", 40), ("pumpsOver_f_Lit", 3)
                , ("rubbleOrWaste_Lit", 1) ]
   , tfeature = Spice : tfeature shallowWater
   }
