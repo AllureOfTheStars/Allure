@@ -273,7 +273,7 @@ pillar6 = pillar
 colonnade = PlaceKind
   { psymbol  = 'c'
   , pname    = "a colonnade"
-  , pfreq    = [ ("rogue", 12), ("noise", 1000), ("escape", 40)
+  , pfreq    = [ ("rogue", 12), ("noise", 1000), ("escape", 200)
                , ("emptyExit", 200) ]
   , prarity  = [(1, 12), (10, 12)]
   , pcover   = CAlternate
