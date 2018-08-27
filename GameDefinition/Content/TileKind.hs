@@ -209,7 +209,8 @@ tree = TileKind
   { tsymbol  = 'O'
   , tname    = "tree"
   , tfreq    = [ ("brawlSetLit", 140), ("shootoutSetLit", 10)
-               , ("escapeSetLit", 35), ("treeShadeOver_O_Lit", 1) ]
+               , ("escapeSetLit", 35), ("zooSetDark", 20)
+               , ("treeShadeOver_O_Lit", 1) ]
   , tcolor   = BrGreen
   , tcolor2  = Green
   , talter   = 50
@@ -217,14 +218,14 @@ tree = TileKind
   }
 treeBurnt = tree
   { tname    = "burnt tree"
-  , tfreq    = [("zooSetDark", 7), ("tree with fire", 30)]
+  , tfreq    = [("zooSetDark", 10), ("tree with fire", 30)]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
   , tfeature = Dark : tfeature tree
   }
 treeBurning = tree
   { tname    = "burning tree"
-  , tfreq    = [("zooSetDark", 40), ("tree with fire", 70)]
+  , tfreq    = [("zooSetDark", 60), ("tree with fire", 70)]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 5
@@ -240,7 +241,7 @@ rubble = TileKind
                , ("lift terminal Lit", 6), ("lift terminal Dark", 6)
                , ("emptySetLit", 4), ("emptyExitSetLit", 8)
                , ("noiseSetLit", 50), ("noisePowerSetDark", 150)
-               , ("zooSetDark", 100), ("ambushSetDark", 18) ]
+               , ("zooSetDark", 100), ("ambushSetDark", 5) ]
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 4  -- boss can dig through
@@ -403,7 +404,7 @@ bush = TileKind
   { tsymbol  = '%'
   , tname    = "bush"
   , tfreq    = [ ("bush Lit", 1), ("shootoutSetLit", 30), ("escapeSetLit", 40)
-               , ("arenaSetLit", 5)
+               , ("arenaSetLit", 5), ("zooSetDark", 100)
                , ("bushClumpOver_f_Lit", 1), ("pumpsOver_f_Lit", 1)
                , ("lift terminal Lit", 4) ]
   , tcolor   = BrGreen
@@ -413,7 +414,7 @@ bush = TileKind
   }
 bushBurnt = bush
   { tname    = "burnt bush"
-  , tfreq    = [ ("battleSetDark", 30), ("ambushSetDark", 4), ("zooSetDark", 30)
+  , tfreq    = [ ("battleSetDark", 30), ("ambushSetDark", 5), ("zooSetDark", 50)
                , ("bush with fire", 70) ]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
@@ -421,7 +422,7 @@ bushBurnt = bush
   }
 bushBurning = bush
   { tname    = "burning bush"
-  , tfreq    = [ ("ambushSetDark", 40), ("zooSetDark", 300)
+  , tfreq    = [ ("ambushSetDark", 20), ("zooSetDark", 300)
                , ("bush with fire", 30) ]
   , tcolor   = BrRed
   , tcolor2  = Red
@@ -459,7 +460,7 @@ smoke = TileKind
   , tfreq    = [ ("smoke Lit", 1), ("labTrailLit", 1)
                , ("stair terminal Lit", 2), ("lift terminal Lit", 6)
                , ("smokeClumpOver_f_Lit", 3), ("smokeClumpOver_f_Dark", 3)
-               , ("emptyExitSetLit", 20) ]
+               , ("emptyExitSetLit", 20), ("ambushSetDark", 30) ]
   , tcolor   = Brown
   , tcolor2  = BrBlack
   , talter   = 0
@@ -467,8 +468,8 @@ smoke = TileKind
   }
 smokeDark = smoke
   { tname    = "lingering smoke"
-  , tfreq    = [ ("noisePowerSetDark", 100), ("ambushSetDark", 60)
-               , ("zooSetDark", 20), ("battleSetDark", 5)
+  , tfreq    = [ ("noisePowerSetDark", 100)
+               , ("zooSetDark", 20), ("ambushSetDark", 60), ("battleSetDark", 5)
                , ("stair terminal Dark", 2), ("lift terminal Dark", 6) ]
   , tfeature = Dark : tfeature smoke
   }
@@ -608,7 +609,7 @@ rubbleBurning = TileKind  -- present in "emptySetLit" for early light source
   { tsymbol  = '&'
   , tname    = "burning installation"
   , tfreq    = [ ("emptySetLit", 2), ("noisePowerSetDark", 20)
-               , ("ambushSetDark", 2), ("zooSetDark", 40)
+               , ("ambushSetDark", 30), ("zooSetDark", 30)
                , ("stair terminal Lit", 4), ("stair terminal Dark", 4)
                , ("lift terminal Lit", 4), ("lift terminal Dark", 4) ]
   , tcolor   = BrRed
@@ -776,13 +777,13 @@ floorOily = floorArena
   { tname    = "oily floor"
   , tfreq    = [ ("noisePowerSetLit", 600), ("emptyExitSetLit", 900)
                , ("oily floor Lit", 1), ("rubbleOrWaste_Lit", 1)
-               , ("oil_over_o_Lit", 4) ]
+               , ("oilOver_o_Lit", 4) ]
   }
 oilSpill = TileKind
   { tsymbol  = '~'
   , tname    = "oil spill"
   , tfreq    = [ ("noisePowerSetDark", 35), ("emptyExitSetLit", 1)
-               , ("oil spill", 1) ]
+               , ("ambushSetDark", 20), ("oil spill", 1) ]
   , tcolor   = BrYellow
   , tcolor2  = BrGreen
   , talter   = 0
@@ -790,7 +791,7 @@ oilSpill = TileKind
   }
 oilSpillSpice = oilSpill
   { tfreq    = [ ("rubbleOrWaste_Lit", 1)
-               , ("oil_over_o_Lit", 1), ("oil_over_o_Dark", 1) ]
+               , ("oilOver_o_Lit", 1), ("oilOver_o_Dark", 1) ]
   , tfeature = Spice : tfeature oilSpill
   }
 floorWindow = floorArena
