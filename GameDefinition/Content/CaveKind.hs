@@ -571,7 +571,6 @@ safari1 = brawl
 safari2 = ambush  -- lamps instead of trees, but ok, it's only a simulation
   { cname         = "Deep into the jungle"
   , cfreq         = [("caveSafari2", 1)]
-  , cminPlaceSize = DiceXY 5 3
   , cextraStairs  = 1
   , cstairFreq    = [ ("outdoor walled staircase", 20)
                     , ("outdoor closed staircase", 80)
