@@ -21,7 +21,7 @@ import Game.LambdaHack.Content.TileKind (TileKind)
 
 content :: [PlaceKind]
 content =
-  [deadEnd, rect, rect2, rectWindows, glasshouse, glasshouse2, glasshouse3, pulpit, ruin, ruin2, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, pillar6, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, colonnade7, colonnade8, colonnade9, colonnade10, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2, smokeClump3FGround, bushClump, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, staircase1, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircase18, staircase19, staircase20, staircase21, staircase22, staircase23, staircase24, staircase25, staircase26, staircase27, staircase28, staircase29, staircase30, staircase31, staircase32, staircase33, staircase34, staircase35, staircase36, staircase37]
+  [deadEnd, rect, rect2, rectWindows, glasshouse, glasshouse2, glasshouse3, pulpit, ruin, ruin2, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, pillar6, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, colonnade7, colonnade8, colonnade9, colonnade10, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2, smokeClump3FGround, bushClump, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeDown6, escapeDown7, escapeDown8, escapeDown9, staircase1, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircase18, staircase19, staircase20, staircase21, staircase22, staircase23, staircase24, staircase25, staircase26, staircase27, staircase28, staircase29, staircase30, staircase31, staircase32, staircase33, staircase34, staircase35, staircase36, staircase37]
   -- Allure-specific
   ++ [staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25]
   -- automatically generated
@@ -29,7 +29,7 @@ content =
   -- Allure-specific, continued
   ++ [ pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5, shuttleHusk, shuttleHusk2, shuttleHusk3, shuttleHusk4, shuttleHusk5, shuttleHusk6]
 
-deadEnd,    rect, rect2, rectWindows, glasshouse, glasshouse2, glasshouse3, pulpit, ruin, ruin2, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, pillar6, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, colonnade7, colonnade8, colonnade9, colonnade10, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2, smokeClump3FGround, bushClump, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, staircase1, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircase18, staircase19, staircase20, staircase21, staircase22, staircase23, staircase24, staircase25, staircase26, staircase27, staircase28, staircase29, staircase30, staircase31, staircase32, staircase33, staircase34, staircase35, staircase36, staircase37 :: PlaceKind
+deadEnd,    rect, rect2, rectWindows, glasshouse, glasshouse2, glasshouse3, pulpit, ruin, ruin2, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, pillar6, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, colonnade7, colonnade8, colonnade9, colonnade10, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2, smokeClump3FGround, bushClump, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeDown6, escapeDown7, escapeDown8, escapeDown9, staircase1, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircase18, staircase19, staircase20, staircase21, staircase22, staircase23, staircase24, staircase25, staircase26, staircase27, staircase28, staircase29, staircase30, staircase31, staircase32, staircase33, staircase34, staircase35, staircase36, staircase37 :: PlaceKind
 -- Allure-specific
 staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25, pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5, shuttleHusk, shuttleHusk2, shuttleHusk3, shuttleHusk4, shuttleHusk5, shuttleHusk6 :: PlaceKind
 
@@ -56,7 +56,8 @@ generatedStairs =
 
 escapeDownBasic :: [PlaceKind]
 escapeDownBasic =
-  [escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5]
+  [ escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeDown6
+  , escapeDown7, escapeDown8, escapeDown9 ]
 
 generatedEscapes :: [PlaceKind]
 generatedEscapes =
@@ -501,8 +502,10 @@ escapeDown = PlaceKind
   , pfence   = FGround
   , ptopLeft = [ ">"
                ]
-  , poverrideDark = []
-  , poverrideLit = []
+  , poverrideDark = [ ('*', "oil spill"), ('O', "lampPostOver_O")
+                    , ('f', "floorActorLit"), ('r', "rubbleOrWaste_Dark") ]
+  , poverrideLit = [ ('*', "oil spill"), ('O', "lampPostOver_O")
+                   , ('f', "floorActorLit"), ('r', "rubbleOrWaste_Lit") ]
   }
 escapeDown2 = escapeDown
   { pfreq    = [("escape down", 1000)]
@@ -513,7 +516,7 @@ escapeDown2 = escapeDown
                ]
   }
 escapeDown3 = escapeDown
-  { pfreq    = [("escape down", 2000)]
+  { pfreq    = [("escape down", 1000)]
   , pfence   = FWall
   , ptopLeft = [ "·#·"
                , "#>#"
@@ -522,19 +525,60 @@ escapeDown3 = escapeDown
   }
 escapeDown4 = escapeDown
   { pfreq    = [("escape down", 1000)]
-  , pfence   = FFloor
+  , pfence   = FWall
   , ptopLeft = [ "·^·"
                , "^>^"
                , "·^·"
                ]
   }
 escapeDown5 = escapeDown
-  { pfreq    = [("escape down", 2000)]
+  { pfreq    = [("escape down", 1000)]
+  , pcover   = CMirror
+  , pfence   = FFloor
+  , ptopLeft = [ "r#·"
+               , "r>#"
+               , "rrr"
+               ]
+  }
+escapeDown6 = escapeDown
+  { pfreq    = [("escape down", 500)]
+  , pfence   = FWall
+  , ptopLeft = [ "··#··"
+               , "·#*#·"
+               , "#*>*#"
+               , "·#*#·"
+               , "··#··"
+               ]
+  }
+escapeDown7 = escapeDown
+  { pfreq    = [("escape down", 500)]
+  , pfence   = FFloor
+  , ptopLeft = [ "·*#*·"
+               , "*#*#*"
+               , "#*>*#"
+               , "*#*#*"
+               , "·*#*·"
+               ]
+  }
+escapeDown8 = escapeDown
+  { pfreq    = [("escape down", 500)]
   , pcover   = CMirror
   , pfence   = FWall
-  , ptopLeft = [ "#··"
-               , "·>·"
-               , "·~#"
+  , ptopLeft = [ "··#*·"
+               , "·#**·"
+               , "#*>*#"
+               , "·**#·"
+               , "*·#··"
+               ]
+  }
+escapeDown9 = escapeDown
+  { pfreq    = [("escape down", 1000)]
+  , pcover   = CMirror
+  , pfence   = FFloor
+  , ptopLeft = [ "·f·#"
+               , "%f>·"
+               , "%Of·"
+               , "ff%%"
                ]
   }
 staircase = PlaceKind
