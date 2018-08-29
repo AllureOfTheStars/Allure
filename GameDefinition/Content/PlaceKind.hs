@@ -1192,15 +1192,15 @@ maze2 = maze
   }
 maze3 = maze
   { pfreq    = [ ("rogue", 300), ("laboratory", 15000), ("arena", 9)
-               , ("emptyExit", 480) ]
+               , ("emptyExit", 400) ]
   , ptopLeft = [ "##·##·"
                , "#·#··#"
                , "~·%···"
                ]
   }
 mazeBig = maze
-  { pfreq    = [ ("rogue", 600), ("laboratory", 3600), ("arena", 6000)
-               , ("emptyExit", 600) ]
+  { pfreq    = [ ("rogue", 600), ("laboratory", 3000), ("arena", 5000)
+               , ("emptyExit", 500) ]
   , pfence   = FNone
   , ptopLeft = [ "X$$$$"
                , "$·##·"
@@ -1210,8 +1210,8 @@ mazeBig = maze
                ]
   }
 mazeBig2 = maze
-  { pfreq    = [ ("rogue", 1500), ("laboratory", 9000), ("arena", 12000)
-               , ("emptyExit", 840) ]
+  { pfreq    = [ ("rogue", 1500), ("laboratory", 8000), ("arena", 10000)
+               , ("emptyExit", 700) ]
   , pfence   = FNone
   , ptopLeft = [ "XX$$$~"
                , "X#···%"
