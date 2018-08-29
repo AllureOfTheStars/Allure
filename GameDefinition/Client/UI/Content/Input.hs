@@ -50,6 +50,7 @@ standardKeysAndMouse = InputContentRaw $ map evalKeyDef $
                , "cancel aiming/open main menu"
                , ByAimMode { exploration = ExecuteIfClear MainMenu
                            , aiming = Cancel } ))
+  , ("C-Escape", ([], "", MainMenu))  -- required by frontends; not shown
   , ("Return", ( [CmdMinimal, CmdAim]
                , "accept target/open dashboard"
                , ByAimMode { exploration = ExecuteIfClear Dashboard
