@@ -770,13 +770,13 @@ staircase17 = staircase
 staircase18 = staircase
   { pfreq    = [("closed staircase", 80000)]
   , pfence   = FFloor
-  , ptopLeft = [ "··#·#·#·#··"
-               , "·#·#·#·#·#·"
+  , ptopLeft = [ "XX#·#·#·#XX"
+               , "X#·#·#·#·#X"
                , "#·#·····#·#"
                , "·#··<S>··#·"
                , "#·#·····#·#"
-               , "·#·#·#·#·#·"
-               , "··#·#·#·#··"
+               , "X#·#·#·#·#X"
+               , "XX#·#·#·#XX"
                ]
   }
 staircase19 = staircase
