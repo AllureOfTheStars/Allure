@@ -790,7 +790,7 @@ oilSpill = TileKind
   , tfeature = Embed "machine oil" : tfeature floorActor
   }
 oilSpillSpice = oilSpill
-  { tfreq    = [ ("rubbleOrWaste_Lit", 1)
+  { tfreq    = [ ("rubbleOrWaste_Lit", 1), ("rubbleOrWaste_Dark", 1)
                , ("oilOver_o_Lit", 1), ("oilOver_o_Dark", 1) ]
   , tfeature = Spice : tfeature oilSpill
   }
