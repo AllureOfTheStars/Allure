@@ -313,10 +313,10 @@ colonnade3 = colonnade
   }
 colonnade4 = colonnade
   { prarity  = [(1, 1)]
-  , pfreq    = [("rogue", 500)]
+  , pfreq    = [("rogue", 1000)]
   , pfence   = FWall
-  , ptopLeft = [ "···"
-               , "##·"
+  , ptopLeft = [ "#··"
+               , "·#·"
                , "··#"
                ]
   }
