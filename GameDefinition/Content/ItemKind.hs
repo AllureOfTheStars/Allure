@@ -33,13 +33,13 @@ otherItemContent = embeds ++ actors ++ organs ++ blasts ++ temporaries
 
 items :: [ItemKind]
 items =
-  [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammer, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberd3, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
+  [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, potion13, potion14, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, ushankaHat, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammer, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberd3, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
   -- Allure-specific
-  ++ [needle, constructionHooter, scroll14]
+  ++ [needle, constructionHooter, scrollAd1]
 
-sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammer, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberd3, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
+sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, potion13, potion14, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, ushankaHat, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammer, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberd3, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
 -- Allure-specific
-needle, constructionHooter, scroll14 :: ItemKind
+needle, constructionHooter, scrollAd1 :: ItemKind
 
 -- Keep the dice rolls and sides in aspects small so that not too many
 -- distinct items are generated (for display in item lore and for narrative
@@ -185,6 +185,11 @@ slingBullet = ItemKind
 -- * Exotic thrown weapons
 
 -- Identified, because shape (and name) says it all. Detailed stats id by use.
+-- This is an extremely large value for @Paralyze@. Normally for such values
+-- we should instead use condition that disables (almost) all skills,
+-- except @SkWait@, so that the player can switch leader and not be
+-- helpless nor experience instadeath (unless his party is 1-person
+-- or the actor is isolated, but that's usually player's fault).
 paralizingProj = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "can"
@@ -214,7 +219,8 @@ harpoon = ItemKind
   , iweight  = 750
   , idamage  = 5 `d` 1
   , iaspects = [AddSkill SkHurtMelee $ (-10 + 1 `d` 2 + 1 `dL` 3) * 5]
-  , ieffects = [PullActor (ThrowMod 200 50)]
+  , ieffects = [ PullActor (ThrowMod 200 50)  -- 1 step, fast
+               , Yell ]  -- yell, because brutal
   , idesc    = "A display piece harking back to the Earth's oceanic tourism heyday. The cruel, barbed head lodges in its victim so painfully that the weakest tug of the thin line sends the victim flying."
   , ikit     = []
   }
@@ -237,7 +243,7 @@ net = ItemKind
   , iaspects = [AddSkill SkHurtMelee $ -14 * 5]
   , ieffects = [ toOrganBad "slowed" (3 + 1 `d` 3)
                , DropItem maxBound 1 CEqp "torso armor"
-               , SendFlying (ThrowMod 100 50) ]  -- make the drop painful
+               , SendFlying (ThrowMod 100 50) ]  -- 1 step; painful
       -- only one of each kind is dropped, because no rubbish in this group
   , idesc    = "A large synthetic fibre net with weights affixed along the edges. Entangles armor and restricts movement."
   , ikit     = []
@@ -279,7 +285,9 @@ light2 = ItemKind
   , iaspects = [ AddSkill SkShine 3, AddSkill SkSight (-1)
                , SetFlag Lobable, SetFlag Fragile, SetFlag Equipable
                , EqpSlot EqpSlotLightSource ]
-  , ieffects = [Burn 1, Paralyze 6, OnSmash (Explode "burning oil 3")]
+  , ieffects = [ Burn 1
+               , toOrganBad "pacified" (3 + 1 `d` 2)
+               , OnSmash (Explode "burning oil 3") ]
   , idesc    = "A sizable restaurant glass lamp filled with plant oil feeding a slender wick."
   , ikit     = []
   }
@@ -329,8 +337,7 @@ blanket = ItemKind
 -- is intended to be an interesting tactical decision.
 --
 -- Flasks are often not natural; maths, magic, distillery.
--- In reality, they just cover all conditions, which in turn matches
--- all aspects.
+-- In reality, they just cover all conditions, except those for basic abilites.
 --
 -- There is no flask nor temporary organ of Calm depletion,
 -- because Calm reduced often via combat, etc..
@@ -339,8 +346,8 @@ flaskTemplate = ItemKind
   { isymbol  = symbolFlask
   , iname    = "flask"
   , ifreq    = [("flask unknown", 1)]
-  , iflavour = zipLiquid darkCol ++ zipPlain darkCol ++ zipFancy darkCol
-               ++ zipLiquid brightCol
+  , iflavour = zipGlassPlain darkCol ++ zipGlassFancy darkCol
+               ++ zipLiquid darkCol ++ zipPlain darkCol ++ zipFancy darkCol
   , icount   = 1 `dL` 3
   , irarity  = [(1, 7), (10, 3)]
   , iverbHit = "splash"
@@ -390,7 +397,14 @@ flask5 = flaskTemplate
                , OnSmash (Explode "red paint") ]
   }
 flask6 = flaskTemplate
-  { ifreq    = []
+  { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
+  , irarity  = [(10, 7)]
+  , iaspects = [ELabel "of resolution"]
+               ++ iaspects flaskTemplate
+  , ieffects = [ toOrganGood "resolute" (200 + 1 `d` 50)
+                   -- long, for scouting and has to recharge
+               , RefillCalm 60  -- not to make it a drawback, via @calmEnough@
+               , OnSmash (Explode "resolution dust") ]
   }
 flask7 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
@@ -443,7 +457,7 @@ flask12 = flaskTemplate
   , iaspects = [ELabel "of whiskey"]
                ++ iaspects flaskTemplate
   , ieffects = [ toOrganGood "drunk" (20 + 1 `d` 5)
-               , Burn 1, RefillHP 3
+               , Burn 1, RefillHP 3, Yell
                , OnSmash (Explode "whiskey spray") ]
   }
 flask13 = flaskTemplate
@@ -461,7 +475,7 @@ flask13 = flaskTemplate
 -- The player has full control over throwing the flask at his party,
 -- so he can milk the explosion, so it has to be much weaker, so a weak
 -- healing effect is enough. OTOH, throwing a harmful flask at many enemies
--- at once is not easy to arrange, so these explostions can stay powerful.
+-- at once is not easy to arrange, so these explosions can stay powerful.
 flask14 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , irarity  = [(1, 2), (10, 10)]
@@ -518,9 +532,10 @@ flask20 = flaskTemplate
                , OnSmash (Explode "glass hail") ]  -- enough glass to cause that
   }
 
--- Potions are often natural. Appear deeper than most flasks. Various
--- configurations of effects. A different class of effects is on scrolls
--- and mechanical items. Some are shared.
+-- Potions are often natural, including natural basic abilites.
+-- They appear deeper than most flasks. Various configurations of effects.
+-- A different class of effects is on scrolls and mechanical items.
+-- Some are shared.
 
 potionTemplate = ItemKind
   { isymbol  = symbolPotion
@@ -627,6 +642,60 @@ potion9 = potionTemplate
                , OnSmash (Explode "pheromone") ]
   -- , idesc    = ""
   }
+potion10 = potionTemplate
+  { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
+  , ieffects = [ PutToSleep
+               , OnSmash (Explode "sleep mist") ]
+  }
+potion11 = potionTemplate
+  { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
+  , irarity  = [(10, 5)]
+  , iaspects = [ELabel "of grenadier focus"]
+               ++ iaspects potionTemplate
+  , ieffects = [ toOrganGood "more projecting" (40 + 1 `d` 10)
+               , toOrganBad "pacified" (5 + 1 `d` 3)
+                   -- has to be weak, or would be too good when thrown at foes
+               , OnSmash (Explode "more projecting dew")
+               , OnSmash (Explode "pacified mist") ]
+  -- , idesc    = ""
+  }
+potion12 = potionTemplate
+  { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
+  , irarity  = [(10, 10)]
+  , iaspects = [ELabel "of frenzy"]
+               ++ iaspects potionTemplate
+  , ieffects = [ Yell
+               , toOrganGood "strengthened" (20 + 1 `d` 5)
+               , toOrganBad "retaining" (40 + 1 `d` 10)
+               , OnSmash (Explode "dense shower")
+               , OnSmash (Explode "retaining mist")
+               , OnSmash (Explode "retaining mist") ]
+  }
+potion13 = potionTemplate
+  { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
+  , irarity  = [(10, 10)]
+  , iaspects = [ELabel "of panic"]
+               ++ iaspects potionTemplate
+  , ieffects = [ RefillCalm (-30)
+               , toOrganGood "hasted" (20 + 1 `d` 5)
+               , toOrganBad "weakened" (20 + 1 `d` 5)
+               , toOrganBad "withholding" (20 + 1 `d` 5)
+               , OnSmash (Explode "haste spray")
+               , OnSmash (Explode "sparse shower")
+               , OnSmash (Explode "withholding mist") ]
+  }
+potion14 = potionTemplate
+  { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
+  , irarity  = [(10, 8)]
+  , iaspects = [ELabel "of quicksilver"]
+               ++ iaspects potionTemplate
+  , ieffects = [ toOrganGood "hasted" (20 + 1 `d` 5)
+               , toOrganBad "blind" (20 + 1 `d` 5)
+               , toOrganBad "immobile" (20 + 1 `d` 5)
+               , OnSmash (Explode "haste spray")
+               , OnSmash (Explode "iron filing")
+               , OnSmash (Explode "immobile mist") ]
+  }
 
 -- * Explosives, with the only effect being @Explode@
 
@@ -671,9 +740,9 @@ concussionBomb = fragmentationBomb
   , idesc    = ""
   }
 -- Not flashbang, because powerful bang without fragmentation is harder
--- to manufacture (requires an oxidizer and steel canister with holes)
--- and because we don't model hearing adequately yet. The bang would also
--- paralyze and/or lower the movement skill (out of balance due to ear trauma).
+-- to manufacture (requires an oxidizer and steel canister with holes).
+-- The bang would also paralyze and/or lower the movement skill
+-- (out of balance due to ear trauma).
 flashBomb = fragmentationBomb
   { iname    = "powder tube"  -- filled with magnesium flash powder
   , iflavour = zipPlain [BrWhite]
@@ -805,6 +874,15 @@ scroll13 = scrollTemplate
                ++ iaspects scrollTemplate
   , ieffects = [Detect DetectActor 20]
   }
+scroll14 = scrollTemplate
+  { ifreq    = [("common item", 100), ("any scroll", 100)]
+  , ieffects = [PushActor (ThrowMod 400 100)]  -- 4 steps, 2 turns
+  }
+scroll15 = scrollTemplate
+  { ifreq    = [("common item", 100), ("any scroll", 100)]
+  , irarity  = [(10, 11)]
+  , ieffects = [PushActor (ThrowMod 400 200)]  -- 8 steps, 4 turns
+  }
 
 -- * Assorted tools
 
@@ -927,7 +1005,7 @@ necklace1 = necklaceTemplate
   , irarity  = [(3, 0), (4, 1), (10, 2)]  -- prevents camping on lvl 3
   , iaspects = [ SetFlag Unique, ELabel "of Trickle Life"
                , Timeout $ (1 `d` 2) * 20
-               , SetFlag Durable, EqpSlot EqpSlotMiscBonus ]
+               , SetFlag Durable, EqpSlot EqpSlotMaxHP ]
                ++ iaspects_necklaceTemplate
   , ieffects = [Recharging (RefillHP 1)]
   -- , idesc    = ""
@@ -948,7 +1026,8 @@ necklace2 = necklaceTemplate
 necklace3 = necklaceTemplate
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
   , iaspects = [ ELabel "of fearful listening"
-               , Timeout $ (1 `d` 2) * 20 ]
+               , Timeout $ (1 `d` 2) * 20
+               , AddSkill SkHearing 2 ]
                ++ iaspects_necklaceTemplate
   , ieffects = [ Recharging (Detect DetectActor 10)
                , Recharging (RefillCalm (-20)) ]
@@ -966,7 +1045,7 @@ necklace5 = necklaceTemplate
                ++ iaspects_necklaceTemplate
   , ieffects = [ Recharging (Teleport $ 14 + 3 `d` 3)
                , Recharging (Detect DetectExit 20)
-               , Recharging (RefillHP (-2)) ]  -- prevent micromanagement
+               , Recharging Yell ]  -- prevent micromanagement
   }
 necklace6 = necklaceTemplate
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
@@ -979,13 +1058,12 @@ necklace7 = necklaceTemplate
   { ifreq    = [("curious item", 100), ("any jewelry", 100)]
   , iaspects = [ SetFlag Unique, ELabel "of Overdrive"
                , Timeout 4
-               , AddSkill SkMaxHP 15, AddSkill SkArmorMelee 20
-               , AddSkill SkArmorRanged 10
+               , AddSkill SkMaxHP 15
                , SetFlag Durable, EqpSlot EqpSlotSpeed ]
                ++ iaspects_necklaceTemplate
   , ieffects = [ Recharging (InsertMove $ 1 `d` 3)  -- unpredictable
                , Recharging (RefillCalm (-1))  -- fake "hears something" :)
-               , Recharging (RefillHP (-1)) ]
+               , Recharging (toOrganBad "impatient" 4)]
   -- , idesc    = ""
   }
 necklace8 = necklaceTemplate
@@ -1013,7 +1091,7 @@ imageItensifier = ItemKind
   , iverbHit = "rattle"
   , iweight  = 700
   , idamage  = 0
-  , iaspects = [AddSkill SkNocto 1, AddSkill SkSight (-1)
+  , iaspects = [ AddSkill SkNocto 1, AddSkill SkSight (-1)
                , AddSkill SkArmorMelee $ (1 `dL` 3) * 3
                , SetFlag Precious, SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotMiscBonus ]
@@ -1214,6 +1292,25 @@ gloveJousting = gloveFencing
                , toVelocity 50 ]  -- flaps and flutters
   , idesc    = "Rigid, bulky handgear embedding a welding equipment, complete with an affixed small shield and a darkened visor. Awe-inspiring."
   }
+ushankaHat = ItemKind
+  { isymbol  = symbolMiscArmor
+  , iname    = "ushanka hat"
+  , ifreq    = [("common item", 100), ("misc armor", 1)]
+  , iflavour = zipPlain [Brown]
+  , icount   = 1
+  , irarity  = [(1, 9), (10, 3)]
+  , iverbHit = "tickle"
+  , iweight  = 500
+  , idamage  = 0
+  , iaspects = [ Timeout $ (1 `d` 2) * 3
+               , AddSkill SkArmorMelee 5, AddSkill SkHearing (-10)
+               , SetFlag Periodic, SetFlag Durable, SetFlag Equipable
+               , EqpSlot EqpSlotHurtMelee
+               , toVelocity 50 ]  -- flaps and flutters
+  , ieffects = [Recharging (RefillCalm 1)]
+  , idesc    = ""
+  , ikit     = []
+  }
 
 -- * Shields
 
@@ -1259,7 +1356,7 @@ shield = buckler
                , SetFlag MinorEffects, SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- unwieldy to throw
-  , ieffects = [Recharging (PushActor (ThrowMod 400 25))]  -- 1 step, fast
+  , ieffects = [Recharging (PushActor (ThrowMod 400 50))]  -- 2 steps, fast
   , idesc    = "Large and unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Too heavy to intercept projectiles with."
   }
 shield2 = shield
@@ -1316,8 +1413,9 @@ daggerDropBestWeapon = dagger
   , iaspects = [ SetFlag Unique
                , Timeout $ (1 `d` 2) * 20 - 16 ]
                ++ iaspects dagger
-  , ieffects = [ Recharging DropBestWeapon, Recharging $ RefillCalm (-3) ]
-  , idesc    = "A knife with a forked blade that a focused fencer can use to catch and twist an opponent's weapon occasionally."
+  , ieffects = [ Recharging DropBestWeapon
+               , Recharging Yell ]
+  , idesc    = "An antique double dagger that a focused fencer can use to catch and twist away an opponent's blade occasionally."
   }
 hammer = ItemKind
   { isymbol  = symbolHafted
@@ -1405,7 +1503,7 @@ swordImpress = sword
                , Timeout $ (1 `d` 2) * 40 - 30 ]
                ++ iaspects sword
   , ieffects = [Recharging Impress]
-  -- , idesc    = ""
+  , idesc    = "A particularly well-balance ancient blade, lending itself to impressive shows of fencing skill."
   }
 swordNullify = sword
   { isymbol  = symbolEdged
@@ -1416,8 +1514,9 @@ swordNullify = sword
                , Timeout 10 ]
                ++ iaspects sword
   , ieffects = [ Recharging $ DropItem 1 maxBound COrgan "condition"
-                  , Recharging $ RefillCalm (-10) ]
-  -- , idesc    = ""
+               , Recharging $ RefillCalm (-10)
+               , Recharging Yell ]
+  , idesc    = "Cold, thin blade that pierces deeply and sends its victim into abrupt, sobering shock."
   }
 halberd = ItemKind
   { isymbol  = symbolPolearm
@@ -1459,7 +1558,7 @@ halberdPushActor = halberd
   , iaspects = [ SetFlag Unique
                , Timeout $ (1 `d` 2) * 10 ]
                ++ iaspects halberd
-  , ieffects = [Recharging (PushActor (ThrowMod 400 25))]  -- 1 step
+  , ieffects = [Recharging (PushActor (ThrowMod 200 100))]  -- 2 steps, slow
   , idesc    = "A perfect replica made for a reenactor troupe, hardened, missing only some final sharpening. Versatile, with great reach and leverage. Foes are held at a distance."
   }
 
@@ -1594,7 +1693,7 @@ constructionHooter = scrollTemplate
   , idesc    = "The single-use electronic overdrive hooter that construction robots use to warn about danger and call help in extreme emergency."
   , ikit     = []
   }
-scroll14 = scrollTemplate
+scrollAd1 = scrollTemplate
   { ifreq    = [("treasure", 100)]
   , irarity  = [(1, 2), (10, 2)]  -- not every playthrough needs it
   , iaspects = [SetFlag Unique, ELabel "Displaying a Happy Couple"]

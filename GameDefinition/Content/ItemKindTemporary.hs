@@ -22,9 +22,9 @@ import Game.LambdaHack.Content.ItemKind
 
 temporaries :: [ItemKind]
 temporaries =
-  [tmpStrengthened, tmpWeakened, tmpProtectedMelee, tmpProtectedRanged, tmpVulnerable, tmpResolute, tmpFast20, tmpSlow10, tmpFarSighted, tmpBlind, tmpKeenSmelling, tmpNoctovision, tmpDrunk, tmpRegenerating, tmpPoisoned, tmpSlow10Resistant, tmpPoisonResistant]
+  [tmpStrengthened, tmpWeakened, tmpProtectedMelee, tmpProtectedRanged, tmpVulnerable, tmpResolute, tmpFast20, tmpSlow10, tmpFarSighted, tmpBlind, tmpKeenSmelling, tmpNoctovision, tmpDeafened, tmpDeaf, tmpDrunk, tmpNoSkMove, tmpNoSkMelee, tmpNoSkDisplace, tmpNoSkAlter, tmpNoSkWait, tmpNoSkMoveItem, tmpNoSkProject, tmpNoSkApply, tmpBonusSkMove, tmpBonusSkMelee, tmpBonusSkDisplace, tmpBonusSkAlter, tmpBonusSkWait, tmpBonusSkMoveItem, tmpBonusSkProject, tmpBonusSkApply, tmpRegenerating, tmpPoisoned, tmpSlow10Resistant, tmpPoisonResistant]
 
-tmpStrengthened,    tmpWeakened, tmpProtectedMelee, tmpProtectedRanged, tmpVulnerable, tmpResolute, tmpFast20, tmpSlow10, tmpFarSighted, tmpBlind, tmpKeenSmelling, tmpNoctovision, tmpDrunk, tmpRegenerating, tmpPoisoned, tmpSlow10Resistant, tmpPoisonResistant :: ItemKind
+tmpStrengthened,    tmpWeakened, tmpProtectedMelee, tmpProtectedRanged, tmpVulnerable, tmpResolute, tmpFast20, tmpSlow10, tmpFarSighted, tmpBlind, tmpKeenSmelling, tmpNoctovision, tmpDeafened, tmpDeaf, tmpDrunk, tmpNoSkMove, tmpNoSkMelee, tmpNoSkDisplace, tmpNoSkAlter, tmpNoSkWait, tmpNoSkMoveItem, tmpNoSkProject, tmpNoSkApply, tmpBonusSkMove, tmpBonusSkMelee, tmpBonusSkDisplace, tmpBonusSkAlter, tmpBonusSkWait, tmpBonusSkMoveItem, tmpBonusSkProject, tmpBonusSkApply, tmpRegenerating, tmpPoisoned, tmpSlow10Resistant, tmpPoisonResistant :: ItemKind
 
 -- The @name@ is be used in item description, so it should be an adjective
 -- describing the temporary set of aspects.
@@ -75,11 +75,47 @@ tmpFarSighted = tmpAspects "far-sighted" [AddSkill SkSight 5]
 tmpBlind = tmpAspects "blind" [AddSkill SkSight (-99)]
 tmpKeenSmelling = tmpAspects "keen-smelling" [AddSkill SkSmell 2]
 tmpNoctovision = tmpAspects "shiny-eyed" [AddSkill SkNocto 2]
+tmpDeafened = tmpAspects "deafened" [AddSkill SkHearing (-10)]
+tmpDeaf = tmpAspects "deaf" [AddSkill SkHearing (-99)]
 tmpDrunk = tmpAspects "drunk" [ AddSkill SkHurtMelee 30  -- fury
                               , AddSkill SkArmorMelee (-20)
                               , AddSkill SkArmorRanged (-20)
                               , AddSkill SkSight (-8)
                               ]
+
+tmpNoSkMove =
+  tmpAspects "immobile" [AddSkill SkMove (-99)]
+tmpNoSkMelee =
+  tmpAspects "pacified" [AddSkill SkMelee (-99)]
+tmpNoSkDisplace =
+  tmpAspects "irreplaceable" [AddSkill SkDisplace (-99)]
+tmpNoSkAlter =
+  tmpAspects "retaining" [AddSkill SkAlter (-99)]
+tmpNoSkWait =
+  tmpAspects "impatient" [AddSkill SkWait (-99)]
+tmpNoSkMoveItem =
+  tmpAspects "dispossessed" [AddSkill SkMoveItem (-99)]
+tmpNoSkProject =
+  tmpAspects "withholding" [AddSkill SkProject (-99)]
+tmpNoSkApply =
+  tmpAspects "parsimonious" [AddSkill SkApply (-99)]
+
+tmpBonusSkMove =
+  tmpAspects "more mobile" [AddSkill SkMove 5]
+tmpBonusSkMelee =
+  tmpAspects "more combative" [AddSkill SkMelee 5]
+tmpBonusSkDisplace =
+  tmpAspects "more displacing" [AddSkill SkDisplace 5]
+tmpBonusSkAlter =
+  tmpAspects "more altering" [AddSkill SkAlter 5]
+tmpBonusSkWait =
+  tmpAspects "more patient" [AddSkill SkWait 5]
+tmpBonusSkMoveItem =
+  tmpAspects "tidier" [AddSkill SkMoveItem 5]
+tmpBonusSkProject =
+  tmpAspects "more projecting" [AddSkill SkProject 11]
+tmpBonusSkApply =
+  tmpAspects "more practical" [AddSkill SkApply 5]
 
 tmpRegenerating =
   tmpEffects "regenerating" (4 + 1 `d` 2) [Recharging (RefillHP 1)]

@@ -22,11 +22,11 @@ import Game.LambdaHack.Content.ItemKind
 
 organs :: [ItemKind]
 organs =
-  [fist, foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision5, vision6, vision7, vision8, vision10, vision12, vision14, vision16, nostril, ear4, ear5, ear6, ear7, ear8, ear9, ear10, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, impressed]
+  [fist, foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision5, vision6, vision7, vision8, vision10, vision12, vision14, vision16, nostril, ear4, ear5, ear6, ear7, ear8, ear9, ear10, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed]
   -- Allure-specific
   ++ [razor, liveWire, robotBrain, wasteContainer, spotlight]
 
-fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision5, vision6, vision7, vision8, vision10, vision12, vision14, vision16, nostril, ear4, ear5, ear6, ear7, ear8, ear9, ear10, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, impressed :: ItemKind
+fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision5, vision6, vision7, vision8, vision10, vision12, vision14, vision16, nostril, ear4, ear5, ear6, ear7, ear8, ear9, ear10, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed :: ItemKind
 -- Allure-specific
 razor, liveWire, robotBrain, wasteContainer, spotlight :: ItemKind
 
@@ -140,7 +140,8 @@ rhinoHorn = fist
   , idamage  = 5 `d` 1
   , iaspects = [Timeout 7, AddSkill SkHurtMelee 20]
                ++ iaspects fist
-  , ieffects = [Recharging Impress]  -- the owner is a mid-boss, after all
+  , ieffects = [Recharging Impress, Recharging Yell]
+                 -- the owner is a mid-boss, after all
   , idesc    = "Very solid, considering it has the same composition as fingernails."
   }
 tentacle = fist
@@ -176,7 +177,8 @@ arsenicFissure = boilingFissure
   , ifreq    = [("biogas fissure", 100)]
   , icount   = 3 + 1 `d` 3
   , idamage  = 2 `d` 1
-  , ieffects = []  -- nothing interesting fits the weaken/poison biological data
+  , ieffects = [toOrganBad "parsimonious" (5 + 1 `d` 3)]
+               -- weaken/poison, impacting intellectual abilities first
   , idesc    = ""
   }
 sulfurFissure = boilingFissure
@@ -206,7 +208,7 @@ sting = fist
   , idamage  = 1 `d` 1
   , iaspects = [Timeout $ 10 - 1 `dL` 4, AddSkill SkHurtMelee 40]
                ++ iaspects fist
-  , ieffects = [Recharging (Paralyze 4)]
+  , ieffects = [Recharging (toOrganBad "retaining" (10 + 1 `d` 10))]
   , idesc    = "Painful, debilitating and harmful."
   }
 venomTooth = fist
@@ -248,9 +250,10 @@ largeTail = fist
   , icount   = 1
   , iverbHit = "knock"
   , idamage  = 7 `d` 1
-  , iaspects = [Timeout $ 1 + 1 `d` 3, AddSkill SkHurtMelee 20]
+  , iaspects = [Timeout $ 2 + 1 `d` 2, AddSkill SkHurtMelee 20]
                ++ iaspects fist
-  , ieffects = [Recharging (PushActor (ThrowMod 400 50))]  -- 2 steps
+                 -- timeout higher, lest they regain push before closing again
+  , ieffects = [Recharging (PushActor (ThrowMod 400 50))]  -- 2 steps, fast
   , idesc    = "Slow but heavy."
   }
 
@@ -341,13 +344,22 @@ ear10 = ear 10
 
 -- * Assorted
 
+rattleOrgan = armoredSkin
+  { iname    = "rattle"
+  , ifreq    = [("rattle", 100)]
+  , iverbHit = "announce"
+  , iaspects = [ Timeout $ 10 + (1 `d` 2) * 10
+               , SetFlag Periodic, SetFlag Durable ]
+  , ieffects = [Recharging Yell]
+  , idesc    = ""
+  }
 insectMortality = armoredSkin
   { iname    = "insect mortality"
   , ifreq    = [("insect mortality", 100)]
   , iverbHit = "age"
   , iaspects = [ Timeout $ 30 + (1 `d` 2) * 10
                , SetFlag Periodic, SetFlag Durable ]
-  , ieffects = [Recharging (RefillHP (-1))]
+  , ieffects = [Recharging (RefillHP (-1)), Recharging Yell]
   , idesc    = ""
   }
 sapientBrain = armoredSkin
@@ -355,6 +367,7 @@ sapientBrain = armoredSkin
   , ifreq    = [("sapient brain", 100)]
   , iverbHit = "outbrain"
   , iaspects = [AddSkill sk 1 | sk <- [SkMove .. SkApply]]
+               ++ [AddSkill SkWait 3]  -- can brace and sleep and lurk
                ++ [AddSkill SkAlter 2]  -- can use stairs
                ++ [SetFlag Durable]
   , idesc    = ""
@@ -364,6 +377,7 @@ animalBrain = armoredSkin
   , ifreq    = [("animal brain", 100)]
   , iverbHit = "blank"
   , iaspects = [AddSkill sk 1 | sk <- [SkMove .. SkApply]]
+               ++ [AddSkill SkWait 2]  -- can brace and sleep
                ++ [AddSkill SkAlter 2]  -- can use stairs
                ++ [ AddSkill sk (-1)
                   | sk <- [SkDisplace, SkMoveItem, SkProject, SkApply] ]
@@ -378,7 +392,7 @@ speedGland n = armoredSkin
   , iaspects = [ AddSkill SkSpeed $ intToDice n
                , Timeout $ intToDice $ 100 `div` n
                , SetFlag Periodic, SetFlag Durable ]
-  , ieffects = [Recharging (RefillHP 1)]
+  , ieffects = [Recharging (RefillHP 1), Recharging Yell]
   , idesc    = ""
   }
 speedGland2 = speedGland 2
@@ -437,19 +451,47 @@ sulfurVent = armoredSkin
 bonusHP = armoredSkin
   { isymbol  = 'H'  -- '+' reserved for conditions
   , iname    = "bonus HP"
-  , iflavour = zipPlain [BrBlue]
   , ifreq    = [("bonus HP", 1)]
+  , iflavour = zipPlain [BrBlue]
   , iverbHit = "intimidate"
   , iweight  = 0
   , iaspects = [ AddSkill SkMaxHP 1
                , SetFlag Durable ]
-  , idesc    = ""
+  , idesc    = "Increased training and connections in the right places give this actor augmented internal organs, much more resilient to damage."
+  }
+braced = armoredSkin
+  { isymbol  = 'B'
+  , iname    = "braced"
+  , ifreq    = [("braced", 1)]
+  , iflavour = zipPlain [BrGreen]
+  , iverbHit = "brace"
+  , iweight  = 0
+  , iaspects = [ AddSkill SkArmorMelee 50, AddSkill SkArmorRanged 25
+               , AddSkill SkHearing 10
+               , SetFlag Fragile, SetFlag Durable ]
+                   -- hack: display as condition
+  , idesc    = "Apart of increased resilience to attacks, being braced against attacks protects from displacement by foes and other forms of forced translocation, e.g., being pushed or pulled."
+  }
+asleep = armoredSkin
+  { isymbol  = 'S'
+  , iname    = "asleep"
+  , ifreq    = [("asleep", 1)]
+  , iflavour = zipPlain [BrGreen]  -- regenerates HP (very slowly)
+  , icount   = 5
+  , iverbHit = "slay"
+  , iweight  = 0
+  , iaspects = [AddSkill sk (-2) | sk <- [SkMove .. SkApply]]
+               ++ [ AddSkill SkMelee 2, AddSkill SkWait 2
+                  , AddSkill SkSight (-3), AddSkill SkArmorMelee (-10)
+                  , SetFlag Fragile, SetFlag Durable ]
+                      -- hack: display as condition
+  , idesc    = "Sleep helps regain health, albeit extremely slowly. Being asleep makes an actor vulnerable, with gradually diminishing effects as the slumber wears off over several turns. Any non-idle action, not only combat but even yawning or stretching removes a sizable portion of the sleepiness."
   }
 impressed = armoredSkin
-  { isymbol  = '!'
+  { isymbol  = 'I'
   , iname    = "impressed"
-  , iflavour = zipPlain [BrRed]
   , ifreq    = [("impressed", 1), ("condition", 1)]
+  , iflavour = zipPlain [BrRed]
   , iverbHit = "confuse"
   , iweight  = 0
   , iaspects = [ AddSkill SkMaxCalm (-1)
@@ -458,7 +500,7 @@ impressed = armoredSkin
                , SetFlag Fragile, SetFlag Durable ]
                    -- hack: destroy on drop
   , ieffects = [OnSmash $ tmpNoLonger "impressed"]  -- not Periodic
-  , idesc    = ""
+  , idesc    = "Being impressed by one's adversary sounds like fun, but on battlefield it equals treason. Almost. Throw in depleted battle calm and it leads to mindless desertion outright."
   }
 
 -- * Allure-specific
@@ -480,7 +522,7 @@ liveWire = fist
   , iaspects = [ Timeout $ 3 + 1 `d` 2
                , AddSkill SkHurtMelee 20 ]
                ++ iaspects fist
-  , ieffects = [ Recharging $ Paralyze 6
+  , ieffects = [ Recharging $ toOrganBad "immobile" (3 + 1 `d` 3)
                , Recharging $ RefillHP (-2)
                ]
   , idesc    = ""
@@ -490,6 +532,8 @@ robotBrain = armoredSkin
   , ifreq    = [("robot brain", 100)]
   , iverbHit = "outcompute"
   , iaspects = [AddSkill sk 1 | sk <- [SkMove .. SkApply]]
+                 -- can only use the easiest stairs
+               ++ [AddSkill SkWait 2]  -- can brace and sleep
                ++ [AddSkill SkApply (-1)]
                ++ [SetFlag Durable]
   , idesc    = ""

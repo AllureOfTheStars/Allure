@@ -53,7 +53,7 @@ warrior = ItemKind
   , idesc    = ""
   -- , idesc    = "A hardened veteran of combat."
   , ikit     = [ ("fist", COrgan), ("foot", COrgan)
-               , ("eye 6", COrgan), ("ear 9", COrgan)
+               , ("eye 6", COrgan), ("ear 4", COrgan)
                , ("sapient brain", COrgan) ]
   }
 warrior2 = warrior
@@ -406,7 +406,7 @@ rattlesnake = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Beware its rattle - it serves as a warning of an agonising death."
-  , ikit     = [ ("venom fang", COrgan)
+  , ikit     = [ ("venom fang", COrgan), ("rattle", COrgan)
                , ("eye 4", COrgan), ("nostril", COrgan), ("ear 6", COrgan)
                , ("animal brain", COrgan) ]
   }
@@ -511,6 +511,7 @@ beeSwarm = ItemKind
   , iaspects = [ AddSkill SkMaxHP 8, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 30, AddSkill SkNocto 2  -- armor in sting
                , AddSkill SkAlter (-2)  -- can't use stairs nor doors
+               , AddSkill SkWait (-2)  -- can't brace, sleep and lurk
                , AddSkill SkFlying 10  -- flies slowly, but far
                , SetFlag Durable ]
   , ieffects = []
@@ -532,6 +533,7 @@ hornetSwarm = ItemKind
                , AddSkill SkMaxHP 8, AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
                , AddSkill SkAlter (-2)  -- can't use stairs nor doors
+               , AddSkill SkWait (-2)  -- can't brace, sleep and lurk
                , AddSkill SkFlying 10  -- flies slowly, but far
                , SetFlag Durable ]
   , ieffects = []
@@ -681,7 +683,7 @@ surveillanceDrone = ItemKind
   , ifreq    = [("robot", 100), ("mobile", 100), ("mobile robot", 100)]
   , iflavour = zipPlain [Blue]
   , icount   = 1
-  , irarity  = []  -- TODO: too boring
+  , irarity  = [(1, 1)]
   , iverbHit = "thud"
   , iweight  = 1000
   , idamage  = 0
@@ -792,7 +794,7 @@ lightRobot = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 15, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
-               , AddSkill SkProject 2, AddSkill SkAlter 2  -- uses stairs
+               , AddSkill SkProject 2, AddSkill SkAlter 2  -- uses all stairs
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Interior and exterior decoration robot. Strongly fancies deep reds recently."
@@ -814,7 +816,7 @@ heavyRobot = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 41, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
-               , AddSkill SkProject 2, AddSkill SkAlter 2  -- uses stairs
+               , AddSkill SkProject 2, AddSkill SkAlter 2  -- uses all stairs
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Heavy multi-purpose construction robot. Excels at discharging, dismantling and demolition."
