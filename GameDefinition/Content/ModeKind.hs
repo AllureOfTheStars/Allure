@@ -509,8 +509,9 @@ listCrawl =
   , ([2], ["shallow rogue 2"])
   , ([3], ["caveBridge"])
   , ([4], ["caveNoise"])
-  , ([5, 6], ["caveRogue", "caveArena"])
-  , ([7, 8, 9], ["caveRogue2", "caveArena2", "caveLaboratory"])
+  , ([6, 5], ["caveRogue", "caveArena"])
+       -- reversed order, to match @reverse@ later on
+  , ([9, 8, 7], ["caveRogue2", "caveArena2", "caveLaboratory"])
   , ([10], ["caveEmptyExit"])
   , ([11], ["caveArena"])
   , ([12], ["caveNoise2"]) ]
