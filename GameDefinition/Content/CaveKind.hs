@@ -20,15 +20,14 @@ import Game.LambdaHack.Content.CaveKind
 
 content :: [CaveKind]
 content =
-  [rogue, rogue2, arena, arena2, laboratory, noise, noise2, empty, emptyExit, shallow1empty, bridge, shallow2rogue, shallow2arena, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3]
+  [rogue, rogue2, arena, arena2, laboratory, noise, noise2, empty, emptyExit, shallow1empty, bridge, shallow2rogue, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3]
 
-rogue,    rogue2, arena, arena2, laboratory, noise, noise2, empty, emptyExit, shallow1empty, bridge, shallow2rogue, shallow2arena, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
+rogue,    rogue2, arena, arena2, laboratory, noise, noise2, empty, emptyExit, shallow1empty, bridge, shallow2rogue, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
 
 rogue = CaveKind
   { csymbol       = 'R'
   , cname         = "Maintenance and storage"
-  , cfreq         = [ ("default random", 100), ("deep random", 40)
-                    , ("caveRogue", 1) ]
+  , cfreq         = [ ("default random", 100), ("caveRogue", 1) ]
   , cXminSize     = 80
   , cYminSize     = 42
   , ccellSize     = DiceXY (2 `d` 4 + 10) (1 `d` 3 + 6)
@@ -71,7 +70,7 @@ rogue = CaveKind
   , cdesc         = "Winding tunnels stretch into the dark. The rest of the area is packed with tanks and cells of raw materials and machinery."
   }
 rogue2 = rogue
-  { cfreq         = [("deep random", 60), ("caveRogue2", 1)]
+  { cfreq         = [("caveRogue2", 1)]
   , cname         = "Residential area"
   , cmaxPlaceSize = DiceXY 12 20  -- fewer big rooms
   , cdarkOdds     = 51  -- all rooms dark
@@ -86,7 +85,7 @@ rogue2 = rogue
 arena = rogue
   { csymbol       = 'A'
   , cname         = "Recreational deck"
-  , cfreq         = [("default random", 40), ("caveArena", 1)]
+  , cfreq         = [("default random", 50), ("caveArena", 1)]
   , cXminSize     = 80
   , cYminSize     = 25
   , ccellSize     = DiceXY (3 `d` 3 + 17) (1 `d` 3 + 5)
@@ -121,7 +120,7 @@ arena = rogue
   }
 arena2 = arena
   { cname         = "Casino"
-  , cfreq         = [("deep random", 30), ("caveArena2", 1)]
+  , cfreq         = [("caveArena2", 1)]
   , cXminSize     = 21
   , cYminSize     = 21
   , cdarkOdds     = 41 + 1 `d` 10  -- almost all rooms lit (1 in 10 dark)
@@ -143,7 +142,7 @@ arena2 = arena
 laboratory = rogue
   { csymbol       = 'L'
   , cname         = "Laboratory"
-  , cfreq         = [("deep random", 40), ("caveLaboratory", 1)]
+  , cfreq         = [("caveLaboratory", 1)]
   , cXminSize     = 60
   , cYminSize     = 42
   , ccellSize     = DiceXY (1 `d` 2 + 5) (1 `d` 2 + 7)
@@ -324,25 +323,14 @@ bridge = rogue
   , cfenceTileW   = "habitat containment wall"
   , cdesc         = "The bridge is gutted out and nonoperational. There are animal cries down below and ominous silence up above."
   }
-shallow2blurb :: Text
-shallow2blurb = "This close to the outer level, residence is not permitted and doors are sturdier, to contain a possible micro-meteorite breach. The area is not closed off, though, because some passengers can't live without regularly looking at the void and the light of distant suns and planets through the reinforced glass of oriels, as opposed to the glass of electronic displays. Animals appear to share the fascination, or perhaps they crave the increased gravity, nearly Earth-like, unlike elsewhere on the ship."
 shallow2rogue = rogue
-  { cfreq         = [("shallow random 2", 50)]
+  { cfreq         = [("shallow rogue 2", 100)]
   , cXminSize     = 60
   , cYminSize     = 37
   , cactorCoeff   = cactorCoeff rogue `div` 2  -- more difficult
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq rogue
   , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq rogue
-  , cdesc         = shallow2blurb
-  }
-shallow2arena = arena
-  { cfreq         = [("shallow random 2", 100)]
-  , cXminSize     = 80
-  , cYminSize     = 25
-  , cactorCoeff   = cactorCoeff arena `div` 2  -- more difficult
-  , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq arena
-  , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq arena
-  , cdesc         = shallow2blurb
+  , cdesc         = "This close to the outer level, residence is not permitted and doors are sturdier, to contain a possible micro-meteorite breach. The area is not closed off, though, because some passengers can't live without regularly looking at the void and the light of distant suns and planets through the reinforced glass of oriels, as opposed to the glass of electronic displays. Animals appear to share the fascination, or perhaps they crave the increased gravity, nearly Earth-like, unlike elsewhere on the ship."
   }
 raid = rogue
   { csymbol       = 'S'
