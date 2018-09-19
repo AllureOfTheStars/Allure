@@ -105,7 +105,7 @@ arena = rogue
   , cactorFreq    = [("monster", 25), ("animal", 70), ("robot", 5)]
   , citemNum      = 7 `d` 3  -- few rooms
   , citemFreq     = [ ("common item", 20), ("treasure", 40), ("any scroll", 40)
-                    , ("curious item", 10) ]
+                    , ("explosive", 40), ("curious item", 10) ]
   , cplaceFreq    = [("arena", 1)]
   , cpassable     = True
   , cdefTile      = "arenaSetLit"
@@ -157,7 +157,7 @@ laboratory = rogue
   , copenChance   = 1%2
   , cactorFreq    = [("monster", 25), ("animal", 70), ("robot", 5)]
   , citemNum      = 7 `d` 4  -- reward difficulty
-  , citemFreq     = [ ("common item", 20), ("treasure", 40), ("explosive", 40)
+  , citemFreq     = [ ("common item", 20), ("treasure", 40), ("potion", 40)
                     , ("curious item", 20) ]
   , cplaceFreq    = [("laboratory", 1)]
   , cdarkCorTile  = "labTrailLit"  -- let lab smoke give off light always
