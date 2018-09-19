@@ -291,7 +291,8 @@ shallow1empty = empty
       -- enough of a continuity. The faucets on lvl 1 are not OP and can't be
       -- abused, because they spawn less and less often and also HP doesn't
       -- effectively accumulate over max.
-  , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq empty
+  , citemFreq     = ("starting weapon", 20)
+                    : filter ((/= "treasure") . fst) (citemFreq empty)
   , cfenceTileN   = "oriels fence"
   , cfenceTileE   = "habitat containment wall"
   , cfenceTileS   = "empty airlock fence"
@@ -329,8 +330,9 @@ shallow2rogue = rogue
   , cYminSize     = 37
   , cactorCoeff   = cactorCoeff rogue `div` 2  -- more difficult
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq rogue
-  , citemFreq     = filter ((/= "treasure") . fst) $ citemFreq rogue
-  , cdesc         = "This close to the outer level, residence is not permitted and doors are sturdier, to contain a possible micro-meteorite breach. The area is not closed off, though, because some passengers can't live without regularly looking at the void and the light of distant suns and planets through the reinforced glass of oriels, as opposed to the glass of electronic displays. Animals appear to share the fascination, or perhaps they crave the increased gravity, nearly Earth-like, unlike elsewhere on the ship."
+  , citemFreq     = ("starting weapon", 20)
+                    : filter ((/= "treasure") . fst) (citemFreq rogue)
+  , cdesc         = "This close to the outer level, residence is not permitted and doors are sturdier, to contain a possible micro-meteorite breach. The passage upwards is not closed off, though, because some passengers can't live without regularly looking at the void and the light of distant suns and planets through the reinforced glass of oriels, as opposed to the glass of electronic displays. Animals appear to share the fascination, or perhaps they crave the increased gravity, nearly Earth-like, unlike elsewhere on the ship."
   }
 raid = rogue
   { csymbol       = 'S'

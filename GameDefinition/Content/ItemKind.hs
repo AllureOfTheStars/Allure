@@ -1419,7 +1419,7 @@ dagger = ItemKind
   , ifreq    = [("common item", 100), ("starting weapon", 100)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(3 * 10/12, 40), (4 * 10/12, 1)]
+  , irarity  = [(3 * 10/12, 20), (4 * 10/12, 1)]
                  -- no weapons brought by aliens, initially, so cleaver common
   , iverbHit = "stab"
   , iweight  = 1000
@@ -1463,7 +1463,7 @@ hammer = ItemKind
                , ("hammer unknown", 1) ]
   , iflavour = zipFancy [BrMagenta]  -- avoid "pink"
   , icount   = 1
-  , irarity  = [(3 * 10/12, 3), (5, 20), (8, 1)]
+  , irarity  = [(3 * 10/12, 1), (5, 10), (8, 1)]
                  -- don't make it too common on lvl 3
   , iverbHit = "club"
   , iweight  = 1600
@@ -1563,7 +1563,7 @@ halberd = ItemKind
   , ifreq    = [("common item", 100), ("starting weapon", 20)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
-  , irarity  = [(7, 1), (9, 15)]
+  , irarity  = [(6, 0), (9, 15)]
   , iverbHit = "impale"
   , iweight  = 3000
   , idamage  = 12 `d` 1
