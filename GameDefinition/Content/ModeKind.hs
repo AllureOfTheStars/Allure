@@ -507,18 +507,18 @@ cavesAmbush = IM.fromList [(9, "caveAmbush")]
 
 listCrawl :: [(Int, GroupName CaveKind)]
 listCrawl =
-  [(1, "outermost")]
-  ++ [(2, "shallow random 2")]
-  ++ [(3, "caveBridge")]
-  ++ [(4, "caveNoise")]
-  ++ [(5, "default random")]
-  ++ [(6, "default random")]
-  ++ [(7, "deep random")]
-  ++ [(8, "deep random")]
-  ++ [(9, "deep random")]
-  ++ [(10, "caveEmptyExit")]
-  ++ [(11, "deep random")]
-  ++ [(12, "caveNoise2")]
+  [ (1, "outermost")
+  , (2, "shallow random 2")
+  , (3, "caveBridge")
+  , (4, "caveNoise")
+  , (5, "default random")
+  , (6, "default random")
+  , (7, "deep random")
+  , (8, "deep random")
+  , (9, "deep random")
+  , (10, "caveEmptyExit")
+  , (11, "deep random")
+  , (12, "caveNoise2") ]
 
 cavesCrawl = IM.fromList listCrawl
 
