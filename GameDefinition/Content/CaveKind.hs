@@ -20,9 +20,9 @@ import Game.LambdaHack.Content.CaveKind
 
 content :: [CaveKind]
 content =
-  [rogue, rogue2, arena, arena2, laboratory, noise, noise2, empty, emptyExit, shallow1empty, bridge, shallow2rogue, raid, brawl, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3]
+  [rogue, residential, arena, casino, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, raid, brawl, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3]
 
-rogue,    rogue2, arena, arena2, laboratory, noise, noise2, empty, emptyExit, shallow1empty, bridge, shallow2rogue, raid, brawl, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
+rogue,    residential, arena, casino, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, raid, brawl, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
 
 rogue = CaveKind
   { csymbol       = 'R'
@@ -69,8 +69,8 @@ rogue = CaveKind
                     , ("tiny staircase", 1) ]
   , cdesc         = "Winding tunnels stretch into the dark. The rest of the area is packed with tanks and cells of raw materials and machinery."
   }
-rogue2 = rogue
-  { cfreq         = [("caveRogue2", 1)]
+residential = rogue
+  { cfreq         = [("caveResidential", 1)]
   , cname         = "Residential area"
   , cmaxPlaceSize = DiceXY 12 20  -- fewer big rooms
   , cdarkOdds     = 51  -- all rooms dark
@@ -118,9 +118,9 @@ arena = rogue
                     , ("tiny staircase", 1) ]
   , cdesc         = ""
   }
-arena2 = arena
+casino = arena
   { cname         = "Casino"
-  , cfreq         = [("caveArena2", 1)]
+  , cfreq         = [("caveCasino", 1)]
   , cXminSize     = 21
   , cYminSize     = 21
   , cdarkOdds     = 41 + 1 `d` 10  -- almost all rooms lit (1 in 10 dark)
@@ -204,9 +204,9 @@ noise = rogue
                     , ("tiny lift", 1) ]
   , cdesc         = ""
   }
-noise2 = noise
+power = noise
   { cname         = "Power distribution hub"
-  , cfreq         = [("caveNoise2", 1)]
+  , cfreq         = [("cavePower", 1)]
   , cXminSize     = 32
   , cYminSize     = 42
   , cnightOdds    = 51  -- easier variant, but looks sinister
@@ -255,9 +255,9 @@ empty = rogue
                     , ("tiny staircase", 1) ]
   , cdesc         = "Not much to see here yet."
   }
-emptyExit = empty
+exit = empty
   { cname         = "Shuttle servicing level"
-  , cfreq         = [("caveEmptyExit", 1)]
+  , cfreq         = [("caveExit", 1)]
   , ccellSize     = DiceXY (1 `d` 2 + 20) 16
   , cmaxPlaceSize = DiceXY 25 20
   , cplaceFreq    = [("emptyExit", 1)]
@@ -280,9 +280,9 @@ emptyExit = empty
       -- The meteor shield towards N is not punctured here, because
       -- the cargo bay is too thick here, near the axis of the ship.
   }
-shallow1empty = empty
+outermost = empty
   { cname         = "Outermost deck"
-  , cfreq         = [("outermost", 100)]
+  , cfreq         = [("caveOutermost", 100)]
   , cactorCoeff   = 4  -- shallower than LH, so fewer immediate actors, so boost
   , cactorFreq    = [("animal", 3), ("robot", 2), ("immobile robot", 95)]
       -- The medbot faucets on lvl 1 act like HP resets. Needed to avoid
@@ -324,8 +324,8 @@ bridge = rogue
   , cfenceTileW   = "habitat containment wall"
   , cdesc         = "The bridge is gutted out and nonoperational. There are animal cries down below and ominous silence up above."
   }
-shallow2rogue = rogue
-  { cfreq         = [("shallow rogue 2", 100)]
+shallowRogue = rogue
+  { cfreq         = [("caveShallowRogue", 100)]
   , cXminSize     = 60
   , cYminSize     = 37
   , cactorCoeff   = cactorCoeff rogue `div` 2  -- more difficult
