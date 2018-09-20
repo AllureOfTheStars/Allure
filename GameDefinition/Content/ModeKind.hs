@@ -569,8 +569,8 @@ allCaves =
   , "caveRogue", "caveRogue2", "caveLaboratory", "caveArena", "caveArena2"
   , "caveNoise", "caveNoise2", "outermost", "caveEmptyExit" ]
 
-cavesSafari = [ ([4], ["caveSafari1"])
-              , ([7], ["caveSafari2"])
-              , ([10], ["caveSafari3"]) ]
+cavesSafari = reverse $ [ ([4], ["caveSafari1"])
+                        , ([7], ["caveSafari2"])
+                        , ([10], ["caveSafari3"]) ]
 
 cavesBattle = [([5], ["caveBattle"])]
