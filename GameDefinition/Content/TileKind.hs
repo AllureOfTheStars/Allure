@@ -88,7 +88,7 @@ bedrock = TileKind
   { tsymbol  = '#'
   , tname    = "wall"
   , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
-               , ("noiseSetLit", 450), ("noisePowerSetDark", 450)
+               , ("noiseSetLit", 450), ("powerSetDark", 450)
                , ("battleSetDark", 250), ("escapeSetDark", 4)
                , ("stair terminal Lit", 100), ("stair terminal Dark", 100)
                , ("doorlessWallOver_#", 80), ("doorlessMachineryOver_#", 1) ]
@@ -239,8 +239,8 @@ rubble = TileKind
   , tfreq    = [ ("rubble", 1), ("legendLit", 1), ("legendDark", 1)
                , ("stair terminal Lit", 6), ("stair terminal Dark", 6)
                , ("lift terminal Lit", 6), ("lift terminal Dark", 6)
-               , ("emptySetLit", 4), ("emptyExitSetLit", 8)
-               , ("noiseSetLit", 50), ("noisePowerSetDark", 150)
+               , ("emptySetLit", 4), ("exitSetLit", 8)
+               , ("noiseSetLit", 50), ("powerSetDark", 150)
                , ("zooSetDark", 100), ("ambushSetDark", 5) ]
   , tcolor   = BrYellow
   , tcolor2  = Brown
@@ -460,7 +460,7 @@ smoke = TileKind
   , tfreq    = [ ("smoke Lit", 1), ("labTrailLit", 1)
                , ("stair terminal Lit", 2), ("lift terminal Lit", 6)
                , ("smokeClumpOver_f_Lit", 3), ("smokeClumpOver_f_Dark", 3)
-               , ("emptyExitSetLit", 20), ("ambushSetDark", 30) ]
+               , ("exitSetLit", 20), ("ambushSetDark", 30) ]
   , tcolor   = Brown
   , tcolor2  = BrBlack
   , talter   = 0
@@ -468,7 +468,7 @@ smoke = TileKind
   }
 smokeDark = smoke
   { tname    = "lingering smoke"
-  , tfreq    = [ ("noisePowerSetDark", 100)
+  , tfreq    = [ ("powerSetDark", 100)
                , ("zooSetDark", 20), ("ambushSetDark", 60), ("battleSetDark", 5)
                , ("stair terminal Dark", 2), ("lift terminal Dark", 6) ]
   , tfeature = Dark : tfeature smoke
@@ -608,7 +608,7 @@ outerHullWall = basicOuterFence
 rubbleBurning = TileKind  -- present in "emptySetLit" for early light source
   { tsymbol  = '&'
   , tname    = "burning installation"
-  , tfreq    = [ ("emptySetLit", 2), ("noisePowerSetDark", 20)
+  , tfreq    = [ ("emptySetLit", 2), ("powerSetDark", 20)
                , ("ambushSetDark", 30), ("zooSetDark", 30)
                , ("stair terminal Lit", 4), ("stair terminal Dark", 4)
                , ("lift terminal Lit", 4), ("lift terminal Dark", 4) ]
@@ -629,7 +629,7 @@ wallOpenable = bedrock
 wallObscuredSafety = TileKind
   { tsymbol  = '#'
   , tname    = "safety procedures wall"
-  , tfreq    = [("obscured wall", 5), ("emptyExitSetLit", 1)]
+  , tfreq    = [("obscured wall", 5), ("exitSetLit", 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 5
@@ -721,7 +721,7 @@ emptyAirlock = escapeUp
   { tname    = "empty airlock"
   , tfreq    = [ ("airlock fence", 2), ("empty airlock fence", 7)
                , ("emptySetLit", 2) ]
-                   -- not in emptyExitSetLit; space can't be seen
+                   -- not in exitSetLit; space can't be seen
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
   , tfeature = [Embed "disengaged docking"]
@@ -729,7 +729,7 @@ emptyAirlock = escapeUp
 reinforcedWall = TileKind
   { tsymbol  = '#'
   , tname    = "reinforced wall"
-  , tfreq    = [("reinforced wall", 1), ("emptyExitSetLit", 20)]
+  , tfreq    = [("reinforced wall", 1), ("exitSetLit", 20)]
   , tcolor   = White
   , tcolor2  = BrBlack
   , talter   = 100
@@ -756,8 +756,8 @@ machineWall = TileKind
   { tsymbol  = '%'
   , tname    = "hardware rack"
   , tfreq    = [ ("hardware rack", 1)
-               , ("noiseSetLit", 250), ("noisePowerSetDark", 250)
-               , ("emptyExitSetLit", 30)
+               , ("noiseSetLit", 250), ("powerSetDark", 250)
+               , ("exitSetLit", 30)
                , ("lift terminal Lit", 40), ("lift terminal Dark", 40) ]
   , tcolor   = White
   , tcolor2  = BrBlack
@@ -775,14 +775,14 @@ machineWallSpice = machineWall
 
 floorOily = floorArena
   { tname    = "oily floor"
-  , tfreq    = [ ("noisePowerSetLit", 600), ("emptyExitSetLit", 900)
+  , tfreq    = [ ("powerSetLit", 600), ("exitSetLit", 900)
                , ("oily floor Lit", 1), ("rubbleOrWaste_Lit", 1)
                , ("oilOver_o_Lit", 4) ]
   }
 oilSpill = TileKind
   { tsymbol  = '~'
   , tname    = "oil spill"
-  , tfreq    = [ ("noisePowerSetDark", 35), ("emptyExitSetLit", 1)
+  , tfreq    = [ ("powerSetDark", 35), ("exitSetLit", 1)
                , ("ambushSetDark", 20), ("oil spill", 1) ]
   , tcolor   = BrYellow
   , tcolor2  = BrGreen

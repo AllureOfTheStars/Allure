@@ -155,7 +155,7 @@ ruin = PlaceKind
   }
 ruin2 = ruin
   { pname    = "a scaffolding"
-  , pfreq    = [("noise", 2000), ("emptyExit", 5)]
+  , pfreq    = [("noise", 2000), ("exit", 5)]
   }
 collapsed = PlaceKind
   { psymbol  = 'c'
@@ -258,7 +258,7 @@ pillar4 = pillar
 pillar5 = pillar
   { pname    = "a bank outlet"
   , pfreq    = [ ("rogue", 1200), ("arena", 6000)
-               , ("empty", 600), ("emptyExit", 600) ]
+               , ("empty", 600), ("exit", 600) ]
   , ptopLeft = [ "&i%·"
                , "ii#·"
                , "%#+·"
@@ -286,7 +286,7 @@ colonnade = PlaceKind
   { psymbol  = 'c'
   , pname    = "a colonnade"
   , pfreq    = [ ("rogue", 12), ("noise", 1000), ("escape", 200)
-               , ("emptyExit", 200) ]
+               , ("exit", 200) ]
   , prarity  = [(1, 12), (10, 12)]
   , pcover   = CAlternate
   , pfence   = FFloor
@@ -442,7 +442,7 @@ fogClump2 = fogClump
 smokeClump = PlaceKind
   { psymbol  = 's'
   , pname    = "a smoky patch"
-  , pfreq    = [("emptyExit", 50), ("zoo", 40), ("ambush", 50)]
+  , pfreq    = [("exit", 50), ("zoo", 40), ("ambush", 50)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -456,7 +456,7 @@ smokeClump = PlaceKind
                    , ('·', "floorActorLit") ]
   }
 smokeClump2 = smokeClump
-  { pfreq    = [("emptyExit", 300), ("zoo", 200), ("ambush", 150)]
+  { pfreq    = [("exit", 300), ("zoo", 200), ("ambush", 150)]
   , ptopLeft = [ "X;f"
                , "f;f"
                , ";;f"
@@ -1069,7 +1069,7 @@ oval = PlaceKind
   { psymbol  = 'o'
   , pname    = "a dome"
   , pfreq    = [ ("rogue", 20000), ("arena", 30000), ("laboratory", 50000)
-               , ("empty", 5000), ("emptyExit", 5000), ("ambush", 20000) ]
+               , ("empty", 5000), ("exit", 5000), ("ambush", 20000) ]
   , prarity  = [(1, 1)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -1086,7 +1086,7 @@ oval = PlaceKind
   }
 ovalFloor = oval
   { pfreq    = [ ("rogue", 50000), ("arena", 60000), ("laboratory", 100000)
-               , ("empty", 10000), ("emptyExit", 5000), ("ambush", 100000) ]
+               , ("empty", 10000), ("exit", 5000), ("ambush", 100000) ]
   , pfence   = FGround
   , ptopLeft = [ "aXXX##"
                , "X+###·"
@@ -1167,7 +1167,7 @@ maze = PlaceKind
   { psymbol  = 'm'
   , pname    = "an intricate maze"
   , pfreq    = [ ("rogue", 60), ("laboratory", 1500), ("arena", 3)
-               , ("emptyExit", 300) ]
+               , ("exit", 300) ]
   , prarity  = [(1, 1)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -1184,7 +1184,7 @@ maze = PlaceKind
   }
 maze2 = maze
   { pfreq    = [ ("rogue", 180), ("laboratory", 12000), ("arena", 6)
-               , ("emptyExit", 360) ]
+               , ("exit", 360) ]
   , ptopLeft = [ "#·##·"
                , "·#··#"
                , "···#·"
@@ -1192,7 +1192,7 @@ maze2 = maze
   }
 maze3 = maze
   { pfreq    = [ ("rogue", 300), ("laboratory", 15000), ("arena", 9)
-               , ("emptyExit", 400) ]
+               , ("exit", 400) ]
   , ptopLeft = [ "##·##·"
                , "#·#··#"
                , "~·%···"
@@ -1200,7 +1200,7 @@ maze3 = maze
   }
 mazeBig = maze
   { pfreq    = [ ("rogue", 600), ("laboratory", 3000), ("arena", 5000)
-               , ("emptyExit", 500) ]
+               , ("exit", 500) ]
   , pfence   = FNone
   , ptopLeft = [ "X$$$$"
                , "$·##·"
@@ -1211,7 +1211,7 @@ mazeBig = maze
   }
 mazeBig2 = maze
   { pfreq    = [ ("rogue", 1500), ("laboratory", 8000), ("arena", 10000)
-               , ("emptyExit", 700) ]
+               , ("exit", 700) ]
   , pfence   = FNone
   , ptopLeft = [ "XX$$$~"
                , "X#···%"
@@ -1224,7 +1224,7 @@ cells = PlaceKind
   { psymbol  = '#'
   , pname    = "air filters"
   , pfreq    = [ ("rogue", 48), ("laboratory", 48)
-               , ("emptyExit", 280), ("noise", 480)
+               , ("exit", 280), ("noise", 480)
                , ("zoo", 700), ("ambush", 100) ]
   , prarity  = [(1, 1)]
   , pcover   = CReflect
@@ -1262,7 +1262,7 @@ cells4 = cells
 cells5 = cells  -- this one is distinct enough from others, so needs a boost
   { pname    = "broken robot holds"
   , pfreq    = [ ("rogue", 15), ("laboratory", 10)
-               , ("empty", 80), ("emptyExit", 90), ("noise", 150) ]
+               , ("empty", 80), ("exit", 90), ("noise", 150) ]
   , ptopLeft = [ "··#"
                , "··#"
                , "##o"
@@ -1278,7 +1278,7 @@ cells6 = cells
 cells7 = cells
   { pname    = "a defunct control room"
   , pfreq    = [ ("rogue", 5), ("laboratory", 10)
-               , ("empty", 80), ("emptyExit", 20), ("noise", 80) ]
+               , ("empty", 80), ("exit", 20), ("noise", 80) ]
   , pfence   = FFloor
   , ptopLeft = [ "%·o"
                , "·#o"
@@ -1299,14 +1299,14 @@ tank = PlaceKind
   , poverrideLit = [('#', "doorlessWallOver_#"), ('r', "reinforced wall")]
   }
 tank2 = tank
-  { pfreq    = [ ("empty", 500), ("emptyExit", 15), ("noise", 100)
+  { pfreq    = [ ("empty", 500), ("exit", 15), ("noise", 100)
                , ("battle", 50) ]
   , ptopLeft = [ "O#"
                , "##"
                ]
   }
 tank3 = tank
-  { pfreq    = [ ("empty", 600), ("emptyExit", 30), ("noise", 200)
+  { pfreq    = [ ("empty", 600), ("exit", 30), ("noise", 200)
                , ("battle", 100) ]
   , ptopLeft = [ "rr#"
                , "r##"
@@ -1314,7 +1314,7 @@ tank3 = tank
                ]
   }
 tank4 = tank
-  { pfreq    = [ ("empty", 800), ("emptyExit", 120), ("noise", 300)
+  { pfreq    = [ ("empty", 800), ("exit", 120), ("noise", 300)
                , ("battle", 300) ]
   , ptopLeft = [ "XXO#"
                , "Xrr#"
@@ -1324,7 +1324,7 @@ tank4 = tank
   }
 tank5 = tank
   { pname    = "a cistern"
-  , pfreq    = [ ("empty", 1000), ("emptyExit", 150), ("noise", 300)
+  , pfreq    = [ ("empty", 1000), ("exit", 150), ("noise", 300)
                , ("battle", 300) ]
   , ptopLeft = [ "XXr#"
                , "Xr##"
@@ -1335,7 +1335,7 @@ tank5 = tank
 shuttleHusk = PlaceKind
   { psymbol  = 's'
   , pname    = "a shuttle husk"
-  , pfreq    = [("empty", 1000), ("emptyExit", 15000), ("ambush", 15000)]
+  , pfreq    = [("empty", 1000), ("exit", 15000), ("ambush", 15000)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FGround
@@ -1363,12 +1363,12 @@ shuttleHusk = PlaceKind
                    , ('w', "reinforced wall") ]
   }
 shuttleHusk2 = shuttleHusk
-  { pfreq    = [("empty", 1000), ("emptyExit", 15000), ("ambush", 15000)]
+  { pfreq    = [("empty", 1000), ("exit", 15000), ("ambush", 15000)]
   , ptopLeft = map (T.cons 'X' . flip T.snoc 'X')
                $ ptopLeft shuttleHusk  -- 9 x 9
   }
 shuttleHusk3 = shuttleHusk
-  { pfreq    = [("empty", 300), ("emptyExit", 5000), ("ambush", 5000)]
+  { pfreq    = [("empty", 300), ("exit", 5000), ("ambush", 5000)]
   , ptopLeft = [ "X··##··X"  -- 8 x 8
                , "X#%ww%#X"
                , "#w····w#"
@@ -1380,12 +1380,12 @@ shuttleHusk3 = shuttleHusk
                ]
   }
 shuttleHusk4 = shuttleHusk3
-  { pfreq    = [("empty", 300), ("emptyExit", 5000), ("ambush", 5000)]
+  { pfreq    = [("empty", 300), ("exit", 5000), ("ambush", 5000)]
   , ptopLeft = map (T.cons 'X' . flip T.snoc 'X')
                $ ptopLeft shuttleHusk3  -- 10 x 8
   }
 shuttleHusk5 = shuttleHusk
-  { pfreq    = [("empty", 1600), ("emptyExit", 80000), ("ambush", 80000)]
+  { pfreq    = [("empty", 1600), ("exit", 80000), ("ambush", 80000)]
   , pfence   = FGround
   , ptopLeft = [ "···##···"  -- 8 x 10
                , "w#%ww%#w"
@@ -1400,7 +1400,7 @@ shuttleHusk5 = shuttleHusk
                ]
   }
 shuttleHusk6 = shuttleHusk
-  { pfreq    = [("empty", 2000), ("emptyExit", 120000), ("ambush", 120000)]
+  { pfreq    = [("empty", 2000), ("exit", 120000), ("ambush", 120000)]
   , ptopLeft = [ "X··###··X"  -- 9 x 10
                , "X#%#w#%#X"
                , "##·h·h·##"
