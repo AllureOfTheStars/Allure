@@ -20,9 +20,9 @@ import Game.LambdaHack.Content.CaveKind
 
 content :: [CaveKind]
 content =
-  [rogue, rogue2, arena, arena2, laboratory, noise, noise2, empty, emptyExit, shallow1empty, bridge, shallow2rogue, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3]
+  [rogue, rogue2, arena, arena2, laboratory, noise, noise2, empty, emptyExit, shallow1empty, bridge, shallow2rogue, raid, brawl, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3]
 
-rogue,    rogue2, arena, arena2, laboratory, noise, noise2, empty, emptyExit, shallow1empty, bridge, shallow2rogue, raid, brawl, shootout, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
+rogue,    rogue2, arena, arena2, laboratory, noise, noise2, empty, emptyExit, shallow1empty, bridge, shallow2rogue, raid, brawl, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
 
 rogue = CaveKind
   { csymbol       = 'R'
@@ -422,6 +422,34 @@ shootout = rogue  -- a scenario with strong missiles;
   , cstairAllowed = []
   , cdesc         = ""
   }
+hunt = rogue  -- a scenario with strong missiles for ranged and shade for melee
+  { csymbol       = 'H'
+  , cname         = "Swamp biosphere"
+  , cfreq         = [("caveHunt", 1)]
+  , ccellSize     = DiceXY (1 `d` 2 + 5) 6
+  , cminPlaceSize = DiceXY 3 3  -- rarely merge vertically
+  , cmaxPlaceSize = DiceXY 5 5
+  , cdarkOdds     = 51
+  , cnightOdds    = 0
+  , cauxConnects  = 1%10
+  , cdoorChance   = 1
+  , copenChance   = 0
+  , cextraStairs  = 0
+  , chidden       = 0
+  , cactorFreq    = []
+  , citemNum      = 5 `d` 10
+  , citemFreq     = [ ("common item", 30)
+                    , ("any arrow", 400), ("harpoon", 300), ("explosive", 50) ]
+  , cplaceFreq    = [("brawl", 50), ("shootout", 100)]
+  , cpassable     = True
+  , cdefTile      = "shootoutSetLit"
+  , cdarkCorTile  = "dirt Lit"
+  , clitCorTile   = "dirt Lit"
+  , cwallTile     = "openableWall"
+  , cstairFreq    = []
+  , cstairAllowed = []
+  , cdesc         = ""
+  }
 escape = rogue  -- a scenario with weak missiles, because heroes don't depend
                 -- on them; dark, so solid obstacles are to hide from missiles,
                 -- not view; obstacles are not lit, to frustrate the AI;
@@ -487,7 +515,7 @@ ambush = rogue  -- a scenario with strong missiles;
                 -- not view, and they are all lit, because stopped missiles
                 -- are frustrating, while a few LOS-only obstacles are not lit;
                 -- lots of small lights to cross, to give a chance to snipe;
-                -- a crucial difference wrt shootout is that trajectories
+                -- crucial difference wrt shootout and hunt is that trajectories
                 -- of missiles are usually not seen, so enemy can't be guessed;
                 -- camping doesn't pay off, because enemies can sneak and only
                 -- active scouting, throwing flares and shooting discovers them
