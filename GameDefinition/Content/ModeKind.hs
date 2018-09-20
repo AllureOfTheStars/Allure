@@ -99,13 +99,13 @@ zoo = ModeKind  -- asymmetric crowd melee at night
 -- For now, while we have no shooters with timeout, massive ranged battles
 -- without reaction fire don't make sense, because then usually only one hero
 -- shoots (and often also scouts) and others just gather ammo.
-ambush = ModeKind  -- dense ranged with reaction fire at night
+ambush = ModeKind  -- dense ranged with reaction fire vs melee at night
   { msymbol = 'm'
   , mname   = "ambush (6)"
   , mfreq   = [("ambush", 1), ("campaign scenario", 1)]
   , mroster = rosterAmbush
   , mcaves  = cavesAmbush
-  , mdesc   = "Not even the unexplained ruin of the largest and tightest security of Neptune's spaceports will prevent you from claiming your prize. After all, you didn't take to the space to let others decide your fate. Onward!"
+  , mdesc   = "Not even the unexplained ruin of the largest and tightest security of Neptune's spaceports will prevent you from claiming your prize. After all, you didn't take to the space to let others decide your fate. Onward, against the odds!"
   }
 
 crawl = ModeKind
@@ -353,7 +353,7 @@ rosterAmbush = Roster
                  , ( playerAntiHero { fname = "Gray Off-World Mercenary"
                                     , fcanEscape = False
                                     , fhiCondPoly = hiDweller }
-                   , [(9, 1, "scout hero"), (9, 5, "ambusher hero")] )
+                   , [(9, 12, "soldier hero")] )
                  , (playerHorror, []) ]
   , rosterEnemy = [ ("Spacefarer", "Gray Off-World Mercenary")
                   , ("Spacefarer", "Horror Den")
