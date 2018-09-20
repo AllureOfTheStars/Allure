@@ -1542,11 +1542,11 @@ swordImpress = sword
                , Timeout $ (1 `d` 2) * 40 - 30 ]
                ++ iaspects sword
   , ieffects = [Recharging Impress]
-  , idesc    = "A particularly well-balance ancient blade, lending itself to impressive shows of fencing skill."
+  , idesc    = "A particularly well-balance museum piece. It has a long history and in the right hands lends itself to impressive shows of fencing skill."
   }
 swordNullify = sword
   { isymbol  = symbolEdged
-  , iname    = "Gutting Sword"
+  , iname    = "Roasting rapier"
   , ifreq    = [("treasure", 20)]
   , irarity  = [(5, 1), (10, 6)]
   , iaspects = [ SetFlag Unique
@@ -1555,7 +1555,7 @@ swordNullify = sword
   , ieffects = [ Recharging $ DropItem 1 maxBound COrgan "condition"
                , Recharging $ RefillCalm (-10)
                , Recharging Yell ]
-  , idesc    = "Cold, thin blade that pierces deeply and sends its victim into abrupt, sobering shock."
+  , idesc    = "A thin, acutely sharp steel blade that pierces deeply and sends its victim into abrupt, sobering shock. Originally, an exuberant hand-forged roasting implement, intentionally kept blunt."
   }
 halberd = ItemKind
   { isymbol  = symbolPolearm
