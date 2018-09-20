@@ -211,7 +211,7 @@ paralizingProj = ItemKind
 harpoon = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "harpoon"
-  , ifreq    = [("curious item", 100), ("harpoon", 100)]
+  , ifreq    = [("curious item", 100), ("harpoon", 100), ("museum", 100)]
   , iflavour = zipPlain [Brown]
   , icount   = 1 `dL` 5
   , irarity  = [(5, 5), (10, 5)]
@@ -956,7 +956,7 @@ motionScanner = ItemKind
                , AddSkill SkArmorRanged (-10 + 1 `dL` 5)
                , SetFlag Equipable, EqpSlot EqpSlotMiscBonus ]
   , ieffects = []
-  , idesc    = "Handheld underwater echolocator overdriven to scan dark corridors at the cost of emitting loud pings."
+  , idesc    = "Portable underwater echolocator overdriven to scan dark corridors at the cost of emitting loud pings."
   , ikit     = []
   }
 
@@ -971,7 +971,7 @@ iaspects_necklaceTemplate =
   , toVelocity 50 ]  -- not dense enough
 gorget = necklaceTemplate
   { iname    = "Old Gorget"
-  , ifreq    = [("common item", 25), ("treasure", 25)]
+  , ifreq    = [("common item", 25), ("treasure", 25), ("museum", 100)]
   , iflavour = zipFancy [BrCyan]  -- looks exactly the same as on of necklaces,
                                   -- but it's OK, it's an artifact
   , irarity  = [(4, 3), (10, 3)]  -- weak, shallow
@@ -1084,7 +1084,7 @@ necklace9 = necklaceTemplate
 imageItensifier = ItemKind
   { isymbol  = symbolRing
   , iname    = "noctovisor"
-  , ifreq    = [("treasure", 100), ("add nocto 1", 80)]
+  , ifreq    = [("treasure", 100), ("add nocto 1", 80), ("museum", 100)]
   , iflavour = zipFancy [BrGreen]
   , icount   = 1
   , irarity  = [(5, 2)]
@@ -1164,7 +1164,7 @@ ring3 = ringTemplate
                ++ iaspects ringTemplate
   }
 ring4 = ringTemplate
-  { ifreq    = [("common item", 100), ("any jewelry", 100)]
+  { ifreq    = [("common item", 100), ("any jewelry", 100), ("museum", 100)]
   , irarity  = [(5, 1), (10, 14)]  -- needed after other rings drop Calm
   , iaspects = [ AddSkill SkMaxCalm $ 25 + (1 `dL` 4) * 5
                , EqpSlot EqpSlotMiscBonus ]
@@ -1181,7 +1181,7 @@ ring5 = ringTemplate
                ++ iaspects ringTemplate
   }
 ring6 = ringTemplate  -- by the time it's found, probably no space in eqp
-  { ifreq    = [("common item", 100), ("any jewelry", 100)]
+  { ifreq    = [("common item", 100), ("any jewelry", 100), ("museum", 100)]
   , irarity  = [(5, 0), (10, 4)]
   , iaspects = [ AddSkill SkShine $ 1 `d` 2
                , EqpSlot EqpSlotLightSource ]
@@ -1399,10 +1399,11 @@ shield = buckler
   , idesc    = "Large and unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Too heavy to intercept projectiles with."
   }
 shield2 = shield
-  { ifreq    = [("common item", 3 * 3)]  -- very low base rarity
+  { ifreq    = [("common item", 3 * 3), ("museum", 100)]
+                  -- very low base rarity
   , iweight  = 5000
   , idamage  = 8 `d` 1
-  -- , idesc    = ""
+  -- , idesc    = ""  -- museum piece, a real shield with a spike
   }
 shield3 = shield
   { ifreq    = [("common item", 1 * 3)]  -- very low base rarity
@@ -1436,7 +1437,7 @@ dagger = ItemKind
   }
 daggerDropBestWeapon = dagger
   { iname    = "Double Dagger"
-  , ifreq    = [("treasure", 20)]
+  , ifreq    = [("treasure", 20), ("museum", 100)]
   , irarity  = [(1, 3), (10, 3)]
   -- Here timeout has to be small, if the player is to count on the effect
   -- occuring consistently in any longer fight. Otherwise, the effect will be
@@ -1504,7 +1505,7 @@ hammerParalyze = hammer
   }
 hammerSpark = hammer
   { iname    = "Grand Smithhammer"
-  , ifreq    = [("treasure", 20)]
+  , ifreq    = [("treasure", 20), ("museum", 100)]
   , irarity  = [(5, 1), (10, 6)]
   , idamage  = 12 `d` 1
   , iaspects = [ SetFlag Unique
@@ -1536,7 +1537,7 @@ sword = ItemKind
 swordImpress = sword
   { isymbol  = symbolEdged
   , iname    = "Master's Sword"
-  , ifreq    = [("treasure", 20)]
+  , ifreq    = [("treasure", 20), ("museum", 100)]
   , irarity  = [(5, 1), (10, 6)]
   , iaspects = [ SetFlag Unique
                , Timeout $ (1 `d` 2) * 40 - 30 ]
@@ -1591,7 +1592,7 @@ halberd3 = halberd
   }
 halberdPushActor = halberd
   { iname    = "Swiss Halberd"
-  , ifreq    = [("curious item", 20)]
+  , ifreq    = [("curious item", 20)]  -- not museum; reenactors
   , irarity  = [(8, 1), (10, 15)]
   , idamage  = 12 `d` 1
   , iaspects = [ SetFlag Unique
