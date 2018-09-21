@@ -564,7 +564,7 @@ cavesSee = let numberCaves n c = ([n], [c])
 
 allCaves :: [GroupName CaveKind]
 allCaves =
-  [ "caveRaid", "caveBrawl", "caveShootout", "caveEscape", "caveZoo"
+  [ "caveRaid", "caveBrawl", "caveShootout", "caveHunt", "caveEscape", "caveZoo"
   , "caveAmbush"
   , "caveRogue", "caveResidential", "caveLaboratory", "caveArena", "caveCasino"
   , "caveMuseum", "caveNoise", "cavePower", "caveOutermost", "caveExit" ]
