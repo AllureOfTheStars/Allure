@@ -832,8 +832,8 @@ cleanerRobot = ItemKind
   , ifreq    = [("robot", 100), ("mobile", 1)]
   , iflavour = zipPlain [BrGreen]
   , icount   = 1
-  , irarity  = [(9 * 10/12, 0), (10 * 10/12, 1000), (11 * 10/12, 0)]
-                 -- unique, appears at 10 of 12
+  , irarity  = [(10 * 10/12, 0), (11 * 10/12, 1000), (12 * 10/12, 0)]
+                 -- unique, appears at 11 of 12
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0

@@ -137,7 +137,7 @@ wallObscuredDefaced = TileKind
 wallObscuredFrescoed = TileKind
   { tsymbol  = '#'
   , tname    = "subtle mural"
-  , tfreq    = [("obscured wall", 5)]
+  , tfreq    = [("obscured wall", 5), ("museumSetDark", 2)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 5
@@ -149,7 +149,8 @@ wallObscuredFrescoed = TileKind
 pillar = TileKind
   { tsymbol  = 'O'
   , tname    = "construction beam"
-  , tfreq    = [("legendLit", 100), ("legendDark", 100), ("emptySetLit", 20)]
+  , tfreq    = [ ("legendLit", 100), ("legendDark", 100)
+               , ("museumSetDark", 10), ("emptySetLit", 20) ]
   , tcolor   = BrCyan  -- not BrWhite, to tell from heroes
   , tcolor2  = Cyan
   , talter   = 100
@@ -198,7 +199,7 @@ signboardRead = TileKind
   { tsymbol  = 'O'
   , tname    = "signboard"
   , tfreq    = [ ("signboard", 1), ("emptySetLit", 1)
-               , ("arenaSetLit", 1), ("arenaSetDark", 1)
+               , ("arenaSetLit", 1), ("arenaSetDark", 1), ("museumSetDark", 1)
                , ("escapeSetDark", 1) ]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
@@ -365,7 +366,7 @@ escapeOutdoorDown = escapeDown
 wallGlass = TileKind
   { tsymbol  = '%'
   , tname    = "transparent polymer wall"
-  , tfreq    = [("legendLit", 1), ("legendDark", 1)]
+  , tfreq    = [("legendLit", 1), ("legendDark", 1), ("museumSetDark", 4)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 10
@@ -497,7 +498,8 @@ floorCorridor = TileKind
   , tfeature = [Walkable, Clear]
   }
 floorArena = floorCorridor
-  { tfreq    = [("floorArenaLit", 1), ("arenaSetLit", 90), ("zooSetLit", 600)]
+  { tfreq    = [ ("floorArenaLit", 1), ("arenaSetLit", 90)
+               , ("museumSetLit", 400), ("zooSetLit", 600) ]
   }
 floorDamp = floorArena
   { tname    = "damp floor"
@@ -666,7 +668,7 @@ pillarCache2 = pillarCache
 pillarCache3 = pillarCache
   { tname    = "jewelry display"
   , tfreq    = [ ("cachable jewelry", 20), ("cache jewelry", 25)
-               , ("escapeSetDark", 1) ]
+               , ("museumSetDark", 1), ("escapeSetDark", 1) ]
   , tfeature = [ Embed "jewelry case", Embed "jewelry display trap"
                , ChangeTo "cachable jewelry", ConsideredByAI ]
   }

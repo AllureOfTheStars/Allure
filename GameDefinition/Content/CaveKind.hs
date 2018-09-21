@@ -20,9 +20,9 @@ import Game.LambdaHack.Content.CaveKind
 
 content :: [CaveKind]
 content =
-  [rogue, residential, arena, casino, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, raid, brawl, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3]
+  [rogue, residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, raid, brawl, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3]
 
-rogue,    residential, arena, casino, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, raid, brawl, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
+rogue,    residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, raid, brawl, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
 
 rogue = CaveKind
   { csymbol       = 'R'
@@ -138,6 +138,28 @@ casino = arena
   , cfenceTileS   = "habitat containment wall"
   , cfenceTileW   = "habitat containment wall"
   , cdesc         = ""
+  }
+museum = arena
+  { cname         = "Museum"
+  , cfreq         = [("caveMuseum", 1)]
+  , cXminSize     = 25
+  , cYminSize     = 25
+  , cdarkOdds     = 41 + 1 `d` 10  -- almost all rooms lit (1 in 10 dark)
+  -- Trails provide enough light for fun stealth, though level too small.
+  , cnightOdds    = 51  -- always night
+  , cminStairDist = 10
+  , cactorCoeff   = 80  -- cramped, don't overcrowd
+  , citemNum      = 7 `d` 3  -- rare, so make it exciting, by keeping items
+  , citemFreq     = [ ("common item", 20)
+                    , ("treasure", 40)
+                    , ("curious item", 20)
+                    , ("museum", 100) ]  -- lives up to the name
+  , cdefTile      = "museumSetDark"
+  , cfenceTileN   = "habitat containment wall"  -- small cave
+  , cfenceTileE   = "habitat containment wall"
+  , cfenceTileS   = "habitat containment wall"
+  , cfenceTileW   = "habitat containment wall"
+  , cdesc         = "History has shown that museums are safer in space than anywhere on Earth. Cruise passengers are also more likely to visit exhibitions, even if that's captive audience effect to some extent. That rarely applies to spaceship crew and yet museum security has a particularly keen eye for the working men. Quite often a museum turns out to be the only place within millions of kilometers that holds a desperately needed tool, old but sturdy beyond what any 3D printer can produce."
   }
 laboratory = rogue
   { csymbol       = 'L'

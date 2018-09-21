@@ -542,9 +542,9 @@ listCrawl =
   , ([4], ["caveNoise"])
   , ([6, 5], ["caveRogue", "caveArena"])
        -- reversed order, to match @reverse@ later on
-  , ([9, 8, 7], ["caveResidential", "caveCasino", "caveLaboratory"])
-  , ([10], ["caveExit"])
-  , ([11], ["caveArena"])
+  , ([10, 9, 8, 7], [ "caveResidential", "caveCasino", "caveMuseum"
+                    , "caveLaboratory" ])
+  , ([11], ["caveExit"])
   , ([12], ["cavePower"]) ]
 
 -- Reversed to have the last, small, cave exactly in the middle.
@@ -567,7 +567,7 @@ allCaves =
   [ "caveRaid", "caveBrawl", "caveShootout", "caveEscape", "caveZoo"
   , "caveAmbush"
   , "caveRogue", "caveResidential", "caveLaboratory", "caveArena", "caveCasino"
-  , "caveNoise", "cavePower", "caveOutermost", "caveExit" ]
+  , "caveMuseum", "caveNoise", "cavePower", "caveOutermost", "caveExit" ]
 
 cavesSafari = reverse $ [ ([4], ["caveSafari1"])
                         , ([7], ["caveSafari2"])
