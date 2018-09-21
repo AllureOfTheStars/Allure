@@ -266,7 +266,7 @@ light1 = ItemKind
                    -- not only flashes, but also sparks,
                    -- so unused by AI due to the mixed blessing
                , SetFlag Lobable, SetFlag Equipable
-               , EqpSlot EqpSlotLightSource ]
+               , EqpSlot EqpSlotShine ]
                    -- not Fragile; reusable flare
   , ieffects = [Burn 1]
   , idesc    = "A puttering torch improvised with polymer sheets soaked in lubricant on a stick."
@@ -284,7 +284,7 @@ light2 = ItemKind
   , idamage  = 1 `d` 1
   , iaspects = [ AddSkill SkShine 3, AddSkill SkSight (-1)
                , SetFlag Lobable, SetFlag Fragile, SetFlag Equipable
-               , EqpSlot EqpSlotLightSource ]
+               , EqpSlot EqpSlotShine ]
   , ieffects = [ Burn 1
                , toOrganBad "pacified" (3 + 1 `d` 2)
                , OnSmash (Explode "burning oil 3") ]
@@ -303,7 +303,7 @@ light3 = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkShine 4
                , AddSkill SkArmorRanged $ - 1 `d` 3  -- noise & distraction
-               , SetFlag Equipable, EqpSlot EqpSlotLightSource ]
+               , SetFlag Equipable, EqpSlot EqpSlotShine ]
   , ieffects = []
   , idesc    = "Powerful, wide-beam spotlight, powered by a hand-crank. Requires noisy two-handed recharging every few minutes."
   , ikit     = []
@@ -1184,7 +1184,7 @@ ring6 = ringTemplate  -- by the time it's found, probably no space in eqp
   { ifreq    = [("common item", 100), ("any jewelry", 100), ("museum", 100)]
   , irarity  = [(5, 0), (10, 4)]
   , iaspects = [ AddSkill SkShine $ 1 `d` 2
-               , EqpSlot EqpSlotLightSource ]
+               , EqpSlot EqpSlotShine ]
                ++ iaspects ringTemplate
   , idesc    = "A sturdy ring with a large, shining stone."
   }
