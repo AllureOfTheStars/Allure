@@ -559,7 +559,7 @@ floorRed = floorCorridor
                , ("lift terminal Lit", 6), ("lift terminal Dark", 6) ]
   , tcolor   = BrRed
   , tcolor2  = Red
-  , tfeature = [Trail, Walkable, Clear]
+  , tfeature = [Embed "straight path", Trail, Walkable, Clear]
   }
 floorBlue = floorRed
   { tname    = "transport route"
