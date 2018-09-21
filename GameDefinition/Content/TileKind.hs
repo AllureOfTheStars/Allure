@@ -499,7 +499,7 @@ floorCorridor = TileKind
   }
 floorArena = floorCorridor
   { tfreq    = [ ("floorArenaLit", 1), ("arenaSetLit", 90)
-               , ("museumSetLit", 400), ("zooSetLit", 600) ]
+               , ("museumSetLit", 200), ("zooSetLit", 600) ]
   }
 floorDamp = floorArena
   { tname    = "damp floor"

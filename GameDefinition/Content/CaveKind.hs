@@ -149,11 +149,12 @@ museum = arena
   , cnightOdds    = 51  -- always night
   , cminStairDist = 10
   , cactorCoeff   = 80  -- cramped, don't overcrowd
-  , citemNum      = 7 `d` 3  -- rare, so make it exciting, by keeping items
+  , citemNum      = 7 `d` 4  -- rare, so make it exciting
   , citemFreq     = [ ("common item", 20)
                     , ("treasure", 40)
                     , ("curious item", 20)
                     , ("museum", 100) ]  -- lives up to the name
+  , cplaceFreq    = [("museum", 1)]
   , cdefTile      = "museumSetDark"
   , cfenceTileN   = "habitat containment wall"  -- small cave
   , cfenceTileE   = "habitat containment wall"
