@@ -251,12 +251,12 @@ glassPiece = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "cut"
   , iweight  = 1
-  , idamage  = 1 `d` 1
+  , idamage  = 2 `d` 1
   , iaspects = [ toLinger 20  -- 4 steps, 1 turn
                , SetFlag Fragile, SetFlag Blast
                , AddSkill SkHurtMelee $ -15 * 5 ]
                  -- brittle, not too dense; armor blocks
-  , ieffects = [RefillHP (-1)]
+  , ieffects = []
   , idesc    = "Swift, sharp edges."
   , ikit     = []
   }
@@ -266,7 +266,7 @@ focusedGlass = glassPiece  -- when blowing up windows
   , iaspects = [ toLinger 0  -- 0 steps, 1 turn
                , SetFlag Fragile, SetFlag Blast
                , AddSkill SkHurtMelee $ -15 * 5 ]
-  , ieffects = [RefillHP (-1), OnSmash $ Explode "glass hail"]
+  , ieffects = [OnSmash $ Explode "glass hail"]
   }
 
 -- * Assorted non-temporary condition blasts
