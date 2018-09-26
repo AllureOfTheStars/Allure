@@ -22,11 +22,11 @@ import Game.LambdaHack.Content.ItemKind
 
 embeds :: [ItemKind]
 embeds =
-  [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater, straightPath]
+  [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater, straightPath, frozenGround]
   -- Allure-specific
   ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil]
 
-scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater,straightPath :: ItemKind
+scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater, straightPath, frozenGround :: ItemKind
 -- Allure-specific
 blackStarrySky,       disengagedDocking, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil :: ItemKind
 
@@ -182,7 +182,7 @@ frost = ItemKind
   , iaspects = [SetFlag Durable]
   , ieffects = [ Burn 1  -- sensory ambiguity between hot and cold
                , RefillCalm 20  -- cold reason
-               , PushActor (ThrowMod 100 50) ]  -- slippery ice, 1 step, slow
+               , PushActor (ThrowMod 400 10) ]  -- slippery ice
   , idesc    = "Intricate patterns of shining ice."
   , ikit     = []
   }
@@ -343,6 +343,21 @@ straightPath = ItemKind
   , idesc    = ""
   , ikit     = []
   }
+frozenGround = ItemKind
+  { isymbol  = '.'
+  , iname    = "frozen ground"
+  , ifreq    = [("frozen ground", 1)]
+  , iflavour = zipFancy [BrBlue]
+  , icount   = 1
+  , irarity  = [(1, 1)]
+  , iverbHit = "betray"
+  , iweight  = 10000
+  , idamage  = 0
+  , iaspects = [SetFlag Durable]  -- very thick ice and refreezes
+  , ieffects = [PushActor (ThrowMod 400 10)]
+  , idesc    = ""
+  , ikit     = []
+  }
 
 -- * Allure-specific
 
@@ -470,13 +485,16 @@ machineOil = ItemKind
   , iname    = "oil layer"
   , ifreq    = [("machine oil", 1)]
   , iflavour = zipPlain [BrYellow]
-  , icount   = 3
+  , icount   = 3  -- not durable, wears off
   , irarity  = [(1, 1)]
   , iverbHit = "oil"
   , iweight  = 1000
   , idamage  = 0
   , iaspects = []
-  , ieffects = [PushActor (ThrowMod 100 50)]  -- 1 step, slow
+  , ieffects = [PushActor (ThrowMod 600 10)]
+                  -- the high speed represents gliding rather than flying
+                  -- and so no need to lift actor's weight off the ground;
+                  -- low linger comes from abrupt halt over normal surface
   , idesc    = "Slippery run out, probably from a life support equipment or vehicle engine. Surprisingly uncommon given so many years of neglect."
   , ikit     = []
   }

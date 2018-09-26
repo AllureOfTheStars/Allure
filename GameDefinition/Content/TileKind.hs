@@ -562,10 +562,11 @@ floorRed = floorCorridor
   , tfeature = [Embed "straight path", Trail, Walkable, Clear]
   }
 floorBlue = floorRed
-  { tname    = "transport route"
-  , tfreq    = [("transport route", 1), ("trailLit", 100)]
+  { tname    = "frozen path"
+  , tfreq    = [("trailLit", 70)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
+  , tfeature = [Embed "frozen ground", Trail, Walkable, Clear]
   }
 floorGreen = floorRed
   { tname    = "greenery trail"
@@ -574,8 +575,9 @@ floorGreen = floorRed
   , tcolor2  = Green
   }
 floorBrown = floorRed
-  { tname    = "overgrown path"
-  , tfreq    = [("alarmingTrailLit", 30)]
+  { tname    = "transport route"
+  , tfreq    = [ ("transport route", 1), ("trailLit", 20)
+               , ("alarmingTrailLit", 30) ]
   , tcolor   = BrMagenta
   , tcolor2  = Magenta
   }
