@@ -563,7 +563,7 @@ floorRed = floorCorridor
   }
 floorBlue = floorRed
   { tname    = "frozen path"
-  , tfreq    = [("trailLit", 70)]
+  , tfreq    = [("trailLit", 70), ("frozen path", 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , tfeature = [Embed "frozen ground", Trail, Walkable, Clear]

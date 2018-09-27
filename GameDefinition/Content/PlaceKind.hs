@@ -509,9 +509,11 @@ escapeDown = PlaceKind
   , pfence   = FGround
   , ptopLeft = [ ">"
                ]
-  , poverrideDark = [ ('*', "oil spill"), ('O', "lampPostOver_O")
+  , poverrideDark = [ ('*', "oil spill"), ('g', "frozen path")
+                    , ('O', "lampPostOver_O")
                     , ('f', "floorActorLit"), ('r', "rubbleOrWaste_Dark") ]
-  , poverrideLit = [ ('*', "oil spill"), ('O', "lampPostOver_O")
+  , poverrideLit = [ ('*', "oil spill"), ('g', "frozen path")
+                   , ('O', "lampPostOver_O")
                    , ('f', "floorActorLit"), ('r', "rubbleOrWaste_Lit") ]
   }
 escapeDown2 = escapeDown
@@ -571,11 +573,11 @@ escapeDown8 = escapeDown
   { pfreq    = [("escape down", 500)]
   , pcover   = CMirror
   , pfence   = FWall
-  , ptopLeft = [ "··#*·"
-               , "·#**·"
-               , "#*>*#"
-               , "·**#·"
-               , "*·#··"
+  , ptopLeft = [ "··#g·"
+               , "·#gg·"
+               , "·#>g#"
+               , "·gg#·"
+               , "g·#··"
                ]
   }
 escapeDown9 = escapeDown
