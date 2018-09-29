@@ -182,7 +182,7 @@ frost = ItemKind
   , iaspects = [SetFlag Durable]
   , ieffects = [ Burn 1  -- sensory ambiguity between hot and cold
                , RefillCalm 20  -- cold reason
-               , PushActor (ThrowMod 400 10) ]  -- slippery ice
+               , PushActor (ThrowMod 400 10 1) ]  -- slippery ice
   , idesc    = "Intricate patterns of shining ice."
   , ikit     = []
   }
@@ -354,7 +354,7 @@ frozenGround = ItemKind
   , iweight  = 10000
   , idamage  = 0
   , iaspects = [SetFlag Durable]  -- very thick ice and refreezes
-  , ieffects = [PushActor (ThrowMod 400 10)]
+  , ieffects = [PushActor (ThrowMod 400 10 1)]
   , idesc    = ""
   , ikit     = []
   }
@@ -491,7 +491,7 @@ machineOil = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = []
-  , ieffects = [PushActor (ThrowMod 600 10)]
+  , ieffects = [PushActor (ThrowMod 600 10 1)]
                   -- the high speed represents gliding rather than flying
                   -- and so no need to lift actor's weight off the ground;
                   -- low linger comes from abrupt halt over normal surface

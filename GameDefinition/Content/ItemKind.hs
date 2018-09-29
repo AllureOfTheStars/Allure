@@ -219,7 +219,7 @@ harpoon = ItemKind
   , iweight  = 750
   , idamage  = 5 `d` 1
   , iaspects = [AddSkill SkHurtMelee $ (-10 + 1 `d` 2 + 1 `dL` 3) * 5]
-  , ieffects = [ PullActor (ThrowMod 200 50)  -- 1 step, fast
+  , ieffects = [ PullActor (ThrowMod 200 50 1)  -- 1 step, fast
                , Yell ]  -- yell, because brutal
   , idesc    = "A display piece harking back to the Earth's oceanic tourism heyday. The cruel, barbed head lodges in its victim so painfully that the weakest tug of the thin line sends the victim flying."
   , ikit     = []
@@ -243,7 +243,7 @@ net = ItemKind
   , iaspects = [AddSkill SkHurtMelee $ -14 * 5]
   , ieffects = [ toOrganBad "slowed" (3 + 1 `d` 3)
                , DropItem maxBound 1 CEqp "torso armor"
-               , SendFlying (ThrowMod 100 50) ]  -- 1 step; painful
+               , SendFlying (ThrowMod 100 50 1) ]  -- 1 step; painful
       -- only one of each kind is dropped, because no rubbish in this group
   , idesc    = "A large synthetic fibre net with weights affixed along the edges. Entangles armor and restricts movement."
   , ikit     = []
@@ -876,12 +876,12 @@ scroll13 = scrollTemplate
   }
 scroll14 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
-  , ieffects = [PushActor (ThrowMod 400 100)]  -- 4 steps, 2 turns
+  , ieffects = [PushActor (ThrowMod 400 100 1)]  -- 4 steps, 2 turns
   }
 scroll15 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
   , irarity  = [(10, 11)]
-  , ieffects = [PushActor (ThrowMod 400 200)]  -- 8 steps, 4 turns
+  , ieffects = [PushActor (ThrowMod 400 200 1)]  -- 8 steps, 4 turns
   }
 scroll16 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
@@ -1065,7 +1065,7 @@ necklace6 = necklaceTemplate
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
   , iaspects = [Timeout $ 1 + (1 `d` 3) * 2]
                ++ iaspects_necklaceTemplate
-  , ieffects = [Recharging (PushActor (ThrowMod 100 50))]  -- 1 step, slow
+  , ieffects = [Recharging (PushActor (ThrowMod 100 50 1))]  -- 1 step, slow
                   -- the @50@ is only for the case of very light actor, etc.
   }
 necklace7 = necklaceTemplate
@@ -1391,7 +1391,7 @@ buckler = ItemKind
                , SetFlag MinorEffects, SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- unwieldy to throw
-  , ieffects = [Recharging (PushActor (ThrowMod 100 50))]  -- 1 step, slow
+  , ieffects = [Recharging (PushActor (ThrowMod 100 50 1))]  -- 1 step, slow
   , idesc    = "Heavy and unwieldy arm protection made from an outer airlock panel. Absorbs a percentage of melee damage, both dealt and sustained. Too small to intercept projectiles with."
   , ikit     = []
   }
@@ -1409,7 +1409,7 @@ shield = buckler
                , SetFlag MinorEffects, SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- unwieldy to throw
-  , ieffects = [Recharging (PushActor (ThrowMod 400 50))]  -- 2 steps, fast
+  , ieffects = [Recharging (PushActor (ThrowMod 400 50 1))]  -- 2 steps, fast
   , idesc    = "Large and unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Too heavy to intercept projectiles with."
   }
 shield2 = shield
@@ -1612,7 +1612,7 @@ halberdPushActor = halberd
   , iaspects = [ SetFlag Unique
                , Timeout $ (1 `d` 2) * 10 ]
                ++ iaspects halberd
-  , ieffects = [Recharging (PushActor (ThrowMod 200 100))]  -- 2 steps, slow
+  , ieffects = [Recharging (PushActor (ThrowMod 200 100 1))]  -- 2 steps, slow
   , idesc    = "A perfect replica made for a reenactor troupe, hardened, missing only some final sharpening. Versatile, with great reach and leverage. Foes are held at a distance."
   }
 
