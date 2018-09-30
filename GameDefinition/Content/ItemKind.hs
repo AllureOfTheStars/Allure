@@ -362,45 +362,45 @@ flaskTemplate = ItemKind
 flask1 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , irarity  = [(10, 5)]
-  , iaspects = [ELabel "of strength renewal brew"]
-               ++ iaspects flaskTemplate
+  , iaspects = ELabel "of strength renewal brew"
+               : iaspects flaskTemplate
   , ieffects = [ toOrganGood "strengthened" (20 + 1 `d` 5)
                , toOrganNoTimer "regenerating"
                , OnSmash (Explode "dense shower") ]
   }
 flask2 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
-  , iaspects = [ELabel "of weakness brew"]
-               ++ iaspects flaskTemplate
+  , iaspects = ELabel "of weakness brew"
+               : iaspects flaskTemplate
   , ieffects = [ toOrganBad "weakened" (20 + 1 `d` 5)
                , OnSmash (Explode "sparse shower") ]
   }
 flask3 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
-  , iaspects = [ELabel "of melee protective balm"]
-               ++ iaspects flaskTemplate
+  , iaspects = ELabel "of melee protective balm"
+               : iaspects flaskTemplate
   , ieffects = [ toOrganGood "protected from melee" (20 + 1 `d` 5)
                , OnSmash (Explode "melee protective balm") ]
   }
 flask4 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
-  , iaspects = [ELabel "of ranged protective balm"]
-               ++ iaspects flaskTemplate
+  , iaspects = ELabel "of ranged protective balm"
+               : iaspects flaskTemplate
   , ieffects = [ toOrganGood "protected from ranged" (20 + 1 `d` 5)
                , OnSmash (Explode "ranged protective balm") ]
   }
 flask5 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
-  , iaspects = [ELabel  "of red paint"]
-               ++ iaspects flaskTemplate
+  , iaspects = ELabel  "of red paint"
+               : iaspects flaskTemplate
   , ieffects = [ toOrganBad "painted red" (20 + 1 `d` 5)
                , OnSmash (Explode "red paint") ]
   }
 flask6 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , irarity  = [(10, 7)]
-  , iaspects = [ELabel "of resolution"]
-               ++ iaspects flaskTemplate
+  , iaspects = ELabel "of resolution"
+               : iaspects flaskTemplate
   , ieffects = [ toOrganGood "resolute" (200 + 1 `d` 50)
                    -- long, for scouting and has to recharge
                , RefillCalm 60  -- not to make it a drawback, via @calmEnough@
@@ -409,16 +409,16 @@ flask6 = flaskTemplate
 flask7 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , icount   = 1  -- too poweful en masse
-  , iaspects = [ELabel "of haste brew"]
-               ++ iaspects flaskTemplate
+  , iaspects = ELabel "of haste brew"
+               : iaspects flaskTemplate
   , ieffects = [ toOrganGood "hasted" (20 + 1 `d` 5)
                , OnSmash (Explode "haste spray") ]
   }
 flask8 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , irarity  = [(1, 12), (10, 2)]
-  , iaspects = [ELabel "of lethargy brew"]
-               ++ iaspects flaskTemplate
+  , iaspects = ELabel "of lethargy brew"
+               : iaspects flaskTemplate
   , ieffects = [ toOrganBad "slowed" (20 + 1 `d` 5)
                , toOrganNoTimer "regenerating"
                , toOrganNoTimer "regenerating"  -- x2
@@ -428,16 +428,16 @@ flask8 = flaskTemplate
   }
 flask9 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
-  , iaspects = [ELabel "of eye drops"]
-               ++ iaspects flaskTemplate
+  , iaspects = ELabel "of eye drops"
+               : iaspects flaskTemplate
   , ieffects = [ toOrganGood "far-sighted" (40 + 1 `d` 10)
                , OnSmash (Explode "eye drop") ]
   }
 flask10 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , irarity  = [(10, 2)]  -- not very useful right now
-  , iaspects = [ELabel "of smelly concoction"]
-               ++ iaspects flaskTemplate
+  , iaspects = ELabel "of smelly concoction"
+               : iaspects flaskTemplate
   , ieffects = [ toOrganGood "keen-smelling" (40 + 1 `d` 10)
                , Detect DetectActor 10
                , OnSmash (Explode "smelly droplet") ]
@@ -445,8 +445,8 @@ flask10 = flaskTemplate
 flask11 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , irarity  = [(10, 2)]  -- not very useful right now
-  , iaspects = [ELabel "of cat tears"]
-               ++ iaspects flaskTemplate
+  , iaspects = ELabel "of cat tears"
+               : iaspects flaskTemplate
   , ieffects = [ toOrganGood "shiny-eyed" (40 + 1 `d` 10)
                , OnSmash (Explode "eye shine") ]
   }
@@ -454,8 +454,8 @@ flask12 = flaskTemplate
   { iname    = "bottle"
   , ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , icount   = 1 `d` 3  -- the only one sometimes giving away its identity
-  , iaspects = [ELabel "of whiskey"]
-               ++ iaspects flaskTemplate
+  , iaspects = ELabel "of whiskey"
+               : iaspects flaskTemplate
   , ieffects = [ toOrganGood "drunk" (20 + 1 `d` 5)
                , Burn 1, RefillHP 3, Yell
                , OnSmash (Explode "whiskey spray") ]
@@ -463,8 +463,8 @@ flask12 = flaskTemplate
 flask13 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , icount   = 1
-  , iaspects = [ELabel "of bait cocktail"]
-               ++ iaspects flaskTemplate
+  , iaspects = ELabel "of bait cocktail"
+               : iaspects flaskTemplate
   , ieffects = [ toOrganGood "drunk" (20 + 1 `d` 5)
                , Burn 1, RefillHP 3
                , Summon "mobile animal" 1
@@ -479,53 +479,53 @@ flask13 = flaskTemplate
 flask14 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , irarity  = [(1, 2), (10, 10)]
-  , iaspects = [ELabel "of regeneration brew"]
-               ++ iaspects flaskTemplate
+  , iaspects = ELabel "of regeneration brew"
+               : iaspects flaskTemplate
   , ieffects = [ toOrganNoTimer "regenerating"
                , toOrganNoTimer "regenerating"  -- x2
                , OnSmash (Explode "youth sprinkle") ]
   }
 flask15 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
-  , iaspects = [ELabel "of poison"]
-               ++ iaspects flaskTemplate
+  , iaspects = ELabel "of poison"
+               : iaspects flaskTemplate
   , ieffects = [ toOrganNoTimer "poisoned", toOrganNoTimer "poisoned"  -- x2
                , OnSmash (Explode "poison cloud") ]
   }
 flask16 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
-  , iaspects = [ELabel "of weak poison"]
-               ++ iaspects flaskTemplate
+  , iaspects = ELabel "of weak poison"
+               : iaspects flaskTemplate
   , ieffects = [ toOrganNoTimer "poisoned"
                , OnSmash (Explode "poison cloud") ]
   }
 flask17 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , irarity  = [(10, 3)]
-  , iaspects = [ELabel "of slow resistance"]
-               ++ iaspects flaskTemplate
+  , iaspects = ELabel "of slow resistance"
+               : iaspects flaskTemplate
   , ieffects = [ toOrganNoTimer "slow resistant"
                , OnSmash (Explode "anti-slow mist") ]
   }
 flask18 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , irarity  = [(10, 3)]
-  , iaspects = [ELabel "of poison resistance"]
-               ++ iaspects flaskTemplate
+  , iaspects = ELabel "of poison resistance"
+               : iaspects flaskTemplate
   , ieffects = [ toOrganNoTimer "poison resistant"
                , OnSmash (Explode "antidote mist") ]
   }
 flask19 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
-  , iaspects = [ELabel "of blindness"]
-               ++ iaspects flaskTemplate
+  , iaspects = ELabel "of blindness"
+               : iaspects flaskTemplate
   , ieffects = [ toOrganBad "blind" (40 + 1 `d` 10)
                , OnSmash (Explode "iron filing") ]
   }
 flask20 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
-  , iaspects = [ELabel "of calamity"]
-               ++ iaspects flaskTemplate
+  , iaspects = ELabel "of calamity"
+               : iaspects flaskTemplate
   , ieffects = [ toOrganNoTimer "poisoned"
                , toOrganBad "weakened" (20 + 1 `d` 5)
                , toOrganBad "painted red" (20 + 1 `d` 5)
@@ -557,8 +557,8 @@ potion1 = potionTemplate
   { iname    = "vial"
   , ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
   , icount   = 3 `dL` 1  -- very useful, despite appearances
-  , iaspects = [ELabel "of rose water"]
-               ++ iaspects potionTemplate
+  , iaspects = ELabel "of rose water"
+               : iaspects potionTemplate
   , ieffects = [ Impress, RefillCalm (-5)
                , OnSmash ApplyPerfume, OnSmash (Explode "fragrance") ]
   }
@@ -650,8 +650,8 @@ potion10 = potionTemplate
 potion11 = potionTemplate
   { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
   , irarity  = [(10, 5)]
-  , iaspects = [ELabel "of grenadier focus"]
-               ++ iaspects potionTemplate
+  , iaspects = ELabel "of grenadier focus"
+               : iaspects potionTemplate
   , ieffects = [ toOrganGood "more projecting" (40 + 1 `d` 10)
                , toOrganBad "pacified" (5 + 1 `d` 3)
                    -- has to be weak, or would be too good when thrown at foes
@@ -662,8 +662,8 @@ potion11 = potionTemplate
 potion12 = potionTemplate
   { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
   , irarity  = [(10, 10)]
-  , iaspects = [ELabel "of frenzy"]
-               ++ iaspects potionTemplate
+  , iaspects = ELabel "of frenzy"
+               : iaspects potionTemplate
   , ieffects = [ Yell
                , toOrganGood "strengthened" (20 + 1 `d` 5)
                , toOrganBad "retaining" (40 + 1 `d` 10)
@@ -674,8 +674,8 @@ potion12 = potionTemplate
 potion13 = potionTemplate
   { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
   , irarity  = [(10, 10)]
-  , iaspects = [ELabel "of panic"]
-               ++ iaspects potionTemplate
+  , iaspects = ELabel "of panic"
+               : iaspects potionTemplate
   , ieffects = [ RefillCalm (-30)
                , toOrganGood "hasted" (20 + 1 `d` 5)
                , toOrganBad "weakened" (20 + 1 `d` 5)
@@ -687,8 +687,8 @@ potion13 = potionTemplate
 potion14 = potionTemplate
   { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
   , irarity  = [(10, 8)]
-  , iaspects = [ELabel "of quicksilver"]
-               ++ iaspects potionTemplate
+  , iaspects = ELabel "of quicksilver"
+               : iaspects potionTemplate
   , ieffects = [ toOrganGood "hasted" (20 + 1 `d` 5)
                , toOrganBad "blind" (20 + 1 `d` 5)
                , toOrganBad "immobile" (20 + 1 `d` 5)
@@ -796,8 +796,8 @@ scroll1 = scrollTemplate
 scroll2 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
   , irarity  = [(1, 2)]  -- mixed blessing
-  , iaspects = [ELabel "of greed"]
-               ++ iaspects scrollTemplate
+  , iaspects = ELabel "of greed"
+               : iaspects scrollTemplate
   , ieffects = [Detect DetectItem 20, Teleport 20, RefillCalm (-100)]
   }
 scroll3 = scrollTemplate
@@ -842,16 +842,16 @@ scroll9 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
   , icount   = 3 `dL` 1
   , irarity  = [(1, 14)]  -- uncommon deep down, where all is known
-  , iaspects = [ELabel "of scientific explanation"]
-               ++ iaspects scrollTemplate
+  , iaspects = ELabel "of scientific explanation"
+               : iaspects scrollTemplate
   , ieffects = [Composite [Identify, RefillCalm 10]]
   , idesc    = "The most pressing existential concerns are met with a deeply satisfying scientific answer."
   }
 scroll10 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
   , irarity  = [(10, 20)]  -- at endgame a crucial item may be missing
-  , iaspects = [ELabel "of molecular reconfiguration"]
-               ++ iaspects scrollTemplate
+  , iaspects = ELabel "of molecular reconfiguration"
+               : iaspects scrollTemplate
   , ieffects = [Composite [PolyItem, Explode "firecracker"]]
   }
 scroll11 = scrollTemplate
@@ -870,8 +870,8 @@ scroll12 = scrollTemplate
   }
 scroll13 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
-  , iaspects = [ELabel "of acute hearing"]
-               ++ iaspects scrollTemplate
+  , iaspects = ELabel "of acute hearing"
+               : iaspects scrollTemplate
   , ieffects = [Detect DetectActor 20]
   }
 scroll14 = scrollTemplate
@@ -886,15 +886,15 @@ scroll15 = scrollTemplate
 scroll16 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
   , irarity  = [(10, 20)]
-  , iaspects = [ELabel "of molecular duplication"]
-               ++ iaspects scrollTemplate
+  , iaspects = ELabel "of molecular duplication"
+               : iaspects scrollTemplate
   , ieffects = [DupItem]
   }
 scroll17 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
   , irarity  = [(10, 20)]
-  , iaspects = [ELabel "of surface reconfiguration"]
-               ++ iaspects scrollTemplate
+  , iaspects = ELabel "of surface reconfiguration"
+               : iaspects scrollTemplate
   , ieffects = [RerollItem]
   }
 
@@ -1008,8 +1008,8 @@ necklaceTemplate = ItemKind
   , iverbHit = "whip"
   , iweight  = 30
   , idamage  = 0
-  , iaspects = [Timeout 1]  -- fake, but won't be displayed
-               ++ iaspects_necklaceTemplate
+  , iaspects = Timeout 1  -- fake, but won't be displayed
+               : iaspects_necklaceTemplate
   , ieffects = []
   , idesc    = "Tingling, rattling chain of flat encrusted links. Eccentric millionaires are known to hide their highly personalized body augmentation packs in such large jewelry pieces."
   , ikit     = []
@@ -1048,8 +1048,8 @@ necklace3 = necklaceTemplate
   }
 necklace4 = necklaceTemplate
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
-  , iaspects = [Timeout $ (3 + 1 `d` 3 - 1 `dL` 3) * 2]
-               ++ iaspects_necklaceTemplate
+  , iaspects = Timeout ((3 + 1 `d` 3 - 1 `dL` 3) * 2)
+               : iaspects_necklaceTemplate
   , ieffects = [Recharging (Teleport $ 3 `d` 2)]
   }
 necklace5 = necklaceTemplate
@@ -1063,8 +1063,8 @@ necklace5 = necklaceTemplate
   }
 necklace6 = necklaceTemplate
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
-  , iaspects = [Timeout $ 1 + (1 `d` 3) * 2]
-               ++ iaspects_necklaceTemplate
+  , iaspects = Timeout (1 + (1 `d` 3) * 2)
+               : iaspects_necklaceTemplate
   , ieffects = [Recharging (PushActor (ThrowMod 100 50 1))]  -- 1 step, slow
                   -- the @50@ is only for the case of very light actor, etc.
   }
@@ -1082,14 +1082,14 @@ necklace7 = necklaceTemplate
   }
 necklace8 = necklaceTemplate
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
-  , iaspects = [Timeout $ (1 + 1 `d` 3) * 5]
-               ++ iaspects_necklaceTemplate
+  , iaspects = Timeout ((1 + 1 `d` 3) * 5)
+               : iaspects_necklaceTemplate
   , ieffects = [Recharging $ Explode "spark"]
   }
 necklace9 = necklaceTemplate
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
-  , iaspects = [Timeout $ (1 + 1 `d` 3) * 5]
-               ++ iaspects_necklaceTemplate
+  , iaspects = Timeout ((1 + 1 `d` 3) * 5)
+               : iaspects_necklaceTemplate
   , ieffects = [Recharging $ Explode "fragrance"]
   }
 
