@@ -680,7 +680,8 @@ stairsWeldedUp = stairsLiftUp
   , tcolor   = BrMagenta
   , tcolor2  = Magenta
   , talter   = talterForStairs + 3  -- gear needed
-  , tfeature = [ChangeTo "ordinary staircase up", Embed "crude weld"]
+  , tfeature = [ ConsideredByAI, ChangeTo "ordinary staircase up"
+               , Embed "crude weld" ]
   }
 stairsLiftUp = stairsUp
   { tname    = "lift up"
@@ -710,7 +711,8 @@ stairsLiftWeldedUp = stairsLiftUp
   , tcolor   = BrMagenta
   , tcolor2  = Magenta
   , talter   = talterForStairs + 3  -- gear needed
-  , tfeature = [ChangeTo "ordinary lift up", Embed "crude weld"]
+  , tfeature = [ ConsideredByAI, ChangeTo "ordinary staircase up"
+               , Embed "crude weld" ]
   }
 stairsLiftDown = stairsDown
   { tname    = "lift down"
