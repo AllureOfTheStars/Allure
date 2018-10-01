@@ -24,11 +24,11 @@ content =
   [unknown, unknownOuterFence, basicOuterFence, bedrock, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, fog, fogDark, smoke, smokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade ]
   ++ map makeDarkColor ldarkColorable
   -- Allure-specific
-  ++ [oriel, outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, wallObscured3dBillboard, liftShaft, rock, pillarCache2, pillarCache3, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, machineWall, machineWallSpice, floorOily, oilSpill, oilSpillSpice, floorWindow]
+  ++ [oriel, outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, wallObscured3dBillboard, liftShaft, rock, pillarCache2, pillarCache3, stairsWeldedUp, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftWeldedUp, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, machineWall, machineWallSpice, floorOily, oilSpill, oilSpillSpice, floorWindow]
 
 unknown,    unknownOuterFence, basicOuterFence, bedrock, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, fog, fogDark, smoke, smokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorGreen, floorBrown, floorArenaShade :: TileKind
 -- Allure-specific
-oriel,       outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, wallObscured3dBillboard, liftShaft, rock, pillarCache2, pillarCache3, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, machineWall, machineWallSpice, floorOily, oilSpill, oilSpillSpice, floorWindow :: TileKind
+oriel,       outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, wallObscured3dBillboard, liftShaft, rock, pillarCache2, pillarCache3, stairsWeldedUp, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftWeldedUp, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, machineWall, machineWallSpice, floorOily, oilSpill, oilSpillSpice, floorWindow :: TileKind
 
 ldarkColorable :: [TileKind]
 ldarkColorable = [tree, bush, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, shallowWater, shallowWaterSpice, shallowWater2, floorOily]
@@ -674,6 +674,14 @@ pillarCache3 = pillarCache
   , tfeature = [ Embed "jewelry case", Embed "jewelry display trap"
                , ChangeTo "cachable jewelry", ConsideredByAI ]
   }
+stairsWeldedUp = stairsLiftUp
+  { tname    = "staircase up welded shut"
+  , tfreq    = [("welded staircase up", 1)]
+  , tcolor   = BrMagenta
+  , tcolor2  = Magenta
+  , talter   = talterForStairs + 3  -- gear needed
+  , tfeature = [ChangeTo "ordinary staircase up"]
+  }
 stairsLiftUp = stairsUp
   { tname    = "lift up"
   , tfreq    = [("staircase lift up", 9), ("ordinary lift up", 1)]
@@ -695,6 +703,14 @@ stairsLiftGatedUp = stairsLiftUp
   { tname    = "manually opened lift up"
   , tfreq    = [("gated lift up", 1)]
   , talter   = talterForStairs + 2  -- animals and bosses can't use
+  }
+stairsLiftWeldedUp = stairsLiftUp
+  { tname    = "lift up welded shut"
+  , tfreq    = [("welded lift up", 1)]
+  , tcolor   = BrMagenta
+  , tcolor2  = Magenta
+  , talter   = talterForStairs + 3  -- gear needed
+  , tfeature = [ChangeTo "ordinary lift up"]
   }
 stairsLiftDown = stairsDown
   { tname    = "lift down"

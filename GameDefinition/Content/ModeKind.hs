@@ -547,7 +547,7 @@ listCrawl =
   , ([11], ["caveExit"])
   , ([12], ["cavePower"]) ]
 
--- Reversed to have the last, small, cave exactly in the middle.
+-- Reversed to have the last cave small and exactly in the middle.
 cavesCrawl = reverse listCrawl
 
 renumberCaves :: Int -> ([Int], [GroupName CaveKind])

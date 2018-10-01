@@ -45,10 +45,14 @@ generatedStairs =
   let (stairs, lifts) = partition ((/= "a lift") . pname) staircaseBasic
       gatedStairs = map switchStaircaseToGated stairs
       gatedLifts = map switchLiftToGated lifts
+      weldedUpStairs = map switchStaircaseToWeldedUp stairs
+      weldedUpLifts = map switchLiftToWeldedUp lifts
       outdoorStairs = map switchStaircaseToOutdoor stairs
-      stairsAll = stairs ++ gatedStairs ++ outdoorStairs
-      liftsAll = lifts ++ gatedLifts
-  in gatedStairs ++ gatedLifts ++ outdoorStairs
+      stairsAll = stairs ++ gatedStairs ++ weldedUpStairs ++ outdoorStairs
+      liftsAll = lifts ++ gatedLifts ++ weldedUpLifts
+  in gatedStairs ++ gatedLifts
+     ++ weldedUpStairs ++ weldedUpLifts
+     ++ outdoorStairs
      ++ map (switchExitToUp "stair terminal") stairsAll
      ++ map (switchExitToUp "lift terminal") liftsAll
      ++ map (switchExitToDown "stair terminal") stairsAll
@@ -1475,6 +1479,34 @@ switchLiftToGated s = s
  , pfreq     = map (first (\t -> toGroupName $ "gated" <+> tshow t)) $ pfreq s
  , poverrideDark = overrideGatedLift
  , poverrideLit = overrideGatedLift
+ }
+
+overrideWeldedUpStaircase :: [(Char, GroupName TileKind)]
+overrideWeldedUpStaircase =
+  [ ('<', "welded staircase up"), ('>', "ordinary staircase down")
+  , ('I', "signboard"), ('S', "fillerWall") ]
+
+switchStaircaseToWeldedUp :: PlaceKind -> PlaceKind
+switchStaircaseToWeldedUp s = s
+ { psymbol   = 'w'
+ , pfreq     = map (first (\t -> toGroupName $ "welded up" <+> tshow t))
+               $ pfreq s
+ , poverrideDark = overrideWeldedUpStaircase
+ , poverrideLit = overrideWeldedUpStaircase
+ }
+
+overrideWeldedUpLift :: [(Char, GroupName TileKind)]
+overrideWeldedUpLift =
+  [ ('<', "welded lift up"), ('>', "ordinary lift down")
+  , ('I', "signboard"), ('S', "lift shaft") ]
+
+switchLiftToWeldedUp :: PlaceKind -> PlaceKind
+switchLiftToWeldedUp s = s
+ { psymbol   = 'w'
+ , pfreq     = map (first (\t -> toGroupName $ "welded up" <+> tshow t))
+               $ pfreq s
+ , poverrideDark = overrideWeldedUpLift
+ , poverrideLit = overrideWeldedUpLift
  }
 
 overrideOutdoor :: [(Char, GroupName TileKind)]
