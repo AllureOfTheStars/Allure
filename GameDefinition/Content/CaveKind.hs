@@ -207,6 +207,7 @@ noise = rogue
   , cauxConnects  = 1%10
   , cmaxVoid      = 1%100
   , cminStairDist = 15
+  , cextraStairs  = 1
   , cdoorChance   = 1  -- to enable the doorlessWall hack
   , chidden       = 0
   , cactorCoeff   = 80  -- the maze requires time to explore; also, small
@@ -233,6 +234,7 @@ power = noise
   , cXminSize     = 32
   , cYminSize     = 42
   , cnightOdds    = 51  -- easier variant, but looks sinister
+  , cextraStairs  = 1 + 1 `d` 2
   , citemNum      = 10 `d` 4  -- an incentive to explore the final labyrinth
   , citemFreq     = [ ("common item", 40), ("treasure", 60)
                     , ("curious item", 20) ]
