@@ -24,11 +24,11 @@ embeds :: [ItemKind]
 embeds =
   [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater, straightPath, frozenGround]
   -- Allure-specific
-  ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil]
+  ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld]
 
 scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater, straightPath, frozenGround :: ItemKind
 -- Allure-specific
-blackStarrySky,       disengagedDocking, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil :: ItemKind
+blackStarrySky,       disengagedDocking, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld :: ItemKind
 
 -- Make sure very few walls are substantially useful, e.g., caches,
 -- and none that are secret. Otherwise the player will spend a lot of time
@@ -496,5 +496,20 @@ machineOil = ItemKind
                   -- and so no need to lift actor's weight off the ground;
                   -- low linger comes from abrupt halt over normal surface
   , idesc    = "Slippery run out, probably from a life support equipment or vehicle engine. Surprisingly uncommon given so many years of neglect."
+  , ikit     = []
+  }
+crudeWeld = ItemKind
+  { isymbol  = '_'
+  , iname    = "crude weld"
+  , ifreq    = [("crude weld", 1)]
+  , iflavour = zipPlain [BrMagenta]
+  , icount   = 1  -- not durable, destroyed on activation
+  , irarity  = [(1, 1)]
+  , iverbHit = "weld"
+  , iweight  = 3000
+  , idamage  = 0
+  , iaspects = [AddSkill SkMove (-1), AddSkill SkDisplace (-1)]
+  , ieffects = [Explode "spark"]
+  , idesc    = "This is a messy and irregularly layered weld, but no ammount of kicking nor hammering makes any impression on it. A heavy duty cutting tool would be required."
   , ikit     = []
   }
