@@ -23,11 +23,11 @@ actors :: [ItemKind]
 actors =
   [warrior, warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, soldier, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush]
   -- Allure-specific
-  ++ [razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot]
+  ++ [razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot]
 
 warrior,    warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, soldier, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush :: ItemKind
 -- Allure-specific
-razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, cleanerRobot :: ItemKind
+razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot :: ItemKind
 
 -- * Hunams
 
@@ -478,7 +478,7 @@ rhinoceros = ItemKind
   , ifreq    = [("animal", 100), ("mobile", 1)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
-  , irarity  = [(1 * 10/12, 1000), (2 * 10/12, 0)]  -- unique
+  , irarity  = [(6 * 10/12, 0), (7 * 10/12, 1000), (8 * 10/12, 0)]  -- unique
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
@@ -486,10 +486,11 @@ rhinoceros = ItemKind
                , AddSkill SkMaxHP 90, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 27, AddSkill SkNocto 2
                , AddSkill SkAggression 2
-               , AddSkill SkAlter (-1)  -- can't switch levels, a miniboss
+               , AddSkill SkAlter (-1)  -- can't switch levels, a miniboss;
+                                        -- also easy to contain with doors
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "The last of its kind. Blind with rage. Charges at deadly speed."
+  , idesc    = "The last of its kind. Blind with rage or perhaps due to the postoperative scars. Charges at deadly speed."
   , ikit     = [ ("armored skin", COrgan)
                , ("eye 2", COrgan), ("ear 7", COrgan)
                , ("rhino horn", COrgan), ("snout", COrgan)
@@ -825,6 +826,28 @@ heavyRobot = ItemKind
                , ("eye 4", COrgan), ("ear 6", COrgan)
                , ("robot brain", COrgan)
                , ("construction hooter", CInv) ]
+  }
+weldedRobot = ItemKind
+  { isymbol  = 'W'
+  , iname    = "The Welded Robot"
+  , ifreq    = [("robot", 100), ("immobile robot", 100)]
+  , iflavour = zipPlain [BrCyan]
+  , icount   = 1
+  , irarity  = [(1 * 10/12, 1000), (2 * 10/12, 0)]  -- unique
+  , iverbHit = "clank"
+  , iweight  = 80000
+  , idamage  = 0
+  , iaspects = [ SetFlag Unique
+               , AddSkill SkMaxHP 200, AddSkill SkMaxCalm 100
+               , AddSkill SkSpeed 20, AddSkill SkNocto 2
+               , AddSkill SkMove (-1)
+               , SetFlag Durable ]
+  , ieffects = []
+  , idesc    = "A well-built humanoid luggage unloading robot with a smooth satin silvery skin. Its graceful moves are stunted by a thick irregular weld fastening both its shapely legs to the floor. A whiff of smoke escapes whenever it opens its mouth in a charming toothy smile while brandishing a blowtorch in its trembling hand."
+  , ikit     = [ ("mouth vent", COrgan), ("small jaw", COrgan)
+               , ("fist", COrgan), ("eye 6", COrgan), ("ear 4", COrgan)
+               , ("robot brain", COrgan)
+               , ("blowtorch", CEqp) ]
   }
 cleanerRobot = ItemKind
   { isymbol  = 'C'

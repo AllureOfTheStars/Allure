@@ -817,7 +817,7 @@ blastBonusSkApply = blastBonusBasicAbility "more practical"
 cruiseAdHologram = ItemKind
   { isymbol  = '`'
   , iname    = "cruise ad hologram"
-  , ifreq    = [("cruise ad hologram", 1), ("advertisement", 20)]
+  , ifreq    = [("cruise ad hologram", 1), ("advertisement", 10)]
   , iflavour = zipFancy [BrMagenta]
   , icount   = 8
   , irarity  = [(1, 1)]
@@ -832,7 +832,7 @@ cruiseAdHologram = ItemKind
   }
 outerAdHologram = cruiseAdHologram
   {  iname    = "cruise ad hologram"
-  , ifreq    = [("advertisement", 10)]
+  , ifreq    = [("advertisement", 20)]
   , icount   = 4
   , ieffects = []  -- weak, 4 particles, no effect
   , idesc    = "A composed young man in a hat looks straight into your eyes with unwavering stare and extols the opportunities, freedom and excitement of the outer Solar System frontier life with unshakable conviction. Names of Neptune-area realtors scroll at the bottom in small font with oversize serifs."
