@@ -117,7 +117,7 @@ standardKeysAndMouse = InputContentRaw $ map evalKeyDef $
             , Macro ["C-KP_Begin", "V"] ))
 
   -- Item use, continued
-  , ("^", ( [CmdItem], "sort items by ownership, kind and stats", SortSlots))
+  , ("^", ( [CmdItem], "sort items by kind and rolled aspects", SortSlots))
   , ("P", ( [CmdItem, CmdDashboard]
           , "manage item pack of the leader"
           , ChooseItemMenu (MStore CInv) ))
@@ -137,8 +137,8 @@ standardKeysAndMouse = InputContentRaw $ map evalKeyDef $
           , "describe organs of the leader"
           , ChooseItemMenu MOrgans ))
   , ("#", ( [CmdItem, CmdDashboard]
-          , "show stat summary of the leader"
-          , ChooseItemMenu MStats ))
+          , "show skill summary of the leader"
+          , ChooseItemMenu MSkills ))
   , ("~", ( [CmdItem]
           , "display known lore"
           , ChooseItemMenu (MLore SItem) ))
