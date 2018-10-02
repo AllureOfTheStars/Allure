@@ -86,6 +86,7 @@ subtleFresco = ItemKind
                , RefillCalm 2
                , Recharging $ toOrganGood "far-sighted" (3 + 1 `d` 2)
                , Recharging $ toOrganGood "keen-smelling" (3 + 1 `d` 2) ]
+                 -- hearing gets a boost through bracing, so no need here
   , idesc    = "Expensive yet tasteful."
   , ikit     = []
   }
@@ -498,7 +499,7 @@ machineOil = ItemKind
   , idesc    = "Slippery run out, probably from a life support equipment or vehicle engine. Surprisingly uncommon given so many years of neglect."
   , ikit     = []
   }
-crudeWeld = ItemKind
+crudeWeld = ItemKind  -- this is also an organ
   { isymbol  = '_'
   , iname    = "crude weld"
   , ifreq    = [("crude weld", 1)]
