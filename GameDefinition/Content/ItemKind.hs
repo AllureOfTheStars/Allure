@@ -1736,16 +1736,19 @@ needle = ItemKind
   , idesc    = "A long hypodermic needle ending in a dried out micro-syringe. It's too light to throw hard, but it penetrates deeply, causing intense pain on movement."
   , ikit     = []
   }
-constructionHooter = scrollTemplate
+constructionHooter = necklaceTemplate
   { iname    = "construction hooter"
-  , ifreq    = [("common item", 1), ("construction hooter", 1)]
+  , ifreq    = [ ("common item", 1), ("construction hooter", 1)
+               , ("any jewelry", 10) ]
       -- extremely rare
   , iflavour = zipPlain [BrRed]
   , irarity  = [(1, 1)]
-  , iaspects = [toVelocity 30]  -- not hidden
-  , ieffects = [Summon "construction robot" $ 1 `dL` 2]
-  , idesc    = "The single-use electronic overdrive hooter that construction robots use to warn about danger and call help in extreme emergency."
-  , ikit     = []
+  , iweight  = 1000
+  , iaspects = [ AddSkill SkArmorMelee 2
+               , SetFlag Durable, toVelocity 50
+               , SetFlag Equipable, EqpSlot EqpSlotArmorMelee]
+  , ieffects = [Yell, Summon "construction robot" 1]
+  , idesc    = "An emergency hooter for alarming human personel in case their life is in danger. Worn by construction robots around their \"neck\", where it's least exposed, but heavily armored nevertheless and equipped with a separate internal power suppply."
   }
 scrollAd1 = scrollTemplate
   { ifreq    = [("treasure", 100)]

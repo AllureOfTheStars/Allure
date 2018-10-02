@@ -796,13 +796,15 @@ lightRobot = ItemKind
   , iaspects = [ AddSkill SkMaxHP 15, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
                , AddSkill SkProject 2, AddSkill SkAlter 2  -- uses all stairs
+               , AddSkill SkApply 1  -- apply the hooter
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Interior and exterior decoration robot. Strongly fancies deep reds recently."
   , ikit     = [ ("hooked claw", COrgan), ("tentacle", COrgan)
                , ("spotlight", COrgan), ("armored skin", COrgan)
                , ("eye 5", COrgan), ("ear 8", COrgan)
-               , ("robot brain", COrgan) ]
+               , ("robot brain", COrgan)
+               , ("construction hooter", CEqp) ]
   }
 heavyRobot = ItemKind
   { isymbol  = 'r'
@@ -818,6 +820,7 @@ heavyRobot = ItemKind
   , iaspects = [ AddSkill SkMaxHP 41, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
                , AddSkill SkProject 2, AddSkill SkAlter 2  -- uses all stairs
+               , AddSkill SkApply 1  -- apply the hooter
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Heavy multi-purpose construction robot. Excels at discharging, dismantling and demolition."
@@ -825,7 +828,7 @@ heavyRobot = ItemKind
                , ("spotlight", COrgan), ("armored skin", COrgan)
                , ("eye 4", COrgan), ("ear 6", COrgan)
                , ("robot brain", COrgan)
-               , ("construction hooter", CInv) ]
+               , ("construction hooter", CEqp) ]
   }
 weldedRobot = ItemKind
   { isymbol  = 'W'
@@ -866,6 +869,7 @@ cleanerRobot = ItemKind
                , AddSkill SkAlter 3
                    -- a miniboss; can remove rubble and ice,
                    -- but can't exit the gated level
+               , AddSkill SkApply 1  -- apply the hooter
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."
@@ -875,5 +879,5 @@ cleanerRobot = ItemKind
                , ("spotlight", COrgan), ("eye 2", COrgan), ("ear 5", COrgan)
                , ("robot brain", COrgan)
                , ("currency", CInv), ("currency", CInv), ("currency", CInv)
-               , ("construction hooter", CInv) ]
+               , ("construction hooter", CEqp) ]
   }
