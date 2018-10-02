@@ -992,7 +992,7 @@ gorget = necklaceTemplate
   , iaspects = [ SetFlag Unique
                , Timeout $ (1 `d` 2) * 2
                , AddSkill SkArmorMelee 3, AddSkill SkArmorRanged 2
-               , SetFlag Durable, EqpSlot EqpSlotMiscBonus ]
+               , SetFlag Durable ]
                ++ iaspects_necklaceTemplate
   , ieffects = [Recharging (RefillCalm 1)]
   , idesc    = "Highly ornamental, cold, large, steel medallion on a chain. Unlikely to offer much protection as an armor piece, but the old, worn engraving reassures you."
@@ -1019,7 +1019,7 @@ necklace1 = necklaceTemplate
   , irarity  = [(3, 0), (4, 1), (10, 2)]  -- prevents camping on lvl 3
   , iaspects = [ SetFlag Unique, ELabel "of Trickle Life"
                , Timeout $ (1 `d` 2) * 20
-               , SetFlag Durable, EqpSlot EqpSlotMaxHP ]
+               , SetFlag Durable ]
                ++ iaspects_necklaceTemplate
   , ieffects = [Recharging (RefillHP 1)]
   -- , idesc    = ""
@@ -1073,7 +1073,7 @@ necklace7 = necklaceTemplate
   , iaspects = [ SetFlag Unique, ELabel "of Overdrive"
                , Timeout 4
                , AddSkill SkMaxHP 15
-               , SetFlag Durable, EqpSlot EqpSlotSpeed ]
+               , SetFlag Durable ]
                ++ iaspects_necklaceTemplate
   , ieffects = [ Recharging (InsertMove $ 20 + 1 `d` 10)  -- unpredictable
                , Recharging (RefillCalm (-1))  -- fake "hears something" :)
