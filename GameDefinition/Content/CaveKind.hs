@@ -338,7 +338,8 @@ bridge = rogue
   , cminStairDist = 10
   , cdarkOdds     = 0  -- all rooms lit, for a gentle start
   , cextraStairs  = 1
-  , cactorCoeff   = 200  -- it's quite deep already, so spawn slowly
+  , cactorCoeff   = 300  -- it's quite deep already, so spawn slowly;
+                         -- initially best for sleeping, then all catch up
   , cactorFreq    = [("animal", 100)]
   , citemNum      = 8 `d` 3  -- lure them in with loot
   , citemFreq     = filter ((`notElem` ["treasure", "curious item"]) . fst)
