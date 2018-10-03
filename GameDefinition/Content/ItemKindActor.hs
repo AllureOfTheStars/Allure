@@ -250,7 +250,7 @@ elbow = ItemKind
   }
 torsor = ItemKind
   { isymbol  = 'M'
-  , iname    = "The Maker of Contact"
+  , iname    = "Maker of Contact"
   , ifreq    = [("monster", 100), ("mobile", 1)]
   , iflavour = zipFancy [BrCyan]
   , icount   = 1
@@ -476,7 +476,7 @@ alligator = ItemKind
   }
 rhinoceros = ItemKind
   { isymbol  = 'R'
-  , iname    = "The Maddened Rhinoceros"
+  , iname    = "Maddened Rhinoceros"
   , ifreq    = [("animal", 100), ("mobile", 1)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
@@ -835,7 +835,7 @@ heavyRobot = ItemKind
   }
 weldedRobot = ItemKind
   { isymbol  = 'W'
-  , iname    = "The Welded Robot"
+  , iname    = "Smiling Welded Robot"
   , ifreq    = [("robot", 100), ("immobile robot", 100)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
@@ -856,7 +856,7 @@ weldedRobot = ItemKind
   }
 cleanerRobot = ItemKind
   { isymbol  = 'C'
-  , iname    = "The Void Cleaner Robot"
+  , iname    = "Void Cleaner Robot"
   , ifreq    = [("robot", 100), ("mobile", 1)]
   , iflavour = zipPlain [BrGreen]
   , icount   = 1
