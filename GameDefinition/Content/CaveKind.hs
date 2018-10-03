@@ -50,6 +50,7 @@ rogue = CaveKind
                     , ("curious item", 10) ]
   , cplaceFreq    = [("rogue", 1)]
   , cpassable     = False
+  , labyrinth     = False
   , cdefTile      = "fillerWall"
   , cdarkCorTile  = "floorCorridorDark"
   , clitCorTile   = "floorCorridorLit"
@@ -216,6 +217,7 @@ noise = rogue
   , citemFreq     = [ ("common item", 20), ("treasure", 60), ("explosive", 20)
                     , ("curious item", 20) ]
   , cpassable     = True
+  , labyrinth     = True
   , cplaceFreq    = [("noise", 1)]
   , cdefTile      = "noiseSetLit"
   , cwallTile     = "openableWall"
