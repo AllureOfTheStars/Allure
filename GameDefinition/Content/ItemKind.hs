@@ -1029,6 +1029,7 @@ necklace2 = necklaceTemplate
       -- too nasty to call it just a "common item"
   , iaspects = [ SetFlag Unique, ELabel "of Live Bait"
                , Timeout 30
+               , AddSkill SkOdor 2
                , SetFlag Durable ]
                ++ iaspects_necklaceTemplate
   , ieffects = [ Recharging (Summon "mobile animal" $ 1 `d` 2)
@@ -1239,7 +1240,7 @@ armorLeather = ItemKind
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotArmorMelee ]
   , ieffects = []
-  , idesc    = "A hard-shell torso segment cut from a disposed off spacesuit."
+  , idesc    = "A hard-shell torso segment cut from a disposed off spacesuit. Well ventilated."
   , ikit     = []
   }
 armorMail = armorLeather
@@ -1252,10 +1253,11 @@ armorMail = armorLeather
   , iaspects = [ AddSkill SkHurtMelee (-3)
                , AddSkill SkArmorMelee $ (2 + 1 `dL` 4) * 5
                , AddSkill SkArmorRanged $ (4 + 1 `dL` 2) * 3
+               , AddSkill SkOdor 2
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotArmorRanged ]
   , ieffects = []
-  , idesc    = "A civilian bulletproof vest. Discourages foes from attacking your torso, making it harder for them to land a blow."
+  , idesc    = "A civilian bulletproof vest. Discourages foes from attacking your torso, making it harder for them to land a blow. Really hard to wash due to thickness."
   }
 gloveFencing = ItemKind
   { isymbol  = symbolMiscArmor

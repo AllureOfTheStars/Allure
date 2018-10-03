@@ -48,6 +48,7 @@ warrior = ItemKind
                , AddSkill SkProject 2
                , AddSkill SkApply 1
                , AddSkill SkAlter 2
+               , AddSkill SkOdor 1
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = ""
@@ -341,12 +342,13 @@ skunk = ItemKind
   , iaspects = [ AddSkill SkMaxHP 10, AddSkill SkMaxCalm 30
                , AddSkill SkSpeed 22, AddSkill SkNocto 2
                , AddSkill SkAlter (-2)  -- can't use stairs nor doors
+               , AddSkill SkOdor 5  -- and no smell skill, to let it leave smell
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Its only defence is the terrible stench."
   , ikit     = [ ("scent gland", COrgan)
                , ("small claw", COrgan), ("snout", COrgan)
-               , ("eye 3", COrgan), ("nostril", COrgan), ("ear 7", COrgan)
+               , ("eye 3", COrgan), ("ear 7", COrgan)
                , ("animal brain", COrgan) ]
   }
 armadillo = ItemKind
@@ -737,7 +739,8 @@ huntingDrone = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Originally designed for hunting down and putting to sleep stray animals. The sleeping agent has long since dried up."
-  , ikit     = [ ("needle", CInv), ("eye 5", COrgan), ("ear 8", COrgan)
+  , ikit     = [ ("eye 5", COrgan), ("nostril", COrgan), ("ear 8", COrgan)
+               , ("needle", CInv)
                , ("robot brain", COrgan) ]
   }
 homeRobot = ItemKind
@@ -774,12 +777,13 @@ wasteRobot = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 15, AddSkill SkMaxCalm 30
                , AddSkill SkSpeed 15, AddSkill SkNocto 2
+               , AddSkill SkOdor 5  -- and no smell skill, to let it leave smell
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "You are not in its database, hence you are waste."
   , ikit     = [ ("jaw", COrgan), ("tentacle", COrgan)
                , ("waste container", COrgan), ("armored skin", COrgan)
-               , ("eye 2", COrgan), ("nostril", COrgan)  -- enough senses
+               , ("eye 3", COrgan)
                , ("robot brain", COrgan) ]
   }
 lightRobot = ItemKind
