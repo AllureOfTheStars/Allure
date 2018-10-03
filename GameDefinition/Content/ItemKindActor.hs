@@ -335,7 +335,7 @@ skunk = ItemKind
   , ifreq    = [("animal", 100), ("mobile", 1), ("mobile animal", 100)]
   , iflavour = zipPlain [White]
   , icount   = 1
-  , irarity  = [(1, 5), (10, 3)]
+  , irarity  = [(1, 7), (10, 1)]
   , iverbHit = "thud"
   , iweight  = 4000
   , idamage  = 0
@@ -777,13 +777,12 @@ wasteRobot = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 15, AddSkill SkMaxCalm 30
                , AddSkill SkSpeed 15, AddSkill SkNocto 2
-               , AddSkill SkOdor 5  -- and no smell skill, to let it leave smell
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "You are not in its database, hence you are waste."
   , ikit     = [ ("jaw", COrgan), ("tentacle", COrgan)
                , ("waste container", COrgan), ("armored skin", COrgan)
-               , ("eye 3", COrgan)
+               , ("nostril", COrgan)  -- only smell, for variety
                , ("robot brain", COrgan) ]
   }
 lightRobot = ItemKind
@@ -879,8 +878,8 @@ cleanerRobot = ItemKind
   , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."
   , ikit     = [ ("waste container", COrgan), ("boiling vent", COrgan)
                , ("armored skin", COrgan), ("live wire", COrgan)
-               , ("jaw", COrgan), ("hooked claw", COrgan), ("nostril", COrgan)
-               , ("spotlight", COrgan), ("eye 2", COrgan), ("ear 5", COrgan)
+               , ("jaw", COrgan), ("hooked claw", COrgan), ("spotlight", COrgan)
+               , ("eye 2", COrgan), ("nostril", COrgan), ("ear 5", COrgan)
                , ("robot brain", COrgan)
                , ("currency", CInv), ("currency", CInv), ("currency", CInv)
                , ("construction hooter", CEqp) ]

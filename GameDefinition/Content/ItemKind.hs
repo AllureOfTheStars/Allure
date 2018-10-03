@@ -481,7 +481,8 @@ flask14 = flaskTemplate
   , irarity  = [(1, 2), (10, 10)]
   , iaspects = ELabel "of regeneration brew"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganNoTimer "regenerating"
+  , ieffects = [ toOrganGood "rose-smelling" (80 + 1 `d` 20)
+               , toOrganNoTimer "regenerating"
                , toOrganNoTimer "regenerating"  -- x2
                , OnSmash (Explode "youth sprinkle") ]
   }
@@ -560,6 +561,7 @@ potion1 = potionTemplate
   , iaspects = ELabel "of rose water"
                : iaspects potionTemplate
   , ieffects = [ Impress, RefillCalm (-5)
+               , toOrganGood "rose-smelling" (80 + 1 `d` 20)
                , OnSmash ApplyPerfume, OnSmash (Explode "fragrance") ]
   }
 potion2 = potionTemplate
@@ -1693,9 +1695,10 @@ gem5 = gem1
                , ("valuable", 100) ]
   , iflavour = zipPlain [BrYellow]
   , irarity  = [(1, 40), (10, 40)]
-  , iaspects = [ELabel "of youth", SetFlag Precious]  -- not hidden
+  , iaspects = [ ELabel "of youth", SetFlag Precious  -- not hidden
+               , AddSkill SkOdor (-1) ]
   , ieffects = [RefillCalm 10, RefillHP 40]
-  , idesc    = "Calms, heals, invigorates and rejuvenates at the same time. No side-effects. As valuable as precious gems, at 100 gold grains each."
+  , idesc    = "Calms, heals, invigorates, rejuvenates and smells nice. No side-effects. As valuable as precious gems, at 100 gold grains each."
   }
 currencyTemplate = ItemKind
   { isymbol  = symbolGold
