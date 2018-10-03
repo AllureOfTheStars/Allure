@@ -796,7 +796,7 @@ lightRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 15, AddSkill SkMaxCalm 60
+  , iaspects = [ AddSkill SkMaxHP 15, AddSkill SkMaxCalm 40
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
                , AddSkill SkProject 2, AddSkill SkAlter 2  -- uses all stairs
                , AddSkill SkApply 1  -- apply the hooter
@@ -820,7 +820,7 @@ heavyRobot = ItemKind
   , iverbHit = "thud"
   , iweight  = 800000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 41, AddSkill SkMaxCalm 60
+  , iaspects = [ AddSkill SkMaxHP 41, AddSkill SkMaxCalm 40
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
                , AddSkill SkProject 2, AddSkill SkAlter 2  -- uses all stairs
                , AddSkill SkApply 1  -- apply the hooter
@@ -866,7 +866,7 @@ cleanerRobot = ItemKind
   , iweight  = 80000
   , idamage  = 0
   , iaspects = [ SetFlag Unique
-               , AddSkill SkMaxHP 120, AddSkill SkMaxCalm 60
+               , AddSkill SkMaxHP 120, AddSkill SkMaxCalm 40
                , AddSkill SkSpeed 18, AddSkill SkNocto 2
                , AddSkill SkAggression 1
                , AddSkill SkAlter 3

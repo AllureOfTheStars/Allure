@@ -1753,7 +1753,7 @@ constructionHooter = necklaceTemplate
                , SetFlag Durable, toVelocity 50
                , SetFlag Equipable, EqpSlot EqpSlotArmorMelee]
   , ieffects = [Yell, Summon "construction robot" 1]
-  , idesc    = "An emergency hooter for alarming human personel in case their life is in danger. Worn by construction robots around their \"neck\", where it's least exposed, but heavily armored nevertheless and equipped with a separate internal power suppply."
+  , idesc    = "An emergency hooter for alarming human personel in case their life is in danger. Worn by construction robots around their \"neck\", where it's least exposed, but nevertheless it needs to be heavily armored and running on its own power suppply."
   }
 scrollAd1 = scrollTemplate
   { ifreq    = [("treasure", 100)]
