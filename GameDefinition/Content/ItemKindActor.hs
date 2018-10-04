@@ -485,7 +485,7 @@ rhinoceros = ItemKind
   , iweight  = 80000
   , idamage  = 0
   , iaspects = [ SetFlag Unique
-               , AddSkill SkMaxHP 90, AddSkill SkMaxCalm 60
+               , AddSkill SkMaxHP 120, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 27, AddSkill SkNocto 2
                , AddSkill SkAggression 2
                , AddSkill SkAlter (-1)  -- can't switch levels, a miniboss;
