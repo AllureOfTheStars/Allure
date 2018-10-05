@@ -483,7 +483,7 @@ alligator = ItemKind
                , ("eye 6", COrgan), ("ear 9", COrgan)
                , ("animal brain", COrgan) ]
   }
-octopus = ItemKind
+giantOctopus = ItemKind
   { isymbol  = 'o'
   , iname    = "Giant octopus"
   , ifreq    = [ ("animal", 100), ("mobile", 1), ("mobile animal", 100) ]
