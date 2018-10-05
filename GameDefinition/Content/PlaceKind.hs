@@ -85,7 +85,7 @@ deadEnd = PlaceKind  -- needs to have index 0
 rect = PlaceKind  -- Valid for any nonempty area, hence low frequency.
   { psymbol  = 'r'
   , pname    = "a room"
-  , pfreq    = [("rogue", 100), ("laboratory", 12)]
+  , pfreq    = [("rogue", 100), ("laboratory", 10)]
   , prarity  = [(1, 10), (10, 6)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -249,7 +249,7 @@ pillar2 = pillar
 pillar3 = pillar
   { pname    = "a court"
   , pfreq    = [ ("rogue", 250), ("arena", 15), ("museum", 10)
-               , ("laboratory", 150) ]
+               , ("laboratory", 200) ]
   , ptopLeft = [ "#··"
                , "···"
                , "···"
