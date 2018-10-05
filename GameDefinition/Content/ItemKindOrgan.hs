@@ -567,7 +567,7 @@ spotlight = armoredSkin
   , idesc    = ""
   }
 mouthVent = armoredSkin
-  { iname    = "mouth"
+  { iname    = "mouth vent"
   , ifreq    = [("mouth vent", 100)]
   , iflavour = zipPlain [BrMagenta]
   , iverbHit = "surprise"
