@@ -51,7 +51,7 @@ install:
   - ps: $env:TIME_STRING=(get-date -UFormat "%Y-%m-%d").ToString()
   - ps: Push-AppveyorArtifact Allure_dev_windows-x86_64.zip -FileName "Allure_$($env:LH_VERSION)-dev-$($env:TIME_STRING)_windows-x86_64.zip" -DeploymentName "win64 binaries archive"
 
-  - cabal %CABOPTS% test --show-details=direct
+#  - cabal %CABOPTS% test --show-details=direct
   - make test-short || (tail -n 500 %APPDATA%\Allure\stdout.txt; tail -n 500 %APPDATA%\Allure\stderr.txt; exit 77)
   - make nativeBench || (tail -n 500 %APPDATA%\Allure\stdout.txt; tail -n 500 %APPDATA%\Allure\stderr.txt; exit 77)
 
