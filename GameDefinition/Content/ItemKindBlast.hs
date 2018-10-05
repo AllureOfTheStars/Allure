@@ -301,7 +301,7 @@ pheromone = ItemKind
   , idamage  = 0
   , iaspects = [ toVelocity 10  -- 2 steps, 2 turns
                , SetFlag Fragile, SetFlag Blast ]
-  , ieffects = [Impress, RefillCalm (-10)]
+  , ieffects = [Dominate]
   , idesc    = "A sharp, strong scent."
   , ikit     = []
   }
