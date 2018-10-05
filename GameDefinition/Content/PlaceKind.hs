@@ -530,7 +530,7 @@ escapeDown2 = escapeDown
   }
 escapeDown3 = escapeDown
   { pfreq    = [("escape down", 1000)]
-  , pfence   = FWall
+  , pfence   = FFloor
   , ptopLeft = [ "·#·"
                , "#>#"
                , "·#·"
@@ -539,9 +539,9 @@ escapeDown3 = escapeDown
 escapeDown4 = escapeDown
   { pfreq    = [("escape down", 1000)]
   , pfence   = FWall
-  , ptopLeft = [ "·^·"
-               , "^>^"
-               , "·^·"
+  , ptopLeft = [ "^·^"
+               , "·>·"
+               , "^·^"
                ]
   }
 escapeDown5 = escapeDown
