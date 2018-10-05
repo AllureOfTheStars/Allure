@@ -212,7 +212,7 @@ noise = rogue
   , cdoorChance   = 1  -- to enable the doorlessWall hack
   , chidden       = 0
   , cactorCoeff   = 80  -- the maze requires time to explore; also, small
-  , cactorFreq    = [("monster", 70), ("animal", 15), ("robot", 15)]
+  , cactorFreq    = [("monster", 80), ("animal", 10), ("robot", 10)]
   , citemNum      = 6 `d` 4  -- an incentive to explore the labyrinth
   , citemFreq     = [ ("common item", 20), ("treasure", 60), ("explosive", 20)
                     , ("curious item", 20) ]
