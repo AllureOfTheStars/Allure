@@ -1262,8 +1262,8 @@ cells2 = cells
   }
 cells3 = cells
   { pname    = "thermostat units"
-  , ptopLeft = [ "··#"
-               , "·#^"
+  , ptopLeft = [ "·^#"
+               , "·#~"
                , "··#"
                ]
   }
