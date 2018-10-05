@@ -474,6 +474,24 @@ alligator = ItemKind
                , ("eye 6", COrgan), ("ear 9", COrgan)
                , ("animal brain", COrgan) ]
   }
+octopus = ItemKind
+  { isymbol  = 'o'
+  , iname    = "Giant octopus"
+  , ifreq    = [ ("animal", 100), ("mobile", 1), ("mobile animal", 100) ]
+  , iflavour = zipPlain [BrMagenta]
+  , icount   = 1
+  , irarity  = [(1, 5)]
+  , iverbHit = "thud"
+  , iweight  = 15000
+  , idamage  = 0
+  , iaspects = [ AddSkill SkMaxHP 14, AddSkill SkMaxCalm 80
+               , AddSkill SkSpeed 27, AddSkill SkNocto 3 -- good night vision
+               , AddSkill SkAlter (-2), SetFlag Durable ]  -- can't use stairs nor doors
+  , ieffects = []
+  , idesc    = "It has eight arms of rage."
+  , ikit     = [ ("tentacle 8", COrgan), ("small claw", COrgan)
+               , ("eye 7", COrgan), ("animal brain", COrgan) ]
+  }
 rhinoceros = ItemKind
   { isymbol  = 'R'
   , iname    = "Maddened Rhinoceros"
