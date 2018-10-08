@@ -357,7 +357,7 @@ rattleOrgan = armoredSkin
   { iname    = "rattle"
   , ifreq    = [("rattle", 100)]
   , iverbHit = "announce"
-  , iaspects = [ Timeout $ 10 + (1 `d` 2) * 10
+  , iaspects = [ Timeout $ 10 + (1 `d` 2) * 10 + 1 `d` 3
                , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [Recharging Yell]
   , idesc    = ""
@@ -366,7 +366,7 @@ insectMortality = armoredSkin
   { iname    = "insect mortality"
   , ifreq    = [("insect mortality", 100)]
   , iverbHit = "age"
-  , iaspects = [ Timeout $ 30 + (1 `d` 2) * 10
+  , iaspects = [ Timeout $ 30 + (1 `d` 2) * 10 + 1 `d` 3
                , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [Recharging (RefillHP (-1)), Recharging Yell]
   , idesc    = ""
@@ -399,7 +399,7 @@ speedGland n = armoredSkin
   , ifreq    = [(toGroupName $ "speed gland" <+> tshow n, 100)]
   , iverbHit = "spit at"
   , iaspects = [ AddSkill SkSpeed $ intToDice n
-               , Timeout $ intToDice $ 100 `div` n
+               , Timeout $ intToDice (100 `div` n) + 1 `d` 3
                , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [Recharging (RefillHP 1), Recharging Yell]
   , idesc    = ""
@@ -414,7 +414,7 @@ scentGland = armoredSkin
   , ifreq    = [("scent gland", 100)]
   , icount   = 2 + 1 `d` 3  -- runs out
   , iverbHit = "spray at"
-  , iaspects = [ Timeout $ (1 `d` 3) * 10
+  , iaspects = [ Timeout $ (1 `d` 3) * 10 + 1 `d` 3
                , SetFlag Periodic ]  -- not Durable
   , ieffects = [ Recharging (Temporary "look spent")
                , Recharging (Explode "distressing odor")
@@ -426,7 +426,7 @@ boilingVent = armoredSkin
   , ifreq    = [("boiling vent", 100)]
   , iflavour = zipPlain [BrBlue]
   , iverbHit = "menace"
-  , iaspects = [ Timeout $ (2 + 1 `d` 2) * 5
+  , iaspects = [ Timeout $ (2 + 1 `d` 2) * 5 + 1 `d` 3
                , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [ Recharging (Explode "boiling water")
                , Recharging (RefillHP 2) ]
@@ -437,7 +437,7 @@ arsenicVent = armoredSkin
   , ifreq    = [("biogas vent", 100)]
   , iflavour = zipPlain [BrGreen]
   , iverbHit = "menace"
-  , iaspects = [ Timeout $ (2 + 1 `d` 2) * 5
+  , iaspects = [ Timeout $ (2 + 1 `d` 2) * 5 + 1 `d` 3
                , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [ Recharging (Explode "sparse shower")
                , Recharging (RefillHP 2) ]
@@ -448,7 +448,7 @@ sulfurVent = armoredSkin
   , ifreq    = [("medbot vent", 100)]
   , iflavour = zipPlain [BrYellow]
   , iverbHit = "menace"
-  , iaspects = [ Timeout $ (2 + 1 `d` 2) * 5
+  , iaspects = [ Timeout $ (2 + 1 `d` 2) * 5 + 1 `d` 3
                , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [ Recharging (Explode "dense shower")
                , Recharging (RefillHP 2) ]
@@ -551,7 +551,7 @@ wasteContainer = armoredSkin
   { iname    = "waste container"
   , ifreq    = [("waste container", 100)]
   , iverbHit = "spill over"
-  , iaspects = [ Timeout $ (1 + 1 `d` 2) * 30
+  , iaspects = [ Timeout $ (1 + 1 `d` 2) * 30 + 1 `d` 3
                , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [ Recharging (Summon "mobile animal" $ 1 `dL` 2)
                , Recharging (RefillHP 1)
