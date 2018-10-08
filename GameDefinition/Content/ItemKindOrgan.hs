@@ -378,6 +378,7 @@ sapientBrain = armoredSkin
   , iaspects = [AddSkill sk 1 | sk <- [SkMove .. SkApply]]
                ++ [AddSkill SkWait 3]  -- can brace and sleep and lurk
                ++ [AddSkill SkAlter 2]  -- can use stairs
+               ++ [AddSkill SkApply 1]  -- can use most items, not just foods
                ++ [SetFlag Durable]
   , idesc    = ""
   }
@@ -389,7 +390,7 @@ animalBrain = armoredSkin
                ++ [AddSkill SkWait 2]  -- can brace and sleep
                ++ [AddSkill SkAlter 2]  -- can use stairs
                ++ [ AddSkill sk (-1)
-                  | sk <- [SkDisplace, SkMoveItem, SkProject, SkApply] ]
+                  | sk <- [SkDisplace, SkMoveItem, SkProject] ]
                ++ [SetFlag Durable]
   , idesc    = ""
   }
@@ -543,7 +544,7 @@ robotBrain = armoredSkin
   , iaspects = [AddSkill sk 1 | sk <- [SkMove .. SkApply]]
                  -- can only use the easiest stairs
                ++ [AddSkill SkWait 2]  -- can brace and sleep
-               ++ [AddSkill SkApply (-1)]
+               ++ [AddSkill SkApply (-1)]  -- can't even eat food
                ++ [SetFlag Durable]
   , idesc    = ""
   }
