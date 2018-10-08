@@ -33,11 +33,11 @@ otherItemContent = embeds ++ actors ++ organs ++ blasts ++ temporaries
 
 items :: [ItemKind]
 items =
-  [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, potion13, potion14, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, scroll16, scroll17, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammer, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberd3, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
+  [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, scroll16, scroll17, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammer, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberd3, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
   -- Allure-specific
   ++ [needle, constructionHooter, scrollAd1, blowtorch]
 
-sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, potion13, potion14, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, scroll16, scroll17, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammer, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberd3, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
+sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, scroll16, scroll17, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammer, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberd3, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
 -- Allure-specific
 needle, constructionHooter, scrollAd1, blowtorch :: ItemKind
 
@@ -347,7 +347,8 @@ flaskTemplate = ItemKind
   , iname    = "flask"
   , ifreq    = [("flask unknown", 1)]
   , iflavour = zipGlassPlain darkCol ++ zipGlassFancy darkCol
-               ++ zipLiquid darkCol ++ zipPlain darkCol ++ zipFancy darkCol
+               ++ zipLiquid darkCol
+                 -- ++ zipPlain darkCol ++ zipFancy darkCol
   , icount   = 1 `dL` 3
   , irarity  = [(1, 7), (10, 3)]
   , iverbHit = "splash"
@@ -416,24 +417,12 @@ flask7 = flaskTemplate
   }
 flask8 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
-  , irarity  = [(1, 12), (10, 2)]
-  , iaspects = ELabel "of lethargy brew"
-               : iaspects flaskTemplate
-  , ieffects = [ toOrganBad "slowed" (20 + 1 `d` 5)
-               , toOrganNoTimer "regenerating"
-               , toOrganNoTimer "regenerating"  -- x2
-               , RefillCalm 5
-               , OnSmash (Explode "slowness mist")
-               , OnSmash (Explode "youth sprinkle") ]
-  }
-flask9 = flaskTemplate
-  { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , iaspects = ELabel "of eye drops"
                : iaspects flaskTemplate
   , ieffects = [ toOrganGood "far-sighted" (40 + 1 `d` 10)
                , OnSmash (Explode "eye drop") ]
   }
-flask10 = flaskTemplate
+flask9 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , irarity  = [(10, 2)]  -- not very useful right now
   , iaspects = ELabel "of smelly concoction"
@@ -442,7 +431,7 @@ flask10 = flaskTemplate
                , Detect DetectActor 10
                , OnSmash (Explode "smelly droplet") ]
   }
-flask11 = flaskTemplate
+flask10 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , irarity  = [(10, 2)]  -- not very useful right now
   , iaspects = ELabel "of cat tears"
@@ -450,7 +439,7 @@ flask11 = flaskTemplate
   , ieffects = [ toOrganGood "shiny-eyed" (40 + 1 `d` 10)
                , OnSmash (Explode "eye shine") ]
   }
-flask12 = flaskTemplate
+flask11 = flaskTemplate
   { iname    = "bottle"
   , ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , icount   = 1 `d` 3  -- the only one sometimes giving away its identity
@@ -460,7 +449,7 @@ flask12 = flaskTemplate
                , Burn 1, RefillHP 3, Yell
                , OnSmash (Explode "whiskey spray") ]
   }
-flask13 = flaskTemplate
+flask12 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , icount   = 1
   , iaspects = ELabel "of bait cocktail"
@@ -476,7 +465,7 @@ flask13 = flaskTemplate
 -- so he can milk the explosion, so it has to be much weaker, so a weak
 -- healing effect is enough. OTOH, throwing a harmful flask at many enemies
 -- at once is not easy to arrange, so these explosions can stay powerful.
-flask14 = flaskTemplate
+flask13 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , irarity  = [(1, 2), (10, 10)]
   , iaspects = ELabel "of regeneration brew"
@@ -486,21 +475,14 @@ flask14 = flaskTemplate
                , toOrganNoTimer "regenerating"  -- x2
                , OnSmash (Explode "youth sprinkle") ]
   }
-flask15 = flaskTemplate
+flask14 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , iaspects = ELabel "of poison"
                : iaspects flaskTemplate
   , ieffects = [ toOrganNoTimer "poisoned", toOrganNoTimer "poisoned"  -- x2
                , OnSmash (Explode "poison cloud") ]
   }
-flask16 = flaskTemplate
-  { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
-  , iaspects = ELabel "of weak poison"
-               : iaspects flaskTemplate
-  , ieffects = [ toOrganNoTimer "poisoned"
-               , OnSmash (Explode "poison cloud") ]
-  }
-flask17 = flaskTemplate
+flask15 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , irarity  = [(10, 3)]
   , iaspects = ELabel "of slow resistance"
@@ -508,7 +490,7 @@ flask17 = flaskTemplate
   , ieffects = [ toOrganNoTimer "slow resistant"
                , OnSmash (Explode "anti-slow mist") ]
   }
-flask18 = flaskTemplate
+flask16 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , irarity  = [(10, 3)]
   , iaspects = ELabel "of poison resistance"
@@ -516,14 +498,7 @@ flask18 = flaskTemplate
   , ieffects = [ toOrganNoTimer "poison resistant"
                , OnSmash (Explode "antidote mist") ]
   }
-flask19 = flaskTemplate
-  { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
-  , iaspects = ELabel "of blindness"
-               : iaspects flaskTemplate
-  , ieffects = [ toOrganBad "blind" (40 + 1 `d` 10)
-               , OnSmash (Explode "iron filing") ]
-  }
-flask20 = flaskTemplate
+flask17 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , iaspects = ELabel "of calamity"
                : iaspects flaskTemplate
@@ -560,8 +535,7 @@ potion1 = potionTemplate
   , icount   = 3 `dL` 1  -- very useful, despite appearances
   , iaspects = ELabel "of rose water"
                : iaspects potionTemplate
-  , ieffects = [ Impress, RefillCalm (-5)
-               , toOrganGood "rose-smelling" (80 + 1 `d` 20)
+  , ieffects = [ Impress, toOrganGood "rose-smelling" (80 + 1 `d` 20)
                , OnSmash ApplyPerfume, OnSmash (Explode "fragrance") ]
   }
 potion2 = potionTemplate
@@ -572,7 +546,9 @@ potion2 = potionTemplate
                , SetFlag Lobable, SetFlag Fragile  -- identified
                , toVelocity 50 ]
   , ieffects = [ Dominate
-               , OnSmash (Explode "pheromone") ]
+               , toOrganGood "hasted" (20 + 1 `d` 5)
+               , OnSmash (Explode "pheromone")
+               , OnSmash (Explode "haste spray") ]
   -- , idesc    = ""
   }
 potion3 = potionTemplate
@@ -607,24 +583,20 @@ potion6 = potionTemplate
   , icount   = 3 `dL` 1
   , irarity  = [(10, 8)]
   , ieffects = [ Impress
-               , OneOf [ RefillCalm (-60)
-                       , RefillHP 20, RefillHP 10, Burn 10
+               , OneOf [ RefillHP 20, RefillHP 10, Burn 10
                        , DropItem 1 maxBound COrgan "poisoned"
-                       , toOrganGood "hasted" (20 + 1 `d` 5) ]
+                       , toOrganGood "hasted" (20 + 1 `d` 5)
+                       , toOrganBad "impatient" (10 + 1 `d` 5) ]
                , OnSmash (OneOf [ Explode "healing mist 2"
                                 , Explode "wounding mist"
                                 , Explode "distressing odor"
+                                , Explode "impatient mist"
                                 , Explode "haste spray"
                                 , Explode "slowness mist"
                                 , Explode "fragrance"
                                 , Explode "violent flash" ]) ]
   }
 potion7 = potionTemplate
-  { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
-  , ieffects = [ DropItem 1 maxBound COrgan "poisoned"
-               , OnSmash (Explode "antidote mist") ]
-  }
-potion8 = potionTemplate
   { iname    = "ampoule"  -- filled with semi-stabilized high explosive liquid
   , ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
   , icount   = 3 `dL` 1
@@ -632,24 +604,20 @@ potion8 = potionTemplate
                , OnSmash (Explode "violent concussion") ]
       -- not fragmentation nor glass hail, because not enough glass
   }
-potion9 = potionTemplate
+potion8 = potionTemplate
   { ifreq    = [("curious item", 100)]
   , icount   = 1
   , irarity  = [(10, 5)]
   , iaspects = [ SetFlag Unique, ELabel "of Love"
                , SetFlag Lobable, SetFlag Fragile  -- identified
                , toVelocity 50 ]
-  , ieffects = [ RefillHP 60, Impress, RefillCalm (-60)
+  , ieffects = [ RefillHP 60, RefillCalm (-60)
+               , toOrganGood "rose-smelling" (80 + 1 `d` 20)
                , OnSmash (Explode "healing mist 2")
-               , OnSmash (Explode "pheromone") ]
+               , OnSmash (Explode "distressing odor") ]
   -- , idesc    = ""
   }
-potion10 = potionTemplate
-  { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
-  , ieffects = [ PutToSleep
-               , OnSmash (Explode "sleep mist") ]
-  }
-potion11 = potionTemplate
+potion9 = potionTemplate
   { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
   , irarity  = [(10, 5)]
   , iaspects = ELabel "of grenadier focus"
@@ -661,7 +629,7 @@ potion11 = potionTemplate
                , OnSmash (Explode "pacified mist") ]
   -- , idesc    = ""
   }
-potion12 = potionTemplate
+potion10 = potionTemplate
   { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
   , irarity  = [(10, 10)]
   , iaspects = ELabel "of frenzy"
@@ -669,11 +637,12 @@ potion12 = potionTemplate
   , ieffects = [ Yell
                , toOrganGood "strengthened" (20 + 1 `d` 5)
                , toOrganBad "retaining" (40 + 1 `d` 10)
+               , toOrganBad "frenzied" (40 + 1 `d` 10)
                , OnSmash (Explode "dense shower")
                , OnSmash (Explode "retaining mist")
                , OnSmash (Explode "retaining mist") ]
   }
-potion13 = potionTemplate
+potion11 = potionTemplate
   { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
   , irarity  = [(10, 10)]
   , iaspects = ELabel "of panic"
@@ -686,7 +655,7 @@ potion13 = potionTemplate
                , OnSmash (Explode "sparse shower")
                , OnSmash (Explode "withholding mist") ]
   }
-potion14 = potionTemplate
+potion12 = potionTemplate
   { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
   , irarity  = [(10, 8)]
   , iaspects = ELabel "of quicksilver"
@@ -770,6 +739,68 @@ firecrackerBomb = fragmentationBomb
 
 -- * Non-exploding consumables, not specifically designed for throwing
 
+-- Foods require only minimal apply skill to consume. Many animals can eat them.
+
+ediblePlantTemplate = ItemKind
+  { isymbol  = symbolFood
+  , iname    = "edible plant"
+  , ifreq    = [("edible plant unknown", 1)]
+  , iflavour = zipPlain stdCol
+  , icount   = 1 `dL` 5
+  , irarity  = [(1, 12), (10, 6)]
+  , iverbHit = "thump"
+  , iweight  = 50
+  , idamage  = 0
+  , iaspects = [ HideAs "edible plant unknown"
+               , toVelocity 30 ]  -- low density, often falling apart
+  , ieffects = []
+  , idesc    = "Withered but fragrant bits of some colorful plant, quite possibly genetically or nano-technologically enhanced. Taste tolerably and break down easily, but it's hard to tell in advance whether they are digestible what additional effects it may have."
+  , ikit     = []
+  }
+ediblePlant1 = ediblePlantTemplate
+  { iname    = "enhanced berry"
+  , ifreq    = [("common item", 100), ("edible plant", 100)]
+  , ieffects = [RefillHP 1, toOrganBad "immobile" (10 + 1 `d` 5)]
+  }
+ediblePlant2 = ediblePlantTemplate
+  { iname    = "frayed fungus"
+  , ifreq    = [("common item", 100), ("edible plant", 100)]
+  , ieffects = [toOrganNoTimer "poisoned"]
+  }
+ediblePlant3 = ediblePlantTemplate
+  { iname    = "thick leaf"
+  , ifreq    = [("common item", 100), ("edible plant", 100)]
+  , ieffects = [DropItem 1 maxBound COrgan "poisoned"]
+  }
+ediblePlant4 = ediblePlantTemplate
+  { iname    = "reconfigured fruit"
+  , ifreq    = [("common item", 100), ("edible plant", 100)]
+  , ieffects = [toOrganBad "blind" (40 + 1 `d` 10)]
+  }
+ediblePlant5 = ediblePlantTemplate
+  { iname    = "fragrant herb"
+  , ifreq    = [("common item", 100), ("edible plant", 100)]
+  , irarity  = [(1, 12), (10, 2)]
+  , iaspects = ELabel "of lethargy"
+               : iaspects ediblePlantTemplate
+  , ieffects = [ toOrganBad "slowed" (20 + 1 `d` 5)
+               , toOrganNoTimer "regenerating"
+               , toOrganNoTimer "regenerating"  -- x2
+               , RefillCalm 5 ]
+  }
+ediblePlant6 = ediblePlantTemplate
+  { iname    = "dull flower"
+  , ifreq    = [("common item", 100), ("edible plant", 100)]
+  , ieffects = [PutToSleep]
+  }
+ediblePlant7 = ediblePlantTemplate
+  { iname    = "spicy bark"
+  , ifreq    = [("common item", 100), ("edible plant", 100)]
+  , ieffects = [InsertMove 20, toOrganBad "frenzied" (40 + 1 `d` 10)]
+  }
+
+-- These require high apply skill to consume.
+
 scrollTemplate = ItemKind
   { isymbol  = symbolScroll
   , iname    = "chip"
@@ -823,7 +854,7 @@ scroll5 = scrollTemplate
   , ieffects = [ Impress
                , OneOf [ Teleport 20, Ascend False, Ascend True
                        , Summon "hero" 1, Summon "mobile animal" $ 1 `d` 2
-                       , Detect DetectAll 40, RefillCalm (-100)
+                       , Detect DetectAll 40
                        , CreateItem CGround "common item" timerNone ] ]
   }
 scroll6 = scrollTemplate
