@@ -754,7 +754,7 @@ ediblePlantTemplate = ItemKind
   , iaspects = [ HideAs "edible plant unknown"
                , toVelocity 30 ]  -- low density, often falling apart
   , ieffects = []
-  , idesc    = "Withered but fragrant bits of some colorful plant, quite possibly genetically or nano-technologically enhanced. Taste tolerably and break down easily, but it's hard to tell in advance whether they are digestible what additional effects it may have."
+  , idesc    = "Withered but fragrant bits of some colorful plant, quite possibly genetically or nano-technologically enhanced. Taste tolerably and break down easily, but only eating reveals what effects they have."
   , ikit     = []
   }
 ediblePlant1 = ediblePlantTemplate
