@@ -404,8 +404,8 @@ pulpit = TileKind
 bush = TileKind
   { tsymbol  = '%'
   , tname    = "bush"
-  , tfreq    = [ ("bush Lit", 1), ("shootoutSetLit", 30), ("escapeSetLit", 40)
-               , ("arenaSetLit", 5), ("zooSetDark", 100)
+  , tfreq    = [ ("bush Lit", 1), ("arenaSetLit", 5), ("shootoutSetLit", 30)
+               , ("escapeSetLit", 40), ("zooSetDark", 100)
                , ("bushClumpOver_f_Lit", 1), ("pumpsOver_f_Lit", 1)
                , ("lift terminal Lit", 4) ]
   , tcolor   = BrGreen
