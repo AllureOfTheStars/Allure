@@ -29,6 +29,12 @@ warrior,    warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, amb
 -- Allure-specific
 razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot :: ItemKind
 
+-- Note that the actors that appear in the crawl scenario should
+-- be generated with at most ordinary ammo. Otherwise, farming them
+-- may be rational though boring endeavour. Any exceptions to that
+-- should be well thought of. E.g., unique guaranteed items on bosses
+-- are safe, just as restricted kinds of weak items.
+
 -- * Hunams
 
 warrior = ItemKind
@@ -625,6 +631,9 @@ activeFence = ItemKind
   , idesc    = "Makeshift, mostly non-lethal, autonomous perimeter defense outpost."
   , ikit     = [ ("vision 6", COrgan)
                , ("needle", CInv), ("can of sticky foam", CInv) ]
+                   -- can of sticky foam is scummable, but on the level
+                   -- it appears healing through faucets is much more so,
+                   -- so it won't be a significant factor
   }
 steamFaucet = ItemKind
   { isymbol  = 'f'
