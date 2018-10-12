@@ -213,7 +213,7 @@ noise = rogue
   , chidden       = 0
   , cactorCoeff   = 80  -- the maze requires time to explore; also, small
   , cactorFreq    = [("monster", 80), ("animal", 10), ("robot", 10)]
-  , citemNum      = 6 `d` 4  -- an incentive to explore the labyrinth
+  , citemNum      = 6 `d` 5  -- an incentive to explore the labyrinth
   , citemFreq     = [ ("common item", 20), ("treasure", 60), ("explosive", 20)
                     , ("curious item", 20) ]
   , cpassable     = True
@@ -236,9 +236,9 @@ power = noise
   , cXminSize     = 32
   , cYminSize     = 42
   , cnightOdds    = 51  -- easier variant, but looks sinister
-  , cextraStairs  = 1 + 1 `d` 2
+  , cextraStairs  = 2
   , citemNum      = 10 `d` 4  -- an incentive to explore the final labyrinth
-  , citemFreq     = [ ("common item", 40), ("treasure", 60)
+  , citemFreq     = [ ("common item", 20), ("valuable", 80)
                     , ("curious item", 20) ]
   , cdefTile      = "powerSetDark"
   , cdarkCorTile  = "oily floor Dark"
