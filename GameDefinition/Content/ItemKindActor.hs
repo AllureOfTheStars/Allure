@@ -491,7 +491,7 @@ giantOctopus = ItemKind
   , ieffects = []
   , idesc    = "It has eight arms of rage."
   , ikit     = [ ("tentacle", COrgan), ("tentacle", COrgan)
-               , ("small claw", COrgan), ("eye 7", COrgan)
+               , ("small beak", COrgan), ("eye 7", COrgan)
                , ("animal brain", COrgan) ]
   }
 rhinoceros = ItemKind
