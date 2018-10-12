@@ -21,11 +21,11 @@ import Game.LambdaHack.Content.ItemKind
 
 actors :: [ItemKind]
 actors =
-  [warrior, warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, soldier, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush]
+  [warrior, warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, soldier, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, giantOctopus, rhinoceros, beeSwarm, hornetSwarm, thornbush]
   -- Allure-specific
   ++ [razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot]
 
-warrior,    warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, soldier, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush :: ItemKind
+warrior,    warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, soldier, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, giantOctopus, rhinoceros, beeSwarm, hornetSwarm, thornbush :: ItemKind
 -- Allure-specific
 razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot :: ItemKind
 
@@ -476,21 +476,23 @@ alligator = ItemKind
   }
 giantOctopus = ItemKind
   { isymbol  = 'o'
-  , iname    = "Giant octopus"
+  , iname    = "giant octopus"
   , ifreq    = [ ("animal", 100), ("mobile", 1), ("mobile animal", 100) ]
   , iflavour = zipPlain [BrMagenta]
   , icount   = 1
   , irarity  = [(1, 5)]
   , iverbHit = "thud"
-  , iweight  = 15000
+  , iweight  = 72000
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 14, AddSkill SkMaxCalm 80
+               , AddSkill SkSwimming 100  -- swims better than walks
                , AddSkill SkSpeed 27, AddSkill SkNocto 3 -- good night vision
                , AddSkill SkAlter (-2), SetFlag Durable ]  -- can't use stairs nor doors
   , ieffects = []
   , idesc    = "It has eight arms of rage."
-  , ikit     = [ ("tentacle 8", COrgan), ("small claw", COrgan)
-               , ("eye 7", COrgan), ("animal brain", COrgan) ]
+  , ikit     = [ ("tentacle", COrgan), ("tentacle", COrgan)
+               , ("small claw", COrgan), ("eye 7", COrgan)
+               , ("animal brain", COrgan) ]
   }
 rhinoceros = ItemKind
   { isymbol  = 'R'
