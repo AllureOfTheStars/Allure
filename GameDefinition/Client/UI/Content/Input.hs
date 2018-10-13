@@ -142,14 +142,6 @@ standardKeysAndMouse = InputContentRaw $ map evalKeyDef $
   , ("~", ( [CmdItem]
           , "display known lore"
           , ChooseItemMenu (MLore SItem) ))
-  , ("q", addCmdCategory CmdItem $ applyI [TriggerItem
-            { tiverb = "quaff"
-            , tiobject = "liquid"
-            , tisymbols = "!" }])
-  , ("r", addCmdCategory CmdItem $ applyI [TriggerItem
-            { tiverb = "read"
-            , tiobject = "chip"
-            , tisymbols = "?" }])
 
   , ("t", addCmdCategory CmdItem $ projectA
             [ TriggerItem { tiverb = "throw"
