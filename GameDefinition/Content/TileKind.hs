@@ -536,7 +536,7 @@ floorAshes = floorActor
 shallowWater = TileKind
   { tsymbol  = '~'
   , tname    = "water puddle"
-  , tfreq    = [ ("shallow water Lit", 1), ("legendLit", 100)
+  , tfreq    = [ ("aquatic", 1), ("shallow water Lit", 1), ("legendLit", 100)
                , ("emptySetLit", 5), ("noiseSetLit", 30), ("shootoutSetLit", 5)
                , ("lift terminal Lit", 4) ]
   , tcolor   = BrCyan
