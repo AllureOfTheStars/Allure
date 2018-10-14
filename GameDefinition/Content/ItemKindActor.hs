@@ -211,7 +211,8 @@ fastEye = ItemKind
 nose = ItemKind  -- depends solely on smell
   { isymbol  = 'h'
   , iname    = "tentacled horror"
-  , ifreq    = [("monster", 100), ("mobile", 1), ("mobile monster", 100)]
+  , ifreq    = [ ("monster", 100), ("mobile", 1), ("mobile monster", 100)
+               , ("aquatic", 30) ]  -- likes liquids
   , iflavour = zipFancy [BrGreen]
   , icount   = 1
   , irarity  = [(3, 0), (4, 5), (10, 9)]
@@ -222,6 +223,7 @@ nose = ItemKind  -- depends solely on smell
                , AddSkill SkSpeed 16, AddSkill SkNocto 2
                , AddSkill SkAggression 1
                , AddSkill SkProject (-1), AddSkill SkAlter 2
+               , AddSkill SkSwimming 30
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A blind, slimy mass of clawing, stinging and burning. You'd think it's powerless, but as soon as it touches your trembling body, it's always one step ahead."
@@ -462,7 +464,8 @@ komodoDragon = ItemKind
 alligator = ItemKind
   { isymbol  = 'a'
   , iname    = "alligator"
-  , ifreq    = [("animal", 100), ("mobile", 1), ("mobile animal", 100)]
+  , ifreq    = [ ("animal", 100), ("mobile", 1), ("mobile animal", 100)
+               , ("aquatic", 70) ]  -- also roams the banks
   , iflavour = zipPlain [Blue]
   , icount   = 1
   , irarity  = [(9, 0), (10, 12)]

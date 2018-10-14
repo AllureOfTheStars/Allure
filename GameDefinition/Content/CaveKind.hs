@@ -103,7 +103,8 @@ arena = rogue
   , cextraStairs  = 1 `d` 2
   , chidden       = 0
   , cactorCoeff   = 50  -- smallish level, but easy to view and plan
-  , cactorFreq    = [("monster", 25), ("animal", 70), ("robot", 5)]
+  , cactorFreq    = [ ("monster", 25), ("animal", 70), ("robot", 5)
+                    , ("aquatic", 10) ]
   , citemNum      = 7 `d` 3  -- few rooms
   , citemFreq     = [ ("common item", 20), ("treasure", 40), ("any scroll", 40)
                     , ("explosive", 40), ("curious item", 10) ]
@@ -129,6 +130,7 @@ casino = arena
   , cnightOdds    = 51  -- always night
   , cminStairDist = 10
   , cactorCoeff   = 80  -- cramped, don't overcrowd
+  , cactorFreq    = [("monster", 25), ("animal", 25), ("robot", 50)]
   , citemNum      = 7 `d` 3  -- rare, so make it exciting, by keeping items
   , citemFreq     = [ ("common item", 20)
                     , ("treasure", 80)  -- lives up to the name
@@ -150,6 +152,7 @@ museum = arena
   , cnightOdds    = 51  -- always night
   , cminStairDist = 10
   , cactorCoeff   = 80  -- cramped, don't overcrowd
+  , cactorFreq    = [("monster", 50), ("animal", 25), ("robot", 25)]
   , citemNum      = 7 `d` 4  -- rare, so make it exciting
   , citemFreq     = [ ("common item", 20)
                     , ("treasure", 40)
@@ -161,7 +164,7 @@ museum = arena
   , cfenceTileE   = "habitat containment wall"
   , cfenceTileS   = "habitat containment wall"
   , cfenceTileW   = "habitat containment wall"
-  , cdesc         = "History has shown that museums are safer in space than anywhere on Earth. Cruise passengers are also more likely to visit exhibitions, even if that's captive audience effect to some extent. That rarely applies to spaceship crew and yet museum security has a particularly keen eye for the working men. Quite often a museum turns out to be the only place within millions of kilometers that holds a desperately needed tool, old but sturdy beyond what any 3D printer can produce."
+  , cdesc         = "History has shown that museal treasures are safer in space than anywhere on Earth. Cruise passengers are also more likely to visit exhibitions, even if that's captive audience effect to some extent. That rarely applies to spaceship crew and yet museum security has a particularly keen eye for the working men. Quite often a museum turns out to be the only place within millions of kilometers that holds a desperately needed tool, old but sturdy beyond what any 3D printer can produce."
   }
 laboratory = rogue
   { csymbol       = 'L'
@@ -179,7 +182,8 @@ laboratory = rogue
   , cextraStairs  = 1 `d` 2
   , cdoorChance   = 1
   , copenChance   = 1%2
-  , cactorFreq    = [("monster", 25), ("animal", 70), ("robot", 5)]
+  , cactorFreq    = [ ("monster", 25), ("animal", 70), ("robot", 5)
+                    , ("aquatic", 10) ]
   , citemNum      = 7 `d` 4  -- reward difficulty
   , citemFreq     = [ ("common item", 20), ("treasure", 40), ("potion", 40)
                     , ("curious item", 20) ]
@@ -311,7 +315,8 @@ outermost = empty
   { cname         = "Outermost deck"
   , cfreq         = [("caveOutermost", 100)]
   , cactorCoeff   = 4  -- shallower than LH, so fewer immediate actors, so boost
-  , cactorFreq    = [("animal", 3), ("robot", 2), ("immobile robot", 95)]
+  , cactorFreq    = [ ("animal", 2), ("robot", 2), ("immobile robot", 95)
+                    , ("immobile animal", 1), ("aquatic", 2) ]
       -- The medbot faucets on lvl 1 act like HP resets. Needed to avoid
       -- cascading failure, if the particular starting conditions were
       -- very hard. Items are not reset, even if they are bad, which provides
@@ -326,7 +331,6 @@ outermost = empty
   , cfenceTileW   = "habitat containment wall"
   , cdesc         = "The black sky outside sucks light through the oriel and airlock glass. At this outermost deck, the curvature of the floor is unnoticeable and artificial gravity as strong as on Earth. Here is the main pressurized cargo bay and storage, with the only other docking hub for small craft somewhere among the giant spaceship's uppermost levels. You can't see from afar the shuttle you left engaged to one of the few free airlocks covered in guano. Water treatment basins and series of hanging and stacked tanks double as radiation shields. Hoses writhe on the floor and dangle in thick knots from the ceiling."
       -- E and W sides are borders with other level sections, so no oriels.
-      -- TODO: exclusively water-liking animals, when there is enough; plants
   }
 bridge = rogue
   { csymbol       = 'B'
