@@ -505,6 +505,29 @@ rhinoceros = ItemKind
                , ("animal brain", COrgan) ]
   }
 
+mantaRay = ItemKind
+  { isymbol  = 'M'
+  , iname    = "manta ray"
+  , ifreq    = [("animal", 100), ("mobile", 1), ("mobile animal", 100)]
+  , iflavour = zipPlain [BrBlue]
+  , icount   = 1
+  , irarity  = [(1, 10)]
+  , iverbHit = "thud"
+  , iweight  = 1350
+  , idamage  = 0
+  , iaspects = [ SetFlag Unique
+               , AddSkill SkMaxHP 10, AddSkill SkMaxCalm 50
+               , AddSkill SkSpeed 30, AddSkill SkNocto 3 -- glows in the dark, it's its own night-light
+               , AddSkill SkSwimming -- swims better than walks
+               , AddSkill SkAlter (-1), SetFlag Durable ]
+  , ieffects = []
+  , idesc    = "It feels slimy when you touch it."
+  , ikit     = [ ("boneless tail", COrgan)
+               , ("side eye 2", COrgan), ("horn 2", COrgan)
+               , ("flappy wing 2", COrgan)
+               , ("animal brain", COrgan) ]
+  }
+
 -- * Non-animal animals
 
 beeSwarm = ItemKind
