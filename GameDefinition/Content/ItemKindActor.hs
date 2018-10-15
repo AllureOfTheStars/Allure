@@ -828,7 +828,7 @@ heavyRobot = ItemKind
                , ("construction robot", 100) ]
   , iflavour = zipPlain [Cyan]
   , icount   = 1
-  , irarity  = [(9, 0), (10, 12)]
+  , irarity  = [(8, 0), (9, 5), (10, 15)]
   , iverbHit = "clank"
   , iweight  = 800000
   , idamage  = 0
