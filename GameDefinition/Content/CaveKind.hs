@@ -315,8 +315,9 @@ outermost = empty
   { cname         = "Outermost deck"
   , cfreq         = [("caveOutermost", 100)]
   , cactorCoeff   = 4  -- shallower than LH, so fewer immediate actors, so boost
-  , cactorFreq    = [ ("animal", 2), ("robot", 2), ("immobile robot", 95)
-                    , ("immobile animal", 1), ("aquatic", 2) ]
+  , cactorFreq    = [ ("animal", 2), ("robot", 2)
+                    , ("immobile robot", 95), ("immobile animal", 1)
+                    , ("aquatic animal", 2) ]  -- ("aquatic robot", 2)
       -- The medbot faucets on lvl 1 act like HP resets. Needed to avoid
       -- cascading failure, if the particular starting conditions were
       -- very hard. Items are not reset, even if they are bad, which provides
