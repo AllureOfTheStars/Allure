@@ -830,7 +830,7 @@ floorWindow = floorArena
 makeDark :: TileKind -> TileKind
 makeDark k = let darkText :: GroupName TileKind -> GroupName TileKind
                  darkText t = maybe t (toGroupName . (<> "Dark"))
-                              $ T.stripSuffix "Lit" $ tshow t
+                              $ T.stripSuffix "Lit" $ fromGroupName t
                  darkFrequency = map (first darkText) $ tfreq k
                  darkFeat (OpenTo t) = Just $ OpenTo $ darkText t
                  darkFeat (CloseTo t) = Just $ CloseTo $ darkText t
