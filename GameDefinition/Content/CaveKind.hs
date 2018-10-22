@@ -142,7 +142,7 @@ casino = arena
   , cfenceTileE   = "habitat containment wall"
   , cfenceTileS   = "habitat containment wall"
   , cfenceTileW   = "habitat containment wall"
-  , cdesc         = "No longer filled with hollow-eyed gamblers, more dangerous things now lurk in the dark."
+  , cdesc         = "No longer filled with hollow-eyed gamblers; more dangerous things now lurk in the dark."
   }
 museum = arena
   { cname         = "Museum"
@@ -376,7 +376,7 @@ shallowRogue = rogue
   , cdesc         = "This close to the outer level, residence is not permitted and doors are sturdier, to contain a possible micro-meteorite breach. The passage upwards is not closed off, though, because some passengers can't live without regularly looking at the void and the light of distant suns and planets through the reinforced glass of oriels, as opposed to the glass of electronic displays. Animals appear to share the fascination, or perhaps they crave the increased gravity, nearly Earth-like, unlike elsewhere on the ship."
   }
   
--- * On-planet caves
+-- * Caves on various celestial bodies (including, but not limited to, moons)
 
 raid = rogue
   { csymbol       = 'S'
@@ -555,8 +555,6 @@ zoo = rogue  -- few lights and many solids, to help the less numerous heroes
   , cdesc         = "Leaping flames illuminate the cages; not all are empty."
   }
 
--- * Other caves
-
 ambush = rogue  -- a scenario with strong missiles;
                 -- dark, so solid obstacles are to hide from missiles,
                 -- not view, and they are all lit, because stopped missiles
@@ -591,8 +589,11 @@ ambush = rogue  -- a scenario with strong missiles;
   , cwallTile     = "openableWall"
   , cstairFreq    = []
   , cstairAllowed = []
-  , cdesc         = "Scarred walls and ransacked lockers show the presence of raiders."
+  , cdesc         = "Previously a calm and orderly place, now scarred walls and ransacked lockers show the total breakdown of order."
   }
+  
+-- * Other caves
+
 battle = rogue  -- few lights and many solids, to help the less numerous heroes
   { csymbol       = 'B'
   , cname         = "Old industrial plant"
