@@ -392,7 +392,7 @@ raid = rogue
   , cescapeFreq   = [("escape up", 1)]
   , cstairFreq    = []
   , cstairAllowed = []
-  , cdesc         = "Without little remaining maintenance or use, the sewers have stagnated. Mold spreads across the walls and scuttling sounds can be heard in the distance."
+  , cdesc         = "Mold spreads across the walls and scuttling sounds can be heard in the distance."
   }
 brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
                -- and this scenario is not focused on ranged combat;
@@ -422,7 +422,7 @@ brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
   , cwallTile     = "openableWall"
   , cstairFreq    = []
   , cstairAllowed = []
-  , cdesc         = "Shadows pool under the trees as artificial birdsong plays through hidden speakers."
+  , cdesc         = "Shadows pool under the trees and leaves crunch underfoot."
   }
 shootout = rogue  -- a scenario with strong missiles;
                   -- few solid tiles, but only translucent tiles or walkable
