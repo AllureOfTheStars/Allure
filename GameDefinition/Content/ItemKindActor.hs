@@ -212,7 +212,7 @@ nose = ItemKind  -- depends solely on smell
   { isymbol  = 'h'
   , iname    = "tentacled horror"
   , ifreq    = [ ("monster", 100), ("mobile", 1), ("mobile monster", 100)
-               , ("aquatic", 1), ("aquatic monster", 30) ]  -- likes liquids
+               , ("aquatic", 30), ("aquatic monster", 30) ]  -- likes liquids
   , iflavour = zipFancy [BrGreen]
   , icount   = 1
   , irarity  = [(3, 0), (4, 5), (10, 9)]
@@ -465,7 +465,7 @@ alligator = ItemKind
   { isymbol  = 'a'
   , iname    = "alligator"
   , ifreq    = [ ("animal", 100), ("mobile", 1), ("mobile animal", 100)
-               , ("aquatic", 1), ("aquatic animal", 70) ]  -- amphibious
+               , ("aquatic", 70), ("aquatic animal", 70) ]  -- amphibious
   , iflavour = zipPlain [Blue]
   , icount   = 1
   , irarity  = [(9, 0), (10, 12)]
