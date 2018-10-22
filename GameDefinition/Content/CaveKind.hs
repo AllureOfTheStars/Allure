@@ -24,7 +24,7 @@ content =
 
 rogue,    residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, raid, brawl, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
 
--- * On-ship caves
+-- * On-ship "caves", that is, decks, most of mediocre height and size
 
 rogue = CaveKind
   { csymbol       = 'R'
@@ -375,8 +375,9 @@ shallowRogue = rogue
                     : filter ((/= "treasure") . fst) (citemFreq rogue)
   , cdesc         = "This close to the outer level, residence is not permitted and doors are sturdier, to contain a possible micro-meteorite breach. The passage upwards is not closed off, though, because some passengers can't live without regularly looking at the void and the light of distant suns and planets through the reinforced glass of oriels, as opposed to the glass of electronic displays. Animals appear to share the fascination, or perhaps they crave the increased gravity, nearly Earth-like, unlike elsewhere on the ship."
   }
-  
--- * Caves on various celestial bodies (including, but not limited to, moons)
+
+-- * "Caves" on various celestial bodies (including, but not limited to, moons,
+--   with virtually no story-wise limits wrt height and size
 
 raid = rogue
   { csymbol       = 'S'
@@ -554,7 +555,6 @@ zoo = rogue  -- few lights and many solids, to help the less numerous heroes
   , cstairAllowed = []
   , cdesc         = "Leaping flames illuminate the cages; not all are empty."
   }
-
 ambush = rogue  -- a scenario with strong missiles;
                 -- dark, so solid obstacles are to hide from missiles,
                 -- not view, and they are all lit, because stopped missiles
@@ -591,8 +591,8 @@ ambush = rogue  -- a scenario with strong missiles;
   , cstairAllowed = []
   , cdesc         = "Previously a calm and orderly place, now scarred walls and ransacked lockers show the total breakdown of order."
   }
-  
--- * Other caves
+
+-- * Other caves; testing, easter egg, future work
 
 battle = rogue  -- few lights and many solids, to help the less numerous heroes
   { csymbol       = 'B'
