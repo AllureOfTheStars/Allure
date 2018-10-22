@@ -530,8 +530,7 @@ potionTemplate = ItemKind
   , ikit     = []
   }
 potion1 = potionTemplate
-  { iname    = "vial"
-  , ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
+  { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
   , icount   = 3 `dL` 1  -- very useful, despite appearances
   , iaspects = ELabel "of rose water"
                : iaspects potionTemplate
@@ -539,10 +538,11 @@ potion1 = potionTemplate
                , OnSmash ApplyPerfume, OnSmash (Explode "fragrance") ]
   }
 potion2 = potionTemplate
-  { ifreq    = [("curious item", 100)]
+  { iname    = "Potion of Attraction"
+  , ifreq    = [("curious item", 100)]
   , icount   = 1
   , irarity  = [(5, 8), (10, 8)]
-  , iaspects = [ SetFlag Unique, ELabel "of Attraction"
+  , iaspects = [ SetFlag Unique
                , SetFlag Lobable, SetFlag Fragile  -- identified
                , toVelocity 50 ]
   , ieffects = [ Dominate
@@ -605,10 +605,11 @@ potion7 = potionTemplate
       -- not fragmentation nor glass hail, because not enough glass
   }
 potion8 = potionTemplate
-  { ifreq    = [("curious item", 100)]
+  { iname    = "Potion of Love"
+  , ifreq    = [("curious item", 100)]
   , icount   = 1
   , irarity  = [(10, 5)]
-  , iaspects = [ SetFlag Unique, ELabel "of Love"
+  , iaspects = [ SetFlag Unique
                , SetFlag Lobable, SetFlag Fragile  -- identified
                , toVelocity 50 ]
   , ieffects = [ RefillHP 60, RefillCalm (-60)
