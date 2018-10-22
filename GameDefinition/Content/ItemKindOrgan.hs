@@ -269,6 +269,7 @@ hugeTail = largeTail
 smallBeak = fist
   { iname    = "small beak"
   , ifreq    = [("small beak", 50)]
+  , icount   = 1
   , iverbHit = "nom"
   , idamage  = 2 `d` 1
   , idesc    = "Cute, but painful."
