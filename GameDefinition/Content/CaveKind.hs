@@ -24,6 +24,8 @@ content =
 
 rogue,    residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, raid, brawl, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
 
+-- * On-ship caves
+
 rogue = CaveKind
   { csymbol       = 'R'
   , cname         = "Maintenance and storage"
@@ -373,6 +375,9 @@ shallowRogue = rogue
                     : filter ((/= "treasure") . fst) (citemFreq rogue)
   , cdesc         = "This close to the outer level, residence is not permitted and doors are sturdier, to contain a possible micro-meteorite breach. The passage upwards is not closed off, though, because some passengers can't live without regularly looking at the void and the light of distant suns and planets through the reinforced glass of oriels, as opposed to the glass of electronic displays. Animals appear to share the fascination, or perhaps they crave the increased gravity, nearly Earth-like, unlike elsewhere on the ship."
   }
+  
+-- * On-planet caves
+
 raid = rogue
   { csymbol       = 'S'
   , cname         = "Triton City sewers"
@@ -549,6 +554,9 @@ zoo = rogue  -- few lights and many solids, to help the less numerous heroes
   , cstairAllowed = []
   , cdesc         = "Leaping flames illuminate the cages; not all are empty."
   }
+
+-- * Other caves
+
 ambush = rogue  -- a scenario with strong missiles;
                 -- dark, so solid obstacles are to hide from missiles,
                 -- not view, and they are all lit, because stopped missiles
