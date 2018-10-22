@@ -118,7 +118,7 @@ arena = rogue
                     , ("tiny lift", 1) ]
   , cstairAllowed = [ ("walled staircase", 20), ("closed staircase", 80)
                     , ("tiny staircase", 1) ]
-  , cdesc         = ""
+  , cdesc         = "Debris litters the wide streets and all the stalls have their shutters down."
   }
 casino = arena
   { cname         = "Casino"
@@ -140,7 +140,7 @@ casino = arena
   , cfenceTileE   = "habitat containment wall"
   , cfenceTileS   = "habitat containment wall"
   , cfenceTileW   = "habitat containment wall"
-  , cdesc         = ""
+  , cdesc         = "No longer filled with hollow-eyed gamblers, more dangerous things now lurk in the dark."
   }
 museum = arena
   { cname         = "Museum"
@@ -232,7 +232,7 @@ noise = rogue
                     , ("tiny staircase", 1) ]
   , cstairAllowed = [ ("closed lift", 50), ("open lift", 50)
                     , ("tiny lift", 1) ]
-  , cdesc         = ""
+  , cdesc         = "Several machines still function, processors whirring through routines scheduled by dead men."
   }
 power = noise
   { cname         = "Power distribution hub"
@@ -253,7 +253,7 @@ power = noise
   , cstairAllowed = [ ("gated closed lift", 50)
                     , ("gated open lift", 50)
                     , ("gated tiny lift", 1) ]
-  , cdesc         = ""
+  , cdesc         = "A trickle of energy flows through a hub that could power a city."
   }
 empty = rogue
   { csymbol       = 'E'
@@ -392,7 +392,7 @@ raid = rogue
   , cescapeFreq   = [("escape up", 1)]
   , cstairFreq    = []
   , cstairAllowed = []
-  , cdesc         = ""
+  , cdesc         = "Without little remaining maintenance or use, the sewers have stagnated. Mold spreads across the walls and scuttling sounds can be heard in the distance."
   }
 brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
                -- and this scenario is not focused on ranged combat;
@@ -422,7 +422,7 @@ brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
   , cwallTile     = "openableWall"
   , cstairFreq    = []
   , cstairAllowed = []
-  , cdesc         = ""
+  , cdesc         = "Shadows pool under the trees as artificial birdsong plays through hidden speakers."
   }
 shootout = rogue  -- a scenario with strong missiles;
                   -- few solid tiles, but only translucent tiles or walkable
@@ -459,7 +459,7 @@ shootout = rogue  -- a scenario with strong missiles;
   , cwallTile     = "openableWall"
   , cstairFreq    = []
   , cstairAllowed = []
-  , cdesc         = ""
+  , cdesc         = "Once so carefully curated, the planting beds are now overgrown and chocked with weeds."
   }
 hunt = rogue  -- a scenario with strong missiles for ranged and shade for melee
   { csymbol       = 'H'
@@ -487,7 +487,7 @@ hunt = rogue  -- a scenario with strong missiles for ranged and shade for melee
   , cwallTile     = "openableWall"
   , cstairFreq    = []
   , cstairAllowed = []
-  , cdesc         = ""
+  , cdesc         = "Mangrove trees and murky water, inspired by a habitat now eradicated from Earth."
   }
 escape = rogue  -- a scenario with weak missiles, because heroes don't depend
                 -- on them; dark, so solid obstacles are to hide from missiles,
@@ -519,7 +519,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , cescapeFreq   = [("escape outdoor down", 1)]
   , cstairFreq    = []
   , cstairAllowed = []
-  , cdesc         = ""
+  , cdesc         = "Graffiti scrawls across the walls and the heavy scents of stimulants hang in the air."
   }
 zoo = rogue  -- few lights and many solids, to help the less numerous heroes
   { csymbol       = 'Z'
@@ -547,7 +547,7 @@ zoo = rogue  -- few lights and many solids, to help the less numerous heroes
   , cwallTile     = "openableWall"
   , cstairFreq    = []
   , cstairAllowed = []
-  , cdesc         = ""
+  , cdesc         = "Leaping flames illuminate the cages; not all are empty."
   }
 ambush = rogue  -- a scenario with strong missiles;
                 -- dark, so solid obstacles are to hide from missiles,
@@ -583,7 +583,7 @@ ambush = rogue  -- a scenario with strong missiles;
   , cwallTile     = "openableWall"
   , cstairFreq    = []
   , cstairAllowed = []
-  , cdesc         = ""
+  , cdesc         = "Scarred walls and ransacked lockers show the presence of raiders."
   }
 battle = rogue  -- few lights and many solids, to help the less numerous heroes
   { csymbol       = 'B'
@@ -612,7 +612,7 @@ battle = rogue  -- few lights and many solids, to help the less numerous heroes
   , cfenceApart   = True  -- ensures no cut-off parts from collapsed
   , cstairFreq    = []
   , cstairAllowed = []
-  , cdesc         = ""
+  , cdesc         = "Huge machines stand silent and powerless in the dark."
   }
 safari1 = brawl
   { cname         = "Hunam habitat"
