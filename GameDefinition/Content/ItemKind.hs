@@ -143,7 +143,7 @@ spike2 = spike
                , SetFlag MinorEffects
                , Odds (10 * 1 `dL` 10) [] [toVelocity 70] ]
                    -- at deep levels sometimes even don't limit velocity
-  -- , idesc    = ""
+  , idesc    = "A jagged skewer of rusty metal."
   }
 slingStone = ItemKind
   { isymbol  = symbolProjectile
@@ -225,10 +225,11 @@ harpoon = ItemKind
   , ikit     = []
   }
 harpoon2 = harpoon
-  { ifreq    = [("curious item", 2), ("harpoon", 2)]
+  { iname    = "heavy harpoon"
+  , ifreq    = [("curious item", 2), ("harpoon", 2)]
   , iweight  = 1000
   , idamage  = 10 `d` 1
-  -- , idesc    = ""  -- perhaps something modern for a change? some sharpened cargo hook?
+  , idesc    = "A sharpened cargo-hook with high-tension cord."
   }
 net = ItemKind
   { isymbol  = symbolProjectile
@@ -324,7 +325,7 @@ blanket = ItemKind
                    -- not Fragile; reusable douse implement;
                    -- douses torch, lamp and lantern in one action
   , ieffects = []
-  , idesc    = ""
+  , idesc    = "Flame-retardant synthetic fibres."
   , ikit     = []
   }
 
@@ -549,7 +550,7 @@ potion2 = potionTemplate
                , toOrganGood "hasted" (20 + 1 `d` 5)
                , OnSmash (Explode "pheromone")
                , OnSmash (Explode "haste spray") ]
-  -- , idesc    = ""
+  , idesc    = "The liquid fizzes with energy."
   }
 potion3 = potionTemplate
   { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
@@ -616,7 +617,7 @@ potion8 = potionTemplate
                , toOrganGood "rose-smelling" (80 + 1 `d` 20)
                , OnSmash (Explode "healing mist 2")
                , OnSmash (Explode "distressing odor") ]
-  -- , idesc    = ""
+  , idesc    = "Perplexing swirls of intense, compelling, colour."
   }
 potion9 = potionTemplate
   { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
@@ -628,7 +629,7 @@ potion9 = potionTemplate
                    -- has to be weak, or would be too good when thrown at foes
                , OnSmash (Explode "more projecting dew")
                , OnSmash (Explode "pacified mist") ]
-  -- , idesc    = ""
+  , idesc    = "Thick, sluggish fluid with violently-bursting bubbles."
   }
 potion10 = potionTemplate
   { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
@@ -688,7 +689,7 @@ fragmentationBomb = ItemKind
   , iaspects = [SetFlag Lobable, SetFlag Fragile]
   , ieffects = [ Explode "focused fragmentation"
                , OnSmash (Explode "violent fragmentation") ]
-  , idesc    = ""
+  , idesc    = "Shards of brittle metal packed roung an explosive core."
       -- given that we now have several kinds of explosives, tell something
       -- related to 'fragmentation', e.g., mention flying metal bits
   , ikit     = []
@@ -709,7 +710,7 @@ concussionBomb = fragmentationBomb
                , toVelocity 70 ]  -- flappy and so slow
   , ieffects = [ Explode "focused concussion"
                , OnSmash (Explode "violent concussion") ]
-  , idesc    = ""
+  , idesc    = "Avoid sudden movements."
   }
 -- Not flashbang, because powerful bang without fragmentation is harder
 -- to manufacture (requires an oxidizer and steel canister with holes).
@@ -724,7 +725,7 @@ flashBomb = fragmentationBomb
   , iaspects = [ SetFlag Lobable, SetFlag Fragile
                , toVelocity 70 ]  -- bad shape for throwing
   , ieffects = [Explode "focused flash", OnSmash (Explode "violent flash")]
-  , idesc    = ""
+  , idesc    = "For dramatic entrances and urgent exits."
   }
 firecrackerBomb = fragmentationBomb
   { iname = "roll"  -- not fireworks, as they require outdoors
@@ -1069,7 +1070,7 @@ necklace2 = necklaceTemplate
                , Recharging (Explode "waste")
                , Recharging Impress
                , Recharging (DropItem 1 maxBound COrgan "condition") ]
-  -- , idesc    = ""
+  , idesc    = "A cord hung with lumps of decaying meat. It's better not to think about the source."
   }
 necklace3 = necklaceTemplate
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
@@ -1359,7 +1360,7 @@ hatUshanka = ItemKind
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- flaps and flutters
   , ieffects = [Recharging (RefillCalm 1)]
-  , idesc    = ""
+  , idesc    = "Soft and warm fur. It keeps your ears warm."
   , ikit     = []
   }
 capReinforced = ItemKind
@@ -1378,7 +1379,7 @@ capReinforced = ItemKind
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotProject ]
   , ieffects = []
-  , idesc    = ""
+  , idesc    = "A hard plastic shell that might soften a blow."
   , ikit     = []
   }
 helmArmored = ItemKind
@@ -1398,7 +1399,7 @@ helmArmored = ItemKind
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotArmorRanged ]
   , ieffects = []
-  , idesc    = ""
+  , idesc    = "Blocks out everything, including your senses."
   , ikit     = []
   }
 
@@ -1454,7 +1455,7 @@ shield2 = shield
                   -- very low base rarity
   , iweight  = 5000
   , idamage  = 8 `d` 1
-  -- , idesc    = ""  -- museum piece, a real shield with a spike
+  , idesc    = "A relic of long-past wars, heavy and with a central spike."  -- museum piece, a real shield with a spike
   }
 shield3 = shield
   { ifreq    = [("common item", 1 * 3)]  -- very low base rarity
@@ -1630,16 +1631,18 @@ halberd = ItemKind
   , ikit     = []
   }
 halberd2 = halberd
-  { ifreq    = [("common item", 3 * 2), ("starting weapon", 1)]
+  { iname    = "Pollaxe"
+  , ifreq    = [("common item", 3 * 2), ("starting weapon", 1)]
   , iweight  = 4000
   , idamage  = 18 `d` 1
-  -- , idesc    = ""
+  , idesc    = "A long-hafted axe: once used for maintenance, now turned to a bloodier purpose."
   }
 halberd3 = halberd
-  { ifreq    = [("common item", 1 * 2)]  -- compensating for low base rarity
+  { iname    = "halberd"
+  , ifreq    = [("common item", 1 * 2)]  -- compensating for low base rarity
   , iweight  = 5000
   , idamage  = 24 `d` 1
-  -- , idesc    = ""
+  , idesc    = "Violence is occasionally a regretful necessity; this finely-balanced and modernised version of an ancient weapon ensures it is a brief one."
   }
 halberdPushActor = halberd
   { iname    = "Swiss Halberd"
