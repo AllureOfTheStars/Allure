@@ -136,7 +136,8 @@ spike = ItemKind
   , ikit     = []
   }
 spike2 = spike
-  { ifreq    = [("common item", 2), ("any arrow", 1), ("weak arrow", 1)]
+  { iname    = "skewer"
+  , ifreq    = [("common item", 2), ("any arrow", 1), ("weak arrow", 1)]
   , iweight  = 150
   , idamage  = 4 `d` 1
   , iaspects = [ AddSkill SkHurtMelee $ (-10 + 1 `d` 2 + 1 `dL` 3) * 5
@@ -617,7 +618,7 @@ potion8 = potionTemplate
                , toOrganGood "rose-smelling" (80 + 1 `d` 20)
                , OnSmash (Explode "healing mist 2")
                , OnSmash (Explode "distressing odor") ]
-  , idesc    = "Perplexing swirls of intense, compelling, colour."
+  , idesc    = "Perplexing swirls of intense, compelling colour."
   }
 potion9 = potionTemplate
   { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
