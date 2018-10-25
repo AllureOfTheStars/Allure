@@ -858,6 +858,7 @@ weldedRobot = ItemKind
   , iaspects = [ SetFlag Unique
                , AddSkill SkMaxHP 200, AddSkill SkMaxCalm 100
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
+               , AddSkill SkAggression 2  -- provoke to give the blowtorch
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A well-built humanoid luggage unloading robot with a smooth satin silvery skin. Its graceful moves are stunted by a thick irregular weld fastening both its shapely legs to the floor. A whiff of smoke escapes whenever it opens its mouth in a charming toothy smile while brandishing a blowtorch in its trembling hand."
