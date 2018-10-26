@@ -427,7 +427,7 @@ hyena = ItemKind
                , ("scavenger", 20) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
-  , irarity  = [(4, 1), (10, 6)]
+  , irarity  = [(4, 1), (10, 4)]  -- gets summoned often, so low base rarity
   , iverbHit = "thud"
   , iweight  = 60000
   , idamage  = 0
@@ -468,7 +468,7 @@ alligator = ItemKind
                , ("aquatic", 70), ("aquatic animal", 70) ]  -- amphibious
   , iflavour = zipPlain [Blue]
   , icount   = 1
-  , irarity  = [(9, 0), (10, 12)]
+  , irarity  = [(9, 0), (10, 11)]  -- extra spawns in water, so lower rarity
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
@@ -739,7 +739,7 @@ huntingDrone = ItemKind
   , ifreq    = [("robot", 100), ("mobile", 100), ("mobile robot", 100)]
   , iflavour = zipPlain [Green]
   , icount   = 1
-  , irarity  = [(3, 0), (5, 2), (10, 4)]
+  , irarity  = [(4, 0), (5, 1), (10, 4)]
   , iverbHit = "clank"
   , iweight  = 500
   , idamage  = 0
@@ -783,7 +783,7 @@ wasteRobot = ItemKind
                , ("construction robot", 50) ]
   , iflavour = zipPlain [Green]
   , icount   = 1
-  , irarity  = [(1, 10), (10, 7)]
+  , irarity  = [(5, 7)]  -- gets summoned often, so low base rarity
   , iverbHit = "clank"
   , iweight  = 80000
   , idamage  = 0
