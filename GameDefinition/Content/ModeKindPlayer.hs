@@ -57,7 +57,7 @@ playerCivilian = Player
 
 playerMonster = Player
   { fname = "Alien Hierarchy"
-  , fgroups = ["monster", "mobile monster"]
+  , fgroups = ["monster", "mobile monster", "aquatic monster"]
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False
@@ -78,7 +78,8 @@ playerAntiMonster = playerMonster
 
 playerAnimal = Player
   { fname = "Animal Kingdom"
-  , fgroups = ["animal", "mobile animal", "immobile animal", "scavenger"]
+  , fgroups = [ "animal", "mobile animal", "immobile animal", "aquatic animal"
+              , "scavenger" ]
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False
@@ -167,7 +168,8 @@ hiEscapist = ( [(HiLoot, 200)]  -- loot matters a little bit
 
 playerRobot = Player
   { fname = "Robot Anarchy"
-  , fgroups = ["robot", "mobile robot", "immobile robot", "construction robot"]
+  , fgroups = [ "robot", "mobile robot", "immobile robot" --, "aquatic robot"
+              , "construction robot" ]
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False
