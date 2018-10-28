@@ -1635,17 +1635,10 @@ halberd = ItemKind
   }
 halberd2 = halberd
   { iname    = "Pollaxe"
-  , ifreq    = [("common item", 3 * 2), ("starting weapon", 1)]
+  , ifreq    = [("common item", 3 * 3), ("starting weapon", 1)]
   , iweight  = 4000
   , idamage  = 18 `d` 1
   , idesc    = "A long-hafted axe: once used for maintenance, now turned to a bloodier purpose."
-  }
-halberd3 = halberd
-  { iname    = "halberd"
-  , ifreq    = [("common item", 1 * 2)]  -- compensating for low base rarity
-  , iweight  = 5000
-  , idamage  = 24 `d` 1
-  , idesc    = "Violence is occasionally a regretful necessity; this finely-balanced and modernised version of an ancient weapon ensures it is a brief one."
   }
 halberdPushActor = halberd
   { iname    = "Swiss Halberd"
