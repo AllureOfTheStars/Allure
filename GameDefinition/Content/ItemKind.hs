@@ -18,12 +18,14 @@ import Content.ItemKindBlast
 import Content.ItemKindEmbed
 import Content.ItemKindOrgan
 import Content.ItemKindTemporary
+import Content.RuleKind
 import Game.LambdaHack.Common.Ability
 import Game.LambdaHack.Common.Color
 import Game.LambdaHack.Common.Dice
 import Game.LambdaHack.Common.Flavour
 import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.ItemKind
+import Game.LambdaHack.Content.RuleKind
 
 content :: [ItemKind]
 content = items ++ otherItemContent
@@ -57,7 +59,7 @@ needle, constructionHooter, scrollAd1, blowtorch :: ItemKind
 
 symbolProjectile, _symbolLauncher, symbolLight, symbolTool, symbolSpecial, symbolGold, symbolNecklace, symbolRing, symbolPotion, symbolFlask, symbolScroll, symbolTorsoArmor, symbolMiscArmor, _symbolClothes, symbolShield, symbolPolearm, symbolEdged, symbolHafted, symbolWand, _symbolStaff, symbolFood :: Char
 
-symbolProjectile = '{'
+symbolProjectile = rsymbolProjectile standardRules  -- '{'
 _symbolLauncher  = '}'
 symbolLight      = '('
 symbolTool       = ')'

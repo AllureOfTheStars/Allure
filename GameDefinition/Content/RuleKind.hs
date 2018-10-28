@@ -46,4 +46,5 @@ standardRules = RuleContent
   , rscoresFile = "Allure.scores"
   , rnearby = 20
   , rstairWordCarried = ["staircase", "lift"]
+  , rsymbolProjectile = '{'
   }
