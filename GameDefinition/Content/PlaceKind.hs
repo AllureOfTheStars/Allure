@@ -137,7 +137,7 @@ glasshouse4 = glasshouse
   }
 pulpit = PlaceKind
   { psymbol  = 'p'
-  , pname    = "a stand"
+  , pname    = "a stand podium"
   , pfreq    = [("arena", 15), ("museum", 20), ("zoo", 80)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
@@ -373,7 +373,7 @@ colonnade10 = colonnade7
   }
 lampPost = PlaceKind
   { psymbol  = 'l'
-  , pname    = "a lamp post"
+  , pname    = "a lamp-lit area"
   , pfreq    = [ ("escape", 200), ("zoo", 100), ("ambush", 1000)
                , ("battle", 100) ]
   , prarity  = [(1, 1)]
