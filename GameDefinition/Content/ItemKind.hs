@@ -1800,7 +1800,8 @@ scrollAd1 = scrollTemplate
   }
 blowtorch = ItemKind
   { isymbol  = symbolLight
-  , iname    = "blowtorch"  -- not unique, but never generated on the floor
+  , iname    = "blowtorch"  -- not unique, but generated on the floor only
+                            -- in the rare caves with "valuable" items
   , ifreq    = [("blowtorch", 1), ("valuable", 20)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
