@@ -303,10 +303,8 @@ exit = empty
   , cfenceTileW   = "habitat containment wall"
   , cescapeFreq   = [("escape spaceship down", 1)]
   , cstairFreq    = [ ("gated walled staircase", 20)
-                    , ("gated closed staircase", 80)
                     , ("gated tiny staircase", 1) ]
   , cstairAllowed = [ ("gated walled lift", 20)
-                    , ("gated closed lift", 80)
                     , ("gated tiny lift", 1) ]
   , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among cranes and welding machines. Distant engines can be seen to the rear of the spaceship through oriels and airlocks of all sizes."
       -- E and W sides are borders with other level sections, so no oriels.
