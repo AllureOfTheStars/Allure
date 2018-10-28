@@ -102,7 +102,7 @@ treasureCache = ItemKind
   , idamage  = 0
   , iaspects = [SetFlag Durable]
   , ieffects = [CreateItem CGround "common item" timerNone]
-  , idesc    = "If this stash is hidden, it's in plain sight. Or, more probably, it's just tucked aside so that it doesn't get lost. There are clear signs that many artisans shaped and reshaped these halls over the yeats. They needed to store their tools and personal belongings between shifts and, apparently, not in every case were able to return and retrive them."
+  , idesc    = "If this stash is hidden, it's in plain sight. Or, more probably, it's just tucked aside so that it doesn't get in the way. Whomever worked there, apparently failed to return and retrieve his belongings."
   , ikit     = []
   }
 treasureCacheTrap = ItemKind
@@ -120,7 +120,7 @@ treasureCacheTrap = ItemKind
                       , RefillCalm (-99)
                       , Explode "focused concussion"
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1) ]]
-  , idesc    = "You didn't think such kingly trinkets are on display without any protection, did you? Especially that some of the goods let you fry video monitoring equipment at the other side of the hall."
+  , idesc    = "You didn't think such kingly trinkets are on display without any protection, did you? Especially for merchandise that is able to instantly fry video monitoring equipment at the other side of the hall."
   , ikit     = []
   }
 signboardExit = ItemKind
@@ -267,7 +267,7 @@ escape = stairsUp
   , ifreq    = [("escape", 1)]
   , iflavour = zipPlain [BrYellow]
   , ieffects = [Escape]
-  , idesc    = ""  -- generic: moon outdoors, in spaceship, everywhere
+  , idesc    = ""  -- generic escape, so the text should be too; in moon outdoors, in spaceship, everywhere
   }
 staircaseTrapUp = ItemKind
   { isymbol  = '^'
@@ -375,7 +375,7 @@ blackStarrySky = ItemKind
   , iaspects = [SetFlag Durable]
   , ieffects = [ Temporary "look into the void and it looks back"
                , OneOf [RefillCalm 5, RefillCalm (-5)] ]
-  , idesc    = "Occasionally a planet zips by, but is unable to disperse the blackness. The black starscape is constantly rotating. The frantic dance is silent, muted, indifferent. There is not even a hint of vibration, just the sense of heaviness and dizziness."  -- appears only on 100% flavour tiles, useless and trivial to notice, so the writeup can be longer
+  , idesc    = "Occasionally a planet zips by, but is unable to disperse the blackness. The black starscape is constantly rotating. The frantic dance is silent, muted, indifferent. There is not even a hint of vibration, just the sense of heaviness and dizziness."  -- appears only on 100% flavour tiles, useless and trivial to notice, so the writeup can be longer; who am I kidding, I can hardly write condensed prose
   , ikit     = []
   }
 disengagedDocking = ItemKind
@@ -390,7 +390,7 @@ disengagedDocking = ItemKind
   , idamage  = 0
   , iaspects = [SetFlag Durable]
   , ieffects = [RefillCalm (-10)]
-  , idesc    = "Unfortunately this airlock is disengaged. Many small craft were originally docked with such sockets and clamps as these, but just after the spaceship commenced spontanously leaving its Triton orbit, a lot of them has been spotted jettisoned and drifting astern. What a waste."
+  , idesc    = "Unfortunately this airlock is disengaged. Many fine small craft were originally docked with such sockets and clamps as these, but just after the spaceship spontanously commenced leaving its Triton orbit, a lot of them has been spotted jettisoned and drifting astern. What a waste."
   , ikit     = []
   }
 ruinedFirstAidKit = ItemKind
@@ -409,7 +409,7 @@ ruinedFirstAidKit = ItemKind
                        , toOrganNoTimer "slow resistant"
                        , toOrganGood "drunk" (20 + 1 `d` 5) ]
                , CreateItem CInv "needle" timerNone ]
-  , idesc    = ""  -- regulations require; say HP not regenerated; how to regain
+  , idesc    = ""  -- regulations require; say HP not regenerated in the game; mention how to regain HP
   , ikit     = []
   }
 wall3dBillboard = ItemKind
@@ -478,7 +478,7 @@ shuttleHardware = ItemKind
   , idamage  = 0
   , iaspects = [SetFlag Durable]
   , ieffects = []
-  , idesc    = "While the hull of the spacecraft is intact, the flight hardware that normally lines the walls seems broken, worn out and often missing. This shuttle was probably scavenged for spare parts to repair other craft and it's unlikely that anything of use remains. This was a tiny shuttle to being with, designed for lunar and orbital courier duties and single family trips. The kind is relatively cheap to operate, because no permanent airlock needs to be leased. Instead, the craft can be brought through a large airlock into the mothership and stored and serviced inside. The design is compact, efficient and space-worthy, but even if repaired, the craft doesn't have enough fuel capacity for an inter-planetary flight."
+  , idesc    = "While the hull of the spacecraft is intact, the flight hardware that normally lines the walls seems broken, worn out and often missing. This shuttle was probably scavenged for spare parts to repair other craft and it's unlikely that anything of use remains. This was the common tiny kind to being with, designed for lunar and orbital courier duties and single family trips. The kind is relatively cheap to operate, because no permanent airlock needs to be leased. Instead, the craft is brought through a large airlock to a drydock and serviced and even stored inside."
   , ikit     = []
   }
 machineOil = ItemKind
@@ -496,7 +496,7 @@ machineOil = ItemKind
                   -- the high speed represents gliding rather than flying
                   -- and so no need to lift actor's weight off the ground;
                   -- low linger comes from abrupt halt over normal surface
-  , idesc    = "Slippery run out, probably from a life support equipment or vehicle engine. Surprisingly uncommon given so many years of neglect."
+  , idesc    = "Slippery run out, probably from a life support equipment or vehicle engine."
   , ikit     = []
   }
 crudeWeld = ItemKind  -- this is also an organ

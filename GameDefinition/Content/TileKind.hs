@@ -670,7 +670,7 @@ pillarCache2 = pillarCache
 pillarCache3 = pillarCache
   { tname    = "jewelry display"
   , tfreq    = [ ("cachable jewelry", 20), ("cache jewelry", 25)
-               , ("museumSetDark", 1), ("escapeSetDark", 1) ]
+               , ("museumSetDark", 1) ]
   , tfeature = [ Embed "jewelry case", Embed "jewelry display trap"
                , ChangeTo "cachable jewelry", ConsideredByAI ]
   }
