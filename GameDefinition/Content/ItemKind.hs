@@ -81,7 +81,9 @@ symbolWand       = '-'  -- magical rod, transmitter, pistol, rifle, instrument
 _symbolStaff     = '_'  -- scanner
 symbolFood       = ','  -- also body part; distinct from floor: not middle dot
 
--- * Thrown weapons
+-- * Generic items, for any epoch (some may be removed for Allure)
+
+-- ** Thrown weapons
 
 sandstoneRock = ItemKind
   { isymbol  = symbolProjectile
@@ -185,7 +187,7 @@ slingBullet = ItemKind
   , ikit     = []
   }
 
--- * Exotic thrown weapons
+-- ** Exotic thrown weapons
 
 -- Identified, because shape (and name) says it all. Detailed aspects id by use.
 -- This is an extremely large value for @Paralyze@. Normally for such values
@@ -247,13 +249,14 @@ net = ItemKind
   , iaspects = [AddSkill SkHurtMelee $ -14 * 5]
   , ieffects = [ toOrganBad "slowed" (3 + 1 `d` 3)
                , DropItem maxBound 1 CEqp "torso armor"
+                   -- only one of each kind is dropped, because no rubbish
+                   -- in this group and so no risk of exploit
                , SendFlying (ThrowMod 100 50 1) ]  -- 1 step; painful
-      -- only one of each kind is dropped, because no rubbish in this group
   , idesc    = "A large synthetic fibre net with weights affixed along the edges. Entangles armor and restricts movement."
   , ikit     = []
   }
 
--- * Lights
+-- ** Lights
 
 light1 = ItemKind
   { isymbol  = symbolLight
@@ -326,13 +329,14 @@ blanket = ItemKind
                , AddSkill SkArmorMelee 1, AddSkill SkMaxCalm 2
                , SetFlag Lobable, SetFlag Equipable ]
                    -- not Fragile; reusable douse implement;
-                   -- douses torch, lamp and lantern in one action
+                   -- douses torch, lamp and lantern in one action,
+                   -- both in equipment and when thrown at the floor
   , ieffects = []
   , idesc    = "Flame-retardant synthetic fibres."
   , ikit     = []
   }
 
--- * Exploding consumables, often intended to be thrown.
+-- ** Exploding consumables, often intended to be thrown.
 
 -- Not identified, because they are perfect for the id-by-use fun,
 -- due to effects. They are fragile and upon hitting the ground explode
@@ -673,7 +677,7 @@ potion12 = potionTemplate
                , OnSmash (Explode "immobile mist") ]
   }
 
--- * Explosives, with the only effect being @Explode@
+-- ** Explosives, with the only effect being @Explode@
 
 fragmentationBomb = ItemKind
   { isymbol  = symbolProjectile
@@ -692,7 +696,7 @@ fragmentationBomb = ItemKind
   , iaspects = [SetFlag Lobable, SetFlag Fragile]
   , ieffects = [ Explode "focused fragmentation"
                , OnSmash (Explode "violent fragmentation") ]
-  , idesc    = "Shards of brittle metal packed roung an explosive core."
+  , idesc    = "Shards of brittle metal packed around an explosive core."
       -- given that we now have several kinds of explosives, tell something
       -- related to 'fragmentation', e.g., mention flying metal bits
   , ikit     = []
@@ -742,7 +746,7 @@ firecrackerBomb = fragmentationBomb
   , idesc = "String and paper, concealing a deadly surprise."
   }
 
--- * Non-exploding consumables, not specifically designed for throwing
+-- ** Non-exploding consumables, not specifically designed for throwing
 
 -- Foods require only minimal apply skill to consume. Many animals can eat them.
 
@@ -759,7 +763,7 @@ ediblePlantTemplate = ItemKind
   , iaspects = [ HideAs "edible plant unknown"
                , toVelocity 30 ]  -- low density, often falling apart
   , ieffects = []
-  , idesc    = "Withered but fragrant bits of a colorful plant. Taste tolerably and break down easily, but only eating reveals the full effects."
+  , idesc    = "Withered but fragrant bits of a colorful plant. Taste tolerably and break down easily, but only eating may reveal the full effects."
   , ikit     = []
   }
 ediblePlant1 = ediblePlantTemplate
@@ -935,7 +939,7 @@ scroll17 = scrollTemplate
   , ieffects = [RerollItem]
   }
 
--- * Assorted tools
+-- ** Assorted tools
 
 jumpingPole = ItemKind
   { isymbol  = symbolWand
@@ -1011,7 +1015,7 @@ motionScanner = ItemKind
   , ikit     = []
   }
 
--- * Periodic jewelry
+-- ** Periodic jewelry
 
 -- Morally these are the aspects, but we also need to add a fake @Timeout@,
 -- to let clients know that the not identified item is periodic jewelry.
@@ -1133,7 +1137,7 @@ necklace9 = necklaceTemplate
   , ieffects = [Recharging $ Explode "fragrance"]
   }
 
--- * Non-periodic jewelry
+-- ** Non-periodic jewelry
 
 imageItensifier = ItemKind
   { isymbol  = symbolRing
@@ -1261,7 +1265,7 @@ ring8 = ringTemplate
   , ieffects = [OnSmash (Explode "distortion")]  -- high power
   }
 
--- * Armor
+-- ** Armor
 
 armorLeather = ItemKind
   { isymbol  = symbolTorsoArmor
@@ -1406,7 +1410,7 @@ helmArmored = ItemKind
   , ikit     = []
   }
 
--- * Shields
+-- ** Shields
 
 -- Shield doesn't protect against ranged attacks to prevent
 -- micromanagement: walking with shield, melee without.
@@ -1458,7 +1462,7 @@ shield2 = shield
                   -- very low base rarity
   , iweight  = 5000
   , idamage  = 8 `d` 1
-  , idesc    = "A relic of long-past wars, heavy and with a central spike."  -- museum piece, a real shield with a spike
+  , idesc    = "A relic of long-past wars, heavy and with a central spike."
   }
 shield3 = shield
   { ifreq    = [("common item", 1 * 3)]  -- very low base rarity
@@ -1467,7 +1471,7 @@ shield3 = shield
   -- , idesc    = ""
   }
 
--- * Weapons
+-- ** Weapons
 
 dagger = ItemKind
   { isymbol  = symbolEdged
@@ -1652,7 +1656,7 @@ halberdPushActor = halberd
   , idesc    = "A perfect replica made for a reenactor troupe, hardened, missing only some final sharpening. Versatile, with great reach and leverage. Foes are held at a distance."
   }
 
--- * Wands
+-- ** Wands
 
 wandTemplate = ItemKind
   { isymbol  = symbolWand
@@ -1678,7 +1682,7 @@ wand1 = wandTemplate
   , ieffects = []  -- will be: emit a cone of sound shrapnel that makes enemy cover his ears and so drop '|' and '{'
   }
 
--- * Treasure
+-- ** Treasure
 
 gemTemplate = ItemKind
   { isymbol  = symbolGold
@@ -1754,7 +1758,7 @@ currency = currencyTemplate
   , ieffects = [RefillCalm (-1)]
   }
 
--- * Allure-specific
+-- * Allure-specific items
 
 needle = ItemKind
   { isymbol  = symbolProjectile
