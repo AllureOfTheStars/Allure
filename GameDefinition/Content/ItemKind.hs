@@ -546,11 +546,10 @@ potion1 = potionTemplate
                , OnSmash ApplyPerfume, OnSmash (Explode "fragrance") ]
   }
 potion2 = potionTemplate
-  { iname    = "Potion of Attraction"
-  , ifreq    = [("curious item", 100)]
+  { ifreq    = [("curious item", 100)]
   , icount   = 1
   , irarity  = [(5, 8), (10, 8)]
-  , iaspects = [ SetFlag Unique
+  , iaspects = [ SetFlag Unique, ELabel "of Attraction"
                , SetFlag Lobable, SetFlag Fragile  -- identified
                , toVelocity 50 ]
   , ieffects = [ Dominate
@@ -613,11 +612,10 @@ potion7 = potionTemplate
       -- not fragmentation nor glass hail, because not enough glass
   }
 potion8 = potionTemplate
-  { iname    = "Potion of Love"
-  , ifreq    = [("curious item", 100)]
+  { ifreq    = [("curious item", 100)]
   , icount   = 1
   , irarity  = [(10, 5)]
-  , iaspects = [ SetFlag Unique
+  , iaspects = [ SetFlag Unique, ELabel "of Love"
                , SetFlag Lobable, SetFlag Fragile  -- identified
                , toVelocity 50 ]
   , ieffects = [ RefillHP 60, RefillCalm (-60)
