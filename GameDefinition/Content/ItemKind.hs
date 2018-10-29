@@ -631,7 +631,8 @@ potion9 = potionTemplate
                : iaspects potionTemplate
   , ieffects = [ toOrganGood "more projecting" (40 + 1 `d` 10)
                , toOrganBad "pacified" (5 + 1 `d` 3)
-                   -- has to be weak, or would be too good when thrown at foes
+                   -- the malus has to be weak, or would be too good
+                   -- when thrown at foes
                , OnSmash (Explode "more projecting dew")
                , OnSmash (Explode "pacified mist") ]
   , idesc    = "Thick, sluggish fluid with violently-bursting bubbles."
@@ -695,8 +696,6 @@ fragmentationBomb = ItemKind
   , ieffects = [ Explode "focused fragmentation"
                , OnSmash (Explode "violent fragmentation") ]
   , idesc    = "Shards of brittle metal packed around an explosive core."
-      -- given that we now have several kinds of explosives, tell something
-      -- related to 'fragmentation', e.g., mention flying metal bits
   , ikit     = []
   }
 concussionBomb = fragmentationBomb
@@ -741,7 +740,7 @@ firecrackerBomb = fragmentationBomb
   , idamage  = 0
   , iaspects = [SetFlag Lobable, SetFlag Fragile]
   , ieffects = [Explode "firecracker", OnSmash (Explode "firecracker")]
-  , idesc = "String and paper, concealing a deadly surprise."
+  , idesc    = "String and paper, concealing a deadly surprise."
   }
 
 -- ** Non-exploding consumables, not specifically designed for throwing
@@ -1025,7 +1024,7 @@ iaspects_necklaceTemplate =
 gorget = necklaceTemplate
   { iname    = "Old Gorget"
   , ifreq    = [("common item", 25), ("treasure", 25), ("museum", 100)]
-  , iflavour = zipFancy [BrCyan]  -- looks exactly the same as on of necklaces,
+  , iflavour = zipFancy [BrCyan]  -- looks exactly the same as one of necklaces,
                                   -- but it's OK, it's an artifact
   , irarity  = [(4, 3), (10, 3)]  -- weak, shallow
   , iaspects = [ SetFlag Unique
@@ -1080,7 +1079,7 @@ necklace2 = necklaceTemplate
 necklace3 = necklaceTemplate
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
   , iaspects = [ ELabel "of fearful listening"
-               , Timeout $ (1 `d` 2) * 20
+               , Timeout ((1 `d` 2) * 20)
                , AddSkill SkHearing 2 ]
                ++ iaspects_necklaceTemplate
   , ieffects = [ Recharging (Detect DetectActor 10)
@@ -1101,6 +1100,7 @@ necklace5 = necklaceTemplate
   , ieffects = [ Recharging (Teleport $ 14 + 3 `d` 3)
                , Recharging (Detect DetectExit 20)
                , Recharging Yell ]  -- prevent micromanagement
+  , idesc    = "A supple chain that slips through your fingers."
   }
 necklace6 = necklaceTemplate
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
@@ -1462,11 +1462,11 @@ shield2 = shield
   , idamage  = 8 `d` 1
   , idesc    = "A relic of long-past wars, heavy and with a central spike."
   }
-shield3 = shield
-  { ifreq    = [("common item", 1 * 3)]  -- very low base rarity
+shield3 = shield2
+  { ifreq    = [("common item", 1 * 3), ("museum", 10)]
+                  -- very low base rarity
   , iweight  = 6000
   , idamage  = 12 `d` 1
-  -- , idesc    = ""
   }
 
 -- ** Weapons
