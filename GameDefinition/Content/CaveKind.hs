@@ -244,8 +244,8 @@ power = noise
   , cnightOdds    = 51  -- easier variant, but looks sinister
   , cextraStairs  = 2
   , citemNum      = 10 `d` 4  -- an incentive to explore the final labyrinth
-  , citemFreq     = [ ("common item", 20), ("valuable", 80)
-                    , ("curious item", 20) ]
+  , citemFreq     = [ ("common item", 20), ("gem", 80), ("curious item", 20) ]
+                      -- can't be "valuable" or template items generated
   , cdefTile      = "powerSetDark"
   , cdarkCorTile  = "oily floor Dark"
   , clitCorTile   = "oily floor Lit"
