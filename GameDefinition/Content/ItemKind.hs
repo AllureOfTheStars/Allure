@@ -143,7 +143,6 @@ spike2 = spike
   { iname    = "skewer"
   , ifreq    = [("common item", 2), ("any arrow", 1), ("weak arrow", 1)]
   , iweight  = 150
-  , idamage  = 4 `d` 1
   , iaspects = [ AddSkill SkHurtMelee $ (-10 + 1 `d` 2 + 1 `dL` 3) * 5
                , SetFlag MinorEffects
                , Odds (10 * 1 `dL` 10) [] [toVelocity 70] ]
@@ -232,6 +231,7 @@ harpoon = ItemKind
 harpoon2 = harpoon
   { iname    = "heavy harpoon"
   , ifreq    = [("curious item", 2), ("harpoon", 2)]
+  , icount   = 2 `dL` 5
   , iweight  = 1000
   , idamage  = 10 `d` 1
   , idesc    = "A sharpened cargo-hook with high-tension cord."
