@@ -265,6 +265,7 @@ escape = stairsUp
   , iname    = "way"
   , ifreq    = [("escape", 1)]
   , iflavour = zipPlain [BrYellow]
+  , iaspects = [SetFlag Durable]
   , ieffects = [Escape]
   , idesc    = ""  -- generic escape, so the text should be too; in moon outdoors, in spaceship, everywhere
   }
@@ -432,23 +433,27 @@ wall3dBillboard = ItemKind
 depositBox = treasureCache
   { iname    = "intact deposit box"
   , ifreq    = [("deposit box", 1)]
+  , iaspects = [SetFlag Durable]
   , ieffects = [CreateItem CGround "valuable" timerNone]
   , idesc    = "The reports of intact deposit boxes in the ship's safes have been greatly exaggerated, but there are still a few with glittering gems and gold, just waiting to be taken. Whomever looted these halls wasn't thorough or, judging from the damage to some of the boxes, was in a hurry."
   }
 jewelryCase = treasureCache
   { iname    = "jewelry case"
   , ifreq    = [("jewelry case", 1)]
+  , iaspects = [SetFlag Durable]
   , ieffects = [CreateItem CGround "any jewelry" timerNone]
   , idesc    = "The customers of these shops must have been extremely well off, judging from abundance and quality of the jewelry, often extremely valuable in each of the artistic, material and nanotechnology aspects. Outer Solar System trips are expensive, but even more importantly, they offer unique trade and investment opportunities, often of the kind that can't be negotiated outside a fully electronically isolated room screened by both parties. Some of the jewelry are precisely portable versions of such screening hardware --- in a breathtaking package, no less."
   }
 liftUp = stairsUp
   { iname    = "carriage"
   , ifreq    = [("lift up", 1)]
+  , iaspects = [SetFlag Durable]
   , idesc    = ""  -- describe inner levels of the ship
   }
 liftDown = stairsDown
   { iname    = "carriage"
   , ifreq    = [("lift down", 1)]
+  , iaspects = [SetFlag Durable]
   , idesc    = ""  -- describe outer levels of the ship
   }
 liftTrap = staircaseTrapUp
