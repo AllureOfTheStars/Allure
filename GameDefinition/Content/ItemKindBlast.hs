@@ -408,7 +408,7 @@ distortion = ItemKind
   }
 smoke = ItemKind  -- when stuff burns out  -- unused
   { isymbol  = '`'
-  , iname    = "smoke"
+  , iname    = "smoke fume"  -- pluralizes better than 'smokes'
   , ifreq    = [("smoke", 1)]
   , iflavour = zipPlain [BrBlack]
   , icount   = 16
@@ -457,7 +457,7 @@ glue = ItemKind
   }
 waste = ItemKind
   { isymbol  = '*'
-  , iname    = "waste"
+  , iname    = "waste piece"
   , ifreq    = [("waste", 1)]
   , iflavour = zipPlain [Brown]
   , icount   = 16
