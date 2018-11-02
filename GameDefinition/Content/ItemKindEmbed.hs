@@ -92,7 +92,7 @@ subtleFresco = ItemKind
   }
 treasureCache = ItemKind
   { isymbol  = 'O'
-  , iname    = "set of odds and ends"
+  , iname    = "set"
   , ifreq    = [("abandoned cache", 1)]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
@@ -100,7 +100,7 @@ treasureCache = ItemKind
   , iverbHit = "crash"
   , iweight  = 10000
   , idamage  = 0
-  , iaspects = [SetFlag Durable]
+  , iaspects = [ELabel "of odds and ends", SetFlag Durable]
   , ieffects = [CreateItem CGround "common item" timerNone]
   , idesc    = "If this stash is hidden, it's in plain sight. Or, more probably, it's just tucked aside so that it doesn't get in the way. Whomever worked there, apparently failed to return and retrieve his belongings."
   , ikit     = []
@@ -240,7 +240,7 @@ doorwayTrap3 = doorwayTrapTemplate
   }
 stairsUp = ItemKind
   { isymbol  = '<'
-  , iname    = "flight of steps"
+  , iname    = "flight"
   , ifreq    = [("staircase up", 1)]
   , iflavour = zipPlain [BrWhite]
   , icount   = 1
@@ -249,14 +249,13 @@ stairsUp = ItemKind
                         -- not when it's applied otherwise, e.g., from tile
   , iweight  = 100000
   , idamage  = 0
-  , iaspects = [SetFlag Durable]
+  , iaspects = [ELabel "of steps", SetFlag Durable]
   , ieffects = [Ascend True]
   , idesc    = "Stairs that rise towards the spaceship core."
   , ikit     = []
   }
 stairsDown = stairsUp
   { isymbol  = '>'
-  , iname    = "flight of steps"
   , ifreq    = [("staircase down", 1)]
   , ieffects = [Ascend False]
   , idesc    = "Stairs that descend towards the outer ring."
@@ -346,7 +345,7 @@ straightPath = ItemKind
   }
 frozenGround = ItemKind
   { isymbol  = '.'
-  , iname    = "shade of ice"
+  , iname    = "shade"
   , ifreq    = [("frozen ground", 1)]
   , iflavour = zipFancy [BrBlue]
   , icount   = 50  -- very thick ice and refreezes
@@ -354,7 +353,8 @@ frozenGround = ItemKind
   , iverbHit = "betray"
   , iweight  = 10000
   , idamage  = 0
-  , iaspects = []  -- no Durable or some items would be impossible to pick up
+  , iaspects = [ELabel "of ice"]
+                 -- no Durable or some items would be impossible to pick up
   , ieffects = [PushActor (ThrowMod 400 10 1)]
   , idesc    = ""
   , ikit     = []

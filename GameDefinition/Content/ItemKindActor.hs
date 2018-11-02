@@ -258,7 +258,7 @@ elbow = ItemKind
   }
 torsor = ItemKind
   { isymbol  = 'M'
-  , iname    = "Maker of Contact"
+  , iname    = "Maker"
   , ifreq    = [("monster", 100), ("mobile", 1)]
   , iflavour = zipFancy [BrCyan]
   , icount   = 1
@@ -266,7 +266,7 @@ torsor = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ SetFlag Unique
+  , iaspects = [ SetFlag Unique, ELabel "of Contact"
                , AddSkill SkMaxHP 300, AddSkill SkMaxCalm 100
                , AddSkill SkSpeed 6, AddSkill SkNocto 2
                , AddSkill SkAggression 3
