@@ -109,7 +109,7 @@ arena = rogue
                     , ("aquatic", 10) ]
   , citemNum      = 7 `d` 3  -- few rooms
   , citemFreq     = [ ("common item", 20), ("treasure", 40), ("any scroll", 40)
-                    , ("explosive", 40), ("curious item", 10) ]
+                    , ("explosive", 40), ("curious item", 20) ]
   , cplaceFreq    = [("arena", 1)]
   , cpassable     = True
   , cdefTile      = "arenaSetLit"
@@ -136,7 +136,7 @@ casino = arena
   , citemNum      = 7 `d` 3  -- rare, so make it exciting, by keeping items
   , citemFreq     = [ ("common item", 20)
                     , ("treasure", 80)  -- lives up to the name
-                    , ("curious item", 20) ]
+                    , ("curious item", 40) ]
   , cdefTile      = "arenaSetDark"
   , cfenceTileN   = "habitat containment wall"  -- small cave
   , cfenceTileE   = "habitat containment wall"
@@ -158,7 +158,7 @@ museum = arena
   , citemNum      = 7 `d` 4  -- rare, so make it exciting
   , citemFreq     = [ ("common item", 20)
                     , ("treasure", 40)
-                    , ("curious item", 20)
+                    , ("curious item", 40)
                     , ("museum", 100) ]  -- lives up to the name
   , cplaceFreq    = [("museum", 1)]
   , cdefTile      = "museumSetDark"
@@ -188,7 +188,7 @@ laboratory = rogue
                     , ("aquatic", 10) ]
   , citemNum      = 7 `d` 5  -- reward difficulty
   , citemFreq     = [ ("common item", 20), ("treasure", 40), ("potion", 40)
-                    , ("curious item", 20) ]
+                    , ("curious item", 40) ]
   , cplaceFreq    = [("laboratory", 1)]
   , cdarkCorTile  = "labTrailLit"  -- let lab smoke give off light always
   , clitCorTile   = "labTrailLit"
@@ -219,9 +219,9 @@ noise = rogue
   , chidden       = 0
   , cactorCoeff   = 80  -- the maze requires time to explore; also, small
   , cactorFreq    = [("monster", 80), ("animal", 10), ("robot", 10)]
-  , citemNum      = 6 `d` 5  -- an incentive to explore the labyrinth
+  , citemNum      = 8 `d` 5  -- an incentive to explore the labyrinth
   , citemFreq     = [ ("common item", 20), ("treasure", 60), ("explosive", 20)
-                    , ("curious item", 20) ]
+                    , ("curious item", 30) ]
   , cpassable     = True
   , labyrinth     = True
   , cplaceFreq    = [("noise", 1)]
@@ -243,8 +243,8 @@ power = noise
   , cYminSize     = 42
   , cnightOdds    = 51  -- easier variant, but looks sinister
   , cextraStairs  = 2
-  , citemNum      = 10 `d` 4  -- an incentive to explore the final labyrinth
-  , citemFreq     = [ ("common item", 20), ("gem", 80), ("curious item", 20) ]
+  , citemNum      = 8 `d` 5  -- an incentive to explore the final labyrinth
+  , citemFreq     = [ ("common item", 20), ("gem", 80), ("curious item", 30) ]
                       -- can't be "valuable" or template items generated
   , cdefTile      = "powerSetDark"
   , cdarkCorTile  = "oily floor Dark"
