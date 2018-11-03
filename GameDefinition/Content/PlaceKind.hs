@@ -125,7 +125,7 @@ glasshouse = PlaceKind
   }
 glasshouse2 = glasshouse
   { pname    = "a glass cage"
-  , pfreq    = [("zoo", 30)]
+  , pfreq    = [("laboratory", 2), ("zoo", 30)]
   }
 glasshouse3 = glasshouse
   { pname    = "an entertainment center"
@@ -133,7 +133,7 @@ glasshouse3 = glasshouse
   }
 glasshouse4 = glasshouse
   { pname    = "an exhibition area"
-  , pfreq    = [("arena", 1), ("museum", 1), ("laboratory", 1)]
+  , pfreq    = [("arena", 1), ("museum", 1)]
   }
 pulpit = PlaceKind
   { psymbol  = 'p'
@@ -221,7 +221,7 @@ collapsed7 = collapsed
 pillar = PlaceKind
   { psymbol  = 'p'
   , pname    = "a market"
-  , pfreq    = [("rogue", 250), ("arena", 10000), ("empty", 350)]
+  , pfreq    = [("rogue", 300), ("arena", 10000), ("empty", 400)]
   , prarity  = [(1, 1)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -236,7 +236,7 @@ pillar = PlaceKind
   }
 pillar2 = pillar
   { pname    = "a mall"
-  , pfreq    = [("rogue", 7500), ("arena", 75000), ("empty", 3000)]
+  , pfreq    = [("rogue", 10000), ("arena", 100000), ("empty", 5000)]
   , ptopLeft = [ "O····"
                , "·····"
                , "·····"
@@ -257,8 +257,8 @@ pillar3 = pillar
   }
 pillar4 = pillar
   { pname    = "a plaza"
-  , pfreq    = [ ("rogue", 1500), ("arena", 5000), ("museum", 5000)
-               , ("laboratory", 1500) ]
+  , pfreq    = [ ("rogue", 1500), ("arena", 5000)
+               , ("museum", 4000), ("laboratory", 1500) ]
   , ptopLeft = [ "#·#·"
                , "····"
                , "#···"
@@ -281,8 +281,8 @@ pillar5 = pillar
   }
 pillar6 = pillar
   { pname    = "a jewelry store"
-  , pfreq    = [ ("rogue", 1200), ("arena", 6000), ("museum", 6000)
-               , ("empty", 450) ]
+  , pfreq    = [ ("rogue", 1200), ("arena", 6000)
+               , ("museum", 7000), ("empty", 500) ]
   , ptopLeft = [ "Of··"
                , "ff%·"
                , "·%&·"
@@ -1276,7 +1276,7 @@ cells4 = cells
   }
 cells5 = cells  -- this one is distinct enough from others, so needs a boost
   { pname    = "broken robot holds"
-  , pfreq    = [ ("rogue", 15), ("laboratory", 10)
+  , pfreq    = [ ("rogue", 20), ("laboratory", 15)
                , ("empty", 80), ("exit", 90), ("noise", 150) ]
   , ptopLeft = [ "··#"
                , "··#"
@@ -1285,7 +1285,7 @@ cells5 = cells  -- this one is distinct enough from others, so needs a boost
   }
 cells6 = cells
   { pname    = "animal holding pens"
-  , pfreq    = [ ("arena", 1), ("laboratory", 5), ("zoo", 80)]
+  , pfreq    = [ ("arena", 2), ("laboratory", 8), ("zoo", 80)]
   , ptopLeft = [ "··#"
                , "##'"
                ]
