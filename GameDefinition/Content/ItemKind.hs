@@ -231,7 +231,7 @@ harpoon = ItemKind
   }
 harpoon2 = harpoon
   { iname    = "heavy harpoon"
-  , ifreq    = [("curious item", 2), ("harpoon", 2)]
+  , ifreq    = [("curious item", 4), ("harpoon", 2)]
   , icount   = 2 `dL` 5
   , iweight  = 1000
   , idamage  = 10 `d` 1
@@ -305,7 +305,7 @@ light3 = ItemKind
   , ifreq    = [("common item", 100), ("light source", 100)]
   , iflavour = zipPlain [BrWhite]
   , icount   = 1
-  , irarity  = [(10, 5)]
+  , irarity  = [(5, 1), (10, 5)]
   , iverbHit = "snag"
   , iweight  = 3000
   , idamage  = 0
@@ -841,7 +841,7 @@ scroll2 = scrollTemplate
   }
 scroll3 = scrollTemplate
   { ifreq    = [("curious item", 100), ("any scroll", 100)]
-  , irarity  = [(1, 4), (10, 2)]
+  , irarity  = [(1, 6), (10, 2)]
   , ieffects = [Ascend True]
   }
 scroll4 = scrollTemplate
@@ -874,7 +874,7 @@ scroll7 = scrollTemplate
 scroll8 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
   , icount   = 1  -- too poweful en masse
-  , irarity  = [(10, 4)]
+  , irarity  = [(10, 6)]
   , ieffects = [InsertMove $ 20 + 1 `dL` 20]
   }
 scroll9 = scrollTemplate
@@ -1158,7 +1158,7 @@ imageItensifier = ItemKind
   }
 sightSharpening = ringTemplate  -- small and round, so mistaken for a ring
   { iname    = "Autozoom Contact Lens"
-  , ifreq    = [("treasure", 10), ("add sight", 1)]
+  , ifreq    = [("treasure", 20), ("add sight", 1)]
       -- it's has to be very rare, because it's powerful and not unique,
       -- and also because it looks exactly as one of necklaces, so it would
       -- be misleading when seen on the map
@@ -1539,13 +1539,13 @@ hammer = ItemKind
   , ikit     = []
   }
 hammer2 = hammer
-  { ifreq    = [("common item", 3), ("starting weapon", 1)]
+  { ifreq    = [("common item", 6), ("starting weapon", 1)]
   , iweight  = 2000
   , idamage  = 12 `d` 1
   , idesc    = "Upon closer inspection, this hammer tuns out particularly deadly, with a narrowing, sharpened head and a long handle."
   }
 hammer3 = hammer
-  { ifreq    = [("common item", 1)]
+  { ifreq    = [("common item", 2)]
   , iweight  = 2400
   , idamage  = 16 `d` 1
   , idesc    = "This hammer sports a sharp point instead of a head. No armor can withstand a full strength swing."
