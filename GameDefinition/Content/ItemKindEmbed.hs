@@ -434,7 +434,8 @@ depositBox = treasureCache
   { iname    = "intact deposit box"
   , ifreq    = [("deposit box", 1)]
   , iaspects = [SetFlag Durable]
-  , ieffects = [CreateItem CGround "valuable" timerNone]
+  , ieffects = [CreateItem CGround "treasure" timerNone]
+                 -- can't be "valuable" or template items generated
   , idesc    = "The reports of intact deposit boxes in the ship's safes have been greatly exaggerated, but there are still a few with glittering gems and gold, just waiting to be taken. Whomever looted these halls wasn't thorough or, judging from the damage to some of the boxes, was in a hurry."
   }
 jewelryCase = treasureCache
