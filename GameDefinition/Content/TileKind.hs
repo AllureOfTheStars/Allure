@@ -160,7 +160,7 @@ pillarCache = TileKind
   { tsymbol  = '#'
   , tname    = "abandoned stash"
   , tfreq    = [ ("cachable abandoned", 20)
-               , ("cache maze", 25), ("cache shuttle", 20) ]
+               , ("cache maze", 33), ("cache shuttle", 25) ]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 5
@@ -255,7 +255,7 @@ rubble = TileKind
 rubbleSpice = rubble
   { tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("smokeClumpOver_f_Dark", 1)
                , ("rubbleOrWaste_Lit", 1), ("rubbleOrWaste_Dark", 1)
-               , ("cache deposit", 80), ("cachable deposit", 80) ]
+               , ("cache deposit", 33), ("cachable deposit", 80) ]
   , tfeature = Spice : tfeature rubble
   }
 doorTrapped = TileKind
@@ -374,7 +374,7 @@ wallGlass = TileKind
   }
 wallGlassSpice = wallGlass
   { tfreq    = [ ("rectWindowsOver_%", 20)
-               , ("cache jewelry", 75), ("cachable jewelry", 80) ]
+               , ("cache jewelry", 66), ("cachable jewelry", 80) ]
   , tfeature = Spice : tfeature wallGlass
   }
 pillarIce = TileKind
@@ -623,7 +623,7 @@ rubbleBurning = TileKind  -- present in "emptySetLit" for early light source
   }
 rubbleBurningSpice = rubbleBurning
   { tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("smokeClumpOver_f_Dark", 1)
-               , ("cache deposit", 40) ]
+               , ("cache deposit", 33) ]
   , tfeature = Spice : tfeature rubbleBurning
   }
 wallOpenable = bedrock
@@ -662,14 +662,14 @@ rock = pillar
   }
 pillarCache2 = pillarCache
   { tname    = "rack of deposit boxes"
-  , tfreq    = [ ("cachable deposit", 20), ("cache deposit", 20)
+  , tfreq    = [ ("cachable deposit", 20), ("cache deposit", 33)
                , ("stair terminal Lit", 1), ("stair terminal Dark", 1) ]
   , tfeature = [ Embed "deposit box"
                , ChangeTo "cachable deposit", ConsideredByAI ]
   }
 pillarCache3 = pillarCache
   { tname    = "jewelry display"
-  , tfreq    = [ ("cachable jewelry", 20), ("cache jewelry", 25)
+  , tfreq    = [ ("cachable jewelry", 20), ("cache jewelry", 33)
                , ("museumSetDark", 1) ]
   , tfeature = [ Embed "jewelry case", Embed "jewelry display trap"
                , ChangeTo "cachable jewelry", ConsideredByAI ]
@@ -759,7 +759,7 @@ reinforcedWall = TileKind
   }
 reinforcedWallSpice = reinforcedWall
   { tfreq    = [ ("doorlessWallOver_#", 20)
-               , ("cache maze", 75), ("cachable abandoned", 80) ]
+               , ("cache maze", 66), ("cachable abandoned", 80) ]
   , tfeature = Spice : tfeature reinforcedWall
   }
 wallShuttle = bedrock
@@ -768,7 +768,7 @@ wallShuttle = bedrock
   , tfeature = [Embed "shuttle hardware"]
   }
 wallShuttleSpice = wallShuttle
-  { tfreq    = [("cache shuttle", 80)]
+  { tfreq    = [("cache shuttle", 75)]
   , tfeature = Spice : tfeature wallShuttle
   }
 
