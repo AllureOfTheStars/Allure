@@ -219,7 +219,7 @@ harpoon = ItemKind
   , ifreq    = [("curious item", 100), ("harpoon", 100), ("museum", 100)]
   , iflavour = zipPlain [Brown]
   , icount   = 1 `dL` 5
-  , irarity  = [(7, 5), (10, 8)]
+  , irarity  = [(7, 5), (10, 5)]
   , iverbHit = "hook"
   , iweight  = 750
   , idamage  = 5 `d` 1
@@ -231,7 +231,7 @@ harpoon = ItemKind
   }
 harpoon2 = harpoon
   { iname    = "heavy harpoon"
-  , ifreq    = [("curious item", 4), ("harpoon", 2)]
+  , ifreq    = [("curious item", 5), ("harpoon", 2)]
   , icount   = 2 `dL` 5
   , iweight  = 1000
   , idamage  = 10 `d` 1
@@ -688,8 +688,8 @@ fragmentationBomb = ItemKind
       -- can't be more powerful or would fracture the spaceship's hull
   , ifreq    = [("common item", 100), ("explosive", 200)]
   , iflavour = zipPlain [Red]
-  , icount   = 1 `dL` 4  -- many, because not very intricate
-  , irarity  = [(5, 6), (10, 5)]
+  , icount   = 1 `dL` 5  -- many, because not very intricate
+  , irarity  = [(5, 7), (10, 5)]
   , iverbHit = "thud"
   , iweight  = 3000  -- low velocity due to weight
   , idamage  = 1 `d` 1  -- heavy and hard
@@ -880,7 +880,7 @@ scroll8 = scrollTemplate
 scroll9 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
   , icount   = 3 `dL` 1
-  , irarity  = [(1, 14)]  -- uncommon deep down, where all is known
+  , irarity  = [(1, 20)]  -- uncommon deep down, where all is known
   , iaspects = ELabel "of scientific explanation"
                : iaspects scrollTemplate
   , ieffects = [Composite [Identify, RefillCalm 10]]
@@ -1162,7 +1162,7 @@ sightSharpening = ringTemplate  -- small and round, so mistaken for a ring
       -- it's has to be very rare, because it's powerful and not unique,
       -- and also because it looks exactly as one of necklaces, so it would
       -- be misleading when seen on the map
-  , irarity  = [(7, 1), (10, 5)]  -- low @ifreq@
+  , irarity  = [(7, 1), (10, 12)]  -- low @ifreq@
   , iweight  = 50  -- heavier that it looks, due to glass
   , iaspects = [ AddSkill SkSight $ 1 + 1 `d` 2
                , AddSkill SkHurtMelee $ (1 `d` 2) * 3
@@ -1457,14 +1457,14 @@ shield = buckler
   , idesc    = "Large and unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Too heavy to intercept projectiles with."
   }
 shield2 = shield
-  { ifreq    = [("common item", 3 * 3), ("museum", 100)]
+  { ifreq    = [("common item", 3 * 2), ("museum", 100)]
                   -- very low base rarity
   , iweight  = 5000
   , idamage  = 8 `d` 1
   , idesc    = "A relic of long-past wars, heavy and with a central spike."
   }
 shield3 = shield2
-  { ifreq    = [("common item", 1 * 3), ("museum", 10)]
+  { ifreq    = [("common item", 1 * 2), ("museum", 10)]
                   -- very low base rarity
   , iweight  = 6000
   , idamage  = 12 `d` 1
@@ -1478,7 +1478,7 @@ dagger = ItemKind
   , ifreq    = [("common item", 100), ("starting weapon", 100)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(3 * 10/12, 20), (4 * 10/12, 1)]
+  , irarity  = [(3 * 10/12, 25), (4 * 10/12, 1)]
                  -- no weapons brought by aliens, initially, so cleaver common
   , iverbHit = "stab"
   , iweight  = 1000
@@ -1522,7 +1522,7 @@ hammer = ItemKind
                , ("hammer unknown", 1) ]
   , iflavour = zipFancy [BrMagenta]  -- avoid "pink"
   , icount   = 1
-  , irarity  = [(3 * 10/12, 1), (5, 10), (8, 1)]
+  , irarity  = [(3 * 10/12, 1), (5, 15), (8, 1)]
                  -- don't make it too common on lvl 3
   , iverbHit = "club"
   , iweight  = 1600
@@ -1701,7 +1701,7 @@ gemTemplate = ItemKind
 gem1 = gemTemplate
   { ifreq    = [ ("treasure", 100), ("gem", 100), ("any jewelry", 100)
                , ("valuable", 100) ]
-  , irarity  = [(3, 0), (10, 24)]
+  , irarity  = [(3, 0), (6, 12), (10, 8)]
   , iaspects = [AddSkill SkShine 1, AddSkill SkSpeed (-1)]
                  -- reflects strongly, distracts; so it glows in the dark,
                  -- is visible on dark floor, but not too tempting to wear
@@ -1711,17 +1711,17 @@ gem1 = gemTemplate
 gem2 = gem1
   { ifreq    = [ ("treasure", 100), ("gem", 100), ("any jewelry", 100)
                , ("valuable", 100) ]
-  , irarity  = [(5, 0), (10, 28)]
+  , irarity  = [(5, 0), (7, 25), (10, 8)]
   }
 gem3 = gem1
   { ifreq    = [ ("treasure", 100), ("gem", 100), ("any jewelry", 100)
                , ("valuable", 100) ]
-  , irarity  = [(7, 0), (10, 32)]
+  , irarity  = [(7, 0), (8, 20), (10, 8)]
   }
 gem4 = gem1
   { ifreq    = [ ("treasure", 100), ("gem", 100), ("any jewelry", 100)
                , ("valuable", 100) ]
-  , irarity  = [(9, 0), (10, 100)]
+  , irarity  = [(9, 0), (10, 70)]
   }
 gem5 = gem1
   { isymbol  = symbolSpecial
@@ -1729,7 +1729,7 @@ gem5 = gem1
   , ifreq    = [ ("treasure", 100), ("gem", 25), ("any jewelry", 10)
                , ("valuable", 100) ]
   , iflavour = zipPlain [BrYellow]
-  , irarity  = [(1, 40), (10, 40)]
+  , irarity  = [(1, 40), (10, 30)]
   , iaspects = [ ELabel "of youth", SetFlag Precious  -- not hidden
                , AddSkill SkOdor (-1) ]
   , ieffects = [RefillCalm 10, RefillHP 40]
