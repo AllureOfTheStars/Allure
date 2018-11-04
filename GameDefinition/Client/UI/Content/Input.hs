@@ -142,17 +142,6 @@ standardKeysAndMouse = InputContentRaw $ map evalKeyDef $
           , "display known lore"
           , ChooseItemMenu (MLore SItem) ))
 
-  , ("t", addCmdCategory CmdItem $ projectA
-            [ TriggerItem { tiverb = "throw"
-                          , tiobject = "missile"
-                          , tisymbols = "{" }
-            , TriggerItem { tiverb = "throw"
-                          , tiobject = "missile"
-                          , tisymbols = "}" } ])
---  , ("z", projectA [TriggerItem { tiverb = "zap"
---                                , tiobject = "wand"
---                                , tisymbols = "-" }])
-
   -- Dashboard, in addition to commands marked above
   , ("safeD0", ([CmdInternal, CmdDashboard], "", Cancel))  -- blank line
   ]
