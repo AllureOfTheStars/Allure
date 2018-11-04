@@ -441,7 +441,7 @@ boilingWater = ItemKind
   }
 glue = ItemKind
   { isymbol  = '*'
-  , iname    = "hoof glue"
+  , iname    = "glue droplet"
   , ifreq    = [("glue", 1)]
   , iflavour = zipPlain [Cyan]
   , icount   = 8  -- Paralyze doesn't stack; avoid failure messages

@@ -783,7 +783,7 @@ wasteRobot = ItemKind
                , ("construction robot", 50) ]
   , iflavour = zipPlain [Green]
   , icount   = 1
-  , irarity  = [(5, 7)]  -- gets summoned often, so low base rarity
+  , irarity  = [(5, 8)]  -- gets summoned quite often, so low base rarity
   , iverbHit = "clank"
   , iweight  = 80000
   , idamage  = 0
@@ -804,7 +804,7 @@ lightRobot = ItemKind
                , ("construction robot", 100) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
-  , irarity  = [(3, 0), (4, 1), (10, 10)]
+  , irarity  = [(3, 0), (4, 1), (10, 7)]  -- gets summoned often, so low rarity
   , iverbHit = "clank"
   , iweight  = 80000
   , idamage  = 0

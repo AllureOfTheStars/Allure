@@ -1792,7 +1792,7 @@ constructionHooter = necklaceTemplate
   }
 scrollAd1 = scrollTemplate
   { ifreq    = [("treasure", 100)]
-  , irarity  = [(1, 2), (10, 2)]  -- not every playthrough needs it
+  , irarity  = [(1, 2), (10, 1)]  -- not every playthrough needs it
   , iaspects = [SetFlag Unique, ELabel "Displaying a Happy Couple"]
                ++ iaspects scrollTemplate
   , ieffects = [ toOrganGood "resolute" (500 + 1 `d` 200)
