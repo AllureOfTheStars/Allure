@@ -107,7 +107,7 @@ arena = rogue
   , cactorCoeff   = 50  -- smallish level, but easy to view and plan
   , cactorFreq    = [ ("monster", 25), ("animal", 70), ("robot", 5)
                     , ("aquatic", 10) ]
-  , citemNum      = 7 `d` 3  -- few rooms
+  , citemNum      = 7 `d` 4  -- few rooms
   , citemFreq     = [ ("common item", 20), ("treasure", 40), ("any scroll", 40)
                     , ("explosive", 40), ("curious item", 20) ]
   , cplaceFreq    = [("arena", 1)]
@@ -133,7 +133,7 @@ casino = arena
   , cminStairDist = 10
   , cactorCoeff   = 80  -- cramped, don't overcrowd
   , cactorFreq    = [("monster", 25), ("animal", 25), ("robot", 50)]
-  , citemNum      = 7 `d` 3  -- rare, so make it exciting, by keeping items
+  , citemNum      = 7 `d` 3  -- rare, so make it exciting, by keeping many items
   , citemFreq     = [ ("common item", 20)
                     , ("treasure", 80)  -- lives up to the name
                     , ("curious item", 40) ]
