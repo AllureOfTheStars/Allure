@@ -486,7 +486,8 @@ alligator = ItemKind
 giantOctopus = ItemKind
   { isymbol  = 'o'
   , iname    = "giant octopus"
-  , ifreq    = [ ("animal", 100), ("mobile", 1), ("mobile animal", 100) ]
+  , ifreq    = [ ("animal", 100), ("mobile", 1), ("mobile animal", 100)
+               , ("aquatic", 90), ("aquatic animal", 90) ]  -- weak on land
   , iflavour = zipPlain [BrMagenta]
   , icount   = 1
   , irarity  = [(1, 5)]
