@@ -7,8 +7,10 @@ Your party of trusted adventurers is about to test its fortune by plundering
 a vast derelict passenger cruiser. The spaceship was abandoned and lost
 after an accident at the Solar System's outer frontier, but recently
 unexpectedly reappeared. Reportedly, deposit safes and jewelry inventories
-were never salvaged. Neither were emptied the robot holds, the arboretum
-nor the extravagant whole-deck habitat of natural and enhanced wild animals.
+were never salvaged. Neither were emptied the gilded robot holds,
+the expensive arboretum nor the extravagant whole-deck habitat of natural
+and enhanced wild animals.
+
 Up to this day, countless autonomous life support and damage mitigation
 subsystems with redundant power sources busy themselves throughout dozens
 of decks. They seem successful, because there are abundant traces of ongoing
