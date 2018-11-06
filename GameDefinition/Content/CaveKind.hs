@@ -485,7 +485,7 @@ hunt = rogue  -- a scenario with strong missiles for ranged and shade for melee
                     , ("any arrow", 400), ("harpoon", 300), ("explosive", 50) ]
   , cplaceFreq    = [("brawl", 50), ("shootout", 100)]
   , cpassable     = True
-  , cdefTile      = "shootoutSetLit"
+  , cdefTile      = "huntSetLit"
   , cdarkCorTile  = "dirt Lit"
   , clitCorTile   = "dirt Lit"
   , cwallTile     = "openableWall"
@@ -587,7 +587,7 @@ ambush = rogue  -- a scenario with strong missiles;
   , cwallTile     = "openableWall"
   , cstairFreq    = []
   , cstairAllowed = []
-  , cdesc         = "Previously a calm and orderly place, now scarred walls and ransacked lockers show the total breakdown of order."
+  , cdesc         = "Scarred walls and ransacked lockers show the total breakdown of order."
   }
 
 -- * Other caves; testing, easter egg, future work

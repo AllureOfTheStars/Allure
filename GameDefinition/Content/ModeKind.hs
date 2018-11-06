@@ -44,7 +44,7 @@ raid = ModeKind  -- mini-crawl
   , mfreq   = [("raid", 1), ("campaign scenario", 1)]
   , mroster = rosterRaid
   , mcaves  = cavesRaid
-  , mdesc   = "Neptune Area Administration confirms isolated spottings of various oversize vermin in non-residential zones of the Triton moon's largest city. To put it plainly: Triton City sewers need purging. The first person to break through to the other exit will be paid 100 gold grains. The Administration strongly urges participants not to resort to violence against each other."
+  , mdesc   = "Neptune Area Administration confirms isolated spottings of oversize vermin in non-residential zones of the Triton moon's largest city. To put it plainly: Triton City sewers need purging. The first person to break through to the other exit will be paid 100 gold grains. The Administration \"strongly urges participants not to resort to violence against each other.\""
   }
 
 brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
@@ -79,7 +79,7 @@ hunt = ModeKind  -- melee vs ranged with reaction fire in daylight
   , mfreq   = [("hunt", 1), ("campaign scenario", 1)]
   , mroster = rosterHunt
   , mcaves  = cavesHunt
-  , mdesc   = "Who is the hunter and who is the prey?"
+  , mdesc   = "Who is the hunter and who is the prey? As far as the eye can see, the landscape is desolate."
   }
 
 escape = ModeKind  -- asymmetric ranged and stealth race at night
@@ -88,7 +88,7 @@ escape = ModeKind  -- asymmetric ranged and stealth race at night
   , mfreq   = [("escape", 1), ("campaign scenario", 1)]
   , mroster = rosterEscape
   , mcaves  = cavesEscape
-  , mdesc   = "Bloodied spaceship deed in hand notwithstanding, you can reach the derelict spaceliner only via a shuttle from the Triton Spaceport across the city. After hours of being chased in the opposite direction towards the border wall, you sneak back and make a desperate dash through the very territory of the pursuing gang. Any valuables you come upon in this public park turned miscreant lair will be fair compensation for your losses, but you need to find the exit before the foes find you."
+  , mdesc   = "Bloodied spaceship deed in hand notwithstanding, you can reach the derelict spaceliner only via a shuttle from the Central Triton Spaceport across the city. After hours of being chased in the opposite direction towards the border wall, you sneak back and make a desperate dash through the very territory of the pursuing gang. Any valuables you come upon in this public park turned miscreant lair will be fair compensation for your losses, but you need to find the exit before the foes find you."
   }
 
 zoo = ModeKind  -- asymmetric crowd melee at night
@@ -114,7 +114,7 @@ ambush = ModeKind  -- dense ranged with reaction fire vs melee at night
   , mfreq   = [("ambush", 1), ("campaign scenario", 1)]
   , mroster = rosterAmbush
   , mcaves  = cavesAmbush
-  , mdesc   = "Not even the unexplained ruin of the largest and tightest security of Neptune's spaceports will prevent you from claiming your prize. After all, you didn't take to the space to let others decide your fate. Onward, against the odds!"
+  , mdesc   = "Not even the unexplained ruin of the Central Triton Spaceport will prevent you from claiming the prize awaiting you at the orbit. After all, you didn't take to the space to let others decide your fate. There is still no news coverage from what was the largest and tightest security facitily in the whole Neptune Area. Without waiting for explanations nor for the personnel to return, you creep along the abandoned booths, scouting for any airlock with a shuttle still attached."
   }
 
 crawl = ModeKind
@@ -123,7 +123,7 @@ crawl = ModeKind
   , mfreq   = [("crawl", 1), ("campaign scenario", 1)]
   , mroster = rosterCrawl
   , mcaves  = cavesCrawl
-  , mdesc   = "You get stranded while looting, with utmost satisfaction, the blasted bridge of an old and extravagantly luxurious cruise liner. The inert spaceship, supposedly long deserted and barely able to sustain life support, suddenly tremors and dials all her ion engine indicators up to red overdrive. Consoles are damaged beyond repair, but the flickering space map shows the ship manoeuvre deftly off Triton orbit and away from Neptune. There is only static on all communication channels, so your plan is to scour the surounding dilapidated decks gathering all missing squad members and any valuables and get back to the spaceport the way you came, in the shuttle. You are determined to fight for the lives and freedom of your crew and not to leave the ship without taking of her wealth what is rightfully yours."
+  , mdesc   = "You get stranded while looting, with utmost satisfaction, the blasted bridge of an old and extravagantly luxurious cruise liner. The inert spaceship, supposedly long deserted and barely able to sustain life support, suddenly tremors and dials her ion engines up to red overdrive. The space map flickering among the irreversibly damaged consoles shows the ship manoeuvre deftly off Triton orbit and purposefully climb the Neptune's gravity well. There's no way to control the ship and static floods all communication channels. You decide to scour the surrounding dilapidated decks for missing squad members and get back to the spaceport the way you came, in your shuttle. However, you are determined not to leave the ship without taking at least a portion of the wealth that is rightfully yours. You bloodily fought for every grain of it. You look closer at your surroundings."
   }
 
 safari = ModeKind  -- easter egg available only via screensaver

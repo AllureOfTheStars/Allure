@@ -210,7 +210,7 @@ tree = TileKind
   { tsymbol  = 'O'
   , tname    = "tree"
   , tfreq    = [ ("brawlSetLit", 140), ("shootoutSetLit", 10)
-               , ("escapeSetLit", 35), ("zooSetDark", 20)
+               , ("huntSetLit", 10), ("escapeSetLit", 35), ("zooSetDark", 20)
                , ("treeShadeOver_O_Lit", 1) ]
   , tcolor   = BrGreen
   , tcolor2  = Green
@@ -405,7 +405,7 @@ bush = TileKind
   { tsymbol  = '%'
   , tname    = "bush"
   , tfreq    = [ ("bush Lit", 1), ("arenaSetLit", 5), ("shootoutSetLit", 30)
-               , ("escapeSetLit", 40), ("zooSetDark", 100)
+               , ("huntSetLit", 30), ("escapeSetLit", 40), ("zooSetDark", 100)
                , ("bushClumpOver_f_Lit", 1), ("pumpsOver_f_Lit", 1)
                , ("lift terminal Lit", 4) ]
   , tcolor   = BrGreen
@@ -439,7 +439,7 @@ fog = TileKind
   { tsymbol  = ';'
   , tname    = "faint fog"
   , tfreq    = [ ("fog Lit", 1), ("emptySetLit", 50), ("noiseSetLit", 120)
-               , ("shootoutSetLit", 30)
+               , ("shootoutSetLit", 30), ("huntSetLit", 30)
                , ("fogClumpOver_f_Lit", 60), ("fogClumpOver_f_Dark", 60)
                , ("lift terminal Lit", 40) ]
       -- lit fog is OK for shootout, because LOS is mutual, as opposed
@@ -510,8 +510,9 @@ floorDamp = floorArena
 floorDirt = floorArena
   { tname    = "dirt"
   , tfreq    = [ ("brawlSetLit", 1000), ("shootoutSetLit", 1000)
-               , ("escapeSetLit", 1000), ("ambushSetLit", 1000)
-               , ("battleSetLit", 1000), ("dirt Lit", 1) ]
+               , ("huntSetLit", 1000), ("escapeSetLit", 1000)
+               , ("ambushSetLit", 1000), ("battleSetLit", 1000)
+               , ("dirt Lit", 1) ]
   }
 floorDirtSpice = floorDirt
   { tfreq    = [ ("treeShadeOver_s_Lit", 1), ("bushClumpOver_f_Lit", 1)
@@ -538,7 +539,7 @@ shallowWater = TileKind
   , tname    = "water puddle"
   , tfreq    = [ ("aquatic", 1), ("shallow water Lit", 1), ("legendLit", 100)
                , ("emptySetLit", 5), ("noiseSetLit", 30), ("shootoutSetLit", 5)
-               , ("lift terminal Lit", 4) ]
+               , ("huntSetLit", 250), ("lift terminal Lit", 4) ]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 0
@@ -742,7 +743,7 @@ escapeSpaceshipDown = escapeDown
 emptyAirlock = escapeUp
   { tname    = "empty airlock"
   , tfreq    = [ ("airlock fence", 2), ("empty airlock fence", 7)
-               , ("emptySetLit", 2) ]
+               , ("emptySetLit", 2), ("ambushSetDark", 15) ]
                    -- not in exitSetLit; space can't be seen
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
