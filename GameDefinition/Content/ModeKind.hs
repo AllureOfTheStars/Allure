@@ -160,7 +160,7 @@ crawlEmpty = ModeKind
   , mname   = "crawl empty"
   , mfreq   = [("crawl empty", 1)]
   , mroster = rosterCrawlEmpty
-  , mcaves  = cavesCrawl
+  , mcaves  = cavesCrawlEmpty
   , mdesc   = "Enjoy the free space."
   }
 
@@ -418,7 +418,7 @@ rosterCrawl = Roster
 rosterCrawlEmpty = Roster
   { rosterList = [ ( playerHero
                    , [(1, 1, "crawl hero")] )
-                 , (playerHorror, []) ]  -- for summoned monsters
+                 , (playerHorror, []) ]  -- for spawned and ummoned monsters
   , rosterEnemy = []
   , rosterAlly = [] }
 
@@ -538,11 +538,11 @@ rosterDefense = rosterCrawl
 rosterDefenseEmpty = rosterCrawl
   { rosterList = [ ( playerAntiMonster {fneverEmpty = True}
                    , [(4, 1, "scout monster")] )
-                 , (playerHorror, []) ]  -- for summoned animals
+                 , (playerHorror, []) ]  -- for spawned and summoned animals
   , rosterEnemy = []
   , rosterAlly = [] }
 
-cavesRaid, cavesBrawl, cavesShootout, cavesHunt, cavesEscape, cavesZoo, cavesAmbush, cavesCrawl, cavesDig, cavesSee, cavesSafari, cavesBattle :: Caves
+cavesRaid, cavesBrawl, cavesShootout, cavesHunt, cavesEscape, cavesZoo, cavesAmbush, cavesCrawl, cavesCrawlEmpty, cavesDig, cavesSee, cavesSafari, cavesBattle :: Caves
 
 cavesRaid = [([2], ["caveRaid"])]
 
@@ -573,6 +573,11 @@ listCrawl =
 
 -- Reversed to have the last cave small and exactly in the middle.
 cavesCrawl = reverse listCrawl
+
+cavesCrawlEmpty = reverse $
+  map (\(ns, grps) ->
+        (ns, if grps == ["caveBridge"] then ["caveShallowRogue"] else grps))
+      listCrawl
 
 renumberCaves :: Int -> ([Int], [GroupName CaveKind])
               -> ([Int], [GroupName CaveKind])
