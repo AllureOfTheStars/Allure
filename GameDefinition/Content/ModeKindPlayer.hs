@@ -10,7 +10,7 @@ module Content.ModeKindPlayer
   , playerMonster, playerAntiMonster, playerAnimal
   , playerHorror, playerMonsterTourist, playerHunamConvict
   , playerAnimalMagnificent, playerAnimalExquisite
-  , hiHero, hiDweller, hiRaid, hiEscapist
+  , hiHeroShort, hiHeroMedium, hiHeroLong, hiDweller
   , playerRobot
   ) where
 
@@ -30,7 +30,7 @@ playerHero = Player
   , fskillsOther = meleeAdjacent
   , fcanEscape = True
   , fneverEmpty = True
-  , fhiCondPoly = hiHero
+  , fhiCondPoly = hiHeroLong
   , fhasGender = True
   , ftactic = TExplore
   , fleaderMode = LeaderUI $ AutoLeader False False
@@ -48,7 +48,7 @@ playerCivilian = Player
   , fskillsOther = zeroSkills  -- not coordinated by any leadership
   , fcanEscape = False
   , fneverEmpty = True
-  , fhiCondPoly = hiDweller
+  , fhiCondPoly = hiHeroMedium
   , fhasGender = True
   , ftactic = TPatrol
   , fleaderMode = LeaderNull  -- unorganized
@@ -72,8 +72,8 @@ playerMonster = Player
   }
 
 playerAntiMonster = playerMonster
-  { fhasUI = True
-  , fleaderMode = LeaderUI $ AutoLeader True True
+  { fleaderMode = LeaderUI $ AutoLeader True True
+  , fhasUI = True
   }
 
 playerAnimal = Player
@@ -112,7 +112,7 @@ playerMonsterTourist =
   playerAntiMonster { fname = "Alien Tourist Office"
                     , fcanEscape = True
                     , fneverEmpty = True  -- no spawning
-                    , fhiCondPoly = hiEscapist
+                    , fhiCondPoly = hiHeroMedium
                     , ftactic = TFollow  -- follow-the-guide, as tourists do
                     , fleaderMode = LeaderUI $ AutoLeader False False }
 
@@ -133,36 +133,57 @@ playerAnimalExquisite =
 victoryOutcomes :: [Outcome]
 victoryOutcomes = [Conquer, Escape]
 
-hiHero, hiRaid, hiDweller, hiEscapist :: HiCondPoly
+hiHeroLong, hiHeroMedium, hiHeroShort, hiDweller :: HiCondPoly
 
--- Heroes rejoice in loot.
-hiHero = [ ( [(HiLoot, 1000)]  -- multiplied by fraction of collected
-           , [minBound..maxBound] )
-         , ( [(HiConst, 1000), (HiLoss, -1)]
-           , victoryOutcomes )
-         ]
+hiHeroShort =
+  [ ( [(HiLoot, 100)]
+    , [minBound..maxBound] )
+  , ( [(HiConst, 100)]
+    , victoryOutcomes )
+  , ( [(HiSprint, -500)]  -- speed matters, but only if fast enough
+    , victoryOutcomes )
+  , ( [(HiSurvival, 10)]  -- few points for surviving long
+    , [minBound..maxBound] \\ victoryOutcomes )
+  ]
 
-hiRaid = [ ( [(HiLoot, 100)]
-           , [minBound..maxBound] )
-         , ( [(HiConst, 100)]
-           , victoryOutcomes )
-         ]
+hiHeroMedium =
+  [ ( [(HiLoot, 200)]  -- usually no loot, but if so, no harm
+    , [minBound..maxBound] )
+  , ( [(HiConst, 200), (HiLoss, -10)]
+    , victoryOutcomes )
+  , ( [(HiSprint, -500)]  -- speed matters, but only if fast enough
+    , victoryOutcomes )
+  , ( [(HiBlitz, -100)]  -- speed matters always
+    , victoryOutcomes )
+  , ( [(HiSurvival, 10)]  -- few points for surviving long
+    , [minBound..maxBound] \\ victoryOutcomes )
+  ]
 
--- Spawners or skirmishers get no points from loot, but try to kill
+-- Heroes in long crawls rejoice in loot.
+hiHeroLong =
+  [ ( [(HiLoot, 10000)]  -- multiplied by fraction of collected
+    , [minBound..maxBound] )
+  , ( [(HiSprint, -5000)]  -- speedrun bonus, if below 5000 turns
+    , victoryOutcomes )
+  , ( [(HiBlitz, -100)]  -- speed matters always
+    , victoryOutcomes )
+  , ( [(HiSurvival, 10)]  -- few points for surviving long
+    , [minBound..maxBound] \\ victoryOutcomes )
+  ]
+
+-- Spawners get no points from loot, but try to kill
 -- all opponents fast or at least hold up for long.
 hiDweller = [ ( [(HiConst, 1000)]  -- no loot, so big win reward
               , victoryOutcomes )
             , ( [(HiConst, 1000), (HiLoss, -10)]
+              , victoryOutcomes )
+            , ( [(HiSprint, -1000)]  -- speedrun bonus, if below 1000 turns
               , victoryOutcomes )
             , ( [(HiBlitz, -100)]  -- speed matters
               , victoryOutcomes )
             , ( [(HiSurvival, 100)]
               , [minBound..maxBound] \\ victoryOutcomes )
             ]
-
-hiEscapist = ( [(HiLoot, 200)]  -- loot matters a little bit
-             , [minBound..maxBound] )
-             : hiDweller
 
 -- Allure-specific
 

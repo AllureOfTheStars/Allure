@@ -294,10 +294,10 @@ screensaverSafari = safari
 rosterRaid, rosterBrawl, rosterShootout, rosterHunt, rosterEscape, rosterZoo, rosterAmbush, rosterCrawl, rosterCrawlEmpty, rosterCrawlSurvival, rosterSafari, rosterSafariSurvival, rosterBattle, rosterBattleDefense, rosterBattleSurvival, rosterDefense, rosterDefenseEmpty :: Roster
 
 rosterRaid = Roster
-  { rosterList = [ ( playerHero {fhiCondPoly = hiRaid}
+  { rosterList = [ ( playerHero {fhiCondPoly = hiHeroShort}
                    , [(2, 1, "hero")] )
                  , ( playerAntiHero { fname = "Red Collar Bro"
-                                    , fhiCondPoly = hiRaid }
+                                    , fhiCondPoly = hiHeroShort }
                    , [(2, 1, "hero")] )
                  , ( playerAnimal  -- starting over escape
                    , [(2, 2, "animal")] )
@@ -315,11 +315,11 @@ rosterRaid = Roster
 
 rosterBrawl = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
-                                , fhiCondPoly = hiDweller }
+                                , fhiCondPoly = hiHeroMedium }
                    , [(3, 3, "hero")] )
                  , ( playerAntiHero { fname = "Red Collar Bro"
                                     , fcanEscape = False
-                                    , fhiCondPoly = hiDweller }
+                                    , fhiCondPoly = hiHeroMedium }
                    , [(3, 3, "hero")] )
                  , (playerHorror, []) ]
   , rosterEnemy = [ ("Spacefarer", "Red Collar Bro")
@@ -333,11 +333,11 @@ rosterBrawl = Roster
 -- scout to counter the stealthy advance.
 rosterShootout = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
-                                , fhiCondPoly = hiDweller }
+                                , fhiCondPoly = hiHeroMedium }
                    , [(5, 1, "scout hero"), (5, 2, "ranger hero")] )
                  , ( playerAntiHero { fname = "Red Collar Bro"
                                     , fcanEscape = False
-                                    , fhiCondPoly = hiDweller }
+                                    , fhiCondPoly = hiHeroMedium }
                    , [(5, 1, "scout hero"), (5, 2, "ranger hero")] )
                  , (playerHorror, []) ]
   , rosterEnemy = [ ("Spacefarer", "Red Collar Bro")
@@ -347,11 +347,11 @@ rosterShootout = Roster
 
 rosterHunt = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
-                                , fhiCondPoly = hiDweller }
+                                , fhiCondPoly = hiHeroMedium }
                    , [(-5, 10, "soldier hero")] )
                  , ( playerAntiHero { fname = "Red Collar Bro"
                                     , fcanEscape = False
-                                    , fhiCondPoly = hiDweller }
+                                    , fhiCondPoly = hiHeroMedium }
                    , [(-5, 1, "scout hero"), (-5, 5, "ambusher hero")] )
                  , (playerHorror, []) ]
   , rosterEnemy = [ ("Spacefarer", "Red Collar Bro")
@@ -360,12 +360,12 @@ rosterHunt = Roster
   , rosterAlly = [] }
 
 rosterEscape = Roster
-  { rosterList = [ ( playerHero {fhiCondPoly = hiEscapist}
+  { rosterList = [ ( playerHero {fhiCondPoly = hiHeroMedium}
                    , [(7, 1, "scout hero"), (7, 2, "escapist hero")] )
                  , ( playerAntiHero { fname = "Red Collar Bro"
                                     , fcanEscape = False  -- start on escape
                                     , fneverEmpty = False  -- loot after killing
-                                    , fhiCondPoly = hiDweller }
+                                    , fhiCondPoly = hiHeroMedium }
                    , [(7, 1, "scout hero"), (7, 7, "ambusher hero")] )
                  , (playerHorror, []) ]
   , rosterEnemy = [ ("Spacefarer", "Red Collar Bro")
@@ -375,7 +375,7 @@ rosterEscape = Roster
 
 rosterZoo = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
-                                , fhiCondPoly = hiDweller }
+                                , fhiCondPoly = hiHeroLong }
                    , [(8, 5, "soldier hero")] )
                  , ( playerAnimal {fneverEmpty = True}
                    , [(8, 100, "mobile animal")] )
@@ -386,11 +386,11 @@ rosterZoo = Roster
 
 rosterAmbush = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
-                                , fhiCondPoly = hiDweller }
+                                , fhiCondPoly = hiHeroMedium }
                    , [(9, 1, "scout hero"), (9, 5, "ambusher hero")] )
                  , ( playerAntiHero { fname = "Gray Off-World Mercenary"
                                     , fcanEscape = False
-                                    , fhiCondPoly = hiDweller }
+                                    , fhiCondPoly = hiHeroMedium }
                    , [(9, 12, "soldier hero")] )
                  , (playerHorror, []) ]
   , rosterEnemy = [ ("Spacefarer", "Gray Off-World Mercenary")
@@ -418,14 +418,12 @@ rosterCrawl = Roster
 rosterCrawlEmpty = Roster
   { rosterList = [ ( playerHero
                    , [(1, 1, "crawl hero")] )
-                 , (playerHorror, []) ]  -- for spawned and ummoned monsters
+                 , (playerHorror, []) ]  -- for spawned and summoned monsters
   , rosterEnemy = []
   , rosterAlly = [] }
 
 rosterCrawlSurvival = rosterCrawl
-  { rosterList = [ ( playerHero { fleaderMode =
-                                    LeaderAI $ AutoLeader True False
-                                , fhasUI = False }
+  { rosterList = [ ( playerAntiHero
                    , [(3, 3, "crawl hero")] )
                  , ( playerMonster
                    , [] )
@@ -468,8 +466,8 @@ rosterSafariSurvival = rosterSafari
                  , ( playerHunamConvict
                    , [(4, 3, "civilian")] )
                  , ( playerAnimalMagnificent
-                     { fleaderMode = LeaderUI $ AutoLeader True False
-                     , fhasUI = True }
+                       { fleaderMode = LeaderUI $ AutoLeader True False
+                       , fhasUI = True }
                    , [(7, 20, "mobile animal")] )
                  , ( playerAnimalExquisite
                    , [(10, 30, "mobile animal")] )
@@ -477,7 +475,7 @@ rosterSafariSurvival = rosterSafari
 
 rosterBattle = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
-                                , fhiCondPoly = hiDweller }
+                                , fhiCondPoly = hiHeroLong }
                    , [(5, 5, "soldier hero")] )
                  , ( playerMonster {fneverEmpty = True}
                    , [(5, 35, "mobile monster")] )
@@ -494,7 +492,7 @@ rosterBattle = Roster
 
 rosterBattleDefense = rosterBattle
   { rosterList = [ ( playerHero { fcanEscape = False
-                                , fhiCondPoly = hiDweller
+                                , fhiCondPoly = hiHeroLong
                                 , fleaderMode =
                                     LeaderAI $ AutoLeader False False
                                 , fhasUI = False }
@@ -509,7 +507,7 @@ rosterBattleDefense = rosterBattle
 
 rosterBattleSurvival = rosterBattle
   { rosterList = [ ( playerHero { fcanEscape = False
-                                , fhiCondPoly = hiDweller
+                                , fhiCondPoly = hiHeroLong
                                 , fleaderMode =
                                     LeaderAI $ AutoLeader False False
                                 , fhasUI = False }
@@ -533,7 +531,7 @@ rosterDefense = rosterCrawl
                      -- Optional huge battle at the end:
                      , (12, 100, "mobile animal") ] )
                  , ( playerRobot
-                   , [] ) ] }  -- gentle introduction
+                   , [] ) ] }
 
 rosterDefenseEmpty = rosterCrawl
   { rosterList = [ ( playerAntiMonster {fneverEmpty = True}
