@@ -712,7 +712,7 @@ stairsLiftWeldedUp = stairsLiftUp
   , tcolor   = BrMagenta
   , tcolor2  = Magenta
   , talter   = talterForStairs + 3  -- gear needed
-  , tfeature = [ ConsideredByAI, ChangeTo "ordinary staircase up"
+  , tfeature = [ ConsideredByAI, ChangeTo "ordinary lift up"
                , Embed "crude weld" ]
   }
 stairsLiftDown = stairsDown
