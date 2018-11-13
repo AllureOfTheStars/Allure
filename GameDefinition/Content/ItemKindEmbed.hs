@@ -120,7 +120,7 @@ treasureCacheTrap = ItemKind
                       , RefillCalm (-99)
                       , Explode "focused concussion"
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1) ]]
-  , idesc    = "You didn't think such kingly trinkets are on display without any protection, did you? Especially for merchandise that is able to instantly fry video monitoring equipment at the other side of the hall."
+  , idesc    = "A display of such kingly trinkets warrants an autonomous guarding device. The precaution is particularly understandable for merchandise capable of instantly frying video monitoring equipment across the hall."
   , ikit     = []
   }
 signboardExit = ItemKind
@@ -443,7 +443,7 @@ jewelryCase = treasureCache
   , ifreq    = [("jewelry case", 1)]
   , iaspects = [SetFlag Durable]
   , ieffects = [CreateItem CGround "any jewelry" timerNone]
-  , idesc    = "The customers of these shops must have been extremely well off, judging from abundance and quality of the jewelry, often extremely valuable in each of the artistic, material and nanotechnology aspects. Outer Solar System trips are expensive, but even more importantly, they offer unique trade and investment opportunities, often of the kind that can't be negotiated outside a fully electronically isolated room screened by both parties. Some of the jewelry are precisely portable versions of such screening hardware --- in a breathtaking package, no less."
+  , idesc    = "The customers of these shops must have been extremely well off, judging from abundance and quality of the jewelry, often extremely valuable in each of the artistic, material and nanotechnology aspects. Outer Solar System trips are expensive, but they offer unique trade and investment opportunities. Many deals are of the kind that can only be negotiated in a sealed room out of reach of satelites and screened by both parties. Among the jewelry are portable versions of such screening hardware --- in truly breathtaking package."
   }
 liftUp = stairsUp
   { iname    = "carriage"
