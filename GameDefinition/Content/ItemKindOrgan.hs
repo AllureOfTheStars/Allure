@@ -427,8 +427,10 @@ scentGland = armoredSkin
   , iaspects = [ Timeout $ (1 `d` 3) * 10
                , SetFlag Periodic ]  -- not Durable
   , ieffects = [ Recharging (Temporary "look spent")
-               , Recharging (Explode "distressing odor")
-               , Recharging ApplyPerfume ]
+               , Recharging ApplyPerfume
+               , Recharging (Explode "distressing odor") ]
+                   -- keep explosion at the end to avoid the ambiguity of
+                   -- "of ([foo explosion] of [bar])"
   , idesc    = ""
   }
 boilingVent = armoredSkin
@@ -438,8 +440,8 @@ boilingVent = armoredSkin
   , iverbHit = "menace"
   , iaspects = [ Timeout $ (2 + 1 `d` 3) * 5
                , SetFlag Periodic, SetFlag Durable ]
-  , ieffects = [ Recharging (Explode "boiling water")
-               , Recharging (RefillHP 2) ]
+  , ieffects = [ Recharging (RefillHP 2)
+               , Recharging (Explode "boiling water") ]
   , idesc    = ""
   }
 arsenicVent = armoredSkin
@@ -449,8 +451,8 @@ arsenicVent = armoredSkin
   , iverbHit = "menace"
   , iaspects = [ Timeout $ (2 + 1 `d` 3) * 5
                , SetFlag Periodic, SetFlag Durable ]
-  , ieffects = [ Recharging (Explode "sparse shower")
-               , Recharging (RefillHP 2) ]
+  , ieffects = [ Recharging (RefillHP 2)
+               , Recharging (Explode "sparse shower") ]
   , idesc    = ""
   }
 sulfurVent = armoredSkin
@@ -460,8 +462,8 @@ sulfurVent = armoredSkin
   , iverbHit = "menace"
   , iaspects = [ Timeout $ (2 + 1 `d` 3) * 5
                , SetFlag Periodic, SetFlag Durable ]
-  , ieffects = [ Recharging (Explode "dense shower")
-               , Recharging (RefillHP 2) ]
+  , ieffects = [ Recharging (RefillHP 2)
+               , Recharging (Explode "dense shower") ]
   , idesc    = ""
   }
 
