@@ -369,6 +369,7 @@ shallowRogue = rogue
   , cYminSize     = 37
   , cactorCoeff   = cactorCoeff rogue `div` 2  -- more difficult
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq rogue
+  , citemNum      = 8 `d` 4
   , citemFreq     = ("starting weapon", 20)
                     : filter ((/= "treasure") . fst) (citemFreq rogue)
   , cdesc         = "This close to the outer level, residence is not permitted and doors are sturdier, to contain a possible micro-meteorite breach. The passage upwards is not closed off, though, because some passengers can't live without regularly looking at the void and the light of distant suns and planets through the reinforced glass of oriels, as opposed to the glass of electronic displays. Animals appear to share the fascination, or perhaps they crave the increased gravity, nearly Earth-like, unlike elsewhere on the ship."
