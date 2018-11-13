@@ -315,7 +315,7 @@ outermost = empty
   { cname         = "Outermost deck"
   , cfreq         = [("caveOutermost", 100)]
   , cactorCoeff   = 4  -- shallower than LH, so fewer immediate actors, so boost
-  , cactorFreq    = [ ("animal", 2), ("robot", 2)
+  , cactorFreq    = [ ("animal", 3), ("robot", 1)
                     , ("immobile robot", 95), ("immobile animal", 1)
                     , ("aquatic animal", 2) ]  -- ("aquatic robot", 2)
       -- The medbot faucets on lvl 1 act like HP resets. Needed to avoid
@@ -330,7 +330,7 @@ outermost = empty
   , cfenceTileE   = "habitat containment wall"
   , cfenceTileS   = "empty airlock fence"
   , cfenceTileW   = "habitat containment wall"
-  , cdesc         = "The black sky outside sucks light through the oriel and airlock glass. At this outermost deck, the curvature of the floor is unnoticeable and artificial gravity as strong as on Earth. Here is the main pressurized cargo bay and storage, with the only other docking hub for small craft somewhere among the giant spaceship's uppermost levels. You can't see from afar the shuttle you left engaged to one of the few free airlocks covered in guano. Water treatment basins and series of hanging and stacked tanks double as radiation shields. Hoses writhe on the floor and dangle in thick knots from the ceiling."
+  , cdesc         = "The black sky outside sucks light through the oriel and airlock glass in the walls and floor of this outermost level. The floor itself looks misleading straight, its curvature noticeable only across the whole extent of the hull section. Water treatment basins and series of hanging and stacked tanks double as radiation shields. Hoses writhe on the ground and dangle in thick knots from the ceiling. This deck is the main pressurized cargo bay and storage, with the only other docking hub for small craft somewhere among the giant spaceship's upper levels. You can't see the shuttle you left engaged to an airlock outside, the inside doors obscured with guano."
       -- E and W sides are borders with other level sections, so no oriels.
   }
 bridge = rogue
@@ -372,7 +372,7 @@ shallowRogue = rogue
   , citemNum      = 8 `d` 4
   , citemFreq     = ("starting weapon", 20)
                     : filter ((/= "treasure") . fst) (citemFreq rogue)
-  , cdesc         = "This close to the outer level, residence is not permitted and doors are sturdier, to contain a possible micro-meteorite breach. The passage upwards is not closed off, though, because some passengers can't live without regularly looking at the void and the light of distant suns and planets through the reinforced glass of oriels, as opposed to the glass of electronic displays. Animals appear to share the fascination, or perhaps they crave the increased gravity, nearly Earth-like, unlike elsewhere on the ship."
+  , cdesc         = "This close to the outermost deck, residence is not permitted and doors are sturdier, to contain a theoretically possible micro-meteorite breach. The entry is not closed off, though, because some passengers can't live without regularly looking at the void and the light of distant suns and planets through the reinforced glass of oriels, as opposed to the glass of electronic displays. Animals appear to share the fascination, perhaps craving the increased gravity, nearly Earth-like, unlike elsewhere on the ship."
   }
 
 -- * "Caves" on various celestial bodies (including, but not limited to, moons,

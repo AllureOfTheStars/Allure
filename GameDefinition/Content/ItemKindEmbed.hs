@@ -376,7 +376,7 @@ blackStarrySky = ItemKind
   , iaspects = [SetFlag Durable]
   , ieffects = [ Temporary "look into the void and it looks back"
                , OneOf [RefillCalm 5, RefillCalm (-5)] ]
-  , idesc    = "Occasionally a planet zips by, but is unable to disperse the blackness. The black starscape is constantly rotating. The frantic dance is silent, muted, indifferent. There is not even a hint of vibration, just the sense of heaviness and dizziness."  -- appears only on 100% flavour tiles, useless and trivial to notice, so the writeup can be longer; who am I kidding, I can hardly write condensed prose
+  , idesc    = "Occasionally a planet zips by, but is unable to disperse the blackness. The black starscape constantly rotates. The frantic dance is silent, muted, indifferent. There is not even a hint of vibration, just the sense of heaviness and dizziness."  -- appears only on 100% flavour tiles, useless and trivial to notice, so the writeup can be longer; who am I kidding, I can hardly write condensed prose
   , ikit     = []
   }
 disengagedDocking = ItemKind
