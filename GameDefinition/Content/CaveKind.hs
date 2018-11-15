@@ -70,7 +70,7 @@ rogue = CaveKind
                     , ("tiny lift", 1) ]
   , cstairAllowed = [ ("walled staircase", 50), ("open staircase", 50)
                     , ("tiny staircase", 1) ]
-  , cdesc         = "Winding tunnels stretch into the dark. The rest of the area is packed with tanks and cells of raw materials and machinery."
+  , cdesc         = "Winding tunnels stretch into the dark. A few areas are passable but the remainder is packed with tanks and cells of raw materials and machinery."
   }
 residential = rogue
   { cfreq         = [("caveResidential", 1)]
