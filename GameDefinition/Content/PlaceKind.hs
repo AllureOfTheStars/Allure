@@ -1255,9 +1255,10 @@ cells = PlaceKind
   }
 cells2 = cells
   { pname    = "humidity equalizers"
-  , ptopLeft = [ "f·#"
-               , "·#·"
-               , "·#·"
+  , prarity  = [(1, 3), (10, 3)]
+  , ptopLeft = [ "f·#·"  -- extra column to avoid blocked exits
+               , "·#··"
+               , "·#··"
                ]
   }
 cells3 = cells
