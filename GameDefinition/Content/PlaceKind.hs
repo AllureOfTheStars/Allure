@@ -45,13 +45,13 @@ generatedStairs =
   let (stairs, lifts) = partition ((/= "a lift") . pname) staircaseBasic
       gatedStairs = map switchStaircaseToGated stairs
       gatedLifts = map switchLiftToGated lifts
-      weldedUpStairs = map switchStaircaseToWeldedUp stairs
-      weldedUpLifts = map switchLiftToWeldedUp lifts
+      weldedStairs = map switchStaircaseToWelded stairs
+      weldedLifts = map switchLiftToWelded lifts
       outdoorStairs = map switchStaircaseToOutdoor stairs
-      stairsAll = stairs ++ gatedStairs ++ weldedUpStairs ++ outdoorStairs
-      liftsAll = lifts ++ gatedLifts ++ weldedUpLifts
+      stairsAll = stairs ++ gatedStairs ++ weldedStairs ++ outdoorStairs
+      liftsAll = lifts ++ gatedLifts ++ weldedLifts
   in gatedStairs ++ gatedLifts
-     ++ weldedUpStairs ++ weldedUpLifts
+     ++ weldedStairs ++ weldedLifts
      ++ outdoorStairs
      ++ map (switchExitToUp "stair terminal") stairsAll
      ++ map (switchExitToUp "lift terminal") liftsAll
@@ -1486,32 +1486,32 @@ switchLiftToGated s = s
  , poverrideLit = overrideGatedLift
  }
 
-overrideWeldedUpStaircase :: [(Char, GroupName TileKind)]
-overrideWeldedUpStaircase =
+overrideWeldedStaircase :: [(Char, GroupName TileKind)]
+overrideWeldedStaircase =
   [ ('<', "welded staircase up"), ('>', "ordinary staircase down")
   , ('I', "signboard"), ('S', "fillerWall") ]
 
-switchStaircaseToWeldedUp :: PlaceKind -> PlaceKind
-switchStaircaseToWeldedUp s = s
+switchStaircaseToWelded :: PlaceKind -> PlaceKind
+switchStaircaseToWelded s = s
  { psymbol   = 'w'
- , pfreq     = map (first (\t -> toGroupName $ "welded up" <+> fromGroupName t))
+ , pfreq     = map (first (\t -> toGroupName $ "welded" <+> fromGroupName t))
                $ pfreq s
- , poverrideDark = overrideWeldedUpStaircase
- , poverrideLit = overrideWeldedUpStaircase
+ , poverrideDark = overrideWeldedStaircase
+ , poverrideLit = overrideWeldedStaircase
  }
 
-overrideWeldedUpLift :: [(Char, GroupName TileKind)]
-overrideWeldedUpLift =
+overrideWeldedLift :: [(Char, GroupName TileKind)]
+overrideWeldedLift =
   [ ('<', "welded lift up"), ('>', "ordinary lift down")
   , ('I', "signboard"), ('S', "lift shaft") ]
 
-switchLiftToWeldedUp :: PlaceKind -> PlaceKind
-switchLiftToWeldedUp s = s
+switchLiftToWelded :: PlaceKind -> PlaceKind
+switchLiftToWelded s = s
  { psymbol   = 'w'
- , pfreq     = map (first (\t -> toGroupName $ "welded up" <+> fromGroupName t))
+ , pfreq     = map (first (\t -> toGroupName $ "welded" <+> fromGroupName t))
                $ pfreq s
- , poverrideDark = overrideWeldedUpLift
- , poverrideLit = overrideWeldedUpLift
+ , poverrideDark = overrideWeldedLift
+ , poverrideLit = overrideWeldedLift
  }
 
 overrideOutdoor :: [(Char, GroupName TileKind)]

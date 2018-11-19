@@ -355,12 +355,12 @@ bridge = rogue
   , cfenceTileE   = "habitat containment wall"
   , cfenceTileS   = "habitat containment wall"
   , cfenceTileW   = "habitat containment wall"
-  , cstairFreq    = [ ("welded up walled lift", 50)
-                    , ("welded up open lift", 50)
-                    , ("welded up tiny lift", 1) ]
-  , cstairAllowed = [ ("welded up walled staircase", 50)
-                    , ("welded up open staircase", 50)
-                    , ("welded up tiny staircase", 1) ]
+  , cstairFreq    = [ ("welded walled lift", 50)
+                    , ("welded open lift", 50)
+                    , ("welded tiny lift", 1) ]
+  , cstairAllowed = [ ("welded walled staircase", 50)
+                    , ("welded open staircase", 50)
+                    , ("welded tiny staircase", 1) ]
   , cdesc         = "The bridge is gutted out and nonoperational. There are animal cries down below and ominous silence up above."
   }
 shallowRogue = rogue
