@@ -1765,7 +1765,9 @@ currency = currencyTemplate
 needle = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "needle"
-  , ifreq    = [("needle", 1)]  -- special; TODO: fast when fired, not thrown
+  , ifreq    = [("needle", 1), ("common item", 1)]
+      -- marked as common to ensure can be polymorphed;
+      -- TODO: fast when fired, not thrown
   , iflavour = zipPlain [BrBlue]
   , icount   = 1 + 8 `d` 3
   , irarity  = [(1, 1)]
@@ -1796,7 +1798,7 @@ constructionHooter = necklaceTemplate
 scrollAd1 = scrollTemplate
   { ifreq    = [("common item", 100)]
   , icount   = 1
-  , irarity  = [(1, 1), (10, 1)]  -- not every playthrough needs it
+  , irarity  = [(1, 1)]  -- not every playthrough needs it
   , iaspects = [ELabel "of local information"]
                ++ iaspects scrollTemplate
   , ieffects = [ toOrganGood "resolute" (500 + 1 `d` 200)
