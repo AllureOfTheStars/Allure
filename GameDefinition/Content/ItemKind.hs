@@ -1114,16 +1114,19 @@ necklace6 = necklaceTemplate
   }
 necklace7 = necklaceTemplate
   { ifreq    = [("curious item", 100), ("any jewelry", 100)]
+  , irarity  = [(10, 1)]  -- powerful and determines tactics for one actor
   , iaspects = [ SetFlag Unique, ELabel "of Overdrive"
-               , Timeout 4
-               , AddSkill SkMaxHP 15
+               , Timeout 10
+               , AddSkill SkMaxHP 10  -- good effects vanish when taken off
+               , AddSkill SkSpeed 10
                , SetFlag Durable ]
                ++ iaspects_necklaceTemplate
-  , ieffects = [ Recharging (InsertMove $ 9 + 1 `d` 11)  -- unpredictable
-               , Recharging (RefillCalm (-1))  -- fake "hears something" :)
-               , Recharging (toOrganBad "impatient" 4)]
+  , ieffects = [ Recharging (RefillCalm (-2))  -- don't spam
+               , Recharging (toOrganBad "pacified" 10)]
                  -- The same duration as timeout, to avoid spurious messages
                  -- as well as unlimited accumulation of the duration.
+                 -- Timeout lessens temptation to frequently wear and take off,
+                 -- to engage in melee, which would lead to micromanagement.
   -- , idesc    = ""
   }
 necklace8 = necklaceTemplate
@@ -1212,7 +1215,6 @@ ring2 = ringTemplate
                , AddSkill SkMaxCalm (-40), AddSkill SkMaxHP (-20)
                , SetFlag Durable, EqpSlot EqpSlotSpeed ]
                ++ iaspects ringTemplate
-  , ieffects = [OnSmash (Explode "distortion")]  -- high power
   -- , idesc    = ""
   }
 ring3 = ringTemplate
@@ -1249,7 +1251,7 @@ ring6 = ringTemplate  -- by the time it's found, probably no space in eqp
   , idesc    = "A sturdy ring with a large, shining stone."
   }
 ring7 = ringTemplate
-  { ifreq    = [("common item", 10), ("ring of opportunity sniper", 1) ]
+  { ifreq    = [("common item", 10), ("ring of opportunity sniper", 1)]
   , irarity  = [(10, 5)]  -- low @ifreq@
   , iaspects = [ ELabel "of opportunity sniper"
                , AddSkill SkProject 8
@@ -1258,13 +1260,15 @@ ring7 = ringTemplate
   , ieffects = [OnSmash (Explode "distortion")]  -- high power
   }
 ring8 = ringTemplate
-  { ifreq    = [("common item", 1), ("ring of opportunity grenadier", 1) ]
-  , irarity  = [(1, 1)]
-  , iaspects = [ ELabel "of opportunity grenadier"
+  { ifreq    = [("treasure", 100), ("any jewelry", 100)]
+  , irarity  = [(10, 2)]
+  , iaspects = [ SetFlag Unique, ELabel "of Overwatch"
                , AddSkill SkProject 11
-               , EqpSlot EqpSlotProject ]
+               , AddSkill SkMaxHP (-20)
+               , SetFlag Durable, EqpSlot EqpSlotProject ]
                ++ iaspects ringTemplate
-  , ieffects = [OnSmash (Explode "distortion")]  -- high power
+  -- , idesc    = ""  -- perhaps the constant trickle of a drug weakens bodily
+                      -- resilience and recovery
   }
 
 -- ** Armor
@@ -1804,7 +1808,7 @@ scrollAd1 = scrollTemplate
   , ieffects = [ toOrganGood "resolute" (500 + 1 `d` 200)
                    -- a drawback (at least initially) due to @calmEnough@
                , Explode "cruise ad hologram" ]
-  , idesc    = "Biodegradable self-powered mini-projector displaying a holographic guide or crucial local information."
+  , idesc    = "Biodegradable self-powered mini-projector displaying a holographic guide or crucial shopping hints."
   }
 blowtorch = ItemKind
   { isymbol  = symbolLight
