@@ -322,14 +322,16 @@ griffonVulture = ItemKind
   , iweight  = 13000
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 12, AddSkill SkMaxCalm 80
+                   -- enough Calm to summon twice only if not attacked at all;
+                   -- loses a lot of sight after summoning
                , AddSkill SkSpeed 22, AddSkill SkNocto 2
                , AddSkill SkAlter (-2)  -- can't use stairs nor doors
                , AddSkill SkFlying 10  -- flies slowly, but far
                , SetFlag Durable ]
-      -- Animals don't have leader, usually, so even if only one of level,
+      -- Animals don't have leader, usually, so even if only one on level,
       -- it pays the communication overhead, so the speed is higher to get
-      -- them on par with human leaders moving solo. Random double moves,
-      -- on either side, are just too frustrating.
+      -- them on par with human leaders moving solo. Common random double moves,
+      -- on either side, are just too bothersome.
   , ieffects = []
   , idesc    = "It soars high above, searching for vulnerable prey."
   , ikit     = [ ("screeching beak", COrgan)  -- in reality it grunts and hisses
@@ -830,6 +832,8 @@ lightRobot = ItemKind
   , iweight  = 80000
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 15, AddSkill SkMaxCalm 40
+                   -- can't summon again for a long time;
+                   -- loses a lot of sight after summoning
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
                , AddSkill SkProject 2, AddSkill SkAlter 2  -- uses all stairs
                , AddSkill SkApply 1  -- apply the hooter
@@ -854,6 +858,8 @@ heavyRobot = ItemKind
   , iweight  = 800000
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 41, AddSkill SkMaxCalm 40
+                   -- can't summon again for a long time;
+                   -- loses a lot of sight after summoning
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
                , AddSkill SkProject 2, AddSkill SkAlter 2  -- uses all stairs
                , AddSkill SkApply 1  -- apply the hooter
@@ -901,6 +907,8 @@ cleanerRobot = ItemKind
   , idamage  = 0
   , iaspects = [ SetFlag Unique
                , AddSkill SkMaxHP 120, AddSkill SkMaxCalm 40
+                   -- can't summon again for a long time;
+                   -- loses a lot of sight after summoning
                , AddSkill SkSpeed 18, AddSkill SkNocto 2
                , AddSkill SkAggression 1
                , AddSkill SkAlter 3
