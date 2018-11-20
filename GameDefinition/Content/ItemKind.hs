@@ -1794,14 +1794,15 @@ constructionHooter = necklaceTemplate
   , idesc    = "An emergency hooter for alarming human personel in case their life is in danger. Worn by construction robots around their \"neck\", where it's least exposed, but nevertheless it needs to be heavily armored and running on its own power suppply."
   }
 scrollAd1 = scrollTemplate
-  { ifreq    = [("treasure", 100)]
-  , irarity  = [(1, 2), (10, 1)]  -- not every playthrough needs it
-  , iaspects = [SetFlag Unique, ELabel "Displaying a Happy Couple"]
+  { ifreq    = [("common item", 100)]
+  , icount   = 1
+  , irarity  = [(1, 1), (10, 1)]  -- not every playthrough needs it
+  , iaspects = [ELabel "of local information"]
                ++ iaspects scrollTemplate
   , ieffects = [ toOrganGood "resolute" (500 + 1 `d` 200)
                    -- a drawback (at least initially) due to @calmEnough@
                , Explode "cruise ad hologram" ]
-  , idesc    = "Biodegradable self-powered mini-projector displaying a holographic ad for an interplanetary cruise."
+  , idesc    = "Biodegradable self-powered mini-projector displaying a holographic guide or crucial local information."
   }
 blowtorch = ItemKind
   { isymbol  = symbolLight
