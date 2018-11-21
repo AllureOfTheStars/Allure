@@ -67,8 +67,9 @@ tmpProtectedMelee = tmpAspects "protected from melee"
                                [AddSkill SkArmorMelee 50]
 tmpProtectedRanged = tmpAspects "protected from ranged"
                                 [AddSkill SkArmorRanged 25]
-tmpVulnerable = tmpAspects "painted red" [ AddSkill SkArmorMelee (-50)
-                                         , AddSkill SkArmorRanged (-25) ]
+tmpVulnerable = tmpAspects "painted" [ AddSkill SkArmorMelee (-50)
+                                     , AddSkill SkArmorRanged (-25)
+                                     , AddSkill SkShine 1 ]
 tmpResolute = tmpAspects "resolute" [AddSkill SkMaxCalm 60]
 tmpFast20 = tmpAspects "hasted" [AddSkill SkSpeed 20]
 tmpSlow10 = tmpAspects "slowed" [AddSkill SkSpeed (-10)]

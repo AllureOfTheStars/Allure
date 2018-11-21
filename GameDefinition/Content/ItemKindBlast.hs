@@ -589,8 +589,8 @@ protectingBalmRanged = ItemKind
   }
 vulnerabilityBalm = ItemKind
   { isymbol  = '`'
-  , iname    = "red paint"
-  , ifreq    = [("red paint", 1)]
+  , iname    = "fluorescent paint"
+  , ifreq    = [("fluorescent paint", 1)]
   , iflavour = zipPlain [BrRed]
   , icount   = 16
   , irarity  = [(1, 1)]
@@ -598,7 +598,7 @@ vulnerabilityBalm = ItemKind
   , iweight  = 1
   , idamage  = 0
   , iaspects = [toLinger 10, SetFlag Fragile, SetFlag Blast]
-  , ieffects = [toOrganBad "painted red" (3 + 1 `d` 3)]
+  , ieffects = [toOrganBad "painted" (3 + 1 `d` 3)]
   , idesc    = ""
   , ikit     = []
   }

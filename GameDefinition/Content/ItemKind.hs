@@ -402,10 +402,10 @@ flask4 = flaskTemplate
   }
 flask5 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
-  , iaspects = ELabel  "of red paint"
+  , iaspects = ELabel "of fluorescent paint"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganBad "painted red" (20 + 1 `d` 5)
-               , OnSmash (Explode "red paint") ]
+  , ieffects = [ toOrganBad "painted" (20 + 1 `d` 5)
+               , OnSmash (Explode "fluorescent paint") ]
   }
 flask6 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
@@ -514,7 +514,7 @@ flask17 = flaskTemplate
                : iaspects flaskTemplate
   , ieffects = [ toOrganNoTimer "poisoned"
                , toOrganBad "weakened" (20 + 1 `d` 5)
-               , toOrganBad "painted red" (20 + 1 `d` 5)
+               , toOrganBad "painted" (20 + 1 `d` 5)
                , OnSmash (Explode "glass hail") ]  -- enough glass to cause that
   }
 
