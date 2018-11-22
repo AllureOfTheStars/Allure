@@ -1803,12 +1803,12 @@ scrollAd1 = scrollTemplate
   { ifreq    = [("common item", 100)]
   , icount   = 1
   , irarity  = [(1, 1)]  -- not every playthrough needs it
-  , iaspects = [ELabel "of local information"]
+  , iaspects = [ELabel "of turist guide"]
                ++ iaspects scrollTemplate
   , ieffects = [ toOrganGood "resolute" (500 + 1 `d` 200)
                    -- a drawback (at least initially) due to @calmEnough@
                , Explode "cruise ad hologram" ]
-  , idesc    = "Biodegradable self-powered mini-projector displaying a holographic guide or crucial shopping hints."
+  , idesc    = "Biodegradable self-powered mini-projector displaying holographic ads and shopping hints."
   }
 blowtorch = ItemKind
   { isymbol  = symbolLight
