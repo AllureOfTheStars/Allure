@@ -803,7 +803,7 @@ blastBonusSkMelee = blastBonusStat "more combative"
 blastBonusSkDisplace = blastBonusStat "more displacing"
 blastBonusSkAlter = blastBonusStat "more altering"
 blastBonusSkWait = blastBonusStat "more patient"
-blastBonusSkMoveItem = blastBonusStat "tidier"
+blastBonusSkMoveItem = blastBonusStat "more tidy"
 blastBonusSkProject = blastBonusStat "more projecting"
 blastBonusSkApply = blastBonusStat "more practical"
 
