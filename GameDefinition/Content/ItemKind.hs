@@ -584,7 +584,7 @@ potion5 = potionTemplate
                                 , Explode "sparse shower"
                                 , Explode "melee protective balm"
                                 , Explode "ranged protective balm"
-                                , Explode "red paint" ]) ]
+                                , Explode "fluorescent paint" ]) ]
   }
 potion6 = potionTemplate
   -- needs to be common to show at least a portion of effects
