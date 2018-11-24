@@ -295,14 +295,14 @@ rosterRaid, rosterBrawl, rosterShootout, rosterHunt, rosterEscape, rosterZoo, ro
 
 rosterRaid = Roster
   { rosterList = [ ( playerHero {fhiCondPoly = hiHeroShort}
-                   , [(2, 1, "hero")] )
+                   , [(3, 1, "hero")] )
                  , ( playerAntiHero { fname = "Red Collar Bro"
                                     , fhiCondPoly = hiHeroShort }
-                   , [(2, 1, "hero")] )
+                   , [(3, 1, "hero")] )
                  , ( playerAnimal  -- starting over escape
-                   , [(2, 2, "animal")] )
+                   , [(3, 2, "animal")] )
                  , ( playerRobot
-                   , [(2, 1, "robot")] )
+                   , [(3, 1, "robot")] )
                  , (playerHorror, []) ]  -- for summoned monsters
   , rosterEnemy = [ ("Spacefarer", "Animal Kingdom")
                   , ("Spacefarer", "Robot Anarchy")
@@ -316,11 +316,11 @@ rosterRaid = Roster
 rosterBrawl = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
                                 , fhiCondPoly = hiHeroMedium }
-                   , [(3, 3, "hero")] )
+                   , [(4, 3, "hero")] )
                  , ( playerAntiHero { fname = "Red Collar Bro"
                                     , fcanEscape = False
                                     , fhiCondPoly = hiHeroMedium }
-                   , [(3, 3, "hero")] )
+                   , [(4, 3, "hero")] )
                  , (playerHorror, []) ]
   , rosterEnemy = [ ("Spacefarer", "Red Collar Bro")
                   , ("Spacefarer", "Horror Den")
@@ -348,11 +348,11 @@ rosterShootout = Roster
 rosterHunt = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
                                 , fhiCondPoly = hiHeroMedium }
-                   , [(-5, 10, "soldier hero")] )
+                   , [(7, 10, "soldier hero")] )
                  , ( playerAntiHero { fname = "Red Collar Bro"
                                     , fcanEscape = False
                                     , fhiCondPoly = hiHeroMedium }
-                   , [(-5, 1, "scout hero"), (-5, 5, "ambusher hero")] )
+                   , [(7, 1, "scout hero"), (7, 5, "ambusher hero")] )
                  , (playerHorror, []) ]
   , rosterEnemy = [ ("Spacefarer", "Red Collar Bro")
                   , ("Spacefarer", "Horror Den")
@@ -361,12 +361,12 @@ rosterHunt = Roster
 
 rosterEscape = Roster
   { rosterList = [ ( playerHero {fhiCondPoly = hiHeroMedium}
-                   , [(7, 1, "scout hero"), (7, 2, "escapist hero")] )
+                   , [(9, 1, "scout hero"), (9, 2, "escapist hero")] )
                  , ( playerAntiHero { fname = "Red Collar Bro"
                                     , fcanEscape = False  -- start on escape
                                     , fneverEmpty = False  -- loot after killing
                                     , fhiCondPoly = hiHeroMedium }
-                   , [(7, 1, "scout hero"), (7, 7, "ambusher hero")] )
+                   , [(9, 1, "scout hero"), (9, 7, "ambusher hero")] )
                  , (playerHorror, []) ]
   , rosterEnemy = [ ("Spacefarer", "Red Collar Bro")
                   , ("Spacefarer", "Horror Den")
@@ -376,9 +376,9 @@ rosterEscape = Roster
 rosterZoo = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
                                 , fhiCondPoly = hiHeroLong }
-                   , [(8, 5, "soldier hero")] )
+                   , [(11, 5, "soldier hero")] )
                  , ( playerAnimal {fneverEmpty = True}
-                   , [(8, 100, "mobile animal")] )
+                   , [(11, 100, "mobile animal")] )
                  , (playerHorror, []) ]  -- for summoned monsters
   , rosterEnemy = [ ("Spacefarer", "Animal Kingdom")
                   , ("Spacefarer", "Horror Den") ]
@@ -387,11 +387,11 @@ rosterZoo = Roster
 rosterAmbush = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
                                 , fhiCondPoly = hiHeroMedium }
-                   , [(9, 1, "scout hero"), (9, 5, "ambusher hero")] )
+                   , [(13, 1, "scout hero"), (13, 5, "ambusher hero")] )
                  , ( playerAntiHero { fname = "Gray Off-World Mercenary"
                                     , fcanEscape = False
                                     , fhiCondPoly = hiHeroMedium }
-                   , [(9, 12, "soldier hero")] )
+                   , [(13, 12, "soldier hero")] )
                  , (playerHorror, []) ]
   , rosterEnemy = [ ("Spacefarer", "Gray Off-World Mercenary")
                   , ("Spacefarer", "Horror Den")
@@ -438,13 +438,13 @@ rosterCrawlSurvival = rosterCrawl
 -- No horrors faction needed, because spawned heroes land in civilian faction.
 rosterSafari = Roster
   { rosterList = [ ( playerMonsterTourist
-                   , [(4, 15, "monster")] )
+                   , [(5, 15, "monster")] )
                  , ( playerHunamConvict
-                   , [(4, 3, "civilian")] )
+                   , [(5, 3, "civilian")] )
                  , ( playerAnimalMagnificent
-                   , [(7, 20, "mobile animal")] )
+                   , [(10, 20, "mobile animal")] )
                  , ( playerAnimalExquisite  -- start on escape
-                   , [(10, 30, "mobile animal")] )
+                   , [(15, 30, "mobile animal")] )
                  , (playerHorror, []) ]  -- construction hooter; neutral
   , rosterEnemy = [ ("Alien Tourist Office", "Hunam Convict")
                   , ( "Alien Tourist Office"
@@ -462,27 +462,27 @@ rosterSafariSurvival = rosterSafari
   { rosterList = [ ( playerMonsterTourist
                        { fleaderMode = LeaderAI $ AutoLeader True True
                        , fhasUI = False }
-                   , [(4, 15, "monster")] )
+                   , [(5, 15, "monster")] )
                  , ( playerHunamConvict
-                   , [(4, 3, "civilian")] )
+                   , [(5, 3, "civilian")] )
                  , ( playerAnimalMagnificent
                        { fleaderMode = LeaderUI $ AutoLeader True False
                        , fhasUI = True }
-                   , [(7, 20, "mobile animal")] )
+                   , [(10, 20, "mobile animal")] )
                  , ( playerAnimalExquisite
-                   , [(10, 30, "mobile animal")] )
+                   , [(15, 30, "mobile animal")] )
                  , (playerHorror, []) ] }
 
 rosterBattle = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
                                 , fhiCondPoly = hiHeroLong }
-                   , [(5, 5, "soldier hero")] )
+                   , [(10, 5, "soldier hero")] )
                  , ( playerMonster {fneverEmpty = True}
-                   , [(5, 35, "mobile monster")] )
+                   , [(10, 35, "mobile monster")] )
                  , ( playerAnimal {fneverEmpty = True}
-                   , [(5, 20, "mobile animal")] )
+                   , [(10, 20, "mobile animal")] )
                  , ( playerRobot {fneverEmpty = True}
-                   , [(5, 15, "mobile robot")] ) ]
+                   , [(10, 15, "mobile robot")] ) ]
   , rosterEnemy = [ ("Spacefarer", "Alien Hierarchy")
                   , ("Spacefarer", "Animal Kingdom")
                   , ("Spacefarer", "Robot Anarchy") ]
@@ -496,14 +496,14 @@ rosterBattleDefense = rosterBattle
                                 , fleaderMode =
                                     LeaderAI $ AutoLeader False False
                                 , fhasUI = False }
-                   , [(5, 5, "soldier hero")] )
+                   , [(10, 5, "soldier hero")] )
                  , ( playerMonster { fneverEmpty = True
                                    , fhasUI = True }
-                   , [(5, 35, "mobile monster")] )
+                   , [(10, 35, "mobile monster")] )
                  , ( playerAnimal {fneverEmpty = True}
-                   , [(5, 20, "mobile animal")] )
+                   , [(10, 20, "mobile animal")] )
                  , ( playerRobot {fneverEmpty = True}
-                   , [(5, 15, "mobile robot")] ) ] }
+                   , [(10, 15, "mobile robot")] ) ] }
 
 rosterBattleSurvival = rosterBattle
   { rosterList = [ ( playerHero { fcanEscape = False
@@ -511,14 +511,14 @@ rosterBattleSurvival = rosterBattle
                                 , fleaderMode =
                                     LeaderAI $ AutoLeader False False
                                 , fhasUI = False }
-                   , [(5, 5, "soldier hero")] )
+                   , [(10, 5, "soldier hero")] )
                  , ( playerMonster {fneverEmpty = True}
-                   , [(5, 35, "mobile monster")] )
+                   , [(10, 35, "mobile monster")] )
                  , ( playerAnimal { fneverEmpty = True
                                   , fhasUI = True }
-                   , [(5, 20, "mobile animal")] )
+                   , [(10, 20, "mobile animal")] )
                  , ( playerRobot {fneverEmpty = True}
-                   , [(5, 15, "mobile robot")] ) ] }
+                   , [(10, 15, "mobile robot")] ) ] }
 
 rosterDefense = rosterCrawl
   { rosterList = [ ( playerAntiHero
@@ -542,19 +542,19 @@ rosterDefenseEmpty = rosterCrawl
 
 cavesRaid, cavesBrawl, cavesShootout, cavesHunt, cavesEscape, cavesZoo, cavesAmbush, cavesCrawl, cavesCrawlEmpty, cavesDig, cavesSee, cavesSafari, cavesBattle :: Caves
 
-cavesRaid = [([2], ["caveRaid"])]
+cavesRaid = [([3], ["caveRaid"])]
 
-cavesBrawl = [([3], ["caveBrawl"])]
+cavesBrawl = [([4], ["caveBrawl"])]
 
 cavesShootout = [([5], ["caveShootout"])]
 
-cavesHunt = [([-5], ["caveHunt"])]
+cavesHunt = [([7], ["caveHunt"])]
 
-cavesEscape = [([7], ["caveEscape"])]
+cavesEscape = [([9], ["caveEscape"])]
 
-cavesZoo = [([8], ["caveZoo"])]
+cavesZoo = [([11], ["caveZoo"])]
 
-cavesAmbush = [([9], ["caveAmbush"])]
+cavesAmbush = [([13], ["caveAmbush"])]
 
 listCrawl :: [([Int], [GroupName CaveKind])]
 listCrawl =
@@ -598,8 +598,8 @@ allCaves =
   , "caveRogue", "caveResidential", "caveLaboratory", "caveArena", "caveCasino"
   , "caveMuseum", "caveNoise", "cavePower", "caveOutermost", "caveExit" ]
 
-cavesSafari = reverse [ ([4], ["caveSafari1"])
-                      , ([7], ["caveSafari2"])
-                      , ([10], ["caveSafari3"]) ]
+cavesSafari = reverse [ ([5], ["caveSafari1"])
+                      , ([10], ["caveSafari2"])
+                      , ([15], ["caveSafari3"]) ]
 
-cavesBattle = [([5], ["caveBattle"])]
+cavesBattle = [([10], ["caveBattle"])]
