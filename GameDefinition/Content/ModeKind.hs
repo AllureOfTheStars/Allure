@@ -405,7 +405,7 @@ rosterCrawl = Roster
                    , [] )
                  , ( playerAnimal
                    , -- Optional huge battle at the end:
-                     [(12, 100, "mobile animal")] )
+                     [(15, 100, "mobile animal")] )
                  , ( playerRobot
                    , [] ) ]  -- gentle introduction
   , rosterEnemy = [ ("Spacefarer", "Alien Hierarchy")
@@ -431,7 +431,7 @@ rosterCrawlSurvival = rosterCrawl
                    , -- Fun from the start to avoid empty initial level:
                      [ (3, 5 + 1 `d` 2, "animal")  -- many, because no spawning
                      -- Optional huge battle at the end:
-                     , (12, 100, "mobile animal") ] )
+                     , (15, 100, "mobile animal") ] )
                  , ( playerRobot
                    , [] ) ] }  -- gentle introduction
 
@@ -529,7 +529,7 @@ rosterDefense = rosterCrawl
                    , -- Fun from the start to avoid empty initial level:
                      [ (3, 5 + 1 `d` 2, "animal")  -- many, because no spawning
                      -- Optional huge battle at the end:
-                     , (12, 100, "mobile animal") ] )
+                     , (15, 100, "mobile animal") ] )
                  , ( playerRobot
                    , [] ) ] }
 
@@ -562,14 +562,16 @@ listCrawl =
   , ([2], ["caveShallowRogue"])
   , ([3], ["caveBridge"])
   , ([4], ["caveNoise"])
-  , ([6, 5], ["caveRogue", "caveArena"])
+  , ([7, 6, 5], ["default random", "caveRogue", "caveArena"])
        -- reversed order, to match @reverse@ later on
-  , ([7], ["caveLaboratory"])
-  , ([10, 9, 8], ["caveResidential", "caveCasino", "caveMuseum"])
-  , ([11], ["caveExit"])
-  , ([12], ["cavePower"]) ]
+  , ([8], ["caveLaboratory"])
+  , ([11, 10, 9], ["default random", "caveResidential", "caveMuseum"])
+  , ([12], ["caveExit"])
+  , ([14, 13], ["default random", "caveCasino"])
+  , ([15], ["cavePower"]) ]
 
--- Reversed to have the last cave small and exactly in the middle.
+-- Reversed to have the last cave small and exactly in the middle
+-- of the screen.
 cavesCrawl = reverse listCrawl
 
 cavesCrawlEmpty = reverse $
@@ -582,7 +584,7 @@ renumberCaves :: Int -> ([Int], [GroupName CaveKind])
 renumberCaves offset (ns, l) = (map (+ offset) ns, l)
 
 cavesDig = reverse $ concat $ zipWith (map . renumberCaves)
-                                      [0, 12 ..]
+                                      [0, 15 ..]
                                       (replicate 100 listCrawl)
 
 cavesSee = let numberCaves n c = ([n], [c])

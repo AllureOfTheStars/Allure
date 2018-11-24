@@ -29,7 +29,7 @@ rogue,    residential, arena, casino, museum, laboratory, noise, power, empty, e
 rogue = CaveKind
   { csymbol       = 'R'
   , cname         = "Maintenance and storage"
-  , cfreq         = [ ("default random", 100), ("caveRogue", 1) ]
+  , cfreq         = [("default random", 100), ("caveRogue", 1)]
   , cXminSize     = 80
   , cYminSize     = 42
   , ccellSize     = DiceXY (2 `d` 4 + 10) (1 `d` 3 + 6)
@@ -73,7 +73,7 @@ rogue = CaveKind
   , cdesc         = "Winding tunnels stretch into the dark. A few areas are passable but the remainder is packed with tanks and cells of raw materials and machinery."
   }
 residential = rogue
-  { cfreq         = [("caveResidential", 1)]
+  { cfreq         = [("default random", 50), ("caveResidential", 1)]
   , cname         = "Residential area"
   , cmaxPlaceSize = DiceXY 12 20  -- fewer big rooms
   , cdarkOdds     = 51  -- all rooms dark
@@ -88,7 +88,7 @@ residential = rogue
 arena = rogue
   { csymbol       = 'A'
   , cname         = "Recreational deck"
-  , cfreq         = [("default random", 50), ("caveArena", 1)]
+  , cfreq         = [("caveArena", 1)]
   , cXminSize     = 80
   , cYminSize     = 25
   , ccellSize     = DiceXY (3 `d` 3 + 17) (1 `d` 3 + 5)
