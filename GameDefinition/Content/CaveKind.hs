@@ -293,6 +293,7 @@ exit = empty
   , cfreq         = [("caveExit", 1)]
   , ccellSize     = DiceXY (1 `d` 2 + 20) 16
   , cmaxPlaceSize = DiceXY 25 20
+  , cdarkOdds     = 51  -- all dark to compensate for the always lit shuttles
   , cplaceFreq    = [("exit", 1)]
   , cdefTile      = "exitSetLit"
   , cdarkCorTile  = "transport route"
