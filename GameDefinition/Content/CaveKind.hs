@@ -45,8 +45,8 @@ rogue = CaveKind
   , cdoorChance   = 3%4
   , copenChance   = 1%5
   , chidden       = 7
-  , cactorCoeff   = 65  -- the maze requires time to explore
-  , cactorFreq    = [("monster", 50), ("animal", 25), ("robot", 25)]
+  , cactorCoeff   = 50  -- the maze requires time to explore
+  , cactorFreq    = [("monster", 100), ("animal", 25), ("robot", 25)]
   , citemNum      = 8 `d` 4 + 20 - 20 `dL` 1  -- deep down quality over quantity
   , citemFreq     = [ ("common item", 40), ("treasure", 60)
                     , ("curious item", 10) ]
@@ -104,8 +104,8 @@ arena = rogue
   , cminStairDist = 20
   , cextraStairs  = 1 `d` 2
   , chidden       = 0
-  , cactorCoeff   = 50  -- smallish level, but easy to view and plan
-  , cactorFreq    = [ ("monster", 25), ("animal", 70), ("robot", 5)
+  , cactorCoeff   = 40  -- smallish level, but easy to view and plan
+  , cactorFreq    = [ ("monster", 50), ("animal", 70), ("robot", 5)
                     , ("aquatic", 10) ]
   , citemNum      = 7 `d` 4  -- few rooms
   , citemFreq     = [ ("common item", 20), ("treasure", 40), ("any scroll", 40)
@@ -131,8 +131,8 @@ casino = arena
   -- Trails provide enough light for fun stealth, though level too small.
   , cnightOdds    = 51  -- always night
   , cminStairDist = 10
-  , cactorCoeff   = 80  -- cramped, don't overcrowd
-  , cactorFreq    = [("monster", 25), ("animal", 25), ("robot", 50)]
+  , cactorCoeff   = 70  -- cramped, don't overcrowd
+  , cactorFreq    = [("monster", 50), ("animal", 25), ("robot", 50)]
   , citemNum      = 7 `d` 3  -- rare, so make it exciting, by keeping many items
   , citemFreq     = [ ("common item", 20)
                     , ("treasure", 80)  -- lives up to the name
@@ -153,8 +153,8 @@ museum = arena
   -- Trails provide enough light for fun stealth, though level too small.
   , cnightOdds    = 51  -- always night
   , cminStairDist = 10
-  , cactorCoeff   = 80  -- cramped, don't overcrowd
-  , cactorFreq    = [("monster", 50), ("animal", 25), ("robot", 25)]
+  , cactorCoeff   = 70  -- cramped, don't overcrowd
+  , cactorFreq    = [("monster", 100), ("animal", 25), ("robot", 25)]
   , citemNum      = 7 `d` 4  -- rare, so make it exciting
   , citemFreq     = [ ("common item", 20)
                     , ("treasure", 40)
@@ -184,7 +184,7 @@ laboratory = rogue
   , cextraStairs  = 1 `d` 2
   , cdoorChance   = 1
   , copenChance   = 1%2
-  , cactorFreq    = [ ("monster", 25), ("animal", 70), ("robot", 5)
+  , cactorFreq    = [ ("monster", 50), ("animal", 70), ("robot", 5)
                     , ("aquatic", 10) ]
   , citemNum      = 7 `d` 5  -- reward difficulty
   , citemFreq     = [ ("common item", 20), ("treasure", 40), ("potion", 40)
@@ -217,8 +217,8 @@ noise = rogue
   , cextraStairs  = 1
   , cdoorChance   = 1  -- to enable the doorlessWall hack
   , chidden       = 0
-  , cactorCoeff   = 80  -- the maze requires time to explore; also, small
-  , cactorFreq    = [("monster", 80), ("animal", 10), ("robot", 10)]
+  , cactorCoeff   = 70  -- the maze requires time to explore; also, small
+  , cactorFreq    = [("monster", 100), ("animal", 10), ("robot", 10)]
   , citemNum      = 8 `d` 5  -- an incentive to explore the labyrinth
   , citemFreq     = [ ("common item", 20), ("treasure", 60), ("explosive", 20)
                     , ("curious item", 30) ]
@@ -272,8 +272,8 @@ empty = rogue
   , cextraStairs  = 1
   , cdoorChance   = 1  -- to enable the doorlessWall hack
   , chidden       = 0
-  , cactorCoeff   = 40  -- easy to view and plan
-  , cactorFreq    = [("monster", 25), ("animal", 5), ("robot", 70)]
+  , cactorCoeff   = 35  -- easy to view and plan
+  , cactorFreq    = [("monster", 50), ("animal", 5), ("robot", 70)]
   , citemNum      = 7 `d` 4  -- few rooms
   , cplaceFreq    = [("empty", 1)]
   , cpassable     = True
@@ -367,7 +367,7 @@ shallowRogue = rogue
   { cfreq         = [("caveShallowRogue", 100)]
   , cXminSize     = 60
   , cYminSize     = 37
-  , cactorCoeff   = cactorCoeff rogue `div` 2  -- more difficult
+  , cactorCoeff   = 40  -- more difficult
   , cactorFreq    = filter ((/= "monster") . fst) $ cactorFreq rogue
   , citemNum      = 8 `d` 4
   , citemFreq     = ("starting weapon", 20)
