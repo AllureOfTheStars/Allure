@@ -633,7 +633,7 @@ wallOpenable = bedrock
   }
 wallObscuredSafety = TileKind
   { tsymbol  = '#'
-  , tname    = "safety procedures wall"
+  , tname    = "safety procedures board"
   , tfreq    = [("obscured wall", 5), ("exitSetLit", 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
