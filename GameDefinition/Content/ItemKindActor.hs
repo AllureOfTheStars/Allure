@@ -60,7 +60,7 @@ warrior = ItemKind
   , idesc    = ""
   -- , idesc    = "A hardened veteran of combat."
   , ikit     = [ ("fist", COrgan), ("foot", COrgan)
-               , ("eye 6", COrgan), ("ear 4", COrgan)
+               , ("eye 6", COrgan), ("ear 3", COrgan)
                , ("sapient brain", COrgan) ]
   }
 warrior2 = warrior
@@ -205,7 +205,7 @@ fastEye = ItemKind
   , idesc    = "It bites as blindingly fast as it runs. Or rolls? Or crawls? Also, cuts and pierces."
   , ikit     = [ ("tentacle", COrgan), ("jaw", COrgan)
                , ("speed gland 10", COrgan)
-               , ("eye 3", COrgan), ("ear 4", COrgan)
+               , ("eye 3", COrgan), ("ear 3", COrgan)
                , ("sapient brain", COrgan) ]
   }
 nose = ItemKind  -- depends solely on smell
@@ -251,10 +251,11 @@ elbow = ItemKind
   , ieffects = []
   , idesc    = "It moves in sudden jerks and never makes a noise. Speaks in hard objects hurled at deadly speeds."
   , ikit     = [ ("speed gland 4", COrgan)
-               , ("eye 8", COrgan), ("ear 10", COrgan)
+               , ("eye 6", COrgan), ("ear 8", COrgan)
+                   -- too powerful to get stronger sight
+               , ("sapient brain", COrgan)
                , ("any arrow", CSha), ("any arrow", CInv)
-               , ("weak arrow", CInv), ("weak arrow", CInv)
-               , ("sapient brain", COrgan) ]
+               , ("weak arrow", CInv), ("weak arrow", CInv) ]
   }
 torsor = ItemKind
   { isymbol  = 'M'
@@ -278,9 +279,9 @@ torsor = ItemKind
   , ikit     = [ ("tentacle", COrgan), ("hooked claw", COrgan)
                , ("large jaw", COrgan), ("sting", COrgan)
                , ("venom fang", COrgan), ("speed gland 4", COrgan)
-               , ("eye 6", COrgan), ("ear 9", COrgan)
-               , ("gem", CInv), ("gem", CInv), ("gem", CInv), ("gem", CInv)
-               , ("sapient brain", COrgan) ]
+               , ("eye 6", COrgan), ("ear 8", COrgan)
+               , ("sapient brain", COrgan)
+               , ("gem", CInv), ("gem", CInv), ("gem", CInv), ("gem", CInv) ]
   }
 
 -- * Animals
@@ -307,7 +308,7 @@ goldenJackal = ItemKind  -- basically a much smaller and slower hyena
   , ieffects = []
   , idesc    = "An opportunistic predator, feeding on carrion and the weak."
   , ikit     = [ ("small jaw", COrgan)
-               , ("eye 6", COrgan), ("nostril", COrgan), ("ear 9", COrgan)
+               , ("eye 6", COrgan), ("nostril", COrgan), ("ear 8", COrgan)
                , ("animal brain", COrgan) ]
   }
 griffonVulture = ItemKind
@@ -336,7 +337,8 @@ griffonVulture = ItemKind
   , idesc    = "It soars high above, searching for vulnerable prey."
   , ikit     = [ ("screeching beak", COrgan)  -- in reality it grunts and hisses
                , ("small claw", COrgan)
-               , ("eye 7", COrgan), ("ear 10", COrgan)
+               , ("eye 8", COrgan), ("ear 8", COrgan)
+                   -- can't shoot, so strong sight is OK
                , ("animal brain", COrgan) ]
   }
 skunk = ItemKind
@@ -358,7 +360,7 @@ skunk = ItemKind
   , idesc    = "Its only defence is the terrible stench."
   , ikit     = [ ("scent gland", COrgan)
                , ("small claw", COrgan), ("snout", COrgan)
-               , ("eye 3", COrgan), ("ear 7", COrgan)
+               , ("eye 3", COrgan), ("ear 6", COrgan)
                , ("animal brain", COrgan) ]
   }
 armadillo = ItemKind
@@ -399,7 +401,7 @@ gilaMonster = ItemKind
   , ieffects = []
   , idesc    = "Numbing venom ensures that even the fastest prey has no escape."
   , ikit     = [ ("venom tooth", COrgan), ("small claw", COrgan)
-               , ("eye 3", COrgan), ("nostril", COrgan), ("ear 5", COrgan)
+               , ("eye 3", COrgan), ("nostril", COrgan), ("ear 6", COrgan)
                , ("animal brain", COrgan) ]
   }
 rattlesnake = ItemKind
@@ -419,7 +421,7 @@ rattlesnake = ItemKind
   , ieffects = []
   , idesc    = "Beware its rattle - it serves as a warning of an agonising death."
   , ikit     = [ ("venom fang", COrgan), ("rattle", COrgan)
-               , ("eye 4", COrgan), ("nostril", COrgan), ("ear 6", COrgan)
+               , ("eye 3", COrgan), ("nostril", COrgan), ("ear 6", COrgan)
                , ("animal brain", COrgan) ]
   }
 hyena = ItemKind
@@ -439,7 +441,7 @@ hyena = ItemKind
   , ieffects = []
   , idesc    = "Skulking in the shadows, waiting for easy prey."
   , ikit     = [ ("jaw", COrgan)
-               , ("eye 6", COrgan), ("nostril", COrgan), ("ear 9", COrgan)
+               , ("eye 6", COrgan), ("nostril", COrgan), ("ear 8", COrgan)
                , ("animal brain", COrgan) ]
   }
 komodoDragon = ItemKind
@@ -461,7 +463,7 @@ komodoDragon = ItemKind
   , ikit     = [ ("large tail", COrgan), ("jaw", COrgan)
                , ("hooked claw", COrgan), ("speed gland 4", COrgan)
                , ("armored skin", COrgan)
-               , ("eye 3", COrgan), ("nostril", COrgan), ("ear 4", COrgan)
+               , ("eye 3", COrgan), ("nostril", COrgan), ("ear 3", COrgan)
                , ("animal brain", COrgan) ]
   }
 alligator = ItemKind
@@ -483,7 +485,7 @@ alligator = ItemKind
   , idesc    = "An armored predator from the dawn of time. You better not get within its reach."
   , ikit     = [ ("huge tail", COrgan), ("large jaw", COrgan)
                , ("small claw", COrgan), ("armored skin", COrgan)
-               , ("eye 6", COrgan), ("ear 9", COrgan)
+               , ("eye 6", COrgan), ("ear 8", COrgan)
                , ("animal brain", COrgan) ]
   }
 giantOctopus = ItemKind
@@ -500,11 +502,13 @@ giantOctopus = ItemKind
   , iaspects = [ AddSkill SkMaxHP 14, AddSkill SkMaxCalm 80
                , AddSkill SkSwimming 100  -- swims better than walks
                , AddSkill SkSpeed 27, AddSkill SkNocto 3 -- good night vision
-               , AddSkill SkAlter (-2), SetFlag Durable ]  -- can't use stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use stairs nor doors
+               , SetFlag Durable ]
   , ieffects = []
   , idesc    = "It has eight arms of rage."
   , ikit     = [ ("tentacle", COrgan), ("tentacle", COrgan)
-               , ("small beak", COrgan), ("eye 7", COrgan)
+               , ("small beak", COrgan), ("eye 8", COrgan)
+                   -- shots not too damaging, so can have strong sight
                , ("animal brain", COrgan) ]
   }
 rhinoceros = ItemKind
@@ -527,7 +531,7 @@ rhinoceros = ItemKind
   , ieffects = []
   , idesc    = "The last of its kind. Blind with rage or perhaps due to the postoperative scars. Charges at deadly speed."
   , ikit     = [ ("armored skin", COrgan)
-               , ("eye 2", COrgan), ("ear 7", COrgan)
+               , ("eye 3", COrgan), ("ear 8", COrgan)
                , ("rhino horn", COrgan), ("snout", COrgan)
                , ("animal brain", COrgan) ]
   }
@@ -574,7 +578,7 @@ hornetSwarm = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A vicious cloud of stings and hate."
-  , ikit     = [ ("sting", COrgan), ("vision 8", COrgan), ("ear 7", COrgan)
+  , ikit     = [ ("sting", COrgan), ("vision 6", COrgan), ("ear 6", COrgan)
                , ("insect mortality", COrgan), ("animal brain", COrgan) ]
   }
 thornbush = ItemKind
@@ -734,7 +738,7 @@ surveillanceDrone = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A video camera in each room would violate privacy of passengers, hence surveillance drones. Programmed to be easy to fend off, they keep a respectful distance."
-  , ikit     = [ ("vision 14", COrgan), ("robot brain", COrgan) ]
+  , ikit     = [ ("vision 16", COrgan), ("robot brain", COrgan) ]
   }
 shepherdDrone = ItemKind
   { isymbol  = 'd'
@@ -754,7 +758,7 @@ shepherdDrone = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A shabby drone for bringing cows home."
-  , ikit     = [ ("live wire", COrgan), ("eye 4", COrgan), ("ear 6", COrgan)
+  , ikit     = [ ("live wire", COrgan), ("eye 6", COrgan), ("ear 6", COrgan)
                , ("robot brain", COrgan) ]
   }
 huntingDrone = ItemKind
@@ -775,9 +779,10 @@ huntingDrone = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Originally designed for hunting down and putting to sleep stray animals. The sleeping agent has long since dried up."
-  , ikit     = [ ("eye 5", COrgan), ("nostril", COrgan), ("ear 8", COrgan)
-               , ("needle", CInv)
-               , ("robot brain", COrgan) ]
+  , ikit     = [ ("eye 8", COrgan), ("nostril", COrgan), ("ear 8", COrgan)
+                   -- week projectiles, so strong sight OK
+               , ("robot brain", COrgan)
+               , ("needle", CInv) ]
   }
 homeRobot = ItemKind
   { isymbol  = 'r'
@@ -797,7 +802,7 @@ homeRobot = ItemKind
   , ieffects = []
   , idesc    = "Once a timid household robot, now sufficiently adapted to survive in the deadly environment."
   , ikit     = [ ("fist", COrgan)
-               , ("eye 2", COrgan), ("nostril", COrgan), ("ear 4", COrgan)
+               , ("eye 3", COrgan), ("nostril", COrgan), ("ear 3", COrgan)
                , ("robot brain", COrgan) ]
   }
 wasteRobot = ItemKind
@@ -843,7 +848,7 @@ lightRobot = ItemKind
   , idesc    = "Interior and exterior decoration robot. Strongly fancies deep reds recently."
   , ikit     = [ ("hooked claw", COrgan), ("tentacle", COrgan)
                , ("spotlight", COrgan), ("armored skin", COrgan)
-               , ("eye 5", COrgan), ("ear 8", COrgan)
+               , ("eye 6", COrgan), ("ear 8", COrgan)
                , ("robot brain", COrgan)
                , ("construction hooter", CEqp) ]
   }
@@ -869,7 +874,7 @@ heavyRobot = ItemKind
   , idesc    = "Heavy multi-purpose construction robot. Excels at discharging, dismantling and demolition."
   , ikit     = [ ("large jaw", COrgan), ("small claw", COrgan)
                , ("spotlight", COrgan), ("armored skin", COrgan)
-               , ("eye 4", COrgan), ("ear 6", COrgan)
+               , ("eye 3", COrgan), ("ear 6", COrgan)
                , ("robot brain", COrgan)
                , ("construction hooter", CEqp) ]
   }
@@ -891,7 +896,7 @@ weldedRobot = ItemKind
   , ieffects = []
   , idesc    = "A well-built humanoid luggage unloading robot with a smooth satin silvery skin. Its graceful moves are stunted by a thick irregular weld fastening both its shapely legs to the floor. A whiff of smoke escapes whenever it opens its mouth in a charming toothy smile while brandishing a blowtorch in its trembling hand."
   , ikit     = [ ("mouth vent", COrgan), ("small jaw", COrgan)
-               , ("fist", COrgan), ("eye 6", COrgan), ("ear 4", COrgan)
+               , ("fist", COrgan), ("eye 6", COrgan), ("ear 3", COrgan)
                , ("robot brain", COrgan)
                , ("blowtorch", CEqp), ("crude weld", COrgan) ]
   }
@@ -922,7 +927,7 @@ cleanerRobot = ItemKind
   , ikit     = [ ("waste container", COrgan), ("boiling vent", COrgan)
                , ("armored skin", COrgan), ("live wire", COrgan)
                , ("jaw", COrgan), ("hooked claw", COrgan), ("spotlight", COrgan)
-               , ("eye 2", COrgan), ("nostril", COrgan), ("ear 5", COrgan)
+               , ("eye 3", COrgan), ("nostril", COrgan), ("ear 6", COrgan)
                , ("robot brain", COrgan)
                , ("currency", CInv), ("currency", CInv), ("currency", CInv)
                , ("construction hooter", CEqp) ]

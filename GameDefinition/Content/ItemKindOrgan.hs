@@ -23,11 +23,11 @@ import Game.LambdaHack.Content.ItemKind
 
 organs :: [ItemKind]
 organs =
-  [fist, foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, smallBeak, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision5, vision6, vision7, vision8, vision10, vision12, vision14, vision16, nostril, ear4, ear5, ear6, ear7, ear8, ear9, ear10, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed]
+  [fist, foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, smallBeak, armoredSkin, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed]
   -- Allure-specific
   ++ [razor, liveWire, robotBrain, wasteContainer, spotlight, mouthVent]
 
-fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, smallBeak, armoredSkin, eye2, eye3, eye4, eye5, eye6, eye7, eye8, vision4, vision5, vision6, vision7, vision8, vision10, vision12, vision14, vision16, nostril, ear4, ear5, ear6, ear7, ear8, ear9, ear10, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed :: ItemKind
+fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, smallBeak, armoredSkin, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed :: ItemKind
 -- Allure-specific
 razor, liveWire, robotBrain, wasteContainer, spotlight, mouthVent :: ItemKind
 
@@ -308,12 +308,8 @@ eye n = armoredSkin
                , SetFlag Durable ]
   , idesc    = "A piercing stare."
   }
-eye2 = eye 2
 eye3 = eye 3
-eye4 = eye 4
-eye5 = eye 5
 eye6 = eye 6
-eye7 = eye 7
 eye8 = eye 8
 vision :: Int -> ItemKind
 vision n = armoredSkin
@@ -324,14 +320,8 @@ vision n = armoredSkin
                , SetFlag Durable ]
   , idesc    = ""
   }
-vision4 = vision 4
-vision5 = vision 5
 vision6 = vision 6
-vision7 = vision 7
-vision8 = vision 8
-vision10 = vision 10
 vision12 = vision 12
-vision14 = vision 14
 vision16 = vision 16
 nostril = armoredSkin
   { iname    = "nostril"
@@ -352,13 +342,9 @@ ear n = armoredSkin
                , SetFlag Durable ]
   , idesc    = ""
   }
-ear4 = ear 4
-ear5 = ear 5
+ear3 = ear 3
 ear6 = ear 6
-ear7 = ear 7
 ear8 = ear 8
-ear9 = ear 9
-ear10 = ear 10
 
 -- * Assorted
 
