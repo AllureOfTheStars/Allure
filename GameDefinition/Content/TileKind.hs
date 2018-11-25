@@ -88,8 +88,9 @@ bedrock = TileKind
   { tsymbol  = '#'
   , tname    = "wall"
   , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
-               , ("noiseSetLit", 450), ("powerSetDark", 450)
-               , ("battleSetDark", 250), ("escapeSetDark", 4)
+               , ("museumSetDark", 4), ("noiseSetLit", 450)
+               , ("powerSetDark", 450), ("battleSetDark", 250)
+               , ("escapeSetDark", 4)
                , ("stair terminal Lit", 100), ("stair terminal Dark", 100)
                , ("doorlessWallOver_#", 80), ("doorlessMachineryOver_#", 1) ]
   , tcolor   = BrWhite
@@ -126,7 +127,8 @@ wallObscured = TileKind
 wallObscuredDefaced = TileKind
   { tsymbol  = '#'
   , tname    = "defaced wall"
-  , tfreq    = [("obscured wall", 45), ("escapeSetDark", 2)]
+  , tfreq    = [ ("obscured wall", 45), ("escapeSetDark", 2)
+               , ("museumSetDark", 2) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 5
@@ -150,7 +152,7 @@ pillar = TileKind
   { tsymbol  = 'O'
   , tname    = "construction beam"
   , tfreq    = [ ("legendLit", 100), ("legendDark", 100)
-               , ("museumSetDark", 10), ("emptySetLit", 20) ]
+               , ("museumSetDark", 20), ("emptySetLit", 20) ]
   , tcolor   = BrCyan  -- not BrWhite, to tell from heroes
   , tcolor2  = Cyan
   , talter   = 100
@@ -366,7 +368,7 @@ escapeOutdoorDown = escapeDown
 wallGlass = TileKind
   { tsymbol  = '%'
   , tname    = "transparent polymer wall"
-  , tfreq    = [("legendLit", 1), ("legendDark", 1), ("museumSetDark", 4)]
+  , tfreq    = [("legendLit", 1), ("legendDark", 1), ("museumSetDark", 8)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 10
@@ -404,7 +406,7 @@ pulpit = TileKind
 bush = TileKind
   { tsymbol  = '%'
   , tname    = "bush"
-  , tfreq    = [ ("bush Lit", 1), ("arenaSetLit", 5), ("shootoutSetLit", 30)
+  , tfreq    = [ ("bush Lit", 1), ("arenaSetLit", 10), ("shootoutSetLit", 30)
                , ("huntSetLit", 30), ("escapeSetLit", 40), ("zooSetDark", 100)
                , ("bushClumpOver_f_Lit", 1), ("pumpsOver_f_Lit", 1)
                , ("lift terminal Lit", 4) ]
@@ -498,8 +500,8 @@ floorCorridor = TileKind
   , tfeature = [Walkable, Clear]
   }
 floorArena = floorCorridor
-  { tfreq    = [ ("floorArenaLit", 1), ("arenaSetLit", 90)
-               , ("museumSetLit", 200), ("zooSetLit", 600) ]
+  { tfreq    = [ ("floorArenaLit", 1), ("arenaSetLit", 200)
+               , ("museumSetLit", 400), ("zooSetLit", 600) ]
   }
 floorDamp = floorArena
   { tname    = "damp floor"
@@ -659,7 +661,7 @@ liftShaft = pillar
   }
 rock = pillar
   { tname    = "rock"
-  , tfreq    = [("arenaSetLit", 2), ("arenaSetDark", 2), ("brawlSetLit", 30)]
+  , tfreq    = [("arenaSetLit", 4), ("arenaSetDark", 4), ("brawlSetLit", 30)]
   }
 pillarCache2 = pillarCache
   { tname    = "rack of deposit boxes"
@@ -671,7 +673,7 @@ pillarCache2 = pillarCache
 pillarCache3 = pillarCache
   { tname    = "jewelry display"
   , tfreq    = [ ("cachable jewelry", 20), ("cache jewelry", 33)
-               , ("museumSetDark", 1) ]
+               , ("museumSetDark", 2) ]
   , tfeature = [ Embed "jewelry case", Embed "jewelry display trap"
                , ChangeTo "cachable jewelry", ConsideredByAI ]
   }

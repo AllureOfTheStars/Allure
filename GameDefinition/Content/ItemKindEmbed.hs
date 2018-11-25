@@ -126,7 +126,7 @@ treasureCacheTrap = ItemKind
 signboardExit = ItemKind
   { isymbol  = '?'
   , iname    = "sticker"
-  , ifreq    = [("signboard", 80)]
+  , ifreq    = [("signboard", 50)]
   , iflavour = zipPlain [BrMagenta]
   , icount   = 1
   , irarity  = [(1, 1)]
@@ -141,7 +141,7 @@ signboardExit = ItemKind
   }
 signboardEmbed = signboardExit
   { iname    = "notice"
-  , ifreq    = [("signboard", 20)]
+  , ifreq    = [("signboard", 50)]
   , ieffects = [Detect DetectEmbed 12]  -- low tech, hence fully operational
   , idesc    = "Detailed schematics for the maintenance crew."
                  -- This is a rare tile so use it to convey some more backstory.
