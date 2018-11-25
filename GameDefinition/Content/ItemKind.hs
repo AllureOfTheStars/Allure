@@ -1058,7 +1058,8 @@ necklaceTemplate = ItemKind
   }
 necklace1 = necklaceTemplate
   { ifreq    = [("curious item", 100), ("any jewelry", 100)]
-  , irarity  = [(3, 0), (4, 1), (10, 2)]  -- prevents camping on lvl 3
+  , irarity  = [(3 * 10/15, 0), (4 * 10/15, 1), (10, 2)]
+                 -- prevents camping on lvl 3
   , iaspects = [ SetFlag Unique, ELabel "of Trickle Life"
                , Timeout $ (1 `d` 2) * 20
                , SetFlag Durable ]

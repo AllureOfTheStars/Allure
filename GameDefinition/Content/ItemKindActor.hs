@@ -170,7 +170,7 @@ eye = ItemKind
                , ("mobile monster", 100), ("scout monster", 10) ]
   , iflavour = zipFancy [BrRed]
   , icount   = 1
-  , irarity  = [(3, 0), (4, 10), (10, 8)]
+  , irarity  = [(3 * 10/15, 0), (4 * 10/15, 10), (10, 8)]
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
@@ -192,7 +192,7 @@ fastEye = ItemKind
                , ("mobile monster", 100), ("scout monster", 60) ]
   , iflavour = zipFancy [BrBlue]
   , icount   = 1
-  , irarity  = [(3, 0), (4, 3), (10, 12)]
+  , irarity  = [(3 * 10/15, 0), (4 * 10/15, 3), (10, 12)]
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
@@ -215,7 +215,7 @@ nose = ItemKind  -- depends solely on smell
                , ("aquatic", 30), ("aquatic monster", 30) ]  -- likes liquids
   , iflavour = zipFancy [BrGreen]
   , icount   = 1
-  , irarity  = [(3, 0), (4, 5), (10, 9)]
+  , irarity  = [(3 * 10/15, 0), (4 * 10/15, 5), (10, 9)]
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
@@ -239,7 +239,7 @@ elbow = ItemKind
                , ("mobile monster", 100), ("scout monster", 30) ]
   , iflavour = zipFancy [BrMagenta]
   , icount   = 1
-  , irarity  = [(3, 0), (4, 1), (10, 12)]
+  , irarity  = [(3 * 10/15, 0), (4 * 10/15, 1), (10, 12)]
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
@@ -833,7 +833,8 @@ lightRobot = ItemKind
                , ("construction robot", 100) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
-  , irarity  = [(3, 0), (4, 1), (10, 7)]  -- gets summoned often, so low rarity
+  , irarity  = [(3 * 10/15, 0), (4 * 10/15, 1), (10, 7)]
+                 -- gets summoned often, so low rarity
   , iverbHit = "clank"
   , iweight  = 80000
   , idamage  = 0
@@ -859,7 +860,7 @@ heavyRobot = ItemKind
                , ("construction robot", 100) ]
   , iflavour = zipPlain [Cyan]
   , icount   = 1
-  , irarity  = [(8, 0), (9, 5), (10, 15)]
+  , irarity  = [(8 * 10/15, 0), (9 * 10/15, 5), (10, 15)]
   , iverbHit = "clank"
   , iweight  = 800000
   , idamage  = 0
