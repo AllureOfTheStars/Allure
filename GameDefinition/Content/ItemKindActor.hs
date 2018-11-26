@@ -62,7 +62,7 @@ warrior = ItemKind
   , ikit     = [ ("fist", COrgan), ("foot", COrgan)
                , ("eye 6", COrgan), ("ear 3", COrgan)
                , ("sapient brain", COrgan)
-               , ("genetic flaw", COrgan) ]
+               , ("genetic flaw 10", COrgan) ]
   }
 warrior2 = warrior
   { iname    = "pilot"
@@ -303,14 +303,15 @@ goldenJackal = ItemKind  -- basically a much smaller and slower hyena
   , iverbHit = "thud"
   , iweight  = 13000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 12, AddSkill SkMaxCalm 70
+  , iaspects = [ AddSkill SkMaxHP 15, AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 24, AddSkill SkNocto 2
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "An opportunistic predator, feeding on carrion and the weak."
   , ikit     = [ ("small jaw", COrgan)
                , ("eye 6", COrgan), ("nostril", COrgan), ("ear 8", COrgan)
-               , ("animal brain", COrgan) ]
+               , ("animal brain", COrgan)
+               , ("genetic flaw 3", COrgan) ]
   }
 griffonVulture = ItemKind
   { isymbol  = 'v'
@@ -323,7 +324,7 @@ griffonVulture = ItemKind
   , iverbHit = "thud"
   , iweight  = 13000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 12, AddSkill SkMaxCalm 80
+  , iaspects = [ AddSkill SkMaxHP 15, AddSkill SkMaxCalm 80
                    -- enough Calm to summon twice only if not attacked at all;
                    -- loses a lot of sight after summoning
                , AddSkill SkSpeed 22, AddSkill SkNocto 2
@@ -340,7 +341,8 @@ griffonVulture = ItemKind
                , ("small claw", COrgan)
                , ("eye 8", COrgan), ("ear 8", COrgan)
                    -- can't shoot, so strong sight is OK
-               , ("animal brain", COrgan) ]
+               , ("animal brain", COrgan)
+               , ("genetic flaw 3", COrgan) ]
   }
 skunk = ItemKind
   { isymbol  = 's'
@@ -352,7 +354,7 @@ skunk = ItemKind
   , iverbHit = "thud"
   , iweight  = 4000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 10, AddSkill SkMaxCalm 30
+  , iaspects = [ AddSkill SkMaxHP 13, AddSkill SkMaxCalm 30
                , AddSkill SkSpeed 22, AddSkill SkNocto 2
                , AddSkill SkAlter (-2)  -- can't use stairs nor doors
                , AddSkill SkOdor 5  -- and no smell skill, to let it leave smell
@@ -362,7 +364,8 @@ skunk = ItemKind
   , ikit     = [ ("scent gland", COrgan)
                , ("small claw", COrgan), ("snout", COrgan)
                , ("eye 3", COrgan), ("ear 6", COrgan)
-               , ("animal brain", COrgan) ]
+               , ("animal brain", COrgan)
+               , ("genetic flaw 3", COrgan) ]
   }
 armadillo = ItemKind
   { isymbol  = 'a'
@@ -374,7 +377,7 @@ armadillo = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 10, AddSkill SkMaxCalm 30
+  , iaspects = [ AddSkill SkMaxHP 13, AddSkill SkMaxCalm 30
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
                , AddSkill SkAlter (-2)  -- can't use stairs nor doors
                , SetFlag Durable ]
@@ -383,7 +386,8 @@ armadillo = ItemKind
   , ikit     = [ ("hooked claw", COrgan), ("snout", COrgan)
                , ("armored skin", COrgan), ("armored skin", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan), ("ear 6", COrgan)
-               , ("animal brain", COrgan) ]
+               , ("animal brain", COrgan)
+               , ("genetic flaw 3", COrgan) ]
   }
 gilaMonster = ItemKind
   { isymbol  = 'g'
@@ -395,7 +399,7 @@ gilaMonster = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 12, AddSkill SkMaxCalm 50
+  , iaspects = [ AddSkill SkMaxHP 15, AddSkill SkMaxCalm 50
                , AddSkill SkSpeed 18, AddSkill SkNocto 2
                , AddSkill SkAlter (-2)  -- can't use stairs nor doors
                , SetFlag Durable ]
@@ -403,7 +407,8 @@ gilaMonster = ItemKind
   , idesc    = "Numbing venom ensures that even the fastest prey has no escape."
   , ikit     = [ ("venom tooth", COrgan), ("small claw", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan), ("ear 6", COrgan)
-               , ("animal brain", COrgan) ]
+               , ("animal brain", COrgan)
+               , ("genetic flaw 3", COrgan) ]
   }
 rattlesnake = ItemKind
   { isymbol  = 's'
@@ -415,7 +420,7 @@ rattlesnake = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 25, AddSkill SkMaxCalm 60
+  , iaspects = [ AddSkill SkMaxHP 28, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 16, AddSkill SkNocto 2
                , AddSkill SkAlter (-2)  -- can't use stairs nor doors
                , SetFlag Durable ]
@@ -423,7 +428,8 @@ rattlesnake = ItemKind
   , idesc    = "Beware its rattle - it serves as a warning of an agonising death."
   , ikit     = [ ("venom fang", COrgan), ("rattle", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan), ("ear 6", COrgan)
-               , ("animal brain", COrgan) ]
+               , ("animal brain", COrgan)
+               , ("genetic flaw 3", COrgan) ]
   }
 hyena = ItemKind
   { isymbol  = 'h'
@@ -436,14 +442,15 @@ hyena = ItemKind
   , iverbHit = "thud"
   , iweight  = 60000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 20, AddSkill SkMaxCalm 70
+  , iaspects = [ AddSkill SkMaxHP 23, AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 32, AddSkill SkNocto 2
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Skulking in the shadows, waiting for easy prey."
   , ikit     = [ ("jaw", COrgan)
                , ("eye 6", COrgan), ("nostril", COrgan), ("ear 8", COrgan)
-               , ("animal brain", COrgan) ]
+               , ("animal brain", COrgan)
+               , ("genetic flaw 3", COrgan) ]
   }
 komodoDragon = ItemKind
   { isymbol  = 'k'
@@ -455,7 +462,7 @@ komodoDragon = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 30, AddSkill SkMaxCalm 60
+  , iaspects = [ AddSkill SkMaxHP 40, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 18, AddSkill SkNocto 2
                , AddSkill SkAggression 1  -- match the description
                , SetFlag Durable ]
@@ -465,7 +472,8 @@ komodoDragon = ItemKind
                , ("hooked claw", COrgan), ("speed gland 4", COrgan)
                , ("armored skin", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan), ("ear 3", COrgan)
-               , ("animal brain", COrgan) ]
+               , ("animal brain", COrgan)
+               , ("genetic flaw 10", COrgan) ]
   }
 alligator = ItemKind
   { isymbol  = 'a'
@@ -478,7 +486,7 @@ alligator = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 45, AddSkill SkMaxCalm 70
+  , iaspects = [ AddSkill SkMaxHP 55, AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 18, AddSkill SkNocto 2
                , AddSkill SkSwimming 100  -- swims better than walks
                , SetFlag Durable ]
@@ -487,7 +495,8 @@ alligator = ItemKind
   , ikit     = [ ("huge tail", COrgan), ("large jaw", COrgan)
                , ("small claw", COrgan), ("armored skin", COrgan)
                , ("eye 6", COrgan), ("ear 8", COrgan)
-               , ("animal brain", COrgan) ]
+               , ("animal brain", COrgan)
+               , ("genetic flaw 10", COrgan) ]
   }
 giantOctopus = ItemKind
   { isymbol  = 'o'
@@ -500,7 +509,7 @@ giantOctopus = ItemKind
   , iverbHit = "thud"
   , iweight  = 72000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 14, AddSkill SkMaxCalm 80
+  , iaspects = [ AddSkill SkMaxHP 17, AddSkill SkMaxCalm 80
                , AddSkill SkSwimming 100  -- swims better than walks
                , AddSkill SkSpeed 27, AddSkill SkNocto 3 -- good night vision
                , AddSkill SkAlter (-2)  -- can't use stairs nor doors
@@ -510,7 +519,8 @@ giantOctopus = ItemKind
   , ikit     = [ ("tentacle", COrgan), ("tentacle", COrgan)
                , ("small beak", COrgan), ("eye 8", COrgan)
                    -- shots not too damaging, so can have strong sight
-               , ("animal brain", COrgan) ]
+               , ("animal brain", COrgan)
+               , ("genetic flaw 3", COrgan) ]
   }
 rhinoceros = ItemKind
   { isymbol  = 'R'

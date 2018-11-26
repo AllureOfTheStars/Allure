@@ -531,7 +531,7 @@ decontaminator = ItemKind
   , iverbHit = "cleanse"
   , iweight  = 500000
   , idamage  = 0
-  , iaspects = []
+  , iaspects = [SetFlag Durable]
   , ieffects = [ DropItem 1 1 COrgan "genetic flaw"
                , DropItem maxBound maxBound CEqp "common item"
                , DropItem maxBound maxBound CInv "common item"
