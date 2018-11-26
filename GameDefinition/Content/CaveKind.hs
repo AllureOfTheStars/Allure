@@ -192,10 +192,12 @@ laboratory = rogue
   , cplaceFreq    = [("laboratory", 1)]
   , cdarkCorTile  = "labTrailLit"  -- let lab smoke give off light always
   , clitCorTile   = "labTrailLit"
-  , cstairFreq    = [ ("walled staircase", 50), ("open staircase", 50)
-                    , ("tiny staircase", 1) ]
-  , cstairAllowed = [ ("walled lift", 50), ("open lift", 50)
-                    , ("tiny lift", 1) ]
+  , cstairFreq    = [ ("decontaminating walled staircase", 50)
+                    , ("decontaminating open staircase", 50)
+                    , ("decontaminating tiny staircase", 1) ]
+  , cstairAllowed = [ ("decontaminating walled lift", 50)
+                    , ("decontaminating open lift", 50)
+                    , ("decontaminating tiny lift", 1) ]
   , cdesc         = "Shattered glassware and the sharp scent of spilt chemicals show that something terrible happened here."
   }
 noise = rogue

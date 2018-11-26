@@ -45,12 +45,16 @@ generatedStairs =
   let (stairs, lifts) = partition ((/= "a lift") . pname) staircaseBasic
       gatedStairs = map switchStaircaseToGated stairs
       gatedLifts = map switchLiftToGated lifts
+      decontaminatingStairs = map switchStaircaseToDecontaminating stairs
+      decontaminatingLifts = map switchLiftToDecontaminating lifts
       weldedStairs = map switchStaircaseToWelded stairs
       weldedLifts = map switchLiftToWelded lifts
       outdoorStairs = map switchStaircaseToOutdoor stairs
-      stairsAll = stairs ++ gatedStairs ++ weldedStairs ++ outdoorStairs
-      liftsAll = lifts ++ gatedLifts ++ weldedLifts
+      stairsAll = stairs ++ gatedStairs ++ decontaminatingStairs ++ weldedStairs
+                  ++ outdoorStairs
+      liftsAll = lifts ++ gatedLifts ++ decontaminatingLifts ++ weldedLifts
   in gatedStairs ++ gatedLifts
+     ++ decontaminatingStairs ++ decontaminatingLifts
      ++ weldedStairs ++ weldedLifts
      ++ outdoorStairs
      ++ map (switchExitToUp "stair terminal") stairsAll
@@ -1456,6 +1460,7 @@ switchExitToDown terminal s = s
                   : filter ((/= '<') . fst) (poverrideLit s)
  }
 
+
 overrideGatedStaircase :: [(Char, GroupName TileKind)]
 overrideGatedStaircase =
   [ ('<', "gated staircase up"), ('>', "gated staircase down")
@@ -1486,6 +1491,40 @@ switchLiftToGated s = s
  , poverrideLit = overrideGatedLift
  }
 
+
+overrideDecontaminatingStaircase :: [(Char, GroupName TileKind)]
+overrideDecontaminatingStaircase =
+  [ ('<', "decontaminating staircase up")
+  , ('>', "decontaminating staircase down")
+  , ('I', "signboard"), ('S', "fillerWall") ]
+
+switchStaircaseToDecontaminating :: PlaceKind -> PlaceKind
+switchStaircaseToDecontaminating s = s
+ { psymbol   = 'd'
+ , pfreq     = map (first (\t -> toGroupName $ "decontaminating"
+                                               <+> fromGroupName t))
+               $ pfreq s
+ , poverrideDark = overrideDecontaminatingStaircase
+ , poverrideLit = overrideDecontaminatingStaircase
+ }
+
+overrideDecontaminatingLift :: [(Char, GroupName TileKind)]
+overrideDecontaminatingLift =
+  [ ('<', "decontaminating lift up")
+  , ('>', "decontaminating lift down")
+  , ('I', "signboard"), ('S', "lift shaft") ]
+
+switchLiftToDecontaminating :: PlaceKind -> PlaceKind
+switchLiftToDecontaminating s = s
+ { psymbol   = 'd'
+ , pfreq     = map (first (\t -> toGroupName $ "decontaminating"
+                                               <+> fromGroupName t))
+               $ pfreq s
+ , poverrideDark = overrideDecontaminatingLift
+ , poverrideLit = overrideDecontaminatingLift
+ }
+
+
 overrideWeldedStaircase :: [(Char, GroupName TileKind)]
 overrideWeldedStaircase =
   [ ('<', "welded staircase up"), ('>', "ordinary staircase down")
@@ -1513,6 +1552,7 @@ switchLiftToWelded s = s
  , poverrideDark = overrideWeldedLift
  , poverrideLit = overrideWeldedLift
  }
+
 
 overrideOutdoor :: [(Char, GroupName TileKind)]
 overrideOutdoor =
