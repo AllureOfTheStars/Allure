@@ -223,7 +223,7 @@ defenseEmpty = ModeKind
   , mname   = "defense empty"
   , mfreq   = [("defense empty", 1)]
   , mroster = rosterDefenseEmpty
-  , mcaves  = cavesCrawl
+  , mcaves  = cavesCrawlEmpty
   , mdesc   = "Lord over."
   }
 
