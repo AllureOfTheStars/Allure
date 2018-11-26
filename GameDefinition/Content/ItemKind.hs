@@ -1812,8 +1812,8 @@ scrollAd1 = scrollTemplate
   }
 blowtorch = ItemKind
   { isymbol  = symbolLight
-  , iname    = "blowtorch"  -- not unique, but never generated on the floor
-  , ifreq    = [("blowtorch", 1), ("valuable", 20)]
+  , iname    = "blowtorch"  -- not unique, but almost never generated on floor
+  , ifreq    = [("blowtorch", 1), ("valuable", 20), ("curious item", 1)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , irarity  = [(1, 1)]

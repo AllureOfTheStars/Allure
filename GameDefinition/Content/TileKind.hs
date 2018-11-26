@@ -682,6 +682,7 @@ stairsDecontaminatingUp = stairsUp
   , tfreq    = [("decontaminating staircase up", 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
+  , tfeature = Embed "decontamination chamber" : tfeature stairsUp
   }
 stairsWelded = stairsUp
   { tname    = "staircase up welded shut"
@@ -719,6 +720,7 @@ stairsLiftDecontaminatingUp = stairsLiftUp
   , tfreq    = [("decontaminating lift up", 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
+  , tfeature = Embed "decontamination chamber" : tfeature stairsLiftUp
   }
 stairsLiftWelded = stairsLiftUp
   { tname    = "lift up welded shut"
@@ -734,6 +736,7 @@ stairsDecontaminatingDown = stairsDown
   , tfreq    = [("decontaminating staircase down", 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
+  , tfeature = Embed "decontamination chamber" : tfeature stairsDown
   }
 stairsLiftDown = stairsDown
   { tname    = "lift down"
@@ -761,6 +764,7 @@ stairsLiftDecontaminatingDown = stairsLiftDown
   , tfreq    = [("decontaminating lift down", 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
+  , tfeature = Embed "decontamination chamber" : tfeature stairsLiftDown
   }
 escapeSpaceshipDown = escapeDown
   { tname    = "airlock to a shuttle"

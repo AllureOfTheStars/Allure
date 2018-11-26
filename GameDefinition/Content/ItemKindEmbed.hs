@@ -24,11 +24,11 @@ embeds :: [ItemKind]
 embeds =
   [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater, straightPath, frozenGround]
   -- Allure-specific
-  ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld]
+  ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator]
 
 scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater, straightPath, frozenGround :: ItemKind
 -- Allure-specific
-blackStarrySky,       disengagedDocking, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld :: ItemKind
+blackStarrySky,       disengagedDocking, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator :: ItemKind
 
 -- Make sure very few walls are substantially useful, e.g., caches,
 -- and none that are secret. Otherwise the player will spend a lot of time
@@ -519,5 +519,30 @@ crudeWeld = ItemKind  -- this is also an organ
   , iaspects = [AddSkill SkMove (-1), AddSkill SkDisplace (-1)]
   , ieffects = [Explode "spark"]
   , idesc    = "This is a messy and irregularly layered weld, but no ammount of kicking nor hammering makes any impression on it. A heavy duty cutting tool would be required."
+  , ikit     = []
+  }
+decontaminator = ItemKind
+  { isymbol  = 'o'
+  , iname    = "decontamination chamber"
+  , ifreq    = [("decontamination chamber", 1)]
+  , iflavour = zipPlain [BrBlue]
+  , icount   = 1
+  , irarity  = [(1, 1)]
+  , iverbHit = "cleanse"
+  , iweight  = 500000
+  , idamage  = 0
+  , iaspects = []
+  , ieffects = [ DropItem maxBound maxBound CEqp "common item"
+               , DropItem maxBound maxBound CInv "common item"
+               , DropItem maxBound maxBound CSha "common item"
+               , DropItem maxBound maxBound CEqp "curious item"
+               , DropItem maxBound maxBound CInv "curious item"
+               , DropItem maxBound maxBound CSha "curious item"
+               , DropItem maxBound maxBound CEqp "treasure"
+               , DropItem maxBound maxBound CInv "treasure"
+               , DropItem maxBound maxBound CSha "treasure"
+               , toOrganGood "rose-smelling" (20 + 1 `d` 5)
+               ]
+  , idesc    = "The area is under quarantine. No departure is permitted without decontamination. Personal belongings are to be decontaminated separately."
   , ikit     = []
   }
