@@ -410,11 +410,10 @@ flask5 = flaskTemplate
   }
 flask6 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
-  , irarity  = [(10, 7)]
+  , irarity  = [(1, 1)]  -- not every playthrough needs it
   , iaspects = ELabel "of resolution"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganGood "resolute" (200 + 1 `d` 50)
-                   -- long, for scouting and has to recharge
+  , ieffects = [ toOrganGood "resolute" (500 + 1 `d` 200)  -- long, for scouting
                , RefillCalm 60  -- not to make it a drawback, via @calmEnough@
                , OnSmash (Explode "resolution dust") ]
   }
@@ -439,7 +438,7 @@ flask9 = flaskTemplate
   , iaspects = ELabel "of smelly concoction"
                : iaspects flaskTemplate
   , ieffects = [ toOrganGood "keen-smelling" (40 + 1 `d` 10)
-               , Detect DetectActor 10
+               , Detect DetectActor 10  -- make it at least slightly useful
                , OnSmash (Explode "smelly droplet") ]
   }
 flask10 = flaskTemplate
@@ -466,7 +465,7 @@ flask12 = flaskTemplate
   , iaspects = ELabel "of bait cocktail"
                : iaspects flaskTemplate
   , ieffects = [ toOrganGood "drunk" (20 + 1 `d` 5)
-               , Burn 1, RefillHP 3
+               , Burn 1, RefillHP 3  -- mild exploit possible, good
                , Summon "mobile animal" 1
                , OnSmash (Summon "mobile animal" 1)
                , OnSmash Impress
@@ -830,7 +829,7 @@ scrollTemplate = ItemKind
 scroll1 = scrollTemplate
   { ifreq    = [("curious item", 100), ("any scroll", 100)]
   , icount   = 1
-  , irarity  = [(5, 9), (10, 9)]  -- mixed blessing, so available early, often
+  , irarity  = [(5, 9), (10, 9)]  -- mixed blessing, so found early for a unique
   , iaspects = [SetFlag Unique, ELabel "of Reckless Beacon"]
                ++ iaspects scrollTemplate
   , ieffects = [Summon "hero" 1, Summon "mobile animal" (2 + 1 `d` 2)]
@@ -899,7 +898,7 @@ scroll10 = scrollTemplate
 scroll11 = scrollTemplate
   { ifreq    = [("curious item", 100), ("any scroll", 100)]
   , icount   = 1
-  , irarity  = [(5, 8), (10, 8)]
+  , irarity  = [(10, 12)]
   , iaspects = [SetFlag Unique, ELabel "of Rescue Proclamation"]
                ++ iaspects scrollTemplate
   , ieffects = [Summon "hero" 1]
@@ -907,7 +906,7 @@ scroll11 = scrollTemplate
   }
 scroll12 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
-  , irarity  = [(1, 9), (10, 4)]
+  , irarity  = [(1, 9)]  -- only mildly useful
   , ieffects = [Detect DetectHidden 20]
   }
 scroll13 = scrollTemplate
