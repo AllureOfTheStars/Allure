@@ -347,10 +347,7 @@ blanket = ItemKind
 -- is intended to be an interesting tactical decision.
 --
 -- Flasks are often not natural; maths, magic, distillery.
--- In reality, they just cover all conditions, except those for stats.
---
--- There is no flask nor temporary organ of Calm depletion,
--- because Calm reduced often via combat, etc..
+-- In fact, they just cover all conditions, except those for stats.
 
 flaskTemplate = ItemKind
   { isymbol  = symbolFlask
@@ -367,7 +364,7 @@ flaskTemplate = ItemKind
   , iaspects = [ HideAs "flask unknown", SetFlag Lobable, SetFlag Fragile
                , toVelocity 50 ]  -- oily, bad grip
   , ieffects = []
-  , idesc    = "A flask of oily liquid of a suspect color. Something seems to be moving inside."
+  , idesc    = "A flask of oily liquid of a suspect color. Something seems to be moving inside. Double dose causes twice longer effect."
   , ikit     = []
   }
 flask1 = flaskTemplate
