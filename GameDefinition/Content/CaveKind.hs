@@ -195,6 +195,8 @@ laboratory = rogue
   , cstairFreq    = [ ("decontaminating walled staircase", 50)
                     , ("decontaminating open staircase", 50)
                     , ("decontaminating tiny staircase", 1) ]
+      -- In lone wolf challenge, the player better summoned or dominated
+      -- any helpers by this point. If not, good luck fighting bare-handed.
   , cstairAllowed = [ ("decontaminating walled lift", 50)
                     , ("decontaminating open lift", 50)
                     , ("decontaminating tiny lift", 1) ]
