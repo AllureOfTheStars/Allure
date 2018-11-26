@@ -1262,7 +1262,8 @@ ring8 = ringTemplate
   { ifreq    = [("treasure", 100), ("any jewelry", 100)]
   , irarity  = [(10, 2)]
   , iaspects = [ SetFlag Unique, ELabel "of Overwatch"
-               , AddSkill SkProject 11
+               , AddSkill SkProject 8  -- TODO: 11, but let player control
+                                       -- potion throwing; see capReinforced
                , AddSkill SkMaxHP (-20)
                , SetFlag Durable, EqpSlot EqpSlotProject ]
                ++ iaspects ringTemplate
