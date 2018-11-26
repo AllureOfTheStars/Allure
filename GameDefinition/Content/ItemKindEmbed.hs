@@ -532,7 +532,8 @@ decontaminator = ItemKind
   , iweight  = 500000
   , idamage  = 0
   , iaspects = []
-  , ieffects = [ DropItem maxBound maxBound CEqp "common item"
+  , ieffects = [ DropItem 1 1 COrgan "genetic flaw"
+               , DropItem maxBound maxBound CEqp "common item"
                , DropItem maxBound maxBound CInv "common item"
                , DropItem maxBound maxBound CSha "common item"
                , DropItem maxBound maxBound CEqp "curious item"

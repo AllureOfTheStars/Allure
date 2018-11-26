@@ -25,11 +25,11 @@ organs :: [ItemKind]
 organs =
   [fist, foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, smallBeak, armoredSkin, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed]
   -- Allure-specific
-  ++ [razor, liveWire, robotBrain, wasteContainer, spotlight, mouthVent]
+  ++ [razor, liveWire, robotBrain, wasteContainer, spotlight, mouthVent, geneticFlaw]
 
 fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, smallBeak, armoredSkin, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed :: ItemKind
 -- Allure-specific
-razor, liveWire, robotBrain, wasteContainer, spotlight, mouthVent :: ItemKind
+razor, liveWire, robotBrain, wasteContainer, spotlight, mouthVent, geneticFlaw :: ItemKind
 
 -- Weapons
 
@@ -574,5 +574,23 @@ mouthVent = armoredSkin
                , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [Recharging (OneOf $ map Explode
       ["pheromone", "cruise ad hologram", "immobile mist", "smoke", "spark"])]
+  , idesc    = ""
+  }
+geneticFlaw = armoredSkin
+  { isymbol  = 'F'
+  , iname    = "genetic flaw"
+  , ifreq    = [("genetic flaw", 1)]
+  , iflavour = zipPlain [BrRed]
+  , iverbHit = "flaw"
+  , iweight  = 0
+  , iaspects = [ AddSkill SkMaxHP (-10), AddSkill SkWait (-1)
+               , Odds (1 `d` 400)
+                      [AddSkill SkHurtMelee (-5)]
+                      [AddSkill SkArmorMelee (-5), AddSkill SkArmorRanged (-5)]
+               , SetFlag Fragile, SetFlag Durable ]
+                   -- destroy on drop to run the @OnSmash@ effects
+  , ieffects = [ OnSmash $ DropItem maxBound maxBound COrgan "poisoned"
+               , OnSmash $ RefillHP 10
+               , OnSmash $ Temporary "Infracellular decontamination complete." ]
   , idesc    = ""
   }

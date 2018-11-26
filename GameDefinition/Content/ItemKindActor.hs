@@ -47,7 +47,7 @@ warrior = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 80  -- partially from clothes and first aid
+  , iaspects = [ AddSkill SkMaxHP 90  -- partially from clothes and first aid
                , AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 20
                , AddSkill SkNocto 2
@@ -61,7 +61,8 @@ warrior = ItemKind
   -- , idesc    = "A hardened veteran of combat."
   , ikit     = [ ("fist", COrgan), ("foot", COrgan)
                , ("eye 6", COrgan), ("ear 3", COrgan)
-               , ("sapient brain", COrgan) ]
+               , ("sapient brain", COrgan)
+               , ("genetic flaw", COrgan) ]
   }
 warrior2 = warrior
   { iname    = "pilot"
