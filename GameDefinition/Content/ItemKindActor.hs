@@ -832,10 +832,10 @@ wasteRobot = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "You are not in its database, hence you are waste."
-  , ikit     = [ ("jaw", COrgan), ("tentacle", COrgan)
-               , ("waste container", COrgan), ("armored skin", COrgan)
+  , ikit     = [ ("jaw", COrgan), ("tentacle", COrgan), ("armored skin", COrgan)
                , ("nostril", COrgan)  -- only smell, for variety
-               , ("robot brain", COrgan) ]
+               , ("robot brain", COrgan)
+               , ("waste container", CEqp) ]
   }
 lightRobot = ItemKind
   { isymbol  = 'r'
@@ -936,11 +936,11 @@ cleanerRobot = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."
-  , ikit     = [ ("waste container", COrgan), ("boiling vent", COrgan)
-               , ("armored skin", COrgan), ("live wire", COrgan)
-               , ("jaw", COrgan), ("hooked claw", COrgan), ("spotlight", COrgan)
-               , ("eye 3", COrgan), ("nostril", COrgan), ("ear 6", COrgan)
+  , ikit     = [ ("boiling vent", COrgan) , ("armored skin", COrgan)
+               , ("live wire", COrgan), ("jaw", COrgan), ("hooked claw", COrgan)
+               , ("spotlight", COrgan), ("eye 3", COrgan), ("nostril", COrgan)
+               , ("ear 6", COrgan)
                , ("robot brain", COrgan)
                , ("currency", CInv), ("currency", CInv), ("currency", CInv)
-               , ("construction hooter", CEqp) ]
+               , ("construction hooter", CEqp), ("waste container", CEqp) ]
   }

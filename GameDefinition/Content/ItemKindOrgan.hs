@@ -25,11 +25,11 @@ organs :: [ItemKind]
 organs =
   [fist, foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, smallBeak, armoredSkin, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed]
   -- Allure-specific
-  ++ [razor, liveWire, robotBrain, wasteContainer, spotlight, mouthVent, geneticFlaw3, geneticFlaw10]
+  ++ [razor, liveWire, robotBrain, spotlight, mouthVent, geneticFlaw3, geneticFlaw10]
 
 fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, smallBeak, armoredSkin, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed :: ItemKind
 -- Allure-specific
-razor, liveWire, robotBrain, wasteContainer, spotlight, mouthVent, geneticFlaw3, geneticFlaw10 :: ItemKind
+razor, liveWire, robotBrain, spotlight, mouthVent, geneticFlaw3, geneticFlaw10 :: ItemKind
 
 -- Weapons
 
@@ -544,17 +544,6 @@ robotBrain = armoredSkin
                ++ [AddSkill SkWait 2]  -- can brace and sleep
                ++ [AddSkill SkApply (-1)]  -- can't even eat food
                ++ [SetFlag Durable]
-  , idesc    = ""
-  }
-wasteContainer = armoredSkin
-  { iname    = "waste container"
-  , ifreq    = [("waste container", 100)]
-  , iverbHit = "spill over"
-  , iaspects = [ Timeout $ (1 + 1 `d` 2) * 30
-               , SetFlag Periodic, SetFlag Durable ]
-  , ieffects = [ Recharging (Summon "mobile animal" $ 1 `dL` 2)
-               , Recharging (RefillHP 1)
-               , Recharging (Explode "waste") ]
   , idesc    = ""
   }
 spotlight = armoredSkin

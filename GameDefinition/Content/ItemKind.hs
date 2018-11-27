@@ -37,11 +37,11 @@ items :: [ItemKind]
 items =
   [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, scroll16, scroll17, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammer, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
   -- Allure-specific
-  ++ [needle, constructionHooter, scrollAd1, blowtorch]
+  ++ [needle, constructionHooter, wasteContainer, scrollAd1, blowtorch]
 
 sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, scroll16, scroll17, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammer, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
 -- Allure-specific
-needle, constructionHooter, scrollAd1, blowtorch :: ItemKind
+needle, constructionHooter, wasteContainer, scrollAd1, blowtorch :: ItemKind
 
 -- Keep the dice rolls and sides in aspects small so that not too many
 -- distinct items are generated (for display in item lore and for narrative
@@ -1787,9 +1787,8 @@ needle = ItemKind
   }
 constructionHooter = necklaceTemplate
   { iname    = "construction hooter"
-  , ifreq    = [ ("common item", 1), ("construction hooter", 1)
-               , ("any jewelry", 10) ]
-      -- extremely rare
+  , ifreq    = [("common item", 1), ("construction hooter", 1)]
+                  -- extremely rare, but dropped by decontamination chambers
   , iflavour = zipPlain [BrRed]
   , irarity  = [(1, 1)]
   , iweight  = 1000
@@ -1798,6 +1797,24 @@ constructionHooter = necklaceTemplate
                , SetFlag Equipable, EqpSlot EqpSlotArmorMelee]
   , ieffects = [Yell, Summon "construction robot" 1]
   , idesc    = "An emergency hooter for alarming human personel in case their life is in danger. Worn by construction robots around their \"neck\", where it's least exposed, but nevertheless it needs to be heavily armored and running on its own power suppply."
+  }
+wasteContainer = ItemKind
+  { isymbol  = symbolTool
+  , iname    = "waste container"
+  , ifreq    = [("waste container", 1)]
+  , iflavour = zipLiquid [Green]
+  , icount   = 1
+  , irarity  = [(1, 1)]
+  , iverbHit = "spill over"
+  , iweight  = 30000
+  , idamage  = 0
+  , iaspects = [ Timeout $ (1 + 1 `d` 2) * 30
+               , SetFlag Periodic, SetFlag Durable ]
+  , ieffects = [ Recharging (Detect DetectLoot 20)
+               , Recharging (Summon "mobile animal" $ 1 `dL` 2)
+               , Recharging (Explode "waste") ]
+  , idesc    = "Waste recognition and utilization subsystem. Detects any stray item not registered as passenger cargo. Leaks a little."
+  , ikit     = []
   }
 scrollAd1 = scrollTemplate
   { ifreq    = [("common item", 100)]
