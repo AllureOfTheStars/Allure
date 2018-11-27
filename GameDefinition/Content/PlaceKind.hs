@@ -525,7 +525,7 @@ escapeDown = PlaceKind
                    , ('f', "floorActorLit"), ('r', "rubbleOrWaste_Lit") ]
   }
 escapeDown2 = escapeDown
-  { pfreq    = [("escape down", 1000)]
+  { pfreq    = [("escape down", 200)]
   , pfence   = FFloor
   , ptopLeft = [ "#·#"
                , "·>·"
@@ -533,7 +533,7 @@ escapeDown2 = escapeDown
                ]
   }
 escapeDown3 = escapeDown
-  { pfreq    = [("escape down", 1000)]
+  { pfreq    = [("escape down", 200)]
   , pfence   = FFloor
   , ptopLeft = [ "·#·"
                , "#>#"
@@ -541,7 +541,7 @@ escapeDown3 = escapeDown
                ]
   }
 escapeDown4 = escapeDown
-  { pfreq    = [("escape down", 1000)]
+  { pfreq    = [("escape down", 200)]
   , pfence   = FWall
   , ptopLeft = [ "^·^"
                , "·>·"
@@ -549,7 +549,7 @@ escapeDown4 = escapeDown
                ]
   }
 escapeDown5 = escapeDown
-  { pfreq    = [("escape down", 1000)]
+  { pfreq    = [("escape down", 200)]
   , pcover   = CMirror
   , pfence   = FFloor
   , ptopLeft = [ "r#·"
@@ -558,7 +558,7 @@ escapeDown5 = escapeDown
                ]
   }
 escapeDown6 = escapeDown
-  { pfreq    = [("escape down", 500)]
+  { pfreq    = [("escape down", 1000)]
   , pfence   = FWall
   , ptopLeft = [ "··#··"
                , "·#*#·"
@@ -568,7 +568,7 @@ escapeDown6 = escapeDown
                ]
   }
 escapeDown7 = escapeDown
-  { pfreq    = [("escape down", 500)]
+  { pfreq    = [("escape down", 1000)]
   , pfence   = FFloor
   , ptopLeft = [ "·*#*·"
                , "*#*#*"
@@ -578,7 +578,7 @@ escapeDown7 = escapeDown
                ]
   }
 escapeDown8 = escapeDown
-  { pfreq    = [("escape down", 500)]
+  { pfreq    = [("escape down", 1000)]
   , pcover   = CMirror
   , pfence   = FWall
   , ptopLeft = [ "··#g·"
@@ -1103,7 +1103,7 @@ oval = PlaceKind
                    , ('~', "poolOver_~_Lit") ]
   }
 ovalFloor = oval
-  { pfreq    = [ ("rogue", 50000), ("arena", 60000), ("museum", 60000)
+  { pfreq    = [ ("rogue", 150000), ("arena", 60000), ("museum", 60000)
                , ("laboratory", 100000), ("empty", 10000), ("exit", 5000)
                , ("ambush", 100000) ]
   , pfence   = FGround
@@ -1126,7 +1126,7 @@ ovalSquare = oval
   }
 ovalBasin = oval
   { pname    = "a water basin"
-  , pfreq    = [ ("rogue", 40000), ("arena", 200000), ("laboratory", 200000)
+  , pfreq    = [ ("rogue", 100000), ("arena", 200000), ("laboratory", 200000)
                , ("empty", 20000) ]
   , pfence   = FGround
   , ptopLeft = [ "XXX+##"
@@ -1259,7 +1259,7 @@ cells = PlaceKind
   }
 cells2 = cells
   { pname    = "humidity equalizers"
-  , prarity  = [(1, 3), (10, 3)]
+  , prarity  = [(1, 2), (10, 2)]
   , ptopLeft = [ "f·#·"  -- extra column to avoid blocked exits
                , "·#··"
                , "·#··"
