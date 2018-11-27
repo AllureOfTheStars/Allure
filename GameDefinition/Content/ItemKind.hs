@@ -836,7 +836,7 @@ scroll2 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
   , iaspects = ELabel "of greed"
                : iaspects scrollTemplate
-  , ieffects = [Detect DetectItem 20, Teleport 20, RefillCalm (-50)]
+  , ieffects = [Detect DetectLoot 20, Teleport 20, RefillCalm (-50)]
   }
 scroll3 = scrollTemplate
   { ifreq    = [("curious item", 100), ("any scroll", 100)]
@@ -849,7 +849,7 @@ scroll4 = scrollTemplate
   , icount   = 3 `dL` 1
   , irarity  = [(1, 14)]
   , ieffects = [OneOf [ Teleport 5, Paralyze 10, InsertMove 30
-                      , Detect DetectEmbed 12, Detect DetectItem 20 ]]
+                      , Detect DetectEmbed 12, Detect DetectHidden 20 ]]
   }
 scroll5 = scrollTemplate
   -- needs to be common to show at least a portion of effects
@@ -859,7 +859,7 @@ scroll5 = scrollTemplate
   , ieffects = [ Impress
                , OneOf [ Teleport 20, Ascend False, Ascend True
                        , Summon "hero" 1, Summon "mobile animal" $ 1 `d` 2
-                       , Detect DetectAll 40
+                       , Detect DetectLoot 20  -- the most useful of detections
                        , CreateItem CGround "common item" timerNone ] ]
   }
 scroll6 = scrollTemplate
@@ -903,8 +903,8 @@ scroll11 = scrollTemplate
   }
 scroll12 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
-  , irarity  = [(1, 9)]  -- only mildly useful
-  , ieffects = [Detect DetectHidden 20]
+  , irarity  = [(1, 9)]  -- powerful, even if not ideal
+  , ieffects = [Detect DetectAll 20]
   }
 scroll13 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
@@ -1807,7 +1807,8 @@ scrollAd1 = scrollTemplate
                ++ iaspects scrollTemplate
   , ieffects = [ toOrganGood "resolute" (500 + 1 `d` 200)
                    -- a drawback (at least initially) due to @calmEnough@
-               , Explode "cruise ad hologram" ]
+               , Explode "cruise ad hologram"
+               , Detect DetectLoot 5 ]  -- short so useless most of the time
   , idesc    = "Biodegradable self-powered mini-projector displaying holographic ads and shopping hints."
   }
 blowtorch = ItemKind
