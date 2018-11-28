@@ -582,7 +582,7 @@ geneticFlaw n = armoredSkin
                    -- destroy on drop to run the @OnSmash@ effects
   , ieffects = [ OnSmash $ DropItem maxBound maxBound COrgan "poisoned"
                , OnSmash $ RefillHP n
-               , OnSmash $ Temporary "undergo infracellular decontamination" ]
+               , Temporary "undergo infracellular decontamination" ]
   , idesc    = ""
   }
 geneticFlaw3 = geneticFlaw 3
