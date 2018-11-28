@@ -836,7 +836,7 @@ cruiseAdHologram = ItemKind
   , ikit     = []
   }
 outerAdHologram = cruiseAdHologram
-  {  iname    = "cruise ad hologram"
+  { iname    = "cruise ad hologram"
   , ifreq    = [("advertisement", 20)]
   , icount   = 4
   , ieffects = []  -- weak, 4 particles, no effect
