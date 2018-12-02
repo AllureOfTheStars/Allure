@@ -574,7 +574,8 @@ geneticFlaw n = armoredSkin
   , iflavour = zipPlain [BrRed]
   , iverbHit = "flaw"
   , iweight  = 0
-  , iaspects = [ AddSkill SkMaxHP (intToDice $ - n), AddSkill SkWait (-1)
+  , iaspects = [ AddSkill SkMaxHP (intToDice $ - n)
+               , AddSkill SkWait (-1), AddSkill SkApply (-1)
                , Odds (1 `d` 400)
                       [AddSkill SkHurtMelee (-5)]
                       [AddSkill SkArmorMelee (-5), AddSkill SkArmorRanged (-5)]
