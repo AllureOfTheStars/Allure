@@ -23,13 +23,13 @@ import Game.LambdaHack.Content.ItemKind
 
 organs :: [ItemKind]
 organs =
-  [fist, foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, smallBeak, armoredSkin, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed]
+  [fist, foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed]
   -- Allure-specific
-  ++ [razor, liveWire, robotBrain, spotlight, mouthVent, geneticFlaw3, geneticFlaw10]
+  ++ [smallBeak, razor, liveWire, robotBrain, spotlight, mouthVent, geneticFlaw3, geneticFlaw10]
 
-fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, smallBeak, armoredSkin, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed :: ItemKind
+fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland2, speedGland4, speedGland6, speedGland8, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed :: ItemKind
 -- Allure-specific
-razor, liveWire, robotBrain, spotlight, mouthVent, geneticFlaw3, geneticFlaw10 :: ItemKind
+smallBeak, razor, liveWire, robotBrain, spotlight, mouthVent, geneticFlaw3, geneticFlaw10 :: ItemKind
 
 -- Weapons
 
@@ -265,14 +265,6 @@ hugeTail = largeTail
                  -- timeout higher, lest they regain push before closing again
   , ieffects = [Recharging (PushActor (ThrowMod 400 50 1))]  -- 2 steps, fast
   , idesc    = "Slow but immensely heavy."
-  }
-smallBeak = fist
-  { iname    = "small beak"
-  , ifreq    = [("small beak", 50)]
-  , icount   = 1
-  , iverbHit = "nom"
-  , idamage  = 2 `d` 1
-  , idesc    = "Cute, but painful."
   }
 
 -- Non-weapons
@@ -513,6 +505,14 @@ impressed = armoredSkin
 
 -- * Allure-specific
 
+smallBeak = fist
+  { iname    = "small beak"
+  , ifreq    = [("small beak", 50)]
+  , icount   = 1
+  , iverbHit = "nom"
+  , idamage  = 2 `d` 1
+  , idesc    = "Cute, but painful."
+  }
 razor = fist
   { iname    = "razor"
   , ifreq    = [("razor", 100)]

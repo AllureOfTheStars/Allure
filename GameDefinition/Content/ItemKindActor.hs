@@ -21,13 +21,13 @@ import Game.LambdaHack.Content.ItemKind
 
 actors :: [ItemKind]
 actors =
-  [warrior, warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, soldier, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, giantOctopus, rhinoceros, beeSwarm, hornetSwarm, thornbush]
+  [warrior, warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, soldier, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush]
   -- Allure-specific
-  ++ [razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot]
+  ++ [giantOctopus, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot]
 
-warrior,    warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, soldier, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, giantOctopus, rhinoceros, beeSwarm, hornetSwarm, thornbush :: ItemKind
+warrior,    warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, soldier, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush :: ItemKind
 -- Allure-specific
-razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot :: ItemKind
+giantOctopus, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot :: ItemKind
 
 -- Note that the actors that appear in the crawl scenario should
 -- be generated with at most ordinary ammo. Otherwise, farming them
@@ -498,30 +498,6 @@ alligator = ItemKind
                , ("animal brain", COrgan)
                , ("genetic flaw 10", COrgan) ]
   }
-giantOctopus = ItemKind
-  { isymbol  = 'o'
-  , iname    = "giant octopus"
-  , ifreq    = [ ("animal", 100), ("mobile", 1), ("mobile animal", 100)
-               , ("aquatic", 90), ("aquatic animal", 90) ]  -- weak on land
-  , iflavour = zipPlain [BrMagenta]
-  , icount   = 1
-  , irarity  = [(1, 5)]
-  , iverbHit = "thud"
-  , iweight  = 72000
-  , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 17, AddSkill SkMaxCalm 80
-               , AddSkill SkSwimming 100  -- swims better than walks
-               , AddSkill SkSpeed 27, AddSkill SkNocto 3 -- good night vision
-               , AddSkill SkAlter (-2)  -- can't use stairs nor doors
-               , SetFlag Durable ]
-  , ieffects = []
-  , idesc    = "It has eight arms of rage."
-  , ikit     = [ ("tentacle", COrgan), ("tentacle", COrgan)
-               , ("small beak", COrgan), ("eye 8", COrgan)
-                   -- shots not too damaging, so can have strong sight
-               , ("animal brain", COrgan)
-               , ("genetic flaw 3", COrgan) ]
-  }
 rhinoceros = ItemKind
   { isymbol  = 'R'
   , iname    = "Maddened Rhinoceros"
@@ -609,6 +585,33 @@ thornbush = ItemKind
   , ieffects = []
   , idesc    = "Each branch bears long, curved thorns."
   , ikit     = [("thorn", COrgan), ("armored skin", COrgan)]
+  }
+
+-- * Allure-specific animals
+
+giantOctopus = ItemKind
+  { isymbol  = 'o'
+  , iname    = "giant octopus"
+  , ifreq    = [ ("animal", 100), ("mobile", 1), ("mobile animal", 100)
+               , ("aquatic", 90), ("aquatic animal", 90) ]  -- weak on land
+  , iflavour = zipPlain [BrMagenta]
+  , icount   = 1
+  , irarity  = [(1, 5)]
+  , iverbHit = "thud"
+  , iweight  = 72000
+  , idamage  = 0
+  , iaspects = [ AddSkill SkMaxHP 17, AddSkill SkMaxCalm 80
+               , AddSkill SkSwimming 100  -- swims better than walks
+               , AddSkill SkSpeed 27, AddSkill SkNocto 3 -- good night vision
+               , AddSkill SkAlter (-2)  -- can't use stairs nor doors
+               , SetFlag Durable ]
+  , ieffects = []
+  , idesc    = "It has eight arms of rage."
+  , ikit     = [ ("tentacle", COrgan), ("tentacle", COrgan)
+               , ("small beak", COrgan), ("eye 8", COrgan)
+                   -- shots not too damaging, so can have strong sight
+               , ("animal brain", COrgan)
+               , ("genetic flaw 3", COrgan) ]
   }
 
 -- * Robots, Allure-specific
