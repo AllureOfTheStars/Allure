@@ -830,7 +830,7 @@ scroll1 = scrollTemplate
   { ifreq    = [("curious item", 100), ("any scroll", 100)]
   , icount   = 1
   , irarity  = [(5, 9), (10, 9)]  -- mixed blessing, so found early for a unique
-  , iaspects = [SetFlag Unique, ELabel "of Reckless Beacon", SetFlag Precious]
+  , iaspects = [SetFlag Unique, ELabel "of Reckless Beacon"]
                ++ iaspects scrollTemplate
   , ieffects = [Summon "hero" 1, Summon "mobile animal" (2 + 1 `d` 2)]
   , idesc    = "This industrial, wide-spectrum alarm broadcaster, if over-amped for a single powerful blast, should be able to cut through the interference and reach any lost crew members, giving them enough positional information to locate us."
@@ -877,16 +877,15 @@ scroll6 = scrollTemplate
 scroll7 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
   , irarity  = [(10, 20)]  -- at endgame a crucial item may be missing
-  , iaspects = [ELabel "of molecular reconfiguration", SetFlag Precious]
-               ++ iaspects scrollTemplate
+  , iaspects = ELabel "of molecular reconfiguration"
+               : iaspects scrollTemplate
   , ieffects = [Composite [PolyItem, Explode "firecracker"]]
   }
 scroll8 = scrollTemplate
   { ifreq    = [("curious item", 100), ("any scroll", 100)]
   , icount   = 1
   , irarity  = [(10, 12)]
-  , iaspects = [ SetFlag Unique, ELabel "of Rescue Proclamation"
-               , SetFlag Precious ]
+  , iaspects = [SetFlag Unique, ELabel "of Rescue Proclamation"]
                ++ iaspects scrollTemplate
   , ieffects = [Summon "hero" 1]
   , idesc    = "This lock chip opens a nearby closet containing one of our lost crew members."
@@ -910,15 +909,15 @@ scroll11 = scrollTemplate
 scroll12 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
   , irarity  = [(10, 20)]
-  , iaspects = [ELabel "of molecular duplication", SetFlag Precious]
-               ++ iaspects scrollTemplate
+  , iaspects = ELabel "of molecular duplication"
+               : iaspects scrollTemplate
   , ieffects = [DupItem]
   }
 scroll13 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
   , irarity  = [(10, 20)]
-  , iaspects = [ELabel "of surface reconfiguration", SetFlag Precious]
-               ++ iaspects scrollTemplate
+  , iaspects = ELabel "of surface reconfiguration"
+               : iaspects scrollTemplate
   , ieffects = [RerollItem]
   }
 
