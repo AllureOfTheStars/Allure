@@ -245,13 +245,13 @@ elbow = ItemKind
   , iweight  = 80000
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 12, AddSkill SkMaxCalm 80
-               , AddSkill SkSpeed 21, AddSkill SkNocto 2
+               , AddSkill SkSpeed 20, AddSkill SkNocto 2
                , AddSkill SkProject 2, AddSkill SkApply 1
                , AddSkill SkAlter 2, AddSkill SkMelee (-1)
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "It moves in sudden jerks and never makes a noise. Speaks in hard objects hurled at deadly speeds."
-  , ikit     = [ ("speed gland 4", COrgan)
+  , ikit     = [ ("speed gland 5", COrgan)
                , ("eye 6", COrgan), ("ear 8", COrgan)
                    -- too powerful to get stronger sight
                , ("sapient brain", COrgan)
@@ -270,7 +270,7 @@ torsor = ItemKind
   , idamage  = 0
   , iaspects = [ SetFlag Unique, ELabel "of Contact"
                , AddSkill SkMaxHP 300, AddSkill SkMaxCalm 100
-               , AddSkill SkSpeed 11, AddSkill SkNocto 2
+               , AddSkill SkSpeed 10, AddSkill SkNocto 2
                , AddSkill SkAggression 3
                , AddSkill SkProject 2, AddSkill SkApply 1
                , AddSkill SkAlter 1  -- can't exit the gated level, the boss
@@ -280,7 +280,7 @@ torsor = ItemKind
   , ikit     = [ ("tentacle", COrgan), ("hooked claw", COrgan)
                    -- at least one non-timed
                , ("large jaw", COrgan), ("venom fang", COrgan)
-               , ("speed gland 4", COrgan)
+               , ("speed gland 5", COrgan)
                , ("eye 6", COrgan), ("ear 8", COrgan)
                , ("sapient brain", COrgan)
                , ("gem", CInv), ("gem", CInv), ("gem", CInv), ("gem", CInv) ]
@@ -465,14 +465,14 @@ komodoDragon = ItemKind
   , iweight  = 80000
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 40, AddSkill SkMaxCalm 60
-               , AddSkill SkSpeed 18, AddSkill SkNocto 2
+               , AddSkill SkSpeed 17, AddSkill SkNocto 2
                , AddSkill SkAggression 1  -- match the description
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Larger and more aggressive than any other lizard, but as easily recovering from wounds at its lesser cousins."
   , ikit     = [ ("large tail", COrgan), ("jaw", COrgan)
                , ("hooked claw", COrgan)
-               , ("speed gland 4", COrgan), ("armored skin", COrgan)
+               , ("speed gland 5", COrgan), ("armored skin", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan), ("ear 3", COrgan)
                , ("animal brain", COrgan)
                , ("genetic flaw 10", COrgan) ]
