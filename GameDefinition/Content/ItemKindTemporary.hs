@@ -42,11 +42,11 @@ tmpAspects name aspects = ItemKind
   , idamage  = 0
   , iaspects = -- timeout is 0; activates and vanishes soon,
                -- depending on initial timer setting
-               aspects
-               ++ [SetFlag Periodic, SetFlag Fragile, SetFlag Durable]
-                    -- hack: destroy on drop
-  , ieffects = [ Recharging $ tmpNoLonger name
-               , OnSmash $ tmpNoLonger name ]
+               aspects ++ [SetFlag Periodic, SetFlag Fragile, SetFlag Condition]
+  , ieffects = [ verbMsgNoLonger name
+               , OnSmash $ verbMsgNoLonger name ]
+                   -- needed also under @OnSmash@ to display when item removed
+                   -- via @DropItem@ and not via activating all copies in turn
   , idesc    = ""  -- no description needed; powers are enough
   , ikit     = []
   }
@@ -55,9 +55,7 @@ tmpEffects :: Text -> Dice -> [Effect] -> ItemKind
 tmpEffects name icount effects =
   let tmp = tmpAspects name []
   in tmp { icount
-         , ieffects = effects
-                      ++ [ Recharging $ tmpNoLonger name
-                         , OnSmash $ tmpNoLonger name ]
+         , ieffects = effects ++ ieffects tmp
          }
 
 tmpStrengthened = tmpAspects "strengthened" [AddSkill SkHurtMelee 20]
@@ -126,12 +124,12 @@ tmpBonusSkApply =
   tmpAspects "more practical" [AddSkill SkApply 5]
 
 tmpRegenerating =
-  tmpEffects "regenerating" (4 + 1 `d` 2) [Recharging (RefillHP 1)]
+  tmpEffects "regenerating" (4 + 1 `d` 2) [RefillHP 1]
 tmpPoisoned =
-  tmpEffects "poisoned" (4 + 1 `d` 2) [Recharging (RefillHP (-1))]
+  tmpEffects "poisoned" (4 + 1 `d` 2) [RefillHP (-1)]
 tmpSlow10Resistant =
   tmpEffects "slow resistant" (8 + 1 `d` 4)
-             [Recharging (DropItem 1 1 COrgan "slowed")]
+             [DropItem 1 1 COrgan "slowed"]
 tmpPoisonResistant =
   tmpEffects "poison resistant" (8 + 1 `d` 4)
-             [Recharging (DropItem 1 maxBound COrgan "poisoned")]
+             [DropItem 1 maxBound COrgan "poisoned"]

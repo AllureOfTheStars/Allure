@@ -228,9 +228,10 @@ nose = ItemKind  -- depends solely on smell
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A blind, slimy mass of clawing, stinging and burning. You'd think it's powerless, but as soon as it touches your trembling body, it's always one step ahead."
-  , ikit     = [ ("nostril", COrgan), ("small claw", COrgan)
+  , ikit     = [ ("small claw", COrgan)
                , ("tentacle", COrgan), ("tentacle", COrgan)
                , ("thorn", COrgan), ("venom tooth", COrgan)
+               , ("nostril", COrgan)
                , ("sapient brain", COrgan) ]  -- no sight nor hearing
   }
 elbow = ItemKind
@@ -270,7 +271,7 @@ torsor = ItemKind
   , idamage  = 0
   , iaspects = [ SetFlag Unique, ELabel "of Contact"
                , AddSkill SkMaxHP 300, AddSkill SkMaxCalm 100
-               , AddSkill SkSpeed 6, AddSkill SkNocto 2
+               , AddSkill SkSpeed 11, AddSkill SkNocto 2
                , AddSkill SkAggression 3
                , AddSkill SkProject 2, AddSkill SkApply 1
                , AddSkill SkAlter 1  -- can't exit the gated level, the boss
@@ -278,8 +279,10 @@ torsor = ItemKind
   , ieffects = []
   , idesc    = "The mind, the heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw, grinding teeth and tensing fangs."
   , ikit     = [ ("tentacle", COrgan), ("hooked claw", COrgan)
+                   -- at least one non-timed
                , ("large jaw", COrgan), ("sting", COrgan)
-               , ("venom fang", COrgan), ("speed gland 4", COrgan)
+               , ("venom fang", COrgan)
+               , ("speed gland 4", COrgan)
                , ("eye 6", COrgan), ("ear 8", COrgan)
                , ("sapient brain", COrgan)
                , ("gem", CInv), ("gem", CInv), ("gem", CInv), ("gem", CInv) ]
@@ -426,7 +429,8 @@ rattlesnake = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Beware its rattle - it serves as a warning of an agonising death."
-  , ikit     = [ ("venom fang", COrgan), ("rattle", COrgan)
+  , ikit     = [ ("venom fang", COrgan)  -- when on cooldown, it's weaponless
+               , ("rattle", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan), ("ear 6", COrgan)
                , ("animal brain", COrgan)
                , ("genetic flaw 3", COrgan) ]
@@ -469,8 +473,8 @@ komodoDragon = ItemKind
   , ieffects = []
   , idesc    = "Larger and more aggressive than any other lizard, but as easily recovering from wounds at its lesser cousins."
   , ikit     = [ ("large tail", COrgan), ("jaw", COrgan)
-               , ("hooked claw", COrgan), ("speed gland 4", COrgan)
-               , ("armored skin", COrgan)
+               , ("hooked claw", COrgan)
+               , ("speed gland 4", COrgan), ("armored skin", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan), ("ear 3", COrgan)
                , ("animal brain", COrgan)
                , ("genetic flaw 10", COrgan) ]
@@ -493,7 +497,8 @@ alligator = ItemKind
   , ieffects = []
   , idesc    = "An armored predator from the dawn of time. You better not get within its reach."
   , ikit     = [ ("huge tail", COrgan), ("large jaw", COrgan)
-               , ("small claw", COrgan), ("armored skin", COrgan)
+               , ("small claw", COrgan)
+               , ("armored skin", COrgan)
                , ("eye 6", COrgan), ("ear 8", COrgan)
                , ("animal brain", COrgan)
                , ("genetic flaw 10", COrgan) ]
@@ -516,10 +521,10 @@ rhinoceros = ItemKind
                                         -- also easy to contain with doors
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "The last of its kind. Blind with rage or perhaps due to the postoperative scars. Charges at deadly speed."
-  , ikit     = [ ("armored skin", COrgan)
+  , idesc    = "The last of its kind. Blind with rage, or perhaps due to the postoperative scars. Charges at deadly speed."
+  , ikit     = [ ("rhino horn", COrgan), ("snout", COrgan)
+               , ("armored skin", COrgan)
                , ("eye 3", COrgan), ("ear 8", COrgan)
-               , ("rhino horn", COrgan), ("snout", COrgan)
                , ("animal brain", COrgan) ]
   }
 
@@ -543,7 +548,8 @@ beeSwarm = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Every bee would die for the queen."
-  , ikit     = [ ("bee sting", COrgan), ("vision 6", COrgan), ("ear 6", COrgan)
+  , ikit     = [ ("bee sting", COrgan)  -- weaponless when it's used up
+               , ("vision 6", COrgan), ("ear 6", COrgan)
                , ("insect mortality", COrgan), ("animal brain", COrgan) ]
   }
 hornetSwarm = ItemKind
@@ -565,7 +571,8 @@ hornetSwarm = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A vicious cloud of stings and hate."
-  , ikit     = [ ("sting", COrgan), ("vision 6", COrgan), ("ear 6", COrgan)
+  , ikit     = [ ("sting", COrgan)  -- when on cooldown, it's weaponless
+               , ("vision 6", COrgan), ("ear 6", COrgan)
                , ("insect mortality", COrgan), ("animal brain", COrgan) ]
   }
 thornbush = ItemKind
@@ -584,7 +591,8 @@ thornbush = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Each branch bears long, curved thorns."
-  , ikit     = [("thorn", COrgan), ("armored skin", COrgan)]
+  , ikit     = [ ("thorn", COrgan)  -- after all run out, it's weaponless
+               , ("armored skin", COrgan) ]
   }
 
 -- * Allure-specific animals
@@ -608,7 +616,8 @@ giantOctopus = ItemKind
   , ieffects = []
   , idesc    = "It has eight arms of rage."
   , ikit     = [ ("tentacle", COrgan), ("tentacle", COrgan)
-               , ("small beak", COrgan), ("eye 8", COrgan)
+               , ("small beak", COrgan)
+               , ("eye 8", COrgan)
                    -- shots not too damaging, so can have strong sight
                , ("animal brain", COrgan)
                , ("genetic flaw 3", COrgan) ]
@@ -910,8 +919,9 @@ weldedRobot = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A well-built humanoid luggage unloading robot with a smooth satin silvery skin. Its graceful moves are stunted by a thick irregular weld fastening both its shapely legs to the floor. A whiff of smoke escapes whenever it opens its mouth in a charming toothy smile while brandishing a blowtorch in its trembling hand."
-  , ikit     = [ ("mouth vent", COrgan), ("small jaw", COrgan)
-               , ("fist", COrgan), ("eye 6", COrgan), ("ear 3", COrgan)
+  , ikit     = [ ("small jaw", COrgan), ("fist", COrgan)
+               , ("eye 6", COrgan), ("ear 3", COrgan)
+               , ("mouth vent", COrgan)
                , ("robot brain", COrgan)
                , ("blowtorch", CEqp), ("crude weld", COrgan) ]
   }
@@ -939,10 +949,10 @@ cleanerRobot = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."
-  , ikit     = [ ("boiling vent", COrgan) , ("armored skin", COrgan)
-               , ("live wire", COrgan), ("jaw", COrgan), ("hooked claw", COrgan)
-               , ("spotlight", COrgan), ("eye 3", COrgan), ("nostril", COrgan)
-               , ("ear 6", COrgan)
+  , ikit     = [ ("live wire", COrgan), ("jaw", COrgan), ("hooked claw", COrgan)
+               , ("boiling vent", COrgan)
+               , ("spotlight", COrgan), ("armored skin", COrgan)
+               , ("eye 3", COrgan), ("nostril", COrgan), ("ear 6", COrgan)
                , ("robot brain", COrgan)
                , ("currency", CInv), ("currency", CInv), ("currency", CInv)
                , ("construction hooter", CEqp), ("waste container", CEqp) ]

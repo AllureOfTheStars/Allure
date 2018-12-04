@@ -47,7 +47,7 @@ scratchOnWall = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [SetFlag Durable]
-  , ieffects = [ Temporary "start making sense of the scratches"
+  , ieffects = [ VerbMsg "start making sense of the scratches"
                , Detect DetectHidden 3 ]
   , idesc    = "A seemingly random series of scratches, carved deep into the wall."
   , ikit     = []
@@ -63,11 +63,10 @@ obscenePictogram = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [Timeout 7, SetFlag Durable]
-  , ieffects = [ Recharging $ Temporary "enter unexplainable rage at a glimpse of the inscrutable graffiti"
-               , Recharging $ RefillCalm (-20)
-               , Recharging $ OneOf
-                   [ toOrganGood "strengthened" (3 + 1 `d` 2)
-                   , CreateItem CInv "sandstone rock" timerNone ] ]
+  , ieffects = [ VerbMsg "enter unexplainable rage at a glimpse of the inscrutable graffiti"
+               , RefillCalm (-20)
+               , OneOf [ toOrganGood "strengthened" (3 + 1 `d` 2)
+                       , CreateItem CInv "sandstone rock" timerNone ] ]
   , idesc    = ""
   , ikit     = []
   }
@@ -82,9 +81,9 @@ subtleFresco = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [Timeout 7, SetFlag Durable]
-  , ieffects = [ Recharging $ Temporary "feel refreshed by the subtle fresco"
-               , Recharging $ toOrganGood "far-sighted" (3 + 1 `d` 2)
-               , Recharging $ toOrganGood "keen-smelling" (3 + 1 `d` 2) ]
+  , ieffects = [ VerbMsg "feel refreshed by the subtle fresco"
+               , toOrganGood "far-sighted" (3 + 1 `d` 2)
+               , toOrganGood "keen-smelling" (3 + 1 `d` 2) ]
                  -- hearing gets a boost through bracing, so no need here
   , idesc    = "Expensive yet tasteful."
   , ikit     = []
@@ -273,7 +272,7 @@ escape = stairsUp
   , iflavour = zipPlain [BrYellow]
   , iaspects = [SetFlag Durable]
   , ieffects = [Escape]
-  , idesc    = ""  -- generic escape, so the text should be too; in moon outdoors, in spaceship, everywhere
+  , idesc    = ""  -- generic escape, so the text should be too; for moon outdoors, spaceship, everywhere
   }
 staircaseTrapUp = ItemKind
   { isymbol  = '^'
@@ -286,7 +285,7 @@ staircaseTrapUp = ItemKind
   , iweight  = 10000
   , idamage  = 0
   , iaspects = []  -- not Durable, springs at most once
-  , ieffects = [ Temporary "be caught in decompression blast"
+  , ieffects = [ VerbMsg "be caught in decompression blast"
                , Teleport $ 3 + 1 `dL` 10 ]
   , idesc    = ""
   , ikit     = []
@@ -297,7 +296,7 @@ staircaseTrapUp = ItemKind
 staircaseTrapDown = staircaseTrapUp
   { ifreq    = [("staircase trap down", 1)]
   , iverbHit = "open up under"
-  , ieffects = [ Temporary "tumble down the stairwell"
+  , ieffects = [ VerbMsg "tumble down the stairwell"
                , toOrganGood "drunk" (20 + 1 `d` 5) ]
   , idesc    = "A treacherous slab, to teach those who are too proud."
   }
@@ -380,7 +379,7 @@ blackStarrySky = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [SetFlag Durable]
-  , ieffects = [ Temporary "look into the void and it looks back"
+  , ieffects = [ VerbMsg "look into the void and it looks back"
                , OneOf [RefillCalm 5, RefillCalm (-5)] ]
   , idesc    = "Occasionally a planet zips by, but is unable to disperse the blackness. The black starscape constantly rotates. The frantic dance is silent, muted, indifferent. There is not even a hint of vibration, just the sense of heaviness and dizziness."  -- appears only on 100% flavour tiles, useless and trivial to notice, so the writeup can be longer; who am I kidding, I can hardly write condensed prose
   , ikit     = []
@@ -411,7 +410,7 @@ ruinedFirstAidKit = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = []  -- not Durable, springs at most once
-  , ieffects = [ Temporary "inspect a tattered CPR instruction soaked in a residue of oily drugs"
+  , ieffects = [ VerbMsg "inspect a tattered CPR instruction soaked in a residue of oily drugs"
                , OneOf [ toOrganNoTimer "poison resistant"
                        , toOrganNoTimer "slow resistant"
                        , toOrganGood "drunk" (20 + 1 `d` 5) ]
@@ -430,9 +429,9 @@ wall3dBillboard = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [Timeout 3, SetFlag Durable]
-  , ieffects = [ Recharging $ Temporary "make it cough up a wobbly standalone hologram once more"
-               , Recharging $ OneOf [ Explode "advertisement"
-                                    , Explode "story-telling" ] ]
+  , ieffects = [ VerbMsg "make it cough up a wobbly standalone hologram once more"
+               , OneOf [ Explode "advertisement"
+                       , Explode "story-telling" ] ]
   , idesc    = "One can still make out excited moves of bleached shapes."
   , ikit     = []
   }
@@ -467,14 +466,14 @@ liftTrap = staircaseTrapUp
   { iname    = "elevator trap"  -- hat tip to US heroes
   , ifreq    = [("lift trap", 100)]
   , iverbHit = "squeeze"
-  , ieffects = [ Temporary "be crushed by the sliding doors"
+  , ieffects = [ VerbMsg "be crushed by the sliding doors"
                , DropBestWeapon, Paralyze 10 ]
   , idesc    = ""
   }
 liftTrap2 = liftTrap
   { ifreq    = [("lift trap", 50)]
   , iverbHit = "choke"
-  , ieffects = [ Temporary "inhale the gas lingering inside the cab"
+  , ieffects = [ VerbMsg "inhale the gas lingering inside the cab"
                , toOrganBad "slowed" $ (1 `dL` 4) * 10 ]
   , idesc    = ""
   }
