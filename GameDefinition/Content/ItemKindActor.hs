@@ -204,14 +204,14 @@ fastEye = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "It bites as blindingly fast as it runs. Or rolls? Or crawls? Also, cuts and pierces."
-  , ikit     = [ ("tentacle", COrgan), ("jaw", COrgan)
+  , ikit     = [ ("jaw", COrgan), ("razor", COrgan), ("horn", COrgan)
                , ("speed gland 10", COrgan)
                , ("eye 3", COrgan), ("ear 3", COrgan)
                , ("sapient brain", COrgan) ]
   }
 nose = ItemKind  -- depends solely on smell
   { isymbol  = 'h'
-  , iname    = "tentacled horror"
+  , iname    = "clawing horror"
   , ifreq    = [ ("monster", 100), ("mobile", 1), ("mobile monster", 100)
                , ("aquatic", 30), ("aquatic monster", 30) ]  -- likes liquids
   , iflavour = zipFancy [BrGreen]
@@ -228,9 +228,8 @@ nose = ItemKind  -- depends solely on smell
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A blind, slimy mass of clawing, stinging and burning. You'd think it's powerless, but as soon as it touches your trembling body, it's always one step ahead."
-  , ikit     = [ ("small claw", COrgan)
-               , ("tentacle", COrgan), ("tentacle", COrgan)
-               , ("thorn", COrgan), ("venom tooth", COrgan)
+  , ikit     = [ ("small claw", COrgan), ("sting", COrgan)
+               , ("venom tooth", COrgan)
                , ("nostril", COrgan)
                , ("sapient brain", COrgan) ]  -- no sight nor hearing
   }
@@ -277,11 +276,10 @@ torsor = ItemKind
                , AddSkill SkAlter 1  -- can't exit the gated level, the boss
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "The mind, the heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw, grinding teeth and tensing fangs."
+  , idesc    = "The mind, the heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw and dripping fangs."
   , ikit     = [ ("tentacle", COrgan), ("hooked claw", COrgan)
                    -- at least one non-timed
-               , ("large jaw", COrgan), ("sting", COrgan)
-               , ("venom fang", COrgan)
+               , ("large jaw", COrgan), ("venom fang", COrgan)
                , ("speed gland 4", COrgan)
                , ("eye 6", COrgan), ("ear 8", COrgan)
                , ("sapient brain", COrgan)
@@ -616,7 +614,7 @@ giantOctopus = ItemKind
   , ieffects = []
   , idesc    = "It has eight arms of rage."
   , ikit     = [ ("tentacle", COrgan), ("tentacle", COrgan)
-               , ("small beak", COrgan)
+               , ("small beak", COrgan)  -- TODO: use when tentacles torn out
                , ("eye 8", COrgan)
                    -- shots not too damaging, so can have strong sight
                , ("animal brain", COrgan)
@@ -844,7 +842,8 @@ wasteRobot = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "You are not in its database, hence you are waste."
-  , ikit     = [ ("jaw", COrgan), ("tentacle", COrgan), ("armored skin", COrgan)
+  , ikit     = [ ("tentacle", COrgan)
+               , ("armored skin", COrgan)
                , ("nostril", COrgan)  -- only smell, for variety
                , ("robot brain", COrgan)
                , ("waste container", CEqp) ]
@@ -919,7 +918,7 @@ weldedRobot = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A well-built humanoid luggage unloading robot with a smooth satin silvery skin. Its graceful moves are stunted by a thick irregular weld fastening both its shapely legs to the floor. A whiff of smoke escapes whenever it opens its mouth in a charming toothy smile while brandishing a blowtorch in its trembling hand."
-  , ikit     = [ ("small jaw", COrgan), ("fist", COrgan)
+  , ikit     = [ ("fist", COrgan)
                , ("eye 6", COrgan), ("ear 3", COrgan)
                , ("mouth vent", COrgan)
                , ("robot brain", COrgan)
@@ -949,7 +948,8 @@ cleanerRobot = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."
-  , ikit     = [ ("live wire", COrgan), ("jaw", COrgan), ("hooked claw", COrgan)
+  , ikit     = [ ("live wire", COrgan), ("large jaw", COrgan)
+               , ("tentacle", COrgan)
                , ("boiling vent", COrgan)
                , ("spotlight", COrgan), ("armored skin", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan), ("ear 6", COrgan)

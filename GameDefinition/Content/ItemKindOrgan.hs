@@ -505,7 +505,7 @@ smallBeak = fist
   , ifreq    = [("small beak", 50)]
   , icount   = 1
   , iverbHit = "nom"
-  , idamage  = 4 `d` 1  -- TODO: perhaps add a weak effect and set 2 dmg
+  , idamage  = 2 `d` 1
   , idesc    = "Cute, but painful."
   }
 razor = fist
@@ -514,6 +514,9 @@ razor = fist
   , icount   = 2 + 1 `d` 5
   , iverbHit = "slice"
   , idamage  = 2 `d` 1
+  , iaspects = [ Timeout (3 + 1 `d` 2)
+               , SetFlag Meleeable ]  -- not Durable
+  , ieffects = [toOrganBad "weakened" (2 + 1 `dL` 3)]
   , idesc    = ""
   }
 liveWire = fist
@@ -526,7 +529,7 @@ liveWire = fist
                , AddSkill SkHurtMelee 20 ]
                ++ iaspects fist
   , ieffects = [ toOrganBad "immobile" (3 + 1 `d` 3)
-               , RefillHP (-2) ]
+               , RefillHP (-1) ]
   , idesc    = ""
   }
 robotBrain = armoredSkin
