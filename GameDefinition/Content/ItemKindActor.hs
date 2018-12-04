@@ -870,7 +870,7 @@ lightRobot = ItemKind
   , ieffects = []
   , idesc    = "Interior and exterior decoration robot. Strongly fancies deep reds recently."
   , ikit     = [ ("hooked claw", COrgan), ("tentacle", COrgan)
-               , ("spotlight", COrgan), ("armored skin", COrgan)
+               , ("armored skin", COrgan)
                , ("eye 6", COrgan), ("ear 8", COrgan)
                , ("robot brain", COrgan)
                , ("construction hooter", CEqp) ]
@@ -896,10 +896,10 @@ heavyRobot = ItemKind
   , ieffects = []
   , idesc    = "Heavy multi-purpose construction robot. Excels at discharging, dismantling and demolition."
   , ikit     = [ ("large jaw", COrgan), ("small claw", COrgan)
-               , ("spotlight", COrgan), ("armored skin", COrgan)
+               , ("armored skin", COrgan)
                , ("eye 3", COrgan), ("ear 6", COrgan)
                , ("robot brain", COrgan)
-               , ("construction hooter", CEqp) ]
+               , ("spotlight", CEqp), ("construction hooter", CEqp) ]
   }
 weldedRobot = ItemKind
   { isymbol  = 'W'
@@ -922,7 +922,7 @@ weldedRobot = ItemKind
                , ("eye 6", COrgan), ("ear 3", COrgan)
                , ("mouth vent", COrgan)
                , ("robot brain", COrgan)
-               , ("blowtorch", CEqp), ("crude weld", COrgan) ]
+               , ("crude weld", COrgan), ("blowtorch", CEqp) ]
   }
 cleanerRobot = ItemKind
   { isymbol  = 'C'
@@ -950,10 +950,10 @@ cleanerRobot = ItemKind
   , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."
   , ikit     = [ ("live wire", COrgan), ("large jaw", COrgan)
                , ("tentacle", COrgan)
-               , ("boiling vent", COrgan)
-               , ("spotlight", COrgan), ("armored skin", COrgan)
+               , ("boiling vent", COrgan), ("armored skin", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan), ("ear 6", COrgan)
                , ("robot brain", COrgan)
                , ("currency", CInv), ("currency", CInv), ("currency", CInv)
-               , ("construction hooter", CEqp), ("waste container", CEqp) ]
+               , ("waste container", CEqp), ("spotlight", CEqp)
+               , ("construction hooter", CEqp) ]
   }

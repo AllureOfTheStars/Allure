@@ -37,11 +37,11 @@ items :: [ItemKind]
 items =
   [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammer, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
   -- Allure-specific
-  ++ [needle, constructionHooter, wasteContainer, scrollAd1, blowtorch]
+  ++ [needle, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch]
 
 sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace2, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammer, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
 -- Allure-specific
-needle, constructionHooter, wasteContainer, scrollAd1, blowtorch :: ItemKind
+needle, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch :: ItemKind
 
 -- Keep the dice rolls and sides in aspects small so that not too many
 -- distinct items are generated (for display in item lore and for narrative
@@ -1791,11 +1791,28 @@ wasteContainer = ItemKind
   , iweight  = 30000
   , idamage  = 0
   , iaspects = [ Timeout $ (1 + 1 `d` 2) * 30
-               , SetFlag Periodic, SetFlag Durable ]
+               , SetFlag Periodic, SetFlag Equipable ]
   , ieffects = [ Detect DetectLoot 20
                , Summon "mobile animal" $ 1 `dL` 2
                , Explode "waste" ]
   , idesc    = "Waste recognition and utilization subsystem. Detects any stray item not registered as passenger cargo. Leaks a little."
+  , ikit     = []
+  }
+spotlight = ItemKind
+  { isymbol  = symbolTool
+  , iname    = "spotlight"
+  , ifreq    = [("spotlight", 1)]
+  , iflavour = zipPlain [BrWhite]
+  , icount   = 1
+  , irarity  = [(1, 1)]
+  , iverbHit = "illuminate"
+  , iweight  = 3000
+  , idamage  = 0
+  , iaspects = [ AddSkill SkShine 4
+               , AddSkill SkHurtMelee $ - 1 `d` 3  -- heavy and unwieldy
+               , SetFlag Equipable, EqpSlot EqpSlotShine ]
+  , ieffects = [Detect DetectHidden 20]
+  , idesc    = "Powerful wide-beam spotlight in an unwieldy rack-mounted package. On overdrive, it can shine through thin construction surfaces, underlying fault lines."
   , ikit     = []
   }
 scrollAd1 = scrollTemplate

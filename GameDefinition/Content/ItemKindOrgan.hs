@@ -25,11 +25,11 @@ organs :: [ItemKind]
 organs =
   [fist, foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland5, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed]
   -- Allure-specific
-  ++ [smallBeak, razor, liveWire, robotBrain, spotlight, mouthVent, geneticFlaw3, geneticFlaw10]
+  ++ [smallBeak, razor, liveWire, robotBrain, mouthVent, geneticFlaw3, geneticFlaw10]
 
 fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland5, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed :: ItemKind
 -- Allure-specific
-smallBeak, razor, liveWire, robotBrain, spotlight, mouthVent, geneticFlaw3, geneticFlaw10 :: ItemKind
+smallBeak, razor, liveWire, robotBrain, mouthVent, geneticFlaw3, geneticFlaw10 :: ItemKind
 
 -- Weapons
 
@@ -538,13 +538,6 @@ robotBrain = armoredSkin
                ++ [AddSkill SkWait 2]  -- can brace and sleep
                ++ [AddSkill SkApply (-1)]  -- can't even eat food
                ++ [SetFlag Durable]
-  , idesc    = ""
-  }
-spotlight = armoredSkin
-  { iname    = "spotlight"
-  , ifreq    = [("spotlight", 100)]
-  , iverbHit = "illuminate"
-  , iaspects = [AddSkill SkShine 3]
   , idesc    = ""
   }
 mouthVent = armoredSkin
