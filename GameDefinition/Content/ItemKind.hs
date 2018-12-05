@@ -968,16 +968,20 @@ seeingItem = ItemKind
   , ifreq    = [("common item", 100)]
   , iflavour = zipPlain [Red]
   , icount   = 1
-  , irarity  = [(1, 1)]
+  , irarity  = [(1, 2)]
   , iverbHit = "gaze at"
   , iweight  = 500
   , idamage  = 0
   , iaspects = [ Timeout 3
-               , AddSkill SkSight 10, AddSkill SkMaxCalm 30, AddSkill SkShine 2
+               , AddSkill SkSight 10  -- a spyglass for quick wields
+               , AddSkill SkMaxCalm 30  -- to diminish clipping sight by Calm
+               , AddSkill SkShine 2  -- to lit corridors when flying
                , SetFlag Periodic ]
-  , ieffects = [ toOrganNoTimer "poisoned"
+  , ieffects = [ Detect DetectActor 20  -- rare enough
+               , Explode "single spark"
+               , toOrganNoTimer "poisoned"  -- really can't be worn
                , Summon "mobile robot" 1 ]
-  , idesc    = "A functioning visual sensor torn out from some sizable robot. The circuitry seem too large for basic signal processing alone. Watch out for the sharp edges and the seeping coolant liquid."
+  , idesc    = "An oversize visual sensor freshly torn out of some unfortunate robot. It still sends a clear picture to unidentified receivers, even though the coolant liquid seeps from the seized servos and many internal contacts spark loose."
   , ikit     = []
   }
 motionScanner = ItemKind
@@ -1797,6 +1801,9 @@ wasteContainer = ItemKind
   , ieffects = [ Detect DetectLoot 20
                , Summon "mobile animal" $ 1 `dL` 2
                , Explode "waste" ]
+                   -- very important effect that disables item movement
+                   -- and so makes wielding seeingItem a tiny bit risky,
+                   -- and so not a no-brainer
   , idesc    = "Waste recognition and utilization subsystem. Detects any stray item not registered as passenger cargo. Leaks a little."
   , ikit     = []
   }
