@@ -451,7 +451,7 @@ bonusHP = armoredSkin
   , iverbHit = "intimidate"
   , iweight  = 0
   , iaspects = [AddSkill SkMaxHP 1]
-  , idesc    = "Increased training and connections in the right places give this actor augmented internal organs, much more resilient to damage."
+  , idesc    = "Special training and connections in the right places give this adventurer reinforced musculature and augmented internal organs, much more resilient to damage."
   }
 braced = armoredSkin
   { isymbol  = 'B'
@@ -477,7 +477,7 @@ asleep = armoredSkin
                ++ [ AddSkill SkMelee 2, AddSkill SkWait 2
                   , AddSkill SkSight (-3), AddSkill SkArmorMelee (-10)
                   , SetFlag Condition ]  -- hack: display as condition
-  , idesc    = "Sleep helps regain health, albeit extremely slowly. Being asleep makes an actor vulnerable, with gradually diminishing effects as the slumber wears off over several turns. Any non-idle action, not only combat but even yawning or stretching removes a sizable portion of the sleepiness."
+  , idesc    = "Sleep helps to regain health, albeit extremely slowly. Being asleep makes you vulnerable, with gradually diminishing effects as the slumber wears off over several turns. Any non-idle action, not only combat but even yawning or stretching removes a sizable portion of the sleepiness."
   }
 impressed = armoredSkin
   { isymbol  = 'I'
