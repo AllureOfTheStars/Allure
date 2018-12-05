@@ -1048,7 +1048,7 @@ necklace1 = necklaceTemplate
   , irarity  = [(3 * 10/15, 0), (4 * 10/15, 1), (10, 3)]
                  -- prevents camping on lvl 3
   , iaspects = [ SetFlag Unique, ELabel "of Trickle Life"
-               , Timeout $ (1 `d` 2) * 20
+               , Timeout $ (1 `d` 2) * 20  -- priceless, so worth the long wait
                , SetFlag Durable ]
                ++ iaspects_necklaceTemplate
   , ieffects = [RefillHP 1]
@@ -1058,7 +1058,7 @@ necklace1 = necklaceTemplate
 necklace3 = necklaceTemplate
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
   , iaspects = [ ELabel "of fearful listening"
-               , Timeout ((1 + 1 `d` 3) * 10)
+               , Timeout ((1 + 1 `d` 2) * 10)
                , AddSkill SkHearing 2 ]
                ++ iaspects_necklaceTemplate
   , ieffects = [ Detect DetectActor 10  -- can be applied; destroys the item
@@ -1120,7 +1120,7 @@ necklace9 = necklaceTemplate
 necklace10 = necklaceTemplate
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
   , iaspects = [ ELabel "of greed"
-               , Timeout ((3 + 1 `d` 2) * 10) ]
+               , Timeout ((2 + 1 `d` 3) * 10) ]
                ++ iaspects_necklaceTemplate
   , ieffects = [Detect DetectLoot 20, Teleport 20]
   }
@@ -1784,7 +1784,7 @@ wasteContainer = ItemKind
   , iverbHit = "spill over"
   , iweight  = 30000
   , idamage  = 0
-  , iaspects = [ Timeout $ (1 + 1 `d` 2) * 30
+  , iaspects = [ Timeout $ (1 `d` 2) * 30  -- robots should not summon too often
                , SetFlag Periodic, SetFlag Equipable ]
   , ieffects = [ Detect DetectLoot 20
                , Summon "mobile animal" $ 1 `dL` 2
