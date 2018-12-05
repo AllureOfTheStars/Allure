@@ -88,7 +88,8 @@ symbolFood       = ','  -- also body part; distinct from floor: not middle dot
 sandstoneRock = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "ceramic foam splinter"
-  , ifreq    = [("sandstone rock", 1)]
+  , ifreq    = [ ("sandstone rock", 1)
+               , ("unreported inventory", 1) ]  -- too weak to spam
   , iflavour = zipPlain [Green]
   , icount   = 1 + 1 `d` 2  -- > 1, to let AI ignore sole pieces
   , irarity  = [(1, 50), (10, 1)]
@@ -1757,9 +1758,9 @@ currency = currencyTemplate
 needle = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "needle"
-  , ifreq    = [("needle", 1), ("common item", 1)]
-      -- marked as common to ensure can be polymorphed;
-      -- TODO: fast when fired, not thrown
+  , ifreq    = [ ("needle", 1), ("common item", 1)
+                   -- marked as common to ensure can be polymorphed
+               , ("unreported inventory", 1) ]  -- too weak to spam
   , iflavour = zipPlain [BrBlue]
   , icount   = 1 + 8 `d` 3
   , irarity  = [(1, 1)]
@@ -1775,8 +1776,9 @@ needle = ItemKind
   }
 constructionHooter = necklaceTemplate
   { iname    = "construction hooter"
-  , ifreq    = [("common item", 1), ("construction hooter", 1)]
-                  -- extremely rare, but dropped by decontamination chambers
+  , ifreq    = [ ("construction hooter", 1), ("common item", 1)
+                   -- extremely rare, but dropped by decontamination chambers
+               , ("unreported inventory", 1) ]
   , iflavour = zipPlain [BrRed]
   , irarity  = [(1, 1)]
   , iweight  = 1000
@@ -1789,7 +1791,7 @@ constructionHooter = necklaceTemplate
 wasteContainer = ItemKind
   { isymbol  = symbolTool
   , iname    = "waste container"
-  , ifreq    = [("waste container", 1)]
+  , ifreq    = [("waste container", 1), ("unreported inventory", 1)]
   , iflavour = zipLiquid [Green]
   , icount   = 1
   , irarity  = [(1, 1)]
@@ -1810,7 +1812,7 @@ wasteContainer = ItemKind
 spotlight = ItemKind
   { isymbol  = symbolLight
   , iname    = "spotlight"
-  , ifreq    = [("spotlight", 1)]
+  , ifreq    = [("spotlight", 1), ("unreported inventory", 1)]
   , iflavour = zipPlain [BrWhite]
   , icount   = 1
   , irarity  = [(1, 1)]
