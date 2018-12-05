@@ -13,6 +13,8 @@ import Prelude ()
 
 import Game.LambdaHack.Common.Prelude
 
+import qualified Data.EnumMap.Strict as EM
+
 import Content.ModeKindPlayer
 import Game.LambdaHack.Common.Dice
 import Game.LambdaHack.Common.Misc
@@ -44,6 +46,11 @@ raid = ModeKind  -- mini-crawl
   , mfreq   = [("raid", 1), ("campaign scenario", 1)]
   , mroster = rosterRaid
   , mcaves  = cavesRaid
+  , mendMsg =
+    let override =
+          [ (Defeated, "Sadly, you got worked up in the tunnels while another team snatched the prize. Try to think ahead next time. You are at the Outer Frontier to gain wealth and independence through industriousness and commerce and that means clashing with competing minds, not just fighting feral nature.")
+          , (Escape, "You are the first to clear a route through the sewer system. Triton City authorities will now be able to establish a perimeter and mop up the side tunnels. You collect your reward of 100 gold grains and start looking for a way to invest it profitably at this Solar System's commercial frontier, abounding in more or less (usualy less) regulated opportunities.") ]
+    in EM.fromList override `EM.union` genericEndMessages
   , mdesc   = "Neptune Area Administration confirms isolated spottings of oversize vermin in non-residential zones of the Triton moon's largest city. To put it plainly: Triton City sewers need purging. The first person to break through to the other exit will be paid 100 gold grains. The Administration \"strongly urges participants not to resort to violence against each other.\""
   }
 
@@ -53,6 +60,7 @@ brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
   , mfreq   = [("brawl", 1), ("campaign scenario", 1)]
   , mroster = rosterBrawl
   , mcaves  = cavesBrawl
+  , mendMsg = genericEndMessages
   , mdesc   = "\"You scoundrel! You cheated in the sewers. Come alone to the woody biosphere behind the saloon at noon, if you dare. Given that I win, I take back all your gold. Otherwise, you get the scrapping rights for the giant spaceliner's hull in orbit. Yes, it's mine, you tramp; here's the docking transmitter and the paperwork.\""
   }
 
@@ -70,6 +78,7 @@ shootout = ModeKind  -- sparse ranged in daylight
   , mfreq   = [("shootout", 1), ("campaign scenario", 1)]
   , mroster = rosterShootout
   , mcaves  = cavesShootout
+  , mendMsg = genericEndMessages
   , mdesc   = "The fight crashes over to a nearby mechanized farm. Law enforcement, crippled by the ban on firearms, won't show up until only wounded and dying remain to be revived and locked up. Farm supplies, scattered around, beg to be flung at foes as improvised missiles. Intense light makes it easy to aim and to discern trajectory of soaring items (point at projectiles with the crosshair in aiming mode)."
   }
 
@@ -79,6 +88,7 @@ hunt = ModeKind  -- melee vs ranged with reaction fire in daylight
   , mfreq   = [("hunt", 1), ("campaign scenario", 1)]
   , mroster = rosterHunt
   , mcaves  = cavesHunt
+  , mendMsg = genericEndMessages
   , mdesc   = "Who is the hunter and who is the prey? As far as the eye can see, the landscape is desolate."
   }
 
@@ -88,6 +98,7 @@ escape = ModeKind  -- asymmetric ranged and stealth race at night
   , mfreq   = [("escape", 1), ("campaign scenario", 1)]
   , mroster = rosterEscape
   , mcaves  = cavesEscape
+  , mendMsg = genericEndMessages
   , mdesc   = "Bloodied spaceship deed in hand notwithstanding, you can reach the derelict spaceliner only via a shuttle from the Central Triton Spaceport across the city. After hours of being chased in the opposite direction towards the border wall, you sneak back and make a desperate dash through the very territory of the pursuing gang. Any valuables you come upon in this public park turned miscreant lair will be fair compensation for your losses, but you need to find the exit before the foes find you."
   }
 
@@ -97,6 +108,7 @@ zoo = ModeKind  -- asymmetric crowd melee at night
   , mfreq   = [("zoo", 1), ("campaign scenario", 1)]
   , mroster = rosterZoo
   , mcaves  = cavesZoo
+  , mendMsg = genericEndMessages
   , mdesc   = "As justified and satisfying as setting the enemy headquarters on fire has been, it backfires when the blaze immediately spreads to the public zoo on the path to the spaceport. Crazed animals mill around while the flames ignite greenery and consume nets, cages and security equipment. Whether that's a good sign or bad, apparently nobody is willing to pursue you any more."
   }
 
@@ -114,6 +126,7 @@ ambush = ModeKind  -- dense ranged with reaction fire vs melee at night
   , mfreq   = [("ambush", 1), ("campaign scenario", 1)]
   , mroster = rosterAmbush
   , mcaves  = cavesAmbush
+  , mendMsg = genericEndMessages
   , mdesc   = "Not even the unexplained ruin of the Central Triton Spaceport will prevent you from claiming the prize awaiting you at the orbit. After all, you didn't take to the space to let others decide your fate. There is still no news coverage from what was the largest and tightest security facitily in the whole Neptune Area. Without waiting for explanations nor for the personnel to return, you creep along the abandoned booths, scouting for any airlock with a shuttle still attached."
   }
 
@@ -123,6 +136,11 @@ crawl = ModeKind
   , mfreq   = [("crawl", 1), ("campaign scenario", 1)]
   , mroster = rosterCrawl
   , mcaves  = cavesCrawl
+  , mendMsg =
+    let override =
+          [ (Killed, "It was not supposed to end this way. Perhaps more stealth was in order? Perhaps the gathered items should be used for survival instead of hoarded? Or perhaps the challenge, chosen freely, but without the knowlege of the grisly difficulty, was insurmountable and lost from the very start? Nobody will know. Nobody will find out, even if somebody succeeds, another time, another way. If that's even possible.")
+          , (Escape, "As the shuttle doors close behind, docking clamps grind in farewell and the rotating cruiser tumbles away, you feel at once a relief and a sense of a loss. This is not finished. You are changed forever, but you know nothing. You've heard the call, but you didn't answer. You came for petty change, found a treasure beyond comprehension, then barely escaped with your life as the prize.\nAnd nobody will believe you at home. But you don't need them. You now have enough money to heal, regroup, track the ship down and try again. It's your personal space cruiser, after all, with a universe of its own inside.") ]
+    in EM.fromList override `EM.union` genericEndMessages
   , mdesc   = "You get stranded while looting, with utmost satisfaction, the blasted bridge of an old and extravagantly luxurious cruise liner. The inert spaceship, supposedly long deserted and barely able to sustain life support, suddenly tremors and dials her ion engines up to red overdrive. The space map flickering among the irreversibly damaged consoles shows the ship manoeuvre deftly off Triton orbit and purposefully climb the Neptune's gravity well. There's no way to control the ship and static floods all communication channels. You decide to scour the surrounding dilapidated decks for missing squad members and get back to the spaceport the way you came, in your shuttle. However, you are determined not to leave the ship without taking at least a portion of the wealth that is rightfully yours. You bloodily fought for every grain of it. You look closer at your surroundings."
   }
 
@@ -132,6 +150,7 @@ safari = ModeKind  -- easter egg available only via screensaver
   , mfreq   = [("safari", 1)]
   , mroster = rosterSafari
   , mcaves  = cavesSafari
+  , mendMsg = genericEndMessages
   , mdesc   = "\"In this simulation you'll discover the joys of hunting the most exquisite of Earth's flora and fauna, both animal and semi-intelligent. Exit at the topmost level.\" This is a VR recording recovered from an alien nest debris."
   }
 
@@ -143,6 +162,7 @@ dig = ModeKind
   , mfreq   = [("dig", 1)]
   , mroster = rosterCrawlEmpty
   , mcaves  = cavesDig
+  , mendMsg = genericEndMessages
   , mdesc   = "Delve deeper!"
   }
 
@@ -152,6 +172,7 @@ see = ModeKind
   , mfreq   = [("see", 1)]
   , mroster = rosterCrawlEmpty
   , mcaves  = cavesSee
+  , mendMsg = genericEndMessages
   , mdesc   = "See all!"
   }
 
@@ -161,6 +182,7 @@ crawlEmpty = ModeKind
   , mfreq   = [("crawl empty", 1)]
   , mroster = rosterCrawlEmpty
   , mcaves  = cavesCrawlEmpty
+  , mendMsg = genericEndMessages
   , mdesc   = "Enjoy the free space."
   }
 
@@ -170,6 +192,7 @@ crawlSurvival = ModeKind
   , mfreq   = [("crawl survival", 1)]
   , mroster = rosterCrawlSurvival
   , mcaves  = cavesCrawl
+  , mendMsg = genericEndMessages
   , mdesc   = "Lure the human intruders deeper and deeper."
   }
 
@@ -179,6 +202,7 @@ safariSurvival = ModeKind
   , mfreq   = [("safari survival", 1)]
   , mroster = rosterSafariSurvival
   , mcaves  = cavesSafari
+  , mendMsg = genericEndMessages
   , mdesc   = "In this simulation you'll discover the joys of being hunted among the most exquisite of Earth's flora and fauna, both animal and semi-intelligent."
   }
 
@@ -188,6 +212,7 @@ battle = ModeKind
   , mfreq   = [("battle", 1)]
   , mroster = rosterBattle
   , mcaves  = cavesBattle
+  , mendMsg = genericEndMessages
   , mdesc   = "Odds are stacked against those that unleash the horrors of abstraction."
   }
 
@@ -197,6 +222,7 @@ battleDefense = ModeKind
   , mfreq   = [("battle defense", 1)]
   , mroster = rosterBattleDefense
   , mcaves  = cavesBattle
+  , mendMsg = genericEndMessages
   , mdesc   = "Odds are stacked for those that breathe mathematics."
   }
 
@@ -206,6 +232,7 @@ battleSurvival = ModeKind
   , mfreq   = [("battle survival", 1)]
   , mroster = rosterBattleSurvival
   , mcaves  = cavesBattle
+  , mendMsg = genericEndMessages
   , mdesc   = "Odds are stacked for those that breathe mathematics."
   }
 
@@ -215,6 +242,7 @@ defense = ModeKind  -- perhaps a real scenario in the future
   , mfreq   = [("defense", 1)]
   , mroster = rosterDefense
   , mcaves  = cavesCrawl
+  , mendMsg = genericEndMessages
   , mdesc   = "Don't let the half-witted humans derail your operation and flee, like the puny, naked, tentacle-less beasts that they are!"
   }
 
@@ -224,6 +252,7 @@ defenseEmpty = ModeKind
   , mfreq   = [("defense empty", 1)]
   , mroster = rosterDefenseEmpty
   , mcaves  = cavesCrawlEmpty
+  , mendMsg = genericEndMessages
   , mdesc   = "Lord over."
   }
 
