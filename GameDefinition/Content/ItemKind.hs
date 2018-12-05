@@ -295,26 +295,28 @@ light2 = ItemKind
                , SetFlag Lobable, SetFlag Fragile, SetFlag Equipable
                , EqpSlot EqpSlotShine ]
   , ieffects = [ Burn 1
-               , toOrganBad "pacified" (3 + 1 `d` 2)
-               , OnSmash (Explode "burning oil 3") ]
-  , idesc    = "A sizable restaurant glass lamp filled with plant oil feeding a slender wick."
+               , toOrganBad "pacified" (2 + 1 `d` 2)
+               , OnSmash (Explode "burning oil 2") ]
+  , idesc    = "A restaurant table glass lamp filled with plant oil feeding a slender wick."
   , ikit     = []
   }
 light3 = ItemKind
   { isymbol  = symbolLight
-  , iname    = "crank spotlight"
-  , ifreq    = [("common item", 100), ("light source", 100)]
-  , iflavour = zipPlain [BrWhite]
+  , iname    = "brass lantern"
+  , ifreq    = [("common item", 100), ("museum", 100), ("light source", 20)]
+  , iflavour = zipPlain [Brown]
   , icount   = 1
-  , irarity  = [(5, 1), (10, 5)]
-  , iverbHit = "snag"
+  , irarity  = [(6, 1), (10, 4)]
+  , iverbHit = "burn"
   , iweight  = 3000
-  , idamage  = 0
-  , iaspects = [ AddSkill SkShine 4
-               , AddSkill SkArmorRanged $ - 1 `d` 3  -- noise & distraction
-               , SetFlag Equipable, EqpSlot EqpSlotShine ]
-  , ieffects = []
-  , idesc    = "Powerful, wide-beam spotlight, powered by a hand-crank. Requires noisy two-handed recharging every few minutes."
+  , idamage  = 2 `d` 1
+  , iaspects = [ AddSkill SkShine 4, AddSkill SkSight (-1)
+               , SetFlag Lobable, SetFlag Fragile, SetFlag Equipable
+               , EqpSlot EqpSlotShine ]
+  , ieffects = [ Burn 1
+               , toOrganBad "pacified" (4 + 1 `d` 2)
+               , OnSmash (Explode "burning oil 4") ]
+  , idesc    = "Very old, very bright and very heavy lantern made of hand-polished brass."
   , ikit     = []
   }
 blanket = ItemKind
@@ -1799,7 +1801,7 @@ wasteContainer = ItemKind
   , ikit     = []
   }
 spotlight = ItemKind
-  { isymbol  = symbolTool
+  { isymbol  = symbolLight
   , iname    = "spotlight"
   , ifreq    = [("spotlight", 1)]
   , iflavour = zipPlain [BrWhite]
