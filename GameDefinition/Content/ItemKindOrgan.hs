@@ -23,13 +23,13 @@ import Game.LambdaHack.Content.ItemKind
 
 organs :: [ItemKind]
 organs =
-  [fist, foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland5, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed]
+  [fist, foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, bark, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland5, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed]
   -- Allure-specific
-  ++ [smallBeak, razor, liveWire, robotBrain, mouthVent, geneticFlaw3, geneticFlaw10]
+  ++ [smallBeak, razor, liveWire, robotBrain, hullPlating, mouthVent, geneticFlaw3, geneticFlaw10]
 
-fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland5, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed :: ItemKind
+fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, bark, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland5, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed :: ItemKind
 -- Allure-specific
-smallBeak, razor, liveWire, robotBrain, mouthVent, geneticFlaw3, geneticFlaw10 :: ItemKind
+smallBeak, razor, liveWire, robotBrain, hullPlating, mouthVent, geneticFlaw3, geneticFlaw10 :: ItemKind
 
 -- Weapons
 
@@ -288,6 +288,11 @@ armoredSkin = ItemKind
   , idesc    = "Homemade armour is just as good."
   , ikit     = []
   }
+bark = armoredSkin
+  { iname    = "bark"
+  , ifreq    = [("bark", 100)]
+  , idesc    = ""
+  }
 
 -- * Sense organs
 
@@ -538,6 +543,11 @@ robotBrain = armoredSkin
                ++ [AddSkill SkWait 2]  -- can brace and sleep
                ++ [AddSkill SkApply (-1)]  -- can't even eat food
                ++ [SetFlag Durable]
+  , idesc    = ""
+  }
+hullPlating = armoredSkin
+  { iname    = "hull plating"
+  , ifreq    = [("hull plating", 100)]
   , idesc    = ""
   }
 mouthVent = armoredSkin

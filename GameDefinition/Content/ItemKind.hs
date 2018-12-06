@@ -1785,6 +1785,7 @@ wasteContainer = ItemKind
   , iweight  = 30000
   , idamage  = 0
   , iaspects = [ Timeout $ (1 `d` 2) * 30  -- robots should not summon too often
+               , AddSkill SkArmorMelee 20  -- tempting
                , SetFlag Periodic, SetFlag Equipable ]
   , ieffects = [ Detect DetectLoot 20
                , Summon "mobile animal" $ 1 `dL` 2

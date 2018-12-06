@@ -175,7 +175,7 @@ eye = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 20, AddSkill SkMaxCalm 70
+  , iaspects = [ AddSkill SkMaxHP 16, AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
                , AddSkill SkAggression 1
                , AddSkill SkProject 2, AddSkill SkApply 1, AddSkill SkAlter 2
@@ -183,7 +183,7 @@ eye = ItemKind
   , ieffects = []
   , idesc    = "Walks with a stately dignity. You read death in the slow beckoning gestures of its revolting upper appendages."
   , ikit     = [ ("foot", COrgan), ("tentacle", COrgan)
-               , ("eye 6", COrgan)
+               , ("bark", COrgan), ("eye 6", COrgan)
                , ("sapient brain", COrgan) ]  -- no voice, no hearing
   }
 fastEye = ItemKind
@@ -590,7 +590,7 @@ thornbush = ItemKind
   , ieffects = []
   , idesc    = "Each branch bears long, curved thorns."
   , ikit     = [ ("thorn", COrgan)  -- after all run out, it's weaponless
-               , ("armored skin", COrgan) ]
+               , ("bark", COrgan) ]
   }
 
 -- * Allure-specific animals
@@ -837,13 +837,12 @@ wasteRobot = ItemKind
   , iverbHit = "clank"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 15, AddSkill SkMaxCalm 30
+  , iaspects = [ AddSkill SkMaxHP 17, AddSkill SkMaxCalm 30
                , AddSkill SkSpeed 15, AddSkill SkNocto 2
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "You are not in its database, hence you are waste."
   , ikit     = [ ("tentacle", COrgan)
-               , ("armored skin", COrgan)
                , ("nostril", COrgan)  -- only smell, for variety
                , ("robot brain", COrgan)
                , ("waste container", CEqp) ]
@@ -870,7 +869,7 @@ lightRobot = ItemKind
   , ieffects = []
   , idesc    = "Interior and exterior decoration robot. Strongly fancies deep reds recently."
   , ikit     = [ ("hooked claw", COrgan), ("tentacle", COrgan)
-               , ("armored skin", COrgan)
+               , ("hull plating", COrgan)
                , ("eye 6", COrgan), ("ear 8", COrgan)
                , ("robot brain", COrgan)
                , ("construction hooter", CEqp) ]
@@ -896,7 +895,7 @@ heavyRobot = ItemKind
   , ieffects = []
   , idesc    = "Heavy multi-purpose construction robot. Excels at discharging, dismantling and demolition."
   , ikit     = [ ("large jaw", COrgan), ("small claw", COrgan)
-               , ("armored skin", COrgan)
+               , ("hull plating", COrgan)
                , ("eye 3", COrgan), ("ear 6", COrgan)
                , ("robot brain", COrgan)
                , ("spotlight", CEqp), ("construction hooter", CEqp) ]
@@ -950,7 +949,7 @@ cleanerRobot = ItemKind
   , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."
   , ikit     = [ ("live wire", COrgan), ("large jaw", COrgan)
                , ("tentacle", COrgan)
-               , ("boiling vent", COrgan), ("armored skin", COrgan)
+               , ("boiling vent", COrgan), ("hull plating", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan), ("ear 6", COrgan)
                , ("robot brain", COrgan)
                , ("currency", CInv), ("currency", CInv), ("currency", CInv)
