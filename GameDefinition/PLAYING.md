@@ -276,7 +276,7 @@ known, guesses are based on averages for the item kind in question.
 The displayed figures are rounded, but the game internally keeps track
 of minute fractions of HP.
 
-The stress of combat drains Calm, gradually limiting the use of items and,
+The stress of combat drains Calm, gradually limiting viewing radius and,
 if Calm reaches zero and the actor is sufficiently impressed by his foes,
 making him defect and surrender to their domination.
 Whenever the monster's or hero's hit points reach zero,
