@@ -376,7 +376,7 @@ flaskTemplate = ItemKind
 flask1 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
   , icount   = 1 `dL` 5
-  , irarity  = [(10, 7)]
+  , irarity  = [(10, 10)]
   , iaspects = ELabel "of strength renewal brew"
                : iaspects flaskTemplate
   , ieffects = [ toOrganGood "strengthened" (20 + 1 `d` 5)
@@ -480,7 +480,7 @@ flask12 = flaskTemplate
 -- at once is not easy to arrange, so these explosions can stay powerful.
 flask13 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
-  , irarity  = [(1, 2), (10, 10)]
+  , irarity  = [(1, 2), (10, 12)]
   , iaspects = ELabel "of regeneration brew"
                : iaspects flaskTemplate
   , ieffects = [ toOrganGood "rose-smelling" (80 + 1 `d` 20)
@@ -570,8 +570,8 @@ potion3 = potionTemplate
   }
 potion4 = potionTemplate
   { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
-  , irarity  = [(1, 6), (10, 9)]
-  , ieffects = [ RefillHP 10, DropItem 1 maxBound COrgan "poisoned"
+  , irarity  = [(1, 6), (10, 10)]
+  , ieffects = [ RefillHP 10, DropItem maxBound maxBound COrgan "condition"
                , OnSmash (Explode "healing mist 2") ]
   }
 potion5 = potionTemplate
@@ -792,7 +792,7 @@ ediblePlant5 = ediblePlantTemplate
   { iname    = "fragrant herb"
   , ifreq    = [("common item", 100), ("edible plant", 100)]
   , icount   = 1 `dL` 9
-  , irarity  = [(1, 12), (10, 3)]
+  , irarity  = [(1, 12), (10, 5)]
   , iaspects = ELabel "of lethargy"
                : iaspects ediblePlantTemplate
   , ieffects = [ toOrganBad "slowed" (20 + 1 `d` 5)
@@ -1062,7 +1062,7 @@ necklace3 = necklaceTemplate
                , AddSkill SkHearing 2 ]
                ++ iaspects_necklaceTemplate
   , ieffects = [ Detect DetectActor 10  -- can be applied; destroys the item
-               , RefillCalm (-20) ]
+               , RefillCalm (-40) ]
   }
 necklace4 = necklaceTemplate
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
@@ -1122,7 +1122,9 @@ necklace10 = necklaceTemplate
   , iaspects = [ ELabel "of greed"
                , Timeout ((2 + 1 `d` 3) * 10) ]
                ++ iaspects_necklaceTemplate
-  , ieffects = [Detect DetectLoot 20, Teleport 20]
+  , ieffects = [ Detect DetectLoot 20
+               , Teleport 40  -- risky
+               , toOrganBad "parsimonious" (10 + 1 `d` 3) ]  -- hard to flee
   }
 
 -- ** Non-periodic jewelry
@@ -1430,7 +1432,7 @@ buckler = ItemKind
   }
 shield = buckler
   { iname    = "shield"
-  , irarity  = [(8, 4)]  -- the stronger variants add to total probability
+  , irarity  = [(8, 3)]  -- the stronger variants add to total probability
   , iflavour = zipPlain [Green]
   , iweight  = 4000
   , idamage  = 4 `d` 1
@@ -1467,7 +1469,7 @@ dagger = ItemKind
   , ifreq    = [("common item", 100), ("starting weapon", 100)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(3 * 10/15, 30), (4 * 10/15, 1)]
+  , irarity  = [(3 * 10/15, 40), (4 * 10/15, 1)]
                  -- no weapons brought by aliens, initially, so cleaver common
   , iverbHit = "stab"
   , iweight  = 1000
@@ -1819,7 +1821,8 @@ scrollAd1 = scrollTemplate
   , irarity  = [(1, 1)]  -- not every playthrough needs one
   , iaspects = [ELabel "of turist guide"]
                ++ iaspects scrollTemplate
-  , ieffects = [ toOrganGood "resolute" (500 + 1 `d` 200)
+  , ieffects = [ Impress
+               , toOrganGood "resolute" (500 + 1 `d` 200)
                    -- a drawback (at least initially) due to @calmEnough@
                , Explode "cruise ad hologram"
                , Detect DetectLoot 5 ]  -- short so useless most of the time
@@ -1835,7 +1838,7 @@ blowtorch = ItemKind
   , iverbHit = "scorch"
   , iweight  = 2000
   , idamage  = 0
-  , iaspects = [ Timeout 7
+  , iaspects = [ Timeout 4
                , AddSkill SkAlter 2
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotAlter ]

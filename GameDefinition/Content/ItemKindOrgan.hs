@@ -577,7 +577,8 @@ geneticFlaw n = armoredSkin
                       [AddSkill SkArmorMelee (-5), AddSkill SkArmorRanged (-5)]
                , SetFlag Condition ]
                    -- destroy on drop to run the @OnSmash@ effects
-  , ieffects = [ OnSmash $ DropItem maxBound maxBound COrgan "poisoned"
+  , ieffects = [ OnSmash $ DropItem maxBound maxBound COrgan "condition"
+                   -- key point for AI is it eliminates all impression
                , OnSmash $ RefillHP n
                , VerbMsg "undergo infracellular decontamination" ]
   , idesc    = ""
