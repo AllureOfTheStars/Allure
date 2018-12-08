@@ -602,7 +602,7 @@ giantOctopus = ItemKind
                , ("aquatic", 90), ("aquatic animal", 90) ]  -- weak on land
   , iflavour = zipPlain [BrMagenta]
   , icount   = 1
-  , irarity  = [(1, 5)]
+  , irarity  = [(1, 3)]
   , iverbHit = "thud"
   , iweight  = 72000
   , idamage  = 0
