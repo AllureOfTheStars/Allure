@@ -17,6 +17,7 @@ import Game.LambdaHack.Common.Ability
 import Game.LambdaHack.Common.Color
 import Game.LambdaHack.Common.Container
 import Game.LambdaHack.Common.Flavour
+import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.ItemKind
 
 actors :: [ItemKind]
@@ -37,6 +38,10 @@ giantOctopus, razorwireFence, electricFence, activeFence, steamFaucet, biogasFau
 
 -- * Hunams
 
+humanOrgans :: [(GroupName ItemKind, CStore)]
+humanOrgans = [ ("fist", COrgan), ("foot", COrgan)
+              , ("eye 6", COrgan), ("ear 3", COrgan)
+              , ("sapient brain", COrgan) ]
 warrior = ItemKind
   { isymbol  = '@'
   , iname    = "mercenary"  -- modified if initial actors in hero faction
@@ -57,12 +62,9 @@ warrior = ItemKind
                , AddSkill SkOdor 1
                , SetFlag Durable ]
   , ieffects = []
+  , ikit     = humanOrgans ++ [("genetic flaw 10", COrgan)]
   , idesc    = ""
   -- , idesc    = "A hardened veteran of combat."
-  , ikit     = [ ("fist", COrgan), ("foot", COrgan)
-               , ("eye 6", COrgan), ("ear 3", COrgan)
-               , ("sapient brain", COrgan)
-               , ("genetic flaw 10", COrgan) ]
   }
 warrior2 = warrior
   { iname    = "pilot"
@@ -90,7 +92,7 @@ warrior5 = warrior
 scout = warrior
   { iname    = "scout"
   , ifreq    = [("scout hero", 100), ("mobile", 1)]
-  , ikit     = ikit warrior
+  , ikit     = humanOrgans  -- no flaw
                ++ [ ("add sight", CEqp)
                   , ("armor ranged", CEqp)
                   , ("add nocto 1", CInv) ]
@@ -99,7 +101,7 @@ scout = warrior
 ranger = warrior
   { iname    = "ranger"
   , ifreq    = [("ranger hero", 100), ("mobile", 1)]
-  , ikit     = ikit warrior
+  , ikit     = humanOrgans  -- no flaw
                ++ [ ("armor ranged", CEqp)
                   , ("weak arrow", CInv) ]
   -- , idesc    = ""
@@ -107,7 +109,7 @@ ranger = warrior
 escapist = warrior
   { iname    = "escapist"
   , ifreq    = [("escapist hero", 100), ("mobile", 1)]
-  , ikit     = ikit warrior
+  , ikit     = humanOrgans  -- no flaw
                ++ [ ("add sight", CEqp)
                   , ("armor ranged", CEqp)
                   , ("weak arrow", CInv)  -- mostly for probing
@@ -119,7 +121,7 @@ escapist = warrior
 ambusher = warrior
   { iname    = "ambusher"
   , ifreq    = [("ambusher hero", 100), ("mobile", 1)]
-  , ikit     = ikit warrior  -- dark and numerous, so more kit without exploring
+  , ikit     = humanOrgans  -- dark and numerous, so more kit without exploring
                ++ [ ("ring of opportunity sniper", CEqp)
                   , ("any arrow", CSha)
                   , ("weak arrow", CInv)
@@ -131,7 +133,7 @@ ambusher = warrior
 soldier = warrior
   { iname    = "soldier"
   , ifreq    = [("soldier hero", 100), ("mobile", 1)]
-  , ikit     = ikit warrior
+  , ikit     = humanOrgans  -- no flaw
                ++ [ ("starting weapon", CEqp)
                   , ("explosive", CSha) ]
   -- , idesc    = ""
