@@ -53,7 +53,7 @@ rogue = CaveKind
   , cplaceFreq    = [("rogue", 1)]
   , cpassable     = False
   , labyrinth     = False
-  , cdefTile      = "fillerWall"
+  , cdefTile      = "rogueSet"
   , cdarkCorTile  = "floorCorridorDark"
   , clitCorTile   = "floorCorridorLit"
   , cwallTile     = "trappableWall"
@@ -79,6 +79,7 @@ residential = rogue
   , cdarkOdds     = 51  -- all rooms dark
   , cnightOdds    = 0  -- always day
   , cmaxVoid      = 1%4
+  , cdefTile      = "fillerWall"
   , cstairFreq    = [ ("walled staircase", 50), ("open staircase", 50)
                     , ("tiny staircase", 1) ]
   , cstairAllowed = [ ("walled lift", 50), ("open lift", 50)
@@ -190,6 +191,7 @@ laboratory = rogue
   , citemFreq     = [ ("common item", 20), ("treasure", 40), ("potion", 40)
                     , ("curious item", 40) ]
   , cplaceFreq    = [("laboratory", 1)]
+  , cdefTile      = "fillerWall"
   , cdarkCorTile  = "labTrailLit"  -- let lab smoke give off light always
   , clitCorTile   = "labTrailLit"
   , cstairFreq    = [ ("decontaminating walled staircase", 50)
@@ -356,6 +358,7 @@ bridge = rogue
   , citemNum      = 8 `d` 3  -- lure them in with loot
   , citemFreq     = filter ((`notElem` ["treasure", "curious item"]) . fst)
                     $ citemFreq rogue
+  , cdefTile      = "fillerWall"
   , cfenceTileN   = "habitat containment wall"  -- cave isolated for safety
   , cfenceTileE   = "habitat containment wall"
   , cfenceTileS   = "habitat containment wall"

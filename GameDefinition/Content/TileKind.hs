@@ -88,7 +88,7 @@ bedrock = TileKind
   { tsymbol  = '#'
   , tname    = "wall"
   , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
-               , ("museumSetDark", 4), ("noiseSetLit", 450)
+               , ("rogueSet", 65), ("museumSetDark", 4), ("noiseSetLit", 450)
                , ("powerSetDark", 450), ("battleSetDark", 250)
                , ("escapeSetDark", 4)
                , ("stair terminal Lit", 100), ("stair terminal Dark", 100)
@@ -782,7 +782,7 @@ emptyAirlock = escapeUp
 reinforcedWall = TileKind
   { tsymbol  = '#'
   , tname    = "reinforced wall"
-  , tfreq    = [("reinforced wall", 1), ("exitSetLit", 20)]
+  , tfreq    = [("reinforced wall", 1), ("rogueSet", 20), ("exitSetLit", 20)]
   , tcolor   = White
   , tcolor2  = BrBlack
   , talter   = 100
@@ -809,7 +809,7 @@ machineWall = TileKind
   { tsymbol  = '%'
   , tname    = "hardware rack"
   , tfreq    = [ ("hardware rack", 1)
-               , ("noiseSetLit", 250), ("powerSetDark", 250)
+               , ("rogueSet", 15), ("noiseSetLit", 250), ("powerSetDark", 250)
                , ("exitSetLit", 30)
                , ("lift terminal Lit", 40), ("lift terminal Dark", 40) ]
   , tcolor   = White
