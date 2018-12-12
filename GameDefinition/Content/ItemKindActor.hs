@@ -291,8 +291,6 @@ torsor = ItemKind
 -- * Animals
 
 -- They need rather strong melee, because they don't use items.
--- Unless/until they level up.
-
 -- They have dull colors, except for yellow, because there is no dull variant.
 
 goldenJackal = ItemKind  -- basically a much smaller and slower hyena
@@ -578,7 +576,7 @@ hornetSwarm = ItemKind
 thornbush = ItemKind
   { isymbol  = 't'
   , iname    = "thornbush"
-  , ifreq    = [("animal", 20), ("immobile animal", 40)]
+  , ifreq    = [("animal", 40), ("immobile animal", 40)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
   , irarity  = [(1, 14)]
@@ -634,7 +632,7 @@ razorwireFence = ItemKind
   , ifreq    = [("robot", 12), ("immobile robot", 10)]
   , iflavour = zipPlain [Cyan]
   , icount   = 1
-  , irarity  = [(3 * 10/15, 0), (4 * 10/15, 20)]  -- quickly vanishes at depth
+  , irarity  = [(3 * 10/15, 0), (4 * 10/15, 20), (10, 2)]
   , iverbHit = "scrape"
   , iweight  = 80000
   , idamage  = 0
@@ -770,7 +768,7 @@ shepherdDrone = ItemKind
                , ("construction robot", 100) ]
   , iflavour = zipPlain [BrRed]
   , icount   = 1
-  , irarity  = [(1, 5), (10, 2)]  -- gets summoned often, so low base rarity
+  , irarity  = [(1, 4), (10, 2)]  -- gets summoned often, so low base rarity
   , iverbHit = "clank"
   , iweight  = 1000
   , idamage  = 0
@@ -819,7 +817,7 @@ homeRobot = ItemKind
   , iverbHit = "clank"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 10, AddSkill SkMaxCalm 30
+  , iaspects = [ AddSkill SkMaxHP 12, AddSkill SkMaxCalm 30
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
                , AddSkill SkProject (-1), AddSkill SkAlter 1  -- doors
                , SetFlag Durable ]
@@ -862,7 +860,7 @@ lightRobot = ItemKind
   , iverbHit = "clank"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 15, AddSkill SkMaxCalm 40
+  , iaspects = [ AddSkill SkMaxHP 17, AddSkill SkMaxCalm 40
                    -- can't summon again for a long time;
                    -- loses a lot of sight after summoning
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
@@ -884,7 +882,7 @@ heavyRobot = ItemKind
                , ("construction robot", 100) ]
   , iflavour = zipPlain [Cyan]
   , icount   = 1
-  , irarity  = [(8 * 10/15, 0), (9 * 10/15, 5), (10, 13)]
+  , irarity  = [(7 * 10/15, 0), (8 * 10/15, 5), (10, 12)]
   , iverbHit = "clank"
   , iweight  = 800000
   , idamage  = 0
