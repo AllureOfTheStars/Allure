@@ -321,7 +321,7 @@ griffonVulture = ItemKind
                , ("scavenger", 30) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
-  , irarity  = [(1, 5)]
+  , irarity  = [(1, 6)]
   , iverbHit = "thud"
   , iweight  = 13000
   , idamage  = 0
@@ -351,7 +351,7 @@ skunk = ItemKind
   , ifreq    = [("animal", 100), ("mobile", 1), ("mobile animal", 100)]
   , iflavour = zipPlain [White]
   , icount   = 1
-  , irarity  = [(1, 8), (5, 2)]
+  , irarity  = [(1, 8), (5, 1)]
   , iverbHit = "thud"
   , iweight  = 4000
   , idamage  = 0
@@ -374,7 +374,7 @@ armadillo = ItemKind
   , ifreq    = [("animal", 100), ("mobile", 1), ("mobile animal", 100)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
-  , irarity  = [(1, 5)]
+  , irarity  = [(1, 7)]
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
@@ -534,7 +534,7 @@ beeSwarm = ItemKind
   , ifreq    = [("animal", 100), ("mobile", 1)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
-  , irarity  = [(1, 2), (10, 4)]
+  , irarity  = [(1, 3), (10, 4)]
   , iverbHit = "buzz"
   , iweight  = 1000
   , idamage  = 0
@@ -768,7 +768,7 @@ shepherdDrone = ItemKind
                , ("construction robot", 100) ]
   , iflavour = zipPlain [BrRed]
   , icount   = 1
-  , irarity  = [(1, 4), (10, 2)]  -- gets summoned often, so low base rarity
+  , irarity  = [(1, 2), (10, 4)]  -- gets summoned often, so low base rarity
   , iverbHit = "clank"
   , iweight  = 1000
   , idamage  = 0
@@ -855,7 +855,7 @@ lightRobot = ItemKind
                , ("construction robot", 100) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
-  , irarity  = [(3 * 10/15, 0), (4 * 10/15, 1), (10, 6)]
+  , irarity  = [(3 * 10/15, 0), (4 * 10/15, 2), (10, 6)]
                  -- gets summoned often, so low rarity
   , iverbHit = "clank"
   , iweight  = 80000
@@ -879,10 +879,10 @@ heavyRobot = ItemKind
   { isymbol  = 'r'
   , iname    = "construction robot"
   , ifreq    = [ ("robot", 100), ("mobile", 100), ("mobile robot", 100)
-               , ("construction robot", 100) ]
+               , ("construction robot", 70) ]
   , iflavour = zipPlain [Cyan]
   , icount   = 1
-  , irarity  = [(7 * 10/15, 0), (8 * 10/15, 5), (10, 12)]
+  , irarity  = [(7 * 10/15, 0), (8 * 10/15, 4), (10, 12)]
   , iverbHit = "clank"
   , iweight  = 800000
   , idamage  = 0
