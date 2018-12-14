@@ -584,10 +584,12 @@ listCrawl =
   , ([2], ["caveShallowRogue"])
   , ([3], ["caveBridge"])
   , ([4], ["caveNoise"])
-  , ([7, 6, 5], ["default random", "caveRogue", "caveArena"])
+  , ([5], ["caveRogue"])
+  , ([6], ["caveArena"])
+  , ([7], ["caveResidential"])
        -- reversed order, to match @reverse@ later on
   , ([8], ["caveLaboratory"])
-  , ([11, 10, 9], ["default random", "caveResidential", "caveMuseum"])
+  , ([11, 10, 9], ["default random", "default random", "caveMuseum"])
   , ([12], ["caveExit"])
   , ([14, 13], ["default random", "caveCasino"])
   , ([15], ["cavePower"]) ]
