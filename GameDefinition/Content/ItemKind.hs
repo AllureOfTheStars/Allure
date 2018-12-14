@@ -1512,7 +1512,6 @@ hammerTemplate = ItemKind
                         -- to subdivide this identification class by dice
   , iaspects = [ HideAs "hammer unknown"
                , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotWeaponBig
                , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
   , ieffects = []
   , idesc    = "One of many kinds of hammers employed in construction work. The ones with completely blunt heads don't cause grave wounds, but any fitted with a long enough handle can shake and bruise even most armored foes, even though they require more time to recover after a swing. This one looks average at a quick glance."  -- if it's really the average kind, the weak kind, the description stays; if not, it's replaced with one of the descriptions below at identification time
@@ -1520,49 +1519,51 @@ hammerTemplate = ItemKind
   }
 hammer1 = hammerTemplate
   { ifreq    = [("common item", 100), ("starting weapon", 100)]
-  , iaspects = [Timeout 5]
+  , iaspects = [Timeout 5, EqpSlot EqpSlotWeaponBig]
                ++ iaspects hammerTemplate
   }
 hammer2 = hammerTemplate
-  { ifreq    = [("common item", 10), ("starting weapon", 1)]
+  { ifreq    = [("common item", 20), ("starting weapon", 10)]
   , iverbHit = "gouge"
-  , iweight  = 1000
   , iaspects = [Timeout 3, EqpSlot EqpSlotWeaponFast]
-               ++ delete (EqpSlot EqpSlotWeaponBig) (iaspects hammerTemplate)
-  , idesc    = "Upon closer inspection, this hammer turns out particularly handy and well balanced, with a narrowing, sharpened head compensating the modest heft."
+               ++ iaspects hammerTemplate
+  , idesc    = "Upon closer inspection, this hammer turns out particularly handy and well balanced, with a narrowing, sharpened head compensating the modest size."
   }
 hammer3 = hammerTemplate
   { ifreq    = [("common item", 3), ("starting weapon", 1)]
-  , iweight  = 2400
+  , iverbHit = "puncture"
+  , iweight  = 2400  -- weight gives it away
   , idamage  = 12 `d` 1
-  , iaspects = [Timeout 7]
-               ++ iaspects hammerTemplate
-  , idesc    = "This hammer sports a long metal handle that increases durability and momentum of the sharpened head's swing, at the cost of longer recovery."
+  , iaspects = [Timeout 7, EqpSlot EqpSlotWeaponBig]
+               ++ delete (HideAs "hammer unknown") (iaspects hammerTemplate)
+  , idesc    = "This hammer sports a long metal handle that increases the momentum of the sharpened head's swing, at the cost of longer recovery."
   }
 hammerParalyze = hammerTemplate
   { iname    = "Concussion Hammer"
   , ifreq    = [("treasure", 20)]
   , irarity  = [(5, 1), (8, 6)]
   , iaspects = [ SetFlag Unique
-               , Timeout 7 ]
+               , Timeout 7
+               , EqpSlot EqpSlotWeaponBig ]
                ++ iaspects hammerTemplate
   , ieffects = [Paralyze 10]
-  , idesc    = "This exceptionally large demolition hammer leaves no wall and no body standing."
+  , idesc    = "This exquisite demolition hammer with a titan head and exceptionally long handle leaves no wall and no body standing."
   }
 hammerSpark = hammerTemplate
   { iname    = "Grand Smithhammer"
   , ifreq    = [("treasure", 20), ("museum", 100)]
   , irarity  = [(5, 1), (8, 6)]
-  , iweight  = 2400
+  , iweight  = 2400  -- weight gives it away
   , idamage  = 12 `d` 1
   , iaspects = [ SetFlag Unique
                , Timeout 10
+               , EqpSlot EqpSlotWeaponBig
                , AddSkill SkShine 3]
-               ++ iaspects hammerTemplate
+               ++ delete (HideAs "hammer unknown") (iaspects hammerTemplate)
   , ieffects = [Explode "spark"]
       -- we can't use a focused explosion, because it would harm the hammer
       -- wielder as well, unlike this one
-  , idesc    = "High carbon steel of this old hammer doesn't yield even to the newest alloys and produces fountains of sparks in defiance."
+  , idesc    = "High carbon steel of this heavy old hammer doesn't yield even to the newest alloys and produces fountains of sparks in defiance."
   }
 sword = ItemKind
   { isymbol  = symbolPolearm
