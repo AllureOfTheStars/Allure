@@ -398,6 +398,7 @@ raid = rogue
   , cmaxPlaceSize = DiceXY 16 20
   , cdarkOdds     = 0  -- all rooms lit, for a gentle start
   , cmaxVoid      = 1%10
+  , cdefTile      = "fillerWall"
   , cextraStairs  = 0
   , cactorCoeff   = 250  -- deep level with no kit, so slow spawning
   , cactorFreq    = [("animal", 50), ("robot", 50)]
