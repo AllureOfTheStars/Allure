@@ -574,9 +574,8 @@ geneticFlaw n = armoredSkin
   , iweight  = 0
   , iaspects = [ AddSkill SkMaxHP (intToDice $ - n)
                , AddSkill SkWait (-1), AddSkill SkApply (-1)
-               , Odds (1 `d` 400)
-                      [AddSkill SkHurtMelee (-5)]
-                      [AddSkill SkArmorMelee (-5), AddSkill SkArmorRanged (-5)]
+               , Odds (1 `d` 400) [AddSkill SkArmorMelee (-20)]
+                                  [AddSkill SkArmorRanged (-10)]
                , SetFlag Condition ]
                    -- destroy on drop to run the @OnSmash@ effects
   , ieffects = [ OnSmash $ DropItem maxBound maxBound COrgan "condition"
