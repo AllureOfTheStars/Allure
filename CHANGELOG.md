@@ -1,3 +1,7 @@
+## [v0.9.0.0, aka 'Double of everything'](https://github.com/AllureOfTheStars/Allure/compare/v0.8.3.0...v0.9.0.0)
+
+
+
 ## [v0.8.3.0](https://github.com/AllureOfTheStars/Allure/compare/v0.8.1.2...v0.8.3.0)
 
 - Add a hack to run SDL2 on the main thread, fixing the OS X crash
