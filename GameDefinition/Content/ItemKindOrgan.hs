@@ -582,7 +582,7 @@ geneticFlaw n = armoredSkin
   , ieffects = [ OnSmash $ DropItem maxBound maxBound COrgan "condition"
                    -- key point for AI is it eliminates all impression
                , OnSmash $ RefillHP n
-               , VerbMsg "undergo infracellular decontamination" ]
+               , OnSmash $ VerbMsg "undergo infracellular decontamination" ]
   , idesc    = ""
   }
 geneticFlaw3 = geneticFlaw 3
