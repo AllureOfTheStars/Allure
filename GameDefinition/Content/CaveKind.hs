@@ -168,7 +168,7 @@ museum = arena
   , cfenceTileE   = "habitat containment wall"
   , cfenceTileS   = "habitat containment wall"
   , cfenceTileW   = "habitat containment wall"
-  , cdesc         = "History has shown that museal treasures are safer in space than anywhere on Earth. Cruise passengers are also more likely to visit exhibitions, even if that's captive audience effect to some extent. That rarely applies to spaceship crew and yet museum security has a particularly keen eye for the working men. Quite often a museum turns out to be the only place within millions of kilometers that holds a desperately needed tool, old but sturdy beyond what any 3D printer can produce."
+  , cdesc         = "History has shown that museal treasures are safer in space than anywhere on Earth. Cruise passengers are also more likely to visit exhibitions, even if that's captive audience effect to some extent. That rarely applies to spaceship crew and yet museum security has a particularly keen eye for the working men. Quite often a museum is the only place within millions of kilometers to house a desperately needed tool, old but sturdy beyond anything a 3D printer could produce."
   }
 laboratory = rogue
   { csymbol       = 'L'
@@ -262,7 +262,7 @@ power = noise
   , cstairAllowed = [ ("gated closed lift", 50)
                     , ("gated open lift", 50)
                     , ("gated tiny lift", 1) ]
-  , cdesc         = "A trickle of energy flows through a hub that could power a city."
+  , cdesc         = "A trickle of energy flows through a hub that could power a city. The air is warm and carries organic stench. Once in a while a young animal scurries across a lit patch of ground, pouncing in low gravity."
   }
 empty = rogue
   { csymbol       = 'E'
@@ -314,7 +314,7 @@ exit = empty
                     , ("gated tiny staircase", 1) ]
   , cstairAllowed = [ ("gated walled lift", 20)
                     , ("gated tiny lift", 1) ]
-  , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among cranes and welding machines. Distant engines can be seen to the rear of the spaceship through oriels and airlocks of all sizes."
+  , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among cranes and welding machines. Distant main ion thruster array can be seen to the rear of the spaceship through oriels and airlocks of all sizes."
       -- E and W sides are borders with other level sections, so no oriels.
       -- The meteor shield towards N is not punctured here, because
       -- the cargo bay is too thick here, near the axis of the ship.
@@ -338,7 +338,7 @@ outermost = empty
   , cfenceTileE   = "habitat containment wall"
   , cfenceTileS   = "empty airlock fence"
   , cfenceTileW   = "habitat containment wall"
-  , cdesc         = "The black sky outside sucks light through the oriel and airlock glass in the walls and floor of this outermost level. The floor itself looks misleading straight, its curvature noticeable only across the whole extent of the hull section. Water treatment basins and series of hanging and stacked tanks double as radiation shields. Hoses writhe on the ground and dangle in thick knots from the ceiling. This deck is the main pressurized cargo bay and storage, with the only other docking hub for small craft somewhere among the giant spaceship's upper levels. You can't see the shuttle you left engaged to an airlock outside, the inside doors obscured with guano."
+  , cdesc         = "The black sky outside sucks light through the oriel and airlock glass in the walls and floor of this outermost level. The mucky floor itself looks misleading straight, its curvature noticeable only across the whole extent of the hull section. Overflowing water treatment basins and series of hanging and stacked tanks double as radiation shields. Hoses writhe on the ground and dangle in thick knots from the ceiling. This deck is the main pressurized cargo bay and storage, with the only other docking hub for small craft somewhere among the giant spaceship's upper levels. You can't see the shuttle you left engaged to airlock clamps outside. The airlock's inner doors are smeared in guano."
       -- E and W sides are borders with other level sections, so no oriels.
   }
 bridge = rogue
@@ -444,7 +444,7 @@ shootout = rogue  -- a scenario with strong missiles;
                   -- and to avoid obstructing view too much, since this
                   -- scenario is about ranged combat at long range
   { csymbol       = 'S'
-  , cname         = "Hydroponic farm"  -- still a neutral, offcial wording
+  , cname         = "Hydroponic farm"  -- still a neutral, official wording
   , cfreq         = [("caveShootout", 1)]
   , ccellSize     = DiceXY (1 `d` 2 + 5) 6
   , cminPlaceSize = DiceXY 3 3  -- rarely merge vertically
@@ -473,7 +473,7 @@ shootout = rogue  -- a scenario with strong missiles;
   , cwallTile     = "openableWall"
   , cstairFreq    = []
   , cstairAllowed = []
-  , cdesc         = "Once so carefully curated, the planting beds are now overgrown and chocked with weeds."
+  , cdesc         = "Once so carefully curated, the planting beds are now overgrown and chocked with weeds."  -- when we know what fits the plot, suggest it here; e.g., there are better way to earn money, shortage of manpower, dangerous area of the city, mismanagement by the city council
   }
 hunt = rogue  -- a scenario with strong missiles for ranged and shade for melee
   { csymbol       = 'H'
@@ -597,10 +597,10 @@ ambush = rogue  -- a scenario with strong missiles;
   , cwallTile     = "openableWall"
   , cstairFreq    = []
   , cstairAllowed = []
-  , cdesc         = "Scarred walls and ransacked lockers show the total breakdown of order."
+  , cdesc         = "Scarred walls and ransacked lockers show the total breakdown of order."  -- seems related to the abandoned farm; perhaps distantly to the existence of the gangs; more closely to the mystery of the lost and found space cruiser and various parties intrested in it
   }
 
--- * Other caves; testing, easter egg, future work
+-- * Other caves; testing, Easter egg, future work
 
 battle = rogue  -- few lights and many solids, to help the less numerous heroes
   { csymbol       = 'B'
