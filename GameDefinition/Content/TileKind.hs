@@ -149,7 +149,7 @@ wallObscuredFrescoed = TileKind
                   -- so no @ConsideredByAI@
   }
 pillar = TileKind
-  { tsymbol  = 'O'
+  { tsymbol  = '0'
   , tname    = "construction beam"
   , tfreq    = [ ("legendLit", 100), ("legendDark", 100)
                , ("museumSetDark", 20), ("emptySetLit", 20) ]
@@ -172,9 +172,9 @@ pillarCache = TileKind
       -- Very beneficial, so AI eager to trigger, unless wary of traps.
   }
 lampPost = TileKind
-  { tsymbol  = 'O'
+  { tsymbol  = '0'
   , tname    = "lamp post"
-  , tfreq    = [("lampPostOver_O", 1)]
+  , tfreq    = [("lampPostOver_0", 1)]
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 100
@@ -187,7 +187,7 @@ lampPost = TileKind
                    -- for the ecosystem/life support
   }
 signboardUnread = TileKind  -- client only, indicates never used by this faction
-  { tsymbol  = 'O'
+  { tsymbol  = '0'
   , tname    = "signboard"
   , tfreq    = [("signboard unread", 1)]
   , tcolor   = BrCyan
@@ -198,7 +198,7 @@ signboardUnread = TileKind  -- client only, indicates never used by this faction
                ]
   }
 signboardRead = TileKind
-  { tsymbol  = 'O'
+  { tsymbol  = '0'
   , tname    = "signboard"
   , tfreq    = [ ("signboard", 1), ("emptySetLit", 1)
                , ("arenaSetLit", 1), ("arenaSetDark", 1), ("museumSetDark", 1)
@@ -209,11 +209,11 @@ signboardRead = TileKind
   , tfeature = [Embed "signboard", HideAs "signboard unread"]
   }
 tree = TileKind
-  { tsymbol  = 'O'
+  { tsymbol  = '0'
   , tname    = "tree"
   , tfreq    = [ ("brawlSetLit", 140), ("shootoutSetLit", 10)
                , ("huntSetLit", 10), ("escapeSetLit", 35), ("zooSetDark", 20)
-               , ("treeShadeOver_O_Lit", 1) ]
+               , ("treeShadeOver_0_Lit", 1) ]
   , tcolor   = BrGreen
   , tcolor2  = Green
   , talter   = 50

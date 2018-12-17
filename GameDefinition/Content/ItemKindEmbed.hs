@@ -89,7 +89,7 @@ subtleFresco = ItemKind
   , ikit     = []
   }
 treasureCache = ItemKind
-  { isymbol  = 'O'
+  { isymbol  = '0'
   , iname    = "set"
   , ifreq    = [("abandoned cache", 1)]
   , iflavour = zipPlain [BrBlue]
@@ -166,7 +166,7 @@ fireSmall = ItemKind
   , ikit     = []
   }
 fireBig = fireSmall
-  { isymbol  = 'O'
+  { isymbol  = '0'
   , iname    = "big fire"
   , ifreq    = [("big fire", 1)]
   , ieffects = [ Burn 2

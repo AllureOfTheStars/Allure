@@ -148,10 +148,10 @@ pulpit = PlaceKind
   , pfence   = FGround
   , ptopLeft = [ "%%·"
                , "%··"
-               , "··O"
+               , "··0"
                ]
-  , poverrideDark = [('O', "pulpit")]
-  , poverrideLit = [('O', "pulpit")]
+  , poverrideDark = [('0', "pulpit")]
+  , poverrideLit = [('0', "pulpit")]
       -- except for floor, this will all be lit, regardless of night/dark; OK
   }
 ruin = PlaceKind
@@ -231,7 +231,7 @@ pillar = PlaceKind
   , pfence   = FWall
   -- Larger rooms require support pillars.
   , ptopLeft = [ "····"
-               , "·O··"
+               , "·0··"
                , "····"
                , "····"
                ]
@@ -241,10 +241,10 @@ pillar = PlaceKind
 pillar2 = pillar
   { pname    = "a mall"
   , pfreq    = [("rogue", 10000), ("arena", 100000), ("empty", 5000)]
-  , ptopLeft = [ "O····"
+  , ptopLeft = [ "0····"
                , "·····"
                , "·····"
-               , "···O·"
+               , "···0·"
                , "····~"
                ]
   , poverrideDark = [('~', "poolOver_~_Dark")]
@@ -287,14 +287,14 @@ pillar6 = pillar
   { pname    = "a jewelry store"
   , pfreq    = [ ("rogue", 1200), ("arena", 6000)
                , ("museum", 7000), ("empty", 500) ]
-  , ptopLeft = [ "Of··"
+  , ptopLeft = [ "0f··"
                , "ff%·"
                , "·%&·"
                , "····"
                ]
-  , poverrideDark = [ ('&', "cache jewelry"), ('O', "lampPostOver_O")
+  , poverrideDark = [ ('&', "cache jewelry"), ('0', "lampPostOver_0")
                     , ('f', "floorActorLit") ]
-  , poverrideLit = [ ('&', "cache jewelry"), ('O', "lampPostOver_O")
+  , poverrideLit = [ ('&', "cache jewelry"), ('0', "lampPostOver_0")
                    , ('f', "floorActorLit") ]
   }
 colonnade = PlaceKind
@@ -351,28 +351,28 @@ colonnade6 = colonnade
 colonnade7 = colonnade
   { pfreq    = [("arena", 50), ("museum", 30), ("empty", 800)]
   , prarity  = [(1, 7), (10, 7)]
-  , ptopLeft = [ "O·"
+  , ptopLeft = [ "0·"
                , "··"
                ]
   }
 colonnade8 = colonnade7
   { prarity  = [(1, 50), (10, 50)]
-  , ptopLeft = [ "··O"
-               , "·O·"
-               , "O··"
+  , ptopLeft = [ "··0"
+               , "·0·"
+               , "0··"
                ]
   }
 colonnade9 = colonnade7
   { prarity  = [(1, 20), (10, 20)]
-  , ptopLeft = [ "O··"
-               , "··O"
+  , ptopLeft = [ "0··"
+               , "··0"
                ]
   }
 colonnade10 = colonnade7
   { prarity  = [(1, 10), (10, 10)]
-  , ptopLeft = [ "O·"
+  , ptopLeft = [ "0·"
                , "··"
-               , "·O"
+               , "·0"
                ]
   }
 lampPost = PlaceKind
@@ -384,15 +384,15 @@ lampPost = PlaceKind
   , pcover   = CVerbatim
   , pfence   = FNone
   , ptopLeft = [ "X·X"
-               , "·O·"
+               , "·0·"
                , "X·X"
                ]
-  , poverrideDark = [('O', "lampPostOver_O"), ('·', "floorActorLit")]
-  , poverrideLit = [('O', "lampPostOver_O"), ('·', "floorActorLit")]
+  , poverrideDark = [('0', "lampPostOver_0"), ('·', "floorActorLit")]
+  , poverrideLit = [('0', "lampPostOver_0"), ('·', "floorActorLit")]
   }
 lampPost2 = lampPost
   { ptopLeft = [ "···"
-               , "·O·"
+               , "·0·"
                , "···"
                ]
   }
@@ -400,7 +400,7 @@ lampPost3 = lampPost
   { pfreq    = [("escape", 3000), ("zoo", 500), ("battle", 1100)]
   , ptopLeft = [ "XX·XX"
                , "X···X"
-               , "··O··"
+               , "··0··"
                , "X···X"
                , "XX·XX"
                ]
@@ -409,7 +409,7 @@ lampPost4 = lampPost
   { pfreq    = [("escape", 3000), ("zoo", 500), ("battle", 600)]
   , ptopLeft = [ "X···X"
                , "·····"
-               , "··O··"
+               , "··0··"
                , "·····"
                , "X···X"
                ]
@@ -422,13 +422,13 @@ treeShade = PlaceKind
   , pcover   = CMirror
   , pfence   = FNone
   , ptopLeft = [ "··s"
-               , "sO·"
+               , "s0·"
                , "Xs·"
                ]
-  , poverrideDark = [ ('O', "treeShadeOver_O_Dark")
+  , poverrideDark = [ ('0', "treeShadeOver_0_Dark")
                     , ('s', "treeShadeOver_s_Dark")
                     , ('·', "shaded ground") ]
-  , poverrideLit = [ ('O', "treeShadeOver_O_Lit")
+  , poverrideLit = [ ('0', "treeShadeOver_0_Lit")
                    , ('s', "treeShadeOver_s_Lit")
                    , ('·', "shaded ground") ]
   }
@@ -518,10 +518,10 @@ escapeDown = PlaceKind
   , ptopLeft = [ ">"
                ]
   , poverrideDark = [ ('*', "oil spill"), ('g', "frozen path")
-                    , ('O', "lampPostOver_O")
+                    , ('0', "lampPostOver_0")
                     , ('f', "floorActorLit"), ('r', "rubbleOrWaste_Dark") ]
   , poverrideLit = [ ('*', "oil spill"), ('g', "frozen path")
-                   , ('O', "lampPostOver_O")
+                   , ('0', "lampPostOver_0")
                    , ('f', "floorActorLit"), ('r', "rubbleOrWaste_Lit") ]
   }
 escapeDown2 = escapeDown
@@ -594,7 +594,7 @@ escapeDown9 = escapeDown
   , pfence   = FFloor
   , ptopLeft = [ "·f·#"
                , "%f>·"
-               , "%Of·"
+               , "%0f·"
                , "ff%%"
                ]
   }
@@ -695,9 +695,9 @@ staircase9 = staircase
 staircase10 = staircaseLift
   { pfreq    = [("open lift", 500)]
   , pfence   = FGround
-  , ptopLeft = [ "O·····O"
+  , ptopLeft = [ "0·····0"
                , "··<S>··"
-               , "O·····O"
+               , "0·····0"
                ]
   }
 staircase11 = staircase
@@ -730,7 +730,7 @@ staircase13 = staircase
   , ptopLeft = [ "·#·#·#·"
                , "#·#·#·#"
                , "·······"
-               , "O·<S>·O"
+               , "0·<S>·0"
                , "·······"
                , "#·#·#·#"
                , "·#·#·#·"
@@ -811,7 +811,7 @@ staircase19 = staircase
 staircase20 = staircase
   { pfreq    = [("closed staircase", 5000)]
   , pfence   = FFloor
-  , ptopLeft = [ "·#·#·O·#·#·"
+  , ptopLeft = [ "·#·#·0·#·#·"
                , "#·#·····#·#"
                , "·#··<S>··#·"
                , "#·#·····#·#"
@@ -825,7 +825,7 @@ staircase21 = staircase
                , "·#·····#·"
                , "#··<S>··#"
                , "·#·····#·"
-               , "#·#·O·#·#"
+               , "#·#·0·#·#"
                ]
   }
 staircase22 = staircase
@@ -966,7 +966,7 @@ staircase37 = staircase
   { pfreq    = [("walled staircase", 1000)]
   , pfence   = FWall
   , ptopLeft = [ "·········"
-               , "·O·<S>·O·"
+               , "·0·<S>·0·"
                , "·········"
                ]
   }
@@ -1152,10 +1152,10 @@ squareBasin = oval
   { pname    = "a water basin"
   , pfreq    = [("arena", 15000), ("laboratory", 3000), ("empty", 4000)]
   , pfence   = FNone
-  , ptopLeft = [ "OttOt"
+  , ptopLeft = [ "0tt0t"
                , "t~~~~"
-               , "t~O~~"
-               , "O~~~~"
+               , "t~0~~"
+               , "0~~~~"
                , "t~~~~"
                ]
   }
@@ -1163,10 +1163,10 @@ squareBasin2 = oval
   { pname    = "a water basin"
   , pfreq    = [("arena", 100000), ("laboratory", 50000), ("empty", 15000)]
   , pfence   = FNone
-  , ptopLeft = [ "OtOttt"
+  , ptopLeft = [ "0t0ttt"
                , "t~~~~~"
-               , "O~~~~~"
-               , "t~~O~~"
+               , "0~~~~~"
+               , "t~~0~~"
                , "t~~~~~"
                , "t~~~~~"
                ]
@@ -1321,7 +1321,7 @@ tank = PlaceKind
 tank2 = tank
   { pfreq    = [ ("empty", 500), ("exit", 15), ("noise", 100)
                , ("battle", 50) ]
-  , ptopLeft = [ "O#"
+  , ptopLeft = [ "0#"
                , "##"
                ]
   }
@@ -1336,9 +1336,9 @@ tank3 = tank
 tank4 = tank
   { pfreq    = [ ("empty", 800), ("exit", 120), ("noise", 300)
                , ("battle", 300) ]
-  , ptopLeft = [ "XXO#"
+  , ptopLeft = [ "XX0#"
                , "Xrr#"
-               , "Or##"
+               , "0r##"
                , "####"
                ]
   }
