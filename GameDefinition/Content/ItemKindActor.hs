@@ -281,7 +281,7 @@ torsor = ItemKind
                                         -- but can dig rubble, ice
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "The mind, the heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw and dripping fangs."
+  , idesc    = "The mind, the big heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw and dripping fangs."
   , ikit     = [ ("tentacle", COrgan), ("hooked claw", COrgan)
                    -- at least one non-timed
                , ("large jaw", COrgan), ("venom fang", COrgan)
@@ -522,7 +522,7 @@ rhinoceros = ItemKind
                                         -- a weak miniboss
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "The last of its kind. Blind with rage, or perhaps due to the postoperative scars. Charges at deadly speed."
+  , idesc    = "The last of its kind. Blind with rage, or perhaps due to the postoperative scars. A huge mass of muscle that charges at deadly speed."
   , ikit     = [ ("rhino horn", COrgan), ("snout", COrgan)
                , ("armored skin", COrgan)
                , ("eye 3", COrgan), ("ear 8", COrgan)
@@ -956,7 +956,7 @@ cleanerRobot = ItemKind
                , AddSkill SkApply 1  -- can apply the hooter
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."
+  , idesc    = "An oversize waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness. It doesn't fit into any lifts."
   , ikit     = [ ("live wire", COrgan), ("large jaw", COrgan)
                , ("tentacle", COrgan)
                , ("boiling vent", COrgan), ("hull plating", COrgan)
