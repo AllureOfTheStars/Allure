@@ -22,11 +22,11 @@ import Game.LambdaHack.Content.ItemKind
 
 actors :: [ItemKind]
 actors =
-  [warrior, warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, soldier, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush]
+  [warrior, warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, soldier, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush]
   -- Allure-specific
   ++ [giantOctopus, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot]
 
-warrior,    warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, soldier, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, komodoDragon, hyena, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush :: ItemKind
+warrior,    warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, soldier, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush :: ItemKind
 -- Allure-specific
 giantOctopus, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot :: ItemKind
 
@@ -321,7 +321,7 @@ griffonVulture = ItemKind
                , ("scavenger", 30) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
-  , irarity  = [(1, 6)]
+  , irarity  = [(1, 3), (10, 3)]
   , iverbHit = "thud"
   , iweight  = 13000
   , idamage  = 0
@@ -440,7 +440,7 @@ hyena = ItemKind
                , ("scavenger", 20) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
-  , irarity  = [(4, 1), (10, 4)]  -- gets summoned often, so low base rarity
+  , irarity  = [(4, 1), (10, 5)]  -- gets summoned often, so low base rarity
   , iverbHit = "thud"
   , iweight  = 60000
   , idamage  = 0
@@ -576,10 +576,10 @@ hornetSwarm = ItemKind
 thornbush = ItemKind
   { isymbol  = 't'
   , iname    = "thornbush"
-  , ifreq    = [("animal", 40), ("immobile animal", 40)]
+  , ifreq    = [("animal", 30), ("immobile animal", 50)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
-  , irarity  = [(1, 14)]
+  , irarity  = [(1, 13)]
   , iverbHit = "scrape"
   , iweight  = 80000
   , idamage  = 0
@@ -629,7 +629,7 @@ giantOctopus = ItemKind
 razorwireFence = ItemKind
   { isymbol  = 'f'
   , iname    = "razorwire fence"
-  , ifreq    = [("robot", 12), ("immobile robot", 10)]
+  , ifreq    = [("robot", 15), ("immobile robot", 10)]
   , iflavour = zipPlain [Cyan]
   , icount   = 1
   , irarity  = [(3 * 10/15, 0), (4 * 10/15, 20), (10, 2)]
@@ -648,7 +648,7 @@ razorwireFence = ItemKind
 electricFence = ItemKind
   { isymbol  = 'f'
   , iname    = "electric fence"
-  , ifreq    = [("robot", 12), ("immobile robot", 10)]
+  , ifreq    = [("robot", 15), ("immobile robot", 10)]
   , iflavour = zipPlain [Blue]
   , icount   = 1
   , irarity  = [(3 * 10/15, 0), (4 * 10/15, 15), (10, 3)]
@@ -670,7 +670,7 @@ activeFence = ItemKind
   , ifreq    = [("robot", 27), ("immobile robot", 20)]
   , iflavour = zipPlain [BrMagenta]
   , icount   = 1
-  , irarity  = [(5 * 10/15, 0), (10, 5)]
+  , irarity  = [(5 * 10/15, 0), (10, 6)]
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
@@ -747,7 +747,7 @@ surveillanceDrone = ItemKind
   , ifreq    = [("robot", 100), ("mobile", 100), ("mobile robot", 100)]
   , iflavour = zipPlain [Blue]
   , icount   = 1
-  , irarity  = [(1, 2)]
+  , irarity  = [(1, 3)]
   , iverbHit = "clank"
   , iweight  = 1000
   , idamage  = 0
@@ -768,7 +768,7 @@ shepherdDrone = ItemKind
                , ("construction robot", 100) ]
   , iflavour = zipPlain [BrRed]
   , icount   = 1
-  , irarity  = [(1, 2), (10, 4)]  -- gets summoned often, so low base rarity
+  , irarity  = [(1, 3), (10, 4)]  -- gets summoned often, so low base rarity
   , iverbHit = "clank"
   , iweight  = 1000
   , idamage  = 0
@@ -789,7 +789,7 @@ huntingDrone = ItemKind
   , ifreq    = [("robot", 100), ("mobile", 100), ("mobile robot", 100)]
   , iflavour = zipPlain [Green]
   , icount   = 1
-  , irarity  = [(4, 0), (5, 4), (10, 7)]
+  , irarity  = [(4, 0), (5, 5), (10, 8)]
   , iverbHit = "clank"
   , iweight  = 500
   , idamage  = 0
@@ -813,7 +813,7 @@ homeRobot = ItemKind
   , ifreq    = [("robot", 100), ("mobile", 100), ("mobile robot", 100)]
   , iflavour = zipPlain [Magenta]
   , icount   = 1
-  , irarity  = [(1, 15), (10, 6)]
+  , irarity  = [(1, 15), (10, 5)]
   , iverbHit = "clank"
   , iweight  = 80000
   , idamage  = 0
@@ -834,7 +834,7 @@ wasteRobot = ItemKind
                , ("construction robot", 100) ]
   , iflavour = zipPlain [Green]
   , icount   = 1
-  , irarity  = [(5, 7)]  -- gets summoned often, so low base rarity
+  , irarity  = [(5, 9)]  -- gets summoned often, so low base rarity
   , iverbHit = "clank"
   , iweight  = 80000
   , idamage  = 0
@@ -855,7 +855,7 @@ lightRobot = ItemKind
                , ("construction robot", 100) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
-  , irarity  = [(3 * 10/15, 0), (4 * 10/15, 2), (10, 6)]
+  , irarity  = [(3 * 10/15, 0), (4 * 10/15, 6), (10, 6)]
                  -- gets summoned often, so low rarity
   , iverbHit = "clank"
   , iweight  = 80000
@@ -882,7 +882,7 @@ heavyRobot = ItemKind
                , ("construction robot", 70) ]
   , iflavour = zipPlain [Cyan]
   , icount   = 1
-  , irarity  = [(7 * 10/15, 0), (8 * 10/15, 4), (10, 12)]
+  , irarity  = [(7 * 10/15, 0), (8 * 10/15, 4), (10, 13)]
   , iverbHit = "clank"
   , iweight  = 800000
   , idamage  = 0

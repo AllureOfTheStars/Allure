@@ -269,7 +269,7 @@ light1 = ItemKind
                , ("wooden torch", 1) ]
   , iflavour = zipPlain [Brown]
   , icount   = 1 `dL` 4
-  , irarity  = [(1, 15)]
+  , irarity  = [(1, 30), (4, 1)]
   , iverbHit = "scorch"
   , iweight  = 1000
   , idamage  = 0
@@ -896,7 +896,7 @@ scroll8 = scrollTemplate
   }
 scroll9 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
-  , irarity  = [(10, 7)]  -- powerful, even if not ideal; scares newbies
+  , irarity  = [(10, 5)]  -- powerful, even if not ideal; scares newbies
   , ieffects = [Detect DetectAll 20]
   }
 scroll10 = scrollTemplate
@@ -1176,7 +1176,7 @@ ringTemplate = ItemKind
   , ifreq    = [("ring unknown", 1)]
   , iflavour = zipPlain stdCol ++ zipFancy darkCol
   , icount   = 1
-  , irarity  = [(10, 1)]  -- the default very low
+  , irarity  = [(10, 2)]  -- the default very low
   , iverbHit = "knock"
   , iweight  = 15
   , idamage  = 0
@@ -1194,7 +1194,6 @@ ring1 = ringTemplate
   }
 ring2 = ringTemplate
   { ifreq    = [("curious item", 100), ("any jewelry", 100)]
-  , irarity  = [(10, 2)]
   , iaspects = [ SetFlag Unique, ELabel "of Rush"
                , AddSkill SkSpeed $ (1 `d` 2) * 3
                , AddSkill SkMaxCalm (-40), AddSkill SkMaxHP (-20)
@@ -1204,7 +1203,7 @@ ring2 = ringTemplate
   }
 ring3 = ringTemplate
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
-  , irarity  = [(10, 11)]
+  , irarity  = [(10, 10)]
   , iaspects = [ AddSkill SkMaxHP $ 10 + (1 `dL` 5) * 2
                , AddSkill SkMaxCalm $ -20 + (1 `dL` 5) * 2
                , EqpSlot EqpSlotMaxHP ]
@@ -1245,7 +1244,6 @@ ring7 = ringTemplate
   }
 ring8 = ringTemplate
   { ifreq    = [("treasure", 100), ("any jewelry", 100)]
-  , irarity  = [(10, 2)]
   , iaspects = [ SetFlag Unique, ELabel "of Overwatch"
                , AddSkill SkProject 8  -- TODO: 11, but let player control
                                        -- potion throwing; see capReinforced
@@ -1434,7 +1432,7 @@ buckler = ItemKind
   }
 shield = buckler
   { iname    = "shield"
-  , irarity  = [(8, 3)]  -- the stronger variants add to total probability
+  , irarity  = [(8, 4)]  -- the stronger variants add to total probability
   , iflavour = zipPlain [Green]
   , iweight  = 4000
   , idamage  = 4 `d` 1
@@ -1503,7 +1501,7 @@ hammerTemplate = ItemKind
   , ifreq    = [("hammer unknown", 1)]
   , iflavour = zipFancy [BrMagenta]  -- avoid "pink"
   , icount   = 1
-  , irarity  = [(3 * 10/15, 1), (5, 15), (8, 1)]
+  , irarity  = [(3 * 10/15, 1), (5 * 10/15, 20), (8 * 10/15, 1)]
                  -- don't make it too common on lvl 3
   , iverbHit = "club"
   , iweight  = 1600
@@ -1571,7 +1569,7 @@ sword = ItemKind
   , ifreq    = [("common item", 100), ("starting weapon", 10)]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
-  , irarity  = [(3, 1), (5, 15)]
+  , irarity  = [(4, 1), (6, 15)]
   , iverbHit = "stab"
   , iweight  = 2000
   , idamage  = 10 `d` 1
@@ -1850,6 +1848,8 @@ blowtorch = ItemKind
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotAlter ]
   , ieffects = [Burn 2, Impress]
+      -- is used for melee in precedence to fists, but not to cleavers;
+      -- so if player wants to hit with it, it's enough to pack other gear
   , idesc    = "A sturdy old-fashioned portable blowtorch for fine cutting or welding of metals. Rather weak, but does not require access codes to high current power outlets."
   , ikit     = []
   }
