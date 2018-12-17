@@ -56,9 +56,9 @@ warrior = ItemKind
                , AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 20
                , AddSkill SkNocto 2
-               , AddSkill SkProject 2
-               , AddSkill SkApply 2  -- can apply periodic items
-               , AddSkill SkAlter 2
+               , AddSkill SkWait 1  -- can lurk
+               , AddSkill SkProject 2  -- can lob
+               , AddSkill SkApply 2  -- can even apply periodic items
                , AddSkill SkOdor 1
                , SetFlag Durable ]
   , ieffects = []
@@ -180,7 +180,8 @@ eye = ItemKind
   , iaspects = [ AddSkill SkMaxHP 16, AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
                , AddSkill SkAggression 1
-               , AddSkill SkProject 2, AddSkill SkApply 1, AddSkill SkAlter 2
+               , AddSkill SkProject 2  -- can lob
+               , AddSkill SkApply 1  -- can even use cultural artifacts
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Walks with a stately dignity. You read death in the slow beckoning gestures of its revolting upper appendages."
@@ -202,7 +203,6 @@ fastEye = ItemKind
   , iaspects = [ AddSkill SkMaxHP 5, AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
                , AddSkill SkAggression 1
-               , AddSkill SkAlter 2
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "It bites as blindingly fast as it runs. Or rolls? Or crawls? Also, cuts and pierces."
@@ -225,7 +225,7 @@ nose = ItemKind  -- depends solely on smell
   , iaspects = [ AddSkill SkMaxHP 30, AddSkill SkMaxCalm 30
                , AddSkill SkSpeed 16, AddSkill SkNocto 2
                , AddSkill SkAggression 1
-               , AddSkill SkProject (-1), AddSkill SkAlter 2
+               , AddSkill SkProject (-1)  -- can't project
                , AddSkill SkSwimming 30
                , SetFlag Durable ]
   , ieffects = []
@@ -248,8 +248,9 @@ elbow = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 12, AddSkill SkMaxCalm 80
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
-               , AddSkill SkProject 2, AddSkill SkApply 1
-               , AddSkill SkAlter 2, AddSkill SkMelee (-1)
+               , AddSkill SkProject 2  -- can lob
+               , AddSkill SkApply 1  -- can even use cultural artifacts
+               , AddSkill SkMelee (-1)
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "It moves in sudden jerks and never makes a noise. Speaks in hard objects hurled at deadly speeds."
@@ -274,8 +275,10 @@ torsor = ItemKind
                , AddSkill SkMaxHP 300, AddSkill SkMaxCalm 100
                , AddSkill SkSpeed 10, AddSkill SkNocto 2
                , AddSkill SkAggression 3
-               , AddSkill SkProject 2, AddSkill SkApply 1
-               , AddSkill SkAlter 1  -- can't exit the gated level, the boss
+               , AddSkill SkProject 2  -- can lob
+               , AddSkill SkApply 1  -- can even use cultural artifacts
+               , AddSkill SkAlter (-1)  -- can't exit the gated level; a boss,
+                                        -- but can dig rubble, ice
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "The mind, the heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw and dripping fangs."
@@ -329,7 +332,7 @@ griffonVulture = ItemKind
                    -- enough Calm to summon twice only if not attacked at all;
                    -- loses a lot of sight after summoning
                , AddSkill SkSpeed 22, AddSkill SkNocto 2
-               , AddSkill SkAlter (-2)  -- can't use stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
                , AddSkill SkFlying 10  -- flies slowly, but far
                , SetFlag Durable ]
       -- Animals don't have leader, usually, so even if only one on level,
@@ -357,7 +360,7 @@ skunk = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 13, AddSkill SkMaxCalm 30
                , AddSkill SkSpeed 22, AddSkill SkNocto 2
-               , AddSkill SkAlter (-2)  -- can't use stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
                , AddSkill SkOdor 5  -- and no smell skill, to let it leave smell
                , SetFlag Durable ]
   , ieffects = []
@@ -380,7 +383,7 @@ armadillo = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 13, AddSkill SkMaxCalm 30
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
-               , AddSkill SkAlter (-2)  -- can't use stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "When threatened, it rolls into a ball."
@@ -402,7 +405,7 @@ gilaMonster = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 15, AddSkill SkMaxCalm 50
                , AddSkill SkSpeed 18, AddSkill SkNocto 2
-               , AddSkill SkAlter (-2)  -- can't use stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Numbing venom ensures that even the fastest prey has no escape."
@@ -423,7 +426,7 @@ rattlesnake = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 28, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 16, AddSkill SkNocto 2
-               , AddSkill SkAlter (-2)  -- can't use stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Beware its rattle - it serves as a warning of an agonising death."
@@ -515,8 +518,8 @@ rhinoceros = ItemKind
                , AddSkill SkMaxHP 120, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 27, AddSkill SkNocto 2
                , AddSkill SkAggression 2
-               , AddSkill SkAlter (-1)  -- can't switch levels, a miniboss;
-                                        -- also easy to contain with doors
+               , AddSkill SkAlter (-1)  -- can't use normal stairs nor dig;
+                                        -- a weak miniboss
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "The last of its kind. Blind with rage, or perhaps due to the postoperative scars. Charges at deadly speed."
@@ -540,7 +543,7 @@ beeSwarm = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 8, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 30, AddSkill SkNocto 2  -- armor in sting
-               , AddSkill SkAlter (-2)  -- can't use stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
                , AddSkill SkWait (-2)  -- can't brace, sleep and lurk
                , AddSkill SkFlying 10  -- flies slowly, but far
                , SetFlag Durable ]
@@ -563,7 +566,7 @@ hornetSwarm = ItemKind
   , iaspects = [ AddSkill SkArmorMelee 80, AddSkill SkArmorRanged 40
                , AddSkill SkMaxHP 8, AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
-               , AddSkill SkAlter (-2)  -- can't use stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
                , AddSkill SkWait (-2)  -- can't brace, sleep and lurk
                , AddSkill SkFlying 10  -- flies slowly, but far
                , SetFlag Durable ]
@@ -609,7 +612,7 @@ giantOctopus = ItemKind
   , iaspects = [ AddSkill SkMaxHP 17, AddSkill SkMaxCalm 80
                , AddSkill SkSwimming 100  -- swims better than walks
                , AddSkill SkSpeed 27, AddSkill SkNocto 3 -- good night vision
-               , AddSkill SkAlter (-2)  -- can't use stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "It has eight arms of rage."
@@ -677,7 +680,8 @@ activeFence = ItemKind
   , iaspects = [ AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15
                , AddSkill SkMaxHP 20, AddSkill SkMaxCalm 999
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
-               , AddSkill SkWait 1, AddSkill SkProject 3  -- no brain
+               , AddSkill SkWait 1
+               , AddSkill SkProject 3  -- no brain, but can lob
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Makeshift, mostly non-lethal, autonomous perimeter defense outpost."
@@ -754,8 +758,10 @@ surveillanceDrone = ItemKind
   , iaspects = [ AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15
                , AddSkill SkMaxHP 6, AddSkill SkMaxCalm 90
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
-               , AddSkill SkDisplace (-1), AddSkill SkMoveItem (-1)
-               , AddSkill SkProject (-1), AddSkill SkMelee (-1)
+               , AddSkill SkDisplace (-1)  -- as dumb as an animal
+               , AddSkill SkMoveItem (-1)
+               , AddSkill SkProject (-1)
+               , AddSkill SkMelee (-1)
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A video camera in each room would violate privacy of passengers, hence surveillance drones. Programmed to be easy to fend off, they keep a respectful distance."
@@ -775,7 +781,9 @@ shepherdDrone = ItemKind
   , iaspects = [ AddSkill SkArmorMelee 80, AddSkill SkArmorRanged 40
                , AddSkill SkMaxHP 3, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
-               , AddSkill SkDisplace (-1), AddSkill SkMoveItem (-1)
+               , AddSkill SkAlter (-1)  -- can't open doors; roams open spaces
+               , AddSkill SkDisplace (-1)  -- as dumb as an animal
+               , AddSkill SkMoveItem (-1)
                , AddSkill SkProject (-1)
                , SetFlag Durable ]
   , ieffects = []
@@ -796,7 +804,8 @@ huntingDrone = ItemKind
   , iaspects = [ AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15
                , AddSkill SkMaxHP 6, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 40, AddSkill SkNocto 2
-               , AddSkill SkDisplace (-1), AddSkill SkMoveItem (-1)
+               , AddSkill SkDisplace (-1)  -- almost as dumb as an animal
+               , AddSkill SkMoveItem (-1)  -- but can project
                , AddSkill SkMelee (-1)
                , SetFlag Durable ]
   , ieffects = []
@@ -819,7 +828,7 @@ homeRobot = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 12, AddSkill SkMaxCalm 30
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
-               , AddSkill SkProject (-1), AddSkill SkAlter 1  -- doors
+               , AddSkill SkProject (-1)  -- can't project
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Once a timid household robot, now sufficiently adapted to survive in the deadly environment."
@@ -864,8 +873,9 @@ lightRobot = ItemKind
                    -- can't summon again for a long time;
                    -- loses a lot of sight after summoning
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
-               , AddSkill SkProject 2, AddSkill SkAlter 2  -- uses all stairs
-               , AddSkill SkApply 1  -- apply the hooter
+               , AddSkill SkProject 2  -- can lob
+               , AddSkill SkAlter 3  -- uses all stairs
+               , AddSkill SkApply 1  -- can apply the hooter
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Interior and exterior decoration robot. Strongly fancies deep reds recently."
@@ -890,8 +900,9 @@ heavyRobot = ItemKind
                    -- can't summon again for a long time;
                    -- loses a lot of sight after summoning
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
-               , AddSkill SkProject 2, AddSkill SkAlter 2  -- uses all stairs
-               , AddSkill SkApply 1  -- apply the hooter
+               , AddSkill SkProject 2  -- can lob
+               , AddSkill SkAlter 3  -- uses all stairs
+               , AddSkill SkApply 1  -- can apply the hooter
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Heavy multi-purpose construction robot. Excels at discharging, dismantling and demolition."
@@ -941,10 +952,8 @@ cleanerRobot = ItemKind
                    -- loses a lot of sight after summoning
                , AddSkill SkSpeed 18, AddSkill SkNocto 2
                , AddSkill SkAggression 1
-               , AddSkill SkAlter 3
-                   -- a miniboss; can remove rubble and ice,
-                   -- but can't exit the gated level
-               , AddSkill SkApply 1  -- apply the hooter
+                   -- can't use normal stairs nor dig; a weak miniboss
+               , AddSkill SkApply 1  -- can apply the hooter
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness."

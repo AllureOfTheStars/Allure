@@ -371,8 +371,8 @@ sapientBrain = armoredSkin
   , ifreq    = [("sapient brain", 100)]
   , iverbHit = "outbrain"
   , iaspects = [AddSkill sk 1 | sk <- [SkMove .. SkApply]]
-               ++ [AddSkill SkWait 3]  -- can brace and sleep and lurk
-               ++ [AddSkill SkAlter 2]  -- can use stairs
+               ++ [AddSkill SkAlter 4]  -- can use all stairs; dig rubble, ice
+               ++ [AddSkill SkWait 2]  -- can brace and sleep
                ++ [AddSkill SkApply 1]  -- can use most items, not just foods
                ++ [SetFlag Durable]
   , idesc    = ""
@@ -382,10 +382,12 @@ animalBrain = armoredSkin
   , ifreq    = [("animal brain", 100)]
   , iverbHit = "blank"
   , iaspects = [AddSkill sk 1 | sk <- [SkMove .. SkApply]]
+               ++ [AddSkill SkAlter 2]  -- can use normal stairs; can't dig
                ++ [AddSkill SkWait 2]  -- can brace and sleep
-               ++ [AddSkill SkAlter 2]  -- can use stairs
-               ++ [ AddSkill sk (-1)
-                  | sk <- [SkDisplace, SkMoveItem, SkProject] ]
+               -- No @SkAppy@ bonus, so can only apply foods.
+               ++ [AddSkill SkDisplace (-1)]  -- no melee tactics
+               ++ [AddSkill SkMoveItem (-1)]  -- no item gathering
+               ++ [AddSkill SkProject (-1)]  -- nor item flinging
                ++ [SetFlag Durable]
   , idesc    = ""
   }
@@ -541,9 +543,10 @@ robotBrain = armoredSkin
   , ifreq    = [("robot brain", 100)]
   , iverbHit = "outcompute"
   , iaspects = [AddSkill sk 1 | sk <- [SkMove .. SkApply]]
-                 -- can only use the easiest stairs
+               ++ [AddSkill SkAlter 1]  -- can open doors; only easiest stairs
                ++ [AddSkill SkWait 2]  -- can brace and sleep
-               ++ [AddSkill SkApply (-1)]  -- can't even eat food
+               -- No @SkAlter@ bonus, so can only use the easiest stairs.
+               ++ [AddSkill SkApply (-1)]  -- can't even eat food, but can fling
                ++ [SetFlag Durable]
   , idesc    = ""
   }
