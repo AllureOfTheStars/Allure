@@ -351,6 +351,7 @@ bridge = rogue
   , cmaxPlaceSize = DiceXY 16 20
   , cminStairDist = 10
   , cdarkOdds     = 0  -- all rooms lit, for a gentle start
+  , cauxConnects  = 2  -- few rooms, so many corridors
   , cextraStairs  = 1
   , cactorCoeff   = 300  -- it's quite deep already, so spawn slowly;
                          -- initially best for sleeping, then all catch up
