@@ -650,7 +650,7 @@ potion10 = potionTemplate
                : iaspects potionTemplate
   , ieffects = [ Yell
                , toOrganGood "strengthened" (20 + 1 `d` 5)
-               , toOrganBad "retaining" (40 + 1 `d` 10)
+               , toOrganBad "retaining" (5 + 1 `d` 3)
                , toOrganBad "frenzied" (40 + 1 `d` 10)
                , OnSmash (Explode "dense shower")
                , OnSmash (Explode "retaining mist")
@@ -664,7 +664,7 @@ potion11 = potionTemplate
   , ieffects = [ RefillCalm (-30)
                , toOrganGood "hasted" (20 + 1 `d` 5)
                , toOrganBad "weakened" (20 + 1 `d` 5)
-               , toOrganBad "withholding" (20 + 1 `d` 5)
+               , toOrganBad "withholding" (10 + 1 `d` 5)
                , OnSmash (Explode "haste spray")
                , OnSmash (Explode "sparse shower")
                , OnSmash (Explode "withholding mist") ]
@@ -675,8 +675,8 @@ potion12 = potionTemplate
   , iaspects = ELabel "of quicksilver"
                : iaspects potionTemplate
   , ieffects = [ toOrganGood "hasted" (20 + 1 `d` 5)
-               , toOrganBad "blind" (20 + 1 `d` 5)
-               , toOrganBad "immobile" (20 + 1 `d` 5)
+               , toOrganBad "blind" (10 + 1 `d` 5)
+               , toOrganBad "immobile" (5 + 1 `d` 5)
                , OnSmash (Explode "haste spray")
                , OnSmash (Explode "iron filing")
                , OnSmash (Explode "immobile mist") ]
@@ -772,7 +772,7 @@ ediblePlantTemplate = ItemKind
 ediblePlant1 = ediblePlantTemplate
   { iname    = "enhanced berry"
   , ifreq    = [("common item", 100), ("edible plant", 100)]
-  , ieffects = [RefillHP 1, toOrganBad "immobile" (10 + 1 `d` 5)]
+  , ieffects = [RefillHP 1, toOrganBad "immobile" (5 + 1 `d` 5)]
   }
 ediblePlant2 = ediblePlantTemplate
   { iname    = "frayed fungus"
@@ -787,7 +787,7 @@ ediblePlant3 = ediblePlantTemplate
 ediblePlant4 = ediblePlantTemplate
   { iname    = "reconfigured fruit"
   , ifreq    = [("common item", 100), ("edible plant", 100)]
-  , ieffects = [toOrganBad "blind" (40 + 1 `d` 10)]
+  , ieffects = [toOrganBad "blind" (10 + 1 `d` 10)]
   }
 ediblePlant5 = ediblePlantTemplate
   { iname    = "fragrant herb"
@@ -1125,7 +1125,7 @@ necklace10 = necklaceTemplate
                ++ iaspects_necklaceTemplate
   , ieffects = [ Detect DetectLoot 20
                , Teleport 40  -- risky
-               , toOrganBad "parsimonious" (10 + 1 `d` 3) ]  -- hard to flee
+               , toOrganBad "parsimonious" (5 + 1 `d` 3) ]  -- hard to flee
   }
 
 -- ** Non-periodic jewelry

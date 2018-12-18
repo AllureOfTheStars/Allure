@@ -210,7 +210,7 @@ sting = fist
   , idamage  = 1 `d` 1
   , iaspects = [Timeout $ 10 - 1 `dL` 4, AddSkill SkHurtMelee 40]
                ++ iaspects fist
-  , ieffects = [toOrganBad "retaining" (10 + 1 `d` 10)]
+  , ieffects = [toOrganBad "retaining" (3 + 1 `d` 3)]
   , idesc    = "Painful, debilitating and harmful."
   }
 venomTooth = fist

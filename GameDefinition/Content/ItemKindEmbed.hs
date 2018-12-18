@@ -114,7 +114,7 @@ treasureCacheTrap = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = []  -- not Durable, springs at most once
-  , ieffects = [OneOf [ toOrganBad "blind" (40 + 1 `d` 10)
+  , ieffects = [OneOf [ toOrganBad "blind" (10 + 1 `d` 10)
                       , RefillCalm (-99)
                       , Explode "focused concussion"
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1) ]]
@@ -230,7 +230,7 @@ doorwayTrapTemplate = ItemKind
   }
 doorwayTrap1 = doorwayTrapTemplate
   { ifreq    = [("doorway trap", 50)]
-  , ieffects = [toOrganBad "blind" $ (1 `dL` 4) * 10]
+  , ieffects = [toOrganBad "blind" $ (1 `dL` 4) * 5]
   -- , idesc    = ""
   }
 doorwayTrap2 = doorwayTrapTemplate

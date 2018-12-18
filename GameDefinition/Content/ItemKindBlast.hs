@@ -200,7 +200,7 @@ spreadFlash = ItemKind
   , iaspects = [ ToThrow $ ThrowMod 100 20 4  -- 4 steps, 1 turn
                , SetFlag Fragile, SetFlag Blast
                , AddSkill SkShine 5 ]
-  , ieffects = [toOrganBad "blind" 10, toOrganBad "weakened" 20]
+  , ieffects = [toOrganBad "blind" 5, toOrganBad "weakened" 20]
                  -- Wikipedia says: blind for five seconds and afterimage
                  -- for much longer, harming aim
   , idesc    = "A flash of fire."
@@ -467,7 +467,7 @@ waste = ItemKind
   , idamage  = 0
   , iaspects = [toLinger 10, SetFlag Fragile, SetFlag Blast]
   , ieffects = [ toOrganBad "foul-smelling" (30 + 1 `d` 10)
-               , toOrganBad "dispossessed" (10 + 1 `d` 10) ]
+               , toOrganBad "dispossessed" (10 + 1 `d` 5) ]
   , idesc    = "Sodden and foul-smelling."
   , ikit     = []
   }
@@ -769,7 +769,7 @@ blastNoStat grp = ItemKind
   , idamage  = 0
   , iaspects = [ toVelocity 10  -- 2 steps, 2 turns
                , SetFlag Fragile, SetFlag Blast ]
-  , ieffects = [toOrganBad (toGroupName grp) (5 + 1 `d` 3)]
+  , ieffects = [toOrganBad (toGroupName grp) (3 + 1 `d` 3)]
   , idesc    = ""
   , ikit     = []
   }
