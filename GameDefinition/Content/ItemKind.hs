@@ -186,7 +186,7 @@ slingBullet = ItemKind
                    -- not too good against armor
                , ToThrow $ ThrowMod 200 100 2 ]  -- piercing
   , ieffects = []
-  , idesc    = "Small but heavy bearing ball. Thanks to its size and shape, it doesn't snag when released from the makeshift sling's pouch."
+  , idesc    = "Small but heavy bearing ball. Thanks to its size and shape, it doesn't snag when released from the makeshift sling's pouch. Minimal friction enable it to pierce through flesh when fast enough initially."  -- we lie, it doesn't slow down in our model; but it stops piercing alright
   , ikit     = []
   }
 
@@ -1764,7 +1764,7 @@ needle = ItemKind
                , SetFlag Fragile  -- breaks easily despite being piercing
                , ToThrow $ ThrowMod 70 100 3 ]  -- piercing
   , ieffects = []
-  , idesc    = "A long hypodermic needle ending in a dried out micro-syringe. It's too light to throw hard, but it penetrates deeply, causing intense pain on movement."
+  , idesc    = "A long hypodermic needle ending in a dried out micro-syringe. It's too light to cause great harm, but it passes through flesh easily."
   , ikit     = []
   }
 constructionHooter = necklaceTemplate
