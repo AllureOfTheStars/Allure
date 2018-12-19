@@ -47,7 +47,7 @@ raid = ModeKind  -- mini-crawl
   , mendMsg = [ (Killed, "That was unfortunate. The bill for the rescue team and for the subsequent nano medbot treatment will be beyond the pale. Perhaps more stealth was needed? Perhaps the items lying around the area could aid survival instead of ending up ignored or passively hoarded? Or perhaps a wise course of action would be to choose a Neptune Area Administration challenge with a lower difficulty?")
               , (Defeated, "Sadly, you got worked up in the tunnels while another team snatched the prize. Remember, you are at the Outer Frontier to gain wealth and independence through industriousness and commerce and that means clashing with competing agents, not just fighting feral nature.")
               , (Escape, "You are the first to clear a route through the sewer system. Triton City authorities will now be able to establish a perimeter and mop up the side tunnels. You collect your reward of 100 gold grains and start looking for a way to invest it profitably at this Solar System's commercial frontier, abounding in more or less (usualy less) regulated opportunities.") ]
-  , mdesc   = "Neptune Area Administration confirms isolated spottings of oversize vermin in non-residential zones of the Triton moon's largest city. To put it plainly: Triton City sewers need purging. The first person to break through to the other exit will be paid 100 gold grains. The Administration \"strongly urges participants not to resort to violence against each other.\""
+  , mdesc   = "Neptune Area Administration confirms isolated spottings of oversize vermin in non-residential zones of the Triton moon's largest city. To put it plainly: Triton City sewers need purging. The first person to break through to the other exit will be paid 100 gold grains. The Administration \"strongly urges participants not to resort to violence against each other.\" However, no punitive consequences are specified, not even disqualification from the contest."
   }
 
 brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
@@ -57,7 +57,7 @@ brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
   , mroster = rosterBrawl
   , mcaves  = cavesBrawl
   , mendMsg = []
-  , mdesc   = "\"You scoundrel! You cheated in the sewers. Come alone to the woody biosphere behind the saloon at noon, if you dare. Given that I win, I take back all your gold. Otherwise, you get the scrapping rights for the giant spaceliner's hull in orbit. Yes, it's mine, you tramp; here's the docking transmitter and the paperwork.\""
+  , mdesc   = "\"You scoundrel! You cheated in the sewers. Come alone to the woody biosphere behind the saloon at noon, if you dare. Given that I win, I take back all your gold. Otherwise, you get the scrapping rights for the giant spaceliner's hull in orbit. Yes, it's mine, you tramp; here's the docking transmitter and the paperwork. The fight is to the last man standing, no break, no exit.\""
   }
 
 -- The trajectory tip is important because of tactics of scout looking from
@@ -85,7 +85,7 @@ hunt = ModeKind  -- melee vs ranged with reaction fire in daylight
   , mroster = rosterHunt
   , mcaves  = cavesHunt
   , mendMsg = []
-  , mdesc   = "Who is the hunter and who is the prey? As far as the eye can see, the landscape is desolate."
+  , mdesc   = "Who is the hunter and who is the prey? The only criterion is being conscious or incapacited when the chase ends. As far as the eye can see, the landscape is desolate."
   }
 
 escape = ModeKind  -- asymmetric ranged and stealth race at night
@@ -95,7 +95,7 @@ escape = ModeKind  -- asymmetric ranged and stealth race at night
   , mroster = rosterEscape
   , mcaves  = cavesEscape
   , mendMsg = []
-  , mdesc   = "Bloodied spaceship deed in hand notwithstanding, you can reach the derelict spaceliner only via a shuttle from the Central Triton Spaceport across the city. After hours of being chased in the opposite direction towards the border wall, you sneak back and make a desperate dash through the very territory of the pursuing gang. Any valuables you come upon in this public park turned miscreant lair will be fair compensation for your losses, but you need to find the exit before the foes find you."
+  , mdesc   = "Bloodied spaceship deed in hand notwithstanding, you can reach the derelict spaceliner only via a shuttle from the Central Triton Spaceport across the city. After hours of being chased in the opposite direction towards the border wall, you sneak back and make a desperate dash through the very territory of the pursuing gang. Any valuables you come upon in this public park turned miscreant lair will be fair compensation for your losses, but you need to find the exit before the foes find you. Reign in your wrath, don't chase your foes, foiling their plans by eluding them will be revenge enough."
   }
 
 zoo = ModeKind  -- asymmetric crowd melee at night
@@ -105,7 +105,7 @@ zoo = ModeKind  -- asymmetric crowd melee at night
   , mroster = rosterZoo
   , mcaves  = cavesZoo
   , mendMsg = []
-  , mdesc   = "As justified and satisfying as setting the enemy headquarters on fire has been, it backfires when the blaze immediately spreads to the public zoo on the path to the spaceport. Crazed animals mill around while the flames ignite greenery and consume nets, cages and security equipment. Whether that's a good sign or bad, apparently nobody is willing to pursue you any more."
+  , mdesc   = "As justified and satisfying as setting the enemy headquarters on fire has been, it backfires when the blaze immediately spreads to the public zoo on the path to the spaceport. Crazed animals mill around while the flames ignite greenery and consume nets, cages and security equipment. Whether that's a good sign or bad, apparently nobody is willing to pursue you any more. However, now you are on your own, having to completely clean up the area, up to the last lurking predator, in order to safely move through."
   }
 
 -- The tactic is to sneak in the dark, highlight enemy with thrown torches
@@ -123,7 +123,7 @@ ambush = ModeKind  -- dense ranged with reaction fire vs melee at night
   , mroster = rosterAmbush
   , mcaves  = cavesAmbush
   , mendMsg = []
-  , mdesc   = "Not even the unexplained ruin of the Central Triton Spaceport will prevent you from claiming the prize awaiting you at the orbit. After all, you didn't take to the space to let others decide your fate. There is still no news coverage from what was the largest and tightest security facitily in the whole Neptune Area. Without waiting for explanations nor for the personnel to return, you creep along the abandoned booths, scouting for any airlock with a shuttle still attached."
+  , mdesc   = "Not even the unexplained ruin of the Central Triton Spaceport will prevent you from claiming the prize awaiting you at the orbit. After all, you didn't take to the space to let others decide your fate. There is still no news coverage from what was the largest and tightest security facitily in the whole Neptune Area. Without waiting for explanations nor for the personnel to return, you creep along the abandoned booths, scouting for any airlock with a shuttle still attached."  -- this is the only scenario with no objective specified, to give a bit of suspense, misdirection and mystery until the first win; being the last of the small scenarios, it won't scare off new players
   }
 
 crawl = ModeKind
