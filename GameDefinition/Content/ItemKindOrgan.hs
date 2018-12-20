@@ -576,11 +576,12 @@ geneticFlaw n = armoredSkin
   , iverbHit = "flaw"
   , iweight  = 0
   , iaspects = [ AddSkill SkMaxHP (intToDice $ - n)
-               , AddSkill SkWait (-1), AddSkill SkApply (-1)
+               , AddSkill SkApply (-1)
                , Odds (1 `d` 400) [AddSkill SkArmorMelee (-20)]
                                   [AddSkill SkArmorRanged (-10)]
                , SetFlag Condition ]
                    -- destroy on drop to run the @OnSmash@ effects
+               ++ [AddSkill SkWait (-1) | n >= 10]
   , ieffects = [ OnSmash $ DropItem maxBound maxBound COrgan "condition"
                    -- key point for AI is it eliminates all impression
                , OnSmash $ RefillHP n

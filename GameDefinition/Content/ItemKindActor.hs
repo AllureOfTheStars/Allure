@@ -470,6 +470,7 @@ komodoDragon = ItemKind
   , iaspects = [ AddSkill SkMaxHP 40, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 17, AddSkill SkNocto 2
                , AddSkill SkAggression 1  -- match the description
+               , AddSkill SkWait 1  -- can sleep despite the genetic flaw
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Larger and more aggressive than any other lizard, but as easily recovering from wounds at its lesser cousins."
@@ -494,6 +495,7 @@ alligator = ItemKind
   , iaspects = [ AddSkill SkMaxHP 55, AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 18, AddSkill SkNocto 2
                , AddSkill SkSwimming 100  -- swims better than walks
+               , AddSkill SkWait 1  -- can sleep despite the genetic flaw
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "An armored predator from the dawn of time. You better not get within its reach."
