@@ -470,7 +470,6 @@ komodoDragon = ItemKind
   , iaspects = [ AddSkill SkMaxHP 40, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 17, AddSkill SkNocto 2
                , AddSkill SkAggression 1  -- match the description
-               , AddSkill SkWait 1  -- can sleep despite the genetic flaw
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Larger and more aggressive than any other lizard, but as easily recovering from wounds at its lesser cousins."
@@ -479,7 +478,7 @@ komodoDragon = ItemKind
                , ("speed gland 5", COrgan), ("armored skin", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan), ("ear 3", COrgan)
                , ("animal brain", COrgan)
-               , ("genetic flaw 10", COrgan) ]
+               , ("genetic flaw 3", COrgan) ]  -- not to wake it up too soon
   }
 alligator = ItemKind
   { isymbol  = 'a'
