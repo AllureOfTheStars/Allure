@@ -498,7 +498,7 @@ flask14 = flaskTemplate
   }
 flask15 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
-  , irarity  = [(10, 3)]
+  , irarity  = [(10, 4)]
   , iaspects = ELabel "of slow resistance"
                : iaspects flaskTemplate
   , ieffects = [ toOrganNoTimer "slow resistant"
@@ -506,7 +506,7 @@ flask15 = flaskTemplate
   }
 flask16 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
-  , irarity  = [(10, 3)]
+  , irarity  = [(10, 4)]
   , iaspects = ELabel "of poison resistance"
                : iaspects flaskTemplate
   , ieffects = [ toOrganNoTimer "poison resistant"
@@ -594,7 +594,7 @@ potion6 = potionTemplate
   -- needs to be common to show at least a portion of effects
   { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
   , icount   = 3 `dL` 1
-  , irarity  = [(10, 8)]
+  , irarity  = [(10, 10)]
   , ieffects = [ Impress
                , OneOf [ RefillHP 20, RefillHP 10, Burn 10
                        , DropItem 1 maxBound COrgan "poisoned"
@@ -694,7 +694,7 @@ fragmentationBomb = ItemKind
   , ifreq    = [("common item", 100), ("explosive", 200)]
   , iflavour = zipPlain [Red]
   , icount   = 1 `dL` 5  -- many, because not very intricate
-  , irarity  = [(5, 7), (10, 5)]
+  , irarity  = [(5, 8), (10, 5)]
   , iverbHit = "thud"
   , iweight  = 3000  -- low velocity due to weight
   , idamage  = 1 `d` 1  -- heavy and hard
@@ -856,7 +856,7 @@ scroll4 = scrollTemplate
   -- needs to be common to show at least a portion of effects
   { ifreq    = [("common item", 100), ("any scroll", 100)]
   , icount   = 3 `dL` 1
-  , irarity  = [(10, 11)]
+  , irarity  = [(10, 14)]
   , ieffects = [ Impress
                , OneOf [ Teleport 20, Ascend False, Ascend True
                        , Summon "hero" 1, Summon "mobile animal" $ 1 `d` 2
@@ -865,8 +865,7 @@ scroll4 = scrollTemplate
   }
 scroll5 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
-  , icount   = 1  -- too poweful en masse
-  , irarity  = [(10, 6)]
+  , irarity  = [(1, 6)]  -- powerful, but low counts at the depths it appears on
   , ieffects = [InsertMove $ 20 + 1 `dL` 20]
   }
 scroll6 = scrollTemplate
@@ -896,7 +895,7 @@ scroll8 = scrollTemplate
   }
 scroll9 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
-  , irarity  = [(10, 5)]  -- powerful, even if not ideal; scares newbies
+  , irarity  = [(10, 4)]  -- powerful, even if not ideal; scares newbies
   , ieffects = [Detect DetectAll 20]
   }
 scroll10 = scrollTemplate
@@ -1219,7 +1218,7 @@ ring4 = ringTemplate
   }
 ring5 = ringTemplate
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
-  , irarity  = [(3, 3), (10, 6)]
+  , irarity  = [(3, 4), (10, 6)]
   , iaspects = [ AddSkill SkHurtMelee $ (2 + 1 `d` 2 + (1 `dL` 2) * 2 ) * 3
                , AddSkill SkMaxHP $ (-2 - (1 `d` 2) + (1 `dL` 2) * 2) * 3
                    -- !!!
@@ -1228,7 +1227,7 @@ ring5 = ringTemplate
   }
 ring6 = ringTemplate  -- weak skill per eqp slot, so can be without drawbacks
   { ifreq    = [("common item", 100), ("any jewelry", 100), ("museum", 100)]
-  , irarity  = [(10, 4)]
+  , irarity  = [(10, 3)]
   , iaspects = [ AddSkill SkShine 1
                , EqpSlot EqpSlotShine ]
                ++ iaspects ringTemplate
@@ -1469,7 +1468,7 @@ dagger = ItemKind
   , ifreq    = [("common item", 100), ("starting weapon", 100)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(3 * 10/15, 40), (4 * 10/15, 1)]
+  , irarity  = [(3 * 10/15, 35), (4 * 10/15, 1)]
                  -- no weapons brought by aliens, initially, so cleaver common
   , iverbHit = "cut"
   , iweight  = 1000
