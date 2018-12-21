@@ -46,7 +46,7 @@ rogue = CaveKind
   , copenChance   = 1%5
   , chidden       = 7
   , cactorCoeff   = 50  -- the maze requires time to explore
-  , cactorFreq    = [("monster", 100), ("animal", 20), ("robot", 30)]
+  , cactorFreq    = [("monster", 50), ("animal", 20), ("robot", 30)]
   , citemNum      = 8 `d` 4 + 20 - 20 `dL` 1  -- deep down quality over quantity
   , citemFreq     = [ ("common item", 40), ("treasure", 60)
                     , ("curious item", 10) ]
