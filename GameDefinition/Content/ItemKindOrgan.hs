@@ -371,6 +371,7 @@ sapientBrain = armoredSkin
   , ifreq    = [("sapient brain", 100)]
   , iverbHit = "outbrain"
   , iaspects = [AddSkill sk 1 | sk <- [SkMove .. SkApply]]
+               ++ [AddSkill SkMove 4]  -- can move at once when waking up
                ++ [AddSkill SkAlter 4]  -- can use all stairs; dig rubble, ice
                ++ [AddSkill SkWait 2]  -- can brace and sleep
                ++ [AddSkill SkApply 1]  -- can use most items, not just foods
@@ -382,6 +383,7 @@ animalBrain = armoredSkin
   , ifreq    = [("animal brain", 100)]
   , iverbHit = "blank"
   , iaspects = [AddSkill sk 1 | sk <- [SkMove .. SkApply]]
+               ++ [AddSkill SkMove 4]  -- can move at once when waking up
                ++ [AddSkill SkAlter 2]  -- can use normal stairs; can't dig
                ++ [AddSkill SkWait 2]  -- can brace and sleep
                -- No @SkAppy@ bonus, so can only apply foods.
@@ -482,7 +484,8 @@ asleep = armoredSkin
   , iverbHit = "slay"
   , iweight  = 0
   , iaspects = [AddSkill sk (-2) | sk <- [SkMove .. SkApply]]
-               ++ [ AddSkill SkMelee 2, AddSkill SkWait 2
+               ++ [ AddSkill SkMove 1  -- make them stronger against archers
+                  , AddSkill SkMelee 2, AddSkill SkWait 2
                   , AddSkill SkSight (-3), AddSkill SkArmorMelee (-10)
                   , SetFlag Condition ]  -- hack: display as condition
   , idesc    = "Sleep helps to regain health, albeit extremely slowly. Being asleep makes you vulnerable, with gradually diminishing effects as the slumber wears off over several turns. Any non-idle action, not only combat but even yawning or stretching removes a sizable portion of the sleepiness."
@@ -543,6 +546,7 @@ robotBrain = armoredSkin
   , ifreq    = [("robot brain", 100)]
   , iverbHit = "outcompute"
   , iaspects = [AddSkill sk 1 | sk <- [SkMove .. SkApply]]
+               ++ [AddSkill SkMove 4]  -- can move at once when waking up
                ++ [AddSkill SkAlter 1]  -- can open doors; only easiest stairs
                ++ [AddSkill SkWait 2]  -- can brace and sleep
                -- No @SkAlter@ bonus, so can only use the easiest stairs.
