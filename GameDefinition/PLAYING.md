@@ -27,9 +27,11 @@ your back in fear, expect to be chased tirelessly by sight, sound and smell.
 
 Once the few basic command keys and on-screen symbols are learned,
 mastery and enjoyment of the game is the matter of tactical skill
-and literary imagination. To be honest, a lot of imagination is required
-at this stage of game development, but the game is already playable
-and winnable. Contributions are welcome.
+and literary imagination. To be honest, a lot of imagination is required,
+because the game's plot and characters are still only minimally sketched.
+However there is already a lot of replayable fun to be had and gameplay
+mastery to build, measure with high scores and pit against challenges.
+Contributions of all kinds and feedback are welcome.
 
 If the game window is too large for your screen or you experience
 other technical issues, please consult
@@ -37,12 +39,62 @@ other technical issues, please consult
 or describe your problem on gitter or the issue tracker.
 
 
+Game map
+--------
+
+The map of any particular scenario consists of one or many levels
+and each level has a large number of tiles with a particular
+terrain kind on each. The game world is persistent, i.e., every time
+the player visits a level during a single game, its layout is the same.
+
+Terrain is depicted with non-letter and non-digit (except zero `0`)
+characters, the same as items lying on the ground, though blocky
+solid symbol are more likely to be non-passable terrain than items.
+In case of doubt, one of the aiming commands (keypad `/`, with default
+keybinding) cycles through all visible and remembered items on the level
+and another (keypad `*`, with default keybinding) though all foes.
+The basic terrain kinds are as follows.
+
+    game map terrain type                  on-screen symbol
+    wall                                   #
+    tree or rock or man-made column        0
+    rubble                                 &
+    bush, transparent obstacle             %
+    trap, ice obstacle                     ^
+    closed door                            +
+    open door                              '
+    smoke or fog                           ;
+    ground, corridor                       .
+    water                                  ~
+    stairs or exit up                      <
+    stairs or exit down                    >
+
+Actors are marked with lower and upper case letters and with
+characters `@` and `1` through `9` (but never `0`). Player-controlled
+heroes are always bright white and by default they are selected
+(e.g., to run together) so they have a blue highlight around their symbol.
+If player manages to control animals or other actors, they retain their
+letter and color, but gain a highlight as well.
+
+So, for example, the following map shows a room with a closed door,
+full of actors, connected by a corridor with a room with an open door,
+a pillar, a staircase down and rubble that obscures one of the corners.
+The lower row of the larger room is full of items.
+
+   ######       ######
+   #@19.#########....&&
+   #r...+.......'...0.>&&#
+   #Ra..#########[?!,)$"=#
+   ######       ##########
+
+
 Heroes
 ------
 
-The heroes are marked on the map with symbols `@` and `1` through `9`.
-The currently chosen party leader is highlighted on the map
-and his attributes are displayed at the bottommost status line,
+The heroes are displayed on the map with bright white color (red if they are
+about to be lost) and symbols `@` and `1` through `9` (never `0`).
+The currently chosen party leader is red-highlighted on the map
+and his attributes are displayed at the bottom-most status line,
 which in its most complex form looks as follows.
 
     *@12        4d1+5% Calm: 20/60 HP: 33/50 Target: basilisk  [**__]
@@ -83,44 +135,10 @@ First comes the depth of the current level and its name.
 Then the percentage of its explorable tiles already seen by the heroes.
 The `X-hair` (aiming crosshair) is the common focus of the whole party,
 marked on the map and manipulated with mouse or movement keys in aiming mode.
-In this example, the corsshair points at an exact position on the map
+In this example, the crosshair points at an exact position on the map
 and at the end of the status line comes the length of the shortest
 path from the leader position to the spot and the straight-line distance
 between the two points.
-
-
-Game map
---------
-
-The map of any particular scenario may consist of one or many
-levels and each level consists of a large number of tiles.
-The game world is persistent, i.e., every time the player visits
-a level during a single game, its layout is the same.
-The basic tile kinds are as follows.
-
-    game map terrain type                  on-screen symbol
-    wall                                   #
-    tree or rock or man-made column        O
-    rubble                                 &
-    bush, transparent obstacle             %
-    trap, ice                              ^
-    closed door                            +
-    open door                              '
-    smoke or fog                           ;
-    ground, corridor                       .
-    water                                  ~
-    stairs or exit up                      <
-    stairs or exit down                    >
-
-So, for example, the following map shows a room with a closed door
-connected by a corridor with a room with an open door, a pillar,
-staircase up and rubble that obscures one of the corners.
-
-    ####       ####
-    #..#########..&&
-    #..+.......'.O.<&#
-    #..#########.....#
-    ####       #######
 
 
 Basic Commands
@@ -211,8 +229,10 @@ as explained in section [Heroes](#heroes) above.
 Commands for saving and exiting the current game, starting a new game,
 configuring convenience settings for the current game and challenges
 for the next game are listed in the main menu, brought up by the `ESC` key.
-Game difficulty, from the challenges menu, determines
-hitpoints at birth for any actor of any UI-using faction.
+Game difficulty, from the challenges menu, determines hitpoints at birth:
+difficulty below 5 multiplies hitpoints of player characters, difficulty
+over 5 multiplies hitpoints of their enemies.
+
 The "lone wolf" challenge mode reduces player's starting actors to exactly
 one (consequently, this does not affect the initial 'raid' scenario).
 The "cold fish" challenge mode makes it impossible for player characters
@@ -220,15 +240,23 @@ to be healed by actors from other factions (this is a significant
 restriction in the final 'crawl' scenario).
 
 For a person new to roguelikes, the 'raid' scenario offers a gentle
-introduction. The subsequent game scenarios gradually introduce
-squad combat, stealth, opportunity fire, asymmetric battles and more.
+introduction. The subsequent game scenarios lead the player along
+an optional story arc. They gradually introduce squad combat,
+stealth, opportunity fire, asymmetric battles and more.
 Starting from the second scenario, the player controls a whole team
 of characters and will develop his repertoire of squad formations,
-preferred rendezvous locations and the use of light sources. The last
-scenario takes place in a multi-floor setting, giving player the choice
-of exploration of a single level at a time or portions of many levels
-along a single staircase and also of guarding staircases against
-enemies from other levels or, inversely, avoiding the staircases.
+preferred rendezvous locations and the use of light sources.
+
+The last scenario, the crawl, is the only one that takes place
+in a multi-floor setting, spanning 15 varied levels, requiring lots
+of time and focus to beat and providing considerable replayability.
+The player has a choice of exploring a single level at a time or portions
+of many levels along a single staircase. The scenario is the gist
+and the main challenge of the game, involving strategic resource
+management and area denial elements. Compared to that, the smaller
+scenarios provide more tactical training and offer variety
+and entertainment of chasing a high-score between the deaths^H^H^H^H^H^H
+the brave attempts at the long crawl scenario.
 
 
 Monsters
@@ -239,6 +267,11 @@ and out of this world, roam the dark corridors and crawl from damp holes
 day and night. While heroes pay attention to all other party members
 and take care to move one at a time, monsters don't care about each other
 and all move at once, sometimes brutally colliding by accident.
+
+Monsters are depicted on the map with letters. Upper case letters
+are unique monsters, often guardians of dungeon levels, and lower case
+letters are the rest. If there are humans from outside our team,
+they are marked with `@` and `1` through `9`, in other colours than white.
 
 When a hero bumps into a monster or a monster attacks the hero,
 melee combat occurs. Heroes and monsters running into one another

@@ -117,7 +117,7 @@ arena = rogue
   , cpassable     = True
   , cdefTile      = "arenaSetLit"
   , cdarkCorTile  = "trailLit"  -- let trails give off light
-  , clitCorTile   = "trailLit"
+  , clitCorTile   = "trailLit"  -- may be rolled different than the above
   , cwallTile     = "openableWall"
   , cstairFreq    = [ ("walled lift", 20), ("closed lift", 80)
                     , ("tiny lift", 1) ]
