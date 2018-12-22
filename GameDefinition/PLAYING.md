@@ -28,10 +28,10 @@ your back in fear, expect to be chased tirelessly by sight, sound and smell.
 Once the few basic command keys and on-screen symbols are learned,
 mastery and enjoyment of the game is the matter of tactical skill
 and literary imagination. To be honest, a lot of imagination is required,
-because the game's plot and characters are still only minimally sketched.
-However there is already a lot of replayable fun to be had and gameplay
-mastery to build, measure with high scores and pit against challenges.
-Contributions of all kinds and feedback are welcome.
+because the game's plot and characters are currently very lightly sketched.
+However there are already hours and days of replayable fun to be had
+and gameplay mastery to build, measure with high scores and pit against
+challenges. Feedback and contributions of all kinds are welcome.
 
 If the game window is too large for your screen or you experience
 other technical issues, please consult
@@ -247,16 +247,24 @@ Starting from the second scenario, the player controls a whole team
 of characters and will develop his repertoire of squad formations,
 preferred rendezvous locations and the use of light sources.
 
-The last scenario, the crawl, is the only one that takes place
-in a multi-floor setting, spanning 15 varied levels, requiring lots
-of time and focus to beat and providing considerable replayability.
+The last scenario, a multi-level crawl, is the gist and the main challenge
+of the game. It spans 15 varied spaceship decks, requiring lots of time,
+focus and flexibility to beat and providing considerable replayability.
 The player has a choice of exploring a single level at a time or portions
-of many levels along a single staircase. The scenario is the gist
-and the main challenge of the game, involving strategic resource
-management and area denial elements. Compared to that, the smaller
-scenarios provide more tactical training and offer variety
+of many floors along a single staircase. On some levels he may explore
+and loot with a single scout eluding most opponents. On others he may be
+forced to change the pace and perform a complete exterminatory sweep
+involving his whole party. On yet others, his best course of action may be
+to defend a key location until the first wave of attackers is broken.
+
+The size of the crawl scenario calls for strategic thinking, including
+resource management, area denial and unavoidable temporary retreats
+to other levels. Compared to that, the smaller scenarios, where the arena
+is a single floor only, provide a more tactical training and offer variety
 and entertainment of chasing a high-score between the deaths^H^H^H^H^H^H
-the brave attempts at the long crawl scenario.
+the brave attempts at the long crawl scenario. Some gameplay elements,
+however, like totally symmetric skirmishes, a race to the exit or heavy
+reliance on opportunity fire, feature only in the small scenarios.
 
 
 Monsters
@@ -269,7 +277,7 @@ and take care to move one at a time, monsters don't care about each other
 and all move at once, sometimes brutally colliding by accident.
 
 Monsters are depicted on the map with letters. Upper case letters
-are unique monsters, often guardians of dungeon levels, and lower case
+are unique monsters, often guardians of special floors, and lower case
 letters are the rest. If there are humans from outside our team,
 they are marked with `@` and `1` through `9`, in other colours than white.
 
