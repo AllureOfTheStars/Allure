@@ -495,6 +495,7 @@ alligator = ItemKind
                , AddSkill SkSpeed 18, AddSkill SkNocto 2
                , AddSkill SkSwimming 100  -- swims better than walks
                , AddSkill SkWait 1  -- can sleep despite the genetic flaw
+               , AddSkill SkApply 1  -- can eat food despite the genetic flaw
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "An armored predator from the dawn of time. You better not get within its reach."
