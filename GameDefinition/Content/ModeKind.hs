@@ -47,7 +47,7 @@ raid = ModeKind  -- mini-crawl
   , mendMsg = [ (Killed, "That was unfortunate. The bill for the rescue team and for the subsequent nano medbot treatment will be beyond the pale. Perhaps more stealth was needed? Perhaps the items lying around the area could aid survival instead of ending up ignored or passively hoarded? Or perhaps a wise course of action would be to choose a Neptune Area Administration challenge with a lower difficulty?")
               , (Defeated, "Sadly, you got worked up in the tunnels while another team snatched the prize. Remember, you are at the Outer Frontier to gain wealth and independence through industriousness and commerce and that means clashing with competing agents, not just fighting feral nature.")
               , (Escape, "You are the first to clear a route through the sewer system. Triton City authorities will now be able to establish a perimeter and mop up the side tunnels. You collect your reward of 100 gold grains and start looking for a way to invest it profitably at this Solar System's commercial frontier, abounding in more or less (usualy less) regulated opportunities.") ]
-  , mdesc   = "Neptune Area Administration confirms isolated spottings of oversize vermin in non-residential zones of the Triton moon's largest city. To put it plainly: Triton City sewers need purging. The first person to break through to the other exit will be paid 100 gold grains. The Administration \"strongly urges participants not to resort to violence against each other.\" However, no punitive consequences are specified, not even disqualification from the contest."
+  , mdesc   = "Neptune Area Administration confirms isolated spottings of oversize vermin in non-residential zones of the Neptune's Triton moon's largest city. To put it plainly: Triton City sewers need purging. The first person to break through to the other exit will be paid 100 gold grains. The Administration \"strongly urges participants not to resort to violence against each other.\" However, no punitive consequences are specified, not even disqualification from the contest."
   }
 
 brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
@@ -56,17 +56,18 @@ brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
   , mfreq   = [("brawl", 1), ("campaign scenario", 1)]
   , mroster = rosterBrawl
   , mcaves  = cavesBrawl
-  , mendMsg = []
-  , mdesc   = "\"You scoundrel! You cheated in the sewers. Come alone to the woody biosphere behind the saloon at noon, if you dare. Given that I win, I take back all your gold. Otherwise, you get the scrapping rights for the giant spaceliner's hull in orbit. Yes, it's mine, you tramp; here's the docking transmitter and the paperwork. The fight is to the last man standing, no break, no exit.\""
+  , mendMsg = [ (Killed, "That treacherous villain didn't honour his word and brought his friends to the fight. It would still not turn so bad if we remembered to use terrain to protect us from missiles or even completely hide our presence and if we honourably kept together to the end, at the same time preventing the overwhelming enemy forces from brutishly ganging up on our modest-sized, though valiant, squad.")
+              , (Conquer, "Bringing help was a sober and prudent move that resulted in well-earned victory and a splendid trophy of a title to a real inter-planetary space vessel. Unfortunately, the treacherous foe called for even more numerous reinforcements, some of which only now start to arrive. It may be wise to move the celebration of the victory to a nearby location, assuming that the dignified translocation can be accomplished timely and inconspicuously.") ]
+  , mdesc   = "\"You scoundrel! You cheated in the sewers. Come alone to the woody biosphere behind the saloon at noon, if you dare. Given that I win, I take back all your gold. Otherwise, you get the scrapping rights for the giant spaceliner's hull in orbit. Yes, it's mine, you tramp; here's the docking transmitter and the paperwork. The fight is to the last man standing, no evasion, no breaks for nano-healing in town.\""
   }
 
 -- The trajectory tip is important because of tactics of scout looking from
 -- behind a bush and others hiding in mist. If no suitable bushes,
 -- fire once and flee into mist or behind cover. Then whomever is out of LOS
 -- range or inside mist can shoot at the last seen enemy locations,
--- adjusting and according to ounds and incoming missile trajectories.
--- If the scount can't find bushes or glass building to set a lookout,
--- the other team member are more spotters and guardians than snipers
+-- adjusting aim according to sounds and incoming missile trajectories.
+-- If the scout can't find bushes or glass building to set a lookout,
+-- the other team members are more spotters and guardians than snipers
 -- and that's their only role, so a small party makes sense.
 shootout = ModeKind  -- sparse ranged in daylight
   { msymbol = 's'
@@ -74,7 +75,8 @@ shootout = ModeKind  -- sparse ranged in daylight
   , mfreq   = [("shootout", 1), ("campaign scenario", 1)]
   , mroster = rosterShootout
   , mcaves  = cavesShootout
-  , mendMsg = []
+  , mendMsg = [ (Killed, "This is a disgrace. How is a thuggish robbery in broad daylight even possible in a moon city that styles itself as the capital of Outer System technological innovation and commercial opportunity? Where are the municipal surveillance drones, normally so eager to eavesdrop and needlessly complicate an honest tax-free business, when one's health and wealth for once depends on their nosy presence? Speaking of drones, we could use one in this skirmish, or even just a human lookout placed in a safe but unobstructed spot. Then the rest of the squad could snipe from concealment or from a safe distance. Barring that, we would end up in a better shape even if we all hid and fired blindly. We would listen to impact sounds and wait with ten-fold vigilance for incoming enemy missiles, in order to register their trajectories and derive hints of enemy location. Apparently, ranged combat requires a change of pace and better planning than our previous illustrious successes accustomed us to.")
+              , (Conquer, "That was a good fight, with skillful application of missiles, cover and concealment. The outcome is especially commendable given the high bar of tactical proficiency. Not even professional enforcement units can routinely deduce enemy position from the trajectory of their projectiles nor by firing without line of sight and interpreting auditory cues. However, while the steep hurdle is overcome, the chase is not over yet.") ]
   , mdesc   = "The fight crashes over to a nearby mechanized farm. Law enforcement, crippled by the ban on firearms, won't show up until only wounded and dying remain to be revived and locked up. Farm supplies, scattered around, beg to be flung at foes as improvised missiles. Intense light makes it easy to aim and to discern trajectory of soaring items (point at projectiles with the crosshair in aiming mode)."
   }
 
@@ -84,8 +86,10 @@ hunt = ModeKind  -- melee vs ranged with reaction fire in daylight
   , mfreq   = [("hunt", 1), ("campaign scenario", 1)]
   , mroster = rosterHunt
   , mcaves  = cavesHunt
-  , mendMsg = []
-  , mdesc   = "Who is the hunter and who is the prey? The only criterion is being conscious or incapacited when the chase ends. As far as the eye can see, the landscape is desolate."
+  , mendMsg = [ (Killed, "Next time let's try to remember we are not on a sightseeing expedition. Also, leaving concealment is risky, leaving cover is foolhardy and wandering off is deadly. Also, what was that taking pictures by the mangrove tree all about? Were you trying to immortalize your handsome faces in case our shared pool of money was not enough to revive your sorry carcasses after the defeat? Good call, because now we are not far from that and the military grade communication implants of the gang foot soldiers that chase us don't raise our prospects either. And we were so close to complete victory and unfathomable wealth, if only we strove to lower the difficulty of this mission instead of raising it.")  -- the guy is wrong about implants, but being wrong is plausible when the team is killed off/chased off and can't scour the battleground
+    -- this is in the middle of the scenario list and the mission is not tricky, so a subtle reminder about lowering difficulty, in case the player struggles
+              , (Conquer, "We chased them off, like we knew that we would. It feels nice to stick together and prevail. Now we can do no wrong just minding our business and going our way to the airport. We taught them a lesson, despite their superior equipment, and nobody else needs to be harmed while we take possession of our rightful property, the glorious spaceship in Triton's orbit.") ]
+  , mdesc   = "Who is the hunter and who is the prey? The only criterion is being conscious or incapacitated when the chase ends. As far as the eye can see, the landscape is desolate."
   }
 
 escape = ModeKind  -- asymmetric ranged and stealth race at night
@@ -94,7 +98,9 @@ escape = ModeKind  -- asymmetric ranged and stealth race at night
   , mfreq   = [("escape", 1), ("campaign scenario", 1)]
   , mroster = rosterEscape
   , mcaves  = cavesEscape
-  , mendMsg = []
+  , mendMsg = [ (Killed, "Hornet's nest is not a safe place.")
+              , (Conquer, "That much blood was not necessary.")
+              , (Escape, "Congratulations, you took your revenge and their treasury.") ]
   , mdesc   = "Bloodied spaceship deed in hand notwithstanding, you can reach the derelict spaceliner only via a shuttle from the Central Triton Spaceport across the city. After hours of being chased in the opposite direction towards the border wall, you sneak back and make a desperate dash through the very territory of the pursuing gang. Any valuables you come upon in this public park turned miscreant lair will be fair compensation for your losses, but you need to find the exit before the foes find you. Reign in your wrath, don't chase your foes, foiling their plans by eluding them will be revenge enough."
   }
 
@@ -104,7 +110,8 @@ zoo = ModeKind  -- asymmetric crowd melee at night
   , mfreq   = [("zoo", 1), ("campaign scenario", 1)]
   , mroster = rosterZoo
   , mcaves  = cavesZoo
-  , mendMsg = []
+  , mendMsg = [ (Killed, "Eaten in a zoo makes for a good party line.")
+              , (Conquer, "The city is safe again. So are your precious selves.") ]
   , mdesc   = "As justified and satisfying as setting the enemy headquarters on fire has been, it backfires when the blaze immediately spreads to the public zoo on the path to the spaceport. Crazed animals mill around while the flames ignite greenery and consume nets, cages and security equipment. Whether that's a good sign or bad, apparently nobody is willing to pursue you any more. However, now you are on your own, having to completely clean up the area, up to the last lurking predator, in order to safely move through."
   }
 
@@ -122,7 +129,8 @@ ambush = ModeKind  -- dense ranged with reaction fire vs melee at night
   , mfreq   = [("ambush", 1), ("campaign scenario", 1)]
   , mroster = rosterAmbush
   , mcaves  = cavesAmbush
-  , mendMsg = []
+  , mendMsg = [ (Killed, "You turned out to be the prey, this time, not the hunter. And it's hard to operate a space dock while being chased round a spaceport.")
+              , (Conquer, "The new communication equipment, enabling simultaneous ranged attacks, apparently proved quite effective. With the mercenaries gone and nobody else having the slightest wish to interfere, the shuttle to the space cruiser at orbit is easy to launch.") ]
   , mdesc   = "Not even the unexplained ruin of the Central Triton Spaceport will prevent you from claiming the prize awaiting you at the orbit. After all, you didn't take to the space to let others decide your fate. There is still no news coverage from what was the largest and tightest security facitily in the whole Neptune Area. Without waiting for explanations nor for the personnel to return, you creep along the abandoned booths, scouting for any airlock with a shuttle still attached."  -- this is the only scenario with no objective specified, to give a bit of suspense, misdirection and mystery until the first win; being the last of the small scenarios, it won't scare off new players
   }
 
