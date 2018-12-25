@@ -1242,9 +1242,9 @@ mazeBig2 = maze
 cells = PlaceKind
   { psymbol  = '#'
   , pname    = "air filters"
-  , pfreq    = [ ("rogue", 48), ("laboratory", 48), ("museum", 10)
+  , pfreq    = [ ("rogue", 40), ("laboratory", 48), ("museum", 10)
                , ("exit", 280), ("noise", 480)
-               , ("zoo", 700), ("ambush", 100) ]
+               , ("zoo", 700), ("ambush", 80) ]
   , prarity  = [(1, 1)]
   , pcover   = CReflect
   , pfence   = FWall
@@ -1297,8 +1297,8 @@ cells6 = cells
   }
 cells7 = cells
   { pname    = "a defunct control room"
-  , pfreq    = [ ("rogue", 5), ("laboratory", 10)
-               , ("empty", 80), ("exit", 20), ("noise", 80) ]
+  , pfreq    = [ ("rogue", 5), ("laboratory", 20)
+               , ("empty", 100), ("exit", 30), ("noise", 100), ("ambush", 50) ]
   , pfence   = FFloor
   , ptopLeft = [ "%·o"
                , "·#o"
