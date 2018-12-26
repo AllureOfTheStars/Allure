@@ -301,7 +301,7 @@ colonnade = PlaceKind
   { psymbol  = 'c'
   , pname    = "a colonnade"
   , pfreq    = [ ("rogue", 12), ("noise", 1000), ("escape", 200)
-               , ("exit", 200) ]
+               , ("exit", 180) ]
   , prarity  = [(1, 12), (10, 12)]
   , pcover   = CAlternate
   , pfence   = FFloor
@@ -1243,7 +1243,7 @@ cells = PlaceKind
   { psymbol  = '#'
   , pname    = "air filters"
   , pfreq    = [ ("rogue", 40), ("laboratory", 48), ("museum", 10)
-               , ("exit", 280), ("noise", 480)
+               , ("exit", 240), ("noise", 480)
                , ("zoo", 700), ("ambush", 80) ]
   , prarity  = [(1, 1)]
   , pcover   = CReflect
