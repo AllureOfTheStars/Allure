@@ -315,7 +315,7 @@ exit = empty
   , cstairFreq    = [("walled lift", 20), ("tiny lift", 1)]  -- for miniboss
   , cstairAllowed = [ ("decontaminating walled staircase", 20)
                     , ("decontaminating tiny staircase", 1) ]  -- for miniboss
-  , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among cranes and welding machines. Distant main ion thruster array can be seen to the rear of the spaceship through oriels and airlocks of all sizes."
+  , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among cranes and welding machines. Distant main fusion thruster array can be seen to the rear of the spaceship through oriels and airlocks of all sizes."
       -- E and W sides are borders with other level sections, so no oriels.
       -- The meteor shield towards N is not punctured here, because
       -- the cargo bay is too thick here, near the axis of the ship.
