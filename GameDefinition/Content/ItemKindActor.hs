@@ -889,7 +889,7 @@ lightRobot = ItemKind
   }
 heavyRobot = ItemKind
   { isymbol  = 'r'
-  , iname    = "construction robot"
+  , iname    = "demolition robot"
   , ifreq    = [ ("robot", 100), ("mobile", 100), ("mobile robot", 100)
                , ("construction robot", 70) ]
   , iflavour = zipPlain [Cyan]
@@ -957,7 +957,7 @@ cleanerRobot = ItemKind
                , AddSkill SkApply 1  -- can apply the hooter
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "An oversize waste disposal robot repaired with parts from a heavy construction robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness. It doesn't fit into any lifts."
+  , idesc    = "An oversize waste disposal robot repaired with parts from a demolition robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness. It doesn't fit into any lifts."
   , ikit     = [ ("live wire", COrgan), ("large jaw", COrgan)
                , ("tentacle", COrgan)
                , ("boiling vent", COrgan), ("hull plating", COrgan)
