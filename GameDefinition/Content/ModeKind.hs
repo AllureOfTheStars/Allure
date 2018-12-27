@@ -235,7 +235,7 @@ battleSurvival = ModeKind
   , mroster = rosterBattleSurvival
   , mcaves  = cavesBattle
   , mendMsg = []
-  , mdesc   = "Odds are stacked for those that breathe mathematics."
+  , mdesc   = "Odds are stacked for those that ally with the strongest."
   }
 
 defense = ModeKind  -- perhaps a real scenario in the future

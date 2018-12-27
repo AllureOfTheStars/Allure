@@ -57,7 +57,7 @@ ldarkColorable = [tree, bush, floorCorridor, floorArena, floorDamp, floorDirt, f
 
 -- *** Not clear
 
-unknown = TileKind  -- needs to have index 0 and alter 1
+unknown = TileKind  -- needs to have index 0 and alter 1; no other with 1
   { tsymbol  = ' '
   , tname    = "unknown space"
   , tfreq    = [("unknown space", 1)]
@@ -682,6 +682,7 @@ stairsDecontaminatingUp = stairsUp
   , tfreq    = [("decontaminating staircase up", 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
+  , talter   = talterForStairs
   , tfeature = Embed "decontamination chamber" : tfeature stairsUp
   }
 stairsWelded = stairsUp
@@ -736,14 +737,15 @@ stairsDecontaminatingDown = stairsDown
   , tfreq    = [("decontaminating staircase down", 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
+  , talter   = talterForStairs
   , tfeature = Embed "decontamination chamber" : tfeature stairsDown
   }
 stairsLiftDown = stairsDown
   { tname    = "lift down"
   , tfreq    = [("staircase lift down", 9), ("ordinary lift down", 1)]
-  , talter   = talterForStairs
   , tcolor   = BrCyan
   , tcolor2  = Cyan
+  , talter   = talterForStairs
   , tfeature = [Embed "lift down", ConsideredByAI]
   }
 stairsLiftTrappedDown = stairsTrappedDown
