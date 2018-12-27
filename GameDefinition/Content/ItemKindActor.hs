@@ -62,9 +62,8 @@ warrior = ItemKind
                , AddSkill SkOdor 1
                , SetFlag Durable ]
   , ieffects = []
-  , ikit     = humanOrgans ++ [("genetic flaw 10", COrgan)]
   , idesc    = ""
-  -- , idesc    = "A hardened veteran of combat."
+  , ikit     = humanOrgans ++ [("genetic flaw 10", COrgan)]
   }
 warrior2 = warrior
   { iname    = "pilot"
@@ -229,7 +228,7 @@ nose = ItemKind  -- depends solely on smell
                , AddSkill SkSwimming 30
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "A blind, slimy mass of clawing, stinging and burning. You'd think it's powerless, but as soon as it touches your trembling body, it's always one step ahead."
+  , idesc    = "A blind, slimy mass of loose tissue. You'd think it's powerless, but as soon as it touches your trembling body, clawing, stinging and burning erupts and can't be fended off."
   , ikit     = [ ("small claw", COrgan), ("sting", COrgan)
                , ("venom tooth", COrgan)
                , ("nostril", COrgan)
@@ -472,7 +471,7 @@ komodoDragon = ItemKind
                , AddSkill SkAggression 1  -- match the description
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "Larger and more aggressive than any other lizard, but as easily recovering from wounds at its lesser cousins."
+  , idesc    = "Larger and more aggressive than any other lizard, but as easily recovering from wounds as its lesser cousins."
   , ikit     = [ ("large tail", COrgan), ("jaw", COrgan)
                , ("hooked claw", COrgan)
                , ("speed gland 5", COrgan), ("armored skin", COrgan)
@@ -689,9 +688,9 @@ activeFence = ItemKind
   , idesc    = "Makeshift, mostly non-lethal, autonomous perimeter defense outpost."
   , ikit     = [ ("vision 6", COrgan)
                , ("needle", CInv), ("can of sticky foam", CInv) ]
-                   -- can of sticky foam is scummable, but on the level
-                   -- it appears healing through faucets is much more so,
-                   -- so it won't be a significant factor
+                   -- can of sticky foam is exploitable, but it spawns
+                   -- reasonably often only on one level and not for 
+                   -- a long period
   }
 steamFaucet = ItemKind
   { isymbol  = 'f'
@@ -945,7 +944,7 @@ cleanerRobot = ItemKind
   , irarity  = [(11 * 10/15, 0), (12 * 10/15, 1000), (13 * 10/15, 0)]
                  -- unique, appears at 11 of 12
   , iverbHit = "clank"
-  , iweight  = 80000
+  , iweight  = 800000
   , idamage  = 0
   , iaspects = [ SetFlag Unique
                , AddSkill SkMaxHP 120, AddSkill SkMaxCalm 40
@@ -957,7 +956,7 @@ cleanerRobot = ItemKind
                , AddSkill SkApply 1  -- can apply the hooter
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "An oversize waste disposal robot repaired with parts from a demolition robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness. It doesn't fit into any lifts."
+  , idesc    = "An oversize waste disposal robot repaired with parts from a demolition robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness. The robot's bulky trunk doesn't fit into even the larger lift carriages."
   , ikit     = [ ("live wire", COrgan), ("large jaw", COrgan)
                , ("tentacle", COrgan)
                , ("boiling vent", COrgan), ("hull plating", COrgan)

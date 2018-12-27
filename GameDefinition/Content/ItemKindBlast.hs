@@ -33,7 +33,7 @@ cruiseAdHologram,       outerAdHologram, victoriaClassHologram, allureIntroHolog
 
 -- We take care (e.g., in burningOil below) that blasts are not faster
 -- than 100% fastest natural speed, or some frames would be skipped,
--- which is a waste of prefectly good frames.
+-- which is a waste of perfectly good frames.
 
 -- * Parameterized blasts
 
@@ -96,7 +96,7 @@ spreadFragmentation = ItemKind
   { isymbol  = '*'
   , iname    = "fragmentation burst"
   , ifreq    = [("violent fragmentation", 1)]
-  , iflavour = zipPlain [Red]  -- flying shards; some fire and smoke
+  , iflavour = zipPlain [Red]
   , icount   = 16  -- strong but few, so not always hits target
   , irarity  = [(1, 1)]
   , iverbHit = "tear apart"
@@ -107,7 +107,7 @@ spreadFragmentation = ItemKind
                , SetFlag Lobable, SetFlag Fragile, SetFlag Blast
                , AddSkill SkShine 3, AddSkill SkHurtMelee $ -12 * 5 ]
   , ieffects = [DropItem 1 1 COrgan "condition"]
-  , idesc    = ""
+  , idesc    = "Flying shards, flame and smoke."
   , ikit     = []
   }
 spreadFragmentation8 = spreadFragmentation
@@ -134,14 +134,14 @@ focusedFragmentation = ItemKind
       -- when the target position is occupied, the explosion starts one step
       -- away, hence we set range to 0 steps, to limit dispersal
   , ieffects = [OnSmash $ Explode "fragmentation"]
-  , idesc    = ""
+  , idesc    = idesc spreadFragmentation
   , ikit     = []
   }
 spreadConcussion = ItemKind
   { isymbol  = '*'
   , iname    = "concussion blast"
   , ifreq    = [("violent concussion", 1)]
-  , iflavour = zipPlain [Magenta]  -- mosty shock wave; some fire and smoke
+  , iflavour = zipPlain [Magenta]
   , icount   = 16
   , irarity  = [(1, 1)]
   , iverbHit = "shock"
@@ -160,7 +160,7 @@ spreadConcussion = ItemKind
                , DropItem 1 1 COrgan "condition"
                , toOrganBad "immobile" 3  -- no balance
                , toOrganBad "deafened" 23 ]
-  , idesc    = ""
+  , idesc    = "Shock wave, hot gases, some fire and smoke."
   , ikit     = []
   }
 spreadConcussion8 = spreadConcussion
@@ -184,14 +184,14 @@ focusedConcussion = ItemKind
   , iaspects = [ toLinger 0  -- 0 steps, 1 turn
                , SetFlag Fragile, SetFlag Blast ]
   , ieffects = [OnSmash $ Explode "concussion"]
-  , idesc    = ""
+  , idesc    = idesc spreadConcussion
   , ikit     = []
   }
 spreadFlash = ItemKind
   { isymbol  = '`'
   , iname    = "magnesium flash"  -- or aluminum, but let's stick to one
   , ifreq    = [("violent flash", 1)]
-  , iflavour = zipPlain [BrWhite]  -- very brigh flash
+  , iflavour = zipPlain [BrWhite]
   , icount   = 16
   , irarity  = [(1, 1)]
   , iverbHit = "dazzle"
@@ -203,7 +203,7 @@ spreadFlash = ItemKind
   , ieffects = [toOrganBad "blind" 5, toOrganBad "weakened" 20]
                  -- Wikipedia says: blind for five seconds and afterimage
                  -- for much longer, harming aim
-  , idesc    = "A flash of fire."
+  , idesc    = "A very bright flash of fire."
   , ikit     = []
   }
 spreadFlash8 = spreadFlash
@@ -228,7 +228,7 @@ focusedFlash = ItemKind
   , iaspects = [ toLinger 0  -- 0 steps, 1 turn
                , SetFlag Fragile, SetFlag Blast ]
   , ieffects = [OnSmash $ Explode "spark"]
-  , idesc    = ""
+  , idesc    = idesc spreadFlash
   , ikit     = []
   }
 singleSpark = spreadFlash
@@ -354,7 +354,7 @@ mistHealing = ItemKind
                , SetFlag Fragile, SetFlag Blast
                , AddSkill SkShine 1 ]
   , ieffects = [RefillHP 2]
-  , idesc    = "It fills the air with light and life."
+  , idesc    = "It fills the air with light and life. And lots of organic chemicals."
   , ikit     = []
   }
 mistHealing2 = ItemKind
@@ -371,7 +371,7 @@ mistHealing2 = ItemKind
                , SetFlag Fragile, SetFlag Blast
                , AddSkill SkShine 2 ]
   , ieffects = [RefillHP 4]
-  , idesc    = "At its touch, wounds close and bruises fade."
+  , idesc    = "At its touch, wounds close and bruises fade. Not the most frugal way to apply nanobots, though."
   , ikit     = []
   }
 mistWounding = ItemKind
@@ -419,7 +419,7 @@ smoke = ItemKind  -- when stuff burns out  -- unused
   , iaspects = [ toVelocity 20  -- 4 steps, 2 turns
                , SetFlag Fragile, SetFlag Blast ]
   , ieffects = [toOrganBad "withholding" (5 + 1 `d` 3)]
-                  -- choking and tears, can rougly see, but not aim
+                  -- choking and tears, can roughly see, but not aim
   , idesc    = "Twirling clouds of grey smoke."
   , ikit     = []
   }
@@ -516,7 +516,7 @@ mistSleep = ItemKind
   , iaspects = [ toVelocity 5  -- 1 step, 1 turn
                , SetFlag Fragile, SetFlag Blast ]
   , ieffects = [PutToSleep]
-  , idesc    = "Luls weary warriors."
+  , idesc    = "Lulls weary warriors."
   , ikit     = []
   }
 
@@ -599,7 +599,7 @@ vulnerabilityBalm = ItemKind
   , idamage  = 0
   , iaspects = [toLinger 10, SetFlag Fragile, SetFlag Blast]
   , ieffects = [toOrganBad "painted" (3 + 1 `d` 3)]
-  , idesc    = ""
+  , idesc    = "Softly glowing red pain that marks a target."
   , ikit     = []
   }
 resolutionDust = ItemKind
@@ -770,7 +770,7 @@ blastNoStat grp = ItemKind
   , iaspects = [ toVelocity 10  -- 2 steps, 2 turns
                , SetFlag Fragile, SetFlag Blast ]
   , ieffects = [toOrganBad (toGroupName grp) (3 + 1 `d` 3)]
-  , idesc    = ""
+  , idesc    = "Completely disables one personal faculty."
   , ikit     = []
   }
 blastNoSkMove = blastNoStat "immobile"
@@ -795,7 +795,7 @@ blastBonusStat grp = ItemKind
   , iaspects = [ toVelocity 10  -- 2 steps, 2 turns
                , SetFlag Fragile, SetFlag Blast ]
   , ieffects = [toOrganGood (toGroupName grp) (20 + 1 `d` 5)]
-  , idesc    = ""
+  , idesc    = "Temporarily enhances the given personal faculty."
   , ikit     = []
   }
 blastBonusSkMove = blastBonusStat "more mobile"
@@ -813,11 +813,12 @@ blastBonusSkApply = blastBonusStat "more practical"
 
 -- They exist for a short time only, but the lore can be read
 -- from the lore menu. Only optional story bits should go there,
--- becuase some players may not even notice them (at first, at least).
+-- because some players may not even notice them (at first, at least).
 -- This is designed not to spam gameplay with story. Gameplay first.
 -- Generally, 3 to 5 blasts of each kind should suffice for variety.
--- More would induce long repetition to see all (they are shown at random).
--- With mild exceptions, they should have no effects.
+-- More would induce excessive repetition of some to see all
+-- (they are shown at random). With mild exceptions, they should have
+-- no effects.
 
 cruiseAdHologram = ItemKind
   { isymbol  = '`'

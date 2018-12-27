@@ -32,7 +32,7 @@ blackStarrySky,       disengagedDocking, ruinedFirstAidKit, wall3dBillboard, dep
 
 -- Make sure very few walls are substantially useful, e.g., caches,
 -- and none that are secret. Otherwise the player will spend a lot of time
--- bumping walls, which is boring compare to fights or dialogues
+-- bumping walls, which is boring compared to fights or dialogues
 -- and ever worse, the player will bump all secret walls, wasting time
 -- and foregoing the fun of guessing how to find entrance to a disjoint part
 -- of the level by bumping the least number of secret walls.
@@ -63,11 +63,11 @@ obscenePictogram = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [Timeout 7, SetFlag Durable]
-  , ieffects = [ VerbMsg "enter unexplainable rage at a glimpse of the inscrutable graffiti"
+  , ieffects = [ VerbMsg "enter inexplicable rage at a glimpse of the inscrutable graffiti"
                , RefillCalm (-20)
                , OneOf [ toOrganGood "strengthened" (3 + 1 `d` 2)
                        , CreateItem CInv "sandstone rock" timerNone ] ]
-  , idesc    = ""
+  , idesc    = ""  -- alien writing? or runaway robot AI?
   , ikit     = []
   }
 subtleFresco = ItemKind
@@ -118,7 +118,7 @@ treasureCacheTrap = ItemKind
                       , RefillCalm (-99)
                       , Explode "focused concussion"
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1) ]]
-  , idesc    = "A display of such kingly trinkets warrants an autonomous guarding device. The precaution is particularly understandable for merchandise capable of instantly frying video monitoring equipment across the hall."
+  , idesc    = "A display of such kingly trinkets warrants an autonomous guarding device. The precaution is particularly understandable if some of the merchandise is capable of instantly frying video monitoring equipment across the hall."
   , ikit     = []
   }
 signboardExit = ItemKind
@@ -381,7 +381,7 @@ blackStarrySky = ItemKind
   , iaspects = [SetFlag Durable]
   , ieffects = [ VerbMsg "look into the void and it looks back"
                , OneOf [RefillCalm 5, RefillCalm (-5)] ]
-  , idesc    = "Occasionally a planet zips by, but is unable to disperse the blackness. The black starscape constantly rotates. The frantic dance is silent, muted, indifferent. There is not even a hint of vibration, just the sense of heaviness and dizziness."  -- appears only on 100% flavour tiles, useless and trivial to notice, so the writeup can be longer; who am I kidding, I can hardly write condensed prose
+  , idesc    = "Occasionally a planet or the Sun zips by, but is unable to disperse the darkness. The black starscape constantly rotates. The frantic dance is silent, muted, indifferent. There is not even a hint of vibration, just the sense of heaviness and dizziness."  -- appears only on 100% flavour tiles, useless and trivial to notice, so the writeup can be longer; who am I kidding, I can't make myself write condensed prose
   , ikit     = []
   }
 disengagedDocking = ItemKind
@@ -396,7 +396,7 @@ disengagedDocking = ItemKind
   , idamage  = 0
   , iaspects = [SetFlag Durable]
   , ieffects = [RefillCalm (-10)]
-  , idesc    = "Unfortunately this airlock is disengaged. Many fine small craft were originally docked with such sockets and clamps as these, but just after the spaceship spontanously commenced leaving its Triton orbit, a lot of them has been spotted jettisoned and drifting astern. What a waste."
+  , idesc    = "Unfortunately this airlock is disengaged. Many fine small craft were originally docked with such sockets and clamps as these, but just after the spaceship spontaneously commenced leaving its Triton orbit, a lot of them has been spotted jettisoned and drifting astern. What a waste."
   , ikit     = []
   }
 ruinedFirstAidKit = ItemKind
@@ -441,14 +441,14 @@ depositBox = treasureCache
   , iaspects = [SetFlag Durable]
   , ieffects = [CreateItem CGround "treasure" timerNone]
                  -- can't be "valuable" or template items generated
-  , idesc    = "The reports of intact deposit boxes in the ship's safes have been greatly exaggerated, but there are still a few with glittering gems and gold, just waiting to be taken. Whomever looted these halls wasn't thorough or, judging from the damage to some of the boxes, was in a hurry."
+  , idesc    = "The reports of intact deposit boxes in the ship's safes have been greatly exaggerated, but there are still a few with glittering gems and gold, just waiting to be taken. Whomever looted these halls wasn't thorough or, judging from the damage to some of the boxes, was in an extreme hurry."
   }
 jewelryCase = treasureCache
   { iname    = "jewelry case"
   , ifreq    = [("jewelry case", 1)]
   , iaspects = [SetFlag Durable]
   , ieffects = [CreateItem CGround "any jewelry" timerNone]
-  , idesc    = "The customers of these shops must have been extremely well off, judging from abundance and quality of the jewelry, often extremely valuable in each of the artistic, material and nanotechnology aspects. Outer Solar System trips are expensive, but they offer unique trade and investment opportunities. Many deals are of the kind that can only be negotiated in a sealed room out of reach of satelites and screened by both parties. Among the jewelry are portable versions of such screening hardware --- in truly breathtaking package."
+  , idesc    = "The customers of these shops must have been extremely well off, judging from abundance and quality of the jewelry, often extremely valuable in each of the artistic, material and nanotechnology aspects. Outer Solar System trips are expensive, but they offer unique trade and investment opportunities. Many deals are of the kind that can only be negotiated in a sealed room out of reach of satellites and screened by both parties. Among the jewelry are portable versions of such screening hardware --- in a truly breathtaking package."
   }
 liftUp = stairsUp
   { iname    = "carriage"
@@ -489,7 +489,7 @@ shuttleHardware = ItemKind
   , idamage  = 0
   , iaspects = [SetFlag Durable]
   , ieffects = []
-  , idesc    = "While the hull of the spacecraft is intact, the flight hardware that normally lines the walls seems broken, worn out and often missing. This shuttle was probably scavenged for spare parts to repair other craft and it's unlikely that anything of use remains. This was the common tiny kind to being with, designed for lunar and orbital courier duties and single family trips. The kind is relatively cheap to operate, because no permanent airlock needs to be leased. Instead, the craft is brought through a large airlock to a drydock and serviced and even stored inside."
+  , idesc    = "While the hull of the spacecraft is intact, the flight hardware that normally lines the walls seems broken, worn out and often missing. This shuttle was probably scavenged for spare parts to repair other craft and it's unlikely that anything of use remains. This was the common \"taxi\" kind, fit only for lunar and orbital courier duties and single family trips. It's relatively cheap to operate, because no permanent airlock needs to be leased. Instead, the craft is brought through a large airlock to a dry-dock and serviced and even stored inside."
   , ikit     = []
   }
 machineOil = ItemKind
@@ -522,7 +522,7 @@ crudeWeld = ItemKind  -- this is also an organ
   , idamage  = 0
   , iaspects = [AddSkill SkMove (-5), AddSkill SkDisplace (-1)]
   , ieffects = [Explode "spark"]
-  , idesc    = "This is a messy and irregularly layered weld, but no ammount of kicking nor hammering makes any impression on it. A heavy duty cutting tool would be required."
+  , idesc    = "This is a messy and irregularly layered weld, but no amount of kicking nor hammering makes any impression on it. A heavy duty cutting tool would be required."
   , ikit     = []
   }
 decontaminator = ItemKind

@@ -49,7 +49,7 @@ needle, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch :: I
 -- instead of "hmm, I found one of the countless variants, a decent one").
 -- In particular, for unique items, unless they inherit aspects from
 -- a standard item, permit only a couple possible variants.
--- This is especially important if an item kind has mulitple random aspects.
+-- This is especially important if an item kind has multiple random aspects.
 -- Instead multiply dice results, e.g., (1 `d` 3) * 5 instead of 1 `d` 15.
 --
 -- Beware of non-periodic non-weapon durable items with beneficial effects
@@ -109,7 +109,7 @@ dart = ItemKind
   , ifreq    = [("common item", 100), ("any arrow", 50), ("weak arrow", 50)]
   , iflavour = zipPlain [BrWhite]
   , icount   = 1 + 4 `dL` 5
-  , irarity  = [(1, 15), (10, 10)]
+  , irarity  = [(1, 15), (10, 5)]
   , iverbHit = "strike"
   , iweight  = 170
   , idamage  = 1 `d` 1
@@ -125,7 +125,7 @@ spike = ItemKind
   , ifreq    = [("common item", 100), ("any arrow", 50), ("weak arrow", 50)]
   , iflavour = zipPlain [Cyan]
   , icount   = 1 + 4 `dL` 5
-  , irarity  = [(1, 10), (10, 15)]
+  , irarity  = [(1, 10), (10, 10)]
   , iverbHit = "nick"
   , iweight  = 100
   , idamage  = 2 `d` 1
@@ -137,11 +137,11 @@ spike = ItemKind
                , OnSmash (Explode "single spark") ]  -- at wall hit
       -- this results in a wordy item synopsis, but it's OK, the spark really
       -- is useful in some situations, not just a flavour
-  , idesc    = "Not particularly well balanced, but with a laser-sharpened titanium tip and blade."
+  , idesc    = "Not particularly well balanced, but with a laser-sharpened titanium alloy tip and blade."
   , ikit     = []
   }
 spike2 = spike
-  { iname    = "skewer"
+  { iname    = "heavy steak knife"
   , ifreq    = [("common item", 2), ("any arrow", 1), ("weak arrow", 1)]
   , icount   = 6 `dL` 5
   , iverbHit = "penetrate"
@@ -151,7 +151,7 @@ spike2 = spike
                , SetFlag MinorEffects
                , Odds (10 * 1 `dL` 10) [] [toVelocity 70] ]
                    -- at deep levels sometimes even don't limit velocity
-  , idesc    = "A jagged skewer of rusty metal."
+  , idesc    = "Old, slightly discoloured, probably from a genuine steel. A heavy and surprisingly well balanced prop from a posh restaurant."  -- the theme of pre-modern things being more solid and intimidating
   }
 slingStone = ItemKind
   { isymbol  = symbolProjectile
@@ -238,7 +238,7 @@ harpoon2 = harpoon
   , icount   = 2 `dL` 5
   , iweight  = 1000
   , idamage  = 10 `d` 1
-  , idesc    = "A sharpened cargo-hook with high-tension cord."
+  , idesc    = "A sharpened cargo-hook with high-tension cord."  -- could use some explanation of why it breaks when thrown, especially that's it's not apparent
   }
 net = ItemKind
   { isymbol  = symbolProjectile
@@ -347,7 +347,7 @@ blanket = ItemKind
 -- Not identified, because they are perfect for the id-by-use fun,
 -- due to effects. They are fragile and upon hitting the ground explode
 -- for effects roughly corresponding to their normal effects.
--- Whether to hit with them or explode them close to the tartget
+-- Whether to hit with them or explode them close to the target
 -- is intended to be an interesting tactical decision.
 --
 -- Flasks are often not natural; maths, magic, distillery.
@@ -423,7 +423,7 @@ flask6 = flaskTemplate
   }
 flask7 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
-  , icount   = 1  -- too poweful en masse
+  , icount   = 1  -- too powerful en masse
   , iaspects = ELabel "of haste brew"
                : iaspects flaskTemplate
   , ieffects = [ toOrganGood "hasted" (20 + 1 `d` 5)
@@ -827,7 +827,7 @@ scrollTemplate = ItemKind
   , iaspects = [ HideAs "scroll unknown"
                , toVelocity 30 ]  -- too small
   , ieffects = []
-  , idesc    = "A generic, disposable chip, capable of a one-time holo-display. Some of these also contain a one-time password authorizing a particular spaceship's infrastructure transition. It is unknown how the infrastructure might respond after so many years."
+  , idesc    = "A generic, disposable chip, capable of a one-time holo-display. Some of these also contain a one-time password authorizing a particular spaceship's infrastructure transition. Nobody knows how the infrastructure might respond after so many years."
   , ikit     = []
   }
 scroll1 = scrollTemplate
@@ -891,7 +891,7 @@ scroll8 = scrollTemplate
   , iaspects = [SetFlag Unique, ELabel "of Rescue Proclamation"]
                ++ iaspects scrollTemplate
   , ieffects = [Summon "hero" 1]
-  , idesc    = "This lock chip opens a nearby closet containing one of our lost crew members."
+  , idesc    = "This lock chip opens a nearby closet imprisoning one of our lost crew members."
   }
 scroll9 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
@@ -987,7 +987,7 @@ seeingItem = ItemKind
   }
 motionScanner = ItemKind
   { isymbol  = symbolTool
-  , iname    = "handhelp sonar"
+  , iname    = "handheld sonar"
   , ifreq    = [("common item", 100), ("add nocto 1", 20)]
   , iflavour = zipPlain [Green]
   , icount   = 1
@@ -1024,9 +1024,9 @@ gorget = necklaceTemplate
                , SetFlag Durable ]
                ++ iaspects_necklaceTemplate
   , ieffects = [RefillCalm 1]
-  , idesc    = "Highly ornamental, cold, large, steel medallion on a chain. Unlikely to offer much protection as an armor piece, but the old, worn engraving reassures you."
+  , idesc    = "Highly ornamental, cold, large steel medallion on a chain. Unlikely to offer much protection as an armor piece, but the old worn engraving reassures the wearer."
   }
--- Not idenfified, because id by use, e.g., via periodic activations. Fun.
+-- Not identified, because id by use, e.g., via periodic activations. Fun.
 necklaceTemplate = ItemKind
   { isymbol  = symbolNecklace
   , iname    = "necklace"
@@ -1040,19 +1040,19 @@ necklaceTemplate = ItemKind
   , iaspects = Timeout 1  -- fake, but won't be displayed thanks to periodic
                : iaspects_necklaceTemplate
   , ieffects = []
-  , idesc    = "Tingling, rattling chain of flat encrusted links. Eccentric millionaires are known to hide their highly personalized body augmentation packs in such large jewelry pieces."
+  , idesc    = "Tingling, rattling chain of flat encrusted links. Eccentric millionaires are known to hide their highly personalized body augmentation packs in bulky jewelry pieces such as these."
   , ikit     = []
   }
 necklace1 = necklaceTemplate
   { ifreq    = [("curious item", 100), ("any jewelry", 100)]
   , irarity  = [(3 * 10/15, 0), (4 * 10/15, 1), (10, 3)]
                  -- prevents camping on lvl 3
-  , iaspects = [ SetFlag Unique, ELabel "of Trickle Life"
+  , iaspects = [ SetFlag Unique, ELabel "of Spur Life"
                , Timeout $ (1 `d` 2) * 20  -- priceless, so worth the long wait
                , SetFlag Durable ]
                ++ iaspects_necklaceTemplate
-  , ieffects = [RefillHP 1]
-  -- , idesc    = ""
+  , ieffects = [RefillHP 1, RefillCalm (-5)]
+  , idesc    = "This awkward chain, when worn on bare skin, frequently emits mild but highly annoying electric shocks, which apparently stimulate tissue regeneration even in distant parts of the body. A part of the surprising effectiveness of this unique artifact may stem from the desperation of the patients to be quickly healed enough to take it off."
   }
 -- no necklace2 of Live Bait, wasteContainer too similar
 necklace3 = necklaceTemplate
@@ -1102,7 +1102,7 @@ necklace7 = necklaceTemplate
                  -- as well as unlimited accumulation of the duration.
                  -- Timeout lessens temptation to frequently wear and take off,
                  -- to engage in melee, which would lead to micromanagement.
-  -- , idesc    = ""
+  , idesc    = "This whirring augmentation pack stimulates its host beyond any medically advisable or, surely, even legally admissible levels. It can be only speculated what kind of activity it was designed for, but clearly the steady handling of melee weapons was not one of them."
   }
 necklace8 = necklaceTemplate
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
@@ -1194,11 +1194,11 @@ ring1 = ringTemplate
 ring2 = ringTemplate
   { ifreq    = [("curious item", 100), ("any jewelry", 100)]
   , iaspects = [ SetFlag Unique, ELabel "of Rush"
-               , AddSkill SkSpeed $ (1 `d` 2) * 3
+               , AddSkill SkSpeed $ (1 + 1 `d` 2) * 2
                , AddSkill SkMaxCalm (-40), AddSkill SkMaxHP (-20)
                , SetFlag Durable, EqpSlot EqpSlotSpeed ]
                ++ iaspects ringTemplate
-  -- , idesc    = ""
+  , idesc    = "There creator of this dangerous artifact didn't find time to document its operation. And now it's too late."
   }
 ring3 = ringTemplate
   { ifreq    = [("common item", 100), ("any jewelry", 100)]
@@ -1249,8 +1249,7 @@ ring8 = ringTemplate
                , AddSkill SkMaxHP (-20)
                , SetFlag Durable, EqpSlot EqpSlotProject ]
                ++ iaspects ringTemplate
-  -- , idesc    = ""  -- perhaps the constant trickle of a drug weakens bodily
-                      -- resilience and recovery
+  , idesc    = "This exceptional medical contraption constantly transforms and re-injects minuscule amounts of blood serum, synthesizing powerful drugs that greatly enhance spacial awareness and focus, at the cost of weakening bodily resilience and recovery."
   }
 
 -- ** Armor
@@ -1492,7 +1491,7 @@ daggerDropBestWeapon = dagger
                ++ iaspects dagger
   , ieffects = [DropBestWeapon, Yell]  -- powerful and low timeout, but makes
                                        -- noise and useless against stupid foes
-  , idesc    = "An antique double dagger that a focused fencer can use to catch and twist away an opponent's blade occasionally."
+  , idesc    = "An antique double dagger that a focused fencer can use to catch and twist away an opponent's blade."
   }
 hammerTemplate = ItemKind
   { isymbol  = symbolHafted
@@ -1511,7 +1510,7 @@ hammerTemplate = ItemKind
                , SetFlag Durable, SetFlag Meleeable
                , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
   , ieffects = []
-  , idesc    = "One of many kinds of hammers employed in construction work. The ones with completely blunt heads don't cause grave wounds, but any fitted with a long enough handle can shake and bruise even most armored foes, even though they require more time to recover after a swing. This one looks average at a quick glance."  -- if it's really the average kind, the weak kind, the description stays; if not, it's replaced with one of the descriptions below at identification time
+  , idesc    = "One of many kinds of hammers employed in construction work. The ones with completely blunt heads don't cause grave wounds, but any fitted with a long enough handle can shake and bruise even most armored foes. However, such large hammers require more time to recover after a swing. This one looks average at a quick glance."  -- if it's really the average kind, the weak kind, the description stays; if not, it's replaced with one of the descriptions below at identification time
   , ikit     = []
   }
 hammer1 = hammerTemplate
@@ -1544,7 +1543,7 @@ hammerParalyze = hammerTemplate
                , EqpSlot EqpSlotWeaponBig ]
                ++ iaspects hammerTemplate
   , ieffects = [Paralyze 10]
-  , idesc    = "This exquisite demolition hammer with a titan head and exceptionally long handle leaves no wall and no body standing."
+  , idesc    = "This exquisite demolition hammer with a titanium head and exceptionally long handle leaves no wall and no body standing."
   }
 hammerSpark = hammerTemplate
   { iname    = "Grand Smithhammer"
@@ -1602,7 +1601,7 @@ swordNullify = sword
   , ieffects = [ DropItem 1 maxBound COrgan "condition"
                , RefillCalm (-10)
                , Yell ]
-  , idesc    = "A thin, acutely sharp steel blade that pierces deeply and sends its victim into abrupt, sobering shock. Originally, an exuberant hand-forged roasting implement, intentionally kept blunt."
+  , idesc    = "A thin, acutely sharp steel blade that pierces deeply and sends its victim into abrupt, sobering shock. Originally, an exuberant hand-forged roasting implement, intentionally and wisely kept blunt."
   }
 halberd = ItemKind
   { isymbol  = symbolPolearm
@@ -1626,7 +1625,7 @@ halberd = ItemKind
   , ikit     = []
   }
 halberd2 = halberd
-  { iname    = "Pollaxe"
+  { iname    = "pollaxe"
   , ifreq    = [("common item", 3 * 3), ("starting weapon", 1)]
   , iverbHit = "carve"
   , iweight  = 4000
@@ -1761,7 +1760,7 @@ needle = ItemKind
                , SetFlag Fragile  -- breaks easily despite being piercing
                , ToThrow $ ThrowMod 70 100 3 ]  -- piercing
   , ieffects = []
-  , idesc    = "A long hypodermic needle ending in a dried out micro-syringe. It's too light to cause great harm, but it passes through flesh easily."
+  , idesc    = "A long hypodermic needle ending in a dried out micro-syringe. It's too thin to cause great harm, but it passes through flesh easily."
   , ikit     = []
   }
 constructionHooter = necklaceTemplate
@@ -1776,7 +1775,7 @@ constructionHooter = necklaceTemplate
                , SetFlag Durable, toVelocity 50
                , SetFlag Equipable, EqpSlot EqpSlotArmorMelee]
   , ieffects = [Yell, Summon "construction robot" 1]
-  , idesc    = "An emergency hooter for alarming human personel in case their life is in danger. Worn by construction robots around their \"neck\", where it's least exposed, but nevertheless it needs to be heavily armored and running on its own power suppply."
+  , idesc    = "An emergency hooter for alarming human personnel in case their life is in danger. Worn by construction robots around their \"neck\", where it's least exposed, but even there it needs to be heavily armored and running on its own power supply."
   }
 wasteContainer = ItemKind
   { isymbol  = symbolTool
@@ -1821,7 +1820,7 @@ scrollAd1 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
   , icount   = 1
   , irarity  = [(1, 1)]  -- not every playthrough needs one
-  , iaspects = [ELabel "of turist guide"]
+  , iaspects = [ELabel "of tourist guide"]
                ++ iaspects scrollTemplate
   , ieffects = [ Impress
                , toOrganGood "resolute" (500 + 1 `d` 200)

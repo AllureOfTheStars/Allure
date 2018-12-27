@@ -56,6 +56,7 @@ foot = fist
   , iverbHit = "kick"
   , idamage  = 4 `d` 1
   , idesc    = "A weapon you can still use if disarmed."
+                 -- great example of tutorial hints inside a flavourful text
   }
 
 -- * Other weapon organs
@@ -286,7 +287,7 @@ armoredSkin = ItemKind
   , iaspects = [ AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "Homemade armour is just as good."
+  , idesc    = "Homemade armour is just as good."  -- hmm, it may get confused with leather armor jackets, etc.
   , ikit     = []
   }
 bark = armoredSkin
@@ -587,7 +588,7 @@ geneticFlaw n = armoredSkin
                ++ [AddSkill SkWait (-1) | n >= 10]
                ++ [AddSkill SkApply (-1) | n >= 10]
   , ieffects = [ OnSmash $ DropItem maxBound maxBound COrgan "condition"
-                   -- key point for AI is it eliminates all impression
+                   -- key for AI is it eliminates all impression conditions
                , OnSmash $ RefillHP n
                , OnSmash $ VerbMsg "undergo infracellular decontamination" ]
   , idesc    = ""
