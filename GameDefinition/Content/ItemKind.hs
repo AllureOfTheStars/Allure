@@ -37,11 +37,11 @@ items :: [ItemKind]
 items =
   [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
   -- Allure-specific
-  ++ [needle, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch]
+  ++ [needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch]
 
 sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
 -- Allure-specific
-needle, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch :: ItemKind
+needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch :: ItemKind
 
 -- Keep the dice rolls and sides in aspects small so that not too many
 -- distinct items are generated (for display in item lore and for narrative
@@ -1750,7 +1750,7 @@ needle = ItemKind
   , ifreq    = [ ("needle", 1), ("common item", 1)
                    -- marked as common to ensure can be polymorphed
                , ("unreported inventory", 1) ]  -- too weak to spam
-  , iflavour = zipPlain [BrBlue]
+  , iflavour = zipPlain [Blue]
   , icount   = 1 + 8 `d` 3
   , irarity  = [(1, 1)]
   , iverbHit = "prick"
@@ -1758,9 +1758,27 @@ needle = ItemKind
   , idamage  = 1 `d` 1
   , iaspects = [ AddSkill SkHurtMelee $ -10 * 5
                , SetFlag Fragile  -- breaks easily despite being piercing
-               , ToThrow $ ThrowMod 70 100 3 ]  -- piercing
+               , ToThrow $ ThrowMod 70 100 3 ]  -- piercing; good shape
   , ieffects = []
-  , idesc    = "A long hypodermic needle ending in a dried out micro-syringe. It's too thin to cause great harm, but it passes through flesh easily."
+  , idesc    = "A long sturdy hypodermic needle ending in a dried out micro-syringe that is easy to break off. It's too thin to cause great harm, but it passes through flesh easily."
+  , ikit     = []
+  }
+needleSleep = ItemKind
+  { isymbol  = symbolProjectile
+  , iname    = "tranquillizer dart"
+  , ifreq    = [ ("tranquillizer dart", 1), ("common item", 1) ]
+                   -- marked as common to ensure can be polymorphed
+  , iflavour = zipPlain [BrBlue]
+  , icount   = 1 `dL` 3
+  , irarity  = [(1, 1)]
+  , iverbHit = "prick"
+  , iweight  = 10
+  , idamage  = 1 `d` 1
+  , iaspects = [ AddSkill SkHurtMelee $ -10 * 5
+               , SetFlag Fragile
+               , toVelocity 70 ]  -- syringe blocks piercing; slender fins
+  , ieffects = [PutToSleep]
+  , idesc    = "A long hypodermic needle ending in a micro-syringe with residues of the sleeping agent."
   , ikit     = []
   }
 constructionHooter = necklaceTemplate

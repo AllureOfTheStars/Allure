@@ -689,7 +689,7 @@ activeFence = ItemKind
   , ikit     = [ ("vision 6", COrgan)
                , ("needle", CInv), ("can of sticky foam", CInv) ]
                    -- can of sticky foam is exploitable, but it spawns
-                   -- reasonably often only on one level and not for 
+                   -- reasonably often only on one level and not for
                    -- a long period
   }
 steamFaucet = ItemKind
@@ -810,11 +810,11 @@ huntingDrone = ItemKind
                , AddSkill SkMelee (-1)
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "Originally designed for hunting down and putting to sleep stray animals. The sleeping agent has long since dried up."
+  , idesc    = "Originally designed for hunting down and putting to sleep stray animals. The sleeping agent must have long since dried up."
   , ikit     = [ ("eye 8", COrgan), ("nostril", COrgan), ("ear 8", COrgan)
                    -- week projectiles, so strong sight OK
                , ("robot brain", COrgan)
-               , ("needle", CInv) ]
+               , ("needle", CInv), ("tranquillizer dart", CInv) ]
   }
 homeRobot = ItemKind
   { isymbol  = 'r'
