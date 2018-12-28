@@ -912,14 +912,14 @@ scroll11 = scrollTemplate
   }
 scroll12 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
-  , irarity  = [(10, 20)]
+  , irarity  = [(10, 15)]
   , iaspects = ELabel "of molecular duplication"
                : iaspects scrollTemplate
   , ieffects = [DupItem]
   }
 scroll13 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
-  , irarity  = [(10, 20)]
+  , irarity  = [(10, 15)]
   , iaspects = ELabel "of surface reconfiguration"
                : iaspects scrollTemplate
   , ieffects = [RerollItem]
