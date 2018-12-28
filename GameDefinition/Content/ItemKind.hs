@@ -889,10 +889,10 @@ scroll8 = scrollTemplate
   { ifreq    = [("curious item", 100), ("any scroll", 100)]
   , icount   = 1
   , irarity  = [(10, 12)]
-  , iaspects = [SetFlag Unique, ELabel "of Rescue Proclamation"]
+  , iaspects = [SetFlag Unique, ELabel "of Skeleton Key"]
                ++ iaspects scrollTemplate
   , ieffects = [Summon "hero" 1]
-  , idesc    = "This lock chip opens a nearby closet imprisoning one of our lost crew members."
+  , idesc    = "This is a security lock chip that opens all doors in the area, including the hatch to a nearby closet, bulging from the blows of one of our lost crew members."
   }
 scroll9 = scrollTemplate
   { ifreq    = [("common item", 100), ("any scroll", 100)]
@@ -958,7 +958,7 @@ sharpeningTool = ItemKind
   , iverbHit = "smack"
   , iweight  = 400
   , idamage  = 0
-  , iaspects = [ AddSkill SkHurtMelee $ (1 `dL` 5) * 5
+  , iaspects = [ AddSkill SkHurtMelee $ (1 `dL` 7) * 5
                , SetFlag Equipable, EqpSlot EqpSlotHurtMelee ]
   , ieffects = []
   , idesc    = "Originally used for realigning the chipped or buckled edges of kitchen knives in the local bars. Now it saves lives by letting you fix your weapons between or even during fights, without the need to set up camp, fish out tools and assemble a proper sharpening workshop."
@@ -997,8 +997,8 @@ motionScanner = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [ AddSkill SkNocto 1
-               , AddSkill SkArmorMelee (-10 + 1 `dL` 5)
-               , AddSkill SkArmorRanged (-10 + 1 `dL` 5)
+               , AddSkill SkArmorMelee (-10 + 1 `dL` 8)
+               , AddSkill SkArmorRanged (-10 + 1 `dL` 8)
                , SetFlag Equipable, EqpSlot EqpSlotMiscBonus ]
   , ieffects = []
   , idesc    = "Portable underwater echolocator overdriven to scan dark corridors at the cost of emitting loud pings."
@@ -1020,7 +1020,7 @@ gorget = necklaceTemplate
   , iflavour = zipFancy [BrCyan]  -- looks exactly the same as one of necklaces,
                                   -- but it's OK, it's an artifact
   , iaspects = [ SetFlag Unique
-               , Timeout $ (1 `d` 2) * 2
+               , Timeout $ (5 - 1 `dL` 4)
                , AddSkill SkArmorMelee 3, AddSkill SkArmorRanged 2
                , SetFlag Durable ]
                ++ iaspects_necklaceTemplate
@@ -1593,7 +1593,7 @@ swordImpress = sword
   }
 swordNullify = sword
   { isymbol  = symbolEdged
-  , iname    = "Roasting rapier"
+  , iname    = "Roasting Rapier"
   , ifreq    = [("treasure", 20)]
   , iverbHit = "pierce"
   , irarity  = [(5, 1), (8, 6)]
