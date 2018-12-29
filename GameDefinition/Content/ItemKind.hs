@@ -1532,9 +1532,10 @@ hammer3 = hammerTemplate
   , iverbHit = "puncture"
   , iweight  = 2400  -- weight gives it away
   , idamage  = 12 `d` 1
-  , iaspects = [Timeout 7, EqpSlot EqpSlotWeaponBig]
+  , iaspects = [ Timeout 12  -- balance, or @DupItem@ would break the game
+               , EqpSlot EqpSlotWeaponBig]
                ++ delete (HideAs "hammer unknown") (iaspects hammerTemplate)
-  , idesc    = "This hammer sports a long metal handle that increases the momentum of the sharpened head's swing, at the cost of longer recovery."
+  , idesc    = "This hammer sports a long metal handle that increases the momentum of the sharpened head's swing, at the cost of long recovery."
   }
 hammerParalyze = hammerTemplate
   { iname    = "Concussion Hammer"
@@ -1615,10 +1616,10 @@ halberd = ItemKind
   , iverbHit = "impale"
   , iweight  = 3000
   , idamage  = 12 `d` 1
-  , iaspects = [ Timeout 12
-               , AddSkill SkHurtMelee (-20)
+  , iaspects = [ Timeout 10
+               , AddSkill SkHurtMelee $ (-6 + 1 `dL` 4) * 5
                    -- useless against armor at game start
-               , AddSkill SkArmorMelee $ (1 + 1 `dL` 4) * 5
+               , AddSkill SkArmorMelee 20
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 20 ]  -- not balanced
@@ -1631,6 +1632,11 @@ halberd2 = halberd
   , ifreq    = [("common item", 3 * 3), ("starting weapon", 1)]
   , iverbHit = "carve"
   , iweight  = 4000
+  , iaspects = [AddSkill SkHurtMelee $ (-6 + 1 `dL` 4) * 10]
+                 -- balance, or @DupItem@ would break the game;
+                 -- together with @RerollItem@, it's allowed to, though
+               ++ (iaspects halberd
+                   \\ [AddSkill SkHurtMelee $ (-6 + 1 `dL` 4) * 5])
   , idamage  = 18 `d` 1
   , idesc    = "A long-hafted axe: once used for maintenance, now turned to a bloodier purpose."
   }
