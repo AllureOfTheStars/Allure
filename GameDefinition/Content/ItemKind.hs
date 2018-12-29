@@ -1542,11 +1542,10 @@ hammerParalyze = hammerTemplate
   , ifreq    = [("treasure", 20)]
   , irarity  = [(5, 1), (8, 6)]
   , iaspects = [ SetFlag Unique
-               , Timeout 7
                , EqpSlot EqpSlotWeaponBig ]
                ++ iaspects hammerTemplate
   , ieffects = [Paralyze 10]
-  , idesc    = "This exquisite demolition hammer with a titanium head and exceptionally long handle leaves no wall and no body standing."
+  , idesc    = "This exquisite demolition hammer with a titanium head and exceptionally long synthetic handle leaves no wall and no body standing."
   }
 hammerSpark = hammerTemplate
   { iname    = "Grand Smithhammer"
