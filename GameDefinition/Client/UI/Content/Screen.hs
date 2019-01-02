@@ -63,7 +63,7 @@ standardLayoutAndFeatures = ScreenContent
             _ -> error "not enough paragraphs in intro screen text"
       lift intro)
   , rmoveKeysScreen = $(do
-      let path = "GameDefinition/MoveKey.txt"
+      let path = "GameDefinition/MoveKeys.txt"
       qAddDependentFile path
       x <- qRunIO $ do
         handle <- openFile path ReadMode
