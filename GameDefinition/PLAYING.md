@@ -39,9 +39,9 @@ The following blurb is a copy of the game intro screen.
 Once the few basic command keys and on-screen symbols are learned,
 mastery and enjoyment of the game is the matter of tactical skill
 and literary imagination. To be honest, a lot of imagination is required,
-because the game's plot and characters are currently very lightly sketched.
+because the game's plot and characters are yet very lightly sketched.
 However there are already hours and days of replayable fun to be had
-and gameplay mastery to build, measure with high scores and pit against
+and gameplay mastery to build, confirm via high scores and pit against
 challenges. Feedback and contributions of all kinds are welcome.
 
 If the game window is too large for your screen or you experience
@@ -63,10 +63,10 @@ characters, the same as items lying on the ground, though blocky
 solid symbol are more likely to be non-passable terrain than items.
 In case of doubt, one of the aiming commands (keypad `/`, with default
 keybinding) cycles through all visible and remembered items on the level
-and another (keypad `*`, with default keybinding) though all foes.
+and another (keypad `*`, with default keybinding) through all foes.
 The basic terrain kinds are as follows.
 
-    game map terrain type                  on-screen symbol
+    terrain type                           on-screen symbol
     wall                                   #
     tree or rock or man-made column        0
     rubble                                 &
@@ -105,51 +105,65 @@ Heroes
 The heroes are displayed on the map with bright white color (red if they are
 about to be lost) and symbols `@` and `1` through `9` (never `0`).
 The currently chosen party leader is red-highlighted on the map
-and his attributes are displayed at the bottom-most status line,
-which in its most complex form looks as follows.
+and his attributes are displayed at the bottom-most status line which,
+in its most complex form, looks as follows.
 
-    *@12        4d1+5% Calm: 20/60 HP: 33/50 Target: basilisk  [**__]
+    *@12   2m/s Calm: 20/60 HP: 33/50 Leader: Haskell Alvin   6d1+5% 4d1
 
 The line starts with the list of party members, with the current leader
-highlighted. Most commands involve only the leader, including movement
-with keyboard's keypad or `LMB` (left mouse button). If more heroes
-are selected, e.g., by clicking on the list with `RMB` (right mouse button),
-they run together whenever `:` or `RMB` over map area is pressed.
+highlighted in red. Most commands involve only the leader, including
+movement with keyboard's keypad or `LMB` (left mouse button). If more
+heroes are selected (highlighted in blue), they run together
+whenever `:` or `RMB` (right mouse button) over map area is pressed.
 
-Next on the status line is the damage of the best melee weapon the leader
-can use at this moment, then his current and maximum Calm (morale, composure,
-focus, attentiveness), then his current and maximum HP (hit points, health).
-At the end, the personal target of the leader is described, in this case
-a basilisk monster, with hit points drawn as a bar. Additionally,
-the colon after "Calm" turning into a dot signifies that the leader
-is in a position without ambient illumination and a brace sign instead
-of colon after "HP" means the leader is braced for combat (see section
-[Basic Commands](#basic-commands)).
+Next on the bottom-most status line is the leader's current and maximum
+Calm (morale, composure, focus, attentiveness), then his current
+and maximum HP (hit points, health). The colon after "Calm" turning
+into a dot signifies that the leader is in a position without ambient
+illumination, making a stealthy conduct easier. A brace sign instead
+of a colon after "HP" means the leader is braced for combat
+(see section [Basic Commands](#basic-commands)).
 
-Instead of a monster, the target area may describe a position on the map,
-a recently spotted item on the floor or an item in inventory selected
-for further action or, if none are available, just display the current
-leader name. Weapon damage and other item properties are displayed using
-the dice notation `xdy`, which means `x` rolls of `y`-sided dice.
-A variant denoted `xdLy` is additionally scaled by the level depth
+In the second half of the bottom-most status line, the leader's name
+is shown. Then come damage dice of the leader's melee weapons and leader's
+appendages, ordered by their power. The dice of the first recharged weapon,
+the one that would be used in this moment, is adorned with percentage
+damage bonus collected from the whole equipment of the leader.
+If the dice are displayed with upper-case `D` instead of lower-case `d`,
+the weapon has additional effects apart of the usual kinetic damage.
+The nature of the effects can be appraised via the `E`quipment screen.
+
+Weapon damage and other item properties are displayed using
+the dice notation `xdy`, which denotes `x` rolls of `y`-sided dice.
+A variant written `xdLy` is additionally scaled by the level depth
 in proportion to the maximal level depth (at the first level it's
 always one, then it grows up to full rolled value at the last level).
 Section [Monsters](#monsters) below describes combat resolution in detail,
-including the percentage damage bonus seen in the example.
+including the role of the percentage damage bonus.
 
-The second, upper status line describes the current level in relation
+The second, the upper status line describes the current level in relation
 to the party.
 
-    5  Lofty hall   [33% seen] X-hair: exact spot (71,12)  p15 l10
+    5  Lofty hall    [33% seen] X-hair: dire basilisk    [**__]
 
 First comes the depth of the current level and its name.
 Then the percentage of its explorable tiles already seen by the heroes.
 The `X-hair` (aiming crosshair) is the common focus of the whole party,
-marked on the map and manipulated with mouse or movement keys in aiming mode.
-In this example, the crosshair points at an exact position on the map
-and at the end of the status line comes the length of the shortest
-path from the leader position to the spot and the straight-line distance
-between the two points.
+marked on the map with a yellow box and manipulated with mouse
+or movement keys in aiming mode. In this example, the crosshair points
+at a dire basilisk monster, with its hit points drawn as a bar.
+
+Instead of a monster, the `X-hair` area may describe a position on the map,
+a recently spotted item on the floor or an item in inventory selected
+for further action or, if none are available, a summary of the team status.
+For example, this form
+
+    5  Lofty hall    [33% seen] X-hair: exact spot (71,12)    p15 l10
+
+indicates that the party is aiming at an exact spot on the map.
+At the end of the status line comes the length of the shortest
+path from the leader's position to the spot and the straight-line
+distance between the two points, one that a flung projectile would travel.
 
 
 Basic Commands
@@ -158,7 +172,7 @@ Basic Commands
 This section is a copy of the few basic screens of in-game help. The help
 pages are automatically generated based on a game's keybinding content and
 on overrides in the player's config file. The remaining in-game help screens,
-not shown here, list all game commands grouped by categories, in detail.
+not shown here, list all game commands grouped by categories in detail.
 A text snapshot of the complete in-game help is in
 [InGameHelp.txt](InGameHelp.txt).
 
@@ -174,25 +188,26 @@ Go-to with LMB (left mouse button). Run collectively with RMB.
                1 2 3          j k l          b j n
 
 In aiming mode, the same keys (and mouse) move the x-hair (aiming crosshair).
-Press 'KP_5' ('5' on keypad) to wait, bracing for impact, which reduces any
-damage taken and prevents displacement by foes. Press 'C-KP_5' (the same key
-with Control) to wait 0.1 of a turn, without bracing and 'S-KP_5' (with Shift)
+Press `KP_5` (`5` on keypad) to wait, bracing for impact, which reduces any
+damage taken and prevents displacement by foes. Press `C-KP_5` (the same key
+with Control) to wait 0.1 of a turn, without bracing and `S-KP_5` (with Shift)
 to yell/yawn, taunting and waking up enemies/yourself. You displace enemies
 by running into them with Shift/Control or RMB. Search, open, descend and
-attack by bumping into walls, doors, stairs and enemies. The best attack weapon
+attack by bumping into walls, doors, stairs and enemies. The best melee weapon
 is automatically chosen from your equipment and from among your body parts.
 
-The following commands, joined with the basic set above, let you accomplish
-anything in the game, though not necessarily with the fewest keystrokes.
-You can also play the game exclusively with a mouse, or both mouse and
-keyboard. See the ending help screens for mouse commands. Lastly, you can
-select a command with arrows or mouse directly from the help screen
-or the dashboard and execute it on the spot.
+The following commands, joined with the basic set above,
+let you accomplish anything in the game, though
+not necessarily with the fewest keystrokes. You can also
+play the game exclusively with a mouse, or both mouse
+and keyboard. (See the ending help screens for mouse commands.)
+Lastly, you can select a command with arrows or mouse directly
+from the help screen or the dashboard and execute it on the spot.
 
     keys         command
     P or I       manage inventory pack of the leader
     g or ,       grab item(s)
-    ESC          cancel aiming/open main menu
+    ESC          finish aiming/open main menu
     RET or INS   accept target/open dashboard
     SPACE        clear messages/display history
     S-TAB        cycle among all party members
@@ -201,11 +216,13 @@ or the dashboard and execute it on the spot.
     c            close door
     +            swerve the aiming line
 
-Screen area and UI mode (exploration/aiming) determine mouse click effects.
-We give an overview of effects of each button over the game map area.
-The list includes not only left and right buttons, but also the optional
-middle mouse button (MMB) and the mouse wheel, which is also used over menus,
-to page-scroll them. (For mice without RMB, one can use Control key with LMB.)
+Screen area and UI mode (exploration/aiming) determine
+mouse click effects. We give an overview
+of effects of each button over the game map area.
+The list includes not only left and right buttons, but also
+the optional middle mouse button (MMB) and the mouse wheel,
+which is also used over menus, to page-scroll them.
+(For mice without RMB, one can use Control key with LMB.)
 
     keys         command
     LMB          set x-hair to enemy/go to pointer for 25 steps
@@ -229,12 +246,12 @@ The latter is essential in the rare cases when your henchmen
 (via innate skills or rare equipment). Also, if your henchman is adjacent
 to more than one enemy, setting his target makes him melee a particular foe.
 
-You can enter the detailed aiming mode with the `*` keypad key that selects
+You can enter the aiming mode with the `*` keypad key that selects
 enemies or the `/` keypad key that cycles among items on the floor
-and marks a tile underneath an item. You can move x-hair with direction keys
-and assign a personal target to the leader with `RET` key (Return, Enter).
-The details of the shared x-hair position and of the personal target
-are described in the status lines at the bottom of the screen,
+and marks a tile underneath an item. You can move x-hair
+with direction keys and assign a personal target to the leader
+with a `RET` key (Return, Enter). The details of the shared x-hair mark
+are displayed in a status line close to the bottom of the screen,
 as explained in section [Heroes](#heroes) above.
 
 Commands for saving and exiting the current game, starting a new game,
@@ -245,7 +262,7 @@ difficulty below 5 multiplies hitpoints of player characters, difficulty
 over 5 multiplies hitpoints of their enemies. Of the convenience settings,
 the `suspect terrain` choice is particularly interesting, because it
 determines not only screen display of the level map, but also whether
-suspect tiles are considered for auto-explore or for the `C-?` command that
+suspect tiles are considered for auto-explore and for the `C-?` command that
 marks the nearest unexplored position.
 
 The "lone wolf" challenge mode reduces player's starting actors to exactly
@@ -275,9 +292,10 @@ to defend a key location until the first wave of attackers is broken.
 The size of the crawl scenario calls for strategic thinking, including
 resource management, area denial and unavoidable temporary retreats
 to other levels. Compared to that, the smaller scenarios, where the arena
-is a single floor only, provide a more tactical training and offer variety
-and entertainment of chasing a high-score between the deaths^H^H^H^H^H^H
-the brave attempts at the long crawl scenario. Some gameplay elements,
+is a single floor only, provide a mostly tactical training
+and additional entertainment by trying to beat a high-score.
+They offer variety and a breather between the deaths^H^H^H^H^H^H the brave
+attempts at the long crawl scenario. Some gameplay elements,
 however, like totally symmetric skirmishes, a race to the exit or heavy
 reliance on opportunity fire, feature only in the small scenarios.
 
@@ -293,20 +311,20 @@ and all move at once, sometimes brutally colliding by accident.
 
 Monsters are depicted on the map with letters. Upper case letters
 are unique monsters, often guardians of special floors, and lower case
-letters are the rest. If there are humans from outside our team,
-they are marked with `@` and `1` through `9`, in other colours than white.
+letters are the rabble. If there are humans not from our team,
+they are marked with `@` and `1` through `9` in other colours than white.
 
-When a hero bumps into a monster or a monster attacks the hero,
-melee combat occurs. Heroes and monsters running into one another
-(with the `Shift` or `Control` key) do not inflict damage, but change places.
-This gives the opponent a free blow, but can improve the tactical situation
-or aid escape. In some circumstances actors are immune to the displacing,
+When a hero walks and bumps into a monster or a monster attacks
+the hero, melee combat occurs. Hero *running* into and displacing
+a monster (with the `Shift` or `Control` key), or the other way around,
+does not inflict damage, but exchanges places. This gives the opponent
+a free blow, but can improve the tactical situation or aid escape.
+In some circumstances actors are immune to the displacing,
 e.g., when both parties form a continuous front-line.
 
 In melee combat, the best recharged equipped weapon (or the best fighting
 organ that is not on cooldown) of each opponent is taken into account
 for determining the damage and any extra effects of the blow.
-
 To determine the damage dealt, the outcome of the weapon's damage dice roll
 is multiplied by a percentage bonus. The bonus is calculated by taking
 the damage bonus (summed from the equipped items of the attacker,
@@ -317,7 +335,7 @@ and the damage is always lower than twice the dice roll.
 The current leader's melee bonus, armor modifier and other detailed
 skills can be viewed via the `#` command.
 
-In ranged combat, the missile is assumed to be attacking the defender
+In ranged combat, the projectile is assumed to be attacking the defender
 in melee, using itself as the weapon, with the usual dice and damage bonus.
 This time, the ranged armor skill of the defender is taken into account
 and, additionally, the speed of the missile (based on shape and weight)
@@ -344,8 +362,8 @@ On Winning and Dying
 --------------------
 
 You win a scenario if you escape the location alive (which may prove
-difficult, because your foes gradually build up the ambush squads
-blocking your escape routes) or, in scenarios with no exit locations,
+difficult, because your foes tend to gradually build up the ambush squad
+blocking your escape route) or, in scenarios with no exit locations,
 if you eliminate all opposition. In the former case, your score
 is based predominantly on the gold and precious gems you've plundered.
 In the latter case, your score is most influenced by the number
@@ -355,7 +373,7 @@ of heroes lost, are awarded only if you win. The score is heavily
 modified by the chosen game difficulty, but not by any other challenges.
 
 When all your heroes fall, you are going to invariably see a new foolhardy
-party of adventurers clamoring to be led into the unknown. They start
+party of adventurers clamoring to be led into the unknown perils. They start
 their conquest from a new entrance, with no experience and no equipment,
-and new, undaunted enemies bar their way. Lead the new hopeful explorers
+and new undaunted enemies bar their way. Lead the new hopeful explorers
 to fame, wealth and glory!

@@ -6,14 +6,14 @@
              (right mouse button).
 
 7 8 9        In aiming mode, the same keys (and mouse) move the x-hair (aiming
- \|/         crosshair). Press 'KP_5' (keypad '5') to wait, bracing for impact,
+ \|/         crosshair). Press `KP_5` (keypad `5`) to wait, bracing for impact,
 u-i-o        which reduces any damage taken and prevents displacement by foes.
- /|\         Press 'C-KP_5' (the same key with Control) to wait 0.1 of a turn,
-j k l        without bracing and 'S-KP_5' (with Shift) to yell/yawn, taunting
+ /|\         Press `C-KP_5` (the same key with Control) to wait 0.1 of a turn,
+j k l        without bracing and `S-KP_5` (with Shift) to yell/yawn, taunting
              and waking up enemies or yourself.
 
 y k u        You displace enemies by running into them with Shift/Control
  \|/         or RMB. Search, open, descend and attack by bumping into
 h-.-l        walls, doors, stairs and enemies. The best item to attack with
- /|\         is automatically chosen from among weapons in your personal
-b j n        equipment and your body parts.
+ /|\         is automatically chosen from among melee weapons in your
+b j n        personal equipment and your body parts.
