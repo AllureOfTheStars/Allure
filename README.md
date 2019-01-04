@@ -72,9 +72,9 @@ Screen font can be changed by editing the config file in the user
 data folder. For a small game window, the highly optimized
 `16x16x.fnt` and `8x8xb.fnt` bitmap fonts are the best,
 but for larger window sizes or if you require international characters
-(e.g. to give custom names to player characters), a modern scalable font
+(e.g. to give custom names to player characters), a (somewhat) scalable font
 supplied with the game is the only option. The game window automatically
-scales according to the specified font size.
+scales according to the font size.
 
 If you don't have a numeric keypad, you can use mouse for movement
 or you can enable the compact laptop keys (uk8o79jl) or the Vi keys
