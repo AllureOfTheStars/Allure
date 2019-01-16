@@ -247,6 +247,7 @@ build-binary-common:
 	mkdir -p AllureOfTheStars/GameDefinition/fonts
 	cabal copy --destdir=AllureOfTheStarsInstall
 	cp GameDefinition/config.ui.default AllureOfTheStars/GameDefinition
+	cp GameDefinition/fonts/16x16xw.bdf AllureOfTheStars/GameDefinition/fonts
 	cp GameDefinition/fonts/16x16x.fnt AllureOfTheStars/GameDefinition/fonts
 	cp GameDefinition/fonts/8x8xb.fnt AllureOfTheStars/GameDefinition/fonts
 	cp GameDefinition/fonts/8x8x.fnt AllureOfTheStars/GameDefinition/fonts
