@@ -68,13 +68,15 @@ user data folder, which is `~/.Allure/` on Linux,
 or something else altogether) on Windows, and in RMB menu, under
 `Inspect/Application/Local Storage` when run inside the Chrome browser.
 
-Screen font can be changed by editing the config file in the user
-data folder. For a small game window, the highly optimized
-`16x16x.fnt` and `8x8xb.fnt` bitmap fonts are the best,
-but for larger window sizes or if you require international characters
-(e.g. to give custom names to player characters), a (somewhat) scalable font
-supplied with the game is the only option. The game window automatically
-scales according to the font size.
+Screen font and consequently window size can be changed by editing
+the config file in the user data folder. The default bitmap font
+`16x16xw.bdf` covers most national characters in the Latin alphabet
+(e.g. to give custom names to player characters) and results
+in a game window of exactly 720p (standard HD) dimensions. The `8x8xb.fnt`
+bitmap font results in a tiny window and covers latin-1 characters only.
+The scalable `16x16xw.woff` font results in window sizes dependent
+on the `fontSize` parameter in the config file. With `fontSize = 16`
+it should look almost the same as the pixel-perfect `16x16xw.bdf`.
 
 If you don't have a numeric keypad, you can use mouse for movement
 or you can enable the compact laptop keys (uk8o79jl) or the Vi keys
