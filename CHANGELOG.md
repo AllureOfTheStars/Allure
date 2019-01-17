@@ -1,4 +1,4 @@
-## [v0.9.0.0, aka 'Double of everything'](https://github.com/AllureOfTheStars/Allure/compare/v0.8.3.0...v0.9.0.0)
+## [v0.9.1.0, aka 'Double of everything'](https://github.com/AllureOfTheStars/Allure/compare/v0.8.3.0...v0.9.0.0)
 
 
 
