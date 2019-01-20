@@ -477,7 +477,7 @@ shootout = rogue  -- a scenario with strong missiles;
   , cwallTile     = "openableWall"
   , cstairFreq    = []
   , cstairAllowed = []
-  , cdesc         = "Once so carefully curated, the planting beds are now overgrown and chocked with weeds."  -- when we know what fits the plot, suggest it here; e.g., there are better way to earn money, shortage of manpower, dangerous area of the city, mismanagement by the city council
+  , cdesc         = "Once so carefully curated, the planting beds are now overgrown and choked with weeds."  -- when we know what fits the plot, suggest it here; e.g., there are better way to earn money, shortage of manpower, dangerous area of the city, mismanagement by the city council
   }
 hunt = rogue  -- a scenario with strong missiles for ranged and shade for melee
   { csymbol       = 'H'
