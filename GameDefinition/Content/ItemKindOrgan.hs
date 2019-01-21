@@ -162,6 +162,7 @@ thorn = fist
   , iverbHit = "puncture"
   , idamage  = 2 `d` 1
   , iaspects = [SetFlag Meleeable]  -- not Durable
+  , ieffects = [VerbMsg "be not so thorny any more"]
   , idesc    = "Sharp yet brittle."
   }
 boilingFissure = fist
@@ -172,7 +173,8 @@ boilingFissure = fist
   , idamage  = 1 `d` 1
   , iaspects = [ AddSkill SkHurtMelee 20  -- decreasing as count decreases
                , SetFlag Meleeable ]  -- not Durable
-  , ieffects = [DropItem 1 1 COrgan "condition"]  -- useful; limited
+  , ieffects = [ DropItem 1 1 COrgan "condition"  -- useful; limited
+               , VerbMsg "widen the crack, releasing pressure" ]
   , idesc    = ""
   }
 arsenicFissure = boilingFissure
@@ -180,8 +182,9 @@ arsenicFissure = boilingFissure
   , ifreq    = [("biogas fissure", 100)]
   , icount   = 3 + 1 `d` 3
   , idamage  = 2 `d` 1
-  , ieffects = [toOrganBad "parsimonious" (5 + 1 `d` 3)]
+  , ieffects = [ toOrganBad "parsimonious" (5 + 1 `d` 3)
                -- weaken/poison, impacting intellectual abilities first
+               , VerbMsg "become clogged with organic residue" ]
   , idesc    = ""
   }
 sulfurFissure = boilingFissure
@@ -189,7 +192,8 @@ sulfurFissure = boilingFissure
   , ifreq    = [("medbot fissure", 100)]
   , icount   = 2 + 1 `d` 2
   , idamage  = 0  -- heal not via (negative) idamage, for armour would block it
-  , ieffects = [RefillHP 5]
+  , ieffects = [ RefillHP 5
+               , VerbMsg "run out of nano medbot liquid" ]
   , idesc    = ""
   }
 beeSting = fist
@@ -201,6 +205,7 @@ beeSting = fist
   , iaspects = [ AddSkill SkArmorMelee 200, AddSkill SkArmorRanged 45
                , SetFlag Meleeable ]  -- not Durable
   , ieffects = [Paralyze 6, RefillHP 4]
+                 -- no special message when runs out, because it's 1 copy
   , idesc    = "Painful, but beneficial."
   }
 sting = fist
@@ -519,14 +524,17 @@ smallBeak = fist
   , idesc    = "Cute, but painful."
   }
 razor = fist
-  { iname    = "razor"
+  { iname    = "razor edge"
   , ifreq    = [("razor", 100)]
   , icount   = 2 + 1 `d` 5
   , iverbHit = "slice"
   , idamage  = 2 `d` 1
   , iaspects = [ Timeout (3 + 1 `d` 2)
                , SetFlag Meleeable ]  -- not Durable
-  , ieffects = [toOrganBad "weakened" (2 + 1 `dL` 3)]
+  , ieffects = [ toOrganBad "weakened" (2 + 1 `dL` 3)
+               , VerbMsg "lose its sharpness" ]
+                 -- if razor is an organ, the actors is "it";
+                 -- we interpret the charges as sharpness of a single razor
   , idesc    = ""
   }
 liveWire = fist
