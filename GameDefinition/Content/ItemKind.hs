@@ -713,7 +713,7 @@ concussionBomb = fragmentationBomb
       -- that's the most potent explosive (a detonating one) to be found
       -- and only in small quantities, due to depressurization hazard
   , iflavour = zipPlain [Magenta]
-  , iverbHit = "flap"
+  , iverbHit = "bonk"
   , iweight  = 400
   , idamage  = 0
   , iaspects = [ SetFlag Lobable, SetFlag Fragile
