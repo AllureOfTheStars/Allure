@@ -587,6 +587,7 @@ floorBrown = floorRed
 floorArenaShade = floorActor
   { tname    = "shaded ground"
   , tfreq    = [("shaded ground", 1), ("treeShadeOver_s_Lit", 2)]
+  , tcolor   = BrYellow  -- match others, even though no lit counterpart
   , tcolor2  = BrBlack
   , tfeature = Dark : NoItem : tfeature floorActor
   }
@@ -879,6 +880,9 @@ makeDark k = let darkText :: GroupName TileKind -> GroupName TileKind
                   , tfeature = Dark : mapMaybe darkFeat (tfeature k)
                   }
 
+-- The yellow colour represents a dark tile lit by artificial light source,
+-- or seen (felt, if very close) via noctovision. It is used to distinguish
+-- ambiently lit tiles and dark tiles lit by dynamic light.
 makeDarkColor :: TileKind -> TileKind
 makeDarkColor k = (makeDark k) { tcolor  = if tsymbol k == floorSymbol
                                               && tcolor k == BrWhite
