@@ -379,11 +379,11 @@ rosterShootout = Roster
 rosterHunt = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
                                 , fhiCondPoly = hiHeroMedium }
-                   , [(7, 10, "soldier hero")] )
+                   , [(7, 7, "soldier hero")] )
                  , ( playerAntiHero { fname = "Red Collar Bro"
                                     , fcanEscape = False
                                     , fhiCondPoly = hiHeroMedium }
-                   , [(7, 1, "scout hero"), (7, 5, "ambusher hero")] )
+                   , [(7, 1, "scout hero"), (7, 6, "ambusher hero")] )
                  , (playerHorror, []) ]
   , rosterEnemy = [ ("Spacefarer", "Red Collar Bro")
                   , ("Spacefarer", "Horror Den")
@@ -397,7 +397,7 @@ rosterEscape = Roster
                                     , fcanEscape = False  -- start on escape
                                     , fneverEmpty = False  -- loot after killing
                                     , fhiCondPoly = hiHeroMedium }
-                   , [(9, 1, "scout hero"), (9, 7, "ambusher hero")] )
+                   , [(9, 1, "scout hero"), (9, 6, "ambusher hero")] )
                  , (playerHorror, []) ]
   , rosterEnemy = [ ("Spacefarer", "Red Collar Bro")
                   , ("Spacefarer", "Horror Den")
