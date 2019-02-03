@@ -41,7 +41,7 @@ standardRules = RuleContent
       x <- qRunIO (readFile path)
       lift x)
   , rfirstDeathEnds = False
-  , rwriteSaveClips = 1000
+  , rwriteSaveClips = 1000000
   , rleadLevelClips = 50
   , rscoresFile = "Allure.scores"
   , rnearby = 20

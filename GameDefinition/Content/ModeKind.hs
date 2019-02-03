@@ -14,8 +14,8 @@ import Prelude ()
 import Game.LambdaHack.Common.Prelude
 
 import Content.ModeKindPlayer
+import Game.LambdaHack.Common.Defs
 import Game.LambdaHack.Common.Dice
-import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Content.CaveKind (CaveKind)
 import Game.LambdaHack.Content.ModeKind
 
