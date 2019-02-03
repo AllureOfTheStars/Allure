@@ -17,7 +17,7 @@ module Implementation.MonadServerImplementation
 
 import Prelude ()
 
-import Game.LambdaHack.Common.Prelude
+import Game.LambdaHack.Core.Prelude
 
 import           Control.Concurrent
 import qualified Control.Exception as Ex

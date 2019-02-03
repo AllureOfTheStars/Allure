@@ -17,7 +17,7 @@ module Implementation.MonadClientImplementation
 
 import Prelude ()
 
-import Game.LambdaHack.Common.Prelude
+import Game.LambdaHack.Core.Prelude
 
 import           Control.Concurrent
 import qualified Control.Monad.IO.Class as IO
