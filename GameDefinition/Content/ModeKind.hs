@@ -14,10 +14,10 @@ import Prelude ()
 import Game.LambdaHack.Core.Prelude
 
 import Content.ModeKindPlayer
-import Game.LambdaHack.Definition.Defs
-import Game.LambdaHack.Core.Dice
 import Game.LambdaHack.Content.CaveKind (CaveKind)
 import Game.LambdaHack.Content.ModeKind
+import Game.LambdaHack.Core.Dice
+import Game.LambdaHack.Definition.Defs
 
 content :: [ModeKind]
 content =
@@ -101,7 +101,7 @@ escape = ModeKind  -- asymmetric ranged and stealth race at night
   , mendMsg = [ (Killed, "Somebody must have tipped the gang guards off. However, us walking along a lit trail, yelling, could have been a contributing factor. Also, it's worth noting that the torches prepared for this assault are best used as thrown makeshift flares. On the other hand, equipping a lit torch makes one visible in the dark, regrettably but not quite unexpectedly. Lastly, the goal of this foray was to find the exit back to the city, marked by a yellow '>' sign, and to gather some treasure along the way, but not to bedevil every local evildoer, as much as they do deserve it.")
               , (Conquer, "It was enough to reach the escape area, namely the exit tunnel from the park marked by yellow '>' symbol. Spilling that much blood was risky and unnecessary. Having said that --- impressive indeed.")
               , (Escape, "Congratulations, you took your revenge and it's heavy in your pockets.") ]
-  , mdesc   = "Bloodied spaceship deed in hand notwithstanding, you can reach the derelict spaceliner only via a shuttle from the Central Triton Spaceport across the city. After hours of being chased in the opposite direction towards the border wall, you sneak back and make a desperate dash through the very den of the pursuing gang. Any valuables you come upon in this public park turned miscreant lair will be fair compensation for your losses, but you need to find the exit before the foes find you. Reign in your wrath and don't unnecessarily attack your tormentors. Foiling their plans by eluding them will be revenge enough."
+  , mdesc   = "Bloodied spaceship deed in hand notwithstanding, you can reach the derelict spaceliner only via a shuttle from the Central Triton Spaceport across the city. After hours of being chased in the opposite direction towards the border wall, you sneak back and make a desperate dash through the very den of the pursuing gang. Any valuables you come upon in this public park turned miscreant lair will be fair compensation for your losses, but you need to find the exit before the foes find you. Rein in your wrath and don't attack your tormentors. Foiling their plans by eluding them will be revenge enough."
   }
 
 zoo = ModeKind  -- asymmetric crowd melee at night
