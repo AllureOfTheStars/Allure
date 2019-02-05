@@ -15,9 +15,9 @@ import Game.LambdaHack.Core.Prelude
 
 import qualified Data.Text as T
 
-import Game.LambdaHack.Definition.Defs
 import Game.LambdaHack.Content.PlaceKind
 import Game.LambdaHack.Content.TileKind (TileKind)
+import Game.LambdaHack.Definition.Defs
 
 content :: [PlaceKind]
 content =
@@ -1097,9 +1097,9 @@ oval = PlaceKind
                , "#·t··"
                , "··t··"
                ]
-  , poverrideDark = [ ('t', "trailLit"), ('a', "alarmingTrailLit")
+  , poverrideDark = [ ('t', "trailLit"), ('a', "safeTrailLit")
                     , ('~', "poolOver_~_Dark") ]
-  , poverrideLit = [ ('t', "trailLit"), ('a', "alarmingTrailLit")
+  , poverrideLit = [ ('t', "trailLit"), ('a', "safeTrailLit")
                    , ('~', "poolOver_~_Lit") ]
   }
 ovalFloor = oval

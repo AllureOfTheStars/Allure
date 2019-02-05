@@ -15,8 +15,8 @@ import Game.LambdaHack.Core.Prelude
 
 import Data.Ratio
 
-import Game.LambdaHack.Core.Dice
 import Game.LambdaHack.Content.CaveKind
+import Game.LambdaHack.Core.Dice
 
 content :: [CaveKind]
 content =
@@ -531,8 +531,8 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , cplaceFreq    = [("escape", 1)]
   , cpassable     = True
   , cdefTile      = "escapeSetDark"
-  , cdarkCorTile  = "alarmingTrailLit"  -- let trails give off light
-  , clitCorTile   = "alarmingTrailLit"
+  , cdarkCorTile  = "safeTrailLit"  -- let trails give off light
+  , clitCorTile   = "safeTrailLit"
   , cwallTile     = "openableWall"
   , cescapeFreq   = [("escape outdoor down", 1)]
   , cstairFreq    = []

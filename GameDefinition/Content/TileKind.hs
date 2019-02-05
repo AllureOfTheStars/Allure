@@ -15,9 +15,9 @@ import Game.LambdaHack.Core.Prelude
 
 import qualified Data.Text as T
 
+import Game.LambdaHack.Content.TileKind
 import Game.LambdaHack.Definition.Color
 import Game.LambdaHack.Definition.Defs
-import Game.LambdaHack.Content.TileKind
 
 content :: [TileKind]
 content =
@@ -558,7 +558,7 @@ shallowWater2 = shallowWater
   }
 floorRed = floorCorridor
   { tname    = "emergency walkway"
-  , tfreq    = [ ("trailLit", 20), ("alarmingTrailLit", 70)
+  , tfreq    = [ ("trailLit", 70), ("safeTrailLit", 70)
                , ("lift terminal Lit", 6), ("lift terminal Dark", 6) ]
   , tcolor   = BrRed
   , tcolor2  = Red
@@ -566,21 +566,21 @@ floorRed = floorCorridor
   }
 floorBlue = floorRed
   { tname    = "frozen path"
-  , tfreq    = [("trailLit", 70), ("frozen path", 1)]
+  , tfreq    = [("trailLit", 100), ("frozen path", 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , tfeature = [Embed "frozen ground", Trail, Walkable, Clear]
   }
 floorGreen = floorRed
   { tname    = "greenery trail"
-  , tfreq    = [("trailLit", 100)]
+  , tfreq    = [("trailLit", 70), ("safeTrailLit", 70)]
   , tcolor   = BrGreen
   , tcolor2  = Green
   }
 floorBrown = floorRed
   { tname    = "transport route"
-  , tfreq    = [ ("transport route", 1), ("trailLit", 20)
-               , ("alarmingTrailLit", 30) ]
+  , tfreq    = [ ("trailLit", 50), ("safeTrailLit", 50)
+               , ("transport route", 1) ]
   , tcolor   = BrMagenta
   , tcolor2  = Magenta
   }
