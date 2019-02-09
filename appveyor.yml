@@ -23,8 +23,7 @@ install:
   - cd LambdaHack
   - cabal %CABOPTS% install --disable-library-profiling --disable-profiling --disable-documentation --only-dependencies
   - cabal %CABOPTS% configure --disable-library-profiling --disable-profiling -f-release
-  - appveyor-retry cabal %CABOPTS% build lib:LambdaHack
-  - cabal %CABOPTS% register --inplace
+  - appveyor-retry cabal %CABOPTS% install lib:LambdaHack
   - cd ..
 
   - pwd
@@ -82,8 +81,7 @@ install:
   - cd LambdaHack
   - cabal %CABOPTS% install --disable-library-profiling --disable-profiling --disable-documentation --only-dependencies
   - cabal %CABOPTS% configure --disable-library-profiling --disable-profiling -f-release
-  - appveyor-retry cabal %CABOPTS% build lib:LambdaHack
-  - cabal %CABOPTS% register --inplace
+  - appveyor-retry cabal %CABOPTS% install lib:LambdaHack
   - cd ..
 
   - pwd
