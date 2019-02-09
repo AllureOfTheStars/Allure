@@ -1,3 +1,4 @@
+cabal-version: 2.2
 name:           Allure
 -- The package version. See the Haskell package versioning policy (PVP)
 -- for standards guiding when and how versions should be incremented.
@@ -30,7 +31,7 @@ description:   Allure of the Stars is a near-future Sci-Fi roguelike
                based on player behaviour. Contributions are welcome.
 homepage:      http://allureofthestars.com
 bug-reports:   http://github.com/AllureOfTheStars/Allure/issues
-license:       AGPL
+license:       AGPL-3.0-or-later
 license-file:  COPYLEFT
 tested-with:   GHC==8.0.2, GHC==8.2.2, GHC==8.4.4, GHC==8.6.3
 data-files:    GameDefinition/config.ui.default,
@@ -56,55 +57,29 @@ author:        Andres Loeh, Mikolaj Konarski and others
 maintainer:    Mikolaj Konarski <mikolaj.konarski@funktory.com>
 category:      Game
 build-type:    Simple
-cabal-version: >= 1.10
 
 source-repository head
   type:               git
   location:           git://github.com/AllureOfTheStars/Allure.git
 
-executable Allure
-  hs-source-dirs:     GameDefinition
-  main-is:            Main.hs
-  other-modules:      Client.UI.Content.Input,
-                      Client.UI.Content.Screen,
-                      Content.CaveKind,
-                      Content.ItemKind,
-                      Content.ItemKindEmbed,
-                      Content.ItemKindActor,
-                      Content.ItemKindOrgan,
-                      Content.ItemKindBlast,
-                      Content.ItemKindTemporary,
-                      Content.ModeKind,
-                      Content.ModeKindPlayer,
-                      Content.PlaceKind,
-                      Content.RuleKind,
-                      Content.TileKind,
-                      Implementation.MonadClientImplementation,
-                      Implementation.MonadServerImplementation,
-                      Implementation.TieKnot,
-                      Paths_Allure
-  build-depends:      LambdaHack >= 0.9.1.0 && < 0.9.2.0,
-                      template-haskell >= 2.6,
-
-                      async      >= 2,
-                      base       >= 4.9 && < 99,
-                      containers >= 0.5.3.0,
-                      enummapset >= 0.5.2.2,
-                      filepath   >= 1.2.0.1,
-                      optparse-applicative >= 0.13,
-                      random     >= 1.1,
-                      text       >= 0.11.2.3,
-                      transformers >= 0.4
-
+common options
   default-language:   Haskell2010
   default-extensions: MonoLocalBinds, ScopedTypeVariables, OverloadedStrings
                       BangPatterns, RecordWildCards, NamedFieldPuns, MultiWayIf,
                       LambdaCase, DefaultSignatures, InstanceSigs,
                       MonadFailDesugaring, StrictData, CPP
-  other-extensions:   TemplateHaskell
+  other-extensions:   TemplateHaskell, MultiParamTypeClasses, RankNTypes,
+                      TypeFamilies, FlexibleContexts, FlexibleInstances,
+                      DeriveFunctor, FunctionalDependencies,
+                      GeneralizedNewtypeDeriving, TupleSections,
+                      DeriveFoldable, DeriveTraversable,
+                      ExistentialQuantification, GADTs, StandaloneDeriving,
+                      DataKinds, KindSignatures, DeriveGeneric
   ghc-options:        -Wall -Wcompat -Worphans -Wincomplete-uni-patterns -Wincomplete-record-updates -Wimplicit-prelude -Wmissing-home-modules -Widentities -Wredundant-constraints
   ghc-options:        -Wall-missed-specialisations
-  ghc-options:        -fno-ignore-asserts -fexpose-all-unfoldings -fspecialise-aggressively
+  ghc-options:        -fno-ignore-asserts -fexpose-all-unfoldings -fspecialise-aggressively -fsimpl-tick-factor=200
+
+common exe-options
   ghc-options:        -threaded -rtsopts
 -- Minimize median lag at the cost of occasional bigger GC lag,
 -- which fortunately sometimes fits into idle time between turns):
@@ -118,60 +93,68 @@ executable Allure
   } else {
     build-depends:    zlib >= 0.5.3.1
   }
+
+library this-game-content
+  import: options
+  hs-source-dirs:     GameDefinition
+  exposed-modules:    Content.CaveKind
+                      Content.ItemKind
+                      Content.ItemKindEmbed
+                      Content.ItemKindActor
+                      Content.ItemKindOrgan
+                      Content.ItemKindBlast
+                      Content.ItemKindTemporary
+                      Content.ModeKind
+                      Content.ModeKindPlayer
+                      Content.PlaceKind
+                      Content.RuleKind
+                      Content.TileKind
+  other-modules:      Paths_Allure
+  autogen-modules:    Paths_Allure
+  build-depends:      ,LambdaHack
+-- TODO: instead:     ,definition
+                      ,base
+                      ,filepath
+                      ,template-haskell >= 2.6
+                      ,text
+
+library this-game-src
+  import: options
+  hs-source-dirs:     GameDefinition/game-src
+  exposed-modules:    TieKnot
+  other-modules:      Client.UI.Content.Input
+                      Client.UI.Content.Screen
+                      Implementation.MonadClientImplementation
+                      Implementation.MonadServerImplementation
+  build-depends:      ,LambdaHack >= 0.9.1.0 && < 0.9.2.0
+                      ,this-game-content
+                      ,async
+                      ,base
+                      ,enummapset
+                      ,filepath
+                      ,optparse-applicative
+                      ,random
+                      ,template-haskell >= 2.6
+                      ,text
+                      ,transformers
+
+executable Allure
+  import: options, exe-options
+  main-is:            GameDefinition/Main.hs
+  build-depends:      ,LambdaHack
+                      ,this-game-src
+                      ,async
+                      ,base
+                      ,filepath
+                      ,optparse-applicative
 
 test-suite test
+  import: options, exe-options
   type:               exitcode-stdio-1.0
-  hs-source-dirs:     GameDefinition, test
-  main-is:            test.hs
-  other-modules:      Client.UI.Content.Input,
-                      Client.UI.Content.Screen,
-                      Content.CaveKind,
-                      Content.ItemKind,
-                      Content.ItemKindEmbed,
-                      Content.ItemKindActor,
-                      Content.ItemKindOrgan,
-                      Content.ItemKindBlast,
-                      Content.ItemKindTemporary,
-                      Content.ModeKind,
-                      Content.ModeKindPlayer,
-                      Content.PlaceKind,
-                      Content.RuleKind,
-                      Content.TileKind,
-                      Implementation.MonadClientImplementation,
-                      Implementation.MonadServerImplementation,
-                      Implementation.TieKnot,
-                      Paths_Allure
-  build-depends:      LambdaHack,
-                      template-haskell >= 2.6,
-
-                      async      >= 2,
-                      base       >= 4.9 && < 99,
-                      containers >= 0.5.3.0,
-                      enummapset >= 0.5.2.2,
-                      filepath   >= 1.2.0.1,
-                      optparse-applicative >= 0.13,
-                      random     >= 1.1,
-                      text       >= 0.11.2.3,
-                      transformers >= 0.4
-
-  default-language:   Haskell2010
-  default-extensions: MonoLocalBinds, ScopedTypeVariables, OverloadedStrings
-                      BangPatterns, RecordWildCards, NamedFieldPuns, MultiWayIf,
-                      LambdaCase, DefaultSignatures, InstanceSigs,
-                      MonadFailDesugaring, StrictData, CPP
-  other-extensions:   TemplateHaskell
-  ghc-options:        -Wall -Wcompat -Worphans -Wincomplete-uni-patterns -Wincomplete-record-updates -Wimplicit-prelude -Wmissing-home-modules -Widentities -Wredundant-constraints
-  ghc-options:        -fno-ignore-asserts -fexpose-all-unfoldings -fspecialise-aggressively
-  ghc-options:        -threaded -rtsopts
--- Minimize median lag at the cost of occasional bigger GC lag,
--- which fortunately sometimes fits into idle time between turns):
-  ghc-options:        -with-rtsopts=-A99m
-
-  if impl(ghcjs) {
--- This is the largest GHCJS_BUSY_YIELD value that does not cause dropped frames
--- on my machine with default --maxFps.
-    cpp-options:      -DGHCJS_BUSY_YIELD=50
-    cpp-options:      -DUSE_JSFILE
-  } else {
-    build-depends:    zlib >= 0.5.3.1
-  }
+  main-is:            test/test.hs
+  build-depends:      ,LambdaHack
+                      ,this-game-src
+                      ,async
+                      ,base
+                      ,filepath
+                      ,optparse-applicative

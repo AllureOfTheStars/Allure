@@ -6,14 +6,14 @@ Source: https://hackage.haskell.org/package/Allure
 Files: *
 Copyright: 2008-2011 Andres Loeh
            2010-2019 Mikolaj Konarski and others (see git history)
-License: AGPL-3+
+License: AGPL-3.0-or-later
 
 Files: GameDefinition/fonts/{*.fnt,*.bdf,16x16xw.woff}
 Copyright: 1997-2016 Leon Marrick
            1997-2016 Sheldon Simms III
            1997-2016 Nick McConnell
            2016-2019 Mikolaj Konarski
-License: GPL-2
+License: GPL-2.0-or-later
 
 Files: GameDefinition/fonts/Fix15Mono-Bold.woff
 Copyright: 2012-2015 The Mozilla Foundation and Telefonica S.A
@@ -22,9 +22,9 @@ License: OFL-1.1
 
 Files: debian/*
 Copyright: held by the contributors mentioned in debian/changelog
-License: AGPL-3+
+License: AGPL-3.0-or-later
 
-License: AGPL-3+
+License: AGPL-3.0-or-later
                      GNU AFFERO GENERAL PUBLIC LICENSE
                         Version 3, 19 November 2007
  .
@@ -687,7 +687,7 @@ License: AGPL-3+
  For more information on this, and how to apply and follow the GNU AGPL, see
  <http://www.gnu.org/licenses/>.
 
-License: GPL-2
+License: GPL-2.0-or-later
  This program is free software; you can redistribute it
  and/or modify it under the terms of the GNU General Public
  License, version 2, as published by the Free Software Foundation

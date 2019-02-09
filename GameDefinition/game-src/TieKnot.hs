@@ -6,7 +6,7 @@
 --
 -- | Here the knot of engine code pieces, frontend and the game-specific
 -- content definitions is tied, resulting in an executable game.
-module Implementation.TieKnot
+module TieKnot
   ( tieKnotForAsync, tieKnot
   ) where
 
