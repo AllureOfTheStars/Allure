@@ -1473,7 +1473,7 @@ shield3 = shield2
 dagger = ItemKind
   { isymbol  = symbolEdged
   , iname    = "cleaver"
-  , ifreq    = [("common item", 100), ("starting weapon", 400)]
+  , ifreq    = [("common item", 100), ("starting weapon", 200)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
   , irarity  = [(3 * 10/15, 35), (4 * 10/15, 1)]
@@ -1523,12 +1523,12 @@ hammerTemplate = ItemKind
   , ikit     = []
   }
 hammer1 = hammerTemplate
-  { ifreq    = [("common item", 100), ("starting weapon", 100)]
+  { ifreq    = [("common item", 100), ("starting weapon", 70)]
   , iaspects = [Timeout 5, EqpSlot EqpSlotWeaponBig]
                ++ iaspects hammerTemplate
   }
 hammer2 = hammerTemplate
-  { ifreq    = [("common item", 20), ("starting weapon", 10)]
+  { ifreq    = [("common item", 20), ("starting weapon", 7)]
   , iverbHit = "gouge"
   , iaspects = [Timeout 3, EqpSlot EqpSlotWeaponFast]
                ++ iaspects hammerTemplate
@@ -1574,7 +1574,7 @@ hammerSpark = hammerTemplate
 sword = ItemKind
   { isymbol  = symbolPolearm
   , iname    = "sharpened pipe"
-  , ifreq    = [("common item", 100), ("starting weapon", 20)]
+  , ifreq    = [("common item", 100), ("starting weapon", 30)]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
   , irarity  = [(4, 1), (6, 15)]
