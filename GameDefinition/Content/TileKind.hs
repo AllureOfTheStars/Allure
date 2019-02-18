@@ -244,7 +244,7 @@ rubble = TileKind
                , ("lift terminal Lit", 6), ("lift terminal Dark", 6)
                , ("emptySetLit", 4), ("exitSetLit", 8)
                , ("noiseSetLit", 50), ("powerSetDark", 150)
-               , ("zooSetDark", 100), ("ambushSetDark", 5) ]
+               , ("zooSetDark", 100), ("ambushSetDark", 3) ]
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 4  -- boss can dig through
@@ -417,7 +417,7 @@ bush = TileKind
   }
 bushBurnt = bush
   { tname    = "burnt bush"
-  , tfreq    = [ ("battleSetDark", 30), ("ambushSetDark", 5), ("zooSetDark", 50)
+  , tfreq    = [ ("battleSetDark", 30), ("ambushSetDark", 3), ("zooSetDark", 50)
                , ("bush with fire", 70) ]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
@@ -425,7 +425,7 @@ bushBurnt = bush
   }
 bushBurning = bush
   { tname    = "burning bush"
-  , tfreq    = [ ("ambushSetDark", 20), ("zooSetDark", 300)
+  , tfreq    = [ ("ambushSetDark", 10), ("zooSetDark", 300)
                , ("bush with fire", 30) ]
   , tcolor   = BrRed
   , tcolor2  = Red
@@ -463,7 +463,7 @@ smoke = TileKind
   , tfreq    = [ ("smoke Lit", 1), ("labTrailLit", 1)
                , ("stair terminal Lit", 2), ("lift terminal Lit", 6)
                , ("smokeClumpOver_f_Lit", 3), ("smokeClumpOver_f_Dark", 3)
-               , ("exitSetLit", 20), ("ambushSetDark", 30) ]
+               , ("exitSetLit", 20), ("ambushSetDark", 20) ]
   , tcolor   = Brown
   , tcolor2  = BrBlack
   , talter   = 0
@@ -472,7 +472,7 @@ smoke = TileKind
 smokeDark = smoke
   { tname    = "lingering smoke"
   , tfreq    = [ ("powerSetDark", 100)
-               , ("zooSetDark", 20), ("ambushSetDark", 60), ("battleSetDark", 5)
+               , ("zooSetDark", 20), ("ambushSetDark", 40), ("battleSetDark", 5)
                , ("stair terminal Dark", 2), ("lift terminal Dark", 6) ]
   , tfeature = Dark : tfeature smoke
   }
@@ -617,7 +617,7 @@ rubbleBurning = TileKind  -- present in "emptySetLit" for early light source
   { tsymbol  = '&'
   , tname    = "burning installation"
   , tfreq    = [ ("emptySetLit", 2), ("powerSetDark", 20)
-               , ("ambushSetDark", 30), ("zooSetDark", 30)
+               , ("ambushSetDark", 15), ("zooSetDark", 30)
                , ("stair terminal Lit", 4), ("stair terminal Dark", 4)
                , ("lift terminal Lit", 4), ("lift terminal Dark", 4) ]
   , tcolor   = BrRed
@@ -776,7 +776,7 @@ escapeSpaceshipDown = escapeDown
 emptyAirlock = escapeUp
   { tname    = "empty airlock"
   , tfreq    = [ ("airlock fence", 2), ("empty airlock fence", 7)
-               , ("emptySetLit", 2), ("ambushSetDark", 15) ]
+               , ("emptySetLit", 2), ("ambushSetDark", 7) ]
                    -- not in exitSetLit; space can't be seen
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
