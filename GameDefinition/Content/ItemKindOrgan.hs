@@ -597,8 +597,8 @@ geneticFlaw n = armoredSkin
   , ieffects = [ OnSmash $ DropItem maxBound maxBound COrgan "condition"
                    -- key for AI is it eliminates all impression conditions
                , OnSmash $ RefillHP n
-               , OnSmash $ VerbMsg "undergo infracellular decontamination" ]
-  , idesc    = ""
+               , OnSmash $ VerbMsg "undergo instant infracellular decontamination" ]  -- unlike the civilian version, this one is instant and the attunement is automatic and relatively quick (the usual double cooldown when equipping items again)
+  , idesc    = "Nobody is perfect. At least without infracellular engineering, which is heavily regulated, insanely expensive and automatically reverted without refund before critical medical interventions. One more reason to be a good citizen, work hard and not die often. But where is the fun in that?"
   }
 geneticFlaw3 = geneticFlaw 3
 geneticFlaw10 = geneticFlaw 10
