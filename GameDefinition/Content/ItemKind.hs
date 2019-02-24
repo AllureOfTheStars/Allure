@@ -1277,8 +1277,9 @@ armorLeather = ItemKind
   }
 armorLeather2 = armorLeather  -- for now, purely flavour, for better messages
   { isymbol  = symbolMiscArmor
-  , iname    = "spacesuit trousers"
+  , iname    = "pair"
   , ifreq    = [("common item", 100)]
+  , iaspects = ELabel "of spacesuit trousers" : iaspects armorLeather
   , idesc    = "Segmented trousers for open space work, with the hermetically sealed boots cut off. Surprisingly flexible and airy, yet micro-meteorite-proof."
   }
 armorMail = armorLeather
