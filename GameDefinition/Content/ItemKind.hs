@@ -960,7 +960,7 @@ sharpeningTool = ItemKind
   , iaspects = [ AddSkill SkHurtMelee $ (1 `dL` 7) * 5
                , SetFlag Equipable, EqpSlot EqpSlotHurtMelee ]
   , ieffects = []
-  , idesc    = "Originally used for realigning the chipped or buckled edges of kitchen knives in the local bars. Now it saves lives by letting you fix your weapons between or even during fights, without the need to set up camp, fish out tools and assemble a proper sharpening workshop."
+  , idesc    = "Originally used for realigning and sharpening dulled edges of kitchen knives in the local restaurants. Now it saves lives by keeping your melee weapons keen and true before each skirmish."
   , ikit     = []
   }
 seeingItem = ItemKind
