@@ -88,6 +88,22 @@ The game is fully playable with mouse only, as well as with keyboard only,
 but the most efficient combination for some players is mouse for go-to,
 inspecting, and aiming at distant positions and keyboard for everything else.
 
+If you are using a terminal frontend, e.g. the best supported vty frontend,
+numeric keypad (e.g., keypad '*' and '/') may not work correctly
+depending on versions of the libraries, terminfo and terminal emulators.
+Toggling the Num Lock key may help or make issues worse. As a workaround
+for the vty frontend, numbers are used for movement, which sadly prevents
+the number keys from selecting heroes. The commands that require pressing
+Control and Shift together won't work either, but fortunately they are
+not crucial to gameplay.
+
+Some effort has been put to help using the vty frontend with screen readers,
+but without feedback it's hard to say how accesible that setup is.
+As a side effect of screen reader support, there is no aiming line
+nor path in vty frontend. Screen readers may also work better with animations
+turned off using `--noAnim` or the corresponding config file option.
+Note that unicode and cursor support are now necessary for correct output.
+
 
 Compilation from source
 -----------------------
