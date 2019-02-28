@@ -109,6 +109,10 @@ tieKnotForAsync options@ServerOptions{ sallClear
 -- | Runs tieKnotForAsync in an async and applies the main thread workaround.
 tieKnot :: ServerOptions -> IO ()
 tieKnot serverOptions = do
+#ifdef USE_JSFILE
+  a <- async $ tieKnotForAsync serverOptions
+  wait a
+#else
   let fillWorkaround =
         -- Set up void workaround if nothing specific required.
         void $ tryPutMVar workaroundOnMainThreadMVar $ return ()
@@ -122,3 +126,4 @@ tieKnot serverOptions = do
   workaround <- takeMVar workaroundOnMainThreadMVar
   workaround
   wait a
+#endif
