@@ -42,7 +42,9 @@ and literary imagination. To be honest, a lot of imagination is required,
 because the game's plot and characters are yet very lightly sketched.
 However there are already hours and days of replayable fun to be had
 and gameplay mastery to build, confirm via high scores and pit against
-challenges. Feedback and contributions of all kinds are welcome.
+challenges. Contributions of all kinds are welcome.
+Please offer feedback to mikolaj.konarski@funktory.com or, preferably,
+at any of the public forums.
 
 If the game window is too large for your screen or you experience
 other technical issues, please consult

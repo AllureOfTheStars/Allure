@@ -27,6 +27,8 @@ and the issue tracker for short-term plans. Long term goals
 are high replayability and auto-balancing through procedural
 content generation and persistent content modification
 based on player behaviour. Contributions are welcome.
+Please offer feedback to mikolaj.konarski@funktory.com or, preferably,
+at any of the public forums.
 
 
 Game installation from binary archives
