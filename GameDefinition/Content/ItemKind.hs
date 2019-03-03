@@ -1039,7 +1039,10 @@ necklaceTemplate = ItemKind
   , idamage  = 0
   , iaspects = Timeout 1000000
                  -- fake, needed to display "charging"; the timeout itself
-                 -- won't be displayed thanks to periodic
+                 -- won't be displayed thanks to periodic; as a side-effect,
+                 -- it can't be activated until identified, which is better
+                 -- than letting the player try to activate before the real
+                 -- cooldown is over and waste turn
                : iaspects_necklaceTemplate
   , ieffects = []
   , idesc    = "Tingling, rattling chain of flat encrusted links. Eccentric millionaires are known to hide their highly personalized body augmentation packs in bulky jewelry pieces such as these."
