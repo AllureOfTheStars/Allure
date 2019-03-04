@@ -472,11 +472,11 @@ rosterSafari = Roster
   { rosterList = [ ( playerMonsterTourist
                    , [(5, 15, "monster")] )
                  , ( playerHunamConvict
-                   , [(5, 3, "civilian")] )
+                   , [(5, 2, "civilian")] )
                  , ( playerAnimalMagnificent
-                   , [(10, 20, "mobile animal")] )
+                   , [(10, 15, "mobile animal")] )
                  , ( playerAnimalExquisite  -- start on escape
-                   , [(15, 30, "mobile animal")] )
+                   , [(15, 20, "mobile animal")] )
                  , (playerHorror, []) ]  -- construction hooter; neutral
   , rosterEnemy = [ ("Alien Tourist Office", "Hunam Convict")
                   , ( "Alien Tourist Office"
