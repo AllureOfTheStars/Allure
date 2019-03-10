@@ -33,7 +33,7 @@ homepage:      http://allureofthestars.com
 bug-reports:   http://github.com/AllureOfTheStars/Allure/issues
 license:       AGPL-3.0-or-later
 license-file:  COPYLEFT
-tested-with:   GHC==8.0.2, GHC==8.2.2, GHC==8.4.4, GHC==8.6.3
+tested-with:   GHC==8.2.2, GHC==8.4.4, GHC==8.6.4
 data-files:    GameDefinition/config.ui.default,
                GameDefinition/fonts/16x16xw.woff,
                GameDefinition/fonts/16x16xw.bdf,
@@ -79,20 +79,24 @@ common options
   ghc-options:        -Wall-missed-specialisations
   ghc-options:        -fno-ignore-asserts -fexpose-all-unfoldings -fspecialise-aggressively -fsimpl-tick-factor=200
 
+  cpp-options:        -DEXPOSE_INTERNAL
+
+  ghcjs-options:      -DUSE_JSFILE
+
 common exe-options
   ghc-options:        -threaded -rtsopts
--- Minimize median lag at the cost of occasional bigger GC lag,
--- which fortunately sometimes fits into idle time between turns):
-  ghc-options:        -with-rtsopts=-A99m
+-- (Ignored by GHCJS) Minimize median lag at the cost of occasional bigger
+-- GC lag, which fortunately sometimes fits into idle time between turns):
+-- (Ignored by GHCJS) Avoid frequent GCs. Only idle-GC during a break in
+-- gameplay (5s), not between slow keystrokes.
+  ghc-options:        "-with-rtsopts=-A99m -I5"
 
-  if impl(ghcjs) {
+-- Haskell GC in GHCJS every 30s.
+  ghcjs-options:      -DGHCJS_GC_INTERVAL=30000
 -- This is the largest GHCJS_BUSY_YIELD value that does not cause dropped frames
 -- on my machine with default --maxFps.
-    cpp-options:      -DGHCJS_BUSY_YIELD=50
-    cpp-options:      -DUSE_JSFILE
-  } else {
-    build-depends:    zlib >= 0.5.3.1
-  }
+  ghcjs-options:      -DGHCJS_BUSY_YIELD=50
+  ghcjs-options:      -dedupe
 
 library this-game-content
   import: options
@@ -113,7 +117,7 @@ library this-game-content
   autogen-modules:    Paths_Allure
   build-depends:      ,LambdaHack
 -- TODO: instead:     ,definition
-                      ,base       >= 4.9 && < 99
+                      ,base       >= 4.10 && < 99
                       ,filepath
                       ,template-haskell >= 2.6
                       ,text
@@ -132,6 +136,7 @@ library this-game-src
                       ,base
                       ,enummapset
                       ,filepath
+                      ,ghc-compact
                       ,optparse-applicative
                       ,random
                       ,template-haskell >= 2.6

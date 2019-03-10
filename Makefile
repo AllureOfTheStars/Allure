@@ -24,16 +24,16 @@ configure-debug:
 	cabal configure --enable-profiling --profiling-detail=all-functions -fwith_expensive_assertions --disable-optimization
 
 configure-prof:
-	cabal configure --enable-profiling --profiling-detail=exported-functions -frelease
+	cabal configure --enable-profiling --profiling-detail=exported-functions
 
-ghcjs-configure:
-	cabal configure --disable-library-profiling --disable-profiling --ghcjs --ghcjs-option=-dedupe -f-release
+ghcjs-new-build:
+	cabal new-build -j1 --ghcjs --disable-library-profiling --disable-profiling .
 
 chrome-prof:
 	google-chrome --no-sandbox --js-flags="--logfile=%t.log --prof" ../allureofthestars.github.io/play/index.html
 
 minific:
-	ccjs dist/build/Allure/Allure.jsexe/all.js --compilation_level=ADVANCED_OPTIMIZATIONS --isolation_mode=IIFE --assume_function_wrapper --jscomp_off="*" --externs=node --externs=dist/build/Allure/Allure.jsexe/all.js.externs > ../allureofthestars.github.io/play/allure.all.js
+	npx google-closure-compiler /home/mikolaj/r/Allure/dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/Allure-0.9.1.0/x/Allure/build/Allure/Allure.jsexe/all.js --compilation_level=ADVANCED_OPTIMIZATIONS --isolation_mode=IIFE --assume_function_wrapper --externs=/home/mikolaj/r/Allure/dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/Allure-0.9.1.0/x/Allure/build/Allure/Allure.jsexe/all.js.externs --jscomp_off="*" > ../allureofthestars.github.io/play/allure.all.js
 
 # Low delay to display animations swiftly and not bore the public too much.
 # Delay can't be lower than 2, because browsers sometimes treat delay 1
@@ -238,11 +238,11 @@ version:
 	dist/build/Allure/Allure --version
 
 #in LambdaHack/
-# cabal install --disable-library-profiling --disable-profiling --disable-documentation -f-release
+# cabal install --disable-library-profiling --disable-profiling --disable-documentation
 
 build-binary-common:
-	cabal install --disable-library-profiling --disable-profiling --disable-documentation -f-release --only-dependencies
-	cabal configure --disable-library-profiling --disable-profiling -f-release --prefix=/ --datadir=. --datasubdir=.
+	cabal install --disable-library-profiling --disable-profiling --disable-documentation --only-dependencies
+	cabal configure --disable-library-profiling --disable-profiling --prefix=/ --datadir=. --datasubdir=.
 	cabal build exe:Allure
 	mkdir -p AllureOfTheStars/GameDefinition/fonts
 	cabal copy --destdir=AllureOfTheStarsInstall
