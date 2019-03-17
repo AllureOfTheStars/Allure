@@ -500,7 +500,7 @@ bushClump = PlaceKind
   , pcover   = CMirror
   , pfence   = FNone
   , ptopLeft = [ "f;"
-               , ";X"
+               , ";X"  -- one sure exit needed not to block a corner
                , ";f"
                ]
   , poverrideDark = [('f', "bushClumpOver_f_Dark"), (';', "bush Lit")]
