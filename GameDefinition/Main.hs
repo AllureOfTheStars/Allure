@@ -25,9 +25,9 @@ import           System.FilePath
 import qualified System.IO as SIO
 
 import Game.LambdaHack.Common.File (tryCreateDir)
+import Game.LambdaHack.Common.Misc
 #endif
 
-import Game.LambdaHack.Common.Misc
 import Game.LambdaHack.Server (serverOptionsPI)
 
 import TieKnot
