@@ -12,8 +12,6 @@ module Content.RuleKind
 
 import Prelude ()
 
-import Game.LambdaHack.Core.Prelude
-
 import Language.Haskell.TH.Syntax
 import System.FilePath
 import System.IO (readFile)
@@ -40,7 +38,6 @@ standardRules = RuleContent
       qAddDependentFile path
       x <- qRunIO (readFile path)
       lift x)
-  , rfirstDeathEnds = False
   , rwriteSaveClips = 1000000
   , rleadLevelClips = 50
   , rscoresFile = "Allure.scores"
