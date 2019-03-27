@@ -36,6 +36,11 @@ The following blurb is a copy of the game intro screen.
                If ever you turn your back in fear, expect to be
                chased tirelessly by sight, sound and smell.
 
+Allure of the Stars is a turn-based game. You issue a command.
+Then you watch its results unfold on the screen without you being able
+to intervene. Then all settles down and you have as much time
+as you want to inspect the battlefield and think about your next move.
+
 Once the few basic command keys and on-screen symbols are learned,
 mastery and enjoyment of the game is the matter of tactical skill
 and literary imagination. To be honest, a lot of imagination is required,
