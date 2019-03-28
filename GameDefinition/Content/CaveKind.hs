@@ -339,7 +339,7 @@ outermost = empty
   , cfenceTileE   = "habitat containment wall"
   , cfenceTileS   = "empty airlock fence"
   , cfenceTileW   = "habitat containment wall"
-  , cdesc         = "The black sky outside sucks light through the oriel and airlock glass in the walls and floor of this outermost level. The mucky floor itself looks misleading straight, its curvature noticeable only across the whole extent of the hull section. Overflowing water treatment basins and series of hanging and stacked tanks double as radiation shields. Hoses writhe on the ground and dangle in thick knots from the ceiling. This deck is the main pressurized cargo bay and storage, with the only other docking hub for small craft somewhere among the giant spaceship's upper levels. You can't see the shuttle you left engaged to airlock clamps outside. You remember with disgust the airlock's inner doors smeared with guano."
+  , cdesc         = "The black sky outside sucks light through the oriel and airlock glass in the walls and floor of this outermost level. Each minute, the dusky melancholic light of the distant Sun attempts for a few seconds to squeeze in but is invariably repelled by artificial lighting. The mucky floor looks misleading straight, its curvature noticeable only across the whole extent of the hull section. Overflowing water treatment basins and series of hanging and stacked tanks double as radiation shields. Hoses writhe on the ground and dangle in thick knots from the ceiling. This deck is the main pressurized cargo bay and storage, with the only other docking hub for small craft somewhere among the giant spaceship's upper levels. You recognize an inner airlock door smeared with guano, but you can't see the shuttle you left engaged to the airlock clamps outside. "
       -- E and W sides are borders with other level sections, so no oriels.
   }
 bridge = rogue
@@ -384,7 +384,7 @@ shallowRogue = rogue
   , citemNum      = 8 `d` 4
   , citemFreq     = ("starting weapon", 20)
                     : filter ((/= "treasure") . fst) (citemFreq rogue)
-  , cdesc         = "This close to the outermost deck, residence is not permitted and doors are sturdier, to contain a theoretically possible micro-meteorite breach. The entry is not closed off, though, because some passengers can't live without regularly looking at the void and the sharp points of stars and planets through the reinforced glass of oriels, as opposed to the glass of electronic displays. Each minute a dusky melancholic light of the distant Sun tries to squeeze in, but is pushed out by artificial lighting. Animals appear to share the fascination, perhaps rather fond of the increased gravity, nearly Earth-like, unlike elsewhere on the ship."
+  , cdesc         = "This close to the outermost deck, residence is not permitted and walls and doors are sturdier, to contain a theoretically possible micro-meteorite breach. The entry is not closed off, though, because some passengers can't live without a regular pilgrimage to 'look outside'. Apparently, gazing at the sharp pin-points of stars and planets through the reinforced oriel glass is incomparable to watching the same through the thin polymer of wall displays. Animals appear to share the fascination of outer decks, perhaps attracted by the increased gravity, nearly Earth-like, unlike elsewhere on the ship."
   }
 
 -- * "Caves" on various celestial bodies (including, but not limited to, moons,
