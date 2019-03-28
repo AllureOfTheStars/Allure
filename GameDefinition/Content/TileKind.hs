@@ -601,7 +601,7 @@ floorArenaShade = floorActor
 oriel = TileKind
   { tsymbol  = '%'  -- story-wise it's transparent, hence the symbol
   , tname    = "oriel"
-  , tfreq    = [ ("oriels fence", 5)
+  , tfreq    = [ ("oriels fence", 15)
                , ("airlock fence", 5), ("empty airlock fence", 5) ]
   , tcolor   = White
   , tcolor2  = Black
@@ -610,7 +610,7 @@ oriel = TileKind
   }
 outerHullWall = basicOuterFence
   { tname    = "outer hull wall"
-  , tfreq    = [ ("basic outer fence", 1), ("oriels fence", 95)
+  , tfreq    = [ ("basic outer fence", 1), ("oriels fence", 85)
                , ("airlock fence", 40), ("empty airlock fence", 40) ]
   }
 rubbleBurning = TileKind  -- present in "emptySetLit" for early light source
