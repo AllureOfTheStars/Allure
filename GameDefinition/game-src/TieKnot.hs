@@ -27,6 +27,7 @@ import qualified Game.LambdaHack.Client.UI.Content.Screen as SC
 import           Game.LambdaHack.Client.UI.ContentClientUI
 import           Game.LambdaHack.Common.Kind
 import           Game.LambdaHack.Common.Misc
+import           Game.LambdaHack.Common.Point (speedupHackXSize)
 import qualified Game.LambdaHack.Common.Tile as Tile
 import qualified Game.LambdaHack.Content.CaveKind as CK
 import qualified Game.LambdaHack.Content.ItemKind as IK
@@ -34,7 +35,6 @@ import qualified Game.LambdaHack.Content.ModeKind as MK
 import qualified Game.LambdaHack.Content.PlaceKind as PK
 import qualified Game.LambdaHack.Content.RuleKind as RK
 import qualified Game.LambdaHack.Content.TileKind as TK
-import           Game.LambdaHack.Core.Point (speedupHackXSize)
 import           Game.LambdaHack.Server
 
 import qualified Client.UI.Content.Input as Content.Input
