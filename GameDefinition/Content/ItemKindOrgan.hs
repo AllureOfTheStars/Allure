@@ -161,7 +161,7 @@ thorn = fist
   , iverbHit = "puncture"
   , idamage  = 2 `d` 1
   , iaspects = [SetFlag Meleeable]  -- not Durable
-  , ieffects = [VerbMsg "be not so thorny any more"]
+  , ieffects = [VerbNoLonger "be not so thorny any more"]
   , idesc    = "Sharp yet brittle."
   }
 boilingFissure = fist
@@ -173,7 +173,7 @@ boilingFissure = fist
   , iaspects = [ AddSkill SkHurtMelee 20  -- decreasing as count decreases
                , SetFlag Meleeable ]  -- not Durable
   , ieffects = [ DropItem 1 1 COrgan "condition"  -- useful; limited
-               , VerbMsg "widen the crack, releasing pressure" ]
+               , VerbNoLonger "widen the crack, releasing pressure" ]
   , idesc    = ""
   }
 arsenicFissure = boilingFissure
@@ -183,7 +183,7 @@ arsenicFissure = boilingFissure
   , idamage  = 2 `d` 1
   , ieffects = [ toOrganBad "parsimonious" (5 + 1 `d` 3)
                -- weaken/poison, impacting intellectual abilities first
-               , VerbMsg "become clogged with organic residue" ]
+               , VerbNoLonger "become clogged with organic residue" ]
   , idesc    = ""
   }
 sulfurFissure = boilingFissure
@@ -192,7 +192,7 @@ sulfurFissure = boilingFissure
   , icount   = 2 + 1 `d` 2
   , idamage  = 0  -- heal not via (negative) idamage, for armour would block it
   , ieffects = [ RefillHP 5
-               , VerbMsg "run out of nano medbot liquid" ]
+               , VerbNoLonger "run out of nano medbot liquid" ]
   , idesc    = ""
   }
 beeSting = fist
@@ -418,7 +418,7 @@ scentGland = armoredSkin
   , iverbHit = "spray at"
   , iaspects = [ Timeout $ (1 `d` 3) * 10
                , SetFlag Periodic, SetFlag Fragile ]  -- not Durable
-  , ieffects = [ VerbMsg "look spent"
+  , ieffects = [ VerbNoLonger "look spent"
                , ApplyPerfume
                , Explode "distressing odor" ]
                    -- keep explosion at the end to avoid the ambiguity of
@@ -530,7 +530,7 @@ razor = fist
   , iaspects = [ Timeout (3 + 1 `d` 2)
                , SetFlag Meleeable ]  -- not Durable
   , ieffects = [ toOrganBad "weakened" (2 + 1 `dL` 3)
-               , VerbMsg "lose its sharpness" ]
+               , VerbNoLonger "lose its sharpness" ]
                  -- if razor is an organ, the actors is "it";
                  -- we interpret the charges as sharpness of a single razor
   , idesc    = ""
@@ -596,7 +596,7 @@ geneticFlaw n = armoredSkin
   , ieffects = [ OnSmash $ DropItem maxBound maxBound COrgan "condition"
                    -- key for AI is it eliminates all impression conditions
                , OnSmash $ RefillHP n
-               , OnSmash $ VerbMsg "undergo instant infracellular decontamination" ]  -- unlike the civilian version, this one is instant and the attunement is automatic and relatively quick (the usual double cooldown when equipping items again)
+               , OnSmash $ VerbNoLonger "undergo instant infracellular decontamination" ]  -- unlike the civilian version, this one is instant and the attunement is automatic and relatively quick (the usual double cooldown when equipping items again)
   , idesc    = "Nobody is perfect. At least without infracellular engineering, which is heavily regulated, insanely expensive and automatically reverted without refund before critical medical interventions. One more reason to be a good citizen, work hard and not die often. But where is the fun in that?"
   }
 geneticFlaw3 = geneticFlaw 3
