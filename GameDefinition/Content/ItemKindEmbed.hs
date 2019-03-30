@@ -396,7 +396,7 @@ disengagedDocking = ItemKind
   , idamage  = 0
   , iaspects = [SetFlag Durable]
   , ieffects = [RefillCalm (-10)]
-  , idesc    = "Unfortunately this airlock is disengaged. Many fine small craft were originally docked with such sockets and clamps as these, but just after the spaceship spontaneously commenced leaving its Triton orbit, a lot of them has been spotted jettisoned and drifting astern. What a waste."
+  , idesc    = "Unfortunately this airlock has no space boat attached. Many fine small craft were originally docked with such sockets and clamps, but after the spaceship spontaneously deorbited Neptune, a lot of them were seen jettisoned and drifting astern. What a waste."
   , ikit     = []
   }
 ruinedFirstAidKit = ItemKind
