@@ -49,8 +49,8 @@ install:
   - ps: Push-AppveyorArtifact Allure_dev_windows-x86_64.zip -FileName "Allure_$($env:LH_VERSION)-dev-$($env:TIME_STRING)_windows-x86_64.zip" -DeploymentName "win64 binaries archive"
 
   - appveyor-retry cabal %CABOPTS% test --show-details=direct
-#  - make test-short || (tail -n 500 %APPDATA%\Allure\stdout.txt; tail -n 500 %APPDATA%\Allure\stderr.txt; exit 77)
-  - make nativeBench || (tail -n 500 %APPDATA%\Allure\stdout.txt; tail -n 500 %APPDATA%\Allure\stderr.txt; exit 77)
+#  - make test-short || (tail -n 500 %APPDATA%\Allure\stdout.txt & tail -n 500 %APPDATA%\Allure\stderr.txt & exit 77)
+  - make nativeBench || (tail -n 500 %APPDATA%\Allure\stdout.txt & tail -n 500 %APPDATA%\Allure\stderr.txt & exit 77)
 
   - mv AllureOfTheStars AllureOfTheStars64
   - rm -rf AllureOfTheStarsInstall
@@ -102,7 +102,7 @@ install:
   - ps: Push-AppveyorArtifact Allure_dev_windows-i686.zip -FileName "Allure_$($env:LH_VERSION)-dev-$($env:TIME_STRING)_windows-i686.zip" -DeploymentName "win32 binaries archive"
 
   - appveyor-retry cabal %CABOPTS% test --show-details=direct
-  - make benchNull || (tail -n 500 %APPDATA%\Allure\stdout.txt; tail -n 500 %APPDATA%\Allure\stderr.txt; exit 77)
+  - make benchNull || (tail -n 500 %APPDATA%\Allure\stdout.txt & tail -n 500 %APPDATA%\Allure\stderr.txt & exit 77)
 
   - mv AllureOfTheStars AllureOfTheStars32
   - ps: '& "C:\Program Files (x86)\NSIS\makensis.exe" .windows.installer.nsi'
