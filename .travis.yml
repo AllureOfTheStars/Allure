@@ -155,6 +155,7 @@ before_install:
 
 install:
   - cabal --version
+  - cabal init
   - echo "$(${HC} --version) [$(${HC} --print-project-git-commit-id 2> /dev/null || echo '?')]"
   - BENCH=${BENCH---enable-benchmarks}
   - TEST=${TEST---enable-tests}
