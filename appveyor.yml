@@ -1,10 +1,7 @@
-environment:
-  global:
-    CABOPTS:  "--store-dir=C:\\SR --http-transport=plain-http"
-
 cache:
-  - "C:\\SR"
+  - dist
   - dist-newstyle
+  - C:\Users\appveyor\AppData\Roaming\cabal
 
 install:
   - appveyor-retry choco install ghc --version 8.4.4 | grep -v '^Extracting the last GHC that works on Windows Vista'
@@ -14,15 +11,15 @@ install:
   - SET XDG_DATA_DIRS=C:\msys64\mingw64\share
   - cabal --version
   - appveyor-retry pacman -S -q --noconfirm mingw64/mingw-w64-x86_64-SDL2 mingw64/mingw-w64-x86_64-SDL2_ttf
-  - cabal %CABOPTS% update
-  - cabal %CABOPTS% install happy
+  - cabal update
+  - cabal install happy
   - git clone -q --branch=master https://github.com/haskell-game/sdl2
   - cd sdl2
-  - cabal %CABOPTS% install -fno-linear
+  - cabal install -fno-linear
   - cd ..
   - git clone -q --branch=master https://github.com/LambdaHack/LambdaHack.git
   - cd LambdaHack
-  - appveyor-retry cabal %CABOPTS% install --disable-library-profiling --disable-profiling --disable-documentation -f-release
+  - appveyor-retry cabal install --disable-library-profiling --disable-profiling --disable-documentation -f-release
   - cd ..
 
   - pwd
@@ -49,18 +46,18 @@ install:
   - ps: $env:TIME_STRING=(get-date -UFormat "%Y-%m-%d").ToString()
   - ps: Push-AppveyorArtifact Allure_dev_windows-x86_64.zip -FileName "Allure_$($env:LH_VERSION)-dev-$($env:TIME_STRING)_windows-x86_64.zip" -DeploymentName "win64 binaries archive"
 
-  - appveyor-retry cabal %CABOPTS% test --show-details=direct
+  - appveyor-retry cabal test --show-details=direct
   - make test-short || (tail -n 500 %APPDATA%\Allure\stderr.txt & exit 77)
   - make nativeBench || (tail -n 500 %APPDATA%\Allure\stderr.txt & exit 77)
 
   - mv AllureOfTheStars AllureOfTheStars64
   - rm -rf AllureOfTheStarsInstall
-  - cabal %CABOPTS% clean
+  - cabal clean
   - cd sdl2
-  - cabal %CABOPTS% clean
+  - cabal clean
   - cd ..
   - cd LambdaHack
-  - cabal %CABOPTS% clean
+  - cabal clean
   - cd ..
 
   - appveyor-retry choco install --force --forcex86 ghc --version 8.4.4 | grep -v '^Extracting '
@@ -74,11 +71,11 @@ install:
   - echo "no cabal install happy"
   - echo "no git clone -q --branch=master https://github.com/haskell-game/sdl2"
   - cd sdl2
-  - cabal %CABOPTS% install -fno-linear
+  - cabal install -fno-linear
   - cd ..
   - echo "no git clone -q --branch=master https://github.com/LambdaHack/LambdaHack.git"
   - cd LambdaHack
-  - appveyor-retry cabal %CABOPTS% install --disable-library-profiling --disable-profiling --disable-documentation -f-release
+  - appveyor-retry cabal install --disable-library-profiling --disable-profiling --disable-documentation -f-release
   - cd ..
 
   - pwd
@@ -102,7 +99,7 @@ install:
   - 7z a -ssc -tzip Allure_dev_windows-i686.zip AllureOfTheStars
   - ps: Push-AppveyorArtifact Allure_dev_windows-i686.zip -FileName "Allure_$($env:LH_VERSION)-dev-$($env:TIME_STRING)_windows-i686.zip" -DeploymentName "win32 binaries archive"
 
-  - appveyor-retry cabal %CABOPTS% test --show-details=direct
+  - appveyor-retry cabal test --show-details=direct
   - make benchNull || (tail -n 500 %APPDATA%\Allure\stdout.txt & tail -n 500 %APPDATA%\Allure\stderr.txt & exit 77)
 
   - mv AllureOfTheStars AllureOfTheStars32
