@@ -51,9 +51,7 @@ install:
 
   - appveyor-retry cabal %CABOPTS% test --show-details=direct
   - make test-short || (tail -n 500 %APPDATA%\Allure\stderr.txt & exit 77)
-  - tail -n 500 %APPDATA%\LambdaHack\stdout.txt
   - make nativeBench || (tail -n 500 %APPDATA%\Allure\stderr.txt & exit 77)
-  - tail -n 500 %APPDATA%\LambdaHack\stdout.txt
 
   - mv AllureOfTheStars AllureOfTheStars64
   - rm -rf AllureOfTheStarsInstall
