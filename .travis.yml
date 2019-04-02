@@ -161,6 +161,7 @@ install:
   - HADDOCK=${HADDOCK-true}
   - NOINSTALLEDCONSTRAINTS=${NOINSTALLEDCONSTRAINTS-false}
   - GHCHEAD=${GHCHEAD-false}
+  - git clone --depth=50 --branch=master git://github.com/LambdaHack/LambdaHack.git
   - travis_retry cabal new-update -v
   - "sed -i.bak 's/^jobs:/-- jobs:/' ${HOME}/.cabal/config"
   - grep -Ev -- '^\s*--' ${HOME}/.cabal/config | grep -Ev '^\s*$'
@@ -179,8 +180,6 @@ script:
   - mv "."/dist/Allure-*.tar.gz ${DISTDIR}/
   - cd ${DISTDIR} || false
   - find . -maxdepth 1 -name '*.tar.gz' -exec tar -xvf '{}' \;
-
-  - git clone --depth=50 --branch=master git://github.com/LambdaHack/LambdaHack.git
 
   - cd Allure-*
 
