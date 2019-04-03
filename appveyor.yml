@@ -19,7 +19,7 @@ install:
   - cd ..
   - git clone -q --branch=master https://github.com/LambdaHack/LambdaHack.git
   - cd LambdaHack
-  - appveyor-retry cabal install --disable-library-profiling --disable-profiling --disable-documentation -f-release
+  - appveyor-retry cabal install --force-reinstalls --disable-library-profiling --disable-profiling --disable-documentation
   - cd ..
 
   - pwd
@@ -76,7 +76,7 @@ install:
   - cd ..
   - echo "no git clone -q --branch=master https://github.com/LambdaHack/LambdaHack.git"
   - cd LambdaHack
-  - appveyor-retry cabal install --disable-library-profiling --disable-profiling --disable-documentation -f-release
+  - appveyor-retry cabal install --force-reinstalls --disable-library-profiling --disable-profiling --disable-documentation
   - cd ..
 
   - pwd
