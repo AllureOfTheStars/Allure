@@ -12,10 +12,10 @@ install:
   - cabal clean
   - appveyor-retry pacman -S -q --noconfirm mingw64/mingw-w64-x86_64-SDL2 mingw64/mingw-w64-x86_64-SDL2_ttf
   - cabal update
-  - cabal install happy
+  - cabal install --force-reinstalls happy
   - git clone -q --branch=master https://github.com/haskell-game/sdl2
   - cd sdl2
-  - cabal install -fno-linear
+  - cabal install --force-reinstalls -fno-linear
   - cd ..
   - git clone -q --branch=master https://github.com/LambdaHack/LambdaHack.git
   - cd LambdaHack
@@ -72,7 +72,7 @@ install:
   - echo "no cabal install happy"
   - echo "no git clone -q --branch=master https://github.com/haskell-game/sdl2"
   - cd sdl2
-  - cabal install -fno-linear
+  - cabal install --force-reinstalls -fno-linear
   - cd ..
   - echo "no git clone -q --branch=master https://github.com/LambdaHack/LambdaHack.git"
   - cd LambdaHack
