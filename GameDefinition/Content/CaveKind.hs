@@ -169,7 +169,7 @@ museum = arena
   , cfenceTileE   = "habitat containment wall"
   , cfenceTileS   = "habitat containment wall"
   , cfenceTileW   = "habitat containment wall"
-  , cdesc         = "History has shown that museal treasures are safer in space than anywhere on Earth. Cruise passengers are also more likely to visit exhibitions, even if that's captive audience effect to some extent. That rarely applies to spaceship crew and yet museum security has a particularly keen eye for the working men. Quite often a museum is the only place within millions of kilometers to house a desperately needed tool, old but sturdy beyond anything a 3D printer could produce."
+  , cdesc         = "History has shown that museal treasures are safer in space than anywhere on Earth. Also, cruise passengers eagerly visit exhibitions, even if over the weeks of the journey they become increasingly a captive audience. That rarely applies to spaceship crew and yet museum security has a particularly keen eye for the working men visiting their establishments. Quite often a museum is the only place within millions of kilometers to house a desperately needed tool, old but sturdy beyond anything a 3D printer could produce."
   }
 laboratory = rogue
   { csymbol       = 'L'
