@@ -312,9 +312,8 @@ exit = empty
   , cfenceTileS   = "airlock fence"
   , cfenceTileW   = "habitat containment wall"
   , cescapeFreq   = [("escape spaceship down", 1)]
-  , cstairFreq    = [("walled lift", 20), ("tiny lift", 1)]  -- for miniboss
-  , cstairAllowed = [ ("decontaminating walled staircase", 20)
-                    , ("decontaminating tiny staircase", 1) ]  -- for miniboss
+  , cstairFreq    = [("walled lift", 20), ("tiny lift", 1)]
+  , cstairAllowed = [("walled staircase", 20), ("tiny staircase", 1)]
   , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among cranes and welding machines. Distant main fusion thruster array can be seen to the rear of the spaceship through oriels and airlocks of all sizes."
       -- E and W sides are borders with other level sections, so no oriels.
       -- The meteor shield towards N is not punctured here, because
