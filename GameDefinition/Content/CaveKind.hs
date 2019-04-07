@@ -145,7 +145,7 @@ casino = arena
   , cfenceTileE   = "habitat containment wall"
   , cfenceTileS   = "habitat containment wall"
   , cfenceTileW   = "habitat containment wall"
-  , cdesc         = "No longer filled with hollow-eyed gamblers; more dangerous things now lurk in the dark."
+  , cdesc         = "The establishment is no longer filled with hollow-eyed gamblers; more dangerous things now lurk in the dark."
   }
 museum = arena
   { cname         = "Museum"
@@ -314,7 +314,7 @@ exit = empty
   , cescapeFreq   = [("escape spaceship down", 1)]
   , cstairFreq    = [("walled lift", 20), ("tiny lift", 1)]
   , cstairAllowed = [("walled staircase", 20), ("tiny staircase", 1)]
-  , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among cranes and welding machines. Distant main fusion thruster array can be seen to the rear of the spaceship through oriels and airlocks of all sizes."
+  , cdesc         = "Empty husks and strewn entrails of small craft litter the hangar among cranes and welding machines. The distant main fusion thruster array can be seen to the rear of the spaceship through oriels and airlocks of all sizes."
       -- E and W sides are borders with other level sections, so no oriels.
       -- The meteor shield towards N is not punctured here, because
       -- the cargo bay is too thick here, near the axis of the ship.
