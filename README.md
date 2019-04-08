@@ -202,18 +202,18 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program in file LICENSE.
-If not, see <http://www.gnu.org/licenses/>.
+If not, see <https://www.gnu.org/licenses/>.
 
 Exceptions and detailed copyright information is contained in file COPYLEFT.
 
 
-[1]: http://www.haskell.org/
+[1]: https://www.haskell.org/
 [2]: http://roguebasin.roguelikedevelopment.org/index.php?title=Berlin_Interpretation
-[3]: http://hackage.haskell.org/package/Allure
+[3]: https://hackage.haskell.org/package/Allure
 [4]: https://github.com/AllureOfTheStars/Allure/wiki
 [5]: https://github.com/AllureOfTheStars/Allure
 [6]: http://allureofthestars.com
-[7]: http://www.haskell.org/platform
+[7]: https://www.haskell.org/platform
 
 
 [10]: https://github.com/LambdaHack/LambdaHack
