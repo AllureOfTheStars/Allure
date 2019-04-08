@@ -13,7 +13,7 @@ try the game out in the browser at http://allureofthestars.com/play.
 are supported only on recent enough versions of browsers.
 Mouse should work everywhere.)
 
-![gameplay screenshot](https://raw.githubusercontent.com/AllureOfTheStars/media/master/screenshot/allureofthestars.com.ambush.gif)
+![gameplay screenshot](https://raw.githubusercontent.com/AllureOfTheStars/media/master/screenshot/allureofthestars.com.updown.png)
 
 Not a single picture in this game. You have to imagine everything
 yourself, like with a book (a grown-up book, without pictures).
