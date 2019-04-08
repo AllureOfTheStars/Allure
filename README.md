@@ -7,8 +7,8 @@ Allure of the Stars
 
 Allure of the Stars is a near-future Sci-Fi roguelike[2]
 and tactical squad game. Binaries and the game manual
-are available at homepage[6], where you can also
-try the game out in the browser at http://allureofthestars.com/play.
+are available at the homepage[6]. You can try the game out
+in the browser at http://allureofthestars.com/play.
 (It runs fastest on Chrome. Keyboard commands and savefiles
 are supported only on recent enough versions of browsers.
 Mouse should work everywhere.)
@@ -41,14 +41,14 @@ e.g., when it's closed while the game is still saving progress
 (which takes a long time). Hence, after trying out the game,
 you may prefer to use a native binary for your architecture, if it exists.
 
-Pre-compiled game binaries are available through
-the release page[11] (and, for Windows, continuously from AppVeyor[18]).
+Pre-compiled game binaries are available through the release page[11]
+(and, for Windows, dev versions continuously from AppVeyor[18]).
 To use a pre-compiled binary archive, unpack it and run the executable
 in the unpacked directory or use program shortcuts from the installer,
 if available.
 
 On Linux, make sure you have the SDL2 libraries installed on your system
-(e.g., libsdl2-2.0-0, libsdl2-ttf-2.0-0 on Ubuntu).
+(e.g., libsdl2-2.0-0 and libsdl2-ttf-2.0-0 on Ubuntu).
 On Mac OS X, you need SDL2 installed, e.g.,
 from [libsdlorg](https://www.libsdl.org/download-2.0.php).
 For Windows, the SDL2 and all other needed libraries are already
@@ -211,12 +211,12 @@ Exceptions and detailed copyright information is contained in file COPYLEFT.
 [2]: http://roguebasin.roguelikedevelopment.org/index.php?title=Berlin_Interpretation
 [3]: http://hackage.haskell.org/package/Allure
 [4]: https://github.com/AllureOfTheStars/Allure/wiki
-[5]: http://github.com/AllureOfTheStars/Allure
+[5]: https://github.com/AllureOfTheStars/Allure
 [6]: http://allureofthestars.com
 [7]: http://www.haskell.org/platform
 
 
-[10]: http://github.com/LambdaHack/LambdaHack
+[10]: https://github.com/LambdaHack/LambdaHack
 [11]: https://github.com/AllureOfTheStars/Allure/releases
 [15]: https://github.com/ghcjs/ghcjs
 [16]: https://www.npmjs.com/package/google-closure-compiler
