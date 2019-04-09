@@ -9,8 +9,8 @@
  \|/         crosshair). Press `KP_5` (keypad `5`) to wait, bracing for impact,
 u-i-o        which reduces any damage taken and prevents displacement by foes.
  /|\         Press `C-KP_5` (the same key with Control) to lurk 0.1 of a turn,
-j k l        without bracing and `S-KP_5` (with Shift) to yell/yawn, taunting
-             and waking up enemies or yourself.
+j k l        without bracing and `S-KP_5` (with Shift) or `%` to yell/yawn,
+             taunting and waking up enemies or yourself.
 
 y k u        You displace enemies by running into them with Shift/Control
  \|/         or RMB. Search, open, descend and attack by bumping into
