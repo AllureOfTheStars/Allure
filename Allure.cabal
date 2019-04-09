@@ -7,9 +7,9 @@ name:           Allure
 --             | | +----- minor or non-breaking API additions
 --             | | | +--- code changes with no API change
 version:       0.9.3.0
-synopsis:      Near-future Sci-Fi roguelike and tactical squad game
+synopsis:      Near-future Sci-Fi roguelike and tactical squad combat game
 description:   Allure of the Stars is a near-future Sci-Fi roguelike
-               and tactical squad game. Binaries and the game manual
+               and tactical squad combat game. Binaries and the game manual
                are available at the homepage, where you can also
                try the game out in the browser:
                <http://allureofthestars.com/play>.

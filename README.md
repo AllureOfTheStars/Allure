@@ -6,7 +6,7 @@ Allure of the Stars
 [![Join the chat at https://gitter.im/AllureOfTheStars/Allure](https://badges.gitter.im/AllureOfTheStars/Allure.svg)](https://gitter.im/AllureOfTheStars/Allure?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Allure of the Stars is a near-future Sci-Fi roguelike[2]
-and tactical squad game. Binaries and the game manual
+and tactical squad combat game. Binaries and the game manual
 are available at the homepage[6]. You can try the game out
 in the browser at http://allureofthestars.com/play.
 (It runs fastest on Chrome. Keyboard commands and savefiles
