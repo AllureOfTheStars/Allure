@@ -526,15 +526,14 @@ smallBeak = fist
 razor = fist
   { iname    = "razor edge"
   , ifreq    = [("razor", 100)]
-  , icount   = 2 + 1 `d` 5
+  , icount   = 1 + 1 `d` 2
   , iverbHit = "slice"
   , idamage  = 2 `d` 1
-  , iaspects = [ Timeout (3 + 1 `d` 2)
-               , SetFlag Meleeable ]  -- not Durable
+  , iaspects = [SetFlag Meleeable]  -- not Durable
   , ieffects = [ toOrganBad "weakened" (2 + 1 `dL` 3)
-               , VerbNoLonger "lose its sharpness" ]
-                 -- if razor is an organ, the actors is "it";
-                 -- we interpret the charges as sharpness of a single razor
+               , VerbNoLonger "lose all sharpness" ]
+                 -- we interpret charges as sharpness of the actor or his razor'
+                 -- no pronoun in the message to avoid "you lose its sharpness"
   , idesc    = ""
   }
 liveWire = fist
