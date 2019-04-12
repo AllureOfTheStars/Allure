@@ -10,8 +10,8 @@ version:       0.9.3.1
 synopsis:      Near-future Sci-Fi roguelike and tactical squad combat game
 description:   Allure of the Stars is a near-future Sci-Fi roguelike
                and tactical squad combat game. Binaries and the game manual
-               are available at homepage, where you can also
-               try the game out in the browser at
+               are available at the homepage, where you can also
+               try the game out in the browser:
                <http://allureofthestars.com/play>.
                (It runs fastest on Chrome. Keyboard commands and savefiles
                are supported only on recent enough versions of browsers.
@@ -33,7 +33,7 @@ homepage:      http://allureofthestars.com
 bug-reports:   http://github.com/AllureOfTheStars/Allure/issues
 license:       AGPL-3.0-or-later
 license-file:  COPYLEFT
-tested-with:   GHC==8.2.2, GHC==8.4.4, GHC==8.6.4
+tested-with:   GHC==8.2.2, GHC==8.4.4, GHC==8.6.5
 data-files:    GameDefinition/config.ui.default,
                GameDefinition/fonts/16x16xw.woff,
                GameDefinition/fonts/16x16xw.bdf,
@@ -61,6 +61,11 @@ build-type:    Simple
 source-repository head
   type:               git
   location:           git://github.com/AllureOfTheStars/Allure.git
+
+flag supportNodeJS
+  description:        compile so that the JS blob works in terminal with NodeJS
+  default:            True
+  manual:             True
 
 common options
   default-language:   Haskell2010
@@ -98,8 +103,8 @@ common exe-options
   ghcjs-options:      -DGHCJS_BUSY_YIELD=50
   ghcjs-options:      -dedupe
 
--- unless compiling for Node
-  ghcjs-options:    -DGHCJS_BROWSER
+  if !flag(supportNodeJS)
+    ghcjs-options:    -DGHCJS_BROWSER
 
 library
   import: options
@@ -125,11 +130,7 @@ library
   autogen-modules:    Paths_Allure
   build-depends:      ,LambdaHack >= 0.9.3.1 && < 0.9.4.0
                       ,async
-                      ,base
-                      ,filepath
-                      ,optparse-applicative
-                      ,async
-                      ,base
+                      ,base >= 4.10 && < 99
                       ,enummapset
                       ,filepath
                       ,ghc-compact
@@ -142,20 +143,21 @@ library
 
 executable Allure
   import: options, exe-options
-  hs-source-dirs:     GameDefinition
-  main-is:            Main.hs
-  build-depends:      ,Allure, LambdaHack
+  main-is:            GameDefinition/Main.hs
+  build-depends:      ,LambdaHack
+                      ,Allure
                       ,async
                       ,base
                       ,filepath
                       ,optparse-applicative
+
+test-suite test
+  import: options, exe-options
+  type:               exitcode-stdio-1.0
+  main-is:            test/test.hs
+  build-depends:      ,LambdaHack
+                      ,Allure
                       ,async
                       ,base
-                      ,enummapset
                       ,filepath
-                      ,ghc-compact
                       ,optparse-applicative
-                      ,random
-                      ,template-haskell >= 2.6
-                      ,text
-                      ,transformers

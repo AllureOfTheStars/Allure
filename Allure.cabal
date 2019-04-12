@@ -33,7 +33,7 @@ homepage:      http://allureofthestars.com
 bug-reports:   http://github.com/AllureOfTheStars/Allure/issues
 license:       AGPL-3.0-or-later
 license-file:  COPYLEFT
-tested-with:   GHC==8.2.2, GHC==8.4.4, GHC==8.6.4
+tested-with:   GHC==8.2.2, GHC==8.4.4, GHC==8.6.5
 data-files:    GameDefinition/config.ui.default,
                GameDefinition/fonts/16x16xw.woff,
                GameDefinition/fonts/16x16xw.bdf,
@@ -61,6 +61,11 @@ build-type:    Simple
 source-repository head
   type:               git
   location:           git://github.com/AllureOfTheStars/Allure.git
+
+flag supportNodeJS
+  description:        compile so that the JS blob works in terminal with NodeJS
+  default:            True
+  manual:             True
 
 common options
   default-language:   Haskell2010
@@ -98,6 +103,9 @@ common exe-options
   ghcjs-options:      -DGHCJS_BUSY_YIELD=50
   ghcjs-options:      -dedupe
 
+  if !flag(supportNodeJS)
+    ghcjs-options:    -DGHCJS_BROWSER
+
 library this-game-content
   import: options
   hs-source-dirs:     GameDefinition
@@ -115,9 +123,9 @@ library this-game-content
                       Content.TileKind
   other-modules:      Paths_Allure
   autogen-modules:    Paths_Allure
-  build-depends:      ,LambdaHack
+  build-depends:      ,LambdaHack >= 0.9.3.1 && < 0.9.4.0
 -- TODO: instead:     ,definition
-                      ,base       >= 4.10 && < 99
+                      ,base >= 4.10 && < 99
                       ,filepath
                       ,template-haskell >= 2.6
                       ,text
@@ -130,7 +138,7 @@ library this-game-src
                       Client.UI.Content.Screen
                       Implementation.MonadClientImplementation
                       Implementation.MonadServerImplementation
-  build-depends:      ,LambdaHack >= 0.9.3.1 && < 0.9.4.0
+  build-depends:      ,LambdaHack
                       ,this-game-content
                       ,async
                       ,base
@@ -140,7 +148,7 @@ library this-game-src
                       ,optparse-applicative
                       ,primitive
                       ,random
-                      ,template-haskell >= 2.6
+                      ,template-haskell
                       ,text
                       ,transformers
 
