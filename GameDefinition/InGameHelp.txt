@@ -9,8 +9,8 @@ Minimal cheat sheet for casual play.
   \|/         (top diagram) or with its compact laptop replacement (middle)
  4-5-6        or the Vi editor keys (bottom) selectable in config.ui.ini.
   /|\         Run until disturbed with Shift or Control. Go-to a position
- 1 2 3        with LMB (left mouse button). Run collectively with RMB
-              (right mouse button).
+ 1 2 3        with LMB (left mouse button). Run collectively with S-LMB
+              (press the button while holding Shift).
 
  7 8 9        In aiming mode, the same keys (and mouse) move the x-hair (aiming
   \|/         crosshair). Press `KP_5` (keypad `5`) to wait, bracing for impact,
@@ -20,7 +20,7 @@ Minimal cheat sheet for casual play.
               taunting and waking up enemies or yourself.
 
  y k u        You displace enemies by running into them with Shift/Control
-  \|/         or RMB. Search, open, descend and attack by bumping into
+  \|/         or S-LMB. Search, open, descend and attack by bumping into
  h-.-l        walls, doors, stairs and enemies. The best item to attack with
   /|\         is automatically chosen from among melee weapons in your
  b j n        personal equipment and your body parts.
@@ -36,9 +36,9 @@ Minimal cheat sheet for casual play.
  keys         command
  E            manage equipment of the leader
  g or ,       grab item(s)
- ESC          finish aiming/open main menu
- RET or INS   accept target/open dashboard
- SPACE        clear messages/display history
+ ESC          open main menu/finish aiming
+ RET or INS   open dashboard/accept target
+ SPACE        clear messages and show history
  S-TAB        cycle among all party members
  KP_* or !    cycle x-hair among enemies
  KP_/ or /    cycle x-hair among items
@@ -49,7 +49,6 @@ Minimal cheat sheet for casual play.
 Here is the complete list of commands from the snapshot of in-game help.
 For more general gameplay information see
 https://github.com/AllureOfTheStars/Allure/blob/master/GameDefinition/PLAYING.md
-
 
 Item menu commands.
 
@@ -67,8 +66,8 @@ Item menu commands.
 Remaining item-related commands.
 
  keys         command
- P or I       manage inventory pack of the leader
  E            manage equipment of the leader
+ P or I       manage inventory pack of the leader
  S            manage the shared party stash
  G            manage items on the ground
  A            manage all owned items
@@ -106,8 +105,8 @@ All terrain exploration and alteration commands.
 Aiming commands.
 
  keys         command
- ESC          finish aiming/open main menu
- RET or INS   accept target/open dashboard
+ ESC          open main menu/finish aiming
+ RET or INS   open dashboard/accept target
  KP_* or !    cycle x-hair among enemies
  KP_/ or /    cycle x-hair among items
  +            swerve the aiming line
@@ -134,18 +133,19 @@ Mouse commands.
  in exploration mode and (if different) in aiming mode.
 
  keys         command
- LMB          set x-hair to enemy/go to pointer for 25 steps
- RMB or C-LMB fling at enemy/run to pointer collectively for 25 steps
+ LMB          go to pointer for 25 steps/fling at enemy
+ S-LMB        run to pointer collectively for 25 steps/fling at enemy
+ RMB or C-LMB start aiming at enemy under pointer
  C-RMB        open or close or alter at pointer
  MMB          snap x-hair to floor under pointer
  WHEEL-UP     swerve the aiming line
  WHEEL-DN     unswerve the aiming line
 
  exploration    LMB (left mouse button)          RMB (right mouse button)
- message line   clear messages/display history   display help
+ message line   clear messages and show history  display help
  leader on map  grab item(s)                     drop item(s)
  party on map   pick new leader on screen        select party member on screen
- the map area   go to pointer for 25 steps       run to pointer collectively
+ the map area   go to pointer for 25 steps       set x-hair to enemy
  level number   move aiming one level up         move aiming one level down
  level caption  open dashboard                   open main menu
  percent seen   explore nearest unknown spot     autoexplore 25 times
@@ -154,17 +154,17 @@ Mouse commands.
  Calm value     yell/yawn                        yell/yawn
  HP gauge       rest (wait 25 times)             heed (lurk 0.1 turns 100 times)
  HP Value       wait a turn, bracing for impact  lurk 0.1 of a turn
- leader info    fling without aiming             clear chosen item and x-hair
+ leader info    auto-fling and keep choice       clear chosen item and x-hair
 
  aiming mode    LMB (left mouse button)          RMB (right mouse button)
- the map area   set x-hair to enemy              fling at enemy under pointer
+ the map area   fling at enemy under pointer     snap x-hair to enemy
  level caption  accept target                    cancel aiming
  percent seen   set x-hair to nearest upstairs   set x-hair to nearest dnstairs
 
 Assorted commands.
 
  keys         command
- SPACE        clear messages/display history
+ SPACE        clear messages and show history
  F12          open dashboard
  ?            display help
  F1           display help immediately
