@@ -1,3 +1,4 @@
+{-# LANGUAGE PackageImports #-}
 -- Copyright (c) 2008--2011 Andres Loeh
 -- Copyright (c) 2010--2019 Mikolaj Konarski and others (see git history)
 -- This file is a part of the computer game Allure of the Stars
@@ -30,7 +31,8 @@ import Game.LambdaHack.Common.Misc
 
 import Game.LambdaHack.Server (serverOptionsPI)
 
-import TieKnot
+-- For the case of flattened .cabal file, to avoid ambiguity.
+import "Allure" TieKnot
 
 -- | Parse commandline options, tie the engine, content and clients knot,
 -- run the game and handle exit.
