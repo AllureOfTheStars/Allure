@@ -272,7 +272,9 @@ escape = stairsUp
   , iflavour = zipPlain [BrYellow]
   , iaspects = [SetFlag Durable]
   , ieffects = [Escape]
-  , idesc    = ""  -- generic escape, so the text should be too; for moon outdoors, spaceship, everywhere
+  , idesc    = "May this nightmare have an end?"
+                 -- generic escape, so the text should be too;
+                 -- for moon outdoors, spaceship, everywhere
   }
 staircaseTrapUp = ItemKind
   { isymbol  = '^'
