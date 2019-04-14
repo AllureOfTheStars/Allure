@@ -1,3 +1,4 @@
+{-# LANGUAGE PackageImports #-}
 import Prelude ()
 
 import Options.Applicative
@@ -6,7 +7,8 @@ import Game.LambdaHack.Client.UI.Frontend.Chosen
 import Game.LambdaHack.Core.Prelude
 import Game.LambdaHack.Server
 
-import TieKnot
+-- For the case of flattened .cabal file, to avoid ambiguity.
+import "Allure" TieKnot
 
 main :: IO ()
 main = do
