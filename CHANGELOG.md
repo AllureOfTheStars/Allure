@@ -1,3 +1,6 @@
+## [v0.9.4.0](https://github.com/AllureOfTheStars/Allure/compare/v0.9.3.0...v0.9.4.0)
+
+
 ## [v0.9.3.0, aka 'Double of everything'](https://github.com/AllureOfTheStars/Allure/compare/v0.8.3.0...v0.9.3.0)
 
 - Make maximal level size twice higher
