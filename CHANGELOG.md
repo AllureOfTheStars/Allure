@@ -2,9 +2,8 @@
 
 - Tweak razor organs
 - React specially at gameover under certain special circumstances
-- Auto-sort slots in a few more places
 - Simpliy assignSlot now that slots are auto-sorted
-- Get rid of explicit item sorting
+- Get rid of explicit item sorting; let lore and menu slots agree
 - Make DetectExit non-modal
 - Mark in a game end confirmation message that more treasure can be found
 - Add a description to the escape embedded item
