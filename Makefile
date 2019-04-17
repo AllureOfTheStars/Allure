@@ -244,11 +244,11 @@ version:
 	dist/build/Allure/Allure --version
 
 #in LambdaHack/
-# cabal v1-install --disable-library-profiling --disable-profiling --disable-documentation
+# cabal v1-install --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization
 
 build-binary-common:
-	cabal v1-install --disable-library-profiling --disable-profiling --disable-documentation --only-dependencies
-	cabal v1-configure --disable-library-profiling --disable-profiling --prefix=/ --datadir=. --datasubdir=.
+	cabal v1-install --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization --only-dependencies
+	cabal v1-configure --disable-library-profiling --disable-profiling --enable-optimization --prefix=/ --datadir=. --datasubdir=.
 	cabal v1-build exe:Allure
 	mkdir -p AllureOfTheStars/GameDefinition/fonts
 	cabal v1-copy --destdir=AllureOfTheStarsInstall
