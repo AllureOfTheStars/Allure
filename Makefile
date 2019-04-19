@@ -243,9 +243,6 @@ test-short-load:
 version:
 	dist/build/Allure/Allure --version
 
-#in LambdaHack/
-# cabal v1-install --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization
-
 build-binary-common:
 	cabal v1-install --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization --only-dependencies
 	cabal v1-configure --disable-library-profiling --disable-profiling --enable-optimization --prefix=/ --datadir=. --datasubdir=.
@@ -269,6 +266,8 @@ build-binary-common:
 	cp COPYLEFT AllureOfTheStars
 	cp CREDITS AllureOfTheStars
 
+#in LambdaHack/
+# cabal v1-install --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization
 build-binary-ubuntu: build-binary-common
 	cp AllureOfTheStarsInstall/bin/Allure AllureOfTheStars
 	dist/build/Allure/Allure --version > /dev/null; \
@@ -281,6 +280,14 @@ build-binary-macosx: build-binary-common
 	LH_VERSION=$$(cat ~/.Allure/stdout.txt); \
 	OS_VERSION=$$(sw_vers -productVersion); \
 	tar -czf Allure_$${LH_VERSION}_macosx-$${OS_VERSION}-amd64.tar.gz AllureOfTheStars
+
+#in LambdaHack/
+# cabal v1-install --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization -fvty
+build-binary-screen-reader-ubuntu: build-binary-common
+	cp AllureOfTheStarsInstall/bin/Allure AllureOfTheStars
+	dist/build/Allure/Allure --version > /dev/null; \
+	LH_VERSION=$$(cat ~/.Allure/stdout.txt); \
+	tar -czf Allure_$${LH_VERSION}_screen-reader-ubuntu-16.04-amd64.tar.gz AllureOfTheStars
 
 new-build-dev:
 	cabal new-build --datadir=. --disable-optimization -j1 all
