@@ -131,6 +131,10 @@ matrix:
 #      compiler: "ghc-8.4.4"
 #      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.2,ghc-8.4.4], sources: [hvr-ghc]}}
 #      os: osx
+    - env: GTKVTY=brew-sdl2-osx
+      compiler: "ghc-8.6.4"
+      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.4,ghc-8.6.4], sources: [hvr-ghc]}}
+      os: osx
     - env: GTKVTY=asserts-osx
       compiler: "ghc-8.6.4"
       addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.4,ghc-8.6.4], sources: [hvr-ghc]}}
@@ -177,7 +181,7 @@ script:
   - cd ${DISTDIR} || false
   - find . -maxdepth 1 -name '*.tar.gz' -exec tar -xvf '{}' \;
 
-  - git clone --depth=50 --branch=master git://github.com/LambdaHack/LambdaHack.git
+  - "if [[ $GTKVTY != \"brew-sdl2-osx\" ]] ; then git clone --depth=50 --branch=master git://github.com/LambdaHack/LambdaHack.git; fi"
   - cd Allure-*
   - travis_retry cabal new-update -v
   - "sed -i.bak 's/^jobs:/-- jobs:/' ${HOME}/.cabal/config"
@@ -222,6 +226,8 @@ script:
     elif [ $GTKVTY = "asserts_opt2" ]; then
       cabal new-build --only-dependencies -fvty -fwith_expensive_assertions --ghc-options="-O2 -fno-ignore-asserts" -w ${HC} -j2 .;
       cabal new-build -fvty -fwith_expensive_assertions --ghc-options="-O2 -fno-ignore-asserts" -w ${HC} ${TEST} ${BENCH} -j1 .;
+    elif [ $GTKVTY = "brew-sdl2-osx" ]; then
+      brew install AllureOfTheStars/allure/allureofthestars
     elif [ $GTKVTY = "asserts-osx" ]; then
       cabal new-build --only-dependencies -fvty -fwith_expensive_assertions -w ${HC} -j2 .;
       cabal new-build -fvty -fwith_expensive_assertions -w ${HC} ${TEST} ${BENCH} -j1 .;
@@ -237,7 +243,7 @@ script:
   - find dist-newstyle -wholename '*/build/Allure/Allure' -exec cp '{}' $ROOTDIR2/dist/build/Allure/ \;
 
   - touch /tmp/teletypetest.log;
-  - (make test-travis || (tail -n 2000 /tmp/teletypetest.log ; exit 77));
+  - "if [[ $GTKVTY != \"brew-sdl2-osx\" ]] ; then (make test-travis || (tail -n 2000 /tmp/teletypetest.log ; exit 77)); fi"
   - "if [ \"$(uname)\" != \"Darwin\" ]; then (make testDefense-medium || (tail -n 2000 /tmp/teletypetest.log ; exit 77)); fi"
 
 # REGENDATA ["--no-no-tests-no-bench","--osx=8.4.4","cabal.project","-o","foo"]
