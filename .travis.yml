@@ -183,7 +183,7 @@ script:
   - "sed -i.bak 's/^jobs:/-- jobs:/' ${HOME}/.cabal/config"
   - grep -Ev -- '^\s*--' ${HOME}/.cabal/config | grep -Ev '^\s*$'
 
-  - cp $ROOTDIR/cabal.project .
+  - cp $ROOTDIR/cabal.project.LH.dir cabal.project
   - cp $ROOTDIR/Makefile .
   - cat cabal.project || true
   - cat cabal.project.local || true
