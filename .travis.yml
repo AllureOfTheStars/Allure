@@ -229,7 +229,7 @@ script:
     elif [ $GTKVTY = "brew-sdl2-osx" ]; then
       travis_wait 30 brew install --build-from-source AllureOfTheStars/allure/allureofthestars &&
       Allure --dbgMsgSer --logPriority 0 --newGame 3 --maxFps 100000 --benchmark --stopAfterFrames 50 --automateAll --keepAutomated --gameMode battle --setDungeonRng 7 --setMainRng 7 &&
-      brew test AllureOfTheStars/allure/allureofthestars &&
+      brew test --verbose AllureOfTheStars/allure/allureofthestars &&
       brew audit --strict AllureOfTheStars/allure/allureofthestars &&
       brew audit --new-formula AllureOfTheStars/allure/allureofthestars
     elif [ $GTKVTY = "asserts-osx" ]; then
