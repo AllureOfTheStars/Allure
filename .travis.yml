@@ -31,118 +31,10 @@ before_cache:
 
 matrix:
   include:
-    - env: GTKVTY=noopt
-      compiler: "ghc-8.2.2"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.2,ghc-8.2.2], sources: [hvr-ghc]}}
-    - env: GTKVTY=opt2
-      compiler: "ghc-8.2.2"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.2,ghc-8.2.2], sources: [hvr-ghc]}}
-    - env: GTKVTY=asserts
-      compiler: "ghc-8.2.2"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.2,ghc-8.2.2], sources: [hvr-ghc]}}
-    - env: GTKVTY=asserts_noopt
-      compiler: "ghc-8.2.2"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.2,ghc-8.2.2], sources: [hvr-ghc]}}
-    - env: GTKVTY=asserts_opt2
-      compiler: "ghc-8.2.2"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.2,ghc-8.2.2], sources: [hvr-ghc]}}
-    - env: GTKVTY=vty
-      compiler: "ghc-8.2.2"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.2,ghc-8.2.2], sources: [hvr-ghc]}}
-    - env: GTKVTY=curses
-      compiler: "ghc-8.2.2"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.2,ghc-8.2.2], sources: [hvr-ghc]}}
-    - env: GTKVTY=gtk
-      compiler: "ghc-8.2.2"
-      addons: {apt: {packages: [ghc-ppa-tools,libgtk-3-dev,cabal-install-2.2,ghc-8.2.2], sources: [hvr-ghc]}}
-#    - env: GTKVTY=sdl
-#      compiler: "ghc-8.2.2"
-#      addons: {apt: {packages: [ghc-ppa-tools,libsdl2-dev,libsdl2-ttf-dev,cabal-install-2.2,ghc-8.2.2], sources: [hvr-ghc]}}
-
-    - env: GTKVTY=noopt
-      compiler: "ghc-8.4.4"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.2,ghc-8.4.4], sources: [hvr-ghc]}}
-#    - env: GTKVTY=opt2
-#      compiler: "ghc-8.4.4"
-#      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.2,ghc-8.4.4], sources: [hvr-ghc]}}
-    - env: GTKVTY=asserts
-      compiler: "ghc-8.4.4"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.2,ghc-8.4.4], sources: [hvr-ghc]}}
-    - env: GTKVTY=asserts_noopt
-      compiler: "ghc-8.4.4"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.2,ghc-8.4.4], sources: [hvr-ghc]}}
-    - env: GTKVTY=asserts_opt2
-      compiler: "ghc-8.4.4"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.2,ghc-8.4.4], sources: [hvr-ghc]}}
-    - env: GTKVTY=vty
-      compiler: "ghc-8.4.4"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.2,ghc-8.4.4], sources: [hvr-ghc]}}
-    - env: GTKVTY=curses
-      compiler: "ghc-8.4.4"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.2,ghc-8.4.4], sources: [hvr-ghc]}}
-    - env: GTKVTY=gtk
-      compiler: "ghc-8.4.4"
-      addons: {apt: {packages: [ghc-ppa-tools,libgtk-3-dev,cabal-install-2.2,ghc-8.4.4], sources: [hvr-ghc]}}
-#    - env: GTKVTY=sdl
-#      compiler: "ghc-8.4.4"
-#      addons: {apt: {packages: [ghc-ppa-tools,libsdl2-dev,libsdl2-ttf-dev, cabal-install-2.2,ghc-8.4.4], sources: [hvr-ghc]}}
-
-    - env: GTKVTY=noopt
-      compiler: "ghc-8.6.4"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.4,ghc-8.6.4], sources: [hvr-ghc]}}
-    - env: GTKVTY=opt2
-      compiler: "ghc-8.6.4"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.4,ghc-8.6.4], sources: [hvr-ghc]}}
-    - env: GTKVTY=asserts
-      compiler: "ghc-8.6.4"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.4,ghc-8.6.4], sources: [hvr-ghc]}}
-    - env: GTKVTY=asserts_noopt
-      compiler: "ghc-8.6.4"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.4,ghc-8.6.4], sources: [hvr-ghc]}}
-    - env: GTKVTY=asserts_opt2
-      compiler: "ghc-8.6.4"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.4,ghc-8.6.4], sources: [hvr-ghc]}}
-    - env: GTKVTY=vty
-      compiler: "ghc-8.6.4"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.4,ghc-8.6.4], sources: [hvr-ghc]}}
-    - env: GTKVTY=curses
-      compiler: "ghc-8.6.4"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.4,ghc-8.6.4], sources: [hvr-ghc]}}
-    - env: GTKVTY=gtk
-      compiler: "ghc-8.6.4"
-      addons: {apt: {packages: [ghc-ppa-tools,libgtk-3-dev,cabal-install-2.4,ghc-8.6.4], sources: [hvr-ghc]}}
-#    - env: GTKVTY=sdl
-#      compiler: "ghc-8.6.4"
-#      addons: {apt: {packages: [ghc-ppa-tools,libsdl2-dev,libsdl2-ttf-dev, cabal-install-2.4,ghc-8.6.4], sources: [hvr-ghc]}}
-
-    - env: GTKVTY=asserts-osx
-      compiler: "ghc-8.2.2"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.2,ghc-8.2.2], sources: [hvr-ghc]}}
-      os: osx
-#    - env: GTKVTY=asserts-osx_noopt
-#      compiler: "ghc-8.2.2"
-#      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.2,ghc-8.2.2], sources: [hvr-ghc]}}
-#      os: osx
-    - env: GTKVTY=asserts-osx
-      compiler: "ghc-8.4.4"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.2,ghc-8.4.4], sources: [hvr-ghc]}}
-      os: osx
-#    - env: GTKVTY=asserts-osx_noopt
-#      compiler: "ghc-8.4.4"
-#      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.2,ghc-8.4.4], sources: [hvr-ghc]}}
-#      os: osx
     - env: GTKVTY=brew-sdl2-osx
       compiler: "ghc-8.6.4"
       addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.4,ghc-8.6.4], sources: [hvr-ghc]}}
       os: osx
-    - env: GTKVTY=asserts-osx
-      compiler: "ghc-8.6.4"
-      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.4,ghc-8.6.4], sources: [hvr-ghc]}}
-      os: osx
-#    - env: GTKVTY=asserts-osx_noopt
-#      compiler: "ghc-8.6.4"
-#      addons: {apt: {packages: [ghc-ppa-tools,cabal-install-2.4,ghc-8.6.4], sources: [hvr-ghc]}}
-#      os: osx
 
 before_install:
   - HC=${CC}
@@ -229,9 +121,7 @@ script:
     elif [ $GTKVTY = "brew-sdl2-osx" ]; then
       travis_wait 30 brew install --build-from-source AllureOfTheStars/allure/allureofthestars &&
       Allure --dbgMsgSer --logPriority 0 --newGame 3 --maxFps 100000 --benchmark --stopAfterFrames 50 --automateAll --keepAutomated --gameMode battle --setDungeonRng 7 --setMainRng 7 &&
-      brew test --verbose AllureOfTheStars/allure/allureofthestars &&
-      brew audit --strict AllureOfTheStars/allure/allureofthestars &&
-      brew audit --new-formula AllureOfTheStars/allure/allureofthestars
+      brew test --verbose --debug AllureOfTheStars/allure/allureofthestars
     elif [ $GTKVTY = "asserts-osx" ]; then
       cabal new-build --only-dependencies -fvty -fwith_expensive_assertions -w ${HC} -j2 .;
       cabal new-build -fvty -fwith_expensive_assertions -w ${HC} ${TEST} ${BENCH} -j1 .;
