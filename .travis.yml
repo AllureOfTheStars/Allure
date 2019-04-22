@@ -120,6 +120,7 @@ script:
       cabal new-build -fvty -fwith_expensive_assertions --ghc-options="-O2 -fno-ignore-asserts" -w ${HC} ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "brew-sdl2-osx" ]; then
       travis_wait 30 brew install --build-from-source AllureOfTheStars/allure/allureofthestars &&
+      cat /private/tmp/homebrew20190422-*.sb &&
       Allure --dbgMsgSer --newGame 3 --maxFps 100000 --stopAfterFrames 2 --automateAll --keepAutomated --gameMode battle --setDungeonRng 7 --setMainRng 7 --frontendNull &&
       /usr/local/Cellar/allureofthestars/0.9.4.0/bin/Allure --dbgMsgSer --newGame 3 --maxFps 100000 --frontendNull --stopAfterFrames 2 --automateAll --keepAutomated --gameMode battle --setDungeonRng 7 --setMainRng 7 --benchmark &&
       travis_wait 30 brew test --verbose --debug AllureOfTheStars/allure/allureofthestars
