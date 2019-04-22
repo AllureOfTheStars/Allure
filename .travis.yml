@@ -121,6 +121,7 @@ script:
     elif [ $GTKVTY = "brew-sdl2-osx" ]; then
       travis_wait 30 brew install --build-from-source AllureOfTheStars/allure/allureofthestars &&
       Allure --dbgMsgSer --newGame 3 --maxFps 100000 --stopAfterFrames 2 --automateAll --keepAutomated --gameMode battle --setDungeonRng 7 --setMainRng 7 --frontendNull &&
+      /usr/local/Cellar/allureofthestars/0.9.4.0/bin/Allure --dbgMsgSer --newGame 3 --maxFps 100000 --frontendNull --stopAfterFrames 2 --automateAll --keepAutomated --gameMode battle --setDungeonRng 7 --setMainRng 7 --benchmark &&
       travis_wait 30 brew test --verbose --debug AllureOfTheStars/allure/allureofthestars
     elif [ $GTKVTY = "asserts-osx" ]; then
       cabal new-build --only-dependencies -fvty -fwith_expensive_assertions -w ${HC} -j2 .;
