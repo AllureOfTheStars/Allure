@@ -120,11 +120,10 @@ script:
       cabal new-build -fvty -fwith_expensive_assertions --ghc-options="-O2 -fno-ignore-asserts" -w ${HC} ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "brew-sdl2-osx" ]; then
       travis_wait 40 brew install --build-from-source AllureOfTheStars/allure/allureofthestars &&
-      cat /private/tmp/homebrew20190422-*.sb &&
-      /usr/local/Cellar/allureofthestars/0.9.4.0/bin/Allure --dbgMsgSer --newGame 3 --maxFps 100000 --frontendNull --stopAfterFrames 2 --automateAll --keepAutomated --gameMode battle --setDungeonRng 7 --setMainRng 7 --benchmark &&
-      travis_wait 40 brew test --verbose --debug AllureOfTheStars/allure/allureofthestars &&
-      cat /private/tmp/homebrew20190422-*.sb &&
-      tail -200 /var/log/system.log
+      /usr/local/Cellar/allureofthestars/0.9.4.0/bin/Allure --dbgMsgSer --newGame 3 --maxFps 100000 --benchmark --frontendNull --stopAfterFrames 2 --automateAll --keepAutomated --gameMode battle --setDungeonRng 7 --setMainRng 7 &&
+      travis_wait 40 brew test --verbose --debug AllureOfTheStars/allure/allureofthestars ;
+      tail -300 /var/log/system.log ;
+      cat /private/tmp/homebrew20190422-*.sb ;
     elif [ $GTKVTY = "asserts-osx" ]; then
       cabal new-build --only-dependencies -fvty -fwith_expensive_assertions -w ${HC} -j2 .;
       cabal new-build -fvty -fwith_expensive_assertions -w ${HC} ${TEST} ${BENCH} -j1 .;
