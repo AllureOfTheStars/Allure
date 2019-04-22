@@ -123,7 +123,6 @@ script:
       /usr/local/Cellar/allureofthestars/0.9.4.0/bin/Allure --dbgMsgSer --newGame 3 --maxFps 100000 --benchmark --frontendNull --stopAfterFrames 2 --automateAll --keepAutomated --gameMode battle --setDungeonRng 7 --setMainRng 7 &&
       travis_wait 40 brew test --verbose --debug AllureOfTheStars/allure/allureofthestars ;
       tail -300 /var/log/system.log ;
-      cat /private/tmp/homebrew20190422-*.sb ;
     elif [ $GTKVTY = "asserts-osx" ]; then
       cabal new-build --only-dependencies -fvty -fwith_expensive_assertions -w ${HC} -j2 .;
       cabal new-build -fvty -fwith_expensive_assertions -w ${HC} ${TEST} ${BENCH} -j1 .;
