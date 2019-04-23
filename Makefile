@@ -258,8 +258,8 @@ build-binary-common:
 	cp GameDefinition/fonts/LICENSE.16x16x AllureOfTheStars/GameDefinition/fonts
 	cp GameDefinition/fonts/Fix15Mono-Bold.woff AllureOfTheStars/GameDefinition/fonts
 	cp GameDefinition/fonts/LICENSE.Fix15Mono-Bold AllureOfTheStars/GameDefinition/fonts
-	cp GameDefinition/PLAYING.md AllureOfTheStars/GameDefinition
 	cp GameDefinition/InGameHelp.txt AllureOfTheStars/GameDefinition
+	cp GameDefinition/PLAYING.md AllureOfTheStars/GameDefinition
 	cp README.md AllureOfTheStars
 	cp CHANGELOG.md AllureOfTheStars
 	cp LICENSE AllureOfTheStars
