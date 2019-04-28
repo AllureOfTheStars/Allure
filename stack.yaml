@@ -1,8 +1,10 @@
-resolver: nightly-2018-06-07
+resolver: lts-13.18
 
 packages: ['.']
 
-extra-deps: []
+extra-deps:
+- git: git@github.com:LambdaHack/LambdaHack.git
+  commit: master
 
 flags: {}
 
