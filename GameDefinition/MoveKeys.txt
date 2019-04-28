@@ -1,19 +1,20 @@
 7 8 9        Walk throughout a level with the mouse or the numeric keypad
  \|/         (top diagram) or the Vi editor keys (bottom) or with a compact
 4-5-6        laptop setup (middle) that needs to be enabled in config.ui.ini.
- /|\         Run until disturbed with Shift or Control. Go-to a position
-1 2 3        with LMB (left mouse button). Run collectively with S-LMB
+ /|\
+1 2 3        Run until disturbed with Shift or Control. Go-to a position
+             with LMB (left mouse button). Run collectively with S-LMB
              (press the button while holding Shift).
-
-7 8 9        In aiming mode, the same keys (and mouse) move the x-hair
- \|/         (aiming crosshair). Press `KP_5` (`5` on keypad) to wait,
-u-i-o        bracing for impact, which reduces any damage taken
- /|\         and prevents displacement by foes. Press `C-KP_5` or `C-KP_5`
-j k l        (the same key with Shift or Control) to lurk 0.1 of a turn,
+7 8 9
+ \|/         In aiming mode, the same keys (and mouse) move the x-hair
+u-i-o        (aiming crosshair). Press `KP_5` (`5` on keypad) to wait,
+ /|\         bracing for impact, which reduces any damage taken
+j k l        and prevents displacement by foes. Press `C-KP_5` or `C-KP_5`
+             (the same key with Shift or Control) to lurk 0.1 of a turn,
              without bracing.
-
-y k u        You displace enemies by running into them with Shift/Control
- \|/         or S-LMB. Search, open, descend and attack by bumping into
-h-.-l        walls, doors, stairs and enemies. The best item to attack with
- /|\         is automatically chosen from among melee weapons in your
-b j n        personal equipment and your body parts.
+y k u
+ \|/         You displace enemies by running into them with Shift/Control
+h-.-l        or S-LMB. Search, open, descend and attack by bumping into
+ /|\         walls, doors, stairs and enemies. The best item to attack with
+b j n        is automatically chosen from among melee weapons in your
+             personal equipment and your body parts.
