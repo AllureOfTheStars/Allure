@@ -1,6 +1,6 @@
 7 8 9        Walk throughout a level with the mouse or the numeric keypad
- \|/         (top diagram) or with its compact laptop replacement (middle)
-4-5-6        or the Vi editor keys (bottom) selectable in config.ui.ini.
+ \|/         (top diagram) or the Vi editor keys (bottom) or with a compact
+4-5-6        laptop setup (middle) that needs to be enabled in config.ui.ini.
  /|\         Run until disturbed with Shift or Control. Go-to a position
 1 2 3        with LMB (left mouse button). Run collectively with S-LMB
              (press the button while holding Shift).
