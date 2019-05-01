@@ -38,7 +38,7 @@ standardRules = RuleContent
       qAddDependentFile path
       x <- qRunIO (readFile path)
       lift x)
-  , rwriteSaveClips = 1000000
+  , rwriteSaveClips = 1000
   , rleadLevelClips = 50
   , rscoresFile = "Allure.scores"
   , rnearby = 20
