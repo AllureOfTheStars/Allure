@@ -1,5 +1,9 @@
 ## [v0.9.5.0](https://github.com/LambdaHack/LambdaHack/compare/v0.9.4.0...v0.9.5.0)
 
+- Fix commited debug value of rwriteSaveClips
+- Clone the main main menu commands as map mode commands
+- Add C-RMB and C-S-LMB as alternatives of MMB
+- Announce prominently MMB binding for describing map positions
 - Break the misleading alignment of movement key help paragraphs and pictures
 - Clean up the default config file, keeping compatibility
 - Make scenario names longer and slighlty more informative
