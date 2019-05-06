@@ -278,12 +278,12 @@ suspect tiles are considered for auto-explore and for the `C-?` command that
 marks the nearest unexplored position.
 
 The "lone wolf" challenge mode reduces player's starting actors to exactly
-one (consequently, this does not affect the initial 'raid' scenario).
+one (consequently, this does not affect the initial 'solo raid' scenario).
 The "cold fish" challenge mode makes it impossible for player characters
 to be healed by actors from other factions (this is a significant
-restriction in the final 'crawl' scenario).
+restriction in the final 'upward crawl' scenario).
 
-For a person new to roguelikes, the 'raid' scenario offers a gentle
+For a person new to roguelikes, the 'solo raid' scenario offers a gentle
 introduction. The subsequent game scenarios lead the player along
 an optional story arc. They gradually introduce squad combat,
 stealth, opportunity fire, asymmetric battles and more.
@@ -291,7 +291,7 @@ Starting from the second scenario, the player controls a whole team
 of characters and will develop his repertoire of squad formations,
 preferred rendezvous locations and the use of light sources.
 
-The last scenario, a multi-level crawl, is the gist and the main challenge
+The last scenario, the upward crawl, is the gist and the main challenge
 of the game. It spans 15 varied spaceship decks, requiring lots of time,
 focus and flexibility to beat and providing considerable replayability.
 The player has a choice of exploring a single level at a time or portions
@@ -305,11 +305,11 @@ The size of the crawl scenario calls for strategic thinking, including
 resource management, area denial and unavoidable temporary retreats
 to other levels. Compared to that, the smaller scenarios, where the arena
 is a single floor only, provide a mostly tactical training
-and additional entertainment by trying to beat a high-score.
-They offer variety and a breather between the deaths^H^H^H^H^H^H the brave
-attempts at the long crawl scenario. Some gameplay elements,
+and additional entertainment via trying to beat a high score.
+They offer variety and a breather between the attempts
+at the long crawl scenario. Some gameplay elements,
 however, like totally symmetric skirmishes, a race to the exit or heavy
-reliance on opportunity fire, feature only in the small scenarios.
+reliance on opportunity fire, feature only in the smaller scenarios.
 
 
 Monsters
