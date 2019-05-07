@@ -4,9 +4,9 @@ name:           Allure
 -- for standards guiding when and how versions should be incremented.
 -- http://www.haskell.org/haskellwiki/Package_versioning_policy
 -- PVP summary:+-+------- breaking API changes
---             | | +----- minor or non-breaking API additions
---             | | | +--- code changes with no API change
-version:       0.9.6.0
+--             | |  +----- minor or non-breaking API additions
+--             | |  | +--- code changes with no API change
+version:       0.10.0.0
 synopsis:      Near-future Sci-Fi roguelike and tactical squad combat game
 description:   Allure of the Stars is a near-future Sci-Fi roguelike
                and tactical squad combat game. Binaries and the game manual
@@ -134,7 +134,7 @@ library
                       Implementation.MonadServerImplementation
   other-modules:      Paths_Allure
   autogen-modules:    Paths_Allure
-  build-depends:      ,LambdaHack >= 0.9.6.0 && < 0.9.7.0
+  build-depends:      ,LambdaHack >= 0.10.0.0 && < 0.10.1.0
                       ,async
                       ,base >= 4.10 && < 99
                       ,enummapset
