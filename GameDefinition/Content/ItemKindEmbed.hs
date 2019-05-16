@@ -541,13 +541,12 @@ decontaminator = ItemKind
   , ieffects = [ DropItem 1 1 COrgan "genetic flaw"
                , DropItem maxBound maxBound CEqp "common item"
                , DropItem maxBound maxBound CStash "common item"
-               , DropItem maxBound maxBound CStash "common item"
                , DropItem maxBound maxBound CEqp "curious item"
-               , DropItem maxBound maxBound CStash "curious item"
                , DropItem maxBound maxBound CStash "curious item"
                , DropItem maxBound maxBound CEqp "treasure"
                , DropItem maxBound maxBound CStash "treasure"
-               , DropItem maxBound maxBound CStash "treasure"
+                   -- With movable shared stash location this puzzle now has
+                   -- more solutions, including one for a lone wolf.
                , toOrganGood "rose-smelling" (20 + 1 `d` 5)
                ]
   , idesc    = "The area is under quarantine. No departure is permitted without decontamination. Personal belongings are to be decontaminated separately."
