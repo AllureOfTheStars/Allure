@@ -48,9 +48,9 @@ standardKeysAndMouse = InputContentRaw $ map evalKeyDef $
 
   -- Minimal command set, in the desired presentation order.
   -- A lot of these are not necessary, but may be familiar to new players.
-  , ("E", ( [CmdMinimal, CmdItem, CmdDashboard]
-          , "manage equipment of the leader"
-          , ChooseItemMenu (MStore CEqp) ))
+  , ("I", ( [CmdMinimal, CmdItem, CmdDashboard]
+          , "manage the shared inventory stash"
+          , ChooseItemMenu (MStore CStash) ))
   , ("g", addCmdCategory CmdMinimal $ grabItems "grab item(s)")
   , ("Escape", ( [CmdMinimal, CmdAim]
                , "open main menu/finish aiming"
@@ -73,37 +73,32 @@ standardKeysAndMouse = InputContentRaw $ map evalKeyDef $
   , ("BackTab", ( [CmdMinimal, CmdMove]
               , "cycle among all party members"
               , MemberBack ))
-  , ("KP_Multiply", ( [CmdMinimal, CmdAim]
+  , ("*", ( [CmdMinimal, CmdAim]
                     , "cycle x-hair among enemies"
                     , AimEnemy ))
-  , ("KP_Divide", ([CmdMinimal, CmdAim], "cycle x-hair among items", AimItem))
-  , ("c", ( [CmdMinimal, CmdMove]
-          , descTs closeDoorTriggers
+  , ("/", ([CmdMinimal, CmdAim], "cycle x-hair among items", AimItem))
+  , ("m", ( [CmdMinimal, CmdMove]
+          , "modify door by closing it"
           , AlterDir closeDoorTriggers ))
-  , ("%", ([CmdMinimal, CmdMeta], "yell/yawn", Yell))
+  , ("%", ([CmdMinimal, CmdMeta], "yell/yawn and stop sleeping", Yell))
 
   -- Item menu, first part of item use commands
   , ("comma", grabItems "")
-  , ("d", dropItems "drop item(s)")
-  , ("period", dropItems "")
+  , ("r", dropItems "remove item(s)")
   , ("f", addCmdCategory CmdItemMenu $ projectA flingTs)
   , ("C-f", addCmdCategory CmdItemMenu
             $ replaceDesc "auto-fling and keep choice"
             $ projectI flingTs)
-  , ("a", addCmdCategory CmdItemMenu $ applyI applyTs)
-  , ("C-a", addCmdCategory CmdItemMenu
-            $ replaceDesc "apply and keep choice" $ applyIK applyTs)
-  , ("p", moveItemTriple [CGround, CEqp, CSha] CInv
-                         "item" False)
-  , ("i", replaceDesc "" $ moveItemTriple [CGround, CEqp, CSha] CInv
-                                          "item" False)
-  , ("e", moveItemTriple [CGround, CInv, CSha] CEqp
-                         "item" False)
-  , ("s", moveItemTriple [CGround, CInv, CEqp] CSha
-                         "and share item" False)
+  , ("t", addCmdCategory CmdItemMenu $ applyI applyTs)
+  , ("C-t", addCmdCategory CmdItemMenu
+            $ replaceDesc "trigger item and keep choice" $ applyIK applyTs)
+  , ("i", replaceDesc "stash item into shared inventory"
+          $ moveItemTriple [CGround, CEqp] CStash "item" False)
+  , ("o", replaceDesc "equip item into outfit of the leader"
+          $ moveItemTriple [CGround, CStash] CEqp "item" False)
 
-  -- Terrain exploration and alteration
-  , ("C", ([CmdMove], "open or close or alter", AlterDir []))
+  -- Terrain exploration and modification
+  , ("M", ([CmdMove], "modify any admissible terrain", AlterDir []))
   , ("=", ( [CmdMove], "select (or deselect) party member", SelectActor) )
   , ("_", ([CmdMove], "deselect (or select) all on the level", SelectNone))
   , ("semicolon", ( [CmdMove]
@@ -112,10 +107,10 @@ standardKeysAndMouse = InputContentRaw $ map evalKeyDef $
   , ("colon", ( [CmdMove]
               , "run to x-hair collectively for 25 steps"
               , Macro ["C-colon", "C-quotedbl", "C-V"] ))
-  , ("x", ( [CmdMove]
+  , ("[", ( [CmdMove]
           , "explore nearest unknown spot"
           , autoexploreCmd ))
-  , ("X", ( [CmdMove]
+  , ("]", ( [CmdMove]
           , "autoexplore 25 times"
           , autoexplore25Cmd ))
   , ("R", ([CmdMove], "rest (wait 25 times)", Macro ["KP_Begin", "C-V"]))
@@ -123,20 +118,14 @@ standardKeysAndMouse = InputContentRaw $ map evalKeyDef $
             , Macro ["C-KP_Begin", "V"] ))
 
   -- Item use, continued
-  , ("P", ( [CmdItem, CmdDashboard]
-          , "manage inventory pack of the leader"
-          , ChooseItemMenu (MStore CInv) ))
-  , ("I", ( [CmdItem, CmdDashboard]
-          , ""
-          , ChooseItemMenu (MStore CInv) ))
-  , ("S", ( [CmdItem, CmdDashboard]
-          , "manage the shared party stash"
-          , ChooseItemMenu (MStore CSha) ))
+  , ("O", ( [CmdItem, CmdDashboard]
+          , "manage the equipment outfit of the leader"
+          , ChooseItemMenu (MStore CEqp) ))
   , ("G", ( [CmdItem, CmdDashboard]
           , "manage items on the ground"
           , ChooseItemMenu (MStore CGround) ))
-  , ("A", ( [CmdItem, CmdDashboard]
-          , "manage all owned items"
+  , ("T", ( [CmdItem, CmdDashboard]
+          , "manage our total team belongings"
           , ChooseItemMenu MOwned ))
   , ("@", ( [CmdItem, CmdDashboard]
           , "describe organs of the leader"
@@ -164,8 +153,6 @@ standardKeysAndMouse = InputContentRaw $ map evalKeyDef $
   , ("safeD99", ([CmdInternal, CmdDashboard], "", Cancel))  -- blank line
 
   -- Aiming
-  , ("!", ([CmdAim], "", AimEnemy))
-  , ("/", ([CmdAim], "", AimItem))
   , ("+", ([CmdAim], "swerve the aiming line", EpsIncr True))
   , ("-", ([CmdAim], "unswerve the aiming line", EpsIncr False))
   , ("\\", ([CmdAim], "cycle aiming modes", AimFloor))
@@ -195,7 +182,6 @@ standardKeysAndMouse = InputContentRaw $ map evalKeyDef $
   -- Assorted (first few cloned from main menu)
   , ("C-s", ([CmdMeta], "start new game", GameRestart))
   , ("C-x", ([CmdMeta], "save and exit to desktop", GameExit))
-  , ("C-t", ([CmdMeta], "toggle autoplay (insert coin)", Automate))
   , ("C-q", ([CmdMeta], "quit game and start autoplay", GameQuit))
   , ("C-c", ([CmdMeta], "exit to desktop without saving", GameDrop))
   , ("?", ([CmdMeta], "display help", Hint))
@@ -222,7 +208,7 @@ standardKeysAndMouse = InputContentRaw $ map evalKeyDef $
   , ("RightButtonRelease", mouseRMB)
   , ("C-LeftButtonRelease", replaceDesc "" mouseRMB)  -- Mac convention
   , ( "S-RightButtonRelease"
-    , ([CmdMouse], "open or close or alter at pointer", AlterWithPointer []) )
+    , ([CmdMouse], "modify terrain at pointer", AlterWithPointer []) )
   , ("MiddleButtonRelease", mouseMMB)
   , ("C-RightButtonRelease", replaceDesc "" mouseMMB)
   , ( "C-S-LeftButtonRelease",
@@ -278,7 +264,7 @@ standardKeysAndMouse = InputContentRaw $ map evalKeyDef $
                , "snap x-hair to enemy"
                , XhairPointerEnemy ))
   ]
-  ++ map defaultHeroSelect [0..6]
+  ++ map defaultHeroSelect [0..9]
 
 closeDoorTriggers :: [TriggerTile]
 closeDoorTriggers =
@@ -291,6 +277,6 @@ closeDoorTriggers =
   ]
 
 applyTs :: [TriggerItem]
-applyTs = [TriggerItem { tiverb = "apply"
-                       , tiobject = "consumable"
+applyTs = [TriggerItem { tiverb = "trigger"
+                       , tiobject = "consumable item"
                        , tisymbols = "!,?-" }]
