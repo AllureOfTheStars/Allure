@@ -66,7 +66,7 @@ obscenePictogram = ItemKind
   , ieffects = [ VerbMsg "enter inexplicable rage at a glimpse of the inscrutable graffiti"
                , RefillCalm (-20)
                , OneOf [ toOrganGood "strengthened" (3 + 1 `d` 2)
-                       , CreateItem CInv "sandstone rock" timerNone ] ]
+                       , CreateItem CStash "sandstone rock" timerNone ] ]
   , idesc    = ""  -- alien writing? or runaway robot AI?
   , ikit     = []
   }
@@ -170,7 +170,7 @@ fireBig = fireSmall
   , iname    = "big fire"
   , ifreq    = [("big fire", 1)]
   , ieffects = [ Burn 2
-               , CreateItem CInv "wooden torch" timerNone
+               , CreateItem CStash "wooden torch" timerNone
                , Explode "spark" ]
   , idesc    = "Glowing with light and warmth."
   , ikit     = []
@@ -416,7 +416,7 @@ ruinedFirstAidKit = ItemKind
                , OneOf [ toOrganNoTimer "poison resistant"
                        , toOrganNoTimer "slow resistant"
                        , toOrganGood "drunk" (20 + 1 `d` 5) ]
-               , CreateItem CInv "needle" timerNone ]
+               , CreateItem CStash "needle" timerNone ]
   , idesc    = ""  -- regulations require; say HP not regenerated in the game; mention how to regain HP
   , ikit     = []
   }
@@ -540,14 +540,14 @@ decontaminator = ItemKind
   , iaspects = [SetFlag Durable]
   , ieffects = [ DropItem 1 1 COrgan "genetic flaw"
                , DropItem maxBound maxBound CEqp "common item"
-               , DropItem maxBound maxBound CInv "common item"
-               , DropItem maxBound maxBound CSha "common item"
+               , DropItem maxBound maxBound CStash "common item"
+               , DropItem maxBound maxBound CStash "common item"
                , DropItem maxBound maxBound CEqp "curious item"
-               , DropItem maxBound maxBound CInv "curious item"
-               , DropItem maxBound maxBound CSha "curious item"
+               , DropItem maxBound maxBound CStash "curious item"
+               , DropItem maxBound maxBound CStash "curious item"
                , DropItem maxBound maxBound CEqp "treasure"
-               , DropItem maxBound maxBound CInv "treasure"
-               , DropItem maxBound maxBound CSha "treasure"
+               , DropItem maxBound maxBound CStash "treasure"
+               , DropItem maxBound maxBound CStash "treasure"
                , toOrganGood "rose-smelling" (20 + 1 `d` 5)
                ]
   , idesc    = "The area is under quarantine. No departure is permitted without decontamination. Personal belongings are to be decontaminated separately."

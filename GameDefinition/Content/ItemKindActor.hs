@@ -71,19 +71,19 @@ warrior2 = warrior
 warrior3 = warrior
   { iname    = "engineer"
   , ifreq    = [("crawl hero", 100), ("mobile", 1)]
-  , ikit     = ikit warrior ++ [("currency", CSha)]
+  , ikit     = ikit warrior ++ [("currency", CStash)]
   -- , idesc    = ""
   }
 warrior4 = warrior
   { iname    = "doctor"
   , ifreq    = [("crawl hero", 100), ("mobile", 1)]
-  , ikit     = ikit warrior ++ [("currency", CSha)]
+  , ikit     = ikit warrior ++ [("currency", CStash)]
   -- , idesc    = ""
   }
 warrior5 = warrior
   { iname    = "hacker"
   , ifreq    = [("crawl hero", 100), ("mobile", 1)]
-  , ikit     = ikit warrior ++ [("currency", CSha)]
+  , ikit     = ikit warrior ++ [("currency", CStash)]
   -- , idesc    = ""
   }
 
@@ -93,7 +93,7 @@ scout = warrior
   , ikit     = humanOrgans  -- no flaw
                ++ [ ("add sight", CEqp)
                   , ("armor ranged", CEqp)
-                  , ("add nocto 1", CInv) ]
+                  , ("add nocto 1", CStash) ]
   -- , idesc    = ""
   }
 ranger = warrior
@@ -101,7 +101,7 @@ ranger = warrior
   , ifreq    = [("ranger hero", 100), ("mobile", 1)]
   , ikit     = humanOrgans  -- no flaw
                ++ [ ("armor ranged", CEqp)
-                  , ("weak arrow", CInv) ]
+                  , ("weak arrow", CStash) ]
   -- , idesc    = ""
   }
 escapist = warrior
@@ -110,10 +110,10 @@ escapist = warrior
   , ikit     = humanOrgans  -- no flaw
                ++ [ ("add sight", CEqp)
                   , ("armor ranged", CEqp)
-                  , ("weak arrow", CInv)  -- mostly for probing
-                  , ("light source", CInv)
-                  , ("wooden torch", CInv)
-                  , ("blanket", CInv) ]
+                  , ("weak arrow", CStash)  -- mostly for probing
+                  , ("light source", CStash)
+                  , ("wooden torch", CStash)
+                  , ("blanket", CStash) ]
   -- , idesc    = ""
   }
 ambusher = warrior
@@ -121,11 +121,11 @@ ambusher = warrior
   , ifreq    = [("ambusher hero", 100), ("mobile", 1)]
   , ikit     = humanOrgans  -- dark and numerous, so more kit without exploring
                ++ [ ("ring of opportunity sniper", CEqp)
-                  , ("any arrow", CSha)
-                  , ("weak arrow", CInv)
-                  , ("explosive", CSha)
+                  , ("any arrow", CStash)
+                  , ("weak arrow", CStash)
+                  , ("explosive", CStash)
                   , ("light source", CEqp)
-                  , ("wooden torch", CInv) ]
+                  , ("wooden torch", CStash) ]
   -- , idesc    = ""
   }
 soldier = warrior
@@ -133,7 +133,7 @@ soldier = warrior
   , ifreq    = [("soldier hero", 100), ("mobile", 1)]
   , ikit     = humanOrgans  -- no flaw
                ++ [ ("starting weapon", CEqp)
-                  , ("explosive", CSha) ]
+                  , ("explosive", CStash) ]
   -- , idesc    = ""
   }
 
@@ -256,8 +256,8 @@ elbow = ItemKind
                , ("eye 6", COrgan), ("ear 8", COrgan)
                    -- too powerful to get stronger sight
                , ("sapient brain", COrgan)
-               , ("any arrow", CSha), ("any arrow", CInv)
-               , ("weak arrow", CInv), ("weak arrow", CInv) ]
+               , ("any arrow", CStash), ("any arrow", CStash)
+               , ("weak arrow", CStash), ("weak arrow", CStash) ]
   }
 torsor = ItemKind
   { isymbol  = 'M'
@@ -286,7 +286,8 @@ torsor = ItemKind
                , ("speed gland 5", COrgan)
                , ("eye 6", COrgan), ("ear 8", COrgan)
                , ("sapient brain", COrgan)
-               , ("gem", CInv), ("gem", CInv), ("gem", CInv), ("gem", CInv) ]
+               , ("gem", CStash), ("gem", CStash)
+               , ("gem", CStash), ("gem", CStash) ]
   }
 
 -- * Animals
@@ -686,7 +687,7 @@ activeFence = ItemKind
   , ieffects = []
   , idesc    = "Makeshift, mostly non-lethal, autonomous perimeter defense outpost."
   , ikit     = [ ("vision 6", COrgan)
-               , ("needle", CInv), ("can of sticky foam", CInv) ]
+               , ("needle", CStash), ("can of sticky foam", CStash) ]
                    -- can of sticky foam is exploitable, but it spawns
                    -- reasonably often only on one level and not for
                    -- a long period
@@ -813,7 +814,7 @@ huntingDrone = ItemKind
   , ikit     = [ ("eye 8", COrgan), ("nostril", COrgan), ("ear 8", COrgan)
                    -- week projectiles, so strong sight OK
                , ("robot brain", COrgan)
-               , ("needle", CInv), ("tranquillizer dart", CInv) ]
+               , ("needle", CStash), ("tranquillizer dart", CStash) ]
   }
 homeRobot = ItemKind
   { isymbol  = 'r'
@@ -961,7 +962,9 @@ cleanerRobot = ItemKind
                , ("boiling vent", COrgan), ("hull plating", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan), ("ear 6", COrgan)
                , ("robot brain", COrgan)
-               , ("currency", CInv), ("currency", CInv), ("currency", CInv)
+               , ("currency", CStash)
+               , ("currency", CStash)
+               , ("currency", CStash)
                , ("waste container", CEqp), ("spotlight", CEqp)
                , ("construction hooter", CEqp) ]
   }
