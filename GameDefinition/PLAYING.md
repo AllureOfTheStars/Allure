@@ -3,38 +3,45 @@ Playing Allure of the Stars
 
 The following blurb is a copy of the game intro screen.
 
- Your party of trusty explorers is about to test
- its fortune by plundering a vast derelict
- passenger cruiser. The spaceship was abandoned
- and lost after an accident at the Solar System's
- outer frontier, but recently unexpectedly
- reappeared. Reportedly, deposit safes and jewelry
- inventories were never salvaged. Neither were
- emptied the gilded robot holds, the expensive
- arboretum nor the extravagant whole-deck habitat
+ Your party of trusty explorers is
+ about to test its fortune by
+ plundering a vast derelict passenger
+ cruiser. The spaceship was
+ abandoned and lost after an accident
+ at the Solar System's outer frontier,
+ but recently unexpectedly reappeared.
+ Reportedly, deposit safes and jewelry
+ inventories were never salvaged.
+ Neither were emptied the gilded robot
+ holds, the expensive arboretum nor
+ the extravagant whole-deck habitat
  of natural and enhanced wild animals.
 
- Up to this day, countless autonomous life support
- and damage mitigation subsystems with redundant
- power sources busy themselves throughout dozens
- of decks. They seem successful, because there are
- abundant traces of ongoing metabolism all over
- the ship. That should make exploration so much
- easier.
+ Up to this day, countless autonomous
+ life support and damage mitigation
+ subsystems with redundant power sources
+ busy themselves throughout dozens
+ of decks. They seem successful, because
+ there are abundant traces of ongoing
+ metabolism all over the ship. That
+ should make exploration so much easier.
 
- Yours can't be the only shady Neptune Area crew
- interested in the giant wreck, so you shouldn't
- count on reaching it unopposed. The feral
- outer frontier denizens are not famed
- for scruples nor for restraint when using
- hazardous nano, cyber and bio technologies,
- so never assume you are safe. Be ready to hide
- in shadows, create distractions, set up ambushes,
- bump into unspeakable horrors, puzzling machinery
- and astounding treasures and make creative use
- of all you find, because you are on your own.
- If ever you turn your back in fear, expect to be
- chased tirelessly by sight, sound and smell.
+ Yours can't be the only shady Neptune
+ Area crew interested in the giant wreck,
+ so you shouldn't count on reaching it
+ unopposed. The feral outer frontier
+ denizens are not famed for scruples
+ nor for restraint when using hazardous
+ nano, cyber and bio technologies,
+ so never assume you are safe.
+ Be ready to hide in shadows, create
+ distractions, set up ambushes, bump into
+ unspeakable horrors, puzzling machinery
+ and astounding treasures and make
+ creative use of all you find, because
+ you are on your own. If ever you turn
+ your back in fear, expect to be chased
+ tirelessly by sight, sound and smell.
 
 Allure of the Stars is a turn-based game. You issue a command.
 Then you watch its results unfold on the screen without you being able
