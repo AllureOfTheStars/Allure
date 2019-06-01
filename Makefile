@@ -256,8 +256,9 @@ build-binary-common:
 	cp GameDefinition/fonts/8x8xb.fnt AllureOfTheStars/GameDefinition/fonts
 	cp GameDefinition/fonts/8x8x.fnt AllureOfTheStars/GameDefinition/fonts
 	cp GameDefinition/fonts/LICENSE.16x16x AllureOfTheStars/GameDefinition/fonts
-	cp GameDefinition/fonts/Fix15Mono-Bold.woff AllureOfTheStars/GameDefinition/fonts
-	cp GameDefinition/fonts/LICENSE.Fix15Mono-Bold AllureOfTheStars/GameDefinition/fonts
+	cp GameDefinition/fonts/source-code-pro-v9-latin_latin-ext-700.woff LambdaHackTheGame/GameDefinition/fonts
+	cp GameDefinition/fonts/source-sans-pro-v12-latin_latin-ext-700.woff LambdaHackTheGame/GameDefinition/fonts
+	cp GameDefinition/fonts/OFL.txt LambdaHackTheGame/GameDefinition/fonts
 	cp GameDefinition/InGameHelp.txt AllureOfTheStars/GameDefinition
 	cp GameDefinition/PLAYING.md AllureOfTheStars/GameDefinition
 	cp README.md AllureOfTheStars
