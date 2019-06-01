@@ -41,16 +41,20 @@ standardKeysAndMouse = InputContentRaw $ map evalKeyDef $
   , ("s", ([CmdMainMenu], "start new game", GameRestart))
   , ("x", ([CmdMainMenu], "save and exit to desktop", GameExit))
   , ("v", ([CmdMainMenu], "visit settings menu>", SettingsMenu))
-  , ("t", ([CmdMainMenu], "toggle autoplay (insert coin)", AutomateToggle))
+  , ("t", ([CmdMainMenu], "toggle autoplay", AutomateToggle))
   , ("?", ([CmdMainMenu], "see command help", Help))
   , ("F12", ([CmdMainMenu], "switch to dashboard", Dashboard))
   , ("Escape", ([CmdMainMenu], "back to playing", AutomateBack))
 
   -- Minimal command set, in the desired presentation order.
   -- A lot of these are not necessary, but may be familiar to new players.
+  -- Also a few non-minimal item commands to keep proper order.
   , ("I", ( [CmdMinimal, CmdItem, CmdDashboard]
           , "manage the shared inventory stash"
           , ChooseItemMenu (MStore CStash) ))
+  , ("O", ( [CmdItem, CmdDashboard]
+          , "manage the equipment outfit of the pointman"
+          , ChooseItemMenu (MStore CEqp) ))
   , ("g", addCmdCategory CmdMinimal $ grabItems "grab item(s)")
   , ("Escape", ( [CmdMinimal, CmdAim]
                , "open main menu/finish aiming"
@@ -74,8 +78,8 @@ standardKeysAndMouse = InputContentRaw $ map evalKeyDef $
               , "cycle among all party members"
               , MemberBack ))
   , ("*", ( [CmdMinimal, CmdAim]
-                    , "cycle x-hair among enemies"
-                    , AimEnemy ))
+          , "cycle x-hair among enemies"
+          , AimEnemy ))
   , ("/", ([CmdMinimal, CmdAim], "cycle x-hair among items", AimItem))
   , ("m", ( [CmdMinimal, CmdMove]
           , "modify door by closing it"
@@ -117,23 +121,20 @@ standardKeysAndMouse = InputContentRaw $ map evalKeyDef $
   , ("C-R", ( [CmdMove], "heed (lurk 0.1 turns 100 times)"
             , Macro ["C-KP_Begin", "V"] ))
 
-  -- Item use, continued
-  , ("O", ( [CmdItem, CmdDashboard]
-          , "manage the equipment outfit of the pointman"
-          , ChooseItemMenu (MStore CEqp) ))
+  -- Remaining @ChooseItemMenu@ instances
   , ("G", ( [CmdItem, CmdDashboard]
           , "manage items on the ground"
           , ChooseItemMenu (MStore CGround) ))
   , ("T", ( [CmdItem, CmdDashboard]
           , "manage our total team belongings"
           , ChooseItemMenu MOwned ))
-  , ("@", ( [CmdItem, CmdDashboard]
+  , ("@", ( [CmdMeta, CmdDashboard]
           , "describe organs of the pointman"
           , ChooseItemMenu MOrgans ))
-  , ("#", ( [CmdItem, CmdDashboard]
+  , ("#", ( [CmdMeta, CmdDashboard]
           , "show skill summary of the pointman"
           , ChooseItemMenu MSkills ))
-  , ("~", ( [CmdItem]
+  , ("~", ( [CmdMeta]
           , "display known lore"
           , ChooseItemMenu (MLore SItem) ))
 
@@ -189,8 +190,8 @@ standardKeysAndMouse = InputContentRaw $ map evalKeyDef $
   , ("F12", ([CmdMeta], "open dashboard", Dashboard))
   , ("v", ([CmdMeta], "voice again the recorded commands", Repeat 1))
   , ("V", repeatTriple 100)
-  , ("C-v", repeatTriple 1000)
-  , ("C-V", repeatTriple 25)
+  , ("C-v", addCmdCategory CmdNoHelp $ replaceDesc "" $ repeatTriple 1000)
+  , ("C-V", addCmdCategory CmdNoHelp $ replaceDesc "" $ repeatTriple 25)
   , ("'", ([CmdMeta], "start recording commands", Record))
   , ("C-S", ([CmdMeta], "save game backup", GameSave))
   , ("C-P", ([CmdMeta], "print screen", PrintScreen))
