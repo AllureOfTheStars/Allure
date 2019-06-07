@@ -1,6 +1,7 @@
 Playing Allure of the Stars
 ===========================
 
+This file is temporarily out of date.
 The following blurb is a copy of the game intro screen.
 
  Your party of trusty explorers is
