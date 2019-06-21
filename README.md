@@ -7,7 +7,7 @@ Allure of the Stars
 
 Allure of the Stars is a near-future Sci-Fi roguelike[2]
 and tactical squad combat game. Binaries and the game manual
-are available at the homepage[6]. You can try the game out
+are available at the homepage[6]. You can also try the game out
 in the browser at http://allureofthestars.com/play.
 (It runs fastest on Chrome. Keyboard commands and savefiles
 are supported only on recent enough versions of browsers.

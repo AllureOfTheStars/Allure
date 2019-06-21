@@ -2,7 +2,8 @@ Playing Allure of the Stars
 ===========================
 
 This file is temporarily out of date.
-The following blurb is a copy of the game intro screen.
+
+The following backstory blurb is a copy of the game intro screen.
 
  Your party of trusty explorers is
  about to test its fortune by
@@ -44,6 +45,10 @@ The following blurb is a copy of the game intro screen.
  your back in fear, expect to be chased
  tirelessly by sight, sound and smell.
 
+
+What to expect
+--------------
+
 Allure of the Stars is a turn-based game. You issue a command.
 Then you watch its results unfold on the screen without you being able
 to intervene. Then all settles down and you have as much time
@@ -55,18 +60,68 @@ and literary imagination. To be honest, a lot of imagination is required,
 because the game's plot and characters are yet very lightly sketched.
 However there are already hours and days of replayable fun to be had
 and gameplay mastery to build, confirm via high scores and pit against
-challenges. Contributions of all kinds are welcome.
-Please offer feedback to mikolaj.konarski@funktory.com or, preferably,
-at any of the public forums.
+challenges.
 
 If the game window is too large for your screen or you experience
 other technical issues, please consult
 [README.md](https://github.com/AllureOfTheStars/Allure/blob/master/README.md)
 or describe your problem on gitter or the issue tracker.
 
+Contributions of all kinds are welcome. Please offer feedback
+to mikolaj.konarski@funktory.com or, preferably, at any of the public forums.
 
-Game map
---------
+
+Starting your adventure
+-----------------------
+
+Commands for saving and exiting the current game, starting a new game,
+configuring convenience settings for the current game and challenges
+for the next game are listed in the main menu, brought up by the `ESC` key.
+Game difficulty, from the challenges menu, determines hitpoints at birth:
+difficulty below 5 multiplies hitpoints of player characters, difficulty
+over 5 multiplies hitpoints of their enemies. Of the convenience settings,
+the `suspect terrain` choice is particularly interesting, because it
+determines not only screen display of the level map, but also whether
+suspect tiles are considered for auto-explore and for the `C-?` command that
+marks the nearest unexplored position.
+
+The "lone wolf" challenge mode reduces player's starting actors to exactly
+one (consequently, this does not affect the initial 'solo raid' scenario).
+The "cold fish" challenge mode makes it impossible for player characters
+to be healed by actors from other factions (this is a significant
+restriction in the final 'upward crawl' scenario).
+
+For a person new to roguelikes, the 'solo raid' scenario offers a gentle
+introduction. The subsequent game scenarios lead the player along
+an optional story arc. They gradually introduce squad combat,
+stealth, opportunity fire, asymmetric battles and more.
+Starting from the second scenario, the player controls a whole team
+of characters and will develop his repertoire of squad formations,
+preferred rendezvous locations and the use of light sources.
+
+The last scenario, the upward crawl, is the gist and the main challenge
+of the game. It spans 15 varied spaceship decks, requiring lots of time,
+focus and flexibility to beat and providing considerable replayability.
+The player has a choice of exploring a single level at a time or portions
+of many floors along a single staircase. On some levels he may explore
+and loot with a single scout eluding most opponents. On others he may be
+forced to change the pace and perform a complete exterminatory sweep
+involving his whole party. On yet others, his best course of action may be
+to defend a key location until the first wave of attackers is broken.
+
+The size of the crawl scenario calls for strategic thinking, including
+resource management, area denial and unavoidable temporary retreats
+to other levels. Compared to that, the smaller scenarios, where the arena
+is a single floor only, provide a mostly tactical training
+and additional entertainment via trying to beat a high score.
+They offer variety and a breather between the attempts
+at the long crawl scenario. Some gameplay elements,
+however, like totally symmetric skirmishes, a race to the exit or heavy
+reliance on opportunity fire, feature only in the smaller scenarios.
+
+
+Exploring the world
+-------------------
 
 The map of any particular scenario consists of one or many levels
 and each level has a large number of tiles with a particular
@@ -115,8 +170,8 @@ The lower row of the larger room is full of items.
     ######       ##########
 
 
-Heroes
-------
+Leading your heroes
+-------------------
 
 The heroes are displayed on the map with bright white color (red if they are
 about to fall down) and symbols `@` and `1` through `9` (never `0`).
@@ -184,8 +239,8 @@ path from the pointman's position to the spot and the straight-line
 distance between the two points, one that a flung projectile would travel.
 
 
-Basic Commands
---------------
+Moving and acting
+-----------------
 
 This section is a copy of the few basic screens of in-game help. The help
 pages are automatically generated based on a game's keybinding content and
@@ -253,75 +308,8 @@ without MMB, one can use C-RMB or C-S-LMB.)
     WHEEL-DN     unswerve the aiming line
 
 
-Advanced Commands
+Battling monsters
 -----------------
-
-For ranged attacks, setting the aiming crosshair beforehand is not mandatory,
-because x-hair is set automatically as soon as a monster comes into view
-and can still be adjusted for as long as the missile to fling is not chosen.
-However, sometimes you want to examine the level map tile by tile
-or assign persistent personal targets to party members.
-The latter is essential in the rare cases when your non-pointmen
-(non-pointman characters) can move autonomously or fire opportunistically
-(via innate skills or rare equipment). Also, if your non-pointman is adjacent
-to more than one enemy, setting his target makes him melee a particular foe.
-
-You can enter the aiming mode with the `*` and keypad '*' keys that
-select enemies or the `/` and keypad '/' keys that cycle among items
-on the floor and mark a tile underneath an item. You can move x-hair
-with direction keys and assign a personal target to the pointman
-with a `RET` key (Return, Enter). The details of the shared x-hair mark
-are displayed in a status line close to the bottom of the screen,
-as explained in section [Heroes](#heroes) above.
-
-Commands for saving and exiting the current game, starting a new game,
-configuring convenience settings for the current game and challenges
-for the next game are listed in the main menu, brought up by the `ESC` key.
-Game difficulty, from the challenges menu, determines hitpoints at birth:
-difficulty below 5 multiplies hitpoints of player characters, difficulty
-over 5 multiplies hitpoints of their enemies. Of the convenience settings,
-the `suspect terrain` choice is particularly interesting, because it
-determines not only screen display of the level map, but also whether
-suspect tiles are considered for auto-explore and for the `C-?` command that
-marks the nearest unexplored position.
-
-The "lone wolf" challenge mode reduces player's starting actors to exactly
-one (consequently, this does not affect the initial 'solo raid' scenario).
-The "cold fish" challenge mode makes it impossible for player characters
-to be healed by actors from other factions (this is a significant
-restriction in the final 'upward crawl' scenario).
-
-For a person new to roguelikes, the 'solo raid' scenario offers a gentle
-introduction. The subsequent game scenarios lead the player along
-an optional story arc. They gradually introduce squad combat,
-stealth, opportunity fire, asymmetric battles and more.
-Starting from the second scenario, the player controls a whole team
-of characters and will develop his repertoire of squad formations,
-preferred rendezvous locations and the use of light sources.
-
-The last scenario, the upward crawl, is the gist and the main challenge
-of the game. It spans 15 varied spaceship decks, requiring lots of time,
-focus and flexibility to beat and providing considerable replayability.
-The player has a choice of exploring a single level at a time or portions
-of many floors along a single staircase. On some levels he may explore
-and loot with a single scout eluding most opponents. On others he may be
-forced to change the pace and perform a complete exterminatory sweep
-involving his whole party. On yet others, his best course of action may be
-to defend a key location until the first wave of attackers is broken.
-
-The size of the crawl scenario calls for strategic thinking, including
-resource management, area denial and unavoidable temporary retreats
-to other levels. Compared to that, the smaller scenarios, where the arena
-is a single floor only, provide a mostly tactical training
-and additional entertainment via trying to beat a high score.
-They offer variety and a breather between the attempts
-at the long crawl scenario. Some gameplay elements,
-however, like totally symmetric skirmishes, a race to the exit or heavy
-reliance on opportunity fire, feature only in the smaller scenarios.
-
-
-Monsters
---------
 
 The life of the heroes is full of dangers. Monstrosities, natural
 and out of this world, roam the dark corridors and crawl from damp holes
@@ -379,8 +367,30 @@ the combatant is incapacitated and promptly dies.
 When the last hero dies or is dominated, the scenario ends in defeat.
 
 
-On Winning and Dying
---------------------
+Attacking from a distance
+-------------------------
+
+For ranged attacks, setting the aiming crosshair beforehand is not mandatory,
+because x-hair is set automatically as soon as a monster comes into view
+and can still be adjusted for as long as the missile to fling is not chosen.
+However, sometimes you want to examine the level map tile by tile
+or assign persistent personal targets to party members.
+The latter is essential in the rare cases when your non-pointmen
+(non-pointman characters) can move autonomously or fire opportunistically
+(via innate skills or rare equipment). Also, if your non-pointman is adjacent
+to more than one enemy, setting his target makes him melee a particular foe.
+
+You can enter the aiming mode with the `*` and keypad '*' keys that
+select enemies or the `/` and keypad '/' keys that cycle among items
+on the floor and mark a tile underneath an item. You can move x-hair
+with direction keys and assign a personal target to the pointman
+with a `RET` key (Return, Enter). The details of the shared x-hair mark
+are displayed in a status line close to the bottom of the screen,
+as explained in section [Heroes](#heroes) above.
+
+
+Winning and dying
+-----------------
 
 You win a scenario if you escape the location alive (which may prove
 difficult, because your foes tend to gradually build up the ambush squad
