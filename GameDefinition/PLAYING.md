@@ -82,50 +82,62 @@ to mikolaj.konarski@funktory.com or, preferably, at any of the public forums.
 Starting your adventure
 -----------------------
 
-Commands for saving and exiting the current game, starting a new game,
-configuring convenience settings for the current game and challenges
-for the next game are listed in the main menu, brought up by the `ESC` key.
-Game difficulty, from the challenges menu, determines hitpoints at birth:
-difficulty below 5 multiplies hitpoints of player characters, difficulty
-over 5 multiplies hitpoints of their enemies. Of the convenience settings,
-the `suspect terrain` choice is particularly interesting, because it
-determines not only screen display of the level map, but also whether
-suspect tiles are considered for auto-explore and for the `C-?` command that
-marks the nearest unexplored position.
+Commands for starting a new game, saving and exiting the current game,
+configuring convenience settings and toggling AI control of the party
+are listed in the main menu, brought up by the `ESC` key. Of the convenience
+settings, the `suspect terrain` choice is of particular interest,
+because it determines not only screen display of the level map,
+but also whether suspect tiles are considered for auto-explore
+and for the `C-?` command that marks the nearest unexplored position.
 
-The "lone wolf" challenge mode reduces player's starting actors to exactly
-one (consequently, this does not affect the initial 'solo raid' scenario).
+Game difficulty, from the game setup menu, determines hitpoints at birth:
+difficulty below 5 multiplies hitpoints of player characters, difficulty
+over 5 multiplies hitpoints of their enemies.
+The "lone wolf" challenge mode reduces player's starting actors
+to exactly one, though later on new heroes may join the party.
 The "cold fish" challenge mode makes it impossible for player characters
 to be healed by actors from other factions (this is a significant
-restriction in the final 'upward crawl' scenario).
+restriction in the long crawl scenario).
 
-For a person new to roguelikes, the 'solo raid' scenario offers a gentle
-introduction. The subsequent game scenarios lead the player along
-an optional story arc. They gradually introduce squad combat,
-stealth, opportunity fire, asymmetric battles and more.
-Starting from the second scenario, the player controls a whole team
-of characters and will develop his repertoire of squad formations,
-preferred rendezvous locations and the use of light sources.
+The game scenarios, as ordered by their number, lead the player along
+an optional story arc. The first two scenarios also double as tutorials
+that offer rudimentary preparation for the main game, the long crawl.
+They gradually introduce exploration, stealth and melee combat,
+helping the player develop his repertoire of squad formations
+and move patterns, suitable for different tactical contexts.
+When you die, remember to scan the defeat message of the scenario
+for hints of strategies known to work in the given tactical context.
+Or don't, if you wish to puzzle out the tactics yourself --- there is
+really not so many moving parts to figure, at least in the short scenarios.
+In any case, seriously consider playing the small scenarios alongside
+the main long crawl game mode, or you may miss half the features
+by trying to play the crawl just like a normal roguelike with spare
+heroes (and keep dying horribly).
 
-The last scenario, the upward crawl, is the gist and the main challenge
-of the game. It spans 15 varied spaceship decks, requiring lots of time,
-focus and flexibility to beat and providing considerable replayability.
+As soon as the player learns to navigate initial levels of the crawl game
+and starts employing ranged combat, light sources and other means
+of gaining or denying battlefield intel, it makes sense to return
+to the story line and play some of the remaining scenarios, which continue
+the plotline from the tutorial scenarios in the form of flashbacks
+and eventually lead up to the events that start the main crawl adventure.
+The training they provide is more synthetic in nature, drilling
+a particular skill set, even as exotic as opportunity fire management,
+a frantic race to the exit and big asymmetric battles. The challenge may be,
+accordingly, quite tough.
+
+The main scenario, the long crawl, is the only one that takes place
+in a multi-floor setting, requiring lots of time and focus to beat.
 The player has a choice of exploring a single level at a time or portions
-of many floors along a single staircase. On some levels he may explore
+of many levels along a single staircase. On some levels he may explore
 and loot with a single scout eluding most opponents. On others he may be
 forced to change the pace and perform a complete exterminatory sweep
 involving his whole party. On yet others, his best course of action may be
 to defend a key location until the first wave of attackers is broken.
-
-The size of the crawl scenario calls for strategic thinking, including
+The size of the game arena calls for strategic thinking, including
 resource management, area denial and unavoidable temporary retreats
-to other levels. Compared to that, the smaller scenarios, where the arena
-is a single floor only, provide a mostly tactical training
-and additional entertainment via trying to beat a high score.
-They offer variety and a breather between the attempts
-at the long crawl scenario. Some gameplay elements,
-however, like totally symmetric skirmishes, a race to the exit or heavy
-reliance on opportunity fire, feature only in the smaller scenarios.
+to other levels. Thus, the crawl game mode is the most replayable,
+but even the small scenarios can be refreshed by increasing difficulty
+level and striving to beat a high score.
 
 
 Exploring the world
