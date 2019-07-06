@@ -1245,6 +1245,7 @@ ring7 = ringTemplate
                , AddSkill SkProject 8
                , EqpSlot EqpSlotProject ]
                ++ iaspects ringTemplate
+  , idesc    = "This mil-grade communication equipment feeds the aggregated enemy position information to the wearer, even when he is not the pointman of the team and so the team is not intentionally spotting for him. With proper training this permits ranged attacks, even indirect fire, without neglecting the simultaneous squad doctrine obligation of covering the approach of the pointman."
   }
 ring8 = ringTemplate
   { ifreq    = [("treasure", 100), ("any jewelry", 100)]
@@ -1254,7 +1255,7 @@ ring8 = ringTemplate
                , AddSkill SkMaxHP (-20)
                , SetFlag Durable, EqpSlot EqpSlotProject ]
                ++ iaspects ringTemplate
-  , idesc    = "This exceptional medical contraption constantly transforms and re-injects minuscule amounts of blood serum, synthesizing powerful drugs that greatly enhance spacial awareness and focus, at the cost of weakening bodily resilience and recovery."
+  , idesc    = "This exceptional medical contraption constantly transforms and re-injects minuscule amounts of blood serum, synthesizing powerful drugs that greatly enhance spacial awareness and focus, at the cost of weakening bodily resilience and recovery. With this boost, indirect fire becomes possible, even for a non-pointman team member."
   }
 
 -- ** Armor
