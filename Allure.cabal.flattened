@@ -141,7 +141,7 @@ library
                       ,ghc-compact
                       ,optparse-applicative
                       ,primitive
-                      ,random
+                      ,splitmix
                       ,template-haskell >= 2.6
                       ,text
                       ,transformers

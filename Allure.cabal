@@ -148,7 +148,7 @@ library this-game-src
                       ,ghc-compact
                       ,optparse-applicative
                       ,primitive
-                      ,random
+                      ,splitmix
                       ,template-haskell
                       ,text
                       ,transformers

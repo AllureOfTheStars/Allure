@@ -153,7 +153,7 @@ before_install:
   - mkdir -p $HOME/.local/bin
   - "if [ \"$(uname)\" != \"Darwin\" ]; then sudo apt-get update; fi"
   - "if [ \"$(uname)\" = \"Darwin\" ]; then brew update; brew upgrade python@3; curl https://haskell.futurice.com/haskell-on-macos.py | python3 - --make-dirs --install-dir=$HOME/.ghc-install --cabal-alias=head install cabal-install-head ${HC}; fi"
-  - "if [ \"$(uname)\" = \"Darwin\" ]; then PATH=$HOME/.ghc-install/ghc/bin:$HOME/local/bin:$PATH; else PATH=/opt/ghc/bin:/opt/ghc-ppa-tools/bin:$HOME/local/bin:$PATH; fi"
+  - "if [ \"$(uname)\" = \"Darwin\" ]; then PATH=$HOME/.ghc-install/ghc/bin:$HOME/local/bin:$HOME/.local/bin:$HOME/.cabal/bin:$PATH; else PATH=/opt/ghc/bin:/opt/ghc-ppa-tools/bin:$HOME/local/bin:$HOME/.local/bin:$HOME/.cabal/bin:$PATH; fi"
   - HCNUMVER=$(( $(${HC} --numeric-version|sed -E 's/([0-9]+)\.([0-9]+)\.([0-9]+).*/\1 * 10000 + \2 * 100 + \3/') ))
   - echo $HCNUMVER
 
@@ -165,16 +165,20 @@ install:
   - HADDOCK=${HADDOCK-true}
   - NOINSTALLEDCONSTRAINTS=${NOINSTALLEDCONSTRAINTS-false}
   - GHCHEAD=${GHCHEAD-false}
+  - travis_retry cabal new-update -v
   - if [ -f "./configure.ac" ]; then
       (cd "." && autoreconf -i);
     fi
   - rm -f cabal.project.freeze
   - rm -rf .ghc.environment.* "."/dist
   - DISTDIR=$(mktemp -d /tmp/dist-test.XXXX)
+  - GHCBIN=$(which ${HC})
+  - ln -s $GHCBIN $HOME/.local/bin/ghc
 
 # Here starts the actual work to be performed for the package under test;
 # any command which exits with a non-zero exit code causes the build to fail.
 script:
+  - (cd .. && cabal new-install cabal-plan)
   # test that source-distributions can be generated
   - (cd "." && cabal sdist)
   - mv "."/dist/Allure-*.tar.gz ${DISTDIR}/
@@ -183,7 +187,6 @@ script:
 
   - "if [[ $GTKVTY != \"brew-sdl2-osx\" ]] ; then git clone --depth=50 --branch=master git://github.com/LambdaHack/LambdaHack.git; fi"
   - cd Allure-*
-  - travis_retry cabal new-update -v
   - "sed -i.bak 's/^jobs:/-- jobs:/' ${HOME}/.cabal/config"
   - grep -Ev -- '^\s*--' ${HOME}/.cabal/config | grep -Ev '^\s*$'
 
@@ -240,13 +243,11 @@ script:
     else exit 7;
     fi
 
-  - ROOTDIR2=$(pwd)
-  - mkdir -p dist/build/Allure
   - find dist-newstyle -wholename '*/build/test/test' -exec '{}' \;
-  - find dist-newstyle -wholename '*/build/Allure/Allure' -exec cp '{}' $ROOTDIR2/dist/build/Allure/ \;
 
   - touch /tmp/teletypetest.log;
   - "if [[ $GTKVTY != \"brew-sdl2-osx\" ]] ; then (make test-travis || (tail -n 2000 /tmp/teletypetest.log ; exit 77)); fi"
+  - "if [ \"$(uname)\" != \"Darwin\" ]; then (make test-travis2 || (tail -n 2000 /tmp/teletypetest.log ; exit 77)); fi"
   - "if [ \"$(uname)\" != \"Darwin\" ]; then (make testDefense-medium || (tail -n 2000 /tmp/teletypetest.log ; exit 77)); fi"
 
 # REGENDATA ["--no-no-tests-no-bench","--osx=8.4.4","cabal.project","-o","foo"]
