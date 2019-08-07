@@ -348,11 +348,11 @@ rosterRaid = Roster
 rosterBrawl = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
                                 , fhiCondPoly = hiHeroMedium }
-                   , [(3, 3, "hero")] )
+                   , [(2, 3, "brawler hero")] )
                  , ( playerAntiHero { fname = "Red Collar Bro"
                                     , fcanEscape = False
                                     , fhiCondPoly = hiHeroMedium }
-                   , [(3, 3, "hero")] )
+                   , [(2, 3, "brawler hero")] )
                  , (playerHorror, []) ]
   , rosterEnemy = [ ("Spacefarer", "Red Collar Bro")
                   , ("Spacefarer", "Horror Den")
@@ -576,7 +576,7 @@ cavesRaid, cavesBrawl, cavesShootout, cavesHunt, cavesEscape, cavesZoo, cavesAmb
 
 cavesRaid = [([2], ["caveRaid"])]
 
-cavesBrawl = [([3], ["caveBrawl"])]
+cavesBrawl = [([2], ["caveBrawl"])]
 
 cavesShootout = [([5], ["caveShootout"])]
 
