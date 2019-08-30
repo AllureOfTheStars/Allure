@@ -12,14 +12,14 @@ install:
   - cabal clean
   - appveyor-retry pacman -S -q --noconfirm mingw64/mingw-w64-x86_64-SDL2 mingw64/mingw-w64-x86_64-SDL2_ttf
   - cabal update
-  - cabal install --force-reinstalls happy
+  - cabal v1-install --force-reinstalls happy
   - git clone -q --branch=master https://github.com/haskell-game/sdl2
   - cd sdl2
-  - cabal install --force-reinstalls -fno-linear
+  - cabal v1-install --force-reinstalls -fno-linear
   - cd ..
   - git clone -q --branch=master https://github.com/LambdaHack/LambdaHack.git
   - cd LambdaHack
-  - appveyor-retry cabal install --force-reinstalls --disable-library-profiling --disable-profiling --disable-documentation
+  - appveyor-retry cabal v1-install --force-reinstalls --disable-library-profiling --disable-profiling --disable-documentation
   - cd ..
 
   - pwd
@@ -46,7 +46,7 @@ install:
   - ps: $env:TIME_STRING=(get-date -UFormat "%Y-%m-%d").ToString()
   - ps: Push-AppveyorArtifact Allure_dev_windows-x86_64.zip -FileName "Allure_$($env:LH_VERSION)-dev-$($env:TIME_STRING)_windows-x86_64.zip" -DeploymentName "win64 binaries archive"
 
-  - appveyor-retry cabal test
+  - appveyor-retry cabal v1-test
   - make nativeBenchCrawl-appveyor || (tail -n 500 %APPDATA%\Allure\stderr.txt & exit 77)
 
   - mv AllureOfTheStars AllureOfTheStars64
@@ -71,11 +71,11 @@ install:
   - echo "no cabal install happy"
   - echo "no git clone -q --branch=master https://github.com/haskell-game/sdl2"
   - cd sdl2
-  - cabal install --force-reinstalls -fno-linear
+  - cabal v1-install --force-reinstalls -fno-linear
   - cd ..
   - echo "no git clone -q --branch=master https://github.com/LambdaHack/LambdaHack.git"
   - cd LambdaHack
-  - appveyor-retry cabal install --force-reinstalls --disable-library-profiling --disable-profiling --disable-documentation
+  - appveyor-retry cabal v1-install --force-reinstalls --disable-library-profiling --disable-profiling --disable-documentation
   - cd ..
 
   - pwd
@@ -99,7 +99,7 @@ install:
   - 7z a -ssc -tzip Allure_dev_windows-i686.zip AllureOfTheStars
   - ps: Push-AppveyorArtifact Allure_dev_windows-i686.zip -FileName "Allure_$($env:LH_VERSION)-dev-$($env:TIME_STRING)_windows-i686.zip" -DeploymentName "win32 binaries archive"
 
-  - appveyor-retry cabal test
+  - appveyor-retry cabal v1-test
   - make benchBattle-appveyor || (tail -n 500 %APPDATA%\Allure\stdout.txt & tail -n 500 %APPDATA%\Allure\stderr.txt & exit 77)
 
   - mv AllureOfTheStars AllureOfTheStars32
