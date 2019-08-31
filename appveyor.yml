@@ -54,6 +54,7 @@ install:
   - cabal clean
   - cd sdl2
   - cabal clean
+  - rm -rf dist
   - cd ..
   - cd LambdaHack
   - cabal clean
