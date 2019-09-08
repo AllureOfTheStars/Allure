@@ -773,7 +773,7 @@ escapeSpaceshipDown = escapeDown
   { tname    = "airlock to a shuttle"
   , tfreq    = [("escape spaceship down", 1), ("airlock fence", 3)]
   }
-emptyAirlock = escapeUp
+emptyAirlock = escapeDown
   { tname    = "empty airlock"
   , tfreq    = [ ("airlock fence", 2), ("empty airlock fence", 7)
                , ("emptySetLit", 2), ("ambushSetDark", 7) ]

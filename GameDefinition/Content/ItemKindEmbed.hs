@@ -383,11 +383,11 @@ blackStarrySky = ItemKind
   , iaspects = [SetFlag Durable]
   , ieffects = [ VerbMsg "look into the void and it looks back"
                , OneOf [RefillCalm 5, RefillCalm (-5)] ]
-  , idesc    = "Occasionally a planet or the Sun zips by, but is unable to disperse the darkness. The black starscape constantly rotates. The frantic dance is silent, muted, indifferent. There is not even a hint of vibration, just the sense of heaviness and dizziness."  -- appears only on 100% flavour tiles, useless and trivial to notice, so the writeup can be longer; who am I kidding, I can't make myself write condensed prose
+  , idesc    = "Occasionally a planet or the Sun zips by, but is unable to disperse the darkness. The black starscape constantly rotates. The frantic dance is silent, muted, indifferent. There is not even a hint of vibration, just the sense of heaviness and dizziness."  -- appears only on 100% flavour tiles (both floor and walls on some levels), useless and trivial to notice, so the writeup can be longer; who am I kidding, I can't make myself write condensed prose
   , ikit     = []
   }
 disengagedDocking = ItemKind
-  { isymbol  = '<'
+  { isymbol  = '>'
   , iname    = "disengaged docking gear"
   , ifreq    = [("disengaged docking", 1)]
   , iflavour = zipPlain [BrBlack]
@@ -397,8 +397,8 @@ disengagedDocking = ItemKind
   , iweight  = 10000
   , idamage  = 0
   , iaspects = [SetFlag Durable]
-  , ieffects = [RefillCalm (-10)]
-  , idesc    = "Unfortunately this airlock has no space boat attached. Many fine small craft were originally docked with such sockets and clamps, but after the spaceship spontaneously deorbited Neptune, a lot of them were seen jettisoned and drifting astern. What a waste."
+  , ieffects = []
+  , idesc    = "As the grey color of exposed surfaces clearly indicates, unfortunately, this airlock has no space boat attached. Many fine small craft were originally docked with such sockets and clamps, but after the spaceship spontaneously deorbited Neptune, a lot of them were seen jettisoned and drifting astern. What a waste. Decks up, closer to the ship's core, have not been purged of shuttles as thoroughly."
   , ikit     = []
   }
 ruinedFirstAidKit = ItemKind
