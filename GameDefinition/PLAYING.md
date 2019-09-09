@@ -205,8 +205,14 @@ Leading your heroes
 
 The heroes are displayed on the map with bright white color (red if they are
 about to fall down) and symbols `@` and `1` through `9` (never `0`).
-The currently chosen party pointman is yellow-highlighted on the map
-and his attributes are displayed at the bottom-most status line which,
+The currently chosen party pointman is highlighted on the map with yellow.
+The easiest way to control your team is to run a short distance
+with your pointman using Shift or LMB, switch the pointman with Tab, repeat.
+In open terrain, if you keep consistent distance between teammates,
+this resembles the leap frog infantry tactics. For best effects,
+try to end each sprint behind a cover or concealment.
+
+Pointman hero's attributes are displayed at the bottom-most status line which,
 in its most complex form, looks as follows.
 
     *@12   2m/s Calm: 20/60 HP: 33/50 Pointman: Haskell Alvin   6d1+5% 4d1
