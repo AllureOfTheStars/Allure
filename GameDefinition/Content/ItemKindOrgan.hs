@@ -22,11 +22,11 @@ import Game.LambdaHack.Definition.Flavour
 
 organs :: [ItemKind]
 organs =
-  [fist, foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, bark, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland5, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed]
+  [fist, foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, bark, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, animalStomach, insectMortality, sapientBrain, animalBrain, speedGland5, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, hungry, impressed]
   -- Allure-specific
   ++ [smallBeak, razor, liveWire, robotBrain, hullPlating, mouthVent, geneticFlaw3, geneticFlaw10]
 
-fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, bark, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland5, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed :: ItemKind
+fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, bark, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, animalStomach, insectMortality, sapientBrain, animalBrain, speedGland5, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, hungry, impressed :: ItemKind
 -- Allure-specific
 smallBeak, razor, liveWire, robotBrain, hullPlating, mouthVent, geneticFlaw3, geneticFlaw10 :: ItemKind
 
@@ -361,6 +361,15 @@ rattleOrgan = armoredSkin
   , ieffects = [Yell, RefillCalm 5]
   , idesc    = ""
   }
+animalStomach = armoredSkin
+  { iname    = "animal stomach"
+  , ifreq    = [("animal stomach", 100)]
+  , iverbHit = "burp"
+  , iaspects = [ Timeout $ 1000 + (1 `d` 3) * 100  -- hunger very slowly
+               , SetFlag Periodic, SetFlag Durable ]
+  , ieffects = [toOrganNoTimer "hungry"]
+  , idesc    = ""
+  }
 insectMortality = armoredSkin
   { iname    = "insect mortality"
   , ifreq    = [("insect mortality", 100)]
@@ -496,6 +505,24 @@ asleep = armoredSkin
                   , SetFlag Condition ]  -- hack: display as condition
   , idesc    = "Sleep helps to regain health, albeit extremely slowly. Being asleep makes you vulnerable, with gradually diminishing effects as the slumber wears off over several turns. Any non-idle action, not only combat but even yawning or stretching removes a sizable portion of the sleepiness."
   }
+hungry = armoredSkin
+  { isymbol  = 'U'
+  , iname    = "hungry"
+  , ifreq    = [("hungry", 1), ("condition", 1)]
+  , iflavour = zipPlain [BrRed]
+  , icount   = 1
+  , iverbHit = "pang"
+  , iweight  = 0
+  , iaspects = [ AddSkill SkMaxHP (-1)
+               , SetFlag Fragile  -- to announce "no longer" only when
+                                  -- all copies gone
+               , SetFlag Condition ]  -- this is really a condition,
+                                      -- just not a timed condition
+  , ieffects = [ OnSmash $ verbMsgLess "hungry"
+               , OnSmash $ verbMsgNoLonger "hungry" ]
+                   -- not periodic, so no wear each turn, so only @OnSmash@
+  , idesc    = "Hunger limits physical fitness. In extreme cases, when compounded, it causes such fragility that the slightest stress becomes lethal."
+  }
 impressed = armoredSkin
   { isymbol  = 'I'
   , iname    = "impressed"
@@ -506,7 +533,7 @@ impressed = armoredSkin
   , iaspects = [ AddSkill SkMaxCalm (-1)  -- to help player notice on HUD
                                           -- and to count as bad condition
                , SetFlag Fragile  -- to announce "no longer" only when
-                                  -- all impressions gone
+                                  -- all copies gone
                , SetFlag Condition ]  -- this is really a condition,
                                       -- just not a timed condition
   , ieffects = [ OnSmash $ verbMsgLess "impressed"

@@ -40,7 +40,8 @@ giantOctopus, razorwireFence, electricFence, activeFence, steamFaucet, biogasFau
 humanOrgans :: [(GroupName ItemKind, CStore)]
 humanOrgans = [ ("fist", COrgan), ("foot", COrgan)
               , ("eye 6", COrgan), ("ear 3", COrgan)
-              , ("sapient brain", COrgan) ]
+              , ("sapient brain", COrgan)
+              , ("animal stomach", COrgan), ("hungry", COrgan) ]
 warrior = ItemKind
   { isymbol  = '@'
   , iname    = "mercenary"  -- modified if initial actors in hero faction
@@ -319,7 +320,7 @@ goldenJackal = ItemKind  -- basically a much smaller and slower hyena
   , idesc    = "An opportunistic predator, feeding on carrion and the weak."
   , ikit     = [ ("small jaw", COrgan)
                , ("eye 6", COrgan), ("nostril", COrgan), ("ear 8", COrgan)
-               , ("animal brain", COrgan)
+               , ("animal brain", COrgan), ("animal stomach", COrgan)
                , ("genetic flaw 3", COrgan) ]
   }
 griffonVulture = ItemKind
@@ -350,7 +351,7 @@ griffonVulture = ItemKind
                , ("small claw", COrgan)
                , ("eye 8", COrgan), ("ear 8", COrgan)
                    -- can't shoot, so strong sight is OK
-               , ("animal brain", COrgan)
+               , ("animal brain", COrgan), ("animal stomach", COrgan)
                , ("genetic flaw 3", COrgan) ]
   }
 skunk = ItemKind
@@ -373,7 +374,7 @@ skunk = ItemKind
   , ikit     = [ ("scent gland", COrgan)
                , ("small claw", COrgan), ("snout", COrgan)
                , ("eye 3", COrgan), ("ear 6", COrgan)
-               , ("animal brain", COrgan)
+               , ("animal brain", COrgan), ("animal stomach", COrgan)
                , ("genetic flaw 3", COrgan) ]
   }
 armadillo = ItemKind
@@ -395,7 +396,7 @@ armadillo = ItemKind
   , ikit     = [ ("hooked claw", COrgan), ("snout", COrgan)
                , ("armored skin", COrgan), ("armored skin", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan), ("ear 6", COrgan)
-               , ("animal brain", COrgan)
+               , ("animal brain", COrgan), ("animal stomach", COrgan)
                , ("genetic flaw 3", COrgan) ]
   }
 gilaMonster = ItemKind
@@ -416,7 +417,7 @@ gilaMonster = ItemKind
   , idesc    = "Numbing venom ensures that even the fastest prey has no escape."
   , ikit     = [ ("venom tooth", COrgan), ("small claw", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan), ("ear 6", COrgan)
-               , ("animal brain", COrgan)
+               , ("animal brain", COrgan)  -- small reptile, hungers slowly
                , ("genetic flaw 3", COrgan) ]
   }
 rattlesnake = ItemKind
@@ -438,7 +439,7 @@ rattlesnake = ItemKind
   , ikit     = [ ("venom fang", COrgan)  -- when on cooldown, it's weaponless
                , ("rattle", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan), ("ear 6", COrgan)
-               , ("animal brain", COrgan)
+               , ("animal brain", COrgan)  -- small reptile, hungers slowly
                , ("genetic flaw 3", COrgan) ]
   }
 hyena = ItemKind
@@ -459,7 +460,7 @@ hyena = ItemKind
   , idesc    = "Skulking in the shadows, waiting for easy prey."
   , ikit     = [ ("jaw", COrgan)
                , ("eye 6", COrgan), ("nostril", COrgan), ("ear 8", COrgan)
-               , ("animal brain", COrgan)
+               , ("animal brain", COrgan), ("animal stomach", COrgan)
                , ("genetic flaw 3", COrgan) ]
   }
 komodoDragon = ItemKind
@@ -482,7 +483,7 @@ komodoDragon = ItemKind
                , ("hooked claw", COrgan)
                , ("speed gland 5", COrgan), ("armored skin", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan), ("ear 3", COrgan)
-               , ("animal brain", COrgan)
+               , ("animal brain", COrgan), ("animal stomach", COrgan)
                , ("genetic flaw 3", COrgan) ]  -- not to wake it up too soon
   }
 alligator = ItemKind
@@ -508,7 +509,7 @@ alligator = ItemKind
                , ("small claw", COrgan)
                , ("armored skin", COrgan)
                , ("eye 6", COrgan), ("ear 8", COrgan)
-               , ("animal brain", COrgan)
+               , ("animal brain", COrgan), ("animal stomach", COrgan)
                , ("genetic flaw 10", COrgan) ]
   }
 rhinoceros = ItemKind
@@ -533,7 +534,7 @@ rhinoceros = ItemKind
   , ikit     = [ ("rhino horn", COrgan), ("snout", COrgan)
                , ("armored skin", COrgan)
                , ("eye 3", COrgan), ("ear 8", COrgan)
-               , ("animal brain", COrgan) ]
+               , ("animal brain", COrgan), ("animal stomach", COrgan) ]
   }
 
 -- * Non-animal animals
@@ -627,7 +628,7 @@ giantOctopus = ItemKind
                , ("small beak", COrgan)  -- TODO: use when tentacles torn out
                , ("eye 8", COrgan)
                    -- shots not too damaging, so can have strong sight
-               , ("animal brain", COrgan)
+               , ("animal brain", COrgan), ("animal stomach", COrgan)
                , ("genetic flaw 3", COrgan) ]
   }
 
