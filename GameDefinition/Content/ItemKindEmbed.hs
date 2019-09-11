@@ -24,11 +24,11 @@ embeds :: [ItemKind]
 embeds =
   [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, signboardMerchandise, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater, straightPath, frozenGround]
   -- Allure-specific
-  ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator]
+  ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, wall3dBillboard, crackedFlue, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator]
 
 scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, signboardMerchandise, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater, straightPath, frozenGround :: ItemKind
 -- Allure-specific
-blackStarrySky,       disengagedDocking, ruinedFirstAidKit, wall3dBillboard, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator :: ItemKind
+blackStarrySky,       disengagedDocking, ruinedFirstAidKit, wall3dBillboard, crackedFlue, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator :: ItemKind
 
 -- Make sure very few walls are substantially useful, e.g., caches,
 -- and none that are secret. Otherwise the player will spend a lot of time
@@ -435,6 +435,22 @@ wall3dBillboard = ItemKind
                , OneOf [ Explode "advertisement"
                        , Explode "story-telling" ] ]
   , idesc    = "One can still make out excited moves of bleached shapes."
+  , ikit     = []
+  }
+crackedFlue = ItemKind
+  { isymbol  = '|'
+  , iname    = "cracked flue"
+  , ifreq    = [("cracked flue", 1)]
+  , iflavour = zipPlain [BrBlack]
+  , icount   = 1
+  , irarity  = [(1, 1)]
+  , iverbHit = "blow"
+  , iweight  = 1000
+  , idamage  = 0
+  , iaspects = [Timeout 10, SetFlag Durable]
+  , ieffects = [ VerbMsg "imagine the fragrance of roasted food wafting through the flue from upstairs"
+               , toOrganGood "keen-smelling" (3 + 1 `d` 2) ]
+  , idesc    = "The pipes ring with tumultuous echoes. Whenever you convince yourself it's an uneven updraft singing through the cracks, the nosie suddenly stops, then picks up with a roar. Is there a fight over the food on some upper deck or are you just hungry?"
   , ikit     = []
   }
 depositBox = treasureCache
