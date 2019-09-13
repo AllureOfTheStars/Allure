@@ -80,11 +80,9 @@ subtleFresco = ItemKind
   , iverbHit = "sooth"
   , iweight  = 1000
   , idamage  = 0
-  , iaspects = [Timeout 7, SetFlag Durable]
+  , iaspects = [Timeout 10, SetFlag Durable]
   , ieffects = [ VerbMsg "feel refreshed by the subtle fresco"
-               , toOrganGood "far-sighted" (3 + 1 `d` 2)
-               , toOrganGood "keen-smelling" (3 + 1 `d` 2) ]
-                 -- hearing gets a boost through bracing, so no need here
+               , toOrganGood "far-sighted" (5 + 1 `d` 2) ]
   , idesc    = "Expensive yet tasteful."
   , ikit     = []
   }
