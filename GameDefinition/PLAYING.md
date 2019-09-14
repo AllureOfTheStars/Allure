@@ -4,19 +4,18 @@ Playing Allure of the Stars
 This file is temporarily out of date.
 The following backstory blurb is a copy of the game intro screen.
 
- Your party of trusty explorers is
- about to test its fortune by
- plundering a vast derelict passenger
- cruiser. The spaceship was
- abandoned and lost after an accident
- at the Solar System's outer frontier,
- but recently unexpectedly reappeared.
- Reportedly, deposit safes and jewelry
- inventories were never salvaged.
- Neither were emptied the gilded robot
- holds, the expensive arboretum nor
- the extravagant whole-deck habitat
- of natural and enhanced wild animals.
+ Your party of trusty explorers is about
+ to test its fortune by plundering a vast
+ derelict passenger cruiser. The grand
+ spaceship was abandoned and lost after
+ an accident at the Solar System's outer
+ frontier, but recently unexpectedly
+ reappeared. Reportedly, deposit safes
+ and jewelry inventories were never
+ salvaged. Neither were emptied
+ the gilded robot holds, the expensive
+ arboretum nor the extravagant whole-deck
+ habitat of natural and enhanced animals.
 
  Up to this day, countless autonomous
  life support and damage mitigation
@@ -34,15 +33,17 @@ The following backstory blurb is a copy of the game intro screen.
  denizens are not famed for scruples
  nor for restraint when using hazardous
  nano, cyber and bio technologies,
- so never assume you are safe.
- Be ready to hide in shadows, create
- distractions, set up ambushes, bump into
- unspeakable horrors, puzzling machinery
- and astounding treasures and make
- creative use of all you find, because
- you are on your own. If ever you turn
- your back in fear, expect to be chased
- tirelessly by sight, sound and smell.
+ so never assume you are safe. Be ready
+ to hide in shadows, create distractions,
+ set up ambushes, bump into unspeakable
+ horrors, puzzling machinery and
+ astounding treasures. Gather clues,
+ ideas and resources. Creatively use all
+ you can find, because your survival
+ depends on grit and ingenuity. Whenever
+ your turn back in fear, expect to be
+ chased via sight, sound and smell by
+ those that don't fear and don't tire.
 
 
 What to expect
