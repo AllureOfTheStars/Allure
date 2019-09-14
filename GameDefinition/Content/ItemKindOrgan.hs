@@ -191,6 +191,7 @@ sulfurFissure = boilingFissure
   , ifreq    = [("medbot fissure", 100)]
   , icount   = 2 + 1 `d` 2
   , idamage  = 0  -- heal not via (negative) idamage, for armour would block it
+  , iaspects = SetFlag Benign : iaspects boilingFissure
   , ieffects = [ RefillHP 5
                , toOrganNoTimer "hungry"  -- the metabolic price to pay
                , VerbNoLonger "run out of nano medbot liquid" ]
