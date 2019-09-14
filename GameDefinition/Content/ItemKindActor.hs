@@ -397,7 +397,8 @@ armadillo = ItemKind
                , ("armored skin", COrgan), ("armored skin", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan), ("ear 6", COrgan)
                , ("animal brain", COrgan), ("animal stomach", COrgan)
-               , ("genetic flaw 3", COrgan) ]
+               , ("genetic flaw 3", COrgan)
+               , ("raw meat chunk", CEqp) ]
   }
 gilaMonster = ItemKind
   { isymbol  = 'g'
@@ -440,7 +441,8 @@ rattlesnake = ItemKind
                , ("rattle", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan), ("ear 6", COrgan)
                , ("animal brain", COrgan)  -- small reptile, hungers slowly
-               , ("genetic flaw 3", COrgan) ]
+               , ("genetic flaw 3", COrgan)
+               , ("raw meat chunk", CEqp) ]
   }
 hyena = ItemKind
   { isymbol  = 'h'
@@ -484,7 +486,8 @@ komodoDragon = ItemKind
                , ("speed gland 5", COrgan), ("armored skin", COrgan)
                , ("eye 3", COrgan), ("nostril", COrgan), ("ear 3", COrgan)
                , ("animal brain", COrgan), ("animal stomach", COrgan)
-               , ("genetic flaw 3", COrgan) ]  -- not to wake it up too soon
+               , ("genetic flaw 3", COrgan)  -- not to wake it up too soon
+               , ("raw meat chunk", CEqp), ("raw meat chunk", CEqp) ]
   }
 alligator = ItemKind
   { isymbol  = 'a'
@@ -510,7 +513,8 @@ alligator = ItemKind
                , ("armored skin", COrgan)
                , ("eye 6", COrgan), ("ear 8", COrgan)
                , ("animal brain", COrgan), ("animal stomach", COrgan)
-               , ("genetic flaw 10", COrgan) ]
+               , ("genetic flaw 10", COrgan)
+               , ("raw meat chunk", CEqp), ("raw meat chunk", CEqp) ]
   }
 rhinoceros = ItemKind
   { isymbol  = 'R'
@@ -534,7 +538,9 @@ rhinoceros = ItemKind
   , ikit     = [ ("rhino horn", COrgan), ("snout", COrgan)
                , ("armored skin", COrgan)
                , ("eye 3", COrgan), ("ear 8", COrgan)
-               , ("animal brain", COrgan), ("animal stomach", COrgan) ]
+               , ("animal brain", COrgan), ("animal stomach", COrgan)
+               , ("raw meat chunk", CEqp), ("raw meat chunk", CEqp)
+               , ("raw meat chunk", CEqp), ("raw meat chunk", CEqp) ]
   }
 
 -- * Non-animal animals
@@ -629,8 +635,9 @@ giantOctopus = ItemKind
                , ("eye 8", COrgan)
                    -- shots not too damaging, so can have strong sight
                , ("animal brain", COrgan), ("animal stomach", COrgan)
-               , ("genetic flaw 3", COrgan) ]
-  }
+               , ("genetic flaw 3", COrgan)
+               , ("raw meat chunk", CEqp), ("raw meat chunk", CEqp) ]
+ }
 
 -- * Robots, Allure-specific
 
