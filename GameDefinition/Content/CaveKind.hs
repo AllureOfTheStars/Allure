@@ -371,7 +371,7 @@ bridge = rogue
   , cstairAllowed = [ ("welded walled staircase", 50)
                     , ("welded open staircase", 50)
                     , ("welded tiny staircase", 1) ]
-  , cdesc         = "The bridge is gutted out and nonoperational. There are animal cries down below and ominous silence up above."
+  , cdesc         = "The bridge is gutted out and nonoperational. You saved space on the shuttle by not taking anything with you and now you can't even attempt repairs. There are animal cries down below and ominous silence up above."
   }
 shallowRogue = rogue
   { cfreq         = [("caveShallowRogue", 100)]
