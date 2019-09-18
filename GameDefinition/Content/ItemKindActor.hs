@@ -21,11 +21,11 @@ import Game.LambdaHack.Definition.Flavour
 
 actors :: [ItemKind]
 actors =
-  [warrior, warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, brawler, soldier, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush]
+  [warrior, warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, brawler, soldier, mercenary, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush]
   -- Allure-specific
   ++ [giantOctopus, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot]
 
-warrior,    warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, brawler, soldier, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush :: ItemKind
+warrior,    warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, brawler, soldier, mercenary, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush :: ItemKind
 -- Allure-specific
 giantOctopus, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot :: ItemKind
 
@@ -141,6 +141,16 @@ soldier = brawler
   , ifreq    = [("soldier hero", 100), ("mobile", 1)]
   , ikit     = ikit brawler
                ++ [("explosive", CStash)]
+  -- , idesc    = ""
+  }
+mercenary = brawler
+  { iname    = "mercenary"
+  , ifreq    = [("mercenary hero", 100), ("mobile", 1)]
+  , ikit     = humanOrgans  -- no flaw
+               ++ [ ("mercenary weapon", CEqp)
+                  , ("bulletproof vest", CEqp)
+                  , ("mercenary ammo", CStash)
+                  , ("explosive", CStash) ]
   -- , idesc    = ""
   }
 

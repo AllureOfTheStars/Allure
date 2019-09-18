@@ -37,11 +37,11 @@ items :: [ItemKind]
 items =
   [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
   -- Allure-specific
-  ++ [needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk]
+  ++ [needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, militaryKnife, militaryTazer]
 
 sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
 -- Allure-specific
-needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk :: ItemKind
+needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, militaryKnife, militaryTazer :: ItemKind
 
 -- Keep the dice rolls and sides in aspects small so that not too many
 -- distinct items are generated (for display in item lore and for narrative
@@ -175,7 +175,7 @@ slingStone = ItemKind
 slingBullet = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "bearing ball"
-  , ifreq    = [("common item", 5), ("any arrow", 100)]
+  , ifreq    = [("common item", 5), ("any arrow", 100), ("mercenary ammo", 25)]
   , iflavour = zipPlain [BrBlack]
   , icount   = 1 + 6 `dL` 4
   , irarity  = [(1, 1), (10, 15)]
@@ -201,7 +201,8 @@ slingBullet = ItemKind
 paralizingProj = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "can"
-  , ifreq    = [("common item", 100), ("can of sticky foam", 1)]
+  , ifreq    = [ ("common item", 100), ("can of sticky foam", 1)
+               , ("mercenary ammo", 25) ]
   , iflavour = zipPlain [Magenta]
   , icount   = 1 `dL` 4
   , irarity  = [(5, 5), (10, 20)]
@@ -243,7 +244,7 @@ harpoon2 = harpoon
 net = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "net"
-  , ifreq    = [("common item", 100)]
+  , ifreq    = [("common item", 100), ("mercenary ammo", 25)]
   , iflavour = zipPlain [BrGreen]
   , icount   = 1 `dL` 3
   , irarity  = [(5, 5), (10, 7)]
@@ -971,7 +972,8 @@ sharpeningTool = ItemKind
   , iweight  = 400
   , idamage  = 0
   , iaspects = [ AddSkill SkHurtMelee $ (1 `dL` 7) * 5
-               , SetFlag Equipable, EqpSlot EqpSlotHurtMelee ]
+               , SetFlag Equipable
+               , EqpSlot EqpSlotHurtMelee ]
   , ieffects = []
   , idesc    = "Originally used for realigning and sharpening dulled edges of kitchen knives in the local restaurants. Now it saves lives by keeping your melee weapons keen and true before each skirmish."
   , ikit     = []
@@ -1301,7 +1303,8 @@ armorLeather2 = armorLeather  -- for now, purely flavour, for better messages
   }
 armorMail = armorLeather
   { iname    = "bulletproof vest"
-  , ifreq    = [("common item", 100), ("torso armor", 1), ("armor ranged", 50)]
+  , ifreq    = [ ("common item", 100), ("torso armor", 1), ("armor ranged", 50)
+               , ("bulletproof vest", 1) ]
   , iflavour = zipPlain [Cyan]
   , irarity  = [(6, 9), (10, 3)]
   , iweight  = 12000
@@ -1571,7 +1574,7 @@ hammerParalyze = hammerTemplate
                , EqpSlot EqpSlotWeaponBig ]
                ++ iaspects hammerTemplate
   , ieffects = [Paralyze 10]
-  , idesc    = "This exquisite demolition hammer with a titanium head and exceptionally long synthetic handle leaves no wall and no body standing."
+  , idesc    = "This exquisite demolition hammer with a titanium head and excepthionally long synthetic handle leaves no wall and no body standing."
   }
 hammerSpark = hammerTemplate
   { iname    = "Grand Smithhammer"
@@ -1799,7 +1802,8 @@ needle = ItemKind
 needleSleep = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "tranquillizer dart"
-  , ifreq    = [ ("tranquillizer dart", 1), ("common item", 1) ]
+  , ifreq    = [ ("tranquillizer dart", 1), ("common item", 1)
+               , ("mercenary ammo", 25) ]
                    -- marked as common to ensure can be polymorphed
   , iflavour = zipPlain [BrBlue]
   , icount   = 1 `dL` 3
@@ -1913,5 +1917,35 @@ rawMeatChunk = ItemKind
   , iaspects = []
   , ieffects = [DropItem maxBound 1 COrgan "hungry"]
   , idesc    = "A scrap of edible animal meat. Not very tasty nor nourishing, because neither tender enough nor cooked in any way."
+  , ikit     = []
+  }
+militaryKnife = dagger
+  { iname    = "military knife"
+  , ifreq    = [("common item", 1), ("mercenary weapon", 70)]
+  , irarity  = [(10, 10)]
+  , idamage  = 8 `d` 1
+  , iaspects = [ Timeout 2
+               , SetFlag Durable, SetFlag Meleeable
+               , EqpSlot EqpSlotWeaponFast
+               , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
+  , ieffects = [DropItem 1 maxBound COrgan "condition"]
+  , idesc    = "Millitary design laser-sharpened alloy blade able to cleanly open an artery at the lightest touch through layers of fabric."
+  }
+militaryTazer = ItemKind
+  { isymbol  = symbolHafted
+  , iname    = "military stun gun"
+  , ifreq    = [("common item", 1), ("mercenary weapon", 30)]
+  , iflavour = zipFancy [Magenta]
+  , icount   = 1
+  , irarity  = [(10, 10)]
+  , iverbHit = "prod"
+  , iweight  = 1000
+  , idamage  = 4 `d` 1
+  , iaspects = [ Timeout 5
+               , SetFlag Durable, SetFlag Meleeable
+               , EqpSlot EqpSlotWeaponBig
+               , toVelocity 40 ]
+  , ieffects = [DropBestWeapon, Paralyze 10]
+  , idesc    = "A direct contact electroshock weapon with unlimited and fast recharging. Ideal for close quarter fights inside space habitats, where preserving the integrity of the outer hull is paramount."
   , ikit     = []
   }

@@ -593,7 +593,8 @@ ambush = rogue  -- a scenario with strong missiles;
   , cactorFreq    = []
   , citemNum      = 5 `d` 8
   , citemFreq     = [ ("common item", 30)
-                    , ("any arrow", 400), ("harpoon", 300), ("explosive", 50) ]
+                    , ("mercenary ammo", 200), ("harpoon", 300)
+                    , ("explosive", 50) ]
   , cplaceFreq    = [("ambush", 1)]
   , cpassable     = True
   , cdefTile      = "ambushSetDark"
