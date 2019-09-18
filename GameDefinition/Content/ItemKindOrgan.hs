@@ -627,6 +627,7 @@ geneticFlaw n = armoredSkin
                ++ [AddSkill SkApply (-1) | n >= 10]
   , ieffects = [ OnSmash $ DropItem maxBound maxBound COrgan "condition"
                    -- key for AI is it eliminates all impression conditions
+               , OnSmash $ DropItem maxBound maxBound COrgan "hungry"
                , OnSmash $ RefillHP n
                , OnSmash $ VerbNoLonger "undergo instant infracellular decontamination" ]  -- unlike the civilian version, this one is instant and the attunement is automatic and relatively quick (the usual double cooldown when equipping items again)
   , idesc    = "Nobody is perfect. At least without infracellular engineering, which is heavily regulated, insanely expensive and automatically reverted without refund before critical medical interventions. One more reason to be a good citizen, work hard and not die often. But where is the fun in that?"

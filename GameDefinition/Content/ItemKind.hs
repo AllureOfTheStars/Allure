@@ -573,7 +573,9 @@ potion3 = potionTemplate
 potion4 = potionTemplate
   { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
   , irarity  = [(1, 6), (10, 10)]
-  , ieffects = [ RefillHP 10, DropItem maxBound maxBound COrgan "condition"
+  , ieffects = [ RefillHP 10
+               , DropItem maxBound maxBound COrgan "condition"
+               , DropItem maxBound maxBound COrgan "hungry"
                , OnSmash (Explode "healing mist 2") ]
   }
 potion5 = potionTemplate
