@@ -160,6 +160,9 @@ fireSmall = ItemKind
   , idamage  = 0
   , iaspects = [SetFlag Durable]
   , ieffects = [ Burn 1, Explode "single spark"
+               , Composite [ DestroyItem 1 1 CGround "raw meat chunk"
+                           , CreateItem CGround "roasted meat chunk"
+                                        timerNone ]
                , OnCombine $ Composite [ DestroyItem 1 1 CGround "raw meat chunk"
                                        , CreateItem CGround "roasted meat chunk"
                                                     timerNone ]]
