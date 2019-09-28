@@ -1920,15 +1920,16 @@ rawMeatChunk = ItemKind
   , idamage  = 0
   , iaspects = []
   , ieffects = [DropItem maxBound 1 COrgan "hungry"]
-  , idesc    = "A scrap of edible animal meat. Not very tasty nor nourishing, because neither tender enough nor cooked in any way."
+  , idesc    = "A scrap of edible animal meat. Not very tasty nor nourishing. Cooking would make it more palatable."
   , ikit     = []
   }
 roastedMeatChunk = rawMeatChunk
   { iname    = "roasted meat chunk"
-  , ifreq    = [("roasted meat chunk", 100), ("common item", 1)]
+  , ifreq    = [ ("roasted meat chunk", 100), ("cooked food", 80)
+               , ("common item", 1) ]
   , iflavour = zipPlain [Brown]
-  , ieffects = [DropItem maxBound 2 COrgan "hungry"]
-  , idesc    = "Delicious and filling chunk of roasted meat."
+  , ieffects = [DropItem maxBound 3 COrgan "hungry"]
+  , idesc    = "Delicious and filling chunk of meat. The thermal processing released flavour and made it easier to digest."
   }
 militaryKnife = dagger
   { iname    = "military knife"

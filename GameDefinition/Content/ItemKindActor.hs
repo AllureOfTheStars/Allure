@@ -72,19 +72,19 @@ warrior2 = warrior
 warrior3 = warrior
   { iname    = "engineer"
   , ifreq    = [("crawl hero", 100), ("mobile", 1)]
-  , ikit     = ikit warrior ++ [("currency", CStash)]
+  , ikit     = ikit warrior ++ [("currency", CStash), ("cooked food", CStash)]
   -- , idesc    = ""
   }
 warrior4 = warrior
   { iname    = "doctor"
   , ifreq    = [("crawl hero", 100), ("mobile", 1)]
-  , ikit     = ikit warrior ++ [("currency", CStash)]
+  , ikit     = ikit warrior3
   -- , idesc    = ""
   }
 warrior5 = warrior
   { iname    = "hacker"
   , ifreq    = [("crawl hero", 100), ("mobile", 1)]
-  , ikit     = ikit warrior ++ [("currency", CStash)]
+  , ikit     = ikit warrior3
   -- , idesc    = ""
   }
 

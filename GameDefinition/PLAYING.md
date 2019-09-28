@@ -141,8 +141,8 @@ accordingly, quite tough.
 
 The main scenario, the long crawl, is the only one that takes
 place in a multi-floor setting, requiring lots of time to beat,
-with focus on resource management, survival, gathering environment
-clues and guessing and countering opponents' strategies.
+with focus on resource management, survival, food gathering and cooking,
+spotting environment clues and guessing and countering opponents' strategies.
 The player has a choice of exploring a single level at a time or portions
 of many levels along a single staircase. On some levels he may explore
 and loot with a single scout eluding most opponents. On others he may be
