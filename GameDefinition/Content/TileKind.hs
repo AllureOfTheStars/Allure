@@ -217,23 +217,24 @@ tree = TileKind
                , ("treeShadeOver_0_Lit", 1) ]
   , tcolor   = BrGreen
   , tcolor2  = Green
-  , talter   = 50
-  , tfeature = []
+  , talter   = 5
+  , tfeature = [Embed "wooden tangle", ChangeTo "burning tree"]
   }
 treeBurnt = tree
   { tname    = "burnt tree"
   , tfreq    = [("zooSetDark", 10), ("tree with fire", 30)]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
-  , tfeature = Dark : tfeature tree
+  , tfeature = [Dark]
   }
 treeBurning = tree
   { tname    = "burning tree"
-  , tfreq    = [("emptySetLit", 2), ("zooSetDark", 60), ("tree with fire", 70)]
+  , tfreq    = [ ("emptySetLit", 2), ("zooSetDark", 60)
+               , ("tree with fire", 70), ("burning tree", 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 5
-  , tfeature = Embed "big fire" : ChangeTo "tree with fire" : tfeature tree
+  , tfeature = [Embed "big fire", ChangeTo "tree with fire"]
       -- TODO: dousing off the tree will have more sense when it periodically
       -- explodes, hitting and lighting up the team and so betraying it
   }
@@ -414,8 +415,8 @@ bush = TileKind
                , ("lift terminal Lit", 4) ]
   , tcolor   = BrGreen
   , tcolor2  = Green
-  , talter   = 10
-  , tfeature = [Clear]
+  , talter   = 5
+  , tfeature = [Embed "wooden tangle", ChangeTo "burning bush", Clear]
   }
 bushBurnt = bush
   { tname    = "burnt bush"
@@ -423,16 +424,16 @@ bushBurnt = bush
                , ("bush with fire", 70) ]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
-  , tfeature = Dark : tfeature bush
+  , tfeature = [Dark, Clear]
   }
 bushBurning = bush
   { tname    = "burning bush"
   , tfreq    = [ ("emptySetLit", 2), ("ambushSetDark", 10), ("zooSetDark", 300)
-               , ("bush with fire", 30) ]
+               , ("bush with fire", 30), ("burning bush", 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 5
-  , tfeature = Embed "small fire" : ChangeTo "bush with fire" : tfeature bush
+  , tfeature = [Embed "small fire", ChangeTo "bush with fire", Clear]
   }
 
 -- ** Walkable

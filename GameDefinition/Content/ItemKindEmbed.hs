@@ -24,11 +24,11 @@ embeds :: [ItemKind]
 embeds =
   [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, signboardMerchandise, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater, straightPath, frozenGround]
   -- Allure-specific
-  ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, wall3dBillboard, crackedFlue, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator, underbrush]
+  ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, wall3dBillboard, crackedFlue, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator, underbrush, woodenTangle]
 
 scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, signboardMerchandise, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater, straightPath, frozenGround :: ItemKind
 -- Allure-specific
-blackStarrySky,       disengagedDocking, ruinedFirstAidKit, wall3dBillboard, crackedFlue, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator, underbrush :: ItemKind
+blackStarrySky,       disengagedDocking, ruinedFirstAidKit, wall3dBillboard, crackedFlue, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator, underbrush, woodenTangle :: ItemKind
 
 -- Make sure very few walls are substantially useful, e.g., caches,
 -- and none that are secret. Otherwise the player will spend a lot of time
@@ -580,7 +580,7 @@ underbrush = ItemKind
   { isymbol  = 'u'
   , iname    = "vegetation"
   , ifreq    = [("underbrush", 1)]
-  , iflavour = zipFancy [BrGreen]
+  , iflavour = zipPlain [BrGreen]
   , icount   = 1
   , irarity  = [(1, 1)]
   , iverbHit = "crunch"
@@ -588,6 +588,21 @@ underbrush = ItemKind
   , idamage  = 0
   , iaspects = [SetFlag Durable]
   , ieffects = [OnCombine $ DestroyItem 1 1 CGround "fire source"]
+  , idesc    = ""
+  , ikit     = []
+  }
+woodenTangle = ItemKind
+  { isymbol  = 'w'
+  , iname    = "wooden tangle"
+  , ifreq    = [("wooden tangle", 1)]
+  , iflavour = zipPlain [Brown]
+  , icount   = 1
+  , irarity  = [(1, 1)]
+  , iverbHit = "crunch"
+  , iweight  = 50000
+  , idamage  = 0
+  , iaspects = [SetFlag Durable]
+  , ieffects = [DestroyItem 1 1 CGround "fire source"]
   , idesc    = ""
   , ikit     = []
   }
