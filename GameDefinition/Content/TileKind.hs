@@ -428,7 +428,7 @@ bushBurnt = bush
   }
 bushBurning = bush
   { tname    = "burning bush"
-  , tfreq    = [ ("emptySetLit", 2), ("ambushSetDark", 10), ("zooSetDark", 300)
+  , tfreq    = [ ("emptySetLit", 1), ("ambushSetDark", 10), ("zooSetDark", 300)
                , ("bush with fire", 30), ("burning bush", 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
