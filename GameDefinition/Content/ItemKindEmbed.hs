@@ -24,11 +24,11 @@ embeds :: [ItemKind]
 embeds =
   [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, signboardMerchandise, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater, straightPath, frozenGround]
   -- Allure-specific
-  ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, wall3dBillboard, crackedFlue, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator]
+  ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, wall3dBillboard, crackedFlue, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator, underbrush]
 
 scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, signboardMerchandise, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater, straightPath, frozenGround :: ItemKind
 -- Allure-specific
-blackStarrySky,       disengagedDocking, ruinedFirstAidKit, wall3dBillboard, crackedFlue, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator :: ItemKind
+blackStarrySky,       disengagedDocking, ruinedFirstAidKit, wall3dBillboard, crackedFlue, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator, underbrush :: ItemKind
 
 -- Make sure very few walls are substantially useful, e.g., caches,
 -- and none that are secret. Otherwise the player will spend a lot of time
@@ -149,9 +149,9 @@ signboardMerchandise = signboardExit
   , idesc    = "A list of nearby commercial outlets, constantly updated by tracking merchandise not registered as passenger property. Customers are kindly asked to refrain from littering in this heavily monitored public area."
   }
 fireSmall = ItemKind
-  { isymbol  = '%'
+  { isymbol  = 'f'
   , iname    = "small fire"
-  , ifreq    = [("small fire", 1)]
+  , ifreq    = [("small fire", 1), ("fire source", 1)]
   , iflavour = zipPlain [BrRed]
   , icount   = 1
   , irarity  = [(1, 1)]
@@ -159,14 +159,17 @@ fireSmall = ItemKind
   , iweight  = 10000
   , idamage  = 0
   , iaspects = [SetFlag Durable]
-  , ieffects = [Burn 1, Explode "single spark"]
-  , idesc    = "A few small logs, burning brightly."
+  , ieffects = [ Burn 1, Explode "single spark"
+               , OnCombine $ Composite [ DestroyItem 1 1 CGround "raw meat chunk"
+                                       , CreateItem CGround "roasted meat chunk"
+                                                    timerNone ]]
+  , idesc    = "A few shrubs and embers, glowing brightly."
   , ikit     = []
   }
 fireBig = fireSmall
   { isymbol  = '0'
   , iname    = "big fire"
-  , ifreq    = [("big fire", 1)]
+  , ifreq    = [("big fire", 1), ("fire source", 1)]
   , ieffects = [ Burn 2
                , CreateItem CStash "wooden torch" timerNone
                , Explode "spark" ]
@@ -330,7 +333,7 @@ shallowWater = ItemKind
   , iweight  = 10000
   , idamage  = 0
   , iaspects = [SetFlag Durable]
-  , ieffects = [ParalyzeInWater 2]
+  , ieffects = [ParalyzeInWater 2]  -- TODO: OnCombine(fill all containers)
   , idesc    = ""
   , ikit     = []
   }
@@ -564,5 +567,20 @@ decontaminator = ItemKind
                , toOrganGood "rose-smelling" (20 + 1 `d` 5)
                ]
   , idesc    = "The area is under quarantine. No departure is permitted without decontamination. Personal belongings are to be decontaminated separately."
+  , ikit     = []
+  }
+underbrush = ItemKind
+  { isymbol  = 'u'
+  , iname    = "vegetation"
+  , ifreq    = [("underbrush", 1)]
+  , iflavour = zipFancy [BrGreen]
+  , icount   = 1
+  , irarity  = [(1, 1)]
+  , iverbHit = "crunch"
+  , iweight  = 10000
+  , idamage  = 0
+  , iaspects = [SetFlag Durable]
+  , ieffects = [OnCombine $ DestroyItem 1 1 CGround "fire source"]
+  , idesc    = ""
   , ikit     = []
   }
