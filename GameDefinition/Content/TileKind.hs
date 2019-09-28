@@ -211,8 +211,9 @@ signboardRead = TileKind
 tree = TileKind
   { tsymbol  = '0'
   , tname    = "tree"
-  , tfreq    = [ ("brawlSetLit", 140), ("shootoutSetLit", 10)
-               , ("huntSetLit", 10), ("escapeSetLit", 35), ("zooSetDark", 20)
+  , tfreq    = [ ("emptySetLit", 1), ("brawlSetLit", 140)
+               , ("shootoutSetLit", 10), ("huntSetLit", 10)
+               , ("escapeSetLit", 35), ("zooSetDark", 20)
                , ("treeShadeOver_0_Lit", 1) ]
   , tcolor   = BrGreen
   , tcolor2  = Green
@@ -228,7 +229,7 @@ treeBurnt = tree
   }
 treeBurning = tree
   { tname    = "burning tree"
-  , tfreq    = [("zooSetDark", 60), ("tree with fire", 70)]
+  , tfreq    = [("emptySetLit", 2), ("zooSetDark", 60), ("tree with fire", 70)]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 5
@@ -406,8 +407,9 @@ pulpit = TileKind
 bush = TileKind
   { tsymbol  = '%'
   , tname    = "bush"
-  , tfreq    = [ ("bush Lit", 1), ("arenaSetLit", 10), ("shootoutSetLit", 30)
-               , ("huntSetLit", 30), ("escapeSetLit", 40), ("zooSetDark", 100)
+  , tfreq    = [ ("bush Lit", 1), ("emptySetLit", 1), ("arenaSetLit", 10)
+               , ("shootoutSetLit", 30), ("huntSetLit", 30), ("escapeSetLit", 40)
+               , ("zooSetDark", 100)
                , ("bushClumpOver_f_Lit", 1), ("pumpsOver_f_Lit", 1)
                , ("lift terminal Lit", 4) ]
   , tcolor   = BrGreen
@@ -425,7 +427,7 @@ bushBurnt = bush
   }
 bushBurning = bush
   { tname    = "burning bush"
-  , tfreq    = [ ("ambushSetDark", 10), ("zooSetDark", 300)
+  , tfreq    = [ ("emptySetLit", 2), ("ambushSetDark", 10), ("zooSetDark", 300)
                , ("bush with fire", 30) ]
   , tcolor   = BrRed
   , tcolor2  = Red

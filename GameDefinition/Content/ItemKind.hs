@@ -270,7 +270,7 @@ light1 = ItemKind
                , ("fire source", 1), ("wooden torch", 1) ]
   , iflavour = zipPlain [Brown]
   , icount   = 1 `dL` 4
-  , irarity  = [(1, 30), (4, 1)]
+  , irarity  = [(1, 20), (4, 1)]
   , iverbHit = "scorch"
   , iweight  = 1000
   , idamage  = 0
