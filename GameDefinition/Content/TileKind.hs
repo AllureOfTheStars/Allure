@@ -882,7 +882,7 @@ underbrushBurning = underbrush
   { tsymbol  = ';'
   , tname    = "burning underbrush"
   , tfreq    = [ ("ambushSetDark", 1), ("zooSetDark", 5)
-               , ("burning underbrush", 1) ]
+               , ("bush with fire", 30), ("burning underbrush", 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 0
