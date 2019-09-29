@@ -229,7 +229,7 @@ treeBurnt = tree
   }
 treeBurning = tree
   { tname    = "burning tree"
-  , tfreq    = [ ("emptySetLit", 2), ("zooSetDark", 60)
+  , tfreq    = [ ("emptySetLit", 1), ("zooSetDark", 60)
                , ("tree with fire", 70), ("burning tree", 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
@@ -244,7 +244,7 @@ rubble = TileKind
   , tfreq    = [ ("rubble", 1), ("legendLit", 1), ("legendDark", 1)
                , ("stair terminal Lit", 6), ("stair terminal Dark", 6)
                , ("lift terminal Lit", 6), ("lift terminal Dark", 6)
-               , ("emptySetLit", 4), ("exitSetLit", 8)
+               , ("emptySetLit", 3), ("exitSetLit", 8)
                , ("noiseSetLit", 50), ("powerSetDark", 150)
                , ("zooSetDark", 100), ("ambushSetDark", 3) ]
   , tcolor   = BrYellow
@@ -613,7 +613,7 @@ outerHullWall = basicOuterFence
 rubbleBurning = TileKind  -- present in "emptySetLit" for early light source
   { tsymbol  = '&'
   , tname    = "burning installation"
-  , tfreq    = [ ("emptySetLit", 2), ("powerSetDark", 20)
+  , tfreq    = [ ("emptySetLit", 1), ("powerSetDark", 20)
                , ("ambushSetDark", 15), ("zooSetDark", 30)
                , ("stair terminal Lit", 4), ("stair terminal Dark", 4)
                , ("lift terminal Lit", 4), ("lift terminal Dark", 4) ]
