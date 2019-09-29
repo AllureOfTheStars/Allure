@@ -35,11 +35,11 @@ otherItemContent = embeds ++ actors ++ organs ++ blasts ++ temporaries
 
 items :: [ItemKind]
 items =
-  [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
+  [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
   -- Allure-specific
   ++ [needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryTazer]
 
-sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
+sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
 -- Allure-specific
 needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryTazer :: ItemKind
 
@@ -761,7 +761,7 @@ ediblePlantTemplate = ItemKind
   { isymbol  = symbolFood
   , iname    = "edible plant"
   , ifreq    = [("edible plant unknown", 1)]
-  , iflavour = zipPlain stdCol
+  , iflavour = zipFancy stdCol
   , icount   = 1 `dL` 5
   , irarity  = [(1, 14), (10, 7)]  -- weak, apart of hunger removal
   , iverbHit = "thump"
@@ -770,7 +770,7 @@ ediblePlantTemplate = ItemKind
   , iaspects = [ HideAs "edible plant unknown"
                , toVelocity 30 ]  -- low density, often falling apart
   , ieffects = []
-  , idesc    = "Withered but fragrant bits of a colorful plant. Taste tolerably and break down easily, but only eating may reveal the full effects."
+  , idesc    = "Withered but fragrant bits of a colorful plant. Taste tolerably. Doesn't break down that easily in its raw form, without cooking. Only eating may reveal the full effects."
   , ikit     = []
   }
 ediblePlant1 = ediblePlantTemplate
@@ -788,13 +788,13 @@ ediblePlant3 = ediblePlantTemplate
   { iname    = "thick leaf"
   , ifreq    = [("common item", 100), ("edible plant", 100)]
   , ieffects = [ DropItem 1 maxBound COrgan "poisoned"
-               , DropItem maxBound 3 COrgan "hungry" ]
+               , DropItem maxBound 2 COrgan "hungry" ]
   }
 ediblePlant4 = ediblePlantTemplate
   { iname    = "reconfigured fruit"
   , ifreq    = [("common item", 100), ("edible plant", 100)]
   , ieffects = [ toOrganBad "blind" (10 + 1 `d` 10)
-               , DropItem maxBound 5 COrgan "hungry" ]
+               , DropItem maxBound 3 COrgan "hungry" ]
   }
 ediblePlant5 = ediblePlantTemplate
   { iname    = "fragrant herb"
@@ -826,7 +826,69 @@ ediblePlant8 = ediblePlantTemplate
   , irarity  = [(1, 5), (10, 10)]  -- solves the hunger problem, but not too soon
   , iweight  = 5000
   , idamage  = 1 `d` 1
-  , ieffects = [DropItem maxBound 10 COrgan "hungry"]
+  , ieffects = [DropItem maxBound 3 COrgan "hungry"]
+  }
+
+cookedPlantTemplate = ediblePlantTemplate
+  { iname    = "cooked plant"
+  , ifreq    = [("cooked plant unknown", 1)]
+  , iflavour = zipPlain stdCol
+  , irarity  = [(1, 1)]
+  , iaspects = [ HideAs "cooked plant unknown"
+               , toVelocity 20 ]  -- low density, often falling apart
+  , idesc    = "Withered but fragrant bits of a colorful plant. Taste blandly, but break down easily, releasing all nutrients. Only eating may reveal the full effects."
+  }
+cookedPlant1 = cookedPlantTemplate
+  { iname    = "cooked berry"
+  , ifreq    = [("common item", 1), ("cooked plant", 100)]
+  , ieffects = [ RefillHP 1, toOrganBad "immobile" (5 + 1 `d` 5)
+               , DropItem maxBound 2 COrgan "hungry" ]
+  }
+cookedPlant2 = cookedPlantTemplate
+  { iname    = "cooked fungus"
+  , ifreq    = [("common item", 1), ("cooked plant", 100)]
+  , ieffects = ieffects ediblePlant2
+  }
+cookedPlant3 = cookedPlantTemplate
+  { iname    = "cooked leaf"
+  , ifreq    = [("common item", 1), ("cooked plant", 100), ("cooked food", 10)]
+  , ieffects = [ DropItem 1 maxBound COrgan "poisoned"
+               , DropItem maxBound 4 COrgan "hungry" ]
+  }
+cookedPlant4 = cookedPlantTemplate
+  { iname    = "cooked fruit"
+  , ifreq    = [("common item", 1), ("cooked plant", 100)]
+  , ieffects = [ toOrganBad "blind" (10 + 1 `d` 10)
+               , DropItem maxBound 6 COrgan "hungry" ]
+  }
+cookedPlant5 = cookedPlantTemplate
+  { iname    = "cooked herb"
+  , ifreq    = [("common item", 1), ("cooked plant", 100)]
+  , icount   = 1 `dL` 9
+  , irarity  = [(1, 10), (10, 5)]  -- powerful; many copies
+  , iaspects = ELabel "of lethargy"
+               : iaspects cookedPlantTemplate
+  , ieffects = ieffects ediblePlant5
+  }
+cookedPlant6 = cookedPlantTemplate
+  { iname    = "cooked flower"
+  , ifreq    = [("common item", 1), ("cooked plant", 100), ("cooked food", 10)]
+  , ieffects = [ PutToSleep
+               , DropItem maxBound 2 COrgan "hungry" ]
+  }
+cookedPlant7 = cookedPlantTemplate
+  { iname    = "cooked bark"
+  , ifreq    = [("common item", 1), ("cooked plant", 100), ("cooked food", 10)]
+  , ieffects = [ InsertMove 20, toOrganBad "frenzied" (40 + 1 `d` 10)
+               , DropItem maxBound 2 COrgan "hungry" ]
+  }
+cookedPlant8 = cookedPlantTemplate
+  { iname    = "cooked pumpkin"
+  , ifreq    = [("common item", 1), ("cooked plant", 100), ("cooked food", 10)]
+  , irarity  = [(1, 5), (10, 10)]  -- solves the hunger problem, but not too soon
+  , iweight  = 5000
+  , idamage  = 1 `d` 1
+  , ieffects = [DropItem maxBound 9 COrgan "hungry"]
   }
 
 -- These require high apply skill to consume.
@@ -1925,7 +1987,7 @@ rawMeatChunk = ItemKind
   }
 roastedMeatChunk = rawMeatChunk
   { iname    = "roasted meat chunk"
-  , ifreq    = [ ("roasted meat chunk", 100), ("cooked food", 80)
+  , ifreq    = [ ("roasted meat chunk", 100), ("cooked food", 60)
                , ("common item", 1) ]
   , iflavour = zipPlain [Brown]
   , ieffects = [DropItem maxBound 3 COrgan "hungry"]
