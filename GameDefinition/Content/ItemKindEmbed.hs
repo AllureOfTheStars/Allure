@@ -158,7 +158,7 @@ fireSmall = ItemKind
   , iverbHit = "burn"
   , iweight  = 10000
   , idamage  = 0
-  , iaspects = [SetFlag Durable]
+  , iaspects = [ELabel "of roasting", SetFlag Durable]
   , ieffects = [ Burn 1, Explode "single spark"
                , cookEffect, OnCombine cookEffect ]
   , idesc    = "A few shrubs and embers, glowing brightly."
@@ -168,6 +168,7 @@ fireBig = fireSmall
   { isymbol  = '0'
   , iname    = "big fire"
   , ifreq    = [("big fire", 1), ("fire source", 1)]
+  , iaspects = [ELabel "of immolation", SetFlag Durable]
   , ieffects = [ Burn 2
                , CreateItem CStash "wooden torch" timerNone
                , Explode "spark" ]
