@@ -160,13 +160,7 @@ fireSmall = ItemKind
   , idamage  = 0
   , iaspects = [SetFlag Durable]
   , ieffects = [ Burn 1, Explode "single spark"
-               , DestroyItem 1 1 CGround "raw meat chunk"
-                 `AndEffect`
-                 CreateItem CGround "roasted meat chunk" timerNone
-               , OnCombine
-                 $ DestroyItem 1 1 CGround "raw meat chunk"
-                   `AndEffect`
-                   CreateItem CGround "roasted meat chunk" timerNone ]
+               , cookEffect, OnCombine cookEffect ]
   , idesc    = "A few shrubs and embers, glowing brightly."
   , ikit     = []
   }
@@ -607,3 +601,17 @@ woodenTangle = ItemKind
   , idesc    = ""
   , ikit     = []
   }
+
+cookEffect :: Effect
+cookEffect =
+  let cookOne raw cooked =
+        DestroyItem 1 1 CGround raw
+        `AndEffect`
+        CreateItem CGround cooked timerNone
+      cookMeat = cookOne "raw meat chunk" "roasted meat chunk"
+      f :: Effect -> Int -> Effect
+      f eff n =
+        let raw = toGroupName $ "ediblePlant" <> tshow n
+            cooked = toGroupName $ "cookedPlant" <> tshow n
+        in eff `OrEffect` cookOne raw cooked
+  in foldl' f cookMeat $ [8, 7..1]

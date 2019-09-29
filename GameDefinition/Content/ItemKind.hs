@@ -765,7 +765,7 @@ ediblePlantTemplate = ItemKind
   , icount   = 1 `dL` 5
   , irarity  = [(1, 14), (10, 7)]  -- weak, apart of hunger removal
   , iverbHit = "thump"
-  , iweight  = 50
+  , iweight  = 300
   , idamage  = 0
   , iaspects = [ HideAs "edible plant unknown"
                , toVelocity 30 ]  -- low density, often falling apart
@@ -775,30 +775,30 @@ ediblePlantTemplate = ItemKind
   }
 ediblePlant1 = ediblePlantTemplate
   { iname    = "enhanced berry"
-  , ifreq    = [("common item", 100), ("edible plant", 100)]
+  , ifreq    = [("ediblePlant1", 1), ("common item", 100), ("edible plant", 100)]
   , ieffects = [ RefillHP 1, toOrganBad "immobile" (5 + 1 `d` 5)
                , DropItem maxBound 1 COrgan "hungry" ]
   }
 ediblePlant2 = ediblePlantTemplate
   { iname    = "frayed fungus"
-  , ifreq    = [("common item", 100), ("edible plant", 100)]
+  , ifreq    = [("ediblePlant2", 1), ("common item", 100), ("edible plant", 100)]
   , ieffects = [toOrganNoTimer "poisoned"]
   }
 ediblePlant3 = ediblePlantTemplate
   { iname    = "thick leaf"
-  , ifreq    = [("common item", 100), ("edible plant", 100)]
+  , ifreq    = [("ediblePlant3", 1), ("common item", 100), ("edible plant", 100)]
   , ieffects = [ DropItem 1 maxBound COrgan "poisoned"
                , DropItem maxBound 2 COrgan "hungry" ]
   }
 ediblePlant4 = ediblePlantTemplate
   { iname    = "reconfigured fruit"
-  , ifreq    = [("common item", 100), ("edible plant", 100)]
+  , ifreq    = [("ediblePlant4", 1), ("common item", 100), ("edible plant", 100)]
   , ieffects = [ toOrganBad "blind" (10 + 1 `d` 10)
                , DropItem maxBound 3 COrgan "hungry" ]
   }
 ediblePlant5 = ediblePlantTemplate
   { iname    = "fragrant herb"
-  , ifreq    = [("common item", 100), ("edible plant", 100)]
+  , ifreq    = [("ediblePlant5", 1), ("common item", 100), ("edible plant", 100)]
   , icount   = 1 `dL` 9
   , irarity  = [(1, 10), (10, 5)]  -- powerful; many copies
   , iaspects = ELabel "of lethargy"
@@ -810,23 +810,23 @@ ediblePlant5 = ediblePlantTemplate
   }
 ediblePlant6 = ediblePlantTemplate
   { iname    = "dull flower"
-  , ifreq    = [("common item", 100), ("edible plant", 100)]
+  , ifreq    = [("ediblePlant6", 1), ("common item", 100), ("edible plant", 100)]
   , ieffects = [ PutToSleep
                , DropItem maxBound 1 COrgan "hungry" ]
   }
 ediblePlant7 = ediblePlantTemplate
   { iname    = "spicy bark"
-  , ifreq    = [("common item", 100), ("edible plant", 100)]
+  , ifreq    = [("ediblePlant7", 1), ("common item", 100), ("edible plant", 100)]
   , ieffects = [ InsertMove 20, toOrganBad "frenzied" (40 + 1 `d` 10)
                , DropItem maxBound 1 COrgan "hungry" ]
   }
 ediblePlant8 = ediblePlantTemplate
   { iname    = "pumpkin"
-  , ifreq    = [("common item", 100), ("edible plant", 100)]
+  , ifreq    = [("ediblePlant8", 1), ("common item", 100), ("edible plant", 100)]
   , irarity  = [(1, 5), (10, 10)]  -- solves the hunger problem, but not too soon
-  , iweight  = 5000
+  , iweight  = 3000
   , idamage  = 1 `d` 1
-  , ieffects = [DropItem maxBound 3 COrgan "hungry"]
+  , ieffects = [DropItem maxBound 1 COrgan "hungry"]
   }
 
 cookedPlantTemplate = ediblePlantTemplate
@@ -840,30 +840,33 @@ cookedPlantTemplate = ediblePlantTemplate
   }
 cookedPlant1 = cookedPlantTemplate
   { iname    = "cooked berry"
-  , ifreq    = [("common item", 1), ("cooked plant", 100)]
+  , ifreq    = [("cookedPlant1", 1), ("common item", 1), ("cooked plant", 100)]
   , ieffects = [ RefillHP 1, toOrganBad "immobile" (5 + 1 `d` 5)
                , DropItem maxBound 2 COrgan "hungry" ]
   }
 cookedPlant2 = cookedPlantTemplate
   { iname    = "cooked fungus"
-  , ifreq    = [("common item", 1), ("cooked plant", 100)]
+  , ifreq    = [("cookedPlant2", 1), ("common item", 1), ("cooked plant", 100)]
   , ieffects = ieffects ediblePlant2
   }
 cookedPlant3 = cookedPlantTemplate
   { iname    = "cooked leaf"
-  , ifreq    = [("common item", 1), ("cooked plant", 100), ("cooked food", 10)]
+  , ifreq    = [ ("cookedPlant3", 1)
+               , ("common item", 1), ("cooked plant", 100), ("cooked food", 10) ]
   , ieffects = [ DropItem 1 maxBound COrgan "poisoned"
-               , DropItem maxBound 4 COrgan "hungry" ]
+               , DropItem maxBound 3 COrgan "hungry" ]
   }
 cookedPlant4 = cookedPlantTemplate
   { iname    = "cooked fruit"
-  , ifreq    = [("common item", 1), ("cooked plant", 100)]
+  , ifreq    = [ ("cookedPlant4", 1)
+               , ("common item", 1), ("cooked plant", 100) ]
   , ieffects = [ toOrganBad "blind" (10 + 1 `d` 10)
-               , DropItem maxBound 6 COrgan "hungry" ]
+               , DropItem maxBound 4 COrgan "hungry" ]
   }
 cookedPlant5 = cookedPlantTemplate
   { iname    = "cooked herb"
-  , ifreq    = [("common item", 1), ("cooked plant", 100)]
+  , ifreq    = [ ("cookedPlant5", 1)
+               , ("common item", 1), ("cooked plant", 100) ]
   , icount   = 1 `dL` 9
   , irarity  = [(1, 10), (10, 5)]  -- powerful; many copies
   , iaspects = ELabel "of lethargy"
@@ -872,23 +875,26 @@ cookedPlant5 = cookedPlantTemplate
   }
 cookedPlant6 = cookedPlantTemplate
   { iname    = "cooked flower"
-  , ifreq    = [("common item", 1), ("cooked plant", 100), ("cooked food", 10)]
+  , ifreq    = [ ("cookedPlant6", 1)
+               , ("common item", 1), ("cooked plant", 100), ("cooked food", 10) ]
   , ieffects = [ PutToSleep
                , DropItem maxBound 2 COrgan "hungry" ]
   }
 cookedPlant7 = cookedPlantTemplate
   { iname    = "cooked bark"
-  , ifreq    = [("common item", 1), ("cooked plant", 100), ("cooked food", 10)]
+  , ifreq    = [ ("cookedPlant7", 1)
+               , ("common item", 1), ("cooked plant", 100), ("cooked food", 10) ]
   , ieffects = [ InsertMove 20, toOrganBad "frenzied" (40 + 1 `d` 10)
                , DropItem maxBound 2 COrgan "hungry" ]
   }
 cookedPlant8 = cookedPlantTemplate
   { iname    = "cooked pumpkin"
-  , ifreq    = [("common item", 1), ("cooked plant", 100), ("cooked food", 10)]
-  , irarity  = [(1, 5), (10, 10)]  -- solves the hunger problem, but not too soon
-  , iweight  = 5000
+  , ifreq    = [ ("cookedPlant8", 1)
+               , ("common item", 1), ("cooked plant", 100), ("cooked food", 10) ]
+  , irarity  = [(1, 5), (10, 10)]
+  , iweight  = 3000
   , idamage  = 1 `d` 1
-  , ieffects = [DropItem maxBound 9 COrgan "hungry"]
+  , ieffects = [DropItem maxBound 5 COrgan "hungry"]
   }
 
 -- These require high apply skill to consume.
