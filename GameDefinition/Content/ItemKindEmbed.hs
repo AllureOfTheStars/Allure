@@ -160,12 +160,13 @@ fireSmall = ItemKind
   , idamage  = 0
   , iaspects = [SetFlag Durable]
   , ieffects = [ Burn 1, Explode "single spark"
-               , Composite [ DestroyItem 1 1 CGround "raw meat chunk"
-                           , CreateItem CGround "roasted meat chunk"
-                                        timerNone ]
-               , OnCombine $ Composite [ DestroyItem 1 1 CGround "raw meat chunk"
-                                       , CreateItem CGround "roasted meat chunk"
-                                                    timerNone ]]
+               , DestroyItem 1 1 CGround "raw meat chunk"
+                 `AndEffect`
+                 CreateItem CGround "roasted meat chunk" timerNone
+               , OnCombine
+                 $ DestroyItem 1 1 CGround "raw meat chunk"
+                   `AndEffect`
+                   CreateItem CGround "roasted meat chunk" timerNone ]
   , idesc    = "A few shrubs and embers, glowing brightly."
   , ikit     = []
   }
@@ -526,9 +527,9 @@ machineOil = ItemKind
   , idamage  = 0
   , iaspects = []
   , ieffects = [ PushActor (ThrowMod 600 10 1)
--- TODO:       , OnCombine $ Composite [ DestroyItem 1 1 CGround "fire source"
---                                     , CreateItem CEmbed "small fire"
---                                                  timerNone ]
+-- TODO:       , OnCombine $ AndEffect (DestroyItem 1 1 CGround "fire source")
+--                                     (CreateItem CEmbed "small fire"
+--                                                 timerNone)
                ]
                   -- the high speed represents gliding rather than flying
                   -- and so no need to lift actor's weight off the ground;
