@@ -1620,14 +1620,14 @@ hammer1 = hammerTemplate
                ++ iaspects hammerTemplate
   }
 hammer2 = hammerTemplate
-  { ifreq    = [("common item", 20), ("starting weapon", 7)]
+  { ifreq    = [("common item", 25), ("starting weapon", 7)]
   , iverbHit = "gouge"
   , iaspects = [Timeout 3, EqpSlot EqpSlotWeaponFast]
                ++ iaspects hammerTemplate
   , idesc    = "Upon closer inspection, this hammer turns out particularly handy and well balanced, with a narrowing, sharpened head compensating the modest size."
   }
 hammer3 = hammerTemplate
-  { ifreq    = [("common item", 3), ("starting weapon", 1)]
+  { ifreq    = [("common item", 5), ("starting weapon", 1)]
   , iverbHit = "puncture"
   , iweight  = 2400  -- weight gives it away
   , idamage  = 12 `d` 1
@@ -1669,7 +1669,7 @@ sword = ItemKind
   , ifreq    = [("common item", 100), ("starting weapon", 30)]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
-  , irarity  = [(4, 1), (6, 15)]
+  , irarity  = [(3, 1), (6, 20)]
   , iverbHit = "stab"
   , iweight  = 2000
   , idamage  = 10 `d` 1
@@ -1685,7 +1685,7 @@ swordImpress = sword
   { isymbol  = symbolEdged
   , iname    = "Master's Sword"
   , ifreq    = [("treasure", 20), ("museum", 100)]
-  , irarity  = [(5, 1), (8, 6)]
+  , irarity  = [(5, 1), (8, 7)]
   , iverbHit = "slash"
   , iaspects = [SetFlag Unique]
                ++ iaspects sword
@@ -1697,7 +1697,7 @@ swordNullify = sword
   , iname    = "Roasting Rapier"
   , ifreq    = [("treasure", 20)]
   , iverbHit = "pierce"
-  , irarity  = [(5, 1), (8, 6)]
+  , irarity  = [(5, 1), (8, 7)]
   , iaspects = [SetFlag Unique, Timeout 3, EqpSlot EqpSlotWeaponFast]
                ++ (iaspects sword \\ [Timeout 7, EqpSlot EqpSlotWeaponBig])
   , ieffects = [ DropItem 1 maxBound COrgan "condition"
