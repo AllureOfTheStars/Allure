@@ -24,11 +24,11 @@ embeds :: [ItemKind]
 embeds =
   [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, signboardMerchandise, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater, straightPath, frozenGround]
   -- Allure-specific
-  ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, wall3dBillboard, crackedFlue, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator, underbrush, woodenTangle]
+  ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, wall3dBillboard, crackedFlue, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator]
 
 scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, signboardMerchandise, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater, straightPath, frozenGround :: ItemKind
 -- Allure-specific
-blackStarrySky,       disengagedDocking, ruinedFirstAidKit, wall3dBillboard, crackedFlue, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator, underbrush, woodenTangle :: ItemKind
+blackStarrySky,       disengagedDocking, ruinedFirstAidKit, wall3dBillboard, crackedFlue, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator :: ItemKind
 
 -- Make sure very few walls are substantially useful, e.g., caches,
 -- and none that are secret. Otherwise the player will spend a lot of time
@@ -570,36 +570,6 @@ decontaminator = ItemKind
                , toOrganGood "rose-smelling" (20 + 1 `d` 5)
                ]
   , idesc    = "The area is under quarantine. No departure is permitted without decontamination. Personal belongings are to be decontaminated separately."
-  , ikit     = []
-  }
-underbrush = ItemKind
-  { isymbol  = 'u'
-  , iname    = "vegetation"
-  , ifreq    = [("underbrush", 1)]
-  , iflavour = zipPlain [BrGreen]
-  , icount   = 1
-  , irarity  = [(1, 1)]
-  , iverbHit = "crunch"
-  , iweight  = 10000
-  , idamage  = 0
-  , iaspects = [SetFlag Durable]
-  , ieffects = [OnCombine $ DestroyItem 1 1 CGround "fire source"]
-  , idesc    = ""
-  , ikit     = []
-  }
-woodenTangle = ItemKind
-  { isymbol  = 'w'
-  , iname    = "wooden tangle"
-  , ifreq    = [("wooden tangle", 1)]
-  , iflavour = zipPlain [Brown]
-  , icount   = 1
-  , irarity  = [(1, 1)]
-  , iverbHit = "crunch"
-  , iweight  = 50000
-  , idamage  = 0
-  , iaspects = [SetFlag Durable]
-  , ieffects = [DestroyItem 1 1 CGround "fire source"]
-  , idesc    = ""
   , ikit     = []
   }
 

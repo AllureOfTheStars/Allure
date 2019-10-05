@@ -217,8 +217,8 @@ tree = TileKind
                , ("treeShadeOver_0_Lit", 1) ]
   , tcolor   = BrGreen
   , tcolor2  = Green
-  , talter   = 5
-  , tfeature = [Embed "wooden tangle", ChangeTo "burning tree"]
+  , talter   = 4
+  , tfeature = [ChangeWith ["fire source"] "burning tree"]
   }
 treeBurnt = tree
   { tname    = "burnt tree"
@@ -227,7 +227,7 @@ treeBurnt = tree
   , tcolor2  = BrBlack
   , tfeature = [Dark]
   }
-treeBurning = tree
+treeBurning = tree  -- present in "emptySetLit" as early light/fire source
   { tname    = "burning tree"
   , tfreq    = [ ("emptySetLit", 1), ("zooSetDark", 60)
                , ("tree with fire", 70), ("burning tree", 1) ]
@@ -255,6 +255,8 @@ rubble = TileKind
       -- to being a door (@OpenTo@), which is kind of OK, because getting
       -- the item is risky and, e.g., AI doesn't attempt it.
       -- Also, AI doesn't go out of its way to clear the way for heroes.
+      -- RUbble can't be ignited, but burning installation, when doused,
+      -- becomes rubble. That's different than with trees and bushes.
   }
 rubbleSpice = rubble
   { tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("smokeClumpOver_f_Dark", 1)
@@ -409,14 +411,14 @@ bush = TileKind
   { tsymbol  = '%'
   , tname    = "bush"
   , tfreq    = [ ("bush Lit", 1), ("emptySetLit", 1), ("arenaSetLit", 10)
-               , ("shootoutSetLit", 30), ("huntSetLit", 30), ("escapeSetLit", 40)
-               , ("zooSetDark", 100)
+               , ("shootoutSetLit", 30), ("huntSetLit", 30)
+               , ("escapeSetLit", 40), ("zooSetDark", 100)
                , ("bushClumpOver_f_Lit", 1), ("pumpsOver_f_Lit", 1)
                , ("lift terminal Lit", 4) ]
   , tcolor   = BrGreen
   , tcolor2  = Green
-  , talter   = 5
-  , tfeature = [Embed "wooden tangle", ChangeTo "burning bush", Clear]
+  , talter   = 4
+  , tfeature = [ChangeWith ["fire source"] "burning bush", Clear]
   }
 bushBurnt = bush
   { tname    = "burnt bush"
@@ -610,13 +612,14 @@ outerHullWall = basicOuterFence
   , tfreq    = [ ("basic outer fence", 1), ("oriels fence", 85)
                , ("airlock fence", 40), ("empty airlock fence", 40) ]
   }
-rubbleBurning = TileKind  -- present in "emptySetLit" for early light source
+rubbleBurning = TileKind  -- present in "emptySetLit" as early light/fire source
   { tsymbol  = '&'
   , tname    = "burning installation"
   , tfreq    = [ ("emptySetLit", 1), ("powerSetDark", 20)
                , ("ambushSetDark", 15), ("zooSetDark", 30)
                , ("stair terminal Lit", 4), ("stair terminal Dark", 4)
-               , ("lift terminal Lit", 4), ("lift terminal Dark", 4) ]
+               , ("lift terminal Lit", 4), ("lift terminal Dark", 4)
+               , ("burning installation", 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 4  -- boss can dig through
@@ -892,7 +895,7 @@ underbrush = TileKind
   , tcolor   = BrGreen
   , tcolor2  = Green
   , talter   = 0
-  , tfeature = [ Embed "underbrush", ChangeTo "burning underbrush"
+  , tfeature = [ ChangeWith ["fire source"] "burning underbrush"
                , Trail, Walkable, Clear, NoItem ]
   }
 
