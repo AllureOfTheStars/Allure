@@ -707,8 +707,8 @@ stairsWelded = stairsUp
   , tcolor2  = Magenta
   , talter   = talterForStairs  -- TODO: after character progression?
                                 -- + 3  -- gear or level up needed
-  , tfeature = [ ChangeWith ["cold source"] "ordinary staircase up"
-               , ChangeWith ["blowtorch"] "ordinary staircase up"
+  , tfeature = [ ChangeWith ["blowtorch"] "ordinary staircase up"
+               , ChangeWith ["cold source"] "ordinary staircase up"
                , Embed "crude weld", ConsideredByAI ]
   }
 stairsLiftUp = stairsUp
@@ -746,8 +746,8 @@ stairsLiftWelded = stairsLiftUp
   , tcolor   = BrMagenta
   , tcolor2  = Magenta
   , talter   = talterForStairs
-  , tfeature = [ ChangeWith ["cold source"] "ordinary lift up"
-               , ChangeWith ["blowtorch"] "ordinary lift up"
+  , tfeature = [ ChangeWith ["blowtorch"] "ordinary lift up"
+               , ChangeWith ["cold source"] "ordinary lift up"
                , Embed "crude weld", ConsideredByAI ]
   }
 stairsDecontaminatingDown = stairsDown
