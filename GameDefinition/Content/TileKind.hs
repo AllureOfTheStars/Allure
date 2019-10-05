@@ -702,9 +702,11 @@ stairsWelded = stairsUp
   , tfreq    = [("welded staircase up", 1)]
   , tcolor   = BrMagenta
   , tcolor2  = Magenta
-  , talter   = talterForStairs + 3  -- gear needed
-  , tfeature = [ ConsideredByAI, ChangeTo "ordinary staircase up"
-               , Embed "crude weld" ]
+  , talter   = talterForStairs  -- TODO: after character progression?
+                                -- + 3  -- gear or level up needed
+  , tfeature = [ ChangeWith ["cold source"] "ordinary staircase up"
+               , ChangeWith ["blowtorch"] "ordinary staircase up"
+               , Embed "crude weld", ConsideredByAI ]
   }
 stairsLiftUp = stairsUp
   { tname    = "lift up"
@@ -740,9 +742,10 @@ stairsLiftWelded = stairsLiftUp
   , tfreq    = [("welded lift up", 1)]
   , tcolor   = BrMagenta
   , tcolor2  = Magenta
-  , talter   = talterForStairs + 3  -- gear needed
-  , tfeature = [ ConsideredByAI, ChangeTo "ordinary lift up"
-               , Embed "crude weld" ]
+  , talter   = talterForStairs
+  , tfeature = [ ChangeWith ["cold source"] "ordinary lift up"
+               , ChangeWith ["blowtorch"] "ordinary lift up"
+               , Embed "crude weld", ConsideredByAI ]
   }
 stairsDecontaminatingDown = stairsDown
   { tname    = "decontaminating staircase down"

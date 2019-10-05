@@ -482,14 +482,16 @@ flask12 = flaskTemplate
 -- healing effect is enough. OTOH, throwing a harmful flask at many enemies
 -- at once is not easy to arrange, so these explosions can stay powerful.
 flask13 = flaskTemplate
-  { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
-  , irarity  = [(1, 2), (10, 12)]
-  , iaspects = ELabel "of regeneration brew"
+  { ifreq    = [ ("common item", 100), ("explosive", 100), ("any vial", 100)
+               , ("cold source", 1) ]
+  , irarity  = [(1, 4), (10, 10)]
+  , iaspects = ELabel "of liquid nitrogen"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganGood "rose-smelling" (80 + 1 `d` 20)
+  , ieffects = [ Burn 1  -- sensory ambiguity between hot and cold
+               , toOrganBad "slowed" (20 + 1 `d` 5)
                , toOrganNoTimer "regenerating"
                , toOrganNoTimer "regenerating"  -- x2
-               , OnSmash (Explode "youth sprinkle") ]
+               , OnSmash (Explode "nitrogen mist") ]
   }
 flask14 = flaskTemplate
   { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
@@ -1958,8 +1960,8 @@ scrollAd1 = scrollTemplate
 blowtorch = ItemKind
   { isymbol  = symbolLight
   , iname    = "blowtorch"  -- not unique, but almost never generated on floor
-  , ifreq    = [("blowtorch", 1), ("valuable", 20), ("curious item", 1)]
-                 -- not a "fire source", because Durable, so would be too easy
+  , ifreq    = [ ("blowtorch", 1), ("valuable", 20), ("curious item", 1)
+               , ("fire source", 1) ]  -- infinite use, but harmful
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , irarity  = [(1, 1)]
@@ -1967,7 +1969,6 @@ blowtorch = ItemKind
   , iweight  = 2000
   , idamage  = 0
   , iaspects = [ Timeout 4
-               , AddSkill SkAlter 2
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotAlter ]
   , ieffects = [Burn 2, Impress]
