@@ -177,8 +177,8 @@ fireBig = fireSmall
   }
 frost = ItemKind
   { isymbol  = '^'
-  , iname    = "frost"
-  , ifreq    = [("frost", 1)]
+  , iname    = "frozen mass"
+  , ifreq    = [("frozen mass", 1), ("cold source", 1)]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
   , irarity  = [(1, 1)]
@@ -189,7 +189,7 @@ frost = ItemKind
   , ieffects = [ Burn 1  -- sensory ambiguity between hot and cold
                , RefillCalm 20  -- cold reason
                , PushActor (ThrowMod 400 10 1) ]  -- slippery ice
-  , idesc    = "Intricate patterns of shining ice."
+  , idesc    = "Intricate patterns of shining ice. Too voluminous to be thawed, but fragile enough to be shattered."
   , ikit     = []
   }
 rubble = ItemKind

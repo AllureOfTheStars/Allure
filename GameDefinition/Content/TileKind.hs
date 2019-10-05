@@ -392,7 +392,7 @@ pillarIce = TileKind
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 4  -- boss can dig through
-  , tfeature = [Clear, Embed "frost", OpenTo "shallow water Lit"]
+  , tfeature = [Clear, Embed "frozen mass", OpenTo "shallow water Lit"]
       -- Is door, due to @OpenTo@, so is not explorable, but it's OK, because
       -- it doesn't generate items nor clues. This saves on the need to
       -- get each ice pillar into sight range when exploring level.
@@ -549,8 +549,9 @@ shallowWater = TileKind
                , ("huntSetLit", 250), ("lift terminal Lit", 4) ]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
-  , talter   = 0
-  , tfeature = Embed "shallow water" : tfeature floorActor
+  , talter   = 2
+  , tfeature = ChangeWith ["cold source"] "frozen path" : Embed "shallow water"
+               : tfeature floorActor
   }
 shallowWaterSpice = shallowWater
   { tfreq    = [ ("fogClumpOver_f_Lit", 40), ("pumpsOver_f_Lit", 3)
@@ -574,7 +575,9 @@ floorBlue = floorRed
   , tfreq    = [("trailLit", 100), ("frozen path", 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
-  , tfeature = [Embed "frozen ground", Trail, Walkable, Clear]
+  , talter   = 2
+  , tfeature = [ ChangeWith ["fire source"] "shallow water Lit"
+               , Embed "frozen ground", Trail, Walkable, Clear ]
   }
 floorBrown = floorRed
   { tname    = "transport route"
@@ -850,7 +853,7 @@ underbrushBurning = underbrush
                , ("bush with fire", 30), ("burning underbrush", 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
-  , talter   = 0
+  , talter   = 0  -- just walk into it; even animals can
   , tfeature = [ Embed "small fire", ChangeTo "floorAshesLit"
                , Walkable, NoItem, NoActor ]  -- not clear, due to smoke
   }
@@ -897,7 +900,7 @@ underbrush = TileKind
                ]
   , tcolor   = BrGreen
   , tcolor2  = Green
-  , talter   = 0
+  , talter   = 2
   , tfeature = [ ChangeWith ["fire source"] "burning underbrush"
                , Trail, Walkable, Clear, NoItem ]
   }
