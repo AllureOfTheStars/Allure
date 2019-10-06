@@ -1971,6 +1971,7 @@ blowtorch = ItemKind
   , iweight  = 2000
   , idamage  = 0
   , iaspects = [ Timeout 4
+               , AddSkill SkAlter 2
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotAlter ]
   , ieffects = [Burn 2, Impress]

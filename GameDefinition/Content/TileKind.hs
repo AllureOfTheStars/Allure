@@ -705,8 +705,7 @@ stairsWelded = stairsUp
   , tfreq    = [("welded staircase up", 1)]
   , tcolor   = BrMagenta
   , tcolor2  = Magenta
-  , talter   = talterForStairs  -- TODO: after character progression?
-                                -- + 3  -- gear or level up needed
+  , talter   = talterForStairs + 3  -- gear or level up needed
   , tfeature = [ ChangeWith ["blowtorch"] "ordinary staircase up"
                , ChangeWith ["cold source"] "ordinary staircase up"
                , Embed "crude weld", ConsideredByAI ]
@@ -745,7 +744,7 @@ stairsLiftWelded = stairsLiftUp
   , tfreq    = [("welded lift up", 1)]
   , tcolor   = BrMagenta
   , tcolor2  = Magenta
-  , talter   = talterForStairs
+  , talter   = talterForStairs + 3  -- gear or level up needed
   , tfeature = [ ChangeWith ["blowtorch"] "ordinary lift up"
                , ChangeWith ["cold source"] "ordinary lift up"
                , Embed "crude weld", ConsideredByAI ]
