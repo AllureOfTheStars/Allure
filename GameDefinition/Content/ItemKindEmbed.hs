@@ -24,11 +24,11 @@ embeds :: [ItemKind]
 embeds =
   [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, signboardMerchandise, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater, straightPath, frozenGround]
   -- Allure-specific
-  ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, wall3dBillboard, crackedFlue, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator]
+  ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, fireFightingGear, wall3dBillboard, crackedFlue, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator]
 
 scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signboardExit, signboardEmbed, signboardMerchandise, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, staircaseTrapUp, staircaseTrapDown, pulpit, shallowWater, straightPath, frozenGround :: ItemKind
 -- Allure-specific
-blackStarrySky,       disengagedDocking, ruinedFirstAidKit, wall3dBillboard, crackedFlue, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator :: ItemKind
+blackStarrySky,       disengagedDocking, ruinedFirstAidKit, fireFightingGear, wall3dBillboard, crackedFlue, depositBox, jewelryCase, liftUp, liftDown, liftTrap, liftTrap2, shuttleHardware, machineOil, crudeWeld, decontaminator :: ItemKind
 
 -- Make sure very few walls are substantially useful, e.g., caches,
 -- and none that are secret. Otherwise the player will spend a lot of time
@@ -418,6 +418,22 @@ ruinedFirstAidKit = ItemKind
                        , toOrganGood "drunk" (20 + 1 `d` 5) ]
                , CreateItem CStash "needle" timerNone ]
   , idesc    = ""  -- regulations require; say HP not regenerated in the game; mention how to regain HP
+  , ikit     = []
+  }
+fireFightingGear = ItemKind
+  { isymbol  = '?'
+  , iname    = "fire fighting gear"
+  , ifreq    = [("fire fighting gear", 1), ("water source", 1)]
+  , iflavour = zipPlain [BrRed]
+  , icount   = 1
+  , irarity  = [(1, 1)]
+  , iverbHit = "douse"
+  , iweight  = 1000
+  , idamage  = 0
+  , iaspects = []  -- not Durable, springs at most once
+  , ieffects = [ VerbMsg "disassemble and sort through the deteriorated and leaking gear, taking away the least decrepit item"
+               , CreateItem CStash "fire fighting item" timerNone ]
+  , idesc    = ""  -- regulations require; hint that terrain can be ignited and doused
   , ikit     = []
   }
 wall3dBillboard = ItemKind

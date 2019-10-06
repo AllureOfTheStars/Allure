@@ -327,7 +327,8 @@ blanket = ItemKind
   { isymbol  = symbolLight
   , iname    = "mineral fibre blanket"
   , ifreq    = [ ("common item", 100), ("light source", 100)
-               , ("fireproof blanket", 1), ("fireproof cloth", 1) ]
+               , ("fireproof blanket", 1), ("fireproof cloth", 1)
+               , ("fire fighting item", 40) ]
   , iflavour = zipPlain [BrBlack]
   , icount   = 1
   , irarity  = [(1, 1)]  -- scavenged from walls
@@ -1619,7 +1620,8 @@ hammerTemplate = ItemKind
   , ikit     = []
   }
 hammer1 = hammerTemplate
-  { ifreq    = [("common item", 100), ("starting weapon", 70)]
+  { ifreq    = [ ("common item", 100), ("starting weapon", 70)
+               , ("fire fighting item", 1) ]
   , iaspects = [Timeout 5, EqpSlot EqpSlotWeaponBig]
                ++ iaspects hammerTemplate
   }
@@ -1950,7 +1952,8 @@ spotlight = ItemKind
 flask18 = flaskTemplate
   { iname    = "cartridge"
   , ifreq    = [ ("common item", 100), ("explosive", 100), ("any vial", 100)
-               , ("liquid nitrogen", 1), ("cold source", 1) ]
+               , ("liquid nitrogen", 1), ("cold source", 1)
+               , ("fire fighting item", 59) ]
   , irarity  = [(1, 1)]  -- scavenged from walls
   , iaspects = ELabel "of liquid nitrogen"
                : iaspects flaskTemplate
