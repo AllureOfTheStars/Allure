@@ -114,7 +114,7 @@ escapist = warrior
                   , ("weak arrow", CStash)  -- mostly for probing
                   , ("light source", CStash)
                   , ("wooden torch", CStash)
-                  , ("blanket", CStash) ]
+                  , ("fireproof blanket", CStash) ]
   -- , idesc    = ""
   }
 ambusher = warrior

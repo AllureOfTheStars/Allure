@@ -22,13 +22,13 @@ import Game.LambdaHack.Definition.Flavour
 
 blasts :: [ItemKind]
 blasts =
-  [burningOil2, burningOil3, burningOil4, firecracker1, firecracker2, firecracker3, firecracker4, firecracker5, spreadFragmentation, spreadFragmentation8, focusedFragmentation, spreadConcussion, spreadConcussion8, focusedConcussion, spreadFlash, spreadFlash8, focusedFlash, singleSpark, glassPiece, focusedGlass, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, smoke, boilingWater, glue, waste, mistAntiSlow, mistAntidote, mistSleep, denseShower, sparseShower, protectingBalmMelee, protectingBalmRanged, vulnerabilityBalm, resolutionDust, hasteSpray, slownessMist, eyeDrop, ironFiling, smellyDroplet, eyeShine, whiskeySpray, nitrogenMist, poisonCloud, blastNoSkMove, blastNoSkMelee, blastNoSkDisplace, blastNoSkAlter, blastNoSkWait, blastNoSkMoveItem, blastNoSkProject, blastNoSkApply, blastBonusSkMove, blastBonusSkMelee, blastBonusSkDisplace, blastBonusSkAlter, blastBonusSkWait, blastBonusSkMoveItem, blastBonusSkProject, blastBonusSkApply]
+  [burningOil2, burningOil3, burningOil4, firecracker1, firecracker2, firecracker3, firecracker4, firecracker5, spreadFragmentation, spreadFragmentation8, focusedFragmentation, spreadConcussion, spreadConcussion8, focusedConcussion, spreadFlash, spreadFlash8, focusedFlash, singleSpark, glassPiece, focusedGlass, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, smoke, boilingWater, glue, waste, mistAntiSlow, mistAntidote, mistSleep, denseShower, sparseShower, protectingBalmMelee, protectingBalmRanged, vulnerabilityBalm, resolutionDust, hasteSpray, slownessMist, eyeDrop, ironFiling, smellyDroplet, eyeShine, whiskeySpray, youthSprinkle, poisonCloud, blastNoSkMove, blastNoSkMelee, blastNoSkDisplace, blastNoSkAlter, blastNoSkWait, blastNoSkMoveItem, blastNoSkProject, blastNoSkApply, blastBonusSkMove, blastBonusSkMelee, blastBonusSkDisplace, blastBonusSkAlter, blastBonusSkWait, blastBonusSkMoveItem, blastBonusSkProject, blastBonusSkApply]
   -- Allure-specific
-  ++ [cruiseAdHologram, outerAdHologram, victoriaClassHologram, allureIntroHologram]
+  ++ [cruiseAdHologram, outerAdHologram, victoriaClassHologram, allureIntroHologram, nitrogenMist]
 
-burningOil2,    burningOil3, burningOil4, firecracker1, firecracker2, firecracker3, firecracker4, firecracker5, spreadFragmentation, spreadFragmentation8, focusedFragmentation, spreadConcussion, spreadConcussion8, focusedConcussion, spreadFlash, spreadFlash8, focusedFlash, singleSpark, glassPiece, focusedGlass, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, smoke, boilingWater, glue, waste, mistAntiSlow, mistAntidote, mistSleep, denseShower, sparseShower, protectingBalmMelee, protectingBalmRanged, vulnerabilityBalm, resolutionDust, hasteSpray, slownessMist, eyeDrop, ironFiling, smellyDroplet, eyeShine, whiskeySpray, nitrogenMist, poisonCloud, blastNoSkMove, blastNoSkMelee, blastNoSkDisplace, blastNoSkAlter, blastNoSkWait, blastNoSkMoveItem, blastNoSkProject, blastNoSkApply, blastBonusSkMove, blastBonusSkMelee, blastBonusSkDisplace, blastBonusSkAlter, blastBonusSkWait, blastBonusSkMoveItem, blastBonusSkProject, blastBonusSkApply :: ItemKind
+burningOil2,    burningOil3, burningOil4, firecracker1, firecracker2, firecracker3, firecracker4, firecracker5, spreadFragmentation, spreadFragmentation8, focusedFragmentation, spreadConcussion, spreadConcussion8, focusedConcussion, spreadFlash, spreadFlash8, focusedFlash, singleSpark, glassPiece, focusedGlass, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, smoke, boilingWater, glue, waste, mistAntiSlow, mistAntidote, mistSleep, denseShower, sparseShower, protectingBalmMelee, protectingBalmRanged, vulnerabilityBalm, resolutionDust, hasteSpray, slownessMist, eyeDrop, ironFiling, smellyDroplet, eyeShine, whiskeySpray, youthSprinkle, poisonCloud, blastNoSkMove, blastNoSkMelee, blastNoSkDisplace, blastNoSkAlter, blastNoSkWait, blastNoSkMoveItem, blastNoSkProject, blastNoSkApply, blastBonusSkMove, blastBonusSkMelee, blastBonusSkDisplace, blastBonusSkAlter, blastBonusSkWait, blastBonusSkMoveItem, blastBonusSkProject, blastBonusSkApply :: ItemKind
 -- Allure-specific
-cruiseAdHologram,       outerAdHologram, victoriaClassHologram, allureIntroHologram :: ItemKind
+cruiseAdHologram,       outerAdHologram, victoriaClassHologram, allureIntroHologram, nitrogenMist :: ItemKind
 
 -- We take care (e.g., in burningOil below) that blasts are not faster
 -- than 100% fastest natural speed, or some frames would be skipped,
@@ -722,19 +722,20 @@ whiskeySpray = ItemKind
   , idesc    = "It burns in the best way."
   , ikit     = []
   }
-nitrogenMist = ItemKind
+youthSprinkle = ItemKind
   { isymbol  = '`'
-  , iname    = "nitrogen mist"
-  , ifreq    = [("nitrogen mist", 1)]
-  , iflavour = zipFancy [BrBlack]
+  , iname    = "youth sprinkle"
+  , ifreq    = [("youth sprinkle", 1)]
+  , iflavour = zipFancy [BrGreen]
   , icount   = 16
   , irarity  = [(1, 1)]
-  , iverbHit = "freeze"
+  , iverbHit = "sprinkle"
   , iweight  = 1
   , idamage  = 0
   , iaspects = [toLinger 10, SetFlag Fragile, SetFlag Blast]
-  , ieffects = [toOrganNoTimer "regenerating"]
-  , idesc    = "Colourless and colder than ice."
+  , ieffects = [ toOrganGood "rose-smelling" (40 + 1 `d` 20)
+               , toOrganNoTimer "regenerating" ]
+  , idesc    = "Bright and smelling of the Spring."
   , ikit     = []
   }
 poisonCloud = ItemKind
@@ -852,4 +853,22 @@ allureIntroHologram = victoriaClassHologram
   { iname    = "spaceship hologram"
   , ifreq    = [("story-telling", 10)]
   , idesc    = "A wavy 3D wireframe of a spaceship rotates ponderously. Male voice drones: Allure of the Stars belongs to a long line of luxurious orbit-to-orbit cruise liners, the Victoria-class. The ship is named after the largest passenger sea vessel of the early 21st century, with which it shares the grandeur and extravagance. This particular Victoria-class specimen has been designed for long cruises to gas giants, their moons and the moon cities (with their notorious saloons and night life). It has a meteor shield in the form of a flat, multi-layer. unpressurized cargo bay covering the front plane. Such extra cargo capacity enables long space journeys with no limits on resource usage. On shorter legs of the journeys it also enables opportunistic mass cargo transport (in accordance to strictest regulations and completely isolated from the airflow on passenger decks), which is always in demand at the profusely productive, but scarcely populated Solar System frontier. It also makes the unit much thicker than usual: the length from the tip of the cargo bay to the engines' exhausts is almost two thirds of the diameter of the disk. All in all, it is a particularly sturdy and self-sufficient member of a class famed for exceptional resilience and safety."
+  }
+
+-- ** Misc
+
+nitrogenMist = ItemKind
+  { isymbol  = '`'
+  , iname    = "nitrogen mist"
+  , ifreq    = [("nitrogen mist", 1), ("cold source", 1)]
+  , iflavour = zipFancy [BrBlack]
+  , icount   = 6
+  , irarity  = [(1, 1)]
+  , iverbHit = "freeze"
+  , iweight  = 1
+  , idamage  = 0
+  , iaspects = [toLinger 10, SetFlag Fragile, SetFlag Blast]
+  , ieffects = [toOrganBad "slowed" (2 + 1 `d` 3)]
+  , idesc    = "Colourless and colder than ice."
+  , ikit     = []
   }
