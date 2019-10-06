@@ -1199,9 +1199,11 @@ necklace7 = necklaceTemplate
   , idesc    = "This whirring augmentation pack stimulates its host beyond any medically advisable or, surely, even legally admissible levels. It can be only speculated what kind of activity it was designed for, but clearly the steady handling of melee weapons was not one of them."
   }
 necklace8 = necklaceTemplate
-  { ifreq    = [("common item", 100), ("any jewelry", 100)]
+  { iname    = "coil"
+  , ifreq    = [("common item", 100), ("any jewelry", 100), ("cold source", 1)]
   , irarity  = [(4, 3)]  -- entirely optional
-  , iaspects = Timeout ((1 + 1 `d` 3) * 5)
+  , iaspects = ELabel "of superconducting refrigeration"
+               : Timeout ((1 + 1 `d` 3) * 5)
                : iaspects_necklaceTemplate
   , ieffects = [Explode "spark"]
   }
