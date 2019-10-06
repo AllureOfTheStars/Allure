@@ -225,7 +225,7 @@ treeBurnt = tree
   , tfreq    = [("zooSetDark", 10), ("tree with fire", 30)]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
-  , tfeature = [Dark]
+  , tfeature = [Dark]  -- even burned too hard to topple
   }
 treeBurning = tree  -- present in "emptySetLit" as early light/fire source
   { tname    = "burning tree"
@@ -235,13 +235,16 @@ treeBurning = tree  -- present in "emptySetLit" as early light/fire source
   , tcolor2  = Red
   , talter   = 5
   , tfeature = [Embed "big fire", ChangeTo "tree with fire"]
-      -- TODO: dousing off the tree will have more sense when it periodically
+      -- too tall to douse with a fireproof cloth or water; have to break off
+      -- and isolate smaller branches and let it smolder out
+      -- TODO: breaking the burning tree has more use when it periodically
       -- explodes, hitting and lighting up the team and so betraying it
   }
 rubble = TileKind
   { tsymbol  = '&'
   , tname    = "rubble pile"
-  , tfreq    = [ ("rubble", 1), ("legendLit", 1), ("legendDark", 1)
+  , tfreq    = [ ("rubble", 1), ("rubble with fire", 50)
+               , ("legendLit", 1), ("legendDark", 1)
                , ("stair terminal Lit", 6), ("stair terminal Dark", 6)
                , ("lift terminal Lit", 6), ("lift terminal Dark", 6)
                , ("emptySetLit", 3), ("exitSetLit", 8)
@@ -419,23 +422,33 @@ bush = TileKind
   , tcolor2  = Green
   , talter   = 4
   , tfeature = [ChangeWith ["fire source"] "burning bush", Clear]
+                 -- too tough to topple, has to be burned first
   }
 bushBurnt = bush
   { tname    = "burnt bush"
   , tfreq    = [ ("battleSetDark", 30), ("ambushSetDark", 3), ("zooSetDark", 50)
-               , ("bush with fire", 70) ]
+               , ("bush with fire", 25), ("bush burnt", 1) ]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
-  , tfeature = [Dark, Clear]
+  , tfeature = [Dark, Clear, OpenTo "dirt Dark"]
+                 -- when burnt, can be destroyed at least, clearning way;
+                 -- ensures ~confluence when pathfinding, that is, prevents
+                 -- OpenTo in bushBurning from determining a path that ends up
+                 -- in unwalkable tile after some unlucky terrain mdifications
   }
 bushBurning = bush
   { tname    = "burning bush"
   , tfreq    = [ ("emptySetLit", 1), ("ambushSetDark", 10), ("zooSetDark", 300)
-               , ("bush with fire", 30), ("burning bush", 1) ]
+               , ("bush with fire", 50), ("burning bush", 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 5
-  , tfeature = [Embed "small fire", ChangeTo "bush with fire", Clear]
+  , tfeature = [ Clear, Embed "small fire"
+               , OpenTo "bush with fire"
+               , ChangeWith ["fireproof cloth"] "bush Lit"  -- saved for repeat
+               , OpenWith ["water source", "water source", "water source"]
+                          "smoke Lit"
+               ]
   }
 
 -- ** Walkable
@@ -536,7 +549,8 @@ floorActorItem = floorActor
   }
 floorAshes = floorActor
   { tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("smokeClumpOver_f_Dark", 1)
-               , ("floorAshesLit", 1), ("floorAshesDark", 1) ]
+               , ("floorAshesLit", 1), ("floorAshesDark", 1)
+               , ("rubble with fire", 25) ]
   , tname    = "dirt and ash pile"
   , tcolor   = Brown
   , tcolor2  = Brown
@@ -552,6 +566,8 @@ shallowWater = TileKind
   , talter   = 2
   , tfeature = ChangeWith ["cold source"] "frozen path" : Embed "shallow water"
                : tfeature floorActor
+      -- can't make fog from water, because air would need to be cool, too;
+      -- if concealment needed, make smoke from fire instead
   }
 shallowWaterSpice = shallowWater
   { tfreq    = [ ("fogClumpOver_f_Lit", 40), ("pumpsOver_f_Lit", 3)
@@ -622,11 +638,16 @@ rubbleBurning = TileKind  -- present in "emptySetLit" as early light/fire source
                , ("ambushSetDark", 15), ("zooSetDark", 30)
                , ("stair terminal Lit", 4), ("stair terminal Dark", 4)
                , ("lift terminal Lit", 4), ("lift terminal Dark", 4)
-               , ("burning installation", 1) ]
+               , ("burning installation", 1), ("rubble with fire", 25) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 4  -- boss can dig through
-  , tfeature = [ChangeTo "rubble", Embed "big fire"]
+  , tfeature = [ Embed "big fire"  -- not as tall as a tree, so quenchable
+               , OpenTo "rubble with fire"
+               , ChangeWith ["fireproof cloth"] "rubble"  -- efficiency
+               , OpenWith ["water source", "water source", "water source"]
+                          "smoke Lit"
+               ]
   }
 rubbleBurningSpice = rubbleBurning
   { tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("smokeClumpOver_f_Dark", 1)
@@ -849,12 +870,16 @@ underbrushBurning = underbrush
   { tsymbol  = ';'
   , tname    = "burning underbrush"
   , tfreq    = [ ("ambushSetDark", 1), ("zooSetDark", 5)
-               , ("bush with fire", 30), ("burning underbrush", 1) ]
+               , ("bush with fire", 25), ("burning underbrush", 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 0  -- just walk into it; even animals can
-  , tfeature = [ Embed "small fire", ChangeTo "floorAshesLit"
-               , Walkable, NoItem, NoActor ]  -- not clear, due to smoke
+  , tfeature = [ Walkable, NoItem, NoActor  -- not clear, due to smoke
+               , Embed "small fire"
+               , ChangeTo "floorAshesLit"
+               , ChangeWith ["fireproof cloth"] "underbrush Lit"  -- saved cycle
+               , ChangeWith ["water source"] "smoke Lit"
+               ]
   }
 
 -- *** Clear
