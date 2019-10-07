@@ -928,9 +928,9 @@ underbrush = TileKind
   { tsymbol  = floorSymbol
   , tname    = "underbrush"
   , tfreq    = [ ("underbrush Lit", 1), ("underbrush Dark", 1)
-               , ("emptySetLit", 3), ("arenaSetLit", 3), ("shootoutSetLit", 3)
-               , ("huntSetLit", 3), ("escapeSetLit", 4), ("zooSetDark", 5)
-               , ("smokeClumpOver_f_Lit", 1), ("smokeClumpOver_f_Dark", 1)
+               , ("emptySetLit", 30), ("arenaSetLit", 20)
+               , ("shootoutSetLit", 30), ("huntSetLit", 30)
+               , ("escapeSetLit", 40), ("zooSetDark", 100)
                , ("trailLit", 50), ("safeTrailLit", 50)
                ]
   , tcolor   = BrGreen
