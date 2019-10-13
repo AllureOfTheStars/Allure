@@ -1205,7 +1205,7 @@ necklace8 = necklaceTemplate
   , irarity  = [(4, 3)]  -- entirely optional
   , iaspects = ELabel "of superconducting refrigeration"
                : Timeout ((1 + 1 `d` 3) * 5)
-               : iaspects_necklaceTemplate
+               : delete (SetFlag Precious) iaspects_necklaceTemplate
   , ieffects = [Explode "spark"]
   }
 necklace9 = necklaceTemplate
