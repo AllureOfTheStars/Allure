@@ -862,12 +862,13 @@ nitrogenMist = ItemKind
   , iname    = "nitrogen mist"
   , ifreq    = [("nitrogen mist", 1), ("cold source", 1)]
   , iflavour = zipFancy [BrBlack]
-  , icount   = 6
+  , icount   = 8
   , irarity  = [(1, 1)]
   , iverbHit = "freeze"
   , iweight  = 1
   , idamage  = 0
-  , iaspects = [toLinger 10, SetFlag Fragile, SetFlag Blast]
+  , iaspects = [ toLinger 0  -- 0 steps, 1 turn
+               , SetFlag Fragile, SetFlag Blast ]
   , ieffects = [toOrganBad "slowed" (2 + 1 `d` 3)]
   , idesc    = "Colourless and colder than ice."
   , ikit     = []
