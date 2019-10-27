@@ -591,14 +591,16 @@ decontaminator = ItemKind
 
 cookEffect :: Effect
 cookEffect =
-  let cookOne raw cooked =
-        DestroyItem 1 1 CGround raw
+  let cookOne store raw cooked =
+        DestroyItem 1 1 store raw
         `AndEffect`
         CreateItem CGround cooked timerNone
-      cookMeat = cookOne "raw meat chunk" "roasted meat chunk"
-      f :: Effect -> Int -> Effect
-      f eff n =
+      cookMeat store = cookOne store "raw meat chunk" "roasted meat chunk"
+      f :: CStore -> Effect -> Int -> Effect
+      f store eff n =
         let raw = toGroupName $ "ediblePlant" <> tshow n
             cooked = toGroupName $ "cookedPlant" <> tshow n
-        in eff `OrEffect` cookOne raw cooked
-  in foldl' f cookMeat $ [8, 7..1]
+        in eff `OrEffect` (cookOne store) raw cooked
+      initf = cookMeat CGround `OrEffect` cookMeat CEqp
+  in foldl' (\eff n -> f CGround eff n `OrEffect` f CEqp eff n) initf
+            [8, 7..1]
