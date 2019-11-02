@@ -98,7 +98,7 @@ bedrock = TileKind
   , talter   = 100
   , tfeature = []
   }
-wall = bedrock
+wall = bedrock  -- fireproof
   { tfreq    = [("trappableWall", 1), ("rectWindowsOver_%", 80)]
   , tfeature = [BuildAs "suspect wall"]
   }
@@ -206,7 +206,8 @@ signboardRead = TileKind
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 5
-  , tfeature = [Embed "signboard", HideAs "signboard unread"]
+  , tfeature = [ ChangeWith ["fire source"] "burning installation"
+               , Embed "signboard", HideAs "signboard unread" ]
   }
 tree = TileKind
   { tsymbol  = '0'
@@ -225,7 +226,7 @@ treeBurnt = tree
   , tfreq    = [("zooSetDark", 10), ("tree with fire", 30)]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
-  , tfeature = [Dark]  -- even burned too hard to topple
+  , tfeature = [Dark]  -- even burned, too hard to topple
   }
 treeBurning = tree  -- present in "emptySetLit" as early light/fire source
   { tname    = "burning tree"
@@ -279,7 +280,7 @@ doorTrapped = TileKind
                , HideAs "suspect wall"
                ]
   }
-doorClosed = TileKind
+doorClosed = TileKind  -- fireproof
   { tsymbol  = '+'
   , tname    = "closed door"
   , tfreq    = [("legendLit", 100), ("legendDark", 100), ("closed door", 1)]
@@ -288,7 +289,7 @@ doorClosed = TileKind
   , talter   = 2
   , tfeature = [OpenTo "open door"]  -- never hidden
   }
-stairsUp = TileKind
+stairsUp = TileKind  -- fireproof
   { tsymbol  = '<'
   , tname    = "staircase up"
   , tfreq    = [("staircase up", 9), ("ordinary staircase up", 1)]
@@ -407,8 +408,9 @@ pulpit = TileKind
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 5
-  , tfeature = [Clear, Embed "pulpit"]
-                 -- mixed blessing, so AI ignores, saved for player fun
+  , tfeature = [ ChangeWith ["fire source"] "burning installation"
+               , Clear, Embed "pulpit" ]
+                   -- mixed blessing, so AI ignores, saved for player fun
   }
 bush = TileKind
   { tsymbol  = '%'
@@ -497,7 +499,7 @@ smokeDark = smoke
 
 -- *** Clear
 
-doorOpen = TileKind
+doorOpen = TileKind  -- fireproof
   { tsymbol  = '\''
   , tname    = "open door"
   , tfreq    = [("legendLit", 100), ("legendDark", 100), ("open door", 1)]
@@ -742,7 +744,7 @@ stairsWelded = stairsUp
                , ChangeWith ["cold source"] "ordinary staircase up"
                , Embed "crude weld", ConsideredByAI ]
   }
-stairsLiftUp = stairsUp
+stairsLiftUp = stairsUp  -- fireproof
   { tname    = "lift up"
   , tfreq    = [("staircase lift up", 9), ("ordinary lift up", 1)]
   , talter   = talterForStairs
