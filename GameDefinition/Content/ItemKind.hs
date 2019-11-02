@@ -769,7 +769,7 @@ ediblePlantTemplate = ItemKind
   , ifreq    = [("edible plant unknown", 1)]
   , iflavour = zipFancy stdCol
   , icount   = 1 `dL` 5
-  , irarity  = [(1, 14), (10, 7)]  -- weak, apart of hunger removal
+  , irarity  = [(1, 12), (10, 5)]  -- weak, apart of hunger removal
   , iverbHit = "thump"
   , iweight  = 300
   , idamage  = 0
@@ -1576,7 +1576,7 @@ dagger = ItemKind
   , ifreq    = [("common item", 100), ("starting weapon", 200)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(3 * 10/15, 45), (4 * 10/15, 1)]
+  , irarity  = [(3 * 10/15, 50), (4 * 10/15, 1)]
                  -- no weapons brought by aliens, initially, so cleaver common
   , iverbHit = "cut"
   , iweight  = 1000
