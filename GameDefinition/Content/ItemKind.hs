@@ -287,7 +287,8 @@ light1 = ItemKind
 light2 = ItemKind
   { isymbol  = symbolLight
   , iname    = "oil lamp"
-  , ifreq    = [("common item", 100), ("light source", 100), ("fire source", 1)]
+  , ifreq    = [ ("common item", 100), ("light source", 100), ("fire source", 1)
+               , ("oil source", 1) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1 `dL` 2
   , irarity  = [(6, 10)]
@@ -307,7 +308,7 @@ light3 = ItemKind
   { isymbol  = symbolLight
   , iname    = "brass lantern"
   , ifreq    = [ ("common item", 100), ("museum", 100), ("light source", 20)
-               , ("fire source", 1) ]
+               , ("fire source", 1), ("oil source", 1) ]
   , iflavour = zipPlain [Red]
   , icount   = 1
   , irarity  = [(6, 1), (10, 4)]
@@ -395,14 +396,16 @@ flask2 = flaskTemplate
                , OnSmash (Explode "sparse shower") ]
   }
 flask3 = flaskTemplate
-  { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
+  { ifreq    = [ ("common item", 100), ("explosive", 100), ("any vial", 100)
+               , ("oil source", 1) ]
   , iaspects = ELabel "of melee protective balm"
                : iaspects flaskTemplate
   , ieffects = [ toOrganGood "protected from melee" (20 + 1 `d` 5)
                , OnSmash (Explode "melee protective balm") ]
   }
 flask4 = flaskTemplate
-  { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
+  { ifreq    = [ ("common item", 100), ("explosive", 100), ("any vial", 100)
+               , ("oil source", 1) ]
   , iaspects = ELabel "of ranged protective balm"
                : iaspects flaskTemplate
   , ieffects = [ toOrganGood "protected from ranged" (20 + 1 `d` 5)

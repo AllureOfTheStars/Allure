@@ -40,7 +40,8 @@ burningOil :: Int -> ItemKind
 burningOil n = ItemKind
   { isymbol  = '*'
   , iname    = "burning oil"
-  , ifreq    = [(toGroupName $ "burning oil" <+> tshow n, 1)]
+  , ifreq    = [ ("fire source", 1), ("oil source", 1)
+               , (toGroupName $ "burning oil" <+> tshow n, 1) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = intToDice (4 + n * 4)
   , irarity  = [(1, 1)]
