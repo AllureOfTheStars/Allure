@@ -367,7 +367,7 @@ animalStomach = armoredSkin
   { iname    = "animal stomach"
   , ifreq    = [("animal stomach", 100)]
   , iverbHit = "burp"
-  , iaspects = [ Timeout $ 1000 + (1 `d` 3) * 100  -- hunger very slowly
+  , iaspects = [ Timeout $ 500 + (1 `d` 3) * 50  -- hunger very slowly
                , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [toOrganNoTimer "hungry"]
   , idesc    = ""
