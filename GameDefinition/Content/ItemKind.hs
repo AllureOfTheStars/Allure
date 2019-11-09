@@ -6,7 +6,11 @@
 --
 -- | Item definitions.
 module Content.ItemKind
-  ( content, items, otherItemContent
+  ( -- * Group name patterns
+    pattern HARPOON, pattern EDIBLE_PLANT, pattern RING_OF_OPPORTUNITY_GRENADIER, pattern TORSO_ARMOR, pattern CLOTHING_MISC, pattern CHIC_GEAR
+  , pattern MUSEAL, pattern FIREPROOF_CLOTH, pattern COOKED_PLANT, pattern LIQUID_NITROGEN
+  , -- * Content
+    content, items, otherItemContent
   ) where
 
 import Prelude ()
@@ -27,6 +31,39 @@ import Game.LambdaHack.Definition.Color
 import Game.LambdaHack.Definition.Defs
 import Game.LambdaHack.Definition.Flavour
 
+-- * Group name patterns
+
+pattern HARPOON, FLASK_UNKNOWN, POTION_UNKNOWN, EDIBLE_PLANT_UNKNOWN, EDIBLE_PLANT, SCROLL_UNKNOWN, NECKLACE_UNKNOWN, RING_UNKNOWN, RING_OF_OPPORTUNITY_GRENADIER, TORSO_ARMOR, HAMMER_UNKNOWN, GEM_UNKNOWN, CURRENCY_UNKNOWN, CLOTHING_MISC, CHIC_GEAR :: GroupName ItemKind
+
+pattern MUSEAL, FIREPROOF_CLOTH, COOKED_PLANT_UNKNOWN, COOKED_PLANT, LIQUID_NITROGEN :: GroupName ItemKind
+
+-- The @UNKNOWN@ patterns don't need to be exported. Used internally.
+pattern HARPOON = GroupName "harpoon"
+pattern FLASK_UNKNOWN = GroupName "flask unknown"
+pattern POTION_UNKNOWN = GroupName "potion unknown"
+pattern EDIBLE_PLANT_UNKNOWN = GroupName "edible plant unknown"
+pattern EDIBLE_PLANT = GroupName "edible plant"
+pattern SCROLL_UNKNOWN = GroupName "scroll unknown"
+pattern NECKLACE_UNKNOWN = GroupName "necklace unknown"
+pattern RING_UNKNOWN = GroupName "ring unknown"
+pattern RING_OF_OPPORTUNITY_GRENADIER =
+  GroupName "ring of opportunity grenadier"
+pattern TORSO_ARMOR = GroupName "torso armor"
+pattern HAMMER_UNKNOWN = GroupName "hammer unknown"
+pattern GEM_UNKNOWN = GroupName "gem unknown"
+pattern CURRENCY_UNKNOWN = GroupName "currency unknown"
+pattern CLOTHING_MISC = GroupName "clothing misc"
+pattern CHIC_GEAR = GroupName "chic gear"
+
+-- ** Allure-specific
+pattern MUSEAL = GroupName "museal"
+pattern FIREPROOF_CLOTH = GroupName "fireproof cloth"
+pattern COOKED_PLANT_UNKNOWN = GroupName "cooked plant unknown"
+pattern COOKED_PLANT = GroupName "cooked plant"
+pattern LIQUID_NITROGEN = GroupName "liquid nitrogen"
+
+-- * Content
+
 content :: [ItemKind]
 content = items ++ otherItemContent
 
@@ -35,11 +72,11 @@ otherItemContent = embeds ++ actors ++ organs ++ blasts ++ temporaries
 
 items :: [ItemKind]
 items =
-  [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
+  [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
   -- Allure-specific
   ++ [needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryTazer]
 
-sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, wandTemplate, wand1, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
+sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
 -- Allure-specific
 needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryTazer :: ItemKind
 
@@ -88,8 +125,8 @@ symbolFood       = ','  -- also body part; distinct from floor: not middle dot
 sandstoneRock = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "ceramic foam splinter"
-  , ifreq    = [ ("sandstone rock", 1)
-               , ("unreported inventory", 1) ]  -- too weak to spam
+  , ifreq    = [ (SANDSTONE_ROCK, 1)
+               , (UNREPORTED_INVENTORY, 1) ]  -- too weak to spam
   , iflavour = zipPlain [Green]
   , icount   = 1 + 1 `d` 2  -- > 1, to let AI ignore sole pieces
   , irarity  = [(1, 50), (10, 1)]
@@ -106,7 +143,7 @@ sandstoneRock = ItemKind
 dart = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "billiard ball"
-  , ifreq    = [("common item", 100), ("any arrow", 50), ("weak arrow", 50)]
+  , ifreq    = [(COMMON_ITEM, 100), (ANY_ARROW, 50), (WEAK_ARROW, 50)]
   , iflavour = zipPlain [White]
   , icount   = 1 + 4 `dL` 5
   , irarity  = [(1, 15), (10, 5)]
@@ -122,7 +159,7 @@ dart = ItemKind
 spike = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "steak knife"
-  , ifreq    = [("common item", 100), ("any arrow", 50), ("weak arrow", 50)]
+  , ifreq    = [(COMMON_ITEM, 100), (ANY_ARROW, 50), (WEAK_ARROW, 50)]
   , iflavour = zipPlain [Cyan]
   , icount   = 1 + 4 `dL` 5
   , irarity  = [(1, 10), (10, 10)]
@@ -133,8 +170,8 @@ spike = ItemKind
                    -- heavy vs armor
                , SetFlag MinorEffects
                , toVelocity 70 ]  -- hitting with tip costs speed
-  , ieffects = [ Explode "single spark"  -- when hitting enemy
-               , OnSmash (Explode "single spark") ]  -- at wall hit
+  , ieffects = [ Explode SINGLE_SPARK  -- when hitting enemy
+               , OnSmash (Explode SINGLE_SPARK) ]  -- at wall hit
       -- this results in a wordy item synopsis, but it's OK, the spark really
       -- is useful in some situations, not just a flavour
   , idesc    = "Not particularly well balanced, but with a laser-sharpened titanium alloy tip and blade."
@@ -142,7 +179,7 @@ spike = ItemKind
   }
 spike2 = spike
   { iname    = "heavy steak knife"
-  , ifreq    = [("common item", 2), ("any arrow", 1), ("weak arrow", 1)]
+  , ifreq    = [(COMMON_ITEM, 2), (ANY_ARROW, 1), (WEAK_ARROW, 1)]
   , icount   = 6 `dL` 5
   , iverbHit = "penetrate"
   , iweight  = 150
@@ -156,7 +193,7 @@ spike2 = spike
 slingStone = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "steel hex nut"
-  , ifreq    = [("common item", 5), ("any arrow", 100)]
+  , ifreq    = [(COMMON_ITEM, 5), (ANY_ARROW, 100)]
   , iflavour = zipPlain [Blue]
   , icount   = 1 + 3 `dL` 4
   , irarity  = [(1, 1), (10, 20)]
@@ -167,15 +204,15 @@ slingStone = ItemKind
                    -- heavy, to bludgeon through armor
                , SetFlag MinorEffects
                , toVelocity 150 ]
-  , ieffects = [ Explode "single spark"  -- when hitting enemy
-               , OnSmash (Explode "single spark") ]  -- at wall hit
+  , ieffects = [ Explode SINGLE_SPARK  -- when hitting enemy
+               , OnSmash (Explode SINGLE_SPARK) ]  -- at wall hit
   , idesc    = "A large hexagonal fastening nut; due to its angular shape, securely lodging in the pouch of a makeshift string and cloth sling."
   , ikit     = []
   }
 slingBullet = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "bearing ball"
-  , ifreq    = [("common item", 5), ("any arrow", 100), ("mercenary ammo", 25)]
+  , ifreq    = [(COMMON_ITEM, 5), (ANY_ARROW, 100), (MERCENARY_AMMO, 25)]
   , iflavour = zipPlain [BrBlack]
   , icount   = 1 + 6 `dL` 4
   , irarity  = [(1, 1), (10, 15)]
@@ -201,8 +238,8 @@ slingBullet = ItemKind
 paralizingProj = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "can"
-  , ifreq    = [ ("common item", 100), ("can of sticky foam", 1)
-               , ("mercenary ammo", 25) ]
+  , ifreq    = [ (COMMON_ITEM, 100), (CAN_OF_STICKY_FOAM, 1)
+               , (MERCENARY_AMMO, 25) ]
   , iflavour = zipPlain [Magenta]
   , icount   = 1 `dL` 4
   , irarity  = [(5, 5), (10, 20)]
@@ -213,14 +250,14 @@ paralizingProj = ItemKind
                , AddSkill SkHurtMelee $ -14 * 5
                , SetFlag Lobable, SetFlag Fragile
                , toVelocity 70 ]  -- unwieldy
-  , ieffects = [Paralyze 15, OnSmash (Explode "glue") ]
+  , ieffects = [Paralyze 15, OnSmash (Explode GLUE) ]
   , idesc    = "A can of liquid, fast-setting construction foam."
   , ikit     = []
   }
 harpoon = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "harpoon"
-  , ifreq    = [("curious item", 100), ("harpoon", 100), ("museum", 100)]
+  , ifreq    = [(CURIOUS_ITEM, 100), (HARPOON, 100), (MUSEAL, 100)]
   , iflavour = zipPlain [Brown]
   , icount   = 1 `dL` 5
   , irarity  = [(7, 5), (10, 5)]
@@ -235,7 +272,7 @@ harpoon = ItemKind
   }
 harpoon2 = harpoon
   { iname    = "heavy harpoon"
-  , ifreq    = [("curious item", 5), ("harpoon", 2)]
+  , ifreq    = [(CURIOUS_ITEM, 5), (HARPOON, 2)]
   , icount   = 2 `dL` 5
   , iweight  = 1000
   , idamage  = 10 `d` 1
@@ -244,7 +281,7 @@ harpoon2 = harpoon
 net = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "net"
-  , ifreq    = [("common item", 100), ("mercenary ammo", 25)]
+  , ifreq    = [(COMMON_ITEM, 100), (MERCENARY_AMMO, 25)]
   , iflavour = zipPlain [BrGreen]
   , icount   = 1 `dL` 3
   , irarity  = [(5, 5), (10, 7)]
@@ -252,8 +289,8 @@ net = ItemKind
   , iweight  = 1000
   , idamage  = 2 `d` 1
   , iaspects = [AddSkill SkHurtMelee $ -14 * 5]
-  , ieffects = [ toOrganBad "slowed" (3 + 1 `d` 3)
-               , DropItem maxBound 1 CEqp "torso armor"
+  , ieffects = [ toOrganBad SLOWED (3 + 1 `d` 3)
+               , DropItem maxBound 1 CEqp TORSO_ARMOR
                    -- only one of each kind is dropped, because no rubbish
                    -- in this group and so no risk of exploit
                , SendFlying (ThrowMod 100 50 1) ]  -- 1 step; painful
@@ -266,8 +303,8 @@ net = ItemKind
 light1 = ItemKind
   { isymbol  = symbolLight
   , iname    = "torch"
-  , ifreq    = [ ("common item", 100), ("light source", 100)
-               , ("fire source", 1), ("wooden torch", 1) ]
+  , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_MANIPULATION, 100)
+               , (FIRE_SOURCE, 1), (WOODEN_TORCH, 1) ]
   , iflavour = zipPlain [Brown]
   , icount   = 1 `dL` 4
   , irarity  = [(1, 20), (4, 1)]
@@ -287,8 +324,8 @@ light1 = ItemKind
 light2 = ItemKind
   { isymbol  = symbolLight
   , iname    = "oil lamp"
-  , ifreq    = [ ("common item", 100), ("light source", 100), ("fire source", 1)
-               , ("oil source", 1) ]
+  , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_MANIPULATION, 100)
+               , (FIRE_SOURCE, 1), (OIL_SOURCE, 1) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1 `dL` 2
   , irarity  = [(6, 10)]
@@ -299,16 +336,16 @@ light2 = ItemKind
                , SetFlag Lobable, SetFlag Fragile, SetFlag Equipable
                , EqpSlot EqpSlotShine ]
   , ieffects = [ Burn 1
-               , toOrganBad "pacified" (2 + 1 `d` 2)
-               , OnSmash (Explode "burning oil 2") ]
+               , toOrganBad PACIFIED (2 + 1 `d` 2)
+               , OnSmash (Explode BURNING_OIL_2) ]
   , idesc    = "A restaurant table glass lamp filled with plant oil feeding a slender wick."
   , ikit     = []
   }
 light3 = ItemKind
   { isymbol  = symbolLight
   , iname    = "brass lantern"
-  , ifreq    = [ ("common item", 100), ("museum", 100), ("light source", 20)
-               , ("fire source", 1), ("oil source", 1) ]
+  , ifreq    = [ (COMMON_ITEM, 100), (MUSEAL, 100), (LIGHT_MANIPULATION, 20)
+               , (FIRE_SOURCE, 1), (OIL_SOURCE, 1) ]
   , iflavour = zipPlain [Red]
   , icount   = 1
   , irarity  = [(6, 1), (10, 4)]
@@ -319,17 +356,16 @@ light3 = ItemKind
                , SetFlag Lobable, SetFlag Fragile, SetFlag Equipable
                , EqpSlot EqpSlotShine ]
   , ieffects = [ Burn 1
-               , toOrganBad "pacified" (4 + 1 `d` 2)
-               , OnSmash (Explode "burning oil 4") ]
+               , toOrganBad PACIFIED (4 + 1 `d` 2)
+               , OnSmash (Explode BURNING_OIL_4) ]
   , idesc    = "Very old, very bright and very heavy lantern made of hand-polished brass."
   , ikit     = []
   }
 blanket = ItemKind
   { isymbol  = symbolLight
   , iname    = "mineral fibre blanket"
-  , ifreq    = [ ("common item", 100), ("light source", 100)
-               , ("fireproof blanket", 1), ("fireproof cloth", 1)
-               , ("fire fighting item", 40) ]
+  , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_MANIPULATION, 100), (BLANKET, 1)
+               , (FIREPROOF_CLOTH, 1), (FIRE_FIGHTING_ITEM, 40) ]
   , iflavour = zipPlain [BrBlack]
   , icount   = 1
   , irarity  = [(1, 1)]  -- scavenged from walls
@@ -364,7 +400,7 @@ blanket = ItemKind
 flaskTemplate = ItemKind
   { isymbol  = symbolFlask
   , iname    = "flask"
-  , ifreq    = [("flask unknown", 1)]
+  , ifreq    = [(FLASK_UNKNOWN, 1)]
   , iflavour = zipGlassPlain darkCol ++ zipGlassFancy darkCol
                ++ zipLiquid darkCol ++ zipFancy darkCol
   , icount   = 1 `dL` 3
@@ -372,163 +408,162 @@ flaskTemplate = ItemKind
   , iverbHit = "splash"
   , iweight  = 500
   , idamage  = 0
-  , iaspects = [ HideAs "flask unknown", SetFlag Lobable, SetFlag Fragile
+  , iaspects = [ HideAs FLASK_UNKNOWN, SetFlag Lobable, SetFlag Fragile
                , toVelocity 60 ]  -- oily, rather bad grip
   , ieffects = []
   , idesc    = "A flask of oily liquid of a suspect color. Something seems to be moving inside. Double dose causes twice longer effect."
   , ikit     = []
   }
 flask1 = flaskTemplate
-  { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_VIAL, 100)]
   , icount   = 1 `dL` 5
   , irarity  = [(10, 10)]
   , iaspects = ELabel "of strength renewal brew"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganGood "strengthened" (20 + 1 `d` 5)
-               , toOrganNoTimer "regenerating"
-               , OnSmash (Explode "dense shower") ]
+  , ieffects = [ toOrganGood STRENGTHENED (20 + 1 `d` 5)
+               , toOrganNoTimer REGENERATING
+               , OnSmash (Explode DENSE_SHOWER) ]
   }
 flask2 = flaskTemplate
-  { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_VIAL, 100)]
   , iaspects = ELabel "of weakness brew"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganBad "weakened" (20 + 1 `d` 5)
-               , OnSmash (Explode "sparse shower") ]
+  , ieffects = [ toOrganBad WEAKENED (20 + 1 `d` 5)
+               , OnSmash (Explode SPARSE_SHOWER) ]
   }
 flask3 = flaskTemplate
-  { ifreq    = [ ("common item", 100), ("explosive", 100), ("any vial", 100)
-               , ("oil source", 1) ]
+  { ifreq    = [ (COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_VIAL, 100)
+               , (OIL_SOURCE, 1) ]
   , iaspects = ELabel "of melee protective balm"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganGood "protected from melee" (20 + 1 `d` 5)
-               , OnSmash (Explode "melee protective balm") ]
+  , ieffects = [ toOrganGood PROTECTED_FROM_MELEE (20 + 1 `d` 5)
+               , OnSmash (Explode MELEE_PROTECTIVE_BALM) ]
   }
 flask4 = flaskTemplate
-  { ifreq    = [ ("common item", 100), ("explosive", 100), ("any vial", 100)
-               , ("oil source", 1) ]
+  { ifreq    = [ (COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_VIAL, 100)
+               , (OIL_SOURCE, 1) ]
   , iaspects = ELabel "of ranged protective balm"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganGood "protected from ranged" (20 + 1 `d` 5)
-               , OnSmash (Explode "ranged protective balm") ]
+  , ieffects = [ toOrganGood PROTECTED_FROM_RANGED (20 + 1 `d` 5)
+               , OnSmash (Explode RANGE_PROTECTIVE_BALM) ]
   }
 flask5 = flaskTemplate
-  { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_VIAL, 100)]
   , iaspects = ELabel "of fluorescent paint"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganBad "painted" (20 + 1 `d` 5)
-               , OnSmash (Explode "fluorescent paint") ]
+  , ieffects = [ toOrganBad PAINTED (20 + 1 `d` 5)
+               , OnSmash (Explode PAINT_DROPLET) ]
   }
 flask6 = flaskTemplate
-  { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_VIAL, 100)]
   , irarity  = [(1, 1)]  -- not every playthrough needs one
   , iaspects = ELabel "of resolution"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganGood "resolute" (500 + 1 `d` 200)  -- long, for scouting
+  , ieffects = [ toOrganGood RESOLUTE (500 + 1 `d` 200)  -- long, for scouting
                , RefillCalm 60  -- not to make it a drawback, via @calmEnough@
-               , OnSmash (Explode "resolution dust") ]
+               , OnSmash (Explode RESOLUTION_DUST) ]
   }
 flask7 = flaskTemplate
-  { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_VIAL, 100)]
   , icount   = 1  -- too powerful en masse
   , iaspects = ELabel "of haste brew"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganGood "hasted" (20 + 1 `d` 5)
-               , OnSmash (Explode "haste spray") ]
+  , ieffects = [ toOrganGood HASTED (20 + 1 `d` 5)
+               , OnSmash (Explode HASTE_SPRAY) ]
   }
 flask8 = flaskTemplate
-  { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_VIAL, 100)]
   , iaspects = ELabel "of eye drops"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganGood "far-sighted" (40 + 1 `d` 10)
-               , OnSmash (Explode "eye drop") ]
+  , ieffects = [ toOrganGood FAR_SIGHTED (40 + 1 `d` 10)
+               , OnSmash (Explode EYE_DROP) ]
   }
 flask9 = flaskTemplate
-  { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_VIAL, 100)]
   , irarity  = [(10, 2)]  -- not very useful right now
   , iaspects = ELabel "of smelly concoction"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganGood "keen-smelling" (40 + 1 `d` 10)
+  , ieffects = [ toOrganGood KEEN_SMELLING (40 + 1 `d` 10)
                , Detect DetectActor 10  -- make it at least slightly useful
-               , OnSmash (Explode "smelly droplet") ]
+               , OnSmash (Explode SMELLY_DROPLET) ]
   }
 flask10 = flaskTemplate
-  { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_VIAL, 100)]
   , irarity  = [(10, 2)]  -- not very useful right now
   , iaspects = ELabel "of cat tears"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganGood "shiny-eyed" (40 + 1 `d` 10)
-               , OnSmash (Explode "eye shine") ]
+  , ieffects = [ toOrganGood SHINY_EYED (40 + 1 `d` 10)
+               , OnSmash (Explode EYE_SHINE) ]
   }
 flask11 = flaskTemplate
   { iname    = "bottle"
-  , ifreq    = [ ("common item", 100), ("explosive", 100), ("any vial", 100)
-               , ("drink source", 1) ]  -- if thirst is ever introduced
+  , ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_VIAL, 100)]
   , icount   = 1 `d` 3  -- the only one sometimes giving away its identity
   , iaspects = ELabel "of whiskey"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganGood "drunk" (20 + 1 `d` 5)
+  , ieffects = [ toOrganGood DRUNK (20 + 1 `d` 5)
                , Burn 1, RefillHP 3, Yell
-               , OnSmash (Explode "whiskey spray") ]
+               , OnSmash (Explode WHISKEY_SPRAY) ]
   }
 flask12 = flaskTemplate
   { iname    = "flagon"
-  , ifreq    = [ ("common item", 100), ("explosive", 100), ("any vial", 100)
-               , ("water source", 1) ]
+  , ifreq    = [ (COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_VIAL, 100)
+               , (WATER_SOURCE, 1) ]
   , icount   = 1
   , iaspects = ELabel "of bait cocktail"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganGood "drunk" (20 + 1 `d` 5)
+  , ieffects = [ toOrganGood DRUNK (20 + 1 `d` 5)
                , Burn 1, RefillHP 3  -- risky exploit possible, good
-               , Summon "mobile animal" 1
-               , OnSmash (Summon "mobile animal" 1)
+               , Summon MOBILE_ANIMAL 1
+               , OnSmash (Summon MOBILE_ANIMAL 1)
                , OnSmash Impress  -- mildly useful when thrown
-               , OnSmash (Explode "waste") ]
+               , OnSmash (Explode WASTE) ]
   }
 -- The player has full control over throwing the flask at his party,
 -- so he can milk the explosion, so it has to be much weaker, so a weak
 -- healing effect is enough. OTOH, throwing a harmful flask at many enemies
 -- at once is not easy to arrange, so these explosions can stay powerful.
 flask13 = flaskTemplate
-  { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_VIAL, 100)]
   , irarity  = [(1, 2), (10, 12)]
   , iaspects = ELabel "of regeneration brew"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganGood "rose-smelling" (80 + 1 `d` 20)
-               , toOrganNoTimer "regenerating"
-               , toOrganNoTimer "regenerating"  -- x2
-               , OnSmash (Explode "youth sprinkle") ]
+  , ieffects = [ toOrganGood ROSE_SMELLING (80 + 1 `d` 20)
+               , toOrganNoTimer REGENERATING
+               , toOrganNoTimer REGENERATING  -- x2
+               , OnSmash (Explode YOUTH_SPRINKLE) ]
   }
 flask14 = flaskTemplate
-  { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_VIAL, 100)]
   , iaspects = ELabel "of poison"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganNoTimer "poisoned", toOrganNoTimer "poisoned"  -- x2
-               , OnSmash (Explode "poison cloud") ]
+  , ieffects = [ toOrganNoTimer POISONED, toOrganNoTimer POISONED  -- x2
+               , OnSmash (Explode POISON_CLOUD) ]
   }
 flask15 = flaskTemplate
-  { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_VIAL, 100)]
   , irarity  = [(10, 4)]
   , iaspects = ELabel "of slow resistance"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganNoTimer "slow resistant"
-               , OnSmash (Explode "anti-slow mist") ]
+  , ieffects = [ toOrganNoTimer POISON_RESISTANT
+               , OnSmash (Explode ANTI_SLOW_MIST) ]
   }
 flask16 = flaskTemplate
-  { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_VIAL, 100)]
   , irarity  = [(10, 4)]
   , iaspects = ELabel "of poison resistance"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganNoTimer "poison resistant"
-               , OnSmash (Explode "antidote mist") ]
+  , ieffects = [ toOrganNoTimer SLOW_RESISTANT
+               , OnSmash (Explode ANTIDOTE_MIST) ]
   }
 flask17 = flaskTemplate
-  { ifreq    = [("common item", 100), ("explosive", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_VIAL, 100)]
   , iaspects = ELabel "of calamity"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganNoTimer "poisoned"
-               , toOrganBad "weakened" (20 + 1 `d` 5)
-               , toOrganBad "painted" (20 + 1 `d` 5)
-               , OnSmash (Explode "glass hail") ]  -- enough glass to cause that
+  , ieffects = [ toOrganNoTimer POISONED
+               , toOrganBad WEAKENED (20 + 1 `d` 5)
+               , toOrganBad DEFENSELESS (20 + 1 `d` 5)
+               , OnSmash (Explode GLASS_HAIL) ]  -- enough glass to cause that
   }
 
 -- Potions are often natural, including natural stats.
@@ -539,157 +574,157 @@ flask17 = flaskTemplate
 potionTemplate = ItemKind
   { isymbol  = symbolPotion
   , iname    = "vial"
-  , ifreq    = [("potion unknown", 1)]
+  , ifreq    = [(POTION_UNKNOWN, 1)]
   , iflavour = zipLiquid brightCol ++ zipPlain brightCol ++ zipFancy brightCol
   , icount   = 1 `dL` 3
   , irarity  = [(1, 10), (10, 6)]
   , iverbHit = "splash"
   , iweight  = 200
   , idamage  = 0
-  , iaspects = [ HideAs "potion unknown", SetFlag Lobable, SetFlag Fragile
+  , iaspects = [ HideAs POTION_UNKNOWN, SetFlag Lobable, SetFlag Fragile
                , toVelocity 50 ]  -- oily, small momentum due to small size
   , ieffects = []
   , idesc    = "A vial of bright, frothing concoction. The best that nature has to offer."
   , ikit     = []
   }
 potion1 = potionTemplate
-  { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (POTION, 100), (ANY_VIAL, 100)]
   , iaspects = ELabel "of perfume"  -- very useful, despite appearances
                : iaspects potionTemplate
-  , ieffects = [ Impress, toOrganGood "rose-smelling" (50 + 1 `d` 10)
-               , OnSmash ApplyPerfume, OnSmash (Explode "fragrance") ]
+  , ieffects = [ Impress, toOrganGood ROSE_SMELLING (50 + 1 `d` 10)
+               , OnSmash ApplyPerfume, OnSmash (Explode FRAGRANCE) ]
   }
 potion2 = potionTemplate
-  { ifreq    = [("curious item", 100), ("any vial", 100)]
+  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_VIAL, 100)]
   , icount   = 1
   , irarity  = [(5, 8), (10, 8)]
   , iaspects = [ SetFlag Unique, ELabel "of Attraction"
                , SetFlag Precious, SetFlag Lobable, SetFlag Fragile
                , toVelocity 50 ]  -- identified
   , ieffects = [ Dominate
-               , toOrganGood "hasted" (20 + 1 `d` 5)
-               , OnSmash (Explode "pheromone")
-               , OnSmash (Explode "haste spray") ]
+               , toOrganGood HASTED (20 + 1 `d` 5)
+               , OnSmash (Explode PHEROMONE)
+               , OnSmash (Explode HASTE_SPRAY) ]
   , idesc    = "The liquid fizzes with energy."
   }
 potion3 = potionTemplate
-  { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
-  , ieffects = [ RefillHP 5, DropItem 1 maxBound COrgan "poisoned"
-               , OnSmash (Explode "healing mist") ]
+  { ifreq    = [(COMMON_ITEM, 100), (POTION, 100), (ANY_VIAL, 100)]
+  , ieffects = [ RefillHP 5, DropItem 1 maxBound COrgan POISONED
+               , OnSmash (Explode HEALING_MIST) ]
   }
 potion4 = potionTemplate
-  { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (POTION, 100), (ANY_VIAL, 100)]
   , irarity  = [(1, 6), (10, 10)]
   , ieffects = [ RefillHP 10
-               , DropItem maxBound maxBound COrgan "condition"
-               , DropItem maxBound maxBound COrgan "hungry"
-               , OnSmash (Explode "healing mist 2") ]
+               , DropItem maxBound maxBound COrgan CONDITION
+               , DropItem maxBound maxBound COrgan HUNGRY
+               , OnSmash (Explode HEALING_MIST_2) ]
   }
 potion5 = potionTemplate
   -- needs to be common to show at least a portion of effects
-  { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (POTION, 100), (ANY_VIAL, 100)]
   , icount   = 3 `dL` 1  -- always as many as possible on this level
                          -- without giving away potion identity
   , irarity  = [(1, 12)]
   , ieffects = [ OneOf [ RefillHP 10, RefillHP 5, Burn 5
-                       , DropItem 1 maxBound COrgan "poisoned"
-                       , toOrganGood "strengthened" (20 + 1 `d` 5) ]
-               , OnSmash (OneOf [ Explode "dense shower"
-                                , Explode "sparse shower"
-                                , Explode "melee protective balm"
-                                , Explode "ranged protective balm"
-                                , Explode "fluorescent paint" ]) ]
+                       , DropItem 1 maxBound COrgan POISONED
+                       , toOrganGood STRENGTHENED (20 + 1 `d` 5) ]
+               , OnSmash (OneOf [ Explode DENSE_SHOWER
+                                , Explode SPARSE_SHOWER
+                                , Explode MELEE_PROTECTIVE_BALM
+                                , Explode RANGE_PROTECTIVE_BALM
+                                , Explode DEFENSELESSNESS_RUNOUT ]) ]
   }
 potion6 = potionTemplate
   -- needs to be common to show at least a portion of effects
-  { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (POTION, 100), (ANY_VIAL, 100)]
   , icount   = 3 `dL` 1
   , irarity  = [(10, 10)]
   , ieffects = [ Impress
                , OneOf [ RefillHP 20, RefillHP 10, Burn 10
-                       , DropItem 1 maxBound COrgan "poisoned"
-                       , toOrganGood "hasted" (20 + 1 `d` 5)
-                       , toOrganBad "impatient" (2 + 1 `d` 2) ]
-               , OnSmash (OneOf [ Explode "healing mist 2"
-                                , Explode "wounding mist"
-                                , Explode "distressing odor"
-                                , Explode "impatient mist"
-                                , Explode "haste spray"
-                                , Explode "slowness mist"
-                                , Explode "fragrance"
-                                , Explode "violent flash" ]) ]
+                       , DropItem 1 maxBound COrgan POISONED
+                       , toOrganGood HASTED (20 + 1 `d` 5)
+                       , toOrganBad IMPATIENT (2 + 1 `d` 2) ]
+               , OnSmash (OneOf [ Explode HEALING_MIST_2
+                                , Explode WOUNDING_MIST
+                                , Explode DISTRESSING_ODOR
+                                , Explode $ blastNoStatOf IMPATIENT
+                                , Explode HASTE_SPRAY
+                                , Explode SLOWNESS_MIST
+                                , Explode FRAGRANCE
+                                , Explode VIOLENT_FLASH ]) ]
   }
 potion7 = potionTemplate
   { iname    = "ampoule"  -- filled with semi-stabilized high explosive liquid
-  , ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
+  , ifreq    = [(COMMON_ITEM, 100), (POTION, 100), (ANY_VIAL, 100)]
   , icount   = 3 `dL` 1
-  , ieffects = [ DropItem 1 maxBound COrgan "condition"
-               , OnSmash (Explode "violent concussion") ]
+  , ieffects = [ DropItem 1 maxBound COrgan CONDITION
+               , OnSmash (Explode VIOLENT_CONCUSSION) ]
       -- not fragmentation nor glass hail, because not enough glass
   }
 potion8 = potionTemplate
-  { ifreq    = [("curious item", 100), ("any vial", 100)]
+  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_VIAL, 100)]
   , icount   = 1
   , irarity  = [(10, 5)]
   , iaspects = [ SetFlag Unique, ELabel "of Love"
                , SetFlag Precious, SetFlag Lobable, SetFlag Fragile
                , toVelocity 50 ]  -- identified
   , ieffects = [ RefillHP 60, RefillCalm (-60)
-               , toOrganGood "rose-smelling" (80 + 1 `d` 20)
-               , OnSmash (Explode "healing mist 2")
-               , OnSmash (Explode "distressing odor") ]
+               , toOrganGood ROSE_SMELLING (80 + 1 `d` 20)
+               , OnSmash (Explode HEALING_MIST_2)
+               , OnSmash (Explode DISTRESSING_ODOR) ]
   , idesc    = "Perplexing swirls of intense, compelling colour."
   }
 potion9 = potionTemplate
-  { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (POTION, 100), (ANY_VIAL, 100)]
   , irarity  = [(10, 5)]
   , iaspects = ELabel "of grenadier focus"
                : iaspects potionTemplate
-  , ieffects = [ toOrganGood "more projecting" (40 + 1 `d` 10)
-               , toOrganBad "pacified" (5 + 1 `d` 3)
+  , ieffects = [ toOrganGood MORE_PROJECTING (40 + 1 `d` 10)
+               , toOrganBad PACIFIED (5 + 1 `d` 3)
                    -- the malus has to be weak, or would be too good
                    -- when thrown at foes
-               , OnSmash (Explode "more projecting dew")
-               , OnSmash (Explode "pacified mist") ]
+               , OnSmash (Explode $ blastBonusStatOf MORE_PROJECTING)
+               , OnSmash (Explode $ blastNoStatOf PACIFIED) ]
   , idesc    = "Thick, sluggish fluid with violently-bursting bubbles."
   }
 potion10 = potionTemplate
-  { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (POTION, 100), (ANY_VIAL, 100)]
   , irarity  = [(10, 8)]
   , iaspects = ELabel "of frenzy"
                : iaspects potionTemplate
   , ieffects = [ Yell
-               , toOrganGood "strengthened" (20 + 1 `d` 5)
-               , toOrganBad "retaining" (5 + 1 `d` 3)
-               , toOrganBad "frenzied" (40 + 1 `d` 10)
-               , OnSmash (Explode "dense shower")
-               , OnSmash (Explode "retaining mist")
-               , OnSmash (Explode "retaining mist") ]
+               , toOrganGood STRENGTHENED (20 + 1 `d` 5)
+               , toOrganBad RETAINING (5 + 1 `d` 3)
+               , toOrganBad FRENZIED (40 + 1 `d` 10)
+               , OnSmash (Explode DENSE_SHOWER)
+               , OnSmash (Explode $ blastNoStatOf RETAINING)
+               , OnSmash (Explode $ blastNoStatOf RETAINING) ]
   }
 potion11 = potionTemplate
-  { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (POTION, 100), (ANY_VIAL, 100)]
   , irarity  = [(10, 8)]
   , iaspects = ELabel "of panic"
                : iaspects potionTemplate
   , ieffects = [ RefillCalm (-30)
-               , toOrganGood "hasted" (20 + 1 `d` 5)
-               , toOrganBad "weakened" (20 + 1 `d` 5)
-               , toOrganBad "withholding" (10 + 1 `d` 5)
-               , OnSmash (Explode "haste spray")
-               , OnSmash (Explode "sparse shower")
-               , OnSmash (Explode "withholding mist") ]
+               , toOrganGood HASTED (20 + 1 `d` 5)
+               , toOrganBad WEAKENED (20 + 1 `d` 5)
+               , toOrganBad WITHHOLDING (10 + 1 `d` 5)
+               , OnSmash (Explode HASTE_SPRAY)
+               , OnSmash (Explode SPARSE_SHOWER)
+               , OnSmash (Explode $ blastNoStatOf WITHHOLDING) ]
   }
 potion12 = potionTemplate
-  { ifreq    = [("common item", 100), ("potion", 100), ("any vial", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (POTION, 100), (ANY_VIAL, 100)]
   , irarity  = [(10, 8)]
   , iaspects = ELabel "of quicksilver"
                : iaspects potionTemplate
-  , ieffects = [ toOrganGood "hasted" (20 + 1 `d` 5)
-               , toOrganBad "blind" (10 + 1 `d` 5)
-               , toOrganBad "immobile" (5 + 1 `d` 5)
-               , OnSmash (Explode "haste spray")
-               , OnSmash (Explode "iron filing")
-               , OnSmash (Explode "immobile mist") ]
+  , ieffects = [ toOrganGood HASTED (20 + 1 `d` 5)
+               , toOrganBad BLIND (10 + 1 `d` 5)
+               , toOrganBad IMMOBILE (5 + 1 `d` 5)
+               , OnSmash (Explode HASTE_SPRAY)
+               , OnSmash (Explode IRON_FILING)
+               , OnSmash (Explode $ blastNoStatOf IMMOBILE) ]
   }
 
 -- ** Explosives, with the only effect being @Explode@
@@ -701,7 +736,7 @@ fragmentationBomb = ItemKind
       -- deflagration, not detonation, so large mass and hard container
       -- required not to burn harmlessly; improvised short fuze;
       -- can't be more powerful or would fracture the spaceship's hull
-  , ifreq    = [("common item", 100), ("explosive", 200)]
+  , ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 200)]
   , iflavour = zipPlain [Red]
   , icount   = 1 `dL` 5  -- many, because not very intricate
   , irarity  = [(5, 8), (10, 5)]
@@ -709,8 +744,8 @@ fragmentationBomb = ItemKind
   , iweight  = 3000  -- low velocity due to weight
   , idamage  = 1 `d` 1  -- heavy and hard
   , iaspects = [SetFlag Lobable, SetFlag Fragile]
-  , ieffects = [ Explode "focused fragmentation"
-               , OnSmash (Explode "violent fragmentation") ]
+  , ieffects = [ Explode FOCUSED_FRAGMENTATION
+               , OnSmash (Explode VIOLENT_FRAGMENTATION) ]
   , idesc    = "Shards of brittle metal packed around an explosive core."
   , ikit     = []
   }
@@ -728,8 +763,8 @@ concussionBomb = fragmentationBomb
   , idamage  = 0
   , iaspects = [ SetFlag Lobable, SetFlag Fragile
                , toVelocity 70 ]  -- flappy and so slow
-  , ieffects = [ Explode "focused concussion"
-               , OnSmash (Explode "violent concussion") ]
+  , ieffects = [ Explode FOCUSED_CONCUSSION
+               , OnSmash (Explode VIOLENT_CONCUSSION) ]
   , idesc    = "Avoid sudden movements."
   }
 -- Not flashbang, because powerful bang without fragmentation is harder
@@ -744,7 +779,7 @@ flashBomb = fragmentationBomb
   , idamage  = 0
   , iaspects = [ SetFlag Lobable, SetFlag Fragile
                , toVelocity 70 ]  -- bad shape for throwing
-  , ieffects = [Explode "focused flash", OnSmash (Explode "violent flash")]
+  , ieffects = [Explode FOCUSED_fLASH, OnSmash (Explode VIOLENT_FLASH)]
   , idesc    = "For dramatic entrances and urgent exits."
   }
 firecrackerBomb = fragmentationBomb
@@ -755,7 +790,7 @@ firecrackerBomb = fragmentationBomb
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [SetFlag Lobable, SetFlag Fragile]
-  , ieffects = [Explode "firecracker", OnSmash (Explode "firecracker")]
+  , ieffects = [Explode FIRECRACKER, OnSmash (Explode FIRECRACKER)]
   , idesc    = "String and paper, concealing a deadly surprise."
   }
 
@@ -766,14 +801,14 @@ firecrackerBomb = fragmentationBomb
 ediblePlantTemplate = ItemKind
   { isymbol  = symbolFood
   , iname    = "edible plant"
-  , ifreq    = [("edible plant unknown", 1)]
+  , ifreq    = [(EDIBLE_PLANT_UNKNOWN, 1)]
   , iflavour = zipFancy stdCol
   , icount   = 1 `dL` 5
   , irarity  = [(1, 12), (10, 5)]  -- weak, apart of hunger removal
   , iverbHit = "thump"
   , iweight  = 300
   , idamage  = 0
-  , iaspects = [ HideAs "edible plant unknown"
+  , iaspects = [ HideAs EDIBLE_PLANT_UNKNOWN
                , toVelocity 30 ]  -- low density, often falling apart
   , ieffects = []
   , idesc    = "Withered but fragrant bits of a colorful plant. Taste tolerably. Doesn't break down that easily in its raw form, without cooking. Only eating may reveal the full effects."
@@ -781,98 +816,99 @@ ediblePlantTemplate = ItemKind
   }
 ediblePlant1 = ediblePlantTemplate
   { iname    = "enhanced berry"
-  , ifreq    = [("ediblePlant1", 1), ("common item", 100), ("edible plant", 100)]
-  , ieffects = [ RefillHP 1, toOrganBad "immobile" (5 + 1 `d` 5)
-               , DropItem maxBound 1 COrgan "hungry" ]
+  , ifreq    = [(ENCHANCED_BERRY, 1), (COMMON_ITEM, 100), (EDIBLE_PLANT, 100)]
+  , ieffects = [ RefillHP 1, toOrganBad IMMOBILE (5 + 1 `d` 5)
+               , DropItem maxBound 1 COrgan HUNGRY ]
   }
 ediblePlant2 = ediblePlantTemplate
   { iname    = "frayed fungus"
-  , ifreq    = [("ediblePlant2", 1), ("common item", 100), ("edible plant", 100)]
-  , ieffects = [toOrganNoTimer "poisoned"]
+  , ifreq    = [(FRAYED_FUNGUS, 1), (COMMON_ITEM, 100), (EDIBLE_PLANT, 100)]
+  , ieffects = [toOrganNoTimer POISONED]
   }
 ediblePlant3 = ediblePlantTemplate
   { iname    = "thick leaf"
-  , ifreq    = [("ediblePlant3", 1), ("common item", 100), ("edible plant", 100)]
-  , ieffects = [ DropItem 1 maxBound COrgan "poisoned"
-               , DropItem maxBound 2 COrgan "hungry" ]
+  , ifreq    = [(THIC_LEAF, 1), (COMMON_ITEM, 100), (EDIBLE_PLANT, 100)]
+  , ieffects = [ DropItem 1 maxBound COrgan POISONED
+               , DropItem maxBound 2 COrgan HUNGRY ]
   }
 ediblePlant4 = ediblePlantTemplate
   { iname    = "reconfigured fruit"
-  , ifreq    = [("ediblePlant4", 1), ("common item", 100), ("edible plant", 100)]
-  , ieffects = [ toOrganBad "blind" (10 + 1 `d` 10)
-               , DropItem maxBound 3 COrgan "hungry" ]
+  , ifreq    = [ (RECONFIGURED_FRUIT, 1), (COMMON_ITEM, 100)
+               , (EDIBLE_PLANT, 100) ]
+  , ieffects = [ toOrganBad BLIND (10 + 1 `d` 10)
+               , DropItem maxBound 3 COrgan HUNGRY ]
   }
 ediblePlant5 = ediblePlantTemplate
   { iname    = "fragrant herb"
-  , ifreq    = [("ediblePlant5", 1), ("common item", 100), ("edible plant", 100)]
+  , ifreq    = [(FRAGRANT_HERB, 1), (COMMON_ITEM, 100), (EDIBLE_PLANT, 100)]
   , icount   = 1 `dL` 9
   , irarity  = [(1, 10), (10, 5)]  -- powerful; many copies
   , iaspects = ELabel "of lethargy"
                : iaspects ediblePlantTemplate
-  , ieffects = [ toOrganBad "slowed" (20 + 1 `d` 5)
-               , toOrganNoTimer "regenerating"
-               , toOrganNoTimer "regenerating"  -- x2
+  , ieffects = [ toOrganBad SLOWED (20 + 1 `d` 5)
+               , toOrganNoTimer REGENERATING
+               , toOrganNoTimer REGENERATING  -- x2
                , RefillCalm 5 ]  -- too many effects to also add hunger removal
   }
 ediblePlant6 = ediblePlantTemplate
   { iname    = "dull flower"
-  , ifreq    = [("ediblePlant6", 1), ("common item", 100), ("edible plant", 100)]
+  , ifreq    = [(DULL_FLOWER, 1), (COMMON_ITEM, 100), (EDIBLE_PLANT, 100)]
   , ieffects = [ PutToSleep
-               , DropItem maxBound 1 COrgan "hungry" ]
+               , DropItem maxBound 1 COrgan HUNGRY ]
   }
 ediblePlant7 = ediblePlantTemplate
   { iname    = "spicy bark"
-  , ifreq    = [("ediblePlant7", 1), ("common item", 100), ("edible plant", 100)]
-  , ieffects = [ InsertMove 20, toOrganBad "frenzied" (40 + 1 `d` 10)
-               , DropItem maxBound 1 COrgan "hungry" ]
+  , ifreq    = [(SPICY_BARK, 1), (COMMON_ITEM, 100), (EDIBLE_PLANT, 100)]
+  , ieffects = [ InsertMove 20, toOrganBad FRENZIED (40 + 1 `d` 10)
+               , DropItem maxBound 1 COrgan HUNGRY ]
   }
 ediblePlant8 = ediblePlantTemplate
   { iname    = "pumpkin"
-  , ifreq    = [("ediblePlant8", 1), ("common item", 100), ("edible plant", 100)]
+  , ifreq    = [(PUMPKIN, 1), (COMMON_ITEM, 100), (EDIBLE_PLANT, 100)]
   , irarity  = [(1, 5), (10, 10)]  -- solves the hunger problem, but not too soon
   , iweight  = 3000
   , idamage  = 1 `d` 1
-  , ieffects = [DropItem maxBound 1 COrgan "hungry"]
+  , ieffects = [DropItem maxBound 1 COrgan HUNGRY]
   }
 
 cookedPlantTemplate = ediblePlantTemplate
   { iname    = "cooked plant"
-  , ifreq    = [("cooked plant unknown", 1)]
+  , ifreq    = [(COOKED_PLANT_UNKNOWN, 1)]
   , iflavour = zipPlain stdCol
   , irarity  = [(1, 1)]
-  , iaspects = [ HideAs "cooked plant unknown"
+  , iaspects = [ HideAs COOKED_PLANT_UNKNOWN
                , toVelocity 20 ]  -- low density, often falling apart
   , idesc    = "Withered but fragrant bits of a colorful plant. Taste blandly, but break down easily, releasing all nutrients. Only eating may reveal the full effects."
   }
 cookedPlant1 = cookedPlantTemplate
   { iname    = "cooked berry"
-  , ifreq    = [("cookedPlant1", 1), ("common item", 1), ("cooked plant", 100)]
-  , ieffects = [ RefillHP 1, toOrganBad "immobile" (5 + 1 `d` 5)
-               , DropItem maxBound 2 COrgan "hungry" ]
+  , ifreq    = [(COOKED_BERRY, 1), (COMMON_ITEM, 1), (COOKED_PLANT, 100)]
+  , ieffects = [ RefillHP 1, toOrganBad IMMOBILE (5 + 1 `d` 5)
+               , DropItem maxBound 2 COrgan HUNGRY ]
   }
 cookedPlant2 = cookedPlantTemplate
   { iname    = "cooked fungus"
-  , ifreq    = [("cookedPlant2", 1), ("common item", 1), ("cooked plant", 100)]
+  , ifreq    = [(COOKED_FUNGUS, 1), (COMMON_ITEM, 1), (COOKED_PLANT, 100)]
   , ieffects = ieffects ediblePlant2
   }
 cookedPlant3 = cookedPlantTemplate
   { iname    = "cooked leaf"
-  , ifreq    = [ ("cookedPlant3", 1)
-               , ("common item", 1), ("cooked plant", 100), ("cooked food", 10) ]
-  , ieffects = [ DropItem 1 maxBound COrgan "poisoned"
-               , DropItem maxBound 3 COrgan "hungry" ]
+  , ifreq    = [ (COOKED_LEAF, 1)
+               , (COMMON_ITEM, 1), (COOKED_PLANT, 100), (COOKED_FOOD, 10) ]
+  , ieffects = [ DropItem 1 maxBound COrgan POISONED
+               , DropItem maxBound 3 COrgan HUNGRY ]
   }
 cookedPlant4 = cookedPlantTemplate
   { iname    = "cooked fruit"
-  , ifreq    = [ ("cookedPlant4", 1)
-               , ("common item", 1), ("cooked plant", 100) ]
-  , ieffects = [ toOrganBad "blind" (10 + 1 `d` 10)
-               , DropItem maxBound 4 COrgan "hungry" ]
+  , ifreq    = [ (COOKED_FRUIT, 1)
+               , (COMMON_ITEM, 1), (COOKED_PLANT, 100) ]
+  , ieffects = [ toOrganBad BLIND (10 + 1 `d` 10)
+               , DropItem maxBound 4 COrgan HUNGRY ]
   }
 cookedPlant5 = cookedPlantTemplate
   { iname    = "cooked herb"
-  , ifreq    = [ ("cookedPlant5", 1)
-               , ("common item", 1), ("cooked plant", 100) ]
+  , ifreq    = [ (COOKED_HERB, 1)
+               , (COMMON_ITEM, 1), (COOKED_PLANT, 100) ]
   , icount   = 1 `dL` 9
   , irarity  = [(1, 10), (10, 5)]  -- powerful; many copies
   , iaspects = ELabel "of lethargy"
@@ -881,26 +917,26 @@ cookedPlant5 = cookedPlantTemplate
   }
 cookedPlant6 = cookedPlantTemplate
   { iname    = "cooked flower"
-  , ifreq    = [ ("cookedPlant6", 1)
-               , ("common item", 1), ("cooked plant", 100), ("cooked food", 10) ]
+  , ifreq    = [ (COOKED_FLOWER, 1)
+               , (COMMON_ITEM, 1), (COOKED_PLANT, 100), (COOKED_FOOD, 10) ]
   , ieffects = [ PutToSleep
-               , DropItem maxBound 2 COrgan "hungry" ]
+               , DropItem maxBound 2 COrgan HUNGRY ]
   }
 cookedPlant7 = cookedPlantTemplate
   { iname    = "cooked bark"
-  , ifreq    = [ ("cookedPlant7", 1)
-               , ("common item", 1), ("cooked plant", 100), ("cooked food", 10) ]
-  , ieffects = [ InsertMove 20, toOrganBad "frenzied" (40 + 1 `d` 10)
-               , DropItem maxBound 2 COrgan "hungry" ]
+  , ifreq    = [ (COOKED_BARK, 1)
+               , (COMMON_ITEM, 1), (COOKED_PLANT, 100), (COOKED_FOOD, 10) ]
+  , ieffects = [ InsertMove 20, toOrganBad FRENZIED (40 + 1 `d` 10)
+               , DropItem maxBound 2 COrgan HUNGRY ]
   }
 cookedPlant8 = cookedPlantTemplate
   { iname    = "cooked pumpkin"
-  , ifreq    = [ ("cookedPlant8", 1)
-               , ("common item", 1), ("cooked plant", 100), ("cooked food", 10) ]
+  , ifreq    = [ (COOKED_PUMPKIN, 1)
+               , (COMMON_ITEM, 1), (COOKED_PLANT, 100), (COOKED_FOOD, 10) ]
   , irarity  = [(1, 5), (10, 10)]
   , iweight  = 3000
   , idamage  = 1 `d` 1
-  , ieffects = [DropItem maxBound 5 COrgan "hungry"]
+  , ieffects = [DropItem maxBound 5 COrgan HUNGRY]
   }
 
 -- These require high apply skill to consume.
@@ -908,36 +944,36 @@ cookedPlant8 = cookedPlantTemplate
 scrollTemplate = ItemKind
   { isymbol  = symbolScroll
   , iname    = "chip"
-  , ifreq    = [("scroll unknown", 1)]
+  , ifreq    = [(SCROLL_UNKNOWN, 1)]
   , iflavour = zipFancy stdCol ++ zipPlain stdCol
   , icount   = 1 `dL` 3
   , irarity  = [(1, 14), (10, 7)]
   , iverbHit = "thump"
   , iweight  = 20
   , idamage  = 0
-  , iaspects = [ HideAs "scroll unknown"
+  , iaspects = [ HideAs SCROLL_UNKNOWN
                , toVelocity 30 ]  -- too small
   , ieffects = []
   , idesc    = "A generic, disposable chip, capable of a one-time holo-display. Some of these also contain a one-time password authorizing a particular spaceship's infrastructure transition. Nobody knows how the infrastructure might respond after so many years."
   , ikit     = []
   }
 scroll1 = scrollTemplate
-  { ifreq    = [("curious item", 100), ("any scroll", 100)]
+  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_SCROLL, 100)]
   , icount   = 1
   , irarity  = [(5, 9), (10, 9)]  -- mixed blessing, so found early for a unique
   , iaspects = [SetFlag Unique, ELabel "of Reckless Beacon"]
                ++ iaspects scrollTemplate
-  , ieffects = [Summon "hero" 1, Summon "mobile animal" (2 + 1 `d` 2)]
+  , ieffects = [Summon HERO 1, Summon MOBILE_ANIMAL (2 + 1 `d` 2)]
   , idesc    = "This industrial, wide-spectrum alarm broadcaster, if over-amped for a single powerful blast, should be able to cut through the interference and reach any lost crew members, giving them enough positional information to locate us."
   }
 scroll2 = scrollTemplate
-  { ifreq    = [("curious item", 100), ("any scroll", 100)]
+  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_SCROLL, 100)]
   , irarity  = [(1, 6), (10, 2)]
   , ieffects = [Ascend True]
   }
 scroll3 = scrollTemplate
   -- needs to be common to show at least a portion of effects
-  { ifreq    = [("common item", 100), ("any scroll", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , icount   = 3 `dL` 1
   , irarity  = [(1, 14)]
   , ieffects = [OneOf [ Teleport 5, Paralyze 10, InsertMove 30
@@ -945,22 +981,22 @@ scroll3 = scrollTemplate
   }
 scroll4 = scrollTemplate
   -- needs to be common to show at least a portion of effects
-  { ifreq    = [("common item", 100), ("any scroll", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , icount   = 3 `dL` 1
   , irarity  = [(10, 14)]
   , ieffects = [ Impress
                , OneOf [ Teleport 20, Ascend False, Ascend True
-                       , Summon "hero" 1, Summon "mobile animal" $ 1 `d` 2
+                       , Summon HERO 1, Summon MOBILE_ANIMAL $ 1 `d` 2
                        , Detect DetectLoot 20  -- the most useful of detections
-                       , CreateItem CGround "common item" timerNone ] ]
+                       , CreateItem CGround COMMON_ITEM timerNone ] ]
   }
 scroll5 = scrollTemplate
-  { ifreq    = [("common item", 100), ("any scroll", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , irarity  = [(1, 6)]  -- powerful, but low counts at the depths it appears on
   , ieffects = [InsertMove $ 20 + 1 `dL` 20]
   }
 scroll6 = scrollTemplate
-  { ifreq    = [("common item", 100), ("any scroll", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , icount   = 3 `dL` 1
   , irarity  = [(1, 20)]  -- uncommon deep down, where all is known
   , iaspects = ELabel "of scientific explanation"
@@ -969,46 +1005,46 @@ scroll6 = scrollTemplate
   , idesc    = "The most pressing existential concerns are met with a deeply satisfying scientific answer."
   }
 scroll7 = scrollTemplate
-  { ifreq    = [("common item", 100), ("any scroll", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , irarity  = [(10, 20)]  -- at endgame a crucial item may be missing
   , iaspects = ELabel "of molecular reconfiguration"
                : iaspects scrollTemplate
-  , ieffects = [PolyItem `AndEffect` Explode "firecracker"]
+  , ieffects = [PolyItem `AndEffect` Explode FIRECRACKER]
   }
 scroll8 = scrollTemplate
-  { ifreq    = [("curious item", 100), ("any scroll", 100)]
+  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_SCROLL, 100)]
   , icount   = 1
   , irarity  = [(10, 12)]
   , iaspects = [SetFlag Unique, ELabel "of Skeleton Key"]
                ++ iaspects scrollTemplate
-  , ieffects = [Summon "hero" 1]
+  , ieffects = [Summon HERO 1]
   , idesc    = "This is a security lock chip that opens all doors in the area, including the hatch to a nearby closet, bulging from the blows of one of our lost crew members."
   }
 scroll9 = scrollTemplate
-  { ifreq    = [("common item", 100), ("any scroll", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , irarity  = [(10, 4)]  -- powerful, even if not ideal; scares newbies
   , ieffects = [Detect DetectAll 20]
   }
 scroll10 = scrollTemplate
-  { ifreq    = [("common item", 100), ("any scroll", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , iaspects = ELabel "of cue interpretation"
                : iaspects scrollTemplate
   , ieffects = [Detect DetectActor 20]
   }
 scroll11 = scrollTemplate
-  { ifreq    = [("common item", 100), ("any scroll", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , irarity  = [(10, 11)]
   , ieffects = [PushActor (ThrowMod 400 200 1)]  -- 8 steps, 4 turns
   }
 scroll12 = scrollTemplate
-  { ifreq    = [("common item", 100), ("any scroll", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , irarity  = [(10, 15)]
   , iaspects = ELabel "of molecular duplication"
                : iaspects scrollTemplate
   , ieffects = [DupItem]
   }
 scroll13 = scrollTemplate
-  { ifreq    = [("common item", 100), ("any scroll", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , irarity  = [(10, 15)]
   , iaspects = ELabel "of surface reconfiguration"
                : iaspects scrollTemplate
@@ -1020,7 +1056,7 @@ scroll13 = scrollTemplate
 jumpingPole = ItemKind
   { isymbol  = symbolWand
   , iname    = "jumping pole"
-  , ifreq    = [("common item", 100)]
+  , ifreq    = [(COMMON_ITEM, 100)]
   , iflavour = zipPlain [White]
   , icount   = 1
   , irarity  = [(1, 3)]
@@ -1029,7 +1065,7 @@ jumpingPole = ItemKind
   , idamage  = 0
   , iaspects = [ Timeout $ (2 + 1 `d` 2 - 1 `dL` 2) * 5
                , SetFlag Durable ]
-  , ieffects = [toOrganGood "hasted" 1]
+  , ieffects = [toOrganGood HASTED 1]
                  -- safe for AI, because it speeds up, so when AI applies it
                  -- again and again, it gets its time back and is not stuck;
                  -- in total, the explorations speed is unchanged,
@@ -1041,7 +1077,7 @@ jumpingPole = ItemKind
 sharpeningTool = ItemKind
   { isymbol  = symbolTool
   , iname    = "honing steel"
-  , ifreq    = [("common item", 100)]
+  , ifreq    = [(COMMON_ITEM, 100)]
   , iflavour = zipPlain [Blue]
   , icount   = 1
   , irarity  = [(10, 10)]
@@ -1058,7 +1094,7 @@ sharpeningTool = ItemKind
 seeingItem = ItemKind
   { isymbol  = symbolFood
   , iname    = "visual sensor"
-  , ifreq    = [("common item", 100)]
+  , ifreq    = [(COMMON_ITEM, 100)]
   , iflavour = zipPlain [Red]
   , icount   = 1
   , irarity  = [(1, 2)]
@@ -1071,16 +1107,16 @@ seeingItem = ItemKind
                , AddSkill SkShine 2  -- to lit corridors when flying
                , SetFlag Periodic ]
   , ieffects = [ Detect DetectActor 20  -- rare enough
-               , Explode "single spark"
-               , toOrganNoTimer "poisoned"  -- really can't be worn
-               , Summon "mobile robot" 1 ]
+               , Explode SINGLE_SPARK
+               , toOrganNoTimer POISONED  -- really can't be worn
+               , Summon MOBILE_ROBOT 1 ]
   , idesc    = "An oversize visual sensor freshly torn out of some unfortunate robot. It still sends a clear picture to unidentified receivers, even though the coolant liquid seeps from the seized servos and many internal contacts spark loose."
   , ikit     = []
   }
 motionScanner = ItemKind
   { isymbol  = symbolTool
   , iname    = "handheld sonar"
-  , ifreq    = [("common item", 100), ("add nocto 1", 20)]
+  , ifreq    = [(COMMON_ITEM, 100), (ADD_NOCTO_1, 20)]
   , iflavour = zipPlain [Green]
   , icount   = 1
   , irarity  = [(5, 2)]
@@ -1102,12 +1138,12 @@ motionScanner = ItemKind
 -- to let clients know that the not identified item is periodic jewelry.
 iaspects_necklaceTemplate :: [Aspect]
 iaspects_necklaceTemplate =
-  [ HideAs "necklace unknown"
+  [ HideAs NECKLACE_UNKNOWN
   , SetFlag Periodic, SetFlag Precious, SetFlag Equipable
   , toVelocity 50 ]  -- not dense enough
 gorget = necklaceTemplate
   { iname    = "Old Gorget"
-  , ifreq    = [("common item", 25), ("treasure", 25), ("museum", 100)]
+  , ifreq    = [(COMMON_ITEM, 25), (TREASURE, 25), (MUSEAL, 100)]
   , iflavour = zipFancy [BrCyan]  -- looks exactly the same as one of necklaces,
                                   -- but it's OK, it's an artifact
   , iaspects = [ SetFlag Unique
@@ -1122,7 +1158,7 @@ gorget = necklaceTemplate
 necklaceTemplate = ItemKind
   { isymbol  = symbolNecklace
   , iname    = "necklace"
-  , ifreq    = [("necklace unknown", 1)]
+  , ifreq    = [(NECKLACE_UNKNOWN, 1)]
   , iflavour = zipFancy stdCol ++ zipPlain brightCol
   , icount   = 1
   , irarity  = [(4, 3), (10, 4)]
@@ -1141,7 +1177,7 @@ necklaceTemplate = ItemKind
   , ikit     = []
   }
 necklace1 = necklaceTemplate
-  { ifreq    = [("curious item", 100), ("any jewelry", 100)]
+  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_JEWELRY, 100)]
   , irarity  = [(3 * 10/15, 0), (4 * 10/15, 1), (10, 3)]
                  -- prevents camping on lvl 3
   , iaspects = [ SetFlag Unique, ELabel "of Spur Life"
@@ -1154,7 +1190,7 @@ necklace1 = necklaceTemplate
   }
 -- no necklace2 of Live Bait, wasteContainer too similar
 necklace3 = necklaceTemplate
-  { ifreq    = [("common item", 100), ("any jewelry", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
   , iaspects = [ ELabel "of fearful listening"
                , Timeout ((1 + 1 `d` 2) * 10)
                , AddSkill SkHearing 2 ]
@@ -1163,13 +1199,13 @@ necklace3 = necklaceTemplate
                , RefillCalm (-40) ]
   }
 necklace4 = necklaceTemplate
-  { ifreq    = [("common item", 100), ("any jewelry", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
   , iaspects = Timeout ((3 + 1 `d` 3 - 1 `dL` 3) * 2)
                : iaspects_necklaceTemplate
   , ieffects = [Teleport $ 3 `d` 2]
   }
 necklace5 = necklaceTemplate
-  { ifreq    = [("common item", 100), ("any jewelry", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
   , iaspects = [ ELabel "of escape"
                , Timeout $ (7 - 1 `dL` 5) * 10 ]
                ++ iaspects_necklaceTemplate
@@ -1179,14 +1215,14 @@ necklace5 = necklaceTemplate
   , idesc    = "A supple chain that slips through your fingers."
   }
 necklace6 = necklaceTemplate
-  { ifreq    = [("common item", 100), ("any jewelry", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
   , iaspects = Timeout (1 + (1 `d` 3) * 2)
                : iaspects_necklaceTemplate
   , ieffects = [PushActor (ThrowMod 100 50 1)]  -- 1 step, slow
                   -- the @50@ is only for the case of very light actor, etc.
   }
 necklace7 = necklaceTemplate
-  { ifreq    = [("curious item", 100), ("any jewelry", 100)]
+  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_JEWELRY, 100)]
   , irarity  = [(10, 1)]  -- powerful and determines tactics for one actor
   , iaspects = [ SetFlag Unique, ELabel "of Overdrive"
                , Timeout 10
@@ -1195,7 +1231,7 @@ necklace7 = necklaceTemplate
                , SetFlag Durable ]
                ++ iaspects_necklaceTemplate
   , ieffects = [ RefillCalm (-2)  -- don't spam
-               , toOrganBad "pacified" 10]
+               , toOrganBad PACIFIED 10]
                  -- The same duration as timeout, to avoid spurious messages
                  -- as well as unlimited accumulation of the duration.
                  -- Timeout lessens temptation to frequently wear and take off,
@@ -1204,27 +1240,27 @@ necklace7 = necklaceTemplate
   }
 necklace8 = necklaceTemplate
   { iname    = "coil"
-  , ifreq    = [("common item", 100), ("any jewelry", 100), ("cold source", 1)]
+  , ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100), (COLD_SOURCE, 1)]
   , irarity  = [(4, 3)]  -- entirely optional
   , iaspects = ELabel "of superconducting refrigeration"
                : Timeout ((1 + 1 `d` 3) * 5)
                : delete (SetFlag Precious) iaspects_necklaceTemplate
-  , ieffects = [Explode "spark"]
+  , ieffects = [Explode SPARK]
   }
 necklace9 = necklaceTemplate
-  { ifreq    = [("common item", 100), ("any jewelry", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
   , iaspects = Timeout ((1 + 1 `d` 3) * 5)
                : iaspects_necklaceTemplate
-  , ieffects = [Explode "fragrance"]
+  , ieffects = [Explode FRAGRANCE]
   }
 necklace10 = necklaceTemplate
-  { ifreq    = [("common item", 100), ("any jewelry", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
   , iaspects = [ ELabel "of greed"
                , Timeout ((2 + 1 `d` 3) * 10) ]
                ++ iaspects_necklaceTemplate
   , ieffects = [ Detect DetectLoot 20
                , Teleport 40  -- risky
-               , toOrganBad "parsimonious" (5 + 1 `d` 3) ]  -- hard to flee
+               , toOrganBad PARSIMONIOUS (5 + 1 `d` 3) ]  -- hard to flee
   }
 
 -- ** Non-periodic jewelry
@@ -1232,7 +1268,7 @@ necklace10 = necklaceTemplate
 imageItensifier = ItemKind
   { isymbol  = symbolRing
   , iname    = "noctovisor"
-  , ifreq    = [("treasure", 100), ("add nocto 1", 80), ("museum", 100)]
+  , ifreq    = [(TREASURE, 100), (ADD_NOCTO_1, 80), (MUSEAL, 100)]
   , iflavour = zipFancy [BrGreen]
   , icount   = 1
   , irarity  = [(5, 2)]
@@ -1249,7 +1285,7 @@ imageItensifier = ItemKind
   }
 sightSharpening = ringTemplate  -- small and round, so mistaken for a ring
   { iname    = "Autozoom Contact Lens"
-  , ifreq    = [("treasure", 20), ("add sight", 1)]
+  , ifreq    = [(TREASURE, 20), (ADD_SIGHT, 1)]
       -- it's has to be very rare, because it's powerful and not unique,
       -- and also because it looks exactly as one of necklaces, so it would
       -- be misleading when seen on the map
@@ -1272,27 +1308,27 @@ sightSharpening = ringTemplate  -- small and round, so mistaken for a ring
 ringTemplate = ItemKind
   { isymbol  = symbolRing
   , iname    = "ring"
-  , ifreq    = [("ring unknown", 1)]
+  , ifreq    = [(RING_UNKNOWN, 1)]
   , iflavour = zipPlain stdCol ++ zipFancy darkCol
   , icount   = 1
   , irarity  = [(10, 2)]  -- the default very low
   , iverbHit = "knock"
   , iweight  = 15
   , idamage  = 0
-  , iaspects = [HideAs "ring unknown", SetFlag Precious, SetFlag Equipable]
+  , iaspects = [HideAs RING_UNKNOWN, SetFlag Precious, SetFlag Equipable]
   , ieffects = []
   , idesc    = "A sturdy ring with a softly shining eye. If it contains a body booster unit, beware of the side-effects."
   , ikit     = []
   }
 ring1 = ringTemplate
-  { ifreq    = [("common item", 100), ("any jewelry", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
   , irarity  = [(8, 4)]
   , iaspects = [ AddSkill SkSpeed $ 1 `dL` 3, AddSkill SkMaxHP (-10)
                , EqpSlot EqpSlotSpeed ]
                ++ iaspects ringTemplate
   }
 ring2 = ringTemplate
-  { ifreq    = [("curious item", 100), ("any jewelry", 100)]
+  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_JEWELRY, 100)]
   , iaspects = [ SetFlag Unique, ELabel "of Rush"
                , AddSkill SkSpeed $ (1 + 1 `dL` 2) * 2
                , AddSkill SkMaxCalm (-40), AddSkill SkMaxHP (-20)
@@ -1301,7 +1337,7 @@ ring2 = ringTemplate
   , idesc    = "There creator of this dangerous artifact didn't find time to document its operation. And now it's too late."
   }
 ring3 = ringTemplate
-  { ifreq    = [("common item", 100), ("any jewelry", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
   , irarity  = [(10, 8)]
   , iaspects = [ AddSkill SkMaxHP $ 5 + (1 `d` 2 + 1 `dL` 2) * 5
                , AddSkill SkMaxCalm $ -30 + (1 `dL` 3) * 5
@@ -1309,7 +1345,7 @@ ring3 = ringTemplate
                ++ iaspects ringTemplate
   }
 ring4 = ringTemplate
-  { ifreq    = [("common item", 100), ("any jewelry", 100), ("museum", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100), (MUSEAL, 100)]
   , irarity  = [(5, 1), (10, 9)]  -- needed after other rings drop Calm
   , iaspects = [ AddSkill SkMaxCalm $ 20 + (1 `dL` 4) * 5
                , EqpSlot EqpSlotMiscBonus ]
@@ -1317,7 +1353,7 @@ ring4 = ringTemplate
   , idesc    = "Cold, solid to the touch, perfectly round, engraved with solemn, strangely comforting, worn out words."
   }
 ring5 = ringTemplate
-  { ifreq    = [("common item", 100), ("any jewelry", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
   , irarity  = [(3, 4), (10, 8)]
   , iaspects = [ AddSkill SkHurtMelee $ (2 + 1 `d` 2 + (1 `dL` 2) * 2 ) * 3
                , AddSkill SkMaxHP $ (-3 + 1 `dL` 3) * 10
@@ -1325,7 +1361,7 @@ ring5 = ringTemplate
                ++ iaspects ringTemplate
   }
 ring6 = ringTemplate  -- weak skill per eqp slot, so can be without drawbacks
-  { ifreq    = [("common item", 100), ("any jewelry", 100), ("museum", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100), (MUSEAL, 100)]
   , irarity  = [(10, 3)]
   , iaspects = [ AddSkill SkShine 1
                , EqpSlot EqpSlotShine ]
@@ -1333,7 +1369,7 @@ ring6 = ringTemplate  -- weak skill per eqp slot, so can be without drawbacks
   , idesc    = "A sturdy ring with a large, shining stone."
   }
 ring7 = ringTemplate
-  { ifreq    = [("common item", 10), ("ring of opportunity sniper", 1)]
+  { ifreq    = [(COMMON_ITEM, 10), (RING_OF_OPPORTUNITY_SNIPER, 1)]
   , irarity  = [(10, 5)]  -- low @ifreq@
   , iaspects = [ ELabel "of opportunity sniper"
                , AddSkill SkProject 8
@@ -1342,7 +1378,7 @@ ring7 = ringTemplate
   , idesc    = "This mil-grade communication equipment feeds the aggregated enemy position information to the wearer, even when he is not the pointman of the team and so the team is not intentionally spotting for him. With proper training this permits ranged attacks, even indirect fire, without neglecting the simultaneous squad doctrine obligation of covering the approach of the pointman."
   }
 ring8 = ringTemplate
-  { ifreq    = [("treasure", 100), ("any jewelry", 100)]
+  { ifreq    = [(TREASURE, 100), (ANY_JEWELRY, 100)]
   , iaspects = [ SetFlag Unique, ELabel "of Overwatch"
                , AddSkill SkProject 8  -- TODO: 11, but let player control
                                        -- potion throwing; see capReinforced
@@ -1357,7 +1393,7 @@ ring8 = ringTemplate
 armorLeather = ItemKind
   { isymbol  = symbolTorsoArmor
   , iname    = "spacesuit breastplate"
-  , ifreq    = [("common item", 100), ("torso armor", 1)]
+  , ifreq    = [(COMMON_ITEM, 100), (TORSO_ARMOR, 1)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
   , irarity  = [(1, 4), (10, 2)]
@@ -1376,14 +1412,14 @@ armorLeather = ItemKind
 armorLeather2 = armorLeather  -- for now, purely flavour, for better messages
   { isymbol  = symbolMiscArmor
   , iname    = "pair"
-  , ifreq    = [("common item", 100)]
+  , ifreq    = [(COMMON_ITEM, 100)]
   , iaspects = ELabel "of spacesuit trousers" : iaspects armorLeather
   , idesc    = "Segmented trousers for open space work, with the hermetically sealed boots cut off. Surprisingly flexible and airy, yet micro-meteorite-proof."
   }
 armorMail = armorLeather
   { iname    = "bulletproof vest"
-  , ifreq    = [ ("common item", 100), ("torso armor", 1), ("armor ranged", 50)
-               , ("bulletproof vest", 1) ]
+  , ifreq    = [ (COMMON_ITEM, 100), (TORSO_ARMOR, 1), (ARMOR_RANGED, 50)
+               , (BULLTEPROOF_VEST, 1) ]
   , iflavour = zipPlain [Cyan]
   , irarity  = [(6, 9), (10, 3)]
   , iweight  = 12000
@@ -1400,7 +1436,7 @@ armorMail = armorLeather
 gloveFencing = ItemKind
   { isymbol  = symbolMiscArmor
   , iname    = "construction glove"
-  , ifreq    = [("common item", 100), ("misc armor", 1), ("armor ranged", 50)]
+  , ifreq    = [(COMMON_ITEM, 100), (ARMOR_MISC, 1), (ARMOR_RANGED, 50)]
   , iflavour = zipPlain [White]
   , icount   = 1
   , irarity  = [(5, 9), (10, 9)]
@@ -1418,7 +1454,7 @@ gloveFencing = ItemKind
   }
 gloveGauntlet = gloveFencing
   { iname    = "spacesuit glove"
-  , ifreq    = [("common item", 100), ("misc armor", 1)]
+  , ifreq    = [(COMMON_ITEM, 100), (ARMOR_MISC, 1)]
   , iflavour = zipPlain [BrCyan]
   , irarity  = [(1, 9), (10, 3)]
   , iweight  = 300
@@ -1431,7 +1467,7 @@ gloveGauntlet = gloveFencing
   }
 gloveJousting = gloveFencing
   { iname    = "Welding Handgear"
-  , ifreq    = [("common item", 100), ("misc armor", 1)]
+  , ifreq    = [(COMMON_ITEM, 100), (ARMOR_MISC, 1)]
   , iflavour = zipFancy [BrRed]
   , irarity  = [(1, 3), (10, 3)]
   , iverbHit = "rasp"
@@ -1451,7 +1487,7 @@ gloveJousting = gloveFencing
 hatUshanka = ItemKind
   { isymbol  = symbolMiscArmor
   , iname    = "ushanka hat"
-  , ifreq    = [("common item", 100), ("misc armor", 1)]
+  , ifreq    = [(COMMON_ITEM, 100), (ARMOR_MISC, 1)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
   , irarity  = [(1, 6), (10, 2)]
@@ -1470,7 +1506,7 @@ hatUshanka = ItemKind
 capReinforced = ItemKind
   { isymbol  = symbolMiscArmor
   , iname    = "construction cap"
-  , ifreq    = [("common item", 100), ("misc armor", 1)]
+  , ifreq    = [(COMMON_ITEM, 100), (ARMOR_MISC, 1)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , irarity  = [(6, 9), (10, 3)]
@@ -1489,7 +1525,7 @@ capReinforced = ItemKind
 helmArmored = ItemKind
   { isymbol  = symbolMiscArmor
   , iname    = "spacesuit helmet"
-  , ifreq    = [("common item", 100), ("misc armor", 1)]
+  , ifreq    = [(COMMON_ITEM, 100), (ARMOR_MISC, 1)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
   , irarity  = [(6, 9), (10, 3)]
@@ -1518,7 +1554,7 @@ helmArmored = ItemKind
 buckler = ItemKind
   { isymbol  = symbolShield
   , iname    = "buckler"
-  , ifreq    = [("common item", 100)]
+  , ifreq    = [(COMMON_ITEM, 100)]
   , iflavour = zipPlain [Blue]
   , icount   = 1
   , irarity  = [(4, 5)]
@@ -1555,14 +1591,14 @@ shield = buckler
   , idesc    = "Large and unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Too heavy to intercept projectiles with."
   }
 shield2 = shield
-  { ifreq    = [("common item", 3 * 2), ("museum", 100)]
+  { ifreq    = [(COMMON_ITEM, 3 * 2), (MUSEAL, 100)]
                   -- very low base rarity
   , iweight  = 5000
   , idamage  = 8 `d` 1
   , idesc    = "A relic of long-past wars, heavy and with a central spike."
   }
 shield3 = shield2
-  { ifreq    = [("common item", 1 * 2), ("museum", 10)]
+  { ifreq    = [(COMMON_ITEM, 1 * 2), (MUSEAL, 10)]
                   -- very low base rarity
   , iweight  = 6000
   , idamage  = 12 `d` 1
@@ -1573,7 +1609,7 @@ shield3 = shield2
 dagger = ItemKind
   { isymbol  = symbolEdged
   , iname    = "cleaver"
-  , ifreq    = [("common item", 100), ("starting weapon", 200)]
+  , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 200)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
   , irarity  = [(3 * 10/15, 50), (4 * 10/15, 1)]
@@ -1594,7 +1630,7 @@ dagger = ItemKind
   }
 daggerDropBestWeapon = dagger
   { iname    = "Double Dagger"
-  , ifreq    = [("treasure", 20), ("museum", 100)]
+  , ifreq    = [(TREASURE, 20), (MUSEAL, 100)]
   , irarity  = [(1, 3), (10, 3)]
   , iaspects = [SetFlag Unique]
                ++ iaspects dagger
@@ -1605,7 +1641,7 @@ daggerDropBestWeapon = dagger
 hammerTemplate = ItemKind
   { isymbol  = symbolHafted
   , iname    = "demolition hammer"
-  , ifreq    = [("hammer unknown", 1)]
+  , ifreq    = [(HAMMER_UNKNOWN, 1)]
   , iflavour = zipFancy [BrMagenta]  -- avoid "pink"
   , icount   = 1
   , irarity  = [(5 * 10/15, 20), (8 * 10/15, 1)]
@@ -1615,7 +1651,7 @@ hammerTemplate = ItemKind
   , idamage  = 8 `d` 1  -- we are lying about the dice here, but the dungeon
                         -- is too small and the extra-dice hammers too rare
                         -- to subdivide this identification class by dice
-  , iaspects = [ HideAs "hammer unknown"
+  , iaspects = [ HideAs HAMMER_UNKNOWN
                , SetFlag Durable, SetFlag Meleeable
                , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
   , ieffects = []
@@ -1623,31 +1659,31 @@ hammerTemplate = ItemKind
   , ikit     = []
   }
 hammer1 = hammerTemplate
-  { ifreq    = [ ("common item", 100), ("starting weapon", 70)
-               , ("fire fighting item", 1) ]
+  { ifreq    = [ (COMMON_ITEM, 100), (STARTING_WEAPON, 70)
+               , (FIRE_FIGHTING_ITEM, 1) ]
   , iaspects = [Timeout 5, EqpSlot EqpSlotWeaponBig]
                ++ iaspects hammerTemplate
   }
 hammer2 = hammerTemplate
-  { ifreq    = [("common item", 25), ("starting weapon", 7)]
+  { ifreq    = [(COMMON_ITEM, 25), (STARTING_WEAPON, 7)]
   , iverbHit = "gouge"
   , iaspects = [Timeout 3, EqpSlot EqpSlotWeaponFast]
                ++ iaspects hammerTemplate
   , idesc    = "Upon closer inspection, this hammer turns out particularly handy and well balanced, with a narrowing, sharpened head compensating the modest size."
   }
 hammer3 = hammerTemplate
-  { ifreq    = [("common item", 5), ("starting weapon", 1)]
+  { ifreq    = [(COMMON_ITEM, 5), (STARTING_WEAPON, 1)]
   , iverbHit = "puncture"
   , iweight  = 2400  -- weight gives it away
   , idamage  = 12 `d` 1
   , iaspects = [ Timeout 12  -- balance, or @DupItem@ would break the game
                , EqpSlot EqpSlotWeaponBig]
-               ++ delete (HideAs "hammer unknown") (iaspects hammerTemplate)
+               ++ delete (HideAs HAMMER_UNKNOWN) (iaspects hammerTemplate)
   , idesc    = "This hammer sports a long metal handle that increases the momentum of the sharpened head's swing, at the cost of long recovery."
   }
 hammerParalyze = hammerTemplate
   { iname    = "Concussion Hammer"
-  , ifreq    = [("treasure", 20)]
+  , ifreq    = [(TREASURE, 20)]
   , irarity  = [(5, 1), (8, 6)]
   , iaspects = [ SetFlag Unique
                , Timeout 5
@@ -1658,7 +1694,7 @@ hammerParalyze = hammerTemplate
   }
 hammerSpark = hammerTemplate
   { iname    = "Grand Smithhammer"
-  , ifreq    = [("treasure", 20), ("museum", 100)]
+  , ifreq    = [(TREASURE, 20), (MUSEAL, 100)]
   , irarity  = [(5, 1), (8, 6)]
   , iweight  = 2400  -- weight gives it away
   , idamage  = 12 `d` 1
@@ -1666,8 +1702,8 @@ hammerSpark = hammerTemplate
                , Timeout 10
                , EqpSlot EqpSlotWeaponBig
                , AddSkill SkShine 3]
-               ++ delete (HideAs "hammer unknown") (iaspects hammerTemplate)
-  , ieffects = [Explode "spark"]
+               ++ delete (HideAs HAMMER_UNKNOWN) (iaspects hammerTemplate)
+  , ieffects = [Explode SPARK]
       -- we can't use a focused explosion, because it would harm the hammer
       -- wielder as well, unlike this one
   , idesc    = "High carbon steel of this heavy old hammer doesn't yield even to the newest alloys and produces fountains of sparks in defiance."
@@ -1675,7 +1711,7 @@ hammerSpark = hammerTemplate
 sword = ItemKind
   { isymbol  = symbolPolearm
   , iname    = "sharpened pipe"
-  , ifreq    = [("common item", 100), ("starting weapon", 30)]
+  , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 30)]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
   , irarity  = [(3, 1), (6, 20)]
@@ -1693,7 +1729,7 @@ sword = ItemKind
 swordImpress = sword
   { isymbol  = symbolEdged
   , iname    = "Master's Sword"
-  , ifreq    = [("treasure", 20), ("museum", 100)]
+  , ifreq    = [(TREASURE, 20), (MUSEAL, 100)]
   , irarity  = [(5, 1), (8, 7)]
   , iverbHit = "slash"
   , iaspects = [SetFlag Unique]
@@ -1704,12 +1740,12 @@ swordImpress = sword
 swordNullify = sword
   { isymbol  = symbolEdged
   , iname    = "Roasting Rapier"
-  , ifreq    = [("treasure", 20)]
+  , ifreq    = [(TREASURE, 20)]
   , iverbHit = "pierce"
   , irarity  = [(5, 1), (8, 7)]
   , iaspects = [SetFlag Unique, Timeout 3, EqpSlot EqpSlotWeaponFast]
                ++ (iaspects sword \\ [Timeout 7, EqpSlot EqpSlotWeaponBig])
-  , ieffects = [ DropItem 1 maxBound COrgan "condition"
+  , ieffects = [ DropItem 1 maxBound COrgan CONDITION
                , RefillCalm (-10)
                , Yell ]
   , idesc    = "A thin, acutely sharp steel blade that pierces deeply and sends its victim into abrupt, sobering shock. Originally, an exuberant hand-forged roasting implement, intentionally and wisely kept blunt."
@@ -1717,7 +1753,7 @@ swordNullify = sword
 halberd = ItemKind
   { isymbol  = symbolPolearm
   , iname    = "pole cleaver"
-  , ifreq    = [("common item", 100), ("starting weapon", 20)]
+  , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 20)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , irarity  = [(5, 1), (8, 15)]
@@ -1737,7 +1773,7 @@ halberd = ItemKind
   }
 halberd2 = halberd
   { iname    = "pollaxe"
-  , ifreq    = [("common item", 3 * 3), ("starting weapon", 1)]
+  , ifreq    = [(COMMON_ITEM, 3 * 3), (STARTING_WEAPON, 1)]
   , iverbHit = "carve"
   , iweight  = 4000
   , iaspects = [AddSkill SkHurtMelee $ (-6 + 1 `dL` 4) * 10]
@@ -1750,7 +1786,7 @@ halberd2 = halberd
   }
 halberdPushActor = halberd
   { iname    = "Swiss Halberd"
-  , ifreq    = [("curious item", 20)]  -- not museum; reenactors
+  , ifreq    = [(CURIOUS_ITEM, 20)]  -- not museum; reenactors
   , irarity  = [(7, 0), (9, 15)]
   , iaspects = [SetFlag Unique]
                ++ iaspects halberd
@@ -1758,52 +1794,26 @@ halberdPushActor = halberd
   , idesc    = "A perfect replica made for a reenactor troupe, hardened, missing only some final sharpening. Versatile, with great reach and leverage. Foes are held at a distance."
   }
 
--- ** Wands
-
-wandTemplate = ItemKind
-  { isymbol  = symbolWand
-  , iname    = "injector"
-  , ifreq    = [("wand unknown", 1)]
-  , iflavour = zipFancy brightCol
-  , icount   = 1
-  , irarity  = []
-  , iverbHit = "club"
-  , iweight  = 300
-  , idamage  = 0
-  , iaspects = [ HideAs "wand unknown"
-               , AddSkill SkShine 1, AddSkill SkSpeed (-1)
-                   -- pulsing with power, distracts
-               , SetFlag Durable
-               , toVelocity 125 ]  -- sufficiently advanced tech
-  , ieffects = []
-  , idesc    = "Buzzing with dazzling light that shines even through appendages that handle it."
-  , ikit     = []
-  }
-wand1 = wandTemplate
-  { ifreq    = []
-  , ieffects = []  -- will be: emit a cone of sound shrapnel that makes enemy cover his ears and so drop '|' and '{'
-  }
-
 -- ** Treasure
 
 gemTemplate = ItemKind
   { isymbol  = symbolGold
   , iname    = "gem"
-  , ifreq    = [("gem unknown", 1), ("valuable", 100)]
+  , ifreq    = [(GEM_UNKNOWN, 1), (VALUABLE, 100)]
   , iflavour = zipPlain $ delete BrYellow brightCol  -- natural, so not fancy
   , icount   = 1
   , irarity  = [(3, 0), (10, 24)]
   , iverbHit = "tap"
   , iweight  = 50
   , idamage  = 0
-  , iaspects = [HideAs "gem unknown", SetFlag Precious]
+  , iaspects = [HideAs GEM_UNKNOWN, SetFlag Precious]
   , ieffects = []
   , idesc    = "Precious, though useless. Worth around 100 gold grains."
   , ikit     = []
   }
 gem1 = gemTemplate
-  { ifreq    = [ ("treasure", 100), ("gem", 100), ("any jewelry", 100)
-               , ("valuable", 100) ]
+  { ifreq    = [ (TREASURE, 100), (GEM, 100), (ANY_JEWELRY, 100)
+               , (VALUABLE, 100) ]
   , irarity  = [(3, 0), (6, 12), (10, 8)]
   , iaspects = [AddSkill SkShine 1, AddSkill SkSpeed (-1)]
                  -- reflects strongly, distracts; so it glows in the dark,
@@ -1811,25 +1821,25 @@ gem1 = gemTemplate
                ++ iaspects gemTemplate
   }
 gem2 = gem1
-  { ifreq    = [ ("treasure", 100), ("gem", 100), ("any jewelry", 100)
-               , ("valuable", 100) ]
+  { ifreq    = [ (TREASURE, 100), (GEM, 100), (ANY_JEWELRY, 100)
+               , (VALUABLE, 100) ]
   , irarity  = [(5, 0), (7, 25), (10, 8)]
   }
 gem3 = gem1
-  { ifreq    = [ ("treasure", 100), ("gem", 100), ("any jewelry", 100)
-               , ("valuable", 100) ]
+  { ifreq    = [ (TREASURE, 100), (GEM, 100), (ANY_JEWELRY, 100)
+               , (VALUABLE, 100) ]
   , irarity  = [(7, 0), (8, 20), (10, 8)]
   }
 gem4 = gem1
-  { ifreq    = [ ("treasure", 100), ("gem", 100), ("any jewelry", 100)
-               , ("valuable", 100) ]
+  { ifreq    = [ (TREASURE, 100), (GEM, 100), (ANY_JEWELRY, 100)
+               , (VALUABLE, 100) ]
   , irarity  = [(9, 0), (10, 70)]
   }
 gem5 = gem1
   { isymbol  = symbolSpecial
   , iname    = "stimpack"
-  , ifreq    = [ ("treasure", 100), ("gem", 25), ("any jewelry", 10)
-               , ("valuable", 100) ]
+  , ifreq    = [ (TREASURE, 100), (GEM, 25), (ANY_JEWELRY, 10)
+               , (VALUABLE, 100) ]
   , iflavour = zipPlain [BrYellow]
   , irarity  = [(1, 40), (10, 10)]
   , iaspects = [ ELabel "of youth", SetFlag Precious  -- not hidden
@@ -1840,20 +1850,20 @@ gem5 = gem1
 currencyTemplate = ItemKind
   { isymbol  = symbolGold
   , iname    = "gold grain"
-  , ifreq    = [("currency unknown", 1), ("valuable", 1)]
+  , ifreq    = [(CURRENCY_UNKNOWN, 1), (VALUABLE, 1)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 10 + 1 `d` 20 + 1 `dL` 20
   , irarity  = [(1, 25), (10, 10)]
   , iverbHit = "tap"
   , iweight  = 1
   , idamage  = 0
-  , iaspects = [HideAs "currency unknown", SetFlag Precious]
+  , iaspects = [HideAs CURRENCY_UNKNOWN, SetFlag Precious]
   , ieffects = []
   , idesc    = "Reliably valuable in every civilized place."
   , ikit     = []
   }
 currency = currencyTemplate
-  { ifreq    = [("treasure", 100), ("currency", 100), ("valuable", 1)]
+  { ifreq    = [(TREASURE, 100), (CURRENCY, 100), (VALUABLE, 1)]
   , iaspects = [AddSkill SkShine 1, AddSkill SkSpeed (-1)]
                ++ iaspects currencyTemplate
   }
@@ -1863,9 +1873,9 @@ currency = currencyTemplate
 needle = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "needle"
-  , ifreq    = [ ("needle", 1), ("common item", 1)
+  , ifreq    = [ (NEEDLE, 1), (COMMON_ITEM, 1)
                    -- marked as common to ensure can be polymorphed
-               , ("unreported inventory", 1) ]  -- too weak to spam
+               , (UNREPORTED_INVENTORY, 1) ]  -- too weak to spam
   , iflavour = zipPlain [Blue]
   , icount   = 1 + 8 `d` 3
   , irarity  = [(1, 1)]
@@ -1882,8 +1892,8 @@ needle = ItemKind
 needleSleep = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "tranquillizer dart"
-  , ifreq    = [ ("tranquillizer dart", 1), ("common item", 1)
-               , ("mercenary ammo", 25) ]
+  , ifreq    = [ (TRANQUILIZER_DART, 1), (COMMON_ITEM, 1)
+               , (MERCENARY_AMMO, 25) ]
                    -- marked as common to ensure can be polymorphed
   , iflavour = zipPlain [BrBlue]
   , icount   = 1 `dL` 3
@@ -1900,23 +1910,23 @@ needleSleep = ItemKind
   }
 constructionHooter = necklaceTemplate
   { iname    = "construction hooter"
-  , ifreq    = [ ("construction hooter", 1), ("common item", 1)
+  , ifreq    = [ (CONSTRUCTION_HOOTER, 1), (COMMON_ITEM, 1)
                    -- extremely rare, but dropped by decontamination chambers
-               , ("unreported inventory", 1) ]
+               , (UNREPORTED_INVENTORY, 1) ]
   , iflavour = zipPlain [BrRed]
   , irarity  = [(1, 1)]
   , iweight  = 1000
   , iaspects = [ AddSkill SkArmorMelee 2
                , SetFlag Durable, toVelocity 50
                , SetFlag Equipable, EqpSlot EqpSlotArmorMelee]
-  , ieffects = [Yell, Summon "construction robot" 1]
+  , ieffects = [Yell, Summon CONSTRUCTION_ROBOT 1]
   , idesc    = "An emergency hooter for alarming human personnel in case their life is in danger. Worn by construction robots around their \"neck\", where it's least exposed, but even there it needs to be heavily armored and running on its own power supply."
   }
 wasteContainer = ItemKind
   { isymbol  = symbolTool
   , iname    = "waste container"
-  , ifreq    = [ ("waste container", 1), ("unreported inventory", 1)
-               , ("water source", 1) ]
+  , ifreq    = [ (WASTE_CONTAINER, 1), (UNREPORTED_INVENTORY, 1)
+               , (WATER_SOURCE, 1) ]
   , iflavour = zipLiquid [Green]
   , icount   = 1
   , irarity  = [(1, 1)]
@@ -1927,8 +1937,8 @@ wasteContainer = ItemKind
                , AddSkill SkArmorMelee 20  -- tempting
                , SetFlag Periodic, SetFlag Equipable ]
   , ieffects = [ Detect DetectLoot 20
-               , Summon "mobile animal" $ 1 `dL` 2
-               , Explode "waste" ]
+               , Summon MOBILE_ANIMAL $ 1 `dL` 2
+               , Explode WASTE ]
                    -- very important effect that disables item movement
                    -- and so makes wielding seeingItem a tiny bit risky,
                    -- and so not a no-brainer
@@ -1938,7 +1948,7 @@ wasteContainer = ItemKind
 spotlight = ItemKind
   { isymbol  = symbolLight
   , iname    = "spotlight"
-  , ifreq    = [("spotlight", 1), ("unreported inventory", 1)]
+  , ifreq    = [(SPOTLIGHT, 1), (UNREPORTED_INVENTORY, 1)]
   , iflavour = zipPlain [White]
   , icount   = 1
   , irarity  = [(1, 1)]
@@ -1954,51 +1964,51 @@ spotlight = ItemKind
   }
 flask18 = flaskTemplate
   { iname    = "cartridge"
-  , ifreq    = [ ("common item", 100), ("explosive", 100), ("any vial", 100)
-               , ("liquid nitrogen", 1), ("cold source", 1)
-               , ("fire fighting item", 59) ]
+  , ifreq    = [ (COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_VIAL, 100)
+               , (LIQUID_NITROGEN, 1), (COLD_SOURCE, 1)
+               , (FIRE_FIGHTING_ITEM, 59) ]
   , irarity  = [(1, 1)]  -- scavenged from walls
   , iaspects = ELabel "of liquid nitrogen"
                : iaspects flaskTemplate
   , ieffects = [ Burn 1  -- sensory ambiguity between hot and cold
-               , toOrganBad "slowed" (3 + 1 `d` 3)
-               , OnSmash (Explode "nitrogen mist") ]
+               , toOrganBad SLOWED (3 + 1 `d` 3)
+               , OnSmash (Explode NITROGEN_MIST) ]
   }
 flask19 = flaskTemplate
   { iname    = "galon"  -- diluted perfume; almost same effects
-  , ifreq    = [ ("common item", 100), ("explosive", 100), ("any vial", 100)
-               , ("water source", 1) ]
+  , ifreq    = [ (COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_VIAL, 100)
+               , (WATER_SOURCE, 1) ]
   , iaspects = ELabel "of rose water"
                : iaspects flaskTemplate
-  , ieffects = [ Impress, toOrganGood "rose-smelling" (100 + 1 `d` 20)
-               , OnSmash ApplyPerfume, OnSmash (Explode "fragrance") ]
+  , ieffects = [ Impress, toOrganGood ROSE_SMELLING (100 + 1 `d` 20)
+               , OnSmash ApplyPerfume, OnSmash (Explode FRAGRANCE) ]
   }
 flask20 = flaskTemplate
   { iname    = "galon"
-  , ifreq    = [ ("common item", 100), ("any vial", 100)
-               , ("water source", 1) ]
+  , ifreq    = [ (COMMON_ITEM, 100), (ANY_VIAL, 100)
+               , (WATER_SOURCE, 1) ]
   , irarity  = [(1, 1)]  -- usually self-made (TODO)
   , iaspects = ELabel "of water"
                : iaspects flaskTemplate
   }
 scrollAd1 = scrollTemplate
-  { ifreq    = [("common item", 100), ("any scroll", 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , icount   = 1
   , irarity  = [(1, 1)]  -- not every playthrough needs one
   , iaspects = [ELabel "of tourist guide"]
                ++ iaspects scrollTemplate
   , ieffects = [ Impress
-               , toOrganGood "resolute" (500 + 1 `d` 200)
+               , toOrganGood RESOLUTE (500 + 1 `d` 200)
                    -- a drawback (at least initially) due to @calmEnough@
-               , Explode "cruise ad hologram"
+               , Explode RHINO_HOLOGRAM
                , Detect DetectLoot 5 ]  -- short so useless most of the time
   , idesc    = "Biodegradable self-powered mini-projector displaying holographic ads and shopping hints."
   }
 blowtorch = ItemKind
   { isymbol  = symbolLight
   , iname    = "blowtorch"  -- not unique, but almost never generated on floor
-  , ifreq    = [ ("blowtorch", 1), ("valuable", 20), ("curious item", 1)
-               , ("fire source", 1) ]  -- infinite use, but harmful
+  , ifreq    = [ (BLOWTORCH, 1), (VALUABLE, 20), (CURIOUS_ITEM, 1)
+               , (FIRE_SOURCE, 1) ]  -- infinite use, but harmful
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , irarity  = [(1, 1)]
@@ -2018,7 +2028,7 @@ blowtorch = ItemKind
 rawMeatChunk = ItemKind
   { isymbol  = symbolFood
   , iname    = "raw meat chunk"
-  , ifreq    = [("raw meat chunk", 100), ("common item", 1)]
+  , ifreq    = [(RAW_MEAT_CHUNK, 100), (COMMON_ITEM, 1)]
   , iflavour = zipPlain [Red]
   , icount   = 1
   , irarity  = [(1, 1)]
@@ -2026,34 +2036,34 @@ rawMeatChunk = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [toVelocity 50]
-  , ieffects = [DropItem maxBound 1 COrgan "hungry"]
+  , ieffects = [DropItem maxBound 1 COrgan HUNGRY]
   , idesc    = "A scrap of edible animal meat. Not very tasty nor nourishing. Cooking would make it more palatable."
   , ikit     = []
   }
 roastedMeatChunk = rawMeatChunk
   { iname    = "roasted meat chunk"
-  , ifreq    = [ ("roasted meat chunk", 100), ("cooked food", 60)
-               , ("common item", 1) ]
+  , ifreq    = [ (ROASTED_MEAT_CHUNK, 100), (COOKED_FOOD, 60)
+               , (COMMON_ITEM, 1) ]
   , iflavour = zipPlain [Brown]
-  , ieffects = [DropItem maxBound 3 COrgan "hungry"]
+  , ieffects = [DropItem maxBound 3 COrgan HUNGRY]
   , idesc    = "Delicious and filling chunk of meat. The thermal processing released flavour and made it easier to digest."
   }
 militaryKnife = dagger
   { iname    = "military knife"
-  , ifreq    = [("common item", 1), ("mercenary weapon", 70)]
+  , ifreq    = [(COMMON_ITEM, 1), (MERCENARY_WEAPON, 70)]
   , irarity  = [(10, 10)]
   , idamage  = 8 `d` 1
   , iaspects = [ Timeout 2
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
                , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
-  , ieffects = [DropItem 1 maxBound COrgan "condition"]
+  , ieffects = [DropItem 1 maxBound COrgan CONDITION]
   , idesc    = "Millitary design laser-sharpened alloy blade able to cleanly open an artery at the lightest touch through layers of fabric."
   }
 militaryTazer = ItemKind
   { isymbol  = symbolHafted
   , iname    = "military stun gun"
-  , ifreq    = [("common item", 1), ("mercenary weapon", 30)]
+  , ifreq    = [(COMMON_ITEM, 1), (MERCENARY_WEAPON, 30)]
   , iflavour = zipFancy [Magenta]
   , icount   = 1
   , irarity  = [(10, 10)]

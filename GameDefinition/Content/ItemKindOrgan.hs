@@ -6,13 +6,19 @@
 --
 -- | Actor organ definitions.
 module Content.ItemKindOrgan
-  ( organs
+  ( -- * Group name patterns
+    pattern FIST, pattern FOOT, pattern HOOKED_CLAW, pattern SMALL_CLAW, pattern SNOUT, pattern SMALL_JAW, pattern JAW, pattern LARGE_JAW, pattern ANTLER, pattern HORN, pattern RHINO_HORN, pattern TENTACLE, pattern THORN, pattern BOILING_FISSURE, pattern ARSENIC_FISSURE, pattern SULFUR_FISSURE, pattern BEE_STING, pattern STING, pattern VENOM_TOOTH, pattern VENOM_FANG, pattern SCREECHING_BEAK, pattern LARGE_TAIL, pattern HUGE_TAIL, pattern ARMORED_SKIN, pattern BARK, pattern NOSTRIL, pattern RATLLE, pattern INSECT_MORTALITY, pattern SAPIENT_BRAIN, pattern ANIMAL_BRAIN, pattern SCENT_GLAND, pattern BOILING_VENT, pattern ARSENIC_VENT, pattern SULFUR_VENT, pattern SCAVENGER, pattern EYE_3, pattern EYE_6, pattern EYE_8, pattern VISION_6, pattern VISION_12, pattern VISION_16, pattern EAR_3, pattern EAR_6, pattern EAR_8, pattern SPEED_GLAND_5, pattern SPEED_GLAND_10
+  , pattern ANIMAL_STOMACH, pattern HUNGRY, pattern GENETIC_FLAW, pattern GENETIC_FLAW_3, pattern GENETIC_FLAW_10, pattern RAZOR, pattern SMALL_BEAK, pattern LIVE_WIRE, pattern BIOGAS_VENT, pattern BIOGAS_FISSURE, pattern MEDBOT_VENT, pattern MEDBOT_FISSUE, pattern ROBOT_BRAIN, pattern HULL_PLATING, pattern MOUTH_VENT, pattern CRUDE_WELD
+  , -- * Content
+    organs
   ) where
 
 import Prelude ()
 
 import Game.LambdaHack.Core.Prelude
 
+import Content.ItemKindBlast
+import Content.ItemKindTemporary
 import Game.LambdaHack.Content.ItemKind
 import Game.LambdaHack.Core.Dice
 import Game.LambdaHack.Definition.Ability
@@ -20,15 +26,88 @@ import Game.LambdaHack.Definition.Color
 import Game.LambdaHack.Definition.Defs
 import Game.LambdaHack.Definition.Flavour
 
+-- * Group name patterns
+
+pattern FIST, FOOT, HOOKED_CLAW, SMALL_CLAW, SNOUT, SMALL_JAW, JAW, LARGE_JAW, ANTLER, HORN, RHINO_HORN, TENTACLE, THORN, BOILING_FISSURE, ARSENIC_FISSURE, SULFUR_FISSURE, BEE_STING, STING, VENOM_TOOTH, VENOM_FANG, SCREECHING_BEAK, LARGE_TAIL, HUGE_TAIL, ARMORED_SKIN, BARK, NOSTRIL, RATLLE, INSECT_MORTALITY, SAPIENT_BRAIN, ANIMAL_BRAIN, SCENT_GLAND, BOILING_VENT, ARSENIC_VENT, SULFUR_VENT, SCAVENGER, EYE_3, EYE_6, EYE_8, VISION_6, VISION_12, VISION_16, EAR_3, EAR_6, EAR_8, SPEED_GLAND_5, SPEED_GLAND_10 :: GroupName ItemKind
+
+pattern ANIMAL_STOMACH, HUNGRY, GENETIC_FLAW, GENETIC_FLAW_3, GENETIC_FLAW_10, RAZOR, SMALL_BEAK, LIVE_WIRE, BIOGAS_VENT, BIOGAS_FISSURE, MEDBOT_VENT, MEDBOT_FISSUE, ROBOT_BRAIN, HULL_PLATING, MOUTH_VENT, CRUDE_WELD :: GroupName ItemKind
+
+pattern FIST = GroupName "fist"
+pattern FOOT = GroupName "foot"
+pattern HOOKED_CLAW = GroupName "hooked claw"
+pattern SMALL_CLAW = GroupName "small claw"
+pattern SNOUT = GroupName "snout"
+pattern SMALL_JAW = GroupName "small jaw"
+pattern JAW = GroupName "jaw"
+pattern LARGE_JAW = GroupName "large jaw"
+pattern ANTLER = GroupName "antler"
+pattern HORN = GroupName "horn"
+pattern RHINO_HORN = GroupName "rhino horn"
+pattern TENTACLE = GroupName "tentacle"
+pattern THORN = GroupName "thorn"
+pattern BOILING_FISSURE = GroupName "boiling fissure"
+pattern ARSENIC_FISSURE = GroupName "arsenic fissure"
+pattern SULFUR_FISSURE = GroupName "sulfur fissure"
+pattern BEE_STING = GroupName "bee sting"
+pattern STING = GroupName "sting"
+pattern VENOM_TOOTH = GroupName "venom tooth"
+pattern VENOM_FANG = GroupName "venom fang"
+pattern SCREECHING_BEAK = GroupName "screeching beak"
+pattern LARGE_TAIL = GroupName "large tail"
+pattern HUGE_TAIL = GroupName "huge tail"
+pattern ARMORED_SKIN = GroupName "armored skin"
+pattern BARK = GroupName "bark"
+pattern NOSTRIL = GroupName "nostril"
+pattern RATLLE = GroupName "rattle"
+pattern INSECT_MORTALITY = GroupName "insect mortality"
+pattern SAPIENT_BRAIN = GroupName "sapient brain"
+pattern ANIMAL_BRAIN = GroupName "animal brain"
+pattern SCENT_GLAND = GroupName "scent gland"
+pattern BOILING_VENT = GroupName "boiling vent"
+pattern ARSENIC_VENT = GroupName "arsenic vent"
+pattern SULFUR_VENT = GroupName "sulfur vent"
+pattern SCAVENGER = GroupName "scavenger"
+pattern EYE_3 = GroupName "eye 3"
+pattern EYE_6 = GroupName "eye 6"
+pattern EYE_8 = GroupName "eye 8"
+pattern VISION_6 = GroupName "vision 6"
+pattern VISION_12 = GroupName "vision 12"
+pattern VISION_16 = GroupName "vision 16"
+pattern EAR_3 = GroupName "ear 3"
+pattern EAR_6 = GroupName "ear 6"
+pattern EAR_8 = GroupName "ear 8"
+pattern SPEED_GLAND_5 = GroupName "speed gland 5"
+pattern SPEED_GLAND_10 = GroupName "speed gland 10"
+
+-- ** Allure-specific
+pattern ANIMAL_STOMACH = GroupName "animal stomach"
+pattern HUNGRY = GroupName "hungry"
+pattern GENETIC_FLAW = GroupName "genetic flaw"
+pattern GENETIC_FLAW_3 = GroupName "genetic flaw 3"
+pattern GENETIC_FLAW_10 = GroupName "genetic flaw 10"
+pattern RAZOR = GroupName "razor"
+pattern SMALL_BEAK = GroupName "small beak"
+pattern LIVE_WIRE = GroupName "live wire"
+pattern BIOGAS_VENT = GroupName "biogas vent"
+pattern BIOGAS_FISSURE = GroupName "biogas fissure"
+pattern MEDBOT_VENT = GroupName "medbot vent"
+pattern MEDBOT_FISSUE = GroupName "medbot fissure"
+pattern ROBOT_BRAIN = GroupName "robot brain"
+pattern HULL_PLATING = GroupName "hull plating"
+pattern MOUTH_VENT = GroupName "mouth vent"
+pattern CRUDE_WELD = GroupName "crude weld"
+
+-- * Content
+
 organs :: [ItemKind]
 organs =
-  [fist, foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, bark, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, animalStomach, insectMortality, sapientBrain, animalBrain, speedGland5, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, hungry, impressed]
+  [fist, foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, bark, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, animalStomach, insectMortality, sapientBrain, animalBrain, speedGland5, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed]
   -- Allure-specific
-  ++ [smallBeak, razor, liveWire, robotBrain, hullPlating, mouthVent, geneticFlaw3, geneticFlaw10]
+  ++ [hungry, smallBeak, razor, liveWire, robotBrain, hullPlating, mouthVent, geneticFlaw3, geneticFlaw10]
 
-fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, bark, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, animalStomach, insectMortality, sapientBrain, animalBrain, speedGland5, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, hungry, impressed :: ItemKind
+fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, bark, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, animalStomach, insectMortality, sapientBrain, animalBrain, speedGland5, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed :: ItemKind
 -- Allure-specific
-smallBeak, razor, liveWire, robotBrain, hullPlating, mouthVent, geneticFlaw3, geneticFlaw10 :: ItemKind
+hungry, smallBeak, razor, liveWire, robotBrain, hullPlating, mouthVent, geneticFlaw3, geneticFlaw10 :: ItemKind
 
 -- Weapons
 
@@ -37,7 +116,7 @@ smallBeak, razor, liveWire, robotBrain, hullPlating, mouthVent, geneticFlaw3, ge
 fist = ItemKind
   { isymbol  = ','
   , iname    = "fist"
-  , ifreq    = [("fist", 100)]
+  , ifreq    = [(FIST, 1)]
   , iflavour = zipPlain [Red]
   , icount   = 2
   , irarity  = [(1, 1)]
@@ -51,7 +130,7 @@ fist = ItemKind
   }
 foot = fist
   { iname    = "foot"
-  , ifreq    = [("foot", 50)]
+  , ifreq    = [(FOOT, 1)]
   , iverbHit = "kick"
   , idamage  = 4 `d` 1
   , idesc    = "A weapon you can still use if disarmed."
@@ -62,25 +141,25 @@ foot = fist
 
 hookedClaw = fist
   { iname    = "hooked claw"
-  , ifreq    = [("hooked claw", 50)]
+  , ifreq    = [(HOOKED_CLAW, 1)]
   , icount   = 2  -- even if more, only the fore claws used for fighting
   , iverbHit = "hook"
   , idamage  = 2 `d` 1
   , iaspects = Timeout (12 - 1 `dL` 3)
                : iaspects fist
-  , ieffects = [toOrganBad "slowed" 2]
+  , ieffects = [toOrganBad SLOWED 2]
   , idesc    = "A curved talon."
   }
 smallClaw = fist
   { iname    = "small claw"
-  , ifreq    = [("small claw", 50)]
+  , ifreq    = [(SMALL_CLAW, 1)]
   , iverbHit = "slash"
   , idamage  = 2 `d` 1
   , idesc    = "A pearly spike."
   }
 snout = fist
   { iname    = "snout"
-  , ifreq    = [("snout", 10)]
+  , ifreq    = [(SNOUT, 1)]
   , icount   = 1
   , iverbHit = "bite"
   , idamage  = 2 `d` 1
@@ -88,7 +167,7 @@ snout = fist
   }
 smallJaw = fist
   { iname    = "small jaw"
-  , ifreq    = [("small jaw", 20)]
+  , ifreq    = [(SMALL_JAW, 1)]
   , icount   = 1
   , iverbHit = "rip"
   , idamage  = 3 `d` 1
@@ -96,7 +175,7 @@ smallJaw = fist
   }
 jaw = fist
   { iname    = "jaw"
-  , ifreq    = [("jaw", 20)]
+  , ifreq    = [(JAW, 1)]
   , icount   = 1
   , iverbHit = "rip"
   , idamage  = 5 `d` 1
@@ -104,7 +183,7 @@ jaw = fist
   }
 largeJaw = fist
   { iname    = "large jaw"
-  , ifreq    = [("large jaw", 100)]
+  , ifreq    = [(LARGE_JAW, 1)]
   , icount   = 1
   , iverbHit = "crush"
   , idamage  = 10 `d` 1
@@ -114,7 +193,7 @@ largeJaw = fist
   }
 antler = fist
   { iname    = "antler"
-  , ifreq    = [("antler", 100)]
+  , ifreq    = [(ANTLER, 1)]
   , icount   = 2
   , iverbHit = "ram"
   , idamage  = 4 `d` 1
@@ -126,7 +205,7 @@ antler = fist
   }
 horn = fist
   { iname    = "horn"
-  , ifreq    = [("horn", 100)]
+  , ifreq    = [(HORN, 1)]
   , icount   = 2
   , iverbHit = "impale"
   , idamage  = 5 `d` 1
@@ -137,7 +216,7 @@ horn = fist
   }
 rhinoHorn = fist
   { iname    = "ugly horn"  -- made of keratin, unlike real horns
-  , ifreq    = [("rhino horn", 100)]
+  , ifreq    = [(RHINO_HORN, 1)]
   , icount   = 1  -- single, unlike real horns
   , iverbHit = "gore"
   , idamage  = 5 `d` 1
@@ -148,7 +227,7 @@ rhinoHorn = fist
   }
 tentacle = fist
   { iname    = "tentacle"
-  , ifreq    = [("tentacle", 50)]
+  , ifreq    = [(TENTACLE, 1)]
   , icount   = 4
   , iverbHit = "slap"
   , idamage  = 4 `d` 1
@@ -156,7 +235,7 @@ tentacle = fist
   }
 thorn = fist
   { iname    = "thorn"
-  , ifreq    = [("thorn", 100)]
+  , ifreq    = [(THORN, 1)]
   , icount   = 2 + 1 `d` 3
   , iverbHit = "puncture"
   , idamage  = 2 `d` 1
@@ -166,40 +245,40 @@ thorn = fist
   }
 boilingFissure = fist
   { iname    = "fissure"
-  , ifreq    = [("boiling fissure", 100)]
+  , ifreq    = [(BOILING_FISSURE, 1)]
   , icount   = 5 + 1 `d` 5
   , iverbHit = "hiss at"
   , idamage  = 1 `d` 1
   , iaspects = [ AddSkill SkHurtMelee 20  -- decreasing as count decreases
                , SetFlag Meleeable ]  -- not Durable
-  , ieffects = [ DropItem 1 1 COrgan "condition"  -- useful; limited
+  , ieffects = [ DropItem 1 1 COrgan CONDITION  -- useful; limited
                , VerbNoLonger "widen the crack, releasing pressure" ]
   , idesc    = ""
   }
 arsenicFissure = boilingFissure
   { iname    = "fissure"
-  , ifreq    = [("biogas fissure", 100)]
+  , ifreq    = [(BIOGAS_FISSURE, 1)]
   , icount   = 3 + 1 `d` 3
   , idamage  = 2 `d` 1
-  , ieffects = [ toOrganBad "parsimonious" (5 + 1 `d` 3)
+  , ieffects = [ toOrganBad PARSIMONIOUS (5 + 1 `d` 3)
                -- weaken/poison, impacting intellectual abilities first
                , VerbNoLonger "become clogged with organic residue" ]
   , idesc    = ""
   }
 sulfurFissure = boilingFissure
   { iname    = "fissure"
-  , ifreq    = [("medbot fissure", 100)]
+  , ifreq    = [(MEDBOT_FISSUE, 1)]
   , icount   = 2 + 1 `d` 2
   , idamage  = 0  -- heal not via (negative) idamage, for armour would block it
   , iaspects = SetFlag Benign : iaspects boilingFissure
   , ieffects = [ RefillHP 5
-               , toOrganNoTimer "hungry"  -- the metabolic price to pay
+               , toOrganNoTimer HUNGRY  -- the metabolic price to pay
                , VerbNoLonger "run out of nano medbot liquid" ]
   , idesc    = ""
   }
 beeSting = fist
   { iname    = "bee sting"
-  , ifreq    = [("bee sting", 100)]
+  , ifreq    = [(BEE_STING, 1)]
   , icount   = 1
   , iverbHit = "sting"
   , idamage  = 0
@@ -211,51 +290,51 @@ beeSting = fist
   }
 sting = fist
   { iname    = "sting"
-  , ifreq    = [("sting", 100)]
+  , ifreq    = [(STING, 1)]
   , icount   = 1
   , iverbHit = "inject"
   , idamage  = 1 `d` 1
   , iaspects = [Timeout $ 10 - 1 `dL` 4, AddSkill SkHurtMelee 40]
                ++ iaspects fist
-  , ieffects = [toOrganBad "retaining" (3 + 1 `d` 3)]
+  , ieffects = [toOrganBad RETAINING (3 + 1 `d` 3)]
   , idesc    = "Painful, debilitating and harmful."
   }
 venomTooth = fist
   { iname    = "venom tooth"
-  , ifreq    = [("venom tooth", 100)]
+  , ifreq    = [(VENOM_TOOTH, 1)]
   , icount   = 2
   , iverbHit = "bite"
   , idamage  = 1 `d` 1
   , iaspects = Timeout (7 - 1 `dL` 3)
                : iaspects fist
-  , ieffects = [toOrganBad "slowed" (3 + 1 `d` 3)]
+  , ieffects = [toOrganBad SLOWED (3 + 1 `d` 3)]
   , idesc    = "A chilling numbness spreads from its bite."
   }
 venomFang = fist
   { iname    = "venom fang"
-  , ifreq    = [("venom fang", 100)]
+  , ifreq    = [(VENOM_FANG, 1)]
   , icount   = 2
   , iverbHit = "bite"
   , idamage  = 0
   , iaspects = Timeout (10 - 1 `dL` 5)
                : iaspects fist
-  , ieffects = [toOrganNoTimer "poisoned"]
+  , ieffects = [toOrganNoTimer POISONED]
   , idesc    = "Dripping with deadly venom."
   }
 screechingBeak = fist
   { iname    = "screeching beak"
-  , ifreq    = [("screeching beak", 100)]
+  , ifreq    = [(SCREECHING_BEAK, 1)]
   , icount   = 1
   , iverbHit = "peck"
   , idamage  = 3 `d` 1
   , iaspects = Timeout (7 - 1 `dL` 3)
                : iaspects fist
-  , ieffects = [Summon "scavenger" $ 1 `dL` 3]
+  , ieffects = [Summon SCAVENGER $ 1 `dL` 3]
   , idesc    = "Both a weapon and a beacon, calling more scavengers to the meal."
   }
 largeTail = fist
   { iname    = "large tail"
-  , ifreq    = [("large tail", 50)]
+  , ifreq    = [(LARGE_TAIL, 1)]
   , icount   = 1
   , iverbHit = "knock"
   , idamage  = 7 `d` 1
@@ -267,7 +346,7 @@ largeTail = fist
   }
 hugeTail = largeTail
   { iname    = "huge tail"
-  , ifreq    = [("huge tail", 50)]
+  , ifreq    = [(HUGE_TAIL, 1)]
   , iverbHit = "upend"
   , iaspects = [Timeout $ 3 + 1 `d` 2, AddSkill SkHurtMelee 20]
                ++ iaspects fist
@@ -283,7 +362,7 @@ hugeTail = largeTail
 armoredSkin = ItemKind
   { isymbol  = ','
   , iname    = "armored skin"
-  , ifreq    = [("armored skin", 100)]
+  , ifreq    = [(ARMORED_SKIN, 1)]
   , iflavour = zipPlain [Red]
   , icount   = 1
   , irarity  = [(1, 1)]
@@ -298,65 +377,65 @@ armoredSkin = ItemKind
   }
 bark = armoredSkin
   { iname    = "bark"
-  , ifreq    = [("bark", 100)]
+  , ifreq    = [(BARK, 1)]
   , idesc    = ""
   }
 
 -- * Sense organs
 
-eye :: Int -> ItemKind
-eye n = armoredSkin
+eye :: Int -> GroupName ItemKind -> ItemKind
+eye n grp = armoredSkin
   { iname    = "eye"
-  , ifreq    = [(toGroupName $ "eye" <+> tshow n, 100)]
+  , ifreq    = [(grp, 1)]
   , icount   = 2
   , iverbHit = "glare at"
   , iaspects = [ AddSkill SkSight (intToDice n)
                , SetFlag Durable ]
   , idesc    = "A piercing stare."
   }
-eye3 = eye 3
-eye6 = eye 6
-eye8 = eye 8
-vision :: Int -> ItemKind
-vision n = armoredSkin
+eye3 = eye 3 EYE_3
+eye6 = eye 6 EYE_6
+eye8 = eye 8 EYE_8
+vision :: Int -> GroupName ItemKind -> ItemKind
+vision n grp = armoredSkin
   { iname    = "vision"
-  , ifreq    = [(toGroupName $ "vision" <+> tshow n, 100)]
+  , ifreq    = [(grp, 1)]
   , iverbHit = "visualize"
   , iaspects = [ AddSkill SkSight (intToDice n)
                , SetFlag Durable ]
   , idesc    = ""
   }
-vision6 = vision 6
-vision12 = vision 12
-vision16 = vision 16
+vision6 = vision 6 VISION_6
+vision12 = vision 12 VISION_12
+vision16 = vision 16 VISION_16
 nostril = armoredSkin
   { iname    = "nostril"
-  , ifreq    = [("nostril", 100)]
+  , ifreq    = [(NOSTRIL, 1)]
   , icount   = 2
   , iverbHit = "snuff"
   , iaspects = [ AddSkill SkSmell 1  -- times 2, from icount
                , SetFlag Durable ]
   , idesc    = ""
   }
-ear   :: Int -> ItemKind
-ear n = armoredSkin
+ear :: Int -> GroupName ItemKind -> ItemKind
+ear n grp = armoredSkin
   { iname    = "ear"
-  , ifreq    = [(toGroupName $ "ear" <+> tshow n, 100)]
+  , ifreq    = [(grp, 1)]
   , icount   = 2
   , iverbHit = "overhear"
   , iaspects = [ AddSkill SkHearing (intToDice n)
                , SetFlag Durable ]
   , idesc    = ""
   }
-ear3 = ear 3
-ear6 = ear 6
-ear8 = ear 8
+ear3 = ear 3 EAR_3
+ear6 = ear 6 EAR_6
+ear8 = ear 8 EAR_8
 
 -- * Assorted
 
 rattleOrgan = armoredSkin
   { iname    = "rattle"
-  , ifreq    = [("rattle", 100)]
+  , ifreq    = [(RATLLE, 1)]
   , iverbHit = "announce"
   , iaspects = [ Timeout $ 10 + (1 `d` 3) * 10  -- long, to limit spam
                , SetFlag Periodic, SetFlag Durable ]
@@ -365,16 +444,16 @@ rattleOrgan = armoredSkin
   }
 animalStomach = armoredSkin
   { iname    = "animal stomach"
-  , ifreq    = [("animal stomach", 100)]
+  , ifreq    = [(ANIMAL_STOMACH, 1)]
   , iverbHit = "burp"
   , iaspects = [ Timeout $ 500 + (1 `d` 3) * 50  -- hunger very slowly
                , SetFlag Periodic, SetFlag Durable ]
-  , ieffects = [toOrganNoTimer "hungry"]
+  , ieffects = [toOrganNoTimer HUNGRY]
   , idesc    = ""
   }
 insectMortality = armoredSkin
   { iname    = "insect mortality"
-  , ifreq    = [("insect mortality", 100)]
+  , ifreq    = [(INSECT_MORTALITY, 1)]
   , iverbHit = "age"
   , iaspects = [ AddSkill SkAggression 2  -- try to attack before you die
                , Timeout $ 30 + (1 `d` 3) * 10  -- die very slowly
@@ -384,7 +463,7 @@ insectMortality = armoredSkin
   }
 sapientBrain = armoredSkin
   { iname    = "sapient brain"
-  , ifreq    = [("sapient brain", 100)]
+  , ifreq    = [(SAPIENT_BRAIN, 1)]
   , iverbHit = "outbrain"
   , iaspects = [AddSkill sk 1 | sk <- [SkMove .. SkApply]]
                ++ [AddSkill SkMove 4]  -- can move at once when waking up
@@ -396,7 +475,7 @@ sapientBrain = armoredSkin
   }
 animalBrain = armoredSkin
   { iname    = "animal brain"
-  , ifreq    = [("animal brain", 100)]
+  , ifreq    = [(ANIMAL_BRAIN, 1)]
   , iverbHit = "blank"
   , iaspects = [AddSkill sk 1 | sk <- [SkMove .. SkApply]]
                ++ [AddSkill SkMove 4]  -- can move at once when waking up
@@ -411,10 +490,10 @@ animalBrain = armoredSkin
                ++ [SetFlag Durable]
   , idesc    = ""
   }
-speedGland :: Int -> ItemKind
-speedGland n = armoredSkin
+speedGland :: Int -> GroupName ItemKind -> ItemKind
+speedGland n grp = armoredSkin
   { iname    = "speed gland"
-  , ifreq    = [(toGroupName $ "speed gland" <+> tshow n, 100)]
+  , ifreq    = [(grp, 1)]
   , iverbHit = "spit at"
   , iaspects = [ AddSkill SkSpeed $ intToDice n
                , Timeout $ intToDice (100 `div` n)
@@ -422,50 +501,50 @@ speedGland n = armoredSkin
   , ieffects = [RefillHP 1]
   , idesc    = ""
   }
-speedGland5 = speedGland 5
-speedGland10 = speedGland 10
+speedGland5 = speedGland 5 SPEED_GLAND_5
+speedGland10 = speedGland 10 SPEED_GLAND_10
 scentGland = armoredSkin
   { iname    = "scent gland"
-  , ifreq    = [("scent gland", 100)]
+  , ifreq    = [(SCENT_GLAND, 1)]
   , icount   = 10 + 1 `d` 3  -- runs out
   , iverbHit = "spray at"
   , iaspects = [ Timeout $ (1 `d` 3) * 10
                , SetFlag Periodic, SetFlag Fragile ]  -- not Durable
   , ieffects = [ VerbNoLonger "look spent"
                , ApplyPerfume
-               , Explode "distressing odor" ]
+               , Explode DISTRESSING_ODOR ]
                    -- keep explosion at the end to avoid the ambiguity of
                    -- "of ([foo explosion] of [bar])"
   , idesc    = ""
   }
 boilingVent = armoredSkin
   { iname    = "vent"
-  , ifreq    = [("boiling vent", 100)]
+  , ifreq    = [(BOILING_VENT, 1)]
   , iflavour = zipPlain [BrBlue]
   , iverbHit = "menace"
   , iaspects = [ Timeout $ (2 + 1 `d` 3) * 5
                , SetFlag Periodic, SetFlag Durable ]
-  , ieffects = [RefillHP 2, Explode "boiling water"]
+  , ieffects = [RefillHP 2, Explode BOILING_WATER]
   , idesc    = ""
   }
 arsenicVent = armoredSkin
   { iname    = "vent"
-  , ifreq    = [("biogas vent", 100)]
+  , ifreq    = [(BIOGAS_VENT, 1)]
   , iflavour = zipPlain [BrGreen]
   , iverbHit = "menace"
   , iaspects = [ Timeout $ (2 + 1 `d` 3) * 5
                , SetFlag Periodic, SetFlag Durable ]
-  , ieffects = [RefillHP 2, Explode "sparse shower"]
+  , ieffects = [RefillHP 2, Explode SPARSE_SHOWER]
   , idesc    = ""
   }
 sulfurVent = armoredSkin
   { iname    = "vent"
-  , ifreq    = [("medbot vent", 100)]
+  , ifreq    = [(MEDBOT_VENT, 1)]
   , iflavour = zipPlain [BrYellow]
   , iverbHit = "menace"
   , iaspects = [ Timeout $ (2 + 1 `d` 3) * 5
                , SetFlag Periodic, SetFlag Durable ]
-  , ieffects = [RefillHP 2, Explode "dense shower"]
+  , ieffects = [RefillHP 2, Explode DENSE_SHOWER]
   , idesc    = ""
   }
 
@@ -474,7 +553,7 @@ sulfurVent = armoredSkin
 bonusHP = armoredSkin
   { isymbol  = 'H'  -- '+' reserved for conditions
   , iname    = "bonus HP"
-  , ifreq    = [("bonus HP", 1)]
+  , ifreq    = [(BONUS_HP, 1)]
   , iflavour = zipPlain [BrBlue]
   , iverbHit = "intimidate"
   , iweight  = 0
@@ -484,7 +563,7 @@ bonusHP = armoredSkin
 braced = armoredSkin
   { isymbol  = 'B'
   , iname    = "braced"
-  , ifreq    = [("braced", 1)]
+  , ifreq    = [(BRACED, 1)]
   , iflavour = zipPlain [BrGreen]
   , iverbHit = "brace"
   , iweight  = 0
@@ -496,7 +575,7 @@ braced = armoredSkin
 asleep = armoredSkin
   { isymbol  = 'S'
   , iname    = "asleep"
-  , ifreq    = [("asleep", 1)]
+  , ifreq    = [(ASLEEP, 1)]
   , iflavour = zipPlain [BrGreen]  -- regenerates HP (very slowly)
   , icount   = 5
   , iverbHit = "slay"
@@ -507,28 +586,10 @@ asleep = armoredSkin
                   , SetFlag Condition ]  -- hack: display as condition
   , idesc    = "Sleep helps to regain health, albeit extremely slowly. Being asleep makes you vulnerable, with gradually diminishing effects as the slumber wears off over several turns. Any non-idle action, not only combat but even yawning or stretching removes a sizable portion of the sleepiness."
   }
-hungry = armoredSkin
-  { isymbol  = 'U'
-  , iname    = "hungry"
-  , ifreq    = [("hungry", 1)]
-  , iflavour = zipPlain [BrRed]
-  , icount   = 1
-  , iverbHit = "pang"
-  , iweight  = 0
-  , iaspects = [ AddSkill SkMaxHP (-1)
-               , SetFlag Fragile  -- to announce "no longer" only when
-                                  -- all copies gone
-               , SetFlag Condition ]  -- this is really a condition,
-                                      -- just not a timed condition
-  , ieffects = [ OnSmash $ verbMsgLess "hungry"
-               , OnSmash $ verbMsgNoLonger "hungry" ]
-                   -- not periodic, so no wear each turn, so only @OnSmash@
-  , idesc    = "Hunger limits physical fitness. In extreme cases, when compounded, it causes such fragility that the slightest stress becomes lethal."
-  }
 impressed = armoredSkin
   { isymbol  = 'I'
   , iname    = "impressed"
-  , ifreq    = [("impressed", 1), ("condition", 1)]
+  , ifreq    = [(IMPRESSED, 1), (CONDITION, 1)]
   , iflavour = zipPlain [BrRed]
   , iverbHit = "confuse"
   , iweight  = 0
@@ -546,9 +607,27 @@ impressed = armoredSkin
 
 -- * Allure-specific
 
+hungry = armoredSkin
+  { isymbol  = 'U'
+  , iname    = "hungry"
+  , ifreq    = [(HUNGRY, 1)]
+  , iflavour = zipPlain [BrRed]
+  , icount   = 1
+  , iverbHit = "pang"
+  , iweight  = 0
+  , iaspects = [ AddSkill SkMaxHP (-1)
+               , SetFlag Fragile  -- to announce "no longer" only when
+                                  -- all copies gone
+               , SetFlag Condition ]  -- this is really a condition,
+                                      -- just not a timed condition
+  , ieffects = [ OnSmash $ verbMsgLess "hungry"
+               , OnSmash $ verbMsgNoLonger "hungry" ]
+                   -- not periodic, so no wear each turn, so only @OnSmash@
+  , idesc    = "Hunger limits physical fitness. In extreme cases, when compounded, it causes such fragility that the slightest stress becomes lethal."
+  }
 smallBeak = fist
   { iname    = "small beak"
-  , ifreq    = [("small beak", 50)]
+  , ifreq    = [(SMALL_BEAK, 1)]
   , icount   = 1
   , iverbHit = "nom"
   , idamage  = 2 `d` 1
@@ -556,12 +635,12 @@ smallBeak = fist
   }
 razor = fist
   { iname    = "razor edge"
-  , ifreq    = [("razor", 100)]
+  , ifreq    = [(RAZOR, 1)]
   , icount   = 1 + 1 `d` 2
   , iverbHit = "slice"
   , idamage  = 2 `d` 1
   , iaspects = [SetFlag Meleeable]  -- not Durable
-  , ieffects = [ toOrganBad "weakened" (2 + 1 `dL` 3)
+  , ieffects = [ toOrganBad WEAKENED (2 + 1 `dL` 3)
                , VerbNoLonger "lose all sharpness" ]
                  -- we interpret charges as sharpness of the actor or his razor'
                  -- no pronoun in the message to avoid "you lose its sharpness"
@@ -569,20 +648,20 @@ razor = fist
   }
 liveWire = fist
   { iname    = "live wire"
-  , ifreq    = [("live wire", 100)]
+  , ifreq    = [(LIVE_WIRE, 1)]
   , icount   = 1
   , iverbHit = "shock"
   , idamage  = 0
   , iaspects = [ Timeout $ 3 + 1 `d` 2
                , AddSkill SkHurtMelee 20 ]
                ++ iaspects fist
-  , ieffects = [ toOrganBad "immobile" (3 + 1 `d` 3)
+  , ieffects = [ toOrganBad IMMOBILE (3 + 1 `d` 3)
                , RefillHP (-1) ]
   , idesc    = ""
   }
 robotBrain = armoredSkin
   { iname    = "robot brain"
-  , ifreq    = [("robot brain", 100)]
+  , ifreq    = [(ROBOT_BRAIN, 1)]
   , iverbHit = "outcompute"
   , iaspects = [AddSkill sk 1 | sk <- [SkMove .. SkApply]]
                ++ [AddSkill SkMove 4]  -- can move at once when waking up
@@ -595,26 +674,26 @@ robotBrain = armoredSkin
   }
 hullPlating = armoredSkin
   { iname    = "hull plating"
-  , ifreq    = [("hull plating", 100)]
+  , ifreq    = [(HULL_PLATING, 1)]
   , idesc    = ""
   }
 mouthVent = armoredSkin
   { iname    = "mouth vent"
-  , ifreq    = [("mouth vent", 100)]
+  , ifreq    = [(MOUTH_VENT, 1)]
   , iflavour = zipPlain [BrMagenta]
   , iverbHit = "surprise"
   , iaspects = [ Timeout 7
                , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [OneOf $ map Explode
-      ["pheromone", "cruise ad hologram", "immobile mist", "smoke", "spark"]]
+      [PHEROMONE, RHINO_HOLOGRAM, blastNoStatOf IMMOBILE, SMOKE, SPARK]]
   , idesc    = ""
   }
-geneticFlaw :: Int -> ItemKind  -- HP change varies due to body size
-geneticFlaw n = armoredSkin
+-- HP change varies due to body size
+geneticFlaw :: Int -> GroupName ItemKind -> ItemKind
+geneticFlaw n grp = armoredSkin
   { isymbol  = 'F'
   , iname    = "genetic flaw"
-  , ifreq    = [ ("genetic flaw", 1)
-               , (toGroupName $ "genetic flaw" <+> tshow n, 1) ]
+  , ifreq    = [(GENETIC_FLAW, 1), (grp, 1)]
   , iflavour = zipPlain [BrRed]
   , iverbHit = "flaw"
   , iweight  = 0
@@ -625,12 +704,12 @@ geneticFlaw n = armoredSkin
                    -- destroy on drop to run the @OnSmash@ effects
                ++ [AddSkill SkWait (-1) | n >= 10]
                ++ [AddSkill SkApply (-1) | n >= 10]
-  , ieffects = [ OnSmash $ DropItem maxBound maxBound COrgan "condition"
+  , ieffects = [ OnSmash $ DropItem maxBound maxBound COrgan CONDITION
                    -- key for AI is it eliminates all impression conditions
-               , OnSmash $ DropItem maxBound maxBound COrgan "hungry"
+               , OnSmash $ DropItem maxBound maxBound COrgan HUNGRY
                , OnSmash $ RefillHP n
                , OnSmash $ VerbNoLonger "undergo instant infracellular decontamination" ]  -- unlike the civilian version, this one is instant and the attunement is automatic and relatively quick (the usual double cooldown when equipping items again)
   , idesc    = "Nobody is perfect. At least without infracellular engineering, which is heavily regulated, insanely expensive and automatically reverted without refund before critical medical interventions. One more reason to be a good citizen, work hard and not die often. But where is the fun in that?"
   }
-geneticFlaw3 = geneticFlaw 3
-geneticFlaw10 = geneticFlaw 10
+geneticFlaw3 = geneticFlaw 3 GENETIC_FLAW_3
+geneticFlaw10 = geneticFlaw 10 GENETIC_FLAW_10

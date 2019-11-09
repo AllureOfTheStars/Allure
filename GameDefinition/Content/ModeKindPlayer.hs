@@ -18,15 +18,18 @@ import Prelude ()
 
 import Game.LambdaHack.Core.Prelude
 
-import Game.LambdaHack.Content.ModeKind
-import Game.LambdaHack.Definition.Ability
+import           Content.ItemKindActor
+import           Content.ItemKindOrgan
+import qualified Game.LambdaHack.Content.ItemKind as IK
+import           Game.LambdaHack.Content.ModeKind
+import           Game.LambdaHack.Definition.Ability
 
 playerHero, playerAntiHero, playerCivilian, playerMonster, playerAntiMonster, playerAnimal, playerHorror, playerMonsterTourist, playerHunamConvict, playerAnimalMagnificent, playerAnimalExquisite :: Player
 playerRobot :: Player
 
 playerHero = Player
   { fname = "Spacefarer"
-  , fgroups = ["hero"]
+  , fgroups = [HERO]
   , fskillsOther = meleeAdjacent
   , fcanEscape = True
   , fneverEmpty = True
@@ -44,7 +47,7 @@ playerAntiHero = playerHero
 
 playerCivilian = Player
   { fname = "Civilian"
-  , fgroups = ["hero", "civilian"]
+  , fgroups = [HERO, CIVILIAN]
   , fskillsOther = zeroSkills  -- not coordinated by any leadership
   , fcanEscape = False
   , fneverEmpty = True
@@ -57,7 +60,7 @@ playerCivilian = Player
 
 playerMonster = Player
   { fname = "Alien Hierarchy"
-  , fgroups = ["monster", "mobile monster", "aquatic monster"]
+  , fgroups = [MONSTER, MOBILE_MONSTER, AQUATIC_MONSTER]
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False
@@ -78,8 +81,8 @@ playerAntiMonster = playerMonster
 
 playerAnimal = Player
   { fname = "Animal Kingdom"
-  , fgroups = [ "animal", "mobile animal", "immobile animal", "aquatic animal"
-              , "scavenger" ]
+  , fgroups = [ ANIMAL, MOBILE_ANIMAL, IMMOBILE_ANIMAL, AQUATIC_ANIMAL
+              , SCAVENGER ]
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False
@@ -97,7 +100,7 @@ playerAnimal = Player
 -- should be present or a horror player should be added to host them.
 playerHorror = Player
   { fname = "Horror Den"
-  , fgroups = [horrorGroup]
+  , fgroups = [IK.HORROR]
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False
@@ -187,8 +190,8 @@ hiDweller = [ ( [(HiConst, 1000)]  -- no loot, so big win reward
 
 playerRobot = Player
   { fname = "Robot Anarchy"
-  , fgroups = [ "robot", "mobile robot", "immobile robot" --, "aquatic robot"
-              , "construction robot" ]
+  , fgroups = [ ROBOT, MOBILE_ROBOT, IMMOBILE_ROBOT  --, "aquatic robot"
+              , CONSTRUCTION_ROBOT ]
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False

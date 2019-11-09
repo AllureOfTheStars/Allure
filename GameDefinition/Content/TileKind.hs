@@ -6,7 +6,17 @@
 --
 -- | Terrain tile definitions.
 module Content.TileKind
-  ( content
+  ( -- * Group name patterns
+    -- ** Used in CaveKind and perhaps elsewhere.
+    pattern FILLER_WALL, pattern FLOOR_CORRIDOR_LIT, pattern FLOOR_CORRIDOR_DARK, pattern TRAIL_LIT, pattern SAFE_TRAIL_LIT, pattern LAB_TRAIL_LIT, pattern DAMP_FLOOR_LIT, pattern DAMP_FLOOR_DARK, pattern OUTDOOR_OUTER_FENCE, pattern DIRT_LIT, pattern DIRT_DARK, pattern FLOOR_ARENA_LIT, pattern FLOOR_ARENA_DARK
+  , pattern HABITAT_CONTAINMENT_WALL, pattern TRANSPORT_ROUTE, pattern ORIELS_FENCE, pattern AIRLOCK_FENCE, pattern EMPTY_AIRLOCK_FENCE, pattern OPENABLE_WALL
+  , pattern EMPTY_SET_LIT, pattern EMPTY_SET_DARK, pattern NOISE_SET_LIT, pattern POWER_SET_LIT, pattern POWER_SET_DARK, pattern BATTLE_SET_LIT, pattern BATTLE_SET_DARK, pattern BRAWL_SET_LIT, pattern SHOOTOUT_SET_LIT, pattern ZOO_SET_LIT, pattern ZOO_SET_DARK, pattern ESCAPE_SET_LIT, pattern ESCAPE_SET_DARK, pattern AMBUSH_SET_LIT, pattern AMBUSH_SET_DARK, pattern ARENA_SET_LIT, pattern ARENA_SET_DARK
+  , pattern ROGUE_SET, pattern MUSEUM_SET_LIT, pattern MUSEUM_SET_DARK, pattern HUNT_SET_LIT, pattern EXIT_SET_LIT
+  , -- ** Used in PlaceKind, but not in CaveKind.
+    pattern WALL_LIT, pattern STAIR_TERMINAL_LIT, pattern STAIR_TERMINAL_DARK, pattern LAMP_POST, pattern SIGNBOARD, pattern TREE_SHADE_WALKABLE_LIT, pattern TREE_SHADE_WALKABLE_DARK, pattern TREE_LIT, pattern TREE_DARK, pattern SMOKE_CLUMP_LIT, pattern SMOKE_CLUMP_DARK, pattern STAIRCASE_UP, pattern ORDINARY_STAIRCASE_UP, pattern STAIRCASE_OUTDOOR_UP, pattern GATED_STAIRCASE_UP, pattern STAIRCASE_DOWN, pattern ORDINARY_STAIRCASE_DOWN, pattern STAIRCASE_OUTDOOR_DOWN, pattern GATED_STAIRCASE_DOWN, pattern ESCAPE_UP, pattern ESCAPE_DOWN, pattern ESCAPE_OUTDOOR_DOWN, pattern PULPIT, pattern BUSH_LIT, pattern BUSH_CLUMP_LIT, pattern BUSH_CLUMP_DARK, pattern FOG_LIT, pattern FOG_CLUMP_LIT, pattern FOG_CLUMP_DARK, pattern SMOKE_LIT, pattern FLOOR_ACTOR_LIT, pattern FLOOR_ACTOR_DARK, pattern FLOOR_ASHES_LIT, pattern FLOOR_ASHES_DARK, pattern SHADED_GROUND
+  , pattern RECT_WINDOWS, pattern DOORLESS_MACHINERY, pattern POOL_LIT, pattern POOL_DARK, pattern PUMPS_LIT, pattern PUMPS_DARK, pattern DOORLESS_WALL, pattern OIL_RESIDUE_LIT, pattern OIL_RESIDUE_DARK, pattern LIFT_TERMINAL_LIT, pattern LIFT_TERMINAL_DARK, pattern STAIRCASE_LIFT_UP, pattern STAIRCASE_LIFT_DOWN, pattern GATED_LIFT_UP, pattern GATED_LIFT_DOWN, pattern DECONTAMINATING_STAIRCASE_UP, pattern DECONTAMINATING_STAIRCASE_DOWN, pattern DECONTAMINATING_LIFT_UP, pattern DECONTAMINATING_LIFT_DOWN, pattern WELDED_STAIRCASE_UP, pattern WELDED_LIFT_UP, pattern ESCAPE_SPACESHIP_DOWN, pattern ORDINARY_LIFT_UP, pattern ORDINARY_LIFT_DOWN, pattern OIL_SPILL, pattern FROZEN_PATH, pattern RUBBLE_OR_WASTE_LIT, pattern RUBBLE_OR_WASTE_DARK, pattern CACHE_DEPOSIT, pattern CACHE_JEWELRY, pattern CACHE_MAZE, pattern CACHE_SHUTTLE, pattern TRAPPED_DOOR, pattern FLOOR_ACTOR_ITEM, pattern LIFT_SHAFT, pattern TRAPPABLE_WALL, pattern REINFORCED_WALL, pattern OILY_FLOOR_LIT, pattern OILY_FLOOR_DARK, pattern SHUTTLE_HULL, pattern HARDWARE_RACK
+  , -- * Content
+    content
   ) where
 
 import Prelude ()
@@ -15,9 +25,195 @@ import Game.LambdaHack.Core.Prelude
 
 import qualified Data.Text as T
 
+import Content.ItemKind hiding (content)
+import Content.ItemKindActor
+import Content.ItemKindBlast
+import Content.ItemKindEmbed
+import Content.ItemKindOrgan
 import Game.LambdaHack.Content.TileKind
 import Game.LambdaHack.Definition.Color
 import Game.LambdaHack.Definition.Defs
+
+-- * Group name patterns
+
+-- | Warning, many of these are also sythesized, so typos can happen.
+pattern FILLER_WALL, FLOOR_CORRIDOR_LIT, FLOOR_CORRIDOR_DARK, TRAIL_LIT, SAFE_TRAIL_LIT, LAB_TRAIL_LIT, DAMP_FLOOR_LIT, DAMP_FLOOR_DARK, OUTDOOR_OUTER_FENCE, DIRT_LIT, DIRT_DARK, FLOOR_ARENA_LIT, FLOOR_ARENA_DARK :: GroupName TileKind
+
+pattern HABITAT_CONTAINMENT_WALL, TRANSPORT_ROUTE, ORIELS_FENCE, AIRLOCK_FENCE, EMPTY_AIRLOCK_FENCE, OPENABLE_WALL :: GroupName TileKind
+
+pattern EMPTY_SET_LIT, EMPTY_SET_DARK, NOISE_SET_LIT, POWER_SET_LIT, POWER_SET_DARK, BATTLE_SET_LIT, BATTLE_SET_DARK, BRAWL_SET_LIT, SHOOTOUT_SET_LIT, ZOO_SET_LIT, ZOO_SET_DARK, ESCAPE_SET_LIT, ESCAPE_SET_DARK, AMBUSH_SET_LIT, AMBUSH_SET_DARK, ARENA_SET_LIT, ARENA_SET_DARK :: GroupName TileKind
+
+pattern ROGUE_SET, MUSEUM_SET_LIT, MUSEUM_SET_DARK, HUNT_SET_LIT, EXIT_SET_LIT :: GroupName TileKind
+
+-- ** Used in PlaceKind, but not in CaveKind.
+pattern WALL_LIT, STAIR_TERMINAL_LIT, STAIR_TERMINAL_DARK, LAMP_POST, SIGNBOARD, TREE_SHADE_WALKABLE_LIT, TREE_SHADE_WALKABLE_DARK, TREE_LIT, TREE_DARK, SMOKE_CLUMP_LIT, SMOKE_CLUMP_DARK, STAIRCASE_UP, ORDINARY_STAIRCASE_UP, STAIRCASE_OUTDOOR_UP, GATED_STAIRCASE_UP, STAIRCASE_DOWN, ORDINARY_STAIRCASE_DOWN, STAIRCASE_OUTDOOR_DOWN, GATED_STAIRCASE_DOWN, ESCAPE_UP, ESCAPE_DOWN, ESCAPE_OUTDOOR_DOWN, PULPIT, BUSH_LIT, BUSH_CLUMP_LIT, BUSH_CLUMP_DARK, FOG_LIT, FOG_CLUMP_LIT, FOG_CLUMP_DARK, SMOKE_LIT, FLOOR_ACTOR_LIT, FLOOR_ACTOR_DARK, FLOOR_ASHES_LIT, FLOOR_ASHES_DARK, SHADED_GROUND :: GroupName TileKind
+
+pattern RECT_WINDOWS, DOORLESS_MACHINERY, POOL_LIT, POOL_DARK, PUMPS_LIT, PUMPS_DARK, DOORLESS_WALL, OIL_RESIDUE_LIT, OIL_RESIDUE_DARK :: GroupName TileKind
+
+pattern LIFT_TERMINAL_LIT, LIFT_TERMINAL_DARK, STAIRCASE_LIFT_UP, STAIRCASE_LIFT_DOWN, GATED_LIFT_UP, GATED_LIFT_DOWN, DECONTAMINATING_STAIRCASE_UP, DECONTAMINATING_STAIRCASE_DOWN, DECONTAMINATING_LIFT_UP, DECONTAMINATING_LIFT_DOWN, WELDED_STAIRCASE_UP, WELDED_LIFT_UP, ESCAPE_SPACESHIP_DOWN, ORDINARY_LIFT_UP, ORDINARY_LIFT_DOWN, OIL_SPILL, FROZEN_PATH, RUBBLE_OR_WASTE_LIT, RUBBLE_OR_WASTE_DARK, CACHE_DEPOSIT, CACHE_JEWELRY, CACHE_MAZE, CACHE_SHUTTLE, TRAPPED_DOOR, FLOOR_ACTOR_ITEM, LIFT_SHAFT, TRAPPABLE_WALL, REINFORCED_WALL, OILY_FLOOR_LIT, OILY_FLOOR_DARK, SHUTTLE_HULL, HARDWARE_RACK :: GroupName TileKind
+
+-- ** Used only internally in other TileKind definitions or never used.
+pattern TREE_WITH_FIRE, BUSH_WITH_FIRE, RUBBLE_PILE, SHALLOW_WATER_LIT, SIGNBOARD_UNREAD :: GroupName TileKind
+
+pattern OBSCURED_WALL, SUSPECT_WALL, OPEN_DOOR, CLOSED_DOOR, CACHABLE_DEPOSIT, CACHABLE_JEWELRY, CACHABLE_ABANDONED, BURNING_INSTALLATION, BURNING_TREE, BURNING_BUSH, BURNING_UNDERBRUSH, BURNING_OIL, RUBBLE_WITH_FIRE, UNDERBRUSH_LIT, UNDERBRUSH_DARK, OILY_FLOOR :: GroupName TileKind
+
+-- ** Used in CaveKind and perhaps elsewhere (or a dark/lit version thereof).
+pattern FILLER_WALL = GroupName "fillerWall"
+pattern FLOOR_CORRIDOR_LIT = GroupName "floorCorridorLit"
+pattern FLOOR_CORRIDOR_DARK = GroupName "floorCorridorDark"
+pattern TRAIL_LIT = GroupName "trailLit"
+pattern SAFE_TRAIL_LIT = GroupName "safeTrailLit"
+pattern LAB_TRAIL_LIT = GroupName "labTrailLit"
+pattern DAMP_FLOOR_LIT = GroupName "damp floor Lit"
+pattern DAMP_FLOOR_DARK = GroupName "damp floor Dark"
+pattern OUTDOOR_OUTER_FENCE = GroupName "outdoor outer fence"
+pattern DIRT_LIT = GroupName "dirt Lit"
+pattern DIRT_DARK = GroupName "dirt Dark"
+pattern FLOOR_ARENA_LIT = GroupName "floorArenaLit"
+pattern FLOOR_ARENA_DARK = GroupName "floorArenaDark"
+
+-- ** Allure-specific
+pattern HABITAT_CONTAINMENT_WALL = GroupName "habitat containment wall"
+pattern TRANSPORT_ROUTE = GroupName "transport route"
+pattern ORIELS_FENCE = GroupName "oriels fence"
+pattern AIRLOCK_FENCE = GroupName "airlock fence"
+pattern EMPTY_AIRLOCK_FENCE = GroupName "empty airlock fence"
+pattern OPENABLE_WALL = GroupName "openableWall"
+
+-- ** Used in CaveKind and perhaps elsewhere; sets of tiles for filling cave.
+pattern EMPTY_SET_LIT = GroupName "emptySetLit"
+pattern EMPTY_SET_DARK = GroupName "emptySetDark"
+pattern NOISE_SET_LIT = GroupName "noiseSetLit"
+pattern POWER_SET_LIT = GroupName "powerSetLit"
+pattern POWER_SET_DARK = GroupName "powerSetDark"
+pattern BATTLE_SET_LIT = GroupName "battleSetLit"
+pattern BATTLE_SET_DARK = GroupName "battleSetDark"
+pattern BRAWL_SET_LIT = GroupName "brawlSetLit"
+pattern SHOOTOUT_SET_LIT = GroupName "shootoutSetLit"
+pattern ZOO_SET_LIT = GroupName "zooSetLit"
+pattern ZOO_SET_DARK = GroupName "zooSetDark"
+pattern ESCAPE_SET_LIT = GroupName "escapeSetLit"
+pattern ESCAPE_SET_DARK = GroupName "escapeSetDark"
+pattern AMBUSH_SET_LIT = GroupName "ambushSetLit"
+pattern AMBUSH_SET_DARK = GroupName "ambushSetDark"
+pattern ARENA_SET_LIT = GroupName "arenaSetLit"
+pattern ARENA_SET_DARK = GroupName "arenaSetDark"
+
+-- ** Allure-specific
+pattern ROGUE_SET = GroupName "rogueSet"
+pattern MUSEUM_SET_LIT = GroupName "museumSetLit"
+pattern MUSEUM_SET_DARK = GroupName "museumSetDark"
+pattern HUNT_SET_LIT = GroupName "huntSetLit"
+pattern EXIT_SET_LIT = GroupName "exitSetLit"
+
+-- ** Used in PlaceKind, but not in CaveKind.
+pattern LAMP_POST = GroupName "lamp post"
+pattern TREE_SHADE_WALKABLE_LIT = GroupName "treeShadeWalkableLit"
+pattern TREE_SHADE_WALKABLE_DARK = GroupName "treeShadeWalkableDark"
+pattern TREE_LIT = GroupName "tree Lit"
+pattern TREE_DARK = GroupName "tree Dark"
+pattern SMOKE_CLUMP_LIT = GroupName "smokeClumpLit"
+pattern SMOKE_CLUMP_DARK = GroupName "smokeClumpDark"
+pattern BUSH_CLUMP_LIT = GroupName "bushClumpLit"
+pattern BUSH_CLUMP_DARK = GroupName "bushClumpDark"
+pattern FOG_CLUMP_LIT = GroupName "fogClumpLit"
+pattern FOG_CLUMP_DARK = GroupName "fogClumpDark"
+pattern WALL_LIT = GroupName "wall Lit"
+pattern STAIR_TERMINAL_LIT = GroupName "stair terminal Lit"
+pattern STAIR_TERMINAL_DARK = GroupName "stair terminal Dark"
+pattern SIGNBOARD = GroupName "signboard"
+pattern STAIRCASE_UP = GroupName "staircase up"
+pattern ORDINARY_STAIRCASE_UP = GroupName "ordinary staircase up"
+pattern STAIRCASE_OUTDOOR_UP = GroupName "staircase outdoor up"
+pattern GATED_STAIRCASE_UP = GroupName "gated staircase up"
+pattern STAIRCASE_DOWN = GroupName "staircase down"
+pattern ORDINARY_STAIRCASE_DOWN = GroupName "ordinary staircase down"
+pattern STAIRCASE_OUTDOOR_DOWN = GroupName "staircase outdoor down"
+pattern GATED_STAIRCASE_DOWN = GroupName "gated staircase down"
+pattern ESCAPE_UP = GroupName "escape up"
+pattern ESCAPE_DOWN = GroupName "escape down"
+pattern ESCAPE_OUTDOOR_DOWN = GroupName "escape outdoor down"
+pattern PULPIT = GroupName "pulpit"
+pattern BUSH_LIT = GroupName "bush Lit"
+pattern FOG_LIT = GroupName "fog Lit"
+pattern SMOKE_LIT = GroupName "smoke Lit"
+pattern FLOOR_ACTOR_LIT = GroupName "floor with actors Lit"
+pattern FLOOR_ACTOR_DARK = GroupName "floor with actors Dark"
+pattern FLOOR_ASHES_LIT = GroupName "floor with ashes Lit"
+pattern FLOOR_ASHES_DARK = GroupName "floor with ashes Dark"
+pattern SHADED_GROUND = GroupName "shaded ground"
+
+-- ** Allure-specific
+pattern RECT_WINDOWS = GroupName "rectWindows"
+pattern DOORLESS_MACHINERY = GroupName "doorlessMachinery"
+pattern POOL_LIT = GroupName "poolLit"
+pattern POOL_DARK = GroupName "poolDark"
+pattern PUMPS_LIT = GroupName "pumpsLit"
+pattern PUMPS_DARK = GroupName "pumpsDark"
+pattern DOORLESS_WALL = GroupName "doorlessWall"
+pattern OIL_RESIDUE_LIT = GroupName "oilResidueLit"
+pattern OIL_RESIDUE_DARK = GroupName "oilResidueDark"
+pattern LIFT_TERMINAL_LIT = GroupName "lift terminal Lit"
+pattern LIFT_TERMINAL_DARK = GroupName "lift terminal Dark"
+pattern STAIRCASE_LIFT_UP = GroupName "staircase lift up"
+pattern STAIRCASE_LIFT_DOWN = GroupName "staircase lift down"
+pattern GATED_LIFT_UP = GroupName "gated lift up"
+pattern GATED_LIFT_DOWN = GroupName "gated lift down"
+pattern DECONTAMINATING_STAIRCASE_UP =
+  GroupName "decontaminating staircase up"
+pattern DECONTAMINATING_STAIRCASE_DOWN =
+  GroupName "decontaminating staircase down"
+pattern DECONTAMINATING_LIFT_UP = GroupName "decontaminating lift up"
+pattern DECONTAMINATING_LIFT_DOWN = GroupName "decontaminating lift down"
+pattern WELDED_STAIRCASE_UP = GroupName "welded staircase up"
+pattern WELDED_LIFT_UP = GroupName "welded lift up"
+pattern ESCAPE_SPACESHIP_DOWN = GroupName "escape spaceship down"
+pattern ORDINARY_LIFT_UP = GroupName "ordinary lift up"
+pattern ORDINARY_LIFT_DOWN = GroupName "ordinary lift down"
+pattern OIL_SPILL = GroupName "oil spill"
+pattern FROZEN_PATH = GroupName "frozen path"
+pattern RUBBLE_OR_WASTE_LIT = GroupName "rubbleOrWaste_Lit"
+pattern RUBBLE_OR_WASTE_DARK = GroupName "rubbleOrWaste_Dark"
+pattern CACHE_DEPOSIT = GroupName "cache deposit"
+pattern CACHE_JEWELRY = GroupName "cache jewelry"
+pattern CACHE_MAZE = GroupName "cache maze"
+pattern CACHE_SHUTTLE = GroupName "cache shuttle"
+pattern TRAPPED_DOOR = GroupName "trapped door"
+pattern FLOOR_ACTOR_ITEM = GroupName "floorActorItem"
+pattern LIFT_SHAFT = GroupName "lift shaft"
+pattern TRAPPABLE_WALL = GroupName "trappableWall"
+pattern REINFORCED_WALL = GroupName "reinforced wall"
+pattern OILY_FLOOR_LIT = GroupName "oily floor Lit"
+pattern OILY_FLOOR_DARK = GroupName "oily floor Dark"
+pattern SHUTTLE_HULL = GroupName "shuttle hull"
+pattern HARDWARE_RACK = GroupName "hardware rack"
+
+-- ** Used only internally in other TileKind definitions or never used.
+pattern TREE_WITH_FIRE = GroupName "tree with fire"
+pattern BUSH_WITH_FIRE = GroupName "bush with fire"
+pattern RUBBLE_PILE = GroupName "rubble pile"
+pattern SHALLOW_WATER_LIT = GroupName "shallow water Lit"
+pattern SIGNBOARD_UNREAD = GroupName "signboard unread"
+
+-- ** Allure-specific
+pattern OBSCURED_WALL = GroupName "obscured wall"
+pattern SUSPECT_WALL = GroupName "suspect wall"
+pattern OPEN_DOOR = GroupName "open door"
+pattern CLOSED_DOOR = GroupName "closed door"
+pattern CACHABLE_DEPOSIT = GroupName "cachable deposit"
+pattern CACHABLE_JEWELRY = GroupName "cachable jewelry"
+pattern CACHABLE_ABANDONED = GroupName "cachable abandoned"
+pattern BURNING_INSTALLATION = GroupName "burning installation"
+pattern BURNING_TREE = GroupName "burning tree"
+pattern BURNING_BUSH = GroupName "burning bush"
+pattern BURNING_UNDERBRUSH = GroupName "burning underbrush"
+pattern BURNING_OIL = GroupName "burning oil"
+pattern RUBBLE_WITH_FIRE = GroupName "rubble with fire"
+pattern UNDERBRUSH_LIT = GroupName "underbrush Lit"
+pattern UNDERBRUSH_DARK = GroupName "underbrush Dark"
+pattern OILY_FLOOR = GroupName "oily floor"
+
+-- * Content
 
 content :: [TileKind]
 content =
@@ -60,7 +256,7 @@ ldarkColorable = [tree, bush, floorCorridor, floorArena, floorDamp, floorDirt, f
 unknown = TileKind  -- needs to have index 0 and alter 1; no other with 1
   { tsymbol  = ' '
   , tname    = "unknown space"
-  , tfreq    = [("unknown space", 1)]
+  , tfreq    = [(UNKNOWN_SPACE, 1)]
   , tcolor   = defFG
   , tcolor2  = defFG
   , talter   = 1
@@ -69,7 +265,7 @@ unknown = TileKind  -- needs to have index 0 and alter 1; no other with 1
 unknownOuterFence = TileKind
   { tsymbol  = ' '
   , tname    = "unknown space"
-  , tfreq    = [("unknown outer fence", 1)]
+  , tfreq    = [(UNKNOWN_OUTER_FENCE, 1)]
   , tcolor   = defFG
   , tcolor2  = defFG
   , talter   = maxBound  -- impenetrable
@@ -78,7 +274,7 @@ unknownOuterFence = TileKind
 basicOuterFence = TileKind
   { tsymbol  = '#'
   , tname    = "habitat containment wall"
-  , tfreq    = [("habitat containment wall", 1)]
+  , tfreq    = [(HABITAT_CONTAINMENT_WALL, 1)]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
   , talter   = maxBound  -- impenetrable
@@ -87,72 +283,72 @@ basicOuterFence = TileKind
 bedrock = TileKind
   { tsymbol  = '#'
   , tname    = "wall"
-  , tfreq    = [ ("fillerWall", 1), ("legendLit", 100), ("legendDark", 100)
-               , ("rogueSet", 60), ("museumSetDark", 4), ("noiseSetLit", 450)
-               , ("powerSetDark", 450), ("battleSetDark", 250)
-               , ("escapeSetDark", 4)
-               , ("stair terminal Lit", 100), ("stair terminal Dark", 100)
-               , ("doorlessWallOver_#", 80), ("doorlessMachineryOver_#", 1) ]
+  , tfreq    = [ (FILLER_WALL, 1), (LEGEND_LIT, 100), (LEGEND_DARK, 100)
+               , (ROGUE_SET, 60), (MUSEUM_SET_DARK, 4), (NOISE_SET_LIT, 450)
+               , (POWER_SET_DARK, 450), (BATTLE_SET_DARK, 250)
+               , (ESCAPE_SET_DARK, 4)
+               , (STAIR_TERMINAL_LIT, 100), (STAIR_TERMINAL_DARK, 100)
+               , (DOORLESS_WALL, 80), (DOORLESS_MACHINERY, 1) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 100
   , tfeature = []
   }
 wall = bedrock  -- fireproof
-  { tfreq    = [("trappableWall", 1), ("rectWindowsOver_%", 80)]
-  , tfeature = [BuildAs "suspect wall"]
+  { tfreq    = [(TRAPPABLE_WALL, 1), (RECT_WINDOWS, 80)]
+  , tfeature = [BuildAs SUSPECT_WALL]
   }
 wallSuspect = TileKind  -- only on client
   { tsymbol  = '#'
   , tname    = "suspect wall"
-  , tfreq    = [("suspect wall", 1)]
+  , tfreq    = [(SUSPECT_WALL, 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 2
-  , tfeature = [ RevealAs "trapped door"
-               , ObscureAs "obscured wall"
+  , tfeature = [ RevealAs TRAPPED_DOOR
+               , ObscureAs OBSCURED_WALL
                ]
   }
 wallObscured = TileKind
   { tsymbol  = '#'
   , tname    = "scratched wall"
-  , tfreq    = [("obscured wall", 50)]
+  , tfreq    = [(OBSCURED_WALL, 50)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 5
-  , tfeature = [ Embed "scratch on wall"
-               , HideAs "suspect wall"
+  , tfeature = [ Embed SCRATCH_ON_WALL
+               , HideAs SUSPECT_WALL
                ]
   }
 wallObscuredDefaced = TileKind
   { tsymbol  = '#'
   , tname    = "defaced wall"
-  , tfreq    = [ ("obscured wall", 25), ("escapeSetDark", 2)
-               , ("museumSetDark", 2) ]
+  , tfreq    = [ (OBSCURED_WALL, 25), (ESCAPE_SET_DARK, 2)
+               , (MUSEUM_SET_DARK, 2) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 5
-  , tfeature = [ Embed "obscene pictogram"
-               , HideAs "suspect wall"
+  , tfeature = [ Embed OBSCENE_PICTOGRAM
+               , HideAs SUSPECT_WALL
                ]
   }
 wallObscuredFrescoed = TileKind
   { tsymbol  = '#'
   , tname    = "subtle mural"
-  , tfreq    = [("obscured wall", 5), ("museumSetDark", 2)]
+  , tfreq    = [(OBSCURED_WALL, 5), (MUSEUM_SET_DARK, 2)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 5
-  , tfeature = [ Embed "subtle fresco"
-               , HideAs "suspect wall"
+  , tfeature = [ Embed SUBTLE_FRESCO
+               , HideAs SUSPECT_WALL
                ]  -- a bit beneficial, but AI would loop if allowed to trigger
                   -- so no @ConsideredByAI@
   }
 pillar = TileKind
   { tsymbol  = '0'
   , tname    = "construction beam"
-  , tfreq    = [ ("legendLit", 100), ("legendDark", 100)
-               , ("museumSetDark", 20), ("emptySetLit", 20) ]
+  , tfreq    = [ (LEGEND_LIT, 100), (LEGEND_DARK, 100)
+               , (MUSEUM_SET_DARK, 20), (EMPTY_SET_LIT, 20) ]
   , tcolor   = BrCyan  -- not BrWhite, to tell from heroes
   , tcolor2  = Cyan
   , talter   = 100
@@ -161,20 +357,20 @@ pillar = TileKind
 pillarCache = TileKind
   { tsymbol  = '#'
   , tname    = "abandoned stash"
-  , tfreq    = [ ("cachable abandoned", 20)
-               , ("cache maze", 33), ("cache shuttle", 25) ]
+  , tfreq    = [ (CACHABLE_ABANDONED, 20)
+               , (CACHE_MAZE, 33), (CACHE_SHUTTLE, 25) ]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 5
-  , tfeature = [ Embed "abandoned cache"
-               , ChangeTo "cachable abandoned", ConsideredByAI ]
+  , tfeature = [ Embed ABANDONED_CACHE
+               , ChangeTo CACHABLE_ABANDONED, ConsideredByAI ]
       -- Not explorable, but prominently placed, so hard to miss.
       -- Very beneficial, so AI eager to trigger, unless wary of traps.
   }
 lampPost = TileKind
   { tsymbol  = '0'
   , tname    = "lamp post"
-  , tfreq    = [("lampPostOver_0", 1)]
+  , tfreq    = [(LAMP_POST, 1)]
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 100
@@ -189,53 +385,53 @@ lampPost = TileKind
 signboardUnread = TileKind  -- client only, indicates never used by this faction
   { tsymbol  = '0'
   , tname    = "signboard"
-  , tfreq    = [("signboard unread", 1)]
+  , tfreq    = [(SIGNBOARD_UNREAD, 1)]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 5
   , tfeature = [ ConsideredByAI  -- changes after use, so safe for AI
-               , RevealAs "signboard"  -- to display as hidden
+               , RevealAs SIGNBOARD  -- to display as hidden
                ]
   }
 signboardRead = TileKind
   { tsymbol  = '0'
   , tname    = "signboard"
-  , tfreq    = [ ("signboard", 1), ("emptySetLit", 1)
-               , ("arenaSetLit", 1), ("arenaSetDark", 1), ("museumSetDark", 1)
-               , ("escapeSetDark", 1) ]
+  , tfreq    = [ (SIGNBOARD, 1), (EMPTY_SET_LIT, 1)
+               , (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 1), (MUSEUM_SET_DARK, 1)
+               , (ESCAPE_SET_DARK, 1) ]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 5
-  , tfeature = [ ChangeWith ["fire source"] "burning installation"
-               , Embed "signboard", HideAs "signboard unread" ]
+  , tfeature = [ ChangeWith [FIRE_SOURCE] BURNING_INSTALLATION
+               , Embed SIGNAGE, HideAs SIGNBOARD_UNREAD ]
   }
 tree = TileKind
   { tsymbol  = '0'
   , tname    = "tree"
-  , tfreq    = [ ("emptySetLit", 1), ("brawlSetLit", 140)
-               , ("shootoutSetLit", 10), ("huntSetLit", 10)
-               , ("escapeSetLit", 35), ("zooSetDark", 20)
-               , ("treeShadeOver_0_Lit", 1) ]
+  , tfreq    = [ (EMPTY_SET_LIT, 1), (BRAWL_SET_LIT, 140)
+               , (SHOOTOUT_SET_LIT, 10), (HUNT_SET_LIT, 10)
+               , (ESCAPE_SET_LIT, 35), (ZOO_SET_DARK, 20)
+               , (TREE_LIT, 1) ]
   , tcolor   = BrGreen
   , tcolor2  = Green
   , talter   = 4
-  , tfeature = [ChangeWith ["fire source"] "burning tree"]
+  , tfeature = [ChangeWith [FIRE_SOURCE] BURNING_TREE]
   }
 treeBurnt = tree
   { tname    = "burnt tree"
-  , tfreq    = [("zooSetDark", 10), ("tree with fire", 30)]
+  , tfreq    = [(ZOO_SET_DARK, 10), (TREE_WITH_FIRE, 30)]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
   , tfeature = [Dark]  -- even burned, too hard to topple
   }
-treeBurning = tree  -- present in "emptySetLit" as early light/fire source
+treeBurning = tree  -- present in EMPTY_SET_LIT as early light/fire source
   { tname    = "burning tree"
-  , tfreq    = [ ("emptySetLit", 1), ("zooSetDark", 60)
-               , ("tree with fire", 70), ("burning tree", 1) ]
+  , tfreq    = [ (EMPTY_SET_LIT, 1), (ZOO_SET_DARK, 60)
+               , (TREE_WITH_FIRE, 70), (BURNING_TREE, 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 5
-  , tfeature = [Embed "big fire", ChangeTo "tree with fire"]
+  , tfeature = [Embed BIG_FIRE, ChangeTo TREE_WITH_FIRE]
       -- too tall to douse with a fireproof cloth or water; have to break off
       -- and isolate smaller branches and let it smolder out
       -- TODO: breaking the burning tree has more use when it periodically
@@ -244,17 +440,17 @@ treeBurning = tree  -- present in "emptySetLit" as early light/fire source
 rubble = TileKind
   { tsymbol  = '&'
   , tname    = "rubble pile"
-  , tfreq    = [ ("rubble", 1), ("rubble with fire", 50)
-               , ("legendLit", 1), ("legendDark", 1)
-               , ("stair terminal Lit", 6), ("stair terminal Dark", 6)
-               , ("lift terminal Lit", 6), ("lift terminal Dark", 6)
-               , ("emptySetLit", 3), ("exitSetLit", 8)
-               , ("noiseSetLit", 50), ("powerSetDark", 150)
-               , ("zooSetDark", 100), ("ambushSetDark", 3) ]
+  , tfreq    = [ (RUBBLE_PILE, 1), (RUBBLE_WITH_FIRE, 50)
+               , (LEGEND_LIT, 1), (LEGEND_DARK, 1)
+               , (STAIR_TERMINAL_LIT, 6), (STAIR_TERMINAL_DARK, 6)
+               , (LIFT_TERMINAL_LIT, 6), (LIFT_TERMINAL_DARK, 6)
+               , (EMPTY_SET_LIT, 3), (EXIT_SET_LIT, 8)
+               , (NOISE_SET_LIT, 50), (POWER_SET_DARK, 150)
+               , (ZOO_SET_DARK, 100), (AMBUSH_SET_DARK, 3) ]
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 4  -- boss can dig through
-  , tfeature = [OpenTo "floorAshesLit", Embed "rubble"]
+  , tfeature = [OpenTo FLOOR_ASHES_LIT, Embed RUBBLE]
       -- It's not explorable, due to not being walkable nor clear and due
       -- to being a door (@OpenTo@), which is kind of OK, because getting
       -- the item is risky and, e.g., AI doesn't attempt it.
@@ -263,112 +459,112 @@ rubble = TileKind
       -- becomes rubble. That's different than with trees and bushes.
   }
 rubbleSpice = rubble
-  { tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("smokeClumpOver_f_Dark", 1)
-               , ("rubbleOrWaste_Lit", 1), ("rubbleOrWaste_Dark", 1)
-               , ("cache deposit", 33), ("cachable deposit", 80) ]
+  { tfreq    = [ (SMOKE_CLUMP_LIT, 1), (SMOKE_CLUMP_DARK, 1)
+               , (RUBBLE_OR_WASTE_LIT, 1), (RUBBLE_OR_WASTE_DARK, 1)
+               , (CACHE_DEPOSIT, 33), (CACHABLE_DEPOSIT, 80) ]
   , tfeature = Spice : tfeature rubble
   }
 doorTrapped = TileKind
   { tsymbol  = '+'
   , tname    = "trapped door"
-  , tfreq    = [("trapped door", 1)]
+  , tfreq    = [(TRAPPED_DOOR, 1)]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 2
-  , tfeature = [ Embed "doorway trap"
-               , OpenTo "open door"
-               , HideAs "suspect wall"
+  , tfeature = [ Embed DOORWAY_TRAP
+               , OpenTo OPEN_DOOR
+               , HideAs SUSPECT_WALL
                ]
   }
 doorClosed = TileKind  -- fireproof
   { tsymbol  = '+'
   , tname    = "closed door"
-  , tfreq    = [("legendLit", 100), ("legendDark", 100), ("closed door", 1)]
+  , tfreq    = [(LEGEND_LIT, 100), (LEGEND_DARK, 100), (CLOSED_DOOR, 1)]
   , tcolor   = Brown
   , tcolor2  = BrBlack
   , talter   = 2
-  , tfeature = [OpenTo "open door"]  -- never hidden
+  , tfeature = [OpenTo OPEN_DOOR]  -- never hidden
   }
 stairsUp = TileKind  -- fireproof
   { tsymbol  = '<'
   , tname    = "staircase up"
-  , tfreq    = [("staircase up", 9), ("ordinary staircase up", 1)]
+  , tfreq    = [(STAIRCASE_UP, 9), (ORDINARY_STAIRCASE_UP, 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 0  -- very easy stairs, unlike all others
-  , tfeature = [Embed "staircase up", ConsideredByAI]
+  , tfeature = [Embed STAIRS_UP, ConsideredByAI]
   }
 stairsTrappedUp = TileKind
   { tsymbol  = '<'
   , tname    = "windy staircase up"
-  , tfreq    = [("staircase up", 1)]
+  , tfreq    = [(STAIRCASE_UP, 1)]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = talterForStairs
-  , tfeature = [ Embed "staircase up", Embed "staircase trap up"
-               , ConsideredByAI, ChangeTo "ordinary staircase up" ]
+  , tfeature = [ Embed STAIRS_UP, Embed STAIRS_TRAP_UP
+               , ConsideredByAI, ChangeTo ORDINARY_STAIRCASE_UP ]
                  -- AI uses despite the trap; exploration more important
   }
 stairsOutdoorUp = stairsUp
   { tname    = "signpost pointing backward"
-  , tfreq    = [("staircase outdoor up", 1)]
+  , tfreq    = [(STAIRCASE_OUTDOOR_UP, 1)]
   , talter   = talterForStairs
   }
 stairsGatedUp = stairsUp
   { tname    = "gated staircase up"
-  , tfreq    = [("gated staircase up", 1)]
+  , tfreq    = [(GATED_STAIRCASE_UP, 1)]
   , talter   = talterForStairs + 2  -- animals and bosses can't use
   }
 stairsDown = TileKind
   { tsymbol  = '>'
   , tname    = "staircase down"
-  , tfreq    = [("staircase down", 9), ("ordinary staircase down", 1)]
+  , tfreq    = [(STAIRCASE_DOWN, 9), (ORDINARY_STAIRCASE_DOWN, 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 0  -- very easy stairs, unlike all others
-  , tfeature = [Embed "staircase down", ConsideredByAI]
+  , tfeature = [Embed STAIRS_DOWN, ConsideredByAI]
   }
 stairsTrappedDown = TileKind
   { tsymbol  = '>'
   , tname    = "crooked staircase down"
-  , tfreq    = [("staircase down", 1)]
+  , tfreq    = [(STAIRCASE_DOWN, 1)]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = talterForStairs
-  , tfeature = [ Embed "staircase down", Embed "staircase trap down"
-               , ConsideredByAI, ChangeTo "ordinary staircase down" ]
+  , tfeature = [ Embed STAIRS_DOWN, Embed STAIRS_TRAP_DOWN
+               , ConsideredByAI, ChangeTo ORDINARY_STAIRCASE_DOWN ]
   }
 stairsOutdoorDown = stairsDown
   { tname    = "signpost pointing forward"
-  , tfreq    = [("staircase outdoor down", 1)]
+  , tfreq    = [(STAIRCASE_OUTDOOR_DOWN, 1)]
   , talter   = talterForStairs
   }
 stairsGatedDown = stairsDown
   { tname    = "gated staircase down"
-  , tfreq    = [("gated staircase down", 1)]
+  , tfreq    = [(GATED_STAIRCASE_DOWN, 1)]
   , talter   = talterForStairs + 2  -- animals and bosses can't use
   }
 escapeUp = TileKind
   { tsymbol  = '<'
   , tname    = "exit hatch up"
-  , tfreq    = [("legendLit", 1), ("legendDark", 1), ("escape up", 1)]
+  , tfreq    = [(LEGEND_LIT, 1), (LEGEND_DARK, 1), (ESCAPE_UP, 1)]
   , tcolor   = BrYellow
   , tcolor2  = BrYellow
   , talter   = 0  -- anybody can escape (or guard escape)
-  , tfeature = [Embed "escape", ConsideredByAI]
+  , tfeature = [Embed ESCAPE, ConsideredByAI]
   }
 escapeDown = TileKind
   { tsymbol  = '>'
   , tname    = "exit trapdoor down"
-  , tfreq    = [("legendLit", 1), ("legendDark", 1), ("escape down", 1)]
+  , tfreq    = [(LEGEND_LIT, 1), (LEGEND_DARK, 1), (ESCAPE_DOWN, 1)]
   , tcolor   = BrYellow
   , tcolor2  = BrYellow
   , talter   = 0  -- anybody can escape (or guard escape)
-  , tfeature = [Embed "escape", ConsideredByAI]
+  , tfeature = [Embed ESCAPE, ConsideredByAI]
   }
 escapeOutdoorDown = escapeDown
   { tname    = "exit back to town"
-  , tfreq    = [("escape outdoor down", 1)]
+  , tfreq    = [(ESCAPE_OUTDOOR_DOWN, 1)]
   }
 
 -- *** Clear
@@ -376,27 +572,27 @@ escapeOutdoorDown = escapeDown
 wallGlass = TileKind
   { tsymbol  = '%'
   , tname    = "transparent polymer wall"
-  , tfreq    = [("legendLit", 1), ("legendDark", 1), ("museumSetDark", 8)]
+  , tfreq    = [(LEGEND_LIT, 1), (LEGEND_DARK, 1), (MUSEUM_SET_DARK, 8)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 10
-  , tfeature = [BuildAs "closed door", Clear]
+  , tfeature = [BuildAs CLOSED_DOOR, Clear]
   }
 wallGlassSpice = wallGlass
-  { tfreq    = [ ("rectWindowsOver_%", 20)
-               , ("cache jewelry", 66), ("cachable jewelry", 80) ]
+  { tfreq    = [ (RECT_WINDOWS, 20)
+               , (CACHE_JEWELRY, 66), (CACHABLE_JEWELRY, 80) ]
   , tfeature = Spice : tfeature wallGlass
   }
 pillarIce = TileKind
   { tsymbol  = '^'
   , tname    = "ice buildup"
-  , tfreq    = [ ("legendLit", 1), ("legendDark", 1), ("noiseSetLit", 300)
-               , ("brawlSetLit", 20), ("lift terminal Dark", 4) ]
+  , tfreq    = [ (LEGEND_LIT, 1), (LEGEND_DARK, 1), (NOISE_SET_LIT, 300)
+               , (BRAWL_SET_LIT, 20), (LIFT_TERMINAL_DARK, 4) ]
                  -- ice only in dark staircases
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 4  -- boss can dig through
-  , tfeature = [Clear, Embed "frozen mass", OpenTo "shallow water Lit"]
+  , tfeature = [Clear, Embed FROST, OpenTo SHALLOW_WATER_LIT]
       -- Is door, due to @OpenTo@, so is not explorable, but it's OK, because
       -- it doesn't generate items nor clues. This saves on the need to
       -- get each ice pillar into sight range when exploring level.
@@ -404,35 +600,35 @@ pillarIce = TileKind
 pulpit = TileKind
   { tsymbol  = '%'
   , tname    = "VR booth"
-  , tfreq    = [("pulpit", 1)]
+  , tfreq    = [(PULPIT, 1)]
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 5
-  , tfeature = [ ChangeWith ["fire source"] "burning installation"
-               , Clear, Embed "pulpit" ]
+  , tfeature = [ ChangeWith [FIRE_SOURCE] BURNING_INSTALLATION
+               , Clear, Embed LECTERN ]
                    -- mixed blessing, so AI ignores, saved for player fun
   }
 bush = TileKind
   { tsymbol  = '%'
   , tname    = "bush"
-  , tfreq    = [ ("bush Lit", 1), ("emptySetLit", 1), ("arenaSetLit", 10)
-               , ("shootoutSetLit", 30), ("huntSetLit", 30)
-               , ("escapeSetLit", 40), ("zooSetDark", 100)
-               , ("bushClumpOver_f_Lit", 1), ("pumpsOver_f_Lit", 1)
-               , ("lift terminal Lit", 4) ]
+  , tfreq    = [ (BUSH_LIT, 1), (EMPTY_SET_LIT, 1), (ARENA_SET_LIT, 10)
+               , (SHOOTOUT_SET_LIT, 30), (HUNT_SET_LIT, 30)
+               , (ESCAPE_SET_LIT, 40), (ZOO_SET_DARK, 100)
+               , (BUSH_CLUMP_LIT, 1), (PUMPS_LIT, 1)
+               , (LIFT_TERMINAL_LIT, 4) ]
   , tcolor   = BrGreen
   , tcolor2  = Green
   , talter   = 4
-  , tfeature = [ChangeWith ["fire source"] "burning bush", Clear]
+  , tfeature = [ChangeWith [FIRE_SOURCE] BURNING_BUSH, Clear]
                  -- too tough to topple, has to be burned first
   }
 bushBurnt = bush
   { tname    = "burnt bush"
-  , tfreq    = [ ("battleSetDark", 30), ("ambushSetDark", 3), ("zooSetDark", 50)
-               , ("bush with fire", 25), ("bush burnt", 1) ]
+  , tfreq    = [ (BATTLE_SET_DARK, 30), (AMBUSH_SET_DARK, 3), (ZOO_SET_DARK, 50)
+               , (BUSH_WITH_FIRE, 25) ]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
-  , tfeature = [Dark, Clear, OpenTo "dirt Dark"]
+  , tfeature = [Dark, Clear, OpenTo DIRT_DARK]
                  -- when burnt, can be destroyed at least, clearning way;
                  -- ensures ~confluence when pathfinding, that is, prevents
                  -- OpenTo in bushBurning from determining a path that ends up
@@ -440,16 +636,16 @@ bushBurnt = bush
   }
 bushBurning = bush
   { tname    = "burning bush"
-  , tfreq    = [ ("emptySetLit", 1), ("ambushSetDark", 10), ("zooSetDark", 300)
-               , ("bush with fire", 50), ("burning bush", 1) ]
+  , tfreq    = [ (EMPTY_SET_LIT, 1), (AMBUSH_SET_DARK, 10), (ZOO_SET_DARK, 300)
+               , (BUSH_WITH_FIRE, 50), (BURNING_BUSH, 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 5
-  , tfeature = [ Clear, Embed "small fire"
-               , OpenTo "bush with fire"
-               , ChangeWith ["fireproof cloth"] "bush Lit"  -- saved for repeat
-               , OpenWith ["water source", "water source", "water source"]
-                          "smoke Lit"
+  , tfeature = [ Clear, Embed SMALL_FIRE
+               , OpenTo BUSH_WITH_FIRE
+               , ChangeWith [FIREPROOF_CLOTH] BUSH_LIT  -- saved for repeat
+               , OpenWith [WATER_SOURCE, WATER_SOURCE, WATER_SOURCE]
+                          SMOKE_LIT
                ]
   }
 
@@ -460,10 +656,10 @@ bushBurning = bush
 fog = TileKind
   { tsymbol  = ';'
   , tname    = "faint fog"
-  , tfreq    = [ ("fog Lit", 1), ("emptySetLit", 50), ("noiseSetLit", 120)
-               , ("shootoutSetLit", 30), ("huntSetLit", 30)
-               , ("fogClumpOver_f_Lit", 60), ("fogClumpOver_f_Dark", 60)
-               , ("lift terminal Lit", 40) ]
+  , tfreq    = [ (FOG_LIT, 1), (EMPTY_SET_LIT, 50), (NOISE_SET_LIT, 120)
+               , (SHOOTOUT_SET_LIT, 30), (HUNT_SET_LIT, 30)
+               , (FOG_CLUMP_LIT, 60), (FOG_CLUMP_DARK, 60)
+               , (LIFT_TERMINAL_LIT, 40) ]
       -- lit fog is OK for shootout, because LOS is mutual, as opposed
       -- to dark fog, and so camper has little advantage, especially
       -- on big maps, where he doesn't know on which side of fog patch to hide
@@ -474,16 +670,16 @@ fog = TileKind
   }
 fogDark = fog
   { tname    = "thick fog"
-  , tfreq    = [("escapeSetDark", 50), ("lift terminal Dark", 40)]
+  , tfreq    = [(ESCAPE_SET_DARK, 50), (LIFT_TERMINAL_DARK, 40)]
   , tfeature = Dark : tfeature fog
   }
 smoke = TileKind
   { tsymbol  = ';'
   , tname    = "billowing smoke"
-  , tfreq    = [ ("smoke Lit", 1), ("labTrailLit", 1)
-               , ("stair terminal Lit", 2), ("lift terminal Lit", 6)
-               , ("smokeClumpOver_f_Lit", 3), ("smokeClumpOver_f_Dark", 3)
-               , ("exitSetLit", 20), ("ambushSetDark", 20) ]
+  , tfreq    = [ (SMOKE_LIT, 1), (LAB_TRAIL_LIT, 1)
+               , (STAIR_TERMINAL_LIT, 2), (LIFT_TERMINAL_LIT, 6)
+               , (SMOKE_CLUMP_LIT, 3), (SMOKE_CLUMP_DARK, 3)
+               , (EXIT_SET_LIT, 20), (AMBUSH_SET_DARK, 20) ]
   , tcolor   = Brown
   , tcolor2  = BrBlack
   , talter   = 0
@@ -491,9 +687,9 @@ smoke = TileKind
   }
 smokeDark = smoke
   { tname    = "lingering smoke"
-  , tfreq    = [ ("powerSetDark", 100)
-               , ("zooSetDark", 20), ("ambushSetDark", 40), ("battleSetDark", 5)
-               , ("stair terminal Dark", 2), ("lift terminal Dark", 6) ]
+  , tfreq    = [ (POWER_SET_DARK, 100)
+               , (ZOO_SET_DARK, 20), (AMBUSH_SET_DARK, 40), (BATTLE_SET_DARK, 5)
+               , (STAIR_TERMINAL_DARK, 2), (LIFT_TERMINAL_DARK, 6) ]
   , tfeature = Dark : tfeature smoke
   }
 
@@ -502,57 +698,57 @@ smokeDark = smoke
 doorOpen = TileKind  -- fireproof
   { tsymbol  = '\''
   , tname    = "open door"
-  , tfreq    = [("legendLit", 100), ("legendDark", 100), ("open door", 1)]
+  , tfreq    = [(LEGEND_LIT, 100), (LEGEND_DARK, 100), (OPEN_DOOR, 1)]
   , tcolor   = Brown
   , tcolor2  = BrBlack
   , talter   = 4
   , tfeature = [ Walkable, Clear, NoItem, NoActor
-               , CloseTo "closed door"
+               , CloseTo CLOSED_DOOR
                ]
   }
 floorCorridor = TileKind
   { tsymbol  = floorSymbol
   , tname    = "floor"
-  , tfreq    = [("floorCorridorLit", 1)]
+  , tfreq    = [(FLOOR_CORRIDOR_LIT, 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 0
   , tfeature = [Walkable, Clear]
   }
 floorArena = floorCorridor
-  { tfreq    = [ ("floorArenaLit", 1), ("arenaSetLit", 200)
-               , ("museumSetLit", 400), ("zooSetLit", 600) ]
+  { tfreq    = [ (FLOOR_ARENA_LIT, 1), (ARENA_SET_LIT, 200)
+               , (MUSEUM_SET_LIT, 400), (ZOO_SET_LIT, 600) ]
   }
 floorDamp = floorArena
   { tname    = "damp floor"
-  , tfreq    = [ ("noiseSetLit", 600), ("emptySetLit", 900)
-               , ("damp floor Lit", 1)
-               , ("stair terminal Lit", 20), ("lift terminal Lit", 6) ]
+  , tfreq    = [ (NOISE_SET_LIT, 600), (EMPTY_SET_LIT, 900)
+               , (DAMP_FLOOR_LIT, 1)
+               , (STAIR_TERMINAL_LIT, 20), (LIFT_TERMINAL_LIT, 6) ]
   }
 floorDirt = floorArena
   { tname    = "dirt"
-  , tfreq    = [ ("brawlSetLit", 1000), ("shootoutSetLit", 1000)
-               , ("huntSetLit", 1000), ("escapeSetLit", 1000)
-               , ("ambushSetLit", 1000), ("battleSetLit", 1000)
-               , ("dirt Lit", 1) ]
+  , tfreq    = [ (BRAWL_SET_LIT, 1000), (SHOOTOUT_SET_LIT, 1000)
+               , (HUNT_SET_LIT, 1000), (ESCAPE_SET_LIT, 1000)
+               , (AMBUSH_SET_LIT, 1000), (BATTLE_SET_LIT, 1000)
+               , (DIRT_LIT, 1) ]
   }
 floorDirtSpice = floorDirt
-  { tfreq    = [ ("treeShadeOver_s_Lit", 1), ("bushClumpOver_f_Lit", 1)
-               , ("pumpsOver_f_Lit", 3) ]
+  { tfreq    = [ (TREE_SHADE_WALKABLE_LIT, 1), (BUSH_CLUMP_LIT, 1)
+               , (PUMPS_LIT, 3) ]
   , tfeature = Spice : tfeature floorDirt
   }
 floorActor = floorArena
-  { tfreq    = [("floorActorLit", 1)]
+  { tfreq    = [(FLOOR_ACTOR_LIT, 1)]
   , tfeature = OftenActor : tfeature floorArena
   }
 floorActorItem = floorActor
-  { tfreq    = [("floorActorItem", 1), ("legendLit", 100)]
+  { tfreq    = [(FLOOR_ACTOR_ITEM, 1), (LEGEND_LIT, 100)]
   , tfeature = VeryOftenItem : tfeature floorActor
   }
 floorAshes = floorActor
-  { tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("smokeClumpOver_f_Dark", 1)
-               , ("floorAshesLit", 1), ("floorAshesDark", 1)
-               , ("rubble with fire", 25) ]
+  { tfreq    = [ (SMOKE_CLUMP_LIT, 1), (SMOKE_CLUMP_DARK, 1)
+               , (FLOOR_ASHES_LIT, 1), (FLOOR_ASHES_DARK, 1)
+               , (RUBBLE_WITH_FIRE, 25) ]
   , tname    = "dirt and ash pile"
   , tcolor   = Brown
   , tcolor2  = Brown
@@ -560,53 +756,53 @@ floorAshes = floorActor
 shallowWater = TileKind
   { tsymbol  = '~'
   , tname    = "water puddle"
-  , tfreq    = [ ("aquatic", 1), ("shallow water Lit", 1), ("legendLit", 100)
-               , ("emptySetLit", 5), ("noiseSetLit", 30), ("shootoutSetLit", 5)
-               , ("huntSetLit", 250), ("lift terminal Lit", 4) ]
+  , tfreq    = [ (AQUATIC, 1), (SHALLOW_WATER_LIT, 1), (LEGEND_LIT, 100)
+               , (EMPTY_SET_LIT, 5), (NOISE_SET_LIT, 30), (SHOOTOUT_SET_LIT, 5)
+               , (HUNT_SET_LIT, 250), (LIFT_TERMINAL_LIT, 4) ]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 2
-  , tfeature = ChangeWith ["cold source"] "frozen path" : Embed "shallow water"
+  , tfeature = ChangeWith [COLD_SOURCE] FROZEN_PATH : Embed SHALLOW_WATER
                : tfeature floorActor
       -- can't make fog from water, because air would need to be cool, too;
       -- if concealment needed, make smoke from fire instead
   }
 shallowWaterSpice = shallowWater
-  { tfreq    = [ ("fogClumpOver_f_Lit", 40), ("pumpsOver_f_Lit", 3)
-               , ("rubbleOrWaste_Lit", 1) ]
+  { tfreq    = [ (FOG_CLUMP_LIT, 40), (PUMPS_LIT, 3)
+               , (RUBBLE_OR_WASTE_LIT, 1) ]
   , tfeature = Spice : tfeature shallowWater
   }
 shallowWater2 = shallowWater
   { tname    = "water pool"
-  , tfreq    = [("poolOver_~_Lit", 1)]
+  , tfreq    = [(POOL_LIT, 1)]
   }
 floorRed = floorCorridor
   { tname    = "emergency walkway"
-  , tfreq    = [ ("trailLit", 70), ("safeTrailLit", 70)
-               , ("lift terminal Lit", 6), ("lift terminal Dark", 6) ]
+  , tfreq    = [ (TRAIL_LIT, 70), (SAFE_TRAIL_LIT, 70)
+               , (LIFT_TERMINAL_LIT, 6), (LIFT_TERMINAL_DARK, 6) ]
   , tcolor   = BrRed
   , tcolor2  = Red
-  , tfeature = [Embed "straight path", Trail, Walkable, Clear]
+  , tfeature = [Embed STRAIGHT_PATH, Trail, Walkable, Clear]
   }
 floorBlue = floorRed
   { tname    = "frozen path"
-  , tfreq    = [("trailLit", 100), ("frozen path", 1)]
+  , tfreq    = [(TRAIL_LIT, 100), (FROZEN_PATH, 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 2
-  , tfeature = [ ChangeWith ["fire source"] "shallow water Lit"
-               , Embed "frozen ground", Trail, Walkable, Clear ]
+  , tfeature = [ ChangeWith [FIRE_SOURCE] SHALLOW_WATER_LIT
+               , Embed FROZEN_GROUND, Trail, Walkable, Clear ]
   }
 floorBrown = floorRed
   { tname    = "transport route"
-  , tfreq    = [ ("trailLit", 50), ("safeTrailLit", 50)
-               , ("transport route", 1) ]
+  , tfreq    = [ (TRAIL_LIT, 50), (SAFE_TRAIL_LIT, 50)
+               , (TRANSPORT_ROUTE, 1) ]
   , tcolor   = BrMagenta
   , tcolor2  = Magenta
   }
 floorArenaShade = floorActor
   { tname    = "shaded ground"
-  , tfreq    = [("shaded ground", 1), ("treeShadeOver_s_Lit", 2)]
+  , tfreq    = [(SHADED_GROUND, 1), (TREE_SHADE_WALKABLE_LIT, 2)]
   , tcolor   = BrYellow  -- match others, even though no lit counterpart
   , tcolor2  = BrBlack
   , tfeature = Dark : NoItem : tfeature floorActor
@@ -621,238 +817,238 @@ floorArenaShade = floorActor
 oriel = TileKind
   { tsymbol  = '%'  -- story-wise it's transparent, hence the symbol
   , tname    = "oriel"
-  , tfreq    = [ ("oriels fence", 15)
-               , ("airlock fence", 5), ("empty airlock fence", 5) ]
+  , tfreq    = [ (ORIELS_FENCE, 15)
+               , (AIRLOCK_FENCE, 5), (EMPTY_AIRLOCK_FENCE, 5) ]
   , tcolor   = White
   , tcolor2  = Black
   , talter   = 5
-  , tfeature = [Embed "black starry sky", Dark]
+  , tfeature = [Embed BLACK_STARRY_SKY, Dark]
   }
 outerHullWall = basicOuterFence
   { tname    = "outer hull wall"
-  , tfreq    = [ ("basic outer fence", 1), ("oriels fence", 85)
-               , ("airlock fence", 40), ("empty airlock fence", 40) ]
+  , tfreq    = [ (BASIC_OUTER_FENCE, 1), (ORIELS_FENCE, 85)
+               , (AIRLOCK_FENCE, 40), (EMPTY_AIRLOCK_FENCE, 40) ]
   }
-rubbleBurning = TileKind  -- present in "emptySetLit" as early light/fire source
+rubbleBurning = TileKind  -- present in EMPTY_SET_LIT as early light/fire source
   { tsymbol  = '&'
   , tname    = "burning installation"
-  , tfreq    = [ ("emptySetLit", 1), ("powerSetDark", 20)
-               , ("ambushSetDark", 15), ("zooSetDark", 30)
-               , ("stair terminal Lit", 4), ("stair terminal Dark", 4)
-               , ("lift terminal Lit", 4), ("lift terminal Dark", 4)
-               , ("burning installation", 1), ("rubble with fire", 25) ]
+  , tfreq    = [ (EMPTY_SET_LIT, 1), (POWER_SET_DARK, 20)
+               , (AMBUSH_SET_DARK, 15), (ZOO_SET_DARK, 30)
+               , (STAIR_TERMINAL_LIT, 4), (STAIR_TERMINAL_DARK, 4)
+               , (LIFT_TERMINAL_LIT, 4), (LIFT_TERMINAL_DARK, 4)
+               , (BURNING_INSTALLATION, 1), (RUBBLE_WITH_FIRE, 25) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 4  -- boss can dig through
-  , tfeature = [ Embed "big fire"  -- not as tall as a tree, so quenchable
-               , OpenTo "rubble with fire"
-               , ChangeWith ["fireproof cloth"] "rubble"  -- efficiency
-               , OpenWith ["water source", "water source", "water source"]
-                          "smoke Lit"
+  , tfeature = [ Embed BIG_FIRE  -- not as tall as a tree, so quenchable
+               , OpenTo RUBBLE_WITH_FIRE
+               , ChangeWith [FIREPROOF_CLOTH] RUBBLE_PILE  -- efficiency
+               , OpenWith [WATER_SOURCE, WATER_SOURCE, WATER_SOURCE]
+                          SMOKE_LIT
                ]
   }
 rubbleBurningSpice = rubbleBurning
-  { tfreq    = [ ("smokeClumpOver_f_Lit", 1), ("smokeClumpOver_f_Dark", 1)
-               , ("cache deposit", 33) ]
+  { tfreq    = [ (SMOKE_CLUMP_LIT, 1), (SMOKE_CLUMP_DARK, 1)
+               , (CACHE_DEPOSIT, 33) ]
   , tfeature = Spice : tfeature rubbleBurning
   }
 wallOpenable = bedrock
-  { tfreq    = [("openableWall", 1)]
-  , tfeature = [BuildAs "closed door"]
+  { tfreq    = [(OPENABLE_WALL, 1)]
+  , tfeature = [BuildAs CLOSED_DOOR]
   }
 wallObscuredSafety = TileKind
   { tsymbol  = '#'
   , tname    = "safety procedures board"
-  , tfreq    = [("obscured wall", 4), ("exitSetLit", 1)]
+  , tfreq    = [(OBSCURED_WALL, 4), (EXIT_SET_LIT, 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 5
-  , tfeature = [ Embed "ruined first aid kit"
-               , HideAs "suspect wall"
+  , tfeature = [ Embed RUINED_FIRST_AID_KIT
+               , HideAs SUSPECT_WALL
                ]
   }
 wallObscuredExtinguisher = TileKind
   { tsymbol  = '#'
   , tname    = "fire extinguisher cabinet"
-  , tfreq    = [("obscured wall", 4), ("exitSetLit", 1)]
+  , tfreq    = [(OBSCURED_WALL, 4), (EXIT_SET_LIT, 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 5
-  , tfeature = [ Embed "fire fighting gear"
-               , HideAs "suspect wall"
+  , tfeature = [ Embed FIRE_FIGHTING_GEAR
+               , HideAs SUSPECT_WALL
                ]
   }
 wallObscured3dBillboard = TileKind
   { tsymbol  = '#'
   , tname    = "3D billboard"
-  , tfreq    = [("obscured wall", 25)]
+  , tfreq    = [(OBSCURED_WALL, 25)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 5
-  , tfeature = [ Embed "3D display"
-               , HideAs "suspect wall"
+  , tfeature = [ Embed DISPLAY_3D
+               , HideAs SUSPECT_WALL
                ]
   }
 wallObscuredPipework = TileKind
   { tsymbol  = '#'
   , tname    = "exposed pipework"
-  , tfreq    = [("obscured wall", 25)]
+  , tfreq    = [(OBSCURED_WALL, 25)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 5
-  , tfeature = [ Embed "cracked flue"
-               , HideAs "suspect wall"
+  , tfeature = [ Embed CRACKED_FLUE
+               , HideAs SUSPECT_WALL
                ]
   }
 liftShaft = pillar
   { tname    = "lift shaft"
-  , tfreq    = [("lift shaft", 1)]
+  , tfreq    = [(LIFT_SHAFT, 1)]
   }
 rock = pillar
   { tname    = "rock"
-  , tfreq    = [("arenaSetLit", 4), ("arenaSetDark", 4), ("brawlSetLit", 30)]
+  , tfreq    = [(ARENA_SET_LIT, 4), (ARENA_SET_DARK, 4), (BRAWL_SET_LIT, 30)]
   }
 pillarCache2 = pillarCache
   { tname    = "rack of deposit boxes"
-  , tfreq    = [ ("cachable deposit", 20), ("cache deposit", 33)
-               , ("stair terminal Lit", 1), ("stair terminal Dark", 1) ]
-  , tfeature = [ Embed "deposit box"
-               , ChangeTo "cachable deposit", ConsideredByAI ]
+  , tfreq    = [ (CACHABLE_DEPOSIT, 20), (CACHE_DEPOSIT, 33)
+               , (STAIR_TERMINAL_LIT, 1), (STAIR_TERMINAL_DARK, 1) ]
+  , tfeature = [ Embed DEPOSIT_BOX
+               , ChangeTo CACHABLE_DEPOSIT, ConsideredByAI ]
   }
 pillarCache3 = pillarCache
   { tname    = "jewelry display"
-  , tfreq    = [ ("cachable jewelry", 20), ("cache jewelry", 33)
-               , ("museumSetDark", 2) ]
-  , tfeature = [ Embed "jewelry case", Embed "jewelry display trap"
-               , ChangeTo "cachable jewelry", ConsideredByAI ]
+  , tfreq    = [ (CACHABLE_JEWELRY, 20), (CACHE_JEWELRY, 33)
+               , (MUSEUM_SET_DARK, 2) ]
+  , tfeature = [ Embed JEWELRY_CASE, Embed JEWELRY_DISPLAY_TRAP
+               , ChangeTo CACHABLE_JEWELRY, ConsideredByAI ]
   }
 stairsDecontaminatingUp = stairsUp
   { tname    = "decontaminating staircase up"
-  , tfreq    = [("decontaminating staircase up", 1)]
+  , tfreq    = [(DECONTAMINATING_STAIRCASE_UP, 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = talterForStairs
-  , tfeature = Embed "decontamination chamber" : tfeature stairsUp
+  , tfeature = Embed DECONTAMINATION_CHAMBER : tfeature stairsUp
   }
 stairsWelded = stairsUp
   { tname    = "staircase up welded shut"
-  , tfreq    = [("welded staircase up", 1)]
+  , tfreq    = [(WELDED_STAIRCASE_UP, 1)]
   , tcolor   = BrMagenta
   , tcolor2  = Magenta
   , talter   = talterForStairs + 3  -- gear or level up needed
-  , tfeature = [ ChangeWith ["blowtorch"] "ordinary staircase up"
-               , ChangeWith ["cold source"] "ordinary staircase up"
-               , Embed "crude weld", ConsideredByAI ]
+  , tfeature = [ ChangeWith [BLOWTORCH] ORDINARY_STAIRCASE_UP
+               , ChangeWith [COLD_SOURCE] ORDINARY_STAIRCASE_UP
+               , Embed CRUDE_WELD, ConsideredByAI ]
   }
 stairsLiftUp = stairsUp  -- fireproof
   { tname    = "lift up"
-  , tfreq    = [("staircase lift up", 9), ("ordinary lift up", 1)]
+  , tfreq    = [(STAIRCASE_LIFT_UP, 9), (ORDINARY_LIFT_UP, 1)]
   , talter   = talterForStairs
   , tcolor   = BrCyan
   , tcolor2  = Cyan
-  , tfeature = [Embed "lift up", ConsideredByAI]
+  , tfeature = [Embed LIFT_UP, ConsideredByAI]
   }
 stairsLiftTrappedUp = stairsTrappedUp
   { tname    = "corroded lift up"
-  , tfreq    = [("staircase lift up", 1)]
+  , tfreq    = [(STAIRCASE_LIFT_UP, 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
-  , tfeature = [ Embed "lift up", Embed "lift trap"
-               , ConsideredByAI, ChangeTo "ordinary lift up" ]
+  , tfeature = [ Embed LIFT_UP, Embed LIFT_TRAP
+               , ConsideredByAI, ChangeTo ORDINARY_LIFT_UP ]
                  -- AI uses despite the trap; exploration more important
   }
 stairsLiftGatedUp = stairsLiftUp
   { tname    = "manually opened lift up"
-  , tfreq    = [("gated lift up", 1)]
+  , tfreq    = [(GATED_LIFT_UP, 1)]
   , talter   = talterForStairs + 2  -- animals and bosses can't use
   }
 stairsLiftDecontaminatingUp = stairsLiftUp
   { tname    = "decontaminating lift up"
-  , tfreq    = [("decontaminating lift up", 1)]
+  , tfreq    = [(DECONTAMINATING_LIFT_UP, 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
-  , tfeature = Embed "decontamination chamber" : tfeature stairsLiftUp
+  , tfeature = Embed DECONTAMINATION_CHAMBER : tfeature stairsLiftUp
   }
 stairsLiftWelded = stairsLiftUp
   { tname    = "lift up welded shut"
-  , tfreq    = [("welded lift up", 1)]
+  , tfreq    = [(WELDED_LIFT_UP, 1)]
   , tcolor   = BrMagenta
   , tcolor2  = Magenta
   , talter   = talterForStairs + 3  -- gear or level up needed
-  , tfeature = [ ChangeWith ["blowtorch"] "ordinary lift up"
-               , ChangeWith ["cold source"] "ordinary lift up"
-               , Embed "crude weld", ConsideredByAI ]
+  , tfeature = [ ChangeWith [BLOWTORCH] ORDINARY_LIFT_UP
+               , ChangeWith [COLD_SOURCE] ORDINARY_LIFT_UP
+               , Embed CRUDE_WELD, ConsideredByAI ]
   }
 stairsDecontaminatingDown = stairsDown
   { tname    = "decontaminating staircase down"
-  , tfreq    = [("decontaminating staircase down", 1)]
+  , tfreq    = [(DECONTAMINATING_STAIRCASE_DOWN, 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = talterForStairs
-  , tfeature = Embed "decontamination chamber" : tfeature stairsDown
+  , tfeature = Embed DECONTAMINATION_CHAMBER : tfeature stairsDown
   }
 stairsLiftDown = stairsDown
   { tname    = "lift down"
-  , tfreq    = [("staircase lift down", 9), ("ordinary lift down", 1)]
+  , tfreq    = [(STAIRCASE_LIFT_DOWN, 9), (ORDINARY_LIFT_DOWN, 1)]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = talterForStairs
-  , tfeature = [Embed "lift down", ConsideredByAI]
+  , tfeature = [Embed LIFT_DOWN, ConsideredByAI]
   }
 stairsLiftTrappedDown = stairsTrappedDown
   { tname    = "corroded lift down"
-  , tfreq    = [("staircase lift down", 1)]
+  , tfreq    = [(STAIRCASE_LIFT_DOWN, 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
-  , tfeature = [ Embed "lift down", Embed "lift trap"
-               , ConsideredByAI, ChangeTo "ordinary lift down" ]
+  , tfeature = [ Embed LIFT_DOWN, Embed LIFT_TRAP
+               , ConsideredByAI, ChangeTo ORDINARY_LIFT_DOWN ]
   }
 stairsLiftGatedDown = stairsLiftDown
   { tname    = "manually opened lift down"
-  , tfreq    = [("gated lift down", 1)]
+  , tfreq    = [(GATED_LIFT_DOWN, 1)]
   , talter   = talterForStairs + 2  -- animals and bosses can't use
   }
 stairsLiftDecontaminatingDown = stairsLiftDown
   { tname    = "decontaminating lift down"
-  , tfreq    = [("decontaminating lift down", 1)]
+  , tfreq    = [(DECONTAMINATING_LIFT_DOWN, 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
-  , tfeature = Embed "decontamination chamber" : tfeature stairsLiftDown
+  , tfeature = Embed DECONTAMINATION_CHAMBER : tfeature stairsLiftDown
   }
 escapeSpaceshipDown = escapeDown
   { tname    = "airlock to a shuttle"
-  , tfreq    = [("escape spaceship down", 1), ("airlock fence", 3)]
+  , tfreq    = [(ESCAPE_SPACESHIP_DOWN, 1), (AIRLOCK_FENCE, 3)]
   }
 emptyAirlock = escapeDown
   { tname    = "empty airlock"
-  , tfreq    = [ ("airlock fence", 2), ("empty airlock fence", 7)
-               , ("emptySetLit", 2), ("ambushSetDark", 7) ]
+  , tfreq    = [ (AIRLOCK_FENCE, 2), (EMPTY_AIRLOCK_FENCE, 7)
+               , (EMPTY_SET_LIT, 2), (AMBUSH_SET_DARK, 7) ]
                    -- not in exitSetLit; space can't be seen
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
-  , tfeature = [Embed "disengaged docking"]
+  , tfeature = [Embed DISENGAGED_DOCKING_GEAR]
   }
 reinforcedWall = TileKind
   { tsymbol  = '#'
   , tname    = "reinforced wall"
-  , tfreq    = [("reinforced wall", 1), ("rogueSet", 15), ("exitSetLit", 20)]
+  , tfreq    = [(REINFORCED_WALL, 1), (ROGUE_SET, 15), (EXIT_SET_LIT, 20)]
   , tcolor   = White
   , tcolor2  = BrBlack
   , talter   = 100
   , tfeature = []
   }
 reinforcedWallSpice = reinforcedWall
-  { tfreq    = [ ("doorlessWallOver_#", 20)
-               , ("cache maze", 66), ("cachable abandoned", 80) ]
+  { tfreq    = [ (DOORLESS_WALL, 20)
+               , (CACHE_MAZE, 66), (CACHABLE_ABANDONED, 80) ]
   , tfeature = Spice : tfeature reinforcedWall
   }
 wallShuttle = bedrock
   { tname    = "shuttle hull"
-  , tfreq    = [("shuttle hull", 1)]
-  , tfeature = [Embed "shuttle hardware"]
+  , tfreq    = [(SHUTTLE_HULL, 1)]
+  , tfeature = [Embed SHUTTLE_HARDWARE]
   }
 wallShuttleSpice = wallShuttle
-  { tfreq    = [("cache shuttle", 75)]
+  { tfreq    = [(CACHE_SHUTTLE, 75)]
   , tfeature = Spice : tfeature wallShuttle
   }
 
@@ -861,17 +1057,17 @@ wallShuttleSpice = wallShuttle
 machineWall = TileKind
   { tsymbol  = '%'
   , tname    = "hardware rack"
-  , tfreq    = [ ("hardware rack", 1)
-               , ("rogueSet", 25), ("noiseSetLit", 250), ("powerSetDark", 250)
-               , ("exitSetLit", 30)
-               , ("lift terminal Lit", 40), ("lift terminal Dark", 40) ]
+  , tfreq    = [ (HARDWARE_RACK, 1)
+               , (ROGUE_SET, 25), (NOISE_SET_LIT, 250), (POWER_SET_DARK, 250)
+               , (EXIT_SET_LIT, 30)
+               , (LIFT_TERMINAL_LIT, 40), (LIFT_TERMINAL_DARK, 40) ]
   , tcolor   = White
   , tcolor2  = BrBlack
   , talter   = 100
   , tfeature = [Clear]
   }
 machineWallSpice = machineWall
-  { tfreq    = [("doorlessMachineryOver_#", 1)]
+  { tfreq    = [(DOORLESS_MACHINERY, 1)]
   , tfeature = Spice : tfeature machineWall
   }
 
@@ -882,16 +1078,16 @@ machineWallSpice = machineWall
 underbrushBurning = underbrush
   { tsymbol  = ';'
   , tname    = "burning underbrush"
-  , tfreq    = [ ("ambushSetDark", 1), ("zooSetDark", 5)
-               , ("bush with fire", 25), ("burning underbrush", 1) ]
+  , tfreq    = [ (AMBUSH_SET_DARK, 1), (ZOO_SET_DARK, 5)
+               , (BUSH_WITH_FIRE, 25), (BURNING_UNDERBRUSH, 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 0  -- just walk into it; even animals can
   , tfeature = [ Walkable, NoItem, NoActor  -- not clear, due to smoke
-               , Embed "small fire"
-               , ChangeTo "floorAshesLit"
-               , ChangeWith ["fireproof cloth"] "underbrush Lit"  -- saved cycle
-               , ChangeWith ["water source"] "smoke Lit"
+               , Embed SMALL_FIRE
+               , ChangeTo FLOOR_ASHES_LIT
+               , ChangeWith [FIREPROOF_CLOTH] UNDERBRUSH_LIT  -- saved cycle
+               , ChangeWith [WATER_SOURCE] SMOKE_LIT
                ]
   }
 
@@ -899,61 +1095,61 @@ underbrushBurning = underbrush
 
 floorOily = floorArena
   { tname    = "oily floor"
-  , tfreq    = [ ("powerSetLit", 600), ("exitSetLit", 900)
-               , ("oily floor Lit", 1), ("rubbleOrWaste_Lit", 1)
-               , ("oilOver_o_Lit", 4), ("oily floor", 1) ]
+  , tfreq    = [ (POWER_SET_LIT, 600), (EXIT_SET_LIT, 900)
+               , (OILY_FLOOR_LIT, 1), (RUBBLE_OR_WASTE_LIT, 1)
+               , (OIL_RESIDUE_LIT, 4), (OILY_FLOOR, 1) ]
   }
 oilSpill = TileKind
   { tsymbol  = '~'
   , tname    = "oil spill"
-  , tfreq    = [ ("powerSetDark", 35), ("exitSetLit", 1)
-               , ("ambushSetDark", 20), ("oil spill", 1) ]
+  , tfreq    = [ (POWER_SET_DARK, 35), (EXIT_SET_LIT, 1)
+               , (AMBUSH_SET_DARK, 20), (OIL_SPILL, 1) ]
   , tcolor   = BrYellow
   , tcolor2  = BrGreen
   , talter   = 2
-  , tfeature = ChangeWith ["fire source"] "burning oil"
-               : Embed "machine oil" : tfeature floorActor
+  , tfeature = ChangeWith [FIRE_SOURCE] BURNING_OIL
+               : Embed OIL_PUDDLE : tfeature floorActor
   }
 oilSpillSpice = oilSpill
-  { tfreq    = [ ("rubbleOrWaste_Lit", 1), ("rubbleOrWaste_Dark", 1)
-               , ("oilOver_o_Lit", 1), ("oilOver_o_Dark", 1) ]
+  { tfreq    = [ (RUBBLE_OR_WASTE_LIT, 1), (RUBBLE_OR_WASTE_DARK, 1)
+               , (OIL_RESIDUE_LIT, 1), (OIL_RESIDUE_DARK, 1) ]
   , tfeature = Spice : tfeature oilSpill
   }
 oilBurning = TileKind
   { tsymbol  = '~'
   , tname    = "burning oil"
-  , tfreq    = [("powerSetDark", 1), ("ambushSetDark", 1), ("burning oil", 1)]
+  , tfreq    = [(POWER_SET_DARK, 1), (AMBUSH_SET_DARK, 1), (BURNING_OIL, 1)]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 0
   , tfeature = [ Walkable, NoItem, NoActor  -- not clear, due to smoke
-               , Embed "small fire"
-               , Embed "machine oil"
-               , ChangeTo "oil spill"
-               , ChangeWith ["fireproof cloth"] "oily floor"
+               , Embed SMALL_FIRE
+               , Embed OIL_PUDDLE
+               , ChangeTo OIL_SPILL
+               , ChangeWith [FIREPROOF_CLOTH] OILY_FLOOR
                ]
   }
 floorWindow = floorArena
   { tsymbol  = ' '  -- story-wise it's transparent, hence the symbol
   , tname    = "floor window"
-  , tfreq    = [("emptySetLit", 6)]
+  , tfreq    = [(EMPTY_SET_LIT, 6)]
   , tcolor   = defFG
   , tcolor2  = defFG
-  , tfeature = Embed "black starry sky" : tfeature floorCorridor
+  , tfeature = Embed BLACK_STARRY_SKY : tfeature floorCorridor
   }
 underbrush = TileKind
   { tsymbol  = floorSymbol
   , tname    = "underbrush"
-  , tfreq    = [ ("underbrush Lit", 1), ("underbrush Dark", 1)
-               , ("emptySetLit", 30), ("arenaSetLit", 20)
-               , ("shootoutSetLit", 30), ("huntSetLit", 30)
-               , ("escapeSetLit", 40), ("zooSetDark", 100)
-               , ("trailLit", 50), ("safeTrailLit", 50)
+  , tfreq    = [ (UNDERBRUSH_LIT, 1), (UNDERBRUSH_DARK, 1)
+               , (EMPTY_SET_LIT, 30), (ARENA_SET_LIT, 20)
+               , (SHOOTOUT_SET_LIT, 30), (HUNT_SET_LIT, 30)
+               , (ESCAPE_SET_LIT, 40), (ZOO_SET_DARK, 100)
+               , (TRAIL_LIT, 50), (SAFE_TRAIL_LIT, 50)
                ]
   , tcolor   = BrGreen
   , tcolor2  = Green
   , talter   = 2
-  , tfeature = [ ChangeWith ["fire source"] "burning underbrush"
+  , tfeature = [ ChangeWith [FIRE_SOURCE] BURNING_UNDERBRUSH
                , Trail, Walkable, Clear, NoItem ]
   }
 
@@ -961,7 +1157,7 @@ underbrush = TileKind
 
 makeDark :: TileKind -> TileKind
 makeDark k = let darkText :: GroupName TileKind -> GroupName TileKind
-                 darkText t = maybe t (toGroupName . (<> "Dark"))
+                 darkText t = maybe t (GroupName . (<> "Dark"))
                               $ T.stripSuffix "Lit" $ fromGroupName t
                  darkFrequency = map (first darkText) $ tfreq k
                  darkFeat (OpenTo t) = Just $ OpenTo $ darkText t
