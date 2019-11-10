@@ -145,7 +145,7 @@ warrior2 = warrior
 warrior3 = warrior
   { iname    = "engineer"
   , ifreq    = [(CRAWL_HERO, 100), (MOBILE, 1)]
-  , ikit     = ikit warrior ++ [(CURRENCY, CStash), (COOKED_FOOD, CStash)]
+  , ikit     = ikit warrior ++ [(S_CURRENCY, CStash), (COOKED_FOOD, CStash)]
   -- , idesc    = ""
   }
 warrior4 = warrior
@@ -1059,9 +1059,9 @@ cleanerRobot = ItemKind
                , (BOILING_VENT, COrgan), (HULL_PLATING, COrgan)
                , (EYE_3, COrgan), (NOSTRIL, COrgan), (EAR_6, COrgan)
                , (ROBOT_BRAIN, COrgan)
-               , (CURRENCY, CStash)
-               , (CURRENCY, CStash)
-               , (CURRENCY, CStash)
+               , (S_CURRENCY, CStash)
+               , (S_CURRENCY, CStash)
+               , (S_CURRENCY, CStash)
                , (WASTE_CONTAINER, CEqp), (SPOTLIGHT, CEqp)
                , (CONSTRUCTION_HOOTER, CEqp) ]
   }

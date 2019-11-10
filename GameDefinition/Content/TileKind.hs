@@ -256,7 +256,7 @@ ldarkColorable = [tree, bush, floorCorridor, floorArena, floorDamp, floorDirt, f
 unknown = TileKind  -- needs to have index 0 and alter 1; no other with 1
   { tsymbol  = ' '
   , tname    = "unknown space"
-  , tfreq    = [(UNKNOWN_SPACE, 1)]
+  , tfreq    = [(S_UNKNOWN_SPACE, 1)]
   , tcolor   = defFG
   , tcolor2  = defFG
   , talter   = 1
@@ -265,7 +265,7 @@ unknown = TileKind  -- needs to have index 0 and alter 1; no other with 1
 unknownOuterFence = TileKind
   { tsymbol  = ' '
   , tname    = "unknown space"
-  , tfreq    = [(UNKNOWN_OUTER_FENCE, 1)]
+  , tfreq    = [(S_UNKNOWN_OUTER_FENCE, 1)]
   , tcolor   = defFG
   , tcolor2  = defFG
   , talter   = maxBound  -- impenetrable
@@ -826,7 +826,7 @@ oriel = TileKind
   }
 outerHullWall = basicOuterFence
   { tname    = "outer hull wall"
-  , tfreq    = [ (BASIC_OUTER_FENCE, 1), (ORIELS_FENCE, 85)
+  , tfreq    = [ (S_BASIC_OUTER_FENCE, 1), (ORIELS_FENCE, 85)
                , (AIRLOCK_FENCE, 40), (EMPTY_AIRLOCK_FENCE, 40) ]
   }
 rubbleBurning = TileKind  -- present in EMPTY_SET_LIT as early light/fire source

@@ -313,7 +313,7 @@ focusedFlash = ItemKind
   }
 singleSpark = spreadFlash
   { iname    = "single spark"
-  , ifreq    = [(SINGLE_SPARK, 1)]
+  , ifreq    = [(S_SINGLE_SPARK, 1)]
   , icount   = 1
   , iverbHit = "spark"
   , iaspects = [ toLinger 5  -- 1 step, 1 turn
@@ -355,7 +355,7 @@ focusedGlass = glassPiece  -- when blowing up windows
 fragrance = ItemKind
   { isymbol  = '`'
   , iname    = "fragrance"  -- instant, fast fragrance
-  , ifreq    = [(FRAGRANCE, 1)]
+  , ifreq    = [(S_FRAGRANCE, 1)]
   , iflavour = zipPlain [Magenta]
   , icount   = 12
   , irarity  = [(1, 1)]

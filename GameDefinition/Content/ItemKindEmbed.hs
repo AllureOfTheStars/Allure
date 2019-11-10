@@ -253,7 +253,7 @@ fireSmall = ItemKind
   , iweight  = 10000
   , idamage  = 0
   , iaspects = [ELabel "of roasting", SetFlag Durable]
-  , ieffects = [ Burn 1, Explode SINGLE_SPARK
+  , ieffects = [ Burn 1, Explode S_SINGLE_SPARK
                , cookEffect, OnCombine cookEffect ]
   , idesc    = "A few shrubs and embers, glowing brightly."
   , ikit     = []
