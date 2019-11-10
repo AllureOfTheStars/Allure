@@ -316,7 +316,7 @@ doorwayTrapTemplate = ItemKind
   , iverbHit = "cripple"
   , iweight  = 10000
   , idamage  = 0
-  , iaspects = [HideAs DOORWAY_TRAP_UNKNOWN]
+  , iaspects = [PresentAs DOORWAY_TRAP_UNKNOWN]
       -- not Durable, springs at most once
   , ieffects = []
   , idesc    = "Just turn the handle..."
