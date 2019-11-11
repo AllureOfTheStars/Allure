@@ -464,7 +464,7 @@ treeBurnt = tree
   , tfreq    = [(ZOO_SET_DARK, 10), (TREE_WITH_FIRE, 30)]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
-  , tfeature = [Dark]  -- even burned, too hard to topple
+  , tfeature = [Dark]  -- even burned too hard to topple
   }
 treeBurning = tree  -- present in EMPTY_SET_LIT as early light/fire source
   { tname    = "burning tree"
@@ -884,7 +884,7 @@ rubbleBurning = TileKind  -- present in EMPTY_SET_LIT as early light/fire source
   , talter   = 4  -- boss can dig through
   , tfeature = [ Embed BIG_FIRE  -- not as tall as a tree, so quenchable
                , OpenTo RUBBLE_WITH_FIRE
-               , ChangeWith [FIREPROOF_CLOTH] S_RUBBLE_PILE  -- efficiency
+               , ChangeWith [FIREPROOF_CLOTH] S_RUBBLE_PILE  -- saved for repeat
                , OpenWith [WATER_SOURCE, WATER_SOURCE, WATER_SOURCE]
                           S_SMOKE_LIT
                ]
@@ -1167,8 +1167,7 @@ oilBurning = TileKind
   , tfeature = [ Walkable, NoItem, NoActor  -- not clear, due to smoke
                , Embed SMALL_FIRE
                , Embed OIL_PUDDLE
-               , ChangeTo S_OIL_SPILL
-               , ChangeWith [FIREPROOF_CLOTH] OILY_FLOOR_LIT
+               , ChangeWith [FIREPROOF_CLOTH] OILY_FLOOR_LIT  -- soaks oil
                ]
   }
 floorWindow = floorArena
