@@ -11,6 +11,7 @@ module Content.PlaceKind
   , pattern INDOOR_ESCAPE_DOWN, pattern INDOOR_ESCAPE_UP, pattern OUTDOOR_ESCAPE_DOWN, pattern TINY_STAIRCASE, pattern OPEN_STAIRCASE, pattern CLOSED_STAIRCASE, pattern WALLED_STAIRCASE, pattern GATED_TINY_STAIRCASE, pattern GATED_OPEN_STAIRCASE, pattern GATED_CLOSED_STAIRCASE, pattern OUTDOOR_TINY_STAIRCASE, pattern OUTDOOR_CLOSED_STAIRCASE, pattern OUTDOOR_WALLED_STAIRCASE
   , pattern MUSEUM, pattern EXIT
   , pattern TINY_LIFT, pattern OPEN_LIFT, pattern WALLED_LIFT, pattern CLOSED_LIFT, pattern ESCAPE_FROM_SPACESHIP_DOWN, pattern DECONTAMINATING_TINY_STAIRCASE, pattern DECONTAMINATING_OPEN_STAIRCASE, pattern DECONTAMINATING_WALLED_STAIRCASE, pattern DECONTAMINATING_TINY_LIFT, pattern DECONTAMINATING_OPEN_LIFT, pattern DECONTAMINATING_WALLED_LIFT, pattern GATED_TINY_LIFT, pattern GATED_OPEN_LIFT, pattern GATED_CLOSED_LIFT, pattern WELDED_TINY_LIFT, pattern WELDED_OPEN_LIFT, pattern WELDED_WALLED_LIFT, pattern WELDED_TINY_STAIRCASE, pattern WELDED_OPEN_STAIRCASE, pattern WELDED_WALLED_STAIRCASE
+  , groupNamesSingleton, groupNames
   , -- * Content
     content
   ) where
@@ -21,12 +22,24 @@ import Game.LambdaHack.Core.Prelude
 
 import qualified Data.Text as T
 
-import Content.TileKind hiding (content)
+import Content.TileKind hiding (content, groupNames, groupNamesSingleton)
 import Game.LambdaHack.Content.PlaceKind
 import Game.LambdaHack.Content.TileKind (TileKind)
 import Game.LambdaHack.Definition.Defs
 
 -- * Group name patterns
+
+groupNamesSingleton :: [GroupName PlaceKind]
+groupNamesSingleton = []
+
+-- TODO: if we stick to the current system of generating extra kinds and their
+-- group names, let's also add the generated group names to @groupNames@.
+groupNames :: [GroupName PlaceKind]
+groupNames =
+       [ROGUE, LABORATORY, ZOO, BRAWL, SHOOTOUT, ARENA, ESCAPE, AMBUSH, BATTLE, NOISE, EMPTY]
+    ++ [INDOOR_ESCAPE_DOWN, INDOOR_ESCAPE_UP, OUTDOOR_ESCAPE_DOWN, TINY_STAIRCASE, OPEN_STAIRCASE, CLOSED_STAIRCASE, WALLED_STAIRCASE, GATED_TINY_STAIRCASE, GATED_OPEN_STAIRCASE, GATED_CLOSED_STAIRCASE, OUTDOOR_TINY_STAIRCASE, OUTDOOR_CLOSED_STAIRCASE, OUTDOOR_WALLED_STAIRCASE]
+    ++ [MUSEUM, EXIT]
+    ++ [TINY_LIFT, OPEN_LIFT, WALLED_LIFT, CLOSED_LIFT, ESCAPE_FROM_SPACESHIP_DOWN, DECONTAMINATING_TINY_STAIRCASE, DECONTAMINATING_OPEN_STAIRCASE, DECONTAMINATING_WALLED_STAIRCASE, DECONTAMINATING_TINY_LIFT, DECONTAMINATING_OPEN_LIFT, DECONTAMINATING_WALLED_LIFT, GATED_TINY_LIFT, GATED_OPEN_LIFT, GATED_CLOSED_LIFT, WELDED_TINY_LIFT, WELDED_OPEN_LIFT, WELDED_WALLED_LIFT, WELDED_TINY_STAIRCASE, WELDED_OPEN_STAIRCASE, WELDED_WALLED_STAIRCASE]
 
 pattern ROGUE, LABORATORY, ZOO, BRAWL, SHOOTOUT, ARENA, ESCAPE, AMBUSH, BATTLE, NOISE, EMPTY :: GroupName PlaceKind
 
@@ -229,8 +242,8 @@ pulpit = PlaceKind
                , "%··"
                , "··0"
                ]
-  , poverrideDark = [('0', PULPIT)]
-  , poverrideLit = [('0', PULPIT)]
+  , poverrideDark = [('0', S_PULPIT)]
+  , poverrideLit = [('0', S_PULPIT)]
       -- except for floor, this will all be lit, regardless of night/dark; OK
   }
 ruin = PlaceKind
@@ -326,8 +339,8 @@ pillar2 = pillar
                , "···0·"
                , "····~"
                ]
-  , poverrideDark = [('~', POOL_DARK)]
-  , poverrideLit = [('~', POOL_LIT)]
+  , poverrideDark = [('~', S_POOL_DARK)]
+  , poverrideLit = [('~', S_POOL_LIT)]
   }
 pillar3 = pillar
   { pname    = "a court"
@@ -371,10 +384,10 @@ pillar6 = pillar
                , "·%&·"
                , "····"
                ]
-  , poverrideDark = [ ('&', CACHE_JEWELRY), ('0', LAMP_POST)
-                    , ('f', FLOOR_ACTOR_LIT) ]
-  , poverrideLit = [ ('&', CACHE_JEWELRY), ('0', LAMP_POST)
-                   , ('f', FLOOR_ACTOR_LIT) ]
+  , poverrideDark = [ ('&', CACHE_JEWELRY), ('0', S_LAMP_POST)
+                    , ('f', S_FLOOR_ACTOR_LIT) ]
+  , poverrideLit = [ ('&', CACHE_JEWELRY), ('0', S_LAMP_POST)
+                   , ('f', S_FLOOR_ACTOR_LIT) ]
   }
 colonnade = PlaceKind
   { psymbol  = 'c'
@@ -466,8 +479,8 @@ lampPost = PlaceKind
                , "·0·"
                , "X·X"
                ]
-  , poverrideDark = [('0', LAMP_POST), ('·', FLOOR_ACTOR_LIT)]
-  , poverrideLit = [('0', LAMP_POST), ('·', FLOOR_ACTOR_LIT)]
+  , poverrideDark = [('0', S_LAMP_POST), ('·', S_FLOOR_ACTOR_LIT)]
+  , poverrideLit = [('0', S_LAMP_POST), ('·', S_FLOOR_ACTOR_LIT)]
   }
 lampPost2 = lampPost
   { ptopLeft = [ "···"
@@ -504,12 +517,12 @@ treeShade = PlaceKind
                , "s0·"
                , "Xs·"
                ]
-  , poverrideDark = [ ('0', TREE_DARK)
+  , poverrideDark = [ ('0', S_TREE_DARK)
                     , ('s', TREE_SHADE_WALKABLE_DARK)
-                    , ('·', SHADED_GROUND) ]
-  , poverrideLit = [ ('0', TREE_LIT)
+                    , ('·', S_SHADED_GROUND) ]
+  , poverrideLit = [ ('0', S_TREE_LIT)
                    , ('s', TREE_SHADE_WALKABLE_LIT)
-                   , ('·', SHADED_GROUND) ]
+                   , ('·', S_SHADED_GROUND) ]
   }
 fogClump = PlaceKind
   { psymbol  = 'f'
@@ -522,8 +535,8 @@ fogClump = PlaceKind
                , ";f"
                , ";X"
                ]
-  , poverrideDark = [('f', FOG_CLUMP_DARK), (';', FOG_LIT)]
-  , poverrideLit = [('f', FOG_CLUMP_LIT), (';', FOG_LIT)]
+  , poverrideDark = [('f', FOG_CLUMP_DARK), (';', S_FOG_LIT)]
+  , poverrideLit = [('f', FOG_CLUMP_LIT), (';', S_FOG_LIT)]
   }
 fogClump2 = fogClump
   { pfreq    = [(EMPTY, 3000), (SHOOTOUT, 400), (ESCAPE, 100)]
@@ -544,10 +557,10 @@ smokeClump = PlaceKind
                , ";f"
                , ";X"
                ]
-  , poverrideDark = [ ('f', SMOKE_CLUMP_DARK), (';', SMOKE_LIT)
-                    , ('·', FLOOR_ACTOR_DARK) ]
-  , poverrideLit = [ ('f', SMOKE_CLUMP_LIT), (';', SMOKE_LIT)
-                   , ('·', FLOOR_ACTOR_LIT) ]
+  , poverrideDark = [ ('f', SMOKE_CLUMP_DARK), (';', S_SMOKE_LIT)
+                    , ('·', S_FLOOR_ACTOR_DARK) ]
+  , poverrideLit = [ ('f', SMOKE_CLUMP_LIT), (';', S_SMOKE_LIT)
+                   , ('·', S_FLOOR_ACTOR_LIT) ]
   }
 smokeClump2 = smokeClump
   { pfreq    = [(EXIT, 300), (ZOO, 200), (AMBUSH, 150)]
@@ -582,8 +595,8 @@ bushClump = PlaceKind
                , ";X"  -- one sure exit needed not to block a corner
                , ";f"
                ]
-  , poverrideDark = [('f', BUSH_CLUMP_DARK), (';', BUSH_LIT)]
-  , poverrideLit = [('f', BUSH_CLUMP_LIT), (';', BUSH_LIT)]
+  , poverrideDark = [('f', BUSH_CLUMP_DARK), (';', S_BUSH_LIT)]
+  , poverrideLit = [('f', BUSH_CLUMP_LIT), (';', S_BUSH_LIT)]
       -- should not be used in caves with trails, because bushes can't
       -- grow over such artificial trails
   }
@@ -596,12 +609,12 @@ escapeDown = PlaceKind
   , pfence   = FGround
   , ptopLeft = [ ">"
                ]
-  , poverrideDark = [ ('*', OIL_SPILL), ('g', FROZEN_PATH)
-                    , ('0', LAMP_POST)
-                    , ('f', FLOOR_ACTOR_LIT), ('r', RUBBLE_OR_WASTE_DARK) ]
-  , poverrideLit = [ ('*', OIL_SPILL), ('g', FROZEN_PATH)
-                   , ('0', LAMP_POST)
-                   , ('f', FLOOR_ACTOR_LIT), ('r', RUBBLE_OR_WASTE_LIT) ]
+  , poverrideDark = [ ('*', S_OIL_SPILL), ('g', S_FROZEN_PATH)
+                    , ('0', S_LAMP_POST)
+                    , ('f', S_FLOOR_ACTOR_LIT), ('r', RUBBLE_OR_WASTE_DARK) ]
+  , poverrideLit = [ ('*', S_OIL_SPILL), ('g', S_FROZEN_PATH)
+                   , ('0', S_LAMP_POST)
+                   , ('f', S_FLOOR_ACTOR_LIT), ('r', RUBBLE_OR_WASTE_LIT) ]
   }
 escapeDown2 = escapeDown
   { pfreq    = [(INDOOR_ESCAPE_DOWN, 200)]
@@ -1054,7 +1067,7 @@ staircase37 = staircase
 
 overrideLift :: [(Char, GroupName TileKind)]
 overrideLift = [ ('<', STAIRCASE_LIFT_UP), ('>', STAIRCASE_LIFT_DOWN)
-               , ('I', SIGNBOARD), ('S', LIFT_SHAFT) ]
+               , ('I', SIGNBOARD), ('S', S_LIFT_SHAFT) ]
 staircaseLift11 = staircase11
   { pname     = "a lift"
   , pfreq     = [(CLOSED_LIFT, 2000)]  -- weak cover, low freq
@@ -1177,9 +1190,9 @@ oval = PlaceKind
                , "··t··"
                ]
   , poverrideDark = [ ('t', TRAIL_LIT), ('a', SAFE_TRAIL_LIT)
-                    , ('~', POOL_DARK) ]
+                    , ('~', S_POOL_DARK) ]
   , poverrideLit = [ ('t', TRAIL_LIT), ('a', SAFE_TRAIL_LIT)
-                   , ('~', POOL_LIT) ]
+                   , ('~', S_POOL_LIT) ]
   }
 ovalFloor = oval
   { pfreq    = [ (ROGUE, 150000), (ARENA, 60000), (MUSEUM, 60000)
@@ -1394,8 +1407,8 @@ tank = PlaceKind
   , pfence   = FNone
   , ptopLeft = [ "#"
                ]
-  , poverrideDark = [('#', DOORLESS_WALL), ('r', REINFORCED_WALL)]
-  , poverrideLit = [('#', DOORLESS_WALL), ('r', REINFORCED_WALL)]
+  , poverrideDark = [('#', DOORLESS_WALL), ('r', S_REINFORCED_WALL)]
+  , poverrideLit = [('#', DOORLESS_WALL), ('r', S_REINFORCED_WALL)]
   }
 tank2 = tank
   { pfreq    = [ (EMPTY, 500), (EXIT, 15), (NOISE, 100)
@@ -1450,16 +1463,16 @@ shuttleHusk = PlaceKind
                ]
   , poverrideDark = [ ('·', OILY_FLOOR_DARK)
                     , ('r', RUBBLE_OR_WASTE_DARK)
-                    , ('#', SHUTTLE_HULL)
+                    , ('#', S_SHUTTLE_HULL)
                     , ('c', CACHE_SHUTTLE)
-                    , ('h', HARDWARE_RACK)
-                    , ('w', REINFORCED_WALL) ]
+                    , ('h', S_HARDWARE_RACK)
+                    , ('w', S_REINFORCED_WALL) ]
   , poverrideLit = [ ('·', OILY_FLOOR_LIT)
                    , ('r', RUBBLE_OR_WASTE_LIT)
-                   , ('#', SHUTTLE_HULL)
+                   , ('#', S_SHUTTLE_HULL)
                    , ('c', CACHE_SHUTTLE)
-                   , ('h', HARDWARE_RACK)
-                   , ('w', REINFORCED_WALL) ]
+                   , ('h', S_HARDWARE_RACK)
+                   , ('w', S_REINFORCED_WALL) ]
   }
 shuttleHusk2 = shuttleHusk
   { pfreq    = [(EMPTY, 1000), (EXIT, 15000), (AMBUSH, 15000)]
@@ -1558,7 +1571,7 @@ switchStaircaseToGated s = s
 overrideGatedLift :: [(Char, GroupName TileKind)]
 overrideGatedLift =
   [ ('<', GATED_LIFT_UP), ('>', GATED_LIFT_DOWN)
-  , ('I', SIGNBOARD), ('S', LIFT_SHAFT) ]
+  , ('I', SIGNBOARD), ('S', S_LIFT_SHAFT) ]
 
 switchLiftToGated :: PlaceKind -> PlaceKind
 switchLiftToGated s = s
@@ -1591,7 +1604,7 @@ overrideDecontaminatingLift :: [(Char, GroupName TileKind)]
 overrideDecontaminatingLift =
   [ ('<', DECONTAMINATING_LIFT_UP)
   , ('>', DECONTAMINATING_LIFT_DOWN)
-  , ('I', SIGNBOARD), ('S', LIFT_SHAFT) ]
+  , ('I', SIGNBOARD), ('S', S_LIFT_SHAFT) ]
 
 switchLiftToDecontaminating :: PlaceKind -> PlaceKind
 switchLiftToDecontaminating s = s
@@ -1621,7 +1634,7 @@ switchStaircaseToWelded s = s
 overrideWeldedLift :: [(Char, GroupName TileKind)]
 overrideWeldedLift =
   [ ('<', WELDED_LIFT_UP), ('>', ORDINARY_LIFT_DOWN)
-  , ('I', SIGNBOARD), ('S', LIFT_SHAFT) ]
+  , ('I', SIGNBOARD), ('S', S_LIFT_SHAFT) ]
 
 switchLiftToWelded :: PlaceKind -> PlaceKind
 switchLiftToWelded s = s

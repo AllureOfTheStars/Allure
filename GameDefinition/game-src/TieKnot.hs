@@ -71,25 +71,34 @@ tieKnotForAsync options@ServerOptions{ sallClear
   initialGen <- maybe SM.newSMGen return sdungeonRng
   let soptionsNxt = options {sdungeonRng = Just initialGen}
       boostedItems = IK.boostItemKindList initialGen Content.ItemKind.items
-      coitem = IK.makeData $
+      itemContent =
         if sboostRandomItem
         then boostedItems ++ Content.ItemKind.otherItemContent
         else Content.ItemKind.content
+      coitem = IK.makeData itemContent
+                           Content.ItemKind.groupNamesSingleton
+                           Content.ItemKind.groupNames
       coItemSpeedup = speedupItem coitem
-      cotile = TK.makeData coitem Content.TileKind.content
+      cotile = TK.makeData Content.TileKind.content
+                           Content.TileKind.groupNamesSingleton
+                           Content.TileKind.groupNames
       coTileSpeedup = Tile.speedupTile sallClear cotile
-      coplace = PK.makeData cotile Content.PlaceKind.content
-      cocave = CK.makeData coitem coplace cotile Content.CaveKind.content
       -- Common content operations, created from content definitions.
       -- Evaluated fully to discover errors ASAP and to free memory.
       -- Fail here, not inside server code, so that savefiles are not removed,
       -- because they are not the source of the failure.
       copsRaw = COps
-        { cocave
+        { cocave = CK.makeData Content.CaveKind.content
+                               Content.CaveKind.groupNamesSingleton
+                               Content.CaveKind.groupNames
         , coitem
-        , comode  = MK.makeData cocave coitem Content.ModeKind.content
-        , coplace
-        , corule  = RK.makeData Content.RuleKind.standardRules
+        , comode = MK.makeData Content.ModeKind.content
+                               Content.ModeKind.groupNamesSingleton
+                               Content.ModeKind.groupNames
+        , coplace = PK.makeData Content.PlaceKind.content
+                                Content.PlaceKind.groupNamesSingleton
+                                Content.PlaceKind.groupNames
+        , corule = RK.makeData Content.RuleKind.standardRules
         , cotile
         , coItemSpeedup
         , coTileSpeedup

@@ -7,11 +7,12 @@
 -- | Definitions of items embedded in map tiles.
 module Content.ItemKindEmbed
   ( -- * Group name patterns
-    pattern SCRATCH_ON_WALL, pattern OBSCENE_PICTOGRAM, pattern SUBTLE_FRESCO, pattern TREASURE_CACHE, pattern TREASURE_CACHE_TRAP, pattern SIGNAGE, pattern SMALL_FIRE, pattern BIG_FIRE, pattern FROST, pattern RUBBLE, pattern DOORWAY_TRAP_UNKNOWN, pattern DOORWAY_TRAP, pattern STAIRS_UP, pattern STAIRS_DOWN, pattern ESCAPE, pattern STAIRS_TRAP_UP, pattern STAIRS_TRAP_DOWN, pattern LECTERN, pattern SHALLOW_WATER, pattern STRAIGHT_PATH, pattern FROZEN_GROUND
+    pattern SCRATCH_ON_WALL, pattern OBSCENE_PICTOGRAM, pattern SUBTLE_FRESCO, pattern SIGNAGE, pattern SMALL_FIRE, pattern BIG_FIRE, pattern FROST, pattern RUBBLE, pattern DOORWAY_TRAP_UNKNOWN, pattern DOORWAY_TRAP, pattern STAIRS_UP, pattern STAIRS_DOWN, pattern ESCAPE, pattern STAIRS_TRAP_UP, pattern STAIRS_TRAP_DOWN, pattern LECTERN, pattern SHALLOW_WATER, pattern STRAIGHT_PATH, pattern FROZEN_GROUND
   , pattern SANDSTONE_ROCK
   , pattern ABANDONED_CACHE, pattern JEWELRY_DISPLAY_TRAP, pattern BLACK_STARRY_SKY, pattern DISENGAGED_DOCKING_GEAR, pattern RUINED_FIRST_AID_KIT, pattern FIRE_FIGHTING_GEAR, pattern DISPLAY_3D, pattern CRACKED_FLUE, pattern DEPOSIT_BOX, pattern JEWELRY_CASE, pattern LIFT_UP, pattern LIFT_DOWN, pattern LIFT_TRAP, pattern SHUTTLE_HARDWARE, pattern OIL_PUDDLE, pattern DECONTAMINATION_CHAMBER
   , pattern FIRE_FIGHTING_ITEM
-  , pattern ENCHANCED_BERRY, pattern COOKED_BERRY, pattern FRAYED_FUNGUS, pattern COOKED_FUNGUS, pattern THIC_LEAF, pattern COOKED_LEAF, pattern RECONFIGURED_FRUIT, pattern COOKED_FRUIT, pattern FRAGRANT_HERB, pattern COOKED_HERB, pattern DULL_FLOWER, pattern COOKED_FLOWER, pattern SPICY_BARK, pattern COOKED_BARK, pattern PUMPKIN, pattern COOKED_PUMPKIN
+  , pattern S_ENCHANCED_BERRY, pattern S_COOKED_BERRY, pattern S_FRAYED_FUNGUS, pattern S_COOKED_FUNGUS, pattern S_THIC_LEAF, pattern S_COOKED_LEAF, pattern S_RECONFIGURED_FRUIT, pattern S_COOKED_FRUIT, pattern S_FRAGRANT_HERB, pattern S_COOKED_HERB, pattern S_DULL_FLOWER, pattern S_COOKED_FLOWER, pattern S_SPICY_BARK, pattern S_COOKED_BARK, pattern S_PUMPKIN, pattern S_COOKED_PUMPKIN
+  , embedsGNSingleton, embedsGN
   , -- * Content
     embeds
   ) where
@@ -33,17 +34,24 @@ import Game.LambdaHack.Definition.Flavour
 
 -- * Group name patterns
 
-pattern SCRATCH_ON_WALL, OBSCENE_PICTOGRAM, SUBTLE_FRESCO, TREASURE_CACHE, TREASURE_CACHE_TRAP, SIGNAGE, SMALL_FIRE, BIG_FIRE, FROST, RUBBLE, DOORWAY_TRAP_UNKNOWN, DOORWAY_TRAP, STAIRS_UP, STAIRS_DOWN, ESCAPE, STAIRS_TRAP_UP, STAIRS_TRAP_DOWN, LECTERN, SHALLOW_WATER, STRAIGHT_PATH, FROZEN_GROUND, SANDSTONE_ROCK :: GroupName ItemKind
+embedsGNSingleton :: [GroupName ItemKind]
+embedsGNSingleton =
+       [S_ENCHANCED_BERRY, S_COOKED_BERRY, S_FRAYED_FUNGUS, S_COOKED_FUNGUS, S_THIC_LEAF, S_COOKED_LEAF, S_RECONFIGURED_FRUIT, S_COOKED_FRUIT, S_FRAGRANT_HERB, S_COOKED_HERB, S_DULL_FLOWER, S_COOKED_FLOWER, S_SPICY_BARK, S_COOKED_BARK, S_PUMPKIN, S_COOKED_PUMPKIN]
+
+pattern S_ENCHANCED_BERRY, S_COOKED_BERRY, S_FRAYED_FUNGUS, S_COOKED_FUNGUS, S_THIC_LEAF, S_COOKED_LEAF, S_RECONFIGURED_FRUIT, S_COOKED_FRUIT, S_FRAGRANT_HERB, S_COOKED_HERB, S_DULL_FLOWER, S_COOKED_FLOWER, S_SPICY_BARK, S_COOKED_BARK, S_PUMPKIN, S_COOKED_PUMPKIN :: GroupName ItemKind
+
+embedsGN :: [GroupName ItemKind]
+embedsGN =
+       [SCRATCH_ON_WALL, OBSCENE_PICTOGRAM, SUBTLE_FRESCO, SIGNAGE, SMALL_FIRE, BIG_FIRE, FROST, RUBBLE, DOORWAY_TRAP_UNKNOWN, DOORWAY_TRAP, STAIRS_UP, STAIRS_DOWN, ESCAPE, STAIRS_TRAP_UP, STAIRS_TRAP_DOWN, LECTERN, SHALLOW_WATER, STRAIGHT_PATH, FROZEN_GROUND, SANDSTONE_ROCK]
+    ++ [ABANDONED_CACHE, JEWELRY_DISPLAY_TRAP, BLACK_STARRY_SKY, DISENGAGED_DOCKING_GEAR, RUINED_FIRST_AID_KIT, FIRE_FIGHTING_GEAR, DISPLAY_3D, CRACKED_FLUE, DEPOSIT_BOX, JEWELRY_CASE, LIFT_UP, LIFT_DOWN, LIFT_TRAP, SHUTTLE_HARDWARE, OIL_PUDDLE, DECONTAMINATION_CHAMBER, FIRE_FIGHTING_ITEM]
+
+pattern SCRATCH_ON_WALL, OBSCENE_PICTOGRAM, SUBTLE_FRESCO, SIGNAGE, SMALL_FIRE, BIG_FIRE, FROST, RUBBLE, DOORWAY_TRAP_UNKNOWN, DOORWAY_TRAP, STAIRS_UP, STAIRS_DOWN, ESCAPE, STAIRS_TRAP_UP, STAIRS_TRAP_DOWN, LECTERN, SHALLOW_WATER, STRAIGHT_PATH, FROZEN_GROUND, SANDSTONE_ROCK :: GroupName ItemKind
 
 pattern ABANDONED_CACHE, JEWELRY_DISPLAY_TRAP, BLACK_STARRY_SKY, DISENGAGED_DOCKING_GEAR, RUINED_FIRST_AID_KIT, FIRE_FIGHTING_GEAR, DISPLAY_3D, CRACKED_FLUE, DEPOSIT_BOX, JEWELRY_CASE, LIFT_UP, LIFT_DOWN, LIFT_TRAP, SHUTTLE_HARDWARE, OIL_PUDDLE, DECONTAMINATION_CHAMBER, FIRE_FIGHTING_ITEM :: GroupName ItemKind
-
-pattern ENCHANCED_BERRY, COOKED_BERRY, FRAYED_FUNGUS, COOKED_FUNGUS, THIC_LEAF, COOKED_LEAF, RECONFIGURED_FRUIT, COOKED_FRUIT, FRAGRANT_HERB, COOKED_HERB, DULL_FLOWER, COOKED_FLOWER, SPICY_BARK, COOKED_BARK, PUMPKIN, COOKED_PUMPKIN :: GroupName ItemKind
 
 pattern SCRATCH_ON_WALL = GroupName "scratch on wall"
 pattern OBSCENE_PICTOGRAM = GroupName "obscene pictogram"
 pattern SUBTLE_FRESCO = GroupName "subtle fresco"
-pattern TREASURE_CACHE = GroupName "treasure cache"
-pattern TREASURE_CACHE_TRAP = GroupName "treasure cache trap"
 pattern SIGNAGE = GroupName "signage"
 pattern SMALL_FIRE = GroupName "small fire"
 pattern BIG_FIRE = GroupName "big fire"
@@ -64,6 +72,23 @@ pattern FROZEN_GROUND = GroupName "frozen ground"
 pattern SANDSTONE_ROCK = GroupName "sandstone rock"
 
 -- ** Allure-specific
+pattern S_ENCHANCED_BERRY = GroupName "enhanced berry"
+pattern S_COOKED_BERRY = GroupName "cooked berry"
+pattern S_FRAYED_FUNGUS = GroupName "frayed fungus"
+pattern S_COOKED_FUNGUS = GroupName "cooked fungus"
+pattern S_THIC_LEAF = GroupName "thick leaf"
+pattern S_COOKED_LEAF = GroupName "cooked leaf"
+pattern S_RECONFIGURED_FRUIT = GroupName "reconfigured fruit"
+pattern S_COOKED_FRUIT = GroupName "cooked fruit"
+pattern S_FRAGRANT_HERB = GroupName "fragrant herb"
+pattern S_COOKED_HERB = GroupName "cooked herb"
+pattern S_DULL_FLOWER = GroupName "dull flower"
+pattern S_COOKED_FLOWER = GroupName "cooked flower"
+pattern S_SPICY_BARK = GroupName "spicy bark"
+pattern S_COOKED_BARK = GroupName "cooked bark"
+pattern S_PUMPKIN = GroupName "pumpkin"
+pattern S_COOKED_PUMPKIN = GroupName "cooked pumpkin"
+
 pattern ABANDONED_CACHE = GroupName "abandoned cache"
 pattern JEWELRY_DISPLAY_TRAP = GroupName "jewelry display trap"
 pattern BLACK_STARRY_SKY = GroupName "black starry sky"
@@ -83,34 +108,17 @@ pattern DECONTAMINATION_CHAMBER = GroupName "decontamination chamber"
 
 pattern FIRE_FIGHTING_ITEM = GroupName "fire fighting item"
 
-pattern ENCHANCED_BERRY = GroupName "enhanced berry"
-pattern COOKED_BERRY = GroupName "cooked berry"
-pattern FRAYED_FUNGUS = GroupName "frayed fungus"
-pattern COOKED_FUNGUS = GroupName "cooked fungus"
-pattern THIC_LEAF = GroupName "thick leaf"
-pattern COOKED_LEAF = GroupName "cooked leaf"
-pattern RECONFIGURED_FRUIT = GroupName "reconfigured fruit"
-pattern COOKED_FRUIT = GroupName "cooked fruit"
-pattern FRAGRANT_HERB = GroupName "fragrant herb"
-pattern COOKED_HERB = GroupName "cooked herb"
-pattern DULL_FLOWER = GroupName "dull flower"
-pattern COOKED_FLOWER = GroupName "cooked flower"
-pattern SPICY_BARK = GroupName "spicy bark"
-pattern COOKED_BARK = GroupName "cooked bark"
-pattern PUMPKIN = GroupName "pumpkin"
-pattern COOKED_PUMPKIN = GroupName "cooked pumpkin"
-
 cookingAssocs :: [(GroupName ItemKind, GroupName ItemKind)]
 cookingAssocs =
   [ (RAW_MEAT_CHUNK, ROASTED_MEAT_CHUNK)
-  , (ENCHANCED_BERRY, COOKED_BERRY)
-  , (FRAYED_FUNGUS, COOKED_FUNGUS)
-  , (THIC_LEAF, COOKED_LEAF)
-  , (RECONFIGURED_FRUIT, COOKED_FRUIT)
-  , (FRAGRANT_HERB, COOKED_HERB)
-  , (DULL_FLOWER, COOKED_FLOWER)
-  , (SPICY_BARK, COOKED_BARK)
-  , (PUMPKIN, COOKED_PUMPKIN) ]
+  , (S_ENCHANCED_BERRY, S_COOKED_BERRY)
+  , (S_FRAYED_FUNGUS, S_COOKED_FUNGUS)
+  , (S_THIC_LEAF, S_COOKED_LEAF)
+  , (S_RECONFIGURED_FRUIT, S_COOKED_FRUIT)
+  , (S_FRAGRANT_HERB, S_COOKED_HERB)
+  , (S_DULL_FLOWER, S_COOKED_FLOWER)
+  , (S_SPICY_BARK, S_COOKED_BARK)
+  , (S_PUMPKIN, S_COOKED_PUMPKIN) ]
 
 -- * Content
 
@@ -159,7 +167,7 @@ obscenePictogram = ItemKind
   , iaspects = [Timeout 7, SetFlag Durable]
   , ieffects = [ VerbMsg "enter inexplicable rage at a glimpse of the inscrutable graffiti"
                , RefillCalm (-20)
-               , OneOf [ toOrganGood STRENGTHENED (3 + 1 `d` 2)
+               , OneOf [ toOrganGood S_STRENGTHENED (3 + 1 `d` 2)
                        , CreateItem CStash SANDSTONE_ROCK timerNone ] ]
   , idesc    = ""  -- alien writing? or runaway robot AI?
   , ikit     = []
@@ -176,7 +184,7 @@ subtleFresco = ItemKind
   , idamage  = 0
   , iaspects = [Timeout 10, SetFlag Durable]
   , ieffects = [ VerbMsg "feel refreshed by the subtle fresco"
-               , toOrganGood FAR_SIGHTED (5 + 1 `d` 2) ]
+               , toOrganGood S_FAR_SIGHTED (5 + 1 `d` 2) ]
   , idesc    = "Expensive yet tasteful."
   , ikit     = []
   }
@@ -206,9 +214,9 @@ treasureCacheTrap = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = []  -- not Durable, springs at most once
-  , ieffects = [OneOf [ toOrganBad BLIND (10 + 1 `d` 10)
+  , ieffects = [OneOf [ toOrganBad S_BLIND (10 + 1 `d` 10)
                       , RefillCalm (-99)
-                      , Explode FOCUSED_CONCUSSION
+                      , Explode S_FOCUSED_CONCUSSION
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1) ]]
   , idesc    = "A display of such kingly trinkets warrants an autonomous guarding device. The precaution is particularly understandable if some of the merchandise is capable of instantly frying video monitoring equipment across the hall."
   , ikit     = []
@@ -265,7 +273,7 @@ fireBig = fireSmall
   , iaspects = [ELabel "of immolation", SetFlag Durable]
   , ieffects = [ Burn 2
                , CreateItem CStash WOODEN_TORCH timerNone
-               , Explode SPARK ]
+               , Explode S_SPARK ]
   , idesc    = "Glowing with light and warmth."
   , ikit     = []
   }
@@ -297,9 +305,9 @@ rubble = ItemKind
   , iweight  = 100000
   , idamage  = 0
   , iaspects = [SetFlag Durable]
-  , ieffects = [OneOf [ Explode FOCUSED_GLASS_HAIL
+  , ieffects = [OneOf [ Explode S_FOCUSED_GLASS_HAIL
                       , Summon MOBILE_ANIMAL $ 1 `dL` 2
-                      , toOrganNoTimer POISONED
+                      , toOrganNoTimer S_POISONED
                       , CreateItem CGround COMMON_ITEM timerNone
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1)
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1) ]]
@@ -324,17 +332,17 @@ doorwayTrapTemplate = ItemKind
   }
 doorwayTrap1 = doorwayTrapTemplate
   { ifreq    = [(DOORWAY_TRAP, 50)]
-  , ieffects = [toOrganBad BLIND $ (1 `dL` 4) * 5]
+  , ieffects = [toOrganBad S_BLIND $ (1 `dL` 4) * 5]
   -- , idesc    = ""
   }
 doorwayTrap2 = doorwayTrapTemplate
   { ifreq    = [(DOORWAY_TRAP, 25)]
-  , ieffects = [toOrganBad SLOWED $ (1 `dL` 4) * 10]
+  , ieffects = [toOrganBad S_SLOWED $ (1 `dL` 4) * 10]
   -- , idesc    = ""
   }
 doorwayTrap3 = doorwayTrapTemplate
   { ifreq    = [(DOORWAY_TRAP, 25)]
-  , ieffects = [toOrganBad WEAKENED $ (1 `dL` 4) * 10 ]
+  , ieffects = [toOrganBad S_WEAKENED $ (1 `dL` 4) * 10 ]
   -- , idesc    = ""
   }
 stairsUp = ItemKind
@@ -393,7 +401,7 @@ stairsTrapDown = stairsTrapUp
   { ifreq    = [(STAIRS_TRAP_DOWN, 1)]
   , iverbHit = "open up under"
   , ieffects = [ VerbMsg "tumble down the stairwell"
-               , toOrganGood DRUNK (20 + 1 `d` 5) ]
+               , toOrganGood S_DRUNK (20 + 1 `d` 5) ]
   , idesc    = "A treacherous slab, to teach those who are too proud."
   }
 lectern = ItemKind
@@ -410,7 +418,7 @@ lectern = ItemKind
   , ieffects = [ OneOf [ CreateItem CGround ANY_SCROLL timerNone
                        , Detect DetectAll 20
                        , Paralyze $ (1 `dL` 6) * 10
-                       , toOrganGood DRUNK (20 + 1 `d` 5) ]
+                       , toOrganGood S_DRUNK (20 + 1 `d` 5) ]
                , Explode STORY_TELLING ]
   , idesc    = ""
   , ikit     = []
@@ -426,7 +434,7 @@ shallowWater = ItemKind
   , iweight  = 10000
   , idamage  = 0
   , iaspects = [SetFlag Durable]
-  , ieffects = [ParalyzeInWater 2]  -- TODO: OnCombine(fill all containers)
+  , ieffects = [ParalyzeInWater 2]
   , idesc    = ""
   , ikit     = []
   }
@@ -507,9 +515,9 @@ ruinedFirstAidKit = ItemKind
   , idamage  = 0
   , iaspects = []  -- not Durable, springs at most once
   , ieffects = [ VerbMsg "inspect a tattered CPR instruction soaked in a residue of oily drugs"
-               , OneOf [ toOrganNoTimer SLOW_RESISTANT
-                       , toOrganNoTimer POISON_RESISTANT
-                       , toOrganGood DRUNK (20 + 1 `d` 5) ]
+               , OneOf [ toOrganNoTimer S_SLOW_RESISTANT
+                       , toOrganNoTimer S_POISON_RESISTANT
+                       , toOrganGood S_DRUNK (20 + 1 `d` 5) ]
                , CreateItem CStash NEEDLE timerNone ]
   , idesc    = ""  -- regulations require; say HP not regenerated in the game; mention how to regain HP
   , ikit     = []
@@ -559,7 +567,7 @@ crackedFlue = ItemKind
   , idamage  = 0
   , iaspects = [Timeout 10, SetFlag Durable]
   , ieffects = [ VerbMsg "imagine the fragrance of roasted food wafting through the flue from upstairs"
-               , toOrganGood KEEN_SMELLING (3 + 1 `d` 2) ]
+               , toOrganGood S_KEEN_SMELLING (3 + 1 `d` 2) ]
   , idesc    = "The pipes ring with tumultuous echoes. Whenever you convince yourself it's an uneven updraft singing through the cracks, the nosie suddenly stops, then picks up with a roar. Is there a fight over the food on some upper deck or are you just hungry?"
   , ikit     = []
   }
@@ -602,7 +610,7 @@ liftTrap2 = liftTrap
   { ifreq    = [(LIFT_TRAP, 50)]
   , iverbHit = "choke"
   , ieffects = [ VerbMsg "inhale the gas lingering inside the cab"
-               , toOrganBad SLOWED $ (1 `dL` 4) * 10 ]
+               , toOrganBad S_SLOWED $ (1 `dL` 4) * 10 ]
   , idesc    = ""
   }
 shuttleHardware = ItemKind
@@ -645,7 +653,7 @@ machineOil = ItemKind
 crudeWeld = ItemKind  -- this is also an organ
   { isymbol  = '_'
   , iname    = "crude weld"
-  , ifreq    = [(CRUDE_WELD, 1)]
+  , ifreq    = [(S_CRUDE_WELD, 1)]
   , iflavour = zipPlain [BrMagenta]
   , icount   = 1
   , irarity  = [(1, 1)]
@@ -653,7 +661,7 @@ crudeWeld = ItemKind  -- this is also an organ
   , iweight  = 3000
   , idamage  = 0
   , iaspects = [AddSkill SkMove (-5), AddSkill SkDisplace (-1), SetFlag Durable]
-  , ieffects = [Explode SPARK]
+  , ieffects = [Explode S_SPARK]
   , idesc    = "This is a messy and irregularly layered weld, but no amount of kicking nor hammering makes any impression on it. A heavy duty cutting tool would be required."
   , ikit     = []
   }
@@ -677,7 +685,7 @@ decontaminator = ItemKind
                , DropItem maxBound maxBound CStash TREASURE
                    -- With movable shared stash location this puzzle now has
                    -- more solutions, including one for a lone wolf.
-               , toOrganGood ROSE_SMELLING (20 + 1 `d` 5)
+               , toOrganGood S_ROSE_SMELLING (20 + 1 `d` 5)
                ]
   , idesc    = "The area is under quarantine. No departure is permitted without decontamination. Personal belongings are to be decontaminated separately."
   , ikit     = []

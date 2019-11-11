@@ -7,8 +7,9 @@
 -- | Cave properties.
 module Content.CaveKind
   ( -- * Group name patterns
-    pattern CAVE_ROGUE, pattern CAVE_ARENA, pattern CAVE_LABORATORY, pattern CAVE_NOISE, pattern CAVE_EMPTY, pattern CAVE_SHALLOW_ROGUE, pattern CAVE_OUTERMOST, pattern CAVE_RAID, pattern CAVE_BRAWL, pattern CAVE_SHOOTOUT, pattern CAVE_HUNT, pattern CAVE_ESCAPE, pattern CAVE_ZOO, pattern CAVE_AMBUSH, pattern CAVE_BATTLE, pattern CAVE_SAFARI_1, pattern CAVE_SAFARI_2, pattern CAVE_SAFARI_3
+    pattern CAVE_ROGUE, pattern CAVE_ARENA, pattern CAVE_LABORATORY, pattern CAVE_NOISE, pattern CAVE_SHALLOW_ROGUE, pattern CAVE_OUTERMOST, pattern CAVE_RAID, pattern CAVE_BRAWL, pattern CAVE_SHOOTOUT, pattern CAVE_HUNT, pattern CAVE_ESCAPE, pattern CAVE_ZOO, pattern CAVE_AMBUSH, pattern CAVE_BATTLE, pattern CAVE_SAFARI_1, pattern CAVE_SAFARI_2, pattern CAVE_SAFARI_3
   , pattern CAVE_BRIDGE, pattern CAVE_RESIDENTIAL, pattern CAVE_MUSEUM, pattern CAVE_EXIT, pattern CAVE_CASINO, pattern CAVE_POWER
+  , groupNamesSingleton, groupNames
   , -- * Content
     content
   ) where
@@ -19,11 +20,14 @@ import Game.LambdaHack.Core.Prelude
 
 import Data.Ratio
 
-import           Content.ItemKind hiding (content)
+import           Content.ItemKind hiding (content, groupNames,
+                                   groupNamesSingleton)
 import           Content.ItemKindActor
 import           Content.ItemKindBlast
-import           Content.PlaceKind hiding (content)
-import           Content.TileKind hiding (content)
+import           Content.PlaceKind hiding (content, groupNames,
+                                    groupNamesSingleton)
+import           Content.TileKind hiding (content, groupNames,
+                                   groupNamesSingleton)
 import           Game.LambdaHack.Content.CaveKind
 import qualified Game.LambdaHack.Content.ItemKind as IK
 import           Game.LambdaHack.Content.TileKind
@@ -32,7 +36,15 @@ import           Game.LambdaHack.Definition.Defs
 
 -- * Group name patterns
 
-pattern CAVE_ROGUE, CAVE_ARENA, CAVE_LABORATORY, CAVE_NOISE, CAVE_EMPTY, CAVE_SHALLOW_ROGUE, CAVE_OUTERMOST, CAVE_RAID, CAVE_BRAWL, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_ESCAPE, CAVE_ZOO, CAVE_AMBUSH, CAVE_BATTLE, CAVE_SAFARI_1, CAVE_SAFARI_2, CAVE_SAFARI_3 :: GroupName CaveKind
+groupNamesSingleton :: [GroupName CaveKind]
+groupNamesSingleton = []
+
+groupNames :: [GroupName CaveKind]
+groupNames =
+       [CAVE_ROGUE, CAVE_ARENA, CAVE_LABORATORY, CAVE_NOISE, CAVE_SHALLOW_ROGUE, CAVE_OUTERMOST, CAVE_RAID, CAVE_BRAWL, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_ESCAPE, CAVE_ZOO, CAVE_AMBUSH, CAVE_BATTLE, CAVE_SAFARI_1, CAVE_SAFARI_2, CAVE_SAFARI_3]
+    ++ [CAVE_BRIDGE, CAVE_RESIDENTIAL, CAVE_MUSEUM, CAVE_EXIT, CAVE_CASINO, CAVE_POWER]
+
+pattern CAVE_ROGUE, CAVE_ARENA, CAVE_LABORATORY, CAVE_NOISE, CAVE_SHALLOW_ROGUE, CAVE_OUTERMOST, CAVE_RAID, CAVE_BRAWL, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_ESCAPE, CAVE_ZOO, CAVE_AMBUSH, CAVE_BATTLE, CAVE_SAFARI_1, CAVE_SAFARI_2, CAVE_SAFARI_3 :: GroupName CaveKind
 
 pattern CAVE_BRIDGE, CAVE_RESIDENTIAL, CAVE_MUSEUM, CAVE_EXIT, CAVE_CASINO, CAVE_POWER :: GroupName CaveKind
 
@@ -40,7 +52,6 @@ pattern CAVE_ROGUE = GroupName "caveRogue"
 pattern CAVE_ARENA = GroupName "caveArena"
 pattern CAVE_LABORATORY = GroupName "caveLaboratory"
 pattern CAVE_NOISE = GroupName "caveNoise"
-pattern CAVE_EMPTY = GroupName "caveEmpty"
 pattern CAVE_SHALLOW_ROGUE = GroupName "caveShallowRogue"
 pattern CAVE_OUTERMOST = GroupName "caveOutermost"
 pattern CAVE_RAID = GroupName "caveRaid"

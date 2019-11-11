@@ -11,6 +11,7 @@ module Content.ItemKindActor
   , pattern ADD_SIGHT, pattern ARMOR_RANGED, pattern ADD_NOCTO_1, pattern WEAK_ARROW, pattern LIGHT_MANIPULATION, pattern WOODEN_TORCH, pattern BLANKET, pattern RING_OF_OPPORTUNITY_SNIPER, pattern ANY_ARROW, pattern STARTING_WEAPON, pattern GEM
   , pattern CRAWL_HERO, pattern MERCENARY_HERO, pattern AQUATIC_ANIMAL, pattern AQUATIC_MONSTER, pattern ROBOT, pattern MOBILE_ROBOT, pattern IMMOBILE_ROBOT, pattern CONSTRUCTION_ROBOT
   , pattern COOKED_FOOD, pattern MERCENARY_WEAPON, pattern BULLTEPROOF_VEST, pattern MERCENARY_AMMO, pattern RAW_MEAT_CHUNK, pattern ROASTED_MEAT_CHUNK, pattern NEEDLE, pattern CAN_OF_STICKY_FOAM, pattern TRANQUILIZER_DART, pattern WASTE_CONTAINER, pattern CONSTRUCTION_HOOTER, pattern SPOTLIGHT, pattern BLOWTORCH
+  , actorsGN
   , -- * Content
     actors
   ) where
@@ -27,6 +28,13 @@ import Game.LambdaHack.Definition.Defs
 import Game.LambdaHack.Definition.Flavour
 
 -- * Group name patterns
+
+actorsGN :: [GroupName ItemKind]
+actorsGN =
+       [HERO, SCOUT_HERO, RANGER_HERO, ESCAPIST_HERO, AMBUSHER_HERO, BRAWLER_HERO, SOLDIER_HERO, CIVILIAN, MONSTER, MOBILE_MONSTER, SCOUT_MONSTER, ANIMAL, MOBILE_ANIMAL, IMMOBILE_ANIMAL]
+    ++ [ADD_SIGHT, ARMOR_RANGED, ADD_NOCTO_1, WEAK_ARROW, LIGHT_MANIPULATION, WOODEN_TORCH, BLANKET, RING_OF_OPPORTUNITY_SNIPER, ANY_ARROW, STARTING_WEAPON, GEM]
+    ++ [CRAWL_HERO, MERCENARY_HERO, AQUATIC_ANIMAL, AQUATIC_MONSTER, ROBOT, MOBILE_ROBOT, IMMOBILE_ROBOT, CONSTRUCTION_ROBOT]
+    ++ [COOKED_FOOD, MERCENARY_WEAPON, BULLTEPROOF_VEST, MERCENARY_AMMO, RAW_MEAT_CHUNK, ROASTED_MEAT_CHUNK, NEEDLE, CAN_OF_STICKY_FOAM, TRANQUILIZER_DART, WASTE_CONTAINER, CONSTRUCTION_HOOTER, SPOTLIGHT, BLOWTORCH]
 
 pattern HERO, SCOUT_HERO, RANGER_HERO, ESCAPIST_HERO, AMBUSHER_HERO, BRAWLER_HERO, SOLDIER_HERO, CIVILIAN, MONSTER, MOBILE_MONSTER, SCOUT_MONSTER, ANIMAL, MOBILE_ANIMAL, IMMOBILE_ANIMAL :: GroupName ItemKind
 
@@ -111,10 +119,10 @@ giantOctopus, razorwireFence, electricFence, activeFence, steamFaucet, biogasFau
 -- * Hunams
 
 humanOrgans :: [(GroupName ItemKind, CStore)]
-humanOrgans = [ (FIST, COrgan), (FOOT, COrgan)
-              , (EYE_6, COrgan), (EAR_3, COrgan)
-              , (SAPIENT_BRAIN, COrgan)
-              , (ANIMAL_STOMACH, COrgan), (HUNGRY, COrgan) ]
+humanOrgans = [ (S_FIST, COrgan), (S_FOOT, COrgan)
+              , (S_EYE_6, COrgan), (S_EAR_3, COrgan)
+              , (S_SAPIENT_BRAIN, COrgan)
+              , (S_ANIMAL_STOMACH, COrgan), (S_HUNGRY, COrgan) ]
 warrior = ItemKind
   { isymbol  = '@'
   , iname    = "mercenary"  -- modified if initial actors in hero faction
@@ -136,7 +144,7 @@ warrior = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = ""
-  , ikit     = humanOrgans ++ [(GENETIC_FLAW_10, COrgan)]
+  , ikit     = humanOrgans ++ [(S_GENETIC_FLAW_10, COrgan)]
   }
 warrior2 = warrior
   { iname    = "pilot"
@@ -273,9 +281,9 @@ eye = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Walks with a stately dignity. You read death in the slow beckoning gestures of its revolting upper appendages."
-  , ikit     = [ (FOOT, COrgan), (TENTACLE, COrgan)
-               , (BARK, COrgan), (EYE_6, COrgan)
-               , (SAPIENT_BRAIN, COrgan) ]  -- no voice, no hearing
+  , ikit     = [ (S_FOOT, COrgan), (S_TENTACLE, COrgan)
+               , (S_BARK, COrgan), (S_EYE_6, COrgan)
+               , (S_SAPIENT_BRAIN, COrgan) ]  -- no voice, no hearing
   }
 fastEye = ItemKind
   { isymbol  = 'b'
@@ -294,10 +302,10 @@ fastEye = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "It bites as blindingly fast as it runs. Or rolls? Or crawls? Also, cuts and pierces."
-  , ikit     = [ (JAW, COrgan), (RAZOR, COrgan), (HORN, COrgan)
-               , (SPEED_GLAND_10, COrgan)
-               , (EYE_3, COrgan), (EAR_3, COrgan)
-               , (SAPIENT_BRAIN, COrgan) ]
+  , ikit     = [ (S_JAW, COrgan), (S_RAZOR, COrgan), (S_HORN, COrgan)
+               , (S_SPEED_GLAND_10, COrgan)
+               , (S_EYE_3, COrgan), (S_EAR_3, COrgan)
+               , (S_SAPIENT_BRAIN, COrgan) ]
   }
 nose = ItemKind  -- depends solely on smell
   { isymbol  = 'h'
@@ -318,10 +326,10 @@ nose = ItemKind  -- depends solely on smell
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A blind, slimy mass of loose tissue. You'd think it's powerless, but as soon as it touches your trembling body, clawing, stinging and burning erupts and can't be fended off."
-  , ikit     = [ (SMALL_CLAW, COrgan), (STING, COrgan)
-               , (VENOM_TOOTH, COrgan)
-               , (NOSTRIL, COrgan)
-               , (SAPIENT_BRAIN, COrgan) ]  -- no sight nor hearing
+  , ikit     = [ (S_SMALL_CLAW, COrgan), (S_STING, COrgan)
+               , (S_VENOM_TOOTH, COrgan)
+               , (S_NOSTRIL, COrgan)
+               , (S_SAPIENT_BRAIN, COrgan) ]  -- no sight nor hearing
   }
 elbow = ItemKind
   { isymbol  = 's'
@@ -342,10 +350,10 @@ elbow = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "It moves in sudden jerks and never makes a noise. Speaks in hard objects hurled at deadly speeds."
-  , ikit     = [ (SPEED_GLAND_5, COrgan)
-               , (EYE_6, COrgan), (EAR_8, COrgan)
+  , ikit     = [ (S_SPEED_GLAND_5, COrgan)
+               , (S_EYE_6, COrgan), (S_EAR_8, COrgan)
                    -- too powerful to get stronger sight
-               , (SAPIENT_BRAIN, COrgan)
+               , (S_SAPIENT_BRAIN, COrgan)
                , (ANY_ARROW, CStash), (ANY_ARROW, CStash)
                , (WEAK_ARROW, CStash), (WEAK_ARROW, CStash) ]
   }
@@ -370,12 +378,12 @@ torsor = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "The mind, the big heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw and dripping fangs."
-  , ikit     = [ (TENTACLE, COrgan), (HOOKED_CLAW, COrgan)
+  , ikit     = [ (S_TENTACLE, COrgan), (S_HOOKED_CLAW, COrgan)
                    -- at least one non-timed
-               , (LARGE_JAW, COrgan), (VENOM_FANG, COrgan)
-               , (SPEED_GLAND_5, COrgan)
-               , (EYE_6, COrgan), (EAR_8, COrgan)
-               , (SAPIENT_BRAIN, COrgan)
+               , (S_LARGE_JAW, COrgan), (S_VENOM_FANG, COrgan)
+               , (S_SPEED_GLAND_5, COrgan)
+               , (S_EYE_6, COrgan), (S_EAR_8, COrgan)
+               , (S_SAPIENT_BRAIN, COrgan)
                , (GEM, CStash), (GEM, CStash)
                , (GEM, CStash), (GEM, CStash) ]
   }
@@ -401,10 +409,10 @@ goldenJackal = ItemKind  -- basically a much smaller and slower hyena
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "An opportunistic predator, feeding on carrion and the weak."
-  , ikit     = [ (SMALL_JAW, COrgan)
-               , (EYE_6, COrgan), (NOSTRIL, COrgan), (EAR_8, COrgan)
-               , (ANIMAL_BRAIN, COrgan), (ANIMAL_STOMACH, COrgan)
-               , (GENETIC_FLAW_3, COrgan) ]
+  , ikit     = [ (S_SMALL_JAW, COrgan)
+               , (S_EYE_6, COrgan), (S_NOSTRIL, COrgan), (S_EAR_8, COrgan)
+               , (S_ANIMAL_BRAIN, COrgan)
+               , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_3, COrgan) ]
   }
 griffonVulture = ItemKind
   { isymbol  = 'v'
@@ -430,12 +438,12 @@ griffonVulture = ItemKind
       -- on either side, are just too bothersome.
   , ieffects = []
   , idesc    = "It soars high above, searching for vulnerable prey."
-  , ikit     = [ (SCREECHING_BEAK, COrgan)  -- in reality it grunts and hisses
-               , (SMALL_CLAW, COrgan)
-               , (EYE_8, COrgan), (EAR_8, COrgan)
+  , ikit     = [ (S_SCREECHING_BEAK, COrgan)  -- in reality it grunts and hisses
+               , (S_SMALL_CLAW, COrgan)
+               , (S_EYE_8, COrgan), (S_EAR_8, COrgan)
                    -- can't shoot, so strong sight is OK
-               , (ANIMAL_BRAIN, COrgan), (ANIMAL_STOMACH, COrgan)
-               , (GENETIC_FLAW_3, COrgan) ]
+               , (S_ANIMAL_BRAIN, COrgan)
+               , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_3, COrgan) ]
   }
 skunk = ItemKind
   { isymbol  = 's'
@@ -454,11 +462,11 @@ skunk = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Its only defence is the terrible stench."
-  , ikit     = [ (SCENT_GLAND, COrgan)
-               , (SMALL_CLAW, COrgan), (SNOUT, COrgan)
-               , (EYE_3, COrgan), (EAR_6, COrgan)
-               , (ANIMAL_BRAIN, COrgan), (ANIMAL_STOMACH, COrgan)
-               , (GENETIC_FLAW_3, COrgan) ]
+  , ikit     = [ (S_SCENT_GLAND, COrgan)
+               , (S_SMALL_CLAW, COrgan), (S_SNOUT, COrgan)
+               , (S_EYE_3, COrgan), (S_EAR_6, COrgan)
+               , (S_ANIMAL_BRAIN, COrgan)
+               , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_3, COrgan) ]
   }
 armadillo = ItemKind
   { isymbol  = 'a'
@@ -476,11 +484,11 @@ armadillo = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "When threatened, it rolls into a ball."
-  , ikit     = [ (HOOKED_CLAW, COrgan), (SNOUT, COrgan)
-               , (ARMORED_SKIN, COrgan), (ARMORED_SKIN, COrgan)
-               , (EYE_3, COrgan), (NOSTRIL, COrgan), (EAR_6, COrgan)
-               , (ANIMAL_BRAIN, COrgan), (ANIMAL_STOMACH, COrgan)
-               , (GENETIC_FLAW_3, COrgan)
+  , ikit     = [ (S_HOOKED_CLAW, COrgan), (S_SNOUT, COrgan)
+               , (S_ARMORED_SKIN, COrgan), (S_ARMORED_SKIN, COrgan)
+               , (S_EYE_3, COrgan), (S_NOSTRIL, COrgan), (S_EAR_6, COrgan)
+               , (S_ANIMAL_BRAIN, COrgan)
+               , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_3, COrgan)
                , (RAW_MEAT_CHUNK, CEqp) ]
   }
 gilaMonster = ItemKind
@@ -499,10 +507,10 @@ gilaMonster = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Numbing venom ensures that even the fastest prey has no escape."
-  , ikit     = [ (VENOM_TOOTH, COrgan), (SMALL_CLAW, COrgan)
-               , (EYE_3, COrgan), (NOSTRIL, COrgan), (EAR_6, COrgan)
-               , (ANIMAL_BRAIN, COrgan)  -- small reptile, hungers slowly
-               , (GENETIC_FLAW_3, COrgan) ]
+  , ikit     = [ (S_VENOM_TOOTH, COrgan), (S_SMALL_CLAW, COrgan)
+               , (S_EYE_3, COrgan), (S_NOSTRIL, COrgan), (S_EAR_6, COrgan)
+               , (S_ANIMAL_BRAIN, COrgan)  -- small reptile, hungers slowly
+               , (S_GENETIC_FLAW_3, COrgan) ]
   }
 rattlesnake = ItemKind
   { isymbol  = 's'
@@ -520,11 +528,11 @@ rattlesnake = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Beware its rattle - it serves as a warning of an agonising death."
-  , ikit     = [ (VENOM_FANG, COrgan)  -- when on cooldown, it's weaponless
-               , (RATLLE, COrgan)
-               , (EYE_3, COrgan), (NOSTRIL, COrgan), (EAR_6, COrgan)
-               , (ANIMAL_BRAIN, COrgan)  -- small reptile, hungers slowly
-               , (GENETIC_FLAW_3, COrgan)
+  , ikit     = [ (S_VENOM_FANG, COrgan)  -- when on cooldown, it's weaponless
+               , (S_RATLLE, COrgan)
+               , (S_EYE_3, COrgan), (S_NOSTRIL, COrgan), (S_EAR_6, COrgan)
+               , (S_ANIMAL_BRAIN, COrgan)  -- small reptile, hungers slowly
+               , (S_GENETIC_FLAW_3, COrgan)
                , (RAW_MEAT_CHUNK, CEqp) ]
   }
 hyena = ItemKind
@@ -543,10 +551,10 @@ hyena = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Skulking in the shadows, waiting for easy prey."
-  , ikit     = [ (JAW, COrgan)
-               , (EYE_6, COrgan), (NOSTRIL, COrgan), (EAR_8, COrgan)
-               , (ANIMAL_BRAIN, COrgan), (ANIMAL_STOMACH, COrgan)
-               , (GENETIC_FLAW_3, COrgan) ]
+  , ikit     = [ (S_JAW, COrgan)
+               , (S_EYE_6, COrgan), (S_NOSTRIL, COrgan), (S_EAR_8, COrgan)
+               , (S_ANIMAL_BRAIN, COrgan)
+               , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_3, COrgan) ]
   }
 komodoDragon = ItemKind
   { isymbol  = 'k'
@@ -564,12 +572,13 @@ komodoDragon = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Larger and more aggressive than any other lizard, but as easily recovering from wounds as its lesser cousins."
-  , ikit     = [ (LARGE_TAIL, COrgan), (JAW, COrgan)
-               , (HOOKED_CLAW, COrgan)
-               , (SPEED_GLAND_5, COrgan), (ARMORED_SKIN, COrgan)
-               , (EYE_3, COrgan), (NOSTRIL, COrgan), (EAR_3, COrgan)
-               , (ANIMAL_BRAIN, COrgan), (ANIMAL_STOMACH, COrgan)
-               , (GENETIC_FLAW_3, COrgan)  -- not to wake it up too soon
+  , ikit     = [ (S_LARGE_TAIL, COrgan), (S_JAW, COrgan)
+               , (S_HOOKED_CLAW, COrgan)
+               , (S_SPEED_GLAND_5, COrgan), (S_ARMORED_SKIN, COrgan)
+               , (S_EYE_3, COrgan), (S_NOSTRIL, COrgan), (S_EAR_3, COrgan)
+               , (S_ANIMAL_BRAIN, COrgan)
+               , (S_ANIMAL_STOMACH, COrgan)
+               , (S_GENETIC_FLAW_3, COrgan)  -- not to wake it up too soon
                , (RAW_MEAT_CHUNK, CEqp), (RAW_MEAT_CHUNK, CEqp) ]
   }
 alligator = ItemKind
@@ -591,12 +600,12 @@ alligator = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "An armored predator from the dawn of time. You better not get within its reach."
-  , ikit     = [ (HUGE_TAIL, COrgan), (LARGE_JAW, COrgan)
-               , (SMALL_CLAW, COrgan)
-               , (ARMORED_SKIN, COrgan)
-               , (EYE_6, COrgan), (EAR_8, COrgan)
-               , (ANIMAL_BRAIN, COrgan), (ANIMAL_STOMACH, COrgan)
-               , (GENETIC_FLAW_10, COrgan)
+  , ikit     = [ (S_HUGE_TAIL, COrgan), (S_LARGE_JAW, COrgan)
+               , (S_SMALL_CLAW, COrgan)
+               , (S_ARMORED_SKIN, COrgan)
+               , (S_EYE_6, COrgan), (S_EAR_8, COrgan)
+               , (S_ANIMAL_BRAIN, COrgan)
+               , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_10, COrgan)
                , (RAW_MEAT_CHUNK, CEqp), (RAW_MEAT_CHUNK, CEqp) ]
   }
 rhinoceros = ItemKind
@@ -618,10 +627,11 @@ rhinoceros = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "The last of its kind. Blind with rage, or perhaps due to the postoperative scars. A huge mass of muscle that charges at deadly speed."
-  , ikit     = [ (RHINO_HORN, COrgan), (SNOUT, COrgan)
-               , (ARMORED_SKIN, COrgan)
-               , (EYE_3, COrgan), (EAR_8, COrgan)
-               , (ANIMAL_BRAIN, COrgan), (ANIMAL_STOMACH, COrgan)
+  , ikit     = [ (S_RHINO_HORN, COrgan), (S_SNOUT, COrgan)
+               , (S_ARMORED_SKIN, COrgan)
+               , (S_EYE_3, COrgan), (S_EAR_8, COrgan)
+               , (S_ANIMAL_BRAIN, COrgan)
+               , (S_ANIMAL_STOMACH, COrgan)
                , (RAW_MEAT_CHUNK, CEqp), (RAW_MEAT_CHUNK, CEqp)
                , (RAW_MEAT_CHUNK, CEqp), (RAW_MEAT_CHUNK, CEqp) ]
   }
@@ -646,9 +656,9 @@ beeSwarm = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Every bee would die for the queen."
-  , ikit     = [ (BEE_STING, COrgan)  -- weaponless when it's used up
-               , (VISION_6, COrgan), (EAR_6, COrgan)
-               , (INSECT_MORTALITY, COrgan), (ANIMAL_BRAIN, COrgan) ]
+  , ikit     = [ (S_BEE_STING, COrgan)  -- weaponless when it's used up
+               , (S_VISION_6, COrgan), (S_EAR_6, COrgan)
+               , (S_INSECT_MORTALITY, COrgan), (S_ANIMAL_BRAIN, COrgan) ]
   }
 hornetSwarm = ItemKind
   { isymbol  = 'h'
@@ -669,9 +679,9 @@ hornetSwarm = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A vicious cloud of stings and hate."
-  , ikit     = [ (STING, COrgan)  -- when on cooldown, it's weaponless
-               , (VISION_6, COrgan), (EAR_6, COrgan)
-               , (INSECT_MORTALITY, COrgan), (ANIMAL_BRAIN, COrgan) ]
+  , ikit     = [ (S_STING, COrgan)  -- when on cooldown, it's weaponless
+               , (S_VISION_6, COrgan), (S_EAR_6, COrgan)
+               , (S_INSECT_MORTALITY, COrgan), (S_ANIMAL_BRAIN, COrgan) ]
   }
 thornbush = ItemKind
   { isymbol  = 't'
@@ -689,8 +699,8 @@ thornbush = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Each branch bears long, curved thorns."
-  , ikit     = [ (THORN, COrgan)  -- after all run out, it's weaponless
-               , (BARK, COrgan) ]
+  , ikit     = [ (S_THORN, COrgan)  -- after all run out, it's weaponless
+               , (S_BARK, COrgan) ]
   }
 
 -- * Allure-specific animals
@@ -713,12 +723,12 @@ giantOctopus = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "It has eight arms of rage."
-  , ikit     = [ (TENTACLE, COrgan), (TENTACLE, COrgan)
-               , (SMALL_BEAK, COrgan)  -- TODO: use when tentacles torn out
-               , (EYE_8, COrgan)
+  , ikit     = [ (S_TENTACLE, COrgan), (S_TENTACLE, COrgan)
+               , (S_SMALL_BEAK, COrgan)  -- TODO: use when tentacles torn out
+               , (S_EYE_8, COrgan)
                    -- shots not too damaging, so can have strong sight
-               , (ANIMAL_BRAIN, COrgan), (ANIMAL_STOMACH, COrgan)
-               , (GENETIC_FLAW_3, COrgan)
+               , (S_ANIMAL_BRAIN, COrgan)
+               , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_3, COrgan)
                , (RAW_MEAT_CHUNK, CEqp), (RAW_MEAT_CHUNK, CEqp) ]
  }
 
@@ -744,7 +754,7 @@ razorwireFence = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Must have been bought by previous ship owners to contain the wild animal infestation."
-  , ikit     = [(RAZOR, COrgan), (RAZOR, COrgan)]
+  , ikit     = [(S_RAZOR, COrgan), (S_RAZOR, COrgan)]
   }
 electricFence = ItemKind
   { isymbol  = 'f'
@@ -763,7 +773,7 @@ electricFence = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Marginally intelligent electric shepherd. Originally used in orbital dairy farms and planetary zoos."
-  , ikit     = [(LIVE_WIRE, COrgan)]
+  , ikit     = [(S_LIVE_WIRE, COrgan)]
   }
 activeFence = ItemKind
   { isymbol  = 'f'
@@ -783,7 +793,7 @@ activeFence = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Makeshift, mostly non-lethal, autonomous perimeter defense outpost."
-  , ikit     = [ (VISION_6, COrgan)
+  , ikit     = [ (S_VISION_6, COrgan)
                , (NEEDLE, CStash), (CAN_OF_STICKY_FOAM, CStash) ]
                    -- can of sticky foam is exploitable, but it spawns
                    -- reasonably often only on one level and not for
@@ -805,7 +815,7 @@ steamFaucet = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A cracked valve on one of the superheated water pipes spreading radially outward from the tokamak level."
-  , ikit     = [(BOILING_VENT, COrgan), (BOILING_FISSURE, COrgan)]
+  , ikit     = [(S_BOILING_VENT, COrgan), (S_BOILING_FISSURE, COrgan)]
   }
 biogasFaucet = ItemKind
   { isymbol  = 'f'
@@ -823,7 +833,7 @@ biogasFaucet = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "An emergency pressure-release vent on a smelly biogas pipe."
-  , ikit     = [(BIOGAS_VENT, COrgan), (BIOGAS_FISSURE, COrgan)]
+  , ikit     = [(S_BIOGAS_VENT, COrgan), (S_BIOGAS_FISSURE, COrgan)]
   }
 medbotFaucet = ItemKind
   { isymbol  = 'f'
@@ -841,7 +851,7 @@ medbotFaucet = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A faucet of a malfunctioning nano medical robot dispenser. Let's hope the medbots are still effective."
-  , ikit     = [(MEDBOT_VENT, COrgan), (MEDBOT_FISSUE, COrgan)]
+  , ikit     = [(S_MEDBOT_VENT, COrgan), (S_MEDBOT_FISSUE, COrgan)]
   }
 surveillanceDrone = ItemKind
   { isymbol  = 'd'
@@ -863,7 +873,7 @@ surveillanceDrone = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A video camera in each room would violate privacy of passengers, hence surveillance drones. Programmed to be easy to fend off, they keep a respectful distance."
-  , ikit     = [ (VISION_16, COrgan), (ROBOT_BRAIN, COrgan) ]
+  , ikit     = [ (S_VISION_16, COrgan), (S_ROBOT_BRAIN, COrgan) ]
   }
 shepherdDrone = ItemKind
   { isymbol  = 'd'
@@ -886,8 +896,8 @@ shepherdDrone = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "An tiny airborne robot designed to take construction measurements, synchronize robot workers and report irregularities, if any."
-  , ikit     = [ (LIVE_WIRE, COrgan), (VISION_16, COrgan), (EAR_8, COrgan)
-               , (ROBOT_BRAIN, COrgan) ]
+  , ikit     = [ (S_LIVE_WIRE, COrgan), (S_VISION_16, COrgan), (S_EAR_8, COrgan)
+               , (S_ROBOT_BRAIN, COrgan) ]
   }
 huntingDrone = ItemKind
   { isymbol  = 'd'
@@ -908,9 +918,9 @@ huntingDrone = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Originally designed for hunting down and putting to sleep stray animals. The sleeping agent must have long since dried up."
-  , ikit     = [ (EYE_8, COrgan), (NOSTRIL, COrgan), (EAR_8, COrgan)
+  , ikit     = [ (S_EYE_8, COrgan), (S_NOSTRIL, COrgan), (S_EAR_8, COrgan)
                    -- week projectiles, so strong sight OK
-               , (ROBOT_BRAIN, COrgan)
+               , (S_ROBOT_BRAIN, COrgan)
                , (NEEDLE, CStash), (TRANQUILIZER_DART, CStash) ]
   }
 homeRobot = ItemKind
@@ -930,9 +940,9 @@ homeRobot = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Once a timid household robot, now sufficiently adapted to survive in the deadly environment."
-  , ikit     = [ (FIST, COrgan)
-               , (EYE_3, COrgan), (NOSTRIL, COrgan), (EAR_3, COrgan)
-               , (ROBOT_BRAIN, COrgan) ]
+  , ikit     = [ (S_FIST, COrgan)
+               , (S_EYE_3, COrgan), (S_NOSTRIL, COrgan), (S_EAR_3, COrgan)
+               , (S_ROBOT_BRAIN, COrgan) ]
   }
 wasteRobot = ItemKind
   { isymbol  = 'r'
@@ -950,9 +960,9 @@ wasteRobot = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "You are not in its database, hence you are waste."
-  , ikit     = [ (TENTACLE, COrgan)
-               , (NOSTRIL, COrgan)  -- only smell, for variety
-               , (ROBOT_BRAIN, COrgan)
+  , ikit     = [ (S_TENTACLE, COrgan)
+               , (S_NOSTRIL, COrgan)  -- only smell, for variety
+               , (S_ROBOT_BRAIN, COrgan)
                , (WASTE_CONTAINER, CEqp) ]
   }
 lightRobot = ItemKind
@@ -977,10 +987,10 @@ lightRobot = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Interior and exterior decoration robot. Strongly fancies deep reds recently."
-  , ikit     = [ (HOOKED_CLAW, COrgan), (TENTACLE, COrgan)
-               , (HULL_PLATING, COrgan)
-               , (EYE_6, COrgan), (EAR_8, COrgan)
-               , (ROBOT_BRAIN, COrgan)
+  , ikit     = [ (S_HOOKED_CLAW, COrgan), (S_TENTACLE, COrgan)
+               , (S_HULL_PLATING, COrgan)
+               , (S_EYE_6, COrgan), (S_EAR_8, COrgan)
+               , (S_ROBOT_BRAIN, COrgan)
                , (CONSTRUCTION_HOOTER, CEqp) ]
   }
 heavyRobot = ItemKind
@@ -1004,10 +1014,10 @@ heavyRobot = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Heavy multi-purpose construction robot. Excels at discharging, dismantling and demolition."
-  , ikit     = [ (LARGE_JAW, COrgan), (SMALL_CLAW, COrgan)
-               , (HULL_PLATING, COrgan)
-               , (EYE_3, COrgan), (EAR_6, COrgan)
-               , (ROBOT_BRAIN, COrgan)
+  , ikit     = [ (S_LARGE_JAW, COrgan), (S_SMALL_CLAW, COrgan)
+               , (S_HULL_PLATING, COrgan)
+               , (S_EYE_3, COrgan), (S_EAR_6, COrgan)
+               , (S_ROBOT_BRAIN, COrgan)
                , (SPOTLIGHT, CEqp), (CONSTRUCTION_HOOTER, CEqp) ]
   }
 weldedRobot = ItemKind
@@ -1026,11 +1036,11 @@ weldedRobot = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A well-built humanoid luggage unloading robot with a smooth satin silvery skin. Its graceful moves are stunted by a thick irregular weld fastening both its shapely legs to the floor. A whiff of smoke escapes whenever it opens its mouth in a charming toothy smile while brandishing a blowtorch in its trembling hand."
-  , ikit     = [ (FIST, COrgan)
-               , (EYE_6, COrgan), (EAR_3, COrgan)
-               , (MOUTH_VENT, COrgan)
-               , (ROBOT_BRAIN, COrgan)
-               , (CRUDE_WELD, COrgan), (BLOWTORCH, CEqp) ]
+  , ikit     = [ (S_FIST, COrgan)
+               , (S_EYE_6, COrgan), (S_EAR_3, COrgan)
+               , (S_MOUTH_VENT, COrgan)
+               , (S_ROBOT_BRAIN, COrgan)
+               , (S_CRUDE_WELD, COrgan), (BLOWTORCH, CEqp) ]
   }
 cleanerRobot = ItemKind
   { isymbol  = 'C'
@@ -1054,11 +1064,11 @@ cleanerRobot = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "An oversize waste disposal robot repaired with parts from a demolition robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness. The robot's bulky trunk doesn't fit into even the larger lift carriages."
-  , ikit     = [ (LIVE_WIRE, COrgan), (LARGE_JAW, COrgan)
-               , (TENTACLE, COrgan)
-               , (BOILING_VENT, COrgan), (HULL_PLATING, COrgan)
-               , (EYE_3, COrgan), (NOSTRIL, COrgan), (EAR_6, COrgan)
-               , (ROBOT_BRAIN, COrgan)
+  , ikit     = [ (S_LIVE_WIRE, COrgan), (S_LARGE_JAW, COrgan)
+               , (S_TENTACLE, COrgan)
+               , (S_BOILING_VENT, COrgan), (S_HULL_PLATING, COrgan)
+               , (S_EYE_3, COrgan), (S_NOSTRIL, COrgan), (S_EAR_6, COrgan)
+               , (S_ROBOT_BRAIN, COrgan)
                , (S_CURRENCY, CStash)
                , (S_CURRENCY, CStash)
                , (S_CURRENCY, CStash)
