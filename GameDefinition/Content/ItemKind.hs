@@ -387,7 +387,7 @@ blanket = ItemKind
   , iname    = "mineral fibre blanket"
   , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_MANIPULATION, 100), (BLANKET, 1)
                , (THICK_CLOTH, 1), (FIREPROOF_CLOTH, 1)
-               , (FIRE_FIGHTING_ITEM, 40) ]
+               , (FIRE_FIGHTING_ITEM, 30) ]
   , iflavour = zipPlain [BrBlack]
   , icount   = 1
   , irarity  = [(1, 1)]  -- scavenged from walls
@@ -1667,7 +1667,7 @@ hammerTemplate = ItemKind
   , ifreq    = [(HAMMER_UNKNOWN, 1)]
   , iflavour = zipFancy [BrMagenta]  -- avoid "pink"
   , icount   = 1
-  , irarity  = [(5 * 10/15, 20), (8 * 10/15, 1)]
+  , irarity  = [(5 * 10/15, 15), (8 * 10/15, 1)]
                  -- don't make it too common on lvl 3
   , iverbHit = "club"
   , iweight  = 1600
@@ -1683,19 +1683,21 @@ hammerTemplate = ItemKind
   }
 hammer1 = hammerTemplate
   { ifreq    = [ (COMMON_ITEM, 100), (STARTING_WEAPON, 70)
-               , (FIRE_FIGHTING_ITEM, 1) ]
+               , (FIRE_FIGHTING_ITEM, 7) ]
   , iaspects = [Timeout 5, EqpSlot EqpSlotWeaponBig]
                ++ iaspects hammerTemplate
   }
 hammer2 = hammerTemplate
-  { ifreq    = [(COMMON_ITEM, 25), (STARTING_WEAPON, 7)]
+  { ifreq    = [ (COMMON_ITEM, 25), (STARTING_WEAPON, 7)
+               , (FIRE_FIGHTING_ITEM, 2) ]
   , iverbHit = "gouge"
   , iaspects = [Timeout 3, EqpSlot EqpSlotWeaponFast]
                ++ iaspects hammerTemplate
   , idesc    = "Upon closer inspection, this hammer turns out particularly handy and well balanced, with a narrowing, sharpened head compensating the modest size."
   }
 hammer3 = hammerTemplate
-  { ifreq    = [(COMMON_ITEM, 5), (STARTING_WEAPON, 1)]
+  { ifreq    = [ (COMMON_ITEM, 5), (STARTING_WEAPON, 1)
+               , (FIRE_FIGHTING_ITEM, 1) ]
   , iverbHit = "puncture"
   , iweight  = 2400  -- weight gives it away
   , idamage  = 12 `d` 1
@@ -1989,7 +1991,7 @@ flask18 = flaskTemplate
   { iname    = "cartridge"
   , ifreq    = [ (COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)
                , (LIQUID_NITROGEN, 1), (COLD_SOURCE, 1)
-               , (FIRE_FIGHTING_ITEM, 59) ]
+               , (FIRE_FIGHTING_ITEM, 60) ]
   , irarity  = [(1, 1)]  -- scavenged from walls
   , iaspects = ELabel "of liquid nitrogen"
                : iaspects flaskTemplate
