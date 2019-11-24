@@ -755,7 +755,7 @@ floorCorridor = TileKind
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 0
-  , tfeature = [Walkable, Clear]
+  , tfeature = [Walkable, Clear]  -- porous, so spilling doesn't transform
   }
 floorArena = floorCorridor
   { tfreq    = [ (FLOOR_ARENA_LIT, 1), (ARENA_SET_LIT, 200)
@@ -1140,6 +1140,8 @@ floorOily = floorArena
   , tfreq    = [ (POWER_SET_LIT, 600), (EXIT_SET_LIT, 900)
                , (OILY_FLOOR_LIT, 1), (RUBBLE_OR_WASTE_LIT, 1)
                , (OIL_RESIDUE_LIT, 4) ]
+  , tfeature = ChangeWith [OIL_SOURCE] S_OIL_SPILL  -- non-porous enough
+               : tfeature floorArena
   }
 oilSpill = TileKind
   { tsymbol  = '~'
@@ -1150,6 +1152,7 @@ oilSpill = TileKind
   , tcolor2  = BrGreen
   , talter   = 2
   , tfeature = ChangeWith [FIRE_SOURCE] S_BURNING_OIL
+               : ChangeWith [OIL_SOURCE] S_OIL_SPILL  -- renew the spill
                : Embed OIL_PUDDLE : tfeature floorActor
   }
 oilSpillSpice = oilSpill
@@ -1167,6 +1170,7 @@ oilBurning = TileKind
   , tfeature = [ Walkable, NoItem, NoActor  -- not clear, due to smoke
                , Embed SMALL_FIRE
                , Embed OIL_PUDDLE
+               , ChangeWith [OIL_SOURCE] S_BURNING_OIL  -- renew the spill
                , ChangeWith [FIREPROOF_CLOTH] OILY_FLOOR_LIT  -- soaks oil
                ]
   }
