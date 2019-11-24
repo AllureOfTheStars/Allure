@@ -408,7 +408,7 @@ pillarCache = TileKind
   , tfeature = [ Embed ABANDONED_CACHE
                , ChangeTo CACHABLE_ABANDONED, ConsideredByAI ]
       -- Not explorable, but prominently placed, so hard to miss.
-      -- Very beneficial, so AI eager to trigger, unless wary of traps.
+      -- Very beneficial, so AI eager to trigger.
   }
 lampPost = TileKind
   { tsymbol  = '0'

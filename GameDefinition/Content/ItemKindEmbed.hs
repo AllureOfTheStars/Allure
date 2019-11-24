@@ -309,7 +309,8 @@ rubble = ItemKind
   , ieffects = [OneOf [ Explode S_FOCUSED_GLASS_HAIL
                       , Summon MOBILE_ANIMAL $ 1 `dL` 2
                       , toOrganNoTimer S_POISONED
-                      , CreateItem CGround COMMON_ITEM timerNone
+                      , CreateItem CGround ANY_ARROW timerNone
+                      , CreateItem CGround STARTING_WEAPON timerNone
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1)
                       , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1) ]]
   , idesc    = "Broken chunks of foam concrete, glass and torn and burned equipment."
