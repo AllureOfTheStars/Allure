@@ -46,7 +46,7 @@ groupNamesSingleton =
        [S_LAMP_POST, S_TREE_LIT, S_TREE_DARK, S_PULPIT, S_BUSH_LIT, S_FOG_LIT, S_SMOKE_LIT, S_FLOOR_ACTOR_LIT, S_FLOOR_ACTOR_DARK, S_FLOOR_ASHES_LIT, S_FLOOR_ASHES_DARK, S_SHADED_GROUND]
     ++ [S_POOL_LIT, S_POOL_DARK, S_OIL_SPILL, S_FROZEN_PATH, S_LIFT_SHAFT, S_REINFORCED_WALL, S_SHUTTLE_HULL, S_HARDWARE_RACK]
     ++ [S_RUBBLE_PILE, S_SHALLOW_WATER_LIT, S_SIGNBOARD_UNREAD]
-    ++ [S_SUSPECT_WALL, S_CLOSED_DOOR, S_OPEN_DOOR, S_BURNING_INSTALLATION, S_BURNING_TREE, S_BURNING_BUSH, S_BURNING_UNDERBRUSH, S_BURNING_OIL, S_UNDERBRUSH_LIT, S_UNDERBRUSH_DARK]
+    ++ [S_SUSPECT_WALL, S_CLOSED_DOOR, S_OPEN_DOOR, S_STAIRCASE_TRAP_DOWN_OIL, S_BURNING_INSTALLATION, S_BURNING_TREE, S_BURNING_BUSH, S_BURNING_UNDERBRUSH, S_BURNING_OIL, S_UNDERBRUSH_LIT, S_UNDERBRUSH_DARK]
 
 -- ** Used in PlaceKind, but not in CaveKind.
 pattern S_LAMP_POST, S_TREE_LIT, S_TREE_DARK, S_PULPIT, S_BUSH_LIT, S_FOG_LIT, S_SMOKE_LIT, S_FLOOR_ACTOR_LIT, S_FLOOR_ACTOR_DARK, S_FLOOR_ASHES_LIT, S_FLOOR_ASHES_DARK, S_SHADED_GROUND :: GroupName TileKind
@@ -58,7 +58,7 @@ pattern S_POOL_LIT, S_POOL_DARK, S_OIL_SPILL, S_FROZEN_PATH, S_LIFT_SHAFT, S_REI
 pattern S_RUBBLE_PILE, S_SHALLOW_WATER_LIT, S_SIGNBOARD_UNREAD :: GroupName TileKind
 
 -- ** Allure-specific
-pattern S_SUSPECT_WALL, S_CLOSED_DOOR, S_OPEN_DOOR, S_BURNING_INSTALLATION, S_BURNING_TREE, S_BURNING_BUSH, S_BURNING_UNDERBRUSH, S_BURNING_OIL, S_UNDERBRUSH_LIT, S_UNDERBRUSH_DARK :: GroupName TileKind
+pattern S_SUSPECT_WALL, S_CLOSED_DOOR, S_OPEN_DOOR, S_STAIRCASE_TRAP_DOWN_OIL, S_BURNING_INSTALLATION, S_BURNING_TREE, S_BURNING_BUSH, S_BURNING_UNDERBRUSH, S_BURNING_OIL, S_UNDERBRUSH_LIT, S_UNDERBRUSH_DARK :: GroupName TileKind
 
 -- TODO: if we stick to the current system of generating extra kinds and their
 -- group names, let's also add the generated group names to @groupNames@.
@@ -247,6 +247,7 @@ pattern RUBBLE_WITH_FIRE = GroupName "rubble with fire"
 pattern S_SUSPECT_WALL = GroupName "suspect wall"
 pattern S_CLOSED_DOOR = GroupName "closed door"
 pattern S_OPEN_DOOR = GroupName "open door"
+pattern S_STAIRCASE_TRAP_DOWN_OIL = GroupName "slippery staircase down"
 pattern S_BURNING_INSTALLATION = GroupName "burning installation"
 pattern S_BURNING_TREE = GroupName "burning tree"
 pattern S_BURNING_BUSH = GroupName "burning bush"
@@ -262,11 +263,11 @@ content =
   [unknown, unknownOuterFence, basicOuterFence, bedrock, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, fog, fogDark, smoke, smokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorBrown, floorArenaShade ]
   ++ map makeDarkColor ldarkColorable
   -- Allure-specific
-  ++ [oriel, outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, wallObscuredExtinguisher, wallObscured3dBillboard, wallObscuredPipework, liftShaft, rock, pillarCache2, pillarCache3, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, machineWall, machineWallSpice, underbrushBurning, floorOily, oilSpill, oilSpillSpice, oilBurning, floorWindow, underbrush]
+  ++ [oriel, outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, wallObscuredExtinguisher, wallObscured3dBillboard, wallObscuredPipework, liftShaft, rock, pillarCache2, pillarCache3, stairsTrappedDownOil, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, machineWall, machineWallSpice, underbrushBurning, floorOily, oilSpill, oilSpillSpice, oilBurning, floorWindow, underbrush]
 
 unknown,    unknownOuterFence, basicOuterFence, bedrock, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, fog, fogDark, smoke, smokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorBrown, floorArenaShade :: TileKind
 -- Allure-specific
-oriel,       outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, wallObscuredExtinguisher, wallObscured3dBillboard, wallObscuredPipework, liftShaft, rock, pillarCache2, pillarCache3, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, machineWall, machineWallSpice, underbrushBurning, floorOily, oilSpill, oilSpillSpice, oilBurning, floorWindow, underbrush :: TileKind
+oriel,       outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, wallObscuredExtinguisher, wallObscured3dBillboard, wallObscuredPipework, liftShaft, rock, pillarCache2, pillarCache3, stairsTrappedDownOil, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, machineWall, machineWallSpice, underbrushBurning, floorOily, oilSpill, oilSpillSpice, oilBurning, floorWindow, underbrush :: TileKind
 
 ldarkColorable :: [TileKind]
 ldarkColorable = [tree, bush, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, shallowWater, shallowWaterSpice, shallowWater2, floorOily]
@@ -530,7 +531,7 @@ doorClosed = TileKind  -- fireproof
 stairsUp = TileKind  -- fireproof
   { tsymbol  = '<'
   , tname    = "staircase up"
-  , tfreq    = [(STAIRCASE_UP, 9), (ORDINARY_STAIRCASE_UP, 1)]
+  , tfreq    = [(STAIRCASE_UP, 90), (ORDINARY_STAIRCASE_UP, 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 0  -- very easy stairs, unlike all others
@@ -539,7 +540,7 @@ stairsUp = TileKind  -- fireproof
 stairsTrappedUp = TileKind
   { tsymbol  = '<'
   , tname    = "windy staircase up"
-  , tfreq    = [(STAIRCASE_UP, 1)]
+  , tfreq    = [(STAIRCASE_UP, 10)]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = talterForStairs
@@ -560,16 +561,17 @@ stairsGatedUp = stairsUp
 stairsDown = TileKind
   { tsymbol  = '>'
   , tname    = "staircase down"
-  , tfreq    = [(STAIRCASE_DOWN, 9), (ORDINARY_STAIRCASE_DOWN, 1)]
+  , tfreq    = [(STAIRCASE_DOWN, 90), (ORDINARY_STAIRCASE_DOWN, 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 0  -- very easy stairs, unlike all others
-  , tfeature = [Embed STAIRS_DOWN, ConsideredByAI]
+  , tfeature = [ Embed STAIRS_DOWN, ConsideredByAI
+               , ChangeWith [OIL_SOURCE] S_STAIRCASE_TRAP_DOWN_OIL ]
   }
 stairsTrappedDown = TileKind
   { tsymbol  = '>'
-  , tname    = "crooked staircase down"
-  , tfreq    = [(STAIRCASE_DOWN, 1)]
+  , tname    = "cracked staircase down"
+  , tfreq    = [(STAIRCASE_DOWN, 5)]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = talterForStairs
@@ -964,6 +966,18 @@ pillarCache3 = pillarCache
   , tfeature = [ Embed JEWELRY_CASE, Embed JEWELRY_DISPLAY_TRAP
                , ChangeTo CACHABLE_JEWELRY, ConsideredByAI ]
   }
+stairsTrappedDownOil = TileKind
+  { tsymbol  = '>'
+  , tname    = "slippery staircase down"
+  , tfreq    = [(STAIRCASE_DOWN, 5), (S_STAIRCASE_TRAP_DOWN_OIL, 1)]
+  , tcolor   = BrRed
+  , tcolor2  = Red
+  , talter   = talterForStairs
+  , tfeature = [ Embed STAIRS_DOWN, Embed STAIRS_TRAP_DOWN_OIL
+               , ConsideredByAI
+               , ChangeTo ORDINARY_STAIRCASE_DOWN
+               , ChangeWith [THICK_CLOTH] ORDINARY_STAIRCASE_DOWN ]  -- soaks
+ }
 stairsDecontaminatingUp = stairsUp
   { tname    = "decontaminating staircase up"
   , tfreq    = [(DECONTAMINATING_STAIRCASE_UP, 1)]
