@@ -8,7 +8,7 @@
 module Content.ItemKind
   ( -- * Group name patterns
     pattern HARPOON, pattern EDIBLE_PLANT, pattern TORSO_ARMOR, pattern CLOTHING_MISC
-  , pattern MUSEAL, pattern FIREPROOF_CLOTH, pattern COOKED_PLANT, pattern LIQUID_NITROGEN
+  , pattern MUSEAL, pattern FIREPROOF_CLOTH, pattern THICK_CLOTH, pattern COOKED_PLANT, pattern LIQUID_NITROGEN
   , groupNamesSingleton, groupNames
   , -- * Content
     content, items, otherItemContent
@@ -47,12 +47,12 @@ pattern COOKED_PLANT_UNKNOWN :: GroupName ItemKind
 groupNames :: [GroupName ItemKind]
 groupNames =
        [HARPOON, EDIBLE_PLANT, TORSO_ARMOR, CLOTHING_MISC]
-    ++ [MUSEAL, FIREPROOF_CLOTH, COOKED_PLANT, LIQUID_NITROGEN]
+    ++ [MUSEAL, FIREPROOF_CLOTH, THICK_CLOTH, COOKED_PLANT, LIQUID_NITROGEN]
     ++ embedsGN ++ actorsGN ++ organsGN ++ blastsGN
 
 pattern HARPOON, EDIBLE_PLANT, TORSO_ARMOR, CLOTHING_MISC :: GroupName ItemKind
 
-pattern MUSEAL, FIREPROOF_CLOTH, COOKED_PLANT, LIQUID_NITROGEN :: GroupName ItemKind
+pattern MUSEAL, FIREPROOF_CLOTH, THICK_CLOTH, COOKED_PLANT, LIQUID_NITROGEN :: GroupName ItemKind
 
 -- The @UNKNOWN@ patterns don't need to be exported. Used internally.
 -- They also represent singleton groups.
@@ -79,6 +79,7 @@ pattern COOKED_PLANT_UNKNOWN = GroupName "cooked plant unknown"
 
 pattern MUSEAL = GroupName "museal"
 pattern FIREPROOF_CLOTH = GroupName "fireproof cloth"
+pattern THICK_CLOTH = GroupName "thick cloth"
 pattern COOKED_PLANT = GroupName "cooked plant"
 pattern LIQUID_NITROGEN = GroupName "liquid nitrogen"
 
@@ -385,7 +386,8 @@ blanket = ItemKind
   { isymbol  = symbolLight
   , iname    = "mineral fibre blanket"
   , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_MANIPULATION, 100), (BLANKET, 1)
-               , (FIREPROOF_CLOTH, 1), (FIRE_FIGHTING_ITEM, 40) ]
+               , (THICK_CLOTH, 1), (FIREPROOF_CLOTH, 1)
+               , (FIRE_FIGHTING_ITEM, 40) ]
   , iflavour = zipPlain [BrBlack]
   , icount   = 1
   , irarity  = [(1, 1)]  -- scavenged from walls
@@ -1507,7 +1509,8 @@ gloveJousting = gloveFencing
 hatUshanka = ItemKind
   { isymbol  = symbolMiscArmor
   , iname    = "ushanka hat"
-  , ifreq    = [(COMMON_ITEM, 100), (ARMOR_MISC, 1), (CLOTHING_MISC, 1)]
+  , ifreq    = [ (COMMON_ITEM, 100), (ARMOR_MISC, 1), (CLOTHING_MISC, 1)
+               , (THICK_CLOTH, 1) ]
   , iflavour = zipPlain [Brown]
   , icount   = 1
   , irarity  = [(1, 6), (10, 2)]

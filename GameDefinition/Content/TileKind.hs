@@ -1153,6 +1153,7 @@ oilSpill = TileKind
   , talter   = 2
   , tfeature = ChangeWith [FIRE_SOURCE] S_BURNING_OIL
                : ChangeWith [OIL_SOURCE] S_OIL_SPILL  -- renew the spill
+               : ChangeWith [THICK_CLOTH] OILY_FLOOR_LIT  -- soaks oil
                : Embed OIL_PUDDLE : tfeature floorActor
   }
 oilSpillSpice = oilSpill
