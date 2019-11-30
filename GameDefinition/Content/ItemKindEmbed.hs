@@ -337,7 +337,8 @@ doorwayTrapTemplate = ItemKind
 doorwayTrap1 = doorwayTrapTemplate
   { ifreq    = [(DOORWAY_TRAP, 50)]
   , ieffects = [toOrganBad S_BLIND $ (1 `dL` 4) * 5]
-  -- , idesc    = ""
+  -- , idesc    = ""  -- TODO: once physical mechanism decided, also add ways
+                      -- to disarm it, using up some items for that
   }
 doorwayTrap2 = doorwayTrapTemplate
   { ifreq    = [(DOORWAY_TRAP, 25)]

@@ -967,6 +967,7 @@ pillarCache3 = pillarCache
   , tfreq    = [ (CACHABLE_JEWELRY, 20), (CACHE_JEWELRY, 33)
                , (MUSEUM_SET_DARK, 2) ]
   , tfeature = [ Embed JEWELRY_CASE, Embed JEWELRY_DISPLAY_TRAP
+               , ChangeWith [COLD_SOURCE] CACHABLE_JEWELRY  -- halts watchdog
                , ChangeTo CACHABLE_JEWELRY, ConsideredByAI ]
   }
 stairsTrappedDownOil = TileKind
