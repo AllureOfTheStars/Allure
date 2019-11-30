@@ -7,7 +7,7 @@
 -- | Item definitions.
 module Content.ItemKind
   ( -- * Group name patterns
-    pattern HARPOON, pattern EDIBLE_PLANT, pattern TORSO_ARMOR, pattern CLOTHING_MISC
+    pattern HARPOON, pattern TORSO_ARMOR, pattern CLOTHING_MISC
   , pattern MUSEAL, pattern FIREPROOF_CLOTH, pattern THICK_CLOTH, pattern COOKED_PLANT, pattern LIQUID_NITROGEN
   , groupNamesSingleton, groupNames
   , -- * Content
@@ -46,11 +46,11 @@ pattern COOKED_PLANT_UNKNOWN :: GroupName ItemKind
 
 groupNames :: [GroupName ItemKind]
 groupNames =
-       [HARPOON, EDIBLE_PLANT, TORSO_ARMOR, CLOTHING_MISC]
+       [HARPOON, TORSO_ARMOR, CLOTHING_MISC]
     ++ [MUSEAL, FIREPROOF_CLOTH, THICK_CLOTH, COOKED_PLANT, LIQUID_NITROGEN]
     ++ embedsGN ++ actorsGN ++ organsGN ++ blastsGN
 
-pattern HARPOON, EDIBLE_PLANT, TORSO_ARMOR, CLOTHING_MISC :: GroupName ItemKind
+pattern HARPOON, TORSO_ARMOR, CLOTHING_MISC :: GroupName ItemKind
 
 pattern MUSEAL, FIREPROOF_CLOTH, THICK_CLOTH, COOKED_PLANT, LIQUID_NITROGEN :: GroupName ItemKind
 
@@ -67,7 +67,6 @@ pattern GEM_UNKNOWN = GroupName "gem unknown"
 pattern CURRENCY_UNKNOWN = GroupName "currency unknown"
 
 pattern HARPOON = GroupName "harpoon"
-pattern EDIBLE_PLANT = GroupName "edible plant"
 pattern TORSO_ARMOR = GroupName "torso armor"
 pattern CLOTHING_MISC = GroupName "clothing misc"
 
@@ -826,7 +825,7 @@ ediblePlantTemplate = ItemKind
   , ifreq    = [(EDIBLE_PLANT_UNKNOWN, 1)]
   , iflavour = zipFancy stdCol
   , icount   = 1 `dL` 5
-  , irarity  = [(1, 12), (10, 5)]  -- weak, apart of hunger removal
+  , irarity  = [(1, 5), (10, 2)]  -- weak, apart of hunger removal
   , iverbHit = "thump"
   , iweight  = 300
   , idamage  = 0
@@ -864,7 +863,7 @@ ediblePlant5 = ediblePlantTemplate
   { iname    = "fragrant herb"
   , ifreq    = [(S_FRAGRANT_HERB, 1), (COMMON_ITEM, 100), (EDIBLE_PLANT, 100)]
   , icount   = 1 `dL` 9
-  , irarity  = [(1, 10), (10, 5)]  -- powerful; many copies
+  , irarity  = [(1, 4), (10, 1)]  -- powerful; many copies
   , iaspects = ELabel "of lethargy"
                : iaspects ediblePlantTemplate
   , ieffects = [ toOrganBad S_SLOWED (20 + 1 `d` 5)
@@ -887,7 +886,7 @@ ediblePlant7 = ediblePlantTemplate
 ediblePlant8 = ediblePlantTemplate
   { iname    = "pumpkin"
   , ifreq    = [(S_PUMPKIN, 1), (COMMON_ITEM, 100), (EDIBLE_PLANT, 100)]
-  , irarity  = [(1, 5), (10, 10)]  -- solves the hunger problem, but not too soon
+  , irarity  = [(1, 2), (10, 5)]  -- solves the hunger problem, but not too soon
   , iweight  = 3000
   , idamage  = 1 `d` 1
   , ieffects = [DropItem maxBound 1 COrgan S_HUNGRY]
@@ -932,7 +931,6 @@ cookedPlant5 = cookedPlantTemplate
   , ifreq    = [ (S_COOKED_HERB, 1)
                , (COMMON_ITEM, 1), (COOKED_PLANT, 100) ]
   , icount   = 1 `dL` 9
-  , irarity  = [(1, 10), (10, 5)]  -- powerful; many copies
   , iaspects = ELabel "of lethargy"
                : iaspects cookedPlantTemplate
   , ieffects = ieffects ediblePlant5
@@ -955,7 +953,6 @@ cookedPlant8 = cookedPlantTemplate
   { iname    = "cooked pumpkin"
   , ifreq    = [ (S_COOKED_PUMPKIN, 1)
                , (COMMON_ITEM, 1), (COOKED_PLANT, 100), (COOKED_FOOD, 10) ]
-  , irarity  = [(1, 5), (10, 10)]
   , iweight  = 3000
   , idamage  = 1 `d` 1
   , ieffects = [DropItem maxBound 5 COrgan S_HUNGRY]
