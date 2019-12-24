@@ -2055,7 +2055,7 @@ blowtorch = ItemKind
   , ieffects = [Burn 2, Impress]
       -- is used for melee in precedence to fists, but not to cleavers;
       -- so if player wants to hit with it, it's enough to pack other gear
-  , idesc    = "A sturdy old-fashioned portable blowtorch for fine cutting or welding of metals. Rather weak, but does not require access codes to high current power outlets."
+  , idesc    = "A sturdy old-fashioned portable blowtorch for fine cutting or welding of metals. Rather weak, but does not require access codes to high current power outlets. If you can patiently suffer the heat, it can be used as a clumsy breaching tool."
   , ikit     = []
   }
 rawMeatChunk = ItemKind
@@ -2123,21 +2123,21 @@ chisel = ItemKind
   , idamage  = 0
   , iaspects = []  -- lost after one use; a consumable
   , ieffects = []
-  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Chisel
+  , idesc    = "It is a breaching tool."  -- TODO: https://en.wikipedia.org/wiki/Chisel
                    -- also say light and cheap, but not durable; one time use
   , ikit     = []
   }
 steelFile = chisel
   { iname    = "steel file"
-  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/File_(tool)
+  , idesc    = "It is a breaching tool."  -- TODO: https://en.wikipedia.org/wiki/File_(tool)
   }
 hacksaw = chisel
   { iname    = "hacksaw"
-  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Hacksaw
+  , idesc    = "It is a breaching tool."  -- TODO: https://en.wikipedia.org/wiki/Hacksaw
   }
 adjustableSpanner = chisel
   { iname    = "adjustable spanner"
-  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Adjustable_spanner
+  , idesc    = "It is a breaching tool."  -- TODO: https://en.wikipedia.org/wiki/Adjustable_spanner
   }
 crowbar = chisel
   { iname    = "crowbar"
@@ -2148,7 +2148,7 @@ crowbar = chisel
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
                , toVelocity 30 ]
-  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Crowbar_(tool)
+  , idesc    = "It is sharpened to be usable as an improvised melee weapon, but it can be still employed as a breaching tool, though rather injurious."  -- TODO: https://en.wikipedia.org/wiki/Crowbar_(tool)
   }
 catsPaw = chisel
   { iname    = "cat's paw"
@@ -2159,29 +2159,29 @@ catsPaw = chisel
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
                , toVelocity 50 ]
-  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Cat%27s_paw_(nail_puller)
+  , idesc    = "It is sharpened to be usable as an improvised melee weapon, but it can be still employed as a breaching tool, though rather injurious."  -- TODO: https://en.wikipedia.org/wiki/Cat%27s_paw_(nail_puller)
   }
 diagonalPliers = chisel
   { iname    = "pair"
   , ifreq    = [(COMMON_ITEM, 100), (WIRECUTTING_TOOL, 1)]
   , iflavour = zipPlain [Brown]
   , iaspects = [ELabel "of diagonal pliers"]
-  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Diagonal_pliers
+  , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Diagonal_pliers
   }
 snips = diagonalPliers
   { iname    = "pair"
   , iaspects = [ELabel "of snips"]
-  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Snips
+  , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Snips
   }
 loppers = diagonalPliers
   { iname    = "pair"
   , iaspects = [ELabel "of loppers"]
-  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Loppers
+  , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Loppers
   }
 boltCutter = diagonalPliers
   { iname    = "bolt cutter"
   , iaspects = []
-  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Bolt_cutter
+  , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Bolt_cutter
   }
 gardenMsg :: Effect
 gardenMsg = VerbMsg "feel the gardening tool fracture"
