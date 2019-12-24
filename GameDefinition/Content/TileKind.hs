@@ -623,7 +623,8 @@ wallGlass = TileKind
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 10
-  , tfeature = [BuildAs S_CLOSED_DOOR, Clear]
+  , tfeature = [ BuildAs S_CLOSED_DOOR  -- when ending a corridor, have doors
+               , Clear ]
   }
 wallGlassSpice = wallGlass
   { tfreq    = [ (RECT_WINDOWS, 20)
@@ -904,7 +905,7 @@ rubbleBurningSpice = rubbleBurning
   }
 wallOpenable = bedrock
   { tfreq    = [(OPENABLE_WALL, 1)]
-  , tfeature = [BuildAs S_CLOSED_DOOR]
+  , tfeature = [BuildAs S_CLOSED_DOOR]  -- when ending a corridor, have doors
   }
 wallObscuredSafety = TileKind
   { tsymbol  = '#'
