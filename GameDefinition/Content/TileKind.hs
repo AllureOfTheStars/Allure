@@ -70,8 +70,8 @@ groupNames =
     ++ [ROGUE_SET, MUSEUM_SET_LIT, MUSEUM_SET_DARK, HUNT_SET_LIT, EXIT_SET_LIT]
     ++ [TREE_SHADE_WALKABLE_LIT, TREE_SHADE_WALKABLE_DARK, SMOKE_CLUMP_LIT, SMOKE_CLUMP_DARK, BUSH_CLUMP_LIT, BUSH_CLUMP_DARK, FOG_CLUMP_LIT, FOG_CLUMP_DARK, STAIR_TERMINAL_LIT, STAIR_TERMINAL_DARK, SIGNBOARD, STAIRCASE_UP, ORDINARY_STAIRCASE_UP, STAIRCASE_OUTDOOR_UP, GATED_STAIRCASE_UP, STAIRCASE_DOWN, ORDINARY_STAIRCASE_DOWN, STAIRCASE_OUTDOOR_DOWN, GATED_STAIRCASE_DOWN, ESCAPE_UP, ESCAPE_DOWN, ESCAPE_OUTDOOR_DOWN]
     ++ [RECT_WINDOWS, DOORLESS_MACHINERY, PUMPS_LIT, PUMPS_DARK, DOORLESS_WALL, OIL_RESIDUE_LIT, OIL_RESIDUE_DARK, LIFT_TERMINAL_LIT, LIFT_TERMINAL_DARK, STAIRCASE_LIFT_UP, STAIRCASE_LIFT_DOWN, GATED_LIFT_UP, GATED_LIFT_DOWN, DECONTAMINATING_STAIRCASE_UP, DECONTAMINATING_STAIRCASE_DOWN, DECONTAMINATING_LIFT_UP, DECONTAMINATING_LIFT_DOWN, WELDED_STAIRCASE_UP, WELDED_LIFT_UP, ESCAPE_SPACESHIP_DOWN, ORDINARY_LIFT_UP, ORDINARY_LIFT_DOWN, RUBBLE_OR_WASTE_LIT, RUBBLE_OR_WASTE_DARK, CACHE_DEPOSIT, CACHE_JEWELRY, CACHE_MAZE, CACHE_SHUTTLE, TRAPPED_DOOR, FLOOR_ACTOR_ITEM]
-    ++ [TREE_WITH_FIRE, BUSH_WITH_FIRE]
-    ++ [OBSCURED_WALL, CACHABLE_DEPOSIT, CACHABLE_DEPOSIT_BREACHED, CACHABLE_JEWELRY, CACHABLE_JEWELRY_TRAPPED, CACHABLE_ABANDONED, RUBBLE_WITH_FIRE]
+    ++ [TREE_BURNING_OR_NOT, BUSH_BURNING_OR_NOT]
+    ++ [OBSCURED_WALL, CACHE_DEPOSIT_OR_NOT, CACHE_DEPOSIT_BREACHED, CACHE_JEWELRY_OR_NOT, CACHE_JEWELRY_TRAPPED_OR_NOT, CACHE_ABANDONED_OR_NOT, RUBBLE_BURNING_OR_NOT]
 
 pattern FILLER_WALL, FLOOR_CORRIDOR_LIT, FLOOR_CORRIDOR_DARK, TRAIL_LIT, SAFE_TRAIL_LIT, LAB_TRAIL_LIT, DAMP_FLOOR_LIT, DAMP_FLOOR_DARK, DIRT_LIT, DIRT_DARK, FLOOR_ARENA_LIT, FLOOR_ARENA_DARK :: GroupName TileKind
 
@@ -90,10 +90,10 @@ pattern TREE_SHADE_WALKABLE_LIT, TREE_SHADE_WALKABLE_DARK, SMOKE_CLUMP_LIT, SMOK
 pattern RECT_WINDOWS, DOORLESS_MACHINERY, PUMPS_LIT, PUMPS_DARK, DOORLESS_WALL, OIL_RESIDUE_LIT, OIL_RESIDUE_DARK, LIFT_TERMINAL_LIT, LIFT_TERMINAL_DARK, STAIRCASE_LIFT_UP, STAIRCASE_LIFT_DOWN, GATED_LIFT_UP, GATED_LIFT_DOWN, DECONTAMINATING_STAIRCASE_UP, DECONTAMINATING_STAIRCASE_DOWN, DECONTAMINATING_LIFT_UP, DECONTAMINATING_LIFT_DOWN, WELDED_STAIRCASE_UP, WELDED_LIFT_UP, ESCAPE_SPACESHIP_DOWN, ORDINARY_LIFT_UP, ORDINARY_LIFT_DOWN, RUBBLE_OR_WASTE_LIT, RUBBLE_OR_WASTE_DARK, CACHE_DEPOSIT, CACHE_JEWELRY, CACHE_MAZE, CACHE_SHUTTLE, TRAPPED_DOOR, FLOOR_ACTOR_ITEM :: GroupName TileKind
 
 -- ** Used only internally in other TileKind definitions or never used.
-pattern TREE_WITH_FIRE, BUSH_WITH_FIRE :: GroupName TileKind
+pattern TREE_BURNING_OR_NOT, BUSH_BURNING_OR_NOT :: GroupName TileKind
 
 -- ** Allure-specific
-pattern OBSCURED_WALL, CACHABLE_DEPOSIT, CACHABLE_DEPOSIT_BREACHED, CACHABLE_JEWELRY, CACHABLE_JEWELRY_TRAPPED, CACHABLE_ABANDONED, RUBBLE_WITH_FIRE :: GroupName TileKind
+pattern OBSCURED_WALL, CACHE_DEPOSIT_OR_NOT, CACHE_DEPOSIT_BREACHED, CACHE_JEWELRY_OR_NOT, CACHE_JEWELRY_TRAPPED_OR_NOT, CACHE_ABANDONED_OR_NOT, RUBBLE_BURNING_OR_NOT :: GroupName TileKind
 
 -- ** Used in CaveKind and perhaps elsewhere (or a dark/lit version thereof).
 pattern FILLER_WALL = GroupName "fillerWall"
@@ -228,8 +228,8 @@ pattern S_SHUTTLE_HULL = GroupName "shuttle hull"
 pattern S_HARDWARE_RACK = GroupName "hardware rack"
 
 -- ** Used only internally in other TileKind definitions. Not singletons.
-pattern TREE_WITH_FIRE = GroupName "tree with fire"
-pattern BUSH_WITH_FIRE = GroupName "bush with fire"
+pattern TREE_BURNING_OR_NOT = GroupName "tree burning or not"
+pattern BUSH_BURNING_OR_NOT = GroupName "bush burning or not"
 
 -- ** Used only internally in other TileKind definitions. Singletons.
 
@@ -239,12 +239,12 @@ pattern S_SIGNBOARD_UNREAD = GroupName "signboard unread"
 
 -- ** Allure-specific
 pattern OBSCURED_WALL = GroupName "obscured wall"
-pattern CACHABLE_DEPOSIT = GroupName "cachable deposit"
-pattern CACHABLE_DEPOSIT_BREACHED = GroupName "cachable deposit breached"
-pattern CACHABLE_JEWELRY = GroupName "cachable jewelry"
-pattern CACHABLE_JEWELRY_TRAPPED = GroupName "cachable jewelry trapped"
-pattern CACHABLE_ABANDONED = GroupName "cachable abandoned"
-pattern RUBBLE_WITH_FIRE = GroupName "rubble with fire"
+pattern CACHE_DEPOSIT_OR_NOT = GroupName "cache deposit or not"
+pattern CACHE_DEPOSIT_BREACHED = GroupName "cache deposit breached"
+pattern CACHE_JEWELRY_OR_NOT = GroupName "cache jewelry or not"
+pattern CACHE_JEWELRY_TRAPPED_OR_NOT = GroupName "cache jewelry trapped or not"
+pattern CACHE_ABANDONED_OR_NOT = GroupName "cache abandoned or not"
+pattern RUBBLE_BURNING_OR_NOT = GroupName "rubble burning or not"
 
 pattern S_SUSPECT_WALL = GroupName "suspect wall"
 pattern S_CLOSED_DOOR = GroupName "closed door"
@@ -402,13 +402,13 @@ pillar = TileKind
 pillarCache = TileKind
   { tsymbol  = '#'
   , tname    = "abandoned stash"
-  , tfreq    = [ (CACHABLE_ABANDONED, 20)
+  , tfreq    = [ (CACHE_ABANDONED_OR_NOT, 20)
                , (CACHE_MAZE, 33), (CACHE_SHUTTLE, 25) ]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 5
   , tfeature = [ Embed ABANDONED_CACHE
-               , ChangeTo CACHABLE_ABANDONED, ConsideredByAI ]
+               , ChangeTo CACHE_ABANDONED_OR_NOT, ConsideredByAI ]
       -- Not explorable, but prominently placed, so hard to miss.
       -- Very beneficial, so AI eager to trigger.
   }
@@ -464,7 +464,7 @@ tree = TileKind
   }
 treeBurnt = tree
   { tname    = "burnt tree"
-  , tfreq    = [(ZOO_SET_DARK, 10), (TREE_WITH_FIRE, 30)]
+  , tfreq    = [(ZOO_SET_DARK, 10), (TREE_BURNING_OR_NOT, 30)]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
   , tfeature = [Dark]  -- even burned too hard to topple
@@ -472,11 +472,11 @@ treeBurnt = tree
 treeBurning = tree  -- present in EMPTY_SET_LIT as early light/fire source
   { tname    = "burning tree"
   , tfreq    = [ (EMPTY_SET_LIT, 1), (ZOO_SET_DARK, 60)
-               , (TREE_WITH_FIRE, 70), (S_BURNING_TREE, 1) ]
+               , (TREE_BURNING_OR_NOT, 70), (S_BURNING_TREE, 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 5
-  , tfeature = [Embed BIG_FIRE, ChangeTo TREE_WITH_FIRE]
+  , tfeature = [Embed BIG_FIRE, ChangeTo TREE_BURNING_OR_NOT]
       -- too tall to douse with a fireproof cloth or water; have to break off
       -- and isolate smaller branches and let it smolder out
       -- TODO: breaking the burning tree has more use when it periodically
@@ -485,7 +485,7 @@ treeBurning = tree  -- present in EMPTY_SET_LIT as early light/fire source
 rubble = TileKind
   { tsymbol  = '&'
   , tname    = "rubble pile"
-  , tfreq    = [ (S_RUBBLE_PILE, 1), (RUBBLE_WITH_FIRE, 50)
+  , tfreq    = [ (S_RUBBLE_PILE, 1), (RUBBLE_BURNING_OR_NOT, 50)
                , (LEGEND_LIT, 1), (LEGEND_DARK, 1)
                , (STAIR_TERMINAL_LIT, 6), (STAIR_TERMINAL_DARK, 6)
                , (LIFT_TERMINAL_LIT, 6), (LIFT_TERMINAL_DARK, 6)
@@ -506,7 +506,7 @@ rubble = TileKind
 rubbleSpice = rubble
   { tfreq    = [ (SMOKE_CLUMP_LIT, 1), (SMOKE_CLUMP_DARK, 1)
                , (RUBBLE_OR_WASTE_LIT, 1), (RUBBLE_OR_WASTE_DARK, 1)
-               , (CACHE_DEPOSIT, 33), (CACHABLE_DEPOSIT, 80) ]
+               , (CACHE_DEPOSIT, 33), (CACHE_DEPOSIT_OR_NOT, 80) ]
   , tfeature = Spice : tfeature rubble
   }
 doorTrapped = TileKind
@@ -628,7 +628,8 @@ wallGlass = TileKind
 wallGlassSpice = wallGlass
   { tfreq    = [ (RECT_WINDOWS, 20)
                , (CACHE_JEWELRY, 66)
-               , (CACHABLE_JEWELRY, 80), (CACHABLE_JEWELRY_TRAPPED, 80) ]
+               , (CACHE_JEWELRY_OR_NOT, 80)
+               , (CACHE_JEWELRY_TRAPPED_OR_NOT, 80) ]
   , tfeature = Spice : tfeature wallGlass
   }
 pillarIce = TileKind
@@ -673,7 +674,7 @@ bush = TileKind
 bushBurnt = bush
   { tname    = "burnt bush"
   , tfreq    = [ (BATTLE_SET_DARK, 30), (AMBUSH_SET_DARK, 3), (ZOO_SET_DARK, 50)
-               , (BUSH_WITH_FIRE, 25) ]
+               , (BUSH_BURNING_OR_NOT, 25) ]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
   , tfeature = [Dark, Clear, OpenTo DIRT_DARK]
@@ -685,7 +686,7 @@ bushBurnt = bush
 bushBurning = bush
   { tname    = "burning bush"
   , tfreq    = [ (EMPTY_SET_LIT, 1), (AMBUSH_SET_DARK, 10), (ZOO_SET_DARK, 300)
-               , (BUSH_WITH_FIRE, 50), (S_BURNING_BUSH, 1) ]
+               , (BUSH_BURNING_OR_NOT, 50), (S_BURNING_BUSH, 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 5
@@ -695,7 +696,7 @@ bushBurning = bush
                , Embed SMALL_FIRE
                , ChangeWith [FIREPROOF_CLOTH] S_BUSH_LIT
                    -- full effects experienced, but bush saved for repeat
-               , OpenTo BUSH_WITH_FIRE ]
+               , OpenTo BUSH_BURNING_OR_NOT ]
   }
 
 -- ** Walkable
@@ -797,7 +798,7 @@ floorActorItem = floorActor
 floorAshes = floorActor
   { tfreq    = [ (SMOKE_CLUMP_LIT, 1), (SMOKE_CLUMP_DARK, 1)
                , (S_FLOOR_ASHES_LIT, 1), (S_FLOOR_ASHES_DARK, 1)
-               , (RUBBLE_WITH_FIRE, 25) ]
+               , (RUBBLE_BURNING_OR_NOT, 25) ]
   , tname    = "dirt and ash pile"
   , tcolor   = Brown
   , tcolor2  = Brown
@@ -885,7 +886,7 @@ rubbleBurning = TileKind  -- present in EMPTY_SET_LIT as early light/fire source
                , (AMBUSH_SET_DARK, 15), (ZOO_SET_DARK, 30)
                , (STAIR_TERMINAL_LIT, 4), (STAIR_TERMINAL_DARK, 4)
                , (LIFT_TERMINAL_LIT, 4), (LIFT_TERMINAL_DARK, 4)
-               , (S_BURNING_INSTALLATION, 1), (RUBBLE_WITH_FIRE, 25) ]
+               , (S_BURNING_INSTALLATION, 1), (RUBBLE_BURNING_OR_NOT, 25) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 4  -- boss can dig through
@@ -894,7 +895,7 @@ rubbleBurning = TileKind  -- present in EMPTY_SET_LIT as early light/fire source
                , Embed BIG_FIRE  -- not as tall as a tree, so quenchable
                , ChangeWith [FIREPROOF_CLOTH] S_RUBBLE_PILE
                    -- full effects experienced, but rubble saved for repeat
-               , OpenTo RUBBLE_WITH_FIRE ]
+               , OpenTo RUBBLE_BURNING_OR_NOT ]
   }
 rubbleBurningSpice = rubbleBurning
   { tfreq    = [ (SMOKE_CLUMP_LIT, 1), (SMOKE_CLUMP_DARK, 1)
@@ -962,36 +963,37 @@ rock = pillar
   }
 pillarCache2 = pillarCache
   { tname    = "rack of deposit boxes"
-  , tfreq    = [ (CACHABLE_DEPOSIT, 20), (CACHABLE_DEPOSIT_BREACHED, 20) ]
+  , tfreq    = [ (CACHE_DEPOSIT_OR_NOT, 20)
+               , (CACHE_DEPOSIT_BREACHED, 20) ]
   , tfeature = [ Embed DEPOSIT_BOX
-               , ChangeTo CACHABLE_DEPOSIT
+               , ChangeTo CACHE_DEPOSIT_OR_NOT
                , ConsideredByAI ]
   }
 pillarCache3 = pillarCache
   { tname    = "rack of sealed deposit boxes"
   , tfreq    = [ (CACHE_DEPOSIT, 33)
                , (STAIR_TERMINAL_LIT, 1), (STAIR_TERMINAL_DARK, 1) ]
-  , tfeature = [ ChangeWith [BREACHING_TOOL] CACHABLE_DEPOSIT_BREACHED
+  , tfeature = [ ChangeWith [BREACHING_TOOL] CACHE_DEPOSIT_BREACHED
                , ConsideredByAI ]
   }
 pillarCache4 = pillarCache
   { tname    = "jewelry display"
-  , tfreq    = [(CACHABLE_JEWELRY, 20)]
+  , tfreq    = [(CACHE_JEWELRY_OR_NOT, 20)]
   , tfeature = [ Embed JEWELRY_CASE
-               , ChangeTo CACHABLE_JEWELRY
+               , ChangeTo CACHE_JEWELRY_OR_NOT
                , ConsideredByAI ]
   }
 pillarCache5 = pillarCache
   { tname    = "jewelry display"
-  , tfreq    = [ (CACHABLE_JEWELRY_TRAPPED, 20), (CACHE_JEWELRY, 33)
+  , tfreq    = [ (CACHE_JEWELRY_TRAPPED_OR_NOT, 20), (CACHE_JEWELRY, 33)
                , (MUSEUM_SET_DARK, 2) ]
   , tfeature = [ Embed JEWELRY_CASE
-               , ChangeWith [COLD_SOURCE] CACHABLE_JEWELRY_TRAPPED
+               , ChangeWith [COLD_SOURCE] CACHE_JEWELRY_TRAPPED_OR_NOT
                    -- halts watchdog
-               , ChangeWith [WIRECUTTING_TOOL] CACHABLE_JEWELRY
+               , ChangeWith [WIRECUTTING_TOOL] CACHE_JEWELRY_OR_NOT
                    -- disarms trap altogether
                , Embed JEWELRY_DISPLAY_TRAP
-               , ChangeTo CACHABLE_JEWELRY_TRAPPED
+               , ChangeTo CACHE_JEWELRY_TRAPPED_OR_NOT
                , ConsideredByAI ]
   }
 stairsTrappedDownOil = TileKind
@@ -1125,7 +1127,7 @@ reinforcedWall = TileKind
   }
 reinforcedWallSpice = reinforcedWall
   { tfreq    = [ (DOORLESS_WALL, 20)
-               , (CACHE_MAZE, 66), (CACHABLE_ABANDONED, 80) ]
+               , (CACHE_MAZE, 66), (CACHE_ABANDONED_OR_NOT, 80) ]
   , tfeature = Spice : tfeature reinforcedWall
   }
 wallShuttle = bedrock
@@ -1180,7 +1182,7 @@ underbrushBurning = underbrush
   { tsymbol  = ';'
   , tname    = "burning underbrush"
   , tfreq    = [ (AMBUSH_SET_DARK, 1), (ZOO_SET_DARK, 5)
-               , (BUSH_WITH_FIRE, 25), (S_BURNING_UNDERBRUSH, 1) ]
+               , (BUSH_BURNING_OR_NOT, 25), (S_BURNING_UNDERBRUSH, 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 0  -- just walk into it; even animals can
