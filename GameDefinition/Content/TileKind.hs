@@ -71,7 +71,7 @@ groupNames =
     ++ [TREE_SHADE_WALKABLE_LIT, TREE_SHADE_WALKABLE_DARK, SMOKE_CLUMP_LIT, SMOKE_CLUMP_DARK, BUSH_CLUMP_LIT, BUSH_CLUMP_DARK, FOG_CLUMP_LIT, FOG_CLUMP_DARK, STAIR_TERMINAL_LIT, STAIR_TERMINAL_DARK, SIGNBOARD, STAIRCASE_UP, ORDINARY_STAIRCASE_UP, STAIRCASE_OUTDOOR_UP, GATED_STAIRCASE_UP, STAIRCASE_DOWN, ORDINARY_STAIRCASE_DOWN, STAIRCASE_OUTDOOR_DOWN, GATED_STAIRCASE_DOWN, ESCAPE_UP, ESCAPE_DOWN, ESCAPE_OUTDOOR_DOWN]
     ++ [RECT_WINDOWS, DOORLESS_MACHINERY, PUMPS_LIT, PUMPS_DARK, DOORLESS_WALL, OIL_RESIDUE_LIT, OIL_RESIDUE_DARK, LIFT_TERMINAL_LIT, LIFT_TERMINAL_DARK, STAIRCASE_LIFT_UP, STAIRCASE_LIFT_DOWN, GATED_LIFT_UP, GATED_LIFT_DOWN, DECONTAMINATING_STAIRCASE_UP, DECONTAMINATING_STAIRCASE_DOWN, DECONTAMINATING_LIFT_UP, DECONTAMINATING_LIFT_DOWN, WELDED_STAIRCASE_UP, WELDED_LIFT_UP, ESCAPE_SPACESHIP_DOWN, ORDINARY_LIFT_UP, ORDINARY_LIFT_DOWN, RUBBLE_OR_WASTE_LIT, RUBBLE_OR_WASTE_DARK, CACHE_DEPOSIT, CACHE_JEWELRY, CACHE_MAZE, CACHE_SHUTTLE, TRAPPED_DOOR, FLOOR_ACTOR_ITEM]
     ++ [TREE_WITH_FIRE, BUSH_WITH_FIRE]
-    ++ [OBSCURED_WALL, CACHABLE_DEPOSIT, CACHABLE_JEWELRY, CACHABLE_ABANDONED, RUBBLE_WITH_FIRE]
+    ++ [OBSCURED_WALL, CACHABLE_DEPOSIT, CACHABLE_DEPOSIT_BREACHED, CACHABLE_JEWELRY, CACHABLE_JEWELRY_TRAPPED, CACHABLE_ABANDONED, RUBBLE_WITH_FIRE]
 
 pattern FILLER_WALL, FLOOR_CORRIDOR_LIT, FLOOR_CORRIDOR_DARK, TRAIL_LIT, SAFE_TRAIL_LIT, LAB_TRAIL_LIT, DAMP_FLOOR_LIT, DAMP_FLOOR_DARK, DIRT_LIT, DIRT_DARK, FLOOR_ARENA_LIT, FLOOR_ARENA_DARK :: GroupName TileKind
 
@@ -93,7 +93,7 @@ pattern RECT_WINDOWS, DOORLESS_MACHINERY, PUMPS_LIT, PUMPS_DARK, DOORLESS_WALL, 
 pattern TREE_WITH_FIRE, BUSH_WITH_FIRE :: GroupName TileKind
 
 -- ** Allure-specific
-pattern OBSCURED_WALL, CACHABLE_DEPOSIT, CACHABLE_JEWELRY, CACHABLE_ABANDONED, RUBBLE_WITH_FIRE :: GroupName TileKind
+pattern OBSCURED_WALL, CACHABLE_DEPOSIT, CACHABLE_DEPOSIT_BREACHED, CACHABLE_JEWELRY, CACHABLE_JEWELRY_TRAPPED, CACHABLE_ABANDONED, RUBBLE_WITH_FIRE :: GroupName TileKind
 
 -- ** Used in CaveKind and perhaps elsewhere (or a dark/lit version thereof).
 pattern FILLER_WALL = GroupName "fillerWall"
@@ -240,7 +240,9 @@ pattern S_SIGNBOARD_UNREAD = GroupName "signboard unread"
 -- ** Allure-specific
 pattern OBSCURED_WALL = GroupName "obscured wall"
 pattern CACHABLE_DEPOSIT = GroupName "cachable deposit"
+pattern CACHABLE_DEPOSIT_BREACHED = GroupName "cachable deposit breached"
 pattern CACHABLE_JEWELRY = GroupName "cachable jewelry"
+pattern CACHABLE_JEWELRY_TRAPPED = GroupName "cachable jewelry trapped"
 pattern CACHABLE_ABANDONED = GroupName "cachable abandoned"
 pattern RUBBLE_WITH_FIRE = GroupName "rubble with fire"
 
@@ -263,11 +265,11 @@ content =
   [unknown, unknownOuterFence, basicOuterFence, bedrock, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, fog, fogDark, smoke, smokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorBrown, floorArenaShade ]
   ++ map makeDarkColor ldarkColorable
   -- Allure-specific
-  ++ [oriel, outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, signboardReadExtinguisher, wallObscured3dBillboard, wallObscuredPipework, liftShaft, rock, pillarCache2, pillarCache3, stairsTrappedDownOil, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, machineWall, machineWallSpice, bushEdible, underbrushBurning, floorOily, oilSpill, oilSpillSpice, oilBurning, floorWindow, underbrush]
+  ++ [oriel, outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, signboardReadExtinguisher, wallObscured3dBillboard, wallObscuredPipework, liftShaft, rock, pillarCache2, pillarCache3, pillarCache4, pillarCache5, stairsTrappedDownOil, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, machineWall, machineWallSpice, bushEdible, underbrushBurning, floorOily, oilSpill, oilSpillSpice, oilBurning, floorWindow, underbrush]
 
 unknown,    unknownOuterFence, basicOuterFence, bedrock, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, fog, fogDark, smoke, smokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorBrown, floorArenaShade :: TileKind
 -- Allure-specific
-oriel,       outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, signboardReadExtinguisher, wallObscured3dBillboard, wallObscuredPipework, liftShaft, rock, pillarCache2, pillarCache3, stairsTrappedDownOil, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, machineWall, machineWallSpice, bushEdible, underbrushBurning, floorOily, oilSpill, oilSpillSpice, oilBurning, floorWindow, underbrush :: TileKind
+oriel,       outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, signboardReadExtinguisher, wallObscured3dBillboard, wallObscuredPipework, liftShaft, rock, pillarCache2, pillarCache3, pillarCache4, pillarCache5, stairsTrappedDownOil, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, machineWall, machineWallSpice, bushEdible, underbrushBurning, floorOily, oilSpill, oilSpillSpice, oilBurning, floorWindow, underbrush :: TileKind
 
 ldarkColorable :: [TileKind]
 ldarkColorable = [tree, bush, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, shallowWater, shallowWaterSpice, shallowWater2, floorOily]
@@ -493,7 +495,7 @@ rubble = TileKind
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 4  -- boss can dig through
-  , tfeature = [OpenTo S_FLOOR_ASHES_LIT, Embed RUBBLE]
+  , tfeature = [Embed RUBBLE, OpenTo S_FLOOR_ASHES_LIT]
       -- It's not explorable, due to not being walkable nor clear and due
       -- to being a door (@OpenTo@), which is kind of OK, because getting
       -- the item is risky and, e.g., AI doesn't attempt it.
@@ -514,7 +516,8 @@ doorTrapped = TileKind
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 2
-  , tfeature = [ Embed DOORWAY_TRAP
+  , tfeature = [ ChangeWith [WIRECUTTING_TOOL] S_CLOSED_DOOR
+               , Embed DOORWAY_TRAP
                , OpenTo S_OPEN_DOOR
                , HideAs S_SUSPECT_WALL
                ]
@@ -565,8 +568,8 @@ stairsDown = TileKind
   , tcolor   = BrWhite
   , tcolor2  = defFG
   , talter   = 0  -- very easy stairs, unlike all others
-  , tfeature = [ Embed STAIRS_DOWN, ConsideredByAI
-               , ChangeWith [OIL_SOURCE] S_STAIRCASE_TRAP_DOWN_OIL ]
+  , tfeature = [ ChangeWith [OIL_SOURCE] S_STAIRCASE_TRAP_DOWN_OIL
+               , Embed STAIRS_DOWN, ConsideredByAI ]
   }
 stairsTrappedDown = TileKind
   { tsymbol  = '>'
@@ -624,7 +627,8 @@ wallGlass = TileKind
   }
 wallGlassSpice = wallGlass
   { tfreq    = [ (RECT_WINDOWS, 20)
-               , (CACHE_JEWELRY, 66), (CACHABLE_JEWELRY, 80) ]
+               , (CACHE_JEWELRY, 66)
+               , (CACHABLE_JEWELRY, 80), (CACHABLE_JEWELRY_TRAPPED, 80) ]
   , tfeature = Spice : tfeature wallGlass
   }
 pillarIce = TileKind
@@ -685,12 +689,13 @@ bushBurning = bush
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 5
-  , tfeature = [ Clear, Embed SMALL_FIRE
-               , OpenTo BUSH_WITH_FIRE
-               , ChangeWith [FIREPROOF_CLOTH] S_BUSH_LIT  -- saved for repeat
+  , tfeature = [ Clear
                , OpenWith [WATER_SOURCE, WATER_SOURCE, WATER_SOURCE]
                           S_SMOKE_LIT
-               ]
+               , Embed SMALL_FIRE
+               , ChangeWith [FIREPROOF_CLOTH] S_BUSH_LIT
+                   -- full effects experienced, but bush saved for repeat
+               , OpenTo BUSH_WITH_FIRE ]
   }
 
 -- ** Walkable
@@ -884,12 +889,12 @@ rubbleBurning = TileKind  -- present in EMPTY_SET_LIT as early light/fire source
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 4  -- boss can dig through
-  , tfeature = [ Embed BIG_FIRE  -- not as tall as a tree, so quenchable
-               , OpenTo RUBBLE_WITH_FIRE
-               , ChangeWith [FIREPROOF_CLOTH] S_RUBBLE_PILE  -- saved for repeat
-               , OpenWith [WATER_SOURCE, WATER_SOURCE, WATER_SOURCE]
+  , tfeature = [ OpenWith [WATER_SOURCE, WATER_SOURCE, WATER_SOURCE]
                           S_SMOKE_LIT
-               ]
+               , Embed BIG_FIRE  -- not as tall as a tree, so quenchable
+               , ChangeWith [FIREPROOF_CLOTH] S_RUBBLE_PILE
+                   -- full effects experienced, but rubble saved for repeat
+               , OpenTo RUBBLE_WITH_FIRE ]
   }
 rubbleBurningSpice = rubbleBurning
   { tfreq    = [ (SMOKE_CLUMP_LIT, 1), (SMOKE_CLUMP_DARK, 1)
@@ -957,18 +962,37 @@ rock = pillar
   }
 pillarCache2 = pillarCache
   { tname    = "rack of deposit boxes"
-  , tfreq    = [ (CACHABLE_DEPOSIT, 20), (CACHE_DEPOSIT, 33)
-               , (STAIR_TERMINAL_LIT, 1), (STAIR_TERMINAL_DARK, 1) ]
+  , tfreq    = [ (CACHABLE_DEPOSIT, 20), (CACHABLE_DEPOSIT_BREACHED, 20) ]
   , tfeature = [ Embed DEPOSIT_BOX
-               , ChangeTo CACHABLE_DEPOSIT, ConsideredByAI ]
+               , ChangeTo CACHABLE_DEPOSIT
+               , ConsideredByAI ]
   }
 pillarCache3 = pillarCache
+  { tname    = "rack of sealed deposit boxes"
+  , tfreq    = [ (CACHE_DEPOSIT, 33)
+               , (STAIR_TERMINAL_LIT, 1), (STAIR_TERMINAL_DARK, 1) ]
+  , tfeature = [ ChangeWith [BREACHING_TOOL] CACHABLE_DEPOSIT_BREACHED
+               , ConsideredByAI ]
+  }
+pillarCache4 = pillarCache
   { tname    = "jewelry display"
-  , tfreq    = [ (CACHABLE_JEWELRY, 20), (CACHE_JEWELRY, 33)
+  , tfreq    = [(CACHABLE_JEWELRY, 20)]
+  , tfeature = [ Embed JEWELRY_CASE
+               , ChangeTo CACHABLE_JEWELRY
+               , ConsideredByAI ]
+  }
+pillarCache5 = pillarCache
+  { tname    = "jewelry display"
+  , tfreq    = [ (CACHABLE_JEWELRY_TRAPPED, 20), (CACHE_JEWELRY, 33)
                , (MUSEUM_SET_DARK, 2) ]
-  , tfeature = [ Embed JEWELRY_CASE, Embed JEWELRY_DISPLAY_TRAP
-               , ChangeWith [COLD_SOURCE] CACHABLE_JEWELRY  -- halts watchdog
-               , ChangeTo CACHABLE_JEWELRY, ConsideredByAI ]
+  , tfeature = [ Embed JEWELRY_CASE
+               , ChangeWith [COLD_SOURCE] CACHABLE_JEWELRY_TRAPPED
+                   -- halts watchdog
+               , ChangeWith [WIRECUTTING_TOOL] CACHABLE_JEWELRY
+                   -- disarms trap altogether
+               , Embed JEWELRY_DISPLAY_TRAP
+               , ChangeTo CACHABLE_JEWELRY_TRAPPED
+               , ConsideredByAI ]
   }
 stairsTrappedDownOil = TileKind
   { tsymbol  = '>'
@@ -977,10 +1001,10 @@ stairsTrappedDownOil = TileKind
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = talterForStairs
-  , tfeature = [ Embed STAIRS_DOWN, Embed STAIRS_TRAP_DOWN_OIL
+  , tfeature = [ ChangeWith [THICK_CLOTH] ORDINARY_STAIRCASE_DOWN  -- soaks
+               , Embed STAIRS_DOWN, Embed STAIRS_TRAP_DOWN_OIL
                , ConsideredByAI
-               , ChangeTo ORDINARY_STAIRCASE_DOWN
-               , ChangeWith [THICK_CLOTH] ORDINARY_STAIRCASE_DOWN ]  -- soaks
+               , ChangeTo ORDINARY_STAIRCASE_DOWN ]
  }
 stairsDecontaminatingUp = stairsUp
   { tname    = "decontaminating staircase up"
@@ -996,9 +1020,10 @@ stairsWelded = stairsUp
   , tcolor   = BrMagenta
   , tcolor2  = Magenta
   , talter   = talterForStairs + 3  -- gear or level up needed
-  , tfeature = [ ChangeWith [BLOWTORCH] ORDINARY_STAIRCASE_UP
+  , tfeature = [ Embed S_CRUDE_WELD
+               , ChangeWith [BLOWTORCH] ORDINARY_STAIRCASE_UP
                , ChangeWith [COLD_SOURCE] ORDINARY_STAIRCASE_UP
-               , Embed S_CRUDE_WELD, ConsideredByAI ]
+               , ConsideredByAI ]
   }
 stairsLiftUp = stairsUp  -- fireproof
   { tname    = "lift up"
@@ -1035,9 +1060,10 @@ stairsLiftWelded = stairsLiftUp
   , tcolor   = BrMagenta
   , tcolor2  = Magenta
   , talter   = talterForStairs + 3  -- gear or level up needed
-  , tfeature = [ ChangeWith [BLOWTORCH] ORDINARY_LIFT_UP
+  , tfeature = [ Embed S_CRUDE_WELD
+               , ChangeWith [BLOWTORCH] ORDINARY_LIFT_UP
                , ChangeWith [COLD_SOURCE] ORDINARY_LIFT_UP
-               , Embed S_CRUDE_WELD, ConsideredByAI ]
+               , ConsideredByAI ]
   }
 stairsDecontaminatingDown = stairsDown
   { tname    = "decontaminating staircase down"
@@ -1141,7 +1167,7 @@ bushEdible = TileKind
   , tcolor   = BrMagenta
   , tcolor2  = Magenta
   , talter   = 4
-  , tfeature = [ Clear, Embed EDIBLE_PLANT_RIPE
+  , tfeature = [ Clear, Embed EDIBLE_PLANT_RIPE  -- granted even when ignited
                , ChangeTo S_BUSH_LIT
                , ChangeWith [FIRE_SOURCE] S_BURNING_BUSH ]
   }
@@ -1159,10 +1185,11 @@ underbrushBurning = underbrush
   , tcolor2  = Red
   , talter   = 0  -- just walk into it; even animals can
   , tfeature = [ Walkable, NoItem, NoActor  -- not clear, due to smoke
-               , Embed SMALL_FIRE
-               , ChangeTo S_FLOOR_ASHES_LIT
-               , ChangeWith [FIREPROOF_CLOTH] S_UNDERBRUSH_LIT  -- saved cycle
                , ChangeWith [WATER_SOURCE] S_SMOKE_LIT
+               , Embed SMALL_FIRE
+               , ChangeWith [FIREPROOF_CLOTH] S_UNDERBRUSH_LIT
+                   -- full effects experienced, but underbrush saved for repeat
+               , ChangeTo S_FLOOR_ASHES_LIT
                ]
   }
 

@@ -8,7 +8,7 @@
 module Content.ItemKind
   ( -- * Group name patterns
     pattern HARPOON, pattern TORSO_ARMOR, pattern CLOTHING_MISC
-  , pattern MUSEAL, pattern FIREPROOF_CLOTH, pattern THICK_CLOTH, pattern COOKED_PLANT, pattern LIQUID_NITROGEN
+  , pattern MUSEAL, pattern FIREPROOF_CLOTH, pattern THICK_CLOTH, pattern COOKED_PLANT, pattern LIQUID_NITROGEN, pattern BREACHING_TOOL, pattern WIRECUTTING_TOOL
   , groupNamesSingleton, groupNames
   , -- * Content
     content, items, otherItemContent
@@ -36,23 +36,26 @@ import Game.LambdaHack.Definition.Flavour
 groupNamesSingleton :: [GroupName ItemKind]
 groupNamesSingleton =
        [FLASK_UNKNOWN, ANY_POTION_UNKNOWN, EDIBLE_PLANT_UNKNOWN, SCROLL_UNKNOWN, NECKLACE_UNKNOWN, RING_UNKNOWN, HAMMER_UNKNOWN, GEM_UNKNOWN, CURRENCY_UNKNOWN]
+    ++ [S_GRASS_STITCHER, S_LADIES_FORK, S_SPADE, S_HOE]
     ++ [COOKED_PLANT_UNKNOWN]
     ++ embedsGNSingleton ++ organsGNSingleton ++ blastsGNSingleton
     ++ temporariesGNSingleton
 
 pattern FLASK_UNKNOWN, ANY_POTION_UNKNOWN, EDIBLE_PLANT_UNKNOWN, SCROLL_UNKNOWN, NECKLACE_UNKNOWN, RING_UNKNOWN, HAMMER_UNKNOWN, GEM_UNKNOWN, CURRENCY_UNKNOWN :: GroupName ItemKind
 
+pattern S_GRASS_STITCHER, S_LADIES_FORK, S_SPADE, S_HOE :: GroupName ItemKind
+
 pattern COOKED_PLANT_UNKNOWN :: GroupName ItemKind
 
 groupNames :: [GroupName ItemKind]
 groupNames =
        [HARPOON, TORSO_ARMOR, CLOTHING_MISC]
-    ++ [MUSEAL, FIREPROOF_CLOTH, THICK_CLOTH, COOKED_PLANT, LIQUID_NITROGEN]
+    ++ [MUSEAL, FIREPROOF_CLOTH, THICK_CLOTH, COOKED_PLANT, LIQUID_NITROGEN, BREACHING_TOOL, WIRECUTTING_TOOL]
     ++ embedsGN ++ actorsGN ++ organsGN ++ blastsGN
 
 pattern HARPOON, TORSO_ARMOR, CLOTHING_MISC :: GroupName ItemKind
 
-pattern MUSEAL, FIREPROOF_CLOTH, THICK_CLOTH, COOKED_PLANT, LIQUID_NITROGEN :: GroupName ItemKind
+pattern MUSEAL, FIREPROOF_CLOTH, THICK_CLOTH, COOKED_PLANT, LIQUID_NITROGEN, BREACHING_TOOL, WIRECUTTING_TOOL :: GroupName ItemKind
 
 -- The @UNKNOWN@ patterns don't need to be exported. Used internally.
 -- They also represent singleton groups.
@@ -81,6 +84,13 @@ pattern FIREPROOF_CLOTH = GroupName "fireproof cloth"
 pattern THICK_CLOTH = GroupName "thick cloth"
 pattern COOKED_PLANT = GroupName "cooked plant"
 pattern LIQUID_NITROGEN = GroupName "liquid nitrogen"
+pattern BREACHING_TOOL = GroupName "breaching tool"
+pattern WIRECUTTING_TOOL = GroupName "wirecutting tool"
+
+pattern S_GRASS_STITCHER = GroupName "grass stitcher"
+pattern S_LADIES_FORK = GroupName "ladies' fork"
+pattern S_SPADE = GroupName "spade"
+pattern S_HOE = GroupName "hoe"
 
 -- * Content
 
@@ -94,11 +104,11 @@ items :: [ItemKind]
 items =
   [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
   -- Allure-specific
-  ++ [needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryTazer]
+  ++ [needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryTazer, chisel, steelFile, hacksaw, adjustableSpanner, crowbar, catsPaw, diagonalPliers, snips, loppers, boltCutter, grassStitcher, ladiesFork, spade, hoe]
 
 sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
 -- Allure-specific
-needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryTazer :: ItemKind
+needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryTazer, chisel, steelFile, hacksaw, adjustableSpanner, crowbar, catsPaw, diagonalPliers, snips, loppers, boltCutter, grassStitcher, ladiesFork, spade, hoe :: ItemKind
 
 -- Keep the dice rolls and sides in aspects small so that not too many
 -- distinct items are generated (for display in item lore and for narrative
@@ -1632,7 +1642,7 @@ dagger = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 200)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(3 * 10/15, 50), (4 * 10/15, 1)]
+  , irarity  = [(3 * 10/15, 40), (4 * 10/15, 1)]
                  -- no weapons brought by aliens, initially, so cleaver common
   , iverbHit = "cut"
   , iweight  = 1000
@@ -2030,7 +2040,8 @@ blowtorch = ItemKind
   { isymbol  = symbolLight
   , iname    = "blowtorch"  -- not unique, but almost never generated on floor
   , ifreq    = [ (BLOWTORCH, 1), (VALUABLE, 20), (CURIOUS_ITEM, 1)
-               , (FIRE_SOURCE, 1) ]  -- infinite use, but harmful
+               , (BREACHING_TOOL, 1), (FIRE_SOURCE, 1) ]
+                 -- infinite use, but harmful
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , irarity  = [(1, 1)]
@@ -2099,4 +2110,147 @@ militaryTazer = ItemKind
   , ieffects = [DropBestWeapon, Paralyze 10]
   , idesc    = "A direct contact electroshock weapon with unlimited and fast recharging. Ideal for close quarter fights inside space habitats, where preserving the integrity of the outer hull is paramount."
   , ikit     = []
+  }
+chisel = ItemKind
+  { isymbol  = symbolTool
+  , iname    = "chisel"
+  , ifreq    = [(COMMON_ITEM, 100), (BREACHING_TOOL, 1)]
+  , iflavour = zipPlain [Cyan]
+  , icount   = 1
+  , irarity  = [(1, 3)]
+  , iverbHit = "dismantle"
+  , iweight  = 500
+  , idamage  = 0
+  , iaspects = []  -- lost after one use; a consumable
+  , ieffects = []
+  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Chisel
+                   -- also say light and cheap, but not durable; one time use
+  , ikit     = []
+  }
+steelFile = chisel
+  { iname    = "steel file"
+  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/File_(tool)
+  }
+hacksaw = chisel
+  { iname    = "hacksaw"
+  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Hacksaw
+  }
+adjustableSpanner = chisel
+  { iname    = "adjustable spanner"
+  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Adjustable_spanner
+  }
+crowbar = chisel
+  { iname    = "crowbar"
+  , iflavour = zipPlain [BrCyan]
+  , iverbHit = "gouge"
+  , idamage  = 5 `d` 1
+  , iaspects = [ Timeout 4
+               , SetFlag Durable, SetFlag Meleeable
+               , EqpSlot EqpSlotWeaponFast
+               , toVelocity 30 ]
+  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Crowbar_(tool)
+  }
+catsPaw = chisel
+  { iname    = "cat's paw"
+  , iflavour = zipPlain [BrCyan]
+  , iverbHit = "paw"
+  , idamage  = 4 `d` 1
+  , iaspects = [ Timeout 3
+               , SetFlag Durable, SetFlag Meleeable
+               , EqpSlot EqpSlotWeaponFast
+               , toVelocity 50 ]
+  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Cat%27s_paw_(nail_puller)
+  }
+diagonalPliers = chisel
+  { iname    = "pair"
+  , ifreq    = [(COMMON_ITEM, 100), (WIRECUTTING_TOOL, 1)]
+  , iflavour = zipPlain [Brown]
+  , iaspects = [ELabel "of diagonal pliers"]
+  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Diagonal_pliers
+  }
+snips = diagonalPliers
+  { iname    = "pair"
+  , iaspects = [ELabel "of snips"]
+  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Snips
+  }
+loppers = diagonalPliers
+  { iname    = "pair"
+  , iaspects = [ELabel "of loppers"]
+  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Loppers
+  }
+boltCutter = diagonalPliers
+  { iname    = "bolt cutter"
+  , iaspects = []
+  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Bolt_cutter
+  }
+gardenMsg :: Effect
+gardenMsg = VerbMsg "feel the gardening tool fracture"
+grassStitcher = ItemKind
+  { isymbol  = symbolPolearm
+  , iname    = "grass stitcher"
+  , ifreq    = [(COMMON_ITEM, 100), (S_GRASS_STITCHER, 1)]
+  , iflavour = zipPlain [Red]
+  , icount   = 1
+  , irarity  = [(1, 3), (3 * 10/15, 3), (4 * 10/15, 1)]
+  , iverbHit = "stab"
+  , iweight  = 500
+  , idamage  = 4 `d` 1
+  , iaspects = [ Timeout 3  -- light and can hit with any side
+               , SetFlag Durable, SetFlag Meleeable
+               , EqpSlot EqpSlotWeaponFast
+               , toVelocity 40 ]
+  , ieffects = -- TODO: instead introduce items with finite number of charges?
+               [OneOf [ DestroyItem 1 1 CEqp S_GRASS_STITCHER
+                      , gardenMsg, gardenMsg, gardenMsg ]]
+  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Grass_Stitcher
+  , ikit     = []
+  }
+ladiesFork = grassStitcher
+  { iname    = "ladies' fork"
+  , ifreq    = [(COMMON_ITEM, 100), (S_LADIES_FORK, 1)]
+  , iflavour = zipPlain [Green]
+  , iweight  = 1000
+  , idamage  = 5 `d` 1
+  , iaspects = [ Timeout 5
+               , SetFlag Durable, SetFlag Meleeable
+               , EqpSlot EqpSlotWeaponBig
+               , toVelocity 40 ]
+  , ieffects = [OneOf [ DestroyItem 1 1 CEqp S_LADIES_FORK
+                      , gardenMsg, gardenMsg
+                      , gardenMsg, gardenMsg, gardenMsg ]]
+  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Garden_fork
+  }
+spade = grassStitcher
+  { isymbol  = symbolHafted  -- swinging much more deadly than gouging
+  , iname    = "spade"
+  , ifreq    = [(COMMON_ITEM, 100), (S_SPADE, 1)]
+  , iflavour = zipPlain [Cyan]
+  , iverbHit = "cut"
+  , iweight  = 2000
+  , idamage  = 7 `d` 1
+  , iaspects = [ Timeout 7
+               , SetFlag Durable, SetFlag Meleeable
+               , EqpSlot EqpSlotWeaponBig
+               , toVelocity 40 ]
+  , ieffects = [OneOf [ DestroyItem 1 1 CEqp S_SPADE
+                      , gardenMsg, gardenMsg, gardenMsg, gardenMsg
+                      , gardenMsg, gardenMsg, gardenMsg ]]
+  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Spade
+  }
+hoe = grassStitcher
+  { isymbol  = symbolHafted
+  , iname    = "hoe"
+  , ifreq    = [(COMMON_ITEM, 100), (S_HOE, 1)]
+  , iflavour = zipPlain [Brown]
+  , iverbHit = "hack"
+  , iweight  = 1000
+  , idamage  = 6 `d` 1  -- neither sharp nor heavy
+  , iaspects = [ Timeout 6
+               , SetFlag Durable, SetFlag Meleeable
+               , EqpSlot EqpSlotWeaponBig
+               , toVelocity 40 ]
+  , ieffects = [OneOf [ DestroyItem 1 1 CEqp S_HOE
+                      , gardenMsg, gardenMsg, gardenMsg
+                      , gardenMsg, gardenMsg, gardenMsg ]]
+  , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Hoe_(tool)
   }
