@@ -467,6 +467,7 @@ flask3 = flaskTemplate
                : iaspects flaskTemplate
   , ieffects = [ toOrganGood S_PROTECTED_FROM_MELEE (20 + 1 `d` 5)
                , OnSmash (Explode S_MELEE_PROTECTIVE_BALM) ]
+  , idesc    = "A flask of wrestling balm that adheres to the body, but turns into slick oil when hit. Double dose causes twice longer effect."
   }
 flask4 = flaskTemplate
   { ifreq    = [ (COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)
@@ -475,6 +476,7 @@ flask4 = flaskTemplate
                : iaspects flaskTemplate
   , ieffects = [ toOrganGood S_PROTECTED_FROM_RANGED (20 + 1 `d` 5)
                , OnSmash (Explode S_RANGE_PROTECTIVE_BALM) ]
+  , idesc    = "A flask of wrestling balm that adheres to the body, but turns into slick oil when hit. Double dose causes twice longer effect."
   }
 flask5 = flaskTemplate
   { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)]

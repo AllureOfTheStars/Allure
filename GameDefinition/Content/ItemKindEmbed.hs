@@ -542,7 +542,7 @@ fireFightingGear = ItemKind
   , iaspects = []  -- not Durable, springs at most once
   , ieffects = [ VerbMsg "disassemble and sort through the deteriorated and leaking gear, taking away the least decrepit item"
                , CreateItem CStash FIRE_FIGHTING_ITEM timerNone ]
-  , idesc    = ""  -- regulations require; hint that terrain can be ignited and doused
+  , idesc    = "In addition to remains of firefighting tools, it contains a fire hydrant."  -- regulations require; hint that terrain can be ignited and doused
   , ikit     = []
   }
 wall3dBillboard = ItemKind
