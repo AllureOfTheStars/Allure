@@ -206,6 +206,8 @@ treasureCache = ItemKind
   , idesc    = "If this stash is hidden, it's in plain sight. Or, more probably, it's just tucked aside so that it doesn't get in the way. Whomever worked there, apparently failed to return and retrieve his belongings."
   , ikit     = []
   }
+reliefMsg :: Effect
+reliefMsg = VerbMsg "sigh with relief when nothing explodes in your face"
 treasureCacheTrap = ItemKind
   { isymbol  = '^'
   , iname    = "anti-theft protection"
@@ -220,7 +222,7 @@ treasureCacheTrap = ItemKind
   , ieffects = [OneOf [ toOrganBad S_BLIND (10 + 1 `d` 10)
                       , RefillCalm (-99)
                       , Explode S_FOCUSED_CONCUSSION
-                      , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1) ]]
+                      , reliefMsg, reliefMsg ]]
   , idesc    = "A display of such kingly trinkets warrants an autonomous guarding device. The precaution is particularly understandable if some of the merchandise is capable of instantly frying video monitoring equipment across the hall."
   , ikit     = []
   }
@@ -313,8 +315,8 @@ rubble = ItemKind
                       , toOrganNoTimer S_POISONED
                       , CreateItem CGround ANY_ARROW timerNone
                       , CreateItem CGround STARTING_WEAPON timerNone
-                      , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1)
-                      , RefillCalm (-1), RefillCalm (-1), RefillCalm (-1) ]]
+                      , reliefMsg, reliefMsg, reliefMsg
+                      , reliefMsg, reliefMsg, reliefMsg ]]
   , idesc    = "Broken chunks of foam concrete, glass and torn and burned equipment."
   , ikit     = []
   }
