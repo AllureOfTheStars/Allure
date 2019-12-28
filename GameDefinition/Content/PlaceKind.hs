@@ -372,7 +372,7 @@ pillar5 = pillar
                ]
   , poverrideDark = [ ('&', CACHE_DEPOSIT), ('+', TRAPPED_DOOR)
                     , ('i', FLOOR_ACTOR_ITEM) ]  -- lit or not, randomly
-  , poverrideLit = [ ('&', CACHE_DEPOSIT), ('+', TRAPPED_DOOR)
+  , poverrideLit = [ ('&', CACHE_DEPOSIT), ('+', STUCK_DOOR)
                    , ('i', FLOOR_ACTOR_ITEM) ]  -- lit or not, randomly
   }
 pillar6 = pillar
@@ -1189,9 +1189,13 @@ oval = PlaceKind
                , "#·t··"
                , "··t··"
                ]
-  , poverrideDark = [ ('t', TRAIL_LIT), ('a', SAFE_TRAIL_LIT)
+  , poverrideDark = [ ('t', TRAIL_LIT)
+                    , ('a', SAFE_TRAIL_LIT)
+                    , ('d', TRAPPED_DOOR)
                     , ('~', S_POOL_DARK) ]
-  , poverrideLit = [ ('t', TRAIL_LIT), ('a', SAFE_TRAIL_LIT)
+  , poverrideLit = [ ('t', TRAIL_LIT)
+                   , ('a', SAFE_TRAIL_LIT)
+                   , ('d', STUCK_DOOR)
                    , ('~', S_POOL_LIT) ]
   }
 ovalFloor = oval
@@ -1200,7 +1204,7 @@ ovalFloor = oval
                , (AMBUSH, 100000) ]
   , pfence   = FGround
   , ptopLeft = [ "aXXX##"
-               , "X+###·"
+               , "Xd###·"
                , "X#a···"
                , "X#·a·a"
                , "##··a·"
@@ -1288,9 +1292,11 @@ maze = PlaceKind
                ]
   , poverrideDark = [ ('&', CACHE_MAZE), ('+', TRAPPED_DOOR)
                     , ('i', FLOOR_ACTOR_ITEM)  -- lit or not, randomly
+                    , ('u', STUCK_DOOR)
                     , ('$', TRAPPABLE_WALL) ]
   , poverrideLit = [ ('&', CACHE_MAZE), ('+', TRAPPED_DOOR)
                    , ('i', FLOOR_ACTOR_ITEM)  -- lit or not, randomly
+                   , ('u', STUCK_DOOR)
                    , ('$', TRAPPABLE_WALL) ]
   }
 maze2 = maze
@@ -1327,7 +1333,7 @@ mazeBig2 = maze
   , ptopLeft = [ "XX$$$~"
                , "X#···%"
                , "$·###·"
-               , "$·+&%%"
+               , "$·u&%%"
                , "$·#iii"
                ]
   }
@@ -1465,12 +1471,14 @@ shuttleHusk = PlaceKind
                     , ('r', RUBBLE_OR_WASTE_DARK)
                     , ('#', S_SHUTTLE_HULL)
                     , ('c', CACHE_SHUTTLE)
+                    , ('u', STUCK_DOOR)
                     , ('h', S_HARDWARE_RACK)
                     , ('w', S_REINFORCED_WALL) ]
   , poverrideLit = [ ('·', OILY_FLOOR_LIT)
                    , ('r', RUBBLE_OR_WASTE_LIT)
                    , ('#', S_SHUTTLE_HULL)
                    , ('c', CACHE_SHUTTLE)
+                   , ('u', STUCK_DOOR)
                    , ('h', S_HARDWARE_RACK)
                    , ('w', S_REINFORCED_WALL) ]
   }
@@ -1502,7 +1510,7 @@ shuttleHusk5 = shuttleHusk
   , ptopLeft = [ "···##···"  -- 8 x 10
                , "w#%ww%#w"
                , "X#····#X"
-               , "X···h·#X"
+               , "Xu··h·#X"
                , "#w····w#"
                , "%rr····%"
                , "##rrrr##"
