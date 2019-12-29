@@ -1148,7 +1148,7 @@ doorStuck = TileKind
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 2
-  , tfeature = [ChangeWith [BREACHING_TOOL] S_OPEN_DOOR]
+  , tfeature = [OpenWith [BREACHING_TOOL] S_OPEN_DOOR]
   }
 
 -- *** Clear

@@ -367,13 +367,14 @@ pillar5 = pillar
                , (EMPTY, 600), (EXIT, 600) ]
   , ptopLeft = [ "&i%·"
                , "ii#·"
-               , "%#+·"
+               , "%#p·"
                , "····"
                ]
-  , poverrideDark = [ ('&', CACHE_DEPOSIT), ('+', TRAPPED_DOOR)
+  , poverrideDark = [ ('&', CACHE_DEPOSIT), ('p', TRAPPED_DOOR)
                     , ('i', FLOOR_ACTOR_ITEM) ]  -- lit or not, randomly
-  , poverrideLit = [ ('&', CACHE_DEPOSIT), ('+', STUCK_DOOR)
+  , poverrideLit = [ ('&', CACHE_DEPOSIT), ('p', TRAPPED_DOOR)
                    , ('i', FLOOR_ACTOR_ITEM) ]  -- lit or not, randomly
+      -- no STUCK_DOOR, because FWall, so would break global pathfinding
   }
 pillar6 = pillar
   { pname    = "a jewelry store"
@@ -1225,10 +1226,10 @@ ovalBasin = oval
   , pfreq    = [ (ROGUE, 100000), (ARENA, 200000), (LABORATORY, 200000)
                , (EMPTY, 20000) ]
   , pfence   = FGround
-  , ptopLeft = [ "XXX+##"
+  , ptopLeft = [ "XXXd##"
                , "X###··"
                , "X#····"
-               , "+#··~~"
+               , "d#··~~"
                , "#··~~~"
                , "#··~~~"
                ]
@@ -1290,11 +1291,11 @@ maze = PlaceKind
                , "#··#"
                , "··#·"
                ]
-  , poverrideDark = [ ('&', CACHE_MAZE), ('+', TRAPPED_DOOR)
+  , poverrideDark = [ ('&', CACHE_MAZE), ('p', TRAPPED_DOOR)
                     , ('i', FLOOR_ACTOR_ITEM)  -- lit or not, randomly
                     , ('u', STUCK_DOOR)
                     , ('$', TRAPPABLE_WALL) ]
-  , poverrideLit = [ ('&', CACHE_MAZE), ('+', TRAPPED_DOOR)
+  , poverrideLit = [ ('&', CACHE_MAZE), ('p', TRAPPED_DOOR)
                    , ('i', FLOOR_ACTOR_ITEM)  -- lit or not, randomly
                    , ('u', STUCK_DOOR)
                    , ('$', TRAPPABLE_WALL) ]
@@ -1322,7 +1323,7 @@ mazeBig = maze
   , ptopLeft = [ "X$$$$"
                , "$·##·"
                , "$#···"
-               , "$#·+%"
+               , "$#·p%"
                , "$··%i"
                ]
   }
