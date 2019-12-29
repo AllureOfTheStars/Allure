@@ -1482,7 +1482,7 @@ gloveFencing = ItemKind
                , AddSkill SkArmorRanged $ (1 `dL` 2) * 3
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotHurtMelee
-               , toVelocity 50 ]  -- flaps and flutters
+               , toVelocity 70 ]  -- flaps and flutters
   , ieffects = []
   , idesc    = "A flexible construction glove from rough leather ensuring a good grip. Also, quite effective in deflecting or even catching slow projectiles."
   , ikit     = []
@@ -1497,7 +1497,7 @@ gloveGauntlet = gloveFencing
   , iaspects = [ AddSkill SkArmorMelee $ (1 + 1 `dL` 4) * 5
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotArmorMelee
-               , toVelocity 50 ]  -- flaps and flutters
+               , toVelocity 70 ]  -- flaps and flutters
   , idesc    = "A piece of a hull maintenance spacesuit, padded and reinforced with carbon fibre."
   }
 gloveJousting = gloveFencing
@@ -1604,7 +1604,7 @@ buckler = ItemKind
                    -- too harmful; won't be wielded as weapon
                , SetFlag MinorEffects, SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
-               , toVelocity 50 ]  -- unwieldy to throw
+               , toVelocity 70 ]  -- unwieldy to throw
   , ieffects = [PushActor (ThrowMod 200 50 1)]  -- 1 step, fast
   , idesc    = "Heavy and unwieldy arm protection made from an outer airlock panel. Absorbs a percentage of melee damage, both dealt and sustained. Too small to intercept projectiles with."
   , ikit     = []
@@ -1622,7 +1622,7 @@ shield = buckler
                    -- too harmful; won't be wielded as weapon
                , SetFlag MinorEffects, SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
-               , toVelocity 50 ]  -- unwieldy to throw
+               , toVelocity 70 ]  -- unwieldy to throw
   , ieffects = [PushActor (ThrowMod 400 50 1)]  -- 2 steps, fast
   , idesc    = "Large and unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Too heavy to intercept projectiles with."
   }
@@ -1659,7 +1659,7 @@ dagger = ItemKind
                    -- very common, so don't make too random
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
-               , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
+               , toVelocity 70 ]  -- ensuring it hits with the tip costs speed
   , ieffects = []
   , idesc    = "A heavy professional kitchen blade. Will do fine cutting any kind of meat and bone, as well as parrying blows. Does not penetrate deeply, but is quick to move and hard to block. Especially useful in conjunction with a larger weapon."
   , ikit     = []
@@ -1689,7 +1689,7 @@ hammerTemplate = ItemKind
                         -- to subdivide this identification class by dice
   , iaspects = [ PresentAs HAMMER_UNKNOWN
                , SetFlag Durable, SetFlag Meleeable
-               , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
+               , toVelocity 50 ]  -- ensuring it hits with the tip costs speed
   , ieffects = []
   , idesc    = "One of many kinds of hammers employed in construction work. The ones with completely blunt heads don't cause grave wounds, but any fitted with a long enough handle can shake and bruise even most armored foes. However, such large hammers require more time to recover after a swing. This one looks average at a quick glance."  -- if it's really the average kind, the weak kind, the description stays; if not, it's replaced with one of the descriptions below at identification time
   , ikit     = []
@@ -1759,7 +1759,7 @@ sword = ItemKind
   , iaspects = [ Timeout 7
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
-               , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
+               , toVelocity 50 ]  -- ensuring it hits with the tip costs speed
   , ieffects = []
   , idesc    = "A makeshift weapon of simple design, but great potential. Hard to master, though."
   , ikit     = []
@@ -1804,7 +1804,7 @@ halberd = ItemKind
                , AddSkill SkArmorMelee 20
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
-               , toVelocity 20 ]  -- not balanced
+               , toVelocity 30 ]  -- not balanced
   , ieffects = []
   , idesc    = "An improvised but deadly weapon made of a long, sharp kitchen knife glued and bound to a long pole. Not often one succeeds in making enough space to swing it freely, but even when stuck between terrain obstacles it blocks approaches effectively and makes using other weapons difficult, both by friends and foes."
   , ikit     = []
@@ -2095,7 +2095,7 @@ militaryKnife = dagger
   , iaspects = [ Timeout 2
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
-               , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
+               , toVelocity 70 ]  -- ensuring it hits with the tip costs speed
   , ieffects = [DropItem 1 maxBound COrgan CONDITION]
   , idesc    = "Millitary design laser-sharpened alloy blade able to cleanly open an artery at the lightest touch through layers of fabric."
   }
@@ -2112,7 +2112,7 @@ militaryTazer = ItemKind
   , iaspects = [ Timeout 5
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
-               , toVelocity 40 ]
+               , toVelocity 50 ]
   , ieffects = [DropBestWeapon, Paralyze 10]
   , idesc    = "A direct contact electroshock weapon with unlimited and fast recharging. Ideal for close quarter fights inside space habitats, where preserving the integrity of the outer hull is paramount."
   , ikit     = []
@@ -2153,7 +2153,7 @@ crowbar = chisel
   , iaspects = [ Timeout 4
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
-               , toVelocity 30 ]
+               , toVelocity 50 ]
   , idesc    = "It is sharpened to be usable as an improvised melee weapon, but it can be still employed as a breaching tool, though rather injurious."  -- TODO: https://en.wikipedia.org/wiki/Crowbar_(tool)
   }
 catsPaw = chisel
@@ -2164,7 +2164,7 @@ catsPaw = chisel
   , iaspects = [ Timeout 3
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
-               , toVelocity 50 ]
+               , toVelocity 70 ]
   , idesc    = "It is sharpened to be usable as an improvised melee weapon, but it can be still employed as a breaching tool, though rather injurious."  -- TODO: https://en.wikipedia.org/wiki/Cat%27s_paw_(nail_puller)
   }
 diagonalPliers = chisel
@@ -2204,7 +2204,7 @@ grassStitcher = ItemKind
   , iaspects = [ Timeout 3  -- light and can hit with any side
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
-               , toVelocity 40 ]
+               , toVelocity 50 ]
   , ieffects = -- TODO: instead introduce items with finite number of charges?
                [OneOf [ DestroyItem 1 1 CEqp S_GRASS_STITCHER
                       , gardenMsg, gardenMsg, gardenMsg ]]
@@ -2220,7 +2220,7 @@ ladiesFork = grassStitcher
   , iaspects = [ Timeout 5
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
-               , toVelocity 40 ]
+               , toVelocity 50 ]
   , ieffects = [OneOf [ DestroyItem 1 1 CEqp S_LADIES_FORK
                       , gardenMsg, gardenMsg
                       , gardenMsg, gardenMsg, gardenMsg ]]
@@ -2237,7 +2237,7 @@ spade = grassStitcher
   , iaspects = [ Timeout 7
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
-               , toVelocity 40 ]
+               , toVelocity 50 ]
   , ieffects = [OneOf [ DestroyItem 1 1 CEqp S_SPADE
                       , gardenMsg, gardenMsg, gardenMsg, gardenMsg
                       , gardenMsg, gardenMsg, gardenMsg ]]
@@ -2254,7 +2254,7 @@ hoe = grassStitcher
   , iaspects = [ Timeout 6
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
-               , toVelocity 40 ]
+               , toVelocity 50 ]
   , ieffects = [OneOf [ DestroyItem 1 1 CEqp S_HOE
                       , gardenMsg, gardenMsg, gardenMsg
                       , gardenMsg, gardenMsg, gardenMsg ]]
