@@ -292,7 +292,11 @@ harpoon = ItemKind
   , iverbHit = "hook"
   , iweight  = 750
   , idamage  = 5 `d` 1
-  , iaspects = [AddSkill SkHurtMelee $ (-10 + 1 `d` 2 + 1 `dL` 3) * 5]
+  , iaspects = [ Timeout 5
+               , AddSkill SkHurtMelee $ (-10 + 1 `d` 2 + 1 `dL` 3) * 5
+               , SetFlag Durable, SetFlag Meleeable ]
+                 -- no EqpSlot EqpSlotWeaponBig, because often worse than
+                 -- an organ, so a waste of equipment space
   , ieffects = [ PullActor (ThrowMod 200 50 1)  -- 1 step, fast
                , Yell ]  -- yell, because brutal
   , idesc    = "A display piece harking back to the Earth's oceanic tourism heyday. The cruel, barbed head lodges in its victim so painfully that the weakest tug of the thin line sends the victim flying."
@@ -304,6 +308,8 @@ harpoon2 = harpoon
   , icount   = 2 `dL` 5
   , iweight  = 1000
   , idamage  = 10 `d` 1
+  , iaspects = [EqpSlot EqpSlotWeaponBig]  -- more powerful than most organs
+               ++ iaspects harpoon
   , idesc    = "A sharpened cargo-hook with high-tension cord."  -- could use some explanation of why it breaks when thrown, especially that's it's not apparent
   }
 net = ItemKind
