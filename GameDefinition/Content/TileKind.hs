@@ -448,8 +448,9 @@ signboardRead = TileKind
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 5
-  , tfeature = [ ChangeWith [FIRE_SOURCE] S_BURNING_INSTALLATION
-               , Embed SIGNAGE, HideAs S_SIGNBOARD_UNREAD ]
+  , tfeature = [Embed SIGNAGE, HideAs S_SIGNBOARD_UNREAD]
+                 -- can't transform or the hidden version would not trigger
+                 -- but only reveal the real version; needed extra keystroke
   }
 tree = TileKind
   { tsymbol  = '0'
