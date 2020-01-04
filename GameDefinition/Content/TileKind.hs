@@ -462,7 +462,7 @@ tree = TileKind
   , tcolor   = BrGreen
   , tcolor2  = Green
   , talter   = 4
-  , tfeature = [ChangeWith [FIRE_SOURCE] S_BURNING_TREE]
+  , tfeature = [ChangeWith True [FIRE_SOURCE] S_BURNING_TREE]
   }
 treeBurnt = tree
   { tname    = "burnt tree"
@@ -518,7 +518,7 @@ doorTrapped = TileKind
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 2
-  , tfeature = [ ChangeWith [WIRECUTTING_TOOL] S_CLOSED_DOOR
+  , tfeature = [ ChangeWith False [WIRECUTTING_TOOL] S_CLOSED_DOOR
                , Embed DOORWAY_TRAP
                , OpenTo S_OPEN_DOOR
                , HideAs S_SUSPECT_WALL
@@ -539,7 +539,7 @@ stairsUp = TileKind  -- fireproof
   , tfreq    = [(STAIRCASE_UP, 90), (ORDINARY_STAIRCASE_UP, 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , talter   = 0  -- very easy stairs, unlike all others
+  , talter   = 0  -- very easy stairs, unlike all others; projectiles trigger
   , tfeature = [Embed STAIRS_UP, ConsideredByAI]
   }
 stairsTrappedUp = TileKind
@@ -569,8 +569,8 @@ stairsDown = TileKind
   , tfreq    = [(STAIRCASE_DOWN, 90), (ORDINARY_STAIRCASE_DOWN, 1)]
   , tcolor   = BrWhite
   , tcolor2  = defFG
-  , talter   = 0  -- very easy stairs, unlike all others
-  , tfeature = [ ChangeWith [OIL_SOURCE] S_STAIRCASE_TRAP_DOWN_OIL
+  , talter   = 0  -- very easy stairs, unlike all others; projectiles trigger
+  , tfeature = [ ChangeWith True [OIL_SOURCE] S_STAIRCASE_TRAP_DOWN_OIL
                , Embed STAIRS_DOWN, ConsideredByAI ]
   }
 stairsTrappedDown = TileKind
@@ -656,7 +656,7 @@ pulpit = TileKind
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 5
-  , tfeature = [ ChangeWith [FIRE_SOURCE] S_BURNING_INSTALLATION
+  , tfeature = [ ChangeWith True [FIRE_SOURCE] S_BURNING_INSTALLATION
                , Clear, Embed LECTERN ]
                    -- mixed blessing, so AI ignores, saved for player fun
   }
@@ -671,7 +671,7 @@ bush = TileKind
   , tcolor   = BrGreen
   , tcolor2  = Green
   , talter   = 4
-  , tfeature = [ChangeWith [FIRE_SOURCE] S_BURNING_BUSH, Clear]
+  , tfeature = [ChangeWith True [FIRE_SOURCE] S_BURNING_BUSH, Clear]
                  -- too tough to topple, has to be burned first
   }
 bushBurnt = bush
@@ -694,10 +694,10 @@ bushBurning = bush
   , tcolor2  = Red
   , talter   = 5
   , tfeature = [ Clear
-               , OpenWith [WATER_SOURCE, WATER_SOURCE, WATER_SOURCE]
+               , OpenWith True [WATER_SOURCE, WATER_SOURCE, WATER_SOURCE]
                           S_SMOKE_LIT
                , Embed SMALL_FIRE
-               , ChangeWith [FIREPROOF_CLOTH] S_BUSH_LIT
+               , ChangeWith False [FIREPROOF_CLOTH] S_BUSH_LIT
                    -- full effects experienced, but bush saved for repeat
                , OpenTo BUSH_BURNING_OR_NOT ]
   }
@@ -815,7 +815,7 @@ shallowWater = TileKind
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 2
-  , tfeature = ChangeWith [COLD_SOURCE] S_FROZEN_PATH : Embed SHALLOW_WATER
+  , tfeature = ChangeWith True [COLD_SOURCE] S_FROZEN_PATH : Embed SHALLOW_WATER
                : tfeature floorActor
       -- can't make fog from water, because air would need to be cool, too;
       -- if concealment needed, make smoke from fire instead
@@ -843,7 +843,7 @@ floorBlue = floorRed
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 2
-  , tfeature = [ ChangeWith [FIRE_SOURCE] S_SHALLOW_WATER_LIT
+  , tfeature = [ ChangeWith True [FIRE_SOURCE] S_SHALLOW_WATER_LIT
                , Embed FROZEN_GROUND, Trail, Walkable, Clear ]
   }
 floorBrown = floorRed
@@ -893,10 +893,10 @@ rubbleBurning = TileKind  -- present in EMPTY_SET_LIT as early light/fire source
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 4  -- boss can dig through
-  , tfeature = [ OpenWith [WATER_SOURCE, WATER_SOURCE, WATER_SOURCE]
+  , tfeature = [ OpenWith True [WATER_SOURCE, WATER_SOURCE, WATER_SOURCE]
                           S_SMOKE_LIT
                , Embed BIG_FIRE  -- not as tall as a tree, so quenchable
-               , ChangeWith [FIREPROOF_CLOTH] S_RUBBLE_PILE
+               , ChangeWith False [FIREPROOF_CLOTH] S_RUBBLE_PILE
                    -- full effects experienced, but rubble saved for repeat
                , OpenTo RUBBLE_BURNING_OR_NOT ]
   }
@@ -976,7 +976,7 @@ pillarCache3 = pillarCache
   { tname    = "rack of sealed deposit boxes"
   , tfreq    = [ (CACHE_DEPOSIT, 33)
                , (STAIR_TERMINAL_LIT, 1), (STAIR_TERMINAL_DARK, 1) ]
-  , tfeature = [ ChangeWith [BREACHING_TOOL] CACHE_DEPOSIT_BREACHED
+  , tfeature = [ ChangeWith False [BREACHING_TOOL] CACHE_DEPOSIT_BREACHED
                , ConsideredByAI ]
   }
 pillarCache4 = pillarCache
@@ -991,9 +991,9 @@ pillarCache5 = pillarCache
   , tfreq    = [ (CACHE_JEWELRY_TRAPPED_OR_NOT, 20), (CACHE_JEWELRY, 33)
                , (MUSEUM_SET_DARK, 2) ]
   , tfeature = [ Embed JEWELRY_CASE
-               , ChangeWith [COLD_SOURCE] CACHE_JEWELRY_TRAPPED_OR_NOT
+               , ChangeWith False [COLD_SOURCE] CACHE_JEWELRY_TRAPPED_OR_NOT
                    -- halts watchdog
-               , ChangeWith [WIRECUTTING_TOOL] CACHE_JEWELRY_OR_NOT
+               , ChangeWith False [WIRECUTTING_TOOL] CACHE_JEWELRY_OR_NOT
                    -- disarms trap altogether
                , Embed JEWELRY_DISPLAY_TRAP
                , ChangeTo CACHE_JEWELRY_TRAPPED_OR_NOT
@@ -1006,7 +1006,8 @@ stairsTrappedDownOil = TileKind
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = talterForStairs
-  , tfeature = [ ChangeWith [THICK_CLOTH] ORDINARY_STAIRCASE_DOWN  -- soaks
+  , tfeature = [ ChangeWith False [THICK_CLOTH] ORDINARY_STAIRCASE_DOWN
+                   -- soaks
                , Embed STAIRS_DOWN, Embed STAIRS_TRAP_DOWN_OIL
                , ConsideredByAI
                , ChangeTo ORDINARY_STAIRCASE_DOWN ]
@@ -1026,8 +1027,8 @@ stairsWelded = stairsUp
   , tcolor2  = Magenta
   , talter   = talterForStairs + 3  -- gear or level up needed
   , tfeature = [ Embed S_CRUDE_WELD
-               , ChangeWith [BLOWTORCH] ORDINARY_STAIRCASE_UP
-               , ChangeWith [COLD_SOURCE] ORDINARY_STAIRCASE_UP
+               , ChangeWith False [BLOWTORCH] ORDINARY_STAIRCASE_UP
+               , ChangeWith False [COLD_SOURCE] ORDINARY_STAIRCASE_UP
                , ConsideredByAI ]
   }
 stairsLiftUp = stairsUp  -- fireproof
@@ -1066,8 +1067,8 @@ stairsLiftWelded = stairsLiftUp
   , tcolor2  = Magenta
   , talter   = talterForStairs + 3  -- gear or level up needed
   , tfeature = [ Embed S_CRUDE_WELD
-               , ChangeWith [BLOWTORCH] ORDINARY_LIFT_UP
-               , ChangeWith [COLD_SOURCE] ORDINARY_LIFT_UP
+               , ChangeWith False [BLOWTORCH] ORDINARY_LIFT_UP
+               , ChangeWith False [COLD_SOURCE] ORDINARY_LIFT_UP
                , ConsideredByAI ]
   }
 stairsDecontaminatingDown = stairsDown
@@ -1149,7 +1150,7 @@ doorStuck = TileKind
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 2
-  , tfeature = [OpenWith [BREACHING_TOOL] S_OPEN_DOOR]
+  , tfeature = [OpenWith False [BREACHING_TOOL] S_OPEN_DOOR]
   }
 
 -- *** Clear
@@ -1183,7 +1184,7 @@ bushEdible = TileKind
   , talter   = 4
   , tfeature = [ Clear, Embed EDIBLE_PLANT_RIPE  -- granted even when ignited
                , ChangeTo S_BUSH_LIT
-               , ChangeWith [FIRE_SOURCE] S_BURNING_BUSH ]
+               , ChangeWith True [FIRE_SOURCE] S_BURNING_BUSH ]
   }
 
 -- ** Walkable
@@ -1199,9 +1200,9 @@ underbrushBurning = underbrush
   , tcolor2  = Red
   , talter   = 0  -- just walk into it; even animals can
   , tfeature = [ Walkable, NoItem, NoActor  -- not clear, due to smoke
-               , ChangeWith [WATER_SOURCE] S_SMOKE_LIT
+               , ChangeWith True [WATER_SOURCE] S_SMOKE_LIT
                , Embed SMALL_FIRE
-               , ChangeWith [FIREPROOF_CLOTH] S_UNDERBRUSH_LIT
+               , ChangeWith False [FIREPROOF_CLOTH] S_UNDERBRUSH_LIT
                    -- full effects experienced, but underbrush saved for repeat
                , ChangeTo S_FLOOR_ASHES_LIT
                ]
@@ -1214,7 +1215,7 @@ floorOily = floorArena
   , tfreq    = [ (POWER_SET_LIT, 600), (EXIT_SET_LIT, 900)
                , (OILY_FLOOR_LIT, 1), (RUBBLE_OR_WASTE_LIT, 1)
                , (OIL_RESIDUE_LIT, 4) ]
-  , tfeature = ChangeWith [OIL_SOURCE] S_OIL_SPILL  -- non-porous enough
+  , tfeature = ChangeWith True [OIL_SOURCE] S_OIL_SPILL  -- non-porous enough
                : tfeature floorArena
   }
 oilSpill = TileKind
@@ -1225,9 +1226,9 @@ oilSpill = TileKind
   , tcolor   = BrYellow
   , tcolor2  = BrGreen
   , talter   = 2
-  , tfeature = ChangeWith [FIRE_SOURCE] S_BURNING_OIL
-               : ChangeWith [OIL_SOURCE] S_OIL_SPILL  -- renew the spill
-               : ChangeWith [THICK_CLOTH] OILY_FLOOR_LIT  -- soaks oil
+  , tfeature = ChangeWith True [FIRE_SOURCE] S_BURNING_OIL
+               : ChangeWith True [OIL_SOURCE] S_OIL_SPILL  -- renew the spill
+               : ChangeWith False [THICK_CLOTH] OILY_FLOOR_LIT  -- soaks oil
                : Embed OIL_PUDDLE : tfeature floorActor
   }
 oilSpillSpice = oilSpill
@@ -1245,8 +1246,8 @@ oilBurning = TileKind
   , tfeature = [ Walkable, NoItem, NoActor  -- not clear, due to smoke
                , Embed SMALL_FIRE
                , Embed OIL_PUDDLE
-               , ChangeWith [OIL_SOURCE] S_BURNING_OIL  -- renew the spill
-               , ChangeWith [FIREPROOF_CLOTH] OILY_FLOOR_LIT  -- soaks oil
+               , ChangeWith True [OIL_SOURCE] S_BURNING_OIL  -- renew the spill
+               , ChangeWith False [FIREPROOF_CLOTH] OILY_FLOOR_LIT  -- soaks oil
                ]
   }
 floorWindow = floorArena
@@ -1269,7 +1270,7 @@ underbrush = TileKind
   , tcolor   = BrGreen
   , tcolor2  = Green
   , talter   = 2
-  , tfeature = [ ChangeWith [FIRE_SOURCE] S_BURNING_UNDERBRUSH
+  , tfeature = [ ChangeWith True [FIRE_SOURCE] S_BURNING_UNDERBRUSH
                , Trail, Walkable, Clear, NoItem ]
   }
 
@@ -1283,12 +1284,12 @@ makeDark k = let darkText :: GroupName TileKind -> GroupName TileKind
                  darkFeat (OpenTo t) = Just $ OpenTo $ darkText t
                  darkFeat (CloseTo t) = Just $ CloseTo $ darkText t
                  darkFeat (ChangeTo t) = Just $ ChangeTo $ darkText t
-                 darkFeat (OpenWith grps t) =
-                   Just $ OpenWith grps $ darkText t
-                 darkFeat (CloseWith grps t) =
-                   Just $ CloseWith grps $ darkText t
-                 darkFeat (ChangeWith grps t) =
-                   Just $ ChangeWith grps $ darkText t
+                 darkFeat (OpenWith proj grps t) =
+                   Just $ OpenWith proj grps $ darkText t
+                 darkFeat (CloseWith proj grps t) =
+                   Just $ CloseWith proj grps $ darkText t
+                 darkFeat (ChangeWith proj grps t) =
+                   Just $ ChangeWith proj grps $ darkText t
                  darkFeat (HideAs t) = Just $ HideAs $ darkText t
                  darkFeat (BuildAs t) = Just $ BuildAs $ darkText t
                  darkFeat (RevealAs t) = Just $ RevealAs $ darkText t
