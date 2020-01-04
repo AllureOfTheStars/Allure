@@ -1191,12 +1191,16 @@ oval = PlaceKind
                , "··t··"
                ]
   , poverrideDark = [ ('t', TRAIL_LIT)
+                    , ('p', TRAPPED_DOOR)
                     , ('a', SAFE_TRAIL_LIT)
+                    , ('b', STUCK_DOOR)
                     , ('d', TRAPPED_DOOR)
                     , ('~', S_POOL_DARK) ]
   , poverrideLit = [ ('t', TRAIL_LIT)
+                   , ('p', TRAPPED_DOOR)
                    , ('a', SAFE_TRAIL_LIT)
-                   , ('d', STUCK_DOOR)
+                   , ('d', STUCK_DOOR)  -- reversed vs dark
+                   , ('b', TRAPPED_DOOR)
                    , ('~', S_POOL_LIT) ]
   }
 ovalFloor = oval
@@ -1205,7 +1209,7 @@ ovalFloor = oval
                , (AMBUSH, 100000) ]
   , pfence   = FGround
   , ptopLeft = [ "aXXX##"
-               , "Xd###·"
+               , "Xp###·"
                , "X#a···"
                , "X#·a·a"
                , "##··a·"
@@ -1229,7 +1233,7 @@ ovalBasin = oval
   , ptopLeft = [ "XXXd##"
                , "X###··"
                , "X#····"
-               , "d#··~~"
+               , "b#··~~"
                , "#··~~~"
                , "#··~~~"
                ]
@@ -1291,13 +1295,13 @@ maze = PlaceKind
                , "#··#"
                , "··#·"
                ]
-  , poverrideDark = [ ('&', CACHE_MAZE), ('p', TRAPPED_DOOR)
+  , poverrideDark = [ ('&', CACHE_MAZE)
+                    , ('p', TRAPPED_DOOR)
                     , ('i', FLOOR_ACTOR_ITEM)  -- lit or not, randomly
-                    , ('u', STUCK_DOOR)
                     , ('$', TRAPPABLE_WALL) ]
-  , poverrideLit = [ ('&', CACHE_MAZE), ('p', TRAPPED_DOOR)
+  , poverrideLit = [ ('&', CACHE_MAZE)
+                   , ('p', TRAPPED_DOOR)
                    , ('i', FLOOR_ACTOR_ITEM)  -- lit or not, randomly
-                   , ('u', STUCK_DOOR)
                    , ('$', TRAPPABLE_WALL) ]
   }
 maze2 = maze
@@ -1334,7 +1338,7 @@ mazeBig2 = maze
   , ptopLeft = [ "XX$$$~"
                , "X#···%"
                , "$·###·"
-               , "$·u&%%"
+               , "$·p&%%"
                , "$·#iii"
                ]
   }
@@ -1516,8 +1520,8 @@ shuttleHusk5 = shuttleHusk
                , "%rr····%"
                , "##rrrr##"
                , "X##&&##X"
-               , "XhhcchhX"
-               , "hh#ww#hh"
+               , "Xhhcc&hX"
+               , "hh#w&#hh"
                ]
   }
 shuttleHusk6 = shuttleHusk

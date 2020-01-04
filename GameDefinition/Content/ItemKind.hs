@@ -2116,7 +2116,7 @@ militaryTazer = ItemKind
   , idesc    = "A direct contact electroshock weapon with unlimited and fast recharging. Ideal for close quarter fights inside space habitats, where preserving the integrity of the outer hull is paramount."
   , ikit     = []
   }
-chisel = ItemKind
+chisel = ItemKind  -- ignored by AI, but that's fine, others suffice
   { isymbol  = symbolTool
   , iname    = "chisel"
   , ifreq    = [(COMMON_ITEM, 100), (BREACHING_TOOL, 1)]
