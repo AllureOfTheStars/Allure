@@ -287,7 +287,7 @@ harpoon = ItemKind
   , iname    = "harpoon"
   , ifreq    = [(CURIOUS_ITEM, 100), (HARPOON, 100), (MUSEAL, 100)]
   , iflavour = zipPlain [Brown]
-  , icount   = 1 `dL` 5
+  , icount   = 1  -- durable, so one piece lasts long
   , irarity  = [(7, 5), (10, 5)]
   , iverbHit = "hook"
   , iweight  = 750
@@ -298,14 +298,13 @@ harpoon = ItemKind
                  -- no EqpSlot EqpSlotWeaponBig, because often worse than
                  -- an organ, so a waste of equipment space
   , ieffects = [ PullActor (ThrowMod 200 50 1)  -- 1 step, fast
-               , Yell ]  -- yell, because brutal
+               , Yell ]  -- cry out in pain, because brutal
   , idesc    = "A display piece harking back to the Earth's oceanic tourism heyday. The cruel, barbed head lodges in its victim so painfully that the weakest tug of the thin line sends the victim flying."
   , ikit     = []
   }
 harpoon2 = harpoon
   { iname    = "heavy harpoon"
   , ifreq    = [(CURIOUS_ITEM, 5), (HARPOON, 2)]
-  , icount   = 2 `dL` 5
   , iweight  = 1000
   , idamage  = 10 `d` 1
   , iaspects = [EqpSlot EqpSlotWeaponBig]  -- more powerful than most organs
