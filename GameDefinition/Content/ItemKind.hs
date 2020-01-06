@@ -357,8 +357,7 @@ light1 = ItemKind
 light2 = ItemKind
   { isymbol  = symbolLight
   , iname    = "oil lamp"
-  , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_MANIPULATION, 100)
-               , (FIRE_SOURCE, 1), (OIL_SOURCE, 1) ]
+  , ifreq    = [(COMMON_ITEM, 100), (LIGHT_MANIPULATION, 100)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1 `dL` 2
   , irarity  = [(6, 10)]
@@ -377,8 +376,7 @@ light2 = ItemKind
 light3 = ItemKind
   { isymbol  = symbolLight
   , iname    = "brass lantern"
-  , ifreq    = [ (COMMON_ITEM, 100), (MUSEAL, 100), (LIGHT_MANIPULATION, 20)
-               , (FIRE_SOURCE, 1), (OIL_SOURCE, 1) ]
+  , ifreq    = [(COMMON_ITEM, 100), (MUSEAL, 100), (LIGHT_MANIPULATION, 20)]
   , iflavour = zipPlain [Red]
   , icount   = 1
   , irarity  = [(6, 1), (10, 4)]

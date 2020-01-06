@@ -131,13 +131,13 @@ pattern WIRECUTTING_TOOL = GroupName "wirecutting tool"
 
 blasts :: [ItemKind]
 blasts =
-  [burningOil2, burningOil3, burningOil4, firecracker1, firecracker2, firecracker3, firecracker4, firecracker5, spreadFragmentation, spreadFragmentation8, focusedFragmentation, spreadConcussion, spreadConcussion8, focusedConcussion, spreadFlash, spreadFlash8, focusedFlash, singleSpark, glassPiece, focusedGlass, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, smoke, boilingWater, glue, waste, mistAntiSlow, mistAntidote, mistSleep, denseShower, sparseShower, protectingBalmMelee, protectingBalmRanged, defenselessnessRunout, resolutionDust, hasteSpray, slownessMist, eyeDrop, ironFiling, smellyDroplet, eyeShine, whiskeySpray, youthSprinkle, poisonCloud, blastNoSkMove, blastNoSkMelee, blastNoSkDisplace, blastNoSkAlter, blastNoSkWait, blastNoSkMoveItem, blastNoSkProject, blastNoSkApply, blastBonusSkMove, blastBonusSkMelee, blastBonusSkDisplace, blastBonusSkAlter, blastBonusSkWait, blastBonusSkMoveItem, blastBonusSkProject, blastBonusSkApply]
+  [burningOil2, burningOil3, burningOil4, firecracker1, firecracker2, firecracker3, firecracker4, firecracker5, spreadFragmentation, spreadFragmentation8, focusedFragmentation, spreadConcussion, spreadConcussion8, focusedConcussion, spreadFlash, spreadFlash8, focusedFlash, singleSpark, glassPiece, focusedGlass, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, smoke, boilingWater, glue, waste, mistAntiSlow, mistAntidote, mistSleep, denseShower, sparseShower, protectingBalmMelee, protectingBalmRanged, defenselessnessRunout, resolutionDust, hasteSpray, spreadNitrogen8, eyeDrop, ironFiling, smellyDroplet, eyeShine, whiskeySpray, youthSprinkle, poisonCloud, blastNoSkMove, blastNoSkMelee, blastNoSkDisplace, blastNoSkAlter, blastNoSkWait, blastNoSkMoveItem, blastNoSkProject, blastNoSkApply, blastBonusSkMove, blastBonusSkMelee, blastBonusSkDisplace, blastBonusSkAlter, blastBonusSkWait, blastBonusSkMoveItem, blastBonusSkProject, blastBonusSkApply]
   -- Allure-specific
-  ++ [cruiseAdHologram, outerAdHologram, victoriaClassHologram, allureIntroHologram, nitrogenMist, paintSpray]
+  ++ [cruiseAdHologram, outerAdHologram, victoriaClassHologram, allureIntroHologram, focusedNitrogen, paintSpray]
 
-burningOil2,    burningOil3, burningOil4, firecracker1, firecracker2, firecracker3, firecracker4, firecracker5, spreadFragmentation, spreadFragmentation8, focusedFragmentation, spreadConcussion, spreadConcussion8, focusedConcussion, spreadFlash, spreadFlash8, focusedFlash, singleSpark, glassPiece, focusedGlass, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, smoke, boilingWater, glue, waste, mistAntiSlow, mistAntidote, mistSleep, denseShower, sparseShower, protectingBalmMelee, protectingBalmRanged, defenselessnessRunout, resolutionDust, hasteSpray, slownessMist, eyeDrop, ironFiling, smellyDroplet, eyeShine, whiskeySpray, youthSprinkle, poisonCloud, blastNoSkMove, blastNoSkMelee, blastNoSkDisplace, blastNoSkAlter, blastNoSkWait, blastNoSkMoveItem, blastNoSkProject, blastNoSkApply, blastBonusSkMove, blastBonusSkMelee, blastBonusSkDisplace, blastBonusSkAlter, blastBonusSkWait, blastBonusSkMoveItem, blastBonusSkProject, blastBonusSkApply :: ItemKind
+burningOil2,    burningOil3, burningOil4, firecracker1, firecracker2, firecracker3, firecracker4, firecracker5, spreadFragmentation, spreadFragmentation8, focusedFragmentation, spreadConcussion, spreadConcussion8, focusedConcussion, spreadFlash, spreadFlash8, focusedFlash, singleSpark, glassPiece, focusedGlass, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, smoke, boilingWater, glue, waste, mistAntiSlow, mistAntidote, mistSleep, denseShower, sparseShower, protectingBalmMelee, protectingBalmRanged, defenselessnessRunout, resolutionDust, hasteSpray, spreadNitrogen8, eyeDrop, ironFiling, smellyDroplet, eyeShine, whiskeySpray, youthSprinkle, poisonCloud, blastNoSkMove, blastNoSkMelee, blastNoSkDisplace, blastNoSkAlter, blastNoSkWait, blastNoSkMoveItem, blastNoSkProject, blastNoSkApply, blastBonusSkMove, blastBonusSkMelee, blastBonusSkDisplace, blastBonusSkAlter, blastBonusSkWait, blastBonusSkMoveItem, blastBonusSkProject, blastBonusSkApply :: ItemKind
 -- Allure-specific
-cruiseAdHologram,       outerAdHologram, victoriaClassHologram, allureIntroHologram, nitrogenMist, paintSpray :: ItemKind
+cruiseAdHologram,       outerAdHologram, victoriaClassHologram, allureIntroHologram, focusedNitrogen, paintSpray :: ItemKind
 
 -- We take care (e.g., in burningOil below) that blasts are not faster
 -- than 100% fastest natural speed, or some frames would be skipped,
@@ -149,7 +149,7 @@ burningOil :: Int -> GroupName ItemKind -> ItemKind
 burningOil n grp = ItemKind
   { isymbol  = '*'
   , iname    = "burning oil"
-  , ifreq    = [(grp, 1)]
+  , ifreq    = [(grp, 1), (FIRE_SOURCE, 1), (OIL_SOURCE, 1)]
   , iflavour = zipPlain [BrYellow]
   , icount   = intToDice (4 + n * 4)
   , irarity  = [(1, 1)]
@@ -201,7 +201,7 @@ firecracker1 = firecracker 1
 spreadFragmentation = ItemKind
   { isymbol  = '*'
   , iname    = "fragmentation burst"
-  , ifreq    = [(S_VIOLENT_FRAGMENTATION, 1)]
+  , ifreq    = [(S_VIOLENT_FRAGMENTATION, 1), (FIRE_SOURCE, 1)]
   , iflavour = zipPlain [Red]
   , icount   = 16  -- strong but few, so not always hits target
   , irarity  = [(1, 1)]
@@ -218,7 +218,7 @@ spreadFragmentation = ItemKind
   }
 spreadFragmentation8 = spreadFragmentation
   { iname    = "fragmentation burst"
-  , ifreq    = [(S_FRAGMENTATION, 1)]
+  , ifreq    = [(S_FRAGMENTATION, 1), (FIRE_SOURCE, 1)]
   , icount   = 8
   , iaspects = [ ToThrow $ ThrowMod 100 10 2  -- 2 steps, 1 turn
                , SetFlag Lobable, SetFlag Fragile, SetFlag Blast
@@ -228,7 +228,7 @@ spreadFragmentation8 = spreadFragmentation
 focusedFragmentation = ItemKind
   { isymbol  = '`'
   , iname    = "deflagration ignition"  -- improvised fertilizer, etc.
-  , ifreq    = [(S_FOCUSED_FRAGMENTATION, 1)]
+  , ifreq    = [(S_FOCUSED_FRAGMENTATION, 1), (FIRE_SOURCE, 1)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 4  -- 32 in total vs 16; on average 4 hits
   , irarity  = [(1, 1)]
@@ -266,7 +266,7 @@ spreadConcussion = ItemKind
                    -- this produces spam for braced actors; too bad
                , toOrganBad S_IMMOBILE 3  -- no balance
                , toOrganBad S_DEAFENED 23 ]
-  , idesc    = "Shock wave, hot gases, some fire and smoke."
+  , idesc    = "Shock wave, hot gases and smoke."
   , ikit     = []
   }
 spreadConcussion8 = spreadConcussion
@@ -297,7 +297,7 @@ focusedConcussion = ItemKind
 spreadFlash = ItemKind
   { isymbol  = '`'
   , iname    = "magnesium flash"  -- or aluminum, but let's stick to one
-  , ifreq    = [(S_VIOLENT_FLASH, 1)]
+  , ifreq    = [(S_VIOLENT_FLASH, 1), (FIRE_SOURCE, 1)]
   , iflavour = zipPlain [BrWhite]
   , icount   = 16
   , irarity  = [(1, 1)]
@@ -315,7 +315,7 @@ spreadFlash = ItemKind
   }
 spreadFlash8 = spreadFlash
   { iname    = "spark"
-  , ifreq    = [(S_SPARK, 1)]
+  , ifreq    = [(S_SPARK, 1), (FIRE_SOURCE, 1)]
   , icount   = 8
   , iverbHit = "singe"
   , iaspects = [ ToThrow $ ThrowMod 100 10 2  -- 2 steps, 1 turn
@@ -325,7 +325,7 @@ spreadFlash8 = spreadFlash
 focusedFlash = ItemKind
   { isymbol  = '`'
   , iname    = "magnesium ignition"
-  , ifreq    = [(S_FOCUSED_fLASH, 1)]
+  , ifreq    = [(S_FOCUSED_fLASH, 1), (FIRE_SOURCE, 1)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 4
   , irarity  = [(1, 1)]
@@ -340,7 +340,7 @@ focusedFlash = ItemKind
   }
 singleSpark = spreadFlash
   { iname    = "single spark"
-  , ifreq    = [(S_SINGLE_SPARK, 1)]
+  , ifreq    = [(S_SINGLE_SPARK, 1)]  -- too weak to start a fire
   , icount   = 1
   , iverbHit = "spark"
   , iaspects = [ toLinger 5  -- 1 step, 1 turn
@@ -533,7 +533,7 @@ smoke = ItemKind  -- when stuff burns out  -- unused
 boilingWater = ItemKind
   { isymbol  = '*'
   , iname    = "boiling water"
-  , ifreq    = [(S_BOILING_WATER, 1)]
+  , ifreq    = [(S_BOILING_WATER, 1)]  -- not enough water to create puddles
   , iflavour = zipPlain [White]
   , icount   = 18
   , irarity  = [(1, 1)]
@@ -666,24 +666,24 @@ sparseShower = ItemKind
   }
 protectingBalmMelee = ItemKind
   { isymbol  = '`'
-  , iname    = "balm droplet"
-  , ifreq    = [(S_MELEE_PROTECTIVE_BALM, 1)]
-  , iflavour = zipFancy [Brown]
+  , iname    = "oil spray"
+  , ifreq    = [(S_MELEE_PROTECTIVE_BALM, 1), (OIL_SOURCE, 1)]
+  , iflavour = zipFancy [BrYellow]
   , icount   = 16
   , irarity  = [(1, 1)]
-  , iverbHit = "balm"
+  , iverbHit = "old"
   , iweight  = 1
   , idamage  = 0
   , iaspects = [toLinger 10, SetFlag Fragile, SetFlag Blast]
   , ieffects = [toOrganGood S_PROTECTED_FROM_MELEE (3 + 1 `d` 3)]
-  , idesc    = "A thick ointment that hardens the skin."
+  , idesc    = "Thin and slippery."
   , ikit     = []
   }
 protectingBalmRanged = ItemKind
   { isymbol  = '`'
   , iname    = "balm droplet"
   , ifreq    = [(S_RANGE_PROTECTIVE_BALM, 1)]
-  , iflavour = zipPlain [BrYellow]
+  , iflavour = zipPlain [Brown]
   , icount   = 16
   , irarity  = [(1, 1)]
   , iverbHit = "balm"
@@ -691,7 +691,7 @@ protectingBalmRanged = ItemKind
   , idamage  = 0
   , iaspects = [toLinger 10, SetFlag Fragile, SetFlag Blast]
   , ieffects = [toOrganGood S_PROTECTED_FROM_RANGED (3 + 1 `d` 3)]
-  , idesc    = "Grease that protects from flying death."
+  , idesc    = "A thick ointment that hardens under high speed stress."
   , ikit     = []
   }
 defenselessnessRunout = ItemKind
@@ -740,20 +740,20 @@ hasteSpray = ItemKind
   , idesc    = "A quick spurt."
   , ikit     = []
   }
-slownessMist = ItemKind
+spreadNitrogen8 = ItemKind
   { isymbol  = '`'
-  , iname    = "slowness mist"
-  , ifreq    = [(S_SLOWNESS_MIST, 1)]
-  , iflavour = zipPlain [BrBlue]
+  , iname    = "nitrogen mist"
+  , ifreq    = [(S_SLOWNESS_MIST, 1), (COLD_SOURCE, 1)]
+  , iflavour = zipPlain [BrBlack]
   , icount   = 8
   , irarity  = [(1, 1)]
-  , iverbHit = "slow"
-  , iweight  = 0
+  , iverbHit = "freeze"
+  , iweight  = 1
   , idamage  = 0
   , iaspects = [toVelocity 5, SetFlag Fragile, SetFlag Blast]
                  -- 1 step, 1 turn, mist, slow
-  , ieffects = [toOrganBad S_SLOWED (3 + 1 `d` 3)]
-  , idesc    = "Clammy fog, making each movement an effort."
+  , ieffects = [toOrganBad S_SLOWED (2 + 1 `d` 3)]
+  , idesc    = "Colourless cold clammy fog, making each movement an effort."
   , ikit     = []
   }
 eyeDrop = ItemKind
@@ -966,21 +966,16 @@ allureIntroHologram = victoriaClassHologram
 
 -- ** Misc
 
-nitrogenMist = ItemKind
-  { isymbol  = '`'
-  , iname    = "nitrogen mist"
+focusedNitrogen = spreadNitrogen8
+  { iname    = "liquid nitrogen droplet"
   , ifreq    = [(S_NITROGEN_MIST, 1), (COLD_SOURCE, 1)]
-  , iflavour = zipFancy [BrBlack]
-  , icount   = 8
-  , irarity  = [(1, 1)]
-  , iverbHit = "freeze"
-  , iweight  = 1
-  , idamage  = 0
+  , iflavour = zipFancy [White]
+  , icount   = 4
   , iaspects = [ toLinger 0  -- 0 steps, 1 turn
                , SetFlag Fragile, SetFlag Blast ]
-  , ieffects = [toOrganBad S_SLOWED (2 + 1 `d` 3)]
+  , ieffects = [ OnSmash $ Explode S_SLOWNESS_MIST
+               , toOrganBad S_SLOWED (2 + 1 `d` 3) ]
   , idesc    = "Colourless and colder than ice."
-  , ikit     = []
   }
 paintSpray = ItemKind
   { isymbol  = '`'
