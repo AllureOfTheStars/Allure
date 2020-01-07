@@ -15,7 +15,7 @@ module Content.TileKind
   , -- ** Used in PlaceKind, but not in CaveKind.
     pattern TREE_SHADE_WALKABLE_LIT, pattern TREE_SHADE_WALKABLE_DARK, pattern SMOKE_CLUMP_LIT, pattern SMOKE_CLUMP_DARK, pattern BUSH_CLUMP_LIT, pattern BUSH_CLUMP_DARK, pattern FOG_CLUMP_LIT, pattern FOG_CLUMP_DARK, pattern STAIR_TERMINAL_LIT, pattern STAIR_TERMINAL_DARK, pattern SIGNBOARD, pattern STAIRCASE_UP, pattern ORDINARY_STAIRCASE_UP, pattern STAIRCASE_OUTDOOR_UP, pattern GATED_STAIRCASE_UP, pattern STAIRCASE_DOWN, pattern ORDINARY_STAIRCASE_DOWN, pattern STAIRCASE_OUTDOOR_DOWN, pattern GATED_STAIRCASE_DOWN, pattern ESCAPE_UP, pattern ESCAPE_DOWN, pattern ESCAPE_OUTDOOR_DOWN
   , pattern S_LAMP_POST, pattern S_TREE_LIT, pattern S_TREE_DARK, pattern S_PULPIT, pattern S_BUSH_LIT, pattern S_FOG_LIT, pattern S_SMOKE_LIT, pattern S_FLOOR_ACTOR_LIT, pattern S_FLOOR_ACTOR_DARK, pattern S_FLOOR_ASHES_LIT, pattern S_FLOOR_ASHES_DARK, pattern S_SHADED_GROUND
-  , pattern RECT_WINDOWS, pattern DOORLESS_MACHINERY, pattern PUMPS_LIT, pattern PUMPS_DARK, pattern DOORLESS_WALL, pattern OIL_RESIDUE_LIT, pattern OIL_RESIDUE_DARK, pattern LIFT_TERMINAL_LIT, pattern LIFT_TERMINAL_DARK, pattern STAIRCASE_LIFT_UP, pattern STAIRCASE_LIFT_DOWN, pattern GATED_LIFT_UP, pattern GATED_LIFT_DOWN, pattern DECONTAMINATING_STAIRCASE_UP, pattern DECONTAMINATING_STAIRCASE_DOWN, pattern DECONTAMINATING_LIFT_UP, pattern DECONTAMINATING_LIFT_DOWN, pattern WELDED_STAIRCASE_UP, pattern WELDED_LIFT_UP, pattern ESCAPE_SPACESHIP_DOWN, pattern ORDINARY_LIFT_UP, pattern ORDINARY_LIFT_DOWN, pattern RUBBLE_OR_WASTE_LIT, pattern RUBBLE_OR_WASTE_DARK, pattern CACHE_DEPOSIT, pattern CACHE_JEWELRY, pattern CACHE_MAZE, pattern CACHE_SHUTTLE, pattern TRAPPED_DOOR, pattern FLOOR_ACTOR_ITEM, pattern STUCK_DOOR
+  , pattern RECT_WINDOWS, pattern DOORLESS_MACHINERY, pattern PUMPS_LIT, pattern PUMPS_DARK, pattern DOORLESS_WALL, pattern OIL_RESIDUE_LIT, pattern OIL_RESIDUE_DARK, pattern LIFT_TERMINAL_LIT, pattern LIFT_TERMINAL_DARK, pattern STAIRCASE_LIFT_UP, pattern STAIRCASE_LIFT_DOWN, pattern GATED_LIFT_UP, pattern GATED_LIFT_DOWN, pattern DECONTAMINATING_STAIRCASE_UP, pattern DECONTAMINATING_STAIRCASE_DOWN, pattern DECONTAMINATING_LIFT_UP, pattern DECONTAMINATING_LIFT_DOWN, pattern WELDED_STAIRCASE_UP, pattern WELDED_LIFT_UP, pattern ESCAPE_SPACESHIP_DOWN, pattern ORDINARY_LIFT_UP, pattern ORDINARY_LIFT_DOWN, pattern RUBBLE_OR_WASTE_LIT, pattern RUBBLE_OR_WASTE_DARK, pattern CACHE_DEPOSIT, pattern CACHE_JEWELRY, pattern CACHE_MAZE, pattern CACHE_SHUTTLE, pattern TRAPPED_DOOR, pattern FLOOR_ACTOR_ITEM, pattern STUCK_DOOR, pattern BARREL
   , pattern S_POOL_LIT, pattern S_POOL_DARK, pattern S_OIL_SPILL, pattern S_FROZEN_PATH, pattern S_LIFT_SHAFT, pattern S_REINFORCED_WALL, pattern S_SHUTTLE_HULL, pattern S_HARDWARE_RACK
   , groupNamesSingleton, groupNames
   , -- * Content
@@ -87,7 +87,7 @@ pattern ROGUE_SET, MUSEUM_SET_LIT, MUSEUM_SET_DARK, HUNT_SET_LIT, EXIT_SET_LIT :
 pattern TREE_SHADE_WALKABLE_LIT, TREE_SHADE_WALKABLE_DARK, SMOKE_CLUMP_LIT, SMOKE_CLUMP_DARK, BUSH_CLUMP_LIT, BUSH_CLUMP_DARK, FOG_CLUMP_LIT, FOG_CLUMP_DARK, STAIR_TERMINAL_LIT, STAIR_TERMINAL_DARK, SIGNBOARD, STAIRCASE_UP, ORDINARY_STAIRCASE_UP, STAIRCASE_OUTDOOR_UP, GATED_STAIRCASE_UP, STAIRCASE_DOWN, ORDINARY_STAIRCASE_DOWN, STAIRCASE_OUTDOOR_DOWN, GATED_STAIRCASE_DOWN, ESCAPE_UP, ESCAPE_DOWN, ESCAPE_OUTDOOR_DOWN :: GroupName TileKind
 
 -- ** Allure-specific
-pattern RECT_WINDOWS, DOORLESS_MACHINERY, PUMPS_LIT, PUMPS_DARK, DOORLESS_WALL, OIL_RESIDUE_LIT, OIL_RESIDUE_DARK, LIFT_TERMINAL_LIT, LIFT_TERMINAL_DARK, STAIRCASE_LIFT_UP, STAIRCASE_LIFT_DOWN, GATED_LIFT_UP, GATED_LIFT_DOWN, DECONTAMINATING_STAIRCASE_UP, DECONTAMINATING_STAIRCASE_DOWN, DECONTAMINATING_LIFT_UP, DECONTAMINATING_LIFT_DOWN, WELDED_STAIRCASE_UP, WELDED_LIFT_UP, ESCAPE_SPACESHIP_DOWN, ORDINARY_LIFT_UP, ORDINARY_LIFT_DOWN, RUBBLE_OR_WASTE_LIT, RUBBLE_OR_WASTE_DARK, CACHE_DEPOSIT, CACHE_JEWELRY, CACHE_MAZE, CACHE_SHUTTLE, TRAPPED_DOOR, FLOOR_ACTOR_ITEM, STUCK_DOOR :: GroupName TileKind
+pattern RECT_WINDOWS, DOORLESS_MACHINERY, PUMPS_LIT, PUMPS_DARK, DOORLESS_WALL, OIL_RESIDUE_LIT, OIL_RESIDUE_DARK, LIFT_TERMINAL_LIT, LIFT_TERMINAL_DARK, STAIRCASE_LIFT_UP, STAIRCASE_LIFT_DOWN, GATED_LIFT_UP, GATED_LIFT_DOWN, DECONTAMINATING_STAIRCASE_UP, DECONTAMINATING_STAIRCASE_DOWN, DECONTAMINATING_LIFT_UP, DECONTAMINATING_LIFT_DOWN, WELDED_STAIRCASE_UP, WELDED_LIFT_UP, ESCAPE_SPACESHIP_DOWN, ORDINARY_LIFT_UP, ORDINARY_LIFT_DOWN, RUBBLE_OR_WASTE_LIT, RUBBLE_OR_WASTE_DARK, CACHE_DEPOSIT, CACHE_JEWELRY, CACHE_MAZE, CACHE_SHUTTLE, TRAPPED_DOOR, FLOOR_ACTOR_ITEM, STUCK_DOOR, BARREL :: GroupName TileKind
 
 -- ** Used only internally in other TileKind definitions or never used.
 pattern TREE_BURNING_OR_NOT, BUSH_BURNING_OR_NOT :: GroupName TileKind
@@ -218,6 +218,7 @@ pattern CACHE_SHUTTLE = GroupName "cache shuttle"
 pattern TRAPPED_DOOR = GroupName "trapped door"
 pattern FLOOR_ACTOR_ITEM = GroupName "floorActorItem"
 pattern STUCK_DOOR = GroupName "stuck door"
+pattern BARREL = GroupName "barrel"
 
 pattern S_POOL_LIT = GroupName "poolLit"
 pattern S_POOL_DARK = GroupName "poolDark"
@@ -266,11 +267,11 @@ content =
   [unknown, unknownOuterFence, basicOuterFence, bedrock, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, fog, fogDark, smoke, smokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorBrown, floorArenaShade ]
   ++ map makeDarkColor ldarkColorable
   -- Allure-specific
-  ++ [oriel, outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, signboardReadExtinguisher, wallObscured3dBillboard, wallObscuredPipework, liftShaft, rock, pillarCache2, pillarCache3, pillarCache4, pillarCache5, stairsTrappedDownOil, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, doorStuck, machineWall, machineWallSpice, bushEdible, underbrushBurning, floorOily, oilSpill, oilSpillSpice, oilBurning, floorWindow, underbrush]
+  ++ [oriel, outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, signboardReadExtinguisher, wallObscured3dBillboard, wallObscuredPipework, liftShaft, rock, pillarCache2, pillarCache3, pillarCache4, pillarCache5, stairsTrappedDownOil, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, doorStuck, barrel, barrelSpice, machineWall, machineWallSpice, bushEdible, underbrushBurning, floorOily, oilSpill, oilSpillSpice, oilBurning, floorWindow, underbrush]
 
 unknown,    unknownOuterFence, basicOuterFence, bedrock, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, fog, fogDark, smoke, smokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorBrown, floorArenaShade :: TileKind
 -- Allure-specific
-oriel,       outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, signboardReadExtinguisher, wallObscured3dBillboard, wallObscuredPipework, liftShaft, rock, pillarCache2, pillarCache3, pillarCache4, pillarCache5, stairsTrappedDownOil, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, doorStuck, machineWall, machineWallSpice, bushEdible, underbrushBurning, floorOily, oilSpill, oilSpillSpice, oilBurning, floorWindow, underbrush :: TileKind
+oriel,       outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, signboardReadExtinguisher, wallObscured3dBillboard, wallObscuredPipework, liftShaft, rock, pillarCache2, pillarCache3, pillarCache4, pillarCache5, stairsTrappedDownOil, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, doorStuck, barrel, barrelSpice, machineWall, machineWallSpice, bushEdible, underbrushBurning, floorOily, oilSpill, oilSpillSpice, oilBurning, floorWindow, underbrush :: TileKind
 
 ldarkColorable :: [TileKind]
 ldarkColorable = [tree, bush, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, shallowWater, shallowWaterSpice, shallowWater2, floorOily]
@@ -491,9 +492,9 @@ rubble = TileKind
                , (LEGEND_LIT, 1), (LEGEND_DARK, 1)
                , (STAIR_TERMINAL_LIT, 6), (STAIR_TERMINAL_DARK, 6)
                , (LIFT_TERMINAL_LIT, 6), (LIFT_TERMINAL_DARK, 6)
-               , (EMPTY_SET_LIT, 3), (EXIT_SET_LIT, 8)
-               , (NOISE_SET_LIT, 50), (POWER_SET_DARK, 150)
-               , (ZOO_SET_DARK, 100), (AMBUSH_SET_DARK, 3) ]
+               , (EMPTY_SET_LIT, 3), (EXIT_SET_LIT, 6)
+               , (NOISE_SET_LIT, 40), (POWER_SET_DARK, 120)
+               , (ZOO_SET_DARK, 80), (AMBUSH_SET_DARK, 3) ]
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 4  -- boss can dig through
@@ -1131,7 +1132,7 @@ reinforcedWall = TileKind
   }
 reinforcedWallSpice = reinforcedWall
   { tfreq    = [ (DOORLESS_WALL, 20)
-               , (CACHE_MAZE, 66), (CACHE_ABANDONED_OR_NOT, 80) ]
+               , (CACHE_MAZE, 33), (CACHE_ABANDONED_OR_NOT, 80) ]
   , tfeature = Spice : tfeature reinforcedWall
   }
 wallShuttle = bedrock
@@ -1151,6 +1152,23 @@ doorStuck = TileKind
   , tcolor2  = Blue
   , talter   = 2
   , tfeature = [OpenWith False [BREACHING_TOOL] S_OPEN_DOOR]
+  }
+barrel = TileKind
+  { tsymbol  = '0'
+  , tname    = "barrel"
+  , tfreq    = [ (BARREL, 1)
+               , (EXIT_SET_LIT, 3), (NOISE_SET_LIT, 20), (POWER_SET_DARK, 50)
+               , (ZOO_SET_DARK, 30), (AMBUSH_SET_DARK, 2) ]
+  , tcolor   = BrRed
+  , tcolor2  = Red
+  , talter   = 0  -- projectiles can destroy
+  , tfeature = [Embed BARREL_CONTENTS, OpenTo S_FLOOR_ASHES_LIT]
+  }
+barrelSpice = barrel
+  { tfreq    = [ (SMOKE_CLUMP_LIT, 1), (SMOKE_CLUMP_DARK, 1)
+               , (RUBBLE_OR_WASTE_LIT, 1), (RUBBLE_OR_WASTE_DARK, 1)
+               , (CACHE_MAZE, 33) ]
+  , tfeature = Spice : tfeature barrel
   }
 
 -- *** Clear

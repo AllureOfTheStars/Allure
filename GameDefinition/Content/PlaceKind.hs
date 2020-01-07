@@ -119,11 +119,11 @@ content =
   -- automatically generated
   ++ generatedStairs ++ generatedEscapes
   -- Allure-specific, continued
-  ++ [ pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5, shuttleHusk, shuttleHusk2, shuttleHusk3, shuttleHusk4, shuttleHusk5, shuttleHusk6]
+  ++ [ pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5, tank6, shuttleHusk, shuttleHusk2, shuttleHusk3, shuttleHusk4, shuttleHusk5, shuttleHusk6]
 
 deadEnd,    rect, rect2, rectWindows, glasshouse, glasshouse2, glasshouse3, glasshouse4, pulpit, ruin, ruin2, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, pillar6, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, colonnade7, colonnade8, colonnade9, colonnade10, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2, smokeClump3FGround, bushClump, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeDown6, escapeDown7, escapeDown8, escapeDown9, staircase1, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircase18, staircase19, staircase20, staircase21, staircase22, staircase23, staircase24, staircase25, staircase26, staircase27, staircase28, staircase29, staircase30, staircase31, staircase32, staircase33, staircase34, staircase35, staircase36, staircase37 :: PlaceKind
 -- Allure-specific
-staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25, pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5, shuttleHusk, shuttleHusk2, shuttleHusk3, shuttleHusk4, shuttleHusk5, shuttleHusk6 :: PlaceKind
+staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25, pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5, tank6, shuttleHusk, shuttleHusk2, shuttleHusk3, shuttleHusk4, shuttleHusk5, shuttleHusk6 :: PlaceKind
 
 staircase, staircaseLift :: PlaceKind  -- templates
 
@@ -611,10 +611,10 @@ escapeDown = PlaceKind
   , ptopLeft = [ ">"
                ]
   , poverrideDark = [ ('*', S_OIL_SPILL), ('g', S_FROZEN_PATH)
-                    , ('0', S_LAMP_POST)
+                    , ('0', S_LAMP_POST), ('b', BARREL)
                     , ('f', S_FLOOR_ACTOR_LIT), ('r', RUBBLE_OR_WASTE_DARK) ]
   , poverrideLit = [ ('*', S_OIL_SPILL), ('g', S_FROZEN_PATH)
-                   , ('0', S_LAMP_POST)
+                   , ('0', S_LAMP_POST), ('b', BARREL)
                    , ('f', S_FLOOR_ACTOR_LIT), ('r', RUBBLE_OR_WASTE_LIT) ]
   }
 escapeDown2 = escapeDown
@@ -628,9 +628,9 @@ escapeDown2 = escapeDown
 escapeDown3 = escapeDown
   { pfreq    = [(INDOOR_ESCAPE_DOWN, 200)]
   , pfence   = FFloor
-  , ptopLeft = [ "·#·"
-               , "#>#"
-               , "·#·"
+  , ptopLeft = [ "·b·"
+               , "b>b"
+               , "·b·"
                ]
   }
 escapeDown4 = escapeDown
@@ -1192,15 +1192,17 @@ oval = PlaceKind
                ]
   , poverrideDark = [ ('t', TRAIL_LIT)
                     , ('p', TRAPPED_DOOR)
+                    , ('b', BARREL)
                     , ('a', SAFE_TRAIL_LIT)
-                    , ('b', STUCK_DOOR)
-                    , ('d', TRAPPED_DOOR)
+                    , ('1', STUCK_DOOR)
+                    , ('2', TRAPPED_DOOR)
                     , ('~', S_POOL_DARK) ]
   , poverrideLit = [ ('t', TRAIL_LIT)
                    , ('p', TRAPPED_DOOR)
+                   , ('b', BARREL)
                    , ('a', SAFE_TRAIL_LIT)
-                   , ('d', STUCK_DOOR)  -- reversed vs dark
-                   , ('b', TRAPPED_DOOR)
+                   , ('2', STUCK_DOOR)  -- reversed vs dark
+                   , ('1', TRAPPED_DOOR)
                    , ('~', S_POOL_LIT) ]
   }
 ovalFloor = oval
@@ -1230,10 +1232,10 @@ ovalBasin = oval
   , pfreq    = [ (ROGUE, 100000), (ARENA, 200000), (LABORATORY, 200000)
                , (EMPTY, 20000) ]
   , pfence   = FGround
-  , ptopLeft = [ "XXXd##"
+  , ptopLeft = [ "XXX1##"
                , "X###··"
                , "X#····"
-               , "b#··~~"
+               , "2#··~~"
                , "#··~~~"
                , "#··~~~"
                ]
@@ -1253,8 +1255,8 @@ squareBasin = oval
   { pname    = "a water basin"
   , pfreq    = [(ARENA, 15000), (LABORATORY, 3000), (EMPTY, 4000)]
   , pfence   = FNone
-  , ptopLeft = [ "0tt0t"
-               , "t~~~~"
+  , ptopLeft = [ "0bt0t"
+               , "b~~~~"
                , "t~0~~"
                , "0~~~~"
                , "t~~~~"
@@ -1267,9 +1269,9 @@ squareBasin2 = oval
   , ptopLeft = [ "0t0ttt"
                , "t~~~~~"
                , "0~~~~~"
-               , "t~~0~~"
+               , "t~~b~~"
                , "t~~~~~"
-               , "t~~~~~"
+               , "b~~~~~"
                ]
   }
 floodedRoom = PlaceKind  -- Valid for any nonempty area, hence low frequency.
@@ -1355,9 +1357,9 @@ cells = PlaceKind
                , "·%·"
                , "··#"
                ]
-  , poverrideDark = [ ('%', DOORLESS_MACHINERY)
+  , poverrideDark = [ ('%', DOORLESS_MACHINERY), ('b', BARREL)
                     , ('f', BUSH_CLUMP_DARK), ('o', OIL_RESIDUE_DARK) ]
-  , poverrideLit = [ ('%', DOORLESS_MACHINERY)
+  , poverrideLit = [ ('%', DOORLESS_MACHINERY), ('b', BARREL)
                    , ('f', BUSH_CLUMP_LIT), ('o', OIL_RESIDUE_LIT) ]
   }
 cells2 = cells
@@ -1378,8 +1380,8 @@ cells3 = cells
 cells4 = cells
   { pname    = "a power node"
   , ptopLeft = [ "·o#"
-               , "o#o"
-               , "#o·"
+               , "o#b"
+               , "#b·"
                ]
   }
 cells5 = cells  -- this one is distinct enough from others, so needs a boost
@@ -1418,25 +1420,37 @@ tank = PlaceKind
   , pfence   = FNone
   , ptopLeft = [ "#"
                ]
-  , poverrideDark = [('#', DOORLESS_WALL), ('r', S_REINFORCED_WALL)]
-  , poverrideLit = [('#', DOORLESS_WALL), ('r', S_REINFORCED_WALL)]
+  , poverrideDark = [ ('#', DOORLESS_WALL)
+                    , ('r', S_REINFORCED_WALL)
+                    , ('b', BARREL) ]
+  , poverrideLit = [ ('#', DOORLESS_WALL)
+                   , ('r', S_REINFORCED_WALL)
+                   , ('b', BARREL) ]
   }
 tank2 = tank
-  { pfreq    = [ (EMPTY, 500), (EXIT, 15), (NOISE, 100)
+  { pfreq    = [ (EMPTY, 300), (EXIT, 15), (NOISE, 100)
                , (BATTLE, 50) ]
   , ptopLeft = [ "0#"
                , "##"
                ]
   }
 tank3 = tank
-  { pfreq    = [ (EMPTY, 600), (EXIT, 30), (NOISE, 200)
+  { pname    = "barrel stack"
+  , pfreq    = [ (EMPTY, 300), (EXIT, 15), (NOISE, 100)
+               , (BATTLE, 50) ]
+  , ptopLeft = [ "Xb"
+               , "bb"
+               ]
+  }
+tank4 = tank
+  { pfreq    = [ (EMPTY, 500), (EXIT, 20), (NOISE, 150)
                , (BATTLE, 100) ]
   , ptopLeft = [ "rr#"
                , "r##"
                , "###"
                ]
   }
-tank4 = tank
+tank5 = tank
   { pfreq    = [ (EMPTY, 800), (EXIT, 120), (NOISE, 300)
                , (BATTLE, 300) ]
   , ptopLeft = [ "XX0#"
@@ -1445,7 +1459,7 @@ tank4 = tank
                , "####"
                ]
   }
-tank5 = tank
+tank6 = tank
   { pname    = "a cistern"
   , pfreq    = [ (EMPTY, 1000), (EXIT, 150), (NOISE, 300)
                , (BATTLE, 300) ]
