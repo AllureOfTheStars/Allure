@@ -1292,7 +1292,7 @@ underbrush = TileKind
   { tsymbol  = floorSymbol
   , tname    = "underbrush"
   , tfreq    = [ (S_UNDERBRUSH_LIT, 1), (S_UNDERBRUSH_DARK, 1)
-               , (UNDERBRUSH_CLUMP_LIT, 1)
+               , (UNDERBRUSH_CLUMP_LIT, 1), (UNDERBRUSH_CLUMP_DARK, 1)
                , (EMPTY_SET_LIT, 30), (ARENA_SET_LIT, 20)
                , (SHOOTOUT_SET_LIT, 30), (HUNT_SET_LIT, 30)
                , (ESCAPE_SET_LIT, 40), (ZOO_SET_DARK, 100)
