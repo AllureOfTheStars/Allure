@@ -781,6 +781,10 @@ floorDamp = floorArena
                , (DAMP_FLOOR_LIT, 1)
                , (STAIR_TERMINAL_LIT, 20), (LIFT_TERMINAL_LIT, 6) ]
   , tfeature = ChangeWith True [OIL_SOURCE] S_OIL_SPILL  -- oil floats
+               : ChangeWith True [COLD_SOURCE] S_FROZEN_PATH
+               : ChangeWith True [ WATER_SOURCE, WATER_SOURCE, WATER_SOURCE
+                                 , WATER_SOURCE, WATER_SOURCE ]
+                            S_SHALLOW_WATER_LIT
                : tfeature floorArena
   }
 floorDirt = floorArena
