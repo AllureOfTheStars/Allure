@@ -267,11 +267,11 @@ content =
   [unknown, unknownOuterFence, basicOuterFence, bedrock, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, fog, fogDark, smoke, smokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorBrown, floorArenaShade ]
   ++ map makeDarkColor ldarkColorable
   -- Allure-specific
-  ++ [oriel, outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, signboardReadExtinguisher, wallObscured3dBillboard, wallObscuredPipework, liftShaft, rock, pillarCache2, pillarCache3, pillarCache4, pillarCache5, stairsTrappedDownOil, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, doorStuck, barrel, barrelSpice, machineWall, machineWallSpice, bushEdible, underbrushBurning, floorOily, oilSpill, oilSpillSpice, oilBurning, floorWindow, underbrush]
+  ++ [oriel, outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, signboardReadExtinguisher, wallObscured3dBillboard, wallObscuredPipework, liftShaft, rock, pillarCache2, pillarCache3, pillarCache4, pillarCache5, stairsTrappedDownOil, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, doorStuck, barrel, barrelSpice, machineWall, machineWallSpice, bushEdible, oilBurning, underbrushBurning, floorOily, oilSpill, oilSpillSpice, floorWindow, underbrush]
 
 unknown,    unknownOuterFence, basicOuterFence, bedrock, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, fog, fogDark, smoke, smokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorBrown, floorArenaShade :: TileKind
 -- Allure-specific
-oriel,       outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, signboardReadExtinguisher, wallObscured3dBillboard, wallObscuredPipework, liftShaft, rock, pillarCache2, pillarCache3, pillarCache4, pillarCache5, stairsTrappedDownOil, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, doorStuck, barrel, barrelSpice, machineWall, machineWallSpice, bushEdible, underbrushBurning, floorOily, oilSpill, oilSpillSpice, oilBurning, floorWindow, underbrush :: TileKind
+oriel,       outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, signboardReadExtinguisher, wallObscured3dBillboard, wallObscuredPipework, liftShaft, rock, pillarCache2, pillarCache3, pillarCache4, pillarCache5, stairsTrappedDownOil, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, doorStuck, barrel, barrelSpice, machineWall, machineWallSpice, bushEdible, oilBurning, underbrushBurning, floorOily, oilSpill, oilSpillSpice, floorWindow, underbrush :: TileKind
 
 ldarkColorable :: [TileKind]
 ldarkColorable = [tree, bush, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, shallowWater, shallowWaterSpice, shallowWater2, floorOily]
@@ -778,6 +778,8 @@ floorDamp = floorArena
   , tfreq    = [ (NOISE_SET_LIT, 600), (EMPTY_SET_LIT, 900)
                , (DAMP_FLOOR_LIT, 1)
                , (STAIR_TERMINAL_LIT, 20), (LIFT_TERMINAL_LIT, 6) ]
+  , tfeature = ChangeWith True [OIL_SOURCE] S_OIL_SPILL  -- oil floats
+               : tfeature floorArena
   }
 floorDirt = floorArena
   { tname    = "dirt"
@@ -816,7 +818,9 @@ shallowWater = TileKind
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 2
-  , tfeature = ChangeWith True [COLD_SOURCE] S_FROZEN_PATH : Embed SHALLOW_WATER
+  , tfeature = ChangeWith True [COLD_SOURCE] S_FROZEN_PATH
+               : ChangeWith True [OIL_SOURCE] S_OIL_SPILL  -- oil floats
+               : Embed SHALLOW_WATER
                : tfeature floorActor
       -- can't make fog from water, because air would need to be cool, too;
       -- if concealment needed, make smoke from fire instead
@@ -845,6 +849,7 @@ floorBlue = floorRed
   , tcolor2  = Blue
   , talter   = 2
   , tfeature = [ ChangeWith True [FIRE_SOURCE] S_SHALLOW_WATER_LIT
+               , ChangeWith True [OIL_SOURCE] S_OIL_SPILL  -- non-porous enough
                , Embed FROZEN_GROUND, Trail, Walkable, Clear ]
   }
 floorBrown = floorRed
@@ -1209,6 +1214,20 @@ bushEdible = TileKind
 
 -- *** Not clear
 
+oilBurning = TileKind
+  { tsymbol  = '~'
+  , tname    = "burning oil"
+  , tfreq    = [(POWER_SET_DARK, 1), (AMBUSH_SET_DARK, 1), (S_BURNING_OIL, 1)]
+  , tcolor   = BrRed
+  , tcolor2  = Red
+  , talter   = 0
+  , tfeature = [ Walkable, NoItem, NoActor  -- not clear, due to smoke
+               , Embed SMALL_FIRE
+               , Embed OIL_PUDDLE
+               , ChangeWith True [OIL_SOURCE] S_BURNING_OIL  -- renew the spill
+               , ChangeWith False [FIREPROOF_CLOTH] OILY_FLOOR_LIT  -- soaks oil
+               ]
+  }
 underbrushBurning = underbrush
   { tsymbol  = ';'
   , tname    = "burning underbrush"
@@ -1244,29 +1263,16 @@ oilSpill = TileKind
   , tcolor   = BrYellow
   , tcolor2  = BrGreen
   , talter   = 2
-  , tfeature = ChangeWith True [FIRE_SOURCE] S_BURNING_OIL
-               : ChangeWith True [OIL_SOURCE] S_OIL_SPILL  -- renew the spill
-               : ChangeWith False [THICK_CLOTH] OILY_FLOOR_LIT  -- soaks oil
-               : Embed OIL_PUDDLE : tfeature floorActor
+  , tfeature = [ Walkable, Clear
+               , ChangeWith True [FIRE_SOURCE] S_BURNING_OIL
+               , ChangeWith True [OIL_SOURCE] S_OIL_SPILL  -- renew the spill
+               , ChangeWith False [THICK_CLOTH] OILY_FLOOR_LIT  -- soaks oil
+               , Embed OIL_PUDDLE ]
   }
 oilSpillSpice = oilSpill
   { tfreq    = [ (RUBBLE_OR_WASTE_LIT, 1), (RUBBLE_OR_WASTE_DARK, 1)
                , (OIL_RESIDUE_LIT, 1), (OIL_RESIDUE_DARK, 1) ]
   , tfeature = Spice : tfeature oilSpill
-  }
-oilBurning = TileKind
-  { tsymbol  = '~'
-  , tname    = "burning oil"
-  , tfreq    = [(POWER_SET_DARK, 1), (AMBUSH_SET_DARK, 1), (S_BURNING_OIL, 1)]
-  , tcolor   = BrRed
-  , tcolor2  = Red
-  , talter   = 0
-  , tfeature = [ Walkable, NoItem, NoActor  -- not clear, due to smoke
-               , Embed SMALL_FIRE
-               , Embed OIL_PUDDLE
-               , ChangeWith True [OIL_SOURCE] S_BURNING_OIL  -- renew the spill
-               , ChangeWith False [FIREPROOF_CLOTH] OILY_FLOOR_LIT  -- soaks oil
-               ]
   }
 floorWindow = floorArena
   { tsymbol  = ' '  -- story-wise it's transparent, hence the symbol
