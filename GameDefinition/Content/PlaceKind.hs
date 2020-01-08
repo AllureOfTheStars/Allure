@@ -1168,12 +1168,14 @@ pumps = PlaceKind
   , pcover   = CAlternate
   , pfence   = FWall
   , ptopLeft = [ "·f"
-               , "%·"
+               , "%;"
                ]
   , poverrideDark = [ ('%', DOORLESS_MACHINERY)
-                    , ('f', PUMPS_DARK) ]
+                    , ('f', PUMPS_DARK)
+                    , (';', UNDERBRUSH_CLUMP_DARK) ]
   , poverrideLit = [ ('%', DOORLESS_MACHINERY)
-                   , ('f', PUMPS_LIT) ]
+                   , ('f', PUMPS_LIT)
+                   , (';', UNDERBRUSH_CLUMP_LIT) ]
   }
 oval = PlaceKind
   { psymbol  = 'o'
@@ -1196,14 +1198,16 @@ oval = PlaceKind
                     , ('a', SAFE_TRAIL_LIT)
                     , ('1', STUCK_DOOR)
                     , ('2', TRAPPED_DOOR)
-                    , ('~', S_POOL_DARK) ]
+                    , ('~', S_POOL_DARK)
+                    , (';', UNDERBRUSH_CLUMP_DARK) ]
   , poverrideLit = [ ('t', TRAIL_LIT)
                    , ('p', TRAPPED_DOOR)
                    , ('b', BARREL)
                    , ('a', SAFE_TRAIL_LIT)
                    , ('2', STUCK_DOOR)  -- reversed vs dark
                    , ('1', TRAPPED_DOOR)
-                   , ('~', S_POOL_LIT) ]
+                   , ('~', S_POOL_LIT)
+                   , (';', UNDERBRUSH_CLUMP_LIT) ]
   }
 ovalFloor = oval
   { pfreq    = [ (ROGUE, 150000), (ARENA, 60000), (MUSEUM, 60000)
@@ -1214,17 +1218,17 @@ ovalFloor = oval
                , "Xp###·"
                , "X#a···"
                , "X#·a·a"
-               , "##··a·"
-               , "#··a··"
+               , "##··a;"
+               , "#··a;;"
                ]
   }
 ovalSquare = oval
   { pfence   = FGround
   , ptopLeft = [ "X###+"
                , "##···"
-               , "#····"
-               , "#····"
-               , "+····"
+               , "#··;;"
+               , "#·;;;"
+               , "+·;;;"
                ]
   }
 ovalBasin = oval
@@ -1266,11 +1270,11 @@ squareBasin2 = oval
   { pname    = "a water basin"
   , pfreq    = [(ARENA, 100000), (LABORATORY, 50000), (EMPTY, 15000)]
   , pfence   = FNone
-  , ptopLeft = [ "0t0ttt"
-               , "t~~~~~"
+  , ptopLeft = [ "0;0;;;"
+               , ";~~~~~"
                , "0~~~~~"
-               , "t~~b~~"
-               , "t~~~~~"
+               , ";~~b~~"
+               , ";~~~~~"
                , "b~~~~~"
                ]
   }
@@ -1358,23 +1362,25 @@ cells = PlaceKind
                , "··#"
                ]
   , poverrideDark = [ ('%', DOORLESS_MACHINERY), ('b', BARREL)
-                    , ('f', BUSH_CLUMP_DARK), ('o', OIL_RESIDUE_DARK) ]
+                    , ('f', BUSH_CLUMP_DARK), ('o', OIL_RESIDUE_DARK)
+                    , (';', UNDERBRUSH_CLUMP_DARK) ]
   , poverrideLit = [ ('%', DOORLESS_MACHINERY), ('b', BARREL)
-                   , ('f', BUSH_CLUMP_LIT), ('o', OIL_RESIDUE_LIT) ]
+                   , ('f', BUSH_CLUMP_LIT), ('o', OIL_RESIDUE_LIT)
+                   , (';', UNDERBRUSH_CLUMP_LIT) ]
   }
 cells2 = cells
   { pname    = "humidity equalizers"
   , prarity  = [(1, 2), (10, 2)]
-  , ptopLeft = [ "f·#·"  -- extra column to avoid blocked exits
-               , "·#··"
-               , "·#··"
+  , ptopLeft = [ "f;#·"  -- extra column to avoid blocked exits
+               , ";#;;"
+               , "·#;;"
                ]
   }
 cells3 = cells
   { pname    = "thermostat units"
   , ptopLeft = [ "·^#"
                , "·#~"
-               , "··#"
+               , ";;#"
                ]
   }
 cells4 = cells
@@ -1396,7 +1402,7 @@ cells5 = cells  -- this one is distinct enough from others, so needs a boost
 cells6 = cells
   { pname    = "animal holding pens"
   , pfreq    = [ (ARENA, 2), (LABORATORY, 8), (ZOO, 80)]
-  , ptopLeft = [ "··#"
+  , ptopLeft = [ ";·#"
                , "##'"
                ]
   }
