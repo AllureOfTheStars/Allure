@@ -823,7 +823,7 @@ shallowWater = TileKind
                , (HUNT_SET_LIT, 250), (LIFT_TERMINAL_LIT, 4) ]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
-  , talter   = 2
+  , talter   = 2  -- doesn't matter now; TODO: not everything enters
   , tfeature = ChangeWith True [COLD_SOURCE] S_FROZEN_PATH
                : ChangeWith True [OIL_SOURCE] S_OIL_SPILL  -- oil floats
                : Embed SHALLOW_WATER
@@ -853,7 +853,7 @@ floorBlue = floorRed
   , tfreq    = [(TRAIL_LIT, 100), (S_FROZEN_PATH, 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
-  , talter   = 2
+  , talter   = 0
   , tfeature = [ ChangeWith True [FIRE_SOURCE] S_SHALLOW_WATER_LIT
                , ChangeWith True [OIL_SOURCE] S_OIL_SPILL  -- non-porous enough
                , Embed FROZEN_GROUND, Trail, Walkable, Clear ]
@@ -1241,7 +1241,7 @@ underbrushBurning = underbrush
                , (BUSH_BURNING_OR_NOT, 25), (S_BURNING_UNDERBRUSH, 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
-  , talter   = 0  -- just walk into it; even animals can
+  , talter   = 0
   , tfeature = [ Walkable, NoItem, NoActor  -- not clear, due to smoke
                , ChangeWith True [WATER_SOURCE] S_SMOKE_LIT
                , Embed SMALL_FIRE
@@ -1268,7 +1268,7 @@ oilSpill = TileKind
                , (AMBUSH_SET_DARK, 20), (S_OIL_SPILL, 1) ]
   , tcolor   = BrYellow
   , tcolor2  = BrGreen
-  , talter   = 2
+  , talter   = 2  -- doesn't matter now; TODO: not everything enters
   , tfeature = [ Walkable, Clear
                , ChangeWith True [FIRE_SOURCE] S_BURNING_OIL
                , ChangeWith True [OIL_SOURCE] S_OIL_SPILL  -- renew the spill
@@ -1300,7 +1300,7 @@ underbrush = TileKind
                ]
   , tcolor   = BrGreen
   , tcolor2  = Green
-  , talter   = 2
+  , talter   = 0
   , tfeature = [ ChangeWith True [FIRE_SOURCE] S_BURNING_UNDERBRUSH
                , Trail, Walkable, Clear, NoItem ]
   }
