@@ -669,12 +669,13 @@ protectingBalmMelee = ItemKind
   , iname    = "oil spray"
   , ifreq    = [(S_MELEE_PROTECTIVE_BALM, 1), (OIL_SOURCE, 1)]
   , iflavour = zipFancy [BrYellow]
-  , icount   = 16
+  , icount   = 6
   , irarity  = [(1, 1)]
   , iverbHit = "old"
   , iweight  = 1
   , idamage  = 0
-  , iaspects = [toLinger 10, SetFlag Fragile, SetFlag Blast]
+  , iaspects = [ toLinger 0  -- 0 steps, 1 turn
+               , SetFlag Fragile, SetFlag Blast ]
   , ieffects = [toOrganGood S_PROTECTED_FROM_MELEE (3 + 1 `d` 3)]
   , idesc    = "Thin and slippery."
   , ikit     = []

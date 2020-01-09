@@ -104,11 +104,11 @@ actors :: [ItemKind]
 actors =
   [warrior, warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, brawler, soldier, mercenary, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush]
   -- Allure-specific
-  ++ [giantOctopus, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot]
+  ++ [giantOctopus, razorwireFence, electricFence, activeFence, steamFaucet, coolingFaucet, medbotFaucet, fuelFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot]
 
 warrior,    warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, brawler, soldier, mercenary, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush :: ItemKind
 -- Allure-specific
-giantOctopus, razorwireFence, electricFence, activeFence, steamFaucet, biogasFaucet, medbotFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot :: ItemKind
+giantOctopus, razorwireFence, electricFence, activeFence, steamFaucet, coolingFaucet, medbotFaucet, fuelFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot :: ItemKind
 
 -- Note that the actors that appear in the crawl scenario should
 -- be generated with at most ordinary ammo. Otherwise, farming them
@@ -802,7 +802,7 @@ activeFence = ItemKind
 steamFaucet = ItemKind
   { isymbol  = 'f'
   , iname    = "steam faucet"
-  , ifreq    = [(ROBOT, 8), (IMMOBILE_ROBOT, 15)]
+  , ifreq    = [(ROBOT, 8), (IMMOBILE_ROBOT, 10)]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
   , irarity  = [(1, 10), (10, 6)]
@@ -817,10 +817,10 @@ steamFaucet = ItemKind
   , idesc    = "A cracked valve on one of the superheated water pipes spreading radially outward from the tokamak level."
   , ikit     = [(S_BOILING_VENT, COrgan), (S_BOILING_FISSURE, COrgan)]
   }
-biogasFaucet = ItemKind
+coolingFaucet = ItemKind
   { isymbol  = 'f'
-  , iname    = "biogas faucet"
-  , ifreq    = [(ROBOT, 8), (IMMOBILE_ROBOT, 30)]
+  , iname    = "cooling faucet"
+  , ifreq    = [(ROBOT, 8), (IMMOBILE_ROBOT, 40)]
   , iflavour = zipPlain [BrGreen]
   , icount   = 1
   , irarity  = [(1, 10), (10, 6)]
@@ -832,8 +832,8 @@ biogasFaucet = ItemKind
                , AddSkill SkWait 1, AddSkill SkMelee 1  -- no brain
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "An emergency pressure-release vent on a smelly biogas pipe."
-  , ikit     = [(S_BIOGAS_VENT, COrgan), (S_BIOGAS_FISSURE, COrgan)]
+  , idesc    = "An emergency pressure-release vent on a supercooling circuit reservoir."
+  , ikit     = [(S_COOLING_VENT, COrgan), (S_COOLING_FISSURE, COrgan)]
   }
 medbotFaucet = ItemKind
   { isymbol  = 'f'
@@ -851,7 +851,25 @@ medbotFaucet = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A faucet of a malfunctioning nano medical robot dispenser. Let's hope the medbots are still effective."
-  , ikit     = [(S_MEDBOT_VENT, COrgan), (S_MEDBOT_FISSUE, COrgan)]
+  , ikit     = [(S_MEDBOT_VENT, COrgan), (S_MEDBOT_FISSURE, COrgan)]
+  }
+fuelFaucet = ItemKind
+  { isymbol  = 'f'
+  , iname    = "burning fuel faucet"
+  , ifreq    = [(ROBOT, 8), (IMMOBILE_ROBOT, 20)]
+  , iflavour = zipPlain [BrRed]
+  , icount   = 1
+  , irarity  = [(1, 10), (10, 6)]
+  , iverbHit = "thud"
+  , iweight  = 80000
+  , idamage  = 0
+  , iaspects = [ AddSkill SkMaxHP 10, AddSkill SkMaxCalm 999
+               , AddSkill SkSpeed 11, AddSkill SkNocto 2
+               , AddSkill SkWait 1, AddSkill SkMelee 1  -- no brain
+               , SetFlag Durable ]
+  , ieffects = []
+  , idesc    = "Fuel station gone wrong. Multiple emergency subsystems added over the years, owing to valiant regulatory lawmaking efforts, keep it from exploding by turning off and on the vent and each other in a complex cyclical pattern."
+  , ikit     = [(S_FUEL_VENT, COrgan), (S_FUEL_FISSURE, COrgan)]
   }
 surveillanceDrone = ItemKind
   { isymbol  = 'd'
