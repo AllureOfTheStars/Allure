@@ -1230,7 +1230,6 @@ oilBurning = TileKind
   , tfeature = [ Walkable, NoItem, NoActor  -- not clear, due to smoke
                , Embed SMALL_FIRE
                , Embed OIL_PUDDLE
-               , ChangeWith True [OIL_SOURCE] S_BURNING_OIL  -- renew the spill
                , ChangeWith False [FIREPROOF_CLOTH] OILY_FLOOR_LIT  -- soaks oil
                ]
   }
@@ -1271,7 +1270,6 @@ oilSpill = TileKind
   , talter   = 2  -- doesn't matter now; TODO: not everything enters
   , tfeature = [ Walkable, Clear
                , ChangeWith True [FIRE_SOURCE] S_BURNING_OIL
-               , ChangeWith True [OIL_SOURCE] S_OIL_SPILL  -- renew the spill
                , ChangeWith False [THICK_CLOTH] OILY_FLOOR_LIT  -- soaks oil
                , Embed OIL_PUDDLE ]
   }
