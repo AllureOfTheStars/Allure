@@ -12,7 +12,7 @@ module Content.ItemKindBlast
   , pattern ARMOR_MISC
   , pattern S_NITROGEN_MIST, pattern S_PAINT_DROPLET, pattern S_RHINO_HOLOGRAM
   , pattern ADVERTISEMENT, pattern STORY_TELLING
-  , pattern FIRE_SOURCE, pattern OIL_SOURCE, pattern WATER_SOURCE, pattern COLD_SOURCE, pattern BREACHING_TOOL, pattern WIRECUTTING_TOOL
+  , pattern FIRE_SOURCE, pattern OIL_SOURCE, pattern WATER_SOURCE, pattern COLD_SOURCE, pattern BLAST_SOURCE
   , blastsGNSingleton, blastsGN
   , -- * Content
     blasts
@@ -48,13 +48,13 @@ blastsGN :: [GroupName ItemKind]
 blastsGN =
        [ARMOR_MISC]
     ++ [ADVERTISEMENT, STORY_TELLING]
-    ++ [FIRE_SOURCE, OIL_SOURCE, WATER_SOURCE, COLD_SOURCE, BREACHING_TOOL, WIRECUTTING_TOOL]
+    ++ [FIRE_SOURCE, OIL_SOURCE, WATER_SOURCE, COLD_SOURCE, BLAST_SOURCE]
 
 pattern ARMOR_MISC :: GroupName ItemKind
 
 pattern ADVERTISEMENT, STORY_TELLING :: GroupName ItemKind
 
-pattern FIRE_SOURCE, OIL_SOURCE, WATER_SOURCE, COLD_SOURCE, BREACHING_TOOL, WIRECUTTING_TOOL :: GroupName ItemKind
+pattern FIRE_SOURCE, OIL_SOURCE, WATER_SOURCE, COLD_SOURCE, BLAST_SOURCE :: GroupName ItemKind
 
 pattern S_FIRECRACKER = GroupName "firecracker"
 pattern S_VIOLENT_FRAGMENTATION = GroupName "violent fragmentation"
@@ -124,8 +124,7 @@ pattern FIRE_SOURCE = GroupName "fire source"
 pattern OIL_SOURCE = GroupName "oil source"
 pattern WATER_SOURCE = GroupName "water source"
 pattern COLD_SOURCE = GroupName "cold source"
-pattern BREACHING_TOOL = GroupName "breaching tool"
-pattern WIRECUTTING_TOOL = GroupName "wirecutting tool"
+pattern BLAST_SOURCE = GroupName "blast source"
 
 -- * Content
 
@@ -246,7 +245,7 @@ focusedFragmentation = ItemKind
 spreadConcussion = ItemKind
   { isymbol  = '*'
   , iname    = "concussion blast"
-  , ifreq    = [(S_VIOLENT_CONCUSSION, 1), (BREACHING_TOOL, 1)]
+  , ifreq    = [(S_VIOLENT_CONCUSSION, 1), (BLAST_SOURCE, 1)]
                  -- only the strongest explosion breaches
   , iflavour = zipPlain [Magenta]
   , icount   = 16
@@ -266,12 +265,12 @@ spreadConcussion = ItemKind
                    -- this produces spam for braced actors; too bad
                , toOrganBad S_IMMOBILE 3  -- no balance
                , toOrganBad S_DEAFENED 23 ]
-  , idesc    = "Shock wave, hot gases and smoke."
+  , idesc    = "Shock wave, hot gases and smoke. Able to demolish small obstacles."
   , ikit     = []
   }
 spreadConcussion8 = spreadConcussion
   { iname    = "concussion blast"
-  , ifreq    = [(S_CONCUSSION, 1), (BREACHING_TOOL, 1)]
+  , ifreq    = [(S_CONCUSSION, 1), (BLAST_SOURCE, 1)]
                  -- only the strongest explosion breaches
   , icount   = 8
   , iaspects = [ ToThrow $ ThrowMod 100 10 2  -- 2 steps, 1 turn
@@ -281,7 +280,7 @@ spreadConcussion8 = spreadConcussion
 focusedConcussion = ItemKind
   { isymbol  = '`'
   , iname    = "detonation ignition"  -- stabilized high explosive liquid
-  , ifreq    = [(S_FOCUSED_CONCUSSION, 1)]
+  , ifreq    = [(S_FOCUSED_CONCUSSION, 1), (BLAST_SOURCE, 1)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 4
   , irarity  = [(1, 1)]
@@ -856,7 +855,7 @@ poisonCloud = ItemKind
   , icount   = 16
   , irarity  = [(1, 1)]
   , iverbHit = "poison"
-  , iweight  = 0
+  , iweight  = 0  -- lingers, blocking path
   , idamage  = 0
   , iaspects = [ ToThrow $ ThrowMod 10 100 2  -- 2 steps, 2 turns
                , SetFlag Fragile, SetFlag Blast ]

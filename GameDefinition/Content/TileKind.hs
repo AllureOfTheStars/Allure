@@ -500,7 +500,8 @@ rubble = TileKind
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 4  -- boss can dig through
-  , tfeature = [Embed RUBBLE, OpenTo S_FLOOR_ASHES_LIT]
+  , tfeature = [ Embed RUBBLE, OpenTo S_FLOOR_ASHES_LIT
+               , OpenWith True [BLAST_SOURCE] S_FLOOR_ASHES_LIT ]
       -- It's not explorable, due to not being walkable nor clear and due
       -- to being a door (@OpenTo@), which is kind of OK, because getting
       -- the item is risky and, e.g., AI doesn't attempt it.
@@ -534,7 +535,8 @@ doorClosed = TileKind  -- fireproof
   , tcolor   = Brown
   , tcolor2  = BrBlack
   , talter   = 2
-  , tfeature = [OpenTo S_OPEN_DOOR]  -- never hidden
+  , tfeature = [ OpenTo S_OPEN_DOOR  -- never hidden
+               , OpenWith True [BLAST_SOURCE] S_OPEN_DOOR ]
   }
 stairsUp = TileKind  -- fireproof
   { tsymbol  = '<'
@@ -907,6 +909,7 @@ rubbleBurning = TileKind  -- present in EMPTY_SET_LIT as early light/fire source
   , talter   = 4  -- boss can dig through
   , tfeature = [ OpenWith True [WATER_SOURCE, WATER_SOURCE, WATER_SOURCE]
                           S_SMOKE_LIT
+               , OpenWith True [BLAST_SOURCE] S_FLOOR_ASHES_LIT
                , Embed BIG_FIRE  -- not as tall as a tree, so quenchable
                , ChangeWith False [FIREPROOF_CLOTH] S_RUBBLE_PILE
                    -- full effects experienced, but rubble saved for repeat
@@ -989,6 +992,7 @@ pillarCache3 = pillarCache
   , tfreq    = [ (CACHE_DEPOSIT, 33)
                , (STAIR_TERMINAL_LIT, 1), (STAIR_TERMINAL_DARK, 1) ]
   , tfeature = [ ChangeWith False [BREACHING_TOOL] CACHE_DEPOSIT_BREACHED
+                   -- @BLAST_SOURCE@ not enough
                , ConsideredByAI ]
   }
 pillarCache4 = pillarCache
@@ -1162,7 +1166,8 @@ doorStuck = TileKind
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 2
-  , tfeature = [OpenWith False [BREACHING_TOOL] S_OPEN_DOOR]
+  , tfeature = [ OpenWith False [BREACHING_TOOL] S_OPEN_DOOR
+               , OpenWith True [BLAST_SOURCE] S_OPEN_DOOR ]
   }
 barrel = TileKind
   { tsymbol  = '0'
