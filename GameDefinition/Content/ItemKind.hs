@@ -102,13 +102,13 @@ otherItemContent = embeds ++ actors ++ organs ++ blasts ++ temporaries
 
 items :: [ItemKind]
 items =
-  [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
+  [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
   -- Allure-specific
-  ++ [needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryTazer, chisel, steelFile, hacksaw, adjustableSpanner, crowbar, catsPaw, diagonalPliers, snips, loppers, boltCutter, grassStitcher, ladiesFork, spade, hoe]
+  ++ [needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryBaton, cattleProd, chisel, steelFile, hacksaw, adjustableSpanner, crowbar, catsPaw, diagonalPliers, snips, loppers, boltCutter, grassStitcher, ladiesFork, spade, hoe]
 
-sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
+sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
 -- Allure-specific
-needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryTazer, chisel, steelFile, hacksaw, adjustableSpanner, crowbar, catsPaw, diagonalPliers, snips, loppers, boltCutter, grassStitcher, ladiesFork, spade, hoe :: ItemKind
+needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryBaton, cattleProd, chisel, steelFile, hacksaw, adjustableSpanner, crowbar, catsPaw, diagonalPliers, snips, loppers, boltCutter, grassStitcher, ladiesFork, spade, hoe :: ItemKind
 
 -- Keep the dice rolls and sides in aspects small so that not too many
 -- distinct items are generated (for display in item lore and for narrative
@@ -481,7 +481,7 @@ flask4 = flaskTemplate
                : iaspects flaskTemplate
   , ieffects = [ toOrganGood S_PROTECTED_FROM_RANGED (20 + 1 `d` 5)
                , OnSmash (Explode S_RANGE_PROTECTIVE_BALM) ]
-  , idesc    = "A flask of wrestling balm that adheres to the body, but turns into slick oil when hit. Double dose causes twice longer effect."
+  , idesc    = "A flask of durable body and fabric ointment. Its nanostructure hardens under stress. Double dose causes twice longer effect."
   }
 flask5 = flaskTemplate
   { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)]
@@ -639,6 +639,7 @@ potion2 = potionTemplate
                , toVelocity 50 ]  -- identified
   , ieffects = [ Dominate
                , toOrganGood S_HASTED (20 + 1 `d` 5)
+               , Discharge 0
                , OnSmash (Explode S_PHEROMONE)
                , OnSmash (Explode S_HASTE_SPRAY) ]
   , idesc    = "The liquid fizzes with energy."
@@ -1010,7 +1011,7 @@ scroll3 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , icount   = 3 `dL` 1
   , irarity  = [(1, 14)]
-  , ieffects = [OneOf [ Teleport 5, Paralyze 10, InsertMove 30
+  , ieffects = [OneOf [ Paralyze 10, InsertMove 30, Discharge 0
                       , Detect DetectEmbed 12, Detect DetectHidden 20 ]]
   }
 scroll4 = scrollTemplate
@@ -1084,6 +1085,15 @@ scroll13 = scrollTemplate
                : iaspects scrollTemplate
   , ieffects = [RerollItem]
   }
+scroll14 = scrollTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
+  , ieffects = [Discharge $ 40 - 1 `d` 20]
+  }
+scroll15 = scrollTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
+  , irarity  = [(10, 15)]
+  , ieffects = [Discharge 0]
+  }
 
 -- ** Assorted tools
 
@@ -1139,6 +1149,7 @@ seeingItem = ItemKind
                , AddSkill SkSight 10  -- a spyglass for quick wields
                , AddSkill SkMaxCalm 30  -- to diminish clipping sight by Calm
                , AddSkill SkShine 2  -- to lit corridors when flying
+               , AddSkill SkMaxHP (-30)  -- prevent excessive stacking
                , SetFlag Periodic ]
   , ieffects = [ Detect DetectActor 20  -- rare enough
                , Explode S_SINGLE_SPARK
@@ -1265,21 +1276,19 @@ necklace7 = necklaceTemplate
                , SetFlag Durable ]
                ++ iaspects_necklaceTemplate
   , ieffects = [ RefillCalm (-2)  -- don't spam
-               , toOrganBad S_PACIFIED 10]
-                 -- The same duration as timeout, to avoid spurious messages
-                 -- as well as unlimited accumulation of the duration.
-                 -- Timeout lessens temptation to frequently wear and take off,
-                 -- to engage in melee, which would lead to micromanagement.
+               , Discharge 101 ]  -- higher by 1 to ensure others not activated
+                 -- Lasting effect lessens temptation to frequently take off
+                 -- when engaging in melee, which would lead to micromanagement.
+                 -- Quite OOP if worn with the right set of other items, anyway.
   , idesc    = "This whirring augmentation pack stimulates its host beyond any medically advisable or, surely, even legally admissible levels. It can be only speculated what kind of activity it was designed for, but clearly the steady handling of melee weapons was not one of them."
   }
 necklace8 = necklaceTemplate
   { iname    = "coil"
   , ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100), (COLD_SOURCE, 1)]
-  , irarity  = [(4, 3)]  -- entirely optional
   , iaspects = ELabel "of superconducting refrigeration"
                : Timeout ((1 + 1 `d` 3) * 5)
                : delete (SetFlag Precious) iaspects_necklaceTemplate
-  , ieffects = [Explode S_SPARK]
+  , ieffects = [Explode S_CURRENT_DISCHARGE]
   }
 necklace9 = necklaceTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
@@ -1972,6 +1981,7 @@ wasteContainer = ItemKind
   , idamage  = 0
   , iaspects = [ Timeout $ (1 `d` 2) * 30  -- robots should not summon too often
                , AddSkill SkArmorMelee 20  -- tempting
+               , AddSkill SkMaxCalm (-30)  -- prevent excessive stacking
                , SetFlag Periodic, SetFlag Equipable ]
   , ieffects = [ Detect DetectLoot 20
                , Summon MOBILE_ANIMAL $ 1 `dL` 2
@@ -2098,7 +2108,7 @@ militaryKnife = dagger
   , ieffects = [DropItem 1 maxBound COrgan CONDITION]
   , idesc    = "Millitary design laser-sharpened alloy blade able to cleanly open an artery at the lightest touch through layers of fabric."
   }
-militaryTazer = ItemKind
+militaryBaton = ItemKind
   { isymbol  = symbolHafted
   , iname    = "military stun gun"
   , ifreq    = [(COMMON_ITEM, 1), (MERCENARY_WEAPON, 30)]
@@ -2108,13 +2118,22 @@ militaryTazer = ItemKind
   , iverbHit = "prod"
   , iweight  = 1000
   , idamage  = 4 `d` 1
-  , iaspects = [ Timeout 5
+  , iaspects = [ Timeout 7
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 40 ]
-  , ieffects = [DropBestWeapon, Paralyze 10]
+  , ieffects = [Paralyze 10, Discharge $ 40 - 1 `d` 20, RefillCalm (-30)]
   , idesc    = "A direct contact electroshock weapon with unlimited and fast recharging. Ideal for close quarter fights inside space habitats, where preserving the integrity of the outer hull is paramount."
   , ikit     = []
+  }
+cattleProd = militaryBaton
+  { iname    = "electric cattle prod"
+  , ifreq    = [(COMMON_ITEM, 100)]
+  , iflavour = zipFancy [Brown]
+  , irarity  = [(10, 10)]
+  , idamage  = 2 `d` 1
+  , ieffects = [Discharge $ 40 - 1 `d` 20, RefillCalm (-30)]
+  , idesc    = "Used for subduing unruly zoo animals."
   }
 chisel = ItemKind  -- ignored by AI, but that's fine, others suffice
   { isymbol  = symbolTool

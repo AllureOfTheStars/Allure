@@ -759,7 +759,7 @@ razorwireFence = ItemKind
 electricFence = ItemKind
   { isymbol  = 'f'
   , iname    = "electric fence"
-  , ifreq    = [(ROBOT, 15), (IMMOBILE_ROBOT, 10)]
+  , ifreq    = [(ROBOT, 27), (IMMOBILE_ROBOT, 20)]
   , iflavour = zipPlain [Blue]
   , icount   = 1
   , irarity  = [(3 * 10/15, 0), (4 * 10/15, 15), (10, 5)]
@@ -773,7 +773,7 @@ electricFence = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Marginally intelligent electric shepherd. Originally used in orbital dairy farms and planetary zoos."
-  , ikit     = [(S_LIVE_WIRE, COrgan)]
+  , ikit     = [(S_LIVE_WIRE, COrgan), (S_ELECTRIC_AMBIENCE, COrgan)]
   }
 activeFence = ItemKind
   { isymbol  = 'f'
@@ -1072,7 +1072,9 @@ cleanerRobot = ItemKind
   , iweight  = 800000
   , idamage  = 0
   , iaspects = [ SetFlag Unique
-               , AddSkill SkMaxHP 120, AddSkill SkMaxCalm 40
+               , AddSkill SkMaxHP 100
+                   -- regenerates a bit, so lower HP
+               , AddSkill SkMaxCalm 40
                    -- can't summon again for a long time;
                    -- loses a lot of sight after summoning
                , AddSkill SkSpeed 18, AddSkill SkNocto 2
@@ -1082,8 +1084,8 @@ cleanerRobot = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "An oversize waste disposal robot repaired with parts from a demolition robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness. The robot's bulky trunk doesn't fit into even the larger lift carriages."
-  , ikit     = [ (S_LIVE_WIRE, COrgan), (S_LARGE_JAW, COrgan)
-               , (S_TENTACLE, COrgan)
+  , ikit     = [ (S_LIVE_WIRE, COrgan), (S_ELECTRIC_AMBIENCE, COrgan)
+               , (S_LARGE_JAW, COrgan), (S_TENTACLE, COrgan)
                , (S_BOILING_VENT, COrgan), (S_HULL_PLATING, COrgan)
                , (S_EYE_3, COrgan), (S_NOSTRIL, COrgan), (S_EAR_6, COrgan)
                , (S_ROBOT_BRAIN, COrgan)
