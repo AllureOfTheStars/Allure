@@ -32,14 +32,6 @@ before_cache:
 
 matrix:
   include:
-    - env: GTKVTY=vty_opt2_lint
-      compiler: ghc-8.6.5
-      addons: {"apt":{"sources":[{"sourceline":"deb http://ppa.launchpad.net/hvr/ghc/ubuntu xenial main","key_url":"https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x063dab2bdc0b3f9fcebc378bff3aeacef6f88286"}],"packages":["ghc-8.6.5","cabal-install-3.0"]}}
-      os: linux
-    - env: GTKVTY=curses_asserts_lint
-      compiler: ghc-8.6.5
-      addons: {"apt":{"sources":[{"sourceline":"deb http://ppa.launchpad.net/hvr/ghc/ubuntu xenial main","key_url":"https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x063dab2bdc0b3f9fcebc378bff3aeacef6f88286"}],"packages":["ghc-8.6.5","cabal-install-3.0"]}}
-      os: linux
     - env: GTKVTY=noopt
       compiler: ghc-8.2.2
       addons: {"apt":{"sources":[{"sourceline":"deb http://ppa.launchpad.net/hvr/ghc/ubuntu xenial main","key_url":"https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x063dab2bdc0b3f9fcebc378bff3aeacef6f88286"}],"packages":["ghc-8.2.2","cabal-install-3.0"]}}
@@ -276,49 +268,49 @@ script:
 
   - |
     if [ $GTKVTY = "gtk" ]; then
-      cabal new-build --only-dependencies -fgtk -w ${HC} -j2 .;
-      cabal new-build -fgtk -w ${HC} ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fgtk -w ${HC} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -fgtk -w ${HC} ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "gtk-v2" ]; then
-      cabal new-build --only-dependencies -fgtk -w ${HC} -j2 .;
-      cabal new-build -v2 -fgtk -w ${HC} ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fgtk -w ${HC} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -v2 -fgtk -w ${HC} ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "sdl" ]; then
-      cabal new-build --only-dependencies -fsdl -w ${HC} -j2 .;
-      cabal new-build -fsdl -w ${HC} ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fsdl -w ${HC} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -fsdl -w ${HC} ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "sdl-v2" ]; then
-      cabal new-build --only-dependencies -fsdl -w ${HC} -j2 .;
-      cabal new-build -v2 -fsdl -w ${HC} ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fsdl -w ${HC} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -v2 -fsdl -w ${HC} ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "vty" ]; then
-      cabal new-build --only-dependencies -fvty -w ${HC} -j2 .;
-      cabal new-build -fvty -w ${HC} ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fvty -w ${HC} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -fvty -w ${HC} ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "curses" ]; then
-      cabal new-build --only-dependencies -fcurses -f-release -w ${HC} -j2 .;
-      cabal new-build -fcurses -f-release -w ${HC} ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fcurses -f-release -w ${HC} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -fcurses -f-release -w ${HC} ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "noopt" ]; then
-      cabal new-build --only-dependencies -fvty --ghc-options="-O0 -fno-ignore-asserts" -w ${HC} -j2 .;
-      cabal new-build -fvty --ghc-options="-O0 -fno-ignore-asserts" -w ${HC} ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fvty --ghc-options="-O0 -fno-ignore-asserts" -w ${HC} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -fvty --ghc-options="-O0 -fno-ignore-asserts" -w ${HC} ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "opt2" ]; then
-      cabal new-build --only-dependencies -fcurses --ghc-options="-O2 -fno-ignore-asserts" -w ${HC} -j2 .;
-      cabal new-build -fcurses --ghc-options="-O2 -fno-ignore-asserts" -w ${HC} ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fcurses --ghc-options="-O2 -fno-ignore-asserts" -w ${HC} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -fcurses --ghc-options="-O2 -fno-ignore-asserts" -w ${HC} ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "asserts" ]; then
-      cabal new-build --only-dependencies -fvty -fwith_expensive_assertions -w ${HC} -j2 .;
-      cabal new-build -fvty -fwith_expensive_assertions -w ${HC} ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fvty -fwith_expensive_assertions -w ${HC} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -fvty -fwith_expensive_assertions -w ${HC} ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "asserts_noopt" ]; then
-      cabal new-build --only-dependencies -fcurses -fwith_expensive_assertions --ghc-options="-O0 -fno-ignore-asserts" -w ${HC} -j2 .;
-      cabal new-build -fcurses -fwith_expensive_assertions --ghc-options="-O0 -fno-ignore-asserts" -w ${HC} ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fcurses -fwith_expensive_assertions --ghc-options="-O0 -fno-ignore-asserts" -w ${HC} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -fcurses -fwith_expensive_assertions --ghc-options="-O0 -fno-ignore-asserts" -w ${HC} ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "asserts_opt2" ]; then
-      cabal new-build --only-dependencies -fvty -fwith_expensive_assertions --ghc-options="-O2 -fno-ignore-asserts" -w ${HC} -j2 .;
-      cabal new-build -fvty -fwith_expensive_assertions --ghc-options="-O2 -fno-ignore-asserts" -w ${HC} ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fvty -fwith_expensive_assertions --ghc-options="-O2 -fno-ignore-asserts" -w ${HC} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -fvty -fwith_expensive_assertions --ghc-options="-O2 -fno-ignore-asserts" -w ${HC} ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "brew-sdl2-osx" ]; then
       travis_wait 40 brew install --display-times --build-from-source allureofthestars &&
       Allure --dbgMsgSer --logPriority 0 --newGame 3 --maxFps 100000 --benchmark --stopAfterFrames 50 --automateAll --keepAutomated --gameMode battle --setDungeonRng 6 --setMainRng 6 &&
       brew test --verbose allureofthestars &&
       brew audit --strict allureofthestars
     elif [ $GTKVTY = "asserts-osx" ]; then
-      cabal new-build --only-dependencies -fvty -fwith_expensive_assertions -w ${HC} -j2 .;
-      cabal new-build -fvty -fwith_expensive_assertions -w ${HC} ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fvty -fwith_expensive_assertions -w ${HC} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -fvty -fwith_expensive_assertions -w ${HC} ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "asserts-osx_noopt" ]; then
-      cabal new-build --only-dependencies -fcurses -fwith_expensive_assertions --ghc-options="-O0 -fno-ignore-asserts" -w ${HC} -j2 .;
-      cabal new-build -fcurses -fwith_expensive_assertions --ghc-options="-O0 -fno-ignore-asserts" -w ${HC} ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fcurses -fwith_expensive_assertions --ghc-options="-O0 -fno-ignore-asserts" -w ${HC} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -fcurses -fwith_expensive_assertions --ghc-options="-O0 -fno-ignore-asserts" -w ${HC} ${TEST} ${BENCH} -j1 .;
     else exit 7;
     fi
 
