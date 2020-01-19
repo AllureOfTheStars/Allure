@@ -671,11 +671,7 @@ machineOil = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = []
-  , ieffects = [ PushActor (ThrowMod 600 10 1)
--- TODO:       , OnCombine $ AndEffect (DestroyItem 1 1 CGround FIRE_SOURCE)
---                                     (CreateItem CEmbed SMALL_FIRE
---                                                 timerNone)
-               ]
+  , ieffects = [PushActor (ThrowMod 600 10 1)]
                   -- the high speed represents gliding rather than flying
                   -- and so no need to lift actor's weight off the ground;
                   -- low linger comes from abrupt halt over normal surface
