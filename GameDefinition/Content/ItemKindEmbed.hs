@@ -765,7 +765,7 @@ workshopBench = ItemKind
   , iweight  = 100000
   , idamage  = 0
   , iaspects = [SetFlag Durable]
-  , ieffects = [OnCombine workshopEffect]
+  , ieffects = [workshopEffect, OnCombine workshopEffect]
   , idesc    = "A sturdy table with an anvil, a vice and an overhang of pipes, tubes, wires and probes."
   , ikit     = []
   }
