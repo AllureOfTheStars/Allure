@@ -269,11 +269,11 @@ content =
   [unknown, unknownOuterFence, basicOuterFence, bedrock, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, fog, fogDark, smoke, smokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorBrown, floorArenaShade ]
   ++ map makeDarkColor ldarkColorable
   -- Allure-specific
-  ++ [oriel, outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, signboardReadExtinguisher, wallObscured3dBillboard, wallObscuredPipework, liftShaft, rock, pillarCache2, pillarCache3, pillarCache4, pillarCache5, stairsTrappedDownOil, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, doorStuck, barrel, barrelSpice, machineWall, machineWallSpice, bushEdible, oilBurning, underbrushBurning, floorOily, oilSpill, oilSpillSpice, floorWindow, underbrush]
+  ++ [oriel, outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, signboardReadExtinguisher, wallObscured3dBillboard, wallObscuredPipework, liftShaft, rock, pillarCache2, pillarCache3, pillarCache4, pillarCache5, stairsTrappedDownOil, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, doorStuck, barrel, barrelSpice, machineWall, machineWallSpice, bushEdible, oilBurning, underbrushBurning, floorOily, oilSpill, oilSpillSpice, floorWindow, underbrush, workshop]
 
 unknown,    unknownOuterFence, basicOuterFence, bedrock, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, fog, fogDark, smoke, smokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorBrown, floorArenaShade :: TileKind
 -- Allure-specific
-oriel,       outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, signboardReadExtinguisher, wallObscured3dBillboard, wallObscuredPipework, liftShaft, rock, pillarCache2, pillarCache3, pillarCache4, pillarCache5, stairsTrappedDownOil, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, doorStuck, barrel, barrelSpice, machineWall, machineWallSpice, bushEdible, oilBurning, underbrushBurning, floorOily, oilSpill, oilSpillSpice, floorWindow, underbrush :: TileKind
+oriel,       outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, signboardReadExtinguisher, wallObscured3dBillboard, wallObscuredPipework, liftShaft, rock, pillarCache2, pillarCache3, pillarCache4, pillarCache5, stairsTrappedDownOil, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, doorStuck, barrel, barrelSpice, machineWall, machineWallSpice, bushEdible, oilBurning, underbrushBurning, floorOily, oilSpill, oilSpillSpice, floorWindow, underbrush, workshop :: TileKind
 
 ldarkColorable :: [TileKind]
 ldarkColorable = [tree, bush, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, shallowWater, shallowWaterSpice, shallowWater2, floorOily]
@@ -1238,7 +1238,7 @@ oilBurning = TileKind
                , ChangeWith False [FIREPROOF_CLOTH] OILY_FLOOR_LIT  -- soaks oil
                ]
   }
-underbrushBurning = underbrush
+underbrushBurning = TileKind
   { tsymbol  = ';'
   , tname    = "burning underbrush"
   , tfreq    = [ (AMBUSH_SET_DARK, 1), (ZOO_SET_DARK, 5)
@@ -1306,6 +1306,16 @@ underbrush = TileKind
   , talter   = 0
   , tfeature = [ ChangeWith True [FIRE_SOURCE] S_BURNING_UNDERBRUSH
                , Trail, Walkable, Clear, NoItem ]
+  }
+workshop = TileKind
+  { tsymbol  = ':'
+  , tname    = "workshop"
+  , tfreq    = [(EMPTY_SET_LIT, 2), (EXIT_SET_LIT, 2), (AMBUSH_SET_DARK, 2)]
+  , tcolor   = BrBlue
+  , tcolor2  = Blue
+  , talter   = 0
+  , tfeature = [ Walkable, NoItem, NoActor  -- not clear, due to overhang
+               , Embed WORKSHOP_BENCH ]
   }
 
 -- * Helper functions

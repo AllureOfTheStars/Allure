@@ -9,7 +9,7 @@ module Content.ItemKindEmbed
   ( -- * Group name patterns
     pattern SCRATCH_ON_WALL, pattern OBSCENE_PICTOGRAM, pattern SUBTLE_FRESCO, pattern SIGNAGE, pattern SMALL_FIRE, pattern BIG_FIRE, pattern FROST, pattern RUBBLE, pattern DOORWAY_TRAP_UNKNOWN, pattern DOORWAY_TRAP, pattern STAIRS_UP, pattern STAIRS_DOWN, pattern ESCAPE, pattern STAIRS_TRAP_UP, pattern STAIRS_TRAP_DOWN, pattern LECTERN, pattern SHALLOW_WATER, pattern STRAIGHT_PATH, pattern FROZEN_GROUND
   , pattern SANDSTONE_ROCK
-  , pattern ABANDONED_CACHE, pattern JEWELRY_DISPLAY_TRAP, pattern BLACK_STARRY_SKY, pattern DISENGAGED_DOCKING_GEAR, pattern RUINED_FIRST_AID_KIT, pattern FIRE_FIGHTING_GEAR, pattern DISPLAY_3D, pattern CRACKED_FLUE, pattern DEPOSIT_BOX, pattern JEWELRY_CASE, pattern EDIBLE_PLANT_RIPE, pattern STAIRS_TRAP_DOWN_OIL, pattern LIFT_UP, pattern LIFT_DOWN, pattern LIFT_TRAP, pattern SHUTTLE_HARDWARE, pattern OIL_PUDDLE, pattern DECONTAMINATION_CHAMBER, pattern BARREL_CONTENTS
+  , pattern ABANDONED_CACHE, pattern JEWELRY_DISPLAY_TRAP, pattern BLACK_STARRY_SKY, pattern DISENGAGED_DOCKING_GEAR, pattern RUINED_FIRST_AID_KIT, pattern FIRE_FIGHTING_GEAR, pattern DISPLAY_3D, pattern CRACKED_FLUE, pattern DEPOSIT_BOX, pattern JEWELRY_CASE, pattern EDIBLE_PLANT_RIPE, pattern STAIRS_TRAP_DOWN_OIL, pattern LIFT_UP, pattern LIFT_DOWN, pattern LIFT_TRAP, pattern SHUTTLE_HARDWARE, pattern OIL_PUDDLE, pattern DECONTAMINATION_CHAMBER, pattern BARREL_CONTENTS, pattern WORKSHOP_BENCH
   , pattern EDIBLE_PLANT, pattern FIRE_FIGHTING_ITEM
   , pattern S_ENCHANCED_BERRY, pattern S_COOKED_BERRY, pattern S_FRAYED_FUNGUS, pattern S_COOKED_FUNGUS, pattern S_THIC_LEAF, pattern S_COOKED_LEAF, pattern S_RECONFIGURED_FRUIT, pattern S_COOKED_FRUIT, pattern S_FRAGRANT_HERB, pattern S_COOKED_HERB, pattern S_DULL_FLOWER, pattern S_COOKED_FLOWER, pattern S_SPICY_BARK, pattern S_COOKED_BARK, pattern S_PUMPKIN, pattern S_COOKED_PUMPKIN
   , embedsGNSingleton, embedsGN
@@ -43,11 +43,11 @@ pattern S_ENCHANCED_BERRY, S_COOKED_BERRY, S_FRAYED_FUNGUS, S_COOKED_FUNGUS, S_T
 embedsGN :: [GroupName ItemKind]
 embedsGN =
        [SCRATCH_ON_WALL, OBSCENE_PICTOGRAM, SUBTLE_FRESCO, SIGNAGE, SMALL_FIRE, BIG_FIRE, FROST, RUBBLE, DOORWAY_TRAP_UNKNOWN, DOORWAY_TRAP, STAIRS_UP, STAIRS_DOWN, ESCAPE, STAIRS_TRAP_UP, STAIRS_TRAP_DOWN, LECTERN, SHALLOW_WATER, STRAIGHT_PATH, FROZEN_GROUND, SANDSTONE_ROCK]
-    ++ [ABANDONED_CACHE, JEWELRY_DISPLAY_TRAP, BLACK_STARRY_SKY, DISENGAGED_DOCKING_GEAR, RUINED_FIRST_AID_KIT, FIRE_FIGHTING_GEAR, DISPLAY_3D, CRACKED_FLUE, DEPOSIT_BOX, JEWELRY_CASE, EDIBLE_PLANT_RIPE, STAIRS_TRAP_DOWN_OIL, LIFT_UP, LIFT_DOWN, LIFT_TRAP, SHUTTLE_HARDWARE, OIL_PUDDLE, DECONTAMINATION_CHAMBER, BARREL_CONTENTS, EDIBLE_PLANT, FIRE_FIGHTING_ITEM]
+    ++ [ABANDONED_CACHE, JEWELRY_DISPLAY_TRAP, BLACK_STARRY_SKY, DISENGAGED_DOCKING_GEAR, RUINED_FIRST_AID_KIT, FIRE_FIGHTING_GEAR, DISPLAY_3D, CRACKED_FLUE, DEPOSIT_BOX, JEWELRY_CASE, EDIBLE_PLANT_RIPE, STAIRS_TRAP_DOWN_OIL, LIFT_UP, LIFT_DOWN, LIFT_TRAP, SHUTTLE_HARDWARE, OIL_PUDDLE, DECONTAMINATION_CHAMBER, BARREL_CONTENTS, WORKSHOP_BENCH, EDIBLE_PLANT, FIRE_FIGHTING_ITEM]
 
 pattern SCRATCH_ON_WALL, OBSCENE_PICTOGRAM, SUBTLE_FRESCO, SIGNAGE, SMALL_FIRE, BIG_FIRE, FROST, RUBBLE, DOORWAY_TRAP_UNKNOWN, DOORWAY_TRAP, STAIRS_UP, STAIRS_DOWN, ESCAPE, STAIRS_TRAP_UP, STAIRS_TRAP_DOWN, LECTERN, SHALLOW_WATER, STRAIGHT_PATH, FROZEN_GROUND, SANDSTONE_ROCK :: GroupName ItemKind
 
-pattern ABANDONED_CACHE, JEWELRY_DISPLAY_TRAP, BLACK_STARRY_SKY, DISENGAGED_DOCKING_GEAR, RUINED_FIRST_AID_KIT, FIRE_FIGHTING_GEAR, DISPLAY_3D, CRACKED_FLUE, DEPOSIT_BOX, JEWELRY_CASE, EDIBLE_PLANT_RIPE, STAIRS_TRAP_DOWN_OIL, LIFT_UP, LIFT_DOWN, LIFT_TRAP, SHUTTLE_HARDWARE, OIL_PUDDLE, DECONTAMINATION_CHAMBER, BARREL_CONTENTS, EDIBLE_PLANT, FIRE_FIGHTING_ITEM :: GroupName ItemKind
+pattern ABANDONED_CACHE, JEWELRY_DISPLAY_TRAP, BLACK_STARRY_SKY, DISENGAGED_DOCKING_GEAR, RUINED_FIRST_AID_KIT, FIRE_FIGHTING_GEAR, DISPLAY_3D, CRACKED_FLUE, DEPOSIT_BOX, JEWELRY_CASE, EDIBLE_PLANT_RIPE, STAIRS_TRAP_DOWN_OIL, LIFT_UP, LIFT_DOWN, LIFT_TRAP, SHUTTLE_HARDWARE, OIL_PUDDLE, DECONTAMINATION_CHAMBER, BARREL_CONTENTS, WORKSHOP_BENCH, EDIBLE_PLANT, FIRE_FIGHTING_ITEM :: GroupName ItemKind
 
 pattern SCRATCH_ON_WALL = GroupName "scratch on wall"
 pattern OBSCENE_PICTOGRAM = GroupName "obscene pictogram"
@@ -108,21 +108,10 @@ pattern SHUTTLE_HARDWARE = GroupName "shuttle hardware"
 pattern OIL_PUDDLE = GroupName "oil puddle"
 pattern DECONTAMINATION_CHAMBER = GroupName "decontamination chamber"
 pattern BARREL_CONTENTS = GroupName "barrel contents"
+pattern WORKSHOP_BENCH = GroupName "workshop bench"
 
 pattern EDIBLE_PLANT = GroupName "edible plant"
 pattern FIRE_FIGHTING_ITEM = GroupName "fire fighting item"
-
-cookingAssocs :: [(GroupName ItemKind, GroupName ItemKind)]
-cookingAssocs =
-  [ (RAW_MEAT_CHUNK, ROASTED_MEAT_CHUNK)
-  , (S_ENCHANCED_BERRY, S_COOKED_BERRY)
-  , (S_FRAYED_FUNGUS, S_COOKED_FUNGUS)
-  , (S_THIC_LEAF, S_COOKED_LEAF)
-  , (S_RECONFIGURED_FRUIT, S_COOKED_FRUIT)
-  , (S_FRAGRANT_HERB, S_COOKED_HERB)
-  , (S_DULL_FLOWER, S_COOKED_FLOWER)
-  , (S_SPICY_BARK, S_COOKED_BARK)
-  , (S_PUMPKIN, S_COOKED_PUMPKIN) ]
 
 -- * Content
 
@@ -130,11 +119,11 @@ embeds :: [ItemKind]
 embeds =
   [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signageExit, signageEmbed, signageMerchandise, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, stairsTrapUp, stairsTrapDown, lectern, shallowWater, straightPath, frozenGround]
   -- Allure-specific
-  ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, fireFightingGear, wall3dBillboard, crackedFlue, depositBox, jewelryCase, ediblePlantRipe, stairsTrapDownOil, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen]
+  ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, fireFightingGear, wall3dBillboard, crackedFlue, depositBox, jewelryCase, ediblePlantRipe, stairsTrapDownOil, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench]
 
 scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signageExit, signageEmbed, signageMerchandise, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, stairsTrapUp, stairsTrapDown, lectern, shallowWater, straightPath, frozenGround :: ItemKind
 -- Allure-specific
-blackStarrySky,       disengagedDocking, ruinedFirstAidKit, fireFightingGear, wall3dBillboard, crackedFlue, depositBox, jewelryCase, ediblePlantRipe, stairsTrapDownOil, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen :: ItemKind
+blackStarrySky,       disengagedDocking, ruinedFirstAidKit, fireFightingGear, wall3dBillboard, crackedFlue, depositBox, jewelryCase, ediblePlantRipe, stairsTrapDownOil, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench :: ItemKind
 
 -- Make sure very few walls are substantially useful, e.g., caches,
 -- and none that are secret. Otherwise the player will spend a lot of time
@@ -762,17 +751,58 @@ barrelNitrogen = barrelFuel
                  -- may exploit to harm foes; watch out for friends
   , idesc    = ""
   }
+workshopBench = ItemKind
+  { isymbol  = 'b'
+  , iname    = "bench"
+  , ifreq    = [(WORKSHOP_BENCH, 1)]
+  , iflavour = zipPlain [Blue]
+  , icount   = 1
+  , irarity  = [(1, 1)]
+  , iverbHit = "bury"
+  , iweight  = 100000
+  , idamage  = 0
+  , iaspects = [SetFlag Durable]
+  , ieffects = [OnCombine workshopEffect]
+  , idesc    = "A sturdy table with an anvil, a vice and an overhang of pipes, tubes, wires and probes."
+  , ikit     = []
+  }
 
-cookEffect :: Effect
-cookEffect =
-  let cookOne :: CStore -> (GroupName ItemKind, GroupName ItemKind) -> Effect
+combineEffect :: Text -> [([(Int, GroupName ItemKind)], GroupName ItemKind)]
+              -> Effect
+combineEffect msg ass =
+  let cookOne :: CStore -> ([(Int, GroupName ItemKind)], GroupName ItemKind)
+              -> Effect
       cookOne store (raw, cooked) =
-        DestroyItem 1 1 store raw
+        ConsumeItems store raw  -- either all destroyed or none
         `AndEffect`
         CreateItem CGround cooked timerNone
-      f :: CStore -> Effect -> (GroupName ItemKind, GroupName ItemKind)
+      f :: CStore -> Effect -> ([(Int, GroupName ItemKind)], GroupName ItemKind)
         -> Effect
       f store eff rawCooked = eff `OrEffect` cookOne store rawCooked
       g eff rawCooked = f CGround (f CEqp eff rawCooked) rawCooked
-      initial = VerbMsg "have nothing to cook"  -- noop, really
-  in foldl' g initial cookingAssocs
+        -- components have to be all on the ground or all in equipment
+      initial = VerbMsg msg  -- noop, really
+  in foldl' g initial ass
+
+cookEffect :: Effect
+cookEffect = combineEffect "have nothing to cook"
+             $ map (\(raw, cooked) -> ([(1, raw)], cooked)) cookingAssocs
+
+workshopEffect :: Effect
+workshopEffect = combineEffect "have not enough tools and components"
+                               workshopAssocs
+
+cookingAssocs :: [(GroupName ItemKind, GroupName ItemKind)]
+cookingAssocs =
+  [ (RAW_MEAT_CHUNK, ROASTED_MEAT_CHUNK)
+  , (S_ENCHANCED_BERRY, S_COOKED_BERRY)
+  , (S_FRAYED_FUNGUS, S_COOKED_FUNGUS)
+  , (S_THIC_LEAF, S_COOKED_LEAF)
+  , (S_RECONFIGURED_FRUIT, S_COOKED_FRUIT)
+  , (S_FRAGRANT_HERB, S_COOKED_HERB)
+  , (S_DULL_FLOWER, S_COOKED_FLOWER)
+  , (S_SPICY_BARK, S_COOKED_BARK)
+  , (S_PUMPKIN, S_COOKED_PUMPKIN) ]
+
+workshopAssocs :: [([(Int, GroupName ItemKind)], GroupName ItemKind)]
+workshopAssocs = []
