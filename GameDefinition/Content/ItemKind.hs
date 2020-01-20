@@ -1284,7 +1284,8 @@ necklace7 = necklaceTemplate
   }
 necklace8 = necklaceTemplate
   { iname    = "coil"
-  , ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100), (COLD_SOURCE, 1)]
+  , ifreq    = [ (COMMON_ITEM, 100), (REFRIGERATION_COIL, 1), (ANY_JEWELRY, 100)
+               , (COLD_SOURCE, 1) ]
   , iaspects = ELabel "of superconducting refrigeration"
                : Timeout ((1 + 1 `d` 3) * 5)
                : delete (SetFlag Precious) iaspects_necklaceTemplate
