@@ -624,7 +624,8 @@ potionTemplate = ItemKind
   , ikit     = []
   }
 potion1 = potionTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
+  { ifreq    = [ (COMMON_ITEM, 100), (PERFUME_POTION, 1)
+               , (ANY_POTION, 100), (ANY_GLASS, 100) ]
   , iaspects = ELabel "of perfume"  -- very useful, despite appearances
                : iaspects potionTemplate
   , ieffects = [ Impress, toOrganGood S_ROSE_SMELLING (50 + 1 `d` 10)
@@ -2024,8 +2025,9 @@ flask18 = flaskTemplate
   }
 flask19 = flaskTemplate
   { iname    = "galon"  -- diluted perfume; almost same effects
-  , ifreq    = [ (COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)
-               , (WATER_SOURCE, 1) ]
+  , ifreq    = [ (COMMON_ITEM, 100), (ROSE_WATER_FLASK, 1)
+               , (EXPLOSIVE, 100), (ANY_GLASS, 100), (WATER_SOURCE, 1) ]
+  , irarity  = [(1, 1)]  -- mostly obtained through crafting
   , iaspects = ELabel "of rose water"
                : iaspects flaskTemplate
   , ieffects = [ Impress, toOrganGood S_ROSE_SMELLING (100 + 1 `d` 20)
