@@ -162,7 +162,7 @@ obscenePictogram = ItemKind
   , ieffects = [ VerbMsg "enter inexplicable rage at a glimpse of the inscrutable graffiti"
                , RefillCalm (-20)
                , OneOf [ toOrganGood S_STRENGTHENED (3 + 1 `d` 2)
-                       , CreateItem CStash SANDSTONE_ROCK timerNone ] ]
+                       , CreateItem Nothing CStash SANDSTONE_ROCK timerNone ] ]
   , idesc    = ""  -- alien writing? or runaway robot AI?
   , ikit     = []
   }
@@ -193,7 +193,7 @@ treasureCache = ItemKind
   , iweight  = 10000
   , idamage  = 0
   , iaspects = [ELabel "of odds and ends", SetFlag Durable]
-  , ieffects = [CreateItem CGround COMMON_ITEM timerNone]
+  , ieffects = [CreateItem Nothing CGround COMMON_ITEM timerNone]
   , idesc    = "If this stash is hidden, it's in plain sight. Or, more probably, it's just tucked aside so that it doesn't get in the way. Whomever worked there, apparently failed to return and retrieve his belongings."
   , ikit     = []
   }
@@ -268,7 +268,7 @@ fireBig = fireSmall
   , ifreq    = [(BIG_FIRE, 1), (FIRE_SOURCE, 1)]
   , iaspects = [ELabel "of immolation", SetFlag Durable]
   , ieffects = [ Burn 2
-               , CreateItem CStash WOODEN_TORCH timerNone
+               , CreateItem Nothing CStash WOODEN_TORCH timerNone
                , Explode S_SPARK ]
   , idesc    = "Glowing with light and warmth."
   , ikit     = []
@@ -304,8 +304,8 @@ rubble = ItemKind
   , ieffects = [OneOf [ Explode S_FOCUSED_GLASS_HAIL
                       , Summon MOBILE_ANIMAL $ 1 `dL` 2
                       , toOrganNoTimer S_POISONED
-                      , CreateItem CGround ANY_ARROW timerNone
-                      , CreateItem CGround STARTING_WEAPON timerNone
+                      , CreateItem Nothing CGround ANY_ARROW timerNone
+                      , CreateItem Nothing CGround STARTING_WEAPON timerNone
                       , reliefMsg, reliefMsg, reliefMsg
                       , reliefMsg, reliefMsg, reliefMsg ]]
   , idesc    = "Broken chunks of foam concrete, glass and torn and burned equipment."
@@ -415,7 +415,7 @@ lectern = ItemKind
   , iweight  = 10000
   , idamage  = 0
   , iaspects = []  -- not Durable, springs at most once
-  , ieffects = [ OneOf [ CreateItem CGround ANY_SCROLL timerNone
+  , ieffects = [ OneOf [ CreateItem Nothing CGround ANY_SCROLL timerNone
                        , Detect DetectAll 20
                        , Paralyze $ (1 `dL` 6) * 10
                        , toOrganGood S_DRUNK (20 + 1 `d` 5) ]
@@ -518,7 +518,7 @@ ruinedFirstAidKit = ItemKind
                , OneOf [ toOrganNoTimer S_SLOW_RESISTANT
                        , toOrganNoTimer S_POISON_RESISTANT
                        , toOrganGood S_DRUNK (20 + 1 `d` 5) ]
-               , CreateItem CStash NEEDLE timerNone ]
+               , CreateItem Nothing CStash NEEDLE timerNone ]
   , idesc    = ""  -- regulations require; say HP not regenerated in the game; mention how to regain HP
   , ikit     = []
   }
@@ -534,7 +534,7 @@ fireFightingGear = ItemKind
   , idamage  = 0
   , iaspects = []  -- not Durable, springs at most once
   , ieffects = [ VerbMsg "disassemble and sort through the deteriorated and leaking gear, taking away the least decrepit item"
-               , CreateItem CStash FIRE_FIGHTING_ITEM timerNone ]
+               , CreateItem Nothing CStash FIRE_FIGHTING_ITEM timerNone ]
   , idesc    = "In addition to remains of firefighting tools, it contains a fire hydrant."  -- regulations require; hint that terrain can be ignited and doused
   , ikit     = []
   }
@@ -575,7 +575,7 @@ depositBox = treasureCache
   { iname    = "intact deposit box"
   , ifreq    = [(DEPOSIT_BOX, 1)]
   , iaspects = [SetFlag Durable]
-  , ieffects = [CreateItem CGround TREASURE timerNone]
+  , ieffects = [CreateItem Nothing CGround TREASURE timerNone]
                  -- can't be VALUABLE or template items generated
   , idesc    = "The reports of intact deposit boxes in the ship's safes have been greatly exaggerated, but there are still a few with glittering gems and gold, just waiting to be taken. Whomever looted these halls wasn't thorough or, judging from the damage to some of the boxes, was in an extreme hurry."
   }
@@ -583,7 +583,7 @@ jewelryCase = treasureCache
   { iname    = "jewelry case"
   , ifreq    = [(JEWELRY_CASE, 1)]
   , iaspects = [SetFlag Durable]
-  , ieffects = [CreateItem CGround ANY_JEWELRY timerNone]
+  , ieffects = [CreateItem Nothing CGround ANY_JEWELRY timerNone]
   , idesc    = "The customers of these shops must have been extremely well off, judging from abundance and quality of the jewelry, often extremely valuable in each of the artistic, material and nanotechnology aspects. Outer Solar System trips are expensive, but they offer unique trade and investment opportunities. Many deals are of the kind that can only be negotiated in a sealed room out of reach of satellites and screened by both parties. Among the jewelry are portable versions of such screening hardware --- in a truly breathtaking package."
   }
 ediblePlantRipe = treasureCache
@@ -591,7 +591,7 @@ ediblePlantRipe = treasureCache
   , ifreq    = [(EDIBLE_PLANT_RIPE, 1)]
   , iflavour = zipPlain [Green]
   , iaspects = [SetFlag Durable]
-  , ieffects = [CreateItem CGround EDIBLE_PLANT timerNone]
+  , ieffects = [CreateItem Nothing CGround EDIBLE_PLANT timerNone]
   , idesc    = ""
   }
 stairsTrapDownOil = stairsTrapUp
@@ -768,16 +768,19 @@ workshopBench = ItemKind
   , ikit     = []
   }
 
-combineEffect :: Text -> [([(Int, GroupName ItemKind)], GroupName ItemKind)]
+combineEffect :: Text -> [( [(Int, GroupName ItemKind)]
+                          , (Int, GroupName ItemKind) )]
               -> Effect
 combineEffect msg ass =
-  let cookOne :: CStore -> ([(Int, GroupName ItemKind)], GroupName ItemKind)
+  let cookOne :: CStore -> ( [(Int, GroupName ItemKind)]
+                           , (Int, GroupName ItemKind) )
               -> Effect
-      cookOne store (raw, cooked) =
+      cookOne store (raw, (count, cooked)) =
         ConsumeItems store raw  -- either all destroyed or none
         `AndEffect`
-        CreateItem CGround cooked timerNone
-      f :: CStore -> Effect -> ([(Int, GroupName ItemKind)], GroupName ItemKind)
+        CreateItem (Just count) CGround cooked timerNone
+      f :: CStore -> Effect -> ( [(Int, GroupName ItemKind)]
+                               , (Int, GroupName ItemKind) )
         -> Effect
       f store eff rawCooked = eff `OrEffect` cookOne store rawCooked
       g eff rawCooked = f CGround (f CEqp eff rawCooked) rawCooked
@@ -787,7 +790,7 @@ combineEffect msg ass =
 
 cookEffect :: Effect
 cookEffect = combineEffect "have nothing to cook"
-             $ map (\(raw, cooked) -> ([(1, raw)], cooked)) cookingAssocs
+             $ map (\(raw, cooked) -> ([(1, raw)], (1, cooked))) cookingAssocs
 
 workshopEffect :: Effect
 workshopEffect = combineEffect "have not enough tools and components"
@@ -805,6 +808,6 @@ cookingAssocs =
   , (S_SPICY_BARK, S_COOKED_BARK)
   , (S_PUMPKIN, S_COOKED_PUMPKIN) ]
 
-workshopAssocs :: [([(Int, GroupName ItemKind)], GroupName ItemKind)]
+workshopAssocs :: [([(Int, GroupName ItemKind)], (Int, GroupName ItemKind))]
 workshopAssocs =
-  [ ([(3, WASTE_CONTAINER)], REFRIGERATION_COIL) ]
+  [ ([(3, WASTE_CONTAINER)], (1, REFRIGERATION_COIL)) ]
