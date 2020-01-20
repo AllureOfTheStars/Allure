@@ -1330,7 +1330,7 @@ imageItensifier = ItemKind
   }
 sightSharpening = ringTemplate  -- small and round, so mistaken for a ring
   { iname    = "Autozoom Contact Lens"
-  , ifreq    = [(TREASURE, 20), (ADD_SIGHT, 1)]
+  , ifreq    = [(TREASURE, 40), (ADD_SIGHT, 1)]
       -- it's has to be very rare, because it's powerful and not unique,
       -- and also because it looks exactly as one of necklaces, so it would
       -- be misleading when seen on the map
