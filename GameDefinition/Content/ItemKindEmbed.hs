@@ -11,7 +11,7 @@ module Content.ItemKindEmbed
   , pattern SANDSTONE_ROCK
   , pattern ABANDONED_CACHE, pattern JEWELRY_DISPLAY_TRAP, pattern BLACK_STARRY_SKY, pattern DISENGAGED_DOCKING_GEAR, pattern RUINED_FIRST_AID_KIT, pattern FIRE_FIGHTING_GEAR, pattern DISPLAY_3D, pattern CRACKED_FLUE, pattern DEPOSIT_BOX, pattern JEWELRY_CASE, pattern EDIBLE_PLANT_RIPE, pattern STAIRS_TRAP_DOWN_OIL, pattern LIFT_UP, pattern LIFT_DOWN, pattern LIFT_TRAP, pattern SHUTTLE_HARDWARE, pattern OIL_PUDDLE, pattern DECONTAMINATION_CHAMBER, pattern BARREL_CONTENTS, pattern WORKSHOP_BENCH
   , pattern EDIBLE_PLANT, pattern FIRE_FIGHTING_ITEM, pattern REFRIGERATION_COIL, pattern PERFUME_POTION, pattern ROSE_WATER_FLASK
-  , pattern S_ENCHANCED_BERRY, pattern S_COOKED_BERRY, pattern S_FRAYED_FUNGUS, pattern S_COOKED_FUNGUS, pattern S_THIC_LEAF, pattern S_COOKED_LEAF, pattern S_RECONFIGURED_FRUIT, pattern S_COOKED_FRUIT, pattern S_FRAGRANT_HERB, pattern S_COOKED_HERB, pattern S_DULL_FLOWER, pattern S_COOKED_FLOWER, pattern S_SPICY_BARK, pattern S_COOKED_BARK, pattern S_PUMPKIN, pattern S_COOKED_PUMPKIN
+  , pattern S_ENCHANCED_BERRY, pattern S_COOKED_BERRY, pattern S_FRAYED_FUNGUS, pattern S_COOKED_FUNGUS, pattern S_THIC_LEAF, pattern S_COOKED_LEAF, pattern S_RECONFIGURED_FRUIT, pattern S_COOKED_FRUIT, pattern S_FRAGRANT_HERB, pattern S_COOKED_HERB, pattern S_DULL_FLOWER, pattern S_COOKED_FLOWER, pattern S_SPICY_BARK, pattern S_COOKED_BARK, pattern S_PUMPKIN, pattern S_COOKED_PUMPKIN, pattern S_SPACESUIT_JACKET, pattern S_SPACESUIT_TROUSERS, pattern S_SPACESUIT_GLOVE, pattern S_SPACESUIT_HELMET, pattern S_SPACESUIT_BOOT, pattern S_SPACESUIT
   , embedsGNSingleton, embedsGN
   , -- * Content
     embeds
@@ -36,9 +36,9 @@ import Game.LambdaHack.Definition.Flavour
 
 embedsGNSingleton :: [GroupName ItemKind]
 embedsGNSingleton =
-       [S_ENCHANCED_BERRY, S_COOKED_BERRY, S_FRAYED_FUNGUS, S_COOKED_FUNGUS, S_THIC_LEAF, S_COOKED_LEAF, S_RECONFIGURED_FRUIT, S_COOKED_FRUIT, S_FRAGRANT_HERB, S_COOKED_HERB, S_DULL_FLOWER, S_COOKED_FLOWER, S_SPICY_BARK, S_COOKED_BARK, S_PUMPKIN, S_COOKED_PUMPKIN]
+       [S_ENCHANCED_BERRY, S_COOKED_BERRY, S_FRAYED_FUNGUS, S_COOKED_FUNGUS, S_THIC_LEAF, S_COOKED_LEAF, S_RECONFIGURED_FRUIT, S_COOKED_FRUIT, S_FRAGRANT_HERB, S_COOKED_HERB, S_DULL_FLOWER, S_COOKED_FLOWER, S_SPICY_BARK, S_COOKED_BARK, S_PUMPKIN, S_COOKED_PUMPKIN, S_SPACESUIT_JACKET, S_SPACESUIT_TROUSERS, S_SPACESUIT_GLOVE, S_SPACESUIT_HELMET, S_SPACESUIT_BOOT, S_SPACESUIT]
 
-pattern S_ENCHANCED_BERRY, S_COOKED_BERRY, S_FRAYED_FUNGUS, S_COOKED_FUNGUS, S_THIC_LEAF, S_COOKED_LEAF, S_RECONFIGURED_FRUIT, S_COOKED_FRUIT, S_FRAGRANT_HERB, S_COOKED_HERB, S_DULL_FLOWER, S_COOKED_FLOWER, S_SPICY_BARK, S_COOKED_BARK, S_PUMPKIN, S_COOKED_PUMPKIN :: GroupName ItemKind
+pattern S_ENCHANCED_BERRY, S_COOKED_BERRY, S_FRAYED_FUNGUS, S_COOKED_FUNGUS, S_THIC_LEAF, S_COOKED_LEAF, S_RECONFIGURED_FRUIT, S_COOKED_FRUIT, S_FRAGRANT_HERB, S_COOKED_HERB, S_DULL_FLOWER, S_COOKED_FLOWER, S_SPICY_BARK, S_COOKED_BARK, S_PUMPKIN, S_COOKED_PUMPKIN, S_SPACESUIT_JACKET, S_SPACESUIT_TROUSERS, S_SPACESUIT_GLOVE, S_SPACESUIT_HELMET, S_SPACESUIT_BOOT, S_SPACESUIT :: GroupName ItemKind
 
 embedsGN :: [GroupName ItemKind]
 embedsGN =
@@ -72,23 +72,6 @@ pattern FROZEN_GROUND = GroupName "frozen ground"
 pattern SANDSTONE_ROCK = GroupName "sandstone rock"
 
 -- ** Allure-specific
-pattern S_ENCHANCED_BERRY = GroupName "enhanced berry"
-pattern S_COOKED_BERRY = GroupName "cooked berry"
-pattern S_FRAYED_FUNGUS = GroupName "frayed fungus"
-pattern S_COOKED_FUNGUS = GroupName "cooked fungus"
-pattern S_THIC_LEAF = GroupName "thick leaf"
-pattern S_COOKED_LEAF = GroupName "cooked leaf"
-pattern S_RECONFIGURED_FRUIT = GroupName "reconfigured fruit"
-pattern S_COOKED_FRUIT = GroupName "cooked fruit"
-pattern S_FRAGRANT_HERB = GroupName "fragrant herb"
-pattern S_COOKED_HERB = GroupName "cooked herb"
-pattern S_DULL_FLOWER = GroupName "dull flower"
-pattern S_COOKED_FLOWER = GroupName "cooked flower"
-pattern S_SPICY_BARK = GroupName "spicy bark"
-pattern S_COOKED_BARK = GroupName "cooked bark"
-pattern S_PUMPKIN = GroupName "pumpkin"
-pattern S_COOKED_PUMPKIN = GroupName "cooked pumpkin"
-
 pattern ABANDONED_CACHE = GroupName "abandoned cache"
 pattern JEWELRY_DISPLAY_TRAP = GroupName "jewelry display trap"
 pattern BLACK_STARRY_SKY = GroupName "black starry sky"
@@ -115,6 +98,29 @@ pattern FIRE_FIGHTING_ITEM = GroupName "fire fighting item"
 pattern REFRIGERATION_COIL = GroupName "refrigeration coil"
 pattern PERFUME_POTION = GroupName "perfume potion"
 pattern ROSE_WATER_FLASK = GroupName "rose water flask"
+
+pattern S_ENCHANCED_BERRY = GroupName "enhanced berry"
+pattern S_COOKED_BERRY = GroupName "cooked berry"
+pattern S_FRAYED_FUNGUS = GroupName "frayed fungus"
+pattern S_COOKED_FUNGUS = GroupName "cooked fungus"
+pattern S_THIC_LEAF = GroupName "thick leaf"
+pattern S_COOKED_LEAF = GroupName "cooked leaf"
+pattern S_RECONFIGURED_FRUIT = GroupName "reconfigured fruit"
+pattern S_COOKED_FRUIT = GroupName "cooked fruit"
+pattern S_FRAGRANT_HERB = GroupName "fragrant herb"
+pattern S_COOKED_HERB = GroupName "cooked herb"
+pattern S_DULL_FLOWER = GroupName "dull flower"
+pattern S_COOKED_FLOWER = GroupName "cooked flower"
+pattern S_SPICY_BARK = GroupName "spicy bark"
+pattern S_COOKED_BARK = GroupName "cooked bark"
+pattern S_PUMPKIN = GroupName "pumpkin"
+pattern S_COOKED_PUMPKIN = GroupName "cooked pumpkin"
+pattern S_SPACESUIT_JACKET = GroupName "spacesuit jacket"
+pattern S_SPACESUIT_TROUSERS = GroupName "spacesuit trousers"
+pattern S_SPACESUIT_GLOVE = GroupName "spacesuit glove"
+pattern S_SPACESUIT_HELMET = GroupName "spacesuit helmet"
+pattern S_SPACESUIT_BOOT = GroupName "spacesuit boot"
+pattern S_SPACESUIT = GroupName "spacesuit"
 
 -- * Content
 
@@ -813,4 +819,7 @@ cookingAssocs =
 workshopAssocs :: [([(Int, GroupName ItemKind)], (Int, GroupName ItemKind))]
 workshopAssocs =
   [ ([(3, WASTE_CONTAINER)], (1, REFRIGERATION_COIL))
-  , ([(1, PERFUME_POTION), (1, WATER_SOURCE)], (5, ROSE_WATER_FLASK)) ]
+  , ([(1, PERFUME_POTION), (1, WATER_SOURCE)], (5, ROSE_WATER_FLASK))
+  , ( [ (3, BONDING_SOURCE), (1, S_SPACESUIT_JACKET), (1, S_SPACESUIT_TROUSERS)
+      , (2, S_SPACESUIT_GLOVE), (1, S_SPACESUIT_HELMET), (2, S_SPACESUIT_BOOT) ]
+    , (1, S_SPACESUIT) ) ]

@@ -269,7 +269,7 @@ paralizingProj = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "can"
   , ifreq    = [ (COMMON_ITEM, 100), (CAN_OF_STICKY_FOAM, 1)
-               , (MERCENARY_AMMO, 25) ]
+               , (MERCENARY_AMMO, 25), (BONDING_SOURCE, 1) ]
   , iflavour = zipPlain [Magenta]
   , icount   = 1 `dL` 4
   , irarity  = [(5, 5), (10, 20)]
@@ -1437,8 +1437,8 @@ ring8 = ringTemplate
 
 armorLeather = ItemKind
   { isymbol  = symbolTorsoArmor
-  , iname    = "spacesuit breastplate"
-  , ifreq    = [(COMMON_ITEM, 100), (TORSO_ARMOR, 1)]
+  , iname    = "spacesuit jacket"
+  , ifreq    = [(COMMON_ITEM, 100), (S_SPACESUIT_JACKET, 1), (TORSO_ARMOR, 1)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
   , irarity  = [(1, 4), (10, 2)]
@@ -1451,20 +1451,20 @@ armorLeather = ItemKind
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotArmorMelee ]
   , ieffects = []
-  , idesc    = "A hard-shell torso segment cut from a disposed off spacesuit. Well ventilated."
+  , idesc    = "A hard-shell torso segment of a disposed off spacesuit. Well ventilated through the air tank outlets."
   , ikit     = []
   }
 armorLeather2 = armorLeather  -- for now, purely flavour, for better messages
   { isymbol  = symbolMiscArmor
   , iname    = "pair"
-  , ifreq    = [(COMMON_ITEM, 100)]
+  , ifreq    = [(COMMON_ITEM, 100), (S_SPACESUIT_TROUSERS, 1)]
   , iaspects = ELabel "of spacesuit trousers" : iaspects armorLeather
   , idesc    = "Segmented trousers for open space work, with the hermetically sealed boots cut off. Surprisingly flexible and airy, yet micro-meteorite-proof."
   }
 armorMail = armorLeather
   { iname    = "bulletproof vest"
   , ifreq    = [ (COMMON_ITEM, 100), (TORSO_ARMOR, 1), (ARMOR_RANGED, 50)
-               , (BULLTEPROOF_VEST, 1) ]
+               , (S_BULLTEPROOF_VEST, 1) ]
   , iflavour = zipPlain [Cyan]
   , irarity  = [(6, 9), (10, 3)]
   , iweight  = 12000
@@ -1499,7 +1499,7 @@ gloveFencing = ItemKind
   }
 gloveGauntlet = gloveFencing
   { iname    = "spacesuit glove"
-  , ifreq    = [(COMMON_ITEM, 100), (ARMOR_MISC, 1)]
+  , ifreq    = [(COMMON_ITEM, 100), (S_SPACESUIT_GLOVE, 1), (ARMOR_MISC, 1)]
   , iflavour = zipPlain [BrCyan]
   , irarity  = [(1, 9), (10, 3)]
   , iweight  = 300
@@ -1571,7 +1571,7 @@ capReinforced = ItemKind
 helmArmored = ItemKind
   { isymbol  = symbolMiscArmor
   , iname    = "spacesuit helmet"
-  , ifreq    = [(COMMON_ITEM, 100), (ARMOR_MISC, 1)]
+  , ifreq    = [(COMMON_ITEM, 100), (S_SPACESUIT_HELMET, 1), (ARMOR_MISC, 1)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
   , irarity  = [(6, 9), (10, 3)]
@@ -2284,19 +2284,19 @@ hoe = grassStitcher
 heavyBoot = ItemKind
   { isymbol  = symbolMiscArmor
   , iname    = "spacesuit boot"
-  , ifreq    = [(COMMON_ITEM, 100), (ARMOR_MISC, 1)]
+  , ifreq    = [(COMMON_ITEM, 100), (S_SPACESUIT_BOOT, 1), (ARMOR_MISC, 1)]
   , iflavour = zipPlain [Blue]
   , icount   = 1
   , irarity  = [(1, 15), (10, 1)]
   , iverbHit = "sock"
-  , iweight  = 2000
+  , iweight  = 100000  -- including the fake gravity mass
   , idamage  = 5 `d` 1
   , iaspects = [ AddSkill SkHurtMelee (-20)
                , AddSkill SkArmorMelee $ (1 + 1 `dL` 3) * 5
                , SetFlag Durable, SetFlag Equipable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
-               , toVelocity 50 ]  -- awkward shape
+               , toVelocity 500 ]  -- the fake mass not counted for throwing
   , ieffects = []
-  , idesc    = "An armored boot, cut-off from a spacesuit, with a broken in-built micro-suction machinery for maintaining traction in the absence of gravity."
+  , idesc    = "An armored boot, cut-off from a spacesuit. The in-built micro-suction machinery for maintaining traction in the absence of gravity gives stability equivalent to an extra 100kg of mass. Kicks get abrupt acceleration millimeters short of the target."
   , ikit     = []
   }
