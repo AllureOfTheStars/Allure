@@ -104,11 +104,11 @@ items :: [ItemKind]
 items =
   [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
   -- Allure-specific
-  ++ [needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryBaton, cattleProd, chisel, steelFile, hacksaw, adjustableSpanner, crowbar, catsPaw, diagonalPliers, snips, loppers, boltCutter, grassStitcher, ladiesFork, spade, hoe, heavyBoot]
+  ++ [needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryBaton, cattleProd, chisel, steelFile, hacksaw, adjustableSpanner, crowbar, catsPaw, diagonalPliers, snips, loppers, boltCutter, grassStitcher, ladiesFork, spade, hoe, heavyBoot, spacesuit]
 
 sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
 -- Allure-specific
-needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryBaton, cattleProd, chisel, steelFile, hacksaw, adjustableSpanner, crowbar, catsPaw, diagonalPliers, snips, loppers, boltCutter, grassStitcher, ladiesFork, spade, hoe, heavyBoot :: ItemKind
+needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryBaton, cattleProd, chisel, steelFile, hacksaw, adjustableSpanner, crowbar, catsPaw, diagonalPliers, snips, loppers, boltCutter, grassStitcher, ladiesFork, spade, hoe, heavyBoot, spacesuit :: ItemKind
 
 -- Keep the dice rolls and sides in aspects small so that not too many
 -- distinct items are generated (for display in item lore and for narrative
@@ -1572,7 +1572,7 @@ helmArmored = ItemKind
   { isymbol  = symbolMiscArmor
   , iname    = "spacesuit helmet"
   , ifreq    = [(COMMON_ITEM, 100), (S_SPACESUIT_HELMET, 1), (ARMOR_MISC, 1)]
-  , iflavour = zipPlain [BrCyan]
+  , iflavour = zipPlain [BrBlue]
   , icount   = 1
   , irarity  = [(6, 9), (10, 3)]
   , iverbHit = "bounce"
@@ -1580,8 +1580,8 @@ helmArmored = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkArmorMelee $ (1 + 1 `dL` 4) * 5
                , AddSkill SkArmorRanged $ (2 + 1 `dL` 2) * 3  -- headshot
-               , AddSkill SkHearing (-7), AddSkill SkSight (-1)
-               , AddSkill SkSmell (-5)
+               , AddSkill SkSight (-1)
+               , AddSkill SkHearing (-7), AddSkill SkSmell (-5)
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotArmorRanged ]
   , ieffects = []
@@ -2298,5 +2298,28 @@ heavyBoot = ItemKind
                , toVelocity 500 ]  -- the fake mass not counted for throwing
   , ieffects = []
   , idesc    = "An armored boot, cut-off from a spacesuit. The in-built micro-suction machinery for maintaining traction in the absence of gravity gives stability equivalent to an extra 100kg of mass. Kicks get abrupt acceleration millimeters short of the target."
+  , ikit     = []
+  }
+spacesuit = ItemKind
+  { isymbol  = symbolTorsoArmor
+  , iname    = "spacesuit"
+  , ifreq    = [(COMMON_ITEM, 10), (S_SPACESUIT, 1)]
+  , iflavour = zipPlain [BrWhite]
+  , icount   = 1
+  , irarity  = [(1, 1), (10, 10)]
+  , iverbHit = "hug"
+  , iweight  = 250000  -- including the fake gravity mass from two boots
+  , idamage  = 0
+  , iaspects = [ AddSkill SkHurtMelee (-30)  -- easier when boots integrated
+               , AddSkill SkSight (-1)
+               , AddSkill SkHearing (-10), AddSkill SkSmell (-10)  -- worse now
+               , AddSkill SkArmorMelee $ (6 + 1 `d` 3) * 20
+               , AddSkill SkArmorRanged $ (4 + 1 `d` 3) * 12
+                   -- twice better than from the set, because enemy
+                   -- can't aim at the gaps between pieces
+               , SetFlag Durable, SetFlag Equipable
+               , EqpSlot EqpSlotArmorMelee ]
+  , ieffects = []
+  , idesc    = "A heavy spacesuit, with micro-suction machinery build into its boots, but requiring an external air tank for space walking."
   , ikit     = []
   }
