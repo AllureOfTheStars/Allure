@@ -1313,7 +1313,8 @@ workshop = TileKind
   , tfreq    = [(EMPTY_SET_LIT, 2), (EXIT_SET_LIT, 2), (AMBUSH_SET_DARK, 2)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
-  , talter   = 0
+  , talter   = 2  -- projectiles cannot craft (otherwise durable tools
+                  -- would be applicable without harmful side-effects)
   , tfeature = [ Walkable, NoItem, NoActor  -- not clear, due to overhang
                , Embed WORKSHOP_BENCH ]
   }
