@@ -2293,7 +2293,7 @@ heavyBoot = ItemKind
   , idamage  = 5 `d` 1
   , iaspects = [ AddSkill SkHurtMelee (-20)
                , AddSkill SkArmorMelee $ (1 + 1 `dL` 3) * 5
-               , SetFlag Durable, SetFlag Equipable, SetFlag Meleeable
+               , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 500 ]  -- the fake mass not counted for throwing
   , ieffects = []
