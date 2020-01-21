@@ -780,21 +780,19 @@ combineEffect :: Text -> [( [(Int, GroupName ItemKind)]
                           , (Int, GroupName ItemKind) )]
               -> Effect
 combineEffect msg ass =
-  let cookOne :: CStore -> ( [(Int, GroupName ItemKind)]
-                           , (Int, GroupName ItemKind) )
+  let cookOne :: ( [(Int, GroupName ItemKind)]
+                 , (Int, GroupName ItemKind) )
               -> Effect
-      cookOne store (raw, (count, cooked)) =
-        ConsumeItems store raw  -- either all destroyed or none
+      cookOne (raw, (count, cooked)) =
+        ConsumeItems raw  -- either all destroyed or none
         `AndEffect`
         CreateItem (Just count) CGround cooked timerNone
-      f :: CStore -> Effect -> ( [(Int, GroupName ItemKind)]
-                               , (Int, GroupName ItemKind) )
+      f :: Effect -> ( [(Int, GroupName ItemKind)]
+                     , (Int, GroupName ItemKind) )
         -> Effect
-      f store eff rawCooked = eff `OrEffect` cookOne store rawCooked
-      g eff rawCooked = f CGround (f CEqp eff rawCooked) rawCooked
-        -- components have to be all on the ground or all in equipment
+      f eff rawCooked = eff `OrEffect` cookOne rawCooked
       initial = VerbMsg msg  -- noop, really
-  in foldl' g initial ass
+  in foldl' f initial ass
 
 cookEffect :: Effect
 cookEffect = combineEffect "have nothing to cook"
