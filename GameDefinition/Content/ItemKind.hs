@@ -269,7 +269,7 @@ paralizingProj = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "can"
   , ifreq    = [ (COMMON_ITEM, 100), (CAN_OF_STICKY_FOAM, 1)
-               , (MERCENARY_AMMO, 25), (BONDING_SOURCE, 1) ]
+               , (MERCENARY_AMMO, 25), (BONDING_TOOL, 1) ]
   , iflavour = zipPlain [Magenta]
   , icount   = 1 `dL` 4
   , irarity  = [(5, 5), (10, 20)]

@@ -818,6 +818,6 @@ workshopAssocs :: [([(Int, GroupName ItemKind)], (Int, GroupName ItemKind))]
 workshopAssocs =
   [ ([(3, WASTE_CONTAINER)], (1, REFRIGERATION_COIL))
   , ([(1, PERFUME_POTION), (1, WATER_SOURCE)], (5, ROSE_WATER_FLASK))
-  , ( [ (3, BONDING_SOURCE), (1, S_SPACESUIT_JACKET), (1, S_SPACESUIT_TROUSERS)
+  , ( [ (3, BONDING_TOOL), (1, S_SPACESUIT_JACKET), (1, S_SPACESUIT_TROUSERS)
       , (2, S_SPACESUIT_GLOVE), (1, S_SPACESUIT_HELMET), (2, S_SPACESUIT_BOOT) ]
     , (1, S_SPACESUIT) ) ]

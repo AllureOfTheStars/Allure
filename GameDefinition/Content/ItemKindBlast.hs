@@ -12,7 +12,7 @@ module Content.ItemKindBlast
   , pattern ARMOR_MISC
   , pattern S_NITROGEN_MIST, pattern S_PAINT_DROPLET, pattern S_RHINO_HOLOGRAM
   , pattern ADVERTISEMENT, pattern STORY_TELLING
-  , pattern FIRE_SOURCE, pattern OIL_SOURCE, pattern WATER_SOURCE, pattern COLD_SOURCE, pattern BLAST_SOURCE, pattern BONDING_SOURCE
+  , pattern FIRE_SOURCE, pattern OIL_SOURCE, pattern WATER_SOURCE, pattern COLD_SOURCE, pattern BLAST_SOURCE, pattern BONDING_TOOL
   , blastsGNSingleton, blastsGN
   , -- * Content
     blasts
@@ -48,13 +48,13 @@ blastsGN :: [GroupName ItemKind]
 blastsGN =
        [ARMOR_MISC]
     ++ [ADVERTISEMENT, STORY_TELLING]
-    ++ [FIRE_SOURCE, OIL_SOURCE, WATER_SOURCE, COLD_SOURCE, BLAST_SOURCE, BONDING_SOURCE]
+    ++ [FIRE_SOURCE, OIL_SOURCE, WATER_SOURCE, COLD_SOURCE, BLAST_SOURCE, BONDING_TOOL]
 
 pattern ARMOR_MISC :: GroupName ItemKind
 
 pattern ADVERTISEMENT, STORY_TELLING :: GroupName ItemKind
 
-pattern FIRE_SOURCE, OIL_SOURCE, WATER_SOURCE, COLD_SOURCE, BLAST_SOURCE, BONDING_SOURCE :: GroupName ItemKind
+pattern FIRE_SOURCE, OIL_SOURCE, WATER_SOURCE, COLD_SOURCE, BLAST_SOURCE, BONDING_TOOL :: GroupName ItemKind
 
 pattern S_FIRECRACKER = GroupName "firecracker"
 pattern S_VIOLENT_FRAGMENTATION = GroupName "violent fragmentation"
@@ -127,7 +127,8 @@ pattern OIL_SOURCE = GroupName "oil source"
 pattern WATER_SOURCE = GroupName "water source"
 pattern COLD_SOURCE = GroupName "cold source"
 pattern BLAST_SOURCE = GroupName "blast source"
-pattern BONDING_SOURCE = GroupName "bonding source"
+
+pattern BONDING_TOOL = GroupName "bonding tool"
 
 -- * Content
 
