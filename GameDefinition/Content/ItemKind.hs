@@ -104,11 +104,11 @@ items :: [ItemKind]
 items =
   [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
   -- Allure-specific
-  ++ [needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryBaton, cattleProd, chisel, steelFile, hacksaw, adjustableSpanner, crowbar, catsPaw, diagonalPliers, snips, loppers, boltCutter, grassStitcher, ladiesFork, spade, hoe, heavyBoot, spacesuit]
+  ++ [needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryBaton, cattleProd, chisel, steelFile, hacksaw, adjustableSpanner, crowbar, catsPaw, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, grassStitcher, ladiesFork, spade, hoe, heavyBoot, spacesuit]
 
 sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, sharpeningTool, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
 -- Allure-specific
-needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryBaton, cattleProd, chisel, steelFile, hacksaw, adjustableSpanner, crowbar, catsPaw, diagonalPliers, snips, loppers, boltCutter, grassStitcher, ladiesFork, spade, hoe, heavyBoot, spacesuit :: ItemKind
+needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryBaton, cattleProd, chisel, steelFile, hacksaw, adjustableSpanner, crowbar, catsPaw, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, grassStitcher, ladiesFork, spade, hoe, heavyBoot, spacesuit :: ItemKind
 
 -- Keep the dice rolls and sides in aspects small so that not too many
 -- distinct items are generated (for display in item lore and for narrative
@@ -281,7 +281,7 @@ paralizingProj = ItemKind
                , SetFlag Lobable, SetFlag Fragile
                , toVelocity 70 ]  -- unwieldy
   , ieffects = [Paralyze 15, OnSmash (Explode S_GLUE) ]
-  , idesc    = "A can of liquid, fast-setting construction foam."
+  , idesc    = "A can of liquid, fast-setting construction foam. Often used as a glue."
   , ikit     = []
   }
 harpoon = ItemKind
@@ -1742,7 +1742,7 @@ hammerParalyze = hammerTemplate
   }
 hammerSpark = hammerTemplate
   { iname    = "Grand Smithhammer"
-  , ifreq    = [(TREASURE, 20), (MUSEAL, 100)]
+  , ifreq    = [(TREASURE, 20), (BONDING_TOOL, 1), (MUSEAL, 100)]
   , irarity  = [(5, 1), (8, 6)]
   , iweight  = 2400  -- weight gives it away
   , idamage  = 12 `d` 1
@@ -1754,7 +1754,7 @@ hammerSpark = hammerTemplate
   , ieffects = [Explode S_SPARK]
       -- we can't use a focused explosion, because it would harm the hammer
       -- wielder as well, unlike this one
-  , idesc    = "High carbon steel of this heavy old hammer doesn't yield even to the newest alloys and produces fountains of sparks in defiance."
+  , idesc    = "High carbon steel of this heavy old hammer doesn't yield even to the newest alloys and produces fountains of sparks in defiance. Whatever it forge-welds together, stays together."
   }
 sword = ItemKind
   { isymbol  = symbolPolearm
@@ -2058,7 +2058,7 @@ blowtorch = ItemKind
   { isymbol  = symbolLight
   , iname    = "blowtorch"  -- not unique, but almost never generated on floor
   , ifreq    = [ (BLOWTORCH, 1), (VALUABLE, 20), (CURIOUS_ITEM, 1)
-               , (BREACHING_TOOL, 1), (FIRE_SOURCE, 1) ]
+               , (BREACHING_TOOL, 1), (BONDING_TOOL, 1), (FIRE_SOURCE, 1) ]
                  -- infinite use, but harmful
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
@@ -2073,7 +2073,7 @@ blowtorch = ItemKind
   , ieffects = [Burn 2, Impress]
       -- is used for melee in precedence to fists, but not to cleavers;
       -- so if player wants to hit with it, it's enough to pack other gear
-  , idesc    = "A sturdy old-fashioned portable blowtorch for fine cutting or welding of metals. Rather weak, but does not require access codes to high current power outlets. If you can patiently suffer the heat, it can be used as a clumsy breaching tool."
+  , idesc    = "A sturdy old-fashioned portable blowtorch for fine cutting or welding of metals. Rather weak, but does not require access codes to high current power outlets. If you can patiently suffer the heat, it can be used as a clumsy breaching or bonding tool."
   , ikit     = []
   }
 rawMeatChunk = ItemKind
@@ -2101,7 +2101,7 @@ roastedMeatChunk = rawMeatChunk
   }
 militaryKnife = dagger
   { iname    = "military knife"
-  , ifreq    = [(COMMON_ITEM, 1), (MERCENARY_WEAPON, 70)]
+  , ifreq    = [(COMMON_ITEM, 1), (WIRECUTTING_TOOL, 1), (MERCENARY_WEAPON, 70)]
   , irarity  = [(10, 10)]
   , idamage  = 8 `d` 1
   , iaspects = [ Timeout 2
@@ -2109,7 +2109,7 @@ militaryKnife = dagger
                , EqpSlot EqpSlotWeaponFast
                , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
   , ieffects = [DropItem 1 maxBound COrgan CONDITION]
-  , idesc    = "Millitary design laser-sharpened alloy blade able to cleanly open an artery at the lightest touch through layers of fabric."
+  , idesc    = "Millitary design laser-sharpened alloy blade able to cleanly open an artery at the lightest touch through layers of fabric or defeat barbed wire in one slice."
   }
 militaryBaton = ItemKind
   { isymbol  = symbolHafted
@@ -2192,6 +2192,7 @@ diagonalPliers = chisel
   { iname    = "pair"
   , ifreq    = [(COMMON_ITEM, 100), (WIRECUTTING_TOOL, 1)]
   , iflavour = zipPlain [Brown]
+  , iverbHit = "cut"
   , iaspects = [ELabel "of diagonal pliers"]
   , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Diagonal_pliers
   }
@@ -2209,6 +2210,19 @@ boltCutter = diagonalPliers
   { iname    = "bolt cutter"
   , iaspects = []
   , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Bolt_cutter
+  }
+solderingIron = chisel
+  { iname    = "soldering iron"
+  , ifreq    = [(COMMON_ITEM, 100), (BONDING_TOOL, 1)]
+  , iflavour = zipPlain [White]
+  , iverbHit = "soldier"
+  , idesc    = "It is a bonding tool."  -- TODO: wikipedia
+  }
+duckTape = solderingIron
+  { iname    = "duck tape"
+  , icount   = 1 `d` 4
+  , iverbHit = "catch"
+  , idesc    = "It is a bonding tool."  -- TODO: https://en.wikipedia.org/wiki/Duct_tape
   }
 gardenMsg :: Effect
 gardenMsg = VerbMsg "feel the gardening tool fracture"
