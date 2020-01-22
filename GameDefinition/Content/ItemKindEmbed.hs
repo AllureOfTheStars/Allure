@@ -508,7 +508,7 @@ disengagedDocking = ItemKind
   , idamage  = 0
   , iaspects = [SetFlag Durable]
   , ieffects = []
-  , idesc    = "As the grey color of exposed surfaces clearly indicates, unfortunately, this airlock has no space boat attached. Many fine small craft were originally docked with such sockets and clamps, but after the spaceship spontaneously deorbited Neptune, a lot of them were seen jettisoned and drifting astern. What a waste. Decks up, closer to the ship's core, have not been purged of shuttles as thoroughly."
+  , idesc    = "As the grey color of exposed surfaces clearly indicates, unfortunately, this airlock has no space boat attached. Many fine small craft were originally docked with such sockets and clamps, but after the spaceship spontaneously deorbited Neptune, a lot of them were seen jettisoned and drifting astern. What a waste. Decks up, closer to the ship's core, have not been purged of shuttles as thoroughly.\nTo get out, onto the outer hull surface, you'd need a spacesuit with an air tank."
   , ikit     = []
   }
 ruinedFirstAidKit = ItemKind
