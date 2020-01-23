@@ -8,7 +8,7 @@
 module Content.ItemKind
   ( -- * Group name patterns
     pattern HARPOON, pattern TORSO_ARMOR, pattern CLOTHING_MISC
-  , pattern MUSEAL, pattern FIREPROOF_CLOTH, pattern THICK_CLOTH, pattern COOKED_PLANT, pattern LIQUID_NITROGEN, pattern BREACHING_TOOL, pattern SHARPENING_TOOL, pattern WIRECUTTING_TOOL
+  , pattern MUSEAL, pattern FIREPROOF_CLOTH, pattern THICK_CLOTH, pattern COOKED_PLANT, pattern LIQUID_NITROGEN, pattern BREACHING_TOOL
   , groupNamesSingleton, groupNames
   , -- * Content
     content, items, otherItemContent
@@ -50,12 +50,12 @@ pattern COOKED_PLANT_UNKNOWN :: GroupName ItemKind
 groupNames :: [GroupName ItemKind]
 groupNames =
        [HARPOON, TORSO_ARMOR, CLOTHING_MISC]
-    ++ [MUSEAL, FIREPROOF_CLOTH, THICK_CLOTH, COOKED_PLANT, LIQUID_NITROGEN, BREACHING_TOOL, SHARPENING_TOOL, WIRECUTTING_TOOL]
+    ++ [MUSEAL, FIREPROOF_CLOTH, THICK_CLOTH, COOKED_PLANT, LIQUID_NITROGEN, BREACHING_TOOL]
     ++ embedsGN ++ actorsGN ++ organsGN ++ blastsGN
 
 pattern HARPOON, TORSO_ARMOR, CLOTHING_MISC :: GroupName ItemKind
 
-pattern MUSEAL, FIREPROOF_CLOTH, THICK_CLOTH, COOKED_PLANT, LIQUID_NITROGEN, BREACHING_TOOL, SHARPENING_TOOL, WIRECUTTING_TOOL:: GroupName ItemKind
+pattern MUSEAL, FIREPROOF_CLOTH, THICK_CLOTH, COOKED_PLANT, LIQUID_NITROGEN, BREACHING_TOOL :: GroupName ItemKind
 
 -- The @UNKNOWN@ patterns don't need to be exported. Used internally.
 -- They also represent singleton groups.
@@ -69,7 +69,7 @@ pattern HAMMER_UNKNOWN = GroupName "hammer unknown"
 pattern GEM_UNKNOWN = GroupName "gem unknown"
 pattern CURRENCY_UNKNOWN = GroupName "currency unknown"
 
-pattern HARPOON = GroupName "harpoon"
+pattern HARPOON = GroupName "any harpoon"
 pattern TORSO_ARMOR = GroupName "torso armor"
 pattern CLOTHING_MISC = GroupName "clothing misc"
 
@@ -85,8 +85,6 @@ pattern THICK_CLOTH = GroupName "thick cloth"
 pattern COOKED_PLANT = GroupName "cooked plant"
 pattern LIQUID_NITROGEN = GroupName "liquid nitrogen"
 pattern BREACHING_TOOL = GroupName "breaching tool"
-pattern SHARPENING_TOOL = GroupName "sharpening tool"
-pattern WIRECUTTING_TOOL = GroupName "wirecutting tool"
 
 pattern S_GRASS_STITCHER = GroupName "grass stitcher"
 pattern S_LADIES_FORK = GroupName "ladies' fork"
@@ -105,11 +103,11 @@ items :: [ItemKind]
 items =
   [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, meleeEnhancement, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
   -- Allure-specific
-  ++ [needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryBaton, cattleProd, chisel, hacksaw, adjustableSpanner, crowbar, catsPaw, steelFile, honingSteel, whetstone, laserSharpener, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, grassStitcher, ladiesFork, spade, hoe, heavyBoot, spacesuit]
+  ++ [needle, needleSleep, harpoon3, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryBaton, cattleProd, chisel, hacksaw, adjustableSpanner, crowbar, catsPaw, steelFile, honingSteel, whetstone, laserSharpener, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, grassStitcher, ladiesFork, spade, hoe, heavyBoot, spacesuit]
 
 sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, meleeEnhancement, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
 -- Allure-specific
-needle, needleSleep, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryBaton, cattleProd, chisel, hacksaw, adjustableSpanner, crowbar, catsPaw, steelFile, honingSteel, whetstone, laserSharpener, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, grassStitcher, ladiesFork, spade, hoe, heavyBoot, spacesuit :: ItemKind
+needle, needleSleep, harpoon3, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryBaton, cattleProd, chisel, hacksaw, adjustableSpanner, crowbar, catsPaw, steelFile, honingSteel, whetstone, laserSharpener, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, grassStitcher, ladiesFork, spade, hoe, heavyBoot, spacesuit :: ItemKind
 
 -- Keep the dice rolls and sides in aspects small so that not too many
 -- distinct items are generated (for display in item lore and for narrative
@@ -288,31 +286,29 @@ paralizingProj = ItemKind
 harpoon = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "harpoon"
-  , ifreq    = [(CURIOUS_ITEM, 100), (HARPOON, 100), (MUSEAL, 100)]
+  , ifreq    = [(COMMON_ITEM, 100), (HARPOON, 100), (S_HARPOON_CARGO, 1)]
   , iflavour = zipPlain [Brown]
   , icount   = 1  -- durable, so one piece lasts long
-  , irarity  = [(7, 5), (10, 5)]
+  , irarity  = [(4 * 10/15, 5), (10, 5)]
   , iverbHit = "hook"
   , iweight  = 750
-  , idamage  = 5 `d` 1
+  , idamage  = 4 `d` 1
   , iaspects = [ Timeout 5
                , AddSkill SkHurtMelee $ (-10 + 1 `d` 2 + 1 `dL` 3) * 5
                , SetFlag Durable, SetFlag Meleeable ]
                  -- no EqpSlot EqpSlotWeaponBig, because often worse than
                  -- an organ, so a waste of equipment space
-  , ieffects = [ PullActor (ThrowMod 200 50 1)  -- 1 step, fast
-               , Yell ]  -- cry out in pain, because brutal
-  , idesc    = "A display piece harking back to the Earth's oceanic tourism heyday. The cruel, barbed head lodges in its victim so painfully that the weakest tug of the thin line sends the victim flying."
+  , ieffects = [PullActor (ThrowMod 200 50 1)]  -- 1 step, fast
+  , idesc    = "A cargo-hook with a high-tension cord that makes the entangled victim easy to unbalance with a strong pull."
   , ikit     = []
   }
 harpoon2 = harpoon
-  { iname    = "heavy harpoon"
-  , ifreq    = [(CURIOUS_ITEM, 5), (HARPOON, 2)]
-  , iweight  = 1000
-  , idamage  = 10 `d` 1
-  , iaspects = [EqpSlot EqpSlotWeaponBig]  -- more powerful than most organs
+  { iname    = "sharp harpoon"
+  , ifreq    = [(COMMON_ITEM, 5), (HARPOON, 2), (S_HARPOON_SHARP, 1)]
+  , idamage  = 6 `d` 1
+  , iaspects = [EqpSlot EqpSlotWeaponBig]  -- more powerful than many organs
                ++ iaspects harpoon
-  , idesc    = "A sharpened cargo-hook with high-tension cord."  -- could use some explanation of why it breaks when thrown, especially that's it's not apparent
+  , idesc    = "A cord ending in a sharpened cargo-hook that, in addition to entangling the victim, gains purchase biting into the body."
   }
 net = ItemKind
   { isymbol  = symbolProjectile
@@ -1956,6 +1952,19 @@ needleSleep = ItemKind
   , ieffects = [PutToSleep]
   , idesc    = "A long hypodermic needle ending in a micro-syringe with residues of the sleeping agent."
   , ikit     = []
+  }
+harpoon3 = harpoon
+  { iname    = "whaling harpoon"
+  , ifreq    = [(TREASURE, 50), (MUSEAL, 100)]
+  , iflavour = zipPlain [Red]
+  , irarity  = [(8, 5), (10, 5)]
+  , iweight  = 1000
+  , idamage  = 10 `d` 1
+  , iaspects = [SetFlag Unique, EqpSlot EqpSlotWeaponBig]
+               ++ iaspects harpoon
+  , ieffects = Yell  -- evoke a cry from pain; brutal
+               : ieffects harpoon
+  , idesc    = "A display piece harking back to the Earth's oceanic tourism heyday. Surprising sharp for its age. The cruel, barbed head lodges in its victim so painfully that the weakest tug of the rope sends the victim flying."
   }
 constructionHooter = necklaceTemplate
   { iname    = "construction hooter"
