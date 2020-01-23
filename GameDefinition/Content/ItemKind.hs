@@ -103,11 +103,11 @@ items :: [ItemKind]
 items =
   [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, meleeEnhancement, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
   -- Allure-specific
-  ++ [needle, needleSleep, harpoon3, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryBaton, cattleProd, chisel, hacksaw, adjustableSpanner, crowbar, catsPaw, steelFile, honingSteel, whetstone, laserSharpener, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, grassStitcher, ladiesFork, spade, hoe, heavyBoot, spacesuit]
+  ++ [needle, needleSleep, harpoon3, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryBaton, cattleProd, chisel, hacksaw, adjustableSpanner, crowbar, catsPaw, steelFile, honingSteel, whetstone, laserSharpener, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, grassStitcher, ladiesFork, spade, hoe, staff, pipe, longPole, steelScrap, heavyBoot, spacesuit]
 
 sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, flask18, flask19, flask20, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, meleeEnhancement, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
 -- Allure-specific
-needle, needleSleep, harpoon3, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryBaton, cattleProd, chisel, hacksaw, adjustableSpanner, crowbar, catsPaw, steelFile, honingSteel, whetstone, laserSharpener, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, grassStitcher, ladiesFork, spade, hoe, heavyBoot, spacesuit :: ItemKind
+needle, needleSleep, harpoon3, constructionHooter, wasteContainer, spotlight, scrollAd1, blowtorch, rawMeatChunk, roastedMeatChunk, militaryKnife, militaryBaton, cattleProd, chisel, hacksaw, adjustableSpanner, crowbar, catsPaw, steelFile, honingSteel, whetstone, laserSharpener, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, grassStitcher, ladiesFork, spade, hoe, staff, pipe, longPole, steelScrap, heavyBoot, spacesuit :: ItemKind
 
 -- Keep the dice rolls and sides in aspects small so that not too many
 -- distinct items are generated (for display in item lore and for narrative
@@ -158,7 +158,7 @@ sandstoneRock = ItemKind
                , (UNREPORTED_INVENTORY, 1) ]  -- too weak to spam
   , iflavour = zipPlain [Green]
   , icount   = 1 + 1 `d` 2  -- > 1, to let AI ignore sole pieces
-  , irarity  = [(1, 50), (10, 1)]
+  , irarity  = [(1, 1)]
   , iverbHit = "swat"
   , iweight  = 300
   , idamage  = 1 `d` 1
@@ -1098,12 +1098,12 @@ scroll15 = scrollTemplate
 jumpingPole = ItemKind
   { isymbol  = symbolWand
   , iname    = "jumping pole"
-  , ifreq    = [(COMMON_ITEM, 100)]
+  , ifreq    = [(COMMON_ITEM, 100), (LONG_POLE, 10)]
   , iflavour = zipPlain [White]
   , icount   = 1
   , irarity  = [(1, 3)]
   , iverbHit = "prod"
-  , iweight  = 10000
+  , iweight  = 4000
   , idamage  = 0
   , iaspects = [ Timeout $ (2 + 1 `d` 2 - 1 `dL` 2) * 5
                , SetFlag Durable ]
@@ -1702,13 +1702,13 @@ hammerTemplate = ItemKind
   , ikit     = []
   }
 hammer1 = hammerTemplate
-  { ifreq    = [ (COMMON_ITEM, 100), (STARTING_WEAPON, 70)
+  { ifreq    = [ (COMMON_ITEM, 100), (POLE_AND_STEEL, 1), (STARTING_WEAPON, 70)
                , (FIRE_FIGHTING_ITEM, 7) ]
   , iaspects = [Timeout 5, EqpSlot EqpSlotWeaponBig]
                ++ iaspects hammerTemplate
   }
 hammer2 = hammerTemplate
-  { ifreq    = [ (COMMON_ITEM, 25), (STARTING_WEAPON, 7)
+  { ifreq    = [ (COMMON_ITEM, 25), (POLE_AND_STEEL, 1), (STARTING_WEAPON, 7)
                , (FIRE_FIGHTING_ITEM, 2) ]
   , iverbHit = "gouge"
   , iaspects = [Timeout 3, EqpSlot EqpSlotWeaponFast]
@@ -1716,8 +1716,8 @@ hammer2 = hammerTemplate
   , idesc    = "Upon closer inspection, this hammer turns out particularly handy and well balanced, with a narrowing, sharpened head compensating the modest size."
   }
 hammer3 = hammerTemplate
-  { ifreq    = [ (COMMON_ITEM, 5), (STARTING_WEAPON, 1)
-               , (FIRE_FIGHTING_ITEM, 1) ]
+  { ifreq    = [ (COMMON_ITEM, 5), (LONG_POLE_AND_STEEL, 1)
+               , (STARTING_WEAPON, 1), (FIRE_FIGHTING_ITEM, 1) ]
   , iverbHit = "puncture"
   , iweight  = 2400  -- weight gives it away
   , idamage  = 12 `d` 1
@@ -1756,7 +1756,8 @@ hammerSpark = hammerTemplate
 sword = ItemKind
   { isymbol  = symbolPolearm
   , iname    = "sharpened pipe"
-  , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 30)]
+  , ifreq    = [ (COMMON_ITEM, 100), (STARTING_WEAPON, 30)
+               , (S_SHARPENED_PIPE, 1) ]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
   , irarity  = [(3, 1), (6, 20)]
@@ -1798,7 +1799,8 @@ swordNullify = sword
 halberd = ItemKind
   { isymbol  = symbolPolearm
   , iname    = "pole cleaver"
-  , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 20)]
+  , ifreq    = [ (COMMON_ITEM, 100), (LONG_POLE_AND_STEEL, 1)
+               , (STARTING_WEAPON, 20) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , irarity  = [(5, 1), (8, 15)]
@@ -1818,7 +1820,8 @@ halberd = ItemKind
   }
 halberd2 = halberd
   { iname    = "pollaxe"
-  , ifreq    = [(COMMON_ITEM, 3 * 3), (STARTING_WEAPON, 1)]
+  , ifreq    = [ (COMMON_ITEM, 3 * 3), (LONG_POLE_AND_STEEL, 1)
+               , (STARTING_WEAPON, 1) ]
   , iverbHit = "carve"
   , iweight  = 4000
   , iaspects = [AddSkill SkHurtMelee $ (-6 + 1 `dL` 4) * 10]
@@ -2267,7 +2270,7 @@ gardenMsg = VerbMsg "feel the gardening tool fracture"
 grassStitcher = ItemKind
   { isymbol  = symbolPolearm
   , iname    = "grass stitcher"
-  , ifreq    = [(COMMON_ITEM, 100), (S_GRASS_STITCHER, 1)]
+  , ifreq    = [(COMMON_ITEM, 100), (POLE_AND_STEEL, 1), (S_GRASS_STITCHER, 1)]
   , iflavour = zipPlain [Red]
   , icount   = 1
   , irarity  = [(1, 10), (3 * 10/15, 3), (4 * 10/15, 1)]
@@ -2286,7 +2289,7 @@ grassStitcher = ItemKind
   }
 ladiesFork = grassStitcher
   { iname    = "ladies' fork"
-  , ifreq    = [(COMMON_ITEM, 100), (S_LADIES_FORK, 1)]
+  , ifreq    = [(COMMON_ITEM, 100), (POLE_AND_STEEL, 1), (S_LADIES_FORK, 1)]
   , iflavour = zipPlain [Green]
   , iweight  = 1000
   , idamage  = 5 `d` 1
@@ -2302,7 +2305,7 @@ ladiesFork = grassStitcher
 spade = grassStitcher
   { isymbol  = symbolHafted  -- swinging much more deadly than gouging
   , iname    = "spade"
-  , ifreq    = [(COMMON_ITEM, 100), (S_SPADE, 1)]
+  , ifreq    = [(COMMON_ITEM, 100), (POLE_AND_STEEL, 1), (S_SPADE, 1)]
   , iflavour = zipPlain [Cyan]
   , iverbHit = "cut"
   , iweight  = 2000
@@ -2319,7 +2322,7 @@ spade = grassStitcher
 hoe = grassStitcher
   { isymbol  = symbolHafted
   , iname    = "hoe"
-  , ifreq    = [(COMMON_ITEM, 100), (S_HOE, 1)]
+  , ifreq    = [(COMMON_ITEM, 100), (POLE_AND_STEEL, 1), (S_HOE, 1)]
   , iflavour = zipPlain [Brown]
   , iverbHit = "hack"
   , iweight  = 1000
@@ -2332,6 +2335,44 @@ hoe = grassStitcher
                       , gardenMsg, gardenMsg, gardenMsg
                       , gardenMsg, gardenMsg, gardenMsg ]]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Hoe_(tool)
+  }
+staff = grassStitcher
+  { isymbol  = symbolWand
+  , iname    = "wooden staff"
+  , ifreq    = [(COMMON_ITEM, 1), (POLE, 80)]
+  , iflavour = zipPlain [BrYellow]
+  , iverbHit = "prod"
+  , idamage  = 2 `d` 1
+  , iaspects = [ SetFlag Durable, SetFlag Meleeable
+                 -- no EqpSlot EqpSlotWeaponBig, because worse than most
+                 -- organs, so a waste of equipment space
+               , toVelocity 40 ]
+  , ieffects = []
+  , idesc    = ""  -- doh
+  }
+pipe = staff
+  { iname    = "metal pipe"
+  , ifreq    = [(COMMON_ITEM, 1), (POLE, 20), (S_PIPE, 1)]
+  , iflavour = zipPlain [BrCyan]
+  }
+longPole = staff
+  { iname    = "long pole"
+  , ifreq    = [(COMMON_ITEM, 1), (LONG_POLE, 90)]
+  , iflavour = zipPlain [BrBlue]
+  , iweight  = 3000
+  , idamage  = 1 `d` 1
+  , iaspects = [ SetFlag Durable, SetFlag Meleeable
+                 -- no EqpSlot EqpSlotWeaponBig, because worse than most
+                 -- organs, so a waste of equipment space
+               , toVelocity 20 ]
+  }
+steelScrap = sandstoneRock
+  { iname    = "steel scrap"
+  , ifreq    = [ (STEEL_SCRAP, 1)
+               , (UNREPORTED_INVENTORY, 1) ]  -- too weak to spam
+  , iflavour = zipPlain [Cyan]
+  , iverbHit = "grate"
+  , idesc    = " A bent lump of steel scrap."
   }
 heavyBoot = ItemKind
   { isymbol  = symbolMiscArmor
