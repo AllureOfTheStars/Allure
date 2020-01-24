@@ -2279,6 +2279,7 @@ militaryKnife = knife
   { iname    = "military knife"
   , ifreq    = [(COMMON_ITEM, 1), (WIRECUTTING_TOOL, 1), (MERCENARY_WEAPON, 70)]
   , irarity  = [(10, 10)]
+  , iweight  = 500  -- too small to attach to a pole
   , idamage  = 8 `d` 1
   , iaspects = [ Timeout 2
                , SetFlag Durable, SetFlag Meleeable
@@ -2286,7 +2287,7 @@ militaryKnife = knife
                , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
   , ieffects = [DropItem 1 maxBound COrgan CONDITION]
                  -- useful for AI who is the main user of this weapon
-  , idesc    = "Millitary design laser-sharpened alloy blade able to cleanly open an artery at the lightest touch through layers of fabric or defeat barbed wire in one slice."
+  , idesc    = "Millitary design laser-sharpened alloy blade able to cleanly open an artery at the lightest touch through layers of fabric. Despite its modest size, it defeats barbed wire in one slice."
   }
 militaryBaton = ItemKind
   { isymbol  = symbolHafted
@@ -2404,6 +2405,7 @@ pipe = staff
   { iname    = "metal pipe"
   , ifreq    = [(COMMON_ITEM, 1), (POLE, 20), (S_PIPE, 1)]
   , iflavour = zipPlain [BrCyan]
+  , idesc    = "A meter long, light, strong and hard alloy pipe."
   }
 longPole = staff
   { iname    = "long pole"
@@ -2415,6 +2417,7 @@ longPole = staff
                  -- no EqpSlot EqpSlotWeaponBig, because worse than most
                  -- organs, so a waste of equipment space
                , toVelocity 20 ]
+  , idesc    = "Too meters long, strong and light pole."
   }
 
 -- ** Treasure
