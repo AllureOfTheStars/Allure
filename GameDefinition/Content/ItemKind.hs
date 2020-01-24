@@ -101,11 +101,11 @@ otherItemContent = embeds ++ actors ++ organs ++ blasts ++ temporaries
 
 items :: [ItemKind]
 items =
-  [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, meleeEnhancement, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
+  [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, meleeEnhancement, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, knife, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
   -- Allure-specific
   ++ [steelScrap, needle, needleSleep, harpoon3, flask18, flask19, flask20, rawMeatChunk, roastedMeatChunk, scrollAd1, blowtorch, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, laserSharpener, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, heavyBoot, spacesuit, crowbar, catsPaw, swordNullifySharp, halberdPushActorSharp, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, spade, hoe, staff, pipe, longPole, constructionHooter, wasteContainer, spotlight]
 
-sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, meleeEnhancement, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, dagger, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
+sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, meleeEnhancement, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, knife, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
 -- Allure-specific
 steelScrap,       needle, needleSleep, harpoon3, flask18, flask19, flask20, rawMeatChunk, roastedMeatChunk, scrollAd1, blowtorch, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, laserSharpener, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, heavyBoot, spacesuit, crowbar, catsPaw, swordNullifySharp, halberdPushActorSharp, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, spade, hoe, staff, pipe, longPole, constructionHooter, wasteContainer, spotlight :: ItemKind
 
@@ -1644,7 +1644,7 @@ shield3 = shield2
 
 -- ** Weapons
 
-dagger = ItemKind
+knife = ItemKind
   { isymbol  = symbolEdged
   , iname    = "cleaver"
   , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 200)]
@@ -1666,12 +1666,12 @@ dagger = ItemKind
   , idesc    = "A heavy professional kitchen blade. Will do fine cutting any kind of meat and bone, as well as parrying blows. Does not penetrate deeply, but is quick to move and hard to block. Especially useful in conjunction with a larger weapon."
   , ikit     = []
   }
-daggerDropBestWeapon = dagger
+daggerDropBestWeapon = knife
   { iname    = "Double Dagger"
   , ifreq    = [(TREASURE, 20), (MUSEAL, 100)]
   , irarity  = [(1, 3), (10, 3)]
   , iaspects = [SetFlag Unique]
-               ++ iaspects dagger
+               ++ iaspects knife
   , ieffects = [DropBestWeapon, Yell]  -- powerful and low timeout, but makes
                                        -- noise and useless against stupid foes
   , idesc    = "An antique double dagger that a focused fencer can use to catch and twist away an opponent's blade."
@@ -2260,7 +2260,7 @@ halberdPushActorSharp = halberdPushActor
   , idamage  = 13 `d` 1
   , idesc    = "A perfect replica made for a reenactor troupe, hardened, sharpened. Versatile, with great reach and leverage. Foes are held at a distance."
   }
-militaryKnife = dagger
+militaryKnife = knife
   { iname    = "military knife"
   , ifreq    = [(COMMON_ITEM, 1), (WIRECUTTING_TOOL, 1), (MERCENARY_WEAPON, 70)]
   , irarity  = [(10, 10)]
