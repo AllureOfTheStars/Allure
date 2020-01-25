@@ -477,8 +477,8 @@ shallowWater = ItemKind
   , iweight  = 10000
   , idamage  = 0
   , iaspects = [SetFlag Durable]
-  , ieffects = [ParalyzeInWater 2]
-  , idesc    = ""
+  , ieffects = [ParalyzeInWater 2, sharpeningEffect, OnCombine sharpeningEffect]
+  , idesc    = "Slows down movement. Essential when sharpening weapons."
   , ikit     = []
   }
 straightPath = ItemKind
@@ -844,6 +844,11 @@ cookEffect :: Effect
 cookEffect = combineEffect "have nothing to cook"
              $ map (\(raw, cooked) -> ([(1, raw)], [(1, cooked)])) cookingAssocs
 
+sharpeningEffect :: Effect
+sharpeningEffect =
+  combineEffect "lack a sharpening tool or a weapon to sharpen"
+  $ map (\(raw, cooked) -> (raw, [(1, cooked)])) sharpeningAssocs
+
 workshopEffect :: Effect
 workshopEffect = combineEffect "have not enough tools and components"
                                workshopAssocs
@@ -858,20 +863,25 @@ cookingAssocs =
   , (S_FRAGRANT_HERB, S_COOKED_HERB)
   , (S_DULL_FLOWER, S_COOKED_FLOWER)
   , (S_SPICY_BARK, S_COOKED_BARK)
-  , (S_PUMPKIN, S_COOKED_PUMPKIN) ]
+  , (S_PUMPKIN, S_COOKED_PUMPKIN)
+  ]
+
+sharpeningAssocs :: [([(Int, GroupName ItemKind)], GroupName ItemKind)]
+sharpeningAssocs =
+  [ ([(1, SHARPENING_TOOL), (1, S_HARPOON_CARGO)], S_HARPOON_SHARP)
+  , ([(1, SHARPENING_TOOL), (1, S_PIPE)], S_SHARPENED_PIPE)
+  , ([(1, SHARPENING_TOOL), (1, S_SHIELD_BLUNT)], S_SHIELD_SHARP)
+  , ([(1, SHARPENING_TOOL), (1, S_BLUNT_SHORT_HAMMER)], S_SHARP_SHORT_HAMMER)
+  , ([(1, SHARPENING_TOOL), (1, S_BLUNT_LONG_HAMMER)], S_SHARP_LONG_HAMMER)
+  , ([(2, SHARPENING_TOOL), (1, S_CLEAVER)], S_DAGGER)
+  , ([(1, SHARPENING_TOOL), (1, S_RAPIER_BLUNT)], S_RAPIER_SHARP)
+  , ([(2, SHARPENING_TOOL), (1, S_POLE_CLEAVER)], S_LONG_SPEAR)
+  , ([(1, SHARPENING_TOOL), (1, S_HALBERD_BLUNT)], S_HALBERD_SHARP)
+  ]
 
 workshopAssocs :: [([(Int, GroupName ItemKind)], [(Int, GroupName ItemKind)])]
 workshopAssocs =
-  [ ([(1, SHARPENING_TOOL), (1, S_HARPOON_CARGO)], [(1, S_HARPOON_SHARP)])
-  , ([(1, SHARPENING_TOOL), (1, S_PIPE)], [(1, S_SHARPENED_PIPE)])
-  , ([(1, SHARPENING_TOOL), (1, S_SHIELD_BLUNT)], [(1, S_SHIELD_SHARP)])
-  , ([(1, SHARPENING_TOOL), (1, S_BLUNT_SHORT_HAMMER)], [(1, S_SHARP_SHORT_HAMMER)])
-  , ([(1, SHARPENING_TOOL), (1, S_BLUNT_LONG_HAMMER)], [(1, S_SHARP_LONG_HAMMER)])
-  , ([(2, SHARPENING_TOOL), (1, S_CLEAVER)], [(1, S_DAGGER)])
-  , ([(1, SHARPENING_TOOL), (1, S_RAPIER_BLUNT)], [(1, S_RAPIER_SHARP)])
-  , ([(2, SHARPENING_TOOL), (1, S_POLE_CLEAVER)], [(1, S_LONG_SPEAR)])
-  , ([(1, SHARPENING_TOOL), (1, S_HALBERD_BLUNT)], [(1, S_HALBERD_SHARP)])
-  , ( [(1, BONDING_TOOL), (1, POLE), (1, S_BLUNT_SHORT_HAMMER)]
+  [ ( [(1, BONDING_TOOL), (1, POLE), (1, S_BLUNT_SHORT_HAMMER)]
     , [(1, S_BLUNT_LONG_HAMMER), (1, HANDLE)] )
   , ( [(1, BONDING_TOOL), (1, HANDLE), (1, S_BLUNT_LONG_HAMMER)]
     , [(1, S_BLUNT_SHORT_HAMMER), (1, POLE)] )
