@@ -1687,7 +1687,7 @@ hammerTemplate = ItemKind
   , irarity  = [(5 * 10/15, 15), (8 * 10/15, 1)]
                  -- don't make it too common on lvl 3
   , iverbHit = "club"
-  , iweight  = 1600
+  , iweight  = 2000
   , idamage  = 8 `d` 1  -- we are lying about the dice here, but the dungeon
                         -- is too small and the extra-dice hammers too rare
                         -- to subdivide this identification class by dice
@@ -1712,14 +1712,15 @@ hammer2 = hammerTemplate
   , idesc    = "Upon closer inspection, this hammer turns out particularly handy and well balanced, with a narrowing, sharpened head compensating the modest size."
   }
 hammer3 = hammerTemplate
-  { ifreq    = [(COMMON_ITEM, 5), (POLE_AND_STEEL, 1), (STARTING_WEAPON, 1)]
+  { ifreq    = [ (COMMON_ITEM, 5), (BONDING_TOOL, 1), (POLE_AND_STEEL, 1)
+               , (STARTING_WEAPON, 1) ]
   , iverbHit = "puncture"
-  , iweight  = 2400  -- weight gives it away
-  , idamage  = 12 `d` 1
+  , iweight  = 3000  -- weight almost gives it away
   , iaspects = [ Timeout 12  -- balance, or @DupItem@ would break the game
                , EqpSlot EqpSlotWeaponBig]
-               ++ delete (PresentAs HAMMER_UNKNOWN) (iaspects hammerTemplate)
-  , idesc    = "This hammer sports a long metal handle that increases the momentum of the sharpened head's swing, at the cost of long recovery."
+               ++ iaspects hammerTemplate
+  , ieffects = [RefillHP (-4)]  -- don't lie about @idamage@ when not identified
+  , idesc    = "This hammer sports a long metal handle that increases the momentum of the sharpened head's swing, at the cost of long recovery. It's also capable of smashing objects together, though the required careful positioning often means hands are smashed as well."
   }
 hammerParalyze = hammerTemplate
   { iname    = "Concussion Hammer"
@@ -1736,17 +1737,17 @@ hammerSpark = hammerTemplate
   { iname    = "Grand Smithhammer"
   , ifreq    = [(TREASURE, 20), (BONDING_TOOL, 1), (MUSEAL, 100)]
   , irarity  = [(5, 1), (8, 6)]
-  , iweight  = 2400  -- weight gives it away
-  , idamage  = 10 `d` 1
+  , iweight  = 2400  -- weight almost gives it away
   , iaspects = [ SetFlag Unique
                , Timeout 10
                , EqpSlot EqpSlotWeaponBig
                , AddSkill SkShine 3]
-               ++ delete (PresentAs HAMMER_UNKNOWN) (iaspects hammerTemplate)
-  , ieffects = [Explode S_SPARK, RefillHP (-2)]
-                 -- @RefillHP@ to avoid a no-brainer of durable tool use
-      -- we can't use a focused explosion, because it would harm the hammer
-      -- wielder as well, unlike this one
+               ++ iaspects hammerTemplate
+  , ieffects = [ Explode S_SPARK
+                   -- we can't use a focused explosion, because it would harm
+                   -- the hammer wielder as well, unlike this one
+               , RefillHP (-3) ]
+                   -- @RefillHP@ to avoid a no-brainer of durable tool use;
   , idesc    = "High carbon steel of this heavy old hammer doesn't yield even to the newest alloys and produces fountains of sparks in defiance. Whatever it forge-welds together, stays together."
   }
 sword = ItemKind
