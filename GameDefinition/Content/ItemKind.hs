@@ -154,7 +154,7 @@ symbolFood       = ','  -- also body part; distinct from floor: not middle dot
 sandstoneRock = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "ceramic foam splinter"
-  , ifreq    = [ (SANDSTONE_ROCK, 1)
+  , ifreq    = [ (S_SANDSTONE_ROCK, 1)
                , (UNREPORTED_INVENTORY, 1) ]  -- too weak to spam
   , iflavour = zipPlain [Green]
   , icount   = 1 + 1 `d` 2  -- > 1, to let AI ignore sole pieces
@@ -621,7 +621,7 @@ potionTemplate = ItemKind
   , ikit     = []
   }
 potion1 = potionTemplate
-  { ifreq    = [ (COMMON_ITEM, 100), (PERFUME_POTION, 1)
+  { ifreq    = [ (COMMON_ITEM, 100), (S_PERFUME_POTION, 1)
                , (ANY_POTION, 100), (ANY_GLASS, 100) ]
   , iaspects = ELabel "of perfume"  -- very useful, despite appearances
                : iaspects potionTemplate
@@ -1281,7 +1281,8 @@ necklace7 = necklaceTemplate
   }
 necklace8 = necklaceTemplate
   { iname    = "coil"
-  , ifreq    = [ (COMMON_ITEM, 100), (REFRIGERATION_COIL, 1), (ANY_JEWELRY, 100)
+  , ifreq    = [ (COMMON_ITEM, 100), (S_REFRIGERATION_COIL, 1)
+               , (ANY_JEWELRY, 100)
                , (COLD_SOURCE, 1) ]
   , iaspects = ELabel "of superconducting refrigeration"
                : Timeout ((1 + 1 `d` 3) * 5)
@@ -1999,7 +2000,7 @@ flask18 = flaskTemplate
   }
 flask19 = flaskTemplate
   { iname    = "galon"  -- diluted perfume; almost same effects
-  , ifreq    = [ (COMMON_ITEM, 100), (ROSE_WATER_FLASK, 1)
+  , ifreq    = [ (COMMON_ITEM, 100), (S_ROSE_WATER_FLASK, 1)
                , (EXPLOSIVE, 100), (ANY_GLASS, 100), (WATER_SOURCE, 1) ]
   , irarity  = [(1, 1)]  -- mostly obtained through crafting
   , iaspects = ELabel "of rose water"
