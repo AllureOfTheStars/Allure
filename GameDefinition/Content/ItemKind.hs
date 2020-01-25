@@ -1680,6 +1680,8 @@ hammerTemplate = ItemKind
   { isymbol  = symbolHafted
   , iname    = "demolition hammer"
   , ifreq    = [(HAMMER_UNKNOWN, 1)]
+                 -- not @BREACHING_TOOL@, because it trigger traps
+                 -- and destroys treasure, instead of opening
   , iflavour = zipFancy [BrMagenta]  -- avoid "pink"
   , icount   = 1
   , irarity  = [(5 * 10/15, 15), (8 * 10/15, 1)]
@@ -1814,6 +1816,8 @@ halberd = ItemKind
 halberd2 = halberd
   { iname    = "pollaxe"
   , ifreq    = [(COMMON_ITEM, 3), (S_POLL_AXE, 1), (STARTING_WEAPON, 1)]
+                 -- not @BREACHING_TOOL@, because it trigger traps
+                 -- and destroys treasure, instead of opening
   , iflavour = zipPlain [BrRed]
   , iverbHit = "carve"
   , iweight  = 4500
@@ -2257,6 +2261,8 @@ fireAxe = ItemKind
   { isymbol  = symbolHafted
   , iname    = "fire axe"
   , ifreq    = [(COMMON_ITEM, 1), (S_FIRE_AXE, 1), (FIRE_FIGHTING_ITEM, 10)]
+                 -- not @BREACHING_TOOL@, because it trigger traps
+                 -- and destroys treasure, instead of opening
   , iflavour = zipPlain [BrRed]
   , icount   = 1
   , irarity  = [(1, 10)]
