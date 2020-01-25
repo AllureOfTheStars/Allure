@@ -1097,7 +1097,7 @@ scroll15 = scrollTemplate
 jumpingPole = ItemKind
   { isymbol  = symbolWand
   , iname    = "jumping pole"
-  , ifreq    = [(COMMON_ITEM, 100), (LONG_POLE, 10)]
+  , ifreq    = [(COMMON_ITEM, 100), (POLE, 10)]
   , iflavour = zipPlain [White]
   , icount   = 1
   , irarity  = [(1, 3)]
@@ -1697,20 +1697,20 @@ hammerTemplate = ItemKind
   , ikit     = []
   }
 hammer1 = hammerTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (POLE_AND_STEEL, 1), (STARTING_WEAPON, 70)]
+  { ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
+               , (STARTING_WEAPON, 70) ]
   , iaspects = [Timeout 5, EqpSlot EqpSlotWeaponBig]  -- 1m handle
                ++ iaspects hammerTemplate
   }
 hammer2 = hammerTemplate
-  { ifreq    = [(COMMON_ITEM, 25), (POLE_AND_STEEL, 1), (STARTING_WEAPON, 7)]
+  { ifreq    = [(COMMON_ITEM, 25), (HANDLE_AND_STEEL, 1), (STARTING_WEAPON, 7)]
   , iverbHit = "gouge"
   , iaspects = [Timeout 3, EqpSlot EqpSlotWeaponFast]
                ++ iaspects hammerTemplate
   , idesc    = "Upon closer inspection, this hammer turns out particularly handy and well balanced, with a narrowing, sharpened head compensating the modest size."
   }
 hammer3 = hammerTemplate
-  { ifreq    = [ (COMMON_ITEM, 5), (LONG_POLE_AND_STEEL, 1)
-               , (STARTING_WEAPON, 1) ]
+  { ifreq    = [(COMMON_ITEM, 5), (POLE_AND_STEEL, 1), (STARTING_WEAPON, 1)]
   , iverbHit = "puncture"
   , iweight  = 2400  -- weight gives it away
   , idamage  = 12 `d` 1
@@ -1791,7 +1791,7 @@ swordNullify = sword
 halberd = ItemKind
   { isymbol  = symbolPolearm
   , iname    = "pole cleaver"
-  , ifreq    = [ (COMMON_ITEM, 100), (LONG_POLE_AND_STEEL, 1)
+  , ifreq    = [ (COMMON_ITEM, 100), (POLE_AND_STEEL, 1)
                , (STARTING_WEAPON, 20), (S_POLE_CLEAVER, 1) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
@@ -2278,8 +2278,7 @@ swordNullifySharp = swordNullify
   }
 oxTongue = halberd
   { iname    = "long spear"
-  , ifreq    = [ (COMMON_ITEM, 5), (LONG_POLE_AND_STEEL, 1)
-               , (S_LONG_SPEAR, 1) ]
+  , ifreq    = [(COMMON_ITEM, 5), (POLE_AND_STEEL, 1), (S_LONG_SPEAR, 1)]
   , iverbHit = "impale"
   , idamage  = 13 `d` 1
   , idesc    = "An improvised but deadly weapon made of a long, sharp dagger glued and bound to a long pole. Not often one succeeds in making enough space to swing it freely, but even when stuck between terrain obstacles it blocks approaches effectively and makes using other weapons difficult, both by friends and foes."
@@ -2336,7 +2335,8 @@ gardenMsg = VerbMsg "feel the gardening tool fracture"
 grassStitcher = ItemKind
   { isymbol  = symbolPolearm
   , iname    = "grass stitcher"
-  , ifreq    = [(COMMON_ITEM, 100), (POLE_AND_STEEL, 1), (S_GRASS_STITCHER, 1)]
+  , ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
+               , (S_GRASS_STITCHER, 1) ]
   , iflavour = zipPlain [Red]
   , icount   = 1
   , irarity  = [(1, 10), (3 * 10/15, 3), (4 * 10/15, 1)]
@@ -2355,7 +2355,7 @@ grassStitcher = ItemKind
   }
 ladiesFork = grassStitcher
   { iname    = "ladies' fork"
-  , ifreq    = [(COMMON_ITEM, 100), (POLE_AND_STEEL, 1), (S_LADIES_FORK, 1)]
+  , ifreq    = [(COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1), (S_LADIES_FORK, 1)]
   , iflavour = zipPlain [Green]
   , iweight  = 1000
   , idamage  = 5 `d` 1
@@ -2371,7 +2371,7 @@ ladiesFork = grassStitcher
 spade = grassStitcher
   { isymbol  = symbolHafted  -- swinging much more deadly than gouging
   , iname    = "spade"
-  , ifreq    = [(COMMON_ITEM, 100), (POLE_AND_STEEL, 1), (S_SPADE, 1)]
+  , ifreq    = [(COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1), (S_SPADE, 1)]
   , iflavour = zipPlain [Cyan]
   , iverbHit = "cut"
   , iweight  = 2000
@@ -2388,7 +2388,7 @@ spade = grassStitcher
 hoe = grassStitcher
   { isymbol  = symbolHafted
   , iname    = "hoe"
-  , ifreq    = [(COMMON_ITEM, 100), (POLE_AND_STEEL, 1), (S_HOE, 1)]
+  , ifreq    = [(COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1), (S_HOE, 1)]
   , iflavour = zipPlain [Brown]
   , iverbHit = "hack"
   , iweight  = 1000
@@ -2405,7 +2405,7 @@ hoe = grassStitcher
 staff = grassStitcher
   { isymbol  = symbolWand
   , iname    = "wooden staff"
-  , ifreq    = [(COMMON_ITEM, 1), (POLE, 80)]
+  , ifreq    = [(COMMON_ITEM, 1), (HANDLE, 80)]
   , iflavour = zipPlain [BrYellow]
   , iverbHit = "prod"
   , idamage  = 2 `d` 1
@@ -2418,13 +2418,13 @@ staff = grassStitcher
   }
 pipe = staff
   { iname    = "metal pipe"
-  , ifreq    = [(COMMON_ITEM, 1), (POLE, 20), (S_PIPE, 1)]
+  , ifreq    = [(COMMON_ITEM, 1), (HANDLE, 20), (S_PIPE, 1)]
   , iflavour = zipPlain [BrCyan]
   , idesc    = "A meter long, light, strong and hard alloy pipe."
   }
 longPole = staff
   { iname    = "long pole"
-  , ifreq    = [(COMMON_ITEM, 1), (LONG_POLE, 90)]
+  , ifreq    = [(COMMON_ITEM, 1), (POLE, 90)]
   , iflavour = zipPlain [BrBlue]
   , iweight  = 3000
   , idamage  = 1 `d` 1
