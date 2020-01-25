@@ -1735,13 +1735,14 @@ hammerSpark = hammerTemplate
   , ifreq    = [(TREASURE, 20), (BONDING_TOOL, 1), (MUSEAL, 100)]
   , irarity  = [(5, 1), (8, 6)]
   , iweight  = 2400  -- weight gives it away
-  , idamage  = 12 `d` 1
+  , idamage  = 10 `d` 1
   , iaspects = [ SetFlag Unique
                , Timeout 10
                , EqpSlot EqpSlotWeaponBig
                , AddSkill SkShine 3]
                ++ delete (PresentAs HAMMER_UNKNOWN) (iaspects hammerTemplate)
-  , ieffects = [Explode S_SPARK]
+  , ieffects = [Explode S_SPARK, RefillHP (-2)]
+                 -- @RefillHP@ to avoid a no-brainer of durable tool use
       -- we can't use a focused explosion, because it would harm the hammer
       -- wielder as well, unlike this one
   , idesc    = "High carbon steel of this heavy old hammer doesn't yield even to the newest alloys and produces fountains of sparks in defiance. Whatever it forge-welds together, stays together."
@@ -2059,7 +2060,7 @@ blowtorch = ItemKind
   { isymbol  = symbolLight
   , iname    = "blowtorch"  -- not unique, but almost never generated on floor
   , ifreq    = [ (BLOWTORCH, 1), (VALUABLE, 20), (CURIOUS_ITEM, 1)
-               , (BREACHING_TOOL, 1), (BONDING_TOOL, 1), (FIRE_SOURCE, 1) ]
+               , (BREACHING_TOOL, 1), (FIRE_SOURCE, 1) ]
                  -- infinite use, but harmful
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
@@ -2073,7 +2074,11 @@ blowtorch = ItemKind
                , EqpSlot EqpSlotAlter ]
   , ieffects = [Burn 2, Impress]
       -- is used for melee in precedence to fists, but not to cleavers;
-      -- so if player wants to hit with it, it's enough to pack other gear
+      -- so if player wants to hit with it, it's enough to pack other gear;
+      -- is also the low bar for self-inflicted damage from durable breaching
+      -- tool and fire source use so that other tool-weapons need only
+      -- do that many non-armor affected damage to dissuade the player
+      -- from using them without careful thought
   , idesc    = "A sturdy old-fashioned portable blowtorch for fine cutting or welding of metals. Rather weak, but does not require access codes to high current power outlets. If you can patiently suffer the heat, it can be used as a clumsy breaching or bonding tool."
   , ikit     = []
   }
@@ -2225,22 +2230,27 @@ crowbar = chisel
   { iname    = "crowbar"
   , iflavour = zipPlain [BrCyan]
   , iverbHit = "gouge"
-  , idamage  = 5 `d` 1
+  , idamage  = 3 `d` 1
   , iaspects = [ Timeout 4
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
                , toVelocity 30 ]
+  , ieffects = [RefillHP (-2)]
+                 -- @RefillHP@ to avoid a no-brainer of durable tool use;
+                 -- (idamage ignored to avoid the exploit of tool use in armor)
   , idesc    = "This is a heavy and pointy piece of steel that can be employed as an improvised melee weapon. It is also usable as a breaching tool, though rather injurious."  -- TODO: https://en.wikipedia.org/wiki/Crowbar_(tool)
   }
 catsPaw = chisel
   { iname    = "cat's paw"
   , iflavour = zipPlain [BrCyan]
   , iverbHit = "paw"
-  , idamage  = 4 `d` 1
+  , idamage  = 2 `d` 1
   , iaspects = [ Timeout 3
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
                , toVelocity 50 ]
+  , ieffects = [RefillHP (-2)]
+                 -- @RefillHP@ to avoid a no-brainer of durable tool use
   , idesc    = "This is a heavy and pointy piece of steel that can be employed as an improvised melee weapon. It is also usable as a breaching tool, though rather injurious."  -- TODO: https://en.wikipedia.org/wiki/Cat%27s_paw_(nail_puller)
   }
 fireAxe = ItemKind
@@ -2294,13 +2304,15 @@ militaryKnife = knife
   , ifreq    = [(COMMON_ITEM, 1), (WIRECUTTING_TOOL, 1), (MERCENARY_WEAPON, 70)]
   , irarity  = [(10, 10)]
   , iweight  = 500  -- too small to attach to a pole
-  , idamage  = 8 `d` 1
+  , idamage  = 7 `d` 1
   , iaspects = [ Timeout 2
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
                , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
-  , ieffects = [DropItem 1 maxBound COrgan CONDITION]
-                 -- useful for AI who is the main user of this weapon
+  , ieffects = [ RefillHP (-1)
+                   -- @RefillHP@ to avoid a no-brainer of durable tool use
+               , DropItem 1 maxBound COrgan CONDITION]
+                   -- useful for AI who is the main user of this weapon
   , idesc    = "Millitary design laser-sharpened alloy blade able to cleanly open an artery at the lightest touch through layers of fabric. Despite its modest size, it defeats barbed wire in one slice."
   }
 militaryBaton = ItemKind
