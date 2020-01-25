@@ -103,11 +103,11 @@ items :: [ItemKind]
 items =
   [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, meleeEnhancement, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, knife, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
   -- Allure-specific
-  ++ [steelScrap, needle, needleSleep, harpoon3, flask18, flask19, flask20, rawMeatChunk, roastedMeatChunk, scrollAd1, blowtorch, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, laserSharpener, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, heavyBoot, spacesuit, crowbar, catsPaw, fireAxe, dagger, swordNullifySharp, oxTongue, halberdPushActorSharp, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, spade, hoe, staff, pipe, longPole, constructionHooter, wasteContainer, spotlight]
+  ++ [steelScrap, needle, needleSleep, harpoon3, flask18, flask19, flask20, rawMeatChunk, roastedMeatChunk, scrollAd1, blowtorch, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, laserSharpener, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, heavyBoot, spacesuit, crowbar, catsPaw, fireAxe, dagger, hammer4, hammer5, swordNullifySharp, oxTongue, halberdPushActorSharp, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, spade, hoe, staff, pipe, longPole, constructionHooter, wasteContainer, spotlight]
 
 sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, meleeEnhancement, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, knife, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
 -- Allure-specific
-steelScrap,       needle, needleSleep, harpoon3, flask18, flask19, flask20, rawMeatChunk, roastedMeatChunk, scrollAd1, blowtorch, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, laserSharpener, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, heavyBoot, spacesuit, crowbar, catsPaw, fireAxe, dagger, swordNullifySharp, oxTongue, halberdPushActorSharp, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, spade, hoe, staff, pipe, longPole, constructionHooter, wasteContainer, spotlight :: ItemKind
+steelScrap,       needle, needleSleep, harpoon3, flask18, flask19, flask20, rawMeatChunk, roastedMeatChunk, scrollAd1, blowtorch, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, laserSharpener, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, heavyBoot, spacesuit, crowbar, catsPaw, fireAxe, dagger, hammer4, hammer5, swordNullifySharp, oxTongue, halberdPushActorSharp, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, spade, hoe, staff, pipe, longPole, constructionHooter, wasteContainer, spotlight :: ItemKind
 
 -- Keep the dice rolls and sides in aspects small so that not too many
 -- distinct items are generated (for display in item lore and for narrative
@@ -1678,7 +1678,7 @@ daggerDropBestWeapon = knife
   }
 hammerTemplate = ItemKind
   { isymbol  = symbolHafted
-  , iname    = "demolition hammer"
+  , iname    = "sledgehammer"  -- "demolition hammer" is Br. Eng. for jackhammer
   , ifreq    = [(HAMMER_UNKNOWN, 1)]
                  -- not @BREACHING_TOOL@, because it trigger traps
                  -- and destroys treasure, instead of opening
@@ -1687,7 +1687,7 @@ hammerTemplate = ItemKind
   , irarity  = [(5 * 10/15, 15), (8 * 10/15, 1)]
                  -- don't make it too common on lvl 3
   , iverbHit = "club"
-  , iweight  = 2000
+  , iweight  = 4000
   , idamage  = 8 `d` 1  -- we are lying about the dice here, but the dungeon
                         -- is too small and the extra-dice hammers too rare
                         -- to subdivide this identification class by dice
@@ -1695,53 +1695,51 @@ hammerTemplate = ItemKind
                , SetFlag Durable, SetFlag Meleeable
                , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
   , ieffects = []
-  , idesc    = "One of many kinds of hammers employed in construction work. The ones with completely blunt heads don't cause grave wounds, but any fitted with a long enough handle can shake and bruise even most armored foes. However, such large hammers require more time to recover after a swing. This one looks average at a quick glance."  -- if it's really the average kind, the weak kind, the description stays; if not, it's replaced with one of the descriptions below at identification time
+  , idesc    = "One of many kinds of hammers employed in construction work. The usual ones with blunt heads don't cause grave wounds, but enough weigth on a long handle can shake and bruise even most armored foes. However, larger hammers require more time to recover after a swing. This one looks average at a quick glance."  -- if it's really the average kind, the weak kind, the description stays; if not, it's replaced with one of the descriptions below at identification time
   , ikit     = []
   }
-hammer1 = hammerTemplate
+hammer1 = hammerTemplate  -- 1m handle, blunt
   { ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
-               , (STARTING_WEAPON, 70) ]
-  , iaspects = [Timeout 5, EqpSlot EqpSlotWeaponBig]  -- 1m handle
+               , (STARTING_WEAPON, 70), (S_BLUNT_SHORT_HAMMER, 1) ]
+  , iaspects = [Timeout 5, EqpSlot EqpSlotWeaponBig]
                ++ iaspects hammerTemplate
   }
-hammer2 = hammerTemplate
-  { ifreq    = [(COMMON_ITEM, 25), (HANDLE_AND_STEEL, 1), (STARTING_WEAPON, 7)]
-  , iverbHit = "gouge"
+hammer2 = hammerTemplate  -- 0.75m handle, sharp
+  { ifreq    = [(COMMON_ITEM, 25), (STARTING_WEAPON, 7)]
+  , iverbHit = "puncture"
   , iaspects = [Timeout 3, EqpSlot EqpSlotWeaponFast]
                ++ iaspects hammerTemplate
-  , idesc    = "Upon closer inspection, this hammer turns out particularly handy and well balanced, with a narrowing, sharpened head compensating the modest size."
+  , idesc    = "Upon closer inspection, this hammer, or pick, turns out particularly well balanced. The profiled handle seamlessly joins the head, which focuses the blow at a sharp point, compensating for the tool's modest size."
   }
-hammer3 = hammerTemplate
+hammer3 = hammerTemplate  -- 2m pole, blunt
   { ifreq    = [ (COMMON_ITEM, 5), (BONDING_TOOL, 1), (POLE_AND_STEEL, 1)
-               , (STARTING_WEAPON, 1) ]
-  , iverbHit = "puncture"
-  , iweight  = 3000  -- weight almost gives it away
+               , (STARTING_WEAPON, 1), (S_BLUNT_LONG_HAMMER, 1) ]
+  , iweight  = 6000  -- pole weight almost gives it away
   , iaspects = [ Timeout 12  -- balance, or @DupItem@ would break the game
                , EqpSlot EqpSlotWeaponBig]
                ++ iaspects hammerTemplate
   , ieffects = [RefillHP (-4)]  -- don't lie about @idamage@ when not identified
-  , idesc    = "This hammer sports a long metal handle that increases the momentum of the sharpened head's swing, at the cost of long recovery. It's also capable of smashing objects together, though the required careful positioning often means hands are smashed as well."
+  , idesc    = "This hammer sports a long pole that increases the momentum of the blunt head's swing, at the cost of long recovery. It's capable of smashing objects together, though the required careful positioning often means hands are smashed as well."
   }
 hammerParalyze = hammerTemplate
   { iname    = "Concussion Hammer"
   , ifreq    = [(TREASURE, 20)]
   , irarity  = [(5, 1), (8, 6)]
   , iaspects = [ SetFlag Unique
-               , Timeout 5
+               , Timeout 5  -- 2m, but light head and pole
                , EqpSlot EqpSlotWeaponBig ]
                ++ iaspects hammerTemplate
   , ieffects = [Paralyze 10]
   , idesc    = "This exquisite demolition hammer with a titanium head and excepthionally long synthetic handle leaves no wall and no body standing."
   }
-hammerSpark = hammerTemplate
+hammerSpark = hammerTemplate  -- the only hammer with significantly heavier head
   { iname    = "Grand Smithhammer"
   , ifreq    = [(TREASURE, 20), (BONDING_TOOL, 1), (MUSEAL, 100)]
   , irarity  = [(5, 1), (8, 6)]
-  , iweight  = 2400  -- weight almost gives it away
+  , iweight  = 5000  -- weight almost gives it away
   , iaspects = [ SetFlag Unique
-               , Timeout 10
-               , EqpSlot EqpSlotWeaponBig
-               , AddSkill SkShine 3]
+               , Timeout 8  -- 1.5m handle and heavy, but unique
+               , EqpSlot EqpSlotWeaponBig ]
                ++ iaspects hammerTemplate
   , ieffects = [ Explode S_SPARK
                    -- we can't use a focused explosion, because it would harm
@@ -2267,7 +2265,7 @@ fireAxe = ItemKind
   , iflavour = zipPlain [BrRed]
   , icount   = 1
   , irarity  = [(1, 10)]
-  , iverbHit = "cleave"
+  , iverbHit = "gouge"
   , iweight  = 1600
   , idamage  = 10 `d` 1
   , iaspects = [ Timeout 7, EqpSlot EqpSlotWeaponBig  -- 1m handle
@@ -2283,6 +2281,22 @@ dagger = knife
   , iverbHit = "open"
   , idamage  = 7 `d` 1
   , idesc    = "A double-edged knife, heavy enough to parrying blows with. The sharp tip penetrates the smallest defence gaps, making it especially useful in conjunction with a larger, but less nible weapon."
+  }
+hammer4 = hammer1  -- 1m handle, sharp
+  { ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
+               , (STARTING_WEAPON, 70), (S_SHARP_SHORT_HAMMER, 1) ]
+  , iverbHit = "cleave"
+  , iaspects = [AddSkill SkHurtMelee $ (-1 + 1 `d` 2 + 1 `dL` 2) * 6]
+               ++ iaspects hammer1
+  , idesc    = "This hammer's head is sharpened for cutting on its flattened end. Otherwise, it's pretty ordinary."
+ }
+hammer5 = hammer3  -- 2m pole, sharp
+  { ifreq    = [ (COMMON_ITEM, 5), (POLE_AND_STEEL, 1), (STARTING_WEAPON, 1)
+               , (S_SHARP_LONG_HAMMER, 1) ]
+  , iverbHit = "cleave"
+  , iaspects = [AddSkill SkHurtMelee $ (-1 + 1 `d` 2 + 1 `dL` 2) * 6]
+               ++ iaspects hammer3
+  , idesc    = "This hammer sports a head with the flattened end sharpened for cutting and a long pole that increases the head's momentum, at the cost of long recovery."
   }
 swordNullifySharp = swordNullify
   { iname    = "Roasting Rapier"
