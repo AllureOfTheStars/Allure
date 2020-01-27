@@ -189,7 +189,7 @@ spike = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "steak knife"
   , ifreq    = [(COMMON_ITEM, 100), (ANY_ARROW, 50), (WEAK_ARROW, 50)]
-  , iflavour = zipPlain [Cyan]
+  , iflavour = zipPlain [BrCyan]
   , icount   = 1 + 4 `dL` 5
   , irarity  = [(1, 10), (10, 10)]
   , iverbHit = "nick"
@@ -203,12 +203,13 @@ spike = ItemKind
                , OnSmash (Explode S_SINGLE_SPARK) ]  -- at wall hit
       -- this results in a wordy item synopsis, but it's OK, the spark really
       -- is useful in some situations, not just a flavour
-  , idesc    = "Not particularly well balanced, but with a laser-sharpened titanium alloy tip and blade."
+  , idesc    = "Not durable nor particularly well balanced, but with a laser-sharpened titanium alloy tip and blade."
   , ikit     = []
   }
 spike2 = spike
   { iname    = "heavy steak knife"
   , ifreq    = [(COMMON_ITEM, 2), (ANY_ARROW, 1), (WEAK_ARROW, 1)]
+  , iflavour = zipPlain [Cyan]
   , icount   = 6 `dL` 5
   , iverbHit = "penetrate"
   , iweight  = 150
@@ -217,7 +218,7 @@ spike2 = spike
                , SetFlag MinorEffects
                , Odds (10 * 1 `dL` 10) [] [toVelocity 70] ]
                    -- at deep levels sometimes even don't limit velocity
-  , idesc    = "Old, slightly discoloured, probably from a genuine steel. A heavy and surprisingly well balanced prop from a posh restaurant."  -- the theme of pre-modern things being more solid and intimidating
+  , idesc    = "Old, slightly discoloured, probably from a genuine steel. A heavy and surprisingly well balanced prop from a posh restaurant. It won't survive any rough treatment, though."  -- the theme of pre-modern things being more solid and intimidating
   }
 slingStone = ItemKind
   { isymbol  = symbolProjectile
@@ -1677,7 +1678,7 @@ daggerDropBestWeapon = knife
                                        -- noise and useless against stupid foes
   , idesc    = "An antique double dagger that a focused fencer can use to catch and twist away an opponent's blade."
   }
-hammerTemplate = ItemKind
+hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
   { isymbol  = symbolHafted
   , iname    = "sledgehammer"  -- "demolition hammer" is Br. Eng. for jackhammer
   , ifreq    = [(HAMMER_UNKNOWN, 1)]
@@ -1791,7 +1792,7 @@ swordNullify = sword
   , ieffects = []
   , idesc    = "An exuberant hand-forged roasting implement, intentionally and wisely kept blunt."
   }
-halberd = ItemKind
+halberd = ItemKind  -- long pole, because glued 1m handle worse than nothing
   { isymbol  = symbolPolearm
   , iname    = "pole cleaver"
   , ifreq    = [ (COMMON_ITEM, 100), (POLE_AND_STEEL, 1)
@@ -1816,7 +1817,7 @@ halberd = ItemKind
 halberd2 = halberd
   { iname    = "pollaxe"
   , ifreq    = [(COMMON_ITEM, 3), (S_POLL_AXE, 1), (STARTING_WEAPON, 1)]
-                 -- not @BREACHING_TOOL@, because it trigger traps
+                 -- not @BREACHING_TOOL@, because it triggers traps
                  -- and destroys treasure, instead of opening
   , iflavour = zipPlain [BrRed]
   , iverbHit = "carve"
@@ -2289,7 +2290,7 @@ hammer4 = hammer1  -- 1m handle, sharp
   , iverbHit = "cleave"
   , iaspects = [AddSkill SkHurtMelee $ (-1 + 1 `d` 2 + 1 `dL` 2) * 6]
                ++ iaspects hammer1
-  , idesc    = "This hammer's head is sharpened for cutting on its flattened end. Otherwise, it's pretty ordinary."
+  , idesc    = "This hammer's head has it's protruding edges sharpened. Otherwise, it's pretty ordinary."
  }
 hammer5 = hammer3  -- 2m pole, sharp
   { ifreq    = [ (COMMON_ITEM, 5), (POLE_AND_STEEL, 1), (STARTING_WEAPON, 1)
@@ -2297,7 +2298,7 @@ hammer5 = hammer3  -- 2m pole, sharp
   , iverbHit = "cleave"
   , iaspects = [AddSkill SkHurtMelee $ (-1 + 1 `d` 2 + 1 `dL` 2) * 6]
                ++ iaspects hammer3
-  , idesc    = "This hammer sports a head with the flattened end sharpened for cutting and a long pole that increases the head's momentum, at the cost of long recovery."
+  , idesc    = "This long-hafter hammer sports a head with the edge of the narrow end sharpened for cutting."
   }
 swordNullifySharp = swordNullify
   { iname    = "Roasting Rapier"
@@ -2308,7 +2309,7 @@ swordNullifySharp = swordNullify
                , Yell ]
   , idesc    = "A thin, acutely sharp steel blade that pierces deeply and sends its victim into abrupt, sobering shock. Originally, an exuberant hand-forged roasting implement, intentionally and wisely kept blunt."
   }
-oxTongue = halberd
+oxTongue = halberd  -- long pole, because glued 1m handle worse than nothing
   { iname    = "long spear"
   , ifreq    = [(COMMON_ITEM, 5), (POLE_AND_STEEL, 1), (S_LONG_SPEAR, 1)]
   , iverbHit = "impale"
