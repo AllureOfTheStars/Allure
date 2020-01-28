@@ -1816,7 +1816,8 @@ halberd = ItemKind  -- long pole, because glued 1m handle worse than nothing
   }
 halberd2 = halberd
   { iname    = "pollaxe"
-  , ifreq    = [(COMMON_ITEM, 3), (S_POLL_AXE, 1), (STARTING_WEAPON, 1)]
+  , ifreq    = [ (COMMON_ITEM, 3), (POLE_AND_STEEL, 1), (STARTING_WEAPON, 1)
+               , (S_POLL_AXE, 1) ]
                  -- not @BREACHING_TOOL@, because it triggers traps
                  -- and destroys treasure, instead of opening
   , iflavour = zipPlain [BrRed]
@@ -2261,7 +2262,8 @@ catsPaw = chisel
 fireAxe = ItemKind
   { isymbol  = symbolHafted
   , iname    = "fire axe"
-  , ifreq    = [(COMMON_ITEM, 1), (S_FIRE_AXE, 1), (FIRE_FIGHTING_ITEM, 10)]
+  , ifreq    = [ (COMMON_ITEM, 1), (HANDLE_AND_STEEL, 1), (S_FIRE_AXE, 1)
+               , (FIRE_FIGHTING_ITEM, 10) ]
                  -- not @BREACHING_TOOL@, because it trigger traps
                  -- and destroys treasure, instead of opening
   , iflavour = zipPlain [BrRed]
@@ -2384,6 +2386,10 @@ grassStitcher = ItemKind
                , toVelocity 40 ]
   , ieffects = -- TODO: instead introduce items with finite number of charges?
                [OneOf [ DestroyItem 1 1 CEqp S_GRASS_STITCHER
+                        `AndEffect`
+                        CreateItem Nothing CStash HANDLE timerNone
+                        `AndEffect`
+                        CreateItem Nothing CStash STEEL_SCRAP timerNone
                       , gardenMsg, gardenMsg, gardenMsg ]]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Grass_Stitcher
   , ikit     = []
@@ -2399,6 +2405,10 @@ ladiesFork = grassStitcher
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 40 ]
   , ieffects = [OneOf [ DestroyItem 1 1 CEqp S_LADIES_FORK
+                        `AndEffect`
+                        CreateItem Nothing CStash HANDLE timerNone
+                        `AndEffect`
+                        CreateItem Nothing CStash STEEL_SCRAP timerNone
                       , gardenMsg, gardenMsg
                       , gardenMsg, gardenMsg, gardenMsg ]]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Garden_fork
@@ -2416,6 +2426,10 @@ spade = grassStitcher
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 40 ]
   , ieffects = [OneOf [ DestroyItem 1 1 CEqp S_SPADE
+                        `AndEffect`
+                        CreateItem Nothing CStash HANDLE timerNone
+                        `AndEffect`
+                        CreateItem Nothing CStash STEEL_SCRAP timerNone
                       , gardenMsg, gardenMsg, gardenMsg, gardenMsg
                       , gardenMsg, gardenMsg, gardenMsg ]]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Spade
@@ -2433,6 +2447,10 @@ hoe = grassStitcher
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 40 ]
   , ieffects = [OneOf [ DestroyItem 1 1 CEqp S_HOE
+                        `AndEffect`
+                        CreateItem Nothing CStash HANDLE timerNone
+                        `AndEffect`
+                        CreateItem Nothing CStash STEEL_SCRAP timerNone
                       , gardenMsg, gardenMsg, gardenMsg
                       , gardenMsg, gardenMsg, gardenMsg ]]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Hoe_(tool)
@@ -2440,7 +2458,7 @@ hoe = grassStitcher
 staff = grassStitcher
   { isymbol  = symbolWand
   , iname    = "wooden staff"
-  , ifreq    = [(COMMON_ITEM, 1), (HANDLE, 80)]
+  , ifreq    = [(COMMON_ITEM, 1), (HANDLE, 80), (S_STAFF, 1)]
   , iflavour = zipPlain [BrYellow]
   , iverbHit = "prod"
   , idamage  = 2 `d` 1
