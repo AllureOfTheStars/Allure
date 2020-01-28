@@ -242,7 +242,7 @@ slingBullet = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "bearing ball"
   , ifreq    = [(COMMON_ITEM, 5), (ANY_ARROW, 100), (MERCENARY_AMMO, 25)]
-  , iflavour = zipPlain [BrBlack]
+  , iflavour = zipPlain [BrBlue]
   , icount   = 1 + 6 `dL` 4
   , irarity  = [(1, 1), (10, 15)]
   , iverbHit = "slug"
@@ -397,7 +397,7 @@ blanket = ItemKind
   , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_MANIPULATION, 100), (BLANKET, 1)
                , (THICK_CLOTH, 1), (FIREPROOF_CLOTH, 1)
                , (FIRE_FIGHTING_ITEM, 20) ]
-  , iflavour = zipPlain [BrBlack]
+  , iflavour = zipPlain [Magenta]
   , icount   = 1
   , irarity  = [(1, 1)]  -- scavenged from walls
   , iverbHit = "swoosh"
@@ -2208,7 +2208,7 @@ heavyBoot = ItemKind
 spacesuit = ItemKind
   { isymbol  = symbolTorsoArmor
   , iname    = "spacesuit"
-  , ifreq    = [(COMMON_ITEM, 10), (S_SPACESUIT, 1)]
+  , ifreq    = [(S_SPACESUIT, 1)]
   , iflavour = zipPlain [BrWhite]
   , icount   = 1
   , irarity  = [(1, 1), (10, 10)]
