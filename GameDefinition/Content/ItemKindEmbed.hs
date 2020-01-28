@@ -900,5 +900,6 @@ workshopAssocs =
   , ([(3, WASTE_CONTAINER)], [(1, S_REFRIGERATION_COIL)])
   , ([(1, HANDLE_AND_STEEL)], [(1, HANDLE), (1, STEEL_SCRAP)])
   , ([(1, POLE_AND_STEEL)], [(1, POLE), (1, STEEL_SCRAP)])
+      -- this rule magically changes stiff poles into jumping poles; who cares
   , ([(1, WATER_SOURCE), (1, S_PERFUME_POTION)], [(5, S_ROSE_WATER_FLASK)])
   ]
