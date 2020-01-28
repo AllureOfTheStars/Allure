@@ -8,7 +8,7 @@
 module Content.ItemKind
   ( -- * Group name patterns
     pattern HARPOON, pattern TORSO_ARMOR, pattern CLOTHING_MISC
-  , pattern MUSEAL, pattern FIREPROOF_CLOTH, pattern THICK_CLOTH, pattern COOKED_PLANT, pattern LIQUID_NITROGEN, pattern BREACHING_TOOL
+  , pattern MUSEAL, pattern FIREPROOF_CLOTH, pattern THICK_CLOTH, pattern COOKED_PLANT, pattern LIQUID_NITROGEN
   , groupNamesSingleton, groupNames
   , -- * Content
     content, items, otherItemContent
@@ -50,12 +50,12 @@ pattern COOKED_PLANT_UNKNOWN :: GroupName ItemKind
 groupNames :: [GroupName ItemKind]
 groupNames =
        [HARPOON, TORSO_ARMOR, CLOTHING_MISC]
-    ++ [MUSEAL, FIREPROOF_CLOTH, THICK_CLOTH, COOKED_PLANT, LIQUID_NITROGEN, BREACHING_TOOL]
+    ++ [MUSEAL, FIREPROOF_CLOTH, THICK_CLOTH, COOKED_PLANT, LIQUID_NITROGEN]
     ++ embedsGN ++ actorsGN ++ organsGN ++ blastsGN
 
 pattern HARPOON, TORSO_ARMOR, CLOTHING_MISC :: GroupName ItemKind
 
-pattern MUSEAL, FIREPROOF_CLOTH, THICK_CLOTH, COOKED_PLANT, LIQUID_NITROGEN, BREACHING_TOOL :: GroupName ItemKind
+pattern MUSEAL, FIREPROOF_CLOTH, THICK_CLOTH, COOKED_PLANT, LIQUID_NITROGEN:: GroupName ItemKind
 
 -- The @UNKNOWN@ patterns don't need to be exported. Used internally.
 -- They also represent singleton groups.
@@ -84,7 +84,6 @@ pattern FIREPROOF_CLOTH = GroupName "fireproof cloth"
 pattern THICK_CLOTH = GroupName "thick cloth"
 pattern COOKED_PLANT = GroupName "cooked plant"
 pattern LIQUID_NITROGEN = GroupName "liquid nitrogen"
-pattern BREACHING_TOOL = GroupName "breaching tool"
 
 pattern S_GRASS_STITCHER = GroupName "grass stitcher"
 pattern S_LADIES_FORK = GroupName "ladies' fork"
