@@ -396,7 +396,7 @@ blanket = ItemKind
   , iname    = "mineral fibre blanket"
   , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_MANIPULATION, 100), (BLANKET, 1)
                , (THICK_CLOTH, 1), (FIREPROOF_CLOTH, 1)
-               , (FIRE_FIGHTING_ITEM, 30) ]
+               , (FIRE_FIGHTING_ITEM, 20) ]
   , iflavour = zipPlain [BrBlack]
   , icount   = 1
   , irarity  = [(1, 1)]  -- scavenged from walls
@@ -1752,7 +1752,7 @@ hammerSpark = hammerTemplate  -- the only hammer with significantly heavier head
 sword = ItemKind
   { isymbol  = symbolPolearm
   , iname    = "sharpened pipe"
-  , ifreq    = [ (COMMON_ITEM, 100), (STARTING_WEAPON, 30)
+  , ifreq    = [ (COMMON_ITEM, 5), (STARTING_WEAPON, 30)
                , (S_SHARPENED_PIPE, 1) ]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
@@ -1794,7 +1794,7 @@ swordNullify = sword
 halberd = ItemKind  -- long pole, because glued 1m handle worse than nothing
   { isymbol  = symbolPolearm
   , iname    = "pole cleaver"
-  , ifreq    = [ (COMMON_ITEM, 100), (POLE_AND_STEEL, 1)
+  , ifreq    = [ (COMMON_ITEM, 10), (POLE_AND_STEEL, 1)
                , (STARTING_WEAPON, 20), (S_POLE_CLEAVER, 1) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
@@ -2262,7 +2262,7 @@ fireAxe = ItemKind
   { isymbol  = symbolHafted
   , iname    = "fire axe"
   , ifreq    = [ (COMMON_ITEM, 1), (HANDLE_AND_STEEL, 1), (S_FIRE_AXE, 1)
-               , (FIRE_FIGHTING_ITEM, 10) ]
+               , (FIRE_FIGHTING_ITEM, 20) ]
                  -- not @BREACHING_TOOL@, because it trigger traps
                  -- and destroys treasure, instead of opening
   , iflavour = zipPlain [BrRed]
@@ -2280,13 +2280,13 @@ fireAxe = ItemKind
   }
 dagger = knife
   { iname    = "dagger"
-  , ifreq    = [(COMMON_ITEM, 10), (S_DAGGER, 200)]
+  , ifreq    = [(COMMON_ITEM, 5), (S_DAGGER, 200)]
   , iverbHit = "open"
   , idamage  = 7 `d` 1
   , idesc    = "A double-edged knife, heavy enough to parrying blows with. The sharp tip penetrates the smallest defence gaps, making it especially useful in conjunction with a larger, but less nible weapon."
   }
 hammer4 = hammer1  -- 1m handle, sharp
-  { ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
+  { ifreq    = [ (COMMON_ITEM, 10), (HANDLE_AND_STEEL, 1)
                , (STARTING_WEAPON, 70), (S_SHARP_SHORT_HAMMER, 1) ]
   , iverbHit = "cleave"
   , iaspects = [AddSkill SkHurtMelee $ (-1 + 1 `d` 2 + 1 `dL` 2) * 6]
@@ -2325,7 +2325,7 @@ halberdPushActorSharp = halberdPushActor
   }
 militaryKnife = knife
   { iname    = "military knife"
-  , ifreq    = [(COMMON_ITEM, 1), (WIRECUTTING_TOOL, 1), (MERCENARY_WEAPON, 70)]
+  , ifreq    = [(COMMON_ITEM, 2), (WIRECUTTING_TOOL, 1), (MERCENARY_WEAPON, 70)]
   , irarity  = [(10, 10)]
   , iweight  = 500  -- too small to attach to a pole
   , idamage  = 7 `d` 1
@@ -2342,7 +2342,7 @@ militaryKnife = knife
 militaryBaton = ItemKind
   { isymbol  = symbolHafted
   , iname    = "military stun gun"
-  , ifreq    = [(COMMON_ITEM, 1), (MERCENARY_WEAPON, 30)]
+  , ifreq    = [(COMMON_ITEM, 2), (MERCENARY_WEAPON, 30)]
   , iflavour = zipFancy [Magenta]
   , icount   = 1
   , irarity  = [(10, 10)]
