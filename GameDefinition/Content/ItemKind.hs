@@ -295,9 +295,8 @@ harpoon = ItemKind
   , idamage  = 4 `d` 1
   , iaspects = [ Timeout 5
                , AddSkill SkHurtMelee $ (-10 + 1 `d` 2 + 1 `dL` 3) * 5
-               , SetFlag Durable, SetFlag Meleeable ]
-                 -- no EqpSlot EqpSlotWeaponBig, because often worse than
-                 -- an organ, so a waste of equipment space
+               , SetFlag Durable, SetFlag Meleeable
+               , EqpSlot EqpSlotWeaponBig ]
   , ieffects = [PullActor (ThrowMod 200 50 1)]  -- 1 step, fast
   , idesc    = "A cargo-hook with a high-tension cord that makes the entangled victim easy to unbalance with a strong pull."
   , ikit     = []
@@ -306,8 +305,6 @@ harpoon2 = harpoon
   { iname    = "sharp harpoon"
   , ifreq    = [(COMMON_ITEM, 5), (HARPOON, 2), (S_HARPOON_SHARP, 1)]
   , idamage  = 6 `d` 1
-  , iaspects = [EqpSlot EqpSlotWeaponBig]  -- more powerful than many organs
-               ++ iaspects harpoon
   , idesc    = "A cord ending in a sharpened cargo-hook that, in addition to entangling the victim, gains purchase biting into the body."
   }
 net = ItemKind
@@ -405,7 +402,8 @@ blanket = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkShine (-10)
                , AddSkill SkArmorMelee 2, AddSkill SkMaxCalm 5
-               , SetFlag Lobable, SetFlag Equipable ]
+               , SetFlag Lobable, SetFlag Equipable
+               , EqpSlot EqpSlotArmorMelee ]
                    -- not Fragile; reusable douse implement;
                    -- douses torch, lamp and lantern in one action,
                    -- both in equipment and when thrown at the floor
@@ -1588,9 +1586,8 @@ helmArmored = ItemKind
 -- Shield doesn't protect against ranged attacks to prevent
 -- micromanagement: walking with shield, melee without.
 -- Note that AI will pick them up but never wear and will use them at most
--- as a way to push itself (but they won't recharge, not being in eqp).
--- Being @Meleeable@ they will not be use as weapons either.
--- This is OK, using shields smartly is totally beyond AI.
+-- as a way to push itself. Despite being @Meleeable@, they will not be used
+-- as weapons either. This is OK, using shields smartly is totally beyond AI.
 buckler = ItemKind
   { isymbol  = symbolShield
   , iname    = "buckler"
@@ -1976,8 +1973,7 @@ harpoon3 = harpoon
   , irarity  = [(8, 5), (10, 5)]
   , iweight  = 1000
   , idamage  = 10 `d` 1
-  , iaspects = [SetFlag Unique, EqpSlot EqpSlotWeaponBig]
-               ++ iaspects harpoon
+  , iaspects = [SetFlag Unique] ++ iaspects harpoon
   , ieffects = Yell  -- evoke a cry from pain; brutal
                : ieffects harpoon
   , idesc    = "A display piece harking back to the Earth's oceanic tourism heyday. Surprising sharp for its age. The cruel, barbed head lodges in its victim so painfully that the weakest tug of the rope sends the victim flying."
@@ -2238,7 +2234,7 @@ crowbar = chisel
   , idamage  = 3 `d` 1
   , iaspects = [ Timeout 4
                , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotWeaponFast
+               , EqpSlot EqpSlotWeaponBig
                , toVelocity 30 ]
   , ieffects = [RefillHP (-2)]
                  -- @RefillHP@ to avoid a no-brainer of durable tool use;
@@ -2463,7 +2459,7 @@ treePruner = grassStitcher
   , idamage  = 4 `d` 1
   , iaspects = [ Timeout 12
                , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotWeaponBig  -- barely worth it
+               , EqpSlot EqpSlotWeaponBig
                , toVelocity 20 ]
   , ieffects = []
   , idesc    = "A heavy tree lopper on a sturdy long pole."
@@ -2474,9 +2470,10 @@ cleaningPole = grassStitcher
   , iflavour = zipPlain [Blue]
   , irarity  = [(8, 15)]
   , iweight  = 3500
-  , idamage  = 1 `d` 1  -- useless
+  , idamage  = 1 `d` 1
   , iaspects = [ Timeout 10
                , SetFlag Durable, SetFlag Meleeable
+               , EqpSlot EqpSlotWeaponBig
                , toVelocity 20 ]
   , ieffects = []
   , idesc    = "A cleaning contraption for glass surfaces, mounted on a long synthetic pole."
@@ -2489,8 +2486,7 @@ staff = grassStitcher
   , iverbHit = "prod"
   , idamage  = 2 `d` 1
   , iaspects = [ SetFlag Durable, SetFlag Meleeable
-                 -- no EqpSlot EqpSlotWeaponBig, because worse than most
-                 -- organs, so a waste of equipment space
+               , EqpSlot EqpSlotWeaponFast
                , toVelocity 40 ]
   , ieffects = []
   , idesc    = ""  -- doh
@@ -2507,9 +2503,9 @@ longPole = staff
   , iflavour = zipPlain [BrBlue]
   , iweight  = 3000
   , idamage  = 1 `d` 1
-  , iaspects = [ SetFlag Durable, SetFlag Meleeable
-                 -- no EqpSlot EqpSlotWeaponBig, because worse than most
-                 -- organs, so a waste of equipment space
+  , iaspects = [ Timeout 10
+               , SetFlag Durable, SetFlag Meleeable
+               , EqpSlot EqpSlotWeaponBig
                , toVelocity 20 ]
   , idesc    = "Too meters long, strong and light pole."
   }
@@ -2546,7 +2542,8 @@ wasteContainer = ItemKind
   , iaspects = [ Timeout $ (1 `d` 2) * 30  -- robots should not summon too often
                , AddSkill SkArmorMelee 20  -- tempting
                , AddSkill SkMaxCalm (-30)  -- prevent excessive stacking
-               , SetFlag Periodic, SetFlag Equipable ]
+               , SetFlag Periodic, SetFlag Equipable
+               , EqpSlot EqpSlotArmorMelee ]
   , ieffects = [ Detect DetectLoot 20
                , Summon MOBILE_ANIMAL $ 1 `dL` 2
                , Explode S_WASTE ]
