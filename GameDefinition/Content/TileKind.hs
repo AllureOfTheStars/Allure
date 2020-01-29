@@ -1311,7 +1311,9 @@ underbrush = TileKind
 workshop = TileKind
   { tsymbol  = ':'
   , tname    = "workshop"
-  , tfreq    = [(EMPTY_SET_LIT, 2), (EXIT_SET_LIT, 2), (AMBUSH_SET_DARK, 2)]
+  , tfreq    = [ (LEGEND_LIT, 100), (LEGEND_DARK, 100)
+               , (EMPTY_SET_LIT, 4), (SHOOTOUT_SET_LIT, 4), (AMBUSH_SET_DARK, 4)
+               , (BATTLE_SET_DARK, 4) ]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 2  -- projectiles cannot craft (otherwise durable tools

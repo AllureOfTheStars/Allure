@@ -575,9 +575,9 @@ smokeClump3FGround = smokeClump
   { pname    = "a burned out area"
   , pfreq    = [(LABORATORY, 25)]
   , prarity  = [(1, 1)]
-  , pcover   = CVerbatim
+  , pcover   = CMirror
   , pfence   = FGround
-  , ptopLeft = [ ";f;"
+  , ptopLeft = [ ";f:"  -- workshop terrain
                , "f·f"
                , "f·f"
                , ";f;"
@@ -1514,7 +1514,7 @@ shuttleHusk2 = shuttleHusk
   }
 shuttleHusk3 = shuttleHusk
   { pfreq    = [(EMPTY, 300), (EXIT, 5000), (AMBUSH, 5000)]
-  , ptopLeft = [ "X··##··X"  -- 8 x 8
+  , ptopLeft = [ ":··##··X"  -- 8 x 8
                , "X#%ww%#X"
                , "#w····w#"
                , "····h·r#"
@@ -1554,7 +1554,7 @@ shuttleHusk6 = shuttleHusk
                , "%·····rr%"
                , "##·rrrr##"
                , "X###&###X"
-               , "XXhhchhXX"
+               , ":XhhchhXX"
                , "Xhh#w#hhX"
                ]
   }
