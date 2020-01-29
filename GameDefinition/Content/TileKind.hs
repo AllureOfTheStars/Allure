@@ -904,13 +904,13 @@ rubbleBurning = TileKind  -- present in EMPTY_SET_LIT as early light/fire source
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 4  -- boss can dig through
-  , tfeature = [ OpenWith True [(3, WATER_SOURCE)]
-                          S_SMOKE_LIT
+  , tfeature = [ OpenWith True [(3, WATER_SOURCE)] S_SMOKE_LIT
                , OpenWith True [(1, BLAST_SOURCE)] S_FLOOR_ASHES_LIT
                , Embed BIG_FIRE  -- not as tall as a tree, so quenchable
                , ChangeWith False [(1, FIREPROOF_CLOTH)] S_RUBBLE_PILE
                    -- full effects experienced, but rubble saved for repeat
-               , OpenTo RUBBLE_BURNING_OR_NOT ]
+               , OpenWith False [] RUBBLE_BURNING_OR_NOT ]
+                   -- no pathfinding through
   }
 rubbleBurningSpice = rubbleBurning
   { tfreq    = [ (SMOKE_CLUMP_LIT, 1), (SMOKE_CLUMP_DARK, 1)
@@ -1175,8 +1175,9 @@ barrel = TileKind
                , (ZOO_SET_DARK, 30), (AMBUSH_SET_DARK, 2) ]
   , tcolor   = BrRed
   , tcolor2  = Red
-  , talter   = 0  -- projectiles can destroy
-  , tfeature = [Embed BARREL_CONTENTS, OpenTo S_FLOOR_ASHES_LIT]
+  , talter   = 3  -- robots can't bump
+  , tfeature = [ Embed BARREL_CONTENTS
+               , OpenWith True [] S_FLOOR_ASHES_LIT ]  -- no pathfinding through
   }
 barrelSpice = barrel
   { tfreq    = [ (SMOKE_CLUMP_LIT, 1), (SMOKE_CLUMP_DARK, 1)
