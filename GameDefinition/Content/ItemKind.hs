@@ -1098,7 +1098,7 @@ jumpingPole = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (POLE, 10)]
   , iflavour = zipPlain [White]
   , icount   = 1
-  , irarity  = [(1, 3)]
+  , irarity  = [(5, 7)]
   , iverbHit = "prod"
   , iweight  = 4000
   , idamage  = 0
@@ -1436,7 +1436,7 @@ armorLeather = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (S_SPACESUIT_JACKET, 1), (TORSO_ARMOR, 1)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
-  , irarity  = [(1, 4), (10, 2)]
+  , irarity  = [(1, 5), (10, 3)]
   , iverbHit = "thud"
   , iweight  = 7000
   , idamage  = 0
@@ -1496,7 +1496,7 @@ gloveGauntlet = gloveFencing
   { iname    = "spacesuit glove"
   , ifreq    = [(COMMON_ITEM, 100), (S_SPACESUIT_GLOVE, 1), (ARMOR_MISC, 1)]
   , iflavour = zipPlain [BrCyan]
-  , irarity  = [(1, 9), (10, 3)]
+  , irarity  = [(1, 5), (10, 3)]
   , iweight  = 300
   , idamage  = 2 `d` 1
   , iaspects = [ AddSkill SkArmorMelee $ (1 + 1 `dL` 4) * 5
@@ -1531,7 +1531,7 @@ hatUshanka = ItemKind
                , (THICK_CLOTH, 1) ]
   , iflavour = zipPlain [Brown]
   , icount   = 1
-  , irarity  = [(1, 6), (10, 2)]
+  , irarity  = [(1, 5), (10, 3)]
   , iverbHit = "tickle"
   , iweight  = 500
   , idamage  = 0
@@ -1628,14 +1628,14 @@ shield = buckler
   , idesc    = "Large and unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Too heavy to intercept projectiles with."
   }
 shield2 = shield
-  { ifreq    = [(COMMON_ITEM, 3 * 2), (MUSEAL, 100), (S_SHIELD_BLUNT, 1)]
+  { ifreq    = [(COMMON_ITEM, 3 * 2), (MUSEAL, 50), (S_SHIELD_BLUNT, 1)]
                   -- very low base rarity
   , iweight  = 6000
   , idamage  = 5 `d` 1
   , idesc    = "A relic of long-past wars, heavy and with a central spike, which is however misaligned and dull."
   }
 shield3 = shield2
-  { ifreq    = [(COMMON_ITEM, 1), (MUSEAL, 10), (S_SHIELD_SHARP, 1)]
+  { ifreq    = [(COMMON_ITEM, 2), (MUSEAL, 10), (S_SHIELD_SHARP, 1)]
   , idamage  = 10 `d` 1
   , idesc    = "A relic of long-past wars, heavy and with a sharp central spike."
   }
@@ -1648,7 +1648,7 @@ knife = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 200), (S_CLEAVER, 1)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(3 * 10/15, 40), (4 * 10/15, 1)]
+  , irarity  = [(3 * 10/15, 40), (4 * 10/15, 5)]
                  -- no weapons brought by aliens, initially, so cleaver common
   , iverbHit = "cut"
   , iweight  = 1000
@@ -1710,7 +1710,7 @@ hammer2 = hammerTemplate  -- 0.75m handle, sharp
   , idesc    = "Upon closer inspection, this hammer, or pick, turns out particularly well balanced. The profiled handle seamlessly joins the head, which focuses the blow at a sharp point, compensating for the tool's modest size."
   }
 hammer3 = hammerTemplate  -- 2m pole, blunt
-  { ifreq    = [ (COMMON_ITEM, 5), (BONDING_TOOL, 1), (POLE_AND_STEEL, 1)
+  { ifreq    = [ (COMMON_ITEM, 10), (BONDING_TOOL, 1), (POLE_AND_STEEL, 1)
                , (STARTING_WEAPON, 1), (S_BLUNT_LONG_HAMMER, 1) ]
   , iweight  = 6000  -- pole weight almost gives it away
   , iaspects = [ Timeout 12  -- balance, or @DupItem@ would break the game
@@ -1812,7 +1812,7 @@ halberd = ItemKind  -- long pole, because glued 1m handle worse than nothing
   }
 halberd2 = halberd
   { iname    = "pollaxe"
-  , ifreq    = [ (COMMON_ITEM, 3), (POLE_AND_STEEL, 1), (STARTING_WEAPON, 1)
+  , ifreq    = [ (COMMON_ITEM, 5), (POLE_AND_STEEL, 1), (STARTING_WEAPON, 1)
                , (S_POLL_AXE, 1) ]
                  -- not @BREACHING_TOOL@, because it triggers traps
                  -- and destroys treasure, instead of opening
@@ -2089,7 +2089,7 @@ chisel = ItemKind  -- ignored by AI, but that's fine, others suffice
   , ifreq    = [(COMMON_ITEM, 100), (BREACHING_TOOL, 1)]
   , iflavour = zipPlain [Cyan]
   , icount   = 1
-  , irarity  = [(1, 6)]
+  , irarity  = [(1, 8)]
   , iverbHit = "dismantle"
   , iweight  = 500
   , idamage  = 0
@@ -2110,6 +2110,7 @@ adjustableSpanner = chisel
 steelFile = chisel
   { iname    = "steel file"
   , ifreq    = [(COMMON_ITEM, 100), (BREACHING_TOOL, 1), (SHARPENING_TOOL, 1)]
+  , irarity  = [(1, 12)]
   , iflavour = zipPlain [BrCyan]
   , iverbHit = "grate"
   , idesc    = "It is a breaching and sharpening tool."  -- TODO: https://en.wikipedia.org/wiki/File_(tool)
@@ -2172,6 +2173,7 @@ solderingIron = chisel
 duckTape = solderingIron
   { iname    = "duck tape"
   , icount   = 1 `d` 4
+  , irarity  = [(1, 12)]
   , iverbHit = "catch"
   , idesc    = "It is a bonding tool."  -- TODO: https://en.wikipedia.org/wiki/Duct_tape
   }
@@ -2257,7 +2259,7 @@ catsPaw = chisel
 fireAxe = ItemKind
   { isymbol  = symbolHafted
   , iname    = "fire axe"
-  , ifreq    = [ (COMMON_ITEM, 1), (HANDLE_AND_STEEL, 1), (S_FIRE_AXE, 1)
+  , ifreq    = [ (HANDLE_AND_STEEL, 1), (S_FIRE_AXE, 1)
                , (FIRE_FIGHTING_ITEM, 20) ]
                  -- not @BREACHING_TOOL@, because it trigger traps
                  -- and destroys treasure, instead of opening
@@ -2357,7 +2359,7 @@ cattleProd = militaryBaton
   { iname    = "electric cattle prod"
   , ifreq    = [(COMMON_ITEM, 100)]
   , iflavour = zipFancy [Brown]
-  , irarity  = [(10, 10)]
+  , irarity  = [(10, 15)]
   , idamage  = 2 `d` 1
   , ieffects = [Discharge $ 40 - 1 `d` 20, RefillCalm (-30)]
   , idesc    = "Used for subduing unruly zoo animals."
@@ -2371,7 +2373,7 @@ grassStitcher = ItemKind
                , (S_GRASS_STITCHER, 1) ]
   , iflavour = zipPlain [Red]
   , icount   = 1
-  , irarity  = [(1, 10), (3 * 10/15, 3), (4 * 10/15, 1)]
+  , irarity  = [(1, 15), (3 * 10/15, 5)]
   , iverbHit = "stab"
   , iweight  = 500
   , idamage  = 4 `d` 1
@@ -2454,7 +2456,7 @@ treePruner = grassStitcher
   { iname    = "long reach tree pruner"
   , ifreq    = [(COMMON_ITEM, 100), (POLE_AND_STEEL, 1)]
   , iflavour = zipPlain [BrRed]
-  , irarity  = [(8, 15)]
+  , irarity  = [(8, 20)]
   , iweight  = 4500
   , idamage  = 4 `d` 1
   , iaspects = [ Timeout 12
@@ -2468,7 +2470,7 @@ cleaningPole = grassStitcher
   { iname    = "window cleaning pole"
   , ifreq    = [(COMMON_ITEM, 100), (POLE_AND_STEEL, 1)]
   , iflavour = zipPlain [Blue]
-  , irarity  = [(8, 15)]
+  , irarity  = [(8, 12)]
   , iweight  = 3500
   , idamage  = 1 `d` 1
   , iaspects = [ Timeout 10
@@ -2481,7 +2483,7 @@ cleaningPole = grassStitcher
 staff = grassStitcher
   { isymbol  = symbolWand
   , iname    = "wooden staff"
-  , ifreq    = [(COMMON_ITEM, 1), (HANDLE, 80), (S_STAFF, 1)]
+  , ifreq    = [(HANDLE, 80), (S_STAFF, 1)]
   , iflavour = zipPlain [BrYellow]
   , iverbHit = "prod"
   , idamage  = 2 `d` 1
@@ -2493,13 +2495,13 @@ staff = grassStitcher
   }
 pipe = staff
   { iname    = "metal pipe"
-  , ifreq    = [(COMMON_ITEM, 1), (HANDLE, 20), (S_PIPE, 1)]
+  , ifreq    = [(HANDLE, 20), (S_PIPE, 1)]
   , iflavour = zipPlain [BrCyan]
   , idesc    = "A meter long, light, strong and hard alloy pipe."
   }
 longPole = staff
   { iname    = "long pole"
-  , ifreq    = [(COMMON_ITEM, 1), (POLE, 90)]
+  , ifreq    = [(POLE, 90)]
   , iflavour = zipPlain [BrBlue]
   , iweight  = 3000
   , idamage  = 1 `d` 1
