@@ -529,7 +529,7 @@ scentGland = armoredSkin
 boilingVent = armoredSkin
   { iname    = "vent"
   , ifreq    = [(S_BOILING_VENT, 1)]
-  , iflavour = zipPlain [BrBlue]
+  , iflavour = zipPlain [BrGreen]
   , iverbHit = "menace"
   , iaspects = [ Timeout $ (2 + 1 `d` 3) * 5
                , SetFlag Periodic, SetFlag Durable ]
@@ -539,7 +539,7 @@ boilingVent = armoredSkin
 arsenicVent = armoredSkin
   { iname    = "vent"
   , ifreq    = [(S_COOLING_VENT, 1)]
-  , iflavour = zipPlain [BrBlack]
+  , iflavour = zipPlain [White]
   , iverbHit = "menace"
   , iaspects = [ Timeout $ (2 + 1 `d` 3) * 5
                , SetFlag Periodic, SetFlag Durable ]
