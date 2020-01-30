@@ -105,7 +105,7 @@ rogue = CaveKind
   , chidden       = 7
   , cactorCoeff   = 50  -- the maze requires time to explore
   , cactorFreq    = [(MONSTER, 50), (ANIMAL, 20), (ROBOT, 30)]
-  , citemNum      = 8 `d` 4 + 20 - 20 `dL` 1  -- deep down quality over quantity
+  , citemNum      = 10 `d` 4 + 25 - 25 `dL` 1  -- at depth quality over quantity
   , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.TREASURE, 60)
                     , (IK.CURIOUS_ITEM, 10) ]
   , cplaceFreq    = [(ROGUE, 1)]
@@ -168,7 +168,7 @@ arena = rogue
   , cactorCoeff   = 40  -- smallish level, but easy to view and plan
   , cactorFreq    = [ (MONSTER, 50), (ANIMAL, 70), (ROBOT, 5)
                     , (IK.AQUATIC, 10) ]
-  , citemNum      = 7 `d` 4  -- few rooms
+  , citemNum      = 9 `d` 4  -- few rooms
   , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.TREASURE, 40)
                     , (IK.ANY_SCROLL, 40), (IK.EXPLOSIVE, 40)
                     , (IK.CURIOUS_ITEM, 20) ]
@@ -195,7 +195,7 @@ casino = arena
   , cminStairDist = 10
   , cactorCoeff   = 70  -- cramped, don't overcrowd
   , cactorFreq    = [(MONSTER, 50), (ANIMAL, 25), (ROBOT, 50)]
-  , citemNum      = 7 `d` 3  -- rare, so make it exciting, by keeping many items
+  , citemNum      = 9 `d` 3  -- rare, so make it exciting, by keeping many items
   , citemFreq     = [ (IK.COMMON_ITEM, 20)
                     , (IK.TREASURE, 80)  -- lives up to the name
                     , (IK.CURIOUS_ITEM, 40) ]
@@ -217,7 +217,7 @@ museum = arena
   , cminStairDist = 10
   , cactorCoeff   = 70  -- cramped, don't overcrowd
   , cactorFreq    = [(MONSTER, 100), (ANIMAL, 25), (ROBOT, 25)]
-  , citemNum      = 7 `d` 4  -- rare, so make it exciting
+  , citemNum      = 9 `d` 4  -- rare, so make it exciting
   , citemFreq     = [ (IK.COMMON_ITEM, 20)
                     , (IK.TREASURE, 40)
                     , (IK.CURIOUS_ITEM, 40)
@@ -248,7 +248,7 @@ laboratory = rogue
   , copenChance   = 1%2
   , cactorFreq    = [ (MONSTER, 50), (ANIMAL, 70), (ROBOT, 5)
                     , (IK.AQUATIC, 10) ]
-  , citemNum      = 7 `d` 5  -- reward difficulty
+  , citemNum      = 8 `d` 5  -- reward difficulty
   , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.TREASURE, 40), (IK.ANY_POTION, 40)
                     , (IK.CURIOUS_ITEM, 40) ]
   , cplaceFreq    = [(LABORATORY, 1)]
@@ -286,7 +286,7 @@ noise = rogue
   , chidden       = 0
   , cactorCoeff   = 70  -- the maze requires time to explore; also, small
   , cactorFreq    = [(MONSTER, 100), (ANIMAL, 5), (ROBOT, 25)]
-  , citemNum      = 8 `d` 5  -- an incentive to explore the labyrinth
+  , citemNum      = 10 `d` 5  -- an incentive to explore the labyrinth
   , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.TREASURE, 60)
                     , (IK.EXPLOSIVE, 20), (IK.CURIOUS_ITEM, 30) ]
   , cpassable     = True
@@ -310,7 +310,7 @@ power = noise
   , cYminSize     = 42
   , cnightOdds    = 51  -- easier variant, but looks sinister
   , cextraStairs  = 2
-  , citemNum      = 8 `d` 5  -- an incentive to explore the final labyrinth
+  , citemNum      = 10 `d` 5  -- an incentive to explore the final labyrinth
   , citemFreq     = [ (IK.COMMON_ITEM, 20), (GEM, 80), (IK.CURIOUS_ITEM, 30) ]
                       -- can't be "valuable" or template items generated
   , cdefTile      = POWER_SET_DARK
@@ -341,7 +341,7 @@ empty = rogue
   , chidden       = 0
   , cactorCoeff   = 40  -- easy to view and plan
   , cactorFreq    = [(MONSTER, 10), (ANIMAL, 5), (ROBOT, 85)]
-  , citemNum      = 7 `d` 4  -- few rooms
+  , citemNum      = 9 `d` 4  -- few rooms
   , cplaceFreq    = [(EMPTY, 1)]
   , cpassable     = True
   , cdefTile      = EMPTY_SET_LIT
@@ -416,7 +416,7 @@ bridge = rogue
   , cactorCoeff   = 300  -- it's quite deep already, so spawn slowly;
                          -- initially best for sleeping, then all catch up
   , cactorFreq    = [(ANIMAL, 100)]
-  , citemNum      = 8 `d` 3  -- lure them in with loot
+  , citemNum      = 10 `d` 3  -- lure them in with loot
   , citemFreq     = filter ((`notElem` [IK.TREASURE, IK.CURIOUS_ITEM]) . fst)
                     $ citemFreq rogue
   , cdefTile      = FILLER_WALL
@@ -439,7 +439,7 @@ shallowRogue = rogue
   , cextraStairs  = 2
   , cactorCoeff   = 40  -- more difficult
   , cactorFreq    = filter ((/= MONSTER) . fst) $ cactorFreq rogue
-  , citemNum      = 8 `d` 4
+  , citemNum      = 10 `d` 4
   , citemFreq     = (STARTING_WEAPON, 20)
                     : filter ((/= IK.TREASURE) . fst) (citemFreq rogue)
   , cdesc         = "This close to the outermost deck, residence is not permitted and walls and doors are sturdier, to contain a theoretically possible micro-meteorite breach. The entry is not closed off, though, because some passengers can't live without a regular pilgrimage to 'look outside'. Apparently, gazing at the sharp pin-points of stars and planets through the reinforced oriel glass is incomparable to watching the same through the thin polymer of wall displays. Animals appear to share the fascination of outer decks, perhaps attracted by the increased gravity, nearly Earth-like, unlike elsewhere on the ship."
@@ -463,7 +463,7 @@ raid = rogue
   , cextraStairs  = 0
   , cactorCoeff   = 250  -- deep level with no kit, so slow spawning
   , cactorFreq    = [(ANIMAL, 50), (ROBOT, 50)]
-  , citemNum      = 6 `d` 6  -- just one level, hard enemies, treasure
+  , citemNum      = 8 `d` 6  -- just one level, hard enemies, treasure
   , citemFreq     = [ (IK.COMMON_ITEM, 100), (IK.S_CURRENCY, 500)
                     , (STARTING_WEAPON, 100) ]
   , cescapeFreq   = [(INDOOR_ESCAPE_UP, 1)]
@@ -489,7 +489,7 @@ brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
   , cextraStairs  = 0
   , chidden       = 0
   , cactorFreq    = []
-  , citemNum      = 4 `d` 6
+  , citemNum      = 5 `d` 6
   , citemFreq     = [ (IK.COMMON_ITEM, 50), (STARTING_WEAPON, 100)
                     , (TORSO_ARMOR, 400), (ARMOR_MISC, 200) ]
   , cplaceFreq    = [(BRAWL, 1)]
@@ -521,7 +521,7 @@ shootout = rogue  -- a scenario with strong missiles;
   , cextraStairs  = 0
   , chidden       = 0
   , cactorFreq    = []
-  , citemNum      = 5 `d` 16
+  , citemNum      = 6 `d` 16
                       -- less items in inventory, more to be picked up,
                       -- to reward explorer and aggressor and punish camper
   , citemFreq     = [ (IK.COMMON_ITEM, 30)
@@ -554,7 +554,7 @@ hunt = rogue  -- a scenario with strong missiles for ranged and shade for melee
   , cextraStairs  = 0
   , chidden       = 0
   , cactorFreq    = []
-  , citemNum      = 5 `d` 10
+  , citemNum      = 6 `d` 10
   , citemFreq     = [ (IK.COMMON_ITEM, 30)
                     , (ANY_ARROW, 400), (HARPOON, 300), (IK.EXPLOSIVE, 50) ]
   , cplaceFreq    = [(BRAWL, 50), (SHOOTOUT, 100)]
@@ -584,7 +584,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , cextraStairs  = 0
   , chidden       = 0
   , cactorFreq    = []
-  , citemNum      = 6 `d` 8
+  , citemNum      = 8 `d` 8
   , citemFreq     = [ (IK.COMMON_ITEM, 30), (GEM, 150)
                     , (WEAK_ARROW, 500), (HARPOON, 400)
                     , (IK.EXPLOSIVE, 100) ]
@@ -615,7 +615,7 @@ zoo = rogue  -- few lights and many solids, to help the less numerous heroes
   , cextraStairs  = 0
   , chidden       = 0
   , cactorFreq    = []
-  , citemNum      = 7 `d` 8
+  , citemNum      = 9 `d` 8
   , citemFreq     = [ (IK.COMMON_ITEM, 100), (LIGHT_MANIPULATION, 1000)
                     , (STARTING_WEAPON, 1000) ]
   , cplaceFreq    = [(ZOO, 1)]
@@ -650,7 +650,7 @@ ambush = rogue  -- a scenario with strong missiles;
   , cextraStairs  = 0
   , chidden       = 0
   , cactorFreq    = []
-  , citemNum      = 5 `d` 8
+  , citemNum      = 6 `d` 8
   , citemFreq     = [ (IK.COMMON_ITEM, 30)
                     , (MERCENARY_AMMO, 200), (HARPOON, 300)
                     , (IK.EXPLOSIVE, 50) ]
@@ -683,7 +683,7 @@ battle = rogue  -- few lights and many solids, to help the less numerous heroes
   , cextraStairs  = 0
   , chidden       = 0
   , cactorFreq    = []
-  , citemNum      = 5 `d` 8
+  , citemNum      = 6 `d` 8
   , citemFreq     = [(IK.COMMON_ITEM, 100), (LIGHT_MANIPULATION, 200)]
   , cplaceFreq    = [(BATTLE, 50), (ROGUE, 50)]
   , cpassable     = True
