@@ -16,7 +16,7 @@ module Content.TileKind
     pattern TREE_SHADE_WALKABLE_LIT, pattern TREE_SHADE_WALKABLE_DARK, pattern SMOKE_CLUMP_LIT, pattern SMOKE_CLUMP_DARK, pattern BUSH_CLUMP_LIT, pattern BUSH_CLUMP_DARK, pattern UNDERBRUSH_CLUMP_LIT, pattern UNDERBRUSH_CLUMP_DARK, pattern FOG_CLUMP_LIT, pattern FOG_CLUMP_DARK, pattern STAIR_TERMINAL_LIT, pattern STAIR_TERMINAL_DARK, pattern SIGNBOARD, pattern STAIRCASE_UP, pattern ORDINARY_STAIRCASE_UP, pattern STAIRCASE_OUTDOOR_UP, pattern GATED_STAIRCASE_UP, pattern STAIRCASE_DOWN, pattern ORDINARY_STAIRCASE_DOWN, pattern STAIRCASE_OUTDOOR_DOWN, pattern GATED_STAIRCASE_DOWN, pattern ESCAPE_UP, pattern ESCAPE_DOWN, pattern ESCAPE_OUTDOOR_DOWN
   , pattern S_LAMP_POST, pattern S_TREE_LIT, pattern S_TREE_DARK, pattern S_PULPIT, pattern S_BUSH_LIT, pattern S_FOG_LIT, pattern S_SMOKE_LIT, pattern S_FLOOR_ACTOR_LIT, pattern S_FLOOR_ACTOR_DARK, pattern S_FLOOR_ASHES_LIT, pattern S_FLOOR_ASHES_DARK, pattern S_SHADED_GROUND
   , pattern RECT_WINDOWS, pattern DOORLESS_MACHINERY, pattern PUMPS_LIT, pattern PUMPS_DARK, pattern DOORLESS_WALL, pattern OIL_RESIDUE_LIT, pattern OIL_RESIDUE_DARK, pattern LIFT_TERMINAL_LIT, pattern LIFT_TERMINAL_DARK, pattern STAIRCASE_LIFT_UP, pattern STAIRCASE_LIFT_DOWN, pattern GATED_LIFT_UP, pattern GATED_LIFT_DOWN, pattern DECONTAMINATING_STAIRCASE_UP, pattern DECONTAMINATING_STAIRCASE_DOWN, pattern DECONTAMINATING_LIFT_UP, pattern DECONTAMINATING_LIFT_DOWN, pattern WELDED_STAIRCASE_UP, pattern WELDED_LIFT_UP, pattern ESCAPE_SPACESHIP_DOWN, pattern ORDINARY_LIFT_UP, pattern ORDINARY_LIFT_DOWN, pattern RUBBLE_OR_WASTE_LIT, pattern RUBBLE_OR_WASTE_DARK, pattern CACHE_DEPOSIT, pattern CACHE_JEWELRY, pattern CACHE_MAZE, pattern CACHE_SHUTTLE, pattern TRAPPED_DOOR, pattern FLOOR_ACTOR_ITEM, pattern STUCK_DOOR, pattern BARREL
-  , pattern S_POOL_LIT, pattern S_POOL_DARK, pattern S_OIL_SPILL, pattern S_FROZEN_PATH, pattern S_LIFT_SHAFT, pattern S_REINFORCED_WALL, pattern S_SHUTTLE_HULL, pattern S_HARDWARE_RACK
+  , pattern S_POOL_LIT, pattern S_POOL_DARK, pattern S_OIL_SPILL, pattern S_FROZEN_PATH, pattern S_LIFT_SHAFT, pattern S_REINFORCED_WALL, pattern S_SHUTTLE_HULL, pattern S_HARDWARE_RACK, pattern S_UNDERBRUSH_LIT, pattern S_UNDERBRUSH_DARK
   , groupNamesSingleton, groupNames
   , -- * Content
     content
@@ -663,7 +663,7 @@ pulpit = TileKind
   , talter   = 5
   , tfeature = [ ChangeWith True [(1, FIRE_SOURCE)] S_BURNING_INSTALLATION
                , Clear, Embed LECTERN ]
-                   -- mixed blessing, so AI ignores, saved for player fun
+                   -- mixed blessing, so AI ignores, saved for player's fun
   }
 bush = TileKind
   { tsymbol  = '%'
@@ -854,7 +854,8 @@ floorBlue = floorRed
   , tcolor2  = Blue
   , talter   = 0
   , tfeature = [ ChangeWith True [(1, FIRE_SOURCE)] S_SHALLOW_WATER_LIT
-               , ChangeWith True [(1, OIL_SOURCE)] S_OIL_SPILL  -- non-porous enough
+               , ChangeWith True [(1, OIL_SOURCE)] S_OIL_SPILL
+                   -- non-porous enough
                , Embed FROZEN_GROUND, Trail, Walkable, Clear ]
   }
 floorBrown = floorRed
@@ -905,8 +906,8 @@ rubbleBurning = TileKind  -- present in EMPTY_SET_LIT as early light/fire source
   , tcolor2  = Red
   , talter   = 4  -- boss can dig through
   , tfeature = [ OpenWith True [(3, WATER_SOURCE)] S_SMOKE_LIT
-               , OpenWith True [(1, BLAST_SOURCE)] S_FLOOR_ASHES_LIT
                , Embed BIG_FIRE  -- not as tall as a tree, so quenchable
+               , OpenWith True [(1, BLAST_SOURCE)] S_FLOOR_ASHES_LIT
                , ChangeWith False [(1, FIREPROOF_CLOTH)] S_RUBBLE_PILE
                    -- full effects experienced, but rubble saved for repeat
                , OpenWith False [] RUBBLE_BURNING_OR_NOT ]
@@ -1021,10 +1022,10 @@ stairsTrappedDownOil = TileKind
   , tcolor2  = Red
   , talter   = talterForStairs
   , tfeature = [ ChangeWith False [(1, THICK_CLOTH)] ORDINARY_STAIRCASE_DOWN
-                   -- soaks
+                   -- safely soaks oil
                , Embed STAIRS_DOWN, Embed STAIRS_TRAP_DOWN_OIL
-               , ConsideredByAI
-               , ChangeTo ORDINARY_STAIRCASE_DOWN ]
+               , ChangeTo ORDINARY_STAIRCASE_DOWN
+               , ConsideredByAI ]
  }
 stairsDecontaminatingUp = stairsUp
   { tname    = "decontaminating staircase up"
@@ -1175,7 +1176,7 @@ barrel = TileKind
                , (ZOO_SET_DARK, 30), (AMBUSH_SET_DARK, 2) ]
   , tcolor   = BrRed
   , tcolor2  = Red
-  , talter   = 3  -- robots can't bump
+  , talter   = 0  -- projectiles can destroy
   , tfeature = [ Embed BARREL_CONTENTS
                , OpenWith True [] S_FLOOR_ASHES_LIT ]  -- no pathfinding through
   }
@@ -1235,7 +1236,7 @@ oilBurning = TileKind
                , Embed SMALL_FIRE
                , Embed OIL_PUDDLE
                , ChangeWith False [(1, FIREPROOF_CLOTH)] OILY_FLOOR_LIT
-                   -- soaks oil
+                   -- safely soaks oil
                ]
   }
 underbrushBurning = TileKind

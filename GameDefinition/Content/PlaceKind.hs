@@ -1199,7 +1199,7 @@ oval = PlaceKind
                     , ('1', STUCK_DOOR)
                     , ('2', TRAPPED_DOOR)
                     , ('~', S_POOL_DARK)
-                    , (';', UNDERBRUSH_CLUMP_DARK) ]
+                    , (';', S_UNDERBRUSH_DARK) ]
   , poverrideLit = [ ('t', TRAIL_LIT)
                    , ('p', TRAPPED_DOOR)
                    , ('b', BARREL)
@@ -1207,7 +1207,7 @@ oval = PlaceKind
                    , ('2', STUCK_DOOR)  -- reversed vs dark
                    , ('1', TRAPPED_DOOR)
                    , ('~', S_POOL_LIT)
-                   , (';', UNDERBRUSH_CLUMP_LIT) ]
+                   , (';', S_UNDERBRUSH_LIT) ]
   }
 ovalFloor = oval
   { pfreq    = [ (ROGUE, 150000), (ARENA, 60000), (MUSEUM, 60000)
@@ -1386,7 +1386,7 @@ cells3 = cells
 cells4 = cells
   { pname    = "a power node"
   , ptopLeft = [ "·o#"
-               , "o#b"
+               , "b#o"
                , "#b·"
                ]
   }
