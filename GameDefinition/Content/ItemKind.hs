@@ -1647,6 +1647,13 @@ shield3 = shield2
 
 -- ** Weapons
 
+-- Generally, weapons on long poles have highest damage and defence,
+-- but longest timeout. Weapons with handles are middling. Weapons
+-- without area weakest, but lowest timeout and highest global melee bonus.
+-- Weapons of a given group tend to share the weakest representative's
+-- characteristics, even when upgraded. Sharpening of weapons usually
+-- just increases their damage.
+
 knife = ItemKind
   { isymbol  = symbolEdged
   , iname    = "cleaver"
@@ -1659,14 +1666,13 @@ knife = ItemKind
   , iweight  = 1000
   , idamage  = 6 `d` 1
   , iaspects = [ Timeout 2
-               , AddSkill SkHurtMelee $ (-1 + 1 `d` 2 + 1 `dL` 2) * 3
-               , AddSkill SkArmorMelee $ (1 `d` 2) * 5
+               , AddSkill SkHurtMelee $ (-1 + 1 `d` 3 + 1 `dL` 2) * 3
                    -- very common, so don't make too random
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
                , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
   , ieffects = []
-  , idesc    = "A heavy professional kitchen blade. Will do fine cutting any kind of meat and bone, as well as parrying blows. Does not penetrate deeply, but is quick to move and hard to block. Especially useful in conjunction with a larger weapon."
+  , idesc    = "A heavy professional kitchen blade. Will do fine cutting any kind of meat, bone and an occacional metal can. Does not penetrate deeply, but is quick to move and hard to block. Especially useful in conjunction with a larger weapon."
   , ikit     = []
   }
 daggerDropBestWeapon = knife
@@ -1684,7 +1690,8 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
   , iname    = "sledgehammer"  -- "demolition hammer" is Br. Eng. for jackhammer
   , ifreq    = [(HAMMER_UNKNOWN, 1)]
                  -- not @BREACHING_TOOL@, because it trigger traps
-                 -- and destroys treasure, instead of opening
+                 -- and destroys treasure, instead of opening; generally
+                 -- a very aggressive weapon, bad for defense even when long
   , iflavour = zipFancy [BrMagenta]  -- avoid "pink"
   , icount   = 1
   , irarity  = [(5 * 10/15, 15), (8 * 10/15, 1)]
@@ -1696,7 +1703,7 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
                         -- to subdivide this identification class by dice
   , iaspects = [ PresentAs HAMMER_UNKNOWN
                , SetFlag Durable, SetFlag Meleeable
-               , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
+               , toVelocity 40 ]  -- ensuring it hits with the head costs speed
   , ieffects = []
   , idesc    = "One of many kinds of hammers employed in construction work. The usual ones with blunt heads don't cause grave wounds, but enough weigth on a long handle can shake and bruise even most armored foes. However, larger hammers require more time to recover after a swing. This one looks average at a quick glance."  -- if it's really the average kind, the weak kind, the description stays; if not, it's replaced with one of the descriptions below at identification time
   , ikit     = []
@@ -1761,10 +1768,9 @@ sword = ItemKind
   , irarity  = [(3, 1), (6, 20)]
   , iverbHit = "stab"
   , iweight  = 2000
-  , idamage  = 10 `d` 1
-  , iaspects = [ Timeout 7
+  , idamage  = 11 `d` 1  -- with high melee bonus, better than sharp hammer
+  , iaspects = [ Timeout 7, EqpSlot EqpSlotWeaponBig
                , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotWeaponBig
                , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
   , ieffects = []
   , idesc    = "A makeshift weapon of simple design, but great potential. Hard to master, though."
@@ -1787,9 +1793,10 @@ swordNullify = sword
   , ifreq    = [(TREASURE, 20), (S_RAPIER_BLUNT, 1)]
   , iverbHit = "pierce"
   , irarity  = [(5, 1), (8, 7)]
-  , idamage  = 9 `d` 1
-  , iaspects = [SetFlag Unique, Timeout 3, EqpSlot EqpSlotWeaponFast]
-               ++ (iaspects sword \\ [Timeout 7, EqpSlot EqpSlotWeaponBig])
+  , idamage  = 8 `d` 1
+  , iaspects = [ SetFlag Unique, Timeout 3, EqpSlot EqpSlotWeaponFast
+               , SetFlag Durable, SetFlag Meleeable
+               , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
   , ieffects = []
   , idesc    = "An exuberant hand-forged roasting implement, intentionally and wisely kept blunt."
   }
@@ -1824,11 +1831,14 @@ halberd2 = halberd
   , iflavour = zipPlain [BrRed]
   , iverbHit = "carve"
   , iweight  = 4500
-  , iaspects = [Timeout 12, AddSkill SkHurtMelee $ (-6 + 1 `dL` 4) * 10]
-                 -- balance, or @DupItem@ would break the game;
-                 -- together with @RerollItem@, it's allowed to, though
-               ++ (iaspects halberd
-                   \\ [Timeout 10, AddSkill SkHurtMelee $ (-6 + 1 `dL` 4) * 5])
+  , iaspects = [ Timeout 12
+               , AddSkill SkHurtMelee $ (-7 + 1 `dL` 5) * 5
+                   -- balance, or @DupItem@ would break the game;
+                   -- together with @RerollItem@, it's allowed to, though
+               , AddSkill SkArmorMelee 20
+               , SetFlag Durable, SetFlag Meleeable
+               , EqpSlot EqpSlotWeaponBig
+               , toVelocity 20 ]  -- not balanced
   , idamage  = 16 `d` 1
   , idesc    = "A long-hafted axe: once used for fire fighting, now turned to a bloodier purpose."
   }
@@ -1837,7 +1847,6 @@ halberdPushActor = halberd
   , ifreq    = [(CURIOUS_ITEM, 20), (S_HALBERD_BLUNT, 1)]
                  -- not in a museum; reenactors' gear
   , irarity  = [(7, 0), (9, 15)]
-  , idamage  = 11 `d` 1
   , iaspects = [SetFlag Unique]
                ++ iaspects halberd
   , ieffects = [PushActor (ThrowMod 200 100 1)]  -- 2 steps, slow
@@ -2249,7 +2258,7 @@ spacesuitTorn = spacesuit
 
 -- ** Weapons
 
-crowbar = chisel
+crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
   { iname    = "crowbar"
   , iflavour = zipPlain [BrCyan]
   , iverbHit = "gouge"
@@ -2288,10 +2297,10 @@ fireAxe = ItemKind
   , irarity  = [(1, 10)]
   , iverbHit = "gouge"
   , iweight  = 1600
-  , idamage  = 10 `d` 1
+  , idamage  = 11 `d` 1  -- same as sharpened pipe, but upgradable
   , iaspects = [ Timeout 7, EqpSlot EqpSlotWeaponBig  -- 1m handle
                , SetFlag Durable, SetFlag Meleeable
-               , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
+               , toVelocity 40 ]  -- ensuring it hits with the blade costs speed
   , ieffects = []
   , idesc    = "An axe with a spike: once used for fire fighting, now turned to a bloodier purpose."
   , ikit     = []
@@ -2301,28 +2310,26 @@ dagger = knife
   , ifreq    = [(COMMON_ITEM, 5), (S_DAGGER, 200)]
   , iverbHit = "open"
   , idamage  = 7 `d` 1
-  , idesc    = "A double-edged knife, heavy enough to parrying blows with. The sharp tip penetrates the smallest defence gaps, making it especially useful in conjunction with a larger, but less nible weapon."
+  , idesc    = "A double-edged knife with a sharp tip that penetrates the smallest defence gaps, making it especially useful in conjunction with a larger but less nible weapon."
   }
 hammer4 = hammer1  -- 1m handle, sharp
   { ifreq    = [ (COMMON_ITEM, 10), (HANDLE_AND_STEEL, 1)
                , (STARTING_WEAPON, 70), (S_SHARP_SHORT_HAMMER, 1) ]
   , iverbHit = "cleave"
-  , iaspects = [AddSkill SkHurtMelee $ (-1 + 1 `d` 2 + 1 `dL` 2) * 6]
-               ++ iaspects hammer1
+  , ieffects = [RefillHP (-2)]  -- don't lie about @idamage@ when not identified
   , idesc    = "This hammer's head has it's protruding edges sharpened. Otherwise, it's pretty ordinary."
  }
 hammer5 = hammer3  -- 2m pole, sharp
   { ifreq    = [ (COMMON_ITEM, 5), (POLE_AND_STEEL, 1), (STARTING_WEAPON, 1)
                , (S_SHARP_LONG_HAMMER, 1) ]
   , iverbHit = "cleave"
-  , iaspects = [AddSkill SkHurtMelee $ (-1 + 1 `d` 2 + 1 `dL` 2) * 6]
-               ++ iaspects hammer3
+  , ieffects = [RefillHP (-6)]  -- don't lie about @idamage@ when not identified
   , idesc    = "This long-hafter hammer sports a head with the edge of the narrow end sharpened for cutting."
   }
 swordNullifySharp = swordNullify
   { iname    = "Roasting Rapier"
   , ifreq    = [(S_RAPIER_SHARP, 1)]
-  , idamage  = 11 `d` 1
+  , idamage  = 10 `d` 1
   , ieffects = [ DropItem 1 maxBound COrgan CONDITION
                , RefillCalm (-10)
                , Yell ]
@@ -2349,9 +2356,10 @@ militaryKnife = knife
   , iweight  = 500  -- too small to attach to a pole
   , idamage  = 7 `d` 1
   , iaspects = [ Timeout 2
+               , AddSkill SkHurtMelee $ (-1 + 1 `d` 3 + 1 `dL` 2) * 3
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
-               , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
+               , toVelocity 60 ]  -- designed also for throwing
   , ieffects = [ RefillHP (-1)
                    -- @RefillHP@ to avoid a no-brainer of durable tool use
                , DropItem 1 maxBound COrgan CONDITION]
@@ -2481,6 +2489,7 @@ treePruner = grassStitcher
   , iweight  = 4500
   , idamage  = 4 `d` 1
   , iaspects = [ Timeout 12
+               , AddSkill SkArmorMelee 20
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 20 ]
@@ -2495,6 +2504,7 @@ cleaningPole = grassStitcher
   , iweight  = 3500
   , idamage  = 1 `d` 1
   , iaspects = [ Timeout 10
+               , AddSkill SkArmorMelee 20
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 20 ]
@@ -2518,7 +2528,7 @@ pipe = staff
   { iname    = "metal pipe"
   , ifreq    = [(HANDLE, 20), (POLE_OR_HANDLE, 10), (S_PIPE, 1)]
   , iflavour = zipFancy [BrBlue]
-  , idesc    = "A meter long, light, strong and hard alloy pipe."
+  , idesc    = "Around a meter long, light, strong and hard alloy pipe."
   }
 longPole = staff
   { iname    = "long pole"
@@ -2527,10 +2537,11 @@ longPole = staff
   , iweight  = 3000
   , idamage  = 1 `d` 1
   , iaspects = [ Timeout 10
+               , AddSkill SkArmorMelee 20
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 20 ]
-  , idesc    = "Too meters long, strong and light pole."
+  , idesc    = "Over two meters long, strong and light pole."
   }
 
 -- ** Treasure

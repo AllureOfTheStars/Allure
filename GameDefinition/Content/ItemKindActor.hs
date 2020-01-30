@@ -625,7 +625,7 @@ rhinoceros = ItemKind
                , AddSkill SkSpeed 27, AddSkill SkNocto 2
                , AddSkill SkAggression 2
                , AddSkill SkAlter (-1)  -- can't use normal stairs nor dig;
-                                        -- a weak miniboss
+                                        -- a weak miniboss; can use easy stairs
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "The last of its kind. Blind with rage, or perhaps due to the postoperative scars. A huge mass of muscle that charges at deadly speed."
@@ -1069,8 +1069,7 @@ cleanerRobot = ItemKind
   , ifreq    = [(ROBOT, 100), (MOBILE, 1)]
   , iflavour = zipPlain [BrGreen]
   , icount   = 1
-  , irarity  = [(11 * 10/15, 0), (12 * 10/15, 1000), (13 * 10/15, 0)]
-                 -- unique, appears at 11 of 12
+  , irarity  = [(11 * 10/15, 0), (12 * 10/15, 1000), (13 * 10/15, 0)]  -- unique
   , iverbHit = "clank"
   , iweight  = 800000
   , idamage  = 0
@@ -1082,7 +1081,8 @@ cleanerRobot = ItemKind
                    -- loses a lot of sight after summoning
                , AddSkill SkSpeed 18, AddSkill SkNocto 2
                , AddSkill SkAggression 1
-                   -- can't use normal stairs nor dig; a weak miniboss
+                   -- can't use normal stairs nor dig; a weak miniboss;
+                   -- however, it can use the easy stairs and so change levels
                , AddSkill SkApply 1  -- can apply the hooter
                , SetFlag Durable ]
   , ieffects = []
