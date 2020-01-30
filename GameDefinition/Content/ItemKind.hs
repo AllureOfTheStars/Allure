@@ -2485,7 +2485,7 @@ cleaningPole = grassStitcher
 staff = grassStitcher
   { isymbol  = symbolHafted
   , iname    = "wooden staff"
-  , ifreq    = [(HANDLE, 80), (S_STAFF, 1)]
+  , ifreq    = [(HANDLE, 80), (POLE_OR_HANDLE, 60), (S_STAFF, 1)]
   , iflavour = zipPlain [BrYellow]
   , iverbHit = "prod"
   , idamage  = 2 `d` 1
@@ -2497,13 +2497,13 @@ staff = grassStitcher
   }
 pipe = staff
   { iname    = "metal pipe"
-  , ifreq    = [(HANDLE, 20), (S_PIPE, 1)]
+  , ifreq    = [(HANDLE, 20), (POLE_OR_HANDLE, 10), (S_PIPE, 1)]
   , iflavour = zipFancy [BrBlue]
   , idesc    = "A meter long, light, strong and hard alloy pipe."
   }
 longPole = staff
   { iname    = "long pole"
-  , ifreq    = [(POLE, 90)]
+  , ifreq    = [(POLE, 90), (POLE_OR_HANDLE, 30)]
   , iflavour = zipPlain [BrYellow]
   , iweight  = 3000
   , idamage  = 1 `d` 1
