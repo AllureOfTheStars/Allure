@@ -621,7 +621,9 @@ potionTemplate = ItemKind
 potion1 = potionTemplate
   { ifreq    = [ (COMMON_ITEM, 100), (S_PERFUME_POTION, 1)
                , (ANY_POTION, 100), (ANY_GLASS, 100) ]
-  , iaspects = ELabel "of perfume"  -- very useful, despite appearances
+  , icount   = 3 `dL` 1  -- very useful, despite appearances;
+                         -- AI heroes can't craft and die horribly without it
+  , iaspects = ELabel "of perfume"
                : iaspects potionTemplate
   , ieffects = [ Impress, toOrganGood S_ROSE_SMELLING (50 + 1 `d` 10)
                , OnSmash ApplyPerfume, OnSmash (Explode S_FRAGRANCE) ]
