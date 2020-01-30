@@ -681,20 +681,25 @@ renumberCaves :: Int -> ([Int], [GroupName CaveKind])
               -> ([Int], [GroupName CaveKind])
 renumberCaves offset (ns, l) = (map (+ offset) ns, l)
 
-cavesDig = reverse $ concat $ zipWith (map . renumberCaves)
-                                      [0, 15 ..]
-                                      (replicate 100 listCrawl)
+cavesDig =
+  reverse $ concat
+  $ zipWith (map . renumberCaves)
+            [0, 15 ..]
+            (replicate 10 listCrawl)
+--            [0, 2 ..]
+--            (replicate 500 [([1], [CAVE_OUTERMOST]),([2], [CAVE_EXIT])])
 
 cavesSee = let numberCaves n c = ([n], [c])
            in reverse $ zipWith numberCaves [1..]
-              $ concatMap (replicate 8) allCaves
+              $ concatMap (replicate 10) allCaves
 
 allCaves :: [GroupName CaveKind]
 allCaves =
   [ CAVE_RAID, CAVE_BRAWL, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_ESCAPE, CAVE_ZOO
   , CAVE_AMBUSH
-  , CAVE_ROGUE, CAVE_RESIDENTIAL, CAVE_LABORATORY, CAVE_ARENA, CAVE_CASINO
-  , CAVE_MUSEUM, CAVE_NOISE, CAVE_POWER, CAVE_OUTERMOST, CAVE_EXIT ]
+  , CAVE_OUTERMOST, CAVE_SHALLOW_ROGUE, CAVE_BRIDGE, CAVE_NOISE, CAVE_ROGUE
+  , CAVE_ARENA, CAVE_RESIDENTIAL, CAVE_LABORATORY, CAVE_MUSEUM, CAVE_EXIT
+  , CAVE_CASINO, CAVE_POWER ]
 
 cavesSafari = reverse [ ([5], [CAVE_SAFARI_1])
                       , ([10], [CAVE_SAFARI_2])
