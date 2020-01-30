@@ -332,7 +332,7 @@ pillar = PlaceKind
   }
 pillar2 = pillar
   { pname    = "a mall"
-  , pfreq    = [(ROGUE, 10000), (ARENA, 100000), (EMPTY, 5000)]
+  , pfreq    = [(ROGUE, 10000), (ARENA, 100000), (EMPTY, 4000)]
   , ptopLeft = [ "0····"
                , "·····"
                , "·····"
@@ -379,7 +379,7 @@ pillar5 = pillar
 pillar6 = pillar
   { pname    = "a jewelry store"
   , pfreq    = [ (ROGUE, 1200), (ARENA, 6000)
-               , (MUSEUM, 7000), (EMPTY, 500) ]
+               , (MUSEUM, 7000), (EMPTY, 600) ]
   , ptopLeft = [ "0f··"
                , "ff%·"
                , "·%&·"
@@ -394,7 +394,7 @@ colonnade = PlaceKind
   { psymbol  = 'c'
   , pname    = "a colonnade"
   , pfreq    = [ (ROGUE, 12), (NOISE, 1000), (ESCAPE, 200)
-               , (EXIT, 180) ]
+               , (EXIT, 150) ]
   , prarity  = [(1, 12), (10, 12)]
   , pcover   = CAlternate
   , pfence   = FFloor
@@ -540,7 +540,7 @@ fogClump = PlaceKind
   , poverrideLit = [('f', FOG_CLUMP_LIT), (';', S_FOG_LIT)]
   }
 fogClump2 = fogClump
-  { pfreq    = [(EMPTY, 3000), (SHOOTOUT, 400), (ESCAPE, 100)]
+  { pfreq    = [(EMPTY, 2200), (SHOOTOUT, 400), (ESCAPE, 100)]
   , ptopLeft = [ "X;f"
                , "f;f"
                , ";;f"
@@ -550,7 +550,7 @@ fogClump2 = fogClump
 smokeClump = PlaceKind
   { psymbol  = 's'
   , pname    = "a smoky patch"
-  , pfreq    = [(EXIT, 50), (ZOO, 40), (AMBUSH, 50)]
+  , pfreq    = [(EXIT, 70), (ZOO, 40), (AMBUSH, 50)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -1181,7 +1181,7 @@ oval = PlaceKind
   { psymbol  = 'o'
   , pname    = "a dome"
   , pfreq    = [ (ROGUE, 20000), (ARENA, 30000), (MUSEUM, 30000)
-               , (LABORATORY, 50000), (EMPTY, 5000), (EXIT, 5000)
+               , (LABORATORY, 50000), (EMPTY, 4000), (EXIT, 5000)
                , (AMBUSH, 20000) ]
   , prarity  = [(1, 1)]
   , pcover   = CStretch
@@ -1247,7 +1247,7 @@ ovalBasin = oval
 ovalBasin2 = oval
   { pname    = "a water basin"
   , pfreq    = [ (ROGUE, 600), (ARENA, 10000), (LABORATORY, 3000)
-               , (EMPTY, 1800) ]
+               , (EMPTY, 800) ]
   , pfence   = FWall
   , ptopLeft = [ "#···"
                , "··~~"
@@ -1293,7 +1293,7 @@ maze = PlaceKind
   { psymbol  = 'm'
   , pname    = "an intricate maze"
   , pfreq    = [ (ROGUE, 60), (LABORATORY, 1500), (ARENA, 3)
-               , (MUSEUM, 3), (EXIT, 300) ]
+               , (MUSEUM, 3), (EXIT, 200) ]
   , prarity  = [(1, 1)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -1312,7 +1312,7 @@ maze = PlaceKind
   }
 maze2 = maze
   { pfreq    = [ (ROGUE, 180), (LABORATORY, 12000), (ARENA, 6)
-               , (MUSEUM, 6), (EXIT, 360) ]
+               , (MUSEUM, 6), (EXIT, 300) ]
   , ptopLeft = [ "#·##·"
                , "·#··#"
                , "···#·"
@@ -1320,7 +1320,7 @@ maze2 = maze
   }
 maze3 = maze
   { pfreq    = [ (ROGUE, 300), (LABORATORY, 15000), (ARENA, 9)
-               , (EXIT, 400) ]
+               , (EXIT, 300) ]
   , ptopLeft = [ "##·##·"
                , "#·#··#"
                , "~·%···"
@@ -1328,7 +1328,7 @@ maze3 = maze
   }
 mazeBig = maze
   { pfreq    = [ (ROGUE, 600), (LABORATORY, 3000), (ARENA, 5000)
-               , (EXIT, 500) ]
+               , (EXIT, 400) ]
   , pfence   = FNone
   , ptopLeft = [ "X$$$$"
                , "$·##·"
@@ -1352,7 +1352,7 @@ cells = PlaceKind
   { psymbol  = '#'
   , pname    = "air filters"
   , pfreq    = [ (ROGUE, 40), (LABORATORY, 48), (MUSEUM, 10)
-               , (EXIT, 240), (NOISE, 480)
+               , (EXIT, 150), (NOISE, 480)
                , (ZOO, 700), (AMBUSH, 80) ]
   , prarity  = [(1, 1)]
   , pcover   = CReflect
@@ -1386,14 +1386,14 @@ cells3 = cells
 cells4 = cells
   { pname    = "a power node"
   , ptopLeft = [ "·o#"
-               , "b#o"
+               , "oob"
                , "#b·"
                ]
   }
 cells5 = cells  -- this one is distinct enough from others, so needs a boost
   { pname    = "broken robot holds"
   , pfreq    = [ (ROGUE, 20), (LABORATORY, 15)
-               , (EMPTY, 80), (EXIT, 90), (NOISE, 150) ]
+               , (EMPTY, 80), (EXIT, 70), (NOISE, 150) ]
   , ptopLeft = [ "··#"
                , "··#"
                , "##o"
@@ -1409,7 +1409,7 @@ cells6 = cells
 cells7 = cells
   { pname    = "a defunct control room"
   , pfreq    = [ (ROGUE, 5), (LABORATORY, 20)
-               , (EMPTY, 100), (EXIT, 30), (NOISE, 100), (AMBUSH, 50) ]
+               , (EMPTY, 100), (EXIT, 20), (NOISE, 100), (AMBUSH, 50) ]
   , pfence   = FFloor
   , ptopLeft = [ "%·o"
                , "·#o"
@@ -1435,7 +1435,7 @@ tank = PlaceKind
   }
 tank2 = tank
   { pname    = "a barrel stack"
-  , pfreq    = [(EMPTY, 60), (EXIT, 20), (NOISE, 1), (BATTLE, 1)]
+  , pfreq    = [(EMPTY, 30), (EXIT, 10), (NOISE, 1), (BATTLE, 1)]
   , ptopLeft = [ "b"
                ]
   }
@@ -1463,7 +1463,7 @@ tank5 = tank
   }
 tank6 = tank
   { pname    = "a barrel yard"
-  , pfreq    = [(EMPTY, 10000), (EXIT, 3500), (NOISE, 3500), (BATTLE, 1500)]
+  , pfreq    = [(EMPTY, 15000), (EXIT, 5000), (NOISE, 5000), (BATTLE, 2500)]
   , pcover   = CAlternate
   , ptopLeft = [ "bbbX"
                , "bbbX"
@@ -1472,7 +1472,7 @@ tank6 = tank
                ]
   }
 tank7 = tank
-  { pfreq    = [(EMPTY, 300), (EXIT, 100), (NOISE, 100), (BATTLE, 50)]
+  { pfreq    = [(EMPTY, 300), (EXIT, 50), (NOISE, 100), (BATTLE, 50)]
   , ptopLeft = [ "rr#"
                , "r##"
                , "###"
@@ -1498,7 +1498,7 @@ tank9 = tank
   }
 tank10 = tank
   { pname    = "a cistern"
-  , pfreq    = [(EMPTY, 700), (EXIT, 250), (NOISE, 250), (BATTLE, 125)]
+  , pfreq    = [(EMPTY, 500), (EXIT, 150), (NOISE, 150), (BATTLE, 70)]
   , ptopLeft = [ "XXr#"
                , "Xr##"
                , "r###"
@@ -1507,7 +1507,7 @@ tank10 = tank
   }
 tank11 = tank
   { pname    = "a barrel yard"
-  , pfreq    = [(EMPTY, 500), (EXIT, 150), (NOISE, 150), (BATTLE, 70)]
+  , pfreq    = [(EMPTY, 700), (EXIT, 250), (NOISE, 250), (BATTLE, 125)]
   , pcover   = CReflect
   , ptopLeft = [ "bbbXX"
                , "bbbbX"
