@@ -356,8 +356,8 @@ elbow = ItemKind
                , (S_EYE_6, COrgan), (S_EAR_8, COrgan)
                    -- too powerful to get stronger sight
                , (S_SAPIENT_BRAIN, COrgan)
-               , (ANY_ARROW, CStash), (ANY_ARROW, CStash)
-               , (WEAK_ARROW, CStash), (WEAK_ARROW, CStash) ]
+               , (ANY_ARROW, CEqp), (ANY_ARROW, CStash)
+               , (WEAK_ARROW, CEqp), (WEAK_ARROW, CStash) ]
   }
 torsor = ItemKind
   { isymbol  = 'M'
@@ -386,8 +386,8 @@ torsor = ItemKind
                , (S_SPEED_GLAND_5, COrgan)
                , (S_EYE_6, COrgan), (S_EAR_8, COrgan)
                , (S_SAPIENT_BRAIN, COrgan)
-               , (GEM, CStash), (GEM, CStash)
-               , (GEM, CStash), (GEM, CStash) ]
+               , (GEM, CEqp), (GEM, CStash)
+               , (GEM, CEqp), (GEM, CStash) ]
   }
 
 -- * Animals
