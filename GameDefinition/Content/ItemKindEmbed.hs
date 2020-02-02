@@ -820,22 +820,16 @@ combineEffect :: Text -> [( [(Int, GroupName ItemKind)]
               -> Effect
 combineEffect msg ass =
   let createOne :: (Int, GroupName ItemKind) -> Effect
-      createOne (count, grp) =
-        CreateItem (Just count) CGround grp timerNone
+      createOne (count, grp) = CreateItem (Just count) CGround grp timerNone
       createList :: [(Int, GroupName ItemKind)] -> Effect
-      createList [] = VerbMsg "nothing useful emerged from the crafting"
-      createList [cooked] = createOne cooked
-      createList (cooked : rest) =
-        createOne cooked
-        `AndEffect`
-        createList rest
+      createList = SeqEffect . map createOne
       cookOne :: ( [(Int, GroupName ItemKind)]
                  , [(Int, GroupName ItemKind)]
                  , [(Int, GroupName ItemKind)] )
               -> Effect
       cookOne (tools, raw, cooked) =
         ConsumeItems tools raw  -- either all destroyed or none
-        `AndEffect`
+        `AndEffect`  -- either destroy and create, or none
         createList cooked
       f :: ( [(Int, GroupName ItemKind)]
            , [(Int, GroupName ItemKind)]

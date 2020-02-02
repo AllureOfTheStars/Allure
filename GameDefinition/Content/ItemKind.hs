@@ -2415,9 +2415,9 @@ grassStitcher = ItemKind
   , ieffects = -- TODO: instead introduce items with finite number of charges?
                [OneOf [ DestroyItem 1 1 CEqp S_GRASS_STITCHER
                         `AndEffect`
-                        CreateItem Nothing CStash HANDLE timerNone
-                        `AndEffect`
-                        CreateItem Nothing CStash STEEL_SCRAP timerNone
+                        SeqEffect
+                          [ CreateItem Nothing CStash HANDLE timerNone
+                          , CreateItem Nothing CStash STEEL_SCRAP timerNone ]
                       , gardenMsg, gardenMsg, gardenMsg ]]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Grass_Stitcher
   , ikit     = []
@@ -2434,9 +2434,9 @@ ladiesFork = grassStitcher
                , toVelocity 40 ]
   , ieffects = [OneOf [ DestroyItem 1 1 CEqp S_LADIES_FORK
                         `AndEffect`
-                        CreateItem Nothing CStash HANDLE timerNone
-                        `AndEffect`
-                        CreateItem Nothing CStash STEEL_SCRAP timerNone
+                        SeqEffect
+                          [ CreateItem Nothing CStash HANDLE timerNone
+                          , CreateItem Nothing CStash STEEL_SCRAP timerNone ]
                       , gardenMsg, gardenMsg
                       , gardenMsg, gardenMsg, gardenMsg ]]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Garden_fork
@@ -2455,9 +2455,9 @@ spade = grassStitcher
                , toVelocity 40 ]
   , ieffects = [OneOf [ DestroyItem 1 1 CEqp S_SPADE
                         `AndEffect`
-                        CreateItem Nothing CStash HANDLE timerNone
-                        `AndEffect`
-                        CreateItem Nothing CStash STEEL_SCRAP timerNone
+                        SeqEffect
+                          [ CreateItem Nothing CStash HANDLE timerNone
+                          , CreateItem Nothing CStash STEEL_SCRAP timerNone ]
                       , gardenMsg, gardenMsg, gardenMsg, gardenMsg
                       , gardenMsg, gardenMsg, gardenMsg ]]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Spade
@@ -2476,9 +2476,9 @@ hoe = grassStitcher
                , toVelocity 40 ]
   , ieffects = [OneOf [ DestroyItem 1 1 CEqp S_HOE
                         `AndEffect`
-                        CreateItem Nothing CStash HANDLE timerNone
-                        `AndEffect`
-                        CreateItem Nothing CStash STEEL_SCRAP timerNone
+                        SeqEffect
+                          [ CreateItem Nothing CStash HANDLE timerNone
+                          , CreateItem Nothing CStash STEEL_SCRAP timerNone ]
                       , gardenMsg, gardenMsg, gardenMsg
                       , gardenMsg, gardenMsg, gardenMsg ]]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Hoe_(tool)
