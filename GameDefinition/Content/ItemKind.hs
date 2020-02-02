@@ -2490,7 +2490,7 @@ treePruner = grassStitcher
   , irarity  = [(8, 15)]
   , iweight  = 4500
   , idamage  = 4 `d` 1
-  , iaspects = [ Timeout 12
+  , iaspects = [ Timeout 10
                , AddSkill SkArmorMelee 20
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
@@ -2505,7 +2505,7 @@ cleaningPole = grassStitcher
   , irarity  = [(8, 10)]
   , iweight  = 3500
   , idamage  = 1 `d` 1
-  , iaspects = [ Timeout 10
+  , iaspects = [ Timeout 5
                , AddSkill SkArmorMelee 20
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
@@ -2520,7 +2520,8 @@ staff = grassStitcher
   , iflavour = zipPlain [BrYellow]
   , iverbHit = "prod"
   , idamage  = 2 `d` 1
-  , iaspects = [ SetFlag Durable, SetFlag Meleeable
+  , iaspects = [ Timeout 2  -- no part sharp, hence trivial to position
+               , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
                , toVelocity 40 ]
   , ieffects = []
@@ -2538,7 +2539,7 @@ longPole = staff
   , iflavour = zipPlain [BrYellow]
   , iweight  = 3000
   , idamage  = 1 `d` 1
-  , iaspects = [ Timeout 10
+  , iaspects = [ Timeout 6
                , AddSkill SkArmorMelee 20
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
