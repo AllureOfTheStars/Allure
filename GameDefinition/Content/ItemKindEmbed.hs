@@ -815,6 +815,7 @@ workshopBench = ItemKind
   }
 
 combineEffect :: Text -> [( [(Int, GroupName ItemKind)]
+                          , [(Int, GroupName ItemKind)]
                           , [(Int, GroupName ItemKind)] )]
               -> Effect
 combineEffect msg ass =
@@ -829,28 +830,31 @@ combineEffect msg ass =
         `AndEffect`
         createList rest
       cookOne :: ( [(Int, GroupName ItemKind)]
+                 , [(Int, GroupName ItemKind)]
                  , [(Int, GroupName ItemKind)] )
               -> Effect
-      cookOne (raw, cooked) =
-        ConsumeItems raw  -- either all destroyed or none
+      cookOne (tools, raw, cooked) =
+        ConsumeItems tools raw  -- either all destroyed or none
         `AndEffect`
         createList cooked
       f :: ( [(Int, GroupName ItemKind)]
+           , [(Int, GroupName ItemKind)]
            , [(Int, GroupName ItemKind)] )
         -> Effect
         -> Effect
-      f rawCooked eff = cookOne rawCooked `OrEffect` eff
+      f roolsRawCooked eff = cookOne roolsRawCooked `OrEffect` eff
       initial = VerbMsg msg  -- noop, really
   in foldr f initial ass
 
 cookEffect :: Effect
 cookEffect = combineEffect "have nothing to cook"
-             $ map (\(raw, cooked) -> ([(1, raw)], [(1, cooked)])) cookingAssocs
+             $ map (\(raw, cooked) ->
+                      ([], [(1, raw)], [(1, cooked)])) cookingAssocs
 
 sharpeningEffect :: Effect
 sharpeningEffect =
   combineEffect "lack a sharpening tool or a weapon to sharpen"
-  $ map (\(raw, cooked) -> (raw, [(1, cooked)])) sharpeningAssocs
+  $ map (\(tools, raw, cooked) -> (tools, raw, [(1, cooked)])) sharpeningAssocs
 
 workshopEffect :: Effect
 workshopEffect = combineEffect "have not enough tools and components"
@@ -869,40 +873,47 @@ cookingAssocs =
   , (S_PUMPKIN, S_COOKED_PUMPKIN)
   ]
 
-sharpeningAssocs :: [([(Int, GroupName ItemKind)], GroupName ItemKind)]
+sharpeningAssocs :: [( [(Int, GroupName ItemKind)]
+                     , [(Int, GroupName ItemKind)]
+                     , GroupName ItemKind )]
 sharpeningAssocs =
-  [ ([(1, SHARPENING_TOOL), (1, S_HARPOON_CARGO)], S_HARPOON_SHARP)
-  , ([(1, SHARPENING_TOOL), (1, BREACHING_TOOL), (1, S_PIPE)], S_SHARPENED_PIPE)
-  , ([(1, SHARPENING_TOOL), (1, S_SHIELD_BLUNT)], S_SHIELD_SHARP)
-  , ([(1, SHARPENING_TOOL), (1, S_BLUNT_SHORT_HAMMER)], S_SHARP_SHORT_HAMMER)
-  , ([(1, SHARPENING_TOOL), (1, S_BLUNT_LONG_HAMMER)], S_SHARP_LONG_HAMMER)
-  , ([(2, SHARPENING_TOOL), (1, S_CLEAVER)], S_DAGGER)
-  , ([(1, SHARPENING_TOOL), (1, S_RAPIER_BLUNT)], S_RAPIER_SHARP)
-  , ([(2, SHARPENING_TOOL), (1, S_POLE_CLEAVER)], S_LONG_SPEAR)
-  , ([(1, SHARPENING_TOOL), (1, S_HALBERD_BLUNT)], S_HALBERD_SHARP)
+  [ ([(1, SHARPENING_TOOL)], [(1, S_HARPOON_CARGO)], S_HARPOON_SHARP)
+  , ( [(1, SHARPENING_TOOL)], [(1, BREACHING_TOOL), (1, S_PIPE)]
+    , S_SHARPENED_PIPE )
+  , ([(1, SHARPENING_TOOL)], [(1, S_SHIELD_BLUNT)], S_SHIELD_SHARP)
+  , ([(1, SHARPENING_TOOL)], [(1, S_BLUNT_SHORT_HAMMER)], S_SHARP_SHORT_HAMMER)
+  , ([(1, SHARPENING_TOOL)], [(1, S_BLUNT_LONG_HAMMER)], S_SHARP_LONG_HAMMER)
+  , ([(2, SHARPENING_TOOL)], [(1, S_CLEAVER)], S_DAGGER)
+  , ([(1, SHARPENING_TOOL)], [(1, S_RAPIER_BLUNT)], S_RAPIER_SHARP)
+  , ([(2, SHARPENING_TOOL)], [(1, S_POLE_CLEAVER)], S_LONG_SPEAR)
+  , ([(1, SHARPENING_TOOL)], [(1, S_HALBERD_BLUNT)], S_HALBERD_SHARP)
   ]
 
-workshopAssocs :: [([(Int, GroupName ItemKind)], [(Int, GroupName ItemKind)])]
+workshopAssocs :: [( [(Int, GroupName ItemKind)]
+                   , [(Int, GroupName ItemKind)]
+                   , [(Int, GroupName ItemKind)] )]
 workshopAssocs =
-  [ ( [(1, BONDING_TOOL), (1, POLE), (1, S_BLUNT_SHORT_HAMMER)]
+  [ ( [(1, BONDING_TOOL)], [(1, POLE), (1, S_BLUNT_SHORT_HAMMER)]
     , [(1, S_BLUNT_LONG_HAMMER), (1, HANDLE)] )
-  , ( [(1, BONDING_TOOL), (1, POLE), (1, S_SHARP_SHORT_HAMMER)]
+  , ( [(1, BONDING_TOOL)], [(1, POLE), (1, S_SHARP_SHORT_HAMMER)]
     , [(1, S_SHARP_LONG_HAMMER), (1, HANDLE)] )
-  , ( [(1, BONDING_TOOL), (1, POLE), (1, S_FIRE_AXE)]
+  , ( [(1, BONDING_TOOL)], [(1, POLE), (1, S_FIRE_AXE)]
     , [(1, S_POLL_AXE), (1, HANDLE)] )
-  , ( [(2, BONDING_TOOL), (1, POLE), (1, S_CLEAVER)]
+  , ( [(2, BONDING_TOOL)], [(1, POLE), (1, S_CLEAVER)]
     , [(1, S_POLE_CLEAVER)] )
-  , ( [(2, BONDING_TOOL), (1, POLE), (1, S_DAGGER)]
+  , ( [(2, BONDING_TOOL)], [(1, POLE), (1, S_DAGGER)]
     , [(1, S_LONG_SPEAR)] )
-  , ( [ (3, BONDING_TOOL), (1, S_SPACESUIT_JACKET), (1, S_SPACESUIT_TROUSERS)
-      , (2, S_SPACESUIT_GLOVE), (1, S_SPACESUIT_HELMET), (2, S_SPACESUIT_BOOT) ]
+  , ( [(3, BONDING_TOOL)]
+    , [ (1, S_SPACESUIT_JACKET), (1, S_SPACESUIT_TROUSERS)
+      , (2, S_SPACESUIT_GLOVE), (1, S_SPACESUIT_HELMET)
+      , (2, S_SPACESUIT_BOOT) ]
     , [(2, S_SPACESUIT)] )
   -- Recipes that destroy more useful things than other recipes come last:
-  , ( [(1, WIRECUTTING_TOOL), (1, BONDING_TOOL), (1, S_SPACESUIT_TORN)]
+  , ( [(1, WIRECUTTING_TOOL), (1, BONDING_TOOL)], [(1, S_SPACESUIT_TORN)]
     , [(1, SPACESUIT_PART)] )
-  , ([(3, WASTE_CONTAINER)], [(1, S_REFRIGERATION_COIL)])
-  , ([(1, HANDLE_AND_STEEL)], [(1, HANDLE), (1, STEEL_SCRAP)])
-  , ([(1, POLE_AND_STEEL)], [(1, POLE), (1, STEEL_SCRAP)])
+  , ([], [(3, WASTE_CONTAINER)], [(1, S_REFRIGERATION_COIL)])
+  , ([], [(1, HANDLE_AND_STEEL)], [(1, HANDLE), (1, STEEL_SCRAP)])
+  , ([], [(1, POLE_AND_STEEL)], [(1, POLE), (1, STEEL_SCRAP)])
       -- this rule magically changes stiff poles into jumping poles; who cares
-  , ([(1, WATER_SOURCE), (1, S_PERFUME_POTION)], [(5, S_ROSE_WATER_FLASK)])
+  , ([], [(1, WATER_SOURCE), (1, S_PERFUME_POTION)], [(5, S_ROSE_WATER_FLASK)])
   ]
