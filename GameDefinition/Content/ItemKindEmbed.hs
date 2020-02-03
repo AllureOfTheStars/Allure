@@ -305,7 +305,7 @@ fireSmall = ItemKind
   , iaspects = [ELabel "of roasting", SetFlag Durable]
   , ieffects = [ Burn 1, Explode S_SINGLE_SPARK
                , OnCombine cookEffect ]
-  , idesc    = "A few shrubs and embers, glowing brightly."
+  , idesc    = "A few embers and wisps of flame, glowing brightly."
   , ikit     = []
   }
 fireBig = fireSmall
