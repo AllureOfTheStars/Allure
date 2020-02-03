@@ -304,7 +304,7 @@ fireSmall = ItemKind
   , idamage  = 0
   , iaspects = [ELabel "of roasting", SetFlag Durable]
   , ieffects = [ Burn 1, Explode S_SINGLE_SPARK
-               , cookEffect, OnCombine cookEffect ]
+               , OnCombine cookEffect ]
   , idesc    = "A few shrubs and embers, glowing brightly."
   , ikit     = []
   }
@@ -480,7 +480,7 @@ shallowWater = ItemKind
   , iweight  = 10000
   , idamage  = 0
   , iaspects = [SetFlag Durable]
-  , ieffects = [ParalyzeInWater 2, sharpeningEffect, OnCombine sharpeningEffect]
+  , ieffects = [ParalyzeInWater 2, OnCombine sharpeningEffect]
   , idesc    = "Slows down movement. Essential when sharpening weapons."
   , ikit     = []
   }
@@ -809,7 +809,7 @@ workshopBench = ItemKind
   , iweight  = 100000
   , idamage  = 0
   , iaspects = [SetFlag Durable]
-  , ieffects = [workshopEffect, OnCombine workshopEffect]
+  , ieffects = [OnCombine workshopEffect]
   , idesc    = "A sturdy table with an anvil, a vice and an overhang of pipes, tubes, wires and probes."
   , ikit     = []
   }
