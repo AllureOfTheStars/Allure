@@ -841,7 +841,7 @@ shallowWater2 = shallowWater
   }
 floorRed = floorCorridor
   { tname    = "emergency walkway"
-  , tfreq    = [ (TRAIL_LIT, 70), (SAFE_TRAIL_LIT, 70)
+  , tfreq    = [ (TRAIL_LIT, 50), (SAFE_TRAIL_LIT, 50)
                , (LIFT_TERMINAL_LIT, 6), (LIFT_TERMINAL_DARK, 6) ]
   , tcolor   = BrRed
   , tcolor2  = Red
@@ -849,7 +849,7 @@ floorRed = floorCorridor
   }
 floorBlue = floorRed
   { tname    = "frozen path"
-  , tfreq    = [(TRAIL_LIT, 100), (S_FROZEN_PATH, 1)]
+  , tfreq    = [(TRAIL_LIT, 50), (S_FROZEN_PATH, 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 0
