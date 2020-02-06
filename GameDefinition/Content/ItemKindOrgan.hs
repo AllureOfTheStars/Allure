@@ -533,7 +533,7 @@ boilingVent = armoredSkin
   , ifreq    = [(S_BOILING_VENT, 1)]
   , iflavour = zipPlain [BrGreen]
   , iverbHit = "menace"
-  , iaspects = [ Timeout $ (2 + 1 `d` 3) * 5
+  , iaspects = [ Timeout $ (4 + 1 `d` 3) * 5
                , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [RefillHP 2, Explode S_BOILING_WATER]
   , idesc    = ""
@@ -553,7 +553,7 @@ sulfurVent = armoredSkin
   , ifreq    = [(S_MEDBOT_VENT, 1)]
   , iflavour = zipPlain [BrYellow]
   , iverbHit = "menace"
-  , iaspects = [ Timeout $ (2 + 1 `d` 3) * 5
+  , iaspects = [ Timeout $ (3 + 1 `d` 3) * 5
                , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [RefillHP 2, Explode S_MELEE_PROTECTIVE_BALM]
   , idesc    = ""
@@ -723,7 +723,7 @@ dustVent = armoredSkin
   , ifreq    = [(S_DUST_VENT, 1)]
   , iflavour = zipPlain [BrCyan]
   , iverbHit = "menace"
-  , iaspects = [ Timeout $ (2 + 1 `d` 3) * 5
+  , iaspects = [ Timeout $ (5 + 1 `d` 3) * 5
                , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [RefillHP 2, Explode S_FOCUSED_fLASH]
   , idesc    = ""
@@ -742,7 +742,7 @@ fuelVent = armoredSkin
   , ifreq    = [(S_FUEL_VENT, 1)]
   , iflavour = zipPlain [BrRed]
   , iverbHit = "menace"
-  , iaspects = [ Timeout $ (2 + 1 `d` 3) * 5
+  , iaspects = [ Timeout $ (3 + 1 `d` 3) * 5
                , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [RefillHP 2, Explode S_BURNING_OIL_3]
   , idesc    = ""
