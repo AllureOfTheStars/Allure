@@ -774,12 +774,13 @@ floorCorridor = TileKind
   }
 floorArena = floorCorridor
   { tfreq    = [ (FLOOR_ARENA_LIT, 1), (ARENA_SET_LIT, 200)
-               , (MUSEUM_SET_LIT, 400), (ZOO_SET_LIT, 600) ]
+               , (MUSEUM_SET_LIT, 400), (NOISE_SET_LIT, 50), (POWER_SET_LIT, 50)
+               , (EMPTY_SET_LIT, 100), (EXIT_SET_LIT, 100), (ZOO_SET_LIT, 600) ]
   }
 floorDamp = floorArena
   { tname    = "damp floor"
-  , tfreq    = [ (NOISE_SET_LIT, 600), (EMPTY_SET_LIT, 900)
-               , (DAMP_FLOOR_LIT, 1)
+  , tfreq    = [ (NOISE_SET_LIT, 550), (EMPTY_SET_LIT, 800)
+               , (ESCAPE_SET_LIT, 200), (DAMP_FLOOR_LIT, 1)
                , (STAIR_TERMINAL_LIT, 20), (LIFT_TERMINAL_LIT, 6) ]
   , tfeature = ChangeWith True [(1, OIL_SOURCE)] S_OIL_SPILL  -- oil floats
                : ChangeWith True [(1, COLD_SOURCE)] S_FROZEN_PATH
@@ -788,9 +789,9 @@ floorDamp = floorArena
   }
 floorDirt = floorArena
   { tname    = "dirt"
-  , tfreq    = [ (BRAWL_SET_LIT, 1000), (SHOOTOUT_SET_LIT, 1000)
-               , (HUNT_SET_LIT, 1000), (ESCAPE_SET_LIT, 1000)
-               , (AMBUSH_SET_LIT, 1000), (BATTLE_SET_LIT, 1000)
+  , tfreq    = [ (BRAWL_SET_LIT, 1000), (SHOOTOUT_SET_LIT, 900)
+               , (HUNT_SET_LIT, 900), (ESCAPE_SET_LIT, 800)
+               , (AMBUSH_SET_LIT, 1000), (BATTLE_SET_LIT, 500)
                , (DIRT_LIT, 1) ]
   }
 floorDirtSpice = floorDirt
@@ -845,7 +846,9 @@ floorRed = floorCorridor
                , (LIFT_TERMINAL_LIT, 6), (LIFT_TERMINAL_DARK, 6) ]
   , tcolor   = BrRed
   , tcolor2  = Red
-  , tfeature = [Embed STRAIGHT_PATH, Trail, Walkable, Clear]
+  , tfeature =  [Embed STRAIGHT_PATH, Trail, Walkable, Clear
+               , ChangeWith True [(1, OIL_SOURCE)] S_OIL_SPILL ]
+                   -- non-porous enough
   }
 floorBlue = floorRed
   { tname    = "frozen path"
@@ -975,7 +978,7 @@ liftShaft = pillar
   }
 rock = pillar
   { tname    = "rock"
-  , tfreq    = [(ARENA_SET_LIT, 4), (ARENA_SET_DARK, 4), (BRAWL_SET_LIT, 30)]
+  , tfreq    = [(ARENA_SET_LIT, 4), (BRAWL_SET_LIT, 30)]
   }
 pillarCache2 = pillarCache
   { tname    = "rack of deposit boxes"
@@ -987,7 +990,7 @@ pillarCache2 = pillarCache
   }
 pillarCache3 = pillarCache
   { tname    = "rack of sealed deposit boxes"
-  , tfreq    = [ (CACHE_DEPOSIT, 33)
+  , tfreq    = [ (CACHE_DEPOSIT, 33), (ARENA_SET_DARK, 1)
                , (STAIR_TERMINAL_LIT, 1), (STAIR_TERMINAL_DARK, 1) ]
   , tfeature = [ ChangeWith False [(1, BREACHING_TOOL)] CACHE_DEPOSIT_BREACHED
                    -- @BLAST_SOURCE@ not enough
@@ -1246,7 +1249,8 @@ underbrushBurning = TileKind
 
 floorOily = floorArena
   { tname    = "oily floor"
-  , tfreq    = [ (POWER_SET_LIT, 600), (EXIT_SET_LIT, 900)
+  , tfreq    = [ (MUSEUM_SET_LIT, 40), (POWER_SET_LIT, 550), (EXIT_SET_LIT, 800)
+               , (BATTLE_SET_LIT, 1000)
                , (OILY_FLOOR_LIT, 1), (RUBBLE_OR_WASTE_LIT, 1)
                , (OIL_RESIDUE_LIT, 4) ]
   , tfeature = ChangeWith True [(1, OIL_SOURCE)] S_OIL_SPILL
@@ -1302,10 +1306,10 @@ underbrush = TileKind
   , tname    = "underbrush"
   , tfreq    = [ (S_UNDERBRUSH_LIT, 1), (S_UNDERBRUSH_DARK, 1)
                , (UNDERBRUSH_CLUMP_LIT, 1), (UNDERBRUSH_CLUMP_DARK, 1)
-               , (EMPTY_SET_LIT, 30), (ARENA_SET_LIT, 20)
-               , (SHOOTOUT_SET_LIT, 30), (HUNT_SET_LIT, 30)
-               , (ESCAPE_SET_LIT, 40), (ZOO_SET_DARK, 100)
-               , (TRAIL_LIT, 50), (SAFE_TRAIL_LIT, 50)
+               , (EMPTY_SET_LIT, 30), (ARENA_SET_LIT, 40)
+               , (SHOOTOUT_SET_LIT, 100), (HUNT_SET_LIT, 100)
+               , (ESCAPE_SET_LIT, 100), (ZOO_SET_DARK, 100)
+               , (AMBUSH_SET_DARK, 20), (TRAIL_LIT, 50), (SAFE_TRAIL_LIT, 50)
                ]
   , tcolor   = BrGreen
   , tcolor2  = Green
