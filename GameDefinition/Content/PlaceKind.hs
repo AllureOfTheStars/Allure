@@ -222,6 +222,8 @@ glasshouse = PlaceKind
 glasshouse2 = glasshouse
   { pname    = "a glass cage"
   , pfreq    = [(LABORATORY, 2), (ZOO, 30)]
+  , poverrideDark = [('·', DAMP_FLOOR_DARK)]
+  , poverrideLit = [('·', DAMP_FLOOR_LIT)]
   }
 glasshouse3 = glasshouse
   { pname    = "an entertainment center"
@@ -254,8 +256,8 @@ ruin = PlaceKind
   , pcover   = CStretch
   , pfence   = FWall
   , ptopLeft = ["X"]
-  , poverrideDark = []
-  , poverrideLit = []
+  , poverrideDark = [('·', DAMP_FLOOR_DARK)]
+  , poverrideLit = [('·', DAMP_FLOOR_LIT)]
   }
 ruin2 = ruin
   { pname    = "a scaffolding"
@@ -327,8 +329,8 @@ pillar = PlaceKind
                , "····"
                , "····"
                ]
-  , poverrideDark = []
-  , poverrideLit = []
+  , poverrideDark = [('·', OILY_FLOOR_DARK)]
+  , poverrideLit = [('·', OILY_FLOOR_LIT)]
   }
 pillar2 = pillar
   { pname    = "a mall"
@@ -1170,10 +1172,12 @@ pumps = PlaceKind
   , ptopLeft = [ "·f"
                , "%;"
                ]
-  , poverrideDark = [ ('%', DOORLESS_MACHINERY)
+  , poverrideDark = [ ('·', DAMP_FLOOR_DARK)
+                    , ('%', DOORLESS_MACHINERY)
                     , ('f', PUMPS_DARK)
                     , (';', UNDERBRUSH_CLUMP_DARK) ]
-  , poverrideLit = [ ('%', DOORLESS_MACHINERY)
+  , poverrideLit = [ ('·', DAMP_FLOOR_LIT)
+                   , ('%', DOORLESS_MACHINERY)
                    , ('f', PUMPS_LIT)
                    , (';', UNDERBRUSH_CLUMP_LIT) ]
   }
@@ -1301,11 +1305,13 @@ maze = PlaceKind
                , "#··#"
                , "··#·"
                ]
-  , poverrideDark = [ ('&', CACHE_MAZE)
+  , poverrideDark = [ ('·', OILY_FLOOR_DARK)
+                    , ('&', CACHE_MAZE)
                     , ('p', TRAPPED_DOOR)
                     , ('i', FLOOR_ACTOR_ITEM)  -- lit or not, randomly
                     , ('$', TRAPPABLE_WALL) ]
-  , poverrideLit = [ ('&', CACHE_MAZE)
+  , poverrideLit = [ ('·', OILY_FLOOR_LIT)
+                   , ('&', CACHE_MAZE)
                    , ('p', TRAPPED_DOOR)
                    , ('i', FLOOR_ACTOR_ITEM)  -- lit or not, randomly
                    , ('$', TRAPPABLE_WALL) ]
