@@ -106,11 +106,11 @@ actors :: [ItemKind]
 actors =
   [warrior, warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, brawler, soldier, mercenary, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush]
   -- Allure-specific
-  ++ [giantOctopus, razorwireFence, electricFence, activeFence, steamFaucet, coolingFaucet, medbotFaucet, fuelFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot]
+  ++ [giantOctopus, razorwireFence, electricFence, activeFence, steamFaucet, coolingFaucet, medbotFaucet, dustFaucet, fuelFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot]
 
 warrior,    warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, brawler, soldier, mercenary, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush :: ItemKind
 -- Allure-specific
-giantOctopus, razorwireFence, electricFence, activeFence, steamFaucet, coolingFaucet, medbotFaucet, fuelFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot :: ItemKind
+giantOctopus, razorwireFence, electricFence, activeFence, steamFaucet, coolingFaucet, medbotFaucet, dustFaucet, fuelFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot :: ItemKind
 
 -- Note that the actors that appear in the crawl scenario should
 -- be generated with at most ordinary ammo. Otherwise, farming them
@@ -823,7 +823,7 @@ steamFaucet = ItemKind
 coolingFaucet = ItemKind
   { isymbol  = 'f'
   , iname    = "cooling faucet"
-  , ifreq    = [(ROBOT, 8), (IMMOBILE_ROBOT, 40)]
+  , ifreq    = [(ROBOT, 8), (IMMOBILE_ROBOT, 30)]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
   , irarity  = [(1, 10), (10, 6)]
@@ -831,7 +831,7 @@ coolingFaucet = ItemKind
   , iweight  = 80000
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 20, AddSkill SkMaxCalm 999
-               , AddSkill SkSpeed 22, AddSkill SkNocto 2, AddSkill SkShine 3
+               , AddSkill SkSpeed 22, AddSkill SkNocto 2
                , AddSkill SkWait 1, AddSkill SkMelee 1  -- no brain
                , SetFlag Durable ]
   , ieffects = []
@@ -856,10 +856,30 @@ medbotFaucet = ItemKind
   , idesc    = "A faucet of a malfunctioning nano medical robot dispenser. Let's hope the medbots are still effective."
   , ikit     = [(S_MEDBOT_VENT, COrgan), (S_MEDBOT_FISSURE, COrgan)]
   }
+dustFaucet = ItemKind
+  { isymbol  = 'f'
+  , iname    = "dust faucet"
+  , ifreq    = [(ROBOT, 8), (IMMOBILE_ROBOT, 30)]
+  , iflavour = zipPlain [BrCyan]
+  , icount   = 1
+  , irarity  = [(1, 10), (10, 6)]
+  , iverbHit = "thud"
+  , iweight  = 80000
+  , idamage  = 0
+  , iaspects = [ AddSkill SkMaxHP 10, AddSkill SkMaxCalm 999
+               , AddSkill SkSpeed 11, AddSkill SkNocto 2, AddSkill SkShine 3
+               , AddSkill SkWait 1, AddSkill SkMelee 1  -- no brain
+               , SetFlag Durable ]
+  , ieffects = []
+  , idesc    = "A torn pipeline for venting flamable powders filtered from cargo areas out into the void, where they cannot ignite. Depending on the pressure in subsidiary ducts, it may contain dust of aluminum, magnesium, titanium, flour, starch, various nitrates and perchlorates."
+  , ikit     = [(S_DUST_VENT, COrgan), (S_DUST_FISSURE, COrgan)]
+  }
 fuelFaucet = ItemKind
   { isymbol  = 'f'
   , iname    = "burning fuel faucet"
-  , ifreq    = [(ROBOT, 8), (IMMOBILE_ROBOT, 20)]
+  , ifreq    = [(ROBOT, 20), (IMMOBILE_ROBOT, 2)]
+      -- common not in outermost level, but in the dungeon, because it's
+      -- self-contained, providing both fuel and ignition
   , iflavour = zipPlain [BrRed]
   , icount   = 1
   , irarity  = [(1, 10), (10, 6)]
