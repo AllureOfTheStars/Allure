@@ -2037,7 +2037,8 @@ flask20 = flaskTemplate
 rawMeatChunk = ItemKind
   { isymbol  = symbolFood
   , iname    = "raw meat chunk"
-  , ifreq    = [(RAW_MEAT_CHUNK, 100), (COMMON_ITEM, 1)]
+  , ifreq    = [ (RAW_MEAT_CHUNK, 100), (COMMON_ITEM, 1)
+               , (UNREPORTED_INVENTORY, 1) ]  -- no "fondles a trinket"
   , iflavour = zipPlain [Red]
   , icount   = 1
   , irarity  = [(1, 1)]
