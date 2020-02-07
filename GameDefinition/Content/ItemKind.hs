@@ -1281,8 +1281,8 @@ necklace7 = necklaceTemplate
   }
 necklace8 = necklaceTemplate
   { iname    = "coil"
-  , ifreq    = [ (COMMON_ITEM, 100), (S_REFRIGERATION_COIL, 1)
-               , (ANY_JEWELRY, 100)
+  , ifreq    = [ (COMMON_ITEM, 10)  -- crafted, so can be rare
+               , (S_REFRIGERATION_COIL, 1), (ANY_JEWELRY, 100)
                , (COLD_SOURCE, 1) ]
   , iaspects = ELabel "of superconducting refrigeration"
                : Timeout ((1 + 1 `d` 3) * 5)
@@ -1662,7 +1662,7 @@ knife = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 200), (S_CLEAVER, 1)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(3 * 10/15, 35), (4 * 10/15, 10)]
+  , irarity  = [(3 * 10/15, 40), (4 * 10/15, 10)]
                  -- no weapons brought by aliens, initially, so cleaver common
   , iverbHit = "cut"
   , iweight  = 1000
@@ -2004,7 +2004,7 @@ flask18 = flaskTemplate
   , ifreq    = [ (COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)
                , (LIQUID_NITROGEN, 1), (COLD_SOURCE, 1)
                , (FIRE_FIGHTING_ITEM, 60) ]
-  , irarity  = [(1, 1)]  -- scavenged from walls
+  , irarity  = [(1, 3)]  -- scavenged from terrain
   , iaspects = ELabel "of liquid nitrogen"
                : iaspects flaskTemplate
   , ieffects = [ Burn 1  -- sensory ambiguity between hot and cold
@@ -2263,6 +2263,7 @@ spacesuitTorn = spacesuit
 crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
   { iname    = "crowbar"
   , iflavour = zipPlain [BrCyan]
+  , irarity  = [(1, 4)]  -- durable tool, so can be rarer
   , iverbHit = "gouge"
   , idamage  = 3 `d` 1
   , iaspects = [ Timeout 4
@@ -2277,6 +2278,7 @@ crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
 catsPaw = chisel
   { iname    = "cat's paw"
   , iflavour = zipFancy [BrCyan]
+  , irarity  = [(1, 4)]  -- durable tool, so can be rarer
   , iverbHit = "paw"
   , idamage  = 2 `d` 1
   , iaspects = [ Timeout 3
@@ -2487,7 +2489,7 @@ treePruner = grassStitcher
   { iname    = "long reach tree pruner"
   , ifreq    = [(COMMON_ITEM, 100), (POLE_AND_STEEL, 1)]
   , iflavour = zipFancy [BrRed]
-  , irarity  = [(8, 15)]
+  , irarity  = [(8, 12)]
   , iweight  = 4500
   , idamage  = 4 `d` 1
   , iaspects = [ Timeout 10
@@ -2502,7 +2504,7 @@ cleaningPole = grassStitcher
   { iname    = "window cleaning pole"
   , ifreq    = [(COMMON_ITEM, 100), (POLE_AND_STEEL, 1)]
   , iflavour = zipPlain [Blue]
-  , irarity  = [(8, 10)]
+  , irarity  = [(8, 8)]
   , iweight  = 3500
   , idamage  = 1 `d` 1
   , iaspects = [ Timeout 5
@@ -2516,7 +2518,7 @@ cleaningPole = grassStitcher
 staff = grassStitcher
   { isymbol  = symbolHafted
   , iname    = "wooden staff"
-  , ifreq    = [(HANDLE, 80), (POLE_OR_HANDLE, 60), (S_STAFF, 1)]
+  , ifreq    = [(HANDLE, 80), (POLE_OR_HANDLE, 40), (S_STAFF, 1)]
   , iflavour = zipPlain [BrYellow]
   , iverbHit = "prod"
   , idamage  = 2 `d` 1
@@ -2529,13 +2531,13 @@ staff = grassStitcher
   }
 pipe = staff
   { iname    = "metal pipe"
-  , ifreq    = [(HANDLE, 20), (POLE_OR_HANDLE, 10), (S_PIPE, 1)]
+  , ifreq    = [(HANDLE, 20), (POLE_OR_HANDLE, 20), (S_PIPE, 1)]
   , iflavour = zipFancy [BrBlue]
   , idesc    = "Around a meter long, light, strong and hard alloy pipe."
   }
 longPole = staff
   { iname    = "long pole"
-  , ifreq    = [(POLE, 90), (POLE_OR_HANDLE, 30)]
+  , ifreq    = [(POLE, 90), (POLE_OR_HANDLE, 40)]
   , iflavour = zipPlain [BrYellow]
   , iweight  = 3000
   , idamage  = 1 `d` 1
