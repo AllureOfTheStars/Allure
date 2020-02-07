@@ -805,7 +805,7 @@ activeFence = ItemKind
 steamFaucet = ItemKind
   { isymbol  = 'f'
   , iname    = "steam faucet"
-  , ifreq    = [(ROBOT, 8), (IMMOBILE_ROBOT, 10)]
+  , ifreq    = [(ROBOT, 8), (IMMOBILE_ROBOT, 15)]
   , iflavour = zipPlain [BrGreen]
   , icount   = 1
   , irarity  = [(1, 10), (10, 6)]
@@ -823,7 +823,7 @@ steamFaucet = ItemKind
 coolingFaucet = ItemKind
   { isymbol  = 'f'
   , iname    = "cooling faucet"
-  , ifreq    = [(ROBOT, 4), (IMMOBILE_ROBOT, 30)]
+  , ifreq    = [(ROBOT, 8), (IMMOBILE_ROBOT, 15)]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
   , irarity  = [(1, 10), (10, 6)]
@@ -859,7 +859,8 @@ medbotFaucet = ItemKind
 dustFaucet = ItemKind
   { isymbol  = 'f'
   , iname    = "dust faucet"
-  , ifreq    = [(ROBOT, 2), (IMMOBILE_ROBOT, 30)]
+  , ifreq    = [ (ROBOT, 2)  -- usually nothing to ignite
+               , (IMMOBILE_ROBOT, 30) ]  -- except when other faucets around
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
   , irarity  = [(1, 10), (10, 6)]
@@ -877,7 +878,7 @@ dustFaucet = ItemKind
 fuelFaucet = ItemKind
   { isymbol  = 'f'
   , iname    = "burning fuel faucet"
-  , ifreq    = [(ROBOT, 30), (IMMOBILE_ROBOT, 1)]
+  , ifreq    = [(ROBOT, 30)]
       -- common not in outermost level, but in the dungeon, because it's
       -- self-contained, providing both fuel and ignition
   , iflavour = zipPlain [BrRed]
