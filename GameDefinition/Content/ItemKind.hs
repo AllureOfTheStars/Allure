@@ -2399,7 +2399,7 @@ cattleProd = militaryBaton
   , idesc    = "Used for subduing unruly zoo animals."
   }
 gardenMsg :: Effect
-gardenMsg = VerbMsg "feel the gardening tool fracture"
+gardenMsg = VerbMsgFail "feel the gardening tool fracture"
 grassStitcher = ItemKind
   { isymbol  = symbolPolearm
   , iname    = "grass stitcher"

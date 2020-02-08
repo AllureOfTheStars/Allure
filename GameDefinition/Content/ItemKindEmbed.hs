@@ -435,7 +435,7 @@ stairsTrapUp = ItemKind
   , iweight  = 10000
   , idamage  = 0
   , iaspects = []  -- not Durable, springs at most once
-  , ieffects = [ VerbMsg "be caught in decompression blast"
+  , ieffects = [ VerbMsgFail "be caught in decompression blast"
                , Teleport $ 3 + 1 `dL` 10 ]
   , idesc    = ""
   , ikit     = []
@@ -446,7 +446,7 @@ stairsTrapUp = ItemKind
 stairsTrapDown = stairsTrapUp
   { ifreq    = [(STAIRS_TRAP_DOWN, 1)]
   , iverbHit = "open up under"
-  , ieffects = [ VerbMsg "fall down the stairwell"
+  , ieffects = [ VerbMsgFail "fall down the stairwell"
                , toOrganGood S_DRUNK (20 + 1 `d` 5) ]
   , idesc    = "A treacherous slab, to teach those who are too proud."
   }
@@ -643,7 +643,7 @@ ediblePlantRipe = treasureCache
 stairsTrapDownOil = stairsTrapUp
   { ifreq    = [(STAIRS_TRAP_DOWN_OIL, 1)]
   , iverbHit = "cause a chaotic skid"
-  , ieffects = [ VerbMsg "tumble down the stairwell"
+  , ieffects = [ VerbMsgFail "tumble down the stairwell"
                , PushActor (ThrowMod 400 100 1)]  -- 4 steps, 2 turns
   , idesc    = ""
   }
@@ -663,21 +663,21 @@ liftTrap = stairsTrapUp
   { iname    = "elevator trap"  -- hat tip to US heroes
   , ifreq    = [(LIFT_TRAP, 100)]
   , iverbHit = "squeeze"
-  , ieffects = [ VerbMsg "be crushed by the sliding doors"
+  , ieffects = [ VerbMsgFail "be crushed by the sliding doors"
                , DropBestWeapon, Paralyze 10 ]
   , idesc    = ""
   }
 liftTrap2 = liftTrap
   { ifreq    = [(LIFT_TRAP, 50)]
   , iverbHit = "choke"
-  , ieffects = [ VerbMsg "inhale the gas lingering inside the cab"
+  , ieffects = [ VerbMsgFail "inhale the gas lingering inside the cab"
                , toOrganBad S_SLOWED $ (1 `dL` 4) * 10 ]
   , idesc    = ""
   }
 liftTrap3 = liftTrap
   { ifreq    = [(LIFT_TRAP, 50)]
   , iverbHit = "shock"
-  , ieffects = [ VerbMsg "be electocuted upon touching the control pad"
+  , ieffects = [ VerbMsgFail "be electocuted upon touching the control pad"
                , Discharge $ 40 - 1 `d` 20 ]
   , idesc    = ""
   }
@@ -837,7 +837,7 @@ combineEffect msg ass =
         -> Effect
         -> Effect
       f roolsRawCooked eff = cookOne roolsRawCooked `OrEffect` eff
-      initial = VerbMsg msg  -- noop, really
+      initial = VerbMsgFail msg  -- noop, but emits @UseDud@
   in foldr f initial ass
 
 cookEffect :: Effect
