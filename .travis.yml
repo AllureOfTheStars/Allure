@@ -320,6 +320,7 @@ script:
   - "if [[ $GTKVTY != \"brew-sdl2-osx\" ]]; then (make test-travis2 || (tail -n 2000 /tmp/teletypetest.log ; exit 77)); fi"
   - "if [[ \"$(uname)\" != \"Darwin\" && $GTKVTY != \"noopt\" && $GTKVTY != \"asserts_noopt\" ]] ; then (make testCrawl-medium || (tail -n 2000 /tmp/teletypetest.log ; exit 77)); fi"
   - "if [[ \"$(uname)\" != \"Darwin\" && $GTKVTY != \"noopt\" && $GTKVTY != \"asserts_noopt\" ]] ; then (make testCrawl-medium || (tail -n 2000 /tmp/teletypetest.log ; exit 77)); fi"
+  - "if [[ \"$(uname)\" != \"Darwin\" && $GTKVTY != \"noopt\" && $GTKVTY != \"asserts_noopt\" ]] ; then (make testCrawl-medium || (tail -n 2000 /tmp/teletypetest.log ; exit 77)); fi"
   - "if [[ \"$(uname)\" != \"Darwin\" && $GTKVTY != \"noopt\" && $GTKVTY != \"asserts_noopt\" ]] ; then (make testCrawl-medium || (tail -n 2000 /tmp/teletypetest.log ; exit 77)); else if [ \"$(uname)\" != \"Darwin\" ] ; then (make testCrawl-medium-double || (tail -n 2000 /tmp/teletypetest.log ; exit 77)); fi; fi"
   - "if [[ \"$(uname)\" != \"Darwin\" && $GTKVTY != \"noopt\" && $GTKVTY != \"asserts_noopt\" ]] ; then (make testCrawl-medium || (tail -n 2000 /tmp/teletypetest.log ; exit 77)); else if [ \"$(uname)\" != \"Darwin\" ] ; then (make testCrawl-medium-double || (tail -n 2000 /tmp/teletypetest.log ; exit 77)); fi; fi"
   - "if [[ $GTKVTY != \"brew-sdl2-osx\" ]]; then (make testDefense-medium || (tail -n 2000 /tmp/teletypetest.log ; exit 77)); fi"
