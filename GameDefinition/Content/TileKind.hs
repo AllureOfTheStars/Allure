@@ -500,8 +500,12 @@ rubble = TileKind
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 4  -- boss can dig through
-  , tfeature = [ Embed RUBBLE, OpenTo S_FLOOR_ASHES_LIT
-               , OpenWith True [(1, BLAST_SOURCE)] S_FLOOR_ASHES_LIT ]
+  , tfeature = [ OpenWith True [(1, BLAST_SOURCE)] S_FLOOR_ASHES_LIT
+                   -- needs to be first, because projectiles can't activate
+                   -- embeds in a non-walkable tile with on-zero talter;
+                   -- so this is a safe way to open rubble, with no loot
+               , Embed RUBBLE
+               , OpenTo S_FLOOR_ASHES_LIT ]
       -- It's not explorable, due to not being walkable nor clear and due
       -- to being a door (@OpenTo@), which is kind of OK, because getting
       -- the item is risky and, e.g., AI doesn't attempt it.
@@ -846,9 +850,9 @@ floorRed = floorCorridor
                , (LIFT_TERMINAL_LIT, 6), (LIFT_TERMINAL_DARK, 6) ]
   , tcolor   = BrRed
   , tcolor2  = Red
-  , tfeature =  [Embed STRAIGHT_PATH, Trail, Walkable, Clear
-               , ChangeWith True [(1, OIL_SOURCE)] S_OIL_SPILL ]
+  , tfeature = [ ChangeWith True [(1, OIL_SOURCE)] S_OIL_SPILL
                    -- non-porous enough
+               , Embed STRAIGHT_PATH, Trail, Walkable, Clear ]
   }
 floorBlue = floorRed
   { tname    = "frozen path"
@@ -909,8 +913,8 @@ rubbleBurning = TileKind  -- present in EMPTY_SET_LIT as early light/fire source
   , tcolor2  = Red
   , talter   = 4  -- boss can dig through
   , tfeature = [ OpenWith True [(3, WATER_SOURCE)] S_SMOKE_LIT
-               , Embed BIG_FIRE  -- not as tall as a tree, so quenchable
                , OpenWith True [(1, BLAST_SOURCE)] S_FLOOR_ASHES_LIT
+               , Embed BIG_FIRE  -- not as tall as a tree, so quenchable
                , ChangeWith False [(1, FIREPROOF_CLOTH)] S_RUBBLE_PILE
                    -- full effects experienced, but rubble saved for repeat
                , OpenWith False [] RUBBLE_BURNING_OR_NOT ]
@@ -1230,7 +1234,8 @@ bushEdible = TileKind
   , tcolor   = BrMagenta
   , tcolor2  = Magenta
   , talter   = 4
-  , tfeature = [ Clear, Embed EDIBLE_PLANT_RIPE  -- granted even when ignited
+  , tfeature = [ Clear, Embed EDIBLE_PLANT_RIPE
+                   -- loot granted even when ignited and missiles can't reap
                , ChangeTo S_BUSH_LIT
                , ChangeWith True [(1, FIRE_SOURCE)] S_BURNING_BUSH ]
   }
@@ -1275,12 +1280,12 @@ oilSpill = TileKind
                , (AMBUSH_SET_DARK, 20), (S_OIL_SPILL, 1) ]
   , tcolor   = BrYellow
   , tcolor2  = BrGreen
-  , talter   = 2  -- doesn't matter now; TODO: not everything enters
-  , tfeature = [ Walkable, Clear
-               , ChangeWith True [(1, FIRE_SOURCE)] S_BURNING_OIL
+  , talter   = 2  -- doesn't matter now, because walkable;
+                  -- TODO: not everything should be able/willing to enter
+  , tfeature = [ ChangeWith True [(1, FIRE_SOURCE)] S_BURNING_OIL
                , ChangeWith False [(1, THICK_CLOTH)] OILY_FLOOR_LIT
                    -- soaks oil
-               , Embed OIL_PUDDLE ]
+               , Embed OIL_PUDDLE, Walkable, Clear ]
   }
 oilSpillSpice = oilSpill
   { tfreq    = [ (RUBBLE_OR_WASTE_LIT, 1), (RUBBLE_OR_WASTE_DARK, 1)
