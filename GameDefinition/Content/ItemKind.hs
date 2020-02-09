@@ -1100,7 +1100,7 @@ jumpingPole = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (POLE, 10)]
   , iflavour = zipFancy [White]
   , icount   = 1
-  , irarity  = [(5, 7)]
+  , irarity  = [(6, 10)]
   , iverbHit = "prod"
   , iweight  = 4000
   , idamage  = 0
@@ -1717,7 +1717,7 @@ hammer1 = hammerTemplate  -- 1m handle, blunt
                ++ iaspects hammerTemplate
   }
 hammer2 = hammerTemplate  -- 0.75m handle, sharp
-  { ifreq    = [(COMMON_ITEM, 25), (STARTING_WEAPON, 7)]
+  { ifreq    = [(COMMON_ITEM, 25), (STARTING_WEAPON, 10)]
   , iverbHit = "puncture"
   , iaspects = [Timeout 3, EqpSlot EqpSlotWeaponFast]
                ++ iaspects hammerTemplate
@@ -1725,7 +1725,7 @@ hammer2 = hammerTemplate  -- 0.75m handle, sharp
   }
 hammer3 = hammerTemplate  -- 2m pole, blunt
   { ifreq    = [ (COMMON_ITEM, 10), (BONDING_TOOL, 1), (POLE_AND_STEEL, 1)
-               , (STARTING_WEAPON, 1), (S_BLUNT_LONG_HAMMER, 1) ]
+               , (STARTING_WEAPON, 5), (S_BLUNT_LONG_HAMMER, 1) ]
   , iweight  = 6000  -- pole weight almost gives it away
   , iaspects = [ Timeout 12  -- balance, or @DupItem@ would break the game
                , EqpSlot EqpSlotWeaponBig]
@@ -1806,7 +1806,7 @@ halberd = ItemKind  -- long pole, because glued 1m handle worse than nothing
   { isymbol  = symbolPolearm
   , iname    = "pole cleaver"
   , ifreq    = [ (COMMON_ITEM, 10), (POLE_AND_STEEL, 1)
-               , (STARTING_WEAPON, 20), (S_POLE_CLEAVER, 1) ]
+               , (STARTING_WEAPON, 5), (S_POLE_CLEAVER, 1) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , irarity  = [(5, 1), (8, 15)]
@@ -1826,13 +1826,13 @@ halberd = ItemKind  -- long pole, because glued 1m handle worse than nothing
   }
 halberd2 = halberd
   { iname    = "pollaxe"
-  , ifreq    = [ (COMMON_ITEM, 5), (POLE_AND_STEEL, 1), (STARTING_WEAPON, 1)
-               , (S_POLL_AXE, 1) ]
+  , ifreq    = [(COMMON_ITEM, 5), (POLE_AND_STEEL, 1), (S_POLL_AXE, 1)]
                  -- not @BREACHING_TOOL@, because it triggers traps
                  -- and destroys treasure, instead of opening
   , iflavour = zipPlain [BrRed]
   , iverbHit = "carve"
   , iweight  = 4500
+  , idamage  = 16 `d` 1
   , iaspects = [ Timeout 12
                , AddSkill SkHurtMelee $ (-7 + 1 `dL` 5) * 5
                    -- balance, or @DupItem@ would break the game;
@@ -1841,7 +1841,6 @@ halberd2 = halberd
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 20 ]  -- not balanced
-  , idamage  = 16 `d` 1
   , idesc    = "A long-hafted axe: once used for fire fighting, now turned to a bloodier purpose."
   }
 halberdPushActor = halberd
@@ -2103,13 +2102,13 @@ blowtorch = ItemKind
 chisel = ItemKind  -- ignored by AI, but that's fine, others suffice
   { isymbol  = symbolTool
   , iname    = "chisel"
-  , ifreq    = [(COMMON_ITEM, 100), (BREACHING_TOOL, 1)]
+  , ifreq    = [(CURIOUS_ITEM, 100), (BREACHING_TOOL, 1)]
   , iflavour = zipPlain [Cyan]
   , icount   = 1
-  , irarity  = [(1, 8)]
+  , irarity  = [(1, 10)]
   , iverbHit = "dismantle"
   , iweight  = 500
-  , idamage  = 0
+  , idamage  = 0  -- not a missile to avoid wasting, before a worskhop found
   , iaspects = []  -- lost after one use; a consumable
   , ieffects = []
   , idesc    = "It is a breaching tool."  -- TODO: https://en.wikipedia.org/wiki/Chisel
@@ -2126,15 +2125,15 @@ adjustableSpanner = chisel
   }
 steelFile = chisel
   { iname    = "steel file"
-  , ifreq    = [(COMMON_ITEM, 100), (BREACHING_TOOL, 1), (SHARPENING_TOOL, 1)]
-  , irarity  = [(1, 12)]
+  , ifreq    = [(CURIOUS_ITEM, 100), (BREACHING_TOOL, 1), (SHARPENING_TOOL, 1)]
+  , irarity  = [(1, 15)]
   , iflavour = zipPlain [Blue]
   , iverbHit = "grate"
   , idesc    = "It is a breaching and sharpening tool."  -- TODO: https://en.wikipedia.org/wiki/File_(tool)
   }
 honingSteel = chisel
   { iname    = "honing steel"
-  , ifreq    = [(COMMON_ITEM, 100), (SHARPENING_TOOL, 1)]
+  , ifreq    = [(CURIOUS_ITEM, 100), (SHARPENING_TOOL, 1)]
   , iflavour = zipFancy [Blue]
   , iverbHit = "hone"
   , idesc    = "Originally used for realigning and sharpening dulled edges of kitchen knives in the local restaurants. Now it turns utensils into weapons."
@@ -2146,9 +2145,9 @@ whetstone = honingSteel
   }
 laserSharpener = honingSteel
   { iname    = "laser sharpener"
-  , ifreq    = [(TREASURE, 100), (SHARPENING_TOOL, 1)]
+  , ifreq    = [(CURIOUS_ITEM, 100), (SHARPENING_TOOL, 1)]
   , iflavour = zipFancy [BrBlue]
-  , irarity  = [(10, 6)]
+  , irarity  = [(10, 8)]
   , iweight  = 2000
   , idamage  = 0
   , iaspects = [ SetFlag Unique, Timeout 10
@@ -2159,7 +2158,7 @@ laserSharpener = honingSteel
   }
 diagonalPliers = chisel
   { iname    = "pair"
-  , ifreq    = [(COMMON_ITEM, 100), (WIRECUTTING_TOOL, 1)]
+  , ifreq    = [(CURIOUS_ITEM, 100), (WIRECUTTING_TOOL, 1)]
   , iflavour = zipPlain [Brown]
   , iverbHit = "cut"
   , iaspects = [ELabel "of diagonal pliers"]
@@ -2182,7 +2181,7 @@ boltCutter = diagonalPliers
   }
 solderingIron = chisel
   { iname    = "soldering iron"
-  , ifreq    = [(COMMON_ITEM, 100), (BONDING_TOOL, 1)]
+  , ifreq    = [(CURIOUS_ITEM, 100), (BONDING_TOOL, 1)]
   , iflavour = zipPlain [White]
   , iverbHit = "soldier"
   , idesc    = "It is a bonding tool."  -- TODO: wikipedia
@@ -2190,7 +2189,7 @@ solderingIron = chisel
 duckTape = solderingIron
   { iname    = "duck tape"
   , icount   = 1 `d` 4
-  , irarity  = [(1, 12)]
+  , irarity  = [(1, 15)]
   , iverbHit = "catch"
   , idesc    = "It is a bonding tool."  -- TODO: https://en.wikipedia.org/wiki/Duct_tape
   }
@@ -2208,7 +2207,7 @@ heavyBoot = ItemKind
                , (SPACESUIT_PART, 2), (ARMOR_MISC, 1) ]
   , iflavour = zipFancy [Blue]
   , icount   = 1
-  , irarity  = [(1, 15), (10, 1)]
+  , irarity  = [(1, 15), (5, 1)]
   , iverbHit = "sock"
   , iweight  = 100000  -- including the fake gravity mass
   , idamage  = 5 `d` 1
@@ -2246,7 +2245,7 @@ spacesuit = ItemKind
   }
 spacesuitTorn = spacesuit
   { iname    = "torn spacesuit"
-  , ifreq    = [(COMMON_ITEM, 100), (S_SPACESUIT_TORN, 1)]
+  , ifreq    = [(CURIOUS_ITEM, 100), (S_SPACESUIT_TORN, 1)]
   , irarity  = [(1, 20)]
   , iverbHit = "entangle"
   , iweight  = 10000
@@ -2264,7 +2263,7 @@ spacesuitTorn = spacesuit
 crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
   { iname    = "crowbar"
   , iflavour = zipPlain [BrCyan]
-  , irarity  = [(1, 4)]  -- durable tool, so can be rarer
+  , irarity  = [(1, 8)]  -- durable tool, so can be rarer
   , iverbHit = "gouge"
   , idamage  = 3 `d` 1
   , iaspects = [ Timeout 4
@@ -2279,7 +2278,7 @@ crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
 catsPaw = chisel
   { iname    = "cat's paw"
   , iflavour = zipFancy [BrCyan]
-  , irarity  = [(1, 4)]  -- durable tool, so can be rarer
+  , irarity  = [(1, 8)]  -- durable tool, so can be rarer
   , iverbHit = "paw"
   , idamage  = 2 `d` 1
   , iaspects = [ Timeout 3
@@ -2312,20 +2311,20 @@ fireAxe = ItemKind
   }
 dagger = knife
   { iname    = "dagger"
-  , ifreq    = [(COMMON_ITEM, 5), (S_DAGGER, 200)]
+  , ifreq    = [(COMMON_ITEM, 5), (S_DAGGER, 1), (STARTING_WEAPON, 5)]
   , iverbHit = "open"
   , idamage  = 7 `d` 1
   , idesc    = "A double-edged knife with a sharp tip that penetrates the smallest defence gaps, making it especially useful in conjunction with a larger but less nible weapon."
   }
 hammer4 = hammer1  -- 1m handle, sharp
   { ifreq    = [ (COMMON_ITEM, 10), (HANDLE_AND_STEEL, 1)
-               , (STARTING_WEAPON, 70), (S_SHARP_SHORT_HAMMER, 1) ]
+               , (STARTING_WEAPON, 5), (S_SHARP_SHORT_HAMMER, 1) ]
   , iverbHit = "cleave"
   , ieffects = [RefillHP (-2)]  -- don't lie about @idamage@ when not identified
   , idesc    = "This hammer's head has it's protruding edges sharpened. Otherwise, it's pretty ordinary."
  }
 hammer5 = hammer3  -- 2m pole, sharp
-  { ifreq    = [ (COMMON_ITEM, 5), (POLE_AND_STEEL, 1), (STARTING_WEAPON, 1)
+  { ifreq    = [ (COMMON_ITEM, 5), (POLE_AND_STEEL, 1)
                , (S_SHARP_LONG_HAMMER, 1) ]
   , iverbHit = "cleave"
   , ieffects = [RefillHP (-6)]  -- don't lie about @idamage@ when not identified
@@ -2355,7 +2354,8 @@ halberdPushActorSharp = halberdPushActor
   }
 militaryKnife = knife
   { iname    = "military knife"
-  , ifreq    = [(COMMON_ITEM, 2), (WIRECUTTING_TOOL, 1), (MERCENARY_WEAPON, 70)]
+  , ifreq    = [ (COMMON_ITEM, 1), (WIRECUTTING_TOOL, 1), (MERCENARY_WEAPON, 70)
+               , (STARTING_WEAPON, 3) ]
   , iflavour = zipFancy [Green]
   , irarity  = [(10, 10)]
   , iweight  = 500  -- too small to attach to a pole
@@ -2494,7 +2494,7 @@ treePruner = grassStitcher
   , iweight  = 4500
   , idamage  = 4 `d` 1
   , iaspects = [ Timeout 10
-               , AddSkill SkArmorMelee 20
+               , AddSkill SkArmorMelee 20  -- sharp
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 20 ]
@@ -2508,10 +2508,9 @@ cleaningPole = grassStitcher
   , irarity  = [(8, 8)]
   , iweight  = 3500
   , idamage  = 1 `d` 1
-  , iaspects = [ Timeout 5
-               , AddSkill SkArmorMelee 20
-               , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotWeaponBig
+  , iaspects = [ AddSkill SkArmorMelee 10  -- not sharp, so weaker
+               , SetFlag Durable, SetFlag Equipable
+               , EqpSlot EqpSlotArmorMelee
                , toVelocity 20 ]
   , ieffects = []
   , idesc    = "A cleaning contraption for glass surfaces, mounted on a long synthetic pole."
@@ -2522,11 +2521,9 @@ staff = grassStitcher
   , ifreq    = [(HANDLE, 80), (POLE_OR_HANDLE, 40), (S_STAFF, 1)]
   , iflavour = zipPlain [BrYellow]
   , iverbHit = "prod"
-  , idamage  = 2 `d` 1
-  , iaspects = [ Timeout 2  -- no part sharp, hence trivial to position
-               , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotWeaponFast
-               , toVelocity 40 ]
+  , idamage  = 1 `d` 1
+  , iaspects = [ SetFlag Durable
+               , toVelocity 40 ]  -- a weak missile and that's all
   , ieffects = []
   , idesc    = ""  -- doh
   }
@@ -2534,18 +2531,16 @@ pipe = staff
   { iname    = "metal pipe"
   , ifreq    = [(HANDLE, 20), (POLE_OR_HANDLE, 20), (S_PIPE, 1)]
   , iflavour = zipFancy [BrBlue]
-  , idesc    = "Around a meter long, light, strong and hard alloy pipe."
+  , idesc    = "Around a meter long, light, strong and hard alloy pipe. With one or both ends cut diagonally and sharpened, this would become a formidable weapon."
   }
 longPole = staff
   { iname    = "long pole"
   , ifreq    = [(POLE, 90), (POLE_OR_HANDLE, 40)]
   , iflavour = zipPlain [BrYellow]
   , iweight  = 3000
-  , idamage  = 1 `d` 1
-  , iaspects = [ Timeout 6
-               , AddSkill SkArmorMelee 20
-               , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotWeaponBig
+  , iaspects = [ AddSkill SkArmorMelee 10  -- not sharp, so weaker
+               , SetFlag Durable, SetFlag Equipable
+               , EqpSlot EqpSlotArmorMelee
                , toVelocity 20 ]
   , idesc    = "Over two meters long, strong and light pole."
   }
@@ -2581,16 +2576,13 @@ wasteContainer = ItemKind
   , idamage  = 0
   , iaspects = [ Timeout $ (1 `d` 2) * 30  -- robots should not summon too often
                , AddSkill SkArmorMelee 20  -- tempting
-               , AddSkill SkMaxCalm (-30)  -- prevent excessive stacking
+               , AddSkill SkMaxCalm (-30)  -- punishes excessive stacking
                , SetFlag Periodic, SetFlag Equipable
                , EqpSlot EqpSlotArmorMelee ]
   , ieffects = [ Detect DetectLoot 20
                , Summon MOBILE_ANIMAL $ 1 `dL` 2
                , Explode S_WASTE ]
-                   -- very important effect that disables item movement
-                   -- and so makes wielding seeingItem a tiny bit risky,
-                   -- and so not a no-brainer
-  , idesc    = "Waste recognition and utilization subsystem. Detects any stray item not registered as passenger cargo. Leaks a little."
+  , idesc    = "Waste recognition and utilization subsystem. Detects any stray item not registered as a passenger's cargo. Leaks a little."
   , ikit     = []
   }
 spotlight = ItemKind

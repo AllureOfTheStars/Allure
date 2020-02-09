@@ -249,8 +249,8 @@ laboratory = rogue
   , cactorFreq    = [ (MONSTER, 50), (ANIMAL, 70), (ROBOT, 5)
                     , (IK.AQUATIC, 10) ]
   , citemNum      = 8 `d` 5  -- reward difficulty
-  , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.TREASURE, 40), (IK.ANY_POTION, 40)
-                    , (IK.CURIOUS_ITEM, 40) ]
+  , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.TREASURE, 40)
+                    , (IK.ANY_POTION, 40), (IK.CURIOUS_ITEM, 40) ]
   , cplaceFreq    = [(LABORATORY, 1)]
   , cdefTile      = FILLER_WALL
   , cdarkCorTile  = LAB_TRAIL_LIT  -- let lab smoke give off light always
@@ -391,8 +391,7 @@ outermost = empty
       -- enough of a continuity. The faucets on lvl 1 are not OP and can't be
       -- abused, because they spawn less and less often and also HP doesn't
       -- effectively accumulate over max.
-  , citemFreq     = (STARTING_WEAPON, 20)
-                    : filter ((/= IK.TREASURE) . fst) (citemFreq empty)
+  , citemFreq     = [(IK.COMMON_ITEM, 40), (IK.CURIOUS_ITEM, 20)]
   , cfenceTileN   = ORIELS_FENCE
   , cfenceTileE   = HABITAT_CONTAINMENT_WALL
   , cfenceTileS   = EMPTY_AIRLOCK_FENCE
@@ -417,8 +416,7 @@ bridge = rogue
                          -- initially best for sleeping, then all catch up
   , cactorFreq    = [(ANIMAL, 100)]
   , citemNum      = 10 `d` 3  -- lure them in with loot
-  , citemFreq     = filter ((`notElem` [IK.TREASURE, IK.CURIOUS_ITEM]) . fst)
-                    $ citemFreq rogue
+  , citemFreq     = [(IK.COMMON_ITEM, 40)]
   , cdefTile      = FILLER_WALL
   , cfenceTileN   = HABITAT_CONTAINMENT_WALL  -- cave isolated for safety
   , cfenceTileE   = HABITAT_CONTAINMENT_WALL
@@ -440,8 +438,7 @@ shallowRogue = rogue
   , cactorCoeff   = 40  -- more difficult
   , cactorFreq    = filter ((/= MONSTER) . fst) $ cactorFreq rogue
   , citemNum      = 10 `d` 4
-  , citemFreq     = (STARTING_WEAPON, 20)
-                    : filter ((/= IK.TREASURE) . fst) (citemFreq rogue)
+  , citemFreq     = [(IK.COMMON_ITEM, 40), (IK.CURIOUS_ITEM, 20)]
   , cdesc         = "This close to the outermost deck, residence is not permitted and walls and doors are sturdier, to contain a theoretically possible micro-meteorite breach. The entry is not closed off, though, because some passengers can't live without a regular pilgrimage to 'look outside'. Apparently, gazing at the sharp pin-points of stars and planets through the reinforced oriel glass is incomparable to watching the same through the thin polymer of wall displays. Animals appear to share the fascination of outer decks, perhaps attracted by the increased gravity, nearly Earth-like, unlike elsewhere on the ship."
   }
 
@@ -524,7 +521,7 @@ shootout = rogue  -- a scenario with strong missiles;
   , citemNum      = 6 `d` 16
                       -- less items in inventory, more to be picked up,
                       -- to reward explorer and aggressor and punish camper
-  , citemFreq     = [ (IK.COMMON_ITEM, 30)
+  , citemFreq     = [ (IK.COMMON_ITEM, 30), (IK.CURIOUS_ITEM, 7)
                     , (ANY_ARROW, 400), (HARPOON, 300), (IK.EXPLOSIVE, 50) ]
                       -- Many consumable buffs are needed in symmetric maps
                       -- so that aggressor prepares them in advance and camper
@@ -651,7 +648,7 @@ ambush = rogue  -- a scenario with strong missiles;
   , chidden       = 0
   , cactorFreq    = []
   , citemNum      = 6 `d` 8
-  , citemFreq     = [ (IK.COMMON_ITEM, 30)
+  , citemFreq     = [ (IK.COMMON_ITEM, 30), (IK.CURIOUS_ITEM, 7)
                     , (MERCENARY_AMMO, 200), (HARPOON, 300)
                     , (IK.EXPLOSIVE, 50) ]
   , cplaceFreq    = [(AMBUSH, 1)]
@@ -684,7 +681,8 @@ battle = rogue  -- few lights and many solids, to help the less numerous heroes
   , chidden       = 0
   , cactorFreq    = []
   , citemNum      = 6 `d` 8
-  , citemFreq     = [(IK.COMMON_ITEM, 100), (LIGHT_MANIPULATION, 200)]
+  , citemFreq     = [ (IK.COMMON_ITEM, 100), (IK.CURIOUS_ITEM, 20)
+                    , (LIGHT_MANIPULATION, 200) ]
   , cplaceFreq    = [(BATTLE, 50), (ROGUE, 50)]
   , cpassable     = True
   , cdefTile      = BATTLE_SET_DARK
