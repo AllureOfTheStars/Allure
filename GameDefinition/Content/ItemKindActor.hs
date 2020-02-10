@@ -1095,8 +1095,8 @@ cleanerRobot = ItemKind
   , iweight  = 800000
   , idamage  = 0
   , iaspects = [ SetFlag Unique
-               , AddSkill SkMaxHP 100
-                   -- regenerates a bit, so lower HP
+               , AddSkill SkMaxHP 70
+                   -- regenerates a bit and huge armor, so lower HP
                , AddSkill SkMaxCalm 40
                    -- can't summon again for a long time;
                    -- loses a lot of sight after summoning
@@ -1110,7 +1110,10 @@ cleanerRobot = ItemKind
   , idesc    = "An oversize waste disposal robot repaired with parts from a demolition robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness. The robot's bulky trunk doesn't fit into even the larger lift carriages."
   , ikit     = [ (S_LIVE_WIRE, COrgan), (S_ELECTRIC_AMBIENCE, COrgan)
                , (S_LARGE_JAW, COrgan), (S_TENTACLE, COrgan)
-               , (S_BOILING_VENT, COrgan), (S_HULL_PLATING, COrgan)
+               , (S_BOILING_VENT, COrgan)
+               , (S_HULL_PLATING, COrgan), (S_HULL_PLATING, COrgan)
+                   -- the only such armor, except for weak animals; plus
+                   -- the WASTE_CONTAINER, so only hammers and proj effective
                , (S_EYE_3, COrgan), (S_NOSTRIL, COrgan), (S_EAR_6, COrgan)
                , (S_ROBOT_BRAIN, COrgan)
                , (S_CURRENCY, CStash)
