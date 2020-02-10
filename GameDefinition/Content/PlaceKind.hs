@@ -1523,7 +1523,7 @@ tank11 = tank
   }
 tank12 = tank
   { pname    = "a barrel yard"
-  , pfreq    = [(EMPTY, 1500), (EXIT, 500), (NOISE, 500), (BATTLE, 250)]
+  , pfreq    = [(EMPTY, 1000), (EXIT, 500), (NOISE, 500), (BATTLE, 250)]
   , pcover   = CReflect
   , ptopLeft = [ "XbbXX"
                , "bbbbX"
