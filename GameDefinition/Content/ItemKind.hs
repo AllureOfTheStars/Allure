@@ -1700,9 +1700,8 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
                  -- don't make it too common on lvl 3
   , iverbHit = "club"
   , iweight  = 4000
-  , idamage  = 8 `d` 1  -- we are lying about the dice here, but the dungeon
-                        -- is too small and the extra-dice hammers too rare
-                        -- to subdivide this identification class by dice
+  , idamage  = 0  -- all damage independent of melee skill; this also helps
+                  -- not to lie about damage of unindentified items
   , iaspects = [ PresentAs HAMMER_UNKNOWN
                , SetFlag Durable, SetFlag Meleeable
                , toVelocity 40 ]  -- ensuring it hits with the head costs speed
@@ -1715,12 +1714,14 @@ hammer1 = hammerTemplate  -- 1m handle, blunt
                , (STARTING_WEAPON, 70), (S_BLUNT_SHORT_HAMMER, 1) ]
   , iaspects = [Timeout 5, EqpSlot EqpSlotWeaponBig]
                ++ iaspects hammerTemplate
+  , ieffects = [RefillHP (-8)]
   }
 hammer2 = hammerTemplate  -- 0.75m handle, sharp
-  { ifreq    = [(COMMON_ITEM, 25), (STARTING_WEAPON, 10)]
+  { ifreq    = [(COMMON_ITEM, 30), (STARTING_WEAPON, 10)]
   , iverbHit = "puncture"
   , iaspects = [Timeout 3, EqpSlot EqpSlotWeaponFast]
                ++ iaspects hammerTemplate
+  , ieffects = [RefillHP (-8)]
   , idesc    = "Upon closer inspection, this hammer, or pick, turns out particularly well balanced. The profiled handle seamlessly joins the head, which focuses the blow at a sharp point, compensating for the tool's modest size."
   }
 hammer3 = hammerTemplate  -- 2m pole, blunt
@@ -1730,7 +1731,7 @@ hammer3 = hammerTemplate  -- 2m pole, blunt
   , iaspects = [ Timeout 12  -- balance, or @DupItem@ would break the game
                , EqpSlot EqpSlotWeaponBig]
                ++ iaspects hammerTemplate
-  , ieffects = [RefillHP (-4)]  -- don't lie about @idamage@ when not identified
+  , ieffects = [RefillHP (-12)]
   , idesc    = "This hammer sports a long pole that increases the momentum of the blunt head's swing, at the cost of long recovery. It's capable of smashing objects together, though the required careful positioning often means hands are smashed as well."
   }
 hammerParalyze = hammerTemplate
@@ -1741,23 +1742,25 @@ hammerParalyze = hammerTemplate
                , Timeout 5  -- 2m, but light head and pole
                , EqpSlot EqpSlotWeaponBig ]
                ++ iaspects hammerTemplate
-  , ieffects = [Paralyze 10]
+  , ieffects = [RefillHP (-8), Paralyze 10]
   , idesc    = "This exquisite demolition hammer with a titanium head and excepthionally long synthetic handle leaves no wall and no body standing."
   }
 hammerSpark = hammerTemplate  -- the only hammer with significantly heavier head
   { iname    = "Grand Smithhammer"
   , ifreq    = [(TREASURE, 20), (BONDING_TOOL, 1), (MUSEAL, 100)]
   , irarity  = [(5, 1), (8, 6)]
-  , iweight  = 5000  -- weight almost gives it away
+  , iweight  = 5000  -- weight and shape/damage gives it away; always identified
+  , idamage  = 8 `d` 1  -- different from all other hammers
   , iaspects = [ SetFlag Unique
                , Timeout 8  -- 1.5m handle and heavy, but unique
-               , EqpSlot EqpSlotWeaponBig ]
-               ++ iaspects hammerTemplate
+               , EqpSlot EqpSlotWeaponBig
+               , SetFlag Durable, SetFlag Meleeable
+               , toVelocity 40 ]
   , ieffects = [ Explode S_SPARK
                    -- we can't use a focused explosion, because it would harm
                    -- the hammer wielder as well, unlike this one
                , RefillHP (-3) ]
-                   -- @RefillHP@ to avoid a no-brainer of durable tool use;
+                   -- @RefillHP@ to avoid a no-brainer of durable tool use
   , idesc    = "High carbon steel of this heavy old hammer doesn't yield even to the newest alloys and produces fountains of sparks in defiance. Whatever it forge-welds together, stays together."
   }
 sword = ItemKind
@@ -1770,7 +1773,7 @@ sword = ItemKind
   , irarity  = [(3, 1), (6, 20)]
   , iverbHit = "stab"
   , iweight  = 2000
-  , idamage  = 11 `d` 1  -- with high melee bonus, better than sharp hammer
+  , idamage  = 11 `d` 1  -- with high melee bonus, much better than sharp hammer
   , iaspects = [ Timeout 7, EqpSlot EqpSlotWeaponBig
                , SetFlag Durable, SetFlag Meleeable
                , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
@@ -1802,7 +1805,7 @@ swordNullify = sword
   , ieffects = []
   , idesc    = "An exuberant hand-forged roasting implement, intentionally and wisely kept blunt."
   }
-halberd = ItemKind  -- long pole, because glued 1m handle worse than nothing
+halberd = ItemKind  -- long pole
   { isymbol  = symbolPolearm
   , iname    = "pole cleaver"
   , ifreq    = [ (COMMON_ITEM, 10), (POLE_AND_STEEL, 1)
@@ -1812,7 +1815,7 @@ halberd = ItemKind  -- long pole, because glued 1m handle worse than nothing
   , irarity  = [(5, 1), (8, 15)]
   , iverbHit = "slice"
   , iweight  = 3500
-  , idamage  = 11 `d` 1
+  , idamage  = 11 `d` 1  -- bad, until sharpened
   , iaspects = [ Timeout 10
                , AddSkill SkHurtMelee $ (-5 + 1 `dL` 3) * 5
                    -- useless against armor at game start
@@ -1833,7 +1836,7 @@ halberd2 = halberd
   , iverbHit = "carve"
   , iweight  = 4500
   , idamage  = 16 `d` 1
-  , iaspects = [ Timeout 12
+  , iaspects = [ Timeout 16
                , AddSkill SkHurtMelee $ (-7 + 1 `dL` 5) * 5
                    -- balance, or @DupItem@ would break the game;
                    -- together with @RerollItem@, it's allowed to, though
@@ -2320,14 +2323,14 @@ hammer4 = hammer1  -- 1m handle, sharp
   { ifreq    = [ (COMMON_ITEM, 10), (HANDLE_AND_STEEL, 1)
                , (STARTING_WEAPON, 5), (S_SHARP_SHORT_HAMMER, 1) ]
   , iverbHit = "cleave"
-  , ieffects = [RefillHP (-2)]  -- don't lie about @idamage@ when not identified
+  , ieffects = [RefillHP (-10)]
   , idesc    = "This hammer's head has it's protruding edges sharpened. Otherwise, it's pretty ordinary."
  }
 hammer5 = hammer3  -- 2m pole, sharp
   { ifreq    = [ (COMMON_ITEM, 5), (POLE_AND_STEEL, 1)
                , (S_SHARP_LONG_HAMMER, 1) ]
   , iverbHit = "cleave"
-  , ieffects = [RefillHP (-6)]  -- don't lie about @idamage@ when not identified
+  , ieffects = [RefillHP (-14)]
   , idesc    = "This long-hafter hammer sports a head with the edge of the narrow end sharpened for cutting."
   }
 swordNullifySharp = swordNullify
