@@ -8,7 +8,7 @@
 module Content.ItemKind
   ( -- * Group name patterns
     pattern HARPOON, pattern TORSO_ARMOR, pattern CLOTHING_MISC
-  , pattern MUSEAL, pattern FIREPROOF_CLOTH, pattern THICK_CLOTH, pattern COOKED_PLANT, pattern LIQUID_NITROGEN
+  , pattern MUSEAL, pattern FIREPROOF_CLOTH, pattern COOKED_PLANT, pattern LIQUID_NITROGEN
   , groupNamesSingleton, groupNames
   , -- * Content
     content, items, otherItemContent
@@ -50,12 +50,12 @@ pattern COOKED_PLANT_UNKNOWN :: GroupName ItemKind
 groupNames :: [GroupName ItemKind]
 groupNames =
        [HARPOON, TORSO_ARMOR, CLOTHING_MISC]
-    ++ [MUSEAL, FIREPROOF_CLOTH, THICK_CLOTH, COOKED_PLANT, LIQUID_NITROGEN]
+    ++ [MUSEAL, FIREPROOF_CLOTH, COOKED_PLANT, LIQUID_NITROGEN]
     ++ embedsGN ++ actorsGN ++ organsGN ++ blastsGN
 
 pattern HARPOON, TORSO_ARMOR, CLOTHING_MISC :: GroupName ItemKind
 
-pattern MUSEAL, FIREPROOF_CLOTH, THICK_CLOTH, COOKED_PLANT, LIQUID_NITROGEN:: GroupName ItemKind
+pattern MUSEAL, FIREPROOF_CLOTH, COOKED_PLANT, LIQUID_NITROGEN:: GroupName ItemKind
 
 -- The @UNKNOWN@ patterns don't need to be exported. Used internally.
 -- They also represent singleton groups.
@@ -81,7 +81,6 @@ pattern COOKED_PLANT_UNKNOWN = GroupName "cooked plant unknown"
 
 pattern MUSEAL = GroupName "museal"
 pattern FIREPROOF_CLOTH = GroupName "fireproof cloth"
-pattern THICK_CLOTH = GroupName "thick cloth"
 pattern COOKED_PLANT = GroupName "cooked plant"
 pattern LIQUID_NITROGEN = GroupName "liquid nitrogen"
 
@@ -336,7 +335,7 @@ light1 = ItemKind
                , (FIRE_SOURCE, 1), (WOODEN_TORCH, 1) ]
   , iflavour = zipPlain [Brown]
   , icount   = 1 `dL` 4
-  , irarity  = [(1, 20), (4, 1)]
+  , irarity  = [(1, 12), (4, 1)]  -- crafted, so less rare
   , iverbHit = "scorch"
   , iweight  = 1000
   , idamage  = 0
@@ -345,9 +344,10 @@ light1 = ItemKind
                    -- so unused by AI due to the mixed blessing
                , SetFlag Lobable, SetFlag Equipable
                , EqpSlot EqpSlotShine ]
-                   -- not Fragile; reusable flare
+                   -- not Fragile; reusable flare;
+                   -- the staff culled when crafting, so no velocity malus
   , ieffects = [Burn 1]
-  , idesc    = "A puttering torch improvised with polymer sheets soaked in lubricant on a stick."
+  , idesc    = "A puttering torch improvised with rags on a stick, soaked in any lubricant or oil or resin or tar that could be scavenged in a hurry."
   , ikit     = []
   }
 light2 = ItemKind
@@ -2522,11 +2522,12 @@ staff = grassStitcher
   { isymbol  = symbolHafted
   , iname    = "wooden staff"
   , ifreq    = [(HANDLE, 80), (POLE_OR_HANDLE, 40), (S_STAFF, 1)]
-  , iflavour = zipPlain [BrYellow]
+  , iflavour = zipPlain [Brown]
   , iverbHit = "prod"
+  , iweight  = 1000
   , idamage  = 1 `d` 1
   , iaspects = [ SetFlag Durable
-               , toVelocity 40 ]  -- a weak missile and that's all
+               , toVelocity 70 ]  -- a weak missile and that's all
   , ieffects = []
   , idesc    = ""  -- doh
   }
