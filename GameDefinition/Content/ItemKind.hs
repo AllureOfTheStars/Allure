@@ -1662,7 +1662,7 @@ knife = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 200), (S_CLEAVER, 1)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(3 * 10/15, 40), (4 * 10/15, 10)]
+  , irarity  = [(3, 30)]
                  -- no weapons brought by aliens, initially, so cleaver common
   , iverbHit = "cut"
   , iweight  = 1000
@@ -1696,7 +1696,7 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
                  -- a very aggressive weapon, bad for defense even when long
   , iflavour = zipFancy [BrMagenta]  -- avoid "pink"
   , icount   = 1
-  , irarity  = [(5 * 10/15, 25), (8 * 10/15, 1)]
+  , irarity  = [(5, 20)]
                  -- don't make it too common on lvl 3
   , iverbHit = "club"
   , iweight  = 4000
