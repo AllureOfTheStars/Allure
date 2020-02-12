@@ -131,14 +131,14 @@ rogue = CaveKind
   , cdesc         = "Winding tunnels stretch into the dark. A few areas are passable but the remainder is packed with tanks and cells of raw materials and machinery."
   }
 residential = rogue
-  { cfreq         = [(DEFAULT_RANDOM, 50), (CAVE_RESIDENTIAL, 1)]
+  { cfreq         = [(DEFAULT_RANDOM, 70), (CAVE_RESIDENTIAL, 1)]
   , cname         = "Residential area"
   , cmaxPlaceSize = DiceXY 14 20  -- fewer big rooms
   , cdarkOdds     = 51  -- all rooms dark
   , cnightOdds    = 0  -- always day
   , cauxConnects  = 1%10  -- differentiate; bare skeleton feel; long span paths
-  , cmaxVoid      = 1%4
   , cextraStairs  = 1 + 1 `d` 2
+  , cplaceFreq    = [(ROGUE, 1), (RESIDENTIAL, 29)]
   , cdefTile      = FILLER_WALL
   , cstairFreq    = [ (WALLED_STAIRCASE, 50), (OPEN_STAIRCASE, 50)
                     , (TINY_STAIRCASE, 1) ]
