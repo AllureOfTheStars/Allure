@@ -248,7 +248,7 @@ laboratory = rogue
   , copenChance   = 1%2
   , cactorFreq    = [ (MONSTER, 50), (ANIMAL, 70), (ROBOT, 5)
                     , (IK.AQUATIC, 10) ]
-  , citemNum      = 8 `d` 5  -- reward difficulty
+  , citemNum      = 9 `d` 5  -- reward difficulty
   , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.TREASURE, 40)
                     , (IK.ANY_POTION, 40), (IK.CURIOUS_ITEM, 40) ]
   , cplaceFreq    = [(LABORATORY, 1)]
@@ -341,7 +341,7 @@ empty = rogue
   , chidden       = 0
   , cactorCoeff   = 40  -- easy to view and plan
   , cactorFreq    = [(MONSTER, 10), (ANIMAL, 5), (ROBOT, 85)]
-  , citemNum      = 9 `d` 4  -- few rooms
+  , citemNum      = 10 `d` 5  -- lots of free space
   , cplaceFreq    = [(EMPTY, 1)]
   , cpassable     = True
   , cdefTile      = EMPTY_SET_LIT
