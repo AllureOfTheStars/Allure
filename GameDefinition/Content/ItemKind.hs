@@ -1437,7 +1437,7 @@ armorLeather = ItemKind
   , iname    = "spacesuit jacket"
   , ifreq    = [ (COMMON_ITEM, 100), (S_SPACESUIT_JACKET, 1)
                , (SPACESUIT_PART, 1), (TORSO_ARMOR, 1) ]
-  , iflavour = zipFancy [Brown]
+  , iflavour = zipFancy [Blue]
   , icount   = 1
   , irarity  = [(1, 9), (10, 3)]
   , iverbHit = "thud"
@@ -1482,7 +1482,7 @@ gloveFencing = ItemKind
   { isymbol  = symbolMiscArmor
   , iname    = "construction glove"
   , ifreq    = [(COMMON_ITEM, 100), (ARMOR_MISC, 1), (ARMOR_RANGED, 50)]
-  , iflavour = zipPlain [White]
+  , iflavour = zipPlain [BrGreen]
   , icount   = 1
   , irarity  = [(6, 9), (10, 5)]
   , iverbHit = "flap"
@@ -1501,7 +1501,7 @@ gloveGauntlet = gloveFencing
   { iname    = "spacesuit glove"
   , ifreq    = [ (COMMON_ITEM, 100), (S_SPACESUIT_GLOVE, 1)
                , (SPACESUIT_PART, 2), (ARMOR_MISC, 1) ]
-  , iflavour = zipFancy [BrCyan]
+  , iflavour = zipFancy [White]
   , irarity  = [(3, 7), (10, 4)]
   , iweight  = 300
   , idamage  = 2 `d` 1
@@ -2208,7 +2208,7 @@ heavyBoot = ItemKind
   , iname    = "spacesuit boot"
   , ifreq    = [ (COMMON_ITEM, 100), (S_SPACESUIT_BOOT, 1)
                , (SPACESUIT_PART, 2), (ARMOR_MISC, 1) ]
-  , iflavour = zipFancy [Blue]
+  , iflavour = zipFancy [Magenta]
   , icount   = 1
   , irarity  = [(1, 15), (5, 1)]
   , iverbHit = "sock"
