@@ -599,7 +599,7 @@ asleep = armoredSkin
   }
 impressed = armoredSkin
   { isymbol  = 'I'
-  , iname    = "impressed"
+  , iname    = "impressed"  -- keep the same as in @ifreq@, to simplify code
   , ifreq    = [(S_IMPRESSED, 1), (CONDITION, 1)]
   , iflavour = zipPlain [BrRed]
   , iverbHit = "confuse"
@@ -629,8 +629,8 @@ animalStomach = armoredSkin
   }
 hungry = armoredSkin
   { isymbol  = 'U'
-  , iname    = "hungry"
-  , ifreq    = [(S_HUNGRY, 1)]
+  , iname    = "hungry"  -- keep the same as in @ifreq@, to simplify code
+  , ifreq    = [(S_HUNGRY, 1), (CONDITION, 1)]
   , iflavour = zipPlain [BrRed]
   , icount   = 1
   , iverbHit = "pang"
@@ -760,8 +760,8 @@ fuelFissure = boilingFissure
 geneticFlaw :: Int -> GroupName ItemKind -> ItemKind
 geneticFlaw n grp = armoredSkin
   { isymbol  = 'F'
-  , iname    = "genetic flaw"
-  , ifreq    = [(GENETIC_FLAW, 1), (grp, 1)]
+  , iname    = "genetic flaw"  -- keep the same as in @ifreq@, to simplify code
+  , ifreq    = [(GENETIC_FLAW, 1), (grp, 1), (CONDITION, 1)]
   , iflavour = zipPlain [BrRed]
   , iverbHit = "flaw"
   , iweight  = 0
@@ -774,7 +774,6 @@ geneticFlaw n grp = armoredSkin
                ++ [AddSkill SkApply (-1) | n >= 10]
   , ieffects = [ OnSmash $ DropItem maxBound maxBound COrgan CONDITION
                    -- key for AI is it eliminates all impression conditions
-               , OnSmash $ DropItem maxBound maxBound COrgan S_HUNGRY
                , OnSmash $ RefillHP n
                , OnSmash $ VerbNoLonger "undergo instant infracellular decontamination" ]  -- unlike the civilian version, this one is instant and the attunement is automatic and relatively quick (the usual double cooldown when equipping items again)
   , idesc    = "Nobody is perfect. At least without infracellular engineering, which is heavily regulated, insanely expensive and automatically reverted without refund before critical medical interventions. One more reason to be a good citizen, work hard and not die often. But where is the fun in that?"

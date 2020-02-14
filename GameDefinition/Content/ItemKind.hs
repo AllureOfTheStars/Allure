@@ -652,7 +652,6 @@ potion4 = potionTemplate
   , irarity  = [(1, 6), (10, 10)]
   , ieffects = [ RefillHP 10
                , DropItem maxBound maxBound COrgan CONDITION
-               , DropItem maxBound maxBound COrgan S_HUNGRY
                , OnSmash (Explode S_HEALING_MIST_2) ]
   }
 potion5 = potionTemplate
