@@ -632,8 +632,8 @@ wallGlass = TileKind
   { tsymbol  = '%'
   , tname    = "transparent polymer wall"
   , tfreq    = [(LEGEND_LIT, 1), (LEGEND_DARK, 1), (MUSEUM_SET_DARK, 8)]
-  , tcolor   = BrBlue
-  , tcolor2  = Blue
+  , tcolor   = BrCyan
+  , tcolor2  = Cyan
   , talter   = 10
   , tfeature = [ BuildAs S_CLOSED_DOOR  -- when ending a corridor, have doors
                , Clear ]
