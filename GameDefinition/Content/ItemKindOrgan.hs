@@ -761,7 +761,7 @@ geneticFlaw :: Int -> GroupName ItemKind -> ItemKind
 geneticFlaw n grp = armoredSkin
   { isymbol  = 'F'
   , iname    = "genetic flaw"  -- keep the same as in @ifreq@, to simplify code
-  , ifreq    = [(GENETIC_FLAW, 1), (grp, 1), (CONDITION, 1)]
+  , ifreq    = [(GENETIC_FLAW, 1), (grp, 1)]
   , iflavour = zipPlain [BrRed]
   , iverbHit = "flaw"
   , iweight  = 0
