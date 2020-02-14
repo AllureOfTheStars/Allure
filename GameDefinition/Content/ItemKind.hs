@@ -224,7 +224,7 @@ slingStone = ItemKind
   , ifreq    = [(COMMON_ITEM, 5), (ANY_ARROW, 100)]
   , iflavour = zipPlain [Blue]
   , icount   = 1 + 3 `dL` 4
-  , irarity  = [(10, 25)]
+  , irarity  = [(8, 25)]
   , iverbHit = "clobber"
   , iweight  = 200
   , idamage  = 1 `d` 1
@@ -243,7 +243,7 @@ slingBullet = ItemKind
   , ifreq    = [(COMMON_ITEM, 5), (ANY_ARROW, 100), (MERCENARY_AMMO, 25)]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1 + 6 `dL` 4
-  , irarity  = [(10, 20)]
+  , irarity  = [(8, 20)]
   , iverbHit = "slug"
   , iweight  = 28
   , idamage  = 1 `d` 1
@@ -1988,7 +1988,7 @@ harpoon3 = harpoon
   { iname    = "whaling harpoon"
   , ifreq    = [(TREASURE, 50), (MUSEAL, 100)]
   , iflavour = zipFancy [Red]
-  , irarity  = [(8, 5), (10, 5)]
+  , irarity  = [(8, 5)]
   , iweight  = 1000
   , idamage  = 10 `d` 1
   , iaspects = [SetFlag Unique] ++ iaspects harpoon
@@ -2092,7 +2092,8 @@ blowtorch = ItemKind
                , AddSkill SkAlter 2
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotAlter ]
-  , ieffects = [Burn 2, Impress]
+  , ieffects = [ Burn 3  -- ensure heroes wear initially, so they reach lvl 4
+               , Impress ]
       -- is used for melee in precedence to fists, but not to cleavers;
       -- so if player wants to hit with it, it's enough to pack other gear;
       -- is also the low bar for self-inflicted damage from durable breaching
@@ -2210,11 +2211,12 @@ heavyBoot = ItemKind
                , (SPACESUIT_PART, 2), (ARMOR_MISC, 1) ]
   , iflavour = zipFancy [Magenta]
   , icount   = 1
-  , irarity  = [(1, 15), (5, 1)]
+  , irarity  = [(1, 20), (3 * 10/15, 20), (4 * 10/15, 1)]
   , iverbHit = "sock"
   , iweight  = 100000  -- including the fake gravity mass
   , idamage  = 5 `d` 1
-  , iaspects = [ AddSkill SkHurtMelee (-20)
+  , iaspects = [ Timeout 3
+               , AddSkill SkHurtMelee (-20)
                , AddSkill SkArmorMelee $ (1 + 1 `dL` 3) * 5
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
@@ -2229,7 +2231,7 @@ spacesuit = ItemKind
   , ifreq    = [(S_SPACESUIT, 1)]
   , iflavour = zipFancy [BrWhite]
   , icount   = 1
-  , irarity  = [(1, 1), (10, 10)]
+  , irarity  = [(10, 10)]
   , iverbHit = "hug"
   , iweight  = 250000  -- including the fake gravity mass from two boots
   , idamage  = 0
@@ -2266,7 +2268,7 @@ spacesuitTorn = spacesuit
 crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
   { iname    = "crowbar"
   , iflavour = zipPlain [BrCyan]
-  , irarity  = [(1, 8), (3 * 10/15, 8), (4 * 10/15, 1)]
+  , irarity  = [(1, 15), (3 * 10/15, 15), (4 * 10/15, 1)]
   , iverbHit = "gouge"
   , idamage  = 3 `d` 1
   , iaspects = [ Timeout 4
@@ -2281,7 +2283,7 @@ crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
 catsPaw = chisel
   { iname    = "cat's paw"
   , iflavour = zipFancy [BrCyan]
-  , irarity  = [(1, 10), (3 * 10/15, 10), (4 * 10/15, 1)]
+  , irarity  = [(1, 17), (3 * 10/15, 17), (4 * 10/15, 1)]
   , iverbHit = "paw"
   , idamage  = 2 `d` 1
   , iaspects = [ Timeout 3
@@ -2397,7 +2399,7 @@ cattleProd = militaryBaton
   { iname    = "electric cattle prod"
   , ifreq    = [(COMMON_ITEM, 100)]
   , iflavour = zipPlain [Brown]
-  , irarity  = [(10, 15)]
+  , irarity  = [(7, 12)]
   , idamage  = 2 `d` 1
   , ieffects = [Discharge $ 40 - 1 `d` 20, RefillCalm (-30)]
   , idesc    = "Used for subduing unruly zoo animals."
@@ -2411,7 +2413,7 @@ grassStitcher = ItemKind
                , (S_GRASS_STITCHER, 1) ]
   , iflavour = zipPlain [Green]
   , icount   = 1
-  , irarity  = [(1, 15), (3 * 10/15, 15), (4 * 10/15, 3)]
+  , irarity  = [(1, 17), (3 * 10/15, 17), (4 * 10/15, 1)]
   , iverbHit = "stab"
   , iweight  = 500
   , idamage  = 4 `d` 1
@@ -2522,7 +2524,7 @@ cleaningPole = grassStitcher
 staff = grassStitcher
   { isymbol  = symbolHafted
   , iname    = "wooden staff"
-  , ifreq    = [(HANDLE, 80), (POLE_OR_HANDLE, 40), (S_STAFF, 1)]
+  , ifreq    = [(HANDLE, 80), (POLE_OR_HANDLE, 55), (S_STAFF, 1)]
   , iflavour = zipPlain [Brown]
   , iverbHit = "prod"
   , iweight  = 1000
@@ -2534,13 +2536,13 @@ staff = grassStitcher
   }
 pipe = staff
   { iname    = "metal pipe"
-  , ifreq    = [(HANDLE, 20), (POLE_OR_HANDLE, 20), (S_PIPE, 1)]
+  , ifreq    = [(HANDLE, 20), (POLE_OR_HANDLE, 15), (S_PIPE, 1)]
   , iflavour = zipFancy [BrBlue]
   , idesc    = "Around a meter long, light, strong and hard alloy pipe. With one or both ends cut diagonally and sharpened, this would become a formidable weapon."
   }
 longPole = staff
   { iname    = "long pole"
-  , ifreq    = [(POLE, 90), (POLE_OR_HANDLE, 40)]
+  , ifreq    = [(POLE, 90), (POLE_OR_HANDLE, 30)]
   , iflavour = zipPlain [BrYellow]
   , iweight  = 3000
   , iaspects = [ AddSkill SkArmorMelee 10  -- not sharp, so weaker
