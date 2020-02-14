@@ -943,7 +943,7 @@ wallObscuredSafety = TileKind
                ]
   }
 signboardReadExtinguisher = TileKind
-  { tsymbol  = 'O'
+  { tsymbol  = '0'
   , tname    = "fire extinguisher cabinet"
   , tfreq    = [ (SIGNBOARD, 20), (EMPTY_SET_LIT, 1)
                , (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 1), (MUSEUM_SET_DARK, 1)
@@ -1194,8 +1194,8 @@ barrel = TileKind
   , tfreq    = [ (BARREL, 1)
                , (EXIT_SET_LIT, 3), (NOISE_SET_LIT, 20), (POWER_SET_DARK, 50)
                , (ZOO_SET_DARK, 30), (AMBUSH_SET_DARK, 2) ]
-  , tcolor   = BrRed
-  , tcolor2  = Red
+  , tcolor   = BrBlue
+  , tcolor2  = Blue
   , talter   = 0  -- projectiles can destroy
   , tfeature = [ Embed BARREL_CONTENTS
                , OpenWith True [] S_FLOOR_ASHES_LIT ]  -- no pathfinding through
