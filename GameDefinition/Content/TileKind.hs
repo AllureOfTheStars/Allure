@@ -291,6 +291,9 @@ ldarkColorable = [tree, bush, floorCorridor, floorArena, floorDamp, floorDirt, f
 -- : (curtain, etc., not flowing, but solid and static)
 -- ` (not distinct enough from ' and already used for some blasts)
 
+-- White, cyan and green terrain is usually inert, red is burning or trapped,
+-- blue activable or trapped, magenta searchable or activable.
+
 -- Note that for AI hints and UI comfort, most multiple-use @Embed@ tiles
 -- should have a variant, which after first use transforms into a different
 -- colour tile without @ChangeTo@ and similar (which then AI no longer touches).

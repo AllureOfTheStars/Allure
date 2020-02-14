@@ -867,7 +867,7 @@ combineEffect msg ass =
         -> Effect
         -> Effect
       f roolsRawCooked eff = cookOne roolsRawCooked `OrEffect` eff
-      initial = VerbMsgFail msg  -- noop, but emits @UseDud@
+      initial = VerbMsgFail msg  -- noop; emits @UseId@ to correctly abort
   in foldr f initial ass
 
 cookEffect :: Effect
