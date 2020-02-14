@@ -1202,7 +1202,7 @@ barrel = TileKind
   }
 barrelSpice = barrel
   { tfreq    = [ (SMOKE_CLUMP_LIT, 1), (SMOKE_CLUMP_DARK, 1)
-               , (RUBBLE_OR_WASTE_LIT, 1), (RUBBLE_OR_WASTE_DARK, 1)
+               , (RUBBLE_OR_WASTE_LIT, 2), (RUBBLE_OR_WASTE_DARK, 2)
                , (CACHE_MAZE, 33) ]
   , tfeature = Spice : tfeature barrel
   }

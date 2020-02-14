@@ -1368,10 +1368,10 @@ cells = PlaceKind
                , "·%·"
                , "··#"
                ]
-  , poverrideDark = [ ('%', DOORLESS_MACHINERY), ('b', BARREL)
+  , poverrideDark = [ ('%', DOORLESS_MACHINERY), ('b', RUBBLE_OR_WASTE_DARK)
                     , ('f', BUSH_CLUMP_DARK), ('o', OIL_RESIDUE_DARK)
                     , (';', UNDERBRUSH_CLUMP_DARK) ]
-  , poverrideLit = [ ('%', DOORLESS_MACHINERY), ('b', BARREL)
+  , poverrideLit = [ ('%', DOORLESS_MACHINERY), ('b', RUBBLE_OR_WASTE_LIT)
                    , ('f', BUSH_CLUMP_LIT), ('o', OIL_RESIDUE_LIT)
                    , (';', UNDERBRUSH_CLUMP_LIT) ]
   }
@@ -1380,7 +1380,7 @@ cells2 = cells
   , prarity  = [(1, 2), (10, 2)]
   , ptopLeft = [ "f;#·"  -- extra column to avoid blocked exits
                , ";#;;"
-               , "·#;;"
+               , "·#b;"
                ]
   }
 cells3 = cells
