@@ -190,7 +190,7 @@ testCrawl-medium:
 	$$(cabal-plan list-bin Allure) --dbgMsgSer --logPriority 4 --newGame 1 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterGameOver --stopAfterSeconds 250 --dumpInitRngs --automateAll --keepAutomated --gameMode crawl --assertExplored 4 2> /tmp/teletypetest.log
 
 testCrawl-medium-double:
-	$$(cabal-plan list-bin Allure) --dbgMsgSer --logPriority 4 --newGame 1 --noAnim --maxFps 100000 --frontendLazy --benchmark --stopAfterGameOver --stopAfterSeconds 700 --dumpInitRngs --automateAll --keepAutomated --gameMode crawl --assertExplored 4
+	$$(cabal-plan list-bin Allure) --dbgMsgSer --logPriority 4 --newGame 1 --noAnim --maxFps 100000 --frontendLazy --benchmark --stopAfterGameOver --stopAfterSeconds 590 --dumpInitRngs --automateAll --keepAutomated --gameMode crawl --assertExplored 4
 
 testCrawlEmpty-medium:
 	$$(cabal-plan list-bin Allure) --dbgMsgSer --logPriority 4 --newGame 1 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 40 --dumpInitRngs --automateAll --keepAutomated --gameMode "crawl empty" 2> /tmp/teletypetest.log
