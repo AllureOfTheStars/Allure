@@ -1402,8 +1402,8 @@ ring5 = ringTemplate
                ++ iaspects ringTemplate
   }
 ring6 = ringTemplate  -- weak skill per eqp slot, so can be without drawbacks
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100), (MUSEAL, 100)]
-  , irarity  = [(10, 3)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100), (MUSEAL, 50)]
+  , irarity  = [(3, 3)]
   , iaspects = [ AddSkill SkShine 1
                , EqpSlot EqpSlotShine ]
                ++ iaspects ringTemplate
@@ -1501,7 +1501,7 @@ gloveGauntlet = gloveFencing
   , ifreq    = [ (COMMON_ITEM, 100), (S_SPACESUIT_GLOVE, 1)
                , (SPACESUIT_PART, 2), (ARMOR_MISC, 1) ]
   , iflavour = zipFancy [White]
-  , irarity  = [(1, 10), (3 * 10/15, 10), (4 * 10/15, 1)]
+  , irarity  = [(1, 15), (3 * 10/15, 15), (4 * 10/15, 1)]
   , iverbHit = "mow"
   , iweight  = 300
   , idamage  = 4 `d` 1
@@ -1578,7 +1578,7 @@ helmArmored = ItemKind
                , (SPACESUIT_PART, 1), (ARMOR_MISC, 1) ]
   , iflavour = zipFancy [BrBlue]
   , icount   = 1
-  , irarity  = [(1, 10), (3 * 10/15, 10), (4 * 10/15, 1)]
+  , irarity  = [(1, 15), (3 * 10/15, 15), (4 * 10/15, 1)]
   , iverbHit = "headbutt"
   , iweight  = 2000
   , idamage  = 4 `d` 1
@@ -1665,7 +1665,7 @@ knife = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 200), (S_CLEAVER, 1)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(1, 30), (3, 40)]
+  , irarity  = [(1, 40)]
                  -- no weapons brought by aliens, initially, so cleaver common
   , iverbHit = "cut"
   , iweight  = 1000
@@ -2214,7 +2214,7 @@ heavyBoot = ItemKind
                , (SPACESUIT_PART, 2), (ARMOR_MISC, 1) ]
   , iflavour = zipFancy [Magenta]
   , icount   = 1
-  , irarity  = [(1, 10), (3 * 10/15, 10), (4 * 10/15, 1)]
+  , irarity  = [(1, 15), (3 * 10/15, 15), (4 * 10/15, 1)]
   , iverbHit = "sock"
   , iweight  = 100000  -- including the fake gravity mass
   , idamage  = 5 `d` 1
@@ -2517,7 +2517,7 @@ staff = grassStitcher
   , iweight  = 1000
   , idamage  = 1 `d` 1
   , iaspects = [ SetFlag Durable
-               , toVelocity 70 ]  -- a weak missile and that's all
+               , toVelocity 30 ]  -- a weak missile and that's all
   , ieffects = []
   , idesc    = ""  -- doh
   }
