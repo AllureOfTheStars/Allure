@@ -1262,7 +1262,7 @@ ovalBasin2 = oval
   }
 squareBasin = oval
   { pname    = "a water basin"
-  , pfreq    = [(ARENA, 15000), (LABORATORY, 3000), (EMPTY, 2000)]
+  , pfreq    = [(ARENA, 15000), (LABORATORY, 5000), (EMPTY, 2000)]
   , pfence   = FNone
   , ptopLeft = [ "0bt0t"
                , "b~~~~"
@@ -1273,7 +1273,8 @@ squareBasin = oval
   }
 squareBasin2 = oval
   { pname    = "a water basin"
-  , pfreq    = [(ARENA, 100000), (LABORATORY, 50000), (EMPTY, 12000)]
+  , pfreq    = [(ARENA, 100000), (EMPTY, 12000)]
+      -- can't do LABORATORY, because barrels might block corridors
   , pfence   = FNone
   , ptopLeft = [ "0;0;;;"
                , ";~~~~~"
@@ -1629,9 +1630,11 @@ dormitory = PlaceKind
                , "ddd"
                ]
   , poverrideDark = [ ('d', FLOOR_ACTOR_ITEM_LIT)
-                    , ('f', PUMPS_LIT) ]
+                    , ('f', PUMPS_LIT)
+                    , ('$', TRAPPABLE_WALL) ]
   , poverrideLit = [ ('d', FLOOR_ACTOR_ITEM_LIT)
-                   , ('f', PUMPS_LIT) ]
+                   , ('f', PUMPS_LIT)
+                   , ('$', TRAPPABLE_WALL) ]
   }
 dormitory2 = dormitory
   { pfreq    = [(RESIDENTIAL, 10000)]
@@ -1663,7 +1666,7 @@ dormitory5 = dormitory
   { pfreq    = [(RESIDENTIAL, 100)]
   , pcover   = CMirror
   , pfence   = FNone
-  , ptopLeft = [ "#############"
+  , ptopLeft = [ "##$$$$$$$$$##"
                , "f#···#··#··#f"
                , "d#···#··#··+d"
                , "d##+###+####d"
@@ -1676,12 +1679,12 @@ dormitory6 = dormitory
   , pfence   = FNone
   , ptopLeft = [ "#fddd"
                , "####d"
-               , "#··#d"
-               , "#··+d"
-               , "####d"
-               , "#··#d"
-               , "#··+d"
-               , "#··#d"
+               , "$··#d"
+               , "$··+d"
+               , "$###d"
+               , "$··#d"
+               , "$··+d"
+               , "$··#d"
                , "####d"
                , "#fddd"
                ]
