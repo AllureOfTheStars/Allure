@@ -71,7 +71,7 @@ pattern CURRENCY_UNKNOWN = GroupName "currency unknown"
 
 pattern HARPOON = GroupName "any harpoon"
 pattern TORSO_ARMOR = GroupName "torso armor"
-pattern CLOTHING_MISC = GroupName "clothing misc"
+pattern CLOTHING_MISC = GroupName "miscellaneous clothing"
 
 -- ** Allure-specific
 
@@ -1462,7 +1462,7 @@ armorLeather2 = armorLeather  -- for now, purely flavour, for better messages
   }
 armorMail = armorLeather
   { iname    = "bulletproof vest"
-  , ifreq    = [ (COMMON_ITEM, 100), (TORSO_ARMOR, 1), (ARMOR_RANGED, 50)
+  , ifreq    = [ (COMMON_ITEM, 100), (TORSO_ARMOR, 1), (ARMOR_RANGED, 1)
                , (S_BULLTEPROOF_VEST, 1) ]
   , iflavour = zipPlain [Cyan]
   , irarity  = [(6, 9), (10, 3)]
@@ -1480,7 +1480,7 @@ armorMail = armorLeather
 gloveFencing = ItemKind
   { isymbol  = symbolMiscArmor
   , iname    = "construction glove"
-  , ifreq    = [(COMMON_ITEM, 100), (ARMOR_MISC, 1), (ARMOR_RANGED, 50)]
+  , ifreq    = [(COMMON_ITEM, 100), (ARMOR_MISC, 1), (ARMOR_RANGED, 1)]
   , iflavour = zipPlain [BrGreen]
   , icount   = 1
   , irarity  = [(6, 9), (10, 5)]
@@ -1575,7 +1575,7 @@ helmArmored = ItemKind
   { isymbol  = symbolMiscArmor
   , iname    = "spacesuit helmet"
   , ifreq    = [ (COMMON_ITEM, 100), (S_SPACESUIT_HELMET, 1)
-               , (SPACESUIT_PART, 1), (ARMOR_MISC, 1) ]
+               , (SPACESUIT_PART, 1), (ARMOR_MISC, 1), (ARMOR_RANGED, 1) ]
   , iflavour = zipFancy [BrBlue]
   , icount   = 1
   , irarity  = [(1, 15), (3 * 10/15, 15), (4 * 10/15, 1)]
@@ -1677,7 +1677,7 @@ knife = ItemKind
                , EqpSlot EqpSlotWeaponFast
                , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
   , ieffects = []
-  , idesc    = "A heavy professional kitchen blade. Will do fine cutting any kind of meat, bone and an occacional metal can. Does not penetrate deeply, but is quick to move and hard to block. Especially useful in conjunction with a larger weapon."
+  , idesc    = "A heavy professional kitchen blade. Will do fine cutting any kind of meat, bone and an occasional metal can. Does not penetrate deeply, but is quick to move and hard to block. Especially useful in conjunction with a larger weapon."
   , ikit     = []
   }
 daggerDropBestWeapon = knife

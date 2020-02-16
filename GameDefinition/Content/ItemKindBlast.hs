@@ -72,7 +72,7 @@ pattern S_PHEROMONE = GroupName "pheromone"
 pattern S_CALMING_MIST = GroupName "calming mist"
 pattern S_DISTRESSING_ODOR = GroupName "distressing odor"
 pattern S_HEALING_MIST = GroupName "healing mist"
-pattern S_HEALING_MIST_2 = GroupName "healing mist 2"
+pattern S_HEALING_MIST_2 = GroupName "strong healing mist"
 pattern S_WOUNDING_MIST = GroupName "wounding mist"
 pattern S_DISTORTION = GroupName "distortion"
 pattern S_SMOKE = GroupName "smoke"
@@ -112,7 +112,7 @@ blastNoStatOf grp = GroupName $ fromGroupName grp <+> "mist"
 blastBonusStatOf :: GroupName ItemKind -> GroupName ItemKind
 blastBonusStatOf grp = GroupName $ fromGroupName grp <+> "dew"
 
-pattern ARMOR_MISC = GroupName "armor misc"
+pattern ARMOR_MISC = GroupName "miscellaneous armor"
 
 -- ** Allure-specific
 pattern S_NITROGEN_MIST = GroupName "nitrogen mist"

@@ -72,8 +72,8 @@ pattern CONSTRUCTION_ROBOT = GroupName "construction robot"
 
 -- ** Common
 pattern ADD_SIGHT = GroupName "add sight"
-pattern ARMOR_RANGED = GroupName "armor ranged"
-pattern ADD_NOCTO_1 = GroupName "add nocto 1"
+pattern ARMOR_RANGED = GroupName "ranged armor"
+pattern ADD_NOCTO_1 = GroupName "add 1 noctovision"
 pattern WEAK_ARROW = GroupName "weak arrow"
 pattern LIGHT_MANIPULATION = GroupName "light manipulation"
 pattern WOODEN_TORCH = GroupName "wooden torch"
