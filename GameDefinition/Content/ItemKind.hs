@@ -2405,6 +2405,14 @@ cattleProd = militaryBaton
   }
 gardenMsg :: Effect
 gardenMsg = VerbMsgFail "feel the gardening tool fracture"
+gardenDestruct :: Int -> GroupName ItemKind -> Effect
+gardenDestruct n grp =
+  OnUser $ OneOf $
+    DestroyItem 1 1 CEqp grp
+    `AndEffect`
+    SeqEffect [ CreateItem Nothing CGround HANDLE timerNone
+              , CreateItem Nothing CGround STEEL_SCRAP timerNone ]
+    : replicate n gardenMsg
 grassStitcher = ItemKind
   { isymbol  = symbolPolearm
   , iname    = "grass stitcher"
@@ -2420,13 +2428,7 @@ grassStitcher = ItemKind
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
                , toVelocity 40 ]
-  , ieffects = [OnUser $ OneOf
-                  [ DestroyItem 1 1 CEqp S_GRASS_STITCHER
-                    `AndEffect`
-                    SeqEffect
-                      [ CreateItem Nothing CGround HANDLE timerNone
-                      , CreateItem Nothing CGround STEEL_SCRAP timerNone ]
-                  , gardenMsg, gardenMsg, gardenMsg ]]
+  , ieffects = [gardenDestruct 3 S_GRASS_STITCHER]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Grass_Stitcher
   , ikit     = []
   }
@@ -2440,14 +2442,7 @@ ladiesFork = grassStitcher
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 40 ]
-  , ieffects = [OnUser $ OneOf
-                  [ DestroyItem 1 1 CEqp S_LADIES_FORK
-                    `AndEffect`
-                    SeqEffect
-                      [ CreateItem Nothing CGround HANDLE timerNone
-                      , CreateItem Nothing CGround STEEL_SCRAP timerNone ]
-                  , gardenMsg, gardenMsg
-                  , gardenMsg, gardenMsg, gardenMsg ]]
+  , ieffects = [gardenDestruct 5 S_LADIES_FORK]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Garden_fork
   }
 hoe = grassStitcher
@@ -2458,18 +2453,11 @@ hoe = grassStitcher
   , iverbHit = "hack"
   , iweight  = 1000
   , idamage  = 6 `d` 1  -- neither sharp nor heavy
-  , iaspects = [ Timeout 6
+  , iaspects = [ Timeout 7
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 40 ]
-  , ieffects = [OnUser $ OneOf
-                  [ DestroyItem 1 1 CEqp S_HOE
-                    `AndEffect`
-                    SeqEffect
-                      [ CreateItem Nothing CGround HANDLE timerNone
-                      , CreateItem Nothing CGround STEEL_SCRAP timerNone ]
-                  , gardenMsg, gardenMsg, gardenMsg
-                  , gardenMsg, gardenMsg, gardenMsg ]]
+  , ieffects = [gardenDestruct 7 S_HOE]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Hoe_(tool)
   }
 spade = grassStitcher
@@ -2480,18 +2468,11 @@ spade = grassStitcher
   , iverbHit = "cut"
   , iweight  = 2000
   , idamage  = 7 `d` 1
-  , iaspects = [ Timeout 7
+  , iaspects = [ Timeout 9
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 40 ]
-  , ieffects = [OnUser $ OneOf
-                  [ DestroyItem 1 1 CEqp S_SPADE
-                    `AndEffect`
-                    SeqEffect
-                      [ CreateItem Nothing CGround HANDLE timerNone
-                      , CreateItem Nothing CGround STEEL_SCRAP timerNone ]
-                  , gardenMsg, gardenMsg, gardenMsg, gardenMsg
-                  , gardenMsg, gardenMsg, gardenMsg ]]
+  , ieffects = [gardenDestruct 9 S_SPADE]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Spade
   }
 treePruner = grassStitcher
