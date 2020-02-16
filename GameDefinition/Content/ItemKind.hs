@@ -1501,33 +1501,35 @@ gloveGauntlet = gloveFencing
   , ifreq    = [ (COMMON_ITEM, 100), (S_SPACESUIT_GLOVE, 1)
                , (SPACESUIT_PART, 2), (ARMOR_MISC, 1) ]
   , iflavour = zipFancy [White]
-  , irarity  = [(3, 7), (10, 4)]
+  , irarity  = [(1, 10), (3 * 10/15, 10), (4 * 10/15, 1)]
+  , iverbHit = "mow"
   , iweight  = 300
-  , idamage  = 2 `d` 1
-  , iaspects = [ AddSkill SkArmorMelee $ (1 + 1 `dL` 4) * 5
-               , SetFlag Durable, SetFlag Equipable
+  , idamage  = 4 `d` 1
+  , iaspects = [ Timeout 3
+               , AddSkill SkArmorMelee $ (1 + 1 `dL` 4) * 5
+               , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- flaps and flutters
-  , idesc    = "A piece of a hull maintenance spacesuit, padded and reinforced with carbon fibre."
+  , idesc    = "A piece of a hull maintenance spacesuit, padded, reinforced with carbon fibre, with extruding titan manipulators."
   }
 gloveJousting = gloveFencing
   { iname    = "Welding Handgear"
   , ifreq    = [(COMMON_ITEM, 100), (ARMOR_MISC, 1)]
   , iflavour = zipFancy [BrRed]
   , irarity  = [(1, 6), (10, 3)]
-  , iverbHit = "rasp"
+  , iverbHit = "ram"
   , iweight  = 3000
-  , idamage  = 3 `d` 1
+  , idamage  = 5 `d` 1
   , iaspects = [ SetFlag Unique
                , AddSkill SkHurtMelee $ (-7 + 1 `dL` 5) * 3
                , AddSkill SkArmorMelee $ (2 + 1 `d` 2 + 1 `dL` 2) * 5
                , AddSkill SkArmorRanged $ (1 + 1 `dL` 2) * 3
                  -- very random on purpose and can even be good on occasion
                  -- or when ItemRerolled enough times
-               , SetFlag Durable, SetFlag Equipable
+               , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- flaps and flutters
-  , idesc    = "Rigid, bulky handgear embedding a welding equipment, complete with an affixed small shield and a darkened visor. Awe-inspiring."
+  , idesc    = "Rigid, bulky handgear embedding a defunct welding equipment, complete with an affixed small shield and a darkened visor. Awe-inspiring."
   }
 hatUshanka = ItemKind
   { isymbol  = symbolMiscArmor
@@ -1575,15 +1577,16 @@ helmArmored = ItemKind
                , (SPACESUIT_PART, 1), (ARMOR_MISC, 1) ]
   , iflavour = zipFancy [BrBlue]
   , icount   = 1
-  , irarity  = [(6, 9), (10, 3)]
-  , iverbHit = "bounce"
+  , irarity  = [(1, 10), (3 * 10/15, 10), (4 * 10/15, 1)]
+  , iverbHit = "headbutt"
   , iweight  = 2000
-  , idamage  = 0
-  , iaspects = [ AddSkill SkArmorMelee $ (1 + 1 `dL` 4) * 5
+  , idamage  = 4 `d` 1
+  , iaspects = [ Timeout 3
+               , AddSkill SkArmorMelee $ (1 + 1 `dL` 4) * 5
                , AddSkill SkArmorRanged $ (2 + 1 `dL` 2) * 3  -- headshot
                , AddSkill SkSight (-1)
                , AddSkill SkHearing (-7), AddSkill SkSmell (-5)
-               , SetFlag Durable, SetFlag Equipable
+               , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorRanged ]
   , ieffects = []
   , idesc    = "Blocks out everything, including your senses."
@@ -2210,7 +2213,7 @@ heavyBoot = ItemKind
                , (SPACESUIT_PART, 2), (ARMOR_MISC, 1) ]
   , iflavour = zipFancy [Magenta]
   , icount   = 1
-  , irarity  = [(1, 20), (3 * 10/15, 20), (4 * 10/15, 1)]
+  , irarity  = [(1, 10), (3 * 10/15, 10), (4 * 10/15, 1)]
   , iverbHit = "sock"
   , iweight  = 100000  -- including the fake gravity mass
   , idamage  = 5 `d` 1
