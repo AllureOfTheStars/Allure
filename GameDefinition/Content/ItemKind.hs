@@ -1664,12 +1664,12 @@ knife = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 200), (S_CLEAVER, 1)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(1, 20), (3, 30)]
+  , irarity  = [(1, 30), (3, 40)]
                  -- no weapons brought by aliens, initially, so cleaver common
   , iverbHit = "cut"
   , iweight  = 1000
-  , idamage  = 6 `d` 1
-  , iaspects = [ Timeout 2
+  , idamage  = 5 `d` 1
+  , iaspects = [ Timeout 3
                , AddSkill SkHurtMelee $ (-1 + 1 `d` 3 + 1 `dL` 2) * 3
                    -- very common, so don't make too random
                , SetFlag Durable, SetFlag Meleeable
