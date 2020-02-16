@@ -1321,8 +1321,8 @@ maze = PlaceKind
 maze2 = maze
   { pfreq    = [ (ROGUE, 180), (LABORATORY, 12000), (ARENA, 6)
                , (MUSEUM, 6), (EXIT, 300) ]
-  , ptopLeft = [ "#·##·"
-               , "·#··#"
+  , ptopLeft = [ "#·%%·"
+               , "·%··#"
                , "···#·"
                ]
   }
@@ -1371,17 +1371,17 @@ cells = PlaceKind
                ]
   , poverrideDark = [ ('%', DOORLESS_MACHINERY), ('b', RUBBLE_OR_WASTE_DARK)
                     , ('f', BUSH_CLUMP_DARK), ('o', OIL_RESIDUE_DARK)
-                    , (';', UNDERBRUSH_CLUMP_DARK) ]
+                    , (';', UNDERBRUSH_CLUMP_DARK), ('w', S_REINFORCED_WALL) ]
   , poverrideLit = [ ('%', DOORLESS_MACHINERY), ('b', RUBBLE_OR_WASTE_LIT)
                    , ('f', BUSH_CLUMP_LIT), ('o', OIL_RESIDUE_LIT)
-                   , (';', UNDERBRUSH_CLUMP_LIT) ]
+                   , (';', UNDERBRUSH_CLUMP_LIT), ('w', S_REINFORCED_WALL) ]
   }
 cells2 = cells
   { pname    = "humidity equalizers"
   , prarity  = [(1, 2), (10, 2)]
   , ptopLeft = [ "f;#·"  -- extra column to avoid blocked exits
-               , ";#;;"
-               , "·#b;"
+               , ";%;;"
+               , "·%b;"
                ]
   }
 cells3 = cells
@@ -1402,9 +1402,9 @@ cells5 = cells  -- this one is distinct enough from others, so needs a boost
   { pname    = "broken robot holds"
   , pfreq    = [ (ROGUE, 20), (LABORATORY, 15)
                , (EMPTY, 80), (EXIT, 70), (NOISE, 150) ]
-  , ptopLeft = [ "··#"
-               , "··#"
-               , "##o"
+  , ptopLeft = [ "··w"
+               , "··w"
+               , "wwo"
                ]
   }
 cells6 = cells

@@ -138,7 +138,7 @@ residential = rogue
   , cnightOdds    = 0  -- always day
   , cauxConnects  = 1%10  -- differentiate; bare skeleton feel; long span paths
   , cextraStairs  = 1 + 1 `d` 2
-  , cplaceFreq    = [(ROGUE, 1), (RESIDENTIAL, 29)]
+  , cplaceFreq    = [(ROGUE, 1), (RESIDENTIAL, 49)]
   , cdefTile      = FILLER_WALL
   , cstairFreq    = [ (WALLED_STAIRCASE, 50), (OPEN_STAIRCASE, 50)
                     , (TINY_STAIRCASE, 1) ]
