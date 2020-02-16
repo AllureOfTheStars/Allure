@@ -1521,13 +1521,14 @@ gloveJousting = gloveFencing
   , iweight  = 3000
   , idamage  = 5 `d` 1
   , iaspects = [ SetFlag Unique
+               , Timeout 3
                , AddSkill SkHurtMelee $ (-7 + 1 `dL` 5) * 3
                , AddSkill SkArmorMelee $ (2 + 1 `d` 2 + 1 `dL` 2) * 5
                , AddSkill SkArmorRanged $ (1 + 1 `dL` 2) * 3
                  -- very random on purpose and can even be good on occasion
                  -- or when ItemRerolled enough times
                , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotArmorMelee
+               , EqpSlot EqpSlotWeaponFast  -- hope to replace with better soon
                , toVelocity 50 ]  -- flaps and flutters
   , idesc    = "Rigid, bulky handgear embedding a defunct welding equipment, complete with an affixed small shield and a darkened visor. Awe-inspiring."
   }
@@ -2221,7 +2222,7 @@ heavyBoot = ItemKind
                , AddSkill SkHurtMelee (-20)
                , AddSkill SkArmorMelee $ (1 + 1 `dL` 3) * 5
                , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotArmorMelee
+               , EqpSlot EqpSlotWeaponFast  -- hope to replace with better soon
                , toVelocity 500 ]  -- the fake mass not counted for throwing
   , ieffects = []
   , idesc    = "An armored boot, cut-off from a spacesuit. The in-built micro-suction machinery for maintaining traction in the absence of gravity gives stability equivalent to an extra 100kg of mass. Kicks get abrupt acceleration millimeters short of the target."
