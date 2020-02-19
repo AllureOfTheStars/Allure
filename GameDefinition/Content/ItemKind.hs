@@ -1960,7 +1960,7 @@ needle = ItemKind
   , idamage  = 1 `d` 1
   , iaspects = [ AddSkill SkHurtMelee $ -10 * 5
                , SetFlag Fragile  -- breaks easily despite being piercing
-               , ToThrow $ ThrowMod 70 100 3 ]  -- piercing; good shape
+               , ToThrow $ ThrowMod 60 100 3 ]  -- piercing; good shape
   , ieffects = []
   , idesc    = "A long sturdy hypodermic needle ending in a dried out micro-syringe that is easy to break off. It's too thin to cause great harm, but it passes through flesh easily."
   , ikit     = []
@@ -1982,7 +1982,7 @@ needleSleep = ItemKind
   , idamage  = 1 `d` 1
   , iaspects = [ AddSkill SkHurtMelee $ -10 * 5
                , SetFlag Fragile
-               , toVelocity 70 ]  -- syringe blocks piercing; slender fins
+               , toVelocity 60 ]  -- syringe blocks piercing; slender fins
   , ieffects = [PutToSleep]
   , idesc    = "A long hypodermic needle ending in a micro-syringe with residues of the sleeping agent."
   , ikit     = []
