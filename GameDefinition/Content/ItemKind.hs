@@ -1707,7 +1707,7 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
                   -- not to lie about damage of unindentified items
   , iaspects = [ PresentAs HAMMER_UNKNOWN
                , SetFlag Durable, SetFlag Meleeable
-               , toVelocity 40 ]  -- ensuring it hits with the head costs speed
+               , toVelocity 0 ]  -- totally unbalanced and so @RefillHP@ fails
   , ieffects = []
   , idesc    = "One of many kinds of hammers employed in construction work. The usual ones with blunt heads don't cause grave wounds, but enough weigth on a long handle can shake and bruise even most armored foes. However, larger hammers require more time to recover after a swing. This one looks average at a quick glance."  -- if it's really the average kind, the weak kind, the description stays; if not, it's replaced with one of the descriptions below at identification time
   , ikit     = []
@@ -1758,7 +1758,7 @@ hammerSpark = hammerTemplate  -- the only hammer with significantly heavier head
                , Timeout 8  -- 1.5m handle and heavy, but unique
                , EqpSlot EqpSlotWeaponBig
                , SetFlag Durable, SetFlag Meleeable
-               , toVelocity 40 ]
+               , toVelocity 0 ]  -- totally unbalanced and so @RefillHP@ fails
   , ieffects = [ Explode S_SPARK
                    -- we can't use a focused explosion, because it would harm
                    -- the hammer wielder as well, unlike this one
@@ -2094,7 +2094,8 @@ blowtorch = ItemKind
   , iaspects = [ Timeout 4
                , AddSkill SkAlter 2
                , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotAlter ]
+               , EqpSlot EqpSlotAlter
+               , toVelocity 0 ]  -- @Burn@ not effective when thrown
   , ieffects = [ Burn 3  -- ensure heroes wear initially, so they reach lvl 4
                , Impress ]
       -- is used for melee in precedence to fists, but not to cleavers;
@@ -2159,8 +2160,8 @@ laserSharpener = honingSteel
   , idamage  = 0
   , iaspects = [ SetFlag Unique, Timeout 10
                , SetFlag Durable, SetFlag Meleeable, EqpSlot EqpSlotWeaponBig
-               , toVelocity 50 ]
-  , ieffects = [Burn 5]  -- harsh when used as a sharpener; intended
+               , toVelocity 0 ]  -- @Burn@ not effective when thrown
+  , ieffects = [Burn 5]  -- really harmful when used as a sharpener; intended
   , idesc    = "Laser ablation is the safest and most accurate of sharpening method. Misaligned optics with broken shielding, however, change the situation dramatically, enabling stray laser pulses to escape at unpredictable angles."  -- hence short range and so melee weapon; TODO: long range weapon with instant projectiles and no risk of hull breach
   }
 diagonalPliers = chisel
@@ -2292,9 +2293,10 @@ catsPaw = chisel
   , iaspects = [ Timeout 3
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
-               , toVelocity 50 ]
+               , toVelocity 40 ]
   , ieffects = [RefillHP (-2)]
-                 -- @RefillHP@ to avoid a no-brainer of durable tool use
+                 -- @RefillHP@ to avoid a no-brainer of durable tool use;
+                 -- also quite attractive as a ranged weapon
   , idesc    = "This is a heavy and pointy piece of steel that can be employed as an improvised melee weapon. It is also usable as a breaching tool, though rather injurious."  -- TODO: https://en.wikipedia.org/wiki/Cat%27s_paw_(nail_puller)
   }
 fireAxe = ItemKind
