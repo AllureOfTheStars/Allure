@@ -878,7 +878,8 @@ cookEffect = combineEffect "have nothing to cook"
 sharpeningEffect :: Effect
 sharpeningEffect =
   combineEffect "lack a sharpening tool or a weapon to sharpen"
-  $ map (\(tools, raw, cooked) -> (tools, raw, [(1, cooked)])) sharpeningAssocs
+  $ map (\(tools, raw, cooked) ->
+            (tools, [(1, raw)], [(1, cooked)])) sharpeningAssocs
 
 workshopEffect :: Effect
 workshopEffect = combineEffect "have not enough tools and components"
@@ -898,19 +899,18 @@ cookingAssocs =
   ]
 
 sharpeningAssocs :: [( [(Int, GroupName ItemKind)]
-                     , [(Int, GroupName ItemKind)]
+                     , GroupName ItemKind
                      , GroupName ItemKind )]
 sharpeningAssocs =
-  [ ([(1, SHARPENING_TOOL)], [(1, S_HARPOON_CARGO)], S_HARPOON_SHARP)
-  , ( [(1, SHARPENING_TOOL)], [(1, BREACHING_TOOL), (1, S_PIPE)]
-    , S_SHARPENED_PIPE )
-  , ([(1, SHARPENING_TOOL)], [(1, S_SHIELD_BLUNT)], S_SHIELD_SHARP)
-  , ([(1, SHARPENING_TOOL)], [(1, S_BLUNT_SHORT_HAMMER)], S_SHARP_SHORT_HAMMER)
-  , ([(1, SHARPENING_TOOL)], [(1, S_BLUNT_LONG_HAMMER)], S_SHARP_LONG_HAMMER)
-  , ([(2, SHARPENING_TOOL)], [(1, S_CLEAVER)], S_DAGGER)
-  , ([(1, SHARPENING_TOOL)], [(1, S_RAPIER_BLUNT)], S_RAPIER_SHARP)
-  , ([(2, SHARPENING_TOOL)], [(1, S_POLE_CLEAVER)], S_LONG_SPEAR)
-  , ([(1, SHARPENING_TOOL)], [(1, S_HALBERD_BLUNT)], S_HALBERD_SHARP)
+  [ ([(1, SHARPENING_TOOL)], S_HARPOON_CARGO, S_HARPOON_SHARP)
+  , ([(1, SHARPENING_TOOL), (1, BREACHING_TOOL)], S_PIPE, S_SHARPENED_PIPE)
+  , ([(1, SHARPENING_TOOL)], S_SHIELD_BLUNT, S_SHIELD_SHARP)
+  , ([(1, SHARPENING_TOOL)], S_BLUNT_SHORT_HAMMER, S_SHARP_SHORT_HAMMER)
+  , ([(1, SHARPENING_TOOL)], S_BLUNT_LONG_HAMMER, S_SHARP_LONG_HAMMER)
+  , ([(2, SHARPENING_TOOL)], S_CLEAVER, S_DAGGER)
+  , ([(1, SHARPENING_TOOL)], S_RAPIER_BLUNT, S_RAPIER_SHARP)
+  , ([(2, SHARPENING_TOOL)], S_POLE_CLEAVER, S_LONG_SPEAR)
+  , ([(1, SHARPENING_TOOL)], S_HALBERD_BLUNT, S_HALBERD_SHARP)
   ]
 
 workshopAssocs :: [( [(Int, GroupName ItemKind)]
