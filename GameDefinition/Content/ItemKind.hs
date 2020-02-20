@@ -290,10 +290,10 @@ harpoon = ItemKind
   , icount   = 1  -- durable, so one piece lasts long
   , irarity  = [(1, 5), (10, 3)]
   , iverbHit = "hook"
-  , iweight  = 750
-  , idamage  = 4 `d` 1
+  , iweight  = 1400
+  , idamage  = 5 `d` 1
   , iaspects = [ Timeout 5
-               , AddSkill SkHurtMelee $ (-10 + 1 `d` 2 + 1 `dL` 3) * 5
+               , AddSkill SkHurtMelee $ (-7 + 1 `d` 2 + 1 `dL` 3) * 5
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig ]
   , ieffects = [PullActor (ThrowMod 200 50 1)]  -- 1 step, fast
@@ -303,7 +303,7 @@ harpoon = ItemKind
 harpoon2 = harpoon
   { iname    = "sharp harpoon"
   , ifreq    = [(COMMON_ITEM, 5), (HARPOON, 2), (S_HARPOON_SHARP, 1)]
-  , idamage  = 6 `d` 1
+  , idamage  = 7 `d` 1
   , idesc    = "A cord ending in a sharpened cargo-hook that, in addition to entangling the victim, gains purchase biting into the body."
   }
 net = ItemKind
@@ -1491,7 +1491,7 @@ gloveFencing = ItemKind
                , AddSkill SkArmorRanged $ (1 `dL` 2) * 3
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotHurtMelee
-               , toVelocity 50 ]  -- flaps and flutters
+               , toVelocity 40 ]  -- flaps and flutters
   , ieffects = []
   , idesc    = "A flexible construction glove from rough leather ensuring a good grip. Also, quite effective in deflecting or even catching slow projectiles."
   , ikit     = []
@@ -1503,13 +1503,13 @@ gloveGauntlet = gloveFencing
   , iflavour = zipFancy [White]
   , irarity  = [(1, 10), (5 * 10/15, 10), (6 * 10/15, 1)]
   , iverbHit = "mow"
-  , iweight  = 300
+  , iweight  = 500
   , idamage  = 4 `d` 1
   , iaspects = [ Timeout 3
                , AddSkill SkArmorMelee $ (1 + 1 `dL` 4) * 5
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
-               , toVelocity 50 ]  -- flaps and flutters
+               , toVelocity 40 ]  -- flaps and flutters
   , idesc    = "A piece of a hull maintenance spacesuit, padded, reinforced with carbon fibre, with extruding titan manipulators."
   }
 gloveJousting = gloveFencing
@@ -1588,7 +1588,8 @@ helmArmored = ItemKind
                , AddSkill SkSight (-1)
                , AddSkill SkHearing (-7), AddSkill SkSmell (-5)
                , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotArmorRanged ]
+               , EqpSlot EqpSlotArmorRanged
+               , toVelocity 40 ]  -- unwieldy
   , ieffects = []
   , idesc    = "Blocks out everything, including your senses."
   , ikit     = []
@@ -1614,8 +1615,7 @@ buckler = ItemKind
                , AddSkill SkHurtMelee (-30)
                    -- too harmful; won't be wielded as weapon
                , SetFlag MinorEffects, SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotArmorMelee
-               , toVelocity 50 ]  -- unwieldy to throw
+               , EqpSlot EqpSlotArmorMelee ]  -- unwieldy to throw
   , ieffects = [PushActor (ThrowMod 200 50 1)]  -- 1 step, fast
   , idesc    = "Heavy and unwieldy arm protection made from an outer airlock panel. Absorbs a percentage of melee damage, both dealt and sustained. Too small to intercept projectiles with."
   , ikit     = []
@@ -1992,8 +1992,7 @@ harpoon3 = harpoon
   , ifreq    = [(TREASURE, 50), (MUSEAL, 100)]
   , iflavour = zipFancy [Red]
   , irarity  = [(8, 5)]
-  , iweight  = 1000
-  , idamage  = 10 `d` 1
+  , idamage  = 9 `d` 1
   , iaspects = [SetFlag Unique] ++ iaspects harpoon
   , ieffects = Yell  -- evoke a cry from pain; brutal
                : ieffects harpoon
@@ -2433,7 +2432,7 @@ grassStitcher = ItemKind
   , iaspects = [ Timeout 3  -- light and can hit with any side
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
-               , toVelocity 40 ]
+               , toVelocity 30 ]
   , ieffects = [gardenDestruct 3 S_GRASS_STITCHER]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Grass_Stitcher
   , ikit     = []
@@ -2477,7 +2476,7 @@ spade = grassStitcher
   , iaspects = [ Timeout 9
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
-               , toVelocity 40 ]
+               , toVelocity 50 ]
   , ieffects = [gardenDestruct 9 S_SPADE]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Spade
   }
