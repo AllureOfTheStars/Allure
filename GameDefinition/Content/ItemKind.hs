@@ -1706,7 +1706,7 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
   , idamage  = 0  -- all damage independent of melee skill; this also helps
                   -- not to lie about damage of unindentified items
   , iaspects = [ PresentAs HAMMER_UNKNOWN
-               , SetFlag Durable, SetFlag Meleeable
+               , SetFlag Durable, SetFlag Meleeable, EqpSlot EqpSlotWeaponBig
                , toVelocity 0 ]  -- totally unbalanced and so @RefillHP@ fails
   , ieffects = []
   , idesc    = "One of many kinds of hammers employed in construction work. The usual ones with blunt heads don't cause grave wounds, but enough weigth on a long handle can shake and bruise even most armored foes. However, larger hammers require more time to recover after a swing. This one looks average at a quick glance."  -- if it's really the average kind, the weak kind, the description stays; if not, it's replaced with one of the descriptions below at identification time
@@ -1715,7 +1715,7 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
 hammer1 = hammerTemplate  -- 1m handle, blunt
   { ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
                , (STARTING_WEAPON, 70), (S_BLUNT_SHORT_HAMMER, 1) ]
-  , iaspects = [Timeout 5, EqpSlot EqpSlotWeaponBig]
+  , iaspects = [Timeout 5]
                ++ iaspects hammerTemplate
   , ieffects = [RefillHP (-8)]
   }
@@ -1723,7 +1723,7 @@ hammer2 = hammerTemplate  -- 0.75m handle, sharp
   { ifreq    = [(COMMON_ITEM, 30), (STARTING_WEAPON, 10)]
   , iverbHit = "puncture"
   , iaspects = [Timeout 3, EqpSlot EqpSlotWeaponFast]
-               ++ iaspects hammerTemplate
+               ++ (iaspects hammerTemplate \\ [EqpSlot EqpSlotWeaponBig])
   , ieffects = [RefillHP (-8)]
   , idesc    = "Upon closer inspection, this hammer, or pick, turns out particularly well balanced. The profiled handle seamlessly joins the head, which focuses the blow at a sharp point, compensating for the tool's modest size."
   }
@@ -1731,8 +1731,7 @@ hammer3 = hammerTemplate  -- 2m pole, blunt
   { ifreq    = [ (COMMON_ITEM, 10), (BONDING_TOOL, 1), (POLE_AND_STEEL, 1)
                , (STARTING_WEAPON, 5), (S_BLUNT_LONG_HAMMER, 1) ]
   , iweight  = 6000  -- pole weight almost gives it away
-  , iaspects = [ Timeout 12  -- balance, or @DupItem@ would break the game
-               , EqpSlot EqpSlotWeaponBig]
+  , iaspects = [Timeout 12]  -- balance, or @DupItem@ would break the game
                ++ iaspects hammerTemplate
   , ieffects = [RefillHP (-12)]
   , idesc    = "This hammer sports a long pole that increases the momentum of the blunt head's swing, at the cost of long recovery. It's capable of smashing objects together, though the required careful positioning often means hands are smashed as well."
@@ -1742,8 +1741,7 @@ hammerParalyze = hammerTemplate
   , ifreq    = [(TREASURE, 20)]
   , irarity  = [(5, 1), (8, 6)]
   , iaspects = [ SetFlag Unique
-               , Timeout 5  -- 2m, but light head and pole
-               , EqpSlot EqpSlotWeaponBig ]
+               , Timeout 5 ]  -- 2m, but light head and pole
                ++ iaspects hammerTemplate
   , ieffects = [RefillHP (-8), Paralyze 10]
   , idesc    = "This exquisite demolition hammer with a titanium head and excepthionally long synthetic handle leaves no wall and no body standing."
