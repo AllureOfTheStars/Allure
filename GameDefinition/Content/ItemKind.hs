@@ -1665,8 +1665,7 @@ knife = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 200), (S_CLEAVER, 1)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(1, 5), (5, 20)]
-                 -- no weapons brought by aliens, initially, so cleaver common
+  , irarity  = [(1, 5), (5, 25)]  -- useful initially and for crafting later on
   , iverbHit = "cut"
   , iweight  = 1000
   , idamage  = 5 `d` 1
@@ -1699,8 +1698,7 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
                  -- a very aggressive weapon, bad for defense even when long
   , iflavour = zipFancy [BrMagenta]  -- avoid "pink"
   , icount   = 1
-  , irarity  = [(5, 20)]
-                 -- don't make it too common on lvl 3
+  , irarity  = [(5, 20)]  -- don't make it too common on lvl 3
   , iverbHit = "club"
   , iweight  = 4000
   , idamage  = 0  -- all damage independent of melee skill; this also helps
