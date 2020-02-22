@@ -790,7 +790,7 @@ barrelFuel = ItemKind
   , iweight  = 100000
   , idamage  = 0
   , iaspects = []
-  , ieffects = [Explode S_BURNING_OIL_4]
+  , ieffects = [Explode S_BURNING_OIL_3]
                  -- may exploit to harm foes; watch out for friends
   , idesc    = ""
   , ikit     = []
