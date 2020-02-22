@@ -754,7 +754,7 @@ potion12 = potionTemplate
   , iaspects = ELabel "of quicksilver"
                : iaspects potionTemplate
   , ieffects = [ toOrganGood S_HASTED (20 + 1 `d` 5)
-               , toOrganBad S_BLIND (10 + 1 `d` 5)
+               , Discharge $ 40 - 1 `d` 20
                , toOrganBad S_IMMOBILE (5 + 1 `d` 5)
                , OnSmash (Explode S_HASTE_SPRAY)
                , OnSmash (Explode S_IRON_FILING)

@@ -308,12 +308,13 @@ spreadFlash = ItemKind
   , iaspects = [ ToThrow $ ThrowMod 100 20 4  -- 4 steps, 1 turn
                , SetFlag Fragile, SetFlag Blast
                , AddSkill SkShine 5 ]
-  , ieffects = [ toOrganBad S_BLIND 5
-               , toOrganBad S_WEAKENED 20
+  , ieffects = [ toOrganBad S_WEAKENED 20
                , Discharge $ 40 - 1 `d` 20 ]
                  -- Wikipedia says: blind for five seconds and afterimage
-                 -- for much longer, harming aim
-  , idesc    = "A very bright flash of fire."
+                 -- for much longer, harming aim. But blind is boring
+                 -- and prevents the player from seeing fun explosions
+                 -- such as this one.
+  , idesc    = "A very bright flash of fire, causing long-lasting afterimages."
   , ikit     = []
   }
 spreadFlash8 = spreadFlash

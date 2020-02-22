@@ -733,7 +733,7 @@ dustFissure = boilingFissure
   , ifreq    = [(S_DUST_FISSURE, 1)]
   , icount   = 5 + 1 `d` 5
   , idamage  = 1 `d` 1
-  , ieffects = [ toOrganBad S_BLIND 5
+  , ieffects = [ toOrganBad S_WEAKENED 20
                , VerbNoLonger "cough one last time" ]
   , idesc    = ""
   }
