@@ -38,8 +38,8 @@ groupNamesSingleton =
        [FLASK_UNKNOWN, ANY_POTION_UNKNOWN, EDIBLE_PLANT_UNKNOWN, SCROLL_UNKNOWN, NECKLACE_UNKNOWN, RING_UNKNOWN, HAMMER_UNKNOWN, GEM_UNKNOWN, CURRENCY_UNKNOWN]
     ++ [S_GRASS_STITCHER, S_LADIES_FORK, S_SPADE, S_HOE]
     ++ [COOKED_PLANT_UNKNOWN]
-    ++ embedsGNSingleton ++ organsGNSingleton ++ blastsGNSingleton
-    ++ temporariesGNSingleton
+    ++ embedsGNSingleton ++ actorsGNSingleton ++ organsGNSingleton
+    ++ blastsGNSingleton ++ temporariesGNSingleton
 
 pattern FLASK_UNKNOWN, ANY_POTION_UNKNOWN, EDIBLE_PLANT_UNKNOWN, SCROLL_UNKNOWN, NECKLACE_UNKNOWN, RING_UNKNOWN, HAMMER_UNKNOWN, GEM_UNKNOWN, CURRENCY_UNKNOWN :: GroupName ItemKind
 
@@ -622,7 +622,7 @@ potion1 = potionTemplate
   { ifreq    = [ (COMMON_ITEM, 100), (S_PERFUME_POTION, 1)
                , (ANY_POTION, 100), (ANY_GLASS, 100) ]
   , icount   = 3 `dL` 1  -- very useful, despite appearances;
-                         -- AI heroes can't craft and die horribly without it
+                         -- AI heroes can't craft and so die horribly without it
   , iaspects = ELabel "of perfume"
                : iaspects potionTemplate
   , ieffects = [ Impress, toOrganGood S_ROSE_SMELLING (50 + 1 `d` 10)
@@ -2186,13 +2186,14 @@ boltCutter = diagonalPliers
   }
 solderingIron = chisel
   { iname    = "soldering iron"
-  , ifreq    = [(CURIOUS_ITEM, 100), (BONDING_TOOL, 1)]
+  , ifreq    = [(CURIOUS_ITEM, 100), (BONDING_TOOL, 50)]
   , iflavour = zipPlain [White]
   , iverbHit = "soldier"
   , idesc    = "It is a bonding tool."  -- TODO: wikipedia
   }
 duckTape = solderingIron
   { iname    = "duck tape"
+  , ifreq    = [(CURIOUS_ITEM, 100), (BONDING_TOOL, 1)]
   , icount   = 1 `d` 4
   , irarity  = [(2, 15)]
   , iverbHit = "catch"

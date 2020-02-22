@@ -10,8 +10,9 @@ module Content.ItemKindActor
     pattern HERO, pattern SCOUT_HERO, pattern RANGER_HERO, pattern ESCAPIST_HERO, pattern AMBUSHER_HERO, pattern BRAWLER_HERO, pattern SOLDIER_HERO, pattern CIVILIAN, pattern MONSTER, pattern MOBILE_MONSTER, pattern SCOUT_MONSTER, pattern ANIMAL, pattern MOBILE_ANIMAL, pattern IMMOBILE_ANIMAL
   , pattern ADD_SIGHT, pattern ARMOR_RANGED, pattern ADD_NOCTO_1, pattern WEAK_ARROW, pattern LIGHT_MANIPULATION, pattern WOODEN_TORCH, pattern BLANKET, pattern RING_OF_OPPORTUNITY_SNIPER, pattern ANY_ARROW, pattern STARTING_WEAPON, pattern GEM
   , pattern CRAWL_HERO, pattern MERCENARY_HERO, pattern AQUATIC_ANIMAL, pattern AQUATIC_MONSTER, pattern ROBOT, pattern MOBILE_ROBOT, pattern IMMOBILE_ROBOT, pattern CONSTRUCTION_ROBOT
-  , pattern COOKED_FOOD, pattern MERCENARY_WEAPON, pattern S_BULLTEPROOF_VEST, pattern MERCENARY_AMMO, pattern RAW_MEAT_CHUNK, pattern ROASTED_MEAT_CHUNK, pattern NEEDLE, pattern CAN_OF_STICKY_FOAM, pattern TRANQUILIZER_DART, pattern WASTE_CONTAINER, pattern CONSTRUCTION_HOOTER, pattern SPOTLIGHT, pattern BLOWTORCH, pattern POLE, pattern POLE_OR_HANDLE
-  , actorsGN
+  , pattern S_BULLTEPROOF_VEST, pattern S_PERFUME_POTION
+  , pattern COOKED_FOOD, pattern MERCENARY_WEAPON, pattern MERCENARY_AMMO, pattern RAW_MEAT_CHUNK, pattern ROASTED_MEAT_CHUNK, pattern NEEDLE, pattern CAN_OF_STICKY_FOAM, pattern TRANQUILIZER_DART, pattern WASTE_CONTAINER, pattern CONSTRUCTION_HOOTER, pattern SPOTLIGHT, pattern BLOWTORCH, pattern POLE, pattern POLE_OR_HANDLE, pattern BREACHING_TOOL, pattern BONDING_TOOL, pattern SHARPENING_TOOL, pattern WIRECUTTING_TOOL
+  , actorsGN, actorsGNSingleton
   , -- * Content
     actors
   ) where
@@ -29,12 +30,18 @@ import Game.LambdaHack.Definition.Flavour
 
 -- * Group name patterns
 
+actorsGNSingleton :: [GroupName ItemKind]
+actorsGNSingleton =
+       [S_BULLTEPROOF_VEST, S_PERFUME_POTION]
+
+pattern S_BULLTEPROOF_VEST, S_PERFUME_POTION :: GroupName ItemKind
+
 actorsGN :: [GroupName ItemKind]
 actorsGN =
        [HERO, SCOUT_HERO, RANGER_HERO, ESCAPIST_HERO, AMBUSHER_HERO, BRAWLER_HERO, SOLDIER_HERO, CIVILIAN, MONSTER, MOBILE_MONSTER, SCOUT_MONSTER, ANIMAL, MOBILE_ANIMAL, IMMOBILE_ANIMAL]
     ++ [ADD_SIGHT, ARMOR_RANGED, ADD_NOCTO_1, WEAK_ARROW, LIGHT_MANIPULATION, WOODEN_TORCH, BLANKET, RING_OF_OPPORTUNITY_SNIPER, ANY_ARROW, STARTING_WEAPON, GEM]
     ++ [CRAWL_HERO, MERCENARY_HERO, AQUATIC_ANIMAL, AQUATIC_MONSTER, ROBOT, MOBILE_ROBOT, IMMOBILE_ROBOT, CONSTRUCTION_ROBOT]
-    ++ [COOKED_FOOD, MERCENARY_WEAPON, S_BULLTEPROOF_VEST, MERCENARY_AMMO, RAW_MEAT_CHUNK, ROASTED_MEAT_CHUNK, NEEDLE, CAN_OF_STICKY_FOAM, TRANQUILIZER_DART, WASTE_CONTAINER, CONSTRUCTION_HOOTER, SPOTLIGHT, BLOWTORCH, POLE, POLE_OR_HANDLE]
+    ++ [COOKED_FOOD, MERCENARY_WEAPON, MERCENARY_AMMO, RAW_MEAT_CHUNK, ROASTED_MEAT_CHUNK, NEEDLE, CAN_OF_STICKY_FOAM, TRANQUILIZER_DART, WASTE_CONTAINER, CONSTRUCTION_HOOTER, SPOTLIGHT, BLOWTORCH, POLE, POLE_OR_HANDLE, BREACHING_TOOL, BONDING_TOOL, SHARPENING_TOOL, WIRECUTTING_TOOL]
 
 pattern HERO, SCOUT_HERO, RANGER_HERO, ESCAPIST_HERO, AMBUSHER_HERO, BRAWLER_HERO, SOLDIER_HERO, CIVILIAN, MONSTER, MOBILE_MONSTER, SCOUT_MONSTER, ANIMAL, MOBILE_ANIMAL, IMMOBILE_ANIMAL :: GroupName ItemKind
 
@@ -42,7 +49,7 @@ pattern ADD_SIGHT, ARMOR_RANGED, ADD_NOCTO_1, WEAK_ARROW, LIGHT_MANIPULATION, WO
 
 pattern CRAWL_HERO, MERCENARY_HERO, AQUATIC_ANIMAL, AQUATIC_MONSTER, ROBOT, MOBILE_ROBOT, IMMOBILE_ROBOT, CONSTRUCTION_ROBOT :: GroupName ItemKind
 
-pattern COOKED_FOOD, MERCENARY_WEAPON, S_BULLTEPROOF_VEST, MERCENARY_AMMO, RAW_MEAT_CHUNK, ROASTED_MEAT_CHUNK, NEEDLE, CAN_OF_STICKY_FOAM, TRANQUILIZER_DART, WASTE_CONTAINER, CONSTRUCTION_HOOTER, SPOTLIGHT, BLOWTORCH, POLE, POLE_OR_HANDLE :: GroupName ItemKind
+pattern COOKED_FOOD, MERCENARY_WEAPON, MERCENARY_AMMO, RAW_MEAT_CHUNK, ROASTED_MEAT_CHUNK, NEEDLE, CAN_OF_STICKY_FOAM, TRANQUILIZER_DART, WASTE_CONTAINER, CONSTRUCTION_HOOTER, SPOTLIGHT, BLOWTORCH, POLE, POLE_OR_HANDLE, BREACHING_TOOL, BONDING_TOOL, SHARPENING_TOOL, WIRECUTTING_TOOL :: GroupName ItemKind
 
 -- ** Common
 pattern HERO = GroupName "hero"
@@ -84,9 +91,11 @@ pattern STARTING_WEAPON = GroupName "starting weapon"
 pattern GEM = GroupName "gem"
 
 -- ** Allure-specific
+pattern S_BULLTEPROOF_VEST = GroupName "bulletproof vest"
+pattern S_PERFUME_POTION = GroupName "perfume potion"
+
 pattern COOKED_FOOD = GroupName "cooked food"
 pattern MERCENARY_WEAPON = GroupName "mercenary weapon"
-pattern S_BULLTEPROOF_VEST = GroupName "bulletproof vest"
 pattern MERCENARY_AMMO = GroupName "mercenary ammo"
 pattern RAW_MEAT_CHUNK = GroupName "raw meat chunk"
 pattern ROASTED_MEAT_CHUNK = GroupName "roasted meat chunk"
@@ -99,6 +108,10 @@ pattern SPOTLIGHT = GroupName "spotlight"
 pattern BLOWTORCH = GroupName "blowtorch"
 pattern POLE = GroupName "pole"
 pattern POLE_OR_HANDLE = GroupName "pole or handle"
+pattern BREACHING_TOOL = GroupName "breaching tool"
+pattern BONDING_TOOL = GroupName "bonding tool"
+pattern SHARPENING_TOOL = GroupName "sharpening tool"
+pattern WIRECUTTING_TOOL = GroupName "wirecutting tool"
 
 -- * Content
 
@@ -1077,12 +1090,15 @@ weldedRobot = ItemKind
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "A well-built humanoid luggage unloading robot with a smooth satin silvery skin. Its graceful moves are stunted by a thick irregular weld fastening both its shapely legs to the floor. A whiff of smoke escapes whenever it opens its mouth in a charming toothy smile while brandishing a blowtorch in its trembling hand."
+  , idesc    = "A well-built humanoid luggage unloading robot with a smooth silvery satin skin. Its graceful moves are stunted by a thick irregular weld fastening both its shapely legs to the floor. A whiff of smoke escapes whenever it opens its mouth in a charming toothy smile while brandishing a blowtorch in its trembling hand."
   , ikit     = [ (S_FIST, COrgan)
                , (S_EYE_6, COrgan), (S_EAR_3, COrgan)
                , (S_MOUTH_VENT, COrgan)
                , (S_ROBOT_BRAIN, COrgan)
-               , (S_CRUDE_WELD, COrgan), (BLOWTORCH, CEqp) ]
+               , (S_CRUDE_WELD, COrgan)
+               , (BLOWTORCH, CEqp)
+               , (S_PERFUME_POTION, CStash), (BONDING_TOOL, CStash) ]
+                   -- establish stash to ensure heroes pick up blowtorch ASAP
   }
 cleanerRobot = ItemKind
   { isymbol  = 'C'
