@@ -684,7 +684,7 @@ potion6 = potionTemplate
                                 , Explode S_DISTRESSING_ODOR
                                 , Explode $ blastNoStatOf S_IMPATIENT
                                 , Explode S_HASTE_SPRAY
-                                , Explode S_SLOWNESS_MIST
+                                , Explode S_VIOLENT_SLOWNESS_MIST
                                 , Explode S_FRAGRANCE
                                 , Explode S_VIOLENT_FLASH ]) ]
   }

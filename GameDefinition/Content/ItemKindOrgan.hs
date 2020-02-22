@@ -545,7 +545,7 @@ arsenicVent = armoredSkin
   , iverbHit = "menace"
   , iaspects = [ Timeout $ (2 + 1 `d` 3) * 5
                , SetFlag Periodic, SetFlag Durable ]
-  , ieffects = [RefillHP 2, Explode S_FOCUSED_SLOWNESS_MIST]
+  , ieffects = [RefillHP 2, Explode S_VIOLENT_SLOWNESS_MIST]
   , idesc    = ""
   }
 sulfurVent = armoredSkin
@@ -725,7 +725,7 @@ dustVent = armoredSkin
   , iverbHit = "menace"
   , iaspects = [ Timeout $ (5 + 1 `d` 3) * 5
                , SetFlag Periodic, SetFlag Durable ]
-  , ieffects = [RefillHP 2, Explode S_FOCUSED_FLASH]
+  , ieffects = [RefillHP 2, Explode S_VIOLENT_FLASH]
   , idesc    = ""
   }
 dustFissure = boilingFissure
