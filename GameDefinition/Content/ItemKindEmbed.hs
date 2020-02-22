@@ -799,14 +799,16 @@ barrelFertilizer = barrelFuel
   { iname    = "fertilizer"
   , ifreq    = [(BARREL_CONTENTS, 30)]
   , ieffects = [Explode S_FOCUSED_FRAGMENTATION]
-                 -- no S_VIOLENT_CONCUSSION; a barrel would destroy the ship;
-                 -- no water barrel either, basins and running water in taps
+                 -- no S_FOCUSED_CONCUSSION; a barrel would destroy the ship;
+                 -- no water barrel either, basins and running water in taps;
+                 -- no VIOLENT variants of the blasts or bumping a lone
+                 -- barrel would be safe (as it's safe with fuel barrel now)
   , idesc    = ""
   }
 barrelOxidizer = barrelFuel
   { iname    = "oxidizer"
   , ifreq    = [(BARREL_CONTENTS, 20)]
-  , ieffects = [Explode S_FOCUSED_fLASH]
+  , ieffects = [Explode S_FOCUSED_FLASH]
   , idesc    = ""
   }
 barrelOil = barrelFuel
@@ -819,7 +821,7 @@ barrelOil = barrelFuel
 barrelNitrogen = barrelFuel
   { iname    = "liquid nitrogen"
   , ifreq    = [(BARREL_CONTENTS, 40)]
-  , ieffects = [Explode S_NITROGEN_MIST]
+  , ieffects = [Explode S_FOCUSED_SLOWNESS_MIST]
                  -- may exploit to harm foes; watch out for friends
   , idesc    = ""
   }

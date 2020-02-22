@@ -813,7 +813,7 @@ flashBomb = fragmentationBomb
   , idamage  = 0
   , iaspects = [ SetFlag Lobable, SetFlag Fragile
                , toVelocity 70 ]  -- bad shape for throwing
-  , ieffects = [Explode S_FOCUSED_fLASH, OnSmash (Explode S_VIOLENT_FLASH)]
+  , ieffects = [Explode S_FOCUSED_FLASH, OnSmash (Explode S_VIOLENT_FLASH)]
   , idesc    = "For dramatic entrances and urgent exits."
   }
 firecrackerBomb = fragmentationBomb
@@ -2009,7 +2009,7 @@ flask18 = flaskTemplate
                : iaspects flaskTemplate
   , ieffects = [ Burn 1  -- sensory ambiguity between hot and cold
                , toOrganBad S_SLOWED (3 + 1 `d` 3)
-               , OnSmash (Explode S_NITROGEN_MIST) ]
+               , OnSmash (Explode S_FOCUSED_SLOWNESS_MIST) ]
   }
 flask19 = flaskTemplate
   { iname    = "galon"  -- diluted perfume; almost same effects
