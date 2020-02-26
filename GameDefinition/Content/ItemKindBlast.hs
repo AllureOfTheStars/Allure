@@ -162,7 +162,7 @@ burningOil n grp = ItemKind
                , SetFlag Fragile, SetFlag Blast
                , AddSkill SkShine 2 ]
   , ieffects = [ Burn 1
-               , toOrganBad S_PACIFIED (1 `d` 2) ]
+               , toOrganBad S_PACIFIED (2 + 1 `d` 2) ]
                    -- slips and frantically puts out fire
   , idesc    = "Sticky oil, burning brightly."
   , ikit     = []
