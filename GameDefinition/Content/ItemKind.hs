@@ -1665,7 +1665,8 @@ knife = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 200), (S_CLEAVER, 1)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(1, 5), (5, 25)]  -- useful initially and for crafting later on
+  , irarity  = [(1, 5), (5, 25), (9, 1)]
+                 -- useful initially and for crafting mid-game
   , iverbHit = "cut"
   , iweight  = 1000
   , idamage  = 5 `d` 1
@@ -1698,7 +1699,8 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
                  -- a very aggressive weapon, bad for defense even when long
   , iflavour = zipFancy [BrMagenta]  -- avoid "pink"
   , icount   = 1
-  , irarity  = [(5, 20)]  -- don't make it too common on lvl 3
+  , irarity  = [(5, 20), (9, 1)]
+                 -- not too common on lvl 3 and late, when crafting done already
   , iverbHit = "club"
   , iweight  = 4000
   , idamage  = 0  -- all damage independent of melee skill; this also helps
@@ -1719,6 +1721,7 @@ hammer1 = hammerTemplate  -- 1m handle, blunt
   }
 hammer2 = hammerTemplate  -- 0.75m handle, sharp
   { ifreq    = [(COMMON_ITEM, 30), (STARTING_WEAPON, 10)]
+  , irarity  = [(5, 20)]  -- common also late, because not crafted
   , iverbHit = "puncture"
   , iaspects = [Timeout 3, EqpSlot EqpSlotWeaponFast]
                ++ (iaspects hammerTemplate \\ [EqpSlot EqpSlotWeaponBig])
@@ -2268,7 +2271,7 @@ spacesuitTorn = spacesuit
 crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
   { iname    = "crowbar"
   , iflavour = zipPlain [BrCyan]
-  , irarity  = [(1, 15), (3 * 10/15, 15), (4 * 10/15, 1)]
+  , irarity  = [(1, 16), (3 * 10/15, 16), (4 * 10/15, 1)]
   , iverbHit = "gouge"
   , idamage  = 3 `d` 1
   , iaspects = [ Timeout 4
@@ -2283,7 +2286,7 @@ crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
 catsPaw = chisel
   { iname    = "cat's paw"
   , iflavour = zipFancy [BrCyan]
-  , irarity  = [(1, 17), (3 * 10/15, 17), (4 * 10/15, 1)]
+  , irarity  = [(1, 18), (3 * 10/15, 18), (4 * 10/15, 1)]
   , iverbHit = "paw"
   , idamage  = 2 `d` 1
   , iaspects = [ Timeout 3
@@ -2422,7 +2425,7 @@ grassStitcher = ItemKind
                , (S_GRASS_STITCHER, 1) ]
   , iflavour = zipPlain [Green]
   , icount   = 1
-  , irarity  = [(1, 17), (3 * 10/15, 17), (4 * 10/15, 1)]
+  , irarity  = [(1, 18), (3 * 10/15, 18), (4 * 10/15, 1)]
   , iverbHit = "stab"
   , iweight  = 500
   , idamage  = 4 `d` 1
