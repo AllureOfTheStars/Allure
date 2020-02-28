@@ -48,6 +48,7 @@ install:
   - ps: $env:TIME_STRING=(get-date -UFormat "%Y-%m-%d").ToString()
   - ps: Push-AppveyorArtifact Allure_dev_windows-x86_64.zip -FileName "Allure_$($env:LH_VERSION)-dev-$($env:TIME_STRING)_windows-x86_64.zip" -DeploymentName "win64 binaries archive"
 
+  - appveyor-retry cabal v1-install --force-reinstalls tasty-hunit
   - appveyor-retry cabal v1-test
   - make nativeBenchCrawl-appveyor || (tail -n 500 %APPDATA%\Allure\stderr.txt & exit 77)
 
@@ -102,6 +103,7 @@ install:
   - 7z a -ssc -tzip Allure_dev_windows-i686.zip AllureOfTheStars
   - ps: Push-AppveyorArtifact Allure_dev_windows-i686.zip -FileName "Allure_$($env:LH_VERSION)-dev-$($env:TIME_STRING)_windows-i686.zip" -DeploymentName "win32 binaries archive"
 
+  - appveyor-retry cabal v1-install --force-reinstalls tasty-hunit
   - appveyor-retry cabal v1-test
   - make benchBattle-appveyor || (tail -n 500 %APPDATA%\Allure\stdout.txt & tail -n 500 %APPDATA%\Allure\stderr.txt & exit 77)
 
