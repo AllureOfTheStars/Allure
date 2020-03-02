@@ -33,7 +33,7 @@ homepage:      http://allureofthestars.com
 bug-reports:   http://github.com/AllureOfTheStars/Allure/issues
 license:       AGPL-3.0-or-later
 license-file:  COPYLEFT
-tested-with:   GHC==8.2.2, GHC==8.4.4, GHC==8.6.5
+tested-with:   GHC==8.2.2, GHC==8.4.4, GHC==8.6.5, GHC==8.8.3
 data-files:    GameDefinition/config.ui.default,
                GameDefinition/fonts/16x16xw.woff,
                GameDefinition/fonts/16x16xw.bdf,
@@ -73,7 +73,7 @@ common options
   default-extensions: MonoLocalBinds, ScopedTypeVariables, OverloadedStrings
                       BangPatterns, RecordWildCards, NamedFieldPuns, MultiWayIf,
                       LambdaCase, DefaultSignatures, InstanceSigs,
-                      PatternSynonyms, MonadFailDesugaring, StrictData, CPP
+                      PatternSynonyms, StrictData, CPP
   other-extensions:   TemplateHaskell, MultiParamTypeClasses, RankNTypes,
                       TypeFamilies, FlexibleContexts, FlexibleInstances,
                       DeriveFunctor, FunctionalDependencies,
