@@ -781,8 +781,8 @@ electricFence = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15
-               , AddSkill SkMaxHP 10, AddSkill SkMaxCalm 999
+  , iaspects = [ AddSkill SkMaxHP 30, AddSkill SkMaxCalm 999
+                   -- no armor, because regenerates; high HP insead
                , AddSkill SkSpeed 40, AddSkill SkNocto 2
                , AddSkill SkWait 1, AddSkill SkMelee 1  -- no brain
                , SetFlag Durable ]
