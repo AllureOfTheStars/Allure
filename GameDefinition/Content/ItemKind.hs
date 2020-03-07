@@ -1699,7 +1699,7 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
                  -- a very aggressive weapon, bad for defense even when long
   , iflavour = zipFancy [BrMagenta]  -- avoid "pink"
   , icount   = 1
-  , irarity  = [(5, 20), (9, 1)]
+  , irarity  = [(6, 18), (9, 1)]
                  -- not too common on lvl 3 and late, when crafting done already
   , iverbHit = "club"
   , iweight  = 4000
@@ -2254,7 +2254,7 @@ spacesuit = ItemKind
 spacesuitTorn = spacesuit
   { iname    = "torn spacesuit"
   , ifreq    = [(CURIOUS_ITEM, 100), (S_SPACESUIT_TORN, 1)]
-  , irarity  = [(1, 20)]
+  , irarity  = [(1, 16)]
   , iverbHit = "entangle"
   , iweight  = 10000
   , iaspects = [ AddSkill SkHurtMelee (-30)  -- easier when boots integrated
@@ -2263,22 +2263,23 @@ spacesuitTorn = spacesuit
                , AddSkill SkArmorRanged $ (1 `d` 3) * 12
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotArmorMelee ]
-  , idesc    = "A badly torn spacesuit. Perhaps two decent wearable pieces could be salvaged by extracting, matching and patching components."
+  , idesc    = "A badly torn spacesuit. Perhaps two decent wearable pieces could be salvaged by extracting, matching and patching components on a suitable workbench using scissors of some kind."
   }
 
 -- ** Weapons
 
 crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
   { iname    = "crowbar"
+  , ifreq    = (S_CROWBAR, 1) : ifreq chisel
   , iflavour = zipPlain [BrCyan]
-  , irarity  = [(1, 16), (3 * 10/15, 16), (4 * 10/15, 1)]
+  , irarity  = [(1, 12), (3 * 10/15, 12), (4 * 10/15, 1)]
   , iverbHit = "gouge"
-  , idamage  = 3 `d` 1
+  , idamage  = 2 `d` 1
   , iaspects = [ Timeout 4
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 30 ]
-  , ieffects = [RefillHP (-2)]
+  , ieffects = [RefillHP (-3)]
                  -- @RefillHP@ to avoid a no-brainer of durable tool use;
                  -- (idamage ignored to avoid the exploit of tool use in armor)
   , idesc    = "This is a heavy and pointy piece of steel that can be employed as an improvised melee weapon. It is also usable as a breaching tool, though rather injurious."  -- TODO: https://en.wikipedia.org/wiki/Crowbar_(tool)
@@ -2296,7 +2297,7 @@ catsPaw = chisel
   , ieffects = [RefillHP (-2)]
                  -- @RefillHP@ to avoid a no-brainer of durable tool use;
                  -- also quite attractive as a ranged weapon
-  , idesc    = "This is a heavy and pointy piece of steel that can be employed as an improvised melee weapon. It is also usable as a breaching tool, though rather injurious."  -- TODO: https://en.wikipedia.org/wiki/Cat%27s_paw_(nail_puller)
+  , idesc    = "This is a sturdy and pointy piece of steel that can be employed as an improvised melee weapon. It is also usable as a breaching tool, though not a particularly safe one."  -- TODO: https://en.wikipedia.org/wiki/Cat%27s_paw_(nail_puller)
   }
 fireAxe = ItemKind
   { isymbol  = symbolHafted

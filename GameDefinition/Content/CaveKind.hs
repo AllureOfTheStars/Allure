@@ -396,7 +396,7 @@ outermost = empty
   , cfenceTileE   = HABITAT_CONTAINMENT_WALL
   , cfenceTileS   = EMPTY_AIRLOCK_FENCE
   , cfenceTileW   = HABITAT_CONTAINMENT_WALL
-  , cdesc         = "This is as far as one can go \"down\". The void outside sucks light through the oriel and airlock glass in the walls and floor of this outermost level. Each minute, the dusky melancholic light of the distant Sun attempts for a few seconds to squeeze in but is repelled by artificial lighting. The mucky floor looks misleadingly straight, its curvature noticeable only across the whole extent of the hull section. Overflowing water treatment basins and series of hanging and stacked tanks double as radiation shields. Hoses writhe on the ground and dangle in thick knots from the ceiling.\nThis deck is the main pressurized cargo bay and storage, with the only other docking hub for small craft somewhere among the giant spaceship's upper levels. You recognize an inner airlock door smeared with guano, but you can't see the shuttle you left engaged to the airlock clamps outside. "
+  , cdesc         = "This is as far as one can go \"down\". The void outside sucks light through the oriel and airlock glass in the walls and floor of this outermost level. Each minute, the dusky melancholic light of the distant Sun attempts for a few seconds to squeeze in but is repelled by artificial lighting. The mucky floor looks misleadingly straight, its curvature noticeable only across the whole extent of the hull section. Overflowing water treatment basins and series of hanging and stacked tanks double as radiation shields. Hoses writhe on the ground and dangle in thick knots from the ceiling.\nSomewhere here must be the airlock you docked your shuttle to and stacked your supplies against. This deck is the main pressurized cargo bay and storage, with the only other docking hub for small craft somewhere among the giant spaceship's upper levels."
       -- E and W sides are borders with other level sections, so no oriels.
   }
 bridge = rogue
@@ -428,7 +428,7 @@ bridge = rogue
   , cstairAllowed = [ (WELDED_WALLED_STAIRCASE, 50)
                     , (WELDED_OPEN_STAIRCASE, 50)
                     , (WELDED_TINY_STAIRCASE, 1) ]
-  , cdesc         = "The bridge is gutted out and nonoperational. You saved space on the shuttle by not taking anything with you and now you can't even attempt repairs. There are animal cries down below and ominous silence up above."
+  , cdesc         = "The bridge is gutted out and nonoperational. You saved space on the shuttle by only packing demolition equipment and now you can't even attempt repairs. There are animal cries down below and ominous silence up above."
   }
 shallowRogue = rogue
   { cfreq         = [(CAVE_SHALLOW_ROGUE, 100)]

@@ -11,7 +11,7 @@ module Content.ItemKindEmbed
   , pattern S_SANDSTONE_ROCK
   , pattern ABANDONED_CACHE, pattern JEWELRY_DISPLAY_TRAP, pattern BLACK_STARRY_SKY, pattern DISENGAGED_DOCKING_GEAR, pattern RUINED_FIRST_AID_KIT, pattern FIRE_FIGHTING_GEAR, pattern DISPLAY_3D, pattern CRACKED_FLUE, pattern BLOOD_ON_WALL, pattern DEPOSIT_BOX, pattern JEWELRY_CASE, pattern EDIBLE_PLANT_RIPE, pattern STAIRS_TRAP_DOWN_OIL, pattern LIFT_UP, pattern LIFT_DOWN, pattern LIFT_TRAP, pattern SHUTTLE_HARDWARE, pattern OIL_PUDDLE, pattern DECONTAMINATION_CHAMBER, pattern BARREL_CONTENTS, pattern WORKSHOP_BENCH
   , pattern EDIBLE_PLANT, pattern FIRE_FIGHTING_ITEM, pattern STEEL_SCRAP, pattern HANDLE, pattern HANDLE_AND_STEEL, pattern POLE_AND_STEEL, pattern SPACESUIT_PART, pattern THICK_CLOTH
-  , pattern S_ENCHANCED_BERRY, pattern S_COOKED_BERRY, pattern S_FRAYED_FUNGUS, pattern S_COOKED_FUNGUS, pattern S_THIC_LEAF, pattern S_COOKED_LEAF, pattern S_RECONFIGURED_FRUIT, pattern S_COOKED_FRUIT, pattern S_FRAGRANT_HERB, pattern S_COOKED_HERB, pattern S_DULL_FLOWER, pattern S_COOKED_FLOWER, pattern S_SPICY_BARK, pattern S_COOKED_BARK, pattern S_PUMPKIN, pattern S_COOKED_PUMPKIN, pattern S_REFRIGERATION_COIL, pattern S_ROSE_WATER_FLASK, pattern S_SPACESUIT_JACKET, pattern S_SPACESUIT_TROUSERS, pattern S_SPACESUIT_GLOVE, pattern S_SPACESUIT_HELMET, pattern S_SPACESUIT_BOOT, pattern S_SPACESUIT, pattern S_SPACESUIT_TORN, pattern S_HARPOON_CARGO, pattern S_HARPOON_SHARP, pattern S_SHIELD_BLUNT, pattern S_SHIELD_SHARP, pattern S_BLUNT_SHORT_HAMMER, pattern S_BLUNT_LONG_HAMMER, pattern S_SHARP_SHORT_HAMMER, pattern S_SHARP_LONG_HAMMER, pattern S_CLEAVER, pattern S_DAGGER, pattern S_RAPIER_BLUNT, pattern S_RAPIER_SHARP, pattern S_POLE_CLEAVER, pattern S_LONG_SPEAR, pattern S_FIRE_AXE, pattern S_POLL_AXE, pattern S_HALBERD_BLUNT, pattern S_HALBERD_SHARP, pattern S_STAFF, pattern S_PIPE, pattern S_SHARPENED_PIPE, pattern S_RAG_TANGLE
+  , pattern S_ENCHANCED_BERRY, pattern S_COOKED_BERRY, pattern S_FRAYED_FUNGUS, pattern S_COOKED_FUNGUS, pattern S_THIC_LEAF, pattern S_COOKED_LEAF, pattern S_RECONFIGURED_FRUIT, pattern S_COOKED_FRUIT, pattern S_FRAGRANT_HERB, pattern S_COOKED_HERB, pattern S_DULL_FLOWER, pattern S_COOKED_FLOWER, pattern S_SPICY_BARK, pattern S_COOKED_BARK, pattern S_PUMPKIN, pattern S_COOKED_PUMPKIN, pattern S_REFRIGERATION_COIL, pattern S_ROSE_WATER_FLASK, pattern S_SPACESUIT_JACKET, pattern S_SPACESUIT_TROUSERS, pattern S_SPACESUIT_GLOVE, pattern S_SPACESUIT_HELMET, pattern S_SPACESUIT_BOOT, pattern S_SPACESUIT, pattern S_SPACESUIT_TORN, pattern S_HARPOON_CARGO, pattern S_HARPOON_SHARP, pattern S_SHIELD_BLUNT, pattern S_SHIELD_SHARP, pattern S_BLUNT_SHORT_HAMMER, pattern S_BLUNT_LONG_HAMMER, pattern S_SHARP_SHORT_HAMMER, pattern S_SHARP_LONG_HAMMER, pattern S_CLEAVER, pattern S_DAGGER, pattern S_RAPIER_BLUNT, pattern S_RAPIER_SHARP, pattern S_POLE_CLEAVER, pattern S_LONG_SPEAR, pattern S_CROWBAR, pattern S_FIRE_AXE, pattern S_POLL_AXE, pattern S_HALBERD_BLUNT, pattern S_HALBERD_SHARP, pattern S_STAFF, pattern S_PIPE, pattern S_SHARPENED_PIPE, pattern S_RAG_TANGLE
   , embedsGNSingleton, embedsGN
   , -- * Content
     embeds
@@ -37,11 +37,11 @@ import Game.LambdaHack.Definition.Flavour
 embedsGNSingleton :: [GroupName ItemKind]
 embedsGNSingleton =
        [S_SANDSTONE_ROCK]
-    ++ [S_ENCHANCED_BERRY, S_COOKED_BERRY, S_FRAYED_FUNGUS, S_COOKED_FUNGUS, S_THIC_LEAF, S_COOKED_LEAF, S_RECONFIGURED_FRUIT, S_COOKED_FRUIT, S_FRAGRANT_HERB, S_COOKED_HERB, S_DULL_FLOWER, S_COOKED_FLOWER, S_SPICY_BARK, S_COOKED_BARK, S_PUMPKIN, S_COOKED_PUMPKIN, S_SPACESUIT_JACKET, S_SPACESUIT_TROUSERS, S_SPACESUIT_GLOVE, S_SPACESUIT_HELMET, S_SPACESUIT_BOOT, S_SPACESUIT, S_SPACESUIT_TORN, S_HARPOON_CARGO, S_HARPOON_SHARP, S_SHIELD_BLUNT, S_SHIELD_SHARP, S_BLUNT_SHORT_HAMMER, S_BLUNT_LONG_HAMMER, S_SHARP_SHORT_HAMMER, S_SHARP_LONG_HAMMER, S_CLEAVER, S_DAGGER, S_RAPIER_BLUNT, S_RAPIER_SHARP, S_POLE_CLEAVER, S_LONG_SPEAR, S_FIRE_AXE, S_POLL_AXE, S_HALBERD_BLUNT, S_HALBERD_SHARP, S_STAFF, S_PIPE, S_SHARPENED_PIPE, S_RAG_TANGLE]
+    ++ [S_ENCHANCED_BERRY, S_COOKED_BERRY, S_FRAYED_FUNGUS, S_COOKED_FUNGUS, S_THIC_LEAF, S_COOKED_LEAF, S_RECONFIGURED_FRUIT, S_COOKED_FRUIT, S_FRAGRANT_HERB, S_COOKED_HERB, S_DULL_FLOWER, S_COOKED_FLOWER, S_SPICY_BARK, S_COOKED_BARK, S_PUMPKIN, S_COOKED_PUMPKIN, S_SPACESUIT_JACKET, S_SPACESUIT_TROUSERS, S_SPACESUIT_GLOVE, S_SPACESUIT_HELMET, S_SPACESUIT_BOOT, S_SPACESUIT, S_SPACESUIT_TORN, S_HARPOON_CARGO, S_HARPOON_SHARP, S_SHIELD_BLUNT, S_SHIELD_SHARP, S_BLUNT_SHORT_HAMMER, S_BLUNT_LONG_HAMMER, S_SHARP_SHORT_HAMMER, S_SHARP_LONG_HAMMER, S_CLEAVER, S_DAGGER, S_RAPIER_BLUNT, S_RAPIER_SHARP, S_POLE_CLEAVER, S_LONG_SPEAR, S_CROWBAR, S_FIRE_AXE, S_POLL_AXE, S_HALBERD_BLUNT, S_HALBERD_SHARP, S_STAFF, S_PIPE, S_SHARPENED_PIPE, S_RAG_TANGLE]
 
 pattern S_SANDSTONE_ROCK :: GroupName ItemKind
 
-pattern S_ENCHANCED_BERRY, S_COOKED_BERRY, S_FRAYED_FUNGUS, S_COOKED_FUNGUS, S_THIC_LEAF, S_COOKED_LEAF, S_RECONFIGURED_FRUIT, S_COOKED_FRUIT, S_FRAGRANT_HERB, S_COOKED_HERB, S_DULL_FLOWER, S_COOKED_FLOWER, S_SPICY_BARK, S_COOKED_BARK, S_PUMPKIN, S_COOKED_PUMPKIN, S_REFRIGERATION_COIL, S_ROSE_WATER_FLASK, S_SPACESUIT_JACKET, S_SPACESUIT_TROUSERS, S_SPACESUIT_GLOVE, S_SPACESUIT_HELMET, S_SPACESUIT_BOOT, S_SPACESUIT, S_SPACESUIT_TORN, S_HARPOON_CARGO, S_HARPOON_SHARP, S_SHIELD_BLUNT, S_SHIELD_SHARP, S_BLUNT_SHORT_HAMMER, S_BLUNT_LONG_HAMMER, S_SHARP_SHORT_HAMMER, S_SHARP_LONG_HAMMER, S_CLEAVER, S_DAGGER, S_RAPIER_BLUNT, S_RAPIER_SHARP, S_POLE_CLEAVER, S_LONG_SPEAR, S_FIRE_AXE, S_POLL_AXE, S_HALBERD_BLUNT, S_HALBERD_SHARP, S_STAFF, S_PIPE, S_SHARPENED_PIPE, S_RAG_TANGLE :: GroupName ItemKind
+pattern S_ENCHANCED_BERRY, S_COOKED_BERRY, S_FRAYED_FUNGUS, S_COOKED_FUNGUS, S_THIC_LEAF, S_COOKED_LEAF, S_RECONFIGURED_FRUIT, S_COOKED_FRUIT, S_FRAGRANT_HERB, S_COOKED_HERB, S_DULL_FLOWER, S_COOKED_FLOWER, S_SPICY_BARK, S_COOKED_BARK, S_PUMPKIN, S_COOKED_PUMPKIN, S_REFRIGERATION_COIL, S_ROSE_WATER_FLASK, S_SPACESUIT_JACKET, S_SPACESUIT_TROUSERS, S_SPACESUIT_GLOVE, S_SPACESUIT_HELMET, S_SPACESUIT_BOOT, S_SPACESUIT, S_SPACESUIT_TORN, S_HARPOON_CARGO, S_HARPOON_SHARP, S_SHIELD_BLUNT, S_SHIELD_SHARP, S_BLUNT_SHORT_HAMMER, S_BLUNT_LONG_HAMMER, S_SHARP_SHORT_HAMMER, S_SHARP_LONG_HAMMER, S_CLEAVER, S_DAGGER, S_RAPIER_BLUNT, S_RAPIER_SHARP, S_POLE_CLEAVER, S_LONG_SPEAR, S_CROWBAR, S_FIRE_AXE, S_POLL_AXE, S_HALBERD_BLUNT, S_HALBERD_SHARP, S_STAFF, S_PIPE, S_SHARPENED_PIPE, S_RAG_TANGLE :: GroupName ItemKind
 
 embedsGN :: [GroupName ItemKind]
 embedsGN =
@@ -149,6 +149,7 @@ pattern S_RAPIER_BLUNT = GroupName "blunt rapier"
 pattern S_RAPIER_SHARP = GroupName "sharp rapier"
 pattern S_POLE_CLEAVER = GroupName "pole cleaver"
 pattern S_LONG_SPEAR = GroupName "long spear"
+pattern S_CROWBAR = GroupName "crowbar"
 pattern S_FIRE_AXE = GroupName "fire axe"
 pattern S_POLL_AXE = GroupName "poll axe"
 pattern S_HALBERD_BLUNT = GroupName "blunt halberd"
@@ -164,11 +165,11 @@ embeds :: [ItemKind]
 embeds =
   [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signageExit, signageEmbed, signageMerchandise, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, stairsTrapUp, stairsTrapDown, lectern, shallowWater, straightPath, frozenGround]
   -- Allure-specific
-  ++ [blackStarrySky, disengagedDocking, ruinedFirstAidKit, fireFightingGear, wall3dBillboard, crackedFlue, bloodOnWall, bloodOnWall2, bloodOnWall3, depositBox, jewelryCase, ediblePlantRipe, stairsTrapDownOil, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench]
+  ++ [blackStarrySky, disengagedDocking, desertedAirlock, ruinedFirstAidKit, fireFightingGear, wall3dBillboard, crackedFlue, bloodOnWall, bloodOnWall2, bloodOnWall3, depositBox, jewelryCase, ediblePlantRipe, stairsTrapDownOil, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench]
 
 scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signageExit, signageEmbed, signageMerchandise, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, stairsTrapUp, stairsTrapDown, lectern, shallowWater, straightPath, frozenGround :: ItemKind
 -- Allure-specific
-blackStarrySky,       disengagedDocking, ruinedFirstAidKit, fireFightingGear, wall3dBillboard, crackedFlue, bloodOnWall, bloodOnWall2, bloodOnWall3, depositBox, jewelryCase, ediblePlantRipe, stairsTrapDownOil, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench :: ItemKind
+blackStarrySky,       disengagedDocking, desertedAirlock, ruinedFirstAidKit, fireFightingGear, wall3dBillboard, crackedFlue, bloodOnWall, bloodOnWall2, bloodOnWall3, depositBox, jewelryCase, ediblePlantRipe, stairsTrapDownOil, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench :: ItemKind
 
 -- Make sure very few walls are substantially useful, e.g., caches,
 -- and none that are secret. Otherwise the player will spend a lot of time
@@ -206,7 +207,8 @@ obscenePictogram = ItemKind
   , ieffects = [ VerbMsg "enter inexplicable rage at a glimpse of the inscrutable graffiti"
                , RefillCalm (-20)
                , OneOf [ toOrganGood S_STRENGTHENED (3 + 1 `d` 2)
-                       , CreateItem Nothing CStash S_SANDSTONE_ROCK timerNone ] ]
+                       , CreateItem Nothing CStash S_SANDSTONE_ROCK timerNone ]
+               ]
   , idesc    = ""  -- alien writing? or runaway robot AI?
   , ikit     = []
   }
@@ -544,8 +546,26 @@ disengagedDocking = ItemKind
   , idamage  = 0
   , iaspects = [SetFlag Durable]
   , ieffects = []
-  , idesc    = "As the grey color of exposed surfaces clearly indicates, unfortunately, this airlock has no space boat attached. Many fine small craft were originally docked with such sockets and clamps, but after the spaceship spontaneously deorbited Neptune, a lot of them were seen jettisoned and drifting astern. What a waste. Decks up, closer to the ship's core, have not been purged of shuttles as thoroughly.\nTo get out, onto the outer hull surface, you'd need a spacesuit with an air tank."
+  , idesc    = "After a short examination it's clear this is not the airlock you arrived through. In fact, this airlock has no space boat attached at all. Many fine small craft were originally docked with such sockets and clamps, but after the spaceship spontaneously deorbited Neptune, a lot of them were seen jettisoned and drifting astern. What a waste. It seems the decks up, closer to the ship's core, have not been purged of shuttles as thoroughly.\nThe airlock still works, but to get out onto the outer hull surface, you'd need a spacesuit with an air tank."
   , ikit     = []
+  }
+desertedAirlock = ItemKind
+  { isymbol  = '>'
+  , iname    = "initial entrance"
+  , ifreq    = [(DISENGAGED_DOCKING_GEAR, 10000)]
+  , iflavour = zipPlain [BrWhite]
+  , icount   = 1
+  , irarity  = [(1, 1)]
+  , iverbHit = "worry"
+  , iweight  = 10000
+  , idamage  = 0
+  , iaspects = [SetFlag Unique, SetFlag Durable]
+  , ieffects = []
+  , idesc    = "You recognize the inner airlock door smeared with guano in a familiar pattern, but you can't see the shuttle you left engaged to the airlock clamps outside. That's a chilling realization: your craft was among those shed by the spaceship and now you have to find another lifeboat, likely on a distant deck. Moreover, something's gone through your supplies, chewing, tearing and scattering most of them."
+  , ikit     = [ (COOKED_FOOD, CGround), (COOKED_FOOD, CGround)
+               , (S_SPACESUIT_TORN, CGround)
+               , (S_BLUNT_SHORT_HAMMER, CGround)
+               , (S_CROWBAR, CGround) ]
   }
 ruinedFirstAidKit = ItemKind
   { isymbol  = '?'
