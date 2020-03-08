@@ -1715,13 +1715,14 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
   }
 hammer1 = hammerTemplate  -- 1m handle, blunt
   { ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
-               , (STARTING_WEAPON, 70), (S_BLUNT_SHORT_HAMMER, 1) ]
+               , (STARTING_WEAPON, 70), (STARTING_HAMMER, 80)
+               , (S_BLUNT_SHORT_HAMMER, 1) ]
   , iaspects = [Timeout 5]
                ++ iaspects hammerTemplate
   , ieffects = [RefillHP (-8)]
   }
 hammer2 = hammerTemplate  -- 0.75m handle, sharp
-  { ifreq    = [(COMMON_ITEM, 30), (STARTING_WEAPON, 10)]
+  { ifreq    = [(COMMON_ITEM, 30), (STARTING_WEAPON, 10), (STARTING_HAMMER, 15)]
   , irarity  = [(5, 20)]  -- common also late, because not crafted
   , iverbHit = "puncture"
   , iaspects = [Timeout 3, EqpSlot EqpSlotWeaponFast]
@@ -1740,7 +1741,7 @@ hammer3 = hammerTemplate  -- 2m pole, blunt
   }
 hammerParalyze = hammerTemplate
   { iname    = "Concussion Hammer"
-  , ifreq    = [(TREASURE, 20)]
+  , ifreq    = [(TREASURE, 20), (STARTING_HAMMER, 5)]
   , irarity  = [(5, 1), (8, 6)]
   , iaspects = [ SetFlag Unique
                , Timeout 5 ]  -- 2m, but light head and pole
@@ -2276,7 +2277,7 @@ crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
   , irarity  = [(1, 12), (3 * 10/15, 12), (4 * 10/15, 1)]
   , iverbHit = "gouge"
   , idamage  = 2 `d` 1
-  , iaspects = [ Timeout 4
+  , iaspects = [ Timeout $ 3 + 1 `d` 2
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 30 ]
@@ -2291,7 +2292,7 @@ catsPaw = chisel
   , irarity  = [(1, 16), (3 * 10/15, 16), (4 * 10/15, 1)]
   , iverbHit = "paw"
   , idamage  = 2 `d` 1
-  , iaspects = [ Timeout 3
+  , iaspects = [ Timeout $ 2 + 1 `d` 2
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
                , toVelocity 40 ]
