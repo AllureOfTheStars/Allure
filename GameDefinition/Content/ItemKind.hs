@@ -50,12 +50,12 @@ pattern COOKED_PLANT_UNKNOWN :: GroupName ItemKind
 groupNames :: [GroupName ItemKind]
 groupNames =
        [HARPOON, TORSO_ARMOR, CLOTHING_MISC]
-    ++ [MUSEAL, FIREPROOF_CLOTH, COOKED_PLANT, LIQUID_NITROGEN]
+    ++ [MUSEAL, FIREPROOF_CLOTH, COOKED_PLANT, LIQUID_NITROGEN, GARDENING_TOOL]
     ++ embedsGN ++ actorsGN ++ organsGN ++ blastsGN
 
 pattern HARPOON, TORSO_ARMOR, CLOTHING_MISC :: GroupName ItemKind
 
-pattern MUSEAL, FIREPROOF_CLOTH, COOKED_PLANT, LIQUID_NITROGEN:: GroupName ItemKind
+pattern MUSEAL, FIREPROOF_CLOTH, COOKED_PLANT, LIQUID_NITROGEN, GARDENING_TOOL :: GroupName ItemKind
 
 -- The @UNKNOWN@ patterns don't need to be exported. Used internally.
 -- They also represent singleton groups.
@@ -83,6 +83,7 @@ pattern MUSEAL = GroupName "museal"
 pattern FIREPROOF_CLOTH = GroupName "fireproof cloth"
 pattern COOKED_PLANT = GroupName "cooked plant"
 pattern LIQUID_NITROGEN = GroupName "liquid nitrogen"
+pattern GARDENING_TOOL = GroupName "gardening tool"
 
 pattern S_GRASS_STITCHER = GroupName "grass stitcher"
 pattern S_LADIES_FORK = GroupName "ladies' fork"
@@ -1375,7 +1376,7 @@ ring2 = ringTemplate
                , AddSkill SkMaxCalm (-40), AddSkill SkMaxHP (-20)
                , SetFlag Durable, EqpSlot EqpSlotSpeed ]
                ++ iaspects ringTemplate
-  , idesc    = "There creator of this dangerous artifact didn't find time to document its operation. And now it's too late."
+  , idesc    = "The creator of this dangerous artifact didn't find time to document its operation. And now it's too late."
   }
 ring3 = ringTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
@@ -1501,7 +1502,7 @@ gloveGauntlet = gloveFencing
   , ifreq    = [ (COMMON_ITEM, 100), (S_SPACESUIT_GLOVE, 1)
                , (SPACESUIT_PART, 2), (ARMOR_MISC, 1) ]
   , iflavour = zipFancy [White]
-  , irarity  = [(1, 10), (5 * 10/15, 10), (6 * 10/15, 1)]
+  , irarity  = [(1, 9), (5 * 10/15, 9), (6 * 10/15, 1)]
   , iverbHit = "mow"
   , iweight  = 500
   , idamage  = 4 `d` 1
@@ -1578,7 +1579,7 @@ helmArmored = ItemKind
                , (SPACESUIT_PART, 1), (ARMOR_MISC, 1), (ARMOR_RANGED, 1) ]
   , iflavour = zipFancy [BrBlue]
   , icount   = 1
-  , irarity  = [(1, 12), (4 * 10/15, 12), (5 * 10/15, 1)]
+  , irarity  = [(1, 11), (4 * 10/15, 11), (5 * 10/15, 1)]
   , iverbHit = "headbutt"
   , iweight  = 2000
   , idamage  = 4 `d` 1
@@ -1665,7 +1666,7 @@ knife = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 200), (S_CLEAVER, 1)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(1, 5), (5, 25), (9, 1)]
+  , irarity  = [(1, 3), (5, 25), (9, 1)]
                  -- useful initially and for crafting mid-game
   , iverbHit = "cut"
   , iweight  = 1000
@@ -2214,7 +2215,7 @@ heavyBoot = ItemKind
                , (SPACESUIT_PART, 2), (ARMOR_MISC, 1) ]
   , iflavour = zipFancy [Magenta]
   , icount   = 1
-  , irarity  = [(1, 15), (3 * 10/15, 15), (4 * 10/15, 1)]
+  , irarity  = [(1, 13), (3 * 10/15, 13), (4 * 10/15, 1)]
   , iverbHit = "sock"
   , iweight  = 100000  -- including the fake gravity mass
   , idamage  = 5 `d` 1
@@ -2254,7 +2255,7 @@ spacesuit = ItemKind
 spacesuitTorn = spacesuit
   { iname    = "torn spacesuit"
   , ifreq    = [(CURIOUS_ITEM, 100), (S_SPACESUIT_TORN, 1)]
-  , irarity  = [(1, 16)]
+  , irarity  = [(1, 15)]
   , iverbHit = "entangle"
   , iweight  = 10000
   , iaspects = [ AddSkill SkHurtMelee (-30)  -- easier when boots integrated
@@ -2287,7 +2288,7 @@ crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
 catsPaw = chisel
   { iname    = "cat's paw"
   , iflavour = zipFancy [BrCyan]
-  , irarity  = [(1, 18), (3 * 10/15, 18), (4 * 10/15, 1)]
+  , irarity  = [(1, 16), (3 * 10/15, 16), (4 * 10/15, 1)]
   , iverbHit = "paw"
   , idamage  = 2 `d` 1
   , iaspects = [ Timeout 3
@@ -2423,10 +2424,11 @@ grassStitcher = ItemKind
   { isymbol  = symbolPolearm
   , iname    = "grass stitcher"
   , ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
-               , (S_GRASS_STITCHER, 1) ]
+               , (GARDENING_TOOL, 1), (S_GRASS_STITCHER, 1) ]
   , iflavour = zipPlain [Green]
   , icount   = 1
-  , irarity  = [(1, 18), (3 * 10/15, 18), (4 * 10/15, 1)]
+  , irarity  = [(1, 10), (3 * 10/15, 10), (4 * 10/15, 1)]
+      -- beyond level 3 they mostly appear with treePruner
   , iverbHit = "stab"
   , iweight  = 500
   , idamage  = 4 `d` 1
@@ -2436,11 +2438,12 @@ grassStitcher = ItemKind
                , toVelocity 30 ]
   , ieffects = [gardenDestruct 3 S_GRASS_STITCHER]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Grass_Stitcher
-  , ikit     = []
+  , ikit     = [(GARDENING_TOOL, CGround)]  -- come in varied pairs
   }
 ladiesFork = grassStitcher
   { iname    = "ladies' fork"
-  , ifreq    = [(COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1), (S_LADIES_FORK, 1)]
+  , ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
+               , (GARDENING_TOOL, 1), (S_LADIES_FORK, 1) ]
   , iflavour = zipFancy [Green]
   , iweight  = 1000
   , idamage  = 5 `d` 1
@@ -2454,7 +2457,8 @@ ladiesFork = grassStitcher
 hoe = grassStitcher
   { isymbol  = symbolHafted
   , iname    = "hoe"
-  , ifreq    = [(COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1), (S_HOE, 1)]
+  , ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
+               , (GARDENING_TOOL, 1), (S_HOE, 1) ]
   , iflavour = zipFancy [Cyan]
   , iverbHit = "hack"
   , iweight  = 1000
@@ -2469,7 +2473,8 @@ hoe = grassStitcher
 spade = grassStitcher
   { isymbol  = symbolHafted  -- swinging much more deadly than gouging
   , iname    = "spade"
-  , ifreq    = [(COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1), (S_SPADE, 1)]
+  , ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
+               , (GARDENING_TOOL, 1), (S_SPADE, 1) ]
   , iflavour = zipPlain [Cyan]
   , iverbHit = "cut"
   , iweight  = 2000
@@ -2495,6 +2500,7 @@ treePruner = grassStitcher
                , toVelocity 20 ]
   , ieffects = []
   , idesc    = "A heavy tree lopper on a sturdy long pole."
+  -- @ikit@ from grassStitcher
   }
 cleaningPole = grassStitcher
   { iname    = "window cleaning pole"
@@ -2509,6 +2515,7 @@ cleaningPole = grassStitcher
                , toVelocity 20 ]
   , ieffects = []
   , idesc    = "A cleaning contraption for glass surfaces, mounted on a long synthetic pole."
+  , ikit     = []
   }
 staff = grassStitcher
   { isymbol  = symbolHafted
@@ -2522,6 +2529,7 @@ staff = grassStitcher
                , toVelocity 30 ]  -- a weak missile and that's all
   , ieffects = []
   , idesc    = ""  -- doh
+  , ikit     = []
   }
 pipe = staff
   { iname    = "metal pipe"
