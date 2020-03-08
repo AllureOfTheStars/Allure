@@ -393,7 +393,7 @@ blanket = ItemKind
   , iname    = "mineral fibre blanket"
   , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_MANIPULATION, 100), (BLANKET, 1)
                , (THICK_CLOTH, 1), (FIREPROOF_CLOTH, 1)
-               , (FIRE_FIGHTING_ITEM, 20) ]
+               , (FIRE_FIGHTING_ITEM, 30) ]
   , iflavour = zipPlain [Magenta]
   , icount   = 1
   , irarity  = [(1, 1)]  -- scavenged from walls
@@ -1837,6 +1837,7 @@ halberd2 = halberd
                  -- not @BREACHING_TOOL@, because it triggers traps
                  -- and destroys treasure, instead of opening
   , iflavour = zipPlain [BrRed]
+  , irarity  = [(1, 1)]
   , iverbHit = "carve"
   , iweight  = 4500
   , idamage  = 16 `d` 1
@@ -2009,7 +2010,7 @@ flask18 = flaskTemplate
   , ifreq    = [ (COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)
                , (LIQUID_NITROGEN, 1), (COLD_SOURCE, 1)
                , (FIRE_FIGHTING_ITEM, 60) ]
-  , irarity  = [(1, 3)]  -- scavenged from terrain
+  , irarity  = [(1, 3)]  -- scavenged from walls
   , iaspects = ELabel "of liquid nitrogen"
                : iaspects flaskTemplate
   , ieffects = [ Burn 1  -- sensory ambiguity between hot and cold
@@ -2304,13 +2305,13 @@ catsPaw = chisel
 fireAxe = ItemKind
   { isymbol  = symbolHafted
   , iname    = "fire axe"
-  , ifreq    = [ (HANDLE_AND_STEEL, 1), (S_FIRE_AXE, 1)
-               , (FIRE_FIGHTING_ITEM, 20) ]
+  , ifreq    = [ (COMMON_ITEM, 30), (HANDLE_AND_STEEL, 1), (S_FIRE_AXE, 1)
+               , (FIRE_FIGHTING_ITEM, 10) ]
                  -- not @BREACHING_TOOL@, because it trigger traps
                  -- and destroys treasure, instead of opening
   , iflavour = zipPlain [BrRed]
   , icount   = 1
-  , irarity  = [(1, 10)]
+  , irarity  = [(1, 1)]
   , iverbHit = "gouge"
   , iweight  = 1600
   , idamage  = 11 `d` 1  -- same as sharpened pipe, but upgradable

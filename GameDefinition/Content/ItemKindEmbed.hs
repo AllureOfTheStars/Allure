@@ -167,11 +167,11 @@ embeds :: [ItemKind]
 embeds =
   [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signageExit, signageEmbed, signageMerchandise, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, stairsTrapUp, stairsTrapDown, lectern, shallowWater, straightPath, frozenGround]
   -- Allure-specific
-  ++ [blackStarrySky, disengagedDocking, desertedAirlock, ruinedFirstAidKit, fireFightingGear, wall3dBillboard, crackedFlue, bloodOnWall, bloodOnWall2, bloodOnWall3, depositBox, depositBoxSummonHero, depositBoxSummonMonster, jewelryCase, ediblePlantRipe, stairsTrapDownOil, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench]
+  ++ [blackStarrySky, disengagedDocking, desertedAirlock, ruinedFirstAidKit, fireFightingGear, fireFightingGearIntact, wall3dBillboard, crackedFlue, bloodOnWall, bloodOnWall2, bloodOnWall3, depositBox, depositBoxSummonHero, depositBoxSummonMonster, jewelryCase, ediblePlantRipe, stairsTrapDownOil, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench]
 
 scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signageExit, signageEmbed, signageMerchandise, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, stairsTrapUp, stairsTrapDown, lectern, shallowWater, straightPath, frozenGround :: ItemKind
 -- Allure-specific
-blackStarrySky,       disengagedDocking, desertedAirlock, ruinedFirstAidKit, fireFightingGear, wall3dBillboard, crackedFlue, bloodOnWall, bloodOnWall2, bloodOnWall3, depositBox, depositBoxSummonHero, depositBoxSummonMonster, jewelryCase, ediblePlantRipe, stairsTrapDownOil, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench :: ItemKind
+blackStarrySky,       disengagedDocking, desertedAirlock, ruinedFirstAidKit, fireFightingGear, fireFightingGearIntact, wall3dBillboard, crackedFlue, bloodOnWall, bloodOnWall2, bloodOnWall3, depositBox, depositBoxSummonHero, depositBoxSummonMonster, jewelryCase, ediblePlantRipe, stairsTrapDownOil, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench :: ItemKind
 
 -- Make sure very few walls are substantially useful, e.g., caches,
 -- and none that are secret. Otherwise the player will spend a lot of time
@@ -599,9 +599,26 @@ fireFightingGear = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = []  -- not Durable, springs at most once
-  , ieffects = [ VerbMsg "disassemble and sort through the deteriorated and leaking gear, taking away the least decrepit item"
+  , ieffects = [ VerbMsg "disassemble and sort through the broken and leaking gear, taking away the least decrepit item"
                , CreateItem Nothing CStash FIRE_FIGHTING_ITEM timerNone ]
-  , idesc    = "In addition to remains of firefighting tools, it contains a fire hydrant."  -- regulations require; hint that terrain can be ignited and doused
+  , idesc    = "In addition to remains of firefighting tools, it contains a fire hydrant displaying old scars from being used in a hurry."  -- regulations require; hint that terrain can be ignited and doused
+  , ikit     = []
+  }
+fireFightingGearIntact = ItemKind
+  { isymbol  = '?'
+  , iname    = "fire fighting set"
+  , ifreq    = [(FIRE_FIGHTING_GEAR, 1), (WATER_SOURCE, 1)]
+  , iflavour = zipPlain [BrRed]
+  , icount   = 1
+  , irarity  = [(1, 1)]
+  , iverbHit = "douse"
+  , iweight  = 1000
+  , idamage  = 0
+  , iaspects = [SetFlag Unique]  -- not Durable, springs at most once
+  , ieffects = [ VerbMsg "disassemble and sort through the old gear, taking away the least decrepit items"
+               , CreateItem Nothing CStash FIRE_FIGHTING_ITEM timerNone
+               , CreateItem Nothing CStash S_FIRE_AXE timerNone ]
+  , idesc    = "This cabinet has not been broken open and used, so it contains a complete assortment of fire fighting implements. It also contains a fire hydrant in pristine condition."  -- regulations require; hint that terrain can be ignited and doused
   , ikit     = []
   }
 wall3dBillboard = ItemKind
