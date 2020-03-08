@@ -10,7 +10,7 @@ module Content.ItemKindEmbed
     pattern SCRATCH_ON_WALL, pattern OBSCENE_PICTOGRAM, pattern SUBTLE_FRESCO, pattern SIGNAGE, pattern SMALL_FIRE, pattern BIG_FIRE, pattern FROST, pattern RUBBLE, pattern DOORWAY_TRAP_UNKNOWN, pattern DOORWAY_TRAP, pattern STAIRS_UP, pattern STAIRS_DOWN, pattern ESCAPE, pattern STAIRS_TRAP_UP, pattern STAIRS_TRAP_DOWN, pattern LECTERN, pattern SHALLOW_WATER, pattern STRAIGHT_PATH, pattern FROZEN_GROUND
   , pattern S_SANDSTONE_ROCK
   , pattern ABANDONED_CACHE, pattern JEWELRY_DISPLAY_TRAP, pattern BLACK_STARRY_SKY, pattern DISENGAGED_DOCKING_GEAR, pattern RUINED_FIRST_AID_KIT, pattern FIRE_FIGHTING_GEAR, pattern DISPLAY_3D, pattern CRACKED_FLUE, pattern BLOOD_ON_WALL, pattern DEPOSIT_BOX, pattern JEWELRY_CASE, pattern EDIBLE_PLANT_RIPE, pattern STAIRS_TRAP_DOWN_OIL, pattern LIFT_UP, pattern LIFT_DOWN, pattern LIFT_TRAP, pattern SHUTTLE_HARDWARE, pattern OIL_PUDDLE, pattern DECONTAMINATION_CHAMBER, pattern BARREL_CONTENTS, pattern WORKSHOP_BENCH
-  , pattern EDIBLE_PLANT, pattern FIRE_FIGHTING_ITEM, pattern STEEL_SCRAP, pattern HANDLE, pattern HANDLE_AND_STEEL, pattern POLE_AND_STEEL, pattern SPACESUIT_PART, pattern THICK_CLOTH, pattern STARTING_HAMMER
+  , pattern MUSEAL, pattern EDIBLE_PLANT, pattern FIRE_FIGHTING_ITEM, pattern STEEL_SCRAP, pattern HANDLE, pattern HANDLE_AND_STEEL, pattern POLE_AND_STEEL, pattern SPACESUIT_PART, pattern THICK_CLOTH, pattern STARTING_HAMMER
   , pattern S_ENCHANCED_BERRY, pattern S_COOKED_BERRY, pattern S_FRAYED_FUNGUS, pattern S_COOKED_FUNGUS, pattern S_THIC_LEAF, pattern S_COOKED_LEAF, pattern S_RECONFIGURED_FRUIT, pattern S_COOKED_FRUIT, pattern S_FRAGRANT_HERB, pattern S_COOKED_HERB, pattern S_DULL_FLOWER, pattern S_COOKED_FLOWER, pattern S_SPICY_BARK, pattern S_COOKED_BARK, pattern S_PUMPKIN, pattern S_COOKED_PUMPKIN, pattern S_REFRIGERATION_COIL, pattern S_ROSE_WATER_FLASK, pattern S_SPACESUIT_JACKET, pattern S_SPACESUIT_TROUSERS, pattern S_SPACESUIT_GLOVE, pattern S_SPACESUIT_HELMET, pattern S_SPACESUIT_BOOT, pattern S_SPACESUIT, pattern S_SPACESUIT_TORN, pattern S_HARPOON_CARGO, pattern S_HARPOON_SHARP, pattern S_SHIELD_BLUNT, pattern S_SHIELD_SHARP, pattern S_BLUNT_SHORT_HAMMER, pattern S_BLUNT_LONG_HAMMER, pattern S_SHARP_SHORT_HAMMER, pattern S_SHARP_LONG_HAMMER, pattern S_CLEAVER, pattern S_DAGGER, pattern S_RAPIER_BLUNT, pattern S_RAPIER_SHARP, pattern S_POLE_CLEAVER, pattern S_LONG_SPEAR, pattern S_CROWBAR, pattern S_FIRE_AXE, pattern S_POLL_AXE, pattern S_HALBERD_BLUNT, pattern S_HALBERD_SHARP, pattern S_STAFF, pattern S_PIPE, pattern S_SHARPENED_PIPE, pattern S_RAG_TANGLE
   , embedsGNSingleton, embedsGN
   , -- * Content
@@ -47,13 +47,13 @@ embedsGN :: [GroupName ItemKind]
 embedsGN =
        [SCRATCH_ON_WALL, OBSCENE_PICTOGRAM, SUBTLE_FRESCO, SIGNAGE, SMALL_FIRE, BIG_FIRE, FROST, RUBBLE, DOORWAY_TRAP_UNKNOWN, DOORWAY_TRAP, STAIRS_UP, STAIRS_DOWN, ESCAPE, STAIRS_TRAP_UP, STAIRS_TRAP_DOWN, LECTERN, SHALLOW_WATER, STRAIGHT_PATH, FROZEN_GROUND]
     ++ [ABANDONED_CACHE, JEWELRY_DISPLAY_TRAP, BLACK_STARRY_SKY, DISENGAGED_DOCKING_GEAR, RUINED_FIRST_AID_KIT, FIRE_FIGHTING_GEAR, DISPLAY_3D, CRACKED_FLUE, BLOOD_ON_WALL, DEPOSIT_BOX, JEWELRY_CASE, EDIBLE_PLANT_RIPE, STAIRS_TRAP_DOWN_OIL, LIFT_UP, LIFT_DOWN, LIFT_TRAP, SHUTTLE_HARDWARE, OIL_PUDDLE, DECONTAMINATION_CHAMBER, BARREL_CONTENTS, WORKSHOP_BENCH]
-    ++ [EDIBLE_PLANT, FIRE_FIGHTING_ITEM, STEEL_SCRAP, HANDLE, HANDLE_AND_STEEL, POLE_AND_STEEL, SPACESUIT_PART, THICK_CLOTH, STARTING_HAMMER]
+    ++ [MUSEAL, EDIBLE_PLANT, FIRE_FIGHTING_ITEM, STEEL_SCRAP, HANDLE, HANDLE_AND_STEEL, POLE_AND_STEEL, SPACESUIT_PART, THICK_CLOTH, STARTING_HAMMER]
 
 pattern SCRATCH_ON_WALL, OBSCENE_PICTOGRAM, SUBTLE_FRESCO, SIGNAGE, SMALL_FIRE, BIG_FIRE, FROST, RUBBLE, DOORWAY_TRAP_UNKNOWN, DOORWAY_TRAP, STAIRS_UP, STAIRS_DOWN, ESCAPE, STAIRS_TRAP_UP, STAIRS_TRAP_DOWN, LECTERN, SHALLOW_WATER, STRAIGHT_PATH, FROZEN_GROUND :: GroupName ItemKind
 
 pattern ABANDONED_CACHE, JEWELRY_DISPLAY_TRAP, BLACK_STARRY_SKY, DISENGAGED_DOCKING_GEAR, RUINED_FIRST_AID_KIT, FIRE_FIGHTING_GEAR, DISPLAY_3D, CRACKED_FLUE, BLOOD_ON_WALL, DEPOSIT_BOX, JEWELRY_CASE, EDIBLE_PLANT_RIPE, STAIRS_TRAP_DOWN_OIL, LIFT_UP, LIFT_DOWN, LIFT_TRAP, SHUTTLE_HARDWARE, OIL_PUDDLE, DECONTAMINATION_CHAMBER, BARREL_CONTENTS, WORKSHOP_BENCH :: GroupName ItemKind
 
-pattern EDIBLE_PLANT, FIRE_FIGHTING_ITEM, STEEL_SCRAP, HANDLE, HANDLE_AND_STEEL, POLE_AND_STEEL, SPACESUIT_PART, THICK_CLOTH, STARTING_HAMMER :: GroupName ItemKind
+pattern MUSEAL, EDIBLE_PLANT, FIRE_FIGHTING_ITEM, STEEL_SCRAP, HANDLE, HANDLE_AND_STEEL, POLE_AND_STEEL, SPACESUIT_PART, THICK_CLOTH, STARTING_HAMMER :: GroupName ItemKind
 
 pattern SCRATCH_ON_WALL = GroupName "scratch on wall"
 pattern OBSCENE_PICTOGRAM = GroupName "obscene pictogram"
@@ -100,6 +100,7 @@ pattern DECONTAMINATION_CHAMBER = GroupName "decontamination chamber"
 pattern BARREL_CONTENTS = GroupName "barrel contents"
 pattern WORKSHOP_BENCH = GroupName "workshop bench"
 
+pattern MUSEAL = GroupName "museal"
 pattern EDIBLE_PLANT = GroupName "edible plant"
 pattern FIRE_FIGHTING_ITEM = GroupName "fire fighting item"
 pattern STEEL_SCRAP = GroupName "steel scrap"
@@ -166,11 +167,11 @@ embeds :: [ItemKind]
 embeds =
   [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signageExit, signageEmbed, signageMerchandise, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, stairsTrapUp, stairsTrapDown, lectern, shallowWater, straightPath, frozenGround]
   -- Allure-specific
-  ++ [blackStarrySky, disengagedDocking, desertedAirlock, ruinedFirstAidKit, fireFightingGear, wall3dBillboard, crackedFlue, bloodOnWall, bloodOnWall2, bloodOnWall3, depositBox, jewelryCase, ediblePlantRipe, stairsTrapDownOil, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench]
+  ++ [blackStarrySky, disengagedDocking, desertedAirlock, ruinedFirstAidKit, fireFightingGear, wall3dBillboard, crackedFlue, bloodOnWall, bloodOnWall2, bloodOnWall3, depositBox, depositBoxSummonHero, depositBoxSummonMonster, jewelryCase, ediblePlantRipe, stairsTrapDownOil, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench]
 
 scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signageExit, signageEmbed, signageMerchandise, fireSmall, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, stairsTrapUp, stairsTrapDown, lectern, shallowWater, straightPath, frozenGround :: ItemKind
 -- Allure-specific
-blackStarrySky,       disengagedDocking, desertedAirlock, ruinedFirstAidKit, fireFightingGear, wall3dBillboard, crackedFlue, bloodOnWall, bloodOnWall2, bloodOnWall3, depositBox, jewelryCase, ediblePlantRipe, stairsTrapDownOil, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench :: ItemKind
+blackStarrySky,       disengagedDocking, desertedAirlock, ruinedFirstAidKit, fireFightingGear, wall3dBillboard, crackedFlue, bloodOnWall, bloodOnWall2, bloodOnWall3, depositBox, depositBoxSummonHero, depositBoxSummonMonster, jewelryCase, ediblePlantRipe, stairsTrapDownOil, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench :: ItemKind
 
 -- Make sure very few walls are substantially useful, e.g., caches,
 -- and none that are secret. Otherwise the player will spend a lot of time
@@ -665,11 +666,26 @@ bloodOnWall3 = bloodOnWall
   }
 depositBox = treasureCache
   { iname    = "intact deposit box"
-  , ifreq    = [(DEPOSIT_BOX, 1)]
+  , ifreq    = [(DEPOSIT_BOX, 60)]
   , iaspects = [SetFlag Durable]
   , ieffects = [CreateItem Nothing CGround TREASURE timerNone]
                  -- can't be VALUABLE or template items generated
   , idesc    = "The reports of intact deposit boxes in the ship's safes have been greatly exaggerated, but there are still a few with glittering gems and gold, just waiting to be taken. Whomever looted these halls wasn't thorough or, judging from the damage to some of the boxes, was in an extreme hurry."
+  }
+depositBoxSummonHero = treasureCache
+  { iname    = "noisy large deposit box"
+  , ifreq    = [(DEPOSIT_BOX, 30)]
+  , iaspects = [SetFlag Unique, SetFlag Durable]
+  , ieffects = [Summon HERO 1, CreateItem Nothing CGround MUSEAL timerNone]
+  , idesc    = "Judging from the frantic sounds, this deposit cell with a time lock has trapped something big recently."
+  }
+depositBoxSummonMonster = treasureCache
+  { iname    = "throbbing deposit box"
+  , ifreq    = [(DEPOSIT_BOX, 10)]
+  , iaspects = [SetFlag Durable]
+  , ieffects = [ Summon MOBILE_MONSTER 1
+               , CreateItem Nothing CGround CURIOUS_ITEM timerNone ]
+  , idesc    = "Judging from the incessant noises, this deposit cell with a time lock has trapped something recently."
   }
 jewelryCase = treasureCache
   { iname    = "jewelry case"

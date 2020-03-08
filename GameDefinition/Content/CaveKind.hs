@@ -24,6 +24,7 @@ import           Content.ItemKind hiding (content, groupNames,
                                    groupNamesSingleton)
 import           Content.ItemKindActor
 import           Content.ItemKindBlast
+import           Content.ItemKindEmbed hiding (ESCAPE)
 import           Content.PlaceKind hiding (content, groupNames,
                                     groupNamesSingleton)
 import           Content.TileKind hiding (content, groupNames,

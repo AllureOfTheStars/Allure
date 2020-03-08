@@ -8,7 +8,7 @@
 module Content.ItemKind
   ( -- * Group name patterns
     pattern HARPOON, pattern TORSO_ARMOR, pattern CLOTHING_MISC
-  , pattern MUSEAL, pattern FIREPROOF_CLOTH, pattern COOKED_PLANT, pattern LIQUID_NITROGEN
+  , pattern FIREPROOF_CLOTH, pattern COOKED_PLANT, pattern LIQUID_NITROGEN
   , groupNamesSingleton, groupNames
   , -- * Content
     content, items, otherItemContent
@@ -50,12 +50,12 @@ pattern COOKED_PLANT_UNKNOWN :: GroupName ItemKind
 groupNames :: [GroupName ItemKind]
 groupNames =
        [HARPOON, TORSO_ARMOR, CLOTHING_MISC]
-    ++ [MUSEAL, FIREPROOF_CLOTH, COOKED_PLANT, LIQUID_NITROGEN, GARDENING_TOOL]
+    ++ [FIREPROOF_CLOTH, COOKED_PLANT, LIQUID_NITROGEN, GARDENING_TOOL]
     ++ embedsGN ++ actorsGN ++ organsGN ++ blastsGN
 
 pattern HARPOON, TORSO_ARMOR, CLOTHING_MISC :: GroupName ItemKind
 
-pattern MUSEAL, FIREPROOF_CLOTH, COOKED_PLANT, LIQUID_NITROGEN, GARDENING_TOOL :: GroupName ItemKind
+pattern FIREPROOF_CLOTH, COOKED_PLANT, LIQUID_NITROGEN, GARDENING_TOOL :: GroupName ItemKind
 
 -- The @UNKNOWN@ patterns don't need to be exported. Used internally.
 -- They also represent singleton groups.
@@ -79,7 +79,6 @@ pattern CLOTHING_MISC = GroupName "miscellaneous clothing"
 -- They also represent singleton groups.
 pattern COOKED_PLANT_UNKNOWN = GroupName "cooked plant unknown"
 
-pattern MUSEAL = GroupName "museal"
 pattern FIREPROOF_CLOTH = GroupName "fireproof cloth"
 pattern COOKED_PLANT = GroupName "cooked plant"
 pattern LIQUID_NITROGEN = GroupName "liquid nitrogen"
@@ -1018,7 +1017,8 @@ scroll4 = scrollTemplate
   , irarity  = [(10, 14)]
   , ieffects = [ Impress
                , OneOf [ Teleport 20, Ascend False, Ascend True
-                       , Summon HERO 1, Summon MOBILE_ANIMAL $ 1 `d` 2
+                       , OneOf [Summon HERO 1, Summon MOBILE_ANIMAL $ 1 `d` 2]
+                           -- gaining a hero particularly uncommon
                        , Detect DetectLoot 20  -- the most useful of detections
                        , CreateItem Nothing CGround COMMON_ITEM timerNone ] ]
   }
@@ -1050,7 +1050,7 @@ scroll8 = scrollTemplate
   , iaspects = [SetFlag Unique, ELabel "of Skeleton Key"]
                ++ iaspects scrollTemplate
   , ieffects = [Summon HERO 1]
-  , idesc    = "This is a security lock chip that opens all doors in the area, including the hatch to a nearby closet, bulging from the blows of one of our lost crew members."
+  , idesc    = "This is a security lock chip that opens all doors in the area, including the hatch to a nearby closet, resounding from the blows of, as it turns out, one of our lost crew members."
   }
 scroll9 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
