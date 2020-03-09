@@ -121,7 +121,7 @@ pattern S_PAINT_DROPLET = GroupName "paint droplet"
 pattern S_RHINO_HOLOGRAM = GroupName "rhino hologram"
 
 pattern ADVERTISEMENT = GroupName "advertisement"
-pattern STORY_TELLING = GroupName "story-telling"
+pattern STORY_TELLING = GroupName "story-telling piece"
 
 pattern FIRE_SOURCE = GroupName "fire source"
 pattern OIL_SOURCE = GroupName "oil source"

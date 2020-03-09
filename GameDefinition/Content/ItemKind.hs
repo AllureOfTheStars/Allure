@@ -69,7 +69,7 @@ pattern HAMMER_UNKNOWN = GroupName "hammer unknown"
 pattern GEM_UNKNOWN = GroupName "gem unknown"
 pattern CURRENCY_UNKNOWN = GroupName "currency unknown"
 
-pattern HARPOON = GroupName "any harpoon"
+pattern HARPOON = GroupName "harpoon"
 pattern TORSO_ARMOR = GroupName "torso armor"
 pattern CLOTHING_MISC = GroupName "miscellaneous clothing"
 

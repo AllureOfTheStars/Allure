@@ -78,15 +78,15 @@ pattern IMMOBILE_ROBOT = GroupName "immobile robot"
 pattern CONSTRUCTION_ROBOT = GroupName "construction robot"
 
 -- ** Common
-pattern ADD_SIGHT = GroupName "add sight"
+pattern ADD_SIGHT = GroupName "sight improvement"
 pattern ARMOR_RANGED = GroupName "ranged armor"
-pattern ADD_NOCTO_1 = GroupName "add 1 noctovision"
+pattern ADD_NOCTO_1 = GroupName "noctovision improvement"
 pattern WEAK_ARROW = GroupName "weak arrow"
 pattern LIGHT_MANIPULATION = GroupName "light manipulation"
 pattern WOODEN_TORCH = GroupName "wooden torch"
 pattern BLANKET = GroupName "blanket"
 pattern RING_OF_OPPORTUNITY_SNIPER = GroupName "ring of opportunity sniper"
-pattern ANY_ARROW = GroupName "any arrow"
+pattern ANY_ARROW = GroupName "arrow"
 pattern STARTING_WEAPON = GroupName "starting weapon"
 pattern GEM = GroupName "gem"
 
