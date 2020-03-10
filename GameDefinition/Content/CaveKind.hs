@@ -287,7 +287,7 @@ noise = rogue
   , chidden       = 0
   , cactorCoeff   = 70  -- the maze requires time to explore; also, small
   , cactorFreq    = [(MONSTER, 100), (ANIMAL, 5), (ROBOT, 25)]
-  , citemNum      = 10 `d` 5  -- an incentive to explore the labyrinth
+  , citemNum      = 10 `d` 4  -- an incentive to explore the labyrinth
   , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.TREASURE, 60)
                     , (IK.EXPLOSIVE, 20), (IK.CURIOUS_ITEM, 30) ]
   , cpassable     = True
@@ -311,7 +311,7 @@ power = noise
   , cYminSize     = 42
   , cnightOdds    = 51  -- easier variant, but looks sinister
   , cextraStairs  = 2
-  , citemNum      = 10 `d` 5  -- an incentive to explore the final labyrinth
+  , citemNum      = 10 `d` 4  -- an incentive to explore the final labyrinth
   , citemFreq     = [ (IK.COMMON_ITEM, 20), (GEM, 80), (IK.CURIOUS_ITEM, 30) ]
                       -- can't be "valuable" or template items generated
   , cdefTile      = POWER_SET_DARK
@@ -342,7 +342,7 @@ empty = rogue
   , chidden       = 0
   , cactorCoeff   = 40  -- easy to view and plan
   , cactorFreq    = [(MONSTER, 10), (ANIMAL, 5), (ROBOT, 85)]
-  , citemNum      = 10 `d` 5  -- lots of free space
+  , citemNum      = 10 `d` 4  -- lots of free space, but extra loot present
   , cplaceFreq    = [(EMPTY, 1)]
   , cpassable     = True
   , cdefTile      = EMPTY_SET_LIT

@@ -288,7 +288,7 @@ harpoon = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (HARPOON, 100), (S_HARPOON_CARGO, 1)]
   , iflavour = zipPlain [Brown]
   , icount   = 1  -- durable, so one piece lasts long
-  , irarity  = [(1, 5), (10, 3)]
+  , irarity  = [(1, 4), (10, 1)]
   , iverbHit = "hook"
   , iweight  = 1400
   , idamage  = 5 `d` 1
@@ -302,7 +302,7 @@ harpoon = ItemKind
   }
 harpoon2 = harpoon
   { iname    = "sharp harpoon"
-  , ifreq    = [(COMMON_ITEM, 5), (HARPOON, 2), (S_HARPOON_SHARP, 1)]
+  , ifreq    = [(COMMON_ITEM, 3), (HARPOON, 2), (S_HARPOON_SHARP, 1)]
   , idamage  = 7 `d` 1
   , idesc    = "A cord ending in a sharpened cargo-hook that, in addition to entangling the victim, gains purchase biting into the body."
   }
@@ -1666,7 +1666,7 @@ knife = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 200), (S_CLEAVER, 1)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(1, 3), (5, 25), (9, 1)]
+  , irarity  = [(1, 8), (5, 25), (9, 1)]
                  -- useful initially and for crafting mid-game
   , iverbHit = "cut"
   , iweight  = 1000
@@ -1700,7 +1700,7 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
                  -- a very aggressive weapon, bad for defense even when long
   , iflavour = zipFancy [BrMagenta]  -- avoid "pink"
   , icount   = 1
-  , irarity  = [(6, 18), (9, 1)]
+  , irarity  = [(7, 18), (9, 1)]
                  -- not too common on lvl 3 and late, when crafting done already
   , iverbHit = "club"
   , iweight  = 4000
@@ -1993,7 +1993,7 @@ harpoon3 = harpoon
   { iname    = "whaling harpoon"
   , ifreq    = [(TREASURE, 50), (MUSEAL, 100)]
   , iflavour = zipFancy [Red]
-  , irarity  = [(8, 5)]
+  , irarity  = [(8, 4)]
   , idamage  = 9 `d` 1
   , iaspects = [SetFlag Unique] ++ iaspects harpoon
   , ieffects = Yell  -- evoke a cry from pain; brutal
