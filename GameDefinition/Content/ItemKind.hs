@@ -2440,7 +2440,7 @@ grassStitcher = ItemKind
                , toVelocity 30 ]
   , ieffects = [gardenDestruct 3 S_GRASS_STITCHER]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Grass_Stitcher
-  , ikit     = [(GARDENING_TOOL, CGround)]  -- come in varied pairs
+  , ikit     = [(GARDENING_TOOL, CGround), (GARDENING_TOOL, CGround)]
   }
 ladiesFork = grassStitcher
   { iname    = "ladies' fork"
@@ -2455,6 +2455,7 @@ ladiesFork = grassStitcher
                , toVelocity 40 ]
   , ieffects = [gardenDestruct 5 S_LADIES_FORK]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Garden_fork
+  , ikit     = [(GARDENING_TOOL, CGround)]
   }
 hoe = grassStitcher
   { isymbol  = symbolHafted
@@ -2471,6 +2472,7 @@ hoe = grassStitcher
                , toVelocity 40 ]
   , ieffects = [gardenDestruct 7 S_HOE]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Hoe_(tool)
+  , ikit     = [(GARDENING_TOOL, CGround)]
   }
 spade = grassStitcher
   { isymbol  = symbolHafted  -- swinging much more deadly than gouging
@@ -2487,6 +2489,7 @@ spade = grassStitcher
                , toVelocity 50 ]
   , ieffects = [gardenDestruct 9 S_SPADE]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Spade
+  , ikit     = []  -- most powerful, most likely to come alone
   }
 treePruner = grassStitcher
   { iname    = "long reach tree pruner"
@@ -2502,7 +2505,7 @@ treePruner = grassStitcher
                , toVelocity 20 ]
   , ieffects = []
   , idesc    = "A heavy tree lopper on a sturdy long pole."
-  -- @ikit@ from grassStitcher
+  , ikit     = [(GARDENING_TOOL, CGround)]
   }
 cleaningPole = grassStitcher
   { iname    = "window cleaning pole"
