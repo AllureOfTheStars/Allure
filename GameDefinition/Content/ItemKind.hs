@@ -1812,7 +1812,7 @@ swordNullify = sword
 halberd = ItemKind  -- long pole
   { isymbol  = symbolPolearm
   , iname    = "pole cleaver"
-  , ifreq    = [ (COMMON_ITEM, 10), (POLE_AND_STEEL, 1)
+  , ifreq    = [ (COMMON_ITEM, 5), (POLE_AND_STEEL, 1)
                , (STARTING_WEAPON, 5), (S_POLE_CLEAVER, 1) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
@@ -2324,7 +2324,7 @@ fireAxe = ItemKind
   }
 dagger = knife
   { iname    = "dagger"
-  , ifreq    = [(COMMON_ITEM, 10), (S_DAGGER, 1), (STARTING_WEAPON, 5)]
+  , ifreq    = [(COMMON_ITEM, 5), (S_DAGGER, 1), (STARTING_WEAPON, 5)]
   , iverbHit = "open"
   , irarity  = [(5, 20)]  -- like hammer, not knife, to prevent excess
   , idamage  = 7 `d` 1
@@ -2355,7 +2355,7 @@ swordNullifySharp = swordNullify
   }
 oxTongue = halberd  -- long pole, because glued 1m handle worse than nothing
   { iname    = "long spear"
-  , ifreq    = [(COMMON_ITEM, 5), (POLE_AND_STEEL, 1), (S_LONG_SPEAR, 1)]
+  , ifreq    = [(COMMON_ITEM, 2), (POLE_AND_STEEL, 1), (S_LONG_SPEAR, 1)]
   , iverbHit = "impale"
   , idamage  = 13 `d` 1
   , idesc    = "An improvised but deadly weapon made of a long, sharp dagger glued and bound to a long pole. Not often one succeeds in making enough space to swing it freely, but even when stuck between terrain obstacles it blocks approaches effectively and makes using other weapons difficult, both by friends and foes."
