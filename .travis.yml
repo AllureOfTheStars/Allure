@@ -348,8 +348,7 @@ script:
     elif [ $GTKVTY = "brew-sdl2-osx" ]; then
       travis_wait 40 brew install --display-times --build-from-source allureofthestars &&
       Allure --dbgMsgSer --logPriority 0 --newGame 3 --maxFps 100000 --benchmark --stopAfterFrames 50 --automateAll --keepAutomated --gameMode battle --setDungeonRng 6 --setMainRng 6 &&
-      brew test --verbose allureofthestars &&
-      brew audit --strict allureofthestars
+      brew test --verbose allureofthestars
     elif [ $GTKVTY = "asserts-osx" ]; then
       ${CABAL} new-build $WITHCOMPILER --only-dependencies -fvty -fwith_expensive_assertions -w ${HC} -j2 .;
       ${CABAL} new-build $WITHCOMPILER -fvty -fwith_expensive_assertions -w ${HC} ${TEST} ${BENCH} -j1 .;
@@ -372,3 +371,6 @@ script:
 
 # REGENDATA ["--no-no-tests-no-bench","--osx=8.4.4","cabal.project","-o","foo"]
 # EOF
+
+# TODO:
+# &&     brew audit --strict allureofthestars
