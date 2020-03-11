@@ -740,7 +740,7 @@ potion11 = potionTemplate
   , irarity  = [(10, 8)]
   , iaspects = ELabel "of panic"
                : iaspects potionTemplate
-  , ieffects = [ RefillCalm (-30)
+  , ieffects = [ RefillCalm (-60)
                , toOrganGood S_HASTED (20 + 1 `d` 5)
                , toOrganBad S_WEAKENED (20 + 1 `d` 5)
                , toOrganBad S_WITHHOLDING (10 + 1 `d` 5)
@@ -1234,11 +1234,12 @@ necklace1 = necklaceTemplate
 necklace3 = necklaceTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
   , iaspects = [ ELabel "of fearful listening"
-               , Timeout ((1 + 1 `d` 2) * 10)
+               , Timeout 30
+                   -- has to be as large as Calm drain or item not removable
                , AddSkill SkHearing 2 ]
                ++ iaspects_necklaceTemplate
   , ieffects = [ Detect DetectActor 10  -- can be applied; destroys the item
-               , RefillCalm (-40) ]
+               , RefillCalm (-30) ]
   }
 necklace4 = necklaceTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
