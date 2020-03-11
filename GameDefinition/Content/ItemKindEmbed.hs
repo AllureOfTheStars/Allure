@@ -532,7 +532,7 @@ blackStarrySky = ItemKind
   , idamage  = 0
   , iaspects = [SetFlag Durable]
   , ieffects = [ VerbMsg "look into the void and it looks back"
-               , OneOf [RefillCalm 5, RefillCalm (-5)] ]
+               , RefillCalm (-5) ]
   , idesc    = "Occasionally a planet or the Sun zips by, but is unable to disperse the darkness. The black starscape constantly rotates. The frantic dance is silent, muted, indifferent. There is not even a hint of vibration, just the sense of heaviness and dizziness."  -- appears only on 100% flavour tiles (both floor and walls on some levels), useless and trivial to notice, so the writeup can be longer; who am I kidding, I can't make myself write condensed prose
   , ikit     = []
   }

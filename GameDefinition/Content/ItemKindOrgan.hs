@@ -9,8 +9,8 @@ module Content.ItemKindOrgan
   ( -- * Group name patterns
     pattern S_FIST, pattern S_FOOT, pattern S_HOOKED_CLAW, pattern S_SMALL_CLAW, pattern S_SNOUT, pattern S_SMALL_JAW, pattern S_JAW, pattern S_LARGE_JAW, pattern S_ANTLER, pattern S_HORN, pattern S_RHINO_HORN, pattern S_TENTACLE, pattern S_THORN, pattern S_BOILING_FISSURE, pattern S_BEE_STING, pattern S_STING, pattern S_VENOM_TOOTH, pattern S_VENOM_FANG, pattern S_SCREECHING_BEAK, pattern S_LARGE_TAIL, pattern S_HUGE_TAIL, pattern S_ARMORED_SKIN, pattern S_BARK, pattern S_NOSTRIL, pattern S_RATLLE, pattern S_INSECT_MORTALITY, pattern S_SAPIENT_BRAIN, pattern S_ANIMAL_BRAIN, pattern S_SCENT_GLAND, pattern S_BOILING_VENT, pattern S_EYE_3, pattern S_EYE_6, pattern S_EYE_8, pattern S_VISION_6, pattern S_VISION_12, pattern S_VISION_16, pattern S_EAR_3, pattern S_EAR_6, pattern S_EAR_8, pattern S_SPEED_GLAND_5, pattern S_SPEED_GLAND_10
   , pattern SCAVENGER
-  , pattern S_ANIMAL_STOMACH, pattern S_HUNGRY, pattern S_GENETIC_FLAW_3, pattern S_GENETIC_FLAW_10, pattern S_RAZOR, pattern S_SMALL_BEAK, pattern S_LIVE_WIRE, pattern S_ELECTRIC_AMBIENCE, pattern S_COOLING_VENT, pattern S_COOLING_FISSURE, pattern S_MEDBOT_VENT, pattern S_MEDBOT_FISSURE, pattern S_DUST_VENT, pattern S_DUST_FISSURE, pattern S_FUEL_VENT, pattern S_FUEL_FISSURE, pattern S_ROBOT_BRAIN, pattern S_HULL_PLATING, pattern S_MOUTH_VENT, pattern S_CRUDE_WELD
-  , pattern GENETIC_FLAW
+  , pattern S_ANIMAL_STOMACH, pattern S_HUNGRY, pattern S_GENETIC_FLAW_3, pattern S_GENETIC_FLAW_10, pattern S_RAZOR, pattern S_SMALL_BEAK, pattern S_LIVE_WIRE, pattern S_COOLING_VENT, pattern S_COOLING_FISSURE, pattern S_MEDBOT_VENT, pattern S_MEDBOT_FISSURE, pattern S_DUST_VENT, pattern S_DUST_FISSURE, pattern S_FUEL_VENT, pattern S_FUEL_FISSURE, pattern S_ROBOT_BRAIN, pattern S_HULL_PLATING, pattern S_MOUTH_VENT, pattern S_CRUDE_WELD
+  , pattern ELECTRIC_AMBIENCE, pattern GENETIC_FLAW
   , organsGNSingleton, organsGN
   , -- * Content
     organs
@@ -34,20 +34,20 @@ import Game.LambdaHack.Definition.Flavour
 organsGNSingleton :: [GroupName ItemKind]
 organsGNSingleton =
        [S_FIST, S_FOOT, S_HOOKED_CLAW, S_SMALL_CLAW, S_SNOUT, S_SMALL_JAW, S_JAW, S_LARGE_JAW, S_ANTLER, S_HORN, S_RHINO_HORN, S_TENTACLE, S_THORN, S_BOILING_FISSURE, S_BEE_STING, S_STING, S_VENOM_TOOTH, S_VENOM_FANG, S_SCREECHING_BEAK, S_LARGE_TAIL, S_HUGE_TAIL, S_ARMORED_SKIN, S_BARK, S_NOSTRIL, S_RATLLE, S_INSECT_MORTALITY, S_SAPIENT_BRAIN, S_ANIMAL_BRAIN, S_SCENT_GLAND, S_BOILING_VENT, S_EYE_3, S_EYE_6, S_EYE_8, S_VISION_6, S_VISION_12, S_VISION_16, S_EAR_3, S_EAR_6, S_EAR_8, S_SPEED_GLAND_5, S_SPEED_GLAND_10]
-    ++ [S_ANIMAL_STOMACH, S_HUNGRY, S_GENETIC_FLAW_3, S_GENETIC_FLAW_10, S_RAZOR, S_SMALL_BEAK, S_LIVE_WIRE, S_ELECTRIC_AMBIENCE, S_COOLING_VENT, S_COOLING_FISSURE, S_MEDBOT_VENT, S_MEDBOT_FISSURE, S_DUST_VENT, S_DUST_FISSURE, S_FUEL_VENT, S_FUEL_FISSURE, S_ROBOT_BRAIN, S_HULL_PLATING, S_MOUTH_VENT, S_CRUDE_WELD]
+    ++ [S_ANIMAL_STOMACH, S_HUNGRY, S_GENETIC_FLAW_3, S_GENETIC_FLAW_10, S_RAZOR, S_SMALL_BEAK, S_LIVE_WIRE, S_COOLING_VENT, S_COOLING_FISSURE, S_MEDBOT_VENT, S_MEDBOT_FISSURE, S_DUST_VENT, S_DUST_FISSURE, S_FUEL_VENT, S_FUEL_FISSURE, S_ROBOT_BRAIN, S_HULL_PLATING, S_MOUTH_VENT, S_CRUDE_WELD]
 
 pattern S_FIST, S_FOOT, S_HOOKED_CLAW, S_SMALL_CLAW, S_SNOUT, S_SMALL_JAW, S_JAW, S_LARGE_JAW, S_ANTLER, S_HORN, S_RHINO_HORN, S_TENTACLE, S_THORN, S_BOILING_FISSURE, S_BEE_STING, S_STING, S_VENOM_TOOTH, S_VENOM_FANG, S_SCREECHING_BEAK, S_LARGE_TAIL, S_HUGE_TAIL, S_ARMORED_SKIN, S_BARK, S_NOSTRIL, S_RATLLE, S_INSECT_MORTALITY, S_SAPIENT_BRAIN, S_ANIMAL_BRAIN, S_SCENT_GLAND, S_BOILING_VENT, S_EYE_3, S_EYE_6, S_EYE_8, S_VISION_6, S_VISION_12, S_VISION_16, S_EAR_3, S_EAR_6, S_EAR_8, S_SPEED_GLAND_5, S_SPEED_GLAND_10 :: GroupName ItemKind
 
-pattern S_ANIMAL_STOMACH, S_HUNGRY, S_GENETIC_FLAW_3, S_GENETIC_FLAW_10, S_RAZOR, S_SMALL_BEAK, S_LIVE_WIRE, S_ELECTRIC_AMBIENCE, S_COOLING_VENT, S_COOLING_FISSURE, S_MEDBOT_VENT, S_MEDBOT_FISSURE, S_DUST_VENT, S_DUST_FISSURE, S_FUEL_VENT, S_FUEL_FISSURE, S_ROBOT_BRAIN, S_HULL_PLATING, S_MOUTH_VENT, S_CRUDE_WELD :: GroupName ItemKind
+pattern S_ANIMAL_STOMACH, S_HUNGRY, S_GENETIC_FLAW_3, S_GENETIC_FLAW_10, S_RAZOR, S_SMALL_BEAK, S_LIVE_WIRE, S_COOLING_VENT, S_COOLING_FISSURE, S_MEDBOT_VENT, S_MEDBOT_FISSURE, S_DUST_VENT, S_DUST_FISSURE, S_FUEL_VENT, S_FUEL_FISSURE, S_ROBOT_BRAIN, S_HULL_PLATING, S_MOUTH_VENT, S_CRUDE_WELD :: GroupName ItemKind
 
 organsGN :: [GroupName ItemKind]
 organsGN =
        [SCAVENGER]
-    ++ [GENETIC_FLAW]
+    ++ [ELECTRIC_AMBIENCE, GENETIC_FLAW]
 
 pattern SCAVENGER :: GroupName ItemKind
 
-pattern GENETIC_FLAW :: GroupName ItemKind
+pattern ELECTRIC_AMBIENCE, GENETIC_FLAW :: GroupName ItemKind
 
 pattern S_FIST = GroupName "fist"
 pattern S_FOOT = GroupName "foot"
@@ -101,7 +101,6 @@ pattern S_GENETIC_FLAW_10 = GroupName "genetic flaw 10"
 pattern S_RAZOR = GroupName "razor"
 pattern S_SMALL_BEAK = GroupName "small beak"
 pattern S_LIVE_WIRE = GroupName "live wire"
-pattern S_ELECTRIC_AMBIENCE = GroupName "electric ambience"
 pattern S_COOLING_VENT = GroupName "cooling vent"
 pattern S_COOLING_FISSURE = GroupName "cooling fissure"
 pattern S_MEDBOT_VENT = GroupName "medbot vent"
@@ -115,6 +114,7 @@ pattern S_HULL_PLATING = GroupName "hull plating"
 pattern S_MOUTH_VENT = GroupName "mouth vent"
 pattern S_CRUDE_WELD = GroupName "crude weld"
 
+pattern ELECTRIC_AMBIENCE = GroupName "electric ambience"
 pattern GENETIC_FLAW = GroupName "genetic flaw"
 
 -- * Content
@@ -123,11 +123,11 @@ organs :: [ItemKind]
 organs =
   [fist, foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, bark, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland5, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed]
   -- Allure-specific
-  ++ [animalStomach, hungry, smallBeak, razor, liveWire, electricAmbience, robotBrain, hullPlating, mouthVent, dustVent, dustFissure, fuelVent, fuelFissure, geneticFlaw3, geneticFlaw10]
+  ++ [animalStomach, hungry, smallBeak, razor, liveWire, electricAmbience, electricAmbienceRecharge, robotBrain, hullPlating, mouthVent, dustVent, dustFissure, fuelVent, fuelFissure, geneticFlaw3, geneticFlaw10]
 
 fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, bark, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland5, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed :: ItemKind
 -- Allure-specific
-animalStomach,       hungry, smallBeak, razor, liveWire, electricAmbience, robotBrain, hullPlating, mouthVent, dustVent, dustFissure, fuelVent, fuelFissure, geneticFlaw3, geneticFlaw10 :: ItemKind
+animalStomach,       hungry, smallBeak, razor, liveWire, electricAmbience, electricAmbienceRecharge, robotBrain, hullPlating, mouthVent, dustVent, dustFissure, fuelVent, fuelFissure, geneticFlaw3, geneticFlaw10 :: ItemKind
 
 -- Weapons
 
@@ -680,13 +680,16 @@ liveWire = fist
   }
 electricAmbience = armoredSkin
   { iname    = "static current ambience"
-  , ifreq    = [(S_ELECTRIC_AMBIENCE, 1)]
+  , ifreq    = [(ELECTRIC_AMBIENCE, 1)]
   , iverbHit = "shortcut"
   , iaspects = [ Timeout $ (2 + 1 `d` 3) * 5
                , SetFlag Periodic, SetFlag Durable ]
-  , ieffects = [ RefillHP 2
-               , OneOf $ map Explode [S_CURRENT_RECHARGE, S_CURRENT_DISCHARGE] ]
+  , ieffects = [RefillHP 2, Explode S_CURRENT_DISCHARGE]
   , idesc    = ""
+  }
+electricAmbienceRecharge = electricAmbience
+  { iname    = "current static ambience"
+  , ieffects = [RefillHP 1, Explode S_CURRENT_RECHARGE]
   }
 robotBrain = armoredSkin
   { iname    = "robot brain"

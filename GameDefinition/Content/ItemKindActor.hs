@@ -788,7 +788,7 @@ electricFence = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Marginally intelligent electric shepherd. Originally used in orbital dairy farms and planetary zoos. The long support on which proximity sensors, actuators and wires are socketed, ensures animals can't jump above the fence, even in reduced gravity."
-  , ikit     = [ (S_LIVE_WIRE, COrgan), (S_ELECTRIC_AMBIENCE, COrgan)
+  , ikit     = [ (S_LIVE_WIRE, COrgan), (ELECTRIC_AMBIENCE, COrgan)
                , (POLE_OR_HANDLE, CEqp) ]
   }
 activeFence = ItemKind
@@ -1126,7 +1126,7 @@ cleanerRobot = ItemKind
   , idesc    = "An oversize waste disposal robot repaired with parts from a demolition robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness. The robot's bulky trunk doesn't fit into even the larger lift carriages."
   , ikit     = [ (S_LIVE_WIRE, COrgan)
                , (S_LARGE_JAW, COrgan), (S_TENTACLE, COrgan)
-               , (S_ELECTRIC_AMBIENCE, COrgan)  -- regeneration
+               , (ELECTRIC_AMBIENCE, COrgan)  -- regeneration
                , (S_BOILING_VENT, COrgan)  -- regeneration
                , (S_HULL_PLATING, COrgan), (S_HULL_PLATING, COrgan)
                    -- the only such armor, except for weak animals; plus
