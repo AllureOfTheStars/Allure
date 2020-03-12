@@ -1346,7 +1346,7 @@ mazeBig = maze
                ]
   }
 mazeBig2 = maze
-  { pfreq    = [ (ROGUE, 1500), (LABORATORY, 8000), (ARENA, 10000)
+  { pfreq    = [ (ROGUE, 1200), (LABORATORY, 8000), (ARENA, 10000)
                , (EXIT, 700) ]
   , pfence   = FNone
   , ptopLeft = [ "XX$$$~"

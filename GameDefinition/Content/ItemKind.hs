@@ -335,7 +335,7 @@ light1 = ItemKind
                , (FIRE_SOURCE, 1), (WOODEN_TORCH, 1) ]
   , iflavour = zipPlain [Brown]
   , icount   = 1 `dL` 4
-  , irarity  = [(1, 12), (4, 1)]  -- crafted, so less rare
+  , irarity  = [(3, 12), (4, 1)]  -- crafted, so less rare
   , iverbHit = "scorch"
   , iweight  = 1000
   , idamage  = 0

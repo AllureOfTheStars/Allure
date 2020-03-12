@@ -410,7 +410,7 @@ pillar = TileKind
 pillarCache = TileKind
   { tsymbol  = '#'
   , tname    = "abandoned stash"
-  , tfreq    = [ (CACHE_ABANDONED_OR_NOT, 20)
+  , tfreq    = [ (CACHE_ABANDONED_OR_NOT, 40)
                , (CACHE_MAZE, 33), (CACHE_SHUTTLE, 25) ]
   , tcolor   = BrBlue
   , tcolor2  = Blue
@@ -1169,7 +1169,7 @@ reinforcedWall = TileKind
   }
 reinforcedWallSpice = reinforcedWall
   { tfreq    = [ (DOORLESS_WALL, 20)
-               , (CACHE_MAZE, 33), (CACHE_ABANDONED_OR_NOT, 80) ]
+               , (CACHE_MAZE, 33), (CACHE_ABANDONED_OR_NOT, 60) ]
   , tfeature = Spice : tfeature reinforcedWall
   }
 wallShuttle = bedrock
