@@ -414,7 +414,7 @@ bridge = rogue
   , cauxConnects  = 2  -- few rooms, so many corridors
   , cextraStairs  = 1
   , cactorCoeff   = 300  -- it's quite deep already, so spawn slowly;
-                         -- initially best for sleeping, then all catch up
+                         -- this is initially the best level for sleeping
   , cactorFreq    = [(ANIMAL, 100)]
   , citemNum      = 10 `d` 3  -- lure them in with loot
   , citemFreq     = [(IK.COMMON_ITEM, 40)]
@@ -436,7 +436,7 @@ shallowRogue = rogue
   , cXminSize     = 60
   , cYminSize     = 37
   , cextraStairs  = 2
-  , cactorCoeff   = 40  -- more difficult
+  , cactorCoeff   = 120  -- more difficult
   , cactorFreq    = filter ((/= MONSTER) . fst) $ cactorFreq rogue
   , citemNum      = 10 `d` 4
   , citemFreq     = [(IK.COMMON_ITEM, 40), (IK.CURIOUS_ITEM, 20)]
