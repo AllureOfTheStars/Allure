@@ -496,16 +496,17 @@ rosterAmbush = Roster
 
 rosterCrawl = Roster
   { rosterList = [ ( playerHero
-                   , [(3, 3, CRAWL_HERO)] )
+                   , [ (2, 0, CRAWL_HERO)  -- prevent foes from camping stairs
+                     , (3, 3, CRAWL_HERO) ] )
                  , ( playerMonster
                    , [] )
                  , ( playerAnimal
-                   , [ (2, 3, ANIMAL)
+                   , [ (2, 4, ANIMAL)
                      , (3, 3, ANIMAL)
                      , -- Optional huge battle at the end:
                        (15, 100, MOBILE_ANIMAL) ] )
                  , ( playerRobot
-                   , [(2, 2, ROBOT)] ) ]
+                   , [(2, 3, ROBOT)] ) ]
   , rosterEnemy = [ ("Spacefarer", "Alien Hierarchy")
                   , ("Spacefarer", "Animal Kingdom")
                   , ("Spacefarer", "Robot Anarchy") ]
