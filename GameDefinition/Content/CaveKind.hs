@@ -429,7 +429,7 @@ bridge = rogue
   , cstairAllowed = [ (WELDED_WALLED_STAIRCASE, 50)
                     , (WELDED_OPEN_STAIRCASE, 50)
                     , (WELDED_TINY_STAIRCASE, 1) ]
-  , cdesc         = "The bridge is gutted out and nonoperational. You saved space on the shuttle by only packing demolition equipment and now you can't even attempt repairs. There are animal cries down below and ominous silence up above."
+  , cdesc         = "The bridge is gutted out and nonoperational. You saved space on the shuttle by only packing demolition equipment (and booze, long gone, some flasks thrown to fend off the annoying vermin) and now you can't even attempt repairs. You are also short on rations of food and vials of medicine to treat your recent wounds. Only water is plentiful on the ship: gaseous, liquid, frozen. There are animal cries down below and ominous silence up above."
   }
 shallowRogue = rogue
   { cfreq         = [(CAVE_SHALLOW_ROGUE, 100)]
@@ -440,7 +440,7 @@ shallowRogue = rogue
   , cactorFreq    = filter ((/= MONSTER) . fst) $ cactorFreq rogue
   , citemNum      = 10 `d` 4
   , citemFreq     = [(IK.COMMON_ITEM, 40), (IK.CURIOUS_ITEM, 20)]
-  , cdesc         = "This close to the outermost deck, residence is not permitted and walls and doors are sturdier, to contain a theoretically possible micro-meteorite breach. The entry is not closed off, though, because some passengers can't live without a regular pilgrimage to 'look outside'. Apparently, gazing at the sharp pin-points of stars and planets through the reinforced oriel glass is incomparable to watching the same through the thin polymer of wall displays. Animals appear to share the fascination of outer decks, perhaps attracted by the increased gravity, nearly Earth-like, unlike elsewhere on the ship."
+  , cdesc         = "This close to the outermost deck, residence is not permitted and walls and doors are sturdier, to contain a theoretically possible micro-meteorite breach. The entry is not closed off, though, because some passengers can't live without a regular pilgrimage to 'look outside'. Apparently, gazing at the sharp pin-points of stars and planets through the reinforced oriel glass is incomparable to watching the same through the thin polymer of wall displays.\nAnimals appear to share the fascination of outer decks, perhaps attracted by the increased gravity, nearly Earth-like, unlike elsewhere on the ship. However, they dislike many industrial fluids common on the ship, so throwing flasks is often an effective deterrent. Moreover, even if the fluid is hard to identify, you can be sure you won't waste a badly needed nano medicine, because it's never stored in such large containers, but in tiny vials."
   }
 
 -- * "Caves" on various celestial bodies (including, but not limited to, moons,

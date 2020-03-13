@@ -99,13 +99,13 @@ otherItemContent = embeds ++ actors ++ organs ++ blasts ++ temporaries
 
 items :: [ItemKind]
 items =
-  [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, meleeEnhancement, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, knife, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
+  [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, potion13, potion14, potion15, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, meleeEnhancement, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, knife, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
   -- Allure-specific
-  ++ [steelScrap, needle, needleSleep, harpoon3, flask18, flask19, flask20, rawMeatChunk, roastedMeatChunk, scrollAd1, blowtorch, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, laserSharpener, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, heavyBoot, spacesuit, spacesuitTorn, crowbar, catsPaw, fireAxe, dagger, hammer4, hammer5, swordNullifySharp, oxTongue, halberdPushActorSharp, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, hoe, spade, treePruner, cleaningPole, staff, pipe, longPole, constructionHooter, wasteContainer, spotlight, ragTangle]
+  ++ [steelScrap, needle, needleSleep, harpoon3, flask15, flask16, flask17, rawMeatChunk, roastedMeatChunk, scrollAd1, blowtorch, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, laserSharpener, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, heavyBoot, spacesuit, spacesuitTorn, crowbar, catsPaw, fireAxe, dagger, hammer4, hammer5, swordNullifySharp, oxTongue, halberdPushActorSharp, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, hoe, spade, treePruner, cleaningPole, staff, pipe, longPole, constructionHooter, wasteContainer, spotlight, ragTangle]
 
-sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, meleeEnhancement, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, knife, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
+sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, potion13, potion14, potion15, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, meleeEnhancement, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, knife, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
 -- Allure-specific
-steelScrap,       needle, needleSleep, harpoon3, flask18, flask19, flask20, rawMeatChunk, roastedMeatChunk, scrollAd1, blowtorch, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, laserSharpener, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, heavyBoot, spacesuit, spacesuitTorn, crowbar, catsPaw, fireAxe, dagger, hammer4, hammer5, swordNullifySharp, oxTongue, halberdPushActorSharp, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, hoe, spade, treePruner, cleaningPole, staff, pipe, longPole, constructionHooter, wasteContainer, spotlight, ragTangle :: ItemKind
+steelScrap,       needle, needleSleep, harpoon3, flask15, flask16, flask17, rawMeatChunk, roastedMeatChunk, scrollAd1, blowtorch, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, laserSharpener, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, heavyBoot, spacesuit, spacesuitTorn, crowbar, catsPaw, fireAxe, dagger, hammer4, hammer5, swordNullifySharp, oxTongue, halberdPushActorSharp, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, hoe, spade, treePruner, cleaningPole, staff, pipe, longPole, constructionHooter, wasteContainer, spotlight, ragTangle :: ItemKind
 
 -- Keep the dice rolls and sides in aspects small so that not too many
 -- distinct items are generated (for display in item lore and for narrative
@@ -421,9 +421,11 @@ blanket = ItemKind
 -- is intended to be an interesting tactical decision.
 --
 -- Flasks are often not natural; maths, magic, distillery.
--- In fact, they just cover all conditions, except those for stats.
+-- In fact, they cover all temporary conditions, except those for stats
+-- resistance and regeneration. They never heal, directly nor indirectly
+-- (regen), so may be thrown without the risk of wasting precious HP.
 --
--- There is no flask nor condition of Calm depletion,
+-- There is no flask nor condition that only does Calm or max Calm depletion,
 -- because Calm reduced often via combat, etc.
 
 flaskTemplate = ItemKind
@@ -431,7 +433,7 @@ flaskTemplate = ItemKind
   , iname    = "flask"
   , ifreq    = [(FLASK_UNKNOWN, 1)]
   , iflavour = zipGlassPlain darkCol ++ zipGlassFancy darkCol
-               ++ zipLiquid darkCol ++ zipFancy darkCol
+               ++ zipLiquid darkCol
   , icount   = 1 `dL` 3
   , irarity  = [(1, 7), (10, 3)]
   , iverbHit = "splash"
@@ -440,17 +442,14 @@ flaskTemplate = ItemKind
   , iaspects = [ PresentAs FLASK_UNKNOWN, SetFlag Lobable, SetFlag Fragile
                , toVelocity 60 ]  -- oily, rather bad grip
   , ieffects = []
-  , idesc    = "A flask of oily liquid of a suspect color. Something seems to be moving inside. Double dose causes twice longer effect."
+  , idesc    = "A flask of oily liquid of a suspect color. Something seems to be moving inside. Double dose causes twice longer effect. Triple dose is not advisable, since the active substance is never without unhealty side-efects and often dissolved in large volumes of alcohol."
   , ikit     = []
   }
 flask1 = flaskTemplate
   { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)]
-  , icount   = 1 `dL` 5
-  , irarity  = [(10, 10)]
-  , iaspects = ELabel "of strength renewal brew"
+  , iaspects = ELabel "of strength brew"
                : iaspects flaskTemplate
   , ieffects = [ toOrganGood S_STRENGTHENED (20 + 1 `d` 5)
-               , toOrganNoTimer S_REGENERATING
                , OnSmash (Explode S_DENSE_SHOWER) ]
   }
 flask2 = flaskTemplate
@@ -488,7 +487,7 @@ flask5 = flaskTemplate
 flask6 = flaskTemplate
   { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)]
   , irarity  = [(1, 1)]  -- not every playthrough needs one
-  , iaspects = ELabel "of resolution"
+  , iaspects = ELabel "of resolution spirit"
                : iaspects flaskTemplate
   , ieffects = [ toOrganGood S_RESOLUTE (500 + 1 `d` 200)  -- long, for scouting
                , RefillCalm 60  -- not to make it a drawback, via @calmEnough@
@@ -533,7 +532,7 @@ flask11 = flaskTemplate
   , iaspects = ELabel "of whiskey"
                : iaspects flaskTemplate
   , ieffects = [ toOrganGood S_DRUNK (20 + 1 `d` 5)
-               , Burn 1, RefillHP 3, Yell
+               , Burn 10, RefillHP 10, Yell
                , OnSmash (Explode S_WHISKEY_SPRAY) ]
   }
 flask12 = flaskTemplate
@@ -544,52 +543,21 @@ flask12 = flaskTemplate
   , iaspects = ELabel "of bait cocktail"
                : iaspects flaskTemplate
   , ieffects = [ toOrganGood S_DRUNK (20 + 1 `d` 5)
-               , Burn 1, RefillHP 3  -- risky exploit possible, good
                , Summon MOBILE_ANIMAL 1
                , OnSmash (Summon MOBILE_ANIMAL 1)
                , OnSmash Impress  -- mildly useful when thrown
                , OnSmash (Explode S_WASTE) ]
   }
--- The player has full control over throwing the flask at his party,
--- so he can milk the explosion, so it has to be much weaker, so a weak
--- healing effect is enough. OTOH, throwing a harmful flask at many enemies
--- at once is not easy to arrange, so these explosions can stay powerful.
 flask13 = flaskTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)]
-  , irarity  = [(1, 2), (10, 12)]
-  , iaspects = ELabel "of regeneration brew"
-               : iaspects flaskTemplate
-  , ieffects = [ toOrganGood S_ROSE_SMELLING (80 + 1 `d` 20)
-               , toOrganNoTimer S_REGENERATING
-               , toOrganNoTimer S_REGENERATING  -- x2
-               , OnSmash (Explode S_YOUTH_SPRINKLE) ]
-  }
-flask14 = flaskTemplate
   { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)]
   , iaspects = ELabel "of poison"
                : iaspects flaskTemplate
   , ieffects = [ toOrganNoTimer S_POISONED, toOrganNoTimer S_POISONED  -- x2
                , OnSmash (Explode S_POISON_CLOUD) ]
   }
-flask15 = flaskTemplate
+flask14 = flaskTemplate
   { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)]
-  , irarity  = [(10, 4)]
-  , iaspects = ELabel "of slow resistance"
-               : iaspects flaskTemplate
-  , ieffects = [ toOrganNoTimer S_POISON_RESISTANT
-               , OnSmash (Explode S_ANTI_SLOW_MIST) ]
-  }
-flask16 = flaskTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)]
-  , irarity  = [(10, 4)]
-  , iaspects = ELabel "of poison resistance"
-               : iaspects flaskTemplate
-  , ieffects = [ toOrganNoTimer S_SLOW_RESISTANT
-               , OnSmash (Explode S_ANTIDOTE_MIST) ]
-  }
-flask17 = flaskTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)]
-  , iaspects = ELabel "of calamity"
+  , iaspects = ELabel "of calamity mixture"
                : iaspects flaskTemplate
   , ieffects = [ toOrganNoTimer S_POISONED
                , toOrganBad S_WEAKENED (20 + 1 `d` 5)
@@ -597,7 +565,9 @@ flask17 = flaskTemplate
                , OnSmash (Explode S_GLASS_HAIL) ]  -- enough glass to cause that
   }
 
--- Potions are often natural, including natural stats.
+-- Vials are often natural, including natural stat boosts.
+-- They also include the only healing consumables in the game,
+-- apart of stimpacks and, to a limited extent, fruits.
 -- They appear deeper than most flasks. Various configurations of effects.
 -- A different class of effects is on scrolls and mechanical items.
 -- Some are shared.
@@ -615,7 +585,7 @@ potionTemplate = ItemKind
   , iaspects = [ PresentAs ANY_POTION_UNKNOWN, SetFlag Lobable, SetFlag Fragile
                , toVelocity 50 ]  -- oily, small momentum due to small size
   , ieffects = []
-  , idesc    = "A vial of bright, frothing concoction. The best that nature has to offer."
+  , idesc    = "A vial of bright, frothing concoction. The best medicine that nature has to offer for wounds, ailments and mood swings."
   , ikit     = []
   }
 potion1 = potionTemplate
@@ -732,8 +702,8 @@ potion10 = potionTemplate
                , toOrganBad S_RETAINING (5 + 1 `d` 3)
                , toOrganBad S_FRENZIED (40 + 1 `d` 10)
                , OnSmash (Explode S_DENSE_SHOWER)
-               , OnSmash (Explode $ blastNoStatOf S_RETAINING)
-               , OnSmash (Explode $ blastNoStatOf S_RETAINING) ]
+               , OnSmash (Explode $ blastNoStatOf S_RETAINING)    -- more
+               , OnSmash (Explode $ blastNoStatOf S_RETAINING) ]  -- explosion
   }
 potion11 = potionTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
@@ -759,6 +729,37 @@ potion12 = potionTemplate
                , OnSmash (Explode S_HASTE_SPRAY)
                , OnSmash (Explode S_IRON_FILING)
                , OnSmash (Explode $ blastNoStatOf S_IMMOBILE) ]
+  }
+potion13 = potionTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
+  , irarity  = [(10, 4)]
+  , iaspects = ELabel "of slow resistance"
+               : iaspects potionTemplate
+  , ieffects = [ toOrganNoTimer S_POISON_RESISTANT
+               , OnSmash (Explode S_ANTI_SLOW_MIST) ]
+  }
+potion14 = potionTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
+  , irarity  = [(10, 4)]
+  , iaspects = ELabel "of poison resistance"
+               : iaspects potionTemplate
+  , ieffects = [ toOrganNoTimer S_SLOW_RESISTANT
+               , OnSmash (Explode S_ANTIDOTE_MIST) ]
+  }
+-- The player has full control over throwing the vial at his party,
+-- so he can milk the explosion, so it has to be much weaker, so a weak
+-- healing effect is enough. OTOH, throwing a harmful flask at many enemies
+-- at once is not easy to arrange, so these explosions can stay powerful.
+potion15 = potionTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
+  , icount   = 1 `dL` 5
+  , irarity  = [(1, 2), (10, 12)]
+  , iaspects = ELabel "of regeneration"
+               : iaspects potionTemplate
+  , ieffects = [ toOrganGood S_ROSE_SMELLING (80 + 1 `d` 20)
+               , toOrganNoTimer S_REGENERATING
+               , toOrganNoTimer S_REGENERATING  -- x2
+               , OnSmash (Explode S_YOUTH_SPRINKLE) ]
   }
 
 -- ** Explosives, with the only effect being @Explode@
@@ -2006,7 +2007,7 @@ harpoon3 = harpoon
 
 -- ** Exploding consumables, often intended to be thrown.
 
-flask18 = flaskTemplate
+flask15 = flaskTemplate
   { iname    = "cartridge"
   , ifreq    = [ (COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)
                , (LIQUID_NITROGEN, 1), (COLD_SOURCE, 1)
@@ -2018,7 +2019,7 @@ flask18 = flaskTemplate
                , toOrganBad S_SLOWED (3 + 1 `d` 3)
                , OnSmash (Explode S_FOCUSED_SLOWNESS_MIST) ]
   }
-flask19 = flaskTemplate
+flask16 = flaskTemplate
   { iname    = "galon"  -- diluted perfume; almost same effects
   , ifreq    = [ (COMMON_ITEM, 100), (S_ROSE_WATER_FLASK, 1)
                , (EXPLOSIVE, 100), (ANY_GLASS, 100), (WATER_SOURCE, 1) ]
@@ -2028,7 +2029,7 @@ flask19 = flaskTemplate
   , ieffects = [ Impress, toOrganGood S_ROSE_SMELLING (100 + 1 `d` 20)
                , OnSmash ApplyPerfume, OnSmash (Explode S_FRAGRANCE) ]
   }
-flask20 = flaskTemplate
+flask17 = flaskTemplate
   { iname    = "galon"
   , ifreq    = [ (COMMON_ITEM, 100), (ANY_GLASS, 100)
                , (WATER_SOURCE, 1) ]

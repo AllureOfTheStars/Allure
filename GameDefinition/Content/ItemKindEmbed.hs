@@ -563,7 +563,7 @@ desertedAirlock = ItemKind
   , idamage  = 0
   , iaspects = [SetFlag Unique, SetFlag Durable]
   , ieffects = []
-  , idesc    = "You recognize the inner airlock door smeared with guano in a familiar pattern, but you can't see the shuttle you left engaged to the airlock clamps outside. That's a chilling realization: your craft was among those shed by the spaceship and now you have to find another lifeboat, likely on a distant deck. Moreover, something's gone through your supplies, chewing, tearing and scattering most of them."
+  , idesc    = "You recognize the inner airlock door smeared with guano in a familiar pattern, but you can't see the shuttle you left engaged to the airlock clamps outside. That's a chilling realization: your craft was among those shed by the spaceship and now you have to find another lifeboat, likely on a distant deck. Moreover, something's gone through your supplies, chewing, tearing and scattering most of them. Given that your stay just got prolonged, the shortage of food is almost as alarming as the scarcity of nano first aid vials that could patch the wounds from your recent struggles, until you are able to undergo a proper slow reconstruction in a hospital."
   , ikit     = [ (COOKED_FOOD, CGround), (COOKED_FOOD, CGround)
                , (S_SPACESUIT_TORN, CGround)
                , (S_BLUNT_SHORT_HAMMER, CGround)

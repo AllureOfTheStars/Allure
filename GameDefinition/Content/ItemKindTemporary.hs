@@ -161,8 +161,7 @@ tmpNoctovision = tmpAspects S_SHINY_EYED [AddSkill SkNocto 2]
 tmpDeafened = tmpAspects S_DEAFENED [AddSkill SkHearing (-10)]
 tmpDeaf = tmpAspects S_DEAF [AddSkill SkHearing (-99)]
 tmpDrunk = tmpAspects S_DRUNK [ AddSkill SkHurtMelee 30  -- fury
-                              , AddSkill SkArmorMelee (-20)
-                              , AddSkill SkArmorRanged (-20)
+                              , AddSkill SkArmorRanged (-30)
                               , AddSkill SkSight (-8)
                               ]
 
