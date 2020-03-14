@@ -496,8 +496,8 @@ rosterAmbush = Roster
 
 rosterCrawl = Roster
   { rosterList = [ ( playerHero
-                   , [ (2, 0, CRAWL_HERO)  -- prevent foes from camping stairs
-                     , (3, 3, CRAWL_HERO) ] )
+                   , [ (3, 3, CRAWL_HERO)
+                     , (2, 0, CRAWL_HERO) ] ) -- ban foes camping on stairs
                  , ( playerMonster
                    , [] )
                  , ( playerAnimal
