@@ -288,7 +288,7 @@ harpoon = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (HARPOON, 100), (S_HARPOON_CARGO, 1)]
   , iflavour = zipPlain [Brown]
   , icount   = 1  -- durable, so one piece lasts long
-  , irarity  = [(1, 4), (10, 1)]
+  , irarity  = [(1, 6), (10, 1)]
   , iverbHit = "hook"
   , iweight  = 1400
   , idamage  = 5 `d` 1
@@ -1668,7 +1668,7 @@ knife = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 200), (S_CLEAVER, 1)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(1, 8), (5, 25), (9, 1)]
+  , irarity  = [(1, 5), (5, 25), (9, 1)]
                  -- useful initially and for crafting mid-game
   , iverbHit = "cut"
   , iweight  = 1000
@@ -1725,7 +1725,8 @@ hammer1 = hammerTemplate  -- 1m handle, blunt
   }
 hammer2 = hammerTemplate  -- 0.75m handle, sharp
   { ifreq    = [(COMMON_ITEM, 30), (STARTING_WEAPON, 10), (STARTING_HAMMER, 15)]
-  , irarity  = [(5, 20)]  -- common also late, because not crafted
+  , irarity  = [(7, 20)]  -- common early, because not guaranteed;
+                          -- common also late, because not crafted
   , iverbHit = "puncture"
   , iaspects = [Timeout 3, EqpSlot EqpSlotWeaponFast]
                ++ (iaspects hammerTemplate \\ [EqpSlot EqpSlotWeaponBig])
@@ -2277,7 +2278,7 @@ crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
   { iname    = "crowbar"
   , ifreq    = (S_CROWBAR, 1) : ifreq chisel
   , iflavour = zipPlain [BrCyan]
-  , irarity  = [(1, 12), (3 * 10/15, 12), (4 * 10/15, 1)]
+  , irarity  = [(1, 6), (3 * 10/15, 6), (4 * 10/15, 1)]
   , iverbHit = "gouge"
   , idamage  = 2 `d` 1
   , iaspects = [ Timeout $ 3 + 1 `d` 2
@@ -2292,7 +2293,7 @@ crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
 catsPaw = chisel
   { iname    = "cat's paw"
   , iflavour = zipFancy [BrCyan]
-  , irarity  = [(1, 16), (3 * 10/15, 16), (4 * 10/15, 1)]
+  , irarity  = [(1, 12), (3 * 10/15, 12), (4 * 10/15, 1)]
   , iverbHit = "paw"
   , idamage  = 2 `d` 1
   , iaspects = [ Timeout $ 2 + 1 `d` 2
