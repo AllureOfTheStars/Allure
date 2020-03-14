@@ -288,7 +288,7 @@ harpoon = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (HARPOON, 100), (S_HARPOON_CARGO, 1)]
   , iflavour = zipPlain [Brown]
   , icount   = 1  -- durable, so one piece lasts long
-  , irarity  = [(1, 6), (10, 1)]
+  , irarity  = [(1, 6)]
   , iverbHit = "hook"
   , iweight  = 1400
   , idamage  = 5 `d` 1
@@ -877,7 +877,7 @@ ediblePlant5 = ediblePlantTemplate
   { iname    = "fragrant herb"
   , ifreq    = [(S_FRAGRANT_HERB, 1), (COMMON_ITEM, 100), (EDIBLE_PLANT, 100)]
   , icount   = 1 `dL` 9
-  , irarity  = [(1, 4), (10, 1)]  -- powerful; many copies
+  , irarity  = [(1, 4)]  -- powerful; many copies
   , iaspects = ELabel "of lethargy"
                : iaspects ediblePlantTemplate
   , ieffects = [ toOrganBad S_SLOWED (20 + 1 `d` 5)
@@ -1267,7 +1267,7 @@ necklace6 = necklaceTemplate
   }
 necklace7 = necklaceTemplate
   { ifreq    = [(CURIOUS_ITEM, 100), (ANY_JEWELRY, 100)]
-  , irarity  = [(10, 1)]  -- powerful and determines tactics for one actor
+  , irarity  = [(1, 1)]  -- powerful and determines tactics for one actor
   , iaspects = [ SetFlag Unique, ELabel "of Overdrive"
                , Timeout 10
                , AddSkill SkMaxHP 10  -- good effects vanish when taken off
@@ -1734,7 +1734,7 @@ hammer2 = hammerTemplate  -- 0.75m handle, sharp
   , idesc    = "Upon closer inspection, this hammer, or pick, turns out particularly well balanced. The profiled handle seamlessly joins the head, which focuses the blow at a sharp point, compensating for the tool's modest size."
   }
 hammer3 = hammerTemplate  -- 2m pole, blunt
-  { ifreq    = [ (COMMON_ITEM, 10), (BONDING_TOOL, 1), (POLE_AND_STEEL, 1)
+  { ifreq    = [ (COMMON_ITEM, 5), (BONDING_TOOL, 1), (POLE_AND_STEEL, 1)
                , (STARTING_WEAPON, 5), (S_BLUNT_LONG_HAMMER, 1) ]
   , iweight  = 6000  -- pole weight almost gives it away
   , iaspects = [Timeout 12]  -- balance, or @DupItem@ would break the game
@@ -1836,7 +1836,7 @@ halberd = ItemKind  -- long pole
   }
 halberd2 = halberd
   { iname    = "pollaxe"
-  , ifreq    = [(COMMON_ITEM, 5), (POLE_AND_STEEL, 1), (S_POLL_AXE, 1)]
+  , ifreq    = [(COMMON_ITEM, 1), (POLE_AND_STEEL, 1), (S_POLL_AXE, 1)]
                  -- not @BREACHING_TOOL@, because it triggers traps
                  -- and destroys treasure, instead of opening
   , iflavour = zipPlain [BrRed]
@@ -2329,19 +2329,19 @@ dagger = knife
   { iname    = "dagger"
   , ifreq    = [(COMMON_ITEM, 5), (S_DAGGER, 1), (STARTING_WEAPON, 5)]
   , iverbHit = "open"
-  , irarity  = [(5, 20)]  -- like hammer, not knife, to prevent excess
+  , irarity  = [(7, 20)]  -- like hammer, not knife, to prevent excess
   , idamage  = 7 `d` 1
   , idesc    = "A double-edged knife with a sharp tip that penetrates the smallest defence gaps, making it especially useful in conjunction with a larger but less nible weapon."
   }
 hammer4 = hammer1  -- 1m handle, sharp
-  { ifreq    = [ (COMMON_ITEM, 10), (HANDLE_AND_STEEL, 1)
+  { ifreq    = [ (COMMON_ITEM, 5), (HANDLE_AND_STEEL, 1)
                , (STARTING_WEAPON, 5), (S_SHARP_SHORT_HAMMER, 1) ]
   , iverbHit = "cleave"
   , ieffects = [RefillHP (-10)]
   , idesc    = "This hammer's head has it's protruding edges sharpened. Otherwise, it's pretty ordinary."
  }
 hammer5 = hammer3  -- 2m pole, sharp
-  { ifreq    = [ (COMMON_ITEM, 5), (POLE_AND_STEEL, 1)
+  { ifreq    = [ (COMMON_ITEM, 1), (POLE_AND_STEEL, 1)
                , (S_SHARP_LONG_HAMMER, 1) ]
   , iverbHit = "cleave"
   , ieffects = [RefillHP (-14)]
@@ -2358,7 +2358,7 @@ swordNullifySharp = swordNullify
   }
 oxTongue = halberd  -- long pole, because glued 1m handle worse than nothing
   { iname    = "long spear"
-  , ifreq    = [(COMMON_ITEM, 2), (POLE_AND_STEEL, 1), (S_LONG_SPEAR, 1)]
+  , ifreq    = [(COMMON_ITEM, 1), (POLE_AND_STEEL, 1), (S_LONG_SPEAR, 1)]
   , iverbHit = "impale"
   , idamage  = 13 `d` 1
   , idesc    = "An improvised but deadly weapon made of a long, sharp dagger glued and bound to a long pole. Not often one succeeds in making enough space to swing it freely, but even when stuck between terrain obstacles it blocks approaches effectively and makes using other weapons difficult, both by friends and foes."
