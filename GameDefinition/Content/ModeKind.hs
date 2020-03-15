@@ -501,12 +501,12 @@ rosterCrawl = Roster
                  , ( playerMonster
                    , [] )
                  , ( playerAnimal
-                   , [ (2, 4, ANIMAL)
-                     , (3, 3, ANIMAL)
+                   , [ (2, 5, ANIMAL)
+                     , (3, 4, ANIMAL)
                      , -- Optional huge battle at the end:
                        (15, 100, MOBILE_ANIMAL) ] )
                  , ( playerRobot
-                   , [(2, 3, ROBOT)] ) ]
+                   , [(2, 4, ROBOT)] ) ]
   , rosterEnemy = [ ("Spacefarer", "Alien Hierarchy")
                   , ("Spacefarer", "Animal Kingdom")
                   , ("Spacefarer", "Robot Anarchy") ]
