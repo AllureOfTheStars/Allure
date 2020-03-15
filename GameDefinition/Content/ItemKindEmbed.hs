@@ -105,8 +105,8 @@ pattern EDIBLE_PLANT = GroupName "edible plant"
 pattern FIRE_FIGHTING_ITEM = GroupName "fire fighting item"
 pattern STEEL_SCRAP = GroupName "steel scrap"
 pattern HANDLE = GroupName "handle"
-pattern HANDLE_AND_STEEL = GroupName "steel tool with a handle"
-pattern POLE_AND_STEEL = GroupName "steel tool on pole"
+pattern HANDLE_AND_STEEL = GroupName "steel implement with a handle"
+pattern POLE_AND_STEEL = GroupName "steel implement on a pole"
 pattern SPACESUIT_PART = GroupName "spacesuit part"
 pattern THICK_CLOTH = GroupName "thick cloth"
 pattern STARTING_HAMMER = GroupName "starting hammer"
@@ -352,7 +352,7 @@ rubble = ItemKind
   , ieffects = [OneOf [ Explode S_FOCUSED_GLASS_HAIL
                       , Summon MOBILE_ANIMAL $ 1 `dL` 2
                       , toOrganNoTimer S_POISONED
-                      , CreateItem Nothing CGround ANY_ARROW timerNone
+                      , CreateItem Nothing CStash ANY_ARROW timerNone
                       , CreateItem Nothing CGround STARTING_WEAPON timerNone
                       , reliefMsg, reliefMsg, reliefMsg
                       , reliefMsg, reliefMsg, reliefMsg ]]
@@ -463,7 +463,7 @@ lectern = ItemKind
   , iweight  = 10000
   , idamage  = 0
   , iaspects = []  -- not Durable, springs at most once
-  , ieffects = [ OneOf [ CreateItem Nothing CGround ANY_SCROLL timerNone
+  , ieffects = [ OneOf [ CreateItem Nothing CStash ANY_SCROLL timerNone
                        , Detect DetectAll 20
                        , Paralyze $ (1 `dL` 6) * 10
                        , toOrganGood S_DRUNK (20 + 1 `d` 5) ]
@@ -600,7 +600,7 @@ fireFightingGear = ItemKind
   , idamage  = 0
   , iaspects = []  -- not Durable, springs at most once
   , ieffects = [ VerbMsg "disassemble and sort through the broken and leaking gear, taking away the least decrepit item"
-               , CreateItem Nothing CStash FIRE_FIGHTING_ITEM timerNone ]
+               , CreateItem Nothing CGround FIRE_FIGHTING_ITEM timerNone ]
   , idesc    = "In addition to remains of firefighting tools, it contains a fire hydrant displaying old scars from being used in a hurry."  -- regulations require; hint that terrain can be ignited and doused
   , ikit     = []
   }
@@ -616,8 +616,8 @@ fireFightingGearIntact = ItemKind
   , idamage  = 0
   , iaspects = [SetFlag Unique]  -- not Durable, springs at most once
   , ieffects = [ VerbMsg "disassemble and sort through the old gear, taking away the least decrepit items"
-               , CreateItem Nothing CStash FIRE_FIGHTING_ITEM timerNone
-               , CreateItem Nothing CStash S_FIRE_AXE timerNone ]
+               , CreateItem Nothing CGround FIRE_FIGHTING_ITEM timerNone
+               , CreateItem Nothing CGround S_FIRE_AXE timerNone ]
   , idesc    = "This cabinet has not been broken open and used, so it contains a complete assortment of fire fighting implements. It also contains a fire hydrant in pristine condition."  -- regulations require; hint that terrain can be ignited and doused
   , ikit     = []
   }
@@ -716,7 +716,7 @@ ediblePlantRipe = treasureCache
   , ifreq    = [(EDIBLE_PLANT_RIPE, 1)]
   , iflavour = zipPlain [Green]
   , iaspects = [SetFlag Durable]
-  , ieffects = [CreateItem Nothing CGround EDIBLE_PLANT timerNone]
+  , ieffects = [CreateItem Nothing CStash EDIBLE_PLANT timerNone]
   , idesc    = ""
   }
 stairsTrapDownOil = stairsTrapUp

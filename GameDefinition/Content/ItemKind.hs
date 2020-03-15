@@ -2422,8 +2422,8 @@ gardenDestruct n grp =
   OnUser $ OneOf $
     DestroyItem 1 1 CEqp grp
     `AndEffect`
-    SeqEffect [ CreateItem Nothing CGround HANDLE timerNone
-              , CreateItem Nothing CGround STEEL_SCRAP timerNone ]
+    SeqEffect [ CreateItem Nothing CStash HANDLE timerNone
+              , CreateItem Nothing CStash STEEL_SCRAP timerNone ]
     : replicate n gardenMsg
 grassStitcher = ItemKind
   { isymbol  = symbolPolearm
