@@ -613,11 +613,9 @@ escapeDown = PlaceKind
   , pfence   = FGround
   , ptopLeft = [ ">"
                ]
-  , poverrideDark = [ ('*', S_OIL_SPILL), ('g', S_FROZEN_PATH)
-                    , ('0', S_LAMP_POST), ('b', BARREL)
+  , poverrideDark = [ ('g', S_FROZEN_PATH) , ('0', S_LAMP_POST), ('b', BARREL)
                     , ('f', S_FLOOR_ACTOR_LIT), ('r', RUBBLE_OR_WASTE_DARK) ]
-  , poverrideLit = [ ('*', S_OIL_SPILL), ('g', S_FROZEN_PATH)
-                   , ('0', S_LAMP_POST), ('b', BARREL)
+  , poverrideLit = [ ('g', S_FROZEN_PATH), ('0', S_LAMP_POST), ('b', BARREL)
                    , ('f', S_FLOOR_ACTOR_LIT), ('r', RUBBLE_OR_WASTE_LIT) ]
   }
 escapeDown2 = escapeDown
@@ -657,20 +655,20 @@ escapeDown6 = escapeDown
   { pfreq    = [(INDOOR_ESCAPE_DOWN, 1000)]
   , pfence   = FWall
   , ptopLeft = [ "··#··"
-               , "·#*#·"
-               , "#*>*#"
-               , "·#*#·"
+               , "·#g#·"
+               , "#g>g#"
+               , "·#g#·"
                , "··#··"
                ]
   }
 escapeDown7 = escapeDown
   { pfreq    = [(INDOOR_ESCAPE_DOWN, 1000)]
   , pfence   = FFloor
-  , ptopLeft = [ "·*#*·"
-               , "*#*#*"
-               , "#*>*#"
-               , "*#*#*"
-               , "·*#*·"
+  , ptopLeft = [ "·g#g·"
+               , "g#g#g"
+               , "#g>g#"
+               , "g#g#g"
+               , "·g#g·"
                ]
   }
 escapeDown8 = escapeDown
