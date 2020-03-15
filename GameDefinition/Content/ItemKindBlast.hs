@@ -168,7 +168,7 @@ burningOil n grp = ItemKind
   , ikit     = []
   }
 burningOil2 = burningOil 2 S_BURNING_OIL_2  -- 2 steps, 2 turns
-burningOil3 = burningOil 3 S_BURNING_OIL_3  -- 3 steps, 2 turns
+burningOil3 = burningOil 3 S_BURNING_OIL_3  -- 2 steps, 2 turns
 burningOil4 = burningOil 4 S_BURNING_OIL_4  -- 4 steps, 2 turns
 firecracker :: Int -> ItemKind
 firecracker n = ItemKind
@@ -183,7 +183,7 @@ firecracker n = ItemKind
   , iverbHit = if n >= 4 then "singe" else "crack"
   , iweight  = 1
   , idamage  = 0
-  , iaspects = [ toVelocity 5
+  , iaspects = [ toVelocity 5  -- 1 step, 1 turn
                , SetFlag Fragile, SetFlag Blast
                , AddSkill SkShine $ intToDice $ 1 + n `div` 2 ]
   , ieffects = [if n >= 4 then Burn 1 else RefillCalm (-2)]
@@ -363,7 +363,7 @@ glassPiece = ItemKind
   , iverbHit = "cut"
   , iweight  = 1
   , idamage  = 2 `d` 1
-  , iaspects = [ ToThrow $ ThrowMod 100 20 4  -- 4 steps, 1 turn
+  , iaspects = [ ToThrow $ ThrowMod 100 10 4  -- 2 steps, 1 turn
                , SetFlag Fragile, SetFlag Blast
                , AddSkill SkHurtMelee $ -15 * 5 ]
                  -- brittle, not too dense; armor blocks
@@ -559,7 +559,7 @@ glue = ItemKind
   , iverbHit = "glue"
   , iweight  = 1
   , idamage  = 0
-  , iaspects = [ toVelocity 20  -- 4 steps, 2 turns
+  , iaspects = [ toVelocity 10  -- 2 steps, 2 turns
                , SetFlag Fragile, SetFlag Blast ]
   , ieffects = [Paralyze 10]
   , idesc    = "Thick and clinging."
