@@ -434,8 +434,8 @@ flaskTemplate = ItemKind
   , ifreq    = [(FLASK_UNKNOWN, 1)]
   , iflavour = zipGlassPlain darkCol ++ zipGlassFancy darkCol
                ++ zipLiquid darkCol
-  , icount   = 1 `dL` 3
-  , irarity  = [(1, 7), (10, 3)]
+  , icount   = 1 `d` 2 + 1 `dL` 3
+  , irarity  = [(1, 7), (10, 2)]
   , iverbHit = "splash"
   , iweight  = 500
   , idamage  = 0
@@ -495,7 +495,7 @@ flask6 = flaskTemplate
   }
 flask7 = flaskTemplate
   { ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)]
-  , icount   = 1  -- too powerful en masse
+  , icount   = 1 `d` 2  -- too powerful en masse
   , iaspects = ELabel "of haste brew"
                : iaspects flaskTemplate
   , ieffects = [ toOrganGood S_HASTED (20 + 1 `d` 5)
@@ -528,7 +528,7 @@ flask10 = flaskTemplate
 flask11 = flaskTemplate
   { iname    = "bottle"
   , ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)]
-  , icount   = 1 `d` 3  -- the only one sometimes giving away its identity
+  , icount   = 1 `d` 2 + 1 `d` 3
   , iaspects = ELabel "of whiskey"
                : iaspects flaskTemplate
   , ieffects = [ toOrganGood S_DRUNK (20 + 1 `d` 5)
@@ -539,7 +539,7 @@ flask12 = flaskTemplate
   { iname    = "flagon"
   , ifreq    = [ (COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)
                , (WATER_SOURCE, 1) ]
-  , icount   = 1
+  , icount   = 1 `d` 2  -- too powerful, for aliens, en masse
   , iaspects = ELabel "of bait cocktail"
                : iaspects flaskTemplate
   , ieffects = [ toOrganGood S_DRUNK (20 + 1 `d` 5)
