@@ -661,9 +661,7 @@ listCrawl =
   , ([2], [CAVE_SHALLOW_ROGUE])
   , ([3], [CAVE_BRIDGE])
   , ([4], [CAVE_NOISE])
-  , ([5], [CAVE_ROGUE])
-  , ([6], [CAVE_ARENA])
-  , ([7], [CAVE_RESIDENTIAL])
+  , ([7, 6, 5], [CAVE_ROGUE, CAVE_ARENA, CAVE_RESIDENTIAL])
        -- reversed order, to match @reverse@ later on
   , ([8], [CAVE_LABORATORY])
   , ([11, 10, 9], [DEFAULT_RANDOM, DEFAULT_RANDOM, CAVE_MUSEUM])
