@@ -401,7 +401,7 @@ pillar = TileKind
   { tsymbol  = '0'
   , tname    = "construction beam"
   , tfreq    = [ (LEGEND_LIT, 100), (LEGEND_DARK, 100)
-               , (MUSEUM_SET_DARK, 20), (EMPTY_SET_LIT, 20) ]
+               , (MUSEUM_SET_DARK, 20), (EMPTY_SET_LIT, 80) ]
   , tcolor   = BrCyan  -- not BrWhite, to tell from heroes
   , tcolor2  = Cyan
   , talter   = 100
@@ -462,7 +462,7 @@ signboardRead = TileKind
 tree = TileKind
   { tsymbol  = '0'
   , tname    = "tree"
-  , tfreq    = [ (EMPTY_SET_LIT, 1), (BRAWL_SET_LIT, 140)
+  , tfreq    = [ (EMPTY_SET_LIT, 2), (BRAWL_SET_LIT, 140)
                , (SHOOTOUT_SET_LIT, 10), (HUNT_SET_LIT, 10)
                , (ESCAPE_SET_LIT, 35), (ZOO_SET_DARK, 20)
                , (S_TREE_LIT, 1) ]
@@ -480,7 +480,7 @@ treeBurnt = tree
   }
 treeBurning = tree  -- present in EMPTY_SET_LIT as early light/fire source
   { tname    = "burning tree"
-  , tfreq    = [ (EMPTY_SET_LIT, 1), (ZOO_SET_DARK, 60)
+  , tfreq    = [ (EMPTY_SET_LIT, 2), (ZOO_SET_DARK, 60)
                , (TREE_BURNING_OR_NOT, 70), (S_BURNING_TREE, 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
@@ -498,7 +498,7 @@ rubble = TileKind
                , (LEGEND_LIT, 1), (LEGEND_DARK, 1)
                , (STAIR_TERMINAL_LIT, 6), (STAIR_TERMINAL_DARK, 6)
                , (LIFT_TERMINAL_LIT, 6), (LIFT_TERMINAL_DARK, 6)
-               , (EMPTY_SET_LIT, 3), (EXIT_SET_LIT, 6)
+               , (EMPTY_SET_LIT, 12), (EXIT_SET_LIT, 6)
                , (NOISE_SET_LIT, 40), (POWER_SET_DARK, 120)
                , (ZOO_SET_DARK, 80), (AMBUSH_SET_DARK, 3) ]
   , tcolor   = BrYellow
@@ -676,7 +676,7 @@ pulpit = TileKind
 bush = TileKind
   { tsymbol  = '%'
   , tname    = "bush"
-  , tfreq    = [ (S_BUSH_LIT, 1), (EMPTY_SET_LIT, 1), (ARENA_SET_LIT, 10)
+  , tfreq    = [ (S_BUSH_LIT, 1), (EMPTY_SET_LIT, 4), (ARENA_SET_LIT, 10)
                , (SHOOTOUT_SET_LIT, 30), (HUNT_SET_LIT, 30)
                , (ESCAPE_SET_LIT, 40), (ZOO_SET_DARK, 100)
                , (BUSH_CLUMP_LIT, 1), (PUMPS_LIT, 60)
@@ -701,7 +701,7 @@ bushBurnt = bush
   }
 bushBurning = bush
   { tname    = "burning bush"
-  , tfreq    = [ (EMPTY_SET_LIT, 1), (AMBUSH_SET_DARK, 10), (ZOO_SET_DARK, 300)
+  , tfreq    = [ (EMPTY_SET_LIT, 2), (AMBUSH_SET_DARK, 10), (ZOO_SET_DARK, 300)
                , (BUSH_BURNING_OR_NOT, 50), (S_BURNING_BUSH, 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
@@ -721,7 +721,7 @@ bushBurning = bush
 fog = TileKind
   { tsymbol  = ';'
   , tname    = "faint fog"
-  , tfreq    = [ (S_FOG_LIT, 1), (EMPTY_SET_LIT, 50), (NOISE_SET_LIT, 120)
+  , tfreq    = [ (S_FOG_LIT, 1), (EMPTY_SET_LIT, 200), (NOISE_SET_LIT, 120)
                , (SHOOTOUT_SET_LIT, 30), (HUNT_SET_LIT, 30)
                , (FOG_CLUMP_LIT, 60), (FOG_CLUMP_DARK, 60)
                , (LIFT_TERMINAL_LIT, 40) ]
@@ -783,11 +783,11 @@ floorCorridor = TileKind
 floorArena = floorCorridor
   { tfreq    = [ (FLOOR_ARENA_LIT, 1), (ARENA_SET_LIT, 200)
                , (MUSEUM_SET_LIT, 400), (NOISE_SET_LIT, 50), (POWER_SET_LIT, 50)
-               , (EMPTY_SET_LIT, 100), (EXIT_SET_LIT, 100), (ZOO_SET_LIT, 600) ]
+               , (EMPTY_SET_LIT, 400), (EXIT_SET_LIT, 100), (ZOO_SET_LIT, 600) ]
   }
 floorDamp = floorArena
   { tname    = "damp floor"
-  , tfreq    = [ (NOISE_SET_LIT, 550), (EMPTY_SET_LIT, 800)
+  , tfreq    = [ (NOISE_SET_LIT, 550), (EMPTY_SET_LIT, 3200)
                , (ESCAPE_SET_LIT, 200), (DAMP_FLOOR_LIT, 1)
                , (STAIR_TERMINAL_LIT, 20), (LIFT_TERMINAL_LIT, 6) ]
   , tfeature = ChangeWith True [(1, OIL_SOURCE)] S_OIL_SPILL  -- oil floats
@@ -828,7 +828,7 @@ shallowWater = TileKind
   { tsymbol  = '~'
   , tname    = "water puddle"
   , tfreq    = [ (AQUATIC, 1), (S_SHALLOW_WATER_LIT, 1), (LEGEND_LIT, 100)
-               , (EMPTY_SET_LIT, 5), (NOISE_SET_LIT, 30), (SHOOTOUT_SET_LIT, 5)
+               , (EMPTY_SET_LIT, 20), (NOISE_SET_LIT, 30), (SHOOTOUT_SET_LIT, 5)
                , (HUNT_SET_LIT, 250), (LIFT_TERMINAL_LIT, 4) ]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
@@ -909,7 +909,7 @@ outerHullWall = basicOuterFence
 rubbleBurning = TileKind  -- present in EMPTY_SET_LIT as early light/fire source
   { tsymbol  = '&'
   , tname    = "burning installation"
-  , tfreq    = [ (EMPTY_SET_LIT, 1), (POWER_SET_DARK, 20)
+  , tfreq    = [ (EMPTY_SET_LIT, 2), (POWER_SET_DARK, 20)
                , (AMBUSH_SET_DARK, 15), (ZOO_SET_DARK, 30)
                , (STAIR_TERMINAL_LIT, 4), (STAIR_TERMINAL_DARK, 4)
                , (LIFT_TERMINAL_LIT, 4), (LIFT_TERMINAL_DARK, 4)
@@ -948,7 +948,7 @@ wallObscuredSafety = TileKind
 signboardReadExtinguisher = TileKind
   { tsymbol  = '0'
   , tname    = "fire extinguisher cabinet"
-  , tfreq    = [ (SIGNBOARD, 20), (EMPTY_SET_LIT, 1)
+  , tfreq    = [ (SIGNBOARD, 20), (EMPTY_SET_LIT, 2)
                , (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 1), (MUSEUM_SET_DARK, 1)
                , (ESCAPE_SET_DARK, 1), (EXIT_SET_LIT, 1), (NOISE_SET_LIT, 1)
                , (AMBUSH_SET_DARK, 1) ]
@@ -1152,7 +1152,7 @@ escapeSpaceshipDown = escapeDown
 emptyAirlock = escapeDown
   { tname    = "empty airlock"
   , tfreq    = [ (AIRLOCK_FENCE, 2), (EMPTY_AIRLOCK_FENCE, 7)
-               , (EMPTY_SET_LIT, 2), (AMBUSH_SET_DARK, 7) ]
+               , (EMPTY_SET_LIT, 8), (AMBUSH_SET_DARK, 7) ]
                    -- not in exitSetLit; space can't be seen
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
@@ -1231,7 +1231,7 @@ machineWallSpice = machineWall
 bushEdible = TileKind
   { tsymbol  = '%'
   , tname    = "ripe bush"
-  , tfreq    = [ (EMPTY_SET_LIT, 1), (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 1)
+  , tfreq    = [ (EMPTY_SET_LIT, 3), (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 1)
                , (SHOOTOUT_SET_LIT, 1), (HUNT_SET_LIT, 1)
                , (ESCAPE_SET_DARK, 4), (ZOO_SET_DARK, 1)
                , (PUMPS_LIT, 40), (PUMPS_DARK, 40)
@@ -1317,7 +1317,7 @@ oilBurning = TileKind
 floorWindow = floorArena
   { tsymbol  = ' '  -- story-wise it's transparent, hence the symbol
   , tname    = "floor window"
-  , tfreq    = [(EMPTY_SET_LIT, 6)]
+  , tfreq    = [(EMPTY_SET_LIT, 24)]
   , tcolor   = defFG
   , tcolor2  = defFG
   , tfeature = Embed BLACK_STARRY_SKY : tfeature floorCorridor
@@ -1327,7 +1327,7 @@ underbrush = TileKind
   , tname    = "underbrush"
   , tfreq    = [ (S_UNDERBRUSH_LIT, 1), (S_UNDERBRUSH_DARK, 1)
                , (UNDERBRUSH_CLUMP_LIT, 1), (UNDERBRUSH_CLUMP_DARK, 1)
-               , (EMPTY_SET_LIT, 30), (ARENA_SET_LIT, 40)
+               , (EMPTY_SET_LIT, 120), (ARENA_SET_LIT, 40)
                , (SHOOTOUT_SET_LIT, 100), (HUNT_SET_LIT, 100)
                , (ESCAPE_SET_LIT, 100), (ZOO_SET_DARK, 100)
                , (AMBUSH_SET_DARK, 20), (TRAIL_LIT, 50), (SAFE_TRAIL_LIT, 50)
@@ -1342,8 +1342,8 @@ workshop = TileKind
   { tsymbol  = ':'
   , tname    = "workshop"
   , tfreq    = [ (LEGEND_LIT, 100), (LEGEND_DARK, 100)
-               , (EMPTY_SET_LIT, 4), (SHOOTOUT_SET_LIT, 4), (AMBUSH_SET_DARK, 4)
-               , (BATTLE_SET_DARK, 4) ]
+               , (EMPTY_SET_LIT, 16), (SHOOTOUT_SET_LIT, 4)
+               , (AMBUSH_SET_DARK, 4), (BATTLE_SET_DARK, 4) ]
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 2  -- projectiles cannot craft (otherwise durable tools

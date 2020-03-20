@@ -2012,7 +2012,7 @@ flask15 = flaskTemplate
   { iname    = "cartridge"
   , ifreq    = [ (COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)
                , (LIQUID_NITROGEN, 1), (COLD_SOURCE, 1)
-               , (FIRE_FIGHTING_ITEM, 60) ]
+               , (FIRE_FIGHTING_ITEM, 65) ]
   , irarity  = [(1, 3)]  -- scavenged from walls
   , iaspects = ELabel "of liquid nitrogen"
                : iaspects flaskTemplate
@@ -2117,7 +2117,7 @@ chisel = ItemKind  -- ignored by AI, but that's fine, others suffice
   , ifreq    = [(CURIOUS_ITEM, 100), (BREACHING_TOOL, 1)]
   , iflavour = zipPlain [Cyan]
   , icount   = 1
-  , irarity  = [(2, 10)]
+  , irarity  = [(2, 12)]
   , iverbHit = "dismantle"
   , iweight  = 500
   , idamage  = 0  -- not a missile to avoid wasting, before a worskhop found
@@ -2138,7 +2138,7 @@ adjustableSpanner = chisel
 steelFile = chisel
   { iname    = "steel file"
   , ifreq    = [(CURIOUS_ITEM, 100), (BREACHING_TOOL, 1), (SHARPENING_TOOL, 1)]
-  , irarity  = [(2, 15)]
+  , irarity  = [(2, 17)]
   , iflavour = zipPlain [Blue]
   , iverbHit = "grate"
   , idesc    = "It is a breaching and sharpening tool."  -- TODO: https://en.wikipedia.org/wiki/File_(tool)
@@ -2202,7 +2202,7 @@ duckTape = solderingIron
   { iname    = "duck tape"
   , ifreq    = [(CURIOUS_ITEM, 100), (BONDING_TOOL, 1)]
   , icount   = 1 `d` 4
-  , irarity  = [(2, 15)]
+  , irarity  = [(2, 17)]
   , iverbHit = "catch"
   , idesc    = "It is a bonding tool."  -- TODO: https://en.wikipedia.org/wiki/Duct_tape
   }
@@ -2309,7 +2309,7 @@ fireAxe = ItemKind
   { isymbol  = symbolHafted
   , iname    = "fire axe"
   , ifreq    = [ (COMMON_ITEM, 30), (HANDLE_AND_STEEL, 1), (S_FIRE_AXE, 1)
-               , (FIRE_FIGHTING_ITEM, 10) ]
+               , (FIRE_FIGHTING_ITEM, 5) ]
                  -- not @BREACHING_TOOL@, because it trigger traps
                  -- and destroys treasure, instead of opening
   , iflavour = zipPlain [BrRed]
@@ -2410,7 +2410,7 @@ cattleProd = militaryBaton
   { iname    = "electric cattle prod"
   , ifreq    = [(COMMON_ITEM, 100)]
   , iflavour = zipPlain [Brown]
-  , irarity  = [(7, 12)]
+  , irarity  = [(8, 8)]
   , idamage  = 2 `d` 1
   , ieffects = [Discharge $ 40 - 1 `d` 20, RefillCalm (-30)]
   , idesc    = "Used for subduing unruly zoo animals."
