@@ -20,128 +20,113 @@ import           Game.LambdaHack.Client.UI.HandleHumanM
 import qualified Game.LambdaHack.Client.UI.HumanCmd as HumanCmd
 import qualified Game.LambdaHack.Client.UI.Key as K
 import           Game.LambdaHack.Client.UI.SessionUI
+  (KeyMacro (..), KeyMacroFrame (..), emptyMacroFrame)
 
 data SessionUIMock = SessionUIMock
-  { sactionPendingM :: [ActionBuffer]
-  , sccuiM          :: CCUI
-  , counter         :: Int
+  { smacroFrame :: KeyMacroFrame
+  , smacroStack :: [KeyMacroFrame]
+  , sccui       :: CCUI
+  , unwindTicks :: Int
   }
 
-type MacroBufferM = Either String String
-type LastPlayM = String
-type LastActionM = String
+type KeyMacroBufferMock = Either String String
+type KeyPendingMock = String
+type KeyLastMock = String
 
-type BufferTrace = [(MacroBufferM, LastPlayM, LastActionM)]
+type BufferTrace = [(KeyMacroBufferMock, KeyPendingMock, KeyLastMock)]
 type ActionLog = String
 
-data Op = Quit | Looped | HeadEmpty
+data Op = Looped | HeadEmpty
 
-humanCommandM :: WriterT [(BufferTrace, ActionLog)] (State SessionUIMock) ()
-humanCommandM = do
+humanCommandMock :: WriterT [(BufferTrace, ActionLog)] (State SessionUIMock) ()
+humanCommandMock = do
   abuffs <- lift $ do
-    tmp <- get
-    return . fst $ storeTrace (sactionPendingM tmp) [] -- log session
-  abortOrCmd <- lift iterationM -- do stuff
+    sess <- get
+    return $ renderTrace (smacroFrame sess : smacroStack sess)  -- log session
+  abortOrCmd <- lift iterationMock -- do stuff
+  -- GC macro stack if there are no actions left to handle,
+  -- removing all unnecessary macro frames at once,
+  -- but leaving the last one for user's in-game macros.
   lift $ modify $ \sess ->
-    sess { sactionPendingM = dropEmptyBuffers $ sactionPendingM sess }
-    -- remove all unnecessary buffers at once
+          let (smacroFrameNew, smacroStackMew) =
+                dropEmptyMacroFrames (smacroFrame sess) (smacroStack sess)
+          in sess { smacroFrame = smacroFrameNew
+                  , smacroStack = smacroStackMew }
   case abortOrCmd of
-    Right Looped -> tell [(abuffs, "Macro looped")] >> pure ()
-    Right _ -> tell [(abuffs, "")] >> pure () -- exit loop
-    Left Nothing -> tell [(abuffs, "")] >> humanCommandM
-    Left (Just out) -> tell [(abuffs, show out)] >> humanCommandM
+    Left Looped -> tell [(abuffs, "Macro looped")] >> pure ()
+    Left HeadEmpty -> tell [(abuffs, "")] >> pure ()  -- exit loop
+    Right Nothing -> tell [(abuffs, "")] >> humanCommandMock
+    Right (Just out) -> tell [(abuffs, show out)] >> humanCommandMock
 
-iterationM :: State SessionUIMock (Either (Maybe K.KM) Op)
-iterationM = do
-  SessionUIMock _ CCUI{coinput=IC.InputContent{bcmdMap}} n <- get
-  if n <= 1000
+iterationMock :: State SessionUIMock (Either Op (Maybe K.KM))
+iterationMock = do
+  SessionUIMock _ _ CCUI{coinput=IC.InputContent{bcmdMap}} ticks <- get
+  if ticks <= 1000
   then do
-    modify $ \sess -> sess {counter = 1 + counter sess} -- increment counter
-    mkm <- promptGetKeyM []
+    modify $ \sess -> sess {unwindTicks = ticks + 1}
+    mkm <- promptGetKeyMock
     case mkm of
-      Nothing -> return $ Right HeadEmpty
-      Just km -> do
-        abortOrCmd <- case km `M.lookup` bcmdMap of
-          Just (_, _, cmd) -> restrictedCmdSemInCxtOfKMM km cmd
-          _ -> error "uknown command"
-        case abortOrCmd of
-          -- exit loop
-          Right _ -> return $ Right Quit
-          -- loop without appending
-          Left Nothing -> return (Left Nothing)
-          -- recursive call
-          Left (Just out) -> return (Left $ Just out)
-  else return $ Right Looped
+      Nothing -> return $ Left HeadEmpty  -- macro finished
+      Just km -> case km `M.lookup` bcmdMap of
+        Just (_, _, cmd) -> Right <$> cmdSemInCxtOfKMMock km cmd
+        _ -> return $ Right $ Just km  -- unknown command; fine for tests
+  else return $ Left Looped
 
-restrictedCmdSemInCxtOfKMM :: K.KM -> HumanCmd.HumanCmd
-                           -> State SessionUIMock (Either (Maybe K.KM) ())
-restrictedCmdSemInCxtOfKMM = cmdSemInCxtOfKMM
-
-cmdSemInCxtOfKMM :: K.KM -> HumanCmd.HumanCmd
-                 -> State SessionUIMock (Either (Maybe K.KM) ())
-cmdSemInCxtOfKMM km cmd = do
+cmdSemInCxtOfKMMock :: K.KM -> HumanCmd.HumanCmd
+                    -> State SessionUIMock (Maybe K.KM)
+cmdSemInCxtOfKMMock km cmd = do
   modify $ \sess ->
-    sess {sactionPendingM = updateLastAction km cmd $ sactionPendingM sess}
-  cmdSemanticsM km cmd
+    sess {smacroFrame = updateKeyLast km cmd $ smacroFrame sess}
+  cmdSemanticsMock km cmd
 
-cmdSemanticsM :: K.KM -> HumanCmd.HumanCmd
-              -> State SessionUIMock (Either (Maybe K.KM) ())
-cmdSemanticsM km = \case
-  HumanCmd.Record -> do
+cmdSemanticsMock :: K.KM -> HumanCmd.HumanCmd
+                 -> State SessionUIMock (Maybe K.KM)
+cmdSemanticsMock km = \case
+  HumanCmd.Macro s -> do
     modify $ \sess ->
-      sess { sactionPendingM =
-               fst $ recordHumanTransition (sactionPendingM sess) }
-    return $ Left Nothing
-  HumanCmd.Macro ys -> do
-    modify $ \sess ->
-      sess { sactionPendingM = macroHumanTransition ys (sactionPendingM sess) }
-    return $ Left Nothing
+      let kms = K.mkKM <$> s
+          (smacroFrameNew, smacroStackMew) =
+             macroHumanTransition kms (smacroFrame sess) (smacroStack sess)
+      in sess { smacroFrame = smacroFrameNew
+              , smacroStack = smacroStackMew }
+    return Nothing
   HumanCmd.Repeat n -> do
     modify $ \sess ->
-      sess { sactionPendingM = repeatHumanTransition n (sactionPendingM sess) }
-    return $ Left Nothing
+      let (smacroFrameNew, smacroStackMew) =
+             repeatHumanTransition n (smacroFrame sess) (smacroStack sess)
+      in sess { smacroFrame = smacroFrameNew
+              , smacroStack = smacroStackMew }
+    return Nothing
   HumanCmd.RepeatLast n -> do
     modify $ \sess ->
-      sess { sactionPendingM =
-        repeatLastHumanTransition n (sactionPendingM sess) }
-    return $ Left Nothing
-  _ -> return $ Left (Just km)
+      sess {smacroFrame = repeatLastHumanTransition n (smacroFrame sess) }
+    return Nothing
+  HumanCmd.Record -> do
+    modify $ \sess ->
+      sess {smacroFrame = fst $ recordHumanTransition (smacroFrame sess) }
+    return Nothing
+  _ -> return $ Just km
 
-promptGetKeyM :: [K.KM] -> State SessionUIMock (Maybe K.KM)
-promptGetKeyM frontKeyKeys = do
-  SessionUIMock abuffs CCUI{coinput=IC.InputContent{bcmdMap}} _ <- get
-  let abuff = head abuffs
-  case slastPlay abuff of
-    KeyMacro (km : kms)
-      | null frontKeyKeys || km `elem` frontKeyKeys -> do
+promptGetKeyMock :: State SessionUIMock (Maybe K.KM)
+promptGetKeyMock = do
+  SessionUIMock macroFrame _ CCUI{coinput=IC.InputContent{bcmdMap}} _ <- get
+  case keyPending macroFrame of
+    KeyMacro (km : kms) -> do
         modify $ \sess ->
-          sess { sactionPendingM =
-            let newHead = abuff { slastPlay = KeyMacro kms }
-            in newHead : tail abuffs }
+          sess {smacroFrame = (smacroFrame sess) {keyPending = KeyMacro kms}}
         modify $ \sess ->
-          sess {sactionPendingM = addToMacro bcmdMap km $ sactionPendingM sess}
+          sess {smacroFrame = addToMacro bcmdMap km $ smacroFrame sess}
         return (Just km)
-    KeyMacro (_ : _) -> do
-      resetPlayBackM
-      return Nothing
     KeyMacro [] -> return Nothing
 
-resetPlayBackM :: State SessionUIMock ()
-resetPlayBackM = modify $ \sess ->
-  sess { sactionPendingM = let abuff = last (sactionPendingM sess)
-                           in [ abuff {slastPlay = mempty} ] }
-
--- The mock for macro testing.
 unwindMacros :: IC.InputContent -> KeyMacro -> [(BufferTrace, ActionLog)]
-unwindMacros ic initMacro =
-  let emptyBuffer = ActionBuffer { smacroBuffer = Right mempty
-                                 , slastPlay = mempty
-                                 , slastAction = Nothing }
-      initSession = SessionUIMock
-          { sactionPendingM = [emptyBuffer { slastPlay = initMacro }]
-          , sccuiM = emptyCCUI { coinput = ic }
-          , counter = 0 }
-  in evalState (execWriterT humanCommandM) initSession
+unwindMacros coinput keyPending =
+  let initSession = SessionUIMock
+        { smacroFrame = emptyMacroFrame {keyPending}
+        , smacroStack = []
+        , sccui = emptyCCUI {coinput}
+        , unwindTicks = 0 }
+  in evalState (execWriterT humanCommandMock) initSession
 
 accumulateActions :: [(BufferTrace, ActionLog)] -> [(BufferTrace, ActionLog)]
 accumulateActions ba =
@@ -150,14 +135,14 @@ accumulateActions ba =
   in zip buffers actionlog
 
 unwindMacrosAcc :: IC.InputContent -> KeyMacro -> [(BufferTrace, ActionLog)]
-unwindMacrosAcc  ic initMacro = accumulateActions $ unwindMacros ic initMacro
+unwindMacrosAcc coinput keyPending =
+  accumulateActions $ unwindMacros coinput keyPending
 
-storeTrace :: [ActionBuffer] -> [K.KM] -> (BufferTrace, ActionLog)
-storeTrace abuffs out =
-  let tmacros = bimap (concatMap K.showKM)
+renderTrace :: [KeyMacroFrame] -> BufferTrace
+renderTrace macroFrames =
+  let buffers = bimap (concatMap K.showKM)
                       (concatMap K.showKM . unKeyMacro)
-                . smacroBuffer <$> abuffs
-      tlastPlay = concatMap K.showKM . unKeyMacro . slastPlay <$> abuffs
-      tlastAction = maybe "" K.showKM . slastAction <$> abuffs
-      toutput = concatMap K.showKM out
-  in (zip3 tmacros tlastPlay tlastAction, toutput)
+                . keyMacroBuffer <$> macroFrames
+      pendingKeys = concatMap K.showKM . unKeyMacro . keyPending <$> macroFrames
+      lastKeys = maybe "" K.showKM . keyLast <$> macroFrames
+  in zip3 buffers pendingKeys lastKeys

@@ -231,12 +231,12 @@ macroTests = testGroup "macroTests" $
          snd (last (unwindMacrosAcc (bindInput [ ("a", "'xy'v")
                                                , ("c", "a'za'Vv") ] coinput)
                                     (stringToKeyMacro "'c'v")))
-         @?= "xyyzxyyzxyyxyyxyyzxyyzxyyxyy"
+         @?= "xyyzxyyzxyyzxyyxyyzxyyzxyyzxyy"
      , testCase "RepeatLast test 35" $
          snd (last (unwindMacrosAcc (bindInput [ ("a", "'xy'v")
                                                , ("b", "'za'V") ] coinput)
                                     (stringToKeyMacro "'ab'Vv")))
-         @?= "xyyzxyyzxyyxyyzxyyzxyyzxyyzxyy"
+         @?= "xyyzxyyzxyyxyyzxyyzxyyxyyzxyyzxyy"
      , testCase "RepeatLast test 36" $
          snd (last (unwindMacrosAcc (bindInput [ ("a", "'xy'v")
                                                , ("b", "za'za'") ] coinput)
@@ -258,12 +258,35 @@ macroTests = testGroup "macroTests" $
               [(Left   "x",   "x'V", "x")],
               [(Left  "xx",    "'V", "x")],
               [(Right "xx",     "V", "x")],
-              [(Right "xx",    "xx", "V")],
-              [(Right "xx",     "x", "x")],
-              [(Right "xx",      "", "x")]]
-     , testCase "RepeatLast test 39" $
+              [(Right   "",    "xx",  ""), (Right "xx",    "", "V")],
+              [(Right   "",     "x", "x"), (Right "xx",    "", "V")],
+              [(Right "xx",      "", "V")]]
+     , testCase "RepeatLast test 40" $
          snd (last (unwindMacrosAcc coinput (stringToKeyMacro "'xy'Vv")))
-         @?= "xyxyy"
+         @?= "xyxyxy"
+     , testCase
+         "RepeatLast test 41; named macros not referentially transparent" $
+         snd (last (unwindMacrosAcc (bindInput [("a", "'xy'V")] coinput)
+                                    (stringToKeyMacro "av")))
+         @?= "xyxyxyxy"  -- because @a@ repeated; good!
+     , testCase "RepeatLast test 42" $
+         snd (last (unwindMacrosAcc (bindInput [("a", "xy")] coinput)
+                                    (stringToKeyMacro "'a'Vv")))
+         @?= "xyxyxy"  -- because @V@ repeated; good!
+     , testCase "RepeatLast test 43" $
+         snd (last (unwindMacrosAcc coinput (stringToKeyMacro "'xyV'V")))
+         @?= "xyxy"
+     , testCase "RepeatLast test 44" $
+         snd (last (unwindMacrosAcc coinput (stringToKeyMacro "'xyV'v")))
+         @?= "xyxy"
+     , testCase "RepeatLast test 45" $
+         snd (last (unwindMacrosAcc (bindInput [("a", "xyV")] coinput)
+                                    (stringToKeyMacro "'a'V")))
+         @?= "xyxy"
+     , testCase "RepeatLast test 46" $
+         snd (last (unwindMacrosAcc (bindInput [("a", "xyV")] coinput)
+                                    (stringToKeyMacro "'a'v")))
+         @?= "xyxy"
      ]
 
 integrationTests :: TestTree
