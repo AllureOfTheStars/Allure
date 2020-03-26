@@ -699,6 +699,8 @@ protectingBalmMelee = ItemKind
   , iweight  = 1
   , idamage  = 0
   , iaspects = [ toLinger 0  -- 0 steps, 1 turn
+                   -- this from a faucent won't ever hit anyone, which is fine,
+                   -- but from a flask it would
                , SetFlag Fragile, SetFlag Blast ]
   , ieffects = [toOrganGood S_PROTECTED_FROM_MELEE (3 + 1 `d` 3)]
   , idesc    = "Thin and slippery."

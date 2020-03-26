@@ -925,6 +925,8 @@ cookEffect :: Effect
 cookEffect = combineEffect "have nothing to cook"
              $ map (\(raw, cooked) ->
                       ([], [(1, raw)], [(1, cooked)])) cookingAssocs
+               ++ [( [], [(1, S_STAFF), (1, THICK_CLOTH), (1, OIL_SOURCE)]
+                   , [(1, WOODEN_TORCH)] )]
 
 sharpeningEffect :: Effect
 sharpeningEffect =
@@ -983,8 +985,6 @@ workshopAssocs =
       , (2, S_SPACESUIT_GLOVE), (1, S_SPACESUIT_HELMET)
       , (2, S_SPACESUIT_BOOT) ]
     , [(1, S_SPACESUIT)] )
-  , ( [(1, FIRE_SOURCE)], [(1, S_STAFF), (1, THICK_CLOTH), (1, OIL_SOURCE)]
-    , [(1, WOODEN_TORCH)] )
  -- Recipes that destroy more useful things than other recipes come last:
   , ( [(1, WIRECUTTING_TOOL), (1, BONDING_TOOL)], [(1, S_SPACESUIT_TORN)]
     , [(2, SPACESUIT_PART), (1, S_RAG_TANGLE)] )
