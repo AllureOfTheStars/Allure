@@ -449,7 +449,7 @@ signboardUnread = TileKind  -- client only, indicates never used by this faction
 signboardRead = TileKind
   { tsymbol  = '0'
   , tname    = "signboard"
-  , tfreq    = [ (SIGNBOARD, 80), (EMPTY_SET_LIT, 1)
+  , tfreq    = [ (SIGNBOARD, 80), (EMPTY_SET_LIT, 2)
                , (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 1), (MUSEUM_SET_DARK, 1)
                , (ESCAPE_SET_DARK, 1) ]
   , tcolor   = BrCyan
@@ -676,7 +676,7 @@ pulpit = TileKind
 bush = TileKind
   { tsymbol  = '%'
   , tname    = "bush"
-  , tfreq    = [ (S_BUSH_LIT, 1), (EMPTY_SET_LIT, 4), (ARENA_SET_LIT, 10)
+  , tfreq    = [ (S_BUSH_LIT, 1), (EMPTY_SET_LIT, 2), (ARENA_SET_LIT, 10)
                , (SHOOTOUT_SET_LIT, 30), (HUNT_SET_LIT, 30)
                , (ESCAPE_SET_LIT, 40), (ZOO_SET_DARK, 100)
                , (BUSH_CLUMP_LIT, 1), (PUMPS_LIT, 60)
@@ -701,7 +701,7 @@ bushBurnt = bush
   }
 bushBurning = bush
   { tname    = "burning bush"
-  , tfreq    = [ (EMPTY_SET_LIT, 2), (AMBUSH_SET_DARK, 10), (ZOO_SET_DARK, 300)
+  , tfreq    = [ (EMPTY_SET_LIT, 3), (AMBUSH_SET_DARK, 10), (ZOO_SET_DARK, 300)
                , (BUSH_BURNING_OR_NOT, 50), (S_BURNING_BUSH, 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
@@ -948,7 +948,7 @@ wallObscuredSafety = TileKind
 signboardReadExtinguisher = TileKind
   { tsymbol  = '0'
   , tname    = "fire extinguisher cabinet"
-  , tfreq    = [ (SIGNBOARD, 20), (EMPTY_SET_LIT, 2)
+  , tfreq    = [ (SIGNBOARD, 20), (EMPTY_SET_LIT, 3)
                , (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 1), (MUSEUM_SET_DARK, 1)
                , (ESCAPE_SET_DARK, 1), (EXIT_SET_LIT, 1), (NOISE_SET_LIT, 1)
                , (AMBUSH_SET_DARK, 1) ]
@@ -1231,7 +1231,7 @@ machineWallSpice = machineWall
 bushEdible = TileKind
   { tsymbol  = '%'
   , tname    = "ripe bush"
-  , tfreq    = [ (EMPTY_SET_LIT, 3), (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 1)
+  , tfreq    = [ (EMPTY_SET_LIT, 4), (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 1)
                , (SHOOTOUT_SET_LIT, 1), (HUNT_SET_LIT, 1)
                , (ESCAPE_SET_DARK, 4), (ZOO_SET_DARK, 1)
                , (PUMPS_LIT, 40), (PUMPS_DARK, 40)
