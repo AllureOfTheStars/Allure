@@ -505,6 +505,7 @@ rubble = TileKind
   , tcolor2  = Brown
   , talter   = 4  -- boss can dig through
   , tfeature = [ OpenWith True [(1, BLAST_SOURCE)] S_FLOOR_ASHES_LIT
+                   -- the transformation goes first, because marginal
                    -- needs to be first, because projectiles can't activate
                    -- embeds in a non-walkable tile with on-zero talter;
                    -- so this is a safe way to open rubble, with no loot
@@ -584,6 +585,7 @@ stairsDown = TileKind
   , tcolor2  = defFG
   , talter   = 0  -- very easy stairs, unlike all others; projectiles trigger
   , tfeature = [ ChangeWith True [(1, OIL_SOURCE)] S_STAIRCASE_TRAP_DOWN_OIL
+                   -- the transformation goes first, because marginal
                , Embed STAIRS_DOWN, ConsideredByAI ]
   }
 stairsTrappedDown = TileKind
@@ -835,6 +837,7 @@ shallowWater = TileKind
   , talter   = 2  -- doesn't matter now; TODO: not everything enters
   , tfeature = ChangeWith True [(1, COLD_SOURCE)] S_FROZEN_PATH
                : ChangeWith True [(1, OIL_SOURCE)] S_OIL_SPILL  -- oil floats
+                   -- the transformations go first, because marginal
                : Embed SHALLOW_WATER
                : tfeature floorActor
       -- can't make fog from water, because air would need to be cool, too;
@@ -856,6 +859,7 @@ floorRed = floorCorridor
   , tcolor   = BrRed
   , tcolor2  = Red
   , tfeature = [ ChangeWith True [(1, OIL_SOURCE)] S_OIL_SPILL
+                   -- the transformation goes first, because marginal
                    -- non-porous enough
                , Embed STRAIGHT_PATH, Trail, Walkable, Clear ]
   }
@@ -867,6 +871,7 @@ floorBlue = floorRed
   , talter   = 0
   , tfeature = [ ChangeWith True [(1, FIRE_SOURCE)] S_SHALLOW_WATER_LIT
                , ChangeWith True [(1, OIL_SOURCE)] S_OIL_SPILL
+                   -- the transformation goes first, because marginal
                    -- non-porous enough
                , Embed FROZEN_GROUND, Trail, Walkable, Clear ]
   }
@@ -1032,6 +1037,7 @@ pillarCache5 = pillarCache
                                   CACHE_JEWELRY_TRAPPED_OR_NOT
                    -- halts watchdog
                , ChangeWith False [(1, WIRECUTTING_TOOL)] CACHE_JEWELRY_OR_NOT
+                   -- the transformations go first, because marginal
                    -- disarms trap altogether
                , Embed JEWELRY_DISPLAY_TRAP
                , ChangeTo CACHE_JEWELRY_TRAPPED_OR_NOT
@@ -1045,6 +1051,7 @@ stairsTrappedDownOil = TileKind
   , tcolor2  = Red
   , talter   = talterForStairs
   , tfeature = [ ChangeWith False [(1, THICK_CLOTH)] ORDINARY_STAIRCASE_DOWN
+                   -- the transformation goes first, because marginal
                    -- safely soaks oil
                , Embed STAIRS_DOWN, Embed STAIRS_TRAP_DOWN_OIL
                , ChangeTo ORDINARY_STAIRCASE_DOWN
@@ -1065,6 +1072,7 @@ stairsWelded = stairsUp
   , tcolor2  = Magenta
   , talter   = talterForStairs + 3  -- gear or level up needed
   , tfeature = [ Embed S_CRUDE_WELD
+                   -- the embed goes first, because marginal
                , ChangeWith False [(1, BLOWTORCH)] ORDINARY_STAIRCASE_UP
                , ChangeWith False [(1, COLD_SOURCE)] ORDINARY_STAIRCASE_UP
                , ConsideredByAI ]
@@ -1105,6 +1113,7 @@ stairsLiftWelded = stairsLiftUp
   , tcolor2  = Magenta
   , talter   = talterForStairs + 3  -- gear or level up needed
   , tfeature = [ Embed S_CRUDE_WELD
+                   -- the embed goes first, because marginal
                , ChangeWith False [(1, BLOWTORCH)] ORDINARY_LIFT_UP
                , ChangeWith False [(1, COLD_SOURCE)] ORDINARY_LIFT_UP
                , ConsideredByAI ]
@@ -1239,10 +1248,12 @@ bushEdible = TileKind
   , tcolor   = BrMagenta
   , tcolor2  = Magenta
   , talter   = 4
-  , tfeature = [ Clear, Embed EDIBLE_PLANT_RIPE
+  , tfeature = [ Clear
+               , Embed EDIBLE_PLANT_RIPE
                    -- loot granted even when ignited and missiles can't reap
-               , ChangeTo S_BUSH_LIT
-               , ChangeWith True [(1, FIRE_SOURCE)] S_BURNING_BUSH ]
+               , ChangeWith True [(1, FIRE_SOURCE)] S_BURNING_BUSH
+                   -- the transformation goes first, because marginal
+               , ChangeTo S_BUSH_LIT ]
   }
 
 -- ** Walkable
@@ -1261,6 +1272,7 @@ underbrushBurning = TileKind
                , ChangeWith True [(1, WATER_SOURCE)] S_SMOKE_LIT
                , Embed SMALL_FIRE
                , ChangeWith False [(1, FIREPROOF_CLOTH)] S_UNDERBRUSH_LIT
+                   -- the transformations go first, because marginal
                    -- full effects experienced, but underbrush saved for repeat
                , ChangeTo S_FLOOR_ASHES_LIT
                ]
@@ -1276,6 +1288,7 @@ floorOily = floorArena
                , (OIL_RESIDUE_LIT, 4) ]
   , tfeature = ChangeWith True [(1, OIL_SOURCE)] S_OIL_SPILL
                  -- non-porous enough
+                 -- the transformation goes first, because marginal
                : tfeature floorArena
   }
 oilSpill = TileKind
@@ -1289,6 +1302,7 @@ oilSpill = TileKind
                   -- TODO: not everything should be able/willing to enter
   , tfeature = [ ChangeWith True [(1, FIRE_SOURCE)] S_BURNING_OIL
                , ChangeWith False [(1, THICK_CLOTH)] OILY_FLOOR_LIT
+                   -- the transformations go first, because marginal
                    -- soaks oil
                , Embed OIL_PUDDLE, Walkable, Clear ]
   }
