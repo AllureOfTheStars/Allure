@@ -986,7 +986,7 @@ workshopAssocs =
       , (2, S_SPACESUIT_BOOT) ]
     , [(1, S_SPACESUIT)] )
  -- Recipes that destroy more useful things than other recipes come last:
-  , ( [(1, WIRECUTTING_TOOL), (1, BONDING_TOOL)], [(1, S_SPACESUIT_TORN)]
+  , ( [(1, WIRECUTTING_TOOL)], [(1, S_SPACESUIT_TORN)]
     , [(2, SPACESUIT_PART), (1, S_RAG_TANGLE)] )
   , ([], [(3, WASTE_CONTAINER)], [(1, S_REFRIGERATION_COIL)])
   , ([], [(1, HANDLE_AND_STEEL)], [(1, HANDLE), (1, STEEL_SCRAP)])
