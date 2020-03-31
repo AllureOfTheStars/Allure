@@ -1587,7 +1587,8 @@ shuttleHusk4 = shuttleHusk3
                $ ptopLeft shuttleHusk3  -- 10 x 8
   }
 shuttleHusk5 = shuttleHusk
-  { pfreq    = [(EMPTY, 1600), (EXIT, 80000), (AMBUSH, 80000)]
+  { pfreq    = [(EXIT, 80000), (AMBUSH, 80000)]
+      -- can't have EMPTY or AI can't reach and kill the boss and get the key
   , pfence   = FGround
   , ptopLeft = [ "···##···"  -- 8 x 10
                , "w#%ww%#w"
