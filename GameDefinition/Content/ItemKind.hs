@@ -249,9 +249,12 @@ slingBullet = ItemKind
   , idamage  = 1 `d` 1
   , iaspects = [ AddSkill SkHurtMelee $ (-17 + 1 `d` 2 + 1 `dL` 3) * 5
                    -- not too good against armor
-               , ToThrow $ ThrowMod 200 100 2 ]  -- piercing
+               , ToThrow $ ThrowMod 200 100 2  -- piercing
+               , SetFlag Fragile ]
+                   -- otherwise would rarely break and the player would have
+                   -- unlimited resource and would have to pick up constantly
   , ieffects = []
-  , idesc    = "Small but heavy bearing ball. Thanks to its size and shape, it doesn't snag when released from the makeshift sling's pouch. Minimal friction enable it to pierce through flesh when fast enough initially."  -- we lie, it doesn't slow down in our model; but it stops piercing alright
+  , idesc    = "Small but heavy bearing ball. Thanks to its size and shape, it doesn't snag when released from the makeshift sling's pouch. Minimal friction enables it to pierce through flesh when fast enough initially. Really hard to find once thrown."  -- we lie, it doesn't slow down in our model; but it stops piercing alright
   , ikit     = []
   }
 
@@ -1964,8 +1967,8 @@ needle = ItemKind
   , iweight  = 3
   , idamage  = 1 `d` 1
   , iaspects = [ AddSkill SkHurtMelee $ -10 * 5
-               , SetFlag Fragile  -- breaks easily despite being piercing
-               , ToThrow $ ThrowMod 60 100 3 ]  -- piercing; good shape
+               , ToThrow $ ThrowMod 60 100 5  -- piercing; good shape
+               , SetFlag Fragile ]  -- breaks easily despite being piercing
   , ieffects = []
   , idesc    = "A long sturdy hypodermic needle ending in a dried out micro-syringe that is easy to break off. It's too thin to cause great harm, but it passes through flesh easily."
   , ikit     = []
