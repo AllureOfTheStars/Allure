@@ -634,7 +634,7 @@ rhinoceros = ItemKind
   , iweight  = 80000
   , idamage  = 0
   , iaspects = [ SetFlag Unique
-               , AddSkill SkMaxHP 120, AddSkill SkMaxCalm 60
+               , AddSkill SkMaxHP 200, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 27, AddSkill SkNocto 2
                , AddSkill SkAggression 2
                , AddSkill SkAlter (-1)  -- can't use normal stairs nor dig;
@@ -1111,7 +1111,7 @@ cleanerRobot = ItemKind
   , iweight  = 800000
   , idamage  = 0
   , iaspects = [ SetFlag Unique
-               , AddSkill SkMaxHP 70
+               , AddSkill SkMaxHP 100
                    -- regenerates and huge armor, so lower HP
                , AddSkill SkMaxCalm 40
                    -- can't summon again for a long time;
