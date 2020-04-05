@@ -294,9 +294,9 @@ harpoon = ItemKind
   , irarity  = [(1, 6)]
   , iverbHit = "hook"
   , iweight  = 1400
-  , idamage  = 5 `d` 1
-  , iaspects = [ Timeout 5
-               , AddSkill SkHurtMelee $ (-7 + 1 `d` 2 + 1 `dL` 3) * 5
+  , idamage  = 6 `d` 1
+  , iaspects = [ Timeout 7
+               , AddSkill SkHurtMelee $ (-6 + 1 `d` 3) * 5
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig ]
   , ieffects = [PullActor (ThrowMod 200 50 1)]  -- 1 step, fast
@@ -1511,7 +1511,7 @@ gloveGauntlet = gloveFencing
   , iverbHit = "mow"
   , iweight  = 500
   , idamage  = 4 `d` 1
-  , iaspects = [ Timeout 3
+  , iaspects = [ Timeout 4
                , AddSkill SkArmorMelee $ (1 + 1 `dL` 4) * 5
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
@@ -1527,7 +1527,7 @@ gloveJousting = gloveFencing
   , iweight  = 3000
   , idamage  = 5 `d` 1
   , iaspects = [ SetFlag Unique
-               , Timeout 3
+               , Timeout 5
                , AddSkill SkHurtMelee $ (-7 + 1 `dL` 5) * 3
                , AddSkill SkArmorMelee $ (2 + 1 `d` 2 + 1 `dL` 2) * 5
                , AddSkill SkArmorRanged $ (1 + 1 `dL` 2) * 3
@@ -1588,7 +1588,7 @@ helmArmored = ItemKind
   , iverbHit = "headbutt"
   , iweight  = 2000
   , idamage  = 4 `d` 1
-  , iaspects = [ Timeout 3
+  , iaspects = [ Timeout 4
                , AddSkill SkArmorMelee $ (1 + 1 `dL` 4) * 5
                , AddSkill SkArmorRanged $ (2 + 1 `dL` 2) * 3  -- headshot
                , AddSkill SkSight (-1)
@@ -1617,11 +1617,9 @@ buckler = ItemKind
   , idamage  = 0  -- safe to be used on self
   , iaspects = [ Timeout $ (3 + 1 `d` 3 - 1 `dL` 3) * 2
                , AddSkill SkArmorMelee 40
-                   -- not enough to compensate; won't be in eqp
                , AddSkill SkHurtMelee (-30)
-                   -- too harmful; won't be wielded as weapon
                , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotArmorMelee ]  -- unwieldy to throw
+               , EqpSlot EqpSlotArmorMelee ]
   , ieffects = [PushActor (ThrowMod 200 50 1)]  -- 1 step, fast
   , idesc    = "Heavy and unwieldy arm protection made from an outer airlock panel. Absorbs a percentage of melee damage, both dealt and sustained. Too small to intercept projectiles with."
   , ikit     = []
@@ -1634,9 +1632,7 @@ shield = buckler
   , idamage  = 4 `d` 1
   , iaspects = [ Timeout $ (3 + 1 `d` 3 - 1 `dL` 3) * 4
                , AddSkill SkArmorMelee 80
-                   -- not enough to compensate; won't be in eqp
                , AddSkill SkHurtMelee (-70)
-                   -- too harmful; won't be wielded as weapon
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- unwieldy to throw
@@ -1644,7 +1640,7 @@ shield = buckler
   , idesc    = "Large and unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Too heavy to intercept projectiles with."
   }
 shield2 = shield
-  { ifreq    = [(COMMON_ITEM, 3 * 2), (MUSEAL, 50), (S_SHIELD_BLUNT, 1)]
+  { ifreq    = [(COMMON_ITEM, 10), (MUSEAL, 50), (S_SHIELD_BLUNT, 1)]
                   -- very low base rarity
   , iweight  = 6000
   , idamage  = 5 `d` 1
@@ -1713,7 +1709,7 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
                   -- not to lie about damage of unindentified items
   , iaspects = [ PresentAs HAMMER_UNKNOWN
                , SetFlag Durable, SetFlag Meleeable, EqpSlot EqpSlotWeaponBig
-               , toVelocity 0 ]  -- totally unbalanced and so @RefillHP@ fails
+               , toVelocity 0 ]  -- totally unbalanced
   , ieffects = []
   , idesc    = "One of many kinds of hammers employed in construction work. The usual ones with blunt heads don't cause grave wounds, but enough weigth on a long handle can shake and bruise even most armored foes. However, larger hammers require more time to recover after a swing. This one looks average at a quick glance."  -- if it's really the average kind, the weak kind, the description stays; if not, it's replaced with one of the descriptions below at identification time
   , ikit     = []
@@ -1724,25 +1720,26 @@ hammer1 = hammerTemplate  -- 1m handle, blunt
                , (S_BLUNT_SHORT_HAMMER, 1) ]
   , iaspects = [Timeout 5]
                ++ iaspects hammerTemplate
-  , ieffects = [RefillHP (-8)]
+  , ieffects = [RefillHP (-4)]
   }
 hammer2 = hammerTemplate  -- 0.75m handle, sharp
-  { ifreq    = [(COMMON_ITEM, 30), (STARTING_WEAPON, 10), (STARTING_HAMMER, 15)]
-  , irarity  = [(7, 20)]  -- common early, because not guaranteed;
+  { ifreq    = [(COMMON_ITEM, 10), (STARTING_WEAPON, 3), (STARTING_HAMMER, 5)]
+  , irarity  = [(7, 60)]  -- common early, because not guaranteed;
                           -- common also late, because not crafted
   , iverbHit = "puncture"
+  , idamage  = 3 `d` 1
   , iaspects = [Timeout 3, EqpSlot EqpSlotWeaponFast]
                ++ (iaspects hammerTemplate \\ [EqpSlot EqpSlotWeaponBig])
-  , ieffects = [RefillHP (-8)]
+  , ieffects = [RefillHP (-3)]
   , idesc    = "Upon closer inspection, this hammer, or pick, turns out particularly well balanced. The profiled handle seamlessly joins the head, which focuses the blow at a sharp point, compensating for the tool's modest size."
   }
 hammer3 = hammerTemplate  -- 2m pole, blunt
   { ifreq    = [ (COMMON_ITEM, 5), (BONDING_TOOL, 1), (POLE_AND_STEEL, 1)
                , (STARTING_WEAPON, 5), (S_BLUNT_LONG_HAMMER, 1) ]
   , iweight  = 6000  -- pole weight almost gives it away
-  , iaspects = [Timeout 12]  -- balance, or @DupItem@ would break the game
+  , iaspects = [Timeout 15]
                ++ iaspects hammerTemplate
-  , ieffects = [RefillHP (-12)]
+  , ieffects = [RefillHP (-8)]
   , idesc    = "This hammer sports a long pole that increases the momentum of the blunt head's swing, at the cost of long recovery. It's capable of smashing objects together, though the required careful positioning often means hands are smashed as well."
   }
 hammerParalyze = hammerTemplate
@@ -1750,7 +1747,7 @@ hammerParalyze = hammerTemplate
   , ifreq    = [(TREASURE, 20), (STARTING_HAMMER, 5)]
   , irarity  = [(5, 1), (8, 6)]
   , iaspects = [ SetFlag Unique
-               , Timeout 5 ]  -- 2m, but light head and pole
+               , Timeout 10 ]  -- 2m, but light head and pole
                ++ iaspects hammerTemplate
   , ieffects = [RefillHP (-8), Paralyze 10]
   , idesc    = "This exquisite demolition hammer with a titanium head and excepthionally long synthetic handle leaves no wall and no body standing."
@@ -1760,7 +1757,7 @@ hammerSpark = hammerTemplate  -- the only hammer with significantly heavier head
   , ifreq    = [(TREASURE, 20), (BONDING_TOOL, 1), (MUSEAL, 100)]
   , irarity  = [(5, 1), (8, 6)]
   , iweight  = 5000  -- weight and shape/damage gives it away; always identified
-  , idamage  = 8 `d` 1  -- different from all other hammers
+  , idamage  = 8 `d` 1  -- let's say, one end is sharpened
   , iaspects = [ SetFlag Unique
                , Timeout 8  -- 1.5m handle and heavy, but unique
                , EqpSlot EqpSlotWeaponBig
@@ -1783,7 +1780,7 @@ sword = ItemKind
   , irarity  = [(3, 1), (6, 20)]
   , iverbHit = "stab"
   , iweight  = 2000
-  , idamage  = 11 `d` 1  -- with high melee bonus, much better than sharp hammer
+  , idamage  = 10 `d` 1  -- with high melee bonus, better than a good hammer
   , iaspects = [ Timeout 7, EqpSlot EqpSlotWeaponBig
                , SetFlag Durable, SetFlag Meleeable
                , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
@@ -1800,7 +1797,7 @@ swordImpress = sword
   , iaspects = [SetFlag Unique]
                ++ iaspects sword
   , ieffects = [Impress]
-  , idesc    = "A particularly well-balance museum piece. It has a long history and in the right hands lends itself to impressive shows of fencing skill."
+  , idesc    = "A particularly well-balanced museum piece. It has a history and in the right hands lends itself to impressive shows of fencing skill."
   }
 swordNullify = sword
   { isymbol  = symbolEdged
@@ -1808,7 +1805,7 @@ swordNullify = sword
   , ifreq    = [(TREASURE, 20), (S_RAPIER_BLUNT, 1)]
   , iverbHit = "pierce"
   , irarity  = [(5, 1), (8, 7)]
-  , idamage  = 8 `d` 1
+  , idamage  = 7 `d` 1  -- as dagger, but upgradeable and no skill bonus
   , iaspects = [ SetFlag Unique, Timeout 3, EqpSlot EqpSlotWeaponFast
                , SetFlag Durable, SetFlag Meleeable
                , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
@@ -1827,8 +1824,9 @@ halberd = ItemKind  -- long pole
   , iweight  = 3500
   , idamage  = 11 `d` 1  -- bad, until sharpened
   , iaspects = [ Timeout 10
-               , AddSkill SkHurtMelee $ (-5 + 1 `dL` 3) * 5
-                   -- useless against armor at game start
+               , AddSkill SkHurtMelee $ (-5 + 1 `d` 4) * 5
+                   -- useless against armor at game start with no hurt bonus;
+                   -- can't be `dL` or crafting at low levels would be cruel
                , AddSkill SkArmorMelee 20
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
@@ -1846,9 +1844,9 @@ halberd2 = halberd
   , irarity  = [(1, 1)]
   , iverbHit = "carve"
   , iweight  = 4500
-  , idamage  = 16 `d` 1
-  , iaspects = [ Timeout 16
-               , AddSkill SkHurtMelee $ (-7 + 1 `dL` 5) * 5
+  , idamage  = 15 `d` 1
+  , iaspects = [ Timeout 20
+               , AddSkill SkHurtMelee $ (-7 + 1 `d` 6) * 5
                    -- balance, or @DupItem@ would break the game;
                    -- together with @RerollItem@, it's allowed to, though
                , AddSkill SkArmorMelee 20
@@ -2000,7 +1998,7 @@ harpoon3 = harpoon
   , ifreq    = [(TREASURE, 50), (MUSEAL, 100)]
   , iflavour = zipFancy [Red]
   , irarity  = [(8, 4)]
-  , idamage  = 9 `d` 1
+  , idamage  = 8 `d` 1
   , iaspects = [SetFlag Unique] ++ iaspects harpoon
   , ieffects = Yell  -- evoke a cry from pain; brutal
                : ieffects harpoon
@@ -2226,8 +2224,8 @@ heavyBoot = ItemKind
   , irarity  = [(1, 13), (3 * 10/15, 13), (4 * 10/15, 1)]
   , iverbHit = "sock"
   , iweight  = 100000  -- including the fake gravity mass
-  , idamage  = 5 `d` 1
-  , iaspects = [ Timeout 3
+  , idamage  = 6 `d` 1
+  , iaspects = [ Timeout 4
                , AddSkill SkHurtMelee (-20)
                , AddSkill SkArmorMelee $ (1 + 1 `dL` 3) * 5
                , SetFlag Durable, SetFlag Meleeable
@@ -2284,7 +2282,7 @@ crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
   , irarity  = [(1, 6), (3 * 10/15, 6), (4 * 10/15, 1)]
   , iverbHit = "gouge"
   , idamage  = 2 `d` 1
-  , iaspects = [ Timeout $ 3 + 1 `d` 2
+  , iaspects = [ Timeout $ 3 + 2 `d` 2
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 30 ]
@@ -2299,7 +2297,7 @@ catsPaw = chisel
   , irarity  = [(1, 12), (3 * 10/15, 12), (4 * 10/15, 1)]
   , iverbHit = "paw"
   , idamage  = 2 `d` 1
-  , iaspects = [ Timeout $ 2 + 1 `d` 2
+  , iaspects = [ Timeout $ 1 + 2 `d` 2
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
                , toVelocity 40 ]
@@ -2320,7 +2318,7 @@ fireAxe = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "gouge"
   , iweight  = 1600
-  , idamage  = 11 `d` 1  -- same as sharpened pipe, but upgradable
+  , idamage  = 10 `d` 1  -- same as sharpened pipe, but upgradable
   , iaspects = [ Timeout 7, EqpSlot EqpSlotWeaponBig  -- 1m handle
                , SetFlag Durable, SetFlag Meleeable
                , toVelocity 40 ]  -- ensuring it hits with the blade costs speed
@@ -2340,14 +2338,14 @@ hammer4 = hammer1  -- 1m handle, sharp
   { ifreq    = [ (COMMON_ITEM, 5), (HANDLE_AND_STEEL, 1)
                , (STARTING_WEAPON, 5), (S_SHARP_SHORT_HAMMER, 1) ]
   , iverbHit = "cleave"
-  , ieffects = [RefillHP (-10)]
+  , idamage  = 4 `d` 1
   , idesc    = "This hammer's head has it's protruding edges sharpened. Otherwise, it's pretty ordinary."
  }
 hammer5 = hammer3  -- 2m pole, sharp
   { ifreq    = [ (COMMON_ITEM, 1), (POLE_AND_STEEL, 1)
                , (S_SHARP_LONG_HAMMER, 1) ]
   , iverbHit = "cleave"
-  , ieffects = [RefillHP (-14)]
+  , idamage  = 4 `d` 1
   , idesc    = "This long-hafter hammer sports a head with the edge of the narrow end sharpened for cutting."
   }
 swordNullifySharp = swordNullify
@@ -2387,7 +2385,7 @@ militaryKnife = knife
                , toVelocity 60 ]  -- designed also for throwing
   , ieffects = [ RefillHP (-1)
                    -- @RefillHP@ to avoid a no-brainer of durable tool use
-               , DropItem 1 maxBound COrgan CONDITION]
+               , DropItem 1 maxBound COrgan CONDITION ]
                    -- useful for AI who is the main user of this weapon
   , idesc    = "Millitary design laser-sharpened alloy blade able to cleanly open an artery at the lightest touch through layers of fabric. Despite its modest size, it defeats barbed wire in one slice."
   }
@@ -2420,14 +2418,14 @@ cattleProd = militaryBaton
   }
 gardenMsg :: Effect
 gardenMsg = VerbMsgFail "feel the gardening tool fracture"
-gardenDestruct :: Int -> GroupName ItemKind -> Effect
-gardenDestruct n grp =
+gardenDestruct :: GroupName ItemKind -> Effect
+gardenDestruct grp =
   OnUser $ OneOf $
     DestroyItem 1 1 CEqp grp
     `AndEffect`
     SeqEffect [ CreateItem Nothing CStash HANDLE timerNone
               , CreateItem Nothing CStash STEEL_SCRAP timerNone ]
-    : replicate n gardenMsg
+    : replicate 2 gardenMsg
 grassStitcher = ItemKind
   { isymbol  = symbolPolearm
   , iname    = "grass stitcher"
@@ -2439,12 +2437,12 @@ grassStitcher = ItemKind
       -- beyond level 3 they mostly appear with treePruner
   , iverbHit = "stab"
   , iweight  = 500
-  , idamage  = 4 `d` 1
+  , idamage  = 5 `d` 1
   , iaspects = [ Timeout 3  -- light and can hit with any side
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
                , toVelocity 30 ]
-  , ieffects = [gardenDestruct 3 S_GRASS_STITCHER]
+  , ieffects = [gardenDestruct S_GRASS_STITCHER]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Grass_Stitcher
   , ikit     = [(GARDENING_TOOL, CGround), (GARDENING_TOOL, CGround)]
   }
@@ -2454,12 +2452,12 @@ ladiesFork = grassStitcher
                , (GARDENING_TOOL, 1), (S_LADIES_FORK, 1) ]
   , iflavour = zipFancy [Green]
   , iweight  = 1000
-  , idamage  = 5 `d` 1
+  , idamage  = 6 `d` 1
   , iaspects = [ Timeout 5
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 40 ]
-  , ieffects = [gardenDestruct 5 S_LADIES_FORK]
+  , ieffects = [gardenDestruct S_LADIES_FORK]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Garden_fork
   , ikit     = [(GARDENING_TOOL, CGround)]
   }
@@ -2471,12 +2469,12 @@ hoe = grassStitcher
   , iflavour = zipFancy [Cyan]
   , iverbHit = "hack"
   , iweight  = 1000
-  , idamage  = 6 `d` 1  -- neither sharp nor heavy
+  , idamage  = 7 `d` 1  -- neither sharp nor heavy
   , iaspects = [ Timeout 7
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 40 ]
-  , ieffects = [gardenDestruct 7 S_HOE]
+  , ieffects = [gardenDestruct S_HOE]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Hoe_(tool)
   , ikit     = [(GARDENING_TOOL, CGround)]
   }
@@ -2488,12 +2486,12 @@ spade = grassStitcher
   , iflavour = zipPlain [Cyan]
   , iverbHit = "cut"
   , iweight  = 2000
-  , idamage  = 7 `d` 1
+  , idamage  = 8 `d` 1
   , iaspects = [ Timeout 9
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 50 ]
-  , ieffects = [gardenDestruct 9 S_SPADE]
+  , ieffects = [gardenDestruct S_SPADE]
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Spade
   , ikit     = []  -- most powerful, most likely to come alone
   }
@@ -2521,7 +2519,7 @@ cleaningPole = grassStitcher
   , iweight  = 3500
   , idamage  = 1 `d` 1
   , iaspects = [ AddSkill SkArmorMelee 10  -- not sharp, so weaker
-               , SetFlag Durable, SetFlag Equipable
+               , SetFlag Durable, SetFlag Meleeable  -- a fence may melee with
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 20 ]
   , ieffects = []
@@ -2536,7 +2534,7 @@ staff = grassStitcher
   , iverbHit = "prod"
   , iweight  = 1000
   , idamage  = 1 `d` 1
-  , iaspects = [ SetFlag Durable
+  , iaspects = [ SetFlag Durable, SetFlag Meleeable
                , toVelocity 30 ]  -- a weak missile and that's all
   , ieffects = []
   , idesc    = ""  -- doh
@@ -2554,7 +2552,7 @@ longPole = staff
   , iflavour = zipPlain [BrYellow]
   , iweight  = 3000
   , iaspects = [ AddSkill SkArmorMelee 10  -- not sharp, so weaker
-               , SetFlag Durable, SetFlag Equipable
+               , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 20 ]
   , idesc    = "Over two meters long, strong and light pole."
