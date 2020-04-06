@@ -2535,6 +2535,7 @@ staff = grassStitcher
   , iweight  = 1000
   , idamage  = 1 `d` 1
   , iaspects = [ SetFlag Durable, SetFlag Meleeable
+               , EqpSlot EqpSlotWeaponFast
                , toVelocity 30 ]  -- a weak missile and that's all
   , ieffects = []
   , idesc    = ""  -- doh
