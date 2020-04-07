@@ -7,7 +7,7 @@
 -- | Item definitions.
 module Content.ItemKind
   ( -- * Group name patterns
-    pattern HARPOON, pattern TORSO_ARMOR, pattern CLOTHING_MISC
+    pattern HARPOON, pattern ARMOR_LOOSE, pattern CLOTHING_MISC
   , pattern FIREPROOF_CLOTH, pattern COOKED_PLANT, pattern LIQUID_NITROGEN
   , groupNamesSingleton, groupNames
   , -- * Content
@@ -49,11 +49,11 @@ pattern COOKED_PLANT_UNKNOWN :: GroupName ItemKind
 
 groupNames :: [GroupName ItemKind]
 groupNames =
-       [HARPOON, TORSO_ARMOR, CLOTHING_MISC]
+       [HARPOON, ARMOR_LOOSE, CLOTHING_MISC]
     ++ [FIREPROOF_CLOTH, COOKED_PLANT, LIQUID_NITROGEN, GARDENING_TOOL]
     ++ embedsGN ++ actorsGN ++ organsGN ++ blastsGN
 
-pattern HARPOON, TORSO_ARMOR, CLOTHING_MISC :: GroupName ItemKind
+pattern HARPOON, ARMOR_LOOSE, CLOTHING_MISC :: GroupName ItemKind
 
 pattern FIREPROOF_CLOTH, COOKED_PLANT, LIQUID_NITROGEN, GARDENING_TOOL :: GroupName ItemKind
 
@@ -70,7 +70,7 @@ pattern GEM_UNKNOWN = GroupName "gem unknown"
 pattern CURRENCY_UNKNOWN = GroupName "currency unknown"
 
 pattern HARPOON = GroupName "harpoon"
-pattern TORSO_ARMOR = GroupName "torso armor"
+pattern ARMOR_LOOSE = GroupName "loose armor"
 pattern CLOTHING_MISC = GroupName "miscellaneous clothing"
 
 -- ** Allure-specific
@@ -321,7 +321,7 @@ net = ItemKind
   , idamage  = 2 `d` 1
   , iaspects = [AddSkill SkHurtMelee $ -14 * 5]
   , ieffects = [ toOrganBad S_SLOWED (3 + 1 `d` 3)
-               , DropItem maxBound 1 CEqp TORSO_ARMOR
+               , DropItem maxBound 1 CEqp ARMOR_LOOSE
                    -- only one of each kind is dropped, because no rubbish
                    -- in this group and so no risk of exploit
                , SendFlying (ThrowMod 100 50 1) ]  -- 1 step; painful
@@ -1441,7 +1441,7 @@ armorLeather = ItemKind
   { isymbol  = symbolTorsoArmor
   , iname    = "spacesuit jacket"
   , ifreq    = [ (COMMON_ITEM, 100), (S_SPACESUIT_JACKET, 1)
-               , (SPACESUIT_PART, 1), (TORSO_ARMOR, 1) ]
+               , (SPACESUIT_PART, 1), (ARMOR_LOOSE, 1) ]
   , iflavour = zipFancy [Blue]
   , icount   = 1
   , irarity  = [(1, 9), (10, 3)]
@@ -1461,14 +1461,14 @@ armorLeather2 = armorLeather  -- for now, purely flavour, for better messages
   { isymbol  = symbolMiscArmor
   , iname    = "pair"
   , ifreq    = [ (COMMON_ITEM, 100), (S_SPACESUIT_TROUSERS, 1)
-               , (SPACESUIT_PART, 1) ]
+               , (SPACESUIT_PART, 1) ]  -- harder to take off than a jacket
   , irarity  = [(3, 7), (10, 4)]
   , iaspects = ELabel "of spacesuit trousers" : iaspects armorLeather
   , idesc    = "Segmented trousers for open space work, with the hermetically sealed boots cut off. Surprisingly flexible and airy, yet micro-meteorite-proof."
   }
 armorMail = armorLeather
   { iname    = "bulletproof vest"
-  , ifreq    = [ (COMMON_ITEM, 100), (TORSO_ARMOR, 1), (ARMOR_RANGED, 1)
+  , ifreq    = [ (COMMON_ITEM, 100), (ARMOR_LOOSE, 1), (ARMOR_RANGED, 1)
                , (S_BULLTEPROOF_VEST, 1) ]
   , iflavour = zipPlain [Cyan]
   , irarity  = [(6, 9), (10, 3)]
@@ -1608,7 +1608,7 @@ helmArmored = ItemKind
 buckler = ItemKind
   { isymbol  = symbolShield
   , iname    = "buckler"
-  , ifreq    = [(COMMON_ITEM, 100)]
+  , ifreq    = [(COMMON_ITEM, 100), (ARMOR_LOOSE, 1)]
   , iflavour = zipPlain [Blue]
   , icount   = 1
   , irarity  = [(4, 5)]
@@ -2567,7 +2567,7 @@ constructionHooter = necklaceTemplate
   { iname    = "construction hooter"
   , ifreq    = [ (CONSTRUCTION_HOOTER, 1), (COMMON_ITEM, 1)
                    -- extremely rare, but dropped by decontamination chambers
-               , (UNREPORTED_INVENTORY, 1) ]
+               , (UNREPORTED_INVENTORY, 1), (ARMOR_LOOSE, 1) ]
   , iflavour = zipPlain [BrRed]
   , irarity  = [(1, 1)]
   , iweight  = 1000
@@ -2581,7 +2581,7 @@ wasteContainer = ItemKind
   { isymbol  = symbolTool
   , iname    = "waste container"
   , ifreq    = [ (WASTE_CONTAINER, 1), (UNREPORTED_INVENTORY, 1)
-               , (WATER_SOURCE, 1) ]
+               , (WATER_SOURCE, 1), (ARMOR_LOOSE, 1) ]
   , iflavour = zipLiquid [Green]
   , icount   = 1
   , irarity  = [(1, 1)]
