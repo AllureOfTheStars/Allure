@@ -1358,7 +1358,7 @@ ringTemplate = ItemKind
   , ifreq    = [(RING_UNKNOWN, 1)]
   , iflavour = zipPlain stdCol ++ zipFancy darkCol
   , icount   = 1
-  , irarity  = [(10, 2)]  -- the default very low
+  , irarity  = [(8, 5)]
   , iverbHit = "knock"
   , iweight  = 15
   , idamage  = 0
@@ -1369,23 +1369,25 @@ ringTemplate = ItemKind
   }
 ring1 = ringTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
-  , irarity  = [(8, 4)]
-  , iaspects = [ AddSkill SkSpeed $ 1 `dL` 3, AddSkill SkMaxHP (-10)
+  , iaspects = [ AddSkill SkSpeed $ 1 `dL` 3
+               , AddSkill SkMaxHP (-10)
+               , AddSkill SkArmorMelee (-20)
                , EqpSlot EqpSlotSpeed ]
                ++ iaspects ringTemplate
   }
 ring2 = ringTemplate
   { ifreq    = [(CURIOUS_ITEM, 100), (ANY_JEWELRY, 100)]
+  , irarity  = [(10, 2)]
   , iaspects = [ SetFlag Unique, ELabel "of Rush"
                , AddSkill SkSpeed $ (1 + 1 `dL` 2) * 2
-               , AddSkill SkMaxCalm (-40), AddSkill SkMaxHP (-20)
+               , AddSkill SkMaxHP (-20)
+               , AddSkill SkArmorMelee (-40)
                , SetFlag Durable, EqpSlot EqpSlotSpeed ]
                ++ iaspects ringTemplate
   , idesc    = "The creator of this dangerous artifact didn't find time to document its operation. And now it's too late."
   }
 ring3 = ringTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
-  , irarity  = [(10, 8)]
   , iaspects = [ AddSkill SkMaxHP $ 5 + (1 `d` 2 + 1 `dL` 2) * 5
                , AddSkill SkMaxCalm $ -30 + (1 `dL` 3) * 5
                , EqpSlot EqpSlotMaxHP ]
@@ -1393,17 +1395,17 @@ ring3 = ringTemplate
   }
 ring4 = ringTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100), (MUSEAL, 100)]
-  , irarity  = [(5, 1), (10, 9)]  -- needed after other rings drop Calm
-  , iaspects = [ AddSkill SkMaxCalm $ 20 + (1 `dL` 4) * 5
+  , irarity  = [(5, 1), (10, 10)]  -- needed after other items drop Calm
+  , iaspects = [ AddSkill SkMaxCalm $ 30 + (1 `dL` 4) * 5
                , EqpSlot EqpSlotMiscBonus ]
                ++ iaspects ringTemplate
   , idesc    = "Cold, solid to the touch, perfectly round, engraved with solemn, strangely comforting, worn out words."
   }
 ring5 = ringTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
-  , irarity  = [(3, 4), (10, 8)]
-  , iaspects = [ AddSkill SkHurtMelee $ (2 + 1 `d` 2 + (1 `dL` 2) * 2 ) * 3
-               , AddSkill SkMaxHP $ (-3 + 1 `dL` 3) * 10
+  , iaspects = [ AddSkill SkHurtMelee $ (4 + 1 `d` 2 + (1 `dL` 2) * 2 ) * 3
+               , AddSkill SkMaxHP (-10)
+               , AddSkill SkArmorMelee (-20)
                , EqpSlot EqpSlotHurtMelee ]
                ++ iaspects ringTemplate
   }
@@ -1417,7 +1419,6 @@ ring6 = ringTemplate  -- weak skill per eqp slot, so can be without drawbacks
   }
 ring7 = ringTemplate
   { ifreq    = [(COMMON_ITEM, 10), (RING_OF_OPPORTUNITY_SNIPER, 1)]
-  , irarity  = [(10, 5)]  -- low @ifreq@
   , iaspects = [ ELabel "of opportunity sniper"
                , AddSkill SkProject 8
                , EqpSlot EqpSlotProject ]
@@ -1426,6 +1427,7 @@ ring7 = ringTemplate
   }
 ring8 = ringTemplate
   { ifreq    = [(TREASURE, 100), (ANY_JEWELRY, 100)]
+  , irarity  = [(10, 2)]
   , iaspects = [ SetFlag Unique, ELabel "of Overwatch"
                , AddSkill SkProject 8  -- TODO: 11, but let player control
                                        -- potion throwing; see capReinforced
@@ -2110,7 +2112,7 @@ blowtorch = ItemKind
       -- tool and fire source use so that other tool-weapons need only
       -- do that many non-armor affected damage to dissuade the player
       -- from using them without careful thought
-  , idesc    = "A sturdy old-fashioned portable blowtorch for fine cutting or welding of metals. Rather weak, but does not require access codes to high current power outlets. If you can patiently suffer the heat, it can be used as a clumsy breaching or bonding tool."
+  , idesc    = "A sturdy old-fashioned portable blowtorch for fine cutting or welding of metals. Rather weak, but does not require access codes to high current power outlets. If you can patiently suffer the heat, it can be used as a clumsy breaching tool."
   , ikit     = []
   }
 chisel = ItemKind  -- ignored by AI, but that's fine, others suffice
