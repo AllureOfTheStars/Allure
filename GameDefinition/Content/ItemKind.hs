@@ -1229,6 +1229,7 @@ necklace1 = necklaceTemplate
   , iaspects = [ SetFlag Unique, ELabel "of Spur Life"
                , Timeout $ (4 - 1 `dL` 3) * 10
                    -- priceless, so worth the long wait
+               , AddSkill SkArmorMelee (-30)
                , SetFlag Durable ]
                ++ iaspects_necklaceTemplate
   , ieffects = [RefillHP 1, RefillCalm (-5)]

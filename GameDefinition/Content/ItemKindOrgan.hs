@@ -506,8 +506,9 @@ speedGland n grp = armoredSkin
   { iname    = "speed gland"
   , ifreq    = [(grp, 1)]
   , iverbHit = "spit at"
-  , iaspects = [ AddSkill SkSpeed $ intToDice n
-               , Timeout $ intToDice (100 `div` n)
+  , iaspects = [ Timeout $ intToDice (100 `div` n)
+               , AddSkill SkSpeed $ intToDice n
+               , AddSkill SkArmorMelee $ intToDice $ - n * 5
                , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [RefillHP 1]
   , idesc    = ""
@@ -606,6 +607,7 @@ impressed = armoredSkin
   , iweight  = 0
   , iaspects = [ AddSkill SkMaxCalm (-1)  -- to help player notice on HUD
                                           -- and to count as bad condition
+               , AddSkill SkArmorMelee (-3)
                , SetFlag Fragile  -- to announce "no longer" only when
                                   -- all copies gone
                , SetFlag Condition ]  -- this is really a condition,

@@ -383,8 +383,10 @@ torsor = ItemKind
   , iweight  = 80000
   , idamage  = 0
   , iaspects = [ SetFlag Unique, ELabel "of Contact"
-               , AddSkill SkMaxHP 300, AddSkill SkMaxCalm 100
-               , AddSkill SkSpeed 10, AddSkill SkNocto 2
+               , AddSkill SkMaxHP 400  -- -50 melee armor, so higher HP
+               , AddSkill SkMaxCalm 100
+               , AddSkill SkSpeed 5
+               , AddSkill SkNocto 2
                , AddSkill SkAggression 3
                , AddSkill SkProject 2  -- can lob
                , AddSkill SkApply 1  -- can even use cultural artifacts
@@ -396,7 +398,7 @@ torsor = ItemKind
   , ikit     = [ (S_TENTACLE, COrgan), (S_HOOKED_CLAW, COrgan)
                    -- at least one non-timed
                , (S_LARGE_JAW, COrgan), (S_VENOM_FANG, COrgan)
-               , (S_SPEED_GLAND_5, COrgan)
+               , (S_SPEED_GLAND_10, COrgan)
                , (S_EYE_6, COrgan), (S_EAR_8, COrgan)
                , (S_SAPIENT_BRAIN, COrgan)
                , (GEM, CEqp), (GEM, CStash)
