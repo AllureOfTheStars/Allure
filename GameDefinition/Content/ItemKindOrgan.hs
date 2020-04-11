@@ -230,7 +230,7 @@ horn = fist
   , iverbHit = "impale"
   , idamage  = 5 `d` 1
   , iaspects = [ AddSkill SkHurtMelee 10
-               , AddSkill SkArmorMelee 10 ]  -- bonus doubled
+               , AddSkill SkArmorMelee 10 ]  -- bonuses doubled
                ++ iaspects fist
   , idesc    = "Sharp and long, for defence or attack."
   }
@@ -239,8 +239,8 @@ rhinoHorn = fist
   , ifreq    = [(S_RHINO_HORN, 1)]
   , icount   = 1  -- single, unlike real horns
   , iverbHit = "gore"
-  , idamage  = 5 `d` 1
-  , iaspects = [Timeout 5, AddSkill SkHurtMelee 20]
+  , idamage  = 4 `d` 1
+  , iaspects = [Timeout 5, AddSkill SkHurtMelee 50]  -- mass gives extra damage
                ++ iaspects fist
   , ieffects = [Impress, Yell]  -- the owner is a mid-boss, after all
   , idesc    = "Very solid, considering it has the same composition as fingernails."
@@ -314,7 +314,7 @@ sting = fist
   , icount   = 1
   , iverbHit = "inject"
   , idamage  = 1 `d` 1
-  , iaspects = [Timeout $ 10 - 1 `dL` 4, AddSkill SkHurtMelee 40]
+  , iaspects = [Timeout $ 10 - 1 `dL` 4, AddSkill SkHurtMelee 50]
                ++ iaspects fist
   , ieffects = [toOrganBad S_RETAINING (3 + 1 `d` 3)]
   , idesc    = "Painful, debilitating and harmful."
@@ -357,8 +357,8 @@ largeTail = fist
   , ifreq    = [(S_LARGE_TAIL, 1)]
   , icount   = 1
   , iverbHit = "knock"
-  , idamage  = 7 `d` 1
-  , iaspects = [Timeout $ 2 + 1 `d` 2, AddSkill SkHurtMelee 20]
+  , idamage  = 4 `d` 1
+  , iaspects = [Timeout $ 2 + 1 `d` 2, AddSkill SkHurtMelee 60]
                ++ iaspects fist
                  -- timeout higher, lest they regain push before closing again
   , ieffects = [PushActor (ThrowMod 200 50 1)]  -- 1 step, fast
@@ -368,7 +368,8 @@ hugeTail = largeTail
   { iname    = "huge tail"
   , ifreq    = [(S_HUGE_TAIL, 1)]
   , iverbHit = "upend"
-  , iaspects = [Timeout $ 3 + 1 `d` 2, AddSkill SkHurtMelee 20]
+  , idamage  = 7 `d` 1
+  , iaspects = [Timeout $ 3 + 1 `d` 2]
                ++ iaspects fist
                  -- timeout higher, lest they regain push before closing again
   , ieffects = [PushActor (ThrowMod 400 50 1)]  -- 2 steps, fast

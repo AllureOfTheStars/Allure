@@ -311,7 +311,7 @@ fastEye = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 5, AddSkill SkMaxCalm 70
+  , iaspects = [ AddSkill SkMaxHP 10, AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
                , AddSkill SkAggression 1
                , SetFlag Durable ]
