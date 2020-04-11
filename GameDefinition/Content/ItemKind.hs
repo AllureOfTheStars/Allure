@@ -1170,8 +1170,8 @@ motionScanner = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [ AddSkill SkNocto 1
-               , AddSkill SkArmorMelee (-15 + (1 `dL` 3) * 5)
-               , AddSkill SkArmorRanged (-15 + (1 `dL` 3) * 5)
+               , AddSkill SkArmorMelee (-15 + (1 `dL` 5) * 5)
+               , AddSkill SkArmorRanged (-15 + (1 `dL` 5) * 3)
                , SetFlag Equipable, EqpSlot EqpSlotMiscBonus ]
   , ieffects = []
   , idesc    = "Portable underwater echolocator overdriven to scan dark corridors at the cost of emitting loud pings."
@@ -1323,7 +1323,7 @@ imageItensifier = ItemKind
   , iweight  = 700
   , idamage  = 0
   , iaspects = [ AddSkill SkNocto 1, AddSkill SkSight (-1)
-               , AddSkill SkArmorMelee $ (-1 + 1 `dL` 6) * 3
+               , AddSkill SkArmorMelee $ (-2 - 1 `dL` 5) * 3
                , SetFlag Precious, SetFlag Equipable
                , EqpSlot EqpSlotMiscBonus ]
   , ieffects = []
@@ -1449,7 +1449,7 @@ armorLeather = ItemKind
   , iweight  = 7000
   , idamage  = 0
   , iaspects = [ AddSkill SkHurtMelee (-2)
-               , AddSkill SkArmorMelee $ (2 + 1 `dL` 4) * 5
+               , AddSkill SkArmorMelee $ (2 + 1 `dL` 3) * 5
                , AddSkill SkArmorRanged $ (1 + 1 `dL` 2) * 3
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotArmorMelee ]
@@ -1475,7 +1475,7 @@ armorMail = armorLeather
   , iweight  = 12000
   , idamage  = 0
   , iaspects = [ AddSkill SkHurtMelee (-3)
-               , AddSkill SkArmorMelee $ (2 + 1 `dL` 4) * 5
+               , AddSkill SkArmorMelee $ (2 + 1 `dL` 3) * 5
                , AddSkill SkArmorRanged $ (4 + 1 `dL` 2) * 3
                , AddSkill SkOdor 2
                , SetFlag Durable, SetFlag Equipable
@@ -1512,7 +1512,7 @@ gloveGauntlet = gloveFencing
   , iweight  = 500
   , idamage  = 4 `d` 1
   , iaspects = [ Timeout 4
-               , AddSkill SkArmorMelee $ (1 + 1 `dL` 4) * 5
+               , AddSkill SkArmorMelee $ (1 + 1 `dL` 3) * 5
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 40 ]  -- flaps and flutters
@@ -1589,7 +1589,7 @@ helmArmored = ItemKind
   , iweight  = 2000
   , idamage  = 4 `d` 1
   , iaspects = [ Timeout 4
-               , AddSkill SkArmorMelee $ (1 + 1 `dL` 4) * 5
+               , AddSkill SkArmorMelee $ (1 `dL` 3) * 5
                , AddSkill SkArmorRanged $ (2 + 1 `dL` 2) * 3  -- headshot
                , AddSkill SkSight (-1)
                , AddSkill SkHearing (-7), AddSkill SkSmell (-5)
@@ -1611,13 +1611,13 @@ buckler = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (ARMOR_LOOSE, 1)]
   , iflavour = zipPlain [Blue]
   , icount   = 1
-  , irarity  = [(4, 5)]
+  , irarity  = [(4, 6)]
   , iverbHit = "bash"
   , iweight  = 2000
   , idamage  = 0  -- safe to be used on self
   , iaspects = [ Timeout $ (3 + 1 `d` 3 - 1 `dL` 3) * 2
                , AddSkill SkArmorMelee 40
-               , AddSkill SkHurtMelee (-30)
+               , AddSkill SkSpeed (-1)  -- the main price to pay
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee ]
   , ieffects = [PushActor (ThrowMod 200 50 1)]  -- 1 step, fast
@@ -1626,13 +1626,14 @@ buckler = ItemKind
   }
 shield = buckler
   { iname    = "shield"
-  , irarity  = [(8, 4)]  -- the stronger variants add to total probability
+  , irarity  = [(8, 5)]  -- the stronger variants add to total probability
   , iflavour = zipPlain [Green]
   , iweight  = 4000
   , idamage  = 4 `d` 1
   , iaspects = [ Timeout $ (3 + 1 `d` 3 - 1 `dL` 3) * 4
-               , AddSkill SkArmorMelee 80
-               , AddSkill SkHurtMelee (-70)
+               , AddSkill SkArmorMelee 60
+               , AddSkill SkSpeed (-1)  -- the main price to pay
+               , AddSkill SkHurtMelee (-30)
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- unwieldy to throw
@@ -1643,7 +1644,7 @@ shield2 = shield
   { ifreq    = [(COMMON_ITEM, 10), (MUSEAL, 50), (S_SHIELD_BLUNT, 1)]
                   -- very low base rarity
   , iweight  = 6000
-  , idamage  = 5 `d` 1
+  , idamage  = 6 `d` 1
   , idesc    = "A relic of long-past wars, heavy and with a central spike, which is however misaligned and dull."
   }
 shield3 = shield2
@@ -2248,10 +2249,9 @@ spacesuit = ItemKind
   , iaspects = [ AddSkill SkHurtMelee (-30)  -- easier when boots integrated
                , AddSkill SkSight (-1)
                , AddSkill SkHearing (-10), AddSkill SkSmell (-10)  -- worse now
-               , AddSkill SkArmorMelee $ (6 + 1 `d` 3) * 20
-               , AddSkill SkArmorRanged $ (4 + 1 `d` 3) * 12
-                   -- twice better than from the set, because enemy
-                   -- can't aim at the gaps between pieces
+               , AddSkill SkArmorMelee $ (2 + 2 `dL` 3) * 20
+               , AddSkill SkArmorRanged $ (1 + 1 `dL` 2) * 12
+                   -- both armors are the sum from the set
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotArmorMelee ]
   , ieffects = []
@@ -2261,13 +2261,13 @@ spacesuit = ItemKind
 spacesuitTorn = spacesuit
   { iname    = "torn spacesuit"
   , ifreq    = [(CURIOUS_ITEM, 100), (S_SPACESUIT_TORN, 1)]
-  , irarity  = [(1, 15)]
+  , irarity  = [(1, 17)]
   , iverbHit = "entangle"
   , iweight  = 10000
   , iaspects = [ AddSkill SkHurtMelee (-30)  -- easier when boots integrated
                , AddSkill SkSight (-1)  -- obstructed despite the tears
-               , AddSkill SkArmorMelee $ (1 `d` 3) * 20
-               , AddSkill SkArmorRanged $ (1 `d` 3) * 12
+               , AddSkill SkArmorMelee $ (1 `d` 3) * 10
+               , AddSkill SkArmorRanged $ (1 `d` 2) * 6
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotArmorMelee ]
   , idesc    = "A badly torn spacesuit. Perhaps two decent wearable pieces could be salvaged by extracting, matching and patching components on a suitable workbench using scissors of some kind."
