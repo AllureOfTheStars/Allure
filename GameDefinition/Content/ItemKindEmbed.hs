@@ -231,10 +231,10 @@ subtleFresco = ItemKind
   , ikit     = []
   }
 treasureCache = ItemKind
-  { isymbol  = '0'
+  { isymbol  = 'o'
   , iname    = "set"
   , ifreq    = [(ABANDONED_CACHE, 1)]
-  , iflavour = zipPlain [BrBlue]
+  , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , irarity  = [(1, 1)]
   , iverbHit = "crash"
@@ -269,7 +269,7 @@ signageExit = ItemKind
   { isymbol  = '?'
   , iname    = "sticker"
   , ifreq    = [(SIGNAGE, 50)]
-  , iflavour = zipPlain [BrMagenta]
+  , iflavour = zipPlain [BrCyan]
   , icount   = 1
   , irarity  = [(1, 1)]
   , iverbHit = "whack"
@@ -284,6 +284,7 @@ signageExit = ItemKind
 signageEmbed = signageExit
   { iname    = "notice"
   , ifreq    = [(SIGNAGE, 50)]
+  , iflavour = zipPlain [BrBlue]
   , ieffects = [Detect DetectEmbed 12]  -- low tech, hence fully operational
   , idesc    = "Detailed schematics for the maintenance crew."
                  -- This is a rare tile so use it to convey some more backstory.
@@ -291,11 +292,12 @@ signageEmbed = signageExit
 signageMerchandise = signageExit
   { iname    = "shop list"
   , ifreq    = [(SIGNAGE, 50)]
+  , iflavour = zipPlain [BrGreen]
   , ieffects = [Detect DetectLoot 20]  -- high tech, so slightly confused
   , idesc    = "A list of nearby commercial outlets, constantly updated by tracking merchandise not registered as passenger property. Customers are kindly asked to refrain from littering in this heavily monitored public area."
   }
 fireSmall = ItemKind
-  { isymbol  = 'f'
+  { isymbol  = 'o'
   , iname    = "small fire"
   , ifreq    = [(SMALL_FIRE, 1), (FIRE_SOURCE, 1)]
   , iflavour = zipPlain [BrRed]
@@ -419,7 +421,7 @@ escape = stairsUp
   { isymbol  = 'E'
   , iname    = "way"
   , ifreq    = [(ESCAPE, 1)]
-  , iflavour = zipPlain [BrYellow]
+  , iflavour = zipPlain [BrGreen]
   , iaspects = [SetFlag Durable]
   , ieffects = [Escape]
   , idesc    = "May this nightmare have an end?"
@@ -447,6 +449,7 @@ stairsTrapUp = ItemKind
 -- so that effects are invoked in the proper order and, e.g., teleport works.
 stairsTrapDown = stairsTrapUp
   { ifreq    = [(STAIRS_TRAP_DOWN, 1)]
+  , iflavour = zipPlain [Blue]
   , iverbHit = "open up under"
   , ieffects = [ VerbMsgFail "fall down the stairwell"
                , toOrganGood S_DRUNK (20 + 1 `d` 5) ]
@@ -555,7 +558,7 @@ desertedAirlock = ItemKind
   { isymbol  = '>'
   , iname    = "initial entrance"
   , ifreq    = [(DISENGAGED_DOCKING_GEAR, 10000)]
-  , iflavour = zipPlain [BrWhite]
+  , iflavour = zipPlain [BrGreen]
   , icount   = 1
   , irarity  = [(1, 1)]
   , iverbHit = "worry"
@@ -608,7 +611,7 @@ fireFightingGearIntact = ItemKind
   { isymbol  = '?'
   , iname    = "fire fighting set"
   , ifreq    = [(FIRE_FIGHTING_GEAR, 1), (WATER_SOURCE, 1)]
-  , iflavour = zipPlain [BrRed]
+  , iflavour = zipPlain [Red]
   , icount   = 1
   , irarity  = [(1, 1)]
   , iverbHit = "douse"
@@ -625,7 +628,7 @@ wall3dBillboard = ItemKind
   { isymbol  = '*'
   , iname    = "3D display"
   , ifreq    = [(DISPLAY_3D, 1)]
-  , iflavour = zipPlain [BrGreen]
+  , iflavour = zipPlain [BrBlue]
   , icount   = 1
   , irarity  = [(1, 1)]
   , iverbHit = "push"
@@ -692,6 +695,7 @@ depositBox = treasureCache
 depositBoxSummonHero = treasureCache
   { iname    = "noisy large deposit box"
   , ifreq    = [(DEPOSIT_BOX, 30)]
+  , iflavour = zipFancy [Blue]
   , iaspects = [SetFlag Unique, SetFlag Durable]
   , ieffects = [Summon HERO 1, CreateItem Nothing CGround MUSEAL timerNone]
   , idesc    = "Judging from the frantic sounds, this deposit cell with a time lock has trapped something big recently."
@@ -699,6 +703,7 @@ depositBoxSummonHero = treasureCache
 depositBoxSummonMonster = treasureCache
   { iname    = "throbbing deposit box"
   , ifreq    = [(DEPOSIT_BOX, 10)]
+  , iflavour = zipFancy [Red]
   , iaspects = [SetFlag Durable]
   , ieffects = [ Summon MOBILE_MONSTER 1
                , CreateItem Nothing CGround CURIOUS_ITEM timerNone ]
@@ -721,6 +726,7 @@ ediblePlantRipe = treasureCache
   }
 stairsTrapDownOil = stairsTrapUp
   { ifreq    = [(STAIRS_TRAP_DOWN_OIL, 1)]
+  , iflavour = zipPlain [Brown]
   , iverbHit = "cause a chaotic skid"
   , ieffects = [ VerbMsgFail "tumble down the stairwell"
                , PushActor (ThrowMod 400 100 1)]  -- 4 steps, 2 turns
@@ -728,12 +734,14 @@ stairsTrapDownOil = stairsTrapUp
   }
 liftUp = stairsUp
   { iname    = "carriage"
+  , iflavour = zipPlain [Blue]
   , ifreq    = [(LIFT_UP, 1)]
   , iaspects = [SetFlag Durable]
   , idesc    = ""  -- describe inner levels of the ship
   }
 liftDown = stairsDown
   { iname    = "carriage"
+  , iflavour = zipPlain [Blue]
   , ifreq    = [(LIFT_DOWN, 1)]
   , iaspects = [SetFlag Durable]
   , idesc    = ""  -- describe outer levels of the ship
@@ -741,6 +749,7 @@ liftDown = stairsDown
 liftTrap = stairsTrapUp
   { iname    = "elevator trap"  -- hat tip to US heroes
   , ifreq    = [(LIFT_TRAP, 100)]
+  , iflavour = zipPlain [Cyan]
   , iverbHit = "squeeze"
   , ieffects = [ VerbMsgFail "be crushed by the sliding doors"
                , DropBestWeapon, Paralyze 10 ]
@@ -748,6 +757,7 @@ liftTrap = stairsTrapUp
   }
 liftTrap2 = liftTrap
   { ifreq    = [(LIFT_TRAP, 50)]
+  , iflavour = zipFancy [BrMagenta]
   , iverbHit = "choke"
   , ieffects = [ VerbMsgFail "inhale the gas lingering inside the cab"
                , toOrganBad S_SLOWED $ (1 `dL` 4) * 10 ]
@@ -755,6 +765,7 @@ liftTrap2 = liftTrap
   }
 liftTrap3 = liftTrap
   { ifreq    = [(LIFT_TRAP, 50)]
+  , iflavour = zipFancy [BrBlue]
   , iverbHit = "shock"
   , ieffects = [ VerbMsgFail "be electocuted upon touching the control pad"
                , Discharge $ 40 - 1 `d` 20 ]
@@ -776,7 +787,7 @@ shuttleHardware = ItemKind
   , ikit     = []
   }
 machineOil = ItemKind
-  { isymbol  = '!'
+  { isymbol  = '~'
   , iname    = "oil layer"
   , ifreq    = [(OIL_PUDDLE, 1), (OIL_SOURCE, 1)]
   , iflavour = zipPlain [BrYellow]
@@ -809,7 +820,7 @@ crudeWeld = ItemKind  -- this is also an organ
   , ikit     = []
   }
 decontaminator = ItemKind
-  { isymbol  = 'o'
+  { isymbol  = 'O'
   , iname    = "decontamination chamber"
   , ifreq    = [(DECONTAMINATION_CHAMBER, 1)]
   , iflavour = zipPlain [BrBlue]
@@ -852,6 +863,7 @@ barrelFuel = ItemKind
 barrelFertilizer = barrelFuel
   { iname    = "fertilizer"
   , ifreq    = [(BARREL_CONTENTS, 30)]
+  , iflavour = zipPlain [Red]
   , ieffects = [Explode S_FOCUSED_FRAGMENTATION]
                  -- no S_FOCUSED_CONCUSSION; a barrel would destroy the ship;
                  -- no water barrel either, basins and running water in taps;
@@ -862,12 +874,14 @@ barrelFertilizer = barrelFuel
 barrelOxidizer = barrelFuel
   { iname    = "oxidizer"
   , ifreq    = [(BARREL_CONTENTS, 20)]
+  , iflavour = zipPlain [BrWhite]
   , ieffects = [Explode S_FOCUSED_FLASH]
   , idesc    = ""
   }
 barrelOil = barrelFuel
   { iname    = "lubricant oil"
   , ifreq    = [(BARREL_CONTENTS, 20)]
+  , iflavour = zipPlain [Brown]
   , ieffects = [Explode S_MELEE_PROTECTIVE_BALM]
                  -- beneficial, so OK not to affect the triggering actor
   , idesc    = ""
@@ -875,6 +889,7 @@ barrelOil = barrelFuel
 barrelNitrogen = barrelFuel
   { iname    = "liquid nitrogen"
   , ifreq    = [(BARREL_CONTENTS, 40)]
+  , iflavour = zipPlain [BrBlack]
   , ieffects = [Explode S_FOCUSED_SLOWNESS_MIST]
                  -- may exploit to harm foes; watch out for friends
   , idesc    = ""
