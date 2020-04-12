@@ -33,6 +33,7 @@ import Game.LambdaHack.Definition.Defs
 import Game.LambdaHack.Definition.Flavour
 
 -- * Group name patterns
+
 groupNamesSingleton :: [GroupName ItemKind]
 groupNamesSingleton =
        [FLASK_UNKNOWN, ANY_POTION_UNKNOWN, EDIBLE_PLANT_UNKNOWN, SCROLL_UNKNOWN, NECKLACE_UNKNOWN, RING_UNKNOWN, HAMMER_UNKNOWN, GEM_UNKNOWN, CURRENCY_UNKNOWN]
@@ -75,6 +76,9 @@ pattern CLOTHING_MISC = GroupName "miscellaneous clothing"
 
 -- ** Allure-specific
 
+-- Below Allure-specific definitions are interspersed among generic
+-- definitions to make managing related definitions easier.
+
 -- The @UNKNOWN@ patterns don't need to be exported. Used internally.
 -- They also represent singleton groups.
 pattern COOKED_PLANT_UNKNOWN = GroupName "cooked plant unknown"
@@ -99,13 +103,9 @@ otherItemContent = embeds ++ actors ++ organs ++ blasts ++ temporaries
 
 items :: [ItemKind]
 items =
-  [sandstoneRock, dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, potion13, potion14, potion15, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, meleeEnhancement, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, knife, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency]
-  -- Allure-specific
-  ++ [steelScrap, needle, needleSleep, harpoon3, flask15, flask16, flask17, rawMeatChunk, roastedMeatChunk, scrollAd1, blowtorch, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, laserSharpener, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, heavyBoot, spacesuit, spacesuitTorn, crowbar, catsPaw, fireAxe, dagger, hammer4, hammer5, swordNullifySharp, oxTongue, halberdPushActorSharp, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, hoe, spade, treePruner, cleaningPole, staff, pipe, longPole, constructionHooter, wasteContainer, spotlight, ragTangle]
+  [sandstoneRock, steelScrap, needle, dart, spike, spike2, slingStone, slingBullet, needleSleep, paralizingProj, harpoon, harpoon2, harpoon3, net, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, potion13, potion14, potion15, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, scrollAd1, rawMeatChunk, roastedMeatChunk, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, light1, light2, light3, blanket, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, motionScanner, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, meleeEnhancement, spacesuit, spacesuitTorn, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, heavyBoot, ragTangle, buckler, shield, shield2, shield3, blowtorch, laserSharpener, crowbar, catsPaw, hammerTemplate, hammer1, hammer2, hammer3, hammer4, hammer5, hammerParalyze, hammerSpark, knife, daggerDropBestWeapon, dagger, sword, swordImpress, swordNullify, swordNullifySharp, halberd, oxTongue, fireAxe, pollaxe, halberdPushActor, halberdPushActorSharp, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, hoe, spade, treePruner, cleaningPole, staff, pipe, longPole, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency, jumpingPole, constructionHooter, wasteContainer, spotlight, seeingItem]
 
-sandstoneRock,    dart, spike, spike2, slingStone, slingBullet, paralizingProj, harpoon, harpoon2, net, light1, light2, light3, blanket, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, potion13, potion14, potion15, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, jumpingPole, meleeEnhancement, seeingItem, motionScanner, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, buckler, shield, shield2, shield3, knife, daggerDropBestWeapon, hammerTemplate, hammer1, hammer2, hammer3, hammerParalyze, hammerSpark, sword, swordImpress, swordNullify, halberd, halberd2, halberdPushActor, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency :: ItemKind
--- Allure-specific
-steelScrap,       needle, needleSleep, harpoon3, flask15, flask16, flask17, rawMeatChunk, roastedMeatChunk, scrollAd1, blowtorch, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, laserSharpener, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, heavyBoot, spacesuit, spacesuitTorn, crowbar, catsPaw, fireAxe, dagger, hammer4, hammer5, swordNullifySharp, oxTongue, halberdPushActorSharp, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, hoe, spade, treePruner, cleaningPole, staff, pipe, longPole, constructionHooter, wasteContainer, spotlight, ragTangle :: ItemKind
+sandstoneRock,    steelScrap, needle, dart, spike, spike2, slingStone, slingBullet, needleSleep, paralizingProj, harpoon, harpoon2, harpoon3, net, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, potion13, potion14, potion15, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, scrollAd1, rawMeatChunk, roastedMeatChunk, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, light1, light2, light3, blanket, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, motionScanner, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, meleeEnhancement, spacesuit, spacesuitTorn, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, heavyBoot, ragTangle, buckler, shield, shield2, shield3, blowtorch, laserSharpener, crowbar, catsPaw, hammerTemplate, hammer1, hammer2, hammer3, hammer4, hammer5, hammerParalyze, hammerSpark, knife, daggerDropBestWeapon, dagger, sword, swordImpress, swordNullify, swordNullifySharp, halberd, oxTongue, fireAxe, pollaxe, halberdPushActor, halberdPushActorSharp, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, hoe, spade, treePruner, cleaningPole, staff, pipe, longPole, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency, jumpingPole, constructionHooter, wasteContainer, spotlight, seeingItem :: ItemKind
 
 -- Keep the dice rolls and sides in aspects small so that not too many
 -- distinct items are generated (for display in item lore and for narrative
@@ -145,8 +145,6 @@ symbolWand       = '-'  -- magical rod, transmitter, pistol, rifle, instrument
 _symbolStaff     = '_'  -- scanner
 symbolFood       = ','  -- also body part; distinct from floor: not middle dot
 
--- * Generic items, for any epoch (some may be removed for Allure)
-
 -- ** Thrown weapons
 
 sandstoneRock = ItemKind
@@ -165,6 +163,33 @@ sandstoneRock = ItemKind
                , toVelocity 70 ] -- not dense, irregular
   , ieffects = []
   , idesc    = "A light, irregular lump of ceramic foam used in construction."
+  , ikit     = []
+  }
+steelScrap = sandstoneRock
+  { iname    = "steel scrap"
+  , ifreq    = [ (STEEL_SCRAP, 1)
+               , (UNREPORTED_INVENTORY, 1) ]  -- too weak to spam
+  , iflavour = zipPlain [Cyan]
+  , iverbHit = "grate"
+  , idesc    = " A bent lump of steel scrap."
+  }
+needle = ItemKind
+  { isymbol  = symbolProjectile
+  , iname    = "needle"
+  , ifreq    = [ (NEEDLE, 1), (COMMON_ITEM, 1)
+                   -- marked as common to ensure can be polymorphed
+               , (UNREPORTED_INVENTORY, 1) ]  -- too weak to spam
+  , iflavour = zipPlain [Blue]
+  , icount   = 1 + 8 `d` 3
+  , irarity  = [(1, 1)]
+  , iverbHit = "prick"
+  , iweight  = 3
+  , idamage  = 1 `d` 1
+  , iaspects = [ AddSkill SkHurtMelee $ -10 * 5
+               , ToThrow $ ThrowMod 60 100 5  -- piercing; good shape
+               , SetFlag Fragile ]  -- breaks easily despite being piercing
+  , ieffects = []
+  , idesc    = "A long sturdy hypodermic needle ending in a dried out micro-syringe that is easy to break off. It's too thin to cause great harm, but it passes through flesh easily."
   , ikit     = []
   }
 dart = ItemKind
@@ -260,6 +285,25 @@ slingBullet = ItemKind
 
 -- ** Exotic thrown weapons
 
+needleSleep = ItemKind
+  { isymbol  = symbolProjectile
+  , iname    = "tranquillizer dart"
+  , ifreq    = [ (TRANQUILIZER_DART, 1), (COMMON_ITEM, 1)
+               , (MERCENARY_AMMO, 25) ]
+                   -- marked as common to ensure can be polymorphed
+  , iflavour = zipPlain [BrBlue]
+  , icount   = 1 `dL` 3
+  , irarity  = [(1, 1)]
+  , iverbHit = "prick"
+  , iweight  = 10
+  , idamage  = 1 `d` 1
+  , iaspects = [ AddSkill SkHurtMelee $ -10 * 5
+               , SetFlag Fragile
+               , toVelocity 60 ]  -- syringe blocks piercing; slender fins
+  , ieffects = [PutToSleep]
+  , idesc    = "A long hypodermic needle ending in a micro-syringe with residues of the sleeping agent."
+  , ikit     = []
+  }
 -- Identified, because shape (and name) says it all. Detailed aspects id by use.
 -- This is an extremely large value for @Paralyze@. Normally for such values
 -- we should instead use condition that disables (almost) all stats,
@@ -309,6 +353,17 @@ harpoon2 = harpoon
   , idamage  = 7 `d` 1
   , idesc    = "A cord ending in a sharpened cargo-hook that, in addition to entangling the victim, gains purchase biting into the body."
   }
+harpoon3 = harpoon
+  { iname    = "whaling harpoon"
+  , ifreq    = [(TREASURE, 50), (MUSEAL, 100)]
+  , iflavour = zipFancy [Red]
+  , irarity  = [(8, 4)]
+  , idamage  = 8 `d` 1
+  , iaspects = [SetFlag Unique] ++ iaspects harpoon
+  , ieffects = Yell  -- evoke a cry from pain; brutal
+               : ieffects harpoon
+  , idesc    = "A display piece harking back to the Earth's oceanic tourism heyday. Surprising sharp for its age. The cruel, barbed head lodges in its victim so painfully that the weakest tug of the rope sends the victim flying."
+  }
 net = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "net"
@@ -329,104 +384,86 @@ net = ItemKind
   , ikit     = []
   }
 
--- ** Lights
+-- ** Explosives, with the only effect being @Explode@
 
-light1 = ItemKind
-  { isymbol  = symbolLight
-  , iname    = "torch"
-  , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_MANIPULATION, 100)
-               , (FIRE_SOURCE, 1), (WOODEN_TORCH, 1) ]
-  , iflavour = zipPlain [Brown]
-  , icount   = 1 `dL` 4
-  , irarity  = [(3, 12), (4, 1)]  -- crafted, so less rare
-  , iverbHit = "scorch"
-  , iweight  = 1000
-  , idamage  = 0
-  , iaspects = [ AddSkill SkShine 3, AddSkill SkSight (-2)
-                   -- not only flashes, but also sparks,
-                   -- so unused by AI due to the mixed blessing
-               , SetFlag Lobable, SetFlag Equipable
-               , EqpSlot EqpSlotShine ]
-                   -- not Fragile; reusable flare;
-                   -- the staff culled when crafting, so no velocity malus
-  , ieffects = [Burn 1]
-  , idesc    = "A puttering torch improvised with rags on a stick, soaked in any lubricant or oil or resin or tar that could be scavenged in a hurry."
-  , ikit     = []
-  }
-light2 = ItemKind
-  { isymbol  = symbolLight
-  , iname    = "oil lamp"
-  , ifreq    = [(COMMON_ITEM, 100), (LIGHT_MANIPULATION, 100)]
-  , iflavour = zipPlain [BrYellow]
-  , icount   = 1 `dL` 2
-  , irarity  = [(6, 10)]
-  , iverbHit = "burn"
-  , iweight  = 1500
-  , idamage  = 1 `d` 1
-  , iaspects = [ AddSkill SkShine 3, AddSkill SkSight (-1)
-               , SetFlag Lobable, SetFlag Fragile, SetFlag Equipable
-               , EqpSlot EqpSlotShine ]
-  , ieffects = [ Burn 1
-               , toOrganBad S_PACIFIED (2 + 1 `d` 2)
-               , OnSmash (Explode S_BURNING_OIL_2) ]
-  , idesc    = "A restaurant table glass lamp filled with plant oil feeding a slender wick."
-  , ikit     = []
-  }
-light3 = ItemKind
-  { isymbol  = symbolLight
-  , iname    = "brass lantern"
-  , ifreq    = [(COMMON_ITEM, 100), (MUSEAL, 100), (LIGHT_MANIPULATION, 20)]
+fragmentationBomb = ItemKind
+  { isymbol  = symbolProjectile
+  , iname    = "hand bomb"
+      -- improvised bomb filled with iron pellets, nuts, cut nails;
+      -- deflagration, not detonation, so large mass and hard container
+      -- required not to burn harmlessly; improvised short fuze;
+      -- can't be more powerful or would fracture the spaceship's hull
+  , ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 200)]
   , iflavour = zipPlain [Red]
-  , icount   = 1
-  , irarity  = [(6, 1), (10, 4)]
-  , iverbHit = "burn"
-  , iweight  = 3000
-  , idamage  = 2 `d` 1
-  , iaspects = [ AddSkill SkShine 4, AddSkill SkSight (-1)
-               , SetFlag Lobable, SetFlag Fragile, SetFlag Equipable
-               , EqpSlot EqpSlotShine ]
-  , ieffects = [ Burn 1
-               , toOrganBad S_PACIFIED (4 + 1 `d` 2)
-               , OnSmash (Explode S_BURNING_OIL_4) ]
-  , idesc    = "Very old, very bright and very heavy lantern made of hand-polished brass."
+  , icount   = 1 `dL` 5  -- many, because not very intricate
+  , irarity  = [(5, 8), (10, 5)]
+  , iverbHit = "thud"
+  , iweight  = 3000  -- low velocity due to weight
+  , idamage  = 1 `d` 1  -- heavy and hard
+  , iaspects = [SetFlag Lobable, SetFlag Fragile]
+  , ieffects = [ Explode S_FOCUSED_FRAGMENTATION
+               , OnSmash (Explode S_VIOLENT_FRAGMENTATION) ]
+  , idesc    = "Shards of brittle metal packed around an explosive core."
   , ikit     = []
   }
-blanket = ItemKind
-  { isymbol  = symbolLight
-  , iname    = "mineral fibre blanket"
-  , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_MANIPULATION, 100), (BLANKET, 1)
-               , (THICK_CLOTH, 1), (FIREPROOF_CLOTH, 1)
-               , (FIRE_FIGHTING_ITEM, 30) ]
+concussionBomb = fragmentationBomb
+  { iname    = "canister"
+      -- slightly stabilized liquid explosive in a soft container, hence
+      -- no fragmentation, but huge shock wave despite small size and lack
+      -- of strong container to build up pressure; indoors help the shock wave;
+      -- unstable enough that no fuze required (or simple electric fuse?);
+      -- that's the most potent explosive (a detonating one) to be found
+      -- and only in small quantities, due to depressurization hazard
   , iflavour = zipPlain [Magenta]
-  , icount   = 1
-  , irarity  = [(1, 1)]  -- scavenged from walls
-  , iverbHit = "swoosh"
+  , iverbHit = "bonk"
+  , iweight  = 400
+  , idamage  = 0
+  , iaspects = [ SetFlag Lobable, SetFlag Fragile
+               , toVelocity 70 ]  -- flappy and so slow
+  , ieffects = [ Explode S_FOCUSED_CONCUSSION
+               , OnSmash (Explode S_VIOLENT_CONCUSSION) ]
+  , idesc    = "Avoid sudden movements."
+  }
+-- Not flashbang, because powerful bang without fragmentation is harder
+-- to manufacture (requires an oxidizer and steel canister with holes).
+-- The bang would also paralyze and/or lower the movement skill
+-- (out of balance due to ear trauma).
+flashBomb = fragmentationBomb
+  { iname    = "powder tube"  -- filled with magnesium flash powder
+  , iflavour = zipPlain [BrYellow]  -- avoid @BrWhite@; looks wrong in dark
+  , iverbHit = "flash"
+  , iweight  = 400
+  , idamage  = 0
+  , iaspects = [ SetFlag Lobable, SetFlag Fragile
+               , toVelocity 70 ]  -- bad shape for throwing
+  , ieffects = [Explode S_FOCUSED_FLASH, OnSmash (Explode S_VIOLENT_FLASH)]
+  , idesc    = "For dramatic entrances and urgent exits."
+  }
+firecrackerBomb = fragmentationBomb
+  { iname = "roll"  -- not fireworks, as they require outdoors
+  , iflavour = zipPlain [BrMagenta]
+  , irarity  = [(1, 5), (5, 6)]  -- a toy, if deadly
+  , iverbHit = "crack"  -- a pun, matches the verb from "ItemKindBlast"
   , iweight  = 1000
   , idamage  = 0
-  , iaspects = [ AddSkill SkShine (-10)
-               , AddSkill SkArmorMelee 2, AddSkill SkMaxCalm 5
-               , SetFlag Lobable, SetFlag Equipable
-               , EqpSlot EqpSlotArmorMelee ]
-                   -- not Fragile; reusable douse implement;
-                   -- douses torch, lamp and lantern in one action,
-                   -- both in equipment and when thrown at the floor
-  , ieffects = []
-  , idesc    = "Flame-retardant synthetic fibres."
-  , ikit     = []
+  , iaspects = [SetFlag Lobable, SetFlag Fragile]
+  , ieffects = [Explode S_FIRECRACKER, OnSmash (Explode S_FIRECRACKER)]
+  , idesc    = "String and paper, concealing a deadly surprise."
   }
 
--- ** Exploding consumables, often intended to be thrown.
+-- ** Exploding consumables.
 
 -- Not identified, because they are perfect for the id-by-use fun,
 -- due to effects. They are fragile and upon hitting the ground explode
 -- for effects roughly corresponding to their normal effects.
 -- Whether to hit with them or explode them close to the target
 -- is intended to be an interesting tactical decision.
---
--- Flasks are often not natural; maths, magic, distillery.
--- In fact, they cover all temporary conditions, except those for stats
--- resistance and regeneration. They never heal, directly nor indirectly
--- (regen), so may be thrown without the risk of wasting precious HP.
+
+-- Flasks are intended to be thrown. They are often not natural: maths, magic,
+-- distillery. In fact, they cover all temporary conditions, except those
+-- for stats resistance and regeneration. They never heal, directly
+-- nor indirectly (regen), so may be thrown without the risk of wasting
+-- precious HP.
 --
 -- There is no flask nor condition that only does Calm or max Calm depletion,
 -- because Calm reduced often via combat, etc.
@@ -567,10 +604,40 @@ flask14 = flaskTemplate
                , toOrganBad S_DEFENSELESS (20 + 1 `d` 5)
                , OnSmash (Explode S_GLASS_HAIL) ]  -- enough glass to cause that
   }
+flask15 = flaskTemplate
+  { iname    = "cartridge"
+  , ifreq    = [ (COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)
+               , (LIQUID_NITROGEN, 1), (COLD_SOURCE, 1)
+               , (FIRE_FIGHTING_ITEM, 65) ]
+  , irarity  = [(1, 3)]  -- scavenged from walls
+  , iaspects = ELabel "of liquid nitrogen"
+               : iaspects flaskTemplate
+  , ieffects = [ Burn 1  -- sensory ambiguity between hot and cold
+               , toOrganBad S_SLOWED (3 + 1 `d` 3)
+               , OnSmash (Explode S_FOCUSED_SLOWNESS_MIST) ]
+  }
+flask16 = flaskTemplate
+  { iname    = "galon"  -- diluted perfume; almost same effects
+  , ifreq    = [ (COMMON_ITEM, 100), (S_ROSE_WATER_FLASK, 1)
+               , (EXPLOSIVE, 100), (ANY_GLASS, 100), (WATER_SOURCE, 1) ]
+  , irarity  = [(1, 1)]  -- mostly obtained through crafting
+  , iaspects = ELabel "of rose water"
+               : iaspects flaskTemplate
+  , ieffects = [ Impress, toOrganGood S_ROSE_SMELLING (100 + 1 `d` 20)
+               , OnSmash ApplyPerfume, OnSmash (Explode S_FRAGRANCE) ]
+  }
+flask17 = flaskTemplate
+  { iname    = "galon"
+  , ifreq    = [ (COMMON_ITEM, 100), (ANY_GLASS, 100)
+               , (WATER_SOURCE, 1) ]
+  , irarity  = [(1, 1)]  -- usually self-made (TODO)
+  , iaspects = ELabel "of water"
+               : iaspects flaskTemplate
+  }
 
--- Vials are often natural, including natural stat boosts.
--- They also include the only healing consumables in the game,
--- apart of stimpacks and, to a limited extent, fruits.
+-- Vials are often not intended to be thrown. They usually natural,
+-- including natural stat boosts. They also include the only healing
+-- consumables in the game, apart of stimpacks and, to a limited extent, fruits.
 -- They appear deeper than most flasks. Various configurations of effects.
 -- A different class of effects is on scrolls and mechanical items.
 -- Some are shared.
@@ -765,77 +832,170 @@ potion15 = potionTemplate
                , OnSmash (Explode S_YOUTH_SPRINKLE) ]
   }
 
--- ** Explosives, with the only effect being @Explode@
+-- ** Non-exploding consumables, not specifically designed for throwing
 
-fragmentationBomb = ItemKind
-  { isymbol  = symbolProjectile
-  , iname    = "hand bomb"
-      -- improvised bomb filled with iron pellets, nuts, cut nails;
-      -- deflagration, not detonation, so large mass and hard container
-      -- required not to burn harmlessly; improvised short fuze;
-      -- can't be more powerful or would fracture the spaceship's hull
-  , ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 200)]
-  , iflavour = zipPlain [Red]
-  , icount   = 1 `dL` 5  -- many, because not very intricate
-  , irarity  = [(5, 8), (10, 5)]
-  , iverbHit = "thud"
-  , iweight  = 3000  -- low velocity due to weight
-  , idamage  = 1 `d` 1  -- heavy and hard
-  , iaspects = [SetFlag Lobable, SetFlag Fragile]
-  , ieffects = [ Explode S_FOCUSED_FRAGMENTATION
-               , OnSmash (Explode S_VIOLENT_FRAGMENTATION) ]
-  , idesc    = "Shards of brittle metal packed around an explosive core."
+-- Readable or otherwise communicating consumables require high apply skill
+-- to be consumed.
+
+scrollTemplate = ItemKind
+  { isymbol  = symbolScroll
+  , iname    = "chip"
+  , ifreq    = [(SCROLL_UNKNOWN, 1)]
+  , iflavour = zipFancy stdCol ++ zipPlain stdCol
+  , icount   = 1 `dL` 3
+  , irarity  = [(1, 14), (10, 7)]
+  , iverbHit = "thump"
+  , iweight  = 20
+  , idamage  = 0
+  , iaspects = [ PresentAs SCROLL_UNKNOWN
+               , toVelocity 30 ]  -- too small
+  , ieffects = []
+  , idesc    = "A generic, disposable chip, capable of a one-time holo-display. Some of these also contain a one-time password authorizing a particular spaceship's infrastructure transition. Nobody knows how the infrastructure might respond after so many years."
   , ikit     = []
   }
-concussionBomb = fragmentationBomb
-  { iname    = "canister"
-      -- slightly stabilized liquid explosive in a soft container, hence
-      -- no fragmentation, but huge shock wave despite small size and lack
-      -- of strong container to build up pressure; indoors help the shock wave;
-      -- unstable enough that no fuze required (or simple electric fuse?);
-      -- that's the most potent explosive (a detonating one) to be found
-      -- and only in small quantities, due to depressurization hazard
-  , iflavour = zipPlain [Magenta]
-  , iverbHit = "bonk"
-  , iweight  = 400
-  , idamage  = 0
-  , iaspects = [ SetFlag Lobable, SetFlag Fragile
-               , toVelocity 70 ]  -- flappy and so slow
-  , ieffects = [ Explode S_FOCUSED_CONCUSSION
-               , OnSmash (Explode S_VIOLENT_CONCUSSION) ]
-  , idesc    = "Avoid sudden movements."
+scroll1 = scrollTemplate
+  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_SCROLL, 100)]
+  , icount   = 1
+  , irarity  = [(5, 9), (10, 9)]  -- mixed blessing, so found early for a unique
+  , iaspects = [SetFlag Unique, ELabel "of Reckless Beacon"]
+               ++ iaspects scrollTemplate
+  , ieffects = [Summon HERO 1, Summon MOBILE_ANIMAL (2 + 1 `d` 2)]
+  , idesc    = "This industrial, wide-spectrum alarm broadcaster, if over-amped for a single powerful blast, should be able to cut through the interference and reach any lost crew members, giving them enough positional information to locate us."
   }
--- Not flashbang, because powerful bang without fragmentation is harder
--- to manufacture (requires an oxidizer and steel canister with holes).
--- The bang would also paralyze and/or lower the movement skill
--- (out of balance due to ear trauma).
-flashBomb = fragmentationBomb
-  { iname    = "powder tube"  -- filled with magnesium flash powder
-  , iflavour = zipPlain [BrYellow]  -- avoid @BrWhite@; looks wrong in dark
-  , iverbHit = "flash"
-  , iweight  = 400
-  , idamage  = 0
-  , iaspects = [ SetFlag Lobable, SetFlag Fragile
-               , toVelocity 70 ]  -- bad shape for throwing
-  , ieffects = [Explode S_FOCUSED_FLASH, OnSmash (Explode S_VIOLENT_FLASH)]
-  , idesc    = "For dramatic entrances and urgent exits."
+scroll2 = scrollTemplate
+  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_SCROLL, 100)]
+  , irarity  = [(1, 6), (10, 2)]
+  , ieffects = [Ascend True]
   }
-firecrackerBomb = fragmentationBomb
-  { iname = "roll"  -- not fireworks, as they require outdoors
-  , iflavour = zipPlain [BrMagenta]
-  , irarity  = [(1, 5), (5, 6)]  -- a toy, if deadly
-  , iverbHit = "crack"  -- a pun, matches the verb from "ItemKindBlast"
-  , iweight  = 1000
-  , idamage  = 0
-  , iaspects = [SetFlag Lobable, SetFlag Fragile]
-  , ieffects = [Explode S_FIRECRACKER, OnSmash (Explode S_FIRECRACKER)]
-  , idesc    = "String and paper, concealing a deadly surprise."
+scroll3 = scrollTemplate
+  -- needs to be common to show at least a portion of effects
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
+  , icount   = 3 `dL` 1
+  , irarity  = [(1, 14)]
+  , ieffects = [OneOf [ Paralyze 10, InsertMove 30, Discharge 0
+                      , Detect DetectEmbed 12, Detect DetectHidden 20 ]]
   }
-
--- ** Non-exploding consumables, not specifically designed for throwing
+scroll4 = scrollTemplate
+  -- needs to be common to show at least a portion of effects
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
+  , icount   = 3 `dL` 1
+  , irarity  = [(10, 14)]
+  , ieffects = [ Impress
+               , OneOf [ Teleport 20, Ascend False, Ascend True
+                       , OneOf [Summon HERO 1, Summon MOBILE_ANIMAL $ 1 `d` 2]
+                           -- gaining a hero particularly uncommon
+                       , Detect DetectLoot 20  -- the most useful of detections
+                       , CreateItem Nothing CGround COMMON_ITEM timerNone ] ]
+  }
+scroll5 = scrollTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
+  , irarity  = [(1, 6)]  -- powerful, but low counts at the depths it appears on
+  , ieffects = [InsertMove $ 20 + 1 `dL` 20]
+  }
+scroll6 = scrollTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
+  , icount   = 3 `dL` 1
+  , irarity  = [(1, 20)]  -- uncommon deep down, where all is known
+  , iaspects = ELabel "of scientific explanation"
+               : iaspects scrollTemplate
+  , ieffects = [Identify `AndEffect` RefillCalm 10]
+  , idesc    = "The most pressing existential concerns are met with a deeply satisfying scientific answer."
+  }
+scroll7 = scrollTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
+  , irarity  = [(10, 20)]  -- at endgame a crucial item may be missing
+  , iaspects = ELabel "of molecular reconfiguration"
+               : iaspects scrollTemplate
+  , ieffects = [PolyItem `AndEffect` Explode S_FIRECRACKER]
+  }
+scroll8 = scrollTemplate
+  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_SCROLL, 100)]
+  , icount   = 1
+  , irarity  = [(10, 12)]
+  , iaspects = [SetFlag Unique, ELabel "of Skeleton Key"]
+               ++ iaspects scrollTemplate
+  , ieffects = [Summon HERO 1]
+  , idesc    = "This is a security lock chip that opens all doors in the area, including the hatch to a nearby closet, resounding from the blows of, as it turns out, one of our lost crew members."
+  }
+scroll9 = scrollTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
+  , irarity  = [(10, 4)]  -- powerful, even if not ideal; scares newbies
+  , ieffects = [Detect DetectAll 20]
+  }
+scroll10 = scrollTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
+  , iaspects = ELabel "of cue interpretation"
+               : iaspects scrollTemplate
+  , ieffects = [Detect DetectActor 20]
+  }
+scroll11 = scrollTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
+  , irarity  = [(10, 11)]
+  , ieffects = [PushActor (ThrowMod 400 200 1)]  -- 8 steps, 4 turns
+  }
+scroll12 = scrollTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
+  , irarity  = [(10, 15)]
+  , iaspects = ELabel "of molecular duplication"
+               : iaspects scrollTemplate
+  , ieffects = [DupItem]
+  }
+scroll13 = scrollTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
+  , irarity  = [(10, 15)]
+  , iaspects = ELabel "of surface reconfiguration"
+               : iaspects scrollTemplate
+  , ieffects = [RerollItem]
+  }
+scroll14 = scrollTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
+  , ieffects = [Discharge $ 40 - 1 `d` 20]
+  }
+scroll15 = scrollTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
+  , irarity  = [(10, 15)]
+  , ieffects = [Discharge 0]
+  }
+scrollAd1 = scrollTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
+  , icount   = 1
+  , irarity  = [(1, 1)]  -- not every playthrough needs one
+  , iaspects = [ELabel "of tourist guide"]
+               ++ iaspects scrollTemplate
+  , ieffects = [ Impress
+               , toOrganGood S_RESOLUTE (500 + 1 `d` 200)
+                   -- a drawback (at least initially) due to @calmEnough@
+               , Explode S_RHINO_HOLOGRAM
+               , Detect DetectLoot 5 ]  -- short so useless most of the time
+  , idesc    = "Biodegradable self-powered mini-projector displaying holographic ads and shopping hints."
+  }
 
 -- Foods require only minimal apply skill to consume. Many animals can eat them.
 
+rawMeatChunk = ItemKind
+  { isymbol  = symbolFood
+  , iname    = "raw meat chunk"
+  , ifreq    = [ (RAW_MEAT_CHUNK, 100), (COMMON_ITEM, 1)
+               , (UNREPORTED_INVENTORY, 1) ]  -- no "fondles a trinket"
+  , iflavour = zipPlain [Red]
+  , icount   = 1
+  , irarity  = [(1, 1)]
+  , iverbHit = "slap"
+  , iweight  = 1000
+  , idamage  = 0
+  , iaspects = [toVelocity 50]
+  , ieffects = [DropItem maxBound 1 COrgan S_HUNGRY]
+  , idesc    = "A scrap of edible animal meat. Not very tasty nor nourishing. Cooking would make it more palatable."
+  , ikit     = []
+  }
+roastedMeatChunk = rawMeatChunk
+  { iname    = "roasted meat chunk"
+  , ifreq    = [ (ROASTED_MEAT_CHUNK, 100), (COOKED_FOOD, 60)
+               , (COMMON_ITEM, 1) ]
+  , iflavour = zipPlain [Brown]
+  , ieffects = [DropItem maxBound 3 COrgan S_HUNGRY]
+  , idesc    = "Delicious and filling chunk of meat. The thermal processing released flavour and made it easier to digest."
+  }
 ediblePlantTemplate = ItemKind
   { isymbol  = symbolFood
   , iname    = "edible plant"
@@ -974,208 +1134,175 @@ cookedPlant8 = cookedPlantTemplate
   , ieffects = [DropItem maxBound 5 COrgan S_HUNGRY]
   }
 
--- These require high apply skill to consume.
+-- ** Lights and related
 
-scrollTemplate = ItemKind
-  { isymbol  = symbolScroll
-  , iname    = "chip"
-  , ifreq    = [(SCROLL_UNKNOWN, 1)]
-  , iflavour = zipFancy stdCol ++ zipPlain stdCol
-  , icount   = 1 `dL` 3
-  , irarity  = [(1, 14), (10, 7)]
-  , iverbHit = "thump"
-  , iweight  = 20
-  , idamage  = 0
-  , iaspects = [ PresentAs SCROLL_UNKNOWN
-               , toVelocity 30 ]  -- too small
-  , ieffects = []
-  , idesc    = "A generic, disposable chip, capable of a one-time holo-display. Some of these also contain a one-time password authorizing a particular spaceship's infrastructure transition. Nobody knows how the infrastructure might respond after so many years."
-  , ikit     = []
-  }
-scroll1 = scrollTemplate
-  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_SCROLL, 100)]
-  , icount   = 1
-  , irarity  = [(5, 9), (10, 9)]  -- mixed blessing, so found early for a unique
-  , iaspects = [SetFlag Unique, ELabel "of Reckless Beacon"]
-               ++ iaspects scrollTemplate
-  , ieffects = [Summon HERO 1, Summon MOBILE_ANIMAL (2 + 1 `d` 2)]
-  , idesc    = "This industrial, wide-spectrum alarm broadcaster, if over-amped for a single powerful blast, should be able to cut through the interference and reach any lost crew members, giving them enough positional information to locate us."
-  }
-scroll2 = scrollTemplate
-  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(1, 6), (10, 2)]
-  , ieffects = [Ascend True]
-  }
-scroll3 = scrollTemplate
-  -- needs to be common to show at least a portion of effects
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , icount   = 3 `dL` 1
-  , irarity  = [(1, 14)]
-  , ieffects = [OneOf [ Paralyze 10, InsertMove 30, Discharge 0
-                      , Detect DetectEmbed 12, Detect DetectHidden 20 ]]
-  }
-scroll4 = scrollTemplate
-  -- needs to be common to show at least a portion of effects
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , icount   = 3 `dL` 1
-  , irarity  = [(10, 14)]
-  , ieffects = [ Impress
-               , OneOf [ Teleport 20, Ascend False, Ascend True
-                       , OneOf [Summon HERO 1, Summon MOBILE_ANIMAL $ 1 `d` 2]
-                           -- gaining a hero particularly uncommon
-                       , Detect DetectLoot 20  -- the most useful of detections
-                       , CreateItem Nothing CGround COMMON_ITEM timerNone ] ]
-  }
-scroll5 = scrollTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(1, 6)]  -- powerful, but low counts at the depths it appears on
-  , ieffects = [InsertMove $ 20 + 1 `dL` 20]
-  }
-scroll6 = scrollTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , icount   = 3 `dL` 1
-  , irarity  = [(1, 20)]  -- uncommon deep down, where all is known
-  , iaspects = ELabel "of scientific explanation"
-               : iaspects scrollTemplate
-  , ieffects = [Identify `AndEffect` RefillCalm 10]
-  , idesc    = "The most pressing existential concerns are met with a deeply satisfying scientific answer."
-  }
-scroll7 = scrollTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(10, 20)]  -- at endgame a crucial item may be missing
-  , iaspects = ELabel "of molecular reconfiguration"
-               : iaspects scrollTemplate
-  , ieffects = [PolyItem `AndEffect` Explode S_FIRECRACKER]
-  }
-scroll8 = scrollTemplate
-  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_SCROLL, 100)]
-  , icount   = 1
-  , irarity  = [(10, 12)]
-  , iaspects = [SetFlag Unique, ELabel "of Skeleton Key"]
-               ++ iaspects scrollTemplate
-  , ieffects = [Summon HERO 1]
-  , idesc    = "This is a security lock chip that opens all doors in the area, including the hatch to a nearby closet, resounding from the blows of, as it turns out, one of our lost crew members."
-  }
-scroll9 = scrollTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(10, 4)]  -- powerful, even if not ideal; scares newbies
-  , ieffects = [Detect DetectAll 20]
-  }
-scroll10 = scrollTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , iaspects = ELabel "of cue interpretation"
-               : iaspects scrollTemplate
-  , ieffects = [Detect DetectActor 20]
-  }
-scroll11 = scrollTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(10, 11)]
-  , ieffects = [PushActor (ThrowMod 400 200 1)]  -- 8 steps, 4 turns
-  }
-scroll12 = scrollTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(10, 15)]
-  , iaspects = ELabel "of molecular duplication"
-               : iaspects scrollTemplate
-  , ieffects = [DupItem]
-  }
-scroll13 = scrollTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(10, 15)]
-  , iaspects = ELabel "of surface reconfiguration"
-               : iaspects scrollTemplate
-  , ieffects = [RerollItem]
-  }
-scroll14 = scrollTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , ieffects = [Discharge $ 40 - 1 `d` 20]
-  }
-scroll15 = scrollTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(10, 15)]
-  , ieffects = [Discharge 0]
-  }
-
--- ** Assorted tools
-
-jumpingPole = ItemKind
-  { isymbol  = symbolWand
-  , iname    = "jumping pole"
-  , ifreq    = [(COMMON_ITEM, 100), (POLE, 10)]
-  , iflavour = zipFancy [White]
-  , icount   = 1
-  , irarity  = [(6, 12)]
-  , iverbHit = "prod"
-  , iweight  = 4000
-  , idamage  = 0
-  , iaspects = [ Timeout $ (2 + 1 `d` 2 - 1 `dL` 2) * 5
-               , SetFlag Durable ]
-  , ieffects = [toOrganGood S_HASTED 1]
-                 -- safe for AI, because it speeds up, so when AI applies it
-                 -- again and again, it gets its time back and is not stuck;
-                 -- in total, the explorations speed is unchanged,
-                 -- but it's useful when fleeing in the dark to make distance
-                 -- and when initiating combat, so it's OK that AI uses it
-  , idesc    = "Makes you vulnerable at take-off, but then you are free like a bird."
-  , ikit     = []
-  }
-meleeEnhancement = ItemKind
-  { isymbol  = symbolTool
-  , iname    = "barebones exoskeleton"
-  , ifreq    = [(COMMON_ITEM, 100)]
-  , iflavour = zipFancy [Blue]
-  , icount   = 1
-  , irarity  = [(10, 10)]
-  , iverbHit = "zip"
+light1 = ItemKind
+  { isymbol  = symbolLight
+  , iname    = "torch"
+  , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_MANIPULATION, 100)
+               , (FIRE_SOURCE, 1), (WOODEN_TORCH, 1) ]
+  , iflavour = zipPlain [Brown]
+  , icount   = 1 `dL` 4
+  , irarity  = [(3, 12), (4, 1)]  -- crafted, so less rare
+  , iverbHit = "scorch"
   , iweight  = 1000
   , idamage  = 0
-  , iaspects = [ AddSkill SkHurtMelee $ (2 + 1 `dL` 5) * 5
-               , SetFlag Equipable
-               , EqpSlot EqpSlotHurtMelee ]
-  , ieffects = []
-  , idesc    = "A minimal frame from carbon fibre, designed to prevent injuries when lifting and operating heavy construction equipment. Cheap, light, disposable."
+  , iaspects = [ AddSkill SkShine 3, AddSkill SkSight (-2)
+                   -- not only flashes, but also sparks,
+                   -- so unused by AI due to the mixed blessing
+               , SetFlag Lobable, SetFlag Equipable
+               , EqpSlot EqpSlotShine ]
+                   -- not Fragile; reusable flare;
+                   -- the staff culled when crafting, so no velocity malus
+  , ieffects = [Burn 1]
+  , idesc    = "A puttering torch improvised with rags on a stick, soaked in any lubricant or oil or resin or tar that could be scavenged in a hurry."
   , ikit     = []
   }
-seeingItem = ItemKind
-  { isymbol  = symbolFood
-  , iname    = "visual sensor"
-  , ifreq    = [(COMMON_ITEM, 100)]
+light2 = ItemKind
+  { isymbol  = symbolLight
+  , iname    = "oil lamp"
+  , ifreq    = [(COMMON_ITEM, 100), (LIGHT_MANIPULATION, 100)]
+  , iflavour = zipPlain [BrYellow]
+  , icount   = 1 `dL` 2
+  , irarity  = [(6, 10)]
+  , iverbHit = "burn"
+  , iweight  = 1500
+  , idamage  = 1 `d` 1
+  , iaspects = [ AddSkill SkShine 3, AddSkill SkSight (-1)
+               , SetFlag Lobable, SetFlag Fragile, SetFlag Equipable
+               , EqpSlot EqpSlotShine ]
+  , ieffects = [ Burn 1
+               , toOrganBad S_PACIFIED (2 + 1 `d` 2)
+               , OnSmash (Explode S_BURNING_OIL_2) ]
+  , idesc    = "A restaurant table glass lamp filled with plant oil feeding a slender wick."
+  , ikit     = []
+  }
+light3 = ItemKind
+  { isymbol  = symbolLight
+  , iname    = "brass lantern"
+  , ifreq    = [(COMMON_ITEM, 100), (MUSEAL, 100), (LIGHT_MANIPULATION, 20)]
   , iflavour = zipPlain [Red]
   , icount   = 1
-  , irarity  = [(1, 2)]
-  , iverbHit = "gaze at"
-  , iweight  = 500
-  , idamage  = 0
-  , iaspects = [ Timeout 3
-               , AddSkill SkSight 10  -- a spyglass for quick wields
-               , AddSkill SkMaxCalm 30  -- to diminish clipping sight by Calm
-               , AddSkill SkShine 2  -- to lit corridors when flying
-               , AddSkill SkMaxHP (-30)  -- prevent excessive stacking
-               , SetFlag Periodic ]
-  , ieffects = [ Detect DetectActor 20  -- rare enough
-               , Explode S_SINGLE_SPARK
-               , toOrganNoTimer S_POISONED  -- really can't be worn
-               , Summon MOBILE_ROBOT 1 ]
-  , idesc    = "An oversize visual sensor freshly torn out of some unfortunate robot. It still sends a clear picture to unidentified receivers, even though the coolant liquid seeps from the seized servos and many internal contacts spark loose."
+  , irarity  = [(6, 1), (10, 4)]
+  , iverbHit = "burn"
+  , iweight  = 3000
+  , idamage  = 2 `d` 1
+  , iaspects = [ AddSkill SkShine 4, AddSkill SkSight (-1)
+               , SetFlag Lobable, SetFlag Fragile, SetFlag Equipable
+               , EqpSlot EqpSlotShine ]
+  , ieffects = [ Burn 1
+               , toOrganBad S_PACIFIED (4 + 1 `d` 2)
+               , OnSmash (Explode S_BURNING_OIL_4) ]
+  , idesc    = "Very old, very bright and very heavy lantern made of hand-polished brass."
   , ikit     = []
   }
-motionScanner = ItemKind
-  { isymbol  = symbolTool
-  , iname    = "handheld sonar"
-  , ifreq    = [(COMMON_ITEM, 100), (ADD_NOCTO_1, 20)]
-  , iflavour = zipPlain [Green]
+blanket = ItemKind
+  { isymbol  = symbolLight
+  , iname    = "mineral fibre blanket"
+  , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_MANIPULATION, 100), (BLANKET, 1)
+               , (THICK_CLOTH, 1), (FIREPROOF_CLOTH, 1)
+               , (FIRE_FIGHTING_ITEM, 30) ]
+  , iflavour = zipPlain [Magenta]
   , icount   = 1
-  , irarity  = [(5, 2)]
-  , iverbHit = "ping"
+  , irarity  = [(1, 1)]  -- scavenged from walls
+  , iverbHit = "swoosh"
   , iweight  = 1000
   , idamage  = 0
-  , iaspects = [ AddSkill SkNocto 1
-               , AddSkill SkArmorMelee (-15 + (1 `dL` 5) * 5)
-               , AddSkill SkArmorRanged (-15 + (1 `dL` 5) * 3)
-               , SetFlag Equipable, EqpSlot EqpSlotMiscBonus ]
+  , iaspects = [ AddSkill SkShine (-10)
+               , AddSkill SkArmorMelee 2, AddSkill SkMaxCalm 5
+               , SetFlag Lobable, SetFlag Equipable
+               , EqpSlot EqpSlotArmorMelee ]
+                   -- not Fragile; reusable douse implement;
+                   -- douses torch, lamp and lantern in one action,
+                   -- both in equipment and when thrown at the floor
   , ieffects = []
-  , idesc    = "Portable underwater echolocator overdriven to scan dark corridors at the cost of emitting loud pings."
+  , idesc    = "Flame-retardant synthetic fibres."
   , ikit     = []
+  }
+
+-- ** Tools used for terrain transormation and crafting, not for wearing
+
+chisel = ItemKind  -- ignored by AI, but that's fine, others suffice
+  { isymbol  = symbolTool
+  , iname    = "chisel"
+  , ifreq    = [(CURIOUS_ITEM, 100), (BREACHING_TOOL, 1)]
+  , iflavour = zipPlain [Cyan]
+  , icount   = 1
+  , irarity  = [(2, 15)]
+  , iverbHit = "dismantle"
+  , iweight  = 500
+  , idamage  = 0  -- not a missile to avoid wasting, before a worskhop found
+  , iaspects = []  -- lost after one use; a consumable
+  , ieffects = []
+  , idesc    = "It is a breaching tool."  -- TODO: https://en.wikipedia.org/wiki/Chisel
+                   -- also say light and cheap, but not durable; one time use
+  , ikit     = []
+  }
+hacksaw = chisel
+  { iname    = "hacksaw"
+  , idesc    = "It is a breaching tool."  -- TODO: https://en.wikipedia.org/wiki/Hacksaw
+  }
+adjustableSpanner = chisel
+  { iname    = "adjustable spanner"
+  , idesc    = "It is a breaching tool."  -- TODO: https://en.wikipedia.org/wiki/Adjustable_spanner
+  }
+steelFile = chisel
+  { iname    = "steel file"
+  , ifreq    = [(CURIOUS_ITEM, 100), (BREACHING_TOOL, 1), (SHARPENING_TOOL, 1)]
+  , irarity  = [(2, 20)]
+  , iflavour = zipPlain [Blue]
+  , iverbHit = "grate"
+  , idesc    = "It is a breaching and sharpening tool."  -- TODO: https://en.wikipedia.org/wiki/File_(tool)
+  }
+honingSteel = chisel
+  { iname    = "honing steel"
+  , ifreq    = [(CURIOUS_ITEM, 100), (SHARPENING_TOOL, 1)]
+  , iflavour = zipFancy [Blue]
+  , iverbHit = "hone"
+  , idesc    = "Originally used for realigning and sharpening dulled edges of kitchen knives in the local restaurants. Now it turns utensils into weapons."
+  }
+whetstone = honingSteel
+  { iname    = "whetstone"
+  , iverbHit = "rub"
+  , idesc    = "A portable sharpening stone that can transforms a dull piece of scrap into a keen and true blade."
+  }
+diagonalPliers = chisel
+  { iname    = "pair"
+  , ifreq    = [(CURIOUS_ITEM, 100), (WIRECUTTING_TOOL, 1)]
+  , iflavour = zipPlain [Brown]
+  , iverbHit = "cut"
+  , iaspects = [ELabel "of diagonal pliers"]
+  , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Diagonal_pliers
+  }
+snips = diagonalPliers
+  { iname    = "pair"
+  , iaspects = [ELabel "of snips"]
+  , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Snips
+  }
+loppers = diagonalPliers
+  { iname    = "pair"
+  , iaspects = [ELabel "of loppers"]
+  , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Loppers
+  }
+boltCutter = diagonalPliers
+  { iname    = "bolt cutter"
+  , iaspects = []
+  , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Bolt_cutter
+  }
+solderingIron = chisel
+  { iname    = "soldering iron"
+  , ifreq    = [(CURIOUS_ITEM, 100), (BONDING_TOOL, 50)]
+  , iflavour = zipPlain [White]
+  , iverbHit = "soldier"
+  , idesc    = "It is a bonding tool."  -- TODO: wikipedia
+  }
+duckTape = solderingIron
+  { iname    = "duck tape"
+  , ifreq    = [(CURIOUS_ITEM, 100), (BONDING_TOOL, 1)]
+  , icount   = 1 `d` 4
+  , irarity  = [(2, 20)]
+  , iverbHit = "catch"
+  , idesc    = "It is a bonding tool."  -- TODO: https://en.wikipedia.org/wiki/Duct_tape
   }
 
 -- ** Periodic jewelry
@@ -1249,7 +1376,7 @@ necklace3 = necklaceTemplate
 necklace4 = necklaceTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
   , iaspects = Timeout ((3 + 1 `d` 3 - 1 `dL` 3) * 2)
-               : iaspects_necklaceTemplate
+               : iaspects_necklaceTemplate  -- OP if Durable; free blink
   , ieffects = [Teleport $ 3 `d` 2]
   }
 necklace5 = necklaceTemplate
@@ -1309,6 +1436,24 @@ necklace10 = necklaceTemplate
   , ieffects = [ Detect DetectLoot 20
                , Teleport 40  -- risky
                , toOrganBad S_PARSIMONIOUS (5 + 1 `d` 3) ]  -- hard to flee
+  }
+motionScanner = ItemKind
+  { isymbol  = symbolTool
+  , iname    = "handheld sonar"
+  , ifreq    = [(COMMON_ITEM, 100), (ADD_NOCTO_1, 20)]
+  , iflavour = zipPlain [Green]
+  , icount   = 1
+  , irarity  = [(5, 2)]
+  , iverbHit = "ping"
+  , iweight  = 1000
+  , idamage  = 0
+  , iaspects = [ AddSkill SkNocto 1
+               , AddSkill SkArmorMelee (-15 + (1 `dL` 5) * 5)
+               , AddSkill SkArmorRanged (-15 + (1 `dL` 5) * 3)
+               , SetFlag Equipable, EqpSlot EqpSlotMiscBonus ]
+  , ieffects = []
+  , idesc    = "Portable underwater echolocator overdriven to scan dark corridors at the cost of emitting loud pings."
+  , ikit     = []
   }
 
 -- ** Non-periodic jewelry
@@ -1486,6 +1631,60 @@ armorMail = armorLeather
   , ieffects = []
   , idesc    = "A civilian bulletproof vest. Discourages foes from attacking your torso, making it harder for them to land a blow. Really hard to wash due to thickness."
   }
+meleeEnhancement = ItemKind
+  { isymbol  = symbolTorsoArmor
+  , iname    = "barebones exoskeleton"
+  , ifreq    = [(COMMON_ITEM, 100)]
+  , iflavour = zipFancy [Blue]
+  , icount   = 1
+  , irarity  = [(10, 10)]
+  , iverbHit = "zip"
+  , iweight  = 1000
+  , idamage  = 0
+  , iaspects = [ AddSkill SkHurtMelee $ (2 + 1 `dL` 5) * 5
+               , AddSkill SkArmorMelee 2
+               , SetFlag Durable, SetFlag Equipable
+               , EqpSlot EqpSlotHurtMelee ]
+  , ieffects = []
+  , idesc    = "A minimal frame from carbon fibre, designed to prevent injuries when lifting and operating heavy construction equipment. Cheap, light, disposable."
+  , ikit     = []
+  }
+spacesuit = ItemKind
+  { isymbol  = symbolTorsoArmor
+  , iname    = "spacesuit"
+  , ifreq    = [(S_SPACESUIT, 1)]
+  , iflavour = zipFancy [BrWhite]
+  , icount   = 1
+  , irarity  = [(10, 10)]
+  , iverbHit = "hug"
+  , iweight  = 250000  -- including the fake gravity mass from two boots
+  , idamage  = 0
+  , iaspects = [ AddSkill SkHurtMelee (-30)  -- easier when boots integrated
+               , AddSkill SkSight (-1)
+               , AddSkill SkHearing (-10), AddSkill SkSmell (-10)  -- worse now
+               , AddSkill SkArmorMelee $ (2 + 2 `dL` 3) * 20
+               , AddSkill SkArmorRanged $ (1 + 1 `dL` 2) * 12
+                   -- both armors are the sum from the set
+               , SetFlag Durable, SetFlag Equipable
+               , EqpSlot EqpSlotArmorMelee ]
+  , ieffects = []
+  , idesc    = "A heavy spacesuit, with micro-suction machinery build into its boots, but requiring an external air tank for space walking."
+  , ikit     = []
+  }
+spacesuitTorn = spacesuit
+  { iname    = "torn spacesuit"
+  , ifreq    = [(CURIOUS_ITEM, 100), (S_SPACESUIT_TORN, 1)]
+  , irarity  = [(1, 17)]
+  , iverbHit = "entangle"
+  , iweight  = 10000
+  , iaspects = [ AddSkill SkHurtMelee (-30)  -- easier when boots integrated
+               , AddSkill SkSight (-1)  -- obstructed despite the tears
+               , AddSkill SkArmorMelee $ (1 `d` 3) * 10
+               , AddSkill SkArmorRanged $ (1 `d` 2) * 6
+               , SetFlag Durable, SetFlag Equipable
+               , EqpSlot EqpSlotArmorMelee ]
+  , idesc    = "A badly torn spacesuit. Perhaps two decent wearable pieces could be salvaged by extracting, matching and patching components on a suitable workbench using scissors of some kind."
+  }
 gloveFencing = ItemKind
   { isymbol  = symbolMiscArmor
   , iname    = "construction glove"
@@ -1603,6 +1802,38 @@ helmArmored = ItemKind
   , idesc    = "Blocks out everything, including your senses."
   , ikit     = []
   }
+heavyBoot = ItemKind
+  { isymbol  = symbolMiscArmor
+  , iname    = "spacesuit boot"
+  , ifreq    = [ (COMMON_ITEM, 100), (S_SPACESUIT_BOOT, 1)
+               , (SPACESUIT_PART, 2), (ARMOR_MISC, 1) ]
+  , iflavour = zipFancy [Magenta]
+  , icount   = 1
+  , irarity  = [(1, 13), (3 * 10/15, 13), (4 * 10/15, 1)]
+  , iverbHit = "sock"
+  , iweight  = 100000  -- including the fake gravity mass
+  , idamage  = 6 `d` 1
+  , iaspects = [ Timeout 4
+               , AddSkill SkHurtMelee (-20)
+               , AddSkill SkArmorMelee $ (1 + 1 `dL` 3) * 5
+               , SetFlag Durable, SetFlag Meleeable
+               , EqpSlot EqpSlotWeaponFast  -- hope to replace with better soon
+               , toVelocity 500 ]  -- the fake mass not counted for throwing
+  , ieffects = []
+  , idesc    = "An armored boot, cut-off from a spacesuit. The in-built micro-suction machinery for maintaining traction in the absence of gravity gives stability equivalent to an extra 100kg of mass. Kicks get abrupt acceleration millimeters short of the target."
+  , ikit     = []
+  }
+ragTangle = sandstoneRock
+  { isymbol  = symbolClothes
+  , iname    = "tangle"
+  , ifreq    = [(S_RAG_TANGLE, 1), (THICK_CLOTH, 1), (UNREPORTED_INVENTORY, 1)]
+  , iflavour = zipPlain [Brown]
+  , iverbHit = "touch"
+  , iweight  = 200
+  , idamage  = 0
+  , iaspects = [ELabel "of rags", SetFlag Fragile, AddSkill SkArmorMelee 1]
+  , idesc    = ""
+  }
 -- Shield doesn't protect against ranged attacks to prevent
 -- micromanagement: walking with shield, melee without.
 -- Note that AI will pick them up but never wear and will use them at most
@@ -1665,36 +1896,82 @@ shield3 = shield2
 -- characteristics, even when upgraded. Sharpening of weapons usually
 -- just increases their damage.
 
-knife = ItemKind
-  { isymbol  = symbolEdged
-  , iname    = "cleaver"
-  , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 200), (S_CLEAVER, 1)]
-  , iflavour = zipPlain [BrCyan]
+-- For some weapons the main damage is not edged nor piercing,
+-- but wounding trough impact or burns. A portion of such weapons
+-- also double as tools for terrain transformation or crafting.
+
+blowtorch = ItemKind
+  { isymbol  = symbolLight
+  , iname    = "blowtorch"  -- not unique, but almost never generated on floor
+  , ifreq    = [ (BLOWTORCH, 1), (VALUABLE, 20)  -- make AI afraid to hog
+               , (CURIOUS_ITEM, 1)
+               , (BREACHING_TOOL, 1), (FIRE_SOURCE, 1) ]
+                 -- infinite use, but harmful
+  , iflavour = zipPlain [BrYellow]
   , icount   = 1
-  , irarity  = [(1, 5), (5, 25), (9, 1)]
-                 -- useful initially and for crafting mid-game
-  , iverbHit = "cut"
-  , iweight  = 1000
-  , idamage  = 5 `d` 1
-  , iaspects = [ Timeout 3
-               , AddSkill SkHurtMelee $ (-1 + 1 `d` 3 + 1 `dL` 2) * 3
-                   -- very common, so don't make too random
+  , irarity  = [(1, 1)]
+  , iverbHit = "scorch"
+  , iweight  = 2000
+  , idamage  = 0
+  , iaspects = [ Timeout 4
+               , AddSkill SkAlter 2
                , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotWeaponFast
-               , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
-  , ieffects = []
-  , idesc    = "A heavy professional kitchen blade. Will do fine cutting any kind of meat, bone and an occasional metal can. Does not penetrate deeply, but is quick to move and hard to block. Especially useful in conjunction with a larger weapon."
+               , EqpSlot EqpSlotAlter
+               , toVelocity 0 ]  -- @Burn@ not effective when thrown
+  , ieffects = [ Burn 3  -- ensure heroes wear initially, so they reach lvl 4
+               , Impress ]
+      -- is used for melee in precedence to fists, but not to cleavers;
+      -- so if player wants to hit with it, it's enough to pack other gear;
+      -- is also the low bar for self-inflicted damage from durable breaching
+      -- tool and fire source use so that other tool-weapons need only
+      -- do that many non-armor affected damage to dissuade the player
+      -- from using them without careful thought
+  , idesc    = "A sturdy old-fashioned portable blowtorch for fine cutting or welding of metals. Rather weak, but does not require access codes to high current power outlets. If you can patiently suffer the heat, it can be used as a clumsy breaching tool."
   , ikit     = []
   }
-daggerDropBestWeapon = knife
-  { iname    = "Double Dagger"
-  , ifreq    = [(TREASURE, 20), (MUSEAL, 100)]
-  , irarity  = [(1, 3), (10, 3)]
-  , iaspects = [SetFlag Unique]
-               ++ iaspects knife
-  , ieffects = [DropBestWeapon, Yell]  -- powerful and low timeout, but makes
-                                       -- noise and useless against stupid foes
-  , idesc    = "An antique double dagger that a focused fencer can use to catch and twist away an opponent's blade."
+laserSharpener = honingSteel
+  { iname    = "laser sharpener"
+  , ifreq    = [(CURIOUS_ITEM, 100), (SHARPENING_TOOL, 1)]
+  , iflavour = zipFancy [BrBlue]
+  , irarity  = [(10, 8)]
+  , iweight  = 2000
+  , idamage  = 0
+  , iaspects = [ SetFlag Unique, Timeout 10
+               , SetFlag Durable, SetFlag Meleeable, EqpSlot EqpSlotWeaponBig
+               , toVelocity 0 ]  -- @Burn@ not effective when thrown
+  , ieffects = [Burn 5]  -- really harmful when used as a sharpener; intended
+  , idesc    = "Laser ablation is the safest and most accurate of sharpening method. Misaligned optics with broken shielding, however, change the situation dramatically, enabling stray laser pulses to escape at unpredictable angles."  -- hence short range and so melee weapon; TODO: long range weapon with instant projectiles and no risk of hull breach
+  }
+crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
+  { iname    = "crowbar"
+  , ifreq    = (S_CROWBAR, 1) : ifreq chisel
+  , iflavour = zipPlain [BrCyan]
+  , irarity  = [(1, 6), (3 * 10/15, 6), (4 * 10/15, 1)]
+  , iverbHit = "gouge"
+  , idamage  = 2 `d` 1
+  , iaspects = [ Timeout $ 3 + 2 `d` 2
+               , SetFlag Durable, SetFlag Meleeable
+               , EqpSlot EqpSlotWeaponBig
+               , toVelocity 30 ]
+  , ieffects = [RefillHP (-3)]
+                 -- @RefillHP@ to avoid a no-brainer of durable tool use;
+                 -- (idamage ignored to avoid the exploit of tool use in armor)
+  , idesc    = "This is a heavy and pointy piece of steel that can be employed as an improvised melee weapon. It is also usable as a breaching tool, though rather injurious."  -- TODO: https://en.wikipedia.org/wiki/Crowbar_(tool)
+  }
+catsPaw = chisel
+  { iname    = "cat's paw"
+  , iflavour = zipFancy [BrCyan]
+  , irarity  = [(1, 12), (3 * 10/15, 12), (4 * 10/15, 1)]
+  , iverbHit = "paw"
+  , idamage  = 2 `d` 1
+  , iaspects = [ Timeout $ 1 + 2 `d` 2
+               , SetFlag Durable, SetFlag Meleeable
+               , EqpSlot EqpSlotWeaponFast
+               , toVelocity 40 ]
+  , ieffects = [RefillHP (-2)]
+                 -- @RefillHP@ to avoid a no-brainer of durable tool use;
+                 -- also quite attractive as a ranged weapon
+  , idesc    = "This is a sturdy and pointy piece of steel that can be employed as an improvised melee weapon. It is also usable as a breaching tool, though not a particularly safe one."  -- TODO: https://en.wikipedia.org/wiki/Cat%27s_paw_(nail_puller)
   }
 hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
   { isymbol  = symbolHafted
@@ -1746,6 +2023,20 @@ hammer3 = hammerTemplate  -- 2m pole, blunt
   , ieffects = [RefillHP (-8)]
   , idesc    = "This hammer sports a long pole that increases the momentum of the blunt head's swing, at the cost of long recovery. It's capable of smashing objects together, though the required careful positioning often means hands are smashed as well."
   }
+hammer4 = hammer1  -- 1m handle, sharp
+  { ifreq    = [ (COMMON_ITEM, 5), (HANDLE_AND_STEEL, 1)
+               , (STARTING_WEAPON, 5), (S_SHARP_SHORT_HAMMER, 1) ]
+  , iverbHit = "cleave"
+  , idamage  = 4 `d` 1
+  , idesc    = "This hammer's head has it's protruding edges sharpened. Otherwise, it's pretty ordinary."
+ }
+hammer5 = hammer3  -- 2m pole, sharp
+  { ifreq    = [ (COMMON_ITEM, 1), (POLE_AND_STEEL, 1)
+               , (S_SHARP_LONG_HAMMER, 1) ]
+  , iverbHit = "cleave"
+  , idamage  = 4 `d` 1
+  , idesc    = "This long-hafter hammer sports a head with the edge of the narrow end sharpened for cutting."
+  }
 hammerParalyze = hammerTemplate
   { iname    = "Concussion Hammer"
   , ifreq    = [(TREASURE, 20), (STARTING_HAMMER, 5)]
@@ -1773,6 +2064,49 @@ hammerSpark = hammerTemplate  -- the only hammer with significantly heavier head
                , RefillHP (-3) ]
                    -- @RefillHP@ to avoid a no-brainer of durable tool use
   , idesc    = "High carbon steel of this heavy old hammer doesn't yield even to the newest alloys and produces fountains of sparks in defiance. Whatever it forge-welds together, stays together."
+  }
+
+-- The standard melee weapons do most of their damage as kinetic edged
+-- or piercing, affected by armor and hurt skill.
+
+knife = ItemKind
+  { isymbol  = symbolEdged
+  , iname    = "cleaver"
+  , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 200), (S_CLEAVER, 1)]
+  , iflavour = zipPlain [BrCyan]
+  , icount   = 1
+  , irarity  = [(1, 5), (5, 25), (9, 1)]
+                 -- useful initially and for crafting mid-game
+  , iverbHit = "cut"
+  , iweight  = 1000
+  , idamage  = 5 `d` 1
+  , iaspects = [ Timeout 3
+               , AddSkill SkHurtMelee $ (-1 + 1 `d` 3 + 1 `dL` 2) * 3
+                   -- very common, so don't make too random
+               , SetFlag Durable, SetFlag Meleeable
+               , EqpSlot EqpSlotWeaponFast
+               , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
+  , ieffects = []
+  , idesc    = "A heavy professional kitchen blade. Will do fine cutting any kind of meat, bone and an occasional metal can. Does not penetrate deeply, but is quick to move and hard to block. Especially useful in conjunction with a larger weapon."
+  , ikit     = []
+  }
+daggerDropBestWeapon = knife
+  { iname    = "Double Dagger"
+  , ifreq    = [(TREASURE, 20), (MUSEAL, 100)]
+  , irarity  = [(1, 3), (10, 3)]
+  , iaspects = [SetFlag Unique]
+               ++ iaspects knife
+  , ieffects = [DropBestWeapon, Yell]  -- powerful and low timeout, but makes
+                                       -- noise and useless against stupid foes
+  , idesc    = "An antique double dagger that a focused fencer can use to catch and twist away an opponent's blade."
+  }
+dagger = knife
+  { iname    = "dagger"
+  , ifreq    = [(COMMON_ITEM, 5), (S_DAGGER, 1), (STARTING_WEAPON, 5)]
+  , iverbHit = "open"
+  , irarity  = [(7, 20)]  -- like hammer, not knife, to prevent excess
+  , idamage  = 7 `d` 1
+  , idesc    = "A double-edged knife with a sharp tip that penetrates the smallest defence gaps, making it especially useful in conjunction with a larger but less nible weapon."
   }
 sword = ItemKind
   { isymbol  = symbolPolearm
@@ -1816,6 +2150,15 @@ swordNullify = sword
   , ieffects = []
   , idesc    = "An exuberant hand-forged roasting implement, intentionally and wisely kept blunt."
   }
+swordNullifySharp = swordNullify
+  { iname    = "Roasting Rapier"
+  , ifreq    = [(S_RAPIER_SHARP, 1)]
+  , idamage  = 10 `d` 1
+  , ieffects = [ DropItem 1 maxBound COrgan CONDITION
+               , RefillCalm (-10)
+               , Yell ]
+  , idesc    = "A thin, acutely sharp steel blade that pierces deeply and sends its victim into abrupt, sobering shock. Originally, an exuberant hand-forged roasting implement, intentionally and wisely kept blunt."
+  }
 halberd = ItemKind  -- long pole
   { isymbol  = symbolPolearm
   , iname    = "pole cleaver"
@@ -1839,7 +2182,34 @@ halberd = ItemKind  -- long pole
   , idesc    = "An improvised but deadly weapon made of a long kitchen cleaver glued and bound to a long pole. Not often one succeeds in making enough space to swing it freely, but even when stuck between terrain obstacles it blocks approaches effectively and makes using other weapons difficult, both by friends and foes."
   , ikit     = []
   }
-halberd2 = halberd
+oxTongue = halberd  -- long pole, because glued 1m handle worse than nothing
+  { iname    = "long spear"
+  , ifreq    = [(COMMON_ITEM, 1), (POLE_AND_STEEL, 1), (S_LONG_SPEAR, 1)]
+  , iverbHit = "impale"
+  , idamage  = 13 `d` 1
+  , idesc    = "An improvised but deadly weapon made of a long, sharp dagger glued and bound to a long pole. Not often one succeeds in making enough space to swing it freely, but even when stuck between terrain obstacles it blocks approaches effectively and makes using other weapons difficult, both by friends and foes."
+  }
+fireAxe = ItemKind
+  { isymbol  = symbolHafted
+  , iname    = "fire axe"
+  , ifreq    = [ (COMMON_ITEM, 30), (HANDLE_AND_STEEL, 1), (S_FIRE_AXE, 1)
+               , (FIRE_FIGHTING_ITEM, 5) ]
+                 -- not @BREACHING_TOOL@, because it trigger traps
+                 -- and destroys treasure, instead of opening
+  , iflavour = zipPlain [BrRed]
+  , icount   = 1
+  , irarity  = [(1, 1)]
+  , iverbHit = "gouge"
+  , iweight  = 1600
+  , idamage  = 10 `d` 1  -- same as sharpened pipe, but upgradable
+  , iaspects = [ Timeout 7, EqpSlot EqpSlotWeaponBig  -- 1m handle
+               , SetFlag Durable, SetFlag Meleeable
+               , toVelocity 40 ]  -- ensuring it hits with the blade costs speed
+  , ieffects = []
+  , idesc    = "An axe with a spike: once used for fire fighting, now turned to a bloodier purpose."
+  , ikit     = []
+  }
+pollaxe = halberd
   { iname    = "pollaxe"
   , ifreq    = [(COMMON_ITEM, 1), (POLE_AND_STEEL, 1), (S_POLL_AXE, 1)]
                  -- not @BREACHING_TOOL@, because it triggers traps
@@ -1868,504 +2238,6 @@ halberdPushActor = halberd
                ++ iaspects halberd
   , ieffects = [PushActor (ThrowMod 200 100 1)]  -- 2 steps, slow
   , idesc    = "A perfect replica made for a reenactor troupe, hardened, but missing any sharpening. Versatile, with great reach and leverage. Foes are held at a distance."
-  }
-
--- ** Treasure
-
-gemTemplate = ItemKind
-  { isymbol  = symbolGold
-  , iname    = "gem"
-  , ifreq    = [(GEM_UNKNOWN, 1), (VALUABLE, 100)]
-  , iflavour = zipPlain $ delete BrYellow brightCol  -- natural, so not fancy
-  , icount   = 1
-  , irarity  = [(3, 0), (10, 24)]
-  , iverbHit = "tap"
-  , iweight  = 50
-  , idamage  = 0
-  , iaspects = [PresentAs GEM_UNKNOWN, SetFlag Precious]
-  , ieffects = []
-  , idesc    = "Precious, though useless. Worth around 100 gold grains."
-  , ikit     = []
-  }
-gem1 = gemTemplate
-  { ifreq    = [ (TREASURE, 100), (GEM, 100), (ANY_JEWELRY, 100)
-               , (VALUABLE, 100) ]
-  , irarity  = [(3, 0), (6, 12), (10, 8)]
-  , iaspects = [AddSkill SkShine 1, AddSkill SkSpeed (-1)]
-                 -- reflects strongly, distracts; so it glows in the dark,
-                 -- is visible on dark floor, but not too tempting to wear
-               ++ iaspects gemTemplate
-  }
-gem2 = gem1
-  { ifreq    = [ (TREASURE, 100), (GEM, 100), (ANY_JEWELRY, 100)
-               , (VALUABLE, 100) ]
-  , irarity  = [(5, 0), (7, 25), (10, 8)]
-  }
-gem3 = gem1
-  { ifreq    = [ (TREASURE, 100), (GEM, 100), (ANY_JEWELRY, 100)
-               , (VALUABLE, 100) ]
-  , irarity  = [(7, 0), (8, 20), (10, 8)]
-  }
-gem4 = gem1
-  { ifreq    = [ (TREASURE, 100), (GEM, 100), (ANY_JEWELRY, 100)
-               , (VALUABLE, 100) ]
-  , irarity  = [(9, 0), (10, 70)]
-  }
-gem5 = gem1
-  { isymbol  = symbolSpecial
-  , iname    = "stimpack"
-  , ifreq    = [ (TREASURE, 100), (GEM, 25), (ANY_JEWELRY, 10)
-               , (VALUABLE, 100) ]
-  , iflavour = zipPlain [BrYellow]
-  , irarity  = [(1, 40), (10, 10)]
-  , iaspects = [ ELabel "of youth", SetFlag Precious  -- not hidden
-               , AddSkill SkOdor (-1) ]
-  , ieffects = [RefillCalm 10, RefillHP 40]
-  , idesc    = "Calms, heals, invigorates, rejuvenates and smells nice. No side-effects. As valuable as precious gems, at 100 gold grains each."
-  }
-currencyTemplate = ItemKind
-  { isymbol  = symbolGold
-  , iname    = "gold grain"
-  , ifreq    = [(CURRENCY_UNKNOWN, 1), (VALUABLE, 1)]
-  , iflavour = zipPlain [BrYellow]
-  , icount   = 10 + 1 `d` 20 + 1 `dL` 20
-  , irarity  = [(1, 25), (10, 10)]
-  , iverbHit = "tap"
-  , iweight  = 1
-  , idamage  = 0
-  , iaspects = [PresentAs CURRENCY_UNKNOWN, SetFlag Precious]
-  , ieffects = []
-  , idesc    = "Reliably valuable in every civilized place."
-  , ikit     = []
-  }
-currency = currencyTemplate
-  { ifreq    = [(TREASURE, 100), (S_CURRENCY, 100), (VALUABLE, 1)]
-  , iaspects = [AddSkill SkShine 1, AddSkill SkSpeed (-1)]
-               ++ iaspects currencyTemplate
-  }
-
--- * Allure-specific items
-
--- ** Thrown weapons
-
-steelScrap = sandstoneRock
-  { iname    = "steel scrap"
-  , ifreq    = [ (STEEL_SCRAP, 1)
-               , (UNREPORTED_INVENTORY, 1) ]  -- too weak to spam
-  , iflavour = zipPlain [Cyan]
-  , iverbHit = "grate"
-  , idesc    = " A bent lump of steel scrap."
-  }
-needle = ItemKind
-  { isymbol  = symbolProjectile
-  , iname    = "needle"
-  , ifreq    = [ (NEEDLE, 1), (COMMON_ITEM, 1)
-                   -- marked as common to ensure can be polymorphed
-               , (UNREPORTED_INVENTORY, 1) ]  -- too weak to spam
-  , iflavour = zipPlain [Blue]
-  , icount   = 1 + 8 `d` 3
-  , irarity  = [(1, 1)]
-  , iverbHit = "prick"
-  , iweight  = 3
-  , idamage  = 1 `d` 1
-  , iaspects = [ AddSkill SkHurtMelee $ -10 * 5
-               , ToThrow $ ThrowMod 60 100 5  -- piercing; good shape
-               , SetFlag Fragile ]  -- breaks easily despite being piercing
-  , ieffects = []
-  , idesc    = "A long sturdy hypodermic needle ending in a dried out micro-syringe that is easy to break off. It's too thin to cause great harm, but it passes through flesh easily."
-  , ikit     = []
-  }
-
--- ** Exotic thrown weapons
-
-needleSleep = ItemKind
-  { isymbol  = symbolProjectile
-  , iname    = "tranquillizer dart"
-  , ifreq    = [ (TRANQUILIZER_DART, 1), (COMMON_ITEM, 1)
-               , (MERCENARY_AMMO, 25) ]
-                   -- marked as common to ensure can be polymorphed
-  , iflavour = zipPlain [BrBlue]
-  , icount   = 1 `dL` 3
-  , irarity  = [(1, 1)]
-  , iverbHit = "prick"
-  , iweight  = 10
-  , idamage  = 1 `d` 1
-  , iaspects = [ AddSkill SkHurtMelee $ -10 * 5
-               , SetFlag Fragile
-               , toVelocity 60 ]  -- syringe blocks piercing; slender fins
-  , ieffects = [PutToSleep]
-  , idesc    = "A long hypodermic needle ending in a micro-syringe with residues of the sleeping agent."
-  , ikit     = []
-  }
-harpoon3 = harpoon
-  { iname    = "whaling harpoon"
-  , ifreq    = [(TREASURE, 50), (MUSEAL, 100)]
-  , iflavour = zipFancy [Red]
-  , irarity  = [(8, 4)]
-  , idamage  = 8 `d` 1
-  , iaspects = [SetFlag Unique] ++ iaspects harpoon
-  , ieffects = Yell  -- evoke a cry from pain; brutal
-               : ieffects harpoon
-  , idesc    = "A display piece harking back to the Earth's oceanic tourism heyday. Surprising sharp for its age. The cruel, barbed head lodges in its victim so painfully that the weakest tug of the rope sends the victim flying."
-  }
-
--- ** Lights
-
--- ** Exploding consumables, often intended to be thrown.
-
-flask15 = flaskTemplate
-  { iname    = "cartridge"
-  , ifreq    = [ (COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)
-               , (LIQUID_NITROGEN, 1), (COLD_SOURCE, 1)
-               , (FIRE_FIGHTING_ITEM, 65) ]
-  , irarity  = [(1, 3)]  -- scavenged from walls
-  , iaspects = ELabel "of liquid nitrogen"
-               : iaspects flaskTemplate
-  , ieffects = [ Burn 1  -- sensory ambiguity between hot and cold
-               , toOrganBad S_SLOWED (3 + 1 `d` 3)
-               , OnSmash (Explode S_FOCUSED_SLOWNESS_MIST) ]
-  }
-flask16 = flaskTemplate
-  { iname    = "galon"  -- diluted perfume; almost same effects
-  , ifreq    = [ (COMMON_ITEM, 100), (S_ROSE_WATER_FLASK, 1)
-               , (EXPLOSIVE, 100), (ANY_GLASS, 100), (WATER_SOURCE, 1) ]
-  , irarity  = [(1, 1)]  -- mostly obtained through crafting
-  , iaspects = ELabel "of rose water"
-               : iaspects flaskTemplate
-  , ieffects = [ Impress, toOrganGood S_ROSE_SMELLING (100 + 1 `d` 20)
-               , OnSmash ApplyPerfume, OnSmash (Explode S_FRAGRANCE) ]
-  }
-flask17 = flaskTemplate
-  { iname    = "galon"
-  , ifreq    = [ (COMMON_ITEM, 100), (ANY_GLASS, 100)
-               , (WATER_SOURCE, 1) ]
-  , irarity  = [(1, 1)]  -- usually self-made (TODO)
-  , iaspects = ELabel "of water"
-               : iaspects flaskTemplate
-  }
-
--- ** Explosives, with the only effect being @Explode@
-
--- ** Non-exploding consumables, not specifically designed for throwing
-
-rawMeatChunk = ItemKind
-  { isymbol  = symbolFood
-  , iname    = "raw meat chunk"
-  , ifreq    = [ (RAW_MEAT_CHUNK, 100), (COMMON_ITEM, 1)
-               , (UNREPORTED_INVENTORY, 1) ]  -- no "fondles a trinket"
-  , iflavour = zipPlain [Red]
-  , icount   = 1
-  , irarity  = [(1, 1)]
-  , iverbHit = "slap"
-  , iweight  = 1000
-  , idamage  = 0
-  , iaspects = [toVelocity 50]
-  , ieffects = [DropItem maxBound 1 COrgan S_HUNGRY]
-  , idesc    = "A scrap of edible animal meat. Not very tasty nor nourishing. Cooking would make it more palatable."
-  , ikit     = []
-  }
-roastedMeatChunk = rawMeatChunk
-  { iname    = "roasted meat chunk"
-  , ifreq    = [ (ROASTED_MEAT_CHUNK, 100), (COOKED_FOOD, 60)
-               , (COMMON_ITEM, 1) ]
-  , iflavour = zipPlain [Brown]
-  , ieffects = [DropItem maxBound 3 COrgan S_HUNGRY]
-  , idesc    = "Delicious and filling chunk of meat. The thermal processing released flavour and made it easier to digest."
-  }
-scrollAd1 = scrollTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , icount   = 1
-  , irarity  = [(1, 1)]  -- not every playthrough needs one
-  , iaspects = [ELabel "of tourist guide"]
-               ++ iaspects scrollTemplate
-  , ieffects = [ Impress
-               , toOrganGood S_RESOLUTE (500 + 1 `d` 200)
-                   -- a drawback (at least initially) due to @calmEnough@
-               , Explode S_RHINO_HOLOGRAM
-               , Detect DetectLoot 5 ]  -- short so useless most of the time
-  , idesc    = "Biodegradable self-powered mini-projector displaying holographic ads and shopping hints."
-  }
-
--- ** Assorted tools
-
-blowtorch = ItemKind
-  { isymbol  = symbolLight
-  , iname    = "blowtorch"  -- not unique, but almost never generated on floor
-  , ifreq    = [ (BLOWTORCH, 1), (VALUABLE, 20), (CURIOUS_ITEM, 1)
-               , (BREACHING_TOOL, 1), (FIRE_SOURCE, 1) ]
-                 -- infinite use, but harmful
-  , iflavour = zipPlain [BrYellow]
-  , icount   = 1
-  , irarity  = [(1, 1)]
-  , iverbHit = "scorch"
-  , iweight  = 2000
-  , idamage  = 0
-  , iaspects = [ Timeout 4
-               , AddSkill SkAlter 2
-               , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotAlter
-               , toVelocity 0 ]  -- @Burn@ not effective when thrown
-  , ieffects = [ Burn 3  -- ensure heroes wear initially, so they reach lvl 4
-               , Impress ]
-      -- is used for melee in precedence to fists, but not to cleavers;
-      -- so if player wants to hit with it, it's enough to pack other gear;
-      -- is also the low bar for self-inflicted damage from durable breaching
-      -- tool and fire source use so that other tool-weapons need only
-      -- do that many non-armor affected damage to dissuade the player
-      -- from using them without careful thought
-  , idesc    = "A sturdy old-fashioned portable blowtorch for fine cutting or welding of metals. Rather weak, but does not require access codes to high current power outlets. If you can patiently suffer the heat, it can be used as a clumsy breaching tool."
-  , ikit     = []
-  }
-chisel = ItemKind  -- ignored by AI, but that's fine, others suffice
-  { isymbol  = symbolTool
-  , iname    = "chisel"
-  , ifreq    = [(CURIOUS_ITEM, 100), (BREACHING_TOOL, 1)]
-  , iflavour = zipPlain [Cyan]
-  , icount   = 1
-  , irarity  = [(2, 15)]
-  , iverbHit = "dismantle"
-  , iweight  = 500
-  , idamage  = 0  -- not a missile to avoid wasting, before a worskhop found
-  , iaspects = []  -- lost after one use; a consumable
-  , ieffects = []
-  , idesc    = "It is a breaching tool."  -- TODO: https://en.wikipedia.org/wiki/Chisel
-                   -- also say light and cheap, but not durable; one time use
-  , ikit     = []
-  }
-hacksaw = chisel
-  { iname    = "hacksaw"
-  , idesc    = "It is a breaching tool."  -- TODO: https://en.wikipedia.org/wiki/Hacksaw
-  }
-adjustableSpanner = chisel
-  { iname    = "adjustable spanner"
-  , idesc    = "It is a breaching tool."  -- TODO: https://en.wikipedia.org/wiki/Adjustable_spanner
-  }
-steelFile = chisel
-  { iname    = "steel file"
-  , ifreq    = [(CURIOUS_ITEM, 100), (BREACHING_TOOL, 1), (SHARPENING_TOOL, 1)]
-  , irarity  = [(2, 20)]
-  , iflavour = zipPlain [Blue]
-  , iverbHit = "grate"
-  , idesc    = "It is a breaching and sharpening tool."  -- TODO: https://en.wikipedia.org/wiki/File_(tool)
-  }
-honingSteel = chisel
-  { iname    = "honing steel"
-  , ifreq    = [(CURIOUS_ITEM, 100), (SHARPENING_TOOL, 1)]
-  , iflavour = zipFancy [Blue]
-  , iverbHit = "hone"
-  , idesc    = "Originally used for realigning and sharpening dulled edges of kitchen knives in the local restaurants. Now it turns utensils into weapons."
-  }
-whetstone = honingSteel
-  { iname    = "whetstone"
-  , iverbHit = "rub"
-  , idesc    = "A portable sharpening stone that can transforms a dull piece of scrap into a keen and true blade."
-  }
-laserSharpener = honingSteel
-  { iname    = "laser sharpener"
-  , ifreq    = [(CURIOUS_ITEM, 100), (SHARPENING_TOOL, 1)]
-  , iflavour = zipFancy [BrBlue]
-  , irarity  = [(10, 8)]
-  , iweight  = 2000
-  , idamage  = 0
-  , iaspects = [ SetFlag Unique, Timeout 10
-               , SetFlag Durable, SetFlag Meleeable, EqpSlot EqpSlotWeaponBig
-               , toVelocity 0 ]  -- @Burn@ not effective when thrown
-  , ieffects = [Burn 5]  -- really harmful when used as a sharpener; intended
-  , idesc    = "Laser ablation is the safest and most accurate of sharpening method. Misaligned optics with broken shielding, however, change the situation dramatically, enabling stray laser pulses to escape at unpredictable angles."  -- hence short range and so melee weapon; TODO: long range weapon with instant projectiles and no risk of hull breach
-  }
-diagonalPliers = chisel
-  { iname    = "pair"
-  , ifreq    = [(CURIOUS_ITEM, 100), (WIRECUTTING_TOOL, 1)]
-  , iflavour = zipPlain [Brown]
-  , iverbHit = "cut"
-  , iaspects = [ELabel "of diagonal pliers"]
-  , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Diagonal_pliers
-  }
-snips = diagonalPliers
-  { iname    = "pair"
-  , iaspects = [ELabel "of snips"]
-  , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Snips
-  }
-loppers = diagonalPliers
-  { iname    = "pair"
-  , iaspects = [ELabel "of loppers"]
-  , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Loppers
-  }
-boltCutter = diagonalPliers
-  { iname    = "bolt cutter"
-  , iaspects = []
-  , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Bolt_cutter
-  }
-solderingIron = chisel
-  { iname    = "soldering iron"
-  , ifreq    = [(CURIOUS_ITEM, 100), (BONDING_TOOL, 50)]
-  , iflavour = zipPlain [White]
-  , iverbHit = "soldier"
-  , idesc    = "It is a bonding tool."  -- TODO: wikipedia
-  }
-duckTape = solderingIron
-  { iname    = "duck tape"
-  , ifreq    = [(CURIOUS_ITEM, 100), (BONDING_TOOL, 1)]
-  , icount   = 1 `d` 4
-  , irarity  = [(2, 20)]
-  , iverbHit = "catch"
-  , idesc    = "It is a bonding tool."  -- TODO: https://en.wikipedia.org/wiki/Duct_tape
-  }
-
--- ** Periodic jewelry
-
--- ** Non-periodic jewelry
-
--- ** Armor
-
-heavyBoot = ItemKind
-  { isymbol  = symbolMiscArmor
-  , iname    = "spacesuit boot"
-  , ifreq    = [ (COMMON_ITEM, 100), (S_SPACESUIT_BOOT, 1)
-               , (SPACESUIT_PART, 2), (ARMOR_MISC, 1) ]
-  , iflavour = zipFancy [Magenta]
-  , icount   = 1
-  , irarity  = [(1, 13), (3 * 10/15, 13), (4 * 10/15, 1)]
-  , iverbHit = "sock"
-  , iweight  = 100000  -- including the fake gravity mass
-  , idamage  = 6 `d` 1
-  , iaspects = [ Timeout 4
-               , AddSkill SkHurtMelee (-20)
-               , AddSkill SkArmorMelee $ (1 + 1 `dL` 3) * 5
-               , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotWeaponFast  -- hope to replace with better soon
-               , toVelocity 500 ]  -- the fake mass not counted for throwing
-  , ieffects = []
-  , idesc    = "An armored boot, cut-off from a spacesuit. The in-built micro-suction machinery for maintaining traction in the absence of gravity gives stability equivalent to an extra 100kg of mass. Kicks get abrupt acceleration millimeters short of the target."
-  , ikit     = []
-  }
-spacesuit = ItemKind
-  { isymbol  = symbolTorsoArmor
-  , iname    = "spacesuit"
-  , ifreq    = [(S_SPACESUIT, 1)]
-  , iflavour = zipFancy [BrWhite]
-  , icount   = 1
-  , irarity  = [(10, 10)]
-  , iverbHit = "hug"
-  , iweight  = 250000  -- including the fake gravity mass from two boots
-  , idamage  = 0
-  , iaspects = [ AddSkill SkHurtMelee (-30)  -- easier when boots integrated
-               , AddSkill SkSight (-1)
-               , AddSkill SkHearing (-10), AddSkill SkSmell (-10)  -- worse now
-               , AddSkill SkArmorMelee $ (2 + 2 `dL` 3) * 20
-               , AddSkill SkArmorRanged $ (1 + 1 `dL` 2) * 12
-                   -- both armors are the sum from the set
-               , SetFlag Durable, SetFlag Equipable
-               , EqpSlot EqpSlotArmorMelee ]
-  , ieffects = []
-  , idesc    = "A heavy spacesuit, with micro-suction machinery build into its boots, but requiring an external air tank for space walking."
-  , ikit     = []
-  }
-spacesuitTorn = spacesuit
-  { iname    = "torn spacesuit"
-  , ifreq    = [(CURIOUS_ITEM, 100), (S_SPACESUIT_TORN, 1)]
-  , irarity  = [(1, 17)]
-  , iverbHit = "entangle"
-  , iweight  = 10000
-  , iaspects = [ AddSkill SkHurtMelee (-30)  -- easier when boots integrated
-               , AddSkill SkSight (-1)  -- obstructed despite the tears
-               , AddSkill SkArmorMelee $ (1 `d` 3) * 10
-               , AddSkill SkArmorRanged $ (1 `d` 2) * 6
-               , SetFlag Durable, SetFlag Equipable
-               , EqpSlot EqpSlotArmorMelee ]
-  , idesc    = "A badly torn spacesuit. Perhaps two decent wearable pieces could be salvaged by extracting, matching and patching components on a suitable workbench using scissors of some kind."
-  }
-
--- ** Weapons
-
-crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
-  { iname    = "crowbar"
-  , ifreq    = (S_CROWBAR, 1) : ifreq chisel
-  , iflavour = zipPlain [BrCyan]
-  , irarity  = [(1, 6), (3 * 10/15, 6), (4 * 10/15, 1)]
-  , iverbHit = "gouge"
-  , idamage  = 2 `d` 1
-  , iaspects = [ Timeout $ 3 + 2 `d` 2
-               , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotWeaponBig
-               , toVelocity 30 ]
-  , ieffects = [RefillHP (-3)]
-                 -- @RefillHP@ to avoid a no-brainer of durable tool use;
-                 -- (idamage ignored to avoid the exploit of tool use in armor)
-  , idesc    = "This is a heavy and pointy piece of steel that can be employed as an improvised melee weapon. It is also usable as a breaching tool, though rather injurious."  -- TODO: https://en.wikipedia.org/wiki/Crowbar_(tool)
-  }
-catsPaw = chisel
-  { iname    = "cat's paw"
-  , iflavour = zipFancy [BrCyan]
-  , irarity  = [(1, 12), (3 * 10/15, 12), (4 * 10/15, 1)]
-  , iverbHit = "paw"
-  , idamage  = 2 `d` 1
-  , iaspects = [ Timeout $ 1 + 2 `d` 2
-               , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotWeaponFast
-               , toVelocity 40 ]
-  , ieffects = [RefillHP (-2)]
-                 -- @RefillHP@ to avoid a no-brainer of durable tool use;
-                 -- also quite attractive as a ranged weapon
-  , idesc    = "This is a sturdy and pointy piece of steel that can be employed as an improvised melee weapon. It is also usable as a breaching tool, though not a particularly safe one."  -- TODO: https://en.wikipedia.org/wiki/Cat%27s_paw_(nail_puller)
-  }
-fireAxe = ItemKind
-  { isymbol  = symbolHafted
-  , iname    = "fire axe"
-  , ifreq    = [ (COMMON_ITEM, 30), (HANDLE_AND_STEEL, 1), (S_FIRE_AXE, 1)
-               , (FIRE_FIGHTING_ITEM, 5) ]
-                 -- not @BREACHING_TOOL@, because it trigger traps
-                 -- and destroys treasure, instead of opening
-  , iflavour = zipPlain [BrRed]
-  , icount   = 1
-  , irarity  = [(1, 1)]
-  , iverbHit = "gouge"
-  , iweight  = 1600
-  , idamage  = 10 `d` 1  -- same as sharpened pipe, but upgradable
-  , iaspects = [ Timeout 7, EqpSlot EqpSlotWeaponBig  -- 1m handle
-               , SetFlag Durable, SetFlag Meleeable
-               , toVelocity 40 ]  -- ensuring it hits with the blade costs speed
-  , ieffects = []
-  , idesc    = "An axe with a spike: once used for fire fighting, now turned to a bloodier purpose."
-  , ikit     = []
-  }
-dagger = knife
-  { iname    = "dagger"
-  , ifreq    = [(COMMON_ITEM, 5), (S_DAGGER, 1), (STARTING_WEAPON, 5)]
-  , iverbHit = "open"
-  , irarity  = [(7, 20)]  -- like hammer, not knife, to prevent excess
-  , idamage  = 7 `d` 1
-  , idesc    = "A double-edged knife with a sharp tip that penetrates the smallest defence gaps, making it especially useful in conjunction with a larger but less nible weapon."
-  }
-hammer4 = hammer1  -- 1m handle, sharp
-  { ifreq    = [ (COMMON_ITEM, 5), (HANDLE_AND_STEEL, 1)
-               , (STARTING_WEAPON, 5), (S_SHARP_SHORT_HAMMER, 1) ]
-  , iverbHit = "cleave"
-  , idamage  = 4 `d` 1
-  , idesc    = "This hammer's head has it's protruding edges sharpened. Otherwise, it's pretty ordinary."
- }
-hammer5 = hammer3  -- 2m pole, sharp
-  { ifreq    = [ (COMMON_ITEM, 1), (POLE_AND_STEEL, 1)
-               , (S_SHARP_LONG_HAMMER, 1) ]
-  , iverbHit = "cleave"
-  , idamage  = 4 `d` 1
-  , idesc    = "This long-hafter hammer sports a head with the edge of the narrow end sharpened for cutting."
-  }
-swordNullifySharp = swordNullify
-  { iname    = "Roasting Rapier"
-  , ifreq    = [(S_RAPIER_SHARP, 1)]
-  , idamage  = 10 `d` 1
-  , ieffects = [ DropItem 1 maxBound COrgan CONDITION
-               , RefillCalm (-10)
-               , Yell ]
-  , idesc    = "A thin, acutely sharp steel blade that pierces deeply and sends its victim into abrupt, sobering shock. Originally, an exuberant hand-forged roasting implement, intentionally and wisely kept blunt."
-  }
-oxTongue = halberd  -- long pole, because glued 1m handle worse than nothing
-  { iname    = "long spear"
-  , ifreq    = [(COMMON_ITEM, 1), (POLE_AND_STEEL, 1), (S_LONG_SPEAR, 1)]
-  , iverbHit = "impale"
-  , idamage  = 13 `d` 1
-  , idesc    = "An improvised but deadly weapon made of a long, sharp dagger glued and bound to a long pole. Not often one succeeds in making enough space to swing it freely, but even when stuck between terrain obstacles it blocks approaches effectively and makes using other weapons difficult, both by friends and foes."
   }
 halberdPushActorSharp = halberdPushActor
   { iname    = "Swiss Halberd"
@@ -2419,6 +2291,10 @@ cattleProd = militaryBaton
   , ieffects = [Discharge $ 40 - 1 `d` 20, RefillCalm (-30)]
   , idesc    = "Used for subduing unruly zoo animals."
   }
+
+-- The combat value of anoter class of weapons is very limited,
+-- but they or their components can be used for crafting.
+
 gardenMsg :: Effect
 gardenMsg = VerbMsgFail "feel the gardening tool fracture"
 gardenDestruct :: GroupName ItemKind -> Effect
@@ -2564,7 +2440,103 @@ longPole = staff
 
 -- ** Treasure
 
--- ** Usable robot body parts
+gemTemplate = ItemKind
+  { isymbol  = symbolGold
+  , iname    = "gem"
+  , ifreq    = [(GEM_UNKNOWN, 1), (VALUABLE, 100)]
+  , iflavour = zipPlain $ delete BrYellow brightCol  -- natural, so not fancy
+  , icount   = 1
+  , irarity  = [(3, 0), (10, 24)]
+  , iverbHit = "tap"
+  , iweight  = 50
+  , idamage  = 0
+  , iaspects = [PresentAs GEM_UNKNOWN, SetFlag Precious]
+  , ieffects = []
+  , idesc    = "Precious, though useless. Worth around 100 gold grains."
+  , ikit     = []
+  }
+gem1 = gemTemplate
+  { ifreq    = [ (TREASURE, 100), (GEM, 100), (ANY_JEWELRY, 100)
+               , (VALUABLE, 100) ]
+  , irarity  = [(3, 0), (6, 12), (10, 8)]
+  , iaspects = [AddSkill SkShine 1, AddSkill SkSpeed (-1)]
+                 -- reflects strongly, distracts; so it glows in the dark,
+                 -- is visible on dark floor, but not too tempting to wear
+               ++ iaspects gemTemplate
+  }
+gem2 = gem1
+  { ifreq    = [ (TREASURE, 100), (GEM, 100), (ANY_JEWELRY, 100)
+               , (VALUABLE, 100) ]
+  , irarity  = [(5, 0), (7, 25), (10, 8)]
+  }
+gem3 = gem1
+  { ifreq    = [ (TREASURE, 100), (GEM, 100), (ANY_JEWELRY, 100)
+               , (VALUABLE, 100) ]
+  , irarity  = [(7, 0), (8, 20), (10, 8)]
+  }
+gem4 = gem1
+  { ifreq    = [ (TREASURE, 100), (GEM, 100), (ANY_JEWELRY, 100)
+               , (VALUABLE, 100) ]
+  , irarity  = [(9, 0), (10, 70)]
+  }
+gem5 = gem1
+  { isymbol  = symbolSpecial
+  , iname    = "stimpack"
+  , ifreq    = [ (TREASURE, 100), (GEM, 25), (ANY_JEWELRY, 10)
+               , (VALUABLE, 100) ]
+  , iflavour = zipPlain [BrYellow]
+  , irarity  = [(1, 40), (10, 10)]
+  , iaspects = [ ELabel "of youth", SetFlag Precious  -- not hidden
+               , AddSkill SkOdor (-1) ]
+  , ieffects = [RefillCalm 10, RefillHP 40]
+  , idesc    = "Calms, heals, invigorates, rejuvenates and smells nice. No side-effects. As valuable as precious gems, at 100 gold grains each."
+  }
+currencyTemplate = ItemKind
+  { isymbol  = symbolGold
+  , iname    = "gold grain"
+  , ifreq    = [(CURRENCY_UNKNOWN, 1), (VALUABLE, 1)]
+  , iflavour = zipPlain [BrYellow]
+  , icount   = 10 + 1 `d` 20 + 1 `dL` 20
+  , irarity  = [(1, 25), (10, 10)]
+  , iverbHit = "tap"
+  , iweight  = 1
+  , idamage  = 0
+  , iaspects = [PresentAs CURRENCY_UNKNOWN, SetFlag Precious]
+  , ieffects = []
+  , idesc    = "Reliably valuable in every civilized place."
+  , ikit     = []
+  }
+currency = currencyTemplate
+  { ifreq    = [(TREASURE, 100), (S_CURRENCY, 100), (VALUABLE, 1)]
+  , iaspects = [AddSkill SkShine 1, AddSkill SkSpeed (-1)]
+               ++ iaspects currencyTemplate
+  }
+
+-- ** Tools to be actively used, but not worn
+
+jumpingPole = ItemKind
+  { isymbol  = symbolWand
+  , iname    = "jumping pole"
+  , ifreq    = [(COMMON_ITEM, 100), (POLE, 10)]
+  , iflavour = zipFancy [White]
+  , icount   = 1
+  , irarity  = [(6, 12)]
+  , iverbHit = "prod"
+  , iweight  = 4000
+  , idamage  = 0
+  , iaspects = [ Timeout $ (2 + 1 `d` 2 - 1 `dL` 2) * 5
+               , SetFlag Durable ]
+  , ieffects = [toOrganGood S_HASTED 1]
+                 -- safe for AI, because it speeds up, so when AI applies it
+                 -- again and again, it gets its time back and is not stuck;
+                 -- in total, the explorations speed is unchanged,
+                 -- but it's useful when fleeing in the dark to make distance
+                 -- and when initiating combat, so it's OK that AI uses it
+  , idesc    = "Makes you vulnerable at take-off, but then you are free like a bird."
+  , ikit     = []
+  }
+
+-- ** Detachable and usable, in various ways, robot body parts
 
 constructionHooter = necklaceTemplate
   { iname    = "construction hooter"
@@ -2619,17 +2591,26 @@ spotlight = ItemKind
   , idesc    = "Powerful wide-beam spotlight in an unwieldy rack-mounted package. On overdrive, it can shine through thin construction surfaces, underlying fault lines."
   , ikit     = []
   }
-
--- ** Misc
-
-ragTangle = sandstoneRock
-  { isymbol  = symbolClothes
-  , iname    = "tangle"
-  , ifreq    = [(S_RAG_TANGLE, 1), (THICK_CLOTH, 1), (UNREPORTED_INVENTORY, 1)]
-  , iflavour = zipPlain [Brown]
-  , iverbHit = "touch"
-  , iweight  = 200
+seeingItem = ItemKind
+  { isymbol  = symbolFood
+  , iname    = "visual sensor"
+  , ifreq    = [(COMMON_ITEM, 100)]
+  , iflavour = zipPlain [Red]
+  , icount   = 1
+  , irarity  = [(1, 2)]
+  , iverbHit = "gaze at"
+  , iweight  = 500
   , idamage  = 0
-  , iaspects = [ELabel "of rags", SetFlag Fragile]
-  , idesc    = ""
+  , iaspects = [ Timeout 3
+               , AddSkill SkSight 10  -- a spyglass for quick wields
+               , AddSkill SkMaxCalm 30  -- to diminish clipping sight by Calm
+               , AddSkill SkShine 2  -- to lit corridors when flying
+               , AddSkill SkMaxHP (-30)  -- prevent excessive stacking
+               , SetFlag Periodic ]
+  , ieffects = [ Detect DetectActor 20  -- rare enough
+               , Explode S_SINGLE_SPARK
+               , toOrganNoTimer S_POISONED  -- really can't be worn
+               , Summon MOBILE_ROBOT 1 ]
+  , idesc    = "An oversize visual sensor freshly torn out of some unfortunate robot. It still sends a clear picture to unidentified receivers, even though the coolant liquid seeps from the seized servos and many internal contacts spark loose."
+  , ikit     = []
   }
