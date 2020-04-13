@@ -1655,7 +1655,7 @@ spacesuit = ItemKind
   , iverbHit = "hug"
   , iweight  = 250000  -- including the fake gravity mass from two boots
   , idamage  = 0
-  , iaspects = [ AddSkill SkHurtMelee (-30)  -- easier when boots integrated
+  , iaspects = [ AddSkill SkHurtMelee (-30)  -- restricted movement
                , AddSkill SkSight (-1)
                , AddSkill SkHearing (-10), AddSkill SkSmell (-10)  -- worse now
                , AddSkill SkArmorMelee $ (2 + 2 `dL` 3) * 20
@@ -1673,7 +1673,7 @@ spacesuitTorn = spacesuit
   , irarity  = [(1, 17)]
   , iverbHit = "entangle"
   , iweight  = 10000
-  , iaspects = [ AddSkill SkHurtMelee (-30)  -- easier when boots integrated
+  , iaspects = [ AddSkill SkHurtMelee (-30)
                , AddSkill SkSight (-1)  -- obstructed despite the tears
                , AddSkill SkArmorMelee $ (1 `d` 3) * 10
                , AddSkill SkArmorRanged $ (1 `d` 2) * 6
@@ -1809,8 +1809,8 @@ heavyBoot = ItemKind
   , iverbHit = "sock"
   , iweight  = 100000  -- including the fake gravity mass
   , idamage  = 6 `d` 1
-  , iaspects = [ Timeout 4
-               , AddSkill SkHurtMelee (-20)
+  , iaspects = [ Timeout 7
+               , AddSkill SkHurtMelee (-10)
                , AddSkill SkArmorMelee $ (1 + 1 `dL` 3) * 5
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast  -- hope to replace with better soon
