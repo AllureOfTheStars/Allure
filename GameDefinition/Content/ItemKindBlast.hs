@@ -7,7 +7,7 @@
 -- | Blast definitions.
 module Content.ItemKindBlast
   ( -- * Group name patterns
-    pattern S_FIRECRACKER, pattern S_VIOLENT_FRAGMENTATION, pattern S_FRAGMENTATION, pattern S_FOCUSED_FRAGMENTATION, pattern S_VIOLENT_CONCUSSION, pattern S_CONCUSSION, pattern S_FOCUSED_CONCUSSION, pattern S_VIOLENT_FLASH, pattern S_SPARK, pattern S_FOCUSED_FLASH, pattern S_GLASS_HAIL, pattern S_FOCUSED_GLASS_HAIL, pattern S_PHEROMONE, pattern S_CALMING_MIST, pattern S_DISTRESSING_ODOR, pattern S_HEALING_MIST, pattern S_HEALING_MIST_2, pattern S_WOUNDING_MIST, pattern S_DISTORTION, pattern S_SMOKE, pattern S_BOILING_WATER, pattern S_GLUE, pattern S_WASTE, pattern S_ANTI_SLOW_MIST, pattern S_ANTIDOTE_MIST, pattern S_SLEEP_MIST, pattern S_CURRENT_DISCHARGE, pattern S_CURRENT_RECHARGE, pattern S_DENSE_SHOWER, pattern S_SPARSE_SHOWER, pattern S_MELEE_PROTECTIVE_BALM, pattern S_RANGE_PROTECTIVE_BALM, pattern S_DEFENSELESSNESS_RUNOUT, pattern S_RESOLUTION_DUST, pattern S_HASTE_SPRAY, pattern S_EYE_DROP, pattern S_IRON_FILING, pattern S_SMELLY_DROPLET, pattern S_EYE_SHINE, pattern S_WHISKEY_SPRAY, pattern S_YOUTH_SPRINKLE, pattern S_POISON_CLOUD, pattern S_BURNING_OIL_2, pattern S_BURNING_OIL_3, pattern S_BURNING_OIL_4
+    pattern S_FIRECRACKER, pattern S_VIOLENT_FRAGMENTATION, pattern S_FRAGMENTATION, pattern S_FOCUSED_FRAGMENTATION, pattern S_VIOLENT_CONCUSSION, pattern S_CONCUSSION, pattern S_FOCUSED_CONCUSSION, pattern S_VIOLENT_FLASH, pattern S_SPARK, pattern S_FOCUSED_FLASH, pattern S_GLASS_HAIL, pattern S_FOCUSED_GLASS_HAIL, pattern S_PHEROMONE, pattern S_CALMING_MIST, pattern S_DISTRESSING_ODOR, pattern S_HEALING_MIST, pattern S_HEALING_MIST_2, pattern S_WOUNDING_MIST, pattern S_DISTORTION, pattern S_SMOKE, pattern S_BOILING_WATER, pattern S_GLUE, pattern S_WASTE, pattern S_ANTI_SLOW_MIST, pattern S_ANTIDOTE_MIST, pattern S_SLEEP_MIST, pattern S_CURRENT_DISCHARGE, pattern S_CURRENT_RECHARGE, pattern S_DENSE_SHOWER, pattern S_SPARSE_SHOWER, pattern S_MELEE_PROTECTIVE_BALM, pattern S_RANGE_PROTECTIVE_BALM, pattern S_DEFENSELESSNESS_RUNOUT, pattern S_RESOLUTION_DUST, pattern S_HASTE_SPRAY, pattern S_EYE_DROP, pattern S_IRON_FILING, pattern S_SMELLY_DROPLET, pattern S_EYE_SHINE, pattern S_WHISKEY_SPRAY, pattern S_YOUTH_SPRINKLE, pattern S_POISON_CLOUD, pattern S_PING_PLASH, pattern S_BURNING_OIL_2, pattern S_BURNING_OIL_3, pattern S_BURNING_OIL_4
   , blastNoStatOf, blastBonusStatOf
   , pattern ARMOR_MISC
   , pattern S_VIOLENT_SLOWNESS_MIST, pattern S_SLOWNESS_MIST, pattern S_FOCUSED_SLOWNESS_MIST, pattern S_PAINT_DROPLET, pattern S_RHINO_HOLOGRAM
@@ -34,13 +34,13 @@ import Game.LambdaHack.Definition.Flavour
 
 blastsGNSingleton :: [GroupName ItemKind]
 blastsGNSingleton =
-       [S_FIRECRACKER, S_VIOLENT_FRAGMENTATION, S_FRAGMENTATION, S_FOCUSED_FRAGMENTATION, S_VIOLENT_CONCUSSION, S_CONCUSSION, S_FOCUSED_CONCUSSION, S_VIOLENT_FLASH, S_SPARK, S_FOCUSED_FLASH, S_GLASS_HAIL, S_FOCUSED_GLASS_HAIL, S_PHEROMONE, S_CALMING_MIST, S_DISTRESSING_ODOR, S_HEALING_MIST, S_HEALING_MIST_2, S_WOUNDING_MIST, S_DISTORTION, S_SMOKE, S_BOILING_WATER, S_GLUE, S_WASTE, S_ANTI_SLOW_MIST, S_ANTIDOTE_MIST, S_SLEEP_MIST, S_CURRENT_DISCHARGE, S_CURRENT_RECHARGE, S_DENSE_SHOWER, S_SPARSE_SHOWER, S_MELEE_PROTECTIVE_BALM, S_RANGE_PROTECTIVE_BALM, S_DEFENSELESSNESS_RUNOUT, S_RESOLUTION_DUST, S_HASTE_SPRAY, S_EYE_DROP, S_IRON_FILING, S_SMELLY_DROPLET, S_EYE_SHINE, S_WHISKEY_SPRAY, S_YOUTH_SPRINKLE, S_POISON_CLOUD, S_BURNING_OIL_2, S_BURNING_OIL_3, S_BURNING_OIL_4]
+       [S_FIRECRACKER, S_VIOLENT_FRAGMENTATION, S_FRAGMENTATION, S_FOCUSED_FRAGMENTATION, S_VIOLENT_CONCUSSION, S_CONCUSSION, S_FOCUSED_CONCUSSION, S_VIOLENT_FLASH, S_SPARK, S_FOCUSED_FLASH, S_GLASS_HAIL, S_FOCUSED_GLASS_HAIL, S_PHEROMONE, S_CALMING_MIST, S_DISTRESSING_ODOR, S_HEALING_MIST, S_HEALING_MIST_2, S_WOUNDING_MIST, S_DISTORTION, S_SMOKE, S_BOILING_WATER, S_GLUE, S_WASTE, S_ANTI_SLOW_MIST, S_ANTIDOTE_MIST, S_SLEEP_MIST, S_CURRENT_DISCHARGE, S_CURRENT_RECHARGE, S_DENSE_SHOWER, S_SPARSE_SHOWER, S_MELEE_PROTECTIVE_BALM, S_RANGE_PROTECTIVE_BALM, S_DEFENSELESSNESS_RUNOUT, S_RESOLUTION_DUST, S_HASTE_SPRAY, S_EYE_DROP, S_IRON_FILING, S_SMELLY_DROPLET, S_EYE_SHINE, S_WHISKEY_SPRAY, S_YOUTH_SPRINKLE, S_POISON_CLOUD, S_PING_PLASH, S_BURNING_OIL_2, S_BURNING_OIL_3, S_BURNING_OIL_4]
   ++ map firecrackerAt [1..4]
   ++ map blastNoStatOf noStatGN
   ++ map blastBonusStatOf bonusStatGN
   ++ [S_VIOLENT_SLOWNESS_MIST, S_SLOWNESS_MIST, S_FOCUSED_SLOWNESS_MIST, S_PAINT_DROPLET, S_RHINO_HOLOGRAM]
 
-pattern S_FIRECRACKER, S_VIOLENT_FRAGMENTATION, S_FRAGMENTATION, S_FOCUSED_FRAGMENTATION, S_VIOLENT_CONCUSSION, S_CONCUSSION, S_FOCUSED_CONCUSSION, S_VIOLENT_FLASH, S_SPARK, S_FOCUSED_FLASH, S_GLASS_HAIL, S_FOCUSED_GLASS_HAIL, S_PHEROMONE, S_CALMING_MIST, S_DISTRESSING_ODOR, S_HEALING_MIST, S_HEALING_MIST_2, S_WOUNDING_MIST, S_DISTORTION, S_SMOKE, S_BOILING_WATER, S_GLUE, S_WASTE, S_ANTI_SLOW_MIST, S_ANTIDOTE_MIST, S_SLEEP_MIST, S_CURRENT_DISCHARGE, S_CURRENT_RECHARGE, S_DENSE_SHOWER, S_SPARSE_SHOWER, S_MELEE_PROTECTIVE_BALM, S_RANGE_PROTECTIVE_BALM, S_DEFENSELESSNESS_RUNOUT, S_RESOLUTION_DUST, S_HASTE_SPRAY, S_EYE_DROP, S_IRON_FILING, S_SMELLY_DROPLET, S_EYE_SHINE, S_WHISKEY_SPRAY, S_YOUTH_SPRINKLE, S_POISON_CLOUD, S_BURNING_OIL_2, S_BURNING_OIL_3, S_BURNING_OIL_4 :: GroupName ItemKind
+pattern S_FIRECRACKER, S_VIOLENT_FRAGMENTATION, S_FRAGMENTATION, S_FOCUSED_FRAGMENTATION, S_VIOLENT_CONCUSSION, S_CONCUSSION, S_FOCUSED_CONCUSSION, S_VIOLENT_FLASH, S_SPARK, S_FOCUSED_FLASH, S_GLASS_HAIL, S_FOCUSED_GLASS_HAIL, S_PHEROMONE, S_CALMING_MIST, S_DISTRESSING_ODOR, S_HEALING_MIST, S_HEALING_MIST_2, S_WOUNDING_MIST, S_DISTORTION, S_SMOKE, S_BOILING_WATER, S_GLUE, S_WASTE, S_ANTI_SLOW_MIST, S_ANTIDOTE_MIST, S_SLEEP_MIST, S_CURRENT_DISCHARGE, S_CURRENT_RECHARGE, S_DENSE_SHOWER, S_SPARSE_SHOWER, S_MELEE_PROTECTIVE_BALM, S_RANGE_PROTECTIVE_BALM, S_DEFENSELESSNESS_RUNOUT, S_RESOLUTION_DUST, S_HASTE_SPRAY, S_EYE_DROP, S_IRON_FILING, S_SMELLY_DROPLET, S_EYE_SHINE, S_WHISKEY_SPRAY, S_YOUTH_SPRINKLE, S_POISON_CLOUD, S_PING_PLASH, S_BURNING_OIL_2, S_BURNING_OIL_3, S_BURNING_OIL_4 :: GroupName ItemKind
 
 pattern S_VIOLENT_SLOWNESS_MIST, S_SLOWNESS_MIST, S_FOCUSED_SLOWNESS_MIST, S_PAINT_DROPLET, S_RHINO_HOLOGRAM :: GroupName ItemKind
 
@@ -98,6 +98,7 @@ pattern S_EYE_SHINE = GroupName "eye shine"
 pattern S_WHISKEY_SPRAY = GroupName "whiskey spray"
 pattern S_YOUTH_SPRINKLE = GroupName "youth sprinkle"
 pattern S_POISON_CLOUD = GroupName "poison cloud"
+pattern S_PING_PLASH = GroupName "ping and flash"
 pattern S_BURNING_OIL_2 = GroupName "burning oil 2"
 pattern S_BURNING_OIL_3 = GroupName "burning oil 3"
 pattern S_BURNING_OIL_4 = GroupName "burning oil 4"
@@ -133,11 +134,11 @@ pattern BLAST_SOURCE = GroupName "blast source"
 
 blasts :: [ItemKind]
 blasts =
-  [burningOil2, burningOil3, burningOil4, firecracker1, firecracker2, firecracker3, firecracker4, firecracker5, spreadFragmentation, spreadFragmentation8, focusedFragmentation, spreadConcussion, spreadConcussion8, focusedConcussion, spreadFlash, spreadFlash8, focusedFlash, singleSpark, glassPiece, focusedGlass, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, smoke, boilingWater, glue, waste, mistAntiSlow, mistAntidote, mistSleep, currentDischarge, currentRecharge, denseShower, sparseShower, protectingBalmMelee, protectingBalmRanged, defenselessnessRunout, resolutionDust, hasteSpray,eyeDrop, ironFiling, smellyDroplet, eyeShine, whiskeySpray, youthSprinkle, poisonCloud, blastNoSkMove, blastNoSkMelee, blastNoSkDisplace, blastNoSkAlter, blastNoSkWait, blastNoSkMoveItem, blastNoSkProject, blastNoSkApply, blastBonusSkMove, blastBonusSkMelee, blastBonusSkDisplace, blastBonusSkAlter, blastBonusSkWait, blastBonusSkMoveItem, blastBonusSkProject, blastBonusSkApply]
+  [burningOil2, burningOil3, burningOil4, firecracker1, firecracker2, firecracker3, firecracker4, firecracker5, spreadFragmentation, spreadFragmentation8, focusedFragmentation, spreadConcussion, spreadConcussion8, focusedConcussion, spreadFlash, spreadFlash8, focusedFlash, singleSpark, glassPiece, focusedGlass, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, smoke, boilingWater, glue, waste, mistAntiSlow, mistAntidote, mistSleep, currentDischarge, currentRecharge, denseShower, sparseShower, protectingBalmMelee, protectingBalmRanged, defenselessnessRunout, resolutionDust, hasteSpray,eyeDrop, ironFiling, smellyDroplet, eyeShine, whiskeySpray, youthSprinkle, poisonCloud, pingFlash, blastNoSkMove, blastNoSkMelee, blastNoSkDisplace, blastNoSkAlter, blastNoSkWait, blastNoSkMoveItem, blastNoSkProject, blastNoSkApply, blastBonusSkMove, blastBonusSkMelee, blastBonusSkDisplace, blastBonusSkAlter, blastBonusSkWait, blastBonusSkMoveItem, blastBonusSkProject, blastBonusSkApply]
   -- Allure-specific
   ++ [cruiseAdHologram, outerAdHologram, victoriaClassHologram, allureIntroHologram, spreadNitrogen, spreadNitrogen8, focusedNitrogen, paintSpray]
 
-burningOil2,    burningOil3, burningOil4, firecracker1, firecracker2, firecracker3, firecracker4, firecracker5, spreadFragmentation, spreadFragmentation8, focusedFragmentation, spreadConcussion, spreadConcussion8, focusedConcussion, spreadFlash, spreadFlash8, focusedFlash, singleSpark, glassPiece, focusedGlass, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, smoke, boilingWater, glue, waste, mistAntiSlow, mistAntidote, mistSleep, currentDischarge, currentRecharge, denseShower, sparseShower, protectingBalmMelee, protectingBalmRanged, defenselessnessRunout, resolutionDust, hasteSpray, eyeDrop, ironFiling, smellyDroplet, eyeShine, whiskeySpray, youthSprinkle, poisonCloud, blastNoSkMove, blastNoSkMelee, blastNoSkDisplace, blastNoSkAlter, blastNoSkWait, blastNoSkMoveItem, blastNoSkProject, blastNoSkApply, blastBonusSkMove, blastBonusSkMelee, blastBonusSkDisplace, blastBonusSkAlter, blastBonusSkWait, blastBonusSkMoveItem, blastBonusSkProject, blastBonusSkApply :: ItemKind
+burningOil2,    burningOil3, burningOil4, firecracker1, firecracker2, firecracker3, firecracker4, firecracker5, spreadFragmentation, spreadFragmentation8, focusedFragmentation, spreadConcussion, spreadConcussion8, focusedConcussion, spreadFlash, spreadFlash8, focusedFlash, singleSpark, glassPiece, focusedGlass, fragrance, pheromone, mistCalming, odorDistressing, mistHealing, mistHealing2, mistWounding, distortion, smoke, boilingWater, glue, waste, mistAntiSlow, mistAntidote, mistSleep, currentDischarge, currentRecharge, denseShower, sparseShower, protectingBalmMelee, protectingBalmRanged, defenselessnessRunout, resolutionDust, hasteSpray, eyeDrop, ironFiling, smellyDroplet, eyeShine, whiskeySpray, youthSprinkle, poisonCloud, pingFlash, blastNoSkMove, blastNoSkMelee, blastNoSkDisplace, blastNoSkAlter, blastNoSkWait, blastNoSkMoveItem, blastNoSkProject, blastNoSkApply, blastBonusSkMove, blastBonusSkMelee, blastBonusSkDisplace, blastBonusSkAlter, blastBonusSkWait, blastBonusSkMoveItem, blastBonusSkProject, blastBonusSkApply :: ItemKind
 -- Allure-specific
 cruiseAdHologram,       outerAdHologram, victoriaClassHologram, allureIntroHologram, spreadNitrogen, spreadNitrogen8, focusedNitrogen, paintSpray :: ItemKind
 
@@ -872,6 +873,23 @@ poisonCloud = ItemKind
                , SetFlag Fragile, SetFlag Blast ]
   , ieffects = [toOrganNoTimer S_POISONED]
   , idesc    = "Choking gas that stings the eyes."
+  , ikit     = []
+  }
+pingFlash = ItemKind
+  { isymbol  = '`'
+  , iname    = "flash"
+  , ifreq    = [(S_PING_PLASH, 1)]
+  , iflavour = zipFancy [Green]
+  , icount   = 1
+  , irarity  = [(1, 1)]
+  , iverbHit = "ping"
+  , iweight  = 1  -- to prevent blocking the way
+  , idamage  = 0
+  , iaspects = [ toLinger 0
+               , SetFlag Fragile, SetFlag Blast
+               , AddSkill SkShine 2 ]
+  , ieffects = [OnSmash Yell]
+  , idesc    = "A ping and a display flash from an echolocator out of sync momentarily."
   , ikit     = []
   }
 blastNoStat :: GroupName ItemKind -> ItemKind

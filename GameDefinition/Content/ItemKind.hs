@@ -1336,7 +1336,7 @@ necklaceTemplate = ItemKind
   , icount   = 1
   , irarity  = [(4, 3), (10, 4)]
   , iverbHit = "whip"
-  , iweight  = 30
+  , iweight  = 100
   , idamage  = 0
   , iaspects = Timeout 1000000
                  -- fake, needed to display "charging"; the timeout itself
@@ -1437,23 +1437,19 @@ necklace10 = necklaceTemplate
                , Teleport 40  -- risky
                , toOrganBad S_PARSIMONIOUS (5 + 1 `d` 3) ]  -- hard to flee
   }
-motionScanner = ItemKind
-  { isymbol  = symbolTool
-  , iname    = "handheld sonar"
+motionScanner = necklaceTemplate
+  { iname    = "handheld sonar"
   , ifreq    = [(COMMON_ITEM, 100), (ADD_NOCTO_1, 20)]
-  , iflavour = zipPlain [Green]
-  , icount   = 1
   , irarity  = [(5, 2)]
   , iverbHit = "ping"
-  , iweight  = 1000
-  , idamage  = 0
-  , iaspects = [ AddSkill SkNocto 1
-               , AddSkill SkArmorMelee (-15 + (1 `dL` 5) * 5)
-               , AddSkill SkArmorRanged (-15 + (1 `dL` 5) * 3)
-               , SetFlag Equipable, EqpSlot EqpSlotMiscBonus ]
-  , ieffects = []
-  , idesc    = "Portable underwater echolocator overdriven to scan dark corridors at the cost of emitting loud pings."
-  , ikit     = []
+  , iweight  = 300  -- almost gives it away
+  , iaspects = [ Timeout $ 4 + 1 `dL` 6
+               , AddSkill SkNocto 1
+               , AddSkill SkArmorMelee (-20 + (1 `dL` 3) * 5)
+               , EqpSlot EqpSlotMiscBonus ]
+               ++ iaspects_necklaceTemplate
+  , ieffects = [Explode S_PING_PLASH]
+  , idesc    = "Portable underwater echolocator overdriven to scan dark corridors at the cost of emitting occasional loud pings and flashes. Having to track the display hanging from the neck strap is distracting, as well."
   }
 
 -- ** Non-periodic jewelry
