@@ -7,8 +7,9 @@
 -- | Actor (or rather actor body trunk) definitions.
 module Content.ItemKindActor
   ( -- * Group name patterns
-    pattern HERO, pattern SCOUT_HERO, pattern RANGER_HERO, pattern ESCAPIST_HERO, pattern AMBUSHER_HERO, pattern BRAWLER_HERO, pattern SOLDIER_HERO, pattern CIVILIAN, pattern MONSTER, pattern MOBILE_MONSTER, pattern SCOUT_MONSTER, pattern ANIMAL, pattern MOBILE_ANIMAL, pattern IMMOBILE_ANIMAL
-  , pattern ADD_SIGHT, pattern ARMOR_RANGED, pattern ADD_NOCTO_1, pattern WEAK_ARROW, pattern LIGHT_MANIPULATION, pattern WOODEN_TORCH, pattern BLANKET, pattern RING_OF_OPPORTUNITY_SNIPER, pattern ANY_ARROW, pattern STARTING_WEAPON, pattern GEM
+    pattern S_WOODEN_TORCH
+    , pattern HERO, pattern SCOUT_HERO, pattern RANGER_HERO, pattern ESCAPIST_HERO, pattern AMBUSHER_HERO, pattern BRAWLER_HERO, pattern SOLDIER_HERO, pattern CIVILIAN, pattern MONSTER, pattern MOBILE_MONSTER, pattern SCOUT_MONSTER, pattern ANIMAL, pattern MOBILE_ANIMAL, pattern IMMOBILE_ANIMAL
+  , pattern ADD_SIGHT, pattern ARMOR_RANGED, pattern ADD_NOCTO_1, pattern WEAK_ARROW, pattern LIGHT_MANIPULATION, pattern BLANKET, pattern RING_OF_OPPORTUNITY_SNIPER, pattern ANY_ARROW, pattern STARTING_WEAPON, pattern GEM
   , pattern CRAWL_HERO, pattern MERCENARY_HERO, pattern AQUATIC_ANIMAL, pattern AQUATIC_MONSTER, pattern ROBOT, pattern MOBILE_ROBOT, pattern IMMOBILE_ROBOT, pattern CONSTRUCTION_ROBOT
   , pattern S_BULLTEPROOF_VEST, pattern S_PERFUME_POTION
   , pattern COOKED_FOOD, pattern MERCENARY_WEAPON, pattern MERCENARY_AMMO, pattern RAW_MEAT_CHUNK, pattern ROASTED_MEAT_CHUNK, pattern NEEDLE, pattern CAN_OF_STICKY_FOAM, pattern TRANQUILIZER_DART, pattern WASTE_CONTAINER, pattern CONSTRUCTION_HOOTER, pattern SPOTLIGHT, pattern BLOWTORCH, pattern POLE, pattern POLE_OR_HANDLE, pattern BREACHING_TOOL, pattern BONDING_TOOL, pattern SHARPENING_TOOL, pattern WIRECUTTING_TOOL
@@ -32,20 +33,20 @@ import Game.LambdaHack.Definition.Flavour
 
 actorsGNSingleton :: [GroupName ItemKind]
 actorsGNSingleton =
-       [S_BULLTEPROOF_VEST, S_PERFUME_POTION]
+       [S_WOODEN_TORCH, S_BULLTEPROOF_VEST, S_PERFUME_POTION]
 
-pattern S_BULLTEPROOF_VEST, S_PERFUME_POTION :: GroupName ItemKind
+pattern S_WOODEN_TORCH, S_BULLTEPROOF_VEST, S_PERFUME_POTION :: GroupName ItemKind
 
 actorsGN :: [GroupName ItemKind]
 actorsGN =
        [HERO, SCOUT_HERO, RANGER_HERO, ESCAPIST_HERO, AMBUSHER_HERO, BRAWLER_HERO, SOLDIER_HERO, CIVILIAN, MONSTER, MOBILE_MONSTER, SCOUT_MONSTER, ANIMAL, MOBILE_ANIMAL, IMMOBILE_ANIMAL]
-    ++ [ADD_SIGHT, ARMOR_RANGED, ADD_NOCTO_1, WEAK_ARROW, LIGHT_MANIPULATION, WOODEN_TORCH, BLANKET, RING_OF_OPPORTUNITY_SNIPER, ANY_ARROW, STARTING_WEAPON, GEM]
+    ++ [ADD_SIGHT, ARMOR_RANGED, ADD_NOCTO_1, WEAK_ARROW, LIGHT_MANIPULATION, BLANKET, RING_OF_OPPORTUNITY_SNIPER, ANY_ARROW, STARTING_WEAPON, GEM]
     ++ [CRAWL_HERO, MERCENARY_HERO, AQUATIC_ANIMAL, AQUATIC_MONSTER, ROBOT, MOBILE_ROBOT, IMMOBILE_ROBOT, CONSTRUCTION_ROBOT]
     ++ [COOKED_FOOD, MERCENARY_WEAPON, MERCENARY_AMMO, RAW_MEAT_CHUNK, ROASTED_MEAT_CHUNK, NEEDLE, CAN_OF_STICKY_FOAM, TRANQUILIZER_DART, WASTE_CONTAINER, CONSTRUCTION_HOOTER, SPOTLIGHT, BLOWTORCH, POLE, POLE_OR_HANDLE, BREACHING_TOOL, BONDING_TOOL, SHARPENING_TOOL, WIRECUTTING_TOOL]
 
 pattern HERO, SCOUT_HERO, RANGER_HERO, ESCAPIST_HERO, AMBUSHER_HERO, BRAWLER_HERO, SOLDIER_HERO, CIVILIAN, MONSTER, MOBILE_MONSTER, SCOUT_MONSTER, ANIMAL, MOBILE_ANIMAL, IMMOBILE_ANIMAL :: GroupName ItemKind
 
-pattern ADD_SIGHT, ARMOR_RANGED, ADD_NOCTO_1, WEAK_ARROW, LIGHT_MANIPULATION, WOODEN_TORCH, BLANKET, RING_OF_OPPORTUNITY_SNIPER, ANY_ARROW, STARTING_WEAPON, GEM :: GroupName ItemKind
+pattern ADD_SIGHT, ARMOR_RANGED, ADD_NOCTO_1, WEAK_ARROW, LIGHT_MANIPULATION, BLANKET, RING_OF_OPPORTUNITY_SNIPER, ANY_ARROW, STARTING_WEAPON, GEM :: GroupName ItemKind
 
 pattern CRAWL_HERO, MERCENARY_HERO, AQUATIC_ANIMAL, AQUATIC_MONSTER, ROBOT, MOBILE_ROBOT, IMMOBILE_ROBOT, CONSTRUCTION_ROBOT :: GroupName ItemKind
 
@@ -78,12 +79,13 @@ pattern IMMOBILE_ROBOT = GroupName "immobile robot"
 pattern CONSTRUCTION_ROBOT = GroupName "construction robot"
 
 -- ** Common
+pattern S_WOODEN_TORCH = GroupName "wooden torch"
+
 pattern ADD_SIGHT = GroupName "sight improvement"
 pattern ARMOR_RANGED = GroupName "ranged armor"
 pattern ADD_NOCTO_1 = GroupName "noctovision improvement"
 pattern WEAK_ARROW = GroupName "weak arrow"
 pattern LIGHT_MANIPULATION = GroupName "light manipulation"
-pattern WOODEN_TORCH = GroupName "wooden torch"
 pattern BLANKET = GroupName "blanket"
 pattern RING_OF_OPPORTUNITY_SNIPER = GroupName "ring of opportunity sniper"
 pattern ANY_ARROW = GroupName "arrow"
@@ -209,7 +211,7 @@ escapist = warrior
                   , (ARMOR_RANGED, CEqp)
                   , (WEAK_ARROW, CStash)  -- mostly for probing
                   , (LIGHT_MANIPULATION, CStash)
-                  , (WOODEN_TORCH, CStash)
+                  , (S_WOODEN_TORCH, CStash)
                   , (BLANKET, CStash) ]
   -- , idesc    = ""
   }
@@ -222,7 +224,7 @@ ambusher = warrior
                   , (WEAK_ARROW, CStash)
                   , (EXPLOSIVE, CStash)
                   , (LIGHT_MANIPULATION, CEqp)
-                  , (WOODEN_TORCH, CStash) ]
+                  , (S_WOODEN_TORCH, CStash) ]
   -- , idesc    = ""
   }
 brawler = warrior

@@ -11,7 +11,7 @@ module Content.ItemKindEmbed
   , pattern S_SANDSTONE_ROCK
   , pattern ABANDONED_CACHE, pattern JEWELRY_DISPLAY_TRAP, pattern BLACK_STARRY_SKY, pattern DISENGAGED_DOCKING_GEAR, pattern RUINED_FIRST_AID_KIT, pattern FIRE_FIGHTING_GEAR, pattern DISPLAY_3D, pattern CRACKED_FLUE, pattern BLOOD_ON_WALL, pattern DEPOSIT_BOX, pattern JEWELRY_CASE, pattern EDIBLE_PLANT_RIPE, pattern STAIRS_TRAP_DOWN_OIL, pattern LIFT_UP, pattern LIFT_DOWN, pattern LIFT_TRAP, pattern SHUTTLE_HARDWARE, pattern OIL_PUDDLE, pattern DECONTAMINATION_CHAMBER, pattern BARREL_CONTENTS, pattern WORKSHOP_BENCH
   , pattern MUSEAL, pattern EDIBLE_PLANT, pattern FIRE_FIGHTING_ITEM, pattern STEEL_SCRAP, pattern HANDLE, pattern HANDLE_AND_STEEL, pattern POLE_AND_STEEL, pattern SPACESUIT_PART, pattern THICK_CLOTH, pattern STARTING_HAMMER
-  , pattern S_ENCHANCED_BERRY, pattern S_COOKED_BERRY, pattern S_FRAYED_FUNGUS, pattern S_COOKED_FUNGUS, pattern S_THIC_LEAF, pattern S_COOKED_LEAF, pattern S_RECONFIGURED_FRUIT, pattern S_COOKED_FRUIT, pattern S_FRAGRANT_HERB, pattern S_COOKED_HERB, pattern S_DULL_FLOWER, pattern S_COOKED_FLOWER, pattern S_SPICY_BARK, pattern S_COOKED_BARK, pattern S_PUMPKIN, pattern S_COOKED_PUMPKIN, pattern S_REFRIGERATION_COIL, pattern S_ROSE_WATER_FLASK, pattern S_SPACESUIT_JACKET, pattern S_SPACESUIT_TROUSERS, pattern S_SPACESUIT_GLOVE, pattern S_SPACESUIT_HELMET, pattern S_SPACESUIT_BOOT, pattern S_SPACESUIT, pattern S_SPACESUIT_TORN, pattern S_HARPOON_CARGO, pattern S_HARPOON_SHARP, pattern S_SHIELD_BLUNT, pattern S_SHIELD_SHARP, pattern S_BLUNT_SHORT_HAMMER, pattern S_BLUNT_LONG_HAMMER, pattern S_SHARP_SHORT_HAMMER, pattern S_SHARP_LONG_HAMMER, pattern S_CLEAVER, pattern S_DAGGER, pattern S_RAPIER_BLUNT, pattern S_RAPIER_SHARP, pattern S_POLE_CLEAVER, pattern S_LONG_SPEAR, pattern S_CROWBAR, pattern S_FIRE_AXE, pattern S_POLL_AXE, pattern S_HALBERD_BLUNT, pattern S_HALBERD_SHARP, pattern S_STAFF, pattern S_PIPE, pattern S_SHARPENED_PIPE, pattern S_RAG_TANGLE
+  , pattern S_ENCHANCED_BERRY, pattern S_COOKED_BERRY, pattern S_FRAYED_FUNGUS, pattern S_COOKED_FUNGUS, pattern S_THIC_LEAF, pattern S_COOKED_LEAF, pattern S_RECONFIGURED_FRUIT, pattern S_COOKED_FRUIT, pattern S_FRAGRANT_HERB, pattern S_COOKED_HERB, pattern S_DULL_FLOWER, pattern S_COOKED_FLOWER, pattern S_SPICY_BARK, pattern S_COOKED_BARK, pattern S_PUMPKIN, pattern S_COOKED_PUMPKIN, pattern S_REFRIGERATION_COIL, pattern S_DOUSED_WOODEN_TORCH, pattern S_DOUSED_OIL_LAMP, pattern S_OIL_LAMP, pattern S_EMPTY_FLASK, pattern S_ROSE_WATER_FLASK, pattern S_SPACESUIT_JACKET, pattern S_SPACESUIT_TROUSERS, pattern S_SPACESUIT_GLOVE, pattern S_SPACESUIT_HELMET, pattern S_SPACESUIT_BOOT, pattern S_SPACESUIT, pattern S_SPACESUIT_TORN, pattern S_HARPOON_CARGO, pattern S_HARPOON_SHARP, pattern S_SHIELD_BLUNT, pattern S_SHIELD_SHARP, pattern S_BLUNT_SHORT_HAMMER, pattern S_BLUNT_LONG_HAMMER, pattern S_SHARP_SHORT_HAMMER, pattern S_SHARP_LONG_HAMMER, pattern S_CLEAVER, pattern S_DAGGER, pattern S_RAPIER_BLUNT, pattern S_RAPIER_SHARP, pattern S_POLE_CLEAVER, pattern S_LONG_SPEAR, pattern S_CROWBAR, pattern S_FIRE_AXE, pattern S_POLL_AXE, pattern S_HALBERD_BLUNT, pattern S_HALBERD_SHARP, pattern S_STAFF, pattern S_PIPE, pattern S_SHARPENED_PIPE, pattern S_RAG_TANGLE
   , embedsGNSingleton, embedsGN
   , -- * Content
     embeds
@@ -41,7 +41,7 @@ embedsGNSingleton =
 
 pattern S_SANDSTONE_ROCK :: GroupName ItemKind
 
-pattern S_ENCHANCED_BERRY, S_COOKED_BERRY, S_FRAYED_FUNGUS, S_COOKED_FUNGUS, S_THIC_LEAF, S_COOKED_LEAF, S_RECONFIGURED_FRUIT, S_COOKED_FRUIT, S_FRAGRANT_HERB, S_COOKED_HERB, S_DULL_FLOWER, S_COOKED_FLOWER, S_SPICY_BARK, S_COOKED_BARK, S_PUMPKIN, S_COOKED_PUMPKIN, S_REFRIGERATION_COIL, S_ROSE_WATER_FLASK, S_SPACESUIT_JACKET, S_SPACESUIT_TROUSERS, S_SPACESUIT_GLOVE, S_SPACESUIT_HELMET, S_SPACESUIT_BOOT, S_SPACESUIT, S_SPACESUIT_TORN, S_HARPOON_CARGO, S_HARPOON_SHARP, S_SHIELD_BLUNT, S_SHIELD_SHARP, S_BLUNT_SHORT_HAMMER, S_BLUNT_LONG_HAMMER, S_SHARP_SHORT_HAMMER, S_SHARP_LONG_HAMMER, S_CLEAVER, S_DAGGER, S_RAPIER_BLUNT, S_RAPIER_SHARP, S_POLE_CLEAVER, S_LONG_SPEAR, S_CROWBAR, S_FIRE_AXE, S_POLL_AXE, S_HALBERD_BLUNT, S_HALBERD_SHARP, S_STAFF, S_PIPE, S_SHARPENED_PIPE, S_RAG_TANGLE :: GroupName ItemKind
+pattern S_ENCHANCED_BERRY, S_COOKED_BERRY, S_FRAYED_FUNGUS, S_COOKED_FUNGUS, S_THIC_LEAF, S_COOKED_LEAF, S_RECONFIGURED_FRUIT, S_COOKED_FRUIT, S_FRAGRANT_HERB, S_COOKED_HERB, S_DULL_FLOWER, S_COOKED_FLOWER, S_SPICY_BARK, S_COOKED_BARK, S_PUMPKIN, S_COOKED_PUMPKIN, S_REFRIGERATION_COIL, S_DOUSED_WOODEN_TORCH, S_DOUSED_OIL_LAMP, S_OIL_LAMP, S_EMPTY_FLASK, S_ROSE_WATER_FLASK, S_SPACESUIT_JACKET, S_SPACESUIT_TROUSERS, S_SPACESUIT_GLOVE, S_SPACESUIT_HELMET, S_SPACESUIT_BOOT, S_SPACESUIT, S_SPACESUIT_TORN, S_HARPOON_CARGO, S_HARPOON_SHARP, S_SHIELD_BLUNT, S_SHIELD_SHARP, S_BLUNT_SHORT_HAMMER, S_BLUNT_LONG_HAMMER, S_SHARP_SHORT_HAMMER, S_SHARP_LONG_HAMMER, S_CLEAVER, S_DAGGER, S_RAPIER_BLUNT, S_RAPIER_SHARP, S_POLE_CLEAVER, S_LONG_SPEAR, S_CROWBAR, S_FIRE_AXE, S_POLL_AXE, S_HALBERD_BLUNT, S_HALBERD_SHARP, S_STAFF, S_PIPE, S_SHARPENED_PIPE, S_RAG_TANGLE :: GroupName ItemKind
 
 embedsGN :: [GroupName ItemKind]
 embedsGN =
@@ -128,6 +128,10 @@ pattern S_COOKED_BARK = GroupName "cooked bark"
 pattern S_PUMPKIN = GroupName "pumpkin"
 pattern S_COOKED_PUMPKIN = GroupName "cooked pumpkin"
 
+pattern S_DOUSED_WOODEN_TORCH = GroupName "doused wooden torch"
+pattern S_DOUSED_OIL_LAMP = GroupName "doused oil lamp"
+pattern S_OIL_LAMP = GroupName "oil lamp"
+pattern S_EMPTY_FLASK = GroupName "empty flask"
 pattern S_REFRIGERATION_COIL = GroupName "refrigeration coil"
 pattern S_ROSE_WATER_FLASK = GroupName "rose water flask"
 pattern S_SPACESUIT_JACKET = GroupName "spacesuit jacket"
@@ -308,7 +312,7 @@ fireSmall = ItemKind
   , idamage  = 0
   , iaspects = [ELabel "of roasting", SetFlag Durable]
   , ieffects = [ Burn 1, Explode S_SINGLE_SPARK
-               , OnCombine cookEffect ]
+               , OnCombine roastEffect ]
   , idesc    = "A few embers and wisps of flame, glowing brightly."
   , ikit     = []
   }
@@ -318,7 +322,7 @@ fireBig = fireSmall
   , ifreq    = [(BIG_FIRE, 1), (FIRE_SOURCE, 1)]
   , iaspects = [ELabel "of immolation", SetFlag Durable]
   , ieffects = [ Burn 2
-               , CreateItem Nothing CStash WOODEN_TORCH timerNone
+               , CreateItem Nothing CStash S_WOODEN_TORCH timerNone
                , Explode S_SPARK ]
   , idesc    = "Glowing with light and warmth."
   , ikit     = []
@@ -797,7 +801,7 @@ machineOil = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = []
-  , ieffects = [PushActor (ThrowMod 600 10 1)]
+  , ieffects = [PushActor (ThrowMod 600 10 1), OnCombine oilEffect]
                   -- the high speed represents gliding rather than flying
                   -- and so no need to lift actor's weight off the ground;
                   -- low linger comes from abrupt halt over normal surface
@@ -882,7 +886,7 @@ barrelOil = barrelFuel
   { iname    = "lubricant oil"
   , ifreq    = [(BARREL_CONTENTS, 20)]
   , iflavour = zipPlain [Brown]
-  , ieffects = [Explode S_MELEE_PROTECTIVE_BALM]
+  , ieffects = [Explode S_MELEE_PROTECTIVE_BALM, OnCombine oilEffect]
                  -- beneficial, so OK not to affect the triggering actor
   , idesc    = ""
   }
@@ -936,12 +940,19 @@ combineEffect msg ass =
       initial = VerbMsgFail msg  -- noop; emits @UseId@ to correctly abort
   in foldr f initial ass
 
-cookEffect :: Effect
-cookEffect = combineEffect "have nothing to cook"
-             $ map (\(raw, cooked) ->
-                      ([], [(1, raw)], [(1, cooked)])) cookingAssocs
-               ++ [( [], [(1, S_STAFF), (1, THICK_CLOTH), (1, OIL_SOURCE)]
-                   , [(1, WOODEN_TORCH)] )]
+oilEffect :: Effect
+oilEffect = combineEffect "have nothing to oil"
+            $ [ ( [], [(1, S_STAFF), (1, THICK_CLOTH)]
+                , [(1, S_DOUSED_WOODEN_TORCH)] )
+              , ( [], [(1, S_EMPTY_FLASK), (1, THICK_CLOTH)]
+                , [(1, S_DOUSED_OIL_LAMP)] ) ]
+
+roastEffect :: Effect
+roastEffect = combineEffect "have nothing to roast"
+              $ map (\(raw, cooked) ->
+                       ([], [(1, raw)], [(1, cooked)])) cookingAssocs
+                ++ [ ([], [(1, S_DOUSED_WOODEN_TORCH)], [(1, S_WOODEN_TORCH)])
+                   , ([], [(1, S_DOUSED_OIL_LAMP)], [(1, S_OIL_LAMP)]) ]
 
 sharpeningEffect :: Effect
 sharpeningEffect =
