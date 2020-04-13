@@ -236,7 +236,7 @@ spike2 = spike
   , icount   = 1 + 5 `dL` 5
   , iverbHit = "penetrate"
   , iweight  = 150
-  , idamage = 4 `d` 1
+  , idamage = 4 `d` 1  -- not useful for melee, because hurt skill too low
   , iaspects = [ AddSkill SkHurtMelee $ (-10 + 1 `d` 2 + 1 `dL` 3) * 5
                , SetFlag MinorEffects
                , Odds (10 * 1 `dL` 10) [] [toVelocity 70] ]
@@ -338,7 +338,7 @@ harpoon = ItemKind
   , irarity  = [(1, 6)]
   , iverbHit = "hook"
   , iweight  = 1400
-  , idamage  = 6 `d` 1
+  , idamage  = 5 `d` 1
   , iaspects = [ Timeout 7
                , AddSkill SkHurtMelee $ (-6 + 1 `d` 3) * 5
                , SetFlag Durable, SetFlag Meleeable
@@ -1706,7 +1706,7 @@ gloveFencing = ItemKind
   , irarity  = [(6, 9), (10, 5)]
   , iverbHit = "flap"
   , iweight  = 100
-  , idamage  = 1 `d` 1
+  , idamage  = 2 `d` 1
   , iaspects = [ AddSkill SkHurtMelee $ (2 + 1 `d` 2 + 1 `dL` 2) * 3
                , AddSkill SkArmorRanged $ (1 `dL` 2) * 3
                , SetFlag Durable, SetFlag Equipable
@@ -1724,7 +1724,7 @@ gloveGauntlet = gloveFencing
   , irarity  = [(1, 9), (5 * 10/15, 9), (6 * 10/15, 1)]
   , iverbHit = "mow"
   , iweight  = 500
-  , idamage  = 4 `d` 1
+  , idamage  = 3 `d` 1
   , iaspects = [ Timeout 4
                , AddSkill SkArmorMelee $ (1 + 1 `dL` 3) * 5
                , SetFlag Durable, SetFlag Meleeable
@@ -1875,7 +1875,7 @@ shield = buckler
   , irarity  = [(8, 5)]  -- the stronger variants add to total probability
   , iflavour = zipPlain [Green]
   , iweight  = 4000
-  , idamage  = 4 `d` 1
+  , idamage  = 3 `d` 1
   , iaspects = [ Timeout $ (3 + 1 `d` 3 - 1 `dL` 3) * 4
                , AddSkill SkArmorMelee 60
                , AddSkill SkSpeed (-1)  -- the main price to pay
@@ -1890,7 +1890,7 @@ shield2 = shield
   { ifreq    = [(COMMON_ITEM, 10), (MUSEAL, 50), (S_SHIELD_BLUNT, 1)]
                   -- very low base rarity
   , iweight  = 6000
-  , idamage  = 6 `d` 1
+  , idamage  = 5 `d` 1
   , idesc    = "A relic of long-past wars, heavy and with a central spike, which is however misaligned and dull."
   }
 shield3 = shield2
@@ -1975,8 +1975,8 @@ catsPaw = chisel
   , iflavour = zipFancy [BrCyan]
   , irarity  = [(1, 12), (3 * 10/15, 12), (4 * 10/15, 1)]
   , iverbHit = "paw"
-  , idamage  = 2 `d` 1
-  , iaspects = [ Timeout $ 1 + 2 `d` 2
+  , idamage  = 1 `d` 1
+  , iaspects = [ Timeout $ 2 + 1 `d` 2
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
                , toVelocity 40 ]
@@ -2392,7 +2392,7 @@ treePruner = grassStitcher
   , iflavour = zipFancy [BrRed]
   , irarity  = [(8, 12)]
   , iweight  = 4500
-  , idamage  = 4 `d` 1
+  , idamage  = 3 `d` 1
   , iaspects = [ Timeout 10
                , AddSkill SkArmorMelee 20  -- sharp
                , SetFlag Durable, SetFlag Meleeable
@@ -2408,7 +2408,7 @@ cleaningPole = grassStitcher
   , iflavour = zipPlain [Blue]
   , irarity  = [(8, 8)]
   , iweight  = 3500
-  , idamage  = 1 `d` 1
+  , idamage  = 2 `d` 1
   , iaspects = [ AddSkill SkArmorMelee 10  -- not sharp, so weaker
                , SetFlag Durable, SetFlag Meleeable  -- a fence may melee with
                , EqpSlot EqpSlotArmorMelee

@@ -142,7 +142,7 @@ fist = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "punch"
   , iweight  = 2000
-  , idamage  = 3 `d` 1
+  , idamage  = 2 `d` 1
   , iaspects = [SetFlag Durable, SetFlag Meleeable]
   , ieffects = []
   , idesc    = "Simple but effective."
@@ -152,7 +152,7 @@ foot = fist
   { iname    = "foot"
   , ifreq    = [(S_FOOT, 1)]
   , iverbHit = "kick"
-  , idamage  = 3 `d` 1
+  , idamage  = 2 `d` 1
   , idesc    = "A weapon you can still use if disarmed."
                  -- great example of tutorial hints inside a flavourful text
   }
