@@ -103,9 +103,9 @@ otherItemContent = embeds ++ actors ++ organs ++ blasts ++ temporaries
 
 items :: [ItemKind]
 items =
-  [sandstoneRock, steelScrap, needle, dart, spike, spike2, slingStone, slingBullet, needleSleep, paralizingProj, harpoon, harpoon2, harpoon3, net, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, potion13, potion14, potion15, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, scrollAd1, rawMeatChunk, roastedMeatChunk, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, light1, light2, light3, blanket, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, motionScanner, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, meleeEnhancement, spacesuit, spacesuitTorn, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, heavyBoot, ragTangle, buckler, shield, shield2, shield3, blowtorch, laserSharpener, crowbar, catsPaw, hammerTemplate, hammer1, hammer2, hammer3, hammer4, hammer5, hammerParalyze, hammerSpark, knife, daggerDropBestWeapon, dagger, sword, swordImpress, swordNullify, swordNullifySharp, halberd, oxTongue, fireAxe, pollaxe, halberdPushActor, halberdPushActorSharp, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, hoe, spade, treePruner, cleaningPole, staff, pipe, longPole, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency, jumpingPole, constructionHooter, wasteContainer, spotlight, seeingItem]
+  [sandstoneRock, steelScrap, needle, dart, spike, spike2, slingStone, slingBullet, needleSleep, paralizingProj, harpoon, harpoon2, harpoon3, net, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, potion13, potion14, potion15, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, scrollAd1, rawMeatChunk, roastedMeatChunk, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, light1, light2, light3, blanket, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, motionScanner, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, ring9, ring10, armorLeather, armorLeather2, armorMail, meleeEnhancement, spacesuit, spacesuitTorn, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, heavyBoot, ragTangle, buckler, shield, shield2, shield3, blowtorch, laserSharpener, crowbar, catsPaw, hammerTemplate, hammer1, hammer2, hammer3, hammer4, hammer5, hammerParalyze, hammerSpark, knife, daggerDropBestWeapon, dagger, sword, swordImpress, swordNullify, swordNullifySharp, halberd, oxTongue, fireAxe, pollaxe, halberdPushActor, halberdPushActorSharp, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, hoe, spade, treePruner, cleaningPole, staff, pipe, longPole, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency, jumpingPole, constructionHooter, wasteContainer, spotlight, seeingItem]
 
-sandstoneRock,    steelScrap, needle, dart, spike, spike2, slingStone, slingBullet, needleSleep, paralizingProj, harpoon, harpoon2, harpoon3, net, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, potion13, potion14, potion15, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, scrollAd1, rawMeatChunk, roastedMeatChunk, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, light1, light2, light3, blanket, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, motionScanner, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, armorLeather, armorLeather2, armorMail, meleeEnhancement, spacesuit, spacesuitTorn, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, heavyBoot, ragTangle, buckler, shield, shield2, shield3, blowtorch, laserSharpener, crowbar, catsPaw, hammerTemplate, hammer1, hammer2, hammer3, hammer4, hammer5, hammerParalyze, hammerSpark, knife, daggerDropBestWeapon, dagger, sword, swordImpress, swordNullify, swordNullifySharp, halberd, oxTongue, fireAxe, pollaxe, halberdPushActor, halberdPushActorSharp, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, hoe, spade, treePruner, cleaningPole, staff, pipe, longPole, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency, jumpingPole, constructionHooter, wasteContainer, spotlight, seeingItem :: ItemKind
+sandstoneRock,    steelScrap, needle, dart, spike, spike2, slingStone, slingBullet, needleSleep, paralizingProj, harpoon, harpoon2, harpoon3, net, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, potion13, potion14, potion15, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, scrollAd1, rawMeatChunk, roastedMeatChunk, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, light1, light2, light3, blanket, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, motionScanner, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, ring9, ring10, armorLeather, armorLeather2, armorMail, meleeEnhancement, spacesuit, spacesuitTorn, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, heavyBoot, ragTangle, buckler, shield, shield2, shield3, blowtorch, laserSharpener, crowbar, catsPaw, hammerTemplate, hammer1, hammer2, hammer3, hammer4, hammer5, hammerParalyze, hammerSpark, knife, daggerDropBestWeapon, dagger, sword, swordImpress, swordNullify, swordNullifySharp, halberd, oxTongue, fireAxe, pollaxe, halberdPushActor, halberdPushActorSharp, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, hoe, spade, treePruner, cleaningPole, staff, pipe, longPole, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency, jumpingPole, constructionHooter, wasteContainer, spotlight, seeingItem :: ItemKind
 
 -- Keep the dice rolls and sides in aspects small so that not too many
 -- distinct items are generated (for display in item lore and for narrative
@@ -1511,13 +1511,21 @@ ringTemplate = ItemKind
   }
 ring1 = ringTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
-  , iaspects = [ AddSkill SkSpeed $ 1 `dL` 3
+  , irarity  = [(5, 4)]
+  , iaspects = [ AddSkill SkSpeed $ 1 `dL` 2
                , AddSkill SkMaxHP (-10)
-               , AddSkill SkArmorMelee (-20)
+               , AddSkill SkArmorMelee (-10)
                , EqpSlot EqpSlotSpeed ]
                ++ iaspects ringTemplate
   }
 ring2 = ringTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
+  , iaspects = [ AddSkill SkSpeed $ 1 + 1 `dL` 3
+               , AddSkill SkArmorMelee (-30)
+               , EqpSlot EqpSlotSpeed ]
+               ++ iaspects ringTemplate
+  }
+ring3 = ringTemplate
   { ifreq    = [(CURIOUS_ITEM, 100), (ANY_JEWELRY, 100)]
   , irarity  = [(10, 2)]
   , iaspects = [ SetFlag Unique, ELabel "of Rush"
@@ -1528,14 +1536,14 @@ ring2 = ringTemplate
                ++ iaspects ringTemplate
   , idesc    = "The creator of this dangerous artifact didn't find time to document its operation. And now it's too late."
   }
-ring3 = ringTemplate
+ring4 = ringTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
   , iaspects = [ AddSkill SkMaxHP $ 5 + (1 `d` 2 + 1 `dL` 2) * 5
                , AddSkill SkMaxCalm $ -30 + (1 `dL` 3) * 5
                , EqpSlot EqpSlotMaxHP ]
                ++ iaspects ringTemplate
   }
-ring4 = ringTemplate
+ring5 = ringTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100), (MUSEAL, 100)]
   , irarity  = [(5, 1), (10, 10)]  -- needed after other items drop Calm
   , iaspects = [ AddSkill SkMaxCalm $ 30 + (1 `dL` 4) * 5
@@ -1543,15 +1551,23 @@ ring4 = ringTemplate
                ++ iaspects ringTemplate
   , idesc    = "Cold, solid to the touch, perfectly round, engraved with solemn, strangely comforting, worn out words."
   }
-ring5 = ringTemplate
+ring6 = ringTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
-  , iaspects = [ AddSkill SkHurtMelee $ (4 + 1 `d` 2 + (1 `dL` 2) * 2 ) * 3
+  , irarity  = [(5, 4)]
+  , iaspects = [ AddSkill SkHurtMelee $ (1 + 1 `d` 3 + (1 `dL` 2) * 2 ) * 5
                , AddSkill SkMaxHP (-10)
-               , AddSkill SkArmorMelee (-20)
+               , AddSkill SkArmorMelee (-10)
                , EqpSlot EqpSlotHurtMelee ]
                ++ iaspects ringTemplate
   }
-ring6 = ringTemplate  -- weak skill per eqp slot, so can be without drawbacks
+ring7 = ringTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
+  , iaspects = [ AddSkill SkHurtMelee $ (3 + 1 `d` 3 + (1 `dL` 2) * 2 ) * 5
+               , AddSkill SkArmorMelee (-30)
+               , EqpSlot EqpSlotHurtMelee ]
+               ++ iaspects ringTemplate
+  }
+ring8 = ringTemplate  -- weak skill per eqp slot, so can be without drawbacks
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100), (MUSEAL, 50)]
   , irarity  = [(3, 3)]
   , iaspects = [ AddSkill SkShine 1
@@ -1559,7 +1575,7 @@ ring6 = ringTemplate  -- weak skill per eqp slot, so can be without drawbacks
                ++ iaspects ringTemplate
   , idesc    = "A sturdy ring with a large, shining stone."
   }
-ring7 = ringTemplate
+ring9 = ringTemplate
   { ifreq    = [(COMMON_ITEM, 10), (RING_OF_OPPORTUNITY_SNIPER, 1)]
   , iaspects = [ ELabel "of opportunity sniper"
                , AddSkill SkProject 8
@@ -1567,7 +1583,7 @@ ring7 = ringTemplate
                ++ iaspects ringTemplate
   , idesc    = "This mil-grade communication equipment feeds the aggregated enemy position information to the wearer, even when he is not the pointman of the team and so the team is not intentionally spotting for him. With proper training this permits ranged attacks, even indirect fire, without neglecting the simultaneous squad doctrine obligation of covering the approach of the pointman."
   }
-ring8 = ringTemplate
+ring10 = ringTemplate
   { ifreq    = [(TREASURE, 100), (ANY_JEWELRY, 100)]
   , irarity  = [(10, 2)]
   , iaspects = [ SetFlag Unique, ELabel "of Overwatch"
