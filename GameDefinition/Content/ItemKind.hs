@@ -337,10 +337,10 @@ harpoon = ItemKind
   , icount   = 1  -- durable, so one piece lasts long
   , irarity  = [(1, 6)]
   , iverbHit = "hook"
-  , iweight  = 1400
+  , iweight  = 1600
   , idamage  = 5 `d` 1
   , iaspects = [ Timeout 7
-               , AddSkill SkHurtMelee $ (-6 + 1 `d` 3) * 5
+               , AddSkill SkHurtMelee $ (-4 + 1 `d` 3) * 5
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig ]
   , ieffects = [PullActor (ThrowMod 200 50 1)]  -- 1 step, fast
