@@ -851,7 +851,7 @@ decontaminator = ItemKind
 barrelFuel = ItemKind
   { isymbol  = 'b'
   , iname    = "fuel"
-  , ifreq    = [(BARREL_CONTENTS, 20)]
+  , ifreq    = [(BARREL_CONTENTS, 20), (OIL_SOURCE, 1)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , irarity  = [(1, 1)]
@@ -859,16 +859,16 @@ barrelFuel = ItemKind
   , iweight  = 100000
   , idamage  = 0
   , iaspects = []
-  , ieffects = [Explode S_BURNING_OIL_3]
+  , ieffects = [Explode S_BURNING_OIL_3, OnCombine oilEffect]
                  -- may exploit to harm foes; watch out for friends
   , idesc    = ""
   , ikit     = []
   }
 barrelFertilizer = barrelFuel
   { iname    = "fertilizer"
-  , ifreq    = [(BARREL_CONTENTS, 30)]
+  , ifreq    = [(BARREL_CONTENTS, 30), (FIRE_SOURCE, 1)]
   , iflavour = zipPlain [Red]
-  , ieffects = [Explode S_FOCUSED_FRAGMENTATION]
+  , ieffects = [Explode S_FOCUSED_FRAGMENTATION, OnCombine roastEffect]
                  -- no S_FOCUSED_CONCUSSION; a barrel would destroy the ship;
                  -- no water barrel either, basins and running water in taps;
                  -- no VIOLENT variants of the blasts or bumping a lone
@@ -877,14 +877,14 @@ barrelFertilizer = barrelFuel
   }
 barrelOxidizer = barrelFuel
   { iname    = "oxidizer"
-  , ifreq    = [(BARREL_CONTENTS, 20)]
+  , ifreq    = [(BARREL_CONTENTS, 20), (FIRE_SOURCE, 1)]
   , iflavour = zipPlain [BrWhite]
-  , ieffects = [Explode S_FOCUSED_FLASH]
+  , ieffects = [Explode S_FOCUSED_FLASH, OnCombine roastEffect]
   , idesc    = ""
   }
 barrelOil = barrelFuel
   { iname    = "lubricant oil"
-  , ifreq    = [(BARREL_CONTENTS, 20)]
+  , ifreq    = [(BARREL_CONTENTS, 20), (OIL_SOURCE, 1)]
   , iflavour = zipPlain [Brown]
   , ieffects = [Explode S_MELEE_PROTECTIVE_BALM, OnCombine oilEffect]
                  -- beneficial, so OK not to affect the triggering actor
@@ -892,7 +892,7 @@ barrelOil = barrelFuel
   }
 barrelNitrogen = barrelFuel
   { iname    = "liquid nitrogen"
-  , ifreq    = [(BARREL_CONTENTS, 40)]
+  , ifreq    = [(BARREL_CONTENTS, 40), (COLD_SOURCE, 1)]
   , iflavour = zipPlain [BrBlack]
   , ieffects = [Explode S_FOCUSED_SLOWNESS_MIST]
                  -- may exploit to harm foes; watch out for friends

@@ -1323,11 +1323,12 @@ oilSpill = TileKind
   , tcolor2  = BrGreen
   , talter   = 2  -- doesn't matter now, because walkable;
                   -- TODO: not everything should be able/willing to enter
-  , tfeature = [ ChangeWith True [(1, FIRE_SOURCE)] S_BURNING_OIL
+  , tfeature = [ Embed OIL_PUDDLE
+                   -- embed goes first, because transformation and crafting
+                   -- use the same item and crafting needs priority
+               , ChangeWith True [(1, FIRE_SOURCE)] S_BURNING_OIL
                , ChangeWith False [(1, THICK_CLOTH)] OILY_FLOOR_LIT
-                   -- the transformations go first, because marginal
-                   -- soaks oil
-               , Embed OIL_PUDDLE, Walkable, Clear ]
+               , Walkable, Clear ]
   }
 oilSpillSpice = oilSpill
   { tfreq    = [ (RUBBLE_OR_WASTE_LIT, 1), (RUBBLE_OR_WASTE_DARK, 1)
