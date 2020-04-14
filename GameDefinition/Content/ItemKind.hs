@@ -173,7 +173,8 @@ steelScrap = sandstoneRock
                , (UNREPORTED_INVENTORY, 1) ]  -- too weak to spam
   , iflavour = zipPlain [Cyan]
   , iverbHit = "grate"
-  , iweight  = 500
+  , idamage  = 2 `d` 1
+  , iweight  = 700
   , idesc    = " A bent lump of steel scrap."
   }
 needle = ItemKind
