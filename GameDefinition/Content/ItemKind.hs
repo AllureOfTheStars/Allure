@@ -1152,11 +1152,11 @@ cookedPlant8 = cookedPlantTemplate
 light1 = ItemKind
   { isymbol  = symbolLight
   , iname    = "torch"
-  , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_MANIPULATION, 100)
+  , ifreq    = [ (COMMON_ITEM, 50), (LIGHT_MANIPULATION, 100)
                , (FIRE_SOURCE, 1), (S_WOODEN_TORCH, 1) ]
   , iflavour = zipPlain [Brown]
-  , icount   = 1 `dL` 4
-  , irarity  = [(3, 12), (4, 1)]  -- crafted, so less rare
+  , icount   = 1
+  , irarity  = [(1, 3)]  -- crafted, so rare
   , iverbHit = "scorch"
   , iweight  = 1000
   , idamage  = 0
@@ -1182,11 +1182,11 @@ lightDoused1 = light1
 light2 = ItemKind
   { isymbol  = symbolLight
   , iname    = "oil lamp"
-  , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_MANIPULATION, 100)
+  , ifreq    = [ (COMMON_ITEM, 50), (LIGHT_MANIPULATION, 100)
                , (S_OIL_LAMP, 1) ]
   , iflavour = zipPlain [BrYellow]
-  , icount   = 1 `dL` 2
-  , irarity  = [(6, 10)]
+  , icount   = 1
+  , irarity  = [(5, 2)]
   , iverbHit = "burn"
   , iweight  = 1500
   , idamage  = 1 `d` 1
@@ -1210,7 +1210,7 @@ lightDoused2 = light2
 light3 = ItemKind
   { isymbol  = symbolLight
   , iname    = "brass lantern"
-  , ifreq    = [(COMMON_ITEM, 100), (MUSEAL, 100), (LIGHT_MANIPULATION, 20)]
+  , ifreq    = [(COMMON_ITEM, 100), (MUSEAL, 100), (LIGHT_MANIPULATION, 5)]
   , iflavour = zipPlain [Red]
   , icount   = 1
   , irarity  = [(6, 1), (10, 4)]
@@ -1229,7 +1229,7 @@ light3 = ItemKind
 blanket = ItemKind
   { isymbol  = symbolLight
   , iname    = "mineral fibre blanket"
-  , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_MANIPULATION, 100), (BLANKET, 1)
+  , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_MANIPULATION, 20), (BLANKET, 1)
                , (THICK_CLOTH, 1), (FIREPROOF_CLOTH, 1)
                , (FIRE_FIGHTING_ITEM, 30) ]
   , iflavour = zipPlain [Magenta]
