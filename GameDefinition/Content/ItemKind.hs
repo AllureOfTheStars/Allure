@@ -629,6 +629,7 @@ flask16 = flaskTemplate
   { iname    = "galon"  -- diluted perfume; almost same effects
   , ifreq    = [ (COMMON_ITEM, 100), (S_ROSE_WATER_FLASK, 1)
                , (EXPLOSIVE, 100), (ANY_GLASS, 100), (WATER_SOURCE, 1) ]
+  , icount   = 1
   , irarity  = [(1, 1)]  -- mostly obtained through crafting
   , iaspects = ELabel "of rose water"
                : iaspects flaskTemplate
@@ -637,9 +638,12 @@ flask16 = flaskTemplate
   }
 flask17 = flaskTemplate
   { iname    = "galon"
-  , ifreq    = [ (COMMON_ITEM, 100), (ANY_GLASS, 100)
-               , (WATER_SOURCE, 1) ]
-  , irarity  = [(1, 1)]  -- usually self-made (TODO)
+      -- TODO: in the future perhaps have different sizes of flasks;
+      -- for now, we freely go from flask to galon and back
+  , ifreq    = [ (COMMON_ITEM, 100), (S_WATER_FLASK, 1)
+               , (ANY_GLASS, 100), (WATER_SOURCE, 1) ]
+  , icount   = 1
+  , irarity  = [(1, 1)]  -- mostly obtained through crafting
   , iaspects = ELabel "of water"
                : iaspects flaskTemplate
   }
@@ -669,7 +673,7 @@ potionTemplate = ItemKind
   }
 potion1 = potionTemplate
   { ifreq    = [ (COMMON_ITEM, 100), (S_PERFUME_POTION, 1)
-               , (ANY_POTION, 100), (ANY_GLASS, 100) ]
+               , (ANY_POTION, 100), (ANY_GLASS, 100), (PERFUME, 1) ]
   , icount   = 3 `dL` 1  -- very useful, despite appearances;
                          -- AI heroes can't craft and so die horribly without it
   , iaspects = ELabel "of perfume"
@@ -1449,7 +1453,7 @@ necklace8 = necklaceTemplate
   , ieffects = [Explode S_CURRENT_DISCHARGE]
   }
 necklace9 = necklaceTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100), (PERFUME, 1)]
   , iaspects = Timeout ((1 + 1 `d` 3) * 5)
                : iaspects_necklaceTemplate
   , ieffects = [Explode S_FRAGRANCE]
