@@ -617,7 +617,7 @@ flask15 = flaskTemplate
   { iname    = "cartridge"
   , ifreq    = [ (COMMON_ITEM, 100), (EXPLOSIVE, 100), (ANY_GLASS, 100)
                , (LIQUID_NITROGEN, 1), (COLD_SOURCE, 1)
-               , (FIRE_FIGHTING_ITEM, 65) ]
+               , (FIRE_FIGHTING_ITEM, 55) ]
   , irarity  = [(1, 3)]  -- scavenged from walls
   , iaspects = ELabel "of liquid nitrogen"
                : iaspects flaskTemplate
@@ -1149,6 +1149,18 @@ cookedPlant8 = cookedPlantTemplate
 
 -- ** Lights and related
 
+torchMsg :: Effect
+torchMsg = VerbMsgFail "feel the torch fracture"
+torchDestruct :: Effect
+torchDestruct =
+  OnUser $ OneOf $
+    DestroyItem 1 1 CEqp S_WOODEN_TORCH
+    `AndEffect`
+    CreateItem Nothing CStash S_RAG_TANGLE timerNone  -- staff broken
+    : DestroyItem 1 1 CEqp S_WOODEN_TORCH
+      `AndEffect`
+      CreateItem Nothing CStash S_DOUSED_WOODEN_TORCH timerNone
+    : replicate 4 torchMsg  -- twice more durable than gardening tools
 light1 = ItemKind
   { isymbol  = symbolLight
   , iname    = "torch"
@@ -1159,15 +1171,15 @@ light1 = ItemKind
   , irarity  = [(1, 3)]  -- crafted, so rare
   , iverbHit = "scorch"
   , iweight  = 1000
-  , idamage  = 0
+  , idamage  = 1 `d` 1  -- strong missile, but betrays the flinger
   , iaspects = [ AddSkill SkShine 3, AddSkill SkSight (-2)
                    -- not only flashes, but also sparks,
                    -- so unused by AI due to the mixed blessing
-               , SetFlag Lobable, SetFlag Equipable
-               , EqpSlot EqpSlotShine ]
-                   -- not Fragile; reusable flare;
+               , SetFlag Durable, SetFlag Lobable
+               , SetFlag Meleeable, EqpSlot EqpSlotShine ]
+                   -- partially durable; reusable flare;
                    -- the staff culled when crafting, so no velocity malus
-  , ieffects = [Burn 1]
+  , ieffects = [Burn 2, torchDestruct]  -- no timeout, but destructs
   , idesc    = "A puttering torch improvised with rags on a staff, soaked in any lubricant or oil or resin or tar that could be scavenged in a hurry."
   , ikit     = []
   }
@@ -1188,12 +1200,12 @@ light2 = ItemKind
   , icount   = 1
   , irarity  = [(5, 2)]
   , iverbHit = "burn"
-  , iweight  = 1500
+  , iweight  = 1600
   , idamage  = 1 `d` 1
   , iaspects = [ AddSkill SkShine 3, AddSkill SkSight (-1)
                , SetFlag Lobable, SetFlag Fragile, SetFlag Equipable
                , EqpSlot EqpSlotShine ]
-  , ieffects = [ Burn 1
+  , ieffects = [ Burn 2
                , toOrganBad S_PACIFIED (2 + 1 `d` 2)
                , OnSmash (Explode S_BURNING_OIL_2) ]
   , idesc    = "A restaurant table glass lamp filled with plant oil feeding a slender wick. Or a makeshift caricature thereof."
@@ -1220,7 +1232,7 @@ light3 = ItemKind
   , iaspects = [ AddSkill SkShine 4, AddSkill SkSight (-1)
                , SetFlag Lobable, SetFlag Fragile, SetFlag Equipable
                , EqpSlot EqpSlotShine ]
-  , ieffects = [ Burn 1
+  , ieffects = [ Burn 2
                , toOrganBad S_PACIFIED (4 + 1 `d` 2)
                , OnSmash (Explode S_BURNING_OIL_4) ]
   , idesc    = "Very old, very bright and very heavy lantern made of hand-polished brass."
@@ -1231,7 +1243,7 @@ blanket = ItemKind
   , iname    = "mineral fibre blanket"
   , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_MANIPULATION, 20), (BLANKET, 1)
                , (THICK_CLOTH, 1), (FIREPROOF_CLOTH, 1)
-               , (FIRE_FIGHTING_ITEM, 30) ]
+               , (FIRE_FIGHTING_ITEM, 40) ]
   , iflavour = zipPlain [Magenta]
   , icount   = 1
   , irarity  = [(1, 1)]  -- scavenged from walls
@@ -1868,8 +1880,10 @@ heavyBoot = ItemKind
 ragTangle = sandstoneRock
   { isymbol  = symbolClothes
   , iname    = "tangle"
-  , ifreq    = [(S_RAG_TANGLE, 1), (THICK_CLOTH, 1), (UNREPORTED_INVENTORY, 1)]
+  , ifreq    = [ (COMMON_ITEM, 50), (S_RAG_TANGLE, 1), (THICK_CLOTH, 1)
+               , (UNREPORTED_INVENTORY, 1) ]
   , iflavour = zipPlain [Brown]
+  , irarity  = [(1, 3)]  -- crafted, so rare
   , iverbHit = "touch"
   , iweight  = 200
   , idamage  = 0
