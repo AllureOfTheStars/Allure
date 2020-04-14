@@ -2068,7 +2068,7 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
                  -- a very aggressive weapon, bad for defense even when long
   , iflavour = zipFancy [BrMagenta]  -- avoid "pink"
   , icount   = 1
-  , irarity  = [(7, 18), (9, 1)]
+  , irarity  = [(1, 2), (3, 2), (7, 18), (9, 1)]
                  -- not too common on lvl 3 and late, when crafting done already
   , iverbHit = "club"
   , iweight  = 4000
@@ -2091,7 +2091,7 @@ hammer1 = hammerTemplate  -- 1m handle, blunt
   }
 hammer2 = hammerTemplate  -- 0.75m handle, sharp
   { ifreq    = [(COMMON_ITEM, 10), (STARTING_WEAPON, 3), (STARTING_HAMMER, 5)]
-  , irarity  = [(7, 60)]  -- common early, because not guaranteed;
+  , irarity  = [(1, 4), (3, 4), (7, 60)]  -- common early, since not guaranteed;
                           -- common also late, because not crafted
   , iverbHit = "puncture"
   , idamage  = 3 `d` 1
@@ -2161,7 +2161,7 @@ knife = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 200), (S_CLEAVER, 1)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(1, 5), (5, 25), (9, 1)]
+  , irarity  = [(1, 3), (3, 3), (5, 25), (9, 1)]
                  -- useful initially and for crafting mid-game
   , iverbHit = "cut"
   , iweight  = 1000
@@ -2372,7 +2372,7 @@ cattleProd = militaryBaton
   { iname    = "electric cattle prod"
   , ifreq    = [(COMMON_ITEM, 100)]
   , iflavour = zipPlain [Brown]
-  , irarity  = [(8, 8)]
+  , irarity  = [(8, 7)]
   , idamage  = 2 `d` 1
   , ieffects = [Discharge $ 40 - 1 `d` 20, RefillCalm (-30)]
   , idesc    = "Used for subduing unruly zoo animals."
