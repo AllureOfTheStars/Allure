@@ -37,9 +37,10 @@ groupNamesSingleton = []
 groupNames :: [GroupName PlaceKind]
 groupNames =
        [ROGUE, RESIDENTIAL, LABORATORY, ZOO, BRAWL, SHOOTOUT, ARENA, ESCAPE, AMBUSH, BATTLE, NOISE, EMPTY]
-    ++ [INDOOR_ESCAPE_DOWN, INDOOR_ESCAPE_UP, OUTDOOR_ESCAPE_DOWN, TINY_STAIRCASE, OPEN_STAIRCASE, CLOSED_STAIRCASE, WALLED_STAIRCASE, GATED_TINY_STAIRCASE, GATED_OPEN_STAIRCASE, GATED_CLOSED_STAIRCASE, OUTDOOR_TINY_STAIRCASE, OUTDOOR_CLOSED_STAIRCASE, OUTDOOR_WALLED_STAIRCASE]
+    ++ [INDOOR_ESCAPE_DOWN, INDOOR_ESCAPE_UP, OUTDOOR_ESCAPE_DOWN, TINY_STAIRCASE, OPEN_STAIRCASE, CLOSED_STAIRCASE, WALLED_STAIRCASE]
     ++ [MUSEUM, EXIT]
-    ++ [TINY_LIFT, OPEN_LIFT, WALLED_LIFT, CLOSED_LIFT, ESCAPE_FROM_SPACESHIP_DOWN, DECONTAMINATING_TINY_STAIRCASE, DECONTAMINATING_OPEN_STAIRCASE, DECONTAMINATING_WALLED_STAIRCASE, DECONTAMINATING_TINY_LIFT, DECONTAMINATING_OPEN_LIFT, DECONTAMINATING_WALLED_LIFT, GATED_TINY_LIFT, GATED_OPEN_LIFT, GATED_CLOSED_LIFT, WELDED_TINY_LIFT, WELDED_OPEN_LIFT, WELDED_WALLED_LIFT, WELDED_TINY_STAIRCASE, WELDED_OPEN_STAIRCASE, WELDED_WALLED_STAIRCASE]
+    ++ [TINY_LIFT, OPEN_LIFT, WALLED_LIFT, CLOSED_LIFT, ESCAPE_FROM_SPACESHIP_DOWN]
+    ++ fst generatedStairs
 
 pattern ROGUE, RESIDENTIAL, LABORATORY, ZOO, BRAWL, SHOOTOUT, ARENA, ESCAPE, AMBUSH, BATTLE, NOISE, EMPTY :: GroupName PlaceKind
 
@@ -118,7 +119,7 @@ content =
   -- Allure-specific
   ++ [staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25]
   -- automatically generated
-  ++ generatedStairs ++ generatedEscapes
+  ++ snd generatedStairs ++ generatedEscapes
   -- Allure-specific, continued
   ++ [ pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5, tank6, tank7, tank8, tank9, tank10, tank11, tank12, shuttleHusk, shuttleHusk2, shuttleHusk3, shuttleHusk4, shuttleHusk5, shuttleHusk6, dormitory, dormitory2, dormitory3, dormitory4, dormitory5, dormitory6]
 
@@ -133,7 +134,7 @@ staircaseBasic = [staircase1, staircase2, staircase3, staircase4, staircase5, st
   -- Allure-specific
   ++ [staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25]
 
-generatedStairs :: [PlaceKind]
+generatedStairs :: ([GroupName PlaceKind], [PlaceKind])
 generatedStairs =
   let (stairs, lifts) = partition ((/= "a lift") . pname) staircaseBasic
       gatedStairs = map switchStaircaseToGated stairs
@@ -146,14 +147,17 @@ generatedStairs =
       stairsAll = stairs ++ gatedStairs ++ decontaminatingStairs ++ weldedStairs
                   ++ outdoorStairs
       liftsAll = lifts ++ gatedLifts ++ decontaminatingLifts ++ weldedLifts
-  in gatedStairs ++ gatedLifts
-     ++ decontaminatingStairs ++ decontaminatingLifts
-     ++ weldedStairs ++ weldedLifts
-     ++ outdoorStairs
-     ++ map (switchExitToUp "stair terminal") stairsAll
-     ++ map (switchExitToUp "lift terminal") liftsAll
-     ++ map (switchExitToDown "stair terminal") stairsAll
-     ++ map (switchExitToDown "lift terminal") liftsAll
+      genStairs =
+        gatedStairs ++ gatedLifts
+        ++ decontaminatingStairs ++ decontaminatingLifts
+        ++ weldedStairs ++ weldedLifts
+        ++ outdoorStairs
+        ++ map (switchExitToUp "stair terminal") stairsAll
+        ++ map (switchExitToUp "lift terminal") liftsAll
+        ++ map (switchExitToDown "stair terminal") stairsAll
+        ++ map (switchExitToDown "lift terminal") liftsAll
+  in ( nub $ sort $ concatMap (map fst . pfreq) genStairs
+     , genStairs )
 
 escapeDownBasic :: [PlaceKind]
 escapeDownBasic =
