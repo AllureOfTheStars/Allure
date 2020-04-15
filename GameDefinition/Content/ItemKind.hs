@@ -175,7 +175,7 @@ steelScrap = sandstoneRock
   , iverbHit = "grate"
   , idamage  = 2 `d` 1
   , iweight  = 700
-  , idesc    = " A bent lump of steel scrap."
+  , idesc    = " A lump of steel scrap that can be easily bent around and pounded into a wood pole."
   }
 needle = ItemKind
   { isymbol  = symbolProjectile
@@ -476,9 +476,11 @@ flaskEmpty = flaskTemplate
   { iname    = "empty flask"
   , ifreq    = [(COMMON_ITEM, 100), (S_EMPTY_FLASK, 1)]
   , iflavour = zipGlassPlain [White]
+  , iverbHit = "bang"
+  , iweight  = 250
   , iaspects = [SetFlag Lobable, SetFlag Fragile, toVelocity 60]
-  , ieffects = []
-  }
+  , idesc    = "The only redeeming quality of empty flasks is that they can be filled with a liquid."
+}
 flaskTemplate = ItemKind
   { isymbol  = symbolFlask
   , iname    = "flask"
@@ -1191,7 +1193,7 @@ lightDoused1 = light1
   , iverbHit = "prod"
   , iaspects = [SetFlag Lobable]  -- not durable, so not OP missile
   , ieffects = []
-  , idesc    = "A doused torch improvised with rags on a staff, soaked in any lubricant or oil or resin or tar that could be scavenged in a hurry."
+  , idesc    = "An unlit torch improvised with rags on a staff, soaked in any lubricant or oil or resin or tar that could be scavenged in a hurry."
   }
 light2 = ItemKind
   { isymbol  = symbolLight
@@ -1219,7 +1221,7 @@ lightDoused2 = light2
   , iverbHit = "bonk"
   , iaspects = [SetFlag Lobable, SetFlag Fragile]
   , ieffects = []
-  , idesc    = "A doused restaurant table glass lamp filled with plant oil feeding a slender wick. Or a makeshift caricature thereof."
+  , idesc    = "An unlit restaurant table glass lamp filled with plant oil feeding a slender wick. Or a makeshift caricature thereof."
   }
 light3 = ItemKind
   { isymbol  = symbolLight
@@ -1260,7 +1262,7 @@ blanket = ItemKind
                    -- douses torch, lamp and lantern in one action,
                    -- both in equipment and when thrown at the floor
   , ieffects = []
-  , idesc    = "Flame-retardant synthetic fibres."
+  , idesc    = "Flame-retardant synthetic fibres that soak fluids well."
   , ikit     = []
   }
 
@@ -1814,7 +1816,7 @@ hatUshanka = ItemKind
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- flaps and flutters
   , ieffects = [RefillCalm 1]
-  , idesc    = "Soft and warm fur. It keeps your ears warm."
+  , idesc    = "Soft and warm fur. It keeps your ears warm. Unless you tear it into pieces to use as a wick of your makeshift oil lamp, for example."
   , ikit     = []
   }
 capReinforced = ItemKind
@@ -1891,7 +1893,7 @@ ragTangle = sandstoneRock
   , iweight  = 200
   , idamage  = 0
   , iaspects = [ELabel "of rags", SetFlag Fragile, AddSkill SkArmorMelee 1]
-  , idesc    = ""
+  , idesc    = "Fashionable, sometimes, and useful for survival crafting, always."
   }
 -- Shield doesn't protect against ranged attacks to prevent
 -- micromanagement: walking with shield, melee without.
@@ -2506,7 +2508,7 @@ staff = grassStitcher
                , EqpSlot EqpSlotWeaponFast
                , toVelocity 30 ]  -- a weak missile and that's all
   , ieffects = []
-  , idesc    = ""  -- doh
+  , idesc    = "A handle of a make-shift tool to be crafted."
   , ikit     = []
   }
 pipe = staff
