@@ -336,10 +336,10 @@ paralizingProj = ItemKind
 harpoon = ItemKind
   { isymbol  = symbolProjectile
   , iname    = "harpoon"
-  , ifreq    = [(COMMON_ITEM, 100), (HARPOON, 100), (S_HARPOON_CARGO, 1)]
+  , ifreq    = [(COMMON_ITEM, 33), (HARPOON, 100), (S_HARPOON_CARGO, 1)]
   , iflavour = zipPlain [Brown]
   , icount   = 1  -- durable, so one piece lasts long
-  , irarity  = [(1, 6)]
+  , irarity  = [(1, 17)]
   , iverbHit = "hook"
   , iweight  = 1600
   , idamage  = 5 `d` 1
@@ -353,7 +353,7 @@ harpoon = ItemKind
   }
 harpoon2 = harpoon
   { iname    = "sharp harpoon"
-  , ifreq    = [(COMMON_ITEM, 3), (HARPOON, 2), (S_HARPOON_SHARP, 1)]
+  , ifreq    = [(COMMON_ITEM, 1), (HARPOON, 2), (S_HARPOON_SHARP, 1)]
   , idamage  = 7 `d` 1
   , idesc    = "A cord ending in a sharpened cargo-hook that, in addition to entangling the victim, gains purchase biting into the body."
   }
