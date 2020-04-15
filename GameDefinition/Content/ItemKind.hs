@@ -1189,7 +1189,7 @@ lightDoused1 = light1
   { iname    = "doused torch"
   , ifreq    = [(S_DOUSED_WOODEN_TORCH, 1) ]
   , iverbHit = "prod"
-  , iaspects = [SetFlag Lobable]
+  , iaspects = [SetFlag Lobable]  -- not durable, so not OP missile
   , ieffects = []
   , idesc    = "A doused torch improvised with rags on a staff, soaked in any lubricant or oil or resin or tar that could be scavenged in a hurry."
   }
@@ -1793,7 +1793,7 @@ gloveJousting = gloveFencing
                  -- or when ItemRerolled enough times
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast  -- hope to replace with better soon
-               , toVelocity 50 ]  -- flaps and flutters
+               , toVelocity 60 ]  -- flaps and flutters
   , idesc    = "Rigid, bulky handgear embedding a defunct welding equipment, complete with an affixed small shield and a darkened visor. Awe-inspiring."
   }
 hatUshanka = ItemKind
@@ -1853,7 +1853,7 @@ helmArmored = ItemKind
                , AddSkill SkHearing (-7), AddSkill SkSmell (-5)
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorRanged
-               , toVelocity 40 ]  -- unwieldy
+               , toVelocity 50 ]  -- unwieldy
   , ieffects = []
   , idesc    = "Blocks out everything, including your senses."
   , ikit     = []
@@ -2092,8 +2092,9 @@ hammer1 = hammerTemplate  -- 1m handle, blunt
   }
 hammer2 = hammerTemplate  -- 0.75m handle, sharp
   { ifreq    = [(COMMON_ITEM, 10), (STARTING_WEAPON, 3), (STARTING_HAMMER, 5)]
-  , irarity  = [(1, 4), (3, 4), (7, 60)]  -- common early, since not guaranteed;
-                          -- common also late, because not crafted
+  , irarity  = [(1, 4), (3, 4), (7, 40)]
+                 -- common early, since not a guaranteed drop;
+                 -- common also late, because not crafted
   , iverbHit = "puncture"
   , idamage  = 3 `d` 1
   , iaspects = [Timeout 3, EqpSlot EqpSlotWeaponFast]
@@ -2344,7 +2345,7 @@ militaryKnife = knife
                , AddSkill SkHurtMelee $ (-1 + 1 `d` 3 + 1 `dL` 2) * 3
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
-               , toVelocity 60 ]  -- designed also for throwing
+               , toVelocity 50 ]  -- designed also for throwing
   , ieffects = [ RefillHP (-1)
                    -- @RefillHP@ to avoid a no-brainer of durable tool use
                , DropItem 1 maxBound COrgan CONDITION ]
@@ -2472,7 +2473,7 @@ treePruner = grassStitcher
                , AddSkill SkArmorMelee 20  -- sharp
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
-               , toVelocity 20 ]
+               , toVelocity 50 ]
   , ieffects = []
   , idesc    = "A heavy tree lopper on a sturdy long pole."
   , ikit     = [(GARDENING_TOOL, CGround)]
@@ -2487,7 +2488,7 @@ cleaningPole = grassStitcher
   , iaspects = [ AddSkill SkArmorMelee 10  -- not sharp, so weaker
                , SetFlag Durable, SetFlag Meleeable  -- a fence may melee with
                , EqpSlot EqpSlotArmorMelee
-               , toVelocity 20 ]
+               , toVelocity 40 ]
   , ieffects = []
   , idesc    = "A cleaning contraption for glass surfaces, mounted on a long synthetic pole."
   , ikit     = []
