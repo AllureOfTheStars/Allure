@@ -1648,7 +1648,7 @@ armorLeather = ItemKind
   { isymbol  = symbolTorsoArmor
   , iname    = "spacesuit jacket"
   , ifreq    = [ (COMMON_ITEM, 100), (S_SPACESUIT_JACKET, 1)
-               , (SPACESUIT_PART, 1), (ARMOR_LOOSE, 1) ]
+               , (SPACESUIT_PART, 1), (ARMOR_LOOSE, 1), (STARTING_ARMOR, 100) ]
   , iflavour = zipFancy [Blue]
   , icount   = 1
   , irarity  = [(1, 9), (10, 3)]
@@ -1668,7 +1668,8 @@ armorLeather2 = armorLeather  -- for now, purely flavour, for better messages
   { isymbol  = symbolMiscArmor
   , iname    = "pair"
   , ifreq    = [ (COMMON_ITEM, 100), (S_SPACESUIT_TROUSERS, 1)
-               , (SPACESUIT_PART, 1) ]  -- harder to take off than a jacket
+               , (SPACESUIT_PART, 1), (STARTING_ARMOR, 100) ]
+                 -- no ARMOR_LOOSE; harder to take off than a jacket
   , irarity  = [(3, 7), (10, 4)]
   , iaspects = ELabel "of spacesuit trousers" : iaspects armorLeather
   , idesc    = "Segmented trousers for open space work, with the hermetically sealed boots cut off. Surprisingly flexible and airy, yet micro-meteorite-proof."
@@ -1676,7 +1677,7 @@ armorLeather2 = armorLeather  -- for now, purely flavour, for better messages
 armorMail = armorLeather
   { iname    = "bulletproof vest"
   , ifreq    = [ (COMMON_ITEM, 100), (ARMOR_LOOSE, 1), (ARMOR_RANGED, 1)
-               , (S_BULLTEPROOF_VEST, 1) ]
+               , (S_BULLTEPROOF_VEST, 1), (STARTING_ARMOR, 50) ]
   , iflavour = zipPlain [Cyan]
   , irarity  = [(6, 9), (10, 3)]
   , iweight  = 12000
@@ -1747,7 +1748,8 @@ spacesuitTorn = spacesuit
 gloveFencing = ItemKind
   { isymbol  = symbolMiscArmor
   , iname    = "construction glove"
-  , ifreq    = [(COMMON_ITEM, 100), (ARMOR_MISC, 1), (ARMOR_RANGED, 1)]
+  , ifreq    = [ (COMMON_ITEM, 100), (ARMOR_MISC, 1), (ARMOR_RANGED, 1)
+               , (STARTING_ARMOR, 50) ]
   , iflavour = zipPlain [BrGreen]
   , icount   = 1
   , irarity  = [(6, 9), (10, 5)]
@@ -1766,7 +1768,7 @@ gloveFencing = ItemKind
 gloveGauntlet = gloveFencing
   { iname    = "spacesuit glove"
   , ifreq    = [ (COMMON_ITEM, 100), (S_SPACESUIT_GLOVE, 1)
-               , (SPACESUIT_PART, 2), (ARMOR_MISC, 1) ]
+               , (SPACESUIT_PART, 2), (ARMOR_MISC, 1), (STARTING_ARMOR, 50) ]
   , iflavour = zipFancy [White]
   , irarity  = [(1, 9), (5 * 10/15, 9), (6 * 10/15, 1)]
   , iverbHit = "mow"
@@ -1803,7 +1805,7 @@ hatUshanka = ItemKind
   { isymbol  = symbolMiscArmor
   , iname    = "ushanka hat"
   , ifreq    = [ (COMMON_ITEM, 100), (ARMOR_MISC, 1), (CLOTHING_MISC, 1)
-               , (THICK_CLOTH, 1) ]
+               , (THICK_CLOTH, 1), (STARTING_ARMOR, 50) ]
   , iflavour = zipPlain [Brown]
   , icount   = 1
   , irarity  = [(3, 7), (10, 4)]
@@ -1822,7 +1824,7 @@ hatUshanka = ItemKind
 capReinforced = ItemKind
   { isymbol  = symbolMiscArmor
   , iname    = "construction cap"
-  , ifreq    = [(COMMON_ITEM, 100), (ARMOR_MISC, 1)]
+  , ifreq    = [(COMMON_ITEM, 100), (ARMOR_MISC, 1), (STARTING_ARMOR, 50)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , irarity  = [(6, 9), (10, 3)]
@@ -1842,7 +1844,8 @@ helmArmored = ItemKind
   { isymbol  = symbolMiscArmor
   , iname    = "spacesuit helmet"
   , ifreq    = [ (COMMON_ITEM, 100), (S_SPACESUIT_HELMET, 1)
-               , (SPACESUIT_PART, 1), (ARMOR_MISC, 1), (ARMOR_RANGED, 1) ]
+               , (SPACESUIT_PART, 1), (ARMOR_MISC, 1), (ARMOR_RANGED, 1)
+               , (STARTING_ARMOR, 50) ]
   , iflavour = zipFancy [BrBlue]
   , icount   = 1
   , irarity  = [(1, 11), (4 * 10/15, 11), (5 * 10/15, 1)]
@@ -1866,6 +1869,7 @@ heavyBoot = ItemKind
   , iname    = "spacesuit boot"
   , ifreq    = [ (COMMON_ITEM, 100), (S_SPACESUIT_BOOT, 1)
                , (SPACESUIT_PART, 2), (ARMOR_MISC, 1) ]
+                 -- no STARTING_ARMOR, because the malus tricky for newbies
   , iflavour = zipFancy [Magenta]
   , icount   = 1
   , irarity  = [(1, 13), (3 * 10/15, 13), (4 * 10/15, 1)]
@@ -2005,7 +2009,7 @@ laserSharpener = honingSteel
   }
 crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
   { iname    = "crowbar"
-  , ifreq    = (S_CROWBAR, 1) : ifreq chisel
+  , ifreq    = [(S_CROWBAR, 1), (STARTING_WEAPON, 50)] ++ ifreq chisel
   , iflavour = zipPlain [BrCyan]
   , irarity  = [(1, 6), (3 * 10/15, 6), (4 * 10/15, 1)]
   , iverbHit = "gouge"
@@ -2021,6 +2025,7 @@ crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
   }
 catsPaw = chisel
   { iname    = "cat's paw"
+  , ifreq    = [(STARTING_WEAPON, 50)] ++ ifreq chisel
   , iflavour = zipFancy [BrCyan]
   , irarity  = [(1, 12), (3 * 10/15, 12), (4 * 10/15, 1)]
   , iverbHit = "paw"
@@ -2037,7 +2042,7 @@ catsPaw = chisel
 shortClub = ItemKind
   { isymbol  = symbolHafted
   , iname    = "short club"
-  , ifreq    = [(S_SHORT_CLUB, 1)]
+  , ifreq    = [(S_SHORT_CLUB, 1), (STARTING_WEAPON, 100)]
   , iflavour = zipFancy [BrCyan]
   , icount   = 1
   , irarity  = [(1, 1)]  -- only crafted
@@ -2053,7 +2058,7 @@ shortClub = ItemKind
   }
 longClub = shortClub
   { iname    = "long club"
-  , ifreq    = [(S_LONG_CLUB, 1)]
+  , ifreq    = [(S_LONG_CLUB, 1), (STARTING_WEAPON, 50)]
   , iflavour = zipFancy [Cyan]
   , iweight  = 3500
   , idamage  = 3 `d` 1  -- from two scraps
@@ -2094,7 +2099,7 @@ hammer1 = hammerTemplate  -- 1m handle, blunt
   , ieffects = [RefillHP (-4)]
   }
 hammer2 = hammerTemplate  -- 0.75m handle, sharp
-  { ifreq    = [(COMMON_ITEM, 10), (STARTING_WEAPON, 3), (STARTING_HAMMER, 5)]
+  { ifreq    = [(COMMON_ITEM, 10), (STARTING_WEAPON, 10), (STARTING_HAMMER, 5)]
   , irarity  = [(1, 4), (3, 4), (7, 40)]
                  -- common early, since not a guaranteed drop;
                  -- common also late, because not crafted

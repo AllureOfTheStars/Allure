@@ -23,7 +23,6 @@ import Data.Ratio
 import           Content.ItemKind hiding
   (content, groupNames, groupNamesSingleton)
 import           Content.ItemKindActor
-import           Content.ItemKindBlast
 import           Content.ItemKindEmbed hiding (ESCAPE)
 import           Content.PlaceKind hiding
   (content, groupNames, groupNamesSingleton)
@@ -462,8 +461,9 @@ raid = rogue
   , cactorCoeff   = 250  -- deep level with no kit, so slow spawning
   , cactorFreq    = [(ANIMAL, 50), (ROBOT, 50)]
   , citemNum      = 8 `d` 6  -- just one level, hard enemies, treasure
-  , citemFreq     = [ (IK.COMMON_ITEM, 100), (IK.S_CURRENCY, 500)
-                    , (STARTING_WEAPON, 100) ]
+  , citemFreq     = [ (IK.COMMON_ITEM, 100), (WEAK_ARROW, 100)
+                    , (LIGHT_MANIPULATION, 200), (STARTING_ARMOR, 100)
+                    , (STARTING_WEAPON, 200), (IK.S_CURRENCY, 400) ]
   , cescapeFreq   = [(INDOOR_ESCAPE_UP, 1)]
   , cstairFreq    = []
   , cstairAllowed = []
@@ -488,8 +488,8 @@ brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
   , chidden       = 0
   , cactorFreq    = []
   , citemNum      = 5 `d` 6
-  , citemFreq     = [ (IK.COMMON_ITEM, 50), (STARTING_WEAPON, 100)
-                    , (ARMOR_LOOSE, 400), (ARMOR_MISC, 200) ]
+  , citemFreq     = [ (IK.COMMON_ITEM, 100), (STARTING_WEAPON, 200)
+                    , (STARTING_ARMOR, 400) ]
   , cplaceFreq    = [(BRAWL, 1)]
   , cpassable     = True
   , cdefTile      = BRAWL_SET_LIT
