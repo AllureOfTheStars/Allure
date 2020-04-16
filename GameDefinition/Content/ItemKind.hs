@@ -686,7 +686,7 @@ potion1 = potionTemplate
                , OnSmash ApplyPerfume, OnSmash (Explode S_FRAGRANCE) ]
   }
 potion2 = potionTemplate
-  { ifreq    = [(CRAWL_ITEM, 100), (ANY_GLASS, 100)]
+  { ifreq    = [(CRAWL_ITEM, 100), (ANY_GLASS, 20)]
   , icount   = 1
   , irarity  = [(5, 8), (10, 8)]
   , iaspects = [ SetFlag Unique, ELabel "of Attraction"
@@ -754,7 +754,7 @@ potion7 = potionTemplate
       -- not fragmentation nor glass hail, because not enough glass
   }
 potion8 = potionTemplate
-  { ifreq    = [(CRAWL_ITEM, 100), (ANY_GLASS, 100)]
+  { ifreq    = [(CRAWL_ITEM, 100), (ANY_GLASS, 20)]
   , icount   = 1
   , irarity  = [(10, 5)]
   , iaspects = [ SetFlag Unique, ELabel "of Love"
@@ -871,7 +871,7 @@ scrollTemplate = ItemKind
   , ikit     = []
   }
 scroll1 = scrollTemplate
-  { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 100)]
+  { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 20)]
   , icount   = 1
   , irarity  = [(5, 9), (10, 9)]  -- mixed blessing, so found early for a unique
   , iaspects = [SetFlag Unique, ELabel "of Reckless Beacon"]
@@ -926,7 +926,7 @@ scroll7 = scrollTemplate
   , ieffects = [PolyItem `AndEffect` Explode S_FIRECRACKER]
   }
 scroll8 = scrollTemplate
-  { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 100)]
+  { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 20)]
   , icount   = 1
   , irarity  = [(10, 12)]
   , iaspects = [SetFlag Unique, ELabel "of Skeleton Key"]
@@ -2009,7 +2009,8 @@ laserSharpener = honingSteel
   }
 crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
   { iname    = "crowbar"
-  , ifreq    = [(S_CROWBAR, 1), (STARTING_WEAPON, 50)] ++ ifreq chisel
+  , ifreq    = [ (COMMON_ITEM, 100), (BREACHING_TOOL, 1), (S_CROWBAR, 1)
+               , (STARTING_WEAPON, 50) ]
   , iflavour = zipPlain [BrCyan]
   , irarity  = [(1, 6), (3 * 10/15, 6), (4 * 10/15, 1)]
   , iverbHit = "gouge"
@@ -2025,7 +2026,8 @@ crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
   }
 catsPaw = chisel
   { iname    = "cat's paw"
-  , ifreq    = [(STARTING_WEAPON, 50)] ++ ifreq chisel
+  , ifreq    = [ (COMMON_ITEM, 100), (BREACHING_TOOL, 1)
+               , (STARTING_WEAPON, 50) ]
   , iflavour = zipFancy [BrCyan]
   , irarity  = [(1, 12), (3 * 10/15, 12), (4 * 10/15, 1)]
   , iverbHit = "paw"
@@ -2288,7 +2290,7 @@ oxTongue = halberd  -- long pole, because glued 1m handle worse than nothing
 fireAxe = ItemKind
   { isymbol  = symbolHafted
   , iname    = "fire axe"
-  , ifreq    = [ (COMMON_ITEM, 30), (HANDLE_AND_STEEL, 1), (S_FIRE_AXE, 1)
+  , ifreq    = [ (TREASURE, 30), (HANDLE_AND_STEEL, 1), (S_FIRE_AXE, 1)
                , (FIRE_FIGHTING_ITEM, 5) ]
                  -- not @BREACHING_TOOL@, because it trigger traps
                  -- and destroys treasure, instead of opening
@@ -2307,7 +2309,7 @@ fireAxe = ItemKind
   }
 pollaxe = halberd
   { iname    = "pollaxe"
-  , ifreq    = [(COMMON_ITEM, 1), (POLE_AND_STEEL, 1), (S_POLL_AXE, 1)]
+  , ifreq    = [(TREASURE, 1), (POLE_AND_STEEL, 1), (S_POLL_AXE, 1)]
                  -- not @BREACHING_TOOL@, because it triggers traps
                  -- and destroys treasure, instead of opening
   , iflavour = zipPlain [BrRed]
@@ -2343,7 +2345,7 @@ halberdPushActorSharp = halberdPushActor
   }
 militaryKnife = knife
   { iname    = "military knife"
-  , ifreq    = [ (COMMON_ITEM, 1), (WIRECUTTING_TOOL, 1), (MERCENARY_WEAPON, 70)
+  , ifreq    = [ (TREASURE, 1), (WIRECUTTING_TOOL, 1), (MERCENARY_WEAPON, 70)
                , (STARTING_WEAPON, 3) ]
   , iflavour = zipFancy [Green]
   , irarity  = [(10, 10)]
@@ -2363,7 +2365,7 @@ militaryKnife = knife
 militaryBaton = ItemKind
   { isymbol  = symbolHafted
   , iname    = "military stun gun"
-  , ifreq    = [(COMMON_ITEM, 2), (MERCENARY_WEAPON, 30)]
+  , ifreq    = [(TREASURE, 2), (MERCENARY_WEAPON, 30)]
   , iflavour = zipFancy [Green]
   , icount   = 1
   , irarity  = [(10, 10)]
