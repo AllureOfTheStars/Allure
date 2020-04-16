@@ -1165,7 +1165,7 @@ torchDestruct =
     : DestroyItem 1 1 CEqp S_WOODEN_TORCH
       `AndEffect`
       CreateItem Nothing CStash S_DOUSED_WOODEN_TORCH timerNone
-    : replicate 4 torchMsg  -- twice more durable than gardening tools
+    : replicate 6 torchMsg  -- twice more durable than gardening tools
 light1 = ItemKind
   { isymbol  = symbolLight
   , iname    = "torch"
@@ -2403,7 +2403,7 @@ gardenDestruct grp =
     `AndEffect`
     SeqEffect [ CreateItem Nothing CStash HANDLE timerNone
               , CreateItem Nothing CStash STEEL_SCRAP timerNone ]
-    : replicate 2 gardenMsg
+    : replicate 3 gardenMsg
 grassStitcher = ItemKind
   { isymbol  = symbolPolearm
   , iname    = "grass stitcher"

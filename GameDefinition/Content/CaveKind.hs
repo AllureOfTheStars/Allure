@@ -175,7 +175,7 @@ arena = rogue
                     , (IK.AQUATIC, 10) ]
   , citemNum      = 9 `d` 4  -- few rooms
   , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 20)
-                    , (IK.TREASURE, 40), (GARDENING_TOOL, 500)
+                    , (IK.TREASURE, 40), (GARDENING_TOOL, 300)
                     , (IK.ANY_SCROLL, 40), (IK.EXPLOSIVE, 40) ]
   , cplaceFreq    = [(ARENA, 1)]
   , cpassable     = True
@@ -397,7 +397,7 @@ outermost = empty
       -- abused, because they spawn less and less often and also HP doesn't
       -- effectively accumulate over max.
   , citemFreq     = [ (IK.COMMON_ITEM, 50), (IK.CRAWL_ITEM, 50)
-                    , (GARDENING_TOOL, 1000) ]
+                    , (GARDENING_TOOL, 700) ]
   , cfenceTileN   = ORIELS_FENCE
   , cfenceTileE   = HABITAT_CONTAINMENT_WALL
   , cfenceTileS   = EMPTY_AIRLOCK_FENCE
@@ -422,7 +422,7 @@ bridge = rogue
                          -- this is initially the best level for sleeping
   , cactorFreq    = [(ANIMAL, 100)]
   , citemNum      = 10 `d` 3  -- lure them in with loot
-  , citemFreq     = [(IK.COMMON_ITEM, 100), (GARDENING_TOOL, 2000)]
+  , citemFreq     = [(IK.COMMON_ITEM, 100), (GARDENING_TOOL, 700)]
   , cdefTile      = FILLER_WALL
   , cfenceTileN   = HABITAT_CONTAINMENT_WALL  -- cave isolated for safety
   , cfenceTileE   = HABITAT_CONTAINMENT_WALL
@@ -445,7 +445,7 @@ shallowRogue = rogue
   , cactorFreq    = filter ((/= MONSTER) . fst) $ cactorFreq rogue
   , citemNum      = 10 `d` 4
   , citemFreq     = [ (IK.COMMON_ITEM, 50), (IK.CRAWL_ITEM, 50)
-                    , (GARDENING_TOOL, 1000) ]
+                    , (GARDENING_TOOL, 700) ]
   , cdesc         = "This close to the outermost deck, residence is not permitted and walls and doors are sturdier, to contain a theoretically possible micro-meteorite breach. The entry is not closed off, though, because some passengers can't live without a regular pilgrimage to 'look outside'. Apparently, gazing at the sharp pin-points of stars and planets through the reinforced oriel glass is incomparable to watching the same through the thin polymer of wall displays.\nAnimals appear to share the fascination of outer decks, perhaps attracted by the increased gravity, nearly Earth-like, unlike elsewhere on the ship. However, they dislike many industrial fluids common on the ship, so throwing flasks is often an effective deterrent. Moreover, even if the fluid is hard to identify, you can be sure you won't waste a badly needed nano medicine, because it's never stored in such large containers but in tiny vials."
   }
 
@@ -529,7 +529,7 @@ shootout = rogue  -- a scenario with strong missiles;
   , citemNum      = 6 `d` 16
                       -- less items in inventory, more to be picked up,
                       -- to reward explorer and aggressor and punish camper
-  , citemFreq     = [ (IK.COMMON_ITEM, 30), (GARDENING_TOOL, 500)
+  , citemFreq     = [ (IK.COMMON_ITEM, 30), (GARDENING_TOOL, 300)
                     , (ANY_ARROW, 400), (HARPOON, 300), (IK.EXPLOSIVE, 50) ]
                       -- Many consumable buffs are needed in symmetric maps
                       -- so that aggressor prepares them in advance and camper
