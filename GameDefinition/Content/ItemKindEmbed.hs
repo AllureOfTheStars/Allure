@@ -696,7 +696,7 @@ depositBox = treasureCache
   { iname    = "intact deposit box"
   , ifreq    = [(DEPOSIT_BOX, 60)]
   , iaspects = [SetFlag Durable]
-  , ieffects = [CreateItem Nothing CGround TREASURE timerNone]
+  , ieffects = [CreateItem Nothing CGround COMMON_ITEM timerNone]
                  -- can't be VALUABLE or template items generated
   , idesc    = "The reports of intact deposit boxes in the ship's safes have been greatly exaggerated, but there are still a few with glittering gems and gold, just waiting to be taken. Whomever looted these halls wasn't thorough or, judging from the damage to some of the boxes, was in an extreme hurry."
   }
@@ -714,7 +714,7 @@ depositBoxSummonMonster = treasureCache
   , iflavour = zipFancy [Red]
   , iaspects = [SetFlag Durable]
   , ieffects = [ Summon MOBILE_MONSTER 1
-               , CreateItem Nothing CGround CURIOUS_ITEM timerNone ]
+               , CreateItem Nothing CGround TREASURE timerNone ]
   , idesc    = "Judging from the incessant noises, this deposit cell with a time lock has trapped something recently."
   }
 jewelryCase = treasureCache
@@ -841,8 +841,8 @@ decontaminator = ItemKind
   , ieffects = [ DropItem 1 1 COrgan GENETIC_FLAW
                , DropItem maxBound maxBound CEqp COMMON_ITEM
                , DropItem maxBound maxBound CStash COMMON_ITEM
-               , DropItem maxBound maxBound CEqp CURIOUS_ITEM
-               , DropItem maxBound maxBound CStash CURIOUS_ITEM
+               , DropItem maxBound maxBound CEqp CRAWL_ITEM
+               , DropItem maxBound maxBound CStash CRAWL_ITEM
                , DropItem maxBound maxBound CEqp TREASURE
                , DropItem maxBound maxBound CStash TREASURE
                    -- With movable shared stash location this puzzle now has

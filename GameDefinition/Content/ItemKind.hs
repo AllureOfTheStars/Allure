@@ -51,7 +51,7 @@ pattern COOKED_PLANT_UNKNOWN :: GroupName ItemKind
 
 groupNames :: [GroupName ItemKind]
 groupNames =
-       [CURIOUS_ITEM, TREASURE, ANY_SCROLL, ANY_GLASS, ANY_POTION, EXPLOSIVE, ANY_JEWELRY, VALUABLE, UNREPORTED_INVENTORY, AQUATIC]
+       [CRAWL_ITEM, TREASURE, ANY_SCROLL, ANY_GLASS, ANY_POTION, EXPLOSIVE, ANY_JEWELRY, VALUABLE, UNREPORTED_INVENTORY, AQUATIC]
     ++ [HARPOON, ARMOR_LOOSE, CLOTHING_MISC]
     ++ [FIREPROOF_CLOTH, COOKED_PLANT, LIQUID_NITROGEN, GARDENING_TOOL]
     ++ embedsGN ++ actorsGN ++ organsGN ++ blastsGN
@@ -686,7 +686,7 @@ potion1 = potionTemplate
                , OnSmash ApplyPerfume, OnSmash (Explode S_FRAGRANCE) ]
   }
 potion2 = potionTemplate
-  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_GLASS, 100)]
+  { ifreq    = [(CRAWL_ITEM, 100), (ANY_GLASS, 100)]
   , icount   = 1
   , irarity  = [(5, 8), (10, 8)]
   , iaspects = [ SetFlag Unique, ELabel "of Attraction"
@@ -754,7 +754,7 @@ potion7 = potionTemplate
       -- not fragmentation nor glass hail, because not enough glass
   }
 potion8 = potionTemplate
-  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_GLASS, 100)]
+  { ifreq    = [(CRAWL_ITEM, 100), (ANY_GLASS, 100)]
   , icount   = 1
   , irarity  = [(10, 5)]
   , iaspects = [ SetFlag Unique, ELabel "of Love"
@@ -871,7 +871,7 @@ scrollTemplate = ItemKind
   , ikit     = []
   }
 scroll1 = scrollTemplate
-  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_SCROLL, 100)]
+  { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 100)]
   , icount   = 1
   , irarity  = [(5, 9), (10, 9)]  -- mixed blessing, so found early for a unique
   , iaspects = [SetFlag Unique, ELabel "of Reckless Beacon"]
@@ -880,7 +880,7 @@ scroll1 = scrollTemplate
   , idesc    = "This industrial, wide-spectrum alarm broadcaster, if over-amped for a single powerful blast, should be able to cut through the interference and reach any lost crew members, giving them enough positional information to locate us."
   }
 scroll2 = scrollTemplate
-  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_SCROLL, 100)]
+  { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 100)]
   , irarity  = [(1, 6), (10, 2)]
   , ieffects = [Ascend True]
   }
@@ -926,7 +926,7 @@ scroll7 = scrollTemplate
   , ieffects = [PolyItem `AndEffect` Explode S_FIRECRACKER]
   }
 scroll8 = scrollTemplate
-  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_SCROLL, 100)]
+  { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 100)]
   , icount   = 1
   , irarity  = [(10, 12)]
   , iaspects = [SetFlag Unique, ELabel "of Skeleton Key"]
@@ -1271,7 +1271,7 @@ blanket = ItemKind
 chisel = ItemKind  -- ignored by AI, but that's fine, others suffice
   { isymbol  = symbolTool
   , iname    = "chisel"
-  , ifreq    = [(CURIOUS_ITEM, 100), (BREACHING_TOOL, 1)]
+  , ifreq    = [(CRAWL_ITEM, 100), (BREACHING_TOOL, 1)]
   , iflavour = zipPlain [Cyan]
   , icount   = 1
   , irarity  = [(2, 15)]
@@ -1294,7 +1294,7 @@ adjustableSpanner = chisel
   }
 steelFile = chisel
   { iname    = "steel file"
-  , ifreq    = [(CURIOUS_ITEM, 100), (BREACHING_TOOL, 1), (SHARPENING_TOOL, 1)]
+  , ifreq    = [(CRAWL_ITEM, 100), (BREACHING_TOOL, 1), (SHARPENING_TOOL, 1)]
   , irarity  = [(2, 20)]
   , iflavour = zipPlain [Blue]
   , iverbHit = "grate"
@@ -1302,7 +1302,7 @@ steelFile = chisel
   }
 honingSteel = chisel
   { iname    = "honing steel"
-  , ifreq    = [(CURIOUS_ITEM, 100), (SHARPENING_TOOL, 1)]
+  , ifreq    = [(CRAWL_ITEM, 100), (SHARPENING_TOOL, 1)]
   , iflavour = zipFancy [Blue]
   , iverbHit = "hone"
   , idesc    = "Originally used for realigning and sharpening dulled edges of kitchen knives in the local restaurants. Now it turns utensils into weapons."
@@ -1314,7 +1314,7 @@ whetstone = honingSteel
   }
 diagonalPliers = chisel
   { iname    = "pair"
-  , ifreq    = [(CURIOUS_ITEM, 100), (WIRECUTTING_TOOL, 1)]
+  , ifreq    = [(CRAWL_ITEM, 100), (WIRECUTTING_TOOL, 1)]
   , iflavour = zipPlain [Brown]
   , iverbHit = "cut"
   , iaspects = [ELabel "of diagonal pliers"]
@@ -1337,14 +1337,14 @@ boltCutter = diagonalPliers
   }
 solderingIron = chisel
   { iname    = "soldering iron"
-  , ifreq    = [(CURIOUS_ITEM, 100), (BONDING_TOOL, 50)]
+  , ifreq    = [(CRAWL_ITEM, 100), (BONDING_TOOL, 50)]
   , iflavour = zipPlain [White]
   , iverbHit = "soldier"
   , idesc    = "It is a bonding tool."  -- TODO: wikipedia
   }
 duckTape = solderingIron
   { iname    = "duck tape"
-  , ifreq    = [(CURIOUS_ITEM, 100), (BONDING_TOOL, 1)]
+  , ifreq    = [(CRAWL_ITEM, 100), (BONDING_TOOL, 1)]
   , icount   = 1 `d` 4
   , irarity  = [(2, 20)]
   , iverbHit = "catch"
@@ -1396,7 +1396,7 @@ necklaceTemplate = ItemKind
   , ikit     = []
   }
 necklace1 = necklaceTemplate
-  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_JEWELRY, 100)]
+  { ifreq    = [(CRAWL_ITEM, 100), (ANY_JEWELRY, 100)]
   , irarity  = [(3 * 10/15, 0), (4 * 10/15, 1), (10, 3)]
                  -- prevents camping on lvl 3
   , iaspects = [ SetFlag Unique, ELabel "of Spur Life"
@@ -1443,7 +1443,7 @@ necklace6 = necklaceTemplate
                   -- the @50@ is only for the case of very light actor, etc.
   }
 necklace7 = necklaceTemplate
-  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_JEWELRY, 100)]
+  { ifreq    = [(CRAWL_ITEM, 100), (ANY_JEWELRY, 100)]
   , irarity  = [(1, 1)]  -- powerful and determines tactics for one actor
   , iaspects = [ SetFlag Unique, ELabel "of Overdrive"
                , Timeout 10
@@ -1573,7 +1573,7 @@ ring2 = ringTemplate
                ++ iaspects ringTemplate
   }
 ring3 = ringTemplate
-  { ifreq    = [(CURIOUS_ITEM, 100), (ANY_JEWELRY, 100)]
+  { ifreq    = [(CRAWL_ITEM, 100), (ANY_JEWELRY, 100)]
   , irarity  = [(10, 2)]
   , iaspects = [ SetFlag Unique, ELabel "of Rush"
                , AddSkill SkSpeed $ (1 + 1 `dL` 2) * 2
@@ -1733,7 +1733,7 @@ spacesuit = ItemKind
   }
 spacesuitTorn = spacesuit
   { iname    = "torn spacesuit"
-  , ifreq    = [(CURIOUS_ITEM, 100), (S_SPACESUIT_TORN, 1)]
+  , ifreq    = [(CRAWL_ITEM, 100), (S_SPACESUIT_TORN, 1)]
   , irarity  = [(1, 17)]
   , iverbHit = "entangle"
   , iweight  = 10000
@@ -1969,7 +1969,7 @@ blowtorch = ItemKind
   { isymbol  = symbolLight
   , iname    = "blowtorch"  -- not unique, but almost never generated on floor
   , ifreq    = [ (BLOWTORCH, 1), (VALUABLE, 20)  -- make AI afraid to hog
-               , (CURIOUS_ITEM, 1)
+               , (CRAWL_ITEM, 1)
                , (BREACHING_TOOL, 1), (FIRE_SOURCE, 1) ]
                  -- infinite use, but harmful
   , iflavour = zipPlain [BrYellow]
@@ -1996,7 +1996,7 @@ blowtorch = ItemKind
   }
 laserSharpener = honingSteel
   { iname    = "laser sharpener"
-  , ifreq    = [(CURIOUS_ITEM, 100), (SHARPENING_TOOL, 1)]
+  , ifreq    = [(CRAWL_ITEM, 100), (SHARPENING_TOOL, 1)]
   , iflavour = zipFancy [BrBlue]
   , irarity  = [(10, 8)]
   , iweight  = 2000
@@ -2327,7 +2327,7 @@ pollaxe = halberd
   }
 halberdPushActor = halberd
   { iname    = "Blunt Swiss Halberd"
-  , ifreq    = [(CURIOUS_ITEM, 20), (S_HALBERD_BLUNT, 1)]
+  , ifreq    = [(CRAWL_ITEM, 20), (S_HALBERD_BLUNT, 1)]
                  -- not in a museum; reenactors' gear
   , irarity  = [(7, 0), (9, 15)]
   , iaspects = [SetFlag Unique]
