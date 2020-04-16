@@ -41,7 +41,7 @@ standardRules = RuleContent
   , rwriteSaveClips = 1000
   , rleadLevelClips = 50
   , rscoresFile = "Allure.scores"
-  , rnearby = 20
+  , rnearby = 30
   , rstairWordCarried = ["staircase", "lift"]
   , rsymbolProjectile = '{'
   }
