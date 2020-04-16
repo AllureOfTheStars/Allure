@@ -106,11 +106,11 @@ rogue = CaveKind
   , cactorCoeff   = 50  -- the maze requires time to explore
   , cactorFreq    = [(MONSTER, 50), (ANIMAL, 20), (ROBOT, 30)]
   , citemNum      = 10 `d` 4 + 25 - 25 `dL` 1  -- at depth quality over quantity
-  , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.CRAWL_ITEM, 10)
+  , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.CRAWL_ITEM, 40)
     -- CRAWL_ITEM items are used only in long scenarios, such as multi-level
     -- dungeon crawl; these may be powerful or a mundate item,
     -- unlike @TREASURE@ items
-                    , (IK.TREASURE, 60) ]
+                    , (IK.TREASURE, 40) ]
     -- note that the groups are flattened; e.g., if an item is moved to another
     -- group included here with the same weight, the outcome wouldn't change
   , cplaceFreq    = [(ROGUE, 1)]
@@ -174,10 +174,9 @@ arena = rogue
   , cactorFreq    = [ (MONSTER, 50), (ANIMAL, 70), (ROBOT, 5)
                     , (IK.AQUATIC, 10) ]
   , citemNum      = 9 `d` 4  -- few rooms
-  , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.TREASURE, 40)
-                    , (GARDENING_TOOL, 500)
-                    , (IK.ANY_SCROLL, 40), (IK.EXPLOSIVE, 40)
-                    , (IK.CRAWL_ITEM, 20) ]
+  , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 20)
+                    , (IK.TREASURE, 40), (GARDENING_TOOL, 500)
+                    , (IK.ANY_SCROLL, 40), (IK.EXPLOSIVE, 40) ]
   , cplaceFreq    = [(ARENA, 1)]
   , cpassable     = True
   , cdefTile      = ARENA_SET_LIT
@@ -203,8 +202,8 @@ casino = arena
   , cactorFreq    = [(MONSTER, 50), (ANIMAL, 25), (ROBOT, 50)]
   , citemNum      = 9 `d` 3  -- rare, so make it exciting, by keeping many items
   , citemFreq     = [ (IK.COMMON_ITEM, 20)
-                    , (IK.TREASURE, 80)  -- lives up to the name
-                    , (IK.CRAWL_ITEM, 40) ]
+                    , (IK.CRAWL_ITEM, 40)  -- slight spice
+                    , (IK.TREASURE, 80) ]  -- lives up to its name
   , cdefTile      = ARENA_SET_DARK
   , cfenceTileN   = HABITAT_CONTAINMENT_WALL  -- small cave
   , cfenceTileE   = HABITAT_CONTAINMENT_WALL
@@ -225,9 +224,9 @@ museum = arena
   , cactorFreq    = [(MONSTER, 100), (ANIMAL, 25), (ROBOT, 25)]
   , citemNum      = 9 `d` 4  -- rare, so make it exciting
   , citemFreq     = [ (IK.COMMON_ITEM, 20)
-                    , (IK.TREASURE, 40)
-                    , (IK.CRAWL_ITEM, 40)
-                    , (MUSEAL, 100) ]  -- lives up to the name
+                    , (IK.CRAWL_ITEM, 20)
+                    , (IK.TREASURE, 20)
+                    , (MUSEAL, 200) ]  -- lives up to its name
   , cplaceFreq    = [(MUSEUM, 1)]
   , cdefTile      = MUSEUM_SET_DARK
   , cfenceTileN   = HABITAT_CONTAINMENT_WALL  -- small cave
@@ -255,8 +254,8 @@ laboratory = rogue
   , cactorFreq    = [ (MONSTER, 50), (ANIMAL, 70), (ROBOT, 5)
                     , (IK.AQUATIC, 10) ]
   , citemNum      = 9 `d` 5  -- reward difficulty
-  , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.TREASURE, 40)
-                    , (IK.ANY_POTION, 40), (IK.CRAWL_ITEM, 40) ]
+  , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 40)
+                    , (IK.TREASURE, 40), (IK.ANY_POTION, 40) ]
   , cplaceFreq    = [(LABORATORY, 1)]
   , cdefTile      = FILLER_WALL
   , cdarkCorTile  = LAB_TRAIL_LIT  -- let lab smoke give off light always
@@ -293,8 +292,8 @@ noise = rogue
   , cactorCoeff   = 70  -- the maze requires time to explore; also, small
   , cactorFreq    = [(MONSTER, 100), (ANIMAL, 5), (ROBOT, 25)]
   , citemNum      = 10 `d` 4  -- an incentive to explore the labyrinth
-  , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.TREASURE, 60)
-                    , (IK.EXPLOSIVE, 20), (IK.CRAWL_ITEM, 30) ]
+  , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 20)
+                    , (IK.TREASURE, 20), (IK.EXPLOSIVE, 20) ]
   , cpassable     = True
   , labyrinth     = True
   , cplaceFreq    = [(NOISE, 1)]
@@ -317,7 +316,7 @@ power = noise
   , cnightOdds    = 51  -- easier variant, but looks sinister
   , cextraStairs  = 2
   , citemNum      = 10 `d` 4  -- an incentive to explore the final labyrinth
-  , citemFreq     = [ (IK.COMMON_ITEM, 20), (GEM, 80), (IK.CRAWL_ITEM, 30) ]
+  , citemFreq     = [(IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 20), (GEM, 80)]
                       -- can't be "valuable" or template items generated
   , cdefTile      = POWER_SET_DARK
   , cdarkCorTile  = OILY_FLOOR_DARK
@@ -397,8 +396,8 @@ outermost = empty
       -- enough of a continuity. The faucets on lvl 1 are not OP and can't be
       -- abused, because they spawn less and less often and also HP doesn't
       -- effectively accumulate over max.
-  , citemFreq     = [ (IK.COMMON_ITEM, 100), (IK.CRAWL_ITEM, 50)
-                    , (GARDENING_TOOL, 2000) ]
+  , citemFreq     = [ (IK.COMMON_ITEM, 50), (IK.CRAWL_ITEM, 50)
+                    , (GARDENING_TOOL, 1000) ]
   , cfenceTileN   = ORIELS_FENCE
   , cfenceTileE   = HABITAT_CONTAINMENT_WALL
   , cfenceTileS   = EMPTY_AIRLOCK_FENCE
@@ -445,8 +444,8 @@ shallowRogue = rogue
   , cactorCoeff   = 120  -- more difficult
   , cactorFreq    = filter ((/= MONSTER) . fst) $ cactorFreq rogue
   , citemNum      = 10 `d` 4
-  , citemFreq     = [ (IK.COMMON_ITEM, 100), (IK.CRAWL_ITEM, 50)
-                    , (GARDENING_TOOL, 2000) ]
+  , citemFreq     = [ (IK.COMMON_ITEM, 50), (IK.CRAWL_ITEM, 50)
+                    , (GARDENING_TOOL, 1000) ]
   , cdesc         = "This close to the outermost deck, residence is not permitted and walls and doors are sturdier, to contain a theoretically possible micro-meteorite breach. The entry is not closed off, though, because some passengers can't live without a regular pilgrimage to 'look outside'. Apparently, gazing at the sharp pin-points of stars and planets through the reinforced oriel glass is incomparable to watching the same through the thin polymer of wall displays.\nAnimals appear to share the fascination of outer decks, perhaps attracted by the increased gravity, nearly Earth-like, unlike elsewhere on the ship. However, they dislike many industrial fluids common on the ship, so throwing flasks is often an effective deterrent. Moreover, even if the fluid is hard to identify, you can be sure you won't waste a badly needed nano medicine, because it's never stored in such large containers but in tiny vials."
   }
 
@@ -530,8 +529,7 @@ shootout = rogue  -- a scenario with strong missiles;
   , citemNum      = 6 `d` 16
                       -- less items in inventory, more to be picked up,
                       -- to reward explorer and aggressor and punish camper
-  , citemFreq     = [ (IK.COMMON_ITEM, 30), (IK.CRAWL_ITEM, 7)
-                    , (GARDENING_TOOL, 500)
+  , citemFreq     = [ (IK.COMMON_ITEM, 30), (GARDENING_TOOL, 500)
                     , (ANY_ARROW, 400), (HARPOON, 300), (IK.EXPLOSIVE, 50) ]
                       -- Many consumable buffs are needed in symmetric maps
                       -- so that aggressor prepares them in advance and camper
@@ -592,9 +590,8 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , chidden       = 0
   , cactorFreq    = []
   , citemNum      = 8 `d` 8
-  , citemFreq     = [ (IK.COMMON_ITEM, 30), (GEM, 150)
-                    , (WEAK_ARROW, 500), (HARPOON, 400)
-                    , (IK.EXPLOSIVE, 100) ]
+  , citemFreq     = [ (IK.COMMON_ITEM, 30), (GEM, 150), (STARTING_ARMOR, 50)
+                    , (WEAK_ARROW, 500), (HARPOON, 400), (IK.EXPLOSIVE, 100) ]
   , cplaceFreq    = [(ESCAPE, 1)]
   , cpassable     = True
   , cdefTile      = ESCAPE_SET_DARK
@@ -624,7 +621,7 @@ zoo = rogue  -- few lights and many solids, to help the less numerous heroes
   , cactorFreq    = []
   , citemNum      = 9 `d` 8
   , citemFreq     = [ (IK.COMMON_ITEM, 100), (LIGHT_MANIPULATION, 1000)
-                    , (STARTING_WEAPON, 1000) ]
+                    , (STARTING_ARMOR, 500), (STARTING_WEAPON, 1000) ]
   , cplaceFreq    = [(ZOO, 1)]
   , cpassable     = True
   , cdefTile      = ZOO_SET_DARK
@@ -658,9 +655,8 @@ ambush = rogue  -- a scenario with strong missiles;
   , chidden       = 0
   , cactorFreq    = []
   , citemNum      = 6 `d` 8
-  , citemFreq     = [ (IK.COMMON_ITEM, 30), (IK.CRAWL_ITEM, 7)
-                    , (MERCENARY_AMMO, 200), (HARPOON, 300)
-                    , (IK.EXPLOSIVE, 50) ]
+  , citemFreq     = [ (IK.COMMON_ITEM, 30), (MERCENARY_AMMO, 200)
+                    , (HARPOON, 300), (IK.EXPLOSIVE, 50) ]
   , cplaceFreq    = [(AMBUSH, 1)]
   , cpassable     = True
   , cdefTile      = AMBUSH_SET_DARK
@@ -691,8 +687,7 @@ battle = rogue  -- few lights and many solids, to help the less numerous heroes
   , chidden       = 0
   , cactorFreq    = []
   , citemNum      = 6 `d` 8
-  , citemFreq     = [ (IK.COMMON_ITEM, 100), (IK.CRAWL_ITEM, 20)
-                    , (LIGHT_MANIPULATION, 200) ]
+  , citemFreq     = [(IK.COMMON_ITEM, 100), (LIGHT_MANIPULATION, 200)]
   , cplaceFreq    = [(BATTLE, 50), (ROGUE, 50)]
   , cpassable     = True
   , cdefTile      = BATTLE_SET_DARK

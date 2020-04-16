@@ -360,7 +360,7 @@ harpoon2 = harpoon
   }
 harpoon3 = harpoon
   { iname    = "whaling harpoon"
-  , ifreq    = [(TREASURE, 50), (MUSEAL, 100)]
+  , ifreq    = [(TREASURE, 100), (MUSEAL, 100)]
   , iflavour = zipFancy [Red]
   , irarity  = [(8, 4)]
   , idamage  = 8 `d` 1
@@ -689,7 +689,7 @@ potion1 = potionTemplate
 potion2 = potionTemplate
   { ifreq    = [(CRAWL_ITEM, 100), (ANY_GLASS, 20)]
   , icount   = 1
-  , irarity  = [(5, 8), (10, 8)]
+  , irarity  = [(5, 4), (10, 4)]
   , iaspects = [ SetFlag Unique, ELabel "of Attraction"
                , SetFlag Precious, SetFlag Lobable, SetFlag Fragile
                , toVelocity 50 ]  -- identified
@@ -757,7 +757,7 @@ potion7 = potionTemplate
 potion8 = potionTemplate
   { ifreq    = [(CRAWL_ITEM, 100), (ANY_GLASS, 20)]
   , icount   = 1
-  , irarity  = [(10, 5)]
+  , irarity  = [(10, 3)]
   , iaspects = [ SetFlag Unique, ELabel "of Love"
                , SetFlag Precious, SetFlag Lobable, SetFlag Fragile
                , toVelocity 50 ]  -- identified
@@ -874,7 +874,7 @@ scrollTemplate = ItemKind
 scroll1 = scrollTemplate
   { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 20)]
   , icount   = 1
-  , irarity  = [(5, 9), (10, 9)]  -- mixed blessing, so found early for a unique
+  , irarity  = [(5, 5), (10, 5)]  -- mixed blessing, so found early for a unique
   , iaspects = [SetFlag Unique, ELabel "of Reckless Beacon"]
                ++ iaspects scrollTemplate
   , ieffects = [Summon HERO 1, Summon MOBILE_ANIMAL (2 + 1 `d` 2)]
@@ -882,7 +882,7 @@ scroll1 = scrollTemplate
   }
 scroll2 = scrollTemplate
   { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(1, 6), (10, 2)]
+  , irarity  = [(1, 4)]
   , ieffects = [Ascend True]
   }
 scroll3 = scrollTemplate
@@ -927,9 +927,9 @@ scroll7 = scrollTemplate
   , ieffects = [PolyItem `AndEffect` Explode S_FIRECRACKER]
   }
 scroll8 = scrollTemplate
-  { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 20)]
+  { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 40)]
   , icount   = 1
-  , irarity  = [(10, 12)]
+  , irarity  = [(10, 6)]
   , iaspects = [SetFlag Unique, ELabel "of Skeleton Key"]
                ++ iaspects scrollTemplate
   , ieffects = [Summon HERO 1]
@@ -1275,7 +1275,7 @@ chisel = ItemKind  -- ignored by AI, but that's fine, others suffice
   , ifreq    = [(CRAWL_ITEM, 100), (BREACHING_TOOL, 1)]
   , iflavour = zipPlain [Cyan]
   , icount   = 1
-  , irarity  = [(2, 15)]
+  , irarity  = [(2, 8)]
   , iverbHit = "dismantle"
   , iweight  = 500
   , idamage  = 0  -- not a missile to avoid wasting, before a worskhop found
@@ -1296,7 +1296,7 @@ adjustableSpanner = chisel
 steelFile = chisel
   { iname    = "steel file"
   , ifreq    = [(CRAWL_ITEM, 100), (BREACHING_TOOL, 1), (SHARPENING_TOOL, 1)]
-  , irarity  = [(2, 20)]
+  , irarity  = [(2, 10)]
   , iflavour = zipPlain [Blue]
   , iverbHit = "grate"
   , idesc    = "It is a breaching and sharpening tool."  -- TODO: https://en.wikipedia.org/wiki/File_(tool)
@@ -1338,16 +1338,16 @@ boltCutter = diagonalPliers
   }
 solderingIron = chisel
   { iname    = "soldering iron"
-  , ifreq    = [(CRAWL_ITEM, 100), (BONDING_TOOL, 50)]
+  , ifreq    = [(CRAWL_ITEM, 100), (BONDING_TOOL, 100)]
   , iflavour = zipPlain [White]
   , iverbHit = "soldier"
   , idesc    = "It is a bonding tool."  -- TODO: wikipedia
   }
 duckTape = solderingIron
   { iname    = "duck tape"
-  , ifreq    = [(CRAWL_ITEM, 100), (BONDING_TOOL, 1)]
+  , ifreq    = [(CRAWL_ITEM, 100), (BONDING_TOOL, 2)]
   , icount   = 1 `d` 4
-  , irarity  = [(2, 20)]
+  , irarity  = [(2, 10)]
   , iverbHit = "catch"
   , idesc    = "It is a bonding tool."  -- TODO: https://en.wikipedia.org/wiki/Duct_tape
   }
@@ -1363,7 +1363,7 @@ iaspects_necklaceTemplate =
   , toVelocity 50 ]  -- not dense enough
 gorget = necklaceTemplate
   { iname    = "Old Gorget"
-  , ifreq    = [(COMMON_ITEM, 25), (TREASURE, 25), (MUSEAL, 100)]
+  , ifreq    = [(TREASURE, 100), (MUSEAL, 100)]
   , iflavour = zipFancy [BrCyan]  -- looks exactly the same as one of necklaces,
                                   -- but it's OK, it's an artifact
   , iaspects = [ SetFlag Unique
@@ -1397,8 +1397,8 @@ necklaceTemplate = ItemKind
   , ikit     = []
   }
 necklace1 = necklaceTemplate
-  { ifreq    = [(CRAWL_ITEM, 100), (ANY_JEWELRY, 100)]
-  , irarity  = [(3 * 10/15, 0), (4 * 10/15, 1), (10, 3)]
+  { ifreq    = [(CRAWL_ITEM, 100), (ANY_JEWELRY, 50)]
+  , irarity  = [(3 * 10/15, 0), (4 * 10/15, 1), (10, 2)]
                  -- prevents camping on lvl 3
   , iaspects = [ SetFlag Unique, ELabel "of Spur Life"
                , Timeout $ (4 - 1 `dL` 3) * 10
@@ -1444,8 +1444,8 @@ necklace6 = necklaceTemplate
                   -- the @50@ is only for the case of very light actor, etc.
   }
 necklace7 = necklaceTemplate
-  { ifreq    = [(CRAWL_ITEM, 100), (ANY_JEWELRY, 100)]
-  , irarity  = [(1, 1)]  -- powerful and determines tactics for one actor
+  { ifreq    = [(CRAWL_ITEM, 10), (ANY_JEWELRY, 50)]
+  , irarity  = [(10, 5)]  -- powerful and determines tactics for one actor
   , iaspects = [ SetFlag Unique, ELabel "of Overdrive"
                , Timeout 10
                , AddSkill SkMaxHP 10  -- good effects vanish when taken off
@@ -1507,7 +1507,7 @@ imageItensifier = ItemKind
   , ifreq    = [(TREASURE, 100), (ADD_NOCTO_1, 80), (MUSEAL, 100)]
   , iflavour = zipFancy [BrGreen]
   , icount   = 1
-  , irarity  = [(5, 3)]
+  , irarity  = [(5, 6)]
   , iverbHit = "rattle"
   , iweight  = 700
   , idamage  = 0
@@ -1521,7 +1521,7 @@ imageItensifier = ItemKind
   }
 sightSharpening = ringTemplate  -- small and round, so mistaken for a ring
   { iname    = "Autozoom Contact Lens"
-  , ifreq    = [(TREASURE, 40), (ADD_SIGHT, 1)]
+  , ifreq    = [(TREASURE, 100), (ADD_SIGHT, 1)]
       -- it's has to be very rare, because it's powerful and not unique,
       -- and also because it looks exactly as one of necklaces, so it would
       -- be misleading when seen on the map
@@ -1574,8 +1574,8 @@ ring2 = ringTemplate
                ++ iaspects ringTemplate
   }
 ring3 = ringTemplate
-  { ifreq    = [(CRAWL_ITEM, 100), (ANY_JEWELRY, 100)]
-  , irarity  = [(10, 2)]
+  { ifreq    = [(CRAWL_ITEM, 10), (ANY_JEWELRY, 20)]
+  , irarity  = [(10, 10)]
   , iaspects = [ SetFlag Unique, ELabel "of Rush"
                , AddSkill SkSpeed $ (1 + 1 `dL` 2) * 2
                , AddSkill SkMaxHP (-20)
@@ -1632,8 +1632,8 @@ ring9 = ringTemplate
   , idesc    = "This mil-grade communication equipment feeds the aggregated enemy position information to the wearer, even when he is not the pointman of the team and so the team is not intentionally spotting for him. With proper training this permits ranged attacks, even indirect fire, without neglecting the simultaneous squad doctrine obligation of covering the approach of the pointman."
   }
 ring10 = ringTemplate
-  { ifreq    = [(TREASURE, 100), (ANY_JEWELRY, 100)]
-  , irarity  = [(10, 2)]
+  { ifreq    = [(TREASURE, 100), (ANY_JEWELRY, 50)]
+  , irarity  = [(10, 4)]
   , iaspects = [ SetFlag Unique, ELabel "of Overwatch"
                , AddSkill SkProject 8  -- TODO: 11, but let player control
                                        -- potion throwing; see capReinforced
@@ -1735,7 +1735,7 @@ spacesuit = ItemKind
 spacesuitTorn = spacesuit
   { iname    = "torn spacesuit"
   , ifreq    = [(CRAWL_ITEM, 100), (S_SPACESUIT_TORN, 1)]
-  , irarity  = [(1, 17)]
+  , irarity  = [(1, 9)]
   , iverbHit = "entangle"
   , iweight  = 10000
   , iaspects = [ AddSkill SkHurtMelee (-30)
@@ -1999,7 +1999,7 @@ laserSharpener = honingSteel
   { iname    = "laser sharpener"
   , ifreq    = [(CRAWL_ITEM, 100), (SHARPENING_TOOL, 1)]
   , iflavour = zipFancy [BrBlue]
-  , irarity  = [(10, 8)]
+  , irarity  = [(10, 4)]
   , iweight  = 2000
   , idamage  = 0
   , iaspects = [ SetFlag Unique, Timeout 10
@@ -2138,7 +2138,7 @@ hammer5 = hammer3  -- 2m pole, sharp
   }
 hammerParalyze = hammerTemplate
   { iname    = "Concussion Hammer"
-  , ifreq    = [(TREASURE, 20), (STARTING_HAMMER, 5)]
+  , ifreq    = [(TREASURE, 40), (STARTING_HAMMER, 5)]
   , irarity  = [(5, 1), (8, 6)]
   , iaspects = [ SetFlag Unique
                , Timeout 10 ]  -- 2m, but light head and pole
@@ -2148,7 +2148,7 @@ hammerParalyze = hammerTemplate
   }
 hammerSpark = hammerTemplate  -- the only hammer with significantly heavier head
   { iname    = "Grand Smithhammer"
-  , ifreq    = [(TREASURE, 20), (BONDING_TOOL, 1), (MUSEAL, 100)]
+  , ifreq    = [(TREASURE, 40), (BONDING_TOOL, 1), (MUSEAL, 100)]
   , irarity  = [(5, 1), (8, 6)]
   , iweight  = 5000  -- weight and shape/damage gives it away; always identified
   , idamage  = 8 `d` 1  -- let's say, one end is sharpened
@@ -2191,7 +2191,7 @@ knife = ItemKind
   }
 daggerDropBestWeapon = knife
   { iname    = "Double Dagger"
-  , ifreq    = [(TREASURE, 20), (MUSEAL, 100)]
+  , ifreq    = [(TREASURE, 40), (MUSEAL, 100)]
   , irarity  = [(1, 3), (10, 3)]
   , iaspects = [SetFlag Unique]
                ++ iaspects knife
@@ -2228,7 +2228,7 @@ sword = ItemKind
 swordImpress = sword
   { isymbol  = symbolEdged
   , iname    = "Master's Sword"
-  , ifreq    = [(TREASURE, 20), (MUSEAL, 100)]
+  , ifreq    = [(TREASURE, 40), (MUSEAL, 100)]
   , irarity  = [(5, 1), (8, 7)]
   , iverbHit = "slash"
   , iaspects = [SetFlag Unique]
@@ -2239,7 +2239,7 @@ swordImpress = sword
 swordNullify = sword
   { isymbol  = symbolEdged
   , iname    = "Blunt Roasting Rapier"
-  , ifreq    = [(TREASURE, 20), (S_RAPIER_BLUNT, 1)]
+  , ifreq    = [(TREASURE, 40), (S_RAPIER_BLUNT, 1)]
   , iverbHit = "pierce"
   , irarity  = [(5, 1), (8, 7)]
   , idamage  = 7 `d` 1  -- as dagger, but upgradeable and no skill bonus
@@ -2291,7 +2291,7 @@ oxTongue = halberd  -- long pole, because glued 1m handle worse than nothing
 fireAxe = ItemKind
   { isymbol  = symbolHafted
   , iname    = "fire axe"
-  , ifreq    = [ (TREASURE, 30), (HANDLE_AND_STEEL, 1), (S_FIRE_AXE, 1)
+  , ifreq    = [ (TREASURE, 60), (HANDLE_AND_STEEL, 1), (S_FIRE_AXE, 1)
                , (FIRE_FIGHTING_ITEM, 5) ]
                  -- not @BREACHING_TOOL@, because it trigger traps
                  -- and destroys treasure, instead of opening
@@ -2310,7 +2310,7 @@ fireAxe = ItemKind
   }
 pollaxe = halberd
   { iname    = "pollaxe"
-  , ifreq    = [(TREASURE, 1), (POLE_AND_STEEL, 1), (S_POLL_AXE, 1)]
+  , ifreq    = [(TREASURE, 2), (POLE_AND_STEEL, 1), (S_POLL_AXE, 1)]
                  -- not @BREACHING_TOOL@, because it triggers traps
                  -- and destroys treasure, instead of opening
   , iflavour = zipPlain [BrRed]
@@ -2332,7 +2332,7 @@ halberdPushActor = halberd
   { iname    = "Blunt Swiss Halberd"
   , ifreq    = [(CRAWL_ITEM, 20), (S_HALBERD_BLUNT, 1)]
                  -- not in a museum; reenactors' gear
-  , irarity  = [(7, 0), (9, 15)]
+  , irarity  = [(7, 0), (9, 8)]
   , iaspects = [SetFlag Unique]
                ++ iaspects halberd
   , ieffects = [PushActor (ThrowMod 200 100 1)]  -- 2 steps, slow
@@ -2366,7 +2366,7 @@ militaryKnife = knife
 militaryBaton = ItemKind
   { isymbol  = symbolHafted
   , iname    = "military stun gun"
-  , ifreq    = [(TREASURE, 2), (MERCENARY_WEAPON, 30)]
+  , ifreq    = [(TREASURE, 1), (MERCENARY_WEAPON, 30)]
   , iflavour = zipFancy [Green]
   , icount   = 1
   , irarity  = [(10, 10)]
