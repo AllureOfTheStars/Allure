@@ -2511,8 +2511,7 @@ staff = grassStitcher
   , iverbHit = "prod"
   , iweight  = 1000
   , idamage  = 1 `d` 1
-  , iaspects = [ SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotWeaponFast
+  , iaspects = [ SetFlag Durable  -- prevent AI wield; boring, often too weak
                , toVelocity 30 ]  -- a weak missile and that's all
   , ieffects = []
   , idesc    = "A handle of a make-shift tool to be crafted."
