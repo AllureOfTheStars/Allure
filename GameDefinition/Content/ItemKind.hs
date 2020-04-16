@@ -9,6 +9,7 @@ module Content.ItemKind
   ( -- * Group name patterns
     pattern HARPOON, pattern ARMOR_LOOSE, pattern CLOTHING_MISC
   , pattern FIREPROOF_CLOTH, pattern COOKED_PLANT, pattern LIQUID_NITROGEN
+  , pattern GARDENING_TOOL
   , groupNamesSingleton, groupNames
   , -- * Content
     content, items, otherItemContent
@@ -2407,11 +2408,10 @@ grassStitcher = ItemKind
   { isymbol  = symbolPolearm
   , iname    = "grass stitcher"
   , ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
-               , (GARDENING_TOOL, 1), (S_GRASS_STITCHER, 1) ]
+               , (GARDENING_TOOL, 100), (S_GRASS_STITCHER, 1) ]
   , iflavour = zipPlain [Green]
   , icount   = 1
-  , irarity  = [(1, 10), (3 * 10/15, 10), (4 * 10/15, 1)]
-      -- beyond level 3 they mostly appear with treePruner
+  , irarity  = [(1, 1)] -- beyond level 3 they mostly appear with treePruner
   , iverbHit = "stab"
   , iweight  = 500
   , idamage  = 5 `d` 1
@@ -2426,7 +2426,7 @@ grassStitcher = ItemKind
 ladiesFork = grassStitcher
   { iname    = "ladies' fork"
   , ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
-               , (GARDENING_TOOL, 1), (S_LADIES_FORK, 1) ]
+               , (GARDENING_TOOL, 100), (S_LADIES_FORK, 1) ]
   , iflavour = zipFancy [Green]
   , iweight  = 1000
   , idamage  = 6 `d` 1
@@ -2442,7 +2442,7 @@ hoe = grassStitcher
   { isymbol  = symbolHafted
   , iname    = "hoe"
   , ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
-               , (GARDENING_TOOL, 1), (S_HOE, 1) ]
+               , (GARDENING_TOOL, 100), (S_HOE, 1) ]
   , iflavour = zipFancy [Cyan]
   , iverbHit = "hack"
   , iweight  = 1000
@@ -2459,7 +2459,7 @@ spade = grassStitcher
   { isymbol  = symbolHafted  -- swinging much more deadly than gouging
   , iname    = "spade"
   , ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
-               , (GARDENING_TOOL, 1), (S_SPADE, 1) ]
+               , (GARDENING_TOOL, 100), (S_SPADE, 1) ]
   , iflavour = zipPlain [Cyan]
   , iverbHit = "cut"
   , iweight  = 2000
