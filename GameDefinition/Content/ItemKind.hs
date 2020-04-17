@@ -2689,10 +2689,10 @@ spotlight = ItemKind
   , ikit     = []
   }
 seeingItem = ItemKind
-  { isymbol  = symbolFood
+  { isymbol  = symbolRing
   , iname    = "visual sensor"
   , ifreq    = [(COMMON_ITEM, 100)]
-  , iflavour = zipPlain [Red]
+  , iflavour = zipPlain [BrBlue]
   , icount   = 1
   , irarity  = [(1, 2)]
   , iverbHit = "gaze at"
@@ -2704,7 +2704,7 @@ seeingItem = ItemKind
                , AddSkill SkShine 2  -- to lit corridors when flying
                , AddSkill SkMaxHP (-30)  -- prevent excessive stacking
                , SetFlag Periodic ]
-  , ieffects = [ Detect DetectActor 20  -- rare enough
+  , ieffects = [ Detect DetectActor 20  -- rare enough that one-time is not OP
                , Explode S_SINGLE_SPARK
                , toOrganNoTimer S_POISONED  -- really can't be worn
                , Summon MOBILE_ROBOT 1 ]
