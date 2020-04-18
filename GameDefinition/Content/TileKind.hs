@@ -711,7 +711,9 @@ bushLit = TileKind
   , tfreq    = [ (S_BUSH_LIT, 1), (EMPTY_SET_LIT, 8), (ARENA_SET_LIT, 10)
                , (SHOOTOUT_SET_LIT, 30), (HUNT_SET_LIT, 30)
                , (ESCAPE_SET_LIT, 40), (ZOO_SET_DARK, 100)
-               , (BUSH_CLUMP_LIT, 2), (BUSH_GROVE_LIT, 5), (PUMPS_LIT, 300)
+               , (BUSH_CLUMP_LIT, 2), (BUSH_CLUMP_DARK, 2)  -- always lit
+               , (BUSH_GROVE_LIT, 5), (BUSH_GROVE_DARK, 5)  -- always lit
+               , (PUMPS_LIT, 300)  -- dark in PUMPS_DARK
                , (LIFT_TERMINAL_LIT, 4) ]
   , tcolor   = BrGreen
   , tcolor2  = Green
