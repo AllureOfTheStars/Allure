@@ -294,17 +294,17 @@ pattern S_SHALLOW_WATER_DARK = GroupName "shallow water Dark"
 
 content :: [TileKind]
 content =
-  [unknown, unknownOuterFence, basicOuterFence, bedrock, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, fog, fogDark, smoke, smokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorBrown, floorArenaShade ]
+  [unknown, unknownOuterFence, basicOuterFence, bedrock, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, treeLit, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bushLit, bushBurnt, bushBurning, fog, fogDark, smoke, smokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorBrown, floorArenaShade ]
   ++ map makeDarkColor ldarkColorable
   -- Allure-specific
   ++ [oriel, outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, signboardReadExtinguisher, wallObscured3dBillboard, wallObscuredPipework, wallObscuredScary, liftShaft, rock, pillarCache2, pillarCache3, pillarCache4, pillarCache5, stairsTrappedDownOil, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, doorStuck, barrel, barrelSpice, machineWall, machineWallSpice, bushEdible, bushEdibleSpice, underbrushBurning, floorOily, oilSpill, oilSpillSpice, oilBurning, floorWindow, underbrush, workshop]
 
-unknown,    unknownOuterFence, basicOuterFence, bedrock, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, tree, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bush, bushBurnt, bushBurning, fog, fogDark, smoke, smokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorBrown, floorArenaShade :: TileKind
+unknown,    unknownOuterFence, basicOuterFence, bedrock, wall, wallSuspect, wallObscured, wallObscuredDefaced, wallObscuredFrescoed, pillar, pillarCache, lampPost, signboardUnread, signboardRead, treeLit, treeBurnt, treeBurning, rubble, rubbleSpice, doorTrapped, doorClosed, stairsUp, stairsTrappedUp, stairsOutdoorUp, stairsGatedUp, stairsDown, stairsTrappedDown, stairsOutdoorDown, stairsGatedDown, escapeUp, escapeDown, escapeOutdoorDown, wallGlass, wallGlassSpice, pillarIce, pulpit, bushLit, bushBurnt, bushBurning, fog, fogDark, smoke, smokeDark, doorOpen, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, floorAshes, shallowWater, shallowWaterSpice, shallowWater2, floorRed, floorBlue, floorBrown, floorArenaShade :: TileKind
 -- Allure-specific
 oriel,       outerHullWall, rubbleBurning, rubbleBurningSpice, wallOpenable, wallObscuredSafety, signboardReadExtinguisher, wallObscured3dBillboard, wallObscuredPipework, wallObscuredScary, liftShaft, rock, pillarCache2, pillarCache3, pillarCache4, pillarCache5, stairsTrappedDownOil, stairsDecontaminatingUp, stairsWelded, stairsLiftUp, stairsLiftTrappedUp, stairsLiftGatedUp, stairsLiftDecontaminatingUp, stairsLiftWelded, stairsDecontaminatingDown, stairsLiftDown, stairsLiftTrappedDown, stairsLiftGatedDown, stairsLiftDecontaminatingDown, escapeSpaceshipDown, emptyAirlock, reinforcedWall, reinforcedWallSpice, wallShuttle, wallShuttleSpice, doorStuck, barrel, barrelSpice, machineWall, machineWallSpice, bushEdible, bushEdibleSpice, underbrushBurning, floorOily, oilSpill, oilSpillSpice, oilBurning, floorWindow, underbrush, workshop :: TileKind
 
 ldarkColorable :: [TileKind]
-ldarkColorable = [tree, bush, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, shallowWater, shallowWaterSpice, shallowWater2, floorOily]
+ldarkColorable = [treeLit, bushLit, floorCorridor, floorArena, floorDamp, floorDirt, floorDirtSpice, floorActor, floorActorItem, shallowWater, shallowWaterSpice, shallowWater2, floorOily]
 
 -- Symbols to be used:
 --         LOS    noLOS
@@ -486,7 +486,7 @@ signboardRead = TileKind
                  -- can't transform or the hidden version would not trigger
                  -- but only reveal the real version; needed extra keystroke
   }
-tree = TileKind
+treeLit = TileKind
   { tsymbol  = '0'
   , tname    = "tree"
   , tfreq    = [ (EMPTY_SET_LIT, 4), (BRAWL_SET_LIT, 140)
@@ -498,15 +498,18 @@ tree = TileKind
   , talter   = 4
   , tfeature = [ChangeWith True [(1, FIRE_SOURCE)] S_BURNING_TREE]
   }
-treeBurnt = tree
-  { tname    = "burnt tree"
+treeBurnt = TileKind
+  { tsymbol  = '0'
+  , tname    = "burnt tree"
   , tfreq    = [(ZOO_SET_DARK, 10), (TREE_BURNING_OR_NOT, 30)]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
+  , talter   = 4
   , tfeature = [Dark]  -- even burned too hard to topple
   }
-treeBurning = tree  -- present in EMPTY_SET_LIT as early light/fire source
-  { tname    = "burning tree"
+treeBurning = TileKind  -- present in EMPTY_SET_LIT as early light/fire source
+  { tsymbol  = '0'
+  , tname    = "burning tree"
   , tfreq    = [ (EMPTY_SET_LIT, 2), (ZOO_SET_DARK, 60)
                , (TREE_BURNING_OR_NOT, 70), (S_BURNING_TREE, 1) ]
   , tcolor   = BrRed
@@ -702,7 +705,7 @@ pulpit = TileKind
                , Clear, Embed LECTERN ]
                    -- mixed blessing, so AI ignores, saved for player's fun
   }
-bush = TileKind
+bushLit = TileKind
   { tsymbol  = '%'
   , tname    = "bush"
   , tfreq    = [ (S_BUSH_LIT, 1), (EMPTY_SET_LIT, 8), (ARENA_SET_LIT, 10)
@@ -716,20 +719,23 @@ bush = TileKind
   , tfeature = [ChangeWith True [(1, FIRE_SOURCE)] S_BURNING_BUSH, Clear]
                  -- too tough to topple, has to be burned first
   }
-bushBurnt = bush
-  { tname    = "burnt bush"
+bushBurnt = TileKind
+  { tsymbol  = '%'
+  , tname    = "burnt bush"
   , tfreq    = [ (BATTLE_SET_DARK, 30), (AMBUSH_SET_DARK, 3), (ZOO_SET_DARK, 50)
                , (BUSH_BURNING_OR_NOT, 25) ]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
+  , talter   = 4
   , tfeature = [Dark, Clear, OpenTo DIRT_DARK]
                  -- when burnt, can be destroyed at least, clearning way;
                  -- ensures ~confluence when pathfinding, that is, prevents
                  -- OpenTo in bushBurning from determining a path that ends up
                  -- in unwalkable tile after some unlucky terrain mdifications
   }
-bushBurning = bush
-  { tname    = "burning bush"
+bushBurning = TileKind
+  { tsymbol  = '%'
+  , tname    = "burning bush"
   , tfreq    = [ (EMPTY_SET_LIT, 3), (AMBUSH_SET_DARK, 10), (ZOO_SET_DARK, 300)
                , (BUSH_BURNING_OR_NOT, 50), (S_BURNING_BUSH, 1) ]
   , tcolor   = BrRed
@@ -747,7 +753,7 @@ bushBurning = bush
 
 -- *** Not clear
 
-fog = TileKind
+fog = TileKind  -- always lit
   { tsymbol  = ';'
   , tname    = "faint fog"
   , tfreq    = [ (S_FOG_LIT, 1), (EMPTY_SET_LIT, 200), (NOISE_SET_LIT, 120)
@@ -762,12 +768,12 @@ fog = TileKind
   , talter   = 0
   , tfeature = [Walkable, NoItem, OftenActor]
   }
-fogDark = fog
+fogDark = fog  -- always dark
   { tname    = "thick fog"
   , tfreq    = [(ESCAPE_SET_DARK, 50), (LIFT_TERMINAL_DARK, 40)]
   , tfeature = Dark : tfeature fog
   }
-smoke = TileKind
+smoke = TileKind  -- always lit
   { tsymbol  = ';'
   , tname    = "billowing smoke"
   , tfreq    = [ (S_SMOKE_LIT, 1), (LAB_TRAIL_LIT, 1)
@@ -780,7 +786,7 @@ smoke = TileKind
   , talter   = 0
   , tfeature = [Walkable, NoItem]  -- not dark, embers
   }
-smokeDark = smoke
+smokeDark = smoke  -- always dark
   { tname    = "lingering smoke"
   , tfreq    = [ (POWER_SET_DARK, 100)
                , (ZOO_SET_DARK, 20), (AMBUSH_SET_DARK, 40), (BATTLE_SET_DARK, 5)
@@ -846,7 +852,7 @@ floorActorItem = floorActor
                , (LEGEND_LIT, 100) ]
   , tfeature = VeryOftenItem : tfeature floorActor
   }
-floorAshes = floorActor
+floorAshes = floorActor  -- always lit
   { tfreq    = [ (SMOKE_CLUMP_LIT, 1), (SMOKE_CLUMP_DARK, 1)
                , (S_FLOOR_ASHES_LIT, 1), (S_FLOOR_ASHES_DARK, 1)
                , (ASHES_SMOKE_LIT, 5), (ASHES_SMOKE_DARK, 5)
@@ -881,7 +887,7 @@ shallowWater2 = shallowWater
   { tname    = "water pool"
   , tfreq    = [(S_POOL_LIT, 1)]
   }
-floorRed = floorCorridor
+floorRed = floorCorridor  -- always lit
   { tname    = "emergency walkway"
   , tfreq    = [ (TRAIL_LIT, 50), (SAFE_TRAIL_LIT, 50)
                , (LIFT_TERMINAL_LIT, 6), (LIFT_TERMINAL_DARK, 6) ]
@@ -892,7 +898,7 @@ floorRed = floorCorridor
                    -- non-porous enough
                , Embed STRAIGHT_PATH, Trail, Walkable, Clear ]
   }
-floorBlue = floorRed
+floorBlue = floorRed  -- always lit
   { tname    = "frozen path"
   , tfreq    = [(TRAIL_LIT, 50), (S_FROZEN_PATH, 1)]
   , tcolor   = BrBlue
@@ -904,14 +910,14 @@ floorBlue = floorRed
                    -- non-porous enough
                , Embed FROZEN_GROUND, Trail, Walkable, Clear ]
   }
-floorBrown = floorRed
+floorBrown = floorRed  -- always lit
   { tname    = "transport route"
   , tfreq    = [ (TRAIL_LIT, 50), (SAFE_TRAIL_LIT, 50)
                , (TRANSPORT_ROUTE, 1) ]
   , tcolor   = BrMagenta
   , tcolor2  = Magenta
   }
-floorArenaShade = floorActor
+floorArenaShade = floorActor  -- always dark
   { tname    = "shaded ground"
   , tfreq    = [(S_SHADED_GROUND, 1), (TREE_SHADE_WALKABLE_LIT, 2)]
   , tcolor   = BrYellow  -- match others, even though no lit counterpart
@@ -1293,7 +1299,7 @@ bushEdibleSpice = bushEdible
 
 -- *** Not clear
 
-underbrushBurning = TileKind
+underbrushBurning = TileKind  -- always lit
   { tsymbol  = ';'
   , tname    = "burning underbrush"
   , tfreq    = [ (AMBUSH_SET_DARK, 1), (ZOO_SET_DARK, 5)
@@ -1324,7 +1330,7 @@ floorOily = floorArena
                  -- the transformation goes first, because marginal
                : tfeature floorArena
   }
-oilSpill = TileKind
+oilSpill = TileKind  -- always lit
   { tsymbol  = '~'
   , tname    = "oil spill"
   , tfreq    = [ (POWER_SET_DARK, 35), (EXIT_SET_LIT, 1)
@@ -1346,7 +1352,7 @@ oilSpillSpice = oilSpill
   , tfeature = Spice : tfeature oilSpill
   }
 
-oilBurning = TileKind
+oilBurning = TileKind  -- always lit
   { tsymbol  = '~'
   , tname    = "burning oil"
   , tfreq    = [(POWER_SET_DARK, 1), (AMBUSH_SET_DARK, 1), (S_BURNING_OIL, 1)]
@@ -1362,7 +1368,7 @@ oilBurning = TileKind
                , ChangeTo S_OIL_SPILL
                ]
   }
-floorWindow = floorArena
+floorWindow = floorArena  -- always lit
   { tsymbol  = ' '  -- story-wise it's transparent, hence the symbol
   , tname    = "floor window"
   , tfreq    = [(EMPTY_SET_LIT, 24)]
@@ -1370,7 +1376,7 @@ floorWindow = floorArena
   , tcolor2  = defFG
   , tfeature = Embed BLACK_STARRY_SKY : tfeature floorCorridor
   }
-underbrush = TileKind
+underbrush = TileKind  -- always lit
   { tsymbol  = floorSymbol
   , tname    = "underbrush"
   , tfreq    = [ (S_UNDERBRUSH_LIT, 1), (S_UNDERBRUSH_DARK, 1)
@@ -1388,7 +1394,7 @@ underbrush = TileKind
   , tfeature = [ ChangeWith True [(1, FIRE_SOURCE)] S_BURNING_UNDERBRUSH
                , Trail, Walkable, Clear, NoItem ]
   }
-workshop = TileKind
+workshop = TileKind  -- always lit
   { tsymbol  = ':'
   , tname    = "workshop"
   , tfreq    = [ (LEGEND_LIT, 100), (LEGEND_DARK, 100)
