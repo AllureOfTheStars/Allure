@@ -1068,7 +1068,8 @@ ediblePlant5 = ediblePlantTemplate
   }
 ediblePlant6 = ediblePlantTemplate
   { iname    = "dull flower"
-  , ifreq    = [(S_DULL_FLOWER, 1), (COMMON_ITEM, 100), (EDIBLE_PLANT, 100)]
+  , ifreq    = [ (S_DULL_FLOWER, 1), (COMMON_ITEM, 100), (EDIBLE_PLANT, 100)
+               , (PERFUME, 1) ]
   , ieffects = [ PutToSleep
                , DropItem maxBound 1 COrgan S_HUNGRY ]
   }
@@ -1347,7 +1348,7 @@ duckTape = solderingIron
   { iname    = "duck tape"
   , ifreq    = [(CRAWL_ITEM, 100), (BONDING_TOOL, 2)]
   , icount   = 1 `d` 4
-  , irarity  = [(2, 10)]
+  , irarity  = [(2, 12)]
   , iverbHit = "catch"
   , idesc    = "It is a bonding tool."  -- TODO: https://en.wikipedia.org/wiki/Duct_tape
   }
@@ -2569,7 +2570,7 @@ gem2 = gem1
 gem3 = gem1
   { ifreq    = [ (TREASURE, 150), (GEM, 100), (ANY_JEWELRY, 100)
                , (VALUABLE, 100) ]
-  , irarity  = [(7, 0), (8, 20), (10, 8)]
+  , irarity  = [(7, 0), (8, 30), (10, 8)]
   }
 gem4 = gem1
   { ifreq    = [ (TREASURE, 150), (GEM, 100), (ANY_JEWELRY, 100)

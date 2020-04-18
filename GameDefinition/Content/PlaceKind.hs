@@ -1436,7 +1436,7 @@ cells6 = cells
 cells7 = cells
   { pname    = "a defunct control room"
   , pfreq    = [ (ROGUE, 5), (LABORATORY, 20)
-               , (EMPTY, 100), (EXIT, 20), (NOISE, 100), (AMBUSH, 50) ]
+               , (EXIT, 20), (NOISE, 100), (AMBUSH, 50) ]
   , pfence   = FFloor
   , ptopLeft = [ "%·o"
                , "·#o"
