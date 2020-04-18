@@ -121,11 +121,11 @@ content =
   -- automatically generated
   ++ snd generatedStairs ++ generatedEscapes
   -- Allure-specific, continued
-  ++ [ pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5, tank6, tank7, tank8, tank9, tank10, tank11, tank12, shuttleHusk, shuttleHusk2, shuttleHusk3, shuttleHusk4, shuttleHusk5, shuttleHusk6, dormitory, dormitory2, dormitory3, dormitory4, dormitory5, dormitory6]
+  ++ [ pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, maze4, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5, tank6, tank7, tank8, tank9, tank10, tank11, tank12, shuttleHusk, shuttleHusk2, shuttleHusk3, shuttleHusk4, shuttleHusk5, shuttleHusk6, dormitory, dormitory2, dormitory3, dormitory4, dormitory5, dormitory6]
 
 deadEnd,    rect, rect2, rectWindows, glasshouse, glasshouse2, glasshouse3, glasshouse4, pulpit, ruin, ruin2, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, pillar6, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, colonnade7, colonnade8, colonnade9, colonnade10, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2, smokeClump3FGround, bushClump, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeDown6, escapeDown7, escapeDown8, escapeDown9, staircase1, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircase18, staircase19, staircase20, staircase21, staircase22, staircase23, staircase24, staircase25, staircase26, staircase27, staircase28, staircase29, staircase30, staircase31, staircase32, staircase33, staircase34, staircase35, staircase36, staircase37 :: PlaceKind
 -- Allure-specific
-staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25, pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5, tank6, tank7, tank8, tank9, tank10, tank11, tank12, shuttleHusk, shuttleHusk2, shuttleHusk3, shuttleHusk4, shuttleHusk5, shuttleHusk6, dormitory, dormitory2, dormitory3, dormitory4, dormitory5, dormitory6 :: PlaceKind
+staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25, pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, maze4, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5, tank6, tank7, tank8, tank9, tank10, tank11, tank12, shuttleHusk, shuttleHusk2, shuttleHusk3, shuttleHusk4, shuttleHusk5, shuttleHusk6, dormitory, dormitory2, dormitory3, dormitory4, dormitory5, dormitory6 :: PlaceKind
 
 staircase, staircaseLift :: PlaceKind  -- templates
 
@@ -387,15 +387,15 @@ pillar6 = pillar
   { pname    = "a jewelry store"
   , pfreq    = [ (ROGUE, 1200), (ARENA, 6000)
                , (MUSEUM, 7000), (EMPTY, 600) ]
-  , ptopLeft = [ "0f··"
-               , "ff%·"
-               , "·%&·"
+  , ptopLeft = [ "0a··"
+               , "aaf·"
+               , "·f&·"
                , "····"
                ]
   , poverrideDark = [ ('&', CACHE_JEWELRY), ('0', S_LAMP_POST)
-                    , ('f', S_FLOOR_ACTOR_LIT) ]
+                    , ('f', BUSH_GROVE_DARK) , ('a', S_FLOOR_ACTOR_LIT) ]
   , poverrideLit = [ ('&', CACHE_JEWELRY), ('0', S_LAMP_POST)
-                   , ('f', S_FLOOR_ACTOR_LIT) ]
+                   , ('f', BUSH_GROVE_LIT), ('a', S_FLOOR_ACTOR_LIT) ]
   }
 colonnade = PlaceKind
   { psymbol  = 'c'
@@ -595,7 +595,7 @@ smokeClump3FGround = smokeClump
 bushClump = PlaceKind
   { psymbol  = 'b'
   , pname    = "a bushy patch"
-  , pfreq    = [(SHOOTOUT, 100)]
+  , pfreq    = [(SHOOTOUT, 100), (EMPTY, 60)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -618,9 +618,9 @@ escapeDown = PlaceKind
   , ptopLeft = [ ">"
                ]
   , poverrideDark = [ ('g', S_FROZEN_PATH) , ('0', S_LAMP_POST), ('b', BARREL)
-                    , ('f', S_FLOOR_ACTOR_LIT), ('r', RUBBLE_OR_WASTE_DARK) ]
+                    , ('a', S_FLOOR_ACTOR_LIT), ('r', RUBBLE_OR_WASTE_DARK) ]
   , poverrideLit = [ ('g', S_FROZEN_PATH), ('0', S_LAMP_POST), ('b', BARREL)
-                   , ('f', S_FLOOR_ACTOR_LIT), ('r', RUBBLE_OR_WASTE_LIT) ]
+                   , ('a', S_FLOOR_ACTOR_LIT), ('r', RUBBLE_OR_WASTE_LIT) ]
   }
 escapeDown2 = escapeDown
   { pfreq    = [(INDOOR_ESCAPE_DOWN, 200)]
@@ -690,10 +690,10 @@ escapeDown9 = escapeDown
   { pfreq    = [(INDOOR_ESCAPE_DOWN, 1000)]
   , pcover   = CMirror
   , pfence   = FFloor
-  , ptopLeft = [ "·f·#"
-               , "%f>·"
-               , "%0f·"
-               , "ff%%"
+  , ptopLeft = [ "·a·#"
+               , "%a>·"
+               , "%0a·"
+               , "aa%%"
                ]
   }
 staircase = PlaceKind
@@ -1188,7 +1188,7 @@ oval = PlaceKind
   { psymbol  = 'o'
   , pname    = "a dome"
   , pfreq    = [ (ROGUE, 20000), (ARENA, 30000), (MUSEUM, 30000)
-               , (LABORATORY, 50000), (EMPTY, 4000), (EXIT, 5000)
+               , (LABORATORY, 50000), (EMPTY, 3000), (EXIT, 5000)
                , (AMBUSH, 20000) ]
   , prarity  = [(1, 1)]
   , pcover   = CStretch
@@ -1205,6 +1205,7 @@ oval = PlaceKind
                     , ('a', SAFE_TRAIL_LIT)
                     , ('1', STUCK_DOOR)
                     , ('2', TRAPPED_DOOR)
+                    , ('T', S_TREE_LIT)
                     , ('~', S_POOL_DARK)
                     , (';', S_UNDERBRUSH_DARK) ]
   , poverrideLit = [ ('t', TRAIL_LIT)
@@ -1213,12 +1214,13 @@ oval = PlaceKind
                    , ('a', SAFE_TRAIL_LIT)
                    , ('2', STUCK_DOOR)  -- reversed vs dark
                    , ('1', TRAPPED_DOOR)
+                   , ('T', S_TREE_LIT)
                    , ('~', S_POOL_LIT)
                    , (';', S_UNDERBRUSH_LIT) ]
   }
 ovalFloor = oval
   { pfreq    = [ (ROGUE, 150000), (ARENA, 60000), (MUSEUM, 60000)
-               , (LABORATORY, 100000), (EMPTY, 10000), (EXIT, 5000)
+               , (LABORATORY, 100000), (EMPTY, 20000), (EXIT, 5000)
                , (AMBUSH, 100000) ]
   , pfence   = FGround
   , ptopLeft = [ "aXXX##"
@@ -1230,7 +1232,10 @@ ovalFloor = oval
                ]
   }
 ovalSquare = oval
-  { pfence   = FGround
+  { pfreq    = [ (ROGUE, 20000), (ARENA, 30000), (MUSEUM, 30000)
+               , (LABORATORY, 50000), (EMPTY, 8000), (EXIT, 5000)
+               , (AMBUSH, 20000) ]
+  , pfence   = FGround
   , ptopLeft = [ "X###+"
                , "##···"
                , "#··;;"
@@ -1241,7 +1246,7 @@ ovalSquare = oval
 ovalBasin = oval
   { pname    = "a water basin"
   , pfreq    = [ (ROGUE, 100000), (ARENA, 200000), (LABORATORY, 200000)
-               , (EMPTY, 20000) ]
+               , (EMPTY, 15000) ]
   , pfence   = FGround
   , ptopLeft = [ "XXX1##"
                , "X###··"
@@ -1254,7 +1259,7 @@ ovalBasin = oval
 ovalBasin2 = oval
   { pname    = "a water basin"
   , pfreq    = [ (ROGUE, 600), (ARENA, 10000), (LABORATORY, 3000)
-               , (EMPTY, 800) ]
+               , (EMPTY, 700) ]
   , pfence   = FWall
   , ptopLeft = [ "#···"
                , "··~~"
@@ -1275,13 +1280,13 @@ squareBasin = oval
   }
 squareBasin2 = oval
   { pname    = "a water basin"
-  , pfreq    = [(ARENA, 100000), (EMPTY, 12000)]
+  , pfreq    = [(ARENA, 100000), (EMPTY, 20000)]
       -- can't do LABORATORY, because barrels might block corridors
   , pfence   = FNone
-  , ptopLeft = [ "0;0;;;"
+  , ptopLeft = [ "T;T;;;"
                , ";~~~~~"
-               , "0~~~~~"
-               , ";~~b~~"
+               , "T~~~~~"
+               , ";~~0~~"
                , ";~~~~~"
                , "b~~~~~"
                ]
@@ -1313,27 +1318,39 @@ maze = PlaceKind
                     , ('&', CACHE_MAZE)
                     , ('p', TRAPPED_DOOR)
                     , ('i', FLOOR_ACTOR_ITEM)  -- lit or not, randomly
+                    , ('f', BUSH_GROVE_DARK)
+                    , (';', S_UNDERBRUSH_DARK)
                     , ('$', TRAPPABLE_WALL) ]
   , poverrideLit = [ ('·', OILY_FLOOR_LIT)
                    , ('&', CACHE_MAZE)
                    , ('p', TRAPPED_DOOR)
                    , ('i', FLOOR_ACTOR_ITEM)  -- lit or not, randomly
+                   , ('f', BUSH_GROVE_LIT)
+                   , (';', S_UNDERBRUSH_LIT)
                    , ('$', TRAPPABLE_WALL) ]
   }
 maze2 = maze
-  { pfreq    = [ (ROGUE, 180), (LABORATORY, 12000), (ARENA, 6)
-               , (MUSEUM, 6), (EXIT, 300) ]
+  { pfreq    = [ (ROGUE, 120), (LABORATORY, 12000), (ARENA, 4)
+               , (MUSEUM, 4), (EXIT, 200) ]
   , ptopLeft = [ "#·%%·"
                , "·%··#"
                , "···#·"
                ]
   }
 maze3 = maze
+  { pfreq    = [ (ROGUE, 120), (LABORATORY, 1000), (ARENA, 8)
+               , (MUSEUM, 4), (EMPTY, 300), (EXIT, 100) ]
+  , ptopLeft = [ "#·ff·"
+               , "·f··#"
+               , "···#;"
+               ]
+  }
+maze4 = maze
   { pfreq    = [ (ROGUE, 300), (LABORATORY, 15000), (ARENA, 9)
                , (EXIT, 300) ]
   , ptopLeft = [ "##·##·"
                , "#·#··#"
-               , "~·%···"
+               , "~·f···"
                ]
   }
 mazeBig = maze
