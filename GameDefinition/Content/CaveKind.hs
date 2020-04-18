@@ -175,7 +175,7 @@ arena = rogue
                     , (IK.AQUATIC, 10) ]
   , citemNum      = 9 `d` 4  -- few rooms
   , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 20)
-                    , (IK.TREASURE, 40), (GARDENING_TOOL, 300)
+                    , (IK.TREASURE, 40), (GARDENING_TOOL, 500)
                     , (IK.ANY_SCROLL, 40), (IK.EXPLOSIVE, 40) ]
   , cplaceFreq    = [(ARENA, 1)]
   , cpassable     = True
@@ -397,7 +397,7 @@ outermost = empty
       -- abused, because they spawn less and less often and also HP doesn't
       -- effectively accumulate over max.
   , citemFreq     = [ (IK.COMMON_ITEM, 50), (IK.CRAWL_ITEM, 50)
-                    , (GARDENING_TOOL, 700) ]
+                    , (GARDENING_TOOL, 600) ]
   , cfenceTileN   = ORIELS_FENCE
   , cfenceTileE   = HABITAT_CONTAINMENT_WALL
   , cfenceTileS   = EMPTY_AIRLOCK_FENCE
@@ -422,7 +422,7 @@ bridge = rogue
                          -- this is initially the best level for sleeping
   , cactorFreq    = [(ANIMAL, 100)]
   , citemNum      = 10 `d` 3  -- lure them in with loot
-  , citemFreq     = [(IK.COMMON_ITEM, 100), (GARDENING_TOOL, 700)]
+  , citemFreq     = [(IK.COMMON_ITEM, 100), (GARDENING_TOOL, 600)]
   , cdefTile      = FILLER_WALL
   , cfenceTileN   = HABITAT_CONTAINMENT_WALL  -- cave isolated for safety
   , cfenceTileE   = HABITAT_CONTAINMENT_WALL
@@ -529,7 +529,7 @@ shootout = rogue  -- a scenario with strong missiles;
   , citemNum      = 6 `d` 16
                       -- less items in inventory, more to be picked up,
                       -- to reward explorer and aggressor and punish camper
-  , citemFreq     = [ (IK.COMMON_ITEM, 30), (GARDENING_TOOL, 300)
+  , citemFreq     = [ (IK.COMMON_ITEM, 30), (GARDENING_TOOL, 500)
                     , (ANY_ARROW, 400), (HARPOON, 300), (IK.EXPLOSIVE, 50) ]
                       -- Many consumable buffs are needed in symmetric maps
                       -- so that aggressor prepares them in advance and camper

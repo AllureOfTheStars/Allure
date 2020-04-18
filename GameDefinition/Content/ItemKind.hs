@@ -360,7 +360,7 @@ harpoon2 = harpoon
   }
 harpoon3 = harpoon
   { iname    = "whaling harpoon"
-  , ifreq    = [(TREASURE, 100), (MUSEAL, 100)]
+  , ifreq    = [(TREASURE, 25), (MUSEAL, 100)]
   , iflavour = zipFancy [Red]
   , irarity  = [(8, 4)]
   , idamage  = 8 `d` 1
@@ -687,7 +687,7 @@ potion1 = potionTemplate
                , OnSmash ApplyPerfume, OnSmash (Explode S_FRAGRANCE) ]
   }
 potion2 = potionTemplate
-  { ifreq    = [(CRAWL_ITEM, 100), (ANY_GLASS, 20)]
+  { ifreq    = [(CRAWL_ITEM, 50), (ANY_GLASS, 20)]
   , icount   = 1
   , irarity  = [(5, 4), (10, 4)]
   , iaspects = [ SetFlag Unique, ELabel "of Attraction"
@@ -755,7 +755,7 @@ potion7 = potionTemplate
       -- not fragmentation nor glass hail, because not enough glass
   }
 potion8 = potionTemplate
-  { ifreq    = [(CRAWL_ITEM, 100), (ANY_GLASS, 20)]
+  { ifreq    = [(CRAWL_ITEM, 50), (ANY_GLASS, 20)]
   , icount   = 1
   , irarity  = [(10, 3)]
   , iaspects = [ SetFlag Unique, ELabel "of Love"
@@ -882,7 +882,7 @@ scroll1 = scrollTemplate
   }
 scroll2 = scrollTemplate
   { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(1, 4)]
+  , irarity  = [(1, 8)]
   , ieffects = [Ascend True]
   }
 scroll3 = scrollTemplate
@@ -927,7 +927,7 @@ scroll7 = scrollTemplate
   , ieffects = [PolyItem `AndEffect` Explode S_FIRECRACKER]
   }
 scroll8 = scrollTemplate
-  { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 40)]
+  { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 20)]
   , icount   = 1
   , irarity  = [(10, 6)]
   , iaspects = [SetFlag Unique, ELabel "of Skeleton Key"]
@@ -1363,7 +1363,7 @@ iaspects_necklaceTemplate =
   , toVelocity 50 ]  -- not dense enough
 gorget = necklaceTemplate
   { iname    = "Old Gorget"
-  , ifreq    = [(TREASURE, 100), (MUSEAL, 100)]
+  , ifreq    = [(TREASURE, 50), (MUSEAL, 100)]
   , iflavour = zipFancy [BrCyan]  -- looks exactly the same as one of necklaces,
                                   -- but it's OK, it's an artifact
   , iaspects = [ SetFlag Unique
@@ -1397,8 +1397,8 @@ necklaceTemplate = ItemKind
   , ikit     = []
   }
 necklace1 = necklaceTemplate
-  { ifreq    = [(CRAWL_ITEM, 100), (ANY_JEWELRY, 50)]
-  , irarity  = [(3 * 10/15, 0), (4 * 10/15, 1), (10, 2)]
+  { ifreq    = [(CRAWL_ITEM, 25), (ANY_JEWELRY, 25)]
+  , irarity  = [(3 * 10/15, 0), (4 * 10/15, 1), (10, 5)]
                  -- prevents camping on lvl 3
   , iaspects = [ SetFlag Unique, ELabel "of Spur Life"
                , Timeout $ (4 - 1 `dL` 3) * 10
@@ -1507,7 +1507,7 @@ imageItensifier = ItemKind
   , ifreq    = [(TREASURE, 100), (ADD_NOCTO_1, 80), (MUSEAL, 100)]
   , iflavour = zipFancy [BrGreen]
   , icount   = 1
-  , irarity  = [(5, 6)]
+  , irarity  = [(5, 4)]
   , iverbHit = "rattle"
   , iweight  = 700
   , idamage  = 0
@@ -1601,7 +1601,7 @@ ring5 = ringTemplate
   }
 ring6 = ringTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
-  , irarity  = [(5, 4)]
+  , irarity  = [(5, 5)]
   , iaspects = [ AddSkill SkHurtMelee $ (1 + 1 `d` 3 + (1 `dL` 2) * 2 ) * 5
                , AddSkill SkMaxHP (-10)
                , AddSkill SkArmorMelee (-10)
@@ -1632,7 +1632,7 @@ ring9 = ringTemplate
   , idesc    = "This mil-grade communication equipment feeds the aggregated enemy position information to the wearer, even when he is not the pointman of the team and so the team is not intentionally spotting for him. With proper training this permits ranged attacks, even indirect fire, without neglecting the simultaneous squad doctrine obligation of covering the approach of the pointman."
   }
 ring10 = ringTemplate
-  { ifreq    = [(TREASURE, 100), (ANY_JEWELRY, 50)]
+  { ifreq    = [(TREASURE, 50), (ANY_JEWELRY, 50)]
   , irarity  = [(10, 4)]
   , iaspects = [ SetFlag Unique, ELabel "of Overwatch"
                , AddSkill SkProject 8  -- TODO: 11, but let player control
@@ -1735,7 +1735,7 @@ spacesuit = ItemKind
 spacesuitTorn = spacesuit
   { iname    = "torn spacesuit"
   , ifreq    = [(CRAWL_ITEM, 100), (S_SPACESUIT_TORN, 1)]
-  , irarity  = [(1, 9)]
+  , irarity  = [(1, 11)]
   , iverbHit = "entangle"
   , iweight  = 10000
   , iaspects = [ AddSkill SkHurtMelee (-30)
@@ -1771,7 +1771,7 @@ gloveGauntlet = gloveFencing
   , ifreq    = [ (COMMON_ITEM, 100), (S_SPACESUIT_GLOVE, 1)
                , (SPACESUIT_PART, 2), (ARMOR_MISC, 1), (STARTING_ARMOR, 50) ]
   , iflavour = zipFancy [White]
-  , irarity  = [(1, 9), (5 * 10/15, 9), (6 * 10/15, 1)]
+  , irarity  = [(1, 10), (5 * 10/15, 10), (6 * 10/15, 1)]
   , iverbHit = "mow"
   , iweight  = 500
   , idamage  = 3 `d` 1
@@ -1890,10 +1890,10 @@ heavyBoot = ItemKind
 ragTangle = sandstoneRock
   { isymbol  = symbolClothes
   , iname    = "tangle"
-  , ifreq    = [ (COMMON_ITEM, 50), (S_RAG_TANGLE, 1), (THICK_CLOTH, 1)
+  , ifreq    = [ (COMMON_ITEM, 10), (S_RAG_TANGLE, 1), (THICK_CLOTH, 1)
                , (UNREPORTED_INVENTORY, 1) ]
   , iflavour = zipPlain [Brown]
-  , irarity  = [(1, 3)]  -- crafted, so rare
+  , irarity  = [(1, 10)]  -- crafted, so rare
   , iverbHit = "touch"
   , iweight  = 200
   , idamage  = 0
@@ -2080,7 +2080,7 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
                  -- a very aggressive weapon, bad for defense even when long
   , iflavour = zipFancy [BrMagenta]  -- avoid "pink"
   , icount   = 1
-  , irarity  = [(1, 2), (3, 2), (7, 18), (9, 1)]
+  , irarity  = [(1, 2), (3, 2), (7, 20), (9, 1)]
                  -- not too common on lvl 3 and late, when crafting done already
   , iverbHit = "club"
   , iweight  = 4000
@@ -2102,7 +2102,7 @@ hammer1 = hammerTemplate  -- 1m handle, blunt
   , ieffects = [RefillHP (-4)]
   }
 hammer2 = hammerTemplate  -- 0.75m handle, sharp
-  { ifreq    = [(COMMON_ITEM, 10), (STARTING_WEAPON, 10), (STARTING_HAMMER, 5)]
+  { ifreq    = [(COMMON_ITEM, 10), (STARTING_WEAPON, 5), (STARTING_HAMMER, 5)]
   , irarity  = [(1, 4), (3, 4), (7, 40)]
                  -- common early, since not a guaranteed drop;
                  -- common also late, because not crafted
@@ -2114,8 +2114,8 @@ hammer2 = hammerTemplate  -- 0.75m handle, sharp
   , idesc    = "Upon closer inspection, this hammer, or pick, turns out particularly well balanced. The profiled handle seamlessly joins the head, which focuses the blow at a sharp point, compensating for the tool's modest size."
   }
 hammer3 = hammerTemplate  -- 2m pole, blunt
-  { ifreq    = [ (COMMON_ITEM, 5), (BONDING_TOOL, 1), (POLE_AND_STEEL, 1)
-               , (STARTING_WEAPON, 5), (S_BLUNT_LONG_HAMMER, 1) ]
+  { ifreq    = [ (COMMON_ITEM, 4), (BONDING_TOOL, 1), (POLE_AND_STEEL, 1)
+               , (STARTING_WEAPON, 2), (S_BLUNT_LONG_HAMMER, 1) ]
   , iweight  = 6000  -- pole weight almost gives it away
   , iaspects = [Timeout 15]
                ++ iaspects hammerTemplate
@@ -2123,8 +2123,8 @@ hammer3 = hammerTemplate  -- 2m pole, blunt
   , idesc    = "This hammer sports a long pole that increases the momentum of the blunt head's swing, at the cost of long recovery. It's capable of smashing objects together, though the required careful positioning often means hands are smashed as well."
   }
 hammer4 = hammer1  -- 1m handle, sharp
-  { ifreq    = [ (COMMON_ITEM, 5), (HANDLE_AND_STEEL, 1)
-               , (STARTING_WEAPON, 5), (S_SHARP_SHORT_HAMMER, 1) ]
+  { ifreq    = [ (COMMON_ITEM, 4), (HANDLE_AND_STEEL, 1)
+               , (STARTING_WEAPON, 2), (S_SHARP_SHORT_HAMMER, 1) ]
   , iverbHit = "cleave"
   , idamage  = 4 `d` 1
   , idesc    = "This hammer's head has it's protruding edges sharpened. Otherwise, it's pretty ordinary."
@@ -2174,7 +2174,7 @@ knife = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 200), (S_CLEAVER, 1)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(1, 3), (3, 3), (5, 25), (9, 1)]
+  , irarity  = [(1, 3), (3, 3), (5, 30), (9, 1)]
                  -- useful initially and for crafting mid-game
   , iverbHit = "cut"
   , iweight  = 1000
@@ -2192,7 +2192,7 @@ knife = ItemKind
 daggerDropBestWeapon = knife
   { iname    = "Double Dagger"
   , ifreq    = [(TREASURE, 40), (MUSEAL, 100)]
-  , irarity  = [(1, 3), (10, 3)]
+  , irarity  = [(1, 3), (10, 2)]
   , iaspects = [SetFlag Unique]
                ++ iaspects knife
   , ieffects = [DropBestWeapon, Yell]  -- powerful and low timeout, but makes
@@ -2201,7 +2201,7 @@ daggerDropBestWeapon = knife
   }
 dagger = knife
   { iname    = "dagger"
-  , ifreq    = [(COMMON_ITEM, 5), (S_DAGGER, 1), (STARTING_WEAPON, 5)]
+  , ifreq    = [(COMMON_ITEM, 4), (S_DAGGER, 1), (STARTING_WEAPON, 4)]
   , iverbHit = "open"
   , irarity  = [(7, 20)]  -- like hammer, not knife, to prevent excess
   , idamage  = 7 `d` 1
@@ -2210,11 +2210,11 @@ dagger = knife
 sword = ItemKind
   { isymbol  = symbolPolearm
   , iname    = "sharpened pipe"
-  , ifreq    = [ (COMMON_ITEM, 5), (STARTING_WEAPON, 30)
+  , ifreq    = [ (COMMON_ITEM, 4), (STARTING_WEAPON, 30)
                , (S_SHARPENED_PIPE, 1) ]
   , iflavour = zipFancy [BrBlue]
   , icount   = 1
-  , irarity  = [(3, 1), (6, 20)]
+  , irarity  = [(3, 1), (6, 15)]
   , iverbHit = "stab"
   , iweight  = 2000
   , idamage  = 10 `d` 1  -- with high melee bonus, better than a good hammer
@@ -2229,7 +2229,7 @@ swordImpress = sword
   { isymbol  = symbolEdged
   , iname    = "Master's Sword"
   , ifreq    = [(TREASURE, 40), (MUSEAL, 100)]
-  , irarity  = [(5, 1), (8, 7)]
+  , irarity  = [(5, 1), (8, 6)]
   , iverbHit = "slash"
   , iaspects = [SetFlag Unique]
                ++ iaspects sword
@@ -2239,9 +2239,9 @@ swordImpress = sword
 swordNullify = sword
   { isymbol  = symbolEdged
   , iname    = "Blunt Roasting Rapier"
-  , ifreq    = [(TREASURE, 40), (S_RAPIER_BLUNT, 1)]
+  , ifreq    = [(TREASURE, 50), (S_RAPIER_BLUNT, 1)]
   , iverbHit = "pierce"
-  , irarity  = [(5, 1), (8, 7)]
+  , irarity  = [(5, 1), (8, 6)]
   , idamage  = 7 `d` 1  -- as dagger, but upgradeable and no skill bonus
   , iaspects = [ SetFlag Unique, Timeout 3, EqpSlot EqpSlotWeaponFast
                , SetFlag Durable, SetFlag Meleeable
@@ -2385,7 +2385,7 @@ cattleProd = militaryBaton
   { iname    = "electric cattle prod"
   , ifreq    = [(COMMON_ITEM, 100)]
   , iflavour = zipPlain [Brown]
-  , irarity  = [(8, 7)]
+  , irarity  = [(8, 5)]
   , idamage  = 2 `d` 1
   , ieffects = [Discharge $ 40 - 1 `d` 20, RefillCalm (-30)]
   , idesc    = "Used for subduing unruly zoo animals."
@@ -2476,7 +2476,7 @@ treePruner = grassStitcher
   { iname    = "long reach tree pruner"
   , ifreq    = [(COMMON_ITEM, 100), (POLE_AND_STEEL, 1)]
   , iflavour = zipFancy [BrRed]
-  , irarity  = [(8, 12)]
+  , irarity  = [(5, 8)]
   , iweight  = 4500
   , idamage  = 3 `d` 1
   , iaspects = [ Timeout 10
@@ -2492,7 +2492,7 @@ cleaningPole = grassStitcher
   { iname    = "window cleaning pole"
   , ifreq    = [(COMMON_ITEM, 100), (POLE_AND_STEEL, 1)]
   , iflavour = zipPlain [Blue]
-  , irarity  = [(8, 8)]
+  , irarity  = [(8, 6)]
   , iweight  = 3500
   , idamage  = 2 `d` 1
   , iaspects = [ AddSkill SkArmorMelee 10  -- not sharp, so weaker
@@ -2543,7 +2543,7 @@ gemTemplate = ItemKind
   , ifreq    = [(GEM_UNKNOWN, 1), (VALUABLE, 100)]
   , iflavour = zipPlain $ delete BrYellow brightCol  -- natural, so not fancy
   , icount   = 1
-  , irarity  = [(3, 0), (10, 24)]
+  , irarity  = []
   , iverbHit = "tap"
   , iweight  = 50
   , idamage  = 0
@@ -2562,24 +2562,24 @@ gem1 = gemTemplate
                ++ iaspects gemTemplate
   }
 gem2 = gem1
-  { ifreq    = [ (TREASURE, 100), (GEM, 100), (ANY_JEWELRY, 100)
+  { ifreq    = [ (TREASURE, 150), (GEM, 100), (ANY_JEWELRY, 100)
                , (VALUABLE, 100) ]
   , irarity  = [(5, 0), (7, 25), (10, 8)]
   }
 gem3 = gem1
-  { ifreq    = [ (TREASURE, 100), (GEM, 100), (ANY_JEWELRY, 100)
+  { ifreq    = [ (TREASURE, 150), (GEM, 100), (ANY_JEWELRY, 100)
                , (VALUABLE, 100) ]
   , irarity  = [(7, 0), (8, 20), (10, 8)]
   }
 gem4 = gem1
-  { ifreq    = [ (TREASURE, 100), (GEM, 100), (ANY_JEWELRY, 100)
+  { ifreq    = [ (TREASURE, 150), (GEM, 100), (ANY_JEWELRY, 100)
                , (VALUABLE, 100) ]
-  , irarity  = [(9, 0), (10, 70)]
+  , irarity  = [(9, 0), (10, 40)]
   }
 gem5 = gem1
   { isymbol  = symbolSpecial
   , iname    = "stimpack"
-  , ifreq    = [ (TREASURE, 100), (GEM, 25), (ANY_JEWELRY, 10)
+  , ifreq    = [ (TREASURE, 200), (GEM, 25), (ANY_JEWELRY, 10)
                , (VALUABLE, 100) ]
   , iflavour = zipPlain [BrYellow]
   , irarity  = [(1, 40), (10, 10)]
