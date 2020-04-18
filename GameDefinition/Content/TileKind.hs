@@ -1411,23 +1411,36 @@ workshop = TileKind  -- always lit
 -- * Helper functions
 
 makeDark :: TileKind -> TileKind
-makeDark k = let darkText :: GroupName TileKind -> GroupName TileKind
-                 darkText t = maybe t (GroupName . (<> "Dark"))
-                              $ T.stripSuffix "Lit" $ fromGroupName t
-                 darkFrequency = map (first darkText) $ tfreq k
-                 darkFeat (OpenTo t) = Just $ OpenTo $ darkText t
-                 darkFeat (CloseTo t) = Just $ CloseTo $ darkText t
-                 darkFeat (ChangeTo t) = Just $ ChangeTo $ darkText t
+makeDark k = let darkenText :: GroupName TileKind -> GroupName TileKind
+                 darkenText t = maybe t (GroupName . (<> "Dark"))
+                                $ T.stripSuffix "Lit" $ fromGroupName t
+                 darkenFreq :: (GroupName TileKind, Int)
+                            -> [(GroupName TileKind, Int)]
+                 darkenFreq (t, n) =
+                   case T.stripSuffix "Lit" $ fromGroupName t of
+                     Nothing -> [(t, n)]
+                     Just stripped ->
+                       let dark = GroupName $ stripped <> "Dark"
+                       in if isJust $ dark `lookup` darkFreq
+                          then []  -- lit plays the role of dark in this group
+                          else [(dark, n)]
+                 (darkFreq, notDarkFreq) =
+                   partition (T.isSuffixOf "Dark" . fromGroupName . fst)
+                             (tfreq k)
+                 darkFrequency = concatMap darkenFreq notDarkFreq
+                 darkFeat (OpenTo t) = Just $ OpenTo $ darkenText t
+                 darkFeat (CloseTo t) = Just $ CloseTo $ darkenText t
+                 darkFeat (ChangeTo t) = Just $ ChangeTo $ darkenText t
                  darkFeat (OpenWith proj grps t) =
-                   Just $ OpenWith proj grps $ darkText t
+                   Just $ OpenWith proj grps $ darkenText t
                  darkFeat (CloseWith proj grps t) =
-                   Just $ CloseWith proj grps $ darkText t
+                   Just $ CloseWith proj grps $ darkenText t
                  darkFeat (ChangeWith proj grps t) =
-                   Just $ ChangeWith proj grps $ darkText t
-                 darkFeat (HideAs t) = Just $ HideAs $ darkText t
-                 darkFeat (BuildAs t) = Just $ BuildAs $ darkText t
-                 darkFeat (RevealAs t) = Just $ RevealAs $ darkText t
-                 darkFeat (ObscureAs t) = Just $ ObscureAs $ darkText t
+                   Just $ ChangeWith proj grps $ darkenText t
+                 darkFeat (HideAs t) = Just $ HideAs $ darkenText t
+                 darkFeat (BuildAs t) = Just $ BuildAs $ darkenText t
+                 darkFeat (RevealAs t) = Just $ RevealAs $ darkenText t
+                 darkFeat (ObscureAs t) = Just $ ObscureAs $ darkenText t
                  darkFeat VeryOftenItem = Just OftenItem
                  darkFeat OftenItem = Nothing  -- items not common in the dark
                  darkFeat feat = Just feat
