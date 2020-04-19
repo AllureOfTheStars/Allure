@@ -860,7 +860,7 @@ floorActorItem = floorActor
 floorAshes = floorActor  -- always lit
   { tfreq    = [ (SMOKE_CLUMP_LIT, 1), (SMOKE_CLUMP_DARK, 1)
                , (S_FLOOR_ASHES_LIT, 1), (S_FLOOR_ASHES_DARK, 1)
-               , (ASHES_SMOKE_LIT, 5), (ASHES_SMOKE_DARK, 5)
+               , (ASHES_SMOKE_LIT, 2), (ASHES_SMOKE_DARK, 5)
                , (RUBBLE_BURNING_OR_NOT, 25) ]
   , tname    = "dirt and ash pile"
   , tcolor   = Brown

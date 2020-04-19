@@ -635,7 +635,7 @@ flask16 = flaskTemplate
   , ifreq    = [ (COMMON_ITEM, 100), (S_ROSE_WATER_FLASK, 1)
                , (EXPLOSIVE, 100), (ANY_GLASS, 100), (WATER_SOURCE, 1) ]
   , icount   = 1
-  , irarity  = [(1, 1)]  -- mostly obtained through crafting
+  , irarity  = [(1, 3)]  -- mostly obtained through crafting
   , iaspects = ELabel "of rose water"
                : iaspects flaskTemplate
   , ieffects = [ Impress, toOrganGood S_ROSE_SMELLING (100 + 1 `d` 20)
@@ -687,7 +687,7 @@ potion1 = potionTemplate
                , OnSmash ApplyPerfume, OnSmash (Explode S_FRAGRANCE) ]
   }
 potion2 = potionTemplate
-  { ifreq    = [(CRAWL_ITEM, 50), (ANY_GLASS, 20)]
+  { ifreq    = [(CRAWL_ITEM, 50), (ANY_GLASS, 50)]
   , icount   = 1
   , irarity  = [(5, 4), (10, 4)]
   , iaspects = [ SetFlag Unique, ELabel "of Attraction"
@@ -755,7 +755,7 @@ potion7 = potionTemplate
       -- not fragmentation nor glass hail, because not enough glass
   }
 potion8 = potionTemplate
-  { ifreq    = [(CRAWL_ITEM, 50), (ANY_GLASS, 20)]
+  { ifreq    = [(CRAWL_ITEM, 50), (ANY_GLASS, 50)]
   , icount   = 1
   , irarity  = [(10, 3)]
   , iaspects = [ SetFlag Unique, ELabel "of Love"
@@ -872,7 +872,7 @@ scrollTemplate = ItemKind
   , ikit     = []
   }
 scroll1 = scrollTemplate
-  { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 20)]
+  { ifreq    = [(CRAWL_ITEM, 75), (ANY_SCROLL, 75)]
   , icount   = 1
   , irarity  = [(5, 5), (10, 5)]  -- mixed blessing, so found early for a unique
   , iaspects = [SetFlag Unique, ELabel "of Reckless Beacon"]
@@ -927,7 +927,7 @@ scroll7 = scrollTemplate
   , ieffects = [PolyItem `AndEffect` Explode S_FIRECRACKER]
   }
 scroll8 = scrollTemplate
-  { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 20)]
+  { ifreq    = [(CRAWL_ITEM, 75), (ANY_SCROLL, 75)]
   , icount   = 1
   , irarity  = [(10, 6)]
   , iaspects = [SetFlag Unique, ELabel "of Skeleton Key"]
