@@ -809,7 +809,7 @@ doorOpen = TileKind  -- fireproof
   , tcolor2  = BrBlack
   , talter   = 4
   , tfeature = [ Walkable, Clear, NoItem, NoActor
-               , CloseTo S_CLOSED_DOOR
+               , CloseTo S_CLOSED_DOOR  -- not explorable due to that
                ]
   }
 floorCorridor = TileKind
