@@ -630,10 +630,9 @@ flask15 = flaskTemplate
                , toOrganBad S_SLOWED (3 + 1 `d` 3)
                , OnSmash (Explode S_FOCUSED_SLOWNESS_MIST) ]
   }
-flask16 = flaskTemplate
-  { iname    = "galon"  -- diluted perfume; almost same effects
-  , ifreq    = [ (COMMON_ITEM, 100), (S_ROSE_WATER_FLASK, 1)
-               , (EXPLOSIVE, 100), (ANY_GLASS, 100), (WATER_SOURCE, 1) ]
+flask16 = flaskTemplate  -- diluted perfume; almost same effects
+  { ifreq    = [ (COMMON_ITEM, 100), (S_ROSE_WATER_FLASK, 1)
+               , (EXPLOSIVE, 100), (ANY_GLASS, 100) ]
   , icount   = 1
   , irarity  = [(1, 3)]  -- mostly obtained through crafting
   , iaspects = ELabel "of rose water"
@@ -977,10 +976,10 @@ scroll15 = scrollTemplate
 scrollAd1 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , icount   = 1
-  , irarity  = [(1, 1)]  -- not every playthrough needs one
+  , irarity  = [(1, 3)]
   , iaspects = [ELabel "of tourist guide"]
                ++ iaspects scrollTemplate
-  , ieffects = [ Impress
+  , ieffects = [ Impress  -- mostly flavour, but this is useful
                , toOrganGood S_RESOLUTE (500 + 1 `d` 200)
                    -- a drawback (at least initially) due to @calmEnough@
                , Explode S_RHINO_HOLOGRAM

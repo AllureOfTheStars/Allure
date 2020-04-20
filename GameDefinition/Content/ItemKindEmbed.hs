@@ -962,8 +962,8 @@ waterEffect :: Effect
 waterEffect = combineEffect "lack a sharpening tool or a weapon to sharpen or an item to fill with water"
               $ map (\(tools, raw, cooked) ->
                       (tools, [(1, raw)], [(1, cooked)])) sharpeningAssocs
-                ++ [ ( [(1, PERFUME)], [(1, S_EMPTY_FLASK)]
-                     , [(1, S_ROSE_WATER_FLASK)] )
+                ++ [ ( [(1, PERFUME)], [(5, S_EMPTY_FLASK)]
+                     , [(5, S_ROSE_WATER_FLASK)] )
                    , ( [], [(1, S_EMPTY_FLASK)]
                      , [(1, S_WATER_FLASK)] ) ]
 
@@ -1028,5 +1028,6 @@ workshopAssocs =
   , ( [(1, BREACHING_TOOL)], [(1, POLE_AND_STEEL)]  -- harder to dismantle
     , [(1, POLE), (1, STEEL_SCRAP)] )
       -- this rule magically changes stiff poles into jumping poles; who cares
-  , ([(1, PERFUME)], [(1, WATER_SOURCE)], [(5, S_ROSE_WATER_FLASK)])
+  , ( [(1, PERFUME)], [(1, WATER_SOURCE), (5, S_EMPTY_FLASK)]
+    , [(6, S_ROSE_WATER_FLASK)] )  -- the extra container is from water source
   ]
