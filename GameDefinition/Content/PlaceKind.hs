@@ -599,9 +599,9 @@ bushClump = PlaceKind
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
-  , ptopLeft = [ "f;"
-               , ";X"  -- one sure exit needed not to block a corner
-               , ";f"
+  , ptopLeft = [ "f;X"  -- the third column is needed to prevent blockage
+               , ";Xf"
+               , ";fX"
                ]
   , poverrideDark = [('f', BUSH_CLUMP_DARK), (';', S_BUSH_LIT)]
   , poverrideLit = [('f', BUSH_CLUMP_LIT), (';', S_BUSH_LIT)]
