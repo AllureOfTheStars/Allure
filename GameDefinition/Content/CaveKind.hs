@@ -472,6 +472,7 @@ raid = rogue
                     , (LIGHT_MANIPULATION, 200), (STARTING_ARMOR, 100)
                     , (STARTING_WEAPON, 200), (IK.S_CURRENCY, 400)
                     , (IK.ANY_SCROLL, 200) ]  -- introducing chips in this cave
+  , cplaceFreq    = [(RAID, 1)]
   , cescapeFreq   = [(INDOOR_ESCAPE_UP, 1)]
   , cstairFreq    = []
   , cstairAllowed = []

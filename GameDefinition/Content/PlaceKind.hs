@@ -7,7 +7,7 @@
 -- | Room, hall and passage definitions.
 module Content.PlaceKind
   ( -- * Group name patterns
-    pattern ROGUE, pattern RESIDENTIAL, pattern LABORATORY, pattern ZOO, pattern BRAWL, pattern SHOOTOUT, pattern ARENA, pattern ESCAPE, pattern AMBUSH, pattern BATTLE, pattern NOISE, pattern EMPTY
+    pattern ROGUE, pattern RESIDENTIAL, pattern LABORATORY, pattern ZOO, pattern RAID, pattern BRAWL, pattern SHOOTOUT, pattern ARENA, pattern ESCAPE, pattern AMBUSH, pattern BATTLE, pattern NOISE, pattern EMPTY
   , pattern INDOOR_ESCAPE_DOWN, pattern INDOOR_ESCAPE_UP, pattern OUTDOOR_ESCAPE_DOWN, pattern TINY_STAIRCASE, pattern OPEN_STAIRCASE, pattern CLOSED_STAIRCASE, pattern WALLED_STAIRCASE, pattern GATED_TINY_STAIRCASE, pattern GATED_OPEN_STAIRCASE, pattern GATED_CLOSED_STAIRCASE, pattern OUTDOOR_TINY_STAIRCASE, pattern OUTDOOR_CLOSED_STAIRCASE, pattern OUTDOOR_WALLED_STAIRCASE
   , pattern MUSEUM, pattern EXIT
   , pattern TINY_LIFT, pattern OPEN_LIFT, pattern WALLED_LIFT, pattern CLOSED_LIFT, pattern ESCAPE_FROM_SPACESHIP_DOWN, pattern DECONTAMINATING_TINY_STAIRCASE, pattern DECONTAMINATING_OPEN_STAIRCASE, pattern DECONTAMINATING_WALLED_STAIRCASE, pattern DECONTAMINATING_TINY_LIFT, pattern DECONTAMINATING_OPEN_LIFT, pattern DECONTAMINATING_WALLED_LIFT, pattern GATED_TINY_LIFT, pattern GATED_OPEN_LIFT, pattern GATED_CLOSED_LIFT, pattern WELDED_TINY_LIFT, pattern WELDED_OPEN_LIFT, pattern WELDED_WALLED_LIFT, pattern WELDED_TINY_STAIRCASE, pattern WELDED_OPEN_STAIRCASE, pattern WELDED_WALLED_STAIRCASE
@@ -36,13 +36,13 @@ groupNamesSingleton = []
 -- group names, let's also add the generated group names to @groupNames@.
 groupNames :: [GroupName PlaceKind]
 groupNames =
-       [ROGUE, RESIDENTIAL, LABORATORY, ZOO, BRAWL, SHOOTOUT, ARENA, ESCAPE, AMBUSH, BATTLE, NOISE, EMPTY]
+       [ROGUE, RESIDENTIAL, LABORATORY, ZOO, RAID, BRAWL, SHOOTOUT, ARENA, ESCAPE, AMBUSH, BATTLE, NOISE, EMPTY]
     ++ [INDOOR_ESCAPE_DOWN, INDOOR_ESCAPE_UP, OUTDOOR_ESCAPE_DOWN, TINY_STAIRCASE, OPEN_STAIRCASE, CLOSED_STAIRCASE, WALLED_STAIRCASE]
     ++ [MUSEUM, EXIT]
     ++ [TINY_LIFT, OPEN_LIFT, WALLED_LIFT, CLOSED_LIFT, ESCAPE_FROM_SPACESHIP_DOWN]
     ++ fst generatedStairs
 
-pattern ROGUE, RESIDENTIAL, LABORATORY, ZOO, BRAWL, SHOOTOUT, ARENA, ESCAPE, AMBUSH, BATTLE, NOISE, EMPTY :: GroupName PlaceKind
+pattern ROGUE, RESIDENTIAL, LABORATORY, ZOO, RAID, BRAWL, SHOOTOUT, ARENA, ESCAPE, AMBUSH, BATTLE, NOISE, EMPTY :: GroupName PlaceKind
 
 pattern INDOOR_ESCAPE_DOWN, INDOOR_ESCAPE_UP, OUTDOOR_ESCAPE_DOWN, TINY_STAIRCASE, OPEN_STAIRCASE, CLOSED_STAIRCASE, WALLED_STAIRCASE, GATED_TINY_STAIRCASE, GATED_OPEN_STAIRCASE, GATED_CLOSED_STAIRCASE, OUTDOOR_TINY_STAIRCASE, OUTDOOR_CLOSED_STAIRCASE, OUTDOOR_WALLED_STAIRCASE :: GroupName PlaceKind
 
@@ -54,6 +54,7 @@ pattern ROGUE = GroupName "rogue"
 pattern RESIDENTIAL = GroupName "residential"
 pattern LABORATORY = GroupName "laboratory"
 pattern ZOO = GroupName "zoo"
+pattern RAID = GroupName "raid"
 pattern BRAWL = GroupName "brawl"
 pattern SHOOTOUT = GroupName "shootout"
 pattern ARENA = GroupName "arena"
@@ -186,7 +187,7 @@ deadEnd = PlaceKind  -- needs to have index 0
 rect = PlaceKind  -- Valid for any nonempty area, hence low frequency.
   { psymbol  = 'r'
   , pname    = "a room"
-  , pfreq    = [(ROGUE, 100), (LABORATORY, 10)]
+  , pfreq    = [(ROGUE, 100), (LABORATORY, 10), (RAID, 100)]
   , prarity  = [(1, 10), (10, 6)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -352,7 +353,7 @@ pillar2 = pillar
 pillar3 = pillar
   { pname    = "a court"
   , pfreq    = [ (ROGUE, 250), (ARENA, 15), (MUSEUM, 10)
-               , (LABORATORY, 200) ]
+               , (LABORATORY, 200), (RAID, 250) ]
   , ptopLeft = [ "#··"
                , "···"
                , "···"
@@ -361,7 +362,7 @@ pillar3 = pillar
 pillar4 = pillar
   { pname    = "a plaza"
   , pfreq    = [ (ROGUE, 1500), (ARENA, 5000)
-               , (MUSEUM, 4000), (LABORATORY, 1500) ]
+               , (MUSEUM, 4000), (LABORATORY, 1500), (RAID, 1500) ]
   , ptopLeft = [ "#·#·"
                , "····"
                , "#···"
@@ -401,7 +402,7 @@ colonnade = PlaceKind
   { psymbol  = 'c'
   , pname    = "a colonnade"
   , pfreq    = [ (ROGUE, 12), (NOISE, 1000), (ESCAPE, 200)
-               , (EXIT, 150) ]
+               , (EXIT, 150), (RAID, 12) ]
   , prarity  = [(1, 12), (10, 12)]
   , pcover   = CAlternate
   , pfence   = FFloor
@@ -412,7 +413,7 @@ colonnade = PlaceKind
   , poverrideLit = []
   }
 colonnade2 = colonnade
-  { pfreq    = [(ROGUE, 300)]
+  { pfreq    = [(ROGUE, 300), (RAID, 300)]
   , prarity  = [(1, 1)]
   , pfence   = FWall
   , ptopLeft = [ "#·"
@@ -428,7 +429,7 @@ colonnade3 = colonnade
   }
 colonnade4 = colonnade
   { prarity  = [(1, 1)]
-  , pfreq    = [(ROGUE, 1000)]
+  , pfreq    = [(ROGUE, 1000), (RAID, 1000)]
   , pfence   = FWall
   , ptopLeft = [ "#··"
                , "·#·"
@@ -1168,7 +1169,7 @@ pumps = PlaceKind
   { psymbol  = 'w'
   , pname    = "water pumps"
   , pfreq    = [ (ROGUE, 200), (LABORATORY, 100), (EMPTY, 2000)
-               , (BRAWL, 80), (SHOOTOUT, 50) ]
+               , (BRAWL, 80), (SHOOTOUT, 50), (RAID, 200) ]
   , prarity  = [(1, 1)]
   , pcover   = CAlternate
   , pfence   = FWall
@@ -1189,7 +1190,7 @@ oval = PlaceKind
   , pname    = "a dome"
   , pfreq    = [ (ROGUE, 20000), (ARENA, 30000), (MUSEUM, 30000)
                , (LABORATORY, 50000), (EMPTY, 3000), (EXIT, 5000)
-               , (AMBUSH, 20000) ]
+               , (AMBUSH, 20000), (RAID, 20000) ]
   , prarity  = [(1, 1)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -1221,7 +1222,7 @@ oval = PlaceKind
 ovalFloor = oval
   { pfreq    = [ (ROGUE, 150000), (ARENA, 60000), (MUSEUM, 60000)
                , (LABORATORY, 100000), (EMPTY, 20000), (EXIT, 5000)
-               , (AMBUSH, 100000) ]
+               , (AMBUSH, 100000), (RAID, 150000) ]
   , pfence   = FGround
   , ptopLeft = [ "aXXX##"
                , "Xp###·"
@@ -1234,7 +1235,7 @@ ovalFloor = oval
 ovalSquare = oval
   { pfreq    = [ (ROGUE, 20000), (ARENA, 30000), (MUSEUM, 30000)
                , (LABORATORY, 50000), (EMPTY, 8000), (EXIT, 5000)
-               , (AMBUSH, 20000) ]
+               , (AMBUSH, 20000), (RAID, 20000) ]
   , pfence   = FGround
   , ptopLeft = [ "X###+"
                , "##···"
@@ -1246,7 +1247,7 @@ ovalSquare = oval
 ovalBasin = oval
   { pname    = "a water basin"
   , pfreq    = [ (ROGUE, 100000), (ARENA, 200000), (LABORATORY, 200000)
-               , (EMPTY, 15000) ]
+               , (EMPTY, 15000), (RAID, 100000) ]
   , pfence   = FGround
   , ptopLeft = [ "XXX1##"
                , "X###··"
@@ -1259,7 +1260,7 @@ ovalBasin = oval
 ovalBasin2 = oval
   { pname    = "a water basin"
   , pfreq    = [ (ROGUE, 600), (ARENA, 10000), (LABORATORY, 3000)
-               , (EMPTY, 700) ]
+               , (EMPTY, 700), (RAID, 600) ]
   , pfence   = FWall
   , ptopLeft = [ "#···"
                , "··~~"
@@ -1294,7 +1295,8 @@ squareBasin2 = oval
 floodedRoom = PlaceKind  -- Valid for any nonempty area, hence low frequency.
   { psymbol  = 'f'
   , pname    = "a flooded room"
-  , pfreq    = [(ROGUE, 10), (LABORATORY, 12), (BRAWL, 40), (ZOO, 50)]
+  , pfreq    = [ (ROGUE, 10), (LABORATORY, 12), (BRAWL, 40), (ZOO, 50)
+               , (RAID, 10) ]
   , prarity  = [(1, 1)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -1306,7 +1308,7 @@ maze = PlaceKind
   { psymbol  = 'm'
   , pname    = "an intricate maze"
   , pfreq    = [ (ROGUE, 60), (LABORATORY, 1500), (ARENA, 3)
-               , (MUSEUM, 3), (EXIT, 200) ]
+               , (MUSEUM, 3), (EXIT, 200), (RAID, 60) ]
   , prarity  = [(1, 1)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -1331,7 +1333,7 @@ maze = PlaceKind
   }
 maze2 = maze
   { pfreq    = [ (ROGUE, 120), (LABORATORY, 12000), (ARENA, 4)
-               , (MUSEUM, 4), (EXIT, 200) ]
+               , (MUSEUM, 4), (EXIT, 200), (RAID, 120) ]
   , ptopLeft = [ "#·%%·"
                , "·%··#"
                , "···#·"
@@ -1339,7 +1341,7 @@ maze2 = maze
   }
 maze3 = maze
   { pfreq    = [ (ROGUE, 120), (LABORATORY, 1000), (ARENA, 8)
-               , (MUSEUM, 4), (EMPTY, 300), (EXIT, 100) ]
+               , (MUSEUM, 4), (EMPTY, 300), (EXIT, 100), (RAID, 120) ]
   , ptopLeft = [ "#·ff·"
                , "·f··#"
                , "···#;"
@@ -1347,7 +1349,7 @@ maze3 = maze
   }
 maze4 = maze
   { pfreq    = [ (ROGUE, 300), (LABORATORY, 15000), (ARENA, 9)
-               , (EXIT, 300) ]
+               , (EXIT, 300), (RAID, 300) ]
   , ptopLeft = [ "##·##·"
                , "#·#··#"
                , "~·f···"
@@ -1355,7 +1357,7 @@ maze4 = maze
   }
 mazeBig = maze
   { pfreq    = [ (ROGUE, 600), (LABORATORY, 3000), (ARENA, 5000)
-               , (EXIT, 400) ]
+               , (EXIT, 400), (RAID, 600) ]
   , pfence   = FNone
   , ptopLeft = [ "X$$$$"
                , "$·##·"
@@ -1366,7 +1368,7 @@ mazeBig = maze
   }
 mazeBig2 = maze
   { pfreq    = [ (ROGUE, 1200), (LABORATORY, 8000), (ARENA, 10000)
-               , (EXIT, 700) ]
+               , (EXIT, 700), (RAID, 1200) ]
   , pfence   = FNone
   , ptopLeft = [ "XX$$$~"
                , "X#···%"
@@ -1380,7 +1382,7 @@ cells = PlaceKind
   , pname    = "air filters"
   , pfreq    = [ (ROGUE, 40), (LABORATORY, 48), (MUSEUM, 10)
                , (EXIT, 150), (NOISE, 480)
-               , (ZOO, 700), (AMBUSH, 80) ]
+               , (ZOO, 700), (AMBUSH, 80), (RAID, 40) ]
   , prarity  = [(1, 1)]
   , pcover   = CReflect
   , pfence   = FWall
