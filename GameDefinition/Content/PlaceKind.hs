@@ -413,7 +413,7 @@ colonnade = PlaceKind
   , poverrideLit = []
   }
 colonnade2 = colonnade
-  { pfreq    = [(ROGUE, 300), (RAID, 300)]
+  { pfreq    = [(ROGUE, 300)]
   , prarity  = [(1, 1)]
   , pfence   = FWall
   , ptopLeft = [ "#·"
@@ -450,7 +450,7 @@ colonnade6 = colonnade
                ]
   }
 colonnade7 = colonnade
-  { pfreq    = [(ARENA, 50), (MUSEUM, 30), (EMPTY, 800)]
+  { pfreq    = [(ARENA, 50), (MUSEUM, 30), (EMPTY, 800), (RAID, 40)]
   , prarity  = [(1, 7), (10, 7)]
   , ptopLeft = [ "0·"
                , "··"
@@ -536,7 +536,7 @@ treeShade = PlaceKind
 fogClump = PlaceKind
   { psymbol  = 'f'
   , pname    = "a foggy patch"
-  , pfreq    = [(EMPTY, 400), (SHOOTOUT, 70), (ESCAPE, 60), (RAID, 70)]
+  , pfreq    = [(EMPTY, 400), (SHOOTOUT, 70), (ESCAPE, 60), (RAID, 50)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -548,7 +548,7 @@ fogClump = PlaceKind
   , poverrideLit = [('f', FOG_CLUMP_LIT), (';', S_FOG_LIT)]
   }
 fogClump2 = fogClump
-  { pfreq    = [(EMPTY, 2200), (SHOOTOUT, 400), (ESCAPE, 100), (RAID, 200)]
+  { pfreq    = [(EMPTY, 2200), (SHOOTOUT, 400), (ESCAPE, 100), (RAID, 150)]
   , ptopLeft = [ "X;f"
                , "f;f"
                , ";;f"
@@ -1270,7 +1270,7 @@ ovalBasin2 = oval
   }
 squareBasin = oval
   { pname    = "a water basin"
-  , pfreq    = [(ARENA, 15000), (LABORATORY, 5000), (EMPTY, 2000), (RAID, 5000)]
+  , pfreq    = [(ARENA, 15000), (LABORATORY, 5000), (EMPTY, 2000), (RAID, 3000)]
   , pfence   = FNone
   , ptopLeft = [ "0bt0t"
                , "b~~~~"
