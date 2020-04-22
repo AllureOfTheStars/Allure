@@ -468,9 +468,10 @@ raid = rogue
   , cactorCoeff   = 250  -- deep level with no kit, so slow spawning
   , cactorFreq    = [(ANIMAL, 50), (ROBOT, 50)]
   , citemNum      = 8 `d` 6  -- just one level, hard enemies, treasure
-  , citemFreq     = [ (IK.COMMON_ITEM, 100), (WEAK_ARROW, 100)
+  , citemFreq     = [ (IK.COMMON_ITEM, 30), (WEAK_ARROW, 100)
                     , (LIGHT_MANIPULATION, 200), (STARTING_ARMOR, 100)
-                    , (STARTING_WEAPON, 200), (IK.S_CURRENCY, 400) ]
+                    , (STARTING_WEAPON, 200), (IK.S_CURRENCY, 400)
+                    , (IK.ANY_SCROLL, 200) ]  -- introducing chips in this cave
   , cescapeFreq   = [(INDOOR_ESCAPE_UP, 1)]
   , cstairFreq    = []
   , cstairAllowed = []
