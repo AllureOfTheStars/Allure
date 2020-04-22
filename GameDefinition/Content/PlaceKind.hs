@@ -353,7 +353,7 @@ pillar2 = pillar
 pillar3 = pillar
   { pname    = "a court"
   , pfreq    = [ (ROGUE, 250), (ARENA, 15), (MUSEUM, 10)
-               , (LABORATORY, 200), (RAID, 250) ]
+               , (LABORATORY, 200), (RAID, 50) ]
   , ptopLeft = [ "#··"
                , "···"
                , "···"
@@ -362,7 +362,7 @@ pillar3 = pillar
 pillar4 = pillar
   { pname    = "a plaza"
   , pfreq    = [ (ROGUE, 1500), (ARENA, 5000)
-               , (MUSEUM, 4000), (LABORATORY, 1500), (RAID, 1500) ]
+               , (MUSEUM, 4000), (LABORATORY, 1500) ]
   , ptopLeft = [ "#·#·"
                , "····"
                , "#···"
@@ -536,7 +536,7 @@ treeShade = PlaceKind
 fogClump = PlaceKind
   { psymbol  = 'f'
   , pname    = "a foggy patch"
-  , pfreq    = [(EMPTY, 400), (SHOOTOUT, 70), (ESCAPE, 60)]
+  , pfreq    = [(EMPTY, 400), (SHOOTOUT, 70), (ESCAPE, 60), (RAID, 70)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -548,7 +548,7 @@ fogClump = PlaceKind
   , poverrideLit = [('f', FOG_CLUMP_LIT), (';', S_FOG_LIT)]
   }
 fogClump2 = fogClump
-  { pfreq    = [(EMPTY, 2200), (SHOOTOUT, 400), (ESCAPE, 100)]
+  { pfreq    = [(EMPTY, 2200), (SHOOTOUT, 400), (ESCAPE, 100), (RAID, 200)]
   , ptopLeft = [ "X;f"
                , "f;f"
                , ";;f"
@@ -1169,7 +1169,7 @@ pumps = PlaceKind
   { psymbol  = 'w'
   , pname    = "water pumps"
   , pfreq    = [ (ROGUE, 200), (LABORATORY, 100), (EMPTY, 2000)
-               , (BRAWL, 80), (SHOOTOUT, 50), (RAID, 200) ]
+               , (BRAWL, 80), (SHOOTOUT, 50), (RAID, 300) ]
   , prarity  = [(1, 1)]
   , pcover   = CAlternate
   , pfence   = FWall
@@ -1270,7 +1270,7 @@ ovalBasin2 = oval
   }
 squareBasin = oval
   { pname    = "a water basin"
-  , pfreq    = [(ARENA, 15000), (LABORATORY, 5000), (EMPTY, 2000)]
+  , pfreq    = [(ARENA, 15000), (LABORATORY, 5000), (EMPTY, 2000), (RAID, 5000)]
   , pfence   = FNone
   , ptopLeft = [ "0bt0t"
                , "b~~~~"

@@ -456,7 +456,7 @@ raid = rogue
   { csymbol       = 'S'
   , cname         = "Triton City sewers"
   , cfreq         = [(CAVE_RAID, 1)]
-  , cXminSize     = 50
+  , cXminSize     = 60  -- long sewer tunnels
   , cYminSize     = 21
   , ccellSize     = DiceXY (2 `d` 2 + 7) 6
   , cminPlaceSize = DiceXY (2 `d` 2 + 4) 5  -- sometimes merge all
@@ -467,7 +467,7 @@ raid = rogue
   , cextraStairs  = 0
   , cactorCoeff   = 250  -- deep level with no kit, so slow spawning
   , cactorFreq    = [(ANIMAL, 50), (ROBOT, 50)]
-  , citemNum      = 8 `d` 6  -- just one level, hard enemies, treasure
+  , citemNum      = 9 `d` 6  -- just one level, hard enemies, treasure
   , citemFreq     = [ (IK.COMMON_ITEM, 30), (WEAK_ARROW, 100)
                     , (LIGHT_MANIPULATION, 200), (STARTING_ARMOR, 100)
                     , (STARTING_WEAPON, 200), (IK.S_CURRENCY, 400)
