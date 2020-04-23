@@ -2011,7 +2011,7 @@ laserSharpener = honingSteel
 crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
   { iname    = "crowbar"
   , ifreq    = [ (COMMON_ITEM, 100), (BREACHING_TOOL, 1), (S_CROWBAR, 1)
-               , (STARTING_WEAPON, 50) ]
+               , (STARTING_WEAPON, 30) ]
   , iflavour = zipPlain [BrCyan]
   , irarity  = [(1, 6), (3 * 10/15, 6), (4 * 10/15, 1)]
   , iverbHit = "gouge"
@@ -2028,7 +2028,7 @@ crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
 catsPaw = chisel
   { iname    = "cat's paw"
   , ifreq    = [ (COMMON_ITEM, 100), (BREACHING_TOOL, 1)
-               , (STARTING_WEAPON, 50) ]
+               , (STARTING_WEAPON, 15) ]
   , iflavour = zipFancy [BrCyan]
   , irarity  = [(1, 12), (3 * 10/15, 12), (4 * 10/15, 1)]
   , iverbHit = "paw"

@@ -497,9 +497,11 @@ brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
   , cextraStairs  = 0
   , chidden       = 0
   , cactorFreq    = []
-  , citemNum      = 5 `d` 6
-  , citemFreq     = [ (IK.COMMON_ITEM, 100), (STARTING_WEAPON, 200)
-                    , (STARTING_ARMOR, 400) ]
+  , citemNum      = 6 `d` 6
+  , citemFreq     = [ (IK.COMMON_ITEM, 50)
+                    , (STARTING_WEAPON, 200), (STARTING_ARMOR, 400)
+                    , (IK.ANY_SCROLL, 100), (IK.ANY_POTION, 700) ]
+                    -- introducing vials in this scenario
   , cplaceFreq    = [(BRAWL, 1)]
   , cpassable     = True
   , cdefTile      = BRAWL_SET_LIT
