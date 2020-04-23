@@ -122,11 +122,11 @@ content =
   -- automatically generated
   ++ snd generatedStairs ++ generatedEscapes
   -- Allure-specific, continued
-  ++ [ pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, maze4, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5, tank6, tank7, tank8, tank9, tank10, tank11, tank12, shuttleHusk, shuttleHusk2, shuttleHusk3, shuttleHusk4, shuttleHusk5, shuttleHusk6, dormitory, dormitory2, dormitory3, dormitory4, dormitory5, dormitory6]
+  ++ [ pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, floodedRoom2, maze, maze2, maze3, maze4, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5, tank6, tank7, tank8, tank9, tank10, tank11, tank12, shuttleHusk, shuttleHusk2, shuttleHusk3, shuttleHusk4, shuttleHusk5, shuttleHusk6, dormitory, dormitory2, dormitory3, dormitory4, dormitory5, dormitory6]
 
 deadEnd,    rect, rect2, rectWindows, glasshouse, glasshouse2, glasshouse3, glasshouse4, pulpit, ruin, ruin2, collapsed, collapsed2, collapsed3, collapsed4, collapsed5, collapsed6, collapsed7, pillar, pillar2, pillar3, pillar4, pillar5, pillar6, colonnade, colonnade2, colonnade3, colonnade4, colonnade5, colonnade6, colonnade7, colonnade8, colonnade9, colonnade10, lampPost, lampPost2, lampPost3, lampPost4, treeShade, fogClump, fogClump2, smokeClump, smokeClump2, smokeClump3FGround, bushClump, escapeDown, escapeDown2, escapeDown3, escapeDown4, escapeDown5, escapeDown6, escapeDown7, escapeDown8, escapeDown9, staircase1, staircase2, staircase3, staircase4, staircase5, staircase6, staircase7, staircase8, staircase9, staircase10, staircase11, staircase12, staircase13, staircase14, staircase15, staircase16, staircase17, staircase18, staircase19, staircase20, staircase21, staircase22, staircase23, staircase24, staircase25, staircase26, staircase27, staircase28, staircase29, staircase30, staircase31, staircase32, staircase33, staircase34, staircase35, staircase36, staircase37 :: PlaceKind
 -- Allure-specific
-staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25, pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, maze, maze2, maze3, maze4, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5, tank6, tank7, tank8, tank9, tank10, tank11, tank12, shuttleHusk, shuttleHusk2, shuttleHusk3, shuttleHusk4, shuttleHusk5, shuttleHusk6, dormitory, dormitory2, dormitory3, dormitory4, dormitory5, dormitory6 :: PlaceKind
+staircaseLift11, staircaseLift12, staircaseLift13, staircaseLift14, staircaseLift15, staircaseLift16, staircaseLift17, staircaseLift18, staircaseLift19, staircaseLift20, staircaseLift21, staircaseLift22, staircaseLift23, staircaseLift24, staircaseLift25, pumps, oval, ovalFloor, ovalSquare, ovalBasin, ovalBasin2, squareBasin, squareBasin2, floodedRoom, floodedRoom2, maze, maze2, maze3, maze4, mazeBig, mazeBig2, cells, cells2, cells3, cells4, cells5, cells6, cells7, tank, tank2, tank3, tank4, tank5, tank6, tank7, tank8, tank9, tank10, tank11, tank12, shuttleHusk, shuttleHusk2, shuttleHusk3, shuttleHusk4, shuttleHusk5, shuttleHusk6, dormitory, dormitory2, dormitory3, dormitory4, dormitory5, dormitory6 :: PlaceKind
 
 staircase, staircaseLift :: PlaceKind  -- templates
 
@@ -202,7 +202,7 @@ rect2 = rect
 rectWindows = PlaceKind
   { psymbol  = 'w'
   , pname    = "a shed"
-  , pfreq    = [(BRAWL, 12), (ESCAPE, 20)]
+  , pfreq    = [(ESCAPE, 20)]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CStretch
   , pfence   = FNone
@@ -596,7 +596,7 @@ smokeClump3FGround = smokeClump
 bushClump = PlaceKind
   { psymbol  = 'b'
   , pname    = "a bushy patch"
-  , pfreq    = [(SHOOTOUT, 100), (EMPTY, 60)]
+  , pfreq    = [(SHOOTOUT, 100), (EMPTY, 60), (BRAWL, 30)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -1169,7 +1169,7 @@ pumps = PlaceKind
   { psymbol  = 'w'
   , pname    = "water pumps"
   , pfreq    = [ (ROGUE, 200), (LABORATORY, 100), (EMPTY, 2000)
-               , (BRAWL, 80), (SHOOTOUT, 50), (RAID, 300) ]
+               , (SHOOTOUT, 50), (RAID, 300) ]
   , prarity  = [(1, 1)]
   , pcover   = CAlternate
   , pfence   = FWall
@@ -1281,7 +1281,7 @@ squareBasin = oval
   }
 squareBasin2 = oval
   { pname    = "a water basin"
-  , pfreq    = [(ARENA, 100000), (EMPTY, 20000)]
+  , pfreq    = [(ARENA, 100000), (EMPTY, 20000), (BRAWL, 100000)]
       -- can't do LABORATORY, because barrels might block corridors
   , pfence   = FNone
   , ptopLeft = [ "T;T;;;"
@@ -1295,14 +1295,26 @@ squareBasin2 = oval
 floodedRoom = PlaceKind  -- Valid for any nonempty area, hence low frequency.
   { psymbol  = 'f'
   , pname    = "a flooded room"
-  , pfreq    = [ (ROGUE, 10), (LABORATORY, 12), (BRAWL, 40), (ZOO, 50)
-               , (RAID, 10) ]
+  , pfreq    = [(ROGUE, 10), (LABORATORY, 12), (ZOO, 50), (RAID, 10)]
   , prarity  = [(1, 1)]
   , pcover   = CStretch
   , pfence   = FWall
   , ptopLeft = ["~"]
   , poverrideDark = []
   , poverrideLit = []
+  }
+floodedRoom2 = PlaceKind
+  { psymbol  = 'p'
+  , pname    = "a pond"
+  , pfreq    = [(BRAWL, 100)]
+  , prarity  = [(1, 1)]
+  , pcover   = CMirror
+  , pfence   = FNone
+  , ptopLeft = [ "XXf"
+               , "f~~"
+               , "~~X" ]
+  , poverrideDark = [('f', PUMPS_LIT)]
+  , poverrideLit = [('f', PUMPS_LIT)]
   }
 maze = PlaceKind
   { psymbol  = 'm'

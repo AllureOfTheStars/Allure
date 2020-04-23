@@ -685,7 +685,7 @@ pillarIce = TileKind
   { tsymbol  = '^'
   , tname    = "ice buildup"
   , tfreq    = [ (LEGEND_LIT, 1), (LEGEND_DARK, 1), (NOISE_SET_LIT, 300)
-               , (BRAWL_SET_LIT, 20), (LIFT_TERMINAL_DARK, 4) ]
+               , (BRAWL_SET_LIT, 15), (LIFT_TERMINAL_DARK, 4) ]
                  -- ice only in dark staircases
   , tcolor   = BrBlue
   , tcolor2  = Blue
@@ -707,7 +707,7 @@ bushLit = TileKind
   { tsymbol  = '%'
   , tname    = "bush"
   , tfreq    = [ (S_BUSH_LIT, 1), (EMPTY_SET_LIT, 8), (ARENA_SET_LIT, 10)
-               , (SHOOTOUT_SET_LIT, 30), (HUNT_SET_LIT, 30)
+               , (BRAWL_SET_LIT, 5), (SHOOTOUT_SET_LIT, 30), (HUNT_SET_LIT, 30)
                , (ESCAPE_SET_LIT, 40), (ZOO_SET_DARK, 100)
                , (BUSH_CLUMP_LIT, 2), (BUSH_CLUMP_DARK, 2)  -- always lit
                , (BUSH_GROVE_LIT, 5), (BUSH_GROVE_DARK, 5)  -- always lit
@@ -833,7 +833,7 @@ floorDamp = floorArena
   }
 floorDirt = floorArena
   { tname    = "dirt"
-  , tfreq    = [ (BRAWL_SET_LIT, 1000), (SHOOTOUT_SET_LIT, 900)
+  , tfreq    = [ (BRAWL_SET_LIT, 900), (SHOOTOUT_SET_LIT, 900)
                , (HUNT_SET_LIT, 900), (ESCAPE_SET_LIT, 800)
                , (AMBUSH_SET_LIT, 1000), (BATTLE_SET_LIT, 500)
                , (DIRT_LIT, 1) ]
@@ -1382,7 +1382,7 @@ underbrush = TileKind  -- always lit
   , tname    = "underbrush"
   , tfreq    = [ (S_UNDERBRUSH_LIT, 1), (S_UNDERBRUSH_DARK, 1)
                , (UNDERBRUSH_CLUMP_LIT, 1), (UNDERBRUSH_CLUMP_DARK, 1)
-               , (EMPTY_SET_LIT, 200), (ARENA_SET_LIT, 40)
+               , (EMPTY_SET_LIT, 200), (ARENA_SET_LIT, 40), (BRAWL_SET_LIT, 100)
                , (SHOOTOUT_SET_LIT, 100), (HUNT_SET_LIT, 100)
                , (ESCAPE_SET_LIT, 100), (ZOO_SET_DARK, 100)
                , (AMBUSH_SET_DARK, 20)
