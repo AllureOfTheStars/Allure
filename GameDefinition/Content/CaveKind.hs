@@ -176,7 +176,7 @@ arena = rogue
   , citemNum      = 9 `d` 4  -- few rooms
   , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 20)
                     , (IK.TREASURE, 40), (GARDENING_TOOL, 500)
-                    , (IK.ANY_SCROLL, 40), (IK.EXPLOSIVE, 40) ]
+                    , (IK.ANY_POTION, 80) ]  -- nature
   , cplaceFreq    = [(ARENA, 1)]
   , cpassable     = True
   , cdefTile      = ARENA_SET_LIT
@@ -187,7 +187,7 @@ arena = rogue
                     , (TINY_LIFT, 1) ]
   , cstairAllowed = [ (WALLED_STAIRCASE, 20), (CLOSED_STAIRCASE, 80)
                     , (TINY_STAIRCASE, 1) ]
-  , cdesc         = "Debris litters the wide streets and all the stalls have their shutters down."
+  , cdesc         = "Debris litters the wide streets and all the stalls are either broken or have their shutters down. Nature is taking over, healing the wounds."  -- potions of healing
   }
 casino = arena
   { cname         = "Casino"
@@ -255,7 +255,7 @@ laboratory = rogue
                     , (IK.AQUATIC, 10) ]
   , citemNum      = 9 `d` 5  -- reward difficulty
   , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 40)
-                    , (IK.TREASURE, 40), (IK.ANY_POTION, 40) ]
+                    , (IK.TREASURE, 40), (IK.EXPLOSIVE, 80) ]
   , cplaceFreq    = [(LABORATORY, 1)]
   , cdefTile      = FILLER_WALL
   , cdarkCorTile  = LAB_TRAIL_LIT  -- let lab smoke give off light always
@@ -292,11 +292,11 @@ noise = rogue
   , cactorCoeff   = 70  -- the maze requires time to explore; also, small
   , cactorFreq    = [(MONSTER, 100), (ANIMAL, 5), (ROBOT, 25)]
   , citemNum      = 10 `d` 4  -- an incentive to explore the labyrinth
-  , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 20)
-                    , (IK.TREASURE, 20), (IK.EXPLOSIVE, 20) ]
+  , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.CRAWL_ITEM, 40)
+                    , (IK.TREASURE, 40), (IK.ANY_SCROLL, 160) ]
+  , cplaceFreq    = [(NOISE, 1)]
   , cpassable     = True
   , labyrinth     = True
-  , cplaceFreq    = [(NOISE, 1)]
   , cdefTile      = NOISE_SET_LIT
   , cwallTile     = OPENABLE_WALL
   , cfenceApart   = True  -- ensures no cut-off parts from collapsed
@@ -306,7 +306,7 @@ noise = rogue
                     , (TINY_STAIRCASE, 1) ]
   , cstairAllowed = [ (CLOSED_LIFT, 50), (OPEN_LIFT, 50)
                     , (TINY_LIFT, 1) ]
-  , cdesc         = "Several machines still function, processors whirring through routines scheduled by dead men."
+  , cdesc         = "Several machines still function, processors whirring through routines scheduled by dead men. Some scattered chips can still be read."
   }
 power = noise
   { cname         = "Power distribution hub"
@@ -434,7 +434,7 @@ bridge = rogue
   , cstairAllowed = [ (WELDED_WALLED_STAIRCASE, 50)
                     , (WELDED_OPEN_STAIRCASE, 50)
                     , (WELDED_TINY_STAIRCASE, 1) ]
-  , cdesc         = "The bridge is gutted out and nonoperational. You saved space on the shuttle by only packing demolition equipment (and booze, long gone, some flasks thrown to fend off the annoying vermin) and now you can't even attempt repairs. You are also short on rations of food and vials of medicine to treat your recent wounds. Only water is plentiful on the ship: gaseous, liquid, frozen. There are animal cries down below and ominous silence up above."
+  , cdesc         = "The bridge is gutted out and nonoperational. You saved space on the shuttle by only packing demolition equipment (and booze, long gone, flasks flung to fend off the annoying vermin) and now you can't even attempt repairs. You are also short on rations of food and vials of medicine to treat your recent wounds. Only water is plentiful on the ship: gaseous, liquid, frozen. There are animal cries down below and ominous silence up above."
   }
 shallowRogue = rogue
   { cfreq         = [(CAVE_SHALLOW_ROGUE, 100)]
@@ -445,8 +445,8 @@ shallowRogue = rogue
   , cactorFreq    = filter ((/= MONSTER) . fst) $ cactorFreq rogue
   , citemNum      = 10 `d` 4
   , citemFreq     = [ (IK.COMMON_ITEM, 50), (IK.CRAWL_ITEM, 50)
-                    , (GARDENING_TOOL, 600) ]
-  , cdesc         = "This close to the outermost deck, residence is not permitted and walls and doors are sturdier, to contain a theoretically possible micro-meteorite breach. The entry is not closed off, though, because some passengers can't live without a regular pilgrimage to 'look outside'. Apparently, gazing at the sharp pin-points of stars and planets through the reinforced oriel glass is incomparable to watching the same through the thin polymer of wall displays.\nAnimals appear to share the fascination of outer decks, perhaps attracted by the increased gravity, nearly Earth-like, unlike elsewhere on the ship. However, they dislike many industrial fluids common on the ship, so throwing flasks is often an effective deterrent. Moreover, if you throw an unidentified flask, you can be sure you won't waste a badly needed nano medicine, because it's never stored in such large containers but in tiny vials."
+                    , (GARDENING_TOOL, 600), (IK.ANY_FLASK, 200) ]
+  , cdesc         = "This close to the outermost deck, residence is not permitted and walls and doors are sturdier, to contain a theoretically possible micro-meteorite breach. The entry is not closed off, though, because some passengers can't live without a regular pilgrimage to 'look outside'. Apparently, gazing at the sharp pin-points of stars and planets through the reinforced oriel glass is incomparable to watching the same through the thin polymer of wall displays.\nAnimals appear to share the fascination of outer decks, perhaps attracted by the increased gravity, nearly Earth-like, unlike elsewhere on the ship. However, they dislike many industrial fluids stored on this floor, so flinging random flasks works as a deterrent. Moreover, if you throw an unidentified flask, you can be sure you won't waste a badly needed nano medicine, because it's never stored in such large containers but in tiny vials."
   }
 
 -- * "Caves" on various celestial bodies (including, but not limited to, moons,
@@ -500,7 +500,7 @@ brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
   , citemNum      = 6 `d` 6
   , citemFreq     = [ (IK.COMMON_ITEM, 50)
                     , (STARTING_WEAPON, 200), (STARTING_ARMOR, 400)
-                    , (IK.ANY_SCROLL, 100), (IK.ANY_POTION, 700) ]
+                    , (IK.ANY_SCROLL, 100), (IK.ANY_POTION, 600) ]
                     -- introducing vials in this scenario
   , cplaceFreq    = [(BRAWL, 1)]
   , cpassable     = True
