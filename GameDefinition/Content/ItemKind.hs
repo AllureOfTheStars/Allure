@@ -489,7 +489,7 @@ flaskTemplate = ItemKind
   , iflavour = zipGlassPlain darkCol ++ zipGlassFancy darkCol
                ++ zipLiquid darkCol
   , icount   = 1 `d` 2 + 1 `dL` 3
-  , irarity  = [(1, 7), (10, 2)]
+  , irarity  = [(1, 6), (10, 2)]
   , iverbHit = "splash"
   , iweight  = 500
   , idamage  = 0
@@ -676,7 +676,7 @@ potionTemplate = ItemKind
   , ifreq    = [(POTION_UNKNOWN, 1)]
   , iflavour = zipLiquid brightCol ++ zipPlain brightCol ++ zipFancy brightCol
   , icount   = 1 `dL` 3
-  , irarity  = [(1, 10), (10, 6)]
+  , irarity  = [(1, 10), (10, 5)]
   , iverbHit = "splash"
   , iweight  = 200
   , idamage  = 0
@@ -699,7 +699,7 @@ potion1 = potionTemplate
 potion2 = potionTemplate
   { ifreq    = [(CRAWL_ITEM, 50), (ANY_GLASS, 50)]
   , icount   = 1
-  , irarity  = [(5, 4), (10, 4)]
+  , irarity  = [(5, 4), (10, 2)]
   , iaspects = [ SetFlag Unique, ELabel "of Attraction"
                , SetFlag Precious, SetFlag Lobable, SetFlag Fragile
                , toVelocity 50 ]  -- identified
@@ -717,7 +717,7 @@ potion3 = potionTemplate
   }
 potion4 = potionTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
-  , irarity  = [(1, 6), (10, 10)]
+  , irarity  = [(1, 5), (10, 10)]
   , ieffects = [ RefillHP 10
                , DropItem maxBound maxBound COrgan CONDITION
                , OnSmash (Explode S_HEALING_MIST_2) ]
@@ -741,7 +741,7 @@ potion6 = potionTemplate
   -- needs to be common to show at least a portion of effects
   { ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
   , icount   = 3 `dL` 1
-  , irarity  = [(10, 10)]
+  , irarity  = [(10, 12)]
   , ieffects = [ Impress
                , OneOf [ RefillHP 20, RefillHP 10, Burn 10
                        , DropItem 1 maxBound COrgan S_POISONED
@@ -792,7 +792,7 @@ potion9 = potionTemplate
   }
 potion10 = potionTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
-  , irarity  = [(10, 8)]
+  , irarity  = [(10, 7)]
   , iaspects = ELabel "of frenzy"
                : iaspects potionTemplate
   , ieffects = [ Yell
@@ -805,7 +805,7 @@ potion10 = potionTemplate
   }
 potion11 = potionTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
-  , irarity  = [(10, 8)]
+  , irarity  = [(10, 7)]
   , iaspects = ELabel "of panic"
                : iaspects potionTemplate
   , ieffects = [ RefillCalm (-60)
@@ -818,7 +818,7 @@ potion11 = potionTemplate
   }
 potion12 = potionTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
-  , irarity  = [(10, 8)]
+  , irarity  = [(10, 7)]
   , iaspects = ELabel "of quicksilver"
                : iaspects potionTemplate
   , ieffects = [ toOrganGood S_HASTED (20 + 1 `d` 5)
@@ -830,7 +830,7 @@ potion12 = potionTemplate
   }
 potion13 = potionTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
-  , irarity  = [(10, 4)]
+  , irarity  = [(10, 5)]
   , iaspects = ELabel "of slow resistance"
                : iaspects potionTemplate
   , ieffects = [ toOrganNoTimer S_POISON_RESISTANT
@@ -838,7 +838,7 @@ potion13 = potionTemplate
   }
 potion14 = potionTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
-  , irarity  = [(10, 4)]
+  , irarity  = [(10, 5)]
   , iaspects = ELabel "of poison resistance"
                : iaspects potionTemplate
   , ieffects = [ toOrganNoTimer S_SLOW_RESISTANT
@@ -871,7 +871,7 @@ scrollTemplate = ItemKind
   , ifreq    = [(SCROLL_UNKNOWN, 1)]
   , iflavour = zipFancy stdCol ++ zipPlain stdCol
   , icount   = 1 `dL` 3
-  , irarity  = [(1, 14), (10, 7)]
+  , irarity  = [(1, 12), (10, 5)]
   , iverbHit = "thump"
   , iweight  = 20
   , idamage  = 0
@@ -892,14 +892,14 @@ scroll1 = scrollTemplate
   }
 scroll2 = scrollTemplate
   { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(1, 8)]
+  , irarity  = [(1, 7)]
   , ieffects = [Ascend True]
   }
 scroll3 = scrollTemplate
   -- needs to be common to show at least a portion of effects
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , icount   = 3 `dL` 1
-  , irarity  = [(1, 14)]
+  , irarity  = [(1, 12)]
   , ieffects = [OneOf [ Paralyze 10, InsertMove 30, Discharge 0
                       , Detect DetectEmbed 12, Detect DetectHidden 20 ]]
   }
@@ -907,7 +907,7 @@ scroll4 = scrollTemplate
   -- needs to be common to show at least a portion of effects
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , icount   = 3 `dL` 1
-  , irarity  = [(10, 14)]
+  , irarity  = [(10, 12)]
   , ieffects = [ Impress
                , OneOf [ Teleport 20, Ascend False, Ascend True
                        , OneOf [Summon HERO 1, Summon MOBILE_ANIMAL $ 1 `d` 2]
@@ -923,7 +923,7 @@ scroll5 = scrollTemplate
 scroll6 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , icount   = 3 `dL` 1
-  , irarity  = [(1, 20)]  -- uncommon deep down, where all is known
+  , irarity  = [(1, 18)]  -- uncommon deep down, where all is known
   , iaspects = ELabel "of scientific explanation"
                : iaspects scrollTemplate
   , ieffects = [Identify `AndEffect` RefillCalm 10]
@@ -931,7 +931,7 @@ scroll6 = scrollTemplate
   }
 scroll7 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(10, 20)]  -- at endgame a crucial item may be missing
+  , irarity  = [(10, 18)]  -- at endgame a crucial item may be missing
   , iaspects = ELabel "of molecular reconfiguration"
                : iaspects scrollTemplate
   , ieffects = [PolyItem `AndEffect` Explode S_FIRECRACKER]
@@ -939,7 +939,7 @@ scroll7 = scrollTemplate
 scroll8 = scrollTemplate
   { ifreq    = [(CRAWL_ITEM, 75), (ANY_SCROLL, 75)]
   , icount   = 1
-  , irarity  = [(10, 6)]
+  , irarity  = [(10, 5)]
   , iaspects = [SetFlag Unique, ELabel "of Skeleton Key"]
                ++ iaspects scrollTemplate
   , ieffects = [Summon HERO 1]
@@ -958,19 +958,19 @@ scroll10 = scrollTemplate
   }
 scroll11 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(10, 11)]
+  , irarity  = [(10, 8)]
   , ieffects = [PushActor (ThrowMod 400 200 1)]  -- 8 steps, 4 turns
   }
 scroll12 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(10, 15)]
+  , irarity  = [(10, 14)]
   , iaspects = ELabel "of molecular duplication"
                : iaspects scrollTemplate
   , ieffects = [DupItem]
   }
 scroll13 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(10, 15)]
+  , irarity  = [(10, 14)]
   , iaspects = ELabel "of surface reconfiguration"
                : iaspects scrollTemplate
   , ieffects = [RerollItem]
@@ -981,7 +981,7 @@ scroll14 = scrollTemplate
   }
 scroll15 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(10, 15)]
+  , irarity  = [(10, 14)]
   , ieffects = [Discharge 0]
   }
 scrollAd1 = scrollTemplate
@@ -1286,7 +1286,7 @@ chisel = ItemKind  -- ignored by AI, but that's fine, others suffice
   , ifreq    = [(CRAWL_ITEM, 100), (BREACHING_TOOL, 1)]
   , iflavour = zipPlain [Cyan]
   , icount   = 1
-  , irarity  = [(2, 8)]
+  , irarity  = [(2, 10)]
   , iverbHit = "dismantle"
   , iweight  = 500
   , idamage  = 0  -- not a missile to avoid wasting, before a worskhop found
@@ -1307,7 +1307,7 @@ adjustableSpanner = chisel
 steelFile = chisel
   { iname    = "steel file"
   , ifreq    = [(CRAWL_ITEM, 100), (BREACHING_TOOL, 1), (SHARPENING_TOOL, 1)]
-  , irarity  = [(2, 10)]
+  , irarity  = [(2, 12)]
   , iflavour = zipPlain [Blue]
   , iverbHit = "grate"
   , idesc    = "It is a breaching and sharpening tool."  -- TODO: https://en.wikipedia.org/wiki/File_(tool)
@@ -1358,7 +1358,7 @@ duckTape = solderingIron
   { iname    = "duck tape"
   , ifreq    = [(CRAWL_ITEM, 100), (BONDING_TOOL, 2)]
   , icount   = 1 `d` 4
-  , irarity  = [(2, 12)]
+  , irarity  = [(2, 14)]
   , iverbHit = "catch"
   , idesc    = "It is a bonding tool."  -- TODO: https://en.wikipedia.org/wiki/Duct_tape
   }
@@ -1518,7 +1518,7 @@ imageItensifier = ItemKind
   , ifreq    = [(TREASURE, 100), (ADD_NOCTO_1, 80), (MUSEAL, 100)]
   , iflavour = zipFancy [BrGreen]
   , icount   = 1
-  , irarity  = [(5, 4)]
+  , irarity  = [(5, 3)]
   , iverbHit = "rattle"
   , iweight  = 700
   , idamage  = 0
