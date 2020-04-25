@@ -1399,7 +1399,7 @@ workshop = TileKind  -- always lit
   { tsymbol  = ':'
   , tname    = "workshop"
   , tfreq    = [ (LEGEND_LIT, 100), (LEGEND_DARK, 100)
-               , (EMPTY_SET_LIT, 16), (SHOOTOUT_SET_LIT, 4)
+               , (EMPTY_SET_LIT, 16), (SHOOTOUT_SET_LIT, 2)
                , (AMBUSH_SET_DARK, 4), (BATTLE_SET_DARK, 4) ]
   , tcolor   = BrBlue
   , tcolor2  = Blue

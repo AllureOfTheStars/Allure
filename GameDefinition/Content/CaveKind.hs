@@ -523,7 +523,7 @@ shootout = rogue  -- a scenario with strong missiles;
   , ccellSize     = DiceXY (1 `d` 2 + 5) 6
   , cminPlaceSize = DiceXY 3 3  -- rarely merge vertically
   , cmaxPlaceSize = DiceXY 5 5
-  , cdarkOdds     = 51
+  , cdarkOdds     = 0  -- all rooms lit, to not duplicate the @hunt@ tactics
   , cnightOdds    = 0
   , cauxConnects  = 1%10
   , cdoorChance   = 1
@@ -535,7 +535,7 @@ shootout = rogue  -- a scenario with strong missiles;
                       -- less items in inventory, more to be picked up,
                       -- to reward explorer and aggressor and punish camper
   , citemFreq     = [ (IK.COMMON_ITEM, 30), (GARDENING_TOOL, 500)
-                    , (ANY_ARROW, 400), (HARPOON, 300), (IK.EXPLOSIVE, 50) ]
+                    , (ANY_ARROW, 400), (HARPOON, 200), (IK.EXPLOSIVE, 300) ]
                       -- Many consumable buffs are needed in symmetric maps
                       -- so that aggressor prepares them in advance and camper
                       -- needs to waste initial turns to buff for the defence.
@@ -547,7 +547,7 @@ shootout = rogue  -- a scenario with strong missiles;
   , cwallTile     = OPENABLE_WALL
   , cstairFreq    = []
   , cstairAllowed = []
-  , cdesc         = "Once so carefully curated, the planting beds are now overgrown and choked with weeds."  -- when we know what fits the plot, suggest it here; e.g., there are better way to earn money, shortage of manpower, dangerous area of the city, mismanagement by the city council
+  , cdesc         = "Once so carefully curated, the planting beds are now overgrown and choked with weeds."  -- when we know what fits the plot, suggest it here; e.g., there are better way to earn money, shortage of manpower, dangerous area of the city, mismanagement by the city council; generally it's the ship that's broken, not the city, though the city must have drawbacks or adventurers would not risk adventures
   }
 hunt = rogue  -- a scenario with strong missiles for ranged and shade for melee
   { csymbol       = 'H'
