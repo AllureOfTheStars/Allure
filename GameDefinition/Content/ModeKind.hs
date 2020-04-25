@@ -151,7 +151,7 @@ hunt = ModeKind  -- melee vs ranged with reaction fire in daylight
       -- the guy is wrong about implants (though the items are genetically attuned), but being wrong is plausible when the team is killed off/chased off and can't scour the battleground
       -- this is in the middle of the scenario list and the mission is not tricky, so a subtle reminder about lowering difficulty, in case the player struggles
               , (Conquer, "We chased them off, like we knew that we would. It feels nice to stick together and prevail. Now we can do no wrong just minding our business and going our way to the spaceport. We taught them a lesson, despite their superior equipment, and nobody else needs to be harmed while we take possession of our rightful property, the glorious spaceship in Triton's orbit.") ]
-  , mdesc   = "Who is the hunter and who is the prey? The only criterion is remaining conscious versus becoming incapacitated when the chase ends."
+  , mdesc   = "Who is the hunter and who is the prey? The only criterion is last man standing when the chase ends."
   , mnote   = "This is yet another reminiscence of the events that led to the long crawl adventure. This episode is quite a tactical challenge, because enemies are allowed to fling their ammo simultaneously at you team, which has no such ability and focuses on melee combat instead. Act accordingly."
   }
 

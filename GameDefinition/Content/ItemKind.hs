@@ -2106,7 +2106,7 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
   }
 hammer1 = hammerTemplate  -- 1m handle, blunt
   { ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
-               , (STARTING_WEAPON, 70), (STARTING_HAMMER, 80)
+               , (STARTING_WEAPON, 50), (STARTING_HAMMER, 80)
                , (S_BLUNT_SHORT_HAMMER, 1) ]
   , iaspects = [Timeout 5]
                ++ iaspects hammerTemplate
@@ -2273,7 +2273,7 @@ halberd = ItemKind  -- long pole
   { isymbol  = symbolPolearm
   , iname    = "pole cleaver"
   , ifreq    = [ (COMMON_ITEM, 5), (POLE_AND_STEEL, 1)
-               , (STARTING_WEAPON, 5), (S_POLE_CLEAVER, 1) ]
+               , (STARTING_WEAPON, 50), (S_POLE_CLEAVER, 1) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , irarity  = [(5, 1), (8, 15)]

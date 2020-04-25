@@ -523,7 +523,7 @@ shootout = rogue  -- a scenario with strong missiles;
   , ccellSize     = DiceXY (1 `d` 2 + 5) 6
   , cminPlaceSize = DiceXY 3 3  -- rarely merge vertically
   , cmaxPlaceSize = DiceXY 5 5
-  , cdarkOdds     = 0  -- all rooms lit, to not duplicate the @hunt@ tactics
+  , cdarkOdds     = 0  -- all lit, not to duplicate the @hunt@ ranged tactics
   , cnightOdds    = 0
   , cauxConnects  = 1%10
   , cdoorChance   = 1
@@ -549,7 +549,8 @@ shootout = rogue  -- a scenario with strong missiles;
   , cstairAllowed = []
   , cdesc         = "Once so carefully curated, the planting beds are now overgrown and choked with weeds. High taxes make the traditional ways of life in space unsustainable."  -- also explains the gangs elsewhere and the motivation of adventurers to take risks (in additional male hormones)
   }
-hunt = rogue  -- a scenario with strong missiles for ranged and shade for melee
+hunt = rogue  -- a scenario with strong missiles for ranged and shade for melee;
+              -- the human is likely to focus on melee, not having overwatch
   { csymbol       = 'H'
   , cname         = "Swamp biosphere"
   , cfreq         = [(CAVE_HUNT, 1)]
@@ -565,8 +566,7 @@ hunt = rogue  -- a scenario with strong missiles for ranged and shade for melee
   , chidden       = 0
   , cactorFreq    = []
   , citemNum      = 6 `d` 10
-  , citemFreq     = [ (IK.COMMON_ITEM, 30)
-                    , (ANY_ARROW, 400), (HARPOON, 300), (IK.EXPLOSIVE, 50) ]
+  , citemFreq     = [(IK.COMMON_ITEM, 30), (ANY_ARROW, 60), (HARPOON, 30)]
   , cplaceFreq    = [(BRAWL, 50), (SHOOTOUT, 100)]
   , cpassable     = True
   , cdefTile      = HUNT_SET_LIT  -- much more water than in shootoutSetLit

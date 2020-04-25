@@ -239,7 +239,7 @@ soldier = brawler
   { iname    = "soldier"
   , ifreq    = [(SOLDIER_HERO, 100), (MOBILE, 1)]
   , ikit     = ikit brawler
-               ++ [(EXPLOSIVE, CStash)]
+               ++ [(STARTING_WEAPON, CEqp), (EXPLOSIVE, CStash)]
   -- , idesc    = ""
   }
 mercenary = brawler
