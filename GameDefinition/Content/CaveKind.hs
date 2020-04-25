@@ -547,7 +547,7 @@ shootout = rogue  -- a scenario with strong missiles;
   , cwallTile     = OPENABLE_WALL
   , cstairFreq    = []
   , cstairAllowed = []
-  , cdesc         = "Once so carefully curated, the planting beds are now overgrown and choked with weeds."  -- when we know what fits the plot, suggest it here; e.g., there are better way to earn money, shortage of manpower, dangerous area of the city, mismanagement by the city council; generally it's the ship that's broken, not the city, though the city must have drawbacks or adventurers would not risk adventures
+  , cdesc         = "Once so carefully curated, the planting beds are now overgrown and choked with weeds. High taxes make the traditional ways of life in space unsustainable."  -- also explains the gangs elsewhere and the motivation of adventurers to take risks (in additional male hormones)
   }
 hunt = rogue  -- a scenario with strong missiles for ranged and shade for melee
   { csymbol       = 'H'
