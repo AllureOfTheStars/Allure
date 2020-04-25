@@ -595,8 +595,9 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , chidden       = 0
   , cactorFreq    = []
   , citemNum      = 8 `d` 8
-  , citemFreq     = [ (IK.COMMON_ITEM, 30), (GEM, 150), (STARTING_ARMOR, 50)
-                    , (WEAK_ARROW, 500), (HARPOON, 400), (IK.EXPLOSIVE, 100) ]
+  , citemFreq     = [ (IK.COMMON_ITEM, 30), (STARTING_ARMOR, 100)
+                    , (LIGHT_MANIPULATION, 200), (GEM, 150)
+                    , (WEAK_ARROW, 400), (HARPOON, 200), (IK.EXPLOSIVE, 200) ]
   , cplaceFreq    = [(ESCAPE, 1)]
   , cpassable     = True
   , cdefTile      = ESCAPE_SET_DARK
