@@ -11,7 +11,7 @@ module Content.ItemKindActor
     , pattern HERO, pattern SCOUT_HERO, pattern RANGER_HERO, pattern ESCAPIST_HERO, pattern AMBUSHER_HERO, pattern BRAWLER_HERO, pattern SOLDIER_HERO, pattern CIVILIAN, pattern MONSTER, pattern MOBILE_MONSTER, pattern SCOUT_MONSTER, pattern ANIMAL, pattern MOBILE_ANIMAL, pattern IMMOBILE_ANIMAL
   , pattern ADD_SIGHT, pattern ARMOR_RANGED, pattern ADD_NOCTO_1, pattern WEAK_ARROW, pattern LIGHT_MANIPULATION, pattern BLANKET, pattern RING_OF_OPPORTUNITY_SNIPER, pattern ANY_ARROW, pattern STARTING_ARMOR, pattern STARTING_WEAPON, pattern GEM
   , pattern CRAWL_HERO, pattern MERCENARY_HERO, pattern AQUATIC_ANIMAL, pattern AQUATIC_MONSTER, pattern ROBOT, pattern MOBILE_ROBOT, pattern IMMOBILE_ROBOT, pattern CONSTRUCTION_ROBOT
-  , pattern S_BULLTEPROOF_VEST, pattern S_PERFUME_POTION
+  , pattern S_BULLTEPROOF_VEST, pattern S_PERFUME_POTION, pattern S_EMPTY_FLASK
   , pattern COOKED_FOOD, pattern MERCENARY_WEAPON, pattern MERCENARY_AMMO, pattern RAW_MEAT_CHUNK, pattern ROASTED_MEAT_CHUNK, pattern NEEDLE, pattern CAN_OF_STICKY_FOAM, pattern TRANQUILIZER_DART, pattern WASTE_CONTAINER, pattern CONSTRUCTION_HOOTER, pattern SPOTLIGHT, pattern BLOWTORCH, pattern POLE, pattern POLE_OR_HANDLE, pattern BREACHING_TOOL, pattern BONDING_TOOL, pattern SHARPENING_TOOL, pattern WIRECUTTING_TOOL
   , actorsGN, actorsGNSingleton
   , -- * Content
@@ -33,9 +33,9 @@ import Game.LambdaHack.Definition.Flavour
 
 actorsGNSingleton :: [GroupName ItemKind]
 actorsGNSingleton =
-       [S_WOODEN_TORCH, S_BULLTEPROOF_VEST, S_PERFUME_POTION]
+       [S_WOODEN_TORCH, S_BULLTEPROOF_VEST, S_PERFUME_POTION, S_EMPTY_FLASK]
 
-pattern S_WOODEN_TORCH, S_BULLTEPROOF_VEST, S_PERFUME_POTION :: GroupName ItemKind
+pattern S_WOODEN_TORCH, S_BULLTEPROOF_VEST, S_PERFUME_POTION, S_EMPTY_FLASK :: GroupName ItemKind
 
 actorsGN :: [GroupName ItemKind]
 actorsGN =
@@ -96,6 +96,7 @@ pattern GEM = GroupName "gem"
 -- ** Allure-specific
 pattern S_BULLTEPROOF_VEST = GroupName "bulletproof vest"
 pattern S_PERFUME_POTION = GroupName "perfume potion"
+pattern S_EMPTY_FLASK = GroupName "empty flask"
 
 pattern COOKED_FOOD = GroupName "cooked food"
 pattern MERCENARY_WEAPON = GroupName "mercenary weapon"
@@ -162,16 +163,20 @@ warrior = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = ""
-  , ikit     = humanOrgans ++ [(S_GENETIC_FLAW_10, COrgan)]
+  , ikit     = humanOrgans
+               ++ [(S_GENETIC_FLAW_10, COrgan), (S_EMPTY_FLASK, CStash)]
   }
 warrior2 = warrior
   { iname    = "pilot"
+  , ikit     = ikit warrior
   -- , idesc    = ""
   }
 warrior3 = warrior
   { iname    = "engineer"
   , ifreq    = [(CRAWL_HERO, 100), (MOBILE, 1)]
-  , ikit     = ikit warrior ++ [(S_CURRENCY, CStash), (COOKED_FOOD, CStash)]
+  , ikit     = humanOrgans
+               ++ [ (S_GENETIC_FLAW_10, COrgan), (S_CURRENCY, CStash)
+                  , (COOKED_FOOD, CStash) ]
   -- , idesc    = ""
   }
 warrior4 = warrior

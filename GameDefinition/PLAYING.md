@@ -484,6 +484,11 @@ Lead the new hopeful explorers to fame, wealth and glory!
 FAQ
 ---
 
+Q: Where to buy light sources in the crawl scenario game?
+A: Too late. However, they can be crafted in at least two ways in the very
+early stages of the scenario. See the terrain lore menu for crafting
+recipes after exploring the initial levels.
+
 Q: Why does the percentage of explored tiles turns from 100% to 99%?
 A: Apparently enemies transformed a tile from unexplorable terrain kind
 to explorable. The new tile has never been seen by the player,

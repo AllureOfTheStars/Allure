@@ -480,8 +480,8 @@ flaskEmpty = flaskTemplate
   , iverbHit = "bang"
   , iweight  = 250
   , iaspects = [SetFlag Lobable, SetFlag Fragile, toVelocity 60]
-  , idesc    = "The only redeeming quality of empty flasks is that they can be filled with a liquid."
-}
+  , idesc    = "The only redeeming quality of empty flasks is that they can be filled with any liquid."
+  }
 flaskTemplate = ItemKind
   { isymbol  = symbolFlask
   , iname    = "flask"
