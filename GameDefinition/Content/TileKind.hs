@@ -538,10 +538,9 @@ rubble = TileKind
   , tcolor2  = Brown
   , talter   = 4  -- boss can dig through
   , tfeature = [ OpenWith ProjYes [(1, BLAST_SOURCE)] S_FLOOR_ASHES_LIT
-                   -- the transformation goes first, because marginal
                    -- needs to be first, because projectiles can't activate
-                   -- embeds in a non-walkable tile with on-zero talter;
-                   -- so this is a safe way to open rubble, with no loot
+                   -- embeds in a non-walkable tile with non-zero talter;
+                   -- so this is a safe way to open rubble, with no loot though;
                , Embed RUBBLE
                , OpenTo S_FLOOR_ASHES_LIT ]
       -- Getting the item is risky and, e.g., AI doesn't attempt it.
@@ -616,8 +615,8 @@ stairsDown = TileKind
   , tcolor2  = defFG
   , talter   = 0  -- very easy stairs, unlike all others; projectiles trigger
   , tfeature = [ ChangeWith ProjYes [(1, OIL_SOURCE)] S_STAIRCASE_TRAP_DOWN_OIL
-                   -- the transformation goes first, because marginal
-               , Embed STAIRS_DOWN, ConsideredByAI ]
+               , Embed STAIRS_DOWN
+               , ConsideredByAI ]
   }
 stairsTrappedDown = TileKind
   { tsymbol  = '>'
@@ -700,8 +699,10 @@ pulpit = TileKind
   , tcolor2  = Brown
   , talter   = 5
   , tfeature = [ ChangeWith ProjYes [(1, FIRE_SOURCE)] S_BURNING_INSTALLATION
-               , Clear, Embed LECTERN ]
-                   -- mixed blessing, so AI ignores, saved for player's fun
+                   -- wastes the loot; cruel, but rare; usually player's fault
+               , Embed LECTERN
+               , Clear ]
+                 -- mixed blessing, so AI ignores, saved for player's fun
   }
 bushLit = TileKind
   { tsymbol  = '%'
@@ -716,7 +717,8 @@ bushLit = TileKind
   , tcolor   = BrGreen
   , tcolor2  = Green
   , talter   = 4
-  , tfeature = [ChangeWith ProjYes [(1, FIRE_SOURCE)] S_BURNING_BUSH, Clear]
+  , tfeature = [ ChangeWith ProjYes [(1, FIRE_SOURCE)] S_BURNING_BUSH
+               , Clear ]
                  -- too tough to topple, has to be burned first
   }
 bushBurnt = TileKind
@@ -872,7 +874,9 @@ shallowWater = TileKind
   , talter   = 2  -- doesn't matter now; TODO: not everything enters
   , tfeature = ChangeWith ProjYes [(1, COLD_SOURCE)] S_FROZEN_PATH
                : ChangeWith ProjYes [(1, OIL_SOURCE)] S_OIL_SPILL  -- oil floats
-                   -- the transformations go first, because marginal
+                   -- the transformations go first, because marginal, that is,
+                   -- should not case a warning that bumping was not enogh;
+                   -- similarly elsewhere, where With goes before Embed
                : Embed SHALLOW_WATER
                : tfeature floorActor
       -- can't make fog from water, because air would need to be cool, too;
@@ -894,9 +898,9 @@ floorRed = floorCorridor  -- always lit
   , tcolor   = BrRed
   , tcolor2  = Red
   , tfeature = [ ChangeWith ProjYes [(1, OIL_SOURCE)] S_OIL_SPILL
-                   -- the transformation goes first, because marginal
                    -- non-porous enough
-               , Embed STRAIGHT_PATH, Trail, Walkable, Clear ]
+               , Embed STRAIGHT_PATH
+               , Trail, Walkable, Clear ]
   }
 floorBlue = floorRed  -- always lit
   { tname    = "frozen path"
@@ -906,9 +910,9 @@ floorBlue = floorRed  -- always lit
   , talter   = 0
   , tfeature = [ ChangeWith ProjYes [(1, FIRE_SOURCE)] S_SHALLOW_WATER_LIT
                , ChangeWith ProjYes [(1, OIL_SOURCE)] S_OIL_SPILL
-                   -- the transformation goes first, because marginal
                    -- non-porous enough
-               , Embed FROZEN_GROUND, Trail, Walkable, Clear ]
+               , Embed FROZEN_GROUND
+               , Trail, Walkable, Clear ]
   }
 floorBrown = floorRed  -- always lit
   { tname    = "transport route"
@@ -1070,10 +1074,9 @@ pillarCache5 = pillarCache
                , (MUSEUM_SET_DARK, 2) ]
   , tfeature = [ Embed JEWELRY_CASE
                , ChangeWith ProjNo [(1, COLD_SOURCE)]
-                                  CACHE_JEWELRY_TRAPPED_OR_NOT
+                            CACHE_JEWELRY_TRAPPED_OR_NOT
                    -- halts watchdog
                , ChangeWith ProjNo [(1, WIRECUTTING_TOOL)] CACHE_JEWELRY_OR_NOT
-                   -- the transformations go first, because marginal
                    -- disarms trap altogether
                , Embed JEWELRY_DISPLAY_TRAP
                , ChangeTo CACHE_JEWELRY_TRAPPED_OR_NOT
@@ -1087,9 +1090,9 @@ stairsTrappedDownOil = TileKind
   , tcolor2  = Red
   , talter   = talterForStairs
   , tfeature = [ ChangeWith ProjNo [(1, THICK_CLOTH)] ORDINARY_STAIRCASE_DOWN
-                   -- the transformation goes first, because marginal
-                   -- safely soaks oil
-               , Embed STAIRS_DOWN, Embed STAIRS_TRAP_DOWN_OIL
+                   -- safely soaks oil; marginal --- no warning if fails
+               , Embed STAIRS_DOWN
+               , Embed STAIRS_TRAP_DOWN_OIL
                , ChangeTo ORDINARY_STAIRCASE_DOWN
                , ConsideredByAI ]
  }
@@ -1108,7 +1111,7 @@ stairsWelded = stairsUp
   , tcolor2  = Magenta
   , talter   = talterForStairs + 3  -- gear or level up needed
   , tfeature = [ Embed S_CRUDE_WELD
-                   -- the embed goes first, because marginal
+                   -- the embed goes first, because the embed is marginal here
                , ChangeWith ProjNo [(1, BLOWTORCH)] ORDINARY_STAIRCASE_UP
                , ChangeWith ProjNo [(1, COLD_SOURCE)] ORDINARY_STAIRCASE_UP
                , ConsideredByAI ]
@@ -1246,7 +1249,8 @@ barrel = TileKind
   , tcolor2  = Blue
   , talter   = 0  -- projectiles can destroy
   , tfeature = [ Embed BARREL_CONTENTS
-               , OpenWith ProjYes [] ASHES_SMOKE_LIT ]  -- no pathfinding through
+               , OpenWith ProjYes [] ASHES_SMOKE_LIT ]
+                   -- no pathfinding through
   }
 barrelSpice = barrel
   { tfreq    = [ (SMOKE_CLUMP_LIT, 1), (SMOKE_CLUMP_DARK, 1)
@@ -1285,9 +1289,8 @@ bushEdible = TileKind
   , talter   = 4
   , tfeature = [ Clear
                , Embed EDIBLE_PLANT_RIPE
-                   -- loot granted even when ignited and missiles can't reap
+                   -- loot granted even when ignited, but missiles can't reap
                , ChangeWith ProjYes [(1, FIRE_SOURCE)] S_BURNING_BUSH
-                   -- the transformation goes first, because marginal
                , ChangeTo S_BUSH_LIT ]
   }
 bushEdibleSpice = bushEdible
@@ -1312,10 +1315,8 @@ underbrushBurning = TileKind  -- always lit
                , ChangeWith ProjYes [(1, WATER_SOURCE)] S_SMOKE_LIT
                , Embed SMALL_FIRE
                , ChangeWith ProjNo [(1, FIREPROOF_CLOTH)] S_UNDERBRUSH_LIT
-                   -- the transformations go first, because marginal
-                   -- full effects experienced, but underbrush saved for repeat
-               , ChangeTo S_FLOOR_ASHES_LIT  -- not enough matter for smoke
-               ]
+                   -- underbrush saved for repeat
+               , ChangeTo S_FLOOR_ASHES_LIT ]  -- not enough matter for smoke
   }
 
 -- *** Clear
@@ -1328,7 +1329,6 @@ floorOily = floorArena
                , (OIL_RESIDUE_LIT, 4) ]
   , tfeature = ChangeWith ProjYes [(1, OIL_SOURCE)] S_OIL_SPILL
                  -- non-porous enough
-                 -- the transformation goes first, because marginal
                : tfeature floorArena
   }
 oilSpill = TileKind  -- always lit
@@ -1366,8 +1366,7 @@ oilBurning = TileKind  -- always lit
                , Embed OIL_PUDDLE
                , ChangeWith ProjNo [(1, FIREPROOF_CLOTH)] OILY_FLOOR_LIT
                    -- safely soaks oil
-               , ChangeTo S_OIL_SPILL
-               ]
+               , ChangeTo S_OIL_SPILL ]
   }
 floorWindow = floorArena  -- always lit
   { tsymbol  = ' '  -- story-wise it's transparent, hence the symbol
@@ -1387,8 +1386,7 @@ underbrush = TileKind  -- always lit
                , (ESCAPE_SET_LIT, 100), (ZOO_SET_DARK, 100)
                , (AMBUSH_SET_DARK, 20)
                , (BUSH_CLUMP_LIT, 1), (BUSH_CLUMP_DARK, 1)
-               , (TRAIL_LIT, 50), (SAFE_TRAIL_LIT, 50)
-               ]
+               , (TRAIL_LIT, 50), (SAFE_TRAIL_LIT, 50) ]
   , tcolor   = BrGreen
   , tcolor2  = Green
   , talter   = 0
