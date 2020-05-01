@@ -1308,7 +1308,7 @@ steelFile = chisel
   { iname    = "steel file"
   , ifreq    = [(CRAWL_ITEM, 100), (BREACHING_TOOL, 1), (SHARPENING_TOOL, 1)]
   , irarity  = [(2, 12)]
-  , iflavour = zipPlain [Blue]
+  , iflavour = zipPlain [Red]  -- double purpose, saves one tool sometimes
   , iverbHit = "grate"
   , idesc    = "It is a breaching and sharpening tool."  -- TODO: https://en.wikipedia.org/wiki/File_(tool)
   }
