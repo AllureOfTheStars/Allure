@@ -670,7 +670,7 @@ listCrawl =
   , ([15], [CAVE_POWER]) ]
 
 -- Reversed to have the last cave small and exactly in the middle
--- of the screen.
+-- of the screen, despite two staircases.
 cavesCrawl = reverse listCrawl
 
 cavesCrawlEmpty = reverse $
