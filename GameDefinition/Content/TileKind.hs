@@ -479,8 +479,8 @@ signboardUnread = TileKind  -- client only, indicates never used by this faction
 signboardRead = TileKind
   { tsymbol  = '0'
   , tname    = "signboard"
-  , tfreq    = [ (SIGNBOARD, 80), (EMPTY_SET_LIT, 2)
-               , (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 1), (MUSEUM_SET_DARK, 1)
+  , tfreq    = [ (SIGNBOARD, 80), (EMPTY_SET_LIT, 3)
+               , (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 2), (MUSEUM_SET_DARK, 1)
                , (ESCAPE_SET_DARK, 1) ]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
@@ -707,7 +707,7 @@ pulpit = TileKind
 bushLit = TileKind
   { tsymbol  = '%'
   , tname    = "bush"
-  , tfreq    = [ (S_BUSH_LIT, 1), (EMPTY_SET_LIT, 8), (ARENA_SET_LIT, 10)
+  , tfreq    = [ (S_BUSH_LIT, 1), (EMPTY_SET_LIT, 8), (ARENA_SET_LIT, 20)
                , (BRAWL_SET_LIT, 5), (SHOOTOUT_SET_LIT, 30), (HUNT_SET_LIT, 30)
                , (ESCAPE_SET_LIT, 40), (ZOO_SET_DARK, 100)
                , (BUSH_CLUMP_LIT, 2), (BUSH_CLUMP_DARK, 2)  -- always lit
@@ -819,7 +819,7 @@ floorCorridor = TileKind
   , tfeature = [Walkable, Clear]  -- porous, so spilling doesn't transform
   }
 floorArena = floorCorridor
-  { tfreq    = [ (FLOOR_ARENA_LIT, 1), (ARENA_SET_LIT, 200)
+  { tfreq    = [ (FLOOR_ARENA_LIT, 1), (ARENA_SET_LIT, 400)
                , (MUSEUM_SET_LIT, 400), (NOISE_SET_LIT, 50), (POWER_SET_LIT, 50)
                , (EMPTY_SET_LIT, 400), (EXIT_SET_LIT, 100), (ZOO_SET_LIT, 600) ]
   }
@@ -994,7 +994,7 @@ signboardReadExtinguisher = TileKind
   { tsymbol  = '0'
   , tname    = "fire extinguisher cabinet"
   , tfreq    = [ (SIGNBOARD, 20), (EMPTY_SET_LIT, 3)
-               , (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 1), (MUSEUM_SET_DARK, 1)
+               , (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 2), (MUSEUM_SET_DARK, 1)
                , (ESCAPE_SET_DARK, 1), (EXIT_SET_LIT, 1), (NOISE_SET_LIT, 1)
                , (AMBUSH_SET_DARK, 1) ]
   , tcolor   = BrCyan
@@ -1043,7 +1043,7 @@ liftShaft = pillar
   }
 rock = pillar
   { tname    = "rock"
-  , tfreq    = [(ARENA_SET_LIT, 4), (BRAWL_SET_LIT, 30)]
+  , tfreq    = [(ARENA_SET_LIT, 8), (BRAWL_SET_LIT, 30)]
   }
 pillarCache2 = pillarCache
   { tname    = "rack of deposit boxes"
@@ -1055,7 +1055,7 @@ pillarCache2 = pillarCache
   }
 pillarCache3 = pillarCache
   { tname    = "rack of sealed deposit boxes"
-  , tfreq    = [ (CACHE_DEPOSIT, 33), (ARENA_SET_DARK, 1)
+  , tfreq    = [ (CACHE_DEPOSIT, 33), (ARENA_SET_DARK, 4)
                , (STAIR_TERMINAL_LIT, 1), (STAIR_TERMINAL_DARK, 1) ]
   , tfeature = [ ChangeWith ProjNo [(1, BREACHING_TOOL)] CACHE_DEPOSIT_BREACHED
                    -- @BLAST_SOURCE@ not enough
@@ -1280,7 +1280,7 @@ machineWallSpice = machineWall
 bushEdible = TileKind
   { tsymbol  = '%'
   , tname    = "ripe bush"
-  , tfreq    = [ (EMPTY_SET_LIT, 4), (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 1)
+  , tfreq    = [ (EMPTY_SET_LIT, 4), (ARENA_SET_LIT, 2), (ARENA_SET_DARK, 4)
                , (SHOOTOUT_SET_LIT, 1), (HUNT_SET_LIT, 1)
                , (ESCAPE_SET_DARK, 4), (ZOO_SET_DARK, 1)
                , (LIFT_TERMINAL_LIT, 1), (LIFT_TERMINAL_DARK, 1) ]
@@ -1381,7 +1381,7 @@ underbrush = TileKind  -- always lit
   , tname    = "underbrush"
   , tfreq    = [ (S_UNDERBRUSH_LIT, 1), (S_UNDERBRUSH_DARK, 1)
                , (UNDERBRUSH_CLUMP_LIT, 1), (UNDERBRUSH_CLUMP_DARK, 1)
-               , (EMPTY_SET_LIT, 200), (ARENA_SET_LIT, 40), (BRAWL_SET_LIT, 100)
+               , (EMPTY_SET_LIT, 200), (ARENA_SET_LIT, 80), (BRAWL_SET_LIT, 100)
                , (SHOOTOUT_SET_LIT, 100), (HUNT_SET_LIT, 100)
                , (ESCAPE_SET_LIT, 100), (ZOO_SET_DARK, 100)
                , (AMBUSH_SET_DARK, 20)
