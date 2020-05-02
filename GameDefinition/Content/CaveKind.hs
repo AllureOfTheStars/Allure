@@ -127,7 +127,7 @@ rogue = CaveKind
   , clegendDarkTile = LEGEND_DARK
   , clegendLitTile  = LEGEND_LIT
   , cminStairDist = 30
-  , cmaxStairsNum = 1 `d` 2
+  , cmaxStairsNum = 2 + 1 `d` 2
   , cescapeFreq   = []
   , cstairFreq    = [ (WALLED_LIFT, 50), (OPEN_LIFT, 50)
                     , (TINY_LIFT, 1) ]
@@ -144,7 +144,7 @@ residential = rogue
   , cauxConnects  = 1%10  -- differentiate; bare skeleton feel; long span paths
   , cplaceFreq    = [(ROGUE, 1), (RESIDENTIAL, 49)]
   , cdefTile      = FILLER_WALL
-  , cmaxStairsNum = 1 + 1 `d` 2
+  , cmaxStairsNum = 3 + 1 `d` 2
   , cstairFreq    = [ (WALLED_STAIRCASE, 50), (OPEN_STAIRCASE, 50)
                     , (TINY_STAIRCASE, 1) ]
   , cstairAllowed = [ (WALLED_LIFT, 50), (OPEN_LIFT, 50)
@@ -209,6 +209,7 @@ casino = arena
   , cfenceTileS   = HABITAT_CONTAINMENT_WALL
   , cfenceTileW   = HABITAT_CONTAINMENT_WALL
   , cminStairDist = 10
+  , cmaxStairsNum = 2  -- to make possible 2 stairs in the last cave
   , cdesc         = "The establishment is no longer filled with hollow-eyed gamblers; more dangerous things now lurk in the dark."
   }
 museum = arena
@@ -233,6 +234,7 @@ museum = arena
   , cfenceTileS   = HABITAT_CONTAINMENT_WALL
   , cfenceTileW   = HABITAT_CONTAINMENT_WALL
   , cminStairDist = 10
+  , cmaxStairsNum = 1
   , cdesc         = "History has shown that museal treasures are safer in space than anywhere on Earth. Also, cruise passengers eagerly visit exhibitions, even if over the weeks of the journey they become increasingly a captive audience. That rarely applies to spaceship crew and yet museum security has a particularly keen eye for the working men visiting their establishments. Quite often a museum is the only place within millions of kilometers to house a desperately needed tool, old but sturdy beyond anything a 3D printer could produce."
   }
 laboratory = rogue
@@ -353,7 +355,6 @@ empty = rogue
   , cwallTile     = OPENABLE_WALL
   , cfenceApart   = True  -- ensures no cut-off border airlocks and tanks
   , cminStairDist = 40
-  , cmaxStairsNum = 1
   , cstairFreq    = [ (WALLED_LIFT, 20), (CLOSED_LIFT, 80)
                     , (TINY_LIFT, 1) ]
   , cstairAllowed = [ (WALLED_STAIRCASE, 20), (CLOSED_STAIRCASE, 80)
@@ -374,7 +375,7 @@ exit = empty
   , cfenceTileE   = HABITAT_CONTAINMENT_WALL
   , cfenceTileS   = AIRLOCK_FENCE
   , cfenceTileW   = HABITAT_CONTAINMENT_WALL
-  , cmaxStairsNum = 2
+  , cmaxStairsNum = 1 + 1 `d` 2
   , cescapeFreq   = [(ESCAPE_FROM_SPACESHIP_DOWN, 1)]
   , cstairFreq    = [(WALLED_LIFT, 20), (TINY_LIFT, 1)]
   , cstairAllowed = [(WALLED_STAIRCASE, 20), (TINY_STAIRCASE, 1)]
@@ -402,6 +403,7 @@ outermost = empty
   , cfenceTileE   = HABITAT_CONTAINMENT_WALL
   , cfenceTileS   = EMPTY_AIRLOCK_FENCE
   , cfenceTileW   = HABITAT_CONTAINMENT_WALL
+  , cmaxStairsNum = 2
   , cdesc         = "This is as far as one can go \"down\". The void outside sucks light through the oriel and airlock glass in the walls and floor of this outermost level. Each minute, the dusky melancholic light of the distant Sun attempts for a few seconds to squeeze in but is repelled by artificial lighting. The mucky floor marked by unkempt greenery looks misleadingly straight, its curvature noticeable only across the whole extent of the hull section. Overflowing water basins and series of hanging and stacked tanks double as radiation shields. Hoses writhe on the ground and dangle in thick knots from the ceiling.\nSomewhere here must be the airlock you docked your shuttle to and stacked your supplies against. This deck is the main pressurized cargo bay and storage, with the only other docking hub for small craft located among the giant spaceship's upper levels."
       -- E and W sides are borders with other level sections, so no oriels.
   }
