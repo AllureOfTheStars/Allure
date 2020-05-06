@@ -347,7 +347,7 @@ harpoon = ItemKind
   , iaspects = [ Timeout 7
                , AddSkill SkHurtMelee $ (-4 + 1 `d` 3) * 5
                , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotWeaponBig ]
+               , EqpSlot EqpSlotWeaponBig ]  -- AI wields for fun despite stats
   , ieffects = [PullActor (ThrowMod 200 50 1)]  -- 1 step, fast
   , idesc    = "A cargo-hook with a high-tension cord that makes the entangled victim easy to unbalance with a strong pull."
   , ikit     = []
@@ -1426,8 +1426,9 @@ necklace1 = necklaceTemplate
 necklace3 = necklaceTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
   , iaspects = [ ELabel "of fearful listening"
-               , Timeout 30
-                   -- has to be as large as Calm drain or item not removable
+               , Timeout 40
+                   -- has to be larger than Calm drain or item not removable;
+                   -- equal is not enough if enemies drained Calm already
                , AddSkill SkHearing 2 ]
                ++ iaspects_necklaceTemplate
   , ieffects = [ Detect DetectActor 10  -- can be applied; destroys the item
