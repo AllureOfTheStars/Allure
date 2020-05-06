@@ -961,7 +961,7 @@ scroll10 = scrollTemplate
 scroll11 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , irarity  = [(10, 8)]
-  , ieffects = [PushActor (ThrowMod 400 200 1)]  -- 8 steps, 4 turns
+  , ieffects = [PushActor (ThrowMod 400 100 1)]  -- 4 steps, 2 turns
   }
 scroll12 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]

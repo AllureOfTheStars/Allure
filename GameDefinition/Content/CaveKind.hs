@@ -173,7 +173,8 @@ arena = rogue
                     , (IK.AQUATIC, 10) ]
   , citemNum      = 9 `d` 4  -- few rooms
   , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 20)
-                    , (IK.TREASURE, 40), (GARDENING_TOOL, 500)
+                    , (IK.TREASURE, 40)
+                    , (GARDENING_TOOL, 200)  -- useless and boring by this point
                     , (IK.ANY_POTION, 80) ]  -- nature
   , cplaceFreq    = [(ARENA, 1)]
   , cpassable     = True
