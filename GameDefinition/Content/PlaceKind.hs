@@ -402,7 +402,7 @@ colonnade = PlaceKind
   { psymbol  = 'c'
   , pname    = "a colonnade"
   , pfreq    = [ (ROGUE, 12), (NOISE, 1000), (ESCAPE, 200)
-               , (EXIT, 150), (RAID, 12) ]
+               , (EXIT, 30), (RAID, 12) ]
   , prarity  = [(1, 12), (10, 12)]
   , pcover   = CAlternate
   , pfence   = FFloor
@@ -558,7 +558,7 @@ fogClump2 = fogClump
 smokeClump = PlaceKind
   { psymbol  = 's'
   , pname    = "a smoky patch"
-  , pfreq    = [(EXIT, 70), (ZOO, 40), (AMBUSH, 50)]
+  , pfreq    = [(EXIT, 20), (ZOO, 40), (AMBUSH, 50)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -572,7 +572,7 @@ smokeClump = PlaceKind
                    , ('·', S_FLOOR_ACTOR_LIT) ]
   }
 smokeClump2 = smokeClump
-  { pfreq    = [(EXIT, 300), (ZOO, 200), (AMBUSH, 150)]
+  { pfreq    = [(EXIT, 100), (ZOO, 200), (AMBUSH, 150)]
   , ptopLeft = [ "X;f"
                , "f;f"
                , ";;f"
@@ -1320,7 +1320,7 @@ maze = PlaceKind
   { psymbol  = 'm'
   , pname    = "an intricate maze"
   , pfreq    = [ (ROGUE, 60), (LABORATORY, 1500), (ARENA, 3)
-               , (MUSEUM, 3), (EXIT, 200), (RAID, 60) ]
+               , (MUSEUM, 3), (EXIT, 100), (RAID, 60) ]
   , prarity  = [(1, 1)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -1345,7 +1345,7 @@ maze = PlaceKind
   }
 maze2 = maze
   { pfreq    = [ (ROGUE, 120), (LABORATORY, 12000), (ARENA, 4)
-               , (MUSEUM, 4), (EXIT, 200), (RAID, 120) ]
+               , (MUSEUM, 4), (EXIT, 100), (RAID, 120) ]
   , ptopLeft = [ "#·%%·"
                , "·%··#"
                , "···#·"
@@ -1353,7 +1353,7 @@ maze2 = maze
   }
 maze3 = maze
   { pfreq    = [ (ROGUE, 120), (LABORATORY, 1000), (ARENA, 8)
-               , (MUSEUM, 4), (EMPTY, 300), (EXIT, 100), (RAID, 120) ]
+               , (MUSEUM, 4), (EMPTY, 300), (EXIT, 50), (RAID, 120) ]
   , ptopLeft = [ "#·ff·"
                , "·f··#"
                , "···#;"
@@ -1361,7 +1361,7 @@ maze3 = maze
   }
 maze4 = maze
   { pfreq    = [ (ROGUE, 300), (LABORATORY, 15000), (ARENA, 9)
-               , (EXIT, 300), (RAID, 300) ]
+               , (EXIT, 200), (RAID, 300) ]
   , ptopLeft = [ "##·##·"
                , "#·#··#"
                , "~·f···"
@@ -1476,19 +1476,19 @@ tank = PlaceKind
   }
 tank2 = tank
   { pname    = "a barrel stack"
-  , pfreq    = [(EMPTY, 30), (EXIT, 10), (NOISE, 1), (BATTLE, 1)]
+  , pfreq    = [(EMPTY, 30), (EXIT, 2), (NOISE, 1), (BATTLE, 1)]
   , ptopLeft = [ "b"
                ]
   }
 tank3 = tank
-  { pfreq    = [(EMPTY, 150), (EXIT, 50), (NOISE, 50), (BATTLE, 25)]
+  { pfreq    = [(EMPTY, 150), (EXIT, 15), (NOISE, 50), (BATTLE, 25)]
   , ptopLeft = [ "0#"
                , "##"
                ]
   }
 tank4 = tank
   { pname    = "a barrel stack"
-  , pfreq    = [(EMPTY, 150), (EXIT, 50), (NOISE, 50), (BATTLE, 25)]
+  , pfreq    = [(EMPTY, 150), (EXIT, 8), (NOISE, 50), (BATTLE, 25)]
   , ptopLeft = [ "Xb"
                , "bb"
                ]
@@ -1513,14 +1513,14 @@ tank6 = tank
                ]
   }
 tank7 = tank
-  { pfreq    = [(EMPTY, 300), (EXIT, 50), (NOISE, 100), (BATTLE, 50)]
+  { pfreq    = [(EMPTY, 300), (EXIT, 5), (NOISE, 100), (BATTLE, 50)]
   , ptopLeft = [ "rr#"
                , "r##"
                , "###"
                ]
   }
 tank8 = tank
-  { pfreq    = [(EMPTY, 500), (EXIT, 150), (NOISE, 150), (BATTLE, 70)]
+  { pfreq    = [(EMPTY, 500), (EXIT, 15), (NOISE, 150), (BATTLE, 70)]
   , ptopLeft = [ "XX0#"
                , "Xrr#"
                , "0r##"
@@ -1539,7 +1539,7 @@ tank9 = tank
   }
 tank10 = tank
   { pname    = "a cistern"
-  , pfreq    = [(EMPTY, 500), (EXIT, 150), (NOISE, 150), (BATTLE, 70)]
+  , pfreq    = [(EMPTY, 500), (EXIT, 15), (NOISE, 150), (BATTLE, 70)]
   , ptopLeft = [ "XXr#"
                , "Xr##"
                , "r###"
