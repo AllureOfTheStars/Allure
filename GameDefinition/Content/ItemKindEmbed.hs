@@ -1019,14 +1019,14 @@ workshopAssocs =
       , (2, S_SPACESUIT_GLOVE), (1, S_SPACESUIT_HELMET)
       , (2, S_SPACESUIT_BOOT) ]
     , [(1, S_SPACESUIT)] )
- -- Recipes that destroy more useful things than other recipes come last:
+ -- Recipes that destroy more useful things than other recipes come last.
+  , ( [(1, PERFUME)], [(1, WATER_SOURCE), (5, S_EMPTY_FLASK)]
+    , [(6, S_ROSE_WATER_FLASK)] )  -- the extra container is from water source
   , ( [(1, WIRECUTTING_TOOL)], [(1, S_SPACESUIT_TORN)]
     , [(2, SPACESUIT_PART), (1, S_RAG_TANGLE)] )
   , ([], [(3, WASTE_CONTAINER)], [(1, S_REFRIGERATION_COIL)])
-  , ([], [(1, HANDLE_AND_STEEL)], [(1, HANDLE), (1, STEEL_SCRAP)])
   , ( [(1, BREACHING_TOOL)], [(1, POLE_AND_STEEL)]  -- harder to dismantle
     , [(1, POLE), (1, STEEL_SCRAP)] )
       -- this rule magically changes stiff poles into jumping poles; who cares
-  , ( [(1, PERFUME)], [(1, WATER_SOURCE), (5, S_EMPTY_FLASK)]
-    , [(6, S_ROSE_WATER_FLASK)] )  -- the extra container is from water source
+  , ([], [(1, HANDLE_AND_STEEL)], [(1, HANDLE), (1, STEEL_SCRAP)])
   ]
