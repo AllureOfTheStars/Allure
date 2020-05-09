@@ -271,7 +271,7 @@ laboratory = rogue
   , cstairAllowed = [ (DECONTAMINATING_WALLED_LIFT, 50)
                     , (DECONTAMINATING_OPEN_LIFT, 50)
                     , (DECONTAMINATING_TINY_LIFT, 1) ]
-  , cdesc         = "Shattered glassware and the sharp scent of spilt chemicals show that something terrible happened here."
+  , cdesc         = "Shattered glassware and the sharp scent of spilt chemicals show that something terrible happened here. The reinforced bulkheads muffle furious roars."  -- a fair warning to skip the level or regroup
   }
 noise = rogue
   { csymbol       = 'N'
