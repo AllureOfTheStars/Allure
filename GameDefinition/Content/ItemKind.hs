@@ -1928,12 +1928,13 @@ buckler = ItemKind
   , irarity  = [(4, 6)]
   , iverbHit = "bash"
   , iweight  = 2000
-  , idamage  = 0  -- safe to be used on self
+  , idamage  = 1 `d` 1
   , iaspects = [ Timeout $ (3 + 1 `d` 3 - 1 `dL` 3) * 2
                , AddSkill SkArmorMelee 40
                , AddSkill SkSpeed (-1)  -- the main price to pay
                , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotArmorMelee ]
+               , EqpSlot EqpSlotArmorMelee
+               , toVelocity 50 ]  -- unwieldy to throw
   , ieffects = [PushActor (ThrowMod 200 50 1)]  -- 1 step, fast
   , idesc    = "Heavy and unwieldy arm protection made from an outer airlock panel. Absorbs a percentage of melee damage, both dealt and sustained. Too small to intercept projectiles with."
   , ikit     = []
