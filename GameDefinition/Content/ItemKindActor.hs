@@ -886,7 +886,7 @@ dustFaucet = ItemKind
                , (IMMOBILE_ROBOT, 30) ]  -- except when other faucets around
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(3, 20), (10, 5)]
+  , irarity  = [(3, 18), (10, 6)]
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0

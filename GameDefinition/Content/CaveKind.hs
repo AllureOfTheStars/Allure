@@ -388,7 +388,7 @@ exit = empty
 outermost = empty
   { cname         = "Outermost deck"
   , cfreq         = [(CAVE_OUTERMOST, 100)]
-  , cactorCoeff   = 5  -- shallower than LH, so fewer immediate actors, so boost
+  , cactorCoeff   = 4  -- shallower than LH, so fewer immediate actors, so boost
   , cactorFreq    = [ (ANIMAL, 3), (ROBOT, 1)
                     , (IMMOBILE_ROBOT, 90), (IMMOBILE_ANIMAL, 2)
                     , (AQUATIC_ANIMAL, 2) ]  -- (AQUATIC_ROBOT, 2)
