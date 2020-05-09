@@ -1916,6 +1916,9 @@ ragTangle = sandstoneRock
   }
 -- Shield doesn't protect against ranged attacks to prevent
 -- micromanagement: walking with shield, melee without.
+-- Their biggest power is pushing enemies, which however reduces
+-- to 1 extra damage point if no clear space behind enemy.
+-- So they require keen tactical management.
 -- Note that AI will pick them up but never wear and will use them at most
 -- as a way to push itself. Despite being @Meleeable@, they will not be used
 -- as weapons either. This is OK, using shields smartly is totally beyond AI.
@@ -1936,7 +1939,7 @@ buckler = ItemKind
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- unwieldy to throw
   , ieffects = [PushActor (ThrowMod 200 50 1)]  -- 1 step, fast
-  , idesc    = "Heavy and unwieldy arm protection made from an outer airlock panel. Absorbs a percentage of melee damage, both dealt and sustained. Too small to intercept projectiles with."
+  , idesc    = "Heavy and unwieldy arm protection made from an outer airlock panel. Absorbs a percentage of melee damage, both dealt and sustained. Too small to intercept projectiles with. Requires positional awareness when used as a weapon."
   , ikit     = []
   }
 shield = buckler
@@ -1953,7 +1956,7 @@ shield = buckler
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- unwieldy to throw
   , ieffects = [PushActor (ThrowMod 400 50 1)]  -- 2 steps, fast
-  , idesc    = "Large and unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Too heavy to intercept projectiles with."
+  , idesc    = "Large and unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Too heavy to intercept projectiles with. Requires particularly keen positional awareness when used as a weapon."
   }
 shield2 = shield
   { ifreq    = [(COMMON_ITEM, 20), (MUSEAL, 100), (S_SHIELD_BLUNT, 1)]
