@@ -1955,15 +1955,14 @@ shield = buckler
   , idesc    = "Large and unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Too heavy to intercept projectiles with."
   }
 shield2 = shield
-  { ifreq    = [(COMMON_ITEM, 10), (MUSEAL, 50), (S_SHIELD_BLUNT, 1)]
-                  -- very low base rarity
+  { ifreq    = [(COMMON_ITEM, 20), (MUSEAL, 100), (S_SHIELD_BLUNT, 1)]
   , iweight  = 6000
-  , idamage  = 5 `d` 1
+  , idamage  = 4 `d` 1
   , idesc    = "A relic of long-past wars, heavy and with a central spike, which is however misaligned and dull."
   }
 shield3 = shield2
   { ifreq    = [(COMMON_ITEM, 2), (MUSEAL, 10), (S_SHIELD_SHARP, 1)]
-  , idamage  = 10 `d` 1
+  , idamage  = 7 `d` 1
   , idesc    = "A relic of long-past wars, heavy and with a sharp central spike."
   }
 
