@@ -342,7 +342,7 @@ harpoon = ItemKind
   , icount   = 1  -- durable, so one piece lasts long
   , irarity  = [(1, 17)]
   , iverbHit = "hook"
-  , iweight  = 1600
+  , iweight  = 1500  -- high damage and reusable, but one shot less via pulling
   , idamage  = 5 `d` 1
   , iaspects = [ Timeout 7
                , AddSkill SkHurtMelee $ (-4 + 1 `d` 3) * 5
@@ -355,15 +355,15 @@ harpoon = ItemKind
 harpoon2 = harpoon
   { iname    = "sharp harpoon"
   , ifreq    = [(COMMON_ITEM, 1), (HARPOON, 2), (S_HARPOON_SHARP, 1)]
-  , idamage  = 7 `d` 1
+  , idamage  = 8 `d` 1
   , idesc    = "A cord ending in a sharpened cargo-hook that, in addition to entangling the victim, gains purchase biting into the body."
   }
 harpoon3 = harpoon
   { iname    = "whaling harpoon"
-  , ifreq    = [(TREASURE, 25), (MUSEAL, 100)]
+  , ifreq    = [(TREASURE, 15), (MUSEAL, 100)]
   , iflavour = zipFancy [Red]
   , irarity  = [(8, 4)]
-  , idamage  = 8 `d` 1
+  , idamage  = 7 `d` 1
   , iaspects = [SetFlag Unique] ++ iaspects harpoon
   , ieffects = Yell  -- evoke a cry from pain; brutal
                : ieffects harpoon
