@@ -1182,11 +1182,12 @@ torchDestruct =
 light1 = ItemKind
   { isymbol  = symbolLight
   , iname    = "torch"
-  , ifreq    = [ (COMMON_ITEM, 50), (LIGHT_MANIPULATION, 100)
+  , ifreq    = [ (COMMON_ITEM, 10), (LIGHT_MANIPULATION, 100), (WEAK_ARROW, 300)
                , (FIRE_SOURCE, 1), (S_WOODEN_TORCH, 1) ]
   , iflavour = zipPlain [Brown]
   , icount   = 1
-  , irarity  = [(1, 3)]  -- crafted, so rare
+  , irarity  = [(3 * 10/15, 15), (4 * 10/15, 1)]
+                 -- crafted, so rare; later taken from aliens
   , iverbHit = "scorch"
   , iweight  = 1000
   , idamage  = 1 `d` 1  -- strong missile, but betrays the flinger
