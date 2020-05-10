@@ -173,7 +173,7 @@ tmpBonusSkAggresion =
 tmpRegenerating =
   tmpEffects S_REGENERATING (4 + 1 `d` 2) [RefillHP 1]
 tmpPoisoned =
-  tmpEffects S_POISONED (4 + 1 `d` 2) [RefillHP (-1)]
+  tmpEffects S_POISONED (3 + 1 `d` 2) [RefillHP (-1)]
 tmpSlow10Resistant =
   tmpEffects S_SLOW_RESISTANT (8 + 1 `d` 4)
              [DropItem 1 1 COrgan S_SLOWED]
