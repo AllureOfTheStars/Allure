@@ -581,7 +581,7 @@ smokeClump2 = smokeClump
   }
 smokeClump3FGround = smokeClump
   { pname    = "a burned out area"
-  , pfreq    = [(LABORATORY, 25)]
+  , pfreq    = [(LABORATORY, 50)]  -- close to guaranteed, but not overcrowded
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FGround
