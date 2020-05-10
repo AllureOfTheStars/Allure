@@ -1368,21 +1368,18 @@ maze4 = maze
                ]
   }
 mazeBig = maze
-  { pfreq    = [ (ROGUE, 600), (LABORATORY, 3000), (ARENA, 5000)
-               , (EXIT, 400), (RAID, 600) ]
+  { pfreq    = [ (ROGUE, 1500), (LABORATORY, 8000), (ARENA, 10000)
+               , (EXIT, 1000), (RAID, 300) ]
   , pfence   = FNone
-  , ptopLeft = [ "X$$$$"
-               , "$·##·"
-               , "$#···"
-               , "$#·p%"
-               , "$··%i"
+  , ptopLeft = [ "X$$$$$"
+               , "$··##·"
+               , "$#····"
+               , "$#·p%%"
+               , "$··%:i"
                ]
   }
-mazeBig2 = maze
-  { pfreq    = [ (ROGUE, 1200), (LABORATORY, 8000), (ARENA, 10000)
-               , (EXIT, 700), (RAID, 1200) ]
-  , pfence   = FNone
-  , ptopLeft = [ "XX$$$~"
+mazeBig2 = mazeBig
+  { ptopLeft = [ "XX$$$~"
                , "X#···%"
                , "$·###·"
                , "$·p&%%"
@@ -1435,7 +1432,7 @@ cells5 = cells  -- this one is distinct enough from others, so needs a boost
   { pname    = "broken robot holds"
   , pfreq    = [ (ROGUE, 20), (LABORATORY, 15)
                , (EMPTY, 80), (EXIT, 70), (NOISE, 150) ]
-  , ptopLeft = [ "··w"
+  , ptopLeft = [ ":·w"
                , "··w"
                , "wwo"
                ]
