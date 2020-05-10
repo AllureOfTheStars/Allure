@@ -882,11 +882,11 @@ medbotFaucet = ItemKind
 dustFaucet = ItemKind
   { isymbol  = 'f'
   , iname    = "dust faucet"
-  , ifreq    = [ (ROBOT, 3)  -- usually nothing to ignite
+  , ifreq    = [ (ROBOT, 4)  -- usually nothing to ignite
                , (IMMOBILE_ROBOT, 30) ]  -- except when other faucets around
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(3, 18), (10, 6)]
+  , irarity  = [(3, 20), (10, 6)]
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0

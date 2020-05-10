@@ -399,7 +399,7 @@ outermost = empty
       -- abused, because they spawn less and less often and also HP doesn't
       -- effectively accumulate over max.
   , citemFreq     = [ (IK.COMMON_ITEM, 50), (IK.CRAWL_ITEM, 50)
-                    , (GARDENING_TOOL, 600) ]
+                    , (GARDENING_TOOL, 700) ]
   , cfenceTileN   = ORIELS_FENCE
   , cfenceTileE   = HABITAT_CONTAINMENT_WALL
   , cfenceTileS   = EMPTY_AIRLOCK_FENCE

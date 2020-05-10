@@ -360,7 +360,7 @@ harpoon2 = harpoon
   }
 harpoon3 = harpoon
   { iname    = "whaling harpoon"
-  , ifreq    = [(TREASURE, 15), (MUSEAL, 100)]
+  , ifreq    = [(TREASURE, 15), (MUSEAL, 70)]
   , iflavour = zipFancy [Red]
   , irarity  = [(8, 4)]
   , idamage  = 7 `d` 1
@@ -933,7 +933,7 @@ scroll6 = scrollTemplate
   }
 scroll7 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(10, 18)]  -- at endgame a crucial item may be missing
+  , irarity  = [(10, 20)]  -- at endgame a crucial item may be missing
   , iaspects = ELabel "of molecular reconfiguration"
                : iaspects scrollTemplate
   , ieffects = [PolyItem `AndEffect` Explode S_FIRECRACKER]
@@ -965,14 +965,14 @@ scroll11 = scrollTemplate
   }
 scroll12 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(10, 14)]
+  , irarity  = [(8, 16)]
   , iaspects = ELabel "of molecular duplication"
                : iaspects scrollTemplate
   , ieffects = [DupItem]
   }
 scroll13 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(10, 14)]
+  , irarity  = [(8, 16)]
   , iaspects = ELabel "of surface reconfiguration"
                : iaspects scrollTemplate
   , ieffects = [RerollItem]
@@ -1502,7 +1502,7 @@ necklace10 = necklaceTemplate
 motionScanner = necklaceTemplate
   { iname    = "handheld sonar"
   , ifreq    = [(COMMON_ITEM, 100), (ADD_NOCTO_1, 20)]
-  , irarity  = [(5, 2)]
+  , irarity  = [(5, 3)]
   , iverbHit = "ping"
   , iweight  = 300  -- almost gives it away
   , iaspects = [ Timeout $ 4 + 1 `dL` 6
@@ -1540,7 +1540,7 @@ sightSharpening = ringTemplate  -- small and round, so mistaken for a ring
       -- it's has to be very rare, because it's powerful and not unique,
       -- and also because it looks exactly as one of necklaces, so it would
       -- be misleading when seen on the map
-  , irarity  = [(7, 1), (10, 12)]  -- low @ifreq@
+  , irarity  = [(7, 1), (10, 10)]  -- low @ifreq@
   , iweight  = 50  -- heavier that it looks, due to glass
   , iaspects = [ AddSkill SkSight $ 1 + 1 `dL` 2
                , AddSkill SkHurtMelee $ (-1 + 1 `d` 3) * 3
@@ -1960,13 +1960,13 @@ shield = buckler
   , idesc    = "Large and unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Too heavy to intercept projectiles with. Requires particularly keen positional awareness when used as a weapon."
   }
 shield2 = shield
-  { ifreq    = [(COMMON_ITEM, 20), (MUSEAL, 100), (S_SHIELD_BLUNT, 1)]
+  { ifreq    = [(COMMON_ITEM, 20), (MUSEAL, 50), (S_SHIELD_BLUNT, 1)]
   , iweight  = 6000
   , idamage  = 4 `d` 1
   , idesc    = "A relic of long-past wars, heavy and with a central spike, which is however misaligned and dull."
   }
 shield3 = shield2
-  { ifreq    = [(COMMON_ITEM, 2), (MUSEAL, 10), (S_SHIELD_SHARP, 1)]
+  { ifreq    = [(COMMON_ITEM, 1), (MUSEAL, 3), (S_SHIELD_SHARP, 1)]
   , idamage  = 7 `d` 1
   , idesc    = "A relic of long-past wars, heavy and with a sharp central spike."
   }
@@ -2020,7 +2020,7 @@ laserSharpener = honingSteel
   , irarity  = [(10, 4)]
   , iweight  = 2000
   , idamage  = 0
-  , iaspects = [ SetFlag Unique, Timeout 10
+  , iaspects = [ SetFlag Unique, Timeout 7
                , SetFlag Durable, SetFlag Meleeable, EqpSlot EqpSlotWeaponBig
                , toVelocity 0 ]  -- @Burn@ not effective when thrown
   , ieffects = [Burn 5]  -- really harmful when used as a sharpener; intended
@@ -2034,7 +2034,7 @@ crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
   , irarity  = [(1, 6), (3 * 10/15, 6), (4 * 10/15, 1)]
   , iverbHit = "gouge"
   , idamage  = 2 `d` 1
-  , iaspects = [ Timeout $ 3 + 2 `d` 2
+  , iaspects = [ Timeout $ 3 + 1 `d` 2
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 0 ]  -- totally unbalanced
@@ -2051,7 +2051,7 @@ catsPaw = chisel
   , irarity  = [(1, 12), (3 * 10/15, 12), (4 * 10/15, 1)]
   , iverbHit = "paw"
   , idamage  = 1 `d` 1
-  , iaspects = [ Timeout $ 2 + 1 `d` 2
+  , iaspects = [ Timeout $ 1 + 1 `d` 2
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
                , toVelocity 0 ]  -- totally unbalanced
@@ -2083,7 +2083,7 @@ longClub = shortClub
   , iflavour = zipFancy [Cyan]
   , iweight  = 3500
   , idamage  = 3 `d` 1  -- from two scraps
-  , iaspects = [ Timeout $ 3 + 1 `d` 2
+  , iaspects = [ Timeout $ 2 + 1 `d` 2
                , SetFlag Durable, SetFlag Meleeable, EqpSlot EqpSlotWeaponFast
                , toVelocity 0 ]  -- totally unbalanced
   , ieffects = [RefillHP (-2)]
@@ -2192,7 +2192,7 @@ knife = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 100), (S_CLEAVER, 1)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(1, 3), (3, 3), (5, 30), (9, 1)]
+  , irarity  = [(1, 3), (3, 3), (5, 35), (9, 1)]
                  -- useful initially and for crafting mid-game
   , iverbHit = "cut"
   , iweight  = 1000
@@ -2279,7 +2279,7 @@ swordNullifySharp = swordNullify
 halberd = ItemKind  -- long pole
   { isymbol  = symbolPolearm
   , iname    = "pole cleaver"
-  , ifreq    = [ (COMMON_ITEM, 5), (POLE_AND_STEEL, 1)
+  , ifreq    = [ (COMMON_ITEM, 3), (POLE_AND_STEEL, 1)
                , (STARTING_WEAPON, 50), (S_POLE_CLEAVER, 1) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
