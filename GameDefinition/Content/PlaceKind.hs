@@ -1782,15 +1782,15 @@ switchLiftToGated s = s
 overrideDecontaminatingStaircase :: [(Char, GroupName TileKind)]
 overrideDecontaminatingStaircase =
   [ ('<', DECONTAMINATING_STAIRCASE_UP)
-  , ('>', DECONTAMINATING_STAIRCASE_DOWN)
+  , ('>', S_STAIRCASE_TRAP_DOWN_OIL)  -- talter high enough
   , ('I', SIGNBOARD), ('S', FILLER_WALL) ]
 
 switchStaircaseToDecontaminating :: PlaceKind -> PlaceKind
 switchStaircaseToDecontaminating s = s
  { psymbol   = 'd'
  , pfreq     = map (first (\t -> GroupName $ "decontaminating"
-                                               <+> fromGroupName t))
-               $ pfreq s
+                                             <+> fromGroupName t))
+                   (pfreq s)
  , poverrideDark = overrideDecontaminatingStaircase
  , poverrideLit = overrideDecontaminatingStaircase
  }
@@ -1798,15 +1798,15 @@ switchStaircaseToDecontaminating s = s
 overrideDecontaminatingLift :: [(Char, GroupName TileKind)]
 overrideDecontaminatingLift =
   [ ('<', DECONTAMINATING_LIFT_UP)
-  , ('>', DECONTAMINATING_LIFT_DOWN)
+  , ('>', STAIRCASE_LIFT_DOWN)
   , ('I', SIGNBOARD), ('S', S_LIFT_SHAFT) ]
 
 switchLiftToDecontaminating :: PlaceKind -> PlaceKind
 switchLiftToDecontaminating s = s
  { psymbol   = 'd'
  , pfreq     = map (first (\t -> GroupName $ "decontaminating"
-                                               <+> fromGroupName t))
-               $ pfreq s
+                                             <+> fromGroupName t))
+                   (pfreq s)
  , poverrideDark = overrideDecontaminatingLift
  , poverrideLit = overrideDecontaminatingLift
  }
