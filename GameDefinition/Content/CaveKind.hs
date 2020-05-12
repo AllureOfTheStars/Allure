@@ -263,14 +263,14 @@ laboratory = rogue
   , clitCorTile   = LAB_TRAIL_LIT
   , cminStairDist = 25
   , cmaxStairsNum = 1 `d` 2
-  , cstairFreq    = [ (DECONTAMINATING_WALLED_STAIRCASE, 50)
-                    , (DECONTAMINATING_OPEN_STAIRCASE, 50)
-                    , (DECONTAMINATING_TINY_STAIRCASE, 1) ]
-      -- In lone wolf challenge, the player better summoned or dominated
-      -- any helpers by this point. If not, good luck fighting bare-handed.
-  , cstairAllowed = [ (DECONTAMINATING_WALLED_LIFT, 50)
+  , cstairFreq    = [ (DECONTAMINATING_WALLED_LIFT, 50)
                     , (DECONTAMINATING_OPEN_LIFT, 50)
                     , (DECONTAMINATING_TINY_LIFT, 1) ]
+      -- In lone wolf challenge, the player better summoned or dominated
+      -- any helpers by this point. If not, good luck fighting bare-handed.
+  , cstairAllowed = [ (DECONTAMINATING_WALLED_STAIRCASE, 50)
+                    , (DECONTAMINATING_OPEN_STAIRCASE, 50)
+                    , (DECONTAMINATING_TINY_STAIRCASE, 1) ]
   , cdesc         = "Shattered glassware and the sharp scent of spilt chemicals show that something terrible happened here. The reinforced bulkheads muffle furious roars."  -- a fair warning to skip the level or regroup
   }
 noise = rogue
@@ -305,10 +305,10 @@ noise = rogue
   , clitCorTile   = DAMP_FLOOR_LIT
   , cminStairDist = 15
   , cmaxStairsNum = 1
-  , cstairFreq    = [ (CLOSED_STAIRCASE, 50), (OPEN_STAIRCASE, 50)
-                    , (TINY_STAIRCASE, 1) ]
-  , cstairAllowed = [ (CLOSED_LIFT, 50), (OPEN_LIFT, 50)
+  , cstairFreq    = [ (CLOSED_LIFT, 50), (OPEN_LIFT, 50)
                     , (TINY_LIFT, 1) ]
+  , cstairAllowed = [ (CLOSED_STAIRCASE, 50), (OPEN_STAIRCASE, 50)
+                    , (TINY_STAIRCASE, 1) ]
   , cdesc         = "Several machines still function, processors whirring through routines scheduled by dead men. Some scattered chips can still be read."
   }
 power = noise
@@ -324,6 +324,7 @@ power = noise
   , cdarkCorTile  = OILY_FLOOR_DARK
   , clitCorTile   = OILY_FLOOR_LIT
   , cmaxStairsNum = 2
+    -- This determines that the continuous staircase uses stairs, not lifts.
   , cstairFreq    = [ (GATED_CLOSED_STAIRCASE, 50)
                     , (GATED_OPEN_STAIRCASE, 50)
                     , (GATED_TINY_STAIRCASE, 1) ]
