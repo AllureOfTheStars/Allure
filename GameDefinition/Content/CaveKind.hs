@@ -236,7 +236,6 @@ museum = arena
   , cfenceTileS   = HABITAT_CONTAINMENT_WALL
   , cfenceTileW   = HABITAT_CONTAINMENT_WALL
   , cminStairDist = 10
-  , cmaxStairsNum = 1
   , cdesc         = "History has shown that museal treasures are safer in space than anywhere on Earth. Also, cruise passengers eagerly visit exhibitions, even if over the weeks of the journey they become increasingly a captive audience. That rarely applies to spaceship crew and yet museum security has a particularly keen eye for the working men visiting their establishments. Quite often a museum is the only place within millions of kilometers to house a desperately needed tool, old but sturdy beyond anything a 3D printer could produce."
   }
 laboratory = rogue
@@ -377,7 +376,7 @@ exit = empty
   , cfenceTileE   = HABITAT_CONTAINMENT_WALL
   , cfenceTileS   = AIRLOCK_FENCE
   , cfenceTileW   = HABITAT_CONTAINMENT_WALL
-  , cmaxStairsNum = 1 + 1 `d` 2
+  , cmaxStairsNum = 2  -- too many hinder generation of shuttles
   , cescapeFreq   = [(ESCAPE_FROM_SPACESHIP_DOWN, 1)]
   , cstairFreq    = [(WALLED_LIFT, 20), (TINY_LIFT, 1)]
   , cstairAllowed = [(WALLED_STAIRCASE, 20), (TINY_STAIRCASE, 1)]
