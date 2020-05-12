@@ -93,8 +93,9 @@ rogue = CaveKind
   , ccellSize     = DiceXY (2 `d` 4 + 10) (1 `d` 3 + 6)
   , cminPlaceSize = DiceXY (2 `d` 2 + 4) (1 `d` 2 + 5)  -- sometimes merge vert.
   , cmaxPlaceSize = DiceXY 16 40  -- often maximize vertically
-  , cdarkOdds     = 1 `d` 54 + 1 `dL` 20
-      -- most rooms lit, to compensate for dark corridors
+  , cdarkOdds     = 1 `d` 50 + 1 `dL` 50
+      -- most rooms lit, to compensate for dark corridors; at the bottom
+      -- of the dungeon, half of the rooms lit
   , cnightOdds    = 51  -- always night
   , cauxConnects  = 1%2
   , cmaxVoid      = 1%8
