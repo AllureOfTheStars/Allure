@@ -472,7 +472,8 @@ signboardUnread = TileKind  -- client only, indicates never used by this faction
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 5
-  , tfeature = [ ConsideredByAI  -- changes after use, so safe for AI
+  , tfeature = [ ConsideredByAI  -- changes after use, so safe for AI, which
+                                 -- in this way uses all kinds of signboards
                , RevealAs SIGNBOARD  -- to display as hidden
                ]
   }

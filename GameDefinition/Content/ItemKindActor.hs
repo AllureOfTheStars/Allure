@@ -409,8 +409,8 @@ torsor = ItemKind
                , (S_SPEED_GLAND_10, COrgan)
                , (S_EYE_6, COrgan), (S_EAR_8, COrgan)
                , (S_SAPIENT_BRAIN, COrgan)
-               , (GEM, CEqp), (GEM, CStash)
-               , (GEM, CEqp), (GEM, CStash) ]
+               , (GEM, CStash), (GEM, CStash)
+               , (GEM, CStash), (GEM, CStash) ]
   }
 
 -- * Animals
