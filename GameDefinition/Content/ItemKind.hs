@@ -1182,7 +1182,7 @@ torchDestruct =
 light1 = ItemKind
   { isymbol  = symbolLight
   , iname    = "torch"
-  , ifreq    = [ (COMMON_ITEM, 10), (LIGHT_MANIPULATION, 100), (WEAK_ARROW, 300)
+  , ifreq    = [ (COMMON_ITEM, 10), (LIGHT_ATTENUATOR, 100), (WEAK_ARROW, 300)
                , (FIRE_SOURCE, 1), (S_WOODEN_TORCH, 1) ]
   , iflavour = zipPlain [Brown]
   , icount   = 1
@@ -1213,7 +1213,7 @@ lightDoused1 = light1
 light2 = ItemKind
   { isymbol  = symbolLight
   , iname    = "oil lamp"
-  , ifreq    = [ (COMMON_ITEM, 50), (LIGHT_MANIPULATION, 100)
+  , ifreq    = [ (COMMON_ITEM, 50), (LIGHT_ATTENUATOR, 100)
                , (S_OIL_LAMP, 1) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
@@ -1241,7 +1241,7 @@ lightDoused2 = light2
 light3 = ItemKind
   { isymbol  = symbolLight
   , iname    = "brass lantern"
-  , ifreq    = [(COMMON_ITEM, 100), (MUSEAL, 100), (LIGHT_MANIPULATION, 5)]
+  , ifreq    = [(COMMON_ITEM, 100), (MUSEAL, 100), (LIGHT_ATTENUATOR, 5)]
   , iflavour = zipPlain [Red]
   , icount   = 1
   , irarity  = [(6, 1), (10, 4)]
@@ -1260,7 +1260,7 @@ light3 = ItemKind
 blanket = ItemKind
   { isymbol  = symbolLight
   , iname    = "mineral fibre blanket"
-  , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_MANIPULATION, 20), (BLANKET, 1)
+  , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_ATTENUATOR, 20), (BLANKET, 1)
                , (THICK_CLOTH, 1), (FIREPROOF_CLOTH, 1)
                , (FIRE_FIGHTING_ITEM, 60) ]
   , iflavour = zipPlain [Magenta]

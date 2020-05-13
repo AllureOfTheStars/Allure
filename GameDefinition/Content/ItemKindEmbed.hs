@@ -100,7 +100,7 @@ pattern DECONTAMINATION_CHAMBER = GroupName "decontamination chamber"
 pattern BARREL_CONTENTS = GroupName "barrel contents"
 pattern WORKSHOP_BENCH = GroupName "workshop bench"
 
-pattern MUSEAL = GroupName "museal"
+pattern MUSEAL = GroupName "museal item"
 pattern EDIBLE_PLANT = GroupName "edible plant"
 pattern FIRE_FIGHTING_ITEM = GroupName "fire fighting item"
 pattern STEEL_SCRAP = GroupName "steel scrap"

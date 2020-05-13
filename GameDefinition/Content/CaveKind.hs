@@ -473,7 +473,7 @@ raid = rogue
   , citemNum      = 9 `d` 6  -- just one level, hard enemies, treasure
   , citemFreq     = [ (IK.COMMON_ITEM, 30)
                     , (STARTING_ARMOR, 100), (STARTING_WEAPON, 200)
-                    , (WEAK_ARROW, 100), (LIGHT_MANIPULATION, 300)
+                    , (WEAK_ARROW, 100), (LIGHT_ATTENUATOR, 300)
                     , (IK.S_CURRENCY, 400), (IK.ANY_SCROLL, 200) ]
                     -- introducing chips in this scenario
   , cplaceFreq    = [(RAID, 1)]
@@ -599,7 +599,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , cactorFreq    = []
   , citemNum      = 8 `d` 8
   , citemFreq     = [ (IK.COMMON_ITEM, 30), (STARTING_ARMOR, 100)
-                    , (LIGHT_MANIPULATION, 200), (GEM, 150)
+                    , (LIGHT_ATTENUATOR, 200), (GEM, 150)
                     , (WEAK_ARROW, 400), (HARPOON, 200), (IK.EXPLOSIVE, 200) ]
   , cplaceFreq    = [(ESCAPE, 1)]
   , cpassable     = True
@@ -629,7 +629,7 @@ zoo = rogue  -- few lights and many solids, to help the less numerous heroes
   , chidden       = 0
   , cactorFreq    = []
   , citemNum      = 9 `d` 8
-  , citemFreq     = [ (IK.COMMON_ITEM, 100), (LIGHT_MANIPULATION, 1000)
+  , citemFreq     = [ (IK.COMMON_ITEM, 100), (LIGHT_ATTENUATOR, 1000)
                     , (STARTING_ARMOR, 500), (STARTING_WEAPON, 1000) ]
   , cplaceFreq    = [(ZOO, 1)]
   , cpassable     = True
@@ -696,7 +696,7 @@ battle = rogue  -- few lights and many solids, to help the less numerous heroes
   , chidden       = 0
   , cactorFreq    = []
   , citemNum      = 6 `d` 8
-  , citemFreq     = [(IK.COMMON_ITEM, 100), (LIGHT_MANIPULATION, 200)]
+  , citemFreq     = [(IK.COMMON_ITEM, 100), (LIGHT_ATTENUATOR, 200)]
   , cplaceFreq    = [(BATTLE, 50), (ROGUE, 50)]
   , cpassable     = True
   , cdefTile      = BATTLE_SET_DARK
