@@ -746,7 +746,7 @@ bushBurning = TileKind
   , talter   = 5
   , tfeature = [ Clear
                , OpenWith ProjYes [(3, WATER_SOURCE)] S_SMOKE_LIT
-               , Embed SMALL_FIRE
+               , Embed SMALL_FIRE_5
                , ChangeWith ProjNo [(1, FIREPROOF_CLOTH)] S_BUSH_LIT
                    -- full effects experienced, but bush saved for repeat
                , OpenTo BUSH_BURNING_OR_NOT ]
@@ -1314,7 +1314,7 @@ underbrushBurning = TileKind  -- always lit
   , talter   = 0
   , tfeature = [ Walkable, NoItem, NoActor  -- not clear, due to smoke
                , ChangeWith ProjYes [(1, WATER_SOURCE)] S_SMOKE_LIT
-               , Embed SMALL_FIRE
+               , Embed SMALL_FIRE  -- little mass, so one fire only
                , ChangeWith ProjNo [(1, FIREPROOF_CLOTH)] S_UNDERBRUSH_LIT
                    -- underbrush saved for repeat
                , ChangeTo S_FLOOR_ASHES_LIT ]  -- not enough matter for smoke
@@ -1363,7 +1363,7 @@ oilBurning = TileKind  -- always lit
   , talter   = 0
   , tfeature = [ Walkable, Clear  -- clear, no smoke, as in oil lamps
                , NoItem, NoActor
-               , Embed SMALL_FIRE
+               , Embed SMALL_FIRE_5
                , Embed OIL_PUDDLE
                , ChangeWith ProjNo [(1, FIREPROOF_CLOTH)] OILY_FLOOR_LIT
                    -- safely soaks oil
