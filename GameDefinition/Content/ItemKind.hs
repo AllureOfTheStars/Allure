@@ -2655,9 +2655,8 @@ jumpingPole = ItemKind
 
 constructionHooter = necklaceTemplate
   { iname    = "construction hooter"
-  , ifreq    = [ (CONSTRUCTION_HOOTER, 1), (COMMON_ITEM, 1)
+  , ifreq    = [(CONSTRUCTION_HOOTER, 1), (COMMON_ITEM, 1), (ARMOR_LOOSE, 1)]
                    -- extremely rare, but dropped by decontamination chambers
-               , (UNREPORTED_INVENTORY, 1), (ARMOR_LOOSE, 1) ]
   , iflavour = zipPlain [BrRed]
   , irarity  = [(1, 1)]
   , iweight  = 1000
@@ -2670,8 +2669,7 @@ constructionHooter = necklaceTemplate
 wasteContainer = ItemKind
   { isymbol  = symbolTool
   , iname    = "waste container"
-  , ifreq    = [ (WASTE_CONTAINER, 1), (UNREPORTED_INVENTORY, 1)
-               , (WATER_SOURCE, 1), (ARMOR_LOOSE, 1) ]
+  , ifreq    = [(WASTE_CONTAINER, 1), (WATER_SOURCE, 1), (ARMOR_LOOSE, 1)]
   , iflavour = zipLiquid [Green]
   , icount   = 1
   , irarity  = [(1, 1)]
@@ -2692,7 +2690,7 @@ wasteContainer = ItemKind
 spotlight = ItemKind
   { isymbol  = symbolLight
   , iname    = "spotlight"
-  , ifreq    = [(SPOTLIGHT, 1), (UNREPORTED_INVENTORY, 1)]
+  , ifreq    = [(SPOTLIGHT, 1)]
   , iflavour = zipPlain [White]
   , icount   = 1
   , irarity  = [(1, 1)]
