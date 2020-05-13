@@ -552,7 +552,7 @@ rubble = TileKind
 rubbleSpice = rubble
   { tfreq    = [ (SMOKE_CLUMP_LIT, 1), (SMOKE_CLUMP_DARK, 1)
                , (RUBBLE_OR_WASTE_LIT, 1), (RUBBLE_OR_WASTE_DARK, 1)
-               , (CACHE_DEPOSIT, 33), (CACHE_DEPOSIT_OR_NOT, 80) ]
+               , (CACHE_DEPOSIT, 33) ]
   , tfeature = Spice : tfeature rubble
   }
 doorTrapped = TileKind
@@ -1217,8 +1217,8 @@ reinforcedWall = TileKind
   , tfeature = []
   }
 reinforcedWallSpice = reinforcedWall
-  { tfreq    = [ (DOORLESS_WALL, 20)
-               , (CACHE_MAZE, 33), (CACHE_ABANDONED_OR_NOT, 60) ]
+  { tfreq    = [ (DOORLESS_WALL, 20), (CACHE_MAZE, 33)
+               , (CACHE_ABANDONED_OR_NOT, 60), (CACHE_DEPOSIT_OR_NOT, 80) ]
   , tfeature = Spice : tfeature reinforcedWall
   }
 wallShuttle = bedrock
