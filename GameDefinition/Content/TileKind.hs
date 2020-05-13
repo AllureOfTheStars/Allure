@@ -1335,7 +1335,7 @@ floorOily = floorArena
 oilSpill = TileKind  -- always lit
   { tsymbol  = '~'
   , tname    = "oil spill"
-  , tfreq    = [ (POWER_SET_DARK, 35), (EXIT_SET_LIT, 1)
+  , tfreq    = [ (POWER_SET_DARK, 35), (EXIT_SET_LIT, 9)
                , (AMBUSH_SET_DARK, 20), (S_OIL_SPILL, 1) ]
   , tcolor   = BrYellow
   , tcolor2  = BrGreen
