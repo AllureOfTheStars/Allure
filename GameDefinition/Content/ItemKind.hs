@@ -873,7 +873,7 @@ scrollTemplate = ItemKind
   , ifreq    = [(SCROLL_UNKNOWN, 1)]
   , iflavour = zipFancy stdCol ++ zipPlain stdCol
   , icount   = 1 `dL` 3
-  , irarity  = [(1, 12), (10, 5)]
+  , irarity  = [(1, 12), (10, 6)]
   , iverbHit = "thump"
   , iweight  = 20
   , idamage  = 0
@@ -901,7 +901,7 @@ scroll3 = scrollTemplate
   -- needs to be common to show at least a portion of effects
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , icount   = 3 `dL` 1
-  , irarity  = [(1, 12)]
+  , irarity  = [(1, 15)]
   , ieffects = [OneOf [ Paralyze 10, InsertMove 30, Discharge 0
                       , Detect DetectEmbed 12, Detect DetectHidden 20 ]]
   }
@@ -909,7 +909,7 @@ scroll4 = scrollTemplate
   -- needs to be common to show at least a portion of effects
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , icount   = 3 `dL` 1
-  , irarity  = [(10, 12)]
+  , irarity  = [(10, 15)]
   , ieffects = [ Impress
                , OneOf [ Teleport 20, Ascend False, Ascend True
                        , OneOf [Summon HERO 1, Summon MOBILE_ANIMAL $ 1 `d` 2]
@@ -949,7 +949,7 @@ scroll8 = scrollTemplate
   }
 scroll9 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(10, 4)]  -- powerful, even if not ideal; scares newbies
+  , irarity  = [(10, 12)]  -- powerful, even if not ideal; scares newbies
   , ieffects = [Detect DetectAll 20]
   }
 scroll10 = scrollTemplate
@@ -1608,7 +1608,7 @@ ring4 = ringTemplate
   }
 ring5 = ringTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100), (MUSEAL, 100)]
-  , irarity  = [(5, 1), (10, 10)]  -- needed after other items drop Calm
+  , irarity  = [(5, 1), (10, 7)]  -- needed after other items drop Calm
   , iaspects = [ AddSkill SkMaxCalm $ 30 + (1 `dL` 4) * 5
                , EqpSlot EqpSlotMiscBonus ]
                ++ iaspects ringTemplate

@@ -294,7 +294,7 @@ noise = rogue
   , cactorFreq    = [(MONSTER, 100), (ANIMAL, 5), (ROBOT, 25)]
   , citemNum      = 10 `d` 4  -- an incentive to explore the labyrinth
   , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.CRAWL_ITEM, 40)
-                    , (IK.TREASURE, 40), (IK.ANY_SCROLL, 160) ]
+                    , (IK.TREASURE, 40), (IK.ANY_SCROLL, 200) ]
   , cplaceFreq    = [(NOISE, 1)]
   , cpassable     = True
   , labyrinth     = True
