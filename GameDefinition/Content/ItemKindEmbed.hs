@@ -323,6 +323,8 @@ fireSmall = ItemKind
 fireSmall5 = fireSmall
   { ifreq    = [(SMALL_FIRE_5, 1), (FIRE_SOURCE, 1)]
   , icount   = 5  -- whenever a lot of mass to burn, e.g., bush, oil
+  , ieffects = [ Burn 1, Explode S_SINGLE_SPARK
+               , OnCombine roastEffect5 ]
   }
 fireBig = fireSmall
   { isymbol  = '0'
@@ -876,7 +878,7 @@ barrelFertilizer = barrelFuel
   { iname    = "fertilizer"
   , ifreq    = [(BARREL_CONTENTS, 30), (FIRE_SOURCE, 1)]
   , iflavour = zipPlain [Red]
-  , ieffects = [Explode S_FOCUSED_FRAGMENTATION, OnCombine roastEffect]
+  , ieffects = [Explode S_FOCUSED_FRAGMENTATION, OnCombine roastEffect5]
                  -- no S_FOCUSED_CONCUSSION; a barrel would destroy the ship;
                  -- no water barrel either, basins and running water in taps;
                  -- no VIOLENT variants of the blasts or bumping a lone
@@ -887,7 +889,7 @@ barrelOxidizer = barrelFuel
   { iname    = "oxidizer"
   , ifreq    = [(BARREL_CONTENTS, 20), (FIRE_SOURCE, 1)]
   , iflavour = zipPlain [BrWhite]
-  , ieffects = [Explode S_FOCUSED_FLASH, OnCombine roastEffect]
+  , ieffects = [Explode S_FOCUSED_FLASH, OnCombine roastEffect5]
   , idesc    = ""
   }
 barrelOil = barrelFuel
@@ -959,8 +961,19 @@ roastEffect :: Effect
 roastEffect = combineEffect "have nothing to roast"
               $ map (\(raw, cooked) ->
                        ([], [(1, raw)], [(1, cooked)])) cookingAssocs
-                ++ [ ([], [(1, S_DOUSED_WOODEN_TORCH)], [(1, S_WOODEN_TORCH)])
-                   , ([], [(1, S_DOUSED_OIL_LAMP)], [(1, S_OIL_LAMP)]) ]
+                                 ++ extraRoastAssocs
+
+roastEffect5 :: Effect
+roastEffect5 = combineEffect "have nothing to roast"
+               $ concatMap (\(raw, cooked) ->
+                              [ ([], [(5, raw)], [(5, cooked)])
+                              , ([], [(4, raw)], [(4, cooked)])
+                              , ([], [(3, raw)], [(3, cooked)])
+                              , ([], [(2, raw)], [(2, cooked)])
+                              , ([], [(1, raw)], [(1, cooked)])
+                              ])
+                           cookingAssocs
+                 ++ extraRoastAssocs
 
 waterEffect :: Effect
 waterEffect = combineEffect "lack a sharpening tool or a weapon to sharpen or an item to fill with water"
@@ -987,6 +1000,13 @@ cookingAssocs =
   , (S_SPICY_BARK, S_COOKED_BARK)
   , (S_PUMPKIN, S_COOKED_PUMPKIN)
   ]
+
+extraRoastAssocs :: [( [(Int, GroupName ItemKind)]
+                     , [(Int, GroupName ItemKind)]
+                     , [(Int, GroupName ItemKind)] )]
+extraRoastAssocs =
+  [ ([], [(1, S_DOUSED_WOODEN_TORCH)], [(1, S_WOODEN_TORCH)])
+  , ([], [(1, S_DOUSED_OIL_LAMP)], [(1, S_OIL_LAMP)]) ]
 
 sharpeningAssocs :: [( [(Int, GroupName ItemKind)]
                      , GroupName ItemKind

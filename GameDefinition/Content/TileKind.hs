@@ -1368,6 +1368,7 @@ oilBurning = TileKind  -- always lit
                , ChangeWith ProjNo [(1, FIREPROOF_CLOTH)] OILY_FLOOR_LIT
                    -- safely soaks oil
                , ChangeTo S_OIL_SPILL ]
+                   -- TODO: change only after all 5 fires used up
   }
 floorWindow = floorArena  -- always lit
   { tsymbol  = ' '  -- story-wise it's transparent, hence the symbol
