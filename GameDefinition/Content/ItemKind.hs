@@ -2240,7 +2240,7 @@ sword = ItemKind
                , SetFlag Durable, SetFlag Meleeable
                , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
   , ieffects = []
-  , idesc    = "A makeshift weapon of simple design, but great potential. Hard to master, though."
+  , idesc    = "A makeshift weapon of simple design, but great potential."
   , ikit     = []
   }
 swordImpress = sword
@@ -2318,7 +2318,7 @@ fireAxe = ItemKind
   , irarity  = [(1, 1)]
   , iverbHit = "gouge"
   , iweight  = 1600
-  , idamage  = 10 `d` 1  -- same as sharpened pipe, but upgradable
+  , idamage  = 9 `d` 1  -- worse than sharpened pipe, but upgradable
   , iaspects = [ Timeout 7, EqpSlot EqpSlotWeaponBig  -- 1m handle
                , SetFlag Durable, SetFlag Meleeable
                , toVelocity 40 ]  -- ensuring it hits with the blade costs speed
@@ -2329,8 +2329,6 @@ fireAxe = ItemKind
 pollaxe = halberd
   { iname    = "pollaxe"
   , ifreq    = [(TREASURE, 2), (POLE_AND_STEEL, 1), (S_POLL_AXE, 1)]
-                 -- not @BREACHING_TOOL@, because it triggers traps
-                 -- and destroys treasure, instead of opening
   , iflavour = zipPlain [BrRed]
   , irarity  = [(1, 1)]
   , iverbHit = "carve"
