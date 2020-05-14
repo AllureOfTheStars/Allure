@@ -2159,6 +2159,7 @@ hammerParalyze = hammerTemplate
   { iname    = "Concussion Hammer"
   , ifreq    = [(TREASURE, 40), (STARTING_HAMMER, 5)]
   , irarity  = [(5, 1), (8, 6)]
+  , idamage  = 3 `d` 1
   , iaspects = [ SetFlag Unique
                , Timeout 10 ]  -- 2m, but light head and pole
                ++ iaspects hammerTemplate
@@ -2170,17 +2171,19 @@ hammerSpark = hammerTemplate  -- the only hammer with significantly heavier head
   , ifreq    = [(TREASURE, 40), (BONDING_TOOL, 1), (MUSEAL, 100)]
   , irarity  = [(5, 1), (8, 6)]
   , iweight  = 5000  -- weight and shape/damage gives it away; always identified
-  , idamage  = 8 `d` 1  -- let's say, one end is sharpened
   , iaspects = [ SetFlag Unique
                , Timeout 8  -- 1.5m handle and heavy, but unique
+               , AddSkill SkHurtMelee $ (-20 + 1 `d` 7) * 5  -- 65-95; the price
                , EqpSlot EqpSlotWeaponBig
                , SetFlag Durable, SetFlag Meleeable
-               , toVelocity 0 ]  -- totally unbalanced and so @RefillHP@ fails
+               , toVelocity 0 ]  -- totally unbalanced
   , ieffects = [ Explode S_SPARK
                    -- we can't use a focused explosion, because it would harm
-                   -- the hammer wielder as well, unlike this one
-               , RefillHP (-3) ]
-                   -- @RefillHP@ to avoid a no-brainer of durable tool use
+                   -- the hammer wielder as well, unlike this one; it's already
+                   -- risky, since it may alert other factions; can reveal
+                   -- other enemies rarely, though
+               , RefillHP (-15) ]  -- hammer tanks prefer consistent damage
+                                   -- over 1-shot kills, so this is not OP
   , idesc    = "High carbon steel of this heavy old hammer doesn't yield even to the newest alloys and produces fountains of sparks in defiance. Whatever it forge-welds together, stays together. Don't try to use it witout training, however."
   }
 
