@@ -1933,7 +1933,7 @@ buckler = ItemKind
   , iverbHit = "bash"
   , iweight  = 2000
   , idamage  = 1 `d` 1
-  , iaspects = [ Timeout $ (3 + 1 `d` 3 - 1 `dL` 3) * 2
+  , iaspects = [ Timeout $ (2 + 1 `d` 2 - 1 `dL` 2) * 2
                , AddSkill SkArmorMelee 40
                , AddSkill SkSpeed (-1)  -- the main price to pay
                , SetFlag Durable, SetFlag Meleeable
@@ -1949,7 +1949,7 @@ shield = buckler
   , iflavour = zipPlain [Green]
   , iweight  = 4000
   , idamage  = 3 `d` 1
-  , iaspects = [ Timeout $ (3 + 1 `d` 3 - 1 `dL` 3) * 4
+  , iaspects = [ Timeout $ (4 + 1 `d` 2 - 1 `dL` 3) * 2
                , AddSkill SkArmorMelee 60
                , AddSkill SkSpeed (-1)  -- the main price to pay
                , AddSkill SkHurtMelee (-30)
@@ -2020,10 +2020,10 @@ laserSharpener = honingSteel
   , irarity  = [(10, 4)]
   , iweight  = 2000
   , idamage  = 0
-  , iaspects = [ SetFlag Unique, Timeout 7
+  , iaspects = [ SetFlag Unique, Timeout 5
                , SetFlag Durable, SetFlag Meleeable, EqpSlot EqpSlotWeaponBig
                , toVelocity 0 ]  -- @Burn@ not effective when thrown
-  , ieffects = [Burn 5]  -- really harmful when used as a sharpener; intended
+  , ieffects = [Burn 4]  -- really harmful when used as a sharpener; intended
   , idesc    = "Laser ablation is the safest and most accurate of sharpening method. Misaligned optics with broken shielding, however, change the situation dramatically, enabling stray laser pulses to escape at unpredictable angles."  -- hence short range and so melee weapon; TODO: long range weapon with instant projectiles and no risk of hull breach
   }
 crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
@@ -2115,9 +2115,9 @@ hammer1 = hammerTemplate  -- 1m handle, blunt
   { ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
                , (STARTING_WEAPON, 50), (STARTING_HAMMER, 80)
                , (S_BLUNT_SHORT_HAMMER, 1) ]
-  , iaspects = [Timeout 5]
+  , iaspects = [Timeout 6]
                ++ iaspects hammerTemplate
-  , ieffects = [RefillHP (-4)]
+  , ieffects = [RefillHP (-5)]  -- weak, but meant to be sharpened ASAP
   }
 hammer2 = hammerTemplate  -- 0.75m handle, sharp
   { ifreq    = [(COMMON_ITEM, 10), (STARTING_WEAPON, 5), (STARTING_HAMMER, 5)]
@@ -2135,7 +2135,8 @@ hammer3 = hammerTemplate  -- 2m pole, blunt
   { ifreq    = [ (COMMON_ITEM, 4), (BONDING_TOOL, 1), (POLE_AND_STEEL, 1)
                , (STARTING_WEAPON, 2), (S_BLUNT_LONG_HAMMER, 1) ]
   , iweight  = 6000  -- pole weight almost gives it away
-  , iaspects = [Timeout 15]
+  , iaspects = [ Timeout 12
+               , AddSkill SkHurtMelee $ (1 `d` 2) * 5 ]
                ++ iaspects hammerTemplate
   , ieffects = [RefillHP (-8)]
   , idesc    = "This hammer sports a long pole that increases the momentum of the blunt head's swing, at the cost of long recovery. It's capable of smashing objects together, though the required careful positioning often means hands are smashed as well."
@@ -2144,14 +2145,14 @@ hammer4 = hammer1  -- 1m handle, sharp
   { ifreq    = [ (COMMON_ITEM, 4), (HANDLE_AND_STEEL, 1)
                , (STARTING_WEAPON, 2), (S_SHARP_SHORT_HAMMER, 1) ]
   , iverbHit = "cleave"
-  , idamage  = 4 `d` 1
+  , idamage  = 3 `d` 1
   , idesc    = "This hammer's head has it's protruding edges sharpened. Otherwise, it's pretty ordinary."
  }
 hammer5 = hammer3  -- 2m pole, sharp
   { ifreq    = [ (COMMON_ITEM, 1), (POLE_AND_STEEL, 1)
                , (S_SHARP_LONG_HAMMER, 1) ]
   , iverbHit = "cleave"
-  , idamage  = 4 `d` 1
+  , idamage  = 3 `d` 1
   , idesc    = "This long-hafter hammer sports a head with the edge of the narrow end sharpened for cutting."
   }
 hammerParalyze = hammerTemplate
@@ -2225,7 +2226,7 @@ dagger = knife
   , idamage  = 7 `d` 1
   , idesc    = "A double-edged knife with a sharp tip that penetrates the smallest defence gaps, making it especially useful in conjunction with a larger but less nible weapon."
   }
-sword = ItemKind
+sword = ItemKind  -- dead end, but can be crafted with just one file tool
   { isymbol  = symbolPolearm
   , iname    = "sharpened pipe"
   , ifreq    = [ (COMMON_ITEM, 4), (STARTING_WEAPON, 30)
@@ -2288,8 +2289,8 @@ halberd = ItemKind  -- long pole
   , iweight  = 3500
   , idamage  = 11 `d` 1  -- bad, until sharpened
   , iaspects = [ Timeout 10
-               , AddSkill SkHurtMelee $ (-5 + 1 `d` 4) * 5
-                   -- useless against armor at game start with no hurt bonus;
+               , AddSkill SkHurtMelee $ (-7 + 1 `d` 5) * 5
+                   -- weak against armor at game start with no hurt bonus;
                    -- can't be `dL` or crafting at low levels would be cruel
                , AddSkill SkArmorMelee 20
                , SetFlag Durable, SetFlag Meleeable
@@ -2304,7 +2305,7 @@ oxTongue = halberd  -- long pole, because glued 1m handle worse than nothing
   , ifreq    = [(COMMON_ITEM, 1), (POLE_AND_STEEL, 1), (S_LONG_SPEAR, 1)]
   , iverbHit = "impale"
   , idamage  = 13 `d` 1
-  , idesc    = "An improvised but deadly weapon made of a long, sharp dagger glued and bound to a long pole. Not often one succeeds in making enough space to swing it freely, but even when stuck between terrain obstacles it blocks approaches effectively and makes using other weapons difficult, both by friends and foes."
+  , idesc    = "An improvised but deadly weapon made of a long, sharp dagger glued and bound to a long pole. Not often one succeeds in making enough space to thrust it freely, but even when stuck between terrain obstacles it blocks approaches effectively and makes using other weapons difficult, both by friends and foes."
   }
 fireAxe = ItemKind
   { isymbol  = symbolHafted
@@ -2334,15 +2335,17 @@ pollaxe = halberd
   , iverbHit = "carve"
   , iweight  = 4500
   , idamage  = 15 `d` 1
-  , iaspects = [ Timeout 20
-               , AddSkill SkHurtMelee $ (-7 + 1 `d` 6) * 5
+  , iaspects = [ Timeout 12
+               , AddSkill SkHurtMelee $ (-11 + 1 `d` 7) * 5
                    -- balance, or @DupItem@ would break the game;
-                   -- together with @RerollItem@, it's allowed to, though
+                   -- together with @RerollItem@, it's allowed to, though;
+                   -- useless against armor at game start with no hurt bonus;
+                   -- can't be `dL` or crafting at low levels would be cruel
                , AddSkill SkArmorMelee 20
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 20 ]  -- not balanced
-  , idesc    = "A long-hafted axe: once used for fire fighting, now turned to a bloodier purpose."
+  , idesc    = "A long-hafted spiked axe: great reach and momentum, but so unbalanced that fighters swinging it can't control their combat stance."
   }
 halberdPushActor = halberd
   { iname    = "Blunt Swiss Halberd"
@@ -2407,7 +2410,7 @@ cattleProd = militaryBaton
   , idesc    = "Used for subduing unruly zoo animals."
   }
 
--- The combat value of anoter class of weapons is very limited,
+-- The combat value of the following class of weapons is very limited,
 -- but they or their components can be used for crafting.
 
 gardenMsg :: Effect
@@ -2495,7 +2498,7 @@ treePruner = grassStitcher
   , irarity  = [(5, 8)]
   , iweight  = 4500
   , idamage  = 3 `d` 1
-  , iaspects = [ Timeout 10
+  , iaspects = [ Timeout 7
                , AddSkill SkArmorMelee 20  -- sharp
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
@@ -2537,6 +2540,7 @@ pipe = staff
   { iname    = "metal pipe"
   , ifreq    = [(HANDLE, 20), (POLE_OR_HANDLE, 15), (S_PIPE, 1)]
   , iflavour = zipFancy [BrBlue]
+  , idamage  = 2 `d` 1
   , idesc    = "Around a meter long, light, strong and hard alloy pipe. With one or both ends cut diagonally and sharpened, this would become a formidable weapon."
   }
 longPole = staff
@@ -2544,6 +2548,7 @@ longPole = staff
   , ifreq    = [(POLE, 90), (POLE_OR_HANDLE, 30)]
   , iflavour = zipPlain [BrYellow]
   , iweight  = 3000
+  , idamage  = 2 `d` 1
   , iaspects = [ AddSkill SkArmorMelee 10  -- not sharp, so weaker
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
