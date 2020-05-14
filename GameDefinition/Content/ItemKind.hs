@@ -2132,8 +2132,8 @@ hammer2 = hammerTemplate  -- 0.75m handle, sharp
   , idesc    = "Upon closer inspection, this hammer, or pick, turns out particularly well balanced. The profiled handle seamlessly joins the head, which focuses the blow at a sharp point, compensating for the tool's modest size."
   }
 hammer3 = hammerTemplate  -- 2m pole, blunt
-  { ifreq    = [ (COMMON_ITEM, 4), (BONDING_TOOL, 1), (POLE_AND_STEEL, 1)
-               , (STARTING_WEAPON, 2), (S_BLUNT_LONG_HAMMER, 1) ]
+  { ifreq    = [ (COMMON_ITEM, 4), (BONDING_TOOL, 1), (STARTING_WEAPON, 2)
+               , (S_BLUNT_LONG_HAMMER, 1) ]
   , iweight  = 6000  -- pole weight almost gives it away
   , iaspects = [ Timeout 12
                , AddSkill SkHurtMelee $ (1 `d` 2) * 5 ]
@@ -2149,8 +2149,7 @@ hammer4 = hammer1  -- 1m handle, sharp
   , idesc    = "This hammer's head has it's protruding edges sharpened. Otherwise, it's pretty ordinary."
  }
 hammer5 = hammer3  -- 2m pole, sharp
-  { ifreq    = [ (COMMON_ITEM, 1), (POLE_AND_STEEL, 1)
-               , (S_SHARP_LONG_HAMMER, 1) ]
+  { ifreq    = [(COMMON_ITEM, 1), (S_SHARP_LONG_HAMMER, 1)]
   , iverbHit = "cleave"
   , idamage  = 3 `d` 1
   , idesc    = "This long-hafter hammer sports a head with the edge of the narrow end sharpened for cutting."
@@ -2280,8 +2279,7 @@ swordNullifySharp = swordNullify
 halberd = ItemKind  -- long pole
   { isymbol  = symbolPolearm
   , iname    = "pole cleaver"
-  , ifreq    = [ (COMMON_ITEM, 3), (POLE_AND_STEEL, 1)
-               , (STARTING_WEAPON, 50), (S_POLE_CLEAVER, 1) ]
+  , ifreq    = [(COMMON_ITEM, 3), (STARTING_WEAPON, 50), (S_POLE_CLEAVER, 1)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , irarity  = [(5, 1), (8, 15)]
@@ -2302,7 +2300,7 @@ halberd = ItemKind  -- long pole
   }
 oxTongue = halberd  -- long pole, because glued 1m handle worse than nothing
   { iname    = "long spear"
-  , ifreq    = [(COMMON_ITEM, 1), (POLE_AND_STEEL, 1), (S_LONG_SPEAR, 1)]
+  , ifreq    = [(COMMON_ITEM, 1), (S_LONG_SPEAR, 1)]
   , iverbHit = "impale"
   , idamage  = 13 `d` 1
   , idesc    = "An improvised but deadly weapon made of a long, sharp dagger glued and bound to a long pole. Not often one succeeds in making enough space to thrust it freely, but even when stuck between terrain obstacles it blocks approaches effectively and makes using other weapons difficult, both by friends and foes."
@@ -2329,7 +2327,7 @@ fireAxe = ItemKind
   }
 pollaxe = halberd
   { iname    = "pollaxe"
-  , ifreq    = [(TREASURE, 2), (POLE_AND_STEEL, 1), (S_POLL_AXE, 1)]
+  , ifreq    = [(TREASURE, 2), (S_POLL_AXE, 1)]
   , iflavour = zipPlain [BrRed]
   , irarity  = [(1, 1)]
   , iverbHit = "carve"
