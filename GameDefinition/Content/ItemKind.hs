@@ -1262,7 +1262,7 @@ blanket = ItemKind
   , iname    = "mineral fibre blanket"
   , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_ATTENUATOR, 20), (BLANKET, 1)
                , (THICK_CLOTH, 1), (FIREPROOF_CLOTH, 1)
-               , (FIRE_FIGHTING_ITEM, 60) ]
+               , (FIRE_FIGHTING_ITEM, 60), (SHARPENING_TOOL, 1) ]
   , iflavour = zipPlain [Magenta]
   , icount   = 1
   , irarity  = [(1, 1)]  -- scavenged from walls
@@ -1277,7 +1277,7 @@ blanket = ItemKind
                    -- douses torch, lamp and lantern in one action,
                    -- both in equipment and when thrown at the floor
   , ieffects = []
-  , idesc    = "Flame-retardant synthetic fibres that soak fluids well."
+  , idesc    = "Flame-retardant synthetic fibres. The strong cloth polishes metals really well when soaked, aiding in the final stages of blade sharpening."
   , ikit     = []
   }
 
@@ -2120,7 +2120,8 @@ hammer1 = hammerTemplate  -- 1m handle, blunt
   , ieffects = [RefillHP (-5)]  -- weak, but meant to be sharpened ASAP
   }
 hammer2 = hammerTemplate  -- 0.75m handle, sharp
-  { ifreq    = [(COMMON_ITEM, 10), (STARTING_WEAPON, 5), (STARTING_HAMMER, 5)]
+  { ifreq    = [ (COMMON_ITEM, 10), (STARTING_WEAPON, 5), (STARTING_HAMMER, 5)
+               , (BONDING_TOOL, 1) ]
   , irarity  = [(1, 4), (3, 4), (7, 40)]
                  -- common early, since not a guaranteed drop;
                  -- common also late, because not crafted
@@ -2129,17 +2130,17 @@ hammer2 = hammerTemplate  -- 0.75m handle, sharp
   , iaspects = [Timeout 3, EqpSlot EqpSlotWeaponFast]
                ++ (iaspects hammerTemplate \\ [EqpSlot EqpSlotWeaponBig])
   , ieffects = [RefillHP (-3)]
-  , idesc    = "Upon closer inspection, this hammer, or pick, turns out particularly well balanced. The profiled handle seamlessly joins the head, which focuses the blow at a sharp point, compensating for the tool's modest size."
+  , idesc    = "Upon closer inspection, this hammer, or pick, turns out particularly well balanced. The profiled handle seamlessly joins the head, which focuses the blow at a sharp point, compensating for the tool's modest size. This makes it capable of permanently smashing objects together, though any fumble results in hands smashed as well."
   }
 hammer3 = hammerTemplate  -- 2m pole, blunt
-  { ifreq    = [ (COMMON_ITEM, 4), (BONDING_TOOL, 1), (STARTING_WEAPON, 2)
+  { ifreq    = [ (COMMON_ITEM, 4), (STARTING_WEAPON, 2)
                , (S_BLUNT_LONG_HAMMER, 1) ]
   , iweight  = 6000  -- pole weight almost gives it away
   , iaspects = [ Timeout 12
                , AddSkill SkHurtMelee $ (1 `d` 2) * 5 ]
                ++ iaspects hammerTemplate
   , ieffects = [RefillHP (-8)]
-  , idesc    = "This hammer sports a long pole that increases the momentum of the blunt head's swing, at the cost of long recovery. It's capable of smashing objects together, though the required careful positioning often means hands are smashed as well."
+  , idesc    = "This hammer sports a long pole that increases the momentum of the blunt head's swing, at the cost of long recovery."
   }
 hammer4 = hammer1  -- 1m handle, sharp
   { ifreq    = [ (COMMON_ITEM, 4), (HANDLE_AND_STEEL, 1)
@@ -2180,7 +2181,7 @@ hammerSpark = hammerTemplate  -- the only hammer with significantly heavier head
                    -- the hammer wielder as well, unlike this one
                , RefillHP (-3) ]
                    -- @RefillHP@ to avoid a no-brainer of durable tool use
-  , idesc    = "High carbon steel of this heavy old hammer doesn't yield even to the newest alloys and produces fountains of sparks in defiance. Whatever it forge-welds together, stays together."
+  , idesc    = "High carbon steel of this heavy old hammer doesn't yield even to the newest alloys and produces fountains of sparks in defiance. Whatever it forge-welds together, stays together. Don't try to use it witout training, however."
   }
 
 -- The standard melee weapons do most of their damage as kinetic edged
