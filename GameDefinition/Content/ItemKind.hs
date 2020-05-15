@@ -1382,6 +1382,9 @@ gorget = necklaceTemplate
                                   -- but it's OK, it's an artifact
   , iaspects = [ SetFlag Unique
                , Timeout $ 5 - 1 `dL` 4
+                   -- the dL dice need to be in negative positions
+                   -- for negative stats, such as @Timeout@, so that
+                   -- the @RerollItem@ effect makes the item better, not worse
                , AddSkill SkArmorMelee 3, AddSkill SkArmorRanged 2
                , SetFlag Durable ]
                ++ iaspects_necklaceTemplate
@@ -1506,6 +1509,7 @@ motionScanner = necklaceTemplate
   , iverbHit = "ping"
   , iweight  = 300  -- almost gives it away
   , iaspects = [ Timeout $ 4 + 1 `dL` 6
+                   -- positive dL dice, since the periodic effect is detrimental
                , AddSkill SkNocto 1
                , AddSkill SkArmorMelee (-20 + (1 `dL` 3) * 5)
                , EqpSlot EqpSlotMiscBonus ]
