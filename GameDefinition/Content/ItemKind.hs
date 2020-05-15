@@ -1575,8 +1575,7 @@ ring1 = ringTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
   , irarity  = [(5, 4)]
   , iaspects = [ AddSkill SkSpeed $ 1 `dL` 2
-               , AddSkill SkMaxHP (-10)
-               , AddSkill SkArmorMelee (-20)
+               , AddSkill SkMaxHP (-20)
                , EqpSlot EqpSlotSpeed ]
                ++ iaspects ringTemplate
   }
@@ -1593,8 +1592,8 @@ ring3 = ringTemplate
   , irarity  = [(10, 10)]
   , iaspects = [ SetFlag Unique, ELabel "of Rush"
                , AddSkill SkSpeed $ (1 + 1 `dL` 2) * 2
-               , AddSkill SkMaxHP (-10)
-               , AddSkill SkArmorMelee (-40)
+               , AddSkill SkMaxHP (-20)
+               , AddSkill SkArmorMelee (-20)
                , SetFlag Durable, EqpSlot EqpSlotSpeed ]
                ++ iaspects ringTemplate
   , idesc    = "The creator of this dangerous artifact didn't find time to document its operation. And now it's too late."
