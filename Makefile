@@ -75,6 +75,9 @@ frontendCrawl:
 frontendCrawlEmpty:
 	$$(cabal-plan list-bin Allure) --dbgMsgSer --logPriority 4 --savePrefix test --newGame 1 --dumpInitRngs --automateAll --gameMode crawlEmpty
 
+frontendCrawlSurvival:
+	$$(cabal-plan list-bin Allure) --dbgMsgSer --logPriority 4 --savePrefix test --newGame 9 --dumpInitRngs --automateAll --gameMode crawlSurvival --maxFps 1000
+
 frontendSafari:
 	$$(cabal-plan list-bin Allure) --dbgMsgSer --logPriority 4 --savePrefix test --newGame 2 --dumpInitRngs --automateAll --gameMode safari --exposeActors
 

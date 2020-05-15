@@ -525,14 +525,11 @@ rosterCrawlSurvival = rosterCrawl
   { rosterList = [ ( playerAntiHero
                    , [(3, 3, CRAWL_HERO)] )
                  , ( playerMonster
-                   , [] )
+                   , [(5, 1, MONSTER)] )
                  , ( playerAnimal {fhasUI = True}
-                   , -- Fun from the start to avoid empty initial level:
-                     [ (3, 5 + 1 `d` 2, ANIMAL)  -- many, because no spawning
-                     -- Optional huge battle at the end:
-                     , (15, 100, MOBILE_ANIMAL) ] )
+                   , [(5, 10, ANIMAL)] )  -- explore unopposed for some time
                  , ( playerRobot
-                   , [] ) ] }  -- gentle introduction
+                   , [(3, 3, ROBOT)] ) ] }
 
 -- No horrors faction needed, because spawned heroes land in civilian faction.
 rosterSafari = Roster
