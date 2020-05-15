@@ -1270,7 +1270,7 @@ blanket = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [ AddSkill SkShine (-10)
-               , AddSkill SkArmorMelee 2, AddSkill SkMaxCalm 5
+               , AddSkill SkArmorMelee 3, AddSkill SkMaxCalm 5
                , SetFlag Lobable, SetFlag Equipable
                , EqpSlot EqpSlotArmorMelee ]
                    -- not Fragile; reusable douse implement;
@@ -1527,7 +1527,7 @@ imageItensifier = ItemKind
   , iweight  = 700
   , idamage  = 0
   , iaspects = [ AddSkill SkNocto 1, AddSkill SkSight (-1)
-               , AddSkill SkArmorMelee $ (-2 - 1 `dL` 5) * 3
+               , AddSkill SkArmorMelee $ (-5 + 1 `dL` 3) * 5
                , SetFlag Precious, SetFlag Equipable
                , EqpSlot EqpSlotMiscBonus ]
   , ieffects = []
@@ -1717,7 +1717,7 @@ meleeEnhancement = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [ AddSkill SkHurtMelee $ (2 + 1 `dL` 8) * 3
-               , AddSkill SkArmorMelee 2
+               , AddSkill SkArmorMelee 3
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotHurtMelee ]
   , ieffects = []
@@ -1911,7 +1911,7 @@ ragTangle = sandstoneRock
   , iverbHit = "touch"
   , iweight  = 200
   , idamage  = 0
-  , iaspects = [ELabel "of rags", SetFlag Fragile, AddSkill SkArmorMelee 1]
+  , iaspects = [ELabel "of rags", SetFlag Fragile, AddSkill SkArmorMelee 2]
   , idesc    = "Fashionable, sometimes, and useful for survival crafting, always."
   }
 -- Shield doesn't protect against ranged attacks to prevent
