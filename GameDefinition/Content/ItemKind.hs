@@ -1576,7 +1576,7 @@ ring1 = ringTemplate
   , irarity  = [(5, 4)]
   , iaspects = [ AddSkill SkSpeed $ 1 `dL` 2
                , AddSkill SkMaxHP (-10)
-               , AddSkill SkArmorMelee (-10)
+               , AddSkill SkArmorMelee (-20)
                , EqpSlot EqpSlotSpeed ]
                ++ iaspects ringTemplate
   }
@@ -1584,7 +1584,7 @@ ring2 = ringTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
   , irarity  = [(8, 4)]
   , iaspects = [ AddSkill SkSpeed $ 1 + 1 `dL` 3
-               , AddSkill SkArmorMelee (-30)
+               , AddSkill SkArmorMelee (-40)
                , EqpSlot EqpSlotSpeed ]
                ++ iaspects ringTemplate
   }
@@ -1593,42 +1593,41 @@ ring3 = ringTemplate
   , irarity  = [(10, 10)]
   , iaspects = [ SetFlag Unique, ELabel "of Rush"
                , AddSkill SkSpeed $ (1 + 1 `dL` 2) * 2
-               , AddSkill SkMaxHP (-20)
-               , AddSkill SkArmorMelee (-20)
+               , AddSkill SkMaxHP (-10)
+               , AddSkill SkArmorMelee (-40)
                , SetFlag Durable, EqpSlot EqpSlotSpeed ]
                ++ iaspects ringTemplate
   , idesc    = "The creator of this dangerous artifact didn't find time to document its operation. And now it's too late."
   }
 ring4 = ringTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
+  , irarity  = [(5, 5)]
+  , iaspects = [ AddSkill SkHurtMelee $ (2 + 1 `d` 3 + (1 `dL` 2) * 2 ) * 3
+               , AddSkill SkMaxHP (-10)
+               , EqpSlot EqpSlotHurtMelee ]
+               ++ iaspects ringTemplate
+  }
+ring5 = ringTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
+  , iaspects = [ AddSkill SkHurtMelee $ (4 + 1 `d` 3 + (1 `dL` 2) * 2 ) * 3
+               , AddSkill SkArmorMelee (-20)
+               , EqpSlot EqpSlotHurtMelee ]
+               ++ iaspects ringTemplate
+  }
+ring6 = ringTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
   , iaspects = [ AddSkill SkMaxHP $ 5 + (1 `d` 2 + 1 `dL` 2) * 5
                , AddSkill SkMaxCalm $ -30 + (1 `dL` 3) * 5
                , EqpSlot EqpSlotMaxHP ]
                ++ iaspects ringTemplate
   }
-ring5 = ringTemplate
+ring7 = ringTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100), (MUSEAL, 100)]
   , irarity  = [(5, 1), (10, 7)]  -- needed after other items drop Calm
   , iaspects = [ AddSkill SkMaxCalm $ 30 + (1 `dL` 4) * 5
                , EqpSlot EqpSlotMiscBonus ]
                ++ iaspects ringTemplate
   , idesc    = "Cold, solid to the touch, perfectly round, engraved with solemn, strangely comforting, worn out words."
-  }
-ring6 = ringTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
-  , irarity  = [(5, 5)]
-  , iaspects = [ AddSkill SkHurtMelee $ (1 + 1 `d` 3 + (1 `dL` 2) * 2 ) * 5
-               , AddSkill SkMaxHP (-10)
-               , AddSkill SkArmorMelee (-10)
-               , EqpSlot EqpSlotHurtMelee ]
-               ++ iaspects ringTemplate
-  }
-ring7 = ringTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
-  , iaspects = [ AddSkill SkHurtMelee $ (3 + 1 `d` 3 + (1 `dL` 2) * 2 ) * 5
-               , AddSkill SkArmorMelee (-30)
-               , EqpSlot EqpSlotHurtMelee ]
-               ++ iaspects ringTemplate
   }
 ring8 = ringTemplate  -- weak skill per eqp slot, so can be without drawbacks
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100), (MUSEAL, 50)]
@@ -1713,11 +1712,11 @@ meleeEnhancement = ItemKind
   , ifreq    = [(COMMON_ITEM, 100)]
   , iflavour = zipFancy [Blue]
   , icount   = 1
-  , irarity  = [(10, 10)]
+  , irarity  = [(10, 10)]  -- many, but very varied quality
   , iverbHit = "zip"
   , iweight  = 1000
   , idamage  = 0
-  , iaspects = [ AddSkill SkHurtMelee $ (2 + 1 `dL` 5) * 5
+  , iaspects = [ AddSkill SkHurtMelee $ (2 + 1 `dL` 8) * 3
                , AddSkill SkArmorMelee 2
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotHurtMelee ]
@@ -2203,7 +2202,7 @@ knife = ItemKind
   , idamage  = 5 `d` 1
   , iaspects = [ Timeout 3
                , AddSkill SkHurtMelee $ (-1 + 1 `d` 3 + 1 `dL` 2) * 3
-                   -- very common, so don't make too random
+                   -- very common, so don't make too random nor too good
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
                , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
