@@ -965,14 +965,14 @@ scroll11 = scrollTemplate
   }
 scroll12 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(8, 20)]
+  , irarity  = [(8, 18)]
   , iaspects = ELabel "of molecular duplication"
                : iaspects scrollTemplate
   , ieffects = [DupItem]
   }
 scroll13 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(8, 20)]
+  , irarity  = [(8, 22)]
   , iaspects = ELabel "of surface reconfiguration"
                : iaspects scrollTemplate
   , ieffects = [RerollItem]
@@ -1476,7 +1476,7 @@ necklace7 = necklaceTemplate
   }
 necklace8 = necklaceTemplate
   { iname    = "coil"
-  , ifreq    = [ (COMMON_ITEM, 10)  -- crafted, so can be rare
+  , ifreq    = [ (COMMON_ITEM, 20)  -- crafted, so can be rare
                , (S_REFRIGERATION_COIL, 1), (ANY_JEWELRY, 100)
                , (COLD_SOURCE, 1) ]
   , iaspects = ELabel "of superconducting refrigeration"
@@ -1753,7 +1753,7 @@ spacesuitTorn = spacesuit
   , iweight  = 10000
   , iaspects = [ AddSkill SkHurtMelee (-30)
                , AddSkill SkSight (-1)  -- obstructed despite the tears
-               , AddSkill SkArmorMelee $ (1 `d` 3) * 10
+               , AddSkill SkArmorMelee $ (1 `d` 3) * 10  -- shallow, no `dL`
                , AddSkill SkArmorRanged $ (1 `d` 2) * 6
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotArmorMelee ]
@@ -1847,7 +1847,8 @@ capReinforced = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkArmorMelee $ (1 `d` 2) * 5
                , AddSkill SkProject 1
-                   -- the brim shields against blinding by light sources, etc.
+                   -- the brim shields against blinding by light sources, etc.;
+                   -- beware of stacking and causing auto-fling of vials
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotProject ]
   , ieffects = []
@@ -2097,7 +2098,8 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
   , iflavour = zipFancy [BrMagenta]  -- avoid "pink"
   , icount   = 1
   , irarity  = [(1, 2), (3, 2), (7, 20), (9, 1)]
-                 -- not too common on lvl 3 and late, when crafting done already
+                 -- not too common up to lvl 3, where one is guaranteed
+                 -- and deep down, when crafting done already
   , iverbHit = "club"
   , iweight  = 4000
   , idamage  = 0  -- all damage independent of melee skill; this also helps
@@ -2171,7 +2173,7 @@ hammerSpark = hammerTemplate  -- the only hammer with significantly heavier head
   , iweight  = 5000  -- weight and shape/damage gives it away; always identified
   , iaspects = [ SetFlag Unique
                , Timeout 8  -- 1.5m handle and heavy, but unique
-               , AddSkill SkHurtMelee $ (-20 + 1 `d` 7) * 5  -- 65-95; the price
+               , AddSkill SkHurtMelee $ (-20 + 1 `dL` 10) * 5  -- 50--95
                , EqpSlot EqpSlotWeaponBig
                , SetFlag Durable, SetFlag Meleeable
                , toVelocity 0 ]  -- totally unbalanced
@@ -2289,9 +2291,8 @@ halberd = ItemKind  -- long pole
   , iweight  = 3500
   , idamage  = 11 `d` 1  -- bad, until sharpened
   , iaspects = [ Timeout 10
-               , AddSkill SkHurtMelee $ (-7 + 1 `d` 5) * 5
-                   -- weak against armor at game start with no hurt bonus;
-                   -- can't be `dL` or crafting at low levels would be cruel
+               , AddSkill SkHurtMelee $ (-7 + 1 `dL` 5) * 5
+                   -- weak against armor at game start with no hurt bonus
                , AddSkill SkArmorMelee 20
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
@@ -2336,11 +2337,10 @@ pollaxe = halberd
   , iweight  = 4500
   , idamage  = 15 `d` 1
   , iaspects = [ Timeout 12
-               , AddSkill SkHurtMelee $ (-11 + 1 `d` 7) * 5
+               , AddSkill SkHurtMelee $ (-11 + 1 `dL` 7) * 5
                    -- balance, or @DupItem@ would break the game;
                    -- together with @RerollItem@, it's allowed to, though;
                    -- useless against armor at game start with no hurt bonus;
-                   -- can't be `dL` or crafting at low levels would be cruel
                , AddSkill SkArmorMelee 20
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig

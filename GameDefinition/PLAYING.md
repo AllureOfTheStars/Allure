@@ -485,9 +485,14 @@ FAQ
 ---
 
 Q: Where to buy light sources in the crawl scenario game?
-A: Too late. However, they can be crafted in at least two ways in the very
-early stages of the scenario. See the terrain lore menu for crafting
-recipes after exploring the initial levels.
+A: Too late to buy anything. However, they can be crafted in at least
+two ways in the very early stages of the scenario. See the terrain lore menu
+for crafting recipes after exploring the initial levels.
+
+Q: Does power of crafted items depend on the depth of current level?
+A: No, unlike items found on the floor or created via other means,
+items created by crafting are considered to originate at maximal depth
+whether regarding item kind, item stats or lifetime, if applicable.
 
 Q: Why does the percentage of explored tiles turns from 100% to 99%?
 A: Apparently enemies transformed a tile from unexplorable terrain kind
