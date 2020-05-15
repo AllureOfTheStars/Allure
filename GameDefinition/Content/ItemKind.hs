@@ -1543,7 +1543,7 @@ sightSharpening = ringTemplate  -- small and round, so mistaken for a ring
   , irarity  = [(7, 1), (10, 10)]  -- low @ifreq@
   , iweight  = 50  -- heavier that it looks, due to glass
   , iaspects = [ AddSkill SkSight $ 1 + 1 `dL` 2
-               , AddSkill SkHurtMelee $ (-1 + 1 `d` 3) * 3
+               , AddSkill SkHurtMelee $ (1 `d` 3) * 3
                , EqpSlot EqpSlotSight ]
                ++ iaspects ringTemplate
   , idesc    = "Zooms on any movement, distant or close. Requires some getting used to. Never needs to be taken off."
@@ -1807,9 +1807,9 @@ gloveJousting = gloveFencing
   , idamage  = 5 `d` 1
   , iaspects = [ SetFlag Unique
                , Timeout 5
-               , AddSkill SkHurtMelee $ (-7 + 1 `dL` 5) * 3
-               , AddSkill SkArmorMelee $ (2 + 1 `d` 2 + 1 `dL` 2) * 5
-               , AddSkill SkArmorRanged $ (1 + 1 `dL` 2) * 3
+               , AddSkill SkHurtMelee $ (-5 + 1 `dL` 3) * 5
+               , AddSkill SkArmorMelee $ (2 + 1 `d` 2 + 1 `dL` 3) * 5
+               , AddSkill SkArmorRanged $ (1 + 1 `dL` 3) * 3
                  -- very random on purpose and can even be good on occasion
                  -- or when ItemRerolled enough times
                , SetFlag Durable, SetFlag Meleeable
@@ -2137,7 +2137,7 @@ hammer3 = hammerTemplate  -- 2m pole, blunt
                , (S_BLUNT_LONG_HAMMER, 1) ]
   , iweight  = 6000  -- pole weight almost gives it away
   , iaspects = [ Timeout 12
-               , AddSkill SkHurtMelee $ (1 `d` 2) * 5 ]
+               , AddSkill SkHurtMelee $ (-3 + 1 `d` 2) * 5 ]
                ++ iaspects hammerTemplate
   , ieffects = [RefillHP (-8)]
   , idesc    = "This hammer sports a long pole that increases the momentum of the blunt head's swing, at the cost of long recovery."
