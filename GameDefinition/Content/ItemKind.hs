@@ -725,6 +725,14 @@ potion4 = potionTemplate
                , OnSmash (Explode S_HEALING_MIST_2) ]
   }
 potion5 = potionTemplate
+  { iname    = "ampoule"  -- filled with semi-stabilized high explosive liquid
+  , ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
+  , icount   = 3 `dL` 1
+  , ieffects = [ DropItem 1 maxBound COrgan CONDITION
+               , OnSmash (Explode S_VIOLENT_CONCUSSION) ]
+      -- not fragmentation nor glass hail, because not enough glass
+  }
+potion6 = potionTemplate
   -- needs to be common to show at least a portion of effects
   { ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
   , icount   = 3 `dL` 1  -- always as many as possible on this level
@@ -739,7 +747,7 @@ potion5 = potionTemplate
                                 , Explode S_RANGE_PROTECTIVE_BALM
                                 , Explode S_DEFENSELESSNESS_RUNOUT ]) ]
   }
-potion6 = potionTemplate
+potion7 = potionTemplate
   -- needs to be common to show at least a portion of effects
   { ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
   , icount   = 3 `dL` 1
@@ -757,14 +765,6 @@ potion6 = potionTemplate
                                 , Explode S_VIOLENT_SLOWNESS_MIST
                                 , Explode S_FRAGRANCE
                                 , Explode S_VIOLENT_FLASH ]) ]
-  }
-potion7 = potionTemplate
-  { iname    = "ampoule"  -- filled with semi-stabilized high explosive liquid
-  , ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
-  , icount   = 3 `dL` 1
-  , ieffects = [ DropItem 1 maxBound COrgan CONDITION
-               , OnSmash (Explode S_VIOLENT_CONCUSSION) ]
-      -- not fragmentation nor glass hail, because not enough glass
   }
 potion8 = potionTemplate
   { ifreq    = [(CRAWL_ITEM, 50), (ANY_GLASS, 50)]
@@ -924,21 +924,10 @@ scroll5 = scrollTemplate
   }
 scroll6 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , icount   = 3 `dL` 1
-  , irarity  = [(1, 18)]  -- uncommon deep down, where all is known
-  , iaspects = ELabel "of scientific explanation"
-               : iaspects scrollTemplate
-  , ieffects = [Identify `AndEffect` RefillCalm 10]
-  , idesc    = "The most pressing existential concerns are met with a deeply satisfying scientific answer."
+  , irarity  = [(10, 8)]
+  , ieffects = [PushActor (ThrowMod 400 100 1)]  -- 4 steps, 2 turns
   }
 scroll7 = scrollTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(10, 20)]  -- at endgame a crucial item may be missing
-  , iaspects = ELabel "of molecular reconfiguration"
-               : iaspects scrollTemplate
-  , ieffects = [PolyItem `AndEffect` Explode S_FIRECRACKER]
-  }
-scroll8 = scrollTemplate
   { ifreq    = [(CRAWL_ITEM, 75), (ANY_SCROLL, 75)]
   , icount   = 1
   , irarity  = [(10, 5)]
@@ -947,44 +936,55 @@ scroll8 = scrollTemplate
   , ieffects = [Summon HERO 1]
   , idesc    = "This is a security lock chip that opens all doors in the area, including the hatch to a nearby closet, resounding from the blows of, as it turns out, one of our lost crew members."
   }
-scroll9 = scrollTemplate
+scroll8 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , irarity  = [(10, 12)]  -- powerful, even if not ideal; scares newbies
   , ieffects = [Detect DetectAll 20]
   }
-scroll10 = scrollTemplate
+scroll9 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , iaspects = ELabel "of cue interpretation"
                : iaspects scrollTemplate
   , ieffects = [Detect DetectActor 20]
   }
+scroll10 = scrollTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
+  , ieffects = [Discharge $ 40 - 1 `d` 20]
+  }
 scroll11 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(10, 8)]
-  , ieffects = [PushActor (ThrowMod 400 100 1)]  -- 4 steps, 2 turns
+  , irarity  = [(10, 14)]
+  , ieffects = [Discharge 0]
   }
 scroll12 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(8, 18)]
-  , iaspects = ELabel "of molecular duplication"
+  , icount   = 3 `dL` 1
+  , irarity  = [(1, 18)]  -- uncommon deep down, where all is known
+  , iaspects = ELabel "of scientific explanation"
                : iaspects scrollTemplate
-  , ieffects = [DupItem]
+  , ieffects = [Identify `AndEffect` RefillCalm 10]
+  , idesc    = "The most pressing existential concerns are met with a deeply satisfying scientific answer."
   }
 scroll13 = scrollTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
+  , irarity  = [(10, 20)]  -- at endgame a crucial item may be missing
+  , iaspects = ELabel "of molecular reconfiguration"
+               : iaspects scrollTemplate
+  , ieffects = [PolyItem `AndEffect` Explode S_FIRECRACKER]
+  }
+scroll14 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , irarity  = [(8, 22)]
   , iaspects = ELabel "of surface reconfiguration"
                : iaspects scrollTemplate
   , ieffects = [RerollItem]
   }
-scroll14 = scrollTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , ieffects = [Discharge $ 40 - 1 `d` 20]
-  }
 scroll15 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(10, 14)]
-  , ieffects = [Discharge 0]
+  , irarity  = [(8, 18)]
+  , iaspects = ELabel "of molecular duplication"
+               : iaspects scrollTemplate
+  , ieffects = [DupItem]
   }
 scrollAd1 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
@@ -1443,12 +1443,6 @@ necklace3 = necklaceTemplate
   }
 necklace4 = necklaceTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
-  , iaspects = Timeout ((3 + 1 `d` 3 - 1 `dL` 3) * 2)
-               : iaspects_necklaceTemplate  -- OP if Durable; free blink
-  , ieffects = [Teleport $ 3 `d` 2]
-  }
-necklace5 = necklaceTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
   , iaspects = [ ELabel "of escape"
                , Timeout $ (7 - 1 `dL` 5) * 10 ]
                ++ iaspects_necklaceTemplate
@@ -1457,14 +1451,29 @@ necklace5 = necklaceTemplate
                , Yell ]  -- drawback when used for quick exploring
   , idesc    = "A supple chain that slips through your fingers."
   }
+necklace5 = necklaceTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
+  , iaspects = [ ELabel "of greed"
+               , Timeout ((2 + 1 `d` 3) * 10) ]
+               ++ iaspects_necklaceTemplate
+  , ieffects = [ Detect DetectLoot 20
+               , Teleport 40  -- risky
+               , toOrganBad S_PARSIMONIOUS (5 + 1 `d` 3) ]  -- hard to flee
+  }
 necklace6 = necklaceTemplate
+  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
+  , iaspects = Timeout ((3 + 1 `d` 3 - 1 `dL` 3) * 2)
+               : iaspects_necklaceTemplate  -- OP if Durable; free blink
+  , ieffects = [Teleport $ 3 `d` 2]
+  }
+necklace7 = necklaceTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
   , iaspects = Timeout (1 + (1 `d` 3) * 2)
                : iaspects_necklaceTemplate
   , ieffects = [PushActor (ThrowMod 100 50 1)]  -- 1 step, slow
                   -- the @50@ is only for the case of very light actor, etc.
   }
-necklace7 = necklaceTemplate
+necklace8 = necklaceTemplate
   { ifreq    = [(CRAWL_ITEM, 10), (ANY_JEWELRY, 50)]
   , irarity  = [(10, 5)]  -- powerful and determines tactics for one actor
   , iaspects = [ SetFlag Unique, ELabel "of Overdrive"
@@ -1480,7 +1489,7 @@ necklace7 = necklaceTemplate
                  -- Quite OOP if worn with the right set of other items, anyway.
   , idesc    = "This whirring augmentation pack stimulates its host beyond any medically advisable or, surely, even legally admissible levels. It can be only speculated what kind of activity it was designed for, but clearly the steady handling of melee weapons was not one of them."
   }
-necklace8 = necklaceTemplate
+necklace9 = necklaceTemplate
   { iname    = "coil"
   , ifreq    = [ (COMMON_ITEM, 20)  -- crafted, so can be rare
                , (S_REFRIGERATION_COIL, 1), (ANY_JEWELRY, 100)
@@ -1490,20 +1499,11 @@ necklace8 = necklaceTemplate
                : delete (SetFlag Precious) iaspects_necklaceTemplate
   , ieffects = [Explode S_CURRENT_DISCHARGE]
   }
-necklace9 = necklaceTemplate
+necklace10 = necklaceTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100), (PERFUME, 1)]
   , iaspects = Timeout ((1 + 1 `d` 3) * 5)
                : iaspects_necklaceTemplate
   , ieffects = [Explode S_FRAGRANCE]
-  }
-necklace10 = necklaceTemplate
-  { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
-  , iaspects = [ ELabel "of greed"
-               , Timeout ((2 + 1 `d` 3) * 10) ]
-               ++ iaspects_necklaceTemplate
-  , ieffects = [ Detect DetectLoot 20
-               , Teleport 40  -- risky
-               , toOrganBad S_PARSIMONIOUS (5 + 1 `d` 3) ]  -- hard to flee
   }
 motionScanner = necklaceTemplate
   { iname    = "handheld sonar"
