@@ -1354,7 +1354,7 @@ boltCutter = diagonalPliers
   }
 solderingIron = chisel
   { iname    = "soldering iron"
-  , ifreq    = [(CRAWL_ITEM, 20), (BONDING_TOOL, 100)]
+  , ifreq    = [(CRAWL_ITEM, 20), (BONDING_TOOL, 50)]
   , iflavour = zipPlain [White]
   , iverbHit = "soldier"
   , idesc    = "It is a bonding tool."  -- TODO: wikipedia
@@ -1362,9 +1362,9 @@ solderingIron = chisel
   }
 duckTape = solderingIron
   { iname    = "duck tape"
-  , ifreq    = [(CRAWL_ITEM, 20), (BONDING_TOOL, 2)]
+  , ifreq    = [(CRAWL_ITEM, 20), (BONDING_TOOL, 50)]
   , icount   = 1 `d` 4
-  , irarity  = [(2, 100)]
+  , irarity  = [(2, 80)]
   , iverbHit = "catch"
   , idesc    = "It is a bonding tool."  -- TODO: https://en.wikipedia.org/wiki/Duct_tape
   }
@@ -1755,7 +1755,8 @@ spacesuit = ItemKind
 spacesuitTorn = spacesuit
   { iname    = "torn spacesuit"
   , ifreq    = [(CRAWL_ITEM, 100), (S_SPACESUIT_TORN, 1)]
-  , irarity  = [(1, 22)]
+  , icount   = 1 `d` 3
+  , irarity  = [(1, 14)]
   , iverbHit = "entangle"
   , iweight  = 10000
   , iaspects = [ AddSkill SkHurtMelee (-30)
@@ -1765,6 +1766,7 @@ spacesuitTorn = spacesuit
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotArmorMelee ]
   , idesc    = "A badly torn spacesuit. Perhaps two decent wearable pieces could be salvaged by extracting, matching and patching components on a suitable workbench using scissors of some kind."
+  , ikit     = [(BONDING_TOOL, CGround)]
   }
 gloveFencing = ItemKind
   { isymbol  = symbolMiscArmor
