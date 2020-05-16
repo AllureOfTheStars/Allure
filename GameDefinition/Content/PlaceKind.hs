@@ -1174,14 +1174,14 @@ pumps = PlaceKind
   , pcover   = CAlternate
   , pfence   = FWall
   , ptopLeft = [ "·f"
-               , "%;"
+               , "d;"
                ]
   , poverrideDark = [ ('·', DAMP_FLOOR_DARK)
-                    , ('%', DOORLESS_MACHINERY)
+                    , ('d', DOORLESS_MACHINERY)
                     , ('f', PUMPS_DARK)
                     , (';', UNDERBRUSH_CLUMP_DARK) ]
   , poverrideLit = [ ('·', DAMP_FLOOR_LIT)
-                   , ('%', DOORLESS_MACHINERY)
+                   , ('d', DOORLESS_MACHINERY)
                    , ('f', PUMPS_LIT)
                    , (';', UNDERBRUSH_CLUMP_LIT) ]
   }
@@ -1396,13 +1396,13 @@ cells = PlaceKind
   , pcover   = CReflect
   , pfence   = FWall
   , ptopLeft = [ "#··"
-               , "·%·"
+               , "·d·"
                , "··#"
                ]
-  , poverrideDark = [ ('%', DOORLESS_MACHINERY), ('b', RUBBLE_OR_WASTE_DARK)
+  , poverrideDark = [ ('d', DOORLESS_MACHINERY), ('b', RUBBLE_OR_WASTE_DARK)
                     , ('f', BUSH_GROVE_DARK), ('o', OIL_RESIDUE_DARK)
                     , (';', UNDERBRUSH_CLUMP_DARK), ('w', S_REINFORCED_WALL) ]
-  , poverrideLit = [ ('%', DOORLESS_MACHINERY), ('b', RUBBLE_OR_WASTE_LIT)
+  , poverrideLit = [ ('d', DOORLESS_MACHINERY), ('b', RUBBLE_OR_WASTE_LIT)
                    , ('f', BUSH_GROVE_LIT), ('o', OIL_RESIDUE_LIT)
                    , (';', UNDERBRUSH_CLUMP_LIT), ('w', S_REINFORCED_WALL) ]
   }
@@ -1410,8 +1410,8 @@ cells2 = cells
   { pname    = "humidity equalizers"
   , prarity  = [(1, 2), (10, 2)]
   , ptopLeft = [ "f;#·"  -- extra column to avoid blocked exits
-               , ";%;;"
-               , "·%b;"
+               , ";d;;"
+               , "·db;"
                ]
   }
 cells3 = cells
@@ -1432,16 +1432,16 @@ cells5 = cells  -- this one is distinct enough from others, so needs a boost
   { pname    = "broken robot holds"
   , pfreq    = [ (ROGUE, 20), (LABORATORY, 15)
                , (EMPTY, 80), (EXIT, 70), (NOISE, 150) ]
-  , ptopLeft = [ ":·w"
-               , "··w"
+  , ptopLeft = [ "··w"
+               , "·:w"
                , "wwo"
                ]
   }
 cells6 = cells
   { pname    = "animal holding pens"
-  , pfreq    = [ (ARENA, 2), (LABORATORY, 8), (ZOO, 80)]
-  , ptopLeft = [ ";·#"
-               , "##'"
+  , pfreq    = [ (ARENA, 3), (LABORATORY, 20), (ZOO, 80)]
+  , ptopLeft = [ ";;f"
+               , "%%'"
                ]
   }
 cells7 = cells
@@ -1449,7 +1449,7 @@ cells7 = cells
   , pfreq    = [ (ROGUE, 5), (LABORATORY, 20)
                , (EXIT, 20), (NOISE, 100), (AMBUSH, 50) ]
   , pfence   = FFloor
-  , ptopLeft = [ "%·o"
+  , ptopLeft = [ "d·o"
                , "·#o"
                ]
   }
