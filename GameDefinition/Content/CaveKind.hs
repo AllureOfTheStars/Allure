@@ -277,11 +277,11 @@ noise = rogue
   { csymbol       = 'N'
   , cname         = "Computing hardware hub"
   , cfreq         = [(CAVE_NOISE, 1)]
-  , cXminSize     = 21
+  , cXminSize     = 25
   , cYminSize     = 42
-  , ccellSize     = DiceXY (3 `d` 5 + 12) 8
-  , cminPlaceSize = DiceXY 8 7  -- often merge vertically
-  , cmaxPlaceSize = DiceXY 20 20
+  , ccellSize     = DiceXY (1 `d` 3 + 7) 8
+  , cminPlaceSize = DiceXY 7 7  -- often merge vertically
+  , cmaxPlaceSize = DiceXY 8 20
   , cdarkOdds     = 51
   -- Light is deadly, because nowhere to hide and pillars enable spawning
   -- very close to heroes.
@@ -316,6 +316,9 @@ power = noise
   , cfreq         = [(CAVE_POWER, 1)]
   , cXminSize     = 32
   , cYminSize     = 42
+  , ccellSize     = DiceXY (1 `d` 5 + 9) 9
+  , cminPlaceSize = DiceXY 7 7
+  , cmaxPlaceSize = DiceXY 20 20
   , cnightOdds    = 51  -- easier variant, but looks sinister
   , citemNum      = 10 `d` 4  -- an incentive to explore the final labyrinth
   , citemFreq     = [(IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 20), (GEM, 80)]

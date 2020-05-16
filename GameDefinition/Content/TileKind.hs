@@ -684,7 +684,7 @@ wallGlassSpice = wallGlass
 pillarIce = TileKind
   { tsymbol  = '^'
   , tname    = "ice buildup"
-  , tfreq    = [ (LEGEND_LIT, 1), (LEGEND_DARK, 1), (NOISE_SET_LIT, 300)
+  , tfreq    = [ (LEGEND_LIT, 1), (LEGEND_DARK, 1), (NOISE_SET_LIT, 200)
                , (BRAWL_SET_LIT, 15), (LIFT_TERMINAL_DARK, 4) ]
                  -- ice only in dark staircases
   , tcolor   = BrBlue
