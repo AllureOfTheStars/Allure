@@ -201,7 +201,7 @@ casino = arena
   , cnightOdds    = 51  -- always night
   , cactorCoeff   = 70  -- cramped, don't overcrowd
   , cactorFreq    = [(MONSTER, 50), (ANIMAL, 25), (ROBOT, 50)]
-  , citemNum      = 9 `d` 3  -- rare, so make it exciting, by keeping many items
+  , citemNum      = 8 `d` 4  -- rare, so make it exciting, by keeping many items
   , citemFreq     = [ (IK.COMMON_ITEM, 20)
                     , (IK.CRAWL_ITEM, 40)  -- slight spice
                     , (IK.TREASURE, 80) ]  -- lives up to its name
@@ -254,7 +254,7 @@ laboratory = rogue
   , copenChance   = 1%2
   , cactorFreq    = [ (MONSTER, 50), (ANIMAL, 70), (ROBOT, 5)
                     , (IK.AQUATIC, 10) ]
-  , citemNum      = 9 `d` 5  -- reward difficulty
+  , citemNum      = 10 `d` 4  -- reward difficulty
   , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 40)
                     , (IK.TREASURE, 40), (IK.EXPLOSIVE, 80) ]
   , cplaceFreq    = [(LABORATORY, 1)]
@@ -292,7 +292,7 @@ noise = rogue
   , chidden       = 0
   , cactorCoeff   = 70  -- the maze requires time to explore; also, small
   , cactorFreq    = [(MONSTER, 100), (ANIMAL, 5), (ROBOT, 25)]
-  , citemNum      = 10 `d` 4  -- an incentive to explore the labyrinth
+  , citemNum      = 9 `d` 4  -- an incentive to explore the labyrinth
   , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.CRAWL_ITEM, 40)
                     , (IK.TREASURE, 40), (IK.ANY_SCROLL, 200) ]
   , cplaceFreq    = [(NOISE, 1)]
@@ -351,7 +351,7 @@ empty = rogue
   , chidden       = 0
   , cactorCoeff   = 40  -- easy to view and plan
   , cactorFreq    = [(MONSTER, 10), (ANIMAL, 5), (ROBOT, 85)]
-  , citemNum      = 10 `d` 4  -- lots of free space, but extra loot present
+  , citemNum      = 12 `d` 3  -- lots of free space, but extra loot present
   , cplaceFreq    = [(EMPTY, 1)]
   , cpassable     = True
   , cdefTile      = EMPTY_SET_LIT
@@ -426,7 +426,7 @@ bridge = rogue
   , cactorCoeff   = 300  -- it's quite deep already, so spawn slowly;
                          -- this is initially the best level for sleeping
   , cactorFreq    = [(ANIMAL, 100)]
-  , citemNum      = 10 `d` 3  -- lure them in with loot
+  , citemNum      = 8 `d` 3  -- lure them in with loot
   , citemFreq     = [(IK.COMMON_ITEM, 100), (GARDENING_TOOL, 600)]
   , cdefTile      = FILLER_WALL
   , cfenceTileN   = HABITAT_CONTAINMENT_WALL  -- cave isolated for safety
@@ -449,7 +449,7 @@ shallowRogue = rogue
   , cYminSize     = 37
   , cactorCoeff   = 120  -- more difficult
   , cactorFreq    = filter ((/= MONSTER) . fst) $ cactorFreq rogue
-  , citemNum      = 10 `d` 4
+  , citemNum      = 10 `d` 3
   , citemFreq     = [ (IK.COMMON_ITEM, 50), (IK.CRAWL_ITEM, 50)
                     , (GARDENING_TOOL, 600), (IK.ANY_FLASK, 200) ]
   , cmaxStairsNum = 2
