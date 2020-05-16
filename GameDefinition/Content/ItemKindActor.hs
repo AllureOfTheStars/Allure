@@ -431,6 +431,8 @@ goldenJackal = ItemKind  -- basically a much smaller and slower hyena
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 15, AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 24, AddSkill SkNocto 2
+               , AddSkill SkAggression 2  -- scout
+               , AddSkill SkDisplace 1  -- scout
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "An opportunistic predator, feeding on carrion and the weak."
@@ -931,8 +933,7 @@ surveillanceDrone = ItemKind
   , iaspects = [ AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15
                , AddSkill SkMaxHP 6, AddSkill SkMaxCalm 90
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
-               , AddSkill SkDisplace (-1)  -- as dumb as an animal
-               , AddSkill SkMoveItem (-1)
+               , AddSkill SkMoveItem (-1)  -- almost as dumb as an animal
                , AddSkill SkProject (-1)
                , AddSkill SkMelee (-1)
                , SetFlag Durable ]
@@ -952,11 +953,10 @@ shepherdDrone = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [ AddSkill SkArmorMelee 80, AddSkill SkArmorRanged 40
-               , AddSkill SkMaxHP 3, AddSkill SkMaxCalm 60
+               , AddSkill SkMaxHP 6, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
-               , AddSkill SkAlter (-1)  -- can't open doors; roams open spaces
-               , AddSkill SkDisplace (-1)  -- as dumb as an animal
-               , AddSkill SkMoveItem (-1)
+               , AddSkill SkAggression 2  -- scout
+               , AddSkill SkMoveItem (-1)  -- almost as dumb as an animal
                , AddSkill SkProject (-1)
                , SetFlag Durable ]
   , ieffects = []
@@ -977,9 +977,8 @@ huntingDrone = ItemKind
   , iaspects = [ AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15
                , AddSkill SkMaxHP 6, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 40, AddSkill SkNocto 2
-               , AddSkill SkDisplace (-1)  -- almost as dumb as an animal
-               , AddSkill SkMoveItem (-1)  -- but can project
-               , AddSkill SkMelee (-1)
+               , AddSkill SkMoveItem (-1)  -- almost as dumb as an animal
+               , AddSkill SkMelee (-1)  -- but can project
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Originally designed for hunting down and putting to sleep stray animals. The sleeping agent must have long since dried up."
