@@ -886,7 +886,7 @@ scrollTemplate = ItemKind
 scroll1 = scrollTemplate
   { ifreq    = [(CRAWL_ITEM, 75), (ANY_SCROLL, 75)]
   , icount   = 1
-  , irarity  = [(5, 5), (10, 5)]  -- mixed blessing, so found early for a unique
+  , irarity  = [(5, 7), (10, 7)]  -- mixed blessing, so found early for a unique
   , iaspects = [SetFlag Unique, ELabel "of Reckless Beacon"]
                ++ iaspects scrollTemplate
   , ieffects = [Summon HERO 1, Summon MOBILE_ANIMAL (2 + 1 `d` 2)]
@@ -1286,10 +1286,10 @@ blanket = ItemKind
 chisel = ItemKind  -- ignored by AI, but that's fine, others suffice
   { isymbol  = symbolTool
   , iname    = "chisel"
-  , ifreq    = [(CRAWL_ITEM, 100), (BREACHING_TOOL, 1)]
+  , ifreq    = [(CRAWL_ITEM, 20), (BREACHING_TOOL, 1)]
   , iflavour = zipPlain [Cyan]
   , icount   = 1
-  , irarity  = [(2, 10)]
+  , irarity  = [(2, 60)]
   , iverbHit = "dismantle"
   , iweight  = 500
   , idamage  = 0  -- not a missile to avoid wasting, before a worskhop found
@@ -1297,7 +1297,7 @@ chisel = ItemKind  -- ignored by AI, but that's fine, others suffice
   , ieffects = []
   , idesc    = "It is a breaching tool."  -- TODO: https://en.wikipedia.org/wiki/Chisel
                    -- also say light and cheap, but not durable; one time use
-  , ikit     = []
+  , ikit     = [(WIRECUTTING_TOOL, CGround)]
   }
 hacksaw = chisel
   { iname    = "hacksaw"
@@ -1309,18 +1309,19 @@ adjustableSpanner = chisel
   }
 steelFile = chisel
   { iname    = "steel file"
-  , ifreq    = [(CRAWL_ITEM, 100), (BREACHING_TOOL, 1), (SHARPENING_TOOL, 1)]
-  , irarity  = [(2, 12)]
+  , ifreq    = [(CRAWL_ITEM, 10), (BREACHING_TOOL, 1), (SHARPENING_TOOL, 1)]
+  , irarity  = [(2, 80)]
   , iflavour = zipPlain [Red]  -- double purpose, saves one tool sometimes
   , iverbHit = "grate"
   , idesc    = "It is a breaching and sharpening tool."  -- TODO: https://en.wikipedia.org/wiki/File_(tool)
   }
 honingSteel = chisel
   { iname    = "honing steel"
-  , ifreq    = [(CRAWL_ITEM, 100), (SHARPENING_TOOL, 1)]
+  , ifreq    = [(CRAWL_ITEM, 10), (SHARPENING_TOOL, 1)]
   , iflavour = zipFancy [Blue]
   , iverbHit = "hone"
   , idesc    = "Originally used for realigning and sharpening dulled edges of kitchen knives in the local restaurants. Now it turns utensils into weapons."
+  , ikit     = []
   }
 whetstone = honingSteel
   { iname    = "whetstone"
@@ -1329,11 +1330,12 @@ whetstone = honingSteel
   }
 diagonalPliers = chisel
   { iname    = "pair"
-  , ifreq    = [(CRAWL_ITEM, 100), (WIRECUTTING_TOOL, 1)]
+  , ifreq    = [(CRAWL_ITEM, 10), (WIRECUTTING_TOOL, 1)]
   , iflavour = zipPlain [Brown]
   , iverbHit = "cut"
   , iaspects = [ELabel "of diagonal pliers"]
   , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Diagonal_pliers
+  , ikit     = [(SHARPENING_TOOL, CGround)]
   }
 snips = diagonalPliers
   { iname    = "pair"
@@ -1352,16 +1354,17 @@ boltCutter = diagonalPliers
   }
 solderingIron = chisel
   { iname    = "soldering iron"
-  , ifreq    = [(CRAWL_ITEM, 100), (BONDING_TOOL, 100)]
+  , ifreq    = [(CRAWL_ITEM, 20), (BONDING_TOOL, 100)]
   , iflavour = zipPlain [White]
   , iverbHit = "soldier"
   , idesc    = "It is a bonding tool."  -- TODO: wikipedia
+  , ikit     = []
   }
 duckTape = solderingIron
   { iname    = "duck tape"
-  , ifreq    = [(CRAWL_ITEM, 100), (BONDING_TOOL, 2)]
+  , ifreq    = [(CRAWL_ITEM, 20), (BONDING_TOOL, 2)]
   , icount   = 1 `d` 4
-  , irarity  = [(2, 14)]
+  , irarity  = [(2, 100)]
   , iverbHit = "catch"
   , idesc    = "It is a bonding tool."  -- TODO: https://en.wikipedia.org/wiki/Duct_tape
   }
@@ -1752,7 +1755,7 @@ spacesuit = ItemKind
 spacesuitTorn = spacesuit
   { iname    = "torn spacesuit"
   , ifreq    = [(CRAWL_ITEM, 100), (S_SPACESUIT_TORN, 1)]
-  , irarity  = [(1, 17)]
+  , irarity  = [(1, 22)]
   , iverbHit = "entangle"
   , iweight  = 10000
   , iaspects = [ AddSkill SkHurtMelee (-30)
@@ -2016,11 +2019,14 @@ blowtorch = ItemKind
   , idesc    = "A sturdy old-fashioned portable blowtorch for fine cutting or welding of metals. Rather weak, but does not require access codes to high current power outlets. If you can patiently suffer the heat, it can be used as a clumsy breaching tool."
   , ikit     = []
   }
-laserSharpener = honingSteel
-  { iname    = "laser sharpener"
-  , ifreq    = [(CRAWL_ITEM, 100), (SHARPENING_TOOL, 1)]
+laserSharpener = ItemKind
+  { isymbol  = symbolTool
+  , iname    = "laser sharpener"
+  , ifreq    = [(CRAWL_ITEM, 20), (SHARPENING_TOOL, 1)]
   , iflavour = zipFancy [BrBlue]
-  , irarity  = [(10, 4)]
+  , icount   = 1
+  , irarity  = [(5, 20)]  -- comes bundled with other tools
+  , iverbHit = "paint"
   , iweight  = 2000
   , idamage  = 0
   , iaspects = [ SetFlag Unique, Timeout 5
@@ -2028,12 +2034,16 @@ laserSharpener = honingSteel
                , toVelocity 0 ]  -- @Burn@ not effective when thrown
   , ieffects = [Burn 4]  -- really harmful when used as a sharpener; intended
   , idesc    = "Laser ablation is the safest and most accurate of sharpening method. Misaligned optics with broken shielding, however, change the situation dramatically, enabling stray laser pulses to escape at unpredictable angles."  -- hence short range and so melee weapon; TODO: long range weapon with instant projectiles and no risk of hull breach
+  , ikit     = []
   }
-crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
-  { iname    = "crowbar"
+crowbar = ItemKind
+  { isymbol  = symbolTool
+  , iname    = "crowbar"
   , ifreq    = [ (COMMON_ITEM, 100), (BREACHING_TOOL, 1), (S_CROWBAR, 1)
                , (STARTING_WEAPON, 30) ]
   , iflavour = zipPlain [BrCyan]
+  , icount   = 1
+  , iweight  = 1000
   , irarity  = [(1, 6), (3 * 10/15, 6), (4 * 10/15, 1)]
   , iverbHit = "gouge"
   , idamage  = 2 `d` 1
@@ -2045,12 +2055,16 @@ crowbar = chisel  -- no melee bonus, awkward to combine with other weapons
                  -- @RefillHP@ to avoid a no-brainer of durable tool use;
                  -- (idamage ignored to avoid the exploit of tool use in armor)
   , idesc    = "This is a heavy and pointy piece of steel that can be employed as an improvised melee weapon. It is also usable as a breaching tool, though rather injurious."  -- TODO: https://en.wikipedia.org/wiki/Crowbar_(tool)
+  , ikit     = []
   }
-catsPaw = chisel
-  { iname    = "cat's paw"
+catsPaw = ItemKind
+  { isymbol  = symbolTool
+  , iname    = "cat's paw"
   , ifreq    = [ (COMMON_ITEM, 100), (BREACHING_TOOL, 1)
                , (STARTING_WEAPON, 15) ]
   , iflavour = zipFancy [BrCyan]
+  , icount   = 1
+  , iweight  = 500
   , irarity  = [(1, 12), (3 * 10/15, 12), (4 * 10/15, 1)]
   , iverbHit = "paw"
   , idamage  = 1 `d` 1
@@ -2062,6 +2076,7 @@ catsPaw = chisel
                  -- @RefillHP@ to avoid a no-brainer of durable tool use;
                  -- also quite attractive as a ranged weapon
   , idesc    = "This is a sturdy and pointy piece of steel that can be employed as an improvised melee weapon. It is also usable as a breaching tool, though not a particularly safe one."  -- TODO: https://en.wikipedia.org/wiki/Cat%27s_paw_(nail_puller)
+  , ikit     = []
   }
 shortClub = ItemKind
   { isymbol  = symbolHafted
@@ -2200,7 +2215,7 @@ knife = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (STARTING_WEAPON, 100), (S_CLEAVER, 1)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(1, 3), (3, 3), (5, 35), (9, 1)]
+  , irarity  = [(1, 3), (3, 3), (5, 40), (9, 1)]
                  -- useful initially and for crafting mid-game
   , iverbHit = "cut"
   , iweight  = 1000
@@ -2372,7 +2387,7 @@ militaryKnife = knife
   , ifreq    = [ (TREASURE, 1), (WIRECUTTING_TOOL, 1), (MERCENARY_WEAPON, 70)
                , (STARTING_WEAPON, 3) ]
   , iflavour = zipFancy [Green]
-  , irarity  = [(10, 10)]
+  , irarity  = [(10, 10)]  -- in crawl, comes bundled with tools
   , iweight  = 500  -- too small to attach to a pole
   , idamage  = 7 `d` 1
   , iaspects = [ Timeout 2
