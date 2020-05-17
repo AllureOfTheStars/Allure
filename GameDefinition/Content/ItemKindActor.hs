@@ -330,9 +330,9 @@ fastEye = ItemKind
                , (S_EYE_3, COrgan), (S_EAR_3, COrgan)
                , (S_SAPIENT_BRAIN, COrgan) ]
   }
-nose = ItemKind  -- depends solely on smell
+nose = ItemKind  -- sniffs only; a tank requiring multiple weapon hits to beat
   { isymbol  = 'h'
-  , iname    = "clawing horror"
+  , iname    = "crawling horror"
   , ifreq    = [ (MONSTER, 100), (MOBILE, 1), (MOBILE_MONSTER, 100)
                , (AQUATIC, 30), (AQUATIC_MONSTER, 30) ]  -- likes liquids
   , iflavour = zipFancy [BrGreen]
@@ -341,17 +341,16 @@ nose = ItemKind  -- depends solely on smell
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 30, AddSkill SkMaxCalm 30
-               , AddSkill SkSpeed 16, AddSkill SkNocto 2
+  , iaspects = [ AddSkill SkMaxHP 60, AddSkill SkMaxCalm 30
+               , AddSkill SkSpeed 15, AddSkill SkNocto 2
                , AddSkill SkAggression 1
                , AddSkill SkProject (-1)  -- can't project
                , AddSkill SkSwimming 30
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "A blind, slimy mass of loose tissue. You'd think it's powerless, but as soon as it touches your trembling body, clawing, stinging and burning erupts and can't be fended off."
-  , ikit     = [ (S_SMALL_CLAW, COrgan), (S_STING, COrgan)
-               , (S_VENOM_TOOTH, COrgan)
-               , (S_NOSTRIL, COrgan)
+  , idesc    = "A blind, slimy mass of loose tissue. You'd think it's powerless, but as soon as it touches your trembling body, slapping, stinging and burning, it won't let go."
+  , ikit     = [ (S_STING, COrgan), (S_TIP, COrgan), (S_LIP, COrgan)
+               , (S_NOSTRIL, COrgan), (S_HUNGRY, COrgan)
                , (S_SAPIENT_BRAIN, COrgan) ]  -- no sight nor hearing
   }
 elbow = ItemKind
