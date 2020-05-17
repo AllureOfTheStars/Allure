@@ -224,7 +224,7 @@ horn = fist
   , ifreq    = [(S_HORN, 1)]
   , iverbHit = "impale"
   , idamage  = 5 `d` 1
-  , iaspects = [ Timeout 5  -- no effect, but limit raw damage
+  , iaspects = [ Timeout 7  -- no effect, but limit raw damage; two copies
                , AddSkill SkHurtMelee 10
                , AddSkill SkArmorMelee 10 ]  -- bonuses doubled
                ++ iaspects fist
@@ -236,7 +236,7 @@ largeJaw = fist
   , icount   = 1
   , iverbHit = "crush"
   , idamage  = 10 `d` 1
-  , iaspects = [Timeout $ 2 + 1 `d` 2]  -- no effect, but limit raw damage
+  , iaspects = [Timeout $ 8 + 1 `d` 2]  -- no effect, but limit raw damage
                ++ iaspects fist
   , idesc    = "Enough to swallow anything in a single gulp."
   }
@@ -282,7 +282,7 @@ venomTooth = fist
   , ifreq    = [(S_VENOM_TOOTH, 1)]
   , iverbHit = "bite"
   , idamage  = 1 `d` 1
-  , iaspects = Timeout (7 - 1 `dL` 3)
+  , iaspects = Timeout (10 - 1 `dL` 3)
                : iaspects fist
   , ieffects = [toOrganBad S_SLOWED (2 + 1 `dL` 3)]
   , idesc    = "A chilling numbness spreads from its bite."
@@ -337,7 +337,7 @@ largeTail = fist
   , icount   = 1
   , iverbHit = "knock"
   , idamage  = 4 `d` 1
-  , iaspects = [Timeout $ 2 + 1 `d` 2, AddSkill SkHurtMelee 60]
+  , iaspects = [Timeout $ 3 + 1 `d` 2, AddSkill SkHurtMelee 60]
                ++ iaspects fist
                  -- timeout higher, lest they regain push before closing again
   , ieffects = [PushActor (ThrowMod 200 50 1)]  -- 1 step, fast
@@ -349,7 +349,7 @@ hugeTail = fist
   , icount   = 1
   , iverbHit = "upend"
   , idamage  = 7 `d` 1
-  , iaspects = [Timeout $ 3 + 1 `d` 2]
+  , iaspects = [Timeout $ 7 + 1 `d` 2]
                ++ iaspects fist
                  -- timeout higher, lest they regain push before closing again
   , ieffects = [PushActor (ThrowMod 400 50 1)]  -- 2 steps, fast
