@@ -1334,7 +1334,7 @@ diagonalPliers = chisel
   , iverbHit = "cut"
   , iaspects = [ELabel "of diagonal pliers"]
   , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Diagonal_pliers
-  , ikit     = [(SHARPENING_TOOL, CGround)]
+  , ikit     = [(SHARPENING_TOOL, CGround), (BONDING_TOOL, CGround)]
   }
 snips = diagonalPliers
   { iname    = "pair"
@@ -1353,7 +1353,7 @@ boltCutter = diagonalPliers
   }
 solderingIron = chisel
   { iname    = "soldering iron"
-  , ifreq    = [(CRAWL_ITEM, 20), (BONDING_TOOL, 50)]
+  , ifreq    = [(CRAWL_ITEM, 20), (BONDING_TOOL, 30)]
   , iflavour = zipPlain [White]
   , iverbHit = "soldier"
   , idesc    = "It is a bonding tool."  -- TODO: wikipedia
@@ -1361,9 +1361,8 @@ solderingIron = chisel
   }
 duckTape = solderingIron
   { iname    = "duck tape"
-  , ifreq    = [(CRAWL_ITEM, 20), (BONDING_TOOL, 50)]
+  , ifreq    = [(CRAWL_ITEM, 20), (BONDING_TOOL, 70)]
   , icount   = 1 `d` 4
-  , irarity  = [(2, 80)]
   , iverbHit = "catch"
   , idesc    = "It is a bonding tool."  -- TODO: https://en.wikipedia.org/wiki/Duct_tape
   }
