@@ -698,6 +698,7 @@ hornetSwarm = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [ AddSkill SkArmorMelee 80, AddSkill SkArmorRanged 40
+               , AddSkill SkHurtMelee 50
                , AddSkill SkMaxHP 8, AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
                , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors

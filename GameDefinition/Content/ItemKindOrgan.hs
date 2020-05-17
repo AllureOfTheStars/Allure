@@ -201,6 +201,8 @@ jaw = fist
   , icount   = 1
   , iverbHit = "rip"
   , idamage  = 5 `d` 1
+  , iaspects = [Timeout $ 2 + 1 `d` 2]  -- no effect, but limit raw damage
+               ++ iaspects fist
   , idesc    = "Delivers a powerful bite."
   }
 largeJaw = fist
@@ -229,7 +231,8 @@ horn = fist
   , ifreq    = [(S_HORN, 1)]
   , iverbHit = "impale"
   , idamage  = 5 `d` 1
-  , iaspects = [ AddSkill SkHurtMelee 10
+  , iaspects = [ Timeout 5
+               , AddSkill SkHurtMelee 10
                , AddSkill SkArmorMelee 10 ]  -- bonuses doubled
                ++ iaspects fist
   , idesc    = "Sharp and long, for defence or attack."
@@ -250,7 +253,7 @@ tentacle = fist
   , ifreq    = [(S_TENTACLE, 1)]
   , icount   = 4
   , iverbHit = "slap"
-  , idamage  = 4 `d` 1
+  , idamage  = 4 `d` 1  -- very high without cooldown
   , idesc    = "Damp and dextrous."
   }
 tip = fist
@@ -258,7 +261,7 @@ tip = fist
   , ifreq    = [(S_TIP, 1)]
   , icount   = 1
   , iverbHit = "poke"
-  , idamage  = 2 `d` 1
+  , idamage  = 1 `d` 1
   , idesc    = ""
   }
 lip = fist
@@ -269,7 +272,7 @@ lip = fist
   , idamage  = 1 `d` 1
   , iaspects = Timeout (3 + 1 `d` 2)
                : iaspects fist
-  , ieffects = [toOrganBad S_WEAKENED (2 + 1 `dL` 3)]
+  , ieffects = [toOrganBad S_WEAKENED (1 + 1 `dL` 3)]
   , idesc    = ""
   }
 thorn = fist
@@ -333,7 +336,7 @@ sting = fist
   , icount   = 1
   , iverbHit = "inject"
   , idamage  = 1 `d` 1
-  , iaspects = [Timeout $ 10 - 1 `dL` 4, AddSkill SkHurtMelee 50]
+  , iaspects = [Timeout $ 10 - 1 `dL` 4]
                ++ iaspects fist
   , ieffects = [toOrganBad S_RETAINING (3 + 1 `d` 3)]
   , idesc    = "Painful, debilitating and harmful."
@@ -345,7 +348,7 @@ venomTooth = fist
   , idamage  = 1 `d` 1
   , iaspects = Timeout (7 - 1 `dL` 3)
                : iaspects fist
-  , ieffects = [toOrganBad S_SLOWED (3 + 1 `d` 3)]
+  , ieffects = [toOrganBad S_SLOWED (2 + 1 `dL` 3)]
   , idesc    = "A chilling numbness spreads from its bite."
   }
 venomFang = fist
