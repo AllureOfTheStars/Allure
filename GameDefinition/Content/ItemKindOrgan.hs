@@ -208,17 +208,18 @@ smallJaw = fist
   , idamage  = 3 `d` 1
   , idesc    = "Filled with small, even teeth."
   }
-tentacle = fist
-  { iname    = "tentacle"
-  , ifreq    = [(S_TENTACLE, 1)]
-  , icount   = 4
-  , iverbHit = "slap"
-  , idamage  = 4 `d` 1  -- very high without cooldown
-  , idesc    = "Damp and dextrous."
-  }
 
 -- * Cooldown melee damage organs without effects
 
+tentacle = fist  -- to copies only
+  { iname    = "tentacle"
+  , ifreq    = [(S_TENTACLE, 1)]
+  , iverbHit = "slap"
+  , idamage  = 4 `d` 1
+  , iaspects = [Timeout 3]  -- minimal timeout that lets other organs show
+               ++ iaspects fist
+  , idesc    = "Damp and dextrous."
+  }
 jaw = fist
   { iname    = "jaw"
   , ifreq    = [(S_JAW, 1)]
