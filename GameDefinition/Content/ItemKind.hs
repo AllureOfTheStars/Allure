@@ -1795,8 +1795,7 @@ gloveGauntlet = gloveFencing
   , iverbHit = "mow"
   , iweight  = 500
   , idamage  = 3 `d` 1
-  , iaspects = [ Timeout 4
-               , AddSkill SkArmorMelee $ (1 + 1 `dL` 3) * 5
+  , iaspects = [ AddSkill SkArmorMelee $ (1 `dL` 3) * 5
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 40 ]  -- flaps and flutters
@@ -2088,8 +2087,7 @@ shortClub = ItemKind
   , iverbHit = "club"
   , iweight  = 2500
   , idamage  = 2 `d` 1
-  , iaspects = [ Timeout $ 1 + 1 `d` 2
-               , SetFlag Durable, SetFlag Meleeable, EqpSlot EqpSlotWeaponFast
+  , iaspects = [ SetFlag Durable, SetFlag Meleeable, EqpSlot EqpSlotWeaponFast
                , toVelocity 60 ]
   , ieffects = [RefillHP (-1)]
   , idesc    = "Simplicity."
