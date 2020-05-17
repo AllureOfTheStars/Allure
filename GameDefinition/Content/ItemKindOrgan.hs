@@ -674,7 +674,8 @@ razor = fist
   , icount   = 1 + 1 `d` 2
   , iverbHit = "slice"
   , idamage  = 2 `d` 1
-  , iaspects = [SetFlag Meleeable]  -- not Durable
+  , iaspects = [ SetFlag Meleeable  -- not Durable
+               , Timeout $  2 + 3 `dL` 3 ]  -- but cooldown to use other weapons
   , ieffects = [ toOrganBad S_WEAKENED (2 + 1 `dL` 3)
                , VerbNoLonger "lose all sharpness" ]
                  -- we interpret charges as sharpness of the actor or his razor'
