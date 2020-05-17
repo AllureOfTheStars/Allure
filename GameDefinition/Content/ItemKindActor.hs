@@ -321,6 +321,7 @@ fastEye = ItemKind  -- glass cannon
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 12, AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
+               , AddSkill SkHurtMelee 20
                , AddSkill SkAggression 1
                , SetFlag Durable ]
   , ieffects = []
@@ -580,7 +581,7 @@ hyena = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Skulking in the shadows, waiting for easy prey."
-  , ikit     = [ (S_JAW, COrgan)
+  , ikit     = [ (S_JAW, COrgan), (S_SMALL_CLAW, COrgan)
                , (S_EYE_6, COrgan), (S_NOSTRIL, COrgan), (S_EAR_8, COrgan)
                , (S_ANIMAL_BRAIN, COrgan)
                , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_3, COrgan) ]
@@ -597,12 +598,13 @@ komodoDragon = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 40, AddSkill SkMaxCalm 60  -- regens
                , AddSkill SkSpeed 17, AddSkill SkNocto 2
+               , AddSkill SkHurtMelee 60  -- great fighter with low cooldowns
                , AddSkill SkAggression 1  -- match the description
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Larger and more aggressive than any other lizard, but as easily recovering from wounds as its lesser cousins."
   , ikit     = [ (S_LARGE_TAIL, COrgan), (S_JAW, COrgan)
-               , (S_HOOKED_CLAW, COrgan)
+               , (S_HOOKED_CLAW, COrgan), (S_FOOT, COrgan)
                , (S_SPEED_GLAND_5, COrgan), (S_ARMORED_SKIN, COrgan)
                , (S_EYE_3, COrgan), (S_NOSTRIL, COrgan), (S_EAR_3, COrgan)
                , (S_ANIMAL_BRAIN, COrgan)
@@ -610,7 +612,8 @@ komodoDragon = ItemKind
                , (S_GENETIC_FLAW_3, COrgan)  -- not to wake it up too soon
                , (RAW_MEAT_CHUNK, CEqp), (RAW_MEAT_CHUNK, CEqp) ]
   }
-alligator = ItemKind
+alligator = ItemKind  -- late, slow, deadly semi-tank with some armor;
+                      -- too deadly to get more HP; bombs the only recourse
   { isymbol  = 'a'
   , iname    = "alligator"
   , ifreq    = [ (ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)
@@ -637,7 +640,7 @@ alligator = ItemKind
                , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_10, COrgan)
                , (RAW_MEAT_CHUNK, CEqp), (RAW_MEAT_CHUNK, CEqp) ]
   }
-rhinoceros = ItemKind
+rhinoceros = ItemKind  -- impressive tank boss with some armor
   { isymbol  = 'R'
   , iname    = "Maddened Rhinoceros"
   , ifreq    = [(ANIMAL, 100), (MOBILE, 1)]
@@ -650,6 +653,7 @@ rhinoceros = ItemKind
   , iaspects = [ SetFlag Unique
                , AddSkill SkMaxHP 200, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 27, AddSkill SkNocto 2
+               , AddSkill SkHurtMelee 50  -- mass gives extra damage
                , AddSkill SkAggression 2
                , AddSkill SkAlter (-1)  -- can't use normal stairs nor dig;
                                         -- a weak miniboss; can use easy stairs

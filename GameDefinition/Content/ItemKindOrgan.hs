@@ -225,8 +225,7 @@ horn = fist
   , iverbHit = "impale"
   , idamage  = 5 `d` 1
   , iaspects = [ Timeout 7  -- no effect, but limit raw damage; two copies
-               , AddSkill SkHurtMelee 10
-               , AddSkill SkArmorMelee 10 ]  -- bonuses doubled
+               , AddSkill SkArmorMelee 10 ]  -- bonus doubled
                ++ iaspects fist
   , idesc    = "Sharp and long, for defence or attack."
   }
@@ -326,7 +325,7 @@ rhinoHorn = fist
   , icount   = 1  -- single, unlike real horns
   , iverbHit = "gore"
   , idamage  = 4 `d` 1
-  , iaspects = [Timeout 5, AddSkill SkHurtMelee 50]  -- mass gives extra damage
+  , iaspects = [Timeout 5]
                ++ iaspects fist
   , ieffects = [Impress, Yell]  -- the owner is a mid-boss, after all
   , idesc    = "Very solid, considering it has the same composition as fingernails."
@@ -337,7 +336,7 @@ largeTail = fist
   , icount   = 1
   , iverbHit = "knock"
   , idamage  = 4 `d` 1
-  , iaspects = [Timeout $ 3 + 1 `d` 2, AddSkill SkHurtMelee 60]
+  , iaspects = [Timeout $ 3 + 1 `d` 2]
                ++ iaspects fist
                  -- timeout higher, lest they regain push before closing again
   , ieffects = [PushActor (ThrowMod 200 50 1)]  -- 1 step, fast
