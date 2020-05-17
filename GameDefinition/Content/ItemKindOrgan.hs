@@ -662,7 +662,7 @@ liveWire = fist
   , icount   = 1
   , iverbHit = "shock"
   , idamage  = 0
-  , iaspects = [Timeout $ 4 + 1 `d` 3]
+  , iaspects = [Timeout $ 4 + 1 `d` 3]  -- longer than the discharge
                ++ iaspects fist
   , ieffects = [ Discharge $ 40 - 1 `d` 20
                , RefillHP (-1) ]
@@ -675,7 +675,7 @@ razor = fist
   , iverbHit = "slice"
   , idamage  = 2 `d` 1
   , iaspects = [ SetFlag Meleeable  -- not Durable
-               , Timeout $  2 + 3 `dL` 3 ]  -- but cooldown to use other weapons
+               , Timeout $ 4 ]  -- but cooldown to use other weapons
   , ieffects = [ toOrganBad S_WEAKENED (2 + 1 `dL` 3)
                , VerbNoLonger "lose all sharpness" ]
                  -- we interpret charges as sharpness of the actor or his razor'

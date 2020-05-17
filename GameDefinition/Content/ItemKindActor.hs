@@ -789,7 +789,7 @@ razorwireFence = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Must have been bought by previous ship owners to contain the wild animal infestation."
-  , ikit     = [(S_RAZOR, COrgan), (S_RAZOR, COrgan)]
+  , ikit     = [(S_RAZOR, COrgan), (S_THORN, COrgan)]
   }
 electricFence = ItemKind
   { isymbol  = 'f'
