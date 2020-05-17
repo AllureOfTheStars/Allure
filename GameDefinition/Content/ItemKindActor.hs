@@ -308,7 +308,7 @@ eye = ItemKind
                , (S_BARK, COrgan), (S_EYE_6, COrgan)
                , (S_SAPIENT_BRAIN, COrgan) ]  -- no voice, no hearing
   }
-fastEye = ItemKind
+fastEye = ItemKind  -- glass cannon
   { isymbol  = 'b'
   , iname    = "rolling biter"
   , ifreq    = [ (MONSTER, 100), (MOBILE, 1)
@@ -319,14 +319,15 @@ fastEye = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 10, AddSkill SkMaxCalm 70
+  , iaspects = [ AddSkill SkMaxHP 12, AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
                , AddSkill SkAggression 1
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "It bites as blindingly fast as it runs. Or rolls? Or crawls? Also, cuts and pierces."
+  , idesc    = "It bites as blindingly fast as it runs. Or rolls? Also, cuts and pierces."
   , ikit     = [ (S_JAW, COrgan), (S_RAZOR, COrgan), (S_HORN, COrgan)
-               , (S_SPEED_GLAND_10, COrgan)
+               , (S_SMALL_CLAW, COrgan)  -- at least one non-timed, not deadly
+               , (S_SPEED_GLAND_10, COrgan)  -- -30 armor with horn, +20 melee
                , (S_EYE_3, COrgan), (S_EAR_3, COrgan)
                , (S_SAPIENT_BRAIN, COrgan) ]
   }
@@ -348,7 +349,7 @@ nose = ItemKind  -- sniffs only; a tank requiring multiple weapon hits to beat
                , AddSkill SkSwimming 30
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "A blind, slimy mass of loose tissue. You'd think it's powerless, but as soon as it touches your trembling body, slapping, stinging and burning, it won't let go."
+  , idesc    = "A blind, slimy mass of fluid tissue. You'd think it's powerless, but as soon as it touches your trembling body, slapping, stinging and burning, it won't let go."
   , ikit     = [ (S_STING, COrgan), (S_TIP, COrgan), (S_LIP, COrgan)
                , (S_NOSTRIL, COrgan), (S_HUNGRY, COrgan)
                , (S_SAPIENT_BRAIN, COrgan) ]  -- no sight nor hearing
@@ -364,7 +365,7 @@ elbow = ItemKind
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 12, AddSkill SkMaxCalm 80
+  , iaspects = [ AddSkill SkMaxHP 12, AddSkill SkMaxCalm 100
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
                , AddSkill SkProject 2  -- can lob
                , AddSkill SkApply 1  -- can even use cultural artifacts
@@ -372,7 +373,7 @@ elbow = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "It moves in sudden jerks and never makes a noise. Speaks in hard objects hurled at deadly speeds."
-  , ikit     = [ (S_SPEED_GLAND_5, COrgan)
+  , ikit     = [ (S_SPEED_GLAND_5, COrgan)  -- -25 armor
                , (S_EYE_6, COrgan), (S_EAR_8, COrgan)
                    -- too powerful to get stronger sight
                , (S_SAPIENT_BRAIN, COrgan)
@@ -403,8 +404,8 @@ torsor = ItemKind
   , ieffects = []
   , idesc    = "The mind, the big heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw and dripping fangs."
   , ikit     = [ (S_TENTACLE, COrgan), (S_HOOKED_CLAW, COrgan)
-                   -- at least one non-timed
                , (S_LARGE_JAW, COrgan), (S_VENOM_FANG, COrgan)
+               , (S_SMALL_CLAW, COrgan)  -- at least one non-timed, not deadly
                , (S_SPEED_GLAND_10, COrgan)
                , (S_EYE_6, COrgan), (S_EAR_8, COrgan)
                , (S_SAPIENT_BRAIN, COrgan)
