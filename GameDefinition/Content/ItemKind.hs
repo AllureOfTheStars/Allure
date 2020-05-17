@@ -355,6 +355,7 @@ harpoon = ItemKind
 harpoon2 = harpoon
   { iname    = "sharp harpoon"
   , ifreq    = [(COMMON_ITEM, 1), (HARPOON, 2), (S_HARPOON_SHARP, 1)]
+  , irarity  = [(10, 5)]
   , idamage  = 8 `d` 1
   , idesc    = "A cord ending in a sharpened cargo-hook that, in addition to entangling the victim, gains purchase biting into the body."
   }
