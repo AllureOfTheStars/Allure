@@ -332,6 +332,7 @@ fastEye = ItemKind  -- glass cannon
                , (S_SAPIENT_BRAIN, COrgan) ]
   }
 nose = ItemKind  -- sniffs only; a tank requiring multiple weapon hits to beat
+                 -- and no armor, so special kinds of damage don't help
   { isymbol  = 'h'
   , iname    = "crawling horror"
   , ifreq    = [ (MONSTER, 100), (MOBILE, 1), (MOBILE_MONSTER, 100)
@@ -495,7 +496,7 @@ skunk = ItemKind
                , (S_ANIMAL_BRAIN, COrgan)
                , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_3, COrgan) ]
   }
-armadillo = ItemKind
+armadillo = ItemKind  -- a tank with armor, so special damage defeats it
   { isymbol  = 'a'
   , iname    = "giant armadillo"
   , ifreq    = [(ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)]
@@ -503,10 +504,11 @@ armadillo = ItemKind
   , icount   = 1
   , irarity  = [(1, 7)]
   , iverbHit = "thud"
-  , iweight  = 80000
+  , iweight  = 54000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 13, AddSkill SkMaxCalm 30
+  , iaspects = [ AddSkill SkMaxHP 30, AddSkill SkMaxCalm 30
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
+               , AddSkill SkHurtMelee (-70)  -- quite harmless rolled in a ball
                , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
                , SetFlag Durable ]
   , ieffects = []
