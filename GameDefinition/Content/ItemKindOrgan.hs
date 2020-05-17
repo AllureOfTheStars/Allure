@@ -136,9 +136,9 @@ animalStomach,       hungry, smallBeak, razor, liveWire, electricAmbience, elect
 thorn = fist
   { iname    = "thorn"
   , ifreq    = [(S_THORN, 1)]
-  , icount   = 2 + 1 `d` 3
+  , icount   = 2 + 1 `d` 2  -- unrealistic, but not boring
   , iverbHit = "puncture"
-  , idamage  = 2 `d` 1
+  , idamage  = 1 `d` 1
   , iaspects = [SetFlag Meleeable]  -- not Durable
   , ieffects = [VerbNoLonger "be not so thorny any more"]
   , idesc    = "Sharp yet brittle."
@@ -229,12 +229,13 @@ horn = fist
                ++ iaspects fist
   , idesc    = "Sharp and long, for defence or attack."
   }
-largeJaw = fist
+largeJaw = fist  -- organs can't be too weak, because some non-humans also use
+                 -- human weapons and then the sudden contrast would be cruel
   { iname    = "large jaw"
   , ifreq    = [(S_LARGE_JAW, 1)]
   , icount   = 1
   , iverbHit = "crush"
-  , idamage  = 10 `d` 1
+  , idamage  = 10 `d` 1  -- tops the best non-crafted, non-unique human weapons
   , iaspects = [Timeout $ 8 + 1 `d` 2]  -- no effect, but limit raw damage
                ++ iaspects fist
   , idesc    = "Enough to swallow anything in a single gulp."

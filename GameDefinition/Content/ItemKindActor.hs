@@ -681,7 +681,7 @@ beeSwarm = ItemKind
   , iverbHit = "buzz"
   , iweight  = 1000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 8, AddSkill SkMaxCalm 60
+  , iaspects = [ AddSkill SkMaxHP 10, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 30, AddSkill SkNocto 2  -- armor in sting
                , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
                , AddSkill SkWait (-2)  -- can't brace, sleep and lurk
@@ -693,7 +693,7 @@ beeSwarm = ItemKind
                , (S_VISION_6, COrgan), (S_EAR_6, COrgan)
                , (S_INSECT_MORTALITY, COrgan), (S_ANIMAL_BRAIN, COrgan) ]
   }
-hornetSwarm = ItemKind
+hornetSwarm = ItemKind  -- kind of tank with armor, but short-lived
   { isymbol  = 'h'
   , iname    = "hornet swarm"
   , ifreq    = [(ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)]
@@ -705,7 +705,7 @@ hornetSwarm = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkArmorMelee 80, AddSkill SkArmorRanged 40
                , AddSkill SkHurtMelee 50
-               , AddSkill SkMaxHP 8, AddSkill SkMaxCalm 70
+               , AddSkill SkMaxHP 10, AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
                , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
                , AddSkill SkWait (-2)  -- can't brace, sleep and lurk
@@ -717,7 +717,7 @@ hornetSwarm = ItemKind
                , (S_VISION_6, COrgan), (S_EAR_6, COrgan)
                , (S_INSECT_MORTALITY, COrgan), (S_ANIMAL_BRAIN, COrgan) ]
   }
-thornbush = ItemKind
+thornbush = ItemKind  -- the wimpiest kind of early tank
   { isymbol  = 't'
   , iname    = "thornbush"
   , ifreq    = [(ANIMAL, 30), (IMMOBILE_ANIMAL, 50)]
@@ -727,7 +727,7 @@ thornbush = ItemKind
   , iverbHit = "scrape"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 20, AddSkill SkMaxCalm 999
+  , iaspects = [ AddSkill SkMaxHP 30, AddSkill SkMaxCalm 999
                , AddSkill SkSpeed 22, AddSkill SkNocto 2
                , AddSkill SkWait 1, AddSkill SkMelee 1  -- no brain
                , SetFlag Durable ]
@@ -758,6 +758,7 @@ giantOctopus = ItemKind
   , ieffects = []
   , idesc    = "It has eight arms of rage."
   , ikit     = [ (S_TENTACLE, COrgan), (S_TENTACLE, COrgan)
+               , (S_TENTACLE, COrgan), (S_TENTACLE, COrgan)
                , (S_SMALL_BEAK, COrgan)  -- TODO: use when tentacles torn out
                , (S_EYE_8, COrgan)
                    -- shots not too damaging, so can have strong sight
