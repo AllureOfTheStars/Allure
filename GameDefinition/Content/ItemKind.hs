@@ -1259,7 +1259,7 @@ light3 = ItemKind
 blanket = ItemKind
   { isymbol  = symbolLight
   , iname    = "mineral fibre blanket"
-  , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_ATTENUATOR, 20), (BLANKET, 1)
+  , ifreq    = [ (COMMON_ITEM, 20), (LIGHT_ATTENUATOR, 20), (BLANKET, 1)
                , (THICK_CLOTH, 1), (FIREPROOF_CLOTH, 1)
                , (FIRE_FIGHTING_ITEM, 60), (SHARPENING_TOOL, 1) ]
   , iflavour = zipPlain [Magenta]
@@ -1288,7 +1288,7 @@ chisel = ItemKind  -- ignored by AI, but that's fine, others suffice
   , ifreq    = [(CRAWL_ITEM, 20), (BREACHING_TOOL, 1)]
   , iflavour = zipPlain [Cyan]
   , icount   = 1
-  , irarity  = [(2, 60)]
+  , irarity  = [(2, 70)]
   , iverbHit = "dismantle"
   , iweight  = 500
   , idamage  = 0  -- not a missile to avoid wasting, before a worskhop found
@@ -1309,7 +1309,7 @@ adjustableSpanner = chisel
 steelFile = chisel
   { iname    = "steel file"
   , ifreq    = [(CRAWL_ITEM, 10), (BREACHING_TOOL, 1), (SHARPENING_TOOL, 1)]
-  , irarity  = [(2, 80)]
+  , irarity  = [(2, 90)]
   , iflavour = zipPlain [Red]  -- double purpose, saves one tool sometimes
   , iverbHit = "grate"
   , idesc    = "It is a breaching and sharpening tool."  -- TODO: https://en.wikipedia.org/wiki/File_(tool)
@@ -1353,7 +1353,7 @@ boltCutter = diagonalPliers
   }
 solderingIron = chisel
   { iname    = "soldering iron"
-  , ifreq    = [(CRAWL_ITEM, 20), (BONDING_TOOL, 30)]
+  , ifreq    = [(CRAWL_ITEM, 15), (BONDING_TOOL, 30)]
   , iflavour = zipPlain [White]
   , iverbHit = "soldier"
   , idesc    = "It is a bonding tool."  -- TODO: wikipedia
@@ -1361,7 +1361,7 @@ solderingIron = chisel
   }
 duckTape = solderingIron
   { iname    = "duck tape"
-  , ifreq    = [(CRAWL_ITEM, 20), (BONDING_TOOL, 70)]
+  , ifreq    = [(CRAWL_ITEM, 10), (BONDING_TOOL, 70)]
   , icount   = 1 `d` 4
   , iverbHit = "catch"
   , idesc    = "It is a bonding tool."  -- TODO: https://en.wikipedia.org/wiki/Duct_tape
@@ -2302,10 +2302,10 @@ swordNullifySharp = swordNullify
 halberd = ItemKind  -- long pole
   { isymbol  = symbolPolearm
   , iname    = "pole cleaver"
-  , ifreq    = [(COMMON_ITEM, 3), (STARTING_WEAPON, 50), (S_POLE_CLEAVER, 1)]
+  , ifreq    = [(COMMON_ITEM, 3), (STARTING_WEAPON, 70), (S_POLE_CLEAVER, 1)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
-  , irarity  = [(5, 1), (8, 15)]
+  , irarity  = [(5, 1), (10, 10)]
   , iverbHit = "slice"
   , iweight  = 3500
   , idamage  = 11 `d` 1  -- bad, until sharpened
@@ -2330,13 +2330,13 @@ oxTongue = halberd  -- long pole, because glued 1m handle worse than nothing
 fireAxe = ItemKind
   { isymbol  = symbolHafted
   , iname    = "fire axe"
-  , ifreq    = [ (TREASURE, 60), (HANDLE_AND_STEEL, 1), (S_FIRE_AXE, 1)
+  , ifreq    = [ (TREASURE, 20), (HANDLE_AND_STEEL, 1), (S_FIRE_AXE, 1)
                , (FIRE_FIGHTING_ITEM, 5) ]
                  -- not @BREACHING_TOOL@, because it trigger traps
                  -- and destroys treasure, instead of opening
   , iflavour = zipPlain [BrRed]
   , icount   = 1
-  , irarity  = [(1, 1)]
+  , irarity  = [(1, 1)]  -- from fire cabinets
   , iverbHit = "gouge"
   , iweight  = 1600
   , idamage  = 9 `d` 1  -- worse than sharpened pipe, but upgradable
