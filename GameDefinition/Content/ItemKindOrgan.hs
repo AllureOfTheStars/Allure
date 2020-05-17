@@ -131,10 +131,37 @@ fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, ho
 -- Allure-specific
 animalStomach,       hungry, smallBeak, razor, liveWire, electricAmbience, electricAmbienceRecharge, robotBrain, hullPlating, mouthVent, dustVent, dustFissure, fuelVent, fuelFissure, geneticFlaw3, geneticFlaw10 :: ItemKind
 
--- Weapons
+-- * No-cooldown melee damage organs without effects
 
--- * Human weapon organs
-
+thorn = fist
+  { iname    = "thorn"
+  , ifreq    = [(S_THORN, 1)]
+  , icount   = 2 + 1 `d` 3
+  , iverbHit = "puncture"
+  , idamage  = 2 `d` 1
+  , iaspects = [SetFlag Meleeable]  -- not Durable
+  , ieffects = [VerbNoLonger "be not so thorny any more"]
+  , idesc    = "Sharp yet brittle."
+  }
+tip = fist
+  { iname    = "tip"
+  , ifreq    = [(S_TIP, 1)]
+  , icount   = 1
+  , iverbHit = "poke"
+  , idamage  = 1 `d` 1
+  , idesc    = ""
+  }
+lip = fist
+  { iname    = "lip"
+  , ifreq    = [(S_LIP, 1)]
+  , icount   = 1
+  , iverbHit = "lap"
+  , idamage  = 1 `d` 1
+  , iaspects = Timeout (3 + 1 `d` 2)
+               : iaspects fist
+  , ieffects = [toOrganBad S_WEAKENED (1 + 1 `dL` 3)]
+  , idesc    = ""
+  }
 fist = ItemKind
   { isymbol  = ','
   , iname    = "fist"
@@ -157,20 +184,6 @@ foot = fist
   , idamage  = 2 `d` 1
   , idesc    = "A weapon you can still use if disarmed."
                  -- great example of tutorial hints inside a flavourful text
-  }
-
--- * Other weapon organs
-
-hookedClaw = fist
-  { iname    = "hooked claw"
-  , ifreq    = [(S_HOOKED_CLAW, 1)]
-  , icount   = 2  -- even if more, only the fore claws used for fighting
-  , iverbHit = "hook"
-  , idamage  = 2 `d` 1
-  , iaspects = Timeout (12 - 1 `dL` 3)
-               : iaspects fist
-  , ieffects = [toOrganBad S_SLOWED 2]
-  , idesc    = "A curved talon."
   }
 smallClaw = fist
   { iname    = "small claw"
@@ -195,6 +208,17 @@ smallJaw = fist
   , idamage  = 3 `d` 1
   , idesc    = "Filled with small, even teeth."
   }
+tentacle = fist
+  { iname    = "tentacle"
+  , ifreq    = [(S_TENTACLE, 1)]
+  , icount   = 4
+  , iverbHit = "slap"
+  , idamage  = 4 `d` 1  -- very high without cooldown
+  , idesc    = "Damp and dextrous."
+  }
+
+-- * Cooldown melee damage organs without effects
+
 jaw = fist
   { iname    = "jaw"
   , ifreq    = [(S_JAW, 1)]
@@ -204,6 +228,17 @@ jaw = fist
   , iaspects = [Timeout $ 2 + 1 `d` 2]  -- no effect, but limit raw damage
                ++ iaspects fist
   , idesc    = "Delivers a powerful bite."
+  }
+horn = fist
+  { iname    = "horn"
+  , ifreq    = [(S_HORN, 1)]
+  , iverbHit = "impale"
+  , idamage  = 5 `d` 1
+  , iaspects = [ Timeout 5  -- no effect, but limit raw damage
+               , AddSkill SkHurtMelee 10
+               , AddSkill SkArmorMelee 10 ]  -- bonuses doubled
+               ++ iaspects fist
+  , idesc    = "Sharp and long, for defence or attack."
   }
 largeJaw = fist
   { iname    = "large jaw"
@@ -215,109 +250,9 @@ largeJaw = fist
                ++ iaspects fist
   , idesc    = "Enough to swallow anything in a single gulp."
   }
-antler = fist
-  { iname    = "antler"
-  , ifreq    = [(S_ANTLER, 1)]
-  , iverbHit = "ram"
-  , idamage  = 4 `d` 1
-  , iaspects = [ Timeout $ 3 + (1 `d` 3) * 3
-               , AddSkill SkArmorMelee 10 ]  -- bonus doubled
-               ++ iaspects fist
-  , ieffects = [PushActor (ThrowMod 100 50 1)]  -- 1 step, slow
-  , idesc    = ""
-  }
-horn = fist
-  { iname    = "horn"
-  , ifreq    = [(S_HORN, 1)]
-  , iverbHit = "impale"
-  , idamage  = 5 `d` 1
-  , iaspects = [ Timeout 5
-               , AddSkill SkHurtMelee 10
-               , AddSkill SkArmorMelee 10 ]  -- bonuses doubled
-               ++ iaspects fist
-  , idesc    = "Sharp and long, for defence or attack."
-  }
-rhinoHorn = fist
-  { iname    = "ugly horn"  -- made of keratin, unlike real horns
-  , ifreq    = [(S_RHINO_HORN, 1)]
-  , icount   = 1  -- single, unlike real horns
-  , iverbHit = "gore"
-  , idamage  = 4 `d` 1
-  , iaspects = [Timeout 5, AddSkill SkHurtMelee 50]  -- mass gives extra damage
-               ++ iaspects fist
-  , ieffects = [Impress, Yell]  -- the owner is a mid-boss, after all
-  , idesc    = "Very solid, considering it has the same composition as fingernails."
-  }
-tentacle = fist
-  { iname    = "tentacle"
-  , ifreq    = [(S_TENTACLE, 1)]
-  , icount   = 4
-  , iverbHit = "slap"
-  , idamage  = 4 `d` 1  -- very high without cooldown
-  , idesc    = "Damp and dextrous."
-  }
-tip = fist
-  { iname    = "tip"
-  , ifreq    = [(S_TIP, 1)]
-  , icount   = 1
-  , iverbHit = "poke"
-  , idamage  = 1 `d` 1
-  , idesc    = ""
-  }
-lip = fist
-  { iname    = "lip"
-  , ifreq    = [(S_LIP, 1)]
-  , icount   = 1
-  , iverbHit = "lap"
-  , idamage  = 1 `d` 1
-  , iaspects = Timeout (3 + 1 `d` 2)
-               : iaspects fist
-  , ieffects = [toOrganBad S_WEAKENED (1 + 1 `dL` 3)]
-  , idesc    = ""
-  }
-thorn = fist
-  { iname    = "thorn"
-  , ifreq    = [(S_THORN, 1)]
-  , icount   = 2 + 1 `d` 3
-  , iverbHit = "puncture"
-  , idamage  = 2 `d` 1
-  , iaspects = [SetFlag Meleeable]  -- not Durable
-  , ieffects = [VerbNoLonger "be not so thorny any more"]
-  , idesc    = "Sharp yet brittle."
-  }
-boilingFissure = fist
-  { iname    = "fissure"
-  , ifreq    = [(S_BOILING_FISSURE, 1)]
-  , icount   = 5 + 1 `d` 5
-  , iverbHit = "hiss at"
-  , idamage  = 1 `d` 1
-  , iaspects = [ AddSkill SkHurtMelee 20  -- decreasing as count decreases
-               , SetFlag Meleeable ]  -- not Durable
-  , ieffects = [ DropItem 1 1 COrgan CONDITION  -- useful; limited
-               , VerbNoLonger "widen the crack, releasing pressure" ]
-  , idesc    = ""
-  }
-arsenicFissure = boilingFissure
-  { iname    = "fissure"
-  , ifreq    = [(S_COOLING_FISSURE, 1)]
-  , icount   = 3 + 1 `d` 3
-  , idamage  = 2 `d` 1
-  , ieffects = [ toOrganBad S_PARSIMONIOUS (5 + 1 `d` 3)
-                   -- weaken/freeze, impacting intellectual abilities first
-               , VerbNoLonger "clog with ice" ]
-  , idesc    = ""
-  }
-sulfurFissure = boilingFissure
-  { iname    = "fissure"
-  , ifreq    = [(S_MEDBOT_FISSURE, 1)]
-  , icount   = 2 + 1 `d` 2
-  , idamage  = 0  -- heal not via (negative) idamage, for armour would block it
-  , iaspects = SetFlag Benign : iaspects boilingFissure
-  , ieffects = [ RefillHP 5
-               , toOrganNoTimer S_HUNGRY  -- the metabolic price to pay
-               , VerbNoLonger "run out of nano medbot liquid" ]
-  , idesc    = ""
-  }
+
+-- * Direct damage organs with effects
+
 beeSting = fist
   { iname    = "bee sting"
   , ifreq    = [(S_BEE_STING, 1)]
@@ -351,15 +286,16 @@ venomTooth = fist
   , ieffects = [toOrganBad S_SLOWED (2 + 1 `dL` 3)]
   , idesc    = "A chilling numbness spreads from its bite."
   }
-venomFang = fist
-  { iname    = "venom fang"
-  , ifreq    = [(S_VENOM_FANG, 1)]
-  , iverbHit = "bite"
-  , idamage  = 0
-  , iaspects = Timeout (10 - 1 `dL` 5)
+hookedClaw = fist
+  { iname    = "hooked claw"
+  , ifreq    = [(S_HOOKED_CLAW, 1)]
+  , icount   = 2  -- even if more, only the fore claws used for fighting
+  , iverbHit = "hook"
+  , idamage  = 2 `d` 1
+  , iaspects = Timeout (12 - 1 `dL` 3)
                : iaspects fist
-  , ieffects = [toOrganNoTimer S_POISONED]
-  , idesc    = "Dripping with deadly venom."
+  , ieffects = [toOrganBad S_SLOWED 2]
+  , idesc    = "A curved talon."
   }
 screechingBeak = fist
   { iname    = "screeching beak"
@@ -371,6 +307,28 @@ screechingBeak = fist
                : iaspects fist
   , ieffects = [Summon SCAVENGER $ 1 `dL` 3]
   , idesc    = "Both a weapon and a beacon, calling more scavengers to the meal."
+  }
+antler = fist
+  { iname    = "antler"
+  , ifreq    = [(S_ANTLER, 1)]
+  , iverbHit = "ram"
+  , idamage  = 4 `d` 1
+  , iaspects = [ Timeout $ 3 + (1 `d` 3) * 3
+               , AddSkill SkArmorMelee 10 ]  -- bonus doubled
+               ++ iaspects fist
+  , ieffects = [PushActor (ThrowMod 100 50 1)]  -- 1 step, slow
+  , idesc    = ""
+  }
+rhinoHorn = fist
+  { iname    = "ugly horn"  -- made of keratin, unlike real horns
+  , ifreq    = [(S_RHINO_HORN, 1)]
+  , icount   = 1  -- single, unlike real horns
+  , iverbHit = "gore"
+  , idamage  = 4 `d` 1
+  , iaspects = [Timeout 5, AddSkill SkHurtMelee 50]  -- mass gives extra damage
+               ++ iaspects fist
+  , ieffects = [Impress, Yell]  -- the owner is a mid-boss, after all
+  , idesc    = "Very solid, considering it has the same composition as fingernails."
   }
 largeTail = fist
   { iname    = "large tail"
@@ -397,7 +355,54 @@ hugeTail = fist
   , idesc    = "Slow but immensely heavy."
   }
 
--- Non-weapons
+-- * Melee weapons without direct damage
+
+venomFang = fist
+  { iname    = "venom fang"
+  , ifreq    = [(S_VENOM_FANG, 1)]
+  , iverbHit = "bite"
+  , idamage  = 0
+  , iaspects = Timeout (10 - 1 `dL` 5)
+               : iaspects fist
+  , ieffects = [toOrganNoTimer S_POISONED]
+  , idesc    = "Dripping with deadly venom."
+  }
+
+-- * Special melee weapons
+
+sulfurFissure = boilingFissure
+  { iname    = "fissure"
+  , ifreq    = [(S_MEDBOT_FISSURE, 1)]
+  , icount   = 2 + 1 `d` 2
+  , idamage  = 0  -- heal not via (negative) idamage, for armour would block it
+  , iaspects = SetFlag Benign : iaspects boilingFissure
+  , ieffects = [ RefillHP 5
+               , toOrganNoTimer S_HUNGRY  -- the metabolic price to pay
+               , VerbNoLonger "run out of nano medbot liquid" ]
+  , idesc    = ""
+  }
+boilingFissure = fist
+  { iname    = "fissure"
+  , ifreq    = [(S_BOILING_FISSURE, 1)]
+  , icount   = 5 + 1 `d` 5
+  , iverbHit = "hiss at"
+  , idamage  = 1 `d` 1
+  , iaspects = [ AddSkill SkHurtMelee 20  -- decreasing as count decreases
+               , SetFlag Meleeable ]  -- not Durable
+  , ieffects = [ DropItem 1 1 COrgan CONDITION  -- useful; limited
+               , VerbNoLonger "widen the crack, releasing pressure" ]
+  , idesc    = ""
+  }
+arsenicFissure = boilingFissure
+  { iname    = "fissure"
+  , ifreq    = [(S_COOLING_FISSURE, 1)]
+  , icount   = 3 + 1 `d` 3
+  , idamage  = 2 `d` 1
+  , ieffects = [ toOrganBad S_PARSIMONIOUS (5 + 1 `d` 3)
+                   -- weaken/freeze, impacting intellectual abilities first
+               , VerbNoLonger "clog with ice" ]
+  , idesc    = ""
+  }
 
 -- * Armor organs
 
@@ -551,6 +556,16 @@ scentGland = armoredSkin
                    -- "of ([foo explosion] of [bar])"
   , idesc    = ""
   }
+sulfurVent = armoredSkin
+  { iname    = "vent"
+  , ifreq    = [(S_MEDBOT_VENT, 1)]
+  , iflavour = zipPlain [BrYellow]
+  , iverbHit = "menace"
+  , iaspects = [ Timeout $ (3 + 1 `d` 3) * 5
+               , SetFlag Periodic, SetFlag Durable ]
+  , ieffects = [RefillHP 2, Explode S_MELEE_PROTECTIVE_BALM]
+  , idesc    = ""
+  }
 boilingVent = armoredSkin
   { iname    = "vent"
   , ifreq    = [(S_BOILING_VENT, 1)]
@@ -569,16 +584,6 @@ arsenicVent = armoredSkin
   , iaspects = [ Timeout $ (2 + 1 `d` 3) * 5
                , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [RefillHP 2, Explode S_VIOLENT_SLOWNESS_MIST]
-  , idesc    = ""
-  }
-sulfurVent = armoredSkin
-  { iname    = "vent"
-  , ifreq    = [(S_MEDBOT_VENT, 1)]
-  , iflavour = zipPlain [BrYellow]
-  , iverbHit = "menace"
-  , iaspects = [ Timeout $ (3 + 1 `d` 3) * 5
-               , SetFlag Periodic, SetFlag Durable ]
-  , ieffects = [RefillHP 2, Explode S_MELEE_PROTECTIVE_BALM]
   , idesc    = ""
   }
 
@@ -640,7 +645,61 @@ impressed = armoredSkin
   , idesc    = "Being impressed by one's adversary sounds like fun, but on battlefield it equals treason. Almost. Throw in depleted battle calm and it leads to mindless desertion outright."
   }
 
--- * Allure-specific
+-- * Allure-specific melee weapons
+
+smallBeak = fist
+  { iname    = "small beak"
+  , ifreq    = [(S_SMALL_BEAK, 1)]
+  , icount   = 1
+  , iverbHit = "nom"
+  , idamage  = 2 `d` 1
+  , idesc    = "Cute, but painful."
+  }
+liveWire = fist
+  { iname    = "live wire"
+  , ifreq    = [(S_LIVE_WIRE, 1)]
+  , icount   = 1
+  , iverbHit = "shock"
+  , idamage  = 0
+  , iaspects = [Timeout $ 4 + 1 `d` 3]
+               ++ iaspects fist
+  , ieffects = [ Discharge $ 40 - 1 `d` 20
+               , RefillHP (-1) ]
+  , idesc    = ""
+  }
+razor = fist
+  { iname    = "razor edge"
+  , ifreq    = [(S_RAZOR, 1)]
+  , icount   = 1 + 1 `d` 2
+  , iverbHit = "slice"
+  , idamage  = 2 `d` 1
+  , iaspects = [SetFlag Meleeable]  -- not Durable
+  , ieffects = [ toOrganBad S_WEAKENED (2 + 1 `dL` 3)
+               , VerbNoLonger "lose all sharpness" ]
+                 -- we interpret charges as sharpness of the actor or his razor'
+                 -- no pronoun in the message to avoid "you lose its sharpness"
+  , idesc    = ""
+  }
+dustFissure = boilingFissure
+  { iname    = "fissure"
+  , ifreq    = [(S_DUST_FISSURE, 1)]
+  , icount   = 5 + 1 `d` 5
+  , idamage  = 1 `d` 1
+  , ieffects = [ toOrganBad S_WEAKENED 20
+               , VerbNoLonger "cough one last time" ]
+  , idesc    = ""
+  }
+fuelFissure = boilingFissure
+  { iname    = "fissure"
+  , ifreq    = [(S_FUEL_FISSURE, 1)]
+  , icount   = 3 + 1 `d` 3
+  , idamage  = 0
+  , ieffects = [ Burn 1
+               , VerbNoLonger "have its fissures mended by emergency auto-sealants" ]
+  , idesc    = ""
+  }
+
+-- * Allure-specific other
 
 animalStomach = armoredSkin
   { iname    = "animal stomach"
@@ -668,39 +727,6 @@ hungry = armoredSkin
                , OnSmash $ verbMsgNoLonger "hungry" ]
                    -- not periodic, so no wear each turn, so only @OnSmash@
   , idesc    = "Hunger limits physical fitness. In extreme cases, when compounded, it causes such fragility that the slightest stress becomes lethal."
-  }
-smallBeak = fist
-  { iname    = "small beak"
-  , ifreq    = [(S_SMALL_BEAK, 1)]
-  , icount   = 1
-  , iverbHit = "nom"
-  , idamage  = 2 `d` 1
-  , idesc    = "Cute, but painful."
-  }
-razor = fist
-  { iname    = "razor edge"
-  , ifreq    = [(S_RAZOR, 1)]
-  , icount   = 1 + 1 `d` 2
-  , iverbHit = "slice"
-  , idamage  = 2 `d` 1
-  , iaspects = [SetFlag Meleeable]  -- not Durable
-  , ieffects = [ toOrganBad S_WEAKENED (2 + 1 `dL` 3)
-               , VerbNoLonger "lose all sharpness" ]
-                 -- we interpret charges as sharpness of the actor or his razor'
-                 -- no pronoun in the message to avoid "you lose its sharpness"
-  , idesc    = ""
-  }
-liveWire = fist
-  { iname    = "live wire"
-  , ifreq    = [(S_LIVE_WIRE, 1)]
-  , icount   = 1
-  , iverbHit = "shock"
-  , idamage  = 0
-  , iaspects = [Timeout $ 4 + 1 `d` 3]
-               ++ iaspects fist
-  , ieffects = [ Discharge $ 40 - 1 `d` 20
-               , RefillHP (-1) ]
-  , idesc    = ""
   }
 electricAmbience = armoredSkin
   { iname    = "static current ambience"
@@ -755,15 +781,6 @@ dustVent = armoredSkin
   , ieffects = [RefillHP 2, Explode S_VIOLENT_FLASH]
   , idesc    = ""
   }
-dustFissure = boilingFissure
-  { iname    = "fissure"
-  , ifreq    = [(S_DUST_FISSURE, 1)]
-  , icount   = 5 + 1 `d` 5
-  , idamage  = 1 `d` 1
-  , ieffects = [ toOrganBad S_WEAKENED 20
-               , VerbNoLonger "cough one last time" ]
-  , idesc    = ""
-  }
 fuelVent = armoredSkin
   { iname    = "vent"
   , ifreq    = [(S_FUEL_VENT, 1)]
@@ -772,15 +789,6 @@ fuelVent = armoredSkin
   , iaspects = [ Timeout $ (3 + 1 `d` 3) * 5
                , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [RefillHP 2, Explode S_BURNING_OIL_4]
-  , idesc    = ""
-  }
-fuelFissure = boilingFissure
-  { iname    = "fissure"
-  , ifreq    = [(S_FUEL_FISSURE, 1)]
-  , icount   = 3 + 1 `d` 3
-  , idamage  = 0
-  , ieffects = [ Burn 1
-               , VerbNoLonger "have its fissures mended by emergency auto-sealants" ]
   , idesc    = ""
   }
 -- HP change varies due to body size
