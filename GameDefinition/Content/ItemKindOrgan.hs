@@ -151,17 +151,6 @@ tip = fist
   , idamage  = 1 `d` 1
   , idesc    = ""
   }
-lip = fist
-  { iname    = "lip"
-  , ifreq    = [(S_LIP, 1)]
-  , icount   = 1
-  , iverbHit = "lap"
-  , idamage  = 1 `d` 1
-  , iaspects = Timeout (3 + 1 `d` 2)
-               : iaspects fist
-  , ieffects = [toOrganBad S_WEAKENED (1 + 1 `dL` 3)]
-  , idesc    = ""
-  }
 fist = ItemKind
   { isymbol  = ','
   , iname    = "fist"
@@ -276,6 +265,17 @@ sting = fist
                ++ iaspects fist
   , ieffects = [toOrganBad S_RETAINING (3 + 1 `d` 3)]
   , idesc    = "Painful, debilitating and harmful."
+  }
+lip = fist
+  { iname    = "lip"
+  , ifreq    = [(S_LIP, 1)]
+  , icount   = 1
+  , iverbHit = "lap"
+  , idamage  = 1 `d` 1
+  , iaspects = Timeout (3 + 1 `d` 2)
+               : iaspects fist
+  , ieffects = [toOrganBad S_WEAKENED (1 + 1 `dL` 3)]
+  , idesc    = ""
   }
 venomTooth = fist
   { iname    = "venom tooth"
