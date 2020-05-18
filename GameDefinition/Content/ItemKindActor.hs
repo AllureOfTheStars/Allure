@@ -332,8 +332,9 @@ fastEye = ItemKind  -- glass cannon
                , (S_EYE_3, COrgan), (S_EAR_3, COrgan)
                , (S_SAPIENT_BRAIN, COrgan) ]
   }
-nose = ItemKind  -- sniffs only; a tank requiring multiple weapon hits to beat
-                 -- and no armor, so special kinds of damage don't help
+nose = ItemKind  -- sniffs only; a tank requiring multiple weapon hits to beat;
+                 -- no armor, so special kinds of damage don't help;
+                 -- slow, but despite that, danger when strong weapons wielded!
   { isymbol  = 'h'
   , iname    = "crawling horror"
   , ifreq    = [ (MONSTER, 100), (MOBILE, 1), (MOBILE_MONSTER, 100)
@@ -604,7 +605,7 @@ komodoDragon = ItemKind
   , ieffects = []
   , idesc    = "Larger and more aggressive than any other lizard, but as easily recovering from wounds as its lesser cousins."
   , ikit     = [ (S_LARGE_TAIL, COrgan), (S_JAW, COrgan)
-               , (S_HOOKED_CLAW, COrgan), (S_FOOT, COrgan)
+               , (S_LIP, COrgan), (S_FOOT, COrgan)
                , (S_SPEED_GLAND_5, COrgan), (S_ARMORED_SKIN, COrgan)
                , (S_EYE_3, COrgan), (S_NOSTRIL, COrgan), (S_EAR_3, COrgan)
                , (S_ANIMAL_BRAIN, COrgan)
@@ -660,7 +661,7 @@ rhinoceros = ItemKind  -- impressive tank boss with some armor
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "The last of its kind. Blind with rage, or perhaps due to the postoperative scars. A huge mass of muscle that charges at deadly speed."
-  , ikit     = [ (S_RHINO_HORN, COrgan), (S_SNOUT, COrgan)
+  , ikit     = [ (S_RHINO_HORN, COrgan), (S_FOOT, COrgan)
                , (S_ARMORED_SKIN, COrgan)
                , (S_EYE_3, COrgan), (S_EAR_8, COrgan)
                , (S_ANIMAL_BRAIN, COrgan)
@@ -1016,7 +1017,7 @@ homeRobot = ItemKind
                , (S_EYE_3, COrgan), (S_NOSTRIL, COrgan), (S_EAR_3, COrgan)
                , (S_ROBOT_BRAIN, COrgan) ]
   }
-wasteRobot = ItemKind
+wasteRobot = ItemKind  -- not a tank, because smell-only alien is already a tank
   { isymbol  = 'r'
   , iname    = "waste disposal robot"
   , ifreq    = [ (ROBOT, 100), (MOBILE, 100), (MOBILE_ROBOT, 100)
@@ -1027,12 +1028,12 @@ wasteRobot = ItemKind
   , iverbHit = "clank"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 17, AddSkill SkMaxCalm 30
+  , iaspects = [ AddSkill SkMaxHP 20, AddSkill SkMaxCalm 30
                , AddSkill SkSpeed 15, AddSkill SkNocto 2
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "You are not in its database, hence you are waste."
-  , ikit     = [ (S_TENTACLE, COrgan)
+  , ikit     = [ (S_TENTACLE, COrgan), (S_SNOUT, COrgan)
                , (S_NOSTRIL, COrgan)  -- only smell, for variety
                , (S_ROBOT_BRAIN, COrgan)
                , (WASTE_CONTAINER, CEqp) ]
@@ -1059,13 +1060,14 @@ lightRobot = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Interior and exterior decoration robot. Strongly fancies deep reds recently."
-  , ikit     = [ (S_HOOKED_CLAW, COrgan), (S_TENTACLE, COrgan)
+  , ikit     = [ (S_HOOKED_CLAW, COrgan), (S_TENTACLE, COrgan), (S_FOOT, COrgan)
                , (S_HULL_PLATING, COrgan)
                , (S_EYE_6, COrgan), (S_EAR_8, COrgan)
                , (S_ROBOT_BRAIN, COrgan)
                , (CONSTRUCTION_HOOTER, CEqp) ]
   }
-heavyRobot = ItemKind
+heavyRobot = ItemKind  -- summoning tank with armor, but fortunately weak
+                       -- weapons; danger when strong weapons wielded!
   { isymbol  = 'r'
   , iname    = "demolition robot"
   , ifreq    = [ (ROBOT, 100), (MOBILE, 100), (MOBILE_ROBOT, 100)
@@ -1076,7 +1078,7 @@ heavyRobot = ItemKind
   , iverbHit = "clank"
   , iweight  = 800000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 41, AddSkill SkMaxCalm 40
+  , iaspects = [ AddSkill SkMaxHP 60, AddSkill SkMaxCalm 40
                    -- can't summon again for a long time;
                    -- loses a lot of sight after summoning
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
@@ -1086,7 +1088,7 @@ heavyRobot = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Heavy multi-purpose construction robot. Excels at discharging, dismantling and demolition."
-  , ikit     = [ (S_LARGE_JAW, COrgan), (S_SMALL_CLAW, COrgan)
+  , ikit     = [ (S_HORN, COrgan), (S_FIST, COrgan), (S_SMALL_CLAW, COrgan)
                , (S_HULL_PLATING, COrgan)
                , (S_EYE_3, COrgan), (S_EAR_6, COrgan)
                , (S_ROBOT_BRAIN, COrgan)
@@ -1128,8 +1130,8 @@ cleanerRobot = ItemKind
   , iweight  = 800000
   , idamage  = 0
   , iaspects = [ SetFlag Unique
-               , AddSkill SkMaxHP 100
-                   -- regenerates and huge armor, so lower HP
+               , AddSkill SkMaxHP 120
+                   -- doubly regenerates and huge armor (72), so lower HP
                , AddSkill SkMaxCalm 40
                    -- can't summon again for a long time;
                    -- loses a lot of sight after summoning
@@ -1141,11 +1143,12 @@ cleanerRobot = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "An oversize waste disposal robot repaired with parts from a demolition robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness. The robot's bulky trunk doesn't fit into even the larger lift carriages."
-  , ikit     = [ (S_LIVE_WIRE, COrgan)
-               , (S_LARGE_JAW, COrgan), (S_TENTACLE, COrgan)
+  , ikit     = [ (S_TENTACLE, COrgan), (S_SNOUT, COrgan)
+               , (S_HORN, COrgan), (S_SMALL_CLAW, COrgan)  -- no fist
+               , (S_LIVE_WIRE, COrgan)  -- patched from parts
                , (ELECTRIC_AMBIENCE, COrgan)  -- regeneration
                , (S_BOILING_VENT, COrgan)  -- regeneration
-               , (S_HULL_PLATING, COrgan), (S_HULL_PLATING, COrgan)
+               , (S_HULL_PLATING, COrgan)
                    -- the only such armor, except for weak animals; plus
                    -- the WASTE_CONTAINER, so only hammers and proj effective
                , (S_EYE_3, COrgan), (S_NOSTRIL, COrgan), (S_EAR_6, COrgan)

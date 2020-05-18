@@ -185,7 +185,7 @@ snout = fist
   { iname    = "snout"
   , ifreq    = [(S_SNOUT, 1)]
   , icount   = 1
-  , iverbHit = "bite"
+  , iverbHit = "nudge"
   , idamage  = 2 `d` 1
   , idesc    = "Sensitive and wide-nostrilled."
   }
