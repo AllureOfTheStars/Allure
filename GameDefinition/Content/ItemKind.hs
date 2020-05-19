@@ -1798,7 +1798,7 @@ gloveGauntlet = gloveFencing
   , idamage  = 3 `d` 1
   , iaspects = [ AddSkill SkArmorMelee $ (1 `dL` 3) * 5
                , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotArmorMelee
+               , EqpSlot EqpSlotWeaponFast  -- no timeout, so worth wielding
                , toVelocity 40 ]  -- flaps and flutters
   , idesc    = "A piece of a hull maintenance spacesuit, padded, reinforced with carbon fibre, with extruding titan manipulators."
   }
@@ -2519,7 +2519,7 @@ treePruner = grassStitcher
   , iaspects = [ Timeout 7
                , AddSkill SkArmorMelee 20  -- sharp
                , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotWeaponBig
+               , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]
   , ieffects = []
   , idesc    = "A heavy tree lopper on a sturdy long pole."
