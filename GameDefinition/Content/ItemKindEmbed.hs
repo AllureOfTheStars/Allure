@@ -869,8 +869,7 @@ barrelFuel = ItemKind
   , iweight  = 100000
   , idamage  = 0
   , iaspects = []
-  , ieffects = [Explode S_BURNING_OIL_3, OnCombine oilEffect]
-                 -- may exploit to harm foes; watch out for friends
+  , ieffects = [Explode S_FOCUSED_BURNING_OIL_3, OnCombine oilEffect]
   , idesc    = ""
   , ikit     = []
   }

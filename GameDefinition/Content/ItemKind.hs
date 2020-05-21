@@ -1224,9 +1224,8 @@ light2 = ItemKind
   , iaspects = [ AddSkill SkShine 3, AddSkill SkSight (-1)
                , SetFlag Lobable, SetFlag Fragile, SetFlag Equipable
                , EqpSlot EqpSlotShine ]
-  , ieffects = [ Burn 2
-               , toOrganBad S_PACIFIED (2 + 1 `d` 2)
-               , OnSmash (Explode S_BURNING_OIL_2) ]
+  , ieffects = [ Explode S_FOCUSED_BURNING_OIL_2
+               , OnSmash (Explode S_VIOLENT_BURNING_OIL_2) ]
   , idesc    = "A restaurant table glass lamp filled with plant oil feeding a slender wick. Or a makeshift caricature thereof."
   , ikit     = []
   }
@@ -1251,9 +1250,8 @@ light3 = ItemKind
   , iaspects = [ AddSkill SkShine 4, AddSkill SkSight (-1)
                , SetFlag Lobable, SetFlag Fragile, SetFlag Equipable
                , EqpSlot EqpSlotShine ]
-  , ieffects = [ Burn 2
-               , toOrganBad S_PACIFIED (4 + 1 `d` 2)
-               , OnSmash (Explode S_BURNING_OIL_4) ]
+  , ieffects = [ Explode S_FOCUSED_BURNING_OIL_4
+               , OnSmash (Explode S_VIOLENT_BURNING_OIL_4) ]
   , idesc    = "Very old, very bright and very heavy lantern made of hand-polished brass."
   , ikit     = []
   }
@@ -1362,7 +1360,7 @@ solderingIron = chisel
   }
 duckTape = solderingIron
   { iname    = "duck tape"
-  , ifreq    = [(CRAWL_ITEM, 10), (BONDING_TOOL, 70)]
+  , ifreq    = [(CRAWL_ITEM, 9), (BONDING_TOOL, 70)]
   , icount   = 1 `d` 4
   , iverbHit = "catch"
   , idesc    = "It is a bonding tool."  -- TODO: https://en.wikipedia.org/wiki/Duct_tape

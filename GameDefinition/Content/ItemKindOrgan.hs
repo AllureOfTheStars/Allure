@@ -790,7 +790,7 @@ fuelVent = armoredSkin
   , iverbHit = "menace"
   , iaspects = [ Timeout $ (3 + 1 `d` 3) * 5
                , SetFlag Periodic, SetFlag Durable ]
-  , ieffects = [RefillHP 2, Explode S_BURNING_OIL_4]
+  , ieffects = [RefillHP 2, Explode S_VIOLENT_BURNING_OIL_4]
   , idesc    = ""
   }
 -- HP change varies due to body size
