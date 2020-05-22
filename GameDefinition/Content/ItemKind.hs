@@ -1778,7 +1778,7 @@ gloveFencing = ItemKind
   , idamage  = 2 `d` 1
   , iaspects = [ AddSkill SkHurtMelee $ (2 + 1 `d` 2 + 1 `dL` 2) * 3
                , AddSkill SkArmorRanged $ (1 `dL` 2) * 3
-               , SetFlag Durable, SetFlag Equipable
+               , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotHurtMelee
                , toVelocity 40 ]  -- flaps and flutters
   , ieffects = []
