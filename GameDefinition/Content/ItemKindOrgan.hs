@@ -731,8 +731,9 @@ hungry = armoredSkin
                    -- not periodic, so no wear each turn, so only @OnSmash@
   , idesc    = "Hunger limits physical fitness. In extreme cases, when compounded, it causes such fragility that the slightest stress becomes lethal."
   }
-inkSac = armoredSkin  -- neither melee nor aspects nor periodic
-  { iname    = "ink sac"
+inkSac = armoredSkin  -- neither melee nor aspects nor periodic, so to be
+  { isymbol  = '"'    -- triggered, needs special symbol and beeing in equipment
+  , iname    = "ink sac"
   , ifreq    = [(S_INK_SAC, 1)]
   , iverbHit = "squirt"
   , iaspects = [Timeout $ 3 + 1 `d` 3, SetFlag Durable]

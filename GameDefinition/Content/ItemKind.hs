@@ -2661,11 +2661,15 @@ jumpingPole = ItemKind
   , iaspects = [ Timeout $ (2 + 1 `d` 2 - 1 `dL` 2) * 5
                , SetFlag Durable ]
   , ieffects = [toOrganGood S_HASTED 1]
-                 -- safe for AI, because it speeds up, so when AI applies it
-                 -- again and again, it gets its time back and is not stuck;
-                 -- in total, the explorations speed is unchanged,
+                 -- This works and doesn't cause AI loops. @InsertMove@
+                 -- would produce an activation that doesn't change game state.
+                 -- Hasting for an absolute number of turns would cause
+                 -- an explosion of time when several poles are accumulated.
+                 -- Here it speeds AI up for exactly the turn spent activating,
+                 -- so when AI applies it repeatedly, it gets its time back and
+                 -- is not stuck. In total, the exploration speed is unchanged,
                  -- but it's useful when fleeing in the dark to make distance
-                 -- and when initiating combat, so it's OK that AI uses it
+                 -- and when initiating combat, so it's OK that AI uses it.
   , idesc    = "Makes you vulnerable at take-off, but then you are free like a bird."
   , ikit     = []
   }

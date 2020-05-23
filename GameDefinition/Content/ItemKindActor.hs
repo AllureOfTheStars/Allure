@@ -758,7 +758,7 @@ giantOctopus = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "It has eight arms of rage."
-  , ikit     = [ (S_INK_SAC, COrgan)
+  , ikit     = [ (S_INK_SAC, CEqp)  -- equipment so that it can be triggered
                , (S_TENTACLE, COrgan), (S_TENTACLE, COrgan)
                , (S_TENTACLE, COrgan), (S_TENTACLE, COrgan)
                , (S_SMALL_BEAK, COrgan)  -- TODO: use when tentacles torn out
