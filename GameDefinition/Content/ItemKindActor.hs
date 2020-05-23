@@ -758,7 +758,8 @@ giantOctopus = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "It has eight arms of rage."
-  , ikit     = [ (S_TENTACLE, COrgan), (S_TENTACLE, COrgan)
+  , ikit     = [ (S_INK_SAC, COrgan)
+               , (S_TENTACLE, COrgan), (S_TENTACLE, COrgan)
                , (S_TENTACLE, COrgan), (S_TENTACLE, COrgan)
                , (S_SMALL_BEAK, COrgan)  -- TODO: use when tentacles torn out
                , (S_EYE_8, COrgan)
