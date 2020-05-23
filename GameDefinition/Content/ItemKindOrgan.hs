@@ -736,7 +736,7 @@ inkSac = armoredSkin  -- neither melee nor aspects nor periodic
   , ifreq    = [(S_INK_SAC, 1)]
   , iverbHit = "squirt"
   , iaspects = [Timeout $ 3 + 1 `d` 3, SetFlag Durable]
-  , ieffects = [ Explode S_IRON_FILING
+  , ieffects = [ Explode S_SMOKE  -- weak, but lingers long
                , PullActor (ThrowMod 200 50 1)  -- 1 step, fast
                , RefillCalm 100 ]  -- balance @Explode@ so that AI uses it
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Octopus#Ink_sac

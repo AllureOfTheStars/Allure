@@ -554,21 +554,22 @@ distortion = ItemKind  -- currently unused
   , idesc    = "The air shifts oddly, as though light is being warped."
   , ikit     = []
   }
-smoke = ItemKind  -- when stuff burns out
+smoke = ItemKind  -- slow, long, weakly blinding blast; smoke, octopus's ink
   { isymbol  = '`'
-  , iname    = "smoke fume"  -- pluralizes better than 'smokes'
+  , iname    = "dark fume"  -- pluralizes better than 'smokes'
   , ifreq    = [(S_SMOKE, 1)]
   , iflavour = zipPlain [BrBlack]
   , icount   = 16
   , irarity  = [(1, 1)]
-  , iverbHit = "choke"  -- or "obscure"
+  , iverbHit = "obscure"
   , iweight  = 1
   , idamage  = 0
   , iaspects = [ toVelocity 20  -- 4 steps, 2 turns
                , SetFlag Fragile, SetFlag Blast ]
-  , ieffects = [toOrganBad S_WITHHOLDING (5 + 1 `d` 3)]
-                  -- choking and tears, can roughly see, but not aim
-  , idesc    = "Twirling clouds of grey smoke."
+  , ieffects = [ toOrganBad S_BLIND (1 + 1 `d` 2)
+               , toOrganBad S_WITHHOLDING (5 + 1 `d` 3) ]
+                  -- choking and tears or just obscured view, can't aim
+  , idesc    = "Twirling clouds of black, sticky vapour."
   , ikit     = []
   }
 boilingWater = ItemKind
@@ -820,7 +821,7 @@ eyeDrop = ItemKind
   , idesc    = "Not to be taken orally."
   , ikit     = []
   }
-ironFiling = ItemKind
+ironFiling = ItemKind  -- fast, short, strongly blinding blast
   { isymbol  = '`'
   , iname    = "iron filing"
   , ifreq    = [(S_IRON_FILING, 1)]
