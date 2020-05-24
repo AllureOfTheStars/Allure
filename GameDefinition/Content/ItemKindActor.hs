@@ -440,7 +440,7 @@ goldenJackal = ItemKind  -- basically a much smaller, slower and nosy hyena
   , ieffects = []
   , idesc    = "An opportunistic predator, feeding on carrion and the weak."
   , ikit     = [ (S_SMALL_JAW, COrgan)
-               , (S_POWERFUL_HIND_LEG, CEqp)  -- useful for an aggressive actor
+               , (S_POWERFUL_HIND_LEG, COrgan)  -- useful for aggressive actor
                , (S_EYE_6, COrgan), (S_NOSTRIL, COrgan), (S_EAR_8, COrgan)
                , (S_ANIMAL_BRAIN, COrgan)
                , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_3, COrgan) ]
@@ -562,7 +562,7 @@ rattlesnake = ItemKind
   , ieffects = []
   , idesc    = "Beware its rattle - it serves as a warning of an agonising death."
   , ikit     = [ (S_VENOM_FANG, COrgan)  -- when discharged, it's weaponless
-               , (S_COILED_TAIL, CEqp)  -- useful for an aggressive actor
+               , (S_COILED_TAIL, COrgan)  -- useful for an aggressive actor
                , (S_RATLLE, COrgan)
                , (S_EYE_3, COrgan), (S_NOSTRIL, COrgan), (S_EAR_6, COrgan)
                , (S_ANIMAL_BRAIN, COrgan)  -- small reptile, hungers slowly
@@ -762,7 +762,7 @@ giantOctopus = ItemKind
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "It has eight arms of rage."
-  , ikit     = [ (S_INK_SAC, CEqp)  -- equipment so that it can be triggered
+  , ikit     = [ (S_INK_SAC, COrgan)
                , (S_TENTACLE, COrgan), (S_TENTACLE, COrgan)
                , (S_TENTACLE, COrgan), (S_TENTACLE, COrgan)
                , (S_SMALL_BEAK, COrgan)  -- TODO: use when tentacles torn out
