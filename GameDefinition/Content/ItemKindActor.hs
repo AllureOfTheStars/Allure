@@ -665,7 +665,7 @@ rhinoceros = ItemKind  -- impressive tank boss with some armor
   , ieffects = []
   , idesc    = "The last of its kind. Blind with rage, or perhaps due to the postoperative scars. A huge mass of muscle that charges at deadly speed."
   , ikit     = [ (S_RHINO_HORN, COrgan), (S_FOOT, COrgan)
-               , (S_ARMORED_SKIN, COrgan)
+               , (S_RHINO_INERTIA, COrgan), (S_ARMORED_SKIN, COrgan)
                , (S_EYE_3, COrgan), (S_EAR_8, COrgan)
                , (S_ANIMAL_BRAIN, COrgan)
                , (S_ANIMAL_STOMACH, COrgan)
