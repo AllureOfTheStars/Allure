@@ -232,6 +232,16 @@ horn = fist
                ++ iaspects fist
   , idesc    = "Sharp and long, for defence or attack."
   }
+largeTail = fist
+  { iname    = "large tail"
+  , ifreq    = [(S_LARGE_TAIL, 1)]
+  , icount   = 1
+  , iverbHit = "knock"
+  , idamage  = 6 `d` 1  -- not sharp
+  , iaspects = [Timeout $ 4 + 1 `d` 2]  -- one copy, so can be low
+               ++ iaspects fist
+  , idesc    = "Almost as long as the trunk."
+  }
 largeJaw = fist  -- organs can't be too weak, because some non-humans also use
                  -- human weapons and then the sudden contrast would be cruel
   { iname    = "large jaw"
@@ -334,18 +344,6 @@ rhinoHorn = fist
   , ieffects = [Impress, Yell]  -- the owner is a mid-boss, after all
   , idesc    = "Very solid, considering it has the same composition as fingernails."
   }
-largeTail = fist
-  { iname    = "large tail"
-  , ifreq    = [(S_LARGE_TAIL, 1)]
-  , icount   = 1
-  , iverbHit = "knock"
-  , idamage  = 4 `d` 1
-  , iaspects = [Timeout $ 3 + 1 `d` 2]
-               ++ iaspects fist
-                 -- timeout higher, lest they regain push before closing again
-  , ieffects = [PushActor (ThrowMod 200 50 1)]  -- 1 step, fast
-  , idesc    = "Almost as long as the trunk."
-  }
 hugeTail = fist
   { iname    = "huge tail"
   , ifreq    = [(S_HUGE_TAIL, 1)]
@@ -355,8 +353,9 @@ hugeTail = fist
   , iaspects = [Timeout $ 7 + 1 `d` 2]
                ++ iaspects fist
                  -- timeout higher, lest they regain push before closing again
-  , ieffects = [PushActor (ThrowMod 400 50 1)]  -- 2 steps, fast
-  , idesc    = "Slow but immensely heavy."
+  , ieffects = [PushActor (ThrowMod 200 50 1)]  -- 1 step, fast
+      -- 2 steps would be too hard to counteract via second line of heroes
+  , idesc    = "This immense tail transfers a huge momentum in a matter of seconds."
   }
 
 -- * Melee weapons without direct damage
