@@ -285,7 +285,7 @@ civilian5 = civilian
 
 -- They have bright colours, because they are not natural.
 
-eye = ItemKind
+eye = ItemKind  -- depends on items it finds rather than special organs
   { isymbol  = 'w'
   , iname    = "beckoning walker"
   , ifreq    = [ (MONSTER, 100), (MOBILE, 1)
@@ -308,7 +308,7 @@ eye = ItemKind
                , (S_BARK, COrgan), (S_EYE_6, COrgan)
                , (S_SAPIENT_BRAIN, COrgan) ]  -- no voice, no hearing
   }
-fastEye = ItemKind  -- glass cannon
+fastEye = ItemKind  -- glass cannon; depends mostly on items it finds
   { isymbol  = 'b'
   , iname    = "rolling biter"
   , ifreq    = [ (MONSTER, 100), (MOBILE, 1)
@@ -445,7 +445,7 @@ goldenJackal = ItemKind  -- basically a much smaller, slower and nosy hyena
                , (S_ANIMAL_BRAIN, COrgan)
                , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_3, COrgan) ]
   }
-griffonVulture = ItemKind
+griffonVulture = ItemKind  -- keep it boring and weak, because it summons
   { isymbol  = 'v'
   , iname    = "griffon vulture"
   , ifreq    = [ (ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)
@@ -465,8 +465,7 @@ griffonVulture = ItemKind
                , SetFlag Durable ]
       -- Animals don't have leader, usually, so even if only one on level,
       -- it pays the communication overhead, so the speed is higher to get
-      -- them on par with human leaders moving solo. Common random double moves,
-      -- on either side, are just too bothersome.
+      -- them on par with human leaders moving solo.
   , ieffects = []
   , idesc    = "It soars high above, searching for vulnerable prey."
   , ikit     = [ (S_SCREECHING_BEAK, COrgan)  -- in reality it grunts and hisses
@@ -946,14 +945,15 @@ surveillanceDrone = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15
                , AddSkill SkMaxHP 6, AddSkill SkMaxCalm 90
-               , AddSkill SkSpeed 30, AddSkill SkNocto 2
+               , AddSkill SkSpeed 25, AddSkill SkNocto 2
                , AddSkill SkMoveItem (-1)  -- almost as dumb as an animal
                , AddSkill SkProject (-1)
                , AddSkill SkMelee (-1)
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "A video camera in each room would violate privacy of passengers, hence surveillance drones. Programmed to be easy to fend off, they keep a respectful distance."
-  , ikit     = [ (S_VISION_16, COrgan), (S_ROBOT_BRAIN, COrgan) ]
+  , idesc    = "A video camera in each room would violate privacy of passengers, hence surveillance drones. Programmed to be easy to fend off, they try to keep a respectful distance, even at the cost to themselves."
+  , ikit     = [ (S_JET_BOOSTER, COrgan)
+               , (S_VISION_16, COrgan), (S_ROBOT_BRAIN, COrgan) ]
   }
 shepherdDrone = ItemKind
   { isymbol  = 'd'
@@ -967,15 +967,16 @@ shepherdDrone = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [ AddSkill SkArmorMelee 80, AddSkill SkArmorRanged 40
-               , AddSkill SkMaxHP 6, AddSkill SkMaxCalm 60
-               , AddSkill SkSpeed 30, AddSkill SkNocto 2
+               , AddSkill SkMaxHP 10, AddSkill SkMaxCalm 60
+               , AddSkill SkSpeed 25, AddSkill SkNocto 2
                , AddSkill SkAggression 2  -- scout
                , AddSkill SkMoveItem (-1)  -- almost as dumb as an animal
                , AddSkill SkProject (-1)
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "An tiny airborne robot designed to take construction measurements, synchronize robot workers and report irregularities, if any."
-  , ikit     = [ (S_LIVE_WIRE, COrgan), (S_VISION_16, COrgan), (S_EAR_8, COrgan)
+  , idesc    = "A tiny airborne robot designed to take construction measurements, synchronize robot workers and report irregularities. It seems to be in need of resetting itself."
+  , ikit     = [ (S_JET_BOOSTER, COrgan), (S_LIVE_WIRE, COrgan)
+               , (S_VISION_16, COrgan), (S_EAR_8, COrgan)
                , (S_ROBOT_BRAIN, COrgan) ]
   }
 huntingDrone = ItemKind
@@ -989,14 +990,15 @@ huntingDrone = ItemKind
   , iweight  = 500
   , idamage  = 0
   , iaspects = [ AddSkill SkArmorMelee 30, AddSkill SkArmorRanged 15
-               , AddSkill SkMaxHP 6, AddSkill SkMaxCalm 60
-               , AddSkill SkSpeed 40, AddSkill SkNocto 2
+               , AddSkill SkMaxHP 10, AddSkill SkMaxCalm 60
+               , AddSkill SkSpeed 30, AddSkill SkNocto 2
                , AddSkill SkMoveItem (-1)  -- almost as dumb as an animal
                , AddSkill SkMelee (-1)  -- but can project
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "Originally designed for hunting down and putting to sleep stray animals. The sleeping agent must have long since dried up."
-  , ikit     = [ (S_EYE_8, COrgan), (S_NOSTRIL, COrgan), (S_EAR_8, COrgan)
+  , idesc    = "Originally designed for hunting down and putting to sleep stray animals. The sleeping agent has long since dried up and the propulsion got rather unpredictable."
+  , ikit     = [ (S_JET_BOOSTER, COrgan)
+               , (S_EYE_8, COrgan), (S_NOSTRIL, COrgan), (S_EAR_8, COrgan)
                    -- week projectiles, so strong sight OK
                , (S_ROBOT_BRAIN, COrgan)
                , (NEEDLE, CStash), (TRANQUILIZER_DART, CStash) ]

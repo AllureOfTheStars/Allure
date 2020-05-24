@@ -9,7 +9,7 @@ module Content.ItemKindOrgan
   ( -- * Group name patterns
     pattern S_FIST, pattern S_FOOT, pattern S_HOOKED_CLAW, pattern S_SMALL_CLAW, pattern S_SNOUT, pattern S_SMALL_JAW, pattern S_JAW, pattern S_LARGE_JAW, pattern S_ANTLER, pattern S_HORN, pattern S_RHINO_HORN, pattern S_TENTACLE, pattern S_TIP, pattern S_LIP, pattern S_THORN, pattern S_BOILING_FISSURE, pattern S_BEE_STING, pattern S_STING, pattern S_VENOM_TOOTH, pattern S_VENOM_FANG, pattern S_SCREECHING_BEAK, pattern S_LARGE_TAIL, pattern S_HUGE_TAIL, pattern S_ARMORED_SKIN, pattern S_BARK, pattern S_NOSTRIL, pattern S_RATLLE, pattern S_INSECT_MORTALITY, pattern S_SAPIENT_BRAIN, pattern S_ANIMAL_BRAIN, pattern S_SCENT_GLAND, pattern S_BOILING_VENT, pattern S_EYE_3, pattern S_EYE_6, pattern S_EYE_8, pattern S_VISION_6, pattern S_VISION_12, pattern S_VISION_16, pattern S_EAR_3, pattern S_EAR_6, pattern S_EAR_8, pattern S_SPEED_GLAND_5, pattern S_SPEED_GLAND_10
   , pattern SCAVENGER
-  , pattern S_ANIMAL_STOMACH, pattern S_HUNGRY, pattern S_GENETIC_FLAW_3, pattern S_GENETIC_FLAW_10, pattern S_RAZOR, pattern S_INK_SAC, pattern S_POWERFUL_HIND_LEG, pattern S_COILED_TAIL, pattern S_SMALL_BEAK, pattern S_LIVE_WIRE, pattern S_COOLING_VENT, pattern S_COOLING_FISSURE, pattern S_MEDBOT_VENT, pattern S_MEDBOT_FISSURE, pattern S_DUST_VENT, pattern S_DUST_FISSURE, pattern S_FUEL_VENT, pattern S_FUEL_FISSURE, pattern S_ROBOT_BRAIN, pattern S_HULL_PLATING, pattern S_MOUTH_VENT, pattern S_CRUDE_WELD
+  , pattern S_ANIMAL_STOMACH, pattern S_HUNGRY, pattern S_GENETIC_FLAW_3, pattern S_GENETIC_FLAW_10, pattern S_RAZOR, pattern S_INK_SAC, pattern S_POWERFUL_HIND_LEG, pattern S_COILED_TAIL, pattern S_JET_BOOSTER, pattern S_SMALL_BEAK, pattern S_LIVE_WIRE, pattern S_COOLING_VENT, pattern S_COOLING_FISSURE, pattern S_MEDBOT_VENT, pattern S_MEDBOT_FISSURE, pattern S_DUST_VENT, pattern S_DUST_FISSURE, pattern S_FUEL_VENT, pattern S_FUEL_FISSURE, pattern S_ROBOT_BRAIN, pattern S_HULL_PLATING, pattern S_MOUTH_VENT, pattern S_CRUDE_WELD
   , pattern ELECTRIC_AMBIENCE, pattern GENETIC_FLAW
   , organsGNSingleton, organsGN
   , -- * Content
@@ -34,11 +34,11 @@ import Game.LambdaHack.Definition.Flavour
 organsGNSingleton :: [GroupName ItemKind]
 organsGNSingleton =
        [S_FIST, S_FOOT, S_HOOKED_CLAW, S_SMALL_CLAW, S_SNOUT, S_SMALL_JAW, S_JAW, S_LARGE_JAW, S_ANTLER, S_HORN, S_RHINO_HORN, S_TENTACLE, S_TIP, S_LIP, S_THORN, S_BOILING_FISSURE, S_BEE_STING, S_STING, S_VENOM_TOOTH, S_VENOM_FANG, S_SCREECHING_BEAK, S_LARGE_TAIL, S_HUGE_TAIL, S_ARMORED_SKIN, S_BARK, S_NOSTRIL, S_RATLLE, S_INSECT_MORTALITY, S_SAPIENT_BRAIN, S_ANIMAL_BRAIN, S_SCENT_GLAND, S_BOILING_VENT, S_EYE_3, S_EYE_6, S_EYE_8, S_VISION_6, S_VISION_12, S_VISION_16, S_EAR_3, S_EAR_6, S_EAR_8, S_SPEED_GLAND_5, S_SPEED_GLAND_10]
-    ++ [S_ANIMAL_STOMACH, S_HUNGRY, S_GENETIC_FLAW_3, S_GENETIC_FLAW_10, S_RAZOR, S_INK_SAC, S_POWERFUL_HIND_LEG, S_COILED_TAIL, S_SMALL_BEAK, S_LIVE_WIRE, S_COOLING_VENT, S_COOLING_FISSURE, S_MEDBOT_VENT, S_MEDBOT_FISSURE, S_DUST_VENT, S_DUST_FISSURE, S_FUEL_VENT, S_FUEL_FISSURE, S_ROBOT_BRAIN, S_HULL_PLATING, S_MOUTH_VENT, S_CRUDE_WELD]
+    ++ [S_ANIMAL_STOMACH, S_HUNGRY, S_GENETIC_FLAW_3, S_GENETIC_FLAW_10, S_RAZOR, S_INK_SAC, S_POWERFUL_HIND_LEG, S_COILED_TAIL, S_JET_BOOSTER, S_SMALL_BEAK, S_LIVE_WIRE, S_COOLING_VENT, S_COOLING_FISSURE, S_MEDBOT_VENT, S_MEDBOT_FISSURE, S_DUST_VENT, S_DUST_FISSURE, S_FUEL_VENT, S_FUEL_FISSURE, S_ROBOT_BRAIN, S_HULL_PLATING, S_MOUTH_VENT, S_CRUDE_WELD]
 
 pattern S_FIST, S_FOOT, S_HOOKED_CLAW, S_SMALL_CLAW, S_SNOUT, S_SMALL_JAW, S_JAW, S_LARGE_JAW, S_ANTLER, S_HORN, S_RHINO_HORN, S_TENTACLE, S_TIP, S_LIP, S_THORN, S_BOILING_FISSURE, S_BEE_STING, S_STING, S_VENOM_TOOTH, S_VENOM_FANG, S_SCREECHING_BEAK, S_LARGE_TAIL, S_HUGE_TAIL, S_ARMORED_SKIN, S_BARK, S_NOSTRIL, S_RATLLE, S_INSECT_MORTALITY, S_SAPIENT_BRAIN, S_ANIMAL_BRAIN, S_SCENT_GLAND, S_BOILING_VENT, S_EYE_3, S_EYE_6, S_EYE_8, S_VISION_6, S_VISION_12, S_VISION_16, S_EAR_3, S_EAR_6, S_EAR_8, S_SPEED_GLAND_5, S_SPEED_GLAND_10 :: GroupName ItemKind
 
-pattern S_ANIMAL_STOMACH, S_HUNGRY, S_GENETIC_FLAW_3, S_GENETIC_FLAW_10, S_RAZOR, S_INK_SAC, S_POWERFUL_HIND_LEG, S_COILED_TAIL, S_SMALL_BEAK, S_LIVE_WIRE, S_COOLING_VENT, S_COOLING_FISSURE, S_MEDBOT_VENT, S_MEDBOT_FISSURE, S_DUST_VENT, S_DUST_FISSURE, S_FUEL_VENT, S_FUEL_FISSURE, S_ROBOT_BRAIN, S_HULL_PLATING, S_MOUTH_VENT, S_CRUDE_WELD :: GroupName ItemKind
+pattern S_ANIMAL_STOMACH, S_HUNGRY, S_GENETIC_FLAW_3, S_GENETIC_FLAW_10, S_RAZOR, S_INK_SAC, S_POWERFUL_HIND_LEG, S_COILED_TAIL, S_JET_BOOSTER, S_SMALL_BEAK, S_LIVE_WIRE, S_COOLING_VENT, S_COOLING_FISSURE, S_MEDBOT_VENT, S_MEDBOT_FISSURE, S_DUST_VENT, S_DUST_FISSURE, S_FUEL_VENT, S_FUEL_FISSURE, S_ROBOT_BRAIN, S_HULL_PLATING, S_MOUTH_VENT, S_CRUDE_WELD :: GroupName ItemKind
 
 organsGN :: [GroupName ItemKind]
 organsGN =
@@ -104,6 +104,7 @@ pattern S_RAZOR = GroupName "razor"
 pattern S_INK_SAC = GroupName "inc sac"
 pattern S_POWERFUL_HIND_LEG = GroupName "powerful hind leg"
 pattern S_COILED_TAIL = GroupName "coiled tail"
+pattern S_JET_BOOSTER = GroupName "jet booster"
 pattern S_SMALL_BEAK = GroupName "small beak"
 pattern S_LIVE_WIRE = GroupName "live wire"
 pattern S_COOLING_VENT = GroupName "cooling vent"
@@ -128,11 +129,11 @@ organs :: [ItemKind]
 organs =
   [fist, foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, tip, lip, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, bark, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland5, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed]
   -- Allure-specific
-  ++ [animalStomach, hungry, smallBeak, razor, liveWire, inkSac, powerfulHindLeg, coiledTail, electricAmbience, electricAmbienceRecharge, robotBrain, hullPlating, mouthVent, dustVent, dustFissure, fuelVent, fuelFissure, geneticFlaw3, geneticFlaw10]
+  ++ [animalStomach, hungry, smallBeak, razor, liveWire, inkSac, powerfulHindLeg, coiledTail, jetBooster, electricAmbience, electricAmbienceRecharge, robotBrain, hullPlating, mouthVent, dustVent, dustFissure, fuelVent, fuelFissure, geneticFlaw3, geneticFlaw10]
 
 fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, tip, lip, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, bark, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland5, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed :: ItemKind
 -- Allure-specific
-animalStomach,       hungry, smallBeak, razor, liveWire, inkSac, powerfulHindLeg, coiledTail, electricAmbience, electricAmbienceRecharge, robotBrain, hullPlating, mouthVent, dustVent, dustFissure, fuelVent, fuelFissure, geneticFlaw3, geneticFlaw10 :: ItemKind
+animalStomach,       hungry, smallBeak, razor, liveWire, inkSac, powerfulHindLeg, coiledTail, jetBooster, electricAmbience, electricAmbienceRecharge, robotBrain, hullPlating, mouthVent, dustVent, dustFissure, fuelVent, fuelFissure, geneticFlaw3, geneticFlaw10 :: ItemKind
 
 -- * No-cooldown melee damage organs without effects
 
@@ -355,7 +356,7 @@ hugeTail = fist
                  -- timeout higher, lest they regain push before closing again
   , ieffects = [PushActor (ThrowMod 200 50 1)]  -- 1 step, fast
       -- 2 steps would be too hard to counteract via second line of heroes
-  , idesc    = "This immense tail transfers a huge momentum in a matter of seconds."
+  , idesc    = "This immense and muscular tail transfers a huge momentum in a matter of seconds."
   }
 
 -- * Melee weapons without direct damage
@@ -759,6 +760,16 @@ coiledTail = powerfulHindLeg
   , ifreq    = [(S_COILED_TAIL, 1)]
   , iverbHit = "spring"
   , idesc    = "When the coiled tail springs, expect a lurch that leaves you no time to react."
+  }
+jetBooster = armoredSkin  -- neither melee nor periodic so to be triggered,
+  { isymbol  = '"'        -- needs special symbol and beeing in equipment
+  , iname    = "jet booster"
+  , ifreq    = [(S_JET_BOOSTER, 1)]
+  , iverbHit = "dart"
+  , iaspects = [Timeout $ 4 + 1 `d` 2, SetFlag Durable]
+  , ieffects = [ PushActor (ThrowMod 800 100 1)  -- 8 steps, 2 turns
+               , RefillCalm 100 ]  -- give AI an incentive to use it
+  , idesc    = "The throttles are quite erratic with age, but the punch is none the less."
   }
 electricAmbience = armoredSkin
   { iname    = "static current ambience"
