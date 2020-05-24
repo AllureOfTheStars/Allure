@@ -770,7 +770,7 @@ electricAmbience = armoredSkin
   , idesc    = ""
   }
 electricAmbienceRecharge = electricAmbience
-  { iname    = "current static ambience"
+  { iname    = "static current ambience"
   , ieffects = [RefillHP 1, Explode S_CURRENT_RECHARGE]
   }
 robotBrain = armoredSkin
