@@ -421,7 +421,7 @@ torsor = ItemKind
 -- They need rather strong melee, because they don't use items.
 -- They have dull colors, except for yellow, because there is no dull variant.
 
-goldenJackal = ItemKind  -- basically a much smaller and slower hyena
+goldenJackal = ItemKind  -- basically a much smaller, slower and nosy hyena
   { isymbol  = 'j'
   , iname    = "golden jackal"
   , ifreq    = [ (ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)
@@ -440,6 +440,7 @@ goldenJackal = ItemKind  -- basically a much smaller and slower hyena
   , ieffects = []
   , idesc    = "An opportunistic predator, feeding on carrion and the weak."
   , ikit     = [ (S_SMALL_JAW, COrgan)
+               , (S_POWERFUL_HIND_LEG, CEqp)  -- useful for an aggressive actor
                , (S_EYE_6, COrgan), (S_NOSTRIL, COrgan), (S_EAR_8, COrgan)
                , (S_ANIMAL_BRAIN, COrgan)
                , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_3, COrgan) ]
@@ -555,11 +556,13 @@ rattlesnake = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 28, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 16, AddSkill SkNocto 2
+               , AddSkill SkAggression 2  -- often discharged. so flees anyway
                , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Beware its rattle - it serves as a warning of an agonising death."
-  , ikit     = [ (S_VENOM_FANG, COrgan)  -- when on cooldown, it's weaponless
+  , ikit     = [ (S_VENOM_FANG, COrgan)  -- when discharged, it's weaponless
+               , (S_COILED_TAIL, CEqp)  -- useful for an aggressive actor
                , (S_RATLLE, COrgan)
                , (S_EYE_3, COrgan), (S_NOSTRIL, COrgan), (S_EAR_6, COrgan)
                , (S_ANIMAL_BRAIN, COrgan)  -- small reptile, hungers slowly
@@ -633,7 +636,8 @@ alligator = ItemKind  -- late, slow, deadly semi-tank with some armor;
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "An armored predator from the dawn of time. You better not get within its reach."
-  , ikit     = [ (S_HUGE_TAIL, COrgan), (S_LARGE_JAW, COrgan)
+  , ikit     = [ (S_HUGE_TAIL, COrgan)  -- the special trick, breaking frontline
+               , (S_LARGE_JAW, COrgan)
                , (S_SMALL_CLAW, COrgan)
                , (S_ARMORED_SKIN, COrgan)
                , (S_EYE_6, COrgan), (S_EAR_8, COrgan)
@@ -745,7 +749,7 @@ giantOctopus = ItemKind
   , iname    = "giant octopus"
   , ifreq    = [ (ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)
                , (AQUATIC, 90), (AQUATIC_ANIMAL, 90) ]  -- weak on land
-  , iflavour = zipPlain [BrMagenta]
+  , iflavour = zipPlain [BrMagenta]  -- very exotic, so bright color
   , icount   = 1
   , irarity  = [(1, 3)]
   , iverbHit = "thud"
