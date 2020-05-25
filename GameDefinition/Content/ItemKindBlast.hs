@@ -225,7 +225,7 @@ firecracker n = ItemKind
                , SetFlag Fragile, SetFlag Blast
                , AddSkill SkShine $ intToDice $ 1 + n `div` 2 ]
   , ieffects = [if n >= 4 then Burn 1 else RefillCalm (-2)]
-               ++ [DropBestWeapon | n >= 4]
+               ++ [Discharge 1 30 | n >= 3]
                ++ [OnSmash $ Explode $ firecrackerAt (n - 1) | n >= 2]
   , idesc    = "Scraps of burnt paper, covering little pockets of black powder, buffeted by colorful explosions."
   , ikit     = []
@@ -1009,7 +1009,7 @@ cruiseAdHologram = ItemKind
   , idamage  = 0
   , iaspects = [ toVelocity 5  -- 1 step, 1 turn
                , SetFlag Fragile, SetFlag Blast ]
-  , ieffects = [toOrganGood S_RESOLUTE (5 + 1 `d` 2), DropBestWeapon]
+  , ieffects = [toOrganGood S_RESOLUTE (5 + 1 `d` 2), Discharge 1 50]
   , idesc    = "The fitful holographic clip shows a couple that laughs, watches in silence Saturn's rings through a huge window, throws treats to a little rhino frolicking in reduced gravity, runs through corridors wearing alien masks in a mock chase. An exited female voice proclaims: \"...safety, security and comfort...for each of your senses...personalized life support zones...robot servants...guessing your every wish...\""
   , ikit     = []
   }

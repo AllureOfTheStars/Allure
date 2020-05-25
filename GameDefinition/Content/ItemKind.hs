@@ -2233,8 +2233,8 @@ daggerDropBestWeapon = knife
   , irarity  = [(1, 3), (10, 2)]
   , iaspects = [SetFlag Unique]
                ++ iaspects knife
-  , ieffects = [DropBestWeapon, Yell]  -- powerful and low timeout, but makes
-                                       -- noise and useless against stupid foes
+  , ieffects = [Discharge 1 50, Yell]  -- powerful and low timeout, but noisy
+                                       -- and no effect if no weapons charged
   , idesc    = "An antique double dagger that a focused fencer can use to catch and twist away an opponent's blade."
   }
 dagger = knife

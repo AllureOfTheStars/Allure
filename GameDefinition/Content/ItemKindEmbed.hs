@@ -766,7 +766,7 @@ liftTrap = stairsTrapUp
   , iflavour = zipPlain [Cyan]
   , iverbHit = "squeeze"
   , ieffects = [ VerbMsgFail "be crushed by the sliding doors"
-               , DropBestWeapon, Paralyze 10 ]
+               , DropItem maxBound 1 CEqp STARTING_WEAPON, Paralyze 10 ]
   , idesc    = ""
   }
 liftTrap2 = liftTrap
