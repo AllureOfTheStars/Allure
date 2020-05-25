@@ -346,7 +346,7 @@ spreadFlash = ItemKind
                , SetFlag Fragile, SetFlag Blast
                , AddSkill SkShine 5 ]
   , ieffects = [ toOrganBad S_WEAKENED 20
-               , Discharge $ 40 - 1 `d` 20 ]
+               , Discharge 1 $ 40 - 1 `d` 20 ]
                  -- Wikipedia says: blind for five seconds and afterimage
                  -- for much longer, harming aim. But blind is boring
                  -- and prevents the player from seeing fun explosions
@@ -679,14 +679,17 @@ currentDischarge = ItemKind
   , iweight  = 1
   , idamage  = 0
   , iaspects = [toLinger 10, SetFlag Fragile, SetFlag Blast]
-  , ieffects = [Discharge $ 40 - 1 `d` 20]  -- sometimes recharges spent items
+  , ieffects = [Discharge 2 $ 80 - 1 `d` 40]
+                 -- does this prevent hunger too easily, when exploited?
   , idesc    = ""
   , ikit     = []
   }
 currentRecharge = currentDischarge
   { ifreq    = [(S_CURRENT_RECHARGE, 1)]
   , iflavour = zipFancy [BrRed]
-  , ieffects = [Discharge 0]  -- beneficial, except for harmful periodic effects
+  , ieffects = [Recharge 5 999]
+                 -- beneficial, except for harmful periodic effects;
+                 -- does this speed healing via Spur Life too much?
   , idesc    = ""
   }
 

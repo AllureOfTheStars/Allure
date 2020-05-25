@@ -807,7 +807,7 @@ electricFence = ItemKind
   , iweight  = 80000
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 30, AddSkill SkMaxCalm 999
-                   -- no armor, because regenerates; high HP insead
+                   -- no armor, because regenerates; high HP instead
                , AddSkill SkSpeed 40, AddSkill SkNocto 2, AddSkill SkShine 3
                , AddSkill SkWait 1, AddSkill SkMelee 1  -- no brain
                , SetFlag Durable ]

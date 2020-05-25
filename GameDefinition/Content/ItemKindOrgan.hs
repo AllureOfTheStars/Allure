@@ -666,9 +666,9 @@ liveWire = fist
   , icount   = 1
   , iverbHit = "shock"
   , idamage  = 0
-  , iaspects = [Timeout $ 4 + 1 `d` 3]  -- longer than the discharge
+  , iaspects = [Timeout $ 2 + 1 `d` 2]
                ++ iaspects fist
-  , ieffects = [ Discharge $ 40 - 1 `d` 20
+  , ieffects = [ Discharge 1 $ 80 - 1 `d` 40
                , RefillHP (-1) ]
   , idesc    = ""
   }

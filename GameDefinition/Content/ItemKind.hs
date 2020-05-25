@@ -708,7 +708,7 @@ potion2 = potionTemplate
                , toVelocity 50 ]  -- identified
   , ieffects = [ Dominate
                , toOrganGood S_HASTED (20 + 1 `d` 5)
-               , Discharge 0
+               , Recharge 20 999
                , OnSmash (Explode S_PHEROMONE)
                , OnSmash (Explode S_HASTE_SPRAY) ]
   , idesc    = "The liquid fizzes with energy."
@@ -825,7 +825,7 @@ potion12 = potionTemplate
   , iaspects = ELabel "of quicksilver"
                : iaspects potionTemplate
   , ieffects = [ toOrganGood S_HASTED (20 + 1 `d` 5)
-               , Discharge $ 40 - 1 `d` 20
+               , Discharge 3 40
                , toOrganBad S_IMMOBILE (5 + 1 `d` 5)
                , OnSmash (Explode S_HASTE_SPRAY)
                , OnSmash (Explode S_IRON_FILING)
@@ -903,7 +903,7 @@ scroll3 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , icount   = 3 `dL` 1
   , irarity  = [(1, 15)]
-  , ieffects = [OneOf [ Paralyze 10, InsertMove 30, Discharge 0
+  , ieffects = [OneOf [ Paralyze 10, InsertMove 30, Recharge 5 999
                       , Detect DetectEmbed 12, Detect DetectHidden 20 ]]
   }
 scroll4 = scrollTemplate
@@ -950,12 +950,12 @@ scroll9 = scrollTemplate
   }
 scroll10 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , ieffects = [Discharge $ 40 - 1 `d` 20]
+  , ieffects = [Discharge 3 40]
   }
 scroll11 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , irarity  = [(10, 14)]
-  , ieffects = [Discharge 0]
+  , ieffects = [Recharge 20 999]
   }
 scroll12 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
@@ -1480,7 +1480,7 @@ necklace8 = necklaceTemplate
                , SetFlag Durable ]
                ++ iaspects_necklaceTemplate
   , ieffects = [ RefillCalm (-2)  -- don't spam
-               , Discharge 101 ]  -- higher by 1 to ensure others not activated
+               , Discharge 5 80 ]  -- discharged again soon after it ends
                  -- Lasting effect lessens temptation to frequently take off
                  -- when engaging in melee, which would lead to micromanagement.
                  -- Quite OOP if worn with the right set of other items, anyway.
@@ -2407,12 +2407,13 @@ militaryBaton = ItemKind
   , irarity  = [(10, 10)]
   , iverbHit = "prod"
   , iweight  = 1000
-  , idamage  = 4 `d` 1
+  , idamage  = 6 `d` 1
   , iaspects = [ Timeout 7
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 40 ]
-  , ieffects = [Paralyze 10, Discharge $ 40 - 1 `d` 20, RefillCalm (-30)]
+  , ieffects = [Discharge 1 100, RefillCalm (-50)]
+      -- don't overdo discharging or unequipping becomes beneficial
   , idesc    = "A direct contact electroshock weapon with unlimited and fast recharging. Ideal for close quarter fights inside space habitats, where preserving the integrity of the outer hull is paramount."
   , ikit     = []
   }
@@ -2421,8 +2422,8 @@ cattleProd = militaryBaton
   , ifreq    = [(COMMON_ITEM, 100)]
   , iflavour = zipPlain [Brown]
   , irarity  = [(8, 5)]
-  , idamage  = 2 `d` 1
-  , ieffects = [Discharge $ 40 - 1 `d` 20, RefillCalm (-30)]
+  , idamage  = 5 `d` 1
+  , ieffects = [Discharge 1 60, RefillCalm (-30)]
   , idesc    = "Used for subduing unruly zoo animals."
   }
 

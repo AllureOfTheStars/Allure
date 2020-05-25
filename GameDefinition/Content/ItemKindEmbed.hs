@@ -782,7 +782,7 @@ liftTrap3 = liftTrap
   , iflavour = zipFancy [BrBlue]
   , iverbHit = "shock"
   , ieffects = [ VerbMsgFail "be electocuted upon touching the control pad"
-               , Discharge $ 40 - 1 `d` 20 ]
+               , Discharge 5 $ 80 - 1 `d` 40 ]
   , idesc    = ""
   }
 shuttleHardware = ItemKind
