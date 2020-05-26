@@ -1937,14 +1937,15 @@ buckler = ItemKind
   , iverbHit = "bash"
   , iweight  = 2000
   , idamage  = 1 `d` 1
-  , iaspects = [ Timeout $ (2 + 1 `d` 2 - 1 `dL` 2) * 2
+  , iaspects = [ Timeout $ (4 + 1 `d` 3 - 1 `dL` 2) * 2
                , AddSkill SkArmorMelee 40
-               , AddSkill SkSpeed (-1)  -- the main price to pay
+               , AddSkill SkSpeed (-1)  -- the main price to pay and the reason
+                                        -- it's at the end of weapons, good
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- unwieldy to throw
-  , ieffects = [PushActor (ThrowMod 200 50 1)]  -- 1 step, fast
-  , idesc    = "Heavy and unwieldy arm protection made from an outer airlock panel. Absorbs a percentage of melee damage, both dealt and sustained. Too small to intercept projectiles with. Requires positional awareness when used as a weapon."
+  , ieffects = [OnUser (Recharge 4 40)]
+  , idesc    = "An arm protection made from an outer airlock panel. Too small to intercept projectiles with. Almost harmless when used offensively, but makes room for other weapons."
   , ikit     = []
   }
 shield = buckler
@@ -1960,13 +1961,15 @@ shield = buckler
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- unwieldy to throw
-  , ieffects = [PushActor (ThrowMod 400 50 1)]  -- 2 steps, fast
+  , ieffects = [PushActor (ThrowMod 200 50 1)]  -- 1 step, fast
+      -- The effect helps to place it as one of the first weapons.
   , idesc    = "Large and unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Too heavy to intercept projectiles with. Requires particularly keen positional awareness when used as a weapon."
   }
 shield2 = shield
   { ifreq    = [(COMMON_ITEM, 20), (MUSEAL, 100), (S_SHIELD_BLUNT, 1)]
   , iweight  = 6000
   , idamage  = 4 `d` 1
+  , ieffects = [PushActor (ThrowMod 400 50 1)]  -- 2 steps, fast
   , idesc    = "A relic of long-past wars, heavy and with a central spike, which is however misaligned and dull."
   }
 shield3 = shield2
@@ -2353,14 +2356,11 @@ pollaxe = halberd
   , iweight  = 4500
   , idamage  = 15 `d` 1
   , iaspects = [ Timeout 12
-               , AddSkill SkHurtMelee $ (-11 + 1 `dL` 7) * 5
-                   -- balance, or @DupItem@ would break the game;
-                   -- together with @RerollItem@, it's allowed to, though;
-                   -- useless against armor at game start with no hurt bonus;
                , AddSkill SkArmorMelee 20
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 20 ]  -- not balanced
+  , ieffects = [OnUser (Discharge 5 50)]
   , idesc    = "A long-hafted spiked axe: great reach and momentum, but so unbalanced that fighters swinging it can't control their combat stance."
   }
 halberdPushActor = halberd
@@ -2424,6 +2424,7 @@ cattleProd = militaryBaton
   , irarity  = [(8, 5)]
   , idamage  = 5 `d` 1
   , ieffects = [Discharge 1 60, RefillCalm (-30)]
+      -- The Calm effect helps to place it as one of the first weapons.
   , idesc    = "Used for subduing unruly zoo animals."
   }
 

@@ -266,7 +266,7 @@ beeSting = fist
   , idamage  = 0
   , iaspects = [ AddSkill SkArmorMelee 200, AddSkill SkArmorRanged 45
                , SetFlag Meleeable ]  -- not Durable
-  , ieffects = [Paralyze 6, RefillHP 4]
+  , ieffects = [Paralyze 10, RefillHP 3]  -- low gain; no tragedy if dies early
                  -- no special message when runs out, because it's 1 copy
   , idesc    = "Painful, but beneficial."
   }
