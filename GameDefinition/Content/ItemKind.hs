@@ -2660,7 +2660,7 @@ jumpingPole = ItemKind
   , iverbHit = "prod"
   , iweight  = 4000
   , idamage  = 0
-  , iaspects = [ Timeout $ (2 + 1 `d` 2 - 1 `dL` 2) * 5
+  , iaspects = [ Timeout $ (4 + 1 `d` 2 - 1 `dL` 2) * 5
                , SetFlag Durable ]
   , ieffects = [toOrganGood S_HASTED 1]
                  -- This works and doesn't cause AI loops. @InsertMove@
@@ -2672,6 +2672,9 @@ jumpingPole = ItemKind
                  -- is not stuck. In total, the exploration speed is unchanged,
                  -- but it's useful when fleeing in the dark to make distance
                  -- and when initiating combat, so it's OK that AI uses it.
+                 -- Timeout is rather high, because for factions with leaders
+                 -- some time is often gained, so this could be useful
+                 -- even during melee, which would be tiresome to employ.
   , idesc    = "Makes you vulnerable at take-off, but then you are free like a bird."
   , ikit     = []
   }
