@@ -440,7 +440,7 @@ goldenJackal = ItemKind  -- basically a much smaller, slower and nosy hyena
   , ieffects = []
   , idesc    = "An opportunistic predator, feeding on carrion and the weak."
   , ikit     = [ (S_SMALL_JAW, COrgan)
-               , (S_POWERFUL_HIND_LEG, COrgan)  -- useful for aggressive actor
+               , (S_POWERFUL_HIND_LEGS, COrgan)  -- useful for aggressive actor
                , (S_EYE_6, COrgan), (S_NOSTRIL, COrgan), (S_EAR_8, COrgan)
                , (S_ANIMAL_BRAIN, COrgan)
                , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_3, COrgan) ]
