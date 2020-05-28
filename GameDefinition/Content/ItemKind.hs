@@ -236,7 +236,7 @@ spike = ItemKind
   }
 spike2 = spike
   { iname    = "heavy steak knife"
-  , ifreq    = [(COMMON_ITEM, 2), (ANY_ARROW, 1), (WEAK_ARROW, 1)]
+  , ifreq    = [(COMMON_ITEM, 3), (ANY_ARROW, 1), (WEAK_ARROW, 1)]
   , iflavour = zipPlain [Cyan]
   , icount   = 1 + 5 `dL` 5
   , iverbHit = "penetrate"
@@ -361,7 +361,7 @@ harpoon2 = harpoon
   }
 harpoon3 = harpoon
   { iname    = "whaling harpoon"
-  , ifreq    = [(TREASURE, 15), (MUSEAL, 70)]
+  , ifreq    = [(TREASURE, 15), (MUSEAL, 50)]
   , iflavour = zipFancy [Red]
   , irarity  = [(8, 4)]
   , idamage  = 7 `d` 1
@@ -492,7 +492,7 @@ flaskTemplate = ItemKind
   , iflavour = zipGlassPlain darkCol ++ zipGlassFancy darkCol
                ++ zipLiquid darkCol
   , icount   = 1 `d` 2 + 1 `dL` 3
-  , irarity  = [(1, 5), (10, 2)]
+  , irarity  = [(1, 5), (10, 3)]
   , iverbHit = "splash"
   , iweight  = 500
   , idamage  = 0
@@ -1032,7 +1032,7 @@ ediblePlantTemplate = ItemKind
   , ifreq    = [(EDIBLE_PLANT_UNKNOWN, 1)]
   , iflavour = zipFancy stdCol
   , icount   = 1 `dL` 5
-  , irarity  = [(1, 4), (10, 2)]  -- weak, apart of hunger removal
+  , irarity  = [(1, 3), (10, 2)]  -- weak, apart of hunger removal
   , iverbHit = "thump"
   , iweight  = 300
   , idamage  = 0
@@ -1619,6 +1619,7 @@ ring5 = ringTemplate
   }
 ring6 = ringTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
+  , irarity  = [(6, 10)]  -- needed, e.g, to buff dominated minions
   , iaspects = [ AddSkill SkMaxHP $ 5 + (1 `d` 2 + 1 `dL` 2) * 5
                , AddSkill SkMaxCalm $ -30 + (1 `dL` 3) * 5
                , EqpSlot EqpSlotMaxHP ]
@@ -2026,7 +2027,7 @@ laserSharpener = ItemKind
   , ifreq    = [(CRAWL_ITEM, 30), (SHARPENING_TOOL, 1)]
   , iflavour = zipFancy [BrBlue]
   , icount   = 1
-  , irarity  = [(5, 20)]  -- comes bundled with other tools
+  , irarity  = [(5, 25)]  -- comes bundled with other tools
   , iverbHit = "paint"
   , iweight  = 2000
   , idamage  = 0
@@ -2116,7 +2117,7 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
                  -- a very aggressive weapon, bad for defense even when long
   , iflavour = zipFancy [BrMagenta]  -- avoid "pink"
   , icount   = 1
-  , irarity  = [(1, 2), (3, 2), (7, 20), (9, 1)]
+  , irarity  = [(1, 2), (3, 2), (7, 25), (9, 1)]
                  -- not too common up to lvl 3, where one is guaranteed
                  -- and deep down, when crafting done already
   , iverbHit = "club"
@@ -2305,7 +2306,7 @@ halberd = ItemKind  -- long pole
   , ifreq    = [(COMMON_ITEM, 3), (STARTING_WEAPON, 70), (S_POLE_CLEAVER, 1)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
-  , irarity  = [(5, 1), (10, 10)]
+  , irarity  = [(5, 1), (10, 3)]
   , iverbHit = "slice"
   , iweight  = 3500
   , idamage  = 11 `d` 1  -- bad, until sharpened
@@ -2513,7 +2514,7 @@ treePruner = grassStitcher
   { iname    = "long reach tree pruner"
   , ifreq    = [(COMMON_ITEM, 100), (POLE_AND_STEEL, 1)]
   , iflavour = zipFancy [BrRed]
-  , irarity  = [(3, 7)]  -- early, while the weapon is still useful
+  , irarity  = [(3, 10)]  -- early, while the weapon is still useful
   , iweight  = 4500
   , idamage  = 3 `d` 1
   , iaspects = [ Timeout 7
