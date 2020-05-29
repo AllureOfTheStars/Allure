@@ -1913,6 +1913,7 @@ ragTangle = sandstoneRock
   , ifreq    = [ (COMMON_ITEM, 10), (S_RAG_TANGLE, 1), (THICK_CLOTH, 1)
                , (UNREPORTED_INVENTORY, 1) ]
   , iflavour = zipPlain [Brown]
+  , icount   = 1
   , irarity  = [(1, 10)]  -- crafted, so rare
   , iverbHit = "touch"
   , iweight  = 200
