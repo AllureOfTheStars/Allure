@@ -1795,7 +1795,7 @@ gloveGauntlet = gloveFencing
   , iverbHit = "mow"
   , iweight  = 500
   , idamage  = 3 `d` 1
-  , iaspects = [ AddSkill SkArmorMelee $ (1 `dL` 3) * 5
+  , iaspects = [ AddSkill SkArmorMelee $ (1 `d` 3) * 5
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast  -- no timeout, so worth wielding
                , toVelocity 40 ]  -- flaps and flutters
@@ -1851,7 +1851,7 @@ capReinforced = ItemKind
   , iverbHit = "cut"
   , iweight  = 1000
   , idamage  = 0
-  , iaspects = [ AddSkill SkArmorMelee $ (1 `d` 2) * 5
+  , iaspects = [ AddSkill SkArmorMelee $ (1 `d` 3) * 5
                , AddSkill SkProject 1
                    -- the brim shields against blinding by light sources, etc.;
                    -- beware of stacking and causing auto-fling of vials
@@ -2050,7 +2050,7 @@ crowbar = ItemKind
   , irarity  = [(1, 6), (3 * 10/15, 6), (4 * 10/15, 1)]
   , iverbHit = "gouge"
   , idamage  = 2 `d` 1
-  , iaspects = [ Timeout $ 3 + 1 `d` 2
+  , iaspects = [ Timeout $ 2 + 1 `d` 3
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
                , toVelocity 0 ]  -- totally unbalanced
@@ -2158,7 +2158,8 @@ hammer3 = hammerTemplate  -- 2m pole, blunt
                , (S_BLUNT_LONG_HAMMER, 1) ]
   , iweight  = 6000  -- pole weight almost gives it away
   , iaspects = [ Timeout 12
-               , AddSkill SkHurtMelee $ (-3 + 1 `d` 2) * 5 ]
+               , AddSkill SkHurtMelee $ (-6 + 1 `d` 4) * 3 ]
+                   -- the malus not so important, hence easy to get the best
                ++ iaspects hammerTemplate
   , ieffects = [RefillHP (-8)]
   , idesc    = "This hammer sports a long pole that increases the momentum of the blunt head's swing, at the cost of long recovery."
@@ -2223,7 +2224,7 @@ knife = ItemKind
   , iweight  = 1000
   , idamage  = 5 `d` 1
   , iaspects = [ Timeout 3
-               , AddSkill SkHurtMelee $ (-1 + 1 `d` 3 + 1 `dL` 2) * 3
+               , AddSkill SkHurtMelee $ (-1 + 1 `d` 3 + 1 `dL` 3) * 3
                    -- very common, so don't make too random nor too good
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
@@ -2261,7 +2262,8 @@ sword = ItemKind  -- dead end, but can be crafted with just one file tool
   , iverbHit = "stab"
   , iweight  = 2000
   , idamage  = 10 `d` 1  -- with high melee bonus, better than a good hammer
-  , iaspects = [ Timeout 7, EqpSlot EqpSlotWeaponBig
+  , iaspects = [ Timeout 7  -- unique in that there's no randomness
+               , EqpSlot EqpSlotWeaponBig
                , SetFlag Durable, SetFlag Meleeable
                , toVelocity 40 ]  -- ensuring it hits with the tip costs speed
   , ieffects = []
@@ -2312,8 +2314,9 @@ halberd = ItemKind  -- long pole
   , iweight  = 3500
   , idamage  = 11 `d` 1  -- bad, until sharpened
   , iaspects = [ Timeout 10
-               , AddSkill SkHurtMelee $ (-7 + 1 `dL` 5) * 5
-                   -- weak against armor at game start with no hurt bonus
+               , AddSkill SkHurtMelee $ (-12 + 1 `d` 4 + 1 `dL` 5) * 3
+                   -- weak against armor at game start with no hurt bonus;
+                   -- variety to spice up crafting
                , AddSkill SkArmorMelee 20
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
@@ -2358,8 +2361,9 @@ fireAxe = ItemKind
   , iverbHit = "gouge"
   , iweight  = 1600
   , idamage  = 9 `d` 1  -- worse than sharpened pipe, but upgradable
-  , iaspects = [ Timeout 7, EqpSlot EqpSlotWeaponBig  -- 1m handle
+  , iaspects = [ Timeout 7
                , SetFlag Durable, SetFlag Meleeable
+               , EqpSlot EqpSlotWeaponBig  -- 1m handle
                , toVelocity 40 ]  -- ensuring it hits with the blade costs speed
   , ieffects = []
   , idesc    = "An axe with a spike: once used for fire fighting, now turned to a bloodier purpose."
@@ -2372,7 +2376,7 @@ pollaxe = fireAxe
   , iverbHit = "carve"
   , iweight  = 4500
   , idamage  = 15 `d` 1
-  , iaspects = [ Timeout 12
+  , iaspects = [ Timeout $ 15 - 1 `dL` 5  -- variety to spice up crafting
                , AddSkill SkArmorMelee 20
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponBig
