@@ -548,7 +548,7 @@ fogClump = PlaceKind
   , poverrideLit = [('f', FOG_CLUMP_LIT), (';', S_FOG_LIT)]
   }
 fogClump2 = fogClump
-  { pfreq    = [(EMPTY, 2200), (SHOOTOUT, 400), (ESCAPE, 100), (RAID, 150)]
+  { pfreq    = [(EMPTY, 2200), (SHOOTOUT, 400), (ESCAPE, 100), (RAID, 250)]
   , ptopLeft = [ "X;f"
                , "f;f"
                , ";;f"
@@ -1295,7 +1295,7 @@ squareBasin2 = oval
 floodedRoom = PlaceKind  -- Valid for any nonempty area, hence low frequency.
   { psymbol  = 'f'
   , pname    = "a flooded room"
-  , pfreq    = [(ROGUE, 10), (LABORATORY, 12), (ZOO, 50), (RAID, 10)]
+  , pfreq    = [(ROGUE, 10), (LABORATORY, 12), (ZOO, 50), (RAID, 7)]
   , prarity  = [(1, 1)]
   , pcover   = CStretch
   , pfence   = FWall
