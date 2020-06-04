@@ -217,7 +217,7 @@ obscenePictogram = ItemKind
   , ieffects = [ VerbMsg "enter inexplicable rage at a glimpse of the inscrutable graffiti"
                , RefillCalm (-20)
                , OneOf [ toOrganGood S_STRENGTHENED (3 + 1 `d` 2)
-                       , CreateItem Nothing CStash S_SANDSTONE_ROCK timerNone ]
+                       , CreateItem Nothing CGround S_SANDSTONE_ROCK timerNone ]
                ]
   , idesc    = ""  -- alien writing? or runaway robot AI?
   , ikit     = []
@@ -332,7 +332,7 @@ fireBig = fireSmall
   , ifreq    = [(BIG_FIRE, 1), (FIRE_SOURCE, 1)]
   , iaspects = [ELabel "of immolation", SetFlag Durable]
   , ieffects = [ Burn 2
-               , CreateItem Nothing CStash S_WOODEN_TORCH timerNone
+               , CreateItem Nothing CGround S_WOODEN_TORCH timerNone
                , Explode S_SPARK ]
   , idesc    = "Glowing with light and warmth."
   , ikit     = []
@@ -368,7 +368,7 @@ rubble = ItemKind
   , ieffects = [OneOf [ Explode S_FOCUSED_GLASS_HAIL
                       , Summon MOBILE_ANIMAL $ 1 `dL` 2
                       , toOrganNoTimer S_POISONED
-                      , CreateItem Nothing CStash ANY_ARROW timerNone
+                      , CreateItem Nothing CGround ANY_ARROW timerNone
                       , CreateItem Nothing CGround STARTING_WEAPON timerNone
                       , reliefMsg, reliefMsg, reliefMsg
                       , reliefMsg, reliefMsg, reliefMsg ]]
@@ -480,7 +480,7 @@ lectern = ItemKind
   , iweight  = 10000
   , idamage  = 0
   , iaspects = []  -- not Durable, springs at most once
-  , ieffects = [ OneOf [ CreateItem Nothing CStash ANY_SCROLL timerNone
+  , ieffects = [ OneOf [ CreateItem Nothing CGround ANY_SCROLL timerNone
                        , Detect DetectAll 20
                        , Paralyze $ (1 `dL` 6) * 10
                        , toOrganGood S_DRUNK (20 + 1 `d` 5) ]
@@ -601,7 +601,7 @@ ruinedFirstAidKit = ItemKind
                , OneOf [ toOrganNoTimer S_SLOW_RESISTANT
                        , toOrganNoTimer S_POISON_RESISTANT
                        , toOrganGood S_DRUNK (20 + 1 `d` 5) ]
-               , CreateItem Nothing CStash NEEDLE timerNone ]
+               , CreateItem Nothing CGround NEEDLE timerNone ]
   , idesc    = ""  -- regulations require; say HP not regenerated in the game; mention how to regain HP
   , ikit     = []
   }
@@ -735,7 +735,7 @@ ediblePlantRipe = treasureCache
   , ifreq    = [(EDIBLE_PLANT_RIPE, 1)]
   , iflavour = zipPlain [Green]
   , iaspects = [SetFlag Durable]
-  , ieffects = [CreateItem Nothing CStash EDIBLE_PLANT timerNone]
+  , ieffects = [CreateItem Nothing CGround EDIBLE_PLANT timerNone]
   , idesc    = ""
   }
 stairsTrapDownOil = stairsTrapUp
