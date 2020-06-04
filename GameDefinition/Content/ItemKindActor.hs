@@ -851,7 +851,7 @@ steamFaucet = ItemKind
   , iweight  = 80000
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 10, AddSkill SkMaxCalm 999
-               , AddSkill SkSpeed 11, AddSkill SkNocto 2
+               , AddSkill SkSpeed 7, AddSkill SkNocto 2
                , AddSkill SkWait 1, AddSkill SkMelee 1  -- no brain
                , SetFlag Durable ]
   , ieffects = []

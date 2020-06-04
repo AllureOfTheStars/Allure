@@ -389,12 +389,12 @@ sulfurFissure = boilingFissure
 boilingFissure = fist
   { iname    = "fissure"
   , ifreq    = [(S_BOILING_FISSURE, 1)]
-  , icount   = 5 + 1 `d` 5
+  , icount   = 2 + 1 `d` 2
   , iverbHit = "hiss at"
-  , idamage  = 1 `d` 1
+  , idamage  = 2 `d` 1  -- can remove hunger, so high price
   , iaspects = [ AddSkill SkHurtMelee 20  -- decreasing as count decreases
                , SetFlag Meleeable ]  -- not Durable
-  , ieffects = [ DropItem 1 1 COrgan CONDITION  -- useful; limited
+  , ieffects = [ DropItem 1 1 COrgan CONDITION  -- useful; limited; HP price
                , VerbNoLonger "widen the crack, releasing pressure" ]
   , idesc    = ""
   }
@@ -689,7 +689,7 @@ razor = fist
 dustFissure = boilingFissure
   { iname    = "fissure"
   , ifreq    = [(S_DUST_FISSURE, 1)]
-  , icount   = 5 + 1 `d` 5
+  , icount   = 3 + 1 `d` 3
   , idamage  = 1 `d` 1
   , ieffects = [ toOrganBad S_WEAKENED 20
                , VerbNoLonger "cough one last time" ]
