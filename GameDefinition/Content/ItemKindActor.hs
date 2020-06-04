@@ -760,7 +760,7 @@ giantOctopus = ItemKind
                , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "It has eight arms of rage."
+  , idesc    = "It has eight arms of rage and sees through the night."
   , ikit     = [ (S_INK_SAC, COrgan)
                , (S_TENTACLE, COrgan), (S_TENTACLE, COrgan)
                , (S_TENTACLE, COrgan), (S_TENTACLE, COrgan)
