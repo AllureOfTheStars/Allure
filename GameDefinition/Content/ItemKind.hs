@@ -2131,7 +2131,7 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
                , SetFlag Durable, SetFlag Meleeable, EqpSlot EqpSlotWeaponBig
                , toVelocity 0 ]  -- totally unbalanced
   , ieffects = []
-  , idesc    = "One of many kinds of hammers employed in construction work. The usual ones with blunt heads don't cause grave wounds, but enough weigth on a long handle can shake and bruise even most armored foes. However, larger hammers require more time to recover after a swing. This one looks average at a quick glance."  -- if it's really the average kind, the weak kind, the description stays; if not, it's replaced with one of the descriptions below at identification time
+  , idesc    = "One of many kinds of hammers employed in construction work. The usual ones with blunt heads don't cause grave wounds, but enough weigth on a long handle can shake and bruise even most armored foes. However, larger hammers require more time to recover after a swing."  -- replaced with one of the descriptions below at identification time
   , ikit     = []
   }
 hammer1 = hammerTemplate  -- 1m handle, blunt
@@ -2141,6 +2141,7 @@ hammer1 = hammerTemplate  -- 1m handle, blunt
   , iaspects = [Timeout 6]
                ++ iaspects hammerTemplate
   , ieffects = [RefillHP (-5)]  -- weak, but meant to be sharpened ASAP
+  , idesc    = "One of many kinds of hammers employed in construction work. The usual one, with a blunt head and a short handle that, using a vice, could be pushed out and replaced with a longer pole."
   }
 hammer2 = hammerTemplate  -- 0.75m handle, sharp
   { ifreq    = [ (COMMON_ITEM, 10)
@@ -2172,13 +2173,13 @@ hammer4 = hammer1  -- 1m handle, sharp
                , (S_SHARP_SHORT_HAMMER, 1) ]
   , iverbHit = "cleave"
   , idamage  = 3 `d` 1
-  , idesc    = "This hammer's head has it's protruding edges sharpened. Otherwise, it's pretty ordinary."
+  , idesc    = "This hammer's head has it's protruding edges sharpened. Otherwise, it's pretty ordinary, with a short handle."
  }
 hammer5 = hammer3  -- 2m pole, sharp
   { ifreq    = [(COMMON_ITEM, 1), (S_SHARP_LONG_HAMMER, 1)]
   , iverbHit = "cleave"
   , idamage  = 3 `d` 1
-  , idesc    = "This long-hafter hammer sports a head with the edge of the narrow end sharpened for cutting."
+  , idesc    = "This long-hafted hammer features a head with the edge of the narrow end sharpened for cutting. Such large hammers require more time to recover after a swing, but the momentum alone can shake and bruise even armored foes that can't be harmed by sharp edges."
   }
 hammerParalyze = hammerTemplate
   { iname    = "Concussion Hammer"
