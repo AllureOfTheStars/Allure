@@ -1044,26 +1044,21 @@ workshopAssocs =
     , [(1, S_LONG_SPEAR)] )
   , ( [], [(1, S_STAFF), (1, STEEL_SCRAP)], [(1, S_SHORT_CLUB)] )
   , ( [], [(1, POLE), (2, STEEL_SCRAP)], [(1, S_LONG_CLUB)] )
+  -- Perfect the perfection. Comes after the productive rules.
+  , ( [(1, BONDING_TOOL)], [(1, S_SHARP_LONG_HAMMER)]
+    , [(1, S_SHARP_LONG_HAMMER)] )
+  , ( [(1, BONDING_TOOL)], [(1, S_POLL_AXE)], [(1, S_POLL_AXE)] )
+  , ( [(1, BONDING_TOOL)], [(1, S_LONG_SPEAR)], [(1, S_LONG_SPEAR)] )
   , ( [(3, BONDING_TOOL)]
     , [ (1, S_SPACESUIT_JACKET), (1, S_SPACESUIT_TROUSERS)
       , (2, S_SPACESUIT_GLOVE), (1, S_SPACESUIT_HELMET)
       , (2, S_SPACESUIT_BOOT) ]
     , [(1, S_SPACESUIT)] )
- -- Recipes that destroy more useful things than other recipes come last.
-  , ( [(1, BONDING_TOOL)], [(1, HANDLE), (1, S_BLUNT_LONG_HAMMER)]
-    , [(1, S_BLUNT_SHORT_HAMMER), (1, POLE)] )
-      -- this and other reverse rules magically randomly changes stiff poles
-      -- into jumping poles and staves into pipes; who cares
-  , ( [(1, BONDING_TOOL)], [(1, HANDLE), (1, S_SHARP_LONG_HAMMER)]
-    , [(1, S_SHARP_SHORT_HAMMER), (1, POLE)] )
-  , ( [(1, BONDING_TOOL)], [(1, HANDLE), (1, S_POLL_AXE)]
-    , [(1, S_FIRE_AXE), (1, POLE)] )
-  , ( [], [(1, S_POLE_CLEAVER)], [(1, POLE), (1, S_CLEAVER)] )
-  , ( [], [(1, S_LONG_SPEAR)], [(1, POLE), (1, S_DAGGER)] )
-  , ( [(1, PERFUME)], [(1, WATER_SOURCE), (5, S_EMPTY_FLASK)]
-    , [(6, S_ROSE_WATER_FLASK)] )  -- the extra container is from water source
+  -- Recipes that destroy more useful things than other recipes come last.
   , ( [(1, WIRECUTTING_TOOL)], [(1, S_SPACESUIT_TORN)]
     , [(2, SPACESUIT_PART), (1, S_RAG_TANGLE)] )
+  , ( [(1, PERFUME)], [(1, WATER_SOURCE), (5, S_EMPTY_FLASK)]
+    , [(6, S_ROSE_WATER_FLASK)] )  -- the extra container is from water source
   , ([], [(3, WASTE_CONTAINER)], [(1, S_REFRIGERATION_COIL)])
   , ( [(1, BREACHING_TOOL)], [(1, POLE_AND_STEEL)]  -- harder to dismantle
     , [(1, POLE), (1, STEEL_SCRAP)] )
