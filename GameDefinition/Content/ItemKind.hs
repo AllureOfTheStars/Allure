@@ -1918,7 +1918,9 @@ ragTangle = sandstoneRock
   , iverbHit = "touch"
   , iweight  = 200
   , idamage  = 0
-  , iaspects = [ELabel "of rags", SetFlag Fragile, AddSkill SkArmorMelee 2]
+  , iaspects = [ ELabel "of rags"
+               , SetFlag Fragile, AddSkill SkArmorMelee 2
+               , SetFlag Equipable, EqpSlot EqpSlotArmorMelee ]
   , idesc    = "Fashionable, sometimes, and useful for survival crafting, always."
   }
 -- Shield doesn't protect against ranged attacks to prevent
