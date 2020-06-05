@@ -2135,7 +2135,7 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
   , ikit     = []
   }
 hammer1 = hammerTemplate  -- 1m handle, blunt
-  { ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
+  { ifreq    = [ (COMMON_ITEM, 100)
                , (STARTING_WEAPON, 50), (STARTING_HAMMER, 80)
                , (S_BLUNT_SHORT_HAMMER, 1) ]
   , iaspects = [Timeout 6]
@@ -2143,7 +2143,8 @@ hammer1 = hammerTemplate  -- 1m handle, blunt
   , ieffects = [RefillHP (-5)]  -- weak, but meant to be sharpened ASAP
   }
 hammer2 = hammerTemplate  -- 0.75m handle, sharp
-  { ifreq    = [ (COMMON_ITEM, 10), (STARTING_WEAPON, 5), (STARTING_HAMMER, 5)
+  { ifreq    = [ (COMMON_ITEM, 10)
+               , (STARTING_WEAPON, 5), (STARTING_HAMMER, 5)
                , (BONDING_TOOL, 1) ]
   , irarity  = [(1, 4), (3, 4), (7, 40)]
                  -- common early, since not a guaranteed drop;
@@ -2167,8 +2168,8 @@ hammer3 = hammerTemplate  -- 2m pole, blunt
   , idesc    = "This hammer sports a long pole that increases the momentum of the blunt head's swing, at the cost of long recovery."
   }
 hammer4 = hammer1  -- 1m handle, sharp
-  { ifreq    = [ (COMMON_ITEM, 4), (HANDLE_AND_STEEL, 1)
-               , (STARTING_WEAPON, 2), (S_SHARP_SHORT_HAMMER, 1) ]
+  { ifreq    = [ (COMMON_ITEM, 4), (STARTING_WEAPON, 2)
+               , (S_SHARP_SHORT_HAMMER, 1) ]
   , iverbHit = "cleave"
   , idamage  = 3 `d` 1
   , idesc    = "This hammer's head has it's protruding edges sharpened. Otherwise, it's pretty ordinary."
@@ -2353,8 +2354,7 @@ halberdPushActorSharp = halberdPushActor
 fireAxe = ItemKind
   { isymbol  = symbolHafted
   , iname    = "fire axe"
-  , ifreq    = [ (TREASURE, 20), (HANDLE_AND_STEEL, 1), (S_FIRE_AXE, 1)
-               , (FIRE_FIGHTING_ITEM, 5) ]
+  , ifreq    = [(TREASURE, 20), (S_FIRE_AXE, 1), (FIRE_FIGHTING_ITEM, 5)]
                  -- not @BREACHING_TOOL@, because it trigger traps
                  -- and destroys treasure, instead of opening
   , iflavour = zipPlain [BrRed]
