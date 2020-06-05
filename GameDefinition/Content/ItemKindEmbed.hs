@@ -978,10 +978,7 @@ waterEffect :: Effect
 waterEffect = combineEffect "lack a sharpening tool or a weapon to sharpen or an item to fill with water"
               $ map (\(tools, raw, cooked) ->
                       (tools, [(1, raw)], [(1, cooked)])) sharpeningAssocs
-                ++ [ ( [(1, PERFUME)], [(5, S_EMPTY_FLASK)]
-                     , [(5, S_ROSE_WATER_FLASK)] )
-                   , ( [], [(1, S_EMPTY_FLASK)]
-                     , [(1, S_WATER_FLASK)] ) ]
+                ++ extraWaterAssocs
 
 workshopEffect :: Effect
 workshopEffect = combineEffect "have not enough tools and components"
@@ -1005,7 +1002,8 @@ extraRoastAssocs :: [( [(Int, GroupName ItemKind)]
                      , [(Int, GroupName ItemKind)] )]
 extraRoastAssocs =
   [ ([], [(1, S_DOUSED_WOODEN_TORCH)], [(1, S_WOODEN_TORCH)])
-  , ([], [(1, S_DOUSED_OIL_LAMP)], [(1, S_OIL_LAMP)]) ]
+  , ([], [(1, S_DOUSED_OIL_LAMP)], [(1, S_OIL_LAMP)])
+  ]
 
 sharpeningAssocs :: [( [(Int, GroupName ItemKind)]
                      , GroupName ItemKind
@@ -1020,6 +1018,14 @@ sharpeningAssocs =
   , ([(1, SHARPENING_TOOL)], S_RAPIER_BLUNT, S_RAPIER_SHARP)
   , ([(2, SHARPENING_TOOL)], S_POLE_CLEAVER, S_LONG_SPEAR)
   , ([(1, SHARPENING_TOOL)], S_HALBERD_BLUNT, S_HALBERD_SHARP)
+  ]
+
+extraWaterAssocs :: [( [(Int, GroupName ItemKind)]
+                     , [(Int, GroupName ItemKind)]
+                     , [(Int, GroupName ItemKind)] )]
+extraWaterAssocs =
+  [ ( [(1, PERFUME)], [(5, S_EMPTY_FLASK)], [(5, S_ROSE_WATER_FLASK)] )
+  , ( [], [(1, S_EMPTY_FLASK)], [(1, S_WATER_FLASK)] )
   ]
 
 workshopAssocs :: [( [(Int, GroupName ItemKind)]
