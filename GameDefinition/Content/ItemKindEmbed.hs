@@ -958,21 +958,21 @@ oilEffect = combineEffect "have nothing to oil"
 
 roastEffect :: Effect
 roastEffect = combineEffect "have nothing to roast"
-              $ map (\(raw, cooked) ->
-                       ([], [(1, raw)], [(1, cooked)])) cookingAssocs
-                                 ++ extraRoastAssocs
+              $ extraRoastAssocs
+                ++ map (\(raw, cooked) ->
+                          ([], [(1, raw)], [(1, cooked)])) cookingAssocs
 
 roastEffect5 :: Effect
 roastEffect5 = combineEffect "have nothing to roast"
-               $ concatMap (\(raw, cooked) ->
-                              [ ([], [(5, raw)], [(5, cooked)])
-                              , ([], [(4, raw)], [(4, cooked)])
-                              , ([], [(3, raw)], [(3, cooked)])
-                              , ([], [(2, raw)], [(2, cooked)])
-                              , ([], [(1, raw)], [(1, cooked)])
-                              ])
-                           cookingAssocs
-                 ++ extraRoastAssocs
+               $ extraRoastAssocs
+                 ++ concatMap (\(raw, cooked) ->
+                                 [ ([], [(5, raw)], [(5, cooked)])
+                                 , ([], [(4, raw)], [(4, cooked)])
+                                 , ([], [(3, raw)], [(3, cooked)])
+                                 , ([], [(2, raw)], [(2, cooked)])
+                                 , ([], [(1, raw)], [(1, cooked)])
+                                 ])
+                              cookingAssocs
 
 waterEffect :: Effect
 waterEffect = combineEffect "lack a sharpening tool or a weapon to sharpen or an item to fill with water"
