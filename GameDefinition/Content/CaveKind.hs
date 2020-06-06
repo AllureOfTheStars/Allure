@@ -263,14 +263,14 @@ laboratory = rogue
   , clitCorTile   = LAB_TRAIL_LIT
   , cminStairDist = 25
   , cmaxStairsNum = 1 `d` 2
-  , cstairFreq    = [ (DECONTAMINATING_WALLED_LIFT, 50)
-                    , (DECONTAMINATING_OPEN_LIFT, 50)
-                    , (DECONTAMINATING_TINY_LIFT, 1) ]
+  , cstairFreq    = [ (DECON_WALLED_LIFT, 50)
+                    , (DECON_OPEN_LIFT, 50)
+                    , (DECON_TINY_LIFT, 1) ]
       -- In lone wolf challenge, the player better summoned or dominated
       -- any helpers by this point. If not, good luck fighting bare-handed.
-  , cstairAllowed = [ (DECONTAMINATING_WALLED_STAIRCASE, 50)
-                    , (DECONTAMINATING_OPEN_STAIRCASE, 50)
-                    , (DECONTAMINATING_TINY_STAIRCASE, 1) ]
+  , cstairAllowed = [ (DECON_WALLED_STAIRCASE, 50)
+                    , (DECON_OPEN_STAIRCASE, 50)
+                    , (DECON_TINY_STAIRCASE, 1) ]
   , cdesc         = "Shattered glassware and the sharp scent of spilt chemicals show that something terrible happened here. The reinforced bulkheads muffle furious roars."  -- a fair warning to skip the level or regroup
   }
 noise = rogue

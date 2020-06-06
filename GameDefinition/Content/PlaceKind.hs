@@ -10,7 +10,7 @@ module Content.PlaceKind
     pattern ROGUE, pattern RESIDENTIAL, pattern LABORATORY, pattern ZOO, pattern RAID, pattern BRAWL, pattern SHOOTOUT, pattern ARENA, pattern ESCAPE, pattern AMBUSH, pattern BATTLE, pattern NOISE, pattern EMPTY
   , pattern INDOOR_ESCAPE_DOWN, pattern INDOOR_ESCAPE_UP, pattern OUTDOOR_ESCAPE_DOWN, pattern TINY_STAIRCASE, pattern OPEN_STAIRCASE, pattern CLOSED_STAIRCASE, pattern WALLED_STAIRCASE, pattern GATED_TINY_STAIRCASE, pattern GATED_OPEN_STAIRCASE, pattern GATED_CLOSED_STAIRCASE, pattern OUTDOOR_TINY_STAIRCASE, pattern OUTDOOR_CLOSED_STAIRCASE, pattern OUTDOOR_WALLED_STAIRCASE
   , pattern MUSEUM, pattern EXIT
-  , pattern TINY_LIFT, pattern OPEN_LIFT, pattern WALLED_LIFT, pattern CLOSED_LIFT, pattern ESCAPE_FROM_SPACESHIP_DOWN, pattern DECONTAMINATING_TINY_STAIRCASE, pattern DECONTAMINATING_OPEN_STAIRCASE, pattern DECONTAMINATING_WALLED_STAIRCASE, pattern DECONTAMINATING_TINY_LIFT, pattern DECONTAMINATING_OPEN_LIFT, pattern DECONTAMINATING_WALLED_LIFT, pattern GATED_TINY_LIFT, pattern GATED_OPEN_LIFT, pattern GATED_CLOSED_LIFT, pattern WELDED_TINY_LIFT, pattern WELDED_OPEN_LIFT, pattern WELDED_WALLED_LIFT, pattern WELDED_TINY_STAIRCASE, pattern WELDED_OPEN_STAIRCASE, pattern WELDED_WALLED_STAIRCASE
+  , pattern TINY_LIFT, pattern OPEN_LIFT, pattern WALLED_LIFT, pattern CLOSED_LIFT, pattern ESCAPE_FROM_SPACESHIP_DOWN, pattern DECON_TINY_STAIRCASE, pattern DECON_OPEN_STAIRCASE, pattern DECON_WALLED_STAIRCASE, pattern DECON_TINY_LIFT, pattern DECON_OPEN_LIFT, pattern DECON_WALLED_LIFT, pattern GATED_TINY_LIFT, pattern GATED_OPEN_LIFT, pattern GATED_CLOSED_LIFT, pattern WELDED_TINY_LIFT, pattern WELDED_OPEN_LIFT, pattern WELDED_WALLED_LIFT, pattern WELDED_TINY_STAIRCASE, pattern WELDED_OPEN_STAIRCASE, pattern WELDED_WALLED_STAIRCASE
   , groupNamesSingleton, groupNames
   , -- * Content
     content
@@ -48,7 +48,7 @@ pattern INDOOR_ESCAPE_DOWN, INDOOR_ESCAPE_UP, OUTDOOR_ESCAPE_DOWN, TINY_STAIRCAS
 
 pattern MUSEUM, EXIT :: GroupName PlaceKind
 
-pattern TINY_LIFT, OPEN_LIFT, WALLED_LIFT, CLOSED_LIFT, ESCAPE_FROM_SPACESHIP_DOWN, DECONTAMINATING_TINY_STAIRCASE, DECONTAMINATING_OPEN_STAIRCASE, DECONTAMINATING_WALLED_STAIRCASE, DECONTAMINATING_TINY_LIFT, DECONTAMINATING_OPEN_LIFT, DECONTAMINATING_WALLED_LIFT, GATED_TINY_LIFT, GATED_OPEN_LIFT, GATED_CLOSED_LIFT, WELDED_TINY_LIFT, WELDED_OPEN_LIFT, WELDED_WALLED_LIFT, WELDED_TINY_STAIRCASE, WELDED_OPEN_STAIRCASE, WELDED_WALLED_STAIRCASE :: GroupName PlaceKind
+pattern TINY_LIFT, OPEN_LIFT, WALLED_LIFT, CLOSED_LIFT, ESCAPE_FROM_SPACESHIP_DOWN, DECON_TINY_STAIRCASE, DECON_OPEN_STAIRCASE, DECON_WALLED_STAIRCASE, DECON_TINY_LIFT, DECON_OPEN_LIFT, DECON_WALLED_LIFT, GATED_TINY_LIFT, GATED_OPEN_LIFT, GATED_CLOSED_LIFT, WELDED_TINY_LIFT, WELDED_OPEN_LIFT, WELDED_WALLED_LIFT, WELDED_TINY_STAIRCASE, WELDED_OPEN_STAIRCASE, WELDED_WALLED_STAIRCASE :: GroupName PlaceKind
 
 pattern ROGUE = GroupName "rogue"
 pattern RESIDENTIAL = GroupName "residential"
@@ -93,15 +93,12 @@ pattern ESCAPE_FROM_SPACESHIP_DOWN = GroupName "escape from spaceship"
 
 -- This is a rotten compromise, because these are synthesized below,
 -- so typos can happen.
-pattern DECONTAMINATING_TINY_STAIRCASE =
-  GroupName "decontaminating tiny staircase"
-pattern DECONTAMINATING_OPEN_STAIRCASE =
-  GroupName "decontaminating open staircase"
-pattern DECONTAMINATING_WALLED_STAIRCASE =
-  GroupName "decontaminating walled staircase"
-pattern DECONTAMINATING_TINY_LIFT = GroupName "decontaminating tiny lift"
-pattern DECONTAMINATING_OPEN_LIFT = GroupName "decontaminating open lift"
-pattern DECONTAMINATING_WALLED_LIFT = GroupName "decontaminating walled lift"
+pattern DECON_TINY_STAIRCASE = GroupName "decon tiny staircase"
+pattern DECON_OPEN_STAIRCASE = GroupName "decon open staircase"
+pattern DECON_WALLED_STAIRCASE = GroupName "decon walled staircase"
+pattern DECON_TINY_LIFT = GroupName "decon tiny lift"
+pattern DECON_OPEN_LIFT = GroupName "decon open lift"
+pattern DECON_WALLED_LIFT = GroupName "decon walled lift"
 pattern GATED_TINY_LIFT = GroupName "gated tiny lift"
 pattern GATED_OPEN_LIFT = GroupName "gated open lift"
 pattern GATED_CLOSED_LIFT = GroupName "gated closed lift"
@@ -140,17 +137,17 @@ generatedStairs =
   let (stairs, lifts) = partition ((/= "a lift") . pname) staircaseBasic
       gatedStairs = map switchStaircaseToGated stairs
       gatedLifts = map switchLiftToGated lifts
-      decontaminatingStairs = map switchStaircaseToDecontaminating stairs
-      decontaminatingLifts = map switchLiftToDecontaminating lifts
+      deconStairs = map switchStaircaseToDecon stairs
+      deconLifts = map switchLiftToDecon lifts
       weldedStairs = map switchStaircaseToWelded stairs
       weldedLifts = map switchLiftToWelded lifts
       outdoorStairs = map switchStaircaseToOutdoor stairs
-      stairsAll = stairs ++ gatedStairs ++ decontaminatingStairs ++ weldedStairs
+      stairsAll = stairs ++ gatedStairs ++ deconStairs ++ weldedStairs
                   ++ outdoorStairs
-      liftsAll = lifts ++ gatedLifts ++ decontaminatingLifts ++ weldedLifts
+      liftsAll = lifts ++ gatedLifts ++ deconLifts ++ weldedLifts
       genStairs =
         gatedStairs ++ gatedLifts
-        ++ decontaminatingStairs ++ decontaminatingLifts
+        ++ deconStairs ++ deconLifts
         ++ weldedStairs ++ weldedLifts
         ++ outdoorStairs
         ++ map (switchExitToUp "stair terminal") stairsAll
@@ -1779,36 +1776,34 @@ switchLiftToGated s = s
  }
 
 
-overrideDecontaminatingStaircase :: [(Char, GroupName TileKind)]
-overrideDecontaminatingStaircase =
-  [ ('<', DECONTAMINATING_STAIRCASE_UP)
+overrideDeconStaircase :: [(Char, GroupName TileKind)]
+overrideDeconStaircase =
+  [ ('<', DECON_STAIRCASE_UP)
   , ('>', S_STAIRCASE_TRAP_DOWN_OIL)  -- talter high enough
   , ('I', SIGNBOARD), ('S', FILLER_WALL) ]
 
-switchStaircaseToDecontaminating :: PlaceKind -> PlaceKind
-switchStaircaseToDecontaminating s = s
+switchStaircaseToDecon :: PlaceKind -> PlaceKind
+switchStaircaseToDecon s = s
  { psymbol   = 'd'
- , pfreq     = map (first (\t -> GroupName $ "decontaminating"
-                                             <+> fromGroupName t))
+ , pfreq     = map (first (\t -> GroupName $ "decon" <+> fromGroupName t))
                    (pfreq s)
- , poverrideDark = overrideDecontaminatingStaircase
- , poverrideLit = overrideDecontaminatingStaircase
+ , poverrideDark = overrideDeconStaircase
+ , poverrideLit = overrideDeconStaircase
  }
 
-overrideDecontaminatingLift :: [(Char, GroupName TileKind)]
-overrideDecontaminatingLift =
-  [ ('<', DECONTAMINATING_LIFT_UP)
+overrideDeconLift :: [(Char, GroupName TileKind)]
+overrideDeconLift =
+  [ ('<', DECON_LIFT_UP)
   , ('>', STAIRCASE_LIFT_DOWN)
   , ('I', SIGNBOARD), ('S', S_LIFT_SHAFT) ]
 
-switchLiftToDecontaminating :: PlaceKind -> PlaceKind
-switchLiftToDecontaminating s = s
+switchLiftToDecon :: PlaceKind -> PlaceKind
+switchLiftToDecon s = s
  { psymbol   = 'd'
- , pfreq     = map (first (\t -> GroupName $ "decontaminating"
-                                             <+> fromGroupName t))
+ , pfreq     = map (first (\t -> GroupName $ "decon" <+> fromGroupName t))
                    (pfreq s)
- , poverrideDark = overrideDecontaminatingLift
- , poverrideLit = overrideDecontaminatingLift
+ , poverrideDark = overrideDeconLift
+ , poverrideLit = overrideDeconLift
  }
 
 
