@@ -2166,7 +2166,7 @@ hammer3 = hammerTemplate  -- 2m pole, blunt
                    -- the malus not so important, hence easy to get the best
                ++ iaspects hammerTemplate
   , ieffects = [RefillHP (-8)]
-  , idesc    = "This hammer sports a long pole that increases the momentum of the blunt head's swing, at the cost of long recovery."
+  , idesc    = "This maul sports a particularly long pole that increases the momentum of the blunt head's swing, at the cost of long recovery."
   }
 hammer4 = hammer1  -- 1m handle, sharp
   { ifreq    = [ (COMMON_ITEM, 4), (STARTING_WEAPON, 2)
@@ -2179,7 +2179,7 @@ hammer5 = hammer3  -- 2m pole, sharp
   { ifreq    = [(COMMON_ITEM, 1), (S_LONG_SHARP_HAMMER, 1)]
   , iverbHit = "cleave"
   , idamage  = 3 `d` 1
-  , idesc    = "This long-hafted hammer features a head with the edge of the narrow end sharpened for cutting. Such large hammers require more time to recover after a swing, but the momentum alone can shake and bruise even armored foes that can't be harmed by sharp edges."
+  , idesc    = "This maul features a head with the edge of the narrow end sharpened for cutting. Such long-hafted hammers require more time to recover after a swing, but the momentum alone can shake and bruise even armored foes that can't be harmed by sharp edges."
   }
 hammerParalyze = hammerTemplate
   { iname    = "Concussion Hammer"
