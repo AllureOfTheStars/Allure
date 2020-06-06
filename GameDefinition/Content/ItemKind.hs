@@ -2137,7 +2137,7 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
 hammer1 = hammerTemplate  -- 1m handle, blunt
   { ifreq    = [ (COMMON_ITEM, 100)
                , (STARTING_WEAPON, 50), (STARTING_HAMMER, 80)
-               , (S_BLUNT_SHORT_HAMMER, 1) ]
+               , (S_SHORT_BLUNT_HAMMER, 1) ]
   , iaspects = [Timeout 6]
                ++ iaspects hammerTemplate
   , ieffects = [RefillHP (-5)]  -- weak, but meant to be sharpened ASAP
@@ -2159,7 +2159,7 @@ hammer2 = hammerTemplate  -- 0.75m handle, sharp
   }
 hammer3 = hammerTemplate  -- 2m pole, blunt
   { ifreq    = [ (COMMON_ITEM, 4), (STARTING_WEAPON, 2)
-               , (S_BLUNT_LONG_HAMMER, 1) ]
+               , (S_LONG_BLUNT_HAMMER, 1) ]
   , iweight  = 6000  -- pole weight almost gives it away
   , iaspects = [ Timeout 12
                , AddSkill SkHurtMelee $ (-6 + 1 `d` 4) * 3 ]
@@ -2170,13 +2170,13 @@ hammer3 = hammerTemplate  -- 2m pole, blunt
   }
 hammer4 = hammer1  -- 1m handle, sharp
   { ifreq    = [ (COMMON_ITEM, 4), (STARTING_WEAPON, 2)
-               , (S_SHARP_SHORT_HAMMER, 1) ]
+               , (S_SHORT_SHARP_HAMMER, 1) ]
   , iverbHit = "cleave"
   , idamage  = 3 `d` 1
   , idesc    = "This hammer's head has it's protruding edges sharpened. Otherwise, it's pretty ordinary, with a short handle."
  }
 hammer5 = hammer3  -- 2m pole, sharp
-  { ifreq    = [(COMMON_ITEM, 1), (S_SHARP_LONG_HAMMER, 1)]
+  { ifreq    = [(COMMON_ITEM, 1), (S_LONG_SHARP_HAMMER, 1)]
   , iverbHit = "cleave"
   , idamage  = 3 `d` 1
   , idesc    = "This long-hafted hammer features a head with the edge of the narrow end sharpened for cutting. Such large hammers require more time to recover after a swing, but the momentum alone can shake and bruise even armored foes that can't be harmed by sharp edges."
