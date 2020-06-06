@@ -622,7 +622,7 @@ escapeDown = PlaceKind
   }
 escapeDown2 = escapeDown
   { pfreq    = [(INDOOR_ESCAPE_DOWN, 200)]
-  , pfence   = FFloor
+  , pfence   = FGround
   , ptopLeft = [ "#·#"
                , "·>·"
                , "#·#"
@@ -714,7 +714,7 @@ staircase1 = staircase
 staircase2 = staircase
   { pfreq    = [(TINY_STAIRCASE, 3)]
   , prarity  = [(1, 1)]
-  , pfence   = FGround
+  , pfence   = FFloor
   , ptopLeft = [ "·<S>·"
                ]
   }
@@ -725,7 +725,7 @@ staircaseLift = PlaceKind
   , pfreq    = [(TINY_LIFT, 1)]
   , prarity  = [(1, 100), (10, 100)]
   , pcover   = CVerbatim
-  , pfence   = FFloor
+  , pfence   = FGround
   , ptopLeft = [ "<S>"
                ]
   , poverrideDark = overrideLift
@@ -752,7 +752,7 @@ staircase5 = staircase
   }
 staircase6 = staircaseLift
   { pfreq    = [(OPEN_LIFT, 300)]
-  , pfence   = FGround
+  , pfence   = FFloor
   , ptopLeft = [ "#·#·#"
                , "·····"
                , "·<S>·"
@@ -772,7 +772,7 @@ staircase7 = staircase
   }
 staircase8 = staircaseLift
   { pfreq    = [(OPEN_LIFT, 2000)]
-  , pfence   = FGround
+  , pfence   = FFloor
   , ptopLeft = [ "·#·#·#·"
                , "#·····#"
                , "··<S>··"
@@ -782,7 +782,7 @@ staircase8 = staircaseLift
   }
 staircase9 = staircase
   { pfreq    = [(OPEN_STAIRCASE, 500)]
-  , pfence   = FGround
+  , pfence   = FFloor
   , ptopLeft = [ "#·······#"
                , "···<S>···"
                , "#·······#"
@@ -834,7 +834,7 @@ staircase13 = staircase
   }
 staircase14 = staircase
   { pfreq    = [(CLOSED_STAIRCASE, 10000)]
-  , pfence   = FFloor
+  , pfence   = FGround
   , ptopLeft = [ "#·#·#·#"
                , "·#·#·#·"
                , "#·····#"
@@ -858,7 +858,7 @@ staircase15 = staircase
   }
 staircase16 = staircase
   { pfreq    = [(CLOSED_STAIRCASE, 20000)]
-  , pfence   = FFloor
+  , pfence   = FGround
   , ptopLeft = [ "#·#·#·#·#"
                , "·#·#·#·#·"
                , "#·······#"
@@ -882,7 +882,7 @@ staircase17 = staircase
   }
 staircase18 = staircase
   { pfreq    = [(CLOSED_STAIRCASE, 80000)]
-  , pfence   = FFloor
+  , pfence   = FGround
   , ptopLeft = [ "XX#·#·#·#XX"
                , "X#·#·#·#·#X"
                , "#·#·····#·#"
@@ -916,7 +916,7 @@ staircase20 = staircase
   }
 staircase21 = staircase
   { pfreq    = [(CLOSED_STAIRCASE, 5000)]
-  , pfence   = FFloor
+  , pfence   = FGround
   , ptopLeft = [ "#·#·I·#·#"
                , "·#·····#·"
                , "#··<S>··#"
@@ -926,7 +926,7 @@ staircase21 = staircase
   }
 staircase22 = staircase
   { pfreq    = [(CLOSED_STAIRCASE, 2000)]
-  , pfence   = FFloor
+  , pfence   = FGround
   , ptopLeft = [ "#·#·····#·#"
                , "·#··<S>··#·"
                , "#·#·····#·#"
@@ -1618,7 +1618,6 @@ shuttleHusk4 = shuttleHusk3
 shuttleHusk5 = shuttleHusk
   { pfreq    = [(EXIT, 80000), (AMBUSH, 80000)]
       -- can't have EMPTY or AI can't reach and kill the boss and get the key
-  , pfence   = FGround
   , ptopLeft = [ "···##···"  -- 8 x 10
                , "w#%ww%#w"
                , "X#····#X"

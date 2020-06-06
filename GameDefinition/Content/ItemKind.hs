@@ -2141,7 +2141,7 @@ hammer1 = hammerTemplate  -- 1m handle, blunt
   , iaspects = [Timeout 6]
                ++ iaspects hammerTemplate
   , ieffects = [RefillHP (-5)]  -- weak, but meant to be sharpened ASAP
-  , idesc    = "One of many kinds of hammers employed in construction work. The usual one, with a blunt head and a short handle that, using a vice, could be pushed out and replaced with a longer pole."
+  , idesc    = "One of many kinds of hammers employed in construction work. This is the usual one, with a blunt head and a short handle that, with a vice, may be pushed out and replaced with a longer pole."
   }
 hammer2 = hammerTemplate  -- 0.75m handle, sharp
   { ifreq    = [ (COMMON_ITEM, 10)
