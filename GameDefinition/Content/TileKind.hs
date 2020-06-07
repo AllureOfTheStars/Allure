@@ -491,7 +491,7 @@ signboardRead = TileKind
 treeLit = TileKind
   { tsymbol  = '0'
   , tname    = "tree"
-  , tfreq    = [ (EMPTY_SET_LIT, 4), (BRAWL_SET_LIT, 140)
+  , tfreq    = [ (ARENA_SET_LIT, 9), (EMPTY_SET_LIT, 4), (BRAWL_SET_LIT, 140)
                , (SHOOTOUT_SET_LIT, 10), (HUNT_SET_LIT, 10)
                , (ESCAPE_SET_LIT, 35), (ZOO_SET_DARK, 20)
                , (S_TREE_LIT, 1) ]
@@ -706,7 +706,7 @@ pulpit = TileKind
 bushLit = TileKind
   { tsymbol  = '%'
   , tname    = "bush"
-  , tfreq    = [ (S_BUSH_LIT, 1), (EMPTY_SET_LIT, 8), (ARENA_SET_LIT, 20)
+  , tfreq    = [ (S_BUSH_LIT, 1), (EMPTY_SET_LIT, 8), (ARENA_SET_LIT, 13)
                , (BRAWL_SET_LIT, 5), (SHOOTOUT_SET_LIT, 30), (HUNT_SET_LIT, 30)
                , (ESCAPE_SET_LIT, 40), (ZOO_SET_DARK, 100)
                , (BUSH_CLUMP_LIT, 2), (BUSH_CLUMP_DARK, 2)  -- always lit
@@ -1042,7 +1042,7 @@ liftShaft = pillar
   }
 rock = pillar
   { tname    = "rock"
-  , tfreq    = [(ARENA_SET_LIT, 8), (BRAWL_SET_LIT, 30)]
+  , tfreq    = [(ARENA_SET_LIT, 6), (BRAWL_SET_LIT, 30)]
   }
 pillarCache2 = pillarCache
   { tname    = "rack of deposit boxes"

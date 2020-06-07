@@ -1243,7 +1243,7 @@ ovalSquare = oval
   }
 ovalBasin = oval
   { pname    = "a water basin"
-  , pfreq    = [ (ROGUE, 100000), (ARENA, 200000), (LABORATORY, 200000)
+  , pfreq    = [ (ROGUE, 100000), (ARENA, 100000), (LABORATORY, 200000)
                , (EMPTY, 15000), (RAID, 100000) ]
   , pfence   = FGround
   , ptopLeft = [ "XXX1##"
@@ -1267,7 +1267,7 @@ ovalBasin2 = oval
   }
 squareBasin = oval
   { pname    = "a water basin"
-  , pfreq    = [(ARENA, 15000), (LABORATORY, 5000), (EMPTY, 2000), (RAID, 3000)]
+  , pfreq    = [(ARENA, 10000), (LABORATORY, 5000), (EMPTY, 2000), (RAID, 3000)]
   , pfence   = FNone
   , ptopLeft = [ "0bt0t"
                , "b~~~~"
@@ -1278,7 +1278,7 @@ squareBasin = oval
   }
 squareBasin2 = oval
   { pname    = "a water basin"
-  , pfreq    = [(ARENA, 100000), (EMPTY, 20000), (BRAWL, 100000)]
+  , pfreq    = [(ARENA, 200000), (EMPTY, 20000), (BRAWL, 100000)]
       -- can't do LABORATORY, because barrels might block corridors
   , pfence   = FNone
   , ptopLeft = [ "T;T;;;"
