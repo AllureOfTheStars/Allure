@@ -172,11 +172,11 @@ arena = rogue
   , cactorCoeff   = 40  -- smallish level, but easy to view and plan
   , cactorFreq    = [ (MONSTER, 50), (ANIMAL, 70), (ROBOT, 5)
                     , (IK.AQUATIC, 10) ]
-  , citemNum      = 9 `d` 4  -- few rooms
+  , citemNum      = 10 `d` 3
   , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 20)
                     , (IK.TREASURE, 40)
                     , (GARDENING_TOOL, 200)  -- useless and boring by this point
-                    , (IK.ANY_POTION, 80) ]  -- nature
+                    , (IK.ANY_POTION, 100) ]  -- nature
   , cplaceFreq    = [(ARENA, 1)]
   , cpassable     = True
   , cdefTile      = ARENA_SET_LIT
@@ -351,7 +351,7 @@ empty = rogue
   , chidden       = 0
   , cactorCoeff   = 40  -- easy to view and plan
   , cactorFreq    = [(MONSTER, 10), (ANIMAL, 5), (ROBOT, 85)]
-  , citemNum      = 12 `d` 3  -- lots of free space, but extra loot present
+  , citemNum      = 13 `d` 3  -- lots of free space, but extra loot present
   , cplaceFreq    = [(EMPTY, 1)]
   , cpassable     = True
   , cdefTile      = EMPTY_SET_LIT
