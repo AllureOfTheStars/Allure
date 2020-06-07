@@ -28,7 +28,6 @@ import Game.LambdaHack.Core.Prelude
 
 import qualified Data.Text as T
 
-import Content.ItemKind hiding (content, groupNames, groupNamesSingleton)
 import Content.ItemKindActor
 import Content.ItemKindBlast
 import Content.ItemKindEmbed

@@ -8,8 +8,7 @@
 module Content.ItemKind
   ( -- * Group name patterns
     pattern HARPOON, pattern ARMOR_LOOSE, pattern CLOTHING_MISC
-  , pattern FIREPROOF_CLOTH, pattern COOKED_PLANT, pattern LIQUID_NITROGEN
-  , pattern GARDENING_TOOL
+  , pattern COOKED_PLANT, pattern LIQUID_NITROGEN, pattern GARDENING_TOOL
   , groupNamesSingleton, groupNames
   , -- * Content
     content, items, otherItemContent
@@ -54,12 +53,12 @@ groupNames :: [GroupName ItemKind]
 groupNames =
        [CRAWL_ITEM, TREASURE, ANY_SCROLL, ANY_GLASS, ANY_POTION, ANY_FLASK, EXPLOSIVE, ANY_JEWELRY, VALUABLE, UNREPORTED_INVENTORY, AQUATIC]
     ++ [HARPOON, ARMOR_LOOSE, CLOTHING_MISC]
-    ++ [FIREPROOF_CLOTH, COOKED_PLANT, LIQUID_NITROGEN, GARDENING_TOOL]
+    ++ [COOKED_PLANT, LIQUID_NITROGEN, GARDENING_TOOL]
     ++ embedsGN ++ actorsGN ++ organsGN ++ blastsGN
 
 pattern HARPOON, ARMOR_LOOSE, CLOTHING_MISC :: GroupName ItemKind
 
-pattern FIREPROOF_CLOTH, COOKED_PLANT, LIQUID_NITROGEN, GARDENING_TOOL :: GroupName ItemKind
+pattern COOKED_PLANT, LIQUID_NITROGEN, GARDENING_TOOL :: GroupName ItemKind
 
 -- The @UNKNOWN@ patterns don't need to be exported. Used internally.
 -- They also represent singleton groups.
@@ -86,7 +85,6 @@ pattern CLOTHING_MISC = GroupName "miscellaneous clothing"
 -- They also represent singleton groups.
 pattern COOKED_PLANT_UNKNOWN = GroupName "cooked plant unknown"
 
-pattern FIREPROOF_CLOTH = GroupName "fireproof cloth"
 pattern COOKED_PLANT = GroupName "cooked plant"
 pattern LIQUID_NITROGEN = GroupName "liquid nitrogen"
 pattern GARDENING_TOOL = GroupName "gardening tool"
@@ -106,9 +104,9 @@ otherItemContent = embeds ++ actors ++ organs ++ blasts ++ temporaries
 
 items :: [ItemKind]
 items =
-  [sandstoneRock, steelScrap, needle, dart, spike, spike2, slingStone, slingBullet, needleSleep, paralizingProj, harpoon, harpoon2, harpoon3, net, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, flaskEmpty, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, potion13, potion14, potion15, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, scrollAd1, rawMeatChunk, roastedMeatChunk, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, light1, lightDoused1, light2, lightDoused2, light3, blanket, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, motionScanner, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, ring9, ring10, armorLeather, armorLeather2, armorMail, meleeEnhancement, spacesuit, spacesuitTorn, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, heavyBoot, ragTangle, buckler, shield, shield2, shield3, blowtorch, laserSharpener, crowbar, catsPaw, shortClub, longClub, hammerTemplate, hammer1, hammer2, hammer3, hammer4, hammer5, hammerParalyze, hammerSpark, knife, daggerDropBestWeapon, dagger, sword, swordImpress, swordNullify, swordNullifySharp, halberd, oxTongue, halberdPushActor, halberdPushActorSharp, fireAxe, pollaxe, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, hoe, spade, treePruner, cleaningPole, staff, pipe, longPole, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency, jumpingPole, constructionHooter, wasteContainer, spotlight, seeingItem]
+  [sandstoneRock, steelScrap, needle, dart, spike, spike2, slingStone, slingBullet, needleSleep, paralizingProj, harpoon, harpoon2, harpoon3, net, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, flaskEmpty, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, potion13, potion14, potion15, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, scrollAd1, rawMeatChunk, roastedMeatChunk, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, light1, lightDoused1, light2, lightDoused2, light3, blanket, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, thickCord, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, motionScanner, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, ring9, ring10, armorLeather, armorLeather2, armorMail, meleeEnhancement, spacesuit, spacesuitTorn, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, heavyBoot, ragTangle, buckler, shield, shield2, shield3, blowtorch, laserSharpener, crowbar, catsPaw, shortClub, longClub, hammerTemplate, hammer1, hammer2, hammer3, hammer4, hammer5, hammerParalyze, hammerSpark, knife, daggerDropBestWeapon, dagger, sword, swordImpress, swordNullify, swordNullifySharp, halberd, oxTongue, halberdPushActor, halberdPushActorSharp, fireAxe, pollaxe, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, hoe, spade, treePruner, cleaningPole, staff, pipe, longPole, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency, jumpingPole, constructionHooter, wasteContainer, spotlight, seeingItem]
 
-sandstoneRock,    steelScrap, needle, dart, spike, spike2, slingStone, slingBullet, needleSleep, paralizingProj, harpoon, harpoon2, harpoon3, net, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, flaskEmpty, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, potion13, potion14, potion15, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, scrollAd1, rawMeatChunk, roastedMeatChunk, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, light1, lightDoused1, light2, lightDoused2, light3, blanket, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, motionScanner, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, ring9, ring10, armorLeather, armorLeather2, armorMail, meleeEnhancement, spacesuit, spacesuitTorn, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, heavyBoot, ragTangle, buckler, shield, shield2, shield3, blowtorch, laserSharpener, crowbar, catsPaw, shortClub, longClub, hammerTemplate, hammer1, hammer2, hammer3, hammer4, hammer5, hammerParalyze, hammerSpark, knife, daggerDropBestWeapon, dagger, sword, swordImpress, swordNullify, swordNullifySharp, halberd, oxTongue, halberdPushActor, halberdPushActorSharp, fireAxe, pollaxe, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, hoe, spade, treePruner, cleaningPole, staff, pipe, longPole, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency, jumpingPole, constructionHooter, wasteContainer, spotlight, seeingItem :: ItemKind
+sandstoneRock,    steelScrap, needle, dart, spike, spike2, slingStone, slingBullet, needleSleep, paralizingProj, harpoon, harpoon2, harpoon3, net, fragmentationBomb, concussionBomb, flashBomb, firecrackerBomb, flaskEmpty, flaskTemplate, flask1, flask2, flask3, flask4, flask5, flask6, flask7, flask8, flask9, flask10, flask11, flask12, flask13, flask14, flask15, flask16, flask17, potionTemplate, potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8, potion9, potion10, potion11, potion12, potion13, potion14, potion15, scrollTemplate, scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8, scroll9, scroll10, scroll11, scroll12, scroll13, scroll14, scroll15, scrollAd1, rawMeatChunk, roastedMeatChunk, ediblePlantTemplate, ediblePlant1, ediblePlant2, ediblePlant3, ediblePlant4, ediblePlant5, ediblePlant6, ediblePlant7, ediblePlant8, cookedPlantTemplate, cookedPlant1, cookedPlant2, cookedPlant3, cookedPlant4, cookedPlant5, cookedPlant6, cookedPlant7, cookedPlant8, light1, lightDoused1, light2, lightDoused2, light3, blanket, chisel, hacksaw, adjustableSpanner, steelFile, honingSteel, whetstone, diagonalPliers, snips, loppers, boltCutter, solderingIron, duckTape, thickCord, gorget, necklaceTemplate, necklace1, necklace3, necklace4, necklace5, necklace6, necklace7, necklace8, necklace9, necklace10, motionScanner, imageItensifier, sightSharpening, ringTemplate, ring1, ring2, ring3, ring4, ring5, ring6, ring7, ring8, ring9, ring10, armorLeather, armorLeather2, armorMail, meleeEnhancement, spacesuit, spacesuitTorn, gloveFencing, gloveGauntlet, gloveJousting, hatUshanka, capReinforced, helmArmored, heavyBoot, ragTangle, buckler, shield, shield2, shield3, blowtorch, laserSharpener, crowbar, catsPaw, shortClub, longClub, hammerTemplate, hammer1, hammer2, hammer3, hammer4, hammer5, hammerParalyze, hammerSpark, knife, daggerDropBestWeapon, dagger, sword, swordImpress, swordNullify, swordNullifySharp, halberd, oxTongue, halberdPushActor, halberdPushActorSharp, fireAxe, pollaxe, militaryKnife, militaryBaton, cattleProd, grassStitcher, ladiesFork, hoe, spade, treePruner, cleaningPole, staff, pipe, longPole, gemTemplate, gem1, gem2, gem3, gem4, gem5, currencyTemplate, currency, jumpingPole, constructionHooter, wasteContainer, spotlight, seeingItem :: ItemKind
 
 -- Keep the dice rolls and sides in aspects small so that not too many
 -- distinct items are generated (for display in item lore and for narrative
@@ -1174,7 +1172,7 @@ torchDestruct =
   OnUser $ OneOf $
     DestroyItem 1 1 CEqp S_WOODEN_TORCH
     `AndEffect`
-    CreateItem Nothing CStash S_RAG_TANGLE timerNone  -- staff broken
+    CreateItem Nothing CStash CLOTH_RAG timerNone  -- staff broken
     : DestroyItem 1 1 CEqp S_WOODEN_TORCH
       `AndEffect`
       CreateItem Nothing CStash S_DOUSED_WOODEN_TORCH timerNone
@@ -1258,9 +1256,9 @@ light3 = ItemKind
 blanket = ItemKind
   { isymbol  = symbolLight
   , iname    = "mineral fibre blanket"
-  , ifreq    = [ (COMMON_ITEM, 20), (LIGHT_ATTENUATOR, 20), (BLANKET, 1)
-               , (THICK_CLOTH, 1), (FIREPROOF_CLOTH, 1)
-               , (FIRE_FIGHTING_ITEM, 60), (SHARPENING_TOOL, 1) ]
+  , ifreq    = [ (COMMON_ITEM, 20), (LIGHT_ATTENUATOR, 20), (THICK_CLOTH, 1)
+               , (FIREPROOF_CLOTH, 1), (FIRE_FIGHTING_ITEM, 60)
+               , (SHARPENING_TOOL, 1) ]
   , iflavour = zipPlain [Magenta]
   , icount   = 1
   , irarity  = [(1, 1)]  -- scavenged from walls
@@ -1352,7 +1350,7 @@ boltCutter = diagonalPliers
   }
 solderingIron = chisel
   { iname    = "soldering iron"
-  , ifreq    = [(CRAWL_ITEM, 15), (BONDING_TOOL, 30)]
+  , ifreq    = [(CRAWL_ITEM, 6), (BONDING_TOOL, 20)]
   , iflavour = zipPlain [White]
   , iverbHit = "soldier"
   , idesc    = "It is a bonding tool."  -- TODO: wikipedia
@@ -1360,10 +1358,18 @@ solderingIron = chisel
   }
 duckTape = solderingIron
   { iname    = "duck tape"
-  , ifreq    = [(CRAWL_ITEM, 9), (BONDING_TOOL, 70)]
+  , ifreq    = [(CRAWL_ITEM, 3), (BONDING_TOOL, 50)]
   , icount   = 1 `d` 4
   , iverbHit = "catch"
   , idesc    = "It is a bonding tool."  -- TODO: https://en.wikipedia.org/wiki/Duct_tape
+  }
+thickCord = solderingIron
+  { iname    = "thick cord"
+  , ifreq    = [ (CRAWL_ITEM, 6), (BONDING_TOOL, 20)
+               , (CLOTH_RAG, 1), (THICK_CLOTH, 1) ]
+  , iverbHit = "tie"
+  , idesc    = "It is a bonding tool and it soaks fluids."  -- TODO
+  , ikit     = []
   }
 
 -- ** Periodic jewelry
@@ -1825,7 +1831,7 @@ hatUshanka = ItemKind
   { isymbol  = symbolMiscArmor
   , iname    = "ushanka hat"
   , ifreq    = [ (COMMON_ITEM, 100), (ARMOR_MISC, 1), (CLOTHING_MISC, 1)
-               , (THICK_CLOTH, 1), (STARTING_ARMOR, 50) ]
+               , (STARTING_ARMOR, 50) ]
   , iflavour = zipPlain [Brown]
   , icount   = 1
   , irarity  = [(3, 7), (10, 4)]
@@ -1838,7 +1844,7 @@ hatUshanka = ItemKind
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- flaps and flutters
   , ieffects = [RefillCalm 1]
-  , idesc    = "Soft and warm fur. It keeps your ears warm. Unless you tear it into pieces to use as a wick of your makeshift oil lamp, for example."
+  , idesc    = "Soft and warm fur. It keeps your ears warm."
   , ikit     = []
   }
 capReinforced = ItemKind
@@ -1910,7 +1916,7 @@ heavyBoot = ItemKind
 ragTangle = sandstoneRock
   { isymbol  = symbolClothes
   , iname    = "tangle"
-  , ifreq    = [ (COMMON_ITEM, 10), (S_RAG_TANGLE, 1), (THICK_CLOTH, 1)
+  , ifreq    = [ (COMMON_ITEM, 10), (CLOTH_RAG, 1), (THICK_CLOTH, 1)
                , (UNREPORTED_INVENTORY, 1) ]
   , iflavour = zipPlain [Brown]
   , icount   = 1
@@ -1921,7 +1927,7 @@ ragTangle = sandstoneRock
   , iaspects = [ ELabel "of rags"
                , SetFlag Fragile, AddSkill SkArmorMelee 2
                , SetFlag Equipable, EqpSlot EqpSlotArmorMelee ]
-  , idesc    = "Fashionable, sometimes, and useful for survival crafting, always."
+  , idesc    = "Fashionable --- sometimes. Useful for survival crafting, for example as a wick of a makeshift oil lamp --- always."
   }
 -- Shield doesn't protect against ranged attacks to prevent
 -- micromanagement: walking with shield, melee without.
