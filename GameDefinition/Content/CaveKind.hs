@@ -104,7 +104,7 @@ rogue = CaveKind
   , chidden       = 7
   , cactorCoeff   = 50  -- the maze requires time to explore
   , cactorFreq    = [(MONSTER, 50), (ANIMAL, 20), (ROBOT, 30)]
-  , citemNum      = 10 `d` 4 + 25 - 25 `dL` 1  -- at depth quality over quantity
+  , citemNum      = 17 `d` 2 + 25 - 25 `dL` 1  -- at depth quality over quantity
   , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.CRAWL_ITEM, 40)
     -- CRAWL_ITEM items are used only in long scenarios, such as multi-level
     -- dungeon crawl; these may be powerful or a mundate item,
@@ -172,7 +172,7 @@ arena = rogue
   , cactorCoeff   = 40  -- smallish level, but easy to view and plan
   , cactorFreq    = [ (MONSTER, 50), (ANIMAL, 70), (ROBOT, 5)
                     , (IK.AQUATIC, 10) ]
-  , citemNum      = 10 `d` 3
+  , citemNum      = 14 `d` 2
   , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 20)
                     , (IK.TREASURE, 40)
                     , (GARDENING_TOOL, 200)  -- useless and boring by this point
@@ -201,7 +201,7 @@ casino = arena
   , cnightOdds    = 51  -- always night
   , cactorCoeff   = 70  -- cramped, don't overcrowd
   , cactorFreq    = [(MONSTER, 50), (ANIMAL, 25), (ROBOT, 50)]
-  , citemNum      = 8 `d` 4  -- rare, so make it exciting, by keeping many items
+  , citemNum      = 14 `d` 2  -- rare, so make it exciting by keeping many items
   , citemFreq     = [ (IK.COMMON_ITEM, 20)
                     , (IK.CRAWL_ITEM, 40)  -- slight spice
                     , (IK.TREASURE, 80) ]  -- lives up to its name
@@ -224,7 +224,7 @@ museum = arena
   , cnightOdds    = 51  -- always night
   , cactorCoeff   = 70  -- cramped, don't overcrowd
   , cactorFreq    = [(MONSTER, 100), (ANIMAL, 25), (ROBOT, 25)]
-  , citemNum      = 9 `d` 4  -- rare, so make it exciting
+  , citemNum      = 16 `d` 2  -- rare, so make it exciting
   , citemFreq     = [ (IK.COMMON_ITEM, 20)
                     , (IK.CRAWL_ITEM, 20)
                     , (IK.TREASURE, 20)
@@ -254,7 +254,7 @@ laboratory = rogue
   , copenChance   = 1%2
   , cactorFreq    = [ (MONSTER, 50), (ANIMAL, 70), (ROBOT, 5)
                     , (IK.AQUATIC, 10) ]
-  , citemNum      = 10 `d` 4  -- reward difficulty
+  , citemNum      = 17 `d` 2  -- reward difficulty, despite fewer rooms
   , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 40)
                     , (IK.TREASURE, 40), (IK.EXPLOSIVE, 80) ]
   , cplaceFreq    = [(LABORATORY, 1)]
@@ -292,7 +292,7 @@ noise = rogue
   , chidden       = 0
   , cactorCoeff   = 70  -- the maze requires time to explore; also, small
   , cactorFreq    = [(MONSTER, 100), (ANIMAL, 5), (ROBOT, 25)]
-  , citemNum      = 9 `d` 4  -- an incentive to explore the labyrinth
+  , citemNum      = 16 `d` 2  -- an incentive to explore the labyrinth
   , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.CRAWL_ITEM, 40)
                     , (IK.TREASURE, 40), (IK.ANY_SCROLL, 200) ]
   , cplaceFreq    = [(NOISE, 1)]
@@ -320,7 +320,7 @@ power = noise
   , cminPlaceSize = DiceXY 7 7
   , cmaxPlaceSize = DiceXY 20 20
   , cnightOdds    = 51  -- easier variant, but looks sinister
-  , citemNum      = 10 `d` 4  -- an incentive to explore the final labyrinth
+  , citemNum      = 17 `d` 2  -- an incentive to explore the final labyrinth
   , citemFreq     = [(IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 20), (GEM, 80)]
                       -- can't be "valuable" or template items generated
   , cdefTile      = POWER_SET_DARK
@@ -351,7 +351,7 @@ empty = rogue
   , chidden       = 0
   , cactorCoeff   = 40  -- easy to view and plan
   , cactorFreq    = [(MONSTER, 10), (ANIMAL, 5), (ROBOT, 85)]
-  , citemNum      = 13 `d` 3  -- lots of free space, but extra loot present
+  , citemNum      = 17 `d` 2  -- lots of free space, but extra loot present
   , cplaceFreq    = [(EMPTY, 1)]
   , cpassable     = True
   , cdefTile      = EMPTY_SET_LIT
@@ -403,7 +403,7 @@ outermost = empty
       -- abused, because they spawn less and less often and also HP doesn't
       -- effectively accumulate over max.
   , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.CRAWL_ITEM, 60)
-                    , (GARDENING_TOOL, 800) ]
+                    , (GARDENING_TOOL, 700) ]
   , cfenceTileN   = ORIELS_FENCE
   , cfenceTileE   = HABITAT_CONTAINMENT_WALL
   , cfenceTileS   = EMPTY_AIRLOCK_FENCE
@@ -426,7 +426,7 @@ bridge = rogue
   , cactorCoeff   = 300  -- it's quite deep already, so spawn slowly;
                          -- this is initially the best level for sleeping
   , cactorFreq    = [(ANIMAL, 100)]
-  , citemNum      = 8 `d` 3  -- lure them in with loot
+  , citemNum      = 10 `d` 2  -- lure them in with loot
   , citemFreq     = [(IK.COMMON_ITEM, 100), (GARDENING_TOOL, 800)]
   , cdefTile      = FILLER_WALL
   , cfenceTileN   = HABITAT_CONTAINMENT_WALL  -- cave isolated for safety
@@ -449,15 +449,18 @@ shallowRogue = rogue
   , cYminSize     = 37
   , cactorCoeff   = 120  -- more difficult
   , cactorFreq    = filter ((/= MONSTER) . fst) $ cactorFreq rogue
-  , citemNum      = 10 `d` 3
+  , citemNum      = 14 `d` 2
   , citemFreq     = [ (IK.COMMON_ITEM, 30), (IK.CRAWL_ITEM, 70)
-                    , (GARDENING_TOOL, 800), (IK.ANY_FLASK, 200) ]
+                    , (GARDENING_TOOL, 700), (IK.ANY_FLASK, 200) ]
   , cmaxStairsNum = 2
   , cdesc         = "This close to the outermost deck, residence is not permitted and walls and doors are sturdier, to contain a theoretically possible micro-meteorite breach. The entry is not closed off, though, because some passengers can't live without a regular pilgrimage to 'look outside'. Apparently, gazing at the sharp pin-points of stars and planets through the reinforced oriel glass is incomparable to watching the same through the thin polymer of wall displays.\nAnimals appear to share the fascination of outer decks, perhaps attracted by the increased gravity, nearly Earth-like, unlike elsewhere on the ship. However, they dislike many industrial fluids stored on this floor, so flinging random flasks works as a deterrent. Moreover, if you throw an unidentified flask, you can be sure you won't waste a badly needed nano medicine, because it's never stored in such large containers but in tiny vials."
   }
 
 -- * "Caves" on various celestial bodies (including, but not limited to, moons,
---   with virtually no story-wise limits wrt height and size
+--    with virtually no story-wise limits wrt height and size.
+--    Here @citemNum@ is very random, for interesting replays; no risk
+--    of bad rolls accumulating and trashing a long game, particularly
+--    in symmetric senarios, where both parties can use extra loot equally well.
 
 raid = rogue
   { csymbol       = 'S'
