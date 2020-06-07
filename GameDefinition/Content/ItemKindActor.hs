@@ -1123,7 +1123,7 @@ weldedRobot = ItemKind
                , (S_ROBOT_BRAIN, COrgan)
                , (S_CRUDE_WELD, COrgan)
                , (BLOWTORCH, CEqp)
-               , (S_PERFUME_POTION, CStash), (BONDING_TOOL, CStash) ]
+               , (S_PERFUME_POTION, CStash), (WIRECUTTING_TOOL, CStash) ]
                    -- establish stash to ensure heroes pick up blowtorch ASAP
   }
 cleanerRobot = ItemKind
