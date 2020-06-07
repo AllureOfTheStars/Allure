@@ -1056,7 +1056,7 @@ workshopAssocs =
     , [(1, S_SPACESUIT)] )
   -- Recipes that destroy more useful things than other recipes come last.
   , ( [(1, WIRECUTTING_TOOL)], [(1, S_SPACESUIT_TORN)]
-    , [(2, SPACESUIT_PART), (1, CLOTH_RAG)] )
+    , [(1, SPACESUIT_PART), (1, SPACESUIT_PART), (1, CLOTH_RAG)] )
   , ( [(1, PERFUME)], [(1, WATER_SOURCE), (5, S_EMPTY_FLASK)]
     , [(6, S_ROSE_WATER_FLASK)] )  -- the extra container is from water source
   , ([], [(3, WASTE_CONTAINER)], [(1, S_REFRIGERATION_COIL)])
