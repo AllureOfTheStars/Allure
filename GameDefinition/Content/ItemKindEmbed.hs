@@ -306,7 +306,7 @@ signageMerchandise = signageExit
   }
 fireSmall = ItemKind
   { isymbol  = 'o'
-  , iname    = "small fire"
+  , iname    = "tiny fire"
   , ifreq    = [(SMALL_FIRE, 1), (FIRE_SOURCE, 1)]
   , iflavour = zipPlain [BrRed]
   , icount   = 1
@@ -321,8 +321,8 @@ fireSmall = ItemKind
   , ikit     = []
   }
 fireSmall5 = fireSmall
-  { ifreq    = [(SMALL_FIRE_5, 1), (FIRE_SOURCE, 1)]
-  , icount   = 5  -- whenever a lot of mass to burn, e.g., bush, oil
+  { iname    = "small fire"  -- whenever a lot of mass to burn, e.g., bush, oil
+  , ifreq    = [(SMALL_FIRE_5, 1), (FIRE_SOURCE, 1)]
   , ieffects = [ Burn 1, Explode S_SINGLE_SPARK
                , OnCombine roastEffect5 ]
   }
