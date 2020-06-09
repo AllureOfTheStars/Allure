@@ -1681,7 +1681,7 @@ armorLeather = ItemKind
   , iweight  = 7000
   , idamage  = 0
   , iaspects = [ AddSkill SkHurtMelee (-2)
-               , AddSkill SkArmorMelee $ (2 + 1 `dL` 3) * 5
+               , AddSkill SkArmorMelee $ (2 + 1 `dL` 2) * 5
                , AddSkill SkArmorRanged $ (1 + 1 `dL` 2) * 3
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotArmorMelee ]
@@ -1707,9 +1707,9 @@ armorMail = armorLeather
   , irarity  = [(6, 9), (10, 3)]
   , iweight  = 12000
   , idamage  = 0
-  , iaspects = [ AddSkill SkHurtMelee (-3)
-               , AddSkill SkArmorMelee $ (2 + 1 `dL` 3) * 5
-               , AddSkill SkArmorRanged $ (4 + 1 `dL` 2) * 3
+  , iaspects = [ AddSkill SkHurtMelee (-5)
+               , AddSkill SkArmorMelee $ (2 + 1 `dL` 2) * 5
+               , AddSkill SkArmorRanged $ (3 + 1 `dL` 3) * 3
                , AddSkill SkOdor 2
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotArmorRanged ]
@@ -1747,9 +1747,10 @@ spacesuit = ItemKind
   , iaspects = [ AddSkill SkHurtMelee (-30)  -- restricted movement
                , AddSkill SkSight (-1)
                , AddSkill SkHearing (-10), AddSkill SkSmell (-10)  -- worse now
-               , AddSkill SkArmorMelee $ (2 + 2 `dL` 3) * 20
-               , AddSkill SkArmorRanged $ (1 + 1 `dL` 2) * 12
-                   -- both armors are the sum from the set
+               , AddSkill SkArmorMelee $ (8 + 1 `dL` 2) * 10  -- ~ 95
+               , AddSkill SkArmorRanged $ (1 `dL` 3) * 12  -- ~ 25.5
+                   -- both armors are sums of the full set, averaged;
+                   -- the main advantage is taking only one slot
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotArmorMelee ]
   , ieffects = []
@@ -1765,7 +1766,7 @@ spacesuitTorn = spacesuit
   , iweight  = 10000
   , iaspects = [ AddSkill SkHurtMelee (-30)
                , AddSkill SkSight (-1)  -- obstructed despite the tears
-               , AddSkill SkArmorMelee $ (1 `d` 3) * 10  -- shallow, no `dL`
+               , AddSkill SkArmorMelee $ (1 + 1 `d` 3) * 10  -- shallow, no `dL`
                , AddSkill SkArmorRanged $ (1 `d` 2) * 6
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotArmorMelee ]
