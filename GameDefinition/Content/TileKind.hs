@@ -742,8 +742,8 @@ bushBurning = TileKind
   , tcolor2  = Red
   , talter   = 5
   , tfeature = [ Clear
-               , OpenWith ProjYes [(3, WATER_SOURCE)] S_SMOKE_LIT
                , Embed SMALL_FIRE_5
+               , OpenWith ProjYes [(3, WATER_SOURCE)] S_SMOKE_LIT
                , ChangeWith ProjNo [(1, FIREPROOF_CLOTH)] S_BUSH_LIT
                    -- full effects experienced, but bush saved for repeat
                , OpenTo BUSH_BURNING_OR_NOT ]
@@ -873,8 +873,9 @@ shallowWater = TileKind
   , tfeature = ChangeWith ProjYes [(1, COLD_SOURCE)] S_FROZEN_PATH
                : ChangeWith ProjYes [(1, OIL_SOURCE)] S_OIL_SPILL  -- oil floats
                    -- the transformations go first, because marginal, that is,
-                   -- should not case a warning that bumping was not enogh;
-                   -- similarly elsewhere, where With goes before Embed
+                   -- should not cause a warning that bumping was not enogh;
+                   -- similarly elsewhere, where With goes before Embed;
+                   -- also, no cold nor oil sources are crafted with in water
                : Embed SHALLOW_WATER
                : tfeature floorActor
       -- can't make fog from water, because air would need to be cool, too;
@@ -1310,8 +1311,8 @@ underbrushBurning = TileKind  -- always lit
   , tcolor2  = Red
   , talter   = 0
   , tfeature = [ Walkable, NoItem, NoActor  -- not clear, due to smoke
-               , ChangeWith ProjYes [(1, WATER_SOURCE)] S_SMOKE_LIT
                , Embed SMALL_FIRE  -- little mass, so one fire only
+               , ChangeWith ProjYes [(1, WATER_SOURCE)] S_SMOKE_LIT
                , ChangeWith ProjNo [(1, FIREPROOF_CLOTH)] S_UNDERBRUSH_LIT
                    -- underbrush saved for repeat
                , ChangeTo S_FLOOR_ASHES_LIT ]  -- not enough matter for smoke
