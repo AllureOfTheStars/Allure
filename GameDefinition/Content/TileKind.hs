@@ -1111,8 +1111,8 @@ stairsWelded = stairsUp
   , talter   = talterForStairs + 3  -- gear or level up needed
   , tfeature = [ Embed S_CRUDE_WELD
                    -- the embed goes first, because the embed is marginal here
-               , ChangeWith ProjNo [(1, BLOWTORCH)] ORDINARY_STAIRCASE_UP
                , ChangeWith ProjNo [(1, COLD_SOURCE)] ORDINARY_STAIRCASE_UP
+               , ChangeWith ProjNo [(1, BLOWTORCH)] ORDINARY_STAIRCASE_UP
                , ConsideredByAI ]
   }
 stairsLiftUp = stairsUp  -- fireproof
@@ -1152,8 +1152,8 @@ stairsLiftWelded = stairsLiftUp
   , talter   = talterForStairs + 3  -- gear or level up needed
   , tfeature = [ Embed S_CRUDE_WELD
                    -- the embed goes first, because marginal
-               , ChangeWith ProjNo [(1, BLOWTORCH)] ORDINARY_LIFT_UP
                , ChangeWith ProjNo [(1, COLD_SOURCE)] ORDINARY_LIFT_UP
+               , ChangeWith ProjNo [(1, BLOWTORCH)] ORDINARY_LIFT_UP
                , ConsideredByAI ]
   }
 stairsDecontaminatingDown = stairsDown
