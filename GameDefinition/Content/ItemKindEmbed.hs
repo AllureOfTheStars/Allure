@@ -1003,6 +1003,7 @@ extraRoastAssocs :: [( [(Int, GroupName ItemKind)]
 extraRoastAssocs =
   [ ([], [(1, S_DOUSED_WOODEN_TORCH)], [(1, S_WOODEN_TORCH)])
   , ([], [(1, S_DOUSED_OIL_LAMP)], [(1, S_OIL_LAMP)])
+  , ([], [(1, WASTE_CONTAINER)], [(1, S_REFRIGERATION_COIL)])
   ]
 
 sharpeningAssocs :: [( [(Int, GroupName ItemKind)]
@@ -1059,7 +1060,6 @@ workshopAssocs =
     , [(1, SPACESUIT_PART), (1, SPACESUIT_PART), (1, CLOTH_RAG)] )
   , ( [(1, PERFUME)], [(1, WATER_SOURCE), (5, S_EMPTY_FLASK)]
     , [(6, S_ROSE_WATER_FLASK)] )  -- the extra container is from water source
-  , ([], [(3, WASTE_CONTAINER)], [(1, S_REFRIGERATION_COIL)])
   , ( [(1, BREACHING_TOOL)], [(1, POLE_AND_STEEL)]  -- harder to dismantle
     , [(1, POLE), (1, STEEL_SCRAP)] )
   , ([], [(1, HANDLE_AND_STEEL)], [(1, HANDLE), (1, STEEL_SCRAP)])
