@@ -477,7 +477,7 @@ signboardUnread = TileKind  -- client only, indicates never used by this faction
 signboardRead = TileKind
   { tsymbol  = '0'
   , tname    = "signboard"
-  , tfreq    = [ (SIGNBOARD, 80), (EMPTY_SET_LIT, 3)
+  , tfreq    = [ (SIGNBOARD, 80), (EMPTY_SET_LIT, 4)
                , (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 2), (MUSEUM_SET_DARK, 1)
                , (ESCAPE_SET_DARK, 1) ]
   , tcolor   = BrCyan
@@ -759,7 +759,7 @@ fog = TileKind  -- always lit
   , tfreq    = [ (S_FOG_LIT, 1), (EMPTY_SET_LIT, 200), (NOISE_SET_LIT, 120)
                , (SHOOTOUT_SET_LIT, 30), (HUNT_SET_LIT, 30)
                , (FOG_CLUMP_LIT, 60), (FOG_CLUMP_DARK, 60)
-               , (LIFT_TERMINAL_LIT, 40) ]
+               , (LIFT_TERMINAL_LIT, 20) ]
       -- lit fog is OK for shootout, because LOS is mutual, as opposed
       -- to dark fog, and so camper has little advantage, especially
       -- on big maps, where he doesn't know on which side of fog patch to hide
@@ -992,10 +992,11 @@ wallObscuredSafety = TileKind
 signboardReadExtinguisher = TileKind
   { tsymbol  = '0'
   , tname    = "fire extinguisher cabinet"
-  , tfreq    = [ (SIGNBOARD, 20), (EMPTY_SET_LIT, 3)
-               , (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 2), (MUSEUM_SET_DARK, 1)
-               , (ESCAPE_SET_DARK, 1), (EXIT_SET_LIT, 1), (NOISE_SET_LIT, 1)
-               , (AMBUSH_SET_DARK, 1) ]
+  , tfreq    = [ (SIGNBOARD, 20)
+               , (LIFT_TERMINAL_LIT, 10), (LIFT_TERMINAL_DARK, 10)
+               , (EMPTY_SET_LIT, 7), (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 2)
+               , (MUSEUM_SET_DARK, 1), (EXIT_SET_LIT, 1), (NOISE_SET_LIT, 1)
+               , (ESCAPE_SET_DARK, 1), (AMBUSH_SET_DARK, 1) ]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 5

@@ -1257,7 +1257,7 @@ blanket = ItemKind
   { isymbol  = symbolLight
   , iname    = "mineral fibre blanket"
   , ifreq    = [ (COMMON_ITEM, 20), (LIGHT_ATTENUATOR, 20), (THICK_CLOTH, 1)
-               , (FIREPROOF_CLOTH, 1), (FIRE_FIGHTING_ITEM, 60)
+               , (FIREPROOF_CLOTH, 1), (FIRE_FIGHTING_ITEM, 100)
                , (SHARPENING_TOOL, 1) ]
   , iflavour = zipPlain [Magenta]
   , icount   = 1
