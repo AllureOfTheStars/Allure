@@ -698,9 +698,9 @@ potion1 = potionTemplate
                , OnSmash ApplyPerfume, OnSmash (Explode S_FRAGRANCE) ]
   }
 potion2 = potionTemplate
-  { ifreq    = [(CRAWL_ITEM, 50), (ANY_GLASS, 50)]
+  { ifreq    = [(CRAWL_ITEM, 100), (ANY_GLASS, 50)]
   , icount   = 1
-  , irarity  = [(5, 4), (10, 2)]
+  , irarity  = [(5, 6), (10, 2)]
   , iaspects = [ SetFlag Unique, ELabel "of Attraction"
                , SetFlag Precious, SetFlag Lobable, SetFlag Fragile
                , toVelocity 50 ]  -- identified
@@ -766,9 +766,9 @@ potion7 = potionTemplate
                                 , Explode S_VIOLENT_FLASH ]) ]
   }
 potion8 = potionTemplate
-  { ifreq    = [(CRAWL_ITEM, 50), (ANY_GLASS, 50)]
+  { ifreq    = [(CRAWL_ITEM, 100), (ANY_GLASS, 50)]
   , icount   = 1
-  , irarity  = [(10, 3)]
+  , irarity  = [(10, 5)]
   , iaspects = [ SetFlag Unique, ELabel "of Love"
                , SetFlag Precious, SetFlag Lobable, SetFlag Fragile
                , toVelocity 50 ]  -- identified
@@ -883,9 +883,9 @@ scrollTemplate = ItemKind
   , ikit     = []
   }
 scroll1 = scrollTemplate
-  { ifreq    = [(CRAWL_ITEM, 75), (ANY_SCROLL, 75)]
+  { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 75)]
   , icount   = 1
-  , irarity  = [(5, 7), (10, 7)]  -- mixed blessing, so found early for a unique
+  , irarity  = [(5, 10), (10, 7)]  -- mixed blessing so found early for a unique
   , iaspects = [SetFlag Unique, ELabel "of Reckless Beacon"]
                ++ iaspects scrollTemplate
   , ieffects = [Summon HERO 1, Summon MOBILE_ANIMAL (2 + 1 `d` 2)]
@@ -893,7 +893,7 @@ scroll1 = scrollTemplate
   }
 scroll2 = scrollTemplate
   { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(1, 7)]
+  , irarity  = [(3, 7)]
   , ieffects = [Ascend True]
   }
 scroll3 = scrollTemplate
@@ -927,7 +927,7 @@ scroll6 = scrollTemplate
   , ieffects = [PushActor (ThrowMod 400 100 1)]  -- 4 steps, 2 turns
   }
 scroll7 = scrollTemplate
-  { ifreq    = [(CRAWL_ITEM, 75), (ANY_SCROLL, 75)]
+  { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 75)]
   , icount   = 1
   , irarity  = [(10, 5)]
   , iaspects = [SetFlag Unique, ELabel "of Skeleton Key"]
@@ -1282,10 +1282,10 @@ blanket = ItemKind
 chisel = ItemKind  -- ignored by AI, but that's fine, others suffice
   { isymbol  = symbolTool
   , iname    = "chisel"
-  , ifreq    = [(CRAWL_ITEM, 20), (BREACHING_TOOL, 1)]
+  , ifreq    = [(CRAWL_ITEM, 10), (BREACHING_TOOL, 1)]
   , iflavour = zipPlain [Cyan]
   , icount   = 1
-  , irarity  = [(1, 60)]
+  , irarity  = [(1, 100)]
   , iverbHit = "dismantle"
   , iweight  = 500
   , idamage  = 0  -- not a missile to avoid wasting, before a worskhop found
@@ -1293,7 +1293,7 @@ chisel = ItemKind  -- ignored by AI, but that's fine, others suffice
   , ieffects = []
   , idesc    = "It is a breaching tool."  -- TODO: https://en.wikipedia.org/wiki/Chisel
                    -- also say light and cheap, but not durable; one time use
-  , ikit     = [(WIRECUTTING_TOOL, CGround)]
+  , ikit     = [(SHARPENING_TOOL, CGround), (WIRECUTTING_TOOL, CGround)]
   }
 hacksaw = chisel
   { iname    = "hacksaw"
@@ -1302,14 +1302,16 @@ hacksaw = chisel
 adjustableSpanner = chisel
   { iname    = "adjustable spanner"
   , idesc    = "It is a breaching tool."  -- TODO: https://en.wikipedia.org/wiki/Adjustable_spanner
+  , ikit     = [ (SHARPENING_TOOL, CGround), (WIRECUTTING_TOOL, CGround)
+               , (BONDING_TOOL, CGround) ]
   }
 steelFile = chisel
   { iname    = "steel file"
-  , ifreq    = [(CRAWL_ITEM, 10), (BREACHING_TOOL, 1), (SHARPENING_TOOL, 1)]
-  , irarity  = [(1, 90)]
+  , ifreq    = [(CRAWL_ITEM, 20), (BREACHING_TOOL, 1), (SHARPENING_TOOL, 1)]
   , iflavour = zipPlain [Red]  -- double purpose, saves one tool sometimes
   , iverbHit = "grate"
   , idesc    = "It is a breaching and sharpening tool."  -- TODO: https://en.wikipedia.org/wiki/File_(tool)
+  , ikit     = []
   }
 honingSteel = chisel
   { iname    = "honing steel"
@@ -1317,7 +1319,7 @@ honingSteel = chisel
   , iflavour = zipFancy [Blue]
   , iverbHit = "hone"
   , idesc    = "Originally used for realigning and sharpening dulled edges of kitchen knives in the local restaurants. Now it turns utensils into weapons."
-  , ikit     = []
+  , ikit     = [(WIRECUTTING_TOOL, CGround), (BONDING_TOOL, CGround)]
   }
 whetstone = honingSteel
   { iname    = "whetstone"
@@ -1331,7 +1333,7 @@ diagonalPliers = chisel
   , iverbHit = "cut"
   , iaspects = [ELabel "of diagonal pliers"]
   , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Diagonal_pliers
-  , ikit     = [(SHARPENING_TOOL, CGround), (BONDING_TOOL, CGround)]
+  , ikit     = [(BREACHING_TOOL, CGround)]
   }
 snips = diagonalPliers
   { iname    = "pair"
@@ -1342,15 +1344,16 @@ loppers = diagonalPliers
   { iname    = "pair"
   , iaspects = [ELabel "of loppers"]
   , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Loppers
+  , ikit     = [(BREACHING_TOOL, CGround), (SHARPENING_TOOL, CGround)]
   }
-boltCutter = diagonalPliers
+boltCutter = loppers
   { iname    = "bolt cutter"
   , iaspects = []
   , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Bolt_cutter
   }
 solderingIron = chisel
   { iname    = "soldering iron"
-  , ifreq    = [(CRAWL_ITEM, 6), (BONDING_TOOL, 20)]
+  , ifreq    = [(CRAWL_ITEM, 5), (BONDING_TOOL, 20)]
   , iflavour = zipPlain [White]
   , iverbHit = "soldier"
   , idesc    = "It is a bonding tool."  -- TODO: wikipedia
@@ -1365,11 +1368,10 @@ duckTape = solderingIron
   }
 thickCord = solderingIron
   { iname    = "thick cord"
-  , ifreq    = [ (CRAWL_ITEM, 6), (BONDING_TOOL, 20)
+  , ifreq    = [ (CRAWL_ITEM, 5), (BONDING_TOOL, 20)
                , (CLOTH_RAG, 1), (THICK_CLOTH, 1) ]
   , iverbHit = "tie"
   , idesc    = "It is a bonding tool and it soaks fluids."  -- TODO
-  , ikit     = []
   }
 
 -- ** Periodic jewelry
@@ -1421,7 +1423,7 @@ necklaceTemplate = ItemKind
   , ikit     = []
   }
 necklace1 = necklaceTemplate
-  { ifreq    = [(CRAWL_ITEM, 25), (ANY_JEWELRY, 25)]
+  { ifreq    = [(CRAWL_ITEM, 50), (ANY_JEWELRY, 25)]
   , irarity  = [(3 * 10/15, 0), (4 * 10/15, 1), (10, 5)]
                  -- prevents camping on lvl 3
   , iaspects = [ SetFlag Unique, ELabel "of Spur Life"
@@ -1478,7 +1480,7 @@ necklace7 = necklaceTemplate
                   -- the @50@ is only for the case of very light actor, etc.
   }
 necklace8 = necklaceTemplate
-  { ifreq    = [(CRAWL_ITEM, 10), (ANY_JEWELRY, 50)]
+  { ifreq    = [(CRAWL_ITEM, 50), (ANY_JEWELRY, 50)]
   , irarity  = [(10, 5)]  -- powerful and determines tactics for one actor
   , iaspects = [ SetFlag Unique, ELabel "of Overdrive"
                , Timeout 10
@@ -1599,8 +1601,8 @@ ring2 = ringTemplate
                ++ iaspects ringTemplate
   }
 ring3 = ringTemplate
-  { ifreq    = [(CRAWL_ITEM, 10), (ANY_JEWELRY, 20)]
-  , irarity  = [(10, 10)]
+  { ifreq    = [(CRAWL_ITEM, 50), (ANY_JEWELRY, 20)]
+  , irarity  = [(10, 7)]
   , iaspects = [ SetFlag Unique, ELabel "of Rush"
                , AddSkill SkSpeed $ (1 + 1 `dL` 2) * 2
                , AddSkill SkMaxHP (-20)
@@ -1763,7 +1765,7 @@ spacesuitTorn = spacesuit
   { iname    = "torn spacesuit"
   , ifreq    = [(CRAWL_ITEM, 100), (S_SPACESUIT_TORN, 1)]
   , icount   = 1 `d` 3
-  , irarity  = [(1, 13)]
+  , irarity  = [(1, 15)]
   , iverbHit = "entangle"
   , iweight  = 10000
   , iaspects = [ AddSkill SkHurtMelee (-30)
@@ -2036,7 +2038,7 @@ blowtorch = ItemKind
 laserSharpener = ItemKind
   { isymbol  = symbolTool
   , iname    = "laser sharpener"
-  , ifreq    = [(CRAWL_ITEM, 25), (SHARPENING_TOOL, 1)]
+  , ifreq    = [(CRAWL_ITEM, 50), (SHARPENING_TOOL, 1)]
   , iflavour = zipFancy [BrBlue]
   , icount   = 1
   , irarity  = [(5, 25)]  -- comes bundled with other tools
@@ -2347,7 +2349,7 @@ oxTongue = halberd  -- long pole, because glued 1m handle worse than nothing
   }
 halberdPushActor = halberd
   { iname    = "Blunt Swiss Halberd"
-  , ifreq    = [(CRAWL_ITEM, 20), (S_HALBERD_BLUNT, 1)]
+  , ifreq    = [(CRAWL_ITEM, 30), (S_HALBERD_BLUNT, 1)]
                  -- not in a museum; reenactors' gear
   , irarity  = [(7, 0), (9, 8)]
   , iaspects = [SetFlag Unique]

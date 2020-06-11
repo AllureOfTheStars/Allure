@@ -105,7 +105,7 @@ rogue = CaveKind
   , cactorCoeff   = 50  -- the maze requires time to explore
   , cactorFreq    = [(MONSTER, 50), (ANIMAL, 20), (ROBOT, 30)]
   , citemNum      = 17 `d` 2 + 25 - 25 `dL` 1  -- at depth quality over quantity
-  , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.CRAWL_ITEM, 40)
+  , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.CRAWL_ITEM, 20)
     -- CRAWL_ITEM items are used only in long scenarios, such as multi-level
     -- dungeon crawl; these may be powerful or a mundate item,
     -- unlike @TREASURE@ items
@@ -173,7 +173,7 @@ arena = rogue
   , cactorFreq    = [ (MONSTER, 50), (ANIMAL, 70), (ROBOT, 5)
                     , (IK.AQUATIC, 10) ]
   , citemNum      = 14 `d` 2
-  , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 20)
+  , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 10)
                     , (IK.TREASURE, 40)
                     , (GARDENING_TOOL, 200)  -- useless and boring by this point
                     , (IK.ANY_POTION, 100) ]  -- nature
@@ -203,7 +203,7 @@ casino = arena
   , cactorFreq    = [(MONSTER, 50), (ANIMAL, 25), (ROBOT, 50)]
   , citemNum      = 14 `d` 2  -- rare, so make it exciting by keeping many items
   , citemFreq     = [ (IK.COMMON_ITEM, 20)
-                    , (IK.CRAWL_ITEM, 40)  -- slight spice
+                    , (IK.CRAWL_ITEM, 20)  -- slight spice
                     , (IK.TREASURE, 80) ]  -- lives up to its name
   , cdefTile      = ARENA_SET_DARK
   , cfenceTileN   = HABITAT_CONTAINMENT_WALL  -- small cave
@@ -226,7 +226,7 @@ museum = arena
   , cactorFreq    = [(MONSTER, 100), (ANIMAL, 25), (ROBOT, 25)]
   , citemNum      = 16 `d` 2  -- rare, so make it exciting
   , citemFreq     = [ (IK.COMMON_ITEM, 20)
-                    , (IK.CRAWL_ITEM, 20)
+                    , (IK.CRAWL_ITEM, 10)
                     , (IK.TREASURE, 20)
                     , (MUSEAL, 200) ]  -- lives up to its name
   , cplaceFreq    = [(MUSEUM, 1)]
@@ -321,7 +321,7 @@ power = noise
   , cmaxPlaceSize = DiceXY 20 20
   , cnightOdds    = 51  -- easier variant, but looks sinister
   , citemNum      = 17 `d` 2  -- an incentive to explore the final labyrinth
-  , citemFreq     = [(IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 20), (GEM, 80)]
+  , citemFreq     = [(IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 10), (GEM, 80)]
                       -- can't be "valuable" or template items generated
   , cdefTile      = POWER_SET_DARK
   , cdarkCorTile  = OILY_FLOOR_DARK
