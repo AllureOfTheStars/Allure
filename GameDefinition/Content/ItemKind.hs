@@ -1392,6 +1392,7 @@ gorget = necklaceTemplate
                    -- for negative stats, such as @Timeout@, so that
                    -- the @RerollItem@ effect makes the item better, not worse
                , AddSkill SkArmorMelee 3, AddSkill SkArmorRanged 2
+               , AddSkill SkHearing 3
                , SetFlag Durable ]
                ++ iaspects_necklaceTemplate
   , ieffects = [RefillCalm 1]
@@ -1439,7 +1440,7 @@ necklace3 = necklaceTemplate
                , Timeout 40
                    -- has to be larger than Calm drain or item not removable;
                    -- equal is not enough if enemies drained Calm already
-               , AddSkill SkHearing 2 ]
+               , AddSkill SkHearing 6 ]
                ++ iaspects_necklaceTemplate
   , ieffects = [ Detect DetectActor 10  -- can be applied; destroys the item
                , RefillCalm (-30) ]
@@ -1635,6 +1636,7 @@ ring7 = ringTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100), (MUSEAL, 100)]
   , irarity  = [(5, 1), (10, 7)]  -- needed after other items drop Calm
   , iaspects = [ AddSkill SkMaxCalm $ 30 + (1 `dL` 4) * 5
+               , AddSkill SkHearing 6
                , EqpSlot EqpSlotMiscBonus ]
                ++ iaspects ringTemplate
   , idesc    = "Cold, solid to the touch, perfectly round, engraved with solemn, strangely comforting, worn out words."
@@ -1746,7 +1748,7 @@ spacesuit = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkHurtMelee (-30)  -- restricted movement
                , AddSkill SkSight (-1)
-               , AddSkill SkHearing (-10), AddSkill SkSmell (-10)  -- worse now
+               , AddSkill SkHearing (-3), AddSkill SkSmell (-99)
                , AddSkill SkArmorMelee $ (8 + 1 `dL` 2) * 10  -- ~ 95
                , AddSkill SkArmorRanged $ (1 `dL` 3) * 12  -- ~ 25.5
                    -- both armors are sums of the full set, averaged;
@@ -1840,7 +1842,7 @@ hatUshanka = ItemKind
   , iweight  = 500
   , idamage  = 0
   , iaspects = [ Timeout $ (2 + 1 `d` 2) * 3
-               , AddSkill SkArmorMelee 5, AddSkill SkHearing (-10)
+               , AddSkill SkArmorMelee 5, AddSkill SkHearing (-6)
                , SetFlag Periodic, SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- flaps and flutters
@@ -1884,7 +1886,7 @@ helmArmored = ItemKind
                , AddSkill SkArmorMelee $ (1 `dL` 3) * 5
                , AddSkill SkArmorRanged $ (2 + 1 `dL` 2) * 3  -- headshot
                , AddSkill SkSight (-1)
-               , AddSkill SkHearing (-7), AddSkill SkSmell (-5)
+               , AddSkill SkHearing (-3), AddSkill SkSmell (-5)
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorRanged
                , toVelocity 50 ]  -- unwieldy

@@ -159,7 +159,7 @@ tmpKeenSmelling = tmpAspects S_KEEN_SMELLING [AddSkill SkSmell 2]
 tmpFoulSmelling = tmpAspects S_FOUL_SMELLING [AddSkill SkOdor 2]
 tmpRoseSmelling = tmpAspects S_ROSE_SMELLING [AddSkill SkOdor (-4)]
 tmpNoctovision = tmpAspects S_SHINY_EYED [AddSkill SkNocto 2]
-tmpDeafened = tmpAspects S_DEAFENED [AddSkill SkHearing (-10)]
+tmpDeafened = tmpAspects S_DEAFENED [AddSkill SkHearing (-6)]
 tmpDeaf = tmpAspects S_DEAF [ AddSkill SkHearing (-99)
                             , AddSkill SkArmorMelee (-30) ]
 tmpDrunk = tmpAspects S_DRUNK [ AddSkill SkHurtMelee 30  -- fury
