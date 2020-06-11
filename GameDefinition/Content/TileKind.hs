@@ -870,13 +870,13 @@ shallowWater = TileKind
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 2  -- doesn't matter now; TODO: not everything enters
-  , tfeature = ChangeWith ProjYes [(1, COLD_SOURCE)] S_FROZEN_PATH
-               : ChangeWith ProjYes [(1, OIL_SOURCE)] S_OIL_SPILL  -- oil floats
-                   -- the transformations go first, because marginal, that is,
+  , tfeature = ChangeWith ProjYes [(1, OIL_SOURCE)] S_OIL_SPILL  -- oil floats
+                   -- the transformation goes first, because marginal, that is,
                    -- should not cause a warning that bumping was not enogh;
                    -- similarly elsewhere, where With goes before Embed;
-                   -- also, no cold nor oil sources are crafted with in water
+                   -- also, no oil sources are ever equipped (cold is)
                : Embed SHALLOW_WATER
+               : ChangeWith ProjYes [(1, COLD_SOURCE)] S_FROZEN_PATH
                : tfeature floorActor
       -- can't make fog from water, because air would need to be cool, too;
       -- if concealment needed, make smoke from fire instead
