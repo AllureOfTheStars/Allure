@@ -38,14 +38,14 @@ groupNamesSingleton :: [GroupName ItemKind]
 groupNamesSingleton =
        [S_FRAGRANCE, S_SINGLE_SPARK, S_SPARK]
     ++ [FLASK_UNKNOWN, POTION_UNKNOWN, EDIBLE_PLANT_UNKNOWN, SCROLL_UNKNOWN, NECKLACE_UNKNOWN, RING_UNKNOWN, HAMMER_UNKNOWN, GEM_UNKNOWN, CURRENCY_UNKNOWN]
-    ++ [S_GRASS_STITCHER, S_LADIES_FORK, S_SPADE, S_HOE]
+    ++ [S_RAG_TANGLE, S_GRASS_STITCHER, S_LADIES_FORK, S_SPADE, S_HOE]
     ++ [COOKED_PLANT_UNKNOWN]
     ++ embedsGNSingleton ++ actorsGNSingleton ++ organsGNSingleton
     ++ blastsGNSingleton ++ temporariesGNSingleton
 
 pattern FLASK_UNKNOWN, POTION_UNKNOWN, EDIBLE_PLANT_UNKNOWN, SCROLL_UNKNOWN, NECKLACE_UNKNOWN, RING_UNKNOWN, HAMMER_UNKNOWN, GEM_UNKNOWN, CURRENCY_UNKNOWN :: GroupName ItemKind
 
-pattern S_GRASS_STITCHER, S_LADIES_FORK, S_SPADE, S_HOE :: GroupName ItemKind
+pattern S_RAG_TANGLE, S_GRASS_STITCHER, S_LADIES_FORK, S_SPADE, S_HOE :: GroupName ItemKind
 
 pattern COOKED_PLANT_UNKNOWN :: GroupName ItemKind
 
@@ -89,6 +89,7 @@ pattern COOKED_PLANT = GroupName "cooked plant"
 pattern LIQUID_NITROGEN = GroupName "liquid nitrogen"
 pattern GARDENING_TOOL = GroupName "gardening tool"
 
+pattern S_RAG_TANGLE = GroupName "rag tangle"
 pattern S_GRASS_STITCHER = GroupName "grass stitcher"
 pattern S_LADIES_FORK = GroupName "ladies' fork"
 pattern S_HOE = GroupName "hoe"
@@ -1172,7 +1173,9 @@ torchDestruct =
   OnUser $ OneOf $
     DestroyItem 1 1 CEqp S_WOODEN_TORCH
     `AndEffect`
-    CreateItem Nothing CStash CLOTH_RAG timerNone  -- staff broken
+    CreateItem Nothing CStash S_RAG_TANGLE timerNone
+      -- staff broken, cord not usable (if a cord was used for crafting);
+      -- otherwise rag + staff would produce a cord (bonding tool)
     : DestroyItem 1 1 CEqp S_WOODEN_TORCH
       `AndEffect`
       CreateItem Nothing CStash S_DOUSED_WOODEN_TORCH timerNone
@@ -1922,7 +1925,7 @@ ragTangle = sandstoneRock
   { isymbol  = symbolClothes
   , iname    = "tangle"
   , ifreq    = [ (COMMON_ITEM, 10), (CLOTH_RAG, 1), (THICK_CLOTH, 1)
-               , (UNREPORTED_INVENTORY, 1) ]
+               , (S_RAG_TANGLE, 1), (UNREPORTED_INVENTORY, 1) ]
   , iflavour = zipPlain [Brown]
   , icount   = 1
   , irarity  = [(1, 10)]  -- crafted, so rare
