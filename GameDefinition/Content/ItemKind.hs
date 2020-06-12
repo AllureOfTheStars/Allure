@@ -404,7 +404,7 @@ fragmentationBomb = ItemKind
   , irarity  = [(5, 8), (10, 5)]
   , iverbHit = "thud"
   , iweight  = 3000  -- low velocity due to weight
-  , idamage  = 1 `d` 1  -- heavy and hard
+  , idamage  = 0  -- heavy and hard, but let's not confuse with blast damage
   , iaspects = [SetFlag Lobable, SetFlag Fragile]
   , ieffects = [ Explode S_FOCUSED_FRAGMENTATION
                , OnSmash (Explode S_VIOLENT_FRAGMENTATION) ]
@@ -422,7 +422,6 @@ concussionBomb = fragmentationBomb
   , iflavour = zipPlain [Magenta]
   , iverbHit = "bonk"
   , iweight  = 400
-  , idamage  = 0
   , iaspects = [ SetFlag Lobable, SetFlag Fragile
                , toVelocity 70 ]  -- flappy and so slow
   , ieffects = [ Explode S_FOCUSED_CONCUSSION
@@ -438,7 +437,6 @@ flashBomb = fragmentationBomb
   , iflavour = zipPlain [BrYellow]  -- avoid @BrWhite@; looks wrong in dark
   , iverbHit = "flash"
   , iweight  = 400
-  , idamage  = 0
   , iaspects = [ SetFlag Lobable, SetFlag Fragile
                , toVelocity 70 ]  -- bad shape for throwing
   , ieffects = [Explode S_FOCUSED_FLASH, OnSmash (Explode S_VIOLENT_FLASH)]
@@ -450,7 +448,6 @@ firecrackerBomb = fragmentationBomb
   , irarity  = [(1, 5), (5, 6)]  -- a toy, if deadly
   , iverbHit = "crack"  -- a pun, matches the verb from "ItemKindBlast"
   , iweight  = 1000
-  , idamage  = 0
   , iaspects = [SetFlag Lobable, SetFlag Fragile]
   , ieffects = [Explode S_FIRECRACKER, OnSmash (Explode S_FIRECRACKER)]
   , idesc    = "String and paper, concealing a deadly surprise."
