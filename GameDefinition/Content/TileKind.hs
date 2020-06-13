@@ -591,7 +591,8 @@ stairsTrappedUp = TileKind
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = talterForStairs
-  , tfeature = [ Embed STAIRS_UP, Embed STAIRS_TRAP_UP
+  , tfeature = [ Embed STAIRS_UP
+               , Embed STAIRS_TRAP_UP
                , ConsideredByAI, ChangeTo ORDINARY_STAIRCASE_UP ]
                  -- AI uses despite the trap; exploration more important
   }
@@ -623,7 +624,8 @@ stairsTrappedDown = TileKind
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = talterForStairs
-  , tfeature = [ Embed STAIRS_DOWN, Embed STAIRS_TRAP_DOWN
+  , tfeature = [ Embed STAIRS_DOWN
+               , Embed STAIRS_TRAP_DOWN
                , ConsideredByAI, ChangeTo ORDINARY_STAIRCASE_DOWN ]
   }
 stairsOutdoorDown = stairsDown
@@ -1129,7 +1131,8 @@ stairsLiftTrappedUp = stairsTrappedUp
   , tfreq    = [(STAIRCASE_LIFT_UP, 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
-  , tfeature = [ Embed LIFT_UP, Embed LIFT_TRAP
+  , tfeature = [ Embed LIFT_UP
+               , Embed LIFT_TRAP
                , ConsideredByAI, ChangeTo ORDINARY_LIFT_UP ]
                  -- AI uses despite the trap; exploration more important
   }
@@ -1178,7 +1181,8 @@ stairsLiftTrappedDown = stairsTrappedDown
   , tfreq    = [(STAIRCASE_LIFT_DOWN, 1)]
   , tcolor   = BrBlue
   , tcolor2  = Blue
-  , tfeature = [ Embed LIFT_DOWN, Embed LIFT_TRAP
+  , tfeature = [ Embed LIFT_DOWN
+               , Embed LIFT_TRAP
                , ConsideredByAI, ChangeTo ORDINARY_LIFT_DOWN ]
   }
 stairsLiftGatedDown = stairsLiftDown
@@ -1237,7 +1241,9 @@ doorStuck = TileKind
   , tcolor2  = Blue
   , talter   = 2
   , tfeature = [ OpenWith ProjNo [(1, BREACHING_TOOL)] S_OPEN_DOOR
-               , OpenWith ProjYes [(1, BLAST_SOURCE)] S_OPEN_DOOR ]
+               , OpenWith ProjYes [(1, BLAST_SOURCE)] S_OPEN_DOOR
+               , Embed STAIRS_TRAP_DOWN_OIL  -- TODO: reflavour
+               , OpenWith ProjNo [] S_OPEN_DOOR ]  -- no pathfinding
   }
 barrel = TileKind
   { tsymbol  = '0'

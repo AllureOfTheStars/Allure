@@ -742,7 +742,7 @@ stairsTrapDownOil = stairsTrapUp
   { ifreq    = [(STAIRS_TRAP_DOWN_OIL, 1)]
   , iflavour = zipPlain [Brown]
   , iverbHit = "cause a chaotic skid"
-  , ieffects = [ VerbMsgFail "tumble down the stairwell"
+  , ieffects = [ VerbMsgFail "tumble down and shoot out of the stairwell"
                , PushActor (ThrowMod 400 100 1)]  -- 4 steps, 2 turns
   , idesc    = ""
   }
