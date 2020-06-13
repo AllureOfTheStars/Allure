@@ -1708,7 +1708,7 @@ armorMail = armorLeather
   , ifreq    = [ (COMMON_ITEM, 100), (ARMOR_LOOSE, 1), (ARMOR_RANGED, 1)
                , (S_BULLTEPROOF_VEST, 1), (STARTING_ARMOR, 50) ]
   , iflavour = zipPlain [Cyan]
-  , irarity  = [(6, 9), (10, 3)]
+  , irarity  = [(4, 3), (7, 11), (10, 3)]
   , iweight  = 12000
   , idamage  = 0
   , iaspects = [ AddSkill SkHurtMelee (-5)
@@ -1948,7 +1948,7 @@ buckler = ItemKind
   , ifreq    = [(COMMON_ITEM, 100), (ARMOR_LOOSE, 1)]
   , iflavour = zipPlain [Blue]
   , icount   = 1
-  , irarity  = [(4, 6)]
+  , irarity  = [(4, 7)]
   , iverbHit = "bash"
   , iweight  = 2000
   , idamage  = 1 `d` 1
@@ -2060,7 +2060,7 @@ crowbar = ItemKind
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
   , iweight  = 1000
-  , irarity  = [(1, 6), (3 * 10/15, 6), (4 * 10/15, 1)]
+  , irarity  = [(1, 5), (3 * 10/15, 5), (4 * 10/15, 1)]
   , iverbHit = "gouge"
   , idamage  = 2 `d` 1
   , iaspects = [ Timeout $ 2 + 1 `d` 3
@@ -2400,7 +2400,7 @@ pollaxe = fireAxe
   }
 militaryKnife = knife
   { iname    = "military knife"
-  , ifreq    = [ (TREASURE, 1), (WIRECUTTING_TOOL, 1), (MERCENARY_WEAPON, 70)
+  , ifreq    = [ (TREASURE, 1), (WIRECUTTING_TOOL, 2), (MERCENARY_WEAPON, 70)
                , (STARTING_WEAPON, 3) ]
   , iflavour = zipFancy [Green]
   , irarity  = [(10, 15)]  -- in crawl, comes bundled with tools
