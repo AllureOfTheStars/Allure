@@ -2611,7 +2611,7 @@ gemTemplate = ItemKind
   , ikit     = []
   }
 gem1 = gemTemplate
-  { ifreq    = [ (TREASURE, 100), (GEM, 100), (ANY_JEWELRY, 100)
+  { ifreq    = [ (TREASURE, 100), (GEM, 100), (ANY_JEWELRY, 10)
                , (VALUABLE, 100) ]
   , irarity  = [(3, 0), (6, 12), (10, 8)]
   , iaspects = [AddSkill SkShine 1, AddSkill SkSpeed (-1)]
@@ -2620,17 +2620,17 @@ gem1 = gemTemplate
                ++ iaspects gemTemplate
   }
 gem2 = gem1
-  { ifreq    = [ (TREASURE, 150), (GEM, 100), (ANY_JEWELRY, 100)
+  { ifreq    = [ (TREASURE, 150), (GEM, 100), (ANY_JEWELRY, 10)
                , (VALUABLE, 100) ]
   , irarity  = [(5, 0), (7, 25), (10, 8)]
   }
 gem3 = gem1
-  { ifreq    = [ (TREASURE, 150), (GEM, 100), (ANY_JEWELRY, 100)
+  { ifreq    = [ (TREASURE, 150), (GEM, 100), (ANY_JEWELRY, 10)
                , (VALUABLE, 100) ]
   , irarity  = [(7, 0), (8, 30), (10, 8)]
   }
 gem4 = gem1
-  { ifreq    = [ (TREASURE, 150), (GEM, 100), (ANY_JEWELRY, 100)
+  { ifreq    = [ (TREASURE, 150), (GEM, 100), (ANY_JEWELRY, 30)
                , (VALUABLE, 100) ]
   , irarity  = [(9, 0), (10, 40)]
   }
