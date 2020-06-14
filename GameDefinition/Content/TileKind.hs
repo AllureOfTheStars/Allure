@@ -871,7 +871,7 @@ shallowWater = TileKind
                , (HUNT_SET_LIT, 250), (LIFT_TERMINAL_LIT, 4) ]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
-  , talter   = 2  -- doesn't matter now; TODO: not everything enters
+  , talter   = 2  -- projectiles won't trigger embeds
   , tfeature = ChangeWith ProjYes [(1, OIL_SOURCE)] S_OIL_SPILL  -- oil floats
                    -- the transformation goes first, because marginal, that is,
                    -- should not cause a warning that bumping was not enogh;
@@ -1253,7 +1253,7 @@ barrel = TileKind
                , (ZOO_SET_DARK, 30), (AMBUSH_SET_DARK, 2) ]
   , tcolor   = BrBlue
   , tcolor2  = Blue
-  , talter   = 0  -- projectiles can destroy
+  , talter   = 0  -- projectiles can trigger the embed
   , tfeature = [ Embed BARREL_CONTENTS
                , OpenWith ProjYes [] ASHES_SMOKE_LIT ]
                    -- no pathfinding through
@@ -1316,7 +1316,8 @@ underbrushBurning = TileKind  -- always lit
                , (BUSH_BURNING_OR_NOT, 25), (S_BURNING_UNDERBRUSH, 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
-  , talter   = 0
+  , talter   = 2  -- due to this, ordinary projectiles can't put out the fire
+                  -- and don't get burned
   , tfeature = [ Walkable, NoItem, NoActor  -- not clear, due to smoke
                , Embed SMALL_FIRE  -- little mass, so one fire only
                , ChangeWith ProjYes [(1, WATER_SOURCE)] S_SMOKE_LIT
@@ -1344,7 +1345,8 @@ oilSpill = TileKind  -- always lit
                , (AMBUSH_SET_DARK, 20), (S_OIL_SPILL, 1) ]
   , tcolor   = BrYellow
   , tcolor2  = BrGreen
-  , talter   = 2  -- doesn't matter now, because walkable;
+  , talter   = 2  -- projectiles won't trigger embeds; doesn't matter
+                  -- for others, because walkable;
                   -- TODO: not everything should be able/willing to enter
   , tfeature = [ Embed OIL_PUDDLE
                    -- embed goes first, because transformation and crafting
@@ -1365,7 +1367,8 @@ oilBurning = TileKind  -- always lit
   , tfreq    = [(POWER_SET_DARK, 1), (AMBUSH_SET_DARK, 1), (S_BURNING_OIL, 1)]
   , tcolor   = BrRed
   , tcolor2  = Red
-  , talter   = 0
+  , talter   = 2  -- due to this, projectiles can't put out the fire
+                  -- and don't get burned
   , tfeature = [ Walkable, Clear  -- clear, no smoke, as in oil lamps
                , NoItem, NoActor
                , Embed SMALL_FIRE_5
