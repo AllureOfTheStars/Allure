@@ -689,7 +689,10 @@ pillarIce = TileKind
   , tcolor   = BrBlue
   , tcolor2  = Blue
   , talter   = 4  -- boss can dig through
-  , tfeature = [Clear, Embed FROST, OpenTo S_SHALLOW_WATER_LIT]
+  , tfeature = [ Clear
+               , Embed FROST
+               , OpenTo S_SHALLOW_WATER_LIT
+               . OpenWith ProjYes [(1, BLAST_SOURCE)] DAMP_FLOOR_LIT ]
   }
 pulpit = TileKind
   { tsymbol  = '%'
