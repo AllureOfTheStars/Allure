@@ -1361,14 +1361,14 @@ solderingIron = chisel
   }
 duckTape = solderingIron
   { iname    = "duck tape"
-  , ifreq    = [(CRAWL_ITEM, 3), (BONDING_TOOL, 50)]
+  , ifreq    = [(CRAWL_ITEM, 3), (BONDING_TOOL, 40)]
   , icount   = 1 `d` 4
   , iverbHit = "catch"
   , idesc    = "It is a bonding tool."  -- TODO: https://en.wikipedia.org/wiki/Duct_tape
   }
 thickCord = solderingIron
   { iname    = "thick cord"
-  , ifreq    = [ (CRAWL_ITEM, 5), (BONDING_TOOL, 20)
+  , ifreq    = [ (CRAWL_ITEM, 7), (BONDING_TOOL, 30)
                , (CLOTH_RAG, 1), (THICK_CLOTH, 1) ]
   , iverbHit = "tie"
   , idesc    = "It is a bonding tool and it soaks fluids."  -- TODO
@@ -1708,7 +1708,7 @@ armorMail = armorLeather
   , ifreq    = [ (COMMON_ITEM, 100), (ARMOR_LOOSE, 1), (ARMOR_RANGED, 1)
                , (S_BULLTEPROOF_VEST, 1), (STARTING_ARMOR, 50) ]
   , iflavour = zipPlain [Cyan]
-  , irarity  = [(4, 3), (7, 11), (10, 3)]
+  , irarity  = [(4, 3), (7, 12), (10, 3)]
   , iweight  = 12000
   , idamage  = 0
   , iaspects = [ AddSkill SkHurtMelee (-5)

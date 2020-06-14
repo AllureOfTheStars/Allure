@@ -1084,8 +1084,8 @@ pillarCache5 = pillarCache
                , ChangeWith ProjNo [(1, WIRECUTTING_TOOL)] CACHE_JEWELRY_OR_NOT
                    -- disarms trap altogether
                , Embed JEWELRY_DISPLAY_TRAP
-               , ChangeTo CACHE_JEWELRY_TRAPPED_OR_NOT
-               , ConsideredByAI ]
+               , ChangeTo CACHE_JEWELRY_TRAPPED_OR_NOT ]
+               -- not ConsideredByAI, to leave the risk and reward to the player
   }
 stairsTrappedDownOil = TileKind
   { tsymbol  = '>'
@@ -1324,6 +1324,7 @@ underbrushBurning = TileKind  -- always lit
   , tfeature = [ Walkable, NoItem, NoActor  -- not clear, due to smoke
                , Embed SMALL_FIRE  -- little mass, so one fire only
                , ChangeWith ProjYes [(1, WATER_SOURCE)] S_SMOKE_LIT
+                   -- transformation only a fallback if crafting unintended
                , ChangeWith ProjNo [(1, FIREPROOF_CLOTH)] S_UNDERBRUSH_LIT
                    -- underbrush saved for repeat
                , ChangeTo S_FLOOR_ASHES_LIT ]  -- not enough matter for smoke
@@ -1377,7 +1378,7 @@ oilBurning = TileKind  -- always lit
                , Embed SMALL_FIRE_5
                , Embed OIL_PUDDLE
                , ChangeWith ProjNo [(1, FIREPROOF_CLOTH)] OILY_FLOOR_LIT
-                   -- safely soaks oil
+                   -- safely soaks oil, if crafting fails or unintended
                , ChangeTo S_OIL_SPILL ]
                    -- TODO: change only after all 5 fires used up
   }
