@@ -536,9 +536,10 @@ rubble = TileKind
   , tcolor2  = Brown
   , talter   = 4  -- boss can dig through
   , tfeature = [ OpenWith ProjYes [(1, BLAST_SOURCE)] S_FLOOR_ASHES_LIT
-                   -- needs to be first, because projectiles can't activate
-                   -- embeds in a non-walkable tile with non-zero talter;
-                   -- so this is a safe way to open rubble, with no loot though;
+                   -- can as well be first, because projectiles can't activate
+                   -- embeds with non-zero talter; for non-projectiles,
+                   -- if a @BLAST_SOURCE@ item could be found,
+                   -- this is a safe way to open rubble, with no loot though
                , Embed RUBBLE
                , OpenTo S_FLOOR_ASHES_LIT ]
       -- Getting the item is risky and, e.g., AI doesn't attempt it.
@@ -614,6 +615,7 @@ stairsDown = TileKind
   , tcolor2  = defFG
   , talter   = 0  -- very easy stairs, unlike all others; projectiles trigger
   , tfeature = [ ChangeWith ProjYes [(1, OIL_SOURCE)] S_STAIRCASE_TRAP_DOWN_OIL
+                   -- even random oil explosions can create this trap
                , Embed STAIRS_DOWN
                , ConsideredByAI ]
   }
@@ -692,7 +694,7 @@ pillarIce = TileKind
   , tfeature = [ Clear
                , Embed FROST
                , OpenTo S_SHALLOW_WATER_LIT
-               . OpenWith ProjYes [(1, BLAST_SOURCE)] DAMP_FLOOR_LIT ]
+               , OpenWith ProjYes [(1, BLAST_SOURCE)] DAMP_FLOOR_LIT ]
   }
 pulpit = TileKind
   { tsymbol  = '%'
@@ -748,6 +750,7 @@ bushBurning = TileKind
   , talter   = 5
   , tfeature = [ Clear
                , Embed SMALL_FIRE_5
+                   -- crafting via embed first, transformation a fallback
                , OpenWith ProjYes [(3, WATER_SOURCE)] S_SMOKE_LIT
                , ChangeWith ProjNo [(1, FIREPROOF_CLOTH)] S_BUSH_LIT
                    -- full effects experienced, but bush saved for repeat
@@ -875,12 +878,9 @@ shallowWater = TileKind
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 2  -- projectiles won't trigger embeds
-  , tfeature = ChangeWith ProjYes [(1, OIL_SOURCE)] S_OIL_SPILL  -- oil floats
-                   -- the transformation goes first, because marginal, that is,
-                   -- should not cause a warning that bumping was not enogh;
-                   -- similarly elsewhere, where With goes before Embed;
-                   -- also, no oil sources are ever equipped (cold is)
-               : Embed SHALLOW_WATER
+  , tfeature = Embed SHALLOW_WATER
+                 -- crafting via embed first, transformations a fallback
+               : ChangeWith ProjYes [(1, OIL_SOURCE)] S_OIL_SPILL  -- oil floats
                : ChangeWith ProjYes [(1, COLD_SOURCE)] S_FROZEN_PATH
                : tfeature floorActor
       -- can't make fog from water, because air would need to be cool, too;
@@ -1353,7 +1353,7 @@ oilSpill = TileKind  -- always lit
                   -- TODO: not everything should be able/willing to enter
   , tfeature = [ Embed OIL_PUDDLE
                    -- embed goes first, because transformation and crafting
-                   -- use the same item and crafting needs priority
+                   -- may use the same item and crafting needs priority
                , ChangeWith ProjYes [(1, FIRE_SOURCE)] S_BURNING_OIL
                , ChangeWith ProjNo [(1, THICK_CLOTH)] OILY_FLOOR_LIT
                , Walkable, Clear ]
