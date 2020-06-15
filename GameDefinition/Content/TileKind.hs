@@ -677,9 +677,9 @@ wallGlass = TileKind
   }
 wallGlassSpice = wallGlass
   { tfreq    = [ (RECT_WINDOWS, 20)
-               , (CACHE_JEWELRY, 66)
-               , (CACHE_JEWELRY_OR_NOT, 80)
-               , (CACHE_JEWELRY_TRAPPED_OR_NOT, 80) ]
+               , (CACHE_JEWELRY, 40)
+               , (CACHE_JEWELRY_OR_NOT, 60)
+               , (CACHE_JEWELRY_TRAPPED_OR_NOT, 60) ]
   , tfeature = Spice : tfeature wallGlass
   }
 pillarIce = TileKind
@@ -1052,8 +1052,8 @@ rock = pillar
   }
 pillarCache2 = pillarCache
   { tname    = "rack of deposit boxes"
-  , tfreq    = [ (CACHE_DEPOSIT_OR_NOT, 20)
-               , (CACHE_DEPOSIT_BREACHED, 20) ]
+  , tfreq    = [ (CACHE_DEPOSIT_OR_NOT, 33)
+               , (CACHE_DEPOSIT_BREACHED, 1) ]
   , tfeature = [ Embed DEPOSIT_BOX
                , ChangeTo CACHE_DEPOSIT_OR_NOT
                , ConsideredByAI ]
@@ -1068,14 +1068,14 @@ pillarCache3 = pillarCache
   }
 pillarCache4 = pillarCache
   { tname    = "jewelry display"
-  , tfreq    = [(CACHE_JEWELRY_OR_NOT, 20)]
+  , tfreq    = [(CACHE_JEWELRY_OR_NOT, 40)]
   , tfeature = [ Embed JEWELRY_CASE
                , ChangeTo CACHE_JEWELRY_OR_NOT
                , ConsideredByAI ]
   }
 pillarCache5 = pillarCache
   { tname    = "jewelry display"
-  , tfreq    = [ (CACHE_JEWELRY_TRAPPED_OR_NOT, 20), (CACHE_JEWELRY, 33)
+  , tfreq    = [ (CACHE_JEWELRY_TRAPPED_OR_NOT, 40), (CACHE_JEWELRY, 60)
                , (MUSEUM_SET_DARK, 2) ]
   , tfeature = [ Embed JEWELRY_CASE
                , ChangeWith ProjNo [(1, COLD_SOURCE)]
@@ -1224,7 +1224,7 @@ reinforcedWall = TileKind
   }
 reinforcedWallSpice = reinforcedWall
   { tfreq    = [ (DOORLESS_WALL, 20), (CACHE_MAZE, 33)
-               , (CACHE_ABANDONED_OR_NOT, 60), (CACHE_DEPOSIT_OR_NOT, 80) ]
+               , (CACHE_ABANDONED_OR_NOT, 60), (CACHE_DEPOSIT_OR_NOT, 66) ]
   , tfeature = Spice : tfeature reinforcedWall
   }
 wallShuttle = bedrock
