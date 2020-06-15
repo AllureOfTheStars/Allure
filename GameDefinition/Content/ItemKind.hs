@@ -598,14 +598,13 @@ flask11 = flaskTemplate
                , OnSmash (Explode S_WHISKEY_SPRAY) ]
   }
 flask12 = flaskTemplate
-  { iname    = "flagon"
-  , ifreq    = [ (COMMON_ITEM, 100), (ANY_FLASK, 100), (EXPLOSIVE, 100)
+  { ifreq    = [ (COMMON_ITEM, 100), (ANY_FLASK, 100), (EXPLOSIVE, 100)
                , (ANY_GLASS, 100), (WATER_SOURCE, 1) ]
   , icount   = 1 `d` 2  -- too powerful, for aliens, en masse
-  , iaspects = ELabel "of bait cocktail"
+  , iaspects = ELabel "of bait and switch"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganGood S_DRUNK (20 + 1 `d` 5)
-               , Summon MOBILE_ANIMAL 1
+  , ieffects = [ Summon MOBILE_ANIMAL 1  -- won't work if no Calm; fun exploit
+               , Teleport 7  -- escape sometimes worth the summon
                , OnSmash (Summon MOBILE_ANIMAL 1)
                , OnSmash Impress  -- mildly useful when thrown
                , OnSmash (Explode S_WASTE) ]
@@ -921,8 +920,7 @@ scroll5 = scrollTemplate
   }
 scroll6 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(10, 8)]
-  , ieffects = [PushActor (ThrowMod 400 100 1)]  -- 4 steps, 2 turns
+  , ieffects = [PullActor (ThrowMod 800 75 1)]  -- 6 steps, 1.5 turns
   }
 scroll7 = scrollTemplate
   { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 75)]
@@ -1474,7 +1472,7 @@ necklace6 = necklaceTemplate
   }
 necklace7 = necklaceTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
-  , iaspects = Timeout (1 + (1 `d` 3) * 2)
+  , iaspects = Timeout ((1 `d` 3) * 2)
                : iaspects_necklaceTemplate
   , ieffects = [PushActor (ThrowMod 100 50 1)]  -- 1 step, slow
                   -- the @50@ is only for the case of very light actor, etc.
