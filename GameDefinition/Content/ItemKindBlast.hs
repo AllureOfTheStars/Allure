@@ -430,7 +430,7 @@ fragrance = ItemKind
   , iverbHit = "engulf"
   , iweight  = 1
   , idamage  = 0
-  , iaspects = [ toLinger 10  -- 2 steps, 1 turn
+  , iaspects = [ ToThrow $ ThrowMod 200 5 1  -- 2 steps, .5 turn (necklaces)
                , SetFlag Fragile, SetFlag Blast ]
   , ieffects = [Impress, toOrganGood S_ROSE_SMELLING 45]
   -- Linger 10, because sometimes it takes 2 turns due to starting just
@@ -678,7 +678,8 @@ currentDischarge = ItemKind
   , iverbHit = "reset"
   , iweight  = 1
   , idamage  = 0
-  , iaspects = [toLinger 10, SetFlag Fragile, SetFlag Blast]
+  , iaspects = [ ToThrow $ ThrowMod 200 5 1  -- 2 steps, .5 turn (necklaces)
+               , SetFlag Fragile, SetFlag Blast ]
   , ieffects = [Discharge 2 $ 80 - 1 `d` 40]
                  -- does this prevent hunger too easily, when exploited?
   , idesc    = ""
@@ -926,7 +927,7 @@ pingFlash = ItemKind
   , iverbHit = "ping"
   , iweight  = 1  -- to prevent blocking the way
   , idamage  = 0
-  , iaspects = [ toLinger 0
+  , iaspects = [ ToThrow $ ThrowMod 200 0 1  -- 1 step, .5 turn (necklaces)
                , SetFlag Fragile, SetFlag Blast
                , AddSkill SkShine 2 ]
   , ieffects = [OnSmash Yell]
