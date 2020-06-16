@@ -142,7 +142,8 @@ residential = rogue
   , cmaxPlaceSize = DiceXY 14 20  -- fewer big rooms
   , cdarkOdds     = 51  -- all rooms dark
   , cnightOdds    = 0  -- always day
-  , cauxConnects  = 1%10  -- differentiate; bare skeleton feel; long span paths
+  , cauxConnects  = 1%5  -- differentiate; bare skeleton feel; long span paths,
+                         -- but don't overdo or a lot of backtracing needed
   , cplaceFreq    = [(ROGUE, 1), (RESIDENTIAL, 49)]
   , cdefTile      = FILLER_WALL
   , cmaxStairsNum = 3 + 1 `d` 2
