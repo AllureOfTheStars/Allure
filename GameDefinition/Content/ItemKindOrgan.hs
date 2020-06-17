@@ -42,8 +42,8 @@ pattern S_ANIMAL_STOMACH, S_HUNGRY, S_GENETIC_FLAW_3, S_GENETIC_FLAW_10, S_RAZOR
 
 organsGN :: [GroupName ItemKind]
 organsGN =
-       [SCAVENGER]
-    ++ [ELECTRIC_AMBIENCE, GENETIC_FLAW]
+     SCAVENGER
+     : [ELECTRIC_AMBIENCE, GENETIC_FLAW]
 
 pattern SCAVENGER :: GroupName ItemKind
 
@@ -210,8 +210,8 @@ tentacle = fist  -- to copies only
   , ifreq    = [(S_TENTACLE, 1)]
   , iverbHit = "slap"
   , idamage  = 4 `d` 1
-  , iaspects = [Timeout 3]  -- minimal timeout that lets other organs show
-               ++ iaspects fist
+  , iaspects = Timeout 3  -- minimal timeout that lets other organs show
+               : iaspects fist
   , idesc    = "Damp and dextrous."
   }
 jaw = fist
@@ -220,8 +220,8 @@ jaw = fist
   , icount   = 1
   , iverbHit = "rip"
   , idamage  = 5 `d` 1
-  , iaspects = [Timeout $ 2 + 1 `d` 2]  -- no effect, but limit raw damage
-               ++ iaspects fist
+  , iaspects = Timeout (2 + 1 `d` 2)  -- no effect, but limit raw damage
+               : iaspects fist
   , idesc    = "Delivers a powerful bite."
   }
 horn = fist
@@ -240,8 +240,8 @@ largeTail = fist
   , icount   = 1
   , iverbHit = "knock"
   , idamage  = 6 `d` 1  -- not sharp
-  , iaspects = [Timeout $ 4 + 1 `d` 2]  -- one copy, so can be low
-               ++ iaspects fist
+  , iaspects = Timeout (4 + 1 `d` 2)  -- one copy, so can be low
+               : iaspects fist
   , idesc    = "Almost as long as the trunk."
   }
 largeJaw = fist  -- organs can't be too weak, because some non-humans also use
@@ -251,8 +251,8 @@ largeJaw = fist  -- organs can't be too weak, because some non-humans also use
   , icount   = 1
   , iverbHit = "crush"
   , idamage  = 10 `d` 1  -- tops the best non-crafted, non-unique human weapons
-  , iaspects = [Timeout $ 8 + 1 `d` 2]  -- no effect, but limit raw damage
-               ++ iaspects fist
+  , iaspects = Timeout (8 + 1 `d` 2)  -- no effect, but limit raw damage
+               : iaspects fist
   , idesc    = "Enough to swallow anything in a single gulp."
   }
 
@@ -276,8 +276,8 @@ sting = fist
   , icount   = 1
   , iverbHit = "inject"
   , idamage  = 1 `d` 1
-  , iaspects = [Timeout $ 10 - 1 `dL` 4]
-               ++ iaspects fist
+  , iaspects = Timeout (10 - 1 `dL` 4)
+               : iaspects fist
   , ieffects = [toOrganBad S_RETAINING (3 + 1 `d` 3)]
   , idesc    = "Painful, debilitating and harmful."
   }
@@ -341,8 +341,8 @@ rhinoHorn = fist
   , icount   = 1  -- single, unlike real horns
   , iverbHit = "gore"
   , idamage  = 4 `d` 1
-  , iaspects = [Timeout 5]
-               ++ iaspects fist
+  , iaspects = Timeout 5
+               : iaspects fist
   , ieffects = [Impress, Yell]  -- the owner is a mid-boss, after all
   , idesc    = "Very solid, considering it has the same composition as fingernails."
   }
@@ -352,8 +352,8 @@ hugeTail = fist
   , icount   = 1
   , iverbHit = "upend"
   , idamage  = 7 `d` 1
-  , iaspects = [Timeout $ 7 + 1 `d` 2]
-               ++ iaspects fist
+  , iaspects = Timeout (7 + 1 `d` 2)
+               : iaspects fist
                  -- timeout higher, lest they regain push before closing again
   , ieffects = [PushActor (ThrowMod 200 50 1)]  -- 1 step, fast
       -- 2 steps would be too hard to counteract via second line of heroes
@@ -666,8 +666,8 @@ liveWire = fist
   , icount   = 1
   , iverbHit = "shock"
   , idamage  = 0
-  , iaspects = [Timeout $ 2 + 1 `d` 2]
-               ++ iaspects fist
+  , iaspects = Timeout (2 + 1 `d` 2)
+               : iaspects fist
   , ieffects = [ Discharge 1 $ 80 - 1 `d` 40
                , RefillHP (-1) ]
   , idesc    = ""
@@ -679,7 +679,7 @@ razor = fist
   , iverbHit = "slice"
   , idamage  = 2 `d` 1
   , iaspects = [ SetFlag Meleeable  -- not Durable
-               , Timeout $ 4 ]  -- but cooldown to use other weapons
+               , Timeout 4 ]  -- but cooldown to use other weapons
   , ieffects = [ toOrganBad S_WEAKENED (2 + 1 `dL` 3)
                , VerbNoLonger "lose all sharpness" ]
                  -- we interpret charges as sharpness of the actor or his razor'

@@ -364,7 +364,7 @@ harpoon3 = harpoon
   , iflavour = zipFancy [Red]
   , irarity  = [(8, 4)]
   , idamage  = 7 `d` 1
-  , iaspects = [SetFlag Unique] ++ iaspects harpoon
+  , iaspects = SetFlag Unique : iaspects harpoon
   , ieffects = Yell  -- evoke a cry from pain; brutal
                : ieffects harpoon
   , idesc    = "A display piece harking back to the Earth's oceanic tourism heyday. Surprising sharp for its age. The cruel, barbed head lodges in its victim so painfully that the weakest tug of the rope sends the victim flying."
@@ -984,8 +984,8 @@ scroll15 = scrollTemplate
 scrollAd1 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
   , irarity  = [(1, 3)]
-  , iaspects = [ELabel "of tourist guide"]
-               ++ iaspects scrollTemplate
+  , iaspects = ELabel "of tourist guide"
+               : iaspects scrollTemplate
   , ieffects = [ Impress  -- mostly flavour, but this is useful
                , toOrganGood S_RESOLUTE (500 + 1 `d` 200)
                    -- a drawback (at least initially) due to @calmEnough@
@@ -2147,8 +2147,8 @@ hammer1 = hammerTemplate  -- 1m handle, blunt
   { ifreq    = [ (COMMON_ITEM, 100)
                , (STARTING_WEAPON, 50), (STARTING_HAMMER, 80)
                , (S_SHORT_BLUNT_HAMMER, 1) ]
-  , iaspects = [Timeout 6]
-               ++ iaspects hammerTemplate
+  , iaspects = Timeout 6
+               : iaspects hammerTemplate
   , ieffects = [RefillHP (-5)]  -- weak, but meant to be sharpened ASAP
   , idesc    = "One of many kinds of hammers employed in construction work. This is the usual one, with a blunt head and a short handle that, with a vice, may be pushed out and replaced with a longer pole."
   }
@@ -2250,8 +2250,8 @@ daggerDropBestWeapon = knife
   { iname    = "Double Dagger"
   , ifreq    = [(TREASURE, 40), (MUSEAL, 100)]
   , irarity  = [(1, 3), (10, 2)]
-  , iaspects = [SetFlag Unique]
-               ++ iaspects knife
+  , iaspects = SetFlag Unique
+               : iaspects knife
   , ieffects = [Discharge 1 50, Yell]  -- powerful and low timeout, but noisy
                                        -- and no effect if no weapons charged
   , idesc    = "An antique double dagger that a focused fencer can use to catch and twist away an opponent's blade."
@@ -2289,8 +2289,8 @@ swordImpress = sword
   , ifreq    = [(TREASURE, 40), (MUSEAL, 100)]
   , irarity  = [(5, 1), (8, 6)]
   , iverbHit = "slash"
-  , iaspects = [SetFlag Unique]
-               ++ iaspects sword
+  , iaspects = SetFlag Unique
+               : iaspects sword
   , ieffects = [Impress]
   , idesc    = "A particularly well-balanced museum piece. It has a history and in the right hands lends itself to impressive shows of fencing skill."
   }
@@ -2350,8 +2350,8 @@ halberdPushActor = halberd
   , ifreq    = [(CRAWL_ITEM, 30), (S_HALBERD_BLUNT, 1)]
                  -- not in a museum; reenactors' gear
   , irarity  = [(7, 0), (9, 8)]
-  , iaspects = [SetFlag Unique]
-               ++ iaspects halberd
+  , iaspects = SetFlag Unique
+               : iaspects halberd
   , ieffects = [PushActor (ThrowMod 200 100 1)]  -- 2 steps, slow
   , idesc    = "A perfect replica made for a reenactor troupe, hardened, but missing any sharpening. Versatile, with great reach and leverage. Foes are held at a distance."
   }

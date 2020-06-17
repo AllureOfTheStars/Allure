@@ -1434,9 +1434,8 @@ makeDark k = let darkenText :: GroupName TileKind -> GroupName TileKind
                      Nothing -> [(t, n)]
                      Just stripped ->
                        let dark = GroupName $ stripped <> "Dark"
-                       in if isJust $ dark `lookup` darkFreq
-                          then []  -- lit plays the role of dark in this group
-                          else [(dark, n)]
+                       in -- lit plays the role of dark in a @Dark@ group
+                          [(dark, n) | isNothing $ dark `lookup` darkFreq]
                  (darkFreq, notDarkFreq) =
                    partition (T.isSuffixOf "Dark" . fromGroupName . fst)
                              (tfreq k)
