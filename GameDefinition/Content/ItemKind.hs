@@ -899,7 +899,7 @@ scroll3 = scrollTemplate
   , icount   = 3 `dL` 1
   , irarity  = [(1, 15)]
   , ieffects = [OneOf [ Paralyze 10, InsertMove 30, Recharge 5 999
-                      , Detect DetectEmbed 12, Detect DetectHidden 20 ]]
+                      , Detect DetectEmbed 20, Detect DetectHidden 20 ]]
   }
 scroll4 = scrollTemplate
   -- needs to be common to show at least a portion of effects
@@ -1442,7 +1442,7 @@ necklace3 = necklaceTemplate
                    -- equal is not enough if enemies drained Calm already
                , AddSkill SkHearing 6 ]
                ++ iaspects_necklaceTemplate
-  , ieffects = [ Detect DetectActor 10  -- can be applied; destroys the item
+  , ieffects = [ Detect DetectActor 20  -- can be applied; destroys the item
                , RefillCalm (-30) ]
   }
 necklace4 = necklaceTemplate
