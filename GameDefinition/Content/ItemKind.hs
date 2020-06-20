@@ -831,7 +831,7 @@ potion13 = potionTemplate
   , irarity  = [(10, 5)]
   , iaspects = ELabel "of slow resistance"
                : iaspects potionTemplate
-  , ieffects = [ toOrganNoTimer S_POISON_RESISTANT
+  , ieffects = [ toOrganNoTimer S_SLOW_RESISTANT
                , OnSmash (Explode S_ANTI_SLOW_MIST) ]
   }
 potion14 = potionTemplate
@@ -839,7 +839,7 @@ potion14 = potionTemplate
   , irarity  = [(10, 5)]
   , iaspects = ELabel "of poison resistance"
                : iaspects potionTemplate
-  , ieffects = [ toOrganNoTimer S_SLOW_RESISTANT
+  , ieffects = [ toOrganNoTimer S_POISON_RESISTANT
                , OnSmash (Explode S_ANTIDOTE_MIST) ]
   }
 -- The player has full control over throwing the vial at his party,

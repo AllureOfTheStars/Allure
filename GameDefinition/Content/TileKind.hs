@@ -1245,7 +1245,7 @@ doorStuck = TileKind
   , talter   = 2
   , tfeature = [ OpenWith ProjNo [(1, BREACHING_TOOL)] S_OPEN_DOOR
                , OpenWith ProjYes [(1, BLAST_SOURCE)] S_OPEN_DOOR
-               , Embed STAIRS_TRAP_DOWN_OIL  -- TODO: reflavour
+               , Embed DOOR_TRAP_PUSH
                , OpenWith ProjNo [] S_OPEN_DOOR ]  -- no pathfinding
   }
 barrel = TileKind
