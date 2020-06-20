@@ -1524,7 +1524,7 @@ motionScanner = necklaceTemplate
   , iaspects = [ Timeout $ 4 + 1 `dL` 6
                    -- positive dL dice, since the periodic effect is detrimental
                , AddSkill SkNocto 1
-               , AddSkill SkArmorMelee (-20 + (1 `dL` 3) * 5)
+               , AddSkill SkArmorMelee $ (-4 + 1 `dL` 3) * 5
                , EqpSlot EqpSlotMiscBonus ]
                ++ iaspects_necklaceTemplate
   , ieffects = [Explode S_PING_PLASH]
@@ -1539,12 +1539,12 @@ imageItensifier = ItemKind
   , ifreq    = [(TREASURE, 100), (ADD_NOCTO_1, 80), (MUSEAL, 100)]
   , iflavour = zipFancy [BrGreen]
   , icount   = 1
-  , irarity  = [(5, 3)]
+  , irarity  = [(5, 2)]
   , iverbHit = "rattle"
   , iweight  = 700
   , idamage  = 0
   , iaspects = [ AddSkill SkNocto 1, AddSkill SkSight (-1)
-               , AddSkill SkArmorMelee $ (-5 + 1 `dL` 3) * 5
+               , AddSkill SkArmorMelee $ (-6 + 1 `dL` 3) * 5
                , SetFlag Precious, SetFlag Equipable
                , EqpSlot EqpSlotMiscBonus ]
   , ieffects = []
