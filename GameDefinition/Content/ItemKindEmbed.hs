@@ -710,7 +710,7 @@ depositBoxSummonHero = treasureCache
   { iname    = "noisy large deposit box"
   , ifreq    = [(DEPOSIT_BOX, 30)]
   , iflavour = zipFancy [Blue]
-  , iaspects = [SetFlag Unique, SetFlag Durable]
+  , iaspects = [SetFlag Unique]
   , ieffects = [Summon HERO 1, CreateItem Nothing CGround MUSEAL timerNone]
   , idesc    = "Judging from the frantic sounds, this deposit cell with a time lock has trapped something big recently."
   }
@@ -718,7 +718,7 @@ depositBoxSummonMonster = treasureCache
   { iname    = "throbbing deposit box"
   , ifreq    = [(DEPOSIT_BOX, 10)]
   , iflavour = zipFancy [Red]
-  , iaspects = [SetFlag Durable]
+  , iaspects = []
   , ieffects = [ Summon MOBILE_MONSTER 1
                , CreateItem Nothing CGround TREASURE timerNone ]
   , idesc    = "Judging from the incessant noises, this deposit cell with a time lock has trapped something recently."
