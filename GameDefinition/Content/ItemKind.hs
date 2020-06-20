@@ -2742,10 +2742,10 @@ spotlight = ItemKind
   , iverbHit = "illuminate"
   , iweight  = 3000
   , idamage  = 0
-  , iaspects = [ AddSkill SkShine 4
-               , AddSkill SkHurtMelee (-3)  -- heavy and unwieldy
+  , iaspects = [ AddSkill SkShine 3
+               , AddSkill SkHurtMelee (-2)  -- heavy and unwieldy
                , SetFlag Equipable, EqpSlot EqpSlotShine ]
-  , ieffects = [Detect DetectHidden 20]
+  , ieffects = [Detect DetectHidden 10]
   , idesc    = "Powerful wide-beam spotlight in an unwieldy rack-mounted package. On overdrive, it can shine through thin construction surfaces, underlying fault lines."
   , ikit     = []
   }
