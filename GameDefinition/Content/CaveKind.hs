@@ -173,11 +173,11 @@ arena = rogue
   , cactorCoeff   = 40  -- smallish level, but easy to view and plan
   , cactorFreq    = [ (MONSTER, 50), (ANIMAL, 70), (ROBOT, 5)
                     , (IK.AQUATIC, 10) ]
-  , citemNum      = 14 `d` 2
-  , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 10)
+  , citemNum      = 16 `d` 2
+  , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 20)
                     , (IK.TREASURE, 40)
                     , (GARDENING_TOOL, 200)  -- useless and boring by this point
-                    , (IK.ANY_POTION, 100) ]  -- nature
+                    , (IK.ANY_POTION, 200) ]  -- nature
   , cplaceFreq    = [(ARENA, 1)]
   , cpassable     = True
   , cdefTile      = ARENA_SET_LIT
@@ -204,8 +204,8 @@ casino = arena
   , cactorFreq    = [(MONSTER, 50), (ANIMAL, 25), (ROBOT, 50)]
   , citemNum      = 14 `d` 2  -- rare, so make it exciting by keeping many items
   , citemFreq     = [ (IK.COMMON_ITEM, 20)
-                    , (IK.CRAWL_ITEM, 20)  -- slight spice
-                    , (IK.TREASURE, 80) ]  -- lives up to its name
+                    , (IK.CRAWL_ITEM, 20)
+                    , (IK.TREASURE, 100) ]  -- lives up to its name
   , cdefTile      = ARENA_SET_DARK
   , cfenceTileN   = HABITAT_CONTAINMENT_WALL  -- small cave
   , cfenceTileE   = HABITAT_CONTAINMENT_WALL
@@ -227,7 +227,7 @@ museum = arena
   , cactorFreq    = [(MONSTER, 100), (ANIMAL, 25), (ROBOT, 25)]
   , citemNum      = 16 `d` 2  -- rare, so make it exciting
   , citemFreq     = [ (IK.COMMON_ITEM, 20)
-                    , (IK.CRAWL_ITEM, 10)
+                    , (IK.CRAWL_ITEM, 20)
                     , (IK.TREASURE, 20)
                     , (MUSEAL, 200) ]  -- lives up to its name
   , cplaceFreq    = [(MUSEUM, 1)]
@@ -255,7 +255,7 @@ laboratory = rogue
   , copenChance   = 1%2
   , cactorFreq    = [ (MONSTER, 50), (ANIMAL, 70), (ROBOT, 5)
                     , (IK.AQUATIC, 10) ]
-  , citemNum      = 17 `d` 2  -- reward difficulty, despite fewer rooms
+  , citemNum      = 20 `d` 2  -- reward difficulty, despite fewer rooms
   , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 40)
                     , (IK.TREASURE, 40), (IK.EXPLOSIVE, 80) ]
   , cplaceFreq    = [(LABORATORY, 1)]
@@ -321,7 +321,7 @@ power = noise
   , cminPlaceSize = DiceXY 7 7
   , cmaxPlaceSize = DiceXY 20 20
   , cnightOdds    = 51  -- easier variant, but looks sinister
-  , citemNum      = 17 `d` 2  -- an incentive to explore the final labyrinth
+  , citemNum      = 16 `d` 2
   , citemFreq     = [(IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 10), (GEM, 80)]
                       -- can't be "valuable" or template items generated
   , cdefTile      = POWER_SET_DARK
@@ -352,7 +352,7 @@ empty = rogue
   , chidden       = 0
   , cactorCoeff   = 40  -- easy to view and plan
   , cactorFreq    = [(MONSTER, 10), (ANIMAL, 5), (ROBOT, 85)]
-  , citemNum      = 17 `d` 2  -- lots of free space, but extra loot present
+  , citemNum      = 18 `d` 2  -- lots of free space, but extra loot present
   , cplaceFreq    = [(EMPTY, 1)]
   , cpassable     = True
   , cdefTile      = EMPTY_SET_LIT
@@ -427,7 +427,7 @@ bridge = rogue
   , cactorCoeff   = 300  -- it's quite deep already, so spawn slowly;
                          -- this is initially the best level for sleeping
   , cactorFreq    = [(ANIMAL, 100)]
-  , citemNum      = 10 `d` 2  -- lure them in with loot
+  , citemNum      = 12 `d` 2  -- lure them in with loot
   , citemFreq     = [(IK.COMMON_ITEM, 100), (GARDENING_TOOL, 800)]
   , cdefTile      = FILLER_WALL
   , cfenceTileN   = HABITAT_CONTAINMENT_WALL  -- cave isolated for safety
@@ -450,7 +450,7 @@ shallowRogue = rogue
   , cYminSize     = 37
   , cactorCoeff   = 120  -- more difficult
   , cactorFreq    = filter ((/= MONSTER) . fst) $ cactorFreq rogue
-  , citemNum      = 14 `d` 2
+  , citemNum      = 16 `d` 2
   , citemFreq     = [ (IK.COMMON_ITEM, 30), (IK.CRAWL_ITEM, 70)
                     , (GARDENING_TOOL, 800), (IK.ANY_FLASK, 200) ]
   , cmaxStairsNum = 2

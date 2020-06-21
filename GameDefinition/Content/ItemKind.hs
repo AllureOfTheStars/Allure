@@ -673,7 +673,7 @@ potionTemplate = ItemKind
   , ifreq    = [(POTION_UNKNOWN, 1)]
   , iflavour = zipLiquid brightCol ++ zipPlain brightCol ++ zipFancy brightCol
   , icount   = 1 `dL` 3
-  , irarity  = [(1, 10), (10, 5)]
+  , irarity  = [(1, 10), (10, 6)]
   , iverbHit = "splash"
   , iweight  = 200
   , idamage  = 0
@@ -789,7 +789,7 @@ potion9 = potionTemplate
   }
 potion10 = potionTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
-  , irarity  = [(10, 7)]
+  , irarity  = [(10, 8)]
   , iaspects = ELabel "of frenzy"
                : iaspects potionTemplate
   , ieffects = [ Yell
@@ -802,7 +802,7 @@ potion10 = potionTemplate
   }
 potion11 = potionTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
-  , irarity  = [(10, 7)]
+  , irarity  = [(10, 8)]
   , iaspects = ELabel "of panic"
                : iaspects potionTemplate
   , ieffects = [ RefillCalm (-60)
@@ -815,7 +815,7 @@ potion11 = potionTemplate
   }
 potion12 = potionTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
-  , irarity  = [(10, 7)]
+  , irarity  = [(10, 8)]
   , iaspects = ELabel "of quicksilver"
                : iaspects potionTemplate
   , ieffects = [ toOrganGood S_HASTED (20 + 1 `d` 5)
@@ -827,7 +827,7 @@ potion12 = potionTemplate
   }
 potion13 = potionTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
-  , irarity  = [(10, 5)]
+  , irarity  = [(10, 7)]
   , iaspects = ELabel "of slow resistance"
                : iaspects potionTemplate
   , ieffects = [ toOrganNoTimer S_SLOW_RESISTANT
@@ -835,7 +835,7 @@ potion13 = potionTemplate
   }
 potion14 = potionTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_POTION, 100), (ANY_GLASS, 100)]
-  , irarity  = [(10, 5)]
+  , irarity  = [(10, 7)]
   , iaspects = ELabel "of poison resistance"
                : iaspects potionTemplate
   , ieffects = [ toOrganNoTimer S_POISON_RESISTANT
@@ -2242,7 +2242,7 @@ knife = ItemKind
   , iweight  = 1000
   , idamage  = 5 `d` 1
   , iaspects = [ Timeout 3
-               , AddSkill SkHurtMelee $ (-1 + 1 `d` 3 + 1 `dL` 3) * 3
+               , AddSkill SkHurtMelee $ (1 `d` 2 + 1 `dL` 3) * 3
                    -- very common, so don't make too random nor too good
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotWeaponFast
