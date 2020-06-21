@@ -205,7 +205,7 @@ smallJaw = fist
 
 -- * Cooldown melee damage organs without effects
 
-tentacle = fist  -- to copies only
+tentacle = fist  -- two copies only
   { iname    = "tentacle"
   , ifreq    = [(S_TENTACLE, 1)]
   , iverbHit = "slap"

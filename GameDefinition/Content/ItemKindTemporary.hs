@@ -10,10 +10,10 @@ module Content.ItemKindTemporary
     pattern S_IMMOBILE, pattern S_PACIFIED, pattern S_IRREPLACEABLE, pattern S_RETAINING, pattern S_IMPATIENT, pattern S_DISPOSSESSED, pattern S_WITHHOLDING, pattern S_PARSIMONIOUS
   , pattern S_MORE_MOBILE, pattern S_MORE_COMBATIVE, pattern S_MORE_DISPLACING, pattern S_MORE_MODIFYING, pattern S_MORE_PATIENT, pattern S_MORE_TIDY, pattern S_MORE_PROJECTING, pattern S_MORE_PRACTICAL
   , pattern S_STRENGTHENED, pattern S_WEAKENED, pattern S_PROTECTED_FROM_MELEE, pattern S_PROTECTED_FROM_RANGED, pattern S_DEFENSELESS, pattern S_RESOLUTE, pattern S_HASTED, pattern S_SLOWED, pattern S_FAR_SIGHTED, pattern S_BLIND, pattern S_KEEN_SMELLING, pattern S_FOUL_SMELLING, pattern S_ROSE_SMELLING, pattern S_SHINY_EYED, pattern S_DEAFENED, pattern S_DEAF, pattern S_DRUNK, pattern S_FRENZIED, pattern S_REGENERATING, pattern S_POISONED, pattern S_SLOW_RESISTANT, pattern S_POISON_RESISTANT
-   , pattern S_PAINTED
-   , temporariesGNSingleton, noStatGN, bonusStatGN
-   , -- * Content
-     temporaries
+  , pattern S_PAINTED
+  , temporariesGNSingleton, noStatGN, bonusStatGN
+  , -- * Content
+    temporaries
   ) where
 
 import Prelude ()

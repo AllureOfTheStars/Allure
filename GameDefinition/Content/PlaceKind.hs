@@ -7,9 +7,9 @@
 -- | Room, hall and passage definitions.
 module Content.PlaceKind
   ( -- * Group name patterns
-    pattern ROGUE, pattern RESIDENTIAL, pattern LABORATORY, pattern ZOO, pattern RAID, pattern BRAWL, pattern SHOOTOUT, pattern ARENA, pattern ESCAPE, pattern AMBUSH, pattern BATTLE, pattern NOISE, pattern EMPTY
+    pattern ROGUE, pattern LABORATORY, pattern ZOO, pattern BRAWL, pattern SHOOTOUT, pattern ARENA, pattern ESCAPE, pattern AMBUSH, pattern BATTLE, pattern NOISE, pattern EMPTY
   , pattern INDOOR_ESCAPE_DOWN, pattern INDOOR_ESCAPE_UP, pattern OUTDOOR_ESCAPE_DOWN, pattern TINY_STAIRCASE, pattern OPEN_STAIRCASE, pattern CLOSED_STAIRCASE, pattern WALLED_STAIRCASE, pattern GATED_TINY_STAIRCASE, pattern GATED_OPEN_STAIRCASE, pattern GATED_CLOSED_STAIRCASE, pattern OUTDOOR_TINY_STAIRCASE, pattern OUTDOOR_CLOSED_STAIRCASE, pattern OUTDOOR_WALLED_STAIRCASE
-  , pattern MUSEUM, pattern EXIT
+  , pattern RESIDENTIAL, pattern MUSEUM, pattern EXIT, pattern RAID
   , pattern TINY_LIFT, pattern OPEN_LIFT, pattern WALLED_LIFT, pattern CLOSED_LIFT, pattern ESCAPE_FROM_SPACESHIP_DOWN, pattern DECON_TINY_STAIRCASE, pattern DECON_OPEN_STAIRCASE, pattern DECON_WALLED_STAIRCASE, pattern DECON_TINY_LIFT, pattern DECON_OPEN_LIFT, pattern DECON_WALLED_LIFT, pattern GATED_TINY_LIFT, pattern GATED_OPEN_LIFT, pattern GATED_CLOSED_LIFT, pattern WELDED_TINY_LIFT, pattern WELDED_OPEN_LIFT, pattern WELDED_WALLED_LIFT, pattern WELDED_TINY_STAIRCASE, pattern WELDED_OPEN_STAIRCASE, pattern WELDED_WALLED_STAIRCASE
   , groupNamesSingleton, groupNames
   , -- * Content
@@ -36,25 +36,23 @@ groupNamesSingleton = []
 -- group names, let's also add the generated group names to @groupNames@.
 groupNames :: [GroupName PlaceKind]
 groupNames =
-       [ROGUE, RESIDENTIAL, LABORATORY, ZOO, RAID, BRAWL, SHOOTOUT, ARENA, ESCAPE, AMBUSH, BATTLE, NOISE, EMPTY]
+       [ROGUE, LABORATORY, ZOO, BRAWL, SHOOTOUT, ARENA, ESCAPE, AMBUSH, BATTLE, NOISE, EMPTY]
     ++ [INDOOR_ESCAPE_DOWN, INDOOR_ESCAPE_UP, OUTDOOR_ESCAPE_DOWN, TINY_STAIRCASE, OPEN_STAIRCASE, CLOSED_STAIRCASE, WALLED_STAIRCASE]
-    ++ [MUSEUM, EXIT]
+    ++ [RESIDENTIAL, MUSEUM, EXIT, RAID]
     ++ [TINY_LIFT, OPEN_LIFT, WALLED_LIFT, CLOSED_LIFT, ESCAPE_FROM_SPACESHIP_DOWN]
     ++ fst generatedStairs
 
-pattern ROGUE, RESIDENTIAL, LABORATORY, ZOO, RAID, BRAWL, SHOOTOUT, ARENA, ESCAPE, AMBUSH, BATTLE, NOISE, EMPTY :: GroupName PlaceKind
+pattern ROGUE, LABORATORY, ZOO, BRAWL, SHOOTOUT, ARENA, ESCAPE, AMBUSH, BATTLE, NOISE, EMPTY :: GroupName PlaceKind
 
 pattern INDOOR_ESCAPE_DOWN, INDOOR_ESCAPE_UP, OUTDOOR_ESCAPE_DOWN, TINY_STAIRCASE, OPEN_STAIRCASE, CLOSED_STAIRCASE, WALLED_STAIRCASE, GATED_TINY_STAIRCASE, GATED_OPEN_STAIRCASE, GATED_CLOSED_STAIRCASE, OUTDOOR_TINY_STAIRCASE, OUTDOOR_CLOSED_STAIRCASE, OUTDOOR_WALLED_STAIRCASE :: GroupName PlaceKind
 
-pattern MUSEUM, EXIT :: GroupName PlaceKind
+pattern RESIDENTIAL, MUSEUM, EXIT, RAID :: GroupName PlaceKind
 
 pattern TINY_LIFT, OPEN_LIFT, WALLED_LIFT, CLOSED_LIFT, ESCAPE_FROM_SPACESHIP_DOWN, DECON_TINY_STAIRCASE, DECON_OPEN_STAIRCASE, DECON_WALLED_STAIRCASE, DECON_TINY_LIFT, DECON_OPEN_LIFT, DECON_WALLED_LIFT, GATED_TINY_LIFT, GATED_OPEN_LIFT, GATED_CLOSED_LIFT, WELDED_TINY_LIFT, WELDED_OPEN_LIFT, WELDED_WALLED_LIFT, WELDED_TINY_STAIRCASE, WELDED_OPEN_STAIRCASE, WELDED_WALLED_STAIRCASE :: GroupName PlaceKind
 
 pattern ROGUE = GroupName "rogue"
-pattern RESIDENTIAL = GroupName "residential"
 pattern LABORATORY = GroupName "laboratory"
 pattern ZOO = GroupName "zoo"
-pattern RAID = GroupName "raid"
 pattern BRAWL = GroupName "brawl"
 pattern SHOOTOUT = GroupName "shootout"
 pattern ARENA = GroupName "arena"
@@ -82,8 +80,10 @@ pattern OUTDOOR_CLOSED_STAIRCASE = GroupName "outdoor closed staircase"
 pattern OUTDOOR_WALLED_STAIRCASE = GroupName "outdoor walled staircase"
 
 -- ** Allure-specific
+pattern RESIDENTIAL = GroupName "residential"
 pattern MUSEUM = GroupName "museum"
 pattern EXIT = GroupName "exit"
+pattern RAID = GroupName "raid"
 
 pattern TINY_LIFT = GroupName "tiny lift"
 pattern OPEN_LIFT = GroupName "open lift"

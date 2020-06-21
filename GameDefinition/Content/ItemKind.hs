@@ -600,7 +600,6 @@ flask11 = flaskTemplate
 flask12 = flaskTemplate
   { ifreq    = [ (COMMON_ITEM, 100), (ANY_FLASK, 100), (EXPLOSIVE, 100)
                , (ANY_GLASS, 100), (WATER_SOURCE, 1) ]
-  , icount   = 1 `d` 2  -- too powerful, for aliens, en masse
   , iaspects = ELabel "of bait and switch"
                : iaspects flaskTemplate
   , ieffects = [ Summon MOBILE_ANIMAL 1  -- won't work if no Calm; fun exploit
