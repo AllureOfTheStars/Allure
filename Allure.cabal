@@ -1,5 +1,5 @@
 cabal-version: 2.2
-name:           Allure
+name:          Allure
 -- The package version. See the Haskell package versioning policy (PVP)
 -- for standards guiding when and how versions should be incremented.
 -- http://www.haskell.org/haskellwiki/Package_versioning_policy
@@ -8,32 +8,31 @@ name:           Allure
 --             | |  | +--- code changes with no API change
 version:       0.10.0.0
 synopsis:      Near-future Sci-Fi roguelike and tactical squad combat game
-description:   Allure of the Stars is a near-future Sci-Fi roguelike
-               and tactical squad combat game. Binaries and the game manual
-               are available at the homepage, where you can also
-               try the game out in the browser:
-               <http://allureofthestars.com/play>.
-               (It runs fastest on Chrome. Keyboard commands and savefiles
-               are supported only on recent enough versions of browsers.
-               Mouse should work everywhere.)
-               .
-               Not a single picture in this game. You have to imagine everything
-               yourself, like with a book (a grown-up book, without pictures).
-               Once you learn to imagine things, though, you can keep exploring
-               and mastering the world and making up stories for a long time.
-               .
-               The game is written in Haskell using the LambdaHack roguelike
-               game engine <http://hackage.haskell.org/package/LambdaHack>.
-               Please see the changelog file for recent improvements
-               and the issue tracker for short-term plans. Long term goals
-               are high replayability and auto-balancing through procedural
-               content generation and persistent content modification
-               based on player behaviour. Contributions are welcome.
+description: Allure of the Stars is a near-future Sci-Fi roguelike
+             and tactical squad combat game. Binaries and the game manual
+             are available at the homepage. You can also try the game out
+             in the browser at <http://allureofthestars.com/play>.
+             The browser version runs fastest on Chrome, keyboard commands
+             and savefiles are supported only on recent enough versions
+             of browsers, but mouse should work everywhere.
+             .
+             Not a single image in this game. You have to imagine everything
+             yourself, like with a book (a grown-up book, without pictures).
+             Once you learn to imagine things, though, you can keep exploring
+             and mastering the world and making up stories for a long time.
+             .
+             The game is written in Haskell using the LambdaHack roguelike
+             game engine <http://hackage.haskell.org/package/LambdaHack>.
+             Please see the changelog file for recent improvements
+             and the issue tracker for short-term plans. Long term goals
+             are high replayability and auto-balancing through procedural
+             content generation and persistent content modification
+             based on player behaviour. Contributions are welcome.
 homepage:      http://allureofthestars.com
 bug-reports:   http://github.com/AllureOfTheStars/Allure/issues
 license:       AGPL-3.0-or-later
 license-file:  COPYLEFT
-tested-with:   GHC==8.2.2, GHC==8.4.4, GHC==8.6.5, GHC==8.8.3
+tested-with:   GHC==8.2.2, GHC==8.4.4, GHC==8.6.5, GHC==8.8.3, GHC==8.10.1
 data-files:    GameDefinition/config.ui.default,
                GameDefinition/fonts/16x16xw.woff,
                GameDefinition/fonts/16x16xw.bdf,
@@ -128,7 +127,7 @@ library this-game-content
 -- TODO: instead:     ,definition
                       ,base >= 4.10 && < 99
                       ,filepath
-                      ,template-haskell >= 2.6
+                      ,template-haskell
                       ,text
 
 library this-game-src
