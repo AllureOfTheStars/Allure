@@ -435,7 +435,7 @@ In-game detailed item descriptions contain melee and ranged damage estimates.
 They do not take into account damage from effects and, if bonuses are not
 known, guesses are based on averages for the item kind in question.
 The displayed figures are rounded, but the game internally keeps track
-of minute fractions of HP for all actors in all calculcations.
+of minute fractions of HP for all actors in all calculations.
 
 The combat stress drains Calm, gradually limiting viewing radius and,
 if Calm reaches zero and the actor is sufficiently impressed by his foes,
@@ -513,7 +513,7 @@ whether regarding item kind, item stats or lifetime, if applicable.
 Q: Is autoexplore safe?
 
 A: Not at all. It doesn't try to guess which hazardous terrain you want
-to avoid and which to bardge through, so be prepared to abort exploration
+to avoid and which to barge through, so be prepared to abort exploration
 if open fire or slippery ground comes into view. Unless you have HP to spare.
 
 
@@ -552,9 +552,9 @@ is heard by at least one of teammates and how far it is from the pointman
 
 Q: Why are there two 'weakened' conditions in the organ menu of my hero?
 
-A: Each teams has a differen recipe for their weakness brew, so multiple
+A: Each teams has a different recipe for their weakness brew, so multiple
 affliction by the concoction from a single team prolongs the malady,
-but from many teams, compounds the concurrently occuring harm.
+but from many teams, compounds the concurrently occurring harm.
 The benefit is that it's possible to tell the perpetrator team of the ailment.
 The exceptions are the conditions that activate each turn, e.g., healing
 (regeneration, various resistances that effectively cure each turn)
