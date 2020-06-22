@@ -630,7 +630,7 @@ flask15 = flaskTemplate
   { iname    = "cartridge"
   , ifreq    = [ (COMMON_ITEM, 100), (ANY_FLASK, 100), (EXPLOSIVE, 100)
                , (ANY_GLASS, 100), (LIQUID_NITROGEN, 1), (COLD_SOURCE, 1)
-               , (FIRE_FIGHTING_ITEM, 35) ]
+               , (FIRE_FIGHTING_ITEM, 40) ]
   , irarity  = [(1, 3)]  -- scavenged from walls
   , iaspects = ELabel "of liquid nitrogen"
                : iaspects flaskTemplate
@@ -1259,7 +1259,7 @@ light3 = ItemKind
 blanket = ItemKind
   { isymbol  = symbolLight
   , iname    = "mineral fibre blanket"
-  , ifreq    = [ (COMMON_ITEM, 20), (LIGHT_ATTENUATOR, 20), (THICK_CLOTH, 1)
+  , ifreq    = [ (COMMON_ITEM, 100), (LIGHT_ATTENUATOR, 20), (THICK_CLOTH, 1)
                , (FIREPROOF_CLOTH, 1), (FIRE_FIGHTING_ITEM, 100)
                , (SHARPENING_TOOL, 1) ]
   , iflavour = zipPlain [Magenta]
