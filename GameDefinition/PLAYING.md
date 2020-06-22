@@ -510,6 +510,13 @@ items created by crafting are considered to originate at maximal depth
 whether regarding item kind, item stats or lifetime, if applicable.
 
 
+Q: Is autoexplore safe?
+
+A: Not at all. It doesn't try to guess which hazardous terrain you want
+to avoid and which to bardge through, so be prepared to abort exploration
+if open fire or slippery ground comes into view. Unless you have HP to spare.
+
+
 Q: Why does the percentage of explored tiles turns from 100% to 99%?
 
 A: Apparently enemies transformed a tile from unexplorable terrain kind
