@@ -910,7 +910,7 @@ dustFaucet = ItemKind
                , AddSkill SkWait 1, AddSkill SkMelee 1  -- no brain
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "A torn pipeline for venting flamable powders filtered from cargo areas out into the void, where they cannot ignite. Depending on the pressure in subsidiary ducts, it may contain dust of aluminum, magnesium, titanium, flour, starch, various nitrates and perchlorates."
+  , idesc    = "A torn pipeline for venting flammable powders filtered from cargo areas out into the void, where they cannot ignite. Depending on the pressure in subsidiary ducts, it may contain dust of aluminum, magnesium, titanium, flour, starch, various nitrates and perchlorates."
   , ikit     = [(S_DUST_VENT, COrgan), (S_DUST_FISSURE, COrgan)]
   }
 fuelFaucet = ItemKind

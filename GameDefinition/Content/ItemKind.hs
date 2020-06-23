@@ -495,7 +495,7 @@ flaskTemplate = ItemKind
   , iaspects = [ PresentAs FLASK_UNKNOWN, SetFlag Lobable, SetFlag Fragile
                , toVelocity 60 ]  -- oily, rather bad grip
   , ieffects = []
-  , idesc    = "A flask of oily liquid of a suspect color. Something seems to be moving inside. Double dose causes twice longer effect. Triple dose is not advisable, since the active substance is never without unhealty side-efects and often dissolved in large volumes of alcohol."
+  , idesc    = "A flask of oily liquid of a suspect color. Something seems to be moving inside. Double dose causes twice longer effect. Triple dose is not advisable, since the active substance is never without unhealthy side-effects and often dissolved in large volumes of alcohol."
   , ikit     = []
   }
 flask1 = flaskTemplate
@@ -1280,7 +1280,7 @@ blanket = ItemKind
   , ikit     = []
   }
 
--- ** Tools used for terrain transormation and crafting, not for wearing
+-- ** Tools used for terrain transformation and crafting, not for wearing
 
 chisel = ItemKind  -- ignored by AI, but that's fine, others suffice
   { isymbol  = symbolTool
@@ -1291,7 +1291,7 @@ chisel = ItemKind  -- ignored by AI, but that's fine, others suffice
   , irarity  = [(1, 100)]
   , iverbHit = "dismantle"
   , iweight  = 500
-  , idamage  = 0  -- not a missile to avoid wasting, before a worskhop found
+  , idamage  = 0  -- not a missile to avoid wasting, before a workshop found
   , iaspects = []  -- lost after one use; a consumable
   , ieffects = []
   , idesc    = "It is a breaching tool."  -- TODO: https://en.wikipedia.org/wiki/Chisel
@@ -2140,12 +2140,12 @@ hammerTemplate = ItemKind  -- properly hafted *and* glued to handle/pole
   , iverbHit = "club"
   , iweight  = 4000
   , idamage  = 0  -- all damage independent of melee skill; this also helps
-                  -- not to lie about damage of unindentified items
+                  -- not to lie about damage of unidentified items
   , iaspects = [ PresentAs HAMMER_UNKNOWN
                , SetFlag Durable, SetFlag Meleeable, EqpSlot EqpSlotWeaponBig
                , toVelocity 0 ]  -- totally unbalanced
   , ieffects = []
-  , idesc    = "One of many kinds of hammers employed in construction work. The usual ones with blunt heads don't cause grave wounds, but enough weigth on a long handle can shake and bruise even most armored foes. However, larger hammers require more time to recover after a swing."  -- replaced with one of the descriptions below at identification time
+  , idesc    = "One of many kinds of hammers employed in construction work. The usual ones with blunt heads don't cause grave wounds, but enough weight on a long handle can shake and bruise even most armored foes. However, larger hammers require more time to recover after a swing."  -- replaced with one of the descriptions below at identification time
   , ikit     = []
   }
 hammer1 = hammerTemplate  -- 1m handle, blunt
@@ -2204,7 +2204,7 @@ hammerParalyze = hammerTemplate
                , Timeout 10 ]  -- 2m, but light head and pole
                ++ iaspects hammerTemplate
   , ieffects = [RefillHP (-8), Paralyze 10]
-  , idesc    = "This exquisite demolition hammer with a titanium head and excepthionally long synthetic handle leaves no wall and no body standing."
+  , idesc    = "This exquisite demolition hammer with a titanium head and exceptionally long synthetic handle leaves no wall and no body standing."
   }
 hammerSpark = hammerTemplate  -- the only hammer with significantly heavier head
   { iname    = "Grand Smithhammer"
@@ -2224,7 +2224,7 @@ hammerSpark = hammerTemplate  -- the only hammer with significantly heavier head
                    -- other enemies rarely, though
                , RefillHP (-15) ]  -- hammer tanks prefer consistent damage
                                    -- over 1-shot kills, so this is not OP
-  , idesc    = "High carbon steel of this heavy old hammer doesn't yield even to the newest alloys and produces fountains of sparks in defiance. Whatever it forge-welds together, stays together. Don't try to use it witout training, however."
+  , idesc    = "High carbon steel of this heavy old hammer doesn't yield even to the newest alloys and produces fountains of sparks in defiance. Whatever it forge-welds together, stays together. Don't try to use it without training, however."
   }
 
 -- The standard melee weapons do most of their damage as kinetic edged
@@ -2267,7 +2267,7 @@ dagger = knife
   , iverbHit = "open"
   , irarity  = [(7, 20)]  -- like hammer, not knife, to prevent excess
   , idamage  = 7 `d` 1
-  , idesc    = "A double-edged knife with a sharp tip that penetrates the smallest defence gaps, making it especially useful in conjunction with a larger but less nible weapon."
+  , idesc    = "A double-edged knife with a sharp tip that penetrates the smallest defence gaps, making it especially useful in conjunction with a larger but less nimble weapon."
   }
 sword = ItemKind  -- dead end, but can be crafted with just one file tool
   { isymbol  = symbolPolearm
@@ -2418,7 +2418,7 @@ militaryKnife = knife
                    -- @RefillHP@ to avoid a no-brainer of durable tool use
                , DropItem 1 maxBound COrgan CONDITION ]
                    -- useful for AI who is the main user of this weapon
-  , idesc    = "Millitary design laser-sharpened alloy blade able to cleanly open an artery at the lightest touch through layers of fabric. Despite its modest size, it defeats barbed wire in one slice."
+  , idesc    = "Military design laser-sharpened alloy blade able to cleanly open an artery at the lightest touch through layers of fabric. Despite its modest size, it defeats barbed wire in one slice."
   }
 militaryBaton = ItemKind
   { isymbol  = symbolHafted

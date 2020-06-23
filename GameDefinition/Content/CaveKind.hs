@@ -461,7 +461,8 @@ shallowRogue = rogue
 --    with virtually no story-wise limits wrt height and size.
 --    Here @citemNum@ is very random, for interesting replays; no risk
 --    of bad rolls accumulating and trashing a long game, particularly
---    in symmetric senarios, where both parties can use extra loot equally well.
+--    in symmetric scenarios, where both parties can use extra loot
+--    equally well.
 
 raid = rogue
   { csymbol       = 'S'

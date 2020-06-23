@@ -775,7 +775,7 @@ jetBooster = armoredSkin  -- neither melee nor periodic so to be triggered,
 rhinoInertia = jetBooster
   { iname    = "rhino inertia"
   , ifreq    = [(S_RHINO_INERTIA, 1)]
-  , iverbHit = "thuder"
+  , iverbHit = "thunder"
   , idesc    = "It's a struggle to move the mass and it's a reinforced concrete wall that stops it."
   }
 electricAmbience = armoredSkin
