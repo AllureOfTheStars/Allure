@@ -1,7 +1,7 @@
 Allure of the Stars
 ===================
 
-[![Build Status](https://travis-ci.org/AllureOfTheStars/Allure.svg?branch=master)](https://travis-ci.org/AllureOfTheStars/Allure)
+[![Build Status](https://secure.travis-ci.org/AllureOfTheStars/Allure.svg?master)](https://travis-ci.org/AllureOfTheStars/Allure)
 [![Hackage](https://img.shields.io/hackage/v/Allure.svg)](https://hackage.haskell.org/package/Allure)
 [![Join the chat at https://gitter.im/AllureOfTheStars/Allure](https://badges.gitter.im/AllureOfTheStars/Allure.svg)](https://gitter.im/AllureOfTheStars/Allure?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
