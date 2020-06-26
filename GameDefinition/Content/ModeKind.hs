@@ -689,7 +689,7 @@ cavesDig =
 
 cavesSee = let numberCaves n c = ([n], [c])
            in reverse $ zipWith numberCaves [1..]
-              $ concatMap (replicate 10) allCaves
+              $ concatMap (replicate 10) allCaves  -- $ take 7 allCaves
 
 allCaves :: [GroupName CaveKind]
 allCaves =

@@ -239,7 +239,7 @@ glasshouse4 = glasshouse
 pulpit = PlaceKind
   { psymbol  = 'p'
   , pname    = "a stand podium"
-  , pfreq    = [(ARENA, 15), (MUSEUM, 15), (ZOO, 80)]
+  , pfreq    = [(ARENA, 15), (MUSEUM, 15), (ZOO, 100)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FGround
@@ -1443,8 +1443,8 @@ cells6 = cells
   }
 cells7 = cells
   { pname    = "a defunct control room"
-  , pfreq    = [ (ROGUE, 5), (LABORATORY, 20)
-               , (EXIT, 20), (NOISE, 100), (AMBUSH, 50) ]
+  , pfreq    = [ (ROGUE, 10), (LABORATORY, 20)
+               , (EXIT, 30), (NOISE, 200), (AMBUSH, 50) ]
   , pfence   = FFloor
   , ptopLeft = [ "d·o"
                , "·#o"
@@ -1489,7 +1489,7 @@ tank4 = tank
   }
 tank5 = tank
   { pname    = "a barrel yard"
-  , pfreq    = [(EMPTY, 1500), (EXIT, 500), (NOISE, 500), (BATTLE, 250)]
+  , pfreq    = [(EMPTY, 1800), (EXIT, 700), (NOISE, 700), (BATTLE, 300)]
   , pcover   = CAlternate
   , ptopLeft = [ "bbX"
                , "bbX"
@@ -1671,7 +1671,7 @@ dormitory2 = dormitory
                ]
   }
 dormitory3 = dormitory
-  { pfreq    = [(RESIDENTIAL, 5000)]
+  { pfreq    = [(RESIDENTIAL, 2000)]
   , pcover   = CStretch
   , ptopLeft = [ "··#··"
                , "··#··"
