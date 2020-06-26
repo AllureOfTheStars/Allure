@@ -62,6 +62,16 @@ source-repository head
   type:               git
   location:           git://github.com/AllureOfTheStars/Allure.git
 
+flag with_expensive_assertions
+  description:        turn on expensive assertions of well-tested code
+  default:            False
+  manual:             True
+
+flag release
+  description:        prepare for a release (expose internal functions and types, etc.)
+  default:            True
+  manual:             True
+
 flag supportNodeJS
   description:        compile so that the JS blob works in terminal with NodeJS
   default:            True
@@ -84,7 +94,11 @@ common options
   ghc-options:        -Wall-missed-specialisations
   ghc-options:        -fno-ignore-asserts -fexpose-all-unfoldings -fspecialise-aggressively -fsimpl-tick-factor=200
 
-  cpp-options:        -DEXPOSE_INTERNAL
+  if flag(with_expensive_assertions)
+    cpp-options:      -DWITH_EXPENSIVE_ASSERTIONS
+
+  if flag(release)
+    cpp-options:      -DEXPOSE_INTERNAL
 
   ghcjs-options:      -DUSE_JSFILE
 
