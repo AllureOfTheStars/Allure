@@ -2068,7 +2068,7 @@ crowbar = ItemKind
   , idamage  = 2 `d` 1
   , iaspects = [ Timeout $ 2 + 1 `d` 3
                , SetFlag Durable, SetFlag Meleeable
-               , EqpSlot EqpSlotWeaponBig
+               , EqpSlot EqpSlotWeaponFast
                , toVelocity 0 ]  -- totally unbalanced
   , ieffects = [RefillHP (-3)]
                  -- @RefillHP@ to avoid a no-brainer of durable tool use;
