@@ -730,15 +730,11 @@ bushBurnt = TileKind
   { tsymbol  = '%'
   , tname    = "burnt bush"
   , tfreq    = [ (BATTLE_SET_DARK, 30), (AMBUSH_SET_DARK, 3), (ZOO_SET_DARK, 50)
-               , (BUSH_BURNING_OR_NOT, 25) ]
+               , (BUSH_BURNING_OR_NOT, 50) ]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
   , talter   = 4
   , tfeature = [Dark, Clear, OpenTo DIRT_DARK]
-                 -- when burnt, can be destroyed at least, clearning way;
-                 -- ensures ~confluence when pathfinding, that is, prevents
-                 -- OpenTo in bushBurning from determining a path that ends up
-                 -- in unwalkable tile after some unlucky terrain mdifications
   }
 bushBurning = TileKind
   { tsymbol  = '%'
@@ -754,7 +750,7 @@ bushBurning = TileKind
                , OpenWith ProjYes [(3, WATER_SOURCE)] S_SMOKE_LIT
                , ChangeWith ProjNo [(1, FIREPROOF_CLOTH)] S_BUSH_LIT
                    -- full effects experienced, but bush saved for repeat
-               , OpenTo BUSH_BURNING_OR_NOT ]
+               , ChangeTo BUSH_BURNING_OR_NOT ]
   }
 
 -- ** Walkable
@@ -1316,7 +1312,7 @@ underbrushBurning = TileKind  -- always lit
   { tsymbol  = ';'
   , tname    = "burning underbrush"
   , tfreq    = [ (AMBUSH_SET_DARK, 1), (ZOO_SET_DARK, 5)
-               , (BUSH_BURNING_OR_NOT, 25), (S_BURNING_UNDERBRUSH, 1) ]
+               , (S_BURNING_UNDERBRUSH, 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red
   , talter   = 2  -- due to this, ordinary projectiles can't put out the fire
