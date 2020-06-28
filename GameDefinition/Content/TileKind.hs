@@ -479,7 +479,7 @@ signboardRead = TileKind
   , tname    = "signboard"
   , tfreq    = [ (SIGNBOARD, 80), (EMPTY_SET_LIT, 4)
                , (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 2), (MUSEUM_SET_DARK, 1)
-               , (ESCAPE_SET_DARK, 1) ]
+               , (ESCAPE_SET_DARK, 2) ]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 5
@@ -832,7 +832,7 @@ floorArena = floorCorridor
 floorDamp = floorArena
   { tname    = "damp floor"
   , tfreq    = [ (NOISE_SET_LIT, 550), (EMPTY_SET_LIT, 3000)
-               , (ESCAPE_SET_LIT, 200), (DAMP_FLOOR_LIT, 1)
+               , (ESCAPE_SET_LIT, 300), (DAMP_FLOOR_LIT, 1)
                , (STAIR_TERMINAL_LIT, 20), (LIFT_TERMINAL_LIT, 6) ]
   , tfeature = ChangeWith ProjYes [(1, OIL_SOURCE)] S_OIL_SPILL  -- oil floats
                : ChangeWith ProjYes [(1, COLD_SOURCE)] S_FROZEN_PATH
@@ -842,7 +842,7 @@ floorDamp = floorArena
 floorDirt = floorArena
   { tname    = "dirt"
   , tfreq    = [ (BRAWL_SET_LIT, 900), (SHOOTOUT_SET_LIT, 900)
-               , (HUNT_SET_LIT, 900), (ESCAPE_SET_LIT, 800)
+               , (HUNT_SET_LIT, 900), (ESCAPE_SET_LIT, 700)
                , (AMBUSH_SET_LIT, 1000), (BATTLE_SET_LIT, 500)
                , (DIRT_LIT, 1) ]
   }
