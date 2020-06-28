@@ -531,7 +531,7 @@ rubble = TileKind
                , (LIFT_TERMINAL_LIT, 6), (LIFT_TERMINAL_DARK, 6)
                , (EMPTY_SET_LIT, 12), (EXIT_SET_LIT, 6)
                , (NOISE_SET_LIT, 40), (POWER_SET_DARK, 120)
-               , (ZOO_SET_DARK, 80), (AMBUSH_SET_DARK, 3) ]
+               , (ZOO_SET_DARK, 150), (AMBUSH_SET_DARK, 3) ]
   , tcolor   = BrYellow
   , tcolor2  = Brown
   , talter   = 4  -- boss can dig through
@@ -729,8 +729,8 @@ bushLit = TileKind
 bushBurnt = TileKind
   { tsymbol  = '%'
   , tname    = "burnt bush"
-  , tfreq    = [ (BATTLE_SET_DARK, 30), (AMBUSH_SET_DARK, 3), (ZOO_SET_DARK, 50)
-               , (BUSH_BURNING_OR_NOT, 50) ]
+  , tfreq    = [ (BATTLE_SET_DARK, 30), (AMBUSH_SET_DARK, 3)
+               , (ZOO_SET_DARK, 100), (BUSH_BURNING_OR_NOT, 50) ]
   , tcolor   = BrBlack
   , tcolor2  = BrBlack
   , talter   = 4
@@ -823,7 +823,7 @@ floorCorridor = TileKind
 floorArena = floorCorridor
   { tfreq    = [ (FLOOR_ARENA_LIT, 1), (ARENA_SET_LIT, 400)
                , (MUSEUM_SET_LIT, 400), (NOISE_SET_LIT, 50), (POWER_SET_LIT, 50)
-               , (EMPTY_SET_LIT, 400), (EXIT_SET_LIT, 100), (ZOO_SET_LIT, 600) ]
+               , (EMPTY_SET_LIT, 400), (EXIT_SET_LIT, 100), (ZOO_SET_LIT, 500) ]
   }
 floorDamp = floorArena
   { tname    = "damp floor"
@@ -1393,7 +1393,7 @@ underbrush = TileKind  -- always lit
                , (UNDERBRUSH_CLUMP_LIT, 1), (UNDERBRUSH_CLUMP_DARK, 1)
                , (EMPTY_SET_LIT, 200), (ARENA_SET_LIT, 80), (BRAWL_SET_LIT, 100)
                , (SHOOTOUT_SET_LIT, 100), (HUNT_SET_LIT, 100)
-               , (ESCAPE_SET_LIT, 100), (ZOO_SET_DARK, 100)
+               , (ESCAPE_SET_LIT, 100), (ZOO_SET_DARK, 5)
                , (AMBUSH_SET_DARK, 20)
                , (BUSH_CLUMP_LIT, 1), (BUSH_CLUMP_DARK, 1)
                , (TRAIL_LIT, 50), (SAFE_TRAIL_LIT, 50) ]
