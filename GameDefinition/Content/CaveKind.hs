@@ -671,7 +671,7 @@ ambush = rogue  -- a scenario with strong missiles;
   , cauxConnects  = 1%10  -- few lit trails, so hard to aim
   , chidden       = 0
   , cactorFreq    = []
-  , citemNum      = 6 `d` 8
+  , citemNum      = 10 `d` 10
   , citemFreq     = [ (IK.COMMON_ITEM, 30), (MERCENARY_AMMO, 200)
                     , (HARPOON, 300), (IK.EXPLOSIVE, 50) ]
   , cplaceFreq    = [(AMBUSH, 1)]

@@ -226,7 +226,7 @@ ambusher = warrior
   , ifreq    = [(AMBUSHER_HERO, 100), (MOBILE, 1)]
   , ikit     = humanOrgans  -- dark and numerous, so more kit without exploring
                ++ [ (RING_OF_OPPORTUNITY_SNIPER, CEqp)
-                  , (ANY_ARROW, CStash)
+                  , (ANY_ARROW, CStash), (ANY_ARROW, CStash)
                   , (WEAK_ARROW, CStash)
                   , (EXPLOSIVE, CStash)
                   , (LIGHT_ATTENUATOR, CEqp)

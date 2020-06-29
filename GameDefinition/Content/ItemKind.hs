@@ -398,10 +398,10 @@ fragmentationBomb = ItemKind
       -- deflagration, not detonation, so large mass and hard container
       -- required not to burn harmlessly; improvised short fuze;
       -- can't be more powerful or would fracture the spaceship's hull
-  , ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 200)]
+  , ifreq    = [(COMMON_ITEM, 100), (EXPLOSIVE, 300)]
   , iflavour = zipPlain [Red]
   , icount   = 1 `dL` 5  -- many, because not very intricate
-  , irarity  = [(5, 8), (10, 5)]
+  , irarity  = [(5, 10), (10, 5)]
   , iverbHit = "thud"
   , iweight  = 3000  -- low velocity due to weight
   , idamage  = 0  -- heavy and hard, but let's not confuse with blast damage
@@ -445,7 +445,7 @@ flashBomb = fragmentationBomb
 firecrackerBomb = fragmentationBomb
   { iname = "roll"  -- not fireworks, as they require outdoors
   , iflavour = zipPlain [BrMagenta]
-  , irarity  = [(1, 5), (5, 6)]  -- a toy, if deadly
+  , irarity  = [(1, 5), (5, 8)]  -- a toy, if harmful
   , iverbHit = "crack"  -- a pun, matches the verb from "ItemKindBlast"
   , iweight  = 1000
   , iaspects = [SetFlag Lobable, SetFlag Fragile]
