@@ -30,7 +30,7 @@ configure-prof:
 	cabal configure --enable-profiling --profiling-detail=exported-functions
 
 ghcjs-new-build:
-	cabal new-build -j1 --ghcjs --disable-library-profiling --disable-profiling .
+	cabal new-build --ghcjs .
 
 chrome-log:
 	google-chrome --enable-logging --v=1 file:///home/mikolaj/r/allureofthestars.github.io/play/index.html &
@@ -310,6 +310,3 @@ build-binary-screen-reader-ubuntu: build-binary-common
 	dist/build/Allure/Allure --version > /dev/null; \
 	LH_VERSION=$$(cat ~/.Allure/stdout.txt); \
 	tar -czf Allure_$${LH_VERSION}_screen-reader-ubuntu-16.04-amd64.tar.gz AllureOfTheStars
-
-new-build-dev:
-	cabal new-build --datadir=. --disable-optimization -j1 all

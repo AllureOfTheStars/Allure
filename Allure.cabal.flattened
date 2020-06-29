@@ -29,7 +29,7 @@ description: Allure of the Stars is a near-future Sci-Fi roguelike
              content generation and persistent content modification
              based on player behaviour. Contributions are welcome.
              .
-             This is a workaround .cabal file, flattened to eliminated
+             This is a workaround .cabal file, flattened to eliminate
              internal libraries until generating haddocks for them
              is fixed. The original .cabal file is stored in the github repo.
 homepage:      http://allureofthestars.com
