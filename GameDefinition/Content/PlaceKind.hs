@@ -1654,7 +1654,7 @@ dormitory = PlaceKind
   , pfence   = FWall
   , ptopLeft = [ "··#"
                , "··#"
-               , "#+#"
+               , "+##"
                , "ddd"
                ]
   , poverrideDark = [ ('d', FLOOR_ACTOR_ITEM_LIT)
@@ -1666,8 +1666,8 @@ dormitory = PlaceKind
   }
 dormitory2 = dormitory
   { pfreq    = [(RESIDENTIAL, 10000)]
-  , ptopLeft = [ "··#d"
-               , "··+d"
+  , ptopLeft = [ "··+d"
+               , "··#d"
                , "###d"
                ]
   }
@@ -1675,19 +1675,19 @@ dormitory3 = dormitory
   { pfreq    = [(RESIDENTIAL, 2000)]
   , pcover   = CStretch
   , ptopLeft = [ "··#··"
-               , "··#··"
-               , "#+#+#"
+               , "··+··"
+               , "#+###"
                , "ddddd"
                ]
   }
 dormitory4 = dormitory2
   { pfreq    = [(RESIDENTIAL, 10000)]
   , pcover   = CStretch
-  , ptopLeft = [ "··#d"
-               , "··+d"
-               , "###d"
-               , "··+d"
-               , "··#d"
+  , ptopLeft = [ "···#d"  -- avoid huge corridor and tiny room
+               , "···+d"
+               , "##+#d"
+               , "···#d"
+               , "···#d"
                ]
   }
 dormitory5 = dormitory
@@ -1695,9 +1695,9 @@ dormitory5 = dormitory
   , pcover   = CMirror
   , pfence   = FNone
   , ptopLeft = [ "##$$$$$$$$$##"
-               , "f#···#··#··#f"
-               , "d#···#··#··+d"
-               , "d##+###+####d"
+               , "f#··#···+··#f"
+               , "d#··+···#··+d"
+               , "d#####+#####d"
                , "ddddddddddddd"
                ]
   }
@@ -1706,14 +1706,14 @@ dormitory6 = dormitory
   , pcover   = CMirror
   , pfence   = FNone
   , ptopLeft = [ "#fddd"
-               , "####d"
+               , "##+#d"
                , "$··#d"
-               , "$··+d"
-               , "$###d"
                , "$··#d"
-               , "$··+d"
+               , "$+##d"
                , "$··#d"
-               , "####d"
+               , "$··#d"
+               , "$··#d"
+               , "##+#d"
                , "#fddd"
                ]
   }
