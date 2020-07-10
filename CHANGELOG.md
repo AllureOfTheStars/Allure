@@ -1,5 +1,515 @@
 ## [v0.10.0.0](https://github.com/AllureOfTheStars/Allure/compare/v0.9.5.0...v0.10.0.0)
 
+- Tone down and speed up animations of the deadliest explosions
+- Make space for vertical dormitory rooms
+- Make the dormitories more realistic given how tiny they are
+- Make all ignition blasts yellow
+- Hint in ambush description that somebody turned off power
+- Spread evenly the loot in ambush scenario
+- Make sure the initial entrance doesn't appear in ambush scenario
+- Make safari scenario harder now that aliens are buffed up
+- Improve module haddocks for content
+- Give the player more ammo in ambush scenario
+- Make zoo easier to create an ambush position in
+- Make sure burning bush eventually transforms to a dark floor tile
+- Make escape cave easier to put on fire
+- Hide unneeded content group name patterns
+- Add short-caves debug game mode
+- Bump too rare places
+- Use the JS splitmix optimization
+- Tweak CI link in README in case it matters
+- Make firefighting items more common outside of fire cabinets
+- Add a Q&A about autoexplore (only relevant to Allure)
+- Make sure all non-seeing actors are described so
+- Move ClientOptions.hs to adhere to the convention about module hierarchies
+- Meld LH and Allure content
+- Don't have noctovisor neavly guaranteed
+- Add items for detecting enemy stashes
+- Reflavour the stuck doors trap
+- Tone down spotlight
+- Explain the goofy handling of recharging in stash
+- Prevent exploiting deposit boxes ad infinitum
+- Make detection radiuses uniform, for ease of use
+- Make residential decks better connected
+- Add a couple more escape items
+- Adjust the SDL test to run without installing fonts, as Debian requires
+- Make the jewlery caches and deposit boxes much more lucrative
+- Make necklace explosions even less likely to block the way
+- Make octopus more common now that it's more interesting
+- Make jewlery cases less disappointing for experienced players
+- Let blasts destroy ice pillars
+- Fix a pair of fire projectiles first igniting, second dousing a tile
+- Add Q&A about hearing
+- Make military knife again likely to appear in crawl dungeon
+- Let stuck doors be forced, inducing flight
+- Shorten brawl scenario note to fit on the screen with square font
+- Remove the confusing damage from bomb's weight impact
+- Prevent exploit of getting cords from torches made out of rags
+- Move most tools to first 4 levels and laboratory
+- Fix crafting in water impossible when refrigeration coil equipped
+- Make hearing maluses less harsh
+- Make firefighting cabinets more common, particularly on outermost level
+- Fix too high melee armor of a spacesuit
+- Permit transformation of weld vis cold source, not only blowtorch
+- Enable crafting with water sources in fire tiles
+- Add some more tools and torn suits
+- Boil waste container to safely remove refrigeration coil
+- Differentiate the names of small fires and not the count
+- Don't create the same 2 spacesuit parts when dismating a torn suit
+- Make crawl loot number randomness much less wild
+- Make tools more common on first two levels
+- Add cord as a bonding tool and wick
+- Have more tools at outermost level
+- Make thornbush a bit rarer, because it doesn't exlode, so is boring
+- Make arena deck of double height, with trees
+- Avoid dark fences around lit interiors with no pillars in staircase defs
+- Shorten other item group names
+- Shorten hammer and shield group names
+- Use the DECON abbreviation to shorten messages
+- Fix patterns for hammers
+- Mention in hammer description that crafting replaces handles
+- Fit workshop crafting description into one screen
+- Don't risk crafting scrap from hammers and axes
+- Display cooking after crafting in embed description
+- Factor out extraWaterAssocs
+- Equip rags by default; newbies don't find them anyway
+- Mention in octopus description that it has high noctovision
+- Consistently create on the ground all items looted from terrain
+- Balance removing hunger via organ hits
+- Add random variety to crafted items to enable min-maxing
+- Move some item definitions and rebase them
+- Remove a trailing space in mode description
+- Don't get two rags out of a torch that took one to produce
+- Reflect keybindings change in the start scenario menu
+- Increase the timeout of jumping pole
+- Prevent AI from hasting twice in a row
+- Add recharging and discharging self to a couple of weapons
+- Get rid of DropBestWeapon
+- Adjust to engine changes to charging effects
+- Let the rhino charge via pushing
+- Let all drones charge via pushing
+- Fix a mixed up organ name
+- Prevent the new organs from being dropped
+- Differentiate dragon and alligator by removing the pushing from the former
+- Add jumping organs
+- Move ink sac to equipment so that it can be explicitly triggered
+- Make octopus's ink weaker but lasting longer
+- Add the ink sac octopus's organ
+- Permit meleeing with construction glove
+- Let burning oil explode even on direct hit on actor, not only on the floor
+- Re-classify a couple of weapons
+- Fix razorwire fence
+- Make killing thornbush even more optional than before
+- Move to-dam bonuses from organs to actor definitions
+- Increase timeouts of animal organs to at least approach human weapon timeouts
+- Prevent sharp harpoon from being generated often and shallowly
+- Make armadillo into a proper tank
+- Touch up aliens actors
+- Prevent razor from excluding other weapons
+- Move the defition of lip to the proper place
+- Give tentancle a cooldown
+- Make clawing horror an early but mostly harmless armorless tank
+- Reorder organs
+- Balance organs
+- Add two organs from LambdaHack
+- Remove cooldown from two weapon kinds
+- Sometimes generate tools in threes
+- Generate torn spacesuits in bunches
+- Generate less items, particularly at shallow levels
+- Reorder items inside several item groups
+- Overhaul noise caves
+- Let some tools appear together
+- Designate some scouts for slack tactics factions
+- Add comments explaining why dL dice positive or negative
+- Adjust to crafint depth-neutral and tweak content a bit otherwise
+- Make the max HP maluses not so easy to ignore
+- Rebalance armor bonuses
+- Rebalance to-hit bonuses
+- Fix hammer stats and tweak a few others
+- Make Smithhammer interesting
+- Make it easier to use permanent tools
+- Make it possible to undo weapon crafting
+- Make axe worse than pipe
+- Make item-modification scrolls and torn spacesuits more common
+- Make cooking fruits less tedius, remaining defs
+- Place much more oil spills on the exit deck
+- Make cooking fruits less tedius
+- Let the player see if enemies carry even special lights, etc.
+- Don't suggest that opening a deposit box destroys it
+- Improve name of a couple of item groups
+- Tweak frequency of detection items, etc.
+- Don't let the alien boss waste time unequipping gems
+- Sometimes add a lift staircase to laboratories
+- Make more rooms dark to help with stealth
+- Make Laboratory deck less annoying by decontaminating only upwards
+- Fix weapon order of Smithhammer
+- Make it more common for aliens to carry light
+- Make using and crafting harpoons more worthwhile
+- Add workshop to a couple more places
+- Make it more likely there is workshop in laboratory
+- Tone down poison
+- Make the outermost deck a little more hectic
+- Hint that shields require empty space behind enemies to push them
+- Make buckler a weapon
+- Make the fancy shield weaker but more common
+- Give a fair warning about the rhino boss
+- Reorder crafting recipes to make them yet a tad safer
+- Avoid lit or filled rooms (except barrels) in exit level
+- Balance arena cave and scroll of pushing
+- Move keybinding content definitions to match display order
+- Make signboards less common in arena cave and more in casino
+- Ensure small caves have one or few stairs to prevent bloating them
+- Adjust cave content specifications to the engine tweaks
+- Make empty flasks less common deeper down
+- Clean up comments in tile definitions
+- Try to make the terrain transformation specs more readable
+- Mark steel file with red, since it's double-purpose
+- Make blankets more common to help with light crafting
+- Start with some empty flasks, some of the time
+- Update the manual and keybindings printout
+- Explain why the farm is freshly abandoned
+- Reduce numbers of consumables now that some levels have more of them
+- Add extra items to crawl levels based on their name/description
+- Add ANY_FLASK group
+- Introduce vials via the brawl scenario
+- Customize the raid cave shape and places
+- Make sure tools are not needed and stimpack not obtainable in raid scenario
+- Introduce chips usage in the raid scenario
+- Fix a bushy patch that can block starting actors
+- Remove misleading comment about tiles being explorable
+- Comment why a tile is not explorable
+- Make impressing items easier to get
+- Fix missing terrain in TREE_SHADE_WALKABLE_DARK
+- Have lit bushes and dark floor in some dark places
+- Permit auto-generated tiles to be lit in dark groups
+- Comment tiles that are lit, dark or both
+- Add greenery to shallow levels and more rooms
+- Sometimes leave smoke after barrel explodes
+- Prevent the visual senser being misinterpreted as food
+- Prevent AI from wielding staves
+- Make gardening tools slighly more durable, but rarer
+- Set the main groups of items to equal weights and compensate
+- Let all actors chase enemies from a longer distance
+- Ensure few garden weapons in raid scenario and similar
+- Tweak assignment of items to the rare item groups
+- Rename or eliminate CURIOUS_ITEM
+- Generate less survival items in short scenarios
+- Add hints to crafting components' descriptions
+- Tweak weapons slightly, mostly ranged damage
+- Clean up throwing stats of items
+- Make edible bushes possible in one more room kind
+- Make permanent weapons less common initially due to clubs and torches
+- Add craftable clubs
+- Make torch a destructible melee weapon
+- Make torch and lamp even less common now that they are crafted
+- Craft flasks of water, etc.
+- Fix crafting in oil and fire
+- Add missing content group definitions
+- Craft torches and oil lamps
+- Make harpoons better in melee than ranged
+- Rebalance weak weapons
+- Slightly simplify organ definitions
+- Add variety to armor deducting rings
+- Make boots auto-equip less disastrous for newbies
+- Make the echolocator ping periodically
+- Change the order of ordinary items for better display in menus
+- Reassign colours and symbols to embedded items
+- Make some actors deal low damage but with high hurt
+- Add negative armor to one boss and some conditions
+- Let some rings weaken armor
+- Tone down items that grant armor
+- Mark in dashboard where to find crafting recipes
+- Make it harder to obtain long poles from loot
+- Let the net drop more kinds of armor-like equipment
+- Fix broken content validation
+- Don't confusingly refuse to display the pushing effect for shields
+- Balance piercing missiles
+- Make Rhino less of a pushover
+- Update manual wrt damage calculation changes
+- Avoid AI-unreachable spaces on the outermost level
+- Make it cheaper to dissect a torn spacesuit, for early game
+- Comment that transformations won't generate warnings due to their position
+- Make tools even more common
+- Undo partially scaling down special terrain features at outermost level
+- Craft torch in fire, not workshop
+- Tweak terrain and items on the outermost level
+- Make the order of caves slightly more random
+- Make edible plants less common since they appear on bushes now
+- Make the starting enemy groups larger to favour throwing flasks
+- Generate flasks in bunches even at lowest levels to make throwing more fun
+- Make sure throwing flasks, etc., have limited radius, for safety
+- Make icy floor less annoying and escape puzzles harder to hack
+- Avoid generating 2-stacks of early projectiles
+- Don't create equippable items in a stash
+- Make the crafted and doubly crafted weapons rarer
+- Fix lvl 2 description showing at game start instead of lvl 3
+- Prevent heroe's foes in crawl from camping stairs on lvl 2
+- Dedicate flasks to throwing and vials to medicine
+- Add fixed enemies at the start of crawl, but don't spawn often
+- Improve wording of a cave description
+- Reduce randomness of effects to make them exploitable
+- Prevent inability of taking off items that drain calm
+- Update wrt macro key changes in the engine
+- Disable brew audit that fails because line is too long
+- Vary the number of gardening tools in the bunches
+- Make craftable weapons less common
+- (Almost) guarantee a fire axe, but (almost) only one
+- Spawn friendlies and foes in deposit boxes
+- Make the airlock supplies more random
+- Create gardening tools in varied pairs
+- Convey more of the shuttle story via unique embedded item, not other content
+- Fix wrong game mode started due to only the first word inspected
+- Update copyright year to 2020
+- Prevent meleeing electric fence forever
+- Fix warnings generated by GHC 8.8.3
+- Port tests to tasty
+- Make weapons used for crafting less common later on
+- Prevent 'you are more foo' and immediately 'you are no longer foo'
+- Don't let faucents slow and flash themselves
+- Rename S_NITROGEN_MIST and S_FOCUSED_FLASH
+- Have less particles in large oil explosions
+- Make blindness less common, because it pervents player from seeing fun stuff
+- Let Welded Robot establish a stash to make sure heroes be the blowtorch
+- Use local gifsicle, with the assertion failure fixed
+- Ensure unidentified hammers are equipped
+- Tone down ranged damage of some durable items
+- Replace permanent weapons with crafting even at low levels
+- Make needles a bit less deadly
+- Fix some Burn and RefillHP weapons becoming overpowered at range
+- Simplify sharpeningAssocs
+- Fix inaccessible fenceless dormitories
+- Help AI replace the armor that decreases melee skill
+- make cleaver weaker but more common
+- Make billiard balls more common initially, less so later on
+- Permit melee with gloves and helm in addition to boots
+- Refactor and tweak garden weapons
+- Fix gardening tools not fracturing
+- Fix mixed up resistance conditions
+- Describe how colours correspond to tile properties
+- Prevent curing of genetic flaw via any condition removal
+- Recolour transparent walls; cyan means inert, apparently
+- Recolour barrels; not burning; no collision with trees
+- Make the power node place more varied
+- Fix AI not eating to remove hunger
+- Recolour armors
+- Ensure enough weak weapons at the start
+- Add dormitories to the residential area cave definition
+- Don't spam decent weapons at low leves now that weak weapons abound
+- Make projectiles more common so that shooter aliens are not overpowered
+- Craft torches out of staves
+- Add a rag tangle and obtain it from torn spacesuits
+- Give cleanerRobot excessive armor to make hammers useful
+- Clarify that chosen weapon needs not be optimal for a foe
+- Make hammers much different from all other weapons
+- Make a particular barrel yard place as common as others, not much more
+- Fix some terrain not alterable with projectiles
+- Mention that stats menu summarizes the organ menu
+- Add sample cabal.project.local files
+- Make the secret walls less boring
+- Use VerbMsgFail effect to ensure failed crafting doesn't change terrain
+- Don't report that an animal fondles its own meat
+- Add alterable floor to more rooms
+- Add alterable floor to more caves and trails
+- Rework frequency of immobile robots
+- Desynchronise vents a bit more
+- On outermost level let some faucets ignite fuel spread by other faucets
+- Make hammers a bit more common
+- Make frozen trail less common now that geysers produce floor ice
+- Make burning oil clear, as the symbol indicates
+- Adjust small fire description to match also burning oil
+- Adjust crafting embedded items to the new OnCombine semantics
+- Tweak timeouts of mostly harmless large sticks
+- Fix wrong use of AndEffect
+- Update crafting recipes to used tools and destroyed components
+- Safeguard some alien ammo and treasure against stash ransacking
+- Re-add perfumes; AI heroes were being slaughtered without them
+- Add a torn spacesuit for crafting
+- Make electric fences a less lucrative source of weapon upgrades
+- Make it more likely that armor and some other items appear before lvl 12
+- Generate more items now that a lot of crafting components appeared in the game
+- Make barrel stacks more varied and more frequent
+- Make barrel stack places more common
+- Recolour faucets to match the colour of terrain they create
+- Disable pathfinding through barrels and burning rubble
+- Give the same on-screen colour to items with similar function
+- Make the newly introduced items more common
+- Make the workshop terrain more common
+- Ensure item definitions are valid by having enough slots
+- Don't generate ready spacesuits and avoid hard to see BrBlack items
+- Make most weapons less common now that they can be crafted
+- Harvest long poles from dead electric fences
+- Add two useless tools to harvest long poles from
+- Require a tool to but the pipe diagonally before sharpening
+- Avoid the exploit of turning staffs into pipes via crafting
+- Improve some weapon descriptions and comments
+- Make each water a sharpening workshop to avoid scrolling recipes
+- Correct some item group patterns to be singletons
+- Clean up and redefine patterns from ItemKindEmbed.hs
+- Let hammers be sharpened and elongated
+- Require identification for all hammers
+- Comment why axes and hammers are not tools
+- Avoid the no-brainer of durable tool use
+- Rename POLE and LONG_POLE
+- Add fire axe and craft poll axe from it
+- Craft long polearms and flesh out related descriptions
+- Don't suggest that crowbar and cat's paw can be sharpened or blunted
+- Doubly sharpen pole cleavers to ox tongues
+- Doubly sharpen cleavers to get daggers
+- Rename the knife item definition to avoid confusion with the new dagger
+- Reorder Allure item definitions
+- Sharpen halberds
+- Sharpen rapiers
+- Sharpen shields
+- Get pipes from garden tools and sharpen them
+- Enable sharpening harpoons
+- Add sharpening tools
+- Resking honing steel to barebones exoskeleton
+- Foretell future levels accessible with spacesuits
+- Add some tools
+- Rename BONDING_SOURCE to BONDING_TOOL
+- Fix, partially, pluralization of spacesuit trousers group
+- Update to the unified tile transformation syntax
+- Fix redundant Equipable or Meleeable
+- Switch to the simplied ConsumeItems definition
+- Eliminate the exploit of throwing durable tools at the workshop
+- Define the spacestuit
+- Assemble full spacesuit from the set of all its parts
+- Add a spacesuit boot
+- Make Autozoom Contact Lens appear in a larger percentage of games
+- Let workshop work from an adjacent tile as well
+- Use the new parameter of CreateItem to dilute perfume and create rose water
+- Use the new parameter of CreateItem in workshop crafting engine
+- Add the first workshop item crafting recipe
+- Add a workshop terrain
+- Remove an obsolete way of putting oil tile on fire
+- Add Discharge effect to content
+- Open doors with concussion blast
+- Avoid renewing terrain embeds, to avoid slowdown with faucets
+- Make vents terrain transforming
+- Keep underbrush fluorescent also inside places
+- Clean up non-essential talter attributes
+- Create frozen and water tiles from damp floor
+- Let underbrush grow randomly inside some places
+- Let oil float over water, etc.
+- Add explosive barrels
+- Extend and move terrain transformation abilities within content
+- Use less stuck doors while AI remains stubborn
+- Don't create harpoons in bunches now that they are durable
+- Revert "Make better projectiles out of weapons now that they break"
+- Mark terrain transformations that are permitted with projectiles
+- Make better projectiles out of weapons now that they break
+- Make harpoon a weapon, but not auto-equipped
+- Fix signboards requiring extra keystroke to activate
+- Fix stuck doors often leaving AI helpless
+- Add stuck doors to be opened by tools
+- Fix unidentified embedded items impossible to trigger
+- Describe the less obvious tile-altering item properties
+- Add messages to dilluted OneOf effects
+- Make the new tools and weapons twice more common
+- Let strongest explosions breach stuff
+- Describe the properties of the tools to help the player connect the dots
+- Rename terrain patterns that denote possibly depleted resource
+- Add tool items for altering terrain and improvised combat
+- Make it possible to disarm jewelry traps
+- Make edible plants grow on bushes
+- Move extinguishers from walls to signboards to avoid uncovering all walls
+- Make looting rubble worthwhile if weapons urgently needed
+- Let actors trap down stairs with oil
+- Wipe oil with a cloth
+- Transform some tiles by pouring oil on them
+- Make it harder to quench burning oil
+- Separate singleton kind group names
+- Rename HideAs to PresentAs for item kinds
+- Switch texts to patterns for referring to content kind groups
+- Make plants slightly less common and cleavers slightly more
+- Make hunger twice as fast
+- Permit PatternSynonyms
+- Add a few sources of oil and fire
+- Let oil spill burn
+- Let signboards and pulpit burn
+- Make the area of nitrogen mist smaller, but dense
+- Let food thrown at lightly burning bushes get cooked
+- Make meat a less perfect projectile
+- Make the coil necklace not precious to freely use it
+- Make underbrush more common now that it has no embed
+- Get blakets and nitrogen out of walls
+- Make nitrogen flask a separate item now that its explosions freeze water
+- Quench fire with water and azbestos blanket
+- Bring back Alter skill requirement for weld to help AI open it
+- Make the spark necklace a source of cold
+- Reverse order of weld modification items to help newbies understand
+- Make weld durable to repeatedly depict sparking attempts to break the barrier
+- Let ice be transformed into water and back
+- Overcome weld with items instead of skill
+- Simplify igniting greenery
+- Update wrt addition of tiles altered by items
+- Make sword-class weapons and exotic hammers more common
+- Hint that the small fire is fine for cooking
+- Make burning trees and rubble even less common on the outermost level
+- Make it possible to cook plants
+- Add cooked plants
+- Update to binary AndEffect
+- Give player more hints to start cooking
+- Make burning bushes less common in crawl
+- Move underbrushBurning to the right section
+- Make it possible to also set bush and tree on fire
+- In crawl get torches from burning trees more often
+- Cook meat using a burning bush
+- Let burning bush turn into burning underbrush
+- Make it possible to set underbrush on fire and cook meat
+- Explain away only pointman moving
+- Bring hunger removal back in two places
+- Fix hunger removed by some melee weapons
+- Fix mercenaries using cutlery to fight
+- Explain lack of tools, food and maps in crawl scenario
+- Mention that all factions and actors are equal
+- Reverse stars and underscores in HP bar in HUD
+- Stress suvival in the game manual
+- Let animals drop chunks of raw meat, for player consumption
+- Mention clues and survival in backstory
+- Fix medbot fissure not marked as benign
+- Remove duplicated smell boost from walls (subtleFresco)
+- Add a hidden wall reminding about the need to find food upstairs
+- Pay for medbot healing with hunger
+- Add pumpkin and let other plants remove hunger, too
+- Add a hunger clock for humans and animals
+- Mention leap frog in game manual
+- Hint about leapfrog in brawl scenario note
+- Make it easier to understand trying to go below the bottommost level is futile
+- Handle the meta note about scenario separately
+- Make sure tutorial scenarios have enough melee weapons
+- Fix short scenario levels mistakenly thought to be relative to depth 15 not 10
+- Update wrt door closing changes in the engine
+- Reiterate win conditions in scenario descriptions
+- Improve the descriptions for the reaction fire rings
+- Mention in the manual that HP starts at half max
+- Reformat game peculiarities list in the manual
+- Overhaul the order and blurbs of game modes
+- Make raid scenario squad-based
+- Rework new game start menus
+- Fix a corruption of backstory text
+- Copy the list of distinguishing features from Allure homepage
+- Restructure chronologically the game manual with verbs as section titles
+- Get rid of 'x-hair'
+- Mark some text files as out of date
+- Add a couple more paragraph breaks in content descriptions
+- Reformat backstory for display in main menu
+- Remove text data files
+- Replace old OFL-licensed font with new ones
+- Re-indent the backstory
+- Comment about why animals rarely eat food
+- Rename tactics to doctrine
+- Get rid of the henchman notion
+- Rename leader to pointman
+- Update decontaminator now that personal inventories are gone
+- Mention the ! key whenever KP_* is mentioned
+- Fix countless typos
+- Start using cabal-plan
+- Fix and improve Makefile, cabal file and CI scripts
+- Improve and update game manual and help texts wrt game changes
+- Tweak travis scripts and building docs in README
+- Countless changes in the LambdaHack engine and the induced changed in Allure
+
 ## [v0.9.5.0](https://github.com/AllureOfTheStars/Allure/compare/v0.9.4.0...v0.9.5.0)
 
 - Fix NumLock disabled in the browser
