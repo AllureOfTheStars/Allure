@@ -379,7 +379,8 @@ script:
       ${CABAL} new-build $WITHCOMPILER --only-dependencies -fvty -fwith_expensive_assertions --ghc-options="-O2 -fno-ignore-asserts" -w ${HC} ${TEST} ${BENCH} -j2 .;
       ${CABAL} new-build $WITHCOMPILER -fvty -fwith_expensive_assertions --ghc-options="-O2 -fno-ignore-asserts" -w ${HC} ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "brew-sdl2-osx" ]; then
-      travis_wait 40 brew install --display-times --build-from-source allureofthestars &&
+      travis_wait 40 brew install --display-times allureofthestars &&
+#OOMs      travis_wait 40 brew install --display-times --build-from-source allureofthestars &&
       Allure --dbgMsgSer --logPriority 0 --newGame 3 --maxFps 100000 --benchmark --stopAfterFrames 50 --automateAll --keepAutomated --gameMode battle --setDungeonRng 6 --setMainRng 6 &&
       brew test --verbose allureofthestars
     elif [ $GTKVTY = "asserts-osx" ]; then
