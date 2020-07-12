@@ -157,6 +157,10 @@ nodeBenchBattle:
 
 nodeBench: nodeBenchBattle nodeBenchCrawl
 
+nodeMinifiedBench:
+	node ../allureofthestars.github.io/play/allure.all.js --dbgMsgSer --logPriority 4 --newGame 3 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 1000 --automateAll --keepAutomated --gameMode battle $(RNGOPTS)
+	node ../allureofthestars.github.io/play/allure.all.js --dbgMsgSer --logPriority 4 --newGame 1 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 2000 --automateAll --keepAutomated --gameMode crawl $(RNGOPTS)
+
 
 test-travis: test-short test-medium
 
