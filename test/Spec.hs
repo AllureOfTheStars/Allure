@@ -15,6 +15,7 @@ import           Game.LambdaHack.Client.UI.Frontend.Chosen
 import qualified Game.LambdaHack.Client.UI.HumanCmd as HumanCmd
 import qualified Game.LambdaHack.Client.UI.Key as K
 import           Game.LambdaHack.Client.UI.SessionUI
+import           Game.LambdaHack.Client.UI.UIOptionsParse
 import           Game.LambdaHack.Server
 
 import qualified Client.UI.Content.Input as Content.Input
@@ -292,7 +293,7 @@ macroTests = testGroup "macroTests" $
 integrationTests :: TestTree
 integrationTests = testGroup "integrationTests"
   [ testCase "Null frontend; 50 frames" $ do
-      let args = words "--dbgMsgSer --logPriority 4 --newGame 1 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 50 --automateAll --keepAutomated --gameMode crawl" ++ ["--setDungeonRng", "SMGen 123 123", "--setMainRng", "SMGen 123 123"]
+      let args = glueSeed $ words "--dbgMsgSer --logPriority 4 --newGame 1 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 50 --automateAll --keepAutomated --gameMode crawl --setDungeonRng SMGen 123 123 --setMainRng SMGen 123 123"
       serverOptions <- handleParseResult $ execParserPure defaultPrefs serverOptionsPI args
       tieKnot serverOptions
   , testCase "SDL fronted; init only" $
@@ -301,7 +302,7 @@ integrationTests = testGroup "integrationTests"
         -- the .cabal files is in. And this is what Debian needs, so OK.
         -- The hacky log priority 0 tells SDL frontend to init and quit at once,
         -- for testing on CIs without graphics access.
-        let args2 = words "--fontDir GameDefinition/fonts --dbgMsgSer --logPriority 0 --newGame 3 --maxFps 100000 --benchmark --stopAfterFrames 50 --automateAll --keepAutomated --gameMode battle" ++ ["--setDungeonRng", "SMGen 125 125", "--setMainRng", "SMGen 125 125"]
+        let args2 = glueSeed $ words "--fontDir GameDefinition/fonts --dbgMsgSer --logPriority 0 --newGame 3 --maxFps 100000 --benchmark --stopAfterFrames 50 --automateAll --keepAutomated --gameMode battle --setDungeonRng SMGen 125 125 --setMainRng SMGen 125 125"
         serverOptions2 <- handleParseResult $ execParserPure defaultPrefs serverOptionsPI args2
         tieKnot serverOptions2
   ]
