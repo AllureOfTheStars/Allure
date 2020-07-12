@@ -349,7 +349,7 @@ screensave auto r =
 
 screensaverRaid = raid
   { mname   = "auto-raid (1)"
-  , mfreq   = [(INSERT_COIN, 1), (NO_CONFIRMS, 1)]
+  , mfreq   = [(INSERT_COIN, 2), (NO_CONFIRMS, 1)]
   , mroster = screensave (AutoLeader False False) rosterRaid
   }
 
@@ -361,19 +361,19 @@ screensaverBrawl = brawl
 
 screensaverShootout = shootout
   { mname   = "auto-shootout (3)"
-  , mfreq   = [(INSERT_COIN, 1), (NO_CONFIRMS, 1)]
+  , mfreq   = [(INSERT_COIN, 2), (NO_CONFIRMS, 1)]
   , mroster = screensave (AutoLeader False False) rosterShootout
   }
 
 screensaverHunt = hunt
   { mname   = "auto-hunt (4)"
-  , mfreq   = [(INSERT_COIN, 1), (NO_CONFIRMS, 1)]
+  , mfreq   = [(INSERT_COIN, 2), (NO_CONFIRMS, 1)]
   , mroster = screensave (AutoLeader False False) rosterHunt
   }
 
 screensaverEscape = escape
   { mname   = "auto-escape (5)"
-  , mfreq   = [(INSERT_COIN, 1), (NO_CONFIRMS, 1)]
+  , mfreq   = [(INSERT_COIN, 2), (NO_CONFIRMS, 1)]
   , mroster = screensave (AutoLeader False False) rosterEscape
   }
 
