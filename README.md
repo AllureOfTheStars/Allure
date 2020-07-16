@@ -125,11 +125,35 @@ which is already a part of your OS distribution, or available within
 The Haskell Platform[7]. Get the game from Hackage[3] as follows
 
     cabal update
-    cabal install Allure
+    cabal run Allure
 
 For a newer, unofficial version, install a matching LambdaHack
 library snapshot, clone the game source from github[5]
-and run `cabal install` from the main directory.
+and run `cabal run` from the main directory.
+Alternatively, if you'd like to develop in this codebase,
+the following speeds up the turn-around a lot
+
+    cp cabal.project.local.development cabal.project.local
+    cabal install cabal-plan
+
+and then compile with
+
+    cabal build .
+
+and run the game with
+
+    make play
+
+There is a built-in black and white line terminal frontend, suitable
+for teletype terminals or a keyboard and a printer (but it's going to use
+a lot of paper, unless you disable animations with `--noAnim`). To compile
+with one of the less rudimentary terminal frontends (in which case you are
+on your own regarding font choice and color setup and you won't have
+the spiffy colorful squares outlining special positions that exist in SDL2
+frontend, but only crude cursor highlights), use Cabal flags, e.g,
+to switch to the vty console frontend optimized for screen readers, run
+
+    cabal run -fvty Allure
 
 
 Testing and debugging
