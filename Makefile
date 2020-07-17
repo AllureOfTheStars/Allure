@@ -275,10 +275,6 @@ build-binary-v1:
 	mkdir -p AllureOfTheStars/GameDefinition/fonts
 	cabal v1-copy --destdir=AllureOfTheStarsInstall
 
-copy-binary-windows:
-	([ -f "AllureOfTheStarsInstall/msys64/bin/Allure.exe" ] && mv AllureOfTheStarsInstall/msys64/bin/Allure.exe AllureOfTheStars) || exit 0
-	([ -f "AllureOfTheStarsInstall/msys32/bin/Allure.exe" ] && mv AllureOfTheStarsInstall/msys32/bin/Allure.exe AllureOfTheStars) || exit 0
-
 copy-binary:
 	cp $$(cabal-plan list-bin Allure) AllureOfTheStars
 
@@ -312,9 +308,9 @@ copy-directory:
 	cp COPYLEFT AllureOfTheStars
 	cp CREDITS AllureOfTheStars
 
-build-binary-common: build-binary-v1 copy-binary-windows copy-directory
+build-binary-common: build-binary-v1 copy-directory
 
-build-binary-windows: configure-binary-v2 build-binary-v2 copy-binary-windows copy-directory
+build-binary-windows: configure-binary-v2 build-binary-v2 copy-directory
 
 build-directory: configure-binary-v2 build-binary-v2 copy-binary copy-directory
 
