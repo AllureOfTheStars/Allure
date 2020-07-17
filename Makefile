@@ -29,8 +29,8 @@ configure-debug:
 configure-prof:
 	cabal configure --enable-profiling --profiling-detail=exported-functions
 
-ghcjs-new-build:
-	cabal new-build --ghcjs .
+ghcjs-build:
+	cabal build --ghcjs .
 
 chrome-log:
 	google-chrome --enable-logging --v=1 file:///home/mikolaj/r/allureofthestars.github.io/play/index.html &
@@ -268,12 +268,32 @@ test-short-load:
 version:
 	dist/build/Allure/Allure --version
 
-build-binary-common:
-	cabal v1-install --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization --only-dependencies
+build-binary-v1:
+	cabal v1-install --force-reinstalls --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization --only-dependencies
 	cabal v1-configure --disable-library-profiling --disable-profiling --enable-optimization --prefix=/ --datadir=. --datasubdir=.
 	cabal v1-build exe:Allure
 	mkdir -p AllureOfTheStars/GameDefinition/fonts
 	cabal v1-copy --destdir=AllureOfTheStarsInstall
+
+copy-binary-windows:
+	([ -f "AllureOfTheStarsInstall/msys64/bin/Allure.exe" ] && mv AllureOfTheStarsInstall/msys64/bin/Allure.exe AllureOfTheStars) || exit 0
+	([ -f "AllureOfTheStarsInstall/msys32/bin/Allure.exe" ] && mv AllureOfTheStarsInstall/msys32/bin/Allure.exe AllureOfTheStars) || exit 0
+
+copy-binary:
+	cp $$(cabal-plan list-bin Allure) AllureOfTheStars
+
+configure-binary-v2:
+	cabal configure --project-file=cabal.project.inplace --disable-tests --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization --prefix=/ --datadir=. --datasubdir=.
+
+configure-binary-v2-vty:
+	cabal configure -fvty --project-file=cabal.project.inplace --disable-tests --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization --prefix=/ --datadir=. --datasubdir=.
+
+build-binary-v2:
+	cabal build --project-file=cabal.project.inplace --only-dependencies all
+	cabal build --project-file=cabal.project.inplace exe:Allure
+	mkdir -p AllureOfTheStars/GameDefinition/fonts
+
+copy-directory:
 	cp GameDefinition/config.ui.default AllureOfTheStars/GameDefinition
 	cp GameDefinition/fonts/16x16xw.woff AllureOfTheStars/GameDefinition/fonts
 	cp GameDefinition/fonts/16x16xw.bdf AllureOfTheStars/GameDefinition/fonts
@@ -292,25 +312,26 @@ build-binary-common:
 	cp COPYLEFT AllureOfTheStars
 	cp CREDITS AllureOfTheStars
 
-#in LambdaHack/
-# cabal v1-install --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization
-build-binary-ubuntu: build-binary-common
-	cp AllureOfTheStarsInstall/bin/Allure AllureOfTheStars
-	dist/build/Allure/Allure --version > /dev/null; \
+build-binary-common: build-binary-v1 copy-binary-windows copy-directory
+
+build-binary-windows: configure-binary-v2 build-binary-v2 copy-binary-windows copy-directory
+
+build-directory: configure-binary-v2 build-binary-v2 copy-binary copy-directory
+
+build-binary-ubuntu: build-directory
+	AllureOfTheStars/Allure --version > /dev/null; \
 	LH_VERSION=$$(cat ~/.Allure/stdout.txt); \
 	tar -czf Allure_$${LH_VERSION}_ubuntu-16.04-amd64.tar.gz AllureOfTheStars
 
-build-binary-macosx: build-binary-common
-	cp AllureOfTheStarsInstall/bin/Allure AllureOfTheStars
-	dist/build/Allure/Allure --version > /dev/null; \
+build-binary-macosx: build-directory
+	AllureOfTheStars/Allure --version > /dev/null; \
 	LH_VERSION=$$(cat ~/.Allure/stdout.txt); \
 	OS_VERSION=$$(sw_vers -productVersion); \
 	tar -czf Allure_$${LH_VERSION}_macosx-$${OS_VERSION}-amd64.tar.gz AllureOfTheStars
 
-#in LambdaHack/
-# cabal v1-install --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization -fvty
-build-binary-screen-reader-ubuntu: build-binary-common
-	cp AllureOfTheStarsInstall/bin/Allure AllureOfTheStars
-	dist/build/Allure/Allure --version > /dev/null; \
+build-directory-vty: configure-binary-v2-vty build-binary-v2 copy-binary copy-directory
+
+build-binary-screen-reader-ubuntu: build-directory-vty
+	AllureOfTheStars/Allure --version > /dev/null; \
 	LH_VERSION=$$(cat ~/.Allure/stdout.txt); \
 	tar -czf Allure_$${LH_VERSION}_screen-reader-ubuntu-16.04-amd64.tar.gz AllureOfTheStars
