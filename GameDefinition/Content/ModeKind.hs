@@ -20,6 +20,8 @@ import Prelude ()
 
 import Game.LambdaHack.Core.Prelude
 
+import qualified Data.Text as T
+
 import Content.CaveKind hiding (content, groupNames, groupNamesSingleton)
 import Content.ItemKindActor
 import Content.ModeKindPlayer
@@ -96,6 +98,12 @@ raid = ModeKind
   , mendMsg = [ (Killed, "That was unfortunate. The bill for the rescue team and for the subsequent nano medbot treatment will reach the stars. Perhaps more stealth was needed? Perhaps the items lying around the area could aid survival instead of ending up ignored or passively hoarded? Or perhaps a wise course of action would be to choose a Neptune Area Administration challenge with a lower difficulty?")
               , (Defeated, "Sadly, you got worked up in the tunnels while another team snatched the prize. Remember, you are at the Outer Frontier to gain wealth and independence through industriousness and commerce and that means clashing with competing agents, not just fighting feral nature.")
               , (Escape, "You are the first to clear a route through the sewer system. Triton City authorities will now be able to establish a perimeter and mop up the side tunnels. You collect your reward of 100 gold grains and start looking for a way to invest it profitably on this Solar System's commercial frontier, abounding in more or less (usually less) regulated opportunities.\nAfter some thought you decide to start by splurging on genetic enhancement for your team. The effects won't be visible at once and you have no time to lose, having just made fresh enemies.") ]
+  , mrules  = T.unlines $
+      [ "* one level only"
+      , "* 2 heroes, foes that spawn"
+      , "* gather gold"
+      , "* find exit and escape ASAP"
+      ]
   , mdesc   = "Neptune Area Administration confirms isolated spottings of oversize vermin in non-residential zones of the Neptune's Triton moon's largest city. To put it plainly: Triton City sewers need purging. The first person to break through to the other exit will be paid 100 gold grains. The Administration \"strongly urges participants not to resort to violence against each other.\" However, no punitive consequences are specified, not even disqualification from the contest."
   , mnote   = "In addition to initiating the game plot, this scenario serves as an introductory tutorial. There is only one level. Relax, explore, gather loot, find the exit and escape. With some luck, you won't even need to fight anything. You can't use gathered items in your next encounters, so trigger any consumables at will, in particular the electronic chips as common as pebbles on the muddy sewer floors.\nFeel free to scout with only one of the heroes and keep the other one immobile, e.g., standing guard over the squad's shared inventory stash. If in grave danger, retreat with the scout to join forces with the guard. The more gold collected and the faster the victory, the higher your score in this encounter."
   }
@@ -108,6 +116,12 @@ brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
   , mcaves  = cavesBrawl
   , mendMsg = [ (Killed, "That treacherous villain didn't honour his word and brought his friends to the fight. It would still not turn so bad if we remembered to use terrain to protect us from missiles or even completely hide our presence and if we honourably kept together to the end, at the same time preventing the overwhelming enemy forces from brutishly ganging up on our modest-sized, though valiant, squad. Having to repurchase the genetic therapy was the most painful outcome, one that would send you broke and in shame to Earth, if repeated, to start collecting your Basic Income.")
               , (Conquer, "Bringing help was a sober and prudent move that resulted in well-earned victory and a splendid trophy of a title to a real inter-planetary space vessel. Unfortunately, the treacherous foe called reinforcements at the last moment, which start to arrive just now. It may be wise to move the celebration of the victory to a more fitting area, assuming that the dignified translocation can be accomplished timely and inconspicuously.") ]
+  , mrules  = T.unlines $
+      [ "* one level only"
+      , "* 3 heroes, 3 human foes"
+      , "* avoid losses"
+      , "* incapacitate all foes ASAP"
+      ]
   , mdesc   = "\"You scoundrel! You cheated in the sewers, fighting two against one. Come alone to the woody biosphere behind the saloon at noon, if you dare. Given that I win, I take back all your gold. Otherwise, you get the scrapping rights for the giant spaceliner's hull in orbit. Yes, it's mine, you tramp; here's the docking transmitter and the paperwork. The fight is to the last man standing, no evasion, no breaks for nano-healing in town.\""
   , mnote   = "In addition to advancing game plot, this scenario trains melee, squad formation and stealth. Run a short distance with Shift or LMB, switch the pointman with Tab, repeat. In open terrain, if you keep distance between teammates, this resembles the leap frog infantry tactics. For best effects, end each sprint behind a cover or concealment.\nIf you get beaten repeatedly, try using all consumables you find, particularly the vials that collect healing extracts abounding in this rich biosphere. Ponder the hints from the defeat message, in particular the one about keeping your party together once the opponents are spotted. However, if you want to discover a winning tactics on your own, make sure to ignore any such tips until you succeed.\nThe battle is completely symmetric, both in numbers, goals (incapacitate all enemies) and squad capabilities (only the pointman moves, while all others either melee or wait). Observe and mimic the enemies and savour the fairness --- you won't find any in the main crawl scenario that follows."
   }
@@ -120,6 +134,12 @@ crawl = ModeKind
   , mcaves  = cavesCrawl
   , mendMsg = [ (Killed, "It was not supposed to end this way. Perhaps more stealth was in order? Perhaps the gathered items should be used for survival instead of hoarded? Or perhaps the challenge, chosen freely but without awareness of the grisly difficulty, was insurmountable and lost from the very start? Nobody is going to find out, even if humans ever set their feet here again and prevail, another time, another way.")
               , (Escape, "The shuttle doors close behind, docking clamps grind in farewell and the giant rotating disc slowly tumbles away in rear view. You feel at once a relief and a sense of loss. This is not finished. You are changed forever, but you know nothing. You've heard the call, but you made no answer. You came for petty change, found a treasure beyond comprehension, then barely escaped with your life as the prize.\nAnd nobody will believe you at home. But you don't need their understanding any more. You have enough money to heal, regroup, track the ship down and try again. It's your personal space cruiser, after all, with a world of its own, inside.") ]
+  , mrules  = T.unlines $
+      [ "* many levels, some require tools to access"
+      , "* 3 heroes, foes that spawn"
+      , "* gather gold, gems and stimpacks"
+      , "* find exit and escape ASAP"
+      ]
   , mdesc   = "You are busy looting, with utmost satisfaction, the blasted bridge of an old and extravagantly luxurious cruise liner.\nSuddenly, the inert spaceship, supposedly long deserted and barely able to sustain life support, tremors and dials her fusion engines up to red overdrive. The space map flickering among the irreversibly damaged consoles shows the ship manoeuvre deftly off Triton orbit and purposefully climb the Neptune's gravity well. There's no way to control the ship and static floods all communication channels.\nYou decide to scour the nearby dilapidated decks for missing squad members, this time mapping the area properly, and get back to the spaceport the way you came, in your shuttle. However, you are determined not to leave the ship without taking at least a portion of the wealth that is rightfully yours."
   , mnote   = "This is the main, longest and most replayable scenario of the game. The fundamental goal is survival of your crew. Sub-goals will present themselves as you take in newly visited spaceship decks and figure out ways to reach those that are presently cut off.\nIf you keep dying, attempt the subsequent game modes as a breather (perhaps at lowered difficulty). They fill the gaps in the plot and teach particular skills that may come in handy and help you discover new tactics of your own or come up with a strategy for staving off the attrition."
  -- later, when the player can visit other level sections: you turn on the deck status list display and notice that most levels are fully pressurized, including the complete autonomous slice of the disc that includes the bridge deck
@@ -141,6 +161,12 @@ shootout = ModeKind  -- sparse ranged in daylight
   , mcaves  = cavesShootout
   , mendMsg = [ (Killed, "This is a disgrace. How is a thuggish robbery in broad daylight even possible in a moon city that styles itself as the capital of Outer System technological innovation and commercial opportunity? Where are the municipal surveillance drones, normally so eager to eavesdrop and needlessly complicate an honest tax-free business, when one's health and wealth for once depend on their nosy presence? Speaking of drones, we could use one in this skirmish, or even just a human lookout placed in a covered but unobstructed spot. Then the rest of the squad could snipe from concealment or from a safe distance.\nBarring that, we would end up in a better shape even if we all hid and fired blindly. We'd listen to impact sounds and wait with ten-fold vigilance for incoming enemy missiles, in order to register their trajectories and derive hints of enemy location. Apparently, ranged combat requires a change of pace and better planning than our previous illustrious successes accustomed us to.")
               , (Conquer, "That was a good fight, with skillful application of missiles, cover and concealment. The outcome is especially commendable given the high bar of tactical proficiency. Not even professional enforcement units can routinely deduce enemy position from the trajectory of their projectiles nor by firing without line of sight and interpreting auditory cues. However, while this steep hurdle is overcome, the chase is not over yet.") ]
+  , mrules  = T.unlines $
+      [ "* one level only"
+      , "* 3 heroes, 3 human foes"
+      , "* avoid losses"
+      , "* incapacitate all foes ASAP"
+      ]
   , mdesc   = "The fight crashes over to a nearby mechanized farm. Law enforcement, crippled by the ban on firearms, won't show up until only wounded and dying remain to be revived and locked up. Parcels and flasks of agricultural chemicals, scattered around, beg to be flung at foes as improvised missiles. Intense light makes it easy to aim and to discern trajectory of soaring items (point at enemy projectiles with the crosshair in aiming mode). The effects of the last infracellular therapy finally start showing."
   , mnote   = "This scenario is a flashback, picking the plot up where brawl (2) left it. It also teaches specifically the ranged combat skill in the simplified setup of fully symmetric battle. Try to come up with the best squad formation for this tactical challenge. Don't despair if you run out of ammo, because if you aim truly, enemy has few hit points left at this time. Fight, ranged or melee, until all aggressors are disabled."
   }
@@ -155,6 +181,12 @@ hunt = ModeKind  -- melee vs ranged with reaction fire in daylight
       -- the guy is wrong about implants (though the items are genetically attuned), but being wrong is plausible when the team is killed off/chased off and can't scour the battleground
       -- this is in the middle of the scenario list and the mission is not tricky, so a subtle reminder about lowering difficulty, in case the player struggles
               , (Conquer, "We chased them off, like we knew that we would. It feels nice to stick together and prevail. Now we can do no wrong just minding our business and going our way to the spaceport. We taught them a lesson, despite their superior equipment, and nobody else needs to be harmed while we take possession of our rightful property, the glorious spaceship in Triton's orbit.") ]
+  , mrules  = T.unlines $
+      [ "* one level only"
+      , "* 7 heroes, 7 human foes that shoot concurrently"
+      , "* avoid losses"
+      , "* incapacitate all foes ASAP"
+      ]
   , mdesc   = "Who is the hunter and who is the prey? The only criterion is last man standing when the chase ends."
   , mnote   = "This is yet another reminiscence of the events that led to the long crawl adventure. This episode is quite a tactical challenge, because enemies are allowed to fling their ammo simultaneously at you team, which has no such ability and focuses on melee combat instead. Act accordingly."
   }
@@ -168,6 +200,13 @@ escape = ModeKind  -- asymmetric ranged and stealth race at night
   , mendMsg = [ (Killed, "Somebody must have tipped the gang guards off. However, us walking along a lit trail, yelling, could have been a contributing factor. Also, it's worth noting that the torches prepared for this assault are best used as thrown makeshift flares. On the other hand, equipping a lit torch makes one visible in the dark, regrettably but not quite unexpectedly. Lastly, the goal of this foray was to find the exit back to the city, marked by a yellow '>' sign, and to gather some treasure along the way, but not to bedevil every local evildoer, as much as they do deserve it.")
               , (Conquer, "It was enough to reach the escape area, namely the exit tunnel from the park marked by yellow '>' symbol. Spilling that much blood was risky and unnecessary. Having said that --- impressive indeed.")
               , (Escape, "Congratulations, you took your revenge and it's heavy in your pockets.") ]
+  , mrules  = T.unlines $
+      [ "* one level only"
+      , "* 3 heroes, 7 human foes that shoot concurrently"
+      , "* avoid losses"
+      , "* gather gems"
+      , "* find exit and escape ASAP"
+      ]
   , mdesc   = "Bloodied spaceship deed in hand notwithstanding, you can reach the derelict spaceliner only via a shuttle from the Central Triton Spaceport across the city. After hours of being chased in the opposite direction towards the border wall, you sneak back and make a desperate dash through the very den of the pursuing gang. Any valuables you come upon in this public park turned miscreant lair will be fair compensation for your losses, but you need to find the exit before the foes find you. Rein in your wrath and don't attack your tormentors. Foiling their plans by eluding them will be revenge enough."
   , mnote   = ""
   }
@@ -180,6 +219,12 @@ zoo = ModeKind  -- asymmetric crowd melee at night
   , mcaves  = cavesZoo
   , mendMsg = [ (Killed, "Against such an onslaught, only clever positioning, use of terrain and patient vigilance gives any chance of survival.")
               , (Conquer, "That was a grim harvest. The city is safe again. So are your precious selves, with nothing and no one blocking your way to the spaceport any more.") ]
+  , mrules  = T.unlines $
+      [ "* one level only"
+      , "* 5 heroes, many foes"
+      , "* avoid losses"
+      , "* incapacitate all foes ASAP"
+      ]
   , mdesc   = "As justified and satisfying as setting the enemy headquarters on fire has been, it backfires when the blaze immediately spreads to the public zoo on the path to the spaceport. Crazed animals mill around while the flames ignite greenery and consume nets, cages and security equipment. Whether that's a good sign or bad, apparently nobody is willing to pursue you any more. You are on your own, having to completely clean up the area, up to the last lurking predator, in order to safely move through."
   , mnote   = ""
   }
@@ -200,6 +245,12 @@ ambush = ModeKind  -- dense ranged with reaction fire vs melee at night
   , mcaves  = cavesAmbush
   , mendMsg = [ (Killed, "You turned out to be the prey, this time, not the hunter. In fact, you are not even in the hunters' league. And it's hard to operate docking equipment while being chased round a spaceport. When fighting against such odds, passively waiting for enemy to spring a trap is to no avail, because a professional team can sneak in darkness and ambush the ambushers. Granted, good positioning is crucial, so that each squad member can overwatch the battlefield and fire opportunistically, using the recently recovered mil-grade communication equipment. However, there is no hope without active scouting, throwing lit objects and probing suspect areas with missiles while paying attention to sounds. And that may still not be enough.")
               , (Conquer, "The new communication equipment, enabling simultaneous ranged attacks with indirect aiming, apparently proved effective beyond expectations. With the mercenaries gone and nobody else having the slightest wish to interfere, the shuttle to the space cruiser at orbit is easy to launch at last. Now is your moment of glory. Now your turbulent adventure ends and the boring life of space cruiser scrap parts supplier or, as it may be, of a refurbished giant space liner operator, commences.\nA pity that the last round of shoddy genetic enhancements, bought at the grey market, scandalously auto-reverts at this very moment, leaving the personalized equipment that attuned to the previous genetic configuration inoperable. Fortunately, danger, debt and the gangster debt collectors are now behind you and the grey market won't see you again.") ]
+  , mrules  = T.unlines $
+      [ "* one level only"
+      , "* 3 heroes that shoot concurrently, unspecified human foes"
+      , "* avoid losses"
+      , "* assert control of the situation ASAP"
+      ]
   , mdesc   = "Not even the unexplained carnage at the Central Triton Spaceport will prevent you from claiming the prize awaiting you at the orbit. After all, you didn't take to the stars to let others decide your fate. There is still no news coverage from the ruin of what was the largest and tightest security facility in the whole Neptune Area. Without waiting for explanations nor for the personnel to return, you creep along the burning booths, scouting for any airlock with a shuttle still attached and a way to restore power needed for the docking gear."
   , mnote   = "Once you win this scenario, the story catches up with the start of the main game mode, the long crawl."  -- this is the only scenario with no objective specified, to give a bit of suspense, misdirection and mystery until the first win (death gives a hint only); being the last of the small scenarios, it won't scare off new players
   }
@@ -211,6 +262,12 @@ safari = ModeKind  -- Easter egg available only via screensaver
   , mroster = rosterSafari
   , mcaves  = cavesSafari
   , mendMsg = []
+  , mrules  = T.unlines $
+      [ "* three levels"
+      , "* many friends that move concurrently, many foes"
+      , "* avoid losses"
+      , "* find exit and escape ASAP"
+      ]
   , mdesc   = "\"In this simulation you'll discover the joys of hunting the most exquisite of Earth's flora and fauna, both animal and semi-intelligent. Exit at the topmost level.\" This is a VR recording recovered from an alien nest debris."
   , mnote   = ""
   }
@@ -224,6 +281,7 @@ dig = ModeKind
   , mroster = rosterCrawlEmpty
   , mcaves  = cavesDig
   , mendMsg = []
+  , mrules  = ""
   , mdesc   = "Delve deeper!"
   , mnote   = ""
   }
@@ -235,6 +293,7 @@ see = ModeKind
   , mroster = rosterCrawlEmpty
   , mcaves  = cavesSee
   , mendMsg = []
+  , mrules  = ""
   , mdesc   = "See all!"
   , mnote   = ""
   }
@@ -246,6 +305,7 @@ short = ModeKind
   , mroster = rosterCrawlEmpty
   , mcaves  = cavesShort
   , mendMsg = []
+  , mrules  = ""
   , mdesc   = "See all short scenarios!"
   , mnote   = ""
   }
@@ -257,6 +317,7 @@ crawlEmpty = ModeKind
   , mroster = rosterCrawlEmpty
   , mcaves  = cavesCrawlEmpty
   , mendMsg = []
+  , mrules  = ""
   , mdesc   = "Enjoy the free space."
   , mnote   = ""
   }
@@ -268,6 +329,7 @@ crawlSurvival = ModeKind
   , mroster = rosterCrawlSurvival
   , mcaves  = cavesCrawl
   , mendMsg = []
+  , mrules  = ""
   , mdesc   = "Lure the human intruders deeper and deeper."
   , mnote   = ""
   }
@@ -279,6 +341,7 @@ safariSurvival = ModeKind
   , mroster = rosterSafariSurvival
   , mcaves  = cavesSafari
   , mendMsg = []
+  , mrules  = ""
   , mdesc   = "In this simulation you'll discover the joys of being hunted among the most exquisite of Earth's flora and fauna, both animal and semi-intelligent."
   , mnote   = ""
   }
@@ -290,6 +353,7 @@ battle = ModeKind
   , mroster = rosterBattle
   , mcaves  = cavesBattle
   , mendMsg = []
+  , mrules  = ""
   , mdesc   = "Odds are stacked against those that unleash the horrors of abstraction."
   , mnote   = ""
   }
@@ -301,6 +365,7 @@ battleDefense = ModeKind
   , mroster = rosterBattleDefense
   , mcaves  = cavesBattle
   , mendMsg = []
+  , mrules  = ""
   , mdesc   = "Odds are stacked for those that breathe mathematics."
   , mnote   = ""
   }
@@ -312,6 +377,7 @@ battleSurvival = ModeKind
   , mroster = rosterBattleSurvival
   , mcaves  = cavesBattle
   , mendMsg = []
+  , mrules  = ""
   , mdesc   = "Odds are stacked for those that ally with the strongest."
   , mnote   = ""
   }
@@ -323,6 +389,7 @@ defense = ModeKind  -- perhaps a real scenario in the future
   , mroster = rosterDefense
   , mcaves  = cavesCrawl
   , mendMsg = []
+  , mrules  = ""
   , mdesc   = "Don't let the half-witted humans derail your operation and flee, like the puny, naked, tentacle-less beasts that they are!"
   , mnote   = ""
   }
@@ -334,6 +401,7 @@ defenseEmpty = ModeKind
   , mroster = rosterDefenseEmpty
   , mcaves  = cavesCrawlEmpty
   , mendMsg = []
+  , mrules  = ""
   , mdesc   = "Lord over."
   , mnote   = ""
   }
