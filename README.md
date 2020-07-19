@@ -127,8 +127,8 @@ The Haskell Platform[7]. Get the game from Hackage[3] as follows
     cabal update
     cabal run Allure
 
-For a newer, unofficial version, install a matching LambdaHack
-library snapshot, clone the game source from github[5]
+For a newer, unofficial version, clone the game source from github[5],
+clone a matching LambdaHack library snapshot into ../LambdaHack
 and run `cabal run` from the main directory.
 Alternatively, if you'd like to develop in this codebase,
 the following speeds up the turn-around a lot
@@ -138,7 +138,7 @@ the following speeds up the turn-around a lot
 
 and then compile with
 
-    cabal build .
+    cabal build all
 
 and run the game with
 

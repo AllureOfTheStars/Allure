@@ -279,14 +279,14 @@ copy-binary:
 	cp $$(cabal-plan list-bin Allure) AllureOfTheStars
 
 configure-binary-v2:
-	cabal configure --project-file=cabal.project.inplace --disable-tests --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization --prefix=/ --datadir=. --datasubdir=.
+	cabal configure --project-file=cabal.project.LH.dir --disable-tests --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization --prefix=/ --datadir=. --datasubdir=.
 
 configure-binary-v2-vty:
-	cabal configure -fvty --project-file=cabal.project.inplace --disable-tests --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization --prefix=/ --datadir=. --datasubdir=.
+	cabal configure -fvty --project-file=cabal.project.LH.dir --disable-tests --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization --prefix=/ --datadir=. --datasubdir=.
 
 build-binary-v2:
-	cabal build --project-file=cabal.project.inplace --only-dependencies all
-	cabal build --project-file=cabal.project.inplace exe:Allure
+	cabal build --project-file=cabal.project.LH.dir --only-dependencies all
+	cabal build --project-file=cabal.project.LH.dir exe:Allure
 	mkdir -p AllureOfTheStars/GameDefinition/fonts
 
 copy-directory:
