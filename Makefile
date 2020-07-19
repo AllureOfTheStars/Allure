@@ -285,7 +285,7 @@ configure-binary-v2-vty:
 	cabal configure -fvty --project-file=cabal.project.LH.dir --disable-tests --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization --prefix=/ --datadir=. --datasubdir=.
 
 build-binary-v2:
-	cabal build --project-file=cabal.project.LH.dir --only-dependencies all
+	cabal build --project-file=cabal.project.LH.dir --only-dependencies .
 	cabal build --project-file=cabal.project.LH.dir exe:Allure
 	mkdir -p AllureOfTheStars/GameDefinition/fonts
 
