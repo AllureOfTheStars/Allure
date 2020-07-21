@@ -105,7 +105,8 @@ raid = ModeKind
       , "* find exit and escape ASAP"
       ]
   , mdesc   = "Neptune Area Administration confirms isolated spottings of oversize vermin in non-residential zones of the Neptune's Triton moon's largest city. To put it plainly: Triton City sewers need purging. The first person to break through to the other exit will be paid 100 gold grains. The Administration \"strongly urges participants not to resort to violence against each other.\" However, no punitive consequences are specified, not even disqualification from the contest."
-  , mnote   = "In addition to initiating the game plot, this scenario serves as an introductory tutorial. There is only one level. Relax, explore, gather loot, find the exit and escape. With some luck, you won't even need to fight anything. You can't use gathered items in your next encounters, so trigger any consumables at will, in particular the electronic chips as common as pebbles on the muddy sewer floors.\nFeel free to scout with only one of the heroes and keep the other one immobile, e.g., standing guard over the squad's shared inventory stash. If in grave danger, retreat with the scout to join forces with the guard. The more gold collected and the faster the victory, the higher your score in this encounter."
+  , mmotivation = "In addition to initiating the game plot, this scenario serves as an introductory tutorial. There is only one level. Relax, explore, gather loot, find the exit and escape. With some luck, you won't even need to fight anything."
+  , mhint   = "You can't use gathered items in your next encounters, so trigger any consumables at will, in particular the electronic chips as common as pebbles on the muddy sewer floors.\nFeel free to scout with only one of the heroes and keep the other one immobile, e.g., standing guard over the squad's shared inventory stash. If in grave danger, retreat with the scout to join forces with the guard. The more gold collected and the faster the victory, the higher your score in this encounter."
   }
 
 brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
@@ -123,7 +124,8 @@ brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
       , "* incapacitate all foes ASAP"
       ]
   , mdesc   = "\"You scoundrel! You cheated in the sewers, fighting two against one. Come alone to the woody biosphere behind the saloon at noon, if you dare. Given that I win, I take back all your gold. Otherwise, you get the scrapping rights for the giant spaceliner's hull in orbit. Yes, it's mine, you tramp; here's the docking transmitter and the paperwork. The fight is to the last man standing, no evasion, no breaks for nano-healing in town.\""
-  , mnote   = "In addition to advancing game plot, this scenario trains melee, squad formation and stealth. Run a short distance with Shift or LMB, switch the pointman with Tab, repeat. In open terrain, if you keep distance between teammates, this resembles the leap frog infantry tactics. For best effects, end each sprint behind a cover or concealment.\nIf you get beaten repeatedly, try using all consumables you find, particularly the vials that collect healing extracts abounding in this rich biosphere. Ponder the hints from the defeat message, in particular the one about keeping your party together once the opponents are spotted. However, if you want to discover a winning tactics on your own, make sure to ignore any such tips until you succeed.\nThe battle is completely symmetric, both in numbers, goals (incapacitate all enemies) and squad capabilities (only the pointman moves, while all others either melee or wait). Observe and mimic the enemies and savour the fairness --- you won't find any in the main crawl scenario that follows."
+  , mmotivation = "In addition to advancing game plot, this scenario trains melee, squad formation and stealth. Run a short distance with Shift or LMB, switch the pointman with Tab, repeat. In open terrain, if you keep distance between teammates, this resembles the leap frog infantry tactics. For best effects, end each sprint behind a cover or concealment."
+  , mhint = "If you get beaten repeatedly, try using all consumables you find, particularly the vials that collect healing extracts abounding in this rich biosphere. Ponder the hints from the defeat message, in particular the one about keeping your party together once the opponents are spotted. However, if you want to discover a winning tactics on your own, make sure to ignore any such tips until you succeed.\nThe battle is completely symmetric, both in numbers, goals (incapacitate all enemies) and squad capabilities (only the pointman moves, while all others either melee or wait). Observe and mimic the enemies and savour the fairness --- you won't find any in the main crawl scenario that follows."
   }
 
 crawl = ModeKind
@@ -141,7 +143,8 @@ crawl = ModeKind
       , "* find exit and escape ASAP"
       ]
   , mdesc   = "You are busy looting, with utmost satisfaction, the blasted bridge of an old and extravagantly luxurious cruise liner.\nSuddenly, the inert spaceship, supposedly long deserted and barely able to sustain life support, tremors and dials her fusion engines up to red overdrive. The space map flickering among the irreversibly damaged consoles shows the ship manoeuvre deftly off Triton orbit and purposefully climb the Neptune's gravity well. There's no way to control the ship and static floods all communication channels.\nYou decide to scour the nearby dilapidated decks for missing squad members, this time mapping the area properly, and get back to the spaceport the way you came, in your shuttle. However, you are determined not to leave the ship without taking at least a portion of the wealth that is rightfully yours."
-  , mnote   = "This is the main, longest and most replayable scenario of the game. The fundamental goal is survival of your crew. Sub-goals will present themselves as you take in newly visited spaceship decks and figure out ways to reach those that are presently cut off.\nIf you keep dying, attempt the subsequent game modes as a breather (perhaps at lowered difficulty). They fill the gaps in the plot and teach particular skills that may come in handy and help you discover new tactics of your own or come up with a strategy for staving off the attrition."
+  , mmotivation = "This is the main, longest and most replayable scenario of the game. The fundamental goal is survival of your crew. Sub-goals will present themselves as you take in newly visited spaceship decks and figure out ways to reach those that are presently cut off."
+  , mhint = "If you keep dying, attempt the subsequent game modes as a breather (perhaps at lowered difficulty). They fill the gaps in the plot and teach particular skills that may come in handy and help you discover new tactics of your own or come up with a strategy for staving off the attrition."
  -- later, when the player can visit other level sections: you turn on the deck status list display and notice that most levels are fully pressurized, including the complete autonomous slice of the disc that includes the bridge deck
   }
 
@@ -168,7 +171,8 @@ shootout = ModeKind  -- sparse ranged in daylight
       , "* incapacitate all foes ASAP"
       ]
   , mdesc   = "The fight crashes over to a nearby mechanized farm. Law enforcement, crippled by the ban on firearms, won't show up until only wounded and dying remain to be revived and locked up. Parcels and flasks of agricultural chemicals, scattered around, beg to be flung at foes as improvised missiles. Intense light makes it easy to aim and to discern trajectory of soaring items (point at enemy projectiles with the crosshair in aiming mode). The effects of the last infracellular therapy finally start showing."
-  , mnote   = "This scenario is a flashback, picking the plot up where brawl (2) left it. It also teaches specifically the ranged combat skill in the simplified setup of fully symmetric battle. Try to come up with the best squad formation for this tactical challenge. Don't despair if you run out of ammo, because if you aim truly, enemy has few hit points left at this time. Fight, ranged or melee, until all aggressors are disabled."
+  , mmotivation = "This scenario is a flashback, picking the plot up where brawl (2) left it. It also teaches specifically the ranged combat skill in the simplified setup of fully symmetric battle."
+  , mhint = "Try to come up with the best squad formation for this tactical challenge. Don't despair if you run out of ammo, because if you aim truly, enemy has few hit points left at this time. Fight, ranged or melee, until all aggressors are disabled."
   }
 
 hunt = ModeKind  -- melee vs ranged with reaction fire in daylight
@@ -188,7 +192,8 @@ hunt = ModeKind  -- melee vs ranged with reaction fire in daylight
       , "* incapacitate all foes ASAP"
       ]
   , mdesc   = "Who is the hunter and who is the prey? The only criterion is last man standing when the chase ends."
-  , mnote   = "This is yet another reminiscence of the events that led to the long crawl adventure. This episode is quite a tactical challenge, because enemies are allowed to fling their ammo simultaneously at you team, which has no such ability and focuses on melee combat instead. Act accordingly."
+  , mmotivation = "This is yet another reminiscence of the events that led to the long crawl adventure. This episode is quite a tactical challenge, because enemies are allowed to fling their ammo simultaneously at you team, which has no such ability."
+  , mhint = "Try not to outshoot the enemy, but to instead focus more on melee tactics."
   }
 
 escape = ModeKind  -- asymmetric ranged and stealth race at night
@@ -208,7 +213,8 @@ escape = ModeKind  -- asymmetric ranged and stealth race at night
       , "* find exit and escape ASAP"
       ]
   , mdesc   = "Bloodied spaceship deed in hand notwithstanding, you can reach the derelict spaceliner only via a shuttle from the Central Triton Spaceport across the city. After hours of being chased in the opposite direction towards the border wall, you sneak back and make a desperate dash through the very den of the pursuing gang. Any valuables you come upon in this public park turned miscreant lair will be fair compensation for your losses, but you need to find the exit before the foes find you. Rein in your wrath and don't attack your tormentors. Foiling their plans by eluding them will be revenge enough."
-  , mnote   = ""
+  , mmotivation = ""
+  , mhint = ""
   }
 
 zoo = ModeKind  -- asymmetric crowd melee at night
@@ -226,7 +232,8 @@ zoo = ModeKind  -- asymmetric crowd melee at night
       , "* incapacitate all foes ASAP"
       ]
   , mdesc   = "As justified and satisfying as setting the enemy headquarters on fire has been, it backfires when the blaze immediately spreads to the public zoo on the path to the spaceport. Crazed animals mill around while the flames ignite greenery and consume nets, cages and security equipment. Whether that's a good sign or bad, apparently nobody is willing to pursue you any more. You are on your own, having to completely clean up the area, up to the last lurking predator, in order to safely move through."
-  , mnote   = ""
+  , mmotivation = ""
+  , mhint = ""
   }
 
 -- The tactic is to sneak in the dark, highlight enemy with thrown torches
@@ -252,7 +259,8 @@ ambush = ModeKind  -- dense ranged with reaction fire vs melee at night
       , "* assert control of the situation ASAP"
       ]
   , mdesc   = "Not even the unexplained carnage at the Central Triton Spaceport will prevent you from claiming the prize awaiting you at the orbit. After all, you didn't take to the stars to let others decide your fate. There is still no news coverage from the ruin of what was the largest and tightest security facility in the whole Neptune Area. Without waiting for explanations nor for the personnel to return, you creep along the burning booths, scouting for any airlock with a shuttle still attached and a way to restore power needed for the docking gear."
-  , mnote   = "Once you win this scenario, the story catches up with the start of the main game mode, the long crawl."  -- this is the only scenario with no objective specified, to give a bit of suspense, misdirection and mystery until the first win (death gives a hint only); being the last of the small scenarios, it won't scare off new players
+  , mmotivation = "Once you win this scenario, the story catches up with the start of the main game mode, the long crawl." -- this is the only scenario with no objective specified, to give a bit of suspense, misdirection and mystery until the first win (death gives a hint only); being the last of the small scenarios, it won't scare off new players
+  , mhint = ""
   }
 
 safari = ModeKind  -- Easter egg available only via screensaver
@@ -269,7 +277,8 @@ safari = ModeKind  -- Easter egg available only via screensaver
       , "* find exit and escape ASAP"
       ]
   , mdesc   = "\"In this simulation you'll discover the joys of hunting the most exquisite of Earth's flora and fauna, both animal and semi-intelligent. Exit at the topmost level.\" This is a VR recording recovered from an alien nest debris."
-  , mnote   = ""
+  , mmotivation = ""
+  , mhint = ""
   }
 
 -- * Testing modes
@@ -283,7 +292,8 @@ dig = ModeKind
   , mendMsg = []
   , mrules  = ""
   , mdesc   = "Delve deeper!"
-  , mnote   = ""
+  , mmotivation = ""
+  , mhint       = ""
   }
 
 see = ModeKind
@@ -295,7 +305,8 @@ see = ModeKind
   , mendMsg = []
   , mrules  = ""
   , mdesc   = "See all!"
-  , mnote   = ""
+  , mmotivation = ""
+  , mhint       = ""
   }
 
 short = ModeKind
@@ -307,7 +318,8 @@ short = ModeKind
   , mendMsg = []
   , mrules  = ""
   , mdesc   = "See all short scenarios!"
-  , mnote   = ""
+  , mmotivation = ""
+  , mhint       = ""
   }
 
 crawlEmpty = ModeKind
@@ -319,7 +331,8 @@ crawlEmpty = ModeKind
   , mendMsg = []
   , mrules  = ""
   , mdesc   = "Enjoy the free space."
-  , mnote   = ""
+  , mmotivation = ""
+  , mhint       = ""
   }
 
 crawlSurvival = ModeKind
@@ -331,7 +344,8 @@ crawlSurvival = ModeKind
   , mendMsg = []
   , mrules  = ""
   , mdesc   = "Lure the human intruders deeper and deeper."
-  , mnote   = ""
+  , mmotivation = ""
+  , mhint       = ""
   }
 
 safariSurvival = ModeKind
@@ -343,7 +357,8 @@ safariSurvival = ModeKind
   , mendMsg = []
   , mrules  = ""
   , mdesc   = "In this simulation you'll discover the joys of being hunted among the most exquisite of Earth's flora and fauna, both animal and semi-intelligent."
-  , mnote   = ""
+  , mmotivation = ""
+  , mhint       = ""
   }
 
 battle = ModeKind
@@ -355,7 +370,8 @@ battle = ModeKind
   , mendMsg = []
   , mrules  = ""
   , mdesc   = "Odds are stacked against those that unleash the horrors of abstraction."
-  , mnote   = ""
+  , mmotivation = ""
+  , mhint       = ""
   }
 
 battleDefense = ModeKind
@@ -367,7 +383,8 @@ battleDefense = ModeKind
   , mendMsg = []
   , mrules  = ""
   , mdesc   = "Odds are stacked for those that breathe mathematics."
-  , mnote   = ""
+  , mmotivation = ""
+  , mhint       = ""
   }
 
 battleSurvival = ModeKind
@@ -379,7 +396,8 @@ battleSurvival = ModeKind
   , mendMsg = []
   , mrules  = ""
   , mdesc   = "Odds are stacked for those that ally with the strongest."
-  , mnote   = ""
+  , mmotivation = ""
+  , mhint       = ""
   }
 
 defense = ModeKind  -- perhaps a real scenario in the future
@@ -391,7 +409,8 @@ defense = ModeKind  -- perhaps a real scenario in the future
   , mendMsg = []
   , mrules  = ""
   , mdesc   = "Don't let the half-witted humans derail your operation and flee, like the puny, naked, tentacle-less beasts that they are!"
-  , mnote   = ""
+  , mmotivation = ""
+  , mhint       = ""
   }
 
 defenseEmpty = ModeKind
@@ -403,7 +422,8 @@ defenseEmpty = ModeKind
   , mendMsg = []
   , mrules  = ""
   , mdesc   = "Lord over."
-  , mnote   = ""
+  , mmotivation = ""
+  , mhint       = ""
   }
 
 -- * Screensaver modes
