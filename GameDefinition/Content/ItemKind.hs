@@ -1751,7 +1751,7 @@ spacesuit = ItemKind
   , iverbHit = "hug"
   , iweight  = 250000  -- including the fake gravity mass from two boots
   , idamage  = 0
-  , iaspects = [ AddSkill SkHurtMelee (-30)  -- restricted movement
+  , iaspects = [ AddSkill SkHurtMelee (-30)  -- restricted arm movement
                , AddSkill SkSight (-1)
                , AddSkill SkHearing (-3), AddSkill SkSmell (-99)
                , AddSkill SkArmorMelee $ (8 + 1 `dL` 2) * 10  -- ~ 95
@@ -1761,7 +1761,7 @@ spacesuit = ItemKind
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotArmorMelee ]
   , ieffects = []
-  , idesc    = "A heavy spacesuit, with micro-suction machinery build into its boots, but requiring an external air tank for space walking."
+  , idesc    = "A heavy spacesuit, with micro-suction machinery build into its boots, but requiring an external air tank for space walking. It heavily restrict arm movement, but not walking, regardless of gravity or lack thereof."
   , ikit     = []
   }
 spacesuitTorn = spacesuit
@@ -1777,7 +1777,7 @@ spacesuitTorn = spacesuit
                , AddSkill SkArmorRanged $ (1 `d` 2) * 6
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotArmorMelee ]
-  , idesc    = "A badly torn spacesuit. Perhaps two decent wearable pieces could be salvaged by extracting, matching and patching components on a suitable workbench using scissors of some kind."
+  , idesc    = "A badly torn spacesuit, barely offering any protection any more but still heavily restricting arm movement. Perhaps two decent wearable pieces could be salvaged by extracting, matching and patching components on a suitable workbench using scissors of some kind."
   , ikit     = [(BONDING_TOOL, CGround)]
   }
 gloveFencing = ItemKind
