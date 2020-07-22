@@ -930,7 +930,7 @@ workshopBench = ItemKind
   , idamage  = 0
   , iaspects = [SetFlag Durable]
   , ieffects = [OnCombine workshopEffect]
-  , idesc    = "A sturdy table with an anvil, a vice and an overhang of pipes, tubes, wires and probes."
+  , idesc    = "A sturdy table with an anvil, a vice and an overhang of pipes, tubes, wires and probes. Place the components and tools adjacent to the table, stand over them and craft by trying to Modify the bench."
   , ikit     = []
   }
 

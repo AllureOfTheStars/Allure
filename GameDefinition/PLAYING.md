@@ -502,6 +502,14 @@ A: Too late to buy anything. However, they can be crafted in at least
 two ways in the very early stages of the scenario. See the terrain lore menu
 for crafting recipes after exploring the initial levels.
 
+- Q: How do I craft?
+
+A: Examine the wokshop terrain (blue colon on the map) and experiment.
+Note that walkable positions can't be activated by bumping and moreover
+crafting requires the Modify command (key 'M') even for not walkable terrain.
+Other crafting spots (e.g., any water and fire) work similarly,
+but the recipes differ. Read the recipes in the lore menu, terrain submenu.
+
 - Q: Does power of crafted items depend on the depth of current level?
 
 A: No, unlike items found on the floor or created via other means,
