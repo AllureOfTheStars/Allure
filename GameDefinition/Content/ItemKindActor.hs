@@ -1122,6 +1122,7 @@ weldedRobot = ItemKind
                , (S_MOUTH_VENT, COrgan)
                , (S_ROBOT_BRAIN, COrgan)
                , (S_CRUDE_WELD, COrgan)
+               , (S_CURRENCY, CGround) -- to ensure newbies know to visit
                , (BLOWTORCH, CEqp)
                , (S_PERFUME_POTION, CStash), (WIRECUTTING_TOOL, CStash) ]
                    -- establish stash to ensure heroes pick up blowtorch ASAP
