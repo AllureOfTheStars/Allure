@@ -423,14 +423,14 @@ stairsUp = ItemKind
   , idamage  = 0
   , iaspects = [ELabel "of steps", SetFlag Durable]
   , ieffects = [Ascend True]
-  , idesc    = "Stairs that rise towards the spaceship core."
+  , idesc    = "Stairs that rise towards the spaceship core. It takes slightly more effort to climb than descend, but in lowered gravity it's almost instantaneous in either case."
   , ikit     = []
   }
 stairsDown = stairsUp
   { isymbol  = '>'
   , ifreq    = [(STAIRS_DOWN, 1)]
   , ieffects = [Ascend False]
-  , idesc    = "Stairs that descend towards the outer ring."
+  , idesc    = "Stairs that descend towards the outer ring. Narrow enough that only one person can comfortably use them at a time, but short enough that the whole team may climb down in quick succession."
   }
 escape = stairsUp
   { isymbol  = 'E'
