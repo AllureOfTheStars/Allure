@@ -1209,7 +1209,7 @@ lightDoused1 = light1
   , iverbHit = "prod"
   , iaspects = [SetFlag Lobable]  -- not durable, so not OP missile
   , ieffects = []
-  , idesc    = "An unlit torch improvised with rags on a staff, soaked in any lubricant or oil or resin or tar that could be scavenged in a hurry."
+  , idesc    = "A yet unlit torch improvised with rags on a staff, soaked in any lubricant or oil or resin or tar that could be scavenged in a hurry."
   }
 light2 = ItemKind
   { isymbol  = symbolLight
@@ -1294,17 +1294,17 @@ chisel = ItemKind  -- ignored by AI, but that's fine, others suffice
   , idamage  = 0  -- not a missile to avoid wasting, before a workshop found
   , iaspects = []  -- lost after one use; a consumable
   , ieffects = []
-  , idesc    = "It is a breaching tool."  -- TODO: https://en.wikipedia.org/wiki/Chisel
+  , idesc    = "It is a breaching tool that can be used for crafting and terrain modification. There are no junk items in space."  -- TODO: https://en.wikipedia.org/wiki/Chisel
                    -- also say light and cheap, but not durable; one time use
   , ikit     = [(SHARPENING_TOOL, CGround), (WIRECUTTING_TOOL, CGround)]
   }
 hacksaw = chisel
   { iname    = "hacksaw"
-  , idesc    = "It is a breaching tool."  -- TODO: https://en.wikipedia.org/wiki/Hacksaw
+  , idesc    = "It is a breaching tool that can be used for crafting and terrain modification. There are no junk items in space."  -- TODO: https://en.wikipedia.org/wiki/Hacksaw
   }
 adjustableSpanner = chisel
   { iname    = "adjustable spanner"
-  , idesc    = "It is a breaching tool."  -- TODO: https://en.wikipedia.org/wiki/Adjustable_spanner
+  , idesc    = "It is a breaching tool that can be used for crafting and terrain modification. There are no junk items in space."  -- TODO: https://en.wikipedia.org/wiki/Adjustable_spanner
   , ikit     = [ (SHARPENING_TOOL, CGround), (WIRECUTTING_TOOL, CGround)
                , (BONDING_TOOL, CGround) ]
   }
@@ -1313,7 +1313,7 @@ steelFile = chisel
   , ifreq    = [(CRAWL_ITEM, 20), (BREACHING_TOOL, 1), (SHARPENING_TOOL, 1)]
   , iflavour = zipPlain [Red]  -- double purpose, saves one tool sometimes
   , iverbHit = "grate"
-  , idesc    = "It is a breaching and sharpening tool."  -- TODO: https://en.wikipedia.org/wiki/File_(tool)
+  , idesc    = "It is a breaching and sharpening tool that can be used for crafting and terrain modification. There are no junk items in space."  -- TODO: https://en.wikipedia.org/wiki/File_(tool)
   , ikit     = []
   }
 honingSteel = chisel
@@ -1335,31 +1335,31 @@ diagonalPliers = chisel
   , iflavour = zipPlain [Brown]
   , iverbHit = "cut"
   , iaspects = [ELabel "of diagonal pliers"]
-  , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Diagonal_pliers
+  , idesc    = "It is a wirecutting tool that can be used for crafting and terrain modification. There are no junk items in space."  -- TODO: https://en.wikipedia.org/wiki/Diagonal_pliers
   , ikit     = [(BREACHING_TOOL, CGround)]
   }
 snips = diagonalPliers
   { iname    = "pair"
   , iaspects = [ELabel "of snips"]
-  , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Snips
+  , idesc    = "It is a wirecutting tool that can be used for crafting and terrain modification. There are no junk items in space."  -- TODO: https://en.wikipedia.org/wiki/Snips
   }
 loppers = diagonalPliers
   { iname    = "pair"
   , iaspects = [ELabel "of loppers"]
-  , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Loppers
+  , idesc    = "It is a wirecutting tool that can be used for crafting and terrain modification. There are no junk items in space."  -- TODO: https://en.wikipedia.org/wiki/Loppers
   , ikit     = [(BREACHING_TOOL, CGround), (SHARPENING_TOOL, CGround)]
   }
 boltCutter = loppers
   { iname    = "bolt cutter"
   , iaspects = []
-  , idesc    = "It is a wirecutting tool."  -- TODO: https://en.wikipedia.org/wiki/Bolt_cutter
+  , idesc    = "It is a wirecutting tool that can be used for crafting and terrain modification. There are no junk items in space."  -- TODO: https://en.wikipedia.org/wiki/Bolt_cutter
   }
 solderingIron = chisel
   { iname    = "soldering iron"
   , ifreq    = [(CRAWL_ITEM, 5), (BONDING_TOOL, 20)]
   , iflavour = zipPlain [White]
   , iverbHit = "soldier"
-  , idesc    = "It is a bonding tool."  -- TODO: wikipedia
+  , idesc    = "It is a bonding tool that can be used for crafting and terrain modification. There are no junk items in space."  -- TODO: wikipedia
   , ikit     = []
   }
 duckTape = solderingIron
@@ -1367,7 +1367,7 @@ duckTape = solderingIron
   , ifreq    = [(CRAWL_ITEM, 3), (BONDING_TOOL, 40)]
   , icount   = 1 `d` 4
   , iverbHit = "catch"
-  , idesc    = "It is a bonding tool."  -- TODO: https://en.wikipedia.org/wiki/Duct_tape
+  , idesc    = "It is a bonding tool that can be used for crafting and terrain modification. There are no junk items in space."  -- TODO: https://en.wikipedia.org/wiki/Duct_tape
   }
 thickCord = solderingIron
   { iname    = "thick cord"
@@ -2734,7 +2734,7 @@ wasteContainer = ItemKind
   , ieffects = [ Detect DetectLoot 20
                , Summon MOBILE_ANIMAL $ 1 `dL` 2
                , Explode S_WASTE ]
-  , idesc    = "Waste recognition and utilization subsystem. Detects any stray item not registered as a passenger's cargo. Leaks a little."
+  , idesc    = "Waste recognition and utilization subsystem. Detects any stray item not registered as a passenger's cargo. Leaks a little. But one man's trash is another man's treasure and so this item has many beneficial uses."
   , ikit     = []
   }
 spotlight = ItemKind
@@ -2751,7 +2751,7 @@ spotlight = ItemKind
                , AddSkill SkHurtMelee (-2)  -- heavy and unwieldy
                , SetFlag Equipable, EqpSlot EqpSlotShine ]
   , ieffects = [Detect DetectHidden 10]
-  , idesc    = "Powerful wide-beam spotlight in an unwieldy rack-mounted package. On overdrive, it can shine through thin construction surfaces, underlying fault lines."
+  , idesc    = "Powerful wide-beam spotlight in an unwieldy rack-mounted package. On full power, it can shine through thin construction surfaces, underlying fault lines."
   , ikit     = []
   }
 seeingItem = ItemKind

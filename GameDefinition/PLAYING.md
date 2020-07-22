@@ -504,7 +504,7 @@ for crafting recipes after exploring the initial levels.
 
 - Q: How do I craft?
 
-A: Examine the wokshop terrain (blue colon on the map) and experiment.
+A: Examine the workshop terrain (blue colon on the map) and experiment.
 Note that walkable positions can't be activated by bumping and moreover
 crafting requires the Modify command (key 'M') even for not walkable terrain.
 Other crafting spots (e.g., any water and fire) work similarly,
