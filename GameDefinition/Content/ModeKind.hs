@@ -213,7 +213,7 @@ escape = ModeKind  -- asymmetric ranged and stealth race at night
       , "* Find exit and escape ASAP"
       ]
   , mdesc   = "Bloodied spaceship deed in hand notwithstanding, you can reach the derelict spaceliner only via a shuttle from the Central Triton Spaceport across the city. After hours of being chased in the opposite direction towards the border wall, you sneak back and make a desperate dash through the very den of the pursuing gang. Any valuables you come upon in this public park turned miscreant lair will be fair compensation for your losses, but you need to find the exit before the foes find you. Rein in your wrath and don't attack your tormentors. Foiling their plans by eluding them will be revenge enough."
-  , mmotivation = ""
+  , mmotivation = "The focus of this installment is on stealthy exploration under the threat of numerically superior enemy."
   , mhint = ""
   }
 
@@ -232,7 +232,7 @@ zoo = ModeKind  -- asymmetric crowd melee at night
       , "* Incapacitate all enemies ASAP"
       ]
   , mdesc   = "As justified and satisfying as setting the enemy headquarters on fire has been, it backfires when the blaze immediately spreads to the public zoo on the path to the spaceport. Crazed animals mill around while the flames ignite greenery and consume nets, cages and security equipment. Whether that's a good sign or bad, apparently nobody is willing to pursue you any more. You are on your own, having to completely clean up the area, up to the last lurking predator, in order to safely move through."
-  , mmotivation = ""
+  , mmotivation = "This is a crowd control exercise, at night, with a raging fire."
   , mhint = ""
   }
 
@@ -259,7 +259,7 @@ ambush = ModeKind  -- dense ranged with reaction fire vs melee at night
       , "* Assert control of the situation ASAP"
       ]
   , mdesc   = "Not even the unexplained carnage at the Central Triton Spaceport will prevent you from claiming the prize awaiting you at the orbit. After all, you didn't take to the stars to let others decide your fate. There is still no news coverage from the ruin of what was the largest and tightest security facility in the whole Neptune Area. Without waiting for explanations nor for the personnel to return, you creep along the burning booths, scouting for any airlock with a shuttle still attached and a way to restore power needed for the docking gear."
-  , mmotivation = "Once you win this scenario, the story catches up with the start of the main game mode, the long crawl." -- this is the only scenario with no objective specified, to give a bit of suspense, misdirection and mystery until the first win (death gives a hint only); being the last of the small scenarios, it won't scare off new players
+  , mmotivation = "In this scenario, finally, your heroes are able to all use ranged attacks at once, given enough ammunition. Once you win this scenario, the story catches up with the start of the main game mode, the long crawl." -- this is the only scenario with no objective specified, to give a bit of suspense, misdirection and mystery until the first win (death gives a hint only); being the last of the small scenarios, it won't scare off new players
   , mhint = ""
   }
 
@@ -277,7 +277,7 @@ safari = ModeKind  -- Easter egg available only via screensaver
       , "* Find exit and escape ASAP"
       ]
   , mdesc   = "\"In this simulation you'll discover the joys of hunting the most exquisite of Earth's flora and fauna, both animal and semi-intelligent. Exit at the topmost level.\" This is a VR recording recovered from an alien nest debris."
-  , mmotivation = ""
+  , mmotivation = "This is an Easter egg. The default squad doctrine is that all team members follow the pointman, but it can be changed from the settings submenu of the main menu."
   , mhint = ""
   }
 
@@ -330,7 +330,7 @@ crawlEmpty = ModeKind
   , mcaves  = cavesCrawlEmpty
   , mendMsg = []
   , mrules  = ""
-  , mdesc   = "Enjoy the free space."
+  , mdesc   = "Enjoy the extra legroom."
   , mmotivation = ""
   , mhint = ""
   }
@@ -369,7 +369,7 @@ battle = ModeKind
   , mcaves  = cavesBattle
   , mendMsg = []
   , mrules  = ""
-  , mdesc   = "Odds are stacked against those that unleash the horrors of abstraction."
+  , mdesc   = "Odds are stacked against those that reveal what should have been kept in the dark."
   , mmotivation = ""
   , mhint = ""
   }
@@ -382,7 +382,7 @@ battleDefense = ModeKind
   , mcaves  = cavesBattle
   , mendMsg = []
   , mrules  = ""
-  , mdesc   = "Odds are stacked for those that breathe mathematics."
+  , mdesc   = "Odds are stacked for those that set the rules."
   , mmotivation = ""
   , mhint = ""
   }
@@ -409,7 +409,7 @@ defense = ModeKind  -- perhaps a real scenario in the future
   , mendMsg = []
   , mrules  = ""
   , mdesc   = "Don't let the half-witted humans derail your operation and flee, like the puny, naked, tentacle-less beasts that they are!"
-  , mmotivation = ""
+  , mmotivation = "This is an initial sketch of the reversed crawl game mode. Play on high difficulty to avoid guaranteed victories against the pitiful humans."
   , mhint = ""
   }
 
@@ -421,7 +421,7 @@ defenseEmpty = ModeKind
   , mcaves  = cavesCrawlEmpty
   , mendMsg = []
   , mrules  = ""
-  , mdesc   = "Lord over."
+  , mdesc   = "Lord over empty halls."
   , mmotivation = ""
   , mhint = ""
   }
