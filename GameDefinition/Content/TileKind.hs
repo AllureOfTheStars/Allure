@@ -837,7 +837,7 @@ floorDamp = floorArena
                : tfeature floorArena
   }
 floorDirt = floorArena
-  { tname    = "dirt"
+  { tname    = "dirt floor"
   , tfreq    = [ (BRAWL_SET_LIT, 900), (SHOOTOUT_SET_LIT, 900)
                , (HUNT_SET_LIT, 900), (ESCAPE_SET_LIT, 700)
                , (AMBUSH_SET_LIT, 1000), (BATTLE_SET_LIT, 500)
@@ -1044,7 +1044,7 @@ liftShaft = pillar
   , tfreq    = [(S_LIFT_SHAFT, 1)]
   }
 rock = pillar
-  { tname    = "rock"
+  { tname    = "rock outcrop"
   , tfreq    = [(ARENA_SET_LIT, 6), (BRAWL_SET_LIT, 30)]
   }
 pillarCache2 = pillarCache
@@ -1247,7 +1247,7 @@ doorStuck = TileKind
   }
 barrel = TileKind
   { tsymbol  = '0'
-  , tname    = "barrel"
+  , tname    = "large barrel"
   , tfreq    = [ (BARREL, 1)
                , (EXIT_SET_LIT, 3), (NOISE_SET_LIT, 20), (POWER_SET_DARK, 50)
                , (ZOO_SET_DARK, 30), (AMBUSH_SET_DARK, 2) ]
