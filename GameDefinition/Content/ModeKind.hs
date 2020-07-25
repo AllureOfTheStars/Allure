@@ -105,8 +105,8 @@ raid = ModeKind
       , "* Find exit and escape ASAP"
       ]
   , mdesc   = "Neptune Area Administration confirms isolated spottings of oversize vermin in non-residential zones of the Neptune's Triton moon's largest city. To put it plainly: Triton City sewers need purging. The first person to break through to the other exit will be paid 100 gold grains. The Administration \"strongly urges participants not to resort to violence against each other.\" However, no punitive consequences are specified, not even disqualification from the contest."
-  , mmotivation = "In addition to initiating the game plot, this scenario serves as an introductory tutorial. There is only one level. Relax, explore, gather loot, find the exit and escape. With some luck, you won't even need to fight anything."
-  , mhint   = "You can't use gathered items in your next encounters, so trigger any consumables at will, in particular the electronic chips as common as pebbles on the muddy sewer floors.\nFeel free to scout with only one of the heroes and keep the other one immobile, e.g., standing guard over the squad's shared inventory stash. If in grave danger, retreat with the scout to join forces with the guard. The more gold collected and the faster the victory, the higher your score in this encounter."
+  , mmotivation = "In addition to initiating the game plot, this scenario serves as an introductory tutorial. Relax, explore, gather loot, find the exit and escape. With some luck, you won't even need to fight anything."
+  , mhint = "You can't use gathered items in your next encounters, so trigger any consumables at will, in particular the electronic chips as common as pebbles on the muddy sewer floors.\nFeel free to scout with only one of the heroes and keep the other one immobile, e.g., standing guard over the squad's shared inventory stash. If in grave danger, retreat with the scout to join forces with the guard. The more gold collected and the faster the victory, the higher your score in this encounter."
   }
 
 brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
@@ -124,8 +124,8 @@ brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
       , "* Incapacitate all enemies ASAP"
       ]
   , mdesc   = "\"You scoundrel! You cheated in the sewers, fighting two against one. Come alone to the woody biosphere behind the saloon at noon, if you dare. Given that I win, I take back all your gold. Otherwise, you get the scrapping rights for the giant spaceliner's hull in orbit. Yes, it's mine, you tramp; here's the docking transmitter and the paperwork. The fight is to the last man standing, no evasion, no breaks for nano-healing in town.\""
-  , mmotivation = "In addition to advancing game plot, this scenario trains melee, squad formation and stealth. Run a short distance with Shift or LMB, switch the pointman with Tab, repeat. In open terrain, if you keep distance between teammates, this resembles the leap frog infantry tactics. For best effects, end each sprint behind a cover or concealment."
-  , mhint = "If you get beaten repeatedly, try using all consumables you find, particularly the vials that collect healing extracts abounding in this rich biosphere. Ponder the hints from the defeat message, in particular the one about keeping your party together once the opponents are spotted. However, if you want to discover a winning tactics on your own, make sure to ignore any such tips until you succeed.\nThe battle is completely symmetric, both in numbers, goals (incapacitate all enemies) and squad capabilities (only the pointman moves, while all others either melee or wait). Observe and mimic the enemies and savour the fairness --- you won't find any in the main crawl scenario that follows."
+  , mmotivation = "In addition to advancing game plot, this scenario trains melee, squad formation and stealth. The battle is completely symmetric, both in numbers, goals (incapacitate all enemies) and squad capabilities (only the pointman moves, while all others either melee or wait). Observe and mimic the enemies and savour the fairness --- you won't find any in the main crawl scenario that follows."
+  , mhint = "Run a short distance with Shift or LMB, switch the pointman with Tab, repeat. In open terrain, if you keep distance between teammates, this resembles the leap frog infantry tactics. For best effects, end each sprint behind a cover or concealment.\nIf you get beaten repeatedly, try using all consumables you find, particularly the vials that collect healing extracts abounding in this rich biosphere. Ponder the hints from the defeat message, in particular the one about keeping your party together once the opponents are spotted. However, if you want to discover a winning tactics on your own, make sure to ignore any such tips until you succeed."
   }
 
 crawl = ModeKind
@@ -192,7 +192,7 @@ hunt = ModeKind  -- melee vs ranged with reaction fire in daylight
       , "* Incapacitate all enemies ASAP"
       ]
   , mdesc   = "Who is the hunter and who is the prey? The only criterion is last man standing when the chase ends."
-  , mmotivation = "This is yet another reminiscence of the events that led to the long crawl adventure. This episode is quite a tactical challenge, because enemies are allowed to fling their ammo simultaneously at you team, which has no such ability."
+  , mmotivation = "This is yet another reminiscence of the events that led to the long crawl adventure. This episode is quite a tactical challenge, because enemies are allowed to fling their ammo simultaneously at your team, which has no such ability."
   , mhint = "Try not to outshoot the enemy, but to instead focus more on melee tactics."
   }
 
@@ -293,7 +293,7 @@ dig = ModeKind
   , mrules  = ""
   , mdesc   = "Delve deeper!"
   , mmotivation = ""
-  , mhint       = ""
+  , mhint = ""
   }
 
 see = ModeKind
@@ -306,7 +306,7 @@ see = ModeKind
   , mrules  = ""
   , mdesc   = "See all!"
   , mmotivation = ""
-  , mhint       = ""
+  , mhint = ""
   }
 
 short = ModeKind
@@ -319,7 +319,7 @@ short = ModeKind
   , mrules  = ""
   , mdesc   = "See all short scenarios!"
   , mmotivation = ""
-  , mhint       = ""
+  , mhint = ""
   }
 
 crawlEmpty = ModeKind
@@ -332,7 +332,7 @@ crawlEmpty = ModeKind
   , mrules  = ""
   , mdesc   = "Enjoy the free space."
   , mmotivation = ""
-  , mhint       = ""
+  , mhint = ""
   }
 
 crawlSurvival = ModeKind
@@ -345,7 +345,7 @@ crawlSurvival = ModeKind
   , mrules  = ""
   , mdesc   = "Lure the human intruders deeper and deeper."
   , mmotivation = ""
-  , mhint       = ""
+  , mhint = ""
   }
 
 safariSurvival = ModeKind
@@ -358,7 +358,7 @@ safariSurvival = ModeKind
   , mrules  = ""
   , mdesc   = "In this simulation you'll discover the joys of being hunted among the most exquisite of Earth's flora and fauna, both animal and semi-intelligent."
   , mmotivation = ""
-  , mhint       = ""
+  , mhint = ""
   }
 
 battle = ModeKind
@@ -371,7 +371,7 @@ battle = ModeKind
   , mrules  = ""
   , mdesc   = "Odds are stacked against those that unleash the horrors of abstraction."
   , mmotivation = ""
-  , mhint       = ""
+  , mhint = ""
   }
 
 battleDefense = ModeKind
@@ -384,7 +384,7 @@ battleDefense = ModeKind
   , mrules  = ""
   , mdesc   = "Odds are stacked for those that breathe mathematics."
   , mmotivation = ""
-  , mhint       = ""
+  , mhint = ""
   }
 
 battleSurvival = ModeKind
@@ -397,7 +397,7 @@ battleSurvival = ModeKind
   , mrules  = ""
   , mdesc   = "Odds are stacked for those that ally with the strongest."
   , mmotivation = ""
-  , mhint       = ""
+  , mhint = ""
   }
 
 defense = ModeKind  -- perhaps a real scenario in the future
@@ -410,7 +410,7 @@ defense = ModeKind  -- perhaps a real scenario in the future
   , mrules  = ""
   , mdesc   = "Don't let the half-witted humans derail your operation and flee, like the puny, naked, tentacle-less beasts that they are!"
   , mmotivation = ""
-  , mhint       = ""
+  , mhint = ""
   }
 
 defenseEmpty = ModeKind
@@ -423,7 +423,7 @@ defenseEmpty = ModeKind
   , mrules  = ""
   , mdesc   = "Lord over."
   , mmotivation = ""
-  , mhint       = ""
+  , mhint = ""
   }
 
 -- * Screensaver modes
