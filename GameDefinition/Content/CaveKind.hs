@@ -354,7 +354,7 @@ empty = rogue
   , chidden       = 0
   , cactorCoeff   = 40  -- easy to view and plan
   , cactorFreq    = [(MONSTER, 10), (ANIMAL, 5), (ROBOT, 85)]
-  , citemNum      = 18 `d` 2  -- lots of free space, but extra loot present
+  , citemNum      = 17 `d` 2  -- lots of free space, but extra loot present
   , cplaceFreq    = [(EMPTY, 1)]
   , cpassable     = True
   , cdefTile      = EMPTY_SET_LIT
@@ -405,7 +405,7 @@ outermost = empty
       -- enough of a continuity. The faucets on lvl 1 are not OP and can't be
       -- abused, because they spawn less and less often and also HP doesn't
       -- effectively accumulate over max.
-  , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.CRAWL_ITEM, 60)
+  , citemFreq     = [ (IK.COMMON_ITEM, 50), (IK.CRAWL_ITEM, 50)
                     , (GARDENING_TOOL, 800) ]
   , cfenceTileN   = ORIELS_FENCE
   , cfenceTileE   = HABITAT_CONTAINMENT_WALL
@@ -452,8 +452,8 @@ shallowRogue = rogue
   , cYminSize     = 37
   , cactorCoeff   = 120  -- more difficult
   , cactorFreq    = filter ((/= MONSTER) . fst) $ cactorFreq rogue
-  , citemNum      = 16 `d` 2
-  , citemFreq     = [ (IK.COMMON_ITEM, 30), (IK.CRAWL_ITEM, 70)
+  , citemNum      = 15 `d` 2
+  , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.CRAWL_ITEM, 60)
                     , (GARDENING_TOOL, 800), (IK.ANY_FLASK, 200) ]
   , cmaxStairsNum = 2
   , cdesc         = "This close to the outermost deck, residence is not permitted and walls and doors are sturdier, to contain a theoretically possible micro-meteorite breach. The entry is not closed off, though, because some passengers can't live without a regular pilgrimage to 'look outside'. Apparently, gazing at the sharp pin-points of stars and planets through the reinforced oriel glass is incomparable to watching the same through the thin polymer of wall displays.\nAnimals appear to share the fascination of outer decks, perhaps attracted by the increased gravity, nearly Earth-like, unlike elsewhere on the ship. However, they dislike many industrial fluids stored on this floor, so flinging random flasks works as a deterrent. Moreover, if you throw an unidentified flask, you can be sure you won't waste a badly needed nano medicine, because it's never stored in such large containers but in tiny vials."
