@@ -131,9 +131,6 @@ playerAnimalExquisite =
   playerAnimal { fname = "Animal Exquisite Herds and Packs Galore"
                , fneverEmpty = True }
 
-victoryOutcomes :: [Outcome]
-victoryOutcomes = [Conquer, Escape]
-
 hiHeroLong, hiHeroMedium, hiHeroShort, hiDweller :: HiCondPoly
 
 hiHeroShort =
