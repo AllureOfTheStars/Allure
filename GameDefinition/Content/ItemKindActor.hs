@@ -121,13 +121,13 @@ pattern WIRECUTTING_TOOL = GroupName "wirecutting tool"
 
 actors :: [ItemKind]
 actors =
-  [warrior, warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, brawler, soldier, mercenary, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush]
+  [warrior, warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, brawler, soldier, mercenary, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, elbowTank, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush]
   -- Allure-specific
-  ++ [giantOctopus, razorwireFence, electricFence, activeFence, steamFaucet, coolingFaucet, medbotFaucet, dustFaucet, fuelFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot]
+  ++ [giantOctopus, lion, razorwireFence, electricFence, activeFence, steamFaucet, coolingFaucet, medbotFaucet, dustFaucet, fuelFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot]
 
-warrior,    warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, brawler, soldier, mercenary, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush :: ItemKind
+warrior,    warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, brawler, soldier, mercenary, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, elbowTank, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush :: ItemKind
 -- Allure-specific
-giantOctopus, razorwireFence, electricFence, activeFence, steamFaucet, coolingFaucet, medbotFaucet, dustFaucet, fuelFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot :: ItemKind
+giantOctopus,       lion, razorwireFence, electricFence, activeFence, steamFaucet, coolingFaucet, medbotFaucet, dustFaucet, fuelFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot :: ItemKind
 
 -- Note that the actors that appear in the crawl scenario should
 -- be generated with at most ordinary ammo. Otherwise, farming them
@@ -382,6 +382,12 @@ elbow = ItemKind
                , (S_SAPIENT_BRAIN, COrgan)
                , (ANY_ARROW, CEqp), (ANY_ARROW, CStash)
                , (WEAK_ARROW, CEqp), (WEAK_ARROW, CStash) ]
+  }
+elbowTank = elbow
+  { iname    = "armored shooter"
+  , iflavour = zipFancy [Magenta]
+  , irarity  = [(10, 0), (40, 30)]  -- only appears among late spawns
+  , ikit     = ikit elbow ++ [(S_ARMORED_SKIN, COrgan), (S_JET_BOOSTER, COrgan)]
   }
 torsor = ItemKind
   { isymbol  = 'M'
@@ -774,6 +780,31 @@ giantOctopus = ItemKind
                , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_3, COrgan)
                , (RAW_MEAT_CHUNK, CEqp), (RAW_MEAT_CHUNK, CEqp) ]
  }
+lion = ItemKind  -- emphatically not a tank
+  { isymbol  = 'l'
+  , iname    = "Lion"
+  , ifreq    = [(ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)]
+  , iflavour = zipPlain [Red]
+  , icount   = 1
+  , irarity  = [(10, 0), (30, 50)]  -- only appears among late spawns
+  , iverbHit = "thud"
+  , iweight  = 140000
+  , idamage  = 0
+  , iaspects = [ AddSkill SkMaxHP 120, AddSkill SkMaxCalm 80
+               , AddSkill SkSpeed 30, AddSkill SkNocto 2
+               , AddSkill SkHurtMelee 60  -- great fighter
+               , AddSkill SkAggression 2  -- late spawn
+               , AddSkill SkApply 1  -- can eat food despite the genetic flaw
+               , SetFlag Durable ]
+  , ieffects = []
+  , idesc    = "At the repeated violation of their pride area, the irritated felines emerge from hiding."
+  , ikit     = [ (S_POWERFUL_HIND_LEGS, COrgan)
+               , (S_LARGE_JAW, COrgan), (S_SMALL_CLAW, COrgan)
+               , (S_EYE_6, COrgan), (S_EAR_6, COrgan)
+               , (S_ANIMAL_BRAIN, COrgan)
+               , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_10, COrgan)
+               , (RAW_MEAT_CHUNK, CEqp), (RAW_MEAT_CHUNK, CEqp) ]
+  }
 
 -- * Robots, Allure-specific
 
