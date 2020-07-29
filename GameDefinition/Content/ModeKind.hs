@@ -72,9 +72,9 @@ pattern DEFENSE_EMPTY = GroupName "defenseEmpty"
 
 content :: [ModeKind]
 content =
-  [raid, brawl, crawl, shootout, hunt, escape, zoo, ambush, crawlEmpty, crawlSurvival, dig, see, short, safari, safariSurvival, battle, battleDefense, battleSurvival, defense, defenseEmpty, screensaverRaid, screensaverBrawl, screensaverShootout, screensaverHunt, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverCrawl, screensaverSafari]
+  [raid, brawl, crawl, shootout, hunt, escape, zoo, ambush, safari, dig, see, short, crawlEmpty, crawlSurvival, safariSurvival, battle, battleDefense, battleSurvival, defense, defenseEmpty, screensaverRaid, screensaverBrawl, screensaverCrawl, screensaverShootout, screensaverHunt, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverSafari]
 
-raid,    brawl, crawl, shootout, hunt, escape, zoo, ambush, crawlEmpty, crawlSurvival, dig, see, short, safari, safariSurvival, battle, battleDefense, battleSurvival, defense, defenseEmpty, screensaverRaid, screensaverBrawl, screensaverShootout, screensaverHunt, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverCrawl, screensaverSafari :: ModeKind
+raid,    brawl, crawl, shootout, hunt, escape, zoo, ambush, safari, dig, see, short, crawlEmpty, crawlSurvival, safariSurvival, battle, battleDefense, battleSurvival, defense, defenseEmpty, screensaverRaid, screensaverBrawl, screensaverCrawl, screensaverShootout, screensaverHunt, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverSafari :: ModeKind
 
 -- What other symmetric (two only-one-moves factions) and asymmetric vs crowd
 -- scenarios make sense (e.g., are good for a tutorial or for standalone
@@ -447,6 +447,11 @@ screensaverBrawl = screensave (AutoLeader False False) $ brawl
   , mfreq   = [(NO_CONFIRMS, 1)]
   }
 
+screensaverCrawl = screensave (AutoLeader False False) $ crawl
+  { mname   = "auto-crawl (long)"
+  , mfreq   = [(NO_CONFIRMS, 1)]
+  }
+
 screensaverShootout = screensave (AutoLeader False False) $ shootout
   { mname   = "auto-shootout (3)"
   , mfreq   = [(INSERT_COIN, 2), (NO_CONFIRMS, 1)]
@@ -472,18 +477,13 @@ screensaverAmbush = screensave (AutoLeader False False) $ ambush
   , mfreq   = [(NO_CONFIRMS, 1)]
   }
 
-screensaverCrawl = screensave (AutoLeader False False) $ crawl
-  { mname   = "auto-crawl (long)"
-  , mfreq   = [(NO_CONFIRMS, 1)]
-  }
-
 -- changing leader by client needed, because of TFollow
 screensaverSafari = screensave (AutoLeader False True) $ safari
   { mname   = "auto-safari"
   , mfreq   = [(INSERT_COIN, 1), (NO_CONFIRMS, 1)]
   }
 
-rosterRaid, rosterBrawl, rosterShootout, rosterHunt, rosterEscape, rosterZoo, rosterAmbush, rosterCrawl, rosterCrawlEmpty, rosterCrawlSurvival, rosterSafari, rosterSafariSurvival, rosterBattle, rosterBattleDefense, rosterBattleSurvival, rosterDefense, rosterDefenseEmpty :: Roster
+rosterRaid, rosterBrawl, rosterCrawl, rosterShootout, rosterHunt, rosterEscape, rosterZoo, rosterAmbush, rosterSafari, rosterCrawlEmpty, rosterCrawlSurvival, rosterSafariSurvival, rosterBattle, rosterBattleDefense, rosterBattleSurvival, rosterDefense, rosterDefenseEmpty :: Roster
 
 rosterRaid = Roster
   { rosterList = [ ( playerHero {fhiCondPoly = hiHeroShort}
@@ -518,6 +518,26 @@ rosterBrawl = Roster
                   , ("Spacefarer", "Horror Den")
                   , ("Red Collar Bro", "Horror Den") ]
   , rosterAlly = [] }
+
+rosterCrawl = Roster
+  { rosterList = [ ( playerHero
+                   , [ (3, 3, CRAWL_HERO)
+                     , (2, 0, CRAWL_HERO) ] ) -- ban foes camping on stairs
+                 , ( playerMonster
+                   , [] )
+                 , ( playerAnimal
+                   , [ (2, 5, ANIMAL)
+                     , (3, 4, ANIMAL)
+                     , -- Optional huge battle at the end:
+                       (15, 100, MOBILE_ANIMAL) ] )
+                 , ( playerRobot
+                   , [(2, 4, ROBOT)] ) ]
+  , rosterEnemy = [ ("Spacefarer", "Alien Hierarchy")
+                  , ("Spacefarer", "Animal Kingdom")
+                  , ("Spacefarer", "Robot Anarchy") ]
+  , rosterAlly = [ ("Alien Hierarchy", "Animal Kingdom")
+                 , ("Alien Hierarchy", "Robot Anarchy")
+                 , ("Robot Anarchy", "Animal Kingdom") ] }
 
 -- Exactly one scout gets a sight boost, to help the aggressor, because he uses
 -- the scout for initial attack, while camper (on big enough maps)
@@ -590,43 +610,6 @@ rosterAmbush = Roster
                   , ("Gray Off-World Mercenary", "Horror Den") ]
   , rosterAlly = [] }
 
-rosterCrawl = Roster
-  { rosterList = [ ( playerHero
-                   , [ (3, 3, CRAWL_HERO)
-                     , (2, 0, CRAWL_HERO) ] ) -- ban foes camping on stairs
-                 , ( playerMonster
-                   , [] )
-                 , ( playerAnimal
-                   , [ (2, 5, ANIMAL)
-                     , (3, 4, ANIMAL)
-                     , -- Optional huge battle at the end:
-                       (15, 100, MOBILE_ANIMAL) ] )
-                 , ( playerRobot
-                   , [(2, 4, ROBOT)] ) ]
-  , rosterEnemy = [ ("Spacefarer", "Alien Hierarchy")
-                  , ("Spacefarer", "Animal Kingdom")
-                  , ("Spacefarer", "Robot Anarchy") ]
-  , rosterAlly = [ ("Alien Hierarchy", "Animal Kingdom")
-                 , ("Alien Hierarchy", "Robot Anarchy")
-                 , ("Robot Anarchy", "Animal Kingdom") ] }
-
-rosterCrawlEmpty = Roster
-  { rosterList = [ ( playerHero
-                   , [(1, 1, CRAWL_HERO)] )
-                 , (playerHorror, []) ]  -- for spawned and summoned monsters
-  , rosterEnemy = []
-  , rosterAlly = [] }
-
-rosterCrawlSurvival = rosterCrawl
-  { rosterList = [ ( playerAntiHero
-                   , [(3, 3, CRAWL_HERO)] )
-                 , ( playerMonster
-                   , [(5, 1, MONSTER)] )
-                 , ( playerAnimal {fhasUI = True}
-                   , [(5, 10, ANIMAL)] )  -- explore unopposed for some time
-                 , ( playerRobot
-                   , [(3, 3, ROBOT)] ) ] }
-
 -- No horrors faction needed, because spawned heroes land in civilian faction.
 rosterSafari = Roster
   { rosterList = [ ( playerMonsterTourist
@@ -649,6 +632,23 @@ rosterSafari = Roster
                     , "Animal Exquisite Herds and Packs Galore" ) ]
   , rosterAlly = [ ( "Animal Magnificent Specimen Variety"
                    , "Animal Exquisite Herds and Packs Galore" ) ] }
+
+rosterCrawlEmpty = Roster
+  { rosterList = [ ( playerHero
+                   , [(1, 1, CRAWL_HERO)] )
+                 , (playerHorror, []) ]  -- for spawned and summoned monsters
+  , rosterEnemy = []
+  , rosterAlly = [] }
+
+rosterCrawlSurvival = rosterCrawl
+  { rosterList = [ ( playerAntiHero
+                   , [(3, 3, CRAWL_HERO)] )
+                 , ( playerMonster
+                   , [(5, 1, MONSTER)] )
+                 , ( playerAnimal {fhasUI = True}
+                   , [(5, 10, ANIMAL)] )  -- explore unopposed for some time
+                 , ( playerRobot
+                   , [(3, 3, ROBOT)] ) ] }
 
 rosterSafariSurvival = rosterSafari
   { rosterList = [ ( playerMonsterTourist
@@ -732,21 +732,11 @@ rosterDefenseEmpty = rosterCrawl
   , rosterEnemy = []
   , rosterAlly = [] }
 
-cavesRaid, cavesBrawl, cavesShootout, cavesHunt, cavesEscape, cavesZoo, cavesAmbush, cavesCrawl, cavesCrawlEmpty, cavesDig, cavesSee, cavesShort, cavesSafari, cavesBattle :: Caves
+cavesRaid, cavesBrawl, cavesCrawl, cavesShootout, cavesHunt, cavesEscape, cavesZoo, cavesAmbush, cavesSafari, cavesDig, cavesSee, cavesShort, cavesCrawlEmpty, cavesBattle :: Caves
 
 cavesRaid = [([2], [CAVE_RAID])]
 
 cavesBrawl = [([2], [CAVE_BRAWL])]
-
-cavesShootout = [([5], [CAVE_SHOOTOUT])]
-
-cavesHunt = [([6], [CAVE_HUNT])]
-
-cavesEscape = [([7], [CAVE_ESCAPE])]
-
-cavesZoo = [([8], [CAVE_ZOO])]
-
-cavesAmbush = [([9], [CAVE_AMBUSH])]
 
 listCrawl :: [([Int], [GroupName CaveKind])]
 listCrawl =
@@ -766,14 +756,19 @@ listCrawl =
 -- of the screen, despite two staircases.
 cavesCrawl = reverse listCrawl
 
-cavesCrawlEmpty = reverse $
-  map (\(ns, grps) ->
-        (ns, if grps == [CAVE_BRIDGE] then [CAVE_SHALLOW_ROGUE] else grps))
-      listCrawl
+cavesShootout = [([5], [CAVE_SHOOTOUT])]
 
-renumberCaves :: Int -> ([Int], [GroupName CaveKind])
-              -> ([Int], [GroupName CaveKind])
-renumberCaves offset (ns, l) = (map (+ offset) ns, l)
+cavesHunt = [([6], [CAVE_HUNT])]
+
+cavesEscape = [([7], [CAVE_ESCAPE])]
+
+cavesZoo = [([8], [CAVE_ZOO])]
+
+cavesAmbush = [([9], [CAVE_AMBUSH])]
+
+cavesSafari = reverse [ ([5], [CAVE_SAFARI_1])
+                      , ([10], [CAVE_SAFARI_2])
+                      , ([15], [CAVE_SAFARI_3]) ]
 
 cavesDig =
   reverse $ concat
@@ -782,6 +777,10 @@ cavesDig =
             (replicate 100 listCrawl)
 --            [0, 2 ..]
 --            (replicate 100 [([1], [CAVE_OUTERMOST]),([2], [CAVE_EXIT])])
+
+renumberCaves :: Int -> ([Int], [GroupName CaveKind])
+              -> ([Int], [GroupName CaveKind])
+renumberCaves offset (ns, l) = (map (+ offset) ns, l)
 
 cavesSee = let numberCaves n c = ([n], [c])
            in reverse $ zipWith numberCaves [1..]
@@ -799,8 +798,9 @@ allCaves =
   , CAVE_ARENA, CAVE_RESIDENTIAL, CAVE_LABORATORY, CAVE_MUSEUM, CAVE_EXIT
   , CAVE_CASINO, CAVE_POWER ]
 
-cavesSafari = reverse [ ([5], [CAVE_SAFARI_1])
-                      , ([10], [CAVE_SAFARI_2])
-                      , ([15], [CAVE_SAFARI_3]) ]
+cavesCrawlEmpty = reverse $
+  map (\(ns, grps) ->
+        (ns, if grps == [CAVE_BRIDGE] then [CAVE_SHALLOW_ROGUE] else grps))
+      listCrawl
 
 cavesBattle = [([10], [CAVE_BATTLE])]
