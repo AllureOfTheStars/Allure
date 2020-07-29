@@ -1150,7 +1150,7 @@ weldedRobot = ItemKind
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "A well-built humanoid luggage unloading robot with a smooth silvery satin skin. Its graceful moves are stunted by a thick irregular weld fastening both its shapely legs to the floor. A whiff of smoke escapes whenever it opens its mouth in a charming toothy smile while brandishing a blowtorch in its trembling hand."
+  , idesc    = "A well-built humanoid luggage unloading robot with a smooth silvery satin skin. Its graceful moves are stunted by a thick irregular weld fastening both its shapely legs to the floor. A whiff of smoke escapes whenever it opens its mouth in a charming toothy smile while brandishing a blowtorch in its trembling hand. Blowtorch! That's the key to open the welded staircase."
   , ikit     = [ (S_FIST, COrgan)
                , (S_EYE_6, COrgan), (S_EAR_3, COrgan)
                , (S_MOUTH_VENT, COrgan)

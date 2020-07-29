@@ -2035,7 +2035,7 @@ blowtorch = ItemKind
       -- tool and fire source use so that other tool-weapons need only
       -- do that many non-armor affected damage to dissuade the player
       -- from using them without careful thought
-  , idesc    = "A sturdy old-fashioned portable blowtorch for fine cutting or welding of metals. Rather weak, but does not require access codes to high current power outlets. If you can patiently suffer the heat, it can be used as a clumsy breaching tool."
+  , idesc    = "A sturdy old-fashioned portable blowtorch for fine cutting or welding of metals. Unfocused and inaccurate, but does not require access codes to high current power outlets. If you can patiently suffer the heat, it can be used as a clumsy breaching tool for stuck, locked and welded containers and doors."  -- for some reason I don't feel like being more obvious here about the use for the welded staircase; maybe that's because the torch can be used long after the first puzzle of the game is forgotten and so the in-you-face hints should be on items and actors that get forgotten together with the puzzle
   , ikit     = []
   }
 laserSharpener = ItemKind

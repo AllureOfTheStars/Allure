@@ -581,7 +581,7 @@ desertedAirlock = ItemKind
   , idamage  = 0
   , iaspects = [SetFlag Unique, SetFlag Durable]
   , ieffects = []
-  , idesc    = "You recognize the inner airlock door smeared with guano in a familiar pattern, but you can't see the shuttle you left engaged to the airlock clamps outside. That's a chilling realization: your craft was among those shed by the spaceship and now you have to find another lifeboat, likely on a distant deck. Moreover, something's gone through your supplies, chewing, tearing and scattering most of them. Given that your stay just got prolonged, the shortage of food is almost as alarming as the scarcity of nano first aid vials that could patch the wounds from your recent struggles, until you are able to undergo a proper slow reconstruction in a hospital."
+  , idesc    = "You recognize the inner airlock door smeared with guano in a familiar pattern, but you can't see the shuttle you left engaged to the airlock clamps outside. That's a chilling realization: your craft was among those shed by the spaceship. Now you have to find another lifeboat, likely on a deck high up towards the spaceship core, which you were happy to be blocked from, but to which you now have to break through.\nMoreover, something's gone through your supplies, chewing, tearing and scattering most of them. Given that your stay just got prolonged, the shortage of food is almost as alarming as the scarcity of nano first aid vials that could patch the wounds from your recent struggles, until you are able to undergo a proper slow reconstruction in a hospital."
   , ikit     = [ (COOKED_FOOD, CGround), (COOKED_FOOD, CGround)
                , (S_SPACESUIT_TORN, CGround)
                , (S_SHORT_BLUNT_HAMMER, CGround)
@@ -841,7 +841,7 @@ crudeWeld = ItemKind  -- this is also an organ
   , idamage  = 0
   , iaspects = [AddSkill SkMove (-5), AddSkill SkDisplace (-1), SetFlag Durable]
   , ieffects = [Explode S_SPARK]
-  , idesc    = "This is a messy and irregularly layered weld, but no amount of kicking nor hammering makes any impression on it. A heavy duty cutting tool would be required."
+  , idesc    = "Such a superfluous mass of molten metal was layered on with messy welds that no amount of kicking nor hammering has any effect. A heavy duty cutting tool would be required or skilled thermal cycling. Whomever did the melding may still be around, but convincing him to yield his fiery implements may be a dangerous endeavour."
   , ikit     = []
   }
 decontaminator = ItemKind

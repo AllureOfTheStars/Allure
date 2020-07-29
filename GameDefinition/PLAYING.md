@@ -393,9 +393,10 @@ and take care to move one at a time, monsters don't care about each other
 and crowd and stampede all at once, sometimes brutally colliding by accident.
 
 Monsters are depicted on the map with letters. Upper case letters
-are unique monsters, often guardians of special floors, and lower case
-letters are the rabble. If there are humans not from our team,
-they are marked with `@` and `1` through `9` in other colours than white.
+are unique monsters, often guardians of special floors, resources
+and keys to other areas. Lower case letters are the rabble.
+If there are humans not from our team, they are marked
+with `@` and `1` through `9` in other colours than white.
 
 When a hero walks and bumps into a monster or a monster attacks
 the hero, melee combat occurs. Hero *running* into and displacing
