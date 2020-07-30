@@ -1136,8 +1136,8 @@ heavyRobot = ItemKind  -- summoning tank with armor, but fortunately weak
                , (SPOTLIGHT, CEqp), (CONSTRUCTION_HOOTER, CEqp) ]
   }
 weldedRobot = ItemKind
-  { isymbol  = 'W'
-  , iname    = "Smiling Welded Robot"
+  { isymbol  = 'L'
+  , iname    = "Welded Luggage Robot"
   , ifreq    = [(ROBOT, 100), (IMMOBILE_ROBOT, 100)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1

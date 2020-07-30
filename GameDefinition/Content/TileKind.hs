@@ -478,7 +478,7 @@ signboardUnread = TileKind  -- client only, indicates never used by this faction
 signboardRead = TileKind
   { tsymbol  = '0'
   , tname    = "signboard"
-  , tfreq    = [ (SIGNBOARD, 80), (EMPTY_SET_LIT, 4)
+  , tfreq    = [ (SIGNBOARD, 80), (EMPTY_SET_LIT, 7)
                , (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 2), (MUSEUM_SET_DARK, 1)
                , (ESCAPE_SET_DARK, 2) ]
   , tcolor   = BrCyan

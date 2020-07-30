@@ -176,11 +176,11 @@ embeds :: [ItemKind]
 embeds =
   [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signageExit, signageEmbed, signageMerchandise, fireSmall, fireSmall5, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, stairsTrapUp, stairsTrapDown, lectern, shallowWater, straightPath, frozenGround]
   -- Allure-specific
-  ++ [blackStarrySky, disengagedDocking, desertedAirlock, ruinedFirstAidKit, fireFightingGear, fireFightingGearIntact, wall3dBillboard, crackedFlue, bloodOnWall, bloodOnWall2, bloodOnWall3, depositBox, depositBoxSummonHero, depositBoxSummonMonster, jewelryCase, ediblePlantRipe, stairsTrapDownOil, doorTrapPush, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench]
+  ++ [blackStarrySky, disengagedDocking, desertedAirlock, ruinedFirstAidKit, fireFightingGear, fireFightingGearIntact, wall3dBillboard, crackedFlue, bloodOnWall, bloodOnWall2, bloodOnWall3, depositBox, depositBoxSummonHero, depositBoxSummonMonster, jewelryCase, ediblePlantRipe, stairsTrapDownOil, doorTrapPush, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench, signageExitLuggage, signageEmbedLuggage, signageMerchandiseLuggage]
 
 scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signageExit, signageEmbed, signageMerchandise, fireSmall, fireSmall5, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, stairsTrapUp, stairsTrapDown, lectern, shallowWater, straightPath, frozenGround :: ItemKind
 -- Allure-specific
-blackStarrySky,       disengagedDocking, desertedAirlock, ruinedFirstAidKit, fireFightingGear, fireFightingGearIntact, wall3dBillboard, crackedFlue, bloodOnWall, bloodOnWall2, bloodOnWall3, depositBox, depositBoxSummonHero, depositBoxSummonMonster, jewelryCase, ediblePlantRipe, stairsTrapDownOil, doorTrapPush, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench :: ItemKind
+blackStarrySky,       disengagedDocking, desertedAirlock, ruinedFirstAidKit, fireFightingGear, fireFightingGearIntact, wall3dBillboard, crackedFlue, bloodOnWall, bloodOnWall2, bloodOnWall3, depositBox, depositBoxSummonHero, depositBoxSummonMonster, jewelryCase, ediblePlantRipe, stairsTrapDownOil, doorTrapPush, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench, signageExitLuggage, signageEmbedLuggage, signageMerchandiseLuggage :: ItemKind
 
 -- Make sure very few walls are substantially useful, e.g., caches,
 -- and none that are secret. Otherwise the player will spend a lot of time
@@ -277,10 +277,10 @@ treasureCacheTrap = ItemKind
 signageExit = ItemKind
   { isymbol  = '?'
   , iname    = "sticker"
-  , ifreq    = [(SIGNAGE, 50)]
+  , ifreq    = [(SIGNAGE, 100)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
-  , irarity  = [(1, 1)]
+  , irarity  = [(1, 0), (2, 1)]
   , iverbHit = "whack"
   , iweight  = 10000
   , idamage  = 0
@@ -292,7 +292,7 @@ signageExit = ItemKind
   }
 signageEmbed = signageExit
   { iname    = "notice"
-  , ifreq    = [(SIGNAGE, 50)]
+  , ifreq    = [(SIGNAGE, 100)]
   , iflavour = zipPlain [BrBlue]
   , ieffects = [Detect DetectEmbed 12]  -- low tech, hence fully operational
   , idesc    = "Detailed schematics for the maintenance crew."
@@ -300,10 +300,10 @@ signageEmbed = signageExit
   }
 signageMerchandise = signageExit
   { iname    = "shop list"
-  , ifreq    = [(SIGNAGE, 50)]
+  , ifreq    = [(SIGNAGE, 100)]
   , iflavour = zipPlain [BrGreen]
   , ieffects = [Detect DetectLoot 20]  -- high tech, so slightly confused
-  , idesc    = "A list of nearby commercial outlets, constantly updated by tracking merchandise not registered as passenger property. Customers are kindly asked to refrain from littering in this heavily monitored public area."
+  , idesc    = "A list of nearby commercial outlets, constantly updated by tracking merchandise not registered as passenger property. Customers are kindly requeted to refrain from littering in this heavily monitored public area."
   }
 fireSmall = ItemKind
   { isymbol  = 'o'
@@ -933,7 +933,21 @@ workshopBench = ItemKind
   , idesc    = "A sturdy table with an anvil, a vice and an overhang of pipes, tubes, wires and probes. Place the components and tools adjacent to the table, stand over them and craft by trying to modify the bench with the <M> command."
   , ikit     = []
   }
-
+signageExitLuggage = signageExit
+  { irarity  = [(1, 1), (2, 0)]
+  , idesc    = idesc signageExit
+               <+> "If exits blocked, luggage claim area marked with 'L' is the concentration point."
+  }
+signageEmbedLuggage = signageEmbed
+  { irarity  = [(1, 1), (2, 0)]
+  , idesc    = idesc signageEmbed
+               <+> "Keys and tools are held in the luggage claim booth marked with 'L'."
+  }
+signageMerchandiseLuggage = signageMerchandise
+  { irarity  = [(1, 1), (2, 0)]
+  , idesc    = idesc signageMerchandise
+               <+> "Queries and complaints can be filed to the port officer and luggage attendant this way under the 'L' sign."
+  }
 combineEffect :: Text -> [( [(Int, GroupName ItemKind)]
                           , [(Int, GroupName ItemKind)]
                           , [(Int, GroupName ItemKind)] )]
