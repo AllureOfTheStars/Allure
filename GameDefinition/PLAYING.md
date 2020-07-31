@@ -155,8 +155,8 @@ to defend a key location until the first wave of attackers is broken.
 The large game arena calls for strategic thinking, including resource
 management, area denial and unavoidable temporary retreats to other levels.
 Thus, the crawl game mode is the most replayable one, but even the small
-scenarios can be refreshed by ramping up difficulty settings and striving
-to beat a high score.
+scenarios can be refreshed by striving to beat a high score and then
+ramping up the difficulty settings.
 
 
 Exploring the world
