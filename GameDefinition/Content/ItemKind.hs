@@ -2013,7 +2013,7 @@ blowtorch = ItemKind
   { isymbol  = symbolLight
   , iname    = "blowtorch"  -- not unique, but almost never generated on floor
   , ifreq    = [ (BLOWTORCH, 1), (VALUABLE, 20)  -- make AI afraid to hog
-               , (CRAWL_ITEM, 1)
+               , (CRAWL_ITEM, 1)  -- @PolyItem@ doesn't work on it
                , (BREACHING_TOOL, 1), (FIRE_SOURCE, 1) ]
                  -- infinite use, but harmful
   , iflavour = zipPlain [BrYellow]
