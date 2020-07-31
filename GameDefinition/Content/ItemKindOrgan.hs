@@ -816,9 +816,11 @@ mouthVent = armoredSkin
   , iverbHit = "surprise"
   , iaspects = [ Timeout 7
                , SetFlag Periodic, SetFlag Durable ]
-  , ieffects = [OneOf $ map Explode
-      [ S_PHEROMONE, S_RHINO_HOLOGRAM, S_CURRENT_DISCHARGE
-      , blastNoStatOf S_IMMOBILE, S_SMOKE, S_SPARK ]]
+  , ieffects = [OneOf $
+      AndEffect (Explode S_SMOKE) (VerbMsg "say: Sir, your luggage has already been collected? can you help me? I can't reach? with this tool")
+      : map Explode
+          [ S_PHEROMONE, S_RHINO_HOLOGRAM, S_CURRENT_DISCHARGE
+          , blastNoStatOf S_IMMOBILE, S_SPARK ]]
   , idesc    = ""
   }
 dustVent = armoredSkin
