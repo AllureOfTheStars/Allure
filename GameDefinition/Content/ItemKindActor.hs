@@ -391,7 +391,7 @@ elbowTank = elbow
   }
 torsor = ItemKind
   { isymbol  = 'M'
-  , iname    = "Maker"
+  , iname    = "The Maker"
   , ifreq    = [(MONSTER, 100), (MOBILE, 1)]
   , iflavour = zipFancy [BrCyan]
   , icount   = 1
@@ -654,7 +654,7 @@ alligator = ItemKind  -- late, slow, deadly semi-tank with some armor;
   }
 rhinoceros = ItemKind  -- impressive tank boss with some armor
   { isymbol  = 'R'
-  , iname    = "Maddened Rhinoceros"
+  , iname    = "Billy"
   , ifreq    = [(ANIMAL, 100), (MOBILE, 1)]
   , iflavour = zipPlain [Brown]
   , icount   = 1
@@ -662,7 +662,7 @@ rhinoceros = ItemKind  -- impressive tank boss with some armor
   , iverbHit = "thud"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ SetFlag Unique
+  , iaspects = [ SetFlag Unique, ELabel "the Maddened Rhinoceros"
                , AddSkill SkMaxHP 200, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 27, AddSkill SkNocto 2
                , AddSkill SkHurtMelee 50  -- mass gives extra damage
@@ -1137,7 +1137,7 @@ heavyRobot = ItemKind  -- summoning tank with armor, but fortunately weak
   }
 weldedRobot = ItemKind
   { isymbol  = 'L'
-  , iname    = "Welded Luggage Robot"
+  , iname    = "Unnamed"
   , ifreq    = [(ROBOT, 100), (IMMOBILE_ROBOT, 100)]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
@@ -1145,7 +1145,7 @@ weldedRobot = ItemKind
   , iverbHit = "clank"
   , iweight  = 80000
   , idamage  = 0
-  , iaspects = [ SetFlag Unique
+  , iaspects = [ SetFlag Unique, ELabel "the Welded Luggage Robot"
                , AddSkill SkMaxHP 200, AddSkill SkMaxCalm 100
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
                , SetFlag Durable ]
@@ -1163,7 +1163,7 @@ weldedRobot = ItemKind
   }
 cleanerRobot = ItemKind
   { isymbol  = 'C'
-  , iname    = "Void Cleaner Robot"
+  , iname    = "The Void Cleaner Robot"
   , ifreq    = [(ROBOT, 100), (MOBILE, 1)]
   , iflavour = zipPlain [BrGreen]
   , icount   = 1
