@@ -410,7 +410,7 @@ torsor = ItemKind
                , AddSkill SkAlter (-1)  -- can't exit the gated level; a boss,
                                         -- but can dig rubble, ice
                , SetFlag Durable ]
-  , ieffects = []
+  , ieffects = [OnSmash $ VerbMsg "mount the last plea for mutual understanding and voluntary exchange of body parts"]
   , idesc    = "The mind, the big heart behind it all. Warmth and sympathy pour out through the graceful undulation of tentacles, sharp claws, snapping jaw and dripping fangs."
   , ikit     = [ (S_TENTACLE, COrgan), (S_HOOKED_CLAW, COrgan)
                , (S_LARGE_JAW, COrgan), (S_VENOM_FANG, COrgan)
@@ -670,7 +670,7 @@ rhinoceros = ItemKind  -- impressive tank boss with some armor
                , AddSkill SkAlter (-1)  -- can't use normal stairs nor dig;
                                         -- a weak miniboss; can use easy stairs
                , SetFlag Durable ]
-  , ieffects = []
+  , ieffects = [OnSmash $ VerbMsg "bellow triumphantly"]
   , idesc    = "The last of its kind. Blind with rage, or perhaps due to the postoperative scars. A huge mass of muscle that charges at deadly speed."
   , ikit     = [ (S_RHINO_HORN, COrgan), (S_FOOT, COrgan)
                , (S_RHINO_INERTIA, COrgan), (S_ARMORED_SKIN, COrgan)
@@ -1149,7 +1149,7 @@ weldedRobot = ItemKind
                , AddSkill SkMaxHP 200, AddSkill SkMaxCalm 100
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
                , SetFlag Durable ]
-  , ieffects = []
+  , ieffects = [OnSmash $ VerbMsg "lament dying with disfigured and welded legs that nobody wanted to fix with the blowtorch"]
   , idesc    = "A well-built humanoid luggage unloading robot with a smooth silvery satin skin. Its graceful moves are stunted by a thick irregular weld fastening both its shapely legs to the floor. A whiff of smoke escapes whenever it opens its mouth in a charming toothy smile while brandishing a blowtorch in its trembling hand. Blowtorch! That's the key to open the welded staircase."
   , ikit     = [ (S_FIST, COrgan)
                , (S_EYE_6, COrgan), (S_EAR_3, COrgan)
@@ -1183,7 +1183,7 @@ cleanerRobot = ItemKind
                    -- however, it can use the easy stairs and so change levels
                , AddSkill SkApply 1  -- can apply the hooter
                , SetFlag Durable ]
-  , ieffects = []
+  , ieffects = [OnSmash $ VerbMsg "clumsily try to pick up a dust speck"]
   , idesc    = "An oversize waste disposal robot repaired with parts from a demolition robot, including a scaled up goal matrix. The cosmic void is now the only acceptable model of cleanliness. The robot's bulky trunk doesn't fit into even the larger lift carriages."
   , ikit     = [ (S_TENTACLE, COrgan), (S_SNOUT, COrgan)
                , (S_HORN, COrgan), (S_SMALL_CLAW, COrgan)  -- no fist
