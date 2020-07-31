@@ -500,15 +500,25 @@ Lead the new hopeful explorers to fame, wealth and glory!
 FAQ
 ---
 
-- Q: In the crawl scenario, how do I open the stairs up welded shut
-and reach the loot-packed levels above the first three?
+- Q: In the crawl scenario, I already investigated and decided
+I won't use the `[spoiler]` nor `[spoiler]` way of escaping the ship.
+`[Spoiler alert: players that didn't may want to try doing that first.]`
+Assuming I want to attempt the way through the welded staircase,
+how do I open the stairs up welded shut and reach the levels above
+the first three?
 
 A: Examine the staircase to determine how to open it. Look for clues
-about who can have the right tool. Bump interesting terrain. Examine
-and read descriptions. Listen to what encountered special characters say.
-If no luck, it may be that there was a murder and the item you look for
-got stranded. In that case, explore every tile, pick up every item,
-equip it and try opening the staircase. Ask on a forum if desperate.
+about who can have the right tool. If you didn't collect any clues
+while investigating the other story elements, you need to bump
+or examine interesting terrain more often. Listen to what encountered
+unique characters say. Read the descriptions and piece the puzzles together.
+You don't need to move your heroes to examine positions on other levels.
+It's enough to press `<` or `>` and move the crosshair or use mouse.
+If still no luck, it may be that there was a murder and the item
+you look for got stranded. In that case, explore every tile,
+pick up every item, equip it and try opening the staircase.
+The item can't be destroyed and is too scary to be picked up by foes,
+so your success is assured. Ask on a forum if desperate.
 
 - Q: Where to buy light sources in the crawl scenario game?
 
