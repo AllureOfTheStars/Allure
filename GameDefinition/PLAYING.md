@@ -500,6 +500,16 @@ Lead the new hopeful explorers to fame, wealth and glory!
 FAQ
 ---
 
+- Q: In the crawl scenario, how do I open the stairs up welded shut
+and reach the loot-packed levels above the first three?
+
+A: Examine the staircase to determine how to open it. Look for clues
+about who can have the right tool. Bump interesting terrain. Examine
+and read descriptions. Listen to what encountered special characters say.
+If no luck, it may be that there was a murder and the item you look for
+got stranded. In that case, explore every tile, pick up every item,
+equip it and try opening the staircase. Ask on a forum if desperate.
+
 - Q: Where to buy light sources in the crawl scenario game?
 
 A: Too late to buy anything. However, they can be crafted in at least
