@@ -967,7 +967,7 @@ scroll13 = scrollTemplate
   }
 scroll14 = scrollTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_SCROLL, 100)]
-  , irarity  = [(10, 20)]  -- at endgame a crucial item may be missing
+  , irarity  = [(10, 20)]  -- at gameover a crucial item may be missing
   , iaspects = ELabel "of molecular reconfiguration"
                : iaspects scrollTemplate
   , ieffects = [PolyItem `AndEffect` Explode S_FIRECRACKER]

@@ -572,7 +572,7 @@
 - Create a new 16x16 font and use it everywhere; tweak smaller fonts
 - Lock some levels or otherwise make ascending tricky
 - Add cooldown to most melee weapons, display that in HUD, adjust AI
-- Add per-scenario and per-outcome end-game messages in content
+- Add per-scenario and per-outcome gameover messages in content
 - Add duplicate and reroll item effects in preparation for crafting
 - Add actor and item analytics as a preparation for XP gain quests
 - Implement piercing projectiles that may share a tile with a big actor
