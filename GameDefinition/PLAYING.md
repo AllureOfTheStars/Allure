@@ -62,6 +62,9 @@ and gameplay mastery to build, confirm via high scores and pit against
 challenges, the first challenge being to finish all scenarios on standard
 difficulty (5) that already requires careful planning and use of multiple
 resources, but gives some leeway for trial, error and imperfect execution.
+Role playing and piecing clues from text descriptions is mandatory
+at the start of the longest scenario, but completely optional elsewhere,
+for players that prefer tactics and optimization challenges to storytelling.
 
 The game differs from classic roguelikes in a few ways:
 
@@ -500,9 +503,26 @@ Lead the new hopeful explorers to fame, wealth and glory!
 FAQ
 ---
 
+- Q: I've already explored first three decks and I don't know what to do next.
+
+Role-play a little. Re-read the scenario description and deck descriptions
+for all three levels. Think in-character about returning to the lowest deck.
+What would you do? What would you look for? Has anything changed
+compared to what the texts describe? Would anything surprise you?
+When you encounter any special terrain, actors, unexpected groups
+of actors or items, ask questions, think how that ties to your initial
+goal from the scenario description, examine terrain, actors and your
+own items, discover and follow the plot, gather clues, find and set
+for you yourself new immediate goals, look for resources to attain them.
+Don't be afraid to take notes. Eliminate hypotheses. Solve mysteries.
+You don't need to move your heroes to examine positions on other
+explored levels. It's enough to press `<` or `>` and move the crosshair
+or use mouse. Feel free to use the lore menu `~` as well.
+
 - Q: In the crawl scenario, I already investigated and decided
 I won't use the `[spoiler]` nor `[spoiler]` way of escaping the ship.
-`[Spoiler alert: players that didn't may want to try doing that first.]`
+`[Spoiler alert: players that didn't, may want to role-play
+and do that first, see the previous question.]`
 Assuming I want to attempt the way through the welded staircase,
 how do I open the stairs up welded shut and reach the levels above
 the first three?
@@ -512,13 +532,31 @@ about who can have the right tool. If you didn't collect any clues
 while investigating the other story elements, you need to bump
 or examine interesting terrain more often. Listen to what encountered
 unique characters say. Read the descriptions and piece the puzzles together.
-You don't need to move your heroes to examine positions on other levels.
-It's enough to press `<` or `>` and move the crosshair or use mouse.
 If still no luck, it may be that there was a murder and the item
 you look for got stranded. In that case, explore every tile,
 pick up every item, equip it and try opening the staircase.
 The item can't be destroyed and is too scary to be picked up by foes,
 so your success is assured. Ask on a forum if desperate.
+If that's any consolation, it's the only blocking puzzle in the game.
+All other puzzles and mini-games can be brute-forced (with some losses).
+
+- Q: Why do I summon hostile animals all the time, why do I defect
+to the enemy faction every level, why am I constantly sabotaging
+my own adventure, what is going on?
+
+A: Whenever anything bad happens, notice it and use it as a learning
+experience. Especially if it happens often or periodically.
+Check carefully the messages overlayed on the map and in history log,
+look at your outfit, organs, stats. Observe coincidences.
+Build conjectures. Deduce. Prevent. Adjust. Win. Whomever told you
+bumping is enough, lied.
+
+- Q: Why is my hero immobile?
+
+A: Perhaps he's just sleeping (green box indicates that)? If so,
+you can wake him up with the `%` command. If not, his movement skill
+may be temporarily drained. Switch to another hero or perform some
+other productive action that walking or wait or rest with `R`.
 
 - Q: Where to buy light sources in the crawl scenario game?
 
