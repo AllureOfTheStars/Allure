@@ -89,7 +89,7 @@ pattern DISPLAY_3D = GroupName "3D display"
 pattern CRACKED_FLUE = GroupName "cracked flue"
 pattern BLOOD_ON_WALL = GroupName "blood on wall"
 pattern DEPOSIT_BOX = GroupName "deposit box"
-pattern JEWELRY_CASE = GroupName "jewelry case"
+pattern JEWELRY_CASE = GroupName "reinforced glass case"
 pattern EDIBLE_PLANT_RIPE = GroupName "edible vegetation"
 pattern STAIRS_TRAP_DOWN_OIL = GroupName "oil staircase trap"
 pattern DOOR_TRAP_PUSH = GroupName "weak door frame"
@@ -725,7 +725,7 @@ depositBoxSummonMonster = treasureCache
   , idesc    = "Judging from the incessant noises, this deposit cell with a time lock has trapped something recently."
   }
 jewelryCase = treasureCache
-  { iname    = "jewelry case"
+  { iname    = "reinforced glass case"
   , ifreq    = [(JEWELRY_CASE, 1)]
   , iaspects = [SetFlag Durable]
   , ieffects = [CreateItem Nothing CGround ANY_JEWELRY timerNone]
