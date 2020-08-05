@@ -164,7 +164,8 @@ warrior = ItemKind
   , ieffects = []
   , idesc    = ""
   , ikit     = humanOrgans
-               ++ [(S_GENETIC_FLAW_10, COrgan), (S_EMPTY_FLASK, CStash)]
+               ++ [ (S_GENETIC_FLAW_10, COrgan)
+                  , (S_EMPTY_FLASK, CStash), (COMMON_ITEM, CStash) ]
   }
 warrior2 = warrior
   { iname    = "pilot"
@@ -176,7 +177,7 @@ warrior3 = warrior
   , ifreq    = [(CRAWL_HERO, 100), (MOBILE, 1)]
   , ikit     = humanOrgans
                ++ [ (S_GENETIC_FLAW_10, COrgan), (S_CURRENCY, CStash)
-                  , (COOKED_FOOD, CStash) ]
+                  , (COOKED_FOOD, CStash), (COMMON_ITEM, CStash) ]
   -- , idesc    = ""
   }
 warrior4 = warrior
