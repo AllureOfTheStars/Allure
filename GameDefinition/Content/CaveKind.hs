@@ -444,7 +444,7 @@ bridge = rogue
   , cstairAllowed = [ (WELDED_WALLED_STAIRCASE, 50)
                     , (WELDED_OPEN_STAIRCASE, 50)
                     , (WELDED_TINY_STAIRCASE, 1) ]
-  , cdesc         = "The bridge is gutted out and nonoperational. You saved space on the shuttle by only packing demolition equipment (and booze, long gone, flasks flung to fend off the annoying vermin) and now you can't even attempt repairs. You are also short on rations of food and vials of medicine to treat your recent wounds. Only water is plentiful on the ship: gaseous, liquid, frozen. There are animal cries down below and ominous silence up above."
+  , cdesc         = "The bridge is gutted out and nonoperational. You saved space on the shuttle by only packing demolition equipment (and booze, long gone, flasks flung to fend off the annoying vermin) and now you can't even attempt repairs. You are also short on rations and vials of medicine to treat your recent wounds. Only water is plentiful on the ship: gaseous, liquid, frozen. There are animal cries down below and ominous silence up above."
   }
 shallowRogue = rogue
   { cfreq         = [(CAVE_SHALLOW_ROGUE, 100)]
