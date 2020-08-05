@@ -50,7 +50,7 @@ install:
 
   - appveyor-retry cabal v1-install --force-reinstalls tasty-hunit
   - appveyor-retry cabal v1-test
-  - make nativeBenchCrawl-appveyor || (tail -n 500 %APPDATA%\Allure\stderr.txt & exit 77)
+  - make nativeBenchCrawl-appveyor || (tail -n 200 %APPDATA%\Allure\stderr.txt & tail -n 200 %APPDATA%\Allure\stdout.txt & exit 77)
 
   - mv AllureOfTheStars AllureOfTheStars64
   - rm -rf AllureOfTheStarsInstall
@@ -105,7 +105,7 @@ install:
 
   - appveyor-retry cabal v1-install --force-reinstalls tasty-hunit
   - appveyor-retry cabal v1-test
-  - make benchBattle-appveyor || (tail -n 500 %APPDATA%\Allure\stdout.txt & tail -n 500 %APPDATA%\Allure\stderr.txt & exit 77)
+  - make benchBattle-appveyor || (tail -n 200 %APPDATA%\Allure\stderr.txt & tail -n 200 %APPDATA%\Allure\stdout.txt & exit 77)
 
   - mv AllureOfTheStars AllureOfTheStars32
   - ps: '& "C:\Program Files (x86)\NSIS\makensis.exe" .windows.installer.nsi'
