@@ -354,7 +354,7 @@ empty = rogue
   , chidden       = 0
   , cactorCoeff   = 40  -- easy to view and plan
   , cactorFreq    = [(MONSTER, 10), (ANIMAL, 5), (ROBOT, 85)]
-  , citemNum      = 17 `d` 2  -- lots of free space, but extra loot present
+  , citemNum      = 16 `d` 2  -- lots of free space, but extra loot present
   , cplaceFreq    = [(EMPTY, 1)]
   , cpassable     = True
   , cdefTile      = EMPTY_SET_LIT
@@ -452,7 +452,7 @@ shallowRogue = rogue
   , cYminSize     = 37
   , cactorCoeff   = 120  -- more difficult
   , cactorFreq    = filter ((/= MONSTER) . fst) $ cactorFreq rogue
-  , citemNum      = 15 `d` 2
+  , citemNum      = 14 `d` 2
   , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.CRAWL_ITEM, 60)
                     , (GARDENING_TOOL, 800), (IK.ANY_FLASK, 200) ]
   , cmaxStairsNum = 2
@@ -727,7 +727,6 @@ safari1 = brawl
   , cstairFreq    = [ (OUTDOOR_WALLED_STAIRCASE, 20)
                     , (OUTDOOR_CLOSED_STAIRCASE, 80)
                     , (OUTDOOR_TINY_STAIRCASE, 1) ]
-  , cstairAllowed = []
   , cdesc         = "\"DLC 1. Hunams scavenge in a forest in their usual disgusting way.\""
   }
 safari2 = escape  -- lamps instead of trees, but ok, it's only a simulation
@@ -738,7 +737,6 @@ safari2 = escape  -- lamps instead of trees, but ok, it's only a simulation
   , cstairFreq    = [ (OUTDOOR_WALLED_STAIRCASE, 20)
                     , (OUTDOOR_CLOSED_STAIRCASE, 80)
                     , (OUTDOOR_TINY_STAIRCASE, 1) ]
-  , cstairAllowed = []
   , cdesc         = "\"DLC 2. In the dark pure heart of the jungle noble animals roam freely.\""
   }
 safari3 = zoo  -- glass rooms, but ok, it's only a simulation
@@ -750,6 +748,5 @@ safari3 = zoo  -- glass rooms, but ok, it's only a simulation
   , cstairFreq    = [ (OUTDOOR_WALLED_STAIRCASE, 20)
                     , (OUTDOOR_CLOSED_STAIRCASE, 80)
                     , (OUTDOOR_TINY_STAIRCASE, 1) ]
-  , cstairAllowed = []
   , cdesc         = "\"DLC 3. Jealous hunams set jungle on fire and flee.\""
   }
