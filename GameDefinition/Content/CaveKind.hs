@@ -8,7 +8,7 @@
 -- cave kind.
 module Content.CaveKind
   ( -- * Group name patterns
-    pattern CAVE_ROGUE, pattern CAVE_ARENA, pattern CAVE_LABORATORY, pattern CAVE_NOISE, pattern CAVE_SHALLOW_ROGUE, pattern CAVE_OUTERMOST, pattern CAVE_RAID, pattern CAVE_BRAWL, pattern CAVE_SHOOTOUT, pattern CAVE_HUNT, pattern CAVE_ESCAPE, pattern CAVE_ZOO, pattern CAVE_AMBUSH, pattern CAVE_BATTLE, pattern CAVE_SAFARI_1, pattern CAVE_SAFARI_2, pattern CAVE_SAFARI_3
+    pattern CAVE_ROGUE, pattern CAVE_ARENA, pattern CAVE_LABORATORY, pattern CAVE_NOISE, pattern CAVE_SHALLOW_ROGUE, pattern CAVE_OUTERMOST, pattern CAVE_RAID, pattern CAVE_BRAWL, pattern CAVE_BRAWL_ALT, pattern CAVE_SHOOTOUT, pattern CAVE_HUNT, pattern CAVE_ESCAPE, pattern CAVE_ZOO, pattern CAVE_AMBUSH, pattern CAVE_BATTLE, pattern CAVE_SAFARI_1, pattern CAVE_SAFARI_2, pattern CAVE_SAFARI_3
   , pattern CAVE_BRIDGE, pattern CAVE_RESIDENTIAL, pattern CAVE_MUSEUM, pattern CAVE_EXIT, pattern CAVE_CASINO, pattern CAVE_POWER
   , groupNamesSingleton, groupNames
   , -- * Content
@@ -42,10 +42,10 @@ groupNamesSingleton = []
 
 groupNames :: [GroupName CaveKind]
 groupNames =
-       [CAVE_ROGUE, CAVE_ARENA, CAVE_LABORATORY, CAVE_NOISE, CAVE_SHALLOW_ROGUE, CAVE_OUTERMOST, CAVE_RAID, CAVE_BRAWL, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_ESCAPE, CAVE_ZOO, CAVE_AMBUSH, CAVE_BATTLE, CAVE_SAFARI_1, CAVE_SAFARI_2, CAVE_SAFARI_3]
+       [CAVE_ROGUE, CAVE_ARENA, CAVE_LABORATORY, CAVE_NOISE, CAVE_SHALLOW_ROGUE, CAVE_OUTERMOST, CAVE_RAID, CAVE_BRAWL, CAVE_BRAWL_ALT, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_ESCAPE, CAVE_ZOO, CAVE_AMBUSH, CAVE_BATTLE, CAVE_SAFARI_1, CAVE_SAFARI_2, CAVE_SAFARI_3]
     ++ [CAVE_BRIDGE, CAVE_RESIDENTIAL, CAVE_MUSEUM, CAVE_EXIT, CAVE_CASINO, CAVE_POWER]
 
-pattern CAVE_ROGUE, CAVE_ARENA, CAVE_LABORATORY, CAVE_NOISE, CAVE_SHALLOW_ROGUE, CAVE_OUTERMOST, CAVE_RAID, CAVE_BRAWL, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_ESCAPE, CAVE_ZOO, CAVE_AMBUSH, CAVE_BATTLE, CAVE_SAFARI_1, CAVE_SAFARI_2, CAVE_SAFARI_3 :: GroupName CaveKind
+pattern CAVE_ROGUE, CAVE_ARENA, CAVE_LABORATORY, CAVE_NOISE, CAVE_SHALLOW_ROGUE, CAVE_OUTERMOST, CAVE_RAID, CAVE_BRAWL, CAVE_BRAWL_ALT, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_ESCAPE, CAVE_ZOO, CAVE_AMBUSH, CAVE_BATTLE, CAVE_SAFARI_1, CAVE_SAFARI_2, CAVE_SAFARI_3 :: GroupName CaveKind
 
 pattern CAVE_BRIDGE, CAVE_RESIDENTIAL, CAVE_MUSEUM, CAVE_EXIT, CAVE_CASINO, CAVE_POWER :: GroupName CaveKind
 
@@ -57,6 +57,7 @@ pattern CAVE_SHALLOW_ROGUE = GroupName "caveShallowRogue"
 pattern CAVE_OUTERMOST = GroupName "caveOutermost"
 pattern CAVE_RAID = GroupName "caveRaid"
 pattern CAVE_BRAWL = GroupName "caveBrawl"
+pattern CAVE_BRAWL_ALT = GroupName "caveBrawlAlt"
 pattern CAVE_SHOOTOUT = GroupName "caveShootout"
 pattern CAVE_HUNT = GroupName "caveHunt"
 pattern CAVE_ESCAPE = GroupName "caveEscape"
@@ -79,9 +80,9 @@ pattern CAVE_POWER = GroupName "cavePower"
 
 content :: [CaveKind]
 content =
-  [rogue, residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, raid, brawl, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3]
+  [rogue, residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, raid, brawl, brawlAlt, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3]
 
-rogue,    residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, raid, brawl, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
+rogue,    residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, raid, brawl, brawlAlt, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
 
 -- * On-ship "caves", that is, decks, most of mediocre height and size
 
@@ -523,10 +524,20 @@ brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
   , cdarkCorTile  = DIRT_LIT
   , clitCorTile   = DIRT_LIT
   , cwallTile     = OPENABLE_WALL
-  , cmaxStairsNum = 0
-  , cstairFreq    = []
+  , cmaxStairsNum = 1
+  , cstairFreq    = [(OUTDOOR_TINY_STAIRCASE, 1)]
   , cstairAllowed = []
+  , cskip         = []  -- start heroes on stairs, since they created first
   , cdesc         = "Shadows pool under the trees and leaves crunch underfoot."
+  }
+brawlAlt = brawl
+  { cfreq         = [(CAVE_BRAWL_ALT, 1)]
+  , cmaxVoid      = 1%100  -- to ensure enough trees
+  , cdefTile      = HUNT_SET_LIT  -- alt
+  , cdarkCorTile  = S_FROZEN_PATH  -- alt
+  , clitCorTile   = S_FROZEN_PATH
+  , cskip         = [0]  -- ban foes camping on stairs
+  , cdesc         = "With the Sun so distant, biospheres are stacked vertically rather than horizontally, sharing drainage, not lighting."
   }
 shootout = rogue  -- a scenario with strong missiles;
                   -- few solid tiles, but only translucent tiles or walkable
@@ -725,7 +736,6 @@ safari1 = brawl
   { cname         = "Hunam habitat"
   , cfreq         = [(CAVE_SAFARI_1, 1)]
   , cminPlaceSize = DiceXY 5 3
-  , cmaxStairsNum = 1
   , cstairFreq    = [ (OUTDOOR_WALLED_STAIRCASE, 20)
                     , (OUTDOOR_CLOSED_STAIRCASE, 80)
                     , (OUTDOOR_TINY_STAIRCASE, 1) ]

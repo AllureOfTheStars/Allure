@@ -116,16 +116,16 @@ brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
   , mroster = rosterBrawl
   , mcaves  = cavesBrawl
   , mendMsg = [ (Killed, "That treacherous villain didn't honour his word and brought his friends to the fight. It would still not turn so bad if we remembered to use terrain to protect us from missiles or even completely hide our presence and if we honourably kept together to the end, at the same time preventing the overwhelming enemy forces from brutishly ganging up on our modest-sized, though valiant, squad. Having to repurchase the genetic therapy was the most painful outcome, one that would send you broke and in shame to Earth, if repeated, to start collecting your Basic Income.")
-              , (Conquer, "Bringing help was a sober and prudent move that resulted in well-earned victory and a splendid trophy of a title to a real inter-planetary space vessel. Unfortunately, the treacherous foe called reinforcements at the last moment, which start to arrive just now. It may be wise to move the celebration of the victory to a more fitting area, assuming that the dignified translocation can be accomplished timely and inconspicuously.") ]
+              , (Conquer, "Bringing help was a sober and prudent move that resulted in well-earned victory and a splendid trophy of a title to a real inter-planetary space vessel. Unfortunately, the treacherous foe called reinforcements at the last moment, a new wave arriving even now. It may be wise to move the celebration of the victory to a more fitting area, assuming that the dignified translocation can be accomplished timely and inconspicuously.") ]
   , mrules  = T.intercalate "\n" $
-      [ "* One level only"
-      , "* Three heroes vs. Three human enemies"
+      [ "* Two levels"
+      , "* Three heroes vs. Three human enemies per level"
       , "* Minimize losses"
       , "* Incapacitate all enemies ASAP"
       ]
   , mdesc   = "\"You scoundrel! You cheated in the sewers, fighting two against one. Come alone to the woody biosphere behind the saloon at noon, if you dare. Given that I win, I take back all your gold. Otherwise, you get the scrapping rights for the giant spaceliner's hull in orbit. Yes, it's mine, you tramp; here's the docking transmitter and the paperwork. The fight is to the last man standing, no evasion, no breaks for nano-healing in town.\""
-  , mreason = "In addition to advancing game plot, this scenario trains melee, squad formation and stealth. The battle is completely symmetric, both in numbers, goals (incapacitate all enemies) and squad capabilities (only the pointman moves, while all others either melee or wait). Observe and mimic the enemies and savour the fairness --- you won't find any in the main crawl scenario that follows."
-  , mhint   = "Run a short distance with Shift or LMB, switch the pointman with Tab, repeat. In open terrain, if you keep distance between teammates, this resembles the leap frog infantry tactics. For best effects, end each sprint behind a cover or concealment.\nIf you get beaten repeatedly, try using all consumables you find, particularly the vials that collect healing extracts abounding in this rich biosphere. Ponder the hints from the defeat message, in particular the one about keeping your party together once the opponents are spotted. However, if you want to discover a winning tactics on your own, make sure to ignore any such tips until you succeed."
+  , mreason = "In addition to advancing game plot, this scenario trains melee, squad formation, stealth and stairs use. On each level separately, the battle is symmetric, both in numbers, goals (incapacitate all enemies) and squad capabilities (only the pointman moves, while all others either melee or wait). Observe and mimic the enemies and savour the relative fairness --- you won't find any in the main crawl scenario that follows."
+  , mhint   = "Run a short distance with Shift or LMB, switch the pointman with Tab, repeat. In open terrain, if you keep distance between teammates, this resembles the leap frog infantry tactics. For best effects, end each sprint behind a cover or concealment.\nOnce you clear a level, descend by bumping into stairs. Use Tab to switch to remaining heroes until all gather on the new level.\nIf you get beaten repeatedly, try using all consumables you find, particularly the vials that collect healing extracts abounding in this rich biosphere. Ponder the hints from the defeat message, in particular the one about keeping your party together once the opponents are spotted. However, if you want to discover a winning tactics on your own, make sure to ignore any such tips until you succeed."
   }
 
 crawl = ModeKind
@@ -508,11 +508,13 @@ rosterRaid = Roster
 rosterBrawl = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
                                 , fhiCondPoly = hiHeroMedium }
-                   , [(2, 3, BRAWLER_HERO)] )
+                   , [(3, 3, BRAWLER_HERO)] )
+                       -- start heroes on stairs, since they go first
                  , ( playerAntiHero { fname = "Red Collar Bro"
                                     , fcanEscape = False
                                     , fhiCondPoly = hiHeroMedium }
-                   , [(2, 3, BRAWLER_HERO)] )
+                   , [ (3, 3, BRAWLER_HERO)
+                     , (2, 3, BRAWLER_HERO) ] )
                  , (playerHorror, []) ]
   , rosterEnemy = [ ("Spacefarer", "Red Collar Bro")
                   , ("Spacefarer", "Horror Den")
@@ -735,7 +737,7 @@ cavesRaid, cavesBrawl, cavesCrawl, cavesShootout, cavesHunt, cavesEscape, cavesZ
 
 cavesRaid = [([2], [CAVE_RAID])]
 
-cavesBrawl = [([2], [CAVE_BRAWL])]
+cavesBrawl = reverse [([2], [CAVE_BRAWL_ALT]), ([3], [CAVE_BRAWL])]
 
 listCrawl :: [([Int], [GroupName CaveKind])]
 listCrawl =
