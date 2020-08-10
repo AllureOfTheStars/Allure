@@ -9,7 +9,7 @@ module Content.ItemKindEmbed
   ( -- * Group name patterns
     pattern SCRATCH_ON_WALL, pattern OBSCENE_PICTOGRAM, pattern SUBTLE_FRESCO, pattern SIGNAGE, pattern SMALL_FIRE, pattern SMALL_FIRE_5, pattern BIG_FIRE, pattern FROST, pattern RUBBLE, pattern DOORWAY_TRAP_UNKNOWN, pattern DOORWAY_TRAP, pattern STAIRS_UP, pattern STAIRS_DOWN, pattern ESCAPE, pattern STAIRS_TRAP_UP, pattern STAIRS_TRAP_DOWN, pattern LECTERN, pattern SHALLOW_WATER, pattern STRAIGHT_PATH, pattern FROZEN_GROUND
   , pattern S_SANDSTONE_ROCK
-  , pattern ABANDONED_CACHE, pattern JEWELRY_DISPLAY_TRAP, pattern BLACK_STARRY_SKY, pattern DISENGAGED_DOCKING_GEAR, pattern RUINED_FIRST_AID_KIT, pattern FIRE_FIGHTING_GEAR, pattern DISPLAY_3D, pattern CRACKED_FLUE, pattern BLOOD_ON_WALL, pattern DEPOSIT_BOX, pattern JEWELRY_CASE, pattern EDIBLE_PLANT_RIPE, pattern STAIRS_TRAP_DOWN_OIL, pattern DOOR_TRAP_PUSH, pattern LIFT_UP, pattern LIFT_DOWN, pattern LIFT_TRAP, pattern SHUTTLE_HARDWARE, pattern OIL_PUDDLE, pattern DECONTAMINATION_CHAMBER, pattern BARREL_CONTENTS, pattern WORKSHOP_BENCH
+  , pattern STAIRS_UP_OUTDOOR, pattern STAIRS_DOWN_OUTDOOR, pattern ABANDONED_CACHE, pattern JEWELRY_DISPLAY_TRAP, pattern BLACK_STARRY_SKY, pattern DISENGAGED_DOCKING_GEAR, pattern RUINED_FIRST_AID_KIT, pattern FIRE_FIGHTING_GEAR, pattern DISPLAY_3D, pattern CRACKED_FLUE, pattern BLOOD_ON_WALL, pattern DEPOSIT_BOX, pattern JEWELRY_CASE, pattern EDIBLE_PLANT_RIPE, pattern STAIRS_TRAP_DOWN_OIL, pattern DOOR_TRAP_PUSH, pattern LIFT_UP, pattern LIFT_DOWN, pattern LIFT_TRAP, pattern SHUTTLE_HARDWARE, pattern OIL_PUDDLE, pattern DECONTAMINATION_CHAMBER, pattern BARREL_CONTENTS, pattern WORKSHOP_BENCH
   , pattern MUSEAL, pattern EDIBLE_PLANT, pattern FIRE_FIGHTING_ITEM, pattern STEEL_SCRAP, pattern HANDLE, pattern HANDLE_AND_STEEL, pattern POLE_AND_STEEL, pattern SPACESUIT_PART, pattern THICK_CLOTH, pattern PERFUME, pattern STARTING_HAMMER, pattern CLOTH_RAG
   , pattern S_ENCHANCED_BERRY, pattern S_COOKED_BERRY, pattern S_FRAYED_FUNGUS, pattern S_COOKED_FUNGUS, pattern S_THIC_LEAF, pattern S_COOKED_LEAF, pattern S_RECONFIGURED_FRUIT, pattern S_COOKED_FRUIT, pattern S_FRAGRANT_HERB, pattern S_COOKED_HERB, pattern S_DULL_FLOWER, pattern S_COOKED_FLOWER, pattern S_SPICY_BARK, pattern S_COOKED_BARK, pattern S_PUMPKIN, pattern S_COOKED_PUMPKIN, pattern S_REFRIGERATION_COIL, pattern S_DOUSED_WOODEN_TORCH, pattern S_DOUSED_OIL_LAMP, pattern S_OIL_LAMP, pattern S_ROSE_WATER_FLASK, pattern S_WATER_FLASK, pattern S_SPACESUIT_JACKET, pattern S_SPACESUIT_TROUSERS, pattern S_SPACESUIT_GLOVE, pattern S_SPACESUIT_HELMET, pattern S_SPACESUIT_BOOT, pattern S_SPACESUIT, pattern S_SPACESUIT_TORN, pattern S_HARPOON_CARGO, pattern S_HARPOON_SHARP, pattern S_SHIELD_BLUNT, pattern S_SHIELD_SHARP, pattern S_SHORT_BLUNT_HAMMER, pattern S_LONG_BLUNT_HAMMER, pattern S_SHORT_SHARP_HAMMER, pattern S_LONG_SHARP_HAMMER, pattern S_CLEAVER, pattern S_DAGGER, pattern S_RAPIER_BLUNT, pattern S_RAPIER_SHARP, pattern S_POLE_CLEAVER, pattern S_LONG_SPEAR, pattern S_SHORT_CLUB, pattern S_LONG_CLUB, pattern S_CROWBAR, pattern S_FIRE_AXE, pattern S_POLL_AXE, pattern S_HALBERD_BLUNT, pattern S_HALBERD_SHARP, pattern S_STAFF, pattern S_PIPE, pattern S_SHARPENED_PIPE
   , embedsGNSingleton, embedsGN
@@ -46,12 +46,12 @@ pattern S_ENCHANCED_BERRY, S_COOKED_BERRY, S_FRAYED_FUNGUS, S_COOKED_FUNGUS, S_T
 embedsGN :: [GroupName ItemKind]
 embedsGN =
        [SCRATCH_ON_WALL, OBSCENE_PICTOGRAM, SUBTLE_FRESCO, SIGNAGE, SMALL_FIRE, SMALL_FIRE_5, BIG_FIRE, FROST, RUBBLE, DOORWAY_TRAP_UNKNOWN, DOORWAY_TRAP, STAIRS_UP, STAIRS_DOWN, ESCAPE, STAIRS_TRAP_UP, STAIRS_TRAP_DOWN, LECTERN, SHALLOW_WATER, STRAIGHT_PATH, FROZEN_GROUND]
-    ++ [ABANDONED_CACHE, JEWELRY_DISPLAY_TRAP, BLACK_STARRY_SKY, DISENGAGED_DOCKING_GEAR, RUINED_FIRST_AID_KIT, FIRE_FIGHTING_GEAR, DISPLAY_3D, CRACKED_FLUE, BLOOD_ON_WALL, DEPOSIT_BOX, JEWELRY_CASE, EDIBLE_PLANT_RIPE, STAIRS_TRAP_DOWN_OIL, DOOR_TRAP_PUSH, LIFT_UP, LIFT_DOWN, LIFT_TRAP, SHUTTLE_HARDWARE, OIL_PUDDLE, DECONTAMINATION_CHAMBER, BARREL_CONTENTS, WORKSHOP_BENCH]
+    ++ [STAIRS_UP_OUTDOOR, STAIRS_DOWN_OUTDOOR, ABANDONED_CACHE, JEWELRY_DISPLAY_TRAP, BLACK_STARRY_SKY, DISENGAGED_DOCKING_GEAR, RUINED_FIRST_AID_KIT, FIRE_FIGHTING_GEAR, DISPLAY_3D, CRACKED_FLUE, BLOOD_ON_WALL, DEPOSIT_BOX, JEWELRY_CASE, EDIBLE_PLANT_RIPE, STAIRS_TRAP_DOWN_OIL, DOOR_TRAP_PUSH, LIFT_UP, LIFT_DOWN, LIFT_TRAP, SHUTTLE_HARDWARE, OIL_PUDDLE, DECONTAMINATION_CHAMBER, BARREL_CONTENTS, WORKSHOP_BENCH]
     ++ [MUSEAL, EDIBLE_PLANT, FIRE_FIGHTING_ITEM, STEEL_SCRAP, HANDLE, HANDLE_AND_STEEL, POLE_AND_STEEL, SPACESUIT_PART, THICK_CLOTH, PERFUME, STARTING_HAMMER, CLOTH_RAG]
 
 pattern SCRATCH_ON_WALL, OBSCENE_PICTOGRAM, SUBTLE_FRESCO, SIGNAGE, SMALL_FIRE, SMALL_FIRE_5, BIG_FIRE, FROST, RUBBLE, DOORWAY_TRAP_UNKNOWN, DOORWAY_TRAP, STAIRS_UP, STAIRS_DOWN, ESCAPE, STAIRS_TRAP_UP, STAIRS_TRAP_DOWN, LECTERN, SHALLOW_WATER, STRAIGHT_PATH, FROZEN_GROUND :: GroupName ItemKind
 
-pattern ABANDONED_CACHE, JEWELRY_DISPLAY_TRAP, BLACK_STARRY_SKY, DISENGAGED_DOCKING_GEAR, RUINED_FIRST_AID_KIT, FIRE_FIGHTING_GEAR, DISPLAY_3D, CRACKED_FLUE, BLOOD_ON_WALL, DEPOSIT_BOX, JEWELRY_CASE, EDIBLE_PLANT_RIPE, STAIRS_TRAP_DOWN_OIL, DOOR_TRAP_PUSH, LIFT_UP, LIFT_DOWN, LIFT_TRAP, SHUTTLE_HARDWARE, OIL_PUDDLE, DECONTAMINATION_CHAMBER, BARREL_CONTENTS, WORKSHOP_BENCH :: GroupName ItemKind
+pattern STAIRS_UP_OUTDOOR, STAIRS_DOWN_OUTDOOR, ABANDONED_CACHE, JEWELRY_DISPLAY_TRAP, BLACK_STARRY_SKY, DISENGAGED_DOCKING_GEAR, RUINED_FIRST_AID_KIT, FIRE_FIGHTING_GEAR, DISPLAY_3D, CRACKED_FLUE, BLOOD_ON_WALL, DEPOSIT_BOX, JEWELRY_CASE, EDIBLE_PLANT_RIPE, STAIRS_TRAP_DOWN_OIL, DOOR_TRAP_PUSH, LIFT_UP, LIFT_DOWN, LIFT_TRAP, SHUTTLE_HARDWARE, OIL_PUDDLE, DECONTAMINATION_CHAMBER, BARREL_CONTENTS, WORKSHOP_BENCH :: GroupName ItemKind
 
 pattern MUSEAL, EDIBLE_PLANT, FIRE_FIGHTING_ITEM, STEEL_SCRAP, HANDLE, HANDLE_AND_STEEL, POLE_AND_STEEL, SPACESUIT_PART, THICK_CLOTH, PERFUME, STARTING_HAMMER, CLOTH_RAG :: GroupName ItemKind
 
@@ -79,6 +79,8 @@ pattern FROZEN_GROUND = GroupName "frozen ground"
 pattern S_SANDSTONE_ROCK = GroupName "sandstone rock"
 
 -- ** Allure-specific
+pattern STAIRS_UP_OUTDOOR = GroupName "stairs outdoor up"
+pattern STAIRS_DOWN_OUTDOOR = GroupName "stairs outdoor down"
 pattern ABANDONED_CACHE = GroupName "abandoned cache"
 pattern JEWELRY_DISPLAY_TRAP = GroupName "jewelry display trap"
 pattern BLACK_STARRY_SKY = GroupName "black starry sky"
@@ -176,11 +178,11 @@ embeds :: [ItemKind]
 embeds =
   [scratchOnWall, obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signageExit, signageEmbed, signageMerchandise, fireSmall, fireSmall5, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, stairsTrapUp, stairsTrapDown, lectern, shallowWater, straightPath, frozenGround]
   -- Allure-specific
-  ++ [blackStarrySky, disengagedDocking, desertedAirlock, ruinedFirstAidKit, fireFightingGear, fireFightingGearIntact, wall3dBillboard, crackedFlue, bloodOnWall, bloodOnWall2, bloodOnWall3, depositBox, depositBoxSummonHero, depositBoxSummonMonster, jewelryCase, ediblePlantRipe, stairsTrapDownOil, doorTrapPush, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench, signageExitLuggage, signageEmbedLuggage, signageMerchandiseLuggage]
+  ++ [stairsUpOutdoor, stairsDownOutdoor, blackStarrySky, disengagedDocking, desertedAirlock, ruinedFirstAidKit, fireFightingGear, fireFightingGearIntact, wall3dBillboard, crackedFlue, bloodOnWall, bloodOnWall2, bloodOnWall3, depositBox, depositBoxSummonHero, depositBoxSummonMonster, jewelryCase, ediblePlantRipe, stairsTrapDownOil, doorTrapPush, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench, signageExitLuggage, signageEmbedLuggage, signageMerchandiseLuggage]
 
 scratchOnWall,    obscenePictogram, subtleFresco, treasureCache, treasureCacheTrap, signageExit, signageEmbed, signageMerchandise, fireSmall, fireSmall5, fireBig, frost, rubble, doorwayTrapTemplate, doorwayTrap1, doorwayTrap2, doorwayTrap3, stairsUp, stairsDown, escape, stairsTrapUp, stairsTrapDown, lectern, shallowWater, straightPath, frozenGround :: ItemKind
 -- Allure-specific
-blackStarrySky,       disengagedDocking, desertedAirlock, ruinedFirstAidKit, fireFightingGear, fireFightingGearIntact, wall3dBillboard, crackedFlue, bloodOnWall, bloodOnWall2, bloodOnWall3, depositBox, depositBoxSummonHero, depositBoxSummonMonster, jewelryCase, ediblePlantRipe, stairsTrapDownOil, doorTrapPush, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench, signageExitLuggage, signageEmbedLuggage, signageMerchandiseLuggage :: ItemKind
+stairsUpOutdoor,       stairsDownOutdoor, blackStarrySky, disengagedDocking, desertedAirlock, ruinedFirstAidKit, fireFightingGear, fireFightingGearIntact, wall3dBillboard, crackedFlue, bloodOnWall, bloodOnWall2, bloodOnWall3, depositBox, depositBoxSummonHero, depositBoxSummonMonster, jewelryCase, ediblePlantRipe, stairsTrapDownOil, doorTrapPush, liftUp, liftDown, liftTrap, liftTrap2, liftTrap3, shuttleHardware, machineOil, crudeWeld, decontaminator, barrelFuel, barrelFertilizer, barrelOxidizer, barrelOil, barrelNitrogen, workshopBench, signageExitLuggage, signageEmbedLuggage, signageMerchandiseLuggage :: ItemKind
 
 -- Make sure very few walls are substantially useful, e.g., caches,
 -- and none that are secret. Otherwise the player will spend a lot of time
@@ -538,6 +540,14 @@ frozenGround = ItemKind
 
 -- * Allure-specific
 
+stairsUpOutdoor = stairsUp
+  { ifreq    = [(STAIRS_UP_OUTDOOR, 1)]
+  , idesc    = "Stairs that rise towards the sky. It takes slightly more effort to climb than descend, but in the low gravity it's almost instantaneous in either case."
+  }
+stairsDownOutdoor = stairsDown
+  { ifreq    = [(STAIRS_DOWN_OUTDOOR, 1)]
+  , idesc    = "Stairs that descend towards the underground. Narrow enough that only one person can comfortably use them at a time, but short enough that the whole team may climb down in quick succession."
+  }
 blackStarrySky = ItemKind
   { isymbol  = ' '
   , iname    = "black starry sky"
@@ -948,6 +958,7 @@ signageMerchandiseLuggage = signageMerchandise
   , idesc    = idesc signageMerchandise
                <+> "Queries and complaints can be filed to the port officer and luggage attendant this way under the 'L' sign."
   }
+
 combineEffect :: Text -> [( [(Int, GroupName ItemKind)]
                           , [(Int, GroupName ItemKind)]
                           , [(Int, GroupName ItemKind)] )]

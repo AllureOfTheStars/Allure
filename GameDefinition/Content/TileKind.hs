@@ -599,9 +599,9 @@ stairsTrappedUp = TileKind
                  -- AI uses despite the trap; exploration more important
   }
 stairsOutdoorUp = stairsUp
-  { tname    = "signpost pointing backward"
-  , tfreq    = [(STAIRCASE_OUTDOOR_UP, 1)]
+  { tfreq    = [(STAIRCASE_OUTDOOR_UP, 1)]
   , talter   = talterForStairs
+  , tfeature = [Embed STAIRS_UP_OUTDOOR, ConsideredByAI]
   }
 stairsGatedUp = stairsUp
   { tname    = "gated staircase up"
@@ -632,9 +632,9 @@ stairsTrappedDown = TileKind
                , ConsideredByAI, ChangeTo ORDINARY_STAIRCASE_DOWN ]
   }
 stairsOutdoorDown = stairsDown
-  { tname    = "signpost pointing forward"
-  , tfreq    = [(STAIRCASE_OUTDOOR_DOWN, 1)]
+  { tfreq    = [(STAIRCASE_OUTDOOR_DOWN, 1)]
   , talter   = talterForStairs
+  , tfeature = [Embed STAIRS_DOWN_OUTDOOR, ConsideredByAI]
   }
 stairsGatedDown = stairsDown
   { tname    = "gated staircase down"
