@@ -521,8 +521,7 @@ rosterBrawl = Roster
 
 rosterCrawl = Roster
   { rosterList = [ ( playerHero
-                   , [ (3, 3, CRAWL_HERO)
-                     , (2, 0, CRAWL_HERO) ] ) -- ban foes camping on stairs
+                   , [(3, 3, CRAWL_HERO)] )
                  , ( playerMonster
                    , [] )
                  , ( playerAnimal
@@ -752,8 +751,6 @@ listCrawl =
   , ([14, 13], [DEFAULT_RANDOM, CAVE_CASINO])
   , ([15], [CAVE_POWER]) ]
 
--- Reversed to have the last cave small and exactly in the middle
--- of the screen, despite two staircases.
 cavesCrawl = reverse listCrawl
 
 cavesShootout = [([5], [CAVE_SHOOTOUT])]
