@@ -494,6 +494,7 @@ raid = rogue
   , cescapeFreq   = [(INDOOR_ESCAPE_UP, 1)]
   , cstairFreq    = []
   , cstairAllowed = []
+  , cskip         = [0]
   , cdesc         = "Mold spreads across the walls and scuttling sounds can be heard in the distance."
   }
 brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
@@ -527,7 +528,7 @@ brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
   , cmaxStairsNum = 1
   , cstairFreq    = [(OUTDOOR_TINY_STAIRCASE, 1)]
   , cstairAllowed = []
-  , cskip         = []  -- start heroes on stairs, since they created first
+  , cskip         = []  -- start heroes on stairs, since they are created first
   , cdesc         = "Shadows pool under the trees and leaves crunch underfoot."
   }
 brawlAlt = brawl
@@ -634,6 +635,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , cmaxStairsNum = 0
   , cstairFreq    = []
   , cstairAllowed = []
+  , cskip         = [0]
   , cdesc         = "Graffiti scrawls across the walls and the heavy scents of stimulants hang in the air."
   }
 zoo = rogue  -- few lights and many solids, to help the less numerous heroes
@@ -739,6 +741,7 @@ safari1 = brawl
   , cstairFreq    = [ (OUTDOOR_WALLED_STAIRCASE, 20)
                     , (OUTDOOR_CLOSED_STAIRCASE, 80)
                     , (OUTDOOR_TINY_STAIRCASE, 1) ]
+  , cskip         = [0]
   , cdesc         = "\"DLC 1. Hunams scavenge in a forest in their usual disgusting way.\""
   }
 safari2 = escape  -- lamps instead of trees, but ok, it's only a simulation
