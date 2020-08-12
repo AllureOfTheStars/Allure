@@ -573,13 +573,14 @@ rosterHunt = Roster
   , rosterAlly = [] }
 
 rosterEscape = Roster
-  { rosterList = [ ( playerHero {fhiCondPoly = hiHeroMedium}
-                   , [(7, 1, SCOUT_HERO), (7, 2, ESCAPIST_HERO)] )
-                 , ( playerAntiHero { fname = "Red Collar Bro"
+  { rosterList = [ ( playerAntiHero { fname = "Red Collar Bro"
                                     , fcanEscape = False  -- start on escape
                                     , fneverEmpty = False  -- loot after killing
                                     , fhiCondPoly = hiHeroMedium }
                    , [(7, 1, SCOUT_HERO), (7, 6, AMBUSHER_HERO)] )
+                 , ( playerHero {fhiCondPoly = hiHeroMedium}
+                   , [(7, 1, SCOUT_HERO), (7, 2, ESCAPIST_HERO)] )
+                     -- second on the list to let bros occupy the exit
                  , (playerHorror, []) ]
   , rosterEnemy = [ ("Spacefarer", "Red Collar Bro")
                   , ("Spacefarer", "Horror Den")

@@ -635,7 +635,6 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , cmaxStairsNum = 0
   , cstairFreq    = []
   , cstairAllowed = []
-  , cskip         = [0]
   , cdesc         = "Graffiti scrawls across the walls and the heavy scents of stimulants hang in the air."
   }
 zoo = rogue  -- few lights and many solids, to help the less numerous heroes
@@ -752,6 +751,7 @@ safari2 = escape  -- lamps instead of trees, but ok, it's only a simulation
   , cstairFreq    = [ (OUTDOOR_WALLED_STAIRCASE, 20)
                     , (OUTDOOR_CLOSED_STAIRCASE, 80)
                     , (OUTDOOR_TINY_STAIRCASE, 1) ]
+  , cskip         = [0]
   , cdesc         = "\"DLC 2. In the dark pure heart of the jungle noble animals roam freely.\""
   }
 safari3 = zoo  -- glass rooms, but ok, it's only a simulation
