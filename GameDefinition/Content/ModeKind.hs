@@ -193,7 +193,7 @@ hunt = ModeKind  -- melee vs ranged with reaction fire in daylight
       ]
   , mdesc   = "Who is the hunter and who is the prey? The only criterion is last man standing when the chase ends."
   , mreason = "This is yet another reminiscence of the events that led to the long crawl adventure. This episode is quite a tactical challenge, because enemies are allowed to fling their ammo simultaneously at your team, which has no such ability."
-  , mhint   = "Try not to outshoot the enemy, but to instead focus more on melee tactics."
+  , mhint   = "Try not to outshoot the enemy, but to instead focus more on melee tactics. A useful concept here is communication overhead. Any team member that is not waiting and spotting for everybody, but acts, e.g., melees or moves or manages items, slows down all other team members by rougly 10%, because they need to keep track of his actions. Therefore, if other heroes melee, consider carefully if it makes sense to come to their aid, slowing them while you move, or if it's better to stay put and monitor the perimeter. This is true for all factions and all actors on each level separately, except the pointman of each faction, if any."  -- this also eliminates lag in big battles and helps the player to focus on combat and not get distracted by distant team members frantically trying to reach the battleground in time
   }
 
 escape = ModeKind  -- asymmetric ranged and stealth race at night
@@ -233,7 +233,7 @@ zoo = ModeKind  -- asymmetric crowd melee at night
       ]
   , mdesc   = "As justified and satisfying as setting the enemy headquarters on fire has been, it backfires when the blaze immediately spreads to the public zoo on the path to the spaceport. Crazed animals mill around while the flames ignite greenery and consume nets, cages and security equipment. Whether that's a good sign or bad, apparently nobody is willing to pursue you any more. You are on your own, having to completely clean up the area, up to the last lurking predator, in order to safely move through."
   , mreason = "This is a crowd control exercise, at night, with a raging fire."
-  , mhint   = ""
+  , mhint   = "Note that communication overhead, as explained in perilous hunt scenario hints, makes it impossible for any faction to hit your heroes by more than 10 normal speed actors each turn. However, this is still too much, so position is everything."
   }
 
 -- The tactic is to sneak in the dark, highlight enemy with thrown torches
