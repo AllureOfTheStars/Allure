@@ -297,9 +297,19 @@ copy-directory:
 	cp GameDefinition/fonts/8x8xb.fnt AllureOfTheStars/GameDefinition/fonts
 	cp GameDefinition/fonts/8x8x.fnt AllureOfTheStars/GameDefinition/fonts
 	cp GameDefinition/fonts/LICENSE.16x16x AllureOfTheStars/GameDefinition/fonts
-	cp GameDefinition/fonts/source-code-pro-v9-latin_latin-ext-700.woff AllureOfTheStars/GameDefinition/fonts
-	cp GameDefinition/fonts/source-sans-pro-v12-latin_latin-ext-700.woff AllureOfTheStars/GameDefinition/fonts
+	cp GameDefinition/fonts/BinarySansProLH-Regular.ttf.woff AllureOfTheStars/GameDefinition/fonts
+	cp GameDefinition/fonts/BinarySansProLH-Semibold.ttf.woff AllureOfTheStars/GameDefinition/fonts
+	cp GameDefinition/fonts/BinaryCodeProLH-Bold.ttf.woff AllureOfTheStars/GameDefinition/fonts
+	cp GameDefinition/fonts/DejaVuLGCSans.ttf.woff AllureOfTheStars/GameDefinition/fonts
+	cp GameDefinition/fonts/DejaVuLGCSans-Bold.ttf.woff AllureOfTheStars/GameDefinition/fonts
+	cp GameDefinition/fonts/Hack-Bold.ttf.woff AllureOfTheStars/GameDefinition/fonts
+	cp GameDefinition/fonts/ubuntu-v14-latin-ext_latin-regular.ttf.woff AllureOfTheStars/GameDefinition/fonts
+	cp GameDefinition/fonts/ubuntu-v14-latin-ext_latin-500.ttf.woff AllureOfTheStars/GameDefinition/fonts
+	cp GameDefinition/fonts/ubuntu-mono-v9-latin-ext_latin-700.ttf.woff AllureOfTheStars/GameDefinition/fonts
 	cp GameDefinition/fonts/OFL.txt AllureOfTheStars/GameDefinition/fonts
+	cp GameDefinition/fonts/LICENSE.DejaVu AllureOfTheStars/GameDefinition/fonts
+	cp GameDefinition/fonts/LICENSE.Hack AllureOfTheStars/GameDefinition/fonts
+	cp GameDefinition/fonts/UFL.txt AllureOfTheStars/GameDefinition/fonts
 	cp GameDefinition/InGameHelp.txt AllureOfTheStars/GameDefinition
 	cp GameDefinition/PLAYING.md AllureOfTheStars/GameDefinition
 	cp README.md AllureOfTheStars
