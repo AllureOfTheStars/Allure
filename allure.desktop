@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Allure of the Stars
+Comment=Explore an abandoned spaceship with a party of adventurers
+Keywords=game;strategy;tactics;roguelike;ascii;scifi;
+Exec=Allure
+Icon=allure
+Terminal=false
+Categories=Game;
+StartupNotify=true
