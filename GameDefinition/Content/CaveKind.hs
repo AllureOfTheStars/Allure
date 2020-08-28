@@ -457,6 +457,7 @@ shallowRogue = rogue
   , citemNum      = 14 `d` 2
   , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.CRAWL_ITEM, 60)
                     , (GARDENING_TOOL, 800), (IK.ANY_FLASK, 200) ]
+  , cminStairDist = 15
   , cmaxStairsNum = 2
   , cskip         = [0, 1]  -- ban foes camping on stairs
   , cdesc         = "This close to the outermost deck, residence is not permitted and walls and doors are sturdier, to contain a theoretically possible micro-meteorite breach. The entry is not closed off, though, because some passengers can't live without a regular pilgrimage to 'look outside'. Apparently, gazing at the sharp pin-points of stars and planets through the reinforced oriel glass is incomparable to watching the same through the thin polymer of wall displays.\nAnimals appear to share the fascination of outer decks, perhaps attracted by the increased gravity, nearly Earth-like, unlike elsewhere on the ship. However, they dislike many industrial fluids stored on this floor, so flinging random flasks works as a deterrent. Moreover, if you throw an unidentified flask, you can be sure you won't waste a badly needed nano medicine, because it's never stored in such large containers but in tiny vials."
