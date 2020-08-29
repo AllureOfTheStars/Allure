@@ -11,10 +11,10 @@ The following backstory blurb is a copy of the game intro screen:
  frontier, but recently unexpectedly
  reappeared. Reportedly, deposit safes
  and jewelry inventories were never
- salvaged. Neither were emptied
- the gilded robot holds, the expensive
- arboretum nor the extravagant whole-deck
- habitat of natural and enhanced animals.
+ salvaged. Neither are emptied the gilded
+ robot holds, the expensive arboretum
+ nor the extravagant whole-deck habitat
+ of natural and enhanced animals.
 
  Up to this day, countless autonomous
  life support and damage mitigation
