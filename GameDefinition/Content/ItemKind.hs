@@ -2010,13 +2010,13 @@ shield3 = shield2
 -- also double as tools for terrain transformation or crafting.
 
 blowtorch = ItemKind
-  { isymbol  = symbolLight
+  { isymbol  = symbolTool
   , iname    = "blowtorch"  -- not unique, but almost never generated on floor
   , ifreq    = [ (BLOWTORCH, 1), (VALUABLE, 20)  -- make AI afraid to hog
                , (CRAWL_ITEM, 1)  -- @PolyItem@ doesn't work on it
                , (BREACHING_TOOL, 1), (FIRE_SOURCE, 1) ]
                  -- infinite use, but harmful
-  , iflavour = zipPlain [BrYellow]
+  , iflavour = zipPlain [BrRed]
   , icount   = 1
   , irarity  = [(1, 1)]
   , iverbHit = "scorch"
@@ -2081,7 +2081,7 @@ catsPaw = ItemKind
   , iname    = "cat's paw"
   , ifreq    = [ (COMMON_ITEM, 100), (BREACHING_TOOL, 1)
                , (STARTING_WEAPON, 15) ]
-  , iflavour = zipFancy [BrCyan]
+  , iflavour = zipPlain [Cyan]
   , icount   = 1
   , iweight  = 500
   , irarity  = [(1, 12), (3 * 10/15, 12), (4 * 10/15, 1)]
@@ -2101,7 +2101,7 @@ shortClub = ItemKind
   { isymbol  = symbolHafted
   , iname    = "short club"
   , ifreq    = [(S_SHORT_CLUB, 1), (STARTING_WEAPON, 100)]
-  , iflavour = zipFancy [BrCyan]
+  , iflavour = zipPlain [BrBlue]
   , icount   = 1
   , irarity  = [(1, 1)]  -- only crafted
   , iverbHit = "club"
@@ -2116,7 +2116,7 @@ shortClub = ItemKind
 longClub = shortClub
   { iname    = "long club"
   , ifreq    = [(S_LONG_CLUB, 1), (STARTING_WEAPON, 50)]
-  , iflavour = zipFancy [Cyan]
+  , iflavour = zipPlain [Magenta]
   , iweight  = 3500
   , idamage  = 3 `d` 1  -- from two scraps
   , iaspects = [ Timeout $ 2 + 1 `d` 2
@@ -2274,7 +2274,7 @@ sword = ItemKind  -- dead end, but can be crafted with just one file tool
   , iname    = "sharpened pipe"
   , ifreq    = [ (COMMON_ITEM, 4), (STARTING_WEAPON, 30)
                , (S_SHARPENED_PIPE, 1) ]
-  , iflavour = zipFancy [BrBlue]
+  , iflavour = zipFancy [BrCyan]
   , icount   = 1
   , irarity  = [(3, 1), (6, 15)]
   , iverbHit = "stab"
