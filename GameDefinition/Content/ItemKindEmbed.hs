@@ -581,7 +581,7 @@ disengagedDocking = ItemKind
   }
 desertedAirlock = ItemKind
   { isymbol  = '>'
-  , iname    = "initial entrance"
+  , iname    = "the Initial Entrance"
   , ifreq    = [(DISENGAGED_DOCKING_GEAR, 10000)]
   , iflavour = zipPlain [BrGreen]
   , icount   = 1
@@ -634,7 +634,7 @@ fireFightingGear = ItemKind
   }
 fireFightingGearIntact = ItemKind
   { isymbol  = '?'
-  , iname    = "fire fighting set"
+  , iname    = "the Fire Fighting Set"
   , ifreq    = [(FIRE_FIGHTING_GEAR, 1), (WATER_SOURCE, 1)]
   , iflavour = zipPlain [Red]
   , icount   = 1
@@ -718,7 +718,7 @@ depositBox = treasureCache
   , idesc    = "The reports of intact deposit boxes in the ship's safes have been greatly exaggerated, but there are still a few with glittering gems and gold, just waiting to be taken. Whomever looted these halls wasn't thorough or, judging from the damage to some of the boxes, was in an extreme hurry."
   }
 depositBoxSummonHero = treasureCache
-  { iname    = "noisy large deposit box"
+  { iname    = "the Noisy Large Safe"
   , ifreq    = [(DEPOSIT_BOX, 30)]
   , iflavour = zipFancy [Blue]
   , iaspects = [SetFlag Unique]

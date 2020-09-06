@@ -359,7 +359,7 @@ harpoon2 = harpoon
   , idesc    = "A cord ending in a sharpened cargo-hook that, in addition to entangling the victim, gains purchase biting into the body."
   }
 harpoon3 = harpoon
-  { iname    = "whaling harpoon"
+  { iname    = "The Whaling Harpoon"
   , ifreq    = [(TREASURE, 15), (MUSEAL, 50)]
   , iflavour = zipFancy [Red]
   , irarity  = [(8, 4)]
@@ -694,7 +694,8 @@ potion1 = potionTemplate
                , OnSmash ApplyPerfume, OnSmash (Explode S_FRAGRANCE) ]
   }
 potion2 = potionTemplate
-  { ifreq    = [(CRAWL_ITEM, 100), (ANY_GLASS, 50)]
+  { iname    = "the Vial"
+  , ifreq    = [(CRAWL_ITEM, 100), (ANY_GLASS, 50)]
   , icount   = 1
   , irarity  = [(5, 6), (10, 2)]
   , iaspects = [ SetFlag Unique, ELabel "of Attraction"
@@ -762,7 +763,8 @@ potion7 = potionTemplate
                                 , Explode S_VIOLENT_FLASH ]) ]
   }
 potion8 = potionTemplate
-  { ifreq    = [(CRAWL_ITEM, 100), (ANY_GLASS, 50)]
+  { iname    = "the Vial"
+  , ifreq    = [(CRAWL_ITEM, 100), (ANY_GLASS, 50)]
   , icount   = 1
   , irarity  = [(10, 5)]
   , iaspects = [ SetFlag Unique, ELabel "of Love"
@@ -879,7 +881,8 @@ scrollTemplate = ItemKind
   , ikit     = []
   }
 scroll1 = scrollTemplate
-  { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 75)]
+  { iname    = "the Chip"
+  , ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 75)]
   , icount   = 1
   , irarity  = [(5, 10), (10, 7)]  -- mixed blessing so found early for a unique
   , iaspects = [SetFlag Unique, ELabel "of Reckless Beacon"]
@@ -922,7 +925,8 @@ scroll6 = scrollTemplate
   , ieffects = [PullActor (ThrowMod 800 75 1)]  -- 6 steps, 1.5 turns
   }
 scroll7 = scrollTemplate
-  { ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 75)]
+  { iname    = "the Chip"
+  , ifreq    = [(CRAWL_ITEM, 100), (ANY_SCROLL, 75)]
   , icount   = 1
   , irarity  = [(10, 5)]
   , iaspects = [SetFlag Unique, ELabel "of Skeleton Key"]
@@ -1426,7 +1430,8 @@ necklaceTemplate = ItemKind
   , ikit     = []
   }
 necklace1 = necklaceTemplate
-  { ifreq    = [(CRAWL_ITEM, 50), (ANY_JEWELRY, 25)]
+  { iname    = "the Necklace"
+  , ifreq    = [(CRAWL_ITEM, 50), (ANY_JEWELRY, 25)]
   , irarity  = [(3 * 10/15, 0), (4 * 10/15, 1), (10, 5)]
                  -- prevents camping on lvl 3
   , iaspects = [ SetFlag Unique, ELabel "of Spur Life"
@@ -1483,7 +1488,8 @@ necklace7 = necklaceTemplate
                   -- the @50@ is only for the case of very light actor, etc.
   }
 necklace8 = necklaceTemplate
-  { ifreq    = [(CRAWL_ITEM, 50), (ANY_JEWELRY, 50)]
+  { iname    = "the Necklace"
+  , ifreq    = [(CRAWL_ITEM, 50), (ANY_JEWELRY, 50)]
   , irarity  = [(10, 5)]  -- powerful and determines tactics for one actor
   , iaspects = [ SetFlag Unique, ELabel "of Overdrive"
                , Timeout 10
@@ -1604,7 +1610,8 @@ ring2 = ringTemplate
                ++ iaspects ringTemplate
   }
 ring3 = ringTemplate
-  { ifreq    = [(CRAWL_ITEM, 50), (ANY_JEWELRY, 20)]
+  { iname    = "the Ring"
+  , ifreq    = [(CRAWL_ITEM, 50), (ANY_JEWELRY, 20)]
   , irarity  = [(10, 7)]
   , iaspects = [ SetFlag Unique, ELabel "of Rush"
                , AddSkill SkSpeed $ (1 + 1 `dL` 2) * 2
@@ -1663,7 +1670,8 @@ ring9 = ringTemplate
   , idesc    = "This mil-grade communication equipment feeds the aggregated enemy position information to the wearer, even when he is not the pointman of the team and so the team is not intentionally spotting for him. With proper training this permits ranged attacks, even indirect fire, without neglecting the simultaneous squad doctrine obligation of covering the approach of the pointman."
   }
 ring10 = ringTemplate
-  { ifreq    = [(TREASURE, 50), (ANY_JEWELRY, 50)]
+  { iname    = "the Ring"
+  , ifreq    = [(TREASURE, 50), (ANY_JEWELRY, 50)]
   , irarity  = [(10, 4)]
   , iaspects = [ SetFlag Unique, ELabel "of Overwatch"
                , AddSkill SkProject 8  -- TODO: 11, but let player control
@@ -2040,7 +2048,7 @@ blowtorch = ItemKind
   }
 laserSharpener = ItemKind
   { isymbol  = symbolTool
-  , iname    = "laser sharpener"
+  , iname    = "Laser Sharpener"
   , ifreq    = [(CRAWL_ITEM, 50), (SHARPENING_TOOL, 1)]
   , iflavour = zipFancy [BrBlue]
   , icount   = 1
@@ -2196,7 +2204,7 @@ hammer5 = hammer3  -- 2m pole, sharp
   , idesc    = "This maul features a head with the edge of the narrow end sharpened for cutting. Such long-hafted hammers require more time to recover after a swing, but the momentum alone can shake and bruise even armored foes that can't be harmed by sharp edges."
   }
 hammerParalyze = hammerTemplate
-  { iname    = "Concussion Hammer"
+  { iname    = "The Concussion Hammer"
   , ifreq    = [(TREASURE, 40), (STARTING_HAMMER, 5)]
   , irarity  = [(5, 1), (8, 6)]
   , idamage  = 3 `d` 1
@@ -2207,7 +2215,7 @@ hammerParalyze = hammerTemplate
   , idesc    = "This exquisite demolition hammer with a titanium head and exceptionally long synthetic handle leaves no wall and no body standing."
   }
 hammerSpark = hammerTemplate  -- the only hammer with significantly heavier head
-  { iname    = "Grand Smithhammer"
+  { iname    = "The Grand Smithhammer"
   , ifreq    = [(TREASURE, 40), (BONDING_TOOL, 1), (MUSEAL, 100)]
   , irarity  = [(5, 1), (8, 6)]
   , iweight  = 5000  -- weight and shape/damage gives it away; always identified
@@ -2252,7 +2260,7 @@ knife = ItemKind
   , ikit     = []
   }
 daggerDropBestWeapon = knife
-  { iname    = "Double Dagger"
+  { iname    = "The Double Dagger"
   , ifreq    = [(TREASURE, 40), (MUSEAL, 100)]
   , irarity  = [(1, 3), (10, 2)]
   , iaspects = SetFlag Unique
@@ -2290,7 +2298,7 @@ sword = ItemKind  -- dead end, but can be crafted with just one file tool
   }
 swordImpress = sword
   { isymbol  = symbolEdged
-  , iname    = "Master's Sword"
+  , iname    = "The Master's Sword"
   , ifreq    = [(TREASURE, 40), (MUSEAL, 100)]
   , irarity  = [(5, 1), (8, 6)]
   , iverbHit = "slash"
@@ -2301,7 +2309,7 @@ swordImpress = sword
   }
 swordNullify = sword
   { isymbol  = symbolEdged
-  , iname    = "Blunt Roasting Rapier"
+  , iname    = "The Blunt Rapier"
   , ifreq    = [(TREASURE, 50), (S_RAPIER_BLUNT, 1)]
   , iverbHit = "pierce"
   , irarity  = [(5, 1), (8, 6)]
@@ -2313,7 +2321,7 @@ swordNullify = sword
   , idesc    = "An exuberant hand-forged roasting implement, intentionally and wisely kept blunt."
   }
 swordNullifySharp = swordNullify
-  { iname    = "Roasting Rapier"
+  { iname    = "The Roasting Rapier"
   , ifreq    = [(S_RAPIER_SHARP, 1)]
   , idamage  = 10 `d` 1
   , ieffects = [ DropItem 1 maxBound COrgan CONDITION
@@ -2351,7 +2359,7 @@ oxTongue = halberd  -- long pole, because glued 1m handle worse than nothing
   , idesc    = "An improvised but deadly weapon made of a long, sharp dagger glued and bound to a long pole. Not often one succeeds in making enough space to thrust it freely, but even when stuck between terrain obstacles it blocks approaches effectively and makes using other weapons difficult, both by friends and foes."
   }
 halberdPushActor = halberd
-  { iname    = "Blunt Swiss Halberd"
+  { iname    = "The Blunt Swiss Halberd"
   , ifreq    = [(CRAWL_ITEM, 30), (S_HALBERD_BLUNT, 1)]
                  -- not in a museum; reenactors' gear
   , irarity  = [(7, 0), (9, 8)]
@@ -2361,7 +2369,7 @@ halberdPushActor = halberd
   , idesc    = "A perfect replica made for a reenactor troupe, hardened, but missing any sharpening. Versatile, with great reach and leverage. Foes are held at a distance."
   }
 halberdPushActorSharp = halberdPushActor
-  { iname    = "Swiss Halberd"
+  { iname    = "The Swiss Halberd"
   , ifreq    = [(S_HALBERD_SHARP, 1)]
   , idamage  = 13 `d` 1
   , idesc    = "A perfect replica made for a reenactor troupe, hardened, sharpened. Versatile, with great reach and leverage. Foes are held at a distance."
