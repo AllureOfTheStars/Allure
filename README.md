@@ -3,7 +3,8 @@ Allure of the Stars
 
 [![Build Status](https://secure.travis-ci.org/AllureOfTheStars/Allure.svg?master)](https://travis-ci.org/AllureOfTheStars/Allure)
 [![Hackage](https://img.shields.io/hackage/v/Allure.svg)](https://hackage.haskell.org/package/Allure)
-[![Join the chat at https://gitter.im/LambdaHack/LambdaHack](https://badges.gitter.im/LambdaHack/LambdaHack.svg)](https://gitter.im/LambdaHack/LambdaHack?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at Discord](https://img.shields.io/discord/688792755564052486.svg?label=chat%20on%20Discord&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/87Ghnws)
+[![Join the chat at Matrix](https://img.shields.io/matrix/lambdahack:mozilla.org.svg?label=chat%20on%20Matrix&logo=matrix&server_fqdn=mozilla.modular.im)](https://matrix.to/#/!HnbpAHMjOGHlYtrASl:mozilla.org?via=mozilla.modular.im)
 
 Allure of the Stars is a near-future Sci-Fi roguelike[2]
 and tactical squad combat game. Binaries and the game manual
