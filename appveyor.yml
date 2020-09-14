@@ -3,8 +3,8 @@ cache:
   - C:\Users\appveyor\AppData\Roaming\ghc -> appveyor.yml
 
 install:
-  - appveyor-retry choco install cabal
-  - appveyor-retry choco install ghc
+  - appveyor-retry choco install cabal --version 2.4.1.0
+  - appveyor-retry choco install ghc --version 8.4.4 | grep -v '^Extracting the last GHC that works on Windows Vista'
 
   # breaks appveyor-retry: refreshenv
   - SET PATH=%APPDATA%\cabal\bin;C:\msys64\mingw64\bin;C:\msys64\usr\bin;C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.4.4\bin;C:\ProgramData\chocolatey\lib\cabal\tools;%PATH%
@@ -63,7 +63,7 @@ install:
   - cabal clean
   - cd ..
 
-  - appveyor-retry choco install --force --forcex86 ghc
+  - appveyor-retry choco install --force --forcex86 ghc --version 8.4.4 | grep -v '^Extracting '
   # breaks appveyor-retry: refreshenv
   - SET PATH=%APPDATA%\cabal\bin;C:\msys64\mingw32\bin;C:\msys64\usr\bin;C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.4.4\bin;C:\ProgramData\chocolatey\lib\cabal\tools;%PATH%
   - SET PKG_CONFIG_PATH=C:\msys64\mingw32\lib\pkgconfig
