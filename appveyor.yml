@@ -7,7 +7,7 @@ install:
   - appveyor-retry choco install ghc
 
   # breaks appveyor-retry: refreshenv
-  - SET PATH=LambdaHackTheGame;%APPDATA%\cabal\bin;C:\msys64\mingw64\bin;C:\msys64\usr\bin;C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.10.2\bin;C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.10.3\bin;C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.10.4\bin;C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.10.4\bin;C:\ProgramData\chocolatey\lib\ghc\tools\ghc-9.0.1\bin;C:\ProgramData\chocolatey\lib\ghc\tools\ghc-9.0.2\bin;C:\ProgramData\chocolatey\lib\ghc\tools\ghc-9.0.3\bin;C:\ProgramData\chocolatey\lib\ghc\tools\ghc-9.0.4\bin;C:\ProgramData\chocolatey\lib\cabal\tools;%PATH%
+  - SET PATH=%APPDATA%\cabal\bin;C:\msys64\mingw64\bin;C:\msys64\usr\bin;C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.4.4\bin;C:\ProgramData\chocolatey\lib\cabal\tools;%PATH%
   - SET PKG_CONFIG_PATH=C:\msys64\mingw64\lib\pkgconfig
   - SET XDG_DATA_DIRS=C:\msys64\mingw64\share
   - cabal --version
@@ -65,7 +65,7 @@ install:
 
   - appveyor-retry choco install --force --forcex86 ghc
   # breaks appveyor-retry: refreshenv
-  - SET PATH=LambdaHackTheGame;%APPDATA%\cabal\bin;C:\msys64\mingw32\bin;C:\msys64\usr\bin;C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.5\bin;C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.6\bin;C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.6.7\bin;C:\ProgramData\chocolatey\lib\cabal\tools;%PATH%
+  - SET PATH=%APPDATA%\cabal\bin;C:\msys64\mingw32\bin;C:\msys64\usr\bin;C:\ProgramData\chocolatey\lib\ghc\tools\ghc-8.4.4\bin;C:\ProgramData\chocolatey\lib\cabal\tools;%PATH%
   - SET PKG_CONFIG_PATH=C:\msys64\mingw32\lib\pkgconfig
   - SET XDG_DATA_DIRS=C:\msys64\mingw32\share
   - cabal --version
