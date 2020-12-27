@@ -15,6 +15,7 @@ import Prelude ()
 import Game.LambdaHack.Core.Prelude
 
 import qualified Data.EnumMap.Strict as EM
+import           Data.FileEmbed (embedDir)
 import           Language.Haskell.TH.Syntax
 import           System.IO
 
@@ -46,4 +47,5 @@ standardLayoutAndFeatures = ScreenContent
       lift intro)
   , rapplyVerbMap =
       EM.fromList [('!', "imbibe"), (',', "eat"), ('?', "activate")]
+  , rFontFiles = $(embedDir "GameDefinition/fonts")
   }
