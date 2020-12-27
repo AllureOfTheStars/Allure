@@ -21,7 +21,7 @@ import           System.FilePath
 import           System.IO (readFile)
 
 -- Cabal
-import qualified Paths_Allure as Self (getDataFileName, version)
+import qualified Paths_Allure as Self (version)
 
 import Game.LambdaHack.Content.RuleKind
 
@@ -30,9 +30,6 @@ standardRules = RuleContent
   { rtitle = "Allure of the Stars"
   , rXmax = 80
   , rYmax = 42
-  , rfontDir = $(do
-      x <- qRunIO (Self.getDataFileName "GameDefinition/fonts")
-      lift x)
   , rexeVersion = Self.version
   -- The strings containing the default configuration file
   -- included from config.ui.default.
