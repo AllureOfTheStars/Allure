@@ -16,7 +16,8 @@ install:
   - SET XDG_DATA_DIRS=C:\msys64\mingw64\share
   - cabal --version
   - cabal clean
-  - appveyor-retry pacman -S -q --noconfirm mingw64/mingw-w64-x86_64-SDL2 mingw64/mingw-w64-x86_64-SDL2_ttf
+  - appveyor-retry pacman -Syu
+  - appveyor-retry pacman -S -q --noconfirm mingw64/mingw-w64-x86_64-pkg-config mingw64/mingw-w64-x86_64-SDL2 mingw64/mingw-w64-x86_64-SDL2_ttf
   - cabal update
   - cabal v1-install --force-reinstalls happy
   - git clone -q --branch=master https://github.com/haskell-game/sdl2
@@ -74,7 +75,8 @@ install:
   - SET XDG_DATA_DIRS=C:\msys64\mingw32\share
   - cabal --version
   - cabal clean
-  - appveyor-retry pacman -S -q --noconfirm mingw-w64-i686-SDL2 mingw-w64-i686-SDL2_ttf
+  - appveyor-retry pacman -Syu
+  - appveyor-retry pacman -S -q --noconfirm mingw-w64-i686-pkg-config mingw-w64-i686-SDL2 mingw-w64-i686-SDL2_ttf
   - echo "no cabal update"
   - echo "no cabal install happy"
   - echo "no git clone -q --branch=master https://github.com/haskell-game/sdl2"
