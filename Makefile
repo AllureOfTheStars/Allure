@@ -279,7 +279,7 @@ version:
 
 build-binary-v1:
 	cabal v1-install --force-reinstalls --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization --only-dependencies
-	cabal v1-configure --disable-library-profiling --disable-profiling --enable-optimization --prefix=/
+	cabal v1-configure --disable-library-profiling --disable-profiling --enable-optimization
 	cabal v1-build exe:Allure
 	mkdir -p AllureOfTheStars/GameDefinition
 	cabal v1-copy --destdir=AllureOfTheStarsInstall
