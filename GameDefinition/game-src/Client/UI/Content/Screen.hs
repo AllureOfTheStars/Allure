@@ -47,5 +47,12 @@ standardLayoutAndFeatures = ScreenContent
       lift intro)
   , rapplyVerbMap =
       EM.fromList [('!', "imbibe"), (',', "eat"), ('?', "activate")]
-  , rFontFiles = $(embedDir "GameDefinition/fonts")
+  , rFontFiles =
+-- Checking USE_SDL would be more accurate, but would require complicating
+-- .cabal file and slightly larger vty executable is not a problem.
+#ifdef USE_JSFILE
+      []
+#else
+      $(embedDir "GameDefinition/fonts")
+#endif
   }
