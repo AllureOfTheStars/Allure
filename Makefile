@@ -279,7 +279,7 @@ version:
 
 build-binary-v1:
 	cabal v1-install --force-reinstalls --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization --only-dependencies
-	cabal v1-configure --disable-library-profiling --disable-profiling --enable-optimization --prefix=/ --datadir=. --datasubdir=.
+	cabal v1-configure --disable-library-profiling --disable-profiling --enable-optimization
 	cabal v1-build exe:Allure
 	mkdir -p AllureOfTheStars/GameDefinition
 	cabal v1-copy --destdir=AllureOfTheStarsInstall
@@ -288,10 +288,10 @@ copy-binary:
 	cp $$(cabal-plan list-bin Allure) AllureOfTheStars
 
 configure-binary-v2:
-	cabal configure --project-file=cabal.project.LH.dir --disable-tests --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization --prefix=/ --datadir=. --datasubdir=.
+	cabal configure --project-file=cabal.project.LH.dir --disable-tests --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization
 
 configure-binary-v2-vty:
-	cabal configure -fvty --project-file=cabal.project.LH.dir --disable-tests --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization --prefix=/ --datadir=. --datasubdir=.
+	cabal configure -fvty --project-file=cabal.project.LH.dir --disable-tests --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization
 
 build-binary-v2:
 	cabal build --project-file=cabal.project.LH.dir --only-dependencies .
