@@ -71,22 +71,29 @@ The game differs from classic roguelikes in a few ways:
 * player manually controls each member of his squad, though often the best
   tactics is to scout with only one character (a classic roguelike feel)
   and let others guard important areas
+
 * the game is turn-based, but with visibly high granularity --- projectiles
   fly gradually over time with varying speeds and can be sidestepped
   or shot down; less so explosions that are swarms of projectile particles
   (turn-based just the same)
+
 * time passes and factions pursue their goals on a few levels
   simultaneously, while other levels are frozen (but all are persistent)
+
 * the same laws of simulated world apply to all factions and all actors,
   whether player-controlled or AI-controlled; e.g., the same field of view
   calculation, skill checks, equipment limitations, rules for item
   and terrain use
+
 * combat mechanics is deterministic; randomness comes only from AI
   decisions and procedurally generated terrain
+
 * there's (almost) no HP regeneration; attrition ensures all past (silly)
   decisions matter; HP of every actor starts at around half max
+
 * each character has 10 uniform equipment slots, which fill quickly given
   that most melee weapons have cooldowns
+
 * each faction has a single shared inventory of unlimited size,
   which has a physical location on the map and so can be ransacked
 
