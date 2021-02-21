@@ -1964,14 +1964,18 @@ buckler = ItemKind
   , iweight  = 2000
   , idamage  = 1 `d` 1
   , iaspects = [ Timeout $ (4 + 1 `d` 3 - 1 `dL` 2) * 2
-               , AddSkill SkArmorMelee 40
+               , AddSkill SkArmorMelee 20
                , AddSkill SkSpeed (-1)  -- the main price to pay and the reason
                                         -- it's at the end of weapons, good
-               , SetFlag Durable, SetFlag Meleeable
+               , SetFlag UnderRanged, SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- unwieldy to throw
-  , ieffects = [OnUser (Recharge 4 40)]
-  , idesc    = "An arm protection made from an outer airlock panel. Too small to intercept projectiles with. Almost harmless when used offensively, but makes room for other weapons."
+  , ieffects =
+      [ OnUser (Recharge 4 40)
+         -- It's useful during a fight, in particular when hitting with buckler.
+      , OnUser (toOrganGood S_RANGED_DEFLECTING 1) ]
+         -- This is particularly useful when exploring and getting ambushed.
+  , idesc    = "An arm protection made from an outer airlock panel. Not too small to deflect projectiles occasionally. Almost harmless when used offensively, but makes room for other weapons."
   , ikit     = []
   }
 shield = buckler
@@ -1984,18 +1988,27 @@ shield = buckler
                , AddSkill SkArmorMelee 60
                , AddSkill SkSpeed (-1)  -- the main price to pay
                , AddSkill SkHurtMelee (-30)
-               , SetFlag Durable, SetFlag Meleeable
+               , SetFlag UnderRanged, SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- unwieldy to throw
-  , ieffects = [PushActor (ThrowMod 200 50 1)]  -- 1 step, fast
-      -- The effect helps to place it as one of the first weapons.
-  , idesc    = "Large and unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Too heavy to intercept projectiles with. Requires particularly keen positional awareness when used as a weapon."
+  , ieffects =
+      [ PushActor (ThrowMod 200 50 1)  -- 1 step, fast
+         -- The effect motivates placing it as one of the first weapons.
+         -- It is useful during a fight, when hitting with the shield.
+      , OnUser (toOrganGood S_RANGED_DEFLECTING 1) ]
+         -- This is particularly useful when exploring and getting ambushed.
+  , idesc    = "An unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Large enough to shield against projectiles for as long as there is strength to keep it poised. Requires particularly keen positional awareness when used as a weapon."
   }
 shield2 = shield
   { ifreq    = [(COMMON_ITEM, 20), (MUSEAL, 100), (S_SHIELD_BLUNT, 1)]
   , iweight  = 6000
   , idamage  = 4 `d` 1
-  , ieffects = [PushActor (ThrowMod 400 50 1)]  -- 2 steps, fast
+  , ieffects =
+      [ PushActor (ThrowMod 400 50 1)  -- 2 steps, fast
+         -- The effect motivates placing it as one of the first weapons.
+         -- It is useful during a fight, when hitting with the shield.
+      , OnUser (toOrganGood S_RANGED_DEFLECTING 1) ]
+         -- This is particularly useful when exploring and getting ambushed.
   , idesc    = "A relic of long-past wars, heavy and with a central spike, which is however misaligned and dull."
   }
 shield3 = shield2
