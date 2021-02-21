@@ -1991,14 +1991,14 @@ buckler = ItemKind
   }
 shield = buckler
   { iname    = "shield"
-  , irarity  = [(8, 5)]  -- the stronger variants add to total probability
+  , irarity  = [(7, 5)]  -- the stronger variants add to total probability
   , iflavour = zipPlain [Green]
   , iweight  = 4000
   , idamage  = 3 `d` 1
   , iaspects = [ Timeout $ (4 + 1 `d` 2 - 1 `dL` 3) * 2
                , AddSkill SkArmorMelee 60
                , AddSkill SkSpeed (-1)  -- the main price to pay
-               , AddSkill SkHurtMelee (-30)
+               , AddSkill SkHurtMelee (-25)
                , SetFlag UnderRanged, SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- unwieldy to throw
