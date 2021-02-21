@@ -1393,6 +1393,24 @@ thickCord = solderingIron
 
 -- ** Periodic jewelry
 
+-- This looks like a necklace, but is not periodic. Instead, it auto-activates
+-- when under melee attack.
+gorget = necklaceTemplate
+  { iname    = "Old Gorget"
+  , ifreq    = [(TREASURE, 50), (MUSEAL, 100)]
+  , iflavour = zipFancy [BrCyan]  -- looks exactly the same as one of necklaces,
+                                  -- but it's OK, it's an artifact
+  , iaspects = [ SetFlag Unique
+               , Timeout $ 7 - 1 `dL` 4
+                   -- the dL dice need to be in negative positions
+                   -- for negative stats, such as @Timeout@, so that
+                   -- the @RerollItem@ effect makes the item better, not worse
+               , AddSkill SkArmorMelee 3, AddSkill SkHearing 3
+               , SetFlag UnderMelee, SetFlag Durable ]
+               ++ delete (SetFlag Periodic) iaspects_necklaceTemplate
+  , ieffects = [RefillCalm 15]
+  , idesc    = "Worn, cold, large brass medallion on a chain. Unlikely to offer much protection as an armor piece, but when courage is hardest to sustain, the old engraving reassures its wearer."
+  }
 -- Morally these are the aspects, but we also need to add a fake @Timeout@,
 -- to let clients know that the not identified item is periodic jewelry.
 iaspects_necklaceTemplate :: [Aspect]
@@ -1400,23 +1418,6 @@ iaspects_necklaceTemplate =
   [ PresentAs NECKLACE_UNKNOWN
   , SetFlag Periodic, SetFlag Precious, SetFlag Equipable
   , toVelocity 50 ]  -- not dense enough
-gorget = necklaceTemplate
-  { iname    = "Old Gorget"
-  , ifreq    = [(TREASURE, 50), (MUSEAL, 100)]
-  , iflavour = zipFancy [BrCyan]  -- looks exactly the same as one of necklaces,
-                                  -- but it's OK, it's an artifact
-  , iaspects = [ SetFlag Unique
-               , Timeout $ 5 - 1 `dL` 4
-                   -- the dL dice need to be in negative positions
-                   -- for negative stats, such as @Timeout@, so that
-                   -- the @RerollItem@ effect makes the item better, not worse
-               , AddSkill SkArmorMelee 3, AddSkill SkArmorRanged 2
-               , AddSkill SkHearing 3
-               , SetFlag Durable ]
-               ++ iaspects_necklaceTemplate
-  , ieffects = [RefillCalm 1]
-  , idesc    = "Highly ornamental, cold, large steel medallion on a chain. Unlikely to offer much protection as an armor piece, but the old worn engraving reassures the wearer."
-  }
 -- Not identified, because id by use, e.g., via periodic activations. Fun.
 necklaceTemplate = ItemKind
   { isymbol  = symbolNecklace
