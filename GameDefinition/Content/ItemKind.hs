@@ -1967,10 +1967,9 @@ buckler = ItemKind
   , iverbHit = "bash"
   , iweight  = 2000
   , idamage  = 1 `d` 1
-  , iaspects = [ Timeout $ (4 + 1 `d` 3 - 1 `dL` 2) * 2
-               , AddSkill SkArmorMelee 20
-               , AddSkill SkSpeed (-1)  -- the main price to pay and the reason
-                                        -- it's at the end of weapons, good
+  , iaspects = [ Timeout $ (5 + 1 `d` 2 - 1 `dL` 2) * 2
+               , AddSkill SkArmorMelee 40
+               , AddSkill SkSpeed (-1)  -- the main price to pay
                , SetFlag UnderRanged, SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- unwieldy to throw
@@ -1978,8 +1977,8 @@ buckler = ItemKind
       [ OnUser (toOrganGood S_RANGED_DEFLECTING 1)
          -- This is particularly useful when exploring and getting ambushed,
          -- hence placed first to be triggere by @UnderRanged@.
-      , OnUser (Recharge 4 40) ]
-         -- It's useful during a fight, in particular when hitting with buckler.
+      , OnUser (Recharge 4 20) ]
+         -- It's useful during a fight.
   , idesc    = "An arm protection made from an outer airlock panel. Not too small to deflect projectiles occasionally. Almost harmless when used offensively, but makes room for other weapons."
   , ikit     = []
   }
@@ -1995,7 +1994,7 @@ shield = buckler
   , iflavour = zipPlain [Green]
   , iweight  = 4000
   , idamage  = 3 `d` 1
-  , iaspects = [ Timeout $ (4 + 1 `d` 2 - 1 `dL` 3) * 2
+  , iaspects = [ Timeout $ (7 + 1 `d` 2 - 1 `dL` 2) * 2
                , AddSkill SkArmorMelee 60
                , AddSkill SkSpeed (-1)  -- the main price to pay
                , AddSkill SkHurtMelee (-25)
@@ -2007,8 +2006,7 @@ shield = buckler
          -- This is particularly useful when exploring and getting ambushed,
          -- hence placed first to be triggere by @UnderRanged@.
       , PushActor (ThrowMod 200 50 1) ]  -- 1 step, fast
-         -- The effect motivates placing it as one of the first weapons.
-         -- It is useful during a fight, when hitting with the shield.
+         -- It's useful during a fight.
   , idesc    = "An unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Large enough to shield against projectiles for as long as there is strength to keep it poised. Requires particularly keen positional awareness when used as a weapon."
   }
 shield2 = shield
@@ -2020,8 +2018,7 @@ shield2 = shield
          -- This is particularly useful when exploring and getting ambushed,
          -- hence placed first to be triggere by @UnderRanged@.
       , PushActor (ThrowMod 400 50 1) ]  -- 2 steps, fast
-         -- The effect motivates placing it as one of the first weapons.
-         -- It is useful during a fight, when hitting with the shield.
+         -- It's useful during a fight.
   , idesc    = "A relic of long-past wars, heavy and with a central spike, which is however misaligned and dull."
   }
 shield3 = shield2
