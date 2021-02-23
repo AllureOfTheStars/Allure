@@ -1816,7 +1816,7 @@ gloveFencing = ItemKind
                , EqpSlot EqpSlotHurtMelee
                , toVelocity 40 ]  -- flaps and flutters
   , ieffects = []
-  , idesc    = "A flexible construction glove from rough leather ensuring a good grip. Also, quite effective in deflecting or even catching slow projectiles."
+  , idesc    = "A flexible construction glove from rough leather ensuring a good grip. Also, quite effective in averting or even catching slow projectiles."
   , ikit     = []
   }
 gloveGauntlet = gloveFencing
@@ -1956,14 +1956,7 @@ ragTangle = sandstoneRock
                , SetFlag Equipable, EqpSlot EqpSlotArmorMelee ]
   , idesc    = "Fashionable --- sometimes. Useful for survival crafting, for example as a wick of a makeshift oil lamp --- always."
   }
--- Shield doesn't protect against ranged attacks to prevent
--- micromanagement: walking with shield, melee without.
--- Their biggest power is pushing enemies, which however reduces
--- to 1 extra damage point if no clear space behind enemy.
--- So they require keen tactical management.
--- Note that AI will pick them up but never wear and will use them at most
--- as a way to push itself. Despite being @Meleeable@, they will not be used
--- as weapons either. This is OK, using shields smartly is totally beyond AI.
+-- The biggest power of bucklers and shields is the ranged deflection.
 buckler = ItemKind
   { isymbol  = symbolShield
   , iname    = "buckler"
@@ -1982,13 +1975,20 @@ buckler = ItemKind
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- unwieldy to throw
   , ieffects =
-      [ OnUser (Recharge 4 40)
+      [ OnUser (toOrganGood S_RANGED_DEFLECTING 1)
+         -- This is particularly useful when exploring and getting ambushed,
+         -- hence placed first to be triggere by @UnderRanged@.
+      , OnUser (Recharge 4 40) ]
          -- It's useful during a fight, in particular when hitting with buckler.
-      , OnUser (toOrganGood S_RANGED_DEFLECTING 1) ]
-         -- This is particularly useful when exploring and getting ambushed.
   , idesc    = "An arm protection made from an outer airlock panel. Not too small to deflect projectiles occasionally. Almost harmless when used offensively, but makes room for other weapons."
   , ikit     = []
   }
+-- In melee, the shield's biggest power is pushing enemies,
+-- which however reduces to 1 extra damage point if no clear space behind enemy.
+-- So they require keen tactical management.
+-- Note that AI will pick them up but never wear and will use them at most
+-- as a way to push itself. Despite being @Meleeable@, they will not be used
+-- as weapons either. This is OK, using shields smartly is totally beyond AI.
 shield = buckler
   { iname    = "shield"
   , irarity  = [(7, 5)]  -- the stronger variants add to total probability
@@ -2003,11 +2003,12 @@ shield = buckler
                , EqpSlot EqpSlotArmorMelee
                , toVelocity 50 ]  -- unwieldy to throw
   , ieffects =
-      [ PushActor (ThrowMod 200 50 1)  -- 1 step, fast
+      [ OnUser (toOrganGood S_RANGED_DEFLECTING 1)
+         -- This is particularly useful when exploring and getting ambushed,
+         -- hence placed first to be triggere by @UnderRanged@.
+      , PushActor (ThrowMod 200 50 1) ]  -- 1 step, fast
          -- The effect motivates placing it as one of the first weapons.
          -- It is useful during a fight, when hitting with the shield.
-      , OnUser (toOrganGood S_RANGED_DEFLECTING 1) ]
-         -- This is particularly useful when exploring and getting ambushed.
   , idesc    = "An unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Large enough to shield against projectiles for as long as there is strength to keep it poised. Requires particularly keen positional awareness when used as a weapon."
   }
 shield2 = shield
@@ -2015,11 +2016,12 @@ shield2 = shield
   , iweight  = 6000
   , idamage  = 4 `d` 1
   , ieffects =
-      [ PushActor (ThrowMod 400 50 1)  -- 2 steps, fast
+      [ OnUser (toOrganGood S_RANGED_DEFLECTING 1)
+         -- This is particularly useful when exploring and getting ambushed,
+         -- hence placed first to be triggere by @UnderRanged@.
+      , PushActor (ThrowMod 400 50 1) ]  -- 2 steps, fast
          -- The effect motivates placing it as one of the first weapons.
          -- It is useful during a fight, when hitting with the shield.
-      , OnUser (toOrganGood S_RANGED_DEFLECTING 1) ]
-         -- This is particularly useful when exploring and getting ambushed.
   , idesc    = "A relic of long-past wars, heavy and with a central spike, which is however misaligned and dull."
   }
 shield3 = shield2
