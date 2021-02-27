@@ -141,7 +141,8 @@ humanOrgans :: [(GroupName ItemKind, CStore)]
 humanOrgans = [ (S_FIST, COrgan), (S_FOOT, COrgan)
               , (S_EYE_6, COrgan), (S_EAR_3, COrgan)
               , (S_SAPIENT_BRAIN, COrgan)
-              , (S_ANIMAL_STOMACH, COrgan), (S_HUNGRY, COrgan) ]
+              , (S_ANIMAL_STOMACH, COrgan), (S_HUNGRY, COrgan)
+              , (BACKSTORY_FLUFF, COrgan) ]
 warrior = ItemKind
   { isymbol  = '@'
   , iname    = "mercenary"  -- modified if initial actors in hero faction
