@@ -164,7 +164,7 @@ warrior = ItemKind
   , ieffects = []
   , idesc    = ""
   , ikit     = humanOrgans
-               ++ [ (S_GENETIC_FLAW_10, COrgan)
+               ++ [ (GENETIC_FLAW_10, COrgan)
                   , (S_EMPTY_FLASK, CStash), (COMMON_ITEM, CStash) ]
   }
 warrior2 = warrior
@@ -176,7 +176,7 @@ warrior3 = warrior
   { iname    = "engineer"
   , ifreq    = [(CRAWL_HERO, 100), (MOBILE, 1)]
   , ikit     = humanOrgans
-               ++ [ (S_GENETIC_FLAW_10, COrgan), (S_CURRENCY, CStash)
+               ++ [ (GENETIC_FLAW_10, COrgan), (S_CURRENCY, CStash)
                   , (COOKED_FOOD, CStash), (COMMON_ITEM, CStash) ]
   -- , idesc    = ""
   }
@@ -450,7 +450,7 @@ goldenJackal = ItemKind  -- basically a much smaller, slower and nosy hyena
                , (S_POWERFUL_HIND_LEGS, COrgan)  -- useful for aggressive actor
                , (S_EYE_6, COrgan), (S_NOSTRIL, COrgan), (S_EAR_8, COrgan)
                , (S_ANIMAL_BRAIN, COrgan)
-               , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_3, COrgan) ]
+               , (S_ANIMAL_STOMACH, COrgan), (GENETIC_FLAW_3, COrgan) ]
   }
 griffonVulture = ItemKind  -- keep it boring and weak, because it summons
   { isymbol  = 'v'
@@ -480,7 +480,7 @@ griffonVulture = ItemKind  -- keep it boring and weak, because it summons
                , (S_EYE_8, COrgan), (S_EAR_8, COrgan)
                    -- can't shoot, so strong sight is OK
                , (S_ANIMAL_BRAIN, COrgan)
-               , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_3, COrgan) ]
+               , (S_ANIMAL_STOMACH, COrgan), (GENETIC_FLAW_3, COrgan) ]
   }
 skunk = ItemKind
   { isymbol  = 's'
@@ -503,7 +503,7 @@ skunk = ItemKind
                , (S_SMALL_CLAW, COrgan), (S_SNOUT, COrgan)
                , (S_EYE_3, COrgan), (S_EAR_6, COrgan)
                , (S_ANIMAL_BRAIN, COrgan)
-               , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_3, COrgan) ]
+               , (S_ANIMAL_STOMACH, COrgan), (GENETIC_FLAW_3, COrgan) ]
   }
 armadillo = ItemKind  -- a tank with armor, so special damage defeats it
   { isymbol  = 'a'
@@ -526,7 +526,7 @@ armadillo = ItemKind  -- a tank with armor, so special damage defeats it
                , (S_ARMORED_SKIN, COrgan), (S_ARMORED_SKIN, COrgan)
                , (S_EYE_3, COrgan), (S_NOSTRIL, COrgan), (S_EAR_6, COrgan)
                , (S_ANIMAL_BRAIN, COrgan)
-               , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_3, COrgan)
+               , (S_ANIMAL_STOMACH, COrgan), (GENETIC_FLAW_3, COrgan)
                , (RAW_MEAT_CHUNK, CEqp) ]
   }
 gilaMonster = ItemKind
@@ -548,7 +548,7 @@ gilaMonster = ItemKind
   , ikit     = [ (S_VENOM_TOOTH, COrgan), (S_SMALL_CLAW, COrgan)
                , (S_EYE_3, COrgan), (S_NOSTRIL, COrgan), (S_EAR_6, COrgan)
                , (S_ANIMAL_BRAIN, COrgan)  -- small reptile, hungers slowly
-               , (S_GENETIC_FLAW_3, COrgan) ]
+               , (GENETIC_FLAW_3, COrgan) ]
   }
 rattlesnake = ItemKind
   { isymbol  = 's'
@@ -572,7 +572,7 @@ rattlesnake = ItemKind
                , (S_RATLLE, COrgan)
                , (S_EYE_3, COrgan), (S_NOSTRIL, COrgan), (S_EAR_6, COrgan)
                , (S_ANIMAL_BRAIN, COrgan)  -- small reptile, hungers slowly
-               , (S_GENETIC_FLAW_3, COrgan)
+               , (GENETIC_FLAW_3, COrgan)
                , (RAW_MEAT_CHUNK, CEqp) ]
   }
 hyena = ItemKind
@@ -595,7 +595,7 @@ hyena = ItemKind
   , ikit     = [ (S_JAW, COrgan), (S_SMALL_CLAW, COrgan)
                , (S_EYE_6, COrgan), (S_NOSTRIL, COrgan), (S_EAR_8, COrgan)
                , (S_ANIMAL_BRAIN, COrgan)
-               , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_3, COrgan) ]
+               , (S_ANIMAL_STOMACH, COrgan), (GENETIC_FLAW_3, COrgan) ]
   }
 komodoDragon = ItemKind
   { isymbol  = 'k'
@@ -620,7 +620,7 @@ komodoDragon = ItemKind
                , (S_EYE_3, COrgan), (S_NOSTRIL, COrgan), (S_EAR_3, COrgan)
                , (S_ANIMAL_BRAIN, COrgan)
                , (S_ANIMAL_STOMACH, COrgan)
-               , (S_GENETIC_FLAW_3, COrgan)  -- not to wake it up too soon
+               , (GENETIC_FLAW_3, COrgan)  -- not to wake it up too soon
                , (RAW_MEAT_CHUNK, CEqp), (RAW_MEAT_CHUNK, CEqp) ]
   }
 alligator = ItemKind  -- late, slow, deadly semi-tank with some armor;
@@ -650,7 +650,7 @@ alligator = ItemKind  -- late, slow, deadly semi-tank with some armor;
                , (S_ARMORED_SKIN, COrgan)
                , (S_EYE_6, COrgan), (S_EAR_8, COrgan)
                , (S_ANIMAL_BRAIN, COrgan)
-               , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_10, COrgan)
+               , (S_ANIMAL_STOMACH, COrgan), (GENETIC_FLAW_10, COrgan)
                , (RAW_MEAT_CHUNK, CEqp), (RAW_MEAT_CHUNK, CEqp) ]
   }
 rhinoceros = ItemKind  -- impressive tank boss with some armor
@@ -778,7 +778,7 @@ giantOctopus = ItemKind
                , (S_EYE_8, COrgan)
                    -- shots not too damaging, so can have strong sight
                , (S_ANIMAL_BRAIN, COrgan)
-               , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_3, COrgan)
+               , (S_ANIMAL_STOMACH, COrgan), (GENETIC_FLAW_3, COrgan)
                , (RAW_MEAT_CHUNK, CEqp), (RAW_MEAT_CHUNK, CEqp) ]
  }
 lion = ItemKind  -- emphatically not a tank
@@ -803,7 +803,7 @@ lion = ItemKind  -- emphatically not a tank
                , (S_LARGE_JAW, COrgan), (S_SMALL_CLAW, COrgan)
                , (S_EYE_6, COrgan), (S_EAR_6, COrgan)
                , (S_ANIMAL_BRAIN, COrgan)
-               , (S_ANIMAL_STOMACH, COrgan), (S_GENETIC_FLAW_10, COrgan)
+               , (S_ANIMAL_STOMACH, COrgan), (GENETIC_FLAW_10, COrgan)
                , (RAW_MEAT_CHUNK, CEqp), (RAW_MEAT_CHUNK, CEqp) ]
   }
 
