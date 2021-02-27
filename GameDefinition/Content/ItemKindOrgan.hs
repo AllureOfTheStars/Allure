@@ -853,7 +853,7 @@ geneticFlaw fr badArmorMelee n grp = armoredSkin
   , iverbHit = "flaw"
   , iweight  = 0
   , iaspects = [ AddSkill SkMaxHP (intToDice $ - n)
-               , SetFlag Condition ]
+               , SetFlag MetaGame, SetFlag Condition ]
                    -- destroy on drop to run the @OnSmash@ effects
                ++ [AddSkill SkWait (-1) | n >= 10]
                ++ [AddSkill SkApply (-1) | n >= 10]
