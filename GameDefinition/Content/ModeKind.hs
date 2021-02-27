@@ -494,10 +494,11 @@ screensaverSafari = screensave (AutoLeader False True) $ safari
   , mfreq   = [(INSERT_COIN, 1), (NO_CONFIRMS, 1)]
   }
 
-teamExplorer, teamCompetitor, teamMercenary :: TeamContinuity
+teamExplorer, teamCompetitor, teamCivilian, teamMercenary :: TeamContinuity
 teamExplorer = TeamContinuity 0
 teamCompetitor = TeamContinuity 1
-teamMercenary = TeamContinuity 2
+teamCivilian = TeamContinuity 2
+teamMercenary = TeamContinuity 3
 
 rosterRaid, rosterBrawl, rosterCrawl, rosterShootout, rosterHunt, rosterEscape, rosterZoo, rosterAmbush, rosterSafari, rosterCrawlEmpty, rosterCrawlSurvival, rosterSafariSurvival, rosterBattle, rosterBattleDefense, rosterBattleSurvival, rosterDefense, rosterDefenseEmpty :: Roster
 
@@ -654,7 +655,7 @@ rosterSafari = Roster
                    , Nothing
                    , [(5, 15, MONSTER)] )
                  , ( playerHunamConvict
-                   , Nothing
+                   , Just teamCivilian
                    , [(5, 2, CIVILIAN)] )
                  , ( playerAnimalMagnificent
                    , Nothing
@@ -706,7 +707,7 @@ rosterSafariSurvival = rosterSafari
                    , Nothing
                    , [(5, 15, MONSTER)] )
                  , ( playerHunamConvict
-                   , Nothing
+                   , Just teamCivilian
                    , [(5, 3, CIVILIAN)] )
                  , ( playerAnimalMagnificent
                        { fleaderMode = LeaderUI $ AutoLeader True False
