@@ -888,7 +888,7 @@ backstoryFluffTemplate = ItemKind
   { isymbol  = 'b'
   , iname    = "unrevealed rumination"
   , ifreq    = [(BACKSTORY_FLUFF_UNKNOWN, 1)]
-  , iflavour = zipFancy [BrBlue]
+  , iflavour = zipStory [BrBlue, Blue]
   , icount   = 1
   , irarity  = [(1, 1)]
   , iverbHit = "surprise"
@@ -918,7 +918,7 @@ backstoryFluff1 = backstoryFluffTemplate
 backstoryGoodTemplate = backstoryFluffTemplate
   { iname    = "unrevealed virtue"
   , ifreq    = [(BACKSTORY_GOOD_UNKNOWN, 1)]
-  , iflavour = zipFancy [cGoodEvent]
+  , iflavour = zipStory [cGoodEvent, cVeryGoodEvent]
   , iaspects = [ PresentAs BACKSTORY_GOOD_UNKNOWN, SetFlag MetaGame
                , SetFlag Durable ]
   }
@@ -933,7 +933,7 @@ backstoryGood1 = backstoryGoodTemplate
 backstoryBadTemplate = backstoryFluffTemplate
   { iname    = "unrevealed vice"
   , ifreq    = [(BACKSTORY_BAD_UNKNOWN, 1)]
-  , iflavour = zipFancy [cBadEvent]
+  , iflavour = zipStory [cBadEvent, cVeryBadEvent]
   , iaspects = [ PresentAs BACKSTORY_BAD_UNKNOWN, SetFlag MetaGame
                , SetFlag Durable ]
   }
@@ -948,7 +948,7 @@ backstoryBad1 = backstoryBadTemplate
 backstoryMixedTemplate = backstoryFluffTemplate
   { iname    = "unrevealed twist"
   , ifreq    = [(BACKSTORY_MIXED_UNKNOWN, 1)]
-  , iflavour = zipFancy [cRisk]
+  , iflavour = zipStory [cRisk, cGraveRisk]
   , iaspects = [ PresentAs BACKSTORY_MIXED_UNKNOWN, SetFlag MetaGame
                , SetFlag Durable ]
   }
@@ -963,7 +963,7 @@ backstoryMixed1 = backstoryMixedTemplate
 backstoryNeutralTemplate = backstoryFluffTemplate
   { iname    = "unrevealed quirk"
   , ifreq    = [(BACKSTORY_NEUTRAL_UNKNOWN, 1)]
-  , iflavour = zipFancy [cNeutralEvent]
+  , iflavour = zipStory [cNeutralEvent, cRareNeutralEvent]
   , iaspects = [ PresentAs BACKSTORY_NEUTRAL_UNKNOWN, SetFlag MetaGame
                , SetFlag Durable ]
   }
