@@ -885,7 +885,7 @@ geneticFlaw10BadArmorRanged = geneticFlaw 3 False 10 GENETIC_FLAW_10
 -- * Allure-specific backstory items
 
 backstoryFluffTemplate = ItemKind
-  { isymbol  = 'b'
+  { isymbol  = '?'
   , iname    = "unrevealed rumination"
   , ifreq    = [(BACKSTORY_FLUFF_UNKNOWN, 1)]
   , iflavour = zipStory [BrBlue, Blue]
