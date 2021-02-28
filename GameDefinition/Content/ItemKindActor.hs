@@ -142,7 +142,11 @@ humanOrgans = [ (S_FIST, COrgan), (S_FOOT, COrgan)
               , (S_EYE_6, COrgan), (S_EAR_3, COrgan)
               , (S_SAPIENT_BRAIN, COrgan)
               , (S_ANIMAL_STOMACH, COrgan), (S_HUNGRY, COrgan)
-              , (BACKSTORY_FLUFF, COrgan) ]
+              , (BACKSTORY, COrgan) ]
+                  -- TODO: when enough backstory items created,
+                  -- include many backstory categories here instead and vary
+                  -- them among warriors, some getting a good and a bad,
+                  -- others getting a mixed one instead, etc.
 warrior = ItemKind
   { isymbol  = '@'
   , iname    = "mercenary"  -- modified if initial actors in hero faction
