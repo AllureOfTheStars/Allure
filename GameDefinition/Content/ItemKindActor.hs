@@ -59,7 +59,7 @@ pattern RANGER_HERO = GroupName "ranger hero"
 pattern ESCAPIST_HERO = GroupName "escapist hero"
 pattern AMBUSHER_HERO = GroupName "ambusher hero"
 pattern BRAWLER_HERO = GroupName "brawler hero"
-pattern SOLDIER_HERO = GroupName "soldier hero"
+pattern SOLDIER_HERO = GroupName "fighter hero"
 pattern CIVILIAN = GroupName "civilian"
 pattern MONSTER = GroupName "monster"
 pattern MOBILE_MONSTER = GroupName "mobile monster"
@@ -121,11 +121,11 @@ pattern WIRECUTTING_TOOL = GroupName "wirecutting tool"
 
 actors :: [ItemKind]
 actors =
-  [warrior, warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, brawler, soldier, mercenary, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, elbowTank, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush]
+  [warrior, warrior2, scout, ranger, escapist, ambusher, brawler, fighter, mercenary, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, elbowTank, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush]
   -- Allure-specific
   ++ [giantOctopus, lion, razorwireFence, electricFence, activeFence, steamFaucet, coolingFaucet, medbotFaucet, dustFaucet, fuelFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot]
 
-warrior,    warrior2, warrior3, warrior4, warrior5, scout, ranger, escapist, ambusher, brawler, soldier, mercenary, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, elbowTank, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush :: ItemKind
+warrior,    warrior2, scout, ranger, escapist, ambusher, brawler, fighter, mercenary, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, elbowTank, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush :: ItemKind
 -- Allure-specific
 giantOctopus,       lion, razorwireFence, electricFence, activeFence, steamFaucet, coolingFaucet, medbotFaucet, dustFaucet, fuelFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot :: ItemKind
 
@@ -144,12 +144,15 @@ humanOrgans = [ (S_FIST, COrgan), (S_FOOT, COrgan)
               , (S_ANIMAL_STOMACH, COrgan), (S_HUNGRY, COrgan)
               , (BACKSTORY, COrgan) ]
                   -- TODO: when enough backstory items created,
-                  -- include many backstory categories here instead and vary
-                  -- them among warriors, some getting a good and a bad,
-                  -- others getting a mixed one instead, etc.
+                  -- include many backstory categories here instead and add
+                  -- a bit of variation among warriors, some kinds
+                  -- getting a good and a bad where another test a mixed one
+                  -- instead, etc. Characters should still be recognizable
+                  -- and slighty different backstory emphasis between games
+                  -- matches human plasticity.
 warrior = ItemKind
   { isymbol  = '@'
-  , iname    = "mercenary"  -- modified if initial actors in hero faction
+  , iname    = "adventurer"  -- modified if initial actors in hero faction
   , ifreq    = [(HERO, 100), (CRAWL_HERO, 100), (MOBILE, 1)]
   , iflavour = zipPlain [BrWhite]
   , icount   = 1
@@ -167,37 +170,17 @@ warrior = ItemKind
                , AddSkill SkOdor 1
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = ""
+  , idesc    = "A human equipped for an adventure."
   , ikit     = humanOrgans
                ++ [ (GENETIC_FLAW_10, COrgan)
                   , (S_EMPTY_FLASK, CStash), (COMMON_ITEM, CStash) ]
   }
 warrior2 = warrior
-  { iname    = "pilot"
-  , ikit     = ikit warrior
-  -- , idesc    = ""
-  }
-warrior3 = warrior
-  { iname    = "engineer"
-  , ifreq    = [(CRAWL_HERO, 100), (MOBILE, 1)]
+  { ifreq    = [(CRAWL_HERO, 100), (MOBILE, 1)]
   , ikit     = humanOrgans
                ++ [ (GENETIC_FLAW_10, COrgan), (S_CURRENCY, CStash)
                   , (COOKED_FOOD, CStash), (COMMON_ITEM, CStash) ]
-  -- , idesc    = ""
   }
-warrior4 = warrior
-  { iname    = "doctor"
-  , ifreq    = [(CRAWL_HERO, 100), (MOBILE, 1)]
-  , ikit     = ikit warrior3
-  -- , idesc    = ""
-  }
-warrior5 = warrior
-  { iname    = "hacker"
-  , ifreq    = [(CRAWL_HERO, 100), (MOBILE, 1)]
-  , ikit     = ikit warrior3
-  -- , idesc    = ""
-  }
-
 scout = warrior
   { iname    = "scout"
   , ifreq    = [(SCOUT_HERO, 100), (MOBILE, 1)]
@@ -205,7 +188,7 @@ scout = warrior
                ++ [ (ADD_SIGHT, CEqp)
                   , (ARMOR_RANGED, CEqp)
                   , (ADD_NOCTO_1, CStash) ]
-  -- , idesc    = ""
+  , idesc    = "A human equipped for scouting."
   }
 ranger = warrior
   { iname    = "ranger"
@@ -213,7 +196,7 @@ ranger = warrior
   , ikit     = humanOrgans  -- no flaw
                ++ [ (ARMOR_RANGED, CEqp)
                   , (WEAK_ARROW, CStash) ]
-  -- , idesc    = ""
+  , idesc    = "A human equipped for ranged fight."
   }
 escapist = warrior
   { iname    = "escapist"
@@ -225,7 +208,7 @@ escapist = warrior
                   , (LIGHT_ATTENUATOR, CStash)
                   , (S_WOODEN_TORCH, CStash)
                   , (FIREPROOF_CLOTH, CStash) ]
-  -- , idesc    = ""
+  , idesc    = "A human equipped for an escape."
   }
 ambusher = warrior
   { iname    = "ambusher"
@@ -237,21 +220,21 @@ ambusher = warrior
                   , (EXPLOSIVE, CStash)
                   , (LIGHT_ATTENUATOR, CEqp)
                   , (S_WOODEN_TORCH, CStash) ]
-  -- , idesc    = ""
+  , idesc    = "A human equipped for an ambush."
   }
 brawler = warrior
   { iname    = "brawler"
   , ifreq    = [(BRAWLER_HERO, 100), (MOBILE, 1)]
   , ikit     = humanOrgans  -- no flaw
                ++ [(STARTING_WEAPON, CEqp)]
-  -- , idesc    = ""
+  , idesc    = "A human equipped for melee fight."
   }
-soldier = brawler
-  { iname    = "soldier"
+fighter = brawler
+  { iname    = "fighter"
   , ifreq    = [(SOLDIER_HERO, 100), (MOBILE, 1)]
   , ikit     = ikit brawler
                ++ [(STARTING_WEAPON, CEqp), (EXPLOSIVE, CStash)]
-  -- , idesc    = ""
+  , idesc    = "A human equipped for intense combat."
   }
 mercenary = brawler
   { iname    = "mercenary"
@@ -261,7 +244,7 @@ mercenary = brawler
                   , (S_BULLTEPROOF_VEST, CEqp)
                   , (MERCENARY_AMMO, CStash)
                   , (EXPLOSIVE, CStash) ]
-  -- , idesc    = ""
+  , idesc    = "A professional security contractor."
   }
 
 civilian = warrior
