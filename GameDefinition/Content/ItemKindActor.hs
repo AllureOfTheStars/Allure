@@ -123,11 +123,11 @@ actors :: [ItemKind]
 actors =
   [warrior, warrior2, scout, ranger, escapist, ambusher, brawler, fighter, mercenary, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, elbowTank, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush]
   -- Allure-specific
-  ++ [giantOctopus, lion, razorwireFence, electricFence, activeFence, steamFaucet, coolingFaucet, medbotFaucet, dustFaucet, fuelFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot]
+  ++ [intruder, giantOctopus, lion, razorwireFence, electricFence, activeFence, steamFaucet, coolingFaucet, medbotFaucet, dustFaucet, fuelFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot]
 
 warrior,    warrior2, scout, ranger, escapist, ambusher, brawler, fighter, mercenary, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, elbowTank, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush :: ItemKind
 -- Allure-specific
-giantOctopus,       lion, razorwireFence, electricFence, activeFence, steamFaucet, coolingFaucet, medbotFaucet, dustFaucet, fuelFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot :: ItemKind
+intruder,       giantOctopus, lion, razorwireFence, electricFence, activeFence, steamFaucet, coolingFaucet, medbotFaucet, dustFaucet, fuelFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot :: ItemKind
 
 -- Note that the actors that appear in the crawl scenario should
 -- be generated with at most ordinary ammo. Otherwise, farming them
@@ -289,7 +289,7 @@ eye = ItemKind  -- depends on items it finds rather than special organs
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
                , AddSkill SkAggression 1
                , AddSkill SkProject 2  -- can lob
-               , AddSkill SkApply 1  -- can even use cultural artifacts
+               , AddSkill SkApply 1  -- can use even cultural artifacts
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Walks with a stately dignity. You read death in the slow beckoning gestures of its revolting upper appendages."
@@ -360,7 +360,7 @@ elbow = ItemKind
   , iaspects = [ AddSkill SkMaxHP 12, AddSkill SkMaxCalm 100
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
                , AddSkill SkProject 2  -- can lob
-               , AddSkill SkApply 1  -- can even use cultural artifacts
+               , AddSkill SkApply 1  -- can use even cultural artifacts
                , AddSkill SkMelee (-1)
                , SetFlag Durable ]
   , ieffects = []
@@ -395,7 +395,7 @@ torsor = ItemKind
                , AddSkill SkNocto 2
                , AddSkill SkAggression 3
                , AddSkill SkProject 2  -- can lob
-               , AddSkill SkApply 1  -- can even use cultural artifacts
+               , AddSkill SkApply 1  -- can use even cultural artifacts
                , AddSkill SkAlter (-1)  -- can't exit the gated level; a boss,
                                         -- but can dig rubble, ice
                , SetFlag Durable ]
@@ -737,6 +737,39 @@ thornbush = ItemKind  -- the wimpiest kind of early tank
   , idesc    = "Each branch bears long, curved thorns."
   , ikit     = [ (S_THORN, COrgan)  -- after all run out, it's weaponless
                , (S_BARK, COrgan) ]
+  }
+
+-- * Allure-specific aliens
+
+-- TODO: the main fun in this actor will be chain explosions and for this,
+-- it needs to spawn in groups and move in groups. Neither is implemented yet.
+-- Low HP is needed to ensure the chain reaction. Lack of ranged combat
+-- makes the rule to attack it from a distance straightforward.
+intruder = ItemKind
+  { isymbol  = 'i'
+  , iname    = "bobbing intruder"
+  , ifreq    = [(MONSTER, 100), (MOBILE, 1), (MOBILE_MONSTER, 100)]
+  , iflavour = zipFancy [BrBlue]
+  , icount   = 1
+  , irarity  = [(3 * 10/15, 0), (4 * 10/15, 5), (10, 9)]
+  , iverbHit = "thud"
+  , iweight  = 80000
+  , idamage  = 0
+  , iaspects = [ AddSkill SkMaxHP 6, AddSkill SkMaxCalm 50
+               , AddSkill SkSpeed 20, AddSkill SkNocto 2
+               , AddSkill SkAggression 1
+               , AddSkill SkProject (-1)  -- can't project
+               , AddSkill SkApply 1  -- can use even cultural artifacts
+               , AddSkill SkFlying 10  -- flies slowly, but far
+               , SetFlag Durable ]
+  , ieffects = []
+  , idesc    = "It starts, bobs and halts, scanning for movement. Effortlessly, it resumes covering the ground, gliding two meters above the floor. The pumped organic body is large, but looks fragile. However, it doesn't skirt the walls, but instead seems to take ownership of any space it boldly parks in the middle of."
+  , ikit     = [ (S_FLOTATION_BAG, COrgan)
+               , (S_TENTACLE, COrgan), (S_TENTACLE, COrgan)
+               , (S_TIP, COrgan)  -- at least one non-timed
+               , (S_HOOKED_CLAW, COrgan)
+               , (S_EYE_6, COrgan), (S_EAR_6, COrgan)
+               , (S_SAPIENT_BRAIN, COrgan) ]  -- no voice, no hearing
   }
 
 -- * Allure-specific animals
