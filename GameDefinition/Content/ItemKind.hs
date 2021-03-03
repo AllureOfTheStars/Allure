@@ -589,7 +589,7 @@ flask10 = flaskTemplate
 flask11 = flaskTemplate
   { iname    = "bottle"
   , ifreq    = [ (COMMON_ITEM, 100), (ANY_FLASK, 100), (EXPLOSIVE, 100)
-               , (ANY_GLASS, 100) ]
+               , (ANY_GLASS, 100), (ALCOHOL, 100) ]
   , icount   = 1 `d` 2 + 1 `d` 3
   , iaspects = ELabel "of whiskey"
                : iaspects flaskTemplate

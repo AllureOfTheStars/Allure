@@ -8,7 +8,7 @@
 module Content.ItemKindOrgan
   ( -- * Group name patterns
     pattern S_FIST, pattern S_FOOT, pattern S_HOOKED_CLAW, pattern S_SMALL_CLAW, pattern S_SNOUT, pattern S_SMALL_JAW, pattern S_JAW, pattern S_LARGE_JAW, pattern S_ANTLER, pattern S_HORN, pattern S_RHINO_HORN, pattern S_TENTACLE, pattern S_TIP, pattern S_LIP, pattern S_THORN, pattern S_BOILING_FISSURE, pattern S_BEE_STING, pattern S_STING, pattern S_VENOM_TOOTH, pattern S_VENOM_FANG, pattern S_SCREECHING_BEAK, pattern S_LARGE_TAIL, pattern S_HUGE_TAIL, pattern S_ARMORED_SKIN, pattern S_BARK, pattern S_NOSTRIL, pattern S_RATLLE, pattern S_INSECT_MORTALITY, pattern S_SAPIENT_BRAIN, pattern S_ANIMAL_BRAIN, pattern S_SCENT_GLAND, pattern S_BOILING_VENT, pattern S_EYE_3, pattern S_EYE_6, pattern S_EYE_8, pattern S_VISION_6, pattern S_VISION_12, pattern S_VISION_16, pattern S_EAR_3, pattern S_EAR_6, pattern S_EAR_8, pattern S_SPEED_GLAND_5, pattern S_SPEED_GLAND_10
-  , pattern SCAVENGER
+  , pattern SCAVENGER, pattern ALCOHOL
   , pattern S_ANIMAL_STOMACH, pattern S_HUNGRY, pattern S_RAZOR, pattern S_INK_SAC, pattern S_FLOTATION_BAG, pattern S_POWERFUL_HIND_LEGS, pattern S_COILED_TAIL, pattern S_JET_BOOSTER, pattern S_RHINO_INERTIA, pattern S_SMALL_BEAK, pattern S_LIVE_WIRE, pattern S_COOLING_VENT, pattern S_COOLING_FISSURE, pattern S_MEDBOT_VENT, pattern S_MEDBOT_FISSURE, pattern S_DUST_VENT, pattern S_DUST_FISSURE, pattern S_FUEL_VENT, pattern S_FUEL_FISSURE, pattern S_ROBOT_BRAIN, pattern S_HULL_PLATING, pattern S_MOUTH_VENT, pattern S_CRUDE_WELD
   , pattern ELECTRIC_AMBIENCE, pattern GENETIC_FLAW_3, pattern GENETIC_FLAW_10, pattern GENETIC_FLAW, pattern BACKSTORY, pattern BACKSTORY_FLUFF, pattern BACKSTORY_GOOD, pattern BACKSTORY_BAD, pattern BACKSTORY_MIXED, pattern BACKSTORY_NEUTRAL
   , organsGNSingleton, organsGN
@@ -42,10 +42,11 @@ pattern S_ANIMAL_STOMACH, S_HUNGRY, S_RAZOR, S_INK_SAC, S_FLOTATION_BAG, S_POWER
 
 organsGN :: [GroupName ItemKind]
 organsGN =
-     SCAVENGER
+     SCAVENGER : ALCOHOL
      : [ELECTRIC_AMBIENCE, GENETIC_FLAW_3, GENETIC_FLAW_10, GENETIC_FLAW, BACKSTORY, BACKSTORY_FLUFF, BACKSTORY_GOOD, BACKSTORY_BAD, BACKSTORY_MIXED, BACKSTORY_NEUTRAL]
 
 pattern SCAVENGER :: GroupName ItemKind
+pattern ALCOHOL :: GroupName ItemKind
 
 pattern ELECTRIC_AMBIENCE, GENETIC_FLAW_3, GENETIC_FLAW_10, GENETIC_FLAW, BACKSTORY, BACKSTORY_FLUFF, BACKSTORY_GOOD, BACKSTORY_BAD, BACKSTORY_MIXED, BACKSTORY_NEUTRAL :: GroupName ItemKind
 
@@ -94,6 +95,7 @@ pattern S_SPEED_GLAND_5 = GroupName "speed gland 5"
 pattern S_SPEED_GLAND_10 = GroupName "speed gland 10"
 
 pattern SCAVENGER = GroupName "scavenger"
+pattern ALCOHOL = GroupName "alcohol"
 
 -- ** Allure-specific
 pattern S_ANIMAL_STOMACH = GroupName "animal stomach"
@@ -996,6 +998,21 @@ backstoryBad3 = backstoryBadTemplate
           , ("yell: Calling my lawyer", "!")
           ] ]]
   , idesc    = "Vice: Priviledge can be a boon, but if taken for granted, it can well be a doom."
+  }
+backstoryBad4 = backstoryBadTemplate
+  { iname    = "\"Alcoholism\""
+  , ifreq    = [(BACKSTORY_BAD, 100), (BACKSTORY, 1)]
+  , iaspects = [ Timeout 200, SetFlag Periodic
+               , SetFlag Unique ]  -- a tragic backstory and so unique
+               ++ iaspects backstoryBadTemplate
+  , ieffects = [OneOf  -- simple though pessimistic probability; not accurate
+      [ DestroyItem 1 1 CStash ALCOHOL
+        `OrEffect`  -- if available, only drink
+        SeqEffect [ CreateItem (Just 1) CStash ALCOHOL timerNone
+                  , VerbMsg "explain: Some moonshine from gathered scraps, just in case" "." ]
+      , RefillCalm 3
+      ]]
+  , idesc    = "Vice: Adventurers that are abstaining alcoholics are double heroes, even if they too may trip sometimes."
   }
 backstoryMixedTemplate = backstoryFluffTemplate
   { iname    = "unrevealed twist"
