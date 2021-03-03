@@ -956,6 +956,17 @@ backstoryGood2 = backstoryGoodTemplate
   , ieffects = [Impress `AndEffect` VerbMsg "mumble repeatedly" "."]
   , idesc    = "Virtue: Every once in a while reciting the names of all the people your life directly depends on is a proven loyalty-strenghtening custom."
   }
+backstoryGood3 = backstoryGoodTemplate
+  { iname    = "\"Bravery\""
+  , ifreq    = [(BACKSTORY_GOOD, 100), (BACKSTORY, 1)]
+  , iaspects = [Timeout 1, SetFlag UnderMelee]
+               ++ iaspects backstoryGoodTemplate
+  , ieffects = [When (CalmLeq 2) $ SeqEffect
+      [ Recharge 4 20
+      , RefillCalm 2
+      ]]
+  , idesc    = "Virtue: Several years of daily risking life leaves either a trauma or a lesson. The lesson is, when fear is the strongest, turn away from yourself and strive even stronger for your mission."
+  }
 backstoryBadTemplate = backstoryFluffTemplate
   { iname    = "unrevealed vice"
   , ifreq    = [(BACKSTORY_BAD_UNKNOWN, 1)]
