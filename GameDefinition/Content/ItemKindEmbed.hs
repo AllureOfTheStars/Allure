@@ -201,7 +201,7 @@ scratchOnWall = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [SetFlag Durable]
-  , ieffects = [ VerbMsg "start making sense of the scratches"
+  , ieffects = [ VerbMsg "start making sense of the scratches" "."
                , Detect DetectHidden 3 ]
   , idesc    = "A seemingly random series of scratches, carved deep into the wall."
   , ikit     = []
@@ -217,7 +217,7 @@ obscenePictogram = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [Timeout 7, SetFlag Durable]
-  , ieffects = [ VerbMsg "enter inexplicable rage at a glimpse of the inscrutable graffiti"
+  , ieffects = [ VerbMsg "enter inexplicable rage at a glimpse of the inscrutable graffiti!" ""
                , RefillCalm (-20)
                , OneOf [ toOrganGood S_STRENGTHENED (3 + 1 `d` 2)
                        , CreateItem Nothing CGround S_SANDSTONE_ROCK timerNone ]
@@ -236,7 +236,7 @@ subtleFresco = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [Timeout 10, SetFlag Durable]
-  , ieffects = [ VerbMsg "feel refreshed by the subtle fresco"
+  , ieffects = [ VerbMsg "feel refreshed by the subtle fresco" "."
                , toOrganGood S_FAR_SIGHTED (5 + 1 `d` 2) ]
   , idesc    = "Expensive yet tasteful."
   , ikit     = []
@@ -257,7 +257,7 @@ treasureCache = ItemKind
   , ikit     = []
   }
 reliefMsg :: Effect
-reliefMsg = VerbMsg "sigh with relief when nothing explodes in your face"
+reliefMsg = VerbMsg "sigh with relief when nothing explodes in your face!" ""
 treasureCacheTrap = ItemKind
   { isymbol  = '^'
   , iname    = "anti-theft protection"
@@ -456,7 +456,7 @@ stairsTrapUp = ItemKind
   , iweight  = 10000
   , idamage  = 0
   , iaspects = []  -- not Durable, springs at most once
-  , ieffects = [ VerbMsgFail "be caught in decompression blast"
+  , ieffects = [ VerbMsgFail "be caught in decompression blast" "."
                , Teleport $ 3 + 1 `dL` 10 ]
   , idesc    = ""
   , ikit     = []
@@ -468,7 +468,7 @@ stairsTrapDown = stairsTrapUp
   { ifreq    = [(STAIRS_TRAP_DOWN, 1)]
   , iflavour = zipPlain [Blue]
   , iverbHit = "open up under"
-  , ieffects = [ VerbMsgFail "fall down the stairwell"
+  , ieffects = [ VerbMsgFail "fall down the stairwell" "."
                , toOrganGood S_DRUNK (20 + 1 `d` 5) ]
   , idesc    = "A treacherous slab, to teach those who are too proud."
   }
@@ -559,7 +559,7 @@ blackStarrySky = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [SetFlag Durable]
-  , ieffects = [ VerbMsg "look into the void and it looks back"
+  , ieffects = [ VerbMsg "look into the void and it looks back" "."
                , RefillCalm (-5) ]
   , idesc    = "Occasionally a planet or the Sun zips by, but is unable to disperse the darkness. The black starscape constantly rotates. The frantic dance is silent, muted, indifferent. There is not even a hint of vibration, just the sense of heaviness and dizziness."  -- appears only on 100% flavour tiles (both floor and walls on some levels), useless and trivial to notice, so the writeup can be longer; who am I kidding, I can't make myself write condensed prose
   , ikit     = []
@@ -608,7 +608,7 @@ ruinedFirstAidKit = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = []  -- not Durable, springs at most once
-  , ieffects = [ VerbMsg "inspect a tattered CPR instruction soaked in a residue of oily drugs"
+  , ieffects = [ VerbMsg "inspect a tattered CPR instruction soaked in a residue of oily drugs" "."
                , OneOf [ toOrganNoTimer S_SLOW_RESISTANT
                        , toOrganNoTimer S_POISON_RESISTANT
                        , toOrganGood S_DRUNK (20 + 1 `d` 5) ]
@@ -627,7 +627,7 @@ fireFightingGear = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = []  -- not Durable, springs at most once
-  , ieffects = [ VerbMsg "disassemble and sort through the broken and leaking gear, taking away the least decrepit item"
+  , ieffects = [ VerbMsg "disassemble and sort through the broken and leaking gear, taking away the least decrepit item" "."
                , CreateItem Nothing CGround FIRE_FIGHTING_ITEM timerNone ]
   , idesc    = "In addition to remains of firefighting tools, it contains a fire hydrant displaying old scars from being used in a hurry."  -- regulations require; hint that terrain can be ignited and doused
   , ikit     = []
@@ -643,7 +643,7 @@ fireFightingGearIntact = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [SetFlag Unique]  -- not Durable, springs at most once
-  , ieffects = [ VerbMsg "disassemble and sort through the old gear, taking away the least decrepit items"
+  , ieffects = [ VerbMsg "disassemble and sort through the old gear, taking away the least decrepit items" "."
                , CreateItem Nothing CGround FIRE_FIGHTING_ITEM timerNone
                , CreateItem Nothing CGround S_FIRE_AXE timerNone ]
   , idesc    = "This cabinet has not been broken open and used, so it contains a complete assortment of fire fighting implements. It also contains a fire hydrant in pristine condition."  -- regulations require; hint that terrain can be ignited and doused
@@ -660,7 +660,7 @@ wall3dBillboard = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [Timeout 3, SetFlag Durable]
-  , ieffects = [ VerbMsg "make it cough up a wobbly standalone hologram once more"
+  , ieffects = [ VerbMsg "make it cough up a wobbly standalone hologram once more" "."
                , OneOf [ Explode ADVERTISEMENT
                        , Explode STORY_TELLING ] ]
   , idesc    = "One can still make out excited moves of bleached shapes."
@@ -677,7 +677,7 @@ crackedFlue = ItemKind
   , iweight  = 1000
   , idamage  = 0
   , iaspects = [Timeout 10, SetFlag Durable]
-  , ieffects = [ VerbMsg "imagine the fragrance of roasted food wafting through the flue from upstairs"
+  , ieffects = [ VerbMsg "imagine the fragrance of roasted food wafting through the flue from upstairs" "."
                , toOrganGood S_KEEN_SMELLING (3 + 1 `d` 2) ]
   , idesc    = "The pipes ring with tumultuous echoes. Whenever you convince yourself it's an uneven updraft singing through the cracks, the noise suddenly stops, then picks up with a roar. Is there a fight over the food on some upper deck or are you just hungry?"
   , ikit     = []
@@ -753,7 +753,7 @@ stairsTrapDownOil = stairsTrapUp
   { ifreq    = [(STAIRS_TRAP_DOWN_OIL, 1)]
   , iflavour = zipPlain [Brown]
   , iverbHit = "cause a chaotic skid"
-  , ieffects = [ VerbMsgFail "tumble down and shoot out of the stairwell"
+  , ieffects = [ VerbMsgFail "tumble down and shoot out of the stairwell" "."
                , PushActor (ThrowMod 400 100 1)]  -- 4 steps, 2 turns
   , idesc    = ""
   }
@@ -763,7 +763,7 @@ doorTrapPush = stairsTrapUp
   , ifreq    = [(DOOR_TRAP_PUSH, 1)]
   , iflavour = zipPlain [BrBlue]
   , iverbHit = "give in"
-  , ieffects = [ VerbMsgFail "fly inwards after the crashed open doors"
+  , ieffects = [ VerbMsgFail "fly inwards after the crashed open doors" "."
                , PushActor (ThrowMod 400 100 1)]  -- 4 steps, 2 turns
   , idesc    = ""
   }
@@ -786,7 +786,7 @@ liftTrap = stairsTrapUp
   , ifreq    = [(LIFT_TRAP, 100)]
   , iflavour = zipPlain [Cyan]
   , iverbHit = "squeeze"
-  , ieffects = [ VerbMsgFail "be crushed by the sliding doors"
+  , ieffects = [ VerbMsgFail "be crushed by the sliding doors" "."
                , DropItem maxBound 1 CEqp STARTING_WEAPON, Paralyze 10 ]
   , idesc    = ""
   }
@@ -794,7 +794,7 @@ liftTrap2 = liftTrap
   { ifreq    = [(LIFT_TRAP, 50)]
   , iflavour = zipFancy [BrMagenta]
   , iverbHit = "choke"
-  , ieffects = [ VerbMsgFail "inhale the gas lingering inside the cab"
+  , ieffects = [ VerbMsgFail "inhale the gas lingering inside the cab" "."
                , toOrganBad S_SLOWED $ (1 `dL` 4) * 10 ]
   , idesc    = ""
   }
@@ -802,7 +802,7 @@ liftTrap3 = liftTrap
   { ifreq    = [(LIFT_TRAP, 50)]
   , iflavour = zipFancy [BrBlue]
   , iverbHit = "shock"
-  , ieffects = [ VerbMsgFail "be electrocuted upon touching the control pad"
+  , ieffects = [ VerbMsgFail "be electrocuted upon touching the control pad" "."
                , Discharge 5 $ 80 - 1 `d` 40 ]
   , idesc    = ""
   }
@@ -982,7 +982,7 @@ combineEffect msg ass =
         -> Effect
         -> Effect
       f roolsRawCooked eff = cookOne roolsRawCooked `OrEffect` eff
-      initial = VerbMsgFail msg  -- noop; emits @UseId@ to correctly abort
+      initial = VerbMsgFail msg "."  -- noop; emits @UseId@ to correctly abort
   in foldr f initial ass
 
 oilEffect :: Effect

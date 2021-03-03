@@ -1181,7 +1181,7 @@ cookedPlant8 = cookedPlantTemplate
 -- ** Lights and related
 
 torchMsg :: Effect
-torchMsg = VerbMsgFail "feel the torch fracture"
+torchMsg = VerbMsgFail "feel the torch fracture" "."
 torchDestruct :: Effect
 torchDestruct =
   OnUser $ OneOf $
@@ -2485,7 +2485,7 @@ cattleProd = militaryBaton
 -- but they or their components can be used for crafting.
 
 gardenMsg :: Effect
-gardenMsg = VerbMsgFail "feel the gardening tool fracture"
+gardenMsg = VerbMsgFail "feel the gardening tool fracture" "."
 gardenDestruct :: GroupName ItemKind -> Effect
 gardenDestruct grp =
   OnUser $ OneOf $

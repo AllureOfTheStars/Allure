@@ -157,7 +157,7 @@ thorn = fist
   , iverbHit = "puncture"
   , idamage  = 1 `d` 1
   , iaspects = [SetFlag Meleeable]  -- not Durable
-  , ieffects = [VerbNoLonger "be not so thorny any more"]
+  , ieffects = [VerbNoLonger "be not so thorny any more" "."]
   , idesc    = "Sharp yet brittle."
   }
 tip = fist
@@ -395,7 +395,7 @@ sulfurFissure = boilingFissure
   , iaspects = SetFlag Benign : iaspects boilingFissure
   , ieffects = [ RefillHP 5
                , toOrganNoTimer S_HUNGRY  -- the metabolic price to pay
-               , VerbNoLonger "run out of nano medbot liquid" ]
+               , VerbNoLonger "run out of nano medbot liquid" "." ]
   , idesc    = ""
   }
 boilingFissure = fist
@@ -407,7 +407,7 @@ boilingFissure = fist
   , iaspects = [ AddSkill SkHurtMelee 20  -- decreasing as count decreases
                , SetFlag Meleeable ]  -- not Durable
   , ieffects = [ DropItem 1 1 COrgan CONDITION  -- useful; limited; HP price
-               , VerbNoLonger "widen the crack, releasing pressure" ]
+               , VerbNoLonger "widen the crack, releasing pressure" "." ]
   , idesc    = ""
   }
 arsenicFissure = boilingFissure
@@ -417,7 +417,7 @@ arsenicFissure = boilingFissure
   , idamage  = 2 `d` 1
   , ieffects = [ toOrganBad S_PARSIMONIOUS (5 + 1 `d` 3)
                    -- weaken/freeze, impacting intellectual abilities first
-               , VerbNoLonger "clog with ice" ]
+               , VerbNoLonger "clog with ice" "." ]
   , idesc    = ""
   }
 
@@ -566,7 +566,7 @@ scentGland = armoredSkin
   , iverbHit = "spray at"
   , iaspects = [ Timeout $ (1 `d` 3) * 10
                , SetFlag Periodic, SetFlag Fragile ]  -- not Durable
-  , ieffects = [ VerbNoLonger "look spent"
+  , ieffects = [ VerbNoLonger "look spent" "."
                , ApplyPerfume
                , Explode S_DISTRESSING_ODOR ]
                    -- keep explosion at the end to avoid the ambiguity of
@@ -693,7 +693,7 @@ razor = fist
   , iaspects = [ SetFlag Meleeable  -- not Durable
                , Timeout 4 ]  -- but cooldown to use other weapons
   , ieffects = [ toOrganBad S_WEAKENED (2 + 1 `dL` 3)
-               , VerbNoLonger "lose all sharpness" ]
+               , VerbNoLonger "lose all sharpness" "." ]
                  -- we interpret charges as sharpness of the actor or his razor'
                  -- no pronoun in the message to avoid "you lose its sharpness"
   , idesc    = ""
@@ -704,7 +704,7 @@ dustFissure = boilingFissure
   , icount   = 3 + 1 `d` 3
   , idamage  = 1 `d` 1
   , ieffects = [ toOrganBad S_WEAKENED 20
-               , VerbNoLonger "cough one last time" ]
+               , VerbNoLonger "cough one last time" "." ]
   , idesc    = ""
   }
 fuelFissure = boilingFissure
@@ -713,7 +713,7 @@ fuelFissure = boilingFissure
   , icount   = 3 + 1 `d` 3
   , idamage  = 0
   , ieffects = [ Burn 1
-               , VerbNoLonger "have its fissures mended by emergency auto-sealants" ]
+               , VerbNoLonger "have its fissures mended by emergency auto-sealants" "." ]
   , idesc    = ""
   }
 
@@ -839,10 +839,13 @@ mouthVent = armoredSkin
   , iaspects = [ Timeout 7
                , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [OneOf $
-      AndEffect (Explode S_SMOKE) (VerbMsg "say: Sir, your luggage has already been collected. Help me? I can't reach with this tool")
-      : map Explode
-          [ S_PHEROMONE, S_RHINO_HOLOGRAM, S_CURRENT_DISCHARGE
-          , blastNoStatOf S_IMMOBILE, S_SPARK ]]
+      map (\msg -> AndEffect (Explode S_SMOKE) (uncurry VerbMsg msg))
+          [ ("say: Sir, your luggage has already been collected", ".")
+          , ("ask: Would you kindly help me?", "")
+          , ("complain: I can't reach you with this tool", "." ) ]
+      ++ map Explode
+             [ S_PHEROMONE, S_RHINO_HOLOGRAM, S_CURRENT_DISCHARGE
+             , blastNoStatOf S_IMMOBILE, S_SPARK ]]
   , idesc    = ""
   }
 dustVent = armoredSkin
@@ -885,7 +888,7 @@ geneticFlaw fr badArmorMelee n grp = armoredSkin
   , ieffects = [ OnSmash $ DropItem maxBound maxBound COrgan CONDITION
                    -- key for AI is it eliminates all impression conditions
                , OnSmash $ RefillHP n
-               , OnSmash $ VerbNoLonger "undergo instant infracellular decontamination" ]  -- unlike the civilian version, this one is instant and the attunement is automatic and relatively quick (the usual double cooldown when equipping items again)
+               , OnSmash $ VerbNoLonger "undergo instant infracellular decontamination" "." ]  -- unlike the civilian version, this one is instant and the attunement is automatic and relatively quick (the usual double cooldown when equipping items again)
   , idesc    = "Nobody is perfect. At least without infracellular engineering, which is heavily regulated, insanely expensive and automatically reverted without refund before critical medical interventions. One more reason to be a good citizen, work hard and not die often. But where is the fun in that?"
   }
 geneticFlaw3BadArmorMelee = geneticFlaw 1 True 3 GENETIC_FLAW_3
@@ -916,13 +919,13 @@ backstoryFluff1 = backstoryFluffTemplate
   , ifreq    = [(BACKSTORY_FLUFF, 100), (BACKSTORY, 1)]
   , iaspects = [Timeout 500, SetFlag UnderMelee]
                ++ iaspects backstoryFluffTemplate
-  , ieffects = [When (CalmLeq 30) $ OneOf $ map VerbMsg
-      [ "rage, froth-mouthed"
-      , "say: Déjà vu"
-      , "yell: I missed that so"
-      , "hesitate for the briefest moment"
-      , "enquire: in the face? in the face? here you go"
-      , "lose it"
+  , ieffects = [When (CalmLeq 30) $ OneOf $ map (uncurry VerbMsg)
+      [ ("rage, froth-mouthed", ".")
+      , ("say: Déjà vu?", "")
+      , ("yell: I missed that so", "!")
+      , ("hesitate for the briefest moment", ".")
+      , ("enquire: in the face? in the face?", "")
+      , ("lose it", ".")
       ]]
   , idesc    = "Rumination: Bad temper, anguish and uncontrollable fury blot out all other childhood memories."
   }
