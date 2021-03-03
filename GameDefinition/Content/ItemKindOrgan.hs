@@ -142,11 +142,11 @@ organs :: [ItemKind]
 organs =
   [fist, foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, tip, lip, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, bark, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland5, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed]
   -- Allure-specific
-  ++ [animalStomach, hungry, smallBeak, razor, liveWire, inkSac, flotationBag, powerfulHindLegs, coiledTail, jetBooster, rhinoInertia, electricAmbience, electricAmbienceRecharge, robotBrain, hullPlating, mouthVent, dustVent, dustFissure, fuelVent, fuelFissure, geneticFlaw3BadArmorMelee, geneticFlaw3BadArmorRanged, geneticFlaw10BadArmorMelee, geneticFlaw10BadArmorRanged, backstoryFluffTemplate, backstoryFluff1, backstoryGoodTemplate, backstoryGood1, backstoryBadTemplate, backstoryBad1, backstoryMixedTemplate, backstoryMixed1, backstoryMixed2, backstoryNeutralTemplate, backstoryNeutral1]
+  ++ [animalStomach, hungry, smallBeak, razor, liveWire, inkSac, flotationBag, powerfulHindLegs, coiledTail, jetBooster, rhinoInertia, electricAmbience, electricAmbienceRecharge, robotBrain, hullPlating, mouthVent, dustVent, dustFissure, fuelVent, fuelFissure, geneticFlaw3BadArmorMelee, geneticFlaw3BadArmorRanged, geneticFlaw10BadArmorMelee, geneticFlaw10BadArmorRanged, backstoryFluffTemplate, backstoryFluff1, backstoryGoodTemplate, backstoryGood1, backstoryBadTemplate, backstoryBad1, backstoryBad2, backstoryBad3, backstoryMixedTemplate, backstoryMixed1, backstoryMixed2, backstoryNeutralTemplate, backstoryNeutral1]
 
 fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, horn, rhinoHorn, tentacle, tip, lip, thorn, boilingFissure, arsenicFissure, sulfurFissure, beeSting, sting, venomTooth, venomFang, screechingBeak, largeTail, hugeTail, armoredSkin, bark, eye3, eye6, eye8, vision6, vision12, vision16, nostril, ear3, ear6, ear8, rattleOrgan, insectMortality, sapientBrain, animalBrain, speedGland5, speedGland10, scentGland, boilingVent, arsenicVent, sulfurVent, bonusHP, braced, asleep, impressed :: ItemKind
 -- Allure-specific
-animalStomach,       hungry, smallBeak, razor, liveWire, inkSac, flotationBag, powerfulHindLegs, coiledTail, jetBooster, rhinoInertia, electricAmbience, electricAmbienceRecharge, robotBrain, hullPlating, mouthVent, dustVent, dustFissure, fuelVent, fuelFissure, geneticFlaw3BadArmorMelee, geneticFlaw3BadArmorRanged, geneticFlaw10BadArmorMelee, geneticFlaw10BadArmorRanged, backstoryFluffTemplate, backstoryFluff1, backstoryGoodTemplate, backstoryGood1, backstoryBadTemplate, backstoryBad1, backstoryMixedTemplate, backstoryMixed1, backstoryMixed2, backstoryNeutralTemplate, backstoryNeutral1 :: ItemKind
+animalStomach,       hungry, smallBeak, razor, liveWire, inkSac, flotationBag, powerfulHindLegs, coiledTail, jetBooster, rhinoInertia, electricAmbience, electricAmbienceRecharge, robotBrain, hullPlating, mouthVent, dustVent, dustFissure, fuelVent, fuelFissure, geneticFlaw3BadArmorMelee, geneticFlaw3BadArmorRanged, geneticFlaw10BadArmorMelee, geneticFlaw10BadArmorRanged, backstoryFluffTemplate, backstoryFluff1, backstoryGoodTemplate, backstoryGood1, backstoryBadTemplate, backstoryBad1, backstoryBad2, backstoryBad3, backstoryMixedTemplate, backstoryMixed1, backstoryMixed2, backstoryNeutralTemplate, backstoryNeutral1 :: ItemKind
 
 -- * No-cooldown melee damage organs without effects
 
@@ -957,12 +957,37 @@ backstoryBad1 = backstoryBadTemplate
   { iname    = "\"Drug addiction\""
   , ifreq    = [(BACKSTORY_BAD, 100), (BACKSTORY, 1)]
   , iaspects = [Timeout 200, SetFlag Unique]
-               ++ iaspects  backstoryBadTemplate
+               ++ iaspects backstoryBadTemplate
   , ieffects = [When (CalmLeq 40) $ When (CalmGeq 20) $ SeqEffect
       [ toOrganBad S_SLOWED (3 + 1 `d` 3)
       , toOrganBad S_FRENZIED (40 + 1 `d` 10)
       , toOrganGood S_STRENGTHENED (5 + 1 `d` 5) ]]  -- to short to compensate
   , idesc    = "Vice: The small pill that distracts from mild anxiety also distracts from survival and responsibility towards teammates."
+  }
+backstoryBad2 = backstoryBadTemplate
+  { iname    = "\"Overconfidence\""
+  , ifreq    = [(BACKSTORY_BAD, 100), (BACKSTORY, 1)]
+  , iaspects = [Timeout 200, SetFlag UnderMelee]
+               ++ iaspects backstoryBadTemplate
+  , ieffects = [When (CalmGeq 80) $ SeqEffect
+      [ toOrganBad S_WEAKENED (20 + 1 `d` 5)
+      , toOrganBad S_DEAF (20 + 1 `d` 5) ]]
+  , idesc    = "Vice: Never underestimate a maddened, towering abomination, when you only have a stick to fend it off. Unless you are really good with the stick."
+  }
+backstoryBad3 = backstoryBadTemplate
+  { iname    = "\"Arrogance\""
+  , ifreq    = [(BACKSTORY_BAD, 100), (BACKSTORY, 1)]
+  , iaspects = [Timeout 200, SetFlag UnderMelee]
+               ++ iaspects backstoryBadTemplate
+  , ieffects = [When (CalmGeq 80) $ SeqEffect
+      [ Discharge 3 40
+      , Yell
+      , OneOf $ map (uncurry VerbMsg)
+          [ ("yell: How dare you touch me?", "")
+          , ("yell: Do you know who I am?", "")
+          , ("yell: Calling my lawyer", "!")
+          ] ]]
+  , idesc    = "Vice: Priviledge can be a boon, but if taken for granted, it can well be a doom."
   }
 backstoryMixedTemplate = backstoryFluffTemplate
   { iname    = "unrevealed twist"
