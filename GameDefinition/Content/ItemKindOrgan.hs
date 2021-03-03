@@ -1090,7 +1090,7 @@ backstoryNeutral2 = backstoryNeutralTemplate
   , idesc    = "Quirk: Hormonal imbalances make it hard to compensate for natural neural system unsteadiness."
   }
 backstoryNeutral3 = backstoryNeutralTemplate
-  { iname    = "\"Cracking under pressure\""
+  { iname    = "\"Cracking under stress\""
   , ifreq    = [(BACKSTORY_NEUTRAL, 100), (BACKSTORY, 1)]
   , iaspects = [SetFlag UnderRanged, SetFlag UnderMelee]
                ++ iaspects backstoryMixedTemplate
