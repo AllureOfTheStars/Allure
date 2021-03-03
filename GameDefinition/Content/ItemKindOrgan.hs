@@ -900,6 +900,22 @@ geneticFlaw10BadArmorRanged = geneticFlaw 3 False 10 GENETIC_FLAW_10
 
 -- * Allure-specific backstory items
 
+-- The name and descritpion of each backstory item should add something
+-- to the biography or character of the hero or both. However, it should
+-- not constrain it so mucht that it conflicts with any other items.
+-- E.g., 'life spent in military' is not acceptable,
+-- but a spell in military is fine, just as is life spent doing
+-- dangerous tasks, serious missions or giving orders.
+-- The idea, in addtion to avoiding inconsistency, is to let the player
+-- fill in the gaps and, in effect, invent the backstories.
+-- OTOH, the player needs something to work with, so a Wikipedia
+-- definition of a mild vice or a veiled allusion to in-game mechanics
+-- of a virtue are not enough. It's fine if some backstory
+-- items are more constraining that others. Variety is good.
+--
+-- Make sure the effects here that not always fire don't fail with UseId
+-- and so reveal the backstory item too early and without the fun.
+-- The exception is fluff items, where the effects are marginal by definition.
 backstoryFluffTemplate = ItemKind
   { isymbol  = '?'
   , iname    = "unrevealed rumination"
@@ -913,7 +929,7 @@ backstoryFluffTemplate = ItemKind
   , iaspects = [ PresentAs BACKSTORY_FLUFF_UNKNOWN, SetFlag MetaGame
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "Not all crucial facts about a team member are made known while they still matter."
+  , idesc    = "Not all crucial facts about a team member are remembered and revealed as soon as would be most beneficial for the team."
   , ikit     = []
   }
 backstoryFluff1 = backstoryFluffTemplate
@@ -926,7 +942,7 @@ backstoryFluff1 = backstoryFluffTemplate
       , ("say: Déjà vu?", "")
       , ("yell: I missed that so", "!")
       , ("hesitate for the briefest moment", ".")
-      , ("enquire: in the face? in the face?", "")
+      , ("inquire: in the face? in the face?", "")
       , ("lose it", ".")
       ]]
   , idesc    = "Rumination: Bad temper, anguish and uncontrollable fury blot out all other childhood memories."
@@ -954,7 +970,7 @@ backstoryGood2 = backstoryGoodTemplate
   , iaspects = [Timeout 200, SetFlag Periodic]
                ++ iaspects backstoryGoodTemplate
   , ieffects = [Impress `AndEffect` VerbMsg "mumble repeatedly" "."]
-  , idesc    = "Virtue: Every once in a while reciting the names of all the people your life directly depends on is a proven loyalty-strenghtening custom."
+  , idesc    = "Virtue: Reciting, every once in a while, the names of all the people your life directly depends on is a proven loyalty-affirming custom. It also lets you pinpoint the moment you start hating a teammate."  -- 'ritual' is exotic enough to add to biography
   }
 backstoryGood3 = backstoryGoodTemplate
   { iname    = "\"Bravery\""
@@ -965,7 +981,7 @@ backstoryGood3 = backstoryGoodTemplate
       [ Recharge 4 20
       , RefillCalm 2
       ]]
-  , idesc    = "Virtue: Several years of daily risking life leaves either a trauma or a lesson. The lesson is, when fear is the strongest, turn away from yourself and strive even stronger for your mission."
+  , idesc    = "Virtue: Several years of daily life threatening events leaves either a trauma or a lesson. The lesson is, when fear is the strongest, turn away from yourself and fiercely focus on your mission."
   }
 backstoryBadTemplate = backstoryFluffTemplate
   { iname    = "unrevealed vice"
@@ -993,7 +1009,7 @@ backstoryBad2 = backstoryBadTemplate
   , ieffects = [When (CalmGeq 80) $ SeqEffect
       [ toOrganBad S_WEAKENED (20 + 1 `d` 5)
       , toOrganBad S_DEAF (20 + 1 `d` 5) ]]
-  , idesc    = "Vice: Never underestimate a maddened, towering abomination, when you only have a stick to fend it off. Unless you are really good with the stick."
+  , idesc    = "Vice: Never underestimate a maddened, towering abomination, when you only have a stick to fend it off with. Bonus advice: the fact you excelled in school athletics doesn't mean every power in the universe is going to read you body language and cower."
   }
 backstoryBad3 = backstoryBadTemplate
   { iname    = "\"Arrogance\""
@@ -1008,7 +1024,7 @@ backstoryBad3 = backstoryBadTemplate
           , ("yell: Do you know who I am?", "")
           , ("yell: Calling my lawyer", "!")
           ] ]]
-  , idesc    = "Vice: Priviledge can be a boon, but if taken for granted, it can well be a doom."
+  , idesc    = "Vice: Privilege can be a boon, but if taken for granted, it can be a doom."
   }
 backstoryBad4 = backstoryBadTemplate
   { iname    = "\"Alcoholism\""
@@ -1023,7 +1039,7 @@ backstoryBad4 = backstoryBadTemplate
                   , VerbMsg "explain: Some moonshine from gathered scraps, just in case" "." ]
       , RefillCalm 3
       ]]
-  , idesc    = "Vice: Adventurers that are abstaining alcoholics are double heroes, even if they too may trip sometimes."
+  , idesc    = "Vice: Adventurers that are abstaining alcoholics are double heroes, even if they too may trip sometimes. That doesn't make alcoholism a virtue, though."
   }
 backstoryMixedTemplate = backstoryFluffTemplate
   { iname    = "unrevealed twist"
@@ -1049,7 +1065,7 @@ backstoryMixed2 = backstoryMixedTemplate
   , ieffects = [When (HpLeq 10) $ SeqEffect
       [RefillCalm (-10), toOrganGood S_HASTED 1, Recharge 1 20]]
         -- mixed: Calm lost but fury helps survive; may fire once per turn
-  , idesc    = "Twist: Despair, fury, denial. Beastly reactions to approaching death. All this in the space age, when getting acquainted with dying is so essential and so easy, either via pharmacological clinical death and nanobot revival or mental exercise culminating in writing a will notarized Earth-side."
+  , idesc    = "Twist: Despair, fury, denial. Beastly reactions to approaching death. This is unforgivable in space, especially when getting acquainted with dying is so accessible, for a generation already, either via hibernation and nanobot revival or mental exercise culminating in writing a will to be notarized Earth-side."  -- hint that the nanobot revival heroes use all the time may have stemmed from space travel hibernation research; if so, the culture followed, but some youngsters are lazy wimps
   }
 backstoryNeutralTemplate = backstoryFluffTemplate
   { iname    = "unrevealed quirk"
@@ -1079,5 +1095,5 @@ backstoryNeutral3 = backstoryNeutralTemplate
   , iaspects = [SetFlag UnderRanged, SetFlag UnderMelee]
                ++ iaspects backstoryMixedTemplate
   , ieffects = [When (HpLeq 50) $ OneOf [RefillCalm 10, RefillCalm (-10)]]
-  , idesc    = "Quirk: Cracked wood holds together much better than torn apart steel."
+  , idesc    = "Quirk: Not everyone needs to be impassive. Some recent brushes with grave danger resulted not in panic, but in cheering up and rallying the whole team. However, the front line may not be the best place to ensure the good outcomes."  -- 'the whole team' is an exaggeration, but it's in-character here
   }
