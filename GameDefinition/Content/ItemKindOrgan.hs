@@ -937,14 +937,22 @@ backstoryGoodTemplate = backstoryFluffTemplate
                , SetFlag Durable ]
   }
 backstoryGood1 = backstoryGoodTemplate
-  { iname    = "\"Zero g Squash\""
+  { iname    = "\"Zero g Champ\""
   , ifreq    = [(BACKSTORY_GOOD, 100), (BACKSTORY, 1)]
   , iaspects = [Timeout 1000, SetFlag UnderRanged, SetFlag Unique]
                ++ iaspects backstoryGoodTemplate
                  -- unique, so that team not overpowered
-  , ieffects = [OnUser (toOrganGood S_RANGED_DEFLECTING 10)]
+  , ieffects = [toOrganGood S_RANGED_DEFLECTING 10]
                   -- rare, but long lasting
   , idesc    = "Virtue: Years of training for null gravity squash tournaments unexpectedly pay off. At this very distance and speed, trajectory angles are obvious and lounging and feinting comes naturally."
+  }
+backstoryGood2 = backstoryGoodTemplate
+  { iname    = "\"Loyalty ritual\""
+  , ifreq    = [(BACKSTORY_GOOD, 100), (BACKSTORY, 1)]
+  , iaspects = [Timeout 200, SetFlag Periodic]
+               ++ iaspects backstoryGoodTemplate
+  , ieffects = [Impress `AndEffect` VerbMsg "mumble repeatedly" "."]
+  , idesc    = "Virtue: Every once in a while reciting the names of all the people your life directly depends on is a proven loyalty-strenghtening custom."
   }
 backstoryBadTemplate = backstoryFluffTemplate
   { iname    = "unrevealed vice"
@@ -997,7 +1005,7 @@ backstoryMixedTemplate = backstoryFluffTemplate
                , SetFlag Durable ]
   }
 backstoryMixed1 = backstoryMixedTemplate
-  { iname    = "\"Heavy-eyed\""
+  { iname    = "\"Heavy eyes\""
   , ifreq    = [(BACKSTORY_MIXED, 100), (BACKSTORY, 1)]
   , iaspects = [Timeout 100, SetFlag Periodic]
                ++ iaspects backstoryMixedTemplate
@@ -1027,4 +1035,21 @@ backstoryNeutral1 = backstoryNeutralTemplate
   , ifreq    = [(BACKSTORY_NEUTRAL, 100), (BACKSTORY, 1)]
   , ieffects = [OnSmash (Explode S_YOUTH_SPRINKLE)]  -- may hit foes as well
   , idesc    = "Quirk: Dying beautifully is an art that takes a lifetime to master and leaves spectators peaceful and uplifted. That's true even for clinical death, potentially reversible with nano medbot treatment back in town."
+  }
+-- Both can be moved to Mixed if less numerous, even though the effects mild.
+backstoryNeutral2 = backstoryNeutralTemplate
+  { iname    = "\"Mood swings\""
+  , ifreq    = [(BACKSTORY_NEUTRAL, 100), (BACKSTORY, 1)]
+  , iaspects = [Timeout 100, SetFlag Periodic]
+               ++ iaspects backstoryMixedTemplate
+  , ieffects = [When (HpLeq 50) $ OneOf [RefillCalm 20, RefillCalm (-20)]]
+  , idesc    = "Quirk: Hormonal imbalances make it hard to compensate for natural neural system unsteadiness."
+  }
+backstoryNeutral3 = backstoryNeutralTemplate
+  { iname    = "\"Cracking under pressure\""
+  , ifreq    = [(BACKSTORY_NEUTRAL, 100), (BACKSTORY, 1)]
+  , iaspects = [SetFlag UnderRanged, SetFlag UnderMelee]
+               ++ iaspects backstoryMixedTemplate
+  , ieffects = [When (HpLeq 50) $ OneOf [RefillCalm 10, RefillCalm (-10)]]
+  , idesc    = "Quirk: Cracked wood holds together much better than torn apart steel."
   }
