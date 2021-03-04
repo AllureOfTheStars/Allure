@@ -753,7 +753,7 @@ intruder = ItemKind
   , ifreq    = [ (MONSTER, 100), (MOBILE, 1), (MOBILE_MONSTER, 100)
                , (EXPLOSIVE_MONSTER, 100)
                , (AQUATIC, 1) ]  -- neutral to water, unlike other actors
-  , iflavour = zipFancy [BrBlue]
+  , iflavour = zipFancy [BrCyan]
   , icount   = 1
   , irarity  = [(3 * 10/15, 0), (4 * 10/15, 5), (10, 9)]
   , iverbHit = "thud"
