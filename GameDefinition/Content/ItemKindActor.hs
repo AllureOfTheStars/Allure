@@ -122,13 +122,9 @@ pattern WIRECUTTING_TOOL = GroupName "wirecutting tool"
 
 actors :: [ItemKind]
 actors =
-  [warrior, warrior2, scout, ranger, escapist, ambusher, brawler, fighter, mercenary, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, elbowTank, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush]
-  -- Allure-specific
-  ++ [intruder, giantOctopus, lion, razorwireFence, electricFence, activeFence, steamFaucet, coolingFaucet, medbotFaucet, dustFaucet, fuelFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot]
+  [warrior, warrior2, scout, ranger, escapist, ambusher, brawler, fighter, mercenary, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, elbowTank, intruder, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, giantOctopus, lion, rhinoceros, beeSwarm, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, coolingFaucet, medbotFaucet, dustFaucet, fuelFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot]
 
-warrior,    warrior2, scout, ranger, escapist, ambusher, brawler, fighter, mercenary, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, elbowTank, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, rhinoceros, beeSwarm, hornetSwarm, thornbush :: ItemKind
--- Allure-specific
-intruder,       giantOctopus, lion, razorwireFence, electricFence, activeFence, steamFaucet, coolingFaucet, medbotFaucet, dustFaucet, fuelFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot :: ItemKind
+warrior,    warrior2, scout, ranger, escapist, ambusher, brawler, fighter, mercenary, civilian, civilian2, civilian3, civilian4, civilian5, eye, fastEye, nose, elbow, elbowTank, intruder, torsor, goldenJackal, griffonVulture, skunk, armadillo, gilaMonster, rattlesnake, hyena, komodoDragon, alligator, giantOctopus, lion, rhinoceros, beeSwarm, hornetSwarm, thornbush, razorwireFence, electricFence, activeFence, steamFaucet, coolingFaucet, medbotFaucet, dustFaucet, fuelFaucet, surveillanceDrone, shepherdDrone, huntingDrone, homeRobot, wasteRobot, lightRobot, heavyRobot, weldedRobot, cleanerRobot :: ItemKind
 
 -- Note that the actors that appear in the crawl scenario should
 -- be generated with at most ordinary ammo. Otherwise, farming them
@@ -379,6 +375,46 @@ elbowTank = elbow
   , irarity  = [(10, 0), (40, 30)]  -- only appears among late spawns
   , ikit     = ikit elbow ++ [(S_ARMORED_SKIN, COrgan), (S_JET_BOOSTER, COrgan)]
   }
+
+-- * Allure-specific aliens
+
+-- TODO: the main fun in this actor will be chain explosions and for this,
+-- it needs to spawn in groups and move in groups. Neither is implemented yet.
+-- For now, we try to amass the actors on arena levels over water and in rooms.
+-- Low HP is needed to ensure the chain reaction. Lack of ranged combat
+-- makes the rule to attack it from a distance straightforward.
+intruder = ItemKind
+  { isymbol  = 'i'
+  , iname    = "bobbing intruder"
+  , ifreq    = [ (MONSTER, 100), (MOBILE, 1), (MOBILE_MONSTER, 100)
+               , (EXPLOSIVE_MONSTER, 100)
+               , (AQUATIC, 1) ]  -- neutral to water, unlike other actors
+  , iflavour = zipFancy [BrCyan]
+  , icount   = 1
+  , irarity  = [(3 * 10/15, 0), (4 * 10/15, 5), (10, 9)]
+  , iverbHit = "thud"
+  , iweight  = 80000
+  , idamage  = 0
+  , iaspects = [ AddSkill SkMaxHP 6, AddSkill SkMaxCalm 50
+               , AddSkill SkSpeed 20, AddSkill SkNocto 2
+               , AddSkill SkAggression 1
+               , AddSkill SkProject (-1)  -- can't project
+               , AddSkill SkApply 1  -- can use even cultural artifacts
+               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
+               , AddSkill SkFlying 10  -- flies slowly, but far
+               , SetFlag Durable ]
+  , ieffects = []
+  , idesc    = "It starts, bobs and halts, scanning for movement. Effortlessly, it resumes covering the ground, gliding two meters above the floor. The pumped organic body is large, but looks fragile. However, it doesn't skirt the walls, but instead seems to take ownership of any space it boldly parks in the middle of."
+  , ikit     = [ (S_FLOTATION_BAG, COrgan)
+               , (S_TENTACLE, COrgan), (S_TENTACLE, COrgan)
+               , (S_TIP, COrgan)  -- at least one non-timed
+               , (S_HOOKED_CLAW, COrgan)
+               , (S_EYE_6, COrgan), (S_EAR_6, COrgan)
+               , (S_SAPIENT_BRAIN, COrgan) ]  -- no voice, no hearing
+  }
+
+-- * Alien uniques
+
 torsor = ItemKind
   { isymbol  = 'M'
   , iname    = "The Maker"
@@ -642,6 +678,65 @@ alligator = ItemKind  -- late, slow, deadly semi-tank with some armor;
                , (S_ANIMAL_STOMACH, COrgan), (GENETIC_FLAW_10, COrgan)
                , (RAW_MEAT_CHUNK, CEqp), (RAW_MEAT_CHUNK, CEqp) ]
   }
+
+-- * Allure-specific animals
+
+giantOctopus = ItemKind
+  { isymbol  = 'o'
+  , iname    = "giant octopus"
+  , ifreq    = [ (ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)
+               , (AQUATIC, 90), (AQUATIC_ANIMAL, 90) ]  -- weak on land
+  , iflavour = zipPlain [BrMagenta]  -- very exotic, so bright color
+  , icount   = 1
+  , irarity  = [(1, 3), (7, 3)]
+  , iverbHit = "thud"
+  , iweight  = 72000
+  , idamage  = 0
+  , iaspects = [ AddSkill SkMaxHP 17, AddSkill SkMaxCalm 80
+               , AddSkill SkSwimming 100  -- swims better than walks
+               , AddSkill SkSpeed 27, AddSkill SkNocto 3 -- good night vision
+               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
+               , SetFlag Durable ]
+  , ieffects = []
+  , idesc    = "It has eight arms of rage and sees through the night. Copes with lower gravity better than most animals."  -- TODO: change when slowness on land is implemented
+  , ikit     = [ (S_INK_SAC, COrgan)
+               , (S_TENTACLE, COrgan), (S_TENTACLE, COrgan)
+               , (S_TENTACLE, COrgan), (S_TENTACLE, COrgan)
+               , (S_SMALL_BEAK, COrgan)  -- TODO: use when tentacles torn out
+               , (S_EYE_8, COrgan)
+                   -- shots not too damaging, so can have strong sight
+               , (S_ANIMAL_BRAIN, COrgan)
+               , (S_ANIMAL_STOMACH, COrgan), (GENETIC_FLAW_3, COrgan)
+               , (RAW_MEAT_CHUNK, CEqp), (RAW_MEAT_CHUNK, CEqp) ]
+ }
+lion = ItemKind  -- emphatically not a tank
+  { isymbol  = 'l'
+  , iname    = "Lion"
+  , ifreq    = [(ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)]
+  , iflavour = zipPlain [Red]
+  , icount   = 1
+  , irarity  = [(10, 0), (30, 50)]  -- only appears among late spawns
+  , iverbHit = "thud"
+  , iweight  = 140000
+  , idamage  = 0
+  , iaspects = [ AddSkill SkMaxHP 120, AddSkill SkMaxCalm 80
+               , AddSkill SkSpeed 30, AddSkill SkNocto 2
+               , AddSkill SkHurtMelee 60  -- great fighter
+               , AddSkill SkAggression 2  -- late spawn
+               , AddSkill SkApply 1  -- can eat food despite the genetic flaw
+               , SetFlag Durable ]
+  , ieffects = []
+  , idesc    = "At the repeated violation of their pride area, the irritated felines emerge from hiding."
+  , ikit     = [ (S_POWERFUL_HIND_LEGS, COrgan)
+               , (S_LARGE_JAW, COrgan), (S_SMALL_CLAW, COrgan)
+               , (S_EYE_6, COrgan), (S_EAR_6, COrgan)
+               , (S_ANIMAL_BRAIN, COrgan)
+               , (S_ANIMAL_STOMACH, COrgan), (GENETIC_FLAW_10, COrgan)
+               , (RAW_MEAT_CHUNK, CEqp), (RAW_MEAT_CHUNK, CEqp) ]
+  }
+
+-- * Animal uniques
+
 rhinoceros = ItemKind  -- impressive tank boss with some armor
   { isymbol  = 'R'
   , iname    = "Billy"
@@ -738,99 +833,6 @@ thornbush = ItemKind  -- the wimpiest kind of early tank
   , idesc    = "Each branch bears long, curved thorns."
   , ikit     = [ (S_THORN, COrgan)  -- after all run out, it's weaponless
                , (S_BARK, COrgan) ]
-  }
-
--- * Allure-specific aliens
-
--- TODO: the main fun in this actor will be chain explosions and for this,
--- it needs to spawn in groups and move in groups. Neither is implemented yet.
--- For now, we try to amass the actors on arena levels over water and in rooms.
--- Low HP is needed to ensure the chain reaction. Lack of ranged combat
--- makes the rule to attack it from a distance straightforward.
-intruder = ItemKind
-  { isymbol  = 'i'
-  , iname    = "bobbing intruder"
-  , ifreq    = [ (MONSTER, 100), (MOBILE, 1), (MOBILE_MONSTER, 100)
-               , (EXPLOSIVE_MONSTER, 100)
-               , (AQUATIC, 1) ]  -- neutral to water, unlike other actors
-  , iflavour = zipFancy [BrCyan]
-  , icount   = 1
-  , irarity  = [(3 * 10/15, 0), (4 * 10/15, 5), (10, 9)]
-  , iverbHit = "thud"
-  , iweight  = 80000
-  , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 6, AddSkill SkMaxCalm 50
-               , AddSkill SkSpeed 20, AddSkill SkNocto 2
-               , AddSkill SkAggression 1
-               , AddSkill SkProject (-1)  -- can't project
-               , AddSkill SkApply 1  -- can use even cultural artifacts
-               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
-               , AddSkill SkFlying 10  -- flies slowly, but far
-               , SetFlag Durable ]
-  , ieffects = []
-  , idesc    = "It starts, bobs and halts, scanning for movement. Effortlessly, it resumes covering the ground, gliding two meters above the floor. The pumped organic body is large, but looks fragile. However, it doesn't skirt the walls, but instead seems to take ownership of any space it boldly parks in the middle of."
-  , ikit     = [ (S_FLOTATION_BAG, COrgan)
-               , (S_TENTACLE, COrgan), (S_TENTACLE, COrgan)
-               , (S_TIP, COrgan)  -- at least one non-timed
-               , (S_HOOKED_CLAW, COrgan)
-               , (S_EYE_6, COrgan), (S_EAR_6, COrgan)
-               , (S_SAPIENT_BRAIN, COrgan) ]  -- no voice, no hearing
-  }
-
--- * Allure-specific animals
-
-giantOctopus = ItemKind
-  { isymbol  = 'o'
-  , iname    = "giant octopus"
-  , ifreq    = [ (ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)
-               , (AQUATIC, 90), (AQUATIC_ANIMAL, 90) ]  -- weak on land
-  , iflavour = zipPlain [BrMagenta]  -- very exotic, so bright color
-  , icount   = 1
-  , irarity  = [(1, 3), (7, 3)]
-  , iverbHit = "thud"
-  , iweight  = 72000
-  , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 17, AddSkill SkMaxCalm 80
-               , AddSkill SkSwimming 100  -- swims better than walks
-               , AddSkill SkSpeed 27, AddSkill SkNocto 3 -- good night vision
-               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
-               , SetFlag Durable ]
-  , ieffects = []
-  , idesc    = "It has eight arms of rage and sees through the night. Copes with lower gravity better than most animals."  -- TODO: change when slowness on land is implemented
-  , ikit     = [ (S_INK_SAC, COrgan)
-               , (S_TENTACLE, COrgan), (S_TENTACLE, COrgan)
-               , (S_TENTACLE, COrgan), (S_TENTACLE, COrgan)
-               , (S_SMALL_BEAK, COrgan)  -- TODO: use when tentacles torn out
-               , (S_EYE_8, COrgan)
-                   -- shots not too damaging, so can have strong sight
-               , (S_ANIMAL_BRAIN, COrgan)
-               , (S_ANIMAL_STOMACH, COrgan), (GENETIC_FLAW_3, COrgan)
-               , (RAW_MEAT_CHUNK, CEqp), (RAW_MEAT_CHUNK, CEqp) ]
- }
-lion = ItemKind  -- emphatically not a tank
-  { isymbol  = 'l'
-  , iname    = "Lion"
-  , ifreq    = [(ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)]
-  , iflavour = zipPlain [Red]
-  , icount   = 1
-  , irarity  = [(10, 0), (30, 50)]  -- only appears among late spawns
-  , iverbHit = "thud"
-  , iweight  = 140000
-  , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 120, AddSkill SkMaxCalm 80
-               , AddSkill SkSpeed 30, AddSkill SkNocto 2
-               , AddSkill SkHurtMelee 60  -- great fighter
-               , AddSkill SkAggression 2  -- late spawn
-               , AddSkill SkApply 1  -- can eat food despite the genetic flaw
-               , SetFlag Durable ]
-  , ieffects = []
-  , idesc    = "At the repeated violation of their pride area, the irritated felines emerge from hiding."
-  , ikit     = [ (S_POWERFUL_HIND_LEGS, COrgan)
-               , (S_LARGE_JAW, COrgan), (S_SMALL_CLAW, COrgan)
-               , (S_EYE_6, COrgan), (S_EAR_6, COrgan)
-               , (S_ANIMAL_BRAIN, COrgan)
-               , (S_ANIMAL_STOMACH, COrgan), (GENETIC_FLAW_10, COrgan)
-               , (RAW_MEAT_CHUNK, CEqp), (RAW_MEAT_CHUNK, CEqp) ]
   }
 
 -- * Robots, Allure-specific
@@ -1162,6 +1164,9 @@ heavyRobot = ItemKind  -- summoning tank with armor, but fortunately weak
                , (S_ROBOT_BRAIN, COrgan)
                , (SPOTLIGHT, CEqp), (CONSTRUCTION_HOOTER, CEqp) ]
   }
+
+-- * Robot uniques, Allure-specific
+
 weldedRobot = ItemKind
   { isymbol  = 'L'
   , iname    = "Bob"
