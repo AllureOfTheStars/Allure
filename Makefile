@@ -1,10 +1,3 @@
-# Copyright (c) 2008--2011 Andres Loeh
-# Copyright (c) 2010--2020 Mikolaj Konarski and others (see git history)
-# This file is a part of the computer game Allure of the Stars
-# and is released under the terms of the GNU Affero General Public License.
-# For license and copyright information, see the file LICENSE.
-#
-
 play:
 	$$(cabal-plan list-bin Allure) --dbgMsgSer --logPriority 4 --savePrefix play --dumpInitRngs
 

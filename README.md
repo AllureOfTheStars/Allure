@@ -224,7 +224,7 @@ Copyright
 
 Copyright (c) 2008--2011 Andres Loeh
 
-Copyright (c) 2010--2020 Mikolaj Konarski and others (see git history)
+Copyright (c) 2010--2021 Mikolaj Konarski and others (see git history)
 
 Allure of the Stars is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
