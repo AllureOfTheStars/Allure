@@ -512,11 +512,19 @@ of heroes lost, are awarded only if you win. The score is heavily
 modified by the chosen game difficulty, but not by any other challenges
 (which are, however, proudly displayed in the high score listing).
 
-When all your heroes fall, you are going to invariably see a new foolhardy
-party of adventurers clamoring to be led into the unknown perils.
-They start their conquest afresh, with no experience, no supplies
-for survival and no equipment, and new undaunted enemies bar their way.
-Lead the new hopeful explorers to fame, wealth and glory!
+When all your heroes fall, there's a hope they'd be found and brought
+back to life using nanomedicine perfected for space travel hibernation.
+The side effect of such a treatment is the loss of any bodily augmentations,
+whether acquired by training, surviving harsh experiences or artificial
+implantation. The heroes would start their next attempted conquest afresh,
+with no endurance coming from experience, no supplies for survival
+and no equipment. They should also expect new undaunted enemies
+to bar their way.
+
+The only immutable factor throughout the chain of the heroes' adventures
+is their personal life stories, with the implied unique characteristics,
+virtues and vices. However, a hero is not determined by the past,
+so the allure of fame, wealth and glory is always as bright as the stars.
 
 
 FAQ
@@ -655,3 +663,15 @@ pick up the item on the level you want to use it. When picked up,
 it gets recharged after, randomly, from one to two times the normal
 cooldown period of the item and then recharges normally for as long
 as it's used only on this level.
+
+- Q: When can I learn all characters' backstory items?
+
+A: Each backstory item triggers in specific circumstances, so it may take
+some time and even, rarely, never be revealed at all. For vices, that may be
+the desired turn of action. Alternatively, you can try to prevent a vice
+from triggering ever again once it's revealed and so the activation
+condition is known.
+
+- Q: Can I kill off heroes permanently and reset all character backstories?
+
+A: Yes (not judging). Just remove all savefiles.
