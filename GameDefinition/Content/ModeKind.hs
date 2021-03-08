@@ -495,9 +495,9 @@ screensaverSafari = screensave (AutoLeader False True) $ safari
   }
 
 teamCompetitor, teamCivilian, teamMercenary :: TeamContinuity
-teamCompetitor = TeamContinuity 1
-teamCivilian = TeamContinuity 2
-teamMercenary = TeamContinuity 3
+teamCompetitor = TeamContinuity 2
+teamCivilian = TeamContinuity 3
+teamMercenary = TeamContinuity 4
 
 rosterRaid, rosterBrawl, rosterCrawl, rosterShootout, rosterHunt, rosterEscape, rosterZoo, rosterAmbush, rosterSafari, rosterCrawlEmpty, rosterCrawlSurvival, rosterSafariSurvival, rosterBattle, rosterBattleDefense, rosterBattleSurvival, rosterDefense, rosterDefenseEmpty :: Roster
 
