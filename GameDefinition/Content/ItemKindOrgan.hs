@@ -1034,12 +1034,12 @@ backstoryBad4 = backstoryBadTemplate
   , iaspects = [ Timeout 200, SetFlag Periodic
                , SetFlag Unique ]  -- a tragic backstory and so unique
                ++ iaspects backstoryBadTemplate
-  , ieffects = [OneOf  -- simple though pessimistic probability; not accurate
+  , ieffects = [AtMostOneOf  -- simple but pessimistic probability; not accurate
       [ DestroyItem 1 1 CStash ALCOHOL
         `OrEffect`  -- if available, only drink
         SeqEffect [ CreateItem (Just 1) CStash ALCOHOL timerNone
                   , VerbMsg "explain: Some moonshine from gathered scraps, just in case" "." ]
-      , RefillCalm 3
+      , NopEffect  -- always fails, no identification
       ]]
   , idesc    = "Vice: Adventurers that are abstaining alcoholics are double heroes, even if they too may trip sometimes. That doesn't make alcoholism a virtue, though."
   }
@@ -1055,7 +1055,10 @@ backstoryMixed1 = backstoryMixedTemplate
   , ifreq    = [(BACKSTORY_MIXED, 100), (BACKSTORY, 1)]
   , iaspects = [Timeout 100, SetFlag Periodic]
                ++ iaspects backstoryMixedTemplate
-  , ieffects = [OneOf [PutToSleep, RefillCalm 6, RefillCalm 3]]
+  , ieffects = [AtMostOneOf [ PutToSleep
+                            , NopEffect
+                            , NopEffect
+                            ]]
                   -- mixed, sleep refills Calm fully, but hobbles the actor
   , idesc    = "Twist: Can sleep anywhere, any time. The catch: sleeps anywhere, any time."
   }
