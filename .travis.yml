@@ -336,7 +336,6 @@ install:
 #  - travis_wait 40 ${CABAL} v2-build $WITHCOMPILER --disable-tests --disable-benchmarks --dep -j2 all
 
 script:
-  - (cd .. && ${CABAL} new-install $WITHCOMPILER --allow-newer -j2 --constraint='cabal-plan +exe' cabal-plan)
   - DISTDIR=$(mktemp -d /tmp/dist-test.XXXX)
   # Packaging...
   - ${CABAL} v2-sdist all
@@ -399,6 +398,7 @@ script:
     fi
 
   - touch /tmp/teletypetest.log;
+  - "find dist-newstyle -wholename '*/build/Allure/Allure' -exec mv '{}' '.' ';'"
   - "if [[ $GTKVTY != \"brew-sdl2-osx\" ]] ; then ((find dist-newstyle -wholename '*/build/test/test' -exec '{}' '+') || (tail -n 2000 /tmp/teletypetest.log ; exit 77)); fi"
   - "if [[ $GTKVTY != \"brew-sdl2-osx\" ]] ; then (make test-travis || (tail -n 2000 /tmp/teletypetest.log ; exit 77)); fi"
   - "if [[ $GTKVTY != \"asserts-osx_noopt\" && $GTKVTY != \"brew-sdl2-osx\" ]]; then (make test-travis2 || (tail -n 2000 /tmp/teletypetest.log ; exit 77)); fi"

@@ -54,7 +54,10 @@ install:
 
   - cabal v1-install --force-reinstalls --enable-tests
   - dist\build\test\test.exe
+  - cp Makefile AllureOfTheStars
+  - cd AllureOfTheStars
   - make nativeBenchCrawl-appveyor || (tail -n 200 %APPDATA%\Allure\stderr.txt & tail -n 200 %APPDATA%\Allure\stdout.txt & exit 77)
+  - cd ..
 
   - mv AllureOfTheStars AllureOfTheStars64
   - rm -rf AllureOfTheStarsInstall
@@ -109,7 +112,10 @@ install:
 
   - cabal v1-install --force-reinstalls --enable-tests
   - dist\build\test\test.exe
+  - cp Makefile AllureOfTheStars
+  - cd AllureOfTheStars
   - make benchBattle-appveyor || (tail -n 200 %APPDATA%\Allure\stderr.txt & tail -n 200 %APPDATA%\Allure\stdout.txt & exit 77)
+  - cd ..
 
   - mv AllureOfTheStars AllureOfTheStars32
   - ps: '& "C:\Program Files (x86)\NSIS\makensis.exe" .windows.installer.nsi'
