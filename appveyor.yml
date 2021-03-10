@@ -57,9 +57,10 @@ install:
 
   - cabal v1-install --force-reinstalls --enable-tests
   - SET PATH=%OLDPATH%
-  - dist\build\test\test.exe
+  - cp dist\build\test\test.exe AllureOfTheStars
   - cp Makefile AllureOfTheStars
   - cd AllureOfTheStars
+  - test
   - make nativeBenchCrawl-appveyor || (tail -n 200 %APPDATA%\Allure\stderr.txt & tail -n 200 %APPDATA%\Allure\stdout.txt & exit 77)
   - cd ..
 
@@ -118,9 +119,10 @@ install:
 
   - cabal v1-install --force-reinstalls --enable-tests
   - SET PATH=%OLDPATH%
-  - dist\build\test\test.exe
+  - cp dist\build\test\test.exe AllureOfTheStars
   - cp Makefile AllureOfTheStars
   - cd AllureOfTheStars
+  - test
   - make benchBattle-appveyor || (tail -n 200 %APPDATA%\Allure\stderr.txt & tail -n 200 %APPDATA%\Allure\stdout.txt & exit 77)
   - cd ..
 
