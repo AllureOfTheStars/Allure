@@ -46,7 +46,7 @@ install:
   - cp /c/msys64/mingw64/bin/libstdc++-6.dll AllureOfTheStars
   - cp /c/msys64/mingw64/bin/libiconv-2.dll AllureOfTheStars
   - cp AllureOfTheStarsInstall/Users/appveyor/AppData/Roaming/cabal/bin/Allure.exe AllureOfTheStars
-  - make version
+  - AllureOfTheStars\Allure --version
   - SET /p LH_VERSION=<%APPDATA%\Allure\stdout.txt
   - 7z a -ssc -tzip Allure_dev_windows-x86_64.zip AllureOfTheStars
   - ps: $env:TIME_STRING=(get-date -UFormat "%Y-%m-%d").ToString()
