@@ -46,6 +46,7 @@ install:
   - cp /c/msys64/mingw64/bin/libpcre-1.dll AllureOfTheStars
   - cp /c/msys64/mingw64/bin/libstdc++-6.dll AllureOfTheStars
   - cp /c/msys64/mingw64/bin/libiconv-2.dll AllureOfTheStars
+  - cp /c/msys64/mingw64/bin/libbrotlidec.dll AllureOfTheStars
   - cp AllureOfTheStarsInstall/Users/appveyor/AppData/Roaming/cabal/bin/Allure.exe AllureOfTheStars
   - AllureOfTheStars\Allure --version
   - SET /p LH_VERSION=<%APPDATA%\Allure\stdout.txt
@@ -108,6 +109,7 @@ install:
   - cp /c/msys64/mingw32/bin/libpcre-1.dll AllureOfTheStars
   - cp /c/msys64/mingw32/bin/libstdc++-6.dll AllureOfTheStars
   - cp /c/msys64/mingw32/bin/libiconv-2.dll AllureOfTheStars
+  - cp /c/msys64/mingw32/bin/libbrotlidec.dll AllureOfTheStars
   - cp AllureOfTheStarsInstall/Users/appveyor/AppData/Roaming/cabal/bin/Allure.exe AllureOfTheStars
   - 7z a -ssc -tzip Allure_dev_windows-i686.zip AllureOfTheStars
   - ps: Push-AppveyorArtifact Allure_dev_windows-i686.zip -FileName "Allure_$($env:LH_VERSION)-dev-$($env:TIME_STRING)_windows-i686.zip" -DeploymentName "win32 binaries archive"
