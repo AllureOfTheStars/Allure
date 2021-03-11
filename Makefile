@@ -290,7 +290,6 @@ build-binary-v2:
 	mkdir -p AllureOfTheStars/GameDefinition
 
 copy-directory:
-	cp GameDefinition/config.ui.default AllureOfTheStars/GameDefinition
 	cp GameDefinition/InGameHelp.txt AllureOfTheStars/GameDefinition
 	cp GameDefinition/PLAYING.md AllureOfTheStars/GameDefinition
 	cp README.md AllureOfTheStars
