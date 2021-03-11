@@ -56,7 +56,7 @@ install:
   - ps: Push-AppveyorArtifact Allure_dev_windows-x86_64.zip -FileName "Allure_$($env:LH_VERSION)-dev-$($env:TIME_STRING)_windows-x86_64.zip" -DeploymentName "win64 binaries archive"
 
   - cabal v1-install --force-reinstalls --enable-tests
-  - SET PATH=%OLDPATH%
+  - SET PATH=C:\msys64\usr\bin;%OLDPATH%
   - cp dist\build\test\test.exe AllureOfTheStars
   - cp Makefile AllureOfTheStars
   - cd AllureOfTheStars
@@ -118,7 +118,7 @@ install:
   - ps: Push-AppveyorArtifact Allure_dev_windows-i686.zip -FileName "Allure_$($env:LH_VERSION)-dev-$($env:TIME_STRING)_windows-i686.zip" -DeploymentName "win32 binaries archive"
 
   - cabal v1-install --force-reinstalls --enable-tests
-  - SET PATH=%OLDPATH%
+  - SET PATH=C:\msys64\usr\bin;%OLDPATH%
   - cp dist\build\test\test.exe AllureOfTheStars
   - cp Makefile AllureOfTheStars
   - cd AllureOfTheStars
