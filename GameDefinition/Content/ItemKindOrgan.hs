@@ -929,7 +929,10 @@ backstoryFluffTemplate = ItemKind
   , iweight  = 0
   , idamage  = 0
   , iaspects = [ PresentAs BACKSTORY_FLUFF_UNKNOWN, SetFlag MetaGame
-               , SetFlag Durable ]
+               , SetFlag Durable
+               , SetFlag MinorAspects ]
+                   -- avoid question marks by weapons in HUD, because,
+                   -- unlike necklaces, these won't have stat boosts
   , ieffects = []
   , idesc    = "Not all crucial facts about a team member are remembered and revealed as soon as would be most beneficial for the team."
   , ikit     = []
@@ -954,7 +957,7 @@ backstoryGoodTemplate = backstoryFluffTemplate
   , ifreq    = [(BACKSTORY_GOOD_UNKNOWN, 1)]
   , iflavour = zipStory [cGoodEvent, cVeryGoodEvent]
   , iaspects = [ PresentAs BACKSTORY_GOOD_UNKNOWN, SetFlag MetaGame
-               , SetFlag Durable ]
+               , SetFlag Durable, SetFlag MinorAspects ]
   }
 backstoryGood1 = backstoryGoodTemplate
   { iname    = "\"Zero g Champ\""
@@ -990,7 +993,7 @@ backstoryBadTemplate = backstoryFluffTemplate
   , ifreq    = [(BACKSTORY_BAD_UNKNOWN, 1)]
   , iflavour = zipStory [cBadEvent, cVeryBadEvent]
   , iaspects = [ PresentAs BACKSTORY_BAD_UNKNOWN, SetFlag MetaGame
-               , SetFlag Durable ]
+               , SetFlag Durable, SetFlag MinorAspects ]
   }
 backstoryBad1 = backstoryBadTemplate
   { iname    = "\"Drug addiction\""
@@ -1048,7 +1051,7 @@ backstoryMixedTemplate = backstoryFluffTemplate
   , ifreq    = [(BACKSTORY_MIXED_UNKNOWN, 1)]
   , iflavour = zipStory [cRisk, cGraveRisk]
   , iaspects = [ PresentAs BACKSTORY_MIXED_UNKNOWN, SetFlag MetaGame
-               , SetFlag Durable ]
+               , SetFlag Durable, SetFlag MinorAspects ]
   }
 backstoryMixed1 = backstoryMixedTemplate
   { iname    = "\"Heavy eyes\""
@@ -1077,7 +1080,7 @@ backstoryNeutralTemplate = backstoryFluffTemplate
   , ifreq    = [(BACKSTORY_NEUTRAL_UNKNOWN, 1)]
   , iflavour = zipStory [cNeutralEvent, cRareNeutralEvent]
   , iaspects = [ PresentAs BACKSTORY_NEUTRAL_UNKNOWN, SetFlag MetaGame
-               , SetFlag Durable ]
+               , SetFlag Durable, SetFlag MinorAspects ]
   }
 backstoryNeutral1 = backstoryNeutralTemplate
   { iname    = "\"Letting Go\""
