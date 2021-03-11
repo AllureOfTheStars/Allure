@@ -1197,7 +1197,7 @@ torchDestruct =
 light1 = ItemKind
   { isymbol  = symbolLight
   , iname    = "torch"
-  , ifreq    = [ (COMMON_ITEM, 10), (LIGHT_ATTENUATOR, 100), (WEAK_ARROW, 300)
+  , ifreq    = [ (COMMON_ITEM, 10), (LIGHT_ATTENUATOR, 70), (WEAK_ARROW, 300)
                , (FIRE_SOURCE, 1), (S_WOODEN_TORCH, 1) ]
   , iflavour = zipPlain [Brown]
   , icount   = 1
@@ -1228,7 +1228,7 @@ lightDoused1 = light1
 light2 = ItemKind
   { isymbol  = symbolLight
   , iname    = "oil lamp"
-  , ifreq    = [ (COMMON_ITEM, 50), (LIGHT_ATTENUATOR, 100)
+  , ifreq    = [ (COMMON_ITEM, 50), (LIGHT_ATTENUATOR, 70)
                , (S_OIL_LAMP, 1) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
@@ -2131,7 +2131,7 @@ catsPaw = ItemKind
 shortClub = ItemKind
   { isymbol  = symbolHafted
   , iname    = "short club"
-  , ifreq    = [(S_SHORT_CLUB, 1), (STARTING_WEAPON, 100)]
+  , ifreq    = [(S_SHORT_CLUB, 1), (STARTING_WEAPON, 700)]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
   , irarity  = [(1, 1)]  -- only crafted
@@ -2146,7 +2146,7 @@ shortClub = ItemKind
   }
 longClub = shortClub
   { iname    = "long club"
-  , ifreq    = [(S_LONG_CLUB, 1), (STARTING_WEAPON, 50)]
+  , ifreq    = [(S_LONG_CLUB, 1), (STARTING_WEAPON, 500)]
   , iflavour = zipPlain [Magenta]
   , iweight  = 3500
   , idamage  = 3 `d` 1  -- from two scraps

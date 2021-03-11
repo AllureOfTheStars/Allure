@@ -486,9 +486,9 @@ raid = rogue
   , cactorFreq    = [(ANIMAL, 50), (ROBOT, 50)]
   , citemNum      = 9 `d` 6  -- just one level, hard enemies, treasure
   , citemFreq     = [ (IK.COMMON_ITEM, 30)
-                    , (STARTING_ARMOR, 100), (STARTING_WEAPON, 200)
-                    , (WEAK_ARROW, 100), (LIGHT_ATTENUATOR, 300)
-                    , (IK.S_CURRENCY, 400), (IK.ANY_SCROLL, 200) ]
+                    , (STARTING_ARMOR, 100), (STARTING_WEAPON, 300)
+                    , (WEAK_ARROW, 100), (LIGHT_ATTENUATOR, 50)
+                    , (IK.S_CURRENCY, 400), (IK.ANY_SCROLL, 100) ]
                     -- introducing chips in this scenario
   , cplaceFreq    = [(RAID, 1)]
   , cmaxStairsNum = 0
@@ -624,7 +624,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , cactorFreq    = []
   , citemNum      = 8 `d` 8
   , citemFreq     = [ (IK.COMMON_ITEM, 30), (STARTING_ARMOR, 100)
-                    , (LIGHT_ATTENUATOR, 200), (GEM, 250)
+                    , (LIGHT_ATTENUATOR, 300), (GEM, 250)
                     , (WEAK_ARROW, 400), (HARPOON, 200), (IK.EXPLOSIVE, 200) ]
   , cplaceFreq    = [(ESCAPE, 1)]
   , cpassable     = True
