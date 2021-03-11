@@ -18,7 +18,8 @@ import qualified Data.Ini.Reader as Ini
 import           Instances.TH.Lift ()
 import           Language.Haskell.TH.Syntax
 import           System.FilePath
-import           System.IO (readFile)
+import           System.IO
+  (IOMode (ReadMode), hGetContents, hSetEncoding, openFile, utf8)
 
 -- Cabal
 import qualified Paths_Allure as Self (version)
@@ -37,7 +38,10 @@ standardRules = RuleContent
   , rcfgUIDefault = $(do
       let path = "GameDefinition" </> "config.ui" <.> "default"
       qAddDependentFile path
-      s <- qRunIO (readFile path)
+      s <- qRunIO $ do
+        inputHandle <- openFile path ReadMode
+        hSetEncoding inputHandle utf8
+        hGetContents inputHandle
       let cfgUIDefault =
             either (error . ("Ini.parse of default config" `showFailure`)) id
             $ Ini.parse s
