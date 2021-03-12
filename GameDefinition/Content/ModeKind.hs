@@ -508,7 +508,7 @@ rosterRaid = Roster
                  , ( playerAntiHero { fname = "Red Collar Bro"
                                     , fhiCondPoly = hiHeroShort }
                    , Just teamCompetitor
-                   , [(2, 1, HERO)] )
+                   , [(2, 1, RANGER_HERO)] )
                  , ( playerAnimal  -- starting over escape
                    , Nothing
                    , [(2, 2, ANIMAL)] )
