@@ -99,7 +99,7 @@ raid = ModeKind
   , mendMsg = [ (Killed, "That was unfortunate. The bill for the rescue team and for the subsequent nano medbot treatment will reach the stars. Perhaps more stealth was needed? Perhaps the items lying around the area could aid survival instead of ending up ignored or passively hoarded? Or perhaps a wise course of action would be to choose a Neptune Area Administration challenge with a lower difficulty?")
               , (Defeated, "Sadly, you got worked up in the tunnels while another team snatched the prize. Remember, you are at the Outer Frontier to gain wealth and independence through industriousness and commerce and that means clashing with competing agents, not just fighting the feral nature.")
               , (Escape, "You are the first to clear a route through the sewer system. Triton City authorities will now be able to establish a perimeter and mop up the side tunnels. You collect your reward of 100 gold grains and start looking for a way to invest it profitably on this Solar System's commercial frontier, abounding in more or less (usually less) regulated opportunities.\nAfter some thought you decide to start by splurging on genetic enhancement for your team. The effects won't be visible at once and you have no time to lose, having just made fresh enemies.") ]
-  , mrules  = T.intercalate "\n" $
+  , mrules  = T.intercalate "\n"
       [ "* One level only"
       , "* Two heroes vs. Spawned enemies"
       , "* Gather gold"
@@ -119,7 +119,7 @@ brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
   , mcaves  = cavesBrawl
   , mendMsg = [ (Killed, "That treacherous villain didn't honour his word and brought his friends to the fight. It would still not turn so bad if we remembered to use terrain to protect us from missiles or even completely hide our presence and if we honourably kept together to the end, at the same time preventing the overwhelming enemy forces from brutishly ganging up on our modest-sized, though valiant, squad. Having to repurchase the genetic therapy was the most painful outcome, one that would send you broke and in shame to Earth, if repeated, to start collecting your Basic Income.")
               , (Conquer, "Bringing help was a sober and prudent move that resulted in well-earned victory and a splendid trophy of a title to a real inter-planetary space vessel. Unfortunately, the treacherous foe called reinforcements at the last moment, a new wave arriving even now. It may be wise to move the celebration of the victory to a more fitting area, assuming that the dignified translocation can be accomplished timely and inconspicuously.") ]
-  , mrules  = T.intercalate "\n" $
+  , mrules  = T.intercalate "\n"
       [ "* Two levels"
       , "* Three heroes vs. Three human enemies per level"
       , "* Minimize losses"
@@ -139,7 +139,7 @@ crawl = ModeKind
   , mcaves  = cavesCrawl
   , mendMsg = [ (Killed, "It was not supposed to end this way. Perhaps more stealth was in order? Perhaps foes that didn't carry any key resources to your survival nor to your escape could have been eluded and ignored? Perhaps the gathered items should be used for survival instead of hoarded? Or perhaps the challenge, chosen freely but without awareness of the grisly difficulty, was insurmountable and lost from the very start? Nobody is going to find out, even if humans ever set their feet here again and prevail, another time, another way.")
               , (Escape, "The shuttle doors close behind, docking clamps grind in farewell and the giant rotating disc slowly tumbles away in rear view. You feel at once a relief and a sense of loss. This is not finished. You are changed forever, but you know nothing. You've heard the call, but you made no answer. You came for petty change, found a treasure beyond comprehension, then barely escaped with your life as the prize.\nAnd nobody will believe you at home. But you don't need their understanding any more. You have enough money to heal, regroup, track the ship down and try again. It's your personal space cruiser, after all, with a world of its own, inside.") ]
-  , mrules  = T.intercalate "\n" $
+  , mrules  = T.intercalate "\n"
       [ "* Many levels, some requiring tools to access"
       , "* Three heroes vs. Spawned enemies"
       , "* Gather gold, gems and stimpacks"
@@ -168,7 +168,7 @@ shootout = ModeKind  -- sparse ranged in daylight
   , mcaves  = cavesShootout
   , mendMsg = [ (Killed, "This is a disgrace. How is a thuggish robbery in broad daylight even possible in a moon city that styles itself as the capital of Outer System technological innovation and commercial opportunity? Where are the municipal surveillance drones, normally so eager to eavesdrop and needlessly complicate an honest tax-free business, when one's health and wealth for once depend on their nosy presence? Speaking of drones, we could use one in this skirmish, or even just a human lookout placed in a covered but unobstructed spot. Then the rest of the squad could snipe from concealment or from a safe distance.\nBarring that, we would end up in a better shape even if we all hid and fired blindly. We'd listen to impact sounds and wait with ten-fold vigilance for incoming enemy missiles, in order to register their trajectories and derive hints of enemy location. Apparently, ranged combat requires a change of pace and better planning than our previous illustrious successes accustomed us to.")
               , (Conquer, "That was a good fight, with skillful application of missiles, cover and concealment. The outcome is especially commendable given the high bar of tactical proficiency. Not even professional enforcement units can routinely deduce enemy position from the trajectory of their projectiles nor by firing without line of sight and interpreting auditory cues. However, while this steep hurdle is overcome, the chase is not over yet.") ]
-  , mrules  = T.intercalate "\n" $
+  , mrules  = T.intercalate "\n"
       [ "* One level only"
       , "* Three heroes vs. Three human enemies"
       , "* Minimize losses"
@@ -190,7 +190,7 @@ hunt = ModeKind  -- melee vs ranged with reaction fire in daylight
       -- the guy is wrong about implants (though the items are genetically attuned), but being wrong is plausible when the team is killed off/chased off and can't scour the battleground
       -- this is in the middle of the scenario list and the mission is not tricky, so a subtle reminder about lowering difficulty, in case the player struggles
               , (Conquer, "We chased them off, like we knew that we would. It feels nice to stick together and prevail. Now we can do no wrong just minding our business and going our way to the spaceport. We taught them a lesson, despite their superior equipment, and nobody else needs to be harmed while we take possession of our rightful property, the glorious spaceship in Triton's orbit.") ]
-  , mrules  = T.intercalate "\n" $
+  , mrules  = T.intercalate "\n"
       [ "* One level only"
       , "* Seven heroes vs. Seven human enemies capable of concurrent attacks"
       , "* Minimize losses"
@@ -211,7 +211,7 @@ escape = ModeKind  -- asymmetric ranged and stealth race at night
   , mendMsg = [ (Killed, "Somebody must have tipped the gang guards off. However, us walking along a lit trail, yelling, could have been a contributing factor. Also, it's worth noting that the torches prepared for this assault are best used as thrown makeshift flares. On the other hand, equipping a lit torch makes one visible in the dark, regrettably but not quite unexpectedly. Lastly, the goal of this foray was to find the exit back to the city, marked by a yellow '>' sign, and to gather some treasure along the way, but not to bedevil every local evildoer, as much as they do deserve it.")
               , (Conquer, "It was enough to reach the escape area, namely the exit tunnel from the park marked by yellow '>' symbol. Spilling that much blood was risky and unnecessary. Having said that --- impressive indeed.")
               , (Escape, "Congratulations, you took your revenge and it's heavy in your pockets.") ]
-  , mrules  = T.intercalate "\n" $
+  , mrules  = T.intercalate "\n"
       [ "* One level only"
       , "* Three heroes vs. Seven human enemies capable of concurrent attacks"
       , "* Minimize losses"
@@ -232,7 +232,7 @@ zoo = ModeKind  -- asymmetric crowd melee at night
   , mcaves  = cavesZoo
   , mendMsg = [ (Killed, "Against such an onslaught, only clever positioning, use of terrain and patient vigilance gives any chance of survival.")
               , (Conquer, "That was a grim harvest. The city is safe again. So are your precious selves, with nothing and no one blocking your way to the spaceport any more.") ]
-  , mrules  = T.intercalate "\n" $
+  , mrules  = T.intercalate "\n"
       [ "* One level only"
       , "* Five heroes vs. Many enemies"
       , "* Minimize losses"
@@ -260,7 +260,7 @@ ambush = ModeKind  -- dense ranged with reaction fire vs melee at night
   , mcaves  = cavesAmbush
   , mendMsg = [ (Killed, "You turned out to be the prey, this time, not the hunter. In fact, you are not even in the hunters' league. And it's hard to operate docking equipment while being chased round a spaceport. When fighting against such odds, passively waiting for enemy to spring a trap is to no avail, because a professional team can sneak in darkness and ambush the ambushers. Granted, good positioning is crucial, so that each squad member can overwatch the battlefield and fire opportunistically, using the recently recovered mil-grade communication equipment. However, there is no hope without active scouting, throwing lit objects and probing suspect areas with missiles while paying attention to sounds. And that may still not be enough.")
               , (Conquer, "The new communication equipment, enabling simultaneous ranged attacks with indirect aiming, apparently proved effective beyond expectations. With the mercenaries gone and nobody else having the slightest wish to interfere, the shuttle to the space cruiser at orbit is easy to launch at last. Now is your moment of glory. Now your turbulent adventure ends and the boring life of space cruiser scrap parts supplier or, as it may be, of a refurbished giant space liner operator, commences.\nA pity that the last round of shoddy genetic enhancements, bought at the grey market, scandalously auto-reverts at this very moment, leaving the personalized equipment that attuned to the previous genetic configuration inoperable. Fortunately, danger, debt and the gangster debt collectors are now behind you and the grey market won't see you again.") ]
-  , mrules  = T.intercalate "\n" $
+  , mrules  = T.intercalate "\n"
       [ "* One level only"
       , "* Three heroes with concurrent attacks vs. Unidentified foes"
       , "* Minimize losses"
@@ -279,7 +279,7 @@ safari = ModeKind  -- Easter egg available only via screensaver
   , mroster = rosterSafari
   , mcaves  = cavesSafari
   , mendMsg = []
-  , mrules  = T.intercalate "\n" $
+  , mrules  = T.intercalate "\n"
       [ "* Three levels"
       , "* Many teammates capable of concurrent action vs. Many enemies"
       , "* Minimize losses"
