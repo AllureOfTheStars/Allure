@@ -569,7 +569,7 @@ flask8 = flaskTemplate
   }
 flask9 = flaskTemplate
   { ifreq    = [ (COMMON_ITEM, 100), (ANY_FLASK, 100), (EXPLOSIVE, 100)
-               , (ANY_GLASS, 100) ]
+               , (ANY_GLASS, 100), (FIRE_FIGHTING_ITEM, 1) ]
   , irarity  = [(10, 2)]  -- not very useful right now
   , iaspects = ELabel "of smelly concoction"
                : iaspects flaskTemplate
@@ -589,7 +589,7 @@ flask10 = flaskTemplate
 flask11 = flaskTemplate
   { iname    = "bottle"
   , ifreq    = [ (COMMON_ITEM, 100), (ANY_FLASK, 100), (EXPLOSIVE, 100)
-               , (ANY_GLASS, 100), (ALCOHOL, 100) ]
+               , (ANY_GLASS, 100), (ALCOHOL, 100), (FIRE_FIGHTING_ITEM, 2) ]
   , icount   = 1 `d` 2 + 1 `d` 3
   , iaspects = ELabel "of whiskey"
                : iaspects flaskTemplate
@@ -653,7 +653,8 @@ flask17 = flaskTemplate
       -- TODO: in the future perhaps have different sizes of flasks;
       -- for now, we freely go from flask to galon and back
   , ifreq    = [ (COMMON_ITEM, 100), (S_WATER_FLASK, 1)
-               , (ANY_FLASK, 100), (ANY_GLASS, 100), (WATER_SOURCE, 1) ]
+               , (ANY_FLASK, 100), (ANY_GLASS, 100), (WATER_SOURCE, 1)
+               , (FIRE_FIGHTING_ITEM, 2) ]
   , icount   = 1
   , irarity  = [(1, 1)]  -- mostly obtained through crafting
   , iaspects = ELabel "of water"
