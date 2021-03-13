@@ -1268,7 +1268,8 @@ ovalBasin2 = oval
   }
 squareBasin = oval
   { pname    = "a water basin"
-  , pfreq    = [(ARENA, 10000), (LABORATORY, 5000), (EMPTY, 2000), (RAID, 3000)]
+  , pfreq    = [(ARENA, 10000), (LABORATORY, 5000), (EMPTY, 2000), (RAID, 1000)]
+      -- keep it less common in raid not to overload the newbies
   , pfence   = FNone
   , ptopLeft = [ "0bt0t"
                , "b~~~~"
