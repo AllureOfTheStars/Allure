@@ -870,7 +870,11 @@ fuelVent = armoredSkin
   , ieffects = [RefillHP 2, Explode S_VIOLENT_BURNING_OIL_4]
   , idesc    = ""
   }
--- HP change varies due to body size
+-- HP change varies due to body size.
+--
+-- This is destroyed on drop due to being an organ and so it runs
+-- the @OnSmash@ effects. Due to being a condition, it's not activated
+-- at actor death, avoiding a lot of spam and bringing him back to life.
 geneticFlaw :: Int -> Bool -> Int -> GroupName ItemKind -> ItemKind
 geneticFlaw fr badArmorMelee n grp = armoredSkin
   { isymbol  = 'F'
@@ -880,10 +884,9 @@ geneticFlaw fr badArmorMelee n grp = armoredSkin
   , iverbHit = "flaw"
   , iweight  = 0
   , iaspects = [ AddSkill SkMaxHP (intToDice $ - n)
-               , SetFlag MetaGame
-               , SetFlag Condition ]
-                   -- destroy on drop to run the @OnSmash@ effects,
-                   -- but no CONDITION group, not to be healed easily
+               , SetFlag MetaGame, SetFlag Condition ]
+                   -- avoid being blamed in combat messages for bad defence,
+                   -- but no CONDITION group, not to be healed too easily
                ++ [AddSkill SkWait (-1) | n >= 10]
                ++ [AddSkill SkApply (-1) | n >= 10]
                ++ if badArmorMelee
