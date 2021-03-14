@@ -903,7 +903,7 @@ barrelFertilizer = barrelFuel
                  -- no S_FOCUSED_CONCUSSION; a barrel would destroy the ship;
                  -- no water barrel either, basins and running water in taps;
                  -- no VIOLENT variants of the blasts or bumping a lone
-                 -- barrel would be safe (as it's safe with fuel barrel now)
+                 -- barrel would be safe
   , idesc    = ""
   }
 barrelOxidizer = barrelFuel

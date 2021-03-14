@@ -181,7 +181,7 @@ spreadBurningOil4 = spreadBurningOil 4 S_VIOLENT_BURNING_OIL_4
                       -- 4 steps, 2 turns
 spreadBurningOil8 :: Int -> GroupName ItemKind -> ItemKind
 spreadBurningOil8 n grp = (spreadBurningOil (n `div` 2) grp)
-  { icount   = 7
+  { icount   = 7  -- 8 was too deadly
   }
 spreadBurningOil82 = spreadBurningOil8 2 S_BURNING_OIL_2
 spreadBurningOil83 = spreadBurningOil8 3 S_BURNING_OIL_3
@@ -193,7 +193,7 @@ focusedBurningOil n grp grpExplode = ItemKind
   , ifreq    = [(grp, 1), (FIRE_SOURCE, 1), (OIL_SOURCE, 1)]
   , iflavour = zipPlain [BrYellow]  -- all ignitions yellow to avoid appearing
                                     -- as a small vial explosion
-  , icount   = intToDice n
+  , icount   = intToDice $ n + 1  -- n was too often missing nearby actors
   , irarity  = [(1, 1)]
   , iverbHit = "ignite"
   , iweight  = 1
@@ -270,7 +270,7 @@ focusedFragmentation = ItemKind
   , iname    = "deflagration ignition"  -- improvised fertilizer, etc.
   , ifreq    = [(S_FOCUSED_FRAGMENTATION, 1), (FIRE_SOURCE, 1)]
   , iflavour = zipPlain [BrYellow]
-  , icount   = 4  -- 20 in total vs 10, higher spread
+  , icount   = 5  -- 25 in total vs 10, higher spread
   , irarity  = [(1, 1)]
   , iverbHit = "ignite"
   , iweight  = 1
@@ -313,7 +313,7 @@ spreadConcussion = ItemKind
 spreadConcussion8 = spreadConcussion
   { ifreq    = [(S_CONCUSSION, 1), (BLAST_SOURCE, 1)]
                  -- only the strongest explosion breaches
-  , icount   = 7
+  , icount   = 6
   , iaspects = [ ToThrow $ ThrowMod 100 10 2  -- 2 steps, 1 turn
                , SetFlag Lobable, SetFlag Fragile, SetFlag Blast
                , AddSkill SkShine 3, AddSkill SkHurtMelee $ -8 * 5 ]
@@ -323,7 +323,7 @@ focusedConcussion = ItemKind
   , iname    = "detonation ignition"  -- stabilized high explosive liquid
   , ifreq    = [(S_FOCUSED_CONCUSSION, 1), (BLAST_SOURCE, 1)]
   , iflavour = zipPlain [BrYellow]
-  , icount   = 4  -- 28 in total vs 14, higher spread, less harm from pushing
+  , icount   = 5  -- 30 in total vs 14, higher spread, less harm from pushing
   , irarity  = [(1, 1)]
   , iverbHit = "ignite"
   , iweight  = 1
@@ -413,7 +413,7 @@ glassPiece = ItemKind
   }
 focusedGlass = glassPiece  -- when blowing up windows
   { ifreq    = [(S_FOCUSED_GLASS_HAIL, 1)]
-  , icount   = 4
+  , icount   = 5
   , iaspects = [ toLinger 0  -- 0 steps, 1 turn
                , SetFlag Fragile, SetFlag Blast
                , AddSkill SkHurtMelee $ -15 * 5 ]
