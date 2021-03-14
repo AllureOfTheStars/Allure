@@ -678,7 +678,8 @@ crackedFlue = ItemKind
   , idamage  = 0
   , iaspects = [Timeout 10, SetFlag Durable]
   , ieffects = [ VerbMsg "imagine the fragrance of roasted food wafting through the flue from upstairs" "."
-               , toOrganGood S_KEEN_SMELLING (3 + 1 `d` 2) ]
+               , OneOf [ toOrganGood S_KEEN_SMELLING (3 + 1 `d` 2)
+                       , CreateItem Nothing CGround STEEL_SCRAP timerNone ] ]
   , idesc    = "The pipes ring with tumultuous echoes. Whenever you convince yourself it's an uneven updraft singing through the cracks, the noise suddenly stops, then picks up with a roar. Is there a fight over the food on some upper deck or are you just hungry?"
   , ikit     = []
   }
