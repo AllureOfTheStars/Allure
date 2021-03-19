@@ -400,7 +400,7 @@ intruder = ItemKind
                , AddSkill SkAggression 1
                , AddSkill SkProject (-1)  -- can't project
                , AddSkill SkApply 1  -- can use even cultural artifacts
-               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use hard stairs nor doors
                , AddSkill SkFlying 10  -- flies slowly, but far
                , SetFlag Durable ]
   , ieffects = []
@@ -492,7 +492,7 @@ griffonVulture = ItemKind  -- keep it boring and weak, because it summons
                    -- enough Calm to summon twice only if not attacked at all;
                    -- loses a lot of sight after summoning
                , AddSkill SkSpeed 22, AddSkill SkNocto 2
-               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use hard stairs nor doors
                , AddSkill SkFlying 10  -- flies slowly, but far
                , SetFlag Durable ]
       -- Animals don't have leader, usually, so even if only one on level,
@@ -519,7 +519,7 @@ skunk = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 13, AddSkill SkMaxCalm 30
                , AddSkill SkSpeed 22, AddSkill SkNocto 2
-               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use hard stairs nor doors
                , AddSkill SkOdor 5  -- and no smell skill, to let it leave smell
                , SetFlag Durable ]
   , ieffects = []
@@ -543,7 +543,7 @@ armadillo = ItemKind  -- a tank with armor, so special damage defeats it
   , iaspects = [ AddSkill SkMaxHP 30, AddSkill SkMaxCalm 30
                , AddSkill SkSpeed 20, AddSkill SkNocto 2
                , AddSkill SkHurtMelee (-70)  -- quite harmless rolled in a ball
-               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use hard stairs nor doors
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "When threatened, it rolls into a ball."
@@ -566,7 +566,7 @@ gilaMonster = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 15, AddSkill SkMaxCalm 50
                , AddSkill SkSpeed 18, AddSkill SkNocto 2
-               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use hard stairs nor doors
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Numbing venom ensures that even the fastest prey has no escape."
@@ -588,7 +588,7 @@ rattlesnake = ItemKind
   , iaspects = [ AddSkill SkMaxHP 28, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 16, AddSkill SkNocto 2
                , AddSkill SkAggression 2  -- often discharged. so flees anyway
-               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use hard stairs nor doors
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "Beware its rattle - it serves as a warning of an agonising death."
@@ -695,7 +695,7 @@ giantOctopus = ItemKind
   , iaspects = [ AddSkill SkMaxHP 17, AddSkill SkMaxCalm 80
                , AddSkill SkSwimming 100  -- swims better than walks
                , AddSkill SkSpeed 27, AddSkill SkNocto 3 -- good night vision
-               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use hard stairs nor doors
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "It has eight arms of rage and sees through the night. Copes with lower gravity better than most animals."  -- TODO: change when slowness on land is implemented
@@ -752,7 +752,7 @@ rhinoceros = ItemKind  -- impressive tank boss with some armor
                , AddSkill SkSpeed 27, AddSkill SkNocto 2
                , AddSkill SkHurtMelee 50  -- mass gives extra damage
                , AddSkill SkAggression 2
-               , AddSkill SkAlter (-1)  -- can't use normal stairs nor dig;
+               , AddSkill SkAlter (-1)  -- can't use hard stairs nor dig;
                                         -- a weak miniboss; can use easy stairs
                , SetFlag Durable ]
   , ieffects = [OnSmash $ VerbMsg "bellow triumphantly!" ""]
@@ -780,7 +780,7 @@ beeSwarm = ItemKind
   , idamage  = 0
   , iaspects = [ AddSkill SkMaxHP 10, AddSkill SkMaxCalm 60
                , AddSkill SkSpeed 30, AddSkill SkNocto 2  -- armor in sting
-               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use hard stairs nor doors
                , AddSkill SkWait (-2)  -- can't brace, sleep and lurk
                , AddSkill SkFlying 10  -- flies slowly, but far
                , SetFlag Durable ]
@@ -805,7 +805,7 @@ hornetSwarm = ItemKind  -- kind of tank with armor, but short-lived
                , AddSkill SkHurtMelee 50
                , AddSkill SkMaxHP 10, AddSkill SkMaxCalm 70
                , AddSkill SkSpeed 30, AddSkill SkNocto 2
-               , AddSkill SkAlter (-2)  -- can't use normal stairs nor doors
+               , AddSkill SkAlter (-2)  -- can't use hard stairs nor doors
                , AddSkill SkWait (-2)  -- can't brace, sleep and lurk
                , AddSkill SkFlying 10  -- flies slowly, but far
                , SetFlag Durable ]
@@ -1211,7 +1211,7 @@ cleanerRobot = ItemKind
                    -- loses a lot of sight after summoning
                , AddSkill SkSpeed 18, AddSkill SkNocto 2
                , AddSkill SkAggression 1
-                   -- can't use normal stairs nor dig; a weak miniboss;
+                   -- can't use hard stairs nor dig; a weak miniboss;
                    -- however, it can use the easy stairs and so change levels
                , AddSkill SkApply 1  -- can apply the hooter
                , SetFlag Durable ]
