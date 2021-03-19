@@ -2056,6 +2056,9 @@ blowtorch = ItemKind
   , idamage  = 0
   , iaspects = [ Timeout 4
                , AddSkill SkAlter 2
+               , AddSkill SkWait (-2)
+                   -- patience thin in the heat; prevents sleep, to let
+                   -- AI use @SkAlter@ to get to level 4
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotAlter
                , toVelocity 0 ]  -- @Burn@ not effective when thrown
