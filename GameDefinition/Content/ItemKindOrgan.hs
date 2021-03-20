@@ -1107,5 +1107,5 @@ backstoryNeutral3 = backstoryNeutralTemplate
   , iaspects = [SetFlag UnderRanged, SetFlag UnderMelee]
                ++ iaspects backstoryMixedTemplate
   , ieffects = [When (HpLeq 50) $ OneOf [RefillCalm 10, RefillCalm (-10)]]
-  , idesc    = "Quirk: Not everyone needs to be impassive. Some recent brushes with grave danger resulted not in panic, but in cheering up and rallying the whole team. However, the front line may not be the best place to ensure the good outcomes."  -- 'the whole team' is an exaggeration, but it's in-character here
+  , idesc    = "Quirk: Not everyone needs to be impassive. A brush with death may result in panic today, but in cheering up and rallying the whole team tomorrow. However, if the cost of bad outcomes is prohibitive, exposed posts and front line assignments are better avoided."  -- 'the whole team' is an exaggeration, but it's in-character here
   }
