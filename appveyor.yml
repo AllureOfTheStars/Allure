@@ -61,6 +61,7 @@ install:
   - cp Makefile AllureOfTheStars
   - cd AllureOfTheStars
   - test
+  - rm test.exe
   - make nativeBenchCrawl-appveyor || (tail -n 200 %APPDATA%\Allure\stderr.txt & tail -n 200 %APPDATA%\Allure\stdout.txt & exit 77)
   - cd ..
 
@@ -123,6 +124,7 @@ install:
   - cp Makefile AllureOfTheStars
   - cd AllureOfTheStars
   - test
+  - rm test.exe
   - make benchBattle-appveyor || (tail -n 200 %APPDATA%\Allure\stderr.txt & tail -n 200 %APPDATA%\Allure\stdout.txt & exit 77)
   - cd ..
 
