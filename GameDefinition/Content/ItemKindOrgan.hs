@@ -1042,7 +1042,10 @@ backstoryBad4 = backstoryBadTemplate
                ++ iaspects backstoryBadTemplate
   , ieffects = [AtMostOneOf  -- simple but pessimistic probability; not accurate
       [ DestroyItem 1 1 CStash ALCOHOL
-        `OrEffect`  -- if available, only drink
+          -- this is not drinking, but smashing; say, inner fight, won;
+          -- @ConsumeItems [(1, ALCOHOL)] []@ would drink, but not from stash
+          -- and only for alcohols that are durable, which is unlikely
+        `OrEffect`  -- only create if none available
         SeqEffect [ CreateItem (Just 1) CStash ALCOHOL timerNone
                   , VerbMsg "explain: Some moonshine from gathered scraps, just in case" "." ]
       , NopEffect  -- always fails, no identification
