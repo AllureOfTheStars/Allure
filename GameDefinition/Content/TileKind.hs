@@ -894,8 +894,7 @@ shallowWater2 = shallowWater
   }
 floorRed = floorCorridor  -- always lit
   { tname    = "emergency walkway"
-  , tfreq    = [ (TRAIL_LIT, 50), (SAFE_TRAIL_LIT, 50)
-               , (LIFT_TERMINAL_LIT, 6), (LIFT_TERMINAL_DARK, 6) ]
+  , tfreq    = [(TRAIL_LIT, 50), (SAFE_TRAIL_LIT, 50)]
   , tcolor   = BrRed
   , tcolor2  = Red
   , tfeature = [ ChangeWith ProjYes [(1, OIL_SOURCE)] S_OIL_SPILL
