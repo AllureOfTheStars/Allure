@@ -26,6 +26,7 @@ import Content.ItemKindBlast
 import Content.ItemKindOrgan
 import Content.ItemKindTemporary
 import Game.LambdaHack.Content.ItemKind
+import Game.LambdaHack.Content.TileKind (floorSymbol)
 import Game.LambdaHack.Core.Dice
 import Game.LambdaHack.Definition.Ability
 import Game.LambdaHack.Definition.Color
@@ -245,7 +246,7 @@ treasureCache = ItemKind
   { isymbol  = 'o'
   , iname    = "set"
   , ifreq    = [(ABANDONED_CACHE, 1)]
-  , iflavour = zipPlain [BrYellow]
+  , iflavour = zipPlain [BrBlue]
   , icount   = 1
   , irarity  = [(1, 1)]
   , iverbHit = "crash"
@@ -277,10 +278,10 @@ treasureCacheTrap = ItemKind
   , ikit     = []
   }
 signageExit = ItemKind
-  { isymbol  = '?'
+  { isymbol  = '0'
   , iname    = "sticker"
   , ifreq    = [(SIGNAGE, 100)]
-  , iflavour = zipPlain [BrCyan]
+  , iflavour = zipPlain [BrGreen]
   , icount   = 1
   , irarity  = [(1, 0), (2, 1)]
   , iverbHit = "whack"
@@ -295,7 +296,7 @@ signageExit = ItemKind
 signageEmbed = signageExit
   { iname    = "notice"
   , ifreq    = [(SIGNAGE, 100)]
-  , iflavour = zipPlain [BrBlue]
+  , iflavour = zipPlain [Cyan]
   , ieffects = [Detect DetectEmbed 12]  -- low tech, hence fully operational
   , idesc    = "Detailed schematics for the maintenance crew."
                  -- This is a rare tile so use it to convey some more backstory.
@@ -303,7 +304,7 @@ signageEmbed = signageExit
 signageMerchandise = signageExit
   { iname    = "shop list"
   , ifreq    = [(SIGNAGE, 100)]
-  , iflavour = zipPlain [BrGreen]
+  , iflavour = zipPlain [BrCyan]
   , ieffects = [Detect DetectLoot 20]  -- high tech, so slightly confused
   , idesc    = "A list of nearby commercial outlets, constantly updated by tracking merchandise not registered as passenger property. Customers are kindly requeted to refrain from littering in this heavily monitored public area."
   }
@@ -326,6 +327,7 @@ fireSmall = ItemKind
 fireSmall5 = fireSmall
   { iname    = "small fire"  -- whenever a lot of mass to burn, e.g., bush, oil
   , ifreq    = [(SMALL_FIRE_5, 1), (FIRE_SOURCE, 1)]
+  , iflavour = zipPlain [Red]
   , ieffects = [ Burn 1, Explode S_SINGLE_SPARK
                , OnCombine roastEffect5 ]
   }
@@ -333,6 +335,7 @@ fireBig = fireSmall
   { isymbol  = '0'
   , iname    = "big fire"
   , ifreq    = [(BIG_FIRE, 1), (FIRE_SOURCE, 1)]
+  , iflavour = zipPlain [Red]
   , iaspects = [ELabel "of immolation", SetFlag Durable]
   , ieffects = [ Burn 2
                , CreateItem Nothing CGround S_WOODEN_TORCH timerNone
@@ -435,7 +438,7 @@ stairsDown = stairsUp
   , idesc    = "Stairs that descend towards the outer ring. Narrow enough that only one person can comfortably use them at a time, but short enough that the whole team may climb down in quick succession."
   }
 escape = stairsUp
-  { isymbol  = 'E'
+  { isymbol  = '>'
   , iname    = "way"
   , ifreq    = [(ESCAPE, 1)]
   , iflavour = zipPlain [BrGreen]
@@ -449,7 +452,7 @@ stairsTrapUp = ItemKind
   { isymbol  = '^'
   , iname    = "staircase trap"
   , ifreq    = [(STAIRS_TRAP_UP, 1)]
-  , iflavour = zipPlain [Red]
+  , iflavour = zipPlain [BrRed]
   , icount   = 1
   , irarity  = [(1, 1)]
   , iverbHit = "buffet"
@@ -466,7 +469,7 @@ stairsTrapUp = ItemKind
 -- so that effects are invoked in the proper order and, e.g., teleport works.
 stairsTrapDown = stairsTrapUp
   { ifreq    = [(STAIRS_TRAP_DOWN, 1)]
-  , iflavour = zipPlain [Blue]
+  , iflavour = zipPlain [Red]
   , iverbHit = "open up under"
   , ieffects = [ VerbMsgFail "fall down the stairwell" "."
                , toOrganGood S_DRUNK (20 + 1 `d` 5) ]
@@ -507,7 +510,7 @@ shallowWater = ItemKind
   , ikit     = []
   }
 straightPath = ItemKind
-  { isymbol  = '.'
+  { isymbol  = floorSymbol
   , iname    = "straight path"
   , ifreq    = [(STRAIGHT_PATH, 1)]
   , iflavour = zipFancy [BrRed]
@@ -522,7 +525,7 @@ straightPath = ItemKind
   , ikit     = []
   }
 frozenGround = ItemKind
-  { isymbol  = '.'
+  { isymbol  = floorSymbol
   , iname    = "shade"
   , ifreq    = [(FROZEN_GROUND, 1)]
   , iflavour = zipFancy [BrBlue]
@@ -583,7 +586,7 @@ desertedAirlock = ItemKind
   { isymbol  = '>'
   , iname    = "the Initial Entrance"
   , ifreq    = [(DISENGAGED_DOCKING_GEAR, 10000)]
-  , iflavour = zipPlain [BrGreen]
+  , iflavour = zipPlain [Green]
   , icount   = 1
   , irarity  = [(1, 1), (2, 0)]
   , iverbHit = "worry"
@@ -684,7 +687,7 @@ crackedFlue = ItemKind
   , ikit     = []
   }
 bloodOnWall = ItemKind
-  { isymbol  = '.'
+  { isymbol  = ','
   , iname    = "blotch"
   , ifreq    = [(BLOOD_ON_WALL, 60)]
   , iflavour = zipPlain [BrRed]
@@ -758,12 +761,13 @@ stairsTrapDownOil = stairsTrapUp
                , PushActor (ThrowMod 400 100 1)]  -- 4 steps, 2 turns
   , idesc    = ""
   }
-doorTrapPush = stairsTrapUp
+doorTrapPush = doorwayTrapTemplate
   { isymbol  = '+'
   , iname    = "weak door frame"
   , ifreq    = [(DOOR_TRAP_PUSH, 1)]
-  , iflavour = zipPlain [BrBlue]
+  , iflavour = zipPlain [Blue]
   , iverbHit = "give in"
+  , iaspects = []  -- identified; not Durable, springs at most once
   , ieffects = [ VerbMsgFail "fly inwards after the crashed open doors" "."
                , PushActor (ThrowMod 400 100 1)]  -- 4 steps, 2 turns
   , idesc    = ""
@@ -856,7 +860,7 @@ crudeWeld = ItemKind  -- this is also an organ
   , ikit     = []
   }
 decontaminator = ItemKind
-  { isymbol  = 'O'
+  { isymbol  = 'D'
   , iname    = "decontamination chamber"
   , ifreq    = [(DECONTAMINATION_CHAMBER, 1)]
   , iflavour = zipPlain [BrBlue]
@@ -930,10 +934,10 @@ barrelNitrogen = barrelFuel
   , idesc    = ""
   }
 workshopBench = ItemKind
-  { isymbol  = 'b'
+  { isymbol  = ':'
   , iname    = "bench"
   , ifreq    = [(WORKSHOP_BENCH, 1)]
-  , iflavour = zipPlain [Blue]
+  , iflavour = zipPlain [BrBlue]
   , icount   = 1
   , irarity  = [(1, 1)]
   , iverbHit = "bury"
