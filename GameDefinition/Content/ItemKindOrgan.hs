@@ -989,7 +989,7 @@ backstoryGood3 = backstoryGoodTemplate
       [ Recharge 4 20
       , RefillCalm 2
       ]]
-  , idesc    = "Virtue: Several years of daily life threatening events leaves either a trauma or a lesson. The lesson is, when fear is the strongest, turn away from yourself and fiercely focus on your mission."
+  , idesc    = "Virtue: Several years of life threatening events leave either a trauma or a lesson. The lesson is, when fear is the strongest, turn away from yourself and fiercely focus on your mission."
   }
 backstoryBadTemplate = backstoryFluffTemplate
   { iname    = "unrevealed vice"
