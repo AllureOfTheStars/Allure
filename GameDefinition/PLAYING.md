@@ -202,9 +202,11 @@ with default keybinding) cycles through all visible and remembered
 items on the level and another (`*` and keypad `*`, with default keybinding)
 through all foes. Also, pointing at a map position with `MMB`
 (middle mouse button) displays a short description of its contents.
-The same with `RMB` enters aiming mode, in which repeated pointing
-at the same position increases detail level of the description, the same
-as when pressing the Space key. The basic terrain kinds are as follows.
+
+Pointing with `RMB` enters aiming mode, in which pointing again
+or pressing Space key or `MMB` decreases detail level of the description.
+If a foe or interesting terrain is being pointed at, tilde key `~` shows
+the relevant lore details. The basic terrain kinds are as follows.
 
     terrain type                  on-screen symbol
 
@@ -597,7 +599,8 @@ A: Examine the workshop terrain (blue colon on the map) and experiment.
 Note that walkable positions can't be activated by bumping and moreover
 crafting requires the Modify command (key 'M') even for not walkable terrain.
 Other crafting spots (e.g., any water and fire) work similarly,
-but the recipes differ. Read the recipes in the lore menu, terrain submenu.
+but the recipes differ. Read the recipes in the lore menu, terrain submenu,
+or by pressing `~` when crosshair points at terrain that enables crafting.
 
 - Q: Does power of crafted items depend on the depth of current level?
 
