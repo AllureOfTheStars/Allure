@@ -164,7 +164,7 @@ spreadBurningOil n grp = ItemKind
   , iverbHit = "sear"
   , iweight  = 1
   , idamage  = 0
-  , iaspects = [ toVelocity (min 100 $ n `div` 2 * 10)
+  , iaspects = [ toVelocity (max 10 $ min 100 $ n `div` 2 * 10)
                , SetFlag Fragile, SetFlag Blast
                , AddSkill SkShine 2 ]
   , ieffects = [ Burn 1
@@ -193,7 +193,7 @@ focusedBurningOil n grp grpExplode = ItemKind
   , ifreq    = [(grp, 1), (FIRE_SOURCE, 1), (OIL_SOURCE, 1)]
   , iflavour = zipPlain [BrYellow]  -- all ignitions yellow to avoid appearing
                                     -- as a small vial explosion
-  , icount   = intToDice $ n + 1  -- n was too often missing nearby actors
+  , icount   = intToDice n
   , irarity  = [(1, 1)]
   , iverbHit = "ignite"
   , iweight  = 1
