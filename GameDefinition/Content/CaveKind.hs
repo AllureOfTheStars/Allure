@@ -576,7 +576,7 @@ shootout = rogue  -- a scenario with strong missiles;
   , cmaxStairsNum = 0
   , cstairFreq    = []
   , cstairAllowed = []
-  , cdesc         = "Once so carefully curated, the planting beds are now overgrown and choked with weeds. High taxes make the traditional ways of life in space unsustainable."  -- also explains the gangs elsewhere and the motivation of adventurers to take risks (in addition to male hormones)
+  , cdesc         = "Once so carefully curated, the planting beds are now overgrown and choked with weeds. The recently imposed high taxes make the traditional ways of life in space unsustainable."  -- also explains the gangs elsewhere and the motivation of adventurers to take risks (in addition to male hormones)
   }
 hunt = rogue  -- a scenario with strong missiles for ranged and shade for melee;
               -- the human is likely to focus on melee, not having overwatch
