@@ -53,12 +53,12 @@ groupNames :: [GroupName ItemKind]
 groupNames =
        [CRAWL_ITEM, TREASURE, ANY_SCROLL, ANY_GLASS, ANY_POTION, ANY_FLASK, EXPLOSIVE, ANY_JEWELRY, VALUABLE, UNREPORTED_INVENTORY, AQUATIC]
     ++ [HARPOON, ARMOR_LOOSE, CLOTHING_MISC]
-    ++ [COOKED_PLANT, LIQUID_NITROGEN, GARDENING_TOOL]
+    ++ [COOKED_PLANT, LIQUID_NITROGEN, GARDENING_TOOL, TOOL_ONLY]
     ++ embedsGN ++ actorsGN ++ organsGN ++ blastsGN
 
 pattern HARPOON, ARMOR_LOOSE, CLOTHING_MISC :: GroupName ItemKind
 
-pattern COOKED_PLANT, LIQUID_NITROGEN, GARDENING_TOOL :: GroupName ItemKind
+pattern COOKED_PLANT, LIQUID_NITROGEN, GARDENING_TOOL, TOOL_ONLY :: GroupName ItemKind
 
 -- The @UNKNOWN@ patterns don't need to be exported. Used internally.
 -- They also represent singleton groups.
@@ -88,6 +88,7 @@ pattern COOKED_PLANT_UNKNOWN = GroupName "cooked plant unknown"
 pattern COOKED_PLANT = GroupName "cooked plant"
 pattern LIQUID_NITROGEN = GroupName "liquid nitrogen"
 pattern GARDENING_TOOL = GroupName "gardening tool"
+pattern TOOL_ONLY = GroupName "tool only"
 
 pattern S_RAG_TANGLE = GroupName "rag tangle"
 pattern S_GRASS_STITCHER = GroupName "grass stitcher"
@@ -1300,7 +1301,7 @@ blanket = ItemKind
 chisel = ItemKind  -- ignored by AI, but that's fine, others suffice
   { isymbol  = symbolTool
   , iname    = "chisel"
-  , ifreq    = [(CRAWL_ITEM, 10), (BREACHING_TOOL, 1)]
+  , ifreq    = [(CRAWL_ITEM, 10), (BREACHING_TOOL, 1), (TOOL_ONLY, 1)]
   , iflavour = zipPlain [Cyan]
   , icount   = 1
   , irarity  = [(1, 110)]
@@ -1325,7 +1326,8 @@ adjustableSpanner = chisel
   }
 steelFile = chisel
   { iname    = "steel file"
-  , ifreq    = [(CRAWL_ITEM, 20), (BREACHING_TOOL, 1), (SHARPENING_TOOL, 1)]
+  , ifreq    = [ (CRAWL_ITEM, 20), (BREACHING_TOOL, 1), (SHARPENING_TOOL, 1)
+               , (TOOL_ONLY, 1) ]
   , iflavour = zipPlain [Red]  -- double purpose, saves one tool sometimes
   , iverbHit = "grate"
   , idesc    = "It is a breaching and sharpening tool that can be used for crafting and terrain modification. There are no junk items in space."  -- TODO: https://en.wikipedia.org/wiki/File_(tool)
@@ -1333,7 +1335,7 @@ steelFile = chisel
   }
 honingSteel = chisel
   { iname    = "honing steel"
-  , ifreq    = [(CRAWL_ITEM, 10), (SHARPENING_TOOL, 1)]
+  , ifreq    = [(CRAWL_ITEM, 10), (SHARPENING_TOOL, 1), (TOOL_ONLY, 1)]
   , iflavour = zipFancy [Blue]
   , iverbHit = "hone"
   , idesc    = "Originally used for realigning and sharpening dulled edges of kitchen knives in the local restaurants. Now it turns utensils into weapons."
@@ -1346,7 +1348,7 @@ whetstone = honingSteel
   }
 diagonalPliers = chisel
   { iname    = "pair"
-  , ifreq    = [(CRAWL_ITEM, 10), (WIRECUTTING_TOOL, 1)]
+  , ifreq    = [(CRAWL_ITEM, 10), (WIRECUTTING_TOOL, 1), (TOOL_ONLY, 1)]
   , iflavour = zipPlain [Brown]
   , iverbHit = "cut"
   , iaspects = [ELabel "of diagonal pliers"]
@@ -1371,7 +1373,7 @@ boltCutter = loppers
   }
 solderingIron = chisel
   { iname    = "soldering iron"
-  , ifreq    = [(CRAWL_ITEM, 5), (BONDING_TOOL, 20)]
+  , ifreq    = [(CRAWL_ITEM, 5), (BONDING_TOOL, 20), (TOOL_ONLY, 1)]
   , iflavour = zipPlain [White]
   , iverbHit = "soldier"
   , idesc    = "It is a bonding tool that can be used for crafting and terrain modification. There are no junk items in space."  -- TODO: wikipedia
@@ -1379,7 +1381,7 @@ solderingIron = chisel
   }
 duckTape = solderingIron
   { iname    = "duck tape"
-  , ifreq    = [(CRAWL_ITEM, 3), (BONDING_TOOL, 40)]
+  , ifreq    = [(CRAWL_ITEM, 3), (BONDING_TOOL, 40), (TOOL_ONLY, 1)]
   , icount   = 1 `d` 4
   , iverbHit = "catch"
   , idesc    = "It is a bonding tool that can be used for crafting and terrain modification. There are no junk items in space."  -- TODO: https://en.wikipedia.org/wiki/Duct_tape
@@ -1387,7 +1389,7 @@ duckTape = solderingIron
 thickCord = solderingIron
   { iname    = "thick cord"
   , ifreq    = [ (CRAWL_ITEM, 7), (BONDING_TOOL, 30)
-               , (CLOTH_RAG, 1), (THICK_CLOTH, 1) ]
+               , (CLOTH_RAG, 1), (THICK_CLOTH, 1), (TOOL_ONLY, 1) ]
   , iverbHit = "tie"
   , idesc    = "It is a bonding tool and it soaks fluids."  -- TODO
   }
