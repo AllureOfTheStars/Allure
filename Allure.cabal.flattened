@@ -12,9 +12,6 @@ description: Allure of the Stars is a near-future Sci-Fi roguelike
              and tactical squad combat game. Binaries and the game manual
              are available at the homepage. You can also try the game out
              in the browser at <http://allureofthestars.com/play>.
-             The browser version runs fastest on Chrome, keyboard commands
-             and savefiles are supported only on recent enough versions
-             of browsers, but mouse should work everywhere.
              .
              Not a single image in this game. You have to imagine everything
              yourself, like with a book (a grown-up book, without pictures).
@@ -103,6 +100,9 @@ common options
     cpp-options:      -DEXPOSE_INTERNAL
 
   ghcjs-options:      -DUSE_JSFILE
+
+  if !flag(supportNodeJS)
+    ghcjs-options:    -DREMOVE_TELETYPE
 
 common exe-options
   ghc-options:        -threaded -rtsopts
