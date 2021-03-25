@@ -1090,9 +1090,10 @@ backstoryNeutralTemplate = backstoryFluffTemplate
   }
 backstoryNeutral1 = backstoryNeutralTemplate
   { iname    = "\"Letting Go\""
-  , ifreq    = [ (BACKSTORY_NEUTRAL, 100), (BACKSTORY, 1)
-               , (VALUABLE, 1000) ]  -- prevent premature identification
-  , ieffects = [OnSmash (Explode S_YOUTH_SPRINKLE)]  -- may hit foes as well
+  , ifreq    = [(BACKSTORY_NEUTRAL, 100), (BACKSTORY, 1)]
+  , ieffects = [ OnSmash (Explode S_YOUTH_SPRINKLE)  -- may hit foes as well
+               , VerbMsg "not" "again" ]
+                   -- never activated, but prevents premature identification
   , idesc    = "Quirk: Dying beautifully is an art that takes a lifetime to master and leaves spectators peaceful and uplifted. That's true even for clinical death, potentially reversible with nano medbot treatment back in town."
   }
 -- Both can be moved to Mixed if less numerous, even though the effects mild.
