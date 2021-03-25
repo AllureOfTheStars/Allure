@@ -905,13 +905,13 @@ geneticFlaw10BadArmorRanged = geneticFlaw 3 False 10 GENETIC_FLAW_10
 
 -- * Allure-specific backstory items
 
--- The name and descritpion of each backstory item should add something
+-- The name and description of each backstory item should add something
 -- to the biography or character of the hero or both. However, it should
--- not constrain it so mucht that it conflicts with any other items.
+-- not constrain it so much that it conflicts with any other items.
 -- E.g., 'life spent in military' is not acceptable,
 -- but a spell in military is fine, just as is life spent doing
 -- dangerous tasks, serious missions or giving orders.
--- The idea, in addtion to avoiding inconsistency, is to let the player
+-- The idea, in addition to avoiding inconsistency, is to let the player
 -- fill in the gaps and, in effect, invent the backstories.
 -- OTOH, the player needs something to work with, so a Wikipedia
 -- definition of a mild vice or a veiled allusion to in-game mechanics
