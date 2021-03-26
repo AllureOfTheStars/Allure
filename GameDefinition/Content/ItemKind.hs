@@ -1960,6 +1960,20 @@ ragTangle = sandstoneRock
   , idesc    = "Fashionable --- sometimes. Useful for survival crafting, for example as a wick of a makeshift oil lamp --- always."
   }
 -- The biggest power of bucklers and shields is the ranged deflection.
+-- There is a risk of micro-management, when the player takes off
+-- a buckler or shield just after it activated at ranged attack,
+-- regaining the speed for the probably upcoming melee fight.
+-- This has the drawback that, while the shield recharges in stash,
+-- it looses the charge when equipped again and if it's activated
+-- from the stash, the player suffers its full piercing damage.
+-- So, the taken off shield can't be used neither for renewing ranged
+-- protection nor for the melee boosts each has. OTOH, if the player
+-- has maximized armor, he only suffers 5% of the pierced damage
+-- of the shield. But to gain such high armor usually requires keeping
+-- a shield equipped. And the speed loss can't be avoided when exploring
+-- and an extra slowdown comes from unequipping and equipping again
+-- after melee, so it starts to be a meaningful and situational
+-- trade-off and not a meaningless micro-management, so it's OK.
 buckler = ItemKind
   { isymbol  = symbolShield
   , iname    = "buckler"
@@ -1969,7 +1983,7 @@ buckler = ItemKind
   , irarity  = [(4, 7)]
   , iverbHit = "bash"
   , iweight  = 2000
-  , idamage  = 1 `d` 1
+  , idamage  = 2 `d` 1
   , iaspects = [ Timeout $ (5 + 1 `d` 2 - 1 `dL` 2) * 2
                , AddSkill SkArmorMelee 40
                , AddSkill SkSpeed (-1)  -- the main price to pay
@@ -1979,7 +1993,7 @@ buckler = ItemKind
   , ieffects =
       [ OnUser (toOrganGood S_RANGED_DEFLECTING 1)
          -- This is particularly useful when exploring and getting ambushed,
-         -- hence placed first to be triggere by @UnderRanged@.
+         -- hence placed first to be triggered by @UnderRanged@.
       , OnUser (Recharge 4 20) ]
          -- It's useful during a fight.
   , idesc    = "An arm protection made from an outer airlock panel. Not too small to deflect projectiles occasionally. Almost harmless when used offensively, but makes room for other weapons."
@@ -2007,7 +2021,7 @@ shield = buckler
   , ieffects =
       [ OnUser (toOrganGood S_RANGED_DEFLECTING 1)
          -- This is particularly useful when exploring and getting ambushed,
-         -- hence placed first to be triggere by @UnderRanged@.
+         -- hence placed first to be triggered by @UnderRanged@.
       , PushActor (ThrowMod 200 50 1) ]  -- 1 step, fast
          -- It's useful during a fight.
   , idesc    = "An unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Large enough to shield against projectiles for as long as there is strength to keep it poised. Requires particularly keen positional awareness when used as a weapon."
@@ -2019,7 +2033,7 @@ shield2 = shield
   , ieffects =
       [ OnUser (toOrganGood S_RANGED_DEFLECTING 1)
          -- This is particularly useful when exploring and getting ambushed,
-         -- hence placed first to be triggere by @UnderRanged@.
+         -- hence placed first to be triggered by @UnderRanged@.
       , PushActor (ThrowMod 400 50 1) ]  -- 2 steps, fast
          -- It's useful during a fight.
   , idesc    = "A relic of long-past wars, heavy and with a central spike, which is however misaligned and dull."
