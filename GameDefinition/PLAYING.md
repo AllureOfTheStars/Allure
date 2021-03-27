@@ -674,6 +674,14 @@ it gets recharged after, randomly, from one to two times the normal
 cooldown period of the item and then recharges normally for as long
 as it's used on this level.
 
+- Q: Why the bottom line displays a weapon with a timeout to the right
+of a weapon without timeout? Doesn't it mean the former is never used?
+
+A: Yes, it's never used and quite possibly it's your mistake and if not,
+at least a very special situation and the display reminds about it.
+Shuffle the equipment among your team if you want the weapon
+to get used.
+
 - Q: When can I learn all characters' backstory items?
 
 A: Each backstory item triggers in specific circumstances, so it may take
