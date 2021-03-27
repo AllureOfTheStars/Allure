@@ -1454,7 +1454,8 @@ necklace1 = necklaceTemplate
                , AddSkill SkArmorMelee (-30)
                , SetFlag Durable ]
                ++ iaspects_necklaceTemplate
-  , ieffects = [RefillCalm (-5), RefillHP 1]
+  , ieffects = [ RefillCalm (-5)
+               , When (TriggeredBy ActivationPeriodic) $ RefillHP 1 ]
   , idesc    = "This awkward chain, when worn on bare skin, frequently emits mild but highly annoying electric shocks, which apparently stimulate tissue regeneration even in distant parts of the body. A part of the surprising effectiveness of this unique artifact may stem from the desperation of the patients to be quickly healed enough to take it off."
   }
 -- no necklace2 of Live Bait, wasteContainer too similar
@@ -1467,7 +1468,7 @@ necklace3 = necklaceTemplate
                , AddSkill SkHearing 6 ]
                ++ iaspects_necklaceTemplate
   , ieffects = [ Detect DetectActor 20  -- can be applied; destroys the item
-               , RefillCalm (-30) ]
+               , When (TriggeredBy ActivationPeriodic) $ RefillCalm (-30) ]
   }
 necklace4 = necklaceTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
@@ -1485,8 +1486,8 @@ necklace5 = necklaceTemplate
                , Timeout (8 + 1 `d` 3) ]
                ++ iaspects_necklaceTemplate
   , ieffects = [ Detect DetectStash 100
-               , Teleport 40  -- risky
-               , toOrganBad S_PARSIMONIOUS (5 + 1 `d` 3) ]  -- hard to flee
+               , toOrganBad S_PARSIMONIOUS (5 + 1 `d` 3)  -- hard to flee
+               , When (TriggeredBy ActivationPeriodic) $ Teleport 40 ]  -- risky
   }
 necklace6 = necklaceTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100)]
@@ -1512,7 +1513,8 @@ necklace8 = necklaceTemplate
                , SetFlag Durable ]
                ++ iaspects_necklaceTemplate
   , ieffects = [ RefillCalm (-2)  -- don't spam
-               , Discharge 5 80 ]  -- discharged again soon after it ends
+               , Discharge 5 80 ]
+                   -- discharged again soon after it ends
                  -- Lasting effect lessens temptation to frequently take off
                  -- when engaging in melee, which would lead to micromanagement.
                  -- Quite OOP if worn with the right set of other items, anyway.
@@ -2788,8 +2790,9 @@ wasteContainer = ItemKind
                , SetFlag Periodic, SetFlag Equipable
                , EqpSlot EqpSlotArmorMelee ]
   , ieffects = [ Detect DetectLoot 20
-               , Summon MOBILE_ANIMAL $ 1 `dL` 2
-               , Explode S_WASTE ]
+               , When (TriggeredBy ActivationPeriodic) $ SeqEffect
+                   [ Summon MOBILE_ANIMAL $ 1 `dL` 2
+                   , Explode S_WASTE ] ]
   , idesc    = "Waste recognition and utilization subsystem. Detects any stray item not registered as a passenger's cargo. Leaks a little. But one man's trash is another man's treasure and so this item has many beneficial uses."
   , ikit     = []
   }
@@ -2827,9 +2830,10 @@ seeingItem = ItemKind
                , AddSkill SkMaxHP (-30)  -- prevent excessive stacking
                , SetFlag Periodic ]
   , ieffects = [ Detect DetectActor 20  -- rare enough that one-time is not OP
-               , Explode S_SINGLE_SPARK
-               , toOrganNoTimer S_POISONED  -- really can't be worn
-               , Summon MOBILE_ROBOT 1 ]
+               , When (TriggeredBy ActivationPeriodic) $ SeqEffect
+                   [ Explode S_SINGLE_SPARK
+                   , toOrganNoTimer S_POISONED  -- really can't be worn
+                   , Summon MOBILE_ROBOT 1 ] ]
   , idesc    = "An oversize visual sensor freshly torn out of some unfortunate robot. It still sends a clear picture to unidentified receivers, even though the coolant liquid seeps from the seized servos and many internal contacts spark loose."
   , ikit     = []
   }
