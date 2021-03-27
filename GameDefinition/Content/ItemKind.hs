@@ -1450,11 +1450,11 @@ necklace1 = necklaceTemplate
                  -- prevents camping on lvl 3
   , iaspects = [ SetFlag Unique, ELabel "of Spur Life"
                , Timeout $ (4 - 1 `dL` 3) * 10
-                   -- priceless, so worth the long wait
+                   -- priceless, so worth the long wait and the malus
                , AddSkill SkArmorMelee (-30)
                , SetFlag Durable ]
                ++ iaspects_necklaceTemplate
-  , ieffects = [RefillHP 1, RefillCalm (-5)]
+  , ieffects = [RefillCalm (-5), RefillHP 1]
   , idesc    = "This awkward chain, when worn on bare skin, frequently emits mild but highly annoying electric shocks, which apparently stimulate tissue regeneration even in distant parts of the body. A part of the surprising effectiveness of this unique artifact may stem from the desperation of the patients to be quickly healed enough to take it off."
   }
 -- no necklace2 of Live Bait, wasteContainer too similar
