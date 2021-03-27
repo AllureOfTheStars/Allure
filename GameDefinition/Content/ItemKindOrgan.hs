@@ -985,10 +985,12 @@ backstoryGood3 = backstoryGoodTemplate
   , ifreq    = [(BACKSTORY_GOOD, 100), (BACKSTORY, 1)]
   , iaspects = [Timeout 1, SetFlag UnderMelee]
                ++ iaspects backstoryGoodTemplate
-  , ieffects = [When (CalmLeq 2) $ SeqEffect
-      [ Recharge 4 20
-      , RefillCalm 2
-      ]]
+  , ieffects = [When (CalmLeq 2) $ When (TriggeredBy ActivationMeleeable)
+                $ SeqEffect
+                    [ Recharge 4 20
+                    , RefillCalm 2
+                    ]]
+                 -- @TriggeredBy@ condition prevents micro-management
   , idesc    = "Virtue: Several years of life threatening events leave either a trauma or a lesson. The lesson is, when fear is the strongest, turn away from yourself and fiercely focus on your mission."
   }
 backstoryBadTemplate = backstoryFluffTemplate
@@ -1001,7 +1003,7 @@ backstoryBadTemplate = backstoryFluffTemplate
 backstoryBad1 = backstoryBadTemplate
   { iname    = "\"Drug addiction\""
   , ifreq    = [(BACKSTORY_BAD, 100), (BACKSTORY, 1)]
-  , iaspects = [Timeout 200, SetFlag Unique]
+  , iaspects = [Timeout 200, SetFlag Periodic, SetFlag Unique]
                ++ iaspects backstoryBadTemplate
   , ieffects = [When (CalmLeq 40) $ When (CalmGeq 20) $ SeqEffect
       [ toOrganBad S_SLOWED (3 + 1 `d` 3)
@@ -1076,9 +1078,11 @@ backstoryMixed2 = backstoryMixedTemplate
   , ifreq    = [(BACKSTORY_MIXED, 100), (BACKSTORY, 1)]
   , iaspects = [Timeout 1, SetFlag UnderRanged, SetFlag UnderMelee]
                ++ iaspects backstoryMixedTemplate
-  , ieffects = [When (HpLeq 10) $ SeqEffect
+  , ieffects = [When (HpLeq 10) $ Unless (TriggeredBy ActivationTrigger)
+                $ SeqEffect
       [RefillCalm (-10), toOrganGood S_HASTED 1, Recharge 1 20]]
         -- mixed: Calm lost but fury helps survive; may fire once per turn
+        -- @TriggeredBy@ condition prevents micro-management
   , idesc    = "Twist: Despair, fury, denial. Beastly reactions to approaching death. This is unforgivable in space, especially when getting acquainted with dying is so accessible, for a generation already, either via hibernation and nanobot revival or mental exercise culminating in writing a will to be notarized Earth-side."  -- hint that the nanobot revival heroes use all the time may have stemmed from space travel hibernation research; if so, the culture followed, but some youngsters are lazy wimps
   }
 backstoryNeutralTemplate = backstoryFluffTemplate
@@ -1092,7 +1096,8 @@ backstoryNeutral1 = backstoryNeutralTemplate
   { iname    = "\"Letting Go\""
   , ifreq    = [(BACKSTORY_NEUTRAL, 100), (BACKSTORY, 1)]
   , ieffects = [ OnSmash (Explode S_YOUTH_SPRINKLE)  -- may hit foes as well
-               , VerbMsg "not" "again" ]
+               , Unless (TriggeredBy ActivationTrigger)
+                 $ VerbMsg "not" "again" ]
                    -- never activated, but prevents premature identification
   , idesc    = "Quirk: Dying beautifully is an art that takes a lifetime to master and leaves spectators peaceful and uplifted. That's true even for clinical death, potentially reversible with nano medbot treatment back in town."
   }
@@ -1110,6 +1115,8 @@ backstoryNeutral3 = backstoryNeutralTemplate
   , ifreq    = [(BACKSTORY_NEUTRAL, 100), (BACKSTORY, 1)]
   , iaspects = [SetFlag UnderRanged, SetFlag UnderMelee]
                ++ iaspects backstoryMixedTemplate
-  , ieffects = [When (HpLeq 50) $ OneOf [RefillCalm 10, RefillCalm (-10)]]
+  , ieffects = [When (HpLeq 50) $ Unless (TriggeredBy ActivationTrigger)
+                $ OneOf [RefillCalm 10, RefillCalm (-10)]]
+                  -- @TriggeredBy@ condition prevents micro-management
   , idesc    = "Quirk: Not everyone needs to be impassive. A brush with death may result in panic today, but in cheering up and rallying the whole team tomorrow. However, if the cost of bad outcomes is prohibitive, exposed posts and front line assignments are better avoided."  -- 'the whole team' is an exaggeration, but it's in-character here
   }
