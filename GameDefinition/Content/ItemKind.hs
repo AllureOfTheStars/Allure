@@ -1996,10 +1996,12 @@ buckler = ItemKind
                , toVelocity 50 ]  -- unwieldy to throw
   , ieffects =
       [ IfThenElse (TriggeredBy ActivationUnderRanged)
-                   (OnUser (toOrganGood S_RANGED_DEFLECTING 1))
+                   (NopEffect `OrEffect` toOrganGood S_RANGED_DEFLECTING 1)
                      -- this is particularly useful when exploring
-                     -- and getting ambushed; @OnUser@ is only to help AI
-                     -- understand it won't be applied to foes
+                     -- and getting ambushed; @OrEffect@ is only to help AI
+                     -- understand it won't be applied to foes,
+                     -- but prevent it from assigning too much value
+                     -- and so attacking with buckler too early
                    (OnUser (Recharge 4 20)) ]
                      -- this is useful during a fight
   , idesc    = "An arm protection made from an outer airlock panel. Not too small to deflect projectiles occasionally. Almost harmless when used offensively, but makes room for other weapons."
@@ -2027,6 +2029,9 @@ shield = buckler
   , ieffects =
       [ IfThenElse (TriggeredBy ActivationUnderRanged)
                    (OnUser (toOrganGood S_RANGED_DEFLECTING 1))
+                     -- this is particularly useful when exploring
+                     -- and getting ambushed; @OnUser@ is only to help AI
+                     -- understand it won't be applied to foes
                    (PushActor (ThrowMod 200 50 1)) ]  -- 1 step, fast
                      -- this is useful during a fight
   , idesc    = "An unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Large enough to shield against projectiles for as long as there is strength to keep it poised. Requires particularly keen positional awareness when used as a weapon."
