@@ -2525,7 +2525,7 @@ gardenDestruct grp =
 grassStitcher = ItemKind
   { isymbol  = symbolPolearm
   , iname    = "grass stitcher"
-  , ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
+  , ifreq    = [ (COMMON_ITEM, 10), (HANDLE_AND_STEEL, 1)
                , (GARDENING_TOOL, 100), (S_GRASS_STITCHER, 1) ]
   , iflavour = zipPlain [Green]
   , icount   = 1
@@ -2543,7 +2543,7 @@ grassStitcher = ItemKind
   }
 ladiesFork = grassStitcher
   { iname    = "ladies' fork"
-  , ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
+  , ifreq    = [ (COMMON_ITEM, 10), (HANDLE_AND_STEEL, 1)
                , (GARDENING_TOOL, 100), (S_LADIES_FORK, 1) ]
   , iflavour = zipFancy [Green]
   , iweight  = 1000
@@ -2559,7 +2559,7 @@ ladiesFork = grassStitcher
 hoe = grassStitcher
   { isymbol  = symbolHafted
   , iname    = "hoe"
-  , ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
+  , ifreq    = [ (COMMON_ITEM, 10), (HANDLE_AND_STEEL, 1)
                , (GARDENING_TOOL, 100), (S_HOE, 1) ]
   , iflavour = zipFancy [Cyan]
   , iverbHit = "hack"
@@ -2576,7 +2576,7 @@ hoe = grassStitcher
 spade = grassStitcher
   { isymbol  = symbolHafted  -- swinging much more deadly than gouging
   , iname    = "spade"
-  , ifreq    = [ (COMMON_ITEM, 100), (HANDLE_AND_STEEL, 1)
+  , ifreq    = [ (COMMON_ITEM, 10), (HANDLE_AND_STEEL, 1)
                , (GARDENING_TOOL, 100), (S_SPADE, 1) ]
   , iflavour = zipPlain [Cyan]
   , iverbHit = "cut"
@@ -2594,7 +2594,7 @@ treePruner = grassStitcher
   { iname    = "long reach tree pruner"
   , ifreq    = [(COMMON_ITEM, 100), (POLE_AND_STEEL, 1)]
   , iflavour = zipFancy [BrRed]
-  , irarity  = [(1, 14)]  -- early, while the weapon is still useful
+  , irarity  = [(1, 12)]  -- early, while the weapon is still useful
   , iweight  = 4500
   , idamage  = 3 `d` 1
   , iaspects = [ Timeout 7
@@ -2624,7 +2624,7 @@ cleaningPole = grassStitcher
 staff = grassStitcher
   { isymbol  = symbolHafted
   , iname    = "wooden staff"
-  , ifreq    = [(HANDLE, 80), (POLE_OR_HANDLE, 55), (S_STAFF, 1)]
+  , ifreq    = [(HANDLE, 70), (POLE_OR_HANDLE, 55), (S_STAFF, 1)]
   , iflavour = zipPlain [Brown]
   , iverbHit = "prod"
   , iweight  = 1000
@@ -2637,7 +2637,7 @@ staff = grassStitcher
   }
 pipe = staff
   { iname    = "metal pipe"
-  , ifreq    = [(HANDLE, 20), (POLE_OR_HANDLE, 15), (S_PIPE, 1)]
+  , ifreq    = [(HANDLE, 30), (POLE_OR_HANDLE, 15), (S_PIPE, 1)]
   , iflavour = zipFancy [BrBlue]
   , idamage  = 2 `d` 1
   , idesc    = "Around a meter long, light, strong and hard alloy pipe. With one or both ends cut diagonally and sharpened, this would become a formidable weapon."
