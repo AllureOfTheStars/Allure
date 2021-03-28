@@ -1996,9 +1996,10 @@ buckler = ItemKind
                , toVelocity 50 ]  -- unwieldy to throw
   , ieffects =
       [ IfThenElse (TriggeredBy ActivationUnderRanged)
-                   (toOrganGood S_RANGED_DEFLECTING 1)
+                   (OnUser (toOrganGood S_RANGED_DEFLECTING 1))
                      -- this is particularly useful when exploring
-                     -- and getting ambushed
+                     -- and getting ambushed; @OnUser@ is only to help AI
+                     -- understand it won't be applied to foes
                    (OnUser (Recharge 4 20)) ]
                      -- this is useful during a fight
   , idesc    = "An arm protection made from an outer airlock panel. Not too small to deflect projectiles occasionally. Almost harmless when used offensively, but makes room for other weapons."
@@ -2025,9 +2026,7 @@ shield = buckler
                , toVelocity 50 ]  -- unwieldy to throw
   , ieffects =
       [ IfThenElse (TriggeredBy ActivationUnderRanged)
-                   (toOrganGood S_RANGED_DEFLECTING 1)
-                     -- this is particularly useful when exploring
-                     -- and getting ambushed
+                   (OnUser (toOrganGood S_RANGED_DEFLECTING 1))
                    (PushActor (ThrowMod 200 50 1)) ]  -- 1 step, fast
                      -- this is useful during a fight
   , idesc    = "An unwieldy rectangle made of anti-meteorite ceramic sheet. Absorbs a percentage of melee damage, both dealt and sustained. Large enough to shield against projectiles for as long as there is strength to keep it poised. Requires particularly keen positional awareness when used as a weapon."
@@ -2038,11 +2037,8 @@ shield2 = shield
   , idamage  = 4 `d` 1
   , ieffects =
       [ IfThenElse (TriggeredBy ActivationUnderRanged)
-                   (toOrganGood S_RANGED_DEFLECTING 1)
-                     -- this is particularly useful when exploring
-                     -- and getting ambushed
+                   (OnUser (toOrganGood S_RANGED_DEFLECTING 1))
                    (PushActor (ThrowMod 400 50 1)) ]  -- 2 steps, fast
-                     -- this is useful during a fight
   , idesc    = "A relic of long-past wars, heavy and with a central spike, which is however misaligned and dull."
   }
 shield3 = shield2
