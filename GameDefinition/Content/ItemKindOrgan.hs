@@ -153,7 +153,8 @@ animalStomach,       hungry, smallBeak, razor, liveWire, flotationBag, inkSac, p
 -- * No-cooldown melee damage organs without effects
 
 thorn = fist
-  { iname    = "thorn"
+  { isymbol  = '-'
+  , iname    = "thorn"
   , ifreq    = [(S_THORN, 1)]
   , icount   = 2 + 1 `d` 2  -- unrealistic, but not boring
   , iverbHit = "puncture"
@@ -273,7 +274,8 @@ largeJaw = fist  -- organs can't be too weak, because some non-humans also use
 -- * Direct damage organs with effects
 
 beeSting = fist
-  { iname    = "bee sting"
+  { isymbol  = '-'
+  , iname    = "bee sting"
   , ifreq    = [(S_BEE_STING, 1)]
   , icount   = 1
   , iverbHit = "sting"
@@ -285,7 +287,8 @@ beeSting = fist
   , idesc    = "Painful, but beneficial."
   }
 sting = fist
-  { iname    = "sting"
+  { isymbol  = '-'
+  , iname    = "sting"
   , ifreq    = [(S_STING, 1)]
   , icount   = 1
   , iverbHit = "inject"
@@ -307,7 +310,8 @@ lip = fist
   , idesc    = ""
   }
 venomTooth = fist
-  { iname    = "venom tooth"
+  { isymbol  = '-'
+  , iname    = "venom tooth"
   , ifreq    = [(S_VENOM_TOOTH, 1)]
   , iverbHit = "bite"
   , idamage  = 1 `d` 1
@@ -317,7 +321,8 @@ venomTooth = fist
   , idesc    = "A chilling numbness spreads from its bite."
   }
 hookedClaw = fist
-  { iname    = "hooked claw"
+  { isymbol  = '-'
+  , iname    = "hooked claw"
   , ifreq    = [(S_HOOKED_CLAW, 1)]
   , icount   = 2  -- even if more, only the fore claws used for fighting
   , iverbHit = "hook"
@@ -328,7 +333,8 @@ hookedClaw = fist
   , idesc    = "A curved talon."
   }
 screechingBeak = fist
-  { iname    = "screeching beak"
+  { isymbol  = '-'
+  , iname    = "screeching beak"
   , ifreq    = [(S_SCREECHING_BEAK, 1)]
   , icount   = 1
   , iverbHit = "peck"
@@ -339,7 +345,8 @@ screechingBeak = fist
   , idesc    = "Both a weapon and a beacon, calling more scavengers to the meal."
   }
 antler = fist
-  { iname    = "antler"
+  { isymbol  = '-'
+  , iname    = "antler"
   , ifreq    = [(S_ANTLER, 1)]
   , iverbHit = "ram"
   , idamage  = 4 `d` 1
@@ -350,7 +357,8 @@ antler = fist
   , idesc    = ""
   }
 rhinoHorn = fist
-  { iname    = "ugly horn"  -- made of keratin, unlike real horns
+  { isymbol  = '-'
+  , iname    = "ugly horn"  -- made of keratin, unlike real horns
   , ifreq    = [(S_RHINO_HORN, 1)]
   , icount   = 1  -- single, unlike real horns
   , iverbHit = "gore"
@@ -361,7 +369,8 @@ rhinoHorn = fist
   , idesc    = "Very solid, considering it has the same composition as fingernails."
   }
 hugeTail = fist
-  { iname    = "huge tail"
+  { isymbol  = '-'
+  , iname    = "huge tail"
   , ifreq    = [(S_HUGE_TAIL, 1)]
   , icount   = 1
   , iverbHit = "upend"
@@ -377,7 +386,8 @@ hugeTail = fist
 -- * Melee weapons without direct damage
 
 venomFang = fist
-  { iname    = "venom fang"
+  { isymbol  = '-'
+  , iname    = "venom fang"
   , ifreq    = [(S_VENOM_FANG, 1)]
   , iverbHit = "bite"
   , idamage  = 0
@@ -401,7 +411,8 @@ sulfurFissure = boilingFissure
   , idesc    = ""
   }
 boilingFissure = fist
-  { iname    = "fissure"
+  { isymbol  = '-'
+  , iname    = "fissure"
   , ifreq    = [(S_BOILING_FISSURE, 1)]
   , icount   = 2 + 1 `d` 2
   , iverbHit = "hiss at"
@@ -549,7 +560,8 @@ animalBrain = armoredSkin
   }
 speedGland :: Int -> GroupName ItemKind -> ItemKind
 speedGland n grp = armoredSkin
-  { iname    = "speed gland"
+  { isymbol  = '-'
+  , iname    = "speed gland"
   , ifreq    = [(grp, 1)]
   , iverbHit = "spit at"
   , iaspects = [ Timeout $ intToDice (100 `div` n)
@@ -562,7 +574,8 @@ speedGland n grp = armoredSkin
 speedGland5 = speedGland 5 S_SPEED_GLAND_5
 speedGland10 = speedGland 10 S_SPEED_GLAND_10
 scentGland = armoredSkin
-  { iname    = "scent gland"
+  { isymbol  = '-'
+  , iname    = "scent gland"
   , ifreq    = [(S_SCENT_GLAND, 1)]
   , icount   = 10 + 1 `d` 3  -- runs out
   , iverbHit = "spray at"
@@ -576,7 +589,8 @@ scentGland = armoredSkin
   , idesc    = ""
   }
 sulfurVent = armoredSkin
-  { iname    = "vent"
+  { isymbol  = 'v'
+  , iname    = "vent"
   , ifreq    = [(S_MEDBOT_VENT, 1)]
   , iflavour = zipPlain [BrYellow]
   , iverbHit = "menace"
@@ -586,7 +600,8 @@ sulfurVent = armoredSkin
   , idesc    = ""
   }
 boilingVent = armoredSkin
-  { iname    = "vent"
+  { isymbol  = 'v'
+  , iname    = "vent"
   , ifreq    = [(S_BOILING_VENT, 1)]
   , iflavour = zipPlain [BrGreen]
   , iverbHit = "menace"
@@ -596,7 +611,8 @@ boilingVent = armoredSkin
   , idesc    = ""
   }
 arsenicVent = armoredSkin
-  { iname    = "vent"
+  { isymbol  = 'v'
+  , iname    = "vent"
   , ifreq    = [(S_COOLING_VENT, 1)]
   , iflavour = zipPlain [White]
   , iverbHit = "menace"
@@ -675,7 +691,8 @@ smallBeak = fist
   , idesc    = "Cute, but painful."
   }
 liveWire = fist
-  { iname    = "live wire"
+  { isymbol  = '-'
+  , iname    = "live wire"
   , ifreq    = [(S_LIVE_WIRE, 1)]
   , icount   = 1
   , iverbHit = "shock"
@@ -687,7 +704,8 @@ liveWire = fist
   , idesc    = ""
   }
 razor = fist
-  { iname    = "razor edge"
+  { isymbol  = '-'
+  , iname    = "razor edge"
   , ifreq    = [(S_RAZOR, 1)]
   , icount   = 1 + 1 `d` 2
   , iverbHit = "slice"
@@ -722,7 +740,8 @@ fuelFissure = boilingFissure
 -- * Allure-specific other
 
 animalStomach = armoredSkin
-  { iname    = "animal stomach"
+  { isymbol  = 'u'
+  , iname    = "animal stomach"
   , ifreq    = [(S_ANIMAL_STOMACH, 1)]
   , iverbHit = "burp"
   , iaspects = [ Timeout $ 500 + (1 `d` 3) * 50  -- hunger very slowly
@@ -749,7 +768,8 @@ hungry = armoredSkin
   , idesc    = "Hunger limits physical fitness. In extreme cases, when compounded, it causes such fragility that the slightest stress becomes lethal."
   }
 flotationBag = armoredSkin
-  { iname    = "flotation bag"
+  { isymbol  = 'O'
+  , iname    = "flotation bag"
   , ifreq    = [(S_FLOTATION_BAG, 1)]
   , iverbHit = "uplift"
   , iaspects = [AddSkill SkArmorRanged (-15), SetFlag Durable]
@@ -803,7 +823,8 @@ rhinoInertia = jetBooster
   , idesc    = "It's a struggle to move the mass and it's a reinforced concrete wall that stops it."
   }
 electricAmbience = armoredSkin
-  { iname    = "static current ambience"
+  { isymbol  = 'v'
+  , iname    = "static current ambience"
   , ifreq    = [(ELECTRIC_AMBIENCE, 1)]
   , iverbHit = "shortcut"
   , iaspects = [ Timeout $ (2 + 1 `d` 3) * 5
@@ -834,7 +855,8 @@ hullPlating = armoredSkin
   , idesc    = ""
   }
 mouthVent = armoredSkin
-  { iname    = "mouth vent"
+  { isymbol  = 'v'
+  , iname    = "mouth vent"
   , ifreq    = [(S_MOUTH_VENT, 1)]
   , iflavour = zipPlain [BrMagenta]
   , iverbHit = "surprise"
@@ -851,7 +873,8 @@ mouthVent = armoredSkin
   , idesc    = ""
   }
 dustVent = armoredSkin
-  { iname    = "vent"
+  { isymbol  = 'v'
+  , iname    = "vent"
   , ifreq    = [(S_DUST_VENT, 1)]
   , iflavour = zipPlain [BrCyan]
   , iverbHit = "menace"
@@ -861,7 +884,8 @@ dustVent = armoredSkin
   , idesc    = ""
   }
 fuelVent = armoredSkin
-  { iname    = "vent"
+  { isymbol  = 'v'
+  , iname    = "vent"
   , ifreq    = [(S_FUEL_VENT, 1)]
   , iflavour = zipPlain [BrRed]
   , iverbHit = "menace"
