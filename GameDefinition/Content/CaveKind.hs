@@ -180,7 +180,7 @@ arena = rogue
   , citemNum      = 16 `d` 2
   , citemFreq     = [ (IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 20)
                     , (IK.TREASURE, 40)
-                    , (GARDENING_TOOL, 200)  -- useless and boring by this point
+                    , (GARDENING_TOOL, 100)  -- useless and boring by this point
                     , (IK.ANY_POTION, 200) ]  -- nature
   , cplaceFreq    = [(ARENA, 1)]
   , cpassable     = True
@@ -456,7 +456,7 @@ shallowRogue = rogue
   , cactorFreq    = filter ((/= MONSTER) . fst) $ cactorFreq rogue
   , citemNum      = 14 `d` 2
   , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.CRAWL_ITEM, 60)
-                    , (GARDENING_TOOL, 700), (IK.ANY_FLASK, 200) ]
+                    , (GARDENING_TOOL, 800), (IK.ANY_FLASK, 200) ]
   , cminStairDist = 15
   , cmaxStairsNum = 2
   , cskip         = [0, 1]  -- ban foes camping on either stairs
