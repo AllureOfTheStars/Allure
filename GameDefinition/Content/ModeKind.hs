@@ -574,12 +574,12 @@ rosterShootout = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
                                 , fhiCondPoly = hiHeroMedium }
                    , Just teamExplorer
-                   , [(5, 1, SCOUT_HERO), (5, 2, RANGER_HERO)] )
+                   , [(5, 2, RANGER_HERO), (5, 1, SCOUT_HERO)] )
                  , ( playerAntiHero { fname = "Red Collar Bro"
                                     , fcanEscape = False
                                     , fhiCondPoly = hiHeroMedium }
                    , Just teamCompetitor
-                   , [(5, 1, SCOUT_HERO), (5, 2, RANGER_HERO)] )
+                   , [(5, 2, RANGER_HERO), (5, 1, SCOUT_HERO)] )
                  , (playerHorror, Nothing, []) ]
   , rosterEnemy = [ ("Spacefarer", "Red Collar Bro")
                   , ("Spacefarer", "Horror Den")
@@ -595,7 +595,7 @@ rosterHunt = Roster
                                     , fcanEscape = False
                                     , fhiCondPoly = hiHeroMedium }
                    , Just teamCompetitor
-                   , [(6, 1, SCOUT_HERO), (6, 6, AMBUSHER_HERO)] )
+                   , [(6, 6, AMBUSHER_HERO), (6, 1, SCOUT_HERO)] )
                  , (playerHorror, Nothing, []) ]
   , rosterEnemy = [ ("Spacefarer", "Red Collar Bro")
                   , ("Spacefarer", "Horror Den")
@@ -608,10 +608,10 @@ rosterEscape = Roster
                                     , fneverEmpty = False  -- loot after killing
                                     , fhiCondPoly = hiHeroMedium }
                    , Just teamCompetitor
-                   , [(7, 1, SCOUT_HERO), (7, 6, AMBUSHER_HERO)] )
+                   , [(7, 6, AMBUSHER_HERO), (7, 1, SCOUT_HERO)] )
                  , ( playerHero {fhiCondPoly = hiHeroMedium}
                    , Just teamExplorer
-                   , [(7, 1, SCOUT_HERO), (7, 2, ESCAPIST_HERO)] )
+                   , [(7, 2, ESCAPIST_HERO), (7, 1, SCOUT_HERO)] )
                      -- second on the list to let bros occupy the exit
                  , (playerHorror, Nothing, []) ]
   , rosterEnemy = [ ("Spacefarer", "Red Collar Bro")
@@ -636,7 +636,7 @@ rosterAmbush = Roster
   { rosterList = [ ( playerHero { fcanEscape = False
                                 , fhiCondPoly = hiHeroMedium }
                    , Just teamExplorer
-                   , [(9, 1, SCOUT_HERO), (9, 5, AMBUSHER_HERO)] )
+                   , [(9, 5, AMBUSHER_HERO), (9, 1, SCOUT_HERO)] )
                  , ( playerAntiHero { fname = "Gray Off-World Mercenary"
                                     , fcanEscape = False
                                     , fhiCondPoly = hiHeroMedium }
