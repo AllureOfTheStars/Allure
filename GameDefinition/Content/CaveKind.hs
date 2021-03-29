@@ -459,7 +459,7 @@ shallowRogue = rogue
                     , (GARDENING_TOOL, 700), (IK.ANY_FLASK, 200) ]
   , cminStairDist = 15
   , cmaxStairsNum = 2
-  , cskip         = [0, 1]  -- ban foes camping on stairs
+  , cskip         = [0, 1]  -- ban foes camping on either stairs
   , cdesc         = "This close to the outermost deck, residence is not permitted and walls and doors are sturdier to contain a theoretically possible micro-meteorite breach. The entry is not closed off, though, because some passengers can't live without a regular pilgrimage to 'look outside' and the only way to the bottom-most level leads through here. Apparently, gazing at the sharp pin-points of stars and planets through the reinforced oriel glass is incomparable to watching the same through the thin polymer of wall displays.\nAnimals appear to share the fascination of outer decks, perhaps attracted by the increased gravity, nearly Earth-like, unlike elsewhere on the ship. However, they dislike many industrial fluids stored on these floors, so flinging random flasks at them works as an effective deterrent. Moreover, if you throw an unidentified flask, you can be sure you won't waste a badly needed nano medicine, because it's never stored in such large containers. Even tiny vials cost a fortune."
   }
 
@@ -636,6 +636,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , cmaxStairsNum = 0
   , cstairFreq    = []
   , cstairAllowed = []
+  , cskip         = [0]  -- don't start heroes on exit
   , cdesc         = "Graffiti scrawls across the walls and the heavy scents of stimulants hang in the air."
   }
 zoo = rogue  -- few lights and many solids, to help the less numerous heroes
