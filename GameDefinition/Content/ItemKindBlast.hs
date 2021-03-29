@@ -270,7 +270,7 @@ focusedFragmentation = ItemKind
   , iname    = "deflagration ignition"  -- improvised fertilizer, etc.
   , ifreq    = [(S_FOCUSED_FRAGMENTATION, 1), (FIRE_SOURCE, 1)]
   , iflavour = zipPlain [BrYellow]
-  , icount   = 5  -- 25 in total vs 10, higher spread
+  , icount   = 4  -- 20 in total vs 10, higher spread
   , irarity  = [(1, 1)]
   , iverbHit = "ignite"
   , iweight  = 1
@@ -289,7 +289,7 @@ spreadConcussion = ItemKind
   , ifreq    = [(S_VIOLENT_CONCUSSION, 1), (BLAST_SOURCE, 1)]
                  -- only the strongest explosion breaches
   , iflavour = zipPlain [Magenta]
-  , icount   = 14  -- pushing sometimes gets the victim out of attacker range,
+  , icount   = 12  -- pushing sometimes gets the victim out of attacker range,
                    -- but also sometimes moves to a position hit again later
   , irarity  = [(1, 1)]
   , iverbHit = "shock"
@@ -323,7 +323,7 @@ focusedConcussion = ItemKind
   , iname    = "detonation ignition"  -- stabilized high explosive liquid
   , ifreq    = [(S_FOCUSED_CONCUSSION, 1), (BLAST_SOURCE, 1)]
   , iflavour = zipPlain [BrYellow]
-  , icount   = 5  -- 30 in total vs 14, higher spread, less harm from pushing
+  , icount   = 4  -- 24 in total vs 12, higher spread, less harm from pushing
   , irarity  = [(1, 1)]
   , iverbHit = "ignite"
   , iweight  = 1
@@ -413,7 +413,7 @@ glassPiece = ItemKind
   }
 focusedGlass = glassPiece  -- when blowing up windows
   { ifreq    = [(S_FOCUSED_GLASS_HAIL, 1)]
-  , icount   = 5
+  , icount   = 4
   , iaspects = [ toLinger 0  -- 0 steps, 1 turn
                , SetFlag Fragile, SetFlag Blast
                , AddSkill SkHurtMelee $ -15 * 5 ]
@@ -1019,7 +1019,7 @@ spreadNitrogen = ItemKind
   , iname    = "nitrogen mist"
   , ifreq    = [(S_VIOLENT_SLOWNESS_MIST, 1), (COLD_SOURCE, 1)]
   , iflavour = zipPlain [BrBlack]
-  , icount   = 17
+  , icount   = 15
   , irarity  = [(1, 1)]
   , iverbHit = "freeze"
   , iweight  = 1
@@ -1041,7 +1041,7 @@ focusedNitrogen = ItemKind
   , iname    = "liquid nitrogen droplet"
   , ifreq    = [(S_FOCUSED_SLOWNESS_MIST, 1), (COLD_SOURCE, 1)]
   , iflavour = zipFancy [White]
-  , icount   = 5
+  , icount   = 4 -- 28 in total vs 15, higher spread
   , irarity  = [(1, 1)]
   , iverbHit = "freeze"
   , iweight  = 1
