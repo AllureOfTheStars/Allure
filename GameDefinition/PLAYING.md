@@ -678,7 +678,7 @@ as it's used on this level.
 of a weapon without timeout? Doesn't it mean the former is never used?
 
 A: Yes, it's never used and quite possibly it's your mistake and if not,
-at least a very special situation and the display reminds about it.
+at least a very special situation and the display reminds you about it.
 Shuffle the equipment among your team if you want the weapon
 to get used.
 
