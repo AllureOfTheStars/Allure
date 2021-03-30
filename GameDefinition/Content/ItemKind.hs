@@ -1199,7 +1199,7 @@ torchDestruct =
 light1 = ItemKind
   { isymbol  = symbolLight
   , iname    = "torch"
-  , ifreq    = [ (COMMON_ITEM, 10), (LIGHT_ATTENUATOR, 70), (WEAK_ARROW, 300)
+  , ifreq    = [ (COMMON_ITEM, 50), (LIGHT_ATTENUATOR, 70), (WEAK_ARROW, 300)
                , (FIRE_SOURCE, 1), (S_WOODEN_TORCH, 1) ]
   , iflavour = zipPlain [Brown]
   , icount   = 1
