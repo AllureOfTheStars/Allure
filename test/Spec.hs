@@ -19,6 +19,7 @@ import qualified Game.LambdaHack.Client.UI.Key as K
 import           Game.LambdaHack.Client.UI.SessionUI
 import           Game.LambdaHack.Client.UI.UIOptions
 import           Game.LambdaHack.Client.UI.UIOptionsParse
+import           Game.LambdaHack.Common.ClientOptions
 import qualified Game.LambdaHack.Content.RuleKind as RK
 import           Game.LambdaHack.Server
 
@@ -306,7 +307,7 @@ integrationTests = testGroup "integrationTests" $
   ]
   ++
   let corule = RK.makeData Content.RuleKind.standardRules
-      uiOptions = unsafePerformIO $ mkUIOptions corule True
+      uiOptions = unsafePerformIO $ mkUIOptions corule defClientOptions
       testFontset :: (Int, String) -> TestTree
       testFontset (n, fontsetName) =
         testCase ("SDL fronted; init only; " ++ fontsetName ++ " fontset") $
