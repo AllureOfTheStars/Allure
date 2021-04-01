@@ -773,7 +773,8 @@ flotationBag = armoredSkin
   , ifreq    = [(S_FLOTATION_BAG, 1)]
   , iverbHit = "uplift"
   , iaspects = [AddSkill SkArmorRanged (-15), SetFlag Durable]
-  , ieffects = [OnSmash $ Explode S_FOCUSED_FRAGMENTATION]
+  , ieffects = [OnSmash $ Explode S_FOCUSED_CONCUSSION]
+                  -- if too weak, use S_FOCUSED_FRAGMENTATION that is
                   -- less thematic than CONCUSSION, but more likely to cause
                   -- the chain reaction among peers that we are after
   , idesc    = "A large organ that enables effortless flight. It is essentially a hydrogen container with easily regulated internal pressure. It evolved a protection against blunt trauma, but not against puncture."
