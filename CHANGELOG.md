@@ -1,5 +1,233 @@
-## [v0.10.0.0](https://github.com/AllureOfTheStars/Allure/compare/v0.9.5.0...v0.10.0.0)
+## [v0.10.2.0](https://github.com/AllureOfTheStars/Allure/compare/v0.9.5.0...v0.10.2.0)
 
+- Advertise the C- Tab command instead of A-
+- Tweak some wearables rarity
+- Make intruder's explosions less deadly
+- Disable testing ubuntu fonts, because they can't be distributed in Debian
+- Updated test code wrt changes to engine
+- Be more consistent about moving corrupted files aside
+- Make torches a bit more common
+- Help AI not to leave a scout guarding the stash
+- Ensure some gems in escape scenario
+- Prevent occasionally few gardening tools
+- Make explosions definitions small and symmetric again
+- Fix heroes starting on exit in escape scenario
+- Reword some scenario texts
+- Change organ symbols to avoid 'eat' when activating them
+- Make gardening tools less common, but keep metal pipes
+- Fix 'Letting Go' message, because it could get activated
+- Hack buckler definition once more
+- Hack shield definitions to help AI understand their value
+- Explain in Q&A why sometimes timeout weapons are never used
+- Fix backstories, because they can be manually triggered
+- Replace the special periodic activation handling with effect conditions
+- Fix the healing necklace better used from the backpack
+- Replace the special effect handling under ranged with effect condition
+- Reduce and describe the micromanagement of bucklers and shields
+- Fix Letting Go not identifying even at death
+- Fix typos in content texts
+- Update documentation files
+- Add a group for exlusively tools; unused ATM
+- Fix small oil explosions never getting anywhere
+- Reword initial scenario texts
+- Talk about the relevant lore command in manual
+- Signal that lore command is sometimes context-sensitive
+- Simplify desertedAirlock description
+- Reword a virtue description
+- Make embeds easier to recognize knowing their tiles
+- Don't end stairs with a path
+- Don't describe the goal tile when performing mouse goto
+- Declare the codebase lens-free
+- Explain why whiskey not drunk, but smashed only
+- Improve initial level descriptions
+- Reword backstoryNeutral3
+- Avoid distributing test.exe in Windows packages
+- Fix comments about easy stairs vs hard stairs
+- Fix intruders not exploding on death
+- Fix Heavy Eyes preventing reaching level 4
+- Remove savefiles if config file too old
+- Bump version to v0.10.1
+- Use lz-string.js externs for minification
+- Update LambdaHack.cabal.flattened
+- Make focused explosions more likely to hit nearby actors
+- Let one more common embed provide bad missiles
+- Hlint the codebase
+- Provide an excuse why the flask from fire cabinet is not identified
+- Make barrels less common in raid tutorial
+- Explain the flags of genetic flaw
+- Avoid 'you are less more tidy'
+- Help the raid scenario opponent survive a little longer
+- Prevent too many torches in raid, causing blindness
+- Use MinorAspects flag for backstories
+- Do not include the default config file that Windows users can't read anyway
+- Read config file in UTF8 mode even on Windows
+- Prevent premature identification of 'Letting Go'
+- Prevent premature identification of backstory items
+- Update the copyright year
+- Update manual wrt backstory items addition
+- Add a comment about geneticFlaw not in CONDITION group
+- Reorder actor and organ content
+- Give the new alien a unique and glaring colour
+- Shorten a backstory name to pass validation
+- Make sure the backstory descriptions are actually a backstory
+- Register the recently added backstory items
+- Add bravery virtue
+- Add alcoholist backstory item
+- Add three more backstories and unify names
+- Add two more vices
+- Use question marks in verb effects
+- Try to amass explosive monsters on arena levels
+- Add an alien with an explosive organ (fixes #108)
+- Add the explosive flotation bag organ
+- Make sure hero professions are not randomly changing
+- Hardwire the player team continuity token
+- Unify and shorter backstory group names
+- Flesh out initial backstory items
+- Change the symbol of backstory items
+- Use the flavours specialized for stories
+- For now, assign heroes a backstory from a mix of all categories
+- Mock up categories of backstory content items
+- Add the first backstory organ
+- Make sure heroes spawned in safari mode are properly numbered
+- Add a few more hero names
+- Mark the personal genetic flaws as meta game persistent, as they should be
+- Express variety of genetic flaws as multiple content items
+- Add team continuity across scenarios to content
+- Make buckler and shield attacks and messages not so spammy
+- Fix bucklers too powerful and shields too weak when UnderRanged activates
+- Describe the new challenges in the manual
+- Make shields more common and attractive to AI
+- Add UnderMelee and tweak the Old Gorget
+- Add a potion of melee deflection
+- Buff shields with ranged deflection
+- Add deflection temporary conditions
+- Explain the pointman/leader discrepancy
+- Write key names as on the keyboard, button names as in the button
+- Unify pluralization of skills and challenges
+- Mark some game modes as tutorials
+- Split a list in manual in many paragraphs for better in-game display
+- Keep the rest of the manual in content
+- Simplify an address in manual not to spill over 80 columns
+- Hint in config file to disable the special movement keys
+- Hint that stealth if possible and AI vs player symmetric
+- Limit mentions of 'playing' not to break immersion
+- Change 'scenario' to 'adventure' to be more immersive
+- Add a scenario lore menu
+- Mention that scale needs to be configured for high dpi displays
+- Add the fullscreen option to the UI config file
+- Don't configure the unused data directories when invoking cabal
+- When installing don't create the now empty GameDefinition/fonts/
+- Don't limit jobs to 1 now that cabal shows errors fine
+- Don't embed the fonts in the web frontend version
+- Get rid of datafiles from .cabal
+- Kill the font license files that are duplicated in COPYLEFT file
+- Get rid of the now unused fontDir option
+- Embed game-supplied font files
+- Version config file
+- Write the homepage address in full in Main Menu; fixes #98
+- Make historyMax divisible by screenful
+- Don't let ESC clear messages in aiming mode; was confusing
+- Add Discord and Matrix addresses to the manual
+- Add links to discord and matrix chat
+- Tweak unique entities in content, adding 'the' as needed
+- Add extra config options for messages
+- Customize messages more comfortably
+- Simplify restarting client
+- Adjust weapon colours slightly towards colour meaning table
+- Name the robot until somebody comes up with a better name
+- Semi-retire the Allure gitter
+- Reflect changes in highlighting in the manual
+- Avoid unfortunate line gluing in main menu text
+- Wrap messages after 53 columns
+- Lower cminStairDist for shallowRogue now that margins forbidden
+- Fix a missing mouse command description
+- Update documentation to the config changes
+- Add Debian desktop files, as per packaging policy
+- Fix screensavers broken by UI faction not being the first
+- Fix 'open main menu' command of Dashboard
+- Comment the config file some more
+- Gut out Ubuntu Family Fonts from Debian package, because non-free
+- Beautify CREDITS
+- Rank the fontsets differently
+- Make the fontset tests more random
+- Update test wrt engine
+- Update TieKnot wrt engine
+- Permit text usage in tests
+- Settile on 'auxiliary fonts' instead of 'long text'
+- Update config wrt engine changes
+- Molify Debian's lintian
+- Fix license name
+- Legalize all the long text fonts even more
+- Legalize all the long text fonts
+- Add the ubuntu font family set of long text fonts
+- Add another set of long text fonts
+- Add new long text fonts based Adobe Source
+- Remove old long text fonts
+- Explain the communication overhead concept
+- Fix Allure.cabal.flattened test component
+- Parse config at compile time
+- Let foes occupiy exit in escape scenario, etc.
+- Add missing cskip specifications
+- Bring back SPACE as clearning messages
+- Update the default config wrt changes to RET keybinding
+- Don't mention the spaceship in outdoor stairs description
+- Make the brawl scenario 2-level
+- Use the increased expressiveness of initial actor generation
+- Make long poles a bit more common and tweak content a bit
+- Don't confuse the player when trying to convey the actor is malfunctioning
+- Reword ESC description again
+- Add a random item to each hero starting inventory
+- Tweak details of the content a bit
+- Update command docs to command help changes
+- Let only ESC clear messages
+- Prevent AI-inaccessible areas inside shuttles
+- Make spacesuits and tools more common, but later on
+- Avoid 'jewelry case of gain jewelry'
+- Move SPACE to CmdAim category
+- Document that MMB and RMB cycle detail level
+- Bind SPACE to cycle detail level in aiming mode
+- Advise role-playing
+- Fix calling gameover an 'endgame'
+- Advise to replay initial scenarios
+- Let the Welded Robot speak periodically
+- Don't spoil the normal storyline in the hint about blowtorch
+- Add a comment that blowtorch is safe from item polymorphing
+- Add a hint about the puzzle to the manual
+- Make the torn spacesuit even more common
+- Name or prepare for naming all uniques
+- Give all uniques their last words
+- Add extra hints in the signboards on first level
+- Reorder consistenly mode kind component definitions in the file
+- Make hints about the first puzzle more obvious and more common
+- Make torn spacesuit more common again
+- Add a couple of late spawn-only actors
+- Mark some actors as common among late spawns
+- Factor out victoryOutcomes
+- Shorten a field name to avoid >80 length lines
+- Make terrain names harder to confuse with items
+- Properly in-game document the screensaver scenarios
+- Add missing scenario motivation blurbs
+- Make the tools slightly less abundant at the start
+- Tweak the scenario meta notes
+- Rework game rules desccription similarly as in LH
+- Add bulbousBullfrog to credits
+- Add a comment to the default config with an example for rebinding a key
+- Hint in-game about how stairs work
+- Encourage interaction with terrain in outermost level
+- Clarify that nominal values of burning and wounding are used
+- Drive the point home that spacesuits differ
+- Drive the point home that tools are used for crafting
+- Be more explicit in the crafting tip
+- Ensure the position of the boss is reported as worth visiting
+- Document crafting in-game and in the manual
+- Explain why octopus copes on land
+- Add cabal.project.local.testing for 'make fastCrawl'
+- Avoid building all exes
+- Add scenario rule notes to be displayed instead of full notes
+- Use hex character literals to simplify notation
+- Add make target to test minified JS for node
+- Make the safari easter egg less common as a screensaver
+- Disable compiling from source in brew-sdl2-osx travis build, due to OOM
 - Tone down and speed up animations of the deadliest explosions
 - Make space for vertical dormitory rooms
 - Make the dormitories more realistic given how tiny they are
@@ -259,9 +487,7 @@
 - Create gardening tools in varied pairs
 - Convey more of the shuttle story via unique embedded item, not other content
 - Fix wrong game mode started due to only the first word inspected
-- Update copyright year to 2020
 - Prevent meleeing electric fence forever
-- Fix warnings generated by GHC 8.8.3
 - Port tests to tasty
 - Make weapons used for crafting less common later on
 - Prevent 'you are more foo' and immediately 'you are no longer foo'
@@ -507,7 +733,6 @@
 - Start using cabal-plan
 - Fix and improve Makefile, cabal file and CI scripts
 - Improve and update game manual and help texts wrt game changes
-- Tweak travis scripts and building docs in README
 - Countless changes in the LambdaHack engine and the induced changed in Allure
 
 ## [v0.9.5.0](https://github.com/AllureOfTheStars/Allure/compare/v0.9.4.0...v0.9.5.0)
