@@ -456,7 +456,7 @@ shallowRogue = rogue
   , cactorFreq    = filter ((/= MONSTER) . fst) $ cactorFreq rogue
   , citemNum      = 14 `d` 2
   , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.CRAWL_ITEM, 60)
-                    , (GARDENING_TOOL, 800), (IK.ANY_FLASK, 200) ]
+                    , (GARDENING_TOOL, 700), (IK.ANY_FLASK, 200) ]
   , cminStairDist = 15
   , cmaxStairsNum = 2
   , cskip         = [0, 1]  -- ban foes camping on either stairs

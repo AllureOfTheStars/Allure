@@ -1707,7 +1707,7 @@ armorLeather = ItemKind
                , (SPACESUIT_PART, 1), (ARMOR_LOOSE, 1), (STARTING_ARMOR, 100) ]
   , iflavour = zipFancy [Blue]
   , icount   = 1
-  , irarity  = [(1, 9), (10, 3)]
+  , irarity  = [(1, 7), (10, 3)]
   , iverbHit = "thud"
   , iweight  = 7000
   , idamage  = 0
@@ -1726,7 +1726,7 @@ armorLeather2 = armorLeather  -- for now, purely flavour, for better messages
   , ifreq    = [ (COMMON_ITEM, 100), (S_SPACESUIT_TROUSERS, 1)
                , (SPACESUIT_PART, 1), (STARTING_ARMOR, 100) ]
                  -- no ARMOR_LOOSE; harder to take off than a jacket
-  , irarity  = [(3, 7), (10, 4)]
+  , irarity  = [(3, 5), (10, 4)]
   , iaspects = ELabel "of spacesuit trousers" : iaspects armorLeather
   , idesc    = "Segmented trousers for open space work, with the hermetically sealed boots cut off. Surprisingly flexible and airy, yet micro-meteorite-proof."
   }
@@ -1931,7 +1931,7 @@ heavyBoot = ItemKind
                  -- no STARTING_ARMOR, because the malus tricky for newbies
   , iflavour = zipFancy [Magenta]
   , icount   = 1
-  , irarity  = [(1, 13), (3 * 10/15, 13), (4 * 10/15, 1)]
+  , irarity  = [(1, 12), (3 * 10/15, 12), (4 * 10/15, 1)]
   , iverbHit = "sock"
   , iweight  = 100000  -- including the fake gravity mass
   , idamage  = 6 `d` 1
