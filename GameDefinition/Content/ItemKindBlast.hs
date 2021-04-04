@@ -413,7 +413,7 @@ glassPiece = ItemKind
   }
 focusedGlass = glassPiece  -- when blowing up windows
   { ifreq    = [(S_FOCUSED_GLASS_HAIL, 1)]
-  , icount   = 4
+  , icount   = 2
   , iaspects = [ toLinger 0  -- 0 steps, 1 turn
                , SetFlag Fragile, SetFlag Blast
                , AddSkill SkHurtMelee $ -15 * 5 ]
