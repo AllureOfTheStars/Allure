@@ -272,8 +272,6 @@ build-binary-v1:
 	cabal v1-install --force-reinstalls --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization --only-dependencies
 	cabal v1-configure --disable-library-profiling --disable-profiling --enable-optimization
 	cabal v1-build exe:Allure
-	mkdir -p AllureOfTheStars/GameDefinition
-	cabal v1-copy --destdir=AllureOfTheStarsInstall
 
 copy-binary:
 	cp $$(cabal-plan list-bin Allure) AllureOfTheStars
@@ -287,9 +285,9 @@ configure-binary-v2-vty:
 build-binary-v2:
 	cabal build --project-file=cabal.project.LH.dir --only-dependencies .
 	cabal build --project-file=cabal.project.LH.dir exe:Allure
-	mkdir -p AllureOfTheStars/GameDefinition
 
 copy-directory:
+	mkdir -p AllureOfTheStars/GameDefinition
 	cp GameDefinition/InGameHelp.txt AllureOfTheStars/GameDefinition
 	cp GameDefinition/PLAYING.md AllureOfTheStars/GameDefinition
 	cp README.md AllureOfTheStars
