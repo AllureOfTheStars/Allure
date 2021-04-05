@@ -23,11 +23,10 @@ import           Game.LambdaHack.Common.ClientOptions
 import qualified Game.LambdaHack.Content.RuleKind as RK
 import           Game.LambdaHack.Server
 
-import qualified Client.UI.Content.Input as Content.Input
-import qualified Content.RuleKind
-
 -- For the case of flattened .cabal file, to avoid ambiguity.
-import "Allure" TieKnot
+import qualified "Allure" Client.UI.Content.Input as Content.Input
+import qualified "Allure" Content.RuleKind
+import           "Allure" TieKnot
 
 import SessionUIMock
 
