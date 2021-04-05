@@ -273,6 +273,9 @@ build-binary-v1:
 	cabal v1-configure --disable-library-profiling --disable-profiling --enable-optimization
 	cabal v1-build exe:Allure
 
+copy-binary-v1:
+	cabal v1-copy --destdir=AllureOfTheStarsInstall
+
 copy-binary:
 	cp $$(cabal-plan list-bin Allure) AllureOfTheStars
 
@@ -296,7 +299,7 @@ copy-directory:
 	cp COPYLEFT AllureOfTheStars
 	cp CREDITS AllureOfTheStars
 
-build-binary-common: build-binary-v1 copy-directory
+build-binary-common: build-binary-v1 copy-directory copy-binary-v1
 
 build-binary-windows: configure-binary-v2 build-binary-v2 copy-directory
 
