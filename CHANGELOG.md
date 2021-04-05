@@ -46,7 +46,6 @@
 - Fix intruders not exploding on death
 - Fix Heavy Eyes preventing reaching level 4
 - Remove savefiles if config file too old
-- Bump version to v0.10.1
 - Use lz-string.js externs for minification
 - Update LambdaHack.cabal.flattened
 - Make focused explosions more likely to hit nearby actors

@@ -6,7 +6,7 @@ name:          Allure
 -- PVP summary:+-+------- breaking API changes
 --             | |  +----- minor or non-breaking API additions
 --             | |  | +--- code changes with no API change
-version:       0.10.1.0
+version:       0.10.2.0
 synopsis:      Near-future Sci-Fi roguelike and tactical squad combat game
 description: Allure of the Stars is a near-future Sci-Fi roguelike
              and tactical squad combat game. Binaries and the game manual
@@ -144,7 +144,7 @@ library
                       Implementation.MonadServerImplementation
   other-modules:      Paths_Allure
   autogen-modules:    Paths_Allure
-  build-depends:      ,LambdaHack >= 0.10.1.0 && < 0.10.2.0
+  build-depends:      ,LambdaHack >= 0.10.2.0 && < 0.10.3.0
                       ,async
                       ,base >= 4.10 && < 99
                       ,enummapset
