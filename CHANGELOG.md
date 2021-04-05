@@ -1,10 +1,10 @@
 ## [v0.10.2.0](https://github.com/AllureOfTheStars/Allure/compare/v0.9.5.0...v0.10.2.0)
 
-- Advertise the C- Tab command instead of A-
+- Make GLASS_HAIL less deadly and less noisy visually
+- Advertise the C-Tab command instead of A-Tab
 - Tweak some wearables rarity
 - Make intruder's explosions less deadly
 - Disable testing ubuntu fonts, because they can't be distributed in Debian
-- Updated test code wrt changes to engine
 - Be more consistent about moving corrupted files aside
 - Make torches a bit more common
 - Help AI not to leave a scout guarding the stash
@@ -149,8 +149,6 @@
 - Beautify CREDITS
 - Rank the fontsets differently
 - Make the fontset tests more random
-- Update test wrt engine
-- Update TieKnot wrt engine
 - Permit text usage in tests
 - Settile on 'auxiliary fonts' instead of 'long text'
 - Update config wrt engine changes
