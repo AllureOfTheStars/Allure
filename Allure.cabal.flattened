@@ -181,7 +181,8 @@ test-suite test
   hs-source-dirs:     test
   main-is:            Spec.hs
   other-modules:      SessionUIMock
-  build-depends:      ,Allure
+  build-depends:      ,LambdaHack
+                      ,Allure
                       ,async
                       ,base
                       ,containers
