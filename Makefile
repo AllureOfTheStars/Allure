@@ -279,7 +279,7 @@ copy-binary:
 	cp $$(cabal-plan list-bin Allure) AllureOfTheStars
 
 configure-binary-v2:
-	cabal configure --project-file=cabal.project.LH.dir --disable-tests --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization
+	cabal configure --project-file=cabal.project.LH.dir --disable-tests --disable-library-profiling --disable-profiling --enable-optimization
 
 configure-binary-v2-vty:
 	cabal configure -fvty --project-file=cabal.project.LH.dir --disable-tests --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization
