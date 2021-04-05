@@ -11,7 +11,7 @@ and tactical squad combat game. Binaries and the game manual
 are available at the homepage[6]. You can also try the game out
 in the browser at http://allureofthestars.com/play.
 
-![gameplay screenshot](https://raw.githubusercontent.com/AllureOfTheStars/media/master/screenshot/allureofthestars.com.updown.png)
+![gameplay screenshot](https://raw.githubusercontent.com/AllureOfTheStars/media/master/screenshot/allureofthestars.com.second.attempt.gif)
 
 Not a single image in this game. You have to imagine everything
 yourself, like with a book (a grown-up book, without pictures).
