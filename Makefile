@@ -316,7 +316,7 @@ build-binary-macosx: build-directory
 	OS_VERSION=$$(sw_vers -productVersion); \
 	tar -czf Allure_$${LH_VERSION}_macosx-$${OS_VERSION}-amd64.tar.gz AllureOfTheStars
 
-build-directory-vty: configure-binary-v2-vty build-binary-v2 copy-binary copy-directory
+build-directory-vty: configure-binary-v2-vty build-binary-v2 copy-directory copy-binary
 
 build-binary-screen-reader-ubuntu: build-directory-vty
 	AllureOfTheStars/Allure --version > /dev/null; \
