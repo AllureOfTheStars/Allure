@@ -730,7 +730,7 @@
 - Start using cabal-plan
 - Fix and improve Makefile, cabal file and CI scripts
 - Improve and update game manual and help texts wrt game changes
-- Countless changes in the LambdaHack engine and the induced changed in Allure
+- Countless changes in the LambdaHack engine and the induced changes in Allure
 
 ## [v0.9.5.0](https://github.com/AllureOfTheStars/Allure/compare/v0.9.4.0...v0.9.5.0)
 
