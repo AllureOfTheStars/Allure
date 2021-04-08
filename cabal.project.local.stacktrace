@@ -12,5 +12,4 @@ package *
   documentation: True
   library-profiling: True
 
-packages: ./
-          ../LambdaHack
+packages: ../LambdaHack

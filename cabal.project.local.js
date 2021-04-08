@@ -17,6 +17,5 @@ package LambdaHack
 package Allure
   flags: +release -supportNodeJS
 
-packages: ./
-          ../LambdaHack
+packages: ../LambdaHack
 
