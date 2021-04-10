@@ -191,10 +191,8 @@ test-suite test
   build-depends:      ,LambdaHack
                       ,this-game-content
                       ,this-game-src
-                      ,async
                       ,base
                       ,containers
-                      ,filepath
                       ,optparse-applicative
                       ,tasty >= 1.0
                       ,tasty-hunit

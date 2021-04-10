@@ -184,10 +184,8 @@ test-suite test
   other-modules:      SessionUIMock
   build-depends:      ,LambdaHack
                       ,Allure
-                      ,async
                       ,base
                       ,containers
-                      ,filepath
                       ,optparse-applicative
                       ,tasty >= 1.0
                       ,tasty-hunit
