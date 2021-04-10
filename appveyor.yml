@@ -7,7 +7,7 @@ cache:
   - C:\Users\appveyor\AppData\Roaming\ghc -> appveyor.yml
 
 install:
-  - appveyor-retry choco install cabal --version 3.0.0.0
+  - appveyor-retry choco install cabal --version 2.4.1.0
   - appveyor-retry choco install ghc --version 8.4.4 | grep -v '^Extracting the last GHC that works on Windows Vista'
 
   # breaks appveyor-retry: refreshenv
