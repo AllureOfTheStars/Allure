@@ -1,4 +1,4 @@
-cabal-version: 2.4
+cabal-version: 3.0
 name:          Allure
 -- The package version. See the Haskell package versioning policy (PVP)
 -- for standards guiding when and how versions should be incremented.
@@ -141,8 +141,7 @@ library this-game-content
                       Content.TileKind
   other-modules:      Paths_Allure
   autogen-modules:    Paths_Allure
-  build-depends:      ,LambdaHack >= 0.10.2.0 && < 0.10.3.0
--- TODO: instead:     ,definition
+  build-depends:      ,LambdaHack:definition >= 0.10.2.0 && < 0.10.3.0
                       ,base >= 4.10 && < 99
                       ,filepath
                       ,hsini
@@ -158,7 +157,8 @@ library this-game-src
   other-modules:      Client.UI.Content.Screen
                       Implementation.MonadClientImplementation
                       Implementation.MonadServerImplementation
-  build-depends:      ,LambdaHack
+  build-depends:      ,LambdaHack:definition
+                      ,LambdaHack
                       ,this-game-content
                       ,async
                       ,base
@@ -175,7 +175,8 @@ library this-game-src
 executable Allure
   import: options, exe-options
   main-is:            GameDefinition/Main.hs
-  build-depends:      ,LambdaHack
+  build-depends:      ,LambdaHack:definition
+                      ,LambdaHack
                       ,this-game-src
                       ,async
                       ,base
@@ -188,7 +189,8 @@ test-suite test
   hs-source-dirs:     test
   main-is:            Spec.hs
   other-modules:      SessionUIMock
-  build-depends:      ,LambdaHack
+  build-depends:      ,LambdaHack:definition
+                      ,LambdaHack
                       ,this-game-content
                       ,this-game-src
                       ,base
