@@ -265,10 +265,10 @@ jobs:
       compiler: ghc-9.0.1
       addons: {"apt":{"sources":[{"sourceline":"deb http://ppa.launchpad.net/hvr/ghc/ubuntu xenial main","key_url":"https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x063dab2bdc0b3f9fcebc378bff3aeacef6f88286"}],"packages":["ghc-9.0.1","cabal-install-3.4"]}}
       os: linux
-    - env: GTKVTY=gtk
-      compiler: ghc-9.0.1
-      addons: {"apt":{"sources":[{"sourceline":"deb http://ppa.launchpad.net/hvr/ghc/ubuntu xenial main","key_url":"https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x063dab2bdc0b3f9fcebc378bff3aeacef6f88286"}],"packages":["ghc-9.0.1","cabal-install-3.4","libgtk-3-dev"]}}
-      os: linux
+#    - env: GTKVTY=gtk
+#      compiler: ghc-9.0.1
+#      addons: {"apt":{"sources":[{"sourceline":"deb http://ppa.launchpad.net/hvr/ghc/ubuntu xenial main","key_url":"https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x063dab2bdc0b3f9fcebc378bff3aeacef6f88286"}],"packages":["ghc-9.0.1","cabal-install-3.4","libgtk-3-dev"]}}
+#      os: linux
     - env: GTKVTY=sdl
       compiler: ghc-9.0.1
       addons: {"apt":{"sources":[{"sourceline":"deb http://ppa.launchpad.net/hvr/ghc/ubuntu xenial main","key_url":"https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x063dab2bdc0b3f9fcebc378bff3aeacef6f88286"}],"packages":["ghc-9.0.1","cabal-install-3.4","libsdl2-dev","libsdl2-ttf-dev"]}}
@@ -354,34 +354,34 @@ script:
 
   - |
     if [ $GTKVTY = "gtk" ]; then
-      ${CABAL} new-build $WITHCOMPILER --allow-newer --only-dependencies -fgtk ${TEST} ${BENCH} -j2 .;
-      ${CABAL} new-build $WITHCOMPILER --allow-newer -fgtk ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fgtk ${TEST} ${BENCH} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -fgtk ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "gtk-v2" ]; then
-      ${CABAL} new-build $WITHCOMPILER --allow-newer --only-dependencies -fgtk ${TEST} ${BENCH} -j2 .;
-      ${CABAL} new-build $WITHCOMPILER --allow-newer -v2 -fgtk ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fgtk ${TEST} ${BENCH} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -v2 -fgtk ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "sdl" ]; then
-      ${CABAL} new-build $WITHCOMPILER --allow-newer --only-dependencies -fsdl ${TEST} ${BENCH} -j2 .;
-      ${CABAL} new-build $WITHCOMPILER --allow-newer -fsdl ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fsdl ${TEST} ${BENCH} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -fsdl ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "sdl-v2" ]; then
-      ${CABAL} new-build $WITHCOMPILER --allow-newer --only-dependencies -fsdl ${TEST} ${BENCH} -j2 .;
-      ${CABAL} new-build $WITHCOMPILER --allow-newer -v2 -fsdl ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fsdl ${TEST} ${BENCH} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -v2 -fsdl ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "vty" ]; then
-      ${CABAL} new-build $WITHCOMPILER --allow-newer --only-dependencies -fvty -fwith_expensive_assertions ${TEST} ${BENCH} -j2 .;
-      ${CABAL} new-build $WITHCOMPILER --allow-newer -fvty ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fvty -fwith_expensive_assertions ${TEST} ${BENCH} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -fvty ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "curses" ]; then
-      ${CABAL} new-build $WITHCOMPILER --allow-newer --only-dependencies -fcurses -fwith_expensive_assertions -f-release ${TEST} ${BENCH} -j2 .;
-      ${CABAL} new-build $WITHCOMPILER --allow-newer -fcurses -f-release ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fcurses -fwith_expensive_assertions -f-release ${TEST} ${BENCH} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -fcurses -f-release ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "noopt" ]; then
-      ${CABAL} new-build $WITHCOMPILER --allow-newer --only-dependencies -fvty --ghc-options="-O0 -fno-ignore-asserts" ${TEST} ${BENCH} -j2 .;
-      ${CABAL} new-build $WITHCOMPILER --allow-newer -fvty --ghc-options="-O0 -fno-ignore-asserts" ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fvty --ghc-options="-O0 -fno-ignore-asserts" ${TEST} ${BENCH} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -fvty --ghc-options="-O0 -fno-ignore-asserts" ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "opt2" ]; then
-      ${CABAL} new-build $WITHCOMPILER --allow-newer --only-dependencies -fcurses --ghc-options="-O2 -fno-ignore-asserts" ${TEST} ${BENCH} -j2 .;
-      travis_retry ${CABAL} new-build $WITHCOMPILER --allow-newer -fcurses --ghc-options="-O2 -fno-ignore-asserts" ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fcurses --ghc-options="-O2 -fno-ignore-asserts" ${TEST} ${BENCH} -j2 .;
+      travis_retry ${CABAL} new-build $WITHCOMPILER -fcurses --ghc-options="-O2 -fno-ignore-asserts" ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "asserts" ]; then
-      ${CABAL} new-build $WITHCOMPILER --allow-newer --only-dependencies -fvty -fwith_expensive_assertions ${TEST} ${BENCH} -j2 .;
-      ${CABAL} new-build $WITHCOMPILER --allow-newer -fvty -fwith_expensive_assertions ${TEST} ${BENCH} -j1 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fvty -fwith_expensive_assertions ${TEST} ${BENCH} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER -fvty -fwith_expensive_assertions ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "asserts_noopt" ]; then
-      ${CABAL} new-build $WITHCOMPILER --allow-newer --only-dependencies -fcurses -fwith_expensive_assertions --ghc-options="-O0 -fno-ignore-asserts" ${TEST} ${BENCH} -j2 .;
+      ${CABAL} new-build $WITHCOMPILER --only-dependencies -fcurses -fwith_expensive_assertions --ghc-options="-O0 -fno-ignore-asserts" ${TEST} ${BENCH} -j2 .;
       ${CABAL} new-build $WITHCOMPILER --allow-newer -fcurses -fwith_expensive_assertions --ghc-options="-O0 -fno-ignore-asserts" ${TEST} ${BENCH} -j1 .;
     elif [ $GTKVTY = "asserts_opt2" ]; then
       ${CABAL} new-build $WITHCOMPILER --allow-newer --only-dependencies -fvty -fwith_expensive_assertions --ghc-options="-O2 -fno-ignore-asserts" ${TEST} ${BENCH} -j2 .;
