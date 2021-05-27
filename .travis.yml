@@ -322,7 +322,7 @@ install:
   - rm -fv cabal.project.local cabal.project.freeze
   - travis_retry ${CABAL} v2-update -v
   - |
-  - "for pkg in $($HCPKG list --simple-output); do echo $pkg | sed 's/-[^-]*$//' | (grep -vE -- '^(Allure)$' || true) | sed 's/^/constraints: /' | sed 's/$/ installed/' >> cabal.project.local; done"
+#  - "for pkg in $($HCPKG list --simple-output); do echo $pkg | sed 's/-[^-]*$//' | (grep -vE -- '^(Allure)$' || true) | sed 's/^/constraints: /' | sed 's/$/ installed/' >> cabal.project.local; done"
   - cat cabal.project || true
   - cat cabal.project.local || true
   - if [ -f "./configure.ac" ]; then (cd "." && autoreconf -i); fi
@@ -349,7 +349,7 @@ script:
   - cd Allure-*
 
   - cp $TOP/cabal.project.LH.dir cabal.project
-  - cp $TOP/cabal.project.local .
+  - cp $TOP/cabal.project.local . || true
   - cp $TOP/Makefile .
 
   - |
