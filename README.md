@@ -174,7 +174,7 @@ Testing and debugging
 The [Makefile](https://github.com/AllureOfTheStars/Allure/blob/master/Makefile)
 contains many sample test commands.
 Numerous tests that use the screensaver game modes (AI vs. AI)
-and the teletype frontend are gathered in `make test`.
+and the teletype frontend are gathered in `make test-locally`.
 Of these, travis runs `test-travis` on each push to github.
 Test commands with prefix `frontend` start AI vs. AI games with
 the standard, user-friendly frontend and auto-locating the game binary.
