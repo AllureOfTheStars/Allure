@@ -129,10 +129,10 @@ for the browser is more complicated and requires the ghcjs[15] compiler
 and optionally the Google Closure Compiler[16].
 
 The latest official version of the game can be downloaded,
-compiled for SDL2 and installed automatically using the Cabal tool,
-which may already be a part of your OS distribution, but if it's too old,
-you can get it from The Haskell Platform[7] or using ghcup[19] or others.
-Version 2.4.1 or later of cabal is required and the newer the GHC, the better.
+compiled for SDL2 and installed automatically using the 'cabal' tool,
+which may already be a part of your OS distribution, but if it's too old
+(version 2.4.1 or later is required) you can download the whole current
+compilation suite as described at https://www.haskell.org/downloads/.
 Get the Allure of the Stars package from Hackage[3] as follows
 
     cabal update
@@ -258,12 +258,8 @@ Exceptions and detailed copyright information is contained in file COPYLEFT.
 [4]: https://github.com/AllureOfTheStars/Allure/wiki
 [5]: https://github.com/AllureOfTheStars/Allure
 [6]: http://allureofthestars.com
-[7]: https://www.haskell.org/platform
-
-
 [10]: https://github.com/LambdaHack/LambdaHack
 [11]: https://github.com/AllureOfTheStars/Allure/releases
 [15]: https://github.com/ghcjs/ghcjs
 [16]: https://www.npmjs.com/package/google-closure-compiler
 [18]: https://ci.appveyor.com/project/Mikolaj/allure/build/artifacts
-[19]: https://www.haskell.org/ghcup/
