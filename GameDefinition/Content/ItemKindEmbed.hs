@@ -25,7 +25,6 @@ import Content.ItemKindBlast
 import Content.ItemKindOrgan
 import Content.ItemKindTemporary
 import Game.LambdaHack.Content.ItemKind
-import Game.LambdaHack.Content.TileKind (floorSymbol)
 import Game.LambdaHack.Core.Dice
 import Game.LambdaHack.Definition.Ability
 import Game.LambdaHack.Definition.Color
@@ -504,7 +503,7 @@ shallowWater = ItemKind
   , ikit     = []
   }
 straightPath = ItemKind
-  { isymbol  = floorSymbol
+  { isymbol  = toContentSymbol '.'
   , iname    = "straight path"
   , ifreq    = [(STRAIGHT_PATH, 1)]
   , iflavour = zipFancy [BrRed]
@@ -519,7 +518,7 @@ straightPath = ItemKind
   , ikit     = []
   }
 frozenGround = ItemKind
-  { isymbol  = floorSymbol
+  { isymbol  = toContentSymbol '.'
   , iname    = "shade"
   , ifreq    = [(FROZEN_GROUND, 1)]
   , iflavour = zipFancy [BrBlue]
