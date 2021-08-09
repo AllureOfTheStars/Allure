@@ -54,7 +54,7 @@ standardRules = RuleContent
   , rsymbolProjectile = '{'
   , rsymbolLight      = '('
   , rsymbolTool       = ')'
-  , rsymbolSpecial    = '*'  -- don't overuse, because it clashes with projectiles
+  , rsymbolSpecial    = '*'  -- don't overuse; it clashes with projectiles
   , rsymbolGold       = '$'  -- also gems
   , rsymbolNecklace   = '"'
   , rsymbolRing       = '='
@@ -68,6 +68,7 @@ standardRules = RuleContent
   , rsymbolPolearm    = '/'
   , rsymbolEdged      = '|'
   , rsymbolHafted     = '\\'
-  , rsymbolWand       = '-'  -- magical rod, transmitter, pistol, rifle, instrument
-  , rsymbolFood       = ','  -- also body part; distinct from floor: not middle dot
+  , rsymbolWand       = '-'  -- transmitter, pistol, rifle, instrument
+  , rsymbolFood       = ','  -- also body part;
+                             -- distinct from floor: not middle dot
   }
