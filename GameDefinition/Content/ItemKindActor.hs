@@ -339,7 +339,8 @@ nose = ItemKind  -- sniffs only; a tank requiring multiple weapon hits to beat;
                , SetFlag Durable ]
   , ieffects = []
   , idesc    = "A blind, slimy mass of fluid tissue. You'd think it's powerless, but as soon as it touches your trembling body, slapping, stinging and burning, it won't let go."
-  , ikit     = [ (S_STING, COrgan), (S_TIP, COrgan), (S_LIP, COrgan)
+  , ikit     = [ (S_TIP, COrgan), (S_LIP, COrgan)  -- at least one non-timed
+               , (S_STING, COrgan)
                , (S_NOSTRIL, COrgan), (S_HUNGRY, COrgan)
                , (S_SAPIENT_BRAIN, COrgan) ]  -- no sight nor hearing
   }
@@ -369,15 +370,15 @@ elbow = ItemKind
                , (ANY_ARROW, CEqp), (ANY_ARROW, CStash)
                , (WEAK_ARROW, CEqp), (WEAK_ARROW, CStash) ]
   }
+
+-- * Allure-specific aliens
+
 elbowTank = elbow
   { iname    = "armored shooter"
   , iflavour = zipFancy [Magenta]
   , irarity  = [(10, 0), (40, 30)]  -- only appears among late spawns
   , ikit     = ikit elbow ++ [(S_ARMORED_SKIN, COrgan), (S_JET_BOOSTER, COrgan)]
   }
-
--- * Allure-specific aliens
-
 -- TODO: the main fun in this actor will be chain explosions and for this,
 -- it needs to spawn in groups and move in groups. Neither is implemented yet.
 -- For now, we try to amass the actors on arena levels over water and in rooms.
@@ -748,7 +749,7 @@ rhinoceros = ItemKind  -- impressive tank boss with some armor
   , iweight  = 80000
   , idamage  = 0
   , iaspects = [ SetFlag Unique, ELabel "the Maddened Rhinoceros"
-               , AddSkill SkMaxHP 200, AddSkill SkMaxCalm 60
+               , AddSkill SkMaxHP 200, AddSkill SkMaxCalm 60  -- quite late
                , AddSkill SkSpeed 27, AddSkill SkNocto 2
                , AddSkill SkHurtMelee 50  -- mass gives extra damage
                , AddSkill SkAggression 2
