@@ -126,27 +126,27 @@ sandstoneRock,    steelScrap, needle, dart, spike, spike2, slingStone, slingBull
 
 symbolProjectile, _symbolLauncher, symbolLight, symbolTool, symbolSpecial, symbolGold, symbolNecklace, symbolRing, symbolPotion, symbolFlask, symbolScroll, symbolTorsoArmor, symbolMiscArmor, symbolClothes, symbolShield, symbolPolearm, symbolEdged, symbolHafted, symbolWand, _symbolStaff, symbolFood :: Char
 
-symbolProjectile = rsymbolProjectile standardRules  -- '{'
-_symbolLauncher  = '}'
-symbolLight      = '('
-symbolTool       = ')'
-symbolSpecial    = '*'  -- don't overuse, because it clashes with projectiles
-symbolGold       = '$'  -- also gems
-symbolNecklace   = '"'
-symbolRing       = '='
-symbolPotion     = '!'  -- concoction, bottle, jar, vial, canister
-symbolFlask      = '!'
-symbolScroll     = '?'  -- book, note, tablet, remote, chip, card
-symbolTorsoArmor = '['
-symbolMiscArmor  = '['
-symbolClothes    = '['
-symbolShield     = ']'
-symbolPolearm    = '/'
-symbolEdged      = '|'
-symbolHafted     = '\\'
-symbolWand       = '-'  -- magical rod, transmitter, pistol, rifle, instrument
-_symbolStaff     = '_'  -- scanner
-symbolFood       = ','  -- also body part; distinct from floor: not middle dot
+symbolProjectile = rsymbolProjectile standardRules
+_symbolLauncher  = toContentSymbol '}'
+symbolLight      = rsymbolLight standardRules
+symbolTool       = rsymbolTool standardRules
+symbolSpecial    = rsymbolSpecial standardRules
+symbolGold       = rsymbolGold standardRules
+symbolNecklace   = rsymbolNecklace standardRules
+symbolRing       = rsymbolRing standardRules
+symbolPotion     = rsymbolPotion standardRules
+symbolFlask      = rsymbolFlask standardRules
+symbolScroll     = rsymbolScroll standardRules
+symbolTorsoArmor = rsymbolTorsoArmor standardRules
+symbolMiscArmor  = rsymbolMiscArmor standardRules
+symbolClothes    = rsymbolClothes standardRules
+symbolShield     = rsymbolShield standardRules
+symbolPolearm    = rsymbolPolearm standardRules
+symbolEdged      = rsymbolEdged standardRules
+symbolHafted     = rsymbolHafted standardRules
+symbolWand       = rsymbolWand standardRules
+_symbolStaff     = toContentSymbol '_'  -- scanner
+symbolFood       = rsymbolFood standardRules
 
 -- ** Thrown weapons
 
