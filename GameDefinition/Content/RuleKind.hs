@@ -58,7 +58,7 @@ standardRules = RuleContent
   , rsymbolGold       = '$'  -- also gems
   , rsymbolNecklace   = '"'
   , rsymbolRing       = '='
-  , rsymbolPotion     = '!'  -- concoction, bottle, jar, vial, canister
+  , rsymbolPotion     = '!'  -- also concoction, bottle, jar, vial, canister
   , rsymbolFlask      = '!'
   , rsymbolScroll     = '?'  -- book, note, tablet, remote, chip, card
   , rsymbolTorsoArmor = '['

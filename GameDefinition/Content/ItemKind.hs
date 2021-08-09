@@ -145,7 +145,7 @@ symbolPolearm    = rsymbolPolearm standardRules
 symbolEdged      = rsymbolEdged standardRules
 symbolHafted     = rsymbolHafted standardRules
 symbolWand       = rsymbolWand standardRules
-_symbolStaff     = toContentSymbol '_'  -- scanner
+_symbolStaff     = toContentSymbol '_'  -- scanner, radar
 symbolFood       = rsymbolFood standardRules
 
 -- ** Thrown weapons
