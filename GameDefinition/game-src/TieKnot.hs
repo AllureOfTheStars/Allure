@@ -78,6 +78,7 @@ tieKnotForAsync options@ServerOptions{ sallClear
       coitem = IK.makeData itemContent
                            Content.ItemKind.groupNamesSingleton
                            Content.ItemKind.groupNames
+                           Content.RuleKind.standardRules
       coItemSpeedup = speedupItem coitem
       cotile = TK.makeData Content.TileKind.content
                            Content.TileKind.groupNamesSingleton

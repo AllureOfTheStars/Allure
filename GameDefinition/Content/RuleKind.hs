@@ -52,4 +52,22 @@ standardRules = RuleContent
   , rnearby = 30
   , rstairWordCarried = ["staircase", "lift"]
   , rsymbolProjectile = '{'
+  , rsymbolLight      = '('
+  , rsymbolTool       = ')'
+  , rsymbolSpecial    = '*'  -- don't overuse, because it clashes with projectiles
+  , rsymbolGold       = '$'  -- also gems
+  , rsymbolNecklace   = '"'
+  , rsymbolRing       = '='
+  , rsymbolPotion     = '!'  -- concoction, bottle, jar, vial, canister
+  , rsymbolFlask      = '!'
+  , rsymbolScroll     = '?'  -- book, note, tablet, remote, chip, card
+  , rsymbolTorsoArmor = '['
+  , rsymbolMiscArmor  = '['
+  , rsymbolClothes    = '['
+  , rsymbolShield     = ']'
+  , rsymbolPolearm    = '/'
+  , rsymbolEdged      = '|'
+  , rsymbolHafted     = '\\'
+  , rsymbolWand       = '-'  -- magical rod, transmitter, pistol, rifle, instrument
+  , rsymbolFood       = ','  -- also body part; distinct from floor: not middle dot
   }
