@@ -171,8 +171,12 @@ to switch to the vty console frontend optimized for screen readers, run
 Testing and debugging
 ---------------------
 
+Integration tests can be run and displayed with
+
+    cabal test test --enable-tests --test-show-details=direct
+
 The [Makefile](https://github.com/AllureOfTheStars/Allure/blob/master/Makefile)
-contains many sample test commands.
+contains many sample automated play test commands.
 Numerous tests that use the screensaver game modes (AI vs. AI)
 and the teletype frontend are gathered in `make test-locally`.
 Of these, travis runs `test-travis` on each push to github.
