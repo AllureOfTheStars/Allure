@@ -106,14 +106,14 @@ rogue = CaveKind
   , chidden       = 7
   , cactorCoeff   = 50  -- the maze requires time to explore
   , cactorFreq    = [(MONSTER, 50), (ANIMAL, 20), (ROBOT, 30)]
-  , citemNum      = 17 `d` 2 + 25 - 25 `dL` 1  -- at depth quality over quantity
+  , citemNum      = 17 `d` 2 + 25 - 25 `dL` 1
+      -- deep down quality over quantity; generally not too random, 
+      -- sacrificing replayability for consistent balance
   , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.CRAWL_ITEM, 20)
     -- CRAWL_ITEM items are used only in long scenarios, such as multi-level
     -- dungeon crawl; these may be powerful or a mundate item,
     -- unlike @TREASURE@ items
                     , (IK.TREASURE, 40) ]
-    -- note that the groups are flattened; e.g., if an item is moved to another
-    -- group included here with the same weight, the outcome wouldn't change
   , cplaceFreq    = [(ROGUE, 1)]
   , cpassable     = False
   , labyrinth     = False
@@ -139,7 +139,7 @@ rogue = CaveKind
   , cskip         = []
   , cdesc         = "Winding tunnels stretch into the dark. A few areas are passable but the remainder is packed with tanks and cells of raw materials and machinery."
   }
-residential = rogue
+residential = rogue  -- an alternative with lit corridors but dark rooms
   { cfreq         = [(DEFAULT_RANDOM, 70), (CAVE_RESIDENTIAL, 1)]
   , cname         = "Residential area"
   , cminPlaceSize = DiceXY (2 `d` 2 + 4) (1 `d` 2 + 9)  -- merge vert.
@@ -344,7 +344,7 @@ power = noise
 empty = rogue
   { csymbol       = 'E'
   , cname         = "Construction site"
-  , cfreq         = []
+  , cfreq         = []  -- just a template for some others
   , ccellSize     = DiceXY (2 `d` 8 + 14) 16
   , cminPlaceSize = DiceXY 9 9  -- normally don't merge
   , cmaxPlaceSize = DiceXY 50 20  -- often maximize horizontally
@@ -519,7 +519,7 @@ brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
   , citemFreq     = [ (IK.COMMON_ITEM, 50)
                     , (STARTING_WEAPON, 200), (STARTING_ARMOR, 400)
                     , (IK.ANY_SCROLL, 100), (IK.ANY_POTION, 600) ]
-                    -- introducing vials in this scenario
+                      -- introducing vials in this scenario
   , cplaceFreq    = [(BRAWL, 1)]
   , cpassable     = True
   , cdefTile      = BRAWL_SET_LIT
