@@ -7,7 +7,7 @@
 -- | Actor (or rather actor body trunk) definitions.
 module Content.ItemKindActor
   ( -- * Group name patterns
-    pattern S_WOODEN_TORCH
+    pattern S_WOODEN_TORCH, pattern S_SANDSTONE_ROCK
   , pattern HERO, pattern SCOUT_HERO, pattern RANGER_HERO, pattern ESCAPIST_HERO, pattern AMBUSHER_HERO, pattern BRAWLER_HERO, pattern SOLDIER_HERO, pattern CIVILIAN, pattern MONSTER, pattern MOBILE_MONSTER, pattern SCOUT_MONSTER, pattern ANIMAL, pattern MOBILE_ANIMAL, pattern IMMOBILE_ANIMAL
   , pattern ADD_SIGHT, pattern ARMOR_RANGED, pattern ADD_NOCTO_1, pattern WEAK_ARROW, pattern LIGHT_ATTENUATOR, pattern FIREPROOF_CLOTH, pattern RING_OF_OPPORTUNITY_SNIPER, pattern ANY_ARROW, pattern STARTING_ARMOR, pattern STARTING_WEAPON, pattern GEM
   , pattern CRAWL_HERO, pattern MERCENARY_HERO, pattern AQUATIC_ANIMAL, pattern AQUATIC_MONSTER, pattern EXPLOSIVE_MONSTER, pattern ROBOT, pattern MOBILE_ROBOT, pattern IMMOBILE_ROBOT, pattern CONSTRUCTION_ROBOT
@@ -33,9 +33,9 @@ import Game.LambdaHack.Definition.Flavour
 
 actorsGNSingleton :: [GroupName ItemKind]
 actorsGNSingleton =
-       [S_WOODEN_TORCH, S_BULLTEPROOF_VEST, S_PERFUME_POTION, S_EMPTY_FLASK]
+       [S_WOODEN_TORCH, S_SANDSTONE_ROCK, S_BULLTEPROOF_VEST, S_PERFUME_POTION, S_EMPTY_FLASK]
 
-pattern S_WOODEN_TORCH, S_BULLTEPROOF_VEST, S_PERFUME_POTION, S_EMPTY_FLASK :: GroupName ItemKind
+pattern S_WOODEN_TORCH, S_SANDSTONE_ROCK, S_BULLTEPROOF_VEST, S_PERFUME_POTION, S_EMPTY_FLASK :: GroupName ItemKind
 
 actorsGN :: [GroupName ItemKind]
 actorsGN =
@@ -81,6 +81,7 @@ pattern CONSTRUCTION_ROBOT = GroupName "construction robot"
 
 -- ** Common
 pattern S_WOODEN_TORCH = GroupName "wooden torch"
+pattern S_SANDSTONE_ROCK = GroupName "sandstone rock"
 
 pattern ADD_SIGHT = GroupName "sight improvement"
 pattern ARMOR_RANGED = GroupName "ranged armor"
