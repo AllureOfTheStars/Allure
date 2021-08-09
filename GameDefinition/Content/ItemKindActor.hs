@@ -148,7 +148,7 @@ humanOrgans = [ (S_FIST, COrgan), (S_FOOT, COrgan)
                   -- and slighty different backstory emphasis between games
                   -- matches human plasticity.
 warrior = ItemKind
-  { isymbol  = '@'
+  { isymbol  = toContentSymbol '@'
   , iname    = "adventurer"  -- modified if initial actors in hero faction
   , ifreq    = [(HERO, 100), (CRAWL_HERO, 100), (MOBILE, 1)]
   , iflavour = zipPlain [BrWhite]
@@ -272,7 +272,7 @@ civilian5 = civilian
 -- They have bright colours, because they are not natural.
 
 eye = ItemKind  -- depends on items it finds rather than special organs
-  { isymbol  = 'w'
+  { isymbol  = toContentSymbol 'w'
   , iname    = "beckoning walker"
   , ifreq    = [ (MONSTER, 100), (MOBILE, 1)
                , (MOBILE_MONSTER, 100), (SCOUT_MONSTER, 10) ]
@@ -295,7 +295,7 @@ eye = ItemKind  -- depends on items it finds rather than special organs
                , (S_SAPIENT_BRAIN, COrgan) ]  -- no voice, no hearing
   }
 fastEye = ItemKind  -- glass cannon; depends mostly on items it finds
-  { isymbol  = 'b'
+  { isymbol  = toContentSymbol 'b'
   , iname    = "rolling biter"
   , ifreq    = [ (MONSTER, 100), (MOBILE, 1)
                , (MOBILE_MONSTER, 100), (SCOUT_MONSTER, 60) ]
@@ -321,7 +321,7 @@ fastEye = ItemKind  -- glass cannon; depends mostly on items it finds
 nose = ItemKind  -- sniffs only; a tank requiring multiple weapon hits to beat;
                  -- no armor, so special kinds of damage don't help;
                  -- slow, but despite that, danger when strong weapons wielded!
-  { isymbol  = 'h'
+  { isymbol  = toContentSymbol 'h'
   , iname    = "crawling horror"
   , ifreq    = [ (MONSTER, 100), (MOBILE, 1), (MOBILE_MONSTER, 100)
                , (AQUATIC, 30), (AQUATIC_MONSTER, 30) ]  -- likes liquids
@@ -345,7 +345,7 @@ nose = ItemKind  -- sniffs only; a tank requiring multiple weapon hits to beat;
                , (S_SAPIENT_BRAIN, COrgan) ]  -- no sight nor hearing
   }
 elbow = ItemKind
-  { isymbol  = 's'
+  { isymbol  = toContentSymbol 's'
   , iname    = "creepy shooter"
   , ifreq    = [ (MONSTER, 100), (MOBILE, 1)
                , (MOBILE_MONSTER, 100), (SCOUT_MONSTER, 30) ]
@@ -385,7 +385,7 @@ elbowTank = elbow
 -- Low HP is needed to ensure the chain reaction. Lack of ranged combat
 -- makes the rule to attack it from a distance straightforward.
 intruder = ItemKind
-  { isymbol  = 'i'
+  { isymbol  = toContentSymbol 'i'
   , iname    = "bobbing intruder"
   , ifreq    = [ (MONSTER, 100), (MOBILE, 1), (MOBILE_MONSTER, 100)
                , (EXPLOSIVE_MONSTER, 100)
@@ -417,7 +417,7 @@ intruder = ItemKind
 -- * Alien uniques
 
 torsor = ItemKind
-  { isymbol  = 'M'
+  { isymbol  = toContentSymbol 'M'
   , iname    = "The Maker"
   , ifreq    = [(MONSTER, 100), (MOBILE, 1)]
   , iflavour = zipFancy [BrCyan]
@@ -455,7 +455,7 @@ torsor = ItemKind
 -- They have dull colors, except for yellow, because there is no dull variant.
 
 goldenJackal = ItemKind  -- basically a much smaller, slower and nosy hyena
-  { isymbol  = 'j'
+  { isymbol  = toContentSymbol 'j'
   , iname    = "golden jackal"
   , ifreq    = [ (ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)
                , (SCAVENGER, 50) ]
@@ -479,7 +479,7 @@ goldenJackal = ItemKind  -- basically a much smaller, slower and nosy hyena
                , (S_ANIMAL_STOMACH, COrgan), (GENETIC_FLAW_3, COrgan) ]
   }
 griffonVulture = ItemKind  -- keep it boring and weak, because it summons
-  { isymbol  = 'v'
+  { isymbol  = toContentSymbol 'v'
   , iname    = "griffon vulture"
   , ifreq    = [ (ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)
                , (SCAVENGER, 30) ]
@@ -509,7 +509,7 @@ griffonVulture = ItemKind  -- keep it boring and weak, because it summons
                , (S_ANIMAL_STOMACH, COrgan), (GENETIC_FLAW_3, COrgan) ]
   }
 skunk = ItemKind
-  { isymbol  = 's'
+  { isymbol  = toContentSymbol 's'
   , iname    = "hog-nosed skunk"
   , ifreq    = [(ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)]
   , iflavour = zipPlain [White]
@@ -532,7 +532,7 @@ skunk = ItemKind
                , (S_ANIMAL_STOMACH, COrgan), (GENETIC_FLAW_3, COrgan) ]
   }
 armadillo = ItemKind  -- a tank with armor, so special damage defeats it
-  { isymbol  = 'a'
+  { isymbol  = toContentSymbol 'a'
   , iname    = "giant armadillo"
   , ifreq    = [(ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)]
   , iflavour = zipPlain [Brown]
@@ -556,7 +556,7 @@ armadillo = ItemKind  -- a tank with armor, so special damage defeats it
                , (RAW_MEAT_CHUNK, CEqp) ]
   }
 gilaMonster = ItemKind
-  { isymbol  = 'g'
+  { isymbol  = toContentSymbol 'g'
   , iname    = "Gila monster"
   , ifreq    = [(ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)]
   , iflavour = zipPlain [Magenta]
@@ -577,7 +577,7 @@ gilaMonster = ItemKind
                , (GENETIC_FLAW_3, COrgan) ]
   }
 rattlesnake = ItemKind
-  { isymbol  = 's'
+  { isymbol  = toContentSymbol 's'
   , iname    = "rattlesnake"
   , ifreq    = [(ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)]
   , iflavour = zipPlain [Brown]
@@ -602,7 +602,7 @@ rattlesnake = ItemKind
                , (RAW_MEAT_CHUNK, CEqp) ]
   }
 hyena = ItemKind
-  { isymbol  = 'h'
+  { isymbol  = toContentSymbol 'h'
   , iname    = "spotted hyena"
   , ifreq    = [ (ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)
                , (SCAVENGER, 20) ]
@@ -624,7 +624,7 @@ hyena = ItemKind
                , (S_ANIMAL_STOMACH, COrgan), (GENETIC_FLAW_3, COrgan) ]
   }
 komodoDragon = ItemKind
-  { isymbol  = 'k'
+  { isymbol  = toContentSymbol 'k'
   , iname    = "Komodo dragon"
   , ifreq    = [(ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)]
   , iflavour = zipPlain [BrRed]  -- speedy, so bright red
@@ -651,7 +651,7 @@ komodoDragon = ItemKind
   }
 alligator = ItemKind  -- late, slow, deadly semi-tank with some armor;
                       -- too deadly to get more HP; bombs the only recourse
-  { isymbol  = 'a'
+  { isymbol  = toContentSymbol 'a'
   , iname    = "alligator"
   , ifreq    = [ (ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)
                , (AQUATIC, 70), (AQUATIC_ANIMAL, 70) ]  -- amphibious
@@ -683,7 +683,7 @@ alligator = ItemKind  -- late, slow, deadly semi-tank with some armor;
 -- * Allure-specific animals
 
 giantOctopus = ItemKind
-  { isymbol  = 'o'
+  { isymbol  = toContentSymbol 'o'
   , iname    = "giant octopus"
   , ifreq    = [ (ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)
                , (AQUATIC, 90), (AQUATIC_ANIMAL, 90) ]  -- weak on land
@@ -711,7 +711,7 @@ giantOctopus = ItemKind
                , (RAW_MEAT_CHUNK, CEqp), (RAW_MEAT_CHUNK, CEqp) ]
  }
 lion = ItemKind  -- emphatically not a tank
-  { isymbol  = 'l'
+  { isymbol  = toContentSymbol 'l'
   , iname    = "Lion"
   , ifreq    = [(ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)]
   , iflavour = zipPlain [Red]
@@ -739,7 +739,7 @@ lion = ItemKind  -- emphatically not a tank
 -- * Animal uniques
 
 rhinoceros = ItemKind  -- impressive tank boss with some armor
-  { isymbol  = 'R'
+  { isymbol  = toContentSymbol 'R'
   , iname    = "Billy"
   , ifreq    = [(ANIMAL, 100), (MOBILE, 1)]
   , iflavour = zipPlain [Brown]
@@ -770,7 +770,7 @@ rhinoceros = ItemKind  -- impressive tank boss with some armor
 -- * Non-animal animals
 
 beeSwarm = ItemKind
-  { isymbol  = 'b'
+  { isymbol  = toContentSymbol 'b'
   , iname    = "bee swarm"
   , ifreq    = [(ANIMAL, 100), (MOBILE, 1)]
   , iflavour = zipPlain [Brown]
@@ -792,7 +792,7 @@ beeSwarm = ItemKind
                , (S_INSECT_MORTALITY, COrgan), (S_ANIMAL_BRAIN, COrgan) ]
   }
 hornetSwarm = ItemKind  -- kind of tank with armor, but short-lived
-  { isymbol  = 'h'
+  { isymbol  = toContentSymbol 'h'
   , iname    = "hornet swarm"
   , ifreq    = [(ANIMAL, 100), (MOBILE, 1), (MOBILE_ANIMAL, 100)]
   , iflavour = zipPlain [Magenta]
@@ -817,7 +817,7 @@ hornetSwarm = ItemKind  -- kind of tank with armor, but short-lived
                , (S_INSECT_MORTALITY, COrgan), (S_ANIMAL_BRAIN, COrgan) ]
   }
 thornbush = ItemKind  -- the wimpiest kind of early tank
-  { isymbol  = 't'
+  { isymbol  = toContentSymbol 't'
   , iname    = "thornbush"
   , ifreq    = [(ANIMAL, 25), (IMMOBILE_ANIMAL, 40)]
   , iflavour = zipPlain [Brown]
@@ -842,7 +842,7 @@ thornbush = ItemKind  -- the wimpiest kind of early tank
 -- for other factions.
 
 razorwireFence = ItemKind
-  { isymbol  = 'f'
+  { isymbol  = toContentSymbol 'f'
   , iname    = "razorwire fence"
   , ifreq    = [(ROBOT, 15), (IMMOBILE_ROBOT, 10)]
   , iflavour = zipPlain [Cyan]
@@ -861,7 +861,7 @@ razorwireFence = ItemKind
   , ikit     = [(S_RAZOR, COrgan), (S_THORN, COrgan)]
   }
 electricFence = ItemKind
-  { isymbol  = 'f'
+  { isymbol  = toContentSymbol 'f'
   , iname    = "electric fence"
   , ifreq    = [(ROBOT, 40), (IMMOBILE_ROBOT, 10)]
   , iflavour = zipPlain [Blue]
@@ -881,7 +881,7 @@ electricFence = ItemKind
                , (POLE_OR_HANDLE, CEqp) ]
   }
 activeFence = ItemKind
-  { isymbol  = 'f'
+  { isymbol  = toContentSymbol 'f'
   , iname    = "active fence"
   , ifreq    = [(ROBOT, 30), (IMMOBILE_ROBOT, 20)]
   , iflavour = zipPlain [BrMagenta]
@@ -905,7 +905,7 @@ activeFence = ItemKind
                    -- a long period
   }
 steamFaucet = ItemKind
-  { isymbol  = 'f'
+  { isymbol  = toContentSymbol 'f'
   , iname    = "steam faucet"
   , ifreq    = [(ROBOT, 8), (IMMOBILE_ROBOT, 15)]
   , iflavour = zipPlain [BrGreen]
@@ -923,7 +923,7 @@ steamFaucet = ItemKind
   , ikit     = [(S_BOILING_VENT, COrgan), (S_BOILING_FISSURE, COrgan)]
   }
 coolingFaucet = ItemKind
-  { isymbol  = 'f'
+  { isymbol  = toContentSymbol 'f'
   , iname    = "cooling faucet"
   , ifreq    = [(ROBOT, 8), (IMMOBILE_ROBOT, 15)]
   , iflavour = zipPlain [BrBlue]
@@ -941,7 +941,7 @@ coolingFaucet = ItemKind
   , ikit     = [(S_COOLING_VENT, COrgan), (S_COOLING_FISSURE, COrgan)]
   }
 medbotFaucet = ItemKind
-  { isymbol  = 'f'
+  { isymbol  = toContentSymbol 'f'
   , iname    = "nano medbot faucet"
   , ifreq    = [(ROBOT, 10), (IMMOBILE_ROBOT, 100)]
   , iflavour = zipPlain [BrYellow]
@@ -959,7 +959,7 @@ medbotFaucet = ItemKind
   , ikit     = [(S_MEDBOT_VENT, COrgan), (S_MEDBOT_FISSURE, COrgan)]
   }
 dustFaucet = ItemKind
-  { isymbol  = 'f'
+  { isymbol  = toContentSymbol 'f'
   , iname    = "dust faucet"
   , ifreq    = [ (ROBOT, 4)  -- usually nothing to ignite
                , (IMMOBILE_ROBOT, 30) ]  -- except when other faucets around
@@ -978,7 +978,7 @@ dustFaucet = ItemKind
   , ikit     = [(S_DUST_VENT, COrgan), (S_DUST_FISSURE, COrgan)]
   }
 fuelFaucet = ItemKind
-  { isymbol  = 'f'
+  { isymbol  = toContentSymbol 'f'
   , iname    = "burning fuel faucet"
   , ifreq    = [(ROBOT, 30)]
       -- common not in outermost level, but in the dungeon, because it's
@@ -998,7 +998,7 @@ fuelFaucet = ItemKind
   , ikit     = [(S_FUEL_VENT, COrgan), (S_FUEL_FISSURE, COrgan)]
   }
 surveillanceDrone = ItemKind
-  { isymbol  = 'd'
+  { isymbol  = toContentSymbol 'd'
   , iname    = "surveillance drone"
   , ifreq    = [(ROBOT, 100), (MOBILE, 100), (MOBILE_ROBOT, 100)]
   , iflavour = zipPlain [Blue]
@@ -1020,7 +1020,7 @@ surveillanceDrone = ItemKind
                , (S_VISION_16, COrgan), (S_ROBOT_BRAIN, COrgan) ]
   }
 shepherdDrone = ItemKind
-  { isymbol  = 'd'
+  { isymbol  = toContentSymbol 'd'
   , iname    = "oversight drone"
   , ifreq    = [ (ROBOT, 100), (MOBILE, 100), (MOBILE_ROBOT, 100)
                , (CONSTRUCTION_ROBOT, 100) ]
@@ -1044,7 +1044,7 @@ shepherdDrone = ItemKind
                , (S_ROBOT_BRAIN, COrgan) ]
   }
 huntingDrone = ItemKind
-  { isymbol  = 'd'
+  { isymbol  = toContentSymbol 'd'
   , iname    = "hunting drone"
   , ifreq    = [(ROBOT, 100), (MOBILE, 100), (MOBILE_ROBOT, 100)]
   , iflavour = zipPlain [Green]
@@ -1068,7 +1068,7 @@ huntingDrone = ItemKind
                , (NEEDLE, CStash), (TRANQUILIZER_DART, CStash) ]
   }
 homeRobot = ItemKind
-  { isymbol  = 'r'
+  { isymbol  = toContentSymbol 'r'
   , iname    = "feral home robot"
                -- TODO: name another 'deranged', tertiary imperative: survival
   , ifreq    = [(ROBOT, 100), (MOBILE, 100), (MOBILE_ROBOT, 100)]
@@ -1089,7 +1089,7 @@ homeRobot = ItemKind
                , (S_ROBOT_BRAIN, COrgan) ]
   }
 wasteRobot = ItemKind  -- not a tank, because smell-only alien is already a tank
-  { isymbol  = 'r'
+  { isymbol  = toContentSymbol 'r'
   , iname    = "waste disposal robot"
   , ifreq    = [ (ROBOT, 100), (MOBILE, 100), (MOBILE_ROBOT, 100)
                , (CONSTRUCTION_ROBOT, 100) ]
@@ -1110,7 +1110,7 @@ wasteRobot = ItemKind  -- not a tank, because smell-only alien is already a tank
                , (WASTE_CONTAINER, CEqp) ]
   }
 lightRobot = ItemKind
-  { isymbol  = 'r'
+  { isymbol  = toContentSymbol 'r'
   , iname    = "decoration robot"
   , ifreq    = [ (ROBOT, 100), (MOBILE, 100), (MOBILE_ROBOT, 100)
                , (CONSTRUCTION_ROBOT, 100) ]
@@ -1139,7 +1139,7 @@ lightRobot = ItemKind
   }
 heavyRobot = ItemKind  -- summoning tank with armor, but fortunately weak
                        -- weapons; danger when strong weapons wielded!
-  { isymbol  = 'r'
+  { isymbol  = toContentSymbol 'r'
   , iname    = "demolition robot"
   , ifreq    = [ (ROBOT, 100), (MOBILE, 100), (MOBILE_ROBOT, 100)
                , (CONSTRUCTION_ROBOT, 70) ]
@@ -1169,7 +1169,7 @@ heavyRobot = ItemKind  -- summoning tank with armor, but fortunately weak
 -- * Robot uniques, Allure-specific
 
 weldedRobot = ItemKind
-  { isymbol  = 'L'
+  { isymbol  = toContentSymbol 'L'
   , iname    = "Bob"
   , ifreq    = [(ROBOT, 100), (IMMOBILE_ROBOT, 100)]
   , iflavour = zipPlain [BrCyan]
@@ -1195,7 +1195,7 @@ weldedRobot = ItemKind
                    -- establish stash to ensure heroes pick up blowtorch ASAP
   }
 cleanerRobot = ItemKind
-  { isymbol  = 'C'
+  { isymbol  = toContentSymbol 'C'
   , iname    = "The Void Cleaner Robot"
   , ifreq    = [(ROBOT, 100), (MOBILE, 1)]
   , iflavour = zipPlain [BrGreen]

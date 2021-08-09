@@ -192,7 +192,7 @@ stairsUpOutdoor,       stairsDownOutdoor, blackStarrySky, disengagedDocking, des
 -- and foregoing the fun of guessing how to find entrance to a disjoint part
 -- of the level by bumping the least number of secret walls.
 scratchOnWall = ItemKind
-  { isymbol  = '?'
+  { isymbol  = toContentSymbol '?'
   , iname    = "claw mark"
   , ifreq    = [(SCRATCH_ON_WALL, 1)]
   , iflavour = zipPlain [BrBlack]
@@ -208,7 +208,7 @@ scratchOnWall = ItemKind
   , ikit     = []
   }
 obscenePictogram = ItemKind
-  { isymbol  = '*'
+  { isymbol  = toContentSymbol '*'
   , iname    = "repulsing graffiti"
   , ifreq    = [(OBSCENE_PICTOGRAM, 1)]
   , iflavour = zipPlain [BrMagenta]
@@ -227,7 +227,7 @@ obscenePictogram = ItemKind
   , ikit     = []
   }
 subtleFresco = ItemKind
-  { isymbol  = '*'
+  { isymbol  = toContentSymbol '*'
   , iname    = "subtle mural"
   , ifreq    = [(SUBTLE_FRESCO, 1)]
   , iflavour = zipPlain [BrGreen]
@@ -243,7 +243,7 @@ subtleFresco = ItemKind
   , ikit     = []
   }
 treasureCache = ItemKind
-  { isymbol  = 'o'
+  { isymbol  = toContentSymbol 'o'
   , iname    = "set"
   , ifreq    = [(ABANDONED_CACHE, 1)]
   , iflavour = zipPlain [BrBlue]
@@ -260,7 +260,7 @@ treasureCache = ItemKind
 reliefMsg :: Effect
 reliefMsg = VerbMsg "sigh with relief when nothing explodes in your face!" ""
 treasureCacheTrap = ItemKind
-  { isymbol  = '^'
+  { isymbol  = toContentSymbol '^'
   , iname    = "anti-theft protection"
   , ifreq    = [(JEWELRY_DISPLAY_TRAP, 1)]
   , iflavour = zipPlain [Red]
@@ -278,7 +278,7 @@ treasureCacheTrap = ItemKind
   , ikit     = []
   }
 signageExit = ItemKind
-  { isymbol  = '0'
+  { isymbol  = toContentSymbol '0'
   , iname    = "sticker"
   , ifreq    = [(SIGNAGE, 100)]
   , iflavour = zipPlain [BrGreen]
@@ -309,7 +309,7 @@ signageMerchandise = signageExit
   , idesc    = "A list of nearby commercial outlets, constantly updated by tracking merchandise not registered as passenger property. Customers are kindly requeted to refrain from littering in this heavily monitored public area."
   }
 fireSmall = ItemKind
-  { isymbol  = 'o'
+  { isymbol  = toContentSymbol 'o'
   , iname    = "tiny fire"
   , ifreq    = [(SMALL_FIRE, 1), (FIRE_SOURCE, 1)]
   , iflavour = zipPlain [BrRed]
@@ -332,7 +332,7 @@ fireSmall5 = fireSmall
                , OnCombine roastEffect5 ]
   }
 fireBig = fireSmall
-  { isymbol  = '0'
+  { isymbol  = toContentSymbol '0'
   , iname    = "big fire"
   , ifreq    = [(BIG_FIRE, 1), (FIRE_SOURCE, 1)]
   , iflavour = zipPlain [Red]
@@ -344,7 +344,7 @@ fireBig = fireSmall
   , ikit     = []
   }
 frost = ItemKind
-  { isymbol  = '^'
+  { isymbol  = toContentSymbol '^'
   , iname    = "frozen mass"
   , ifreq    = [(FROST, 1), (COLD_SOURCE, 1)]
   , iflavour = zipPlain [BrBlue]
@@ -361,7 +361,7 @@ frost = ItemKind
   , ikit     = []
   }
 rubble = ItemKind
-  { isymbol  = '&'
+  { isymbol  = toContentSymbol '&'
   , iname    = "rubble"
   , ifreq    = [(RUBBLE, 1)]
   , iflavour = zipPlain [BrYellow]
@@ -382,7 +382,7 @@ rubble = ItemKind
   , ikit     = []
   }
 doorwayTrapTemplate = ItemKind
-  { isymbol  = '+'
+  { isymbol  = toContentSymbol '+'
   , iname    = "doorway trap"
   , ifreq    = [(DOORWAY_TRAP_UNKNOWN, 1), (DOORWAY_TRAP, 0)]
       -- the void group needed to pick the item for tile triggering
@@ -416,7 +416,7 @@ doorwayTrap3 = doorwayTrapTemplate
   -- , idesc    = ""
   }
 stairsUp = ItemKind
-  { isymbol  = '<'
+  { isymbol  = toContentSymbol '<'
   , iname    = "flight"
   , ifreq    = [(STAIRS_UP, 1)]
   , iflavour = zipPlain [BrWhite]
@@ -432,13 +432,13 @@ stairsUp = ItemKind
   , ikit     = []
   }
 stairsDown = stairsUp
-  { isymbol  = '>'
+  { isymbol  = toContentSymbol '>'
   , ifreq    = [(STAIRS_DOWN, 1)]
   , ieffects = [Ascend False]
   , idesc    = "Stairs that descend towards the outer ring. Narrow enough that only one person can comfortably use them at a time, but short enough that the whole team may climb down in quick succession."
   }
 escape = stairsUp
-  { isymbol  = '>'
+  { isymbol  = toContentSymbol '>'
   , iname    = "way"
   , ifreq    = [(ESCAPE, 1)]
   , iflavour = zipPlain [BrGreen]
@@ -449,7 +449,7 @@ escape = stairsUp
                  -- for moon outdoors, spaceship, everywhere
   }
 stairsTrapUp = ItemKind
-  { isymbol  = '^'
+  { isymbol  = toContentSymbol '^'
   , iname    = "staircase trap"
   , ifreq    = [(STAIRS_TRAP_UP, 1)]
   , iflavour = zipPlain [BrRed]
@@ -476,7 +476,7 @@ stairsTrapDown = stairsTrapUp
   , idesc    = "A treacherous slab, to teach those who are too proud."
   }
 lectern = ItemKind
-  { isymbol  = '?'
+  { isymbol  = toContentSymbol '?'
   , iname    = "VR harness"
   , ifreq    = [(LECTERN, 1)]
   , iflavour = zipFancy [BrYellow]
@@ -495,7 +495,7 @@ lectern = ItemKind
   , ikit     = []
   }
 shallowWater = ItemKind
-  { isymbol  = '~'
+  { isymbol  = toContentSymbol '~'
   , iname    = "shallow water"
   , ifreq    = [(SHALLOW_WATER, 1)]  -- may be too shallow to be source
   , iflavour = zipFancy [BrCyan]
@@ -552,7 +552,7 @@ stairsDownOutdoor = stairsDown
   , idesc    = "Stairs that descend towards the underground. Narrow enough that only one person can comfortably use them at a time, but short enough that the whole team may climb down in quick succession."
   }
 blackStarrySky = ItemKind
-  { isymbol  = ' '
+  { isymbol  = toContentSymbol ' '
   , iname    = "black starry sky"
   , ifreq    = [(BLACK_STARRY_SKY, 1)]
   , iflavour = zipPlain [Black]
@@ -568,7 +568,7 @@ blackStarrySky = ItemKind
   , ikit     = []
   }
 disengagedDocking = ItemKind
-  { isymbol  = '>'
+  { isymbol  = toContentSymbol '>'
   , iname    = "disengaged docking gear"
   , ifreq    = [(DISENGAGED_DOCKING_GEAR, 1)]
   , iflavour = zipPlain [BrBlack]
@@ -583,7 +583,7 @@ disengagedDocking = ItemKind
   , ikit     = []
   }
 desertedAirlock = ItemKind
-  { isymbol  = '>'
+  { isymbol  = toContentSymbol '>'
   , iname    = "the Initial Entrance"
   , ifreq    = [(DISENGAGED_DOCKING_GEAR, 10000)]
   , iflavour = zipPlain [Green]
@@ -601,7 +601,7 @@ desertedAirlock = ItemKind
                , (S_CROWBAR, CGround) ]
   }
 ruinedFirstAidKit = ItemKind
-  { isymbol  = '?'
+  { isymbol  = toContentSymbol '?'
   , iname    = "ruined first aid kit"
   , ifreq    = [(RUINED_FIRST_AID_KIT, 1)]
   , iflavour = zipPlain [BrGreen]
@@ -620,7 +620,7 @@ ruinedFirstAidKit = ItemKind
   , ikit     = []
   }
 fireFightingGear = ItemKind
-  { isymbol  = '?'
+  { isymbol  = toContentSymbol '?'
   , iname    = "fire fighting gear"
   , ifreq    = [(FIRE_FIGHTING_GEAR, 1), (WATER_SOURCE, 1)]
   , iflavour = zipPlain [BrRed]
@@ -636,7 +636,7 @@ fireFightingGear = ItemKind
   , ikit     = []
   }
 fireFightingGearIntact = ItemKind
-  { isymbol  = '?'
+  { isymbol  = toContentSymbol '?'
   , iname    = "the Fire Fighting Set"
   , ifreq    = [(FIRE_FIGHTING_GEAR, 1), (WATER_SOURCE, 1)]
   , iflavour = zipPlain [Red]
@@ -653,7 +653,7 @@ fireFightingGearIntact = ItemKind
   , ikit     = []
   }
 wall3dBillboard = ItemKind
-  { isymbol  = '*'
+  { isymbol  = toContentSymbol '*'
   , iname    = "3D display"
   , ifreq    = [(DISPLAY_3D, 1)]
   , iflavour = zipPlain [BrBlue]
@@ -670,7 +670,7 @@ wall3dBillboard = ItemKind
   , ikit     = []
   }
 crackedFlue = ItemKind
-  { isymbol  = '|'
+  { isymbol  = toContentSymbol '|'
   , iname    = "cracked flue"
   , ifreq    = [(CRACKED_FLUE, 1)]  -- TODO: ("methane source", 1)?
   , iflavour = zipPlain [BrBlack]
@@ -687,7 +687,7 @@ crackedFlue = ItemKind
   , ikit     = []
   }
 bloodOnWall = ItemKind
-  { isymbol  = ','
+  { isymbol  = toContentSymbol ','
   , iname    = "blotch"
   , ifreq    = [(BLOOD_ON_WALL, 60)]
   , iflavour = zipPlain [BrRed]
@@ -762,7 +762,7 @@ stairsTrapDownOil = stairsTrapUp
   , idesc    = ""
   }
 doorTrapPush = doorwayTrapTemplate
-  { isymbol  = '+'
+  { isymbol  = toContentSymbol '+'
   , iname    = "weak door frame"
   , ifreq    = [(DOOR_TRAP_PUSH, 1)]
   , iflavour = zipPlain [Blue]
@@ -812,7 +812,7 @@ liftTrap3 = liftTrap
   , idesc    = ""
   }
 shuttleHardware = ItemKind
-  { isymbol  = '#'
+  { isymbol  = toContentSymbol '#'
   , iname    = "shuttle hardware"
   , ifreq    = [(SHUTTLE_HARDWARE, 1)]
   , iflavour = zipPlain [BrWhite]
@@ -827,7 +827,7 @@ shuttleHardware = ItemKind
   , ikit     = []
   }
 machineOil = ItemKind
-  { isymbol  = '~'
+  { isymbol  = toContentSymbol '~'
   , iname    = "oil layer"
   , ifreq    = [(OIL_PUDDLE, 1), (OIL_SOURCE, 1)]
   , iflavour = zipPlain [BrYellow]
@@ -845,7 +845,7 @@ machineOil = ItemKind
   , ikit     = []
   }
 crudeWeld = ItemKind  -- this is also an organ
-  { isymbol  = '_'
+  { isymbol  = toContentSymbol '_'
   , iname    = "crude weld"
   , ifreq    = [(S_CRUDE_WELD, 1)]
   , iflavour = zipPlain [BrMagenta]
@@ -860,7 +860,7 @@ crudeWeld = ItemKind  -- this is also an organ
   , ikit     = []
   }
 decontaminator = ItemKind
-  { isymbol  = 'D'
+  { isymbol  = toContentSymbol 'D'
   , iname    = "decontamination chamber"
   , ifreq    = [(DECONTAMINATION_CHAMBER, 1)]
   , iflavour = zipPlain [BrBlue]
@@ -885,7 +885,7 @@ decontaminator = ItemKind
   , ikit     = []
   }
 barrelFuel = ItemKind
-  { isymbol  = 'b'
+  { isymbol  = toContentSymbol 'b'
   , iname    = "fuel"
   , ifreq    = [(BARREL_CONTENTS, 20), (OIL_SOURCE, 1)]
   , iflavour = zipPlain [BrYellow]
@@ -934,7 +934,7 @@ barrelNitrogen = barrelFuel
   , idesc    = ""
   }
 workshopBench = ItemKind
-  { isymbol  = ':'
+  { isymbol  = toContentSymbol ':'
   , iname    = "bench"
   , ifreq    = [(WORKSHOP_BENCH, 1)]
   , iflavour = zipPlain [BrBlue]

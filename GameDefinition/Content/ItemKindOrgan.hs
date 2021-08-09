@@ -153,7 +153,7 @@ animalStomach,       hungry, smallBeak, razor, liveWire, flotationBag, inkSac, p
 -- * No-cooldown melee damage organs without effects
 
 thorn = fist
-  { isymbol  = '-'
+  { isymbol  = toContentSymbol '-'
   , iname    = "thorn"
   , ifreq    = [(S_THORN, 1)]
   , icount   = 2 + 1 `d` 2  -- unrealistic, but not boring
@@ -172,7 +172,7 @@ tip = fist
   , idesc    = ""
   }
 fist = ItemKind
-  { isymbol  = ','
+  { isymbol  = toContentSymbol ','
   , iname    = "fist"
   , ifreq    = [(S_FIST, 1)]
   , iflavour = zipPlain [Red]
@@ -274,7 +274,7 @@ largeJaw = fist  -- organs can't be too weak, because some non-humans also use
 -- * Direct damage organs with effects
 
 beeSting = fist
-  { isymbol  = '-'
+  { isymbol  = toContentSymbol '-'
   , iname    = "bee sting"
   , ifreq    = [(S_BEE_STING, 1)]
   , icount   = 1
@@ -287,7 +287,7 @@ beeSting = fist
   , idesc    = "Painful, but beneficial."
   }
 sting = fist
-  { isymbol  = '-'
+  { isymbol  = toContentSymbol '-'
   , iname    = "sting"
   , ifreq    = [(S_STING, 1)]
   , icount   = 1
@@ -310,7 +310,7 @@ lip = fist
   , idesc    = ""
   }
 venomTooth = fist
-  { isymbol  = '-'
+  { isymbol  = toContentSymbol '-'
   , iname    = "venom tooth"
   , ifreq    = [(S_VENOM_TOOTH, 1)]
   , iverbHit = "bite"
@@ -321,7 +321,7 @@ venomTooth = fist
   , idesc    = "A chilling numbness spreads from its bite."
   }
 hookedClaw = fist
-  { isymbol  = '-'
+  { isymbol  = toContentSymbol '-'
   , iname    = "hooked claw"
   , ifreq    = [(S_HOOKED_CLAW, 1)]
   , icount   = 2  -- even if more, only the fore claws used for fighting
@@ -333,7 +333,7 @@ hookedClaw = fist
   , idesc    = "A curved talon."
   }
 screechingBeak = fist
-  { isymbol  = '-'
+  { isymbol  = toContentSymbol '-'
   , iname    = "screeching beak"
   , ifreq    = [(S_SCREECHING_BEAK, 1)]
   , icount   = 1
@@ -345,7 +345,7 @@ screechingBeak = fist
   , idesc    = "Both a weapon and a beacon, calling more scavengers to the meal."
   }
 antler = fist
-  { isymbol  = '-'
+  { isymbol  = toContentSymbol '-'
   , iname    = "antler"
   , ifreq    = [(S_ANTLER, 1)]
   , iverbHit = "ram"
@@ -357,7 +357,7 @@ antler = fist
   , idesc    = ""
   }
 rhinoHorn = fist
-  { isymbol  = '-'
+  { isymbol  = toContentSymbol '-'
   , iname    = "ugly horn"  -- made of keratin, unlike real horns
   , ifreq    = [(S_RHINO_HORN, 1)]
   , icount   = 1  -- single, unlike real horns
@@ -369,7 +369,7 @@ rhinoHorn = fist
   , idesc    = "Very solid, considering it has the same composition as fingernails."
   }
 hugeTail = fist
-  { isymbol  = '-'
+  { isymbol  = toContentSymbol '-'
   , iname    = "huge tail"
   , ifreq    = [(S_HUGE_TAIL, 1)]
   , icount   = 1
@@ -386,7 +386,7 @@ hugeTail = fist
 -- * Melee weapons without direct damage
 
 venomFang = fist
-  { isymbol  = '-'
+  { isymbol  = toContentSymbol '-'
   , iname    = "venom fang"
   , ifreq    = [(S_VENOM_FANG, 1)]
   , iverbHit = "bite"
@@ -411,7 +411,7 @@ sulfurFissure = boilingFissure
   , idesc    = ""
   }
 boilingFissure = fist
-  { isymbol  = '-'
+  { isymbol  = toContentSymbol '-'
   , iname    = "fissure"
   , ifreq    = [(S_BOILING_FISSURE, 1)]
   , icount   = 2 + 1 `d` 2
@@ -437,7 +437,7 @@ arsenicFissure = boilingFissure
 -- * Armor organs
 
 armoredSkin = ItemKind
-  { isymbol  = ','
+  { isymbol  = toContentSymbol ','
   , iname    = "armored skin"
   , ifreq    = [(S_ARMORED_SKIN, 1)]
   , iflavour = zipPlain [Red]
@@ -560,7 +560,7 @@ animalBrain = armoredSkin
   }
 speedGland :: Int -> GroupName ItemKind -> ItemKind
 speedGland n grp = armoredSkin
-  { isymbol  = '-'
+  { isymbol  = toContentSymbol '-'
   , iname    = "speed gland"
   , ifreq    = [(grp, 1)]
   , iverbHit = "spit at"
@@ -574,7 +574,7 @@ speedGland n grp = armoredSkin
 speedGland5 = speedGland 5 S_SPEED_GLAND_5
 speedGland10 = speedGland 10 S_SPEED_GLAND_10
 scentGland = armoredSkin
-  { isymbol  = '-'
+  { isymbol  = toContentSymbol '-'
   , iname    = "scent gland"
   , ifreq    = [(S_SCENT_GLAND, 1)]
   , icount   = 10 + 1 `d` 3  -- runs out
@@ -589,7 +589,7 @@ scentGland = armoredSkin
   , idesc    = ""
   }
 sulfurVent = armoredSkin
-  { isymbol  = 'v'
+  { isymbol  = toContentSymbol 'v'
   , iname    = "vent"
   , ifreq    = [(S_MEDBOT_VENT, 1)]
   , iflavour = zipPlain [BrYellow]
@@ -600,7 +600,7 @@ sulfurVent = armoredSkin
   , idesc    = ""
   }
 boilingVent = armoredSkin
-  { isymbol  = 'v'
+  { isymbol  = toContentSymbol 'v'
   , iname    = "vent"
   , ifreq    = [(S_BOILING_VENT, 1)]
   , iflavour = zipPlain [BrGreen]
@@ -611,7 +611,7 @@ boilingVent = armoredSkin
   , idesc    = ""
   }
 arsenicVent = armoredSkin
-  { isymbol  = 'v'
+  { isymbol  = toContentSymbol 'v'
   , iname    = "vent"
   , ifreq    = [(S_COOLING_VENT, 1)]
   , iflavour = zipPlain [White]
@@ -625,7 +625,7 @@ arsenicVent = armoredSkin
 -- * Special
 
 bonusHP = armoredSkin
-  { isymbol  = 'H'  -- '+' reserved for conditions
+  { isymbol  = toContentSymbol 'H'  -- '+' reserved for conditions
   , iname    = "bonus HP"
   , ifreq    = [(S_BONUS_HP, 1)]
   , iflavour = zipPlain [BrBlue]
@@ -635,7 +635,7 @@ bonusHP = armoredSkin
   , idesc    = "Special training and connections in the right places give this adventurer reinforced musculature and augmented internal organs, much more resilient to damage."
   }
 braced = armoredSkin
-  { isymbol  = 'B'
+  { isymbol  = toContentSymbol 'B'
   , iname    = "braced"
   , ifreq    = [(S_BRACED, 1)]
   , iflavour = zipPlain [BrGreen]
@@ -647,7 +647,7 @@ braced = armoredSkin
   , idesc    = "Apart of increased resilience to attacks, being braced protects from displacement by foes and other forms of forced translocation, e.g., pushing or pulling."
   }
 asleep = armoredSkin
-  { isymbol  = 'S'
+  { isymbol  = toContentSymbol 'S'
   , iname    = "asleep"
   , ifreq    = [(S_ASLEEP, 1)]
   , iflavour = zipPlain [BrGreen]  -- regenerates HP (very slowly)
@@ -661,7 +661,7 @@ asleep = armoredSkin
   , idesc    = "Sleep helps to regain health, albeit extremely slowly. Being asleep makes you vulnerable, with gradually diminishing effects as the slumber wears off over several turns. Any non-idle action, not only combat but even yawning or stretching removes a sizable portion of the sleepiness."
   }
 impressed = armoredSkin
-  { isymbol  = 'I'
+  { isymbol  = toContentSymbol 'I'
   , iname    = "impressed"  -- keep the same as in @ifreq@, to simplify code
   , ifreq    = [(S_IMPRESSED, 1), (CONDITION, 1)]
   , iflavour = zipPlain [BrRed]
@@ -691,7 +691,7 @@ smallBeak = fist
   , idesc    = "Cute, but painful."
   }
 liveWire = fist
-  { isymbol  = '-'
+  { isymbol  = toContentSymbol '-'
   , iname    = "live wire"
   , ifreq    = [(S_LIVE_WIRE, 1)]
   , icount   = 1
@@ -704,7 +704,7 @@ liveWire = fist
   , idesc    = ""
   }
 razor = fist
-  { isymbol  = '-'
+  { isymbol  = toContentSymbol '-'
   , iname    = "razor edge"
   , ifreq    = [(S_RAZOR, 1)]
   , icount   = 1 + 1 `d` 2
@@ -740,7 +740,7 @@ fuelFissure = boilingFissure
 -- * Allure-specific other
 
 animalStomach = armoredSkin
-  { isymbol  = 'u'
+  { isymbol  = toContentSymbol 'u'
   , iname    = "animal stomach"
   , ifreq    = [(S_ANIMAL_STOMACH, 1)]
   , iverbHit = "burp"
@@ -750,7 +750,7 @@ animalStomach = armoredSkin
   , idesc    = ""
   }
 hungry = armoredSkin
-  { isymbol  = 'U'
+  { isymbol  = toContentSymbol 'U'
   , iname    = "hungry"  -- keep the same as in @ifreq@, to simplify code
   , ifreq    = [(S_HUNGRY, 1), (CONDITION, 1)]
   , iflavour = zipPlain [BrRed]
@@ -768,7 +768,7 @@ hungry = armoredSkin
   , idesc    = "Hunger limits physical fitness. In extreme cases, when compounded, it causes such fragility that the slightest stress becomes lethal."
   }
 flotationBag = armoredSkin
-  { isymbol  = 'O'
+  { isymbol  = toContentSymbol 'O'
   , iname    = "flotation bag"
   , ifreq    = [(S_FLOTATION_BAG, 1)]
   , iverbHit = "uplift"
@@ -780,7 +780,7 @@ flotationBag = armoredSkin
   , idesc    = "A large organ that enables effortless flight. It is essentially a hydrogen container with easily regulated internal pressure. It evolved a protection against blunt trauma, but not against puncture."
   }
 inkSac = armoredSkin  -- neither melee nor aspects nor periodic, so to be
-  { isymbol  = '"'    -- triggered, needs a special symbol
+  { isymbol  = toContentSymbol '"'    -- triggered, needs a special symbol
   , iname    = "ink sac"
   , ifreq    = [(S_INK_SAC, 1)]
   , iverbHit = "squirt"
@@ -791,7 +791,7 @@ inkSac = armoredSkin  -- neither melee nor aspects nor periodic, so to be
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Octopus#Ink_sac
   }
 powerfulHindLegs = armoredSkin  -- neither melee nor periodic so to trigger
-  { isymbol  = '"'              -- needs a special symbol
+  { isymbol  = toContentSymbol '"'              -- needs a special symbol
   , iname    = "pair"
   , ifreq    = [(S_POWERFUL_HIND_LEGS, 1)]
   , iverbHit = "jump"
@@ -808,7 +808,7 @@ coiledTail = powerfulHindLegs
   , idesc    = "When the coiled tail springs, expect a lurch that leaves you no time to react."
   }
 jetBooster = armoredSkin  -- neither melee nor periodic so to be triggered,
-  { isymbol  = '"'        -- needs a special symbol
+  { isymbol  = toContentSymbol '"'        -- needs a special symbol
   , iname    = "jet booster"
   , ifreq    = [(S_JET_BOOSTER, 1)]
   , iverbHit = "dart"
@@ -824,7 +824,7 @@ rhinoInertia = jetBooster
   , idesc    = "It's a struggle to move the mass and it's a reinforced concrete wall that stops it."
   }
 electricAmbience = armoredSkin
-  { isymbol  = 'v'
+  { isymbol  = toContentSymbol 'v'
   , iname    = "static current ambience"
   , ifreq    = [(ELECTRIC_AMBIENCE, 1)]
   , iverbHit = "shortcut"
@@ -856,7 +856,7 @@ hullPlating = armoredSkin
   , idesc    = ""
   }
 mouthVent = armoredSkin
-  { isymbol  = 'v'
+  { isymbol  = toContentSymbol 'v'
   , iname    = "mouth vent"
   , ifreq    = [(S_MOUTH_VENT, 1)]
   , iflavour = zipPlain [BrMagenta]
@@ -874,7 +874,7 @@ mouthVent = armoredSkin
   , idesc    = ""
   }
 dustVent = armoredSkin
-  { isymbol  = 'v'
+  { isymbol  = toContentSymbol 'v'
   , iname    = "vent"
   , ifreq    = [(S_DUST_VENT, 1)]
   , iflavour = zipPlain [BrCyan]
@@ -885,7 +885,7 @@ dustVent = armoredSkin
   , idesc    = ""
   }
 fuelVent = armoredSkin
-  { isymbol  = 'v'
+  { isymbol  = toContentSymbol 'v'
   , iname    = "vent"
   , ifreq    = [(S_FUEL_VENT, 1)]
   , iflavour = zipPlain [BrRed]
@@ -902,7 +902,7 @@ fuelVent = armoredSkin
 -- at actor death, avoiding a lot of spam and bringing him back to life.
 geneticFlaw :: Int -> Bool -> Int -> GroupName ItemKind -> ItemKind
 geneticFlaw fr badArmorMelee n grp = armoredSkin
-  { isymbol  = 'F'
+  { isymbol  = toContentSymbol 'F'
   , iname    = "genetic flaw"  -- keep the same as in @ifreq@, to simplify code
   , ifreq    = [(GENETIC_FLAW, fr), (grp, 1)]
   , iflavour = zipPlain [BrRed]
@@ -947,7 +947,7 @@ geneticFlaw10BadArmorRanged = geneticFlaw 3 False 10 GENETIC_FLAW_10
 -- and so reveal the backstory item too early and without the fun.
 -- The exception is fluff items, where the effects are marginal by definition.
 backstoryFluffTemplate = ItemKind
-  { isymbol  = '?'
+  { isymbol  = toContentSymbol '?'
   , iname    = "unrevealed rumination"
   , ifreq    = [(BACKSTORY_FLUFF_UNKNOWN, 1)]
   , iflavour = zipStory [BrBlue, Blue]
