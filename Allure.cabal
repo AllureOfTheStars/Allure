@@ -187,14 +187,11 @@ test-suite test
   type:               exitcode-stdio-1.0
   hs-source-dirs:     test
   main-is:            Spec.hs
-  other-modules:      SessionUIMock
   build-depends:      ,LambdaHack
                       ,this-game-content
                       ,this-game-src
                       ,base
-                      ,containers
                       ,optparse-applicative
                       ,tasty >= 1.0
                       ,tasty-hunit
                       ,text
-                      ,transformers
