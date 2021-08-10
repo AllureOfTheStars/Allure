@@ -22,7 +22,9 @@ import Game.LambdaHack.Core.Prelude
 
 import Content.ItemKindBlast
 import Content.ItemKindTemporary
+import Content.RuleKind
 import Game.LambdaHack.Content.ItemKind
+import Game.LambdaHack.Content.RuleKind
 import Game.LambdaHack.Core.Dice
 import Game.LambdaHack.Definition.Ability
 import Game.LambdaHack.Definition.Color
@@ -150,10 +152,14 @@ fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, ho
 -- Allure-specific
 animalStomach,       hungry, smallBeak, razor, liveWire, flotationBag, inkSac, powerfulHindLegs, coiledTail, jetBooster, rhinoInertia, electricAmbience, electricAmbienceRecharge, robotBrain, hullPlating, mouthVent, dustVent, dustFissure, fuelVent, fuelFissure, geneticFlaw3BadArmorMelee, geneticFlaw3BadArmorRanged, geneticFlaw10BadArmorMelee, geneticFlaw10BadArmorRanged, backstoryFluffTemplate, backstoryFluff1, backstoryGoodTemplate, backstoryGood1, backstoryGood2, backstoryGood3, backstoryBadTemplate, backstoryBad1, backstoryBad2, backstoryBad3, backstoryBad4, backstoryMixedTemplate, backstoryMixed1, backstoryMixed2, backstoryNeutralTemplate, backstoryNeutral1, backstoryNeutral2, backstoryNeutral3 :: ItemKind
 
+symbolNecklace, symbolWand :: Char
+symbolNecklace = rsymbolNecklace standardRules
+symbolWand = rsymbolWand standardRules
+
 -- * No-cooldown melee damage organs without effects
 
 thorn = fist
-  { isymbol  = toContentSymbol '-'
+  { isymbol  = symbolWand
   , iname    = "thorn"
   , ifreq    = [(S_THORN, 1)]
   , icount   = 2 + 1 `d` 2  -- unrealistic, but not boring
@@ -274,7 +280,7 @@ largeJaw = fist  -- organs can't be too weak, because some non-humans also use
 -- * Direct damage organs with effects
 
 beeSting = fist
-  { isymbol  = toContentSymbol '-'
+  { isymbol  = symbolWand
   , iname    = "bee sting"
   , ifreq    = [(S_BEE_STING, 1)]
   , icount   = 1
@@ -287,7 +293,7 @@ beeSting = fist
   , idesc    = "Painful, but beneficial."
   }
 sting = fist
-  { isymbol  = toContentSymbol '-'
+  { isymbol  = symbolWand
   , iname    = "sting"
   , ifreq    = [(S_STING, 1)]
   , icount   = 1
@@ -310,7 +316,7 @@ lip = fist
   , idesc    = ""
   }
 venomTooth = fist
-  { isymbol  = toContentSymbol '-'
+  { isymbol  = symbolWand
   , iname    = "venom tooth"
   , ifreq    = [(S_VENOM_TOOTH, 1)]
   , iverbHit = "bite"
@@ -321,7 +327,7 @@ venomTooth = fist
   , idesc    = "A chilling numbness spreads from its bite."
   }
 hookedClaw = fist
-  { isymbol  = toContentSymbol '-'
+  { isymbol  = symbolWand
   , iname    = "hooked claw"
   , ifreq    = [(S_HOOKED_CLAW, 1)]
   , icount   = 2  -- even if more, only the fore claws used for fighting
@@ -333,7 +339,7 @@ hookedClaw = fist
   , idesc    = "A curved talon."
   }
 screechingBeak = fist
-  { isymbol  = toContentSymbol '-'
+  { isymbol  = symbolWand
   , iname    = "screeching beak"
   , ifreq    = [(S_SCREECHING_BEAK, 1)]
   , icount   = 1
@@ -345,7 +351,7 @@ screechingBeak = fist
   , idesc    = "Both a weapon and a beacon, calling more scavengers to the meal."
   }
 antler = fist
-  { isymbol  = toContentSymbol '-'
+  { isymbol  = symbolWand
   , iname    = "antler"
   , ifreq    = [(S_ANTLER, 1)]
   , iverbHit = "ram"
@@ -357,7 +363,7 @@ antler = fist
   , idesc    = ""
   }
 rhinoHorn = fist
-  { isymbol  = toContentSymbol '-'
+  { isymbol  = symbolWand
   , iname    = "ugly horn"  -- made of keratin, unlike real horns
   , ifreq    = [(S_RHINO_HORN, 1)]
   , icount   = 1  -- single, unlike real horns
@@ -369,7 +375,7 @@ rhinoHorn = fist
   , idesc    = "Very solid, considering it has the same composition as fingernails."
   }
 hugeTail = fist
-  { isymbol  = toContentSymbol '-'
+  { isymbol  = symbolWand
   , iname    = "huge tail"
   , ifreq    = [(S_HUGE_TAIL, 1)]
   , icount   = 1
@@ -386,7 +392,7 @@ hugeTail = fist
 -- * Melee weapons without direct damage
 
 venomFang = fist
-  { isymbol  = toContentSymbol '-'
+  { isymbol  = symbolWand
   , iname    = "venom fang"
   , ifreq    = [(S_VENOM_FANG, 1)]
   , iverbHit = "bite"
@@ -411,7 +417,7 @@ sulfurFissure = boilingFissure
   , idesc    = ""
   }
 boilingFissure = fist
-  { isymbol  = toContentSymbol '-'
+  { isymbol  = symbolWand
   , iname    = "fissure"
   , ifreq    = [(S_BOILING_FISSURE, 1)]
   , icount   = 2 + 1 `d` 2
@@ -560,7 +566,7 @@ animalBrain = armoredSkin
   }
 speedGland :: Int -> GroupName ItemKind -> ItemKind
 speedGland n grp = armoredSkin
-  { isymbol  = toContentSymbol '-'
+  { isymbol  = symbolWand
   , iname    = "speed gland"
   , ifreq    = [(grp, 1)]
   , iverbHit = "spit at"
@@ -574,7 +580,7 @@ speedGland n grp = armoredSkin
 speedGland5 = speedGland 5 S_SPEED_GLAND_5
 speedGland10 = speedGland 10 S_SPEED_GLAND_10
 scentGland = armoredSkin
-  { isymbol  = toContentSymbol '-'
+  { isymbol  = symbolWand
   , iname    = "scent gland"
   , ifreq    = [(S_SCENT_GLAND, 1)]
   , icount   = 10 + 1 `d` 3  -- runs out
@@ -691,7 +697,7 @@ smallBeak = fist
   , idesc    = "Cute, but painful."
   }
 liveWire = fist
-  { isymbol  = toContentSymbol '-'
+  { isymbol  = symbolWand
   , iname    = "live wire"
   , ifreq    = [(S_LIVE_WIRE, 1)]
   , icount   = 1
@@ -704,7 +710,7 @@ liveWire = fist
   , idesc    = ""
   }
 razor = fist
-  { isymbol  = toContentSymbol '-'
+  { isymbol  = symbolWand
   , iname    = "razor edge"
   , ifreq    = [(S_RAZOR, 1)]
   , icount   = 1 + 1 `d` 2
@@ -780,7 +786,7 @@ flotationBag = armoredSkin
   , idesc    = "A large organ that enables effortless flight. It is essentially a hydrogen container with easily regulated internal pressure. It evolved a protection against blunt trauma, but not against puncture."
   }
 inkSac = armoredSkin  -- neither melee nor aspects nor periodic, so to be
-  { isymbol  = toContentSymbol '"'    -- triggered, needs a special symbol
+  { isymbol  = symbolNecklace    -- triggered, needs a special symbol
   , iname    = "ink sac"
   , ifreq    = [(S_INK_SAC, 1)]
   , iverbHit = "squirt"
@@ -791,7 +797,7 @@ inkSac = armoredSkin  -- neither melee nor aspects nor periodic, so to be
   , idesc    = ""  -- TODO: https://en.wikipedia.org/wiki/Octopus#Ink_sac
   }
 powerfulHindLegs = armoredSkin  -- neither melee nor periodic so to trigger
-  { isymbol  = toContentSymbol '"'              -- needs a special symbol
+  { isymbol  = symbolNecklace              -- needs a special symbol
   , iname    = "pair"
   , ifreq    = [(S_POWERFUL_HIND_LEGS, 1)]
   , iverbHit = "jump"
@@ -808,7 +814,7 @@ coiledTail = powerfulHindLegs
   , idesc    = "When the coiled tail springs, expect a lurch that leaves you no time to react."
   }
 jetBooster = armoredSkin  -- neither melee nor periodic so to be triggered,
-  { isymbol  = toContentSymbol '"'        -- needs a special symbol
+  { isymbol  = symbolNecklace        -- needs a special symbol
   , iname    = "jet booster"
   , ifreq    = [(S_JET_BOOSTER, 1)]
   , iverbHit = "dart"
