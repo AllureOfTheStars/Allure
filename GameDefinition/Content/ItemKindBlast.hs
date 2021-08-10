@@ -347,8 +347,8 @@ spreadFlash = ItemKind
   , iaspects = [ ToThrow $ ThrowMod 100 20 4  -- 4 steps, 1 turn
                , SetFlag Fragile, SetFlag Blast
                , AddSkill SkShine 5 ]
-  , ieffects = [ toOrganBad S_WEAKENED 20
-               , Discharge 1 $ 40 - 1 `d` 20 ]
+  , ieffects = [ Discharge 1 $ 40 - 1 `d` 20
+               , toOrganBad S_WEAKENED 20 ]
                  -- Wikipedia says: blind for five seconds and afterimage
                  -- for much longer, harming aim. But blind is boring
                  -- and prevents the player from seeing fun explosions
@@ -568,8 +568,8 @@ smoke = ItemKind  -- slow, long, weakly blinding blast; smoke, octopus's ink
   , idamage  = 0
   , iaspects = [ toVelocity 20  -- 4 steps, 2 turns
                , SetFlag Fragile, SetFlag Blast ]
-  , ieffects = [ toOrganBad S_BLIND (1 + 1 `d` 2)
-               , toOrganBad S_WITHHOLDING (5 + 1 `d` 3) ]
+  , ieffects = [ toOrganBad S_WITHHOLDING (5 + 1 `d` 3)
+               , toOrganBad S_BLIND (1 + 1 `d` 2) ]
                   -- choking and tears or just obscured view, can't aim
   , idesc    = "Twirling clouds of black, sticky vapour."
   , ikit     = []
