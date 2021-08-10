@@ -34,6 +34,7 @@ import qualified Game.LambdaHack.Content.ItemKind as IK
 import           Game.LambdaHack.Content.TileKind
 import           Game.LambdaHack.Core.Dice
 import           Game.LambdaHack.Definition.Defs
+import           Game.LambdaHack.Definition.DefsInternal
 
 -- * Group name patterns
 
@@ -107,7 +108,7 @@ rogue = CaveKind
   , cactorCoeff   = 50  -- the maze requires time to explore
   , cactorFreq    = [(MONSTER, 50), (ANIMAL, 20), (ROBOT, 30)]
   , citemNum      = 17 `d` 2 + 25 - 25 `dL` 1
-      -- deep down quality over quantity; generally not too random, 
+      -- deep down quality over quantity; generally not too random,
       -- sacrificing replayability for consistent balance
   , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.CRAWL_ITEM, 20)
     -- CRAWL_ITEM items are used only in long scenarios, such as multi-level
