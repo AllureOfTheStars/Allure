@@ -152,9 +152,9 @@ fist,    foot, hookedClaw, smallClaw, snout, smallJaw, jaw, largeJaw, antler, ho
 -- Allure-specific
 animalStomach,       hungry, smallBeak, razor, liveWire, flotationBag, inkSac, powerfulHindLegs, coiledTail, jetBooster, rhinoInertia, electricAmbience, electricAmbienceRecharge, robotBrain, hullPlating, mouthVent, dustVent, dustFissure, fuelVent, fuelFissure, geneticFlaw3BadArmorMelee, geneticFlaw3BadArmorRanged, geneticFlaw10BadArmorMelee, geneticFlaw10BadArmorRanged, backstoryFluffTemplate, backstoryFluff1, backstoryGoodTemplate, backstoryGood1, backstoryGood2, backstoryGood3, backstoryBadTemplate, backstoryBad1, backstoryBad2, backstoryBad3, backstoryBad4, backstoryMixedTemplate, backstoryMixed1, backstoryMixed2, backstoryNeutralTemplate, backstoryNeutral1, backstoryNeutral2, backstoryNeutral3 :: ItemKind
 
-symbolNecklace, symbolWand :: Char
-symbolNecklace = rsymbolNecklace standardRules
-symbolWand = rsymbolWand standardRules
+symbolNecklace, symbolWand :: ContentSymbol ItemKind
+symbolNecklace = rsymbolNecklace $ ritemSymbols standardRules
+symbolWand = rsymbolWand $ ritemSymbols standardRules
 
 -- * No-cooldown melee damage organs without effects
 

@@ -24,6 +24,7 @@ import           System.IO
 -- Cabal
 import qualified Paths_Allure as Self (version)
 
+import Game.LambdaHack.Content.ItemKind (ItemSymbolsUsedInEngine (..))
 import Game.LambdaHack.Content.RuleKind
 
 standardRules :: RuleContent
@@ -51,24 +52,26 @@ standardRules = RuleContent
   , rscoresFile = "Allure.scores"
   , rnearby = 30
   , rstairWordCarried = ["staircase", "lift"]
-  , rsymbolProjectile = '{'
-  , rsymbolLight      = '('
-  , rsymbolTool       = ')'
-  , rsymbolSpecial    = '*'  -- don't overuse; it clashes with projectiles
-  , rsymbolGold       = '$'  -- also gems
-  , rsymbolNecklace   = '"'
-  , rsymbolRing       = '='
-  , rsymbolPotion     = '!'  -- also concoction, bottle, jar, vial, canister
-  , rsymbolFlask      = '!'
-  , rsymbolScroll     = '?'  -- book, note, tablet, remote, chip, card
-  , rsymbolTorsoArmor = '['
-  , rsymbolMiscArmor  = '['
-  , rsymbolClothes    = '['
-  , rsymbolShield     = ']'
-  , rsymbolPolearm    = '/'
-  , rsymbolEdged      = '|'
-  , rsymbolHafted     = '\\'
-  , rsymbolWand       = '-'  -- transmitter, pistol, rifle, instrument
-  , rsymbolFood       = ','  -- also body part;
-                             -- distinct from floor: not middle dot
+  , ritemSymbols = ItemSymbolsUsedInEngine
+      { rsymbolProjectile = '{'
+      , rsymbolLight      = '('
+      , rsymbolTool       = ')'
+      , rsymbolSpecial    = '*'  -- don't overuse; it clashes with projectiles
+      , rsymbolGold       = '$'  -- also gems
+      , rsymbolNecklace   = '"'
+      , rsymbolRing       = '='
+      , rsymbolPotion     = '!'  -- also concoction, bottle, jar, vial, canister
+      , rsymbolFlask      = '!'
+      , rsymbolScroll     = '?'  -- book, note, tablet, remote, chip, card
+      , rsymbolTorsoArmor = '['
+      , rsymbolMiscArmor  = '['
+      , rsymbolClothes    = '['
+      , rsymbolShield     = ']'
+      , rsymbolPolearm    = '/'
+      , rsymbolEdged      = '|'
+      , rsymbolHafted     = '\\'
+      , rsymbolWand       = '-'  -- transmitter, pistol, rifle, instrument
+      , rsymbolFood       = ','  -- also body part;
+                                 -- distinct from floor: not middle dot
+      }
   }
