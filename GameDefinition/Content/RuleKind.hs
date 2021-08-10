@@ -26,6 +26,7 @@ import qualified Paths_Allure as Self (version)
 
 import Game.LambdaHack.Content.ItemKind (ItemSymbolsUsedInEngine (..))
 import Game.LambdaHack.Content.RuleKind
+import Game.LambdaHack.Definition.Defs
 
 standardRules :: RuleContent
 standardRules = RuleContent
@@ -53,25 +54,30 @@ standardRules = RuleContent
   , rnearby = 30
   , rstairWordCarried = ["staircase", "lift"]
   , ritemSymbols = ItemSymbolsUsedInEngine
-      { rsymbolProjectile = '{'
-      , rsymbolLight      = '('
-      , rsymbolTool       = ')'
-      , rsymbolSpecial    = '*'  -- don't overuse; it clashes with projectiles
-      , rsymbolGold       = '$'  -- also gems
-      , rsymbolNecklace   = '"'
-      , rsymbolRing       = '='
-      , rsymbolPotion     = '!'  -- also concoction, bottle, jar, vial, canister
-      , rsymbolFlask      = '!'
-      , rsymbolScroll     = '?'  -- book, note, tablet, remote, chip, card
-      , rsymbolTorsoArmor = '['
-      , rsymbolMiscArmor  = '['
-      , rsymbolClothes    = '['
-      , rsymbolShield     = ']'
-      , rsymbolPolearm    = '/'
-      , rsymbolEdged      = '|'
-      , rsymbolHafted     = '\\'
-      , rsymbolWand       = '-'  -- transmitter, pistol, rifle, instrument
-      , rsymbolFood       = ','  -- also body part;
-                                 -- distinct from floor: not middle dot
+      { rsymbolProjectile = toContentSymbol '{'
+      , rsymbolLight      = toContentSymbol '('
+      , rsymbolTool       = toContentSymbol ')'
+      , rsymbolSpecial    = toContentSymbol '*'
+                              -- don't overuse; it clashes with projectiles
+      , rsymbolGold       = toContentSymbol '$'
+                              -- also gems
+      , rsymbolNecklace   = toContentSymbol '"'
+      , rsymbolRing       = toContentSymbol '='
+      , rsymbolPotion     = toContentSymbol '!'
+                              -- also concoction, bottle, jar, vial, canister
+      , rsymbolFlask      = toContentSymbol '!'
+      , rsymbolScroll     = toContentSymbol '?'
+                              -- book, note, tablet, remote, chip, card
+      , rsymbolTorsoArmor = toContentSymbol '['
+      , rsymbolMiscArmor  = toContentSymbol '['
+      , rsymbolClothes    = toContentSymbol '['
+      , rsymbolShield     = toContentSymbol ']'
+      , rsymbolPolearm    = toContentSymbol '/'
+      , rsymbolEdged      = toContentSymbol '|'
+      , rsymbolHafted     = toContentSymbol '\\'
+      , rsymbolWand       = toContentSymbol '-'
+                              -- transmitter, pistol, rifle, instrument
+      , rsymbolFood       = toContentSymbol ','
+          -- also body part; distinct enough from floor, which is middle dot
       }
   }
