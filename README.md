@@ -131,7 +131,7 @@ and optionally the Google Closure Compiler[16].
 The latest official version of the game can be downloaded,
 compiled for SDL2 and installed automatically using the 'cabal' tool,
 which may already be a part of your OS distribution, but if it's too old
-(version 2.4.1 or later is required) you can download the whole current
+(version 3.4 or later is required) you can download the whole current
 compilation suite as described at https://www.haskell.org/downloads/.
 Get the Allure of the Stars package from Hackage[3] as follows
 
@@ -145,7 +145,6 @@ Alternatively, if you'd like to develop in this codebase,
 the following speeds up the turn-around a lot
 
     cp cabal.project.local.development cabal.project.local
-    cabal install cabal-plan
 
 and then you can compile (and recompile) with
 
