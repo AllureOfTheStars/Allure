@@ -1207,9 +1207,7 @@ light1 = ItemKind
   , iverbHit = "scorch"
   , iweight  = 1000
   , idamage  = 1 `d` 1  -- strong missile, but betrays the flinger
-  , iaspects = [ AddSkill SkShine 3, AddSkill SkSight (-2)
-                   -- not only flashes, but also sparks,
-                   -- so unused by AI due to the mixed blessing
+  , iaspects = [ AddSkill SkShine 3  -- no malus, to lessen micromanagement
                , SetFlag Durable, SetFlag Lobable, SetFlag Meleeable
                , EqpSlot EqpSlotShine ]
                    -- partially durable; reusable flare;
@@ -1237,12 +1235,12 @@ light2 = ItemKind
   , iverbHit = "burn"
   , iweight  = 1600
   , idamage  = 1 `d` 1
-  , iaspects = [ AddSkill SkShine 3, AddSkill SkSight (-1)
+  , iaspects = [ AddSkill SkShine 3
                , SetFlag Lobable, SetFlag Fragile, SetFlag Equipable
                , EqpSlot EqpSlotShine ]
   , ieffects = [ Explode S_FOCUSED_BURNING_OIL_2
                , OnSmash (Explode S_VIOLENT_BURNING_OIL_2) ]
-  , idesc    = "A restaurant table glass lamp filled with plant oil feeding a slender wick. Or a makeshift caricature thereof."
+  , idesc    = "A tiny restaurant table glass lamp filled with plant oil feeding a slender wick. Or a functional equivalent thereof."
   , ikit     = []
   }
 lightDoused2 = light2
@@ -1263,7 +1261,7 @@ light3 = ItemKind
   , iverbHit = "burn"
   , iweight  = 3000
   , idamage  = 2 `d` 1
-  , iaspects = [ AddSkill SkShine 4, AddSkill SkSight (-1)
+  , iaspects = [ AddSkill SkShine 4
                , SetFlag Lobable, SetFlag Fragile, SetFlag Equipable
                , EqpSlot EqpSlotShine ]
   , ieffects = [ Explode S_FOCUSED_BURNING_OIL_4
@@ -1563,7 +1561,7 @@ imageItensifier = ItemKind
   , iverbHit = "rattle"
   , iweight  = 700
   , idamage  = 0
-  , iaspects = [ AddSkill SkNocto 1, AddSkill SkSight (-1)
+  , iaspects = [ AddSkill SkNocto 1
                , AddSkill SkArmorMelee $ (-6 + 1 `dL` 3) * 5
                , SetFlag Precious, SetFlag Equipable
                , EqpSlot EqpSlotMiscBonus ]
@@ -1775,7 +1773,7 @@ spacesuit = ItemKind
   , iweight  = 250000  -- including the fake gravity mass from two boots
   , idamage  = 0
   , iaspects = [ AddSkill SkHurtMelee (-30)  -- restricted arm movement
-               , AddSkill SkSight (-1)
+               , AddSkill SkSight (-2)
                , AddSkill SkHearing (-3), AddSkill SkSmell (-99)
                , AddSkill SkArmorMelee $ (8 + 1 `dL` 2) * 10  -- ~ 95
                , AddSkill SkArmorRanged $ (1 `dL` 3) * 12  -- ~ 25.5
@@ -1795,7 +1793,7 @@ spacesuitTorn = spacesuit
   , iverbHit = "entangle"
   , iweight  = 10000
   , iaspects = [ AddSkill SkHurtMelee (-30)
-               , AddSkill SkSight (-1)  -- obstructed despite the tears
+               , AddSkill SkSight (-2)  -- obstructed despite the tears
                , AddSkill SkArmorMelee $ (1 + 1 `d` 3) * 10  -- shallow, no `dL`
                , AddSkill SkArmorRanged $ (1 `d` 2) * 6
                , SetFlag Durable, SetFlag Equipable
@@ -1913,7 +1911,7 @@ helmArmored = ItemKind
   , iaspects = [ Timeout 4
                , AddSkill SkArmorMelee $ (1 `dL` 3) * 5
                , AddSkill SkArmorRanged $ (2 + 1 `dL` 2) * 3  -- headshot
-               , AddSkill SkSight (-1)
+               , AddSkill SkSight (-2)
                , AddSkill SkHearing (-3), AddSkill SkSmell (-5)
                , SetFlag Durable, SetFlag Meleeable
                , EqpSlot EqpSlotArmorRanged
