@@ -14,10 +14,10 @@ module Content.TileKind
   , pattern EMPTY_SET_LIT, pattern EMPTY_SET_DARK, pattern NOISE_SET_LIT, pattern POWER_SET_LIT, pattern POWER_SET_DARK, pattern BATTLE_SET_LIT, pattern BATTLE_SET_DARK, pattern BRAWL_SET_LIT, pattern SHOOTOUT_SET_LIT, pattern ZOO_SET_LIT, pattern ZOO_SET_DARK, pattern ESCAPE_SET_LIT, pattern ESCAPE_SET_DARK, pattern AMBUSH_SET_LIT, pattern AMBUSH_SET_DARK, pattern ARENA_SET_LIT, pattern ARENA_SET_DARK
   , pattern ROGUE_SET, pattern MUSEUM_SET_LIT, pattern MUSEUM_SET_DARK, pattern HUNT_SET_LIT, pattern EXIT_SET_LIT
     -- ** Used in PlaceKind, but not in CaveKind.
-  , pattern TREE_SHADE_WALKABLE_LIT, pattern TREE_SHADE_WALKABLE_DARK, pattern SMOKE_CLUMP_LIT, pattern SMOKE_CLUMP_DARK, pattern BUSH_CLUMP_LIT, pattern BUSH_CLUMP_DARK, pattern FOG_CLUMP_LIT, pattern FOG_CLUMP_DARK, pattern STAIR_TERMINAL_LIT, pattern STAIR_TERMINAL_DARK, pattern SIGNBOARD, pattern STAIRCASE_UP, pattern ORDINARY_STAIRCASE_UP, pattern STAIRCASE_OUTDOOR_UP, pattern GATED_STAIRCASE_UP, pattern STAIRCASE_DOWN, pattern ORDINARY_STAIRCASE_DOWN, pattern STAIRCASE_OUTDOOR_DOWN, pattern GATED_STAIRCASE_DOWN, pattern ESCAPE_UP, pattern ESCAPE_DOWN, pattern ESCAPE_OUTDOOR_DOWN
-  , pattern S_LAMP_POST, pattern S_TREE_LIT, pattern S_TREE_DARK, pattern S_PULPIT, pattern S_BUSH_LIT, pattern S_FOG_LIT, pattern S_SMOKE_LIT, pattern S_FLOOR_ACTOR_LIT, pattern S_FLOOR_ACTOR_DARK, pattern S_FLOOR_ASHES_LIT, pattern S_FLOOR_ASHES_DARK, pattern S_SHADED_GROUND
-  , pattern BUSH_GROVE_LIT, pattern BUSH_GROVE_DARK, pattern UNDERBRUSH_CLUMP_LIT, pattern UNDERBRUSH_CLUMP_DARK, pattern ASHES_SMOKE_LIT, pattern ASHES_SMOKE_DARK, pattern RECT_WINDOWS, pattern DOORLESS_MACHINERY, pattern PUMPS_LIT, pattern PUMPS_DARK, pattern DOORLESS_WALL, pattern OIL_RESIDUE_LIT, pattern OIL_RESIDUE_DARK, pattern LIFT_TERMINAL_LIT, pattern LIFT_TERMINAL_DARK, pattern STAIRCASE_LIFT_UP, pattern STAIRCASE_LIFT_DOWN, pattern GATED_LIFT_UP, pattern GATED_LIFT_DOWN, pattern DECON_STAIRCASE_UP, pattern DECON_STAIRCASE_DOWN, pattern DECON_LIFT_UP, pattern DECON_LIFT_DOWN, pattern WELDED_STAIRCASE_UP, pattern WELDED_LIFT_UP, pattern ESCAPE_SPACESHIP_DOWN, pattern ORDINARY_LIFT_UP, pattern ORDINARY_LIFT_DOWN, pattern RUBBLE_OR_WASTE_LIT, pattern RUBBLE_OR_WASTE_DARK, pattern CACHE_DEPOSIT, pattern CACHE_JEWELRY, pattern CACHE_MAZE, pattern CACHE_SHUTTLE, pattern TRAPPED_DOOR, pattern FLOOR_ACTOR_ITEM, pattern FLOOR_ACTOR_ITEM_LIT, pattern STUCK_DOOR, pattern BARREL
-  , pattern S_POOL_LIT, pattern S_POOL_DARK, pattern S_OIL_SPILL, pattern S_FROZEN_PATH, pattern S_LIFT_SHAFT, pattern S_REINFORCED_WALL, pattern S_SHUTTLE_HULL, pattern S_HARDWARE_RACK, pattern S_STAIRCASE_TRAP_DOWN_OIL, pattern S_UNDERBRUSH_LIT, pattern S_UNDERBRUSH_DARK
+  , pattern TREE_SHADE_WALKABLE_LIT, pattern TREE_SHADE_WALKABLE_DARK, pattern SMOKE_CLUMP_LIT, pattern SMOKE_CLUMP_DARK, pattern BUSH_CLUMP_LIT, pattern BUSH_CLUMP_DARK, pattern FOG_CLUMP_LIT, pattern FOG_CLUMP_DARK, pattern STAIR_TERMINAL_LIT, pattern STAIR_TERMINAL_DARK, pattern SIGNBOARD, pattern STAIRCASE_UP, pattern ORDINARY_STAIRCASE_UP, pattern STAIRCASE_OUTDOOR_UP, pattern GATED_STAIRCASE_UP, pattern STAIRCASE_DOWN, pattern ORDINARY_STAIRCASE_DOWN, pattern STAIRCASE_OUTDOOR_DOWN, pattern GATED_STAIRCASE_DOWN, pattern ESCAPE_UP, pattern ESCAPE_DOWN, pattern ESCAPE_OUTDOOR_DOWN, pattern TRANSPARENT_WALL, pattern ICE_BUILDUP, pattern WORKSHOP, pattern FLOOR_ACTOR_ITEM, pattern FLOOR_ACTOR_ITEM_LIT, pattern FLOOR_ACTOR_ITEM_DARK
+  , pattern S_PILLAR, pattern S_RUBBLE_PILE, pattern S_LAMP_POST, pattern S_TREE_LIT, pattern S_TREE_DARK, pattern S_PULPIT, pattern S_BUSH_LIT, pattern S_FOG_LIT, pattern S_SMOKE_LIT, pattern S_FLOOR_ACTOR_LIT, pattern S_FLOOR_ACTOR_DARK, pattern S_FLOOR_ASHES_LIT, pattern S_FLOOR_ASHES_DARK, pattern S_SHADED_GROUND, pattern S_SHALLOW_WATER_LIT, pattern S_SHALLOW_WATER_DARK
+  , pattern BUSH_GROVE_LIT, pattern BUSH_GROVE_DARK, pattern UNDERBRUSH_CLUMP_LIT, pattern UNDERBRUSH_CLUMP_DARK, pattern ASHES_SMOKE_LIT, pattern ASHES_SMOKE_DARK, pattern RECT_WINDOWS, pattern DOORLESS_MACHINERY, pattern PUMPS_LIT, pattern PUMPS_DARK, pattern DOORLESS_WALL, pattern OIL_RESIDUE_LIT, pattern OIL_RESIDUE_DARK, pattern LIFT_TERMINAL_LIT, pattern LIFT_TERMINAL_DARK, pattern STAIRCASE_LIFT_UP, pattern STAIRCASE_LIFT_DOWN, pattern GATED_LIFT_UP, pattern GATED_LIFT_DOWN, pattern DECON_STAIRCASE_UP, pattern DECON_STAIRCASE_DOWN, pattern DECON_LIFT_UP, pattern DECON_LIFT_DOWN, pattern WELDED_STAIRCASE_UP, pattern WELDED_LIFT_UP, pattern ESCAPE_SPACESHIP_DOWN, pattern ORDINARY_LIFT_UP, pattern ORDINARY_LIFT_DOWN, pattern RUBBLE_OR_WASTE_LIT, pattern RUBBLE_OR_WASTE_DARK, pattern CACHE_DEPOSIT, pattern CACHE_JEWELRY, pattern CACHE_MAZE, pattern CACHE_SHUTTLE, pattern TRAPPED_DOOR, pattern STUCK_DOOR, pattern BARREL
+  , pattern S_POOL_LIT, pattern S_POOL_DARK, pattern S_CLOSED_DOOR, pattern S_OPEN_DOOR, pattern S_OIL_SPILL, pattern S_FROZEN_PATH, pattern S_LIFT_SHAFT, pattern S_REINFORCED_WALL, pattern S_SHUTTLE_HULL, pattern S_HARDWARE_RACK, pattern S_STAIRCASE_TRAP_DOWN_OIL, pattern S_UNDERBRUSH_LIT, pattern S_UNDERBRUSH_DARK
   , groupNamesSingleton, groupNames
     -- * Content
   , content
@@ -44,26 +44,26 @@ import Game.LambdaHack.Definition.DefsInternal
 
 groupNamesSingleton :: [GroupName TileKind]
 groupNamesSingleton =
-       [S_LAMP_POST, S_TREE_LIT, S_TREE_DARK, S_PULPIT, S_BUSH_LIT, S_FOG_LIT, S_SMOKE_LIT, S_FLOOR_ACTOR_LIT, S_FLOOR_ACTOR_DARK, S_FLOOR_ASHES_LIT, S_FLOOR_ASHES_DARK, S_SHADED_GROUND]
-    ++ [S_POOL_LIT, S_POOL_DARK, S_OIL_SPILL, S_FROZEN_PATH, S_LIFT_SHAFT, S_REINFORCED_WALL, S_SHUTTLE_HULL, S_HARDWARE_RACK]
-    ++ [S_RUBBLE_PILE, S_SHALLOW_WATER_LIT, S_SIGNBOARD_UNREAD]
-    ++ [S_SUSPECT_WALL, S_CLOSED_DOOR, S_OPEN_DOOR, S_STAIRCASE_TRAP_DOWN_OIL, S_BURNING_INSTALLATION, S_BURNING_TREE, S_BURNING_BUSH, S_BURNING_UNDERBRUSH, S_BURNING_OIL, S_UNDERBRUSH_LIT, S_UNDERBRUSH_DARK]
-    ++ [S_BUSH_DARK, S_SHALLOW_WATER_DARK]
+       [S_PILLAR, S_RUBBLE_PILE, S_LAMP_POST, S_TREE_LIT, S_TREE_DARK, S_PULPIT, S_BUSH_LIT, S_FOG_LIT, S_SMOKE_LIT, S_FLOOR_ACTOR_LIT, S_FLOOR_ACTOR_DARK, S_FLOOR_ASHES_LIT, S_FLOOR_ASHES_DARK, S_SHADED_GROUND, S_SHALLOW_WATER_LIT, S_SHALLOW_WATER_DARK]
+    ++ [S_POOL_LIT, S_POOL_DARK, S_CLOSED_DOOR, S_OPEN_DOOR, S_OIL_SPILL, S_FROZEN_PATH, S_LIFT_SHAFT, S_REINFORCED_WALL, S_SHUTTLE_HULL, S_HARDWARE_RACK]
+    ++ [ S_SIGNBOARD_UNREAD]
+    ++ [S_SUSPECT_WALL, S_STAIRCASE_TRAP_DOWN_OIL, S_BURNING_INSTALLATION, S_BURNING_TREE, S_BURNING_BUSH, S_BURNING_UNDERBRUSH, S_BURNING_OIL, S_UNDERBRUSH_LIT, S_UNDERBRUSH_DARK]
+    ++ [S_BUSH_DARK]
 
 -- ** Used in PlaceKind, but not in CaveKind.
-pattern S_LAMP_POST, S_TREE_LIT, S_TREE_DARK, S_PULPIT, S_BUSH_LIT, S_FOG_LIT, S_SMOKE_LIT, S_FLOOR_ACTOR_LIT, S_FLOOR_ACTOR_DARK, S_FLOOR_ASHES_LIT, S_FLOOR_ASHES_DARK, S_SHADED_GROUND :: GroupName TileKind
+pattern S_PILLAR, S_RUBBLE_PILE, S_LAMP_POST, S_TREE_LIT, S_TREE_DARK, S_PULPIT, S_BUSH_LIT, S_FOG_LIT, S_SMOKE_LIT, S_FLOOR_ACTOR_LIT, S_FLOOR_ACTOR_DARK, S_FLOOR_ASHES_LIT, S_FLOOR_ASHES_DARK, S_SHADED_GROUND, S_SHALLOW_WATER_LIT, S_SHALLOW_WATER_DARK :: GroupName TileKind
 
 -- ** Allure-specific
-pattern S_POOL_LIT, S_POOL_DARK, S_OIL_SPILL, S_FROZEN_PATH, S_LIFT_SHAFT, S_REINFORCED_WALL, S_SHUTTLE_HULL, S_HARDWARE_RACK :: GroupName TileKind
+pattern S_POOL_LIT, S_POOL_DARK, S_CLOSED_DOOR, S_OPEN_DOOR, S_OIL_SPILL, S_FROZEN_PATH, S_LIFT_SHAFT, S_REINFORCED_WALL, S_SHUTTLE_HULL, S_HARDWARE_RACK :: GroupName TileKind
 
 -- ** Used only internally in other TileKind definitions or never used.
-pattern S_RUBBLE_PILE, S_SHALLOW_WATER_LIT, S_SIGNBOARD_UNREAD :: GroupName TileKind
+pattern S_SIGNBOARD_UNREAD :: GroupName TileKind
 
 -- ** Allure-specific
-pattern S_SUSPECT_WALL, S_CLOSED_DOOR, S_OPEN_DOOR, S_STAIRCASE_TRAP_DOWN_OIL, S_BURNING_INSTALLATION, S_BURNING_TREE, S_BURNING_BUSH, S_BURNING_UNDERBRUSH, S_BURNING_OIL, S_UNDERBRUSH_LIT, S_UNDERBRUSH_DARK :: GroupName TileKind
+pattern S_SUSPECT_WALL, S_STAIRCASE_TRAP_DOWN_OIL, S_BURNING_INSTALLATION, S_BURNING_TREE, S_BURNING_BUSH, S_BURNING_UNDERBRUSH, S_BURNING_OIL, S_UNDERBRUSH_LIT, S_UNDERBRUSH_DARK :: GroupName TileKind
 
 -- * Not used, but needed, because auto-generated. Singletons.
-pattern S_BUSH_DARK, S_SHALLOW_WATER_DARK :: GroupName TileKind
+pattern S_BUSH_DARK :: GroupName TileKind
 
 -- TODO: if we stick to the current system of generating extra kinds and their
 -- group names, let's also add the generated group names to @groupNames@.
@@ -74,11 +74,11 @@ groupNames =
     ++ [HABITAT_CONTAINMENT_WALL, TRANSPORT_ROUTE, ORIELS_FENCE, AIRLOCK_FENCE, EMPTY_AIRLOCK_FENCE, OPENABLE_WALL, TRAPPABLE_WALL, OILY_FLOOR_LIT, OILY_FLOOR_DARK]
     ++ [EMPTY_SET_LIT, EMPTY_SET_DARK, NOISE_SET_LIT, POWER_SET_LIT, POWER_SET_DARK, BATTLE_SET_LIT, BATTLE_SET_DARK, BRAWL_SET_LIT, SHOOTOUT_SET_LIT, ZOO_SET_LIT, ZOO_SET_DARK, ESCAPE_SET_LIT, ESCAPE_SET_DARK, AMBUSH_SET_LIT, AMBUSH_SET_DARK, ARENA_SET_LIT, ARENA_SET_DARK]
     ++ [ROGUE_SET, MUSEUM_SET_LIT, MUSEUM_SET_DARK, HUNT_SET_LIT, EXIT_SET_LIT]
-    ++ [TREE_SHADE_WALKABLE_LIT, TREE_SHADE_WALKABLE_DARK, SMOKE_CLUMP_LIT, SMOKE_CLUMP_DARK, BUSH_CLUMP_LIT, BUSH_CLUMP_DARK, FOG_CLUMP_LIT, FOG_CLUMP_DARK, STAIR_TERMINAL_LIT, STAIR_TERMINAL_DARK, SIGNBOARD, STAIRCASE_UP, ORDINARY_STAIRCASE_UP, STAIRCASE_OUTDOOR_UP, GATED_STAIRCASE_UP, STAIRCASE_DOWN, ORDINARY_STAIRCASE_DOWN, STAIRCASE_OUTDOOR_DOWN, GATED_STAIRCASE_DOWN, ESCAPE_UP, ESCAPE_DOWN, ESCAPE_OUTDOOR_DOWN]
-    ++ [BUSH_GROVE_LIT, BUSH_GROVE_DARK, UNDERBRUSH_CLUMP_LIT, UNDERBRUSH_CLUMP_DARK, ASHES_SMOKE_LIT, ASHES_SMOKE_DARK, RECT_WINDOWS, DOORLESS_MACHINERY, PUMPS_LIT, PUMPS_DARK, DOORLESS_WALL, OIL_RESIDUE_LIT, OIL_RESIDUE_DARK, LIFT_TERMINAL_LIT, LIFT_TERMINAL_DARK, STAIRCASE_LIFT_UP, STAIRCASE_LIFT_DOWN, GATED_LIFT_UP, GATED_LIFT_DOWN, DECON_STAIRCASE_UP, DECON_STAIRCASE_DOWN, DECON_LIFT_UP, DECON_LIFT_DOWN, WELDED_STAIRCASE_UP, WELDED_LIFT_UP, ESCAPE_SPACESHIP_DOWN, ORDINARY_LIFT_UP, ORDINARY_LIFT_DOWN, RUBBLE_OR_WASTE_LIT, RUBBLE_OR_WASTE_DARK, CACHE_DEPOSIT, CACHE_JEWELRY, CACHE_MAZE, CACHE_SHUTTLE, TRAPPED_DOOR, FLOOR_ACTOR_ITEM, FLOOR_ACTOR_ITEM_LIT, STUCK_DOOR, BARREL]
+    ++ [TREE_SHADE_WALKABLE_LIT, TREE_SHADE_WALKABLE_DARK, SMOKE_CLUMP_LIT, SMOKE_CLUMP_DARK, BUSH_CLUMP_LIT, BUSH_CLUMP_DARK, FOG_CLUMP_LIT, FOG_CLUMP_DARK, STAIR_TERMINAL_LIT, STAIR_TERMINAL_DARK, SIGNBOARD, STAIRCASE_UP, ORDINARY_STAIRCASE_UP, STAIRCASE_OUTDOOR_UP, GATED_STAIRCASE_UP, STAIRCASE_DOWN, ORDINARY_STAIRCASE_DOWN, STAIRCASE_OUTDOOR_DOWN, GATED_STAIRCASE_DOWN, ESCAPE_UP, ESCAPE_DOWN, ESCAPE_OUTDOOR_DOWN, TRANSPARENT_WALL, ICE_BUILDUP, WORKSHOP, FLOOR_ACTOR_ITEM, FLOOR_ACTOR_ITEM_LIT, FLOOR_ACTOR_ITEM_DARK]
+    ++ [BUSH_GROVE_LIT, BUSH_GROVE_DARK, UNDERBRUSH_CLUMP_LIT, UNDERBRUSH_CLUMP_DARK, ASHES_SMOKE_LIT, ASHES_SMOKE_DARK, RECT_WINDOWS, DOORLESS_MACHINERY, PUMPS_LIT, PUMPS_DARK, DOORLESS_WALL, OIL_RESIDUE_LIT, OIL_RESIDUE_DARK, LIFT_TERMINAL_LIT, LIFT_TERMINAL_DARK, STAIRCASE_LIFT_UP, STAIRCASE_LIFT_DOWN, GATED_LIFT_UP, GATED_LIFT_DOWN, DECON_STAIRCASE_UP, DECON_STAIRCASE_DOWN, DECON_LIFT_UP, DECON_LIFT_DOWN, WELDED_STAIRCASE_UP, WELDED_LIFT_UP, ESCAPE_SPACESHIP_DOWN, ORDINARY_LIFT_UP, ORDINARY_LIFT_DOWN, RUBBLE_OR_WASTE_LIT, RUBBLE_OR_WASTE_DARK, CACHE_DEPOSIT, CACHE_JEWELRY, CACHE_MAZE, CACHE_SHUTTLE, TRAPPED_DOOR, STUCK_DOOR, BARREL]
     ++ [TREE_BURNING_OR_NOT, BUSH_BURNING_OR_NOT]
     ++ [OBSCURED_WALL, CACHE_DEPOSIT_OR_NOT, CACHE_DEPOSIT_BREACHED, CACHE_JEWELRY_OR_NOT, CACHE_JEWELRY_TRAPPED_OR_NOT, CACHE_ABANDONED_OR_NOT, RUBBLE_BURNING_OR_NOT]
-    ++ [BRAWL_SET_DARK, NOISE_SET_DARK, SHOOTOUT_SET_DARK, EXIT_SET_DARK, HUNT_SET_DARK, FLOOR_ACTOR_ITEM_DARK]
+    ++ [BRAWL_SET_DARK, NOISE_SET_DARK, SHOOTOUT_SET_DARK, EXIT_SET_DARK, HUNT_SET_DARK]
 
 pattern FILLER_WALL, FLOOR_CORRIDOR_LIT, FLOOR_CORRIDOR_DARK, TRAIL_LIT, SAFE_TRAIL_LIT, LAB_TRAIL_LIT, DAMP_FLOOR_LIT, DAMP_FLOOR_DARK, DIRT_LIT, DIRT_DARK, FLOOR_ARENA_LIT, FLOOR_ARENA_DARK :: GroupName TileKind
 
@@ -91,10 +91,10 @@ pattern EMPTY_SET_LIT, EMPTY_SET_DARK, NOISE_SET_LIT, POWER_SET_LIT, POWER_SET_D
 pattern ROGUE_SET, MUSEUM_SET_LIT, MUSEUM_SET_DARK, HUNT_SET_LIT, EXIT_SET_LIT :: GroupName TileKind
 
 -- ** Used in PlaceKind, but not in CaveKind.
-pattern TREE_SHADE_WALKABLE_LIT, TREE_SHADE_WALKABLE_DARK, SMOKE_CLUMP_LIT, SMOKE_CLUMP_DARK, BUSH_CLUMP_LIT, BUSH_CLUMP_DARK, FOG_CLUMP_LIT, FOG_CLUMP_DARK, STAIR_TERMINAL_LIT, STAIR_TERMINAL_DARK, SIGNBOARD, STAIRCASE_UP, ORDINARY_STAIRCASE_UP, STAIRCASE_OUTDOOR_UP, GATED_STAIRCASE_UP, STAIRCASE_DOWN, ORDINARY_STAIRCASE_DOWN, STAIRCASE_OUTDOOR_DOWN, GATED_STAIRCASE_DOWN, ESCAPE_UP, ESCAPE_DOWN, ESCAPE_OUTDOOR_DOWN :: GroupName TileKind
+pattern TREE_SHADE_WALKABLE_LIT, TREE_SHADE_WALKABLE_DARK, SMOKE_CLUMP_LIT, SMOKE_CLUMP_DARK, BUSH_CLUMP_LIT, BUSH_CLUMP_DARK, FOG_CLUMP_LIT, FOG_CLUMP_DARK, STAIR_TERMINAL_LIT, STAIR_TERMINAL_DARK, SIGNBOARD, STAIRCASE_UP, ORDINARY_STAIRCASE_UP, STAIRCASE_OUTDOOR_UP, GATED_STAIRCASE_UP, STAIRCASE_DOWN, ORDINARY_STAIRCASE_DOWN, STAIRCASE_OUTDOOR_DOWN, GATED_STAIRCASE_DOWN, ESCAPE_UP, ESCAPE_DOWN, ESCAPE_OUTDOOR_DOWN, TRANSPARENT_WALL, ICE_BUILDUP, WORKSHOP, FLOOR_ACTOR_ITEM, FLOOR_ACTOR_ITEM_LIT, FLOOR_ACTOR_ITEM_DARK :: GroupName TileKind
 
 -- ** Allure-specific
-pattern BUSH_GROVE_LIT, BUSH_GROVE_DARK, UNDERBRUSH_CLUMP_LIT, UNDERBRUSH_CLUMP_DARK, ASHES_SMOKE_LIT, ASHES_SMOKE_DARK, RECT_WINDOWS, DOORLESS_MACHINERY, PUMPS_LIT, PUMPS_DARK, DOORLESS_WALL, OIL_RESIDUE_LIT, OIL_RESIDUE_DARK, LIFT_TERMINAL_LIT, LIFT_TERMINAL_DARK, STAIRCASE_LIFT_UP, STAIRCASE_LIFT_DOWN, GATED_LIFT_UP, GATED_LIFT_DOWN, DECON_STAIRCASE_UP, DECON_STAIRCASE_DOWN, DECON_LIFT_UP, DECON_LIFT_DOWN, WELDED_STAIRCASE_UP, WELDED_LIFT_UP, ESCAPE_SPACESHIP_DOWN, ORDINARY_LIFT_UP, ORDINARY_LIFT_DOWN, RUBBLE_OR_WASTE_LIT, RUBBLE_OR_WASTE_DARK, CACHE_DEPOSIT, CACHE_JEWELRY, CACHE_MAZE, CACHE_SHUTTLE, TRAPPED_DOOR, FLOOR_ACTOR_ITEM, FLOOR_ACTOR_ITEM_LIT, STUCK_DOOR, BARREL :: GroupName TileKind
+pattern BUSH_GROVE_LIT, BUSH_GROVE_DARK, UNDERBRUSH_CLUMP_LIT, UNDERBRUSH_CLUMP_DARK, ASHES_SMOKE_LIT, ASHES_SMOKE_DARK, RECT_WINDOWS, DOORLESS_MACHINERY, PUMPS_LIT, PUMPS_DARK, DOORLESS_WALL, OIL_RESIDUE_LIT, OIL_RESIDUE_DARK, LIFT_TERMINAL_LIT, LIFT_TERMINAL_DARK, STAIRCASE_LIFT_UP, STAIRCASE_LIFT_DOWN, GATED_LIFT_UP, GATED_LIFT_DOWN, DECON_STAIRCASE_UP, DECON_STAIRCASE_DOWN, DECON_LIFT_UP, DECON_LIFT_DOWN, WELDED_STAIRCASE_UP, WELDED_LIFT_UP, ESCAPE_SPACESHIP_DOWN, ORDINARY_LIFT_UP, ORDINARY_LIFT_DOWN, RUBBLE_OR_WASTE_LIT, RUBBLE_OR_WASTE_DARK, CACHE_DEPOSIT, CACHE_JEWELRY, CACHE_MAZE, CACHE_SHUTTLE, TRAPPED_DOOR, STUCK_DOOR, BARREL :: GroupName TileKind
 
 -- ** Used only internally in other TileKind definitions or never used.
 pattern TREE_BURNING_OR_NOT, BUSH_BURNING_OR_NOT :: GroupName TileKind
@@ -103,7 +103,7 @@ pattern TREE_BURNING_OR_NOT, BUSH_BURNING_OR_NOT :: GroupName TileKind
 pattern OBSCURED_WALL, CACHE_DEPOSIT_OR_NOT, CACHE_DEPOSIT_BREACHED, CACHE_JEWELRY_OR_NOT, CACHE_JEWELRY_TRAPPED_OR_NOT, CACHE_ABANDONED_OR_NOT, RUBBLE_BURNING_OR_NOT :: GroupName TileKind
 
 -- * Not used, but needed, because auto-generated. Not singletons.
-pattern BRAWL_SET_DARK, NOISE_SET_DARK, SHOOTOUT_SET_DARK, EXIT_SET_DARK, HUNT_SET_DARK, FLOOR_ACTOR_ITEM_DARK :: GroupName TileKind
+pattern BRAWL_SET_DARK, NOISE_SET_DARK, SHOOTOUT_SET_DARK, EXIT_SET_DARK, HUNT_SET_DARK :: GroupName TileKind
 
 -- ** Used in CaveKind and perhaps elsewhere (or a dark/lit version thereof).
 pattern FILLER_WALL = GroupName "fillerWall"
@@ -182,8 +182,16 @@ pattern GATED_STAIRCASE_DOWN = GroupName "gated staircase down"
 pattern ESCAPE_UP = GroupName "escape up"
 pattern ESCAPE_DOWN = GroupName "escape down"
 pattern ESCAPE_OUTDOOR_DOWN = GroupName "escape outdoor down"
+pattern TRANSPARENT_WALL  = GroupName "transparent wall"
+pattern ICE_BUILDUP = GroupName "ice buildup"
+pattern WORKSHOP = GroupName "workshop"
+pattern FLOOR_ACTOR_ITEM = GroupName "floorActorItem"
+pattern FLOOR_ACTOR_ITEM_LIT = GroupName "floorActorItemLit"
+pattern FLOOR_ACTOR_ITEM_DARK = GroupName "floorActorItemDark"
 
 -- ** Used in PlaceKind, but not in CaveKind. Singletons.
+pattern S_PILLAR = GroupName "pillar"
+pattern S_RUBBLE_PILE = GroupName "rubble pile"
 pattern S_LAMP_POST = GroupName "lamp post"
 pattern S_TREE_LIT = GroupName "tree Lit"
 pattern S_TREE_DARK = GroupName "tree Dark"
@@ -196,6 +204,8 @@ pattern S_FLOOR_ACTOR_DARK = GroupName "floor with actors Dark"
 pattern S_FLOOR_ASHES_LIT = GroupName "floor with ashes Lit"
 pattern S_FLOOR_ASHES_DARK = GroupName "floor with ashes Dark"
 pattern S_SHADED_GROUND = GroupName "shaded ground"
+pattern S_SHALLOW_WATER_LIT = GroupName "shallow water Lit"
+pattern S_SHALLOW_WATER_DARK = GroupName "shallow water Dark"
 
 -- ** Allure-specific
 pattern BUSH_GROVE_LIT = GroupName "bushGroveLit"
@@ -233,13 +243,13 @@ pattern CACHE_JEWELRY = GroupName "cache jewelry"
 pattern CACHE_MAZE = GroupName "cache maze"
 pattern CACHE_SHUTTLE = GroupName "cache shuttle"
 pattern TRAPPED_DOOR = GroupName "trapped door"
-pattern FLOOR_ACTOR_ITEM = GroupName "floorActorItem"
-pattern FLOOR_ACTOR_ITEM_LIT = GroupName "floorActorItemLit"
 pattern STUCK_DOOR = GroupName "stuck door"
 pattern BARREL = GroupName "barrel"
 
 pattern S_POOL_LIT = GroupName "poolLit"
 pattern S_POOL_DARK = GroupName "poolDark"
+pattern S_CLOSED_DOOR = GroupName "closed door"
+pattern S_OPEN_DOOR = GroupName "open door"
 pattern S_OIL_SPILL = GroupName "oil spill"
 pattern S_FROZEN_PATH = GroupName "frozen path"
 pattern S_LIFT_SHAFT = GroupName "lift shaft"
@@ -253,8 +263,6 @@ pattern BUSH_BURNING_OR_NOT = GroupName "bush burning or not"
 
 -- ** Used only internally in other TileKind definitions. Singletons.
 
-pattern S_RUBBLE_PILE = GroupName "rubble pile"
-pattern S_SHALLOW_WATER_LIT = GroupName "shallow water Lit"
 pattern S_SIGNBOARD_UNREAD = GroupName "signboard unread"
 
 -- ** Allure-specific
@@ -267,8 +275,6 @@ pattern CACHE_ABANDONED_OR_NOT = GroupName "cache abandoned or not"
 pattern RUBBLE_BURNING_OR_NOT = GroupName "rubble burning or not"
 
 pattern S_SUSPECT_WALL = GroupName "suspect wall"
-pattern S_CLOSED_DOOR = GroupName "closed door"
-pattern S_OPEN_DOOR = GroupName "open door"
 pattern S_STAIRCASE_TRAP_DOWN_OIL = GroupName "slippery staircase down"
 pattern S_BURNING_INSTALLATION = GroupName "burning installation"
 pattern S_BURNING_TREE = GroupName "burning tree"
@@ -286,11 +292,9 @@ pattern NOISE_SET_DARK = GroupName "noiseSetDark"
 pattern SHOOTOUT_SET_DARK = GroupName "shootoutSetDark"
 pattern EXIT_SET_DARK = GroupName "exitSetDark"
 pattern HUNT_SET_DARK = GroupName "huntSetDark"
-pattern FLOOR_ACTOR_ITEM_DARK = GroupName "floorActorItemDark"
 
 -- * Not used, but needed, because auto-generated. Singletons.
 pattern S_BUSH_DARK = GroupName "bush Dark"
-pattern S_SHALLOW_WATER_DARK = GroupName "shallow water Dark"
 
 -- * Content
 
@@ -365,7 +369,7 @@ basicOuterFence = TileKind
 bedrock = TileKind
   { tsymbol  = '#'
   , tname    = "wall"
-  , tfreq    = [ (FILLER_WALL, 1), (LEGEND_LIT, 100), (LEGEND_DARK, 100)
+  , tfreq    = [ (FILLER_WALL, 1)
                , (ROGUE_SET, 60), (MUSEUM_SET_DARK, 4), (NOISE_SET_LIT, 450)
                , (POWER_SET_DARK, 450), (BATTLE_SET_DARK, 250)
                , (ESCAPE_SET_DARK, 4)
@@ -429,8 +433,7 @@ wallObscuredFrescoed = TileKind
 pillar = TileKind
   { tsymbol  = '0'
   , tname    = "construction beam"
-  , tfreq    = [ (LEGEND_LIT, 100), (LEGEND_DARK, 100)
-               , (MUSEUM_SET_DARK, 20), (EMPTY_SET_LIT, 60) ]
+  , tfreq    = [(S_PILLAR, 1), (MUSEUM_SET_DARK, 20), (EMPTY_SET_LIT, 60)]
   , tcolor   = BrCyan  -- not BrWhite, to tell from heroes
   , tcolor2  = Cyan
   , talter   = 100
@@ -528,7 +531,6 @@ rubble = TileKind
   { tsymbol  = '&'
   , tname    = "rubble pile"
   , tfreq    = [ (S_RUBBLE_PILE, 1), (RUBBLE_BURNING_OR_NOT, 50)
-               , (LEGEND_LIT, 1), (LEGEND_DARK, 1)
                , (STAIR_TERMINAL_LIT, 6), (STAIR_TERMINAL_DARK, 6)
                , (LIFT_TERMINAL_LIT, 6), (LIFT_TERMINAL_DARK, 6)
                , (EMPTY_SET_LIT, 12), (EXIT_SET_LIT, 6)
@@ -571,7 +573,7 @@ doorTrapped = TileKind
 doorClosed = TileKind  -- fireproof
   { tsymbol  = '+'
   , tname    = "closed door"
-  , tfreq    = [(LEGEND_LIT, 100), (LEGEND_DARK, 100), (S_CLOSED_DOOR, 1)]
+  , tfreq    = [(S_CLOSED_DOOR, 1)]
   , tcolor   = Brown
   , tcolor2  = BrBlack
   , talter   = 2
@@ -645,7 +647,7 @@ stairsGatedDown = stairsDown
 escapeUp = TileKind
   { tsymbol  = '<'
   , tname    = "exit hatch up"
-  , tfreq    = [(LEGEND_LIT, 1), (LEGEND_DARK, 1), (ESCAPE_UP, 1)]
+  , tfreq    = [(ESCAPE_UP, 1)]
   , tcolor   = BrYellow
   , tcolor2  = BrYellow
   , talter   = 0  -- anybody can escape (or guard escape)
@@ -654,7 +656,7 @@ escapeUp = TileKind
 escapeDown = TileKind
   { tsymbol  = '>'
   , tname    = "exit trapdoor down"
-  , tfreq    = [(LEGEND_LIT, 1), (LEGEND_DARK, 1), (ESCAPE_DOWN, 1)]
+  , tfreq    = [(ESCAPE_DOWN, 1)]
   , tcolor   = BrYellow
   , tcolor2  = BrYellow
   , talter   = 0  -- anybody can escape (or guard escape)
@@ -670,7 +672,7 @@ escapeOutdoorDown = escapeDown
 wallGlass = TileKind
   { tsymbol  = '%'
   , tname    = "transparent polymer wall"
-  , tfreq    = [(LEGEND_LIT, 1), (LEGEND_DARK, 1), (MUSEUM_SET_DARK, 8)]
+  , tfreq    = [(TRANSPARENT_WALL, 1), (MUSEUM_SET_DARK, 8)]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 10
@@ -687,7 +689,7 @@ wallGlassSpice = wallGlass
 pillarIce = TileKind
   { tsymbol  = '^'
   , tname    = "ice buildup"
-  , tfreq    = [ (LEGEND_LIT, 1), (LEGEND_DARK, 1), (NOISE_SET_LIT, 200)
+  , tfreq    = [ (ICE_BUILDUP, 1), (NOISE_SET_LIT, 200)
                , (BRAWL_SET_LIT, 15), (LIFT_TERMINAL_DARK, 4) ]
                  -- ice only in dark staircases
   , tcolor   = BrBlue
@@ -805,7 +807,7 @@ smokeDark = smoke  -- always dark
 doorOpen = TileKind  -- fireproof
   { tsymbol  = '\''
   , tname    = "open door"
-  , tfreq    = [(LEGEND_LIT, 100), (LEGEND_DARK, 100), (S_OPEN_DOOR, 1)]
+  , tfreq    = [(S_OPEN_DOOR, 1)]
   , tcolor   = Brown
   , tcolor2  = BrBlack
   , talter   = 4
@@ -854,8 +856,7 @@ floorActor = floorArena
   , tfeature = OftenActor : tfeature floorArena
   }
 floorActorItem = floorActor
-  { tfreq    = [ (FLOOR_ACTOR_ITEM, 1), (FLOOR_ACTOR_ITEM_LIT, 1)
-               , (LEGEND_LIT, 100) ]
+  { tfreq    = [(FLOOR_ACTOR_ITEM, 1), (FLOOR_ACTOR_ITEM_LIT, 1)]
   , tfeature = VeryOftenItem : tfeature floorActor
   }
 floorAshes = floorActor  -- always lit
@@ -870,7 +871,7 @@ floorAshes = floorActor  -- always lit
 shallowWater = TileKind
   { tsymbol  = '~'
   , tname    = "water puddle"
-  , tfreq    = [ (AQUATIC, 1), (S_SHALLOW_WATER_LIT, 1), (LEGEND_LIT, 100)
+  , tfreq    = [ (AQUATIC, 1), (S_SHALLOW_WATER_LIT, 1)
                , (EMPTY_SET_LIT, 20), (NOISE_SET_LIT, 30), (SHOOTOUT_SET_LIT, 5)
                , (HUNT_SET_LIT, 250), (LIFT_TERMINAL_LIT, 4) ]
   , tcolor   = BrCyan
@@ -1407,8 +1408,7 @@ underbrush = TileKind  -- always lit
 workshop = TileKind  -- always lit
   { tsymbol  = ':'
   , tname    = "workshop"
-  , tfreq    = [ (LEGEND_LIT, 100), (LEGEND_DARK, 100)
-               , (EMPTY_SET_LIT, 16), (SHOOTOUT_SET_LIT, 2)
+  , tfreq    = [ (WORKSHOP, 100), (EMPTY_SET_LIT, 16), (SHOOTOUT_SET_LIT, 2)
                , (AMBUSH_SET_DARK, 4), (BATTLE_SET_DARK, 4) ]
   , tcolor   = BrBlue
   , tcolor2  = Blue

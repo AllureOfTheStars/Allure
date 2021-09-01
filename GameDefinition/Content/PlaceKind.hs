@@ -25,7 +25,7 @@ import qualified Data.Text as T
 
 import Content.TileKind hiding (content, groupNames, groupNamesSingleton)
 import Game.LambdaHack.Content.PlaceKind
-import Game.LambdaHack.Content.TileKind (TileKind)
+import Game.LambdaHack.Content.TileKind (TileKind, floorSymbol)
 import Game.LambdaHack.Definition.Defs
 import Game.LambdaHack.Definition.DefsInternal
 
@@ -170,6 +170,34 @@ generatedEscapes =
       outdoorEscapes = map switchEscapeToOutdoorDown escapeDownBasic
       spaceshipEscapes = map switchEscapeToSpaceshipDown escapeDownBasic
   in upEscapes ++ outdoorEscapes ++ spaceshipEscapes
+
+defaultLegendLit :: [(Char, GroupName TileKind)]
+defaultLegendLit = [ ('#', FILLER_WALL)
+                   , ('0', S_PILLAR)
+                   , ('&', S_RUBBLE_PILE)
+                   , ('+', S_CLOSED_DOOR)
+                   , ('<', ESCAPE_UP)
+                   , ('>', ESCAPE_DOWN)
+                   , ('%', TRANSPARENT_WALL)
+                   , ('^', ICE_BUILDUP)
+                   , ('\'', S_OPEN_DOOR)
+                   , (floorSymbol, FLOOR_ACTOR_ITEM_LIT)
+                   , ('~', S_SHALLOW_WATER_LIT)
+                   , (':', WORKSHOP) ]
+
+defaultLegendDark :: [(Char, GroupName TileKind)]
+defaultLegendDark = [ ('#', FILLER_WALL)
+                    , ('0', S_PILLAR)
+                    , ('&', S_RUBBLE_PILE)
+                    , ('+', S_CLOSED_DOOR)
+                    , ('<', ESCAPE_UP)
+                    , ('>', ESCAPE_DOWN)
+                    , ('%', TRANSPARENT_WALL)
+                    , ('^', ICE_BUILDUP)
+                    , ('\'', S_OPEN_DOOR)
+                    , (floorSymbol, FLOOR_ACTOR_ITEM_DARK)
+                    , ('~', S_SHALLOW_WATER_DARK)
+                    , (':', WORKSHOP) ]
 
 -- The dots below are @'\x00B7'@, as defined in @TileKind.floorSymbol@.
 deadEnd = PlaceKind  -- needs to have index 0
