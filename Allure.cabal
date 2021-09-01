@@ -144,6 +144,7 @@ library this-game-content
   build-depends:      ,LambdaHack >= 0.10.2.0 && < 0.10.3.0
 -- TODO: instead:     ,definition
                       ,base >= 4.10 && < 99
+                      ,enummapset
                       ,filepath
                       ,hsini
                       ,template-haskell

@@ -21,6 +21,7 @@ import Prelude ()
 
 import Game.LambdaHack.Core.Prelude
 
+import qualified Data.EnumMap.Strict as EM
 import qualified Data.Text as T
 
 import Content.TileKind hiding (content, groupNames, groupNamesSingleton)
@@ -171,33 +172,35 @@ generatedEscapes =
       spaceshipEscapes = map switchEscapeToSpaceshipDown escapeDownBasic
   in upEscapes ++ outdoorEscapes ++ spaceshipEscapes
 
-defaultLegendLit :: [(Char, GroupName TileKind)]
-defaultLegendLit = [ ('#', FILLER_WALL)
-                   , ('0', S_PILLAR)
-                   , ('&', S_RUBBLE_PILE)
-                   , ('+', S_CLOSED_DOOR)
-                   , ('<', ESCAPE_UP)
-                   , ('>', ESCAPE_DOWN)
-                   , ('%', TRANSPARENT_WALL)
-                   , ('^', ICE_BUILDUP)
-                   , ('\'', S_OPEN_DOOR)
-                   , (floorSymbol, FLOOR_ACTOR_ITEM_LIT)
-                   , ('~', S_SHALLOW_WATER_LIT)
-                   , (':', WORKSHOP) ]
+defaultLegendLit :: EM.EnumMap Char (GroupName TileKind)
+defaultLegendLit = EM.fromList
+  [ ('#', FILLER_WALL)
+  , ('0', S_PILLAR)
+  , ('&', S_RUBBLE_PILE)
+  , ('+', S_CLOSED_DOOR)
+  , ('<', ESCAPE_UP)
+  , ('>', ESCAPE_DOWN)
+  , ('%', TRANSPARENT_WALL)
+  , ('^', ICE_BUILDUP)
+  , ('\'', S_OPEN_DOOR)
+  , (floorSymbol, FLOOR_ACTOR_ITEM_LIT)
+  , ('~', S_SHALLOW_WATER_LIT)
+  , (':', WORKSHOP) ]
 
-defaultLegendDark :: [(Char, GroupName TileKind)]
-defaultLegendDark = [ ('#', FILLER_WALL)
-                    , ('0', S_PILLAR)
-                    , ('&', S_RUBBLE_PILE)
-                    , ('+', S_CLOSED_DOOR)
-                    , ('<', ESCAPE_UP)
-                    , ('>', ESCAPE_DOWN)
-                    , ('%', TRANSPARENT_WALL)
-                    , ('^', ICE_BUILDUP)
-                    , ('\'', S_OPEN_DOOR)
-                    , (floorSymbol, FLOOR_ACTOR_ITEM_DARK)
-                    , ('~', S_SHALLOW_WATER_DARK)
-                    , (':', WORKSHOP) ]
+defaultLegendDark :: EM.EnumMap Char (GroupName TileKind)
+defaultLegendDark = EM.fromList
+  [ ('#', FILLER_WALL)
+  , ('0', S_PILLAR)
+  , ('&', S_RUBBLE_PILE)
+  , ('+', S_CLOSED_DOOR)
+  , ('<', ESCAPE_UP)
+  , ('>', ESCAPE_DOWN)
+  , ('%', TRANSPARENT_WALL)
+  , ('^', ICE_BUILDUP)
+  , ('\'', S_OPEN_DOOR)
+  , (floorSymbol, FLOOR_ACTOR_ITEM_DARK)
+  , ('~', S_SHALLOW_WATER_DARK)
+  , (':', WORKSHOP) ]
 
 -- The dots below are @'\x00B7'@, as defined in @TileKind.floorSymbol@.
 deadEnd = PlaceKind  -- needs to have index 0
@@ -236,10 +239,12 @@ rectWindows = PlaceKind
   , ptopLeft = [ "#%"
                , "%·"
                ]
-  , poverrideDark = [('%', RECT_WINDOWS)]
-                    ++ defaultLegendDark
-  , poverrideLit = [('%', RECT_WINDOWS)]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [('%', RECT_WINDOWS)]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [('%', RECT_WINDOWS)]
+                   `EM.union` defaultLegendLit
   }
 glasshouse = PlaceKind
   { psymbol  = 'g'
@@ -252,17 +257,17 @@ glasshouse = PlaceKind
                , "%·"
                ]
   , poverrideDark = defaultLegendDark
-                    ++ defaultLegendDark
   , poverrideLit = defaultLegendLit
-                   ++ defaultLegendLit
   }
 glasshouse2 = glasshouse
   { pname    = "a glass cage"
   , pfreq    = [(LABORATORY, 2), (ZOO, 30)]
-  , poverrideDark = [('·', DAMP_FLOOR_DARK)]
-                    ++ defaultLegendDark
-  , poverrideLit = [('·', DAMP_FLOOR_LIT)]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [('·', DAMP_FLOOR_DARK)]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [('·', DAMP_FLOOR_LIT)]
+                   `EM.union` defaultLegendLit
   }
 glasshouse3 = glasshouse
   { pname    = "an entertainment center"
@@ -283,10 +288,12 @@ pulpit = PlaceKind
                , "%··"
                , "··0"
                ]
-  , poverrideDark = [('0', S_PULPIT)]
-                    ++ defaultLegendDark
-  , poverrideLit = [('0', S_PULPIT)]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [('0', S_PULPIT)]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [('0', S_PULPIT)]
+                   `EM.union` defaultLegendLit
       -- except for floor, this will all be lit, regardless of night/dark; OK
   }
 ruin = PlaceKind
@@ -297,10 +304,12 @@ ruin = PlaceKind
   , pcover   = CStretch
   , pfence   = FWall
   , ptopLeft = ["X"]
-  , poverrideDark = [('·', DAMP_FLOOR_DARK)]
-                    ++ defaultLegendDark
-  , poverrideLit = [('·', DAMP_FLOOR_LIT)]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [('·', DAMP_FLOOR_DARK)]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [('·', DAMP_FLOOR_LIT)]
+                   `EM.union` defaultLegendLit
   }
 ruin2 = ruin
   { pname    = "a scaffolding"
@@ -317,10 +326,12 @@ collapsed = PlaceKind
   , pfence   = FNone
   , ptopLeft = [ "#"
                ]
-  , poverrideDark = [('#', DOORLESS_MACHINERY)]
-                    ++ defaultLegendDark
-  , poverrideLit = [('#', DOORLESS_MACHINERY)]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [('#', DOORLESS_MACHINERY)]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [('#', DOORLESS_MACHINERY)]
+                   `EM.union` defaultLegendLit
   }
 collapsed2 = collapsed
   { pfreq    = [(NOISE, 1000), (BATTLE, 200)]
@@ -374,10 +385,12 @@ pillar = PlaceKind
                , "····"
                , "····"
                ]
-  , poverrideDark = [('·', OILY_FLOOR_DARK)]
-                    ++ defaultLegendDark
-  , poverrideLit = [('·', OILY_FLOOR_LIT)]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [('·', OILY_FLOOR_DARK)]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [('·', OILY_FLOOR_LIT)]
+                   `EM.union` defaultLegendLit
   }
 pillar2 = pillar
   { pname    = "a mall"
@@ -388,10 +401,12 @@ pillar2 = pillar
                , "···0·"
                , "····~"
                ]
-  , poverrideDark = [('~', S_POOL_DARK)]
-                    ++ defaultLegendDark
-  , poverrideLit = [('~', S_POOL_LIT)]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [('~', S_POOL_DARK)]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [('~', S_POOL_LIT)]
+                   `EM.union` defaultLegendLit
   }
 pillar3 = pillar
   { pname    = "a court"
@@ -421,12 +436,14 @@ pillar5 = pillar
                , "%#p·"
                , "····"
                ]
-  , poverrideDark = [ ('&', CACHE_DEPOSIT), ('p', TRAPPED_DOOR)
-                    , ('i', FLOOR_ACTOR_ITEM) ]  -- lit or not, randomly
-                    ++ defaultLegendDark
-  , poverrideLit = [ ('&', CACHE_DEPOSIT), ('p', TRAPPED_DOOR)
-                   , ('i', FLOOR_ACTOR_ITEM) ]  -- lit or not, randomly
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [ ('&', CACHE_DEPOSIT), ('p', TRAPPED_DOOR)
+                      , ('i', FLOOR_ACTOR_ITEM) ]  -- lit or not, randomly
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [ ('&', CACHE_DEPOSIT), ('p', TRAPPED_DOOR)
+                     , ('i', FLOOR_ACTOR_ITEM) ]  -- lit or not, randomly
+                   `EM.union` defaultLegendLit
       -- no STUCK_DOOR, because FWall, so would break global pathfinding
   }
 pillar6 = pillar
@@ -438,12 +455,14 @@ pillar6 = pillar
                , "·f&·"
                , "····"
                ]
-  , poverrideDark = [ ('&', CACHE_JEWELRY), ('0', S_LAMP_POST)
-                    , ('f', BUSH_GROVE_DARK) , ('a', S_FLOOR_ACTOR_LIT) ]
-                    ++ defaultLegendDark
-  , poverrideLit = [ ('&', CACHE_JEWELRY), ('0', S_LAMP_POST)
-                   , ('f', BUSH_GROVE_LIT), ('a', S_FLOOR_ACTOR_LIT) ]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [ ('&', CACHE_JEWELRY), ('0', S_LAMP_POST)
+                      , ('f', BUSH_GROVE_DARK) , ('a', S_FLOOR_ACTOR_LIT) ]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [ ('&', CACHE_JEWELRY), ('0', S_LAMP_POST)
+                     , ('f', BUSH_GROVE_LIT), ('a', S_FLOOR_ACTOR_LIT) ]
+                   `EM.union` defaultLegendLit
   }
 colonnade = PlaceKind
   { psymbol  = 'c'
@@ -535,10 +554,12 @@ lampPost = PlaceKind
                , "·0·"
                , "X·X"
                ]
-  , poverrideDark = [('0', S_LAMP_POST), ('·', S_FLOOR_ACTOR_LIT)]
-                    ++ defaultLegendDark
-  , poverrideLit = [('0', S_LAMP_POST), ('·', S_FLOOR_ACTOR_LIT)]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [('0', S_LAMP_POST), ('·', S_FLOOR_ACTOR_LIT)]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [('0', S_LAMP_POST), ('·', S_FLOOR_ACTOR_LIT)]
+                   `EM.union` defaultLegendLit
   }
 lampPost2 = lampPost
   { ptopLeft = [ "···"
@@ -575,14 +596,16 @@ treeShade = PlaceKind
                , "s0·"
                , "Xs·"
                ]
-  , poverrideDark = [ ('0', S_TREE_DARK)
-                    , ('s', TREE_SHADE_WALKABLE_DARK)
-                    , ('·', S_SHADED_GROUND) ]
-                    ++ defaultLegendDark
-  , poverrideLit = [ ('0', S_TREE_LIT)
-                   , ('s', TREE_SHADE_WALKABLE_LIT)
-                   , ('·', S_SHADED_GROUND) ]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [ ('0', S_TREE_DARK)
+                      , ('s', TREE_SHADE_WALKABLE_DARK)
+                      , ('·', S_SHADED_GROUND) ]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [ ('0', S_TREE_LIT)
+                     , ('s', TREE_SHADE_WALKABLE_LIT)
+                     , ('·', S_SHADED_GROUND) ]
+                   `EM.union` defaultLegendLit
   }
 fogClump = PlaceKind
   { psymbol  = 'f'
@@ -595,10 +618,12 @@ fogClump = PlaceKind
                , ";f"
                , ";X"
                ]
-  , poverrideDark = [('f', FOG_CLUMP_DARK), (';', S_FOG_LIT)]
-                    ++ defaultLegendDark
-  , poverrideLit = [('f', FOG_CLUMP_LIT), (';', S_FOG_LIT)]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [('f', FOG_CLUMP_DARK), (';', S_FOG_LIT)]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [('f', FOG_CLUMP_LIT), (';', S_FOG_LIT)]
+                   `EM.union` defaultLegendLit
   }
 fogClump2 = fogClump
   { pfreq    = [(EMPTY, 2200), (SHOOTOUT, 400), (ESCAPE, 100), (RAID, 250)]
@@ -619,12 +644,14 @@ smokeClump = PlaceKind
                , ";f"
                , ";X"
                ]
-  , poverrideDark = [ ('f', SMOKE_CLUMP_DARK), (';', S_SMOKE_LIT)
-                    , ('·', S_FLOOR_ACTOR_DARK) ]
-                    ++ defaultLegendDark
-  , poverrideLit = [ ('f', SMOKE_CLUMP_LIT), (';', S_SMOKE_LIT)
-                   , ('·', S_FLOOR_ACTOR_LIT) ]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [ ('f', SMOKE_CLUMP_DARK), (';', S_SMOKE_LIT)
+                      , ('·', S_FLOOR_ACTOR_DARK) ]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [ ('f', SMOKE_CLUMP_LIT), (';', S_SMOKE_LIT)
+                     , ('·', S_FLOOR_ACTOR_LIT) ]
+                   `EM.union` defaultLegendLit
   }
 smokeClump2 = smokeClump
   { pfreq    = [(EXIT, 100), (ZOO, 200), (AMBUSH, 150)]
@@ -659,10 +686,12 @@ bushClump = PlaceKind
                , ";Xf"
                , ";fX"
                ]
-  , poverrideDark = [('f', BUSH_CLUMP_DARK), (';', S_BUSH_LIT)]
-                    ++ defaultLegendDark
-  , poverrideLit = [('f', BUSH_CLUMP_LIT), (';', S_BUSH_LIT)]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [('f', BUSH_CLUMP_DARK), (';', S_BUSH_LIT)]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [('f', BUSH_CLUMP_LIT), (';', S_BUSH_LIT)]
+                   `EM.union` defaultLegendLit
       -- should not be used in caves with trails, because bushes can't
       -- grow over such artificial trails
   }
@@ -675,12 +704,14 @@ escapeDown = PlaceKind
   , pfence   = FGround
   , ptopLeft = [ ">"
                ]
-  , poverrideDark = [ ('g', S_FROZEN_PATH) , ('0', S_LAMP_POST), ('b', BARREL)
-                    , ('a', S_FLOOR_ACTOR_LIT), ('r', RUBBLE_OR_WASTE_DARK) ]
-                    ++ defaultLegendDark
-  , poverrideLit = [ ('g', S_FROZEN_PATH), ('0', S_LAMP_POST), ('b', BARREL)
-                   , ('a', S_FLOOR_ACTOR_LIT), ('r', RUBBLE_OR_WASTE_LIT) ]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [ ('g', S_FROZEN_PATH) , ('0', S_LAMP_POST), ('b', BARREL)
+                      , ('a', S_FLOOR_ACTOR_LIT), ('r', RUBBLE_OR_WASTE_DARK) ]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [ ('g', S_FROZEN_PATH), ('0', S_LAMP_POST), ('b', BARREL)
+                     , ('a', S_FLOOR_ACTOR_LIT), ('r', RUBBLE_OR_WASTE_LIT) ]
+                   `EM.union` defaultLegendLit
   }
 escapeDown2 = escapeDown
   { pfreq    = [(INDOOR_ESCAPE_DOWN, 200)]
@@ -765,12 +796,14 @@ staircase = PlaceKind
   , pfence   = FGround
   , ptopLeft = [ "<S>"
                ]
-  , poverrideDark = [ ('<', STAIRCASE_UP), ('>', STAIRCASE_DOWN)
-                    , ('I', SIGNBOARD), ('S', FILLER_WALL) ]
-                    ++ defaultLegendDark
-  , poverrideLit = [ ('<', STAIRCASE_UP), ('>', STAIRCASE_DOWN)
-                   , ('I', SIGNBOARD), ('S', FILLER_WALL) ]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [ ('<', STAIRCASE_UP), ('>', STAIRCASE_DOWN)
+                      , ('I', SIGNBOARD), ('S', FILLER_WALL) ]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [ ('<', STAIRCASE_UP), ('>', STAIRCASE_DOWN)
+                     , ('I', SIGNBOARD), ('S', FILLER_WALL) ]
+                   `EM.union` defaultLegendLit
   }
 staircase1 = staircase
   { prarity  = [(1, 1)]  -- no cover when arriving; so low rarity
@@ -1133,13 +1166,14 @@ staircase37 = staircase
 
 -- * Allure-specific
 
-overrideLift :: [(Char, GroupName TileKind)]
-overrideLift = [ ('<', STAIRCASE_LIFT_UP), ('>', STAIRCASE_LIFT_DOWN)
-               , ('I', SIGNBOARD), ('S', S_LIFT_SHAFT) ]
-overrideLiftDark :: [(Char, GroupName TileKind)]
-overrideLiftDark = overrideLift ++ defaultLegendDark
-overrideLiftLit :: [(Char, GroupName TileKind)]
-overrideLiftLit = overrideLift ++ defaultLegendLit
+overrideLift :: EM.EnumMap Char (GroupName TileKind)
+overrideLift = EM.fromList
+  [ ('<', STAIRCASE_LIFT_UP), ('>', STAIRCASE_LIFT_DOWN)
+  , ('I', SIGNBOARD), ('S', S_LIFT_SHAFT) ]
+overrideLiftDark :: EM.EnumMap Char (GroupName TileKind)
+overrideLiftDark = overrideLift `EM.union` defaultLegendDark
+overrideLiftLit :: EM.EnumMap Char (GroupName TileKind)
+overrideLiftLit = overrideLift `EM.union` defaultLegendLit
 staircaseLift11 = staircase11
   { pname     = "a lift"
   , pfreq     = [(CLOSED_LIFT, 2000)]  -- weak cover, low freq
@@ -1241,16 +1275,18 @@ pumps = PlaceKind
   , ptopLeft = [ "·f"
                , "d;"
                ]
-  , poverrideDark = [ ('·', DAMP_FLOOR_DARK)
-                    , ('d', DOORLESS_MACHINERY)
-                    , ('f', PUMPS_DARK)
-                    , (';', UNDERBRUSH_CLUMP_DARK) ]
-                    ++ defaultLegendDark
-  , poverrideLit = [ ('·', DAMP_FLOOR_LIT)
-                   , ('d', DOORLESS_MACHINERY)
-                   , ('f', PUMPS_LIT)
-                   , (';', UNDERBRUSH_CLUMP_LIT) ]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [ ('·', DAMP_FLOOR_DARK)
+                      , ('d', DOORLESS_MACHINERY)
+                      , ('f', PUMPS_DARK)
+                      , (';', UNDERBRUSH_CLUMP_DARK) ]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [ ('·', DAMP_FLOOR_LIT)
+                     , ('d', DOORLESS_MACHINERY)
+                     , ('f', PUMPS_LIT)
+                     , (';', UNDERBRUSH_CLUMP_LIT) ]
+                   `EM.union` defaultLegendLit
   }
 oval = PlaceKind
   { psymbol  = 'o'
@@ -1267,26 +1303,28 @@ oval = PlaceKind
                , "#·t··"
                , "··t··"
                ]
-  , poverrideDark = [ ('t', TRAIL_LIT)
-                    , ('p', TRAPPED_DOOR)
-                    , ('b', BARREL)
-                    , ('a', SAFE_TRAIL_LIT)
-                    , ('1', STUCK_DOOR)
-                    , ('2', TRAPPED_DOOR)
-                    , ('T', S_TREE_LIT)
-                    , ('~', S_POOL_DARK)
-                    , (';', S_UNDERBRUSH_DARK) ]
-                    ++ defaultLegendDark
-  , poverrideLit = [ ('t', TRAIL_LIT)
-                   , ('p', TRAPPED_DOOR)
-                   , ('b', BARREL)
-                   , ('a', SAFE_TRAIL_LIT)
-                   , ('2', STUCK_DOOR)  -- reversed vs dark
-                   , ('1', TRAPPED_DOOR)
-                   , ('T', S_TREE_LIT)
-                   , ('~', S_POOL_LIT)
-                   , (';', S_UNDERBRUSH_LIT) ]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [ ('t', TRAIL_LIT)
+                      , ('p', TRAPPED_DOOR)
+                      , ('b', BARREL)
+                      , ('a', SAFE_TRAIL_LIT)
+                      , ('1', STUCK_DOOR)
+                      , ('2', TRAPPED_DOOR)
+                      , ('T', S_TREE_LIT)
+                      , ('~', S_POOL_DARK)
+                      , (';', S_UNDERBRUSH_DARK) ]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [ ('t', TRAIL_LIT)
+                     , ('p', TRAPPED_DOOR)
+                     , ('b', BARREL)
+                     , ('a', SAFE_TRAIL_LIT)
+                     , ('2', STUCK_DOOR)  -- reversed vs dark
+                     , ('1', TRAPPED_DOOR)
+                     , ('T', S_TREE_LIT)
+                     , ('~', S_POOL_LIT)
+                     , (';', S_UNDERBRUSH_LIT) ]
+                   `EM.union` defaultLegendLit
   }
 ovalFloor = oval
   { pfreq    = [ (ROGUE, 150000), (ARENA, 60000), (MUSEUM, 60000)
@@ -1383,10 +1421,12 @@ floodedRoom2 = PlaceKind
   , ptopLeft = [ "XXf"
                , "f~~"
                , "~~X" ]
-  , poverrideDark = [('f', PUMPS_LIT)]
-                    ++ defaultLegendDark
-  , poverrideLit = [('f', PUMPS_LIT)]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [('f', PUMPS_LIT)]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [('f', PUMPS_LIT)]
+                   `EM.union` defaultLegendLit
   }
 maze = PlaceKind
   { psymbol  = 'm'
@@ -1400,22 +1440,24 @@ maze = PlaceKind
                , "#··#"
                , "··#·"
                ]
-  , poverrideDark = [ ('·', OILY_FLOOR_DARK)
-                    , ('&', CACHE_MAZE)
-                    , ('p', TRAPPED_DOOR)
-                    , ('i', FLOOR_ACTOR_ITEM)  -- lit or not, randomly
-                    , ('f', BUSH_GROVE_DARK)
-                    , (';', S_UNDERBRUSH_DARK)
-                    , ('$', TRAPPABLE_WALL) ]
-                    ++ defaultLegendDark
-  , poverrideLit = [ ('·', OILY_FLOOR_LIT)
-                   , ('&', CACHE_MAZE)
-                   , ('p', TRAPPED_DOOR)
-                   , ('i', FLOOR_ACTOR_ITEM)  -- lit or not, randomly
-                   , ('f', BUSH_GROVE_LIT)
-                   , (';', S_UNDERBRUSH_LIT)
-                   , ('$', TRAPPABLE_WALL) ]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [ ('·', OILY_FLOOR_DARK)
+                      , ('&', CACHE_MAZE)
+                      , ('p', TRAPPED_DOOR)
+                      , ('i', FLOOR_ACTOR_ITEM)  -- lit or not, randomly
+                      , ('f', BUSH_GROVE_DARK)
+                      , (';', S_UNDERBRUSH_DARK)
+                      , ('$', TRAPPABLE_WALL) ]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [ ('·', OILY_FLOOR_LIT)
+                     , ('&', CACHE_MAZE)
+                     , ('p', TRAPPED_DOOR)
+                     , ('i', FLOOR_ACTOR_ITEM)  -- lit or not, randomly
+                     , ('f', BUSH_GROVE_LIT)
+                     , (';', S_UNDERBRUSH_LIT)
+                     , ('$', TRAPPABLE_WALL) ]
+                   `EM.union` defaultLegendLit
   }
 maze2 = maze
   { pfreq    = [ (ROGUE, 120), (LABORATORY, 12000), (ARENA, 4)
@@ -1473,14 +1515,16 @@ cells = PlaceKind
                , "·d·"
                , "··#"
                ]
-  , poverrideDark = [ ('d', DOORLESS_MACHINERY), ('b', RUBBLE_OR_WASTE_DARK)
-                    , ('f', BUSH_GROVE_DARK), ('o', OIL_RESIDUE_DARK)
-                    , (';', UNDERBRUSH_CLUMP_DARK), ('w', S_REINFORCED_WALL) ]
-                    ++ defaultLegendDark
-  , poverrideLit = [ ('d', DOORLESS_MACHINERY), ('b', RUBBLE_OR_WASTE_LIT)
-                   , ('f', BUSH_GROVE_LIT), ('o', OIL_RESIDUE_LIT)
-                   , (';', UNDERBRUSH_CLUMP_LIT), ('w', S_REINFORCED_WALL) ]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [ ('d', DOORLESS_MACHINERY), ('b', RUBBLE_OR_WASTE_DARK)
+                      , ('f', BUSH_GROVE_DARK), ('o', OIL_RESIDUE_DARK)
+                      , (';', UNDERBRUSH_CLUMP_DARK), ('w', S_REINFORCED_WALL) ]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [ ('d', DOORLESS_MACHINERY), ('b', RUBBLE_OR_WASTE_LIT)
+                     , ('f', BUSH_GROVE_LIT), ('o', OIL_RESIDUE_LIT)
+                     , (';', UNDERBRUSH_CLUMP_LIT), ('w', S_REINFORCED_WALL) ]
+                   `EM.union` defaultLegendLit
   }
 cells2 = cells
   { pname    = "humidity equalizers"
@@ -1540,14 +1584,16 @@ tank = PlaceKind
   , pfence   = FNone
   , ptopLeft = [ "#"
                ]
-  , poverrideDark = [ ('#', DOORLESS_WALL)
-                    , ('r', S_REINFORCED_WALL)
-                    , ('b', BARREL) ]
-                    ++ defaultLegendDark
-  , poverrideLit = [ ('#', DOORLESS_WALL)
-                   , ('r', S_REINFORCED_WALL)
-                   , ('b', BARREL) ]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [ ('#', DOORLESS_WALL)
+                      , ('r', S_REINFORCED_WALL)
+                      , ('b', BARREL) ]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [ ('#', DOORLESS_WALL)
+                     , ('r', S_REINFORCED_WALL)
+                     , ('b', BARREL) ]
+                   `EM.union` defaultLegendLit
   }
 tank2 = tank
   { pname    = "a barrel stack"
@@ -1659,22 +1705,24 @@ shuttleHusk = PlaceKind
                , "XhhchhX"
                , "hh#w#hh"
                ]
-  , poverrideDark = [ ('·', OILY_FLOOR_DARK)
-                    , ('r', RUBBLE_OR_WASTE_DARK)
-                    , ('#', S_SHUTTLE_HULL)
-                    , ('c', CACHE_SHUTTLE)
-                    , ('u', STUCK_DOOR)
-                    , ('h', S_HARDWARE_RACK)
-                    , ('w', S_REINFORCED_WALL) ]
-                    ++ defaultLegendDark
-  , poverrideLit = [ ('·', OILY_FLOOR_LIT)
-                   , ('r', RUBBLE_OR_WASTE_LIT)
-                   , ('#', S_SHUTTLE_HULL)
-                   , ('c', CACHE_SHUTTLE)
-                   , ('u', STUCK_DOOR)
-                   , ('h', S_HARDWARE_RACK)
-                   , ('w', S_REINFORCED_WALL) ]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [ ('·', OILY_FLOOR_DARK)
+                      , ('r', RUBBLE_OR_WASTE_DARK)
+                      , ('#', S_SHUTTLE_HULL)
+                      , ('c', CACHE_SHUTTLE)
+                      , ('u', STUCK_DOOR)
+                      , ('h', S_HARDWARE_RACK)
+                      , ('w', S_REINFORCED_WALL) ]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [ ('·', OILY_FLOOR_LIT)
+                     , ('r', RUBBLE_OR_WASTE_LIT)
+                     , ('#', S_SHUTTLE_HULL)
+                     , ('c', CACHE_SHUTTLE)
+                     , ('u', STUCK_DOOR)
+                     , ('h', S_HARDWARE_RACK)
+                     , ('w', S_REINFORCED_WALL) ]
+                   `EM.union` defaultLegendLit
   }
 shuttleHusk2 = shuttleHusk
   { pfreq    = [(EMPTY, 1000), (EXIT, 15000), (AMBUSH, 15000)]
@@ -1739,14 +1787,16 @@ dormitory = PlaceKind
                , "+##"
                , "ddd"
                ]
-  , poverrideDark = [ ('d', FLOOR_ACTOR_ITEM_LIT)
-                    , ('f', PUMPS_LIT)
-                    , ('$', TRAPPABLE_WALL) ]
-                    ++ defaultLegendDark
-  , poverrideLit = [ ('d', FLOOR_ACTOR_ITEM_LIT)
-                   , ('f', PUMPS_LIT)
-                   , ('$', TRAPPABLE_WALL) ]
-                   ++ defaultLegendLit
+  , poverrideDark = EM.fromList
+                      [ ('d', FLOOR_ACTOR_ITEM_LIT)
+                      , ('f', PUMPS_LIT)
+                      , ('$', TRAPPABLE_WALL) ]
+                    `EM.union` defaultLegendDark
+  , poverrideLit = EM.fromList
+                     [ ('d', FLOOR_ACTOR_ITEM_LIT)
+                     , ('f', PUMPS_LIT)
+                     , ('$', TRAPPABLE_WALL) ]
+                   `EM.union` defaultLegendLit
   }
 dormitory2 = dormitory
   { pfreq    = [(RESIDENTIAL, 10000)]
@@ -1809,10 +1859,12 @@ switchExitToUp terminal s = s
  { psymbol   = '<'
  , pname     = pname s <+> "up"
  , pfreq     = renameFreqs (<+> "up") $ pfreq s
- , poverrideDark = ('>', GroupName $ terminal <+> "Dark")
-                   : filter ((/= '>') . fst) (poverrideDark s)
- , poverrideLit = ('>', GroupName $ terminal <+> "Lit")
-                  : filter ((/= '>') . fst) (poverrideLit s)
+ , poverrideDark = EM.fromList
+                     [('>', GroupName $ terminal <+> "Dark")]
+                   `EM.union` poverrideDark s
+ , poverrideLit = EM.fromList
+                    [('>', GroupName $ terminal <+> "Lit")]
+                  `EM.union` poverrideLit s
  }
 
 switchExitToDown :: Text -> PlaceKind -> PlaceKind
@@ -1820,15 +1872,17 @@ switchExitToDown terminal s = s
  { psymbol   = '>'
  , pname     = pname s <+> "down"
  , pfreq     = renameFreqs (<+> "down") $ pfreq s
- , poverrideDark = ('<', GroupName $ terminal <+> "Dark")
-                   : filter ((/= '<') . fst) (poverrideDark s)
- , poverrideLit = ('<', GroupName $ terminal <+> "Lit")
-                  : filter ((/= '<') . fst) (poverrideLit s)
+ , poverrideDark = EM.fromList
+                    [('<', GroupName $ terminal <+> "Dark")]
+                   `EM.union` poverrideDark s
+ , poverrideLit = EM.fromList
+                    [('<', GroupName $ terminal <+> "Lit")]
+                  `EM.union` poverrideLit s
  }
 
 
-overrideGatedStaircase :: [(Char, GroupName TileKind)]
-overrideGatedStaircase =
+overrideGatedStaircase :: EM.EnumMap Char (GroupName TileKind)
+overrideGatedStaircase = EM.fromList
   [ ('<', GATED_STAIRCASE_UP), ('>', GATED_STAIRCASE_DOWN)
   , ('I', SIGNBOARD), ('S', FILLER_WALL) ]
 
@@ -1838,13 +1892,13 @@ switchStaircaseToGated s = s
  , pname     = T.unwords $ "a gated" : tail (T.words (pname s))
  , pfreq     = renameFreqs ("gated" <+>) $ pfreq s
  , poverrideDark = overrideGatedStaircase
-                    ++ defaultLegendDark
+                    `EM.union` defaultLegendDark
  , poverrideLit = overrideGatedStaircase
-                   ++ defaultLegendLit
+                   `EM.union` defaultLegendLit
  }
 
-overrideGatedLift :: [(Char, GroupName TileKind)]
-overrideGatedLift =
+overrideGatedLift :: EM.EnumMap Char (GroupName TileKind)
+overrideGatedLift = EM.fromList
   [ ('<', GATED_LIFT_UP), ('>', GATED_LIFT_DOWN)
   , ('I', SIGNBOARD), ('S', S_LIFT_SHAFT) ]
 
@@ -1854,14 +1908,14 @@ switchLiftToGated s = s
  , pname     = T.unwords $ "a gated" : tail (T.words (pname s))
  , pfreq     = renameFreqs ("gated" <+>) $ pfreq s
  , poverrideDark = overrideGatedLift
-                    ++ defaultLegendDark
+                    `EM.union` defaultLegendDark
  , poverrideLit = overrideGatedLift
-                   ++ defaultLegendLit
+                   `EM.union` defaultLegendLit
  }
 
 
-overrideDeconStaircase :: [(Char, GroupName TileKind)]
-overrideDeconStaircase =
+overrideDeconStaircase :: EM.EnumMap Char (GroupName TileKind)
+overrideDeconStaircase = EM.fromList
   [ ('<', DECON_STAIRCASE_UP)
   , ('>', S_STAIRCASE_TRAP_DOWN_OIL)  -- talter high enough
   , ('I', SIGNBOARD), ('S', FILLER_WALL) ]
@@ -1871,13 +1925,13 @@ switchStaircaseToDecon s = s
  { psymbol   = 'd'
  , pfreq     = renameFreqs ("decon" <+>) $ pfreq s
  , poverrideDark = overrideDeconStaircase
-                    ++ defaultLegendDark
+                    `EM.union` defaultLegendDark
  , poverrideLit = overrideDeconStaircase
-                   ++ defaultLegendLit
+                   `EM.union` defaultLegendLit
  }
 
-overrideDeconLift :: [(Char, GroupName TileKind)]
-overrideDeconLift =
+overrideDeconLift :: EM.EnumMap Char (GroupName TileKind)
+overrideDeconLift = EM.fromList
   [ ('<', DECON_LIFT_UP)
   , ('>', STAIRCASE_LIFT_DOWN)
   , ('I', SIGNBOARD), ('S', S_LIFT_SHAFT) ]
@@ -1887,14 +1941,14 @@ switchLiftToDecon s = s
  { psymbol   = 'd'
  , pfreq     = renameFreqs ("decon" <+>) $ pfreq s
  , poverrideDark = overrideDeconLift
-                    ++ defaultLegendDark
+                    `EM.union` defaultLegendDark
  , poverrideLit = overrideDeconLift
-                   ++ defaultLegendLit
+                   `EM.union` defaultLegendLit
  }
 
 
-overrideWeldedStaircase :: [(Char, GroupName TileKind)]
-overrideWeldedStaircase =
+overrideWeldedStaircase :: EM.EnumMap Char (GroupName TileKind)
+overrideWeldedStaircase = EM.fromList
   [ ('<', WELDED_STAIRCASE_UP), ('>', ORDINARY_STAIRCASE_DOWN)
   , ('I', SIGNBOARD), ('S', FILLER_WALL) ]
 
@@ -1903,13 +1957,13 @@ switchStaircaseToWelded s = s
  { psymbol   = 'w'
  , pfreq     = renameFreqs ("welded" <+>) $ pfreq s
  , poverrideDark = overrideWeldedStaircase
-                   ++ defaultLegendDark
+                   `EM.union` defaultLegendDark
  , poverrideLit = overrideWeldedStaircase
-                  ++ defaultLegendLit
+                  `EM.union` defaultLegendLit
  }
 
-overrideWeldedLift :: [(Char, GroupName TileKind)]
-overrideWeldedLift =
+overrideWeldedLift :: EM.EnumMap Char (GroupName TileKind)
+overrideWeldedLift = EM.fromList
   [ ('<', WELDED_LIFT_UP), ('>', ORDINARY_LIFT_DOWN)
   , ('I', SIGNBOARD), ('S', S_LIFT_SHAFT) ]
 
@@ -1918,14 +1972,14 @@ switchLiftToWelded s = s
  { psymbol   = 'w'
  , pfreq     = renameFreqs ("welded" <+>) $ pfreq s
  , poverrideDark = overrideWeldedLift
-                   ++ defaultLegendDark
+                   `EM.union` defaultLegendDark
  , poverrideLit = overrideWeldedLift
-                  ++ defaultLegendLit
+                  `EM.union` defaultLegendLit
  }
 
 
-overrideOutdoor :: [(Char, GroupName TileKind)]
-overrideOutdoor =
+overrideOutdoor :: EM.EnumMap Char (GroupName TileKind)
+overrideOutdoor = EM.fromList
   [ ('<', STAIRCASE_OUTDOOR_UP), ('>', STAIRCASE_OUTDOOR_DOWN)
   , ('I', SIGNBOARD), ('S', FILLER_WALL) ]
 
@@ -1935,9 +1989,9 @@ switchStaircaseToOutdoor s = s
  , pname     = "an outdoor area exit"
  , pfreq     = renameFreqs ("outdoor" <+>) $ pfreq s
  , poverrideDark = overrideOutdoor
-                   ++ defaultLegendDark
+                   `EM.union` defaultLegendDark
  , poverrideLit = overrideOutdoor
-                  ++ defaultLegendLit
+                  `EM.union` defaultLegendLit
  }
 
 switchEscapeToUp :: PlaceKind -> PlaceKind
@@ -1945,22 +1999,34 @@ switchEscapeToUp s = s
  { psymbol   = '<'
  , pname     = "an escape up"
  , pfreq     = map (\(_, n) -> (INDOOR_ESCAPE_UP, n)) $ pfreq s
- , poverrideDark = ('>', ESCAPE_UP) : poverrideDark s
- , poverrideLit = ('>', ESCAPE_UP) : poverrideLit s
+ , poverrideDark = EM.fromList
+                     [('>', ESCAPE_UP)]
+                   `EM.union` poverrideDark s
+ , poverrideLit = EM.fromList
+                    [('>', ESCAPE_UP)]
+                  `EM.union` poverrideLit s
  }
 
 switchEscapeToOutdoorDown :: PlaceKind -> PlaceKind
 switchEscapeToOutdoorDown s = s
  { pname     = "outdoor escape route"
  , pfreq     = map (\(_, n) -> (OUTDOOR_ESCAPE_DOWN, n)) $ pfreq s
- , poverrideDark = ('>', ESCAPE_OUTDOOR_DOWN) : poverrideDark s
- , poverrideLit = ('>', ESCAPE_OUTDOOR_DOWN) : poverrideLit s
+ , poverrideDark = EM.fromList
+                     [('>', ESCAPE_OUTDOOR_DOWN)]
+                   `EM.union` poverrideDark s
+ , poverrideLit = EM.fromList
+                     [('>', ESCAPE_OUTDOOR_DOWN)]
+                  `EM.union` poverrideLit s
  }
 
 switchEscapeToSpaceshipDown :: PlaceKind -> PlaceKind
 switchEscapeToSpaceshipDown s = s
  { pname     = "escape from spaceship"
  , pfreq     = map (\(_, n) -> (ESCAPE_FROM_SPACESHIP_DOWN, n)) $ pfreq s
- , poverrideDark = ('>', ESCAPE_SPACESHIP_DOWN) : poverrideDark s
- , poverrideLit = ('>', ESCAPE_SPACESHIP_DOWN) : poverrideLit s
+ , poverrideDark = EM.fromList
+                     [('>', ESCAPE_SPACESHIP_DOWN)]
+                   `EM.union` poverrideDark s
+ , poverrideLit = EM.fromList
+                    [('>', ESCAPE_SPACESHIP_DOWN)]
+                  `EM.union` poverrideLit s
  }
