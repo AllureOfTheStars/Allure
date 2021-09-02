@@ -352,46 +352,23 @@ collapsed7 = collapsed
                , "####"
                ]
   }
-pillar0 = PlaceKind
+pillar = PlaceKind
   { psymbol  = 'p'
-  , pname    = "a market"
-  , pfreq    = []
+  , pname    = "a court"
+  , pfreq    = [ (ROGUE, 250), (ARENA, 15), (MUSEUM, 10)
+               , (LABORATORY, 200), (RAID, 50) ]
   , prarity  = [(1, 1)]
   , pcover   = CStretch
   , pfence   = FWall
   -- Larger rooms require support pillars.
-  , ptopLeft = [ "····"
-               , "·0··"
-               , "····"
-               , "····"
-               ]
-  , plegendDark = defaultLegendDark
-  , plegendLit = defaultLegendLit
-  }
-pillar = override2PlaceKind [('·', OILY_FLOOR_DARK)]
-                            [('·', OILY_FLOOR_LIT)] $ pillar0
-  { pfreq    = [(ROGUE, 300), (ARENA, 10000), (EMPTY, 400)] }
-pillar2 = override2PlaceKind [('~', S_POOL_DARK)]
-                             [('~', S_POOL_LIT)] $ pillar0
-  { pname    = "a mall"
-  , pfreq    = [(ROGUE, 10000), (ARENA, 100000), (EMPTY, 4000)]
-  , ptopLeft = [ "0····"
-               , "·····"
-               , "·····"
-               , "···0·"
-               , "····~"
-               ]
-  }
-pillar3 = pillar
-  { pname    = "a court"
-  , pfreq    = [ (ROGUE, 250), (ARENA, 15), (MUSEUM, 10)
-               , (LABORATORY, 200), (RAID, 50) ]
   , ptopLeft = [ "#··"
                , "···"
                , "···"
                ]
+  , plegendDark = defaultLegendDark
+  , plegendLit = defaultLegendLit
   }
-pillar4 = pillar
+pillar2 = pillar
   { pname    = "a plaza"
   , pfreq    = [ (ROGUE, 1500), (ARENA, 5000)
                , (MUSEUM, 4000), (LABORATORY, 1500) ]
@@ -401,9 +378,30 @@ pillar4 = pillar
                , "····"
                ]
   }
+pillar3 = override2PlaceKind [('·', OILY_FLOOR_DARK)]
+                             [('·', OILY_FLOOR_LIT)] $ pillar
+  { pname    = "a market"
+  , pfreq    = [(ROGUE, 300), (ARENA, 10000), (EMPTY, 400)]
+  , ptopLeft = [ "····"
+               , "·0··"
+               , "····"
+               , "····"
+               ]
+  }
+pillar4 = override2PlaceKind [('~', S_POOL_DARK)]
+                             [('~', S_POOL_LIT)] $ pillar
+  { pname    = "a mall"
+  , pfreq    = [(ROGUE, 10000), (ARENA, 100000), (EMPTY, 4000)]
+  , ptopLeft = [ "0····"
+               , "·····"
+               , "·····"
+               , "···0·"
+               , "····~"
+               ]
+  }
 pillar5 = overridePlaceKind [ ('&', CACHE_DEPOSIT)
                             , ('i', FLOOR_ACTOR_ITEM)  -- lit or not, randomly
-                            , ('p', TRAPPED_DOOR) ] $ pillar0
+                            , ('p', TRAPPED_DOOR) ] $ pillar
             -- no STUCK_DOOR, because FWall, so would break global pathfinding
   { pname    = "a bank outlet"
   , pfreq    = [ (ROGUE, 1200), (ARENA, 6000)
@@ -418,7 +416,7 @@ pillar6 = override2PlaceKind [('f', BUSH_GROVE_DARK)]
                              [('f', BUSH_GROVE_LIT)] $
           overridePlaceKind [ ('&', CACHE_JEWELRY)
                             , ('0', S_LAMP_POST)
-                            , ('a', S_FLOOR_ACTOR_LIT) ] $ pillar0
+                            , ('a', S_FLOOR_ACTOR_LIT) ] $ pillar
   { pname    = "a jewelry store"
   , pfreq    = [ (ROGUE, 1200), (ARENA, 6000)
                , (MUSEUM, 7000), (EMPTY, 600) ]
