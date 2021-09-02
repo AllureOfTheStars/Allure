@@ -816,8 +816,8 @@ staircase2 = staircase
                ]
   }
 -- Allure-specific:
-legendLift :: EM.EnumMap Char (GroupName TileKind)
-legendLift = EM.fromList
+overrideLift :: EM.EnumMap Char (GroupName TileKind)
+overrideLift = EM.fromList
   [ ('<', STAIRCASE_LIFT_UP), ('>', STAIRCASE_LIFT_DOWN)
   , ('I', SIGNBOARD), ('S', S_LIFT_SHAFT) ]
 staircaseLift = PlaceKind
@@ -829,8 +829,8 @@ staircaseLift = PlaceKind
   , pfence   = FGround
   , ptopLeft = [ "<S>"
                ]
-  , plegendDark = legendLift `EM.union` defaultLegendDark
-  , plegendLit = legendLift `EM.union` defaultLegendLit
+  , plegendDark = overrideLift `EM.union` defaultLegendDark
+  , plegendLit = overrideLift `EM.union` defaultLegendLit
   }
 staircase3 = staircaseLift
   { prarity  = [(1, 1)]
@@ -1173,121 +1173,121 @@ staircase37 = staircase
 staircaseLift11 = staircase11
   { pname     = "a lift"
   , pfreq     = [(CLOSED_LIFT, 2000)]  -- weak cover, low freq
-  , plegendDark = legendLift
+  , plegendDark = overrideLift
                   `EM.union` plegendDark staircase11
-  , plegendLit = legendLift
+  , plegendLit = overrideLift
                  `EM.union` plegendLit staircase11
   }
 staircaseLift12 = staircase12
   { pname     = "a lift"
   , pfreq     = [(CLOSED_LIFT, 4000)]
-  , plegendDark = legendLift
+  , plegendDark = overrideLift
                   `EM.union` plegendDark staircase12
-  , plegendLit = legendLift
+  , plegendLit = overrideLift
                  `EM.union` plegendLit staircase12
   }
 staircaseLift13 = staircase13
   { pname     = "a lift"
   , pfreq     = [(CLOSED_LIFT, 6000)]
-  , plegendDark = legendLift
+  , plegendDark = overrideLift
                   `EM.union` plegendDark staircase13
-  , plegendLit = legendLift
+  , plegendLit = overrideLift
                  `EM.union` plegendLit staircase13
   }
 staircaseLift14 = staircase14
   { pname     = "a lift"
   , pfreq     = [(CLOSED_LIFT, 10000)]
-  , plegendDark = legendLift
+  , plegendDark = overrideLift
                   `EM.union` plegendDark staircase14
-  , plegendLit = legendLift
+  , plegendLit = overrideLift
                  `EM.union` plegendLit staircase14
   }
 staircaseLift15 = staircase15
   { pname     = "a lift"
   , pfreq     = [(CLOSED_LIFT, 20000)]
-  , plegendDark = legendLift
+  , plegendDark = overrideLift
                   `EM.union` plegendDark staircase15
-  , plegendLit = legendLift
+  , plegendLit = overrideLift
                  `EM.union` plegendLit staircase15
   }
 staircaseLift16 = staircase16
   { pname     = "a lift"
   , pfreq     = [(CLOSED_LIFT, 20000)]
-  , plegendDark = legendLift
+  , plegendDark = overrideLift
                   `EM.union` plegendDark staircase16
-  , plegendLit = legendLift
+  , plegendLit = overrideLift
                  `EM.union` plegendLit staircase16
   }
 staircaseLift17 = staircase17
   { pname     = "a lift"
   , pfreq     = [(CLOSED_LIFT, 20000)]
-  , plegendDark = legendLift
+  , plegendDark = overrideLift
                   `EM.union` plegendDark staircase17
-  , plegendLit = legendLift
+  , plegendLit = overrideLift
                  `EM.union` plegendLit staircase17
   }
 staircaseLift18 = staircase18
   { pname     = "a lift"
   , pfreq     = [(CLOSED_LIFT, 80000)]
-  , plegendDark = legendLift
+  , plegendDark = overrideLift
                   `EM.union` plegendDark staircase18
-  , plegendLit = legendLift
+  , plegendLit = overrideLift
                  `EM.union` plegendLit staircase18
   }
 staircaseLift19 = staircase19
   { pname     = "a lift"
   , pfreq     = [(CLOSED_LIFT, 20000)]
-  , plegendDark = legendLift
+  , plegendDark = overrideLift
                   `EM.union` plegendDark staircase19
-  , plegendLit = legendLift
+  , plegendLit = overrideLift
                  `EM.union` plegendLit staircase19
   }
 staircaseLift20 = staircase20
   { pname     = "a lift"
   , pfreq     = [(CLOSED_LIFT, 5000)]
-  , plegendDark = legendLift
+  , plegendDark = overrideLift
                   `EM.union` plegendDark staircase20
-  , plegendLit = legendLift
+  , plegendLit = overrideLift
                  `EM.union` plegendLit staircase20
   }
 staircaseLift21 = staircase21
   { pname     = "a lift"
   , pfreq     = [(CLOSED_LIFT, 5000)]
-  , plegendDark = legendLift
+  , plegendDark = overrideLift
                   `EM.union` plegendDark staircase21
-  , plegendLit = legendLift
+  , plegendLit = overrideLift
                  `EM.union` plegendLit staircase21
   }
 staircaseLift22 = staircase22
   { pname     = "a lift"
   , pfreq     = [(CLOSED_LIFT, 2000)]
-  , plegendDark = legendLift
+  , plegendDark = overrideLift
                   `EM.union` plegendDark staircase22
-  , plegendLit = legendLift
+  , plegendLit = overrideLift
                  `EM.union` plegendLit staircase22
   }
 staircaseLift23 = staircase23
   { pname     = "a lift"
   , pfreq     = [(CLOSED_LIFT, 1000)]
-  , plegendDark = legendLift
+  , plegendDark = overrideLift
                   `EM.union` plegendDark staircase23
-  , plegendLit = legendLift
+  , plegendLit = overrideLift
                  `EM.union` plegendLit staircase23
   }
 staircaseLift24 = staircase24
   { pname     = "a lift"
   , pfreq     = [(CLOSED_LIFT, 1000)]
-  , plegendDark = legendLift
+  , plegendDark = overrideLift
                   `EM.union` plegendDark staircase24
-  , plegendLit = legendLift
+  , plegendLit = overrideLift
                  `EM.union` plegendLit staircase24
   }
 staircaseLift25 = staircase25
   { pname     = "a lift"
   , pfreq     = [(WALLED_LIFT, 100)]
-  , plegendDark = legendLift
+  , plegendDark = overrideLift
                   `EM.union` plegendDark staircase25
-  , plegendLit = legendLift
+  , plegendLit = overrideLift
                  `EM.union` plegendLit staircase25
   }
 pumps = PlaceKind
@@ -1907,8 +1907,8 @@ switchExitToDown terminal s = s
   }
 
 
-legendGatedStaircase :: EM.EnumMap Char (GroupName TileKind)
-legendGatedStaircase = EM.fromList
+overrideGatedStaircase :: EM.EnumMap Char (GroupName TileKind)
+overrideGatedStaircase = EM.fromList
   [ ('<', GATED_STAIRCASE_UP), ('>', GATED_STAIRCASE_DOWN)
   , ('I', SIGNBOARD), ('S', FILLER_WALL) ]
 
@@ -1917,14 +1917,14 @@ switchStaircaseToGated s = s
   { psymbol   = 'g'
   , pname     = T.unwords $ "a gated" : tail (T.words (pname s))
   , pfreq     = renameFreqs ("gated" <+>) $ pfreq s
-  , plegendDark = legendGatedStaircase
+  , plegendDark = overrideGatedStaircase
                   `EM.union` plegendDark s
-  , plegendLit = legendGatedStaircase
+  , plegendLit = overrideGatedStaircase
                  `EM.union` plegendLit s
   }
 
-legendGatedLift :: EM.EnumMap Char (GroupName TileKind)
-legendGatedLift = EM.fromList
+overrideGatedLift :: EM.EnumMap Char (GroupName TileKind)
+overrideGatedLift = EM.fromList
   [ ('<', GATED_LIFT_UP), ('>', GATED_LIFT_DOWN)
   , ('I', SIGNBOARD), ('S', S_LIFT_SHAFT) ]
 
@@ -1933,15 +1933,15 @@ switchLiftToGated s = s
   { psymbol   = 'g'
   , pname     = T.unwords $ "a gated" : tail (T.words (pname s))
   , pfreq     = renameFreqs ("gated" <+>) $ pfreq s
-  , plegendDark = legendGatedLift
+  , plegendDark = overrideGatedLift
                   `EM.union` plegendDark s
-  , plegendLit = legendGatedLift
+  , plegendLit = overrideGatedLift
                  `EM.union` plegendLit s
   }
 
 
-legendDeconStaircase :: EM.EnumMap Char (GroupName TileKind)
-legendDeconStaircase = EM.fromList
+overrideDeconStaircase :: EM.EnumMap Char (GroupName TileKind)
+overrideDeconStaircase = EM.fromList
   [ ('<', DECON_STAIRCASE_UP)
   , ('>', S_STAIRCASE_TRAP_DOWN_OIL)  -- talter high enough
   , ('I', SIGNBOARD), ('S', FILLER_WALL) ]
@@ -1950,14 +1950,14 @@ switchStaircaseToDecon :: PlaceKind -> PlaceKind
 switchStaircaseToDecon s = s
   { psymbol   = 'd'
   , pfreq     = renameFreqs ("decon" <+>) $ pfreq s
-  , plegendDark = legendDeconStaircase
+  , plegendDark = overrideDeconStaircase
                   `EM.union` plegendDark s
-  , plegendLit = legendDeconStaircase
+  , plegendLit = overrideDeconStaircase
                  `EM.union` plegendLit s
   }
 
-legendDeconLift :: EM.EnumMap Char (GroupName TileKind)
-legendDeconLift = EM.fromList
+overrideDeconLift :: EM.EnumMap Char (GroupName TileKind)
+overrideDeconLift = EM.fromList
   [ ('<', DECON_LIFT_UP)
   , ('>', STAIRCASE_LIFT_DOWN)
   , ('I', SIGNBOARD), ('S', S_LIFT_SHAFT) ]
@@ -1966,15 +1966,15 @@ switchLiftToDecon :: PlaceKind -> PlaceKind
 switchLiftToDecon s = s
   { psymbol   = 'd'
   , pfreq     = renameFreqs ("decon" <+>) $ pfreq s
-  , plegendDark = legendDeconLift
+  , plegendDark = overrideDeconLift
                   `EM.union` plegendDark s
-  , plegendLit = legendDeconLift
+  , plegendLit = overrideDeconLift
                  `EM.union` plegendLit s
   }
 
 
-legendWeldedStaircase :: EM.EnumMap Char (GroupName TileKind)
-legendWeldedStaircase = EM.fromList
+overrideWeldedStaircase :: EM.EnumMap Char (GroupName TileKind)
+overrideWeldedStaircase = EM.fromList
   [ ('<', WELDED_STAIRCASE_UP), ('>', ORDINARY_STAIRCASE_DOWN)
   , ('I', SIGNBOARD), ('S', FILLER_WALL) ]
 
@@ -1982,14 +1982,14 @@ switchStaircaseToWelded :: PlaceKind -> PlaceKind
 switchStaircaseToWelded s = s
   { psymbol   = 'w'
   , pfreq     = renameFreqs ("welded" <+>) $ pfreq s
-  , plegendDark = legendWeldedStaircase
+  , plegendDark = overrideWeldedStaircase
                   `EM.union` plegendDark s
-  , plegendLit = legendWeldedStaircase
+  , plegendLit = overrideWeldedStaircase
                  `EM.union` plegendLit s
   }
 
-legendWeldedLift :: EM.EnumMap Char (GroupName TileKind)
-legendWeldedLift = EM.fromList
+overrideWeldedLift :: EM.EnumMap Char (GroupName TileKind)
+overrideWeldedLift = EM.fromList
   [ ('<', WELDED_LIFT_UP), ('>', ORDINARY_LIFT_DOWN)
   , ('I', SIGNBOARD), ('S', S_LIFT_SHAFT) ]
 
@@ -1997,15 +1997,15 @@ switchLiftToWelded :: PlaceKind -> PlaceKind
 switchLiftToWelded s = s
   { psymbol   = 'w'
   , pfreq     = renameFreqs ("welded" <+>) $ pfreq s
-  , plegendDark = legendWeldedLift
+  , plegendDark = overrideWeldedLift
                   `EM.union` plegendDark s
-  , plegendLit = legendWeldedLift
+  , plegendLit = overrideWeldedLift
                  `EM.union` plegendLit s
   }
 
 
-legendOutdoor :: EM.EnumMap Char (GroupName TileKind)
-legendOutdoor = EM.fromList
+overrideOutdoor :: EM.EnumMap Char (GroupName TileKind)
+overrideOutdoor = EM.fromList
   [ ('<', STAIRCASE_OUTDOOR_UP), ('>', STAIRCASE_OUTDOOR_DOWN)
   , ('I', SIGNBOARD), ('S', FILLER_WALL) ]
 
@@ -2014,9 +2014,9 @@ switchStaircaseToOutdoor s = s
   { psymbol   = 'o'
   , pname     = "an outdoor area exit"
   , pfreq     = renameFreqs ("outdoor" <+>) $ pfreq s
-  , plegendDark = legendOutdoor
+  , plegendDark = overrideOutdoor
                   `EM.union` plegendDark s
-  , plegendLit = legendOutdoor
+  , plegendLit = overrideOutdoor
                  `EM.union` plegendLit s
   }
 
