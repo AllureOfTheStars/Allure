@@ -75,10 +75,10 @@ tieKnotForAsync options@ServerOptions{ sallClear
         if sboostRandomItem
         then boostedItems ++ Content.ItemKind.otherItemContent
         else Content.ItemKind.content
-      coitem = IK.makeData itemContent
+      coitem = IK.makeData (RK.ritemSymbols Content.RuleKind.standardRules)
+                           itemContent
                            Content.ItemKind.groupNamesSingleton
                            Content.ItemKind.groupNames
-                           (RK.ritemSymbols Content.RuleKind.standardRules)
       coItemSpeedup = speedupItem coitem
       cotile = TK.makeData Content.TileKind.content
                            Content.TileKind.groupNamesSingleton
@@ -96,7 +96,8 @@ tieKnotForAsync options@ServerOptions{ sallClear
         , comode = MK.makeData Content.ModeKind.content
                                Content.ModeKind.groupNamesSingleton
                                Content.ModeKind.groupNames
-        , coplace = PK.makeData Content.PlaceKind.content
+        , coplace = PK.makeData cotile
+                                Content.PlaceKind.content
                                 Content.PlaceKind.groupNamesSingleton
                                 Content.PlaceKind.groupNames
         , corule = RK.makeData Content.RuleKind.standardRules
