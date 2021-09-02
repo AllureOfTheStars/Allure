@@ -186,7 +186,8 @@ defaultLegendLit = EM.fromList
   , ('\'', S_OPEN_DOOR)
   , ('·', FLOOR_ACTOR_ITEM_LIT)
   , ('~', S_SHALLOW_WATER_LIT)
-  , (':', WORKSHOP) ]
+  , (':', WORKSHOP)
+  , ('I', SIGNBOARD) ]
 
 defaultLegendDark :: EM.EnumMap Char (GroupName TileKind)
 defaultLegendDark = EM.fromList
@@ -201,7 +202,8 @@ defaultLegendDark = EM.fromList
   , ('\'', S_OPEN_DOOR)
   , ('·', FLOOR_ACTOR_ITEM_DARK)
   , ('~', S_SHALLOW_WATER_DARK)
-  , (':', WORKSHOP) ]
+  , (':', WORKSHOP)
+  , ('I', SIGNBOARD) ]
 
 deadEnd = PlaceKind  -- needs to have index 0
   { psymbol  = 'd'
@@ -737,7 +739,6 @@ escapeDown9 = escapeDown
   }
 staircase = overridePlaceKind  [ ('<', STAIRCASE_UP)
                                , ('>', STAIRCASE_DOWN)
-                               , ('I', SIGNBOARD)
                                , ('S', FILLER_WALL) ] $ PlaceKind
   { psymbol  = '/'
   , pname    = "a staircase"
@@ -764,7 +765,7 @@ staircase2 = staircase
 overrideLift :: [(Char, GroupName TileKind)]
 overrideLift =
   [ ('<', STAIRCASE_LIFT_UP), ('>', STAIRCASE_LIFT_DOWN)
-  , ('I', SIGNBOARD), ('S', S_LIFT_SHAFT) ]
+  , ('S', S_LIFT_SHAFT) ]
 staircaseLift = overridePlaceKind overrideLift $ PlaceKind
   { psymbol  = '|'
   , pname    = "a lift"
@@ -1745,7 +1746,7 @@ switchExitToDown terminal s = override2PlaceKind
 overrideGatedStaircase :: [(Char, GroupName TileKind)]
 overrideGatedStaircase =
   [ ('<', GATED_STAIRCASE_UP), ('>', GATED_STAIRCASE_DOWN)
-  , ('I', SIGNBOARD), ('S', FILLER_WALL) ]
+  , ('S', FILLER_WALL) ]
 
 switchStaircaseToGated :: PlaceKind -> PlaceKind
 switchStaircaseToGated s = overridePlaceKind overrideGatedStaircase $ s
@@ -1757,7 +1758,7 @@ switchStaircaseToGated s = overridePlaceKind overrideGatedStaircase $ s
 overrideGatedLift :: [(Char, GroupName TileKind)]
 overrideGatedLift =
   [ ('<', GATED_LIFT_UP), ('>', GATED_LIFT_DOWN)
-  , ('I', SIGNBOARD), ('S', S_LIFT_SHAFT) ]
+  , ('S', S_LIFT_SHAFT) ]
 
 switchLiftToGated :: PlaceKind -> PlaceKind
 switchLiftToGated s = overridePlaceKind overrideGatedLift $ s
@@ -1771,7 +1772,7 @@ overrideDeconStaircase :: [(Char, GroupName TileKind)]
 overrideDeconStaircase =
   [ ('<', DECON_STAIRCASE_UP)
   , ('>', S_STAIRCASE_TRAP_DOWN_OIL)  -- talter high enough
-  , ('I', SIGNBOARD), ('S', FILLER_WALL) ]
+  , ('S', FILLER_WALL) ]
 
 switchStaircaseToDecon :: PlaceKind -> PlaceKind
 switchStaircaseToDecon s = overridePlaceKind overrideDeconStaircase $ s
@@ -1783,7 +1784,7 @@ overrideDeconLift :: [(Char, GroupName TileKind)]
 overrideDeconLift =
   [ ('<', DECON_LIFT_UP)
   , ('>', STAIRCASE_LIFT_DOWN)
-  , ('I', SIGNBOARD), ('S', S_LIFT_SHAFT) ]
+  , ('S', S_LIFT_SHAFT) ]
 
 switchLiftToDecon :: PlaceKind -> PlaceKind
 switchLiftToDecon s = overridePlaceKind overrideDeconLift $ s
@@ -1795,7 +1796,7 @@ switchLiftToDecon s = overridePlaceKind overrideDeconLift $ s
 overrideWeldedStaircase :: [(Char, GroupName TileKind)]
 overrideWeldedStaircase =
   [ ('<', WELDED_STAIRCASE_UP), ('>', ORDINARY_STAIRCASE_DOWN)
-  , ('I', SIGNBOARD), ('S', FILLER_WALL) ]
+  , ('S', FILLER_WALL) ]
 
 switchStaircaseToWelded :: PlaceKind -> PlaceKind
 switchStaircaseToWelded s = overridePlaceKind overrideWeldedStaircase $ s
@@ -1806,7 +1807,7 @@ switchStaircaseToWelded s = overridePlaceKind overrideWeldedStaircase $ s
 overrideWeldedLift :: [(Char, GroupName TileKind)]
 overrideWeldedLift =
   [ ('<', WELDED_LIFT_UP), ('>', ORDINARY_LIFT_DOWN)
-  , ('I', SIGNBOARD), ('S', S_LIFT_SHAFT) ]
+  , ('S', S_LIFT_SHAFT) ]
 
 switchLiftToWelded :: PlaceKind -> PlaceKind
 switchLiftToWelded s = overridePlaceKind overrideWeldedLift $ s
@@ -1818,7 +1819,7 @@ switchLiftToWelded s = overridePlaceKind overrideWeldedLift $ s
 overrideOutdoor :: [(Char, GroupName TileKind)]
 overrideOutdoor =
   [ ('<', STAIRCASE_OUTDOOR_UP), ('>', STAIRCASE_OUTDOOR_DOWN)
-  , ('I', SIGNBOARD), ('S', FILLER_WALL) ]
+  , ('S', FILLER_WALL) ]
 
 switchStaircaseToOutdoor :: PlaceKind -> PlaceKind
 switchStaircaseToOutdoor s = overridePlaceKind overrideOutdoor $ s
