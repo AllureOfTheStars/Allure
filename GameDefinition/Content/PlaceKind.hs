@@ -26,7 +26,7 @@ import qualified Data.Text as T
 
 import Content.TileKind hiding (content, groupNames, groupNamesSingleton)
 import Game.LambdaHack.Content.PlaceKind
-import Game.LambdaHack.Content.TileKind (TileKind, floorSymbol)
+import Game.LambdaHack.Content.TileKind (TileKind)
 import Game.LambdaHack.Definition.Defs
 import Game.LambdaHack.Definition.DefsInternal
 
@@ -172,6 +172,7 @@ generatedEscapes =
       spaceshipEscapes = map switchEscapeToSpaceshipDown escapeDownBasic
   in upEscapes ++ outdoorEscapes ++ spaceshipEscapes
 
+-- The dots below are @'\x00B7'@, as defined in 'TileKind.floorSymbol'.
 defaultLegendLit :: EM.EnumMap Char (GroupName TileKind)
 defaultLegendLit = EM.fromList
   [ ('#', FILLER_WALL)
@@ -183,7 +184,7 @@ defaultLegendLit = EM.fromList
   , ('%', TRANSPARENT_WALL)
   , ('^', ICE_BUILDUP)
   , ('\'', S_OPEN_DOOR)
-  , (floorSymbol, FLOOR_ACTOR_ITEM_LIT)
+  , ('·', FLOOR_ACTOR_ITEM_LIT)
   , ('~', S_SHALLOW_WATER_LIT)
   , (':', WORKSHOP) ]
 
@@ -198,11 +199,10 @@ defaultLegendDark = EM.fromList
   , ('%', TRANSPARENT_WALL)
   , ('^', ICE_BUILDUP)
   , ('\'', S_OPEN_DOOR)
-  , (floorSymbol, FLOOR_ACTOR_ITEM_DARK)
+  , ('·', FLOOR_ACTOR_ITEM_DARK)
   , ('~', S_SHALLOW_WATER_DARK)
   , (':', WORKSHOP) ]
 
--- The dots below are @'\x00B7'@, as defined in @TileKind.floorSymbol@.
 deadEnd = PlaceKind  -- needs to have index 0
   { psymbol  = 'd'
   , pname    = "a dead end"
