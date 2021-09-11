@@ -305,10 +305,8 @@ jobs:
           make -f ${PKGDIR_haskell_ci}/Makefile copy-binary
       - uses: actions/upload-artifact@v2
         with:
-          name: Allure-on-Linux-$HCNAME
+          name: Allure-on-Linux-${{ matrix.compiler }}
           path: AllureOfTheStars/
-        env:
-          HCNAME: ${{ matrix.compiler }}
       - name: haddock
         run: |
           $CABAL v2-haddock $ARG_COMPILER --with-haddock $HADDOCK $ARG_TESTS $ARG_BENCH all
