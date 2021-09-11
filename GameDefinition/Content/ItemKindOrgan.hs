@@ -871,7 +871,7 @@ mouthVent = armoredSkin
   , iaspects = [ Timeout 7
                , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [OneOf $
-      map (\msg -> AndEffect (Explode S_SMOKE) (uncurry VerbMsg msg))
+      map (AndEffect (Explode S_SMOKE) . uncurry VerbMsg)
           [ ("say: Sir, your luggage has already been collected", ".")
           , ("ask: Would you kindly help me?", "")
           , ("complain: I can't reach you with this tool", "." ) ]
