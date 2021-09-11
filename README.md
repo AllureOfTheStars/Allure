@@ -1,7 +1,6 @@
 Allure of the Stars
 ===================
 
-[![Build Status](https://secure.travis-ci.org/AllureOfTheStars/Allure.svg?master)](https://travis-ci.org/AllureOfTheStars/Allure)
 [![Hackage](https://img.shields.io/hackage/v/Allure.svg)](https://hackage.haskell.org/package/Allure)
 [![Join the chat at Discord](https://img.shields.io/discord/688792755564052486.svg?label=chat%20on%20Discord&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/87Ghnws)
 [![Join the chat at Matrix](https://img.shields.io/matrix/lambdahack:mozilla.org.svg?label=chat%20on%20Matrix&logo=matrix&server_fqdn=mozilla.modular.im)](https://matrix.to/#/!HnbpAHMjOGHlYtrASl:mozilla.org?via=mozilla.modular.im)
@@ -178,7 +177,7 @@ The [Makefile](https://github.com/AllureOfTheStars/Allure/blob/master/Makefile)
 contains many sample automated play test commands.
 Numerous tests that use the screensaver game modes (AI vs. AI)
 and the teletype frontend are gathered in `make test-locally`.
-Of these, travis runs `test-travis` on each push to github.
+Some of these are run by CI  on each push to github.
 Test commands with prefix `frontend` start AI vs. AI games with
 the standard, user-friendly frontend and auto-locating the game binary.
 
