@@ -1,7 +1,4 @@
 # stolen from https://github.com/haskell-CI/haskell-ci/blob/master/.github/workflows/haskell-ci.yml
-#
-#image: buildpack-deps:focal
-#
 
 name: Haskell CI
 
@@ -270,9 +267,9 @@ jobs:
       - name: cache
         uses: actions/cache@v2
         with:
-          key: ${{ runner.os }}-${{ matrix.compiler }}-${{ github.sha }}
+          key: ${{ runner.os }}-${{ matrix.compiler }}--${{ github.sha }}
           path: ~/.cabal/store
-          restore-keys: ${{ runner.os }}-${{ matrix.compiler }}-
+          restore-keys: ${{ runner.os }}-${{ matrix.compiler }}--
       - name: install dependencies
         run: |
           $CABAL v2-build $ARG_COMPILER --disable-tests --disable-benchmarks --dependencies-only -j2 all
@@ -301,6 +298,17 @@ jobs:
         run: |
           cd ${PKGDIR_haskell_ci} || false
           ${CABAL} -vnormal check
+      - name: prepare artifact
+        run: |
+          (cd ${PKGDIR_haskell_ci} && make copy-directory)
+          mv ${PKGDIR_haskell_ci}/AllureOfTheStars .
+          make -f ${PKGDIR_haskell_ci}/Makefile copy-binary
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Allure-on-Linux-$HCNAME
+          path: AllureOfTheStars/
+        env:
+          HCNAME: ${{ matrix.compiler }}
       - name: haddock
         run: |
           $CABAL v2-haddock $ARG_COMPILER --with-haddock $HADDOCK $ARG_TESTS $ARG_BENCH all
