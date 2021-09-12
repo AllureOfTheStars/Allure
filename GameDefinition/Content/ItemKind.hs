@@ -240,7 +240,7 @@ spike2 = spike
   , icount   = 1 + 5 `dL` 5
   , iverbHit = "penetrate"
   , iweight  = 150
-  , idamage = 4 `d` 1  -- not useful for melee, because hurt skill too low
+  , idamage  = 4 `d` 1  -- not useful for melee, because hurt skill too low
   , iaspects = [ AddSkill SkHurtMelee $ (-10 + 1 `d` 2 + 1 `dL` 3) * 5
                , SetFlag MinorEffects
                , Odds (10 * 1 `dL` 10) [] [toVelocity 70] ]
