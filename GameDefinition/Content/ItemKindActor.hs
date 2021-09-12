@@ -177,8 +177,8 @@ warrior = ItemKind
 warrior2 = warrior
   { ifreq    = [(CRAWL_HERO, 100), (MOBILE, 1)]
   , ikit     = humanOrgans
-               ++ [ (GENETIC_FLAW_10, COrgan), (S_CURRENCY, CStash)
-                  , (COOKED_FOOD, CStash), (COMMON_ITEM, CStash) ]
+               ++ [ (GENETIC_FLAW_10, COrgan)
+                  , (S_EMPTY_FLASK, CStash), (COOKED_FOOD, CStash) ]
   }
 scout = warrior
   { iname    = "scout"
