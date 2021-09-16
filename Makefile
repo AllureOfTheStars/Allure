@@ -107,7 +107,7 @@ RNGOPTS1=--setDungeonRng "SMGen 127 123" --setMainRng "SMGen 127 125"
 RNGOPTS2=--setDungeonRng "SMGen 129 123" --setMainRng "SMGen 129 125"
 
 benchMemoryAnim:
-	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --newGame 1 --maxFps 100000 --benchmark --stopAfterFrames 33000 --automateAll --keepAutomated --gameMode crawl $(RNGOPTS2)  --frontendNull --noAnim +RTS -s -A1M -RTS
+	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --newGame 1 --maxFps 100000 --benchmark --stopAfterFrames 33000 --automateAll --keepAutomated --gameMode crawl $(RNGOPTS2) --frontendLazy --noAnim +RTS -s -A1M -RTS
 
 benchBattle:
 	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --newGame 3 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 1500 --automateAll --keepAutomated --gameMode battle $(RNGOPTS1)
@@ -116,7 +116,7 @@ benchBattle-appveyor:
 	./Allure --dbgMsgSer --logPriority 4 --newGame 3 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 1500 --automateAll --keepAutomated --gameMode battle $(RNGOPTS1)
 
 benchAnimBattle:
-	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --newGame 3 --maxFps 100000 --frontendNull --benchmark --stopAfterFrames 7000 --automateAll --keepAutomated --gameMode battle $(RNGOPTS1)
+	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --newGame 3 --maxFps 100000 --frontendLazy --benchmark --stopAfterFrames 7000 --automateAll --keepAutomated --gameMode battle $(RNGOPTS1)
 
 benchFrontendBattle:
 	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --newGame 3 --noAnim --maxFps 100000 --benchmark --stopAfterFrames 2000 --automateAll --keepAutomated --gameMode battle $(RNGOPTS1)
@@ -197,7 +197,7 @@ testAmbush-medium:
 	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 20 --dumpInitRngs --automateAll --keepAutomated --gameMode ambush 2> /tmp/teletypetest.log
 
 testCrawl-medium:
-	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --newGame 1 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterGameOver --stopAfterSeconds 700 --dumpInitRngs --automateAll --keepAutomated --gameMode crawl --assertExplored 4 2> /tmp/teletypetest.log
+	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --newGame 1 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 700 --dumpInitRngs --automateAll --keepAutomated --gameMode crawl --assertExplored 4 2> /tmp/teletypetest.log
 
 
 testCrawlEmpty-medium:
@@ -222,7 +222,7 @@ testBattleSurvival-medium:
 	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 7 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 40 --dumpInitRngs --automateAll --keepAutomated --gameMode battleSurvival 2> /tmp/teletypetest.log
 
 testDefense-medium:
-	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --newGame 9 --noAnim --maxFps 100000 --frontendLazy --benchmark --stopAfterSeconds 500 --dumpInitRngs --automateAll --keepAutomated --gameMode defense 2> /tmp/teletypetest.log
+	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --newGame 9 --noAnim --maxFps 100000 --frontendNull --benchmark --stopAfterSeconds 500 --dumpInitRngs --automateAll --keepAutomated --gameMode defense 2> /tmp/teletypetest.log
 
 testDig-medium:
 	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --newGame 1 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterFrames 100 --dumpInitRngs --automateAll --keepAutomated --gameMode dig 2> /tmp/teletypetest.log
