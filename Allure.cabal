@@ -70,6 +70,11 @@ flag with_expensive_assertions
   default:            False
   manual:             True
 
+flag vty
+  description:        switch to the vty frontend (screen reader friendly)
+  default:            False
+  manual:             True
+
 flag release
   description:        prepare for a release (expose internal functions and types, etc.)
   default:            True
