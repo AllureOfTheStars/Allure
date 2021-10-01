@@ -702,16 +702,18 @@ rosterCrawlSurvival = rosterCrawl
 
 rosterSafariSurvival = rosterSafari
   { rosterList = [ ( playerMonsterTourist
-                       { fleaderMode = LeaderAI $ AutoLeader True True
-                       , fhasUI = False }
+                       { fleaderMode = Just $ AutoLeader True True
+                       , fhasUI = False
+                       , funderAI = True }
                    , Nothing
                    , [(5, 15, MONSTER)] )
                  , ( playerHunamConvict
                    , Just teamCivilian
                    , [(5, 3, CIVILIAN)] )
                  , ( playerAnimalMagnificent
-                       { fleaderMode = LeaderUI $ AutoLeader True False
-                       , fhasUI = True }
+                       { fleaderMode = Just $ AutoLeader True False
+                       , fhasUI = True
+                       , funderAI = False }
                    , Nothing
                    , [(10, 20, MOBILE_ANIMAL)] )
                  , ( playerAnimalExquisite
@@ -741,11 +743,8 @@ rosterBattle = Roster
                  , ("Robot Anarchy", "Animal Kingdom") ] }
 
 rosterBattleDefense = rosterBattle
-  { rosterList = [ ( playerHero { fcanEscape = False
-                                , fhiCondPoly = hiHeroLong
-                                , fleaderMode =
-                                    LeaderAI $ AutoLeader False False
-                                , fhasUI = False }
+  { rosterList = [ ( playerAntiHero { fcanEscape = False
+                                    , fhiCondPoly = hiHeroLong }
                    , Just teamExplorer
                    , [(10, 5, SOLDIER_HERO)] )
                  , ( playerMonster { fneverEmpty = True
@@ -760,11 +759,8 @@ rosterBattleDefense = rosterBattle
                    , [(10, 15, MOBILE_ROBOT)] ) ] }
 
 rosterBattleSurvival = rosterBattle
-  { rosterList = [ ( playerHero { fcanEscape = False
-                                , fhiCondPoly = hiHeroLong
-                                , fleaderMode =
-                                    LeaderAI $ AutoLeader False False
-                                , fhasUI = False }
+  { rosterList = [ ( playerAntiHero { fcanEscape = False
+                                    , fhiCondPoly = hiHeroLong }
                    , Just teamExplorer
                    , [(10, 5, SOLDIER_HERO)] )
                  , ( playerMonster {fneverEmpty = True}
