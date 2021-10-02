@@ -26,7 +26,6 @@ standardLayoutAndFeatures :: ScreenContent
 standardLayoutAndFeatures = ScreenContent
   { rwidth = 80
   , rheight = 45
-  , rwrap = 53  -- more with proportional font and then ideal reading comfort
   , rwebAddress = "http://allureofthestars.com"
   , rintroScreen = $(do
       let path = "GameDefinition/PLAYING.md"
