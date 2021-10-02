@@ -64,8 +64,6 @@ allFontsScale = 1.0
 ; NotFullscreen (default), BigBorderlessWindow (preferred), ModeChange.
 ; For 1920×1080 fullscreen, set allFontsScale = 1.5 above.
 fullscreenMode = NotFullscreen
-screenOneMessagePerLine = True
-historyOneMessagePerLine = True
 ; New historyMax takes effect after removal of savefiles.
 ; Looks best if is divisble by screenful of message (rheight - 4 = 41).
 historyMax = 5002
