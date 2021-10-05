@@ -189,39 +189,6 @@ though they mostly overlap with commandline options (and will be totally
 merged at some point).
 
 
-Coding style
-------------
-
-Stylish Haskell is used for slight auto-formatting at buffer save; see
-[.stylish-haskell.yaml](https://github.com/AllureOfTheStars/Allure/blob/master/.stylish-haskell.yaml).
-As defined in the file, indentation is 2 spaces wide and screen is
-80-columns wide. Spaces are used, not tabs. Spurious whitespace avoided.
-Spaces around arithmetic operators encouraged.
-Generally, relax and try to stick to the style apparent in a file
-you are editing. Put big formatting changes in separate commits.
-
-CI checks the code with `hlint .` using the very liberal configuration
-file at `.hlint.yaml`. If hlint is still too naggy, feel free to add
-more exceptions.
-
-Haddocks are provided for all module headers and for all functions and types
-from major modules, in particular for the modules that are interfaces
-for a whole directory of modules. Apart of that, only very important
-functions and types are distinguished by having a haddock.
-If minor ones have comments, they should not be haddocks
-and they are permitted to describe implementation details and be out of date.
-Prefer assertions instead of comments, unless too verbose.
-
-The 'pointman' from game manual and UI is called 'leader' in the source code
-and there are a few more mismatches, though the source code naming
-and the UI naming should each be consistent in separation.
-If the UI names stick, perhaps source code will be renamed at some point.
-
-This codebase is an experiment in extensive use of states without lens.
-So far, it works, doesn't result in much larger files or lots
-of repetition and has the added benefits that newcomers don't need
-to learn any lens library. Record punning, etc., definitely helps.
-
 
 Further information
 -------------------
@@ -230,6 +197,9 @@ For more information, visit the wiki[4]
 and see [PLAYING.md](https://github.com/AllureOfTheStars/Allure/blob/master/GameDefinition/PLAYING.md),
 [CREDITS](https://github.com/AllureOfTheStars/Allure/blob/master/CREDITS)
 and [COPYLEFT](https://github.com/AllureOfTheStars/Allure/blob/master/COPYLEFT).
+
+For developer-focused information (coding style, overview of the codebase),
+please see the README of LambdaHack[10].
 
 Have fun!
 
