@@ -54,9 +54,7 @@ standardLayoutAndFeatures = ScreenContent
   , rapplyVerbMap =
       EM.fromList [('!', "imbibe"), (',', "eat"), ('?', "activate")]
   , rFontFiles =
--- Checking USE_SDL would be more accurate, but would require complicating
--- .cabal file and slightly larger vty executable is not a problem.
-#ifdef USE_JSFILE
+#ifdef USE_BROWSER
       []
 #else
       $(embedDir "GameDefinition/fonts")

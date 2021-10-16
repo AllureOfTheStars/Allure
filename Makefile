@@ -280,9 +280,6 @@ copy-binary:
 configure-binary-v2:
 	cabal configure --project-file=cabal.project.LH.dir --disable-tests --disable-library-profiling --disable-profiling --enable-optimization
 
-configure-binary-v2-vty:
-	cabal configure -fvty --project-file=cabal.project.LH.dir --disable-tests --disable-library-profiling --disable-profiling --disable-documentation --enable-optimization
-
 build-binary-v2:
 	cabal build --project-file=cabal.project.LH.dir --only-dependencies .
 	cabal build --project-file=cabal.project.LH.dir exe:Allure
@@ -313,10 +310,3 @@ build-binary-macosx: build-directory
 	LH_VERSION=$$(cat ~/.Allure/stdout.txt); \
 	OS_VERSION=$$(sw_vers -productVersion); \
 	tar -czf Allure_$${LH_VERSION}_macosx-$${OS_VERSION}-amd64.tar.gz AllureOfTheStars
-
-build-directory-vty: configure-binary-v2-vty build-binary-v2 copy-directory copy-binary
-
-build-binary-screen-reader-ubuntu: build-directory-vty
-	AllureOfTheStars/Allure --version > /dev/null; \
-	LH_VERSION=$$(cat ~/.Allure/stdout.txt); \
-	tar -czf Allure_$${LH_VERSION}_screen-reader-ubuntu-16.04-amd64.tar.gz AllureOfTheStars
