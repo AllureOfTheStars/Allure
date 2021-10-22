@@ -31,18 +31,15 @@ The following backstory blurb is a copy of the game intro screen:
  unopposed. The feral outer frontier
  denizens are not famed for scruples
  nor for restraint when using hazardous
- nano, cyber and bio technologies,
- so never assume you are safe. Be ready
- to hide in shadows, create distractions,
- set up ambushes, bump into unspeakable
- horrors, puzzling machinery and
- astounding treasures. Gather clues,
- ideas and resources. Creatively use all
- you can find, because your survival
- depends on grit and ingenuity. Whenever
- your turn back in fear, expect to be
- chased via sight, sound and smell by
- those that don't fear and don't tire.
+ nano, cyber and bio technologies. Expect
+ to bump into crazed machinery, warped
+ nature, deadly residues and astounding
+ treasures. Assume you'll be tracked
+ and chased via sight, sound and smell.
+ Prepare to hide in shadows, distract
+ and set up ambushes. Gather clues and
+ resources. Use and abuse. Outsmart.
+ Outlast. Your survival is at stake.
 
 
 What to expect
