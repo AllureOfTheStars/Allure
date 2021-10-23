@@ -75,7 +75,7 @@ The game differs from classic roguelikes in a few ways:
   (turn-based just the same)
 
 * time passes and factions pursue their goals on a few levels
-  simultaneously, while other levels are frozen (but all are persistent)
+  simultaneously, while other floors are frozen (but all are persistent)
 
 * the same laws of simulated world apply to all factions and all actors,
   whether player-controlled or AI-controlled; e.g., the same field of view
@@ -83,7 +83,7 @@ The game differs from classic roguelikes in a few ways:
   and terrain use
 
 * combat mechanics is deterministic; randomness comes only from AI
-  decisions and procedurally generated terrain
+  decisions and procedurally generated world
 
 * there's (almost) no HP regeneration; attrition ensures all past (silly)
   decisions matter; HP of every actor starts at around half max
@@ -109,16 +109,16 @@ Starting your adventure
 
 Commands for starting a new game, saving and exiting the current game,
 configuring convenience settings and toggling AI control of the party
-are listed in the main menu, brought up by the Esc key. Of the convenience
-settings, the `suspect terrain` choice is of particular interest,
-because it determines not only screen display of the level map,
-but also whether suspect tiles are considered for mouse go-to, auto-explore
-and for the `C-?` command that marks the nearest unexplored position.
-Game difficulty level, from the game setup menu, determines how hard
+are listed in the main menu, brought up by the Esc key.
+Game difficulty level, from the new game setup menu, determines how hard
 the survival in the game is. Each of the several named optional challenges
 make the game additionally much harder, but usually simpler, as well.
+Of the convenience settings, the `suspect terrain` choice is of particular
+interest, because it determines not only screen display of the floor map,
+but also whether suspect tiles are considered for mouse go-to, auto-explore
+and for the `C-?` command that marks the nearest unexplored position.
 
-The game scenarios, as ordered by their number, lead the player along
+Game scenarios, as ordered by their number, lead the player along
 an optional story arc. The first two adventures double as tutorials
 that offer rudimentary preparation for the main game, the long crawl.
 They gradually introduce exploration, stealth and melee combat,
@@ -128,21 +128,22 @@ When the player loses, a defeat message for the scenario appears
 with hints about strategies known to work in the given tactical context.
 Alternatively, the player may postpone reading these messages and instead
 try to puzzle out the tactics himself --- this is not so hard, as there are
-not so many moving parts to figure, at least in the short adventures.
+not yet so many moving parts to figure out in the first two adventures.
 
-As soon as the player learns to navigate initial levels of the crawl game
-and starts employing ranged combat, light sources and other means
-of gaining or denying battlefield intel, and dies a lot, it makes sense
-to return to the remaining short adventures. They bring forth many extra
-game features and tactics and prevent the player from missing half the fun
-by trying to play the crawl just like a normal roguelike with spare heroes.
+In the third scenario, the main 'crawl' game mode, the player starts
+employing ranged combat, stealth, light sources, item and terrain alteration.
+As soon as the player learns to navigate the initial levels of crawl,
+but still dies a lot, it makes sense to return to the remaining
+short adventures. They bring forth many extra game features
+and tactics and prevent the player from missing half the fun by trying
+to play the crawl just like a normal roguelike with spare heroes.
 The extra scenarios continue the plotline from the initial tutorial adventures
 in the form of flashbacks and eventually lead up to the events that start
 the main crawl adventure. The training they provide has narrow focus,
 drilling a particular skill set, even as exotic as opportunity fire
-management, a frantic race to the exit and big asymmetric melee battle.
+management, a frantic race to the exit and big asymmetric melee battles.
 The challenge the scenarios offer may be, accordingly, quite extreme,
-particularly at higher difficulty levels and when striving for high scores.
+particularly at higher difficulty settings and when striving for high scores.
 
 The main adventure, the long crawl, is the only one that takes place
 over many floors, some initially blocked, requiring lots of time to beat.
@@ -150,16 +151,15 @@ The focus is on resource management and survival, including food gathering
 and cooking, crafting, terrain transformation using tools, spotting
 environment clues and guessing and countering opponents' strategies.
 The player has a choice of exploring a single level at a time or portions
-of many levels along a single staircase. On some levels he may explore
+of many floors along a single staircase. On some levels he may explore
 and loot with a single scout, eluding most opponents. On others he may be
-forced to change the pace and perform a complete exterminatory sweep
+forced to change pace and perform a complete exterminatory sweep
 involving his whole party. On yet others, his best course of action may be
 to defend a key location until the first wave of attackers is broken.
 The large game arena calls for strategic thinking, including resource
-management, frantic races to the exit, big asymmetric melee battles.
-Thus, the crawl scenario is the most replayable adventure, but even the small
-ones can be refreshed by striving to beat a high score and then
-ramping up the difficulty settings.
+management and area denial. Thus, the crawl scenario is the most replayable
+adventure, but even the small ones can be refreshed by striving to beat
+a high score and by ramping up the difficulty settings.
 
 
 Exploring the world
@@ -211,7 +211,7 @@ by this terrain, if any. The basic terrain kinds are as follows.
     smoke, fog, open fire         ;
     workshop, curtain, foliage    :
 
-The four groups above, in turn, block movement but not view,
+The four groups above, from top to bottom, block movement but not view,
 block both, block neither, block view but not movement.
 Additionally, each tile, regardless if open and if translucent,
 may be permanently lit with ambient light or not.
@@ -263,7 +263,7 @@ whenever `:` or S-LMB (LMB while holding down Shift) over map area
 is pressed, though that's usually not a precise enough method
 of controlling a team. Any sleeping hero is highlighted in blue
 and can be woken up by yelling with `%` key, which also taunts
-or stresses up nearby enemies.
+and unnerves nearby enemies.
 
 Next on the bottom-most status line is the pointman's current and maximum
 Calm (morale, composure, focus, attentiveness), then his current
@@ -271,13 +271,13 @@ and maximum HP (hit points, health). The colon after "Calm" turning
 into a dot signifies that the pointman is in a position without ambient
 illumination, making stealthy conduct easier. A brace sign instead
 of a colon after "HP" means the pointman is braced for combat
-(see section [Moving and acting](#Moving-and-acting)).
+(see chapter [Moving and acting](#Moving-and-acting)).
 
 In the second half of the bottom-most status line, the pointman's name
-is shown. Then come damage dice of the pointman's melee weapons and pointman's
-appendages, ordered by their power. The dice of the first recharged weapon,
-the one that is going to be used now, is adorned with percentage
-damage bonus collected from the whole equipment of the pointman.
+is shown. Then come damage dice of the pointman's melee weapons and
+the pointman's appendages, ordered by their power. The dice of the first
+recharged weapon, the one that is going to be used now, is adorned with
+percentage damage bonus collected from the whole equipment of the pointman.
 If the dice are displayed with upper-case `D` instead of lower-case `d`,
 the weapon has additional effects apart of the usual direct damage.
 The nature of the effects can be appraised via the equipment outfit menu.
@@ -291,11 +291,11 @@ Weapon damage and other item properties are displayed using
 the dice notation `xdy`, which denotes `x` rolls of `y`-sided dice.
 A variant written `xdLy` is additionally scaled by the level depth
 in proportion to the maximal level depth (at the first level the result
-is always one, then it grows up to the full rolled value at the last level).
+is always one; it grows up to the full rolled value at the last level).
 Section [Battling monsters](#Battling-monsters) below describes combat
 resolution in detail, including the role of the percentage bonuses.
 
-The upper status line describes the current level in relation
+The upper status line describes the currently visited level in relation
 to the party.
 
     5  Lofty hall    [33% seen] dire basilisk    [__**]
@@ -324,16 +324,17 @@ projectile would travel if there were no obstacles.
 Moving and acting
 -----------------
 
-This section is a copy of the few initial bits of in-game help. The in-game
-help pages are automatically generated based on a game's keybinding content
-definitions and on overrides in the player's config file. The remaining
-in-game help screens, not shown here, list all game commands grouped
-by categories in detail. A text snapshot of the complete in-game help is in
-[InGameHelp.txt](InGameHelp.txt).
+This chapter is a copy of the few initial pages of in-game help.
+The in-game help is automatically generated based on a game's keybinding
+content definitions and on overrides in the player's config file.
+The remaining in-game help screens, not shown here, list all game
+commands grouped by categories in detail. A text snapshot of the complete
+in-game help is in [InGameHelp.txt](InGameHelp.txt).
 
 Walk throughout a level with mouse or numeric keypad (right diagram below)
 or the Vi editor keys (middle) or the left-hand movement keys (left). Run until
 disturbed with Shift or Control. Go-to a position with LMB (left mouse button).
+In aiming mode, the same keys (and mouse) move the aiming crosshair.
 
           q w e          y k u          7 8 9
            \|/            \|/            \|/
@@ -341,15 +342,14 @@ disturbed with Shift or Control. Go-to a position with LMB (left mouse button).
            /|\            /|\            /|\
           z x c          b j n          1 2 3
 
-In aiming mode, the same keys (and mouse) move the aiming crosshair.
 Press `KP_5` (`5` on keypad) to wait, bracing for impact, which reduces any
 damage taken and prevents displacement by foes. Press `S-KP_5` or `C-KP_5`
 (the same key with Shift or Control) to lurk 0.1 of a turn, without bracing.
 
 Displace enemies by running into them with Shift/Control or S-LMB. Search,
-open, descend and attack by bumping into walls, doors, stairs and enemies.
-The best, not on cooldown, melee weapon is automatically chosen from your
-equipment and from among your body parts.
+open, descend and melee by bumping into walls, doors, stairs and enemies.
+The best, and not on cooldown, melee weapon is automatically chosen
+for attack from your equipment and from among your body parts.
 
 The following few commands, joined with the movement and running keys,
 let you accomplish almost anything in the game, though not necessarily
@@ -460,27 +460,30 @@ the adventure ends in defeat.
 Attacking from a distance
 -------------------------
 
-For ranged attacks, setting the aiming crosshair before `f` to attack
-is pressed is not mandatory. Crosshair is set automatically as soon
+Before the player presses `f` to make a ranged attack, he may move
+and set the aiming crosshair in aiming mode. However, this is
+not often needed, since crosshair is set automatically as soon
 as a monster comes into view and can still be adjusted for as long
-as the missile to fling is not chosen. However, sometimes before
-flinging you want to examine the level map tile by tile by moving
-the crosshair or assign persistent personal targets to party members.
+as the missile to fling is not chosen.
+
+Nevertheless, sometimes before flinging you want to examine
+the level map tile by tile by moving the crosshair
+or to assign persistent personal targets to party members.
 The latter is essential in the rare cases when your henchmen
 (non-pointman characters) can move autonomously or fire opportunistically
 (via innate skills or rare equipment). Also, if your non-pointman character
 is adjacent to more than one enemy, setting his target makes him melee
 a particular foe.
 
-You can enter the aiming mode with the `*` and `KP_*` keys that
-select enemies or the `/` and `KP_/` keys that cycle among items
-on the floor. You can move crosshair with direction keys and assign
-a personal target to the pointman with a `RET` key (Return, Enter).
+You can enter the aiming mode with the `*` and `KP_*` keys that select
+enemies or the `/` and `KP_/` keys that cycle among items on the level.
+You can move crosshair with direction keys and assign a personal
+target to the pointman with the `RET` key (Return, Enter).
 The details about the shared crosshair position are displayed in a status
-line close to the bottom of the screen, as explained in section
+line close to the bottom of the screen, as explained in chapter
 [Leading your heroes](#Leading-your-heroes) above. You cycle aiming
-mode from foe to spot to vector with the ``\`` key, which is useful
-when a monster vanishes but you still want to fling at its last
+mode from foe to spot and to vector with the ``\`` key, which is useful,
+e.g., when a monster vanishes but you still want to fling at its last
 known position.
 
 
@@ -509,10 +512,10 @@ and no equipment. They should also expect new undaunted enemies
 to bar their way.
 
 The only immutable factor throughout the chain of the heroes' adventures
-is their personal life stories, with the implied unique characteristics,
-virtues and vices. However, a hero is not determined by the past
-nor discouraged by present defeats and the allure of fame, wealth
-and glory is always as bright as the stars.
+is their personal life stories, with the resulting unique characteristics,
+virtues and vices. However, a true hero is not determined by the past
+nor deterred by present transient defeats. The allure of fame, wealth
+and glory is the beacon that shines as bright as the stars in deep space.
 
 
 FAQ
@@ -523,8 +526,9 @@ FAQ
 A: Role-play a little. Re-read the scenario description, deck
 descriptions for all three levels and the description of crucial
 terrain items. Think in-character about visiting the lowest deck.
-What would you do? What would you look for? Has anything changed
-compared to what the texts describe? Would anything surprise you?
+What would you do? What would you look for? Remember you heroes have
+carelessly strolled through these decks before. Has anything changed
+compared to what the texts recall? Would anything surprise you?
 When you encounter any special terrain, actors, unexpected groups
 of actors or items, ask questions, think how that ties to your initial
 goal from the scenario description, examine terrain, actors and your
@@ -538,10 +542,10 @@ and use the lore menu by pressing `~`.
 
 - Q: In the crawl scenario, I already investigated and decided
 I won't use the `[spoiler]` nor `[spoiler]` way of escaping the ship.
-`[Spoiler alert: players that didn't, may want to role-play
-and try that first, see the previous question.]`
+`[Spoiler alert: players that didn't, may want to role-play and try
+these ways first, see the previous question. Otherwise, read on.]`
 Assuming I want to attempt the way through the welded staircase,
-how do I open the stairs up welded shut and reach the levels above
+how do I open the '"staircase up welded shut' and reach the levels above
 the first three?
 
 A: Examine the staircase to determine how to open it. Look for clues
@@ -575,9 +579,9 @@ when crosshair points at terrain that enables crafting.
 
 - Q: Does power of crafted items depend on the depth of current level?
 
-A: No, unlike items found on the floor or created via other means,
-items created by crafting are considered to originate at maximal depth
-whether regarding item kind, item stats or lifetime, if applicable.
+A: No, unlike items found on the floor, items created by crafting
+are considered to originate at maximal depth whether regarding item kind,
+item stats or lifetime, if applicable.
 
 - Q: Why do I summon hostile animals all the time, why do I defect
 to the enemy faction every level, why am I constantly sabotaging
@@ -595,14 +599,15 @@ bumping is enough, lied.
 A: Perhaps he's just sleeping (blue box indicates that)? If so,
 you can wake him up with the `%` command. If he's not asleep,
 his movement skill may be temporarily drained. Switch to another hero
-or perform some other productive action that walking or wait
-or rest with `R`.
+or perform some other productive action differrent from walking
+or wait with `KP_5` or rest with `R`.
 
 - Q: Is autoexplore safe?
 
 A: Not at all. It doesn't try to guess which hazardous terrain you want
 to avoid and which to barge through, so be prepared to abort exploration
 if open fire or slippery ground comes into view. Unless you have HP to spare.
+Oh the other hand, running is very safe and go-to is rather safe.
 
 - Q: Why does the percentage of explored tiles turn from 100% to 99%?
 
@@ -622,7 +627,7 @@ into a trap or into friendly fire or avoid breaking concealment
 and revealing their position or leaving a vantage point from which
 they can observe and relay enemy movement. For untrained teams,
 simultaneous synchronized squad movement is not feasible.
-It would be practical, if all squaddies had cameras, with a few drones
+It would be practical if all squaddies had cameras, with a few drones
 overhead for best effect, and if a team of off-site coordinators analyzed
 the situation and micromanaged them all. This is not the case here.
 
@@ -651,27 +656,27 @@ the condition is always only prolonged.
 of turns?
 
 A: This is an artifact of time running independently on each level.
-Any ideas on how to improve this are welcome. A workaround is to drop and then
-pick up the item on the level you want to use it. When picked up,
-it gets recharged after, randomly, from one to two times the normal
-cooldown period of the item and then recharges normally for as long
-as it's used on this level.
+Any ideas on how to improve this game mechanics are welcome.
+A workaround is to drop and then pick up the item on the level
+you want to use it. When picked up, it gets recharged after, randomly,
+from one to two times the normal cooldown period of the item
+and then recharges normally while it's used on this level.
 
 - Q: Why the bottom line displays a weapon with a timeout to the right
 of a weapon without timeout? Doesn't it mean the former is never used?
 
-A: Yes, it's never used and quite possibly it's your mistake and if not,
-at least a very special situation and the display reminds you about it.
-Shuffle the equipment among your team if you want the weapon
-to get used.
+A: Yes, it's never used and, quite possibly, it's your party inventory
+management mistake and if not, at least a very special situation
+and the display turns your attention to it. Shuffle the equipment
+among your team if you want the weapon to get used.
 
 - Q: When can I learn all characters' backstory items?
 
 A: Each backstory item triggers in specific circumstances, so it may take
-some time and even, rarely, never be revealed at all. For vices, that may be
-the desired turn of action. Alternatively, you can try to reveal a vice
-early and then prevent it from triggering ever again once the activation
-condition is known.
+some time and even not be revealed during a single playthrough.
+For vices, that may be the desired turn of events. Alternatively,
+you can try to reveal a vice early and then prevent it from triggering
+again, taking advantage of the activation condition becoming known.
 
 - Q: Can I kill off heroes permanently and reset all character backstories?
 
