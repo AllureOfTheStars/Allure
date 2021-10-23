@@ -17,8 +17,8 @@ yourself, like with a book (a grown-up book, without pictures).
 Once you learn to imagine things, though, you can keep exploring
 and mastering the world and making up stories for a long time.
 
-The game is written in Haskell[1] using the LambdaHack[10]
-roguelike game engine.
+The game is written in Haskell[1] using the LambdaHack[10] roguelike
+game engine.
 Please see the changelog file for recent improvements
 and the issue tracker for short-term plans. Long term goals
 are high replayability and auto-balancing through procedural
@@ -39,7 +39,7 @@ e.g., when it's closed while the game is still saving progress
 you may prefer to use a native binary for your architecture, if it exists.
 
 Pre-compiled game binaries are available through the release page[11]
-(and, for Windows, dev versions continuously from AppVeyor[18]).
+(and Linux dev versions from GitHub Actions[18] and Windows from AppVeyor[19]).
 To use a pre-compiled binary archive, unpack it and run the executable
 in the unpacked directory or use program shortcuts from the installer,
 if available. On Linux, make sure you have the SDL2 libraries installed
@@ -56,9 +56,9 @@ Screen and keyboard configuration
 ---------------------------------
 
 The game UI can be configured via a config file.
-The default settings, the same that are built into the binary,
+The default config settings, the same that are built into the binary,
 are on github at [GameDefinition/config.ui.default](https://github.com/AllureOfTheStars/Allure/blob/master/GameDefinition/config.ui.default).
-When the game is run for the first time, or whenever the settings file
+When the game is run for the first time, or whenever the config file
 is deleted, the file is written to the default user data location,
 which is `~/.Allure/` on Linux,
 `C:\Users\<username>\AppData\Roaming\Allure\`
@@ -67,8 +67,8 @@ or something else altogether) on Windows
 and `Inspect/Application/Local Storage` under RMB menu
 when run inside the Chrome browser.
 If the user config file is outdated or corrupted, it's automatically
-moved away together with old savefiles, which guarantees that the new
-default config file is ultimately put in its place.
+moved away together with old savefiles. At the next game start,
+the new default config file appears at its place.
 
 Screen fonts and, consequently, window size can be changed by editing
 the config file in the user data folder. The default bitmap font
@@ -77,8 +77,8 @@ in the Latin alphabet (e.g. to give custom names to player characters)
 and results in a game window of exactly 720p HD dimensions. The `8x8xb.fnt`
 bitmap font results in a tiny window and covers latin-1 characters only.
 The config file parameter `allFontsScale` permits further window size
-adjustments, automatically switching to the scalable `16x16xw.woff`
-version of the game map font. Config file option `chosenFontset` governs
+adjustments, automatically switching to the scalable version of the large
+game map font (`16x16xw.woff`). Config file option `chosenFontset` governs
 not only the main game map font, but also the shape of the rectangular fonts,
 if any, in which longer texts are overlaid over the map.
 
@@ -88,7 +88,7 @@ E.g., scale 3 works for 4K displays. Otherwise, the letters may be
 too small or, in fullscreen or on retina displays in OS X,
 the screen may be automatically scaled as a whole, not each letter
 separately, softening letter edges of the square fonts that should
-be pixel-perfect and crisp.
+rather be pixel-perfect and crisp.
 
 If you don't have a numeric keypad, you can use the left-hand movement
 key setup (axwdqezc) or Vi editor keys (aka roguelike keys) or mouse.
@@ -99,11 +99,11 @@ as well as with keyboard only, but the most efficient combination
 may be mouse for menus, go-to, inspecting the map, aiming at distant
 positions and keyboard for everything else.
 
-If you are using the ANSI terminal frontend (`--frontendANSI` on commandline),
-then numeric keypad (especially keypad `*` and `/`) may not work correctly,
-depending on the versions of libraries terminal emulators. Toggling
-the Num Lock key may help or make issues worse. As a workaround,
-in the ANSI terminal frontend, numbers are used for movement,
+If you run the ANSI terminal frontend (`--frontendANSI` on commandline),
+then numeric keypad (especially keypad `*`, `/` and `5`) may not work
+correctly, depending on the terminal emulator you use. Toggling
+the Num Lock key may help or make issues worse. As a work around
+these issues, numbers are used for movement in the ANSI frontend,
 which sadly prevents the number keys from selecting heroes.
 The commands that require pressing Control and Shift together won't work
 either, but fortunately they are not crucial to gameplay.
@@ -121,12 +121,12 @@ config file or main game menu options.
 Compiling native binary from source
 -----------------------------------
 
-The recommended frontend is based on SDL2, so you need the SDL2 libraries
-for your OS. On Linux, remember to install the -dev versions as well,
-e.g., libsdl2-dev and libsdl2-ttf-dev on Ubuntu Linux 16.04.
-Other frontends are compiled similarly, but compilation to JavaScript
-for the browser is more complicated and requires the ghcjs[15] compiler
-and optionally the Google Closure Compiler[16].
+To compile with the standard frontend based on SDL2, you need the SDL2
+libraries for your OS. On Linux, remember to install the -dev versions
+as well, e.g., libsdl2-dev and libsdl2-ttf-dev on Ubuntu Linux 16.04.
+Compilation to JavaScript for the browser is more complicated
+and requires the ghcjs[15] compiler and optionally the Google Closure
+Compiler[16].
 
 The latest official version of the game can be downloaded,
 compiled for SDL2 and installed automatically using the 'cabal' tool,
@@ -139,8 +139,10 @@ Get the Allure of the Stars package from Hackage[3] as follows
     cabal run Allure
 
 For a newer, unofficial version, clone the game source from github[5],
-clone a matching LambdaHack library snapshot into ../LambdaHack
-and run `cabal run` from the main directory.
+clone a matching LambdaHack library snapshot into ../LambdaHack and run
+
+    cabal run --project-file=cabal.project.LH.dir
+
 Alternatively, if you'd like to develop in this codebase,
 the following speeds up the turn-around a lot
 
@@ -154,18 +156,17 @@ and run the game with
 
     make play
 
-There is a built-in ANSI terminal frontend (`--frontendANSI` on commandline)
-intended for screen readers and a simplified black and white line terminal
-frontend (`--frontendTeletype`) suitable for teletype terminals
-or a keyboard and a printer (but it's going to use a lot of paper,
-unless you disable animations with `--noAnim`). The teletype frontend
-is used in CI and for some tests and benchmarks defined in Makefile.
-The terminal frontends leave you on your own regarding font choice
-and color setup and you won't have the colorful squares outlining
+The SDL2 frontend binary also contains the ANSI terminal frontend
+(`--frontendANSI` on commandline) intended for screen readers
+and a simplified black and white line terminal frontend (`--frontendTeletype`)
+suitable for teletype terminals or a keyboard and a printer (but it's going
+to use a lot of paper, unless you disable animations with `--noAnim`).
+The teletype frontend is used in CI and for some tests and benchmarks defined
+in Makefile. The terminal frontends leave you on your own regarding font
+choice and color setup and you won't have the colorful squares outlining
 special positions that exist in the SDL2 frontend, but only crude
-cursor highlights. The terminal frontends should theoretically run
-on Windows, but the operating system disables console for GUI applications,
-so they don't.
+cursor highlights. The terminal frontends should run on Windows,
+but Windows disables console for GUI applications, so they don't.
 
 
 Testing and debugging
@@ -181,14 +182,14 @@ Numerous tests that use the screensaver game modes (AI vs. AI)
 and the teletype frontend are gathered in `make test-locally`.
 Some of these are run by CI  on each push to github.
 Test commands with prefix `frontend` start AI vs. AI games with
-the standard, user-friendly frontend and auto-locating the game binary.
+the standard SDL2 frontend to view them on.
 
 Run `Allure --help` to see a brief description of all debug options.
 Of these, the `--sniff` option is very useful (though verbose
 and initially cryptic), for displaying the traffic between clients
-and the server. Some options in the config file may prove useful too,
-though they mostly overlap with commandline options (and will be totally
-merged at some point).
+and the server. Some options in the config file may prove useful
+for debugging too, though they mostly overlap with commandline options
+(and will be totally merged at some point).
 
 
 
@@ -240,4 +241,5 @@ Exceptions and detailed copyright information is contained in file COPYLEFT.
 [11]: https://github.com/AllureOfTheStars/Allure/releases
 [15]: https://github.com/ghcjs/ghcjs
 [16]: https://www.npmjs.com/package/google-closure-compiler
-[18]: https://ci.appveyor.com/project/Mikolaj/allure/build/artifacts
+[18]: https://github.com/AllureOfTheStars/Allure/actions
+[19]: https://ci.appveyor.com/project/Mikolaj/allure/build/artifacts
