@@ -210,7 +210,7 @@ escape = ModeKind  -- asymmetric ranged and stealth race at night
   , mroster = rosterEscape
   , mcaves  = cavesEscape
   , mendMsg = [ (Killed, "Somebody must have tipped the gang guards off. However, us walking along a lit trail, yelling, could have been a contributing factor. Also, it's worth noting that the torches prepared for this assault are best used as thrown makeshift flares.\nOn the other hand, equipping a lit torch makes one visible in the dark, regrettably but not quite unexpectedly. Lastly, the goal of this foray was to find the exit back to the city, marked by a yellow '>' sign, and to gather some treasure along the way. Not to harass every local evildoer, as much as they do deserve it.")
-              , (Conquer, "It was enough to reach the escape area, namely the exit tunnel from the park marked by yellow '>' symbol. Spilling that much blood was risky and unnecessary. Having said that --- impressive indeed.")
+              , (Conquer, "It was enough to reach the escape area, namely the exit tunnel from the park marked by yellow '>' symbol. Spilling that much blood was risky. unnecessary and alerted the authorities. Having said that --- impressive indeed.")
               , (Escape, "Congratulations, you took your revenge and it's heavy in your pockets.") ]
   , mrules  = T.intercalate "\n"
       [ "* One level only"
@@ -606,7 +606,6 @@ rosterHunt = Roster
 rosterEscape = Roster
   { rosterList = [ ( playerAntiHero { fname = "Red Collar Bro"
                                     , fcanEscape = False  -- start on escape
-                                    , fneverEmpty = False  -- loot after killing
                                     , fhiCondPoly = hiHeroMedium }
                    , Just teamCompetitor
                    , [(7, 6, AMBUSHER_HERO), (7, 1, SCOUT_HERO)] )
