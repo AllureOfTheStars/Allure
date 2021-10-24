@@ -546,8 +546,8 @@ flask6 = flaskTemplate
   , irarity  = [(1, 1)]  -- not every playthrough needs one
   , iaspects = ELabel "of resolution spirit"
                : iaspects flaskTemplate
-  , ieffects = [ toOrganGood S_RESOLUTE (500 + 1 `d` 200)  -- long, for scouting
-               , RefillCalm 60  -- not to make it a drawback, via @calmEnough@
+  , ieffects = [ toOrganGood S_RESOLUTE (100 + 1 `d` 20)  -- long, for scouting
+               , RefillCalm 100  -- not to make it a drawback, via @calmEnough@
                , OnSmash (Explode S_RESOLUTION_DUST) ]
   }
 flask7 = flaskTemplate
@@ -1007,7 +1007,7 @@ scrollAd1 = scrollTemplate
   , iaspects = ELabel "of tourist guide"
                : iaspects scrollTemplate
   , ieffects = [ Impress  -- mostly flavour, but this is useful
-               , toOrganGood S_RESOLUTE (500 + 1 `d` 200)
+               , toOrganGood S_RESOLUTE (100 + 1 `d` 20)
                    -- a drawback (at least initially) due to @calmEnough@
                , Explode S_RHINO_HOLOGRAM
                , Detect DetectLoot 5 ]  -- short so useless most of the time
