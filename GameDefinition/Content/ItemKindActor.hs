@@ -407,7 +407,7 @@ intruder = ItemKind
                , AddSkill SkFlying 10  -- flies slowly, but far
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "It starts, bobs and halts, scanning for movement. Effortlessly, it resumes covering the ground, gliding two meters above the floor. The pumped organic body is large, but looks fragile. However, it doesn't skirt the walls, but instead seems to take ownership of any space it boldly parks in the middle of."
+  , idesc    = "It starts, bobs and halts, scanning for movement. Effortlessly it resumes covering the ground, gliding two meters above the floor. Its pumped organic body, though large, pulses with fragility. It doesn't skirt the walls and instead takes ownership of any space it boldly parks in the middle of."
   , ikit     = [ (S_FLOTATION_BAG, COrgan)
                , (S_TENTACLE, COrgan), (S_TENTACLE, COrgan)
                , (S_TIP, COrgan)  -- at least one non-timed
