@@ -503,16 +503,16 @@ teamMercenary = TeamContinuity 4
 rosterRaid, rosterBrawl, rosterCrawl, rosterShootout, rosterHunt, rosterEscape, rosterZoo, rosterAmbush, rosterSafari, rosterCrawlEmpty, rosterCrawlSurvival, rosterSafariSurvival, rosterBattle, rosterBattleDefense, rosterBattleSurvival, rosterDefense, rosterDefenseEmpty :: Roster
 
 rosterRaid = Roster
-  { rosterList = [ ( playerHero {fhiCondPoly = hiHeroShort}
+  { rosterList = [ ( playerAnimal  -- starting over escape
+                   , Nothing
+                   , [(2, 2, ANIMAL)] )
+                 , ( playerHero {fhiCondPoly = hiHeroShort}
                    , Just teamExplorer
                    , [(2, 2, HERO)] )
                  , ( playerAntiHero { fname = "Red Collar Bro"
                                     , fhiCondPoly = hiHeroShort }
                    , Just teamCompetitor
                    , [(2, 1, RANGER_HERO)] )
-                 , ( playerAnimal  -- starting over escape
-                   , Nothing
-                   , [(2, 2, ANIMAL)] )
                  , ( playerRobot
                    , Nothing
                    , [(2, 1, ROBOT)] )
@@ -545,7 +545,7 @@ rosterBrawl = Roster
   , rosterAlly = [] }
 
 rosterCrawl = Roster
-  { rosterList = [ ( playerHero
+  { rosterList = [ ( playerHero  -- start on stairs so that stash is handy
                    , Just teamExplorer
                    , [(3, 3, CRAWL_HERO)] )
                  , ( playerMonster

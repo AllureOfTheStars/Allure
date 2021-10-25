@@ -494,7 +494,6 @@ raid = rogue
   , cescapeFreq   = [(INDOOR_ESCAPE_UP, 1)]
   , cstairFreq    = []
   , cstairAllowed = []
-  , cskip         = [0]
   , cdesc         = "Mold spreads across the walls and scuttling sounds can be heard in the distance."
   }
 brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
@@ -635,7 +634,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , cmaxStairsNum = 0
   , cstairFreq    = []
   , cstairAllowed = []
-  , cskip         = [0]  -- don't start heroes on exit
+  , cskip         = [0]  -- don't start heroes nor opponents on escape
   , cdesc         = "Graffiti scrawls across the walls and the heavy scents of stimulants hang in the air."
   }
 zoo = rogue  -- few lights and many solids, to help the less numerous heroes
