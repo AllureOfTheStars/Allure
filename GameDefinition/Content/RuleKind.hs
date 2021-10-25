@@ -31,8 +31,8 @@ import Game.LambdaHack.Definition.DefsInternal
 standardRules :: RuleContent
 standardRules = RuleContent
   { rtitle = "Allure of the Stars"
-  , rXmax = 80
-  , rYmax = 42
+  , rWidthMax = 80
+  , rHeightMax = 42
   , rexeVersion = Self.version
   -- The strings containing the default configuration file
   -- included from config.ui.default.
