@@ -1523,13 +1523,19 @@ necklace9 = necklaceTemplate
                , (S_REFRIGERATION_COIL, 1), (ANY_JEWELRY, 100)
                , (COLD_SOURCE, 1) ]
   , iaspects = ELabel "of superconducting refrigeration"
-               : Timeout ((1 + 1 `d` 3) * 5)
+               : Timeout ((3 + 1 `d` 3) * 10)
+                   -- high timeout to prevent spam obscuring messages
+                   -- when other actors act and annoying bumping into
+                   -- projectiles caused by own necklace when walking
                : delete (SetFlag Precious) iaspects_necklaceTemplate
   , ieffects = [Explode S_CURRENT_DISCHARGE]
   }
 necklace10 = necklaceTemplate
   { ifreq    = [(COMMON_ITEM, 100), (ANY_JEWELRY, 100), (PERFUME, 1)]
-  , iaspects = Timeout ((1 + 1 `d` 3) * 5)
+  , iaspects = Timeout ((3 + 1 `d` 3) * 10)
+                   -- high timeout to prevent spam obscuring messages
+                   -- when other actors act and annoying bumping into
+                   -- projectiles caused by own necklace when walking
                : iaspects_necklaceTemplate
   , ieffects = [Explode S_FRAGRANCE]
   }
