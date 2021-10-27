@@ -246,6 +246,7 @@ jobs:
           echo "allow-newer: $($HCPKG list --simple-output | sed -E 's/([a-zA-Z-]+)-[0-9.]+/*:\1,/g')" >> cabal.project
           fi
           cat cabal.project
+          cp cabal.project cabal.project.LH.dir
       - name: cache
         uses: actions/cache@v2
         with:
