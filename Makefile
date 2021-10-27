@@ -275,7 +275,7 @@ copy-binary-v1:
 	cabal v1-copy --destdir=AllureOfTheStarsInstall
 
 copy-binary:
-	cp $$(cabal list-bin exe:Allure) AllureOfTheStars
+	cp $$(cabal list-bin --project-file=cabal.project.LH.dir exe:Allure) AllureOfTheStars
 
 configure-binary-v2:
 	cabal configure --project-file=cabal.project.LH.dir --disable-tests --disable-library-profiling --disable-profiling --enable-optimization
