@@ -25,10 +25,6 @@ description: Allure of the Stars is a near-future Sci-Fi roguelike
              are high replayability and auto-balancing through procedural
              content generation and persistent content modification
              based on player behaviour. Contributions are welcome.
-             .
-             This is a workaround .cabal file, flattened to eliminate
-             internal libraries until generating haddocks for them
-             is fixed. The original .cabal file is stored in the github repo.
 homepage:      http://allureofthestars.com
 bug-reports:   http://github.com/AllureOfTheStars/Allure/issues
 license:       AGPL-3.0-or-later
@@ -130,9 +126,9 @@ common exe-options
   if !flag(supportNodeJS)
     ghcjs-options:    -DGHCJS_BROWSER
 
-library
+library this-game-content
   import: options
-  hs-source-dirs:     GameDefinition, GameDefinition/game-src
+  hs-source-dirs:     GameDefinition
   exposed-modules:    Content.CaveKind
                       Content.ItemKind
                       Content.ItemKindEmbed
@@ -145,34 +141,45 @@ library
                       Content.PlaceKind
                       Content.RuleKind
                       Content.TileKind
-                      TieKnot
-                      Client.UI.Content.Input
-                      Client.UI.Content.Screen
-                      Implementation.MonadClientImplementation
-                      Implementation.MonadServerImplementation
   other-modules:      Paths_Allure
   autogen-modules:    Paths_Allure
   build-depends:      ,LambdaHack >= 0.10.3.0 && < 0.10.4.0
-                      ,async
+-- TODO: instead:     ,definition
                       ,base >= 4.10 && < 99
                       ,enummapset
-                      ,file-embed >= 0.0.11
                       ,filepath
                       ,hsini
+                      ,template-haskell
+                      ,text
+                      ,th-lift-instances
+
+library this-game-src
+  import: options
+  hs-source-dirs:     GameDefinition/game-src
+  exposed-modules:    TieKnot
+                      Client.UI.Content.Input
+  other-modules:      Client.UI.Content.Screen
+                      Implementation.MonadClientImplementation
+                      Implementation.MonadServerImplementation
+  build-depends:      ,LambdaHack
+                      ,this-game-content
+                      ,async
+                      ,base
+                      ,enummapset
+                      ,file-embed >= 0.0.11
                       ,ghc-compact
                       ,optparse-applicative
                       ,primitive
                       ,splitmix
                       ,template-haskell
                       ,text
-                      ,th-lift-instances
                       ,transformers
 
 executable Allure
   import: options, exe-options
   main-is:            GameDefinition/Main.hs
   build-depends:      ,LambdaHack
-                      ,Allure
+                      ,this-game-src
                       ,async
                       ,base
                       ,filepath
@@ -184,7 +191,8 @@ test-suite test
   hs-source-dirs:     test
   main-is:            Spec.hs
   build-depends:      ,LambdaHack
-                      ,Allure
+                      ,this-game-content
+                      ,this-game-src
                       ,base
                       ,optparse-applicative
                       ,tasty >= 1.0
