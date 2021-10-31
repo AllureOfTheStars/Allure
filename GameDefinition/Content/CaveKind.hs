@@ -590,7 +590,8 @@ hunt = rogue  -- a scenario with strong missiles for ranged and shade for melee;
   , cdoorChance   = 1
   , copenChance   = 0
   , chidden       = 0
-  , cactorFreq    = []
+  , cactorCoeff   = 300  -- spawn slowly
+  , cactorFreq    = [(INSECT, 100)]
   , citemNum      = 6 `d` 10
   , citemFreq     = [(IK.COMMON_ITEM, 30), (ANY_ARROW, 60), (HARPOON, 30)]
   , cplaceFreq    = [(BRAWL, 50), (SHOOTOUT, 100)]
@@ -602,7 +603,7 @@ hunt = rogue  -- a scenario with strong missiles for ranged and shade for melee;
   , cmaxStairsNum = 0
   , cstairFreq    = []
   , cstairAllowed = []
-  , cdesc         = "Mangrove trees and murky water, inspired by a habitat now eradicated from Earth."
+  , cdesc         = "Mangrove trees and murky water, inspired by a habitat now eradicated from Earth. A rather deadly habitat."
   }
 escape = rogue  -- a scenario with weak missiles, because heroes don't depend
                 -- on them; dark, so solid obstacles are to hide from missiles,
