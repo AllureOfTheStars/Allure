@@ -58,7 +58,7 @@ standardKeysAndMouse = InputContentRaw $ map evalKeyDef $
                                       , aiming = Accept } ))
   , ("space", ( [CmdMinimal, CmdAim]
               , "clear messages/show history/cycle detail level"
-              , ByAimMode AimModeCmd { exploration = ExecuteIfClear LastHistory
+              , ByAimMode AimModeCmd { exploration = ExecuteIfClear AllHistory
                                      , aiming = DetailCycle } ))
   , ("Tab", memberCycle Forward [CmdMinimal, CmdMove])
       -- listed here to keep proper order of the minimal cheat sheet
@@ -255,7 +255,7 @@ standardKeysAndMouse = InputContentRaw $ map evalKeyDef $
                , Accept ))
   , ("safe11", ( [CmdInternal]
                , "show history"
-               , LastHistory ))
+               , AllHistory ))
   , ("safe12", ( [CmdInternal]
                , "wait a turn, bracing for impact"
                , Wait ))
