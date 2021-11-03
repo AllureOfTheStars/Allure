@@ -1,0 +1,18 @@
+flags: +with_expensive_assertions
+tests: False
+optimization: True
+profiling: False
+library-profiling: False
+documentation: False
+
+package *
+  documentation: True
+  library-profiling: True
+
+package LambdaHack
+  ghc-options: -fwrite-ide-info
+
+package Allure
+  ghc-options: -fwrite-ide-info
+
+packages: ../LambdaHack
