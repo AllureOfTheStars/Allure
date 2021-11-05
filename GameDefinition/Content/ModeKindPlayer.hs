@@ -35,16 +35,16 @@ playerHero = Player
   , fneverEmpty = True
   , fhiCondPoly = hiHeroLong
   , fhasGender = True
-  , fdoctrine = TExplore
+  , finitDoctrine = TExplore
   , fleaderMode = Just $ AutoLeader False False
   , fhasUI = True
-  , funderAI = False
+  , finitUnderAI = False
   }
 
 playerAntiHero = playerHero
   { fleaderMode = Just $ AutoLeader True False
   , fhasUI = False
-  , funderAI = True
+  , finitUnderAI = True
   }
 
 playerCivilian = Player
@@ -55,10 +55,10 @@ playerCivilian = Player
   , fneverEmpty = True
   , fhiCondPoly = hiHeroMedium
   , fhasGender = True
-  , fdoctrine = TPatrol
+  , finitDoctrine = TPatrol
   , fleaderMode = Nothing  -- unorganized
   , fhasUI = False
-  , funderAI = True
+  , finitUnderAI = True
   }
 
 playerMonster = Player
@@ -69,19 +69,19 @@ playerMonster = Player
   , fneverEmpty = False
   , fhiCondPoly = hiDweller
   , fhasGender = False
-  , fdoctrine = TExplore
+  , finitDoctrine = TExplore
   , fleaderMode =
       -- No point changing leader on level, since all move and they
       -- don't follow the leader.
       Just $ AutoLeader True True
   , fhasUI = False
-  , funderAI = True
+  , finitUnderAI = True
   }
 
 playerAntiMonster = playerMonster
   { fleaderMode = Just $ AutoLeader True True
   , fhasUI = True
-  , funderAI = False
+  , finitUnderAI = False
   }
 
 playerAnimal = Player
@@ -93,10 +93,10 @@ playerAnimal = Player
   , fneverEmpty = False
   , fhiCondPoly = hiDweller
   , fhasGender = False
-  , fdoctrine = TRoam  -- can't pick up, so no point exploring
+  , finitDoctrine = TRoam  -- can't pick up, so no point exploring
   , fleaderMode = Nothing
   , fhasUI = False
-  , funderAI = True
+  , finitUnderAI = True
   }
 
 -- | A special player, for summoned actors that don't belong to any
@@ -112,25 +112,26 @@ playerHorror = Player
   , fneverEmpty = False
   , fhiCondPoly = []
   , fhasGender = False
-  , fdoctrine = TPatrol  -- disoriented
+  , finitDoctrine = TPatrol  -- disoriented
   , fleaderMode = Nothing
   , fhasUI = False
-  , funderAI = True
+  , finitUnderAI = True
   }
 
 playerMonsterTourist =
-  playerAntiMonster { fname = "Alien Tourist Office"
-                    , fcanEscape = True
-                    , fneverEmpty = True  -- no spawning
-                    , fhiCondPoly = hiHeroMedium
-                    , fdoctrine = TFollow  -- follow-the-guide, as tourists do
-                    , fleaderMode = Just $ AutoLeader False False
-                    , funderAI = False }
+  playerAntiMonster
+    { fname = "Alien Tourist Office"
+    , fcanEscape = True
+    , fneverEmpty = True  -- no spawning
+    , fhiCondPoly = hiHeroMedium
+    , finitDoctrine = TFollow  -- follow-the-guide, as tourists do
+    , fleaderMode = Just $ AutoLeader False False
+    , finitUnderAI = False }
 
 playerHunamConvict =
   playerCivilian { fname = "Hunam Convict"
                  , fleaderMode = Just $ AutoLeader True False
-                 , funderAI = True }
+                 , finitUnderAI = True }
 
 playerAnimalMagnificent =
   playerAnimal { fname = "Animal Magnificent Specimen Variety"
@@ -205,9 +206,9 @@ playerRobot = Player
   , fneverEmpty = False
   , fhiCondPoly = hiDweller
   , fhasGender = False
-  , fdoctrine = TRoam
+  , finitDoctrine = TRoam
       -- TODO:TFollow -- coordinated via net, follow alien leader
   , fleaderMode = Nothing
   , fhasUI = False
-  , funderAI = True
+  , finitUnderAI = True
   }
