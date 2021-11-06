@@ -4,7 +4,7 @@
 -- and is released under the terms of the GNU Affero General Public License.
 -- For license and copyright information, see the file LICENSE.
 --
--- | Item definitions.
+-- | Definitions of basic items.
 module Content.ItemKind
   ( -- * Group name patterns
     pattern HARPOON, pattern ARMOR_LOOSE, pattern CLOTHING_MISC

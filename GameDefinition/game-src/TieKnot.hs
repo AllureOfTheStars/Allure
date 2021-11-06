@@ -30,6 +30,7 @@ import           Game.LambdaHack.Common.Misc
 import           Game.LambdaHack.Common.Point (speedupHackXSize)
 import qualified Game.LambdaHack.Common.Tile as Tile
 import qualified Game.LambdaHack.Content.CaveKind as CK
+import qualified Game.LambdaHack.Content.FactionKind as FK
 import qualified Game.LambdaHack.Content.ItemKind as IK
 import qualified Game.LambdaHack.Content.ModeKind as MK
 import qualified Game.LambdaHack.Content.PlaceKind as PK
@@ -40,6 +41,7 @@ import           Game.LambdaHack.Server
 import qualified Client.UI.Content.Input as Content.Input
 import qualified Client.UI.Content.Screen as Content.Screen
 import qualified Content.CaveKind
+import qualified Content.FactionKind
 import qualified Content.ItemKind
 import qualified Content.ModeKind
 import qualified Content.PlaceKind
@@ -84,6 +86,9 @@ tieKnotForAsync options@ServerOptions{ sallClear
                            Content.TileKind.groupNamesSingleton
                            Content.TileKind.groupNames
       coTileSpeedup = Tile.speedupTile sallClear cotile
+      cofact = FK.makeData Content.FactionKind.content
+                           Content.FactionKind.groupNamesSingleton
+                           Content.FactionKind.groupNames
       -- Common content operations, created from content definitions.
       -- Evaluated fully to discover errors ASAP and to free memory.
       -- Fail here, not inside server code, so that savefiles are not removed,
@@ -92,8 +97,10 @@ tieKnotForAsync options@ServerOptions{ sallClear
         { cocave = CK.makeData Content.CaveKind.content
                                Content.CaveKind.groupNamesSingleton
                                Content.CaveKind.groupNames
+        , cofact
         , coitem
-        , comode = MK.makeData Content.ModeKind.content
+        , comode = MK.makeData cofact
+                               Content.ModeKind.content
                                Content.ModeKind.groupNamesSingleton
                                Content.ModeKind.groupNames
         , coplace = PK.makeData cotile

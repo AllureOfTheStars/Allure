@@ -130,6 +130,7 @@ library this-game-content
   import: options
   hs-source-dirs:     GameDefinition
   exposed-modules:    Content.CaveKind
+                      Content.FactionKind
                       Content.ItemKind
                       Content.ItemKindEmbed
                       Content.ItemKindActor
@@ -137,7 +138,6 @@ library this-game-content
                       Content.ItemKindBlast
                       Content.ItemKindTemporary
                       Content.ModeKind
-                      Content.ModeKindPlayer
                       Content.PlaceKind
                       Content.RuleKind
                       Content.TileKind
