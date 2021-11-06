@@ -88,8 +88,7 @@ rogue,    residential, arena, casino, museum, laboratory, noise, power, empty, e
 -- * On-ship "caves", that is, decks, most of mediocre height and size
 
 rogue = CaveKind
-  { csymbol       = 'R'
-  , cname         = "Maintenance and storage"
+  { cname         = "Maintenance and storage"
   , cfreq         = [(DEFAULT_RANDOM, 100), (CAVE_ROGUE, 1)]
   , cXminSize     = 80
   , cYminSize     = 42
@@ -157,8 +156,7 @@ residential = rogue  -- an alternative with lit corridors but dark rooms
   , cdesc         = "The area has been powered down, except for emergency corridors. Many suites are depressurized and sealed."
   }
 arena = rogue
-  { csymbol       = 'A'
-  , cname         = "Recreational deck"
+  { cname         = "Recreational deck"
   , cfreq         = [(CAVE_ARENA, 1)]
   , cXminSize     = 80
   , cYminSize     = 25
@@ -243,8 +241,7 @@ museum = arena
   , cdesc         = "History has shown that museal treasures are safer in space than anywhere on Earth. Passengers eagerly attend exhibitions, even if over the weeks of the journey they become increasingly a captive audience. Spaceship crew are not that enthusiastic but even they find reasons to pay visits despite misgivings of museum security. Quite often a museum is the only place within millions of kilometers to house a desperately needed tool, old but sturdy beyond anything a 3D printer can produce."
   }
 laboratory = rogue
-  { csymbol       = 'L'
-  , cname         = "Laboratory"
+  { cname         = "Laboratory"
   , cfreq         = [(CAVE_LABORATORY, 1)]
   , cXminSize     = 60
   , cYminSize     = 42
@@ -278,8 +275,7 @@ laboratory = rogue
   , cdesc         = "Shattered glassware and the sharp scent of spilt chemicals show that something terrible happened here. The reinforced bulkheads muffle furious roars."  -- a fair warning to skip the level or regroup
   }
 noise = rogue
-  { csymbol       = 'N'
-  , cname         = "Computing hardware hub"
+  { cname         = "Computing hardware hub"
   , cfreq         = [(CAVE_NOISE, 1)]
   , cXminSize     = 25
   , cYminSize     = 42
@@ -341,8 +337,7 @@ power = noise
   , cdesc         = "A trickle of energy flows through a hub that could power a city. The air is warm and carries organic stench. Once in a while a young animal scurries across a lit patch of ground, pouncing in low gravity."
   }
 empty = rogue
-  { csymbol       = 'E'
-  , cname         = "Construction site"
+  { cname         = "Construction site"
   , cfreq         = []  -- just a template for some others
   , ccellSize     = DiceXY (2 `d` 8 + 14) 16
   , cminPlaceSize = DiceXY 9 9  -- normally don't merge
@@ -417,8 +412,7 @@ outermost = empty
       -- E and W sides are borders with other level sections, so no oriels.
   }
 bridge = rogue
-  { csymbol       = 'B'
-  , cname         = "Captain's bridge"
+  { cname         = "Captain's bridge"
   , cfreq         = [(CAVE_BRIDGE, 1)]
   , cXminSize     = 30
   , cYminSize     = 30
@@ -470,8 +464,7 @@ shallowRogue = rogue
 --    equally well.
 
 raid = rogue
-  { csymbol       = 'S'
-  , cname         = "Triton City sewers"
+  { cname         = "Triton City sewers"
   , cfreq         = [(CAVE_RAID, 1)]
   , cXminSize     = 60  -- long sewer tunnels
   , cYminSize     = 21
@@ -499,8 +492,7 @@ raid = rogue
 brawl = rogue  -- many random solid tiles, to break LOS, since it's a day
                -- and this scenario is not focused on ranged combat;
                -- also, sanctuaries against missiles in shadow under trees
-  { csymbol       = 'S'
-  , cname         = "Woodland biosphere"
+  { cname         = "Woodland biosphere"
   , cfreq         = [(CAVE_BRAWL, 1)]
   , cXminSize     = 60
   , cYminSize     = 30
@@ -544,8 +536,7 @@ shootout = rogue  -- a scenario with strong missiles;
                   -- opaque tiles, to make scouting and sniping more interesting
                   -- and to avoid obstructing view too much, since this
                   -- scenario is about ranged combat at long range
-  { csymbol       = 'S'
-  , cname         = "Hydroponic farm"  -- still a neutral, official wording
+  { cname         = "Hydroponic farm"  -- still a neutral, official wording
   , cfreq         = [(CAVE_SHOOTOUT, 1)]
   , ccellSize     = DiceXY (1 `d` 2 + 5) 6
   , cminPlaceSize = DiceXY 3 3  -- rarely merge vertically
@@ -578,8 +569,7 @@ shootout = rogue  -- a scenario with strong missiles;
   }
 hunt = rogue  -- a scenario with strong missiles for ranged and shade for melee;
               -- the human is likely to focus on melee, not having overwatch
-  { csymbol       = 'H'
-  , cname         = "Swamp biosphere"
+  { cname         = "Swamp biosphere"
   , cfreq         = [(CAVE_HUNT, 1)]
   , ccellSize     = DiceXY (1 `d` 2 + 5) 6
   , cminPlaceSize = DiceXY 3 3  -- rarely merge vertically
@@ -609,8 +599,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
                 -- on them; dark, so solid obstacles are to hide from missiles,
                 -- not view; obstacles are not lit, to frustrate the AI;
                 -- lots of small lights to cross, to have some risks
-  { csymbol       = 'E'
-  , cname         = "Red Collar Bros den"  -- tension rises; non-official name
+  { cname         = "Red Collar Bros den"  -- tension rises; non-official name
   , cfreq         = [(CAVE_ESCAPE, 1)]
   , ccellSize     = DiceXY (1 `d` 3 + 6) 7
   , cminPlaceSize = DiceXY 5 4  -- rarely merge
@@ -639,8 +628,7 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , cdesc         = "Graffiti scrawls across the walls and the heavy scents of stimulants hang in the air."
   }
 zoo = rogue  -- few lights and many solids, to help the less numerous heroes
-  { csymbol       = 'Z'
-  , cname         = "Municipal zoo in flames"  -- non-official adjective
+  { cname         = "Municipal zoo in flames"  -- non-official adjective
   , cfreq         = [(CAVE_ZOO, 1)]
   , ccellSize     = DiceXY (1 `d` 4 + 7) 8
   , cminPlaceSize = DiceXY 4 4  -- don't merge
@@ -677,8 +665,7 @@ ambush = rogue  -- a scenario with strong missiles;
                 -- camping doesn't pay off, because enemies can sneak and only
                 -- active scouting, throwing flares and shooting discovers them
                 -- and the level is big enough for all that
-  { csymbol       = 'M'
-  , cname         = "Ravaged spaceport"  -- non-official adjective
+  { cname         = "Ravaged spaceport"  -- non-official adjective
   , cfreq         = [(CAVE_AMBUSH, 1)]
   , ccellSize     = DiceXY 11 6
   , cminPlaceSize = DiceXY 9 10  -- merge vertically
@@ -706,8 +693,7 @@ ambush = rogue  -- a scenario with strong missiles;
 -- * Other caves; testing, Easter egg, future work
 
 battle = rogue  -- few lights and many solids, to help the less numerous heroes
-  { csymbol       = 'B'
-  , cname         = "Old industrial plant"
+  { cname         = "Old industrial plant"
   , cfreq         = [(CAVE_BATTLE, 1)]
   , ccellSize     = DiceXY (5 `d` 3 + 11) 7
   , cminPlaceSize = DiceXY 4 4

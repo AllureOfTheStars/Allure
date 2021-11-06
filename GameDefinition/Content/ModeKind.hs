@@ -91,8 +91,7 @@ raid,    brawl, crawl, shootout, hunt, escape, zoo, ambush, safari, dig, see, sh
 --   crawl, even without reaction fire
 
 raid = ModeKind
-  { msymbol = 'r'
-  , mname   = "raid (tutorial, 1)"
+  { mname   = "raid (tutorial, 1)"
   , mfreq   = [(RAID, 1), (CAMPAIGN_SCENARIO, 1)]
   , mtutorial = True
   , mroster = rosterRaid
@@ -112,8 +111,7 @@ raid = ModeKind
   }
 
 brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
-  { msymbol = 'k'
-  , mname   = "brawl (tutorial, 2)"
+  { mname   = "brawl (tutorial, 2)"
   , mfreq   = [(BRAWL, 1), (CAMPAIGN_SCENARIO, 1)]
   , mtutorial = True
   , mroster = rosterBrawl
@@ -132,8 +130,7 @@ brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
   }
 
 crawl = ModeKind
-  { msymbol = 'c'
-  , mname   = "long crawl (main)"
+  { mname   = "long crawl (main)"
   , mfreq   = [(LONG, 1), (CRAWL, 1), (CAMPAIGN_SCENARIO, 1)]
   , mtutorial = False
   , mroster = rosterCrawl
@@ -161,8 +158,7 @@ crawl = ModeKind
 -- the other team members are more spotters and guardians than snipers
 -- and that's their only role, so a small party makes sense.
 shootout = ModeKind  -- sparse ranged in daylight
-  { msymbol = 's'
-  , mname   = "foggy shootout (3)"
+  { mname   = "foggy shootout (3)"
   , mfreq   = [(FOGGY, 1), (SHOOTOUT, 1), (CAMPAIGN_SCENARIO, 1)]
   , mtutorial = False
   , mroster = rosterShootout
@@ -181,8 +177,7 @@ shootout = ModeKind  -- sparse ranged in daylight
   }
 
 hunt = ModeKind  -- melee vs ranged with reaction fire in daylight
-  { msymbol = 'h'
-  , mname   = "perilous hunt (4)"
+  { mname   = "perilous hunt (4)"
   , mfreq   = [(PERILOUS, 1), (HUNT, 1), (CAMPAIGN_SCENARIO, 1)]
   , mtutorial = False
   , mroster = rosterHunt
@@ -203,8 +198,7 @@ hunt = ModeKind  -- melee vs ranged with reaction fire in daylight
   }
 
 escape = ModeKind  -- asymmetric ranged and stealth race at night
-  { msymbol = 'e'
-  , mname   = "night escape (5)"
+  { mname   = "night escape (5)"
   , mfreq   = [(NIGHT, 1), (ESCAPE, 1), (CAMPAIGN_SCENARIO, 1)]
   , mtutorial = False
   , mroster = rosterEscape
@@ -225,8 +219,7 @@ escape = ModeKind  -- asymmetric ranged and stealth race at night
   }
 
 zoo = ModeKind  -- asymmetric crowd melee at night
-  { msymbol = 'b'
-  , mname   = "burning zoo (6)"
+  { mname   = "burning zoo (6)"
   , mfreq   = [(BURNING, 1), (ZOO, 1), (CAMPAIGN_SCENARIO, 1)]
   , mtutorial = False
   , mroster = rosterZoo
@@ -253,8 +246,7 @@ zoo = ModeKind  -- asymmetric crowd melee at night
 -- without reaction fire don't make sense, because then usually only one hero
 -- shoots (and often also scouts) and others just gather ammo.
 ambush = ModeKind  -- dense ranged with reaction fire vs melee at night
-  { msymbol = 'm'
-  , mname   = "ranged ambush (7)"
+  { mname   = "ranged ambush (7)"
   , mfreq   = [(RANGED, 1), (AMBUSH, 1), (CAMPAIGN_SCENARIO, 1)]
   , mtutorial = False
   , mroster = rosterAmbush
@@ -273,8 +265,7 @@ ambush = ModeKind  -- dense ranged with reaction fire vs melee at night
   }
 
 safari = ModeKind  -- Easter egg available only via screensaver
-  { msymbol = 'f'
-  , mname   = "safari"
+  { mname   = "safari"
   , mfreq   = [(SAFARI, 1)]
   , mtutorial = False
   , mroster = rosterSafari
@@ -294,8 +285,7 @@ safari = ModeKind  -- Easter egg available only via screensaver
 -- * Testing modes
 
 dig = ModeKind
-  { msymbol = 'd'
-  , mname   = "dig"
+  { mname   = "dig"
   , mfreq   = [(DIG, 1)]
   , mtutorial = False
   , mroster = rosterCrawlEmpty
@@ -308,8 +298,7 @@ dig = ModeKind
   }
 
 see = ModeKind
-  { msymbol = 'a'
-  , mname   = "see"
+  { mname   = "see"
   , mfreq   = [(SEE, 1)]
   , mtutorial = False
   , mroster = rosterCrawlEmpty
@@ -322,8 +311,7 @@ see = ModeKind
   }
 
 short = ModeKind
-  { msymbol = 's'
-  , mname   = "short"
+  { mname   = "short"
   , mfreq   = [(SHORT, 1)]
   , mtutorial = False
   , mroster = rosterCrawlEmpty
@@ -336,8 +324,7 @@ short = ModeKind
   }
 
 crawlEmpty = ModeKind
-  { msymbol = 'c'
-  , mname   = "crawl empty"
+  { mname   = "crawl empty"
   , mfreq   = [(CRAWL_EMPTY, 1)]
   , mtutorial = False
   , mroster = rosterCrawlEmpty
@@ -350,8 +337,7 @@ crawlEmpty = ModeKind
   }
 
 crawlSurvival = ModeKind
-  { msymbol = 'd'
-  , mname   = "crawl survival"
+  { mname   = "crawl survival"
   , mfreq   = [(CRAWL_SURVIVAL, 1)]
   , mtutorial = False
   , mroster = rosterCrawlSurvival
@@ -364,8 +350,7 @@ crawlSurvival = ModeKind
   }
 
 safariSurvival = ModeKind
-  { msymbol = 'u'
-  , mname   = "safari survival"
+  { mname   = "safari survival"
   , mfreq   = [(SAFARI_SURVIVAL, 1)]
   , mtutorial = False
   , mroster = rosterSafariSurvival
@@ -378,8 +363,7 @@ safariSurvival = ModeKind
   }
 
 battle = ModeKind
-  { msymbol = 'b'
-  , mname   = "battle"
+  { mname   = "battle"
   , mfreq   = [(BATTLE, 1)]
   , mtutorial = False
   , mroster = rosterBattle
@@ -392,8 +376,7 @@ battle = ModeKind
   }
 
 battleDefense = ModeKind
-  { msymbol = 'f'
-  , mname   = "battle defense"
+  { mname   = "battle defense"
   , mfreq   = [(BATTLE_DEFENSE, 1)]
   , mtutorial = False
   , mroster = rosterBattleDefense
@@ -406,8 +389,7 @@ battleDefense = ModeKind
   }
 
 battleSurvival = ModeKind
-  { msymbol = 'i'
-  , mname   = "battle survival"
+  { mname   = "battle survival"
   , mfreq   = [(BATTLE_SURVIVAL, 1)]
   , mtutorial = False
   , mroster = rosterBattleSurvival
@@ -420,8 +402,7 @@ battleSurvival = ModeKind
   }
 
 defense = ModeKind  -- perhaps a real scenario in the future
-  { msymbol = 'e'
-  , mname   = "defense"
+  { mname   = "defense"
   , mfreq   = [(DEFENSE, 1)]
   , mtutorial = False
   , mroster = rosterDefense
@@ -434,8 +415,7 @@ defense = ModeKind  -- perhaps a real scenario in the future
   }
 
 defenseEmpty = ModeKind
-  { msymbol = 'e'
-  , mname   = "defense empty"
+  { mname   = "defense empty"
   , mfreq   = [(DEFENSE_EMPTY, 1)]
   , mtutorial = False
   , mroster = rosterDefenseEmpty
