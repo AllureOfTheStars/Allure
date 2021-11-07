@@ -603,10 +603,9 @@ rosterCrawlSurvival =
     , [(3, 3, CRAWL_HERO)] )
   , ( MONSTER_REPRESENTATIVE
     , [(5, 1, MONSTER)] )
-  , ( ANIMAL_NARRATING
+  , ( ANIMAL_OR_ROBOT_NARRATING
     , [(5, 10, ANIMAL)] )  -- explore unopposed for some time
-  , ( ROBOT_REPRESENTATIVE
-    , [(3, 3, ROBOT)] ) ]
+  , (HORROR_REPRESENTATIVE, []) ]
 
 rosterSafariSurvival =
   [ ( MONSTER_TOURIST_PASSIVE

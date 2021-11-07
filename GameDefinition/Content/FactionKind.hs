@@ -9,8 +9,9 @@
 module Content.FactionKind
   ( -- * Group name patterns
     pattern EXPLORER_REPRESENTATIVE, pattern EXPLORER_SHORT, pattern EXPLORER_NO_ESCAPE, pattern EXPLORER_MEDIUM, pattern EXPLORER_TRAPPED, pattern EXPLORER_AUTOMATED, pattern EXPLORER_AUTOMATED_TRAPPED, pattern EXPLORER_CAPTIVE, pattern EXPLORER_PACIFIST, pattern COMPETITOR_REPRESENTATIVE, pattern COMPETITOR_SHORT, pattern COMPETITOR_NO_ESCAPE, pattern CIVILIAN_REPRESENTATIVE, pattern CONVICT_REPRESENTATIVE, pattern MONSTER_REPRESENTATIVE, pattern MONSTER_ANTI, pattern MONSTER_ANTI_CAPTIVE, pattern MONSTER_ANTI_PACIFIST, pattern MONSTER_TOURIST, pattern MONSTER_TOURIST_PASSIVE, pattern MONSTER_CAPTIVE, pattern MONSTER_CAPTIVE_NARRATING, pattern ANIMAL_REPRESENTATIVE, pattern ANIMAL_MAGNIFICENT, pattern ANIMAL_EXQUISITE, pattern ANIMAL_CAPTIVE, pattern ANIMAL_NARRATING, pattern ANIMAL_MAGNIFICENT_NARRATING, pattern ANIMAL_CAPTIVE_NARRATING, pattern HORROR_REPRESENTATIVE, pattern HORROR_CAPTIVE, pattern HORROR_PACIFIST
-  , pattern ROBOT_REPRESENTATIVE, pattern ROBOT_CAPTIVE, pattern OFF_WORLD_REPRESENTATIVE
+  , pattern ROBOT_REPRESENTATIVE, pattern ROBOT_CAPTIVE, pattern ROBOT_NARRATING, pattern OFF_WORLD_REPRESENTATIVE
   , pattern REPRESENTATIVE
+  , pattern ANIMAL_OR_ROBOT_NARRATING
   , groupNamesSingleton, groupNames
   , -- * Content
     content
@@ -36,16 +37,18 @@ import           Game.LambdaHack.Definition.DefsInternal
 groupNamesSingleton :: [GroupName FactionKind]
 groupNamesSingleton =
        [EXPLORER_REPRESENTATIVE, EXPLORER_SHORT, EXPLORER_NO_ESCAPE, EXPLORER_MEDIUM, EXPLORER_TRAPPED, EXPLORER_AUTOMATED, EXPLORER_AUTOMATED_TRAPPED, EXPLORER_CAPTIVE, EXPLORER_PACIFIST, COMPETITOR_REPRESENTATIVE, COMPETITOR_SHORT, COMPETITOR_NO_ESCAPE, CIVILIAN_REPRESENTATIVE, CONVICT_REPRESENTATIVE, MONSTER_REPRESENTATIVE, MONSTER_ANTI, MONSTER_ANTI_CAPTIVE, MONSTER_ANTI_PACIFIST, MONSTER_TOURIST, MONSTER_TOURIST_PASSIVE, MONSTER_CAPTIVE, MONSTER_CAPTIVE_NARRATING, ANIMAL_REPRESENTATIVE, ANIMAL_MAGNIFICENT, ANIMAL_EXQUISITE, ANIMAL_CAPTIVE, ANIMAL_NARRATING, ANIMAL_MAGNIFICENT_NARRATING, ANIMAL_CAPTIVE_NARRATING, HORROR_REPRESENTATIVE, HORROR_CAPTIVE, HORROR_PACIFIST]
-       ++ [ROBOT_REPRESENTATIVE, ROBOT_CAPTIVE, OFF_WORLD_REPRESENTATIVE]
+       ++ [ROBOT_REPRESENTATIVE, ROBOT_CAPTIVE, ROBOT_NARRATING, OFF_WORLD_REPRESENTATIVE]
 
 pattern EXPLORER_REPRESENTATIVE, EXPLORER_SHORT, EXPLORER_NO_ESCAPE, EXPLORER_MEDIUM, EXPLORER_TRAPPED, EXPLORER_AUTOMATED, EXPLORER_AUTOMATED_TRAPPED, EXPLORER_CAPTIVE, EXPLORER_PACIFIST, COMPETITOR_REPRESENTATIVE, COMPETITOR_SHORT, COMPETITOR_NO_ESCAPE, CIVILIAN_REPRESENTATIVE, CONVICT_REPRESENTATIVE, MONSTER_REPRESENTATIVE, MONSTER_ANTI, MONSTER_ANTI_CAPTIVE, MONSTER_ANTI_PACIFIST, MONSTER_TOURIST, MONSTER_TOURIST_PASSIVE, MONSTER_CAPTIVE, MONSTER_CAPTIVE_NARRATING, ANIMAL_REPRESENTATIVE, ANIMAL_MAGNIFICENT, ANIMAL_EXQUISITE, ANIMAL_CAPTIVE, ANIMAL_NARRATING, ANIMAL_MAGNIFICENT_NARRATING, ANIMAL_CAPTIVE_NARRATING, HORROR_REPRESENTATIVE, HORROR_CAPTIVE, HORROR_PACIFIST :: GroupName FactionKind
 
-pattern ROBOT_REPRESENTATIVE, ROBOT_CAPTIVE, OFF_WORLD_REPRESENTATIVE :: GroupName FactionKind
+pattern ROBOT_REPRESENTATIVE, ROBOT_CAPTIVE, ROBOT_NARRATING, OFF_WORLD_REPRESENTATIVE :: GroupName FactionKind
 
 groupNames :: [GroupName FactionKind]
-groupNames = [REPRESENTATIVE]
+groupNames = [REPRESENTATIVE, ANIMAL_OR_ROBOT_NARRATING]
 
 pattern REPRESENTATIVE :: GroupName FactionKind
+
+pattern ANIMAL_OR_ROBOT_NARRATING :: GroupName FactionKind
 
 pattern REPRESENTATIVE = GroupName "representative"
 pattern EXPLORER_REPRESENTATIVE = GroupName "explorer"
@@ -83,8 +86,11 @@ pattern HORROR_PACIFIST = GroupName "horror pacifist"
 
 -- ** Allure-specific
 
+pattern ANIMAL_OR_ROBOT_NARRATING = GroupName "animal or robot narrating"
+
 pattern ROBOT_REPRESENTATIVE = GroupName "robot"
 pattern ROBOT_CAPTIVE = GroupName "robot captive"
+pattern ROBOT_NARRATING = GroupName "robot narrating"
 pattern OFF_WORLD_REPRESENTATIVE = GroupName "off-world mercenary"
 
 -- * Teams
@@ -104,11 +110,11 @@ teamOther = TeamContinuity 10
 
 content :: [FactionKind]
 content = [factExplorer, factExplorerShort, factExplorerNoEscape, factExplorerMedium, factExplorerTrapped, factExplorerAutomated, factExplorerAutomatedTrapped, factExplorerCaptive, factExplorerPacifist, factCompetitor, factCompetitorShort, factCompetitorNoEscape, factCivilian, factConvict, factMonster, factMonsterAnti, factMonsterAntiCaptive, factMonsterAntiPacifist, factMonsterTourist, factMonsterTouristPassive, factMonsterCaptive, factMonsterCaptiveNarrating, factAnimal, factAnimalMagnificent, factAnimalExquisite, factAnimalCaptive, factAnimalNarrating, factAnimalMagnificentNarrating, factAnimalCaptiveNarrating, factHorror, factHorrorCaptive, factHorrorPacifist]
-  ++ [factRobot, factRobotCaptive, factOffWorld]
+  ++ [factRobot, factRobotCaptive, factRobotNarrating, factOffWorld]
 
 factExplorer,            factExplorerShort, factExplorerNoEscape, factExplorerMedium, factExplorerTrapped, factExplorerAutomated, factExplorerAutomatedTrapped, factExplorerCaptive, factExplorerPacifist, factCompetitor, factCompetitorShort, factCompetitorNoEscape, factCivilian, factConvict, factMonster, factMonsterAnti, factMonsterAntiCaptive, factMonsterAntiPacifist, factMonsterTourist, factMonsterTouristPassive, factMonsterCaptive, factMonsterCaptiveNarrating, factAnimal, factAnimalMagnificent, factAnimalExquisite, factAnimalCaptive, factAnimalNarrating, factAnimalMagnificentNarrating, factAnimalCaptiveNarrating, factHorror, factHorrorCaptive, factHorrorPacifist :: FactionKind
 
-factRobot, factRobotCaptive, factOffWorld :: FactionKind
+factRobot, factRobotCaptive, factRobotNarrating, factOffWorld :: FactionKind
 
 -- * Content
 
@@ -335,7 +341,7 @@ factAnimalCaptive = factAnimal
   , fneverEmpty = True
   }
 factAnimalNarrating = factAnimal
-  { ffreq = [(ANIMAL_NARRATING, 1)]
+  { ffreq = [(ANIMAL_NARRATING, 1), (ANIMAL_OR_ROBOT_NARRATING, 70)]
   , fhasUI = True
   }
 factAnimalMagnificentNarrating = factAnimalMagnificent
@@ -411,6 +417,10 @@ factRobot = FactionKind
 factRobotCaptive = factRobot
   { ffreq = [(ROBOT_CAPTIVE, 1)]
   , fneverEmpty = True
+  }
+factRobotNarrating = factRobot
+  { ffreq = [(ROBOT_NARRATING, 1), (ANIMAL_OR_ROBOT_NARRATING, 30)]
+  , fhasUI = True
   }
 
 -- ** teamOffWorld
