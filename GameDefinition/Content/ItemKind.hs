@@ -700,8 +700,7 @@ potion2 = potionTemplate
   , ifreq    = [(CRAWL_ITEM, 100), (ANY_GLASS, 50)]
   , icount   = 1
   , irarity  = [(5, 6), (10, 2)]
-  , iaspects = [ SetFlag Unique, ELabel "of Attraction", SetFlag MetaGame
-               , SetFlag Precious ]
+  , iaspects = [SetFlag Unique, ELabel "of Attraction", SetFlag MetaGame]
                ++ iaspects potionTemplate
   , ieffects = [ Dominate
                , toOrganGood S_HASTED (20 + 1 `d` 5)
@@ -769,8 +768,7 @@ potion8 = potionTemplate
   , ifreq    = [(CRAWL_ITEM, 100), (ANY_GLASS, 50)]
   , icount   = 1
   , irarity  = [(10, 5)]
-  , iaspects = [ SetFlag Unique, ELabel "of Love", SetFlag MetaGame
-               , SetFlag Precious ]
+  , iaspects = [SetFlag Unique, ELabel "of Love", SetFlag MetaGame]
                ++ iaspects potionTemplate
   , ieffects = [ RefillHP 60, RefillCalm (-60)
                , toOrganGood S_ROSE_SMELLING (80 + 1 `d` 20)
