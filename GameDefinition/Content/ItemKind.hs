@@ -478,7 +478,8 @@ flaskEmpty = flaskTemplate
   , irarity  = [(1, 8)]
   , iverbHit = "bang"
   , iweight  = 250
-  , iaspects = [SetFlag Lobable, SetFlag Fragile, toVelocity 60]
+  , iaspects = SetFlag MetaGame  -- weight gives it away after seen once
+               : iaspects flaskTemplate
   , idesc    = "The only redeeming quality of empty flasks is that they can be filled with any liquid."
   }
 flaskTemplate = ItemKind
@@ -699,9 +700,9 @@ potion2 = potionTemplate
   , ifreq    = [(CRAWL_ITEM, 100), (ANY_GLASS, 50)]
   , icount   = 1
   , irarity  = [(5, 6), (10, 2)]
-  , iaspects = [ SetFlag Unique, ELabel "of Attraction"
-               , SetFlag Precious, SetFlag Lobable, SetFlag Fragile
-               , toVelocity 50 ]  -- identified
+  , iaspects = [ SetFlag Unique, ELabel "of Attraction", SetFlag MetaGame
+               , SetFlag Precious ]
+               ++ iaspects potionTemplate
   , ieffects = [ Dominate
                , toOrganGood S_HASTED (20 + 1 `d` 5)
                , Recharge 20 999
@@ -768,9 +769,9 @@ potion8 = potionTemplate
   , ifreq    = [(CRAWL_ITEM, 100), (ANY_GLASS, 50)]
   , icount   = 1
   , irarity  = [(10, 5)]
-  , iaspects = [ SetFlag Unique, ELabel "of Love"
-               , SetFlag Precious, SetFlag Lobable, SetFlag Fragile
-               , toVelocity 50 ]  -- identified
+  , iaspects = [ SetFlag Unique, ELabel "of Love", SetFlag MetaGame
+               , SetFlag Precious ]
+               ++ iaspects potionTemplate
   , ieffects = [ RefillHP 60, RefillCalm (-60)
                , toOrganGood S_ROSE_SMELLING (80 + 1 `d` 20)
                , OnSmash (Explode S_HEALING_MIST_2)
@@ -2272,13 +2273,12 @@ hammerSpark = hammerTemplate  -- the only hammer with significantly heavier head
   { iname    = "The Grand Smithhammer"
   , ifreq    = [(TREASURE, 40), (BONDING_TOOL, 1), (MUSEAL, 100)]
   , irarity  = [(5, 1), (8, 6)]
-  , iweight  = 5000  -- weight and shape/damage gives it away; always identified
+  , iweight  = 5000
   , iaspects = [ SetFlag Unique
+               , SetFlag MetaGame  -- weight and shape/damage gives it away
                , Timeout 8  -- 1.5m handle and heavy, but unique
-               , AddSkill SkHurtMelee $ (-20 + 1 `dL` 10) * 5  -- 50--95
-               , EqpSlot EqpSlotWeaponBig
-               , SetFlag Durable, SetFlag Meleeable
-               , toVelocity 0 ]  -- totally unbalanced
+               , AddSkill SkHurtMelee $ (-20 + 1 `dL` 10) * 5 ]  -- 50--95
+               ++ iaspects hammerTemplate
   , ieffects = [ Explode S_SPARK
                    -- we can't use a focused explosion, because it would harm
                    -- the hammer wielder as well, unlike this one; it's already
