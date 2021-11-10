@@ -10,7 +10,7 @@ module Content.ItemKindActor
     pattern S_WOODEN_TORCH, pattern S_SANDSTONE_ROCK
   , pattern HERO, pattern SCOUT_HERO, pattern RANGER_HERO, pattern ESCAPIST_HERO, pattern AMBUSHER_HERO, pattern BRAWLER_HERO, pattern SOLDIER_HERO, pattern CIVILIAN, pattern MONSTER, pattern MOBILE_MONSTER, pattern SCOUT_MONSTER, pattern ANIMAL, pattern MOBILE_ANIMAL, pattern IMMOBILE_ANIMAL, pattern INSECT
   , pattern ADD_SIGHT, pattern ARMOR_RANGED, pattern ADD_NOCTO_1, pattern WEAK_ARROW, pattern LIGHT_ATTENUATOR, pattern FIREPROOF_CLOTH, pattern RING_OF_OPPORTUNITY_SNIPER, pattern ANY_ARROW, pattern STARTING_ARMOR, pattern STARTING_WEAPON, pattern GEM
-  , pattern CRAWL_HERO, pattern MERCENARY_HERO, pattern AQUATIC_ANIMAL, pattern AQUATIC_MONSTER, pattern EXPLOSIVE_MONSTER, pattern ROBOT, pattern MOBILE_ROBOT, pattern IMMOBILE_ROBOT, pattern CONSTRUCTION_ROBOT
+  , pattern CRAWL_HERO, pattern MERCENARY_HERO, pattern AQUATIC_ANIMAL, pattern AQUATIC_MONSTER, pattern EXPLOSIVE_MONSTER, pattern ROBOT, pattern MOBILE_ROBOT, pattern IMMOBILE_ROBOT, pattern CONSTRUCTION_ROBOT, pattern MECHANICAL_CONTRAPTION
   , pattern S_BULLTEPROOF_VEST, pattern S_PERFUME_POTION, pattern S_EMPTY_FLASK
   , pattern COOKED_FOOD, pattern MERCENARY_WEAPON, pattern MERCENARY_AMMO, pattern RAW_MEAT_CHUNK, pattern ROASTED_MEAT_CHUNK, pattern NEEDLE, pattern CAN_OF_STICKY_FOAM, pattern TRANQUILIZER_DART, pattern WASTE_CONTAINER, pattern CONSTRUCTION_HOOTER, pattern SPOTLIGHT, pattern BLOWTORCH, pattern POLE, pattern POLE_OR_HANDLE, pattern BREACHING_TOOL, pattern BONDING_TOOL, pattern SHARPENING_TOOL, pattern WIRECUTTING_TOOL
   , actorsGN, actorsGNSingleton
@@ -42,19 +42,19 @@ actorsGN :: [GroupName ItemKind]
 actorsGN =
        [HERO, SCOUT_HERO, RANGER_HERO, ESCAPIST_HERO, AMBUSHER_HERO, BRAWLER_HERO, SOLDIER_HERO, CIVILIAN, MONSTER, MOBILE_MONSTER, SCOUT_MONSTER, ANIMAL, MOBILE_ANIMAL, IMMOBILE_ANIMAL, INSECT]
     ++ [ADD_SIGHT, ARMOR_RANGED, ADD_NOCTO_1, WEAK_ARROW, LIGHT_ATTENUATOR, FIREPROOF_CLOTH, RING_OF_OPPORTUNITY_SNIPER, ANY_ARROW, STARTING_ARMOR, STARTING_WEAPON, GEM]
-    ++ [CRAWL_HERO, MERCENARY_HERO, AQUATIC_ANIMAL, AQUATIC_MONSTER, EXPLOSIVE_MONSTER, ROBOT, MOBILE_ROBOT, IMMOBILE_ROBOT, CONSTRUCTION_ROBOT]
+    ++ [CRAWL_HERO, MERCENARY_HERO, AQUATIC_ANIMAL, AQUATIC_MONSTER, EXPLOSIVE_MONSTER, ROBOT, MOBILE_ROBOT, IMMOBILE_ROBOT, CONSTRUCTION_ROBOT, MECHANICAL_CONTRAPTION]
     ++ [COOKED_FOOD, MERCENARY_WEAPON, MERCENARY_AMMO, RAW_MEAT_CHUNK, ROASTED_MEAT_CHUNK, NEEDLE, CAN_OF_STICKY_FOAM, TRANQUILIZER_DART, WASTE_CONTAINER, CONSTRUCTION_HOOTER, SPOTLIGHT, BLOWTORCH, POLE, POLE_OR_HANDLE, BREACHING_TOOL, BONDING_TOOL, SHARPENING_TOOL, WIRECUTTING_TOOL]
 
 pattern HERO, SCOUT_HERO, RANGER_HERO, ESCAPIST_HERO, AMBUSHER_HERO, BRAWLER_HERO, SOLDIER_HERO, CIVILIAN, MONSTER, MOBILE_MONSTER, SCOUT_MONSTER, ANIMAL, MOBILE_ANIMAL, IMMOBILE_ANIMAL, INSECT :: GroupName ItemKind
 
 pattern ADD_SIGHT, ARMOR_RANGED, ADD_NOCTO_1, WEAK_ARROW, LIGHT_ATTENUATOR, FIREPROOF_CLOTH, RING_OF_OPPORTUNITY_SNIPER, ANY_ARROW, STARTING_ARMOR, STARTING_WEAPON, GEM :: GroupName ItemKind
 
-pattern CRAWL_HERO, MERCENARY_HERO, AQUATIC_ANIMAL, AQUATIC_MONSTER, EXPLOSIVE_MONSTER, ROBOT, MOBILE_ROBOT, IMMOBILE_ROBOT, CONSTRUCTION_ROBOT :: GroupName ItemKind
+pattern CRAWL_HERO, MERCENARY_HERO, AQUATIC_ANIMAL, AQUATIC_MONSTER, EXPLOSIVE_MONSTER, ROBOT, MOBILE_ROBOT, IMMOBILE_ROBOT, CONSTRUCTION_ROBOT, MECHANICAL_CONTRAPTION :: GroupName ItemKind
 
 pattern COOKED_FOOD, MERCENARY_WEAPON, MERCENARY_AMMO, RAW_MEAT_CHUNK, ROASTED_MEAT_CHUNK, NEEDLE, CAN_OF_STICKY_FOAM, TRANQUILIZER_DART, WASTE_CONTAINER, CONSTRUCTION_HOOTER, SPOTLIGHT, BLOWTORCH, POLE, POLE_OR_HANDLE, BREACHING_TOOL, BONDING_TOOL, SHARPENING_TOOL, WIRECUTTING_TOOL :: GroupName ItemKind
 
 -- ** Common
-pattern HERO = GroupName "adventurers"
+pattern HERO = GroupName "adventurer"
 pattern SCOUT_HERO = GroupName "scout"
 pattern RANGER_HERO = GroupName "ranger"
 pattern ESCAPIST_HERO = GroupName "escapist"
@@ -80,6 +80,7 @@ pattern ROBOT = GroupName "robot"
 pattern MOBILE_ROBOT = GroupName "mobile robot"
 pattern IMMOBILE_ROBOT = GroupName "immobile robot"
 pattern CONSTRUCTION_ROBOT = GroupName "construction robot"
+pattern MECHANICAL_CONTRAPTION = GroupName "mechanical contraption"
 
 -- ** Common
 pattern S_WOODEN_TORCH = GroupName "wooden torch"
@@ -847,7 +848,7 @@ thornbush = ItemKind  -- the wimpiest kind of early tank
 razorwireFence = ItemKind
   { isymbol  = toContentSymbol 'f'
   , iname    = "razorwire fence"
-  , ifreq    = [(ROBOT, 15), (IMMOBILE_ROBOT, 10)]
+  , ifreq    = [(ROBOT, 15), (IMMOBILE_ROBOT, 10), (MECHANICAL_CONTRAPTION, 1)]
   , iflavour = zipPlain [Cyan]
   , icount   = 1
   , irarity  = [(3 * 10/15, 0), (4 * 10/15, 20), (10, 4)]
@@ -866,7 +867,7 @@ razorwireFence = ItemKind
 electricFence = ItemKind
   { isymbol  = toContentSymbol 'f'
   , iname    = "electric fence"
-  , ifreq    = [(ROBOT, 40), (IMMOBILE_ROBOT, 10)]
+  , ifreq    = [(ROBOT, 40), (IMMOBILE_ROBOT, 10), (MECHANICAL_CONTRAPTION, 1)]
   , iflavour = zipPlain [Blue]
   , icount   = 1
   , irarity  = [(3 * 10/15, 0), (4 * 10/15, 10), (10, 10), (20, 10)]
@@ -886,7 +887,7 @@ electricFence = ItemKind
 activeFence = ItemKind
   { isymbol  = toContentSymbol 'f'
   , iname    = "active fence"
-  , ifreq    = [(ROBOT, 30), (IMMOBILE_ROBOT, 20)]
+  , ifreq    = [(ROBOT, 30), (IMMOBILE_ROBOT, 20), (MECHANICAL_CONTRAPTION, 1)]
   , iflavour = zipPlain [BrMagenta]
   , icount   = 1
   , irarity  = [(5 * 10/15, 0), (10, 7), (20, 10)]
@@ -910,7 +911,7 @@ activeFence = ItemKind
 steamFaucet = ItemKind
   { isymbol  = toContentSymbol 'f'
   , iname    = "steam faucet"
-  , ifreq    = [(ROBOT, 8), (IMMOBILE_ROBOT, 15)]
+  , ifreq    = [(ROBOT, 8), (IMMOBILE_ROBOT, 15), (MECHANICAL_CONTRAPTION, 1)]
   , iflavour = zipPlain [BrGreen]
   , icount   = 1
   , irarity  = [(1, 10), (10, 6)]
@@ -928,7 +929,7 @@ steamFaucet = ItemKind
 coolingFaucet = ItemKind
   { isymbol  = toContentSymbol 'f'
   , iname    = "cooling faucet"
-  , ifreq    = [(ROBOT, 8), (IMMOBILE_ROBOT, 15)]
+  , ifreq    = [(ROBOT, 8), (IMMOBILE_ROBOT, 15), (MECHANICAL_CONTRAPTION, 1)]
   , iflavour = zipPlain [BrBlue]
   , icount   = 1
   , irarity  = [(1, 10), (10, 6)]
@@ -946,7 +947,7 @@ coolingFaucet = ItemKind
 medbotFaucet = ItemKind
   { isymbol  = toContentSymbol 'f'
   , iname    = "nano medbot faucet"
-  , ifreq    = [(ROBOT, 10), (IMMOBILE_ROBOT, 100)]
+  , ifreq    = [(ROBOT, 10), (IMMOBILE_ROBOT, 100), (MECHANICAL_CONTRAPTION, 1)]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , irarity  = [(1, 10), (10, 6)]
@@ -965,7 +966,8 @@ dustFaucet = ItemKind
   { isymbol  = toContentSymbol 'f'
   , iname    = "dust faucet"
   , ifreq    = [ (ROBOT, 4)  -- usually nothing to ignite
-               , (IMMOBILE_ROBOT, 30) ]  -- except when other faucets around
+               , (IMMOBILE_ROBOT, 30)  -- except when other faucets around
+               , (MECHANICAL_CONTRAPTION, 1) ]
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
   , irarity  = [(3, 20), (10, 6)]
@@ -983,8 +985,8 @@ dustFaucet = ItemKind
 fuelFaucet = ItemKind
   { isymbol  = toContentSymbol 'f'
   , iname    = "burning fuel faucet"
-  , ifreq    = [(ROBOT, 30)]
-      -- common not in outermost level, but in the dungeon, because it's
+  , ifreq    = [(ROBOT, 30), (MECHANICAL_CONTRAPTION, 1)]
+      -- common not in outermost level but in the dungeon, because it's
       -- self-contained, providing both fuel and ignition
   , iflavour = zipPlain [BrRed]
   , icount   = 1

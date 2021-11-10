@@ -25,7 +25,6 @@ import Prelude ()
 import Game.LambdaHack.Core.Prelude
 
 import           Content.ItemKindActor
-import           Content.ItemKindOrgan
 import           Game.LambdaHack.Content.FactionKind
 import qualified Game.LambdaHack.Content.ItemKind as IK
 import           Game.LambdaHack.Definition.Ability
@@ -124,7 +123,7 @@ factExplorer = FactionKind
   { fname = "Spacefarer"
   , ffreq = [(EXPLORER_REPRESENTATIVE, 1), (REPRESENTATIVE, 1)]
   , fteam = teamExplorer
-  , fgroups = [HERO]
+  , fgroups = [HERO]  -- don't spam the escapists, etc.
   , fskillsOther = meleeAdjacent
   , fcanEscape = True
   , fneverEmpty = True
@@ -237,7 +236,7 @@ factMonster = FactionKind
   { fname = "Alien Hierarchy"
   , ffreq = [(MONSTER_REPRESENTATIVE, 1), (REPRESENTATIVE, 1)]
   , fteam = teamMonster
-  , fgroups = [MONSTER, MOBILE_MONSTER, AQUATIC_MONSTER]
+  , fgroups = [MONSTER]  -- don't spam
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False
@@ -300,8 +299,7 @@ factAnimal = FactionKind
   { fname = "Animal Kingdom"
   , ffreq = [(ANIMAL_REPRESENTATIVE, 1), (REPRESENTATIVE, 1)]
   , fteam = teamAnimal
-  , fgroups = [ ANIMAL, MOBILE_ANIMAL, IMMOBILE_ANIMAL, AQUATIC_ANIMAL
-              , SCAVENGER ]
+  , fgroups = [ANIMAL, AQUATIC_ANIMAL, INSECT]  -- only the mildly distinct ones
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False
@@ -398,8 +396,7 @@ factRobot = FactionKind
   { fname = "Robot Anarchy"
   , ffreq = [(ROBOT_REPRESENTATIVE, 1), (REPRESENTATIVE, 1)]
   , fteam = teamRobot
-  , fgroups = [ ROBOT, MOBILE_ROBOT, IMMOBILE_ROBOT  --, "aquatic robot"
-              , CONSTRUCTION_ROBOT ]
+  , fgroups = [ROBOT, MECHANICAL_CONTRAPTION]
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False
