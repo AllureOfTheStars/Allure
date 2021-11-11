@@ -127,7 +127,7 @@ rogue = CaveKind
   , cfenceTileS   = S_BASIC_OUTER_FENCE
   , cfenceTileW   = HABITAT_CONTAINMENT_WALL
   , cfenceApart   = False
-  , cminStairDist = 30
+  , cminStairDist = 15  -- to help Casino stay small
   , cmaxStairsNum = 2 + 1 `d` 2
   , cescapeFreq   = []
   , cstairFreq    = [ (WALLED_LIFT, 50), (OPEN_LIFT, 50)
@@ -303,7 +303,6 @@ noise = rogue
   , cfenceApart   = True  -- ensures no cut-off parts from collapsed
   , cdarkCorTile  = DAMP_FLOOR_DARK
   , clitCorTile   = DAMP_FLOOR_LIT
-  , cminStairDist = 15
   , cmaxStairsNum = 1
   , cstairFreq    = [ (CLOSED_LIFT, 50), (OPEN_LIFT, 50)
                     , (TINY_LIFT, 1) ]
@@ -407,6 +406,7 @@ outermost = empty
   , cfenceTileE   = HABITAT_CONTAINMENT_WALL
   , cfenceTileS   = EMPTY_AIRLOCK_FENCE
   , cfenceTileW   = HABITAT_CONTAINMENT_WALL
+  , cminStairDist = 30
   , cmaxStairsNum = 2
   , cdesc         = "This is as far as one can go \"down\". The void outside sucks light through the oriel and airlock glass in the walls and floor of this outermost level. Each minute, the dusky melancholic light of the distant Sun attempts for a few seconds to squeeze in but is repelled by artificial lighting.\nThe mucky floor marked by unkempt greenery looks misleadingly straight, its curvature noticeable only across the whole extent of the hull section. Overflowing water basins and series of hanging and stacked tanks double as radiation shields. Hoses writhe on the ground and dangle in thick knots from the ceiling. With proper tools, some of the containers could be opened and working spaces productively employed. There is no junk is space.\nThis deck is the main pressurized cargo bay and storage, with the only other docking hub for small craft located among the giant spaceship's upper levels. Somewhere here must be the airlock you docked your shuttle to and stacked your supplies against."
       -- E and W sides are borders with other level sections, so no oriels.
@@ -450,7 +450,6 @@ shallowRogue = rogue
   , citemNum      = 14 `d` 2
   , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.CRAWL_ITEM, 60)
                     , (GARDENING_TOOL, 700), (IK.ANY_FLASK, 200) ]
-  , cminStairDist = 15
   , cmaxStairsNum = 2
   , cskip         = [0, 1]  -- ban foes camping on either stairs
   , cdesc         = "This close to the outermost deck, residence is not permitted and walls and doors are sturdier to contain a theoretically possible micro-meteorite breach. The entry is not closed off, though, because some passengers can't live without a regular pilgrimage to 'look outside' and the only way to the bottom-most level leads through here. Apparently, gazing at the sharp pin-points of stars and planets through the reinforced oriel glass is incomparable to watching the same through the thin polymer of wall displays.\nAnimals appear to share the fascination of outer decks, perhaps attracted by the increased gravity, nearly Earth-like, unlike elsewhere on the ship. However, they dislike many industrial fluids stored on these floors, so flinging random flasks at them works as an effective deterrent. Moreover, if you throw an unidentified flask, you can be sure you won't waste a badly needed nano medicine, because it's never stored in such large containers. Even tiny vials cost a fortune."
