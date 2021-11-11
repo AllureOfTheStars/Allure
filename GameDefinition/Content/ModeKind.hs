@@ -535,7 +535,7 @@ rosterCrawl =
     , [ (2, 5, ANIMAL)
       , (3, 4, ANIMAL)
       , -- Optional huge battle at the end:
-        (15, 100, MOBILE_ANIMAL) ] )
+        (16, 100, MOBILE_ANIMAL) ] )
   , ( ROBOT_REPRESENTATIVE
     , [(2, 4, ROBOT)] ) ]
 
@@ -588,7 +588,7 @@ rosterSafari =
   , ( ANIMAL_MAGNIFICENT
     , [(10, 15, MOBILE_ANIMAL)] )
   , ( ANIMAL_EXQUISITE  -- start on escape
-    , [(15, 20, MOBILE_ANIMAL)] )
+    , [(16, 20, MOBILE_ANIMAL)] )
   , (HORROR_REPRESENTATIVE, []) ]
       -- construction hooter; neutral
 
@@ -615,7 +615,7 @@ rosterSafariSurvival =
   , ( ANIMAL_MAGNIFICENT_NARRATING
     , [(10, 20, MOBILE_ANIMAL)] )
   , ( ANIMAL_EXQUISITE
-    , [(15, 30, MOBILE_ANIMAL)] )
+    , [(16, 30, MOBILE_ANIMAL)] )
   , (HORROR_REPRESENTATIVE, []) ]
 
 rosterBattle =
@@ -657,7 +657,7 @@ rosterDefense =
     , -- Fun from the start to avoid empty initial level:
       [ (3, 5 + 1 `d` 2, ANIMAL)  -- many, because no spawning
       -- Optional huge battle at the end:
-      , (15, 100, MOBILE_ANIMAL) ] )
+      , (16, 100, MOBILE_ANIMAL) ] )
   , ( ROBOT_REPRESENTATIVE
     , [] ) ]
 
@@ -679,13 +679,13 @@ listCrawl =
   , ([2], [CAVE_SHALLOW_ROGUE])
   , ([3], [CAVE_BRIDGE])
   , ([4], [CAVE_NOISE])
-  , ([7, 6, 5], [CAVE_ROGUE, CAVE_ARENA, CAVE_RESIDENTIAL])
+  , ([8, 7, 6, 5], [DEFAULT_RANDOM, CAVE_ROGUE, CAVE_ARENA, CAVE_RESIDENTIAL])
        -- reversed order, to match @reverse@ later on
-  , ([8], [CAVE_LABORATORY])
-  , ([11, 10, 9], [DEFAULT_RANDOM, DEFAULT_RANDOM, CAVE_MUSEUM])
-  , ([12], [CAVE_EXIT])
-  , ([14, 13], [DEFAULT_RANDOM, CAVE_CASINO])
-  , ([15], [CAVE_POWER]) ]
+  , ([9], [CAVE_LABORATORY])
+  , ([12, 11, 10], [DEFAULT_RANDOM, DEFAULT_RANDOM, CAVE_MUSEUM])
+  , ([13], [CAVE_EXIT])
+  , ([15, 14], [DEFAULT_RANDOM, CAVE_CASINO])
+  , ([16], [CAVE_POWER]) ]
 
 cavesCrawl = reverse listCrawl
 
@@ -701,12 +701,12 @@ cavesAmbush = [([9], [CAVE_AMBUSH])]
 
 cavesSafari = reverse [ ([5], [CAVE_SAFARI_1])
                       , ([10], [CAVE_SAFARI_2])
-                      , ([15], [CAVE_SAFARI_3]) ]
+                      , ([16], [CAVE_SAFARI_3]) ]
 
 cavesDig =
   reverse $ concat
   $ zipWith (map . renumberCaves)
-            [0, 15 ..]
+            [0, 16 ..]
             (replicate 100 listCrawl)
 --            [0, 2 ..]
 --            (replicate 100 [([1], [CAVE_OUTERMOST]),([2], [CAVE_EXIT])])
