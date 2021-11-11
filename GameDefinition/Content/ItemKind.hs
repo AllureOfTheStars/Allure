@@ -363,11 +363,11 @@ harpoon3 = harpoon
   , ifreq    = [(TREASURE, 15), (MUSEAL, 50)]
   , iflavour = zipFancy [Red]
   , irarity  = [(8, 4)]
-  , idamage  = 7 `d` 1
-  , iaspects = SetFlag Unique : iaspects harpoon
+  , idamage  = 21 `d` 1
+  , iaspects = SetFlag Unique : delete (SetFlag Durable) (iaspects harpoon)
   , ieffects = Yell  -- evoke a cry from pain; brutal
                : ieffects harpoon
-  , idesc    = "A display piece harking back to the Earth's oceanic tourism heyday. Surprising sharp for its age. The cruel, barbed head lodges in its victim so painfully that the weakest tug of the rope sends the victim flying."
+  , idesc    = "A display piece harking back to the Earth's oceanic tourism heyday. The age has made the edge thinner and sharper, but brittle and splintering, so it won't last beyond a single hit. The cruel, barbed head lodges in its victim so painfully that the weakest tug of the rope sends the victim flying."
   }
 net = ItemKind
   { isymbol  = symbolProjectile
