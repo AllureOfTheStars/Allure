@@ -537,7 +537,9 @@ rosterCrawl =
       , -- Optional huge battle at the end:
         (16, 100, MOBILE_ANIMAL) ] )
   , ( ROBOT_REPRESENTATIVE
-    , [(2, 4, ROBOT)] ) ]
+    , [(2, 4, ROBOT)] )
+  , ( ROBOT_VIRUS
+    , [] ) ]
 
 -- Exactly one scout gets a sight boost, to help the aggressor, because he uses
 -- the scout for initial attack, while camper (on big enough maps)
@@ -562,7 +564,7 @@ rosterEscape =
     , [(7, 6, AMBUSHER_HERO), (7, 1, SCOUT_HERO)] )
   , ( EXPLORER_MEDIUM
     , [(7, 2, ESCAPIST_HERO), (7, 1, SCOUT_HERO)] )
-      -- second on the list to let bros occupy the exit
+      -- second on the list to let the bros occupy the exit
   , (HORROR_REPRESENTATIVE, []) ]
 
 rosterZoo =
@@ -679,7 +681,7 @@ listCrawl =
   , ([2], [CAVE_SHALLOW_ROGUE])
   , ([3], [CAVE_BRIDGE])
   , ([4], [CAVE_NOISE])
-  , ([8, 7, 6, 5], [DEFAULT_RANDOM, CAVE_ROGUE, CAVE_ARENA, CAVE_RESIDENTIAL])
+  , ([8, 7, 6, 5], [CAVE_VIRUS, CAVE_ROGUE, CAVE_ARENA, CAVE_RESIDENTIAL])
        -- reversed order, to match @reverse@ later on
   , ([9], [CAVE_LABORATORY])
   , ([12, 11, 10], [DEFAULT_RANDOM, DEFAULT_RANDOM, CAVE_MUSEUM])
@@ -728,8 +730,8 @@ allCaves =
   [ CAVE_RAID, CAVE_BRAWL, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_ESCAPE, CAVE_ZOO
   , CAVE_AMBUSH
   , CAVE_OUTERMOST, CAVE_SHALLOW_ROGUE, CAVE_BRIDGE, CAVE_NOISE, CAVE_ROGUE
-  , CAVE_ARENA, CAVE_RESIDENTIAL, CAVE_LABORATORY, CAVE_MUSEUM, CAVE_EXIT
-  , CAVE_CASINO, CAVE_POWER ]
+  , CAVE_ARENA, CAVE_RESIDENTIAL, CAVE_VIRUS, CAVE_LABORATORY, CAVE_MUSEUM
+  , CAVE_EXIT, CAVE_CASINO, CAVE_POWER ]
 
 cavesCrawlEmpty = reverse $
   map (\(ns, grps) ->

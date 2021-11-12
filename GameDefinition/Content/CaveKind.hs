@@ -9,7 +9,7 @@
 module Content.CaveKind
   ( -- * Group name patterns
     pattern CAVE_ROGUE, pattern CAVE_ARENA, pattern CAVE_LABORATORY, pattern CAVE_NOISE, pattern CAVE_SHALLOW_ROGUE, pattern CAVE_OUTERMOST, pattern CAVE_RAID, pattern CAVE_BRAWL, pattern CAVE_BRAWL_ALT, pattern CAVE_SHOOTOUT, pattern CAVE_HUNT, pattern CAVE_ESCAPE, pattern CAVE_ZOO, pattern CAVE_AMBUSH, pattern CAVE_BATTLE, pattern CAVE_SAFARI_1, pattern CAVE_SAFARI_2, pattern CAVE_SAFARI_3
-  , pattern CAVE_BRIDGE, pattern CAVE_RESIDENTIAL, pattern CAVE_MUSEUM, pattern CAVE_EXIT, pattern CAVE_CASINO, pattern CAVE_POWER
+  , pattern CAVE_BRIDGE, pattern CAVE_VIRUS, pattern CAVE_RESIDENTIAL, pattern CAVE_MUSEUM, pattern CAVE_EXIT, pattern CAVE_CASINO, pattern CAVE_POWER
   , groupNamesSingleton, groupNames
   , -- * Content
     content
@@ -44,11 +44,11 @@ groupNamesSingleton = []
 groupNames :: [GroupName CaveKind]
 groupNames =
        [CAVE_ROGUE, CAVE_ARENA, CAVE_LABORATORY, CAVE_NOISE, CAVE_SHALLOW_ROGUE, CAVE_OUTERMOST, CAVE_RAID, CAVE_BRAWL, CAVE_BRAWL_ALT, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_ESCAPE, CAVE_ZOO, CAVE_AMBUSH, CAVE_BATTLE, CAVE_SAFARI_1, CAVE_SAFARI_2, CAVE_SAFARI_3]
-    ++ [CAVE_BRIDGE, CAVE_RESIDENTIAL, CAVE_MUSEUM, CAVE_EXIT, CAVE_CASINO, CAVE_POWER]
+    ++ [CAVE_BRIDGE, CAVE_VIRUS, CAVE_RESIDENTIAL, CAVE_MUSEUM, CAVE_EXIT, CAVE_CASINO, CAVE_POWER]
 
 pattern CAVE_ROGUE, CAVE_ARENA, CAVE_LABORATORY, CAVE_NOISE, CAVE_SHALLOW_ROGUE, CAVE_OUTERMOST, CAVE_RAID, CAVE_BRAWL, CAVE_BRAWL_ALT, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_ESCAPE, CAVE_ZOO, CAVE_AMBUSH, CAVE_BATTLE, CAVE_SAFARI_1, CAVE_SAFARI_2, CAVE_SAFARI_3 :: GroupName CaveKind
 
-pattern CAVE_BRIDGE, CAVE_RESIDENTIAL, CAVE_MUSEUM, CAVE_EXIT, CAVE_CASINO, CAVE_POWER :: GroupName CaveKind
+pattern CAVE_BRIDGE, CAVE_VIRUS, CAVE_RESIDENTIAL, CAVE_MUSEUM, CAVE_EXIT, CAVE_CASINO, CAVE_POWER :: GroupName CaveKind
 
 pattern CAVE_ROGUE = GroupName "caveRogue"
 pattern CAVE_ARENA = GroupName "caveArena"
@@ -71,6 +71,7 @@ pattern CAVE_SAFARI_3 = GroupName "caveSafari3"
 
 -- ** Allure-specific
 pattern CAVE_BRIDGE = GroupName "caveBridge"
+pattern CAVE_VIRUS = GroupName "caveVirus"
 pattern CAVE_RESIDENTIAL = GroupName "caveResidential"
 pattern CAVE_MUSEUM = GroupName "caveMuseum"
 pattern CAVE_EXIT = GroupName "caveExit"
@@ -81,9 +82,9 @@ pattern CAVE_POWER = GroupName "cavePower"
 
 content :: [CaveKind]
 content =
-  [rogue, residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, raid, brawl, brawlAlt, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3]
+  [rogue, residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, virus, raid, brawl, brawlAlt, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3]
 
-rogue,    residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, raid, brawl, brawlAlt, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
+rogue,    residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, virus, raid, brawl, brawlAlt, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
 
 -- * On-ship "caves", that is, decks, most of mediocre height and size
 
@@ -453,6 +454,41 @@ shallowRogue = rogue
   , cmaxStairsNum = 2
   , cskip         = [0, 1]  -- ban foes camping on either stairs
   , cdesc         = "This close to the outermost deck, residence is not permitted and walls and doors are sturdier to contain a theoretically possible micro-meteorite breach. The entry is not closed off, though, because some passengers can't live without a regular pilgrimage to 'look outside' and the only way to the bottom-most level leads through here. Apparently, gazing at the sharp pin-points of stars and planets through the reinforced oriel glass is incomparable to watching the same through the thin polymer of wall displays.\nAnimals appear to share the fascination of outer decks, perhaps attracted by the increased gravity, nearly Earth-like, unlike elsewhere on the ship. However, they dislike many industrial fluids stored on these floors, so flinging random flasks at them works as an effective deterrent. Moreover, if you throw an unidentified flask, you can be sure you won't waste a badly needed nano medicine, because it's never stored in such large containers. Even tiny vials cost a fortune."
+  }
+virus = rogue
+  { cname         = "Machinarium"
+  , cfreq         = [(CAVE_VIRUS, 1)]
+  , cXminSize     = 17
+  , cYminSize     = 15
+  , ccellSize     = DiceXY 4 4
+  , cminPlaceSize = DiceXY 2 2
+  , cmaxPlaceSize = DiceXY 3 3
+  , cdarkOdds     = 51  -- all rooms dark
+  , cnightOdds    = 51  -- always night
+  , cauxConnects  = 0
+  , cmaxVoid      = 0
+  , cdoorChance   = 0  -- openings in solid rooms are fine, because rooms tiny
+  , chidden       = 0
+  , cactorCoeff   = 4  -- fast spawning
+  , cactorFreq    = [(MOBILE_ROBOT, 100)]  -- fast action, so let them come
+  , citemNum      = 16 `d` 2
+  , citemFreq     = [(IK.COMMON_ITEM, 70), (IK.CRAWL_ITEM, 30)]
+  , cplaceFreq    = [(VIRUS, 1)]
+  , cpassable     = True
+  , labyrinth     = True  -- don't let aliens explore and farm the robots
+  , cdefTile      = VIRUS_SET_DARK
+  , cdarkCorTile  = OILY_FLOOR_DARK
+  , clitCorTile   = OILY_FLOOR_LIT
+  , cwallTile     = OPENABLE_WALL
+  , cfenceTileN   = HABITAT_CONTAINMENT_WALL  -- small cave
+  , cfenceTileE   = HABITAT_CONTAINMENT_WALL
+  , cfenceTileS   = HABITAT_CONTAINMENT_WALL
+  , cfenceTileW   = HABITAT_CONTAINMENT_WALL
+  , cfenceApart   = True  -- ensures no cut-off parts from collapsed
+  , cmaxStairsNum = 1
+  , cstairFreq    = [(TINY_LIFT, 1)]
+  , cstairAllowed = [(TINY_STAIRCASE, 1)]
+  , cdesc         = "The hall surrounded by automated warehouses is where ship's robots are repaired, decommissioned, stored and recycled. This one has been completely cut off from the vessel's network and even lights are out. And yet, the hot darkness smelling of ozone carries echos of arcing and clanking all around."
   }
 
 -- * "Caves" on various celestial bodies (including, but not limited to, moons,
