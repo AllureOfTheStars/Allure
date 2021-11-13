@@ -199,6 +199,7 @@ casino = arena
   , cfreq         = [(CAVE_CASINO, 1)]
   , cXminSize     = 21
   , cYminSize     = 21
+  , ccellSize     = DiceXY 19 (1 `d` 3 + 5)
   , cdarkOdds     = 41 + 1 `d` 10  -- almost all rooms lit (1 in 10 dark)
   -- Trails provide enough light for fun stealth, though level too small.
   , cnightOdds    = 51  -- always night
@@ -222,6 +223,7 @@ museum = arena
   , cfreq         = [(CAVE_MUSEUM, 1)]
   , cXminSize     = 25
   , cYminSize     = 25
+  , ccellSize     = DiceXY 23 (1 `d` 3 + 5)
   , cdarkOdds     = 41 + 1 `d` 10  -- almost all rooms lit (1 in 10 dark)
   -- Trails provide enough light for fun stealth, though level too small.
   , cnightOdds    = 51  -- always night
