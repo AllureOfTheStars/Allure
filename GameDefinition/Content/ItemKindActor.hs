@@ -172,20 +172,21 @@ warrior = ItemKind
                , AddSkill SkOdor 1
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "A human equipped for an adventure."
   , ikit     = humanOrgans
                ++ [ (GENETIC_FLAW_10, COrgan)
-                  , (S_EMPTY_FLASK, CStash), (COMMON_ITEM, CStash) ]
+                  , (S_EMPTY_FLASK, CStash)
+                  , (COMMON_ITEM, CStash) ]
+  , idesc    = "A human equipped for an adventure."
   }
 warrior2 = warrior
   { ifreq    = [(CRAWL_HERO, 100), (MOBILE, 1)]
   , ikit     = humanOrgans
                ++ [ (GENETIC_FLAW_10, COrgan)
-                  , (S_EMPTY_FLASK, CStash), (COOKED_FOOD, CStash) ]
+                  , (S_EMPTY_FLASK, CStash)
+                  , (COOKED_FOOD, CStash) ]
   }
 raider = warrior
-  { iname    = "raider"
-  , ifreq    = [(RAIDER_HERO, 100), (MOBILE, 1)]
+  { ifreq    = [(RAIDER_HERO, 100), (MOBILE, 1)]
   , ikit     = humanOrgans
                ++ [ (GENETIC_FLAW_10, COrgan)
                   , (ARMOR_RANGED, CEqp)
@@ -193,8 +194,7 @@ raider = warrior
   , idesc    = "A human equipped for a raid."
   }
 scout = warrior
-  { iname    = "scout"
-  , ifreq    = [(SCOUT_HERO, 100), (MOBILE, 1)]
+  { ifreq    = [(SCOUT_HERO, 100), (MOBILE, 1)]
   , ikit     = humanOrgans  -- no flaw
                ++ [ (ADD_SIGHT, CEqp)
                   , (ARMOR_RANGED, CEqp)
@@ -202,16 +202,14 @@ scout = warrior
   , idesc    = "A human equipped for scouting."
   }
 ranger = warrior
-  { iname    = "ranger"
-  , ifreq    = [(RANGER_HERO, 100), (MOBILE, 1)]
+  { ifreq    = [(RANGER_HERO, 100), (MOBILE, 1)]
   , ikit     = humanOrgans  -- no flaw
                ++ [ (ARMOR_RANGED, CEqp)
                   , (WEAK_ARROW, CStash) ]
   , idesc    = "A human equipped for ranged fight."
   }
 escapist = warrior
-  { iname    = "escapist"
-  , ifreq    = [(ESCAPIST_HERO, 100), (MOBILE, 1)]
+  { ifreq    = [(ESCAPIST_HERO, 100), (MOBILE, 1)]
   , ikit     = humanOrgans  -- no flaw
                ++ [ (ADD_SIGHT, CEqp)
                   , (STARTING_ARMOR, CEqp)
@@ -222,8 +220,7 @@ escapist = warrior
   , idesc    = "A human equipped for an escape."
   }
 ambusher = warrior
-  { iname    = "ambusher"
-  , ifreq    = [(AMBUSHER_HERO, 100), (MOBILE, 1)]
+  { ifreq    = [(AMBUSHER_HERO, 100), (MOBILE, 1)]
   , ikit     = humanOrgans  -- dark and numerous, so more kit without exploring
                ++ [ (RING_OF_OPPORTUNITY_SNIPER, CEqp)
                   , (ANY_ARROW, CStash), (ANY_ARROW, CStash)
@@ -234,22 +231,21 @@ ambusher = warrior
   , idesc    = "A human equipped for an ambush."
   }
 brawler = warrior
-  { iname    = "brawler"
-  , ifreq    = [(BRAWLER_HERO, 100), (MOBILE, 1)]
+  { ifreq    = [(BRAWLER_HERO, 100), (MOBILE, 1)]
   , ikit     = humanOrgans  -- no flaw
                ++ [ (STARTING_WEAPON, CEqp)
                   , (ANY_POTION, CStash) ]
   , idesc    = "A human equipped for melee fight."
   }
 fighter = brawler
-  { iname    = "fighter"
-  , ifreq    = [(SOLDIER_HERO, 100), (MOBILE, 1)]
+  { ifreq    = [(SOLDIER_HERO, 100), (MOBILE, 1)]
   , ikit     = ikit brawler
-               ++ [(STARTING_WEAPON, CEqp), (EXPLOSIVE, CStash)]
+               ++ [ (STARTING_WEAPON, CEqp)
+                  , (EXPLOSIVE, CStash) ]
   , idesc    = "A human equipped for intense combat."
   }
 mercenary = brawler
-  { iname    = "mercenary"
+  { iname    = "mercenary"  -- different name, because a very distinct faction
   , ifreq    = [(MERCENARY_HERO, 100), (MOBILE, 1)]
   , ikit     = humanOrgans  -- no flaw
                ++ [ (MERCENARY_WEAPON, CEqp)
