@@ -237,7 +237,8 @@ brawler = warrior
   { iname    = "brawler"
   , ifreq    = [(BRAWLER_HERO, 100), (MOBILE, 1)]
   , ikit     = humanOrgans  -- no flaw
-               ++ [(STARTING_WEAPON, CEqp)]
+               ++ [ (STARTING_WEAPON, CEqp)
+                  , (ANY_POTION, CStash) ]
   , idesc    = "A human equipped for melee fight."
   }
 fighter = brawler
