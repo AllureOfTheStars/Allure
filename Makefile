@@ -44,6 +44,9 @@ create-gif :
 	find ~/.Allure/screenshots/ -name 'prtscn*.bmp' -print0 | xargs -0 -r mogrify -format gif
 	../gifsicle/src/gifsicle -O3 --careful -d2 --colors 255 --no-extensions --no-conserve-memory -l ~/.Allure/screenshots/prtscn*.gif -o ~/.Allure/screenshots/screenshot.gif
 
+frontendGauntlet:
+	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --savePrefix test --newGame 3 --dumpInitRngs --automateAll --gameMode gauntlet --benchMessages --exposeActors
+
 frontendRaid:
 	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --savePrefix test --newGame 5 --dumpInitRngs --automateAll --gameMode raid --benchMessages --exposeActors
 
@@ -164,7 +167,7 @@ test-gha: test testCrawl-medium testCrawl-stopAfterGameOver testDefense-medium t
 
 test-short: test-short-new test-short-load
 
-test-medium: testRaid-medium testBrawl-medium testShootout-medium testHunt-medium testEscape-medium testZoo-medium testAmbush-medium testCrawlEmpty-medium testCrawl-medium-know testSafari-medium testSafariSurvival-medium testBattle-medium testBattleDefense-medium testBattleSurvival-medium testDig-medium testDefenseEmpty-medium testMany-teletype
+test-medium: testGauntlet-medium testRaid-medium testBrawl-medium testShootout-medium testHunt-medium testEscape-medium testZoo-medium testAmbush-medium testCrawlEmpty-medium testCrawl-medium-know testSafari-medium testSafariSurvival-medium testBattle-medium testBattleDefense-medium testBattleSurvival-medium testDig-medium testDefenseEmpty-medium testMany-teletype
 
 test-sniff:
 	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --newGame 5 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterFrames 1  --dumpInitRngs --automateAll --keepAutomated --gameMode raid --sniff > /tmp/teletypetest.log 2>&1
@@ -174,6 +177,9 @@ testMany-teletype:
 
 testMany-sdlInit:
 	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 0 --boostRandomItem --newGame 9 --maxFps 100000 --benchmark --benchMessages --stopAfterSeconds 50 --dumpInitRngs --automateAll --keepAutomated 2> /tmp/teletypetest.log
+
+testGauntlet-medium:
+	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 20 --dumpInitRngs --automateAll --keepAutomated --gameMode gauntlet 2> /tmp/teletypetest.log
 
 testRaid-medium:
 	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --maxFps 100000 --frontendTeletype --benchmark --stopAfterSeconds 20 --dumpInitRngs --automateAll --keepAutomated --gameMode raid 2> /tmp/teletypetest.log
@@ -234,6 +240,7 @@ testDig-medium:
 	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --newGame 1 --noAnim --maxFps 100000 --frontendTeletype --benchmark --stopAfterFrames 100 --dumpInitRngs --automateAll --keepAutomated --gameMode dig 2> /tmp/teletypetest.log
 
 test-short-new:
+	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --savePrefix gauntlet --dumpInitRngs --automateAll --keepAutomated --gameMode gauntlet --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
 	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --savePrefix raid --dumpInitRngs --automateAll --keepAutomated --gameMode raid --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
 	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --savePrefix brawl --dumpInitRngs --automateAll --keepAutomated --gameMode brawl --showItemSamples --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
 	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --boostRandomItem --newGame 5 --savePrefix shootout --dumpInitRngs --automateAll --keepAutomated --gameMode shootout --showItemSamples --frontendTeletype --stopAfterSeconds 2 2> /tmp/teletypetest.log
@@ -251,6 +258,7 @@ test-short-new:
 # $(RNGOPTS) is needed for determinism relative to seed
 # generated before game save
 test-short-load:
+	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix gauntlet --dumpInitRngs --automateAll --keepAutomated --gameMode gauntlet --frontendTeletype --stopAfterSeconds 2 $(RNGOPTS) 2> /tmp/teletypetest.log
 	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix raid --dumpInitRngs --automateAll --keepAutomated --gameMode raid --frontendTeletype --stopAfterSeconds 2 $(RNGOPTS) 2> /tmp/teletypetest.log
 	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix brawl --dumpInitRngs --automateAll --keepAutomated --gameMode brawl --frontendTeletype --stopAfterSeconds 2 $(RNGOPTS) 2> /tmp/teletypetest.log
 	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --boostRandomItem --savePrefix shootout --dumpInitRngs --automateAll --keepAutomated --gameMode shootout --frontendTeletype --stopAfterSeconds 2 $(RNGOPTS) 2> /tmp/teletypetest.log

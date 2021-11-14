@@ -9,7 +9,7 @@
 module Content.CaveKind
   ( -- * Group name patterns
     pattern CAVE_ROGUE, pattern CAVE_ARENA, pattern CAVE_LABORATORY, pattern CAVE_NOISE, pattern CAVE_SHALLOW_ROGUE, pattern CAVE_OUTERMOST, pattern CAVE_RAID, pattern CAVE_BRAWL, pattern CAVE_BRAWL_ALT, pattern CAVE_SHOOTOUT, pattern CAVE_HUNT, pattern CAVE_ESCAPE, pattern CAVE_ZOO, pattern CAVE_AMBUSH, pattern CAVE_BATTLE, pattern CAVE_SAFARI_1, pattern CAVE_SAFARI_2, pattern CAVE_SAFARI_3
-  , pattern CAVE_BRIDGE, pattern CAVE_VIRUS, pattern CAVE_RESIDENTIAL, pattern CAVE_MUSEUM, pattern CAVE_EXIT, pattern CAVE_CASINO, pattern CAVE_POWER
+  , pattern CAVE_BRIDGE, pattern CAVE_VIRUS, pattern CAVE_RESIDENTIAL, pattern CAVE_MUSEUM, pattern CAVE_EXIT, pattern CAVE_CASINO, pattern CAVE_POWER, pattern CAVE_GAUNTLET
   , groupNamesSingleton, groupNames
   , -- * Content
     content
@@ -44,11 +44,11 @@ groupNamesSingleton = []
 groupNames :: [GroupName CaveKind]
 groupNames =
        [CAVE_ROGUE, CAVE_ARENA, CAVE_LABORATORY, CAVE_NOISE, CAVE_SHALLOW_ROGUE, CAVE_OUTERMOST, CAVE_RAID, CAVE_BRAWL, CAVE_BRAWL_ALT, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_ESCAPE, CAVE_ZOO, CAVE_AMBUSH, CAVE_BATTLE, CAVE_SAFARI_1, CAVE_SAFARI_2, CAVE_SAFARI_3]
-    ++ [CAVE_BRIDGE, CAVE_VIRUS, CAVE_RESIDENTIAL, CAVE_MUSEUM, CAVE_EXIT, CAVE_CASINO, CAVE_POWER]
+    ++ [CAVE_BRIDGE, CAVE_VIRUS, CAVE_RESIDENTIAL, CAVE_MUSEUM, CAVE_EXIT, CAVE_CASINO, CAVE_POWER, CAVE_GAUNTLET]
 
 pattern CAVE_ROGUE, CAVE_ARENA, CAVE_LABORATORY, CAVE_NOISE, CAVE_SHALLOW_ROGUE, CAVE_OUTERMOST, CAVE_RAID, CAVE_BRAWL, CAVE_BRAWL_ALT, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_ESCAPE, CAVE_ZOO, CAVE_AMBUSH, CAVE_BATTLE, CAVE_SAFARI_1, CAVE_SAFARI_2, CAVE_SAFARI_3 :: GroupName CaveKind
 
-pattern CAVE_BRIDGE, CAVE_VIRUS, CAVE_RESIDENTIAL, CAVE_MUSEUM, CAVE_EXIT, CAVE_CASINO, CAVE_POWER :: GroupName CaveKind
+pattern CAVE_BRIDGE, CAVE_VIRUS, CAVE_RESIDENTIAL, CAVE_MUSEUM, CAVE_EXIT, CAVE_CASINO, CAVE_POWER, CAVE_GAUNTLET :: GroupName CaveKind
 
 pattern CAVE_ROGUE = GroupName "caveRogue"
 pattern CAVE_ARENA = GroupName "caveArena"
@@ -77,14 +77,15 @@ pattern CAVE_MUSEUM = GroupName "caveMuseum"
 pattern CAVE_EXIT = GroupName "caveExit"
 pattern CAVE_CASINO = GroupName "caveCasino"
 pattern CAVE_POWER = GroupName "cavePower"
+pattern CAVE_GAUNTLET = GroupName "caveGauntlet"
 
 -- * Content
 
 content :: [CaveKind]
 content =
-  [rogue, residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, virus, raid, brawl, brawlAlt, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3]
+  [rogue, residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, virus, gauntlet, raid, brawl, brawlAlt, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3]
 
-rogue,    residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, virus, raid, brawl, brawlAlt, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
+rogue,    residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, virus, gauntlet, raid, brawl, brawlAlt, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
 
 -- * On-ship "caves", that is, decks, most of mediocre height and size
 
@@ -187,7 +188,7 @@ arena = rogue
   , clitCorTile   = TRAIL_LIT  -- may be rolled different than the above
   , cwallTile     = OPENABLE_WALL
   , cminStairDist = 20
-  , cmaxStairsNum = 1 `d` 2
+  , cmaxStairsNum = 1 `d` 3
   , cstairFreq    = [ (WALLED_LIFT, 20), (CLOSED_LIFT, 80)
                     , (TINY_LIFT, 1) ]
   , cstairAllowed = [ (WALLED_STAIRCASE, 20), (CLOSED_STAIRCASE, 80)
@@ -471,7 +472,7 @@ virus = rogue
   , cdoorChance   = 0  -- openings in solid rooms are fine, because rooms tiny
   , chidden       = 0
   , cactorCoeff   = 4  -- fast spawning
-  , cactorFreq    = [(MOBILE_ROBOT, 100)]  -- fast action, so let them come
+  , cactorFreq    = [(VIRUS_ROBOT, 100)]  -- only mobile, for fast action
   , citemNum      = 16 `d` 2
   , citemFreq     = [(IK.COMMON_ITEM, 70), (IK.CRAWL_ITEM, 30)]
   , cplaceFreq    = [(VIRUS, 1)]
@@ -499,6 +500,39 @@ virus = rogue
 --    in symmetric scenarios, where both parties can use extra loot
 --    equally well.
 
+gauntlet = rogue
+  { cname         = "Service tunnel"
+  , cfreq         = [(CAVE_GAUNTLET, 1)]
+  , cXminSize     = 52  -- long tunnel
+  , cYminSize     = 8
+  , ccellSize     = DiceXY 6 4
+  , cminPlaceSize = DiceXY 5 3
+  , cmaxPlaceSize = DiceXY 6 3
+  , cdarkOdds     = 0  -- all rooms lit, for a gentle start
+  , cnightOdds    = 0
+  , cauxConnects  = 0
+  , cmaxVoid      = 0
+  , cdoorChance   = 0  -- openings in solid rooms are fine, because rooms tiny
+  , chidden       = 0
+  , cactorCoeff   = 12  -- fast spawning
+  , cactorFreq    = [(VIRUS_ROBOT, 100)]  -- no drops at this depth; avoid stash
+  , citemNum      = 0  -- first tutorial mode, no need for a stash
+  , citemFreq     = []  -- first tutorial level, no need for a stash
+  , cplaceFreq    = [(GAUNTLET, 1)]  -- first tutorial mode; keep it simple
+  , cpassable     = True
+  , cdefTile      = VIRUS_SET_LIT  -- first tutorial mode; keep it simple
+  , cwallTile     = OPENABLE_WALL
+  , cfenceTileN   = HABITAT_CONTAINMENT_WALL
+  , cfenceTileE   = HABITAT_CONTAINMENT_WALL
+  , cfenceTileS   = HABITAT_CONTAINMENT_WALL
+  , cfenceTileW   = HABITAT_CONTAINMENT_WALL
+  , cmaxStairsNum = 0
+  , cescapeFreq   = [(INDOOR_ESCAPE_UP, 1)]
+  , cstairFreq    = []
+  , cstairAllowed = []
+  , cskip         = [0]  -- don't start heroes nor opponents on escape
+  , cdesc         = "Triton's cryothermal vents that supply energy and resources to the city are spread far apart. That funnels the unregulated sprawl of the sublunar city wide rather than deep and favours tunnels over domes."
+  }
 raid = rogue
   { cname         = "Triton City sewers"
   , cfreq         = [(CAVE_RAID, 1)]

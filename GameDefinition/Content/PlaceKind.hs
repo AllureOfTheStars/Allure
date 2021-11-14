@@ -10,7 +10,7 @@ module Content.PlaceKind
   ( -- * Group name patterns
     pattern ROGUE, pattern LABORATORY, pattern ZOO, pattern BRAWL, pattern SHOOTOUT, pattern ARENA, pattern ESCAPE, pattern AMBUSH, pattern BATTLE, pattern NOISE, pattern EMPTY
   , pattern INDOOR_ESCAPE_DOWN, pattern INDOOR_ESCAPE_UP, pattern OUTDOOR_ESCAPE_DOWN, pattern TINY_STAIRCASE, pattern OPEN_STAIRCASE, pattern CLOSED_STAIRCASE, pattern WALLED_STAIRCASE, pattern GATED_TINY_STAIRCASE, pattern GATED_OPEN_STAIRCASE, pattern GATED_CLOSED_STAIRCASE, pattern OUTDOOR_TINY_STAIRCASE, pattern OUTDOOR_CLOSED_STAIRCASE, pattern OUTDOOR_WALLED_STAIRCASE
-  , pattern RESIDENTIAL, pattern MUSEUM, pattern EXIT, pattern VIRUS, pattern RAID
+  , pattern RESIDENTIAL, pattern MUSEUM, pattern EXIT, pattern VIRUS, pattern GAUNTLET, pattern RAID
   , pattern TINY_LIFT, pattern OPEN_LIFT, pattern WALLED_LIFT, pattern CLOSED_LIFT, pattern ESCAPE_FROM_SPACESHIP_DOWN, pattern DECON_TINY_STAIRCASE, pattern DECON_OPEN_STAIRCASE, pattern DECON_WALLED_STAIRCASE, pattern DECON_TINY_LIFT, pattern DECON_OPEN_LIFT, pattern DECON_WALLED_LIFT, pattern GATED_TINY_LIFT, pattern GATED_OPEN_LIFT, pattern GATED_CLOSED_LIFT, pattern WELDED_TINY_LIFT, pattern WELDED_OPEN_LIFT, pattern WELDED_WALLED_LIFT, pattern WELDED_TINY_STAIRCASE, pattern WELDED_OPEN_STAIRCASE, pattern WELDED_WALLED_STAIRCASE
   , groupNamesSingleton, groupNames
   , -- * Content
@@ -41,7 +41,7 @@ groupNames :: [GroupName PlaceKind]
 groupNames =
        [ROGUE, LABORATORY, ZOO, BRAWL, SHOOTOUT, ARENA, ESCAPE, AMBUSH, BATTLE, NOISE, EMPTY]
     ++ [INDOOR_ESCAPE_DOWN, INDOOR_ESCAPE_UP, OUTDOOR_ESCAPE_DOWN, TINY_STAIRCASE, OPEN_STAIRCASE, CLOSED_STAIRCASE, WALLED_STAIRCASE]
-    ++ [RESIDENTIAL, MUSEUM, EXIT, VIRUS, RAID]
+    ++ [RESIDENTIAL, MUSEUM, EXIT, VIRUS, GAUNTLET, RAID]
     ++ [TINY_LIFT, OPEN_LIFT, WALLED_LIFT, CLOSED_LIFT, ESCAPE_FROM_SPACESHIP_DOWN]
     ++ fst generatedStairs
 
@@ -49,7 +49,7 @@ pattern ROGUE, LABORATORY, ZOO, BRAWL, SHOOTOUT, ARENA, ESCAPE, AMBUSH, BATTLE, 
 
 pattern INDOOR_ESCAPE_DOWN, INDOOR_ESCAPE_UP, OUTDOOR_ESCAPE_DOWN, TINY_STAIRCASE, OPEN_STAIRCASE, CLOSED_STAIRCASE, WALLED_STAIRCASE, GATED_TINY_STAIRCASE, GATED_OPEN_STAIRCASE, GATED_CLOSED_STAIRCASE, OUTDOOR_TINY_STAIRCASE, OUTDOOR_CLOSED_STAIRCASE, OUTDOOR_WALLED_STAIRCASE :: GroupName PlaceKind
 
-pattern RESIDENTIAL, MUSEUM, EXIT, VIRUS, RAID :: GroupName PlaceKind
+pattern RESIDENTIAL, MUSEUM, EXIT, VIRUS, GAUNTLET, RAID :: GroupName PlaceKind
 
 pattern TINY_LIFT, OPEN_LIFT, WALLED_LIFT, CLOSED_LIFT, ESCAPE_FROM_SPACESHIP_DOWN, DECON_TINY_STAIRCASE, DECON_OPEN_STAIRCASE, DECON_WALLED_STAIRCASE, DECON_TINY_LIFT, DECON_OPEN_LIFT, DECON_WALLED_LIFT, GATED_TINY_LIFT, GATED_OPEN_LIFT, GATED_CLOSED_LIFT, WELDED_TINY_LIFT, WELDED_OPEN_LIFT, WELDED_WALLED_LIFT, WELDED_TINY_STAIRCASE, WELDED_OPEN_STAIRCASE, WELDED_WALLED_STAIRCASE :: GroupName PlaceKind
 
@@ -87,6 +87,7 @@ pattern RESIDENTIAL = GroupName "residential"
 pattern MUSEUM = GroupName "museum"
 pattern EXIT = GroupName "exit"
 pattern VIRUS = GroupName "virus"
+pattern GAUNTLET = GroupName "gauntlet"
 pattern RAID = GroupName "raid"
 
 pattern TINY_LIFT = GroupName "tiny lift"
@@ -298,9 +299,11 @@ ruin2 = ruin
   }
 collapsed = overridePlaceKind [('#', DOORLESS_MACHINERY)] $ PlaceKind
   { pname    = "a hardware stack"
-  , pfreq    = [(NOISE, 1), (VIRUS, 1)]
+  , pfreq    = [(NOISE, 1), (VIRUS, 1), (GAUNTLET, 2)]
       -- no point taking up space if very little space taken,
-      -- but if no other place can be generated, a failsafe is useful
+      -- but if no other place can be generated, a failsafe is useful;
+      -- this is also useful for tiny levels, such as GAUNTLET,
+      -- where without cfenceApart, the other shapes could be cut off
   , prarity  = [(1, 1)]
   , pcover   = CStretch
   , pfence   = FNone
@@ -310,13 +313,13 @@ collapsed = overridePlaceKind [('#', DOORLESS_MACHINERY)] $ PlaceKind
   , plegendLit = defaultLegendLit
   }
 collapsed2 = collapsed
-  { pfreq    = [(NOISE, 1000), (BATTLE, 200)]
+  { pfreq    = [(NOISE, 1000), (VIRUS, 1), (BATTLE, 200)]
   , ptopLeft = [ "X#"
                , "##"
                ]
   }
 collapsed3 = collapsed
-  { pfreq    = [(NOISE, 2000), (BATTLE, 200)]
+  { pfreq    = [(NOISE, 2000), (VIRUS, 1), (BATTLE, 200)]
   , ptopLeft = [ "XX#"
                , "###"
                ]
@@ -1469,7 +1472,8 @@ tank2 = tank
                ]
   }
 tank3 = tank
-  { pfreq    = [(EMPTY, 150), (EXIT, 15), (NOISE, 50), (BATTLE, 25)]
+  { pfreq    = [ (EMPTY, 150), (EXIT, 15), (NOISE, 50), (GAUNTLET, 1)
+               , (BATTLE, 25) ]
   , ptopLeft = [ "0#"
                , "##"
                ]

@@ -1220,7 +1220,7 @@ reinforcedWall = TileKind
   { tsymbol  = '#'
   , tname    = "reinforced wall"
   , tfreq    = [ (S_REINFORCED_WALL, 1), (ROGUE_SET, 15), (EXIT_SET_LIT, 20)
-               , (VIRUS_SET_DARK, 6)]
+               , (VIRUS_SET_LIT, 20), (VIRUS_SET_DARK, 6)]
   , tcolor   = White
   , tcolor2  = BrBlack
   , talter   = 100
@@ -1280,7 +1280,7 @@ machineWall = TileKind
   , tname    = "hardware rack"
   , tfreq    = [ (S_HARDWARE_RACK, 1)
                , (ROGUE_SET, 25), (NOISE_SET_LIT, 250), (POWER_SET_DARK, 250)
-               , (EXIT_SET_LIT, 30), (VIRUS_SET_DARK, 30)
+               , (EXIT_SET_LIT, 30), (VIRUS_SET_LIT, 40), (VIRUS_SET_DARK, 30)
                , (LIFT_TERMINAL_LIT, 40), (LIFT_TERMINAL_DARK, 40) ]
   , tcolor   = White
   , tcolor2  = BrBlack

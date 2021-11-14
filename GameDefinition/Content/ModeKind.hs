@@ -12,7 +12,7 @@ module Content.ModeKind
     content
 #ifdef EXPOSE_INTERNAL
   -- * Group name patterns
-  , pattern RAID, pattern BRAWL, pattern LONG, pattern CRAWL, pattern FOGGY, pattern SHOOTOUT, pattern PERILOUS, pattern HUNT, pattern NIGHT, pattern ESCAPE, pattern BURNING, pattern ZOO, pattern RANGED, pattern AMBUSH, pattern SAFARI, pattern DIG, pattern SEE, pattern SHORT, pattern CRAWL_EMPTY, pattern CRAWL_SURVIVAL, pattern SAFARI_SURVIVAL, pattern BATTLE, pattern BATTLE_DEFENSE, pattern BATTLE_SURVIVAL, pattern DEFENSE, pattern DEFENSE_EMPTY
+  , pattern GAUNTLET, pattern RAID, pattern BRAWL, pattern LONG, pattern CRAWL, pattern FOGGY, pattern SHOOTOUT, pattern PERILOUS, pattern HUNT, pattern NIGHT, pattern ESCAPE, pattern BURNING, pattern ZOO, pattern RANGED, pattern AMBUSH, pattern SAFARI, pattern DIG, pattern SEE, pattern SHORT, pattern CRAWL_EMPTY, pattern CRAWL_SURVIVAL, pattern SAFARI_SURVIVAL, pattern BATTLE, pattern BATTLE_DEFENSE, pattern BATTLE_SURVIVAL, pattern DEFENSE, pattern DEFENSE_EMPTY
 #endif
   ) where
 
@@ -36,13 +36,14 @@ import Game.LambdaHack.Definition.DefsInternal
 
 groupNamesSingleton :: [GroupName ModeKind]
 groupNamesSingleton =
-       [RAID, BRAWL, LONG, CRAWL, FOGGY, SHOOTOUT, PERILOUS, HUNT, NIGHT, ESCAPE, BURNING, ZOO, RANGED, AMBUSH, SAFARI, DIG, SEE, SHORT, CRAWL_EMPTY, CRAWL_SURVIVAL, SAFARI_SURVIVAL, BATTLE, BATTLE_DEFENSE, BATTLE_SURVIVAL, DEFENSE, DEFENSE_EMPTY]
+       [GAUNTLET, RAID, BRAWL, LONG, CRAWL, FOGGY, SHOOTOUT, PERILOUS, HUNT, NIGHT, ESCAPE, BURNING, ZOO, RANGED, AMBUSH, SAFARI, DIG, SEE, SHORT, CRAWL_EMPTY, CRAWL_SURVIVAL, SAFARI_SURVIVAL, BATTLE, BATTLE_DEFENSE, BATTLE_SURVIVAL, DEFENSE, DEFENSE_EMPTY]
 
-pattern RAID, BRAWL, LONG, CRAWL, FOGGY, SHOOTOUT, PERILOUS, HUNT, NIGHT, ESCAPE, BURNING, ZOO, RANGED, AMBUSH, SAFARI, DIG, SEE, SHORT, CRAWL_EMPTY, CRAWL_SURVIVAL, SAFARI_SURVIVAL, BATTLE, BATTLE_DEFENSE, BATTLE_SURVIVAL, DEFENSE, DEFENSE_EMPTY :: GroupName ModeKind
+pattern GAUNTLET, RAID, BRAWL, LONG, CRAWL, FOGGY, SHOOTOUT, PERILOUS, HUNT, NIGHT, ESCAPE, BURNING, ZOO, RANGED, AMBUSH, SAFARI, DIG, SEE, SHORT, CRAWL_EMPTY, CRAWL_SURVIVAL, SAFARI_SURVIVAL, BATTLE, BATTLE_DEFENSE, BATTLE_SURVIVAL, DEFENSE, DEFENSE_EMPTY :: GroupName ModeKind
 
 groupNames :: [GroupName ModeKind]
 groupNames = []
 
+pattern GAUNTLET = GroupName "gauntlet"
 pattern RAID = GroupName "raid"
 pattern BRAWL = GroupName "brawl"
 pattern LONG = GroupName "long crawl"
@@ -74,9 +75,9 @@ pattern DEFENSE_EMPTY = GroupName "defenseEmpty"
 
 content :: [ModeKind]
 content =
-  [raid, brawl, crawl, shootout, hunt, escape, zoo, ambush, safari, dig, see, short, crawlEmpty, crawlSurvival, safariSurvival, battle, battleDefense, battleSurvival, defense, defenseEmpty, screensaverRaid, screensaverBrawl, screensaverCrawl, screensaverShootout, screensaverHunt, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverSafari]
+  [gauntlet, raid, brawl, crawl, shootout, hunt, escape, zoo, ambush, safari, dig, see, short, crawlEmpty, crawlSurvival, safariSurvival, battle, battleDefense, battleSurvival, defense, defenseEmpty, screensaverGauntlet, screensaverRaid, screensaverBrawl, screensaverCrawl, screensaverShootout, screensaverHunt, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverSafari]
 
-raid,    brawl, crawl, shootout, hunt, escape, zoo, ambush, safari, dig, see, short, crawlEmpty, crawlSurvival, safariSurvival, battle, battleDefense, battleSurvival, defense, defenseEmpty, screensaverRaid, screensaverBrawl, screensaverCrawl, screensaverShootout, screensaverHunt, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverSafari :: ModeKind
+gauntlet,    raid, brawl, crawl, shootout, hunt, escape, zoo, ambush, safari, dig, see, short, crawlEmpty, crawlSurvival, safariSurvival, battle, battleDefense, battleSurvival, defense, defenseEmpty, screensaverGauntlet, screensaverRaid, screensaverBrawl, screensaverCrawl, screensaverShootout, screensaverHunt, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverSafari :: ModeKind
 
 -- What other symmetric (two only-one-moves factions) and asymmetric vs crowd
 -- scenarios make sense (e.g., are good for a tutorial or for standalone
@@ -91,29 +92,53 @@ raid,    brawl, crawl, shootout, hunt, escape, zoo, ambush, safari, dig, see, sh
 -- crowd ranged: no, fish in a barrel, less predictable and more fun inside
 --   crawl, even without reaction fire
 
+gauntlet = ModeKind
+  { mname   = "gauntlet (tutorial, 1)"
+  , mfreq   = [(GAUNTLET, 1), (CAMPAIGN_SCENARIO, 1)]
+  , mtutorial = True
+  , mattract = False
+  , mroster = rosterGauntlet
+  , mcaves  = cavesGauntlet
+  , mendMsg = [ (Killed, "That was unfortunate. Perhaps the growing wave of rogue robots indeed could not be stemmed. The bill for the nano medbot treatment will reach the stars once the checkout clock alerts authorities and a full drone city sweep (another bill) recovers your remains.\nBut was it really impossible to run a few dozen meters into the tunnel and trigger the red alarm console? Perhaps one person could distract the replicants, while the other searched for a passage around them? Or was the challenge just too difficult and could the difficulty have been lowered otherwise?")  -- hint, hint
+              , (Conquer, "Not alerting the authorities was a choice that paid off handsomely. You can now collect the semiconductors parts from the infected robots all for yourself. Nobody needs to know. Replicant scrap gives a hefty premium on the darknet, even counting in anonymizing intermediaries. This will make for an enormous PTSD-shedding party.")
+              , (Escape, "The moment you press the red button, robots get distracted and disperse towards the walls, scanning. You disengage and watch fascinated, but you don't get to see what happens next. The security force contacts you and hauls you up the chute, where you are sternly reprimanded and, unexpectedly, released scot-free after being sworn to silence. Oh well, saving own life is definitely worth more than whatever makes the officer that shooed you off so excited.") ]
+  , mrules  = T.intercalate "\n"
+      [ "* One level only"
+      , "* Two heroes vs. Spawned enemies"
+      , "* Incapacitate all enemies faster than they can spawn"
+      , "* Or find and activate the red alarm console ASAP"
+      ]
+  , mdesc   = T.intercalate "\n"
+      [ "Taking this shortcut may not have been the best idea. The tunnel's entry chute was much deeper than the net search suggested and the landing turned out on a pile of robot scrap that dampened the shock, but promptly started moving on its own, shooting rays of light down the corridor and drowning the area in clanking and echoes."
+      , "Such deep tunnels serve exclusively as emergency secondary connections between Triton City forges, farms and population centers. They are devoid of amenities and normally unused except by lazy maintenance crews storing and then leaving behind defunct machinery and leftover spare parts. No chance anybody could be contacted from here, except through a red alarm console, mandatory per every 100m of city corridors."
+      , "Gasping huddled behind a hardware stack you appraise your misery. That must be the Internet of Things gone wrong, the notorious Robot Replicants, viruses that take over robots, whether turned on or off, modify, repair, rebuild, clone, merge and divide, spawn and multiply. You've heard about them but you weren't one of the lucky few that experienced the thrill of seeing them. And survived." ]
+  , mreason = "This is a simple introductory tutorial adventure. It teaches (avoiding) combat, aggression, audacity, speed and multiple good endings. And dying."
+  , mhint   = "Speaking plainly, the two good endings are escaping thanks to the alarm console and killing off all the infestation. The former requires a long and nerve-wrecking jog, while being harassed by robots, to the other end of the tunnel. The latter is hard, because replicants initially spawn faster than they can be killed and they keep spawning for as long as a single survivor hides under a crate somewhere. Killing off all robots results in higher score, unless it required much more time.\nWhen meleeing, it's best to keep all characters together, but when running past enemies, a sole sprinter will have a higher speed, though breaking through an unexpected wall of enemies may prove impossible for a single brave. If any of the endings seem unattainable, it may be wise to lower game  difficulty level from main menu and/or return after trying out subsequent game modes, battle-hardened and full of mastery."
+  }
+
 raid = ModeKind
-  { mname   = "raid (tutorial, 1)"
+  { mname   = "raid (tutorial, 2)"
   , mfreq   = [(RAID, 1), (CAMPAIGN_SCENARIO, 1)]
   , mtutorial = True
   , mattract = False
   , mroster = rosterRaid
   , mcaves  = cavesRaid
-  , mendMsg = [ (Killed, "That was unfortunate. The bill for the rescue team and for the subsequent nano medbot treatment will reach the stars. Perhaps more stealth was needed? Perhaps the items lying around the area could aid survival instead of ending up ignored or passively hoarded? Or perhaps a wise course of action would be to choose a Neptune Economic Area Administration challenge with a lower difficulty?")
+  , mendMsg = [ (Killed, "The search&rescue and nano-medical revival fees are going to kill you (anew). Perhaps more stealth was needed? Perhaps the items lying around the area could aid survival instead of ending up ignored or passively hoarded? Or perhaps a wise course of action would be to choose a Neptune Economic Area Administration challenge with a lower difficulty?")
               , (Defeated, "Sadly, you got worked up in the tunnels while another team snatched the prize. Remember, you are at the Outer Frontier to gain wealth and independence through industriousness and commerce. This pits you in a fight against competing agents, not just against the feral nature.")
               , (Escape, "You are the first to clear a route through the sewer system. Triton City authorities will now be able to establish a perimeter and mop up the side tunnels. You collect your reward of 100 gold grains and start looking for a way to invest it profitably on this Solar System's commercial frontier, abounding in more or less (usually less) regulated opportunities.\nAfter some thought you decide to start by splurging on genetic enhancement for your team. The effects won't be visible at once, but you have to plan ahead, having just made fresh enemies.") ]
   , mrules  = T.intercalate "\n"
       [ "* One level only"
-      , "* Two heroes vs. Spawned enemies"
+      , "* Two heroes vs. Competition and Spawned enemies"
       , "* Gather gold"
       , "* Find exit and escape ASAP"
       ]
   , mdesc   = "Neptune Economic Area Administration confirms isolated spottings of oversize vermin in non-residential zones of the Neptune's Triton moon's largest city. To put it plainly: Triton City sewers need purging. The first person to break through to the other exit will be paid 100 gold grains. The Administration \"strongly urges participants not to resort to violence against each other.\" However, no punitive consequences are specified, not even disqualification from the contest."
-  , mreason = "In addition to initiating the game plot, this adventure provides an introductory tutorial. Relax, explore, gather loot, find the exit and escape. With some luck, you won't even need to fight anything."
-  , mhint   = "You can't use gathered items in your next encounters, so trigger any consumables at will, in particular the electronic chips as common as pebbles on the muddy sewer floors.\nFeel free to scout with only one of the heroes and keep the other one immobile, e.g., standing guard over the squad's shared inventory stash. If in grave danger, retreat with the scout to join forces with the guard. The more gold collected and the faster the victory, the higher your score in this encounter."
+  , mreason = "In addition to initiating the game plot, this adventure teaches treasure gathering and item use, looking after the shared inventory stash and dealing with many enemy factions at once. Combat, however, is not a focus, so relax, explore, gather loot, find the exit and escape. With some luck, you won't even need to fight anything."
+  , mhint   = "You can't use gathered items in your next encounters, so trigger any consumables at will, in particular the throwaway electronic chips as common as pebbles on the muddy sewer floors.\nFeel free to scout with only one of the heroes and keep the other one immobile, e.g., standing guard over the squad's shared inventory stash. If in grave danger, retreat with the scout to join forces with the guard. The more gold collected and the faster the victory, the higher your score in this encounter."
   }
 
 brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
-  { mname   = "brawl (tutorial, 2)"
+  { mname   = "brawl (tutorial, 3)"
   , mfreq   = [(BRAWL, 1), (CAMPAIGN_SCENARIO, 1)]
   , mtutorial = True
   , mattract = False
@@ -162,7 +187,7 @@ crawl = ModeKind
 -- the other team members are more spotters and guardians than snipers
 -- and that's their only role, so a small party makes sense.
 shootout = ModeKind  -- sparse ranged in daylight
-  { mname   = "foggy shootout (3)"
+  { mname   = "foggy shootout (4)"
   , mfreq   = [(FOGGY, 1), (SHOOTOUT, 1), (CAMPAIGN_SCENARIO, 1)]
   , mtutorial = False
   , mattract = False
@@ -182,7 +207,7 @@ shootout = ModeKind  -- sparse ranged in daylight
   }
 
 hunt = ModeKind  -- melee vs ranged with reaction fire in daylight
-  { mname   = "perilous hunt (4)"
+  { mname   = "perilous hunt (5)"
   , mfreq   = [(PERILOUS, 1), (HUNT, 1), (CAMPAIGN_SCENARIO, 1)]
   , mtutorial = False
   , mattract = False
@@ -204,7 +229,7 @@ hunt = ModeKind  -- melee vs ranged with reaction fire in daylight
   }
 
 escape = ModeKind  -- asymmetric ranged and stealth race at night
-  { mname   = "night escape (5)"
+  { mname   = "night escape (6)"
   , mfreq   = [(NIGHT, 1), (ESCAPE, 1), (CAMPAIGN_SCENARIO, 1)]
   , mtutorial = False
   , mattract = False
@@ -226,7 +251,7 @@ escape = ModeKind  -- asymmetric ranged and stealth race at night
   }
 
 zoo = ModeKind  -- asymmetric crowd melee at night
-  { mname   = "burning zoo (6)"
+  { mname   = "burning zoo (7)"
   , mfreq   = [(BURNING, 1), (ZOO, 1), (CAMPAIGN_SCENARIO, 1)]
   , mtutorial = False
   , mattract = False
@@ -254,7 +279,7 @@ zoo = ModeKind  -- asymmetric crowd melee at night
 -- without reaction fire don't make sense, because then usually only one hero
 -- shoots (and often also scouts) and others just gather ammo.
 ambush = ModeKind  -- dense ranged with reaction fire vs melee at night
-  { mname   = "ranged ambush (7)"
+  { mname   = "ranged ambush (8)"
   , mfreq   = [(RANGED, 1), (AMBUSH, 1), (CAMPAIGN_SCENARIO, 1)]
   , mtutorial = False
   , mattract = False
@@ -450,14 +475,20 @@ defenseEmpty = ModeKind
 
 -- * Screensaver modes
 
+screensaverGauntlet = gauntlet
+  { mname   = "auto-gauntlet (1)"
+  , mfreq   = []
+  , mattract = True
+  }
+
 screensaverRaid = raid
-  { mname   = "auto-raid (1)"
+  { mname   = "auto-raid (2)"
   , mfreq   = [(INSERT_COIN, 2)]
   , mattract = True
   }
 
 screensaverBrawl = brawl
-  { mname   = "auto-brawl (2)"
+  { mname   = "auto-brawl (3)"
   , mfreq   = []
   , mattract = True
   }
@@ -469,31 +500,31 @@ screensaverCrawl = crawl
   }
 
 screensaverShootout = shootout
-  { mname   = "auto-shootout (3)"
+  { mname   = "auto-shootout (4)"
   , mfreq   = [(INSERT_COIN, 2)]
   , mattract = True
   }
 
 screensaverHunt = hunt
-  { mname   = "auto-hunt (4)"
+  { mname   = "auto-hunt (5)"
   , mfreq   = [(INSERT_COIN, 2)]
   , mattract = True
   }
 
 screensaverEscape = escape
-  { mname   = "auto-escape (5)"
+  { mname   = "auto-escape (6)"
   , mfreq   = [(INSERT_COIN, 2)]
   , mattract = True
   }
 
 screensaverZoo = zoo
-  { mname   = "auto-zoo (6)"
+  { mname   = "auto-zoo (7)"
   , mfreq   = []
   , mattract = True
   }
 
 screensaverAmbush = ambush
-  { mname   = "auto-ambush (7)"
+  { mname   = "auto-ambush (8)"
   , mfreq   = []
   , mattract = True
   }
@@ -504,7 +535,14 @@ screensaverSafari = safari
   , mattract = True
   }
 
-rosterRaid, rosterBrawl, rosterCrawl, rosterShootout, rosterHunt, rosterEscape, rosterZoo, rosterAmbush, rosterSafari, rosterCrawlEmpty, rosterCrawlSurvival, rosterSafariSurvival, rosterBattle, rosterBattleDefense, rosterBattleSurvival, rosterDefense, rosterDefenseEmpty :: Roster
+rosterGauntlet, rosterRaid, rosterBrawl, rosterCrawl, rosterShootout, rosterHunt, rosterEscape, rosterZoo, rosterAmbush, rosterSafari, rosterCrawlEmpty, rosterCrawlSurvival, rosterSafariSurvival, rosterBattle, rosterBattleDefense, rosterBattleSurvival, rosterDefense, rosterDefenseEmpty :: Roster
+
+rosterGauntlet =
+  [ ( EXPLORER_EXTERMINATOR
+    , [(1, 2, EXTERMINATOR_HERO)] )
+  , ( ROBOT_VIRUS
+    , [] )  -- avoid a robot that sleeps far away and keeps the faction spawning
+  , (HORROR_REPRESENTATIVE, []) ]
 
 rosterRaid =
   [ ( ANIMAL_REPRESENTATIVE  -- starting over escape
@@ -669,7 +707,9 @@ rosterDefenseEmpty =
   , (HORROR_PACIFIST, []) ]
       -- for spawned and summoned animals
 
-cavesRaid, cavesBrawl, cavesCrawl, cavesShootout, cavesHunt, cavesEscape, cavesZoo, cavesAmbush, cavesSafari, cavesDig, cavesSee, cavesShort, cavesCrawlEmpty, cavesBattle :: Caves
+cavesGauntlet, cavesRaid, cavesBrawl, cavesCrawl, cavesShootout, cavesHunt, cavesEscape, cavesZoo, cavesAmbush, cavesSafari, cavesDig, cavesSee, cavesShort, cavesCrawlEmpty, cavesBattle :: Caves
+
+cavesGauntlet = [([1], [CAVE_GAUNTLET])]
 
 cavesRaid = [([2], [CAVE_RAID])]
 
@@ -727,8 +767,8 @@ cavesShort = let numberCaves n c = ([n], [c])
 
 allCaves :: [GroupName CaveKind]
 allCaves =
-  [ CAVE_RAID, CAVE_BRAWL, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_ESCAPE, CAVE_ZOO
-  , CAVE_AMBUSH
+  [ CAVE_GAUNTLET, CAVE_RAID, CAVE_BRAWL, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_ESCAPE
+  , CAVE_ZOO, CAVE_AMBUSH
   , CAVE_OUTERMOST, CAVE_SHALLOW_ROGUE, CAVE_BRIDGE, CAVE_NOISE, CAVE_ROGUE
   , CAVE_ARENA, CAVE_RESIDENTIAL, CAVE_VIRUS, CAVE_LABORATORY, CAVE_MUSEUM
   , CAVE_EXIT, CAVE_CASINO, CAVE_POWER ]
