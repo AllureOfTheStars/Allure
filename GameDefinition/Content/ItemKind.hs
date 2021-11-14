@@ -1809,7 +1809,7 @@ spacesuitTorn = spacesuit
 gloveFencing = ItemKind
   { isymbol  = symbolMiscArmor
   , iname    = "construction glove"
-  , ifreq    = [ (COMMON_ITEM, 100), (ARMOR_MISC, 1), (ARMOR_RANGED, 1)
+  , ifreq    = [ (COMMON_ITEM, 100), (ARMOR_MISC, 1), (ARMOR_RANGED, 2)
                , (STARTING_ARMOR, 50) ]
   , iflavour = zipPlain [BrGreen]
   , icount   = 1
