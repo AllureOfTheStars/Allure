@@ -512,7 +512,7 @@ rosterRaid =
   , ( EXPLORER_SHORT
     , [(2, 2, HERO)] )
   , ( COMPETITOR_SHORT
-    , [(2, 1, RANGER_HERO)] )
+    , [(2, 1, RAIDER_HERO)] )
   , ( ROBOT_REPRESENTATIVE
     , [(2, 1, ROBOT)] )
   , (HORROR_REPRESENTATIVE, []) ]  -- for summoned monsters
