@@ -118,7 +118,7 @@ standardKeysAndMouse = InputContentRaw $ map evalKeyDef $
                                then "(including crafting recipes)"
                                else ""
                         , ChooseItemMenu (MLore slore) )))
-          [1..] [minBound..maxBound]
+          [1..] [minBound..SEmbed]
   ++
   [ ("safeD97", ( [CmdInternal, CmdDashboard]
                 , "display place lore"
