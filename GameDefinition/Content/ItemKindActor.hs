@@ -10,7 +10,7 @@ module Content.ItemKindActor
     pattern S_WOODEN_TORCH, pattern S_SANDSTONE_ROCK
   , pattern HERO, pattern SCOUT_HERO, pattern RANGER_HERO, pattern ESCAPIST_HERO, pattern AMBUSHER_HERO, pattern BRAWLER_HERO, pattern SOLDIER_HERO, pattern CIVILIAN, pattern MONSTER, pattern MOBILE_MONSTER, pattern SCOUT_MONSTER, pattern ANIMAL, pattern MOBILE_ANIMAL, pattern IMMOBILE_ANIMAL, pattern INSECT
   , pattern ADD_SIGHT, pattern ARMOR_RANGED, pattern ADD_NOCTO_1, pattern WEAK_ARROW, pattern LIGHT_ATTENUATOR, pattern FIREPROOF_CLOTH, pattern RING_OF_OPPORTUNITY_SNIPER, pattern ANY_ARROW, pattern STARTING_ARMOR, pattern STARTING_WEAPON, pattern GEM
-  , pattern CRAWL_HERO, pattern EXTERMINATOR_HERO, pattern RAIDER_HERO, pattern MERCENARY_HERO, pattern AQUATIC_ANIMAL, pattern AQUATIC_MONSTER, pattern EXPLOSIVE_MONSTER, pattern ROBOT, pattern MOBILE_ROBOT, pattern IMMOBILE_ROBOT, pattern CONSTRUCTION_ROBOT, pattern MECHANICAL_CONTRAPTION, pattern VIRUS_ROBOT
+  , pattern CRAWL_HERO, pattern EXTERMINATOR_HERO, pattern RAIDER_HERO, pattern MERCENARY_HERO, pattern AQUATIC_ANIMAL, pattern AQUATIC_MONSTER, pattern EXPLOSIVE_MONSTER, pattern ROBOT, pattern MOBILE_ROBOT, pattern IMMOBILE_ROBOT, pattern CONSTRUCTION_ROBOT, pattern MECHANICAL_CONTRAPTION, pattern GAUNTLET_ROBOT
   , pattern S_BULLTEPROOF_VEST, pattern S_PERFUME_POTION, pattern S_EMPTY_FLASK
   , pattern COOKED_FOOD, pattern MERCENARY_WEAPON, pattern MERCENARY_AMMO, pattern RAW_MEAT_CHUNK, pattern ROASTED_MEAT_CHUNK, pattern NEEDLE, pattern CAN_OF_STICKY_FOAM, pattern TRANQUILIZER_DART, pattern WASTE_CONTAINER, pattern CONSTRUCTION_HOOTER, pattern SPOTLIGHT, pattern BLOWTORCH, pattern POLE, pattern POLE_OR_HANDLE, pattern BREACHING_TOOL, pattern BONDING_TOOL, pattern SHARPENING_TOOL, pattern WIRECUTTING_TOOL
   , actorsGN, actorsGNSingleton
@@ -42,14 +42,14 @@ actorsGN :: [GroupName ItemKind]
 actorsGN =
        [HERO, SCOUT_HERO, RANGER_HERO, ESCAPIST_HERO, AMBUSHER_HERO, BRAWLER_HERO, SOLDIER_HERO, CIVILIAN, MONSTER, MOBILE_MONSTER, SCOUT_MONSTER, ANIMAL, MOBILE_ANIMAL, IMMOBILE_ANIMAL, INSECT]
     ++ [ADD_SIGHT, ARMOR_RANGED, ADD_NOCTO_1, WEAK_ARROW, LIGHT_ATTENUATOR, FIREPROOF_CLOTH, RING_OF_OPPORTUNITY_SNIPER, ANY_ARROW, STARTING_ARMOR, STARTING_WEAPON, GEM]
-    ++ [CRAWL_HERO, EXTERMINATOR_HERO, RAIDER_HERO, MERCENARY_HERO, AQUATIC_ANIMAL, AQUATIC_MONSTER, EXPLOSIVE_MONSTER, ROBOT, MOBILE_ROBOT, IMMOBILE_ROBOT, CONSTRUCTION_ROBOT, MECHANICAL_CONTRAPTION, VIRUS_ROBOT]
+    ++ [CRAWL_HERO, EXTERMINATOR_HERO, RAIDER_HERO, MERCENARY_HERO, AQUATIC_ANIMAL, AQUATIC_MONSTER, EXPLOSIVE_MONSTER, ROBOT, MOBILE_ROBOT, IMMOBILE_ROBOT, CONSTRUCTION_ROBOT, MECHANICAL_CONTRAPTION, GAUNTLET_ROBOT]
     ++ [COOKED_FOOD, MERCENARY_WEAPON, MERCENARY_AMMO, RAW_MEAT_CHUNK, ROASTED_MEAT_CHUNK, NEEDLE, CAN_OF_STICKY_FOAM, TRANQUILIZER_DART, WASTE_CONTAINER, CONSTRUCTION_HOOTER, SPOTLIGHT, BLOWTORCH, POLE, POLE_OR_HANDLE, BREACHING_TOOL, BONDING_TOOL, SHARPENING_TOOL, WIRECUTTING_TOOL]
 
 pattern HERO, SCOUT_HERO, RANGER_HERO, ESCAPIST_HERO, AMBUSHER_HERO, BRAWLER_HERO, SOLDIER_HERO, CIVILIAN, MONSTER, MOBILE_MONSTER, SCOUT_MONSTER, ANIMAL, MOBILE_ANIMAL, IMMOBILE_ANIMAL, INSECT :: GroupName ItemKind
 
 pattern ADD_SIGHT, ARMOR_RANGED, ADD_NOCTO_1, WEAK_ARROW, LIGHT_ATTENUATOR, FIREPROOF_CLOTH, RING_OF_OPPORTUNITY_SNIPER, ANY_ARROW, STARTING_ARMOR, STARTING_WEAPON, GEM :: GroupName ItemKind
 
-pattern CRAWL_HERO, EXTERMINATOR_HERO, RAIDER_HERO, MERCENARY_HERO, AQUATIC_ANIMAL, AQUATIC_MONSTER, EXPLOSIVE_MONSTER, ROBOT, MOBILE_ROBOT, IMMOBILE_ROBOT, CONSTRUCTION_ROBOT, MECHANICAL_CONTRAPTION, VIRUS_ROBOT :: GroupName ItemKind
+pattern CRAWL_HERO, EXTERMINATOR_HERO, RAIDER_HERO, MERCENARY_HERO, AQUATIC_ANIMAL, AQUATIC_MONSTER, EXPLOSIVE_MONSTER, ROBOT, MOBILE_ROBOT, IMMOBILE_ROBOT, CONSTRUCTION_ROBOT, MECHANICAL_CONTRAPTION, GAUNTLET_ROBOT :: GroupName ItemKind
 
 pattern COOKED_FOOD, MERCENARY_WEAPON, MERCENARY_AMMO, RAW_MEAT_CHUNK, ROASTED_MEAT_CHUNK, NEEDLE, CAN_OF_STICKY_FOAM, TRANQUILIZER_DART, WASTE_CONTAINER, CONSTRUCTION_HOOTER, SPOTLIGHT, BLOWTORCH, POLE, POLE_OR_HANDLE, BREACHING_TOOL, BONDING_TOOL, SHARPENING_TOOL, WIRECUTTING_TOOL :: GroupName ItemKind
 
@@ -83,7 +83,7 @@ pattern MOBILE_ROBOT = GroupName "mobile robot"
 pattern IMMOBILE_ROBOT = GroupName "immobile robot"
 pattern CONSTRUCTION_ROBOT = GroupName "construction robot"
 pattern MECHANICAL_CONTRAPTION = GroupName "mechanical contraption"
-pattern VIRUS_ROBOT = GroupName "virus-infested robot"
+pattern GAUNTLET_ROBOT = GroupName "virus-infested robot"
 
 -- ** Common
 pattern S_WOODEN_TORCH = GroupName "wooden torch"
@@ -1045,7 +1045,7 @@ shepherdDrone = ItemKind
   { isymbol  = toContentSymbol 'd'
   , iname    = "oversight drone"
   , ifreq    = [ (ROBOT, 100), (MOBILE, 100), (MOBILE_ROBOT, 100)
-               , (CONSTRUCTION_ROBOT, 100), (VIRUS_ROBOT, 100) ]
+               , (CONSTRUCTION_ROBOT, 100), (GAUNTLET_ROBOT, 150) ]
   , iflavour = zipPlain [BrRed]
   , icount   = 1
   , irarity  = [(1, 3), (10, 4)]  -- gets summoned often, so low base rarity
@@ -1094,7 +1094,7 @@ homeRobot = ItemKind
   , iname    = "feral home robot"
                -- TODO: name another 'deranged', tertiary imperative: survival
   , ifreq    = [ (ROBOT, 100), (MOBILE, 100), (MOBILE_ROBOT, 100)
-               , (VIRUS_ROBOT, 100) ]
+               , (GAUNTLET_ROBOT, 100) ]
   , iflavour = zipPlain [Magenta]
   , icount   = 1
   , irarity  = [(1, 15), (10, 5)]
@@ -1133,7 +1133,7 @@ wasteRobot = ItemKind  -- not a tank, because smell-only alien is already a tank
                , (WASTE_CONTAINER, CEqp) ]
   }
 wasteRobotNoEqp = wasteRobot  -- no drops, for gauntlet and to avoid junk
-  { ifreq    = [ (MOBILE, 100), (VIRUS_ROBOT, 100) ]
+  { ifreq    = [ (MOBILE, 100), (GAUNTLET_ROBOT, 250) ]
   , ikit     = [ (S_TENTACLE, COrgan), (S_SNOUT, COrgan)
                , (S_NOSTRIL, COrgan)  -- only smell, for variety
                , (S_ROBOT_BRAIN, COrgan) ]
@@ -1142,7 +1142,7 @@ lightRobot = ItemKind
   { isymbol  = toContentSymbol 'r'
   , iname    = "decoration robot"
   , ifreq    = [ (ROBOT, 100), (MOBILE, 100), (MOBILE_ROBOT, 100)
-               , (CONSTRUCTION_ROBOT, 100), (VIRUS_ROBOT, 100) ]
+               , (CONSTRUCTION_ROBOT, 100) ]
   , iflavour = zipPlain [BrYellow]
   , icount   = 1
   , irarity  = [(3 * 10/16, 0), (4 * 10/16, 6), (10, 6)]
@@ -1171,7 +1171,7 @@ heavyRobot = ItemKind  -- summoning tank with armor, but fortunately weak
   { isymbol  = toContentSymbol 'r'
   , iname    = "demolition robot"
   , ifreq    = [ (ROBOT, 100), (MOBILE, 100), (MOBILE_ROBOT, 100)
-               , (CONSTRUCTION_ROBOT, 70), (VIRUS_ROBOT, 100) ]
+               , (CONSTRUCTION_ROBOT, 70) ]
   , iflavour = zipPlain [Cyan]
   , icount   = 1
   , irarity  = [(7 * 10/16, 0), (8 * 10/16, 4), (10, 13), (30, 30)]

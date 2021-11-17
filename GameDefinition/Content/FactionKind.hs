@@ -9,7 +9,7 @@
 module Content.FactionKind
   ( -- * Group name patterns
     pattern EXPLORER_REPRESENTATIVE, pattern EXPLORER_SHORT, pattern EXPLORER_NO_ESCAPE, pattern EXPLORER_MEDIUM, pattern EXPLORER_TRAPPED, pattern EXPLORER_AUTOMATED, pattern EXPLORER_AUTOMATED_TRAPPED, pattern EXPLORER_CAPTIVE, pattern EXPLORER_PACIFIST, pattern COMPETITOR_REPRESENTATIVE, pattern COMPETITOR_SHORT, pattern COMPETITOR_NO_ESCAPE, pattern CIVILIAN_REPRESENTATIVE, pattern CONVICT_REPRESENTATIVE, pattern MONSTER_REPRESENTATIVE, pattern MONSTER_ANTI, pattern MONSTER_ANTI_CAPTIVE, pattern MONSTER_ANTI_PACIFIST, pattern MONSTER_TOURIST, pattern MONSTER_TOURIST_PASSIVE, pattern MONSTER_CAPTIVE, pattern MONSTER_CAPTIVE_NARRATING, pattern ANIMAL_REPRESENTATIVE, pattern ANIMAL_MAGNIFICENT, pattern ANIMAL_EXQUISITE, pattern ANIMAL_CAPTIVE, pattern ANIMAL_NARRATING, pattern ANIMAL_MAGNIFICENT_NARRATING, pattern ANIMAL_CAPTIVE_NARRATING, pattern HORROR_REPRESENTATIVE, pattern HORROR_CAPTIVE, pattern HORROR_PACIFIST
-  , pattern EXPLORER_EXTERMINATOR, pattern ROBOT_REPRESENTATIVE, pattern ROBOT_CAPTIVE, pattern ROBOT_NARRATING, pattern ROBOT_VIRUS, pattern OFF_WORLD_REPRESENTATIVE
+  , pattern EXPLORER_EXTERMINATOR, pattern ROBOT_REPRESENTATIVE, pattern ROBOT_CAPTIVE, pattern ROBOT_NARRATING, pattern ROBOT_VIRUS, pattern ROBOT_GAUNTLET, pattern OFF_WORLD_REPRESENTATIVE
   , pattern REPRESENTATIVE
   , pattern ANIMAL_OR_ROBOT_NARRATING
   , groupNamesSingleton, groupNames
@@ -36,11 +36,11 @@ import           Game.LambdaHack.Definition.DefsInternal
 groupNamesSingleton :: [GroupName FactionKind]
 groupNamesSingleton =
        [EXPLORER_REPRESENTATIVE, EXPLORER_SHORT, EXPLORER_NO_ESCAPE, EXPLORER_MEDIUM, EXPLORER_TRAPPED, EXPLORER_AUTOMATED, EXPLORER_AUTOMATED_TRAPPED, EXPLORER_CAPTIVE, EXPLORER_PACIFIST, COMPETITOR_REPRESENTATIVE, COMPETITOR_SHORT, COMPETITOR_NO_ESCAPE, CIVILIAN_REPRESENTATIVE, CONVICT_REPRESENTATIVE, MONSTER_REPRESENTATIVE, MONSTER_ANTI, MONSTER_ANTI_CAPTIVE, MONSTER_ANTI_PACIFIST, MONSTER_TOURIST, MONSTER_TOURIST_PASSIVE, MONSTER_CAPTIVE, MONSTER_CAPTIVE_NARRATING, ANIMAL_REPRESENTATIVE, ANIMAL_MAGNIFICENT, ANIMAL_EXQUISITE, ANIMAL_CAPTIVE, ANIMAL_NARRATING, ANIMAL_MAGNIFICENT_NARRATING, ANIMAL_CAPTIVE_NARRATING, HORROR_REPRESENTATIVE, HORROR_CAPTIVE, HORROR_PACIFIST]
-       ++ [EXPLORER_EXTERMINATOR, ROBOT_REPRESENTATIVE, ROBOT_CAPTIVE, ROBOT_NARRATING, ROBOT_VIRUS, OFF_WORLD_REPRESENTATIVE]
+       ++ [EXPLORER_EXTERMINATOR, ROBOT_REPRESENTATIVE, ROBOT_CAPTIVE, ROBOT_NARRATING, ROBOT_VIRUS, ROBOT_GAUNTLET, OFF_WORLD_REPRESENTATIVE]
 
 pattern EXPLORER_REPRESENTATIVE, EXPLORER_SHORT, EXPLORER_NO_ESCAPE, EXPLORER_MEDIUM, EXPLORER_TRAPPED, EXPLORER_AUTOMATED, EXPLORER_AUTOMATED_TRAPPED, EXPLORER_CAPTIVE, EXPLORER_PACIFIST, COMPETITOR_REPRESENTATIVE, COMPETITOR_SHORT, COMPETITOR_NO_ESCAPE, CIVILIAN_REPRESENTATIVE, CONVICT_REPRESENTATIVE, MONSTER_REPRESENTATIVE, MONSTER_ANTI, MONSTER_ANTI_CAPTIVE, MONSTER_ANTI_PACIFIST, MONSTER_TOURIST, MONSTER_TOURIST_PASSIVE, MONSTER_CAPTIVE, MONSTER_CAPTIVE_NARRATING, ANIMAL_REPRESENTATIVE, ANIMAL_MAGNIFICENT, ANIMAL_EXQUISITE, ANIMAL_CAPTIVE, ANIMAL_NARRATING, ANIMAL_MAGNIFICENT_NARRATING, ANIMAL_CAPTIVE_NARRATING, HORROR_REPRESENTATIVE, HORROR_CAPTIVE, HORROR_PACIFIST :: GroupName FactionKind
 
-pattern EXPLORER_EXTERMINATOR, ROBOT_REPRESENTATIVE, ROBOT_CAPTIVE, ROBOT_NARRATING, ROBOT_VIRUS, OFF_WORLD_REPRESENTATIVE :: GroupName FactionKind
+pattern EXPLORER_EXTERMINATOR, ROBOT_REPRESENTATIVE, ROBOT_CAPTIVE, ROBOT_NARRATING, ROBOT_VIRUS, ROBOT_GAUNTLET, OFF_WORLD_REPRESENTATIVE :: GroupName FactionKind
 
 groupNames :: [GroupName FactionKind]
 groupNames = [REPRESENTATIVE, ANIMAL_OR_ROBOT_NARRATING]
@@ -95,7 +95,8 @@ pattern EXPLORER_EXTERMINATOR = GroupName "explorer exterminator"
 pattern ROBOT_REPRESENTATIVE = GroupName "robot"
 pattern ROBOT_CAPTIVE = GroupName "robot captive"
 pattern ROBOT_NARRATING = GroupName "robot narrating"
-pattern ROBOT_VIRUS = GroupName "robot virus-infested"
+pattern ROBOT_VIRUS = GroupName "robot replicant"
+pattern ROBOT_GAUNTLET = GroupName "robot virus-infested"
 pattern OFF_WORLD_REPRESENTATIVE = GroupName "off-world mercenary"
 
 -- * Teams
@@ -115,11 +116,11 @@ teamOther = TeamContinuity 10
 
 content :: [FactionKind]
 content = [factExplorer, factExplorerShort, factExplorerNoEscape, factExplorerMedium, factExplorerTrapped, factExplorerAutomated, factExplorerAutomatedTrapped, factExplorerCaptive, factExplorerPacifist, factCompetitor, factCompetitorShort, factCompetitorNoEscape, factCivilian, factConvict, factMonster, factMonsterAnti, factMonsterAntiCaptive, factMonsterAntiPacifist, factMonsterTourist, factMonsterTouristPassive, factMonsterCaptive, factMonsterCaptiveNarrating, factAnimal, factAnimalMagnificent, factAnimalExquisite, factAnimalCaptive, factAnimalNarrating, factAnimalMagnificentNarrating, factAnimalCaptiveNarrating, factHorror, factHorrorCaptive, factHorrorPacifist]
-  ++ [factExplorerExterminator, factRobot, factRobotCaptive, factRobotNarrating, factRobotVirus, factOffWorld]
+  ++ [factExplorerExterminator, factRobot, factRobotCaptive, factRobotNarrating, factRobotVirus, factRobotGauntlet, factOffWorld]
 
 factExplorer,            factExplorerShort, factExplorerNoEscape, factExplorerMedium, factExplorerTrapped, factExplorerAutomated, factExplorerAutomatedTrapped, factExplorerCaptive, factExplorerPacifist, factCompetitor, factCompetitorShort, factCompetitorNoEscape, factCivilian, factConvict, factMonster, factMonsterAnti, factMonsterAntiCaptive, factMonsterAntiPacifist, factMonsterTourist, factMonsterTouristPassive, factMonsterCaptive, factMonsterCaptiveNarrating, factAnimal, factAnimalMagnificent, factAnimalExquisite, factAnimalCaptive, factAnimalNarrating, factAnimalMagnificentNarrating, factAnimalCaptiveNarrating, factHorror, factHorrorCaptive, factHorrorPacifist :: FactionKind
 
-factExplorerExterminator, factRobot, factRobotCaptive, factRobotNarrating, factRobotVirus, factOffWorld :: FactionKind
+factExplorerExterminator, factRobot, factRobotCaptive, factRobotNarrating, factRobotVirus, factRobotGauntlet, factOffWorld :: FactionKind
 
 -- * Content
 
@@ -439,9 +440,13 @@ factRobotVirus = factRobot
   { fname = "Replicant Infestation"
   , ffreq = [(ROBOT_VIRUS, 1)]
   , fteam = teamOther  -- not the same as other robots
-  , fgroups = [VIRUS_ROBOT]  -- help assign proper actors to the faction
+  , fgroups = [MOBILE_ROBOT]  -- help assign proper actors to the faction
   , fneverEmpty = True  -- faction dissolved when all killed, despite spawning
   , falliedTeams = []  -- cut off, weird
+  }
+factRobotGauntlet = factRobot
+  { ffreq = [(ROBOT_GAUNTLET, 1)]
+  , fgroups = [GAUNTLET_ROBOT]  -- help assign proper actors to the faction
   }
 
 -- ** teamOffWorld
