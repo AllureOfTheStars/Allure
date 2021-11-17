@@ -119,7 +119,7 @@ rogue = CaveKind
                     , (IK.TREASURE, 40) ]
   , cplaceFreq    = [(ROGUE, 1)]
   , cpassable     = False
-  , labyrinth     = False
+  , clabyrinth    = False
   , cdefTile      = ROGUE_SET
   , cdarkCorTile  = FLOOR_CORRIDOR_DARK
   , clitCorTile   = FLOOR_CORRIDOR_LIT
@@ -302,7 +302,7 @@ noise = rogue
                     , (IK.TREASURE, 40), (IK.ANY_SCROLL, 200) ]
   , cplaceFreq    = [(NOISE, 1)]
   , cpassable     = True
-  , labyrinth     = True
+  , clabyrinth    = True
   , cdefTile      = NOISE_SET_LIT
   , cwallTile     = OPENABLE_WALL
   , cfenceApart   = True  -- ensures no cut-off parts from collapsed
@@ -327,7 +327,7 @@ power = noise
   , citemNum      = 16 `d` 2
   , citemFreq     = [(IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 10), (GEM, 80)]
                       -- can't be "valuable" or template items generated
-  , labyrinth     = True
+  , clabyrinth    = True
   , cdefTile      = POWER_SET_DARK
   , cdarkCorTile  = OILY_FLOOR_DARK
   , clitCorTile   = OILY_FLOOR_LIT
@@ -484,7 +484,7 @@ virus = rogue
   , citemFreq     = [(IK.COMMON_ITEM, 70), (IK.CRAWL_ITEM, 30)]
   , cplaceFreq    = [(VIRUS, 1)]
   , cpassable     = True
-  , labyrinth     = True  -- don't let aliens explore and farm the robots
+  , clabyrinth    = True  -- don't let aliens explore and farm the robots
   , cdefTile      = VIRUS_SET_DARK
   , cdarkCorTile  = OILY_FLOOR_DARK
   , clitCorTile   = OILY_FLOOR_LIT
