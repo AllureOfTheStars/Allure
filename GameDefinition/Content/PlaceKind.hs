@@ -1507,7 +1507,8 @@ tank6 = tank
                ]
   }
 tank7 = tank
-  { pfreq    = [(EMPTY, 300), (EXIT, 5), (NOISE, 100), (BATTLE, 50)]
+  { pfreq    = [ (EMPTY, 300), (EXIT, 5), (NOISE, 100), (BATTLE, 50)
+               , (GAUNTLET, 1) ]
   , ptopLeft = [ "rr#"
                , "r##"
                , "###"
