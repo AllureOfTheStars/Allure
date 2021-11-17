@@ -1201,7 +1201,7 @@ light1 = ItemKind
                , (FIRE_SOURCE, 1), (S_WOODEN_TORCH, 1) ]
   , iflavour = zipPlain [Brown]
   , icount   = 1
-  , irarity  = [(3 * 10/15, 15), (4 * 10/15, 1)]
+  , irarity  = [(3 * 10/16, 15), (4 * 10/16, 1)]
                  -- crafted, so rare; later taken from aliens
   , iverbHit = "scorch"
   , iweight  = 1000
@@ -1442,7 +1442,7 @@ necklaceTemplate = ItemKind
 necklace1 = necklaceTemplate
   { iname    = "the Necklace"
   , ifreq    = [(CRAWL_ITEM, 50), (ANY_JEWELRY, 25)]
-  , irarity  = [(3 * 10/15, 0), (4 * 10/15, 1), (10, 5)]
+  , irarity  = [(3 * 10/16, 0), (4 * 10/16, 1), (10, 5)]
                  -- prevents camping on lvl 3
   , iaspects = [ SetFlag Unique, ELabel "of Spur Life"
                , Timeout $ (4 - 1 `dL` 3) * 10
@@ -1794,7 +1794,7 @@ spacesuitTorn = spacesuit
   { iname    = "torn spacesuit"
   , ifreq    = [(CRAWL_ITEM, 100), (S_SPACESUIT_TORN, 1)]
   , icount   = 1 `d` 3
-  , irarity  = [(1, 17), (8 * 10/15, 10)]
+  , irarity  = [(1, 17), (8 * 10/16, 10)]
   , iverbHit = "entangle"
   , iweight  = 10000
   , iaspects = [ AddSkill SkHurtMelee (-30)
@@ -1831,7 +1831,7 @@ gloveGauntlet = gloveFencing
   , ifreq    = [ (COMMON_ITEM, 100), (S_SPACESUIT_GLOVE, 1)
                , (SPACESUIT_PART, 2), (ARMOR_MISC, 1), (STARTING_ARMOR, 50) ]
   , iflavour = zipFancy [White]
-  , irarity  = [(1, 10), (5 * 10/15, 10), (6 * 10/15, 1)]
+  , irarity  = [(1, 10), (5 * 10/16, 10), (6 * 10/16, 1)]
   , iverbHit = "mow"
   , iweight  = 500
   , idamage  = 3 `d` 1
@@ -1909,7 +1909,7 @@ helmArmored = ItemKind
                , (STARTING_ARMOR, 50) ]
   , iflavour = zipFancy [BrBlue]
   , icount   = 1
-  , irarity  = [(1, 11), (4 * 10/15, 11), (5 * 10/15, 1)]
+  , irarity  = [(1, 11), (4 * 10/16, 11), (5 * 10/16, 1)]
   , iverbHit = "headbutt"
   , iweight  = 2000
   , idamage  = 4 `d` 1
@@ -1933,7 +1933,7 @@ heavyBoot = ItemKind
                  -- no STARTING_ARMOR, because the malus tricky for newbies
   , iflavour = zipFancy [Magenta]
   , icount   = 1
-  , irarity  = [(1, 12), (3 * 10/15, 12), (4 * 10/15, 1)]
+  , irarity  = [(1, 12), (3 * 10/16, 12), (4 * 10/16, 1)]
   , iverbHit = "sock"
   , iweight  = 100000  -- including the fake gravity mass
   , idamage  = 6 `d` 1
@@ -2124,7 +2124,7 @@ crowbar = ItemKind
   , iflavour = zipPlain [BrCyan]
   , icount   = 1
   , iweight  = 1000
-  , irarity  = [(1, 5), (3 * 10/15, 5), (4 * 10/15, 1)]
+  , irarity  = [(1, 5), (3 * 10/16, 5), (4 * 10/16, 1)]
   , iverbHit = "gouge"
   , idamage  = 2 `d` 1
   , iaspects = [ Timeout $ 2 + 1 `d` 3
@@ -2145,7 +2145,7 @@ catsPaw = ItemKind
   , iflavour = zipPlain [Cyan]
   , icount   = 1
   , iweight  = 500
-  , irarity  = [(1, 12), (3 * 10/15, 12), (4 * 10/15, 1)]
+  , irarity  = [(1, 12), (3 * 10/16, 12), (4 * 10/16, 1)]
   , iverbHit = "paw"
   , idamage  = 1 `d` 1
   , iaspects = [ Timeout $ 1 + 1 `d` 2
