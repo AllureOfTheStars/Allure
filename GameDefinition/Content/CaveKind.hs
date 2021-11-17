@@ -138,6 +138,7 @@ rogue = CaveKind
   , cstairAllowed = [ (WALLED_STAIRCASE, 50), (OPEN_STAIRCASE, 50)
                     , (TINY_STAIRCASE, 1) ]
   , cskip         = []
+  , cinitSleep    = InitSleepPermitted
   , cdesc         = "Winding tunnels stretch into the dark. A few areas are passable but the remainder is packed with tanks and cells of raw materials and machinery."
   }
 residential = rogue  -- an alternative with lit corridors but dark rooms
@@ -218,7 +219,8 @@ casino = arena
   , cfenceTileW   = HABITAT_CONTAINMENT_WALL
   , cminStairDist = 10
   , cmaxStairsNum = 2  -- to make possible 2 stairs in the last cave
-  , cdesc         = "The establishment is no longer filled with hollow-eyed gamblers; more dangerous things now lurk in the dark."
+  , cinitSleep    = InitSleepBanned
+  , cdesc         = "The establishment is no longer filled with hollow-eyed gamblers; more dangerous things now lurk in the dark. But the greedy excitement is not gone, even if out of place. Flashing colourful lights and enticing sounds make it a place where one couldn't sleep."
   }
 museum = arena
   { cname         = "Museum"
@@ -243,7 +245,8 @@ museum = arena
   , cfenceTileS   = HABITAT_CONTAINMENT_WALL
   , cfenceTileW   = HABITAT_CONTAINMENT_WALL
   , cminStairDist = 10
-  , cdesc         = "History has shown that museal treasures are safer in space than anywhere on Earth. Passengers eagerly attend exhibitions, even if over the weeks of the journey they become increasingly a captive audience. Spaceship crew are not that enthusiastic but even they find reasons to pay visits despite misgivings of museum security. Quite often a museum is the only place within millions of kilometers to house a desperately needed tool, old but sturdy beyond anything a 3D printer can produce."
+  , cinitSleep    = InitSleepAlways
+  , cdesc         = "History has shown that museal treasures are safer in space than anywhere on Earth. Passengers eagerly attend exhibitions, even if over the weeks of the journey they become increasingly a captive audience and stifle many a yawn. Spaceship crew are not that enthusiastic but even they find reasons to pay visits despite misgivings of museum security. Quite often a museum is the only place within millions of kilometers to house a desperately needed tool, old but sturdy beyond anything a 3D printer can produce."
   }
 laboratory = rogue
   { cname         = "Laboratory"
@@ -313,6 +316,7 @@ noise = rogue
                     , (TINY_LIFT, 1) ]
   , cstairAllowed = [ (CLOSED_STAIRCASE, 50), (OPEN_STAIRCASE, 50)
                     , (TINY_STAIRCASE, 1) ]
+  , cinitSleep    = InitSleepBanned
   , cdesc         = "Several machines still function, processors whirring through routines scheduled by dead men. Some scattered chips can still be read."
   }
 power = noise
@@ -339,6 +343,7 @@ power = noise
   , cstairAllowed = [ (GATED_CLOSED_LIFT, 50)
                     , (GATED_OPEN_LIFT, 50)
                     , (GATED_TINY_LIFT, 1) ]
+  , cinitSleep    = InitSleepBanned
   , cdesc         = "A trickle of energy flows through a hub that could power a city. The air is warm and carries organic stench. Once in a while a young animal scurries across a lit patch of ground, pouncing in low gravity."
   }
 empty = rogue
@@ -537,6 +542,7 @@ gauntlet = rogue
   , cescapeFreq   = [(ALARM_ESCAPE_UP, 1)]
   , cstairFreq    = []
   , cstairAllowed = []
+  , cinitSleep    = InitSleepBanned  -- to make it harder to escape freely
   , cskip         = [0]  -- don't start heroes nor opponents on escape
   , cdesc         = "Triton's cryothermal vents that supply energy and resources to the city are spread far apart. That funnels the unregulated sprawl of the sublunar city wide rather than deep and favours tunnels over domes."
   }
