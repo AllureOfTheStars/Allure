@@ -327,6 +327,7 @@ power = noise
   , citemNum      = 16 `d` 2
   , citemFreq     = [(IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 10), (GEM, 80)]
                       -- can't be "valuable" or template items generated
+  , labyrinth     = True
   , cdefTile      = POWER_SET_DARK
   , cdarkCorTile  = OILY_FLOOR_DARK
   , clitCorTile   = OILY_FLOOR_LIT
