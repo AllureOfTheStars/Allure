@@ -1357,7 +1357,7 @@ floorOily = floorArena
 oilSpill = TileKind  -- always lit
   { tsymbol  = '~'
   , tname    = "oil spill"
-  , tfreq    = [ (POWER_SET_DARK, 35), (EXIT_SET_LIT, 9), (VIRUS_SET_DARK, 50)
+  , tfreq    = [ (POWER_SET_DARK, 35), (EXIT_SET_LIT, 9), (VIRUS_SET_DARK, 15)
                , (AMBUSH_SET_DARK, 20), (S_OIL_SPILL, 1) ]
   , tcolor   = BrYellow
   , tcolor2  = BrGreen
@@ -1380,7 +1380,7 @@ oilSpillSpice = oilSpill
 oilBurning = TileKind  -- always lit
   { tsymbol  = '~'
   , tname    = "burning oil"
-  , tfreq    = [ (POWER_SET_DARK, 1), (VIRUS_SET_DARK, 2), (AMBUSH_SET_DARK, 1)
+  , tfreq    = [ (POWER_SET_DARK, 1), (VIRUS_SET_DARK, 1), (AMBUSH_SET_DARK, 1)
                , (S_BURNING_OIL, 1) ]
   , tcolor   = BrRed
   , tcolor2  = Red

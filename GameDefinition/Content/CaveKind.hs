@@ -233,7 +233,7 @@ museum = arena
   , cnightOdds    = 51  -- always night
   , cactorCoeff   = 100  -- cramped, don't overcrowd
   , cactorFreq    = [(MONSTER, 100), (ANIMAL, 25), (ROBOT, 25)]
-  , citemNum      = 16 `d` 2  -- rare, so make it exciting
+  , citemNum      = 12 `d` 2  -- rare, so make it exciting despite sleeping foes
   , citemFreq     = [ (IK.COMMON_ITEM, 20)
                     , (IK.CRAWL_ITEM, 20)
                     , (IK.TREASURE, 20)
@@ -469,14 +469,14 @@ shallowRogue = rogue
       [ "This close to the outermost deck, residence is not permitted and walls and doors are sturdier to contain a theoretically possible micro-meteorite breach. The entry is not closed off, though, because some passengers can't live without a regular pilgrimage to 'look outside' and the only way to the bottom-most level leads through here. Apparently, gazing at the sharp pin-points of stars and planets through the reinforced oriel glass is incomparable to watching the same through the thin polymer of wall displays."
       , "Animals appear to share the fascination of outer decks, perhaps attracted by the increased gravity, nearly Earth-like, unlike elsewhere on the ship. However, they dislike many industrial fluids stored on these floors, so flinging random flasks at them works as an effective deterrent. Moreover, if you throw an unidentified flask, you can be sure you won't waste a badly needed nano medicine, because it's never stored in such large containers. Even tiny vials cost a fortune." ]
   }
-virus = rogue
+virus = rogue  -- this is a hard level requiring preparation; can be skipped
   { cname         = "Machinarium"
   , cfreq         = [(CAVE_VIRUS, 1)]
   , cXminSize     = 17
-  , cYminSize     = 15
+  , cYminSize     = 13
   , ccellSize     = DiceXY 4 4
-  , cminPlaceSize = DiceXY 2 2
-  , cmaxPlaceSize = DiceXY 3 3
+  , cminPlaceSize = DiceXY 3 3
+  , cmaxPlaceSize = DiceXY 5 4
   , cdarkOdds     = 51  -- all rooms dark
   , cnightOdds    = 51  -- always night
   , cauxConnects  = 0
@@ -485,7 +485,7 @@ virus = rogue
   , chidden       = 0
   , cactorCoeff   = 4  -- fast spawning
   , cactorFreq    = [(MOBILE_ROBOT, 100)]  -- only mobile, for fast action
-  , citemNum      = 16 `d` 2
+  , citemNum      = 10 `d` 2
   , citemFreq     = [(IK.COMMON_ITEM, 70), (IK.CRAWL_ITEM, 30)]
   , cplaceFreq    = [(VIRUS, 1)]
   , cpassable     = True
