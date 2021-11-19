@@ -328,7 +328,6 @@ power = noise
   , cminPlaceSize = DiceXY 7 7
   , cmaxPlaceSize = DiceXY 20 20
   , cnightOdds    = 51  -- easier variant, but looks sinister
-  , citemNum      = 16 `d` 2
   , citemFreq     = [(IK.COMMON_ITEM, 20), (IK.CRAWL_ITEM, 10), (GEM, 80)]
                       -- can't be "valuable" or template items generated
   , clabyrinth    = True
@@ -438,7 +437,7 @@ bridge = rogue
   , cactorCoeff   = 400  -- it's quite deep already, so spawn slowly;
                          -- this is initially the best level for sleeping
   , cactorFreq    = [(ANIMAL, 100)]
-  , citemNum      = 12 `d` 2  -- lure them in with loot
+  , citemNum      = 16  -- make the initial experience tamer
   , citemFreq     = [(IK.COMMON_ITEM, 100), (GARDENING_TOOL, 800)]
   , cdefTile      = FILLER_WALL
   , cfenceTileN   = HABITAT_CONTAINMENT_WALL  -- cave isolated for safety
@@ -460,7 +459,7 @@ shallowRogue = rogue
   , cYminSize     = 37
   , cactorCoeff   = 150  -- more difficult
   , cactorFreq    = filter ((/= MONSTER) . fst) $ cactorFreq rogue
-  , citemNum      = 14 `d` 2
+  , citemNum      = 20  -- make the initial experience tamer
   , citemFreq     = [ (IK.COMMON_ITEM, 40), (IK.CRAWL_ITEM, 60)
                     , (GARDENING_TOOL, 700), (IK.ANY_FLASK, 200) ]
   , cmaxStairsNum = 2
@@ -485,7 +484,7 @@ virus = rogue  -- this is a hard level requiring preparation; can be skipped
   , chidden       = 0
   , cactorCoeff   = 4  -- fast spawning
   , cactorFreq    = [(MOBILE_ROBOT, 100)]  -- only mobile, for fast action
-  , citemNum      = 10 `d` 2
+  , citemNum      = 12  -- avoid random excess given the low area
   , citemFreq     = [(IK.COMMON_ITEM, 70), (IK.CRAWL_ITEM, 30)]
   , cplaceFreq    = [(VIRUS, 1)]
   , cpassable     = True
@@ -561,7 +560,7 @@ raid = rogue
   , cdefTile      = FILLER_WALL
   , cactorCoeff   = 300  -- deep level with no kit, so slow spawning
   , cactorFreq    = [(ANIMAL, 50), (ROBOT, 50)]
-  , citemNum      = 9 `d` 6  -- just one level, hard enemies, treasure
+  , citemNum      = 20  -- make the initial experience tamer
   , citemFreq     = [ (IK.COMMON_ITEM, 30)
                     , (STARTING_ARMOR, 100), (STARTING_WEAPON, 300)
                     , (WEAK_ARROW, 100), (LIGHT_ATTENUATOR, 50)
@@ -635,7 +634,9 @@ shootout = rogue  -- a scenario with strong missiles;
   , cactorFreq    = []
   , citemNum      = 6 `d` 16
                       -- less items in inventory, more to be picked up,
-                      -- to reward explorer and aggressor and punish camper
+                      -- to reward explorer and aggressor and punish camper;
+                      -- very different experience depending on the roll,
+                      -- but it's symmetric, so it's fine
   , citemFreq     = [ (IK.COMMON_ITEM, 30), (GARDENING_TOOL, 500)
                     , (ANY_ARROW, 400), (HARPOON, 200), (IK.EXPLOSIVE, 300) ]
                       -- Many consumable buffs are needed in symmetric maps
@@ -726,7 +727,7 @@ zoo = rogue  -- few lights and many solids, to help the less numerous heroes
   , copenChance   = 9%10
   , chidden       = 0
   , cactorFreq    = []
-  , citemNum      = 9 `d` 8
+  , citemNum      = 10 `d` 8
   , citemFreq     = [ (IK.COMMON_ITEM, 100), (LIGHT_ATTENUATOR, 1000)
                     , (STARTING_ARMOR, 500), (STARTING_WEAPON, 1000) ]
   , cplaceFreq    = [(ZOO, 1)]
