@@ -427,13 +427,14 @@ outermost = empty
 bridge = rogue
   { cname         = "Captain's bridge"
   , cfreq         = [(CAVE_BRIDGE, 1)]
-  , cXminSize     = 30
+  , cXminSize     = 37
   , cYminSize     = 30
   , ccellSize     = DiceXY (2 `d` 4 + 5) (1 `d` 2 + 5)
   , cminPlaceSize = DiceXY (2 `d` 2 + 3) (1 `d` 2 + 4)  -- sometimes merge all
   , cmaxPlaceSize = DiceXY 16 20
   , cdarkOdds     = 0  -- all rooms lit, for a gentle start
-  , cauxConnects  = 2  -- few rooms, so many corridors
+  , cauxConnects  = 1  -- few rooms, so many corridors
+  , cmaxVoid      = 1%5  -- few rooms, so increase the chance of any void
   , cactorCoeff   = 400  -- it's quite deep already, so spawn slowly;
                          -- this is initially the best level for sleeping
   , cactorFreq    = [(ANIMAL, 100)]
@@ -444,7 +445,6 @@ bridge = rogue
   , cfenceTileE   = HABITAT_CONTAINMENT_WALL
   , cfenceTileS   = HABITAT_CONTAINMENT_WALL
   , cfenceTileW   = HABITAT_CONTAINMENT_WALL
-  , cminStairDist = 10
   , cmaxStairsNum = 1
   , cstairFreq    = [ (WELDED_WALLED_LIFT, 50)
                     , (WELDED_OPEN_LIFT, 50)
