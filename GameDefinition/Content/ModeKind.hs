@@ -12,7 +12,7 @@ module Content.ModeKind
     content
 #ifdef EXPOSE_INTERNAL
   -- * Group name patterns
-  , pattern GAUNTLET, pattern RAID, pattern BRAWL, pattern LONG, pattern CRAWL, pattern FOGGY, pattern SHOOTOUT, pattern PERILOUS, pattern HUNT, pattern NIGHT, pattern ESCAPE, pattern BURNING, pattern ZOO, pattern RANGED, pattern AMBUSH, pattern SAFARI, pattern DIG, pattern SEE, pattern SHORT, pattern CRAWL_EMPTY, pattern CRAWL_SURVIVAL, pattern SAFARI_SURVIVAL, pattern BATTLE, pattern BATTLE_DEFENSE, pattern BATTLE_SURVIVAL, pattern DEFENSE, pattern DEFENSE_EMPTY
+  , pattern GAUNTLET, pattern RAID, pattern BRAWL, pattern LONG, pattern CRAWL, pattern FOGGY, pattern SHOOTOUT, pattern PERILOUS, pattern HUNT, pattern NIGHT, pattern ESCAPE, pattern BURNING, pattern ZOO, pattern RANGED, pattern AMBUSH, pattern SAFARI, pattern DIG, pattern SEE, pattern SHORT, pattern FUN, pattern CRAWL_EMPTY, pattern CRAWL_SURVIVAL, pattern SAFARI_SURVIVAL, pattern BATTLE, pattern BATTLE_DEFENSE, pattern BATTLE_SURVIVAL, pattern DEFENSE, pattern DEFENSE_EMPTY
 #endif
   ) where
 
@@ -36,9 +36,9 @@ import Game.LambdaHack.Definition.DefsInternal
 
 groupNamesSingleton :: [GroupName ModeKind]
 groupNamesSingleton =
-       [GAUNTLET, RAID, BRAWL, LONG, CRAWL, FOGGY, SHOOTOUT, PERILOUS, HUNT, NIGHT, ESCAPE, BURNING, ZOO, RANGED, AMBUSH, SAFARI, DIG, SEE, SHORT, CRAWL_EMPTY, CRAWL_SURVIVAL, SAFARI_SURVIVAL, BATTLE, BATTLE_DEFENSE, BATTLE_SURVIVAL, DEFENSE, DEFENSE_EMPTY]
+       [GAUNTLET, RAID, BRAWL, LONG, CRAWL, FOGGY, SHOOTOUT, PERILOUS, HUNT, NIGHT, ESCAPE, BURNING, ZOO, RANGED, AMBUSH, SAFARI, DIG, SEE, SHORT, FUN, CRAWL_EMPTY, CRAWL_SURVIVAL, SAFARI_SURVIVAL, BATTLE, BATTLE_DEFENSE, BATTLE_SURVIVAL, DEFENSE, DEFENSE_EMPTY]
 
-pattern GAUNTLET, RAID, BRAWL, LONG, CRAWL, FOGGY, SHOOTOUT, PERILOUS, HUNT, NIGHT, ESCAPE, BURNING, ZOO, RANGED, AMBUSH, SAFARI, DIG, SEE, SHORT, CRAWL_EMPTY, CRAWL_SURVIVAL, SAFARI_SURVIVAL, BATTLE, BATTLE_DEFENSE, BATTLE_SURVIVAL, DEFENSE, DEFENSE_EMPTY :: GroupName ModeKind
+pattern GAUNTLET, RAID, BRAWL, LONG, CRAWL, FOGGY, SHOOTOUT, PERILOUS, HUNT, NIGHT, ESCAPE, BURNING, ZOO, RANGED, AMBUSH, SAFARI, DIG, SEE, SHORT, FUN, CRAWL_EMPTY, CRAWL_SURVIVAL, SAFARI_SURVIVAL, BATTLE, BATTLE_DEFENSE, BATTLE_SURVIVAL, DEFENSE, DEFENSE_EMPTY :: GroupName ModeKind
 
 groupNames :: [GroupName ModeKind]
 groupNames = []
@@ -62,6 +62,7 @@ pattern SAFARI = GroupName "safari"
 pattern DIG = GroupName "dig"
 pattern SEE = GroupName "see"
 pattern SHORT = GroupName "short"
+pattern FUN = GroupName "fun"
 pattern CRAWL_EMPTY = GroupName "crawlEmpty"  -- only the first word matters
 pattern CRAWL_SURVIVAL = GroupName "crawlSurvival"
 pattern SAFARI_SURVIVAL = GroupName "safariSurvival"
@@ -75,9 +76,9 @@ pattern DEFENSE_EMPTY = GroupName "defenseEmpty"
 
 content :: [ModeKind]
 content =
-  [gauntlet, raid, brawl, crawl, shootout, hunt, escape, zoo, ambush, safari, dig, see, short, crawlEmpty, crawlSurvival, safariSurvival, battle, battleDefense, battleSurvival, defense, defenseEmpty, screensaverGauntlet, screensaverRaid, screensaverBrawl, screensaverCrawl, screensaverShootout, screensaverHunt, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverSafari]
+  [gauntlet, raid, brawl, crawl, shootout, hunt, escape, zoo, ambush, safari, dig, see, short, fun, crawlEmpty, crawlSurvival, safariSurvival, battle, battleDefense, battleSurvival, defense, defenseEmpty, screensaverGauntlet, screensaverRaid, screensaverBrawl, screensaverCrawl, screensaverShootout, screensaverHunt, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverSafari]
 
-gauntlet,    raid, brawl, crawl, shootout, hunt, escape, zoo, ambush, safari, dig, see, short, crawlEmpty, crawlSurvival, safariSurvival, battle, battleDefense, battleSurvival, defense, defenseEmpty, screensaverGauntlet, screensaverRaid, screensaverBrawl, screensaverCrawl, screensaverShootout, screensaverHunt, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverSafari :: ModeKind
+gauntlet,    raid, brawl, crawl, shootout, hunt, escape, zoo, ambush, safari, dig, see, short, fun, crawlEmpty, crawlSurvival, safariSurvival, battle, battleDefense, battleSurvival, defense, defenseEmpty, screensaverGauntlet, screensaverRaid, screensaverBrawl, screensaverCrawl, screensaverShootout, screensaverHunt, screensaverEscape, screensaverZoo, screensaverAmbush, screensaverSafari :: ModeKind
 
 -- What other symmetric (two only-one-moves factions) and asymmetric vs crowd
 -- scenarios make sense (e.g., are good for a tutorial or for standalone
@@ -357,6 +358,20 @@ short = ModeKind
   , mendMsg = []
   , mrules  = ""
   , mdesc   = "See all short scenarios!"
+  , mreason = ""
+  , mhint   = ""
+  }
+
+fun = ModeKind
+  { mname   = "fun"
+  , mfreq   = [(FUN, 1)]
+  , mtutorial = False
+  , mattract = False
+  , mroster = rosterCrawlEmpty
+  , mcaves  = cavesFun
+  , mendMsg = []
+  , mrules  = ""
+  , mdesc   = "See all fun maps!"
   , mreason = ""
   , mhint   = ""
   }
@@ -707,7 +722,7 @@ rosterDefenseEmpty =
   , (HORROR_PACIFIST, []) ]
       -- for spawned and summoned animals
 
-cavesGauntlet, cavesRaid, cavesBrawl, cavesCrawl, cavesShootout, cavesHunt, cavesEscape, cavesZoo, cavesAmbush, cavesSafari, cavesDig, cavesSee, cavesShort, cavesCrawlEmpty, cavesBattle :: Caves
+cavesGauntlet, cavesRaid, cavesBrawl, cavesCrawl, cavesShootout, cavesHunt, cavesEscape, cavesZoo, cavesAmbush, cavesSafari, cavesDig, cavesSee, cavesShort, cavesFun, cavesCrawlEmpty, cavesBattle :: Caves
 
 cavesGauntlet = [([1], [CAVE_GAUNTLET])]
 
@@ -764,6 +779,13 @@ cavesSee = let numberCaves n c = ([n], [c])
 cavesShort = let numberCaves n c = ([n], [c])
              in reverse $ zipWith numberCaves [1..]
                 $ concatMap (replicate 100) $ take 8 allCaves
+
+cavesFun = let numberCaves n c = ([n], [c])
+               funModes = drop 3 (take 8 allCaves)
+               funLevels = [ CAVE_OUTERMOST, CAVE_RESIDENTIAL, CAVE_ROGUE
+                           , CAVE_LABORATORY, CAVE_ARENA ]
+           in reverse $ zipWith numberCaves [1..]
+              $ concatMap (replicate 100) $ funModes ++ funLevels
 
 allCaves :: [GroupName CaveKind]
 allCaves =

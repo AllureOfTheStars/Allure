@@ -16,6 +16,9 @@ see-caves:
 short-caves:
 	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --savePrefix know --newGame 5 --dumpInitRngs --gameMode short --knowItems --exposePlaces --exposeItems --exposeActors --showItemSamples --benchmark --noAnim --maxFps 1000
 
+fun-caves:
+	$$(cabal list-bin exe:Allure) --dbgMsgSer --logPriority 4 --savePrefix know --newGame 5 --dumpInitRngs --gameMode fun --knowItems --exposePlaces --exposeItems --exposeActors --showItemSamples --benchmark --noAnim --maxFps 1000
+
 configure-debug:
 	cabal configure --enable-profiling --profiling-detail=all-functions -fwith_expensive_assertions --disable-optimization
 
