@@ -710,11 +710,13 @@ giantOctopus = ItemKind
                , (AQUATIC, 90), (AQUATIC_ANIMAL, 90) ]  -- weak on land
   , iflavour = zipPlain [BrMagenta]  -- very exotic, so bright color
   , icount   = 1
-  , irarity  = [(1, 3), (7, 3)]
+  , irarity  = [(3 * 10/16, 0), (4 * 10/16, 5), (7, 3)]
+                 -- weak, but non-standard behaviour, so spoils initial mastery;
+                 -- later on not too common, because annoying
   , iverbHit = "thud"
   , iweight  = 72000
   , idamage  = 0
-  , iaspects = [ AddSkill SkMaxHP 17, AddSkill SkMaxCalm 80
+  , iaspects = [ AddSkill SkMaxHP 20, AddSkill SkMaxCalm 80
                , AddSkill SkSwimming 100  -- swims better than walks
                , AddSkill SkSpeed 27, AddSkill SkNocto 3 -- good night vision
                , AddSkill SkAlter (-2)  -- can't use hard stairs nor doors
