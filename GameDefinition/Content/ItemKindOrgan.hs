@@ -531,7 +531,8 @@ insectMortality = armoredSkin
   , ifreq    = [(S_INSECT_MORTALITY, 1)]
   , iverbHit = "age"
   , iaspects = [ AddSkill SkAggression 2  -- try to attack before you die
-               , Timeout $ 30 + (1 `d` 3) * 10  -- die very slowly
+               , Timeout $ 50 + (1 `d` 3) * 10  -- die even more slowly
+                                                -- due to large levels
                , SetFlag Periodic, SetFlag Durable ]
   , ieffects = [RefillHP (-1), Yell]
   , idesc    = ""
