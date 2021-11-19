@@ -1787,7 +1787,7 @@ spacesuit = ItemKind
                , SetFlag Durable, SetFlag Equipable
                , EqpSlot EqpSlotArmorMelee ]
   , ieffects = []
-  , idesc    = "A heavy spacesuit, with micro-suction machinery build into its boots, but requiring an external air tank for space walking. It heavily restrict arm movement, but not walking, regardless of gravity or lack thereof."
+  , idesc    = "A heavy spacesuit, with micro-suction machinery build into its boots, but requiring an external air tank for space walking. It heavily restricts arm movement, but not stride, regardless of gravity or lack thereof."
   , ikit     = []
   }
 spacesuitTorn = spacesuit
