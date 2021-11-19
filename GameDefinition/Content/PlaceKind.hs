@@ -625,7 +625,7 @@ bushClump = override2PlaceKind [('f', BUSH_CLUMP_DARK)]
                                [('f', BUSH_CLUMP_LIT)] $
             overridePlaceKind [(';', S_BUSH_LIT)] $ PlaceKind
   { pname    = "a bushy patch"
-  , pfreq    = [(SHOOTOUT, 120), (EMPTY, 60), (BRAWL, 30)]
+  , pfreq    = [(SHOOTOUT, 120), (EMPTY, 160), (BRAWL, 30)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -1483,7 +1483,7 @@ tank4 = tank
   }
 tank5 = tank
   { pname    = "a barrel yard"
-  , pfreq    = [(EMPTY, 1800), (EXIT, 700), (NOISE, 700), (BATTLE, 300)]
+  , pfreq    = [(EMPTY, 2000), (EXIT, 800), (NOISE, 800), (BATTLE, 350)]
   , pcover   = CAlternate
   , ptopLeft = [ "bbX"
                , "bbX"
@@ -1584,7 +1584,7 @@ shuttleHusk = override2PlaceKind [ ('·', OILY_FLOOR_DARK)
   , plegendLit = defaultLegendLit
   }
 shuttleHusk2 = shuttleHusk
-  { pfreq    = [(EMPTY, 1000), (EXIT, 15000), (AMBUSH, 15000)]
+  { pfreq    = [(EMPTY, 2000), (EXIT, 30000), (AMBUSH, 30000)]
   , ptopLeft = map (T.cons 'X' . flip T.snoc 'X')
                $ ptopLeft shuttleHusk  -- 9 x 9
   }
@@ -1638,7 +1638,7 @@ dormitory = overridePlaceKind [ ('d', FLOOR_ACTOR_ITEM_LIT)
                               , ('f', PUMPS_LIT)
                               , ('$', TRAPPABLE_WALL) ] $ PlaceKind
   { pname    = "dormitory"
-  , pfreq    = [(RESIDENTIAL, 10000)]
+  , pfreq    = [(RESIDENTIAL, 30000)]
   , prarity  = [(1, 1)]
   , pcover   = CAlternate
   , pfence   = FWall
