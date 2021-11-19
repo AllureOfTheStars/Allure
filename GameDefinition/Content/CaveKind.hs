@@ -428,12 +428,12 @@ bridge = rogue
   , cfreq         = [(CAVE_BRIDGE, 1)]
   , cXminSize     = 37
   , cYminSize     = 30
-  , ccellSize     = DiceXY (2 `d` 4 + 5) (1 `d` 2 + 5)
-  , cminPlaceSize = DiceXY (2 `d` 2 + 3) (1 `d` 2 + 4)  -- sometimes merge all
+  , ccellSize     = DiceXY (2 `d` 2 + 7) (1 `d` 2 + 5)
+  , cminPlaceSize = DiceXY (2 `d` 2 + 5) (1 `d` 2 + 4)  -- sometimes merge all
   , cmaxPlaceSize = DiceXY 16 20
   , cdarkOdds     = 0  -- all rooms lit, for a gentle start
   , cauxConnects  = 1  -- few rooms, so many corridors
-  , cmaxVoid      = 1%5  -- few rooms, so increase the chance of any void
+  , cmaxVoid      = 1%4  -- few rooms, so increase the chance of any void
   , cactorCoeff   = 400  -- it's quite deep already, so spawn slowly;
                          -- this is initially the best level for sleeping
   , cactorFreq    = [(ANIMAL, 100)]
