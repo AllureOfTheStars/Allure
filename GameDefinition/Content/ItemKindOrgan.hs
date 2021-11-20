@@ -869,26 +869,28 @@ mouthVent = armoredSkin
   , ifreq    = [(S_MOUTH_VENT, 1)]
   , iflavour = zipPlain [BrMagenta]
   , iverbHit = "surprise"
-  , iaspects = [ Timeout 7
+  , iaspects = [ Timeout 10
                , SetFlag Periodic, SetFlag Durable ]
-  , ieffects = [OneOf $
-      map (AndEffect (Explode S_SMOKE) . uncurry VerbMsg)
-          [ ("say: Sir, your luggage has already been delivered", ".")
-          , ("say: Sir, please find your luggage on the bench by your airlock", ".")
-          , ("say: To resume my service I need help with this implement", ".")
-          , ("announce: There's been a locomotive malfunction in component 'foot'. Help is requested", ".")
-          , ("announce: Deck blue, level four has been temporarily sealed for a routine inspection", ".")
-          , ("announce: Lifts are temporarily nonoperational. Please use emergency staircases", ".")
-          , ("ask: Would you kindly help me?", "")
-          , ("ask: Could you please come closer?", "")
-          , ("ask: Have you found your luggage, sir?", "")
-          , ("ask: Have you found the lift to your destination?", "")
-          , ("complain: I can't reach you with this tool", "." )
-          , ("complain: I can't hand you this item from here", "." )
-          , ("complain: I'm afraid, I can't do that", "." ) ]
-      ++ map Explode
-             [ S_PHEROMONE, S_RHINO_HOLOGRAM, S_CURRENT_DISCHARGE
-             , blastNoStatOf S_IMMOBILE, S_SPARK ]]
+  , ieffects =
+      [ OneOf $
+          map (uncurry VerbMsg)
+            [ ("say: Sir, your luggage has already been delivered", ".")
+            , ("say: Sir, please find your luggage on the bench by your airlock", ".")
+            , ("say: To resume my service I need help with this implement", ".")
+            , ("announce: There's been a locomotive malfunction in component 'foot'. Help is requested", ".")
+            , ("announce: Deck blue, level four has been temporarily sealed for a routine inspection", ".")
+            , ("announce: Lifts are temporarily nonoperational. Please use emergency staircases", ".")
+            , ("ask: Would you kindly help me?", "")
+            , ("ask: Could you please come closer?", "")
+            , ("ask: Have you found your luggage, sir?", "")
+            , ("ask: Have you found the lift to your destination?", "")
+            , ("complain: I can't reach you with this tool", "." )
+            , ("complain: I can't hand you this item from here", "." )
+            , ("complain: I'm afraid, I can't do that", "." ) ]
+          ++ [NopEffect, NopEffect, NopEffect, NopEffect]
+      , OneOf $ map Explode
+          [ S_PHEROMONE, S_RHINO_HOLOGRAM, S_CURRENT_DISCHARGE
+          , blastNoStatOf S_IMMOBILE, S_SPARK, S_SMOKE ] ]
   , idesc    = ""
   }
 dustVent = armoredSkin
