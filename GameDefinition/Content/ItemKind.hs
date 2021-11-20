@@ -2006,7 +2006,7 @@ buckler = ItemKind
                      -- and so attacking with buckler too early
                    (OnUser (Recharge 4 20)) ]
                      -- this is useful during a fight
-  , idesc    = "An arm protection made from an outer airlock panel. Not too small to deflect projectiles occasionally. Almost harmless when used offensively, but makes room for other weapons."
+  , idesc    = "An arm protection made from an outer airlock panel. Not too small to deflect projectiles occasionally. Almost harmless when used offensively, but can fend foes off to make room for other weapons."
   , ikit     = []
   }
 -- In melee, the shield's biggest power is pushing enemies,
