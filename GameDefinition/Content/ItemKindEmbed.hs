@@ -422,14 +422,14 @@ stairsUp = ItemKind
   , idamage  = 0
   , iaspects = [ELabel "of steps", SetFlag Durable]
   , ieffects = [Ascend True]
-  , idesc    = "Stairs that rise towards the spaceship core. It takes slightly more effort to climb than descend, but in lowered gravity it's almost instantaneous in either case."
+  , idesc    = "Emergency stairs that rise towards the spaceship core. It takes slightly more effort to climb than descend, but in lowered gravity it's almost instantaneous in either case."
   , ikit     = []
   }
 stairsDown = stairsUp
   { isymbol  = toContentSymbol '>'
   , ifreq    = [(STAIRS_DOWN, 1)]
   , ieffects = [Ascend False]
-  , idesc    = "Stairs that descend towards the outer ring. Narrow enough that only one person can comfortably use them at a time, but short enough that the whole team may climb down in quick succession."
+  , idesc    = "Emergency stairs that descend towards the outer ring. Narrow enough that only one person can comfortably use them at a time, but short enough that the whole team may climb down in quick succession."
   }
 escape = stairsUp
   { isymbol  = toContentSymbol '>'
@@ -771,14 +771,14 @@ liftUp = stairsUp
   , iflavour = zipPlain [Blue]
   , ifreq    = [(LIFT_UP, 1)]
   , iaspects = [SetFlag Durable]
-  , idesc    = ""  -- describe inner levels of the ship
+  , idesc    = "It's surprising that it still functions while all others are nonoperational."  -- describe inner levels of the ship
   }
 liftDown = stairsDown
   { iname    = "carriage"
   , iflavour = zipPlain [Blue]
   , ifreq    = [(LIFT_DOWN, 1)]
   , iaspects = [SetFlag Durable]
-  , idesc    = ""  -- describe outer levels of the ship
+  , idesc    = "It's surprising that it still functions while all others are nonoperational."  -- describe outer levels of the ship
   }
 liftTrap = stairsTrapUp
   { iname    = "elevator trap"  -- hat tip to US heroes
