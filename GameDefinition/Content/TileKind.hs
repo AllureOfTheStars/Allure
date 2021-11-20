@@ -943,15 +943,16 @@ floorArenaShade = floorActor  -- always dark
 
 -- *** Not clear
 
-oriel = TileKind
+oriel = TileKind  -- no dark variant; it looks dark even when lit
   { tsymbol  = '%'  -- story-wise it's transparent, hence the symbol
   , tname    = "oriel"
   , tfreq    = [ (ORIELS_FENCE, 15)
                , (AIRLOCK_FENCE, 5), (EMPTY_AIRLOCK_FENCE, 5) ]
-  , tcolor   = White
-  , tcolor2  = Black
+  , tcolor   = BrBlack
+  , tcolor2  = BrBlack
   , talter   = 5
-  , tfeature = [Embed BLACK_STARRY_SKY, Dark]
+  , tfeature = [Embed BLACK_STARRY_SKY]
+      -- this is morally @Clear@, but technically it would reach outside the map
   }
 outerHullWall = basicOuterFence
   { tname    = "outer hull wall"
@@ -1395,13 +1396,13 @@ oilBurning = TileKind  -- always lit
                , ChangeTo S_OIL_SPILL ]
                    -- TODO: change only after all 5 fires used up
   }
-floorWindow = floorArena  -- always lit
-  { tsymbol  = ' '  -- story-wise it's transparent, hence the symbol
+floorWindow = floorArena  -- no dark variant; it looks dark even when lit
+  { tsymbol  = floorSymbol  -- story-wise it's transparent, but no good symbol
   , tname    = "floor window"
   , tfreq    = [(EMPTY_SET_LIT, 24)]
-  , tcolor   = defFG
-  , tcolor2  = defFG
-  , tfeature = Embed BLACK_STARRY_SKY : tfeature floorCorridor
+  , tcolor   = BrBlack  -- not yellow, because light sucked away
+  , tcolor2  = BrBlack
+  , tfeature = Embed BLACK_STARRY_SKY : tfeature floorArena
   }
 underbrush = TileKind  -- always lit
   { tsymbol  = floorSymbol
