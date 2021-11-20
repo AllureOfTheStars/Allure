@@ -348,7 +348,7 @@ power = noise
 empty = rogue
   { cname         = "Construction site"
   , cfreq         = []  -- just a template for some others
-  , ccellSize     = DiceXY (2 `d` 8 + 14) 16
+  , ccellSize     = DiceXY (1 `d` 5 + 18) 16
   , cminPlaceSize = DiceXY 9 9  -- normally don't merge
   , cmaxPlaceSize = DiceXY 50 20  -- often maximize horizontally
   , cdarkOdds     = 1 `d` 100 + 1 `dL` 100
@@ -400,6 +400,7 @@ exit = empty
 outermost = empty
   { cname         = "Outermost deck"
   , cfreq         = [(CAVE_OUTERMOST, 100)]
+  , cdarkOdds     = 0  -- all rooms lit, because can be huge and few lights yet
   , cactorCoeff   = 5  -- shallower than LH, so fewer immediate actors, so boost
   , cactorFreq    = [ (ANIMAL, 3), (ROBOT, 1)
                     , (IMMOBILE_ROBOT, 90), (IMMOBILE_ANIMAL, 2)
