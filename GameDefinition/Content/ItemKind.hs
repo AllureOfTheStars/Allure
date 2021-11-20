@@ -40,15 +40,12 @@ groupNamesSingleton =
        [S_FRAGRANCE, S_SINGLE_SPARK, S_SPARK]
     ++ [FLASK_UNKNOWN, POTION_UNKNOWN, EDIBLE_PLANT_UNKNOWN, SCROLL_UNKNOWN, NECKLACE_UNKNOWN, RING_UNKNOWN, HAMMER_UNKNOWN, GEM_UNKNOWN, CURRENCY_UNKNOWN]
     ++ [S_RAG_TANGLE, S_GRASS_STITCHER, S_LADIES_FORK, S_SPADE, S_HOE]
-    ++ [COOKED_PLANT_UNKNOWN]
     ++ embedsGNSingleton ++ actorsGNSingleton ++ organsGNSingleton
     ++ blastsGNSingleton ++ temporariesGNSingleton
 
 pattern FLASK_UNKNOWN, POTION_UNKNOWN, EDIBLE_PLANT_UNKNOWN, SCROLL_UNKNOWN, NECKLACE_UNKNOWN, RING_UNKNOWN, HAMMER_UNKNOWN, GEM_UNKNOWN, CURRENCY_UNKNOWN :: GroupName ItemKind
 
 pattern S_RAG_TANGLE, S_GRASS_STITCHER, S_LADIES_FORK, S_SPADE, S_HOE :: GroupName ItemKind
-
-pattern COOKED_PLANT_UNKNOWN :: GroupName ItemKind
 
 groupNames :: [GroupName ItemKind]
 groupNames =
@@ -81,8 +78,6 @@ pattern CLOTHING_MISC = GroupName "miscellaneous clothing"
 
 -- In the Content section, Allure-specific definitions are interspersed
 -- among generic definitions to make managing related definitions easier.
-
-pattern COOKED_PLANT_UNKNOWN = GroupName "cooked plant unknown"
 
 pattern COOKED_PLANT = GroupName "cooked plant"
 pattern LIQUID_NITROGEN = GroupName "liquid nitrogen"
@@ -1112,13 +1107,12 @@ ediblePlant8 = ediblePlantTemplate
   , idamage  = 1 `d` 1
   , ieffects = [DropItem maxBound 1 COrgan S_HUNGRY]
   }
-cookedPlantTemplate = ediblePlantTemplate
+cookedPlantTemplate = ediblePlantTemplate  -- not secret
   { iname    = "cooked plant"
-  , ifreq    = [(COOKED_PLANT_UNKNOWN, 1)]
+  , ifreq    = []
   , iflavour = zipPlain stdCol
   , irarity  = [(1, 1)]
-  , iaspects = [ PresentAs COOKED_PLANT_UNKNOWN
-               , toVelocity 20 ]  -- low density, often falling apart
+  , iaspects = [toVelocity 30]  -- low density, often falling apart
   , idesc    = "Withered but fragrant bits of a colorful plant. Taste blandly, but break down easily, releasing all nutrients. Only eating may reveal the full effects."
   }
 cookedPlant1 = cookedPlantTemplate
