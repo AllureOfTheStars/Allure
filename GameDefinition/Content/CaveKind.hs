@@ -22,20 +22,18 @@ import Game.LambdaHack.Core.Prelude
 import           Data.Ratio
 import qualified Data.Text as T
 
-import           Content.ItemKind hiding
-  (content, groupNames, groupNamesSingleton)
-import           Content.ItemKindActor
-import           Content.ItemKindEmbed hiding (ESCAPE)
-import           Content.PlaceKind hiding
-  (content, groupNames, groupNamesSingleton)
-import           Content.TileKind hiding
-  (content, groupNames, groupNamesSingleton)
 import           Game.LambdaHack.Content.CaveKind
 import qualified Game.LambdaHack.Content.ItemKind as IK
 import           Game.LambdaHack.Content.TileKind
 import           Game.LambdaHack.Core.Dice
 import           Game.LambdaHack.Definition.Defs
 import           Game.LambdaHack.Definition.DefsInternal
+
+import Content.ItemKind hiding (content, groupNames, groupNamesSingleton)
+import Content.ItemKindActor
+import Content.ItemKindEmbed hiding (ESCAPE)
+import Content.PlaceKind hiding (content, groupNames, groupNamesSingleton)
+import Content.TileKind hiding (content, groupNames, groupNamesSingleton)
 
 -- * Group name patterns
 

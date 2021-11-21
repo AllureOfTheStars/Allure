@@ -29,14 +29,15 @@ import Game.LambdaHack.Core.Prelude
 
 import qualified Data.Text as T
 
-import Content.ItemKindActor
-import Content.ItemKindBlast
-import Content.ItemKindEmbed
-import Content.ItemKindOrgan
 import Game.LambdaHack.Content.TileKind
 import Game.LambdaHack.Definition.Color
 import Game.LambdaHack.Definition.Defs
 import Game.LambdaHack.Definition.DefsInternal
+
+import Content.ItemKindActor
+import Content.ItemKindBlast
+import Content.ItemKindEmbed
+import Content.ItemKindOrgan
 
 -- * Group name patterns
 
