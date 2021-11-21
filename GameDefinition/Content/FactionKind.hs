@@ -25,6 +25,7 @@ import Prelude ()
 import Game.LambdaHack.Core.Prelude
 
 import           Content.ItemKindActor
+import           Content.ItemKindOrgan
 import           Game.LambdaHack.Content.FactionKind
 import qualified Game.LambdaHack.Content.ItemKind as IK
 import           Game.LambdaHack.Definition.Ability
@@ -130,7 +131,7 @@ factExplorer = FactionKind
   { fname = "Spacefarer"
   , ffreq = [(EXPLORER_REPRESENTATIVE, 1), (REPRESENTATIVE, 1)]
   , fteam = teamExplorer
-  , fgroups = [HERO]  -- don't spam the escapists, etc.
+  , fgroups = [(HERO, 100)]  -- don't spam the escapists, etc., in description
   , fskillsOther = meleeAdjacent
   , fcanEscape = True
   , fneverEmpty = True
@@ -210,7 +211,7 @@ factCivilian = FactionKind
   { fname = "Civilian"
   , ffreq = [(CIVILIAN_REPRESENTATIVE, 1), (REPRESENTATIVE, 1)]
   , fteam = teamCivilian
-  , fgroups = [HERO, CIVILIAN]
+  , fgroups = [(HERO, 100), (CIVILIAN, 100)]  -- symmetric vs player
   , fskillsOther = zeroSkills  -- not coordinated by any leadership
   , fcanEscape = False
   , fneverEmpty = True
@@ -243,7 +244,8 @@ factMonster = FactionKind
   { fname = "Alien Hierarchy"
   , ffreq = [(MONSTER_REPRESENTATIVE, 1), (REPRESENTATIVE, 1)]
   , fteam = teamMonster
-  , fgroups = [MONSTER]  -- don't spam
+  , fgroups = [ (MONSTER, 100)
+              , (MOBILE_MONSTER, 1), (AQUATIC_MONSTER, 1) ]
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False
@@ -306,7 +308,9 @@ factAnimal = FactionKind
   { fname = "Animal Kingdom"
   , ffreq = [(ANIMAL_REPRESENTATIVE, 1), (REPRESENTATIVE, 1)]
   , fteam = teamAnimal
-  , fgroups = [ANIMAL, AQUATIC_ANIMAL, INSECT]  -- only the mildly distinct ones
+  , fgroups = [ (ANIMAL, 100), (INSECT, 100), (AQUATIC_ANIMAL, 100)
+                   -- only the distinct enough ones
+              , (MOBILE_ANIMAL, 1), (IMMOBILE_ANIMAL, 1), (SCAVENGER, 1) ]
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False
@@ -371,7 +375,7 @@ factHorror = FactionKind
   { fname = "Horror Den"
   , ffreq = [(HORROR_REPRESENTATIVE, 1), (REPRESENTATIVE, 1)]
   , fteam = teamHorror
-  , fgroups = [IK.HORROR]
+  , fgroups = [(IK.HORROR, 100)]
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False
@@ -413,7 +417,9 @@ factRobot = FactionKind
   { fname = "Robot Anarchy"
   , ffreq = [(ROBOT_REPRESENTATIVE, 1), (REPRESENTATIVE, 1)]
   , fteam = teamRobot
-  , fgroups = [ROBOT, MECHANICAL_CONTRAPTION]
+  , fgroups = [ (ROBOT, 100), (MECHANICAL_CONTRAPTION, 100)
+              , (MOBILE_ROBOT, 1), (IMMOBILE_ROBOT, 1)
+              , (CONSTRUCTION_ROBOT, 1) ]
   , fskillsOther = zeroSkills
   , fcanEscape = False
   , fneverEmpty = False
@@ -440,13 +446,13 @@ factRobotVirus = factRobot
   { fname = "Replicant Infestation"
   , ffreq = [(ROBOT_VIRUS, 1)]
   , fteam = teamOther  -- not the same as other robots
-  , fgroups = [MOBILE_ROBOT]  -- help assign proper actors to the faction
+  , fgroups = [(MOBILE_ROBOT, 100)]  -- help assign proper actors to the faction
   , fneverEmpty = True  -- faction dissolved when all killed, despite spawning
   , falliedTeams = []  -- cut off, weird
   }
 factRobotGauntlet = factRobot
   { ffreq = [(ROBOT_GAUNTLET, 1)]
-  , fgroups = [GAUNTLET_ROBOT]  -- help assign proper actors to the faction
+  , fgroups = fgroups factRobot ++ [(GAUNTLET_ROBOT, 1)]
   }
 
 -- ** teamOffWorld
@@ -455,7 +461,7 @@ factOffWorld = factCompetitor
   { fname = "Gray Off-World Mercenary"
   , ffreq = [(OFF_WORLD_REPRESENTATIVE, 1), (REPRESENTATIVE, 1)]
   , fteam = teamOffWorld
-  , fgroups = [MERCENARY_HERO]
+  , fgroups = [(MERCENARY_HERO, 100)]  -- summoned heroes all go to the player
   , fcanEscape = False
   , fhiCondPoly = hiHeroMedium
   , fenemyTeams = [teamExplorer, teamMonster, teamAnimal, teamRobot, teamHorror]
