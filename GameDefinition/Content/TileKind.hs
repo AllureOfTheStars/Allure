@@ -1389,8 +1389,8 @@ oilBurning = TileKind  -- always lit
                   -- and don't get burned
   , tfeature = [ Walkable, Clear  -- clear, no smoke, as in oil lamps
                , NoItem, NoActor
-               , Embed SMALL_FIRE_5
                , Embed OIL_PUDDLE
+               , Embed SMALL_FIRE_5
                , ChangeWith ProjNo [(1, FIREPROOF_CLOTH)] OILY_FLOOR_LIT
                    -- safely soaks oil, if crafting fails or unintended
                , ChangeTo S_OIL_SPILL ]
