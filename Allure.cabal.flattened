@@ -28,7 +28,7 @@ description: Allure of the Stars is a near-future Sci-Fi roguelike
              .
              This is a workaround .cabal file, flattened to eliminate
              internal libraries until generating haddocks for them
-             is fixed. The original .cabal file is stored in the github repo.
+             is fixed. The original .cabal file is in .cabal.bkp file.
 homepage:      http://allureofthestars.com
 bug-reports:   http://github.com/AllureOfTheStars/Allure/issues
 license:       AGPL-3.0-or-later
