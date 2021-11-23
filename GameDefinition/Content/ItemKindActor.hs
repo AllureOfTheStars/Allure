@@ -1130,7 +1130,7 @@ wasteRobot = ItemKind  -- not a tank, because smell-only alien is already a tank
                , AddSkill SkSpeed 15, AddSkill SkNocto 2
                , SetFlag Durable ]
   , ieffects = []
-  , idesc    = "You are not in its database, hence you are waste. It can't see and you smell funny, so that must suffice."
+  , idesc    = "You are not in its database, hence you are waste. It can't see and you smell funny, so that's it."
   , ikit     = [ (S_TENTACLE, COrgan), (S_SNOUT, COrgan)
                , (S_NOSTRIL, COrgan)  -- only smell, for variety
                , (S_ROBOT_BRAIN, COrgan)
