@@ -451,9 +451,10 @@ factRobotVirus = factRobot
   , fneverEmpty = True  -- faction dissolved when all killed, despite spawning
   , falliedTeams = []  -- cut off, weird
   }
-factRobotGauntlet = factRobot
+factRobotGauntlet = factRobotVirus
   { ffreq = [(ROBOT_GAUNTLET, 1)]
-  , fgroups = fgroups factRobot ++ [(GAUNTLET_ROBOT, 1)]
+  , fgroups = fgroups factRobotVirus ++ [(GAUNTLET_ROBOT, 1)]
+      -- keep the faction description the same, despite different composition
   }
 
 -- ** teamOffWorld
