@@ -8,7 +8,7 @@
 -- place kind.
 module Content.PlaceKind
   ( -- * Group name patterns
-    pattern ROGUE, pattern LABORATORY, pattern ZOO, pattern BRAWL, pattern SHOOTOUT, pattern ARENA, pattern ESCAPE, pattern AMBUSH, pattern BATTLE, pattern NOISE, pattern EMPTY
+    pattern ROGUE, pattern LABORATORY, pattern ZOO, pattern BRAWL, pattern SHOOTOUT, pattern ARENA, pattern FLIGHT, pattern AMBUSH, pattern BATTLE, pattern NOISE, pattern EMPTY
   , pattern INDOOR_ESCAPE_DOWN, pattern INDOOR_ESCAPE_UP, pattern OUTDOOR_ESCAPE_DOWN, pattern TINY_STAIRCASE, pattern OPEN_STAIRCASE, pattern CLOSED_STAIRCASE, pattern WALLED_STAIRCASE, pattern GATED_TINY_STAIRCASE, pattern GATED_OPEN_STAIRCASE, pattern GATED_CLOSED_STAIRCASE, pattern OUTDOOR_TINY_STAIRCASE, pattern OUTDOOR_CLOSED_STAIRCASE, pattern OUTDOOR_WALLED_STAIRCASE
   , pattern RESIDENTIAL, pattern MUSEUM, pattern EXIT, pattern VIRUS, pattern GAUNTLET, pattern RAID
   , pattern TINY_LIFT, pattern OPEN_LIFT, pattern WALLED_LIFT, pattern CLOSED_LIFT, pattern SPACESHIP_ESCAPE_DOWN, pattern ALARM_ESCAPE_UP, pattern DECON_TINY_STAIRCASE, pattern DECON_OPEN_STAIRCASE, pattern DECON_WALLED_STAIRCASE, pattern DECON_TINY_LIFT, pattern DECON_OPEN_LIFT, pattern DECON_WALLED_LIFT, pattern GATED_TINY_LIFT, pattern GATED_OPEN_LIFT, pattern GATED_CLOSED_LIFT, pattern WELDED_TINY_LIFT, pattern WELDED_OPEN_LIFT, pattern WELDED_WALLED_LIFT, pattern WELDED_TINY_STAIRCASE, pattern WELDED_OPEN_STAIRCASE, pattern WELDED_WALLED_STAIRCASE
@@ -40,13 +40,13 @@ groupNamesSingleton = []
 -- group names, let's also add the generated group names to @groupNames@.
 groupNames :: [GroupName PlaceKind]
 groupNames =
-       [ROGUE, LABORATORY, ZOO, BRAWL, SHOOTOUT, ARENA, ESCAPE, AMBUSH, BATTLE, NOISE, EMPTY]
+       [ROGUE, LABORATORY, ZOO, BRAWL, SHOOTOUT, ARENA, FLIGHT, AMBUSH, BATTLE, NOISE, EMPTY]
     ++ [INDOOR_ESCAPE_DOWN, INDOOR_ESCAPE_UP, OUTDOOR_ESCAPE_DOWN, TINY_STAIRCASE, OPEN_STAIRCASE, CLOSED_STAIRCASE, WALLED_STAIRCASE]
     ++ [RESIDENTIAL, MUSEUM, EXIT, VIRUS, GAUNTLET, RAID]
     ++ [TINY_LIFT, OPEN_LIFT, WALLED_LIFT, CLOSED_LIFT, SPACESHIP_ESCAPE_DOWN, ALARM_ESCAPE_UP]
     ++ fst generatedStairs
 
-pattern ROGUE, LABORATORY, ZOO, BRAWL, SHOOTOUT, ARENA, ESCAPE, AMBUSH, BATTLE, NOISE, EMPTY :: GroupName PlaceKind
+pattern ROGUE, LABORATORY, ZOO, BRAWL, SHOOTOUT, ARENA, FLIGHT, AMBUSH, BATTLE, NOISE, EMPTY :: GroupName PlaceKind
 
 pattern INDOOR_ESCAPE_DOWN, INDOOR_ESCAPE_UP, OUTDOOR_ESCAPE_DOWN, TINY_STAIRCASE, OPEN_STAIRCASE, CLOSED_STAIRCASE, WALLED_STAIRCASE, GATED_TINY_STAIRCASE, GATED_OPEN_STAIRCASE, GATED_CLOSED_STAIRCASE, OUTDOOR_TINY_STAIRCASE, OUTDOOR_CLOSED_STAIRCASE, OUTDOOR_WALLED_STAIRCASE :: GroupName PlaceKind
 
@@ -60,7 +60,7 @@ pattern ZOO = GroupName "zoo"
 pattern BRAWL = GroupName "brawl"
 pattern SHOOTOUT = GroupName "shootout"
 pattern ARENA = GroupName "arena"
-pattern ESCAPE = GroupName "escape"
+pattern FLIGHT = GroupName "flight"
 pattern AMBUSH = GroupName "ambush"
 pattern BATTLE = GroupName "battle"
 pattern NOISE = GroupName "noise"
@@ -236,7 +236,7 @@ rect2 = rect
   }
 rectWindows = overridePlaceKind [('%', RECT_WINDOWS)] $ PlaceKind
   { pname    = "a shed"
-  , pfreq    = [(ESCAPE, 20)]
+  , pfreq    = [(FLIGHT, 20)]
   , prarity  = [(1, 10), (10, 10)]
   , pcover   = CStretch
   , pfence   = FNone
@@ -429,7 +429,7 @@ pillar6 = override2PlaceKind [('f', BUSH_GROVE_DARK)]
   }
 colonnade = PlaceKind
   { pname    = "a colonnade"
-  , pfreq    = [ (ROGUE, 12), (NOISE, 1000), (ESCAPE, 200)
+  , pfreq    = [ (ROGUE, 12), (NOISE, 1000), (FLIGHT, 200)
                , (EXIT, 30), (RAID, 12) ]
   , prarity  = [(1, 12), (10, 12)]
   , pcover   = CAlternate
@@ -507,7 +507,7 @@ colonnade10 = colonnade7
 lampPost = overridePlaceKind [ ('0', S_LAMP_POST)
                              , ('·', S_FLOOR_ACTOR_LIT) ] $ PlaceKind
   { pname    = "a lamp-lit area"
-  , pfreq    = [ (ESCAPE, 200), (ZOO, 100), (AMBUSH, 1000)
+  , pfreq    = [ (FLIGHT, 200), (ZOO, 100), (AMBUSH, 1000)
                , (BATTLE, 100) ]
   , prarity  = [(1, 1)]
   , pcover   = CVerbatim
@@ -526,7 +526,7 @@ lampPost2 = lampPost
                ]
   }
 lampPost3 = lampPost
-  { pfreq    = [(ESCAPE, 3000), (ZOO, 500), (BATTLE, 1100)]
+  { pfreq    = [(FLIGHT, 3000), (ZOO, 500), (BATTLE, 1100)]
   , ptopLeft = [ "XX·XX"
                , "X···X"
                , "··0··"
@@ -535,7 +535,7 @@ lampPost3 = lampPost
                ]
   }
 lampPost4 = lampPost
-  { pfreq    = [(ESCAPE, 3000), (ZOO, 500), (BATTLE, 600)]
+  { pfreq    = [(FLIGHT, 3000), (ZOO, 500), (BATTLE, 600)]
   , ptopLeft = [ "X···X"
                , "·····"
                , "··0··"
@@ -564,7 +564,7 @@ fogClump = override2PlaceKind [('f', FOG_CLUMP_DARK)]
                               [('f', FOG_CLUMP_LIT)] $
            overridePlaceKind [(';', S_FOG_LIT)] $ PlaceKind
   { pname    = "a foggy patch"
-  , pfreq    = [(EMPTY, 500), (SHOOTOUT, 70), (ESCAPE, 60), (RAID, 50)]
+  , pfreq    = [(EMPTY, 500), (SHOOTOUT, 70), (FLIGHT, 60), (RAID, 50)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -576,7 +576,7 @@ fogClump = override2PlaceKind [('f', FOG_CLUMP_DARK)]
   , plegendLit = defaultLegendLit
   }
 fogClump2 = fogClump
-  { pfreq    = [(EMPTY, 2500), (SHOOTOUT, 400), (ESCAPE, 100), (RAID, 250)]
+  { pfreq    = [(EMPTY, 2500), (SHOOTOUT, 400), (FLIGHT, 100), (RAID, 250)]
   , ptopLeft = [ "X;f"
                , "f;f"
                , ";;f"

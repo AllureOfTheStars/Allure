@@ -11,7 +11,7 @@ module Content.TileKind
     -- ** Used in CaveKind and perhaps elsewhere.
     pattern FILLER_WALL, pattern FLOOR_CORRIDOR_LIT, pattern FLOOR_CORRIDOR_DARK, pattern TRAIL_LIT, pattern SAFE_TRAIL_LIT, pattern LAB_TRAIL_LIT, pattern DAMP_FLOOR_LIT, pattern DAMP_FLOOR_DARK, pattern DIRT_LIT, pattern DIRT_DARK, pattern FLOOR_ARENA_LIT, pattern FLOOR_ARENA_DARK
   , pattern HABITAT_CONTAINMENT_WALL, pattern TRANSPORT_ROUTE, pattern ORIELS_FENCE, pattern AIRLOCK_FENCE, pattern EMPTY_AIRLOCK_FENCE, pattern OPENABLE_WALL, pattern TRAPPABLE_WALL, pattern OILY_FLOOR_LIT, pattern OILY_FLOOR_DARK
-  , pattern EMPTY_SET_LIT, pattern EMPTY_SET_DARK, pattern NOISE_SET_LIT, pattern POWER_SET_LIT, pattern POWER_SET_DARK, pattern BATTLE_SET_LIT, pattern BATTLE_SET_DARK, pattern BRAWL_SET_LIT, pattern SHOOTOUT_SET_LIT, pattern ZOO_SET_LIT, pattern ZOO_SET_DARK, pattern ESCAPE_SET_LIT, pattern ESCAPE_SET_DARK, pattern AMBUSH_SET_LIT, pattern AMBUSH_SET_DARK, pattern ARENA_SET_LIT, pattern ARENA_SET_DARK
+  , pattern EMPTY_SET_LIT, pattern EMPTY_SET_DARK, pattern NOISE_SET_LIT, pattern POWER_SET_LIT, pattern POWER_SET_DARK, pattern BATTLE_SET_LIT, pattern BATTLE_SET_DARK, pattern BRAWL_SET_LIT, pattern SHOOTOUT_SET_LIT, pattern ZOO_SET_LIT, pattern ZOO_SET_DARK, pattern FLIGHT_SET_LIT, pattern FLIGHT_SET_DARK, pattern AMBUSH_SET_LIT, pattern AMBUSH_SET_DARK, pattern ARENA_SET_LIT, pattern ARENA_SET_DARK
   , pattern ROGUE_SET, pattern MUSEUM_SET_LIT, pattern MUSEUM_SET_DARK, pattern HUNT_SET_LIT, pattern EXIT_SET_LIT, pattern VIRUS_SET_LIT, pattern VIRUS_SET_DARK
     -- ** Used in PlaceKind, but not in CaveKind.
   , pattern TREE_SHADE_WALKABLE_LIT, pattern TREE_SHADE_WALKABLE_DARK, pattern SMOKE_CLUMP_LIT, pattern SMOKE_CLUMP_DARK, pattern BUSH_CLUMP_LIT, pattern BUSH_CLUMP_DARK, pattern FOG_CLUMP_LIT, pattern FOG_CLUMP_DARK, pattern STAIR_TERMINAL_LIT, pattern STAIR_TERMINAL_DARK, pattern SIGNBOARD, pattern STAIRCASE_UP, pattern ORDINARY_STAIRCASE_UP, pattern STAIRCASE_OUTDOOR_UP, pattern GATED_STAIRCASE_UP, pattern STAIRCASE_DOWN, pattern ORDINARY_STAIRCASE_DOWN, pattern STAIRCASE_OUTDOOR_DOWN, pattern GATED_STAIRCASE_DOWN, pattern TILE_INDOOR_ESCAPE_UP, pattern TILE_INDOOR_ESCAPE_DOWN, pattern TILE_OUTDOOR_ESCAPE_DOWN, pattern TRANSPARENT_WALL, pattern ICE_BUILDUP, pattern WORKSHOP, pattern FLOOR_ACTOR_ITEM, pattern FLOOR_ACTOR_ITEM_LIT, pattern FLOOR_ACTOR_ITEM_DARK
@@ -73,7 +73,7 @@ groupNames =
        [AQUATIC]
     ++ [FILLER_WALL, FLOOR_CORRIDOR_LIT, FLOOR_CORRIDOR_DARK, TRAIL_LIT, SAFE_TRAIL_LIT, LAB_TRAIL_LIT, DAMP_FLOOR_LIT, DAMP_FLOOR_DARK, DIRT_LIT, DIRT_DARK, FLOOR_ARENA_LIT, FLOOR_ARENA_DARK]
     ++ [HABITAT_CONTAINMENT_WALL, TRANSPORT_ROUTE, ORIELS_FENCE, AIRLOCK_FENCE, EMPTY_AIRLOCK_FENCE, OPENABLE_WALL, TRAPPABLE_WALL, OILY_FLOOR_LIT, OILY_FLOOR_DARK]
-    ++ [EMPTY_SET_LIT, EMPTY_SET_DARK, NOISE_SET_LIT, POWER_SET_LIT, POWER_SET_DARK, BATTLE_SET_LIT, BATTLE_SET_DARK, BRAWL_SET_LIT, SHOOTOUT_SET_LIT, ZOO_SET_LIT, ZOO_SET_DARK, ESCAPE_SET_LIT, ESCAPE_SET_DARK, AMBUSH_SET_LIT, AMBUSH_SET_DARK, ARENA_SET_LIT, ARENA_SET_DARK]
+    ++ [EMPTY_SET_LIT, EMPTY_SET_DARK, NOISE_SET_LIT, POWER_SET_LIT, POWER_SET_DARK, BATTLE_SET_LIT, BATTLE_SET_DARK, BRAWL_SET_LIT, SHOOTOUT_SET_LIT, ZOO_SET_LIT, ZOO_SET_DARK, FLIGHT_SET_LIT, FLIGHT_SET_DARK, AMBUSH_SET_LIT, AMBUSH_SET_DARK, ARENA_SET_LIT, ARENA_SET_DARK]
     ++ [ROGUE_SET, MUSEUM_SET_LIT, MUSEUM_SET_DARK, HUNT_SET_LIT, EXIT_SET_LIT, VIRUS_SET_LIT, VIRUS_SET_DARK]
     ++ [TREE_SHADE_WALKABLE_LIT, TREE_SHADE_WALKABLE_DARK, SMOKE_CLUMP_LIT, SMOKE_CLUMP_DARK, BUSH_CLUMP_LIT, BUSH_CLUMP_DARK, FOG_CLUMP_LIT, FOG_CLUMP_DARK, STAIR_TERMINAL_LIT, STAIR_TERMINAL_DARK, SIGNBOARD, STAIRCASE_UP, ORDINARY_STAIRCASE_UP, STAIRCASE_OUTDOOR_UP, GATED_STAIRCASE_UP, STAIRCASE_DOWN, ORDINARY_STAIRCASE_DOWN, STAIRCASE_OUTDOOR_DOWN, GATED_STAIRCASE_DOWN, TILE_INDOOR_ESCAPE_UP, TILE_INDOOR_ESCAPE_DOWN, TILE_OUTDOOR_ESCAPE_DOWN, TRANSPARENT_WALL, ICE_BUILDUP, WORKSHOP, FLOOR_ACTOR_ITEM, FLOOR_ACTOR_ITEM_LIT, FLOOR_ACTOR_ITEM_DARK]
     ++ [BUSH_GROVE_LIT, BUSH_GROVE_DARK, UNDERBRUSH_CLUMP_LIT, UNDERBRUSH_CLUMP_DARK, ASHES_SMOKE_LIT, ASHES_SMOKE_DARK, RECT_WINDOWS, DOORLESS_MACHINERY, PUMPS_LIT, PUMPS_DARK, DOORLESS_WALL, OIL_RESIDUE_LIT, OIL_RESIDUE_DARK, LIFT_TERMINAL_LIT, LIFT_TERMINAL_DARK, STAIRCASE_LIFT_UP, STAIRCASE_LIFT_DOWN, GATED_LIFT_UP, GATED_LIFT_DOWN, DECON_STAIRCASE_UP, DECON_STAIRCASE_DOWN, DECON_LIFT_UP, DECON_LIFT_DOWN, WELDED_STAIRCASE_UP, WELDED_LIFT_UP, TILE_ALARM_ESCAPE_UP, TILE_SPACESHIP_ESCAPE_DOWN, ORDINARY_LIFT_UP, ORDINARY_LIFT_DOWN, RUBBLE_OR_WASTE_LIT, RUBBLE_OR_WASTE_DARK, CACHE_DEPOSIT, CACHE_JEWELRY, CACHE_MAZE, CACHE_SHUTTLE, TRAPPED_DOOR, STUCK_DOOR, BARREL]
@@ -86,7 +86,7 @@ pattern FILLER_WALL, FLOOR_CORRIDOR_LIT, FLOOR_CORRIDOR_DARK, TRAIL_LIT, SAFE_TR
 -- ** Allure-specific
 pattern HABITAT_CONTAINMENT_WALL, TRANSPORT_ROUTE, ORIELS_FENCE, AIRLOCK_FENCE, EMPTY_AIRLOCK_FENCE, OPENABLE_WALL, TRAPPABLE_WALL, OILY_FLOOR_LIT, OILY_FLOOR_DARK :: GroupName TileKind
 
-pattern EMPTY_SET_LIT, EMPTY_SET_DARK, NOISE_SET_LIT, POWER_SET_LIT, POWER_SET_DARK, BATTLE_SET_LIT, BATTLE_SET_DARK, BRAWL_SET_LIT, SHOOTOUT_SET_LIT, ZOO_SET_LIT, ZOO_SET_DARK, ESCAPE_SET_LIT, ESCAPE_SET_DARK, AMBUSH_SET_LIT, AMBUSH_SET_DARK, ARENA_SET_LIT, ARENA_SET_DARK :: GroupName TileKind
+pattern EMPTY_SET_LIT, EMPTY_SET_DARK, NOISE_SET_LIT, POWER_SET_LIT, POWER_SET_DARK, BATTLE_SET_LIT, BATTLE_SET_DARK, BRAWL_SET_LIT, SHOOTOUT_SET_LIT, ZOO_SET_LIT, ZOO_SET_DARK, FLIGHT_SET_LIT, FLIGHT_SET_DARK, AMBUSH_SET_LIT, AMBUSH_SET_DARK, ARENA_SET_LIT, ARENA_SET_DARK :: GroupName TileKind
 
 -- ** Allure-specific
 pattern ROGUE_SET, MUSEUM_SET_LIT, MUSEUM_SET_DARK, HUNT_SET_LIT, EXIT_SET_LIT, VIRUS_SET_LIT, VIRUS_SET_DARK :: GroupName TileKind
@@ -146,8 +146,8 @@ pattern BRAWL_SET_LIT = GroupName "brawlSetLit"
 pattern SHOOTOUT_SET_LIT = GroupName "shootoutSetLit"
 pattern ZOO_SET_LIT = GroupName "zooSetLit"
 pattern ZOO_SET_DARK = GroupName "zooSetDark"
-pattern ESCAPE_SET_LIT = GroupName "escapeSetLit"
-pattern ESCAPE_SET_DARK = GroupName "escapeSetDark"
+pattern FLIGHT_SET_LIT = GroupName "flightSetLit"
+pattern FLIGHT_SET_DARK = GroupName "flightSetDark"
 pattern AMBUSH_SET_LIT = GroupName "ambushSetLit"
 pattern AMBUSH_SET_DARK = GroupName "ambushSetDark"
 pattern ARENA_SET_LIT = GroupName "arenaSetLit"
@@ -376,7 +376,7 @@ bedrock = TileKind
   , tfreq    = [ (FILLER_WALL, 1)
                , (ROGUE_SET, 60), (MUSEUM_SET_DARK, 4), (NOISE_SET_LIT, 450)
                , (POWER_SET_DARK, 450), (BATTLE_SET_DARK, 250)
-               , (ESCAPE_SET_DARK, 4)
+               , (FLIGHT_SET_DARK, 4)
                , (STAIR_TERMINAL_LIT, 100), (STAIR_TERMINAL_DARK, 100)
                , (DOORLESS_WALL, 80), (DOORLESS_MACHINERY, 1) ]
   , tcolor   = BrWhite
@@ -413,7 +413,7 @@ wallObscured = TileKind
 wallObscuredDefaced = TileKind
   { tsymbol  = '#'
   , tname    = "defaced wall"
-  , tfreq    = [ (OBSCURED_WALL, 25), (ESCAPE_SET_DARK, 2)
+  , tfreq    = [ (OBSCURED_WALL, 25), (FLIGHT_SET_DARK, 2)
                , (MUSEUM_SET_DARK, 2) ]
   , tcolor   = BrWhite
   , tcolor2  = defFG
@@ -488,7 +488,7 @@ signboardRead = TileKind
   , tname    = "signboard"
   , tfreq    = [ (SIGNBOARD, 80), (EMPTY_SET_LIT, 7)
                , (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 2), (MUSEUM_SET_DARK, 1)
-               , (ESCAPE_SET_DARK, 2) ]
+               , (FLIGHT_SET_DARK, 2) ]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
   , talter   = 5
@@ -501,7 +501,7 @@ treeLit = TileKind
   , tname    = "tree"
   , tfreq    = [ (ARENA_SET_LIT, 9), (EMPTY_SET_LIT, 4), (BRAWL_SET_LIT, 140)
                , (SHOOTOUT_SET_LIT, 10), (HUNT_SET_LIT, 10)
-               , (ESCAPE_SET_LIT, 35), (ZOO_SET_DARK, 20)
+               , (FLIGHT_SET_LIT, 35), (ZOO_SET_DARK, 20)
                , (S_TREE_LIT, 1) ]
   , tcolor   = BrGreen
   , tcolor2  = Green
@@ -722,7 +722,7 @@ bushLit = TileKind
   , tname    = "bush"
   , tfreq    = [ (S_BUSH_LIT, 1), (EMPTY_SET_LIT, 8), (ARENA_SET_LIT, 13)
                , (BRAWL_SET_LIT, 5), (SHOOTOUT_SET_LIT, 30), (HUNT_SET_LIT, 30)
-               , (ESCAPE_SET_LIT, 40), (ZOO_SET_DARK, 100)
+               , (FLIGHT_SET_LIT, 40), (ZOO_SET_DARK, 100)
                , (BUSH_CLUMP_LIT, 2), (BUSH_CLUMP_DARK, 2)  -- always lit
                , (BUSH_GROVE_LIT, 5), (BUSH_GROVE_DARK, 5)  -- always lit
                , (PUMPS_LIT, 300)  -- dark in PUMPS_DARK
@@ -782,7 +782,7 @@ fog = TileKind  -- always lit
   }
 fogDark = fog  -- always dark
   { tname    = "thick fog"
-  , tfreq    = [(ESCAPE_SET_DARK, 50), (LIFT_TERMINAL_DARK, 40)]
+  , tfreq    = [(FLIGHT_SET_DARK, 50), (LIFT_TERMINAL_DARK, 40)]
   , tfeature = Dark : tfeature fog
   }
 smoke = TileKind  -- always lit
@@ -838,7 +838,7 @@ floorArena = floorCorridor
 floorDamp = floorArena
   { tname    = "damp floor"
   , tfreq    = [ (NOISE_SET_LIT, 550), (EMPTY_SET_LIT, 3000)
-               , (ESCAPE_SET_LIT, 300), (DAMP_FLOOR_LIT, 1)
+               , (FLIGHT_SET_LIT, 300), (DAMP_FLOOR_LIT, 1)
                , (STAIR_TERMINAL_LIT, 20), (LIFT_TERMINAL_LIT, 6) ]
   , tfeature = ChangeWith ProjYes [(1, OIL_SOURCE)] S_OIL_SPILL  -- oil floats
                : ChangeWith ProjYes [(1, COLD_SOURCE)] S_FROZEN_PATH
@@ -848,7 +848,7 @@ floorDamp = floorArena
 floorDirt = floorArena
   { tname    = "dirt floor"
   , tfreq    = [ (BRAWL_SET_LIT, 900), (SHOOTOUT_SET_LIT, 900)
-               , (HUNT_SET_LIT, 900), (ESCAPE_SET_LIT, 700)
+               , (HUNT_SET_LIT, 900), (FLIGHT_SET_LIT, 700)
                , (AMBUSH_SET_LIT, 1000), (BATTLE_SET_LIT, 500)
                , (DIRT_LIT, 1) ]
   }
@@ -1006,7 +1006,7 @@ signboardReadExtinguisher = TileKind
                , (LIFT_TERMINAL_LIT, 10), (LIFT_TERMINAL_DARK, 10)
                , (EMPTY_SET_LIT, 7), (ARENA_SET_LIT, 1), (ARENA_SET_DARK, 2)
                , (MUSEUM_SET_DARK, 1), (EXIT_SET_LIT, 1), (VIRUS_SET_DARK, 1)
-               , (NOISE_SET_LIT, 1), (ESCAPE_SET_DARK, 1)
+               , (NOISE_SET_LIT, 1), (FLIGHT_SET_DARK, 1)
                , (AMBUSH_SET_DARK, 1) ]
   , tcolor   = BrCyan
   , tcolor2  = Cyan
@@ -1305,7 +1305,7 @@ bushEdible = TileKind
   , tname    = "ripe bush"
   , tfreq    = [ (EMPTY_SET_LIT, 4), (ARENA_SET_LIT, 2), (ARENA_SET_DARK, 4)
                , (SHOOTOUT_SET_LIT, 1), (HUNT_SET_LIT, 1)
-               , (ESCAPE_SET_DARK, 4), (ZOO_SET_DARK, 1)
+               , (FLIGHT_SET_DARK, 4), (ZOO_SET_DARK, 1)
                , (LIFT_TERMINAL_LIT, 1), (LIFT_TERMINAL_DARK, 1) ]
   , tcolor   = BrMagenta
   , tcolor2  = Magenta
@@ -1412,7 +1412,7 @@ underbrush = TileKind  -- always lit
                , (UNDERBRUSH_CLUMP_LIT, 1), (UNDERBRUSH_CLUMP_DARK, 1)
                , (EMPTY_SET_LIT, 200), (ARENA_SET_LIT, 80), (BRAWL_SET_LIT, 100)
                , (SHOOTOUT_SET_LIT, 100), (HUNT_SET_LIT, 100)
-               , (ESCAPE_SET_LIT, 100), (ZOO_SET_DARK, 5)
+               , (FLIGHT_SET_LIT, 100), (ZOO_SET_DARK, 5)
                , (AMBUSH_SET_DARK, 20)
                , (BUSH_CLUMP_LIT, 1), (BUSH_CLUMP_DARK, 1)
                , (TRAIL_LIT, 50), (SAFE_TRAIL_LIT, 50) ]

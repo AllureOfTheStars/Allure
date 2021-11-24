@@ -8,7 +8,7 @@
 -- cave kind.
 module Content.CaveKind
   ( -- * Group name patterns
-    pattern CAVE_ROGUE, pattern CAVE_ARENA, pattern CAVE_LABORATORY, pattern CAVE_NOISE, pattern CAVE_SHALLOW_ROGUE, pattern CAVE_OUTERMOST, pattern CAVE_RAID, pattern CAVE_BRAWL, pattern CAVE_BRAWL_ALT, pattern CAVE_SHOOTOUT, pattern CAVE_HUNT, pattern CAVE_ESCAPE, pattern CAVE_ZOO, pattern CAVE_AMBUSH, pattern CAVE_BATTLE, pattern CAVE_SAFARI_1, pattern CAVE_SAFARI_2, pattern CAVE_SAFARI_3
+    pattern CAVE_ROGUE, pattern CAVE_ARENA, pattern CAVE_LABORATORY, pattern CAVE_NOISE, pattern CAVE_SHALLOW_ROGUE, pattern CAVE_OUTERMOST, pattern CAVE_RAID, pattern CAVE_BRAWL, pattern CAVE_BRAWL_ALT, pattern CAVE_SHOOTOUT, pattern CAVE_HUNT, pattern CAVE_FLIGHT, pattern CAVE_ZOO, pattern CAVE_AMBUSH, pattern CAVE_BATTLE, pattern CAVE_SAFARI_1, pattern CAVE_SAFARI_2, pattern CAVE_SAFARI_3
   , pattern CAVE_BRIDGE, pattern CAVE_VIRUS, pattern CAVE_RESIDENTIAL, pattern CAVE_MUSEUM, pattern CAVE_EXIT, pattern CAVE_CASINO, pattern CAVE_POWER, pattern CAVE_GAUNTLET
   , groupNamesSingleton, groupNames
   , -- * Content
@@ -31,7 +31,7 @@ import           Game.LambdaHack.Definition.DefsInternal
 
 import Content.ItemKind hiding (content, groupNames, groupNamesSingleton)
 import Content.ItemKindActor
-import Content.ItemKindEmbed hiding (ESCAPE)
+import Content.ItemKindEmbed
 import Content.PlaceKind hiding (content, groupNames, groupNamesSingleton)
 import Content.TileKind hiding (content, groupNames, groupNamesSingleton)
 
@@ -42,10 +42,10 @@ groupNamesSingleton = []
 
 groupNames :: [GroupName CaveKind]
 groupNames =
-       [CAVE_ROGUE, CAVE_ARENA, CAVE_LABORATORY, CAVE_NOISE, CAVE_SHALLOW_ROGUE, CAVE_OUTERMOST, CAVE_RAID, CAVE_BRAWL, CAVE_BRAWL_ALT, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_ESCAPE, CAVE_ZOO, CAVE_AMBUSH, CAVE_BATTLE, CAVE_SAFARI_1, CAVE_SAFARI_2, CAVE_SAFARI_3]
+       [CAVE_ROGUE, CAVE_ARENA, CAVE_LABORATORY, CAVE_NOISE, CAVE_SHALLOW_ROGUE, CAVE_OUTERMOST, CAVE_RAID, CAVE_BRAWL, CAVE_BRAWL_ALT, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_FLIGHT, CAVE_ZOO, CAVE_AMBUSH, CAVE_BATTLE, CAVE_SAFARI_1, CAVE_SAFARI_2, CAVE_SAFARI_3]
     ++ [CAVE_BRIDGE, CAVE_VIRUS, CAVE_RESIDENTIAL, CAVE_MUSEUM, CAVE_EXIT, CAVE_CASINO, CAVE_POWER, CAVE_GAUNTLET]
 
-pattern CAVE_ROGUE, CAVE_ARENA, CAVE_LABORATORY, CAVE_NOISE, CAVE_SHALLOW_ROGUE, CAVE_OUTERMOST, CAVE_RAID, CAVE_BRAWL, CAVE_BRAWL_ALT, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_ESCAPE, CAVE_ZOO, CAVE_AMBUSH, CAVE_BATTLE, CAVE_SAFARI_1, CAVE_SAFARI_2, CAVE_SAFARI_3 :: GroupName CaveKind
+pattern CAVE_ROGUE, CAVE_ARENA, CAVE_LABORATORY, CAVE_NOISE, CAVE_SHALLOW_ROGUE, CAVE_OUTERMOST, CAVE_RAID, CAVE_BRAWL, CAVE_BRAWL_ALT, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_FLIGHT, CAVE_ZOO, CAVE_AMBUSH, CAVE_BATTLE, CAVE_SAFARI_1, CAVE_SAFARI_2, CAVE_SAFARI_3 :: GroupName CaveKind
 
 pattern CAVE_BRIDGE, CAVE_VIRUS, CAVE_RESIDENTIAL, CAVE_MUSEUM, CAVE_EXIT, CAVE_CASINO, CAVE_POWER, CAVE_GAUNTLET :: GroupName CaveKind
 
@@ -60,7 +60,7 @@ pattern CAVE_BRAWL = GroupName "caveBrawl"
 pattern CAVE_BRAWL_ALT = GroupName "caveBrawlAlt"
 pattern CAVE_SHOOTOUT = GroupName "caveShootout"
 pattern CAVE_HUNT = GroupName "caveHunt"
-pattern CAVE_ESCAPE = GroupName "caveEscape"
+pattern CAVE_FLIGHT = GroupName "caveFlight"
 pattern CAVE_ZOO = GroupName "caveZoo"
 pattern CAVE_AMBUSH = GroupName "caveAmbush"
 pattern CAVE_BATTLE = GroupName "caveBattle"
@@ -82,9 +82,9 @@ pattern CAVE_GAUNTLET = GroupName "caveGauntlet"
 
 content :: [CaveKind]
 content =
-  [rogue, residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, virus, gauntlet, raid, brawl, brawlAlt, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3]
+  [rogue, residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, virus, gauntlet, raid, brawl, brawlAlt, shootout, hunt, flight, zoo, ambush, battle, safari1, safari2, safari3]
 
-rogue,    residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, virus, gauntlet, raid, brawl, brawlAlt, shootout, hunt, escape, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
+rogue,    residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, virus, gauntlet, raid, brawl, brawlAlt, shootout, hunt, flight, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
 
 -- * On-ship "caves", that is, decks, most of mediocre height and size
 
@@ -680,12 +680,12 @@ hunt = rogue  -- a scenario with strong missiles for ranged and shade for melee;
   , cstairAllowed = []
   , cdesc         = "Mangrove trees and murky water, inspired by a habitat now eradicated from Earth. A rather deadly habitat."
   }
-escape = rogue  -- a scenario with weak missiles, because heroes don't depend
+flight = rogue  -- a scenario with weak missiles, because heroes don't depend
                 -- on them; dark, so solid obstacles are to hide from missiles,
                 -- not view; obstacles are not lit, to frustrate the AI;
                 -- lots of small lights to cross, to have some risks
   { cname         = "Red Collar Bros den"  -- tension rises; non-official name
-  , cfreq         = [(CAVE_ESCAPE, 1)]
+  , cfreq         = [(CAVE_FLIGHT, 1)]
   , ccellSize     = DiceXY (1 `d` 3 + 6) 7
   , cminPlaceSize = DiceXY 5 4  -- rarely merge
   , cmaxPlaceSize = DiceXY 9 9  -- bias towards larger lamp areas
@@ -699,9 +699,9 @@ escape = rogue  -- a scenario with weak missiles, because heroes don't depend
   , citemFreq     = [ (IK.COMMON_ITEM, 30), (STARTING_ARMOR, 100)
                     , (LIGHT_ATTENUATOR, 300), (GEM, 400)
                     , (WEAK_ARROW, 400), (HARPOON, 200), (IK.EXPLOSIVE, 200) ]
-  , cplaceFreq    = [(ESCAPE, 1)]
+  , cplaceFreq    = [(FLIGHT, 1)]
   , cpassable     = True
-  , cdefTile      = ESCAPE_SET_DARK
+  , cdefTile      = FLIGHT_SET_DARK
   , cdarkCorTile  = SAFE_TRAIL_LIT  -- let trails give off light
   , clitCorTile   = SAFE_TRAIL_LIT
   , cwallTile     = OPENABLE_WALL
@@ -815,7 +815,7 @@ safari1 = brawl
   , cskip         = [0]
   , cdesc         = "\"DLC 1. Hunams scavenge in a forest in their usual disgusting way.\""
   }
-safari2 = escape  -- lamps instead of trees, but ok, it's only a simulation
+safari2 = flight  -- lamps instead of trees, but ok, it's only a simulation
   { cname         = "Deep into the jungle"
   , cfreq         = [(CAVE_SAFARI_2, 1)]
   , cmaxStairsNum = 1
