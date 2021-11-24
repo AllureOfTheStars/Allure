@@ -9,7 +9,7 @@
 module Content.CaveKind
   ( -- * Group name patterns
     pattern CAVE_ROGUE, pattern CAVE_ARENA, pattern CAVE_LABORATORY, pattern CAVE_NOISE, pattern CAVE_SHALLOW_ROGUE, pattern CAVE_OUTERMOST, pattern CAVE_RAID, pattern CAVE_BRAWL, pattern CAVE_BRAWL_ALT, pattern CAVE_SHOOTOUT, pattern CAVE_HUNT, pattern CAVE_FLIGHT, pattern CAVE_ZOO, pattern CAVE_AMBUSH, pattern CAVE_BATTLE, pattern CAVE_SAFARI_1, pattern CAVE_SAFARI_2, pattern CAVE_SAFARI_3
-  , pattern CAVE_BRIDGE, pattern CAVE_VIRUS, pattern CAVE_RESIDENTIAL, pattern CAVE_MUSEUM, pattern CAVE_EXIT, pattern CAVE_CASINO, pattern CAVE_POWER, pattern CAVE_GAUNTLET
+  , pattern CAVE_BRIDGE, pattern CAVE_VIRUS, pattern CAVE_RESIDENTIAL, pattern CAVE_MUSEUM, pattern CAVE_EGRESS, pattern CAVE_CASINO, pattern CAVE_POWER, pattern CAVE_GAUNTLET
   , groupNamesSingleton, groupNames
   , -- * Content
     content
@@ -43,11 +43,11 @@ groupNamesSingleton = []
 groupNames :: [GroupName CaveKind]
 groupNames =
        [CAVE_ROGUE, CAVE_ARENA, CAVE_LABORATORY, CAVE_NOISE, CAVE_SHALLOW_ROGUE, CAVE_OUTERMOST, CAVE_RAID, CAVE_BRAWL, CAVE_BRAWL_ALT, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_FLIGHT, CAVE_ZOO, CAVE_AMBUSH, CAVE_BATTLE, CAVE_SAFARI_1, CAVE_SAFARI_2, CAVE_SAFARI_3]
-    ++ [CAVE_BRIDGE, CAVE_VIRUS, CAVE_RESIDENTIAL, CAVE_MUSEUM, CAVE_EXIT, CAVE_CASINO, CAVE_POWER, CAVE_GAUNTLET]
+    ++ [CAVE_BRIDGE, CAVE_VIRUS, CAVE_RESIDENTIAL, CAVE_MUSEUM, CAVE_EGRESS, CAVE_CASINO, CAVE_POWER, CAVE_GAUNTLET]
 
 pattern CAVE_ROGUE, CAVE_ARENA, CAVE_LABORATORY, CAVE_NOISE, CAVE_SHALLOW_ROGUE, CAVE_OUTERMOST, CAVE_RAID, CAVE_BRAWL, CAVE_BRAWL_ALT, CAVE_SHOOTOUT, CAVE_HUNT, CAVE_FLIGHT, CAVE_ZOO, CAVE_AMBUSH, CAVE_BATTLE, CAVE_SAFARI_1, CAVE_SAFARI_2, CAVE_SAFARI_3 :: GroupName CaveKind
 
-pattern CAVE_BRIDGE, CAVE_VIRUS, CAVE_RESIDENTIAL, CAVE_MUSEUM, CAVE_EXIT, CAVE_CASINO, CAVE_POWER, CAVE_GAUNTLET :: GroupName CaveKind
+pattern CAVE_BRIDGE, CAVE_VIRUS, CAVE_RESIDENTIAL, CAVE_MUSEUM, CAVE_EGRESS, CAVE_CASINO, CAVE_POWER, CAVE_GAUNTLET :: GroupName CaveKind
 
 pattern CAVE_ROGUE = GroupName "caveRogue"
 pattern CAVE_ARENA = GroupName "caveArena"
@@ -73,7 +73,7 @@ pattern CAVE_BRIDGE = GroupName "caveBridge"
 pattern CAVE_VIRUS = GroupName "caveVirus"
 pattern CAVE_RESIDENTIAL = GroupName "caveResidential"
 pattern CAVE_MUSEUM = GroupName "caveMuseum"
-pattern CAVE_EXIT = GroupName "caveExit"
+pattern CAVE_EGRESS = GroupName "caveEgress"
 pattern CAVE_CASINO = GroupName "caveCasino"
 pattern CAVE_POWER = GroupName "cavePower"
 pattern CAVE_GAUNTLET = GroupName "caveGauntlet"
@@ -82,9 +82,9 @@ pattern CAVE_GAUNTLET = GroupName "caveGauntlet"
 
 content :: [CaveKind]
 content =
-  [rogue, residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, virus, gauntlet, raid, brawl, brawlAlt, shootout, hunt, flight, zoo, ambush, battle, safari1, safari2, safari3]
+  [rogue, residential, arena, casino, museum, laboratory, noise, power, empty, egress, outermost, bridge, shallowRogue, virus, gauntlet, raid, brawl, brawlAlt, shootout, hunt, flight, zoo, ambush, battle, safari1, safari2, safari3]
 
-rogue,    residential, arena, casino, museum, laboratory, noise, power, empty, exit, outermost, bridge, shallowRogue, virus, gauntlet, raid, brawl, brawlAlt, shootout, hunt, flight, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
+rogue,    residential, arena, casino, museum, laboratory, noise, power, empty, egress, outermost, bridge, shallowRogue, virus, gauntlet, raid, brawl, brawlAlt, shootout, hunt, flight, zoo, ambush, battle, safari1, safari2, safari3 :: CaveKind
 
 -- * On-ship "caves", that is, decks, most of mediocre height and size
 
@@ -372,14 +372,14 @@ empty = rogue
                     , (TINY_STAIRCASE, 1) ]
   , cdesc         = "Not much to see here yet."
   }
-exit = empty
+egress = empty
   { cname         = "Shuttle servicing level"
-  , cfreq         = [(CAVE_EXIT, 1)]
+  , cfreq         = [(CAVE_EGRESS, 1)]
   , ccellSize     = DiceXY (1 `d` 2 + 20) 16
   , cmaxPlaceSize = DiceXY 25 20
   , cdarkOdds     = 51  -- all dark to compensate for the always lit shuttles
-  , cplaceFreq    = [(EXIT, 1)]
-  , cdefTile      = EXIT_SET_LIT
+  , cplaceFreq    = [(EGRESS, 1)]
+  , cdefTile      = EGRESS_SET_LIT
   , cdarkCorTile  = TRANSPORT_ROUTE
   , clitCorTile   = TRANSPORT_ROUTE
   , cfenceTileN   = S_BASIC_OUTER_FENCE

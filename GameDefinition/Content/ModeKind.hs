@@ -741,7 +741,7 @@ listCrawl =
        -- reversed order, to match @reverse@ later on
   , ([9], [CAVE_LABORATORY])
   , ([12, 11, 10], [DEFAULT_RANDOM, DEFAULT_RANDOM, CAVE_MUSEUM])
-  , ([13], [CAVE_EXIT])
+  , ([13], [CAVE_EGRESS])
   , ([15, 14], [DEFAULT_RANDOM, CAVE_CASINO])
   , ([16], [CAVE_POWER]) ]
 
@@ -767,7 +767,7 @@ cavesDig =
             [0, 16 ..]
             (replicate 100 listCrawl)
 --            [0, 2 ..]
---            (replicate 100 [([1], [CAVE_OUTERMOST]),([2], [CAVE_EXIT])])
+--            (replicate 100 [([1], [CAVE_OUTERMOST]),([2], [CAVE_EGRESS])])
 
 renumberCaves :: Int -> ([Int], [GroupName CaveKind])
               -> ([Int], [GroupName CaveKind])
@@ -794,7 +794,7 @@ allCaves =
   , CAVE_ZOO, CAVE_AMBUSH
   , CAVE_OUTERMOST, CAVE_SHALLOW_ROGUE, CAVE_BRIDGE, CAVE_NOISE, CAVE_ROGUE
   , CAVE_ARENA, CAVE_RESIDENTIAL, CAVE_VIRUS, CAVE_LABORATORY, CAVE_MUSEUM
-  , CAVE_EXIT, CAVE_CASINO, CAVE_POWER ]
+  , CAVE_EGRESS, CAVE_CASINO, CAVE_POWER ]
 
 cavesCrawlEmpty = reverse $
   map (\(ns, grps) ->

@@ -10,7 +10,7 @@ module Content.PlaceKind
   ( -- * Group name patterns
     pattern ROGUE, pattern LABORATORY, pattern ZOO, pattern BRAWL, pattern SHOOTOUT, pattern ARENA, pattern FLIGHT, pattern AMBUSH, pattern BATTLE, pattern NOISE, pattern EMPTY
   , pattern INDOOR_ESCAPE_DOWN, pattern INDOOR_ESCAPE_UP, pattern OUTDOOR_ESCAPE_DOWN, pattern TINY_STAIRCASE, pattern OPEN_STAIRCASE, pattern CLOSED_STAIRCASE, pattern WALLED_STAIRCASE, pattern GATED_TINY_STAIRCASE, pattern GATED_OPEN_STAIRCASE, pattern GATED_CLOSED_STAIRCASE, pattern OUTDOOR_TINY_STAIRCASE, pattern OUTDOOR_CLOSED_STAIRCASE, pattern OUTDOOR_WALLED_STAIRCASE
-  , pattern RESIDENTIAL, pattern MUSEUM, pattern EXIT, pattern VIRUS, pattern GAUNTLET, pattern RAID
+  , pattern RESIDENTIAL, pattern MUSEUM, pattern EGRESS, pattern VIRUS, pattern GAUNTLET, pattern RAID
   , pattern TINY_LIFT, pattern OPEN_LIFT, pattern WALLED_LIFT, pattern CLOSED_LIFT, pattern SPACESHIP_ESCAPE_DOWN, pattern ALARM_ESCAPE_UP, pattern DECON_TINY_STAIRCASE, pattern DECON_OPEN_STAIRCASE, pattern DECON_WALLED_STAIRCASE, pattern DECON_TINY_LIFT, pattern DECON_OPEN_LIFT, pattern DECON_WALLED_LIFT, pattern GATED_TINY_LIFT, pattern GATED_OPEN_LIFT, pattern GATED_CLOSED_LIFT, pattern WELDED_TINY_LIFT, pattern WELDED_OPEN_LIFT, pattern WELDED_WALLED_LIFT, pattern WELDED_TINY_STAIRCASE, pattern WELDED_OPEN_STAIRCASE, pattern WELDED_WALLED_STAIRCASE
   , groupNamesSingleton, groupNames
   , -- * Content
@@ -42,7 +42,7 @@ groupNames :: [GroupName PlaceKind]
 groupNames =
        [ROGUE, LABORATORY, ZOO, BRAWL, SHOOTOUT, ARENA, FLIGHT, AMBUSH, BATTLE, NOISE, EMPTY]
     ++ [INDOOR_ESCAPE_DOWN, INDOOR_ESCAPE_UP, OUTDOOR_ESCAPE_DOWN, TINY_STAIRCASE, OPEN_STAIRCASE, CLOSED_STAIRCASE, WALLED_STAIRCASE]
-    ++ [RESIDENTIAL, MUSEUM, EXIT, VIRUS, GAUNTLET, RAID]
+    ++ [RESIDENTIAL, MUSEUM, EGRESS, VIRUS, GAUNTLET, RAID]
     ++ [TINY_LIFT, OPEN_LIFT, WALLED_LIFT, CLOSED_LIFT, SPACESHIP_ESCAPE_DOWN, ALARM_ESCAPE_UP]
     ++ fst generatedStairs
 
@@ -50,7 +50,7 @@ pattern ROGUE, LABORATORY, ZOO, BRAWL, SHOOTOUT, ARENA, FLIGHT, AMBUSH, BATTLE, 
 
 pattern INDOOR_ESCAPE_DOWN, INDOOR_ESCAPE_UP, OUTDOOR_ESCAPE_DOWN, TINY_STAIRCASE, OPEN_STAIRCASE, CLOSED_STAIRCASE, WALLED_STAIRCASE, GATED_TINY_STAIRCASE, GATED_OPEN_STAIRCASE, GATED_CLOSED_STAIRCASE, OUTDOOR_TINY_STAIRCASE, OUTDOOR_CLOSED_STAIRCASE, OUTDOOR_WALLED_STAIRCASE :: GroupName PlaceKind
 
-pattern RESIDENTIAL, MUSEUM, EXIT, VIRUS, GAUNTLET, RAID :: GroupName PlaceKind
+pattern RESIDENTIAL, MUSEUM, EGRESS, VIRUS, GAUNTLET, RAID :: GroupName PlaceKind
 
 pattern TINY_LIFT, OPEN_LIFT, WALLED_LIFT, CLOSED_LIFT, SPACESHIP_ESCAPE_DOWN, ALARM_ESCAPE_UP, DECON_TINY_STAIRCASE, DECON_OPEN_STAIRCASE, DECON_WALLED_STAIRCASE, DECON_TINY_LIFT, DECON_OPEN_LIFT, DECON_WALLED_LIFT, GATED_TINY_LIFT, GATED_OPEN_LIFT, GATED_CLOSED_LIFT, WELDED_TINY_LIFT, WELDED_OPEN_LIFT, WELDED_WALLED_LIFT, WELDED_TINY_STAIRCASE, WELDED_OPEN_STAIRCASE, WELDED_WALLED_STAIRCASE :: GroupName PlaceKind
 
@@ -86,7 +86,7 @@ pattern OUTDOOR_WALLED_STAIRCASE = GroupName "outdoor walled staircase"
 -- ** Allure-specific
 pattern RESIDENTIAL = GroupName "residential"
 pattern MUSEUM = GroupName "museum"
-pattern EXIT = GroupName "exit"
+pattern EGRESS = GroupName "egress"
 pattern VIRUS = GroupName "virus"
 pattern GAUNTLET = GroupName "gauntlet"
 pattern RAID = GroupName "raid"
@@ -298,7 +298,7 @@ ruin = override2PlaceKind [('·', DAMP_FLOOR_DARK)]
   }
 ruin2 = ruin
   { pname    = "a scaffolding"
-  , pfreq    = [(NOISE, 2000), (EXIT, 5), (MUSEUM, 1)]
+  , pfreq    = [(NOISE, 2000), (EGRESS, 5), (MUSEUM, 1)]
   }
 collapsed = overridePlaceKind [('#', DOORLESS_MACHINERY)] $ PlaceKind
   { pname    = "a hardware stack"
@@ -406,7 +406,7 @@ pillar5 = overridePlaceKind [ ('&', CACHE_DEPOSIT)
             -- no STUCK_DOOR, because FWall, so would break global pathfinding
   { pname    = "a bank outlet"
   , pfreq    = [ (ROGUE, 1200), (ARENA, 6000)
-               , (EMPTY, 600), (EXIT, 600) ]
+               , (EMPTY, 600), (EGRESS, 600) ]
   , ptopLeft = [ "&i%·"
                , "ii#·"
                , "%#p·"
@@ -430,7 +430,7 @@ pillar6 = override2PlaceKind [('f', BUSH_GROVE_DARK)]
 colonnade = PlaceKind
   { pname    = "a colonnade"
   , pfreq    = [ (ROGUE, 12), (NOISE, 1000), (FLIGHT, 200)
-               , (EXIT, 30), (RAID, 12) ]
+               , (EGRESS, 30), (RAID, 12) ]
   , prarity  = [(1, 12), (10, 12)]
   , pcover   = CAlternate
   , pfence   = FFloor
@@ -589,7 +589,7 @@ smokeClump = override2PlaceKind [ ('f', SMOKE_CLUMP_DARK)
                                 , ('·', S_FLOOR_ACTOR_LIT) ] $
              overridePlaceKind [(';', S_SMOKE_LIT)] $ PlaceKind
   { pname    = "a smoky patch"
-  , pfreq    = [(EXIT, 20), (ZOO, 40), (AMBUSH, 50), (VIRUS, 1)]
+  , pfreq    = [(EGRESS, 20), (ZOO, 40), (AMBUSH, 50), (VIRUS, 1)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -601,7 +601,7 @@ smokeClump = override2PlaceKind [ ('f', SMOKE_CLUMP_DARK)
   , plegendLit = defaultLegendLit
   }
 smokeClump2 = smokeClump
-  { pfreq    = [(EXIT, 100), (ZOO, 200), (AMBUSH, 150), (VIRUS, 2)]
+  { pfreq    = [(EGRESS, 100), (ZOO, 200), (AMBUSH, 150), (VIRUS, 2)]
   , ptopLeft = [ "X;f"
                , "f;f"
                , ";;f"
@@ -1200,7 +1200,7 @@ oval = override2PlaceKind [ ('1', STUCK_DOOR)
                          , ('T', S_TREE_LIT) ] $ PlaceKind
   { pname    = "a dome"
   , pfreq    = [ (ROGUE, 20000), (ARENA, 30000), (MUSEUM, 30000)
-               , (LABORATORY, 50000), (EMPTY, 3000), (EXIT, 5000)
+               , (LABORATORY, 50000), (EMPTY, 3000), (EGRESS, 5000)
                , (AMBUSH, 20000), (RAID, 20000) ]
   , prarity  = [(1, 1)]
   , pcover   = CStretch
@@ -1216,7 +1216,7 @@ oval = override2PlaceKind [ ('1', STUCK_DOOR)
   }
 ovalFloor = oval
   { pfreq    = [ (ROGUE, 150000), (ARENA, 60000), (MUSEUM, 60000)
-               , (LABORATORY, 100000), (EMPTY, 20000), (EXIT, 5000)
+               , (LABORATORY, 100000), (EMPTY, 20000), (EGRESS, 5000)
                , (AMBUSH, 100000), (RAID, 150000) ]
   , pfence   = FGround
   , ptopLeft = [ "aXXX##"
@@ -1229,7 +1229,7 @@ ovalFloor = oval
   }
 ovalSquare = oval
   { pfreq    = [ (ROGUE, 20000), (ARENA, 30000), (MUSEUM, 30000)
-               , (LABORATORY, 50000), (EMPTY, 8000), (EXIT, 5000)
+               , (LABORATORY, 50000), (EMPTY, 8000), (EGRESS, 5000)
                , (AMBUSH, 20000), (RAID, 20000) ]
   , pfence   = FGround
   , ptopLeft = [ "X###+"
@@ -1322,7 +1322,7 @@ maze = override2PlaceKind [ ('·', OILY_FLOOR_DARK)
                          , ('$', TRAPPABLE_WALL) ] $ PlaceKind
   { pname    = "an intricate maze"
   , pfreq    = [ (ROGUE, 60), (LABORATORY, 1500), (ARENA, 3)
-               , (MUSEUM, 3), (EXIT, 100), (RAID, 60) ]
+               , (MUSEUM, 3), (EGRESS, 100), (RAID, 60) ]
   , prarity  = [(1, 1)]
   , pcover   = CStretch
   , pfence   = FWall
@@ -1335,7 +1335,7 @@ maze = override2PlaceKind [ ('·', OILY_FLOOR_DARK)
   }
 maze2 = maze
   { pfreq    = [ (ROGUE, 120), (LABORATORY, 12000), (ARENA, 4)
-               , (MUSEUM, 4), (EXIT, 100), (RAID, 120) ]
+               , (MUSEUM, 4), (EGRESS, 100), (RAID, 120) ]
   , ptopLeft = [ "#·%%·"
                , "·%··#"
                , "···#·"
@@ -1343,7 +1343,7 @@ maze2 = maze
   }
 maze3 = maze
   { pfreq    = [ (ROGUE, 120), (LABORATORY, 1000), (ARENA, 8)
-               , (MUSEUM, 4), (EMPTY, 300), (EXIT, 50), (RAID, 120) ]
+               , (MUSEUM, 4), (EMPTY, 300), (EGRESS, 50), (RAID, 120) ]
   , ptopLeft = [ "#·ff·"
                , "·f··#"
                , "···#;"
@@ -1351,7 +1351,7 @@ maze3 = maze
   }
 maze4 = maze
   { pfreq    = [ (ROGUE, 300), (LABORATORY, 15000), (ARENA, 9)
-               , (EXIT, 200), (RAID, 300) ]
+               , (EGRESS, 200), (RAID, 300) ]
   , ptopLeft = [ "##·##·"
                , "#·#··#"
                , "~·f···"
@@ -1359,7 +1359,7 @@ maze4 = maze
   }
 mazeBig = maze
   { pfreq    = [ (ROGUE, 1500), (LABORATORY, 8000), (ARENA, 10000)
-               , (EXIT, 1000), (RAID, 300) ]
+               , (EGRESS, 1000), (RAID, 300) ]
   , pfence   = FNone
   , ptopLeft = [ "X$$$$$"
                , "$··##·"
@@ -1388,7 +1388,7 @@ cells = override2PlaceKind [ ('b', RUBBLE_OR_WASTE_DARK)
                           , ('w', S_REINFORCED_WALL) ] $ PlaceKind
   { pname    = "air filters"
   , pfreq    = [ (ROGUE, 40), (LABORATORY, 48), (MUSEUM, 10)
-               , (EXIT, 150), (NOISE, 480)
+               , (EGRESS, 150), (NOISE, 480)
                , (ZOO, 700), (AMBUSH, 80), (RAID, 40) ]
   , prarity  = [(1, 1)]
   , pcover   = CReflect
@@ -1425,7 +1425,7 @@ cells4 = cells
 cells5 = cells  -- this one is distinct enough from others, so needs a boost
   { pname    = "broken robot holds"
   , pfreq    = [ (ROGUE, 20), (LABORATORY, 15)
-               , (EMPTY, 80), (EXIT, 70), (NOISE, 150) ]
+               , (EMPTY, 80), (EGRESS, 70), (NOISE, 150) ]
   , ptopLeft = [ "··w"
                , "·:w"
                , "wwo"
@@ -1441,7 +1441,7 @@ cells6 = cells
 cells7 = cells
   { pname    = "a defunct control room"
   , pfreq    = [ (ROGUE, 10), (LABORATORY, 20)
-               , (EXIT, 30), (NOISE, 200), (AMBUSH, 50) ]
+               , (EGRESS, 30), (NOISE, 200), (AMBUSH, 50) ]
   , pfence   = FFloor
   , ptopLeft = [ "d·o"
                , "·#o"
@@ -1464,12 +1464,12 @@ tank = overridePlaceKind [ ('#', DOORLESS_WALL)
   }
 tank2 = tank
   { pname    = "a barrel stack"
-  , pfreq    = [(EMPTY, 60), (EXIT, 2), (NOISE, 1), (VIRUS, 10), (BATTLE, 1)]
+  , pfreq    = [(EMPTY, 60), (EGRESS, 2), (NOISE, 1), (VIRUS, 10), (BATTLE, 1)]
   , ptopLeft = [ "b"
                ]
   }
 tank3 = tank
-  { pfreq    = [ (EMPTY, 300), (EXIT, 15), (NOISE, 50), (GAUNTLET, 1)
+  { pfreq    = [ (EMPTY, 300), (EGRESS, 15), (NOISE, 50), (GAUNTLET, 1)
                , (BATTLE, 25) ]
   , ptopLeft = [ "0#"
                , "##"
@@ -1477,14 +1477,14 @@ tank3 = tank
   }
 tank4 = tank
   { pname    = "a barrel stack"
-  , pfreq    = [(EMPTY, 300), (EXIT, 8), (NOISE, 50), (VIRUS, 40), (BATTLE, 25)]
+  , pfreq    = [(EMPTY, 300), (EGRESS, 8), (NOISE, 50), (VIRUS, 40), (BATTLE, 25)]
   , ptopLeft = [ "Xb"
                , "bb"
                ]
   }
 tank5 = tank
   { pname    = "a barrel yard"
-  , pfreq    = [(EMPTY, 4000), (EXIT, 800), (NOISE, 800), (BATTLE, 350)]
+  , pfreq    = [(EMPTY, 4000), (EGRESS, 800), (NOISE, 800), (BATTLE, 350)]
   , pcover   = CAlternate
   , ptopLeft = [ "bbX"
                , "bbX"
@@ -1493,7 +1493,7 @@ tank5 = tank
   }
 tank6 = tank
   { pname    = "a barrel yard"
-  , pfreq    = [(EMPTY, 30000), (EXIT, 5000), (NOISE, 5000), (BATTLE, 2500)]
+  , pfreq    = [(EMPTY, 30000), (EGRESS, 5000), (NOISE, 5000), (BATTLE, 2500)]
   , pcover   = CAlternate
   , ptopLeft = [ "bbbX"
                , "bbbX"
@@ -1502,7 +1502,7 @@ tank6 = tank
                ]
   }
 tank7 = tank
-  { pfreq    = [ (EMPTY, 600), (EXIT, 5), (NOISE, 100), (BATTLE, 50)
+  { pfreq    = [ (EMPTY, 600), (EGRESS, 5), (NOISE, 100), (BATTLE, 50)
                , (GAUNTLET, 1) ]
   , ptopLeft = [ "rr#"
                , "r##"
@@ -1510,7 +1510,7 @@ tank7 = tank
                ]
   }
 tank8 = tank
-  { pfreq    = [(EMPTY, 1000), (EXIT, 15), (NOISE, 150), (BATTLE, 70)]
+  { pfreq    = [(EMPTY, 1000), (EGRESS, 15), (NOISE, 150), (BATTLE, 70)]
   , ptopLeft = [ "XX0#"
                , "Xrr#"
                , "0r##"
@@ -1519,7 +1519,7 @@ tank8 = tank
   }
 tank9 = tank
   { pname    = "a barrel yard"
-  , pfreq    = [(EMPTY, 3000), (EXIT, 150), (NOISE, 150), (BATTLE, 70)]
+  , pfreq    = [(EMPTY, 3000), (EGRESS, 150), (NOISE, 150), (BATTLE, 70)]
   , pcover   = CReflect
   , ptopLeft = [ "XbbX"
                , "bbbX"
@@ -1529,7 +1529,7 @@ tank9 = tank
   }
 tank10 = tank
   { pname    = "a cistern"
-  , pfreq    = [(EMPTY, 1000), (EXIT, 15), (NOISE, 150), (BATTLE, 70)]
+  , pfreq    = [(EMPTY, 1000), (EGRESS, 15), (NOISE, 150), (BATTLE, 70)]
   , ptopLeft = [ "XXr#"
                , "Xr##"
                , "r###"
@@ -1538,7 +1538,7 @@ tank10 = tank
   }
 tank11 = tank
   { pname    = "a barrel yard"
-  , pfreq    = [(EMPTY, 4000), (EXIT, 250), (NOISE, 250), (BATTLE, 125)]
+  , pfreq    = [(EMPTY, 4000), (EGRESS, 250), (NOISE, 250), (BATTLE, 125)]
   , pcover   = CReflect
   , ptopLeft = [ "bbbXX"
                , "bbbbX"
@@ -1548,7 +1548,7 @@ tank11 = tank
   }
 tank12 = tank
   { pname    = "a barrel yard"
-  , pfreq    = [(EMPTY, 6000), (EXIT, 500), (NOISE, 500), (BATTLE, 250)]
+  , pfreq    = [(EMPTY, 6000), (EGRESS, 500), (NOISE, 500), (BATTLE, 250)]
   , pcover   = CReflect
   , ptopLeft = [ "XbbXX"
                , "bbbbX"
@@ -1567,7 +1567,7 @@ shuttleHusk = override2PlaceKind [ ('·', OILY_FLOOR_DARK)
                                 , ('h', S_HARDWARE_RACK)
                                 , ('w', S_REINFORCED_WALL) ] $ PlaceKind
   { pname    = "a shuttle husk"
-  , pfreq    = [(EMPTY, 2000), (EXIT, 15000), (AMBUSH, 15000)]
+  , pfreq    = [(EMPTY, 2000), (EGRESS, 15000), (AMBUSH, 15000)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FGround
@@ -1585,12 +1585,12 @@ shuttleHusk = override2PlaceKind [ ('·', OILY_FLOOR_DARK)
   , plegendLit = defaultLegendLit
   }
 shuttleHusk2 = shuttleHusk
-  { pfreq    = [(EMPTY, 4000), (EXIT, 30000), (AMBUSH, 30000)]
+  { pfreq    = [(EMPTY, 4000), (EGRESS, 30000), (AMBUSH, 30000)]
   , ptopLeft = map (T.cons 'X' . flip T.snoc 'X')
                $ ptopLeft shuttleHusk  -- 9 x 9
   }
 shuttleHusk3 = shuttleHusk
-  { pfreq    = [(EMPTY, 600), (EXIT, 5000), (AMBUSH, 5000)]
+  { pfreq    = [(EMPTY, 600), (EGRESS, 5000), (AMBUSH, 5000)]
   , ptopLeft = [ ":··##··X"  -- 8 x 8
                , "X#%ww%#X"
                , "#w····w#"
@@ -1602,12 +1602,12 @@ shuttleHusk3 = shuttleHusk
                ]
   }
 shuttleHusk4 = shuttleHusk3
-  { pfreq    = [(EMPTY, 600), (EXIT, 5000), (AMBUSH, 5000)]
+  { pfreq    = [(EMPTY, 600), (EGRESS, 5000), (AMBUSH, 5000)]
   , ptopLeft = map (T.cons 'X' . flip T.snoc 'X')
                $ ptopLeft shuttleHusk3  -- 10 x 8
   }
 shuttleHusk5 = shuttleHusk
-  { pfreq    = [(EXIT, 80000), (AMBUSH, 80000)]
+  { pfreq    = [(EGRESS, 80000), (AMBUSH, 80000)]
       -- can't have EMPTY or AI can't reach and kill the boss and get the key
   , ptopLeft = [ "···##···"  -- 8 x 10
                , "w#%ww%#w"
@@ -1622,7 +1622,7 @@ shuttleHusk5 = shuttleHusk
                ]
   }
 shuttleHusk6 = shuttleHusk
-  { pfreq    = [(EMPTY, 4000), (EXIT, 120000), (AMBUSH, 120000)]
+  { pfreq    = [(EMPTY, 4000), (EGRESS, 120000), (AMBUSH, 120000)]
   , ptopLeft = [ "X··###··X"  -- 9 x 10
                , "X#%#w#%#X"
                , "##·h·h·##"
