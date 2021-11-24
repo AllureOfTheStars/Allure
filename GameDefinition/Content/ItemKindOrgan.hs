@@ -635,7 +635,7 @@ arsenicVent = armoredSkin
 
 bonusHP = armoredSkin
   { isymbol  = toContentSymbol 'H'  -- '+' reserved for conditions
-  , iname    = "bonus HP"
+  , iname    = "extra HP"
   , ifreq    = [(S_BONUS_HP, 1)]
   , iflavour = zipPlain [BrBlue]
   , iverbHit = "intimidate"
