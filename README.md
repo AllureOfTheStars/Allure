@@ -174,7 +174,7 @@ Testing and debugging
 
 Integration tests can be run and displayed with
 
-    cabal test test --test-show-details=direct
+    cabal test --test-show-details=direct
 
 The [Makefile](https://github.com/AllureOfTheStars/Allure/blob/master/Makefile)
 contains many sample automated play test commands.
