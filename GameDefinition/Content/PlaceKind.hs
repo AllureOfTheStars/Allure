@@ -142,13 +142,13 @@ staircaseBasic = [staircase1, staircase2, staircase3, staircase4, staircase5, st
 generatedStairs :: ([GroupName PlaceKind], [PlaceKind])
 generatedStairs =
   let (stairs, lifts) = partition ((/= "a lift") . pname) staircaseBasic
-      gatedStairs = map switchStaircaseToGated stairs
+      gatedStairs = map switchStairToGated stairs
       gatedLifts = map switchLiftToGated lifts
-      deconStairs = map switchStaircaseToDecon stairs
+      deconStairs = map switchStairToDecon stairs
       deconLifts = map switchLiftToDecon lifts
-      weldedStairs = map switchStaircaseToWelded stairs
+      weldedStairs = map switchStairToWelded stairs
       weldedLifts = map switchLiftToWelded lifts
-      outdoorStairs = map switchStaircaseToOutdoor stairs
+      outdoorStairs = map switchStairToOutdoor stairs
       stairsAll = stairs ++ gatedStairs ++ deconStairs ++ weldedStairs
                   ++ outdoorStairs
       liftsAll = lifts ++ gatedLifts ++ deconLifts ++ weldedLifts
@@ -157,10 +157,10 @@ generatedStairs =
         ++ deconStairs ++ deconLifts
         ++ weldedStairs ++ weldedLifts
         ++ outdoorStairs
-        ++ map (switchExitToUp "stair terminal") stairsAll
-        ++ map (switchExitToUp "lift terminal") liftsAll
-        ++ map (switchExitToDown "stair terminal") stairsAll
-        ++ map (switchExitToDown "lift terminal") liftsAll
+        ++ map (switchStairToUp "stair terminal") stairsAll
+        ++ map (switchStairToUp "lift terminal") liftsAll
+        ++ map (switchStairToDown "stair terminal") stairsAll
+        ++ map (switchStairToDown "lift terminal") liftsAll
   in ( nub $ sort $ concatMap (map fst . pfreq) genStairs
      , genStairs )
 
@@ -1707,16 +1707,16 @@ dormitory6 = dormitory
 
 -- * Helper functions
 
-switchExitToUp :: Text -> PlaceKind -> PlaceKind
-switchExitToUp terminal s = override2PlaceKind
+switchStairToUp :: Text -> PlaceKind -> PlaceKind
+switchStairToUp terminal s = override2PlaceKind
                               [('>', GroupName $ terminal <+> "Dark")]
                               [('>', GroupName $ terminal <+> "Lit")] $ s
   { pname     = pname s <+> "up"
   , pfreq     = renameFreqs (<+> "up") $ pfreq s
   }
 
-switchExitToDown :: Text -> PlaceKind -> PlaceKind
-switchExitToDown terminal s = override2PlaceKind
+switchStairToDown :: Text -> PlaceKind -> PlaceKind
+switchStairToDown terminal s = override2PlaceKind
                                 [('<', GroupName $ terminal <+> "Dark")]
                                 [('<', GroupName $ terminal <+> "Lit")] $ s
   { pname     = pname s <+> "down"
@@ -1729,8 +1729,8 @@ overrideGatedStaircase =
   [ ('<', GATED_STAIRCASE_UP), ('>', GATED_STAIRCASE_DOWN)
   , ('S', FILLER_WALL) ]
 
-switchStaircaseToGated :: PlaceKind -> PlaceKind
-switchStaircaseToGated s = overridePlaceKind overrideGatedStaircase $ s
+switchStairToGated :: PlaceKind -> PlaceKind
+switchStairToGated s = overridePlaceKind overrideGatedStaircase $ s
   { pname     = T.unwords $ "a gated" : tail (T.words (pname s))
   , pfreq     = renameFreqs ("gated" <+>) $ pfreq s
   }
@@ -1753,8 +1753,8 @@ overrideDeconStaircase =
   , ('>', S_STAIRCASE_TRAP_DOWN_OIL)  -- talter high enough
   , ('S', FILLER_WALL) ]
 
-switchStaircaseToDecon :: PlaceKind -> PlaceKind
-switchStaircaseToDecon s = overridePlaceKind overrideDeconStaircase $ s
+switchStairToDecon :: PlaceKind -> PlaceKind
+switchStairToDecon s = overridePlaceKind overrideDeconStaircase $ s
   { pfreq     = renameFreqs ("decon" <+>) $ pfreq s
   }
 
@@ -1775,8 +1775,8 @@ overrideWeldedStaircase =
   [ ('<', WELDED_STAIRCASE_UP), ('>', ORDINARY_STAIRCASE_DOWN)
   , ('S', FILLER_WALL) ]
 
-switchStaircaseToWelded :: PlaceKind -> PlaceKind
-switchStaircaseToWelded s = overridePlaceKind overrideWeldedStaircase $ s
+switchStairToWelded :: PlaceKind -> PlaceKind
+switchStairToWelded s = overridePlaceKind overrideWeldedStaircase $ s
   { pfreq     = renameFreqs ("welded" <+>) $ pfreq s
   }
 
@@ -1796,8 +1796,8 @@ overrideOutdoor =
   [ ('<', STAIRCASE_OUTDOOR_UP), ('>', STAIRCASE_OUTDOOR_DOWN)
   , ('S', FILLER_WALL) ]
 
-switchStaircaseToOutdoor :: PlaceKind -> PlaceKind
-switchStaircaseToOutdoor s = overridePlaceKind overrideOutdoor $ s
+switchStairToOutdoor :: PlaceKind -> PlaceKind
+switchStairToOutdoor s = overridePlaceKind overrideOutdoor $ s
   { pname     = "an outdoor area exit"
   , pfreq     = renameFreqs ("outdoor" <+>) $ pfreq s
   }
