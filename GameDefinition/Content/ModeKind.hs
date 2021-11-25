@@ -132,10 +132,10 @@ raid = ModeKind
       [ "* One level only"
       , "* Two heroes vs. Competition and Spawned enemies"
       , "* Gather gold"
-      , "* Find exit and escape ASAP"
+      , "* Find a way out and escape ASAP"
       ]
   , mdesc   = "Neptune Economic Area Administration confirms isolated spottings of oversize vermin in non-residential zones of the Neptune's Triton moon's largest city. To put it plainly: Triton City sewers need purging. The first person to break through to the other exit will be paid 100 gold grains. The Administration \"strongly urges participants not to resort to violence against each other.\" However, no punitive consequences are specified, not even disqualification from the contest."
-  , mreason = "In addition to initiating the game plot, this adventure teaches treasure gathering and item use, looking after the shared inventory stash and dealing with many enemy factions at once. Combat, however, is not a focus, so relax, explore, gather loot, find the exit and escape. With some luck, you won't even need to fight anything."
+  , mreason = "In addition to initiating the game plot, this adventure teaches treasure gathering and item use, looking after the shared inventory stash and dealing with many enemy factions at once. Combat, however, is not a focus, so relax, explore, gather loot, find the way out and escape. With some luck, you won't even need to fight anything."
   , mhint   = "You can't use gathered items in your next encounters, so trigger any consumables at will, in particular the throwaway electronic chips as common as pebbles on the muddy sewer floors.\nFeel free to scout with only one of the heroes and keep the other one immobile, e.g., standing guard over the squad's shared inventory stash. If in grave danger, retreat with the scout to join forces with the guard. The more gold collected and the faster the victory, the higher your score in this encounter."
   }
 
@@ -172,7 +172,7 @@ crawl = ModeKind
       [ "* Many levels, some requiring tools to access"
       , "* Three heroes vs. Spawned enemies"
       , "* Gather gold, gems and stimpacks"
-      , "* Find exit and escape ASAP"
+      , "* Find a way out and escape ASAP"
       ]
   , mdesc   = "You are busy looting, with utmost satisfaction, the blasted bridge of an old and extravagantly luxurious cruise liner.\nSuddenly, the inert spaceship, supposedly long deserted and barely able to sustain life support, tremors and dials her fusion engines up to red overdrive. The space map flickering among the irreversibly damaged consoles shows the ship manoeuvre deftly off Triton orbit and purposefully climb the Neptune's gravity well. There's no way to control the ship and static floods all communication channels.\nYou decide to scour the nearby dilapidated decks for missing squad members, this time sending them in pairs and mapping the area properly, and then get back to the spaceport the way you came, in your shuttle. However, you are determined not to leave the ship without taking at least a portion of the wealth that is rightfully yours."
   , mreason = "This is the main, longest and most replayable scenario of the game. The fundamental goal is the survival of your crew. Sub-goals will present themselves as you take in newly visited spaceship decks and figure out ways to reach those that are presently cut off."
@@ -237,7 +237,7 @@ flight = ModeKind  -- asymmetric ranged and stealth race at night
   , mattract = False
   , mroster = rosterFlight
   , mcaves  = cavesFlight
-  , mendMsg = [ (Killed, "Somebody must have tipped the gang guards off. However, us walking along a lit trail, yelling, could have been a contributing factor. Also, it's worth noting that the torches prepared for this assault are best used as thrown makeshift flares.\nOn the other hand, equipping a lit torch makes one visible in the dark, regrettably but not quite unexpectedly. Lastly, the goal of this foray was to find the exit back to the city, marked by a yellow '>' sign, and to gather some treasure along the way. Not to harass every local evildoer, as much as they do deserve it.")
+  , mendMsg = [ (Killed, "Somebody must have tipped the gang guards off. However, us walking along a lit trail, yelling, could have been a contributing factor. Also, it's worth noting that the torches prepared for this assault are best used as thrown makeshift flares.\nOn the other hand, equipping a lit torch makes one visible in the dark, regrettably but not quite unexpectedly. Lastly, the goal of this foray was to find the way back to the city, marked by a yellow '>' sign, and to gather some treasure along the way. Not to harass every local evildoer, as much as they do deserve it.")
               , (Conquer, "It was enough to reach the escape area, namely the exit tunnel from the park marked by yellow '>' symbol. Spilling that much blood was risky. unnecessary and alerted the authorities. Having said that --- impressive indeed.")
               , (Escape, "Congratulations, you took your revenge and it's heavy in your pockets.") ]
   , mrules  = T.intercalate "\n"
@@ -245,9 +245,9 @@ flight = ModeKind  -- asymmetric ranged and stealth race at night
       , "* Three heroes vs. Seven human enemies capable of concurrent attacks"
       , "* Minimize losses"
       , "* Gather gems"
-      , "* Find exit and escape ASAP"
+      , "* Find a way out and escape ASAP"
       ]
-  , mdesc   = "Bloodied spaceship deed in hand notwithstanding, you can reach the derelict spaceliner only via a shuttle from the Central Triton Spaceport across the city. After hours of being chased in the opposite direction towards the border wall, you sneak back and make a desperate dash through the very den of the pursuing gang. Any valuables you come upon in this public park turned miscreant lair will be fair compensation for your losses, but you need to find the exit before the foes find you. Rein in your wrath and don't attack your tormentors. Foiling their plans by eluding them will be revenge enough."
+  , mdesc   = "Bloodied spaceship deed in hand notwithstanding, you can reach the derelict spaceliner only via a shuttle from the Central Triton Spaceport across the city. After hours of being chased in the opposite direction towards the border wall, you sneak back and make a desperate dash through the very den of the pursuing gang. Any valuables you come upon in this public park turned miscreant lair will be fair compensation for your losses, but you need to find the way out before the foes find you. Rein in your wrath and don't attack your tormentors. Foiling their plans by eluding them will be revenge enough."
   , mreason = "The focus of this installment is on stealthy exploration under the threat of numerically superior enemy."
   , mhint   = ""
   }
@@ -312,7 +312,7 @@ safari = ModeKind  -- Easter egg available only via screensaver
       [ "* Three levels"
       , "* Many teammates capable of concurrent action vs. Many enemies"
       , "* Minimize losses"
-      , "* Find exit and escape ASAP"
+      , "* Find a way out and escape ASAP"
       ]
   , mdesc   = "\"In this simulation you'll discover the joys of hunting the most exquisite of Earth's flora and fauna, both animal and semi-intelligent. Exit at the topmost level.\" This is a VR recording recovered from an alien nest debris."
   , mreason = "This is an Easter egg. The default squad doctrine is that all team members follow the pointman, but it can be changed from the settings submenu of the main menu."
