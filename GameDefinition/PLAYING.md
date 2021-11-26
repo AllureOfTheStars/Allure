@@ -122,7 +122,7 @@ but also whether suspect tiles are considered for mouse go-to, auto-explore
 and for the `C-?` command that marks the nearest unexplored position.
 
 Game scenarios, as ordered by their number, lead the player along
-an optional story arc. The first two adventures double as tutorials
+an optional story arc. The first three adventures double as tutorials
 that offer rudimentary preparation for the main game, the long crawl.
 They gradually introduce exploration, stealth and melee combat,
 helping the player develop his repertoire of squad formations
@@ -131,7 +131,7 @@ When the player loses, a defeat message for the scenario appears
 with hints about strategies known to work in the given tactical context.
 Alternatively, the player may postpone reading these messages and instead
 try to puzzle out the tactics himself --- this is not so hard, as there are
-not yet so many moving parts to figure out in the first two adventures.
+not yet so many moving parts to figure out in the first three adventures.
 
 In the third scenario, the main 'crawl' game mode, the player starts
 employing ranged combat, stealth, light sources, item and terrain alteration.
@@ -523,7 +523,8 @@ and glory is the beacon that shines as bright as the stars in deep space.
 FAQ
 ---
 
-- Q: I've already explored first three decks and I don't know what to do next.
+- Q: I've explored the first three decks of the crawl game mode and I don't
+know what to do next.
 
 A: Role-play a little. Re-read the scenario description, deck
 descriptions for all three levels and the description of crucial
