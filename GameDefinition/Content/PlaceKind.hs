@@ -564,7 +564,7 @@ fogClump = override2PlaceKind [('f', FOG_CLUMP_DARK)]
                               [('f', FOG_CLUMP_LIT)] $
            overridePlaceKind [(';', S_FOG_LIT)] $ PlaceKind
   { pname    = "a foggy patch"
-  , pfreq    = [(EMPTY, 500), (SHOOTOUT, 70), (FLIGHT, 60), (RAID, 50)]
+  , pfreq    = [(EMPTY, 500), (SHOOTOUT, 70), (FLIGHT, 60), (RAID, 20)]
   , prarity  = [(1, 1)]
   , pcover   = CMirror
   , pfence   = FNone
@@ -576,7 +576,7 @@ fogClump = override2PlaceKind [('f', FOG_CLUMP_DARK)]
   , plegendLit = defaultLegendLit
   }
 fogClump2 = fogClump
-  { pfreq    = [(EMPTY, 2500), (SHOOTOUT, 400), (FLIGHT, 100), (RAID, 250)]
+  { pfreq    = [(EMPTY, 2500), (SHOOTOUT, 400), (FLIGHT, 100), (RAID, 50)]
   , ptopLeft = [ "X;f"
                , "f;f"
                , ";;f"
