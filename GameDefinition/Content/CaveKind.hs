@@ -542,7 +542,9 @@ gauntlet = rogue
   , cstairAllowed = []
   , cinitSleep    = InitSleepBanned  -- to make it harder to escape freely
   , cskip         = [0]  -- don't start heroes nor opponents on escape
-  , cdesc         = "Triton's cryothermal vents that supply energy and resources to the city are spread far apart. That funnels the unregulated sprawl of the sublunar city wide rather than deep and favours tunnels over domes."
+  , cdesc         = T.intercalate "\n"
+      [ "Triton's cryothermal vents that supply energy and resources to the city are spread far apart. That funnels the unregulated sprawl of the sublunar city wide rather than deep and favours tunnels over domes."
+      , "The deepest tunnels, such as this one, serve exclusively as emergency secondary connections between Triton City forges, farms and population centers. They are devoid of amenities and normally unused except by lazy maintenance crews storing and then leaving behind defunct machinery and leftover spare parts. Nobody can be contacted from such a remote corridor, except through a red alarm console, mandatory per every 100m of transport tunnels." ]
   }
 raid = rogue
   { cname         = "Triton City sewers"
