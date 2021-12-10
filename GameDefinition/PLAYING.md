@@ -557,12 +557,13 @@ while investigating the other story elements, you need to bump
 or examine interesting terrain more often. Listen to what encountered
 unique characters say. Read the descriptions and piece the puzzles together.
 If still no luck, it may be that there was a murder and the item
-you look for got stranded. In that case, explore every tile,
+enabling the easiest solution got stranded. In that case, explore every tile,
 pick up every item, equip it and try opening the staircase.
 The item can't be destroyed and is too scary to be picked up by foes,
 so your success is assured. Ask on a forum if desperate.
 If that's any consolation, it's the only blocking puzzle in the game.
 All other puzzles and mini-games can be brute-forced (with some losses).
+BTW, there are less obvious but more advantageous ways of opening that path.
 
 - Q: Where to buy light sources in the crawl scenario game?
 
