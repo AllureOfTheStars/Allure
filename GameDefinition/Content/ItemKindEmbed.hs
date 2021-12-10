@@ -1082,6 +1082,7 @@ workshopAssocs =
   , ( [], [(1, S_STAFF), (1, STEEL_SCRAP)], [(1, S_SHORT_CLUB)] )
   , ( [], [(1, POLE), (2, STEEL_SCRAP)], [(1, S_LONG_CLUB)] )
   -- Perfect the perfection. Comes after the productive rules.
+  -- Only include the most augmented items with random stats to re-roll.
   , ( [(1, BONDING_TOOL)], [(1, S_LONG_SHARP_HAMMER)]
     , [(1, S_LONG_SHARP_HAMMER)] )
   , ( [(1, BONDING_TOOL)], [(1, S_POLL_AXE)], [(1, S_POLL_AXE)] )
