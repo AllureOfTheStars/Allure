@@ -772,14 +772,14 @@ liftUp = stairsUp
   , iflavour = zipPlain [Blue]
   , ifreq    = [(LIFT_UP, 1)]
   , iaspects = [SetFlag Durable]
-  , idesc    = "It's surprising that it still functions while all others are nonoperational."  -- describe inner levels of the ship
+  , idesc    = "Surprisingly, this lift still functions, while others are wrecked."  -- describe inner levels of the ship
   }
 liftDown = stairsDown
   { iname    = "carriage"
   , iflavour = zipPlain [Blue]
   , ifreq    = [(LIFT_DOWN, 1)]
   , iaspects = [SetFlag Durable]
-  , idesc    = "It's surprising that it still functions while all others are nonoperational."  -- describe outer levels of the ship
+  , idesc    = "Surprisingly, this one shaft is still open, while others are ruined and blocked."  -- describe outer levels of the ship
   }
 liftTrap = stairsTrapUp
   { iname    = "elevator trap"  -- hat tip to US heroes

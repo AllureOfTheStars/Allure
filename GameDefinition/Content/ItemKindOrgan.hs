@@ -885,7 +885,7 @@ mouthVent = armoredSkin
             , ("ask: Could you please come closer?", "")
             , ("ask: Have you found your luggage, sir?", "")
             , ("ask: Have you found the lift to your destination?", "")
-            , ("complain: I can't reach you with this tool", "." )
+            , ("complain: I can't reach you with this essential tool", "." )
             , ("complain: I can't hand you this item from here", "." )
             , ("complain: I'm afraid, I can't do that", "." ) ]
           ++ [NopEffect, NopEffect, NopEffect, NopEffect]
