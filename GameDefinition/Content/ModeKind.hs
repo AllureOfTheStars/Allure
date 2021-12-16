@@ -781,11 +781,11 @@ cavesShort = let numberCaves n c = ([n], [c])
                 $ concatMap (replicate 100) $ take 8 allCaves
 
 cavesFun = let numberCaves n c = ([n], [c])
-               funModes = drop 3 (take 8 allCaves)
+               funModes = drop 4 (take 8 allCaves)
                funLevels = [ CAVE_OUTERMOST, CAVE_RESIDENTIAL, CAVE_ROGUE
-                           , CAVE_LABORATORY, CAVE_ARENA ]
+                           , CAVE_AMBUSH ]
            in reverse $ zipWith numberCaves [1..]
-              $ concatMap (replicate 100) $ funModes ++ funLevels
+              $ concatMap (replicate 33) $ funModes ++ funLevels
 
 allCaves :: [GroupName CaveKind]
 allCaves =
