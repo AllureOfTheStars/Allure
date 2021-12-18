@@ -1,3 +1,4 @@
+{-# LANGUAGE PackageImports #-}
 -- Copyright (c) 2008--2011 Andres Loeh
 -- Copyright (c) 2010--2021 Mikolaj Konarski and others (see git history)
 -- This file is a part of the computer game Allure of the Stars
@@ -40,13 +41,13 @@ import           Game.LambdaHack.Server
 
 import qualified Client.UI.Content.Input as Content.Input
 import qualified Client.UI.Content.Screen as Content.Screen
-import qualified Content.CaveKind
-import qualified Content.FactionKind
-import qualified Content.ItemKind
-import qualified Content.ModeKind
-import qualified Content.PlaceKind
-import qualified Content.RuleKind
-import qualified Content.TileKind
+import qualified "Allure" Content.CaveKind
+import qualified "Allure" Content.FactionKind
+import qualified "Allure" Content.ItemKind
+import qualified "Allure" Content.ModeKind
+import qualified "Allure" Content.PlaceKind
+import qualified "Allure" Content.RuleKind
+import qualified "Allure" Content.TileKind
 import           Implementation.MonadServerImplementation (executorSer)
 
 -- | Tie the LambdaHack engine client, server and frontend code
