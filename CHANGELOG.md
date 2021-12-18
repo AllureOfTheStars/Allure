@@ -1,4 +1,4 @@
-## [v0.11.0.0](https://github.com/LambdaHack/LambdaHack/compare/v0.10.3.0...v0.11.0.0)
+## [v0.11.0.0](https://github.com/AllureOfTheStars/Allure/v0.10.3.0...v0.11.0.0)
 
 - Partially work around regression in libsdl2 2.0.16 (https://github.com/LambdaHack/LambdaHack/issues/281); to also avoid deformed boxes around tiles on the game map, please switch to a different SDL2 version
 - Deduplicate UI code for exiting game, with extra style points
