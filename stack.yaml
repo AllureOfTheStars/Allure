@@ -1,11 +1,3 @@
-resolver: lts-13.18
-
-packages: ['.']
-
-extra-deps:
-- git: git@github.com:LambdaHack/LambdaHack.git
-  commit: master
-
-flags: {}
-
-extra-package-dbs: []
+resolver: nightly-2021-12-18
+packages:
+- .
