@@ -133,10 +133,11 @@ compiled for SDL2 and installed automatically using the 'cabal' tool,
 which may already be a part of your OS distribution, but if it's too old
 (version 3.4 or later is required) you can download the whole current
 compilation suite as described at https://www.haskell.org/downloads/.
-Get the Allure of the Stars package from Hackage[3] as follows
+You can get and run the Allure of the Stars package from Hackage[3] as follows
 
     cabal update
-    cabal run Allure
+    cabal install Allure
+    ~/.cabal/bin/Allure
 
 For a newer, unofficial version, clone the game source from github[5],
 clone a matching LambdaHack library snapshot into ../LambdaHack and run
