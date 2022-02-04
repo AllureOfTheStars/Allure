@@ -13,7 +13,7 @@ jobs:
     name: Haskell-CI - Linux - ${{ matrix.compiler }}
     runs-on: ubuntu-latest
     container:
-      image: buildpack-deps:bionic
+      image: buildpack-deps:focal
     continue-on-error: ${{ matrix.allow-failure }}
     strategy:
       matrix:
