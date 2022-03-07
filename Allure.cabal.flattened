@@ -106,6 +106,8 @@ common options
 -- TODO: remove -Winvalid-haddock when added to -Wall in a GHC I use for haddock
   ghc-options:        -fno-ignore-asserts
 
+  ghc-options:        -Wmissed-specialisations
+
   if flag(with_costly_optimizations)
     ghc-options:        -fexpose-all-unfoldings -fspecialise-aggressively -fsimpl-tick-factor=200
 
