@@ -116,13 +116,12 @@ gauntlet = ModeKind
   , mreason = "This is a simple introductory tutorial adventure. It teaches (avoiding) combat, escape, particularly via displacing, aggression, audacity, speed and multiple good endings and dying."
   , mhint   = T.intercalate "\n"
       [ "Speaking plainly, the two good endings are evacuation thanks to the alarm console and killing off all the replicants. The former requires a long and nerve-wrecking jog with lots of displacing (Shift-direction), while being harassed by robots, to the far end of the tunnel. The latter is hard, because the infected machines initially spawn faster than they can be killed and they keep spawning for as long as a single survivor hides under a crate somewhere. Killing off all robots results in higher score, unless it required much more time."
-      , "When meleeing, it's best to keep all characters together, but when running past enemies, a sole sprinter will have a higher speed, though breaking through an unexpected wall of enemies may prove impossible for a single brave. If any of the endings seem unattainable, it may be wise to lower game  difficulty level from main menu and/or return after trying out subsequent game modes, battle-hardened and full of mastery."]
+      , "When meleeing, it's best to keep all characters together, but when running past enemies, a sole sprinter will have a higher speed, though breaking through an unexpected wall of enemies may prove impossible for a single brave. If any of the endings seem unattainable, it may be wise to lower game  difficulty level from main menu and/or return after trying out subsequent game modes, battle-hardened and full of mastery." ]
   }
-  where
-    killedMsg = T.intercalate "\n"
-      ["That was unfortunate. Perhaps the growing wave of rogue robots indeed could not be stemmed. The bill for the nano medbot treatment will reach the stars once the checkout clock alerts authorities and a full drone city sweep (another bill) recovers your remains."
-      ,"But was it really impossible to run a few dozen meters into the tunnel, side-stepping or displacing (Shift-direction) enemies, and trigger the red alarm console? Perhaps one person could distract the replicants, while another searched for a passage around them? Or was the challenge just too difficult and could the difficulty have been lowered otherwise?"]  -- hint, hint
-
+ where
+  killedMsg = T.intercalate "\n"
+    [ "That was unfortunate. Perhaps the growing wave of rogue robots indeed could not be stemmed. The bill for the nano medbot treatment will reach the stars once the checkout clock alerts authorities and a full drone city sweep (another bill) recovers your remains."
+    , "But was it really impossible to run a few dozen meters into the tunnel, side-stepping or displacing (Shift-direction) enemies, and trigger the red alarm console? Perhaps one person could distract the replicants, while another searched for a passage around them? Or was the challenge just too difficult and could the difficulty have been lowered otherwise?" ]  -- hint, hint
 
 raid = ModeKind
   { mname   = "raid (tutorial, 2)"
@@ -143,13 +142,13 @@ raid = ModeKind
   , mdesc   = "Neptune Economic Area Administration confirms isolated spottings of oversize vermin in non-residential zones of the Neptune's Triton moon's largest city. To put it plainly: Triton City sewers need purging. The first person to break through to the other exit will be paid 100 gold grains. The Administration \"strongly urges participants not to resort to violence against each other.\" However, no punitive consequences are specified, not even disqualification from the contest."
   , mreason = "In addition to initiating the game plot, this adventure teaches treasure gathering and item use, looking after the shared inventory stash and dealing with many enemy factions at once. Combat, however, is not a focus, so relax, explore, gather loot, find the way out and escape. With some luck, you won't even need to fight anything."
   , mhint   = T.intercalate "\n"
-    ["You can't use gathered items in your next encounters, so trigger any consumables at will, in particular the throwaway electronic chips as common as pebbles on the muddy sewer floors."
-    , "Feel free to scout with only one of the heroes and keep the other one immobile, e.g., standing guard over the squad's shared inventory stash. If in grave danger, retreat with the scout to join forces with the guard. The more gold collected and the faster the victory, the higher your score in this encounter."]
+      [ "You can't use gathered items in your next encounters, so trigger any consumables at will, in particular the throwaway electronic chips as common as pebbles on the muddy sewer floors."
+      , "Feel free to scout with only one of the heroes and keep the other one immobile, e.g., standing guard over the squad's shared inventory stash. If in grave danger, retreat with the scout to join forces with the guard. The more gold collected and the faster the victory, the higher your score in this encounter." ]
   }
-  where
-    escapeMsg = T.intercalate "\n"
-      [ "You are the first to clear a route through the sewer system. Triton City authorities will now be able to establish a perimeter and mop up the side tunnels. You collect your reward of 100 gold grains and start looking for a way to invest it profitably on this Solar System's commercial frontier, abounding in more or less (usually less) regulated opportunities."
-      , "After some thought you decide to start by splurging on genetic enhancement for your team. The effects won't be visible at once, but you have to plan ahead, having just made fresh enemies." ]
+ where
+  escapeMsg = T.intercalate "\n"
+    [ "You are the first to clear a route through the sewer system. Triton City authorities will now be able to establish a perimeter and mop up the side tunnels. You collect your reward of 100 gold grains and start looking for a way to invest it profitably on this Solar System's commercial frontier, abounding in more or less (usually less) regulated opportunities."
+    , "After some thought you decide to start by splurging on genetic enhancement for your team. The effects won't be visible at once, but you have to plan ahead, having just made fresh enemies." ]
 
 brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
   { mname   = "brawl (tutorial, 3)"
@@ -167,19 +166,19 @@ brawl = ModeKind  -- sparse melee in daylight, with shade for melee ambush
       , "* Incapacitate all enemies ASAP"
       ]
   , mdesc   = T.intercalate "\n"
-      ["Last evening: \"You scoundrel! You cheated in the sewers, fighting two against one. Come alone to the woody biosphere behind the saloon at noon, if you dare. Given that I win, I take back all your gold. Otherwise, you get the scrapping rights for the giant spaceliner's hull in orbit."
+      [ "Last evening: \"You scoundrel! You cheated in the sewers, fighting two against one. Come alone to the woody biosphere behind the saloon at noon, if you dare. Given that I win, I take back all your gold. Otherwise, you get the scrapping rights for the giant spaceliner's hull in orbit."
       , "Yes, it's mine, you tramp; here's the docking transmitter and the paperwork. The fight is to the last man standing, no evasion, no breaks for nano-healing in town."
-      , "It's noon now."]
+      , "It's noon now." ]
   , mreason = "In addition to advancing the game plot, this encounter trains melee, squad formation, stealth and stairs use. On each level separately, the battle is symmetric: three vs three. Similar are also goals (incapacitate all enemies) and squad capabilities (only the pointman moves, while all others either melee or wait). Observe and mimic the enemies. If you can't see an enemy that apparently can see you, in reversed circumstances you would have the same advantage. Savour the relative fairness --- you won't find any in the main crawl adventure that follows."
   , mhint   = T.intercalate "\n"
-      ["Run a short distance with Shift or LMB, switch the pointman with Tab, repeat. In open terrain, if you keep distance between teammates, this resembles the leap frog infantry tactics. For best effects, end each sprint behind a cover or concealment."
+      [ "Run a short distance with Shift or LMB, switch the pointman with Tab, repeat. In open terrain, if you keep distance between teammates, this resembles the leap frog infantry tactics. For best effects, end each sprint behind a cover or concealment."
       , "Once you clear a level, descend by bumping into stairs. Use Tab to switch to remaining heroes until all gather on the new level."
-      , "If you get beaten repeatedly, try using all consumables you find, particularly the vials that collect healing extracts abounding in this rich biosphere. Ponder the hints from the defeat message, in particular the one about keeping your party together once the opponents are spotted. However, if you want to discover a winning tactics on your own, make sure to ignore any such tips until you succeed."]
+      , "If you get beaten repeatedly, try using all consumables you find, particularly the vials that collect healing extracts abounding in this rich biosphere. Ponder the hints from the defeat message, in particular the one about keeping your party together once the opponents are spotted. However, if you want to discover a winning tactics on your own, make sure to ignore any such tips until you succeed." ]
   }
-  where
-    killedMsg = T.intercalate "\n"
-      ["That treacherous villain didn't honour his word and brought his friends to the fight. It would still not turn so bad if we remembered to use terrain to protect us from missiles or even completely hide our presence and if we honourably kept together to the end, at the same time preventing the overwhelming enemy forces from brutishly ganging up on our modest-sized, though valiant, squad."
-      , "Having to repurchase the genetic therapy is the most painful result. If repeated, that's going to send you broke and in shame to Earth, to start collecting your Basic Income."]
+ where
+  killedMsg = T.intercalate "\n"
+    [ "That treacherous villain didn't honour his word and brought his friends to the fight. It would still not turn so bad if we remembered to use terrain to protect us from missiles or even completely hide our presence and if we honourably kept together to the end, at the same time preventing the overwhelming enemy forces from brutishly ganging up on our modest-sized, though valiant, squad."
+    , "Having to repurchase the genetic therapy is the most painful result. If repeated, that's going to send you broke and in shame to Earth, to start collecting your Basic Income." ]
 
 crawl = ModeKind
   { mname   = "long crawl (main)"
@@ -197,17 +196,17 @@ crawl = ModeKind
       , "* Find a way out and escape ASAP"
       ]
   , mdesc   = T.intercalate "\n"
-      ["You are busy looting, with utmost satisfaction, the blasted bridge of an old and extravagantly luxurious cruise liner."
+      [ "You are busy looting, with utmost satisfaction, the blasted bridge of an old and extravagantly luxurious cruise liner."
       , "Suddenly, the inert spaceship, supposedly long deserted and barely able to sustain life support, tremors and dials her fusion engines up to red overdrive. The space map flickering among the irreversibly damaged consoles shows the ship manoeuvre deftly off Triton orbit and purposefully climb the Neptune's gravity well. There's no way to control the ship and static floods all communication channels."
-      , "You decide to scour the nearby dilapidated decks for missing squad members, this time sending them in pairs and mapping the area properly, and then get back to the spaceport the way you came, in your shuttle. However, you are determined not to leave the ship without taking at least a portion of the wealth that is rightfully yours."]
+      , "You decide to scour the nearby dilapidated decks for missing squad members, this time sending them in pairs and mapping the area properly, and then get back to the spaceport the way you came, in your shuttle. However, you are determined not to leave the ship without taking at least a portion of the wealth that is rightfully yours." ]
   , mreason = "This is the main, longest and most replayable scenario of the game. The fundamental goal is the survival of your crew. Sub-goals will present themselves as you take in newly visited spaceship decks and figure out ways to reach those that are presently cut off."
   , mhint   = "If you keep dying, attempt the subsequent adventures as a breather (perhaps at lowered difficulty). They fill the gaps in the plot and teach particular skills that may come in handy and help you discover new tactics of your own or come up with a strategy for staving off the attrition. On the other hand, experimenting with the initial adventures, e.g., to obtain a higher score, may open to you more efficient ways of solving the puzzles."
  -- later, when the player can visit other level sections: you turn on the deck status list display and notice that most levels are fully pressurized, including the complete autonomous slice of the disc that includes the bridge deck
   }
-  where
-    escapeMsg = T.intercalate "\n"
-      ["The shuttle doors close behind, docking clamps grind in farewell and the giant rotating disc slowly tumbles away in rear view. You feel at once a relief and a sense of loss. This is not finished. You are changed forever, but you know nothing. You've heard the call, but you made no answer. You came for petty change, found a treasure beyond comprehension, then barely escaped with your life as the prize."
-      , "And nobody will believe you at home. But you don't need their understanding any more. You have enough money to heal, regroup, track the ship down and try again. It's your personal space cruiser, after all, with a world of its own, inside."]
+ where
+  escapeMsg = T.intercalate "\n"
+    [ "The shuttle doors close behind, docking clamps grind in farewell and the giant rotating disc slowly tumbles away in rear view. You feel at once a relief and a sense of loss. This is not finished. You are changed forever, but you know nothing. You've heard the call, but you made no answer. You came for petty change, found a treasure beyond comprehension, then barely escaped with your life as the prize."
+    , "And nobody will believe you at home. But you don't need their understanding any more. You have enough money to heal, regroup, track the ship down and try again. It's your personal space cruiser, after all, with a world of its own, inside." ]
 
 -- The trajectory tip is important because of tactics of scout looking from
 -- behind a bush and others hiding in mist. If no suitable bushes,
@@ -233,16 +232,16 @@ shootout = ModeKind  -- sparse ranged in daylight
       , "* Incapacitate all enemies ASAP"
       ]
   , mdesc   = T.intercalate "\n"
-      ["The fight crashes over to a nearby mechanized farm. Law enforcement, crippled by the ban on firearms, won't show up until only wounded and dying remain to be revived and locked up."
-      , "Parcels and flasks of agricultural chemicals, scattered around, beg to be flung at foes as improvised missiles. Intense light makes it easy to aim and to discern trajectory of soaring items (by pointing at enemy projectiles with the crosshair in aiming mode). The effects of your last infracellular therapy finally start showing."]
+      [ "The fight crashes over to a nearby mechanized farm. Law enforcement, crippled by the ban on firearms, won't show up until only wounded and dying remain to be revived and locked up."
+      , "Parcels and flasks of agricultural chemicals, scattered around, beg to be flung at foes as improvised missiles. Intense light makes it easy to aim and to discern trajectory of soaring items (by pointing at enemy projectiles with the crosshair in aiming mode). The effects of your last infracellular therapy finally start showing." ]
   , mreason = "This adventure is a flashback, picking the plot up where brawl (2) left it. It also teaches specifically the ranged combat skill in the simplified setup of a fully symmetric battle."
   , mhint   = "Try to come up with the best squad formation for this tactical challenge. Don't despair if you run out of ammo, because if you aim truly, enemy is left with few hit points remaining. Fight, ranged or melee, until all aggressors are disabled."
   }
-  where
-    killedMsg = T.intercalate "\n"
-      ["This is a disgrace. How is a thuggish robbery in broad daylight even possible in a moon city that styles itself as the capital of Outer System technological innovation and commercial opportunity? Where are the municipal surveillance drones, normally so eager to eavesdrop and needlessly complicate an honest tax-free business, when one's health and wealth for once depend on their nosy presence?"
-      , "Speaking of drones, we could use one in this skirmish, or even just a human lookout placed in a covered but unobstructed spot. Then the rest of the squad could snipe from concealment or from a safe distance."
-      , "Barring that, we would end up in a better shape even if we all hid and fired blindly. We'd listen to impact sounds and wait vigilantly for incoming enemy missiles in order to register their trajectories and derive hints of enemy location. Apparently, ranged combat requires a change of pace and better planning than our previous illustrious successes accustomed us to."]
+ where
+  killedMsg = T.intercalate "\n"
+    [ "This is a disgrace. How is a thuggish robbery in broad daylight even possible in a moon city that styles itself as the capital of Outer System technological innovation and commercial opportunity? Where are the municipal surveillance drones, normally so eager to eavesdrop and needlessly complicate an honest tax-free business, when one's health and wealth for once depend on their nosy presence?"
+    , "Speaking of drones, we could use one in this skirmish, or even just a human lookout placed in a covered but unobstructed spot. Then the rest of the squad could snipe from concealment or from a safe distance."
+    , "Barring that, we would end up in a better shape even if we all hid and fired blindly. We'd listen to impact sounds and wait vigilantly for incoming enemy missiles in order to register their trajectories and derive hints of enemy location. Apparently, ranged combat requires a change of pace and better planning than our previous illustrious successes accustomed us to." ]
 
 hunt = ModeKind  -- melee vs ranged with reaction fire in daylight
   { mname   = "perilous hunt (5)"
@@ -265,10 +264,10 @@ hunt = ModeKind  -- melee vs ranged with reaction fire in daylight
   , mreason = "This is yet another reminiscence of the events that led to the long crawl adventure. This encounter is quite a tactical challenge, because enemies are allowed to fling their ammo simultaneously at your team, which has no such ability."
   , mhint   = "Try not to outshoot the enemy, but to instead focus more on melee tactics. A useful concept here is communication overhead. Any team member that is not waiting and spotting for everybody, but acts, e.g., melees or moves or manages items, slows down all other team members by roughly 10%, because they need to keep track of his actions. Therefore, if other heroes melee, consider carefully if it makes sense to come to their aid, slowing them while you move, or if it's better to stay put and monitor the perimeter. This is true for all factions and all actors on each level separately, except the pointman of each faction, if it has one."  -- this also eliminates lag in big battles and helps the player to focus on combat and not get distracted by distant team members frantically trying to reach the battleground in time
   }
-  where
-    killedMsg = T.intercalate "\n"
-      ["Next time let's try to remember we are not on a sightseeing expedition. Also, leaving concealment is risky, leaving cover is foolhardy and wandering off is deadly. Also, what was that taking pictures by the mangrove tree all about? Were you trying to immortalize your handsome faces in case our shared pool of money was not enough to revive your sorry carcasses after the defeat?"
-      , "Good call, because after paying the techno-medical bills we are broke, while the gang foot soldiers that chase us seem to have military grade communication and reaction fire implants. And we were so close to complete victory and unfathomable wealth, if only we strove to lower the difficulty of this mission instead of raising it."]
+ where
+  killedMsg = T.intercalate "\n"
+    [ "Next time let's try to remember we are not on a sightseeing expedition. Also, leaving concealment is risky, leaving cover is foolhardy and wandering off is deadly. Also, what was that taking pictures by the mangrove tree all about? Were you trying to immortalize your handsome faces in case our shared pool of money was not enough to revive your sorry carcasses after the defeat?"
+    , "Good call, because after paying the techno-medical bills we are broke, while the gang foot soldiers that chase us seem to have military grade communication and reaction fire implants. And we were so close to complete victory and unfathomable wealth, if only we strove to lower the difficulty of this mission instead of raising it." ]
 
 flight = ModeKind  -- asymmetric ranged and stealth race at night
   { mname   = "night flight (6)"
@@ -291,10 +290,10 @@ flight = ModeKind  -- asymmetric ranged and stealth race at night
   , mreason = "The focus of this installment is on stealthy exploration under the threat of numerically superior enemy."
   , mhint   = ""
   }
-  where
-    killedMsg = T.intercalate "\n"
-      ["Somebody must have tipped the gang guards off. However, us walking along a lit trail, yelling, could have been a contributing factor. Also, it's worth noting that the torches prepared for this assault are best used as thrown makeshift flares."
-      , "On the other hand, equipping a lit torch makes one visible in the dark, regrettably but not quite unexpectedly. Lastly, the goal of this foray was to find the way back to the city, marked by a yellow '>' sign, and to gather some treasure along the way. Not to harass every local evildoer, as much as they do deserve it."]
+ where
+  killedMsg = T.intercalate "\n"
+    [ "Somebody must have tipped the gang guards off. However, us walking along a lit trail, yelling, could have been a contributing factor. Also, it's worth noting that the torches prepared for this assault are best used as thrown makeshift flares."
+    , "On the other hand, equipping a lit torch makes one visible in the dark, regrettably but not quite unexpectedly. Lastly, the goal of this foray was to find the way back to the city, marked by a yellow '>' sign, and to gather some treasure along the way. Not to harass every local evildoer, as much as they do deserve it." ]
 
 zoo = ModeKind  -- asymmetric crowd melee at night
   { mname   = "burning zoo (7)"
@@ -343,13 +342,13 @@ ambush = ModeKind  -- dense ranged with reaction fire vs melee at night
   , mreason = "In this encounter, finally, your heroes are able to all use ranged attacks simultaneously, given enough ammunition. Once you prevail in the encounter, the story catches up with the start of the main adventure, the long crawl." -- this is the only scenario with no objective specified, to give a bit of suspense, misdirection and mystery until the first win (death gives a hint only); being the last of the small scenarios, it won't scare off new players
   , mhint   = "Beware of friendly fire, particularly from explosives. But you need no more hints. Go fulfill your destiny!"
   }
-  where
-    killedMsg = T.intercalate "\n"
-      ["You turned out to be the prey, this time, not the hunter. In fact, you are not even in the hunters' league. When fighting against such odds, passively waiting for enemy to spring a trap is to no avail, because a professional team can sneak in darkness and ambush the ambushers."
-      , "Granted, good positioning is crucial, so that each squad member can overwatch the battlefield and fire opportunistically, using the recently recovered mil-grade communication equipment. However, there is no hope without active scouting, throwing lit objects and probing suspect areas with missiles while paying attention to sounds. And that may still not be enough."]
-    conqureMsg = T.intercalate "\n"
-      ["The new communication equipment enabling simultaneous ranged attacks with indirect aiming proved effective beyond expectation. With the mercenaries gone and nobody else having the slightest wish to interfere, the shuttle to the space cruiser at orbit is easy to launch at last. You let yourself bask in the battle's afterglow of bliss and relief. Now your turbulent adventure ends and the boring life of space cruiser scrap parts supplier or, as it may be, of a refurbished giant space liner operator, commences."
-      , "A pity that the last round of shoddy genetic enhancements, bought at the grey market, scandalously auto-reverts at this very moment, leaving your personalized equipment that attuned to the previous genetic configuration inoperable. Fortunately, danger, debt and the gangster debt collectors are now behind you and the grey market won't see you ever again."]
+ where
+  killedMsg = T.intercalate "\n"
+    [ "You turned out to be the prey, this time, not the hunter. In fact, you are not even in the hunters' league. When fighting against such odds, passively waiting for enemy to spring a trap is to no avail, because a professional team can sneak in darkness and ambush the ambushers."
+    , "Granted, good positioning is crucial, so that each squad member can overwatch the battlefield and fire opportunistically, using the recently recovered mil-grade communication equipment. However, there is no hope without active scouting, throwing lit objects and probing suspect areas with missiles while paying attention to sounds. And that may still not be enough." ]
+  conqureMsg = T.intercalate "\n"
+    [ "The new communication equipment enabling simultaneous ranged attacks with indirect aiming proved effective beyond expectation. With the mercenaries gone and nobody else having the slightest wish to interfere, the shuttle to the space cruiser at orbit is easy to launch at last. You let yourself bask in the battle's afterglow of bliss and relief. Now your turbulent adventure ends and the boring life of space cruiser scrap parts supplier or, as it may be, of a refurbished giant space liner operator, commences."
+    , "A pity that the last round of shoddy genetic enhancements, bought at the grey market, scandalously auto-reverts at this very moment, leaving your personalized equipment that attuned to the previous genetic configuration inoperable. Fortunately, danger, debt and the gangster debt collectors are now behind you and the grey market won't see you ever again." ]
 
 safari = ModeKind  -- Easter egg available only via screensaver
   { mname   = "safari"
