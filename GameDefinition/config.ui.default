@@ -21,10 +21,10 @@
 [additional_commands]
 ; Angband compatibility (accept target)
 Cmd_2 = ("KP_Insert", ([CmdAim], "", ByAimMode AimModeCmd {exploration = Dashboard, aiming = Accept}))
-
 ; Custom key rebinding example:
 ;
 ;   Cmd_anyName_youLike = ("a", ([CmdItem], "My Happy Cmd", Macro ["t"]))
+;
 ; Explanation: to (t)rigger a consumable item for use, you normally use
 ;              the key press 't'.
 ; Suppose you would like to use the key press 'a' instead of 't'.
