@@ -108,6 +108,30 @@ https://github.com/AllureOfTheStars/Allure/blob/master/GameDefinition/PLAYING.md
   G            manage items on the ground
   T            manage our total team belongings
 
+All items belonging to your team are stored either in the character's local inventory (called the character's outfit) or in the shared inventory that is accessible by every team member (called the team stash). Items that are in the character's outfit can be accessed by or are beneficial for this particular character only. Stashed items can be accessed by the team members (unless the character is injured or panicking). But no one has a direct advantage from having the items in the shared inventory. 
+The stashed items are exactly stashed, they are not simply laying on the ground (although the stash has a physical location on the map). You cannot operate the items from the stash, as if these items are just on the ground directly. To collect an item from the stash or add it there, you should enter the stash management menu by pressing the 'I'. 
+
+Obviously, if the item is beneficial (a piece of armor, weapon, or a bonus item), it is reasonable to put it into a particular character's outfit. However, you should remember that the outfit is limited to any 10 (ten) items only. On the contrary, if the item is not required directly (ranged projectiles, medkits, ampoules with drugs, or food), it may be stored in the shared stash. 
+The shared stash is of unlimited size. It has a physical location on the map and may be looted by your enemies. So, it is wise to keep it safe or change its location depending on the current situation. Enemy factions may have their stashes on the map, and you may loot their stashes too. Enemy units may have items in their outfits, and sometimes they may have some items stashed on the ground. 
+You should keep your eye on the item management stat in the character menu '#'. If this stat is too low (which may be caused by injury or panic), you will be unable to work with items either in the character's outfit or in the shared stash.
+
+To open the pointsman's outfit, press 'O' (if you want to see the pointsman's personal inventory outfit and manipulate items stored there) or 'i' (if you want to stash something in the shared inventory from the pointsman's outfit).
+To open the shared stash, press 'I'.
+To open the whole team's belongings (personal and stashed), press 'T'.
+To manage items on the ground (trigger or fling it directly not putting it into any inventory to save time), press 'G'.
+
+To pick up an item from the ground to the pointsman's outfit, press 'g'.
+To pick up an item from the ground to the stashed inventory, press ','.
+
+When you are managing items in the inventory or on the ground, you should choose the item with the LMB or arrows and 'RET' buttons to get the item management menu. You may want to choose all items from the particular location by pressing '*'.
+
+To drop an item on the ground from the inventory (either stashed or from the personal outfit), press 'r'.
+To trigger the item's properties (inject an ampoule, activate a chip, eat a piece of food), press 't'.
+To throw (fling) the item somewhere, press 'f'.
+To put the item into the particular outfit (personal or shared), press 'o' (personal outfit) or 'i' (shared inventory).
+
+You may want to travel around the characters' inventories without leaving the inventory menu. To do that, you may press '<' or '>' to check different inventories: character's outfit, stashed inventory, objects on the ground, etc. You may also change pointsmen that are adjusting inventory by pressing the 'TAB' command.
+
  Note how lower case item commands (stash item, equip item) place items
  into a particular item store, while upper case item commands (manage Inventory,
  manage Outfit) open management menu for a store. Once a store menu is opened,
@@ -134,6 +158,10 @@ https://github.com/AllureOfTheStars/Allure/blob/master/GameDefinition/PLAYING.md
   C-R          heed (lurk 0.1 turns 100 times)
   0, 1 ... 9   pick a particular actor as the new pointman
 
+Quite often, you will need to modify your environment somehow. There are numerous ways how to do that, so try, experiment!
+You may craft items, change the terrain, cook food, upgrade or change items, and many other things!
+For example, to craft items, you need some basic components and a workshop station or any other terrain that may be used to modify items (a pool of water, a burning tile, etc). Stand next to the workshop station, drop the components, stand on them, and press 'M'. The components will be automatically consumed, and the resulting item will appear. For example, you may want to craft a club from a wooden stick and several steel scraps. Approach a workshop, drop the components, and press 'M'.
+Some crafting recipies may be found by pressing the '~' command while looking at the terrain you want to use.
 
  All aiming commands
 
@@ -175,5 +203,8 @@ https://github.com/AllureOfTheStars/Allure/blob/master/GameDefinition/PLAYING.md
   C-S          save game backup
   C-P          print screen
 
-
+It is always good to check the condition of your character. This information is available by pressing '@' (general information about the character) and '#' (it will tell you the character's stats). You should check them from time to time.
+The '@' command will show you the general information about the chosen character: Which organs this character has and how they function, and information about his/her psychological condition or individual traits (beneficial or detrimental). 
+The same information about enemies may be found by the '~' command while the enemy unit is in the crosshair. It is good to check this information as it may give you some clues about your own characters and your enemies. For example, you see an unknown creature. How to react to it? Is it dangerous? Check its lore menu and the organs it has! It may help you to generate the appropriate strategy. Because for example, the enemy that can call for help may be the target #1.
+The '#' command shows more applied information: it shows the character's characteristics. Melee or ranged combat modifiers, armor stats, speed, ability to manage items on the ground or in the shared inventory, ability to modify terrain and craft items, vision, hearing - all this information may be found in the skill summary menu.
  For more playing instructions see file PLAYING.md.
