@@ -242,7 +242,7 @@ Leading your heroes
 -------------------
 
 The heroes are displayed on the map with bright white color (red if they are
-seriously wounded) and symbols `@` and `1` through `9` (never `0`).
+seriously wounded) and symbols `@` and `1` through `9` (`0` will call the '@' pointman).
 The currently chosen party pointman is highlighted on the map with yellow.
 The easiest way to control your team is to run a short distance
 with your pointman using Shift-direction or LMB, switch the pointman
