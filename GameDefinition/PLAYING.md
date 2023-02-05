@@ -220,7 +220,7 @@ Additionally, each tile, regardless if open and if translucent,
 may be permanently lit with ambient light or not.
 
 Actors are marked with lower and upper case letters and with
-characters `@` and `1` through `9` (but never `0`). Player-controlled
+characters `@` and `1` through `9` (but characters can never be depicted as `0`). Player-controlled
 heroes are always bright white and at game start they are selected
 (e.g., to run together) so they have a green highlight around their symbol.
 If player manages to take control of animals or other actors, they retain
