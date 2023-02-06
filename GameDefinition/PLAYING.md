@@ -220,7 +220,7 @@ Additionally, each tile, regardless if open and if translucent,
 may be permanently lit with ambient light or not.
 
 Actors are marked with lower and upper case letters and with
-characters `@` and `1` through `9` (but never `0`). Player-controlled
+characters `@` and `1` through `9` (but characters can never be depicted as `0`). Player-controlled
 heroes are always bright white and at game start they are selected
 (e.g., to run together) so they have a green highlight around their symbol.
 If player manages to take control of animals or other actors, they retain
@@ -242,7 +242,7 @@ Leading your heroes
 -------------------
 
 The heroes are displayed on the map with bright white color (red if they are
-seriously wounded) and symbols `@` and `1` through `9` (never `0`).
+seriously wounded) and symbols `@` and `1` through `9` (`0` will call the '@' pointman).
 The currently chosen party pointman is highlighted on the map with yellow.
 The easiest way to control your team is to run a short distance
 with your pointman using Shift-direction or LMB, switch the pointman
