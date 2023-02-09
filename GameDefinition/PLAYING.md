@@ -445,8 +445,8 @@ The same information about enemies may be found by the '~' command while
 the enemy unit is in the crosshair. For example, you see an unknown creature.
 How to react to it? Is it dangerous? What are its properties? Check its
 lore menu and the organs it has! It may help you to generate the appropriate
-strategy. Because for example, the enemy that can call for help may be target
-#1. 
+strategy. Because for example, the enemy that can call for help may be 
+the main target for you. 
 
 In ranged combat, the projectile is assumed to be attacking the defender
 in melee, using itself as the weapon, with the usual dice and damage bonus.
