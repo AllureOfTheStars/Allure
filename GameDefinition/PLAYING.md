@@ -610,13 +610,6 @@ inventories: character's outfit, stashed inventory, objects on the ground,
 etc. You may also change pointsmen that are adjusting inventory by pressing
 the 'TAB' command.
 
-Note how lowercase item commands (stash item, equip item) place items into
-a particular item store, while uppercase item commands (manage Inventory,
-manage Outfit) open the management menu for a store. Once a store menu is
-opened, you can switch stores with `<` and `>`, so the multiple commands
-only determine the starting item store. Each store is accessible from
-the dashboard as well.
-
 Quite often, you will need to modify your environment somehow. There are
 numerous ways how to do that, so try and experiment!
 You may craft items, change the terrain, cook food, upgrade or change items,
