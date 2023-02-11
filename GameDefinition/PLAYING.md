@@ -570,7 +570,8 @@ valuables or powerful projectiles by not taking care of the shared stash.
 To relocate the shared inventory stash, first, you need to remove ALL 
 of the items from it anywhere you want to make it empty. Then, any stashed
 item (or a pile of items) will automatically become the new stash. The process 
-takes several turns, so you should plan stash relocation in advance.
+takes several turns, so you should plan shared inventory stash relocation
+in advance.
 You should keep your eye on the item management stat in the character menu
 '#'. If this stat is too low (which may be caused by an injury or low 
 calmness level), it will be difficult for the character to work with items in 
@@ -580,7 +581,7 @@ To open the pointsman's outfit, press 'O' (if you want to see the pointsman's
 personal inventory outfit and manipulate items stored there) or 'i' (if
 you want to stash something in the shared inventory from the pointsman's
 outfit).
-To open the shared stash, press 'I'.
+To open the shared inventory stash, press 'I'.
 To open the whole team's belongings (personal and stashed), press 'T'.
 To manage items on the ground (trigger or fling it directly not putting
 it into any inventory to save time), press 'G'.
