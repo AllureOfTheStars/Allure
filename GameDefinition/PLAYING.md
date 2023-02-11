@@ -620,14 +620,16 @@ Quite often, you will need to modify your environment somehow. There are
 numerous ways how to do that, so try and experiment!
 You may craft items, change the terrain, cook food, upgrade or change items,
 and many other things!
+
 For example, to craft items, you need some basic components and a workshop
 station or any other terrain that may be used to modify items (a pool
 of water, a source of fire, etc). Stand next to the workshop station, drop
 the components, stand on them, press 'M', and point to the direction
 of the item-modifying tile. The components will be automatically consumed,
-and the resulting item will appear. For example, you may want to craft
-a club from a wooden stick and several steel scraps. Approach a workshop,
-drop the components, press 'M', and point to the workshop.
+and the resulting item will appear. 
+For example, you may want to craft a club from a wooden stick and several 
+steel scraps. Approach a workshop, drop the components, press 'M', and 
+point to the workshop.
 Some crafting recipes may be found by pressing the '~' command while looking
 at the terrain you want to use.
 
