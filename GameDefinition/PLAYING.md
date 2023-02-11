@@ -432,7 +432,7 @@ below -95%, so excessively strong armor acts only as a buffer against
 high melee skill of opponents.
 
 The current pointsman's melee bonus (xdy + %, which means rolling 'x'-many
-'y'-sided dice + some bonus values), armor modifier ([melee] and {ranged} 
+'y'-sided dice + some bonus values), armor modifier ('[melee]' and '{ranged}' 
 bonuses) and other detailed stats can be viewed in the skill menu, 
 accessible via the `#` command, which summarizes all the stats conferred 
 by organs and conditions listed in the organ menu, invoked by `@`.
@@ -541,52 +541,54 @@ of exploration.
 Managing inventory and crafting
 -------------------------------
 
-All items belonging to your team are stored either in the character's local
-inventory (called the character's outfit) or in the shared inventory that
-is accessible by every team member (called the team stash). Items that are
-in the character's outfit can be accessed by or are beneficial for this
-particular character only. Stashed items can be accessed by the team members
-(unless the character is injured or panicking). But no one has a direct
-advantage from having the items in the shared inventory.
+All items belonging to your team are stored either in the character's personal 
+equipment outfit or in the shared inventory stash that is accessible by every 
+team member. 
+Items that are in the personal equipment outfit can be accessed by or 
+are beneficial for this particular character only. Stashed items can be 
+accessed by the team members (unless the character is not calm enough 
+or injured). But no one has a direct advantage from having the items 
+in the shared inventory stash.
 The stashed items are exactly stashed, they are not simply laying on
-the ground (although the stash has a physical location on the map). You
+the ground (although the stash has a particular location on the map). You
 cannot operate the items from the stash, as if these items are just on
-the ground directly. To collect an item from the stash or add it there,
-you should enter the stash management menu by pressing the 'I'.
+the ground directly. To collect an item from the stash or drop it on the ground,
+you should use commands.
 
 Obviously, if the item is beneficial (a piece of armor, weapon, or a bonus
 item), it is reasonable to put it into a particular character's outfit.
 However, you should remember that the outfit is limited to any 10 (ten)
 items only. On the contrary, if the item is not required directly (ranged
-projectiles, medkits, ampoules with drugs, or food), it may be stored in
-the shared stash.
-The shared stash is of unlimited size. It has a physical location on
-the map and may be looted by your enemies. So, it is wise to keep it safe
-or change its location depending on the current situation. It would be
-a pity to lose your belongings, valuables, and powerful projectiles by not
-taking care of them. Enemy factions may have their stashes on the map,
-and you may loot their stashes too. Enemy units may have items in their
-outfits, and sometimes they may have some items stashed on the ground.
-To relocate the stash, first, you need to remove ALL of the items from it
-anywhere you want to make it empty. Then, any stashed item (or a pile
-of items) will automatically become the new stash. The process is a bit
-long, so you should plan stash relocation in advance.
+weapon, medkits, ampoules with drugs, food, or else), it may be stored in
+the shared inventory stash.
+
+The shared inventory stash is of unlimited size. It has a physical location on
+the map and may be looted. So, it is wise to keep it safe or change 
+its location depending on the current situation. It would be a pity to lose 
+valuables or powerful projectiles by not taking care of the shared stash. 
+
+To relocate the shared inventory stash, first, you need to remove ALL 
+of the items from it anywhere you want to make it empty. Then, any stashed
+item (or a pile of items) will automatically become the new stash. The process 
+takes several turns, so you should plan stash relocation in advance.
 You should keep your eye on the item management stat in the character menu
-'#'. If this stat is too low (which may be caused by injury or panic), you
-will be unable to work with items either in the character's outfit or in
-the shared stash.
+'#'. If this stat is too low (which may be caused by an injury or low 
+calmness level), it will be difficult for the character to work with items in 
+the character's personal outfit or in the shared inventory stash.
 
 To open the pointsman's outfit, press 'O' (if you want to see the pointsman's
 personal inventory outfit and manipulate items stored there) or 'i' (if
 you want to stash something in the shared inventory from the pointsman's
-outfit). NA outfit).
+outfit).
 To open the shared stash, press 'I'.
 To open the whole team's belongings (personal and stashed), press 'T'.
 To manage items on the ground (trigger or fling it directly not putting
 it into any inventory to save time), press 'G'.
 
-To pick up an item from the ground to the pointsman's outfit, press 'g'.
-To pick up an item from the ground to the stashed inventory, press ','.
+To pick up an item from the ground to the pointsman's outfit, press 'g' or ','.
+Items that have some direct use (melee weapon or armor) will be equiped 
+in the personal equipment outfit while if it has no direct use or the equipment 
+outfit is full, the item will be moved to the shared inventory stash.
 
 When you are managing items in the inventory or on the ground, you should
 choose the item with the LMB or arrows and 'RET' buttons to get the item
