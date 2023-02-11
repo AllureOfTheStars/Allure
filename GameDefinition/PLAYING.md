@@ -586,8 +586,8 @@ To manage items on the ground (trigger or fling it directly not putting
 it into any inventory to save time), press 'G'.
 
 To pick up an item from the ground to the pointsman's outfit, press 'g' or ','.
-Items that have some direct use (melee weapon or armor) will be equiped 
-in the personal equipment outfit while if it has no direct use or the equipment 
+Items that have some direct use (melee weapon or armor) will be equipped 
+in the personal equipment outfit while if it has no direct use or the equippment 
 outfit is full, the item will be moved to the shared inventory stash.
 
 When you are managing items in the inventory or on the ground, you should
@@ -600,8 +600,8 @@ the personal outfit), press 'r'.
 To trigger the item's properties (inject an ampoule, activate a chip, eat
 a piece of food), press 't'.
 To throw (fling) the item somewhere, press 'f'.
-To put the item into the particular outfit (personal or shared), press 'o'
-(personal outfit) or 'i' (shared inventory).
+To put the item into the particular outfit (personal or shared), press 'O'
+(personal outfit) or 'i' (shared inventory stash).
 
 You may want to travel around the characters' inventories without leaving
 the inventory menu. To do that, you may press '<' or '>' to check different
