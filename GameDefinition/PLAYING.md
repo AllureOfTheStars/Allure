@@ -613,9 +613,9 @@ the 'TAB' command.
 Quite often, you will need to modify your environment somehow. There are
 numerous ways how to do that, so try and experiment!
 You may craft items, change the terrain, cook food, upgrade or change items,
-and many other things!
+and do many other things!
 
-For example, to craft items, you need some basic components and a workshop
+To craft or modify items, you need some basic components and a workshop
 station or any other terrain that may be used to modify items (a pool
 of water, a source of fire, etc). Stand next to the workshop station, drop
 the components, stand on them, press 'M', and point to the direction
