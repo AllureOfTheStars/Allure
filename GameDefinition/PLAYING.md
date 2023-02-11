@@ -431,11 +431,11 @@ at least 5% of damage always gets through, even if the bonus is nominally
 below -95%, so excessively strong armor acts only as a buffer against
 high melee skill of opponents.
 
-The current pointsman's melee bonus (~d~ + % where '~' stands for a number),
-armor modifier ([melee] and {ranged} bonuses) and other detailed stats can
-be viewed in the skill menu, accessible via the `#` command, which summarizes
-all the stats conferred by organs and conditions listed in the organ menu,
-invoked by `@`.
+The current pointsman's melee bonus (xdy + %, which means rolling 'x'-many
+'y'-sided dice + some bonus values), armor modifier ([melee] and {ranged} 
+bonuses) and other detailed stats can be viewed in the skill menu, 
+accessible via the `#` command, which summarizes all the stats conferred 
+by organs and conditions listed in the organ menu, invoked by `@`.
 It is always good to check the condition of your character, as you may notice
 some important changes in the character's condition. It would be very sad
 to lose control over your teammate just due to not finding out that he/she
@@ -443,10 +443,9 @@ was terrified by some monstrosity that threatened and impressed him/her
 some time ago.
 The same information about enemies may be found by the '~' command while
 the enemy unit is in the crosshair. For example, you see an unknown creature.
-How to react to it? Is it dangerous? What are its properties? Check its
-lore menu and the organs it has! It may help you to generate the appropriate
-strategy. Because for example, the enemy that can call for help may be 
-the main target for you. 
+How to react to it? Is it dangerous? Check its lore menu and the organs 
+it has! It may help you to generate the appropriate strategy. For example, 
+the enemy that can call for help may be the main target for you. 
 
 In ranged combat, the projectile is assumed to be attacking the defender
 in melee, using itself as the weapon, with the usual dice and damage bonus.
