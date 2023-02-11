@@ -723,16 +723,6 @@ A: Too late to buy anything. However, they can be crafted in at least
 two ways in the very early stages of the scenario. See the terrain lore menu
 for crafting recipes after exploring the initial levels.
 
-- Q: How do I craft?
-
-A: Stand adjacent to the workshop terrain (blue colon on the map)
-and experiment. Note that walkable positions can't be activated
-by bumping and, anyway, crafting requires the Modify command (key `M`)
-even for terrain that could be bumped into. Other crafting spots
-(e.g., any water and fire) work similarly, but the recipes differ.
-Read the recipes in the lore menu, terrain submenu, or by pressing `~`
-when crosshair points at terrain that enables crafting.
-
 - Q: Does power of crafted items depend on the depth of current level?
 
 A: No, unlike items found on the floor, items created by crafting
