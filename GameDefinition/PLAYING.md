@@ -588,7 +588,7 @@ To manage items on the ground (trigger or fling it directly not putting
 it into any inventory to save time), press `G`.
 
 To pick up an item from the ground to the pointsman's outfit, press `g`
-or ','. Items that have some direct use (melee weapon or armor) 
+or `,`. Items that have some direct use (melee weapon or armor) 
 will be equipped in the personal equipment outfit while if it has no 
 direct use or the equippment outfit is full, the item will be moved
 to the shared inventory stash.
