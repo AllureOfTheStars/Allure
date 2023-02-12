@@ -431,17 +431,18 @@ at least 5% of damage always gets through, even if the bonus is nominally
 below -95%, so excessively strong armor acts only as a buffer against
 high melee skill of opponents.
 
-The current pointsman's melee bonus (xdy + %, which means rolling 'x'-many
-'y'-sided dice + some bonus values), armor modifier ('[melee]' and '{ranged}' 
-bonuses) and other detailed stats can be viewed in the skill menu, 
-accessible via the `#` command, which summarizes all the stats conferred 
-by organs and conditions listed in the organ menu, invoked by `@`.
+The current pointsman's melee bonus (`xdy + %`, which means rolling 
+`x`-many `y`-sided dice + some bonus values), armor modifier 
+(`[melee]` and `{ranged}` bonuses) and other detailed stats can be viewed
+in the skill menu, accessible via the `#` command, which summarizes 
+all the stats conferred by organs and conditions listed in the organ menu,
+invoked by `@`.
 It is always good to check the condition of your character, as you may notice
 some important changes in the character's condition. It would be very sad
 to lose control over your teammate just due to not finding out that he/she
 was terrified by some monstrosity that threatened and impressed him/her
 some time ago.
-The same information about enemies may be found by the '~' command while
+The same information about enemies may be found by the `~` command while
 the enemy unit is in the crosshair. For example, you see an unknown creature.
 How to react to it? Is it dangerous? Check its lore menu and the organs 
 it has! It may help you to generate the appropriate strategy. For example, 
@@ -573,42 +574,35 @@ item (or a pile of items) will automatically become the new stash. The process
 takes several turns, so you should plan shared inventory stash relocation
 in advance.
 You should keep your eye on the item management stat in the character menu
-'#'. If this stat is too low (which may be caused by an injury or low 
+`#`. If this stat is too low (which may be caused by an injury or low 
 calmness level), it will be difficult for the character to work with items in 
 the character's personal outfit or in the shared inventory stash.
 
-To open the pointsman's outfit, press 'O' (if you want to see the pointsman's
-personal inventory outfit and manipulate items stored there) or 'i' (if
+To open the pointsman's outfit, press `O` (if you want to see the pointsman's
+personal inventory outfit and manipulate items stored there) or `i` (if
 you want to stash something in the shared inventory from the pointsman's
 outfit).
-To open the shared inventory stash, press 'I'.
-To open the whole team's belongings (personal and stashed), press 'T'.
+To open the shared inventory stash, press `I`.
+To open the whole team's belongings (personal and stashed), press `T`.
 To manage items on the ground (trigger or fling it directly not putting
-it into any inventory to save time), press 'G'.
+it into any inventory to save time), press `G`.
 
-To pick up an item from the ground to the pointsman's outfit, press 'g' or ','.
-Items that have some direct use (melee weapon or armor) will be equipped 
-in the personal equipment outfit while if it has no direct use or the equippment 
-outfit is full, the item will be moved to the shared inventory stash.
+To pick up an item from the ground to the pointsman's outfit, press `g`
+or ','. Items that have some direct use (melee weapon or armor) 
+will be equipped in the personal equipment outfit while if it has no 
+direct use or the equippment outfit is full, the item will be moved
+to the shared inventory stash.
 
 When you are managing items in the inventory or on the ground, you should
-choose the item with the LMB or arrows and 'RET' buttons to get the item
-management menu. You may want to choose all items from the particular location
-by pressing '*'.
-
-To drop an item on the ground from the inventory (either stashed or from
-the personal outfit), press 'r'.
-To trigger the item's properties (inject an ampoule, activate a chip, eat
-a piece of food), press 't'.
-To throw (fling) the item somewhere, press 'f'.
-To put the item into the particular outfit (personal or shared), press 'O'
-(personal outfit) or 'i' (shared inventory stash).
+choose the item with the LMB or arrows and `RET` buttons to get the item
+management menu. You may want to choose all items from the particular 
+location by pressing `*`.
 
 You may want to travel around the characters' inventories without leaving
-the inventory menu. To do that, you may press '<' or '>' to check different
+the inventory menu. To do that, you may press `<` or `>` to check different
 inventories: character's outfit, stashed inventory, objects on the ground,
 etc. You may also change pointsmen that are adjusting inventory by pressing
-the 'TAB' command.
+the `TAB` command.
 
 Quite often, you will need to modify your environment somehow. There are
 numerous ways how to do that, so try and experiment!
@@ -618,13 +612,13 @@ and do many other things!
 To craft or modify items, you need some basic components and a workshop
 station or any other terrain that may be used to modify items (a pool
 of water, a source of fire, etc). Stand next to the workshop station, drop
-the components, stand on them, press 'M', and point to the direction
+the components, stand on them, press `M`, and point to the direction
 of the item-modifying tile. The components will be automatically consumed,
 and the resulting item will appear. 
 For example, you may want to craft a club from a wooden stick and several 
-steel scraps. Approach a workshop, drop the components, press 'M', and 
+steel scraps. Approach a workshop, drop the components, press `M`, and 
 point to the workshop.
-Some crafting recipes may be found by pressing the '~' command while looking
+Some crafting recipes may be found by pressing the `~` command while looking
 at the terrain you want to use.
 
 
