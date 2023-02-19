@@ -551,9 +551,9 @@ accessed by all the team members except those that are not calm enough
 or injured somehow. But no one has a direct advantage from having the items 
 in the shared inventory stash.
 The stashed items are exactly stashed, they are not simply laying on
-the ground (although the stash has a particular location on the map). To operate 
-the stashed items, you should use commands that refer to the party stash, 
-not to items on the ground.
+the ground (although the stash has a particular location on the map). 
+To operate the stashed items, you should use commands that refer to 
+the party shared inventory, not to items on the ground.
 
 Obviously, if the item is beneficial (a piece of armor, weapon, or a bonus
 item), it is reasonable to put it into a particular character's outfit.
