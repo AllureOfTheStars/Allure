@@ -431,7 +431,7 @@ at least 5% of damage always gets through, even if the bonus is nominally
 below -95%, so excessively strong armor acts only as a buffer against
 high melee skill of opponents.
 
-The current pointsman's melee bonus (`xdy + %`, which means rolling 
+The current pointman's melee bonus (`xdy + %`, which means rolling 
 `x`-many `y`-sided dice + some bonus values), armor modifier 
 (`[melee]` and `{ranged}` bonuses) and other detailed stats can be viewed
 in the skill menu, accessible via the `#` command, which summarizes 
@@ -547,14 +547,13 @@ equipment outfit or in the shared inventory stash that is accessible by every
 team member. 
 Items that are in the personal equipment outfit can be accessed by or 
 are beneficial for this particular character only. Stashed items can be 
-accessed by the team members (unless the character is not calm enough 
-or injured). But no one has a direct advantage from having the items 
+accessed by all the team members except those that are not calm enough 
+or injured somehow. But no one has a direct advantage from having the items 
 in the shared inventory stash.
 The stashed items are exactly stashed, they are not simply laying on
-the ground (although the stash has a particular location on the map). You
-cannot operate the items from the stash, as if these items are just on
-the ground directly. To collect an item from the stash or drop it on the ground,
-you should use commands.
+the ground (although the stash has a particular location on the map). To operate 
+the stashed items, you should use commands that refer to the party stash, 
+not to items on the ground.
 
 Obviously, if the item is beneficial (a piece of armor, weapon, or a bonus
 item), it is reasonable to put it into a particular character's outfit.
@@ -566,42 +565,42 @@ the shared inventory stash.
 The shared inventory stash is of unlimited size. It has a physical location on
 the map and may be looted. So, it is wise to keep it safe or change 
 its location depending on the current situation. It would be a pity to lose 
-valuables or powerful projectiles by not taking care of the shared stash. 
+valuables or powerful projectiles by not taking care of the shared inventory. 
 
 To relocate the shared inventory stash, first, you need to remove ALL 
 of the items from it anywhere you want to make it empty. Then, any stashed
 item (or a pile of items) will automatically become the new stash. The process 
-takes several turns, so you should plan shared inventory stash relocation
+takes a couple of turns, so you should plan shared inventory stash relocation
 in advance.
 You should keep your eye on the item management stat in the character menu
 `#`. If this stat is too low (which may be caused by an injury or low 
 calmness level), it will be difficult for the character to work with items in 
 the character's personal outfit or in the shared inventory stash.
 
-To open the pointsman's outfit, press `O` (if you want to see the pointsman's
+To open the pointman's outfit, press `O` (if you want to see the pointman's
 personal inventory outfit and manipulate items stored there) or `i` (if
-you want to stash something in the shared inventory from the pointsman's
+you want to stash something in the shared inventory from the pointman's
 outfit).
 To open the shared inventory stash, press `I`.
 To open the whole team's belongings (personal and stashed), press `T`.
 To manage items on the ground (trigger or fling it directly not putting
 it into any inventory to save time), press `G`.
 
-To pick up an item from the ground to the pointsman's outfit, press `g`
+To pick up an item from the ground to the pointman's outfit, press `g`
 or `,`. Items that have some direct use (melee weapon or armor) 
 will be equipped in the personal equipment outfit while if it has no 
 direct use or the equippment outfit is full, the item will be moved
-to the shared inventory stash.
+to the shared inventory.
 
 When you are managing items in the inventory or on the ground, you should
 choose the item with the LMB or arrows and `RET` buttons to get the item
 management menu. You may want to choose all items from the particular 
 location by pressing `*`.
 
-You may want to travel around the characters' inventories without leaving
-the inventory menu. To do that, you may press `<` or `>` to check different
-inventories: character's outfit, stashed inventory, objects on the ground,
-etc. You may also change pointsmen that are adjusting inventory by pressing
+You may want to cycle among the characters' inventory outfits without leaving 
+the inventory menu. To do that, you may press `<` or `>` to check different 
+inventories: character's outfit, stashed inventory, objects on the ground, etc. 
+You may also change pointmen that are adjusting inventory by pressing 
 the `TAB` command.
 
 Quite often, you will need to modify your environment somehow. There are
