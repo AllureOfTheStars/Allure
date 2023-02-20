@@ -600,8 +600,6 @@ location by pressing `*`.
 You may want to cycle among the characters' inventory outfits without leaving 
 the inventory menu. To do that, you may press `<` or `>` to check different 
 inventories: character's outfit, stashed inventory, objects on the ground, etc. 
-You may also change pointmen that are adjusting inventory by pressing 
-the `TAB` command.
 
 Quite often, you will need to modify your environment somehow. There are
 numerous ways how to do that, so try and experiment!
