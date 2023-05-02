@@ -600,10 +600,10 @@ inventory outfits without leaving the inventory menu, you need to press
 `<` or `>` to check different inventories: character's outfit, 
 stashed inventory, objects on the ground, etc. 
 
-Quite often, you will need to modify your environment somehow. There are
-numerous ways how to do that, so try and experiment!
-You may craft items, change the terrain, cook food, upgrade or change items,
-and do many other things!
+You will need to modify your environment. You may craft items, change 
+the terrain, cook food, upgrade or change items, and do many other things.
+Crafting recipes may be found by pressing the `~` command while looking
+at the terrain you want to use.
 
 To craft or modify items, you need some basic components and a workshop
 station or any other terrain that may be used to modify items (a pool
@@ -611,12 +611,6 @@ of water, a source of fire, etc). Stand next to the item-modifying tile
 (workshop station, source of fire or water), drop the components on the ground, 
 press `M`, and point in the direction of that tile. The components will be 
 consumed, and the resulting item will appear. 
-For example, you may want to craft a club from a wooden stick and several 
-steel scraps. Approach a workshop, drop the components, press `M`, and 
-point to the workshop.
-Crafting recipes may be found by pressing the `~` command while looking
-at the terrain you want to use.
-
 
 
 Winning and dying
