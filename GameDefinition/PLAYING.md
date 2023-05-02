@@ -542,17 +542,17 @@ of exploration.
 Managing inventory and crafting
 -------------------------------
 
-All items belonging to your team are stored either in the character's personal 
-equipment outfit or in the shared inventory stash that is accessible by every 
-team member. 
-Items that are in the personal equipment outfit can be accessed by or 
-are beneficial for this particular character only. Stashed items can be 
-accessed by all the team members except those that are not calm enough 
-or or suffer a debilitating trauma. But no one has a direct advantage 
+All items belonging to your team are stored either in the character's personal
+equipment outfit or in the shared inventory stash that is accessible by every
+team member.
+Items that are in the personal equipment outfit can be accessed by or
+are beneficial for this particular character only. Stashed items can be
+accessed by all the team members except those that are not calm enough
+or or suffer a debilitating trauma. But no one has a direct advantage
 from having the items in the shared inventory stash.
 The stashed items are exactly stashed, they are not simply laying on
-the ground (although the stash has a particular location on the map). 
-To operate the stashed items, you should use commands that refer to 
+the ground (although the stash has a particular location on the map).
+To operate the stashed items, you should use commands that refer to
 the party shared inventory, not to items on the ground.
 
 Obviously, if the item is beneficial (a piece of armor, weapon, or a bonus
@@ -563,18 +563,18 @@ weapon, medkits, ampoules with drugs, food, or else), it may well be stored
 in the shared inventory stash.
 
 The shared inventory stash is of unlimited size. It has a physical location on
-the map and may be looted. So, it is wise to keep it safe or change 
-its location depending on the current situation. It would be a pity to lose 
-valuables or powerful projectiles by not taking care of the shared inventory. 
+the map and may be looted. So, it is wise to keep it safe or change
+its location depending on the current situation. It would be a pity to lose
+valuables or powerful projectiles by not taking care of the shared inventory.
 
-To relocate the shared inventory stash, first, you need to remove ALL 
+To relocate the shared inventory stash, first, you need to remove ALL
 of the items from it anywhere you want to make it empty. Then, any stashed
-item (or a pile of items) will automatically become the new stash. The process 
+item (or a pile of items) will automatically become the new stash. The process
 takes a couple of turns, so you should plan shared inventory stash relocation
 in advance.
 You should keep your eye on the item management stat in the character menu
-`#`. If this stat is too low (which may be caused by a trauma or low 
-calmness level), it will be difficult for the character to add or remove items 
+`#`. If this stat is too low (which may be caused by a trauma or low
+calmness level), it will be difficult for the character to add or remove items
 to the character's personal outfit or in the shared inventory stash.
 
 To open the pointman's outfit, press `O` (if you want to see the pointman's
@@ -587,20 +587,20 @@ To manage items on the ground (trigger or fling it directly, not putting
 it into any inventory to save time), press `G`.
 
 To pick up an item from the ground to the pointman's outfit, press `g`
-or `,`. An item that has any direct use (melee weapon, armor, or a bonus 
-item) will be equipped in the personal equipment outfit while if it has no 
+or `,`. An item that has any direct use (melee weapon, armor, or a bonus
+item) will be equipped in the personal equipment outfit while if it has no
 direct use or the equippment outfit is full, the item will be moved
 to the shared inventory.
 
 When you are managing items in the inventory or on the ground, you can
 choose the item with the LMB or arrows and `RET` buttons to get the item
-management menu. You may want to choose all items from the particular 
-location by pressing `*`. If you want to cycle among the characters' 
-inventory outfits without leaving the inventory menu, you need to press 
-`<` or `>` to check different inventories: character's outfit, 
-stashed inventory, objects on the ground, etc. 
+management menu. You may want to choose all items from the particular
+location by pressing `*`. If you want to cycle among the characters'
+inventory outfits without leaving the inventory menu, you need to press
+`<` or `>` to check different inventories: character's outfit,
+stashed inventory, objects on the ground, etc.
 
-You will need to modify your environment. You may craft items, change 
+You will need to modify your environment. You may craft items, change
 the terrain, cook food, upgrade or change items, and do many other things.
 Crafting recipes may be found by pressing the `~` command while looking
 at the terrain you want to use.
