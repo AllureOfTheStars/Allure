@@ -431,10 +431,22 @@ at least 5% of damage always gets through, even if the bonus is nominally
 below -95%, so excessively strong armor acts only as a buffer against
 high melee skill of opponents.
 
-The current pointman's melee bonus, armor modifier and other detailed
-stats can be viewed in the skill menu, accessible via the `#` command,
-which summarizes all the stats conferred by organs and conditions listed
-in the organ menu, invoked by `@`.
+The current pointman's melee bonus (`xdy + %`, which means rolling 
+`x`-many `y`-sided dice + some bonus values), armor modifier 
+(`[melee]` and `{ranged}` bonuses) and other detailed stats can be viewed
+in the skill menu, accessible via the `#` command, which summarizes 
+all the stats conferred by organs and conditions listed in the organ menu,
+invoked by `@`.
+It is always good to check the condition of your character, as you may notice
+some important changes in the character's condition. It would be very sad
+to lose control over your teammate just due to not finding out that he/she
+was terrified by some monstrosity that threatened and impressed him/her
+some time ago.
+The same information about enemies may be found via the `~` command while
+the enemy unit is in the crosshair. For example, you see an unknown creature.
+How to react to it? Is it dangerous? Check its lore menu and the organs 
+it has! It may help you to invent the appropriate strategy. For example, 
+the enemy that can call for help may become the main target for you. 
 
 In ranged combat, the projectile is assumed to be attacking the defender
 in melee, using itself as the weapon, with the usual dice and damage bonus.
@@ -525,6 +537,80 @@ the damage output, stay put, fling a projectile, or perhaps get the meleeing
 teammate to retreat towards the team. Over a long run, such choices
 influence the speed of HP attrition and if it outweighs the benefits
 of exploration.
+
+
+Managing inventory and crafting
+-------------------------------
+
+All items belonging to your team are stored either in the character's personal
+equipment outfit or in the shared inventory stash that is accessible by every
+team member.
+Items that are in the personal equipment outfit can be accessed by or
+are beneficial for this particular character only. Stashed items can be
+accessed by all the team members except those that are not calm enough
+or or suffer a debilitating trauma. But no one has a direct advantage
+from having the items in the shared inventory stash.
+The stashed items are exactly stashed, they are not simply laying on
+the ground (although the stash has a particular location on the map).
+To operate the stashed items, you should use commands that refer to
+the party shared inventory, not to items on the ground.
+
+Obviously, if the item is beneficial (a piece of armor, weapon, or a bonus
+item), it is reasonable to put it into a particular character's outfit.
+However, you should remember that the outfit is limited to any 10 (ten)
+items only. On the contrary, if the item is not required directly (ranged
+weapon, medkits, ampoules with drugs, food, or else), it may well be stored
+in the shared inventory stash.
+
+The shared inventory stash is of unlimited size. It has a physical location on
+the map and may be looted. So, it is wise to keep it safe or change
+its location depending on the current situation. It would be a pity to lose
+valuables or powerful projectiles by not taking care of the shared inventory.
+
+To relocate the shared inventory stash, first, you need to remove ALL
+of the items from it anywhere you want to make it empty. Then, any stashed
+item (or a pile of items) will automatically become the new stash. The process
+takes a couple of turns, so you should plan shared inventory stash relocation
+in advance.
+You should keep your eye on the item management stat in the character menu
+`#`. If this stat is too low (which may be caused by a trauma or low
+calmness level), it will be difficult for the character to add or remove items
+to the character's personal outfit or in the shared inventory stash.
+
+To open the pointman's outfit, press `O` (if you want to see the pointman's
+personal inventory outfit and manipulate items stored there) or `i` (if
+you want to stash something in the shared inventory from the pointman's
+outfit).
+To open the shared inventory stash, press `I`.
+To open the whole team's belongings (personal and stashed), press `T`.
+To manage items on the ground (trigger or fling it directly, not putting
+it into any inventory to save time), press `G`.
+
+To pick up an item from the ground to the pointman's outfit, press `g`
+or `,`. An item that has any direct use (melee weapon, armor, or a bonus
+item) will be equipped in the personal equipment outfit while if it has no
+direct use or the equippment outfit is full, the item will be moved
+to the shared inventory.
+
+When you are managing items in the inventory or on the ground, you can
+choose the item with the LMB or arrows and `RET` buttons to get the item
+management menu. You may want to choose all items from the particular
+location by pressing `*`. If you want to cycle among the characters'
+inventory outfits without leaving the inventory menu, you need to press
+`<` or `>` to check different inventories: character's outfit,
+stashed inventory, objects on the ground, etc.
+
+You will need to modify your environment. You may craft items, change
+the terrain, cook food, upgrade or change items, and do many other things.
+Crafting recipes may be found by pressing the `~` command while looking
+at the terrain you want to use.
+
+To craft or modify items, you need some basic components and a workshop
+station or any other terrain that may be used to modify items (a pool
+of water, a source of fire, etc). Stand next to the item-modifying tile
+(workshop station, source of fire or water), drop the components on
+the ground, press `M`, and point in the direction of that tile. The
+components will be consumed, and the resulting item will appear.
 
 
 Winning and dying
@@ -618,16 +704,6 @@ BTW, there are less obvious but more advantageous ways of opening that path.
 A: Too late to buy anything. However, they can be crafted in at least
 two ways in the very early stages of the scenario. See the terrain lore menu
 for crafting recipes after exploring the initial levels.
-
-- Q: How do I craft?
-
-A: Stand adjacent to the workshop terrain (blue colon on the map)
-and experiment. Note that walkable positions can't be activated
-by bumping and, anyway, crafting requires the Modify command (key `M`)
-even for terrain that could be bumped into. Other crafting spots
-(e.g., any water and fire) work similarly, but the recipes differ.
-Read the recipes in the lore menu, terrain submenu, or by pressing `~`
-when crosshair points at terrain that enables crafting.
 
 - Q: Does power of crafted items depend on the depth of current level?
 
