@@ -609,7 +609,7 @@ To craft or modify items, you need some basic components and a workshop
 station or any other terrain that may be used to modify items (a pool
 of water, a source of fire, etc). Stand next to the item-modifying tile 
 (workshop station, source of fire or water), drop the components on
-the ground, press `M`, and point in the direction of that tile. The 
+the ground, press `M`, and point in the direction of that tile. The
 components will be consumed, and the resulting item will appear.
 
 
