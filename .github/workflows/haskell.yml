@@ -18,64 +18,124 @@ jobs:
     strategy:
       matrix:
         include:
-          - compiler: ghc-9.4.1-vanilla
+          - compiler: ghc-9.8.1-vanilla
             projectFlags:
             compilerKind: ghc
-            compilerVersion: 9.4.1
+            compilerVersion: 9.8.1
             setup-method: ghcup
             allow-failure: false
-          - compiler: ghc-9.4.1-asserts
+          - compiler: ghc-9.8.1-asserts
             projectFlags: -fwith_expensive_assertions
             compilerKind: ghc
-            compilerVersion: 9.4.1
+            compilerVersion: 9.8.1
             setup-method: ghcup
             allow-failure: false
-          - compiler: ghc-9.4.1-norelease-asserts
+          - compiler: ghc-9.8.1-norelease-asserts
             projectFlags: -f-release -fwith_expensive_assertions
             compilerKind: ghc
-            compilerVersion: 9.4.1
+            compilerVersion: 9.8.1
             setup-method: ghcup
             allow-failure: false
-          - compiler: ghc-9.4.1-noopt
+          - compiler: ghc-9.8.1-noopt
             projectFlags: --ghc-option=-O0 --ghc-option=-fno-ignore-asserts
             compilerKind: ghc
-            compilerVersion: 9.4.1
+            compilerVersion: 9.8.1
             setup-method: ghcup
             allow-failure: false
-          - compiler: ghc-9.4.1-opt2
+          - compiler: ghc-9.8.1-opt2
             projectFlags: --ghc-option=-O2 --ghc-option=-fno-ignore-asserts
             compilerKind: ghc
-            compilerVersion: 9.4.1
+            compilerVersion: 9.8.1
             setup-method: ghcup
             allow-failure: false
-          - compiler: ghc-9.2.4-vanilla
+          - compiler: ghc-9.6.3-vanilla
             projectFlags:
             compilerKind: ghc
-            compilerVersion: 9.2.4
+            compilerVersion: 9.6.3
             setup-method: ghcup
             allow-failure: false
-          - compiler: ghc-9.2.4-asserts
+          - compiler: ghc-9.6.3-asserts
             projectFlags: -fwith_expensive_assertions
             compilerKind: ghc
-            compilerVersion: 9.2.4
+            compilerVersion: 9.6.3
             setup-method: ghcup
             allow-failure: false
-          - compiler: ghc-9.2.4-norelease-asserts
+          - compiler: ghc-9.6.3-norelease-asserts
             projectFlags: -f-release -fwith_expensive_assertions
             compilerKind: ghc
-            compilerVersion: 9.2.4
+            compilerVersion: 9.6.3
             setup-method: ghcup
             allow-failure: false
-          - compiler: ghc-9.2.4-noopt
+          - compiler: ghc-9.6.3-noopt
             projectFlags: --ghc-option=-O0 --ghc-option=-fno-ignore-asserts
             compilerKind: ghc
-            compilerVersion: 9.2.4
+            compilerVersion: 9.6.3
             setup-method: ghcup
             allow-failure: false
-# OOM          - compiler: ghc-9.2.4-opt2
+          - compiler: ghc-9.6.3-opt2
+            projectFlags: --ghc-option=-O2 --ghc-option=-fno-ignore-asserts
+            compilerKind: ghc
+            compilerVersion: 9.6.3
+            setup-method: ghcup
+            allow-failure: false
+          - compiler: ghc-9.4.8-vanilla
+            projectFlags:
+            compilerKind: ghc
+            compilerVersion: 9.4.8
+            setup-method: ghcup
+            allow-failure: false
+          - compiler: ghc-9.4.8-asserts
+            projectFlags: -fwith_expensive_assertions
+            compilerKind: ghc
+            compilerVersion: 9.4.8
+            setup-method: ghcup
+            allow-failure: false
+          - compiler: ghc-9.4.8-norelease-asserts
+            projectFlags: -f-release -fwith_expensive_assertions
+            compilerKind: ghc
+            compilerVersion: 9.4.8
+            setup-method: ghcup
+            allow-failure: false
+          - compiler: ghc-9.4.8-noopt
+            projectFlags: --ghc-option=-O0 --ghc-option=-fno-ignore-asserts
+            compilerKind: ghc
+            compilerVersion: 9.4.8
+            setup-method: ghcup
+            allow-failure: false
+          - compiler: ghc-9.4.8-opt2
+            projectFlags: --ghc-option=-O2 --ghc-option=-fno-ignore-asserts
+            compilerKind: ghc
+            compilerVersion: 9.4.8
+            setup-method: ghcup
+            allow-failure: false
+          - compiler: ghc-9.2.8-vanilla
+            projectFlags:
+            compilerKind: ghc
+            compilerVersion: 9.2.8
+            setup-method: ghcup
+            allow-failure: false
+          - compiler: ghc-9.2.8-asserts
+            projectFlags: -fwith_expensive_assertions
+            compilerKind: ghc
+            compilerVersion: 9.2.8
+            setup-method: ghcup
+            allow-failure: false
+          - compiler: ghc-9.2.8-norelease-asserts
+            projectFlags: -f-release -fwith_expensive_assertions
+            compilerKind: ghc
+            compilerVersion: 9.2.8
+            setup-method: ghcup
+            allow-failure: false
+          - compiler: ghc-9.2.8-noopt
+            projectFlags: --ghc-option=-O0 --ghc-option=-fno-ignore-asserts
+            compilerKind: ghc
+            compilerVersion: 9.2.8
+            setup-method: ghcup
+            allow-failure: false
+# OOM          - compiler: ghc-9.2.8-opt2
 #            projectFlags: --ghc-option=-O2 --ghc-option=-fno-ignore-asserts
 #            compilerKind: ghc
-#            compilerVersion: 9.2.4
+#            compilerVersion: 9.2.8
 #            setup-method: ghcup
 #            allow-failure: false
           - compiler: ghc-9.0.2-vanilla
@@ -137,36 +197,6 @@ jobs:
             compilerKind: ghc
             compilerVersion: 8.10.7
             setup-method: ghcup
-            allow-failure: false
-          - compiler: ghc-8.8.4-vanilla
-            projectFlags:
-            compilerKind: ghc
-            compilerVersion: 8.8.4
-            setup-method: hvr-ppa
-            allow-failure: false
-          - compiler: ghc-8.8.4-asserts
-            projectFlags: -fwith_expensive_assertions
-            compilerKind: ghc
-            compilerVersion: 8.8.4
-            setup-method: hvr-ppa
-            allow-failure: false
-          - compiler: ghc-8.8.4-norelease-asserts
-            projectFlags: -f-release -fwith_expensive_assertions
-            compilerKind: ghc
-            compilerVersion: 8.8.4
-            setup-method: hvr-ppa
-            allow-failure: false
-          - compiler: ghc-8.8.4-noopt
-            projectFlags: --ghc-option=-O0 --ghc-option=-fno-ignore-asserts
-            compilerKind: ghc
-            compilerVersion: 8.8.4
-            setup-method: hvr-ppa
-            allow-failure: false
-          - compiler: ghc-8.8.4-opt2
-            projectFlags: --ghc-option=-O2 --ghc-option=-fno-ignore-asserts
-            compilerKind: ghc
-            compilerVersion: 8.8.4
-            setup-method: hvr-ppa
             allow-failure: false
       fail-fast: false
     steps:
