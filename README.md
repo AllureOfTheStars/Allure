@@ -244,3 +244,7 @@ Exceptions and detailed copyright information is contained in file COPYLEFT.
 [16]: https://www.npmjs.com/package/google-closure-compiler
 [18]: https://github.com/AllureOfTheStars/Allure/actions
 [19]: https://ci.appveyor.com/project/Mikolaj/allure/build/artifacts
+
+## Play online
+
+Also playable on [WASM Arcade](https://www.wasmarcade.online/arcade/allure-of-the-stars/) — free, no download.
